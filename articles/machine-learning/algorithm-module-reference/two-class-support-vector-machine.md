@@ -1,7 +1,7 @@
 ---
-title: 'Podpora dvou tříd – vektorový počítač: odkaz na modul'
+title: 'Dvoutřídní podpůrný vektorový stroj: Odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul **vektorového počítače podpory dvou tříd** v Azure Machine Learning k vytvoření modelu, který je založený na algoritmu podpory vektorového počítače.
+description: Zjistěte, jak pomocí modulu **Dvoutřídní ho repromovacího stroje** v Azure Machine Learning vytvořit model, který je založený na algoritmu podpůrného vektorového počítače.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,74 +9,74 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 3b2f6b2bb1dc5f9e16c537f78b5a456ee4984e80
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ba788518951e72c1701d99decf46350e8665dbae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916723"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455804"
 ---
-# <a name="two-class-support-vector-machine-module"></a>Modul Vector Machine Support pro dvě třídy
+# <a name="two-class-support-vector-machine-module"></a>Dvoutřídní modul vektorového stroje pro podporu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
 
-Tento modul použijte k vytvoření modelu, který je založen na algoritmu podpory vektorového počítače. 
+Tento modul slouží k vytvoření modelu, který je založen na algoritmu podpůrného vektorového počítače. 
 
-Podpora vektorových počítačů (SVMs) je dobře prohledaná třída studijních metod, které jsou pod dohledem. Tato konkrétní implementace je vhodná pro předpověď dvou možných výsledků, a to na základě souvislých nebo kategorií proměnných.
+Podpůrné vektorové stroje (SVM) jsou dobře prozkoumanou třídou metod učení pod dohledem. Tato konkrétní implementace je vhodná pro predikci dvou možných výsledků založených na spojitých nebo kategorických proměnných.
 
-Po definování parametrů modelu proveďte výuku modelu pomocí školicích modulů a poskytněte *tagované datové sady* , která obsahuje sloupec popisku nebo výsledku.
+Po definování parametrů modelu trénování modelu pomocí trénovacích modulů a poskytnutí *tagované datové sady,* která obsahuje popisek nebo sloupec výsledků.
 
-## <a name="about-support-vector-machines"></a>O podpoře vektorových počítačů
+## <a name="about-support-vector-machines"></a>O podpůrných vektorových strojích
 
-Podpora vektorových počítačů je mezi nejstaršími algoritmy strojového učení a modely SVM se používají v mnoha aplikacích, od načtení informací do klasifikace textu a obrázku. SVMs lze použít pro úlohy klasifikace i regrese.
+Podpůrné vektorové počítače patří mezi nejstarší algoritmy strojového učení a modely SVM byly použity v mnoha aplikacích, od načítání informací až po klasifikaci textu a obrázků. SVM lze použít pro klasifikace i regresní úkoly.
 
-Tento model SVM je model výuky pod dohledem, který vyžaduje data s popisky. V procesu školení algoritmus analyzuje vstupní data a rozpoznává vzory v multidimenzionálním prostoru *funkce s názvem.*  Všechny vstupní příklady jsou reprezentovány jako body v tomto prostoru a jsou namapovány na výstupní kategorie takovým způsobem, že kategorie jsou rozděleny tak, jak jsou, a co nejpřesnější je vymazat.
+Tento model SVM je model učení pod dohledem, který vyžaduje označená data. V procesu školení algoritmus analyzuje vstupní data a rozpozná vzory v multi-dimenzionální funkce prostoru zvaného *hyperplane*.  Všechny vstupní příklady jsou reprezentovány jako body v tomto prostoru a jsou mapovány na výstupní kategorie tak, aby kategorie byly rozděleny co nejširší a vymazání mezery, jak je to možné.
 
-Pro předpovědi SVM algoritmus přiřadí nové příklady do jedné kategorie nebo do druhé a namapuje je na stejné místo. 
+Pro předpověď algoritmus SVM přiřadí nové příklady do jedné kategorie nebo jiné, mapování je do stejného prostoru. 
 
 ## <a name="how-to-configure"></a>Jak nakonfigurovat 
 
-Pro tento typ modelu doporučujeme datovou sadu normalizovat před jejím použitím k učení třídění.
+Pro tento typ modelu se doporučuje normalizovat datovou sadu před použitím k trénování třídění.
   
-1.  Přidejte modul **vektorového počítače podpory dvou tříd** do vašeho kanálu.  
+1.  Přidejte do kanálu modul **Dvoutřídní podpůrný vektorový stroj.**  
   
-2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
+2.  Určete, jak má být model trénovaný, nastavením **možnosti Vytvořit režim trenažéru.**  
   
-    -   **Jediný parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.  
+    -   **Jeden parametr**: Pokud víte, jak chcete nakonfigurovat model, můžete zadat určitou sadu hodnot jako argumenty.  
 
-    -   **Rozsah parametrů**: Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.
+    -   **Rozsah parametrů**: Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [Tune Model Hyperparameters.](tune-model-hyperparameters.md) Zadáte určitý rozsah hodnot a trenér iterates přes více kombinací nastavení k určení kombinace hodnot, které vytváří nejlepší výsledek.
 
-3.  Pro **počet iterací**zadejte číslo, které označuje počet iterací použitých při sestavování modelu.  
+3.  Pro **počet iterací**zadejte číslo, které označuje počet iterací použitých při vytváření modelu.  
   
-     Tento parametr lze použít k řízení vzájemného obchodování mezi rychlostí a přesností školení.  
+     Tento parametr lze použít k řízení kompromisu mezi rychlostí tréninku a přesností.  
   
-4.  Pro **výraz lambda**zadejte hodnotu, která se má použít jako váha pro pravidelnou práci s L1.  
+4.  Do **pole Lambda**zadejte hodnotu, která se má použít jako hmotnost pro regularizaci L1.  
   
-     Tento koeficient depravidelnosti se dá použít k ladění modelu. Vyšší hodnoty postihují složitější modely.  
+     Tento regularizační koeficient lze použít k vyladění modelu. Větší hodnoty penalizují složitější modely.  
   
-5.  Pokud chcete funkce normalizovat před školením, vyberte možnost **normalizovat funkce**.
+5.  Vyberte možnost **Normalizovat funkce**, pokud chcete normalizovat funkce před trénování.
   
-     Použijete-li normalizaci, před školením budou datové body zarovnány na střední hodnotu a škálovat tak, aby měly jednu jednotku směrodatné odchylky.
+     Pokud použijete normalizaci, před trénincí jsou datové body vystředěny na střední hodnotu a zmenšeny tak, aby měly jednu jednotku směrodatné odchylky.
   
-6.  Chcete-li normalizovat koeficienty, vyberte možnost **projekt k police jednotky**.
+6.  Vyberte **možnost, Projekt na oblast jednotky**, chcete-li normalizovat koeficienty.
   
-     Při projekci hodnot do místa na disku znamená, že před školením jsou datové body zarovnány na střed 0 a zvětšeny tak, aby měly jednu jednotku směrodatné odchylky.
+     Promítání hodnot do místa jednotky znamená, že před trénováním jsou datové body vystředěny na 0 a zmenšeny tak, aby měly jednu jednotku směrodatné odchylky.
   
-7.  V **počátečním čísle náhodného čísla**zadejte celočíselnou hodnotu, která se má použít jako počáteční hodnota pro zajištění reprodukovatelnosti napříč běhy.  V opačném případě se systémová hodnota hodin používá jako počáteční hodnota, což může vést ke vzniku mírně odlišných výsledků napříč běhy.
+7.  Do **pole Osiva náhodných čísel**zadejte celou hodnotu, kterou chcete použít jako osiva, pokud chcete zajistit reprodukovatelnost napříč spuštěními.  V opačném případě se jako osiva používá hodnota systémových hodin, což může mít za následek mírně odlišné výsledky napříč spuštěními.
   
-9. Připojte s popiskem datovou sadu a jeden z [školicích modulů](module-reference.md):
+9. Připojte označenou datovou sadu a jeden z [trénovacích modulů](module-reference.md):
   
-    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](train-model.md) .
+    -   Pokud nastavíte **vytvořit režim trenažéru** na **jeden parametr**, použijte modul [Model vlaku.](train-model.md)
   
-10. Spuštění kanálu
+10. Odešlete potrubí.
 
 ## <a name="results"></a>Výsledky
 
-Po dokončení školení:
+Po dokončení tréninku:
 
-+ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
++ Chcete-li uložit snímek trénovaného modelu, vyberte kartu **Výstupy** v pravém panelu modulu **modelu Vlak.** Vyberte ikonu **Registrovat datovou sadu,** chcete-li model uložit jako opakovaně použitelný modul.
 
-+ Chcete-li použít model pro bodování, přidejte modul určení **skóre modelu** do kanálu.
++ Chcete-li použít model pro vyhodnocování, přidejte modul **Modelu skóre** do kanálu.
 
 
 ## <a name="next-steps"></a>Další kroky

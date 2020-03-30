@@ -1,6 +1,6 @@
 ---
-title: Začínáme s využitím nevláken zařízení v Azure IoT Hub (Node) | Microsoft Docs
-description: Jak používat vlákna v zařízeních Azure IoT Hub k přidávání značek a k následnému použití dotazu IoT Hub. Sady SDK Azure IoT pro Node. js můžete použít k implementaci aplikace simulovaného zařízení a aplikace služby, která přidá značky a spustí dotaz IoT Hub.
+title: Začínáme s dvojčaty zařízení Azure IoT Hub (uzel) | Dokumenty společnosti Microsoft
+description: Jak použít dvojčata zařízení Azure IoT Hub k přidání značek a pak použít dotaz služby IoT Hub. Sady Azure IoT SDK pro node.js slouží k implementaci aplikace simulovaných zařízení a aplikace služby, která přidá značky a spustí dotaz služby IoT Hub.
 author: fsautomata
 ms.service: iot-hub
 services: iot-hub
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
 ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110825"
 ---
-# <a name="get-started-with-device-twins-nodejs"></a>Začínáme s nevlákenou zařízení (Node. js)
+# <a name="get-started-with-device-twins-nodejs"></a>Začínáme s dvojčaty zařízení (Node.js)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Na konci tohoto kurzu budete mít dvě konzolové aplikace Node. js:
+Na konci tohoto kurzu budete mít dvě konzolové aplikace Node.js:
 
-* **AddTagsAndQuery. js**– back-endové aplikace v Node. js, které přidávají značky a dotaz na vlákna zařízení.
+* **AddTagsAndQuery.js**, back-end aplikace Node.js, která přidává značky a dotazy dvojčata zařízení.
 
-* **TwinSimulatedDevice. js**aplikace v Node. js, která simuluje zařízení, které se připojuje ke službě IoT Hub s dříve vytvořenou identitou zařízení a oznamuje její podmínku připojení.
+* **TwinSimulatedDevice.js**, aplikace Node.js, která simuluje zařízení, které se připojuje k centru IoT s identitou zařízení vytvořenou dříve a hlásí stav připojení.
 
 > [!NOTE]
-> V článku sady [SDK Azure IoT](iot-hub-devguide-sdks.md) najdete informace o sadách SDK Azure IoT, které můžete použít k vytvoření zařízení i back-endové aplikace.
+> Článek [sady Azure IoT SDK obsahuje](iot-hub-devguide-sdks.md) informace o sadách Azure IoT SDK, které můžete použít k vytváření aplikací pro zařízení i back-end.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Node. js verze 10.0. x nebo novější.
+* Node.js verze 10.0.x nebo novější.
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
+* Aktivní účet Azure. (Pokud nemáte účet, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
-* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Zkontrolujte, zda je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení ve službě IoT Hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení v centru IoT hub
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT hub
 
 [!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
 
@@ -55,23 +55,23 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="create-the-service-app"></a>Vytvoření aplikace služby
 
-V této části vytvoříte konzolovou aplikaci Node. js, která přidá metadata umístění do vlákna zařízení přidruženého k **myDeviceId**. Pak se dotazuje na vlákna, která jsou uložená ve službě IoT Hub, vybírá zařízení umístěná v USA a potom ty, které vytvářejí mobilní připojení.
+V této části vytvoříte konzolovou aplikaci Node.js, která přidá metadata umístění do dvojčete zařízení přidruženého k **myDeviceId**. Potom se dotazuje dvojčata zařízení uložená v centru IoT výběru zařízení umístěných v USA a potom ty, které hlásí mobilní připojení.
 
-1. Vytvořte novou prázdnou složku s názvem **addtagsandqueryapp**. Ve složce **addtagsandqueryapp** vytvořte nový soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku. Parametr `--yes` přijímá všechny výchozí hodnoty.
+1. Vytvořte novou prázdnou složku s názvem **addtagsandqueryapp**. Ve složce **addtagsandqueryapp** vytvořte nový soubor package.json pomocí následujícího příkazu na příkazovém řádku. Parametr `--yes` přijímá všechny výchozí hodnoty.
 
     ```cmd/sh
     npm init --yes
     ```
 
-2. Na příkazovém řádku ve složce **addtagsandqueryapp** spusťte následující příkaz k instalaci balíčku **Azure-iothub** :
+2. Na příkazovém řádku ve složce **addtagsandqueryapp** spusťte následující příkaz pro instalaci balíčku **azure-iothub:**
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. Pomocí textového editoru vytvořte nový soubor **AddTagsAndQuery. js** ve složce **addtagsandqueryapp** .
+3. Pomocí textového editoru vytvořte nový soubor **AddTagsAndQuery.js** ve složce **addtagsandqueryapp.**
 
-4. Do souboru **AddTagsAndQuery. js** přidejte následující kód. Nahraďte `{iot hub connection string}` připojovacím řetězcem IoT Hub, který jste zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
+4. Přidejte následující kód do souboru **AddTagsAndQuery.js.** Nahraďte `{iot hub connection string}` připojovacím řetězcem ioT hubu, který jste zkopírovali v [části Získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
 
    ``` javascript
         'use strict';
@@ -104,11 +104,11 @@ V této části vytvoříte konzolovou aplikaci Node. js, která přidá metadat
         });
    ```
 
-    Objekt **registru** zveřejňuje všechny metody, které jsou potřeba pro interakci se zařízeními ze služby. Předchozí kód nejprve inicializuje objekt **registru** , potom načte **myDeviceId**pro zařízení a nakonec aktualizuje své značky o požadované informace o umístění.
+    Objekt **Registru** zveřejňuje všechny metody potřebné k interakci s dvojčaty zařízení ze služby. Předchozí kód nejprve inicializuje objekt **registru,** pak načte dvojče zařízení pro **myDeviceId**a nakonec aktualizuje jeho značky s informacemi o požadovaném umístění.
 
-    Po aktualizaci značek volá funkci **queryTwins** .
+    Po aktualizaci značek volá **queryTwins** funkce.
 
-5. Přidejte následující kód na konec **AddTagsAndQuery. js** k implementaci funkce **queryTwins** :
+5. Přidejte následující kód na konci **AddTagsAndQuery.js** k implementaci **queryTwins** funkce:
 
    ```javascript
         var queryTwins = function() {
@@ -132,41 +132,41 @@ V této části vytvoříte konzolovou aplikaci Node. js, která přidá metadat
         };
    ```
 
-    Předchozí kód spustí dva dotazy: první vybere jenom zařízení, která se nacházejí ve složce **Redmond43** , a druhá ho doplní a vybere jenom zařízení, která jsou taky připojená přes mobilní síť.
+    Předchozí kód provede dva dotazy: první vybere pouze dvojčata zařízení umístěných v závodě **Redmond43** a druhý zpřesní dotaz a vybere pouze zařízení, která jsou také připojena prostřednictvím mobilní sítě.
 
-    Když kód vytvoří objekt **dotazu** , určuje maximální počet vrácených dokumentů ve druhém parametru. Objekt **dotazu** obsahuje vlastnost **hasMoreResults** Boolean, kterou můžete použít k vícenásobnému vyvolání metod **nextAsTwin** pro načtení všech výsledků. K dispozici **je metoda** , která je k dispozici pro výsledky, které nejsou nevlákenné zařízení, například výsledky agregačních dotazů.
+    Když kód vytvoří objekt **dotazu,** určuje maximální počet vrácených dokumentů v druhém parametru. Objekt **dotazu** obsahuje logickou vlastnost **hasMoreResults,** kterou můžete použít k vyvolání metod **nextAsTwin** vícekrát k načtení všech výsledků. Metoda voláná **další** je k dispozici pro výsledky, které nejsou dvojčata zařízení, například výsledky agregační dotazy.
 
-6. Spusťte aplikaci pomocí:
+6. Spusťte aplikaci s:
 
     ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
-   Ve výsledcích dotazu pro všechna zařízení umístěná v **Redmond43** byste měli vidět jedno zařízení, které pro dotaz neomezuje výsledky na zařízení, která používají mobilní síť.
+   Ve výsledcích dotazu byste měli vidět jedno zařízení s žádostí o všechna zařízení umístěná v **Redmond43** a žádné pro dotaz, který omezuje výsledky na zařízení, která používají mobilní síť.
 
-   ![Podívejte se na jedno zařízení ve výsledcích dotazu.](media/iot-hub-node-node-twin-getstarted/service1.png)
+   ![Zobrazení jednoho zařízení ve výsledcích dotazu](media/iot-hub-node-node-twin-getstarted/service1.png)
 
-V další části vytvoříte aplikaci pro zařízení, která oznamuje informace o připojení a mění výsledek dotazu v předchozí části.
+V další části vytvoříte aplikaci pro zařízení, která hlásí informace o připojení a změní výsledek dotazu v předchozí části.
 
 ## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
 
-V této části vytvoříte konzolovou aplikaci Node. js, která se připojí k vašemu rozbočovači jako **myDeviceId**, a pak aktualizuje nahlášené vlastnosti dodaného zařízení tak, aby obsahovaly informace, které jsou připojené pomocí mobilní sítě.
+V této části vytvoříte konzolovou aplikaci Node.js, která se připojí k vašemu rozbočovači jako **myDeviceId**a potom aktualizuje ohlášené vlastnosti dvojčete zařízení tak, aby obsahovaly informace, které jsou připojeny pomocí mobilní sítě.
 
-1. Vytvořte novou prázdnou složku s názvem **reportconnectivity**. Ve složce **reportconnectivity** vytvořte nový soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku. Parametr `--yes` přijímá všechny výchozí hodnoty.
+1. Vytvořte novou prázdnou složku nazvanou **reportconnectivity**. Ve složce **reportconnectivity** vytvořte nový soubor package.json pomocí následujícího příkazu na příkazovém řádku. Parametr `--yes` přijímá všechny výchozí hodnoty.
 
     ```cmd/sh
     npm init --yes
     ```
 
-2. Na příkazovém řádku ve složce **reportconnectivity** spusťte následující příkaz, který nainstaluje balíčky **Azure-IoT-Device**a **Azure-IoT-Device-MQTT** :
+2. Na příkazovém řádku ve složce **reportconnectivity** spusťte následující příkaz pro instalaci balíčků **azure-iot-device**a **azure-iot-device-mqtt:**
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Pomocí textového editoru vytvořte nový soubor **ReportConnectivity. js** ve složce **ReportConnectivity** .
+3. Pomocí textového editoru vytvořte nový soubor **ReportConnectivity.js** ve složce **reportconnectivity.**
 
-4. Do souboru **ReportConnectivity. js** přidejte následující kód. Nahraďte `{device connection string}` připojovacím řetězcem zařízení, který jste zkopírovali při vytváření identity zařízení **myDeviceId** v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
+4. Přidejte následující kód do souboru **ReportConnectivity.js.** Nahraďte `{device connection string}` připojovacím řetězcem zařízení, který jste zkopírovali při vytváření identity zařízení **myDeviceId** v [části Registrace nového zařízení v centru IoT](#register-a-new-device-in-the-iot-hub).
 
     ```javascript
         'use strict';
@@ -206,34 +206,34 @@ V této části vytvoříte konzolovou aplikaci Node. js, která se připojí k 
         });
     ```
 
-    Objekt **klienta** zveřejňuje všechny metody, které vyžadujete pro interakci se zařízeními ze zařízení. Předchozí kód, po inicializaci objektu **klienta** , načte do zařízení **myDeviceId** a aktualizuje jeho hlášenou vlastnost informacemi o připojení.
+    Client **Client** objekt zveřejňuje všechny metody, které potřebujete k interakci s dvojčaty zařízení ze zařízení. Předchozí kód po inicializaci objektu **Klienta** načte dvojče zařízení pro **myDeviceId** a aktualizuje jeho ohlášenou vlastnost s informacemi o připojení.
 
-5. Spuštění aplikace pro zařízení
+5. Spuštění aplikace zařízení
 
     ```cmd/sh
         node ReportConnectivity.js
     ```
 
-    Měla by se zobrazit zpráva `twin state reported`.
+    Měli byste vidět `twin state reported`zprávu .
 
-6. Teď, když zařízení oznámilo informace o připojení, by se mělo zobrazit v obou dotazech. Vraťte se zpátky do složky **addtagsandqueryapp** a spusťte dotazy znovu:
+6. Nyní, když zařízení ohlásilo informace o připojení, mělo by se zobrazit v obou dotazech. Vraťte se do složky **addtagsandqueryapp** a znovu spusťte dotazy:
 
     ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
-    Toto časové **myDeviceId** by se mělo objevit ve výsledcích dotazu.
+    Tentokrát **myDeviceId** by se měl zobrazit v obou výsledcích dotazu.
 
-    ![Zobrazit myDeviceId ve výsledcích dotazu](media/iot-hub-node-node-twin-getstarted/service2.png)
+    ![Zobrazit myDeviceId v obou výsledcích dotazu](media/iot-hub-node-node-twin-getstarted/service2.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Metadata zařízení jste přidali jako značky z back-endové aplikace a zapsali jste aplikaci simulovaného zařízení, která oznamuje informace o připojení zařízení v zařízení. Zjistili jste také, jak zadat dotaz na tyto informace pomocí dotazovacího jazyka IoT Hub, jako je třeba SQL.
+V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Přidali jste metadata zařízení jako značky z back-endové aplikace a napsali jste simulovanou aplikaci zařízení, která nahlásí informace o připojení zařízení v dvojčeti zařízení. Také jste se naučili, jak dotaz ovat tyto informace pomocí dotazovacího jazyka ioT hub u verze SQL.
 
-Pomocí následujících zdrojů se naučíte:
+Pomocí následujících zdrojů se dozvíte, jak:
 
-* pomocí kurzu [Začínáme se službou IoT Hub](quickstart-send-telemetry-node.md) odeslat telemetrii ze zařízení,
+* odesílání telemetrie ze zařízení pomocí výukového programu [Začínáme s ioT hubem,](quickstart-send-telemetry-node.md)
 
-* v kurzu konfigurace zařízení pomocí [požadovaných vlastností pro konfiguraci](tutorial-device-twins.md) zařízení nakonfigurujte zařízení pomocí požadovaných vlastností.
+* konfigurace zařízení pomocí požadovaných vlastností dvojčete zařízení pomocí výukového kurzu [Použít požadované vlastnosti ke konfiguraci zařízení,](tutorial-device-twins.md)
 
-* interaktivní řízení zařízení (například zapnutí ventilátoru z aplikace řízené uživatelem) pomocí kurzu [použití přímých metod](quickstart-control-device-node.md) .
+* ovládací zařízení interaktivně (například zapnutí ventilátoru z uživatelem řízené aplikace), s [kurzem Použít přímé metody.](quickstart-control-device-node.md)

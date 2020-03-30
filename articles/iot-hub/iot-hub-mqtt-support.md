@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení podpory Azure IoT Hub MQTT | Microsoft Docs
-description: Příručka pro vývojáře – podpora pro zařízení, která se připojují k IoT Hub koncovému bodu s přístupem k zařízení pomocí protokolu MQTT. Obsahuje informace o integrované podpoře MQTT v sadách SDK pro zařízení Azure IoT.
+title: Principy podpory Azure IoT Hub MQTT | Dokumenty společnosti Microsoft
+description: Průvodce pro vývojáře – podpora zařízení, která se připojují ke koncovému bodu orientovanému na zařízení služby IoT Hub pomocí protokolu MQTT. Obsahuje informace o integrované podpoře MQTT v sadách SDK zařízení Azure IoT.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,51 +8,51 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
 ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271158"
 ---
-# <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
+# <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace s centrem IoT pomocí protokolu MQTT
 
-IoT Hub umožňuje zařízením komunikovat s koncovými body IoT Hub zařízení pomocí:
+IoT Hub umožňuje zařízením komunikovat s koncovými body zařízení služby IoT Hub pomocí:
 
-* [MQTT v 3.1.1](https://mqtt.org/) na portu 8883
-* MQTT v 3.1.1 přes WebSocket na portu 443.
+* [MQTT v3.1.1](https://mqtt.org/) na portu 8883
+* MQTT v3.1.1 přes WebSocket na portu 443.
 
-IoT Hub není plnohodnotným zprostředkovatelem MQTT a nepodporuje všechna chování zadaná ve standardu MQTT v 3.1.1. Tento článek popisuje, jak můžou zařízení používat podporovaná MQTT chování ke komunikaci s IoT Hub.
+IoT Hub není plnohodnotný zprostředkovatel protokolu MQTT a nepodporuje všechna chování uvedená ve standardu protokolu MQTT v3.1.1. Tento článek popisuje, jak zařízení můžete použít podporované chování MQTT ke komunikaci s IoT Hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Všechna komunikace zařízení s IoT Hub musí být zabezpečená pomocí protokolu TLS/SSL. Proto IoT Hub nepodporuje nezabezpečená připojení přes port 1883.
+Veškerá komunikace zařízení s ioT hubem musí být zabezpečena pomocí TLS/SSL. Proto IoT Hub nepodporuje nezabezpečené připojení přes port 1883.
 
-## <a name="connecting-to-iot-hub"></a>Připojování k IoT Hub
+## <a name="connecting-to-iot-hub"></a>Připojení k centru IoT Hub
 
-Zařízení může používat protokol MQTT pro připojení ke službě IoT Hub pomocí kterékoli z následujících možností.
+Zařízení může použít protokol MQTT pro připojení k centru IoT pomocí některé z následujících možností.
 
 * Knihovny v sadách [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks).
 * Protokol MQTT přímo.
 
-Port MQTT (8883) je blokován v mnoha firemních a vzdělávacích prostředích sítě. Pokud v bráně firewall nemůžete otevřít port 8883, doporučujeme používat MQTT přes webové sokety. MQTT přes webové sokety komunikují přes port 443, který je téměř vždy otevřený v síťových prostředích. Informace o tom, jak zadat MQTT a MQTT přes webové sokety při použití sad SDK služby Azure IoT, najdete v tématu [používání sad SDK pro zařízení](#using-the-device-sdks).
+Port MQTT (8883) je blokován v mnoha firemních a vzdělávacích síťových prostředích. Pokud se vám nepodaří otevřít port 8883 v bráně firewall, doporučujeme použít MQTT přes webové sokety. MQTT přes webové sokety komunikuje přes port 443, který je téměř vždy otevřený v síťových prostředích. Informace o tom, jak zadat protokoly MQTT a MQTT přes webové sokety při použití sad Azure IoT SDK, najdete [v tématu Použití sad SDK zařízení](#using-the-device-sdks).
 
-## <a name="using-the-device-sdks"></a>Používání sad SDK pro zařízení
+## <a name="using-the-device-sdks"></a>Používání sad SDK zařízení
 
-Sady [SDK pro zařízení](https://github.com/Azure/azure-iot-sdks) , které podporují protokol MQTT, jsou k dispozici pro jazyky Java, C#Node. js, C, a Python. Sady SDK pro zařízení používají standardní připojovací řetězec IoT Hub k navázání připojení ke službě IoT Hub. Aby bylo možné používat protokol MQTT, musí být parametr klientského protokolu nastaven na hodnotu **MQTT**. V parametru protokolu klienta můžete také zadat MQTT přes webové sokety. Sady SDK pro zařízení se ve výchozím nastavení připojují k IoT Hub s příznakem **CleanSession** nastaveným na **hodnotu 0** a používají **technologii QoS 1** pro výměnu zpráv se službou IoT Hub.
+[Sady SDK zařízení,](https://github.com/Azure/azure-iot-sdks) které podporují protokol MQTT, jsou k dispozici pro jazyk Java, Node.js, C, C# a Python. Sady SDK zařízení používají standardní připojovací řetězec ioT hub unavit připojení k centru IoT Hub. Chcete-li použít protokol MQTT, musí být parametr protokolu klienta nastaven na **hodnotu MQTT**. V parametru klientského protokolu můžete také zadat MQTT přes webové sokety. Ve výchozím nastavení se sady SDK zařízení připojují k centru IoT Hub s příznakem **CleanSession** nastaveným na **hodnotu 0** a používají **QoS 1** pro výměnu zpráv s centrem IoT.
 
-Když je zařízení připojené ke službě IoT Hub, poskytují sady SDK pro zařízení metody, které umožní zařízení vyměňovat zprávy se službou IoT Hub.
+Když je zařízení připojené k centru IoT, sady SDK zařízení poskytují metody, které umožňují zařízení vyměňovat si zprávy s centrem IoT.
 
-Následující tabulka obsahuje odkazy na ukázky kódu pro každý podporovaný jazyk a určuje parametr, který se použije k navázání připojení k IoT Hub pomocí protokolu MQTT nebo MQTT over Web Sockets.
+Následující tabulka obsahuje odkazy na ukázky kódu pro každý podporovaný jazyk a určuje parametr, který se má použít k navázání připojení k centru IoT Hub pomocí protokolu MQTT nebo MQTT přes webové sokety.
 
-| Jazyk | Parametr protokolu MQTT | MQTT přes parametr protokolu webové sokety
+| Jazyk | Parametr protokolu MQTT | Parametr protokolu MQTT přes webové sokety
 | --- | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IoT-Device-MQTT. MQTT | Azure-IoT-Device-MQTT. MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol. MQTT_WS |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt. Mqtt | azure-iot-device-mqtt. MqttWs |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[Protokol IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | Protokol IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). MQTT | TransportType. MQTT se vrátí do MQTT přes webové sokety, pokud MQTT selhání. Pokud chcete zadat jenom MQTT přes webové sokety, použijte TransportType. Mqtt_WebSocket_Only |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Podporuje MQTT ve výchozím nastavení | Přidat `websockets=True` ve volání pro vytvoření klienta |
+| [C #](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt | TransportType.Mqtt přejde zpět na MQTT přes webové sokety, pokud MQTT selže. Chcete-li zadat mqtt pouze přes webové sokety, použijte TransportType.Mqtt_WebSocket_Only |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Standardně podporuje MQTT | Přidat `websockets=True` do volání k vytvoření klienta |
 
-Následující fragment ukazuje, jak zadat protokol MQTT over Web Sockets při použití sady Azure IoT Node. js SDK:
+Následující fragment ukazuje, jak určit protokol MQTT přes webové sokety při použití sady Azure IoT Node.js SDK:
 
 ```javascript
 var Client = require('azure-iot-device').Client;
@@ -60,168 +60,168 @@ var Protocol = require('azure-iot-device-mqtt').MqttWs;
 var client = Client.fromConnectionString(deviceConnectionString, Protocol);
 ```
 
-Následující fragment ukazuje, jak zadat protokol MQTT over Web Sockets při použití sady SDK Azure IoT Python:
+Následující fragment ukazuje, jak určit protokol MQTT přes webové sokety při použití sady Azure IoT Python SDK:
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient
 device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectionString, websockets=True)
 ```
 
-### <a name="default-keep-alive-timeout"></a>Výchozí časový limit zachování
+### <a name="default-keep-alive-timeout"></a>Výchozí časový limit udržování
 
-Aby se zajistilo, že připojení typu klient/IoT Hub zůstane aktivní, služba i klient pravidelně odesílají do sebe *protokol směrování paketů Keep-Alive* . Klient využívající sadu IoT SDK pošle udržování připojení v intervalu definovaném v této tabulce:
+Chcete-li zajistit, aby připojení klienta/služby IoT Hub zůstalo naživu, služba i klient si pravidelně odesílají *příkaz* ping udržování. Klient pomocí sady IoT SDK odešle keep-alive v intervalu definovaném v této tabulce níže:
 
-|Jazyk  |Výchozí interval Keep-Alive  |Konfigurovatelné  |
+|Jazyk  |Výchozí interval udržování  |Konfigurovatelné  |
 |---------|---------|---------|
 |Node.js     |   180 sekund      |     Ne    |
 |Java     |    230 sekund     |     Ne    |
 |C     | 240 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 sekund |  Ne   |
+|Krajně (V2)   | 60 sekund |  Ne   |
 
-Po zadání [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)je interval testu Keep-Alive IoT Hub v době, kdy je hodnota keep-alive klienta 1,5. IoT Hub ale omezuje maximální časový limit na straně serveru na 29,45 minut (1767 sekund), protože všechny služby Azure jsou svázané s časovým limitem nečinnosti protokolu TCP pro vyrovnávání zatížení Azure, což je 29,45 minut. 
+Po [Specifikam MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)je interval udržování příkazu služby IoT Hub 1,5násobek hodnoty udržování klienta. Služba IoT Hub však omezuje maximální časový limit na straně serveru na 29,45 minut (1767 sekund), protože všechny služby Azure jsou vázány na časový limit nečinnosti tcp služby Azure pro vyrovnávání zatížení, což je 29,45 minuty. 
 
-Například zařízení, které používá sadu Java SDK, odešle příkaz pro připojení k síti příkazem pro udržování naživu a potom ztratí síťové připojení. 230 sekund později zařízení neobdrží příkaz k odeslání požadavku na udržování, protože je offline. IoT Hub ale připojení okamžitě neukončí – vyčká další `(230 * 1.5) - 230 = 115` sekund, než zařízení odpojíte s chybou [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md). 
+Například zařízení používající sadu Java SDK odešle příkaz ping keep-alive a pak ztratí připojení k síti. O 230 sekund později zařízení zmešká ping, protože je offline. Služba IoT Hub však neukončí připojení okamžitě `(230 * 1.5) - 230 = 115` – čeká další sekundy před odpojením zařízení s chybou [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md). 
 
-Hodnota maximální hodnoty Keep-Alive klienta, kterou můžete nastavit, je `1767 / 1.5 = 1177` sekund. U všech přenosů se obnoví Keep Alive. Například úspěšná aktualizace tokenu SAS obnoví udržování připojení.
+Maximální hodnota udržování klienta, kterou `1767 / 1.5 = 1177` můžete nastavit, je sekund. Jakýkoli provoz obnoví udržování. Například úspěšná aktualizace tokenu SAS obnoví udržování.
 
-### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrace aplikace zařízení z AMQP do MQTT
+### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrace aplikace zařízení z AMQP na MQTT
 
-Pokud používáte sady SDK pro [zařízení](https://github.com/Azure/azure-iot-sdks), přepnutí z použití AMQP na MQTT vyžaduje změnu parametru protokolu v inicializaci klienta, jak je uvedeno výše.
+Pokud používáte [sady SDK zařízení](https://github.com/Azure/azure-iot-sdks), přepnutí z používání amqp na MQTT vyžaduje změnu parametru protokolu v inicializaci klienta, jak je uvedeno dříve.
 
-V takovém případě nezapomeňte zkontrolovat následující položky:
+Při tom zkontrolujte následující položky:
 
-* AMQP vrací chyby pro mnoho podmínek, zatímco MQTT ukončí připojení. V důsledku toho může logika zpracování výjimek vyžadovat nějaké změny.
+* AMQP vrátí chyby pro mnoho podmínek, zatímco MQTT ukončí připojení. V důsledku toho může logika zpracování výjimek vyžadovat některé změny.
 
-* MQTT nepodporuje operace *odmítnutí* při přijímání [zpráv z cloudu na zařízení](iot-hub-devguide-messaging.md). Pokud vaše back-end aplikace potřebuje přijmout odpověď z aplikace zařízení, zvažte použití [přímých metod](iot-hub-devguide-direct-methods.md).
+* MQTT nepodporuje *vyřazovací* operace při příjmu [zpráv z cloudu na zařízení](iot-hub-devguide-messaging.md). Pokud vaše back-endová aplikace potřebuje obdržet odpověď z aplikace pro zařízení, zvažte použití [přímých metod](iot-hub-devguide-direct-methods.md).
 
-* AMQP se v sadě Python SDK nepodporuje.
+* AMQP není v sadě Python SDK podporován
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Přímé použití protokolu MQTT (jako zařízení)
 
-Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále připojit k koncovým bodům veřejných zařízení pomocí protokolu MQTT na portu 8883. V paketu **připojení** by mělo zařízení používat následující hodnoty:
+Pokud zařízení nemůže používat sady SDK zařízení, může se stále připojit ke koncovým bodům veřejného zařízení pomocí protokolu MQTT na portu 8883. V paketu **CONNECT** by zařízení mělo používat následující hodnoty:
 
-* V poli **ClientID** použijte **deviceId**.
+* Pro pole **ClientId** použijte **deviceId**.
 
-* V poli **uživatelské jméno** použijte `{iothubhostname}/{device_id}/?api-version=2018-06-30`, kde `{iothubhostname}` je celý záznam CNAME služby IoT Hub.
+* Pro pole **Uživatelské** jméno `{iothubhostname}/{device_id}/?api-version=2018-06-30`použijte `{iothubhostname}` , kde je celý CName centra IoT.
 
-    Například pokud je název vašeho centra IoT **contoso.Azure-Devices.NET** a pokud je název vašeho zařízení **MyDevice01**, pole úplné **uživatelské jméno** by mělo obsahovat následující:
+    Pokud je například název vašeho centra IoT **hub contoso.azure-devices.net** a název vašeho zařízení je **MyDevice01**, mělo by úplné pole **Uživatelské jméno** obsahovat:
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
-* V poli **heslo** použijte token SAS. Formát tokenu SAS je stejný jako u protokolů HTTPS a AMQP:
+* Pro pole **Heslo** použijte token SAS. Formát tokenu SAS je stejný jako pro protokoly HTTPS i AMQP:
 
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > Pokud používáte ověřování pomocí certifikátu X. 509, hesla tokenů SAS se nevyžadují. Další informace najdete v tématu [nastavení zabezpečení X. 509 ve službě Azure IoT Hub](iot-hub-security-x509-get-started.md) a [níže](#tlsssl-configuration)v následujících pokynech pro kód.
+  > Pokud používáte ověřování certifikátu X.509, hesla tokenů SAS nejsou vyžadována. Další informace najdete [v tématu Nastavení zabezpečení X.509 ve službě Azure IoT Hub](iot-hub-security-x509-get-started.md) a postupujte [podle pokynů](#tlsssl-configuration)kódu níže .
 
-  Další informace o tom, jak generovat tokeny SAS, najdete v části zařízení [použití tokenů zabezpečení IoT Hub](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
+  Další informace o tom, jak generovat tokeny SAS, naleznete v části zařízení [pomocí tokenů zabezpečení služby IoT Hub](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
 
-  Při testování můžete také použít [nástroje Azure IoT Tools pro různé platformy pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo nástroj [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) k rychlému vygenerování tokenu SAS, který můžete zkopírovat a vložit do vlastního kódu:
+  Při testování můžete také použít nástroje [Azure IoT pro vizuální studio](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pro různé platformy nebo nástroj Průzkumník [zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) k rychlému generování tokenu SAS, který můžete zkopírovat a vložit do vlastního kódu:
 
-### <a name="for-azure-iot-tools"></a>Pro Azure IoT Tools
+### <a name="for-azure-iot-tools"></a>Pro nástroje Azure IoT
 
-1. Rozbalte kartu **zařízení Azure IoT Hub** v levém dolním rohu Visual Studio Code.
+1. Rozbalte kartu **AZURE IOT HUB DEVICES** v levém dolním rohu kódu Visual Studia.
   
-2. Klikněte pravým tlačítkem na zařízení a vyberte **Generovat token SAS pro zařízení**.
+2. Klikněte pravým tlačítkem myši na zařízení a vyberte **generovat token SAS pro zařízení**.
   
-3. Nastavte **čas vypršení platnosti** a stiskněte klávesu ENTER.
+3. Nastavte **čas vypršení platnosti** a stiskněte klávesu Enter.
   
 4. Token SAS je vytvořen a zkopírován do schránky.
 
-### <a name="for-device-explorer"></a>Pro Device Explorer
+### <a name="for-device-explorer"></a>Pro Průzkumníka zařízení
 
-1. V **Device Explorer**otevřete kartu **Správa** .
+1. Přejděte na kartu **Správa** v **Průzkumníkovi zařízení**.
 
-2. Klikněte na **token SAS** (vpravo nahoře).
+2. Klikněte na **Token SAS** (vpravo nahoře).
 
-3. V **SASTokenForm**vyberte zařízení v rozevíracím seznamu **DeviceID** . Nastavte **hodnotu TTL**.
+3. Na **SASTokenForm**vyberte zařízení v rozevíracím souboru **DeviceID.** Nastavte **ttl**.
 
-4. Kliknutím **na vytvořit vytvořte** token.
+4. Chcete-li vytvořit token, klepněte na **tlačítko Generovat.**
 
    Vygenerovaný token SAS má následující strukturu:
 
    `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
-   Část tohoto tokenu, která se má použít jako pole **hesla** pro připojení pomocí MQTT:
+   Část tohoto tokenu, která se má použít jako pole **Heslo** pro připojení pomocí nástroje MQTT, je:
 
    `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
-V případě MQTT připojení a odpojení paketů IoT Hub vydá událost na kanálu **monitorování operací** . Tato událost obsahuje další informace, které vám můžou pomoct vyřešit problémy s připojením.
+Pro mqtt připojení a odpojení paketů, IoT Hub vydá událost na kanálu **sledování operací.** Tato událost má další informace, které vám mohou pomoci při řešení problémů s připojením.
 
-Aplikace zařízení může v paketu **Connect** **zadat zprávu.** Aplikace zařízení by měla používat `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako název **tématu, které se má** definovat, **bude** zprávy předávané jako zpráva telemetrie. V takovém případě, pokud je síťové připojení ukončeno, ale ze zařízení nebyl dříve přijat paket pro **odpojení** , IoT Hub **odešle zprávu** dodanou v paketu **připojit** k kanálu telemetrie. Kanál telemetrie může být buď koncovým bodem výchozí **události** , nebo vlastním koncovým bodem definovaným IoT Hub směrováním. Zpráva obsahuje vlastnost **iothub-MessageType** s hodnotou, která **se mu přiřadí.**
+Aplikace zařízení může zadat zprávu **Vůle** v paketu **CONNECT.** Aplikace zařízení by `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` měla použít nebo jako název tématu **Bude** definovat **Will** zprávy, které mají být předány jako telemetrická zpráva. V tomto případě pokud je síťové připojení uzavřeno, ale paket **DISCONNECT** nebyl dříve přijat ze zařízení, odešle služba IoT Hub zprávu **Will** zadanou v paketu **CONNECT** telemetrickému kanálu. Kanál telemetrie může být buď výchozí **události** koncový bod nebo vlastní koncový bod definovaný směrování služby IoT Hub. Zpráva má **vlastnost iothub-MessageType** s hodnotou **Will,** která je k ní přiřazena.
 
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Příklad kódu C s použitím MQTT bez sady Azure IoT C SDK
-V tomto [úložišti](https://github.com/Azure-Samples/IoTMQTTSample)najdete několik projektů C/C++ demo, které ukazují, jak odesílat zprávy telemetrie, přijímat události ve službě IoT Hub bez použití sady Azure IoT C SDK. 
+### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Příklad kódu C pomocí MQTT bez sady Azure IoT C SDK
+V tomto úložišti najdete několik ukázkových projektů C/C++, které ukazují, jak odesílat telemetrické zprávy, přijímat události pomocí [služby](https://github.com/Azure-Samples/IoTMQTTSample)IoT hub bez použití sady Azure IoT C SDK. 
 
-Tyto ukázky používají knihovnu Mosquitto zatmění k odeslání zprávy zprostředkovateli MQTT implementovanému ve službě IoT Hub.
+Tyto ukázky používají knihovnu Eclipse Mosquitto k odeslání zprávy zprostředkovateli MQTT implementovanému v centru IoT.
 
 Toto úložiště obsahuje:
 
-**Pro Windows:**
+**Ve Windows:**
 
-* TelemetryMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie do služby Azure IoT Hub, která je sestavená a spuštěná na počítači s Windows.
+* TelemetryMQTTWin32: obsahuje kód pro odeslání telemetrické zprávy do centra Azure IoT hub, postavený a spuštěný na počítači s Windows.
 
-* SubscribeMQTTWin32: obsahuje kód pro přihlášení k odběru událostí daného centra IoT v počítači s Windows.
+* SubscribeMQTTWin32: obsahuje kód k přihlášení k odběru událostí daného centra IoT hub na počítači se systémem Windows.
 
-* DeviceTwinMQTTWin32: obsahuje kód pro dotazování a přihlášení k odběru událostí zařízení ve službě Azure IoT Hub na počítači s Windows.
+* DeviceTwinMQTTWin32: obsahuje kód pro dotazování a přihlášení k odběru událostí dvojčete zařízení zařízení v centru Azure IoT na počítači s Windows.
 
-* PnPMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie pomocí funkce IoT plug & Play Preview možností zařízení ve službě Azure IoT Hub, která je založená na počítači s Windows a běží na něm. Další informace o technologii IoT plug [& Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+* PnPMQTTWin32: obsahuje kód pro odeslání telemetrické zprávy pomocí funkce zařízení IoT Plug plug & Play preview do centra Azure IoT, které je sestavené a spouštěné na počítači s Windows. Více o IoT Plug & Play [zde](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **Pro Linux:**
 
-* MQTTLinux: obsahuje kód a skript sestavení pro spuštění na platformě Linux (WSL, Ubuntu a Raspbian byly testovány tak daleko).
+* MQTTLinux: obsahuje kód a sestavit skript pro spuštění na Linuxu (WSL, Ubuntu a Raspbian byly testovány tak daleko).
 
-* LinuxConsoleVS2019: obsahuje stejný kód, ale v projektu VS2019 cílící na WSL (Windows Linux sub System). Tento projekt vám umožní ladit kód běžící v systému Linux krok za krokem ze sady Visual Studio.
+* LinuxConsoleVS2019: obsahuje stejný kód, ale v projektu VS2019 zaměřeném na WSL (podsystém Windows Linux). Tento projekt umožňuje ladit kód běžící na Linuxu krok za krokem z Visual Studia.
 
 **Pro mosquitto_pub:**
 
-Tato složka obsahuje dva příkazy vzorů, které se používají s nástrojem mosquitto_pub Utility poskytovaném nástrojem Mosquitto.org.
+Tato složka obsahuje dva ukázkové příkazy používané s nástrojem mosquitto_pub poskytovaným Mosquitto.org.
 
-* Mosquitto_sendmessage: pro odeslání jednoduché textové zprávy do služby Azure IoT Hub fungující jako zařízení.
+* Mosquitto_sendmessage: chcete-li odeslat jednoduchou textovou zprávu do centra Azure IoT hub umíte jako zařízení.
 
-* Mosquitto_subscribe: zobrazení událostí, ke kterým dochází ve službě Azure IoT Hub.
+* Mosquitto_subscribe: chcete-li zobrazit události, ke kterým dochází v centru Azure IoT.
 
-## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Přímé použití protokolu MQTT (jako modul)
+## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Použití protokolu MQTT přímo (jako modul)
 
-Připojení k IoT Hub přes MQTT pomocí identity modulu je podobné zařízení (popsané [výše](#using-the-mqtt-protocol-directly-as-a-device)), ale musíte použít následující:
+Připojení k ioT hubu přes MQTT pomocí identity modulu je podobné zařízení (popsané [výše),](#using-the-mqtt-protocol-directly-as-a-device)ale musíte použít následující:
 
 * Nastavte ID klienta na `{device_id}/{module_id}`.
 
-* Pokud se ověřuje pomocí uživatelského jména a hesla, nastavte uživatelské jméno na `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` a jako heslo použijte token SAS přidružený k identitě modulu.
+* Pokud se ověřujete pomocí uživatelského `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` jména a hesla, nastavte uživatelské jméno a použijte token SAS přidružený k identitě modulu jako heslo.
 
-* Jako téma publikování telemetrie použijte `devices/{device_id}/modules/{module_id}/messages/events/`.
+* Slouží `devices/{device_id}/modules/{module_id}/messages/events/` jako téma pro publikování telemetrie.
 
-* Použijte `devices/{device_id}/modules/{module_id}/messages/events/`, jak se bude jednat o téma.
+* Použít `devices/{device_id}/modules/{module_id}/messages/events/` jako téma VŮLE.
 
-* Dvojitá témata GET a PATCH jsou pro moduly a zařízení shodná.
+* Twin GET a PATCH témata jsou identické pro moduly a zařízení.
 
-* Téma s dvojitým stavem je pro moduly a zařízení stejné.
+* Téma stavu dvojčete je identické pro moduly a zařízení.
 
-## <a name="tlsssl-configuration"></a>Konfigurace protokolu TLS/SSL
+## <a name="tlsssl-configuration"></a>Konfigurace TLS/SSL
 
-Pokud chcete protokol MQTT použít přímo, *musí* se klient připojit přes protokol TLS/SSL. Pokusy o přeskočení tohoto kroku selžou s chybami připojení.
+Chcete-li protokol MQTT používat přímo, *musí* se klient připojit přes protokol TLS/SSL. Pokusy o přeskočení tohoto kroku se nezdaří s chybami připojení.
 
-Aby bylo možné vytvořit připojení TLS, bude pravděpodobně nutné stáhnout a odkazovat na kořenový certifikát DigiCert Baltimore. Tento certifikát je ten, který Azure používá k zabezpečení připojení. Tento certifikát najdete v úložišti [Azure-IoT-SDK-c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) . Další informace o těchto certifikátech najdete na [webu DigiCert](https://www.digicert.com/digicert-root-certificates.htm).
+Chcete-li navázat připojení TLS, možná budete muset stáhnout a odkazovat na kořenový certifikát DigiCert Baltimore. Tento certifikát je ten, který Azure používá k zabezpečení připojení. Tento certifikát najdete v úložišti [Azure-iot-sdk-c.](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) Více informací o těchto certifikátech naleznete na [webových stránkách společnosti Digicert](https://www.digicert.com/digicert-root-certificates.htm).
 
-Příkladem toho, jak implementovat to pomocí verze Python [knihovny PAHO MQTT](https://pypi.python.org/pypi/paho-mqtt) v rámci služby zatmění Foundation, může vypadat takto.
+Příklad, jak to implementovat pomocí verze Pythonu [knihovny Paho MQTT od](https://pypi.python.org/pypi/paho-mqtt) Eclipse Foundation může vypadat takto.
 
-Nejdřív nainstalujte knihovnu PAHO z prostředí příkazového řádku:
+Nejprve nainstalujte knihovnu Paho z prostředí příkazového řádku:
 
 ```cmd/sh
 pip install paho-mqtt
 ```
 
-Potom implementujte klienta ve skriptu Python. Zástupné symboly nahraďte následujícím způsobem:
+Potom implementujte klienta ve skriptu Pythonu. Nahraďte zástupné symboly takto:
 
-* `<local path to digicert.cer>` je cesta k místnímu souboru, který obsahuje kořenový certifikát DigiCert Baltimore. Tento soubor můžete vytvořit zkopírováním informací o certifikátu z části [certifikáty. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) v sadě Azure IoT SDK pro jazyk c. zadejte řádky `-----BEGIN CERTIFICATE-----` a `-----END CERTIFICATE-----`, odstraňte značky `"` na začátku a konci každého řádku a odeberte `\r\n` znaky na konci každého řádku.
+* `<local path to digicert.cer>`je cesta k místnímu souboru, který obsahuje kořenový certifikát DigiCert Baltimore. Tento soubor můžete vytvořit zkopírováním informací o certifikátu z [certs.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) v sadě `-----BEGIN CERTIFICATE-----` Azure `-----END CERTIFICATE-----`IoT SDK pro C. Zahrnout řádky a , odebrat `"` značky na začátku a na konci každého řádku a odebrat `\r\n` znaky na konci každého řádku.
 
-* `<device id from device registry>` je ID zařízení, které jste přidali do služby IoT Hub.
+* `<device id from device registry>`je ID zařízení, které jste přidali do centra IoT hub.
 
-* `<generated SAS token>` je token SAS pro zařízení vytvořené, jak je popsáno dříve v tomto článku.
+* `<generated SAS token>`je token SAS pro zařízení vytvořené, jak je popsáno výše v tomto článku.
 
-* `<iot hub name>` název centra IoT.
+* `<iot hub name>`název vašeho centra IoT.
 
 ```python
 from paho.mqtt import client as mqtt
@@ -264,7 +264,7 @@ client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
 
-Pokud chcete provést ověření pomocí certifikátu zařízení, aktualizujte výše uvedený fragment kódu pomocí následujících změn (Další informace najdete v tématu [Jak získat certifikát certifikační autority X. 509](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) pro přípravu ověřování na základě certifikátů):
+Chcete-li se ověřit pomocí certifikátu zařízení, aktualizujte výše uvedený fragment kódu následujícími změnami (viz [Jak získat certifikát certifikační autority X.509](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) o tom, jak připravit na ověřování založené na certifikátu):
 
 ```python
 # Create the client as before
@@ -284,44 +284,44 @@ client.tls_set(ca_certs=path_to_root_cert, certfile=cert_file, keyfile=key_file,
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
 ```
 
-## <a name="sending-device-to-cloud-messages"></a>Posílání zpráv ze zařízení do cloudu
+## <a name="sending-device-to-cloud-messages"></a>Odesílání zpráv mezi zařízeními a cloudy
 
-Po úspěšném připojení může zařízení odesílat zprávy IoT Hub pomocí `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako **název tématu**. Element `{property_bag}` umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Příklad:
+Po úspěšném připojení může zařízení odesílat zprávy do `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` služby IoT Hub pomocí nebo jako **název tématu**. Prvek `{property_bag}` umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Například:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
 ```
 
 > [!NOTE]
-> Tento element `{property_bag}` používá stejné kódování jako řetězce dotazů v protokolu HTTPS.
+> Tento `{property_bag}` prvek používá stejné kódování jako řetězce dotazu v protokolu HTTPS.
 
-Následuje seznam IoT Hub chování specifické pro implementaci:
+Následuje seznam chování specifických pro implementaci centra IoT Hub:
 
-* IoT Hub nepodporuje zprávy technologie QoS 2. Pokud aplikace pro zařízení publikuje zprávu s **technologií QoS 2**, IoT Hub ukončí síťové připojení.
+* Služba IoT Hub nepodporuje zprávy QoS 2. Pokud aplikace zařízení publikuje zprávu pomocí **QoS 2**, Služba IoT Hub ukončí síťové připojení.
 
-* IoT Hub nezachovají uchování zpráv. Pokud zařízení pošle zprávu s příznakem **uchovat** nastaveným na hodnotu 1, IoT Hub do zprávy přidá vlastnost aplikace **x-opt-rechovává** . V takovém případě se místo uchování zprávy o zachovává IoT Hub předává do back-endové aplikace.
+* IoT Hub nezachová Zachovat zprávy. Pokud zařízení odešle zprávu s příznakem **RETAIN** nastaveným na hodnotu 1, služba IoT Hub přidá ke zprávě vlastnost aplikace **x-opt-retain.** V tomto případě namísto zachování zachycovací zprávy IoT Hub předá do back-endové aplikace.
 
-* IoT Hub podporuje jenom jedno aktivní připojení MQTT pro každé zařízení. Jakékoli nové připojení MQTT pro stejné ID zařízení způsobí, že IoT Hub vynechá existující připojení.
+* IoT Hub podporuje pouze jedno aktivní připojení MQTT na jedno zařízení. Jakékoli nové připojení MQTT jménem stejného ID zařízení způsobí, že služba IoT Hub vypustí stávající připojení.
 
-Další informace najdete v tématu [Příručka pro vývojáře pro zasílání zpráv](iot-hub-devguide-messaging.md).
+Další informace naleznete v [příručce pro vývojáře zpráv](iot-hub-devguide-messaging.md).
 
 ## <a name="receiving-cloud-to-device-messages"></a>Příjem zpráv z cloudu na zařízení
 
-Aby bylo možné přijímat zprávy z IoT Hub, mělo by se zařízení přihlásit pomocí `devices/{device_id}/messages/devicebound/#` jako **Filtr tématu**. Zástupný znak na více úrovních `#` v filtru tématu slouží pouze k tomu, aby zařízení přijímalo další vlastnosti v názvu tématu. IoT Hub nepovoluje použití `#` nebo `?` zástupné znaky pro filtrování dílčích témat. Vzhledem k tomu, že IoT Hub není modul pro zasílání zpráv typu Pub pro obecné účely, podporuje pouze dokumentované názvy témat a filtry témat.
+Chcete-li přijímat zprávy z služby IoT Hub, zařízení by se mělo přihlásit k odběru pomocí `devices/{device_id}/messages/devicebound/#` filtru **tématu**. Víceúrovňový zástupný `#` znak ve filtru tématu se používá pouze k tomu, aby zařízení mohlo přijímat další vlastnosti v názvu tématu. IoT Hub neumožňuje použití `#` nebo `?` zástupné znaky pro filtrování dílčích témat. Vzhledem k tomu, že IoT Hub není zprostředkovatel zasílání zpráv pro obecné účely pub-sub, podporuje pouze zdokumentované názvy témat a filtry témat.
 
-Zařízení neobdrží žádné zprávy od IoT Hub, dokud se neúspěšně přihlásí ke koncovému bodu specifickému pro zařízení, reprezentovaným filtrem `devices/{device_id}/messages/devicebound/#` tématu. Po navázání předplatného zařízení obdrží zprávy typu cloud-zařízení, které se do ní poslaly po uplynutí doby platnosti předplatného. Pokud se zařízení připojí s příznakem **CleanSession** nastaveným na **hodnotu 0**, předplatné se trvale zachová napříč různými relacemi. V takovém případě se při příštím připojení zařízení k **CleanSession 0** obdrží všechny nedokončené zprávy, které se do ní odesílají během odpojení. Pokud zařízení používá příznak **CleanSession** nastavené na **1** , ale neobdrží žádné zprávy z IoT Hub, dokud se přihlásí k odběru koncového bodu zařízení.
+Zařízení nepřijímá žádné zprávy z ioT hubu, dokud se úspěšně přihlásit k odběru `devices/{device_id}/messages/devicebound/#` jeho koncový bod specifický pro zařízení, reprezentované filtru tématu. Po vytvoření předplatného zařízení obdrží zprávy z cloudu na zařízení, které mu byly odeslány po době předplatného. Pokud se zařízení připojí s **příznakem CleanSession** nastaveným na **0**, předplatné bude trvalé v různých relacích. V takovém případě při příštím připojení zařízení s **CleanSession 0** obdrží všechny nevyřízené zprávy odeslané do něj při odpojení. Pokud zařízení používá **příznak CleanSession** nastavený na **1,** neobdrží žádné zprávy ze služby IoT Hub, dokud se nepřihlásí ke svému koncovému bodu zařízení.
 
-IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/devicebound/`nebo `devices/{device_id}/messages/devicebound/{property_bag}`, pokud jsou vlastnosti zprávy. `{property_bag}` obsahuje páry klíč/hodnota zakódované URL vlastností zprávy. Do kontejneru objektů a dat jsou zahrnuty pouze vlastnosti aplikace a uživatelsky nastavitelované systémové vlastnosti (například **MessageID** nebo **ID korelace**). Názvy systémových vlastností mají předponu **$** , vlastnosti aplikace používají název původní vlastnosti bez předpony.
+Služba IoT Hub doručuje zprávy s **názvem** `devices/{device_id}/messages/devicebound/`tématu nebo `devices/{device_id}/messages/devicebound/{property_bag}` pokud existují vlastnosti zprávy. `{property_bag}`obsahuje dvojice vlastností zpráv kódované adresou URL. Do vaku vlastností jsou zahrnuty pouze vlastnosti aplikace a uživatelsky situovatelné vlastnosti systému (například **messageId** nebo **correlationId).** Názvy vlastností systému mají předponu **$**, vlastnosti aplikace používají původní název vlastnosti bez předpony.
 
-Když se aplikace zařízení přihlásí k odběru tématu s **QoS 2**, IoT Hub v paketu **SUBACK** udělí maximální úroveň QoS úrovně 1. Potom IoT Hub doručuje zprávy na zařízení pomocí technologie QoS 1.
+Když se aplikace zařízení přihlásí k odběru tématu s **QoS 2**, Služba IoT Hub uděluje maximální úroveň QoS 1 v paketu **SUBACK.** Poté služba IoT Hub doručuje zprávy do zařízení pomocí QoS 1.
 
-## <a name="retrieving-a-device-twins-properties"></a>Načítají se vlastnosti vlákna zařízení.
+## <a name="retrieving-a-device-twins-properties"></a>Načítání vlastností dvojčete zařízení
 
-Nejdřív se zařízení přihlásí k odběru `$iothub/twin/res/#`, aby mohl přijímat odpovědi na operaci. Pak pošle prázdnou zprávu do tématu `$iothub/twin/GET/?$rid={request id}`s vyplněnou hodnotou **ID žádosti**. Služba pak pošle zprávu odpovědi obsahující data zařízení s dvojitým obsahem v tématu `$iothub/twin/res/{status}/?$rid={request id}`s použitím stejného **ID žádosti** jako požadavek.
+Nejprve se zařízení `$iothub/twin/res/#`přihlásí k odběru , aby obdrželo odpovědi operace. Potom odešle prázdnou zprávu `$iothub/twin/GET/?$rid={request id}`tématu , s vyplněnou hodnotou pro **ID požadavku**. Služba pak odešle zprávu s odpovědí obsahující `$iothub/twin/res/{status}/?$rid={request id}`data dvojčete zařízení v tématu pomocí stejného **ID požadavku** jako požadavek.
 
-ID žádosti může být libovolná platná hodnota pro hodnotu vlastnosti zprávy, jak je to [IoT Hub Příručka vývojáře pro zasílání zpráv](iot-hub-devguide-messaging.md)a stav je ověřen jako celé číslo.
+ID požadavku může být libovolná platná hodnota pro hodnotu vlastnosti zprávy, podle [průvodce vývojáře zasílání zpráv služby IoT Hub](iot-hub-devguide-messaging.md)a stav je ověřen jako celé číslo.
 
-Tělo odpovědi obsahuje oddíl vlastností vlákna zařízení, jak je znázorněno v následujícím příkladu odpovědi:
+Tělo odpovědi obsahuje část vlastností dvojčete zařízení, jak je znázorněno v následujícím příkladu odpovědi:
 
 ```json
 {
@@ -337,29 +337,29 @@ Tělo odpovědi obsahuje oddíl vlastností vlákna zařízení, jak je znázorn
 }
 ```
 
-Možné stavové kódy:
+Možné stavové kódy jsou:
 
-|Stav | Popis |
+|Status | Popis |
 | ----- | ----------- |
 | 200 | Úspěch |
-| 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
+| 429 | Příliš mnoho požadavků (omezené), podle [omezení služby IoT Hub](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Chyby serveru |
 
-Další informace najdete v tématu [Příručka vývojáře pro vlákna v zařízení](iot-hub-devguide-device-twins.md).
+Další informace naleznete v [příručce pro vývojáře dvojčat zařízení](iot-hub-devguide-device-twins.md).
 
-## <a name="update-device-twins-reported-properties"></a>Aktualizace hlášených vlastností nezaznamenaného vlákna zařízení
+## <a name="update-device-twins-reported-properties"></a>Aktualizovat ohlášené vlastnosti dvojčete zařízení
 
-K aktualizaci hlášených vlastností zařízení vydá požadavek na IoT Hub prostřednictvím publikace v rámci určeného MQTT tématu. Po zpracování žádosti IoT Hub odpoví na stav úspěch nebo selhání operace aktualizace prostřednictvím publikace v jiném tématu. Toto téma může být přihlášené k odběru zařízení za účelem upozornění na výsledek jeho vyplynulé žádosti o aktualizaci. Pro implementaci tohoto typu interakce s žádostmi a odpověďmi v MQTT využíváme fiktivní ID žádosti (`$rid`), které je na začátku zařízení v žádosti o aktualizaci. Toto ID žádosti je také zahrnuté v odpovědi z IoT Hub, aby bylo možné zařízení korelovat s odpovědí na jeho konkrétní předchozí požadavek.
+Chcete-li aktualizovat hlášené vlastnosti, zařízení vydá požadavek na službu IoT Hub prostřednictvím publikace přes určené téma MQTT. Po zpracování požadavku služba IoT Hub odpoví na stav úspěchu nebo selhání operace aktualizace prostřednictvím publikace na jiné téma. Toto téma může být přihlášeno k odběru zařízení, aby bylo možné jej upozornit na výsledek jeho žádosti o aktualizaci dvojčete. K implementaci tohoto typu interakce požadavku a odpovědi v MQTT využíváme pojem ID žádosti (`$rid`) původně poskytnutý zařízením v jeho žádosti o aktualizaci. Toto ID požadavku je také součástí odpovědi ze služby IoT Hub, aby zařízení mohlo korelovat odpověď na jeho konkrétní dřívější požadavek.
 
-Následující text popisuje, jak zařízení aktualizuje hlášené vlastnosti v zařízení, které je v IoT Hub.
+Následující sekvence popisuje, jak zařízení aktualizuje hlášené vlastnosti v dvojčeti zařízení v centru IoT Hub:
 
-1. Zařízení se musí nejdřív přihlásit k odběru `$iothub/twin/res/#`ho tématu, aby přijímalo odpovědi operace od IoT Hub.
+1. Zařízení se musí nejprve přihlásit k odběru tématu, `$iothub/twin/res/#` aby získalo odpovědi operace ze služby IoT Hub.
 
-2. Zařízení pošle zprávu, která obsahuje aktualizaci se zdvojeným zařízením, do `$iothub/twin/PATCH/properties/reported/?$rid={request id}` tématu. Tato zpráva obsahuje hodnotu **ID žádosti** .
+2. Zařízení odešle zprávu, která obsahuje aktualizaci dvojčete zařízení k tématu. `$iothub/twin/PATCH/properties/reported/?$rid={request id}` Tato zpráva obsahuje hodnotu **ID požadavku.**
 
-3. Služba pak pošle zprávu odpovědi, která obsahuje novou hodnotu ETag pro nahlášenou kolekci Properties v tématu `$iothub/twin/res/{status}/?$rid={request id}`. Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
+3. Služba pak odešle zprávu odpovědi, která obsahuje novou hodnotu `$iothub/twin/res/{status}/?$rid={request id}`ETag pro kolekci ohlášených vlastností na téma . Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
 
-Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Sada členů je nastavena na hodnotu `null`odstraní člena z objektu, který jej obsahuje. Příklad:
+Text zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro ohlášené vlastnosti. Každý člen dokumentu JSON aktualizuje nebo přidat odpovídající člen v dokumentu dvojčete zařízení. Člen nastavenna `null`na , odstraní člen z obsahující objekt. Například:
 
 ```json
 {
@@ -368,16 +368,16 @@ Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty p
 }
 ```
 
-Možné stavové kódy:
+Možné stavové kódy jsou:
 
-|Stav | Popis |
+|Status | Popis |
 | ----- | ----------- |
 | 204 | Úspěch (není vrácen žádný obsah) |
-| 400 | Chybný požadavek. Chybně vytvořený kód JSON |
-| 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
+| 400 | Špatná žádost. Poškozený JSON |
+| 429 | Příliš mnoho požadavků (omezené), podle [omezení služby IoT Hub](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Chyby serveru |
 
-Níže uvedený fragment kódu Pythonu demonstruje nedokončený proces aktualizace vlastností prostřednictvím MQTT (pomocí klienta PAHO MQTT):
+Fragment kódu pythonu níže demonstruje proces aktualizace vlastností twin hlášeny přes MQTT (pomocí klienta Paho MQTT):
 
 ```python
 from paho.mqtt import client as mqtt
@@ -391,13 +391,13 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
                rid, twin_reported_property_patch, qos=0)
 ```
 
-Po úspěchu výše nahlášené operace aktualizace vlastností výše bude mít zpráva publikace z IoT Hub následující téma: `$iothub/twin/res/204/?$rid=1&$version=6`, kde `204` je stavový kód indikující úspěch, `$rid=1` odpovídá ID požadavku, který je v kódu uveden v tomto zařízení, a `$version` odpovídá verzi oznámených vlastností, které jsou v zařízení po aktualizaci.
+Po úspěchu předchozí operace aktualizace vlastností hlášeny výše, zpráva publikace z `$iothub/twin/res/204/?$rid=1&$version=6`ioT Hub u sebe bude mít následující téma: , kde `204` je stavový kód označující úspěch, `$rid=1` odpovídá ID požadavku poskytované zařízení v kódu a `$version` odpovídá verzi ohlášené vlastnosti části dvojčat zařízení po aktualizaci.
 
-Další informace najdete v tématu [Příručka vývojáře pro vlákna v zařízení](iot-hub-devguide-device-twins.md).
+Další informace naleznete v [příručce pro vývojáře dvojčat zařízení](iot-hub-devguide-device-twins.md).
 
-## <a name="receiving-desired-properties-update-notifications"></a>Přijímání oznámení o aktualizaci požadovaných vlastností
+## <a name="receiving-desired-properties-update-notifications"></a>Příjem oznámení o aktualizaci požadovaných vlastností
 
-Když je zařízení připojené, IoT Hub odesílá oznámení do `$iothub/twin/PATCH/properties/desired/?$version={new version}`tématu, které obsahuje obsah aktualizace provedené back-end řešení. Příklad:
+Když je připojeno zařízení, služba IoT `$iothub/twin/PATCH/properties/desired/?$version={new version}`Hub odešle oznámení tématu , která obsahují obsah aktualizace prováděné back-endem řešení. Například:
 
 ```json
 {
@@ -407,37 +407,37 @@ Když je zařízení připojené, IoT Hub odesílá oznámení do `$iothub/twin/
 }
 ```
 
-Jako u aktualizací vlastností `null` hodnoty znamenají, že je odstraněn člen objektu JSON. Všimněte si také, že `$version` označuje novou verzi oddílu požadovaných vlastností vlákna.
+Pokud jde o `null` aktualizace vlastností, hodnoty znamenají, že člen objektu JSON je odstraněn. Všimněte si `$version` také, že označuje novou verzi požadované vlastnosti části dvojčete.
 
 > [!IMPORTANT]
-> IoT Hub generuje oznámení o změnách jenom v případě, že jsou zařízení připojená. Ujistěte se, že jste implementovali [Postup opětovného připojení zařízení](iot-hub-devguide-device-twins.md#device-reconnection-flow) , abyste zachovali požadované vlastnosti synchronizované mezi IoT Hub a aplikací zařízení.
+> IoT Hub generuje oznámení o změnách pouze v případě, že jsou připojena zařízení. Ujistěte se, že implementovat [tok opětovného připojení zařízení](iot-hub-devguide-device-twins.md#device-reconnection-flow) zachovat požadované vlastnosti synchronizované mezi IoT Hub a aplikace zařízení.
 
-Další informace najdete v tématu [Příručka vývojáře pro vlákna v zařízení](iot-hub-devguide-device-twins.md).
+Další informace naleznete v [příručce pro vývojáře dvojčat zařízení](iot-hub-devguide-device-twins.md).
 
 ## <a name="respond-to-a-direct-method"></a>Reakce na přímou metodu
 
-Nejprve se zařízení musí přihlásit k odběru `$iothub/methods/POST/#`. IoT Hub odesílá požadavky metody do tématu `$iothub/methods/POST/{method name}/?$rid={request id}`s platným JSON nebo prázdným tělem.
+Nejprve se zařízení musí `$iothub/methods/POST/#`přihlásit k odběru . IoT Hub odesílá požadavky `$iothub/methods/POST/{method name}/?$rid={request id}`na metody tématu , s platným JSON nebo prázdným tělem.
 
-K reakci zařízení pošle zprávu s platným JSON nebo prázdným textem do tématu `$iothub/methods/res/{status}/?$rid={request id}`. V této zprávě musí **ID žádosti** odpovídat hodnotě ve zprávě požadavku a **stav** musí být celé číslo.
+Chcete-li odpovědět, zařízení odešle zprávu s platnou JSON nebo prázdné tělo na téma `$iothub/methods/res/{status}/?$rid={request id}`. V této zprávě musí **ID požadavku** odpovídat id ve zprávě požadavku a **stav** musí být celé číslo.
 
-Další informace najdete v tématu [Průvodce pro vývojáře Direct Method](iot-hub-devguide-direct-methods.md).
+Další informace naleznete [v příručce pro vývojáře metod Direct](iot-hub-devguide-direct-methods.md).
 
-## <a name="additional-considerations"></a>Další rozhodnutí
+## <a name="additional-considerations"></a>Další aspekty
 
-Pokud potřebujete přizpůsobit chování protokolu MQTT na straně cloudu, měli byste si prohlédnout [bránu protokolu Azure IoT](iot-hub-protocol-gateway.md). Tento software vám umožní nasadit vysoce výkonnou bránu vlastního protokolu, kterou rozhraní přímo s IoT Hub. Brána protokolu Azure IoT umožňuje přizpůsobit protokol zařízení tak, aby vyhovoval nasazením brownfield MQTT nebo jiným vlastním protokolům. Tento přístup ale vyžaduje, abyste spustili a provozoval vlastní bránu protokolu.
+Jako poslední úvahu, pokud potřebujete přizpůsobit chování protokolu MQTT na straně cloudu, měli byste zkontrolovat [bránu protokolu Azure IoT](iot-hub-protocol-gateway.md). Tento software umožňuje nasadit vysoce výkonnou bránu vlastního protokolu, která je propojena přímo s službou IoT Hub. Brána protokolu Azure IoT umožňuje přizpůsobit protokol zařízení tak, aby vyhovoval nasazením Brownfield MQTT nebo jiným vlastním protokolům. Tento přístup však vyžaduje spuštění a provoz vlastní brány protokolu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o protokolu MQTT najdete v [dokumentaci k MQTT](https://mqtt.org/documentation).
+Další informace o protokolu MQTT naleznete v [dokumentaci K MQTT](https://mqtt.org/documentation).
 
-Další informace o plánování nasazení IoT Hub najdete v tématech:
+Další informace o plánování nasazení služby IoT Hub najdete v tématu:
 
 * [Katalog zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com/)
 * [Podpora dalších protokolů](iot-hub-protocol-gateway.md)
-* [Porovnat s Event Hubs](iot-hub-compare-event-hubs.md)
-* [Škálování, HA a zotavení po havárii](iot-hub-scaling.md)
+* [Porovnat s centry událostí](iot-hub-compare-event-hubs.md)
+* [Změna velikosti, HA a zotavení po havárii](iot-hub-scaling.md)
 
-Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
+Další informace o možnostech IoT Hubu najdete v následujících tématech:
 
-* [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
-* [Nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Průvodce vývojáři ioT Hubu](iot-hub-devguide.md)
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

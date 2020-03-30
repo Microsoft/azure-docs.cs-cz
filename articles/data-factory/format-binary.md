@@ -1,6 +1,6 @@
 ---
-title: Binární formát v Azure Data Factory
-description: Toto téma popisuje, jak v Azure Data Factory pracovat s binárním formátem.
+title: Binární formát ve službě Azure Data Factory
+description: Toto téma popisuje, jak zajít s binárníformát v Azure Data Factory.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,34 +10,34 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
 ms.openlocfilehash: 8ebb4f0d1a06a7bf29dc46cd696b6acfd2527095
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260693"
 ---
-# <a name="binary-format-in-azure-data-factory"></a>Binární formát v Azure Data Factory
+# <a name="binary-format-in-azure-data-factory"></a>Binární formát ve službě Azure Data Factory
 
-Pro následující konektory se podporuje binární formát: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)a [SFTP](connector-sftp.md).
+Binární formát je podporován pro následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), File [System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)a [SFTP](connector-sftp.md).
 
-Můžete použít binární datovou sadu v aktivitě [kopírování](copy-activity-overview.md), [aktivitě GetMetadata](control-flow-get-metadata-activity.md)nebo [aktivity odstranění](delete-activity.md). Když použijete binární datovou sadu, ADF neanalyzuje obsah souboru, ale zpracuje ho tak, jak je. 
+Binární datovou sadu můžete použít v [aktivitě Kopírování](copy-activity-overview.md), [Aktivitě GetMetadata](control-flow-get-metadata-activity.md)nebo [Odstranit](delete-activity.md). Při použití binární datové sady ADF neanalyzuje obsah souboru, ale zachází s ním jako-je. 
 
 >[!NOTE]
->Při použití binární datové sady v aktivitě kopírování můžete kopírovat pouze z binární datové sady do binární sady dat.
+>Při použití binární datové sady v aktivitě kopírování můžete kopírovat pouze z binární datové sady do binární datové sady.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných binární datovou sadou.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [Datové sady.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných binární datovou sadou.
 
-| Vlastnost         | Popis                                                  | Požadováno |
+| Vlastnost         | Popis                                                  | Požaduje se |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| typ             | Vlastnost Type datové sady musí být nastavená na **Binary**. | Ano      |
-| umístění         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location`. **Podrobnosti najdete v článku o konektoru – > Vlastnosti datové sady**. | Ano      |
-| komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete během provádění aktivit provést kompresi nebo dekompresi. | Ne |
-| typ | Kompresní kodek používaný pro čtení a zápis binárních souborů. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**. pro použití při ukládání souboru.<br>Poznámka: při použití aktivity kopírování k dekompresi souborů ZipDeflate a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/`. | Ne       |
-| level | Kompresní poměr Použijte, pokud se datová sada používá v jímky aktivity kopírování.<br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **nejrychlejší:** komprese by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **optimální**: komprese by měla být optimálně komprimovaná, i když dokončení operace trvá déle. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Ne       |
+| type             | Vlastnost type datové sady musí být nastavena na **binární**. | Ano      |
+| location         | Nastavení umístění souborů. Každý konektor založený na souboru má svůj `location`vlastní typ umístění a podporované vlastnosti v části . **Viz podrobnosti v článku konektoru -> část vlastností datové sady**. | Ano      |
+| komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete provést kompresi nebo dekompresi během provádění aktivity. | Ne |
+| type | Kompresní kodek používaný ke čtení/zápisu binárních souborů. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **deflate**, **ZipDeflate**. použijete při ukládání souboru.<br>Poznámka: Při použití kopírování aktivity dekompresi ZipDeflate soubor (y) a zapisovat `<path specified in dataset>/<folder named as source zip file>/`do úložiště dat jímky založené na souboru, soubory budou extrahovány do složky: . | Ne       |
+| level | Kompresní poměr. Použít při použití datové sady v jímce aktivity kopírovat.<br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Operace komprese by měla být dokončena co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: Operace komprese by měla být optimálně komprimována, i když operace trvá delší dobu. Další informace naleznete v tématu [Úroveň komprese.](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) | Ne       |
 
-Níže je příklad binární datové sady v Azure Blob Storage:
+Níže je uveden příklad binární datové sady v azure blob storage:
 
 ```json
 {
@@ -64,31 +64,31 @@ Níže je příklad binární datové sady v Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných binárním zdrojem a jímkou.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných binární zdroj a jímky.
 
 >[!NOTE]
->Při použití binární datové sady v aktivitě kopírování můžete kopírovat pouze z binární datové sady do binární sady dat.
+>Při použití binární datové sady v aktivitě kopírování můžete kopírovat pouze z binární datové sady do binární datové sady.
 
 ### <a name="binary-as-source"></a>Binární jako zdroj
 
-V části ***\*zdrojového\**** aktivity kopírování jsou podporovány následující vlastnosti.
+Následující vlastnosti jsou podporovány v části *** \*zdroje aktivity\* *** kopírování.
 
-| Vlastnost      | Popis                                                  | Požadováno |
+| Vlastnost      | Popis                                                  | Požaduje se |
 | ------------- | ------------------------------------------------------------ | -------- |
-| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **BinarySource**. | Ano      |
-| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají ve `storeSettings`své vlastní podporované nastavení pro čtení. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| type          | Vlastnost type zdroje aktivity kopírování musí být nastavena na **BinarySource**. | Ano      |
+| storeSettings | Skupina vlastností o čtení dat z úložiště dat. Každý konektor založený na souborech má `storeSettings`vlastní podporovaná nastavení čtení v části . **Viz podrobnosti v článku konektoru -> Kopírovat vlastnosti aktivity .** | Ne       |
 
-### <a name="binary-as-sink"></a>Binární jako jímka
+### <a name="binary-as-sink"></a>Binární jako umyvadlo
 
-V části\*aktivita kopírování ***\*jímka*** jsou podporovány následující vlastnosti.
+Následující vlastnosti jsou podporovány v části *** \*jímky\* *** aktivity kopírování.
 
-| Vlastnost      | Popis                                                  | Požadováno |
+| Vlastnost      | Popis                                                  | Požaduje se |
 | ------------- | ------------------------------------------------------------ | -------- |
-| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **BinarySink**. | Ano      |
-| storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Jednotlivé konektory založené na souborech mají vlastní podporované nastavení zápisu v rámci `storeSettings`. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| type          | Vlastnost type zdroje aktivity kopírování musí být nastavena na **BinarySink**. | Ano      |
+| storeSettings | Skupina vlastností o tom, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má `storeSettings`vlastní podporovaná nastavení zápisu v části . **Viz podrobnosti v článku konektoru -> Kopírovat vlastnosti aktivity .** | Ne       |
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled aktivit kopírování](copy-activity-overview.md)
-- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Kopírovat přehled aktivit](copy-activity-overview.md)
+- [Aktivita getMetadata](control-flow-get-metadata-activity.md)
 - [Odstranit aktivitu](delete-activity.md)

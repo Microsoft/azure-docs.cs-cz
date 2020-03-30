@@ -1,6 +1,6 @@
 ---
 title: Automatické škálování v1
-description: Automatické škálování a App Service Environment v1. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
+description: Automatické škálování a prostředí služby App Service v1. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší verze v1 ASE.
 author: btardif
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.topic: article
@@ -8,214 +8,214 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687284"
 ---
-# <a name="autoscaling-and-app-service-environment-v1"></a>Automatické škálování a App Service Environment v1
+# <a name="autoscaling-and-app-service-environment-v1"></a>Automatické škálování a prostředí služby App Service v1
 
 > [!NOTE]
-> Tento článek se týká App Service Environment v1.  Existuje novější verze App Service Environment, kterou je snazší použít a která je spuštěná na výkonnější infrastruktuře. Další informace o nové verzi začíná [úvodem do App Service Environment](intro.md).
+> Tento článek je o prostředí služby App Service v1.  K dispozici je novější verze prostředí služby App Service, která se snadněji používá a běží na výkonnější infrastruktuře. Další informace o nové verzi začněte [s úvodem do prostředí služby App Service](intro.md).
 > 
 
-Prostředí Azure App Service podporují automatické *škálování*. Můžete automatické škálování jednotlivých fondů pracovních procesů na základě metrik nebo plánu.
+Prostředí služby Azure App Service podporují *automatické škálování*. Automatické škálování jednotlivých fondů pracovních procesů můžete škálovat na základě metrik nebo plánu.
 
 ![Možnosti automatického škálování pro fond pracovních procesů.][intro]
 
-Automatické škálování optimalizuje vaše využití prostředků tím, že automaticky zvětšuje a zmenšuje App Service prostředí tak, aby odpovídalo vašemu rozpočtu a nebo zátěži profilu.
+Automatické škálování optimalizuje využití prostředků automatickým zvětšováním a zmenšováním prostředí služby App Service tak, aby odpovídalo vašemu rozpočtu nebo profilu zatížení.
 
-## <a name="configure-worker-pool-autoscale"></a>Konfigurovat automatické škálování fondu pracovních procesů
-K funkcím automatického škálování můžete přistupovat z karty **Nastavení** fondu pracovních procesů.
+## <a name="configure-worker-pool-autoscale"></a>Konfigurace automatického škálování fondu pracovních pracovníků
+K funkci automatického škálování můžete přistupovat na kartě **Nastavení** fondu pracovních pracovníků.
 
-![Karta nastavení fondu pracovních procesů.][settings-scale]
+![Karta Nastavení fondu pracovních pracovníků][settings-scale]
 
-Odtud by mělo být rozhraní dostatečně známé, protože se jedná o stejné prostředí, které vidíte při škálování plánu App Service. 
+Odtud by rozhraní mělo být poměrně známé, protože je to stejné prostředí, které vidíte při škálování plánu služby App Service. 
 
-![Nastavení ručního škálování.][scale-manual]
+![Ruční nastavení měřítka.][scale-manual]
 
 Můžete také nakonfigurovat profil automatického škálování.
 
 ![Nastavení automatického škálování.][scale-profile]
 
-Profily automatického škálování jsou užitečné pro nastavení omezení pro vaši škálu. Tímto způsobem můžete zajistit konzistentní výkon pomocí nastavení nižší meze škálování (1) a předvídatelného limitu útraty tím, že nastavíte horní mez (2).
+Profily automatického škálování jsou užitečné pro nastavení limitů ve vašem měřítku. Tímto způsobem můžete mít konzistentní výkon zkušenosti nastavením dolní mez hodnoty stupnice (1) a předvídatelné utratit limit nastavením horní mez (2).
 
 ![Nastavení měřítka v profilu.][scale-profile2]
 
-Po definování profilu můžete přidat pravidla automatického škálování pro horizontální navýšení nebo snížení počtu instancí ve fondu pracovních procesů v mezích definovaných profilem. Pravidla automatického škálování jsou založena na metrikách.
+Po definování profilu můžete přidat pravidla automatického škálování pro zvýšení nebo zmenšení počtu instancí ve fondu pracovních procesů v rámci hranic definovaných profilem. Pravidla automatického škálování jsou založena na metrikách.
 
-![Pravidlo škálování.][scale-rule]
+![Pravidlo měřítka.][scale-rule]
 
- K definování pravidel automatického škálování můžete použít jakýkoliv fond pracovních procesů nebo metriky front-endu. Tyto metriky jsou stejné metriky, které můžete monitorovat v grafech okna prostředků nebo nastavovat výstrahy pro.
+ K definování pravidel automatického škálování lze použít libovolný fond pracovních pracovníků nebo metriky front-endu. Tyto metriky jsou stejné metriky, které můžete sledovat v grafech blade prostředků nebo nastavit výstrahy pro.
 
 ## <a name="autoscale-example"></a>Příklad automatického škálování
-Automatické škálování App Serviceho prostředí se dá nejlépe vymezit prostřednictvím scénáře.
+Automatické škálování prostředí služby App Service lze nejlépe ilustrovat procházením scénáře.
 
-Tento článek vysvětluje všechny nezbytné předpoklady při nastavení automatického škálování. Tento článek vás provede interakcemi, které přicházejí do hry při automatickém škálování App Service prostředí, která jsou hostovaná v App Service Environment.
+Tento článek vysvětluje všechny důležité informace při nastavování automatického škálování. Článek vás provede interakcemi, které se hrají, když vezmete v úvahu automatické škálování prostředí služby App Service, která jsou hostovaná v prostředí služby App Service.
 
-### <a name="scenario-introduction"></a>Úvod do scénáře
-Jan je sysadmin pro podnik, který migrovali část úloh, které spravují do App Serviceho prostředí.
+### <a name="scenario-introduction"></a>Úvod scénáře
+Frank je sysadmin pro podnik, který migroval část úloh, které spravují do prostředí služby App Service.
 
-Prostředí App Service je nakonfigurované tak, aby manuální škálování bylo následující:
+Prostředí služby App Service je nakonfigurováno takto na ruční škálování takto:
 
-* **Přední zakončení:** 3
-* **Fond pracovních procesů 1**: 10
-* **Fond pracovních procesů 2**: 5
-* **Fond pracovních procesů 3**: 5
+* **Přední části:** 3
+* **Fond pracovníků 1**: 10
+* **Fond pracovníků 2**: 5
+* **Fond pracovníků 3**: 5
 
-Fond pracovních procesů 1 se používá pro produkční úlohy, zatímco fond pracovních procesů 2 a fond pracovních procesů 3 se používá pro úlohy pro zajištění kvality (QA) a vývojové úlohy.
+Fond pracovních pracovníků 1 se používá pro produkční úlohy, zatímco fond pracovních pracovníků 2 a fond pracovníků 3 se používají pro zajištění kvality (QA) a vývojové úlohy.
 
-Plány App Service pro QA a vývoj jsou nakonfigurovány na ruční škálování. Produkční App Service plán je nastaven na automatické škálování, aby bylo možné zabývat se kolísáním zatížení a provozu.
+Plány služby App Service pro qa a dev jsou nakonfigurovány pro ruční škálování. Produkční plán služby App Service je nastaven na automatické škálování, aby se vypořádal s rozdíly v zatížení a provozu.
 
-Jan je s aplikací velmi obeznámený. Ví, že špička zatížení je mezi 9:00 a 6:00 PM, protože se jedná o obchodní aplikaci (LOB), kterou zaměstnanci používají, když jsou v kanceláři. Využití se po dobu, kdy se uživatelé pro daný den provedlo, poklesne. Mimo špičku se zatížení stále používá, protože uživatelé mají přístup k aplikaci vzdáleně pomocí jejich mobilních zařízení nebo domácích počítačů. Plán produkčního App Service je už nakonfigurovaný na automatické škálování na základě využití CPU s těmito pravidly:
+Frank je velmi dobře obeznámen s aplikací. Vědí, že špičky pro zatížení jsou mezi 9:00 a 18:00, protože se jedná o obchodní (LOB) aplikace, kterou zaměstnanci používají, když jsou v kanceláři. Využití klesne po tom, když uživatelé jsou hotové pro tento den. Mimo špičku je stále určité zatížení, protože uživatelé mohou přistupovat k aplikaci vzdáleně pomocí svých mobilních zařízení nebo domácích počítačů. Plán produkční služby App Service je již nakonfigurován tak, aby se automaticky škáloval na základě využití procesoru s následujícími pravidly:
 
-![Konkrétní nastavení pro obchodní aplikaci][asp-scale]
+![Konkrétní nastavení pro obchodní aplikaci.][asp-scale]
 
-| **Profil automatického škálování – pracovní dny – App Service plán** | **Profil automatického škálování – víkendy – App Service plán** |
+| **Profil automatického škálování – pracovní dny – plán služby App Service** | **Profil automatického škálování – víkendy – plán služby App Service** |
 | --- | --- |
-| **Název:** Profil dne v týdnu |**Název:** Profil víkendu |
-| **Škálovat podle:** Pravidla plánování a výkonu |**Škálovat podle:** Pravidla plánování a výkonu |
-| **Profil:** Všední dny |**Profil:** Volné |
-| **Zadejte:** Vzorec |**Zadejte:** Vzorec |
+| **Název:** Profil dne v týdnu |**Název:** Víkendový profil |
+| **Měřítko podle:** Pravidla plánu a výkonu |**Měřítko podle:** Pravidla plánu a výkonu |
+| **Profil:** Ve všední dny |**Profil:** Víkend |
+| **Typ:** Opakování |**Typ:** Opakování |
 | **Cílový rozsah:** 5 až 20 instancí |**Cílový rozsah:** 3 až 10 instancí |
-| **Dny:** Pondělí, úterý, středa, čtvrtek, pátek |**Dny:** Sobota, neděle |
-| **Čas spuštění:** 9:00 dop. |**Čas spuštění:** 9:00 dop. |
+| **Počet dní:** Pondělí, úterý, středa, čtvrtek, pátek |**Počet dní:** Sobota, neděle |
+| **Čas zahájení:** 9:00 |**Čas zahájení:** 9:00 |
 | **Časové pásmo:** UTC-08 |**Časové pásmo:** UTC-08 |
 |  | |
-| **Pravidlo automatického škálování (horizontální navýšení kapacity)** |**Pravidlo automatického škálování (horizontální navýšení kapacity)** |
-| **Prostředek:** Výroba (App Service Environment) |**Prostředek:** Výroba (App Service Environment) |
-| **Metrika:** VČETNĚ |**Metrika:** VČETNĚ |
-| **Operace:** Větší než 60% |**Operace:** Větší než 80% |
+| **Pravidlo automatického škálování (škálovat nahoru)** |**Pravidlo automatického škálování (škálovat nahoru)** |
+| **Zdroj:** Produkční (prostředí služby App Service) |**Zdroj:** Produkční (prostředí služby App Service) |
+| **Metrika:** Procesor % |**Metrika:** Procesor % |
+| **Provoz:** Více než 60% |**Provoz:** Více než 80% |
 | **Doba trvání:** 5 minut |**Doba trvání:** 10 minut |
-| **Časová agregace:** Vypočítat |**Časová agregace:** Vypočítat |
+| **Agregace času:** Průměrná |**Agregace času:** Průměrná |
 | **Akce:** Zvýšit počet o 2 |**Akce:** Zvýšit počet o 1 |
-| Doba **vychladnutí (minuty):** 15 |Doba **vychladnutí (minuty):** 20 |
+| **Ochlazení (minuty):** 15 |**Ochlazení (minuty):** 20 |
 |  | |
-| **Pravidlo automatického škálování (horizontální snížení kapacity)** |**Pravidlo automatického škálování (horizontální snížení kapacity)** |
-| **Prostředek:** Výroba (App Service Environment) |**Prostředek:** Výroba (App Service Environment) |
-| **Metrika:** VČETNĚ |**Metrika:** VČETNĚ |
-| **Operace:** Méně než 30% |**Operace:** Méně než 20% |
-| **Doba trvání:** 10 minut |**Trvání:** 15 minut |
-| **Časová agregace:** Vypočítat |**Časová agregace:** Vypočítat |
+| **Pravidlo automatického škálování (zmenšit měřítko)** |**Pravidlo automatického škálování (zmenšit měřítko)** |
+| **Zdroj:** Produkční (prostředí služby App Service) |**Zdroj:** Produkční (prostředí služby App Service) |
+| **Metrika:** Procesor % |**Metrika:** Procesor % |
+| **Provoz:** Méně než 30% |**Provoz:** Méně než 20% |
+| **Doba trvání:** 10 minut |**Doba trvání:** 15 minut |
+| **Agregace času:** Průměrná |**Agregace času:** Průměrná |
 | **Akce:** Snížit počet o 1 |**Akce:** Snížit počet o 1 |
-| Doba **vychladnutí (minuty):** 20 |Doba **vychladnutí (minuty):** 10 |
+| **Ochlazení (minuty):** 20 |**Ochladit (minuty):** 10 |
 
-### <a name="app-service-plan-inflation-rate"></a>Míra inflace App Serviceho plánu
-Plány App Service, které jsou nakonfigurovány pro automatické škálování, tak mají maximální sazbu za hodinu. Tato sazba se dá vypočítat na základě hodnot zadaných v pravidle automatického škálování.
+### <a name="app-service-plan-inflation-rate"></a>Míra inflace plánu služby App Service
+Plány služby App Service, které jsou nakonfigurované pro automatické škálování, tak činí maximální rychlostí za hodinu. Tuto sazbu lze vypočítat na základě hodnot uvedených v pravidle automatického škálování.
 
-Pro automatické škálování prostředí App Service je důležité pochopit a vypočítat *míru inflace App Service plánu* , protože změny měřítka fondu pracovních procesů nejsou okamžité.
+Pochopení a výpočet *míry inflace plánu služby App Service* je důležité pro automatické škálování prostředí služby App Service, protože změny škálování do fondu pracovních postupů nejsou okamžité.
 
-Míra inflace App Serviceho plánu se vypočítává takto:
+Míra inflace plánu služby App Service se vypočítá takto:
 
-![App Service plánování výpočtu míry inflace.][ASP-Inflation]
+![Výpočet míry inflace plánu Služby App Service][ASP-Inflation]
 
-Na základě pravidla automatického škálování – horizontálního škálování pro profil pracovního dne v plánu produkčního App Service:
+Na základě pravidla automatického škálování – škálování pro profil Den v týdnu v plánu produkční služby App Service:
 
-![App Service plánu inflace pro pracovní dny založené na automatickém škálování – pravidlo navýšení kapacity.][Equation1]
+![App Service plán míra inflace pro pracovní dny na základě pravidla automatického škálování – vertikálně navýšit kapacitu.][Equation1]
 
-V případě pravidla automatického škálování – pravidlo pro horizontální navýšení kapacity pro profil víkendu v produkčním App Service plánu se vzorec vyřeší takto:
+V případě pravidla automatického škálování – škálování pro víkendový profil plánu produkční služby App Service by vzorec vyřešil:
 
-![App Service plánu inflace pro víkendy na základě automatického škálování – pravidlo navýšení kapacity.][Equation2]
+![App Service plán míra inflace pro víkendy na základě pravidla automatického škálování – vertikálně navýšit kapacitu.][Equation2]
 
-Tuto hodnotu lze také vypočítat pro operace horizontálního navýšení kapacity.
+Tuto hodnotu lze také vypočítat pro operace s horizontálním navýšením kapacity.
 
-Na základě pravidla automatického škálování – horizontálního navýšení kapacity pro profil pracovního dne v plánu produkčního App Service by to vypadalo takto:
+Na základě pravidla automatického škálování – škálování dolů pro profil den v týdnu v plánu produkční služby App Service by to vypadalo takto:
 
-![App Service plánu inflace pro pracovní dny na základě pravidla automatického škálování – pravidlo horizontálního navýšení kapacity.][Equation3]
+![App Service plán míra inflace pro pracovní dny na základě pravidla automatického škálování – škálování dolů.][Equation3]
 
-V případě pravidla automatického škálování – pravidlo horizontálního navýšení kapacity pro profil víkendu v produkčním App Service plánu se vzorec vyřeší takto:  
+V případě pravidla automatického škálování – škálování dolů pro víkendový profil plánu produkční služby App Service by vzorec vyřešil:  
 
-![App Service plánu inflace pro víkendy na základě pravidla automatického škálování – pravidlo horizontálního navýšení kapacity.][Equation4]
+![App Service plán míra inflace pro víkendy na základě pravidla automatického škálování – škálování dolů.][Equation4]
 
-Plán produkčního App Service může dosáhnout maximální frekvence osmi instancí za hodinu během týdne a čtyř instancí za hodinu. Může vydávat instance s maximální rychlostí čtyř instancí za hodinu během týdne a šesti instancí za hodinu během víkendů.
+Produkční plán služby App Service může růst maximální rychlostí osmi instancí za hodinu během týdne a čtyř instancí za hodinu během víkendu. Může uvolnit instance s maximální rychlostí čtyři instance za hodinu během týdne a šest instancí za hodinu během víkendů.
 
-Pokud je ve fondu pracovních procesů hostováno více plánů App Service, je třeba vypočítat celkovou míru *inflace* jako součet míry inflace pro všechny App Service plány, které jsou v daném fondu pracovních procesů hostovány.
+Pokud více plánů služby App Service jsou hostovány ve fondu pracovních procesů, budete muset vypočítat *celkovou míru inflace* jako součet míry inflace pro všechny plány služby App Service, které jsou hostování v tomto fondu pracovních pracovníků.
 
-![Celkový výpočet míry inflace pro více plánů App Service hostovaných ve fondu pracovních procesů.][ASP-Total-Inflation]
+![Výpočet celkové míry inflace pro více plánů služby App Service hostovaných ve fondu pracovních pracovníků.][ASP-Total-Inflation]
 
-### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Použití míry inflace App Serviceho plánu k definování pravidel automatického škálování fondu pracovních procesů
-Fondy pracovních procesů, které hostují plány App Service nakonfigurované pro automatické škálování, je potřeba přidělit vyrovnávací paměti. Vyrovnávací paměť umožňuje operacím automatického škálování růst a zmenšení App Service plánu podle potřeby. Minimální vyrovnávací paměť by byla vypočtená celková míra inflace App Serviceho plánu.
+### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Definování pravidel automatického škálování fondu pracovních služeb pomocí míry inflace plánu služby App Service
+Pracovní fondy, které jsou hostiteli plánů služby App Service, které jsou nakonfigurovány pro automatické škálování, musí být přidělena vyrovnávací paměť kapacity. Vyrovnávací paměť umožňuje operace automatického škálování zvětšit a zmenšit plán služby App Service podle potřeby. Minimální rezerva by byla vypočtená celková míra inflace plánu služby App Service.
 
-Vzhledem k tomu, že při použití operací škálování App Service prostředí trvá určitý čas, jakákoliv změna by měla mít za následek další změny poptávky, ke kterým může dojít při probíhající operaci škálování. Pro uspokojení této latence doporučujeme, abyste používali vypočtenou celkovou míru inflace App Service plánu jako minimální počet instancí přidaných pro každou operaci automatického škálování.
+Vzhledem k tomu, že operace škálování prostředí služby App Service nějakou dobu trvat, by měla každá změna účet pro další změny poptávky, které by mohlo dojít, zatímco operace škálování probíhá. Pro přizpůsobení této latence doporučujeme použít vypočtenou míru inflace plánu služby Total App Service jako minimální počet instancí, které jsou přidány pro každou operaci automatického škálování.
 
-Pomocí těchto informací může Jan definovat následující profil a pravidla automatického škálování:
+Pomocí těchto informací může Frank definovat následující profil a pravidla automatického škálování:
 
-![Pravidla profilace automatického škálování pro příklad LOB][Worker-Pool-Scale]
+![Automatické škálování pravidel profilu pro příklad LOB.][Worker-Pool-Scale]
 
 | **Profil automatického škálování – pracovní dny** | **Profil automatického škálování – víkendy** |
 | --- | --- |
-| **Název:** Profil dne v týdnu |**Název:** Profil víkendu |
-| **Škálovat podle:** Pravidla plánování a výkonu |**Škálovat podle:** Pravidla plánování a výkonu |
-| **Profil:** Všední dny |**Profil:** Volné |
-| **Zadejte:** Vzorec |**Zadejte:** Vzorec |
+| **Název:** Profil dne v týdnu |**Název:** Víkendový profil |
+| **Měřítko podle:** Pravidla plánu a výkonu |**Měřítko podle:** Pravidla plánu a výkonu |
+| **Profil:** Ve všední dny |**Profil:** Víkend |
+| **Typ:** Opakování |**Typ:** Opakování |
 | **Cílový rozsah:** 13 až 25 instancí |**Cílový rozsah:** 6 až 15 instancí |
-| **Dny:** Pondělí, úterý, středa, čtvrtek, pátek |**Dny:** Sobota, neděle |
-| **Čas spuštění:** 7:00 dop. |**Čas spuštění:** 9:00 dop. |
+| **Počet dní:** Pondělí, úterý, středa, čtvrtek, pátek |**Počet dní:** Sobota, neděle |
+| **Čas zahájení:** 7:00 |**Čas zahájení:** 9:00 |
 | **Časové pásmo:** UTC-08 |**Časové pásmo:** UTC-08 |
 |  | |
-| **Pravidlo automatického škálování (horizontální navýšení kapacity)** |**Pravidlo automatického škálování (horizontální navýšení kapacity)** |
-| **Prostředek:** Fond pracovních procesů 1 |**Prostředek:** Fond pracovních procesů 1 |
-| **Metrika:** WorkersAvailable |**Metrika:** WorkersAvailable |
-| **Operace:** Méně než 8 |**Operace:** Méně než 3 |
+| **Pravidlo automatického škálování (škálovat nahoru)** |**Pravidlo automatického škálování (škálovat nahoru)** |
+| **Zdroj:** Fond pracovníků 1 |**Zdroj:** Fond pracovníků 1 |
+| **Metrika:** PracovníciK dispozici |**Metrika:** PracovníciK dispozici |
+| **Provoz:** Méně než 8 |**Provoz:** Méně než 3 |
 | **Doba trvání:** 20 minut |**Doba trvání:** 30 minut |
-| **Časová agregace:** Vypočítat |**Časová agregace:** Vypočítat |
+| **Agregace času:** Průměrná |**Agregace času:** Průměrná |
 | **Akce:** Zvýšit počet o 8 |**Akce:** Zvýšit počet o 3 |
-| Doba **vychladnutí (minuty):** 180 |Doba **vychladnutí (minuty):** 180 |
+| **Ochlazení (minuty):** 180 |**Ochlazení (minuty):** 180 |
 |  | |
-| **Pravidlo automatického škálování (horizontální snížení kapacity)** |**Pravidlo automatického škálování (horizontální snížení kapacity)** |
-| **Prostředek:** Fond pracovních procesů 1 |**Prostředek:** Fond pracovních procesů 1 |
-| **Metrika:** WorkersAvailable |**Metrika:** WorkersAvailable |
-| **Operace:** Větší než 8 |**Operace:** Větší než 3 |
-| **Doba trvání:** 20 minut |**Trvání:** 15 minut |
-| **Časová agregace:** Vypočítat |**Časová agregace:** Vypočítat |
+| **Pravidlo automatického škálování (zmenšit měřítko)** |**Pravidlo automatického škálování (zmenšit měřítko)** |
+| **Zdroj:** Fond pracovníků 1 |**Zdroj:** Fond pracovníků 1 |
+| **Metrika:** PracovníciK dispozici |**Metrika:** PracovníciK dispozici |
+| **Provoz:** Větší než 8 |**Provoz:** Větší než 3 |
+| **Doba trvání:** 20 minut |**Doba trvání:** 15 minut |
+| **Agregace času:** Průměrná |**Agregace času:** Průměrná |
 | **Akce:** Snížit počet o 2 |**Akce:** Snížit počet o 3 |
-| Doba **vychladnutí (minuty):** 120 |Doba **vychladnutí (minuty):** 120 |
+| **Ochlazení (minuty):** 120 |**Ochlazení (minuty):** 120 |
 
-Cílový rozsah definovaný v profilu se počítá minimálními instancemi definovanými v profilu pro App Service plán + vyrovnávací paměť.
+Rozsah cíl definovaný v profilu se vypočítá podle minimálních instancí definovaných v profilu pro plán služby App Service + vyrovnávací paměti.
 
-Maximální rozsah by byl součet všech maximálních rozsahů všech plánů App Service hostovaných ve fondu pracovních procesů.
+Maximální rozsah by součet všech maximální rozsahy pro všechny plány služby App Service hostované ve fondu pracovních procesů.
 
-Počet zvýšení pro pravidla horizontálního navýšení kapacity by měl být nastaven na alespoň navýšení sazby App Service plánu inflace pro horizontální navýšení kapacity.
+Počet zvýšení pro pravidla škálování by měla být nastavena alespoň 1x app service plán míra inflace pro škálování nahoru.
 
-Počet zpomalení se dá upravit na něco v rozsahu od 1 do dvojnásobku nebo na1x poměrné hodnoty plánu App Service pro horizontální navýšení kapacity.
+Snížení počtu lze upravit na něco mezi 1/2X nebo 1X App Service Plan Míra inflace pro škálování.
 
-### <a name="autoscale-for-front-end-pool"></a>Automatické škálování pro front-end fond
-Pravidla pro automatické škálování front-endu jsou jednodušší než u fondů pracovních procesů. Primárně byste měli  
-Zajistěte, aby doba trvání měření a časovače cooldown zvážily, že operace škálování v plánu App Service nejsou okamžité.
+### <a name="autoscale-for-front-end-pool"></a>Automatické škálování pro front-endový fond
+Pravidla pro automatické škálování front-endu jsou jednodušší než pro fondy pracovních procesů. V první řadě byste měli  
+Ujistěte se, že doba trvání měření a časovače cooldown uvažují, že operace škálování v plánu služby App Service nejsou okamžité.
 
-V tomto scénáři Jan ví, že se míra chyb zvyšuje až po front-endy dosahující 80% využití procesoru, a nastaví pravidlo automatického škálování pro zvýšení instancí následujícím způsobem:
+V tomto scénáři Frank ví, že míra chyb se zvyšuje po front-endy dosáhnout 80% využití procesoru a nastaví pravidlo automatického škálování pro zvýšení instance takto:
 
-![Nastavení automatického škálování pro front-end fond.][Front-End-Scale]
+![Nastavení automatického škálování pro front-endový fond.][Front-End-Scale]
 
-| **Profil automatického škálování – přední zakončení** |
+| **Profil automatického škálování – přední konce** |
 | --- |
-| **Název:** Automatické škálování – front-endy |
-| **Škálovat podle:** Pravidla plánování a výkonu |
-| **Profil:** Běžně |
-| **Zadejte:** Vzorec |
+| **Název:** Automatické škálování – přední konce |
+| **Měřítko podle:** Pravidla plánu a výkonu |
+| **Profil:** Každodenní |
+| **Typ:** Opakování |
 | **Cílový rozsah:** 3 až 10 instancí |
-| **Dny:** Běžně |
-| **Čas spuštění:** 9:00 dop. |
+| **Počet dní:** Každodenní |
+| **Čas zahájení:** 9:00 |
 | **Časové pásmo:** UTC-08 |
 |  |
-| **Pravidlo automatického škálování (horizontální navýšení kapacity)** |
-| **Prostředek:** Front-end fond |
-| **Metrika:** VČETNĚ |
-| **Operace:** Větší než 60% |
+| **Pravidlo automatického škálování (škálovat nahoru)** |
+| **Zdroj:** Front-end bazén |
+| **Metrika:** Procesor % |
+| **Provoz:** Více než 60% |
 | **Doba trvání:** 20 minut |
-| **Časová agregace:** Vypočítat |
+| **Agregace času:** Průměrná |
 | **Akce:** Zvýšit počet o 3 |
-| Doba **vychladnutí (minuty):** 120 |
+| **Ochlazení (minuty):** 120 |
 |  |
-| **Pravidlo automatického škálování (horizontální snížení kapacity)** |
-| **Prostředek:** Fond pracovních procesů 1 |
-| **Metrika:** VČETNĚ |
-| **Operace:** Méně než 30% |
+| **Pravidlo automatického škálování (zmenšit měřítko)** |
+| **Zdroj:** Fond pracovníků 1 |
+| **Metrika:** Procesor % |
+| **Provoz:** Méně než 30% |
 | **Doba trvání:** 20 minut |
-| **Časová agregace:** Vypočítat |
+| **Agregace času:** Průměrná |
 | **Akce:** Snížit počet o 3 |
-| Doba **vychladnutí (minuty):** 120 |
+| **Ochlazení (minuty):** 120 |
 
 <!-- IMAGES -->
 [intro]: ./media/app-service-environment-auto-scale/introduction.png

@@ -1,6 +1,6 @@
 ---
-title: Brána Firewall webových aplikací Azure – Nejčastější dotazy
-description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se firewallu webových aplikací ve službě Azure front-dveří.
+title: Brána firewall webových aplikací Azure – nejčastější dotazy
+description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se brány firewall webových aplikací na Azure Front Door
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,73 +8,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: victorh
-ms.openlocfilehash: 263f929fa010450fcfb35b8db74f94cd6fd7dc84
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c40210f3a6f0fb10be1f20deef87b2acfa076a4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517173"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460632"
 ---
-# <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Nejčastější dotazy k firewallu webových aplikací Azure na službě Azure front-dveří
+# <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Nejčastější dotazy týkající se brány firewall webových aplikací Azure ve službě Azure Front Door Service
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a funkcí firewallu webových aplikací v Azure (WAF). 
+Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí brány firewall webových aplikací Azure (WAF). 
 
 ## <a name="what-is-azure-waf"></a>Co je Azure WAF?
 
-Azure WAF je brána firewall webových aplikací, která pomáhá chránit webové aplikace před běžnými hrozbami, jako jsou například injektáže SQL, skriptování mezi weby a další webové zneužití. Můžete definovat zásady WAF, které se skládají z kombinace vlastních a spravovaných pravidel pro řízení přístupu k vašim webovým aplikacím.
+Azure WAF je brána firewall webových aplikací, která pomáhá chránit webové aplikace před běžnými hrozbami, jako je vkládání SQL, skriptování mezi weby a další webové zneužití. Můžete definovat zásadu WAF skládající se z kombinace vlastních a spravovaných pravidel pro řízení přístupu k webovým aplikacím.
 
-Zásady Azure WAF je možné použít u webových aplikací hostovaných na službě Application Gateway nebo Azure front-dveří.
+Zásady Azure WAF lze použít pro webové aplikace hostované na application gateway nebo Azure Front Doors.
 
-## <a name="what-is-waf-on-azure-front-door-service"></a>Co je WAF ve službě Azure front-dveří? 
+## <a name="what-is-waf-on-azure-front-door"></a>Co je WAF na předních dveřích Azure? 
 
-Přední dvířka Azure je vysoce škálovatelná, globálně distribuovaná aplikace a síť pro doručování obsahu. Služba Azure WAF, která je integrovaná s předními dveřmi, zabrání útokům na dostupnost služby a cíle aplikace na hraničních zařízeních Azure. před přechodem do vaší virtuální sítě pak nabízí ochranu bez obětování výkonu.
+Azure Front Door je vysoce škálovatelná globálně distribuovaná síť aplikací a obsahu. Azure WAF, když je integrován s front door, zastaví odmítnutí služby a cílené útoky aplikací na okraji sítě Azure, v blízkosti zdrojů útoků před vstupem do vaší virtuální sítě, nabízí ochranu bez obětování výkonu.
 
 ## <a name="does-azure-waf-support-https"></a>Podporuje Azure WAF protokol HTTPS?
 
-Služba front-dveří nabízí snižování zátěže SSL. WAF je nativně integrovaná s předními dveřmi a může žádost po dešifrování zkontrolovat.
+Přední dveře nabízejí ssl vykládání. WAF je nativně integrován s předními dveřmi a může zkontrolovat požadavek po jeho dešifrování.
 
-## <a name="does-azure-waf-support-ipv6"></a>Podporuje Azure WAF protokol IPv6?
+## <a name="does-azure-waf-support-ipv6"></a>Podporuje Azure WAF IPv6?
 
-Ano. Můžete nakonfigurovat omezení IP adres pro IPv4 a IPv6.
+Ano. Omezení protokolu IP můžete nakonfigurovat pro protokoly IPv4 a IPv6.
 
-## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Jak se spravují sady pravidel?
+## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Jak aktuální jsou spravované sady pravidel?
 
-Náš postup se snažíme udržovat s měnícími se hrozbami. Po aktualizaci nového pravidla se přidá do výchozí sady pravidel s novým číslem verze.
+Snažíme se držet krok s měnící se hrozbou krajiny. Po aktualizaci nového pravidla se přidá do výchozí sady pravidel s novým číslem verze.
 
-## <a name="what-is-the-propagation-time-if-i-make-a-change-to-my-waf-policy"></a>Jaká je doba šíření, když provedete změnu v zásadách WAF?
+## <a name="what-is-the-propagation-time-if-i-make-a-change-to-my-waf-policy"></a>Jaký je čas šíření, pokud změním své zásady WAF?
 
-Nasazení zásad WAF globálně obvykle trvá přibližně 5 minut a často se dokončí dřív.
+Nasazení zásad WAF globálně obvykle trvá přibližně 5 minut a často skončí dříve.
 
-## <a name="can-waf-policies-be-different-for-different-regions"></a>Můžou se zásady WAF lišit pro různé oblasti?
+## <a name="can-waf-policies-be-different-for-different-regions"></a>Mohou být zásady WAF pro různé oblasti odlišné?
 
-Při integraci s front-Dvířk Service je WAF globálním prostředkem. Stejná konfigurace se vztahuje na všechna umístění front dveří.
+Při integraci s předními dveřmi je WAF globálním zdrojem. Stejná konfigurace platí ve všech umístěních předních dveří.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Návody omezit přístup k back-endu jenom z předních dveří?
+## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Jak mohu omezit přístup k mému back-endu pouze z předních dveří?
 
-Můžete nakonfigurovat seznam IP Access Control v back-endu tak, aby umožňoval pouze odchozí rozsahy IP adres na front-endu a odepřít veškerý přímý přístup z Internetu. Značky služeb jsou podporované pro použití ve vaší virtuální síti. Kromě toho můžete ověřit, jestli je pro vaši webovou aplikaci platné pole hlavička protokolu HTTP s přesměrováním X.
+Seznam řízení přístupu k ip v back-endu můžete nakonfigurovat tak, aby umožňoval pouze rozsahy odchozích IP adres předních dveří a odepřel jakýkoli přímý přístup z Internetu. Značky služeb jsou podporovány pro použití ve vaší virtuální síti. Kromě toho můžete ověřit, zda je pole hlavičky HTTP hostitele X-Forwarded platné pro vaši webovou aplikaci.
 
-## <a name="which-azure-waf-options-should-i-choose"></a>Které možnosti Azure WAF mám zvolit?
+## <a name="which-azure-waf-options-should-i-choose"></a>Které možnosti Azure WAF si mám vybrat?
 
-Při použití zásad WAF v Azure jsou k dispozici dvě možnosti. WAF s Azure front-Dvířks je globálně distribuované řešení zabezpečení Edge. WAF s Application Gateway je místní vyhrazené řešení. Doporučujeme zvolit řešení na základě celkových požadavků na výkon a zabezpečení. Další informace najdete v tématu [Vyrovnávání zatížení s využitím sady pro doručování aplikací v Azure](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
+Existují dvě možnosti při použití zásad WAF v Azure. WAF s Azure Front Door je globálně distribuované řešení zabezpečení na okraji. WAF s aplikační bránou je regionální, vyhrazené řešení. Doporučujeme zvolit řešení na základě vašich celkových požadavků na výkon a zabezpečení. Další informace najdete v [tématu Vyrovnávání zatížení s sadou pro doručování aplikací Azure](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
 
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Podporujete stejné funkce WAF na všech integrovaných platformách?
 
-V současné době se pravidla ModSecch počítačových 2.2.9, počítačových rezervačních 3,0 a počítačových 3,1 podporují jenom s WAF na Application Gateway. Pravidla omezení četnosti, geografického filtrování a spravovaného výchozího pravidla sady Azure jsou podporovaná jenom s WAF na frontách Azure na předních dveřích.
+V současné době jsou pravidla ModSec CRS 2.2.9, CRS 3.0 a CRS 3.1 podporována pouze pomocí waf v aplikační bráně. Omezení rychlosti, geografické filtrování a pravidla sady výchozích pravidel spravované Azure jsou podporované jenom s WAF na Azure Front Door.
 
-## <a name="is-ddos-protection-integrated-with-front-door"></a>Je ochrana DDoS integrovaná s předními dvířky? 
+## <a name="is-ddos-protection-integrated-with-front-door"></a>Je ochrana DDoS integrována s předními dveřmi? 
 
-V případě globálně distribuovaných na okrajích sítě Azure můžou přední dveře Azure absorbovat a geograficky izolovat útoky na velké objemy svazků. Můžete vytvořit vlastní zásady WAF a automaticky tak blokovat a omezit útoky na požadavky HTTP (s), které mají známé signatury. Další informace můžete povolit DDoS Protection Standard ve virtuální síti, kde jsou nasazené back-endy. Zákazníci s Azure DDoS Protection Standard získají další výhody, jako je ochrana nákladů, záruka SLA a přístup k odborníkům z týmu DDoS Rapid Response pro zajištění okamžité pomoci během útoku.
+Azure Front Door, globálně distribuované na okrajích sítě Azure, můžou absorbovat a geograficky izolovat útoky velkého objemu. Můžete vytvořit vlastní zásady WAF pro automatické blokování a omezení útoků http(s), které mají známé podpisy. Další další můžete povolit Standard ochrany DDoS na virtuální síti, kde jsou nasazeny back-endy. Zákazníci azure ddos protection standard udělují další výhody, včetně ochrany nákladů, záruky SLA a přístupu k odborníkům z Týmu rychlé reakce DDoS, kteří vám během útoku pomohou.
 
-## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Proč se do back-endu serveru předají další požadavky nad prahovou hodnotou nakonfigurovanou pro pravidlo pro omezení přenosové rychlosti?
+## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Proč se další požadavky nad prahovou hodnotu nakonfigurovanou pro pravidlo limitu rychlosti předávají back-endovému serveru?
 
-Pravidlo omezení přenosové rychlosti může omezit neobvykle vysoký provoz z jakékoli IP adresy klienta. Prahovou hodnotu můžete nakonfigurovat u počtu webových požadavků povolených z IP adresy klienta během jedné minuty nebo pěti minut. Pro řízení detailních sazeb se dá omezení četnosti kombinovat s dalšími podmínkami shody, jako je odpovídající parametr HTTP (S). 
+Pravidlo omezení rychlosti může omezit abnormálně vysoký provoz z libovolné ip adresy klienta. Můžete nakonfigurovat prahovou hodnotu na počet webových požadavků povolených z IP adresy klienta během jedné minuty nebo pět minut trvání. Pro granulární řízení rychlosti omezení rychlosti lze kombinovat s dalšími podmínkami shody, jako je například párování parametrů HTTP(S). 
 
-Žádosti ze stejného klienta často dorazí na stejný server front-dveří. V takovém případě uvidíte další požadavky nad prahovou hodnotou, která se okamžitě zablokuje. 
+Požadavky od stejného klienta často dorazí na stejný server Front Door. V takovém případě se zobrazí další požadavky nad prahovou hodnotou okamžitě blokovány. 
 
-Je ale možné, že žádosti ze stejného klienta dorazí na jiný server front-dveří, který ještě neaktualizoval čítač limitu četnosti. Klient například může pro každý požadavek otevřít nové připojení a prahová hodnota je nízká. V takovém případě by první požadavek na nový server front-dveří mohl projít kontrolu limitu četnosti. Mezní hodnota omezení četnosti je obvykle nastavena na vysoká, aby se zabránilo útokům DOS (Denial of Service) z jakékoli IP adresy klienta. V případě velmi nízké prahové hodnoty se mohou zobrazit další požadavky nad prahovou hodnotou získat.
+Je však možné, že požadavky od stejného klienta mohou být doručeny na jiný server front door, který ještě neaktualizoval čítač limitu rychlosti. Klient může například otevřít nové připojení pro každý požadavek a prahová hodnota je nízká. V takovém případě by první požadavek na nový server Front Door prošel kontrolou limitu rychlosti. Prahová hodnota limitu rychlosti je obvykle nastavena jako vysoká, aby se bránila útokům odmítnutí služby z libovolné IP adresy klienta. Pro velmi nízkou prahovou hodnotu se mohou zobrazit další požadavky nad prahovou hodnotou projít.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [bráně firewall webových aplikací Azure](../overview.md).
-- Přečtěte si další informace o [službě Azure front-dveří](../../frontdoor/front-door-overview.md).
+- Přečtěte si informace o [bráně firewall webových aplikací Azure](../overview.md).
+- Další informace o [Azure Front Door](../../frontdoor/front-door-overview.md).

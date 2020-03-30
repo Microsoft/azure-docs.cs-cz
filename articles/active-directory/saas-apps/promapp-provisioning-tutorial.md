@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Promapp pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Promapp.
+title: 'Kurz: Konfigurace aplikace Promapp pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat Službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty pro Promapp.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,149 +16,149 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
 ms.openlocfilehash: 1a4a27846196e7eb134b834647b2a2d65672f385
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77060998"
 ---
-# <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Kurz: Konfigurace Promapp pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Kurz: Konfigurace aplikace Promapp pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést kroky, které je třeba provést v Promapp a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Promapp.
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Promapp a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřizování a de-provision uživatelů nebo skupin pro Promapp.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
+> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
 
-* Tenant Azure AD
+* Klient Azure AD
 * [Tenant Promapp](https://www.promapp.com/licensing/)
-* Uživatelský účet v Promapp s oprávněními správce.
+* Uživatelský účet v Promappu s oprávněními správce.
 
-## <a name="assigning-users-to-promapp"></a>Přiřazování uživatelů k Promapp
+## <a name="assigning-users-to-promapp"></a>Přiřazení uživatelů k Promappu
 
-Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
+Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Promapp. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Promapp podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Promappu. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny pro promapp podle pokynů zde:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-promapp"></a>Důležité tipy pro přiřazení uživatelů k Promapp
+## <a name="important-tips-for-assigning-users-to-promapp"></a>Důležité tipy pro přiřazení uživatelů k Promappu
 
-* Doporučuje se, aby se k Promapp k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD je přiřazen k Promapp otestovat konfiguraci automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
 
-* Při přiřazování uživatele k Promapp musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Při přiřazování uživatele k Aplikaci Promapp musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
-## <a name="setup-promapp-for-provisioning"></a>Nastavení Promapp pro zřizování
+## <a name="setup-promapp-for-provisioning"></a>Nastavení promapp pro zřizování
 
-1. Přihlaste se ke [konzole pro správu Promapp](https://freetrial.promapp.com/axelerate/Login.aspx). V části uživatelské jméno přejděte na **můj profil**.
+1. Přihlaste se do [konzole Promapp Admin Console](https://freetrial.promapp.com/axelerate/Login.aspx). Pod uživatelským jménem přejděte na **Můj profil**.
 
     ![Konzola pro správu Promapp](media/promapp-provisioning-tutorial/admin.png)
 
-2.  V části **přístupové tokeny** klikněte na tlačítko **vytvořit token** .
+2.  V části **Přístupové tokeny** klikněte na tlačítko **Vytvořit token.**
 
-    ![Promapp přidat SCIM](media/promapp-provisioning-tutorial/addtoken.png)
+    ![Promapp Přidat SCIM](media/promapp-provisioning-tutorial/addtoken.png)
 
-3.  Zadejte libovolný název do pole **Popis** a v rozevírací nabídce **oboru** vyberte **SCIM** . Klikněte na ikonu Uložit.
+3.  Do pole **Popis** zadejte libovolný název a v rozevírací nabídce **Obor** vyberte **Scim.** Klikněte na ikonu uložit.
 
-    ![Přidat název Promapp](media/promapp-provisioning-tutorial/addname.png)
+    ![Promapp Přidat jméno](media/promapp-provisioning-tutorial/addname.png)
 
-4.  Zkopírování přístupového tokenu a jeho uložení, jako by to byla jediná doba, kterou si můžete zobrazit. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace Promapp ve Azure Portal.
+4.  Zkopírujte přístupový token a uložte jej, protože to bude jediný čas, kdy jej můžete zobrazit. Tato hodnota se zadá do pole Tajný token na kartě Zřizování vaší aplikace Promapp na webu Azure Portal.
 
     ![Promapp vytvořit token](media/promapp-provisioning-tutorial/token.png)
 
-## <a name="add-promapp-from-the-gallery"></a>Přidání Promapp z Galerie
+## <a name="add-promapp-from-the-gallery"></a>Přidat Promapp z galerie
 
-Před konfigurací Promapp pro Automatické zřizování uživatelů se službou Azure AD je nutné přidat Promapp z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Před konfigurací Promapp pro automatické zřizování uživatelů s Azure AD, je potřeba přidat Promapp z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Promapp z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Chcete-li přidat Promapp z galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Promapp**, na panelu výsledků vyberte **Promapp** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Promapp**, vyberte **Promapp** v panelu výsledků a pak klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Promapp v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-promapp"></a>Konfigurace automatického zřizování uživatelů na Promapp 
+## <a name="configuring-automatic-user-provisioning-to-promapp"></a>Konfigurace automatického zřizování uživatelů pro Promapp 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Promapp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v Aplikaci Promapp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Promapp podle pokynů uvedených v [kurzu Promapp jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
+> Můžete se také rozhodnout povolit jednotné přihlašování pro Promapp založené na SAML podle pokynů uvedených v [kurzu pro jednotné přihlášení Promapp](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial). Jednotné přihlašování lze konfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce se vzájemně doplňují.
 
 ### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Promapp ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Promapp**.
+2. V seznamu aplikací vyberte **Promapp**.
 
-    ![Odkaz Promapp v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Promapp v seznamu Aplikace](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování.**
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **režim zřizování** na **automatické**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Karta Zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://api.promapp.com/api/scim` na **adrese URL tenanta**. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Promapp. Pokud se připojení nepovede, ujistěte se, že má váš účet Promapp oprávnění správce, a zkuste to znovu.
+5. V části **Pověření správce** `https://api.promapp.com/api/scim` zadejte adresu **URL klienta**. Zadejte hodnotu **ověřovacího tokenu SCIM** načtenou dříve v **tokenu tajného klíče**. Klikněte na **Testovat připojení** a ujistěte se, že Azure AD můžete připojit k Promapp. Pokud se připojení nezdaří, ujistěte se, že váš účet Promapp má oprávnění správce a zkuste to znovu.
 
-    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Promapp**.
+8. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s aplikací Promapp**.
 
     ![Mapování uživatelů Promapp](media/promapp-provisioning-tutorial/usermappings.png)
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Promapp v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Promapp pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do Promapp v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Promapp pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
 
-    ![Atributy uživatele Promapp](media/promapp-provisioning-tutorial/userattributes.png)
+    ![Uživatelské atributy Aplikace Promapp](media/promapp-provisioning-tutorial/userattributes.png)
 
-11. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-12. Pokud chcete povolit službu Azure AD Provisioning pro Promapp, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+12. Chcete-li povolit službu zřizování Azure AD pro Promapp, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
 
-13. Definujte uživatele nebo skupiny, které chcete zřídit pro Promapp, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+13. Definujte uživatele a/nebo skupiny, které chcete zřídit pro promapp výběrem požadovaných hodnot v **oboru** v části **Nastavení.**
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+    ![Obor zřizování](common/provisioning-scope.png)
 
-14. Až budete připraveni zřídit, klikněte na **Uložit**.
+14. Až budete připraveni k zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Promapp.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Promappu.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 
