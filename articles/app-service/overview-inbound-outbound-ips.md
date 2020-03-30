@@ -1,31 +1,31 @@
 ---
-title: Příchozí/odchozí IP adresy
-description: Přečtěte si, jak se příchozí a odchozí IP adresy používají v Azure App Service, když se mění a jak najít adresy pro vaši aplikaci.
+title: Příchozí a odchozí IP adresy
+description: Zjistěte, jak se příchozí a odchozí IP adresy používají ve službě Azure App Service, když se mění a jak najít adresy pro vaši aplikaci.
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279205"
 ---
-# <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy v Azure App Service
+# <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy ve službě Azure App Service
 
-[Azure App Service](overview.md) je víceklientské služby s výjimkou [App Service prostředí](environment/intro.md). Aplikace, které nejsou v prostředí App Service (ne v [izolované vrstvě](https://azure.microsoft.com/pricing/details/app-service/)) sdílejí síťovou infrastrukturu s jinými aplikacemi. V důsledku toho může být příchozí a odchozí IP adresa aplikace odlišná a může se dokonce změnit v určitých situacích. 
+[Azure App Service](overview.md) je služba s více [klienty,](environment/intro.md)s výjimkou prostředí služby App Service . Aplikace, které nejsou v prostředí služby App Service (ne v [izolované vrstvě)](https://azure.microsoft.com/pricing/details/app-service/)sdílejí síťovou infrastrukturu s jinými aplikacemi. V důsledku toho se příchozí a odchozí IP adresy aplikace mohou lišit a v určitých situacích se dokonce mohou změnit. 
 
-[App Service prostředí](environment/intro.md) využívají vyhrazenou síťovou infrastrukturu, takže aplikace běžící v prostředí App Service získají statické a vyhrazené IP adresy pro příchozí i odchozí připojení.
+[Prostředí služby App Service](environment/intro.md) používají vyhrazené síťové infrastruktury, takže aplikace spuštěné v prostředí služby App Service získají statické vyhrazené IP adresy pro příchozí i odchozí připojení.
 
-## <a name="when-inbound-ip-changes"></a>Při změně příchozí IP adresy
+## <a name="when-inbound-ip-changes"></a>Při příchozích změnách IP
 
-Bez ohledu na počet instancí s horizontálním navýšení kapacity má každá aplikace jednu příchozí IP adresu. Příchozí IP adresa se může změnit, když provedete jednu z následujících akcí:
+Bez ohledu na počet instancí s horizontálním navýšením kapacity má každá aplikace jednu příchozí IP adresu. Příchozí adresa IP se může změnit, pokud provedete jednu z následujících akcí:
 
 - Odstraňte aplikaci a znovu ji vytvořte v jiné skupině prostředků.
-- Odstraní poslední aplikaci v kombinaci skupiny prostředků _a_ oblasti a znovu ji vytvoří.
-- Odstraní existující vazbu SSL, například během obnovování certifikátu (viz [obnovení certifikátu](configure-ssl-certificate.md#renew-certificate)).
+- Odstraňte poslední aplikaci v kombinaci skupiny prostředků _a_ oblasti a znovu ji vytvořte.
+- Odstraňte existující vazbu SSL, například během obnovení certifikátu (viz [Obnovení certifikátu).](configure-ssl-certificate.md#renew-certificate)
 
-## <a name="find-the-inbound-ip"></a>Najít příchozí IP adresu
+## <a name="find-the-inbound-ip"></a>Vyhledání příchozí IP adresy
 
 Stačí spustit následující příkaz v místním terminálu:
 
@@ -33,23 +33,23 @@ Stačí spustit následující příkaz v místním terminálu:
 nslookup <app-name>.azurewebsites.net
 ```
 
-## <a name="get-a-static-inbound-ip"></a>Získat statickou příchozí IP adresu
+## <a name="get-a-static-inbound-ip"></a>Získání statické příchozí IP adresy
 
-Někdy můžete chtít vyhrazenou statickou IP adresu pro vaši aplikaci. Pokud chcete získat statickou příchozí IP adresu, musíte nakonfigurovat [vazbu SSL založenou na protokolu IP](configure-ssl-bindings.md#secure-a-custom-domain). Pokud nepotřebujete pro zabezpečení vaší aplikace funkci SSL, můžete dokonce pro tuto vazbu nahrát certifikát podepsaný svým držitelem. Ve vazbě protokolu SSL založeného na protokolu IP je certifikát vázán na vlastní IP adresu, takže App Service zřídí statickou IP adresu, aby k ní mohlo dojít. 
+Někdy můžete chtít vyhrazenou statickou IP adresu pro vaši aplikaci. Chcete-li získat statickou příchozí adresu IP, je třeba nakonfigurovat [vazbu SSL založenou na protokolu IP](configure-ssl-bindings.md#secure-a-custom-domain). Pokud k zabezpečení aplikace ve skutečnosti nepotřebujete funkci SSL, můžete pro tuto vazbu dokonce nahrát certifikát podepsaný svým držitelem. Ve vazbě SSL založené na protokolu IP je certifikát vázán na samotnou IP adresu, takže služba App Service zřídí statickou IP adresu, aby se to stalo. 
 
-## <a name="when-outbound-ips-change"></a>Změna odchozích IP adres
+## <a name="when-outbound-ips-change"></a>Při změně odchozích IP služeb
 
-Bez ohledu na počet instancí s horizontálním navýšení kapacity má každá aplikace v daném okamžiku nastavený počet odchozích IP adres. Jakékoli odchozí připojení z aplikace App Service, jako je například databáze back-end, používá jako zdrojovou IP adresu jednu z odchozích IP adres. Nemůžete předem znát, která IP adresa, kterou daná instance aplikace použije k vytvoření odchozího připojení, takže vaše back-end služba musí bránu firewall otevřít na všechny odchozí IP adresy vaší aplikace.
+Bez ohledu na počet instancí s horizontálním navýšením kapacity má každá aplikace v daném okamžiku nastavený počet odchozích IP adres. Jakékoli odchozí připojení z aplikace App Service, například do back-enddatabáze, používá jednu z odchozích IP adres jako původní IP adresu. Nemůžete předem vědět, kterou IP adresu bude daná instance aplikace používat k vytvoření odchozího připojení, takže vaše back-endová služba musí otevřít bránu firewall všem odchozím IP adresám vaší aplikace.
 
-Sada odchozích IP adres vaší aplikace se mění při škálování aplikace mezi nižšími úrovněmi (**Basic**, **Standard**a **Premium**) a úrovní **Premium v2** .
+Sada odchozích IP adres pro vaši aplikaci se změní při škálování aplikace mezi nižšími úrovněmi **(Základní**, **Standardní**a **Premium)** a **úrovní Premium V2.**
 
-Můžete najít sadu všech možných odchozích IP adres, které vaše aplikace může používat, bez ohledu na cenové úrovně, a to tak, že vyhledáte vlastnost `possibleOutboundIpAddresses` nebo v poli **Další odchozí IP adresy** v okně **vlastnosti** Azure Portal. Viz [Najít odchozí IP adresy](#find-outbound-ips).
+Sadu všech možných odchozích IP adres, které vaše aplikace může používat, bez ohledu `possibleOutboundIpAddresses` na cenové úrovně, najdete tak, že vyhledáte vlastnost nebo v poli **Další odchozí IP adresy** v okně **Vlastnosti** na portálu Azure. Viz [Najít odchozí IP adresy](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Najít odchozí IP adresy
 
-Pokud chcete najít odchozí IP adresy, které vaše aplikace aktuálně používá v Azure Portal, klikněte na **vlastnosti** v levém navigačním panelu vaší aplikace. Jsou uvedeny v poli **odchozí IP adresy** .
+Pokud chcete najít odchozí IP adresy, které vaše aplikace aktuálně používá na webu Azure Portal, klikněte v levé navigaci v aplikaci na **Vlastnosti.** Jsou uvedeny v poli **Odchozí adresy IP.**
 
-Stejné informace můžete najít spuštěním následujícího příkazu v [Cloud Shell](../cloud-shell/quickstart.md).
+Stejné informace najdete spuštěním následujícího příkazu v [prostředí Cloud Shell](../cloud-shell/quickstart.md).
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
@@ -59,9 +59,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-Pokud chcete najít _všechny_ možné odchozí IP adresy pro vaši aplikaci bez ohledu na cenové úrovně, klikněte na **vlastnosti** v levém navigačním panelu aplikace. Jsou uvedeny v poli **Další odchozí IP adresy** .
+Pokud chcete najít _všechny_ možné odchozí IP adresy pro vaši aplikaci, bez ohledu na cenové úrovně, klikněte v levé navigaci v aplikaci na **Vlastnosti.** Jsou uvedeny v poli **Další odchozí adresy IP.**
 
-Stejné informace můžete najít spuštěním následujícího příkazu v [Cloud Shell](../cloud-shell/quickstart.md).
+Stejné informace najdete spuštěním následujícího příkazu v [prostředí Cloud Shell](../cloud-shell/quickstart.md).
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
@@ -73,7 +73,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak omezit příchozí provoz na základě IP adres zdrojů.
+Přečtěte si, jak omezit příchozí provoz podle zdrojových IP adres.
 
 > [!div class="nextstepaction"]
-> [Omezení statických IP adres](app-service-ip-restrictions.md)
+> [Statická omezení IP](app-service-ip-restrictions.md)

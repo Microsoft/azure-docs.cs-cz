@@ -1,55 +1,55 @@
 ---
-title: Řešení potíží s Azure cache pro vypršení časových limitů Redis
-description: Naučte se řešit běžné problémy s vypršením časového limitu v mezipaměti Azure pro Redis, jako jsou třeba opravy serveru Redis a výjimky StackExchange. Redis.
+title: Řešení potíží s časovými limity služby Azure Cache for Redis
+description: Zjistěte, jak vyřešit běžné problémy s časovým úsporem s Azure Cache for Redis, jako jsou opravy serveru redis a výjimky časového výpadku StackExchange.Redis.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278243"
 ---
-# <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s Azure cache pro vypršení časových limitů Redis
+# <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s časovými limity služby Azure Cache for Redis
 
-Tato část popisuje řešení potíží s časovým limitem, ke kterým dochází při připojování k Azure cache pro Redis.
+Tato část popisuje řešení problémů s časovým úvazkem, ke kterým dochází při připojování k Azure Cache for Redis.
 
 - [Opravy serveru Redis](#redis-server-patching)
-- [Výjimky časového limitu StackExchange. Redis](#stackexchangeredis-timeout-exceptions)
+- [Výjimky časového meze souboru StackExchange.Redis](#stackexchangeredis-timeout-exceptions)
 
 > [!NOTE]
-> Několik kroků pro řešení potíží v této příručce obsahuje pokyny ke spouštění příkazů Redis a monitorování různých metrik výkonu. Další informace a pokyny najdete v článcích v části [Další informace](#additional-information) .
+> Několik kroků řešení potíží v této příručce obsahuje pokyny ke spuštění příkazů Redis a sledování různých metrik výkonu. Další informace a pokyny naleznete v článcích v části [Další informace.](#additional-information)
 >
 
 ## <a name="redis-server-patching"></a>Opravy serveru Redis
 
-Služba Azure cache pro Redis pravidelně aktualizuje svůj serverový software jako součást funkce spravované služby, kterou poskytuje. Tato aktivita [opravy](cache-failover.md) probíhá hlavně za scénou. Během opravy převzetí služeb při selhání se Redis klienti, kteří jsou připojení k těmto uzlům, můžou docházet k dočasným časovým limitům při přepínání mezi těmito uzly. Další informace o tom, jaké funkce aktualizace vedlejších účinků můžou mít v aplikaci a jak můžete vylepšit zpracování událostí oprav, najdete v tématu [jak převzetí služeb při selhání v klientské aplikaci ovlivní](cache-failover.md#how-does-a-failover-affect-my-client-application) .
+Azure Cache for Redis pravidelně aktualizuje svůj serverový software jako součást funkce spravované služby, kterou poskytuje. Tato [záplatovací](cache-failover.md) činnost probíhá převážně za scénou. Během převzetí služeb při selhání při redis server uzly jsou opravy, Redis klienti připojení k těmto uzlům může dojít k dočasné časové přeběhy jako připojení jsou přepínat mezi těmito uzly. Další informace o tom, jaké vedlejší účinky mohou mít opravy ve vaší aplikaci a jak můžete zlepšit zpracování událostí oprav, naleznete [v tématu Jak převzetí služeb při selhání ovlivní klientskou aplikaci.](cache-failover.md#how-does-a-failover-affect-my-client-application)
 
-## <a name="stackexchangeredis-timeout-exceptions"></a>Výjimky časového limitu StackExchange. Redis
+## <a name="stackexchangeredis-timeout-exceptions"></a>Výjimky časového meze souboru StackExchange.Redis
 
-StackExchange. Redis používá konfigurační nastavení s názvem `synctimeout` pro synchronní operace s výchozí hodnotou 1000 MS. Pokud se synchronní volání v tuto chvíli nedokončí, klient StackExchange. Redis vyvolá chybu s časovým limitem, která je podobná následujícímu příkladu:
+Soubor StackExchange.Redis používá `synctimeout` nastavení konfigurace pojmenované pro synchronní operace s výchozí hodnotou 1000 ms. Pokud synchronní volání není dokončena v tomto okamžiku, klient StackExchange.Redis vyvolá chybu časového času podobné v následujícím příkladu:
 
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
 
-Tato chybová zpráva obsahuje metriky, které vám pomohou Ukázat příčinu a možné řešení problému. Následující tabulka obsahuje podrobnosti o metrikách chybové zprávy.
+Tato chybová zpráva obsahuje metriky, které vám mohou pomoci s odkazem na příčinu a možné řešení problému. Následující tabulka obsahuje podrobnosti o metrikách chybových zpráv.
 
 | Metrika chybové zprávy | Podrobnosti |
 | --- | --- |
-| instrukce |V posledním časovém intervalu: byly vydány příkazy 0. |
-| Mgr |Správce soketů provádí `socket.select`, což znamená, že se požádá o operační systém, aby označoval soket, který má něco udělat. Čtenář se aktivně nečte ze sítě, protože nebere v úvahu cokoli, co dělat. |
-| queue |K dispozici jsou 73 celkový počet probíhajících operací. |
-| Thá |6 probíhajících operací je v neodeslané frontě a ještě není zapsaná do odchozí sítě. |
-| qs |67 probíhajících operací bylo odesláno na server, ale odpověď zatím není k dispozici. Odpověď může být `Not yet sent by the server` nebo `sent by the server but not yet processed by the client.` |
-| qc |počet probíhajících operací zaznamenal odpovědi, ale ještě nebyly označeny jako splněné, protože čekají na cyklus dokončení. |
-| radiační |Existuje aktivní zapisovač (to znamená, že 6 neodeslaných požadavků se Neignoruje) bajtů/activewriters |
-| in |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
+| Inst |V poslední čas řez: 0 příkazy byly vydány |
+| Mgr |Správce soketu `socket.select`dělá , což znamená, že žádá operační ho s a označí soket, který má co do činění. Čtenář není aktivně čtení ze sítě, protože si nemyslí, že je co dělat |
+| fronta |Probíhá celkem 73 operací |
+| Qu |6 probíhajících operací je v neodeslané frontě a ještě nebylo zapsáno do odchozí sítě. |
+| Qs |Na server bylo odesláno 67 probíhajících operací, ale odpověď ještě není k dispozici. Odpověď může `Not yet sent by the server` být nebo může být`sent by the server but not yet processed by the client.` |
+| Qc |0 probíhajících operací zaznamenalo odpovědi, ale ještě nebyly označeny jako dokončené, protože čekají na dokončení smyčky |
+| Wr |Existuje aktivní zapisovač (což znamená, že 6 neodeslaných požadavků není ignorováno) bajtů / activewriters |
+| in |Nejsou k dispozici žádné aktivní čtečky a nula bajtů jsou k dispozici ke čtení na bajtů nic/activereaders |
 
-Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
+Můžete použít následující kroky k prozkoumání možných příčin root.
 
-1. V rámci osvědčeného postupu se ujistěte, že používáte následující model pro připojení při použití klienta StackExchange. Redis.
+1. Jako osvědčený postup se ujistěte, že používáte následující vzor pro připojení při použití klienta StackExchange.Redis.
 
     ```csharp
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -67,26 +67,26 @@ Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
     }
     ```
 
-    Další informace najdete v tématu [připojení k mezipaměti pomocí stackexchange. Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
+    Další informace naleznete [v tématu Připojení ke mezipaměti pomocí souboru StackExchange.Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
 
-1. Ujistěte se, že váš server a klientská aplikace jsou ve stejné oblasti v Azure. Například může docházet k vypršení časového limitu, když je vaše mezipaměť v Východní USA, ale klient se nachází v Západní USA a požadavek se nedokončil v `synctimeout`m intervalu, nebo může docházet k vypršení časového limitu při ladění z místního vývojového počítače. 
+1. Ujistěte se, že váš server a klientská aplikace jsou ve stejné oblasti v Azure. Například může být získávání časové osy, když vaše mezipaměť je v USA, ale klient `synctimeout` je v USA – západ a požadavek není dokončena v intervalu nebo může být získání časové osy při ladění z místního vývojového počítače. 
 
-    Důrazně doporučujeme mít mezipaměť a klienta ve stejné oblasti Azure. Pokud máte scénář, který zahrnuje volání mezi oblastmi, nastavte interval `synctimeout` na hodnotu vyšší, než je výchozí interval 1000-MS zahrnutím vlastnosti `synctimeout` do připojovacího řetězce. Následující příklad ukazuje fragment připojovacího řetězce pro StackExchange. Redis poskytnutý službou Azure cache pro Redis s `synctimeout` 2000 MS.
+    Důrazně doporučujeme mít mezipaměť a v klientovi ve stejné oblasti Azure. Pokud máte scénář, který zahrnuje volání mezi `synctimeout` oblastmi, měli byste nastavit interval na hodnotu vyšší `synctimeout` než výchozí interval 1000 ms zahrnutím vlastnosti do připojovacího řetězce. Následující příklad ukazuje úryvek připojovacího řetězce pro StackExchange.Redis poskytované `synctimeout` azure cache pro Redis s 2000 ms.
 
         synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
-1. Ujistěte se, že používáte nejnovější verzi [balíčku NuGet stackexchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/). V kódu jsou neustále opraveny chyby, aby bylo lépe robustní na vypršení časových limitů, takže je důležité mít nejnovější verzi.
-1. Pokud jsou vaše požadavky vázány omezeními šířky pásma na serveru nebo klientovi, trvá jejich dokončení déle a může způsobit vypršení časových limitů. Pokud chcete zjistit, jestli je váš časový limit z důvodu šířky pásma sítě na serveru, přečtěte si téma [omezení šířky pásma na straně serveru](cache-troubleshoot-server.md#server-side-bandwidth-limitation). Pokud chcete zjistit, jestli je časový limit z důvodu šířky pásma sítě klienta, přečtěte si téma [omezení šířky pásma na straně klienta](cache-troubleshoot-client.md#client-side-bandwidth-limitation).
-1. Získáváte na serveru nebo na klientovi vazbu na procesor?
+1. Ujistěte se, že používáte nejnovější verzi [balíčku StackExchange.Redis NuGet](https://www.nuget.org/packages/StackExchange.Redis/). Tam jsou chyby neustále opravuje v kódu, aby bylo robustnější na časové osy, takže s nejnovější verzí je důležité.
+1. Pokud jsou vaše požadavky vázány omezeníšířky pásma na serveru nebo klienta, trvá déle pro jejich dokončení a může způsobit časové limity. Chcete-li zjistit, zda je časový rozsah z důvodu šířky pásma sítě na serveru, přečtěte si informace o [omezení šířky pásma na straně serveru](cache-troubleshoot-server.md#server-side-bandwidth-limitation). Chcete-li zjistit, zda je časový rozsah z důvodu šířky pásma klientské sítě, přečtěte si informace o [omezení šířky pásma na straně klienta](cache-troubleshoot-client.md#client-side-bandwidth-limitation).
+1. Jste stále cpu vázán na serveru nebo na straně klienta?
 
-   - Ověřte, jestli na svém klientovi máte vazbu na základě procesoru. Vysoký procesor by mohl způsobit, že se požadavek nezpracovává v rámci `synctimeout` intervalu, což způsobí vypršení časového limitu žádosti. Přesunutí na větší velikost klienta nebo distribuce zatížení může pomáhat s řízením tohoto problému.
-   - Podívejte se, jestli se na serveru nepracujete s VYUŽITÍm monitorování [metriky výkonu mezipaměti](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)procesoru. Žádosti přicházející v době, kdy je Redis procesor, můžou způsobit vypršení časového limitu těchto požadavků. Tuto podmínku můžete vyřešit tak, že zatížení rozšíříte mezi více horizontálních oddílů v mezipaměti Premium nebo upgradujete na větší velikost nebo cenovou úroveň. Další informace najdete v tématu [omezení šířky pásma na straně serveru](cache-troubleshoot-server.md#server-side-bandwidth-limitation).
-1. Nemusíte na serveru zpracovat příkazy dlouhou dobu. Dlouhotrvající příkazy, jejichž zpracování na Redis serveru trvá dlouhou dobu, můžou způsobit vypršení časových limitů. Další informace o dlouhotrvajících příkazech naleznete v tématu [dlouhotrvající příkazy](cache-troubleshoot-server.md#long-running-commands). Můžete se připojit ke své instanci Azure cache for Redis pomocí klienta Redis-CLI nebo [konzoly Redis](cache-configure.md#redis-console). Pak spusťte příkaz [SLOWLOG](https://redis.io/commands/slowlog) , abyste viděli, zda jsou požadavky pomalejší, než bylo očekáváno. Redis Server a StackExchange. Redis jsou optimalizované pro mnoho malých požadavků místo méně velkých požadavků. Rozdělení dat do menších bloků může tady zlepšit.
+   - Zkontrolujte, zda jste stále vázáncpu na vašem klientovi. Vysoký procesor může způsobit, že požadavek `synctimeout` nebude zpracován v intervalu a způsobí, že požadavek na časový limit. Přesunutí na větší velikost klienta nebo distribuce zatížení může pomoci řídit tento problém.
+   - Sledováním [metriky výkonu mezipaměti](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)procesoru zkontrolujte, zda na serveru přilne procesor. Požadavky přicházející v době, kdy je Redis vázán na procesor, mohou způsobit, že tyto požadavky budou vypovězení. Chcete-li tuto podmínku vyřešit, můžete distribuovat zatížení mezi více úlomků v mezipaměti premium nebo upgradovat na větší velikost nebo cenovou úroveň. Další informace naleznete v [tématu Omezení šířky pásma na straně serveru](cache-troubleshoot-server.md#server-side-bandwidth-limitation).
+1. Zpracovávají se příkazy na serveru dlouho? Dlouhotrvající příkazy, které trvá dlouhou dobu zpracování na serveru redis může způsobit časové oběhu. Další informace o dlouhotrvajících příkazech naleznete v [tématu Long-running commands](cache-troubleshoot-server.md#long-running-commands). K instanci Azure Cache for Redis se můžete připojit pomocí klienta redis-cli nebo [konzoly Redis](cache-configure.md#redis-console). Potom spusťte příkaz [SLOWLOG](https://redis.io/commands/slowlog) a zjistěte, zda existují požadavky pomalejší, než bylo očekáváno. Redis Server a StackExchange.Redis jsou optimalizovány pro mnoho malých požadavků, nikoli méně velkých požadavků. Rozdělení dat na menší bloky dat může zlepšit věci zde.
 
-    Informace o připojení ke koncovému bodu SSL v mezipaměti pomocí Redis-CLI a stunnelu najdete v blogovém příspěvku s [oznámením o poskytovateli stavu relace ASP.NET pro verzi Preview verze Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
-1. Vysoké zatížení serveru Redis může způsobit vypršení časových limitů. Zatížení serveru můžete monitorovat monitorováním [metriky výkonu `Redis Server Load` cache](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Zatížení serveru 100 (maximální hodnota) znamená, že server Redis je zaneprázdněný, a to bez času nečinnosti, zpracování požadavků. Pokud chcete zjistit, jestli některé žádosti zabírají všechny možnosti serveru, spusťte příkaz SlowLog, jak je popsáno v předchozím odstavci. Další informace najdete v tématu vysoké využití procesoru/zatížení serveru.
-1. Bylo na straně klienta nějaká jiná událost, která by mohla způsobit Blip sítě? Mezi běžné události patří: škálování počtu instancí klientů nahoru nebo dolů, nasazení nové verze klienta nebo automatické škálování povoleno. V našem testování jsme zjistili, že automatické škálování nebo horizontální navýšení kapacity může způsobit ztrátu odchozího síťového připojení po dobu několika sekund. StackExchange. Redis kód je odolný vůči takovým událostem a znovu se připojuje. Při opětovném připojení můžou všechny žádosti ve frontě vyprší časový limit.
-1. Existuje velký požadavek před několika malými požadavky na mezipaměť, jejichž časový limit vypršel? Parametr `qs` v chybové zprávě oznamuje, kolik požadavků bylo odesláno z klienta na server, ale nezpracovalo odpověď. Tato hodnota může zůstat větší, protože StackExchange. Redis používá jedno připojení TCP a může v jednom okamžiku číst jen jednu odpověď. I když vypršel časový limit první operace, nezastaví posílání více dat na server ani ze serveru. Ostatní požadavky budou zablokovány, dokud nebude velký požadavek dokončen a může dojít k vypršení časového limitu. Jedním z řešení je minimalizace pravděpodobnosti časových limitů tím, že zajistíte dostatečnou velikost mezipaměti pro vaše úlohy a rozdělení velkých hodnot do menších bloků dat. Dalším možným řešením je použít ve vašem klientovi fond `ConnectionMultiplexer` objektů a při odesílání nové žádosti zvolit `ConnectionMultiplexer` načtený. Načítání přes více objektů připojení by mělo zabránit jednomu časovému limitu, který by způsobil vypršení dalších požadavků.
-1. Pokud používáte `RedisSessionStateProvider`, ujistěte se, že jste správně nastavili časový limit opakování. `retryTimeoutInMilliseconds` musí být vyšší než `operationTimeoutInMilliseconds`, jinak nedojde k žádným opakovaným pokusům. V následujícím příkladu je `retryTimeoutInMilliseconds` nastaveno na 3000. Další informace najdete v tématu [zprostředkovatel stavu relací ASP.NET pro Azure cache pro Redis](cache-aspnet-session-state-provider.md) a [Jak používat konfigurační parametry zprostředkovatele stavu relace a zprostředkovatele výstupní mezipaměti](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
+    Informace o připojení ke koncovému bodu SSL mezipaměti pomocí redis-cli a stunnel najdete v příspěvku blogu [Oznámení ASP.NET zprostředkovatele stavu relace pro vydání Redis Preview .](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)
+1. Vysoké zatížení serveru Redis může způsobit časové protytby. Zatížení serveru můžete sledovat sledováním `Redis Server Load` [metriky výkonu mezipaměti](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Zatížení serveru 100 (maximální hodnota) znamená, že server redis byl zaneprázdněn, bez doby nečinnosti, zpracování požadavků. Chcete-li zjistit, zda některé požadavky zabírají všechny funkce serveru, spusťte příkaz SlowLog, jak je popsáno v předchozím odstavci. Další informace naleznete v tématu Vysoké využití procesoru / Zatížení serveru.
+1. Byla na straně klienta nějaká jiná událost, která mohla způsobit výkyv v síti? Mezi běžné události patří: škálování počtu instancí klienta nahoru nebo dolů, nasazení nové verze klienta nebo automatické škálování povoleno. V našem testování jsme zjistili, že automatické škálování nebo škálování nahoru/dolů může způsobit ztrátu odchozího připojení k síti na několik sekund. StackExchange.Redis kód je odolný vůči těmto událostem a znovu připojí. Při opětovném připojení mohou být všechny požadavky ve frontě vypodonomovat.
+1. Byl tam velký požadavek předcházející několik malých požadavků do mezipaměti, která časový režim? Parametr `qs` v chybové zprávě informuje o tom, kolik požadavků bylo odesláno z klienta na server, ale nezpracovalodpověď. Tato hodnota může nadále růst, protože StackExchange.Redis používá jedno připojení TCP a lze číst pouze jednu odpověď najednou. I když byl časový režim první operace outd, nezastaví další data před odesláním na server nebo ze serveru. Ostatní požadavky budou blokovány, dokud nebude velký požadavek dokončen a může způsobit časové toky. Jedním z řešení je minimalizovat možnost časového nastavení tím, že zajistíte, že vaše mezipaměť je dostatečně velká pro vaše úlohy a rozdělení velkých hodnot na menší bloky. Dalším možným řešením je použití `ConnectionMultiplexer` fondu objektů v klientovi `ConnectionMultiplexer` a zvolte nejméně načtené při odesílání nového požadavku. Načítání přes více objektů připojení by měla zabránit jeden časový limit z příčinou jiných požadavků také časový limit.
+1. Pokud používáte `RedisSessionStateProvider`, ujistěte se, že jste správně nastavili časový čas opakování. `retryTimeoutInMilliseconds`by měla `operationTimeoutInMilliseconds`být vyšší než , jinak nedojde k žádnému opakování. V následujícím `retryTimeoutInMilliseconds` příkladu je nastavena na 3000. Další informace naleznete [v tématu ASP.NET zprostředkovatele stavu relace pro Azure Cache for Redis](cache-aspnet-session-state-provider.md) a [Jak používat parametry konfigurace zprostředkovatele stavu relace a zprostředkovatele výstupní mezipaměti](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
     ```xml
     <add
@@ -103,17 +103,17 @@ Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
       retryTimeoutInMilliseconds="3000" />
     ```
 
-1. [Sledováním](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` a `Used Memory`ověřte využití paměti na serveru Azure cache pro Redis. Pokud je zásada vyřazení nastavená na místo, Redis spustí vyřazení klíčů, když `Used_Memory` dosáhne velikosti mezipaměti. V ideálním případě by `Used Memory RSS` měla být jenom mírně vyšší než `Used memory`. Velký rozdíl znamená fragmentaci paměti (interní nebo externí). Pokud je `Used Memory RSS` menší než `Used Memory`, znamená to, že část paměti mezipaměti byla vyměněna operačním systémem. Pokud dojde k záměně, můžete očekávat některé významné latence. Vzhledem k tomu `Used Memory RSS`, že Redis nemá kontrolu nad tím, jak je jejich přidělení namapováno na paměťové stránky, je často výsledkem špičky využití paměti. Když server Redis uvolní paměť, přidělování paměti převezme paměť, ale může nebo nemusí získat paměť zpátky do systému. Může dojít k nesouladu mezi `Used Memory` hodnotou a spotřebou paměti, která je hlášena operačním systémem. Paměť mohla být použita a uvolněna Redis, ale nebyla vrácena zpět do systému. Chcete-li snížit problémy s pamětí, můžete provést následující kroky:
+1. Zkontrolujte využití paměti na serveru Azure Cache `Used Memory`for Redis [monitorováním](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` a . Pokud je zásada vyřazení na místě, Redis spustí `Used_Memory` vyřazování klíčů, když dosáhne velikosti mezipaměti. V ideálním `Used Memory RSS` případě by měla `Used memory`být jen mírně vyšší než . Velký rozdíl znamená, že je fragmentace paměti (vnitřní nebo externí). Pokud `Used Memory RSS` je `Used Memory`menší než , znamená to, že část mezipaměti byla prohozena operačním systémem. Pokud dojde k tomuto prohození, můžete očekávat některé významné latence. Vzhledem k tomu, že Redis nemá kontrolu nad tím, `Used Memory RSS` jak jsou jeho přidělení mapována na stránky paměti, vysoká je často výsledkem špičky využití paměti. Když server Redis uvolní paměť, alokátor převezme paměť, ale může nebo nemusí vrátit paměť do systému. Může být nesoulad mezi `Used Memory` hodnotou a spotřebou paměti podle zprávy operačního systému. Paměť byla pravděpodobně použita a uvolněna společností Redis, ale nebyla vrácena systému. Chcete-li zmírnit problémy s pamětí, můžete provést následující kroky:
 
-   - Upgradujte mezipaměť na větší velikost, aby neběžela omezení paměti systému.
-   - Nastavte čas vypršení platnosti klíčů tak, aby byly starší hodnoty vyřazeny interaktivně.
-   - Monitoruje metriku `used_memory_rss` cache. Pokud se tato hodnota blíží velikosti jejich mezipaměti, budete pravděpodobně moci začít zobrazovat problémy s výkonem. Pokud používáte mezipaměť Premium, můžete data distribuovat mezi několik horizontálních oddílů, nebo můžete upgradovat na větší velikost mezipaměti.
+   - Upgradujte mezipaměť na větší velikost, abyste neběželi proti omezením paměti v systému.
+   - Nastavte časy vypršení platnosti klíčů tak, aby starší hodnoty byly proaktivně vyřazeny.
+   - Sledujte `used_memory_rss` metriku mezipaměti. Když se tato hodnota blíží velikosti jejich mezipaměti, pravděpodobně se vám začnou zoaškovat problémy s výkonem. Pokud používáte prémiovou mezipaměť, distribuujte data mezi více úlomků nebo upgradujte na větší velikost mezipaměti.
 
-   Další informace najdete v tématu [tlak na paměť na serveru Redis](cache-troubleshoot-server.md#memory-pressure-on-redis-server).
+   Další informace naleznete v [tématu Tlak paměti na serveru Redis](cache-troubleshoot-server.md#memory-pressure-on-redis-server).
 
 ## <a name="additional-information"></a>Další informace
 
 - [Řešení potíží se službou Azure Cache for Redis na straně klienta](cache-troubleshoot-client.md)
 - [Řešení potíží se službou Azure Cache for Redis na straně serveru](cache-troubleshoot-server.md)
-- [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Jak monitorovat Azure cache pro Redis](cache-how-to-monitor.md)
+- [Jak mohu porovnat a otestovat výkon mezipaměti?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Jak monitorovat Azure Cache pro Redis](cache-how-to-monitor.md)

@@ -9,125 +9,125 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272640"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
-Než nasadíte cluster HDInsight, naplánujte požadovanou kapacitu clusteru určením potřebného výkonu a škálování. Toto plánování pomáhá optimalizovat použitelnost i náklady. Některá rozhodnutí o kapacitě clusteru se po nasazení nedají změnit. Pokud se změní parametry výkonu, cluster se dá deinstalovat a znovu vytvořit, aniž by došlo ke ztrátě uložených dat.
+Před nasazením clusteru HDInsight naplánujte požadovanou kapacitu clusteru určením potřebného výkonu a škálování. Toto plánování pomáhá optimalizovat použitelnost i náklady. Některá rozhodnutí o kapacitě clusteru nelze po nasazení změnit. Pokud se změní parametry výkonu, cluster lze demontovat a znovu vytvořit bez ztráty uložených dat.
 
-Klíčovým dotazem pro plánování kapacity jsou:
+Klíčové otázky, které je třeba položit pro plánování kapacity, jsou:
 
-* V jakých geografických oblastech byste měli cluster nasazovat?
-* Jak velké úložiště potřebujete?
+* Ve které geografické oblasti byste měli nasadit cluster?
+* Kolik úložného prostoru potřebujete?
 * Jaký typ clusteru byste měli nasadit?
-* Jaké velikosti a typy virtuálních počítačů by měly uzly clusteru používat?
-* Kolik pracovních uzlů má váš cluster?
+* Jakou velikost a typ virtuálního počítače (VM) by měl y otomek clusteru používat?
+* Kolik pracovních uzlů by měl mít cluster?
 
-## <a name="choose-an-azure-region"></a>Zvolit oblast Azure
+## <a name="choose-an-azure-region"></a>Výběr oblasti Azure
 
-Oblast Azure určuje, kde se cluster fyzicky zřídí. Aby se minimalizovala latence čtení a zápisu, měl by cluster být blízko vašich dat.
+Oblast Azure určuje, kde je váš cluster fyzicky zřízena. Chcete-li minimalizovat latenci čtení a zápisů, cluster by měl být v blízkosti dat.
 
-HDInsight je k dispozici v mnoha oblastech Azure. Pokud chcete najít nejbližší oblast, přečtěte si téma [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight).
+HDInsight je dostupný v mnoha oblastech Azure. Chcete-li najít nejbližší oblast, naleznete [v tématu Produkty dostupné podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight).
 
-## <a name="choose-storage-location-and-size"></a>Zvolit umístění a velikost úložiště
+## <a name="choose-storage-location-and-size"></a>Zvolte umístění a velikost úložiště
 
 ### <a name="location-of-default-storage"></a>Umístění výchozího úložiště
 
-Výchozí úložiště, buď účet Azure Storage, nebo Azure Data Lake Storage, musí být ve stejném umístění jako váš cluster. Azure Storage je k dispozici ve všech umístěních. Data Lake Storage Gen1 je k dispozici v některých oblastech – viz aktuální [dostupnost Data Lake Storage](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
+Výchozí úložiště, buď účet Azure Storage nebo Azure Data Lake Storage, musí být ve stejném umístění jako váš cluster. Azure Storage je k dispozici na všech místech. V některých oblastech je k dispozici úložiště datových jezer Gen1 – podívejte se na aktuální [dostupnost úložiště datových jezer](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
-### <a name="location-of-existing-data"></a>Umístění stávajících dat
+### <a name="location-of-existing-data"></a>Umístění stávajících údajů
 
-Pokud už máte účet úložiště nebo Data Lake Storage obsahující vaše data a chcete toto úložiště používat jako výchozí úložiště clusteru, musíte nasadit cluster na stejném místě.
+Pokud už máte účet úložiště nebo úložiště datového jezera obsahující vaše data a chcete toto úložiště použít jako výchozí úložiště clusteru, musíte cluster nasadit ve stejném umístění.
 
 ### <a name="storage-size"></a>Velikost úložiště
 
-Po nasazení clusteru HDInsight můžete připojit další účty Azure Storage nebo získat přístup k jiným Data Lake Storage. Všechny vaše účty úložiště se musí nacházet ve stejném umístění jako váš cluster. Data Lake Storage může být v jiném umístění, i když to může způsobit latenci čtení a zápisu dat.
+Po nasazení clusteru HDInsight můžete připojit další účty Azure Storage nebo získat přístup k jinému úložišti Data Lake Storage. Všechny účty úložiště musí být umístěny ve stejném umístění jako cluster. Úložiště datového jezera může být v jiném umístění, i když to může zavést některé latence čtení a zápisu dat.
 
-Azure Storage má některá [omezení kapacity](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), zatímco Data Lake Storage Gen1 je prakticky neomezené.
+Azure Storage má určitá [omezení kapacity](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), zatímco Data Lake Storage Gen1 je prakticky neomezená.
 
-Cluster má přístup k kombinaci různých účtů úložiště. Mezi typické příklady patří:
+Cluster má přístup ke kombinaci různých účtů úložiště. Typickými příklady jsou:
 
-* V případě, že množství dat může překročit kapacitu úložiště jednoho kontejneru úložiště objektů BLOB.
-* V případě, že frekvence přístupu k kontejneru objektů BLOB může překročit prahovou hodnotu, pokud dojde k omezování.
-* Když chcete data udělat, už jste nahráli do kontejneru objektů blob, který je k dispozici pro cluster.
-* Pokud chcete izolovat různé části úložiště z důvodů zabezpečení nebo zjednodušit správu.
+* Pokud je pravděpodobné, že množství dat překročí kapacitu úložiště jednoho kontejneru úložiště objektů blob.
+* Pokud rychlost přístupu k kontejneru objektů blob může překročit prahovou hodnotu, kde dochází k omezení.
+* Pokud chcete zpřístupnit data, už jste pro cluster nahráli do kontejneru objektů blob.
+* Pokud chcete izolovat různé části úložiště z důvodu zabezpečení nebo zjednodušit správu.
 
-Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
+Pro lepší výkon použijte pouze jeden kontejner na účet úložiště.
 
-## <a name="choose-a-cluster-type"></a>Zvolit typ clusteru
+## <a name="choose-a-cluster-type"></a>Volba typu clusteru
 
-Typ clusteru určuje zatížení, které je nakonfigurováno pro spuštění clusteru HDInsight, například [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)nebo [Apache Spark](https://spark.apache.org/). Podrobný popis dostupných typů clusterů najdete v tématu [Úvod do Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight). Každý typ clusteru má konkrétní topologii nasazení, která zahrnuje požadavky na velikost a počet uzlů.
+Typ clusteru určuje úlohu, kterou je cluster HDInsight nakonfigurován tak, aby se spouštěl, například [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)nebo [Apache Spark](https://spark.apache.org/). Podrobný popis dostupných typů clusterů najdete [v tématu Úvod do Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight). Každý typ clusteru má specifickou topologii nasazení, která zahrnuje požadavky na velikost a počet uzlů.
 
-## <a name="choose-the-vm-size-and-type"></a>Zvolit velikost a typ virtuálního počítače
+## <a name="choose-the-vm-size-and-type"></a>Volba velikosti a typu virtuálního počítače
 
-Každý typ clusteru má sadu typů uzlů a každý typ uzlu má konkrétní možnosti pro velikost a typ virtuálního počítače.
+Každý typ clusteru má sadu typů uzlů a každý typ uzlu má specifické možnosti pro jejich velikost a typ virtuálního počítače.
 
-Chcete-li určit optimální velikost clusteru pro vaši aplikaci, můžete otestovat kapacitu clusteru benchmark a zvětšit uvedenou velikost. Můžete například použít simulované úlohy nebo *testovací dotaz*. Díky simulovaným úlohám spouštíte očekávané úlohy v různých velikostních clusterech a postupně zvyšují velikost, dokud se nedosáhne požadovaného výkonu. Do ostatních provozních dotazů se dá pravidelně vkládat dotaz, který ukazuje, jestli cluster má dostatek prostředků.
+Chcete-li určit optimální velikost clusteru pro vaši aplikaci, můžete srovnávací kapacitu clusteru a zvětšit velikost, jak je uvedeno. Můžete například použít simulované zatížení nebo *kanárský dotaz*. Se simulovaným zatížením spustíte očekávané úlohy v clusterech různých velikostí a postupně se zvětšujete, dokud nebude dosaženo požadovaného výkonu. Kanárský dotaz lze pravidelně vkládat mezi ostatní produkční dotazy, aby se zjistilo, zda má cluster dostatek prostředků.
 
-Další informace o tom, jak zvolit správnou rodinu virtuálních počítačů pro vaše zatížení, najdete v tématu [Výběr správné velikosti virtuálních počítačů pro váš cluster](hdinsight-selecting-vm-size.md).
+Další informace o tom, jak vybrat správnou rodinu virtuálních počítačů pro vaše úlohy, najdete [v tématu výběr správné velikosti virtuálního počítače pro váš cluster](hdinsight-selecting-vm-size.md).
 
-## <a name="choose-the-cluster-scale"></a>Výběr škálování clusteru
+## <a name="choose-the-cluster-scale"></a>Volba měřítka clusteru
 
-Velikost clusteru se určuje podle počtu jeho uzlů virtuálních počítačů. Pro všechny typy clusterů existují typy uzlů, které mají konkrétní měřítko, a typy uzlů, které podporují škálování na více instancí. Cluster může například vyžadovat přesně tři [Apache Zookeeper](https://zookeeper.apache.org/) uzly nebo dva hlavní uzly. Pracovní uzly, které zpracovávají data distribuovaným způsobem, můžou využít výhod rozšiřování kapacity přidáním dalších pracovních uzlů.
+Měřítko clusteru je určeno množstvím uzlů virtuálních virtuálních mk. Pro všechny typy clusterů existují typy uzlů, které mají určité škálování a typy uzlů, které podporují horizontální navýšení kapacity. Cluster může například vyžadovat přesně tři uzly [Apache ZooKeeper](https://zookeeper.apache.org/) nebo dva uzly Head. Pracovní uzly, které provádějí zpracování dat distribuovaným způsobem, mohou mít prospěch z horizontálního navýšení kapacity přidáním dalších pracovních uzlů.
 
-V závislosti na typu clusteru zvyšuje počet pracovních uzlů další výpočetní kapacitu (například více jader), ale může také přidat do celkového množství paměti, které je nutné, aby celý cluster podporoval ukládání zpracovaných dat v paměti. Stejně jako u zvolené velikosti a typu virtuálních počítačů se při výběru správného měřítka clusteru obvykle dosáhne empirické využití simulovaných úloh nebo Kanárských dotazů.
+V závislosti na typu clusteru zvýšení počtu pracovních uzlů přidá další výpočetní kapacitu (například více jader), ale může také přidat k celkovému množství paměti potřebné pro celý cluster pro podporu ukládání zpracovávaných dat v paměti. Stejně jako u volby velikosti a typu virtuálního počítače je výběr správného škálování clusteru obvykle dosaženo empiricky pomocí simulovaných úloh nebo kanárských dotazů.
 
-Můžete škálovat cluster tak, aby splňoval požadavky na nejvyšší zatížení, a pak ho škálovat zpátky, když už tyto dodatečné uzly nepotřebujete. [Funkce automatického škálování](hdinsight-autoscale-clusters.md) umožňuje automaticky škálovat cluster na základě předem určených metrik a časování. Další informace o ručním škálování clusterů najdete v tématu věnovaném [škálování clusterů HDInsight](hdinsight-scaling-best-practices.md).
+Můžete horizontální navýšení kapacity clusteru tak, aby splňovaly požadavky na zatížení ve špičce, a pak škálovat zpět dolů, když tyto další uzly již nejsou potřeba. [Funkce Automatické škálování](hdinsight-autoscale-clusters.md) umožňuje automaticky škálovat cluster na základě předem určených metrik a časování. Další informace o ručním škálování clusterů naleznete v [tématu Škálování clusterů HDInsight](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Životní cyklus clusteru
 
-Účtují se vám poplatky za dobu života clusteru. Pokud máte ke svému clusteru jenom určité časy, které potřebujete, můžete [vytvořit clustery na vyžádání pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). Můžete také vytvořit skripty PowerShellu, které zřídí a odstraní cluster, a pak tyto skripty naplánujete pomocí [Azure Automation](https://azure.microsoft.com/services/automation/).
+Účtuje se vám za život clusteru. Pokud jsou pouze konkrétní časy, které potřebujete clusteru zprovozněn, můžete [vytvořit clustery na vyžádání pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). Můžete také vytvořit skripty prostředí PowerShell, které zřazují a odstraňují váš cluster, a pak tyto skripty naplánovat pomocí [Azure Automation](https://azure.microsoft.com/services/automation/).
 
 > [!NOTE]  
-> Při odstranění clusteru se odstraní i jeho výchozí metastore Hive. Pokud chcete zachovat metastore pro další opětovné vytvoření clusteru, použijte externí úložiště metadat, jako je Azure Database nebo [Apache Oozie](https://oozie.apache.org/).
+> Při odstranění clusteru je odstraněn o jeho výchozí Metastore Hive také. Chcete-li zachovat metastore pro další opětovné vytvoření clusteru, použijte externí úložiště metadat, jako je Azure Database nebo [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
-### <a name="isolate-cluster-job-errors"></a>Izolace chyb úloh clusteru
+### <a name="isolate-cluster-job-errors"></a>Izolovat chyby úloh y clusteru
 
-K chybám může dojít v důsledku paralelního spouštění více map a snížení počtu komponent v clusteru s více uzly. Chcete-li tento problém izolovat, zkuste distribuované testování spuštěním souběžných úloh v jednom clusteru pracovních uzlů a pak tento přístup rozbalte, pokud chcete spustit více úloh současně na clusterech, které obsahují více než jeden uzel. Pokud chcete v Azure vytvořit cluster HDInsight s jedním uzlem, použijte možnost *vlastní (velikost, nastavení, aplikace)* a při zřizování nového clusteru na portálu použijte hodnotu 1 pro *počet uzlů pracovního procesu* v části **Velikost clusteru** .
+Někdy může dojít k chybám z důvodu paralelního spuštění více map a snížení komponent v clusteru s více uzlovými počítači. Chcete-li problém izolovat, zkuste distribuované testování spuštěním souběžných více úloh v clusteru jednoho pracovního uzlu a potom rozbalte tento přístup tak, aby spouštěl více úloh současně v clusterech obsahujících více než jeden uzel. Chcete-li vytvořit cluster HDInsight s jedním uzlem v Azure, použijte možnost *Vlastní (velikost, nastavení, aplikace)* a při zřizování nového clusteru na portálu použijte hodnotu 1 pro *počet pracovních uzlů* v části Velikost **clusteru.**
 
-## <a name="quotas"></a>kvóty,
+## <a name="quotas"></a>Kvóty
 
-Po určení velikosti virtuálního počítače clusteru, škálování a typu ověřte aktuální limity kapacity vašeho předplatného. Pokud dosáhnete limitu kvóty, možná nebudete moct nasadit nové clustery nebo škálovat existující clustery přidáním dalších pracovních uzlů. Jedinou omezenou kvótou je kvóta PROCESORových jader, která existuje na úrovni oblasti pro každé předplatné. Například vaše předplatné může mít v Východní USA oblasti 30 jader omezení. 
+Po určení velikosti, škálování a typu cílového clusteru zkontrolujte aktuální limity kapacity kvót vašeho předplatného. Když dosáhnete limitu kvóty, nemusí být možné nasadit nové clustery nebo horizontální navýšení kapacity existujících clusterů přidáním dalších pracovních uzlů. Jediným limitem kvóty je kvóta jádr procesoru, která existuje na úrovni oblasti pro každé předplatné. Vaše předplatné může mít například 30 základních limitů v oblasti USA – východ. 
 
-Chcete-li zjistit dostupné jádra, proveďte následující kroky:
+Chcete-li zkontrolovat dostupná jádra, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 2. Přejděte na stránku **Přehled** pro cluster HDInsight. 
-3. V nabídce vlevo klikněte na možnost **limity kvót**.
+3. V levé nabídce klepněte na **položku Omezení kvót**.
 
-   Na stránce se zobrazí počet používaných jader, počet dostupných jader a celkový počet jader.
+   Na stránce se zobrazí počet používáných jader, počet dostupných jader a celkový počet jader.
 
-Pokud potřebujete požádat o zvýšení kvóty, proveďte následující kroky:
+Pokud potřebujete požádat o zvýšení kvóty, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. V levé dolní části stránky vyberte **help + support** .
-1. Vyberte **Nová žádost o podporu**.
-1. Na stránce **Nová žádost o podporu** na kartě **základy** vyberte následující možnosti:
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. V levé dolní části stránky vyberte **Nápověda + podpora.**
+1. Vyberte **nový požadavek na podporu**.
+1. Na stránce **Nová žádost o podporu** vyberte v části **Základy** následující možnosti:
 
-   - **Typ problému**: **omezení služby a předplatného (kvóty)**
-   - **Předplatné**: předplatné, které chcete upravit.
+   - **Typ problému**: **Omezení služeb a předplatného (kvóty)**
+   - **Předplatné**: předplatné, které chcete upravit
    - **Typ kvóty**: **HDInsight**
 
      ![Vytvoření žádosti o podporu pro zvýšení kvóty jádra HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. Vyberte **Další: řešení > >** .
+1. Vyberte **další: Řešení >>**.
 1. Na stránce **Podrobnosti** zadejte popis problému, vyberte závažnost problému, upřednostňovanou metodu kontaktu a další povinná pole.
-1. Vyberte **Další: zkontrolovat + vytvořit > >** .
-1. Na kartě **Revize + vytvořit** vyberte **vytvořit**.
+1. Vyberte **další: Kontrola + vytvoření >>**.
+1. Na kartě **Revize + vytvoření** vyberte **Vytvořit**.
 
 > [!NOTE]  
-> Pokud potřebujete zvýšit kvótu jádra HDInsight v soukromé oblasti, [odešlete žádost o seznam povolených](https://aka.ms/canaryintwhitelist).
+> Pokud potřebujete zvýšit kvótu jádra HDInsight v privátní oblasti, [odešlete požadavek na seznam povolených položek](https://aka.ms/canaryintwhitelist).
 
-Můžete [kontaktovat podporu a požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Můžete [se obrátit na podporu a požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
-Existují však omezení pevné kvóty, například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Existují však některé pevné kvóty, například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v [tématu limity předplatného azure a služby, kvóty a omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení clusterů ve službě HDInsight pomocí Apache Hadoop, Spark, Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md): Naučte se, jak nastavit a nakonfigurovat clustery v hdinsight pomocí Apache Hadoop, Spark, Kafka, interaktivního podregistru, HBA, služeb ml nebo přetvoření.
-* [Monitorování výkonu clusteru](hdinsight-key-scenarios-to-monitor.md): Přečtěte si o klíčových scénářích, jak monitorovat cluster HDInsight, který může mít vliv na kapacitu clusteru.
+* [Nastavení clusterů v HDInsightu pomocí Apache Hadoop, Spark, Kafka a dalších :](hdinsight-hadoop-provision-linux-clusters.md)Naučte se nastavit a nakonfigurovat clustery v HDInsight u Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, ML Services nebo Storm.
+* [Sledování výkonu clusteru](hdinsight-key-scenarios-to-monitor.md): Informace o klíčových scénářích, které je třeba sledovat pro váš cluster HDInsight, které mohou ovlivnit kapacitu vašeho clusteru.

@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s místní ochranou hesel služby Azure AD
-description: Přečtěte si, jak řešit potíže s ochranou hesel Azure AD pro místní Active Directory Domain Services prostředí.
+title: Poradce při potížích s místní ochranou heslem Azure AD
+description: Zjistěte, jak řešit potíže s ochranou heslem služby Azure AD pro místní prostředí služby Active Directory Domain Services
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,91 +12,91 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263644"
 ---
-# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Řešení potíží: místní ochrana heslem Azure AD
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Poradce při potížích: Místní ochrana heslem Azure AD
 
-Po nasazení ochrany heslem služby Azure AD může být potřeba řešení potíží. Tento článek podrobně popisuje některé běžné kroky při řešení potíží.
+Po nasazení ochrany heslem Azure AD může být vyžadováno řešení potíží. Tento článek je podrobně popsán, abyste lépe porozuměli některým běžným krokům řešení potíží.
 
-## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>Agent řadiče domény nemůže najít proxy v adresáři.
+## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>Agent řadiče domény nemůže najít proxy server v adresáři.
 
-Hlavním příznakem tohoto problému jsou 30017 události v protokolu událostí správce agenta řadiče domény.
+Hlavním příznakem tohoto problému je 30017 události v protokolu událostí agenta řadiče domény.
 
-Obvyklou příčinou tohoto problému je to, že proxy server ještě není zaregistrovaný. Pokud je proxy server zaregistrován, může dojít k prodlevě z důvodu latence replikace služby AD, dokud konkrétnímu agentovi řadiče domény nebude moci daný proxy server zobrazit.
+Obvyklou příčinou tohoto problému je, že proxy ještě nebyla zaregistrována. Pokud byl zaregistrován proxy server, může dojít k určitému zpoždění z důvodu latence replikace služby AD, dokud konkrétní agent řadiče domény nebude moci zobrazit tento proxy server.
 
-## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>Agent řadiče domény nemůže komunikovat s proxy serverem.
+## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>Agent dc není schopen komunikovat s proxy serverem
 
-Hlavním příznakem tohoto problému jsou 30018 události v protokolu událostí správce agenta řadiče domény. Tento problém může mít několik možných příčin:
+Hlavním příznakem tohoto problému je 30018 události v protokolu událostí agenta řadiče domény. Tento problém může mít několik možných příčin:
 
-1. Agent řadiče domény se nachází v izolované části sítě, která neumožňuje síťové připojení k registrovaným proxy serverem. Tento problém může být neškodný, pokud ostatní agenti DC můžou komunikovat s proxy servery, aby mohli stahovat zásady hesel z Azure. Po stažení se tyto zásady pak získají izolovaným řadičem domény prostřednictvím replikace souborů zásad ve sdílené složce SYSVOL.
+1. Agent řadiče domény se nachází v izolované části sítě, která neumožňuje připojení k síti k registrovaným proxy serverům. Tento problém může být neškodný, pokud ostatní agenti řadiče domény mohou komunikovat s proxy servery za účelem stažení zásad hesel z Azure. Po stažení budou tyto zásady získány izolovaným řadičem domény prostřednictvím replikace souborů zásad ve sdílené složce sysvol.
 
-1. Hostitelský počítač proxy blokuje přístup k koncovému bodu mapovače koncových bodů RPC (port 135).
+1. Hostitelský počítač proxy blokuje přístup ke koncovému bodu mapovače koncových bodů Vzdáleného volání procedur (port 135)
 
-   Instalační program proxy ochrany heslem služby Azure AD automaticky vytvoří příchozí pravidlo brány Windows Firewall, které umožňuje přístup k portu 135. Pokud je toto pravidlo později odstraněno nebo zakázáno, agenti řadiče domény nebudou moci komunikovat se službou proxy. Pokud byla předdefinovaná brána Windows Firewall zakázána místo jiného produktu brány firewall, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup k portu 135.
+   Instalační program proxy služby Azure AD Password Protection automaticky vytvoří příchozí pravidlo brány Windows Firewall, které umožňuje přístup k portu 135. Pokud je toto pravidlo později odstraněno nebo zakázáno, nebudou moci agenti řadiče domény komunikovat se službou Proxy. Pokud byla vestavěná brána Windows Firewall zakázána místo jiného produktu brány firewall, je nutné tuto bránu firewall nakonfigurovat tak, aby umožňovala přístup k portu 135.
 
-1. Hostitelský počítač proxy blokuje přístup ke koncovému bodu RPC (dynamický nebo statický), na kterém naslouchá služba proxy.
+1. Hostitelský počítač proxy blokuje přístup ke koncovému bodu Vzdáleného volání procedur (dynamickému nebo statickému) naslouchaném službou Proxy
 
-   Instalační program proxy ochrany heslem služby Azure AD automaticky vytvoří příchozí pravidlo brány Windows Firewall, které umožňuje přístup k jakýmkoli vstupním portům, na které naslouchá služba Azure AD Password Protection proxy. Pokud je toto pravidlo později odstraněno nebo zakázáno, agenti řadiče domény nebudou moci komunikovat se službou proxy. Pokud byla předdefinovaná brána Windows Firewall zakázaná místo jiného produktu firewallu, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup k jakýmkoli vstupním portům, na které naslouchá služba Azure AD Password Protection proxy. Tato konfigurace může být konkrétnější, pokud byla proxy služba nakonfigurovaná tak, aby naslouchala na specifickém statickém portu RPC (pomocí rutiny `Set-AzureADPasswordProtectionProxyConfiguration`).
+   Instalační program proxy serveru ochrany hesel Azure AD automaticky vytvoří příchozí pravidlo brány Windows Firewall, které umožňuje přístup ke všem příchozím portům, které poslouchá služba Proxy ochrany hesel Azure AD. Pokud je toto pravidlo později odstraněno nebo zakázáno, nebudou moci agenti řadiče domény komunikovat se službou Proxy. Pokud byla integrovaná brána Windows Firewall zakázána místo jiného produktu brány firewall, je nutné tuto bránu firewall nakonfigurovat tak, aby umožňovala přístup k příchozím portům, které poslouchá služba Proxy ochrany hesel Azure AD. Tato konfigurace může být konkrétnější, pokud byla služba Proxy nakonfigurována tak, `Set-AzureADPasswordProtectionProxyConfiguration` aby naslouchala na konkrétním statickém portu Vzdáleného volání procedur (pomocí rutiny).
 
-1. Hostitelský počítač proxy není nakonfigurovaný tak, aby umožňoval řadičům domény možnost přihlásit se k počítači. Toto chování se řídí pomocí přiřazování uživatelských oprávnění "přístup k tomuto počítači ze sítě". Toto oprávnění musí být uděleno všem řadičům domény ve všech doménách v doménové struktuře. Toto nastavení se často omezuje jako součást většího úsilí při posílení zabezpečení sítě.
+1. Hostitelský počítač proxy není nakonfigurován tak, aby umožňoval řadičům domény přihlášení k počítači. Toto chování je řízeno prostřednictvím přiřazení uživatelských oprávnění "Přístup k tomuto počítači ze sítě". Toto oprávnění musí být uděleno všem řadičům domény ve všech doménách v doménové struktuře. Toto nastavení je často omezeno jako součást většího úsilí o posílení zabezpečení sítě.
 
-## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Proxy služba nemůže komunikovat s Azure
+## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Služba proxy nemůže komunikovat s Azure
 
-1. Zajistěte, aby měl proxy počítač připojení ke koncovým bodům uvedeným v [požadavcích na nasazení](howto-password-ban-bad-on-premises-deploy.md).
+1. Ujistěte se, že počítač proxy má připojení ke koncovým bodům uvedeným v [požadavcích na nasazení](howto-password-ban-bad-on-premises-deploy.md).
 
-1. Ujistěte se, že je doménová struktura a všechny proxy servery zaregistrované u stejného tenanta Azure.
+1. Ujistěte se, že doménové struktury a všechny proxy servery jsou registrovány proti stejnému tenantovi Azure.
 
-   Tento požadavek můžete ověřit spuštěním rutin `Get-AzureADPasswordProtectionProxy` a `Get-AzureADPasswordProtectionDCAgent` prostředí PowerShell a potom porovnejte vlastnost `AzureTenant` každé vrácené položky. Pro správnou operaci musí být nahlášený název tenanta stejný ve všech agentech DC a proxy serverech.
+   Tento požadavek můžete zkontrolovat `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` spuštěním rutin a rutin prostředí `AzureTenant` PowerShell a poté porovnat vlastnost každé vrácené položky. Pro správnou funkci musí být ohlášený název klienta stejný ve všech agentech řadiče domény a serverech proxy.
 
-   Pokud existuje stav neshody registrace tenanta Azure, můžete tento problém vyřešit spuštěním rutin `Register-AzureADPasswordProtectionProxy` a/nebo `Register-AzureADPasswordProtectionForest` PowerShellu podle potřeby a tím, že použijete přihlašovací údaje ze stejného tenanta Azure pro všechny registrace.
+   Pokud existuje podmínka neshody registrace klienta Azure, tento problém `Register-AzureADPasswordProtectionProxy` lze `Register-AzureADPasswordProtectionForest` vyřešit spuštěním rutiny a/nebo PowerShell podle potřeby, ujistěte se, že používat přihlašovací údaje od stejného klienta Azure pro všechny registrace.
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>Agent řadiče domény nemůže šifrovat nebo dešifrovat soubory zásad hesel.
 
-Ochrana heslem Azure AD má kritickou závislost na funkci šifrování a dešifrování, kterou poskytuje služba Microsoft Key Distribution Service. Selhání šifrování nebo dešifrování může být v manifestu s nejrůznějšími příznaky a má několik možných příčin.
+Azure AD Password Protection má kritickou závislost na funkci šifrování a dešifrování poskytované službou Microsoft Key Distribution Service. Selhání šifrování nebo dešifrování se mohou projevit s různými příznaky a mají několik možných příčin.
 
-1. Ujistěte se, že je služba KDS povolená a funkční na všech řadičích domény se systémem Windows Server 2012 a novějším v doméně.
+1. Ujistěte se, že je služba KDS povolená a funkční ve všech řadičích domény systému Windows Server 2012 a novějších v doméně.
 
-   Ve výchozím nastavení je režim spuštění služby KDS nakonfigurovaný jako ruční (spuštění triggeru). Tato konfigurace znamená, že při prvním pokusu o použití služby se klient spustí na vyžádání. Tento výchozí režim spuštění služby je přijatelný pro fungování ochrany hesel služby Azure AD.
+   Ve výchozím nastavení je režim spuštění služby Služby KDS nakonfigurován jako ruční (trigger Start). Tato konfigurace znamená, že při prvním pokusu klienta o použití služby je spuštěna na vyžádání. Tento výchozí režim spuštění služby je přijatelné pro Azure AD heslem.
 
-   Pokud je režim spuštění služby KDS nakonfigurovaný tak, aby byl zakázaný, musí se tato konfigurace opravit předtím, než bude správně fungovat ochrana heslem Azure AD.
+   Pokud byl režim spuštění služby KDS nakonfigurován na Zakázáno, musí být tato konfigurace opravena, aby služba Azure AD Password Protection fungovala správně.
 
-   Jednoduchý test tohoto problému je ruční spuštění služby KDS, a to buď prostřednictvím konzoly MMC pro správu služby, nebo pomocí jiných nástrojů pro správu (například spuštěním příkazu "net start kdssvc" z konzoly příkazového řádku). Očekává se, že se služba KDS úspěšně spustí a zůstane spuštěná.
+   Jednoduchý test tohoto problému je ruční spuštění služby KDS, a to buď prostřednictvím konzoly MMC pro správu služby, nebo pomocí jiných nástrojů pro správu (například spustit "net start kdssvc" z konzoly příkazového řádku). Očekává se, že služba KDS bude úspěšně spuštěna a zůstane spuštěná.
 
-   Nejběžnější hlavní příčinou nefunkčnosti služby KDS je, že objekt řadiče domény služby Active Directory je umístěný mimo výchozí organizační jednotku řadiče domény. Tato konfigurace není službou KDS podporována a nejedná se o omezení vyplývající z ochrany hesel služby Azure AD. Opravou této podmínky je přesunutí objektu řadiče domény do umístění v rámci výchozí organizační jednotky řadičů domény.
+   Nejběžnější hlavní příčinou spuštění služby KDS je, že objekt řadiče domény služby Active Directory je umístěn mimo výchozí jednotku řadičů domény. Tato konfigurace není podporována službou KDS a není omezení matné uložené službou Azure AD Password Protection. Oprava této podmínky je přesunutí objektu řadiče domény do umístění pod výchozí jednotkou řadičů domény.
 
-1. Nekompatibilní Změna formátu KDS šifrované vyrovnávací paměti z Windows Serveru 2012 R2 na Windows Server 2016
+1. Nekompatibilní změna formátu šifrované vyrovnávací paměti KDS ze systému Windows Server 2012 R2 na Windows Server 2016
 
-   Oprava zabezpečení KDS byla představena ve Windows serveru 2016, která mění formát KDS šifrovaných vyrovnávacích pamětí; v některých případech se v systému Windows Server 2012 a Windows Server 2012 R2 nezdaří dešifrování těchto vyrovnávacích pamětí. Obrácený směr je v pořádku – vyrovnávací paměti, které jsou zašifrované KDS na Windows Serveru 2012 a Windows Server 2012 R2, se vždycky úspěšně dešifrují v systému Windows Server 2016 a novějším. Pokud na řadičích domény v doménách služby Active Directory běží kombinace těchto operačních systémů, můžou se nahlásit občasné chyby dešifrování ochrany heslem Azure AD. Není možné přesně předpovědět časování nebo příznaky těchto selhání s ohledem na povahu opravy zabezpečení a s tím, že je nedeterministické, ke kterému řadiči domény Azure AD s ochranou hesel se v daný okamžik zašifruje data.
+   V systému Windows Server 2016 byla zavedena oprava zabezpečení KDS, která upravuje formát šifrovaných vyrovnávacích pamětí KDS. Tyto vyrovnávací paměti se někdy nezdaří dešifrovat v systémech Windows Server 2012 a Windows Server 2012 R2. Opačný směr je v pořádku – vyrovnávací paměti, které jsou šifrované kds v systémech Windows Server 2012 a Windows Server 2012 R2, budou vždy úspěšně dešifrovat v systému Windows Server 2016 a novějším. Pokud řadiče domény ve vašich doménách služby Active Directory jsou spuštěny mix těchto operačních systémů, mohou být hlášeny občasné chyby dešifrování Azure AD Password Protection. Není možné přesně předpovědět načasování nebo příznaky těchto selhání vzhledem k povaze opravy zabezpečení a vzhledem k tomu, že je nedeterministický, který agent ochrany heslem Azure AD DC, na kterém řadiči domény bude šifrovat data v daném okamžiku.
 
-   Microsoft zkoumá opravu tohoto problému, ale zatím není k dispozici žádné ETA. Mezitím není k dispozici žádné alternativní řešení pro tento problém, jiné než spuštění kombinace těchto nekompatibilních operačních systémů ve vašich doménách služby Active Directory. Jinými slovy, měli byste spustit pouze řadiče domény se systémem Windows Server 2012 a Windows Server 2012 R2 nebo byste měli spustit pouze systém Windows Server 2016 a vyšší řadiče domény.
+   Společnost Microsoft zkoumá opravu tohoto problému, ale zatím není k dispozici žádný ETA. Do té doby neexistuje žádné řešení pro tento problém, než nespouštět kombinaci těchto nekompatibilních operačních systémů v doménách služby Active Directory. Jinými slovy, měli byste spouštět pouze řadiče domény Windows Server 2012 a Windows Server 2012 R2, nebo byste měli spouštět pouze windows server 2016 a vyšší řadiče domény.
 
-## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Jsou přijímána slabá hesla, ale neměla by být
+## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Slabá hesla jsou přijímána, ale neměla by být
 
 Tento problém může mít několik příčin.
 
-1. Na vašich agentech řadiče domény běží verze softwaru Public Preview, jejíž platnost vypršela. Viz [platnost softwaru agenta řadiče domény Public Preview](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
+1. Agenty řadiče domény jsou spuštěna verze softwaru Public Preview, jejíž platnost vypršela. Viz [Public preview DC agent software vypršela](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
 
-1. Agenti řadičů domény se nedají stáhnout zásady nebo nemůžou dešifrovat existující zásady. Vyhledejte možné příčiny ve výše uvedených tématech.
+1. Agentdomény nemůže stáhnout zásadu nebo nemůže dešifrovat existující zásady. Zkontrolujte možné příčiny ve výše uvedených tématech.
 
-1. Režim prosazování zásad hesla je stále nastaven na audit. Pokud tato konfigurace vstoupí v platnost, překonfigurujte ji tak, aby se vynutila pomocí portálu ochrany hesel Azure AD. Další informace najdete v tématu [režimy provozu](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
+1. Režim vynucení zásad hesla je stále nastaven na audit. Pokud je tato konfigurace v platnosti, překonfigurujte ji vynutit pomocí portálu Azure AD Password Protection. Další informace naleznete [v tématu Provozní režimy](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
-1. Zásady hesel jsou zakázané. Pokud tato konfigurace vstoupí v platnost, překonfigurujte ji na povolenou pomocí portálu ochrany hesel Azure AD. Další informace najdete v tématu [režimy provozu](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
+1. Zásady hesel byly zakázány. Pokud je tato konfigurace v platnosti, překonfigurujte ji na povolenou pomocí portálu Azure AD Password Protection. Další informace naleznete [v tématu Provozní režimy](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
-1. Nenainstalovali jste software agenta DC na všechny řadiče domény v doméně. V takové situaci je obtížné zajistit, aby vzdálení klienti Windows během operace změny hesla nacíleny na konkrétní řadič domény. Pokud si myslíte, že jste se úspěšně zaměřili na konkrétní řadič domény, na kterém je nainstalovaný software agenta řadiče domény, můžete ho ověřit dvojitou kontrolou protokolu událostí správce agenta řadiče domény: bez ohledu na výsledek, bude k dispozici alespoň jedna událost pro dokumentaci výsledku hesla. Export. Pokud pro uživatele, jehož heslo je změněno, není k dispozici žádná událost, změna hesla byla zřejmě zpracována jiným řadičem domény.
+1. Nenainstalovali jste software agenta řadiče domény do všech řadičů domény v doméně. V takovém případě je obtížné zajistit, aby vzdálení klienti systému Windows cílit na konkrétní řadič domény během operace změny hesla. Pokud se domníváte, že jste úspěšně zacílili na konkrétní řadič domény, kde je nainstalován software agenta řadiče domény, můžete ověřit dvojitou kontrolou protokolu událostí správce agenta řadiče domény: bez ohledu na výsledek bude existovat alespoň jedna událost, která zdokumentuje výsledek hesla Ověření. Pokud pro uživatele, jehož heslo se změní, není k dispozici žádná událost, byla změna hesla pravděpodobně zpracována jiným řadičem domény.
 
-   Jako alternativní test zkuste setting\changing hesla při přihlášení přímo na řadič domény, na kterém je nainstalovaný software agenta DC. Tato technika se nedoporučuje pro produkční domény služby Active Directory.
+   Jako alternativní test zkuste nastavit\změna hesla při přihlášení přímo do řadiče domény, kde je nainstalován software agenta řadiče domény. Tato technika se nedoporučuje pro produkční domény služby Active Directory.
 
-   I když je v souladu s těmito omezeními podporováno přírůstkové nasazení softwaru agenta DC, společnost Microsoft důrazně doporučuje, aby byl software agenta DC nainstalován na všech řadičích domény v doméně co nejdříve.
+   Zatímco přírůstkové nasazení softwaru agenta řadiče domény je podporováno s výhradou těchto omezení, společnost Microsoft důrazně doporučuje, aby byl software agenta řadiče domény nainstalován ve všech řadičích domény v doméně co nejdříve.
 
-1. Algoritmus ověřování hesla může ve skutečnosti fungovat podle očekávání. Podívejte [se, jak jsou hesla vyhodnocována](concept-password-ban-bad.md#how-are-passwords-evaluated).
+1. Algoritmus ověření hesla může ve skutečnosti fungovat podle očekávání. Podívejte se na informace o [tom, jak se vyhodnocují hesla](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
-## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Nástroje Ntdsutil. exe se nepodařilo nastavit slabé heslo pro režim obnovení adresářových služeb.
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Soubor Ntdsutil.exe nenastavil slabé heslo služby DSRM
 
-Služba Active Directory vždy ověří nové heslo režimu opravy adresářových služeb, aby bylo zajištěno, že splňuje požadavky na složitost hesla domény. Toto ověření také volá knihovny DLL filtru hesel, jako je ochrana heslem Azure AD. Pokud se nové heslo DSRM odmítne, zobrazí se následující chybová zpráva:
+Služba Active Directory vždy ověří nové heslo režimu opravy adresářových služeb, aby se ujistila, že splňuje požadavky na složitost hesla domény. toto ověření také volá do dll filtru hesel, jako je Ochrana heslem Azure AD. Pokud je nové heslo služby DSRM odmítnuto, zobrazí se následující chybová zpráva:
 
 ```text
 C:\>ntdsutil.exe
@@ -109,39 +109,39 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Když služba Azure AD Password Protection zaznamená události protokolu událostí ověření hesla pro heslo služby Active Directory DSRM, předpokládá se, že zprávy protokolu událostí nebudou obsahovat uživatelské jméno. K tomuto chování dochází, protože účet DSRM je místní účet, který není součástí skutečné domény služby Active Directory.  
+Když Azure AD Password Protection protokoluje události protokolu událostí ověření hesla pro heslo služby Active Directory DSRM, očekává se, že zprávy protokolu událostí nebude obsahovat uživatelské jméno. K tomuto chování dochází, protože účet DSRM je místní účet, který není součástí skutečné domény služby Active Directory.  
 
-## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Zvýšení úrovně repliky řadiče domény se nezdařilo kvůli slabému heslu DSRM
+## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Povýšení replikřadiče domény se nezdaří z důvodu slabého hesla služby DSRM
 
-Během procesu povýšení řadiče domény se nové heslo režimu opravy adresářových služeb pošle do existujícího řadiče domény pro ověřování. Pokud se nové heslo DSRM odmítne, zobrazí se následující chybová zpráva:
+Během procesu propagace řadiče domény bude nové heslo režimu opravy adresářových služeb odesláno do existujícího řadiče domény v doméně k ověření. Pokud je nové heslo služby DSRM odmítnuto, zobrazí se následující chybová zpráva:
 
 ```powershell
 Install-ADDSDomainController : Verification of prerequisites for Domain Controller promotion failed. The Directory Services Restore Mode password does not meet a requirement of the password filter(s). Supply a suitable password.
 ```
 
-Stejně jako u výše uvedeného problému všechna událost výsledku ověření hesla ochrany heslem služby Azure AD budou mít pro tento scénář prázdná uživatelská jména.
+Stejně jako ve výše uvedeném problému, všechny Azure AD Password Protection výsledek události ověření hesla bude mít prázdné uživatelské názvy pro tento scénář.
 
-## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>Degradování řadiče domény se nezdařilo kvůli slabému heslu místního správce.
+## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>Snížení úrovně řadiče domény se nezdaří z důvodu slabého hesla místního správce
 
-Je podporováno snížení úrovně řadiče domény, na kterém je stále spuštěný software agenta DC. Správci by si měli být vědomi, že software agenta DC během procesu degradace stále vynutil současné zásady hesel. Nové heslo účtu místního správce (zadané jako součást operace degradování) se ověřuje jako jakékoli jiné heslo. Microsoft doporučuje, aby v rámci procesu snížení úrovně řadiče domény byly zvolené zabezpečené hesla pro účty místních správců.
+Je podporována snížením úrovně řadiče domény, na který je stále spuštěn software agenta řadiče domény. Správci by si však měli být vědomi toho, že software agenta řadiče domény nadále vynucuje aktuální zásady hesel během postupu snížení úrovně. Nové heslo účtu místního správce (zadané jako součást operace snížení úrovně) je ověřeno stejně jako jakékoli jiné heslo. Společnost Microsoft doporučuje, aby byla v rámci postupu snížení úrovně řadiče domény vybrána zabezpečená hesla pro místní účty správce.
 
-Po úspěšném snížení úrovně a restartování řadiče domény a opětovném spuštění jako normálního členského serveru se software agenta řadiče domény vrátí do provozu v pasivním režimu. Později je můžete odinstalovat.
+Jakmile se snížení úrovně podaří a řadič domény byl restartován a je opět spuštěn jako normální členský server, software agenta řadiče domény se vrátí ke spuštění v pasivním režimu. To pak může být odinstalován kdykoliv.
 
 ## <a name="booting-into-directory-services-repair-mode"></a>Spuštění do režimu opravy adresářových služeb
 
-Pokud je řadič domény spuštěný v režimu opravy adresářových služeb, knihovna DLL filtru hesel agenta řadiče domény detekuje tuto podmínku a způsobí, že se všechny aktivity ověřování a vynucování hesla budou deaktivovat bez ohledu na aktuálně aktivní zásadu. rozšířeného. Knihovna DLL filtru hesla agenta řadiče domény zaznamená událost upozornění 10023 do protokolu událostí správce, například:
+Pokud je řadič domény spuštěn do režimu opravy adresářových služeb, dll filtru zabezpečení pro zabezpečení agenta řadiče domény tuto podmínku rozpozná a způsobí zakázání všech aktivit ověření hesla nebo vynucení bez ohledu na aktuálně aktivní zásady Konfigurace. DLL filtru hesel agenta řadiče domény zaznamená do protokolu událostí správce událost 10023, například:
 
 ```text
 The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
 ```
-## <a name="public-preview-dc-agent-software-has-expired"></a>Platnost softwaru agenta řadiče domény ve verzi Public Preview vypršela.
+## <a name="public-preview-dc-agent-software-has-expired"></a>Vypršela platnost softwaru agenta řadiče domény ve verzi Public Preview.
 
-Během období veřejné verze Preview ochrany heslem Azure AD byl software agenta DC pevně zakódovaný, aby zastavil zpracování žádostí o ověření hesla v následujících datech:
+Během období veřejné verze preview azure ad password protection byl software agenta řadiče domény pevně zakódován, aby se zastavilo zpracování požadavků na ověření hesla v následujících datech:
 
-* Verze 1.2.65.0 zastaví zpracování požadavků na ověření hesla od září 1 2019.
-* Verze 1.2.25.0 a předchozí zastavily zpracování žádostí o ověření hesla od července 1 2019.
+* Verze 1.2.65.0 přestane zpracovávat žádosti o ověření hesla v září 1 2019.
+* Verze 1.2.25.0 a předchozí zastavení zpracování žádostí o ověření hesla v červenci 1 2019.
 
-Po uplynutí konečného termínu budou všechny časově omezené verze agenta řadiče domény generovat událost 10021 v protokolu událostí správce agenta řadiče domény při spuštění, který vypadá takto:
+S blížícím se termínem budou všechny časově omezené verze agentů řadiče domény vyzařovat událost 10021 v protokolu událostí správce agenta řadiče domény při spuštění, který vypadá takto:
 
 ```text
 The password filter dll has successfully loaded and initialized.
@@ -153,7 +153,7 @@ Expiration date:  9/01/2019 0:00:00 AM
 This message will not be repeated until the next reboot.
 ```
 
-Po uplynutí konečného termínu budou všechny časově omezené verze agenta řadiče domény generovat událost 10022 v protokolu událostí správce agenta řadiče domény při spuštění, který vypadá takto:
+Po uplynutí lhůty budou všechny časově omezené verze agentů řadiče domény vyzařovat událost 10022 v protokolu událostí správce agenta řadiče domény při spuštění, který vypadá takto:
 
 ```text
 The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
@@ -161,12 +161,12 @@ The password filter dll is loaded but the allowable trial period has expired. Al
 No further messages will be logged until after the next reboot.
 ```
 
-Vzhledem k tomu, že konečný termín je kontrolován pouze při počátečním spuštění, tyto události se nemusí zobrazit, dokud neuplyne konečný termín kalendáře. Jakmile je konečný termín rozpoznán, nebudou se automaticky schvalovat žádné negativní účinky na řadič domény ani na větší prostředí.
+Vzhledem k tomu, že konečný termín je kontrolován pouze při počátečním spuštění, nemusí se tyto události zobrazit až dlouho po uplynutí kalendářního termínu. Po rozpoznání konečného termínu nebudou automaticky schváleny žádné negativní účinky na řadič domény ani na větší prostředí než na všechna hesla.
 
 > [!IMPORTANT]
-> Microsoft doporučuje, aby agenti řadiče domény s vypršenou platností verze Public Preview byli hned upgradováni na nejnovější verzi.
+> Společnost Microsoft doporučuje, aby agenti řadiče domény pro ukončenou platnost public preview byli okamžitě upgradovány na nejnovější verzi.
 
-Snadný způsob, jak zjistit agenty řadiče domény v prostředí, které je potřeba upgradovat, je spuštění rutiny `Get-AzureADPasswordProtectionDCAgent`, například:
+Snadný způsob, jak zjistit agenty řadiče domény ve `Get-AzureADPasswordProtectionDCAgent` vašem prostředí, které je třeba upgradovat, je spuštěním rutiny, například:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -180,33 +180,33 @@ HeartbeatUTC          : 8/1/2019 10:00:00 PM
 AzureTenant           : bpltest.onmicrosoft.com
 ```
 
-Pro toto téma je pole SoftwareVersion zjevnou klíčovou vlastností, která se má podívat na. Filtrování prostředí PowerShell můžete také použít k odfiltrování agentů řadiče domény, kteří jsou již ve verzi požadovaná základní verze, například:
+Pro toto téma, SoftwareVersion pole je samozřejmě klíčovou vlastností podívat. Filtrování prostředí PowerShell můžete také použít k odfiltrování agentů řadiče domény, kteří jsou již na nebo nad požadovanou verzí směrného plánu, například:
 
 ```powershell
 PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-Software proxy ochrany heslem služby Azure AD není časově omezený v jakékoli verzi. Společnost Microsoft stále doporučuje, aby se řadiče DC i proxy upgradovali na nejnovější verze hned po jejich vydání. Rutina `Get-AzureADPasswordProtectionProxy` se dá použít k vyhledání agentů proxy, kteří vyžadují upgrady, podobně jako v příkladu výše pro agenty řadiče domény.
+Software proxy ochrany hesel Azure AD není časově omezený v žádné verzi. Společnost Microsoft stále doporučuje, aby agenti řadiče domény i proxy byli po vydání upgradovány na nejnovější verze. Rutina `Get-AzureADPasswordProtectionProxy` může být použita k nalezení proxy agentů, které vyžadují inovace, podobně jako v příkladu výše pro agenty řadiče domény.
 
-Další podrobnosti o konkrétních postupech upgradu najdete v tématu [Upgrade agenta řadiče domény](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) a [upgrade služby proxy serveru](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) .
+Další podrobnosti o konkrétních postupech upgradu naleznete [v části Upgrade agenta řadiče domény](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) a Upgrade [služby Proxy.](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service)
 
 ## <a name="emergency-remediation"></a>Nouzová náprava
 
-Pokud dojde k situaci, kdy služba agenta DC způsobuje problémy, služba agenta řadiče domény se může okamžitě vypnout. Knihovna DLL filtru hesel agenta řadiče domény se stále pokouší zavolat nespuštěnou službu a bude protokolovat události upozornění (10012, 10013), ale během této doby budou přijata všechna příchozí hesla. Služba agenta DC se pak dá nakonfigurovat taky prostřednictvím Správce řízení služeb systému Windows s typem spuštění zakázáno, jak je potřeba.
+Pokud nastane situace, kdy služba agenta řadiče domény způsobuje problémy, může být služba agenta řadiče domény okamžitě ukončena. DLL filtru hesel agenta řadiče domény se stále pokouší volat nespuštěnou službu a bude protokolovat události upozornění (10012, 10013), ale během této doby jsou přijata všechna příchozí hesla. Služba agenta řadiče domény pak může být také konfigurována prostřednictvím Správce řízení služeb systému Windows s typem spuštění "Zakázáno" podle potřeby.
 
-Další mírou nápravy by bylo nastavit režim povolení na ne na portálu ochrany hesel Azure AD. Po stažení aktualizovaných zásad přejde každá služba agenta řadiče domény do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak je. Další informace najdete v tématu [režimy provozu](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
+Dalším nápravným opatřením by bylo nastavení režimu Povolit na ne na portálu Azure AD Password Protection. Po stažení aktualizované zásady, každá služba agenta řadiče domény přejde do klidový režim, kde jsou všechna hesla přijata jako-je. Další informace naleznete [v tématu Provozní režimy](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
-## <a name="removal"></a>Instalační
+## <a name="removal"></a>Odstranění
 
-Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyčistit všechny související stavy z domén a doménových struktur, můžete tuto úlohu provést pomocí následujících kroků:
+Pokud se rozhodne odinstalovat software ochrany heslem Azure AD a vyčistit veškerý související stav z domény a doménové struktury, lze tento úkol provést pomocí následujících kroků:
 
 > [!IMPORTANT]
-> Tyto kroky je důležité provést v uvedeném pořadí. Pokud bude kterákoli instance služby proxy spuštěna, bude se pravidelně znovu vytvářet Objekt serviceConnectionPoint. Pokud je spuštěná kterákoli instance služby agenta řadiče domény, bude se pravidelně znovu vytvářet Objekt serviceConnectionPoint a stav adresáře SYSVOL.
+> Je důležité provést tyto kroky v pořadí. Pokud je spuštěna jakákoli instance služby Proxy, bude pravidelně znovu vytvářet svůj objekt serviceConnectionPoint. Pokud je spuštěna jakákoli instance služby agenta řadiče domény, bude pravidelně znovu vytvářet svůj objekt serviceConnectionPoint a stav sysvol.
 
-1. Odinstalujte software proxy ze všech počítačů. Tento **Krok nevyžaduje restartování** .
-2. Odinstalujte software agenta DC ze všech řadičů domény. Tento krok **vyžaduje** restart.
-3. Ručně odeberte všechny spojovací body služby proxy v každém názvovém kontextu domény. Umístění těchto objektů může být zjištěno s následujícím příkazem PowerShellu služby Active Directory:
+1. Odinstalujte software Proxy ze všech počítačů. Tento krok **nevyžaduje** restartování počítače.
+2. Odinstalujte software DC Agent ze všech řadičů domény. Tento krok **vyžaduje** restartování.
+3. Ručně odeberte všechny body připojení služby Proxy v každém kontextu pojmenování domény. Umístění těchto objektů může být zjištěno pomocí následujícího příkazu prostředí Active Directory PowerShell:
 
    ```powershell
    $scp = "serviceConnectionPoint"
@@ -214,11 +214,11 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Vynechejte hvězdičku ("*") na konci hodnoty proměnné $keywords.
+   Nevynechejte hvězdičku ("*") na konci $keywords hodnoty proměnné.
 
-   Výsledný objekt (y) nalezený pomocí příkazu `Get-ADObject` lze následně přesměrovat do `Remove-ADObject`nebo odstranit ručně.
+   Výsledné objekty nalezené pomocí příkazu `Get-ADObject` lze poté piped do `Remove-ADObject`, nebo odstranit ručně.
 
-4. Ručně odeberte všechny spojovací body agenta DC v každém názvovém kontextu domény. V závislosti na tom, jak rozsáhlá verze softwaru byla nasazena, může být jeden z těchto objektů na řadič domény v doménové struktuře. Umístění tohoto objektu může být zjištěno pomocí následujícího příkazu prostředí PowerShell služby Active Directory:
+4. Ručně odeberte všechny body připojení agenta řadiče domény v každém kontextu pojmenování domény. V závislosti na tom, jak široce byl software nasazen, může být jeden z těchto objektů na řadič domény v doménové struktuře. Umístění tohoto objektu může být zjištěno pomocí následujícího příkazu prostředí Active Directory PowerShell:
 
    ```powershell
    $scp = "serviceConnectionPoint"
@@ -226,29 +226,29 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Výsledný objekt (y) nalezený pomocí příkazu `Get-ADObject` lze následně přesměrovat do `Remove-ADObject`nebo odstranit ručně.
+   Výsledné objekty nalezené pomocí příkazu `Get-ADObject` lze poté piped do `Remove-ADObject`, nebo odstranit ručně.
 
-   Vynechejte hvězdičku ("*") na konci hodnoty proměnné $keywords.
+   Nevynechejte hvězdičku ("*") na konci $keywords hodnoty proměnné.
 
-5. Ručně odeberte stav konfigurace na úrovni doménové struktury. Stav konfigurace doménové struktury je udržován v kontejneru v názvovém kontextu konfigurace služby Active Directory. Můžete ji zjistit a odstranit následujícím způsobem:
+5. Ručně odeberte stav konfigurace na úrovni doménové struktury. Stav konfigurace doménové struktury je udržován v kontejneru v názvovém kontextu konfigurace služby Active Directory. To může být objevena a odstraněna takto:
 
    ```powershell
    $passwordProtectionConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject -Recursive $passwordProtectionConfigContainer
    ```
 
-6. Ručně odstraňte všechny stavy související se složkou SYSVOL ručním odstraněním následující složky a veškerého jejího obsahu:
+6. Ručně odstraňte veškerý stav související se sysvolručním odstraněním následující složky a veškerého jejího obsahu:
 
    `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
 
-   V případě potřeby je k této cestě taky možné přistupovat místně na daném řadiči domény. výchozí umístění by mělo být podobné následující cestě:
+   V případě potřeby lze k této cestě přistupovat také místně na daném řadiči domény. výchozí umístění by bylo něco jako následující cesta:
 
    `%windir%\sysvol\domain\Policies\AzureADPasswordProtection`
 
-   Tato cesta se liší, pokud je sdílená složka SYSVOL nakonfigurovaná na jiném než výchozím umístění.
+   Tato cesta se liší, pokud byla sdílená sysvol nakonfigurována v jiném než výchozím umístění.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nejčastější dotazy k ochraně hesel Azure AD](howto-password-ban-bad-on-premises-faq.md)
+[Nejčastější dotazy týkající se ochrany heslem Azure AD](howto-password-ban-bad-on-premises-faq.md)
 
-Další informace o globálním a vlastním seznamu zakázaných hesel najdete v článku [zákaz chybných hesel](concept-password-ban-bad.md) .
+Další informace o globálních a vlastních seznamech zakázaných hesel naleznete v článku [Zákaz chybná hesla](concept-password-ban-bad.md)

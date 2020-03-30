@@ -1,90 +1,90 @@
 ---
-title: Exportovat šablonu v Azure Portal
-description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Manager z prostředků v rámci vašeho předplatného.
+title: Exportovat šablonu na webu Azure Portal
+description: Pomocí portálu Azure můžete exportovat šablonu Azure Resource Manageru z prostředků ve vašem předplatném.
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273732"
 ---
-# <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
+# <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export s jedním a více prostředky do šablony na webu Azure Portal
 
-Pro pomoc s vytvářením šablon Azure Resource Manager můžete exportovat šablonu z existujících prostředků. Vyexportovaná šablona vám pomůže pochopit syntaxi a vlastnosti JSON, které nasazují vaše prostředky. Pokud chcete automatizovat budoucí nasazení, začněte s exportovanou šablonou a upravte ji pro váš scénář.
+Chcete-li pomoci s vytvářením šablon Azure Resource Manager, můžete exportovat šablonu z existujících prostředků. Exportovaná šablona vám pomůže pochopit syntaxi JSON a vlastnosti, které nasazují vaše prostředky. Chcete-li automatizovat budoucí nasazení, začněte s exportovnou šablonou a upravte ji pro váš scénář.
 
-Správce prostředků umožňuje vybrat jeden nebo více prostředků pro export do šablony. Můžete se soustředit přesně na prostředky, které v šabloně potřebujete.
+Správce prostředků umožňuje vybrat jeden nebo více prostředků pro export do šablony. Můžete se zaměřit na přesně potřebné prostředky v šabloně.
 
-Tento článek popisuje, jak exportovat šablony prostřednictvím portálu. Můžete použít také rozhraní příkazového [řádku Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](/rest/api/resources/resourcegroups/exporttemplate).
+Tento článek ukazuje, jak exportovat šablony prostřednictvím portálu. Můžete taky použít [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](/rest/api/resources/resourcegroups/exporttemplate).
 
-## <a name="choose-the-right-export-option"></a>Výběr pravé možnosti exportu
+## <a name="choose-the-right-export-option"></a>Výběr správné možnosti exportu
 
 Existují dva způsoby, jak exportovat šablonu:
 
-* **Exportujte ze skupiny prostředků nebo prostředku**. Tato možnost vygeneruje novou šablonu z existujících prostředků. Vyexportovaná šablona je "snímek" aktuálního stavu skupiny prostředků. V rámci této skupiny prostředků můžete exportovat celou skupinu prostředků nebo konkrétní prostředky.
+* **Export ze skupiny prostředků nebo prostředku**. Tato možnost generuje novou šablonu z existujících prostředků. Exportovaná šablona je "snímek" aktuálního stavu skupiny prostředků. V rámci této skupiny prostředků můžete exportovat celou skupinu prostředků nebo určité prostředky.
 
-* **Exportujte před nasazením nebo z historie**. Tato možnost načte přesnou kopii šablony, která se používá k nasazení.
+* **Exportujte před nasazením nebo z historie**. Tato možnost načte přesnou kopii šablony používané pro nasazení.
 
-V závislosti na zvolené možnosti mají exportované šablony různé kvality.
+V závislosti na zvolené možnosti mají exportované šablony různé vlastnosti.
 
-| Ze skupiny prostředků nebo prostředku | Před nasazením nebo z historie |
+| Ze skupiny prostředků nebo zdroje | Před nasazením nebo z historie |
 | --------------------- | ----------------- |
-| Šablona je snímkem aktuálního stavu prostředků. Obsahuje všechny ruční změny, které jste provedli po nasazení. | Šablona zobrazuje pouze stav prostředků v době nasazení. Žádné ruční změny, které jste provedli po nasazení, nejsou zahrnuté. |
-| Můžete vybrat prostředky ze skupiny prostředků, které se mají exportovat. | Součástí jsou všechny prostředky pro konkrétní nasazení. Nemůžete vybrat podmnožinu těchto prostředků nebo přidat prostředky, které byly přidány v jinou dobu. |
-| Šablona obsahuje všechny vlastnosti prostředků, včetně některých vlastností, které byste při nasazení nenormálně nastavili. Tyto vlastnosti můžete chtít před použitím šablony znovu odebrat nebo vyčistit. | Šablona obsahuje pouze vlastnosti, které jsou potřebné pro nasazení. Šablona je připravená k použití. |
-| Šablona pravděpodobně neobsahuje všechny parametry, které potřebujete pro opakované použití. Většina hodnot vlastností je pevně zakódována v šabloně. Aby bylo možné šablonu znovu nasadit v jiných prostředích, je třeba přidat parametry, které zvyšují možnost konfigurace prostředků.  Můžete zrušit výběr **parametrů zahrnout** , abyste mohli vytvářet vlastní parametry. | Šablona obsahuje parametry, které usnadňují opětovné nasazení v různých prostředích. |
+| Šablona je snímek aktuálního stavu prostředků. Obsahuje všechny ruční změny, které jste provedli po nasazení. | Šablona zobrazuje pouze stav prostředků v době nasazení. Nejsou zahrnuty žádné ruční změny provedené po nasazení. |
+| Můžete vybrat prostředky ze skupiny prostředků, které chcete exportovat. | Všechny prostředky pro konkrétní nasazení jsou zahrnuty. Nelze vybrat podmnožinu těchto prostředků nebo přidat prostředky, které byly přidány v jinou dobu. |
+| Šablona obsahuje všechny vlastnosti pro prostředky, včetně některých vlastností, které byste normálně nastavit během nasazení. Před opětovnou použitím šablony můžete tyto vlastnosti odebrat nebo vyčistit. | Šablona obsahuje pouze vlastnosti potřebné pro nasazení. Šablona je připravena k použití. |
+| Šablona pravděpodobně neobsahuje všechny parametry, které potřebujete pro opakované použití. Většina hodnot vlastností je v šabloně pevně zakódována. Chcete-li znovu nasadit šablonu v jiných prostředích, je třeba přidat parametry, které zvyšují možnost konfigurace prostředků.  Můžete zrušit výběr **zahrnout parametry,** abyste mohli vytvářet vlastní parametry. | Šablona obsahuje parametry, které usnadňují opětovné nasazení v různých prostředích. |
 
-Exportujte šablonu ze skupiny prostředků nebo prostředku, pokud:
+Exportovat šablonu ze skupiny prostředků nebo prostředku, pokud:
 
 * Je třeba zachytit změny prostředků, které byly provedeny po původním nasazení.
-* Chcete vybrat, které prostředky budou exportovány.
+* Chcete vybrat, které zdroje budou exportovány.
 
-Exportujte šablonu před nasazením nebo z historie, pokud:
+Exportujte šablonu před nasazením nebo z historie, když:
 
 * Chcete snadno použít šablonu.
-* Nemusíte zahrnovat změny, které jste provedli po původním nasazení.
+* Není nutné zahrnout změny provedené po původním nasazení.
 
 ## <a name="limitations"></a>Omezení
 
-Při exportu ze skupiny prostředků nebo prostředku se vyexportovaná šablona vygeneruje z [publikovaných schémat](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) pro každý typ prostředku. V některých případech nemá schéma nejnovější verzi pro typ prostředku. Zkontrolujte exportovanou šablonu a ujistěte se, že obsahuje vlastnosti, které potřebujete. V případě potřeby upravte exportovanou šablonu tak, aby používala verzi rozhraní API, kterou potřebujete.
+Při exportu ze skupiny prostředků nebo prostředku je exportovaná šablona generována z [publikovaných schémat](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) pro každý typ prostředku. V některých případě schéma nemá nejnovější verzi pro typ prostředku. Zkontrolujte exportovnou šablonu, abyste se ujistili, že obsahuje vlastnosti, které potřebujete. V případě potřeby upravte exportovnou šablonu tak, aby používala verzi rozhraní API, kterou potřebujete.
 
-Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
+Funkce šablony exportu nepodporuje export prostředků Azure Data Factory. Informace o tom, jak exportovat prostředky Data Factory, najdete v [tématu Kopírování nebo klonování datové továrny v Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
 
-Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](https://aka.ms/migrateclassicresourcetoarm).
+Chcete-li exportovat prostředky vytvořené prostřednictvím klasického modelu nasazení, musíte [je migrovat do modelu nasazení Správce prostředků](https://aka.ms/migrateclassicresourcetoarm).
 
-## <a name="export-template-from-a-resource-group"></a>Exportovat šablonu ze skupiny prostředků
+## <a name="export-template-from-a-resource-group"></a>Export šablony ze skupiny prostředků
 
 Export jednoho nebo více prostředků ze skupiny prostředků:
 
 1. Vyberte skupinu prostředků obsahující prostředky, které chcete exportovat.
 
-1. Vyberte jeden nebo více prostředků zaškrtnutím příslušných políček.  Chcete-li vybrat vše, zaškrtněte políčko vlevo od **názvu**. Položka nabídky **Exportovat šablonu** se aktivuje jenom po výběru alespoň jednoho prostředku.
+1. Zaškrtnutím políček vyberte jeden nebo více zdrojů.  Chcete-li vybrat vše, zaškrtněte políčko vlevo od **položky Název**. Položka **nabídky šablony exportu** se aktivuje až po výběru alespoň jednoho prostředku.
 
-   ![Exportovat všechny prostředky](./media/export-template-portal/select-all-resources.png)
+   ![Export ovat všechny zdroje](./media/export-template-portal/select-all-resources.png)
 
     Na snímku obrazovky je vybrán pouze účet úložiště.
 1. Vyberte **Exportovat šablonu**.
 
-1. Zobrazí se vyexportovaná šablona a je možné ji stáhnout a nasadit.
+1. Exportovaná šablona je zobrazena a je k dispozici ke stažení a nasazení.
 
    ![Zobrazit šablonu](./media/export-template-portal/show-template.png)
 
-   Ve výchozím nastavení je vybraná možnost **zahrnout parametry** .  Pokud je tato možnost vybrána, budou všechny parametry šablony zahrnuty při generování šablony. Pokud chcete vytvořit vlastní parametry, přepněte toto zaškrtávací políčko na nezahrnuté.
+   **Zahrnout parametry** je vybrána ve výchozím nastavení.  Pokud je tato možnost vybrána, budou při generování šablony zahrnuty všechny parametry šablony. Pokud chcete vytvořit vlastní parametry, zapněte toto zaškrtávací políčko tak, aby je neobsahovalo.
 
-## <a name="export-template-from-a-resource"></a>Exportovat šablonu z prostředku
+## <a name="export-template-from-a-resource"></a>Export šablony ze zdroje
 
-Export jednoho prostředku:
+Export jednoho zdroje:
 
 1. Vyberte skupinu prostředků obsahující prostředek, který chcete exportovat.
 
-1. Vyberte prostředek, který chcete exportovat, a otevřete prostředek.
+1. Vyberte zdroj, který chcete exportovat, chcete-li zdroj otevřít.
 
-1. V případě tohoto prostředku v levém podokně vyberte **Exportovat šablonu** .
+1. U tohoto prostředku vyberte **exportovat šablonu** v levém podokně.
 
-   ![Exportovat prostředek](./media/export-template-portal/export-single-resource.png)
+   ![Exportovat zdroj](./media/export-template-portal/export-single-resource.png)
 
-1. Zobrazí se vyexportovaná šablona a je možné ji stáhnout a nasadit. Šablona obsahuje pouze jeden prostředek. Ve výchozím nastavení je vybraná možnost **zahrnout parametry** .  Pokud je tato možnost vybrána, budou všechny parametry šablony zahrnuty při generování šablony. Pokud chcete vytvořit vlastní parametry, přepněte toto zaškrtávací políčko na nezahrnuté.
+1. Exportovaná šablona je zobrazena a je k dispozici ke stažení a nasazení. Šablona obsahuje pouze jeden prostředek. **Zahrnout parametry** je vybrána ve výchozím nastavení.  Pokud je tato možnost vybrána, budou při generování šablony zahrnuty všechny parametry šablony. Pokud chcete vytvořit vlastní parametry, zapněte toto zaškrtávací políčko tak, aby je neobsahovalo.
 
 ## <a name="export-template-before-deployment"></a>Exportovat šablonu před nasazením
 
@@ -92,34 +92,34 @@ Export jednoho prostředku:
 
 1. Vyplňte hodnoty pro novou službu.
 
-1. Po úspěšném ověření, ale před spuštěním nasazení vyberte **Stáhnout šablonu pro automatizaci**.
+1. Po absolvování ověření, ale před zahájením nasazení vyberte **stáhnout šablonu pro automatizaci**.
 
    ![Stažení šablony](./media/export-template-portal/download-before-deployment.png)
 
-1. Šablona se zobrazí a je k dispozici pro stažení a nasazení.
+1. Šablona je zobrazena a je k dispozici ke stažení a nasazení.
 
 
 ## <a name="export-template-after-deployment"></a>Exportovat šablonu po nasazení
 
-Můžete exportovat šablonu, která byla použita k nasazení existujících prostředků. Šablona, kterou získáte, je přesně ta, která byla použita pro nasazení.
+Šablonu, která byla použita k nasazení existujících prostředků, můžete exportovat. Šablona, kterou získáte, je přesně ten, který byl použit pro nasazení.
 
 1. Vyberte skupinu prostředků, kterou chcete exportovat.
 
-1. Vyberte odkaz v části **nasazení**.
+1. Vyberte odkaz v části **Nasazení**.
 
    ![Vybrat historii nasazení](./media/export-template-portal/select-deployment-history.png)
 
-1. V historii nasazení vyberte jedno z nasazení.
+1. Vyberte jedno z nasazení z historie nasazení.
 
    ![Vybrat nasazení](./media/export-template-portal/select-details.png)
 
-1. Vyberte **šablonu**. Zobrazí se Šablona použitá pro toto nasazení a je k dispozici ke stažení.
+1. Vyberte **šablonu**. Šablona použitá pro toto nasazení je zobrazena a je k dispozici ke stažení.
 
-   ![Vybrat šablonu](./media/export-template-portal/show-template-from-history.png)
+   ![Výběr šablony](./media/export-template-portal/show-template-from-history.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se exportovat šablony pomocí [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](/rest/api/resources/resourcegroups/exporttemplate).
-- Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
-- Další informace o vývoji šablon najdete v [podrobných kurzech](/azure/azure-resource-manager/).
-- Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).
+- Zjistěte, jak exportovat šablony pomocí [rozhraní API Azure](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), Azure [PowerShellu](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [rozhraní REST API](/rest/api/resources/resourcegroups/exporttemplate).
+- Syntaxe syntaxe šablony Správce prostředků najdete [v tématu Principy struktury a syntaxe šablon Azure Resource Manageru](template-syntax.md).
+- Chcete-li se dozvědět, jak vyvíjet šablony, podívejte se na [podrobné výukové programy](/azure/azure-resource-manager/).
+- Pokud chcete zobrazit schémata šablon Azure Resource Manager, přečtěte si [odkaz na šablonu](/azure/templates/).

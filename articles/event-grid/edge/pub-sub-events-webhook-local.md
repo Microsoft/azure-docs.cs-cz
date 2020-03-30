@@ -1,6 +1,6 @@
 ---
-title: Publikování, přihlášení k odběru událostí lokálně Azure Event Grid IoT Edge | Microsoft Docs
-description: Publikování, přihlášení k odběru událostí místně pomocí Webhooku s Event Grid v IoT Edge
+title: Publikovat, přihlásit se k odběru událostí místně – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
+description: Publikovat, přihlásit se k odběru událostí místně pomocí Webhooku s event gridem na IoT Edge
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,53 +10,53 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280999"
 ---
-# <a name="tutorial-publish-subscribe-to-events-locally"></a>Kurz: publikování, přihlášení k odběru událostí v místním prostředí
+# <a name="tutorial-publish-subscribe-to-events-locally"></a>Kurz: Publikovat, přihlásit se k odběru událostí místně
 
-Tento článek vás provede všemi kroky potřebnými k publikování a přihlášení k odběru událostí pomocí Event Grid v IoT Edge.
+Tento článek vás provede všechny kroky potřebné k publikování a přihlásit se k odběru událostí pomocí Event Grid na IoT Edge.
 
 > [!NOTE]
-> Další informace o Azure Event Grid tématech a předplatných najdete v tématu [Event Grid koncepty](concepts.md).
+> Další informace o tématech a předplatných Služby Azure Event Grid najdete v [tématu Koncepty mřížky událostí](concepts.md).
 
 ## <a name="prerequisites"></a>Požadavky 
-Aby bylo možné dokončit tento kurz, budete potřebovat:
+Chcete-li dokončit tento výukový program, budete potřebovat:
 
-* **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
-* **Zařízení Azure IoT Hub a IoT Edge** – postupujte podle kroků v rychlém startu pro zařízení se systémem [Linux](../../iot-edge/quickstart-linux.md) nebo [Windows](../../iot-edge/quickstart.md) , pokud ho ještě nemáte.
+* **Předplatné Azure** – vytvořte [bezplatný účet,](https://azure.microsoft.com/free) pokud ho ještě nemáte. 
+* **Azure IoT Hub a zařízení IoT Edge** – postupujte podle pokynů v rychlém startu pro [Linux](../../iot-edge/quickstart-linux.md) nebo [windows zařízení,](../../iot-edge/quickstart.md) pokud ještě nemáte.
 
-## <a name="deploy-event-grid-iot-edge-module"></a>Nasadit modul Event Grid IoT Edge
+## <a name="deploy-event-grid-iot-edge-module"></a>Nasadit modul IoT Edge sítě událostí
 
-Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všechny z nich fungují pro Azure Event Grid na IoT Edge. Tento článek popisuje postup nasazení Event Grid IoT Edge z Azure Portal.
+Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge a všechny z nich fungují pro Azure Event Grid na IoT Edge. Tento článek popisuje kroky nasazení Event Grid na IoT Edge z webu Azure Portal.
 
 >[!NOTE]
-> V tomto kurzu nasadíte modul Event Grid bez trvalosti. To znamená, že všechna témata a odběry, které v tomto kurzu vytvoříte, budou při opětovném nasazení modulu odstraněny. Další informace o tom, jak nastavit trvalost, najdete v následujících článcích: [trvalé uložení stavu v systému Linux](persist-state-linux.md) nebo [trvalého stavu ve Windows](persist-state-windows.md). Pro produkční úlohy doporučujeme nainstalovat modul Event Grid s persistencí.
+> V tomto kurzu nasadíte modul Mřížka událostí bez trvalosti. To znamená, že všechna témata a odběry, které vytvoříte v tomto kurzu budou odstraněny při opětovném nasazení modulu. Další informace o nastavení trvalosti naleznete v následujících článcích: [Zachovat stav v Linuxu](persist-state-linux.md) nebo [Zachovat stav v systému Windows](persist-state-windows.md). Pro produkční úlohy doporučujeme nainstalovat modul Event Grid s trvalostí.
 
 
-### <a name="select-your-iot-edge-device"></a>Vyberte zařízení IoT Edge
+### <a name="select-your-iot-edge-device"></a>Výběr zařízení IoT Edge
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-1. Přejděte na IoT Hub.
-1. V nabídce v části **Automatická správa zařízení** vyberte **IoT Edge** . 
-1. V seznamu zařízení klikněte na ID cílového zařízení.
-1. Vyberte **Nastavit moduly**. Nechejte stránku otevřenou. Budete pokračovat kroky v další části.
+1. Přihlášení k [portálu Azure](https://portal.azure.com)
+1. Přejděte do svého iot hubu.
+1. V nabídce v části **Automatická správa zařízení** vyberte **IoT Edge.** 
+1. Klikněte na ID cílového zařízení ze seznamu zařízení
+1. Vyberte **možnost Nastavit moduly**. Nechte stránku otevřenou. Budete pokračovat kroky v další části.
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly nasadit, jak toky dat mezi moduly a požadované vlastnosti dvojčat modulu. Portál Azure má průvodce, který vás provede vytvořením manifestu nasazení, namísto ručního sestavení dokumentu JSON.  Má tři kroky: **Přidat moduly**, **Zadat trasy**a **Zkontrolovat nasazení**.
 
 ### <a name="add-modules"></a>Přidat moduly
 
-1. V části **moduly nasazení** vyberte **Přidat** .
-1. Z typů modulů v rozevíracím seznamu vyberte **IoT Edge modul** .
-1. Zadejte název, obrázek a možnosti vytvoření kontejneru kontejneru:
+1. V části **Moduly nasazení** vyberte **Přidat**
+1. Z typů modulů v rozevíracím seznamu vyberte **Modul IoT Edge**
+1. Zadejte název, bitovou kopii, možnosti vytvoření kontejneru:
 
    * **Název**: eventgridmodule
-   * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Identifikátor URI obrázku**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Možnosti vytvoření kontejneru**:
 
    [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
@@ -77,48 +77,48 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
           }
         }
     ```    
- 1. Klikněte na **Uložit**.
- 1. Přejděte k další části a přidejte modul předplatitele Azure Event Grid před jejich nasazením dohromady.
+ 1. Klikněte na **Uložit.**
+ 1. Pokračujte k další části a před nasazením je přidáte modul odběratele mřížky událostí Azure.
 
     >[!IMPORTANT]
-    > V tomto kurzu nasadíte modul Event Grid s povoleným ověřováním klienta. Pro produkční úlohy doporučujeme povolit ověřování klientů. Další informace o tom, jak bezpečně nakonfigurovat Event Grid modul, najdete v tématu [zabezpečení a ověřování](security-authentication.md).
+    > V tomto kurzu nasadíte modul Event Grid se zakázaným ověřováním klienta. Pro produkční úlohy doporučujeme povolit ověřování klienta. Další informace o bezpečné konfiguraci modulu Event Grid naleznete v [tématu Zabezpečení a ověřování](security-authentication.md).
     > 
-    > Pokud jako hraniční zařízení používáte virtuální počítač Azure, přidejte pravidlo příchozího portu, které povolí příchozí provoz na portu 4438. Pokyny k přidání pravidla najdete v tématu [Postup otevření portů pro virtuální počítač](../../virtual-machines/windows/nsg-quickstart-portal.md).
+    > Pokud používáte virtuální počítač Azure jako hraniční zařízení, přidejte pravidlo příchozího portu, které povolí příchozí provoz na portu 4438. Pokyny k přidání pravidla najdete v tématu [Jak otevřít porty k virtuálnímu počítači](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
-## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Nasazení IoT Edge modulu předplatitele Event Grid
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Nasadit modul IoT Edge odběratele sítě událostí
 
-V této části se dozvíte, jak nasadit jiný modul IoT, který by sloužil jako obslužná rutina události, do které se můžou události doručovat.
+Tato část ukazuje, jak nasadit jiný modul IoT, který by fungovat jako obslužná rutina události, do kterého mohou být doručovány události.
 
 ### <a name="add-modules"></a>Přidat moduly
 
-1. V části **moduly nasazení** vyberte **Přidat** znovu. 
-1. Z typů modulů v rozevíracím seznamu vyberte **IoT Edge modul** .
-1. Zadejte název, obrázek a možnosti vytvoření kontejneru kontejneru:
+1. V části **Moduly nasazení** vyberte **Přidat** znovu. 
+1. Z typů modulů v rozevíracím seznamu vyberte **Modul IoT Edge**
+1. Zadejte možnosti vytvoření názvu, bitové kopie a kontejneru kontejneru:
 
-   * **Název**: odběratel
-   * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
-   * **Možnosti vytvoření kontejneru**: žádné
-1. Klikněte na **Uložit**.
-1. Kliknutím na tlačítko **Další** pokračujte v části trasy.
+   * **Jméno**: odběratel
+   * **Identifikátor URI obrázku**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Možnosti vytvoření kontejneru:** Žádné
+1. Klikněte na **Uložit.**
+1. Chcete-li pokračovat v úseku trasy, klepněte na tlačítko **Další.**
 
  ### <a name="setup-routes"></a>Nastavení tras
 
-Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části Kontrola.
+Zachovat výchozí trasy a výběrem možnosti **Další** pokračovat do oddílu revize
 
 ### <a name="submit-the-deployment-request"></a>Odeslat žádost o nasazení
 
-1. V části Kontrola se dozvíte, který manifest nasazení JSON byl vytvořen na základě vašich výběrů v předchozí části. Ověřte, že se zobrazují oba moduly: **eventgridmodule** a **předplatitelé** uvedené ve formátu JSON. 
-1. Zkontrolujte informace o svém nasazení a pak vyberte **Odeslat**. Po odeslání nasazení se vrátíte na stránku **zařízení** .
-1. V **části moduly**ověřte, že jsou uvedené moduly **eventgrid** a **předplatitelé** . A ověřte, zda je **zadaná hodnota ve sloupci nasazení** a **hlášená pomocí sloupce zařízení** nastavena na **hodnotu Ano**.
+1. Část revize zobrazuje manifest nasazení JSON, který byl vytvořen na základě vašich výběrů v předchozí části. Potvrďte, že vidíte oba moduly: **eventgridmodule** a **odběratel** uvedené v JSON. 
+1. Zkontrolujte informace o nasazení a vyberte **Odeslat**. Po odeslání nasazení se vrátíte na stránku **zařízení.**
+1. V **části Moduly**ověřte, zda jsou uvedeny moduly **eventgrid** i **předplatitele.** A ověřte, zda **jsou sloupce Zadané v nasazení** a **Nahlášené zařízením** nastaveny na **ano**.
 
-    Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
+    Může trvat několik okamžiků, než se modul spustí na zařízení a pak se ohlásí zpět do ioT hubu. Aktualizujte stránku, abyste viděli aktualizovaný stav.
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
 
-Jako vydavatel události je třeba vytvořit téma Event Grid. V Azure Event Grid téma odkazuje na koncový bod, do kterého mohou vydavatelé odesílat události.
+Jako vydavatel události je třeba vytvořit téma mřížky událostí. Ve službě Azure Event Grid téma odkazuje na koncový bod, do kterého mohou vydavatelé odesílat události.
 
-1. Vytvořte téma. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md).
+1. Vytvořte topic.json s následujícím obsahem. Podrobnosti o datové části naleznete v [naší dokumentaci k rozhraní API](api.md).
 
     ```json
         {
@@ -129,13 +129,13 @@ Jako vydavatel události je třeba vytvořit téma Event Grid. V Azure Event Gri
         }
     ```
 
-1. Spuštěním následujícího příkazu vytvořte téma Event Grid. Ověřte, že se zobrazuje stavový kód HTTP `200 OK`.
+1. Chcete-li vytvořit téma mřížky událostí, spusťte následující příkaz. Zkontrolujte, zda se zobrazí `200 OK`stavový kód HTTP .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
     ```
 
-1. Spusťte následující příkaz, který ověří úspěšné vytvoření tématu. Měl by se vrátit stavový kód HTTP 200 OK.
+1. Spusťte následující příkaz k ověření, že téma bylo úspěšně vytvořeno. Měl by být vrácen stavový kód HTTP 200 OK.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -159,11 +159,11 @@ Jako vydavatel události je třeba vytvořit téma Event Grid. V Azure Event Gri
 
 ## <a name="create-an-event-subscription"></a>Vytvoření odběru událostí
 
-Předplatitelé se můžou zaregistrovat pro události publikované v tématu. Pokud chcete přijímat jakékoli události, budete muset vytvořit předplatné Event Grid pro téma zájmu.
+Odběratelé se mohou zaregistrovat pro události publikované na téma. Chcete-li zobrazit jakoukoli událost, budete muset vytvořit předplatné služby Event Grid pro téma, které vás zajímá.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Vytvořte Subscription. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte subscription.json s následujícím obsahem. Podrobnosti o datové části naleznete v naší [dokumentaci k rozhraní API](api.md)
 
     ```json
         {
@@ -179,13 +179,13 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
     ```
 
     >[!NOTE]
-    > Vlastnost **endpointType** určuje, že předplatitel je **Webhook**.  **EndpointUrl** Určuje adresu URL, na které předplatitel naslouchá pro události. Tato adresa URL odpovídá ukázce Azure předplatitele, kterou jste předtím nasadili.
-2. Spuštěním následujícího příkazu vytvořte odběr pro téma. Ověřte, že se zobrazuje stavový kód HTTP `200 OK`.
+    > Vlastnost **endpointType** určuje, že odběratel je **Webhook**.  **EndpointUrl** určuje adresu URL, na které odběratel naslouchá události. Tato adresa URL odpovídá ukázce odběratele Azure, kterou jste nasadili dříve.
+2. Chcete-li vytvořit odběr pro toto téma, spusťte následující příkaz. Zkontrolujte, zda se zobrazí `200 OK`stavový kód HTTP .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
     ```
-3. Spusťte následující příkaz pro ověření, že se předplatné úspěšně vytvořilo. Měl by se vrátit stavový kód HTTP 200 OK.
+3. Spusťte následující příkaz k ověření, že odběr byl úspěšně vytvořen. Měl by být vrácen stavový kód HTTP 200 OK.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -212,7 +212,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
 
 ## <a name="publish-an-event"></a>Publikování události
 
-1. Vytvořte Event. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md).
+1. Vytvořte event.json s následujícím obsahem. Podrobnosti o datové části naleznete v [naší dokumentaci k rozhraní API](api.md).
 
     ```json
         [
@@ -229,16 +229,16 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
           }
         ]
     ```
-1. Spusťte následující příkaz, který publikuje událost.
+1. Chcete-li publikovat událost, spusťte následující příkaz.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-event-delivery"></a>Ověření doručení události
+## <a name="verify-event-delivery"></a>Ověřit doručení události
 
-1. SSH nebo RDP do virtuálního počítače s IoT Edge.
-1. Podívejte se na protokoly předplatitele:
+1. SSH nebo RDP do virtuálního počítače IoT Edge.
+1. Zkontrolujte protokoly odběratele:
 
     V systému Windows spusťte následující příkaz:
 
@@ -246,7 +246,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
     docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
-   V systému Linux spusťte následující příkaz:
+   Na Linuxu spusťte následující příkaz:
 
     ```sh
     sudo docker logs subscriber
@@ -273,22 +273,22 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
 
 ## <a name="cleanup-resources"></a>Vyčištění prostředků
 
-* Spuštěním následujícího příkazu odstraňte téma a všechny jeho odběry.
+* Spusťte následující příkaz k odstranění tématu a všech jeho odběrů.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
     ```
-* Odstraňte ze zařízení IoT Edge modul předplatitele.
+* Odstraňte modul odběratele ze zařízení IoT Edge.
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste vytvořili téma Event gridu, předplatné a publikované události. Teď, když znáte základní postup, najdete v následujících článcích: 
+V tomto kurzu jste vytvořili téma mřížky událostí, předplatné a publikované události. Nyní, když znáte základní kroky, naleznete v následujících článcích: 
 
-- Řešení potíží s používáním Azure Event Grid v IoT Edge najdete v tématu [Průvodce odstraňováním potíží](troubleshoot.md).
-- Vytvoří nebo aktualizuje předplatné s [filtry](advanced-filtering.md).
-- Povolení trvalosti modulu Event Grid v systému [Linux](persist-state-linux.md) nebo [Windows](persist-state-windows.md)
-- Podle [dokumentace](configure-client-auth.md) nakonfigurujte ověřování klientů.
-- Předejte události do Azure Functions v cloudu pomocí tohoto [kurzu](pub-sub-events-webhook-cloud.md) .
-- [Reakce na události Blob Storage v IoT Edge](react-blob-storage-events-locally.md)
-- [Monitorování témat a odběrů na hraničních zařízeních](monitor-topics-subscriptions.md)
+- Problémy s používáním Azure Event Grid na IoT Edge najdete v [tématu Poradce při potížích](troubleshoot.md)s průvodcem .
+- Vytvořit/aktualizovat odběr s [filtry](advanced-filtering.md).
+- Povolení trvalosti modulu Event Grid v [Linuxu](persist-state-linux.md) nebo [Windows](persist-state-windows.md)
+- Postupujte [podle dokumentace](configure-client-auth.md) ke konfiguraci ověřování klienta
+- Předávat události do funkce Azure v cloudu podle tohoto [kurzu](pub-sub-events-webhook-cloud.md)
+- [Reakce na události úložiště objektů Blob na IoT Edge](react-blob-storage-events-locally.md)
+- [Sledování témat a předplatných na okraji](monitor-topics-subscriptions.md)
 

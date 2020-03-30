@@ -1,222 +1,222 @@
 ---
 title: Generování map
-description: Tento článek popisuje, jak vygenerovat mapy v Azure FarmBeats.
+description: Tento článek popisuje, jak generovat mapy v Azure FarmBeats.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271769"
 ---
 # <a name="generate-maps"></a>Generování map
 
-Pomocí Azure FarmBeats můžete vygenerovat následující mapy pomocí satelitních snímků a datových vstupů ze senzorů. Pomocí map se můžete podívat na zeměpisnou polohu vaší farmy a určit vhodné umístění pro vaše zařízení.
+Pomocí Azure FarmBeats můžete vygenerovat následující mapy pomocí satelitních snímků a vstupů dat senzorů. Mapy vám pomohou zjistit zeměpisnou polohu vaší farmy a určit vhodné umístění vašich zařízení.
 
-  - **Mapa umístění senzoru**: poskytuje doporučení, kolik senzorů se má použít a kam je umístit na farmu.
-  - **Mapa satelitních**indexů: zobrazuje index vegetativní a vodní index pro farmu.
-  - **Heatmapu vlhkosti půdy**: zobrazuje distribuci vlhkosti půdy nezavádějícími satelitní data a data senzorů.
+  - **Mapa umístění senzoru**: Poskytuje doporučení, kolik senzorů použít a kam je umístit na farmu.
+  - **Mapa satelitních indexů**: Zobrazuje index vegetace a index vody pro farmu.
+  - **Půdní vlhkost heatmap**: Zobrazuje rozložení vlhkosti půdy fixací satelitních dat a dat ze senzorů.
 
 ## <a name="sensor-placement-map"></a>Mapa umístění senzoru
 
-Mapa umístění snímače FarmBeats vám pomůže se umísťováním senzorů vlhkosti v půdě. Výstup mapy se skládá ze seznamu souřadnic pro nasazení senzoru. Vstupy z těchto senzorů se používají společně se satelitními a heatmapuou vlhkosti půdy.
+Mapa Farmy Senzor y Pro umístění vám pomůže s umístěním senzorů vlhkosti půdy. Výstup mapy se skládá ze seznamu souřadnic pro nasazení senzoru. Vstupy z těchto senzorů se používají spolu se satelitními snímky pro generování heatmapy Půdní vlhkosti.
 
-Tato mapa je odvozena segmentací zápoje, jak se v průběhu roku zobrazilo více kalendářních dat. I holé a budovy jsou součástí zápojeu. Můžete odebrat senzory, které na tomto místě nepotřebujete. Tato mapa je určena pro doprovodné materiály a na základě vlastních znalostí můžete změnit polohu a čísla mírně. Přidáním senzorů nedojde k navýšení vlhkosti v půdě heatmapu, ale existuje možnost zhoršení přesnosti heatmapu, pokud je číslo snímače omezené.
+Tato mapa je odvozena segmentací baldachýn, jak je vidět na více dat v průběhu roku. Dokonce i holá půda a budovy jsou součástí baldachýnu. Můžete odstranit senzory, které nejsou v místě vyžadovány. Tato mapa je pro navádění a můžete mírně změnit pozici a čísla na základě vašich vlastních znalostí. Přidání mandory neustoupí výsledky heatmapy vlhkosti půdy, ale existuje možnost zhoršení přesnosti heatmapy, pokud se sníží počet senzorů.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Před pokusem o vygenerování mapy umístění senzoru splňovat následující požadavky:
+Než se pokusíte vygenerovat mapu umístění senzoru, splédte na následující požadavky:
 
-- Velikost farmy musí být víc než jedna Acre.
-- Počet scén bez cloudu pro vybraný rozsah dat musí být větší než 6.
-- Minimálně šest scén bez cloudového škálování musí mít normalizovaný rozdílový index (NDVI), který je větší nebo roven 0,3.
+- Velikost farmy musí být větší než jeden akr.
+- Počet scén Sentinelu bez cloudu musí být pro vybrané časové období větší než šest.
+- Nejméně šest scén Sentinelu bez cloudu musí mít index vegetace normalizovaného rozdílu (NDVI) větší nebo roven 0,3.
 
     > [!NOTE]
-    > Sentinel povoluje pouze dvě souběžná vlákna na uživatele. V důsledku toho se úlohy dostanou do fronty a jejich dokončení může trvat déle.
+    > Sentinel umožňuje pouze dvě souběžná vlákna na uživatele. V důsledku toho se úlohy dostanou do fronty a může trvat déle.
 
-### <a name="dependencies-on-sentinel"></a>Závislosti na Sentinel
+### <a name="dependencies-on-sentinel"></a>Závislosti na Sentinelu
 
-Následující závislosti se týkají Sentinel:
+Následující závislosti se vězí sentinelu:
 
-- Závisí na výkonu Sentinel pro stahování satelitních imagí. Zkontroluje stav výkonu Sentinel a [aktivity](https://scihub.copernicus.eu/twiki/do/view/SciHubNews/WebHome)údržby.
-- Sentinel povoluje pouze dvě souběžná [vlákna stahování](https://sentinels.copernicus.eu/web/sentinel/sentinel-data-access/typologies-and-services) na uživatele.
-- Generování mapy přesnosti je ovlivněno [rozsahem Sentinel a frekvencí opakování]( https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage).
+- Při stahování satelitních snímků jsme závislí na výkonu sentinelu. Zkontrolujte stav výkonu sentinelu a [činnosti údržby](https://scihub.copernicus.eu/twiki/do/view/SciHubNews/WebHome).
+- Sentinel umožňuje pouze dvě souběžné [vlákna stahování](https://sentinels.copernicus.eu/web/sentinel/sentinel-data-access/typologies-and-services) na uživatele.
+- Generování přesné mapy je ovlivněno [pokrytím Sentinelu a frekvencí opětovného přístupu]( https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage).
 
-## <a name="create-a-sensor-placement-map"></a>Vytvořit mapu umístění senzorů
-Tato část podrobně popisuje postupy pro vytváření map umístění senzorů.
+## <a name="create-a-sensor-placement-map"></a>Vytvoření mapy umístění senzoru
+V této části jsou podrobně uvedeny postupy pro vytváření map umístění senzorů.
 
 > [!NOTE]
-> Mapu umístění senzoru můžete iniciovat na stránce **mapy** nebo z rozevírací nabídky **Generovat mapy přesnosti** na stránce s **podrobnostmi o farmě** .
+> Mapu umístění senzoru můžete spustit ze stránky **Mapy** nebo z rozevírací nabídky **Generovat přesné mapy** na stránce **Podrobnosti farmy.**
 
 Postupujte následovně.
 
-1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
-2. Vyberte **vytvořit mapy**a v rozevírací nabídce vyberte **umístění snímače** .
+1. Na domovské stránce přejděte z levé navigační nabídky do **Mapy.**
+2. V **rozevírací**nabídce vyberte Vytvořit mapy a v rozevírací nabídce vyberte Umístění **senzoru.**
 
     ![Vybrat umístění senzoru](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-1.png)
 
-3. Po výběru **umístění senzoru**se zobrazí okno **umístění senzoru** .
+3. Po výběru **možnosti Umístění senzoru**se zobrazí okno **Umístění senzoru.**
 
-    ![Okno umístění senzorů](./media/get-sensor-data-from-sensor-partner/sensor-placement-1.png)
+    ![Okno Umístění senzoru](./media/get-sensor-data-from-sensor-partner/sensor-placement-1.png)
 
-4. Vyberte farmu z rozevírací nabídky **farma** .
-   Chcete-li vyhledat a vybrat farmu, můžete buď přejít v rozevíracím seznamu, nebo zadat název farmy do textového pole.
-5. Pokud chcete vygenerovat mapu pro poslední rok, vyberte **Doporučené**.
-6. Chcete-li vygenerovat mapu pro vlastní rozsah dat, vyberte možnost **Vybrat rozsah kalendářních dat**. Zadejte počáteční a koncové datum, pro které chcete vygenerovat mapu umístění senzoru.
+4. V rozevírací nabídce **Farma** vyberte farmu.
+   Chcete-li vyhledat a vybrat farmu, můžete se v rozevíracím seznamu posuzovat nebo zadat název farmy do textového pole.
+5. Chcete-li vygenerovat mapu za poslední rok, vyberte **možnost Doporučeno**.
+6. Chcete-li generovat mapu pro vlastní rozsah dat, vyberte možnost **Vybrat rozsah dat**. Zadejte počáteční a koncové datum, pro které chcete vygenerovat mapu Umístění senzoru.
 7. Vyberte **Generovat mapy**.
  Zobrazí se potvrzovací zpráva s podrobnostmi o úloze.
 
-  Informace o stavu úlohy najdete v části **zobrazení úloh**. Pokud se stav úlohy zobrazí jako *neúspěšné*, zobrazí se v popisku *neúspěšného* stavu podrobná chybová zpráva. V tomto případě opakujte předchozí kroky a akci opakujte.
+  Informace o stavu úlohy naleznete v části **Zobrazit úlohy**. Pokud se stav úlohy zobrazuje *Nezdařilo*, zobrazí se v popisku stavu *Nezdařilo* se podrobná chybová zpráva. V takovém případě opakujte předchozí kroky a akci opakujte znovu.
 
-  Pokud se problém nevyřeší, přečtěte si část [Poradce při potížích](troubleshoot-azure-farmbeats.md) nebo se obraťte na [Fórum Azure FarmBeats, kde najdete podporu](https://aka.ms/FarmBeatsMSDN) k příslušným protokolům.
+  Pokud problém přetrvává, přečtěte si část [Poradce při potížích](troubleshoot-azure-farmbeats.md) nebo se obraťte na [fórum Azure FarmBeats, kde najdete podporu](https://aka.ms/FarmBeatsMSDN) s příslušnými protokoly.
 
 ### <a name="view-and-download-a-sensor-placement-map"></a>Zobrazení a stažení mapy umístění senzoru
 
 Postupujte následovně.
 
-1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
+1. Na domovské stránce přejděte z levé navigační nabídky do **Mapy.**
 
-    ![Výběr map z levé navigační nabídky](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
+    ![V levé navigační nabídce vyberte Mapy.](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
 
-2. V levém navigačním panelu okna vyberte **Filtr** .
-  V okně **filtru** se zobrazí kritéria hledání.
+2. V levém navigačním panelu okna vyberte **Filtr.**
+  V okně **Filtr** se zobrazí kritéria vyhledávání.
 
     ![Okno filtru](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum**a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit.
-  Datum, kdy byla úloha vytvořena, se zobrazí ve formátu type_farmname_YYYY-MM-DD.
-4. Procházejte seznamem map, které jsou k dispozici, pomocí navigačních panelů na konci stránky.
-5. Vyberte mapu, kterou chcete zobrazit. V automaticky otevíraném okně se zobrazí náhled pro vybranou mapu.
-6. Vyberte **Stáhnout**a Stáhněte soubor. JSON pro souřadnice snímače.
+3. V rozevíracích nabídkách vyberte Hodnoty **Typu**, **Datum**a **Název.** Pak vyberte **Použít,** chcete-li vyhledat mapu, kterou chcete zobrazit.
+  Datum, kdy byla úloha vytvořena, je zobrazeno ve formátu type_farmname_YYYY-MM-DD.
+4. Procházejte seznam map, které jsou k dispozici, pomocí navigačních panelů na konci stránky.
+5. Vyberte mapu, kterou chcete zobrazit. Vyskakovací okno zobrazuje náhled vybrané mapy.
+6. Vyberte **Stáhnout**a stáhněte soubor GeoJSON souřadnic senzorů.
 
-    ![Náhled mapy umístění senzorů](./media/get-sensor-data-from-sensor-partner/download-sensor-placement-map-1.png)
+    ![Náhled mapy umístění senzoru](./media/get-sensor-data-from-sensor-partner/download-sensor-placement-map-1.png)
 
 ## <a name="satellite-indices-map"></a>Mapa satelitních indexů
 
-Následující části popisují postupy spojené s vytvářením a zobrazením mapy satelitních indexů.
+V následujících částech jsou vysvětleny postupy spojené s vytvořením a zobrazením mapy satelitních indexů.
 
 > [!NOTE]
-> Můžete zahájit mapování satelitních indexů ze stránky **Maps** nebo z rozevírací nabídky **Generovat mapy přesnosti** na stránce s **podrobnostmi o farmě** .
+> Mapu satelitních indexů můžete spustit ze stránky **Mapy** nebo z rozevírací nabídky **Generovat přesné mapy** na stránce **Podrobnosti farmy.**
 
-FarmBeats poskytuje možnost generovat NDVI, Enhanced vegetativní index (EVI) a normalizované mapy vodního rozdílového indexu (NDWI) pro farmy. Tyto indexy vám pomůžou určit, jak se ořízne v současné době, kdy se v minulosti zvětšila i reprezentativní úrovně vody.
+FarmBeats vám poskytuje možnost vytvářet NDVI, Enhanced Vegetation Index (EVI) a normalizované indexy vody (NDWI) pro farmy. Tyto indexy pomáhají určit, jak plodina v současné době roste, nebo rostla v minulosti, a reprezentativní hladiny vody v zemi.
 
 
 > [!NOTE]
-> Pro dny, pro které se vygenerovala mapa, se vyžaduje bitová kopie Sentinel.
+> Pro dny, pro které je mapa generována, je vyžadován obrázek Sentinelu.
 
 
 ## <a name="create-a-satellite-indices-map"></a>Vytvoření mapy satelitních indexů
 
 Postupujte následovně.
 
-1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
-2. Vyberte **vytvořit mapy**a v rozevírací nabídce vyberte **satelitové indexy** .
+1. Na domovské stránce přejděte z levé navigační nabídky do **Mapy.**
+2. V **rozevírací**nabídce vyberte Vytvořit mapy a v rozevírací nabídce vyberte Satelitní **indexy.**
 
-    ![Výběr satelitních indexů z rozevírací nabídky](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-satellite-indices-1.png)
+    ![V rozevírací nabídce vyberte satelitní indexy.](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-satellite-indices-1.png)
 
-3. Po výběru **satelitních indexů**se zobrazí okno **satelitní indexy** .
+3. Po výběru **satelitních indexů**se zobrazí okno **Satelitní indexy.**
 
-    ![Okno satelitních indexů](./media/get-sensor-data-from-sensor-partner/satellitte-indices-1.png)
+    ![Okno Satelitní indexy](./media/get-sensor-data-from-sensor-partner/satellitte-indices-1.png)
 
-4. Vyberte farmu z rozevírací nabídky.
-   Pokud chcete hledat a vybrat vaši farmu, můžete buď přejít v rozevíracím seznamu, nebo zadat název farmy.   
-5. Pokud chcete vygenerovat mapu pro poslední týden, vyberte **Tento týden**.
-6. Chcete-li vygenerovat mapu pro vlastní rozsah dat, vyberte možnost **Vybrat rozsah kalendářních dat**. Zadejte počáteční a koncové datum, pro které chcete generovat mapu satelitních indexů.
+4. V rozevírací nabídce vyberte farmu.
+   Chcete-li vyhledat a vybrat farmu, můžete se v rozevíracím seznamu posuzovat nebo zadat název farmy.   
+5. Chcete-li vygenerovat mapu za poslední týden, vyberte **možnost Tento týden**.
+6. Chcete-li generovat mapu pro vlastní rozsah dat, vyberte možnost **Vybrat rozsah dat**. Zadejte počáteční a koncové datum, pro které chcete vygenerovat mapu Satelitní indexy.
 7. Vyberte **Generovat mapy**.
     Zobrazí se potvrzovací zpráva s podrobnostmi o úloze.
 
-    ![Zpráva o potvrzení mapování satelitních indexů](./media/get-sensor-data-from-sensor-partner/successful-satellitte-indices-1.png)
+    ![Zpráva potvrzení mapy satelitních indexů](./media/get-sensor-data-from-sensor-partner/successful-satellitte-indices-1.png)
 
-    Informace o stavu úlohy najdete v části **zobrazení úloh**. Pokud se stav úlohy zobrazí jako *neúspěšné*, zobrazí se v popisku *neúspěšného* stavu podrobná chybová zpráva. V tomto případě opakujte předchozí kroky a akci opakujte.
+    Informace o stavu úlohy naleznete v části **Zobrazit úlohy**. Pokud se stav úlohy zobrazuje *Nezdařilo*, zobrazí se v popisku stavu *Nezdařilo* se podrobná chybová zpráva. V takovém případě opakujte předchozí kroky a akci opakujte znovu.
 
-    Pokud se problém nevyřeší, přečtěte si část [Poradce při potížích](troubleshoot-azure-farmbeats.md) nebo se obraťte na [Fórum Azure FarmBeats, kde najdete podporu](https://aka.ms/FarmBeatsMSDN) k příslušným protokolům.
+    Pokud problém přetrvává, přečtěte si část [Poradce při potížích](troubleshoot-azure-farmbeats.md) nebo se obraťte na [fórum Azure FarmBeats, kde najdete podporu](https://aka.ms/FarmBeatsMSDN) s příslušnými protokoly.
 
 ### <a name="view-and-download-a-map"></a>Zobrazení a stažení mapy
 
 Postupujte následovně.
 
-1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
+1. Na domovské stránce přejděte z levé navigační nabídky do **Mapy.**
 
     ![Vybrat mapy](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
 
-2. V levém navigačním panelu okna vyberte **Filtr** . V okně **filtru** se zobrazí kritéria hledání.
+2. V levém navigačním panelu okna vyberte **Filtr.** V okně **Filtr** se zobrazí kritéria vyhledávání.
 
-    ![Okno filtru zobrazuje kritéria hledání.](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
+    ![Okno filtru zobrazuje kritéria vyhledávání](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum**a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit.
-  Datum, kdy byla úloha vytvořena, se zobrazí ve formátu type_farmname_YYYY-MM-DD.
+3. V rozevíracích nabídkách vyberte Hodnoty **Typu**, **Datum**a **Název.** Pak vyberte **Použít,** chcete-li vyhledat mapu, kterou chcete zobrazit.
+  Datum, kdy byla úloha vytvořena, je zobrazeno ve formátu type_farmname_YYYY-MM-DD.
 
-4. Procházejte seznamem map, které jsou k dispozici, pomocí navigačních panelů na konci stránky.
-5. Pro každou kombinaci názvu a **data** **farmy** jsou k dispozici následující tři mapy:
+4. Procházejte seznam map, které jsou k dispozici, pomocí navigačních panelů na konci stránky.
+5. Pro každou kombinaci **názvu farmy** a **data**jsou k dispozici tyto tři mapy:
     - NDVI
-    - EVI
+    - Evi
     - NDWI
-6. Vyberte mapu, kterou chcete zobrazit. V automaticky otevíraném okně se zobrazí náhled pro vybranou mapu.
-7. V rozevírací nabídce vyberte **Stáhnout** a vyberte formát pro stažení. Mapa se stáhne a uloží do místní složky ve vašem počítači.
+6. Vyberte mapu, kterou chcete zobrazit. Vyskakovací okno zobrazuje náhled vybrané mapy.
+7. V rozevírací nabídce vyberte stáhnout položku **Stáhnout** a vyberte formát stahování. Mapa je stažena a uložena v místní složce v počítači.
 
-    ![Náhled vybraných satelitních indexů](./media/get-sensor-data-from-sensor-partner/download-satellite-indices-map-1.png)
+    ![Náhled mapy vybraných satelitních indexů](./media/get-sensor-data-from-sensor-partner/download-satellite-indices-map-1.png)
 
-## <a name="soil-moisture-heatmap"></a>Heatmapu vlhkosti půdy
+## <a name="soil-moisture-heatmap"></a>Půdní vlhkost heatmap
 
-Vlhkost v půdě je voda, která je držena v prostorech mezi částicemi v půdě. Heatmapu vlhkosti půdy vám pomůže pochopit data o vlhkosti půdy v libovolné hloubce ve vaší farmě s vysokým rozlišením. Pro vygenerování přesného a použitelného heatmapu vlhkosti v půdě je nutné použít jednotné nasazení snímačů. Všechny senzory musí být od stejného poskytovatele. Různí poskytovatelé mají rozdíly ve způsobu měření vlhkosti půdy spolu s rozdíly v kalibraci. Heatmapu se generuje pro konkrétní hloubku pomocí senzorů nasazených v této hloubce.
+Půdní vlhkost je voda, která se drží v prostoru mezi částicemi půdy.Heatmapa půdní vlhkosti vám pomůže porozumět datům vlhkosti půdy v jakékoli hloubce, ve vysokém rozlišení ve vaší farmě. Pro vytvoření přesné a použitelné heatmap půdní vlhkosti je nutné jednotné nasazení senzorů. Všechny senzory musí být od stejného poskytovatele. Různí poskytovatelé mají rozdíly ve způsobu měření vlhkosti půdy spolu s rozdíly v kalibraci. Heatmapa je generována pro určitou hloubku pomocí senzorů nasazených v této hloubce.
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
-Před pokusem o vygenerování heatmapu vlhkosti v půdě splnění následujících požadavků:
+Než se pokusíte vytvořit heatmapu Půdní vlhkost, seznamte se s následujícími požadavky:
 
-- Musí se nasadit aspoň tři senzory vlhkosti v půdě. Nepokoušejte se vytvořit heatmapu vlhkosti v půdě před nasazením senzorů a přidruženými k farmě.
-- Generování heatmapu vlhkosti v půdě má vliv na pokrytí cest, cloudové pokrytí a cloudové stíny. Alespoň jedna pracovní scény bez cloudu musí být k dispozici po dobu posledních 120 dnů od dne, po který se požaduje heatmapu vlhkosti půdy.
-- Aspoň polovinu senzorů nasazených ve farmě musí být online a streamování dat do DataHub.
-- Heatmapu se musí vygenerovat pomocí měření senzorů od stejného poskytovatele.
+- Musí být nasazeny nejméně tři senzory vlhkosti půdy. Nepokoušejte se vytvořit heatmapu půdní vlhkosti před nasazením senzorů a přidružených k farmě.
+- Generování heatmapy půdní vlhkosti je ovlivněno pokrytím trasy Sentinelu, oblačností a stínem mraků. Za posledních 120 dní ode dne, pro který byla požadována heatmapa půdní vlhkosti, musí být k dispozici alespoň jedna scéna Sentinel u sentinelu bez cloudu.
+- Alespoň polovina senzorů nasazených na farmě musí být online a musí mít datové vysílání do datahubu.
+- Heatmap musí být generovánpomocí senzorových rozměrů od stejného poskytovatele.
 
 
-## <a name="create-a-soil-moisture-heatmap"></a>Vytvoření heatmapu vlhkosti půdy
+## <a name="create-a-soil-moisture-heatmap"></a>Vytvořte heatmapu vlhkosti půdy
 
 Postupujte následovně.
 
-1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky a zobrazte stránku **mapy** .
-2. Vyberte **vytvořit mapy**a z rozevírací nabídky vyberte **vlhkost v půdě** .
+1. Na domovské stránce přejděte na **Mapy** z levé navigační nabídky a zobrazte stránku **Mapy.**
+2. V **rozevírací**nabídce vyberte Vytvořit mapy a v rozevírací nabídce vyberte **Půdní vlhkost.**
 
-    ![Výběr vlhkosti půdy z rozevírací nabídky](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-soil-moisture-1.png)
+    ![V rozevírací nabídce vyberte Půdní vlhkost.](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-soil-moisture-1.png)
 
-3. Po výběru **vlhkosti půdy**se zobrazí okno **vlhkosti půdy** .
+3. Po výběru **možnosti Půdní vlhkost**se zobrazí okno **Půdní vlhkost.**
 
-    ![Okno vlhkosti půdy](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Půdní vlhkost okno](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
-4. Vyberte farmu z rozevírací nabídky **farma** .
-   Chcete-li vyhledat a vybrat farmu, můžete buď přejít z rozevíracího seznamu, nebo zadat název farmy v rozevírací nabídce **Vybrat farmu** .
-5. V rozevírací nabídce **Vybrat měření snímače vlhkosti** vyberte míru vlhkosti půdního senzoru (hloubku), pro kterou chcete vytvořit mapu.
-Pokud chcete najít míru senzoru, přečtěte si **snímače**a vyberte jakýkoliv senzor vlhkosti půdy. Pak v části **vlastnosti senzoru** použijte hodnotu v poli **Název míry**.
-6. Pokud chcete vygenerovat mapu pro **dnešek** nebo **Tento týden**, vyberte jednu z možností.
-7. Chcete-li vygenerovat mapu pro vlastní rozsah dat, vyberte možnost **Vybrat rozsah kalendářních dat**. Zadejte počáteční a koncové datum, pro které chcete vygenerovat heatmapu vlhkosti půdy.
+4. V rozevírací nabídce **Farma** vyberte farmu.
+   Chcete-li vyhledat a vybrat farmu, můžete buď přejít z rozevíracího seznamu, nebo zadat název farmy do rozevírací nabídky **Vybrat farmu.**
+5. V rozevírací nabídce **Select Soil Moisture Sensor Measure** vyberte měření vlhkosti půdy (hloubku), pro kterou chcete mapu vygenerovat.
+Chcete-li najít měření senzoru, přejděte na **senzory**a vyberte libovolný snímač vlhkosti půdy. Potom v části **Vlastnosti senzoru** použijte hodnotu v **části Název míry**.
+6. Chcete-li vygenerovat mapu pro **dnešek** nebo **tento týden**, vyberte jednu z možností.
+7. Chcete-li generovat mapu pro vlastní rozsah dat, vyberte možnost **Vybrat rozsah dat**. Zadejte počáteční a koncové datum, pro které chcete generovat heatmapu Půdní vlhkost.
 8. Vyberte **Generovat mapy**.
  Zobrazí se potvrzovací zpráva s podrobnostmi o úloze.
 
-   ![Potvrzovací zpráva mapy vlhkosti půdy](./media/get-sensor-data-from-sensor-partner/successful-soil-moisture-1.png)
+   ![Zpráva o potvrzení mapy půdní vlhkosti](./media/get-sensor-data-from-sensor-partner/successful-soil-moisture-1.png)
 
-    Informace o stavu úlohy najdete v části **zobrazení úloh**. Pokud se stav úlohy zobrazí jako *neúspěšné*, zobrazí se v popisku *neúspěšného* stavu podrobná chybová zpráva. V tomto případě opakujte předchozí kroky a akci opakujte.
+    Informace o stavu úlohy naleznete v části **Zobrazit úlohy**. Pokud se stav úlohy zobrazuje *Nezdařilo*, zobrazí se v popisku stavu *Nezdařilo* se podrobná chybová zpráva. V takovém případě opakujte předchozí kroky a akci opakujte znovu.
 
-    Pokud se problém nevyřeší, přečtěte si část [Poradce při potížích](troubleshoot-azure-farmbeats.md) nebo se obraťte na [Fórum Azure FarmBeats, kde najdete podporu](https://aka.ms/FarmBeatsMSDN) k příslušným protokolům.
+    Pokud problém přetrvává, přečtěte si část [Poradce při potížích](troubleshoot-azure-farmbeats.md) nebo se obraťte na [fórum Azure FarmBeats, kde najdete podporu](https://aka.ms/FarmBeatsMSDN) s příslušnými protokoly.
 
 ### <a name="view-and-download-a-map"></a>Zobrazení a stažení mapy
 
 Postupujte následovně.
 
-1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
+1. Na domovské stránce přejděte z levé navigační nabídky do **Mapy.**
 
-    ![Přejít na mapy](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
+    ![Přejít na Mapy](./media/get-sensor-data-from-sensor-partner/view-download-sensor-placement-map-1.png)
 
-2. V levém navigačním panelu okna vyberte **Filtr** . Zobrazí se okno **filtru** , ze kterého můžete hledat mapy.
+2. V levém navigačním panelu okna vyberte **Filtr.** Okno **Filtr** se zobrazí, odkud můžete vyhledávat mapy.
 
-    ![Výběr filtru z levé navigační části](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
+    ![V levém navigačním panelu vyberte filtr.](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3.  Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum**a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit. Datum, kdy byla úloha vytvořena, se zobrazí ve formátu type_farmname_YYYY-MM-DD.
-4. Vyberte ikonu **řazení** vedle záhlaví tabulky, která se mají seřadit podle **farmy**, **data**, **Vytvoření**, **ID úlohy**a **typu úlohy**.
-5. Procházejte seznamem map dostupných pomocí navigačních tlačítek na konci stránky.
-6. Vyberte mapu, kterou chcete zobrazit. V automaticky otevíraném okně se zobrazí náhled pro vybranou mapu.
-7. V rozevírací nabídce vyberte **Stáhnout** a vyberte formát pro stažení. Mapa se stáhne a uloží do zadané složky.
+3.  V rozevíracích nabídkách vyberte Hodnoty **Typu**, **Datum**a **Název.** Pak vyberte **Použít,** chcete-li vyhledat mapu, kterou chcete zobrazit. Datum, kdy byla úloha vytvořena, je zobrazeno ve formátu type_farmname_YYYY-MM-DD.
+4. Vyberte ikonu **Seřadit** vedle záhlaví tabulky, která chcete seřadit podle **farmy**, **data**, **vytvořeného na**, **ID úlohy**a **typu úlohy**.
+5. Procházejte seznam map, které jsou k dispozici, pomocí navigačních tlačítek na konci stránky.
+6. Vyberte mapu, kterou chcete zobrazit. Vyskakovací okno zobrazuje náhled vybrané mapy.
+7. V rozevírací nabídce vyberte stáhnout položku **Stáhnout** a vyberte formát stahování. Mapa je stažena a uložena v zadané složce.
 
-    ![Heatmapua vlhkosti v půdě – Preview](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
+    ![Náhled heatmap půdní vlhkosti](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

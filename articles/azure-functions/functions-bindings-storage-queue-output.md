@@ -1,29 +1,29 @@
 ---
-title: Výstupní vazba služby Azure Queue Storage pro Azure Functions
-description: Naučte se vytvářet zprávy Azure Queue Storage v Azure Functions.
+title: Výstupní vazba úložiště azure fronty pro funkce Azure
+description: Naučte se vytvářet zprávy úložiště fronty Azure ve funkcích Azure.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277333"
 ---
-# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Výstupní vazby Azure Queue Storage pro Azure Functions
+# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Výstupní vazby úložiště azure fronty pro funkce Azure
 
-Azure Functions může vytvořit nové zprávy Azure Queue Storage nastavením výstupní vazby.
+Azure Functions můžete vytvořit nové zprávy úložiště Fronty Azure nastavením výstupní vazby.
 
-Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](./functions-bindings-storage-queue.md).
+Informace o nastavení a konfiguraci naleznete v [přehledu](./functions-bindings-storage-queue.md).
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která vytvoří zprávu fronty pro každý přijatý požadavek HTTP.
+Následující příklad ukazuje [funkci Jazyka C#,](functions-dotnet-class-library.md) která vytvoří zprávu fronty pro každý přijatý požadavek HTTP.
 
 ```csharp
 [StorageAccount("MyStorageConnectionAppSetting")]
@@ -39,11 +39,11 @@ public static class QueueFunctions
 }
 ```
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje vazbu triggeru protokolu HTTP v souboru *Function. JSON* a [ C# v kódu skriptu (. csx)](functions-reference-csharp.md) , který používá vazbu. Funkce vytvoří položku fronty s datovou částí objektu **CustomQueueMessage** pro každý PŘIJATÝ požadavek HTTP.
+Následující příklad ukazuje vazbu aktivační události HTTP v souboru *function.json* a kód [skriptu Jazyka C# (.csx),](functions-reference-csharp.md) který používá vazbu. Funkce vytvoří položku fronty s datovou částobjektu **CustomQueueMessage** pro každý přijatý požadavek HTTP.
 
-Tady je soubor *Function. JSON* :
+Zde je *soubor function.json:*
 
 ```json
 {
@@ -70,9 +70,9 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+[Konfigurační](#configuration) část vysvětluje tyto vlastnosti.
 
-Zde je C# kód skriptu, který vytváří jednu zprávu fronty:
+Zde je kód skriptu C#, který vytvoří jednu zprávu fronty:
 
 ```cs
 public class CustomQueueMessage
@@ -87,7 +87,7 @@ public static CustomQueueMessage Run(CustomQueueMessage input, ILogger log)
 }
 ```
 
-Pomocí parametru `ICollector` nebo `IAsyncCollector` můžete odeslat více zpráv najednou. Zde je C# kód skriptu, který odesílá více zpráv, jednu s daty požadavku HTTP a jednu s pevně zakódovanými hodnotami:
+Pomocí parametru `ICollector` nebo `IAsyncCollector` můžete odeslat více zpráv najednou. Zde je kód skriptu C#, který odesílá více zpráv, jeden s daty požadavku HTTP a jeden s pevně zakódované hodnoty:
 
 ```cs
 public static void Run(
@@ -100,11 +100,11 @@ public static void Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Následující příklad ukazuje vazbu triggeru protokolu HTTP v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce vytvoří položku fronty pro každý přijatý požadavek HTTP.
+Následující příklad ukazuje vazbu aktivační události HTTP v souboru *function.json* a [funkci JavaScriptu,](functions-reference-node.md) která vazbu používá. Funkce vytvoří položku fronty pro každý přijatý požadavek HTTP.
 
-Tady je soubor *Function. JSON* :
+Zde je *soubor function.json:*
 
 ```json
 {
@@ -131,9 +131,9 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+[Konfigurační](#configuration) část vysvětluje tyto vlastnosti.
 
-Tady je kód jazyka JavaScript:
+Zde je kód JavaScript:
 
 ```javascript
 module.exports = function (context, input) {
@@ -141,7 +141,7 @@ module.exports = function (context, input) {
 };
 ```
 
-Více zpráv najednou můžete odeslat tak, že definujete pole zpráv pro výstupní vazbu `myQueueItem`. Následující kód jazyka JavaScript odesílá dvě zprávy fronty s pevně zakódovanými hodnotami pro každý přijatý požadavek HTTP.
+Můžete odeslat více zpráv najednou definováním pole `myQueueItem` zpráv pro výstupní vazbu. Následující kód JavaScriptu odesílá dvě zprávy fronty s pevně zakódované hodnoty pro každý přijatý požadavek HTTP.
 
 ```javascript
 module.exports = function(context) {
@@ -152,9 +152,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje, jak vymezit výstup jedné a více hodnot do front úložiště. Konfigurace potřebná pro *funkci Function. JSON* je stejná jako v obou případech.
+Následující příklad ukazuje, jak výstup jedné a více hodnot do front úložiště. Konfigurace potřebná pro *soubor function.json* je stejná v obou směrech.
 
-Vazba fronty úložiště je definována v souboru *Function. JSON* , kde *typ* je nastaven na `queue`.
+Vazba fronty úložiště je definována v *souboru function.json,* kde je *typ* nastaven na `queue`.
 
 ```json
 {
@@ -186,7 +186,7 @@ Vazba fronty úložiště je definována v souboru *Function. JSON* , kde *typ* 
 }
 ```
 
-Chcete-li nastavit samostatnou zprávu ve frontě, předejte jednu hodnotu metodě `set`.
+Chcete-li nastavit jednotlivé zprávy ve frontě, `set` předáte jedné hodnoty metody.
 
 ```python
 import azure.functions as func
@@ -200,7 +200,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-Chcete-li vytvořit více zpráv ve frontě, deklarujte parametr jako příslušný typ seznamu a předejte pole hodnot (odpovídající typu seznamu) metodě `set`.
+Chcete-li vytvořit více zpráv ve frontě, deklarujte parametr jako příslušný typ seznamu `set` a předajte metodě pole hodnot (které odpovídají typu seznamu).
 
 ```python
 import azure.functions as func
@@ -215,7 +215,7 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
 
 # <a name="java"></a>[Java](#tab/java)
 
- Následující příklad ukazuje funkci jazyka Java, která vytvoří zprávu fronty pro, když se aktivuje požadavkem HTTP.
+ Následující příklad ukazuje funkci Java, která vytvoří zprávu fronty pro spuštění požadavkem HTTP.
 
 ```java
 @FunctionName("httpToQueue")
@@ -229,17 +229,17 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
  }
 ```
 
-V [knihovně runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@QueueOutput` anotaci u parametrů, jejichž hodnota by byla zapsána do fronty úložiště.  Typ parametru by měl být `OutputBinding<T>`, kde `T` je jakýkoli nativní typ Java POJO.
+V [knihovně runtime funkcí](/java/api/overview/azure/functions/runtime) `@QueueOutput` jazyka Java použijte poznámku k parametrům, jejichž hodnota by byla zapsána do úložiště fronty.  Typ parametru `OutputBinding<T>`by `T` měl být , kde je libovolný nativní typ Java POJO.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-V [ C# knihovně tříd](functions-dotnet-class-library.md)použijte [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs).
+V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte [atribut QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs).
 
-Atribut se vztahuje na parametr `out` nebo návratovou hodnotu funkce. Konstruktor atributu přebírá název fronty, jak je znázorněno v následujícím příkladu:
+Atribut se vztahuje `out` na parametr nebo vrácenou hodnotu funkce. Konstruktor atributu přebírá název fronty, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -250,7 +250,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Vlastnost `Connection` můžete nastavit tak, aby určovala účet úložiště, který se má použít, jak je znázorněno v následujícím příkladu:
+Vlastnost můžete `Connection` nastavit tak, aby určila účet úložiště, který se má použít, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -261,25 +261,25 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Úplný příklad naleznete v tématu [výstup – příklad](#example).
+Úplný příklad naleznete v [příkladu Výstup](#example).
 
-Atribut `StorageAccount` lze použít k určení účtu úložiště na úrovni třídy, metody nebo parametru. Další informace najdete v tématu Trigger – atributy.
+`StorageAccount` Atribut můžete použít k určení účtu úložiště na úrovni třídy, metody nebo parametru. Další informace naleznete v tématu Trigger - atributy.
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-C# Skript nepodporuje atributy.
+Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Atributy nejsou podporovány jazykem JavaScript.
+Atributy nejsou podporovány javascriptem.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python nepodporuje atributy.
+Atributy nejsou podporovány Pythonem.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Anotace `QueueOutput` umožňuje napsat zprávu jako výstup funkce. Následující příklad ukazuje funkci aktivovanou protokolem HTTP, která vytvoří zprávu fronty.
+Anotace `QueueOutput` umožňuje napsat zprávu jako výstup funkce. Následující příklad ukazuje funkci aktivovanou protokolem HTTP, která vytváří zprávu fronty.
 
 ```java
 package com.function;
@@ -302,81 +302,81 @@ public class HttpTriggerQueueOutput {
 
 | Vlastnost    | Popis |
 |-------------|-----------------------------|
-|`name`       | Deklaruje název parametru v signatuře funkce. Když je funkce aktivována, hodnota tohoto parametru má obsah zprávy ve frontě. |
+|`name`       | Deklaruje název parametru v podpisu funkce. Při spuštění funkce má hodnota tohoto parametru obsah zprávy fronty. |
 |`queueName`  | Deklaruje název fronty v účtu úložiště. |
 |`connection` | Odkazuje na připojovací řetězec účtu úložiště. |
 
-Parametr přidružený k `QueueOutput` anotaci je zadán jako instance služby [OutputBinding\<t\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) .
+Parametr přidružený k `QueueOutput` anotaci je zadán jako instance [OutputBinding\<T.\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java)
 
 ---
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `Queue`.
+Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nastavili `Queue` v souboru *function.json* a atributu.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|vlastnost function.json | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | Musí být nastavené na `queue`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
-|**direction** | neuvedeno | Musí být nastavené na `out`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. Nastavte na `$return` pro odkaz na návratovou hodnotu funkce.|
-|**Proměnné QueueName** |**Proměnné QueueName** | Název fronty. |
-|**vázán** | **Vázán** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "MyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage`.|
+|**Typ** | neuvedeno | Musí být `queue`nastavena na . Tato vlastnost se nastaví automaticky při vytváření aktivační události na webu Azure Portal.|
+|**direction** | neuvedeno | Musí být `out`nastavena na . Tato vlastnost se nastaví automaticky při vytváření aktivační události na webu Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. Nastavte `$return` tak, aby odkazovalna vrácenou hodnotu funkce.|
+|**název_fronty** |**Název fronty** | Název fronty. |
+|**Připojení** | **Připojení** |Název nastavení aplikace, která obsahuje připojovací řetězec úložiště pro tuto vazbu. Pokud název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytek názvu zde. Například pokud nastavíte `connection` "MyStorage", funkce runtime hledá nastavení aplikace s názvem "MyStorage." Pokud necháte `connection` prázdné, spustí se s funkcí, která použije výchozí `AzureWebJobsStorage`připojovací řetězec úložiště v nastavení aplikace s názvem .|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Využití
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Zápis jedné zprávy fronty pomocí parametru metody, jako je například `out T paramName`. Místo parametru `out` můžete použít návratový typ metody a `T` může být kterýkoli z následujících typů:
-
-* Objekt serializovatelný jako JSON
-* `string`
-* `byte[]`
-* [CloudQueueMessage] 
-
-Pokud se pokusíte vytvořit navázání na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
-
-Do C# skriptu C# a zapište více zpráv fronty pomocí jednoho z následujících typů: 
-
-* `ICollector<T>` nebo `IAsyncCollector<T>`
-* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
-
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
-
-Zápis jedné zprávy fronty pomocí parametru metody, jako je například `out T paramName`. `paramName` je hodnota zadaná ve vlastnosti `name` *Function. JSON*. Místo parametru `out` můžete použít návratový typ metody a `T` může být kterýkoli z následujících typů:
+Napište jednu zprávu fronty pomocí `out T paramName`parametru metody, například . Můžete použít návratový typ metody `out` namísto `T` parametru a může být libovolný z následujících typů:
 
 * Objekt serializovatelný jako JSON
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-Pokud se pokusíte vytvořit navázání na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
+Pokud se pokusíte `CloudQueueMessage` vytvořit vazbu a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady Storage SDK](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
 
-Do C# skriptu C# a zapište více zpráv fronty pomocí jednoho z následujících typů: 
+Ve skriptu C# a C# zapište více zpráv fronty pomocí jednoho z následujících typů: 
 
 * `ICollector<T>` nebo `IAsyncCollector<T>`
-* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+* [CloudOvá fronta](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Položka výstupní fronta je k dispozici prostřednictvím `context.bindings.<NAME>`, kde `<NAME>` odpovídá názvu definovanému v *Function. JSON*. Pro datovou část položky fronty lze použít řetězec nebo objekt s možností serializace JSON.
+Napište jednu zprávu fronty pomocí `out T paramName`parametru metody, například . Je `paramName` hodnota zadaná `name` ve vlastnosti *function.json*. Můžete použít návratový typ metody `out` namísto `T` parametru a může být libovolný z následujících typů:
+
+* Objekt serializovatelný jako JSON
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+Pokud se pokusíte `CloudQueueMessage` vytvořit vazbu a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady Storage SDK](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
+
+Ve skriptu C# a C# zapište více zpráv fronty pomocí jednoho z následujících typů: 
+
+* `ICollector<T>` nebo `IAsyncCollector<T>`
+* [CloudOvá fronta](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="javascript"></a>[Javascript](#tab/javascript)
+
+Položka výstupní fronty je `context.bindings.<NAME>` `<NAME>` k dispozici prostřednictvím, kde odpovídá názvu definovanému v *souboru function.json*. Pro datovou část položky fronty můžete použít řetězec nebo objekt, který lze serializovat.
 
 # <a name="python"></a>[Python](#tab/python)
 
-K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce:
+Existují dvě možnosti pro vyprosit zprávu centra událostí z funkce:
 
-- **Návratová hodnota**: nastavte vlastnost `name` v *Function. JSON* na `$return`. V této konfiguraci je návratová hodnota funkce trvalá jako zpráva úložiště fronty.
+- **Vrácená hodnota** `name` : Nastavte vlastnost *function.json* na `$return`. Při této konfiguraci je vrácená hodnota funkce zachována jako zpráva úložiště fronty.
 
-- **Imperativní**: předejte hodnotu metodě [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru deklarovaného jako typ [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) . Hodnota předaná do `set` je trvalá jako zpráva úložiště fronty.
+- **Imperativní**: Předají hodnotu [metodě set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru deklarovaného [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) jako out typ. Hodnota předaná je `set` trvalé jako zpráva úložiště fronty.
 
 # <a name="java"></a>[Java](#tab/java)
 
-K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce pomocí anotace [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) :
+Existují dvě možnosti pro výstup zprávy centra událostí z funkce pomocí anotace [QueueOutput:](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput)
 
-- **Návratová hodnota**: použitím poznámky k samotné funkci je vrácená hodnota funkce trvalá jako zpráva centra událostí.
+- **Vrácená hodnota**: Použitím poznámky na samotnou funkci je vrácená hodnota funkce zachována jako zpráva centra událostí.
 
-- **Imperativní**: Chcete-li explicitně nastavit hodnotu zprávy, použijte poznámku na konkrétní parametr typu [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), kde `T` je Pojo nebo jakýkoli nativní typ Java. Při této konfiguraci předává hodnota metodě `setValue` hodnotu dál jako zprávu centra událostí.
+- **Imperativní**: Chcete-li explicitně nastavit hodnotu zprávy, použijte poznámku na konkrétní parametr typu [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), kde `T` je POJO nebo jakýkoli nativní typ Java. S touto konfigurací předávání `setValue` hodnoty metody zachová hodnotu jako zpráva centra událostí.
 
 ---
 
@@ -384,18 +384,18 @@ K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce p
 
 | Vazba |  Odkaz |
 |---|---|
-| Fronta | [Chybové kódy fronty](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| Objekt blob, tabulka, fronta | [Kódy chyb úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Objekt blob, tabulka, fronta |  [Řešení potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Fronta | [Kódy chyb fronty](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
+| Blob, Tabulka, Fronta | [Chybové kódy úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, Tabulka, Fronta |  [Řešení potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>nastavení Host.JSON
+## <a name="hostjson-settings"></a>nastavení host.json
 
-Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Ukázkový soubor host. JSON níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [reference Host. JSON pro Azure Functions](functions-host-json.md).
+Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2.x a vyšších. Příklad souboru host.json níže obsahuje pouze nastavení verze 2.x+ pro tuto vazbu. Další informace o nastavení globální konfigurace ve verzích 2.x a dále naleznete [v odkazu host.json pro funkce Azure](functions-host-json.md).
 
 > [!NOTE]
-> Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
+> Odkaz na host.json ve funkcích 1.x najdete v [tématu reference host.json pro Funkce Azure 1.x](functions-host-json-v1.md).
 
 ```json
 {
@@ -414,15 +414,15 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|Maximální interval mezi cykly dotazování fronty. Minimum je 00:00:00.100 (100 ms) a zvýší až 00:01:00 (1 min).  V 1. x je datový typ milisekund a v 2. x a vyšší je časový interval.|
-|visibilityTimeout|00:00:00|Časový interval mezi opakovanými pokusy při zpracování zprávy se nezdařil. |
-|batchSize|16|Počet zpráv ve frontě, které funkce runtime Functions načítá současně a procesy paralelně. Když se zpracovávané číslo vrátí do `newBatchThreshold`, modul runtime získá další dávku a začne tyto zprávy zpracovávat. Proto je maximální počet souběžných zpráv zpracovávaných na funkci `batchSize` a `newBatchThreshold`. Toto omezení se vztahuje odděleně na jednotlivé funkce aktivované frontou. <br><br>Pokud se chcete vyhnout paralelnímu provádění zpráv přijatých v jedné frontě, můžete nastavit `batchSize` na 1. Toto nastavení však eliminuje souběžnost, pokud vaše aplikace Function App běží na jednom virtuálním počítači. Pokud se aplikace funkcí škáluje na více virtuálních počítačů, každý virtuální počítač může spustit jednu instanci každé funkce aktivované frontou.<br><br>Maximální `batchSize` je 32. |
-|maxDequeueCount|5|Počet pokusů o zpracování zprávy před jejich přesunutím do nepoškozené fronty.|
-|newBatchThreshold|batchSize/2|Pokaždé, když se počet zpracovávaných zpráv souběžně vrátí k tomuto číslu, modul runtime načte další dávku.|
+|maxPollingInterval|00:00:01|Maximální interval mezi dotazovánífronty. Minimální je 00:00:00.100 (100 ms) a přírůstky do 00:01:00 (1 min).  V 1.x datový typ je milisekund a v 2.x a vyšší je TimeSpan.|
+|visibilityTimeout|00:00:00|Časový interval mezi opakováním při zpracování zprávy se nezdaří. |
+|batchSize|16|Počet zpráv fronty, které načte čas běhu Functions současně a zpracovává paralelně. Když číslo, které jsou zpracovávány přejde do `newBatchThreshold`, runtime získá další dávku a začne zpracovávat tyto zprávy. Maximální počet souběžných zpráv zpracovávaných na `batchSize` funkci `newBatchThreshold`je tedy plus . Toto omezení platí samostatně pro každou funkci aktivovanou frontou. <br><br>Pokud se chcete vyhnout paralelnímu spuštění zpráv přijatých `batchSize` v jedné frontě, můžete nastavit na 1. Toto nastavení však eliminuje souběžnost pouze tak dlouho, dokud vaše aplikace funkce běží na jednom virtuálním počítači (VM). Pokud se aplikace funkce škáluje na více virtuálních počítačích, každý virtuální počítač může spustit jednu instanci každé funkce aktivované frontou.<br><br>Maximální `batchSize` hodnota je 32. |
+|maxDequeueCount|5|Počet opakování zpracování zprávy před přesunutím do fronty jedovatý.|
+|newBatchThreshold|dávkaVelikost/2|Vždy, když počet zpráv, které jsou zpracovávány současně dostane dolů na toto číslo, runtime načte jinou dávku.|
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spustit funkci jako změny dat úložiště ve frontě (aktivační událost)](./functions-bindings-storage-queue-trigger.md)
+- [Spuštění funkce jako změny dat úložiště fronty (Trigger)](./functions-bindings-storage-queue-trigger.md)
 
 <!-- LINKS -->
 

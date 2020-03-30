@@ -1,6 +1,6 @@
 ---
-title: Provozovat Linux na výpočetních uzlech virtuálních počítačů – Azure Batch | Microsoft Docs
-description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech virtuálních počítačů se systémem Linux v Azure Batch.
+title: Spuštění Linuxu na výpočetních uzlech virtuálních strojů – Azure Batch | Dokumenty společnosti Microsoft
+description: Zjistěte, jak zpracovat paralelní výpočetní úlohy ve fondech virtuálních počítačů SIP v Azure Batch.
 services: batch
 documentationcenter: python
 author: LauraBrenner
@@ -15,15 +15,15 @@ ms.date: 06/01/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 977504f41e93e37ae2c5ce9bdb1182a1cfe0a3fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252282"
 ---
-# <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
+# <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřízení výpočetních uzlů Linuxu ve fondech dávek
 
-K provozování paralelních výpočetních úloh na virtuálních počítačích se systémem Linux i Windows můžete použít Azure Batch. Tento článek podrobně popisuje, jak vytvořit fondy výpočetních uzlů Linux ve službě Batch pomocí knihoven klienta [Batch Python][py_batch_package] a [Batch .NET][api_net] .
+Azure Batch můžete použít ke spuštění paralelních výpočetních úloh na virtuálních počítačích Linuxu i Windows. Tento článek podrobně popisuje, jak vytvořit fondy výpočetních uzlů Linuxu ve službě Batch pomocí klientských knihoven [Batch Python][py_batch_package] a [Batch .NET.][api_net]
 
 > [!NOTE]
 > Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Ve fondech služby Batch vytvořených mezi 10. březnem 2016 a 5. červencem 2017 jsou podporované, pouze pokud byl fond vytvořen pomocí konfigurace cloudové služby. Fondy služby Batch vytvořené před 10. březnem 2016 nepodporují balíčky aplikací. Další informace o používání balíčků aplikací k nasazení aplikací do uzlů služby Batch najdete v tématu [Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací služby Batch](batch-application-packages.md).
@@ -31,46 +31,46 @@ K provozování paralelních výpočetních úloh na virtuálních počítačíc
 >
 
 ## <a name="virtual-machine-configuration"></a>Konfigurace virtuálního počítače
-Při vytváření fondu výpočetních uzlů ve službě Batch máte dvě možnosti, ze kterých můžete vybrat velikost uzlu a operační systém: Cloud Services konfigurace a konfigurace virtuálního počítače.
+Když vytvoříte fond výpočetních uzlů v batch, máte dvě možnosti, ze kterých chcete vybrat velikost uzlu a operační systém: Konfigurace cloudových služeb a Konfigurace virtuálního počítače.
 
-**Konfigurace služby Cloud Services** poskytuje *pouze* výpočetní uzly Windows. Dostupné velikosti výpočetních uzlů jsou uvedené v seznamu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md)a dostupné operační systémy jsou uvedené v části [vydání hostovaného operačního systému Azure a v matici kompatibility SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Když vytvoříte fond, který obsahuje uzly Azure Cloud Services, zadáte velikost uzlu a řadu operačních systémů, které jsou popsány v předchozích uvedených článcích. Pro fondy výpočetních uzlů Windows se Cloud Services nejčastěji používá.
+**Konfigurace služby Cloud Services** poskytuje *pouze* výpočetní uzly Windows. Dostupné velikosti výpočetních uzlů jsou uvedeny ve [velikostech cloudových služeb](../cloud-services/cloud-services-sizes-specs.md)a dostupné operační systémy jsou uvedeny ve [verzích Azure Guest OS a matici kompatibility sady SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Když vytvoříte fond, který obsahuje uzly Cloudových služeb Azure, zadáte velikost uzlu a rodinu operačního serveru, které jsou popsány ve výše uvedených článcích. Pro fondy výpočetních uzlů Windows se nejčastěji používají cloudové služby.
 
-**Konfigurace virtuálního počítače** poskytuje pro výpočetní uzly image Linux i Windows. Dostupné velikosti výpočetních uzlů jsou uvedené ve [velikosti pro virtuální počítače v Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) a [velikosti pro virtuální počítače v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Při vytváření fondu, který obsahuje uzly Konfigurace virtuálního počítače, je nutné zadat velikost uzlů, odkaz na bitovou kopii virtuálního počítače a SKU agenta uzlu Batch, které mají být nainstalovány v uzlech.
+**Konfigurace virtuálního počítače** poskytuje i bitové kopie Linuxu i Windows pro výpočetní uzly. Dostupné velikosti výpočetních uzlů jsou uvedené v [části Velikosti pro virtuální počítače v Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) a [Velikosti pro virtuální počítače v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Při vytváření fondu, který obsahuje uzly konfigurace virtuálního počítače, musíte zadat velikost uzlů, odkaz na image virtuálního počítače a skladovou položku agenta uzlu batch, který se má nainstalovat na uzly.
 
 ### <a name="virtual-machine-image-reference"></a>Odkaz na image virtuálního počítače
 
-Služba Batch používá k poskytování výpočetních uzlů v konfiguraci virtuálního počítače službu [Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . Můžete zadat obrázek z [Azure Marketplace][vm_marketplace]nebo zadat vlastní image, kterou jste připravili. Další informace o vlastních bitových kopiích najdete v tématu [Vytvoření fondu pomocí Galerie sdílených imagí](batch-sig-images.md).
+Služba Batch používá [škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) k poskytování výpočetních uzlů v konfiguraci virtuálního počítače. Můžete zadat image z [Azure Marketplace][vm_marketplace]nebo poskytnout vlastní image, kterou jste připravili. Další podrobnosti o vlastních obrázcích najdete [v tématu Vytvoření fondu pomocí Galerie sdílených obrázků](batch-sig-images.md).
 
-Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnosti image virtuálního počítače. Při vytváření odkazu na image virtuálního počítače se vyžadují tyto vlastnosti:
+Když nakonfigurujete odkaz na image virtuálního počítače, určíte vlastnosti image virtuálního počítače. Při vytváření odkazu na image virtuálního počítače jsou vyžadovány následující vlastnosti:
 
 | **Vlastnosti odkazu na obrázek** | **Příklad** |
 | --- | --- |
 | Vydavatel |Canonical |
 | Nabídka |UbuntuServer |
-| Skladová položka |18,04 – LTS |
+| Skladová jednotka (SKU) |18.04-LTS |
 | Version |nejnovější |
 
 > [!TIP]
-> Další informace o těchto vlastnostech a způsobu vypsání imagí na Marketplace najdete v tématu [navigace a výběr imagí virtuálních počítačů se systémem Linux v Azure pomocí rozhraní příkazového řádku nebo PowerShellu](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).
+> Další informace o těchto vlastnostech a o tom, jak vypsat ibližové obrázky Marketplace v [navigaci a vybrat ibi virtuálních automatů Linuxu v Azure pomocí rozhraní PŘÍKAZOVÉHO PŘÍKAZU nebo PowerShellu](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní s Batch. Další informace naleznete v tématu [SKU agenta uzlu](#node-agent-sku).
 >
 >
 
-### <a name="node-agent-sku"></a>SKU agenta uzlu
-Agent uzlu služby Batch je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. Existují různé implementace agenta uzlu, označované jako SKU, pro různé operační systémy. V podstatě při vytváření konfigurace virtuálního počítače nejprve zadáte odkaz na image virtuálního počítače a pak zadáte agenta uzlu, který se má na bitovou kopii nainstalovat. Obvykle je každá SKU agenta uzlu kompatibilní s několika imagemi virtuálních počítačů. Tady je několik příkladů SKU agenta uzlu:
+### <a name="node-agent-sku"></a>Skladová položka agenta uzlu
+Agent uzlu Batch je program, který běží na každém uzlu ve fondu a poskytuje rozhraní příkazu a řízení mezi uztelem a službou Batch. Existují různé implementace agenta uzlu, známé jako sku, pro různé operační systémy. V podstatě při vytváření konfigurace virtuálního počítače nejprve zadejte odkaz na image virtuálního počítače a pak zadejte agenta uzlu, který se má nainstalovat do bitové kopie. Obvykle každý uzel agent sku je kompatibilní s více image virtuálního počítače. Tady je několik příkladů suna agenta uzlu:
 
-* Batch. Node. Ubuntu 18,04
+* batch.node.ubuntu 18.04
 * batch.node.centos 7
-* Batch. Node. Windows amd64
+* batch.node.windows amd64
 
 > [!IMPORTANT]
-> Ne všechny image virtuálních počítačů, které jsou k dispozici na webu Marketplace, jsou kompatibilní s aktuálně dostupnými agenty uzlu Batch. Pomocí sad SDK pro Batch můžete zobrazit seznam dostupných SKU agenta uzlu a image virtuálních počítačů, se kterými jsou kompatibilní. Další informace a příklady, jak načíst seznam platných imagí za běhu, najdete v [seznamu imagí virtuálních počítačů](#list-of-virtual-machine-images) dále v tomto článku.
+> Ne všechny image virtuálních strojů, které jsou k dispozici na webu Marketplace, jsou kompatibilní s aktuálně dostupnými agenty uzlů Batch. Pomocí sad Batch SDK můžete uvést seznam dostupných sad SKU agenta uzlu a bitové kopie virtuálních strojů, se kterými jsou kompatibilní. Další informace a příklady, jak načíst seznam platných bitových kopií za běhu, najdete v [seznamu bitových kopií virtuálních strojů](#list-of-virtual-machine-images) dále v tomto článku.
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>Vytvoření fondu pro Linux: Batch Python
-Následující fragment kódu ukazuje příklad použití [klientské knihovny Microsoft Azure Batch pro Python][py_batch_package] k vytvoření fondu výpočetních uzlů Ubuntu serveru. Referenční dokumentaci pro modul Batch v Pythonu najdete v tématu o tom, jak přečíst [balíček v balíčku Azure. Batch][py_batch_docs] .
+## <a name="create-a-linux-pool-batch-python"></a>Vytvoření fondu Linuxu: Batch Python
+Následující fragment kódu ukazuje příklad, jak pomocí [knihovny klienta Microsoft Azure Batch pro Python][py_batch_package] vytvořit fond výpočetních uzlů Ubuntu Server. Referenční dokumentaci pro modul Batch Python najdete na [azure.batch balíčku][py_batch_docs] na Číst dokumenty.
 
-Tento fragment kódu vytvoří explicitně [element imagereference][py_imagereference] a určí každou jeho vlastnost (Publisher, nabídka, SKU, verze). V produkčním kódu však doporučujeme, abyste pomocí metody [list_supported_images][py_list_supported_images] určili a vybrali z dostupné kombinace obrázků a identifikátorů SKU agenta uzlu za běhu.
+Tento fragment vytvoří [ImageReference][py_imagereference] explicitně a určuje každou z jeho vlastností (vydavatel, nabídka, skladová položka, verze). V produkčním kódu však doporučujeme použít [metodu list_supported_images][py_list_supported_images] k určení a výběru z dostupných kombinací skladových položk agenta bitové kopie a uzlu za běhu.
 
 ```python
 # Import the required modules from the
@@ -126,7 +126,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Jak už bylo zmíněno dříve, doporučujeme, abyste místo toho, abyste [element imagereference][py_imagereference] vytvořili explicitně, používali metodu [list_supported_images][py_list_supported_images] k dynamickému výběru z aktuálně podporovaných kombinací imagí agent/Marketplace. Následující fragment kódu Python ukazuje, jak použít tuto metodu.
+Jak již bylo zmíněno dříve, doporučujeme místo explicitního vytvoření [ImageReference][py_imagereference] použít [metodu list_supported_images][py_list_supported_images] k dynamickému výběru z aktuálně podporovaných kombinací bitových obrázků agenta uzlu a marketplace. Následující fragment Pythonu ukazuje, jak používat tuto metodu.
 
 ```python
 # Get the list of supported images from the Batch service
@@ -151,10 +151,10 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id=image.node_agent_sku_id)
 ```
 
-## <a name="create-a-linux-pool-batch-net"></a>Vytvoření fondu pro Linux: Batch .NET
-Následující fragment kódu ukazuje příklad použití klientské knihovny [Batch .NET][nuget_batch_net] k vytvoření fondu výpočetních uzlů Ubuntu serveru. [Referenční dokumentaci k Batch .NET][api_net] najdete na docs.Microsoft.com.
+## <a name="create-a-linux-pool-batch-net"></a>Vytvoření fondu Linuxu: Batch .NET
+Následující fragment kódu ukazuje příklad, jak pomocí klientské [knihovny Batch .NET][nuget_batch_net] vytvořit fond výpočetních uzlů Ubuntu Server. Referenční [dokumentaci batch .NET][api_net] naleznete v docs.microsoft.com.
 
-Následující fragment kódu používá [PoolOperations][net_pool_ops]. Metoda [ListSupportedImages][net_list_supported_images] , která se má vybrat ze seznamu aktuálně podporovaného obrázku na webu Marketplace a kombinací SKU agenta uzlu Tato technika je žádoucí, protože se seznam podporovaných kombinací může časem změnit. Nejčastěji se přidávají podporované kombinace.
+Následující fragment kódu používá [PoolOperations][net_pool_ops]. [ListSupportedImages][net_list_supported_images] metoda vybrat ze seznamu aktuálně podporovaných kombinace image Marketplace a uzel agenta Skladové položky. Tato technika je žádoucí, protože seznam podporovaných kombinací se může čas od času změnit. Nejčastěji jsou přidány podporované kombinace.
 
 ```csharp
 // Pool settings
@@ -198,7 +198,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-I když předchozí fragment kódu používá [PoolOperations][net_pool_ops]. [ListSupportedImages][net_list_supported_images] metoda, která dynamicky vypíše a vybere z podporované kombinace obrázků a identifikátorů SKU agenta uzlu (doporučeno), můžete taky nakonfigurovat [element imagereference][net_imagereference] explicitně:
+Přestože předchozí úryvek používá [PoolOperations][net_pool_ops]. [ListSupportedImages][net_list_supported_images] metoda dynamicky seznam a výběr z podporovaných kombinací skladových položek a agenta uzlu (doporučeno), můžete také explicitně nakonfigurovat [ImageReference:][net_imagereference]
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -208,13 +208,13 @@ ImageReference imageReference = new ImageReference(
     version: "latest");
 ```
 
-## <a name="list-of-virtual-machine-images"></a>Seznam imagí virtuálních počítačů
-Pokud chcete získat seznam všech podporovaných imagí virtuálních počítačů Marketplace pro službu Batch a jejich odpovídajících agentů uzlů, použijte prosím [list_supported_images][py_list_supported_images] (Python), [ListSupportedImages][net_list_supported_images] (Batch .NET) nebo odpovídající rozhraní API v příslušné jazykové sadě SDK dle vašeho výběru.
+## <a name="list-of-virtual-machine-images"></a>Seznam image virtuálních strojů
+Chcete-li získat seznam všech podporovaných image virtuálních strojů Marketplace pro službu Batch a jejich odpovídající uzlové agenty, využijte [list_supported_images][py_list_supported_images] (Python), [ListSupportedImages][net_list_supported_images] (Batch .NET) nebo odpovídající rozhraní API v příslušném jazyce Sady SDK podle vašeho výběru.
 
-## <a name="connect-to-linux-nodes-using-ssh"></a>Připojení k uzlům se systémem Linux pomocí protokolu SSH
-Během vývoje nebo při řešení potíží se může stát, že se přihlásíte k uzlům ve fondu. Na rozdíl od výpočetních uzlů Windows nemůžete použít protokol RDP (Remote Desktop Protocol) (RDP) pro připojení k uzlům se systémem Linux. Služba Batch místo toho povoluje přístup SSH na každém uzlu pro vzdálené připojení.
+## <a name="connect-to-linux-nodes-using-ssh"></a>Připojení k uzlům Linuxu pomocí SSH
+Během vývoje nebo při řešení potíží může být nutné přihlásit se k uzlům ve fondu. Na rozdíl od výpočetních uzlů systému Windows nelze k připojení k uzlům Linuxu použít protokol RDP (Remote Desktop Protocol). Místo toho služba Batch umožňuje přístup SSH na každém uzlu pro vzdálené připojení.
 
-Následující fragment kódu Pythonu vytvoří uživatele na každém uzlu ve fondu, který je vyžadován pro vzdálené připojení. Pak vytiskne informace o připojení zabezpečeného prostředí (SSH) pro každý uzel.
+Následující fragment kódu Pythonu vytvoří uživatele na každém uzlu ve fondu, který je vyžadován pro vzdálené připojení. Poté vytiskne informace o připojení zabezpečeného prostředí (SSH) pro každý uzel.
 
 ```python
 import datetime
@@ -273,7 +273,7 @@ for node in nodes:
                                          login.remote_login_port))
 ```
 
-Tady je ukázkový výstup pro předchozí kód pro fond, který obsahuje čtyři uzly Linux:
+Tady je ukázkový výstup pro předchozí kód pro fond, který obsahuje čtyři linuxové uzly:
 
 ```
 Password:
@@ -283,16 +283,16 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-Místo hesla můžete zadat veřejný klíč SSH při vytváření uživatele v uzlu. V sadě Python SDK použijte parametr **ssh_public_key** v [ComputeNodeUser][py_computenodeuser]. V rozhraní .NET použijte [ComputeNodeUser][net_computenodeuser]. Vlastnost [SshPublicKey][net_ssh_key]
+Místo hesla můžete zadat veřejný klíč SSH při vytváření uživatele v uzlu. V pythonu SDK použijte **parametr ssh_public_key** na [ComputeNodeUser][py_computenodeuser]. V rozhraní .NET použijte [nástroj ComputeNodeUser][net_computenodeuser]. [SshPublicKey][net_ssh_key] vlastnost.
 
 ## <a name="pricing"></a>Ceny
-Azure Batch je postavená na technologii Azure Cloud Services a platformě Azure Virtual Machines. Samotná služba Batch je bezplatně nabízená, což znamená, že se vám účtují jenom výpočetní prostředky (a související náklady, které zahrnují), které vaše řešení Batch spotřebují. Když zvolíte **Cloud Services konfiguraci**, bude se vám účtovat na základě [Cloud Services cenové][cloud_services_pricing] struktury. Když zvolíte **konfiguraci virtuálního počítače**, bude se vám účtovat na základě [Virtual Machines cenové][vm_pricing] struktury.
+Azure Batch je integrovaný na Azure Cloud Services a technologii Virtuálních počítačů Azure. Samotná služba Batch je nabízena zdarma, což znamená, že se vám účtují pouze výpočetní prostředky (a související náklady, které s sebou nese) spotřebovává vaše řešení Batch. Když zvolíte **konfiguraci cloudových služeb**, bude vám účtovánpoplatek na základě cenové struktury [cloudových služeb.][cloud_services_pricing] Když zvolíte **konfiguraci virtuálního počítače**, bude se vám účtovat na základě cenové struktury [Virtuální počítače.][vm_pricing]
 
-Pokud nasazujete aplikace do vašich dávkových uzlů pomocí [balíčků aplikací](batch-application-packages.md), účtují se vám také Azure Storage prostředky, které vaše balíčky aplikací spotřebovávají.
+Pokud nasadíte aplikace do uzlů Batch pomocí [balíčků aplikací](batch-application-packages.md), budou se vám také účtovat prostředky azure storage, které vaše balíčky aplikací spotřebovávají.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ukázky kódu Pythonu][github_samples_py] v úložišti [Azure-Batch-Samples][github_samples] na GitHubu obsahují skripty, které ukazují, jak provádět běžné operace s dávkou, jako jsou například fondy, úlohy a vytváření úloh. [Soubor Readme][github_py_readme] , který doprovází ukázky Pythonu, obsahuje podrobnosti o tom, jak nainstalovat požadované balíčky.
+[Ukázky kódu Pythonu][github_samples_py] v úložišti [azure-batch-samples][github_samples] na GitHubu obsahují skripty, které ukazují, jak provádět běžné operace Batch, jako je fond, úloha a vytváření úloh. [Readme,][github_py_readme] který doprovází ukázky Pythonu, má podrobnosti o tom, jak nainstalovat požadované balíčky.
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx

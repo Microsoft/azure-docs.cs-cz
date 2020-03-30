@@ -1,6 +1,6 @@
 ---
-title: Jak klonovat službu Azure IoT Hub
-description: Jak klonovat službu Azure IoT Hub
+title: Jak klonovat azure iot hub
+description: Jak klonovat azure iot hub
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,122 +8,122 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75429158"
 ---
-# <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak klonovat službu Azure IoT Hub do jiné oblasti
+# <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak naklonovat azure iot hub do jiné oblasti
 
-Tento článek popisuje způsoby, jak klonovat IoT Hub a poskytuje některé otázky, které před zahájením potřebujete zodpovědět. Tady je několik důvodů, proč možná budete chtít klonovat centrum IoT:
+Tento článek zkoumá způsoby klonování centra IoT Hub a obsahuje některé otázky, které je třeba odpovědět před zahájením. Tady je několik důvodů, proč můžete chtít klonovat centrum IoT:
  
-* Přesouváte svou společnost z jedné oblasti do druhé, třeba z Evropy do Severní Amerika (nebo naopak), a chcete, aby se vaše prostředky a data geograficky zavřela na nové místo, takže je potřeba přesunout své centrum.
+* Přesouváte společnost z jedné oblasti do druhé, například z Evropy do Severní Ameriky (nebo naopak) a chcete, aby vaše zdroje a data byly geograficky blízké vašemu novému umístění, takže je třeba přesunout své centrum.
 
-* Nastavujete centrum pro vývoj a produkční prostředí.
+* Nastavujete rozbočovač pro vývojové versus produkční prostředí.
 
-* Chcete provést vlastní implementaci víceúrovňové vysoké dostupnosti. Další informace najdete v [části jak dosáhnout vysoké oblasti HA IoT Hub vysoké dostupnosti a zotavení po havárii](iot-hub-ha-dr.md#achieve-cross-region-ha).
+* Chcete provést vlastní implementaci s vysokou dostupností více rozbočovačů. Další informace najdete v tématu [Jak dosáhnout průřezu HA sekce Služby IoT Hub vysoké dostupnosti a zotavení po havárii](iot-hub-ha-dr.md#achieve-cross-region-ha).
 
-* Chcete zvýšit počet [oddílů](iot-hub-scaling.md#partitions) konfigurovaných pro vaše centrum. Tato nastavení se nastaví při prvním vytvoření centra a nedá se změnit. Informace v tomto článku můžete použít ke klonování rozbočovače a při vytvoření klonu, zvýšení počtu oddílů.
+* Chcete zvýšit počet [oddílů](iot-hub-scaling.md#partitions) nakonfigurovaných pro rozbočovač. Tato nastavení je nastavena při prvním vytvoření centra a nelze ji změnit. Informace v tomto článku můžete naklonovat rozbočovač a při vytvoření klonování zvýšit počet oddílů.
 
-K naklonování rozbočovače potřebujete předplatné s přístupem správce k původnímu centru. Nové centrum můžete umístit do nové skupiny prostředků a oblasti ve stejném předplatném jako původní centrum nebo dokonce i v novém předplatném. Pouze nemůžete použít stejný název, protože název centra musí být globálně jedinečný.
+Chcete-li klonovat rozbočovač, potřebujete předplatné s přístupem pro správu k původnímu rozbočovači. Nové centrum můžete umístit do nové skupiny prostředků a oblasti, ve stejném předplatném jako původní rozbočovač nebo dokonce do nového předplatného. Prostě nelze použít stejný název, protože název centra musí být globálně jedinečný.
 
 > [!NOTE]
-> V současné době není k dispozici žádná funkce pro klonování služby IoT Hub automaticky. Je primárně ruční proces, a proto je poměrně náchylná k chybám. Složitost klonování rozbočovače je přímo úměrná složitosti rozbočovače. Například klonování služby IoT Hub bez směrování zpráv je poměrně jednoduché. Pokud přidáte směrování zpráv jako jen jednu složitost, klonování rozbočovače se změní nejméně na pořadí. Pokud přesouváte také prostředky používané pro koncové body směrování, je to jiné pořadí magnitureější. 
+> V tuto chvíli není k dispozici žádná funkce pro automatické klonování služby IoT hub. Je to především manuální proces, a proto je poměrně náchylný k chybám. Složitost klonování rozbočovače je přímo úměrná složitosti centra. Například klonování služby IoT hub bez směrování zpráv je poměrně jednoduché. Pokud přidáte směrování zpráv pouze jako jednu složitost, klonování rozbočovače se stane alespoň řádově složitější. Pokud také přesunete prostředky používané pro směrování koncových bodů, je to další pořadí magniture složitější. 
 
-## <a name="things-to-consider"></a>Co je potřeba zvážit
+## <a name="things-to-consider"></a>Co je třeba zvážit
 
-Před klonováním služby IoT Hub je potřeba zvážit několik věcí.
+Existuje několik věcí, které je třeba zvážit před klonováním centra IoT hub.
 
-* Ujistěte se, že všechny funkce, které jsou k dispozici v původním umístění, jsou také k dispozici v novém umístění. Některé služby jsou ve verzi Preview, ale ne všechny funkce jsou dostupné všude.
+* Ujistěte se, že všechny funkce dostupné v původním umístění jsou také k dispozici v novém umístění. Některé služby jsou ve verzi preview a ne všechny funkce jsou k dispozici všude.
 
-* Před vytvořením a ověřením klonované verze Neodstraňujte původní prostředky. Po odebrání centra se trvale ztratí a neexistuje žádný způsob, jak ho obnovit, aby se zkontrolovala nastavení nebo data, aby se zajistilo správné replikace centra.
+* Před vytvořením a ověřením klonované verze neodeberte původní prostředky. Jakmile centrum odeberete, je navždy pryč a neexistuje žádný způsob, jak ho obnovit, abyste zkontrolovali nastavení nebo data, abyste se ujistili, že je centrum replikováno správně.
 
-* Mnoho prostředků vyžaduje globálně jedinečné názvy, takže musíte pro klonované verze použít jiné názvy. Pro skupinu prostředků, ke které patří Klonovaný rozbočovač, byste měli použít i jiný název. 
+* Mnoho prostředků vyžaduje globálně jedinečné názvy, takže je nutné použít různé názvy pro klonované verze. Měli byste také použít jiný název pro skupinu prostředků, do které patří klonované centrum. 
 
-* Data pro původní centrum IoT se nemigrují. Patří sem zprávy telemetrie, příkazy typu cloud-zařízení (C2D) a informace související s úlohou, jako jsou plány a historie. Metriky a výsledky protokolování se také nemigrují. 
+* Data pro původní centrum IoT se nemigrují. To zahrnuje telemetrické zprávy, příkazy cloud-to-device (C2D) a informace související s úlohami, jako jsou plány a historie. Metriky a výsledky protokolování se také nemigrují. 
 
-* Pro data nebo zprávy směrované na Azure Storage můžete ponechat data v původním účtu úložiště, přenést tato data do nového účtu úložiště v nové oblasti nebo ponechat stará data na místě a vytvořit nový účet úložiště v novém umístění pro nová data. Další informace o přesouvání dat v úložišti objektů BLOB najdete v tématu Začínáme [s AzCopy](../storage/common/storage-use-azcopy-v10.md).
+* U dat nebo zpráv směrovaných do Služby Azure Storage můžete data ponechat v původním účtu úložiště, přenést tato data do nového účtu úložiště v nové oblasti nebo ponechat stará data na místě a vytvořit nový účet úložiště v novém umístění pro nová data. Další informace o přesouvání dat v úložišti objektů Blob [najdete v tématu Začínáme s AzCopy](../storage/common/storage-use-azcopy-v10.md).
 
-* Data pro Event Hubs a Service Bus témat a front nelze migrovat. To jsou data v čase a po zpracování zpráv se neukládají.
+* Data pro centra událostí a pro témata a fronty služby Service Bus nelze migrovat. Jedná se o data v okamžiku a není uložena po zpracování zpráv.
 
-* Pro migraci musíte naplánovat výpadky. Klonování zařízení do nového centra trvá určitou dobu. Pokud používáte metodu importu/exportu, testování srovnávacích testů ukázalo, že při přesunu zařízení 500 000 může trvat přibližně dvě hodiny a čtyři hodiny přesunu milionů zařízení. 
+* Je třeba naplánovat prostoje migrace. Klonování zařízení do nového rozbočovače nějakou dobu trvá. Pokud používáte metodu importu a exportu, testování srovnávacích testů odhalilo, že přesun 500 000 zařízení může trvat přibližně dvě hodiny a přesun milionu zařízení o čtyři hodiny. 
 
-* Zařízení můžete zkopírovat do nového centra bez vypnutí nebo změny zařízení. 
+* Zařízení můžete zkopírovat do nového rozbočovače, aniž byste museli zařízení vypínat nebo měnit. 
 
-    * Pokud se zařízení původně zřídila pomocí DPS, jejich opětovné zřízení aktualizuje informace o připojení uložené v jednotlivých zařízeních. 
+    * Pokud byla zařízení původně zřízena pomocí DPS, opětovné zřizování je aktualizuje informace o připojení uložené v každém zařízení. 
     
-    * V opačném případě je nutné použít metodu import/export k přesunutí zařízení a pak je třeba upravit zařízení, aby používala nové centrum. Můžete například nastavit, aby zařízení užívalo název hostitele IoT Hub z požadovaných vlastností. Zařízení převezme IoT Hub název hostitele, odpojte zařízení od původního centra a znovu ho připojte k novému.
+    * V opačném případě budete muset použít Import/Export metoda přesunout zařízení a pak zařízení musí být upraveny tak, aby použití nového rozbočovače. Zařízení můžete například nastavit tak, aby spotřebovávaly název hostitele služby IoT Hub z požadovaných vlastností dvojčete. Zařízení převezme tento název hostitele služby IoT Hub, odpojí zařízení od starého rozbočovače a znovu jej připojí k novému.
     
-* Je potřeba aktualizovat všechny certifikáty, které používáte, abyste je mohli používat s novými prostředky. Také pravděpodobně máte rozbočovač definovaný v tabulce DNS někam – budete muset aktualizovat tyto informace DNS.
+* Je třeba aktualizovat všechny certifikáty, které používáte, abyste je mohli používat s novými prostředky. Také budete mít pravděpodobně rozbočovač definovaný v tabulce DNS někde - budete muset aktualizovat, že informace DNS.
 
 ## <a name="methodology"></a>Metodologie
 
-Toto je obecná metoda, kterou doporučujeme pro přesun služby IoT Hub z jedné oblasti do druhé. V případě směrování zpráv se tím předpokládá, že se prostředky nepřesunou do nové oblasti. Další informace najdete v [části věnované směrování zpráv](#how-to-handle-message-routing).
+Toto je obecná metoda, kterou doporučujeme pro přesunutí centra IoT z jedné oblasti do druhé. Pro směrování zpráv to předpokládá, že prostředky nejsou přesunuty do nové oblasti. Další informace naleznete v [části Směrování zpráv](#how-to-handle-message-routing).
 
    1. Exportujte centrum a jeho nastavení do šablony Správce prostředků. 
    
-   1. Proveďte potřebné změny šablony, jako je například aktualizace všech výskytů názvu a umístění klonovaného rozbočovače. Pro všechny prostředky v šabloně použité pro koncové body směrování zpráv aktualizujte klíč v šabloně pro daný prostředek.
+   1. Proveďte potřebné změny šablony, jako je například aktualizace všech výskytů názvu a umístění klonovaného centra. Pro všechny prostředky v šabloně používané pro koncové body směrování zpráv aktualizujte klíč v šabloně pro tento prostředek.
    
    1. Importujte šablonu do nové skupiny prostředků v novém umístění. Tím se vytvoří klon.
 
-   1. Ladit podle potřeby. 
+   1. Ladění podle potřeby. 
    
-   1. Přidejte cokoli, co nebylo exportováno do šablony. 
+   1. Přidejte vše, co nebylo exportováno do šablony. 
    
-       Například skupiny uživatelů nejsou exportovány do šablony. Musíte přidat skupiny uživatelů do šablony ručně nebo použít [Azure Portal](https://portal.azure.com) po vytvoření centra. Existuje příklad, jak přidat jednu skupinu příjemců do šablony v článku [použití šablony Azure Resource Manager ke konfiguraci směrování zpráv IoT Hub](tutorial-routing-config-message-routing-rm-template.md).
+       Například skupiny spotřebitelů nejsou exportovány do šablony. Musíte přidat skupiny spotřebitelů do šablony ručně nebo použít [portál Azure](https://portal.azure.com) po vytvoření centra. Existuje příklad přidání jedné skupiny spotřebitelů do šablony v článku [Použití šablony Správce prostředků Azure ke konfiguraci směrování zpráv služby IoT Hub](tutorial-routing-config-message-routing-rm-template.md).
        
-   1. Zkopírujte zařízení z původního centra do klonovaného. Tento postup je popsaný v části [Správa zařízení zaregistrovaných ve službě IoT Hub](#managing-the-devices-registered-to-the-iot-hub).
+   1. Zkopírujte zařízení z původního rozbočovače do klonu. To je uvedeno v části [Správa zařízení registrovaných na centrum IoT](#managing-the-devices-registered-to-the-iot-hub).
 
-## <a name="how-to-handle-message-routing"></a>Postup zpracování směrování zpráv
+## <a name="how-to-handle-message-routing"></a>Jak zpracovat směrování zpráv
 
-Pokud vaše centrum používá [vlastní směrování](iot-hub-devguide-messages-read-custom.md), export šablony pro centrum zahrnuje konfiguraci směrování, ale nezahrnuje samotné prostředky. Je nutné zvolit, zda chcete přesunout prostředky směrování do nového umístění, nebo je ponechat na místě a nadále je používat, jak je uvedeno. 
+Pokud vaše centrum používá [vlastní směrování](iot-hub-devguide-messages-read-custom.md), export šablony pro rozbočovač zahrnuje konfiguraci směrování, ale nezahrnuje samotné prostředky. Musíte zvolit, zda chcete přesunout prostředky směrování do nového umístění nebo je ponechat na místě a nadále je používat "tak, jak jsou". 
 
-Řekněme například, že máte rozbočovač ve Západní USA, který směruje zprávy do účtu úložiště (také v Západní USA) a chcete přesunout rozbočovač na Východní USA. Můžete přesunout rozbočovač a nechat ho dál směrovat zprávy na účet úložiště v Západní USA, nebo můžete přesunout rozbočovač a také přesunout účet úložiště. Může dojít k malému výkonu směrování zpráv do prostředků koncového bodu v jiné oblasti.
+Řekněme například, že máte rozbočovač v západní USA, který směruje zprávy do účtu úložiště (také v západní USA) a chcete přesunout rozbočovač do usa – východ. Můžete přesunout rozbočovač a mít ho stále směrovat zprávy do účtu úložiště v západní USA, nebo můžete přesunout rozbočovač a také přesunout účet úložiště. Může být malý výkon přístupů z směrování zpráv do prostředků koncového bodu v jiné oblasti.
 
-Pokud nepřesouváte prostředky používané pro koncové body směrování, můžete přesunout rozbočovač, který využívá směrování zpráv poměrně snadno. 
+Rozbočovač, který používá směrování zpráv, můžete přesunout poměrně snadno, pokud také nepřesunete prostředky používané pro koncové body směrování. 
 
 Pokud centrum používá směrování zpráv, máte dvě možnosti. 
 
 1. Přesuňte prostředky používané pro koncové body směrování do nového umístění.
 
-    * Nové prostředky musíte vytvořit sami ručně v [Azure Portal](https://portal.azure.com) nebo pomocí Správce prostředků šablon. 
+    * Nové prostředky musíte vytvořit sami ručně na [webu Azure Portal](https://portal.azure.com) nebo pomocí šablon Správce prostředků. 
 
-    * Všechny prostředky je nutné přejmenovat při jejich vytváření v novém umístění, protože mají globálně jedinečné názvy. 
+    * Při jejich vytváření v novém umístění je nutné přejmenovat všechny prostředky, protože mají globálně jedinečné názvy. 
      
-    * Před vytvořením nového centra musíte aktualizovat názvy prostředků a klíče prostředků v šabloně nového rozbočovače. Prostředky by měly být při vytvoření nového centra přítomny.
+    * Před vytvořením nového centra je nutné aktualizovat názvy prostředků a klíče prostředků v šabloně nového rozbočovače. Prostředky by měly být k dispozici při vytvoření nového rozbočovače.
 
-1. Nepřesouvat prostředky používané pro koncové body směrování. Použijte je "na místě".
+1. Nepřesouvejte prostředky používané pro koncové body směrování. Použijte je "na místě".
 
-   * V kroku, kdy šablonu upravíte, budete muset načíst klíče pro každý prostředek směrování a vložit je do šablony před vytvořením nového centra. 
+   * V kroku, kde upravíte šablonu, budete muset před vytvořením nového centra načíst klíče pro každý prostředek směrování a vložit je do šablony. 
 
-   * Centrum stále odkazuje na původní prostředky směrování a směruje zprávy do nakonfigurovaných zdrojů.
+   * Centrum stále odkazuje na původní prostředky směrování a směruje zprávy do nich, jak je nakonfiguroval.
 
-   * Dojde k malému výkonu, protože prostředky centra a koncového bodu směrování nejsou ve stejném umístění.
+   * Budete mít malý výkon přístupů, protože rozbočovač a prostředky koncového bodu směrování nejsou ve stejném umístění.
 
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>Příprava na migraci centra do jiné oblasti
 
-V této části najdete konkrétní pokyny pro migraci centra.
+Tato část obsahuje konkrétní pokyny pro migraci rozbočovače.
 
-### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Najděte původní centrum a exportujte ho do šablony prostředků.
+### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Najděte původní rozbočovač a exportujte ho do šablony prostředků.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
 
-1. Přejděte do **skupiny prostředků** a vyberte skupinu prostředků obsahující rozbočovač, který chcete přesunout. Můžete také přejít na **prostředky** a najít centrum. Vyberte centrum.
+1. Přejděte do **skupin y prostředků** a vyberte skupinu prostředků obsahující centrum, které chcete přesunout. Můžete také přejít na **zdroje a** najít rozbočovač tímto způsobem. Vyberte rozbočovač.
 
-1. V seznamu vlastností a nastavení pro centrum vyberte **Exportovat šablonu** . 
+1. Ze seznamu vlastností a nastavení centra vyberte **Exportovat šablonu.** 
 
-   ![Snímek obrazovky znázorňující příkaz pro export šablony pro IoT Hub.](./media/iot-hub-how-to-clone/iot-hub-export-template.png)
+   ![Snímek obrazovky s příkazem pro export šablony pro Centrum IoT Hub](./media/iot-hub-how-to-clone/iot-hub-export-template.png)
 
-1. Vyberte **Stáhnout** a stáhněte šablonu. Uložte soubor někam, kde ho můžete najít znovu. 
+1. Chcete-li stáhnout šablonu, vyberte **stáhnout.** Uložte soubor někde, kde jej můžete znovu najít. 
 
-   ![Snímek obrazovky zobrazující příkaz pro stažení šablony pro IoT Hub.](./media/iot-hub-how-to-clone/iot-hub-download-template.png)
+   ![Snímek obrazovky s příkazem pro stažení šablony pro Centrum IoT Hub](./media/iot-hub-how-to-clone/iot-hub-download-template.png)
 
-### <a name="view-the-template"></a>Zobrazení šablony 
+### <a name="view-the-template"></a>Zobrazit šablonu 
 
-1. Přejít do složky Stažené soubory (nebo do jakékoli složky, kterou jste použili při exportu šablony) a vyhledejte soubor zip. Otevřete soubor zip a vyhledejte soubor s názvem `template.json`. Vyberte ji a potom vyberte CTRL + C a zkopírujte šablonu. Přejít do jiné složky, která není v souboru zip, a vložte soubor (CTRL + V). Teď ho můžete upravit.
+1. Přejděte do složky Soubory ke stažení (nebo do složky, kterou jste použili při exportu šablony) a vyhledejte soubor zip. Otevřete soubor zip a `template.json`vyhledejte soubor s názvem . Vyberte ji a pak vyberte Ctrl+C, chcete-li šablonu zkopírovat. Přejděte do jiné složky, která není v souboru zip, a vložte soubor (Ctrl+V). Nyní jej můžete upravit.
  
-    Následující příklad slouží pro obecné rozbočovače bez konfigurace směrování. Je to rozbočovač vrstev S1 (s 1 jednotkou) nazvaný **ContosoTestHub29358** v oblasti **westus**. Zde je vyexportovaná šablona.
+    Následující příklad je určen pro obecný rozbočovač bez konfigurace směrování. Jedná se o rozbočovač úrovně S1 (s 1 jednotkou) s názvem **ContosoTestHub29358** v oblasti **westus**. Zde je exportovaná šablona.
 
     ``` json
     {
@@ -233,11 +233,11 @@ V této části najdete konkrétní pokyny pro migraci centra.
 
 ### <a name="edit-the-template"></a>Úprava šablony 
 
-Než budete moct použít šablonu k vytvoření nového centra v nové oblasti, musíte provést nějaké změny. K úpravě šablony použijte [vs Code](https://code.visualstudio.com) nebo textový editor.
+Před vytvořením nového centra v nové oblasti je třeba provést některé změny. K úpravě šablony použijte [Kód VS](https://code.visualstudio.com) nebo textový editor.
 
-#### <a name="edit-the-hub-name-and-location"></a>Upravit název a umístění centra
+#### <a name="edit-the-hub-name-and-location"></a>Úprava názvu a umístění centra
 
-1. Odebrat oddíl Parameters v horní části – je mnohem jednodušší použít jenom název centra, protože nebudeme mít víc parametrů. 
+1. Odeberte část parametrů v horní části – je mnohem jednodušší použít název rozbočovače, protože nebudeme mít více parametrů. 
 
     ``` json
         "parameters": {
@@ -248,9 +248,9 @@ Než budete moct použít šablonu k vytvoření nového centra v nové oblasti,
         },
     ```
 
-1. Změňte název tak, aby používal skutečný (nový) název místo načtení z parametru (který jste odebrali v předchozím kroku). 
+1. Změňte název tak, aby používal skutečný (nový) název, místo toho, abyste ho načítali z parametru (který jste odebrali v předchozím kroku). 
 
-    Pro nové centrum použijte název původního centra a *naklonování* řetězce, abyste vytvořili nový název. Začněte tím, že vymažete název a umístění centra.
+    Pro nový rozbočovač použijte název původního rozbočovače a *klon* řetězce, abyste vytvořili nový název. Začněte vyčištěním názvu a umístění rozbočovače.
     
     Stará verze:
 
@@ -266,9 +266,9 @@ Než budete moct použít šablonu k vytvoření nového centra v nové oblasti,
     "location": "eastus",
     ```
 
-    V dalším kroku zjistíte, že hodnoty pro **cestu** obsahují starý název centra. Změňte je tak, aby používaly nové. Jedná se o hodnoty cest v rámci **eventHubEndpoints** s názvem **události** a **OperationsMonitoringEvents**.
+    Dále zjistíte, že hodnoty pro **cestu** obsahují starý název rozbočovače. Změňte je tak, aby používaly nový. Jedná se o hodnoty cesty pod **eventHubEndpoints** s názvem **události** a **OperationsMonitoringEvents**.
 
-    Až budete hotovi, vaše koncová bodu centra událostí by měla vypadat takto:
+    Až budete hotovi, měl by vypadat oddíl koncových bodů centra událostí takto:
 
     ``` json
     "eventHubEndpoints": {
@@ -294,13 +294,13 @@ Než budete moct použít šablonu k vytvoření nového centra v nové oblasti,
         }
     ```
 
-#### <a name="update-the-keys-for-the-routing-resources-that-are-not-being-moved"></a>Aktualizuje klíče pro prostředky směrování, které se nepřesouvá.
+#### <a name="update-the-keys-for-the-routing-resources-that-are-not-being-moved"></a>Aktualizace klíčů pro prostředky směrování, které nejsou přesunuty
 
-Když exportujete šablonu Správce prostředků pro rozbočovač s nakonfigurovaným směrováním, uvidíte, že klíče pro tyto prostředky nejsou v exportované šabloně k dispozici – jejich umístění se označuje hvězdičkami. Musíte je vyplnit tak, že na portálu nasadíte na tyto prostředky a načítajíte klíče **před** importem šablony nového centra a vytvořením centra. 
+Při exportu šablony Správce prostředků pro rozbočovač, který má nakonfigurované směrování, uvidíte, že klíče pro tyto prostředky nejsou k dispozici v exportované šabloně – jejich umístění je označeno hvězdičkami. Musíte je vyplnit tak, že přejdete na tyto prostředky na portálu a načtete klíče **před** importem šablony nového centra a vytvořením centra. 
 
-1. Načte klíče požadované pro všechny prostředky směrování a umístí je do šablony. Můžete načíst klíče z prostředku v [Azure Portal](https://portal.azure.com). 
+1. Načtěte klíče potřebné pro všechny prostředky směrování a vložte je do šablony. Klíče můžete načíst z prostředku na [webu Azure Portal](https://portal.azure.com). 
 
-   Pokud například směrujete zprávy do kontejneru úložiště, Najděte účet úložiště na portálu. V části nastavení vyberte **přístupové klíče**a pak zkopírujte jeden z klíčů. V takovém případě klíč vypadá při prvním exportu šablony:
+   Například pokud směrujete zprávy do kontejneru úložiště, vyhledejte účet úložiště na portálu. V části Nastavení vyberte **Přístupové klávesy**a zkopírujte jeden z nich. Tady je, jak klíč vypadá při prvním exportu šablony:
 
    ```json
    "connectionString": "DefaultEndpointsProtocol=https;
@@ -308,9 +308,9 @@ Když exportujete šablonu Správce prostředků pro rozbočovač s nakonfigurov
    "containerName": "fabrikamresults",
    ```
 
-1. Po načtení klíče účtu pro účet úložiště ho uložte do šablony v klauzuli `AccountKey=****` místo hvězdičky. 
+1. Po načtení klíče účtu pro účet úložiště jej vložte `AccountKey=****` do šablony v klauzuli místo hvězdičky. 
 
-1. V případě front Service Bus Získejte sdílený přístupový klíč, který odpovídá SharedAccessKeyName. Tady je klíč a `SharedAccessKeyName` ve formátu JSON:
+1. U front sběrnice získáte sdílený přístupový klíč odpovídající službě SharedAccessKeyName. Zde je klíč `SharedAccessKeyName` a v json:
 
    ```json
    "connectionString": "Endpoint=sb://fabrikamsbnamespace1234.servicebus.windows.net:5671/;
@@ -319,123 +319,123 @@ Když exportujete šablonu Správce prostředků pro rozbočovač s nakonfigurov
    EntityPath=fabrikamsbqueue1234",
    ```
 
-1. Totéž platí pro Service Bus témata a připojení centra událostí.
+1. Totéž platí pro témata služby Service Bus a připojení centra událostí.
 
 #### <a name="create-the-new-routing-resources-in-the-new-location"></a>Vytvoření nových prostředků směrování v novém umístění
 
-Tato část platí pouze v případě, že přesouváte prostředky používané centrem pro koncové body směrování.
+Tato část platí pouze v případě, že přesouváte prostředky používané rozbočovačem pro koncové body směrování.
 
-Chcete-li přesunout prostředky směrování, je nutné ručně nastavit prostředky v novém umístění. Prostředky směrování můžete vytvořit pomocí [Azure Portal](https://portal.azure.com)nebo vyexportem správce prostředků šablony pro každý z prostředků používaných směrováním zpráv, jejich úpravou a importem. Po nastavení prostředků můžete importovat šablonu centra (která zahrnuje konfiguraci směrování).
+Chcete-li přesunout prostředky technologického postupu, je nutné je nastavit ručně v novém umístění. Prostředky směrování můžete vytvořit pomocí [portálu Azure nebo](https://portal.azure.com)exportem šablony Správce prostředků pro každý prostředek používaný směrováním zpráv, jejich úpravou a jejich importem. Po nastavení prostředků můžete importovat šablonu rozbočovače (která zahrnuje konfiguraci směrování).
 
-1. Vytvořte jednotlivé prostředky používané směrováním. To můžete provést ručně pomocí [Azure Portal](https://portal.azure.com)nebo pomocí šablon Správce prostředků vytvořit prostředky. Pokud chcete používat šablony, postupujte podle následujících kroků:
+1. Vytvořte každý prostředek používaný směrováním. Můžete to udělat ručně pomocí [portálu Azure](https://portal.azure.com)nebo vytvořit prostředky pomocí šablon Správce prostředků. Pokud chcete použít šablony, postupujte takto:
 
-    1. Pro každý prostředek používaný směrováním ho exportujte do šablony Správce prostředků.
+    1. Pro každý prostředek používaný směrováním jej exportujte do šablony Správce prostředků.
     
     1. Aktualizujte název a umístění prostředku. 
 
-    1. Aktualizujte křížové odkazy mezi prostředky. Například pokud vytvoříte šablonu pro nový účet úložiště, budete muset aktualizovat název účtu úložiště v této šabloně a jakékoli jiné šabloně, která na ni odkazuje. Ve většině případů je část směrování v šabloně pro centrum jedinou jinou šablonou, která na prostředek odkazuje. 
+    1. Aktualizujte všechny křížové odkazy mezi prostředky. Pokud například vytvoříte šablonu pro nový účet úložiště, budete muset aktualizovat název účtu úložiště v této šabloně a všechny ostatní šablony, která na ni odkazuje. Ve většině případů je oddíl směrování v šabloně pro rozbočovač jedinou další šablonou, která odkazuje na prostředek. 
 
-    1. Importujte každou šablonu, která nasadí jednotlivé prostředky.
+    1. Importujte každou šablonu, která nasazuje každý prostředek.
 
-    Až budou prostředky používané v směrování nastavené a spuštěné, můžete pokračovat.
+    Po nastavení a spuštění prostředků používaných v technologickém postupu můžete pokračovat.
 
-1. V šabloně služby IoT Hub změňte název každého prostředku směrování na nový název a v případě potřeby aktualizujte umístění. 
+1. V šabloně pro službu IoT hub změňte název každého prostředků směrování na nový název a v případě potřeby aktualizujte umístění. 
 
-Teď máte šablonu, která vytvoří nové centrum, které vypadá téměř přesně stejně jako staré centrum, podle toho, jak jste se rozhodli směrování zpracovat.
+Nyní máte šablonu, která vytvoří nový rozbočovač, který vypadá téměř přesně jako staré rozbočovač, v závislosti na tom, jak jste se rozhodli zpracovat směrování.
 
-## <a name="move----create-the-new-hub-in-the-new-region-by-loading-the-template"></a>Přesunout – vytvoří nové centrum v nové oblasti načtením šablony.
+## <a name="move----create-the-new-hub-in-the-new-region-by-loading-the-template"></a>Move -- vytvoření nového rozbočovače v nové oblasti načtením šablony
 
-Vytvořte nové centrum v novém umístění pomocí šablony. Pokud máte prostředky směrování, které se budou přesouvat, prostředky by se měly nastavit v novém umístění a odkazy v šabloně se budou aktualizovat tak, aby odpovídaly. Pokud nepřesouváte prostředky směrování, měly by být v šabloně s aktualizovanými klíči.
+Vytvořte nový rozbočovač v novém umístění pomocí šablony. Pokud máte prostředky směrování, které se budou přesouvat, měly by být prostředky nastaveny v novém umístění a odkazy v šabloně aktualizovány tak, aby odpovídaly. Pokud nepřesouváte prostředky směrování, měly by být v šabloně s aktualizovanými klíči.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-1. Vyberte **vytvořit prostředek**. 
+1. Vyberte **Vytvořit prostředek**. 
 
-1. Do vyhledávacího pole zadejte "nasazování šablony" a vyberte Enter.
+1. Do vyhledávacího pole vložte "nasazení šablony" a vyberte Enter.
 
-1. Vyberte **nasazení šablony (nasazení pomocí vlastních šablon)** . Tím přejdete na obrazovku pro Template deployment. Vyberte **Vytvořit**. Zobrazí se tato obrazovka:
+1. Vyberte **nasazení šablony (nasazení pomocí vlastních šablon).** Tím přejdete na obrazovku pro nasazení šablony. Vyberte **Vytvořit**. Zobrazí se tato obrazovka:
 
-   ![Snímek obrazovky zobrazující příkaz pro vytvoření vlastní šablony](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
+   ![Snímek obrazovky s příkazem pro vytvoření vlastní šablony](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
-1. **V editoru vyberte vytvořit vlastní šablonu**, která umožňuje nahrát šablonu ze souboru. 
+1. V editoru vyberte **Vytvořit vlastní šablonu**, která vám umožní nahrát šablonu ze souboru. 
 
-1. Vyberte **načíst soubor**. 
+1. Vyberte **Načíst soubor**. 
 
-   ![Snímek obrazovky zobrazující příkaz pro nahrání souboru šablony](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
+   ![Snímek obrazovky s příkazem pro nahrání souboru šablony](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
 
-1. Vyhledejte novou šablonu, kterou jste upravovali, vyberte ji a pak vyberte **otevřít**. Načte šablonu v okně Upravit. Vyberte **Uložit**. 
+1. Vyhledejte novou šablonu, kterou jste upravili, a vyberte ji a pak vyberte **Otevřít**. Načte šablonu do editačního okna. Vyberte **Uložit**. 
 
-   ![Snímek obrazovky, který ukazuje načtení šablony](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
+   ![Snímek obrazovky s načítáním šablony](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
 
 1. Vyplňte následující pole.
 
    **Předplatné**: vyberte předplatné, které chcete použít.
 
-   **Skupina prostředků**: Vytvořte novou skupinu prostředků v novém umístění. Pokud už máte nastavené nové nastavení, můžete ho vybrat místo vytvoření nového.
+   **Skupina prostředků**: vytvořte novou skupinu prostředků v novém umístění. Pokud již máte novou nastavenou, můžete ji vybrat místo vytvoření nového.
 
-   **Umístění**: Pokud jste vybrali existující skupinu prostředků, tato možnost se vyplní tak, aby odpovídala umístění skupiny prostředků. Pokud jste vytvořili novou skupinu prostředků, bude to jejich umístění.
+   **Umístění:** Pokud jste vybrali existující skupinu prostředků, je vyplněna tak, aby odpovídala umístění skupiny prostředků. Pokud jste vytvořili novou skupinu prostředků, bude to její umístění.
 
-   **Zaškrtávací políčko**souhlasím: v tomto seznamu uvádíme, že souhlasíte s tím, že platíte za prostředky, které vytváříte.
+   **Souhlasím s tím, zaškrtávací políčko**: to v podstatě říká, že souhlasíte s tím, platit za zdroje, které vytváříte.
 
-1. Vyberte tlačítko **koupit** .
+1. Vyberte **tlačítko Koupit.**
 
-Portál teď ověří vaši šablonu a nasadí naklonované centrum. Pokud máte údaje o konfiguraci směrování, budou zahrnuty do nového centra, ale budou ukazovat na prostředky v předchozím umístění.
+Portál teď ověří vaši šablonu a nasadí vaše klonované centrum. Pokud máte konfigurační data směrování, budou zahrnuta do nového rozbočovače, ale budou ukazovat na prostředky v předchozím umístění.
 
-## <a name="managing-the-devices-registered-to-the-iot-hub"></a>Správa zařízení zaregistrovaných ve službě IoT Hub
+## <a name="managing-the-devices-registered-to-the-iot-hub"></a>Správa zařízení registrovaných v centru IoT
 
-Teď, když máte naklonování a používání, musíte zkopírovat všechna zařízení z původního rozbočovače do klonu. 
+Nyní, když máte klon v provozu, musíte zkopírovat všechna zařízení z původního rozbočovače do klonu. 
 
-To lze provést několika způsoby. Buď jste původně použili [službu Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps)k zřízení zařízení, nebo jste to neudělali. Pokud jste to provedli, není to obtížné. Pokud jste to nepoužili, může to být velmi složité. 
+Existuje několik způsobů, jak toho dosáhnout. Buď jste původně [použili službu Zřizování zařízení (DPS)](/azure/iot-dps/about-iot-dps)k zřízení zařízení, nebo jste to neudělali. Pokud ano, není to těžké. Pokud jste tak neučinili, může to být velmi složité. 
 
-Pokud jste nepoužívali DPS ke zřízení zařízení, můžete přeskočit další část a začít [příkazem import/export přesunout zařízení do nového centra](#using-import-export-to-move-the-devices-to-the-new-hub).
+Pokud jste k zřizování zařízení nepoužívali DPS, můžete přeskočit další část a začít [pomocí importu nebo exportu a přesunout zařízení do nového rozbočovače](#using-import-export-to-move-the-devices-to-the-new-hub).
 
-## <a name="using-dps-to-re-provision-the-devices-in-the-new-hub"></a>Opětovné zřízení zařízení v novém centru pomocí DPS
+## <a name="using-dps-to-re-provision-the-devices-in-the-new-hub"></a>Použití DPS k opětovnému zřízení zařízení v novém rozbočovači
 
-Pokud chcete zařízení přesunout do nového umístění pomocí DPS, přečtěte si téma [jak znovu zřídit zařízení](../iot-dps/how-to-reprovision.md). Až budete hotovi, můžete zobrazit zařízení v [Azure Portal](https://portal.azure.com) a ověřit, zda jsou v novém umístění.
+Pokud chcete zařízení přesunout do nového umístění pomocí DPS, přečtěte si informace o tom, [jak zařízení znovu zřídit](../iot-dps/how-to-reprovision.md). Po dokončení můžete zobrazit zařízení na webu [Azure Portal](https://portal.azure.com) a ověřit, že jsou v novém umístění.
 
-Přejít na nové centrum pomocí [Azure Portal](https://portal.azure.com). Vyberte své centrum a pak vyberte **zařízení IoT**. Zobrazí se zařízení, která se znovu zřídila naklonovanému rozbočovači. Můžete také zobrazit vlastnosti naklonovaného centra. 
+Přejděte do nového rozbočovače pomocí [portálu Azure](https://portal.azure.com). Vyberte rozbočovač a pak vyberte **Zařízení IoT**. Zobrazí se zařízení, která byla znovu zřízena do klonovaného rozbočovače. Můžete také zobrazit vlastnosti klonovaného rozbočovače. 
 
-Pokud jste implementovali směrování, otestujte a ujistěte se, že jsou vaše zprávy správně směrovány do prostředků.
+Pokud jste implementovali směrování, otestujte a ujistěte se, že vaše zprávy jsou směrovány do prostředků správně.
 
 ### <a name="committing-the-changes-after-using-dps"></a>Potvrzení změn po použití DPS
 
-Tuto změnu potvrdila služba DPS.
+Tato změna byla spáchána službou DPS.
 
-### <a name="rolling-back-the-changes-after-using-dps"></a>Vrácení změn po použití DPS. 
+### <a name="rolling-back-the-changes-after-using-dps"></a>Vrácení zpět změny po použití DPS. 
 
-Pokud chcete vrátit změny zpět, znovu zajistěte zařízení z nového rozbočovače na starý.
+Pokud chcete vrátit zpět změny, znovu zřídit zařízení z nového rozbočovače do starého.
 
-Nyní jste dokončili migraci vašeho centra a jeho zařízení. Můžete přeskočit na [Vyčištění](#clean-up).
+Nyní jste dokončili migraci rozbočovače a jeho zařízení. Můžete přeskočit na [Vyčištění](#clean-up).
 
-## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Přesunutí zařízení do nového centra pomocí importu a exportu
+## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Přesunutí zařízení do nového rozbočovače pomocí importu a exportu
 
-Aplikace cílí na .NET Core, takže ji můžete spustit buď v systému Windows nebo Linux. Můžete si stáhnout ukázku, načíst připojovací řetězce, nastavit příznaky, pro které chcete spustit službu BITS, a spustit ji. To můžete provést bez předchozího otevření kódu.
+Aplikace cílí na .NET Core, takže ji můžete spustit na Windows nebo Linuxu. Můžete stáhnout ukázku, načíst připojovací řetězce, nastavit příznaky, pro které bity chcete spustit, a spustit jej. Můžete to udělat bez otevření kódu.
 
-### <a name="downloading-the-sample"></a>Stahuje se ukázka.
+### <a name="downloading-the-sample"></a>Stažení ukázky
 
-1. Použijte ukázky IoT C# z této stránky: [ukázky Azure IoT pro C# ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/). Stáhněte soubor zip a rozbalte ho v počítači. 
+1. Použijte ukázky IoT C# z této stránky: [Ukázky Azure IoT pro C#](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/). Stáhněte si soubor zip a rozbalte jej v počítači. 
 
-1. Relevantní kód je v./iot-hub/Samples/service/ImportExportDevicesSample. Není nutné zobrazovat ani upravovat kód, aby bylo možné aplikaci spustit.
+1. Relevantní kód je v ./iot-hub/Samples/service/ImportExportDevicesSample. Ke spuštění aplikace nemusíte kód zobrazovat ani upravovat.
 
-1. Chcete-li spustit aplikaci, zadejte tři připojovací řetězce a pět možností. Tato data předáte jako argumenty příkazového řádku nebo použijte proměnné prostředí nebo použijte kombinaci těchto dvou. Předáváme možnosti jako argumenty příkazového řádku a připojovací řetězce jako proměnné prostředí. 
+1. Chcete-li aplikaci spustit, zadejte tři připojovací řetězce a pět možností. Tato data předáte jako argumenty příkazového řádku nebo použijete proměnné prostředí nebo použijete kombinaci těchto dvou. Budeme předat možnosti jako argumenty příkazového řádku a připojovací řetězce jako proměnné prostředí. 
 
-   Důvodem je to, že připojovací řetězce jsou dlouhé a nemusejí být nepravděpodobné, ale možná budete chtít změnit možnosti a spustit aplikaci více než jednou. Chcete-li změnit hodnotu proměnné prostředí, je nutné zavřít příkazové okno a sadu Visual Studio nebo VS Code, podle toho, co používáte. 
+   Důvodem je, že připojovací řetězce jsou dlouhé a nemotorné a pravděpodobně se nezmění, ale možná budete chtít změnit možnosti a spustit aplikaci více než jednou. Chcete-li změnit hodnotu proměnné prostředí, musíte zavřít příkazové okno a Visual Studio nebo VS Kód, podle toho, co používáte. 
 
 ### <a name="options"></a>Možnosti
 
-Toto jsou pět možností, které zadáte při spuštění aplikace. Do příkazového řádku za minutu vložíme.
+Zde je pět možností, které zadáte při spuštění aplikace. Za chvíli je dáme na příkazovou čáru.
 
-*   **addDevices** (argument 1) – nastavte tuto hodnotu na true, pokud chcete přidat virtuální zařízení, která jsou vygenerována za vás. Ty se přidají do zdrojového centra. Také nastavte **numToAdd** (argument 2), chcete-li určit, kolik zařízení chcete přidat. Maximální počet zařízení, která můžete zaregistrovat do centra, je 1 000 000. Účelem této možnosti je testování – můžete vygenerovat určitý počet zařízení a pak je zkopírovat do jiného centra.
+*   **addDevices** (argument 1) -- nastavte tuto hodnotu na hodnotu true, pokud chcete přidat virtuální zařízení, která jsou generována za vás. Ty jsou přidány do zdrojového centra. Nastavte také **numToAdd** (argument 2) a určete, kolik zařízení chcete přidat. Maximální počet zařízení, která můžete zaregistrovat do rozbočovače, je jeden milion. Účelem této možnosti je testování – můžete vygenerovat určitý počet zařízení a pak je zkopírovat do jiného rozbočovače.
 
-*   **copyDevices** (argument 3) – nastavte tuto hodnotu na true, aby se zařízení zkopírovala z jednoho rozbočovače do druhého. 
+*   **copyDevices** (argument 3) -- nastavit toto true zkopírovat zařízení z jednoho rozbočovače do druhého. 
 
-*   **deleteSourceDevices** (argument 4) – nastavte tuto hodnotu na true, pokud chcete odstranit všechna zařízení zaregistrovaná ve zdrojovém centru. Doporučujeme počkat, dokud neskončíte všechna zařízení, která byla před spuštěním předána. Když zařízení odstraníte, nebudete je moct vrátit zpátky.
+*   **deleteSourceDevices** (argument 4) -- nastavte tuto hodnotu na hodnotu true, chcete-li odstranit všechna zařízení registrovaná ve zdrojovém rozbočovači. Doporučujeme počkat, až si budete jisti, že všechna zařízení byla přenesena, než toto spustíte. Jakmile zařízení smažete, nemůžete je získat zpět.
 
-*   **deleteDestDevices** (argument 5) – nastavte tuto hodnotu na true, pokud chcete odstranit všechna zařízení zaregistrovaná do cílového centra (klonování). Tato situace může být žádoucí, pokud chcete zařízení zkopírovat více než jednou. 
+*   **deleteDestDevices** (argument 5) -- nastavte tuto hodnotu na hodnotu true, chcete-li odstranit všechna zařízení registrovaná v cílovém rozbočovači (klon). Můžete to udělat, pokud chcete zkopírovat zařízení více než jednou. 
 
-Příkaz Basic bude spuštěn jako *dotnet* – to oznamuje, že rozhraní .NET vytvoří místní soubor CSPROJ a pak ho spustí. Argumenty příkazového řádku můžete před spuštěním přidat do konce. 
+Základní příkaz bude *dotnet spustit* -- to říká .NET k sestavení místního souboru csproj a pak jej spustit. Argumenty příkazového řádku přidáte na konec před jeho spuštěním. 
 
-Příkazový řádek bude vypadat jako v těchto příkladech:
+Váš příkazový řádek bude vypadat takto:
 
 ``` console 
     // Format: dotnet run add-devices num-to-add copy-devices delete-source-devices delete-destination-devices
@@ -451,13 +451,13 @@ Příkazový řádek bude vypadat jako v těchto příkladech:
 
 ### <a name="using-environment-variables-for-the-connection-strings"></a>Použití proměnných prostředí pro připojovací řetězce
 
-1. Ke spuštění ukázky budete potřebovat připojovací řetězce ke starým a novým rozbočovačům IoT a k účtu úložiště, který můžete použít pro dočasné pracovní soubory. Hodnoty těchto hodnot se uloží do proměnných prostředí.
+1. Chcete-li spustit ukázku, potřebujete připojovací řetězce ke starým a novým centrům IoT a k účtu úložiště, který můžete použít pro dočasné pracovní soubory. Hodnoty pro ně uložíme do proměnných prostředí.
 
-1. Pokud chcete získat hodnoty připojovacího řetězce, přihlaste se k [Azure Portal](https://portal.azure.com). 
+1. Chcete-li získat hodnoty připojovacího řetězce, přihlaste se na [portál Azure](https://portal.azure.com). 
 
-1. Připojovací řetězce vložte do umístění, kde je můžete načíst, například Poznámkový blok. Pokud zkopírujete následující příkaz, můžete připojovací řetězce vložit přímo do umístění. Nepřidávejte mezery kolem znaménka rovná se nebo změní název proměnné. Nepotřebujete také dvojité uvozovky kolem připojovacích řetězců. Pokud vložíte uvozovky kolem připojovacího řetězce účtu úložiště, nebude to fungovat.
+1. Vložte připojovací řetězce někam, kde je můžete načíst, například NotePad. Pokud zkopírujete následující, můžete vložit připojovací řetězce přímo tam, kam jdou. Nepřidávejte mezery kolem znaménko rovná se nebo změní název proměnné. Také nepotřebujete dvojité uvozovky kolem připojovacích řetězců. Pokud kolem připojovacího řetězce účtu úložiště vložíte uvozovky, nebude to fungovat.
 
-   V případě systému Windows se jedná o způsob nastavení proměnných prostředí:
+   V systému Windows nastavujete proměnné prostředí takto:
 
    ``` console  
    SET IOTHUB_CONN_STRING=<put connection string to original IoT Hub here>
@@ -465,7 +465,7 @@ Příkazový řádek bude vypadat jako v těchto příkladech:
    SET STORAGE_ACCT_CONN_STRING=<put connection string to the storage account here>
    ```
  
-   Pro Linux se jedná o způsob, jakým definujete proměnné prostředí:
+   Pro Linux, to je, jak definovat proměnné prostředí:
 
    ``` console  
    export IOTHUB_CONN_STRING="<put connection string to original IoT Hub here>"
@@ -473,30 +473,30 @@ Příkazový řádek bude vypadat jako v těchto příkladech:
    export STORAGE_ACCT_CONN_STRING="<put connection string to the storage account here>"
    ```
 
-1. V případě připojovacích řetězců služby IoT Hub otevřete na portálu jednotlivé rozbočovače. Můžete hledat v **prostředcích** pro centrum. Pokud znáte skupinu prostředků, můžete přejít na **skupiny prostředků**, vybrat skupinu prostředků a pak vybrat centrum ze seznamu assetů v této skupině prostředků. 
+1. Pro připojovací řetězce centra IoT přejděte na každé rozbočovače na portálu. Můžete hledat v **resources** pro rozbočovač. Pokud znáte skupinu prostředků, můžete přejít na **skupiny prostředků**, vybrat skupinu prostředků a potom vybrat centrum ze seznamu prostředků v této skupině prostředků. 
 
-1. Vyberte **zásady sdíleného přístupu** z nastavení centra, pak vyberte **iothubowner** a zkopírujte jeden z připojovacích řetězců. Proveďte stejné pro cílové centrum. Přidejte je do příslušných příkazů SET.
+1. V nastavení centra vyberte **zásady sdíleného přístupu,** vyberte **iothubowner** a zkopírujte jeden z připojovacích řetězců. Proveďte totéž pro cílové centrum. Přidejte je do příslušných příkazů SET.
 
-1. Pro připojovací řetězec účtu úložiště Najděte účet úložiště v části **prostředky** nebo pod jeho **skupinou prostředků** a otevřete ho. 
+1. Pro připojovací řetězec účtu úložiště najděte účet úložiště v **resources** nebo v jeho **skupině prostředků** a otevřete ho. 
    
-1. V části nastavení vyberte **přístupové klíče** a zkopírujte jeden z připojovacích řetězců. Do textového souboru zadejte připojovací řetězec pro příslušný příkaz SET. 
+1. V části Nastavení vyberte **přístupové klávesy** a zkopírujte jeden z připojovacích řetězců. Vložte připojovací řetězec do textového souboru pro příslušný příkaz SET. 
 
-Nyní máte proměnné prostředí v souboru s příkazy SET a víte, jaké argumenty příkazového řádku jsou. Pojďme spustit ukázku.
+Nyní máte proměnné prostředí v souboru s příkazy SET a víte, jaké jsou vaše argumenty příkazového řádku. Projedme vzorek.
 
 ### <a name="running-the-sample-application-and-using-command-line-arguments"></a>Spuštění ukázkové aplikace a použití argumentů příkazového řádku
 
-1. Otevřete okno příkazového řádku. Vyberte Windows a zadejte `command prompt` pro získání okna příkazového řádku.
+1. Otevřete okno příkazového řádku. Vyberte Windows `command prompt` a zadejte, chcete-li získat okno příkazového řádku.
 
-1. Zkopírujte příkazy, které nastaví proměnné prostředí, po jednom, a vložte je do okna příkazového řádku a vyberte Enter. Až skončíte, zadejte `SET` do okna příkazového řádku, aby se zobrazily proměnné prostředí a jejich hodnoty. Po zkopírování těchto příkazů do okna příkazového řádku je nebudete muset kopírovat znovu, pokud neotevřete nové okno příkazového řádku.
+1. Zkopírujte příkazy, které nastavují proměnné prostředí po jednom, a vložte je do okna příkazového řádku a vyberte Enter. Až budete hotovi, `SET` zadejte do okna příkazového řádku, abyste viděli proměnné prostředí a jejich hodnoty. Po zkopírování do okna příkazového řádku je není nutné je znovu kopírovat, pokud neotevřete nové okno příkazového řádku.
 
-1. V okně příkazového řádku změňte adresáře, dokud nejste v souboru./ImportExportDevicesSample (kde existuje soubor ImportExportDevicesSample. csproj). Potom zadejte následující příkaz a přidejte argumenty příkazového řádku.
+1. V okně příkazového řádku změňte adresáře, dokud nejste v ./ImportExportDevicesSample (kde existuje soubor ImportExportDevicesSample.csproj). Potom zadejte následující a zadejte argumenty příkazového řádku.
 
     ``` console
     // Format: dotnet run add-devices num-to-add copy-devices delete-source-devices delete-destination-devices
     dotnet run arg1 arg2 arg3 arg4 arg5
     ```
 
-    Příkaz dotnet sestaví a spustí aplikaci. Vzhledem k tomu, že předáváte možnosti při spuštění aplikace, můžete změnit jejich hodnoty pokaždé, když aplikaci spustíte. Můžete ho například chtít spustit jednou a vytvořit nová zařízení a pak znovu spustit a zkopírovat tato zařízení do nového rozbočovače atd. Můžete také provést všechny kroky ve stejném běhu, i když nebudete mít jistotu, že neodstraníte žádná zařízení, dokud nebudete chtít, abyste se klonování dokončili. Tady je příklad, který vytváří 1000 zařízení a kopíruje je do druhého centra.
+    Příkaz dotnet vytvoří a spustí aplikaci. Vzhledem k tomu, že předáváte možnosti při spuštění aplikace, můžete změnit jejich hodnoty při každém spuštění aplikace. Můžete ji například jednou spustit a vytvořit nová zařízení, pak je znovu spustit a zkopírovat tato zařízení do nového rozbočovače a tak dále. Můžete také provést všechny kroky ve stejném spuštění, i když doporučujeme neodstranění žádné zařízení, dokud si nejste jisti, že jste hoted s klonování. Zde je příklad, který vytvoří 1000 zařízení a zkopíruje je do jiného rozbočovače.
 
     ``` console
     // Format: dotnet run add-devices num-to-add copy-devices delete-source-devices delete-destination-devices
@@ -508,7 +508,7 @@ Nyní máte proměnné prostředí v souboru s příkazy SET a víte, jaké argu
     dotnet run false 0 true false false 
     ```
 
-    Po ověření úspěšného zkopírování zařízení můžete zařízení ze zdrojového centra odebrat takto:
+    Po ověření, že zařízení byla úspěšně zkopírována, můžete odebrat zařízení ze zdrojového centra takto:
 
    ``` console
    // Format: dotnet run add-devices num-to-add copy-devices delete-source-devices delete-destination-devices
@@ -518,15 +518,15 @@ Nyní máte proměnné prostředí v souboru s příkazy SET a víte, jaké argu
 
 ### <a name="running-the-sample-application-using-visual-studio"></a>Spuštění ukázkové aplikace pomocí sady Visual Studio
 
-1. Chcete-li spustit aplikaci v aplikaci Visual Studio, změňte aktuální adresář na složku, ve které se nachází soubor IoTHubServiceSamples. sln. Pak spuštěním tohoto příkazu v okně příkazového řádku otevřete řešení v aplikaci Visual Studio. To je nutné provést ve stejném příkazovém okně, kde nastavíte proměnné prostředí, takže tyto proměnné jsou známy.
+1. Pokud chcete spustit aplikaci v sadě Visual Studio, změňte aktuální adresář do složky, kde se nachází soubor IoTHubServiceSamples.sln. Potom spusťte tento příkaz v okně příkazového řádku a otevřete řešení v sadě Visual Studio. Je nutné provést ve stejném příkazovém okně, kde nastavíte proměnné prostředí, takže tyto proměnné jsou známy.
 
    ``` console       
    IoTHubServiceSamples.sln
    ```
     
-1. Klikněte pravým tlačítkem na projekt *ImportExportDevicesSample* a vyberte **nastavit jako spouštěný projekt**.    
+1. Klikněte pravým tlačítkem myši na projekt *ImportExportDevicesSample* a vyberte **nastavit jako spouštěcí projekt**.    
     
-1. Nastavte proměnné v horní části Program.cs ve složce ImportExportDevicesSample na pět možností.
+1. Nastavte proměnné v horní části Program.cs ve složce ImportExportDevicesSample pro pět možností.
 
    ``` csharp
    // Add randomly created devices to the source hub.
@@ -541,64 +541,64 @@ Nyní máte proměnné prostředí v souboru s příkazy SET a víte, jaké argu
    private static bool deleteDestDevices = false;
    ```
 
-1. Pro spuštění aplikace vyberte F5. Po dokončení práce můžete zobrazit výsledky.
+1. Chcete-li aplikaci spustit, vyberte možnost F5. Po dokončení spuštění můžete zobrazit výsledky.
 
 ### <a name="view-the-results"></a>Zobrazení výsledků 
 
-Můžete zobrazit zařízení v [Azure Portal](https://portal.azure.com) a ověřit, zda jsou v novém umístění.
+Zařízení můžete zobrazit na [webu Azure Portal](https://portal.azure.com) a ověřit, že jsou v novém umístění.
 
-1. Přejít na nové centrum pomocí [Azure Portal](https://portal.azure.com). Vyberte své centrum a pak vyberte **zařízení IoT**. Zobrazí se zařízení, která jste právě zkopírovali ze starého centra, do klonovaného centra. Můžete také zobrazit vlastnosti naklonovaného centra. 
+1. Přejděte do nového rozbočovače pomocí [portálu Azure](https://portal.azure.com). Vyberte rozbočovač a pak vyberte **Zařízení IoT**. Zobrazí se zařízení, která jste právě zkopírovali ze starého rozbočovače do klonovaného centra. Můžete také zobrazit vlastnosti klonovaného rozbočovače. 
 
-1. Podívejte se na účet služby Azure Storage v [Azure Portal](https://portal.azure.com) a podívejte se, jestli nejsou chyby importu/exportu, a vyhledejte `ImportErrors.log`v kontejneru `devicefiles`. Pokud je tento soubor prázdný (velikost je 0), nedošlo k chybám. Pokud se pokusíte naimportovat stejné zařízení více než jednou, zařízení podruhé odmítne a přidá do souboru protokolu chybovou zprávu.
+1. Zkontrolujte chyby importu a exportu tak, že přejdete `devicefiles` na `ImportErrors.log`účet úložiště Azure na webu [Azure portal](https://portal.azure.com) a v kontejneru hledíte do kontejneru pro . Pokud je tento soubor prázdný (velikost je 0), nebyly zjištěny žádné chyby. Pokud se pokusíte importovat stejné zařízení více než jednou, odmítne zařízení podruhé a přidá chybovou zprávu do souboru protokolu.
 
-### <a name="committing-the-changes"></a>Potvrzování změn 
+### <a name="committing-the-changes"></a>Potvrzení změn 
 
-V tuto chvíli jste zkopírovali rozbočovač do nového umístění a migrovali zařízení do nového klonu. Teď je potřeba provést změny, aby zařízení fungovala s klonováným rozbočovačem.
+V tomto okamžiku jste zkopírovali rozbočovač do nového umístění a migrovali zařízení do nového klonu. Nyní je třeba provést změny, aby zařízení fungovala s klonovaným rozbočovačem.
 
-Chcete-li změny potvrdit, postupujte podle kroků, které je třeba provést: 
+Chcete-li potvrdit změny, zde jsou kroky, které je třeba provést: 
 
-* Aktualizujte každé zařízení a změňte IoT Hub název hostitele tak, aby odkazoval na IoT Hub název hostitele na nové centrum. Měli byste to udělat pomocí stejné metody, jakou jste použili při prvním zřízení zařízení.
+* Aktualizujte každé zařízení a změňte název hostitele služby IoT Hub tak, aby ukazoval název hostitele služby IoT Hub na nový rozbočovač. Měli byste to provést stejnou metodou, kterou jste použili při prvním zřízení zařízení.
 
-* Změňte všechny aplikace, které máte, na starém rozbočovači, aby odkazovaly na nové centrum.
+* Změňte všechny aplikace, které máte, které odkazují na staré rozbočovač přejděte na nové rozbočovače.
 
-* Až budete hotovi, nový rozbočovač by měl být spuštěný. Původní rozbočovač by neměl mít žádná aktivní zařízení a musí být v odpojeném stavu. 
+* Po dokončení by měl být nový rozbočovač v provozu. Starý rozbočovač by neměl mít žádná aktivní zařízení a měl by být v odpojeném stavu. 
 
 ### <a name="rolling-back-the-changes"></a>Vrácení změn zpět
 
-Pokud se rozhodnete změny vrátit zpět, proveďte následující kroky:
+Pokud se rozhodnete vrátit změny zpět, zde jsou kroky k provedení:
 
-* Aktualizujte každé zařízení a změňte IoT Hub název hostitele tak, aby odkazoval na IoT Hub název hostitele pro původní centrum. Měli byste to udělat pomocí stejné metody, jakou jste použili při prvním zřízení zařízení.
+* Aktualizujte každé zařízení a změňte název hostitele služby IoT Hub tak, aby ukazoval název hostitele služby IoT Hub pro staré centrum. Měli byste to provést stejnou metodou, kterou jste použili při prvním zřízení zařízení.
 
-* Změňte všechny aplikace, které máte, na nové centrum, aby odkazovaly na původní centrum. Pokud například používáte Azure Analytics, možná budete muset změnit konfiguraci [Azure Stream Analyticsho vstupu](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
+* Změňte všechny aplikace, které máte, které odkazují na nové rozbočovač přejděte na staré rozbočovače. Pokud například používáte Azure Analytics, možná budete muset překonfigurovat [vstup Azure Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
 
-* Odstraní nové centrum. 
+* Odstraňte nový rozbočovač. 
 
-* Pokud máte prostředky směrování, konfigurace ve starém rozbočovači musí stále ukazovat na správnou konfiguraci směrování a po restartování centra by měla pracovat s těmito prostředky.
+* Pokud máte prostředky směrování, konfigurace na starém rozbočovači by měla stále ukazovat na správnou konfiguraci směrování a měla by s těmito prostředky pracovat po restartování centra.
 
 ### <a name="checking-the-results"></a>Kontrola výsledků 
 
-Pokud chcete výsledky kontrolovat, změňte řešení IoT tak, aby odkazovalo na vaše centrum v novém umístění a spustilo ho. Jinými slovy, proveďte stejné akce s novým centrem, které jste provedli v předchozím centru, a ujistěte se, že fungují správně. 
+Chcete-li zkontrolovat výsledky, změňte řešení IoT tak, aby ukazovalo na centrum v novém umístění a spouštělo ho. Jinými slovy, proveďte stejné akce s novým centrem, které jste provedli s předchozím centrem a ujistěte se, že fungují správně. 
 
-Pokud jste implementovali směrování, otestujte a ujistěte se, že jsou vaše zprávy správně směrovány do prostředků.
+Pokud jste implementovali směrování, otestujte a ujistěte se, že vaše zprávy jsou směrovány do prostředků správně.
 
-## <a name="clean-up"></a>Vyčištění
+## <a name="clean-up"></a>Úklid
 
-Neprovádějte čištění, dokud nebudete mít jistotu, že je nový rozbočovač spuštěný a že zařízení fungují správně. Také Nezapomeňte otestovat směrování, pokud tuto funkci používáte. Až budete připraveni, vyčistěte staré prostředky provedením těchto kroků:
+Nečistěte, dokud si nejste opravdu jisti, že nový rozbočovač je v provozu a zařízení pracují správně. Také nezapomeňte otestovat směrování, pokud používáte tuto funkci. Až budete připraveni, vyčistěte staré prostředky provedením těchto kroků:
 
-* Pokud jste to ještě neudělali, odstraňte staré centrum. Tím se z centra odstraní všechna aktivní zařízení.
+* Pokud jste tak dosud neučinili, odstraňte staré centrum. Tím odeberete všechna aktivní zařízení z rozbočovače.
 
 * Pokud máte prostředky směrování, které jste přesunuli do nového umístění, můžete odstranit staré prostředky směrování.
 
 ## <a name="next-steps"></a>Další kroky
 
-Naklonujte centrum IoT do nového centra v nové oblasti, které se dokončí se zařízeními. Další informace o provádění hromadných operací s registrem identit v IoT Hub najdete v části [Import a export IoT Hub identit zařízení hromadně](iot-hub-bulk-identity-mgmt.md).
+Naklonovali jste centrum IoT do nového centra v nové oblasti, doplněné o zařízení. Další informace o provádění hromadných operací s registrem identit v centru IoT Hub naleznete [v tématu Import a export identit zařízení služby IoT Hub hromadně](iot-hub-bulk-identity-mgmt.md).
 
-Další informace o IoT Hub a vývoji pro centrum najdete v následujících článcích.
+Další informace o ioT hubu a vývoj i pro centrum, naleznete v následujících článcích.
 
-* [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
+* [Příručka pro vývojáře ioT Hubu](iot-hub-devguide.md)
 
-* [Kurz směrování IoT Hub](tutorial-routing.md)
+* [Kurz směrování služby IoT Hub](tutorial-routing.md)
 
-* [Přehled správy zařízení IoT Hub](iot-hub-device-management-overview.md)
+* [Přehled správy zařízení centra IoT Hub](iot-hub-device-management-overview.md)
 
-* Pokud chcete nasadit ukázkovou aplikaci, přečtěte si prosím [nasazení aplikace .NET Core](https://docs.microsoft.com/dotnet/core/deploying/index).
+* Pokud chcete nasadit ukázkovou aplikaci, přečtěte si informace [o nasazení aplikace .NET Core](https://docs.microsoft.com/dotnet/core/deploying/index).

@@ -1,6 +1,6 @@
 ---
 title: Práce s daty JSON
-description: Azure SQL Database umožňuje analyzovat, dotazovat a formátovat data v zápisu JavaScript Object Notation (JSON).
+description: Azure SQL Database umožňuje analyzovat, dotazovat a formátovat data v zápisu javascriptového objektu (JSON).
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,23 +12,23 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
 ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819945"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Začínáme s funkcemi JSON v Azure SQL Database
-Azure SQL Database umožňuje analyzovat a dotazovat data reprezentovaná ve formátu JavaScript Object Notation [(JSON)](https://www.json.org/) a exportovat relační data jako text JSON. V Azure SQL Database jsou k dispozici následující scénáře JSON:
-- [Formátování relačních dat ve formátu JSON](#formatting-relational-data-in-json-format) pomocí klauzule `FOR JSON`.
+Azure SQL Database umožňuje analyzovat data a dotazy reprezentovaná ve formátu [JSON (JavaScript](https://www.json.org/) Object Notation) a exportovat relační data jako text JSON. V Azure SQL Database jsou k dispozici následující scénáře JSON:
+- [Formátování relačních dat ve formátu JSON](#formatting-relational-data-in-json-format) pomocí `FOR JSON` klauzule.
 - [Práce s daty JSON](#working-with-json-data)
 - [Dotazování na data JSON](#querying-json-data) pomocí skalárních funkcí JSON.
-- [Transformuje JSON na tabulkový formát](#transforming-json-into-tabular-format) pomocí funkce `OPENJSON`.
+- [Transformace JSON do tabulkového formátu](#transforming-json-into-tabular-format) pomocí `OPENJSON` funkce.
 
 ## <a name="formatting-relational-data-in-json-format"></a>Formátování relačních dat ve formátu JSON
-Máte-li webovou službu, která přebírá data z databázové vrstvy a poskytuje odpověď ve formátu JSON, nebo knihovny JavaScript na straně klienta, které přijímají data formátovaná jako JSON, můžete obsah databáze naformátovat jako JSON přímo v dotazu SQL. Již nemusíte psát kód aplikace, který formátuje výsledky z Azure SQL Database jako JSON, nebo zahrnovat některé knihovny serializace JSON pro převod výsledků tabulkových dotazů a pak serializovat objekty ve formátu JSON. Místo toho můžete použít klauzuli FOR JSON pro formátování výsledků dotazu SQL jako JSON v Azure SQL Database a použít ho přímo v aplikaci.
+Pokud máte webovou službu, která přebírá data z databázové vrstvy a poskytuje odpověď ve formátu JSON nebo javascriptové architektury nebo knihovny na straně klienta, které přijímají data formátovaná jako JSON, můžete formátovat obsah databáze jako JSON přímo v dotazu SQL. Už nemusíte psát kód aplikace, který formátuje výsledky z Azure SQL Database jako JSON, ani zahrnout některé knihovny serializace JSON pro převod výsledků tabulkového dotazu a serializaci objektů do formátu JSON. Místo toho můžete použít for JSON klauzule k formátování výsledků dotazu SQL jako JSON v Azure SQL Database a použít přímo ve vaší aplikaci.
 
-V následujícím příkladu jsou řádky z tabulky Sales. Customers formátovány jako JSON pomocí klauzule FOR JSON:
+V následujícím příkladu jsou řádky z tabulky Sales.Customer formátovány jako JSON pomocí klauzule FOR JSON:
 
 ```
 select CustomerName, PhoneNumber, FaxNumber
@@ -36,7 +36,7 @@ from Sales.Customers
 FOR JSON PATH
 ```
 
-Klauzule FOR JSON PATH formátuje výsledky dotazu jako text JSON. Názvy sloupců se používají jako klíče, zatímco hodnoty buněk jsou vygenerované jako hodnoty JSON:
+For JSON PATH klauzule formátuje výsledky dotazu jako text JSON. Názvy sloupců se používají jako klíče, zatímco hodnoty buněk jsou generovány jako hodnoty JSON:
 
 ```
 [
@@ -48,7 +48,7 @@ Klauzule FOR JSON PATH formátuje výsledky dotazu jako text JSON. Názvy sloupc
 
 Sada výsledků je formátována jako pole JSON, kde je každý řádek formátován jako samostatný objekt JSON.
 
-CESTA indikuje, že můžete přizpůsobit výstupní formát výsledku JSON pomocí zápisu tečky v aliasech sloupců. Následující dotaz změní název klíče "Customer" ve formátu JSON výstupu a vloží čísla telefonů a faxů do podobjektu "Contact":
+CESTA označuje, že můžete přizpůsobit výstupní formát výsledku JSON pomocí dot notace v aliasy sloupců. Následující dotaz změní název klíče "CustomerName" ve výstupním formátu JSON a vloží telefonní a faxová čísla do podobjektu "Kontakt":
 
 ```
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
@@ -69,9 +69,9 @@ Výstup tohoto dotazu vypadá takto:
 }
 ```
 
-V tomto příkladu jsme vrátili jeden objekt JSON namísto pole zadáním možnosti [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) . Tuto možnost můžete použít, pokud víte, že vracíte jeden objekt jako výsledek dotazu.
+V tomto příkladu jsme vrátili jeden objekt JSON namísto pole zadáním [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) možnost. Tuto možnost můžete použít, pokud víte, že vracíte jeden objekt v důsledku dotazu.
 
-Hlavní hodnotou klauzule FOR JSON je, že umožňuje vracet složitá hierarchická data z databáze formátovaná jako vnořené objekty JSON nebo pole. Následující příklad ukazuje, jak zahrnout řádky z `Orders` tabulky, které patří do `Customer` jako vnořené pole `Orders`:
+Hlavní hodnota for JSON klauzule je, že umožňuje vrátit komplexní hierarchická data z databáze formátované jako vnořené JSON objekty nebo pole. Následující příklad ukazuje, jak zahrnout `Orders` řádky z tabulky, které patří do `Customer` vnořeného pole `Orders`:
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
@@ -84,7 +84,7 @@ FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
 ```
 
-Místo posílání samostatných dotazů pro získání zákaznických dat a následné načtení seznamu souvisejících objednávek můžete získat veškerá potřebná data pomocí jediného dotazu, jak je znázorněno v následujícím ukázkovém výstupu:
+Namísto odesílání samostatných dotazů k získání dat zákazníka a následnému načtení seznamu souvisejících objednávek můžete získat všechna potřebná data s jedním dotazem, jak je znázorněno v následujícím ukázkovém výstupu:
 
 ```
 {
@@ -100,9 +100,9 @@ Místo posílání samostatných dotazů pro získání zákaznických dat a ná
 ```
 
 ## <a name="working-with-json-data"></a>Práce s daty JSON
-Pokud nemáte výhradně strukturovaná data, pokud máte komplexní dílčí objekty, pole nebo hierarchická data nebo pokud vaše datové struktury vyvíjíte v průběhu času, může vám formát JSON poznamenat, že je možné znázornit jakoukoli složitou datovou strukturu.
+Pokud nemáte přísně strukturovaná data, pokud máte složité dílčí objekty, pole nebo hierarchická data nebo pokud se datové struktury v průběhu času vyvíjejí, může vám formát JSON pomoci reprezentovat libovolnou složitou datovou strukturu.
 
-JSON je textový formát, který se dá použít jako jakýkoliv jiný typ řetězce v Azure SQL Database. Data JSON můžete posílat nebo ukládat jako standardní NVARCHAR:
+JSON je textový formát, který lze použít jako jakýkoli jiný typ řetězce v Azure SQL Database. JSON můžete odesílat nebo ukládat jako standardní NVARCHAR:
 
 ```
 CREATE TABLE Products (
@@ -118,18 +118,18 @@ AS BEGIN
 END
 ```
 
-Data JSON použitá v tomto příkladu jsou reprezentována pomocí typu NVARCHAR (MAX). JSON lze vložit do této tabulky nebo zadat jako argument uložené procedury pomocí standardní syntaxe jazyka Transact-SQL, jak je znázorněno v následujícím příkladu:
+Data JSON použitá v tomto příkladu jsou reprezentována pomocí typu NVARCHAR(MAX). JSON lze vložit do této tabulky nebo poskytnout jako argument uložené procedury pomocí standardní syntaxe Transact-SQL, jak je znázorněno v následujícím příkladu:
 
 ```
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
-Všechny jazyky nebo knihovny na straně klienta, které pracují s řetězcovými daty v Azure SQL Database, budou také fungovat s daty JSON. JSON může být uložený v libovolné tabulce, která podporuje typ NVARCHAR, jako je paměťově optimalizovaná tabulka nebo tabulka se systémovou správou verzí. JSON nezavádí žádné omezení buď v kódu na straně klienta, nebo ve vrstvě databáze.
+Jakýkoli jazyk nebo knihovna na straně klienta, která pracuje s řetězcovými daty v Azure SQL Database, bude také pracovat s daty JSON. JSON lze uložit v libovolné tabulce, která podporuje typ NVARCHAR, jako je například tabulka optimalizovaná pro paměť nebo tabulka s verzí systému. JSON nezavádí žádné omezení v kódu na straně klienta nebo v databázové vrstvě.
 
 ## <a name="querying-json-data"></a>Dotazování na data JSON
-Pokud máte data formátovaná jako JSON uložená v tabulkách Azure SQL, funkce JSON je umožňují používat v jakémkoli dotazu SQL.
+Pokud máte data formátovaná jako JSON uložená v tabulkách Azure SQL, funkce JSON umožňují používat tato data v libovolném dotazu SQL.
 
-Funkce JSON, které jsou dostupné ve službě Azure SQL Database, vám umožní považovat data formátovaná jako JSON za jakýkoli jiný datový typ SQL. Můžete snadno extrahovat hodnoty z textu JSON a použít data JSON v jakémkoli dotazu:
+Funkce JSON, které jsou dostupné v databázi Azure SQL, umožňují považovat data formátovaná jako JSON za jakýkoli jiný datový typ SQL. Můžete snadno extrahovat hodnoty z textu JSON a použít data JSON v libovolném dotazu:
 
 ```
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
@@ -141,13 +141,13 @@ set Data = JSON_MODIFY(Data, '$.Price', 60)
 where Id = 1
 ```
 
-Funkce JSON_VALUE extrahuje hodnotu z textu JSON uloženého ve sloupci data. Tato funkce používá cestu podobnou JavaScriptu k odkazování na hodnotu v textu JSON k extrakci. Extrahovaná hodnota se dá použít v jakékoli části dotazu SQL.
+Funkce JSON_VALUE extrahuje hodnotu z textu JSON uloženého ve sloupci Data. Tato funkce používá cestu jako JavaScript k odkazování na hodnotu v textu JSON k extrahování. Extrahovaná hodnota lze použít v libovolné části dotazu SQL.
 
-Funkce JSON_QUERY je podobná JSON_VALUE. Na rozdíl od JSON_VALUE Tato funkce extrahuje složitý dílčí objekt, například pole nebo objekty, které jsou umístěny v textu JSON.
+Funkce JSON_QUERY je podobná funkci JSON_VALUE. Na rozdíl od JSON_VALUE tato funkce extrahuje složitý podobjekt, jako jsou pole nebo objekty, které jsou umístěny v textu JSON.
 
-Funkce JSON_MODIFY umožňuje zadat cestu k hodnotě v textu JSON, která se má aktualizovat, a také novou hodnotu, která přepíše starou. Tímto způsobem můžete snadno aktualizovat text JSON bez nutnosti přeanalyzovat celou strukturu.
+Funkce JSON_MODIFY umožňuje určit cestu hodnoty v textu JSON, která by měla být aktualizována, stejně jako novou hodnotu, která přepíše starou. Tímto způsobem můžete snadno aktualizovat text JSON bez úpravy celé struktury.
 
-Vzhledem k tomu, že JSON je uložený ve standardním textu, nezaručujeme, že hodnoty uložené v textových sloupcích budou správně naformátované. Můžete ověřit, že text uložený ve sloupci JSON je správně formátovaný pomocí standardních Azure SQL Database omezení CHECK a funkce-JSON:
+Vzhledem k tomu, že JSON je uložen ve standardním textu, neexistují žádné záruky, že hodnoty uložené v textových sloupcích jsou správně formátovány. Můžete ověřit, že text uložený ve sloupci JSON je správně formátován pomocí standardních omezení kontroly azure SQL database a funkce ISJSON:
 
 ```
 ALTER TABLE Products
@@ -155,18 +155,18 @@ ALTER TABLE Products
         CHECK (ISJSON(Data) > 0)
 ```
 
-Pokud je vstupní text ve správném formátu JSON, vrátí funkce-JSON hodnotu 1. Při každém vložení nebo aktualizaci sloupce JSON toto omezení ověří, že nová textová hodnota není poškozená JSON.
+Pokud je vstupní text správně formátován JSON, vrátí funkce ISJSON hodnotu 1. Při každém vložení nebo aktualizaci sloupce JSON toto omezení ověří, že nová textová hodnota není poškozená JSON.
 
 ## <a name="transforming-json-into-tabular-format"></a>Transformace JSON do tabulkového formátu
-Azure SQL Database také umožňuje transformovat kolekce JSON do tabulkového formátu a načíst data nebo dotazovat data JSON.
+Azure SQL Database také umožňuje transformovat kolekce JSON do tabulkového formátu a načíst nebo dotaz ovat data JSON.
 
-OPENJSON je funkce hodnot tabulky, která analyzuje text JSON, vyhledává pole objektů JSON, Iterovat prvky pole a vrátí jeden řádek výsledku výstupu pro každý prvek pole.
+OPENJSON je funkce hodnoty tabulky, která analyzuje text JSON, vyhledá pole objektů JSON, iterace přes prvky pole a vrátí jeden řádek ve výstupním výsledku pro každý prvek pole.
 
-![Tabulka JSON](./media/sql-database-json-features/image_2.png)
+![JSON tabulkové](./media/sql-database-json-features/image_2.png)
 
-V příkladu výše můžeme určit, kde se má najít pole JSON, které by se mělo otevřít (v $. Cesta objednávek), které sloupce by měly být vráceny jako výsledek a kde najít hodnoty JSON, které budou vráceny jako buňky.
+Ve výše uvedeném příkladu můžeme určit, kde umístit pole JSON, které by mělo být otevřeno (v $. Objednávky cesta), jaké sloupce by měly být vráceny jako výsledek a kde najít hodnoty JSON, které budou vráceny jako buňky.
 
-Pole JSON můžete v proměnné @orders transformovat do sady řádků, analyzovat tuto sadu výsledků nebo vkládat řádky do standardní tabulky:
+Můžeme transformovat pole JSON @orders v proměnné do sady řádků, analyzovat tuto sadu výsledků nebo vložit řádky do standardní tabulky:
 
 ```
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
@@ -184,14 +184,14 @@ AS BEGIN
 
 END
 ```
-Kolekce objednávek naformátovaných jako pole JSON a poskytované jako parametr pro uloženou proceduru lze analyzovat a vložit do tabulky Orders.
+Kolekce objednávek formátován jako pole JSON a za předpokladu, jako parametr uložené procedury lze analyzovat a vložit do objednávky tabulky.
 
 ## <a name="next-steps"></a>Další kroky
-Informace o tom, jak do své aplikace integrovat JSON, najdete v těchto zdrojích:
+Chcete-li se dozvědět, jak integrovat JSON do aplikace, podívejte se na tyto prostředky:
 
-* [Blog na TechNetu](https://blogs.technet.microsoft.com/dataplatforminsider/20../../json-in-sql-server-2016-part-1-of-4/)
-* [Dokumentace MSDN](https://msdn.microsoft.com/library/dn921897.aspx)
-* [Video pro kanál 9](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
+* [Blog technetu](https://blogs.technet.microsoft.com/dataplatforminsider/20../../json-in-sql-server-2016-part-1-of-4/)
+* [Dokumentace msdn](https://msdn.microsoft.com/library/dn921897.aspx)
+* [Kanál 9 video](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-Další informace o různých scénářích pro integraci formátu JSON do vaší aplikace najdete v ukázkách v tomto [videu kanálu 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) nebo v článku Najděte scénář, který odpovídá případu použití v [příspěvcích blogu JSON](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
+Chcete-li se dozvědět o různých scénářích integrace JSON do vaší aplikace, podívejte se na ukázky v tomto [kanálu 9 video](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) nebo najít scénář, který odpovídá vašemu případu použití v [JSON blogu](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
 

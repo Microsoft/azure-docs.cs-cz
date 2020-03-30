@@ -1,6 +1,6 @@
 ---
-title: Konfigurace protokolů rozhraní API – Azure Event Grid IoT Edge | Microsoft Docs
-description: Nakonfigurujte protokoly rozhraní API, které jsou vystavené Event Grid v IoT Edge.
+title: Konfigurace protokolů rozhraní API – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
+description: Konfigurace protokolů rozhraní API vystavených službou Event Grid na IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,24 +10,24 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 908bc941ee7379de067621e10adf5fd6ee6df559
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841806"
 ---
-# <a name="configure-event-grid-api-protocols"></a>Konfigurace Event Gridch protokolů rozhraní API
+# <a name="configure-event-grid-api-protocols"></a>Konfigurace protokolů rozhraní API sítě událostí
 
-Tato příručka obsahuje příklady možných konfigurací protokolu Event Grid modulu. Modul Event Grid zpřístupňuje rozhraní API pro své operace správy a běhu. Následující tabulka zachycuje protokoly a porty.
+Tato příručka uvádí příklady možných konfigurací protokolu modulu Event Grid. Modul Event Grid zveřejňuje rozhraní API pro jeho správu a operace runtime. Následující tabulka zachycuje protokoly a porty.
 
 | Protocol (Protokol) | Port | Popis |
 | ---------------- | ------------ | ------------ |
-| HTTP | 5888 | Ve výchozím nastavení vypnuté. Užitečné jenom při testování. Není vhodné pro produkční úlohy.
+| HTTP | 5888 | Ve výchozím nastavení je vypnuto. Užitečné pouze během testování. Není vhodné pro produkční úlohy.
 | HTTPS | 4438 | Výchozí
 
-V tématu Průvodce [zabezpečením a ověřováním](security-authentication.md) najdete všechny možné konfigurace.
+Všechny možné konfigurace naleznete v příručce [zabezpečení a ověřování.](security-authentication.md)
 
-## <a name="expose-https-to-iot-modules-on-the-same-edge-network"></a>Zveřejnění protokolu HTTPS v modulech IoT ve stejné hraniční síti
+## <a name="expose-https-to-iot-modules-on-the-same-edge-network"></a>Vystavit protokol HTTPS modulům IoT ve stejné hraniční síti
 
 ```json
  {
@@ -38,7 +38,7 @@ V tématu Průvodce [zabezpečením a ověřováním](security-authentication.md
 }
  ```
 
-## <a name="enable-https-to-other-iot-modules-and-non-iot-workloads"></a>Povolení HTTPS pro jiné moduly IoT a úlohy mimo IoT
+## <a name="enable-https-to-other-iot-modules-and-non-iot-workloads"></a>Povolení protokolu HTTPS k dalším modulům IoT a úlohám mimo IoT
 
 ```json
  {
@@ -59,9 +59,9 @@ V tématu Průvodce [zabezpečením a ověřováním](security-authentication.md
  ```
 
 >[!NOTE]
-> Část **PortBindings** umožňuje mapovat interní porty na porty hostitele kontejneru. Tato funkce umožňuje kontaktovat modul Event Grid mimo IoT Edgeou síť kontejneru, pokud je zařízení IoT Edge veřejně dosažitelné.
+> **PortBindings** část umožňuje mapovat interní porty na porty hostitele kontejneru. Tato funkce umožňuje dosáhnout modulu Event Grid mimo síť kontejnerů IoT Edge, pokud je hraniční zařízení IoT dostupné veřejně.
 
-## <a name="expose-http-and-https-to-iot-modules-on-the-same-edge-network"></a>Vystavení HTTP a HTTPS pro moduly IoT ve stejné hraniční síti
+## <a name="expose-http-and-https-to-iot-modules-on-the-same-edge-network"></a>Vystavit moduly HTTP a HTTPS modulům IoT ve stejné hraniční síti
 
 ```json
  {
@@ -72,7 +72,7 @@ V tématu Průvodce [zabezpečením a ověřováním](security-authentication.md
 }
  ```
 
-## <a name="enable-http-and-https-to-other-iot-modules-and-non-iot-workloads"></a>Povolení protokolu HTTP a HTTPS jiným modulům IoT a úlohám mimo IoT
+## <a name="enable-http-and-https-to-other-iot-modules-and-non-iot-workloads"></a>Povolení protokolů HTTP a HTTPS do jiných modulů IoT a úloh bez IoT
 
 ```json
  {
@@ -98,7 +98,7 @@ V tématu Průvodce [zabezpečením a ověřováním](security-authentication.md
  ```
 
 >[!NOTE]
-> Ve výchozím nastavení je každý modul IoT součástí modulu runtime IoT Edge vytvořeného přes síť mostu. Umožňuje různým modulům IoT ve stejné síti komunikovat mezi sebou. **PortBindings** vám umožňuje namapovat interní port kontejneru na hostitelský počítač a umožnit tak komukoli přístup k portu Event Grid modulu z vnějšku.
+> Ve výchozím nastavení je každý modul IoT součástí modulu IoT Edge vytvořeného sítí mostu. Umožňuje různé moduly IoT ve stejné síti komunikovat mezi sebou. **PortBindings** umožňuje mapovat vnitřní port kontejneru na hostitelský počítač a tím umožňuje komukoli v přístupu k portu modulu Event Grid zvenčí.
 
 >[!IMPORTANT]
-> I když lze porty zpřístupnit mimo IoT Edge síť, ověřování klienta vynutilo, kdo je ve skutečnosti povolen volání do modulu.
+> Zatímco porty mohou být přístupné mimo síť IoT Edge, ověřování klienta vynucuje, kdo je ve skutečnosti povoleno volat do modulu.

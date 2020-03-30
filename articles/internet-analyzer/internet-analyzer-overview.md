@@ -1,6 +1,6 @@
 ---
-title: Azure Internet Analyzer | Microsoft Docs
-description: Přečtěte si o Azure Internet Analyzer
+title: Internetový analyzátor Azure | Dokumenty společnosti Microsoft
+description: Další informace o Azure Internet Analyzer
 services: internet-analyzer
 author: megan-beatty
 ms.service: internet-analyzer
@@ -8,34 +8,34 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73501943"
 ---
-# <a name="what-is-internet-analyzer-preview"></a>Co je Internet Analyzer? (Preview)
+# <a name="what-is-internet-analyzer-preview"></a>Co je internetový analyzátor? (Preview)
 
-Internet Analyzer je měřicí platforma na straně klienta, která testuje, jak se změní síťová infrastruktura, která má vliv na výkon vašich zákazníků. Bez ohledu na to, jestli migrujete z místního prostředí do Azure nebo vyhodnocujete novou službu Azure, vám Internet Analyzer umožní získat informace z dat vašich uživatelů a bohatou analýzou Microsoftu, aby lépe pochopila a optimalizoval vaše síťové architektury s Azure – před tím, než budete Přenes.
+Internet Analyzer je platforma pro měření na straně klienta, která testuje, jak změny síťové infrastruktury ovlivňují výkon vašich zákazníků. Ať už provádíte migraci z místního prostředí do Azure, nebo vyhodnocujete novou službu Azure, Internet Analyzer vám umožní využívat data vašich uživatelů a bohaté analýzy Microsoftu k tomu, abyste ještě před migrací lépe porozuměli vaší síťové architektuře v Azure a mohli ji optimalizovat.
 
-Internet Analyzer používá k měření latence od koncových uživatelů do vaší vybrané sady síťových cílů malý JavaScriptový klient vložený do vaší webové aplikace. tyto _koncové body_volají. Nástroj Internet Analyzer umožňuje nastavit vícenásobné souběžné testy, což vám umožní vyhodnotit celou řadu scénářů, které se vaše infrastruktura a zákaznická potřeba vyvíjí. Internet Analyzer poskytuje vlastní a předem nakonfigurované koncové body, které vám poskytnou pohodlí a flexibilitu při rozhodování o důvěryhodných vznesených uživatelích. 
+Internet Analyzer používá malý JavaScript klient vložený do webové aplikace pro měření latence od koncových uživatelů k vybrané sadě síťových cílů, voláme _koncové body_. Internetový analyzátor umožňuje nastavit několik souběžných testů, což vám umožní vyhodnotit různé scénáře podle toho, jak se vaše infrastruktura a potřeby zákazníků vyvíjejí. Internetový analyzátor poskytuje vlastní a předem nakonfigurované koncové body, které poskytují pohodlí i flexibilitu při rozhodování o důvěryhodném výkonu pro koncové uživatele. 
 
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="quick--customizable-tests"></a>Rychlé & přizpůsobitelných testů
+## <a name="quick--customizable-tests"></a>Rychlé & přizpůsobitelné testy
 
-Internet Analyzer řeší otázky související s výkonem při migraci do cloudu, nasazování do nových nebo dalších oblastí Azure nebo testování nových aplikací a platforem pro doručování obsahu v Azure, jako jsou například [přední dveře Azure](https://azure.microsoft.com/services/frontdoor/) a [Microsoft Azure CDN. ](https://azure.microsoft.com/services/cdn/). 
+Internet Analyzer řeší otázky související s výkonem migrace do cloudu, nasazování do nových nebo dalších oblastí Azure nebo testování nových platforem pro doručování aplikací a obsahu v Azure, jako jsou [Azure Front Door](https://azure.microsoft.com/services/frontdoor/) a Microsoft Azure [CDN](https://azure.microsoft.com/services/cdn/). 
 
-Každý test, který vytvoříte v nástroji Internet Analyzer, se skládá ze dvou koncových bodů – koncový bod a a koncový bod B. výkon se analyzuje relativně ke koncovému bodu A. 
+Každý test, který vytvoříte v nástroji Internet Analyzer, se skládá ze dvou koncových bodů – koncový bod A a koncový bod B. Výkon koncového bodu B se analyzuje vzhledem ke koncovému bodu A. 
 
-Můžete buď nakonfigurovat vlastní koncový bod, nebo vybrat z nejrůznějších předkonfigurovaných koncových bodů Azure. Vlastní koncové body by se měly používat k vyhodnocení místních úloh, instancí v jiných poskytovatelích cloudu nebo vašich vlastních konfiguracích Azure. Testy mohou být tvořeny dvěma vlastními koncovými body; minimálně jeden vlastní koncový bod musí být hostovaný v Azure. Předem nakonfigurované koncové body Azure představují rychlý a snadný způsob, jak vyhodnotit výkon oblíbených síťových platforem Azure, jako jsou například přední vrátka Azure, Azure Traffic Manager a Azure CDN. 
+Můžete buď nakonfigurovat vlastní koncový bod, nebo vybrat z různých předkonfigurovaných koncových bodů Azure. Vlastní koncové body by se měly používat k vyhodnocení místních úloh, vašich instancí v jiných zprostředkovatelích cloudu nebo vlastních konfigurací Azure. Testy se mohou skládat ze dvou vlastních koncových bodů; však musí být hostovaný alespoň jeden vlastní koncový bod v Azure. Předkonfigurované koncové body Azure jsou rychlý a snadný způsob, jak vyhodnotit výkon oblíbených síťových platforem Azure, jako jsou Azure Front Door, Azure Traffic Manager a Azure CDN. 
 
-Během období Preview jsou k dispozici následující předem nakonfigurované koncové body: 
+Během náhledu jsou k dispozici následující předkonfigurované koncové body: 
 
-* **Oblasti Azure**
+* **Oblast Azure**
     * Brazílie – jih
     * Indie – střed
     * USA – střed
@@ -45,66 +45,66 @@ Během období Preview jsou k dispozici následující předem nakonfigurované 
     * Severní Evropa
     * Jižní Afrika – sever
     * Jihovýchodní Asie 
-    * Spojené arabské emiráty – sever
-    * Velká Británie – západ  
+    * SAE Sever
+    * Spojené království – západ  
     * Západní Evropa
     * USA – západ 
     * USA – západ 2
-* **Několik kombinací oblastí Azure** 
+* **Více kombinací oblastí Azure** 
     * Východní USA, Brazílie – jih 
-    * Východní USA Východní Asie 
+    * Východní USA, Východní Asie 
     * Západní Evropa, Brazílie – jih
-    * Západní Evropa, jihovýchodní Asie
-    * Západní Evropa, Spojené arabské emiráty sever
-    * Západní USA Východní USA 
-    * Západní USA Západní Evropa
-    * Západní USA, Spojené arabské emiráty sever
-    * Západní Evropa, Spojené arabské emiráty sever, jihovýchodní Asie
-    * Západní USA, Západní Evropa Východní Asie
-    * Západní USA, Severní Evropa, jihovýchodní Asie, Spojené arabské emiráty sever, Jižní Afrika – sever 
-* **Azure a přední dvířka** Azure – nasazené v jedné nebo několika kombinacích oblastí Azure, které jsou uvedené výše
-* **Azure + Azure CDN od Microsoftu** nasazené na libovolnou kombinaci oblastí Azure uvedenou výše
-* **Azure a azure Traffic Manager** – nasazené ve více kombinacích oblastí Azure uvedených výše
+    * Západní Evropa, Jihovýchodní Asie
+    * Západní Evropa, SAE Sever
+    * Západní USA, Východní USA 
+    * Západní USA, Západní Evropa
+    * Západní USA, SAE Sever
+    * Západní Evropa, SAE Sever, Jihovýchodní Asie
+    * Západní USA, Západní Evropa, Východní Asie
+    * Západní USA, Severní Evropa, Jihovýchodní Asie, SAE – sever, Jižní Afrika – sever 
+* **Azure + Azure Front Door** – nasazené na libovolné kombinaci oblasti Azure, které jsou uvedeny výše
+* **Azure + Azure CDN od Microsoftu** – nasazené na libovolné kombinaci oblasti Azure uvedené výše
+* **Azure + Azure Traffic Manager** – nasazený na libovolné kombinaci oblastí Azure, která je uvedena výše
 
 ## <a name="suggested-test-scenarios"></a>Navrhované testovací scénáře 
 
-Pomocí nástroje Internet Analyzer vám pomůže vyhodnotit pro vaše zákazníky nejlepší rozhodnutí o výkonu, abyste mohli vyhodnotit dva koncové body pro vaše konkrétní populace koncových uživatelů. 
+Aby vám internet analyzer pomohl při rozhodování o nejlepším výkonu pro zákazníky, umožňuje vám nástroj Internet Analyzer vyhodnotit dva koncové body pro konkrétní populaci koncových uživatelů. 
 
-I když může Internet Analyzer odpovědět na velké množství otázek, jsou některé z nejběžnějších: 
-* Jaký je dopad migrace na Cloud? 
-    * *Navrhovaný test: vlastní (vaše aktuální místní infrastruktura) vs. Azure (libovolný nakonfigurovaný koncový bod)*
-* Jaká je hodnota umístění dat na hranici vs. v datovém centru? 
-    *  *Navrhovaný test: Azure vs. přední vrátka Azure, Azure vs. Azure CDN od Microsoftu*
-* Jaké jsou výhody pro výkon front-end služby Azure?
-    *  *Navrhovaný test: Custom/Azure/CDN vs. přední dvířka Azure*
-* Jaké jsou výhody Azure CDN od Microsoftu? 
-    *  *Navrhovaný test: Custom/Azure/AFD vs. Azure CDN od Microsoftu*
-* Jak se Azure CDN ze služby Microsoft Stack? 
-    *  *Navrhovaný test: vlastní (jiný koncový bod CDN) vs. Azure CDN od Microsoftu*
-* Jaký je nejlepší Cloud pro naplnění vašich koncových uživatelů v jednotlivých oblastech? 
-    *  *Navrhovaný test: vlastní (jiná cloudová služba) vs. Azure (libovolný nakonfigurovaný koncový bod)*
+Zatímco Internet Analyzer může odpovědět na velké množství otázek, některé z nejběžnějších jsou: 
+* Jaký dopad migrace do cloudu má na výkon migrace do cloudu? 
+    * *Navrhovaný test: Vlastní (vaše aktuální místní infrastruktura) vs. Azure (jakýkoli předkonfigurovaný koncový bod)*
+* Jaká je hodnota umístění mých dat na hraniční hodnotu vs. v datovém centru? 
+    *  *Navrhovaný test: Azure vs. Azure Front Door, Azure vs. Azure CDN od Microsoftu*
+* Jaké jsou výhody výkonu Azure Front Door?
+    *  *Navrhovaný test: Vlastní/ Azure/ CDN vs. Přední dveře Azure*
+* Jaké jsou výhody výkonu Azure CDN od Microsoftu? 
+    *  *Navrhovaný test: Vlastní/ Azure/ AFD vs Azure CDN od Microsoftu*
+* Jak azure cdn od Microsoftu zásobníku nahoru? 
+    *  *Navrhovaný test: Vlastní (jiný koncový bod CDN) vs. Azure CDN od Microsoftu*
+* Jaký je nejlepší cloud pro vaši populaci koncových uživatelů v jednotlivých oblastech? 
+    *  *Navrhovaný test: Vlastní (jiná cloudová služba) vs. Azure (jakýkoli předkonfigurovaný koncový bod)*
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Chcete-li použít nástroj Internet Analyzer, nastavte prostředek pro Internet Analyzer v portál Microsoft Azure a do aplikace nainstalujte malého klienta v jazyce JavaScript. Klient měří latenci od koncových uživatelů k vybraným koncovým bodům stažením obrázku s jedním pixelem přes protokol HTTPS. Po shromáždění měření latence klient odešle data o měření do nástroje Internet Analyzer.
+Chcete-li používat Nástroj pro analýzu Internetu, nastavte na portálu Microsoft Azure prostředek nástroje Internet Analyzer a nainstalujte do aplikace malého klienta JavaScriptu. Klient měří latenci od koncových uživatelů k vybraným koncovým bodům stažením bitové kopie o jednom obrazovém bodu přes protokol HTTPS. Po shromáždění měření latence klient odešle naměřená data do internetového analyzátoru.
 
-Když uživatel navštíví webovou aplikaci, klient jazyka JavaScript vybere dva koncové body pro měření ve všech nakonfigurovaných testech. U každého koncového bodu klient provádí _studené_ a _teplé_ měření. Dopředné _měření způsobí_ další latenci při čisté latenci sítě mezi uživatelem a koncovým bodem, jako je třeba překlad DNS, handshake připojení TCP a vyjednávání SSL/TLS. Měření _teplého_ postupu následuje hned po dokončení _studeného_ měření a využívá trvalou správu připojení TCP v moderních prohlížečích k dosažení přesné míry celkové latence. V případě, že prohlížeč uživatele podporuje, používá se rozhraní API pro časování prostředků W3C k přesnému časování měření. V současné době se k analýze používají pouze měření latence v teplu.
+Když uživatel navštíví webovou aplikaci, klient JavaScriptu vybere dva koncové body, které chcete měřit ve všech nakonfigurovaných testech. Pro každý koncový bod klient provádí _měření za studena_ a _teplé._ Měření _za studena_ vznikne další latence vedle čisté latence sítě mezi uživatelem a koncovým bodem, jako je například rozlišení DNS, handshake připojení TCP a vyjednávání SSL/TLS. _Teplé_ měření následuje těsně po dokončení _měření za studena_ a využívá výhod trvalé správy připojení TCP moderních prohlížečů k získání přesné míry latence od konce do konce. Pokud je podporovánprohlížečem uživatele, rozhraní API pro časování prostředků W3C se používá pro přesné časování měření. V současné době se pro analýzu používají pouze měření teplé latence.
 
 ![Architektura](./media/ia-overview/architecture.png)
 
 
-## <a name="scorecards"></a>Metrik 
+## <a name="scorecards"></a>Scorecard 
 
-Po spuštění testu se data telemetrie zobrazí v prostředku nástroje Internet Analyzer na kartě scorecard. Tato data jsou vždycky agregovaná. Pomocí následujících filtrů můžete změnit zobrazení zobrazených dat: 
+Po spuštění testu se telemetrická data zobrazí ve vašem prostředku Nástroje pro analýzu internetu na kartě Přehled výkonnostních metrik. Tato data jsou vždy agregována. Pomocí následujících filtrů můžete změnit zobrazení dat, která vidíte: 
 
-* **Test:** Vyberte test, pro který chcete zobrazit výsledky. Data testů se zobrazí, jakmile je k dokončení analýzy k dispozici dostatek dat – ve většině případů do 24 hodin. 
-* **Časové období & koncové datum:** Internet Analyzer vygeneruje každý den tři přehledy výkonnostních metrik – každý Scorecard odráží jiné časové období agregace – 24 hodin před (dnem), sedm dní před (týden) a 30 dní před (měsíc). Pomocí filtru "koncové datum" vyberte časové období, které chcete zobrazit. 
-* **Země:** Pomocí tohoto filtru můžete zobrazit data specifická pro koncové uživatele nacházející se v zemi. Globální filtr zobrazuje data napříč všemi geografickými oblastmi.  
+* **Test:** Vyberte test, pro který chcete zobrazit výsledky. Testovací data se objeví, jakmile je dostatek dat k dokončení analýzy - ve většině případů do 24 hodin. 
+* **Časové období & koncové datum:** Internetový analyzátor generuje denně tři přehledy výkonnostních metrik – každý přehled výkonnostních metrik odráží jiné časové období agregace – 24 hodin před (den), sedm dní před (týden) a 30 dní před (měsíc). Pomocí filtru Koncové datum vyberte časové období, které chcete zobrazit. 
+* **Země:** Tento filtr slouží k zobrazení dat specifických pro koncové uživatele s bydlištěm v zemi. Globální filtr zobrazuje data ve všech zeměpisných oblastech.  
 
-Další informace o přehledech výkonnostních metrik najdete na stránce [Interpretace stránky s přehledem výkonnostních](internet-analyzer-scorecard.md) metrik. 
+Další informace o přehledech výkonnostních metrik naleznete na stránce [Interpretace přehledu výkonnostních metrik.](internet-analyzer-scorecard.md) 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se, jak [vytvořit první prostředek služby Internet Analyzer](internet-analyzer-create-test-portal.md).
-* Přečtěte si [Nejčastější dotazy k Internet Analyzer](internet-analyzer-faq.md). 
+* Přečtěte si, jak [vytvořit první prostředek nástroje Internet Analyzer](internet-analyzer-create-test-portal.md).
+* Přečtěte si [nejčastější dotazy k internetovému analyzátoru](internet-analyzer-faq.md). 

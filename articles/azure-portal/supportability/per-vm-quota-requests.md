@@ -1,6 +1,6 @@
 ---
-title: Požádat o zvýšení limitů kvót vCPU na každou řadu virtuálních počítačů Azure
-description: Jak požádat o zvýšení limitu kvóty vCPU pro řady virtuálních počítačů ve Azure Portal, což zvyšuje celkový počet regionálních vCPU omezení na stejnou částku.
+title: Žádost o zvýšení limitů kvót virtuálních procesorů na řadu virtuálních počítačích Azure
+description: Jak požádat o zvýšení limitu kvóty virtuálních procesorů pro řadu virtuálních počítače na webu Azure Portal, což zvyšuje celkový limit místního virtuálního procesoru o stejnou částku.
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
@@ -8,148 +8,148 @@ ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: de06375dad5999a29691435317e62585a2ea7f64
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843709"
 ---
-# <a name="standard-quota-increase-limits-by-vm-series"></a>Standardní kvóta: zvýšení limitů podle řady virtuálních počítačů
+# <a name="standard-quota-increase-limits-by-vm-series"></a>Standardní kvóta: Zvýšení limitů podle řady virtuálních montovek
 
-Azure Resource Manager podporuje dva typy kvót vCPU pro virtuální počítače:
+Azure Resource Manager podporuje dva typy kvót virtuálních procesorů pro virtuální počítače:
 
-* *Virtuální počítače* s průběžnými platbami a *rezervované instance virtuálních počítačů* podléhají *standardní vCPU kvótě*.
-* *Virtuální počítače na místě* podléhají *vCPU kvótě*.
+* Virtuální počítače s *průběžnými platbami* a *rezervované instance virtuálních počítače* podléhají *standardní kvótě virtuálního procesoru*.
+* *Virtuální počítače spot* podléhají *kvótě virtuálního procesoru na místě*.
 
-Standardní kvóta vCPU pro průběžné platby a rezervované instance virtuálních počítačů se vynutily na dvou úrovních pro každé předplatné v každé oblasti:
+Standardní kvóta virtuálního procesoru pro instance platebních a rezervovaných virtuálních strojů je vynucena na dvou úrovních pro každé předplatné v každé oblasti:
 
-* První úroveň je *celkový regionální limit vCPU*ve všech řadách virtuálních počítačů.
-* Druhá úroveň je *vCPU limit řady per-VM*, například vCPU Dv3-Series.
+* První vrstva je *celkový limit místních virtuálních procesorů*napříč všemi řadami virtuálních montovny.
+* Druhá vrstva je *limit virtuálních procesorů řady virtuálních procesorů řady*v v. například virtuální procesory řady Dv3.
 
-Když nasadíte nový virtuální počítač s přímým odkazem, nesmí celkové nové a stávající využití vCPU pro tuto řadu virtuálních počítačů překročit schválenou kvótu vCPU pro tuto řadu virtuálních počítačů. Celkový počet nových a existujících vCPU nasazených ve všech řadách virtuálních počítačů by neměl přesáhnout celkovou schválenou kvótu místní vCPU pro předplatné. Pokud dojde k překročení některé z těchto kvót, nasazení virtuálního počítače se nepovoluje.
+Při každém nasazení nového virtuálního počítače na místě, celkové nové a stávající využití virtuálních procesorů pro tuto řadu virtuálních počítače nesmí překročit schválenou kvótu virtuálních procesorů pro tuto konkrétní řadu virtuálních počítače. Kromě toho celkový počet nových a stávajících virtuálních procesorů, které jsou nasazeny ve všech řadách virtuálních počítače by neměla překročit celkovou schválenou kvótu místní virtuální ch výkonu pro předplatné. Pokud je překročena některá z těchto kvót, nasazení virtuálního počítače není povoleno.
 
-Můžete požádat o zvýšení limitu kvóty vCPU pro řady virtuálních počítačů pomocí Azure Portal. Zvýšení kvóty řady virtuálních počítačů automaticky zvýší celkový rozsah regionálního vCPUu o stejné množství.
+Můžete požádat o zvýšení limitu kvóty virtuálních procesorů pro řadu virtuálních počítače pomocí portálu Azure. Zvýšení kvóty řady virtuálních počítače automaticky zvýší celkový limit místní virtuální ho výkonu o stejnou částku.
 
-Další informace o standardních kvótách vCPU najdete v tématu věnovaném [kvótám virtuálních počítačů vCPU](../../virtual-machines/windows/quotas.md) a [omezením předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-supportability/classic-deployment-model-quota-increase-requests).
+Další informace o standardních kvótách virtuálních procesorů najdete v [tématu Kvóty virtuálních procesorů virtuálních procesorů virtuálních procesorů virtuálních](../../virtual-machines/windows/quotas.md) zařízení a [omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-supportability/classic-deployment-model-quota-increase-requests).
 
-Další informace o zvýšení limitu vCPU podle oblasti pro standardní kvótu najdete v tématu [standardní kvóta: zvýšení limitů podle oblasti](regional-quota-requests.md).
+Další informace o zvýšení limitu virtuálních procesorů podle oblasti pro standardní kvótu naleznete v [tématu Standardní kvóta: Zvýšení limitů podle oblasti](regional-quota-requests.md).
 
-Další informace o zvýšení limitů vCPU virtuálních počítačů najdete v tématu věnovaném [kvótám na místě: zvýšení limitů pro všechny řady virtuálních počítačů](low-priority-quota.md).
+Další informace o zvýšení limitů virtuálních procesorů virtuálních procesorů virtuálních počítače na místě najdete v [tématu Kvóta bodů: Zvýšení limitů pro všechny řady virtuálních počítače](low-priority-quota.md).
 
-Můžete požádat o zvýšení standardních limitů vCPU kvót na řadu virtuálních počítačů jedním ze dvou způsobů, jak je popsáno v následujících částech.
+Můžete požádat o zvýšení standardníkvóty virtuálního procesoru na řadu virtuálních počítače v obou směrech, jak je popsáno v následujících částech.
 
-## <a name="request-a-standard-quota-increase-from-help--support"></a>Požádat o zvýšení standardní kvóty z helpu a podpory
+## <a name="request-a-standard-quota-increase-from-help--support"></a>Požádat o standardní zvýšení kvóty z nápovědy + podpory
 
-Požadavek na standardní zvýšení kvóty vCPU na řadu virtuálních počítačů v **nápovědě a podpoře**:
-
-> [!NOTE]
-> Můžete také požádat o zvýšení kvóty na více oblastí prostřednictvím jediného případu podpory. Podrobnosti najdete v kroku 8.
-
-1. V nabídce [Azure Portal](https://portal.azure.com) vyberte možnost **help + podpora**.
-
-   ![Odkaz Help + support](./media/resource-manager-core-quotas-request/help-plus-support.png)
-
-1. V **okně pomoc a podpora**vyberte **Nová žádost o podporu**.
-
-    ![Vytvořit novou žádost o podporu](./media/resource-manager-core-quotas-request/new-support-request.png)
-
-1. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
-
-   ![Vyberte typ problému.](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
-
-1. V poli **předplatné**vyberte předplatné, jehož kvótu chcete zvýšit.
-
-   ![Vyberte předplatné pro zvýšenou kvótu.](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
-
-1. V části **typ kvóty**vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
-
-   ![Vyberte typ kvóty.](./media/resource-manager-core-quotas-request/select-quota-type.png)
-
-1. Vyberte **Další: řešení** pro otevření **podrobností problému**. Pokud chcete zadat další informace, vyberte **zadat podrobnosti** .
-
-   ![Odkaz "poskytnout podrobnosti"](./media/resource-manager-core-quotas-request/provide-details-link.png)
-
-1. V **podrobnostech o kvótě**proveďte následující kroky:
-
-   ![Podrobnosti o další kvótě TProvide](./media/resource-manager-core-quotas-request/quota-details-deployment-rm-locations.png)
-
-   1. V části **model nasazení**vyberte příslušný model.
-
-   1. V oblasti **umístění**vyberte umístění. Pro vybrané umístění v části **typy**v **možnosti vybrat typ**zvolte možnost **standardní**.
-
-      ![Podrobnosti kvóty – typy kvót](./media/resource-manager-core-quotas-request/quota-details-select-standard-type.png)
-
-      V části **typy**můžete požadovat typy kvót Standard a quote z jediného případu podpory prostřednictvím podpory vícenásobného výběru.
-
-      Další informace o zvýšení limitů kvót na místě najdete v tématu [virtuální počítače Azure na místě pro službu Virtual Machine Scale Sets](../../virtual-machine-scale-sets/use-spot.md).
-
-   1. V části **Standard**vyberte pro vyšší kvóty řadu SKU.
-
-      ![Podrobnosti kvóty – série SKU](./media/resource-manager-core-quotas-request/quota-details-standard-select-series.png)
-
-   1. Zadejte nové limity kvót, které chcete pro toto předplatné. Chcete-li ze seznamu odebrat SKU, zrušte zaškrtnutí políčka u položky SKU nebo vyberte ikonu zahodit "X".
-
-      ![Vybrat nový limit vCPU](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
-
-1. Pokud chcete požádat o zvýšení kvóty pro více než jedno umístění, vyberte další umístění v **umístění**a potom vyberte vhodný typ virtuálního počítače. Pak můžete zadat limit, který platí pro další umístění.
-
-   ![Zadat další umístění v podrobnostech o kvótě](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
-
-1. Pokud chcete pokračovat v vytváření žádosti o podporu, vyberte **Uložit a pokračovat** .
-
-## <a name="request-a-standard-quota-increase-from-subscriptions"></a>Požadavek na zvýšení standardní kvóty z předplatných
-
-Požadavek na standardní zvýšení kvóty vCPU na řadu virtuálních počítačů z **předplatných**:
+Chcete-li požádat o zvýšení kvóty standardního virtuálního procesoru na řadu virtuálních počítače z **nápovědy + podpory:**
 
 > [!NOTE]
-> Můžete také požádat o zvýšení kvóty na více oblastí prostřednictvím jediného případu podpory. Podrobnosti najdete v kroku 7.
+> Můžete také požádat o zvýšení limitu kvóty pro více oblastí prostřednictvím jednoho případu podpory. Podrobnosti naleznete v kroku 8.
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **předplatná**.
+1. V nabídce [Portál Azure](https://portal.azure.com) vyberte **Nápověda + podpora**.
 
-   ![Předplatná ve službě Azure Portal Search](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+   ![Odkaz Nápověda + podpora](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. Vyberte předplatné, jehož kvóta se má zvýšit.
+1. V **nápovědě + podpoře**vyberte Nový **požadavek na podporu**.
 
-   ![Předplatná, která se mají vybrat pro změny](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+    ![Vytvoření nové žádosti o podporu](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. V levém podokně vyberte **využití + kvóty**.
+1. V **případě typu Problém**vyberte možnost Omezení služeb a předplatného **(kvóty).**
 
-   ![Odkaz využití a kvóty](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+   ![Výběr typu problému](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-1. V pravém horním rohu vyberte **požádat o zvýšení**.
+1. V **části Předplatné**vyberte předplatné, jehož kvótu chcete zvýšit.
 
-   ![Vyberte, chcete-li zvýšit kvótu.](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+   ![Výběr předplatného pro zvýšenou kvótu](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. V části **typ kvóty**vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
+1. U **typu Kvóta**vyberte **zvýšení limitu předplatného Compute-VM (cores-vCPU)**.
 
-   ![Vyberte typ kvóty.](./media/resource-manager-core-quotas-request/select-quota-type.png)
+   ![Výběr typu kvóty](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. V **podrobnostech o kvótě**proveďte následující kroky:
+1. Vyberte **další: Řešení** pro otevření **podrobností o problému**. Chcete-li zadat další informace, vyberte **možnost Zadat podrobnosti.**
 
-   1. V části **model nasazení**vyberte příslušný model a pro **umístění**vyberte umístění.
+   ![Odkaz "Poskytnout podrobnosti"](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-      ![Poskytnutí podrobností o kvótě](./media/resource-manager-core-quotas-request/quota-details-deployment-rm-locations.png)
+1. V **podrobnostech o kvótě**postupujte takto:
 
-   1. Pro vybrané umístění vyberte v části **typy**možnost **Vybrat typ**a pak vyberte **standardní**.
+   ![TPoskytnout další podrobnosti o kvótě](./media/resource-manager-core-quotas-request/quota-details-deployment-rm-locations.png)
+
+   1. Pro **model nasazení**vyberte příslušný model.
+
+   1. V **poučná místa**vyberte umístění. Pro vybrané umístění v části **Typy**v **části Vyberte typ**zvolte **Standardní**.
+
+      ![Podrobnosti o kvótě – typy kvót](./media/resource-manager-core-quotas-request/quota-details-select-standard-type.png)
+
+      V části **Typy**můžete požadovat standardní i namátkové typy kvót z jednoho případu podpory prostřednictvím podpory s více násobným výběrem.
+
+      Další informace o zvýšení limitů bodových kvót najdete v [tématu Virtuální počítače na místě Azure pro škálovací sady virtuálních strojů](../../virtual-machine-scale-sets/use-spot.md).
+
+   1. Ve **standardním**vyberte řadu skladových položk pro zvýšení kvót.
+
+      ![Podrobnosti o kvótách – řada Skladových míst](./media/resource-manager-core-quotas-request/quota-details-standard-select-series.png)
+
+   1. Zadejte nové limity kvót, které chcete pro toto předplatné. Chcete-li odebrat skladovou položku ze seznamu, zrušte zaškrtnutí políčka vedle skladové položky nebo zaškrtněte ikonu zahodit "X".
+
+      ![Výběr nového limitu virtuálního procesoru](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
+
+1. Chcete-li požádat o zvýšení kvóty pro více než jedno umístění, vyberte další umístění v **umístění**a vyberte příslušný typ virtuálního aplikace. Poté můžete zadat limit, který se vztahuje na další umístění.
+
+   ![Určení dalších umístění v podrobnostech o kvótě](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
+
+1. Vyberte **Uložit a pokračujte** ve vytváření žádosti o podporu.
+
+## <a name="request-a-standard-quota-increase-from-subscriptions"></a>Požádat o standardní zvýšení kvóty z předplatného
+
+Chcete-li požádat o zvýšení kvóty standardního virtuálního procesoru na řadu virtuálních počítače z **odběrů:**
+
+> [!NOTE]
+> Můžete také požádat o zvýšení limitu kvóty pro více oblastí prostřednictvím jednoho případu podpory. Podrobnosti naleznete v kroku 7.
+
+1. Na [webu Azure Portal](https://portal.azure.com)vyhledejte a vyberte **předplatná**.
+
+   ![Předplatná ve vyhledávání na portálu Azure](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+
+1. Vyberte předplatné, jehož kvótu chcete zvýšit.
+
+   ![Odběry pro výběr změn](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+
+1. V levém podokně vyberte **Možnost Využití + kvóty**.
+
+   ![Odkaz Využití + kvóty](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+
+1. Vpravo nahoře vyberte **Požádat o zvýšení**.
+
+   ![Výběrem zvýšíte kvótu.](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+
+1. U **typu Kvóta**vyberte **zvýšení limitu předplatného Compute-VM (cores-vCPU)**.
+
+   ![Výběr typu kvóty](./media/resource-manager-core-quotas-request/select-quota-type.png)
+
+1. V **podrobnostech o kvótě**postupujte takto:
+
+   1. V **části Model nasazení**vyberte příslušný model a umístění vyberte umístění. **Locations**
+
+      ![Uveďte podrobnosti o kvótě](./media/resource-manager-core-quotas-request/quota-details-deployment-rm-locations.png)
+
+   1. Pro vybrané umístění vyberte v části **Typy** **možnost Vybrat typ**a pak vyberte **Standardní**.
 
       ![Vybrat standardní typ](./media/resource-manager-core-quotas-request/quota-details-select-standard-type.png)
 
-      V části **typy**můžete požadovat typy kvót Standard a quote z jediného případu podpory prostřednictvím podpory vícenásobného výběru.
+      V části **Typy**můžete požadovat standardní i namátkové typy kvót z jednoho případu podpory prostřednictvím podpory s více násobným výběrem.
 
-      Další informace o zvýšení limitů kvót na místě najdete v tématu [virtuální počítače Azure na místě pro službu Virtual Machine Scale Sets](../../virtual-machine-scale-sets/use-spot.md).
+      Další informace o zvýšení limitů bodových kvót najdete v [tématu Virtuální počítače na místě Azure pro škálovací sady virtuálních strojů](../../virtual-machine-scale-sets/use-spot.md).
 
-   1. V části **Standard**vyberte řady SKU, jejichž kvóty chcete zvýšit.
+   1. V **části Standardní**vyberte řadu Skladové položky, jejíž kvóty chcete zvýšit.
 
-      ![Podrobnosti kvóty – série SKU](./media/resource-manager-core-quotas-request/quota-details-standard-select-series.png)
+      ![Podrobnosti o kvótách – řada Skladových míst](./media/resource-manager-core-quotas-request/quota-details-standard-select-series.png)
 
-   1. Zadejte nové limity kvót, které chcete pro toto předplatné. Chcete-li ze seznamu odstranit SKLADOVOU položku, zrušte zaškrtnutí políčka vedle skladové položky (SKU) nebo vyberte ikonu zahodit "X".
+   1. Zadejte nové limity kvót, které chcete pro toto předplatné. Chcete-li odebrat skladovou položku ze seznamu, zrušte zaškrtnutí políčka vedle skladové položky nebo zaškrtněte ikonu zahodit "X".
 
-      ![Vybrat nový limit vCPU](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
+      ![Výběr nového limitu virtuálního procesoru](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
 
-1. Pokud chcete požádat o zvýšení kvóty pro více než jedno umístění, vyberte další umístění v **umístění**a potom vyberte vhodný typ virtuálního počítače.
+1. Chcete-li požádat o zvýšení kvóty pro více než jedno umístění, vyberte další umístění v **umístění**a vyberte příslušný typ virtuálního aplikace.
 
-   Tento krok předem načte řadu SKU, kterou jste vybrali pro starší umístění. Zadejte omezení kvóty, která chcete použít pro další řady.
+   Tento krok předem načte řadu Skladové položky, kterou jste vybrali pro dřívější umístění. Zadejte limity kvót, které chcete použít pro další řady.
 
-   ![Vybrat další umístění v podrobnostech o kvótě](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
+   ![Výběr dalších umístění v podrobnostech o kvótě](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 
-1. Pokud chcete pokračovat v vytváření žádosti o podporu, vyberte **Uložit a pokračovat** .
+1. Vyberte **Uložit a pokračujte** ve vytváření žádosti o podporu.

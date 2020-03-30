@@ -1,117 +1,116 @@
 ---
-title: Registrace aplikace SaaS | Azure Marketplace
-description: Vysvětluje, jak zaregistrovat aplikaci SaaS pomocí Azure Portal.
-services: Azure, Marketplace, Cloud Partner Portal, Azure portal
-author: v-miclar
+title: Zaregistrovat žádost SaaS | Azure Marketplace
+description: Vysvětluje, jak zaregistrovat aplikaci SaaS pomocí portálu Azure.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: evansma
-ms.openlocfilehash: b2e02e42ab63f893574ca5217fd2f36c7481aabd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827945"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275709"
 ---
 # <a name="register-a-saas-application"></a>Registrace aplikace SaaS
 
-Tento článek vysvětluje, jak zaregistrovat aplikaci SaaS pomocí Microsoft [Azure Portal](https://portal.azure.com/).  Po úspěšné registraci se zobrazí token zabezpečení Azure Active Directory (Azure AD), který můžete použít pro přístup k rozhraním API pro plnění SaaS.  Další informace o Azure AD najdete v tématu [co je ověřování?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
+Tento článek vysvětluje, jak zaregistrovat aplikaci SaaS pomocí [portálu](https://portal.azure.com/)Microsoft Azure .  Po úspěšné registraci obdržíte token zabezpečení Azure Active Directory (Azure AD), který můžete použít pro přístup k rozhraní API plnění SaaS.  Další informace o Azure AD najdete v tématu [Co je ověřování?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
 
 
-## <a name="service-to-service-authentication-flow"></a>Tok ověřování služby – služba
+## <a name="service-to-service-authentication-flow"></a>Tok ověřování mezi službami
 
-Následující diagram znázorňuje tok předplatného pro nového zákazníka a při použití těchto rozhraní API:
+Následující diagram znázorňuje tok předplatného nového zákazníka a při použití těchto api:
 
-![Tok rozhraní API nabídky SaaS](./media/saas-offer-publish-api-flow-v1.png)
+![SaaS nabízí tok API](./media/saas-offer-publish-api-flow-v1.png)
 
-Azure neposkytuje žádná omezení pro ověřování, které služba SaaS zpřístupňuje koncovým uživatelům. Ověřování s rozhraními API pro plnění SaaS se ale provádí pomocí tokenu zabezpečení Azure AD, který se obvykle získá registrací aplikace SaaS prostřednictvím Azure Portal. 
+Azure neukládá žádná omezení na ověřování, které služba SaaS zveřejňuje svým koncovým uživatelům. Ověřování pomocí saas plnění API se však provádí pomocí tokenu zabezpečení Azure AD, obvykle získané registrací aplikace SaaS prostřednictvím portálu Azure. 
 
 
-## <a name="register-an-azure-ad-secured-app"></a>Registrace aplikace zabezpečené službou Azure AD
+## <a name="register-an-azure-ad-secured-app"></a>Registrace aplikace zabezpečené azure ad
 
-Všechny aplikace, které chtějí využívat možnosti Azure AD, musí být nejdřív zaregistrované v tenantovi Azure AD. Tento proces registrace zahrnuje poskytnutí podrobností o vaší aplikaci Azure AD, jako je adresa URL, kde se nachází, adresa URL pro odeslání odpovědí po ověření uživatele, identifikátor URI, který identifikuje aplikaci atd.  Chcete-li zaregistrovat novou aplikaci pomocí Azure Portal, proveďte následující kroky:
+Všechny aplikace, které chtějí využívat možnosti Azure AD, musí být nejdřív zaregistrované v tenantovi Azure AD. Tento proces registrace zahrnuje poskytnutí podrobností o vaší aplikaci ve službě Azure AD, jako je adresa URL, kde se nachází, adresa URL pro odesílání odpovědí po ověření uživatele, identifikátor URI, který identifikuje aplikaci a tak dále.  Chcete-li zaregistrovat novou aplikaci pomocí portálu Azure, proveďte následující kroky:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2.  Pokud vám váš účet poskytne přístup k více než jednomu, klikněte na svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-3.  V levém navigačním podokně klikněte na službu **Azure Active Directory** , klikněte na **Registrace aplikací**a pak klikněte na **Nová registrace aplikace**.
+1.  Přihlaste se k [portálu Azure](https://portal.azure.com/).
+2.  Pokud váš účet umožňuje přístup k více než jednomu, klikněte na svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaný klient Azure AD.
+3.  V levém navigačním podokně klikněte na službu **Azure Active Directory,** klikněte na **Registrace aplikací**a klikněte na Nová **registrace aplikace**.
 
-    ![Registrace aplikací AD SaaS](./media/saas-offer-app-registration-v1.png)
+    ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration-v1.png)
 
-4.  Na stránce vytvořit zadejte informace o registraci aplikace\'s:
-    -   **Název**: zadejte smysluplný název aplikace.
+4.  Na stránce Vytvořit zadejte\'registrační informace o aplikaci:
+    -   **Název**: Zadejte smysluplný název aplikace.
     -   **Typ aplikace**: 
         - Vyberte **Nativní** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), které jsou nainstalované místně na zařízení. Toto nastavení se používá pro veřejné [nativní klienty](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) OAuth.
-        - Vyberte **Webová aplikace/rozhraní API** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) a [aplikace prostředků/rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) , které jsou nainstalované na zabezpečeném serveru. Toto nastavení se používá u důvěrných [webových klientů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) OAuth a [klientů založených na agentech veřejného uživatele](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
+        - Vyberte **Webová aplikace / ROZHRANÍ API** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) a aplikace [prostředků/rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) nainstalované na zabezpečeném serveru. Toto nastavení se používá pro [důvěrné webové klienty](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) OAuth a veřejné [klienty založené na uživatelském agentovi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
         Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
-    -   **Přihlašovací adresa URL**: pro aplikace webové aplikace nebo rozhraní API zadejte základní adresu URL vaší aplikace. **http://localhost:31544** může být například adresa URL webové aplikace běžící na vašem místním počítači. Uživatelé pak použijí tuto adresu URL pro přihlášení k aplikaci webového klienta.
-    -   **Identifikátor URI pro přesměrování**: u nativních aplikací zadejte identifikátor URI, který služba Azure AD používá k vrácení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http://MyFirstAADApp** .
+    -   **Přihlašovací adresa URL**: Pro webové aplikace/aplikace API zadejte základní adresu URL aplikace. **http://localhost:31544** Může to být například adresa URL webové aplikace spuštěné v místním počítači. Uživatelé by pak použít tuto adresu URL pro přihlášení k webové klientské aplikace.
+    -   **Identifikátor URI přesměrování**: Pro nativní aplikace zadejte identifikátor URI používaný službou Azure AD k vrácení odpovědí tokenů. Zadejte hodnotu specifickou pro **http://MyFirstAADApp**vaši aplikaci, například .
 
-        ![Registrace aplikací AD SaaS](./media/saas-offer-app-registration-v1-2.png)
+        ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration-v1-2.png)
 
-        Konkrétní příklady webových aplikací nebo nativních aplikací najdete v průvodci rychlým startem, které jsou k dispozici *v části Začínáme* v [příručce pro vývojáře Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+        Konkrétní příklady pro webové aplikace nebo nativní aplikace najdete v nastavení s asistencí quickstart, které jsou k dispozici v části *Začínáme* v [Průvodci vývojáři Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-5.  Jakmile budete hotovi, klikněte na **Vytvořit**. Azure AD přiřadí vaší aplikaci jedinečné *ID aplikace* a Vy\'znovu provedete na hlavní registrační stránku aplikace\'s. V závislosti na tom, jestli je vaše aplikace webová nebo nativní, jsou k dispozici různé volby pro přidání dalších možností do vaší aplikace.
+5.  Jakmile budete hotovi, klikněte na **Vytvořit**. Azure AD přiřadí jedinečné *ID aplikace* do\'vaší aplikace\'a přejdete na hlavní registrační stránku aplikace. V závislosti na tom, jestli je vaše aplikace webová nebo nativní, jsou k dispozici různé volby pro přidání dalších možností do vaší aplikace.
 
 >[!Note]
->Ve výchozím nastavení je nově registrovaná aplikace nakonfigurovaná tak, aby umožňovala pouze uživatelům ze stejného tenanta přihlašovat se k vaší aplikaci.
+>Ve výchozím nastavení je nově registrovaná aplikace nakonfigurována tak, aby umožňovala přihlášení k vaší aplikaci pouze uživatelům ze stejného klienta.
 
 
 ## <a name="using-the-azure-ad-security-token"></a>Použití tokenu zabezpečení Azure AD
 
-Po zaregistrování aplikace můžete programově požádat o token zabezpečení Azure AD.  Očekává se, že vydavatel použije tento token, a vytvoří požadavek na jeho vyřešení.  Při použití různých rozhraní API pro splnění je parametr dotazu tokenu v adrese URL, když se uživatel přesměruje na web SaaS z Azure.  Tento token je platný jenom pro jednu hodinu.  Kromě toho by měla adresa URL dekódovat hodnotu tokenu z prohlížeče, aby ji bylo možné použít.
+Jakmile zaregistrujete aplikaci, můžete programově požádat o token zabezpečení Azure AD.  Očekává se, že vydavatel použije tento token a požádá o jeho vyřešení.  Při použití různých rozhraní API plnění je parametr dotazu tokenu v adrese URL, když je uživatel přesměrován na web SaaS z Azure.  Tento token je platný pouze po dobu jedné hodiny.  Kromě toho byste měli url dekódovat hodnotu tokenu z prohlížeče před použitím.
 
-Další informace o těchto tokenech naleznete v tématu [Azure Active Directory Access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+Další informace o těchto tokenech najdete [v tématu Tokeny přístupu služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
 
 
 ### <a name="get-a-token-based-on-the-azure-ad-app"></a>Získání tokenu založeného na aplikaci Azure AD
 
-HTTP – metoda
+Metoda HTTP
 
 `POST`
 
-*URL požadavku*
+*Adresa URL požadavku*
 
-**https://login.microsoftonline.com/ *{tenantId}* /OAuth2/token**
+**https://login.microsoftonline.com/*{tenantId}*/oauth2/token**
 
 *Parametr URI*
 
-|  **Název parametru**  | **Požadovanou**  | **Popis**                               |
+|  **Název parametru**  | **Požadováno**  | **Popis**                               |
 |  ------------------  | ------------- | --------------------------------------------- |
-| TenantId             | True          | ID tenanta registrované aplikace AAD   |
+| tenantId             | True          | ID klienta registrované aplikace AAD   |
 |  |  |  |
 
 
-*Hlavička žádosti*
+*Hlavička požadavku*
 
-|  **Název záhlaví**  | **Požadovanou** |  **Popis**                                   |
+|  **Název hlavičky**  | **Požadováno** |  **Popis**                                   |
 |  --------------   | ------------ |  ------------------------------------------------- |
-|  Typ obsahu     | True         | Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`.  |
+|  Typ obsahu     | True         | Typ obsahu přidružený k požadavku. Výchozí hodnota je `application/x-www-form-urlencoded`.  |
 |  |  |  |
 
 
-*Text žádosti*
+*Text požadavku*
 
-| **Název vlastnosti**   | **Požadovanou** |  **Popis**                                                          |
+| **Název vlastnosti**   | **Požadováno** |  **Popis**                                                          |
 | -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True         | Typ udělení Výchozí hodnota je `client_credentials`.                    |
-|  Client_id          | True         |  Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD                  |
+|  Grant_type         | True         | Typ grantu. Výchozí hodnota je `client_credentials`.                    |
+|  Client_id          | True         |  Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD.                  |
 |  client_secret      | True         |  Heslo přidružené k aplikaci Azure AD.                               |
 |  Prostředek           | True         |  Cílový prostředek, pro který je požadován token. Výchozí hodnota je `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 
-*Odpověď*
+*Reakce*
 
 |  **Název**  | **Typ**       |  **Popis**    |
 | ---------- | -------------  | ------------------- |
-| 200 OK    | TokenResponse  | Požadavek byl úspěšný   |
+| 200 OK    | Odpověď tokenu  | Požadavek byl úspěšný.   |
 |  |  |  |
 
-*TokenResponse*
+*Odpověď tokenu*
 
-Vzorový token odpovědi:
+Ukázkový token odpovědi:
 
 ``` json
   {
@@ -128,4 +127,4 @@ Vzorový token odpovědi:
 
 ## <a name="next-steps"></a>Další kroky
 
-Vaše aplikace zabezpečená pro Azure AD teď může používat [rozhraní API pro plnění SaaS verze 2](./pc-saas-fulfillment-api-v2.md).
+Vaše aplikace zabezpečená službou Azure AD teď může používat [rozhraní API plnění SaaS verze 2](./pc-saas-fulfillment-api-v2.md).

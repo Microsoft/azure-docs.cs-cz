@@ -1,6 +1,6 @@
 ---
-title: Přehled komunity Azure Media Services | Microsoft Docs
-description: 'Tato Azure Media Servicesová stránka komunity (AMS) popisuje různé způsoby, jak získat aktualizace AMS, najdete v článku nová videa a podcasty, položte otázky a sdělte nám svůj názor. '
+title: Přehled komunity mediálních služeb Azure | Dokumenty společnosti Microsoft
+description: 'Tato komunitní stránka Azure Media Services (AMS) popisuje různé způsoby, jak můžete získat aktualizace o AMS, zobrazit nová videa a podcasty, klást otázky a poskytovat zpětnou vazbu. '
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,48 +15,48 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72598326"
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services  
 
-Tato Azure Media Servicesová stránka komunity (AMS) popisuje různé způsoby, jak můžete získat aktualizace AMS. Můžete si také zobrazit nová videa a podcasty, klást otázky a poskytovat zpětnou vazbu.   
+Tato komunitní stránka Azure Media Services (AMS) popisuje různé způsoby, jak můžete získat aktualizace o AMS. Můžete také zobrazit nová videa a podcasty, klást otázky a poskytovat zpětnou vazbu.   
 
 ## <a name="videos-and-podcasts"></a>Videa a podcasty
 
-- [Ochrana mediálního obsahu pomocí DRM](https://azure.microsoft.com/documentation/videos/azurefridayprotectingyourmediacontentdrm/) 
+- [Ochrana mediálního obsahu pomocí driod](https://azure.microsoft.com/documentation/videos/azurefridayprotectingyourmediacontentdrm/) 
 - [Ochrana mediálního obsahu pomocí šifrování AES](https://azure.microsoft.com/documentation/videos/azure-media-services-protecting-your-media-content-with-aes-encryption/) 
-- [Azure Media Services podrobně pro vývojáře](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/) 
-- [Azure Media Indexer automaticky vytvoří přepisy pro vaše médium.](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/)  
+- [Podrobný průzkum pro vývojáře mediálních služeb Azure](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/) 
+- [Azure Media Indexer automaticky vytváří přepisy pro vaše média](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/)  
 
 
-## <a name="provide-feedback-and-make-suggestions"></a>Poskytněte zpětnou vazbu a udělejte návrhy.
+## <a name="provide-feedback-and-make-suggestions"></a>Poskytněte zpětnou vazbu a předvezte návrhy
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Účely
+## <a name="discussion"></a>Diskuse
 
 ### <a name="twitter"></a>Twitter
 
-Pomocí [@MSFTAzureMediaového](https://twitter.com/MSFTAzureMedia) popisovače Twitter kontaktujte nás nebo sledujte aktualizace na Twitteru. Pomocí [@AzureSupportového](https://twitter.com/azuresupport) popisovače Twitteru můžete požádat o podporu na Twitteru.  
+Použijte [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter rukojeť nás kontaktovat nebo sledovat aktualizace na Twitteru. Můžete použít [@AzureSupport](https://twitter.com/azuresupport) twitter rukojeť požádat o podporu na Twitteru.  
 
 ### <a name="online-forums"></a>Online fóra
 
-Následující fóra se dají použít k dotazování otázek týkajících se aktuálních produktů a funkcí.
+Následující fóra lze použít k kladení otázek týkajících se aktuálních produktů a funkcí.
 
-V současné době je MSDN Media Servicesm hlavním komunitním fóru týmu.
+V současné době je MSDN primárním komunitním fórem týmu Media Services.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![Msdn](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-Tým také sleduje otázky označené Stack Overflow pomocí Azure-Media-Services.
+Tým také monitoruje otázky označené na přetečení zásobníku s 'azure-media-services'.
 
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[![Stackoverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="need-help"></a>Potřebujete pomoct?
+## <a name="need-help"></a>Potřebujete pomoc?
 
-Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
+Lístek podpory můžete otevřít tak, že přejdete na [Novou žádost o podporu.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Další kroky
 

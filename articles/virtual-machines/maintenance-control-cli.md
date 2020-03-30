@@ -1,6 +1,6 @@
 ---
 title: Řízení údržby
-description: Naučte se řídit, kdy se na virtuální počítače Azure používá údržba pomocí řízení údržby.
+description: Zjistěte, jak řídit, kdy se údržba použije na vaše virtuální počítače Azure pomocí řízení údržby.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
@@ -8,23 +8,23 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250176"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Verze Preview: řízení aktualizací pomocí řízení údržby a Azure CLI
+# <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Náhled: Řízení aktualizací pomocí řízení údržby a azure cli
 
-Spravujte aktualizace platforem, které nevyžadují restart, pomocí řízení údržby. Azure často aktualizuje svoji infrastrukturu, aby vylepšila spolehlivost, výkon, zabezpečení a spouštěla nové funkce. Většina aktualizací je pro uživatele transparentní. Některé citlivé úlohy, jako jsou hraní her, streamování médií a finanční transakce, neumožňují tolerovat zamrznutí nebo odpojení virtuálních počítačů za účelem údržby ani pár sekund. Řízení údržby vám dává možnost počkat na aktualizace platformy a použít ji v průběhu 35ého okna. 
+Spravujte aktualizace platformy, které nevyžadují restartování pomocí řízení údržby. Azure často aktualizuje svou infrastrukturu, aby zlepšil spolehlivost, výkon, zabezpečení nebo spustil nové funkce. Většina aktualizací je pro uživatele transparentní. Některé citlivé úlohy, jako je hraní her, streamování médií a finanční transakce, nemohou tolerovat ani několik sekund zamrznutí nebo odpojení virtuálního počítače z důvodu údržby. Řízení údržby vám dává možnost čekat na aktualizace platformy a aplikovat je v rámci 35denního rolovacího okna. 
 
-Řízení údržby vám umožní určit, kdy se mají aktualizace použít pro izolované virtuální počítače a vyhrazené hostitele Azure.
+Řízení údržby umožňuje rozhodnout, kdy použít aktualizace pro izolované virtuální počítače a azure dedicated hosts.
 
-Pomocí řízení údržby můžete:
-- Dávka se aktualizuje do jednoho balíčku aktualizace.
-- Počkejte až 35 dní, než se aktualizace použijí. 
-- Automatizujte aktualizace platforem pro okno údržby pomocí Azure Functions.
-- Konfigurace údržby pracují v rámci předplatných a skupin prostředků. 
+S kontrolou údržby můžete:
+- Dávkové aktualizace do jednoho balíčku aktualizace.
+- Vyčkejte až 35 dní, než chcete nainstalovat aktualizace. 
+- Automatizujte aktualizace platformy pro okno údržby pomocí Funkce Azure.
+- Konfigurace údržby fungují napříč předplatnými a skupinami prostředků. 
 
 > [!IMPORTANT]
 > Řízení údržby je aktuálně ve verzi Public Preview.
@@ -33,25 +33,25 @@ Pomocí řízení údržby můžete:
 
 ## <a name="limitations"></a>Omezení
 
-- Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
-- Po 35 dnech se automaticky použije aktualizace.
-- Uživatel musí mít přístup k **přispěvateli prostředků** .
+- Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořeny pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
+- Po 35 dnech bude automaticky použita aktualizace.
+- Uživatel musí mít přístup **přispěvatele prostředků.**
 
 
 ## <a name="install-the-maintenance-extension"></a>Instalace rozšíření údržby
 
-Pokud se rozhodnete nainstalovat rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) místně, budete potřebovat verzi 2.0.76 nebo novější.
+Pokud se rozhodnete nainstalovat [azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) místně, budete potřebovat verzi 2.0.76 nebo novější.
 
-Nainstalujte rozhraní příkazového řádku Preview `maintenance` ve verzi Preview místně nebo v Cloud Shell. 
+Nainstalujte `maintenance` rozšíření preview CLI místně nebo v cloudovém prostředí. 
 
 ```azurecli-interactive
 az extension add -n maintenance
 ```
 
 
-## <a name="create-a-maintenance-configuration"></a>Vytvořit konfiguraci údržby
+## <a name="create-a-maintenance-configuration"></a>Vytvoření konfigurace údržby
 
-K vytvoření konfigurace údržby použijte `az maintenance configuration create`. Tento příklad vytvoří konfiguraci údržby s názvem *myConfig* s oborem názvů hostitele. 
+Slouží `az maintenance configuration create` k vytvoření konfigurace údržby. Tento příklad vytvoří konfiguraci údržby s názvem *myConfig* s rozsahem hostitele. 
 
 ```azurecli-interactive
 az group create \
@@ -64,13 +64,13 @@ az maintenance configuration create \
    --location  eastus
 ```
 
-Zkopírujte ID konfigurace z výstupu pro pozdější použití.
+Zkopírujte ID konfigurace z výstupu, který chcete použít později.
 
-Pomocí `--maintenanceScope host` zajistíte, aby se konfigurace údržby používala k řízení aktualizací hostitele.
+Použití `--maintenanceScope host` zajišťuje, že konfigurace údržby se používá pro řízení aktualizací hostitele.
 
-Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurace musí být pro vaše předplatné jedinečné.
+Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurací musí být jedinečné pro vaše předplatné.
 
-K dostupným konfiguracím údržby se můžete dotázat pomocí `az maintenance configuration list`.
+Můžete dotaz na dostupné konfigurace `az maintenance configuration list`údržby pomocí .
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
@@ -78,11 +78,11 @@ az maintenance configuration list --query "[].{Name:name, ID:id}" -o table
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace
 
-Pomocí `az maintenance assignment create` přiřaďte konfiguraci k vašemu izolovanému VIRTUÁLNÍmu počítači nebo vyhrazenému hostiteli Azure.
+Slouží `az maintenance assignment create` k přiřazení konfigurace k izolovanému virtuálnímu počítači nebo vyhrazenému hostiteli Azure.
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
-Použijte konfiguraci na virtuální počítač s použitím ID konfigurace. Zadejte `--resource-type virtualMachines` a zadejte název virtuálního počítače pro `--resource-name`a skupinu prostředků pro virtuální počítač do `--resource-group`a umístění virtuálního počítače pro `--location`. 
+Použijte konfiguraci na virtuální ms pomocí ID konfigurace. Zadejte `--resource-type virtualMachines` a zadejte název `--resource-name`virtuálního_ virtuálního_ a. `--resource-group`skupiny prostředků pro virtuální `--location`ho d. a umístění virtuálního_ 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -97,9 +97,9 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Chcete-li použít konfiguraci pro vyhrazeného hostitele, je třeba zahrnout `--resource-type hosts``--resource-parent-name` s názvem skupiny hostitelů a `--resource-parent-type hostGroups`. 
+Chcete-li použít konfiguraci vyhrazeného hostitele, je třeba zahrnout `--resource-type hosts`, `--resource-parent-name` `--resource-parent-type hostGroups`s názvem skupiny hostitelů a . 
 
-Parametr `--resource-id` je ID hostitele. K získání ID vyhrazeného hostitele můžete použít [příkaz AZ VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) .
+Parametr `--resource-id` je ID hostitele. Můžete použít [az vm hostitele get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) získat ID vašeho vyhrazeného hostitele.
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -114,11 +114,11 @@ az maintenance assignment create \
    --resource-parent-type hostGroups 
 ```
 
-## <a name="check-configuration"></a>Ověřit konfiguraci
+## <a name="check-configuration"></a>Zkontrolovat konfiguraci
 
-Můžete ověřit, jestli se konfigurace použila správně, nebo zjistit, jaká konfigurace se aktuálně používá pomocí `az maintenance assignment list`.
+Můžete ověřit, zda byla konfigurace použita správně, nebo zkontrolovat, `az maintenance assignment list`jaká konfigurace je aktuálně použita pomocí aplikace .
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
 ```azurecli-interactive
 az maintenance assignment list \
@@ -145,13 +145,13 @@ az maintenance assignment list \
 ```
 
 
-## <a name="check-for-pending-updates"></a>Vyhledat nedokončené aktualizace
+## <a name="check-for-pending-updates"></a>Vyhledat čekající aktualizace
 
-Pokud chcete zjistit, jestli čekají na aktualizace, použijte `az maintenance update list`. Aktualizace--předplatné jako ID pro předplatné, které obsahuje virtuální počítač.
+Slouží `az maintenance update list` k zobrazení, zda existují čekající aktualizace. Update --subscription to be the ID for the subscription that contains the VM.
 
-Pokud nejsou k dispozici žádné aktualizace, příkaz vrátí chybovou zprávu, která bude obsahovat text: `Resource not found...StatusCode: 404`.
+Pokud nejsou k dispozici žádné aktualizace, příkaz vrátí chybovou `Resource not found...StatusCode: 404`zprávu, která bude obsahovat text: .
 
-Pokud jsou k dispozici aktualizace, bude vrácena pouze jedna, i když je dokončeno více aktualizací. Data pro tuto aktualizaci budou vrácena v objektu:
+Pokud existují aktualizace, bude vrácena pouze jedna, i když existuje více čekajících aktualizací. Data pro tuto aktualizaci budou vrácena v objektu:
 
 ```text
 [
@@ -166,9 +166,9 @@ Pokud jsou k dispozici aktualizace, bude vrácena pouze jedna, i když je dokon�
 ]
   ```
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
-Vyhledejte nedokončené aktualizace pro izolovaný virtuální počítač. V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost.
+Zkontrolujte čekající aktualizace pro izolovaný virtuální ms. V tomto příkladu je výstup formátován jako tabulka pro čitelnost.
 
 ```azurecli-interactive
 az maintenance update list \
@@ -181,7 +181,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Pro kontrolu nedokončených aktualizací pro vyhrazeného hostitele. V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost. Nahraďte hodnoty pro prostředky vlastními.
+Chcete-li vyhledat čekající aktualizace pro vyhrazeného hostitele. V tomto příkladu je výstup formátován jako tabulka pro čitelnost. Nahraďte hodnoty prostředků vlastními.
 
 ```azurecli-interactive
 az maintenance update list \
@@ -197,11 +197,11 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Instalace aktualizací
 
-Použijte `az maintenance apply update` k instalaci nedokončených aktualizací. Po úspěšném provedení tohoto příkazu vrátí JSON obsahující podrobnosti o aktualizaci.
+Slouží `az maintenance apply update` k použití čekajících aktualizací. Při úspěchu tento příkaz vrátí JSON obsahující podrobnosti o aktualizaci.
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
-Vytvořte žádost o použití aktualizací pro izolovaný virtuální počítač.
+Vytvořte požadavek na použití aktualizací na izolovaný virtuální ms.
 
 ```azurecli-interactive
 az maintenance applyupdate create \
@@ -215,7 +215,7 @@ az maintenance applyupdate create \
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Použijte aktualizace na vyhrazeného hostitele.
+Použijte aktualizace vyhrazeného hostitele.
 
 ```azurecli-interactive
 az maintenance applyupdate create \
@@ -228,11 +228,11 @@ az maintenance applyupdate create \
    --resource-parent-type hostGroups
 ```
 
-## <a name="check-the-status-of-applying-updates"></a>Ověřte stav použití aktualizací. 
+## <a name="check-the-status-of-applying-updates"></a>Kontrola stavu použití aktualizací 
 
-Průběh aktualizací můžete zjistit pomocí `az maintenance applyupdate get`. 
+Průběh aktualizací můžete zkontrolovat pomocí `az maintenance applyupdate get`programu . 
 
-Jako název aktualizace můžete použít `default` k zobrazení výsledků Poslední aktualizace nebo nahrazení `myUpdateName` názvem aktualizace, která byla vrácena při spuštění `az maintenance applyupdate create`.
+Jako název `default` aktualizace můžete zobrazit výsledky poslední aktualizace nebo `myUpdateName` nahradit názvem aktualizace, která byla `az maintenance applyupdate create`vrácena při spuštění .
 
 ```text
 Status         : Completed
@@ -244,9 +244,9 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-LastUpdateTime bude čas, kdy se aktualizace dokončila, ať už iniciovaná vámi, nebo platformou v případě, že se okno samoobslužné údržby nepoužilo. Pokud se v rámci řízení údržby nikdy nepoužila aktualizace, zobrazí se výchozí hodnota.
+LastUpdateTime bude čas, kdy aktualizace byla dokončena, buď iniciované vámi, nebo platformou v případě, že okno samoúdržby nebylo použito. Pokud nikdy nebyla provedena aktualizace prostřednictvím řízení údržby, zobrazí se výchozí hodnota.
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -274,9 +274,9 @@ az maintenance applyupdate get \
 ```
 
 
-## <a name="delete-a-maintenance-configuration"></a>Odstraní konfiguraci údržby.
+## <a name="delete-a-maintenance-configuration"></a>Odstranění konfigurace údržby
 
-K odstranění konfigurace údržby použijte `az maintenance configuration delete`. Odstranění konfigurace odebere z přidružených prostředků řízení údržby.
+Slouží `az maintenance configuration delete` k odstranění konfigurace údržby. Odstraněníkonfigurace odebere ovládací prvek údržby z přidružených prostředků.
 
 ```azurecli-interactive
 az maintenance configuration delete \
@@ -286,4 +286,4 @@ az maintenance configuration delete \
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v tématu [Údržba a aktualizace](maintenance-and-updates.md).
+Další informace najdete v [tématu Údržba a aktualizace](maintenance-and-updates.md).

@@ -1,6 +1,6 @@
 ---
-title: Nasazení řešení vzdáleného monitorování pomocí CLI – Azure | Microsoft Docs
-description: V této příručce se dozvíte, jak zřídit akcelerátor řešení vzdáleného monitorování pomocí rozhraní příkazového řádku.
+title: Nasazení řešení vzdáleného monitorování pomocí příkazového příkazového příkazu – Azure | Dokumenty společnosti Microsoft
+description: Tento návod ukazuje, jak zřídit akcelerátor řešení vzdáleného monitorování pomocí zaokreslovacího modulu.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,110 +8,110 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271652"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258290"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování pomocí rozhraní příkazového řádku
+# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování pomocí funkce vuživatelskémi mise
 
-V této příručce se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování. Řešení nasadíte pomocí rozhraní příkazového řádku. Řešení můžete nasadit také pomocí webového uživatelského rozhraní na adrese azureiotsolutions.com. Další informace o této možnosti najdete v tématu [nasazení akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md) .
+Tento návod ukazuje, jak nasadit akcelerátor řešení vzdáleného monitorování. Nasadit řešení pomocí cli. Můžete také nasadit řešení pomocí webového uživatelského uživatelského nastavení na azureiotsolutions.com, abyste se dozvěděli o této možnosti, podívejte se na rychlý start [nasadit akcelerátor řešení vzdáleného monitorování.](quickstart-remote-monitoring-deploy.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
 K nasazení akcelerátoru řešení vzdáleného monitorování potřebujete aktivní předplatné Azure.
 
-Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-Chcete-li spustit rozhraní příkazového řádku, musíte mít v místním počítači nainstalovaný [Node. js](https://nodejs.org/) .
+Chcete-li spustit nařízení o nastavení chování uživatele, potřebujete soubor [Node.js](https://nodejs.org/) nainstalovaný v místním počítači.
 
 ## <a name="install-the-cli"></a>Instalace rozhraní příkazového řádku
 
-Rozhraní CLI nainstalujete spuštěním následujícího příkazu v prostředí příkazového řádku:
+Chcete-li nainstalovat příkaz příkaz příkazového řádku, spusťte v prostředí příkazového řádku následující příkaz:
 
 ```cmd/sh
 npm install iot-solutions -g
 ```
 
-## <a name="sign-in-to-the-cli"></a>Přihlášení k rozhraní příkazového řádku
+## <a name="sign-in-to-the-cli"></a>Přihlášení k zaepisování
 
-Než budete moct nasadit akcelerátor řešení, musíte se přihlásit ke svému předplatnému Azure pomocí rozhraní příkazového řádku:
+Než budete moci nasadit akcelerátor řešení, musíte se přihlásit k předplatnému Azure pomocí příkazového příkazového příkazu:
 
 ```cmd/sh
 pcs login
 ```
 
-Dokončete proces přihlašování podle pokynů na obrazovce.
+Dokončete proces přihlášení podle pokynů na obrazovce.
 
 ## <a name="deployment-options"></a>Možnosti nasazení
 
-Při nasazení akcelerátoru řešení je k dispozici několik možností konfigurace procesu nasazení:
+Při nasazení akcelerátoru řešení existuje několik možností, které konfigurují proces nasazení:
 
 | Možnost | Hodnoty | Popis |
 | ------ | ------ | ----------- |
-| Skladová položka    | `basic`, `standard`, `local` | _Základní_ nasazení je určené pro testování a ukázky, nasadí všechny mikroslužby na jeden virtuální počítač. _Standardní_ nasazení je určené pro produkční prostředí, nasadí mikroslužby na několik virtuálních počítačů. _Místní_ nasazení nakonfiguruje kontejner Docker tak, aby spouštěl mikroslužby na místním počítači a používal Azure Cloud Services, jako je například storage a Cosmos DB. |
-| Runtime | `dotnet`, `java` | Vybere jazykovou implementaci mikroslužeb. |
+| Skladová jednotka (SKU)    | `basic`, `standard`, `local` | _Základní_ nasazení je určeno pro testování a ukázky, nasazuje všechny mikroslužby do jednoho virtuálního počítače. _Standardní_ nasazení je určeno pro produkční prostředí, nasazuje mikroslužby do několika virtuálních počítačů. _Místní_ nasazení konfiguruje kontejner Dockeru pro spuštění mikroslužeb v místním počítači a používá cloudové služby Azure, jako je úložiště a Cosmos DB. |
+| Modul runtime | `dotnet`, `java` | Vybere implementaci jazyka mikroslužeb. |
 
-Informace o tom, jak používat místní možnost nasazení, najdete v části [spuštění řešení vzdáleného monitorování místně](iot-accelerators-remote-monitoring-deploy-local.md).
+Informace o použití možnosti místního nasazení naleznete [v tématu Spuštění řešení vzdáleného monitorování místně](iot-accelerators-remote-monitoring-deploy-local.md).
 
 ## <a name="basic-and-standard-deployments"></a>Základní a standardní nasazení
 
-V této části najdete přehled klíčových rozdílů mezi základním a standardním nasazením.
+Tato část shrnuje klíčové rozdíly mezi základním a standardním nasazením.
 
 ### <a name="basic"></a>Basic
 
-Můžete provést základní nasazení z [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) nebo pomocí rozhraní příkazového řádku.
+Můžete provést základní nasazení z [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) nebo pomocí příkazového příkazu k příkazu.
 
-Nasazení Basic slouží k předvádění řešení. Za účelem snížení nákladů jsou všechny mikroslužby nasazeny na jednom virtuálním počítači. Toto nasazení nepoužívá architekturu připravenou pro produkční prostředí.
+Základní nasazení je zaměřeno na představení řešení. Chcete-li snížit náklady, všechny mikroslužby jsou nasazeny v jednom virtuálním počítači. Toto nasazení nepoužívá architekturu připravenou pro produkční prostředí.
 
-Základní nasazení ve vašem předplatném Azure vytvoří následující služby:
+Základní nasazení vytvoří následující služby ve vašem předplatném Azure:
 
 | Počet | Prostředek                       | Typ         | Používá se pro |
 |-------|--------------------------------|--------------|----------|
-| 1     | [Virtuální počítač se systémem Linux](https://azure.microsoft.com/services/virtual-machines/) | D1 v2 úrovně Standard  | Hostování mikroslužeb |
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – úroveň Standard | Správa zařízení a komunikace |
-| 1     | [Databáze Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/)              | Standardní        | Ukládání konfiguračních dat, pravidel, upozornění a dalších chladírenských úložišť |  
-| 1     | [Účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standardní        | Úložiště pro kontrolní body virtuálního počítače a streamování |
+| 1     | [Virtuální počítač s Linuxem](https://azure.microsoft.com/services/virtual-machines/) | Standardní D1 V2  | Hostování mikroslužeb |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – standardní úroveň | Správa zařízení a komunikace |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Ukládání konfiguračních dat, pravidel, výstrah a dalších chladírenských úložišť |  
+| 1     | [Účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Úložiště pro virtuální ho svícen a kontrolní body streamování |
 | 1     | [Webová aplikace](https://azure.microsoft.com/services/app-service/web/)        |                 | Hostování front-endové webové aplikace |
-| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit a zabezpečení uživatelů |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standardní                | Zobrazení umístění prostředků |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit uživatelů a zabezpečení |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Zobrazení umístění datových zdrojů |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 jednotky              | Povolení analýz v reálném čase |
-| 1     | [Služba Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Zřizování zařízení ve velkém měřítku |
-| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožnění hloubkové analýzy telemetrie podrobně |
+| 1     | [Služba zřizování zařízení Azure](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Zřizovací zařízení ve velkém měřítku |
+| 1     | [Přehledy Azure Time Series](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožňuje hloubkovou telemetricko analýzu |
 
-### <a name="standard"></a>Standardní
+### <a name="standard"></a>Standard
 
-Standardní nasazení můžete provést pouze pomocí rozhraní příkazového řádku.
+Standardní nasazení můžete provést pouze pomocí zaokreslovacího systému.
 
-Standardní nasazení je nasazení připravené pro produkční prostředí, které může vývojář přizpůsobit a zvětšit. Možnost standardního nasazení použijte, když jste připraveni přizpůsobit architekturu připravenou pro produkční prostředí vytvořenou pro škálování a rozšiřitelnost. Mikroslužby aplikací jsou sestavené jako kontejnery Docker a nasazeny pomocí služby Azure Kubernetes. Kubernetes Orchestrator nasazuje, škáluje a spravuje mikroslužby.
+Standardní nasazení je nasazení připravené k produkčnímu prostředí, které může vývojář přizpůsobit a rozšířit. Možnost standardního nasazení použijte, když jste připraveni přizpůsobit architekturu připravenou pro produkční prostředí, která je vytvořena pro škálování a rozšiřitelnost. Mikroslužby aplikací se nastavují jako kontejnery Dockeru a nasazují se pomocí služby Azure Kubernetes Service. Orchestrátor Kubernetes nasazuje, škáluje a spravuje mikroslužby.
 
-Standardní nasazení vytvoří v předplatném Azure následující služby:
+Standardní nasazení vytvoří ve vašem předplatném Azure následující služby:
 
-| Počet | Prostředek                                     | SKU/velikost      | Používá se pro |
+| Počet | Prostředek                                     | Skladová položka / velikost      | Používá se pro |
 |-------|----------------------------------------------|-----------------|----------|
-| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Použití plně spravované služby orchestrace kontejnerů Kubernetes, výchozí nastavení je 3 agenti|
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – úroveň Standard | Správa zařízení, příkaz a řízení |
-| 1     | [Databáze Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/)                 | Standardní        | Ukládání konfiguračních dat a telemetrie zařízení, jako jsou pravidla, výstrahy a zprávy |
-| 5     | [Účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standardní        | 4 pro úložiště virtuálních počítačů a 1 pro kontrolní body streamování |
-| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Application Gateway přes SSL |
-| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit a zabezpečení uživatelů |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standardní                | Zobrazení umístění prostředků |
+| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Použití plně spravované služby orchestrace kontejnerů Kubernetes, výchozí pro 3 agenty|
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – standardní úroveň | Správa, velení a řízení zařízení |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Ukládání konfiguračních dat a telemetrie zařízení, jako jsou pravidla, výstrahy a zprávy |
+| 5     | [Účty úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 pro úložiště virtuálních her a 1 pro body streamování |
+| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Aplikační brána přes TLS |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit uživatelů a zabezpečení |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Zobrazení umístění datových zdrojů |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 jednotky              | Povolení analýz v reálném čase |
-| 1     | [Služba Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Zřizování zařízení ve velkém měřítku |
-| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožnění hloubkové analýzy telemetrie podrobně |
+| 1     | [Služba zřizování zařízení Azure](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Zřizovací zařízení ve velkém měřítku |
+| 1     | [Přehledy Azure Time Series](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožňuje hloubkovou telemetricko analýzu |
 
 > [!NOTE]
-> Informace o cenách pro tyto služby najdete na [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing). Podrobnosti o využití a fakturaci pro vaše předplatné najdete na webu [Azure Portal](https://portal.azure.com/).
+> Informace o cenách těchto [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing)služeb naleznete na adrese . Podrobnosti o využití a fakturaci předplatného najdete na [webu Azure Portal](https://portal.azure.com/).
 
 ## <a name="deploy-the-solution-accelerator"></a>Nasazení akcelerátoru řešení
 
 Příklady nasazení:
 
-### <a name="example-deploy-net-version"></a>Příklad: nasazení verze .NET
+### <a name="example-deploy-net-version"></a>Příklad: nasazení verze rozhraní .NET
 
-Následující příklad ukazuje, jak nasadit základní verzi rozhraní .NET akcelerátoru řešení vzdáleného monitorování:
+Následující příklad ukazuje, jak nasadit základní verzi .NET akcelerátoru řešení vzdáleného monitorování:
 
 ```cmd/sh
 pcs -t remotemonitoring -s basic -r dotnet
@@ -119,40 +119,40 @@ pcs -t remotemonitoring -s basic -r dotnet
 
 ### <a name="example-deploy-java-version"></a>Příklad: nasazení verze Java
 
-Následující příklad ukazuje, jak nasadit standardní verzi Java akcelerátoru řešení vzdáleného monitorování:
+Následující příklad ukazuje, jak nasadit standardní java verzi akcelerátoru řešení vzdáleného monitorování:
 
 ```cmd/sh
 pcs -t remotemonitoring -s standard -r java
 ```
 
-### <a name="pcs-command-options"></a>možnosti příkazů pro počítače
+### <a name="pcs-command-options"></a>možnosti příkazů pcs
 
-Když spustíte příkaz `pcs` k nasazení řešení, budete požádáni o:
+Když spustíte `pcs` příkaz k nasazení řešení, budete požádáni o:
 
-- Název vašeho řešení. Tento název musí být jedinečný.
+- Název pro vaše řešení. Tento název musí být jedinečný.
 - Předplatné Azure, které se má použít.
-- Umístění.
-- Přihlašovací údaje pro virtuální počítače, které jsou hostiteli mikroslužeb. Tyto přihlašovací údaje můžete použít pro přístup k virtuálním počítačům pro řešení potíží.
+- Místo.
+- Pověření pro virtuální počítače, které hostují mikroslužeb. Tato pověření můžete použít pro přístup k virtuálním počítačům pro řešení potíží.
 
-Až se příkaz `pcs` dokončí, zobrazí se adresa URL nového akcelerátoru řešení. Příkaz `pcs` také vytvoří soubor `{deployment-name}-output.json` obsahující informace, jako je název IoT Hub, který byl vytvořen.
+Po `pcs` dokončení příkazu se zobrazí adresa URL nového akcelerátoru řešení. Příkaz `pcs` také vytvoří `{deployment-name}-output.json` soubor, který obsahuje informace, jako je například název centra IoT Hub, který vytvořil.
 
-Další informace o parametrech příkazového řádku získáte spuštěním příkazu:
+Další informace o parametrech příkazového řádku získáte spuštěním:
 
 ```cmd/sh
 pcs -h
 ```
 
-Další informace o rozhraní příkazového řádku najdete v tématu [Jak používat rozhraní](https://github.com/Azure/pcs-cli/blob/master/README.md)příkazového řádku.
+Další informace o zaokreslování, naleznete [v tématu Jak používat zapisování-konstituce](https://github.com/Azure/pcs-cli/blob/master/README.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce se naučíte:
+V tomto návodu jste se naučili:
 
 > [!div class="checklist"]
 > * Konfigurace akcelerátoru řešení
 > * Nasazení akcelerátoru řešení
-> * Přihlaste se k akcelerátoru řešení.
+> * Přihlášení k akcelerátoru řešení
 
-Teď, když jste nasadili řešení vzdáleného monitorování, je dalším krokem [prozkoumat možnosti řídicího panelu řešení](./quickstart-remote-monitoring-deploy.md).
+Teď, když jste nasadili řešení vzdáleného monitorování, je dalším krokem [prozkoumání možností řídicího panelu řešení](./quickstart-remote-monitoring-deploy.md).
 
 <!-- Next how-to guides in the sequence -->

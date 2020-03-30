@@ -1,6 +1,6 @@
 ---
-title: Nastavení Key Vault pro virtuální počítače s Windows v Azure Resource Manager
-description: Jak nastavit Key Vault pro použití s virtuálním počítačem s Azure Resource Manager
+title: Nastavení trezoru klíčů pro virtuální počítače s Windows ve Správci prostředků Azure
+description: Jak nastavit trezor klíčů pro použití s virtuálním počítačem Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,48 +15,48 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
 ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243143"
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Nastavení Key Vault pro virtuální počítače v Azure Resource Manager
+# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Nastavení trezoru klíčů pro virtuální počítače ve Správci prostředků Azure
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-V Azure Resource Managerovém zásobníku se tajné klíče a certifikáty modelují jako prostředky poskytované poskytovatelem prostředků Key Vault. Další informace o Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-overview.md)
+V zásobníku Azure Resource Manager jsou tajné klíče nebo certifikáty modelovány jako prostředky, které poskytuje poskytovatel prostředků trezoru klíčů. Další informace o trezoru klíčů najdete v tématu [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md)
 
 > [!NOTE]
-> 1. Aby bylo možné Key Vault použít s Azure Resource Manager virtuálními počítači, musí být vlastnost **EnabledForDeployment** v Key Vault nastavena na hodnotu true. To můžete provést v různých klientech.
-> 2. Key Vault se musí vytvořit ve stejném předplatném a umístění jako virtuální počítač.
+> 1. Aby se trezor klíčů používal s virtuálními počítači Azure Resource Manager, musí být vlastnost **EnabledForDeployment** v trezoru klíčů nastavena na hodnotu true. Můžete to udělat v různých klientech.
+> 2. Trezor klíčů je třeba vytvořit ve stejném předplatném a umístění jako virtuální počítač.
 >
 >
 
-## <a name="use-powershell-to-set-up-key-vault"></a>Použití PowerShellu k nastavení Key Vault
-Pokud chcete vytvořit Trezor klíčů pomocí PowerShellu, přečtěte si téma [nastavení a načtení tajného klíče z Azure Key Vault pomocí PowerShellu](../../key-vault/quick-create-powershell.md).
+## <a name="use-powershell-to-set-up-key-vault"></a>Nastavení trezoru klíčů pomocí PowerShellu
+Pokud chcete vytvořit trezor klíčů pomocí PowerShellu, přečtěte si, že [najdete informace o nastavení a načtení tajného klíče z Azure Key Vault pomocí PowerShellu](../../key-vault/quick-create-powershell.md).
 
-Pro nové trezory klíčů můžete použít tuto rutinu PowerShellu:
+Pro nové trezory klíčů můžete použít tuto rutinu prostředí PowerShell:
 
     New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
-Pro existující trezory klíčů můžete použít tuto rutinu PowerShellu:
+Pro existující trezory klíčů můžete použít tuto rutinu prostředí PowerShell:
 
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
-## <a name="use-cli-to-set-up-key-vault"></a>K nastavení Key Vault použijte CLI.
-Informace o vytvoření trezoru klíčů pomocí rozhraní příkazového řádku (CLI) najdete v tématu [správa Key Vault pomocí](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)rozhraní příkazového řádku (CLI).
+## <a name="use-cli-to-set-up-key-vault"></a>Nastavení trezoru klíčů pomocí zapisování zapisování pomocí zapisování zapisování
+Chcete-li vytvořit trezor klíčů pomocí rozhraní příkazového řádku (CLI), přečtěte si informace [o správě trezoru klíčů pomocí rozhraní příkazového řádku](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
 
-Pro rozhraní příkazového řádku je nutné před přiřazením zásad nasazení vytvořit Trezor klíčů. Můžete to provést pomocí následujícího příkazu:
+Pro příkazové příkazové příkazové příkazy je třeba vytvořit trezor klíčů před přiřazením zásad nasazení. Můžete to provést pomocí následujícího příkazu:
 
     az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
     
-Pak pokud chcete povolit Key Vault pro použití s nasazením šablony, spusťte následující příkaz:
+Chcete-li povolit trezor klíčů pro použití s nasazením šablony, spusťte následující příkaz:
 
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
-## <a name="use-templates-to-set-up-key-vault"></a>Použití šablon k nastavení Key Vault
-Když použijete šablonu, musíte nastavit vlastnost `enabledForDeployment` na `true` pro prostředek Key Vault.
+## <a name="use-templates-to-set-up-key-vault"></a>Nastavení trezoru klíčů pomocí šablon
+Při použití šablony je třeba nastavit `enabledForDeployment` vlastnost `true` pro prostředek trezoru klíčů.
 
     {
       "type": "Microsoft.KeyVault/vaults",
@@ -70,4 +70,4 @@ Když použijete šablonu, musíte nastavit vlastnost `enabledForDeployment` na 
       }
     }
 
-Další možnosti, které můžete nakonfigurovat při vytváření trezoru klíčů pomocí šablon, najdete v tématu [Vytvoření trezoru klíčů](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).
+Další možnosti, které můžete nakonfigurovat při vytváření trezoru klíčů pomocí šablon, naleznete [v tématu Vytvoření trezoru klíčů](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

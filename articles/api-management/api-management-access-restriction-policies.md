@@ -1,6 +1,6 @@
 ---
-title: Zásady omezení přístupu k Azure API Management | Microsoft Docs
-description: Přečtěte si o zásadách omezení přístupu dostupných pro použití v Azure API Management.
+title: Zásady omezení přístupu pro správu rozhraní Azure API | Dokumenty společnosti Microsoft
+description: Přečtěte si o zásadách omezení přístupu, které jsou k dispozici pro použití ve správě rozhraní Azure API.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,32 +14,32 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 3ba620d66b84e6724751b2024059e8ecd66888cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266114"
 ---
-# <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu API Management
+# <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu ke službě API Management
 
-V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+Toto téma obsahuje odkaz na následující zásady správy rozhraní API. Informace o přidávání a konfiguraci zásad naleznete [v tématu Zásady ve správě rozhraní API](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-## <a name="AccessRestrictionPolicies"></a>Zásady omezení přístupu
+## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>Zásady omezení přístupu
 
--   [Zkontroluje HLAVIČKU http](api-management-access-restriction-policies.md#CheckHTTPHeader) – vynutila existenci nebo hodnotu hlavičky HTTP.
--   [Omezení četnosti volání podle předplatného](api-management-access-restriction-policies.md#LimitCallRate) – zabrání špičkám využití rozhraní API omezením četnosti volání na základě jednotlivých předplatných.
--   [Omezení četnosti volání podle klíče](#LimitCallRateByKey) – zabrání špičkám využití rozhraní API omezením četnosti volání, a to za klíčovým základem.
--   Omezení počtu IP adres volajících – filtry (povolující a [zakazují](api-management-access-restriction-policies.md#RestrictCallerIPs) ) volání z konkrétních IP adres nebo rozsahů adres.
--   [Nastavení kvóty využití podle předplatného](api-management-access-restriction-policies.md#SetUsageQuota) – umožňuje vynutilit obnovitelné nebo maximální objem volání nebo kvótu šířky pásma, a to na základě jednotlivých předplatných.
--   [Nastavení kvóty využití podle klíče](#SetUsageQuotaByKey) – umožňuje vynutilit obnovitelné nebo maximální objem volání nebo kvótu šířky pásma, a to na základě jednotlivých klíčů.
--   Ověří, zda existence [tokenu JWT](api-management-access-restriction-policies.md#ValidateJWT) vynutila platnost a zda byla extrahována z buď zadaného záhlaví protokolu HTTP, nebo zadaného parametru dotazu.
+-   [Kontrola hlavičky HTTP](api-management-access-restriction-policies.md#CheckHTTPHeader) – vynucuje existenci nebo hodnotu hlavičky HTTP.
+-   [Omezit rychlost volání podle předplatného](api-management-access-restriction-policies.md#LimitCallRate) – zabrání špičkám využití rozhraní API omezením rychlosti volání na základě předplatného.
+-   [Omezit rychlost volání podle klíče](#LimitCallRateByKey) – zabrání špičkám využití rozhraní API omezením rychlosti volání na základě klíče.
+-   [Omezit ip adresy volajícího](api-management-access-restriction-policies.md#RestrictCallerIPs) – filtry (povolí/odepře) volání z konkrétních IP adres a/nebo rozsahů adres.
+-   [Nastavení kvóty využití podle předplatného](api-management-access-restriction-policies.md#SetUsageQuota) – umožňuje vynutit obnovitelný nebo dlouhodobý objem volání nebo kvótu šířky pásma na základě předplatného.
+-   [Nastavení kvóty využití podle klíče](#SetUsageQuotaByKey) – umožňuje vynutit obnovitelný nebo dlouhodobý objem volání nebo kvótu šířky pásma na základě klíče.
+-   [Ověřit JWT](api-management-access-restriction-policies.md#ValidateJWT) - Vynucuje existenci a platnost JWT extrahované z zadané hlavičky HTTP nebo zadaný parametr dotazu.
 
 > [!TIP]
-> Zásady omezení přístupu můžete použít v různých oborech pro různé účely. Můžete například zabezpečit celé rozhraní API pomocí ověřování AAD, a to tak, že použijete zásady `validate-jwt` na úrovni rozhraní API, nebo ho můžete použít na úrovni operace rozhraní API a použít `claims` k podrobnějšímu řízení.
+> Zásady omezení přístupu můžete použít v různých oborech pro různé účely. Můžete například zabezpečit celé rozhraní API pomocí ověřování `validate-jwt` AAD použitím zásad na úrovni rozhraní API `claims` nebo ji můžete použít na úrovni operace rozhraní API a použít pro podrobnější řízení.
 
-## <a name="CheckHTTPHeader"></a>Kontrolovat hlavičku HTTP
+## <a name="check-http-header"></a><a name="CheckHTTPHeader"></a>Kontrola hlavičky PROTOKOLU HTTP
 
-Pomocí zásad `check-header` vyjistěte, aby požadavek měl určenou hlavičku HTTP. Volitelně můžete kontrolovat, zda má hlavička určitou hodnotu, nebo kontrolovat Rozsah povolených hodnot. Pokud se ověření nepovede, zásada ukončí zpracování žádosti a vrátí stavový kód HTTP a chybovou zprávu určenou zásadou.
+Pomocí `check-header` zásady vynuťte, že požadavek má zadanou hlavičku HTTP. Volitelně můžete zkontrolovat, zda má záhlaví určitou hodnotu, nebo zkontrolovat rozsah povolených hodnot. Pokud kontrola selže, zásada ukončí zpracování požadavků a vrátí stavový kód HTTP a chybovou zprávu určenou zásadou.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -60,39 +60,39 @@ Pomocí zásad `check-header` vyjistěte, aby požadavek měl určenou hlavičku
 
 ### <a name="elements"></a>Elementy
 
-| Název         | Popis                                                                                                                                   | Požadováno |
+| Name (Název)         | Popis                                                                                                                                   | Požaduje se |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| check-Header | Kořenový element.                                                                                                                                 | Ano      |
-| value        | Povolená hodnota hlavičky protokolu HTTP. Je-li zadána více elementů hodnot, je tato kontrolu považována za úspěšnou, pokud je jedna z hodnot shodná. | Ne       |
+| kontrolní hlavička | Kořenový prvek.                                                                                                                                 | Ano      |
+| value        | Povolená hodnota hlavičky HTTP. Pokud je zadáno více prvků hodnoty, kontrola je považována za úspěšnou, pokud se některá z hodnot shoduje. | Ne       |
 
 ### <a name="attributes"></a>Atributy
 
-| Název                       | Popis                                                                                                                                                            | Požadováno | Výchozí |
+| Name (Název)                       | Popis                                                                                                                                                            | Požaduje se | Výchozí |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| failed-check-error-message | Chybová zpráva, která se má vrátit v těle odpovědi HTTP, pokud hlavička neexistuje nebo má neplatnou hodnotu. Tato zpráva musí mít správně uvozené speciální znaky. | Ano      | NEUŽÍVÁ SE.     |
-| failed-check-httpcode      | Stavový kód HTTP, který se má vrátit, pokud hlavička neexistuje nebo má neplatnou hodnotu.                                                                                        | Ano      | NEUŽÍVÁ SE.     |
-| záhlaví – název                | Název hlavičky HTTP, která se má ověřit                                                                                                                                  | Ano      | NEUŽÍVÁ SE.     |
-| ignorovat – případ                | Lze nastavit na hodnotu true nebo false. Pokud je hodnota nastavená na true Case, ignoruje se při porovnání hodnoty hlavičky se sadou přijatelných hodnot.                                    | Ano      | NEUŽÍVÁ SE.     |
+| zpráva o chybě se nezdařilo | Pokud záhlaví neexistuje nebo má neplatnou hodnotu, vrátí se v textu odpovědi HTTP chybová zpráva. Tato zpráva musí mít všechny speciální znaky správně uvozeny. | Ano      | Není dostupné.     |
+| kód http-failed-check-httpcode      | Stavový kód HTTP, který chcete vrátit, pokud záhlaví neexistuje nebo má neplatnou hodnotu.                                                                                        | Ano      | Není dostupné.     |
+| název záhlaví                | Název hlavičky HTTP ke kontrole.                                                                                                                                  | Ano      | Není dostupné.     |
+| ignorovat-case                | Může být nastavena na True nebo False. Pokud je nastavena na True case je ignorována při porovnání hodnoty záhlaví proti sadě přijatelných hodnot.                                    | Ano      | Není dostupné.     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tuto zásadu lze použít v následujících [částech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zásad a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Oddíly zásad:** příchozí, odchozí
 
--   **Obory zásad:** všechny rozsahy
+-   **Obory zásad:** všechny obory
 
-## <a name="LimitCallRate"></a>Omezení četnosti volání podle předplatného
+## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a>Omezit sazbu volání podle předplatného
 
-Zásady `rate-limit` zabrání špičkám využití rozhraní API na základě předplatného, a to omezením rychlosti volání na zadaný počet za zadané časové období. Když se spustí tato zásada, volající obdrží stavový kód odpovědi `429 Too Many Requests`.
+Zásady `rate-limit` zabraňuje špičky využití rozhraní API na základě předplatného omezením rychlost volání na zadané číslo za zadané časové období. Při spuštění této zásady volající `429 Too Many Requests` obdrží kód stavu odpovědi.
 
 > [!IMPORTANT]
-> Tato zásada se dá pro dokument zásad použít jenom jednou.
+> Tuto zásadu lze použít pouze jednou pro dokument zásady.
 >
 > [Výrazy zásad](api-management-policy-expressions.md) nelze použít v žádném z atributů zásad pro tuto zásadu.
 
 > [!CAUTION]
-> Vzhledem k distribuované povaze architektury omezování není omezení rychlosti nikdy zcela přesné. Rozdíl mezi nakonfigurovaným a skutečným počtem povolených požadavků se liší v závislosti na objemu a míře požadavků, latenci back-endu a dalších faktorech.
+> Vzhledem k distribuované povaze škrcení architektury omezení omezení rychlosti není nikdy zcela přesné. Rozdíl mezi nakonfigurovaným a reálným počtem povolených požadavků se liší v závislosti na objemu požadavku a rychlosti, latenci back-endu a dalších faktorech.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -120,39 +120,39 @@ Zásady `rate-limit` zabrání špičkám využití rozhraní API na základě p
 
 ### <a name="elements"></a>Elementy
 
-| Název       | Popis                                                                                                                                                                                                                                                                                              | Požadováno |
+| Name (Název)       | Popis                                                                                                                                                                                                                                                                                              | Požaduje se |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| frekvence – omezení | Kořenový element.                                                                                                                                                                                                                                                                                            | Ano      |
-| api        | Přidejte jeden nebo více těchto prvků k omezení četnosti volání rozhraní API v rámci produktu. Omezení rychlosti volání rozhraní API a produktů se aplikují nezávisle. Na rozhraní API se dá odkazovat buď pomocí `name`, nebo `id`. Pokud jsou zadány oba atributy, `id` budou použity a `name` budou ignorovány.                    | Ne       |
-| operation  | Přidejte jeden nebo více těchto prvků k omezení četnosti volání operací v rámci rozhraní API. Omezení frekvence volání produktů, rozhraní API a operací se aplikují nezávisle. Na operaci lze odkazovat pomocí `name` nebo `id`. Pokud jsou zadány oba atributy, `id` budou použity a `name` budou ignorovány. | Ne       |
+| limit rychlosti | Kořenový prvek.                                                                                                                                                                                                                                                                                            | Ano      |
+| rozhraní api        | Přidejte jeden nebo více těchto prvků, abyste v rámci produktu zavedli limit rychlosti volání na rozhraní API. Limity rychlosti volání produktu a rozhraní API se uplatňují nezávisle. API lze odkazovat `name` buď `id`přes nebo . Pokud jsou k dispozici `id` oba atributy, budou použity a `name` budou ignorovány.                    | Ne       |
+| Operace  | Přidejte jeden nebo více těchto prvků, abyste uvalili limit rychlosti volání pro operace v rámci rozhraní API. Limity rychlosti volání produktu, rozhraní API a operace se používají nezávisle. Na provoz lze odkazovat buď přes `name` nebo `id`. Pokud jsou k dispozici `id` oba atributy, budou použity a `name` budou ignorovány. | Ne       |
 
 ### <a name="attributes"></a>Atributy
 
-| Název           | Popis                                                                                           | Požadováno | Výchozí |
+| Name (Název)           | Popis                                                                                           | Požaduje se | Výchozí |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | Název rozhraní API, pro které se má použít limit přenosové rychlosti                                                | Ano      | NEUŽÍVÁ SE.     |
-| volání          | Maximální celkový počet volání povolených v časovém intervalu zadaném v `renewal-period`. | Ano      | NEUŽÍVÁ SE.     |
-| prodloužení platnosti – období | Časové období v sekundách, po kterém se kvóta resetuje.                                              | Ano      | NEUŽÍVÁ SE.     |
+| jméno           | Název rozhraní API, pro které chcete použít limit rychlosti.                                                | Ano      | Není dostupné.     |
+| Volání          | Maximální celkový počet volání povolených během časového `renewal-period`intervalu určeného v . | Ano      | Není dostupné.     |
+| období obnovení | Časové období v sekundách, po kterém se kvóta resetuje.                                              | Ano      | Není dostupné.     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tuto zásadu lze použít v následujících [částech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zásad a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Oddíly zásad:** příchozí
 
--   **Obory zásad:** produkt, rozhraní API, operace
+-   **Obory zásad:** produkt, api, provoz
 
-## <a name="LimitCallRateByKey"></a>Omezení četnosti volání podle klíče
+## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a>Omezit rychlost volání klíčem
 
 > [!IMPORTANT]
-> Tato funkce není k dispozici v API Management úrovně **spotřeby** .
+> Tato funkce není k dispozici ve **správě spotřebovávek** rozhraní API.
 
-Zásada `rate-limit-by-key` zabraňuje nárůstu využití rozhraní API na základě klíčů a omezením rychlosti volání na zadaný počet za zadané časové období. Klíč může obsahovat libovolnou řetězcovou hodnotu a obvykle se poskytuje pomocí výrazu zásad. Můžete přidat volitelnou podmínku přírůstku, která určuje, které požadavky se mají do limitu počítat. Když se spustí tato zásada, volající obdrží stavový kód odpovědi `429 Too Many Requests`.
+Zásada `rate-limit-by-key` zabraňuje špičkám využití rozhraní API na základě klíče omezením rychlosti volání na zadané číslo za zadané časové období. Klíč může mít libovolnou řetězcovou hodnotu a je obvykle k dispozici pomocí výrazu zásady. Volitelná podmínka přírůstku může být přidána k určení, které požadavky by měly být započítány do limitu. Při spuštění této zásady volající `429 Too Many Requests` obdrží kód stavu odpovědi.
 
-Další informace a příklady těchto zásad najdete v tématu [Pokročilé omezování požadavků pomocí Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
+Další informace a příklady této zásady najdete [v tématu Upřesnit omezení požadavků pomocí azure api managementu](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
 
 > [!CAUTION]
-> Vzhledem k distribuované povaze architektury omezování není omezení rychlosti nikdy zcela přesné. Rozdíl mezi nakonfigurovaným a skutečným počtem povolených požadavků se liší v závislosti na objemu a míře požadavků, latenci back-endu a dalších faktorech.
+> Vzhledem k distribuované povaze škrcení architektury omezení omezení rychlosti není nikdy zcela přesné. Rozdíl mezi nakonfigurovaným a reálným počtem povolených požadavků se liší v závislosti na objemu požadavku a rychlosti, latenci back-endu a dalších faktorech.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -166,7 +166,7 @@ Další informace a příklady těchto zásad najdete v tématu [Pokročilé ome
 
 ### <a name="example"></a>Příklad
 
-V následujícím příkladu je omezení přenosové rychlosti nastaveno podle IP adresy volajícího.
+V následujícím příkladu je limit rychlosti zakódován IP adresou volajícího.
 
 ```xml
 <policies>
@@ -185,30 +185,30 @@ V následujícím příkladu je omezení přenosové rychlosti nastaveno podle I
 
 ### <a name="elements"></a>Elementy
 
-| Název              | Popis   | Požadováno |
+| Name (Název)              | Popis   | Požaduje se |
 | ----------------- | ------------- | -------- |
-| rychlost – omezení podle klíče | Kořenový element. | Ano      |
+| sazba-limit-by-key | Kořenový prvek. | Ano      |
 
 ### <a name="attributes"></a>Atributy
 
-| Název                | Popis                                                                                           | Požadováno | Výchozí |
+| Name (Název)                | Popis                                                                                           | Požaduje se | Výchozí |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| volání               | Maximální celkový počet volání povolených v časovém intervalu zadaném v `renewal-period`. | Ano      | NEUŽÍVÁ SE.     |
-| Counter – klíč         | Klíč, který se má použít pro zásady omezení četnosti.                                                             | Ano      | NEUŽÍVÁ SE.     |
-| přírůstek-podmínka | Logický výraz určující, zda má být požadavek počítán k kvótě (`true`).        | Ne       | NEUŽÍVÁ SE.     |
-| prodloužení platnosti – období      | Časové období v sekundách, po kterém se kvóta resetuje.                                              | Ano      | NEUŽÍVÁ SE.     |
+| Volání               | Maximální celkový počet volání povolených během časového `renewal-period`intervalu určeného v . | Ano      | Není dostupné.     |
+| počítadlo         | Klíč, který chcete použít pro zásady limitu sazby.                                                             | Ano      | Není dostupné.     |
+| přírůstek-stav | Logický výraz určující, zda má být požadavek započítán do kvóty (`true`).        | Ne       | Není dostupné.     |
+| období obnovení      | Časové období v sekundách, po kterém se kvóta resetuje.                                              | Ano      | Není dostupné.     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tuto zásadu lze použít v následujících [částech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zásad a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Oddíly zásad:** příchozí
 
--   **Obory zásad:** všechny rozsahy
+-   **Obory zásad:** všechny obory
 
-## <a name="RestrictCallerIPs"></a>Omezení IP adres volajícího
+## <a name="restrict-caller-ips"></a><a name="RestrictCallerIPs"></a>Omezit ip adresy volajícího
 
-Zásady `ip-filter` filtr (povolují/zakazuje) volání z konkrétních IP adres nebo rozsahů adres.
+`ip-filter` Filtry zásad (povoluje/zakazuje) volání z konkrétních ADRES IP nebo rozsahů adres.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -221,7 +221,7 @@ Zásady `ip-filter` filtr (povolují/zakazuje) volání z konkrétních IP adres
 
 ### <a name="example"></a>Příklad
 
-V následujícím příkladu zásada povoluje pouze žádosti přicházející buď z jedné IP adresy, nebo z rozsahu zadaných IP adres.
+V následujícím příkladu zásada povoluje pouze požadavky přicházející buď z jedné IP adresy, nebo z rozsahu zadaných IP adres.
 
 ```xml
 <ip-filter action="allow">
@@ -232,32 +232,32 @@ V následujícím příkladu zásada povoluje pouze žádosti přicházející b
 
 ### <a name="elements"></a>Elementy
 
-| Název                                      | Popis                                         | Požadováno                                                       |
+| Name (Název)                                      | Popis                                         | Požaduje se                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
-| filtr IP adres                                 | Kořenový element.                                       | Ano                                                            |
-| adresáře                                   | Určuje jednu IP adresu, na které se má filtrovat.   | Vyžaduje se aspoň jeden `address` nebo element `address-range`. |
-| adresový rozsah z = "adresa" na = "adresa" | Určuje rozsah IP adres, na kterých se má filtrovat. | Vyžaduje se aspoň jeden `address` nebo element `address-range`. |
+| ip-filtr                                 | Kořenový prvek.                                       | Ano                                                            |
+| adresa                                   | Určuje jednu adresu IP, na kterou se má filtrovat.   | Je vyžadován `address` `address-range` alespoň jeden prvek nebo prvek. |
+| address-range from="address" to="address" | Určuje rozsah adresy IP, na které se má filtrovat. | Je vyžadován `address` `address-range` alespoň jeden prvek nebo prvek. |
 
 ### <a name="attributes"></a>Atributy
 
-| Název                                      | Popis                                                                                 | Požadováno                                           | Výchozí |
+| Name (Název)                                      | Popis                                                                                 | Požaduje se                                           | Výchozí |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| adresový rozsah z = "adresa" na = "adresa" | Rozsah IP adres, pro které chcete povolit nebo odepřít přístup.                                        | Požadováno při použití prvku `address-range`. | NEUŽÍVÁ SE.     |
-| akce filtru IP = "povolení &#124; zakazuje"    | Určuje, jestli se mají u zadaných IP adres a rozsahů povolit volání. | Ano                                                | NEUŽÍVÁ SE.     |
+| address-range from="address" to="address" | Rozsah adres IP, pro které je třeba povolit nebo odepřít přístup.                                        | Povinné při `address-range` použití prvku. | Není dostupné.     |
+| ip-filter action="povolit &#124; zakázat"    | Určuje, zda mají být volání povolena nebo ne pro zadané adresy IP a rozsahy. | Ano                                                | Není dostupné.     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tuto zásadu lze použít v následujících [částech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zásad a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Oddíly zásad:** příchozí
--   **Obory zásad:** všechny rozsahy
+-   **Obory zásad:** všechny obory
 
-## <a name="SetUsageQuota"></a>Nastavení kvóty využití podle předplatného
+## <a name="set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a>Nastavení kvóty využití podle předplatného
 
-Zásada `quota` vynutila obnovitelné nebo maximální objem volání nebo kvótu šířky pásma na základě jednotlivých předplatných.
+Zásady `quota` vynucují obnovitelný nebo celoživotní objem volání nebo kvótu šířky pásma na základě předplatného.
 
 > [!IMPORTANT]
-> Tato zásada se dá pro dokument zásad použít jenom jednou.
+> Tuto zásadu lze použít pouze jednou pro dokument zásady.
 >
 > [Výrazy zásad](api-management-policy-expressions.md) nelze použít v žádném z atributů zásad pro tuto zásadu.
 
@@ -287,36 +287,36 @@ Zásada `quota` vynutila obnovitelné nebo maximální objem volání nebo kvót
 
 ### <a name="elements"></a>Elementy
 
-| Název      | Popis                                                                                                                                                                                                                                                                                  | Požadováno |
+| Name (Název)      | Popis                                                                                                                                                                                                                                                                                  | Požaduje se |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| kvóta     | Kořenový element.                                                                                                                                                                                                                                                                                | Ano      |
-| api       | Přidejte jeden nebo více těchto prvků pro uložení kvóty volání rozhraní API v rámci produktu. Kvóty volání produktů a rozhraní API se aplikují nezávisle. Na rozhraní API se dá odkazovat buď pomocí `name`, nebo `id`. Pokud jsou zadány oba atributy, `id` budou použity a `name` budou ignorovány.                    | Ne       |
-| operation | Přidejte jeden nebo více těchto prvků pro uložení kvóty volání operací v rámci rozhraní API. Kvóty volání produktů, rozhraní API a operací se aplikují nezávisle. Na operaci lze odkazovat pomocí `name` nebo `id`. Pokud jsou zadány oba atributy, `id` budou použity a `name` budou ignorovány. | Ne       |
+| kvóta     | Kořenový prvek.                                                                                                                                                                                                                                                                                | Ano      |
+| rozhraní api       | Přidejte jeden nebo více těchto prvků, chcete-li uložit kvótu volání na rozhraní API v rámci produktu. Kvóty volání produktu a rozhraní API se používají nezávisle. API lze odkazovat `name` buď `id`přes nebo . Pokud jsou k dispozici `id` oba atributy, budou použity a `name` budou ignorovány.                    | Ne       |
+| Operace | Přidejte jeden nebo více těchto prvků k uložení kvóty volání na operace v rámci rozhraní API. Kvóty volání produktu, rozhraní API a operace se používají nezávisle. Na provoz lze odkazovat buď přes `name` nebo `id`. Pokud jsou k dispozici `id` oba atributy, budou použity a `name` budou ignorovány. | Ne       |
 
 ### <a name="attributes"></a>Atributy
 
-| Název           | Popis                                                                                               | Požadováno                                                         | Výchozí |
+| Name (Název)           | Popis                                                                                               | Požaduje se                                                         | Výchozí |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| name           | Název rozhraní API nebo operace, pro kterou platí kvóta.                                             | Ano                                                              | NEUŽÍVÁ SE.     |
-| připojení      | Maximální celkový počet kilobajtů povolený v časovém intervalu zadaném v `renewal-period`. | Musí být zadán buď `calls`, `bandwidth`, nebo oba současně. | NEUŽÍVÁ SE.     |
-| volání          | Maximální celkový počet volání povolených v časovém intervalu zadaném v `renewal-period`.     | Musí být zadán buď `calls`, `bandwidth`, nebo oba současně. | NEUŽÍVÁ SE.     |
-| prodloužení platnosti – období | Časové období v sekundách, po kterém se kvóta resetuje.                                                  | Ano                                                              | NEUŽÍVÁ SE.     |
+| jméno           | Název rozhraní API nebo operace, pro které se kvóta vztahuje.                                             | Ano                                                              | Není dostupné.     |
+| Šířky pásma      | Maximální celkový počet kilobajtů povolený během časového `renewal-period`intervalu určeného v . | Musí `calls` `bandwidth`být zadány buď , nebo oba společně. | Není dostupné.     |
+| Volání          | Maximální celkový počet volání povolených během časového `renewal-period`intervalu určeného v .     | Musí `calls` `bandwidth`být zadány buď , nebo oba společně. | Není dostupné.     |
+| období obnovení | Časové období v sekundách, po kterém se kvóta resetuje.                                                  | Ano                                                              | Není dostupné.     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tuto zásadu lze použít v následujících [částech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zásad a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Oddíly zásad:** příchozí
 -   **Obory zásad:** produkt
 
-## <a name="SetUsageQuotaByKey"></a>Nastavit kvótu využití podle klíče
+## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a>Nastavení kvóty využití podle klíče
 
 > [!IMPORTANT]
-> Tato funkce není k dispozici v API Management úrovně **spotřeby** .
+> Tato funkce není k dispozici ve **správě spotřebovávek** rozhraní API.
 
-Zásada `quota-by-key` vynutila obnovitelné nebo maximální objem volání nebo kvótu šířky pásma na jednotlivých klíčích. Klíč může obsahovat libovolnou řetězcovou hodnotu a obvykle se poskytuje pomocí výrazu zásad. Můžete přidat volitelnou podmínku přírůstku, která určuje, které požadavky se mají do kvóty počítat. Pokud by více zásad mohl zvýšit stejnou hodnotu klíče, zvyšuje se pouze jednou za požadavek. Po dosažení limitu volání dostane volající kód stavu odpovědi `403 Forbidden`.
+Zásady `quota-by-key` vynucují obnovitelný nebo celoživotní objem volání nebo kvótu šířky pásma na základě klíče. Klíč může mít libovolnou řetězcovou hodnotu a je obvykle k dispozici pomocí výrazu zásady. Volitelná podmínka přírůstku může být přidána, aby bylo možné určit, které požadavky by měly být započítány do kvóty. Pokud by více zásad zvýší stejnou hodnotu klíče, zvýší se pouze jednou na požadavek. Po dosažení limitu volání volající obdrží `403 Forbidden` stavový kód odpovědi.
 
-Další informace a příklady těchto zásad najdete v tématu [Pokročilé omezování požadavků pomocí Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
+Další informace a příklady této zásady najdete [v tématu Upřesnit omezení požadavků pomocí azure api managementu](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -331,7 +331,7 @@ Další informace a příklady těchto zásad najdete v tématu [Pokročilé ome
 
 ### <a name="example"></a>Příklad
 
-V následujícím příkladu je kvóta nastavena podle IP adresy volajícího.
+V následujícím příkladu je kvóta zaklíčována IP adresou volajícího.
 
 ```xml
 <policies>
@@ -349,35 +349,35 @@ V následujícím příkladu je kvóta nastavena podle IP adresy volajícího.
 
 ### <a name="elements"></a>Elementy
 
-| Název  | Popis   | Požadováno |
+| Name (Název)  | Popis   | Požaduje se |
 | ----- | ------------- | -------- |
-| kvóta | Kořenový element. | Ano      |
+| kvóta | Kořenový prvek. | Ano      |
 
 ### <a name="attributes"></a>Atributy
 
-| Název                | Popis                                                                                               | Požadováno                                                         | Výchozí |
+| Name (Název)                | Popis                                                                                               | Požaduje se                                                         | Výchozí |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| připojení           | Maximální celkový počet kilobajtů povolený v časovém intervalu zadaném v `renewal-period`. | Musí být zadán buď `calls`, `bandwidth`, nebo oba současně. | NEUŽÍVÁ SE.     |
-| volání               | Maximální celkový počet volání povolených v časovém intervalu zadaném v `renewal-period`.     | Musí být zadán buď `calls`, `bandwidth`, nebo oba současně. | NEUŽÍVÁ SE.     |
-| Counter – klíč         | Klíč, který se má použít pro zásady kvót                                                                      | Ano                                                              | NEUŽÍVÁ SE.     |
-| přírůstek-podmínka | Logický výraz určující, zda má být požadavek počítán k kvótě (`true`)             | Ne                                                               | NEUŽÍVÁ SE.     |
-| prodloužení platnosti – období      | Časové období v sekundách, po kterém se kvóta resetuje.                                                  | Ano                                                              | NEUŽÍVÁ SE.     |
+| Šířky pásma           | Maximální celkový počet kilobajtů povolený během časového `renewal-period`intervalu určeného v . | Musí `calls` `bandwidth`být zadány buď , nebo oba společně. | Není dostupné.     |
+| Volání               | Maximální celkový počet volání povolených během časového `renewal-period`intervalu určeného v .     | Musí `calls` `bandwidth`být zadány buď , nebo oba společně. | Není dostupné.     |
+| počítadlo         | Klíč, který chcete použít pro zásady kvóty.                                                                      | Ano                                                              | Není dostupné.     |
+| přírůstek-stav | Logický výraz určující, zda má být požadavek započítán do kvóty (`true`)             | Ne                                                               | Není dostupné.     |
+| období obnovení      | Časové období v sekundách, po kterém se kvóta resetuje.                                                  | Ano                                                              | Není dostupné.     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tuto zásadu lze použít v následujících [částech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zásad a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Oddíly zásad:** příchozí
--   **Obory zásad:** všechny rozsahy
+-   **Obory zásad:** všechny obory
 
-## <a name="ValidateJWT"></a>Ověřit token JWT
+## <a name="validate-jwt"></a><a name="ValidateJWT"></a>Ověřit JWT
 
-Zásady `validate-jwt` vynutily existenci a platnost získaného JWT buď ze zadané hlavičky protokolu HTTP, nebo ze zadaného parametru dotazu.
+Zásada `validate-jwt` vynucuje existenci a platnost JWT extrahované z zadané hlavičky HTTP nebo zadaného parametru dotazu.
 
 > [!IMPORTANT]
-> Zásady `validate-jwt` vyžadují, aby se deklarace identity zaregistrovaná `exp` zahrnovala v tokenu JWT, pokud není zadaný atribut `require-expiration-time` a nastaven na `false`.
-> Zásady `validate-jwt` podporují algoritmy podepisování HS256 a RS256. Pro HS256 musí být klíč poskytnutý jako vložený v rámci zásady ve formě kódované v kódování Base64. Pro RS256 je nutné klíč poskytnout prostřednictvím koncového bodu konfigurace otevřeného ID.
-> Zásady `validate-jwt` podporují tokeny šifrované pomocí symetrických klíčů pomocí následujících šifrovacích algoritmů A128CBC-HS256, A192CBC-HS384, A256CBC-HS512.
+> Zásada `validate-jwt` vyžaduje, `exp` aby registrovaná deklarace byla zahrnuta do tokenu JWT, pokud `require-expiration-time` není zadán atribut a nastaven na `false`.
+> Zásady `validate-jwt` podporují algoritmy podepisování HS256 a RS256. Pro HS256 klíč musí být zadejte vložená v rámci zásady v base64 kódované formuláře. Pro RS256 musí být klíč poskytnut prostřednictvím koncového bodu konfigurace Open ID.
+> Zásady `validate-jwt` podporují tokeny šifrované symetrickými klíči pomocí následujících šifrovacích algoritmů A128CBC-HS256, A192CBC-HS384, A256CBC-HS512.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -422,7 +422,7 @@ Zásady `validate-jwt` vynutily existenci a platnost získaného JWT buď ze zad
 
 ### <a name="examples"></a>Příklady
 
-#### <a name="simple-token-validation"></a>Ověřování jednoduchých tokenů
+#### <a name="simple-token-validation"></a>Jednoduché ověření tokenu
 
 ```xml
 <validate-jwt header-name="Authorization" require-scheme="Bearer">
@@ -438,7 +438,7 @@ Zásady `validate-jwt` vynutily existenci a platnost získaného JWT buď ze zad
 </validate-jwt>
 ```
 
-#### <a name="azure-active-directory-token-validation"></a>Ověřování tokenu Azure Active Directory
+#### <a name="azure-active-directory-token-validation"></a>Ověření tokenu služby Azure Active Directory
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -454,7 +454,7 @@ Zásady `validate-jwt` vynutily existenci a platnost získaného JWT buď ze zad
 </validate-jwt>
 ```
 
-#### <a name="azure-active-directory-b2c-token-validation"></a>Ověřování tokenu Azure Active Directory B2C
+#### <a name="azure-active-directory-b2c-token-validation"></a>Ověření tokenu Služby Azure Active Directory B2C
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -470,9 +470,9 @@ Zásady `validate-jwt` vynutily existenci a platnost získaného JWT buď ze zad
 </validate-jwt>
 ```
 
-#### <a name="authorize-access-to-operations-based-on-token-claims"></a>Autorizace přístupu k operacím na základě deklarací identity tokenů
+#### <a name="authorize-access-to-operations-based-on-token-claims"></a>Autorizace přístupu k operacím na základě deklarací tokenů
 
-Tento příklad ukazuje, jak použít zásadu [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) k autorizaci přístupu k operacím na základě hodnoty deklarací identity tokenu.
+Tento příklad ukazuje, jak použít [zásadu Ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) k autorizaci přístupu k operacím na základě hodnoty deklarací tokenu.
 
 ```xml
 <validate-jwt header-name="Authorization" require-scheme="Bearer" output-token-variable-name="jwt">
@@ -503,47 +503,47 @@ Tento příklad ukazuje, jak použít zásadu [ověření JWT](api-management-ac
 
 ### <a name="elements"></a>Elementy
 
-| Prvek             | Popis                                                                                                                                                                                                                                                                                                                                           | Požadováno |
+| Element             | Popis                                                                                                                                                                                                                                                                                                                                           | Požaduje se |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| validate-jwt        | Kořenový element.                                                                                                                                                                                                                                                                                                                                         | Ano      |
-| publikum           | Obsahuje seznam přijatelných deklarací cílové skupiny, které mohou být k dispozici na tokenu. Pokud je přítomno více hodnot cílové skupiny, pak se každá hodnota vyzkouší, dokud nebudou vyčerpány všechny (v takovém případě ověření selže) nebo dokud jeden neuspěje. Je nutné zadat alespoň jednu cílovou skupinu.                                                                     | Ne       |
-| issuer-signing-keys | Seznam klíčů zabezpečení kódovaných v kódování Base64 používaných k ověřování podepsaných tokenů. Pokud je k dispozici více klíčů zabezpečení, pak se každý klíč vyzkouší, dokud nebudou vyčerpány všechny (v takovém případě ověření selže) nebo dokud jedna neuspěje (užitečné pro výměnu tokenu). Klíčové prvky mají volitelný atribut `id`, který se používá pro spárování s deklarací `kid`.               | Ne       |
-| dešifrování – klíče     | Seznam klíčů zakódovaných ve formátu base64, které slouží k dešifrování tokenů. Pokud je k dispozici více klíčů zabezpečení, pak se každý klíč vyzkouší, dokud nebudou vyčerpány všechny klíče (v takovém případě ověření selže) nebo dokud nebude klíč úspěšný. Klíčové prvky mají volitelný atribut `id`, který se používá pro spárování s deklarací `kid`.                                                 | Ne       |
-| vystavitelů             | Seznam přijatelných objektů zabezpečení, které token vystavily. Pokud je přítomno více hodnot vystavitelů, pak se každá hodnota vyzkouší, dokud nejsou vyčerpány všechny (v takovém případě ověření selže) nebo dokud jeden neuspěje.                                                                                                                                         | Ne       |
-| OpenID-config       | Prvek použitý k zadání koncového bodu konfigurace kompatibilního otevřeného ID, ze kterého lze získat podpisové klíče a vystavitele.                                                                                                                                                                                                                        | Ne       |
-| požadováno – deklarace identity     | Obsahuje seznam deklarací identity, které mají být přítomny na tokenu, aby se dalo považovat za platný. Pokud je atribut `match` nastavený na `all` musí být v tokenu přítomná každá hodnota deklarace identity, aby bylo ověření úspěšné. Pokud je atribut `match` nastavený na `any` aspoň jedna deklarace identity musí být přítomná v tokenu, aby bylo ověření úspěšné. | Ne       |
+| validate-jwt        | Kořenový prvek.                                                                                                                                                                                                                                                                                                                                         | Ano      |
+| Publikum           | Obsahuje seznam přijatelných deklarací publika, které mohou být k dispozici na tokenu. Pokud je k dispozici více hodnot publika, je každá hodnota vyzkoušena, dokud nejsou vyčerpány všechny (v takovém případě se ověření nezdaří) nebo dokud jedna neuspěje. Musí být zadána alespoň jedna cílová skupina.                                                                     | Ne       |
+| podpisové klíče emitenta | Seznam klíčů zabezpečení kódovaných base64, které slouží k ověření podepsaných tokenů. Pokud je k dispozici více klíčů zabezpečení, je každý klíč vyzkoušen, dokud nejsou vyčerpány všechny (v takovém případě se ověření nezdaří) nebo dokud jeden neuspěje (užitečné pro přechod tokenu). Klíčové prvky `id` mají volitelný atribut, který se používá k porovnání s deklarací. `kid`               | Ne       |
+| dešifrování-klíče     | Seznam klíčů kódovaných Base64, které slouží k dešifrování tokenů. Pokud je k dispozici více klíčů zabezpečení, je každý klíč vyzkoušen, dokud nejsou vyčerpány všechny klíče (v takovém případě se ověření nezdaří) nebo dokud nebude klíč úspěšný. Klíčové prvky `id` mají volitelný atribut, který se používá k porovnání s deklarací. `kid`                                                 | Ne       |
+| Emitentů             | Seznam přijatelné objekty zabezpečení, které vydaltoken. Pokud je k dispozici více hodnot vystavittele, pak je každá hodnota vyzkoušena, dokud nejsou vyčerpány všechny (v takovém případě se ověření nezdaří) nebo dokud jedna neuspěje.                                                                                                                                         | Ne       |
+| openid-config       | Prvek používaný pro určení kompatibilního koncového bodu konfigurace Open ID, ze kterého lze získat podpisové klíče a vystavitela.                                                                                                                                                                                                                        | Ne       |
+| požadované pohledávky     | Obsahuje seznam deklarací, u kterých se očekává, že budou přítomny na tokenu, aby byl považován za platný. Pokud `match` je atribut `all` nastaven na každou hodnotu deklarace v zásadě, musí být přítomen v tokenu, aby bylo ověření úspěšné. Pokud `match` je atribut `any` nastaven alespoň jeden deklarace musí být k dispozici v tokenu pro ověření úspěšné. | Ne       |
 
 ### <a name="attributes"></a>Atributy
 
-| Název                            | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                            | Požadováno                                                                         | Výchozí                                                                           |
+| Name (Název)                            | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                            | Požaduje se                                                                         | Výchozí                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| hodiny – zkosit                      | TimeSpan. Slouží k zadání maximálního očekávaného časového rozdílu mezi systémovými hodinami vystavitele tokenu a instancí API Management.                                                                                                                                                                                                                                                                                                               | Ne                                                                               | 0 sekund                                                                         |
-| Chyba-ověření-zpráva | Chybová zpráva, která se má vrátit v těle odpovědi HTTP, pokud metoda JWT neprojde ověřením. Tato zpráva musí mít správně uvozené speciální znaky.                                                                                                                                                                                                                                                                                                 | Ne                                                                               | Výchozí chybová zpráva závisí na potížích s ověřením, například "JWT není k dispozici". |
-| Chyba-ověření – httpCode      | Stavový kód HTTP, který se má vrátit, pokud metoda JWT neprojde ověřením.                                                                                                                                                                                                                                                                                                                                                                                         | Ne                                                                               | 401                                                                               |
-| záhlaví – název                     | Název hlavičky protokolu HTTP, která drží token.                                                                                                                                                                                                                                                                                                                                                                                                         | Je nutné zadat jeden z `header-name``query-parameter-name` nebo `token-value`. | NEUŽÍVÁ SE.                                                                               |
-| dotaz-parametr-název            | Název parametru dotazu, který drží token.                                                                                                                                                                                                                                                                                                                                                                                                     | Je nutné zadat jeden z `header-name``query-parameter-name` nebo `token-value`. | NEUŽÍVÁ SE.                                                                               |
-| hodnota tokenu                     | Výraz vracející řetězec obsahující token JWT                                                                                                                                                                                                                                                                                                                                                                                                     | Je nutné zadat jeden z `header-name``query-parameter-name` nebo `token-value`. | NEUŽÍVÁ SE.                                                                               |
-| id                              | Atribut `id` elementu `key` umožňuje zadat řetězec, který se bude shodovat s `kid` deklarací identity v tokenu (Pokud je k dispozici) a zjistit odpovídající klíč pro ověření podpisu.                                                                                                                                                                                                                                           | Ne                                                                               | NEUŽÍVÁ SE.                                                                               |
-| Přes                           | Atribut `match` u elementu `claim` určuje, zda musí být v tokenu přítomna každá hodnota deklarace identity, aby bylo ověření úspěšné. Možné hodnoty jsou:<br /><br /> - `all` – každá hodnota deklarace identity v zásadě musí být přítomná v tokenu, aby bylo ověření úspěšné.<br /><br /> - `any`-v tokenu musí být alespoň jedna hodnota deklarace identity, aby bylo ověření úspěšné.                                                       | Ne                                                                               | vše                                                                               |
-| vyžadovat – čas vypršení platnosti         | Datového. Určuje, jestli je v tokenu vyžadována deklarace identity vypršení platnosti.                                                                                                                                                                                                                                                                                                                                                                               | Ne                                                                               | true                                                                              |
-| require-scheme                  | Název schématu tokenu, např. "nosič". Pokud je tento atribut nastavený, zásada ověří, jestli je v hodnotě autorizační hlavičky zadané schéma.                                                                                                                                                                                                                                                                                    | Ne                                                                               | NEUŽÍVÁ SE.                                                                               |
-| vyžadovat – podepsané tokeny           | Datového. Určuje, zda je vyžadován token, který má být podepsán.                                                                                                                                                                                                                                                                                                                                                                                           | Ne                                                                               | true                                                                              |
-| oddělování                       | Řetězec. Určuje oddělovač (například ","), který se použije k extrakci sady hodnot z deklarace s více hodnotami.                                                                                                                                                                                                                                                                                                                                          | Ne                                                                               | NEUŽÍVÁ SE.                                                                               |
-| Adresa URL                             | Otevřete adresu URL koncového bodu konfigurace ID, ze kterého lze získat metadata konfigurace Open ID. Odpověď by měla být podle specifikací definovaných na adrese URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`. Pro Azure Active Directory použijte následující adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` nahrazení názvu tenanta adresáře, třeba `contoso.onmicrosoft.com`. | Ano                                                                              | NEUŽÍVÁ SE.                                                                               |
-| výstup-token-proměnná-Name      | Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako objekt typu [`Jwt`](api-management-policy-expressions.md) po úspěšném ověření tokenu                                                                                                                                                                                                                                                                                     | Ne                                                                               | NEUŽÍVÁ SE.                                                                               |
+| zkosení hodin                      | Timespan. Slouží k určení maximálního očekávaného časového rozdílu mezi systémovými hodinami vystavittele tokenu a instancí Api Management.                                                                                                                                                                                                                                                                                                               | Ne                                                                               | 0 sekund                                                                         |
+| zpráva se selháním ověření a chybou | Chybová zpráva vrátit v těle odpovědi HTTP, pokud JWT neprojde ověření. Tato zpráva musí mít všechny speciální znaky správně uvozeny.                                                                                                                                                                                                                                                                                                 | Ne                                                                               | Výchozí chybová zpráva závisí na problému ověření, například "JWT není k dispozici." |
+| kód http-validation-failed      | Stavový kód HTTP, který se má vrátit, pokud JWT neprojde ověřením.                                                                                                                                                                                                                                                                                                                                                                                         | Ne                                                                               | 401                                                                               |
+| název záhlaví                     | Název hlavičky HTTP, která obsahuje token.                                                                                                                                                                                                                                                                                                                                                                                                         | Jeden `header-name`z `query-parameter-name` `token-value` , nebo musí být zadán. | Není dostupné.                                                                               |
+| název parametru dotazu            | Název parametru dotazu, který obsahuje token.                                                                                                                                                                                                                                                                                                                                                                                                     | Jeden `header-name`z `query-parameter-name` `token-value` , nebo musí být zadán. | Není dostupné.                                                                               |
+| hodnota tokenu                     | Výraz vracející řetězec obsahující token JWT                                                                                                                                                                                                                                                                                                                                                                                                     | Jeden `header-name`z `query-parameter-name` `token-value` , nebo musí být zadán. | Není dostupné.                                                                               |
+| id                              | Atribut `id` na `key` prvek umožňuje zadat řetězec, který bude `kid` porovnán proti deklaraci v tokenu (pokud je k dispozici) zjistit příslušný klíč pro ověření podpisu.                                                                                                                                                                                                                                           | Ne                                                                               | Není dostupné.                                                                               |
+| match                           | Atribut `match` na `claim` prvek určuje, zda každá hodnota deklarace v zásadě musí být k dispozici v tokenu pro ověření úspěšné. Možné hodnoty:<br /><br /> - `all`- každá hodnota deklarace v zásadách musí být k dispozici v tokenu pro ověření úspěšné.<br /><br /> - `any`- alespoň jedna hodnota deklarace musí být k dispozici v tokenu pro ověření úspěšné.                                                       | Ne                                                                               | Vše                                                                               |
+| vyžadovat čas vypršení platnosti         | Boolean. Určuje, zda je v tokenu vyžadována deklarace platnosti.                                                                                                                                                                                                                                                                                                                                                                               | Ne                                                                               | true                                                                              |
+| systém vyžadovat                  | Název schématu tokenu, např. Pokud je tento atribut nastaven, zásada zajistí, že zadané schéma je k dispozici v hodnotě hlavičky Autorizace.                                                                                                                                                                                                                                                                                    | Ne                                                                               | Není dostupné.                                                                               |
+| vyžadovat podepsané tokeny           | Boolean. Určuje, zda je nutné token podepsat.                                                                                                                                                                                                                                                                                                                                                                                           | Ne                                                                               | true                                                                              |
+| Oddělovač                       | Řetězec. Určuje oddělovač (např.                                                                                                                                                                                                                                                                                                                                          | Ne                                                                               | Není dostupné.                                                                               |
+| url                             | Otevřete adresu URL koncového bodu konfigurace ID, ze kterého lze získat metadata konfigurace Open ID. Odpověď by měla být podle specifikací definovaných na adrese URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`. Pro službu Azure Active `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` Directory použijte následující adresu URL: nahrazení názvu `contoso.onmicrosoft.com`klienta adresáře, například . | Ano                                                                              | Není dostupné.                                                                               |
+| output-token-variable-name      | Řetězec. Název kontextové proměnné, která obdrží hodnotu [`Jwt`](api-management-policy-expressions.md) tokenu jako objekt typu při úspěšném ověření tokenu                                                                                                                                                                                                                                                                                     | Ne                                                                               | Není dostupné.                                                                               |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tuto zásadu lze použít v následujících [částech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zásad a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Oddíly zásad:** příchozí
--   **Obory zásad:** všechny rozsahy
+-   **Obory zásad:** všechny obory
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o práci se zásadami najdete v těchto tématech:
+Další informace o práci se zásadami naleznete v tématu:
 
--   [Zásady v API Management](api-management-howto-policies.md)
--   [Transformační rozhraní API](transform-api.md)
--   [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
+-   [Zásady ve správě rozhraní API](api-management-howto-policies.md)
+-   [Transformovat api](transform-api.md)
+-   [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam prohlášení zásad a jejich nastavení
 -   [Ukázky zásad](policy-samples.md)

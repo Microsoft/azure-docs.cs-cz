@@ -1,6 +1,6 @@
 ---
-title: Rutiny Azure AD PowerShellu pro vytváření sestav | Microsoft Docs
-description: Reference k rutinám Azure AD PowerShellu pro vytváření sestav.
+title: Rutiny prostředí Azure AD PowerShell pro vytváření sestav | Dokumenty společnosti Microsoft
+description: Odkaz na rutiny prostředí Azure AD PowerShell pro vytváření sestav.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,68 +18,68 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2192c472e00d123780ec6bc5574e7b9fe326258b
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75495302"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Rutiny Azure AD PowerShellu pro vytváření sestav
 
 > [!NOTE] 
-> Tyto rutiny PowerShellu momentálně fungují jenom s modulem [Azure AD ve verzi Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) . Upozorňujeme, že modul Preview není navržený pro použití v produkčním prostředí. 
+> Tyto rutiny prostředí Powershell aktuálně fungovat pouze s modulem [Azure AD Preview.](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) Vezměte prosím na vědomí, že modul náhledu není navržen pro produkční použití. 
 
-K instalaci verze Public Preview použijte následující příkaz. 
+Chcete-li nainstalovat verzi Public Preview, použijte následující. 
 
 ```powershell
 Install-module AzureADPreview
 ```
-Další informace o tom, jak se připojit ke službě Azure AD pomocí PowerShellu, najdete v článku [Azure AD PowerShell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).  
+Další informace o tom, jak se připojit k Azure AD pomocí powershellu , najdete v článku [Azure AD Powershell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).  
 
-Pomocí sestav Azure Active Directory (Azure AD) můžete získat podrobnosti o aktivitách kolem všech operací zápisu ve směru (protokoly auditu) a ověřovacích dat (protokoly přihlášení). I když jsou informace k dispozici pomocí Graph APIu, teď můžete načíst stejná data pomocí rutin Azure AD PowerShell pro vytváření sestav.
+Pomocí sestav Azure Active Directory (Azure AD) můžete získat podrobnosti o aktivitách kolem všech operací zápisu ve vašem směru (protokoly auditu) a ověřovacích dat (protokoly přihlášení). Přestože informace jsou k dispozici pomocí rozhraní MS Graph API, teď můžete načíst stejná data pomocí rutin prostředí Azure AD PowerShell pro vytváření sestav.
 
-Tento článek poskytuje přehled rutin PowerShellu, které se použijí pro protokoly auditu a protokoly přihlášení.
+Tento článek poskytuje přehled rutin prostředí PowerShell, které se mají použít pro protokoly auditování a protokoly přihlášení.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-[Protokoly auditu](concept-audit-logs.md) poskytují sledovatelnost prostřednictvím protokolů pro všechny změny prováděné různými funkcemi v rámci služby Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
+[Protokoly auditu](concept-audit-logs.md) poskytují sledovatelnost prostřednictvím protokolů pro všechny změny provedené různými funkcemi v rámci azure ad. Příklady protokolů auditu zahrnují změny provedené ve všech prostředcích v rámci Azure AD, jako je přidání nebo odebrání uživatelů, aplikací, skupin, rolí a zásad.
 
-Přístup k protokolům auditu získáte pomocí rutiny Get-AzureADAuditDirectoryLogs.
+Získáte přístup k protokolům auditu pomocí rutiny Get-AzureDAuditDirectoryLogs.
 
 
 | Scénář                      | Příkaz PowerShellu |
 | :--                           | :--                |
-| Zobrazovaný název aplikace      | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/App/DisplayName" Azure AD Cloud Sync "" |
-| Kategorie                      | Get-AzureADAuditDirectoryLogs-Filter "kategorie EQ" Správa aplikací "" |
-| Datum a čas aktivity            | Get-AzureADAuditDirectoryLogs-Filter "activityDateTime gt 2019-04-18" |
-| Všechny uvedené možnosti              | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/App/DisplayName EQ" Azure AD Cloud Sync "and Category EQ" Správa aplikací "and activityDateTime gt 2019-04-18"|
+| Zobrazovaný název aplikace      | Get-AzureADAuditDirectoryLogs -Filtr "initiatedBy/app/displayName eq 'Azure AD Cloud Sync'" |
+| Kategorie                      | Get-AzureADAuditDirectoryLogs -Filtrovat "kategorie eq 'Správa aplikací'" |
+| Čas data aktivity            | Get-AzureADAuditDirectoryLogs -Filtr "activityDateTime gt 2019-04-18" |
+| Všechny výš uvedené položky              | Get-AzureADAuditDirectoryLogs -Filtr "initiatedBy/app/displayName eq 'Azure AD Cloud Sync' a kategorie eq 'Správa aplikací' a activityDateTime gt 2019-04-18"|
 
 
-Příklad tohoto příkazu je znázorněn na následujícím obrázku. 
+Následující obrázek ukazuje příklad pro tento příkaz. 
 
-![Tlačítko Souhrn dat](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![Tlačítko "Souhrn dat"](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
 ## <a name="sign-in-logs"></a>Protokoly přihlašování
 
-Protokoly [přihlášení](concept-sign-ins.md) poskytují informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+Protokoly [přihlášení](concept-sign-ins.md) poskytují informace o využití spravovaných aplikací a aktivity přihlášení uživatele.
 
-Přístup k protokolům přihlášení získáte pomocí rutiny Get-AzureADAuditSignInLogs.
+Získáte přístup k protokolům přihlášení pomocí rutiny Get-AzureADAuditInInLogs.
 
 
 | Scénář                      | Příkaz PowerShellu |
 | :--                           | :--                |
-| Zobrazované jméno uživatele             | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Alexander Perkins "" |
-| Vytvořit datum a čas              | Get-AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (vše od 5:30 pm v 4/18) |
-| Stav                        | Get-AzureADAuditSignInLogs-Filter "status/errorCode EQ 50105" |
-| Zobrazovaný název aplikace      | Get-AzureADAuditSignInLogs-Filter "appDisplayName EQ" StoreFrontStudio [wsfed Enabled] "" |
-| Všechny uvedené možnosti              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Alexander Perkins "a status/errorCode New 0 and appDisplayName EQ" StoreFrontStudio [wsfed Enabled] "" |
+| Zobrazované jméno uživatele             | Get-AzureADAuditSignInLogs -Filtr "userDisplayName eq 'Timothy Perkins'" |
+| Vytvořit čas data              | Get-AzureADAuditSignInLogs -Filtr "createdDateTime gt 2019-04-18T17:30:00.0Z" (Vše od 17:30 dne 4/18) |
+| Status                        | Get-AzureADAuditSignInLogs -Filtr "status/errorCode eq 50105" |
+| Zobrazovaný název aplikace      | Get-AzureADAuditSignInLogs -Filtr "appDisplayName eq 'StoreFrontStudio [wsfed povoleno]"" |
+| Všechny výš uvedené položky              | Get-AzureADAuditSignInLogs -Filtr "userDisplayName eq 'Timothy Perkins' a status/errorCode ne 0 a appDisplayName eq 'StoreFrontStudio [wsfed enabled]'" |
 
 
-Příklad tohoto příkazu je znázorněn na následujícím obrázku. 
+Následující obrázek ukazuje příklad pro tento příkaz. 
 
-![Tlačítko Souhrn dat](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![Tlačítko "Souhrn dat"](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

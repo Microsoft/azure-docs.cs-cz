@@ -1,40 +1,40 @@
 ---
-title: Shromažďování a analýza protokolů událostí systému Windows v Azure Monitor | Microsoft Docs
-description: V této části najdete popis postupu konfigurace shromažďování protokolů událostí systému Windows Azure Monitor a podrobností záznamů, které vytvoří.
+title: Shromažďování a analýza protokolů událostí systému Windows v Azure Monitoru | Dokumenty společnosti Microsoft
+description: Popisuje, jak nakonfigurovat kolekci protokolů událostí systému Windows pomocí Azure Monitor a podrobnosti o záznamech, které vytvářejí.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274681"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí systému Windows v Azure Monitor
-Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
+# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí Windows v Azure Monitoru
+Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](agent-data-sources.md) pro shromažďování dat pomocí agentů systému Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Můžete shromažďovat události ze standardních protokolů, jako je systém a aplikace kromě určení všechny vlastní protokoly vytvořené aplikace, které je třeba sledovat.
 
 ![Události systému Windows](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Konfigurace protokolů událostí systému Windows
-[V nabídce data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources)Nakonfigurujte protokoly událostí systému Windows.
+Nakonfigurujte protokoly událostí systému Windows z [nabídky Data v rozšířeném nastavení](agent-data-sources.md#configuring-data-sources).
 
-Azure Monitor shromažďuje pouze události z protokolů událostí systému Windows, které jsou zadány v nastavení.  Protokol událostí můžete přidat zadáním názvu protokolu a kliknutím na **+** .  U každého protokolu se shromažďují jenom události s vybranými závažnostmi.  Ověřte závažnost konkrétního protokolu, který chcete shromáždit.  Nemůžete zadat žádná další kritéria pro filtrování událostí.
+Azure Monitor shromažďuje pouze události z protokolů událostí systému Windows, které jsou zadané v nastavení.  Protokol událostí můžete přidat zadáním názvu protokolu a **+** klepnutím na tlačítko .  Pro každý protokol jsou shromažďovány pouze události s vybranou závažností.  Zkontrolujte závažnost i konkrétní protokol, který chcete shromáždit.  Pro filtrování událostí nelze zadat žádná další kritéria.
 
-Při zadávání názvu protokolu událostí Azure Monitor poskytuje návrhy běžných názvů protokolů událostí. Pokud se v seznamu nezobrazí protokol, který chcete přidat, můžete ho přidat tak, že zadáte úplný název protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí otevřete stránku *vlastností* protokolu a zkopírujte řetězec z pole *celé jméno* .
+Při psaní názvu protokolu událostí Azure Monitor poskytuje návrhy běžných názvů protokolů událostí. Pokud se protokol, který chcete přidat, v seznamu nezobrazí, můžete jej přesto přidat zadáním úplného názvu protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí otevřete stránku *Vlastnosti* protokolu a zkopírujte řetězec z pole *Celé jméno.*
 
 ![Konfigurace událostí systému Windows](media/data-sources-windows-events/configure.png)
 
 > [!NOTE]
-> Kritické události z protokolu událostí systému Windows budou mít u protokolů Azure Monitor závažnost "Error".
+> Kritické události z protokolu událostí systému Windows bude mít závažnost "Chyba" v protokolech monitorování Azure.
 
 ## <a name="data-collection"></a>Shromažďování dat
-Azure Monitor shromažďuje každou událost, která odpovídá vybrané závažnosti z monitorovaného protokolu událostí při vytvoření události.  Agent zaznamenává své místo do každého protokolu událostí, ze kterého shromažďuje.  Pokud agent přejde do režimu offline po určitou dobu, bude shromažďovat události, ze kterých byl naposled ponechán, a to i v případě, že byly tyto události vytvořeny v době, kdy byl agent offline.  Je možné, že tyto události nebudou shromažďovány, pokud se protokol událostí zalomí s neshromážděnými událostmi, zatímco je agent v režimu offline.
+Azure Monitor shromažďuje každou událost, která odpovídá vybrané závažnosti z protokolu monitorovaných událostí při vytváření události.  Agent zaznamenává své místo v každém protokolu událostí, ze kterého shromažďuje.  Pokud agent přejde do offline po určitou dobu, pak shromažďuje události z místa, kde naposledy skončil, i v případě, že tyto události byly vytvořeny v době, kdy byl agent offline.  Existuje potenciál pro tyto události, které nelze shromažďovat, pokud protokol událostí obtéká nesebrané události přepsány v době, kdy je agent offline.
 
 >[!NOTE]
->Azure Monitor neshromažďuje události auditu vytvořené SQL Server ze zdrojové *MSSQLSERVER* s ID události 18453, které obsahuje klíčová slova – *klasický* nebo *0xa0000000000000*, a klíčová slova s výsledky *auditu* .
+>Azure Monitor neshromažďuje události auditu vytvořené SQL Server ze zdroje *MSSQLSERVER* s ID události 18453, která obsahuje klíčová slova - *klasický* nebo *audit úspěch* a klíčové slovo *0xa0000000000000*.
 >
 
 ## <a name="windows-event-records-properties"></a>Vlastnosti záznamů událostí systému Windows
@@ -42,33 +42,33 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Computer |Název počítače, ze kterého byla událost shromážděna. |
-| EventCategory |Kategorie události |
-| EventData |Všechna data události v nezpracovaném formátu. |
-| ID události |Číslo události |
-| EventLevel |Závažnost události v číselném tvaru. |
-| EventLevelName |Závažnost události v textovém formátu. |
-| EventLog |Název protokolu událostí, ze kterého byla událost shromážděna. |
-| ParameterXml |Hodnoty parametrů událostí ve formátu XML. |
-| ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manager.  Pro jiné agenty je tato hodnota `AOI-<workspace ID>` |
-| RenderedDescription |Popis události s hodnotami parametrů |
-| Zdroj |Zdroj události |
-| SourceSystem |Typ agenta, ze kterého byla událost shromážděna <br> OpsManager – Agent pro Windows, buď přímá připojení, nebo Operations Manager spravovaná <br> Linux – všichni agenti se systémem Linux  <br> AzureStorage – Azure Diagnostics |
-| TimeGenerated |Datum a čas vytvoření události v systému Windows. |
+| Počítač |Název počítače, ze kterého byla událost shromážděna. |
+| Kategorie události |Kategorie události. |
+| Eventdata |Všechna data událostí v nezpracovaném formátu. |
+| ID události |Číslo události. |
+| Úroveň události |Závažnost události v číselné podobě. |
+| Název_události_události |Závažnost události v textové podobě. |
+| Eventlog |Název protokolu událostí, ze kterého byla událost shromážděna. |
+| ParametrXml |Hodnoty parametrů události ve formátu XML. |
+| ManagementGroupName |Název skupiny pro správu pro agenty nástroje Operations Manager systémového centra.  Pro ostatní agenty je tato hodnota`AOI-<workspace ID>` |
+| Vykreslený popis |Popis události s hodnotami parametrů |
+| Zdroj |Zdroj události. |
+| SourceSystem |Typ agenta, od kterého byla událost shromážděna. <br> OpsManager – agent windows, přímé připojení nebo správce operací <br> Linux – Všichni linuxoví agenti  <br> AzureStorage – diagnostika Azure |
+| TimeGenerated |Datum a čas, kdy byla událost vytvořena v systému Windows. |
 | UserName |Uživatelské jméno účtu, který událost zaznamenal. |
 
-## <a name="log-queries-with-windows-events"></a>Dotazy protokolu s událostmi systému Windows
-Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy událostí systému Windows.
+## <a name="log-queries-with-windows-events"></a>Protokolovat dotazy pomocí událostí systému Windows
+Následující tabulka obsahuje různé příklady dotazů protokolu, které načítají záznamy událostí systému Windows.
 
 | Dotaz | Popis |
 |:---|:---|
 | Událost |Všechny události systému Windows. |
-| Událost &#124; , kde EventLevelName = = "Error" |Všechny události systému Windows se závažností chyby. |
-| Event &#124; summarize count() by Source |Počet událostí systému Windows podle zdroje |
-| Událost &#124; , kde EventLevelName = = "Error &#124; " (souhrn) Count () podle zdroje |Počet událostí chyb systému Windows podle zdroje. |
+| &#124; událostí, kde EventLevelName == "chyba" |Všechny události systému Windows se závažností chyby. |
+| Počet &#124; událostí sumarizuje podle zdroje |Počet událostí systému Windows podle zdroje. |
+| &#124; událostí, kde EventLevelName == "chyba" &#124; sumarizovat count() podle zdroje |Počet chybových událostí systému Windows podle zdroje. |
 
 
 ## <a name="next-steps"></a>Další kroky
-* Nakonfigurujte Log Analytics pro shromažďování dalších [zdrojů dat](agent-data-sources.md) pro účely analýzy.
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
-* Nakonfigurujte [shromažďování čítačů výkonu](data-sources-performance-counters.md) z agentů Windows.
+* Nakonfigurujte analýzu protokolů tak, aby shromažďovala další [zdroje dat](agent-data-sources.md) pro analýzu.
+* Přečtěte si o [dotazech protokolu](../log-query/log-query-overview.md) k analýze dat shromážděných ze zdrojů dat a řešení.  
+* Nakonfigurujte [kolekci čítačů výkonu](data-sources-performance-counters.md) od agentů systému Windows.

@@ -1,112 +1,112 @@
 ---
-title: Monitorování zpráv B2B pomocí Azure Monitor
-description: Řešení potíží se zprávami AS2, X12 a EDIFACT nastavením protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps
+title: Monitorování zpráv B2B pomocí Azure Monitoru
+description: Poradce při potížích se zprávami AS2, X12 a EDIFACT nastavením protokolů Azure Monitoru a shromažďováním diagnostických dat pro aplikace Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76907978"
 ---
-# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro zprávy B2B v Azure Logic Apps
+# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Nastavení protokolů Azure Monitoru a shromažďování diagnostických dat pro b2B zprávy v Aplikacích Azure Logic Apps
 
-Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace mohou tito partneři vyměňovat zprávy pomocí protokolů, jako jsou AS2, X12 a EDIFACT. Pokud chcete ověřit, že tato komunikace funguje očekávaným způsobem, můžete nastavit [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) pro svůj účet pro integraci. [Azure monitor](../azure-monitor/overview.md) vám pomůže monitorovat cloudová a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete zaznamenávat a ukládat data o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v [pracovním prostoru Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md). V případě zpráv se v protokolování také shromažďují informace, jako například:
+Po nastavení b2B komunikace mezi obchodními partnery ve vašem integračním účtu si tito partneři mohou vyměňovat zprávy pomocí protokolů, jako jsou AS2, X12 a EDIFACT. Chcete-li zkontrolovat, zda tato komunikace funguje tak, jak očekáváte, můžete nastavit [protokoly Azure Monitor](../azure-monitor/platform/data-platform-logs.md) pro váš účet integrace. [Azure Monitor](../azure-monitor/overview.md) vám pomůže monitorovat cloudová a místní prostředí, takže můžete snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete zaznamenávat a ukládat data o datech a událostech za běhu, jako jsou události aktivační události, události spuštění a události akcí v [pracovním prostoru Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md). U zpráv protokolování také shromažďuje informace, jako jsou:
 
-* Počet zpráv a stav
+* Počet a stav zprávy
 * Stav potvrzení
 * Korelace mezi zprávami a potvrzeními
-* Podrobné popisy chyb pro selhání
+* Podrobné popisy chyb pro chyby
 
-Azure Monitor vám umožní vytvořit [dotazy protokolu](../azure-monitor/log-query/log-query-overview.md) , které vám pomohou najít a zkontrolovat tyto informace. [Tato diagnostická data můžete také použít s jinými službami Azure](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data), například Azure Storage a Azure Event Hubs.
+Azure Monitor umožňuje vytvářet [dotazy protokolu,](../azure-monitor/log-query/log-query-overview.md) které vám pomohou najít a zkontrolovat tyto informace. Tato diagnostická data můžete [taky použít s jinými službami Azure](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data), jako je Azure Storage a Azure Event Hubs.
 
-Pokud chcete nastavit protokolování pro účet pro integraci, [nainstalujte Logic Apps B2B řešení](#install-b2b-solution) do Azure Portal. Toto řešení poskytuje agregované informace pro události zpráv B2B. Pokud pak chcete povolit protokolování a vytváření dotazů pro tyto informace, nastavte [protokoly Azure monitor](#set-up-resource-logs).
+Pokud chcete nastavit protokolování pro svůj účet integrace, nainstalujte na portál Azure [řešení Logic Apps B2B.](#install-b2b-solution) Toto řešení poskytuje souhrnné informace pro události zpráv B2B. Chcete-li povolit protokolování a vytváření dotazů na tyto informace, nastavte [protokoly Azure Monitor .](#set-up-resource-logs)
 
-Tento článek popisuje, jak povolit protokolování Azure Monitor pro účet pro integraci.
+Tento článek ukazuje, jak povolit protokolování Azure Monitoru pro váš účet integrace.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+* Pracovní prostor služby Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si, [jak vytvořit pracovní prostor Analýzy protokolů](../azure-monitor/learn/quick-create-workspace.md).
 
-* Aplikace logiky, která je nastavená s Azure Monitor protokolování a odesílá tyto informace do pracovního prostoru Log Analytics. Přečtěte si, [jak nastavit protokoly Azure monitor pro vaši aplikaci logiky](../logic-apps/monitor-logic-apps.md).
+* Aplikace logiky, která je nastavena pomocí protokolování Azure Monitora a odesílá tyto informace do pracovního prostoru Analýzy protokolů. Přečtěte [si, jak nastavit protokoly Azure Monitoru pro vaši aplikaci logiky](../logic-apps/monitor-logic-apps.md).
 
-* Účet pro integraci, který je propojený s vaší aplikací logiky. Přečtěte si, [Jak propojit účet pro integraci s vaší aplikací logiky](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
+* Účet integrace, který je propojený s vaší aplikací logiky. Přečtěte [si, jak propojit účet integrace s aplikací logiky](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
 <a name="install-b2b-solution"></a>
 
-## <a name="install-logic-apps-b2b-solution"></a>Instalace řešení Logic Apps B2B
+## <a name="install-logic-apps-b2b-solution"></a>Instalace řešení B2B aplikace Logic Apps
 
-Předtím, než protokoly Azure Monitor můžou sledovat zprávy B2B pro vaši aplikaci logiky, přidejte řešení **Logic Apps B2B** do pracovního prostoru Log Analytics.
+Než budou protokoly Azure Monitoru sledovat zprávy B2B pro vaši aplikaci logiky, přidejte do pracovního prostoru Analýzy protokolů řešení **Logic Apps B2B.**
 
-1. Do vyhledávacího pole [Azure Portal](https://portal.azure.com)zadejte `log analytics workspaces`a pak vyberte **Log Analytics pracovní prostory**.
+1. Do vyhledávacího pole [portálu](https://portal.azure.com) `log analytics workspaces`Azure Portal zadejte a vyberte **pracovní prostory Analýzy protokolů**.
 
-   ![Vyberte Log Analytics pracovní prostory.](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
+   ![Vyberte možnost "Pracovní prostory analýzy protokolů"](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
 
-1. V části **Log Analytics pracovní prostory**vyberte svůj pracovní prostor.
+1. V části **Pracovní prostory Log Analytics**vyberte pracovní prostor.
 
-   ![Vyberte svůj pracovní prostor Log Analytics](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
+   ![Vyberte pracovní prostor Log Analytics](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
 
-1. V podokně Přehled v části Začínáme **se službou Log Analytics** > **Konfigurace řešení monitorování**vyberte **Zobrazit řešení**.
+1. V podokně Přehled vyberte v části **Začínáme s řešeními** > **monitorování Konfigurace protokolů**vyberte **Zobrazit řešení**.
 
-   ![V podokně s přehledem vyberte možnost Zobrazit řešení.](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
+   ![V podokně Přehled vyberte Možnost Zobrazit řešení.](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
 
 1. V podokně Přehled vyberte **Přidat**.
 
-   ![V podokně s přehledem přidejte nové řešení.](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
+   ![V podokně přehledu přidejte nové řešení](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
 
-1. Po otevření **Marketplace** do vyhledávacího pole zadejte `logic apps b2b`a vyberte **Logic Apps B2B**.
+1. Po otevření **Marketplace** zadejte do `logic apps b2b`vyhledávacího pole a vyberte Logic Apps **B2B**.
 
-   ![Z Marketplace vyberte Logic Apps Management.](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
+   ![Na marketplace vyberte "Správa logických aplikací"](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
 
-1. V podokně s popisem řešení vyberte **vytvořit**.
+1. V podokně popis řešení vyberte **Vytvořit**.
 
-   ![Pokud chcete přidat Logic Apps B2B řešení, vyberte vytvořit.](./media/monitor-b2b-messages-log-analytics/create-logic-apps-b2b-solution.png)
+   ![Výběrem možnosti "Vytvořit" přidáte řešení Logic Apps B2B.](./media/monitor-b2b-messages-log-analytics/create-logic-apps-b2b-solution.png)
 
-1. Zkontrolujte a potvrďte Log Analytics pracovní prostor, do kterého chcete řešení nainstalovat, a pak vyberte **vytvořit** znovu.
+1. Zkontrolujte a potvrďte pracovní prostor Log Analytics, do kterého chcete nainstalovat řešení, a vyberte **Znovu vytvořit.**
 
-   ![Vyberte "vytvořit" pro "Logic Apps B2B"](./media/monitor-b2b-messages-log-analytics/confirm-log-analytics-workspace.png)
+   ![Vyberte "Vytvořit" pro "Logic Apps B2B"](./media/monitor-b2b-messages-log-analytics/confirm-log-analytics-workspace.png)
 
-   Jakmile Azure nasadí řešení do skupiny prostředků Azure, která obsahuje váš pracovní prostor Log Analytics, toto řešení se zobrazí v podokně Souhrn v pracovním prostoru. Při zpracování zpráv B2B se počet zpráv v tomto podokně aktualizuje.
+   Poté, co Azure nasadí řešení do skupiny prostředků Azure, která obsahuje váš pracovní prostor Analýzy protokolů, řešení se zobrazí v podokně souhrnu vašeho pracovního prostoru. Při zpracování zpráv B2B se aktualizuje počet zpráv v tomto podokně.
 
    ![Podokno souhrnu pracovního prostoru](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
 <a name="set-up-resource-logs"></a>
 
-## <a name="set-up-azure-monitor-logs"></a>Nastavení protokolů Azure Monitor
+## <a name="set-up-azure-monitor-logs"></a>Nastavení protokolů Azure Monitoru
 
-Protokolování Azure Monitor můžete povolit přímo z účtu pro integraci.
+Protokolování Azure Monitoru můžete povolit přímo z vašeho účtu integrace.
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte účet pro integraci.
+1. Na [webu Azure Portal](https://portal.azure.com)najděte a vyberte svůj účet integrace.
 
-   ![Vyhledejte a vyberte účet pro integraci.](./media/monitor-b2b-messages-log-analytics/find-integration-account.png)
+   ![Vyhledání a výběr účtu integrace](./media/monitor-b2b-messages-log-analytics/find-integration-account.png)
 
-1. V nabídce účtu pro integraci vyberte v části **monitorování**možnost **nastavení diagnostiky**. Vyberte **Přidat nastavení diagnostiky**.
+1. V nabídce účtu integrace vyberte v části **Sledování** **položku Diagnostic settings**. Vyberte **Přidat diagnostické nastavení**.
 
-   ![V části monitorování vyberte nastavení diagnostiky.](./media/monitor-b2b-messages-log-analytics/monitor-diagnostics-settings.png)
+   ![V části "Monitorování" vyberte "Nastavení diagnostiky"](./media/monitor-b2b-messages-log-analytics/monitor-diagnostics-settings.png)
 
-1. Nastavení vytvoříte pomocí následujících kroků:
+1. Chcete-li nastavení vytvořit, postupujte takto:
 
    1. Zadejte název nastavení.
 
-   1. Vyberte **odeslat Log Analytics**.
+   1. Vyberte **odeslat do analýzy protokolů**.
 
-   1. V poli **předplatné**vyberte předplatné Azure, které je přidružené k vašemu pracovnímu prostoru Log Analytics.
+   1. V **části Předplatné**vyberte předplatné Azure, které je přidružené k vašemu pracovnímu prostoru Analýzy protokolů.
 
-   1. V části **pracovní prostor Log Analytics**vyberte pracovní prostor, který chcete použít.
+   1. V **části Pracovní prostor Analýzy protokolů**vyberte pracovní prostor, který chcete použít.
 
-   1. V části **protokol**vyberte kategorii **IntegrationAccountTrackingEvents** , která určuje kategorii událostí, kterou chcete zaznamenat.
+   1. V **části log**vyberte kategorii **IntegrationAccountTrackingEvents,** která určuje kategorii událostí, kterou chcete zaznamenat.
 
    1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
-   Příklad: 
+   Například: 
 
-   ![Nastavení protokolů Azure Monitor ke shromažďování diagnostických dat](./media/monitor-b2b-messages-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
+   ![Nastavení protokolů Azure Monitor u shromažďovat diagnostická data](./media/monitor-b2b-messages-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
 
 <a name="view-message-status"></a>
 
@@ -114,28 +114,28 @@ Protokolování Azure Monitor můžete povolit přímo z účtu pro integraci.
 
 Po spuštění aplikace logiky můžete zobrazit stav a data o těchto zprávách v pracovním prostoru Log Analytics.
 
-1. Do vyhledávacího pole [Azure Portal](https://portal.azure.com) vyhledejte a otevřete Log Analytics pracovní prostor.
+1. V vyhledávacím poli [portálu Azure](https://portal.azure.com) najděte a otevřete pracovní prostor Log Analytics.
 
-1. V nabídce pracovního prostoru vyberte **Logic Apps B2B** **Souhrn > pracovního prostoru** .
+1. V nabídce pracovního prostoru vyberte **souhrnná logika** > aplikace pracovního prostoru**B2B**.
 
    ![Podokno souhrnu pracovního prostoru](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
    > [!NOTE]
-   > Pokud Logic Apps B2B dlaždice po spuštění okamžitě nezobrazuje výsledky, zkuste si vybrat možnost **aktualizovat** nebo počkat na krátkou dobu, než to zkusí znovu.
+   > Pokud se na dlaždici B2B aplikace logiky po spuštění okamžitě nezobrazí výsledky, zkuste vybrat **možnost Aktualizovat** nebo chvíli počkat, než to zkusíte znovu.
 
-   Ve výchozím nastavení se na dlaždici **Logic Apps B2B** zobrazuje data na základě jednoho dne. Chcete-li změnit rozsah dat na jiný interval, vyberte v horní části stránky ovládací prvek rozsah:
+   Ve výchozím nastavení se na dlaždici **Logic Apps B2B** zobrazují data založená na jednom dni. Chcete-li změnit rozsah dat na jiný interval, vyberte ovládací prvek oboru v horní části stránky:
 
    ![Interval změny](./media/monitor-b2b-messages-log-analytics/change-summary-interval.png)
 
-1. Po zobrazení řídicího panelu stavu zprávy můžete zobrazit další podrobnosti pro určitý typ zprávy, který zobrazuje data na základě jednoho dne. Vyberte dlaždici pro **AS2**, **X12**nebo **EDIFACT**.
+1. Po zobrazení řídicího panelu stavu zprávy můžete zobrazit další podrobnosti o konkrétním typu zprávy, který zobrazuje data založená na jednom dni. Vyberte dlaždici **as2**, **X12**nebo **EDIFACT**.
 
    ![Zobrazení stavů zpráv](./media/monitor-b2b-messages-log-analytics/workspace-summary-b2b-messages.png)
 
-   Zobrazí se seznam zpráv pro vaši zvolenou dlaždici. Tady je příklad, jak může seznam zpráv AS2 vypadat takto:
+   Pro vybranou dlaždici se zobrazí seznam zpráv. Například, tady je to, co seznam zpráv AS2 může vypadat takto:
 
    ![Stavy a podrobnosti pro zprávy AS2](./media/monitor-b2b-messages-log-analytics/as2-message-results-list.png)
 
-   Další informace o vlastnostech každého typu zprávy najdete v popisech těchto vlastností zprávy:
+   Další informace o vlastnostech jednotlivých typů zpráv najdete v těchto popisech vlastností zprávy:
 
    * [Vlastnosti zprávy AS2](#as2-message-properties)
    * [Vlastnosti zprávy X12](#x12-message-properties)
@@ -172,24 +172,24 @@ Po spuštění aplikace logiky můžete zobrazit stav a data o těchto zprávác
 
 ## <a name="property-descriptions-and-name-formats-for-as2-x12-and-edifact-messages"></a>Popisy vlastností a formáty názvů pro zprávy AS2, X12 a EDIFACT
 
-V případě každého typu zprávy zde jsou popisy vlastností a formáty názvů pro stažené soubory zpráv.
+Pro každý typ zprávy jsou zde popisy vlastností a formáty názvů stažených souborů zpráv.
 
 <a name="as2-message-properties"></a>
 
-### <a name="as2-message-property-descriptions"></a>Popis vlastnosti zprávy AS2
+### <a name="as2-message-property-descriptions"></a>Popisy vlastností zprávy AS2
 
-Tady jsou popisy vlastností každé zprávy AS2.
+Zde jsou popisy vlastností pro každou zprávu AS2.
 
 | Vlastnost | Popis |
 |----------|-------------|
-| **Použil** | Partner hosta zadaný v **Nastavení příjmu**nebo v hostitelském partnerovi zadaném v **nastavení Odeslat** pro smlouvu AS2 |
-| **Pozorování** | Hostitelský partner zadaný v **Nastavení příjmu**nebo partner hosta zadaný v **nastavení Odeslat** pro smlouvu AS2 |
-| **Aplikace logiky** | Aplikace logiky, ve které se nastavují akce AS2 |
-| **Stav** | Stav zprávy AS2 <br>Úspěch = přijata nebo odeslána platná zpráva AS2. Není nastavený žádný MDN. <br>Úspěch = přijata nebo odeslána platná zpráva AS2. MDN se nastavuje a přijímá nebo se posílá MDN. <br>Neúspěšné = byla přijata neplatná zpráva AS2. Není nastavený žádný MDN. <br>Pending = přijato nebo odeslána platná zpráva AS2. MDN je nastavené a očekává se MDN. |
-| **ZTRACEN** | Stav zprávy MDN <br>Přijato = přijato nebo odesláno kladné MDN. <br>Čeká na vyřízení = čekání na přijetí nebo odeslání MDN. <br>Odmítnuto = přijato nebo odesláno záporné MDN. <br>Nepožadováno = MDN se v této smlouvě nenastavuje. |
-| **Směr** | Směr zprávy AS2 |
-| **ID sledování** | ID, které koreluje všechny triggery a akce v aplikaci logiky |
-| **ID zprávy** | ID zprávy AS2 ze záhlaví zpráv AS2 |
+| **Odesílatel** | Partner hosta zadaný v **nastavení příjmu**nebo hostitelský partner zadaný v části **Nastavení odesílání** pro smlouvu AS2 |
+| **Příjemce** | Hostitelský partner zadaný v **nastavení příjmu**nebo partner hosta zadaný v **nastavení odesílání** pro smlouvu AS2 |
+| **Aplikace logiky** | Aplikace logiky, kde jsou nastaveny akce AS2 |
+| **Stav** | Stav zprávy AS2 <br>Úspěch = Přijato nebo odesláno platné as2 zprávy. Není nastavena žádná mdn. <br>Úspěch = Přijato nebo odesláno platné as2 zprávy. MDN je nastavena a přijata nebo je odeslána mdn. <br>Nezdařilo se = Byla přijata neplatná zpráva AS2. Není nastavena žádná mdn. <br>Čekající = Přijata nebo odeslána platná zpráva AS2. MDN je nastavena a mdn se očekává. |
+| **Ack** | Stav zprávy MDN <br>Přijato = Přijato nebo odesláno kladné MDN. <br>Čeká na vyřízení = Čekání na příjem nebo odeslání MDN. <br>Odmítnuto = Přijato nebo odesláno záporné Číslo MDN. <br>Není vyžadováno = MDN není ve smlouvě nastavena. |
+| **Směru** | Směr zprávy AS2 |
+| **ID sledování** | ID, které koreluje všechny aktivační události a akce v aplikaci logiky |
+| **ID zprávy** | ID zprávy AS2 z hlavičky zprávy AS2 |
 | **Časové razítko** | Čas, kdy akce AS2 zpracovala zprávu |
 |||
 
@@ -209,23 +209,23 @@ Here are the name formats for each downloaded AS2 message folder and files.
 
 <a name="x12-message-properties"></a>
 
-### <a name="x12-message-property-descriptions"></a>Popis vlastnosti zprávy X12
+### <a name="x12-message-property-descriptions"></a>Popisy vlastností zprávy X12
 
-Tady jsou popisy vlastností každé zprávy X12.
+Zde jsou popisy vlastností pro každou zprávu X12.
 
 | Vlastnost | Popis |
 |----------|-------------|
-| **Použil** | Partner hosta zadaný v **Nastavení příjmu**nebo v hostitelském partnerovi zadaném v **nastavení Odeslat** pro smlouvu X12 |
-| **Pozorování** | Hostitelský partner zadaný v **Nastavení příjmu**nebo partner hosta zadaný v **nastavení Odeslat** pro smlouvu X12 |
-| **Aplikace logiky** | Aplikace logiky, ve které se nastavují akce X12 |
-| **Stav** | Stav zprávy X12 <br>Úspěch = přijata nebo odeslána platná zpráva X12. Není nastavené žádné funkční potvrzení. <br>Úspěch = přijata nebo odeslána platná zpráva X12. Je nastaveno a přijato funkční potvrzení, nebo je odesláno funkční potvrzení. <br>Nepodařilo se = přijmout nebo odeslat neplatnou zprávu X12. <br>Pending = přijato nebo odeslána platná zpráva X12. Je nastavené funkční potvrzení a očekává se funkční potvrzení. |
-| **ZTRACEN** | Stav funkce ACK (997) <br>Přijato = přijato nebo odesláno kladné funkční potvrzení. <br>Odmítnuto = přijato nebo odesláno záporné funkční potvrzení. <br>Pending = očekává se funkční potvrzení, ale nepřijalo se. <br>Pending = vygenerovalo funkční potvrzení, ale nemůže být odesláno partnerovi. <br>Nepožadováno = funkční potvrzení není nastavené. |
-| **Směr** | Směr zprávy X12 |
-| **ID sledování** | ID, které koreluje všechny triggery a akce v aplikaci logiky |
-| **Typ zprávy** | Typ zprávy X12 EDI |
-| **ICN** | Řídicí číslo výměny pro zprávu X12 |
+| **Odesílatel** | Partner hosta zadaný v **nastavení příjmu**nebo hostitelský partner zadaný v části **Nastavení odesílání** pro smlouvu X12. |
+| **Příjemce** | Hostitelský partner zadaný v **nastavení příjmu**nebo partner hosta zadaný v **nastavení odesílání** pro smlouvu X12. |
+| **Aplikace logiky** | Aplikace logiky, kde jsou nastaveny akce X12 |
+| **Stav** | Stav zprávy X12 <br>Úspěch = Přijata nebo odeslána platná zpráva X12. Není nastaven žádný funkční ack. <br>Úspěch = Přijata nebo odeslána platná zpráva X12. Funkční potvrzení je nastaveno a přijato, nebo je odeslán funkční ack. <br>Nepodařilo se = Přijato nebo odesláno neplatné X12 zprávy. <br>Čeká na vyřízení = Přijato nebo odesláno platné X12 zprávy. Funkční ack je nastavena, a funkční ack se očekává. |
+| **Ack** | Funkční stav Ack (997) <br>Přijato = Přijato nebo odesláno pozitivní funkční ack. <br>Odmítnuto = Přijato nebo odesláno negativní funkční potvrzení. <br>Čeká na vyřízení = Očekává funkční potvrzení, ale nebylo přijato. <br>Čeká na vyřízení = Vygeneroval funkční potvrzení, ale nelze odeslat partnerovi. <br>Není vyžadováno = Funkční potvrzení není nastaveno. |
+| **Směru** | Směr zprávy X12 |
+| **ID sledování** | ID, které koreluje všechny aktivační události a akce v aplikaci logiky |
+| **Typ Msg** | Typ zprávy EDI X12 |
+| **Icn** | Kontrolní číslo výměny pro zprávu X12 |
 | **TSCN** | Kontrolní číslo sady transakcí pro zprávu X12 |
-| **Časové razítko** | Čas, kdy akce X12 zpracovala zprávu |
+| **Časové razítko** | Doba, kdy akce X12 zpracovala zprávu |
 |||
 
 <!--
@@ -244,23 +244,23 @@ Here are the name formats for each downloaded X12 message folder and files.
 
 <a name="EDIFACT-message-properties"></a>
 
-### <a name="edifact-message-property-descriptions"></a>Popis vlastnosti zprávy EDIFACT
+### <a name="edifact-message-property-descriptions"></a>Popisy vlastností zpráv EDIFACT
 
-Tady jsou popisy vlastností každé zprávy EDIFACT.
+Zde jsou popisy vlastností pro každou zprávu EDIFACT.
 
 | Vlastnost | Popis |
 |----------|-------------|
-| **Použil** | Partner hosta zadaný v **Nastavení příjmu**nebo v hostitelském partnerovi zadaném v **nastavení Odeslat** pro smlouvu EDIFACT |
-| **Pozorování** | Hostitelský partner zadaný v **Nastavení příjmu**nebo partner hosta zadaný v **nastavení Odeslat** pro smlouvu EDIFACT |
-| **Aplikace logiky** | Aplikace logiky, ve které se nastavují akce EDIFACT |
-| **Stav** | Stav zprávy EDIFACT <br>Úspěch = přijata nebo odeslána platná zpráva EDIFACT. Není nastavené žádné funkční potvrzení. <br>Úspěch = přijata nebo odeslána platná zpráva EDIFACT. Je nastaveno a přijato funkční potvrzení, nebo je odesláno funkční potvrzení. <br>Nepodařilo se = přijmout nebo odeslat neplatnou zprávu EDIFACT <br>Pending = přijato nebo odeslána platná zpráva EDIFACT. Je nastavené funkční potvrzení a očekává se funkční potvrzení. |
-| **ZTRACEN** | Stav CONTRL (funkční ACK) <br>Přijato = přijato nebo odesláno kladné funkční potvrzení. <br>Odmítnuto = přijato nebo odesláno záporné funkční potvrzení. <br>Pending = očekává se funkční potvrzení, ale nepřijalo se. <br>Pending = vygenerovalo funkční potvrzení, ale nemůže být odesláno partnerovi. <br>Nepožadováno = funkční potvrzení není nastavené. |
-| **Směr** | Směr zprávy EDIFACT |
-| **ID sledování** | ID, které koreluje všechny triggery a akce v aplikaci logiky |
-| **Typ zprávy** | Typ zprávy EDIFACT |
-| **ICN** | Řídicí číslo výměny pro zprávu EDIFACT |
+| **Odesílatel** | Partner hosta zadaný v **nastavení příjmu**nebo hostitelský partner zadaný v části **Nastavení odesílání** pro smlouvu EDIFACT |
+| **Příjemce** | Hostitelský partner zadaný v **nastavení příjmu**nebo partner hosta zadaný v části **Nastavení odesílání** pro smlouvu EDIFACT |
+| **Aplikace logiky** | Aplikace logiky, kde jsou nastaveny akce EDIFACT |
+| **Stav** | Stav zprávy EDIFACT <br>Úspěch = Přijato nebo odesláno platné zprávy EDIFACT. Není nastaven žádný funkční ack. <br>Úspěch = Přijato nebo odesláno platné zprávy EDIFACT. Funkční potvrzení je nastaveno a přijato, nebo je odeslán funkční ack. <br>Nepodařilo se = Přijato nebo odesláno neplatné zprávy EDIFACT <br>Čekající = Přijato nebo odesláno platné zprávy EDIFACT. Funkční ack je nastavena, a funkční ack se očekává. |
+| **Ack** | Funkční stav ack (CONTRL) <br>Přijato = Přijato nebo odesláno pozitivní funkční ack. <br>Odmítnuto = Přijato nebo odesláno negativní funkční potvrzení. <br>Čeká na vyřízení = Očekává funkční potvrzení, ale nebylo přijato. <br>Čeká na vyřízení = Vygeneroval funkční potvrzení, ale nelze odeslat partnerovi. <br>Není vyžadováno = Funkční potvrzení není nastaveno. |
+| **Směru** | Směr zprávy EDIFACT |
+| **ID sledování** | ID, které koreluje všechny aktivační události a akce v aplikaci logiky |
+| **Typ Msg** | Typ zprávy EDIFACT |
+| **Icn** | Kontrolní číslo pro výměnu zprávy EDIFACT |
 | **TSCN** | Kontrolní číslo sady transakcí pro zprávu EDIFACT |
-| **Časové razítko** | Čas, kdy akce EDIFACT zpracovala zprávu |
+| **Časové razítko** | Doba, kdy akce EDIFACT zpracovala zprávu |
 |||
 
 <!--
@@ -279,4 +279,4 @@ Here are the name formats for each downloaded EDIFACT message folder and files.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření dotazů monitorování a sledování](../logic-apps/create-monitoring-tracking-queries.md)
+* [Vytváření monitorovacích a sledovacích dotazů](../logic-apps/create-monitoring-tracking-queries.md)

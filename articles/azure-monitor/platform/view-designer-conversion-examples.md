@@ -1,5 +1,5 @@
 ---
-title: Příklady převodu návrháře zobrazení Azure Monitor na sešity
+title: Návrhář zobrazení Azure Monitor u příkladů převodu sešitů
 description: ''
 author: austonli
 ms.author: aul
@@ -7,21 +7,21 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274161"
 ---
-# <a name="view-designer-conversion-examples"></a>Příklady převodu návrháře zobrazení
+# <a name="view-designer-conversion-examples"></a>Zobrazit příklady převodu návrháře
 
-Pokud chcete replikovat sešit s kartami návrháře zobrazení, zkopírujte a vložte následující kód do rozšířeného editoru označeného symbolem </> na panelu nástrojů.
+Chcete-li replikovat sešit s kartami návrháře zobrazení, zkopírujte a vložte následující kód do rozšířeného editoru označeného symbolem </> v panelu nástrojů
 
-![Panel nástrojů Rozšířený editor](media/view-designer-conversion-examples/toolbar.png)
+![Panel nástrojů Rozšířené ho editoru](media/view-designer-conversion-examples/toolbar.png)
 
-Uživatelé možná budou muset aktualizovat svá nastavení a odběry dotazů na vlastní dostupné prostředky.
+Uživatelé mohou mít aktualizovat nastavení dotazů a odběry na své vlastní přístupné prostředky
 
-## <a name="vertical"></a>Svislé
+## <a name="vertical"></a>Svisle
 
 ```Json
 {
@@ -337,7 +337,7 @@ Uživatelé možná budou muset aktualizovat svá nastavení a odběry dotazů n
 }
 ```
 
-## <a name="tabbed"></a>S kartami 
+## <a name="tabbed"></a>Záložkách 
 
 ```Json
 {

@@ -1,6 +1,6 @@
 ---
-title: Schéma událostí události rozbočovače Azure Event Grid
-description: Popisuje vlastnosti, které jsou k dispozici pro události centra událostí pomocí služby Azure Event Grid
+title: Schéma událostí centra event gridu Azure
+description: Popisuje vlastnosti, které jsou k dispozici pro události centra událostí s Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561824"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schéma událostí Azure Event Grid pro službu event hubs
+# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schéma událostí Azure Event Grid pro centra událostí
 
-Tento článek obsahuje vlastnosti a schéma pro události event hubs. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události centra událostí.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
 
-Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj událostí služby Event Hubs](event-sources.md#event-hubs).
+Seznam ukázkových skriptů a kurzů naleznete v tématu [Zdroj událostí Centra událostí](event-sources.md#event-hubs).
 
-### <a name="available-event-types"></a>Typy událostí k dispozici
+### <a name="available-event-types"></a>Dostupné typy událostí
 
-Generuje Služba Event Hubs **Microsoft.EventHub.CaptureFileCreated** typ události, když se vytvoří zachytávací soubor.
+Centra událostí vyzařují typ události **Microsoft.EventHub.CaptureFileCreated** při vytvoření souboru sběru.
 
 ## <a name="example-event"></a>Příklad události
 
-Událost vzorku pro tento ukazuje schématu události event hubs vyvolá, když funkci capture uloží soubor: 
+Tato ukázková událost zobrazuje schéma události centra událostí, která byla vyvolána, když funkce sběru ukládá soubor: 
 
 ```json
 [
@@ -55,35 +55,35 @@ Událost vzorku pro tento ukazuje schématu události event hubs vyvolá, když 
 
 ## <a name="event-properties"></a>Vlastnosti události
 
-Událost má následující dat nejvyšší úrovně:
+Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | string | Vydavatel definované cesta předmět události. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor pro událost. |
-| data | object | Data události centra událostí. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| id | řetězec | Jedinečný identifikátor události |
+| data | objekt | Data událostí centra událostí. |
+| dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| fileUrl | string | Cesta k zachytávací soubor. |
-| fileType | string | Typ souboru zachytávací soubor. |
-| partitionId | string | ID horizontálního oddílu. |
-| sizeInBytes | integer | Velikost souboru. |
-| eventCount | integer | Počet událostí v souboru. |
-| firstSequenceNumber | integer | Nejmenší pořadové číslo z fronty. |
-| lastSequenceNumber | integer | Poslední pořadové číslo z fronty. |
-| firstEnqueueTime | string | Při prvním z fronty. |
-| lastEnqueueTime | string | Čas posledního z fronty. |
+| adresa souboru | řetězec | Cesta k souboru sběru. |
+| Filetype | řetězec | Typ souboru sběru. |
+| Partitionid | řetězec | ID úlomek. |
+| sizeInBytes | celé číslo | Velikost souboru. |
+| eventCount | celé číslo | Počet událostí v souboru. |
+| prvníSequenceNumber | celé číslo | Nejmenší pořadové číslo z fronty. |
+| lastSequenceNumber | celé číslo | Poslední pořadové číslo z fronty. |
+| firstEnqueueTime | řetězec | Poprvé z fronty. |
+| lastEnqueueTime | řetězec | Poslední čas z fronty. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
-* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
-* Informace o zpracování událostí event hubs najdete v tématu [Stream velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md).
+* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md)
+* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Informace o zpracování událostí centra událostí najdete v [tématu streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md).
