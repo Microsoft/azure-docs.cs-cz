@@ -9,37 +9,37 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471500"
 ---
-Podmíněný přístup umožňuje jemně odstupňované řízení přístupu na základě jednotlivých aplikací. Aby bylo možné používat podmíněný přístup, měli byste mít Azure AD Premium 1 nebo vyšší licence pro uživatele, na které budou platit pravidla podmíněného přístupu.
+Podmíněný přístup umožňuje jemně odstupňované řízení přístupu na základě aplikace. Chcete-li používat podmíněný přístup, měli byste mít Azure AD Premium 1 nebo vyšší licencování použít pro uživatele, kteří budou podléhat pravidlům podmíněného přístupu.
 
-1. Přejděte na stránku **podnikové aplikace – všechny aplikace** a klikněte na **Azure VPN**.
+1. Přejděte na **stránku Podnikové aplikace – všechny aplikace** a klikněte na Azure **VPN**.
 
-   - Klikněte na **podmíněný přístup**.
-   - Kliknutím na **Nová zásada** otevřete **nové** podokno.
-2. V podokně **Nový** přejděte na **přiřazení – > uživatelů a skupin**. Na kartě **Uživatelé a skupiny – >** **Zahrnout** :
+   - Klepněte na **položku Podmíněný přístup**.
+   - Kliknutím na **Nová zásada** otevřete **podokno Nový.**
+2. V podokně **Nový** přejděte na **příkaz Přiřazení -> Uživatelé a skupiny**. Na kartě **Uživatelé a skupiny ->** **Zahrnout:**
 
-   - Klikněte na **Vybrat uživatele a skupiny**.
-   - Kontrolovat **uživatele a skupiny**.
-   - Kliknutím na **Vybrat** vyberte skupinu nebo skupinu uživatelů, které mají být ovlivněné MFA.
+   - Klepněte na **tlačítko Vybrat uživatele a skupiny**.
+   - Zkontrolujte **uživatele a skupiny**.
+   - Klepnutím na **tlačítko Vybrat** vyberte skupinu nebo sadu uživatelů, které mají být ovlivněny vícefaktorovou pomocí.
    - Klikněte na **Done** (Hotovo).
 
    ![Přiřazení](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-assignments.png)
-3. V podokně **Nový** přejděte do podokna **ovládací prvky přístupu – > udělení** :
+3. V podokně **Nový** přejděte do podokna **Access controls -> Grant:**
 
-   - Klikněte na **udělit přístup**.
-   - Klikněte na **vyžadovat službu Multi-Factor Authentication**.
-   - Klikněte na **vyžadovat všechny vybrané ovládací prvky**.
-   - Klikněte na **Vybrat**.
+   - Klepněte na tlačítko **Udělit přístup**.
+   - Klepněte na **tlačítko Vyžadovat vícefaktorové ověřování**.
+   - Klepněte na **tlačítko Vyžadovat všechny vybrané ovládací prvky**.
+   - Klepněte na **tlačítko Vybrat**.
    
-   ![Udělení přístupu – MFA](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
-4. V části **Povolit zásady** :
+   ![Udělit přístup - Vícefaktorové finanční hod.](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
+4. V části **Povolit zásady:**
 
-   - Vyberte **zapnuto**.
-   - Klikněte na možnost **Vytvořit**.
+   - Vyberte **Možnost Zapnuto**.
+   - Klikněte na **Vytvořit**.
 
-   ![Povolit zásadu](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)
+   ![Povolit zásady](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)

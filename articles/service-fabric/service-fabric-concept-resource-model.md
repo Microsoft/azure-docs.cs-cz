@@ -1,93 +1,105 @@
 ---
 title: Model prostředků aplikace Azure Service Fabric
-description: Tento článek poskytuje přehled správy aplikace Service Fabric Azure pomocí Azure Resource Manager
+description: Tento článek obsahuje přehled správy aplikace Azure Service Fabric pomocí Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 44073967730d95e803f57d504aa9d8c529250a8d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751204"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481112"
 ---
-# <a name="service-fabric-application-resource-model"></a>Service Fabric model prostředku aplikace
+# <a name="service-fabric-application-resource-model"></a>Model prostředků aplikace Service Fabric
 
-Doporučuje se Service Fabric aplikace nasadit do Service Fabric clusteru prostřednictvím Azure Resource Manager. Tato metoda umožňuje popsat aplikace a služby ve formátu JSON a nasazovat je do stejné šablony Správce prostředků jako váš cluster. Na rozdíl od nasazení a správy aplikací přes PowerShell nebo Azure CLI není nutné čekat na to, aby cluster byl připravený. Proces registrace, zřizování a nasazování aplikací potom může probíhat v jediném kroku. Je to osvědčený postup pro správu životního cyklu aplikací ve vašem clusteru. Další informace najdete v tématu [osvědčené postupy: infrastruktura jako kód](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
+Máte několik možností pro nasazení aplikací Azure Service Fabric v clusteru Service Fabric. Doporučujeme používat Azure Resource Manager. Pokud používáte Resource Manager, můžete popsat aplikace a služby v JSON a pak je nasadit ve stejné šabloně Správce prostředků jako váš cluster. Na rozdíl od použití PowerShellu nebo Azure CLI k nasazení a správě aplikací, pokud používáte Správce prostředků, nemusíte čekat na připravenost clusteru; registrace, zřizování a nasazování aplikací může proběhnout v jednom kroku. Pomocí Správce prostředků je nejlepší způsob, jak spravovat životní cyklus aplikace v clusteru. Další informace naleznete v [tématu Doporučené postupy: Infrastruktura jako kód](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources).
 
-V případě potřeby můžete své aplikace spravovat jako Správce prostředků prostředky pro zlepšení:
+Správa aplikací jako prostředků ve Správci prostředků vám může pomoci získat zlepšení v těchto oblastech:
 
-* Záznam pro audit: Správce prostředků Audituje každou operaci a udržuje podrobný *Protokol aktivit* , který vám může pomáhat sledovat změny provedené v těchto aplikacích a clusteru.
-* Řízení přístupu na základě role: Správa přístupu ke clusterům i aplikacím nasazeným v clusteru je možné provádět prostřednictvím stejné Správce prostředků šablony.
-* Azure Resource Manager (přes Azure Portal) se stane jedním zastavením pro správu clusteru a důležitých nasazení aplikací.
-
-## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>Service Fabric životní cyklus aplikace s Azure Resource Manager
+* Záznam auditu: Správce prostředků audituje každou operaci a vede podrobný protokol aktivit. Protokol aktivit vám může pomoci sledovat všechny změny provedené v aplikacích a v clusteru.
+* Řízení přístupu založené na rolích: Přístup ke clusterům a aplikacím nasazeným v clusteru můžete spravovat pomocí stejné šablony Správce prostředků.
+* Efektivita správy: Pomocí Správce prostředků poskytuje jedno umístění (portál Azure) pro správu clusteru a nasazení kritických aplikací.
 
 V tomto dokumentu se dozvíte, jak:
 
 > [!div class="checklist"]
 >
-> * Nasazení prostředků aplikace pomocí Azure Resource Manager
-> * Upgrade prostředků aplikace pomocí Azure Resource Manager
-> * Odstranit prostředky aplikace
+> * Nasaďte prostředky aplikací pomocí Správce prostředků.
+> * Upgradujte prostředky aplikací pomocí Správce prostředků.
+> * Odstraňte prostředky aplikace.
 
-## <a name="deploy-application-resources-using-azure-resource-manager"></a>Nasazení prostředků aplikace pomocí Azure Resource Manager
+## <a name="deploy-application-resources"></a>Nasazení prostředků aplikací
 
-Chcete-li nasadit aplikaci a její služby pomocí modelu Azure Resource Managerch prostředků aplikace, je nutné zabalit kód aplikace, nahrát balíček a pak odkazovat na umístění balíčku v šabloně Azure Resource Manager jako aplikaci. partner. Další informace najdete v [balíčku aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
+Kroky vysoké úrovně, které provedete nasazení aplikace a jejích služeb pomocí modelu prostředků aplikace Resource Manager, jsou:
+1. Zabalte kód aplikace.
+1. Nahrajte balíček.
+1. Odkazna umístění balíčku v šabloně Správce prostředků jako prostředek aplikace. 
 
-Pak vytvořte šablonu Azure Resource Manager, aktualizujte soubor parametrů s podrobnostmi o aplikaci a nasaďte ji do clusteru Service Fabric. [Tady](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)najdete ukázky.
+Další informace naleznete [v aplikaci Package a Application](service-fabric-package-apps.md#create-an-sfpkg).
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu Storage
+Potom vytvoříte šablonu Správce prostředků, aktualizujete soubor parametrů s podrobnostmi o aplikaci a nasadíte šablonu do clusteru Service Fabric. [Prozkoumejte ukázky](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
 
-Nasazení aplikace ze šablony Správce prostředků vyžaduje účet úložiště pro přípravu image aplikace. Můžete znovu použít existující účet úložiště nebo vytvořit nový účet úložiště pro přípravu svých aplikací. Pokud chcete použít existující účet úložiště, můžete tento krok přeskočit. 
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-![Vytvoření účtu úložiště][CreateStorageAccount]
+Chcete-li nasadit aplikaci ze šablony Správce prostředků, musíte mít účet úložiště. Účet úložiště se používá k fázi image aplikace. 
 
-### <a name="configure-storage-account"></a>Konfigurace účtu úložiště
+Můžete znovu použít existující účet úložiště nebo můžete vytvořit nový účet úložiště pro přípravu aplikací. Pokud používáte existující účet úložiště, můžete tento krok přeskočit. 
 
-Po vytvoření účtu úložiště je potřeba vytvořit kontejner objektů blob, kde můžete aplikace připravit. V Azure Portal přejděte do účtu úložiště, do kterého chcete aplikace uložit. Vyberte okno **objekty blob** a klikněte na tlačítko **Přidat kontejner** . Prostředky v clusteru je možné zabezpečit nastavením úrovně veřejného přístupu na Private. Přístup lze udělit několika způsoby:
+![vytvořit účet úložiště][CreateStorageAccount]
 
-* [Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](../storage/common/storage-auth-aad-app.md)
-* [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC na webu Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)
-* [Delegovat přístup pomocí sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
-)
+### <a name="configure-your-storage-account"></a>Konfigurace účtu úložiště
 
- V tomto příkladu použijeme anonymní přístup pro čtení pro objekty blob.
+Po vytvoření účtu úložiště vytvoříte kontejner objektů blob, kde lze aplikace připravené. Na webu Azure Portal přejděte na účet Azure Storage, kde chcete ukládat aplikace. Vyberte **objekty** > BLOB**přidat kontejner**. 
 
-![Vytvořit objekt BLOB][CreateBlob]
+Prostředky v clusteru lze zabezpečit nastavením úrovně veřejného přístupu na **soukromé**. Přístup můžete udělit několika způsoby:
 
-### <a name="stage-application-in-a-storage-account"></a>Fáze aplikace v účtu úložiště
+* Autorizujte přístup k objektům BLOB a frontám pomocí [služby Azure Active Directory](../storage/common/storage-auth-aad-app.md).
+* Udělte přístup k datům objektů blob Azure a fronty pomocí [RBAC na webu Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md).
+* Delegujte přístup pomocí [sdíleného přístupového podpisu](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
-Předtím, než bude možné aplikaci nasadit, je nutné ji připravit v úložišti objektů BLOB. V tomto kurzu vytvoříme balíček aplikace ručně, ale tento krok se dá automatizovat.  Další informace najdete v [balíčku aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg). V následujících krocích se použije [hlasovací ukázková aplikace](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) .
+Příklad na následujícím snímku obrazovky používá anonymní přístup pro čtení pro objekty BLOB.
 
-1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na hlasovací projekt a vyberte možnost balíček.
-][PackageApplication] aplikace ![ového balíčku  
-2. Otevřete adresář **.\Service-Fabric-dotnet-quickstart\Voting\pkg\Debug** , který jste právě vytvořili, a nahlaste obsah do souboru s názvem **hlasovat. zip** , aby soubor souboru ApplicationManifest. XML byl v kořenu souboru ZIP.  
-Aplikace ![zip][ZipApplication]  
-3. Přejmenujte příponu souboru z. zip na **. sfpkg**.
-4. V Azure Portal v kontejneru **aplikace** svého účtu úložiště klikněte na **nahrát** a nahrajte **hlasování. sfpkg**.  
-![odeslat balíček aplikace][UploadAppPkg]
+![Vytvoření objektu blob][CreateBlob]
 
-Aplikace je teď připravená. Nyní jsme připraveni vytvořit šablonu Azure Resource Manager pro nasazení aplikace.
+### <a name="stage-the-application-in-your-storage-account"></a>Inscenujte aplikaci ve vašem účtu úložiště
 
-### <a name="create-the-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manager
+Před nasazením aplikace je nutné nastínit aplikaci v úložišti objektů blob. V tomto kurzu vytvoříme balíček aplikace ručně. Mějte na paměti, že tento krok lze automatizovat. Další informace naleznete v [tématu Balíček aplikace](service-fabric-package-apps.md#create-an-sfpkg). 
 
-Ukázková aplikace obsahuje [Azure Resource Manager šablony](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) , které lze použít k nasazení aplikace. Soubory šablon mají název **UserApp. JSON** a **UserApp. Parameters. JSON**.
+V tomto kurzu používáme [ukázkovou aplikaci Hlasování](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart).
+
+1. V sadě Visual Studio klikněte pravým **tlačítkem** myši na hlasovací projekt a potom vyberte **balíček**.
+
+   ![Aplikace balíčku][PackageApplication]  
+1. Přejděte do adresáře *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug.* Zapněte obsah do souboru s názvem *Voting.zip*. Soubor *ApplicationManifest.xml* by měl být v kořenovém adresáři souboru ZIP.
+
+   ![Aplikace Zip][ZipApplication]  
+1. Přejmenujte soubor a změňte příponu z .zip na *.sfpkg*.
+
+1. Na webu Azure Portal vyberte v kontejneru **aplikací** pro váš účet úložiště možnost **Nahrát**a pak nahrajte **Hlasovací.sfpkg**. 
+
+   ![Nahrát balíček aplikace][UploadAppPkg]
+
+Nyní je aplikace připravená a můžete vytvořit šablonu Správce prostředků pro nasazení aplikace.
+
+### <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
+
+Ukázková aplikace obsahuje [šablony Azure Resource Manageru, které](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) můžete použít k nasazení aplikace. Názvy souborů šablony jsou *UserApp.json* a *UserApp.Parameters.json*.
 
 > [!NOTE]
-> Soubor **UserApp. Parameters. JSON** se musí aktualizovat názvem vašeho clusteru.
+> Soubor *UserApp.Parameters.json* musí být aktualizován názvem clusteru.
 >
 >
 
-| Parametr              | Popis                                 | Příklad:                                                      | Komentáře                                                     |
+| Parametr              | Popis                                 | Příklad                                                      | Komentáře                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| clusterName            | Název clusteru, do kterého nasazujete | SF – cluster123                                                |                                                              |
-| aplikace            | Název aplikace                 | Právem                                                       |
-| applicationTypeName    | Název typu aplikace           | VotingType                                                   | Musí odpovídat, co je v souboru ApplicationManifest. XML.                 |
-| applicationTypeVersion | Verze typu aplikace         | 1.0.0                                                        | Musí odpovídat, co je v souboru ApplicationManifest. XML.                 |
-| serviceName            | Název služby, kterou služba         | Hlasovacího tlačítka ~ VotingWeb                                             | Musí být ve formátu ApplicationName ~ ServiceType            |
-| serviceTypeName        | Název typu služby                | VotingWeb                                                    | Musí odpovídat, co je v souboru ServiceManifest. XML.                 |
-| appPackageUrl          | Adresa URL pro úložiště objektů BLOB aplikace     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Adresa URL balíčku aplikace v úložišti objektů BLOB (postup nastavení je popsaný níže) |
+| clusterName            | Název clusteru, do který ho nasazujete | sf-cluster123                                                |                                                              |
+| aplikace            | Název aplikace                 | Hlasování                                                       |
+| applicationTypeName    | Název typu aplikace           | Typ hlasování                                                   | Musí odpovídat applicationManifest.xml                 |
+| applicationTypeVersion | Verze typu aplikace         | 1.0.0                                                        | Musí odpovídat applicationManifest.xml                 |
+| Název_služby            | Název služby         | Hlasování ~ Hlasovací Web                                             | Musí být ve formátu ApplicationName~ServiceType            |
+| název_služby serviceTypeName        | Název typu služby                | VotingWeb                                                    | Musí odpovídat souboru ServiceManifest.xml.                 |
+| appPackageUrl          | Adresa URL úložiště objektů blob aplikace     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Adresa URL balíčku aplikace v úložišti objektů blob (postup nastavení adresy URL je popsán dále v článku) |
 
 ```json
 {
@@ -118,17 +130,17 @@ Ukázková aplikace obsahuje [Azure Resource Manager šablony](https://github.co
 
 ### <a name="deploy-the-application"></a>Nasazení aplikace
 
-Pokud chcete nasadit aplikaci, spusťte rutinu New-AzResourceGroupDeployment a nasaďte ji do skupiny prostředků, která obsahuje váš cluster.
+Spusťte rutinu **New-AzResourceGroupDeployment** a nasaďte aplikaci do skupiny prostředků, která obsahuje váš cluster:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParameterFile ".\UserApp.Parameters.json" -TemplateFile ".\UserApp.json" -Verbose
 ```
 
-## <a name="upgrade-service-fabric-application-using-azure-resource-manager"></a>Upgrade aplikace Service Fabric pomocí Azure Resource Manager
+## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Upgrade aplikace Service Fabric pomocí Správce prostředků
 
-Aplikace, které jsou už nasazené do clusteru Service Fabric, se upgradují z následujících důvodů:
+Můžete upgradovat aplikaci, která je již nasazena do clusteru Service Fabric z jednoho z těchto důvodů:
 
-1. Do aplikace se přidá nová služba. Do souboru Service-manifest. XML a Application-manifest. XML musí být přidána definice služby. V případě, že se má projevit nová verze aplikace, je třeba aktualizovat verzi typu aplikace z 1.0.0 na 1.0.1 [UserApp. Parameters. JSON](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json).
+* Do aplikace je přidána nová služba. Definice služby musí být přidána do souborů *service-manifest.xml* a *application-manifest.xml* při přidání služby do aplikace. Chcete-li zohlednit novou verzi aplikace, musíte také změnit verzi typu aplikace z 1.0.0 na 1.0.1 v [UserApp.Parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json):
 
     ```json
     "applicationTypeVersion": {
@@ -142,7 +154,7 @@ Aplikace, které jsou už nasazené do clusteru Service Fabric, se upgradují z 
     }
     ```
 
-2. Do aplikace se přidá nová verze existující služby. To zahrnuje změny kódu aplikace a aktualizace verze a názvu typu aplikace.
+* Do aplikace je přidána nová verze existující služby. Mezi příklady patří změny kódu aplikace a aktualizace verze a názvu typu aplikace. Pro tento upgrade aktualizujte soubor UserApp.Parameters.json takto:
 
     ```json
      "applicationTypeVersion": {
@@ -150,17 +162,17 @@ Aplikace, které jsou už nasazené do clusteru Service Fabric, se upgradují z 
     },
     ```
 
-## <a name="delete-application-resources"></a>Odstranit prostředky aplikace
+## <a name="delete-application-resources"></a>Odstranění prostředků aplikace
 
-Aplikace nasazené pomocí modelu prostředků aplikace v Azure Resource Manager se dají z clusteru odstranit pomocí následujících kroků.
+Odstranění aplikace, která byla nasazena pomocí modelu prostředků aplikace ve Správci prostředků:
 
-1) Získat ID prostředku pro aplikaci pomocí [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0):
+1. Pomocí rutiny [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) získáte ID prostředku pro aplikaci:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-2) Odstraňte prostředky aplikace pomocí [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0):
+1. K odstranění prostředků aplikace použijte rutinu [Odebrat azResource:](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0)
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
@@ -168,15 +180,13 @@ Aplikace nasazené pomocí modelu prostředků aplikace v Azure Resource Manager
 
 ## <a name="next-steps"></a>Další kroky
 
-Získat informace o modelu prostředků aplikace:
+Získejte informace o modelu prostředků aplikace:
 
-* [Modelování aplikace v Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
-* [Service Fabric manifestů aplikací a služeb](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+* [Modelování aplikace v service fabric](service-fabric-application-model.md)
+* [Manifesty aplikací a služeb Service Fabric](service-fabric-application-and-service-manifests.md)
+* [Osvědčené postupy: Infrastruktura jako kód](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [Správa aplikací a služeb jako prostředků Azure](service-fabric-best-practices-infrastructure-as-code.md)
 
-## <a name="see-also"></a>Viz také
-
-* [Osvědčené postupy](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [Správa aplikací a služeb jako prostředků Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

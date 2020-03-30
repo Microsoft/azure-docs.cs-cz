@@ -1,71 +1,71 @@
 ---
-title: Vytváření uživatelů – Citus (Velká měřítko) – Azure Database for PostgreSQL
-description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s Azure Database for PostgreSQL – Citus (škálování).
+title: Vytváření uživatelů – Hyperscale (Citus) – databáze Azure pro PostgreSQL
+description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s databází Azure pro PostgreSQL – Hyperscale (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 1/8/2019
 ms.openlocfilehash: 674fd4372bdf7c3782d18aaf04b48eb0067a9b2e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484923"
 ---
-# <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Vytváření uživatelů v Azure Database for PostgreSQL – Citus (škálování)
+# <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Vytváření uživatelů v databázi Azure pro PostgreSQL – hyperškálování (Citus)
 
 > [!NOTE]
-> Pojem "uživatelé" odkazují na uživatele v rámci skupiny serverů Citus (). Pokud se chcete dozvědět víc o uživatelích předplatného Azure a jejich oprávnění, přečtěte si [článek o řízení přístupu na základě role (RBAC) Azure](../role-based-access-control/built-in-roles.md) nebo si přečtěte, [jak přizpůsobovat role](../role-based-access-control/custom-roles.md)
+> Termín "uživatelé" odkazuje na uživatele v rámci skupiny serverů Hyperscale (Citus). Chcete-li se místo toho dozvědět o uživatelích předplatného Azure a jejich oprávněních, navštivte článek o [řízení přístupu na základě rolí Azure (RBAC)](../role-based-access-control/built-in-roles.md) nebo si přečtěte, [jak přizpůsobit role](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Účet správce serveru
 
-Modul PostgreSQL používá [role](https://www.postgresql.org/docs/current/sql-createrole.html) k řízení přístupu k databázovým objektům a nově vytvořená skupina serverů Citus () obsahuje několik rolí předem definovaných:
+Modul PostgreSQL používá [role](https://www.postgresql.org/docs/current/sql-createrole.html) k řízení přístupu k databázovým objektům a nově vytvořená skupina serverů Hyperscale (Citus) je dodávána s několika předem definovanými rolemi:
 
 * [Výchozí role PostgreSQL](https://www.postgresql.org/docs/current/default-roles.html)
 * `azure_pg_admin`
 * `postgres`
 * `citus`
 
-Vzhledem k tomu, že je škálovatelná služba PaaS, se může přihlásit pouze společnost Microsoft s rolí uživatele `postgres` super. V případě omezeného přístupu pro správu poskytuje škálovatelná role `citus`.
+Vzhledem k tomu, že Hyperscale je spravovanou `postgres` službou PaaS, může se přihlásit pouze Microsoft s rolí super uživatele. Pro omezený přístup pro správu Hyperscale poskytuje `citus` roli.
 
-Oprávnění pro roli `citus`:
+Oprávnění pro `citus` roli:
 
-* Přečtěte si všechny proměnné konfigurace, dokonce i proměnné, které jsou obvykle viditelné pouze pro uživatele.
-* Přečtěte si všechna\_a pg\_\* zobrazení a použijte různá rozšíření týkající se statistik – dokonce i zobrazení nebo rozšíření, která jsou běžně viditelná jenom pro uživatele.
-* Spouštějte funkce monitorování, které mohou mít přístup ke sdílení zámků na tabulkách, což může trvat dlouhou dobu.
-* [Vytvořte rozšíření PostgreSQL](concepts-hyperscale-extensions.md) (protože role je členem `azure_pg_admin`).
+* Přečtěte si všechny konfigurační proměnné, dokonce i proměnné, které jsou obvykle viditelné pouze pro superuživatele.
+* Přečtěte\_si\_ \* všechny pg stat zobrazení a používat různé statistiky-související rozšíření - dokonce i pohledy nebo rozšíření obvykle viditelné pouze pro superusers.
+* Spouštět funkce monitorování, které mohou mít access share zámky na tabulkách, potenciálně po dlouhou dobu.
+* [Vytvořte rozšíření PostgreSQL](concepts-hyperscale-extensions.md) (protože role `azure_pg_admin`je členem).
 
-Role `citus` má zejména určitá omezení:
+`citus` Zejména, role má určitá omezení:
 
-* Nejde vytvořit role.
-* Nejde vytvořit databáze.
+* Nelze vytvořit role
+* Nelze vytvořit databáze
 
 ## <a name="how-to-create-additional-user-roles"></a>Jak vytvořit další role uživatelů
 
-Jak už bylo uvedeno, účet správce `citus` nemá oprávnění k vytváření dalších uživatelů. Chcete-li přidat uživatele, použijte rozhraní Azure Portal.
+Jak již bylo `citus` zmíněno, účet správce nemá oprávnění k vytvoření dalších uživatelů. Chcete-li přidat uživatele, použijte rozhraní portálu Azure.
 
-1. Přejděte na stránku **role** pro skupinu serverů s vlastním škálováním a klikněte na **+ Přidat**:
+1. Přejděte na stránku **Role** pro skupinu serverů Hyperscale a klikněte na **+ Přidat**:
 
    ![Stránka role](media/howto-hyperscale-create-users/1-role-page.png)
 
-2. Zadejte název role a heslo. Klikněte na možnost **Uložit**.
+2. Zadejte název a heslo role. Klikněte na **Uložit**.
 
    ![Přidat roli](media/howto-hyperscale-create-users/2-add-user-fields.png)
 
-Uživatel bude vytvořen v uzlu koordinátor skupiny serverů a bude šířen do všech pracovních uzlů. Role vytvořené prostřednictvím Azure Portal mají atribut `LOGIN`, což znamená, že se jedná o skutečné uživatele, kteří se mohou přihlásit k databázi.
+Uživatel bude vytvořen v uzlu koordinátora skupiny serverů a rozšířen do všech pracovních uzlů. Role vytvořené prostřednictvím portálu Azure mají `LOGIN` atribut, což znamená, že jsou skuteční uživatelé, kteří se můžou přihlásit k databázi.
 
-## <a name="how-to-modify-privileges-for-user-role"></a>Postup úpravy oprávnění pro roli uživatele
+## <a name="how-to-modify-privileges-for-user-role"></a>Jak upravit oprávnění pro roli uživatele
 
-Nové role uživatele se běžně používají k poskytnutí přístupu k databázi s omezenými oprávněními. Chcete-li upravit uživatelská oprávnění, použijte standardní příkazy PostgreSQL pomocí nástroje, jako je například PgAdmin nebo psql. (Další informace najdete v tématu [připojení pomocí psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) v rychlém startu (Citus).)
+Nové uživatelské role se běžně používají k poskytování přístupu k databázi s omezenými oprávněními. Chcete-li upravit uživatelská oprávnění, použijte standardní příkazy PostgreSQL pomocí nástroje, jako je PgAdmin nebo psql. (Viz [připojení s psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) v Hyperscale (Citus) rychlý start.)
 
-Chcete-li například povolit, aby `db_user` četl `mytable`, udělte oprávnění:
+Chcete-li například `db_user` `mytable`povolit čtení , udělte oprávnění:
 
 ```sql
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Citus () šíří příkazy pro udělení jedné tabulky prostřednictvím celého clusteru a používá je na všech pracovních uzlech. Granty pro systém (například pro všechny tabulky ve schématu) ale musí být spuštěny na každém uzlu data.  Použijte pomocnou funkci `run_command_on_workers()`:
+Hyperscale (Citus) šíří jednotací příkazy GRANT prostřednictvím celého clusteru a aplikuje je na všechny pracovní uzly. Však grants, které jsou v celém systému (například pro všechny tabulky ve schématu) je třeba spustit na každém uzlu data.  Použijte `run_command_on_workers()` pomocnou funkci:
 
 ```sql
 -- applies to the coordinator node
@@ -77,20 +77,20 @@ SELECT run_command_on_workers(
 );
 ```
 
-## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Jak odstranit uživatelskou roli nebo změnit heslo
+## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Jak odstranit roli uživatele nebo změnit jeho heslo
 
-Chcete-li aktualizovat uživatele, přejděte na stránku **role** pro skupinu serverů s vlastním škálováním a klikněte na tlačítko se třemi tečkami. **..** vedle uživatele. Tři tečky otevřou nabídku pro odstranění uživatele nebo resetování hesla.
+Chcete-li uživatele aktualizovat, navštivte stránku **Role** pro skupinu serverů Hyperscale a klikněte na tři tečky **...** vedle uživatele. Elipsy otevřou nabídku pro odstranění uživatele nebo obnovení hesla.
 
-   ![Upravit roli](media/howto-hyperscale-create-users/edit-role.png)
+   ![Úprava role](media/howto-hyperscale-create-users/edit-role.png)
 
-Role `citus` má oprávnění a nelze ji odstranit.
+Role `citus` je privilegovaná a nelze ji odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
-Otevřete bránu firewall pro IP adresy nových uživatelských počítačů, abyste jim umožnili připojení: [Vytvoření a Správa pravidel brány firewall Citus () pomocí Azure Portal](howto-hyperscale-manage-firewall-using-portal.md).
+Otevřete bránu firewall pro IP adresy počítačů nových uživatelů, abyste jim umožnili připojení: [Vytvořte a spravujte pravidla brány firewall Hyperscale (Citus) pomocí portálu Azure Portal](howto-hyperscale-manage-firewall-using-portal.md).
 
-Další informace o správě uživatelských účtů databáze najdete v dokumentaci k produktu PostgreSQL:
+Další informace o správě uživatelských účtů databáze naleznete v dokumentaci k produktu PostgreSQL:
 
-* [Role a oprávnění databáze](https://www.postgresql.org/docs/current/static/user-manag.html)
-* [UDĚLIT syntaxi](https://www.postgresql.org/docs/current/static/sql-grant.html)
-* [Požadovaná](https://www.postgresql.org/docs/current/static/ddl-priv.html)
+* [Databázové role a oprávnění](https://www.postgresql.org/docs/current/static/user-manag.html)
+* [Syntaxe GRANT](https://www.postgresql.org/docs/current/static/sql-grant.html)
+* [Oprávnění](https://www.postgresql.org/docs/current/static/ddl-priv.html)

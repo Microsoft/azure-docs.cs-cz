@@ -9,10 +9,10 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 26e76731f663ac9038bc87182d52c4bd245f1b6e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77471674"
 ---
 ## <a name="limitations"></a>Omezení
@@ -25,12 +25,12 @@ ms.locfileid: "77471674"
 
 ## <a name="deploy-an-azure-shared-disk"></a>Nasazení sdíleného disku Azure
 
-Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, použijte novou vlastnost `maxShares` a definujte hodnotu `>1`. To umožňuje sdílet disk napříč několika virtuálními počítači.
+Chcete-li nasadit spravovaný disk s `maxShares` povolenou funkcí `>1`sdíleného disku, použijte novou vlastnost a definujte hodnotu . Díky tomu je disk sdílet mezi více virtuálních počítačů.
 
 > [!IMPORTANT]
-> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Povolené hodnoty pro `maxShares`najdete v části [velikosti disků](#disk-sizes) .
+> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že disk je odpojen ze všech virtuálních počítačů. V [části Velikosti disku](#disk-sizes) naleznete `maxShares`povolené hodnoty pro program .
 
-Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`a `[parameters('maxShares')]` vlastními hodnotami.
+Před použitím následující šablony `[parameters('dataDiskName')]` `[resourceGroup().location]`nahraďte , , `[parameters('dataDiskSizeGB')]`, a `[parameters('maxShares')]` s vlastními hodnotami.
 
 ```json
 { 
@@ -71,12 +71,12 @@ Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Použití sdílených disků Azure s vašimi virtuálními počítači
+### <a name="using-azure-shared-disks-with-your-vms"></a>Používání sdílených disků Azure s virtuálními počítači
 
-Po nasazení sdíleného disku s `maxShares>1`můžete disk připojit k jednomu nebo více virtuálním počítačům.
+Po nasazení sdíleného disku s `maxShares>1`programem můžete disk připojit k jednomu nebo více virtuálním počítačům.
 
 > [!IMPORTANT]
-> Všechny virtuální počítače sdílející disk musí být nasazené ve stejné [skupině umístění blízkosti](../articles/virtual-machines/windows/proximity-placement-groups.md).
+> Všechny virtuální počítače sdílející disk musí být nasazeny ve stejné [skupině umístění bez kontaktních míst](../articles/virtual-machines/windows/proximity-placement-groups.md).
 
 ```azurepowershell-interactive
 
@@ -100,9 +100,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>Podporované příkazy SCSI PR
 
-Po připojení sdíleného disku k virtuálním počítačům ve vašem clusteru můžete na disk vytvořit kvorum a číst ho a zapisovat ho pomocí SCSI žádosti o přijetí změn. Při použití sdílených disků Azure jsou k dispozici následující příkazy žádosti o přijetí změn:
+Po navázání sdíleného disku do virtuálních počítačů v clusteru můžete vytvořit kvorum a číst/zapisovat na disk pomocí SCSI PR. Při použití sdílených disků Azure jsou k dispozici následující příkazy PR:
 
-Pokud chcete s diskem pracovat, začněte se seznamem trvalých rezervací – akcí:
+Chcete-li pracovat s diskem, začněte se seznamem trvalých akcí rezervace:
 
 ```
 PR_REGISTER_KEY 
@@ -120,7 +120,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-Při použití PR_RESERVE, PR_PREEMPT_RESERVATION nebo PR_RELEASE_RESERVATION, zadejte jeden z následujících trvalých rezervací-Type:
+Při použití PR_RESERVE, PR_PREEMPT_RESERVATION nebo PR_RELEASE_RESERVATION zadejte jeden z následujících typů trvalé rezervace:
 
 ```
 PR_NONE 
@@ -138,9 +138,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-Při použití PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION nebo PR_RELEASE-RESERVATION je také potřeba zadat trvalou rezervaci klíč.
+Při použití PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION nebo PR_RELEASE REZERVACE je také nutné zadat trvalý klíč rezervace.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud vás zajímá, jak sdílet sdílené disky, [Zaregistrujte si verzi Preview](https://aka.ms/AzureSharedDiskPreviewSignUp).
+Pokud máte zájem o vyzkoušení sdílených disků, [zaregistrujte se do naší verze Preview](https://aka.ms/AzureSharedDiskPreviewSignUp).

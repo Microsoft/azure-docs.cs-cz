@@ -1,25 +1,25 @@
 ---
-title: Kurz – nasazení skupiny více kontejnerů – YAML
-description: V tomto kurzu se naučíte, jak nasadit skupinu kontejnerů s více kontejnery v Azure Container Instances pomocí souboru YAML pomocí Azure CLI.
+title: Kurz – nasazení skupiny s více kontejnery – YAML
+description: V tomto kurzu se dozvíte, jak nasadit skupinu kontejnerů s více kontejnery v instanci kontejneru Azure pomocí souboru YAML s Azure CLI.
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: cce98ec56ee1d84c087150ba486b9482515b46f0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533597"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Kurz: nasazení skupiny s více kontejnery pomocí souboru YAML
+# <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Kurz: Nasazení skupiny s více kontejnery pomocí souboru YAML
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
 > * [Resource Manager](container-instances-multi-container-group.md)
 >
 
-Azure Container Instances podporuje nasazení více kontejnerů do jednoho hostitele pomocí [skupiny kontejnerů](container-instances-container-groups.md). Skupina kontejnerů je užitečná při sestavování postranního vozíku aplikace pro protokolování, monitorování nebo jakoukoli jinou konfiguraci, kde služba potřebuje druhý připojený proces.
+Azure Container Instances podporuje nasazení více kontejnerů na jednoho hostitele pomocí [skupiny kontejnerů](container-instances-container-groups.md). Skupina kontejnerů je užitečná při vytváření postranního varu aplikace pro protokolování, monitorování nebo jakoukoli jinou konfiguraci, kde služba potřebuje druhý připojený proces.
 
-V tomto kurzu budete postupovat podle kroků pro spuštění jednoduché konfigurace na dvou kontejnerech, a to nasazením [souboru YAML](container-instances-reference-yaml.md) pomocí Azure CLI. Soubor YAML poskytuje stručný formát pro zadání nastavení instance. Získáte informace o těchto tématech:
+V tomto kurzu postupujte podle kroků ke spuštění jednoduché konfigurace sajdcovna se dvěma kontejnery nasazením [souboru YAML](container-instances-reference-yaml.md) pomocí azure CLI. Soubor YAML poskytuje stručný formát pro určení nastavení instance. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Konfigurace souboru YAML
@@ -27,23 +27,23 @@ V tomto kurzu budete postupovat podle kroků pro spuštění jednoduché konfigu
 > * Zobrazit protokoly kontejnerů
 
 > [!NOTE]
-> Skupiny více kontejnerů jsou aktuálně omezené na kontejnery Linux.
+> Skupiny s více kontejnery jsou aktuálně omezeny na kontejnery Linuxu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="configure-a-yaml-file"></a>Konfigurace souboru YAML
 
-Pokud chcete nasadit skupinu s více kontejnery pomocí příkazu [AZ Container Create][az-container-create] v rozhraní příkazového řádku Azure, musíte v souboru YAML zadat konfiguraci skupiny kontejnerů. Pak předejte soubor YAML jako parametr do příkazu.
+Chcete-li nasadit skupinu více kontejnerů s příkazem [az kontejner u vytvoření][az-container-create] v příkazovém příkazu Konto Azure, musíte zadat konfiguraci skupiny kontejnerů v souboru YAML. Potom předaj soubor YAML jako parametr příkazu.
 
-Začněte zkopírováním následujících YAML do nového souboru nazvaného **Deploy-ACI. yaml**. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
+Začněte zkopírováním následujícího souboru YAML do nového souboru s názvem **deploy-aci.yaml**. V Prostředí Azure Cloud Shell můžete použít visual studio kód k vytvoření souboru ve vašem pracovním adresáři:
 
 ```
 code deploy-aci.yaml
 ```
 
-Tento soubor YAML definuje skupinu kontejnerů s názvem "myContainerGroup" se dvěma kontejnery, veřejnou IP adresou a dvěma vystavenými porty. Kontejnery se nasazují z veřejných imagí Microsoft. První kontejner ve skupině spouští internetovou webovou aplikaci. Druhý kontejner, postranní vozík, pravidelně vytváří požadavky HTTP na webovou aplikaci spuštěnou v prvním kontejneru prostřednictvím místní sítě skupiny kontejnerů.
+Tento soubor YAML definuje skupinu kontejnerů s názvem "myContainerGroup" se dvěma kontejnery, veřejnou IP adresou a dvěma exponovanými porty. Kontejnery jsou nasazeny z veřejných iimages Microsoft. První kontejner ve skupině spouští internetovou webovou aplikaci. Druhý kontejner, sajdkárna, pravidelně provádí požadavky HTTP pro webovou aplikaci spuštěnou v prvním kontejneru prostřednictvím místní sítě skupiny kontejnerů.
 
 ```YAML
 apiVersion: 2018-10-01
@@ -80,7 +80,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Pro použití privátního registru imagí kontejneru přidejte do skupiny kontejnerů vlastnost `imageRegistryCredentials` s hodnotami upravenými pro vaše prostředí:
+Chcete-li použít registr bitových `imageRegistryCredentials` bitových obrázků soukromého kontejneru, přidejte vlastnost do skupiny kontejnerů s hodnotami upravenými pro vaše prostředí:
 
 ```YAML
   imageRegistryCredentials:
@@ -91,13 +91,13 @@ Pro použití privátního registru imagí kontejneru přidejte do skupiny konte
 
 ## <a name="deploy-the-container-group"></a>Nasazení skupiny kontejnerů
 
-Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] :
+Vytvořte skupinu prostředků pomocí příkazu [vytvořit skupinu az:][az-group-create]
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Nasaďte skupinu kontejnerů pomocí příkazu [AZ Container Create][az-container-create] a předáním souboru YAML jako argumentu:
+Nasazení skupiny kontejnerů pomocí příkazu [az container create][az-container-create] a předání souboru YAML jako argumentu:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file deploy-aci.yaml
@@ -107,13 +107,13 @@ Během několika sekund by se měla zobrazit první odezva z Azure.
 
 ## <a name="view-deployment-state"></a>Zobrazit stav nasazení
 
-Chcete-li zobrazit stav nasazení, použijte následující příkaz [AZ Container show][az-container-show] :
+Chcete-li zobrazit stav nasazení, použijte následující příkaz [az container show:][az-container-show]
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Pokud chcete zobrazit spuštěnou aplikaci, přejděte v prohlížeči na jeho IP adresu. Například IP adresa je `52.168.26.124` v tomto příkladu výstupu:
+Pokud chcete zobrazit spuštěnou aplikaci, přejděte v prohlížeči na její IP adresu. Například IP je `52.168.26.124` v tomto příkladu výstupu:
 
 ```bash
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
@@ -123,7 +123,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>Zobrazení protokolů kontejneru
 
-Zobrazte výstup protokolu kontejneru pomocí příkazu [AZ Container logs][az-container-logs] . Argument `--container-name` určuje kontejner, ze kterého mají být vyžádané protokoly. V tomto příkladu je určen kontejner `aci-tutorial-app`.
+Zobrazení výstupu protokolu kontejneru pomocí příkazu [az container logs.][az-container-logs] Argument `--container-name` určuje kontejner, ze kterého chcete vyžádat protokoly. V tomto příkladu `aci-tutorial-app` je určen kontejner.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -138,7 +138,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Chcete-li zobrazit protokoly pro kontejner vozíku, spusťte podobný příkaz, který určí kontejner `aci-tutorial-sidecar`.
+Chcete-li zobrazit protokoly pro kontejner sajdkár, spusťte podobný příkaz určující `aci-tutorial-sidecar` kontejner.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -164,18 +164,18 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Jak vidíte, postranní vozík pravidelně vytváří požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěný. Tento příklad postranního vozíku se dá rozšířit tak, aby aktivoval výstrahu, pokud obdržel jiný kód odpovědi HTTP než `200 OK`.
+Jak můžete vidět, sajdkár pravidelně provádí požadavek HTTP na hlavní webovou aplikaci prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěn. Tento příklad postranního sajdkáře by mohl být `200 OK`rozšířen tak, aby aktivoval výstrahu, pokud obdržel jiný kód odpovědi HTTP než .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste použili soubor YAML k nasazení skupiny více kontejnerů v Azure Container Instances. Naučili jste se tyto postupy:
+V tomto kurzu jste použili soubor YAML k nasazení skupiny více kontejnerů v azure container instances. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Konfigurace souboru YAML pro skupinu s více kontejnery
 > * Nasazení skupiny kontejnerů
 > * Zobrazit protokoly kontejnerů
 
-Skupinu s více kontejnery můžete zadat také pomocí [šablony Správce prostředků](container-instances-multi-container-group.md). Šablonu Správce prostředků lze snadno přizpůsobit pro scénáře, pokud potřebujete nasadit další prostředky služby Azure ve skupině kontejnerů.
+Skupinu s více kontejnery můžete také určit pomocí [šablony Správce prostředků](container-instances-multi-container-group.md). Šablonu Správce prostředků lze snadno přizpůsobit pro scénáře, když potřebujete nasadit další prostředky služby Azure se skupinou kontejnerů.
 
 <!-- LINKS - External -->
 

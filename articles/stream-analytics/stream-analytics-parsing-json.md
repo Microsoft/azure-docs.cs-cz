@@ -1,29 +1,29 @@
 ---
 title: Analýza JSON a AVRO v Azure Stream Analytics
-description: Tento článek popisuje, jak pracovat s komplexními datovými typy, jako jsou pole, JSON a formátovaná data ve formátu CSV.
+description: Tento článek popisuje, jak pracovat na komplexní datové typy, jako jsou pole, JSON, CSV formátovaná data.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484583"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analyzovat data JSON a Avro v Azure Stream Analytics
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analýza dat JSON a Avro v Azure Stream Analytics
 
-Azure Stream Analytics podporovat zpracování událostí v datových formátech CSV, JSON a Avro. Data JSON a Avro mohou být strukturovaná a obsahují některé komplexní typy, jako jsou například vnořené objekty (záznamy) a pole. 
+Azure Stream Analytics podporuje zpracování událostí ve formátech dat CSV, JSON a Avro. Data JSON i Avro mohou být strukturována a obsahovat některé složité typy, jako jsou vnořené objekty (záznamy) a pole. 
 
 >[!NOTE]
->Soubory AVRO vytvořené pomocí centra událostí zachycení používají konkrétní formát, který vyžaduje použití *vlastní funkce deserializace* . Další informace najdete v tématu [čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
+>AVRO soubory vytvořené Event Hub Capture použít určitý formát, který vyžaduje použití *vlastní funkci deserializer.* Další informace naleznete v tématu [Čtení vstupu v libovolném formátu pomocí vlastních deserializátorů rozhraní .NET](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
 
 
 
-## <a name="record-data-types"></a>Záznam typů dat
-Datové typy záznamu se používají k reprezentování polí JSON a Avro, když se v datových proudech vstupních dat používají odpovídající formáty. Tyto příklady ukazují vzorový senzor, který čte vstupní události ve formátu JSON. Tady je příklad jedné události:
+## <a name="record-data-types"></a>Záznam datových typů
+Datové typy záznamů se používají k reprezentaci polí JSON a Avro při použití odpovídajících formátů ve vstupních datových proudech. Tyto příklady ukazují ukázkový senzor, který čte vstupní události ve formátu JSON. Zde je příklad jedné události:
 
 ```json
 {
@@ -48,8 +48,8 @@ Datové typy záznamu se používají k reprezentování polí JSON a Avro, kdy�
 }
 ```
 
-### <a name="access-nested-fields-in-known-schema"></a>Přístup k vnořeným polím ve známém schématu
-Pro snadný přístup k vnořeným polím přímo z dotazu použijte tečku (.). Tento dotaz například vybírá souřadnice Zeměpisná šířka a délka pod vlastností Location (umístění) v předchozích datech JSON. Zápis tečky lze použít k procházení více úrovní, jak je znázorněno níže.
+### <a name="access-nested-fields-in-known-schema"></a>Přístup k vnořená pole ve známém schématu
+Pomocí dot notace (.) můžete snadno přistupovat k vnořenám polím přímo z dotazu. Tento dotaz například vybere souřadnice Zeměpisné šířky a délky pod vlastností Location v předchozích datech JSON. Dot notace lze použít k navigaci ve více úrovních, jak je znázorněno níže.
 
 ```SQL
 SELECT
@@ -61,15 +61,15 @@ SELECT
 FROM input
 ```
 
-Výsledek je následující:
+Výsledkem je:
 
-|ID zařízení|připojí|Dlouhé|Temperature|Version|
+|Deviceid|Lat|Dlouhé|Teplota|Version|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
 
 ### <a name="select-all-properties"></a>Vybrat všechny vlastnosti
-Můžete vybrat všechny vlastnosti vnořeného záznamu pomocí zástupného znaku *. Vezměte v úvahu v následujícím příkladu:
+Pomocí zástupného znaku *můžete vybrat všechny vlastnosti vnořeného záznamu. Uvažujte následující příklad:
 
 ```SQL
 SELECT
@@ -78,18 +78,18 @@ SELECT
 FROM input
 ```
 
-Výsledek je následující:
+Výsledkem je:
 
-|ID zařízení|připojí|Dlouhé|
+|Deviceid|Lat|Dlouhé|
 |-|-|-|
 |12345|47|122|
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Přístup k vnořeným polím, pokud je název vlastnosti proměnná
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Přístup k vnořená pole, pokud název vlastnosti je proměnná
 
-Použijte funkci [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) , pokud je název vlastnosti proměnná. To umožňuje vytvářet dynamické dotazy bez názvů vlastností zakódujeme.
+Pokud je název vlastnosti proměnná, použijte funkci [GetRecordPropertyValue.](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) To umožňuje vytváření dynamických dotazů bez názvů vlastností hardcoding.
 
-Představte si například, že vzorový datový proud musí **být spojen s referenčními daty** obsahujícími prahové hodnoty pro každý senzor zařízení. Fragment těchto referenčních dat je uveden níže.
+Představte si například, že ukázkový datový proud musí **být spojen s referenčními daty** obsahujícími prahové hodnoty pro každý snímač zařízení. Fragment těchto referenčních údajů je uveden níže.
 
 ```json
 {
@@ -104,7 +104,7 @@ Představte si například, že vzorový datový proud musí **být spojen s ref
 }
 ```
 
-Cílem je připojit se k naší ukázkové sadě dat z horní části článku k těmto referenčním datům a výstupem jedné události pro každou míru snímače nad rámec její prahové hodnoty. To znamená, že naše jediná událost může vygenerovat více výstupních událostí, pokud je více senzorů nad rámec jejich odpovídajících prahových hodnot, a to díky JOIN. Chcete-li dosáhnout podobných výsledků bez připojení, přečtěte si část níže.
+Cílem je připojit naše ukázkové datové sady z horní části článku k tomuto referenčnímu datu a výstup jedné události pro každé měření senzoru nad prahovou hodnotou. To znamená, že naše jediná událost výše může generovat více výstupních událostí, pokud je více senzorů nad příslušnými prahy, díky spojení. Chcete-li dosáhnout podobných výsledků bez spojení, podívejte se na následující část.
 
 ```SQL
 SELECT
@@ -119,19 +119,19 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue** vybere vlastnost v *SensorReadings*, která název odpovídá názvu vlastnosti přicházejícímu z referenčních dat. Pak je extrahována přidružená hodnota z *SensorReadings* .
+**Funkce GetRecordPropertyValue** vybere vlastnost v *hodnotě SensorReadings*, jejíž název odpovídá názvu vlastnosti pocházejícímu z referenčních dat. Poté je extrahována přidružená hodnota z *SensorReadings.*
 
-Výsledek je následující:
+Výsledkem je:
 
-|ID zařízení|Senzor|Zadaná hodnota alertmessage|
+|Deviceid|Název senzoru|Zpráva s výstrahou|
 |-|-|-|
-|12345|Vlhkost|Výstraha: senzor nad prahovou hodnotou|
+|12345|Vlhkost|Výstraha : Senzor nad prahovou hodnotou|
 
-### <a name="convert-record-fields-into-separate-events"></a>Převod polí záznamu na samostatné události
+### <a name="convert-record-fields-into-separate-events"></a>Převést pole záznamů na samostatné události
 
-Chcete-li převést pole záznamu na samostatné události, použijte operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) společně s funkcí [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) .
+Chcete-li převést pole záznamu na samostatné události, použijte operátor [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) společně s funkcí [GetRecordProperties.](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics)
 
-S původními ukázkovými daty můžete k extrakci vlastností do různých událostí použít následující dotaz.
+S původní ukázková data následující dotaz lze extrahovat vlastnosti do různých událostí.
 
 ```SQL
 SELECT
@@ -142,17 +142,17 @@ FROM input as event
 CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 ```
 
-Výsledek je následující:
+Výsledkem je:
 
-|ID zařízení|Senzor|Zadaná hodnota alertmessage|
+|Deviceid|Název senzoru|Zpráva s výstrahou|
 |-|-|-|
-|12345|Temperature|80|
+|12345|Teplota|80|
 |12345|Vlhkost|70|
-|12345|CustomSensor01|5|
-|12345|CustomSensor02|99|
-|12345|SensorMetadata|[objekt objektu]|
+|12345|Vlastnísenzor01|5|
+|12345|Vlastnísenzor02|99|
+|12345|Metadata senzoru|[objekt objekt]|
 
-Pomocí [s](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)můžete tyto události směrovat do různých umístění:
+Pomocí [funkce WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)je pak možné směrovat tyto události do různých cílů:
 
 ```SQL
 WITH Stage0 AS
@@ -170,14 +170,14 @@ SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE
 ```
 
 ### <a name="parse-json-record-in-sql-reference-data"></a>Analyzovat záznam JSON v referenčních datech SQL
-Při použití Azure SQL Database jako referenčních dat v rámci úlohy je možné mít sloupec, který má data ve formátu JSON. Příklad je uveden níže.
+Při použití Azure SQL Database jako referenční data ve vaší úloze, je možné mít sloupec, který má data ve formátu JSON. Příklad najdete níže.
 
-|ID zařízení|Data|
+|Deviceid|Data|
 |-|-|
-|12345|{"Key": "hodnota1"}|
-|54321|{"Key": "hodnota2"}|
+|12345|{"klíč" : "value1"}|
+|54321|{"klíč" : "value2"}|
 
-Záznam JSON můžete analyzovat ve sloupci *dat* tak, že napíšete jednoduchou uživatelsky definovanou funkci JavaScriptu.
+Záznam JSON můžete analyzovat ve sloupci *Data* napsáním jednoduché uživatelem definované funkce JavaScriptu.
 
 ```javascript
 function parseJson(string) {
@@ -185,7 +185,7 @@ return JSON.parse(string);
 }
 ```
 
-Pak můžete vytvořit krok v dotazu Stream Analytics, jak je znázorněno níže, a získat tak přístup k polím záznamů JSON.
+Potom můžete vytvořit krok v dotazu Stream Analytics, jak je znázorněno níže pro přístup k polím vašich záznamů JSON.
 
  ```SQL
  WITH parseJson as
@@ -201,11 +201,11 @@ Pak můžete vytvořit krok v dotazu Stream Analytics, jak je znázorněno níž
  ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
-## <a name="array-data-types"></a>Datové typy polí
+## <a name="array-data-types"></a>Datové typy pole
 
-Datové typy pole jsou seřazené kolekce hodnot. Některé typické operace s hodnotami polí jsou popsány níže. V těchto příkladech se používají funkce [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)a operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) .
+Datové typy pole jsou uspořádanou kolekcí hodnot. Některé typické operace na hodnoty pole jsou podrobně popsány níže. Tyto příklady používají funkce [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)a operátor [APPLY.](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics)
 
-Tady je příklad jedné události. `CustomSensor03` i `SensorMetadata` jsou typu **Array**:
+Zde je příklad jedné události. Oba `CustomSensor03` `SensorMetadata` a jsou typu **pole**:
 
 ```json
 {
@@ -231,9 +231,9 @@ Tady je příklad jedné události. `CustomSensor03` i `SensorMetadata` jsou typ
 }
 ```
 
-### <a name="working-with-a-specific-array-element"></a>Práce s konkrétním prvkem pole
+### <a name="working-with-a-specific-array-element"></a>Práce s určitým prvkem pole
 
-Vybrat prvek pole v zadaném indexu (Výběr prvního prvku pole):
+Vyberte prvek pole na zadaném indexu (výběr prvního prvku pole):
 
 ```SQL
 SELECT
@@ -241,7 +241,7 @@ SELECT
 FROM input
 ```
 
-Výsledek je následující:
+Výsledkem je:
 
 |firstElement|
 |-|
@@ -255,15 +255,15 @@ SELECT
 FROM input
 ```
 
-Výsledek je následující:
+Výsledkem je:
 
-|arrayLength|
+|poleDélka|
 |-|
 |3|
 
-### <a name="convert-array-elements-into-separate-events"></a>Převést elementy pole na samostatné události
+### <a name="convert-array-elements-into-separate-events"></a>Převést prvky pole na samostatné události
 
-Vyberte všechny prvky pole jako jednotlivé události. Operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) společně s vestavěnou funkcí [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) extrahuje všechny prvky pole jako jednotlivé události:
+Vyberte všechny elementy pole jako jednotlivé události. Operátor [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) spolu s vestavěnou funkcí [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) extrahuje všechny prvky pole jako jednotlivé události:
 
 ```SQL
 SELECT
@@ -275,9 +275,9 @@ CROSS APPLY GetArrayElements(SensorReadings.CustomSensor03) AS CustomSensor03Rec
 
 ```
 
-Výsledek je následující:
+Výsledkem je:
 
-|DeviceId|ArrayIndex|ArrayValue|
+|DeviceId|Arrayindex|Hodnota pole|
 |-|-|-|
 |12345|0|12|
 |12345|1|-5|
@@ -292,14 +292,14 @@ FROM input i
 CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
  ```
  
-Výsledek je následující:
+Výsledkem je:
 
 |DeviceId|smKey|smValue|
 |-|-|-|
 |12345|Výrobce|ABC|
 |12345|Version|1.2.45|
 
-Pokud se extrahovaná pole musí zobrazit ve sloupcích, je možné datovou sadu pivotovat pomocí syntaxe [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) kromě operace [Join](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) . Toto spojení bude vyžadovat podmínku [časové hranice](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) , která zabrání duplikaci:
+Pokud se extrahovaná pole musí zobrazit ve sloupcích, je možné kromě operace [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) převést datovou sadu pomocí syntaxe [WITH.](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) Toto spojení bude vyžadovat podmínku [časové hranice,](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) která zabraňuje duplikaci:
 
 ```SQL
 WITH DynamicCTE AS (
@@ -321,11 +321,11 @@ LEFT JOIN DynamicCTE V ON V.smKey = 'Version' and V.DeviceId = i.DeviceId AND DA
 LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId AND DATEDIFF(minute,i,M) BETWEEN 0 AND 0
 ```
 
-Výsledek je následující:
+Výsledkem je:
 
-|DeviceId|připojí|Dlouhé|smVersion|smManufacturer|
+|DeviceId|Lat|Dlouhé|smVersion|smVýrobce|
 |-|-|-|-|-|
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>Viz také
-[Datové typy v Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Datové typy ve Službě Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

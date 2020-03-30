@@ -1,6 +1,6 @@
 ---
-title: Vytvoření datového připojení IoT Hub pro Azure Průzkumník dat pomocí šablony Azure Resource Manager
-description: V tomto článku se dozvíte, jak vytvořit datové připojení IoT Hub pro Azure Průzkumník dat pomocí šablony Azure Resource Manager.
+title: Vytvoření datového připojení služby IoT Hub pro Azure Data Explorer pomocí šablony Azure Resource Manager
+description: V tomto článku se dozvíte, jak vytvořit datové připojení služby IoT Hub pro Azure Data Explorer pomocí šablony Azure Resource Manager.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,32 +8,32 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: 42b9f34802b8e6344f9008bf26a8bcc9f554adfb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74669217"
 ---
-# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Vytvoření datového připojení IoT Hub pro Azure Průzkumník dat pomocí šablony Azure Resource Manager
+# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Vytvoření datového připojení služby IoT Hub pro Azure Data Explorer pomocí šablony Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](ingest-data-iot-hub.md)
-> * [C#](data-connection-iot-hub-csharp.md)
+> * [Portál](ingest-data-iot-hub.md)
+> * [C #](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Šablona Azure Resource Manageru](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) z Event Hubs, rozbočovačů IoT a objektů BLOB zapsaných do kontejnerů objektů BLOB. V tomto článku vytvoříte datové připojení IoT Hub pro Azure Průzkumník dat pomocí šablony Azure Resource Manager.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání dat) z centra událostí, ioT hubů a objektů BLOB zapsané do kontejnerů objektů blob. V tomto článku vytvoříte datové připojení služby IoT Hub pro Azure Data Explorer pomocí šablony Azure Resource Manager.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* Vytvoření [clusteru a databáze](create-cluster-database-portal.md)
-* Vytvoření [mapování tabulky a sloupce](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer)
-* Vytvoří [IoT Hub se nakonfigurovanou zásadou sdíleného přístupu](ingest-data-iot-hub.md#create-an-iot-hub).
+* [Vytvoření clusteru a databáze](create-cluster-database-portal.md)
+* [Vytvoření mapování tabulky a sloupců](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer)
+* [Vytvořte centrum IoT Hub s nakonfigurovanou zásadou sdíleného přístupu](ingest-data-iot-hub.md#create-an-iot-hub).
 
-## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>Šablona Azure Resource Manager pro přidání datového připojení služby IoT Hub
+## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>Šablona Azure Resource Manager pro přidání datového připojení služby Iot Hub
 
-Následující příklad ukazuje šablonu Azure Resource Manager pro přidání datového připojení IoT Hub.  Šablonu můžete [v Azure Portal upravit a nasadit](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) pomocí formuláře.
+Následující příklad ukazuje šablonu Správce prostředků Azure pro přidání datového připojení služby IoT Hub.  Šablonu můžete [upravit a nasadit na webu Azure Portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) pomocí formuláře.
 
 ```json
 {

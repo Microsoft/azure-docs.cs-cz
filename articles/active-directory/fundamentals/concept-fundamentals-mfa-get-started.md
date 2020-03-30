@@ -1,68 +1,67 @@
 ---
-title: Povolení Multi-Factor Authentication pro vaši organizaci – Azure Active Directory
-description: Povolte Azure MFA pro vaši organizaci na základě vaší licence.
+title: Azure Multi-Factor Authentication pro vaši organizaci – Azure Active Directory
+description: Informace o dostupných funkcích azure multifaktorového ověřování pro vaši organizaci na základě licenčního modelu
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 03/18/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0d79f228ee2b84c00a35d4836cbda6a4847a42
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: febdb708c637ac322c0ca884eae627da9bd5904c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932447"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530389"
 ---
-# <a name="enable-multi-factor-authentication-for-your-organization"></a>Povolení Multi-Factor Authentication pro vaši organizaci
+# <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Přehled azure multifaktorového ověřování pro vaši organizaci
 
-Existuje několik způsobů, jak povolit Azure Multi-Factor Authentication (MFA) pro uživatele služby Azure Active Directory (AD) na základě licencí, které vaše organizace vlastní. 
+Existuje několik způsobů, jak povolit vícefaktorové ověřování Azure pro uživatele služby Azure Active Directory (AD) na základě licencí, které vaše organizace vlastní. 
 
-![V případě potřeby prozkoumat signály a vynutilit MFA](./media/concept-fundamentals-mfa-get-started/verify-signals-and-perform-mfa-if-required.png)
+![Prozkoumejte signály a vpřípadě potřeby vynucujte vícefaktorové vynucovat vícefaktorové vy](./media/concept-fundamentals-mfa-get-started/verify-signals-and-perform-mfa-if-required.png)
 
-Na základě našich studií je váš účet o více než 99,9% méně pravděpodobný, pokud použijete MFA.
+Na základě našich studií je u vašeho účtu o více než 99,9 % menší pravděpodobnost ohrožení zabezpečení, pokud používáte vícefaktorové ověřování (MFA).
 
-Jak vaše organizace zapíná vícefaktorové ověřování ještě zdarma, než se stane statistikou?
+Tak jak se vaše organizace zapnout MFA i zdarma, než se stane statistika?
 
-## <a name="free-option"></a>Možnost Free
+## <a name="free-option"></a>Možnost zdarma
 
-Zákazníci, kteří využívají Bezplatné výhody Azure AD, můžou použít [výchozí nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) a povolit službu Multi-Factor Authentication ve svém prostředí.
+Zákazníci, kteří využívají bezplatné výhody Azure AD můžete použít [výchozí zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) povolit vícefaktorové ověřování ve svém prostředí.
 
-## <a name="office-365"></a>Office 365
+## <a name="office-365-business-premium-e3-or-e5"></a>Office 365 Business Premium, E3 nebo E5
 
-Pro zákazníky se sadou Office 365 jsou k dispozici dvě možnosti:
+Pro zákazníky s Office 365 existují dvě možnosti:
 
-- [Výchozí nastavení zabezpečení](concept-fundamentals-security-defaults.md) je možné povolit prostřednictvím služby Azure AD a chránit tak všechny uživatele pomocí Azure Multi-Factor Authentication.
-- Pokud vaše organizace vyžaduje více členitosti při poskytování služby Multi-Factor Authentication, zahrnují vaše licence [na uživatele možnosti vícefaktorového](../authentication/howto-mfa-userstates.md) ověřování. Vícefaktorové ověřování vázané na uživatele je povolené a v každém z nich se vynutilo pro každého uživatele zvlášť správcem.
+* Azure Multi-Factor Authentication je povolená nebo zakázaná pro všechny uživatele, pro všechny události přihlášení. Neexistuje možnost povolit pouze vícefaktorové ověřování pro podmnožinu uživatelů nebo pouze v určitých scénářích. Správa probíhá prostřednictvím portálu Office 365. 
+* Pro lepší uživatelské prostředí upgradujte na Azure AD Premium P1 nebo P2 a použijte podmíněný přístup. Další informace najdete v tématu zabezpečení prostředků Office 365 s vícefaktorovým ověřováním.
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 
-Pro zákazníky s Azure AD Premium P1 nebo podobnými licencemi, které zahrnují tuto funkci, jako je Enterprise Mobility + Security E3, Microsoft 365 F1 nebo Microsoft 365 E3: 
+Pro zákazníky s Azure AD Premium P1 nebo podobnými licencemi, které obsahují tyto funkce, jako jsou Enterprise Mobility + Security E3, Microsoft 365 F1 nebo Microsoft 365 E3: 
 
-Doporučením je použití [zásad podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md) pro nejlepší uživatelské prostředí.
+Pomocí [podmíněného přístupu Azure AD](../conditional-access/overview.md) můžete uživatele vyzvat k vícefaktorovému ověřování během určitých scénářů nebo událostí tak, aby vyhovovaly vašim obchodním požadavkům.
 
 ## <a name="azure-ad-premium-p2"></a>Azure AD Premium P2
 
-Pro zákazníky s Azure AD Premium P2 nebo podobnými licencemi, které zahrnují tuto funkci, jako je například Enterprise Mobility + Security E5 nebo Microsoft 365 E5: 
+Pro zákazníky s Azure AD Premium P2 nebo podobnými licencemi, které obsahují tyto funkce, jako je enterprise mobility + zabezpečení E5 nebo Microsoft 365 E5: 
 
-Doporučením je použití [zásad podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md) společně se zásadami riziku [ochrany identity pro zajištění](../identity-protection/overview-v2.md) optimálního uživatelského prostředí a flexibility vynucení.
+Poskytuje nejsilnější pozici zabezpečení a lepší uživatelské prostředí. Přidává [podmíněný přístup založený na rizicích](../conditional-access/howto-conditional-access-policy-risk.md) na funkce Azure AD Premium P1, které se přizpůsobí vzorcům uživatele a minimalizují výzvy k vícefaktorovému ověřování.
 
-## <a name="authentication-methods"></a>Metody ověření
+## <a name="authentication-methods"></a>Metody ověřování
 
 |   | Výchozí nastavení zabezpečení | Všechny ostatní metody |
 | --- | --- | --- |
-| Oznámení přes mobilní aplikaci | × | × |
+| Oznámení prostřednictvím mobilní aplikace | × | × |
 | Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | × |
-| Textová zpráva na telefon |   | × |
-| Telefonní hovor |   | × |
-| Hesla aplikací |   | × * * |
-
-\* * Hesla aplikací jsou k dispozici pouze v případě MFA pro jednotlivé uživatele se staršími scénáři ověřování, pokud jsou povolena správci.
+| Textová zpráva do telefonu |   | × |
+| Volání na telefon |   | × |
 
 ## <a name="next-steps"></a>Další kroky
 
-[Stránka s cenami služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)
+Další informace najdete v kurzu k [zabezpečení událostí přihlášení uživatelů pomocí Azure Multi-Factor Authentication](../authentication/tutorial-enable-azure-mfa.md).
+
+Další informace o licencování najdete [v tématu Funkce a licence pro Azure Multi-Factor Authentication](../authentication/concept-mfa-licensing.md).

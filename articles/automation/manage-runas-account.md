@@ -1,134 +1,134 @@
 ---
-title: Správa účtů Azure Automation spustit jako
-description: Tento článek popisuje, jak spravovat účty Spustit jako pomocí PowerShellu nebo na portálu.
+title: Správa azure automatizace spustit jako účty
+description: Tento článek popisuje, jak spravovat účty Spustit jako pomocí Prostředí PowerShell nebo z portálu.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: d3d58765aafcaa15491a30ecc8d3e7da6a78662d
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 8d7d0baacd5f702e8f435ab440eaf0338a60f4cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79366934"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500770"
 ---
-# <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů Azure Automation spustit jako
+# <a name="manage-azure-automation-run-as-accounts"></a>Správa azure automatizace spustit jako účty
 
-Účty Spustit jako v Azure Automation poskytují ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří se nový uživatel instančního objektu ve službě Azure Active Directory (AD) a přiřadí roli přispěvatele tomuto uživateli na úrovni předplatného. Pro Runbooky, které používají hybridní pracovní procesy Runbooku na virtuálních počítačích Azure, můžete k ověřování prostředků Azure použít [spravované identity pro prostředky Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) místo účtů spustit jako.
+Spouštět jako účty v Azure Automation poskytují ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří nového hlavního uživatele služby ve službě Azure Active Directory (AD) a přiřadí roli přispěvatele tomuto uživateli na úrovni předplatného. Pro runbooky, které používají hybridní runbook ové pracovníky na virtuálních počítačích Azure, můžete k ověření prostředků Azure použít [spravované identity pro prostředky Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) namísto účtů Run As.
 
-Instanční objekt pro účet Spustit jako nemá oprávnění ke čtení Azure AD ve výchozím nastavení. Pokud chcete přidat oprávnění ke čtení nebo správě služby Azure AD, musíte oprávnění k instančnímu objektu udělit v části **oprávnění rozhraní API**. Další informace najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+Instanční objekt pro spustit jako účet nemá oprávnění ke čtení Azure AD ve výchozím nastavení. Pokud chcete přidat oprávnění ke čtení nebo správě Azure AD, budete muset udělit oprávnění na instanční objekt v rámci **oprávnění rozhraní API**. Další informace najdete v tématu [Přidání oprávnění k přístupu k webovým apim](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
 >[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci modulu AZ na pracovníka hybridní sady Runbook najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). U vašeho účtu Automation můžete aktualizovat moduly na nejnovější verzi pomocí [funkce Jak aktualizovat moduly Azure PowerShellu v Azure Automation](automation-update-azure-modules.md).
 
-## <a name="types-of-run-as-accounts"></a>Typy účtů spustit jako
+## <a name="types-of-run-as-accounts"></a>Typy účtů Spustit jako
 
-Azure Automation používá dva typy účtů spustit jako:
+Azure Automation používá dva typy účtů Run As:
 
 * Účet Spustit jako pro Azure
-* Účet Spustit jako pro Azure Classic
+* Účet Azure Classic Run As
 
 >[!NOTE]
->Předplatná Azure Cloud Solution Provider (CSP) podporují pouze model Azure Resource Manager. V programu nejsou k dispozici služby, které nejsou Azure Resource Manager. Pokud používáte předplatné CSP, účet Spustit jako pro Azure Classic se nevytvoří, ale vytvoří se účet Spustit jako pro Azure. Další informace o předplatných CSP najdete [v tématu dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
+>Předplatná Azure Cloud Solution Provider (CSP) podporují jenom model Azure Resource Manager. Služby Azure Resource Manager nejsou v programu dostupné. Když používáte předplatné CSP, účet Azure Classic Run As se nevytvoří, ale vytvoří se účet Azure Run As. Další informace o předplatných CSP najdete v tématu [Dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
 ### <a name="run-as-account"></a>Účet Spustit jako
 
-Účet Spustit jako spravuje prostředky [modelu nasazení Správce prostředků](../azure-resource-manager/management/deployment-models.md) . Provádí následující úlohy.
+Účet Spustit jako spravuje prostředky [modelu nasazení Resource Manageru.](../azure-resource-manager/management/deployment-models.md) Provádí následující úkoly.
 
-* Vytvoří aplikaci Azure AD s certifikátem podepsaným svým držitelem, vytvoří účet instančního objektu pro tuto aplikaci v Azure AD a přiřadí roli přispěvatele pro tento účet v aktuálním předplatném. Nastavení certifikátu můžete změnit na vlastník nebo na jinou roli. Další informace najdete v tématu [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md).
+* Vytvoří aplikaci Azure AD s certifikátem podepsaným svým držitelem, vytvoří účet instančního objektu pro tuto aplikaci v Azure AD a přiřadí roli přispěvatele pro tento účet v aktuálním předplatném. Nastavení certifikátu můžete změnit na Vlastník nebo jinou roli. Další informace najdete v tématu [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md).
   
-* Vytvoří prostředek certifikátu Automation s názvem `AzureRunAsCertificate` v zadaném účtu Automation. Asset certifikátu obsahuje privátní klíč certifikátu, který používá aplikace Azure AD.
+* Vytvoří datový zdroj `AzureRunAsCertificate` certifikátu automatizace pojmenovaný v zadaném účtu automatizace. Datový zdroj certifikátu obsahuje soukromý klíč certifikátu, který používá aplikace Azure AD.
   
-* Vytvoří prostředek připojení Automation s názvem `AzureRunAsConnection` v zadaném účtu Automation. Asset připojení obsahuje ID aplikace, ID tenanta, ID předplatného a kryptografický otisk certifikátu.
+* Vytvoří prostředek připojení `AzureRunAsConnection` automatizace pojmenovaný v zadaném účtu automatizace. Prostředek připojení obsahuje ID aplikace, ID klienta, ID předplatného a kryptografický otisk certifikátu.
 
 ### <a name="azure-classic-run-as-account"></a>Azure Classic spuštěné jako účet
 
-Účet Spustit jako pro Azure Classic spravuje prostředky [modelu nasazení Classic](../azure-resource-manager/management/deployment-models.md) . Aby bylo možné vytvořit nebo obnovit tento typ účtu, musíte být spolusprávcem předplatného.
+Účet Azure Classic Run As spravuje prostředky [modelu klasického nasazení.](../azure-resource-manager/management/deployment-models.md) Chcete-li vytvořit nebo obnovit tento typ účtu, musíte být spolusprávcem předplatného.
 
-Účet Spustit jako pro Azure Classic provádí následující úlohy.
+Účet Azure Classic Run As provádí následující úkoly.
 
-  * Vytvoří v předplatném certifikát pro správu.
+  * Vytvoří certifikát správy v předplatném.
 
-  * Vytvoří prostředek certifikátu Automation s názvem `AzureClassicRunAsCertificate` v zadaném účtu Automation. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá certifikát pro správu.
+  * Vytvoří datový zdroj `AzureClassicRunAsCertificate` certifikátu automatizace pojmenovaný v zadaném účtu automatizace. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá certifikát pro správu.
 
-  * Vytvoří prostředek připojení Automation s názvem `AzureClassicRunAsConnection` v zadaném účtu Automation. Prostředek připojení obsahuje název předplatného, ID předplatného a název assetu certifikátu.
+  * Vytvoří prostředek připojení `AzureClassicRunAsConnection` automatizace pojmenovaný v zadaném účtu automatizace. Prostředek připojení obsahuje název předplatného, ID předplatného a název datového zdroje certifikátu.
 
-## <a name="permissions"></a>Oprávnění účtu Spustit jako
+## <a name="run-as-account-permissions"></a><a name="permissions"></a>Spustit jako oprávnění účtu
 
-Tato část definuje oprávnění pro účty běžných účtů spustit jako a účty Spustit jako pro Azure Classic.
+Tato část definuje oprávnění pro běžné účty Spustit jako i Klasické spuštění jako.
 
-### <a name="permissions-to-configure-run-as-accounts"></a>Oprávnění ke konfiguraci účtů spustit jako
+### <a name="permissions-to-configure-run-as-accounts"></a>Oprávnění ke konfiguraci účtů Spustit jako
 
-Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít specifická oprávnění a oprávnění. Správce aplikace v Azure Active Directory a vlastník v rámci předplatného může dokončit všechny úlohy. V situaci, kdy máte oddělení povinností, je v následující tabulce uveden seznam úkolů, ekvivalentní rutina a potřebná oprávnění:
+Chcete-li vytvořit nebo aktualizovat účet Spustit jako, musíte mít určitá oprávnění a oprávnění. Správce aplikace ve službě Azure Active Directory a vlastník v předplatném můžete dokončit všechny úkoly. V situaci, kdy máte oddělení povinností, v následující tabulce je uveden seznam úkolů, ekvivalentní rutiny a potřebných oprávnění:
 
-|Úkol|Rutiny  |Minimální oprávnění  |Místo nastavení oprávnění|
+|Úkol|Rutina  |Minimální oprávnění  |Kde nastavíte oprávnění|
 |---|---------|---------|---|
-|Vytvoření aplikace Azure AD|[New-AzADApplication](/https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication?view=azps-3.5.0)     | Role vývojáře aplikace<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Registrace aplikací > domovského > služby Azure AD |
-|Přidejte do aplikace přihlašovací údaje.|[New-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential?view=azps-3.5.0)     | Správce aplikace nebo globální správce<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Registrace aplikací > domovského > služby Azure AD|
-|Vytvoření a získání instančního objektu služby Azure AD|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-3.5.0)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal?view=azps-3.5.0)     | Správce aplikace nebo globální správce<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Registrace aplikací > domovského > služby Azure AD|
-|Přiřazení nebo získání role RBAC pro zadaný objekt zabezpečení|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment?view=azps-3.5.0)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment?view=azps-3.5.0)      | Správce nebo vlastník přístupu uživatele nebo musí mít následující oprávnění:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Předplatné Home > > \<název předplatného\>-Access Control (IAM)|
-|Vytvoření nebo odebrání certifikátu Automation|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.5.0)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate?view=azps-3.5.0)     | Přispěvatel ve skupině prostředků         |Skupina prostředků účtu služby Automation|
-|Vytvoření nebo odebrání připojení služby Automation|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.5.0)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection?view=azps-3.5.0)|Přispěvatel ve skupině prostředků |Skupina prostředků účtu služby Automation|
+|Vytvoření aplikace Azure AD|[Nová aplikace AzAD](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication?view=azps-3.5.0)     | Role vývojáře aplikací<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure |
+|Přidejte pověření do aplikace.|[Nové azadapppověření](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential?view=azps-3.5.0)     | Správce aplikace nebo globální správce<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure|
+|Vytvoření a získání instančního objektu služby Azure AD|[Nový-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-3.5.0)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal?view=azps-3.5.0)     | Správce aplikace nebo globální správce<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > registrace aplikací > Azure|
+|Přiřazení nebo získání role RBAC pro zadaný objekt zabezpečení|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment?view=azps-3.5.0)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment?view=azps-3.5.0)      | Správce nebo vlastník přístupu uživatelů nebo máte následující oprávnění:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Předplatná domů \<>\> > název předplatného – řízení přístupu (IAM)|
+|Vytvoření nebo odebrání certifikátu automatizace|[Nový certifikát AzAutomation](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.5.0)</br>[Odebrat azautomationcertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate?view=azps-3.5.0)     | Přispěvatel ve skupině prostředků         |Skupina prostředků účtu automatizace|
+|Vytvoření nebo odebrání připojení automatizace|[Nové připojení AzAutomation](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.5.0)</br>[Odebrat připojení AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection?view=azps-3.5.0)|Přispěvatel ve skupině prostředků |Skupina prostředků účtu automatizace|
 
-<sup>1</sup> uživatelé bez oprávnění správce v TENANTOVI Azure AD můžou [Registrovat aplikace služby AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) , pokud je možnost Uživatelé klienta Azure AD **můžou registrovat aplikace** na stránce nastavení uživatele je nastavená na **Ano**. Pokud je nastavení registrace aplikace **ne**, uživatel provádějící tuto akci musí být definovaný v této tabulce.
+<sup>1</sup> Uživatelé, kteří nejsou správci ve vašem tenantovi Azure AD, [můžou zaregistrovat aplikace AD,](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) pokud uživatelé klienta Azure AD **můžou zaregistrovat aplikace** na stránce Nastavení uživatele, je nastavená na **Ano**. Pokud je nastavení registrace aplikace **Ne**, musí být uživatel provádějící tuto akci definován v této tabulce.
 
-Pokud nejste členem instance Active Directory předplatného, než se přiřadíte do role globálního správce předplatného, jste přidaní jako host. V takovém případě se na stránce Přidat účet Automation zobrazí upozornění `You do not have permissions to create…`. 
+Pokud nejste členem instance služby Active Directory předplatného před přidáním do role globálního správce předplatného, budete přidáni jako host. V takovém případě se `You do not have permissions to create…` zobrazí upozornění na stránce Přidat účet automatizace. 
 
-Pokud jste členem instance Active Directory předplatného, když je přiřazená role globálního správce, můžete také na stránce Přidat účet Automation obdržet upozornění `You do not have permissions to create…`. V takovém případě si můžete vyžádat odebrání z instance Active Directory předplatného a potom požádat o opětovné přidání, takže se ve službě Active Directory stanete úplným uživatelem.
+Pokud jste členem instance služby Active Directory předplatného při přiřazení role globálního správce, můžete také obdržet `You do not have permissions to create…` upozornění na stránce Přidat účet automatizace. V takovém případě můžete požádat o odebrání instance služby Active Directory a potom požádat o opětovné přidání, abyste se stali úplným uživatelem ve službě Active Directory.
 
-Chcete-li ověřit, zda byla odstraněna situace, kdy došlo k chybě této chybové zprávy:
+Chcete-li ověřit, zda byla napravena situace vytvářející chybovou zprávu:
 
-1. V podokně Azure Active Directory v Azure Portal vyberte **Uživatelé a skupiny**. 
-2. Vyberte **Všichni uživatelé**.
-3. Zvolte své jméno a pak vyberte **profil**. 
-4. Ujistěte se, že hodnota atributu **Type uživatele** v profilu uživatele není nastavená na **Host**.
+1. V podokně Azure Active Directory na webu Azure Portal vyberte **Uživatelé a skupiny**. 
+2. Vyberte **možnost Všichni uživatelé**.
+3. Vyberte své jméno a pak vyberte **Profil**. 
+4. Ujistěte se, že hodnota atributu **User type** pod profilem uživatele není nastavena na **hodnotu Host**.
 
-### <a name="permissions-classic"></a>Oprávnění ke konfiguraci účtů spustit jako pro Classic
+### <a name="permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>Oprávnění ke konfiguraci účtů Classic Run As
 
-Pokud chcete nakonfigurovat nebo prodloužit účty Spustit jako pro Azure Classic, musíte mít roli spolusprávce na úrovni předplatného. Další informace o oprávněních klasického předplatného najdete v tématu [Správci předplatného Azure Classic](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
+Chcete-li konfigurovat nebo obnovovat klasické účty Spustit jako, musíte mít roli spolusprávce na úrovni předplatného. Další informace o klasických oprávněních k předplatném najdete v [tématu Správci klasického předplatného Azure](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
 
-## <a name="creating-a-run-as-account-in-azure-portal"></a>Vytvoření účtu Spustit jako v Azure Portal
+## <a name="creating-a-run-as-account-in-azure-portal"></a>Vytvoření účtu Spustit jako na webu Azure Portal
 
-Chcete-li aktualizovat účet Azure Automation v Azure Portal, proveďte následující kroky. Vytvořte účty Spustit jako a účet Spustit jako pro Azure Classic samostatně. Pokud nepotřebujete spravovat klasické prostředky, můžete vytvořit jenom účet Spustit jako pro Azure.
+Proveďte následující kroky k aktualizaci účtu Azure Automation na webu Azure Portal. Vytvořte účty Spustit jako a Klasický běh jako jednotlivě. Pokud nepotřebujete spravovat klasické prostředky, můžete vytvořit jenom účet Spustit jako pro Azure.
 
 1. Přihlaste se k portálu Azure pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
-2. Vyhledejte a vyberte **účty Automation**.
-3. Na stránce účty Automation v seznamu vyberte svůj účet Automation.
-4. V levém podokně vyberte **účty Spustit jako** v části nastavení účtu.
+2. Vyhledejte a vyberte **automatizační účty**.
+3. Na stránce Účty automatizace vyberte účet automatizace ze seznamu.
+4. V levém podokně vyberte v části Nastavení účtu možnost **Spustit jako účty.**
 5. Podle toho, který účet požadujete, vyberte buď **Účet Spustit jako pro Azure**, nebo **Účet Spustit jako pro Azure Classic**. 
-6. V závislosti na účtu zájmu použijte podokno přidat účet Spustit v **Azure jako** nebo **Přidat účet Spustit jako** pro Azure Classic. Po kontrole informací v přehledu klikněte na **vytvořit**.
-6. Zatímco Azure vytváří účet Spustit jako, můžete průběh sledovat v nabídce v části **Oznámení**. Zobrazí se také zpráva s informacemi o tom, že účet se vytváří. Dokončení procesu může trvat několik minut.
+6. V závislosti na účtu zájmu použijte podokno **Přidat Azure Run As** nebo Přidat azure klasický **spouštění jako účet.** Po kontrole informací o přehledu klepněte na **tlačítko Vytvořit**.
+6. Zatímco Azure vytváří účet Spustit jako, můžete průběh sledovat v nabídce v části **Oznámení**. Zobrazí se také nápis oznamující, že účet je vytvářen. Proces může trvat několik minut.
 
 ## <a name="creating-a-run-as-account-using-powershell"></a>Vytvoření účtu Spustit jako pomocí PowerShellu
 
-Následující seznam uvádí požadavky na vytvoření účtu Spustit jako v prostředí PowerShell. Tyto požadavky platí pro oba typy účtů spustit jako.
+Následující seznam obsahuje požadavky na vytvoření účtu Spustit jako v prostředí PowerShell. Tyto požadavky platí pro oba typy účtů Spustit jako.
 
-* Windows 10 nebo Windows Server 2016 s Azure Resource Manager moduly 3.4.1 a novější. PowerShellový skript nepodporuje starší verze Windows.
+* Windows 10 nebo Windows Server 2016 s moduly Azure Resource Manager u verze 3.4.1 a novější. Skript Prostředí PowerShell nepodporuje starší verze systému Windows.
 * Azure PowerShell 1.0 nebo novější. Informace o vydání PowerShellu 1.0 najdete v článku [Postup instalace a konfigurace Azure PowerShellu](/powershell/azureps-cmdlets-docs).
-* Účet Automation, na který se odkazuje jako na hodnotu pro parametry `AutomationAccountName` a `ApplicationDisplayName`.
-* Oprávnění, která jsou shodná s těmi, která jsou uvedena v [požadovaných oprávněních ke konfiguraci účtů spustit jako](#permissions).
+* Účet automatizace, který je odkazován `AutomationAccountName` `ApplicationDisplayName` jako hodnota pro parametry a.
+* Oprávnění ekvivalentní oprávněním uvedeným v [části Požadovaná oprávnění ke konfiguraci účtů Spustit jako](#permissions).
 
-Chcete-li získat hodnoty pro `SubscriptionId`, `ResourceGroupName`a, které jsou vyžadovány parametry pro skript prostředí PowerShell, proveďte následující kroky.
+Chcete-li získat `SubscriptionId` `ResourceGroupName`hodnoty pro , a , což jsou požadované parametry pro skript prostředí PowerShell, proveďte další kroky.
 
-1. V Azure Portal vyberte **účty Automation**.
-1. Na stránce účty Automation vyberte svůj účet Automation.
-1. V části nastavení účtu vyberte **vlastnosti**.
-1. Poznamenejte si hodnoty pro **název**, **ID předplatného**a **skupinu prostředků** na stránce Vlastnosti. Tyto hodnoty odpovídají hodnotám pro parametry skriptu PowerShellu `AutomationAccountName`, `SubscriptionId`a `ResourceGroupName` v uvedeném pořadí.
+1. Na portálu Azure vyberte **Účty automatizace**.
+1. Na stránce Účty automatizace vyberte účet automatizace.
+1. V části Nastavení účtu vyberte **Vlastnosti**.
+1. Poznamenejte si hodnoty **pro NAME**, **ID předplatného**a **SKUPINU PROSTŘEDKŮ** na stránce Vlastnosti. Tyto hodnoty odpovídají hodnotám `AutomationAccountName` `SubscriptionId`parametrů `ResourceGroupName` skriptu , a PowerShell.
 
-   ![Stránka vlastností účtu služby Automation](media/manage-runas-account/automation-account-properties.png)
+   ![Stránka vlastností účtu automatizace](media/manage-runas-account/automation-account-properties.png)
 
-### <a name="powershell-script-to-create-a-run-as-account"></a>Skript PowerShellu pro vytvoření účtu Spustit jako
+### <a name="powershell-script-to-create-a-run-as-account"></a>Skript Prostředí PowerShell pro vytvoření účtu Spustit jako
 
-V této části najdete skript prostředí PowerShell pro vytvoření účtu Spustit jako. Tento skript zahrnuje podporu pro několik konfigurací.
+Tato část obsahuje skript prostředí PowerShell pro vytvoření účtu Spustit jako. Skript obsahuje podporu pro několik konfigurací.
 
 * Vytvoření účtu Spustit v Azure jako pomocí certifikátu podepsaného svým držitelem
 * Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí certifikátu podepsaného svým držitelem
 * Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí certifikátu, který vydala vaše podniková certifikační autorita
 * Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí certifikátu podepsaného svým držitelem v cloudu Azure Government
 
-Skript k vytváření prostředků používá několik rutin Azure Resource Manager. Informace o rutinách a oprávněních, která vyžadují, najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](#permissions-to-configure-run-as-accounts).
+Skript používá k vytváření prostředků více rutin Azure Resource Manager. Rutiny a oprávnění, která vyžadují, naleznete v [tématu Oprávnění ke konfiguraci účtů Spustit jako](#permissions-to-configure-run-as-accounts).
 
-Uložte skript na svém počítači pomocí názvu souboru **New-RunAsAccount. ps1**.
+Uložte skript do počítače pomocí názvu souboru **New-RunAsAccount.ps1**.
 
 ```powershell
     #Requires -RunAsAdministrator
@@ -310,16 +310,16 @@ Uložte skript na svém počítači pomocí názvu souboru **New-RunAsAccount. p
 ```
 
 >[!NOTE]
->`Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
+>`Add-AzAccount`a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Můžete použít tyto rutiny nebo můžete [aktualizovat moduly](automation-update-azure-modules.md) v účtu Automation na nejnovější verze. Možná budete muset aktualizovat moduly, i když jste právě vytvořili nový účet Automatizace.
 
-### <a name="execute-the-powershell-script"></a>Spuštění skriptu PowerShellu
+### <a name="execute-the-powershell-script"></a>Spuštění skriptu Prostředí PowerShell
 
 1. Na svém počítači na obrazovce **Start** spusťte **Windows PowerShell** se zvýšenými uživatelskými právy.
-1. V prostředí příkazového řádku se zvýšenými oprávněními přejdete do složky, která obsahuje váš skript.
-1. Spusťte skript s použitím hodnot parametrů pro konfiguraci, kterou požadujete.
-1. Pokud po spuštění skriptu vytvoříte účet Spustit jako pro Classic, nahrajte do úložiště správy pro předplatné, ve kterém se vytvořil účet služby Automation, certifikát veřejného certifikátu (přípona názvu souboru **. cer** ).
+1. Z prostředí příkazového řádku se zvýšenými oprávněními přejděte do složky, která obsahuje skript.
+1. Spusťte skript pomocí hodnot parametrů pro konfiguraci, kterou požadujete.
+1. Pokud vytváříte účet Classic Run As, po spuštění skriptu nahrajte veřejný certifikát ( příponu název souboru**CER)** do úložiště pro správu pro předplatné, ve kterém byl vytvořen účet Automation.
 
-Po spuštění skriptu budete vyzváni k ověření pomocí Azure. Přihlaste se pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
+Po spuštění skriptu se zobrazí výzva k ověření pomocí Azure. Přihlaste se pomocí účtu, který je členem role správci předplatného a spolusprávcem předplatného.
 
 #### <a name="create-a-run-as-account-by-using-a-self-signed-certificate"></a>Vytvoření účtu Spustit jako pomocí certifikátu podepsaného svým držitelem
 
@@ -327,95 +327,95 @@ Po spuštění skriptu budete vyzváni k ověření pomocí Azure. Přihlaste se
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
 ```
 
-#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-a-self-signed-certificate"></a>Vytvoření účtu Spustit jako a účtu Spustit jako pro Azure Classic pomocí certifikátu podepsaného svým držitelem
+#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-a-self-signed-certificate"></a>Vytvoření účtu Spustit jako a účtu Classic Run As pomocí certifikátu podepsaného svým držitelem
 
 ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
 ```
 
-#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-an-enterprise-certificate"></a>Vytvoření účtu Spustit jako a účtu Spustit jako pro Azure Classic pomocí podnikového certifikátu
+#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-an-enterprise-certificate"></a>Vytvoření účtu Spustit jako a účtu Classic Run As pomocí podnikového certifikátu
 
 ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
 ```
 
-Pokud jste vytvořili účet Spustit jako pro Classic s podnikovým veřejným certifikátem (soubor **. cer** ), použijte tento certifikát. Viz [nahrání certifikátu rozhraní API pro správu do Azure Portal](../azure-api-management-certs.md).
+Pokud jste vytvořili účet Classic Run As s veřejným certifikátem rozlehlé sítě ( soubor**CER),** použijte tento certifikát. Viz [Nahrání certifikátu rozhraní API pro správu na portál Azure](../azure-api-management-certs.md).
 
-#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-a-self-signed-certificate-in-the-azure-government-cloud"></a>Vytvoření účtu Spustit jako a účtu Spustit jako pro Azure Classic pomocí certifikátu podepsaného svým držitelem v cloudu Azure Government
+#### <a name="create-a-run-as-account-and-a-classic-run-as-account-by-using-a-self-signed-certificate-in-the-azure-government-cloud"></a>Vytvoření účtu Spustit jako a účtu Spustit jako pro Classic pomocí certifikátu podepsaného svým držitelem v cloudu Azure Government
 
 ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment
 ```
 
-Pokud jste vytvořili účet Spustit jako pro Classic s veřejným certifikátem podepsaným svým držitelem (soubor **. cer** ), skript ho vytvoří a uloží do složky dočasných souborů ve vašem počítači. Najdete ho v `%USERPROFILE%\AppData\Local\Temp`profilu uživatele, který jste použili ke spuštění relace PowerShellu.
+Pokud jste vytvořili účet Classic Run As s veřejným certifikátem podepsaným svým držitelem ( soubor**CER),** skript jej vytvoří a uloží do složky dočasných souborů v počítači. Najdete jej v profilu `%USERPROFILE%\AppData\Local\Temp`uživatele , který jste použili ke spuštění relace prostředí PowerShell.
 
-## <a name="deleting-a-run-as-or-classic-run-as-account"></a>Odstranění účtu Spustit jako nebo účtu Spustit jako pro Classic
+## <a name="deleting-a-run-as-or-classic-run-as-account"></a>Odstranění účtu Spustit jako nebo Klasický běh jako
 
-Tato část popisuje, jak odstranit účet Spustit jako nebo účet Spustit jako pro Azure Classic. Při provedení této akce se účet Automation uchová. Po odstranění účtu ho můžete znovu vytvořit v Azure Portal.
+Tato část popisuje, jak odstranit účet Spustit jako nebo Klasický spustit jako. Při provedení této akce se účet Automation uchová. Po odstranění účtu ho můžete znovu vytvořit na webu Azure Portal.
 
 1. Na webu Azure Portal otevřete účet Automation.
 
-2. V levém podokně vyberte **účty Spustit jako** v části nastavení účtu.
+2. V levém podokně vyberte v části Nastavení účtu možnost **Spustit jako účty.**
 
-3. Na stránce vlastností účty Spustit jako vyberte účet Spustit jako nebo účet Spustit jako pro Classic, který chcete odstranit. 
+3. Na stránce vlastností Účty Spustit jako vyberte účet Spustit jako nebo účet Spustit jako pro Classic, který chcete odstranit. 
 
-4. V podokně vlastnosti vybraného účtu klikněte na **Odstranit**.
+4. V podokně Vlastnosti vybraného účtu klepněte na tlačítko **Odstranit**.
 
    ![Odstranění účtu Spustit jako](media/manage-runas-account/automation-account-delete-runas.png)
 
 5. Zatímco se účet odstraňuje, můžete průběh sledovat v nabídce v části **Oznámení**.
 
-6. Po odstranění účtu ho můžete znovu vytvořit na stránce vlastností účty Spustit jako výběrem možnosti vytvořit v části **účet Spustit v Azure jako**.
+6. Účet po odstranění můžete znovu vytvořit na stránce vlastností Účty Spustit jako výběrem možnosti Vytvořit v části **Účet Spustit jako pro Azure**.
 
    ![Znovuvytvoření účtu Automation Spustit jako](media/manage-runas-account/automation-account-create-runas.png)
 
-## <a name="cert-renewal"></a>Obnovování certifikátu podepsaného svým držitelem
+## <a name="renewing-a-self-signed-certificate"></a><a name="cert-renewal"></a>Obnovení certifikátu podepsaného svým držitelem
 
-Certifikát podepsaný svým držitelem, který jste vytvořili pro účet Spustit jako, vyprší jeden rok od data vytvoření. V určitém okamžiku před vypršením platnosti účtu Spustit jako je nutné certifikát obnovit. Můžete ho prodloužit kdykoli předtím, než vyprší jeho platnost. 
+Platnost certifikátu podepsaného svým držitelem, který jste vytvořili pro účet Spustit jako, vyprší jeden rok od data vytvoření. V určitém okamžiku před vypršením platnosti účtu Spustit jako je nutné certifikát obnovit. Můžete jej obnovit kdykoli před vypršením jeho platnosti. 
 
-Při obnovení certifikátu podepsaného svým držitelem se zachová aktuální platný certifikát, aby se zajistilo, že všechny Runbooky, které jsou ve frontě nebo aktivně spuštěné a které se ověřují pomocí účtu Spustit jako, nejsou negativně ovlivněny. Certifikát zůstane platný až do data vypršení jeho platnosti.
-
->[!NOTE]
->Pokud si myslíte, že došlo k ohrožení zabezpečení účtu Spustit jako, můžete certifikát podepsaný svým držitelem odstranit a znovu vytvořit.
+Při obnovení certifikátu podepsaného svým držitelem je aktuální platný certifikát zachován, aby bylo zajištěno, že všechny sady Runbook, které jsou zařazeny do fronty nebo aktivně spuštěny, a že se ověřují pomocí účtu Spustit jako, nebudou negativně ovlivněny. Certifikát zůstane platný až do data vypršení jeho platnosti.
 
 >[!NOTE]
->Pokud jste nakonfigurovali účet Spustit jako, aby používal certifikát vydaný certifikační autoritou rozlehlé sítě, a použijete možnost k obnovení certifikátu podepsaného svým držitelem, bude podnikový certifikát nahrazen certifikátem podepsaným svým držitelem.
+>Pokud se domníváte, že byl napaden účet Spustit jako, můžete odstranit a znovu vytvořit certifikát podepsaný svým držitelem.
 
-K obnovení certifikátu podepsaného svým držitelem použijte následující postup.
+>[!NOTE]
+>Pokud jste nakonfigurovali účet Spustit jako tak, aby používal certifikát vydaný certifikační autoritou rozlehlé sítě, a tuto možnost používáte k obnovení možnosti certifikátu podepsaného svým držitelem, je certifikát organizace nahrazen certifikátem podepsaným svým držitelem.
+
+Pomocí následujících kroků obnovte certifikát podepsaný svým držitelem.
 
 1. Na webu Azure Portal otevřete účet Automation.
 
-1. V části nastavení účtu vyberte **účty Spustit jako** .
+1. V části Nastavení účtu vyberte **Spustit jako účty.**
 
     ![Podokno vlastností účtu Automation](media/manage-runas-account/automation-account-properties-pane.png)
 
-1. Na stránce vlastností účty Spustit jako vyberte účet Spustit jako nebo účet Spustit jako pro Classic, pro který chcete obnovit certifikát.
+1. Na stránce Vlastnosti Spustit jako účty vyberte buď účet Spustit jako, nebo účet Classic Run As, pro který chcete certifikát obnovit.
 
-1. V podokně vlastnosti vybraného účtu klikněte na **obnovit certifikát**.
+1. V podokně vlastností vybraného účtu klepněte na tlačítko **Obnovit certifikát**.
 
     ![Obnovení certifikátu pro účet Spustit jako](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
 1. Zatímco se certifikát obnovuje, můžete průběh sledovat v nabídce v části **Oznámení**.
 
-## <a name="auto-cert-renewal"></a>Nastavení automatického obnovení certifikátu pomocí Runbooku služby Automation
+## <a name="setting-up-automatic-certificate-renewal-with-an-automation-runbook"></a><a name="auto-cert-renewal"></a>Nastavení automatického obnovení certifikátu pomocí runbooku automatizace
 
-K automatickému obnovení certifikátů můžete použít Runbook služby Automation. Tento skript na [GitHubu](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) tuto funkci umožňuje ve vašem účtu Automation.
+Chcete-li certifikáty obnovit automaticky, můžete použít runbook automatizace. Tento skript na [GitHubu](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) umožňuje tuto funkci ve vašem účtu Automation.
 
 >[!NOTE]
->Abyste mohli skript spustit, musíte být globálním správcem nebo správcem společnosti ve službě Azure AD.
+>Chcete-li skript spustit, musíte být globálním správcem nebo správcem společnosti ve službě Azure AD.
 
-Tento skript vytvoří týdenní plán pro obnovení certifikátů účtu Spustit jako. Přidá do svého účtu Automation Runbook **Update-AutomationRunAsCredential** . Kód Runbooku můžete zobrazit na GitHubu ve skriptu [Update-AutomationRunAsCredential. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1). V případě potřeby můžete v souboru použít kód PowerShellu k ručnímu obnovení certifikátů.
+Tento skript vytvoří týdenní plán pro obnovení certifikátů účtů Spustit jako. Přidá **runbook Update-AutomationRunAsCredential** do vašeho účtu Automation. Kód sady Runbook můžete zobrazit na GitHubu ve skriptu [Update-AutomationRunAsCredential.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1). Kód prostředí PowerShell v souboru můžete podle potřeby ručně obnovit certifikáty.
 
-K okamžitému otestování procesu obnovení použijte následující postup.
+Pomocí následujících kroků otestujte proces obnovení okamžitě.
 
-1. Upravte sadu Runbook **Update-AutomationRunAsCredential** a umístěte znak komentáře (#) na řádku 122 před příkaz **Exit (1)** .
+1. Upravte runbook **Update-AutomationRunAsCredential** a umístěte znak komentáře (#) na řádek 122 před příkaz **Exit(1).**
 
    ```powershell
    #Exit(1)
    ```
 
-2. Publikujte Runbook.
-3. Spusťte Runbook.
+2. Publikujte runbook.
+3. Spusťte runbook.
 4. Ověřte úspěšné obnovení pomocí následujícího kódu:
 
    ```powershell
@@ -429,17 +429,17 @@ K okamžitému otestování procesu obnovení použijte následující postup.
    Thursday, November 7, 2019 7:00:00 PM
    ```
 
-5. Po dokončení testu upravte Runbook a odeberte znak komentáře, který jste přidali v kroku 1.
-6. Publikujte Runbook.
+5. Po testu upravte runbook a odeberte znak komentáře, který jste přidali v kroku 1.
+6. Publikujte runbook.
 
-## <a name="limiting-run-as-account-permissions"></a>Omezení oprávnění účtu Spustit jako
+## <a name="limiting-run-as-account-permissions"></a><a name="limiting-run-as-account-permissions"></a>Omezení oprávnění účtu Spustit jako
 
-Pokud chcete řídit cílení na automatizaci u prostředků v Azure, můžete spustit skript [Update-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug8) . Tento skript změní existující instanční objekt účtu Spustit jako tak, aby vytvořil a používal vlastní definici role. Role má oprávnění pro všechny prostředky kromě [Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Chcete-li řídit cílení automatizace proti prostředkům v Azure, můžete spustit [skript Update-AutomationAccountAccountRoleAssignments.ps1.](https://aka.ms/AA5hug8) Tento skript změní stávající spuštění jako instanční objekt účtu vytvořit a použít vlastní definici role. Role má oprávnění pro všechny prostředky kromě [trezoru klíčů](https://docs.microsoft.com/azure/key-vault/).
 
 >[!IMPORTANT]
->Po spuštění skriptu **Update-AutomationRunAsAccountRoleAssignments. ps1** nebudou Runbooky, které přistupují k Key Vault pomocí účtů spustit jako, nadále fungovat. Před spuštěním skriptu byste měli zkontrolovat Runbooky ve vašem účtu pro volání Azure Key Vault. Pokud chcete povolit přístup k Key Vault z Azure Automation sad Runbook, musíte [Přidat účet Spustit jako pro Key Vault oprávnění](#add-permissions-to-key-vault).
+>Po spuštění skriptu **Update-AutomationRunAsAccountRoleAssignments.ps1** již nefungují sady Runbook, které přistupují k trezoru klíčů pomocí účtů Run-Automation. Před spuštěním skriptu byste měli zkontrolovat runbooky ve vašem účtu pro volání do Azure Key Vault. Chcete-li povolit přístup k trezoru klíčů z runbooků Azure Automation, musíte [přidat účet Spustit jako do oprávnění trezoru klíčů](#add-permissions-to-key-vault).
 
-Pokud potřebujete omezit, co může instanční objekt spustit jako používat, můžete přidat další typy prostředků do prvku `NotActions` definice vlastní role. Následující příklad omezuje přístup k `Microsoft.Compute/*`. Pokud přidáte tento typ prostředku do `NotActions` pro definici role, role nebude mít přístup k žádnému výpočetnímu prostředku. Další informace o definicích rolí najdete v tématu [vysvětlení definic rolí pro prostředky Azure](../role-based-access-control/role-definitions.md).
+Pokud potřebujete omezit, dále co spustit jako instanční objekt může udělat, můžete přidat další typy prostředků do `NotActions` prvku definice vlastní role. Následující příklad omezuje přístup `Microsoft.Compute/*`k aplikaci . Pokud přidáte tento typ `NotActions` prostředku pro definici role, role nebude mít přístup k žádnému výpočetnímu prostředku. Další informace o definicích rolí najdete [v tématu Principy definic rolí pro prostředky Azure](../role-based-access-control/role-definitions.md).
 
 ```powershell
 $roleDefinition = Get-AzRoleDefinition -Name 'Automation RunAs Contributor'
@@ -447,35 +447,35 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzRoleDefinition
 ```
 
-Můžete určit, jestli instanční objekt používaný účtem spustit jako je v definici role přispěvatele, nebo na vlastní. 
+Můžete určit, zda je instanční objekt používaný vaším účtem Spustit jako v definici role přispěvatele nebo v vlastní. 
 
-1. V části nastavení účtu vyberte účet Automation a vyberte **účty Spustit jako** .
-2. Vyberte **účet Spustit jako pro Azure**. 
-3. Vyberte **role** pro vyhledání používané definice role.
+1. V části Nastavení účtu přejděte na účet Automation a vyberte **Spustit jako účty.**
+2. Vyberte **Azure Spustit jako účet**. 
+3. Vyberte **Role** vyhledejte definici role, která se používá.
 
 [![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
-Můžete také určit definici role používané účty Spustit jako pro více předplatných nebo účtů Automation. Použijte k tomu skript [check-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug5) v Galerie prostředí PowerShell.
+Můžete také určit definici role používané účty Spustit jako pro více předplatných nebo účty automatizace. To provést pomocí [check-automationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) skript v Galerii prostředí PowerShell.
 
-### <a name="add-permissions-to-key-vault"></a>Přidat oprávnění pro Key Vault
+### <a name="add-permissions-to-key-vault"></a>Přidání oprávnění do trezoru klíčů
 
-Můžete Azure Automation, abyste ověřili, jestli Key Vault a objekt služby účet Spustit jako používá vlastní definici role. Musíte:
+Azure Automation můžete povolit ověření, jestli trezor klíčů a váš hlavní uživatel služby Spustit jako účet používají vlastní definici role. Musíte:
 
-* Udělte oprávnění Key Vault.
+* Udělte oprávnění trezoru klíčů.
 * Nastavte zásady přístupu.
 
-Pomocí skriptu [extend-AutomationRunAsAccountRoleAssignmentToKeyVault. ps1](https://aka.ms/AA5hugb) v Galerie prostředí PowerShell můžete poskytnout účtu Spustit jako oprávnění k Key Vault. Další podrobnosti o nastavení oprávnění pro Key Vault najdete v tématu [udělení přístupu k trezoru klíčů aplikacím](../key-vault/key-vault-group-permissions-for-apps.md) .
+Pomocí skriptu [Extend-AutomationRunAsAccountAccountAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) v Galerii prostředí PowerShell můžete udělit trezoru klíčů oprávnění ke spuštění jako účtu. Další informace o nastavení oprávnění v trezoru klíčů najdete v [tématu Udělení přístupu aplikacím do trezoru klíčů.](../key-vault/key-vault-group-permissions-for-apps.md)
 
-## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>Řešení potíží s chybou konfigurace pro účty Spustit jako
+## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>Řešení problémů s chybnou konfigurací pro účty Spustit jako
 
-Některé položky konfigurace potřebné pro účet Spustit jako nebo pro klasický účet Spustit jako byly pravděpodobně při počátečním nastavení odstraněny nebo vytvořeny nesprávně. Mezi možné instance nestejné konfigurace patří:
+Některé položky konfigurace nezbytné pro účet Spustit jako nebo Klasický běh jako mohly být odstraněny nebo vytvořeny nesprávně během počátečníinstalace. Možné instance chybné konfigurace zahrnují:
 
 * Asset certifikátu
 * Asset připojení
-* Účet Spustit jako odebraný z role Přispěvatel
+* Spustit jako účet odebrán z role přispěvatele
 * Instanční objekt nebo aplikace v Azure AD
 
-U takových instancí s neplatnými konfigurace účet Automation zjistí změny a zobrazí stav `Incomplete` v podokně vlastností účty Spustit jako pro daný účet.
+Pro takové instance chybné konfigurace účet automatizace zjistí změny a `Incomplete` zobrazí stav v podokně vlastností Spustit jako účty pro účet.
 
 ![Nedokončená konfigurace účtu Spustit jako](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 
@@ -489,5 +489,5 @@ Tyto potíže s účtem Spustit jako můžete rychle vyřešit jeho odstranění
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o instančních objektech naleznete v tématu [Application Objects and instanční objekty](../active-directory/develop/app-objects-and-service-principals.md).
-* Další informace o certifikátech a službách Azure najdete v tématu [Přehled certifikátů pro azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+* Další informace o instančních objektech naleznete v [tématu Application Objects and Service Principal Objects](../active-directory/develop/app-objects-and-service-principals.md).
+* Další informace o certifikátech a službách Azure najdete [v tématu Přehled certifikátů pro Cloudové služby Azure](../cloud-services/cloud-services-certs-create.md).

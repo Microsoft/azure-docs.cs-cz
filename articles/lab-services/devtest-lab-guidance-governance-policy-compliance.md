@@ -1,6 +1,6 @@
 ---
-title: Zásady společnosti a dodržování předpisů v Azure DevTest Labs
-description: Tento článek poskytuje pokyny k řízení zásad společnosti a dodržování předpisů pro Azure DevTest Labs infrastrukturu.
+title: Zásady společnosti a dodržování předpisů v laboratořích Azure DevTest Labs
+description: Tento článek obsahuje pokyny k řízení zásad společnosti a dodržování předpisů pro infrastrukturu Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,67 +14,67 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74560509"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – zásady společnosti a dodržování předpisů
-Tento článek poskytuje pokyny k řízení zásad společnosti a dodržování předpisů pro Azure DevTest Labs infrastrukturu. 
+# <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Řízení infrastruktury Azure DevTest Labs – zásady společnosti a dodržování předpisů
+Tento článek obsahuje pokyny k řízení zásad společnosti a dodržování předpisů pro infrastrukturu Azure DevTest Labs. 
 
-## <a name="public-vs-private-artifact-repository"></a>Veřejné a soukromé úložiště artefaktů
+## <a name="public-vs-private-artifact-repository"></a>Veřejné vs. soukromé úložiště artefaktů
 
 ### <a name="question"></a>Otázka
-Kdy by organizace měla v DevTest Labs použít veřejné úložiště artefaktů a soukromé úložiště artefaktů?
+Kdy by měla organizace používat veřejné úložiště artefaktů vs. soukromé úložiště artefaktů v devTest Labs?
 
 ### <a name="answer"></a>Odpověď
-[Veřejné úložiště artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) poskytuje počáteční sadu softwarových balíčků, které se nejčastěji používají. Pomáhá s rychlým nasazením, aniž by bylo nutné investovat čas k reprodukování běžných vývojářských nástrojů a doplňků. Můžete si vybrat, že nasadíte vlastní privátní úložiště. Veřejné a privátní úložiště můžete používat paralelně. Můžete se také rozhodnout zakázat veřejné úložiště. Kritéria pro nasazení privátního úložiště by měla být založená na následujících otázkách a ohledech:
+[Veřejné úložiště artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) poskytuje počáteční sadu softwarových balíčků, které se nejčastěji používají. Pomáhá s rychlým nasazením, aniž by bylo nutné investovat čas na reprodukci běžných vývojářských nástrojů a doplňků. Můžete nasadit vlastní soukromé úložiště. Můžete použít veřejné a soukromé úložiště paralelně. Můžete také zakázat veřejné úložiště. Kritéria pro nasazení soukromého úložiště by měla být řízena následujícími otázkami a aspekty:
 
-- Má organizace požadavky na podnikový licencovaný software jako součást nabídky DevTest Labs? Pokud je odpověď ano, je třeba vytvořit privátní úložiště.
-- Vyvíjí organizace vlastní software, který poskytuje konkrétní operace, která je vyžadována jako součást celkového procesu zřizování? Pokud je odpověď ano, měli byste nasadit privátní úložiště.
-- Pokud zásada zásad správného řízení organizace vyžaduje izolaci a externí úložiště nejsou pod správou přímých konfigurací v organizaci, měla by být nasazené soukromé úložiště artefaktů. V rámci tohoto procesu je možné zkopírovat a integrovat počáteční kopii veřejného úložiště s privátním úložištěm. Veřejné úložiště pak můžete zakázat, aby k němu nikdo jiný nemohly získat přístup. Tento přístup vynutí, aby všichni uživatelé v organizaci měli jenom jedno úložiště schválené organizací a minimalizovali snížení konfigurace.
+- Má organizace požadavek mít firemní licencovaný software jako součást své nabídky DevTest Labs? Pokud je odpověď ano, pak by měl být vytvořen soukromý úložiště.
+- Vyvíjí organizace vlastní software, který poskytuje konkrétní operaci, která je vyžadována jako součást celkového procesu zřizování? Pokud je odpověď ano, pak by měl být nasazen soukromý repozitář.
+- Pokud zásady zásad správného řízení organizace vyžaduje izolaci a externí úložiště nejsou pod přímou správou konfigurace organizace, soukromé úložiště artefaktů by měla být nasazena. V rámci tohoto procesu lze zkopírovat a integrovat první kopii veřejného úložiště se soukromým úložištěm. Veřejné úložiště pak může být zakázáno, aby k němu už nikdo v rámci organizace neměl přístup. Tento přístup vynutí, aby všichni uživatelé v rámci organizace měli pouze jedno úložiště schválené organizací a minimalizovalo posun konfigurace.
 
 ### <a name="single-repository-or-multiple-repositories"></a>Jedno úložiště nebo více úložišť 
 
 ### <a name="question"></a>Otázka
-Měl by se použít plán organizace pro jedno úložiště nebo povolení více úložišť?
+Má organizace plánovat jedno úložiště nebo povolit více úložišť?
 
 ### <a name="answer"></a>Odpověď
-V rámci celkové strategie správy zásad správného řízení a konfigurace vaší organizace doporučujeme, abyste používali centralizované úložiště. Když použijete více úložišť, můžou se v průběhu času stát siloy nespravovaného softwaru. S centrálním úložištěm může více týmů využívat artefakty z tohoto úložiště pro své projekty. Vynutil standardizaci, zabezpečení, snadné řízení a eliminuje duplicity úsilí. V rámci centralizované správy jsou následující akce Doporučené postupy pro dlouhodobou správu a udržitelnost:
+Jako součást celkové strategie správy zásad správného řízení a konfigurace vaší organizace doporučujeme použít centralizované úložiště. Při použití více úložišť se mohou v průběhu času stát sily nespravovaného softwaru. S centrální úložiště více týmů můžete využívat artefakty z tohoto úložiště pro své projekty. Vynucuje standardizaci, zabezpečení, snadnou správu a eliminuje zdvojování úsilí. V rámci centralizace jsou doporučovány následující postupy pro dlouhodobé řízení a udržitelnost:
 
-- Přidružte Azure Repos ke stejnému Azure Active Directory tenanta, kterého předplatné Azure používá k ověřování a autorizaci.
-- Vytvořte skupinu s názvem **všichni vývojáři DevTest Labs** v Azure Active Directory centrálně spravovaná. Do této skupiny by měl být umístěn jakýkoli vývojář, který přispívá ke vývojům artefaktů.
-- Stejnou skupinu Azure Active Directory lze použít k poskytnutí přístupu k úložišti Azure Repos a testovacímu prostředí.
-- V Azure Repos by se měly použít větvení nebo rozvětvení do samostatného cloudového úložiště z primárního provozního úložiště. Obsah se přidá do hlavní větve s žádostí o přijetí změn po správné revizi kódu. Jakmile recenzent kódu schválí změnu, vývojář zájemce, který zodpovídá za údržbu hlavní větve, sloučí aktualizovaný kód. 
+- Přidružte azure úložiště ke stejnému tenantovi Azure Active Directory, který předplatné Azure používá pro ověřování a autorizaci.
+- Vytvořte skupinu s názvem **Všichni vývojáři devTest Labs** ve službě Azure Active Directory, která je centrálně spravovaná. Každý vývojář, který přispívá k vývoji artefaktů by měl být umístěn v této skupině.
+- Stejná skupina Azure Active Directory slouží k poskytování přístupu k úložišti Azure Repos a do testovacího prostředí.
+- V Azure Repos větvení nebo rozvětvení by měl být použit k samostatné úložiště ve vývoji z úložiště primární produkční ho. Obsah se do hlavní větve přidává pouze s žádostí o přijetí vyžádat po řádné kontrole kódu. Jakmile recenzent kódu změnu schválí, vývojář hlavního zákazníka, který je zodpovědný za údržbu hlavní větve, sloučí aktualizovaný kód. 
 
 ## <a name="corporate-security-policies"></a>Podnikové zásady zabezpečení
 
 ### <a name="question"></a>Otázka
-Jak může organizace zajistit, aby byly zásady zabezpečení společnosti zavedeny?
+Jak může organizace zajistit, aby byly zavedeny podnikové zásady zabezpečení?
 
 ### <a name="answer"></a>Odpověď
-Organizace ji může dosáhnout provedením následujících akcí:
+Organizace toho může dosáhnout následujícím způsobem:
 
-1. Vývoj a publikování komplexních zásad zabezpečení. Zásady překloubují pravidla přijatelného použití související s používáním softwaru, cloudových prostředků. Definuje také, co jasně narušuje zásady. 
-2. Vývoj vlastní image, vlastních artefaktů a procesu nasazení, který umožňuje orchestraci v rámci sféry zabezpečení, která je definovaná ve službě Active Directory. Tento přístup vynutil hranici společnosti a nastavuje společnou sadu ovládacích prvků pro životní prostředí. Tyto ovládací prvky pro prostředí může vývojář při vývoji brát v úvahu a v rámci celého procesu dodržujte životní cyklus bezpečného vývoje. Cílem je také poskytnout prostředí, které není v nedostatečném omezení, které může bránit vývoji, ale přiměřenou sadu ovládacích prvků. Zásady skupiny v organizační jednotce (OU), která obsahuje virtuální počítače testovacího prostředí, můžou být podmnožinou celkových zásad skupiny, které se nacházejí v produkčním prostředí. Alternativně může být další sada, která bude správně zmírnit všechna zjištěná rizika.
+1. Vypracování a publikování komplexní bezpečnostní politiky. Zásady formulují pravidla přijatelného použití spojená s pomocí softwaru, cloudových prostředků. Definuje také to, co jasně porušuje zásady. 
+2. Vytvořte vlastní bitovou kopii, vlastní artefakty a proces nasazení, který umožňuje orchestraci v rámci sféry zabezpečení, která je definována pomocí služby Active Directory. Tento přístup vynucuje hranice podniku a nastavuje společnou sadu ovládacích prvků prostředí. Tyto ovládací prvky proti prostředí, které může vývojář zvážit při vývoji a sledování zabezpečeného životního cyklu vývoje jako součást jejich celkového procesu. Cílem je také vytvořit prostředí, které není příliš omezující, což může bránit rozvoji, ale přiměřený soubor kontrol. Zásady skupiny v organizační jednotce (OU), která obsahuje virtuální počítače testovacího prostředí, mohou být podmnožinou celkových zásad skupiny, které se nacházejí v produkčním prostředí. Alternativně mohou být další sadou, která řádně zmírní všechna zjištěná rizika.
 
 ## <a name="data-integrity"></a>Integrita dat
 
 ### <a name="question"></a>Otázka
-Jak může organizace zajistit integritu dat, aby vývojáři vzdálené komunikace nemohli odebrat kód nebo zavést malware nebo neschválený software?
+Jak může organizace zajistit integritu dat, aby zajistila, že vývojáři vzdálené komunikace nebudou moci odebrat kód nebo zavést malware nebo neschválený software?
 
 ### <a name="answer"></a>Odpověď
-Existuje několik vrstev řízení pro zmírnění hrozby od externích konzultantů, dodavatelů nebo zaměstnanců, kteří pracují v DevTest Labs při spolupráci. 
+Existuje několik vrstev kontroly ke zmírnění hrozby od externích konzultantů, dodavatelů nebo zaměstnanců, kteří jsou vzdálené ke spolupráci v DevTest Labs. 
 
-Jak bylo uvedeno dříve, musí mít první krok v konceptu přijatelné zásady použití, které budou jasně vypsány a definovány tak, aby jasné, které důsledky porušují nějaké zásady. 
+Jak již bylo uvedeno dříve, první krok musí mít přijatelné použití politiky vypracovány a definovány, že jasně nastiňuje důsledky, když někdo poruší politiku. 
 
-První vrstvou ovládacích prvků pro vzdálený přístup je použití zásady vzdáleného přístupu prostřednictvím připojení VPN, které není přímo připojené k testovacímu prostředí. 
+První vrstva ovládacích prvků pro vzdálený přístup je použít zásady vzdáleného přístupu prostřednictvím připojení VPN, které není přímo připojeno k testovacímu prostředí. 
 
-Druhá vrstva ovládacích prvků je použít sadu objektů zásad skupiny, které zabraňují kopírování a vkládání prostřednictvím vzdálené plochy. Je možné implementovat zásady sítě, aby nepovolovaly odchozí služby z prostředí, jako jsou služby FTP a RDP, mimo prostředí. Směrování definované uživatelem může vynutit všechny síťové přenosy Azure zpátky do místního prostředí, ale směrování nemohlo být pro všechny adresy URL, které by mohly umožňovat nahrávání dat, pokud se neřídí proxy serverem pro skenování obsahu a relací. Veřejné IP adresy se můžou omezit v rámci virtuální sítě, které podporují DevTest Labs, aby nepovolovaly přemostění prostředků externí sítě.
+Druhá vrstva ovládacích prvků je použít sadu objektů zásad skupiny, které brání kopírování a vkládání přes vzdálenou plochu. Síťová politika by mohla být implementována tak, aby neumožňovala odchozí msty z prostředí, jako jsou služby FTP a RDP, mimo prostředí. Uživatelem definované směrování může vynutit veškerý síťový provoz Azure zpět do místního prostředí, ale směrování nemůže odpovídat všem adresám URL, které by mohly povolit nahrávání dat, pokud nejsou řízeny prostřednictvím proxy serveru pro skenování obsahu a relací. Veřejné IP adresy by mohly být omezeny v rámci virtuální sítě podporující DevTest Labs neumožňuje přemostění externího síťového prostředku.
 
-V konečném případě je třeba použít stejný typ omezení v rámci organizace, což by muselo také zohlednit všechny možné metody vyměnitelných médií nebo externích adres URL, které by mohly přijmout obsah. Pokud chcete zkontrolovat a implementovat zásady zabezpečení, obraťte se na svého odborníka na zabezpečení. Další doporučení najdete v tématu [Microsoft Internet Security](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
+Nakonec je třeba použít stejný typ omezení v celé organizaci, což by muselo také zohlednit všechny možné metody vyměnitelných médií nebo externích adres URL, které by mohly přijmout příspěvek obsahu. Poraďte se se svým bezpečnostním odborníkem a zkontrolujte a implementujte zásady zabezpečení. Další doporučení naleznete v tématu [Microsoft Cyber Security](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
 
 
 ## <a name="next-steps"></a>Další kroky
-Viz [migrace a integrace aplikací](devtest-lab-guidance-governance-application-migration-integration.md).
+Viz [Migrace a integrace aplikací](devtest-lab-guidance-governance-application-migration-integration.md).

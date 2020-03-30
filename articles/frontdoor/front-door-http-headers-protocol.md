@@ -1,6 +1,6 @@
 ---
-title: Podpora protokolů hlaviček protokolu HTTP ve službě Azure front-dveří | Microsoft Docs
-description: Tento článek popisuje protokoly protokolu HTTP, které služba front-dveří podporuje.
+title: Podpora protokolu pro hlavičky HTTP v Azure Front Door | Dokumenty společnosti Microsoft
+description: Tento článek popisuje protokoly záhlaví PROTOKOLU HTTP, které podporuje front door.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,51 +11,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280817"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471672"
 ---
-# <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Podpora protokolů hlaviček protokolu HTTP ve službě Azure front-dveří
-Tento článek popisuje protokol, který služba front-dveří podporuje s částmi cesty volání (viz obrázek). V následujících částech najdete další informace o hlavičkách HTTP, které podporuje služba front-dveří.
+# <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Podpora protokolu pro hlavičky HTTP v Azure Front Door
+Tento článek popisuje protokol, který přední dveře podporují s částmi cesty volání (viz obrázek). Následující části poskytují další informace o hlavičkách PROTOKOLU HTTP podporovaných frontdoor.
 
-![Protokol hlaviček HTTP služby Azure front-dveří][1]
+![Protokol záhlaví http azure předních dveří][1]
 
 >[!IMPORTANT]
->Služba front-dveří neosvědčuje žádné hlavičky HTTP, které tady nejsou popsané.
+>Přední dveře necertifikují žádné hlavičky HTTP, které zde nejsou zdokumentovány.
 
-## <a name="client-to-front-door-service"></a>Klient ke službě front-dveří
-Služba front-dveří přijímá většinu hlaviček od příchozího požadavku beze změny. Některá rezervovaná záhlaví jsou při odeslání odebrána z příchozího požadavku, včetně hlaviček s předponou X-FD-*.
+## <a name="client-to-front-door"></a>Klient k předním dveřím
+Přední dveře přijímá většinu záhlaví z příchozí žádosti bez jejich úpravy. Některé vyhrazené hlavičky jsou odebrány z příchozí ho požadavku, pokud jsou odeslány, včetně záhlaví s předponou X-FD-*.
 
-## <a name="front-door-service-to-backend"></a>Služba front-endu do back-endu
+## <a name="front-door-to-backend"></a>Přední dveře k backendu
 
-Služba front-dveří obsahuje hlavičky z příchozího požadavku, pokud se neodebere z důvodu omezení. Přední dvířka také přidávají následující hlavičky:
+Přední dveře obsahuje záhlaví z příchozí žádosti, pokud není odebrána z důvodu omezení. Přední dveře také přidává následující záhlaví:
 
 | Hlavička  | Příklad a popis |
 | ------------- | ------------- |
-| Via |  Přes: 1,1 Azure </br> Přední dvířka přidávají verzi HTTP klienta následovanou *Azure* jako hodnotu pro hlavičku Via. To znamená, že verze protokolu HTTP klienta a tato přední dvířka byla zprostředkujícím příjemcem pro požadavek mezi klientem a back-endu.  |
-| X-Azure-ClientIP | X-Azure-IP adresa klienta: 127.0.0.1 </br> Představuje IP adresu klienta přidruženou k zpracovávané žádosti. Například žádost přicházející z proxy serveru může přidat hlavičku X-pro, která označuje IP adresu původního volajícího. |
-| X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> Představuje IP adresu soketu přidruženou k připojení TCP, ze kterého pochází aktuální žádost. IP adresa klienta žádosti se nemusí shodovat s IP adresou soketu, protože může být libovolně přepsána uživatelem.|
-| X – Azure – ref |  X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> Jedinečný řetězec odkazu, který identifikuje požadavek obsluhující předními dveřmi. Slouží k vyhledávání protokolů přístupu a kritických pro řešení potíží.|
-| X-Azure-RequestChain |  X-Azure-RequestChain: směrování = 1 </br> Záhlaví, které používá přední dvířka k detekci smyček požadavků a uživatel by na něj neměli mít závislost. |
-| X-předané – pro | Předané X-pro: 127.0.0.1 </br> Pole hlavička protokolu HTTP X-XFF () často identifikuje původní IP adresu klienta připojujícího se k webovému serveru prostřednictvím proxy serveru HTTP nebo nástroje pro vyrovnávání zatížení. Pokud existuje existující hlavička XFF, pak přední vrátka připojí k ní IP adresu soketu klienta nebo přidá hlavičku XFF s IP adresou soketu klienta. |
-| X-Forwarded-Host | X-předaný-Host: contoso.azurefd.net </br> Pole hlavička protokolu HTTP předávaného serverem X je společná metoda používaná k identifikaci původního hostitele požadovaného klientem v hlavičce požadavku HTTP hostitele. Důvodem je to, že se název hostitele z front-endu může lišit pro back-end Server, který požadavek zpracovává. |
-| X-Forwarded-Proto | X-předané – proto: http </br> Pole hlavičky HTTP s přesměrováním se často používá k identifikaci původního protokolu požadavku HTTP, protože přední dveře na základě konfigurace můžou komunikovat s back-endu pomocí protokolu HTTPS. To platí i v případě, že požadavek na reverzní proxy je HTTP. |
-| X-FD – HealthProbe | K identifikaci sondy stavu z předních dveří se používá pole hlaviček protokolu HTTP X-FD-HealthProbe. Pokud je tato hlavička nastavená na 1, je žádost sonda stavu. V případě, že chcete získat striktní přístup z konkrétních front a polí s hlavičkou předávaného přes X-host, můžete použít. |
+| Via |  Via: 1.1 Azure </br> Front Door přidá verzi HTTP klienta následovanou *Azure* jako hodnotu hlavičky Via. Tato hlavička označuje verzi HTTP klienta a že front door byl zprostředkujícím příjemcem pro požadavek mezi klientem a back-endem.  |
+| X-Azure-ClientIP | X-Azure-ClientIP: 127.0.0.1 </br> Představuje ip adresu klienta přidruženou ke zpracování požadavku. Například požadavek přicházející z proxy může přidat x-forwarded-for záhlaví označující IP adresu původního volajícího. |
+| X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> Představuje adresu IP soketu přidruženou k připojení TCP, ze kterého pochází aktuální požadavek. IP adresa klienta požadavku se nemusí rovnat adrese IP jeho soketu, protože může být libovolně přepsána uživatelem.|
+| X-Azure-Ref |  X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTKANDM3YzgyY2QtMzYwYS00YTU0LTK0YzMtNWZMNzA3NjQ3Nzgzz </br> Jedinečný referenční řetězec, který identifikuje požadavek obsluhovaný front door. Používá se k vyhledávání přístupových protokolů a důležité pro řešení potíží.|
+| Řetězec požadavků X-Azure- |  X-Azure-RequestChain: směrování=1 </br> Záhlaví, které používá front door ke zjišťování smyčky požadavků a uživatelé by neměli mít závislost na něm. |
+| X-Forwarded-Pro | X-Forwarded-Pro: 127.0.0.1 </br> Pole hlavičky HTTP X-Forwarded-For (XFF) často identifikuje původní ADRESU IP klienta, který se připojuje k webovému serveru prostřednictvím serveru HTTP proxy nebo nástroj pro vyrovnávání zatížení. Pokud existuje existující hlavička XFF, pak front door připojí IP klientského soketu nebo přidá hlavičku XFF s IP klientským soketem. |
+| X-Forwarded-Host | X-Forwarded-Host: contoso.azurefd.net </br> Pole hlavičky HTTP s předsunutým hostitelem je běžná metoda používaná k identifikaci původního hostitele požadovaného klientem v hlavičce požadavku HTTP hostitele. Důvodem je, že název hostitele z front door se může lišit pro back-endový server zpracování požadavku. |
+| X-Forwarded-Proto | X-Forwarded-Proto: http </br> Pole hlavičky HTTP X-Forwarded-Proto se často používá k identifikaci původního protokolu požadavku HTTP, protože frontdoor, na základě konfigurace, může komunikovat s back-endem pomocí protokolu HTTPS. To platí i v případě, že požadavek na reverzní proxy server je HTTP. |
+| X-FD-HealthProbe | Pole hlavičky HTTP X-FD-HealthProbe se používá k identifikaci sondy stavu z předních dveří. Pokud tato hlavička nastavena na 1, požadavek je sonda stavu. Můžete použít, když chcete striktně přistupovat z konkrétních předních dveří s polem hlavičky X-Forwarded-Host. |
 
-## <a name="front-door-service-to-client"></a>Služba front-dveří pro klienta
+## <a name="front-door-to-client"></a>Přední dveře klientovi
 
-Všechny hlavičky odeslané do front-endu z back-endu jsou také předány klientovi. Níže jsou hlavičky odeslané z front-dveří klientům.
+Všechny hlavičky odeslané do front door z back-endu jsou také předány klientovi. Níže jsou záhlaví odeslaná z front door klientům.
 
 | Hlavička  | Příklad |
 | ------------- | ------------- |
-| X – Azure – ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Toto je jedinečný referenční řetězec, který identifikuje požadavek poskytovaný předními dveřmi. To je důležité pro řešení potíží, které se používá k vyhledávání protokolů přístupu.|
+| X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTKANDM3YzgyY2QtMzYwYS00YTU0LTK0YzMtNWZMNzA3NjQ3Nzgzz* </br> Toto je jedinečný referenční řetězec, který identifikuje požadavek obsluhovaný front door. To je důležité pro řešení potíží, protože se používá k vyhledávání přístupových protokolů.|
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření front-dveří](quickstart-create-front-door.md)
+- [Vytvoření služby Front Door](quickstart-create-front-door.md)
 - [Jak fungují přední dveře](front-door-routing-architecture.md)
 
 <!--Image references-->

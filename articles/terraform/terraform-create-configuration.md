@@ -1,39 +1,39 @@
 ---
-title: Rychlý Start – vytvoření konfigurace Terraformu pro Azure
-description: Začněte s Terraformu v Azure nasazením Azure Cosmos DB a Azure Container Instances.
+title: Úvodní příručka – vytvoření konfigurace Terraform pro Azure
+description: S Terraformem v Azure můžete začít nasazením instancí Azure Cosmos DB a Azure Container Instance.
 ms.topic: quickstart
 ms.date: 10/26/2019
 ms.openlocfilehash: 92f66fcfeac69b66eb8cdb0dc58b7a3171d45e10
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77470017"
 ---
-# <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Rychlý Start: Vytvoření konfigurace Terraformu pro Azure
+# <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Úvodní příručka: Vytvoření konfigurace Terraform pro Azure
 
-V tomto rychlém startu vytvoříte prostředky Azure pomocí Terraformu. Postup v tomto článku vás provede vytvořením následujících prostředků:
+V tomto rychlém startu vytvoříte prostředky Azure pomocí Terraform. Kroky v tomto článku vás provedou vytvořením následujících zdrojů:
 
 > [!div class="checklist"]
 > * Instance Azure Cosmos DB
 > * Instance kontejneru Azure
-> * Aplikace, která funguje v těchto dvou prostředcích
+> * Aplikace, která funguje napříč těmito dvěma prostředky
 
 ## <a name="create-first-configuration"></a>Vytvořit první konfiguraci
 
 V této části vytvoříte konfiguraci pro instanci Azure Cosmos DB.
 
-1. Přihlaste se k webu [Portál Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Otevřete Azure Cloud Shell.
+1. Otevřete Prostředí Cloud Shell Azure.
 
-1. Spusťte Editor Cloud Shell:
+1. Spusťte editor Cloud Shell:
 
     ```bash
     code main.tf
     ```
 
-1. Konfigurace v tomto kroku modeluje několik prostředků Azure. Mezi tyto prostředky patří skupina prostředků Azure a instance Azure Cosmos DB. K vytvoření jedinečného názvu instance Cosmos DB slouží náhodné celé číslo. Nakonfigurovali jste taky několik nastavení Cosmos DB. Další informace najdete v referenčních informacích k [Cosmos DB terraformu](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html). Zkopírujte následující konfiguraci Terraformu a vložte ji do editoru:
+1. Konfigurace v tomto kroku modely několik prostředků Azure. Tyto prostředky zahrnují skupinu prostředků Azure a instanci Azure Cosmos DB. Náhodné celé číslo se používá k vytvoření jedinečného názvu instance Cosmos DB. Několik Nastavení Cosmos DB jsou také nakonfigurovány. Další informace naleznete v [odkazu Cosmos DB Terraform](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html). Zkopírujte a vložte do editoru následující konfiguraci Terraform:
 
     ```hcl
     resource "azurerm_resource_group" "vote-resource-group" {
@@ -66,43 +66,43 @@ V této části vytvoříte konfiguraci pro instanci Azure Cosmos DB.
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
 ## <a name="run-the-configuration"></a>Spuštění konfigurace
 
-V této části použijete několik příkazů Terraformu ke spuštění konfigurace.
+V této části použijete několik příkazů Terraform ke spuštění konfigurace.
 
-1. Příkaz [terraformu init](https://www.terraform.io/docs/commands/init.html) inicializuje pracovní adresář. Spusťte následující příkaz v Cloud Shell:
+1. Příkaz [terraform init](https://www.terraform.io/docs/commands/init.html) inicializuje pracovní adresář. Spusťte následující příkaz v prostředí Cloud:
 
     ```bash
     terraform init
     ```
 
-1. K ověření syntaxe konfigurace lze použít příkaz [terraformu Plan](https://www.terraform.io/docs/commands/plan.html) . Parametr `-out` přesměruje výsledky do souboru. Výstupní soubor lze použít později pro použití konfigurace. Spusťte následující příkaz v Cloud Shell:
+1. Příkaz [terraform plan](https://www.terraform.io/docs/commands/plan.html) lze použít k ověření syntaxe konfigurace. Parametr `-out` přesměruje výsledky do souboru. Výstupní soubor lze použít později použít konfiguraci. Spusťte následující příkaz v prostředí Cloud:
 
     ```bash
     terraform plan --out plan.out
     ```
 
-1. K aplikování konfigurace se používá příkaz [terraformu Apply](https://www.terraform.io/docs/commands/apply.html) . Byl zadán výstupní soubor z předchozího kroku. Tento příkaz způsobí vytvoření prostředků Azure. Spusťte následující příkaz v Cloud Shell:
+1. Příkaz [terraform apply](https://www.terraform.io/docs/commands/apply.html) se používá k použití konfigurace. Je určen výstupní soubor z předchozího kroku. Tento příkaz způsobí, že prostředky Azure, které mají být vytvořeny. Spusťte následující příkaz v prostředí Cloud:
 
     ```bash
     terraform apply plan.out
     ```
 
-1. Pokud chcete ověřit výsledky v rámci Azure Portal, přejděte do nové skupiny prostředků. Nová instance Azure Cosmos DB se nachází v nové skupině prostředků.
+1. Pokud chcete ověřit výsledky na webu Azure Portal, přejděte na novou skupinu prostředků. Nová instance Azure Cosmos DB je v nové skupině prostředků.
 
 ## <a name="update-configuration"></a>Aktualizovat konfiguraci
 
-V této části se dozvíte, jak aktualizovat konfiguraci tak, aby zahrnovala instanci kontejneru Azure. Kontejner spustí aplikaci, která čte a zapisuje data do Cosmos DB.
+Tato část ukazuje, jak aktualizovat konfiguraci tak, aby zahrnovala instanci kontejneru Azure. Kontejner spustí aplikaci, která čte a zapisuje data do Cosmos DB.
 
-1. Spusťte Editor Cloud Shell:
+1. Spusťte editor Cloud Shell:
 
     ```bash
     code main.tf
     ```
 
-1. Konfigurace v tomto kroku nastavuje dvě proměnné prostředí: `COSMOS_DB_ENDPOINT` a `COSMOS_DB_MASTERKEY`. Tyto proměnné uchovávají umístění a klíč pro přístup k databázi. Hodnoty pro tyto proměnné jsou získány z instance databáze vytvořené v předchozím kroku. Tento proces se označuje jako interpolace. Další informace o interpolaci Terraformu naleznete v tématu [syntax interpolace](https://www.terraform.io/docs/configuration/interpolation.html). Konfigurace obsahuje taky výstupní blok, který vrací plně kvalifikovaný název domény (FQDN) instance kontejneru. Zkopírujte a vložte následující kód do editoru:
+1. Konfigurace v tomto kroku nastaví `COSMOS_DB_ENDPOINT` dvě `COSMOS_DB_MASTERKEY`proměnné prostředí: a . Tyto proměnné obsahovat umístění a klíč pro přístup k databázi. Hodnoty pro tyto proměnné jsou získány z instance databáze vytvořené v předchozím kroku. Tento proces se nazývá interpolace. Další informace o interpolaci Terraform naleznete v [tématu Syntaxe interpolace](https://www.terraform.io/docs/configuration/interpolation.html). Konfigurace také obsahuje výstupní blok, který vrací plně kvalifikovaný název domény (Plně kvalifikovaný název domény) instance kontejneru. Zkopírujte a vložte následující kód do editoru:
 
     ```hcl
     resource "azurerm_container_group" "vote-aci" {
@@ -138,33 +138,33 @@ V této části se dozvíte, jak aktualizovat konfiguraci tak, aby zahrnovala in
     }
     ```
 
-1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
+1. Uložte soubor**&lt;(Ctrl>S**) a ukončete editor**&lt;(Ctrl>Q**).
 
-1. Jak jste pracovali v předchozí části, spusťte následující příkaz, který provede vizuální změny, které se mají provést:
+1. Stejně jako v předchozí části spusťte následující příkaz, abyste vizualizovat změny, které mají být provedeny:
 
     ```bash
     terraform plan --out plan.out
     ```
 
-1. Spusťte příkaz `terraform apply` pro použití konfigurace.
+1. Spusťte `terraform apply` příkaz a použijte konfiguraci.
 
     ```bash
     terraform apply plan.out
     ```
 
-1. Poznamenejte si plně kvalifikovaný název domény instance kontejneru.
+1. Poznamenejte si instanci kontejneru FQDN.
 
 ## <a name="test-application"></a>Otestování aplikace
 
-Chcete-li otestovat aplikaci, přejděte k plně kvalifikovanému názvu domény instance kontejneru. Mělo by se zobrazit výsledky podobné následujícímu výstupu:
+Chcete-li aplikaci otestovat, přejděte na hlavní název souboru služby instanci kontejneru. Výsledky by se měly zobrazit podobně jako u následujícího výstupu:
 
-![Hlasovací aplikace Azure](media/terraform-quickstart/azure-vote.jpg)
+![Aplikace Azure vote](media/terraform-quickstart/azure-vote.jpg)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku.
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku.
 
-Pokud chcete odebrat prostředky Azure vytvořené v tomto kurzu, spusťte příkaz [terraformu Destroy](https://www.terraform.io/docs/commands/destroy.html) :
+Spusťte příkaz [terraform destroy](https://www.terraform.io/docs/commands/destroy.html) a odeberte prostředky Azure vytvořené v tomto kurzu:
 
 ```bash
 terraform destroy -auto-approve
@@ -173,4 +173,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nainstalujte a nakonfigurujte terraformu pro zřizování prostředků Azure](terraform-install-configure.md).
+> [Nainstalujte a nakonfigurujte Terraform pro zřizování prostředků Azure](terraform-install-configure.md).

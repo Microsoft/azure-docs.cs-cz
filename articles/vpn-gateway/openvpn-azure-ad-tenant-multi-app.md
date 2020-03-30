@@ -1,6 +1,6 @@
 ---
-title: 'VPN Gateway: tenant Azure AD pro různé skupiny uživatelů: ověřování Azure AD'
-description: P2S VPN můžete použít pro připojení k virtuální síti pomocí ověřování Azure AD.
+title: 'Brána VPN: Tenant Azure AD pro různé skupiny uživatelů: Ověřování Azure AD'
+description: K připojení k virtuální síti pomocí ověřování Azure AD můžete použít P2S VPN.
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alzam
 ms.openlocfilehash: 118ea21cbdd2e0527659c7c1beb40d8e42fa1d10
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77485604"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení protokolu P2S OpenVPN
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření klienta Služby Azure Active Directory pro připojení protokolu P2S OpenVPN
 
-Při připojování k virtuální síti můžete použít ověřování založené na certifikátech nebo ověřování pomocí protokolu RADIUS. Když ale použijete otevřený protokol sítě VPN, můžete použít i Azure Active Directory ověřování. Pokud chcete, aby se různé skupiny uživatelů připojovaly k různým branám VPN, můžete v AD zaregistrovat několik aplikací a propojit je s různými bránami VPN. Tento článek vám pomůže nastavit tenanta Azure AD pro ověřování P2S OpenVPN a vytvořit a zaregistrovat víc aplikací ve službě Azure AD, aby se povolil jiný přístup pro různé uživatele a skupiny.
+Při připojování k virtuální síti můžete použít ověřování na základě certifikátu nebo ověřování RADIUS. Pokud však používáte protokol Open VPN, můžete také použít ověřování služby Azure Active Directory. Pokud chcete, aby se jiná sada uživatelů mohla připojit k různým privátní bráně, můžete zaregistrovat více aplikací ve službě AD a propojit je s různými branami VPN. Tento článek vám pomůže nastavit tenanta Azure AD pro ověřování P2S OpenVPN a vytvořit a zaregistrovat více aplikací ve službě Azure AD pro povolení různého přístupu pro různé uživatele a skupiny.
 
 > [!NOTE]
-> Ověřování Azure AD se podporuje jenom pro připojení OpenVPN® protokolu.
+> Ověřování Azure AD je podporované jenom pro připojení protokolu OpenVPN®.
 >
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
 
-## <a name="enable-authentication"></a>6. povolení ověřování v bráně
+## <a name="6-enable-authentication-on-the-gateway"></a><a name="enable-authentication"></a>6. Povolení ověřování na bráně
 
-V tomto kroku povolíte ověřování Azure AD v bráně VPN.
+V tomto kroku povolíte ověřování Azure AD na bráně VPN.
 
-1. Povolte ověřování Azure AD v bráně VPN spuštěním následujících příkazů. Nezapomeňte upravit příkazy, aby odrážely vaše vlastní prostředí:
+1. Povolte ověřování Azure AD na bráně VPN spuštěním následujících příkazů. Nezapomeňte upravit příkazy tak, aby odrážely vaše vlastní prostředí:
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
@@ -36,25 +36,25 @@ V tomto kroku povolíte ověřování Azure AD v bráně VPN.
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "application ID from previous section" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24
     ```
     > [!NOTE]
-    > Ve výše uvedených příkazech nepoužívejte ID aplikace klienta Azure VPN. Tato akce udělí všem uživatelům přístup k bráně VPN. Použijte ID registrovaných aplikací.
+    > Nepoužívejte ID aplikace klienta Azure VPN ve výše uvedených příkazech: Udělí všem uživatelům přístup k bráně VPN. Použijte ID aplikací, které jste zaregistrovali.
 
-2. Vytvořte a Stáhněte si profil spuštěním následujících příkazů. Změňte hodnoty-ResourcGroupName a-Name tak, aby odpovídaly vašemu vlastním.
+2. Vytvořte a stáhněte profil spuštěním následujících příkazů. Změňte hodnoty -ResourcGroupName a -Name tak, aby odpovídaly vašim vlastním.
 
     ```azurepowershell-interactive
     $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 
-3. Po spuštění příkazů vidíte výsledek podobný tomu níže. Zkopírujte výslednou adresu URL do prohlížeče a Stáhněte si soubor. zip profilu.
+3. Po spuštění příkazů se zobrazí výsledek podobný tomu níže. Zkopírujte adresu URL výsledků do prohlížeče a stáhněte si soubor zip profilu.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/profile.png)
 
 4. Extrahujte stažený soubor zip.
 
-5. Přejděte do složky unzip "AzureVPN".
+5. Přejděte do rozbalené složky "AzureVPN".
 
-6. Poznamenejte si umístění souboru azurevpnconfig. XML. Azurevpnconfig. XML obsahuje nastavení pro připojení VPN a dá se importovat přímo do klientské aplikace Azure VPN. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude potřebovat platné přihlašovací údaje Azure AD pro úspěšné připojení.
+6. Poznamenejte si umístění souboru "azurevpnconfig.xml". Soubor azurevpnconfig.xml obsahuje nastavení pro připojení VPN a lze jej importovat přímo do aplikace klienta Azure VPN. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude k úspěšnému připojení potřebovat platná pověření Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 
-Aby bylo možné se připojit k virtuální síti, je nutné vytvořit a nakonfigurovat profil klienta VPN. Viz téma [Konfigurace klienta VPN pro připojení P2S VPN](openvpn-azure-ad-client.md).
+Chcete-li se připojit k virtuální síti, musíte vytvořit a nakonfigurovat profil klienta VPN. Viz [Konfigurace klienta VPN pro připojení P2S VPN](openvpn-azure-ad-client.md).
