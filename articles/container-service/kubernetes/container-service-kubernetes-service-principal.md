@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Instanční objekt pro cluster Azure Kubernetes
+title: (ZASTARALÉ) Instanční objekt pro cluster Azure Kubernetes
 description: Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster Kubernetes v Azure Container Service
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371116"
 ---
-# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>ZASTARALÉ Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
+# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(ZASTARALÉ) Nastavení instančního objektu služby Azure AD pro cluster Kubernetes v kontejnerové službě
 
 > [!TIP]
-> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v tématu [instanční objekty se službou Azure Kubernetes Service (AKS)](../../aks/kubernetes-service-principal.md).
+> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v článku [instanční objekty se službou Azure Kubernetes Service (AKS).](../../aks/kubernetes-service-principal.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -61,7 +61,7 @@ Výstup je podobný tomuto (zobrazuje se zde zrevidovaně):
 
 ![Vytvoření instančního objektu](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-Zvýrazní se **ID klienta** (`appId`) a **tajný kód klienta** (`password`), které se použijí jako parametry instančního objektu pro nasazení clusteru.
+Zvýrazněné jsou **ID klienta** (`appId`) a tajný klíč **klienta** (`password`), který používáte jako parametry hlavního serveru služeb pro nasazení clusteru.
 
 
 ### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>Zadání instančního objektu při vytváření clusteru Kubernetes
@@ -78,7 +78,7 @@ Následující příklad ukazuje jeden ze způsobů předání parametrů pomoc�
 
 1. [Stáhněte si](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) soubor parametrů šablony `azuredeploy.parameters.json` z GitHubu.
 
-2. Instanční objekt specifikujte zadáním hodnot pro `servicePrincipalClientId` a `servicePrincipalClientSecret` v souboru. (Pro `dnsNamePrefix` a `sshRSAPublicKey` musíte zadat také vlastní hodnoty. Druhá je veřejný klíč SSH pro přístup ke clusteru.) Uložte soubor.
+2. Instanční objekt specifikujte zadáním hodnot pro `servicePrincipalClientId` a `servicePrincipalClientSecret` v souboru. (Pro `dnsNamePrefix` a `sshRSAPublicKey` musíte zadat také vlastní hodnoty. Ten je veřejný klíč SSH pro přístup ke clusteru.) Uložte soubor.
 
     ![Předání parametrů instančního objektu](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -97,7 +97,7 @@ Následující příklad ukazuje jeden ze způsobů předání parametrů pomoc�
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Možnost 2: Vygenerování instančního objektu při vytváření clusteru pomocí příkazu `az acs create`
 
-Pokud vytváříte cluster Kubernetes spuštěním příkazu [`az acs create`](/cli/azure/acs#az-acs-create), máte možnost instanční objekt vygenerovat automaticky.
+Pokud spustíte [`az acs create`](/cli/azure/acs#az-acs-create) příkaz k vytvoření clusteru Kubernetes, máte možnost generovat instanční objekt automaticky.
 
 Stejně jako u ostatních možností vytvoření clusteru Kubernetes můžete při spuštění příkazu `az acs create` určit parametry pro existující instanční objekt. Pokud však tyto parametry vynecháte, Azure CLI automaticky vytvoří instanční objekt pro použití se službou Container Service. Tato akce se provede transparentně během nasazení.
 
@@ -125,7 +125,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 * Pokud použijete příkaz `az acs create` k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/acsServicePrincipal.json` na počítači, který jste ke spuštění příkazu použili.
 
-* Pokud použijete příkaz `az acs create` k automatickému vygenerování instančního objektu, bude se tento instanční objekt moci ověřovat také pomocí služby [Azure Container Registry](../../container-registry/container-registry-intro.md) vytvořené ve stejném předplatném.
+* Pokud použijete příkaz `az acs create` k automatickému generování instančního objektu, může tento instanční objekt k ověřování také použít službu [Azure Container Registry](../../container-registry/container-registry-intro.md) vytvořenou ve stejném předplatném.
 
 * Přihlašovací údaje instančního objektu můžou vypršet, což způsobí přechod uzlů clusteru do stavu **NotReady**. Informace o omezení rizik najdete v části [Vypršení platnosti přihlašovacích údajů](#credential-expiration).
 

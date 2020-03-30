@@ -1,6 +1,6 @@
 ---
-title: Zprávy EDIFACT pro integraci B2B
-description: Zprávy Exchange EDIFACT ve formátu EDI pro integraci B2B Enterprise v Azure Logic Apps s Enterprise Integration Pack
+title: Edifact zprávy pro integraci B2B
+description: Výměna zpráv EDIFACT ve formátu EDI pro podnikovou integraci B2B v aplikacích Azure Logic Apps s podnikovou integrací
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,249 +9,249 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
 ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651453"
 ---
-# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange EDIFACT pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
+# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv EDIFACT pro podnikovou integraci B2B v aplikacích Azure Logic Apps s podnikovou integrací
 
-Než budete moct EDIFACT zprávy pro Azure Logic Apps, musíte si vytvořit EDIFACT smlouvu a uložit ji do svého účtu integrace. Tady je postup, jak vytvořit smlouvu EDIFACT.
+Než si budete moci vyměňovat zprávy EDIFACT pro Azure Logic Apps, musíte vytvořit smlouvu EDIFACT a uložit tuto smlouvu do svého integračního účtu. Zde jsou kroky pro vytvoření smlouvy EDIFACT.
 
 > [!NOTE]
-> Tato stránka obsahuje funkce EDIFACT pro Azure Logic Apps. Další informace najdete v tématu [X12](logic-apps-enterprise-integration-x12.md).
+> Tato stránka popisuje funkce EDIFACT pro Azure Logic Apps. Další informace naleznete v tématu [X12](logic-apps-enterprise-integration-x12.md).
 
 ## <a name="before-you-start"></a>Než začnete
 
-Tady jsou položky, které potřebujete:
+Zde jsou položky, které potřebujete:
 
-* [Účet pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který je už definovaný a přidružený k vašemu předplatnému Azure  
-* Alespoň dva [partneři](logic-apps-enterprise-integration-partners.md) , kteří jsou již definováni v účtu integrace
+* [Účet integrace,](logic-apps-enterprise-integration-create-integration-account.md) který už je definovaný a přidružený k vašemu předplatnému Azure  
+* Alespoň dva [partneři,](logic-apps-enterprise-integration-partners.md) kteří jsou již definováni ve vašem integračním účtu
 
 > [!NOTE]
-> Při vytváření smlouvy se musí obsah ve zprávách, které obdržíte nebo odeslat, partnerovi a partnerovi shodovat s typem smlouvy.
+> Při vytváření smlouvy musí obsah zpráv, které přijímáte nebo odesíláte partnerovi, odpovídat typu smlouvy.
 
-Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a [Přidání partnerů](logic-apps-enterprise-integration-partners.md)můžete vytvořit EDIFACT dohodu pomocí následujících kroků.
+Po [vytvoření účtu integrace](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a [přidání partnerů](logic-apps-enterprise-integration-partners.md)můžete vytvořit smlouvu EDIFACT pomocí následujících kroků.
 
 ## <a name="create-an-edifact-agreement"></a>Vytvoření smlouvy EDIFACT 
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com "Azure Portal"). 
+1. Přihlaste se k [portálu Azure](https://portal.azure.com "portál Azure"). 
 
-2. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "Integration" a pak vyberte **účty pro integraci**.
+2. V hlavní nabídce Azure vyberte **Všechny služby**. Do vyhledávacího pole zadejte "integrace" a pak vyberte **Integrační účty**.
 
-   ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+   ![Najděte svůj integrační účet](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
    > [!TIP]
-   > Pokud se nezobrazí **všechny služby** , může být nutné nejprve rozbalit nabídku. V horní části sbalené nabídky vyberte **zobrazit textové popisky**.
+   > Pokud se **všechny služby** nezobrazí, bude pravděpodobně muset rozbalit nabídku jako první. V horní části sbalené nabídky vyberte **Zobrazit textové popisky**.
 
-3. V části **účty pro integraci**vyberte účet pro integraci, ve kterém chcete vytvořit smlouvu.
+3. V části **Účty integrace**vyberte účet integrace, ve kterém chcete vytvořit smlouvu.
 
-   ![Vyberte účet pro integraci, kde se má smlouva vytvořit.](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+   ![Vyberte účet integrace, kde chcete vytvořit smlouvu.](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-4. Vyberte možnost **smlouvy**. Pokud nemáte dlaždici smlouvy, nejdřív přidejte dlaždici.   
+4. Zvolte **Smlouvy**. Pokud dlaždici Smlouvy nemáte, přidejte ji jako první.   
 
-   ![Vybrat dlaždici smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+   ![Zvolte dlaždici "Dohody"](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-5. Na stránce smlouvy klikněte na tlačítko **Přidat**.
+5. Na stránce Dohody zvolte **Přidat**.
 
-   ![Zvolit přidat](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+   ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. V části **Přidat**zadejte **název** vaší smlouvy. Jako **typ smlouvy**vyberte **EDIFACT**. Vyberte **hostitele hostitele**, **identitu hostitele**, **partnera hosta**a **identitu hosta** pro vaši smlouvu.
+6. V části **Přidat**zadejte **název** smlouvy. Pro **typ dohody**vyberte **edifact**. Vyberte pro svou smlouvu **hostovaného partnera**, **identitu hostitele**, **partnera hosta**a **identitu hosta.**
 
-   ![Zadání podrobností o smlouvě](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+   ![Poskytnout podrobnosti o smlouvě](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
    | Vlastnost | Popis |
    | --- | --- |
-   | Název |Název smlouvy |
-   | Typ smlouvy | By měl být EDIFACT |
-   | Partner hostitele |Smlouva potřebuje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
-   | Hostitelská identita |Identifikátor hostitelského partnera |
-   | Partner hosta |Smlouva potřebuje hostitele i partnera hosta. Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
-   | Identita hosta |Identifikátor hostovaného partnera |
-   | Nastavení příjmu |Tyto vlastnosti se vztahují na všechny zprávy přijaté smlouvou. |
-   | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odesílané smlouvou. |
+   | Name (Název) |Název smlouvy |
+   | Typ smlouvy | Měl by to být EDIFACT |
+   | Hostitelský partner |Dohoda potřebuje hostitele i partnera hosta. Hostitelský partner představuje organizaci, která konfiguruje smlouvu. |
+   | Identita hostitele |Identifikátor hostitelského partnera |
+   | Partner pro hosty |Dohoda potřebuje hostitele i partnera hosta. Partner hosta představuje organizaci, která obchoduje s partnerem hostitele. |
+   | Identita hosta |Identifikátor pro partnera hosta |
+   | Přijímat nastavení |Tyto vlastnosti platí pro všechny zprávy přijaté smlouvou. |
+   | Odeslat nastavení |Tyto vlastnosti platí pro všechny zprávy odeslané smlouvou. |
    ||| 
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurace způsobu, jakým vaše smlouva zpracovává přijaté zprávy
 
-Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává příchozí zprávy přijaté od vašeho partnera prostřednictvím této smlouvy.
+Nyní, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává příchozí zprávy přijaté od vašeho partnera prostřednictvím této smlouvy.
 
 1. V části **Přidat**vyberte **Nastavení příjmu**.
-Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s partnerem, který s vámi vyměňuje zprávy. Popis vlastností najdete v tabulkách v této části.
+Nakonfigurujte tyto vlastnosti na základě vaší smlouvy s partnerem, který si s vámi vyměňuje zprávy. Popisy vlastností naleznete v tabulkách v této části.
 
-   **Nastavení příjmu** je uspořádáno do těchto částí: identifikátory, potvrzení, schémata, řídicí čísla, ověřování a interní nastavení.
+   **Nastavení příjmu** je uspořádáno do těchto sekcí: Identifikátory, Potvrzení, Schémata, Čísla ovládacích prvku, Ověřování a Interní nastavení.
 
-   ![Konfigurovat nastavení příjmu](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+   ![Konfigurace "Nastavení příjmu"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
-2. Až to budete mít, nezapomeňte nastavení uložit tak, že kliknete na **OK**.
+2. Po dokončení nezapomeňte nastavení uložit tak, že zvolíte **OK**.
 
-Vaše smlouva je teď připravená na zpracování příchozích zpráv, které odpovídají vybraným nastavením.
+Nyní je vaše smlouva připravena zpracovávat příchozí zprávy, které odpovídají vybraným nastavením.
 
-### <a name="identifiers"></a>Identifikace
-
-| Vlastnost | Popis |
-| --- | --- |
-| UNB 6.1 (referenční heslo příjemce) |Zadejte alfanumerický údaj o rozsahu od 1 do 14 znaků. |
-| UNB 6.2 (kvalifikátor odkazu na příjemce) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně dvěma znaky. |
-
-### <a name="acknowledgments"></a>Potvrzení
+### <a name="identifiers"></a>Identifikátory
 
 | Vlastnost | Popis |
 | --- | --- |
-| Přijetí zprávy (CONTRL) |Zaškrtnutím tohoto políčka vrátíte odesilateli výměny technické (CONTRL) potvrzení. Potvrzení se pošle odesílateli služby Interchange na základě nastavení odeslání smlouvy. |
-| Potvrzení (CONTRL) |Zaškrtněte toto políčko, pokud chcete vrátit funkční (CONTRL) potvrzení odesilateli výměny, pošle se potvrzení odesílateli výměny dat na základě nastavení odeslání smlouvy. |
+| UNB6.1 (Referenční heslo příjemce) |Zadejte alfanumerickou hodnotu v rozmezí 1 až 14 znaků. |
+| UNB6.2 (Kvalifikátor odkazů pro příjemce) |Zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně dvěma znaky. |
+
+### <a name="acknowledgments"></a>Poděkování
+
+| Vlastnost | Popis |
+| --- | --- |
+| Přijetí zprávy (CONTRL) |Zaškrtnutím tohoto políčka vrátíte technické potvrzení (CONTRL) odesílateli výměny. Potvrzení je odesláno odesílateli výměny na základě nastavení odeslání pro smlouvu. |
+| Potvrzení (CONTRL) |Zaškrtnutím tohoto políčka vrátíte potvrzení o funkčnosti (CONTRL) odesílateli výměny Potvrzení je odesláno odesílateli výměny na základě nastavení odeslání pro smlouvu. |
 
 ### <a name="schemas"></a>Schémata
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNH 2.1 (TYP) |Vyberte typ sady transakcí. |
-| UNH 2.2 (VERZE) |Zadejte číslo verze zprávy. (Minimálně, jeden znak; maximum, tři znaky). |
-| UNH 2.3 (VERZE) |Zadejte číslo verze zprávy. (Minimálně, jeden znak; maximum, tři znaky). |
-| UNH 2.5 (PŘIDRUŽENÝ PŘIŘAZENÝ KÓD) |Zadejte přiřazený kód. (Maximálně šest znaků. Musí být alfanumerické). |
-| UNG 2.1 (ID ODESÍLATELE APLIKACE) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně 35 znaků. |
-| UNG 2.2 (KVALIFIKÁTOR KÓDU ODESÍLATELE APLIKACE) |Zadejte alfanumerický údaj, který má maximálně čtyři znaky. |
-| SCHEMA |Vyberte dříve nahrané schéma, které chcete použít z přidruženého integračního účtu. |
+| UNH2.1 (TYP) |Vyberte typ sady transakcí. |
+| UNH2.2 (VERZE) |Zadejte číslo verze zprávy. (Minimálně jeden znak; maximálně tři znaky). |
+| UNH2.3 (UVOLNĚNÍ) |Zadejte číslo vydání zprávy. (Minimálně jeden znak; maximálně tři znaky). |
+| UNH2.5 (PŘIDRUŽENÝ PŘIDĚLENÝ KÓD) |Zadejte přiřazený kód. (Maximálně šest znaků. Musí být alfanumerická). |
+| UNG2.1 (ID odesílatele aplikace) |Zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaky. |
+| UNG2.2 (KVALIFIKÁTOR KÓDU ODESÍLATELE APLIKACE) |Zadejte alfanumerickou hodnotu s maximálně čtyřmi znaky. |
+| Schématu |Vyberte dříve nahrané schéma, které chcete použít z přidruženého účtu integrace. |
 
-### <a name="control-numbers"></a>Řídicí čísla
+### <a name="control-numbers"></a>Kontrolní čísla
 
 | Vlastnost | Popis |
 | --- | --- |
-| Zakázat duplicity kontrolního čísla výměny |Chcete-li zablokovat duplicitní změny, vyberte tuto vlastnost. Pokud je toto políčko zaškrtnuté, akce deEDIFACT dekódování kontroluje, zda se kontrolní číslo výměny (UNB5) pro přijatý mezibankovní neshoduje s dříve zpracovaným kontrolním číslem výměny. Pokud se zjistí shoda, nebude se výměna zpracovávat. |
-| Kontrolovat duplicitní UNB5 každých (dny) |Pokud se rozhodnete zakázat duplicitní řídicí čísla výměny, můžete zadat počet dní, kdy se má kontrola provést, a to tak, že pro toto nastavení udělíte odpovídající hodnotu. |
-| Zakázat duplicity kontrolních čísel skupin |Pokud chcete zablokovat změny s duplicitními čísly řízení skupiny (UNG5), vyberte tuto vlastnost. |
-| Zakázat duplicity kontrolního čísla sady transakcí |Chcete-li blokovat změny s duplicitními čísly řízení sady transakcí (UNH1), vyberte tuto vlastnost. |
+| Zakázat duplikáty kontrolního čísla výměny |Chcete-li blokovat duplicitní mimoúrovňové křižovatky, vyberte tuto vlastnost. Je-li vybrána tato možnost, edifact decode action zkontroluje, zda číslo řízení výměny (UNB5) pro přijatou výměnu neodpovídá dříve zpracovanému kontrolnímu číslu výměny. Pokud je zjištěna shoda, výměna není zpracována. |
+| Zkontrolujte duplicitní UNB5 každých (dní) |Pokud jste se rozhodli zakázat duplicitní čísla ovládacího prvku pro výměnu, můžete určit počet dní, kdy chcete provést kontrolu, zadáním příslušné hodnoty pro toto nastavení. |
+| Zakázat duplikáty kontrolního čísla skupiny |Chcete-li blokovat mimoúrovňové křižovatky s duplicitními čísly řízení skupin (UNG5), vyberte tuto vlastnost. |
+| Zakázat disiva č. transakce nastavit duplicitní kontrolní číslo |Chcete-li blokovat mimoúrovňové křižovatky s duplicitními řídicími čísly sady transakcí (UNH1), vyberte tuto vlastnost. |
 | Kontrolní číslo potvrzení EDIFACT |Chcete-li určit referenční čísla sady transakcí pro použití v potvrzení, zadejte hodnotu předpony, rozsah referenčních čísel a příponu. |
 
-### <a name="validation"></a>Ověření
+### <a name="validation"></a>Ověřování
 
-Po dokončení každého ověřovacího řádku se přidá další automaticky. Pokud nezadáte žádná pravidla, pak ověřování použije řádek default (výchozí).
+Po dokončení každého řádku ověření se automaticky přidá další řádek. Pokud nezadáte žádná pravidla, pak ověření používá řádek "Výchozí".
 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ zprávy |Vyberte typ zprávy EDI. |
-| Ověřování EDI |Proveďte ověření EDI u datových typů, které jsou definovány vlastnostmi EDI schématu, omezením délky, prázdnými datovými prvky a koncovými oddělovači. |
-| Rozšířené ověřování |Pokud datový typ není EDI, ověřování je na základě požadavku datového prvku a povoleného opakování, výčtů a ověřování délky datových prvků (min/max). |
-| Povolení počátečních a koncových nul |Zachovejte jakékoli další úvodní nebo koncové znaky nula a mezer. Tyto znaky neodstraňujte. |
-| Oříznout úvodní a koncové nuly |Odstraní úvodní nebo koncové znaky nula a mezer. |
-| Zásady koncového oddělovače |Vygeneruje oddělovače na konci. <p>Pokud chcete zakázat koncové oddělovače a oddělovače v přijatém přenosu, vyberte **Nepovoleno** . V případě, že výměna obsahuje koncové oddělovače a oddělovače, je výměna deklarována jako neplatná. <p>Vyberte možnost **volitelné** , pokud chcete přijmout změny s koncovými oddělovači a oddělovači nebo bez nich. <p>Vyberte možnost **povinná** , pokud je povolený mezibankovní čas na konci a oddělovače. |
+| Ověření EDI |Proveďte ověření EDI u datových typů definovaných vlastnostmi EDI schématu, omezeními délky, prázdnými datovými prvky a koncovými oddělovači. |
+| Rozšířené ověření |Pokud datový typ není EDI, ověření je na požadavek datového prvku a povolené opakování, výčty a ověření délky datového prvku (min/max). |
+| Povolit prokladové/koncové nuly |Zachovejte všechny další úvodní nebo koncové znaky nuly a mezery. Neodstraňujte tyto znaky. |
+| Oříznout proklatová/koncové nuly |Odstraňte úvodní nebo koncové znaky nula a mezery. |
+| Zásady koncového oddělovače |Vygenerujte koncové oddělovače. <p>Výběrem **možnosti Není povoleno** zakázat koncové oddělovače a oddělovače v přijaté výměně. Pokud má výměna koncové oddělovače a oddělovače, je tato výměna prohlášena za neplatnou. <p>Vyberte **Volitelné,** chcete-li přijmout mimoúrovňové křižovatky s koncovými oddělovači a oddělovači nebo bez nich. <p>Vyberte **Povinné,** když přijatá výměna musí mít koncové oddělovače a oddělovače. |
 
 ### <a name="internal-settings"></a>Interní nastavení
 
 | Vlastnost | Popis |
 | --- | --- |
-| Pokud jsou povolené koncové oddělovače, vytvoří se prázdné značky XML. |Zaškrtněte toto políčko, pokud chcete, aby odesílatel výměny zahrnoval prázdné značky XML pro koncové oddělovače. |
-| Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě|Analyzuje každou transakci nastavenou při výměně do samostatného dokumentu XML použitím příslušné obálky pro sadu transakcí. Pozastaví pouze sady transakcí, jejichž ověření se nezdaří. |
-| Rozdělit výměnu jako sady transakcí – při chybě pozastavit výměnu|Analyzuje každou transakci nastavenou při výměně do samostatného dokumentu XML použitím příslušné obálky. Pokud jedna nebo více transakcí v rámci výměny selže, pozastavíte celý výměnu. | 
-| Zachovat výměnu – pozastavit sady transakcí při chybě |Ponechá výměnu beze změn, vytvoří dokument XML pro celý vydaný hromadnou výměnu. Pozastaví pouze sady transakcí, které selžou při ověřování, a přitom pokračuje ve zpracování všech ostatních sad transakcí. |
-| Zachovat výměnu – pozastavit výměnu při chybě |Ponechá výměnu beze změn, vytvoří dokument XML pro celý vydaný hromadnou výměnu. Pokud jedna nebo více transakcí v rámci výměny selže, pozastavíte celý výměnu. |
+| Vytvoření prázdných značek XML, pokud jsou povoleny koncové oddělovače |Toto políčko zaškrtněte, aby odesílatel výměny obsahoval prázdné značky XML pro koncové oddělovače. |
+| Rozdělit výměnu jako sady transakcí - pozastavit sady transakcí při chybě|Analyzuje každou transakci nastavenou ve výměně do samostatného dokumentu XML použitím příslušné obálky na sadu transakcí. Pozastavit pouze sady transakcí, které se nezdaří ověření. |
+| Rozdělit výměnu jako sady transakcí - pozastavit výměnu při chybě|Každou transakci nastavenou ve výměně analyzuje do samostatného dokumentu XML použitím příslušné obálky. Pozastavit celou výměnu, pokud se ověření nepodaří jedné nebo více nastavovacích sad transakcí v mezibankovní mase. | 
+| Zachovat výměnu - pozastavit sady transakcí při chybě |Ponechá výměnu beze změny, vytvoří dokument XML pro celou dávkovou výměnu. Pozastavte pouze sady transakcí, které se nezdaří ověření, zatímco nadále zpracovat všechny ostatní sady transakcí. |
+| Zachovat výměnu - pozastavit výměnu při chybě |Ponechá výměnu beze změny, vytvoří dokument XML pro celou dávkovou výměnu. Pozastavit celou výměnu, pokud se ověření nepodaří jedné nebo více nastavovacích sad transakcí v mezibankovní mase. |
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurace způsobu, jakým vaše smlouva posílá zprávy
+## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurace způsobu, jakým smlouva odesílá zprávy
 
-Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí zprávy odeslané vašim partnerům prostřednictvím této smlouvy.
+Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí zprávy, které odesíláte svým partnerům prostřednictvím této smlouvy.
 
 1.  V části **Přidat**vyberte **Odeslat nastavení**.
-Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s vaším partnerem, který vám s vámi vyměňuje zprávy. Popis vlastností najdete v tabulkách v této části.
+Nakonfigurujte tyto vlastnosti na základě vaší smlouvy s partnerem, který si s vámi vyměňuje zprávy. Popisy vlastností naleznete v tabulkách v této části.
 
-    **Nastavení odesílání** je uspořádáno do těchto částí: identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovače, řídicí čísla a ověření.
+    **Nastavení odesílání** je uspořádáno do těchto oddílů: Identifikátory, Potvrzení, Schémata, Obálky, Znakové sady a oddělovače, Čísla ovládacích prvku a Ověření.
 
-    ![Konfigurovat nastavení Odeslat](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
+    ![Konfigurace "Nastavení odeslání"](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
-2. Až to budete mít, nezapomeňte nastavení uložit tak, že kliknete na **OK**.
+2. Po dokončení nezapomeňte nastavení uložit tak, že zvolíte **OK**.
 
-Vaše smlouva je teď připravená na zpracování odchozích zpráv, které odpovídají vybraným nastavením.
+Nyní je vaše smlouva připravena zpracovávat odchozí zprávy, které odpovídají vybraným nastavením.
 
-### <a name="identifiers"></a>Identifikace
+### <a name="identifiers"></a>Identifikátory
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNB 1.2 (verze syntaxe) |Vyberte hodnotu v rozmezí od **1** do **4**. |
-| UNB 2.3 (adresa zpětného směrování odesilatele) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně 14 znaků. |
-| UNB 3.3 (adresa zpětného směrování příjemců) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně 14 znaků. |
-| UNB 6.1 (referenční heslo příjemce) |Zadejte alfanumerický údaj s minimální hodnotou jednoho a maximálně 14 znaků. |
-| UNB 6.2 (kvalifikátor odkazu na příjemce) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně dvěma znaky. |
-| UNB7 (referenční ID aplikace) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně 14 znaků. |
+| UNB1.2 (Syntaktická verze) |Vyberte hodnotu mezi **1** a **4**. |
+| UNB2.3 (Adresa zpětného směrování odesílatele) |Zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 14 znaky. |
+| UNB3.3 (Adresa zpětného směrování příjemce) |Zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 14 znaky. |
+| UNB6.1 (Referenční heslo příjemce) |Zadejte alfanumerickou hodnotu s maximálně jedním a maximálně 14 znaky. |
+| UNB6.2 (Kvalifikátor odkazů pro příjemce) |Zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně dvěma znaky. |
+| UNB7 (ID odkazu na aplikaci) |Zadání alfanumerické hodnoty s minimálně jedním znakem a maximálně 14 znaky |
 
 ### <a name="acknowledgment"></a>Potvrzení
 
 | Vlastnost | Popis |
 | --- | --- |
-| Přijetí zprávy (CONTRL) |Zaškrtněte toto políčko, pokud hostovaný partner očekává, že obdrží potvrzení Technical (CONTRL). Toto nastavení určuje, že hostovaný partner, který posílá zprávu, požádá o potvrzení od hostovaného partnera. |
-| Potvrzení (CONTRL) |Toto políčko zaškrtněte, pokud hostovaný partner očekává, že bude dostávat funkční (CONTRL) potvrzení. Toto nastavení určuje, že hostovaný partner, který posílá zprávu, požádá o potvrzení od hostovaného partnera. |
-| Generovat smyčku sz1/SG4 pro akceptované sady transakcí |Pokud se rozhodnete, že požadujete funkční potvrzení, zaškrtněte toto políčko, pokud chcete vynutit generování smyček sz1/SG4 ve funkčních potvrzeních CONTRL pro přijaté sady transakcí. |
+| Přijetí zprávy (CONTRL) |Toto políčko zaškrtněte, pokud hostovaný partner očekává, že obdrží technické potvrzení (CONTRL). Toto nastavení určuje, že hostovaný partner, který odesílá zprávu, požaduje potvrzení od partnera hosta. |
+| Potvrzení (CONTRL) |Toto políčko zaškrtněte, pokud hostovaný partner očekává potvrzení o funkci funkčnosti (CONTRL). Toto nastavení určuje, že hostovaný partner, který odesílá zprávu, požaduje potvrzení od partnera hosta. |
+| Generovat smyčku SG1/SG4 pro přijaté sady transakcí |Pokud jste se rozhodli požádat o potvrzení funkčnosti, zaškrtněte toto políčko, chcete-li vynutit generování smyček SG1/SG4 ve funkčních potvrzovacích potvrzovacích potvrzování CONTRL pro přijaté sady transakcí. |
 
 ### <a name="schemas"></a>Schémata
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNH 2.1 (TYP) |Vyberte typ sady transakcí. |
-| UNH 2.2 (VERZE) |Zadejte číslo verze zprávy. |
-| UNH 2.3 (VERZE) |Zadejte číslo verze zprávy. |
-| SCHEMA |Vyberte schéma, které chcete použít. Schémata se nacházejí v účtu pro integraci. Pokud chcete získat přístup ke schématům, nejprve propojte účet pro integraci s vaší aplikací logiky. |
+| UNH2.1 (TYP) |Vyberte typ sady transakcí. |
+| UNH2.2 (VERZE) |Zadejte číslo verze zprávy. |
+| UNH2.3 (UVOLNĚNÍ) |Zadejte číslo vydání zprávy. |
+| Schématu |Vyberte schéma, které chcete použít. Schémata jsou umístěna ve vašem účtu integrace. Chcete-li získat přístup k schématům, nejprve propojte účet integrace s aplikací Logika. |
 
-### <a name="envelopes"></a>Obálek
+### <a name="envelopes"></a>Obálky
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNB8 (kód priority zpracování) |Zadejte abecední hodnotu, která není delší než jeden znak. |
-| UNB10 (komunikační smlouva) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně 40 znaků. |
-| UNB11 (indikátor testu) |Zaškrtnutím tohoto políčka označíte, že vygenerovaná výměna je testovací data. |
-| Použít segment UNA (avízo řetězce služby) |Zaškrtnutím tohoto políčka vygenerujete UNA segment, který bude odeslán pro výměnu. |
-| Použít segmenty UNG (záhlaví skupiny funkcí) |Toto políčko zaškrtněte, pokud chcete vytvořit segmenty seskupení v hlavičce funkční skupiny v zprávách odesílaných hostovanému partnerovi. K vytvoření segmentů UNG se použijí následující hodnoty: <p>V případě **UNG1**zadejte alfanumerickou hodnotu s minimálním počtem jednoho znaku a maximálně šest znaků. <p>V případě **Ung 2.1**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaků. <p>Pro **Ung 2.2**zadejte alfanumerickou hodnotu, která má maximálně čtyři znaky. <p>Pro **Ung 3.1**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaků. <p>Pro **Ung 3.2**zadejte alfanumerickou hodnotu, která má maximálně čtyři znaky. <p>Pro **UNG6**zadejte alfanumerický údaj s minimálním a maximálním počtem tří znaků. <p>V případě **Ung 7.1**zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně tři znaky. <p>V případě **Ung 7.2**zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně tři znaky. <p>Pro **Ung 7.3**zadejte alfanumerický údaj o minimálním 1 znaku a maximálně 6 znaků. <p>V případě **UNG8**zadejte alfanumerický údaj s minimálním počtem jednoho znaku a maximálně 14 znaků. |
+| UNB8 (Kód priority zpracování) |Zadejte abecední hodnotu, která není delší než jeden znak. |
+| UNB10 (komunikační dohoda) |Zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 40 znaky. |
+| UNB11 (testovací indikátor) |Zaškrtnutím tohoto políčka označíte, že vygenerovaná výměna jsou testovací data. |
+| Použít segment UNA (Avízo řetězce služby) |Zaškrtnutím tohoto políčka vygenerujete segment UNA pro výměnu, která má být odeslána. |
+| Použít segmenty UNG (záhlaví funkční skupiny) |Toto políčko zaškrtněte, chcete-li vytvořit segmenty seskupení v záhlaví funkční skupiny ve zprávách odeslaných partnerovi hosta. K vytvoření segmentů UNG se používají následující hodnoty: <p>Do **pole UNG1**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně šesti znaky. <p>Pro **UNG2.1**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaky. <p>Do **pole UNG2.2**zadejte alfanumerickou hodnotu s maximálně čtyřmi znaky. <p>Pro **UNG3.1**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 35 znaky. <p>Do **pole UNG3.2**zadejte alfanumerickou hodnotu s maximálně čtyřmi znaky. <p>Do **pole UNG6**zadejte alfanumerickou hodnotu s minimem jednoho a maximálně třemi znaky. <p>Pro **UNG7.1**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně třemi znaky. <p>Pro **UNG7.2**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně třemi znaky. <p>Pro **UNG7.3**zadejte alfanumerickou hodnotu s minimem 1 znak a maximálně 6 znaků. <p>Do **pole UNG8**zadejte alfanumerickou hodnotu s minimálně jedním znakem a maximálně 14 znaky. |
 
 ### <a name="character-sets-and-separators"></a>Znakové sady a oddělovače
 
-Kromě znakové sady můžete zadat jinou sadu oddělovačů, které se mají použít pro každý typ zprávy. Pokud není pro dané schéma zprávy zadána znaková sada, je použita výchozí znaková sada.
+Kromě znakové sady můžete zadat jinou sadu oddělovačů, která bude použita pro každý typ zprávy. Pokud znaková sada není zadána pro dané schéma zprávy, použije se výchozí znaková sada.
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNB 1.1 (identifikátor systému) |Vyberte znakovou sadu EDIFACT, která se má použít pro odchozí výměnu. |
-| Schéma |V rozevíracím seznamu vyberte schéma. Po dokončení každého řádku se automaticky přidá nový řádek. Pro vybrané schéma vyberte v závislosti na níže uvedeném oddělovači sadu oddělovačů, kterou chcete použít. |
+| UNB1.1 (identifikátor systému) |Vyberte znakovou sadu EDIFACT, která se má použít na odchozí výměnu. |
+| Schéma |V rozevíracím seznamu vyberte schéma. Po dokončení každého řádku se automaticky přidá nový řádek. U vybraného schématu vyberte sadu oddělovačů, kterou chcete použít, na základě níže uvedených popisů oddělovačů. |
 | Typ vstupu |V rozevíracím seznamu vyberte typ vstupu. |
 | Oddělovač komponent |Chcete-li oddělit složené datové prvky, zadejte jeden znak. |
-| Oddělovač datových prvků |Chcete-li oddělit jednoduché datové prvky v rámci složených datových elementů, zadejte jeden znak. |
-| Ukončovací znak segmentu |Pro indikaci konce segmentu EDI zadejte jeden znak. |
-| Auditování |Vyberte znak, který se používá s identifikátorem segmentu. Pokud určíte příponu, pak může být datový prvek koncového znaku segmentu prázdný. Pokud je ukončovací znak segmentu prázdný, je nutné určit příponu. |
+| Oddělovač prvků dat |Chcete-li oddělit jednoduché datové prvky ve složených datových prvcích, zadejte jeden znak. |
+| Segment zakončení |Chcete-li označit konec segmentu EDI, zadejte jeden znak. |
+| Přípona |Vyberte znak, který se používá s identifikátorem segmentu. Pokud určíte příponu, může být datový prvek segmentu zakončení prázdný. Pokud je zakončení segmentu ponecháno prázdné, musíte určit příponu. |
 
-### <a name="control-numbers"></a>Řídicí čísla
+### <a name="control-numbers"></a>Kontrolní čísla
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNB5 (řídící číslo výměny) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty se používají ke generování odchozího výměny. Předpona a přípona jsou volitelné, zatímco číslo kontrolního čísla je povinné. Řídicí číslo se zvyšuje pro každou novou zprávu. Předpona a přípona zůstávají stejné. |
-| UNG5 (kontrolní číslo skupiny) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty se používají ke generování kontrolního čísla skupiny. Předpona a přípona jsou volitelné, zatímco číslo kontrolního čísla je povinné. Řídicí číslo se zvyšuje pro každou novou zprávu, dokud není dosaženo maximální hodnoty; Předpona a přípona zůstávají stejné. |
-| UNH1 (referenční číslo záhlaví zprávy) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty se používají ke generování referenčního čísla záhlaví zprávy. Předpona a přípona jsou volitelné, zatímco číslo odkazu je povinné. Referenční číslo se zvyšuje pro každou novou zprávu. Předpona a přípona zůstávají stejné. |
+| UNB5 (Kontrolní číslo výměny) |Zadejte předponu, rozsah hodnot pro číslo ovládacího prvku výměny a příponu. Tyto hodnoty se používají ke generování odchozí výměny. Předpona a přípona jsou volitelné, zatímco je vyžadováno číslo ovládacího prvku. Číslo ovládacího prvku se zintáží pro každou novou zprávu; předpona a přípona zůstávají stejné. |
+| UNG5 (kontrolní číslo skupiny) |Zadejte předponu, rozsah hodnot pro číslo ovládacího prvku výměny a příponu. Tyto hodnoty se používají ke generování čísla ovládacího prvku skupiny. Předpona a přípona jsou volitelné, zatímco je vyžadováno číslo ovládacího prvku. Číslo ovládacího prvku se zintáží pro každou novou zprávu, dokud není dosaženo maximální hodnoty; předpona a přípona zůstávají stejné. |
+| UNH1 (referenční číslo záhlaví zprávy) |Zadejte předponu, rozsah hodnot pro číslo ovládacího prvku výměny a příponu. Tyto hodnoty se používají ke generování referenčního čísla záhlaví zprávy. Předpona a přípona jsou volitelné, zatímco referenční číslo je požadováno. Referenční číslo se zintáží pro každou novou zprávu; předpona a přípona zůstávají stejné. |
 
-### <a name="validation"></a>Ověření
+### <a name="validation"></a>Ověřování
 
-Po dokončení každého ověřovacího řádku se přidá další automaticky. Pokud nezadáte žádná pravidla, pak ověřování použije řádek default (výchozí).
+Po dokončení každého řádku ověření se automaticky přidá další řádek. Pokud nezadáte žádná pravidla, pak ověření používá řádek "Výchozí".
 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ zprávy |Vyberte typ zprávy EDI. |
-| Ověřování EDI |Proveďte ověření EDI u datových typů, jak jsou definovány vlastnostmi EDI schématu, omezení délky, prázdných datových prvků a koncových oddělovačů. |
-| Rozšířené ověřování |Pokud datový typ není EDI, ověřování je na základě požadavku datového prvku a povoleného opakování, výčtů a ověřování délky datových prvků (min/max). |
-| Povolení počátečních a koncových nul |Zachovejte jakékoli další úvodní nebo koncové znaky nula a mezer. Tyto znaky neodstraňujte. |
-| Oříznout úvodní a koncové nuly |Odstraní úvodní nebo koncové znaky nula. |
-| Zásady koncového oddělovače |Vygeneruje oddělovače na konci. <p>Pokud chcete zakázat koncové oddělovače a oddělovače v odeslaném přenosu, vyberte **Nepovoleno** . V případě, že výměna obsahuje koncové oddělovače a oddělovače, je výměna deklarována jako neplatná. <p>Vyberte možnost **volitelné** , pokud chcete odesílat změny s koncovými oddělovači a oddělovači nebo bez nich. <p>Vyberte možnost **povinná** , pokud je nutné zasílat odesílateli koncové oddělovače a oddělovače. |
+| Ověření EDI |Proveďte ověření EDI u datových typů definovaných vlastnostmi EDI schématu, omezení délky, prázdných datových prvků a koncových oddělovačů. |
+| Rozšířené ověření |Pokud datový typ není EDI, ověření je na požadavek datového prvku a povolené opakování, výčty a ověření délky datového prvku (min/max). |
+| Povolit prokladové/koncové nuly |Zachovejte všechny další úvodní nebo koncové znaky nuly a mezery. Neodstraňujte tyto znaky. |
+| Oříznout proklatová/koncové nuly |Odstraňte úvodní nebo koncové nulové znaky. |
+| Zásady koncového oddělovače |Vygenerujte koncové oddělovače. <p>Výběrem **možnosti Není povoleno** zakázat koncové oddělovače a oddělovače v odeslané výměně. Pokud má výměna koncové oddělovače a oddělovače, je tato výměna prohlášena za neplatnou. <p>Vyberte **Volitelné,** chcete-li odeslat mimoúrovňové křižovatky s koncovými oddělovači a oddělovači nebo bez nich. <p>Vyberte **Povinné,** pokud odeslaná výměna musí mít koncové oddělovače a oddělovače. |
 
-## <a name="find-your-created-agreement"></a>Najít vytvořenou smlouvu
+## <a name="find-your-created-agreement"></a>Vyhledání vytvořené smlouvy
 
-1.  Po dokončení nastavení všech vlastností smlouvy na stránce **Přidat** kliknutím na **tlačítko OK** dokončete vytváření smlouvy a vraťte se k účtu pro integraci.
+1.  Po dokončení nastavení všech vlastností smlouvy zvolte na stránce **Přidat** **možnost OK,** chcete-li dokončit vytváření smlouvy a vrátit se k účtu integrace.
 
-    Nově přidaná smlouva se teď zobrazí v seznamu **smluv** .
+    Nově přidaná smlouva se nyní zobrazí v seznamu **Smluv.**
 
-2.  Vaše smlouvy si můžete prohlédnout také v přehledu účtu pro integraci. V nabídce účtu pro integraci zvolte **Přehled**a pak vyberte dlaždici **smlouvy** . 
+2.  Smlouvy můžete také zobrazit v přehledu účtu integrace. V nabídce integračního účtu zvolte **Přehled**a pak vyberte dlaždici **Smlouvy.** 
 
-    ![Vybrat dlaždici smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Zvolte dlaždici "Dohody"](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další technické podrobnosti o této spojnici, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/edifact/).
+Další technické podrobnosti o tomto konektoru, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, naleznete [na referenční stránce konektoru](https://docs.microsoft.com/connectors/edifact/).
 
 > [!NOTE]
-> V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+> Pro aplikace logiky v [prostředí služby integrace (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), tento konektor je ise označené verze používá [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) místo.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech logic apps](../connectors/apis-list.md)

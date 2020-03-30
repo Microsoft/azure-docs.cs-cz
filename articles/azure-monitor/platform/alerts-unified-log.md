@@ -1,112 +1,112 @@
 ---
-title: Protokolování výstrah v Azure Monitor
-description: Aktivovat e-maily, oznámení, volat adresy URL webů (Webhooky) nebo Automation, pokud se pro výstrahy Azure splní podmínky analytického dotazu, které zadáte.
+title: Výstrahy protokolu v Azure Monitoru
+description: Aktivace e-mailů, oznámení, adres URL volání na weby (webhooky) nebo automatizace, když jsou pro azure alerts splněny zadané podmínky analytického dotazu.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665217"
 ---
-# <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
+# <a name="log-alerts-in-azure-monitor"></a>Výstrahy protokolu v Azure Monitoru
 
-Tento článek poskytuje podrobné informace o upozorněních protokolu jsou jedním z typů výstrah podporovaných v rámci [výstrah Azure](../../azure-monitor/platform/alerts-overview.md) a umožňuje uživatelům používat analytickou platformu Azure jako základ pro upozorňování.
+Tento článek obsahuje podrobnosti o výstrahách protokolu jsou jedním z typů výstrah podporovaných v rámci [výstrah Azure](../../azure-monitor/platform/alerts-overview.md) a umožňují uživatelům používat analytickou platformu Azure jako základ pro výstrahy.
 
-Výstraha protokolu se skládá z pravidel prohledávání protokolu vytvořených pro [Azure monitor protokolů](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Další informace o jeho použití najdete v tématu [vytváření výstrah protokolu v Azure](../../azure-monitor/platform/alerts-log.md) .
+Výstraha protokolu se skládá z pravidel vyhledávání protokolů vytvořených pro [protokoly monitorování Azure](../../azure-monitor/learn/tutorial-viewdata.md) nebo [přehledy aplikací](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Další informace o jeho využití najdete [v tématu vytváření upozornění protokolů v Azure.](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
-> Oblíbená data protokolu z [protokolů Azure monitor](../../azure-monitor/learn/tutorial-viewdata.md) jsou teď dostupná i na platformě metrik v Azure monitor. Pro zobrazení podrobností, [Výstraha metriky pro protokoly](../../azure-monitor/platform/alerts-metric-logs.md)
+> Oblíbená data protokolů z [protokolů monitorování Azure](../../azure-monitor/learn/tutorial-viewdata.md) jsou teď dostupná taky na metrické platformě ve Službě Azure Monitor. Zobrazení [podrobností, Upozornění na metriky pro protokoly](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
-## <a name="log-search-alert-rule---definition-and-types"></a>Pravidlo upozornění prohledávání protokolu – definice a typy
+## <a name="log-search-alert-rule---definition-and-types"></a>Pravidlo výstrahy vyhledávání protokolů – definice a typy
 
-Pravidla prohledávání protokolu vytváří služba Azure Alerts pro automatické spouštění zadaných dotazů na protokoly v pravidelných intervalech.  Pokud výsledky dotazu na protokol splňují konkrétní kritéria, vytvoří se záznam upozornění. Pravidlo potom může automaticky spustit jednu nebo více akcí pomocí [skupin akcí](../../azure-monitor/platform/action-groups.md). Může být vyžadována role [Přispěvatel monitorování Azure](../../azure-monitor/platform/roles-permissions-security.md) pro vytváření, úpravy a aktualizace výstrah protokolu. společně s přístupem & oprávnění ke spouštění dotazů pro cíl Analytics v pravidle výstrahy nebo dotazu výstrahy. V případě, že uživatel, který vytváří, nemá přístup ke všem cílům Analytics v pravidle výstrahy nebo dotazu výstrahy – vytvoření pravidla může selhat nebo se spustí pravidlo upozornění protokolu s částečnými výsledky.
+Pravidla prohledávání protokolu vytváří služba Azure Alerts pro automatické spouštění zadaných dotazů na protokoly v pravidelných intervalech.  Pokud výsledky dotazu na protokol splňují konkrétní kritéria, vytvoří se záznam upozornění. Pravidlo potom může automaticky spustit jednu nebo více akcí pomocí [skupin akcí](../../azure-monitor/platform/action-groups.md). Může být vyžadována role [přispěvatele monitorování Azure](../../azure-monitor/platform/roles-permissions-security.md) pro vytváření, úpravy a aktualizace výstrah protokolu; spolu s přístup& práva k provádění dotazu pro cíle analýzy v pravidle výstrahy nebo dotazu výstrahy. V případě, že uživatel, který vytváří, nemá přístup ke všem cílům analýzy v pravidle výstrahy nebo dotazu výstrahy – vytvoření pravidla může selhat nebo pravidlo výstrahprotokolu bude spuštěno s částečnými výsledky.
 
-Pravidla hledání protokolu jsou definována následujícími podrobnostmi:
+Pravidla vyhledávání protokolu jsou definována následujícími podrobnostmi:
 
-- **Dotaz protokolu**  Dotaz, který se spustí pokaždé, když se pravidlo výstrahy aktivuje.  Záznamy vrácené tímto dotazem slouží k určení, zda má být výstraha aktivována. Analytický dotaz může být určen pro konkrétní Log Analytics pracovní prostor nebo aplikaci Application Insights a dokonce i v rámci [více Log Analytics a Application Insights prostředků](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , k dispozici má uživatel přístup i oprávnění k dotazům pro všechny prostředky. 
+- **Protokolovat dotaz**.  Dotaz, který se spustí pokaždé, když se pravidlo upozornění aktivuje.  Záznamy vrácené tímto dotazem se používají k určení, zda má být výstraha spuštěna. Analytický dotaz může být pro konkrétní pracovní prostor Log Analytics nebo aplikaci Application Insights a dokonce i rozpětí pro [více prostředků Log Analytics a Application Insights](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) za předpokladu, že uživatel má přístup a práva na dotazy ke všem prostředkům. 
     > [!IMPORTANT]
-    > podpora [dotazů mezi prostředky](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) v protokolových upozorněních pro Application Insights a výstrahy protokolu pro [Log Analytics konfigurovaná pouze pomocí rozhraní scheduledQueryRules API](../../azure-monitor/platform/alerts-log-api-switch.md) .
+    > Podpora [dotazů mezi prostředky](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) v výstrahách protokolu pro application insights a výstrahy protokolu pro [analýzu protokolů nakonfigurované pouze pomocí rozhraní SCHEDULEDQueryRules API.](../../azure-monitor/platform/alerts-log-api-switch.md)
 
-    Některé analytické příkazy a kombinace jsou nekompatibilní s použití v protokolových výstrahách. pro další zobrazení podrobností [protokolujte dotazy výstrah v Azure monitor](../../azure-monitor/platform/alerts-log-query.md).
+    Některé analytické příkazy a kombinace jsou nekompatibilní s použitím v výstrahách protokolu; další podrobnosti pro zobrazení [protokolu dotazů upozornění v Azure Monitor](../../azure-monitor/platform/alerts-log-query.md).
 
-- **Časové období**.  Určuje časový rozsah dotazu. Dotaz vrátí pouze záznamy vytvořené v tomto rozsahu před aktuálním časem. Časové období omezuje data načítaná pro dotaz protokolu, aby nedocházelo k zneužití a obcházení všech časových příkazů (jako předtím) používaných v dotazu protokolu. <br>*Pokud je například časové období nastavené na 60 minut a dotaz se spustí na 1:15 ODP. k provedení dotazu protokolu se vrátí jenom záznamy vytvořené mezi 12:15 PM a 1:15 PM. Když teď dotaz protokolu používá časový příkaz jako před (7d), dotaz protokolu se spustí jenom pro data mezi 12:15 PM a 1:15 PM, jako kdyby data existovala jenom za posledních 60 minut. A ne sedm dní dat, jak je uvedeno v dotazu protokolu.*
+- **Časové období**.  Určuje časový rozsah dotazu. Dotaz vrátí pouze záznamy vytvořené v tomto rozsahu před aktuálním časem. Časové období omezuje data načtená pro dotaz protokolu, aby se zabránilo zneužití, a obchází jakýkoli příkaz time (jako před) použitý v dotazu protokolu. <br>*Například Pokud je časové období nastaveno na 60 minut a dotaz je spuštěn v 1:15, jsou vráceny pouze záznamy vytvořené mezi 12:15 pm a 1:15 PM ke spuštění dotazu protokolu. Nyní, pokud dotaz protokolu používá time command like ago (7d), dotaz protokolu by být spuštěn pouze pro data mezi 12:15 PM a 1:15 PM - jako kdyby data existuje pouze za posledních 60 minut. A ne pro sedm dní dat, jak je uvedeno v protokolu dotazu.*
 
-- **Frekvence**.  Určuje, jak často se má dotaz spouštět. Může to být jakákoli hodnota mezi 5 minutami a 24 hodinami. Má být rovno nebo menší než časové období.  Pokud je hodnota větší než časové období, pak dojde k vynechání záznamů rizik.<br>*Představte si třeba dobu 30 minut a frekvenci 60 minut.  Pokud je dotaz spuštěn v 1:00, vrátí záznamy mezi 12:30 a 1:00 PM.  Při příštím spuštění dotazu je 2:00, pokud by vrátil záznamy mezi 1:30 a 2:00.  Žádné záznamy vytvořené mezi 1:00 a 1:30 by nikdy nebyly vyhodnoceny.*
+- **Frekvence**.  Určuje, jak často má být dotaz spuštěn. Může být libovolná hodnota mezi 5 minut a 24 hodin. By měla být rovna nebo menší než časové období.  Pokud je hodnota větší než časové období, riskujete, že záznamy budou vynechány.<br>*Zvažte například časové období 30 minut a frekvenci 60 minut.  Pokud je dotaz spuštěn v 1:00, vrátí záznamy mezi 12:30 a 1:00 PM.  Při příštím spuštění dotazu je 2:00, kdy by vrátit záznamy mezi 1:30 a 2:00.  Všechny záznamy vytvořené mezi 1:00 a 1:30 by nikdy být vyhodnoceny.*
 
-- **Prahová hodnota**.  Výsledky prohledávání protokolu jsou vyhodnocovány, aby bylo možné určit, zda má být vytvořena výstraha.  Prahová hodnota je odlišná u různých typů pravidel upozornění prohledávání protokolu.
+- **Prahová hodnota**.  Výsledky hledání protokolu jsou vyhodnoceny k určení, zda má být vytvořena výstraha.  Prahová hodnota se liší pro různé typy pravidel výstrah hledání protokolu.
 
-Pravidla hledání protokolu pro [Azure monitor protokolů](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)můžou být dvou typů. Každý z těchto typů je podrobně popsán v následujících oddílech.
+Pravidla vyhledávání protokolů, ať už pro [protokoly monitorování Azure](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events), může být dvou typů. Každý z těchto typů je podrobně popsán v následujících částech.
 
-- **[Počet výsledků](#number-of-results-alert-rules)** Jediná výstraha vytvořená, když počet záznamů vrácených prohledáváním protokolu překročí zadané číslo.
-- **[Měření metriky](#metric-measurement-alert-rules)** .  Výstraha vytvořená pro každý objekt ve výsledcích prohledávání protokolu s hodnotami, které překračují určenou prahovou hodnotu.
+- **[Počet výsledků](#number-of-results-alert-rules)**. Jedna výstraha vytvořená v případě, že počet záznamů vrácených hledáním protokolu překročí zadané číslo.
+- **[Metrické měření](#metric-measurement-alert-rules)**.  Výstraha vytvořená pro každý objekt ve výsledcích hledání protokolu s hodnotami, které překračují zadanou prahovou hodnotu.
 
-Rozdíly mezi typy pravidel výstrah jsou následující.
+Rozdíly mezi typy pravidel výstrah y jsou následující.
 
-- *Počet* pravidel upozornění na výsledky vždy vytvoří jedinou výstrahu, zatímco pravidlo upozornění *měření metriky* vytvoří výstrahu pro každý objekt, který překračuje prahovou hodnotu.
-- *Počet* pravidel upozornění výsledků vytvoří výstrahu, když je prahová hodnota překročena v jednom okamžiku. Pravidla upozornění *měření metrik* mohou vytvořit výstrahu, pokud je prahová hodnota překročena v určitém časovém intervalu.
+- *Počet* pravidel upozornění na výsledky vždy vytvoří jednu výstrahu, zatímco pravidlo upozornění *metriky měření* vytvoří výstrahu pro každý objekt, který překročí prahovou hodnotu.
+- *Počet* pravidel upozornění na výsledky vytvoří výstrahu při překročení prahové hodnoty jednou. Pravidla upozornění *na měření metriky* mohou vytvořit výstrahu, když je prahová hodnota překročena určitý počet opakování v určitém časovém intervalu.
 
 ### <a name="number-of-results-alert-rules"></a>Počet pravidel upozornění na výsledky
 
-**Počet** pravidel upozornění na výsledky vytvoří jedinou výstrahu, když počet záznamů vrácených vyhledávacím dotazem překročí zadanou prahovou hodnotu. Tento typ pravidla upozornění je ideální pro práci s událostmi, jako jsou protokoly událostí systému Windows, syslog, odpověď WebApp a vlastní protokoly.  Je možné, že budete chtít vytvořit výstrahu, když se vytvoří konkrétní událost chyby nebo když se v určitém časovém období vytvoří více událostí s chybami.
+**Počet** pravidel upozornění na výsledky vytvoří jednu výstrahu, pokud počet záznamů vrácených vyhledávacím dotazem překročí zadanou prahovou hodnotu. Tento typ pravidla výstrahy je ideální pro práci s událostmi, jako jsou protokoly událostí systému Windows, Syslog, WebApp Response a vlastní protokoly.  Můžete chtít vytvořit výstrahu při vytvoření konkrétní chybové události nebo při vytvoření více chybových událostí v určitém časovém období.
 
-**Prahová**hodnota: prahová hodnota pro počet pravidel upozornění výsledků je větší nebo menší než určitá hodnota.  Pokud počet záznamů vrácených prohledáváním protokolu odpovídá těmto kritériím, vytvoří se výstraha.
+**Prahová hodnota**: Prahová hodnota pro počet pravidel upozornění na výsledky je větší nebo menší než určitá hodnota.  Pokud počet záznamů vrácených hledáním protokolu odpovídá tomuto kritériu, je vytvořena výstraha.
 
-Chcete-li upozornit na jednu událost, nastavte počet výsledků na hodnotu větší než 0 a vyhledejte výskyt jedné události, která byla vytvořena od posledního spuštění dotazu. Některé aplikace se mohou zaprotokolovat občasnou chybu, která by neměla nutně vyvolat výstrahu.  Aplikace může například opakovat proces, který vytvořil událost chyby, a potom to úspěšně podruhé.  V takovém případě možná nebudete chtít vytvořit výstrahu, pokud v určitém časovém období nevytvoříte více událostí.  
+Chcete-li upozornit na jednu událost, nastavte počet výsledků na hodnotu větší než 0 a zkontrolujte výskyt jedné události, která byla vytvořena od posledního spuštění dotazu. Některé aplikace mohou protokolovat příležitostnou chybu, která by neměla nutně vyvolat výstrahu.  Aplikace může například opakovat proces, který vytvořil chybu události a pak úspěšné příště.  V takovém případě pravděpodobně nebudete chtít vytvořit výstrahu, pokud v určitém časovém období není vytvořeno více událostí.  
 
-V některých případech můžete chtít vytvořit výstrahu za absenci události.  Proces může například protokolovat běžné události, aby označoval, že funguje správně.  Pokud se jedna z těchto událostí do konkrétního časového období neprotokoluje, je třeba vytvořit výstrahu.  V takovém případě byste měli nastavit prahovou hodnotu na **menší než 1**.
+V některých případech můžete chtít vytvořit výstrahu v nepřítomnosti události.  Proces může například protokolovat pravidelné události označující, že funguje správně.  Pokud nehlásí jednu z těchto událostí v určitém časovém období, měla by být vytvořena výstraha.  V takovém případě byste nastavili prahovou hodnotu na **méně než 1**.
 
-#### <a name="example-of-number-of-records-type-log-alert"></a>Příklad počtu upozornění protokolu typu záznamů
+#### <a name="example-of-number-of-records-type-log-alert"></a>Příklad výstrahy protokolu typu Počet záznamů
 
-Vezměte v úvahu scénář, ve kterém se dozvíte, kdy vaše webová aplikace poskytuje reakci na uživatele s vnitřní chybou serveru Code 500 (tj.). Vytvořili byste pravidlo výstrahy s následujícími podrobnostmi:  
+Zvažte scénář, kde chcete vědět, kdy vaše webová aplikace poskytuje odpověď uživatelům s kódem 500 (to znamená) vnitřní chyba serveru. Vytvořili byste pravidlo výstrahy s následujícími podrobnostmi:  
 
-- **Dotaz:** žádosti | kde resultCode = = "500"<br>
+- **Dotaz:** požadavky | kde resultCode == "500"<br>
 - **Časové období:** 30 minut<br>
-- **Frekvence upozornění:** pět minut<br>
+- **Frekvence výstrah:** pět minut<br>
 - **Prahová hodnota:** Větší než 0<br>
 
-Výstraha pak spustí dotaz každých 5 minut a 30 minut dat – pro vyhledání libovolného záznamu, kde byl kód výsledku 500. Pokud se najde i jeden takový záznam, aktivuje výstrahu a aktivuje akci nakonfigurovanou.
+Pak by výstraha spustit dotaz každých 5 minut, s 30 minut dat - hledat jakýkoli záznam, kde výsledek kód byl 500. Pokud je nalezen i jeden takový záznam, spustí výstrahu a spustí nakonfigurovanou akci.
 
 ### <a name="metric-measurement-alert-rules"></a>Pravidla upozornění na měření metrik
 
-Pravidla upozornění **měření metriky** vytvoří výstrahu pro každý objekt v dotazu s hodnotou, která překročí zadanou prahovou hodnotu a zadanou podmínku triggeru. Na rozdíl od počtu pravidel upozornění na **výsledky** fungují pravidla výstrah **měření metriky** , když výsledek analýzy poskytuje časovou řadu. Mají následující odlišné rozdíly od počtu pravidel upozornění **výsledků** .
+Pravidla upozornění **měření metriky** vytvoří výstrahu pro každý objekt v dotazu s hodnotou, která překračuje zadanou prahovou hodnotu a zadanou podmínku aktivační události. Na rozdíl od počtu pravidel upozornění **na výsledky** fungují pravidla upozornění **metriky měření,** když výsledek analýzy poskytuje časové řady. Mají následující odlišné rozdíly od počet pravidel upozornění **na výsledky.**
 
-- **Agregační funkce**: Určuje prováděný výpočet a potenciálně číselné pole, které se má agregovat.  Například funkce **Count ()** vrátí počet záznamů v dotazu, **prům (CounterValue)** vrátí průměr pole CounterValue v průběhu intervalu. Agregační funkce v dotazu musí být pojmenována/volána: AggregatedValue a zadat číselnou hodnotu. 
+- **Agregační funkce**: Určuje výpočet, který se provádí, a potenciálně číselné pole, které má být agregováno.  Například **count()** vrátí počet záznamů v **dotazu, avg(CounterValue)** vrátí průměr pole CounterValue za interval. Agregační funkce v dotazu musí být pojmenována/volána: AggregatedValue a poskytnout číselnou hodnotu. 
 
-- **Pole skupiny**: záznam s agregovanou hodnotou se vytvoří pro každou instanci tohoto pole a pro každý z nich je možné vygenerovat výstrahu.  Pokud byste například chtěli vygenerovat výstrahu pro každý počítač, budete ho používat **v počítači**. V případě, že existuje více skupinových polí zadaných v dotazu Alert, může uživatel určit, které pole se má použít k řazení výsledků pomocí parametru **Aggregate on** (metricColumn).
-
-    > [!NOTE]
-    > Možnost *Aggregate on* (metricColumn) je k dispozici pro výstrahy protokolu typu měření metrik pro Application Insights a výstrahy protokolu pro [Log Analytics konfigurovaná pouze pomocí rozhraní scheduledQueryRules API](../../azure-monitor/platform/alerts-log-api-switch.md) .
-
-- **Interval**: definuje časový interval, za který se data agreguje.  Pokud jste například zadali **pět minut**, vytvoří se záznam pro každou instanci pole skupiny agregované v intervalu 5 minut za časové období zadané pro výstrahu.
+- **Skupinové pole**: Pro každou instanci tohoto pole je vytvořen záznam s agregovanou hodnotou a pro každou z nich lze vygenerovat výstrahu.  Pokud byste například chtěli vygenerovat výstrahu pro každý počítač, **použil(a)** byste počítač . V případě, že existuje více skupinových polí určených v dotazu výstrahy, může uživatel určit, které pole má být použito k řazení výsledků pomocí parametru **Aggregate On** (metricColumn).
 
     > [!NOTE]
-    > Funkce bin se musí v dotazu použít k určení intervalu. Když bin () může mít za následek nerovné časové intervaly – výstraha automaticky převede příkaz bin na bin_at příkaz s odpovídajícím časem za běhu, aby se zajistilo, že výsledky budou s pevným bodem. Typ měření metriky výstrahu protokolu je navržený tak, aby fungoval s dotazy, které mají až tři instance příkazu bin ().
+    > *Možnost Agregovat on* (metricColumn) je k dispozici pro upozornění protokolu typu metriky měření pro application insights a výstrahy protokolu pro [analýzu protokolů nakonfigurované pouze pomocí rozhraní API scheduledQueryRules.](../../azure-monitor/platform/alerts-log-api-switch.md)
+
+- **Interval**: Definuje časový interval, ve kterém jsou data agregována.  Pokud jste například zadali **pět minut**, bude vytvořen záznam pro každou instanci skupinového pole agregovaného v 5minutových intervalech v časovém období určeném pro výstrahu.
+
+    > [!NOTE]
+    > Funkce přihrádky musí být použita v dotazu k určení intervalu. Jako bin() může mít za následek nerovné časové intervaly - Alert automaticky převede příkaz bin na příkaz bin_at s vhodným časem za běhu, aby bylo zajištěno výsledky s pevným bodem. Typ metrického měření výstrahy protokolu je určen pro práci s dotazy, které mají až tři instance příkazu bin().
     
-- **Prahová**hodnota: prahová hodnota pro pravidla upozornění měření metriky je definována agregovanou hodnotou a řadou porušení.  Pokud libovolný datový bod v prohledávání protokolu překročí tuto hodnotu, je považován za porušení.  Pokud počet porušení v nástroji u libovolného objektu ve výsledcích překročí zadanou hodnotu, je pro tento objekt vytvořena výstraha.
+- **Prahová hodnota**: Prahová hodnota pro pravidla upozornění metriky měření je definována agregotou hodnotou a řadou porušení.  Pokud některý datový bod ve vyhledávání protokolu překročí tuto hodnotu, je považován za porušení.  Pokud počet porušení v pro libovolný objekt ve výsledcích překročí zadanou hodnotu, pak je pro tento objekt vytvořena výstraha.
 
-*NesmetricColumnná* konfigurace možnosti *agregace on* nebo může způsobit neaktivaci pravidel upozornění. Další informace najdete v tématu [řešení potíží, pokud není správné pravidlo výstrahy měření metriky](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect).
+Chybná konfigurace možnosti *Aggregate On* nebo *metricColumn* může způsobit selhání pravidel výstrah. Další informace naleznete v [tématu řešení potíží s nesprávným pravidlem upozornění měření metriky](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect).
 
-#### <a name="example-of-metric-measurement-type-log-alert"></a>Příklad upozornění protokolu typu měření metriky
+#### <a name="example-of-metric-measurement-type-log-alert"></a>Příklad upozornění protokolu typu metriky měření
 
-Vezměte v úvahu scénář, ve kterém jste chtěli upozornit, pokud některý počítač překročil více než 30 minut o využití procesoru 90% třikrát.  Vytvořili byste pravidlo výstrahy s následujícími podrobnostmi:  
+Zvažte scénář, ve kterém jste chtěli výstrahu, pokud některý počítač překročil využití procesoru 90 % třikrát během 30 minut.  Vytvořili byste pravidlo výstrahy s následujícími podrobnostmi:  
 
-- **Dotaz:** Výkon | kde ObjectName = = "procesor" a CounterName = = "% času procesoru" | sumarizace AggregatedValue = AVG (CounterValue) podle bin (TimeGenerated, 5 min), počítač<br>
+- **Dotaz:** Perf | kde ObjectName == "Procesor" a CounterName == "% času procesoru" | shrnout AggregatedValue = avg(CounterValue) podle bin(TimeGenerated, 5m), Počítač<br>
 - **Časové období:** 30 minut<br>
-- **Frekvence upozornění:** pět minut<br>
-- **Logika výstrahy & prahová hodnota podmínky:** Větší než 90<br>
-- **Pole skupiny (agregace):** Počítač
-- **Výstraha aktivační události na základě:** Celkový počet porušení, která jsou větší než 2<br>
+- **Frekvence výstrah:** pět minut<br>
+- **Logika výstrahy – prahová hodnota & podmínky:** Větší než 90<br>
+- **Pole skupiny (agregace):** Počítače
+- **Aktivační výstraha založená na:** Celková porušení větší než 2<br>
 
-Dotaz by vytvořil průměrnou hodnotu pro každý počítač v intervalu 5 minut.  Tento dotaz se spustí každých 5 minut pro data shromážděná během posledních 30 minut. Vzhledem k tomu, že zvolené pole skupiny (agregované) je sloupcem ' Computer ' – AggregatedValue je rozděleno na různé hodnoty ' Computer ' a průměrné využití procesoru pro každý počítač je určeno pro časovou přihrádku 5 minut.  Vzorový výsledek dotazu pro (řekněme) tři počítače, by byl uvedený níže.
+Dotaz by vytvořit průměrnou hodnotu pro každý počítač v intervalech 5 minut.  Tento dotaz by spustit každých 5 minut pro data shromážděná za předchozích 30 minut. Vzhledem k tomu, že vybrané pole skupiny (Agregace) je sloupcové "Počítač" - AggregatedValue je rozdělena pro různé hodnoty "Počítač" a průměrné využití procesoru pro každý počítač je určeno pro časovou přihrádku 5 minut.  Ukázkový výsledek dotazu pro (řekněme) tři počítače, by bylo níže.
 
 
-|TimeGenerated [UTC] |Computer  |AggregatedValue  |
+|TimeGenerated [UTC] |Počítač  |Agregovaná hodnota  |
 |---------|---------|---------|
 |20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
 |20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
@@ -116,58 +116,58 @@ Dotaz by vytvořil průměrnou hodnotu pro každý počítač v intervalu 5 minu
 |20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
 |20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
 
-Pokud se má vykreslit výsledek dotazu, zobrazí se jako.
+Pokud by měl být výsledek dotazu vykreslen, bude vypadat jako.
 
 ![Ukázkové výsledky dotazu](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-V tomto příkladu vidíme v přihrádkách po dobu 5 minut každého ze tří počítačů – průměrné využití procesoru, které je vypočítáno po dobu 5 minut. Prahová hodnota 90, na kterou se v případě Srv01 nedodržuje jenom jednou v 1:25 přihrádce. V porovnání SRV02 překračuje prahovou hodnotu 90 na 1:10, 1:15 a 1:25 přihrádky; zatímco srv03 překračuje prahovou hodnotu 90 na 1:10, 1:15, 1:20 a 1:30.
-Vzhledem k tomu, že výstraha je nakonfigurovaná tak, aby se aktivovala v závislosti na celkovém narušení, je více než dvě, uvidíme, že SRV02 a srv03 odpovídají pouze Proto by se pro SRV02 a srv03 vytvořily samostatné výstrahy, protože v několika časových přihrádkách došlo dvakrát k 90% prahové hodnoty.  Pokud byla *aktivační událost založená na:* parametru nakonfigurované pro možnost *nepřetržitého porušení* , pak se výstraha aktivuje **jenom** pro srv03, protože porušení prahové hodnoty pro tři po sobě jdoucí časová období od 1:10 do 1:20. A **ne** pro SRV02, protože porušila prahovou hodnotu pro dva po sobě jdoucí časové přihrádky od 1:10 do 1:15.
+V tomto příkladu vidíme v přihrádkách 5 minut pro každý ze tří počítačů - průměrné využití procesoru, jak je vypočítáno po dobu 5 minut. Práh 90 je překročen srv01 pouze jednou v 1:25 bin. Pro srovnání, srv02 překračuje prahovou hodnotu 90 v přihrádkách 1:10, 1:15 a 1:25; zatímco srv03 překračuje prahovou hodnotu 90 v 1:10, 1:15, 1:20 a 1:30.
+Vzhledem k tomu, že výstraha je nakonfigurována tak, aby se aktivovala na základě celkových porušení, jsou více než dvě, vidíme, že srv02 a srv03 splňují pouze kritéria. Proto by byly vytvořeny samostatné výstrahy pro srv02 a srv03, protože dvakrát překročily prahovou hodnotu 90% v několika časových přihrádkách.  Pokud *trigger alert based na:* parametr byl místo toho nakonfigurován pro *možnost nepřetržité porušení,* pak výstraha by být aktivována **pouze** pro srv03, protože porušil prahovou hodnotu pro tři po sobě jdoucí časové přihrádky od 1:10 do 1:20. A **ne** pro srv02, protože překročil práh pro dva po sobě jdoucí časové koše od 1:10 do 1:15.
 
-## <a name="log-search-alert-rule---firing-and-state"></a>Pravidlo upozornění prohledávání protokolu – spuštění a stav
+## <a name="log-search-alert-rule---firing-and-state"></a>Pravidlo upozornění vyhledávání protokolů – spouštění a stav
 
-Pravidla upozornění na prohledávání protokolu fungují pouze v logice, kterou sestavíte do dotazu. Systém výstrah nemá žádný jiný kontext stavu systému, záměr nebo hlavní příčiny odvozené dotazem. V takovém případě se výstrahy protokolu označují jako stav bez. Podmínky jsou vyhodnoceny jako "TRUE" nebo "FALSE" při každém spuštění.  Výstraha se aktivuje pokaždé, když je vyhodnocení podmínky výstrahy "TRUE", bez ohledu na to, že je aktivována dříve.    
+Pravidla výstrah hledání protokolu fungují pouze na logice, kterou do dotazu zapracováváte. Systém výstrah nemá žádný jiný kontext stavu systému, záměr nebo hlavní příčinu vyplývající z dotazu. Jako takové výstrahy protokolu jsou označovány jako stav méně. Podmínky jsou vyhodnoceny jako "PRAVDA" nebo "FALSE" při každém spuštění.  Výstraha se zapálí pokaždé, když je vyhodnocení stavu výstrahy "TRUE", bez ohledu na to, že je aktivována dříve.    
 
-Pojďme se tomuto chování podívat v praxi s praktickým příkladem. Předpokládejme, že máme pravidlo výstrahy protokolu s názvem *Contoso-log-Alert*, které je nakonfigurované tak, jak je uvedeno v příkladu, který je uvedený v poli [počet výsledků výstrah protokolu typu výsledky](#example-of-number-of-records-type-log-alert). Podmínka je vlastní dotaz výstrahy navržený tak, aby v protokolech hledal kód výsledku 500. Pokud se v protokolech najde jeden další kód výsledku pro 500, bude podmínka výstrahy pravdivá. 
+Podívejme se na toto chování v akci s praktickým příkladem. Předpokládejme, že máme pravidlo výstrahy protokolu s názvem *Contoso-Log-Alert*, které je nakonfigurováno tak, jak je znázorněno v [příkladu uvedeném pro výstrahu protokolu typu Počet výsledků](#example-of-number-of-records-type-log-alert). Podmínka je vlastní výstražný dotaz určený k hledání kódu výsledku 500 v protokolech. Pokud další 500 kódy výsledků jsou nalezeny v protokolech, podmínka výstrahy je true. 
 
-V každém intervalu níže systém výstrah Azure vyhodnotí podmínku pro *protokol contoso-log-Alert*.
+V každém níže uvedeném intervalu systém výstrah Azure vyhodnotí podmínku pro *upozornění contoso-log*.
 
 
-| Čas    | Počet záznamů vrácených dotazem na hledání protokolu | Protokolovací podmínka Evalution | Výsledek 
+| Time    | Počet záznamů vrácených vyhledávacím dotazem protokolu | Zhodnocení stavu protokolu | Výsledek 
 | ------- | ----------| ----------| ------- 
-| 1:05 ODP. | 0 záznamů | 0 není > 0, takže FALSE |  Výstraha se neaktivuje. Nevolaly se žádné akce.
-| 1:10 ODP. | 2 záznamy | 2 > 0, takže TRUE  | Aktivují se výstrahy a volané skupiny akcí. Stav výstrahy aktivní.
-| 13:15 | 5 záznamů | 5 > 0, takže TRUE  | Aktivují se výstrahy a volané skupiny akcí. Stav výstrahy aktivní.
-| 1:20 ODP. | 0 záznamů | 0 není > 0, takže FALSE |  Výstraha se neaktivuje. Nevolaly se žádné akce. Stav výstrahy zůstane aktivní.
+| 13:05 ODPOLEDNE | 0 záznamů | 0 není > 0, takže FALSE |  Výstraha se nestřílí. Nejsou volány žádné akce.
+| 13:10 | 2 záznamů | 2 > 0 tak PRAVDA  | Upozornění na požáry a skupiny akcí volané. Stav výstrahy ACTIVE.
+| 13:15 | 5 záznamů | 5 > 0 tak PRAVDA  | Upozornění na požáry a skupiny akcí volané. Stav výstrahy ACTIVE.
+| 13:20 | 0 záznamů | 0 není > 0, takže FALSE |  Výstraha se nestřílí. Nejsou volány žádné akce. Stav výstrahy vlevo ACTIVE.
 
-Předchozí případ použijte jako příklad:
+Použití předchozího případu jako příklad:
 
-Výstrahy Azure na adrese 1:15 PM nemůžou určit, jestli se podkladové problémy v 1:10 trvají a jestli jsou v záznamech čisté nové chyby nebo se opakují starší chyby v 1:10PM. Dotaz poskytnutý uživatelem může nebo nemusí být přihlédnuto k dřívějším záznamům a systém není známý. Systém upozornění Azure je na straně velmi nejenom na sobě a aktivuje výstrahu a související akce v 1:15./odp. 
+V 13:15 azure výstrahy nelze určit, pokud základní problémy vidět na 1:10 přetrvávají a pokud záznamy jsou čisté nové chyby nebo opakování starších selhání na 1:10 PM. Dotaz poskytnutý uživatelem může nebo nemusí brát v úvahu dřívější záznamy a systém neví. Systém výstrah Azure je vytvořen tak, aby chybovat na straně upozornění a požáry výstrahy a související akce znovu v 1:15 pm. 
 
-V 1:20. odp. když se v 500 kódu výsledku zobrazí nula záznamů, upozornění Azure nemůže být jisté, že se teď vyřeší kód výsledku 500, který se zobrazuje na 1:10 PM a 1:15 ODP. Neví se, jestli problémy s chybou 500 proběhne ze stejných důvodů znovu. Proto se *Společnost Contoso-log-Alert* nemění na **vyřešených** řídicích panelech Azure Alert a oznámení se neodesílají, protože upozornění je vyřešené. Pouze vy, který zná přesnou podmínku nebo důvod pro logiku vloženou v analytickém dotazu, může [výstrahu označit jako uzavřenou](alerts-managing-alert-states.md) podle potřeby.
+V 1:20 pm při nulové záznamy jsou vidět s 500 kód výsledků, Azure výstrahy nemůže být jisti, že příčina 500 kód výsledků vidět na 1:10 pm a 1:15 PM je nyní vyřešen. Neví, zda se problémy s chybami 500 stanou ze stejných důvodů znovu. Proto *Contoso-Log-Alert* nezmění vyřešen **v** Azure Alert řídicího panelu a/nebo oznámení nejsou odesílány o tom, že výstraha je vyřešena. Pouze vy, kdo rozumí přesné podmínce nebo důvodu logiky vložené do analytického dotazu, můžete [výstrahu označit jako uzavřenou](alerts-managing-alert-states.md) podle potřeby.
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Ceny a fakturace výstrah protokolu
 
-Ceny týkající se výstrah protokolů jsou uvedené na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) . Ve službě Azure Bills se výstrahy protokolu zobrazují jako typ `microsoft.insights/scheduledqueryrules` s:
+Ceny platné pro upozornění protokolů jsou uvedeny na stránce [Ceny monitoru Azure.](https://azure.microsoft.com/pricing/details/monitor/) V azure účty protokolů výstrahy jsou reprezentovány jako typ `microsoft.insights/scheduledqueryrules` s:
 
-- Výstrahy protokolu na Application Insights zobrazené s přesným názvem výstrahy spolu se skupinami prostředků a vlastnostmi výstrahy
-- Výstrahy protokolu v Log Analytics zobrazeny s přesným názvem výstrahy spolu se skupinami prostředků a vlastnostmi výstrahy; Při vytvoření pomocí [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
+- Protokolovat výstrahy na application insights zobrazené s přesným názvem výstrahy spolu se skupinou prostředků a vlastnostmi výstrahy
+- Protokolovat výstrahy v log Analytics zobrazené s přesným názvem výstrahy spolu se skupinou prostředků a vlastnostmi výstrah; při vytvoření pomocí [rozhraní SCHEDULEDQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
 
-[Starší verze rozhraní Log Analytics API](../../azure-monitor/platform/api-alerts.md) mají v rámci Log Analytics uložených hledání a nesprávné [prostředky Azure](../../azure-resource-manager/management/overview.md)nějaké akce a plány výstrah. Pokud tedy chcete povolit účtování pro tyto starší verze protokolů, které byly vytvořeny pro Log Analytics pomocí Azure Portal **bez** [přepínání do nového rozhraní API](../../azure-monitor/platform/alerts-log-api-switch.md) nebo prostřednictvím [starší verze Log Analytics API](../../azure-monitor/platform/api-alerts.md) – na `microsoft.insights/scheduledqueryrules` pro účely fakturace v Azure se vytvoří skrytá pravidla pro upozornění na skryté. Skrytá pravidla pro upozornění na `microsoft.insights/scheduledqueryrules`, jak je znázorněno jako `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` spolu se skupinami prostředků a vlastnostmi výstrahy.
+[Starší rozhraní API analýzy protokolů](../../azure-monitor/platform/api-alerts.md) obsahuje akce výstrah a plány jako součást uloženého vyhledávání služby Log Analytics a ne správné prostředky [Azure](../../azure-resource-manager/management/overview.md). Proto chcete-li povolit fakturaci pro takové starší výstrahy protokolu vytvořené pro Log Analytics pomocí portálu Azure **bez** [přepnutí na nové rozhraní API](../../azure-monitor/platform/alerts-log-api-switch.md) nebo prostřednictvím [staršího rozhraní API Log Analytics](../../azure-monitor/platform/api-alerts.md) – pro fakturaci v Azure se `microsoft.insights/scheduledqueryrules` vytvářejí skrytá pravidla pseudo výstrah. Skrytá pravidla pseudo výstrah `microsoft.insights/scheduledqueryrules` vytvořených `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` pro fakturaci, jak je znázorněno spolu se skupinou prostředků a vlastnostmi výstrah.
 
 > [!NOTE]
-> Pokud jsou k dispozici neplatné znaky, jako je například `<, >, %, &, \, ?, /`, nahradí se `_` v názvu skrytého pravidla upozornění pseudo, a proto také ve faktuře Azure.
+> Pokud neplatné `<, >, %, &, \, ?, /` znaky, jako jsou k `_` dispozici, budou nahrazeny ve skrytém názvu pravidla pseudo výstrahy a tedy také ve vyúčtování Azure.
 
-Pokud chcete odebrat skryté prostředky scheduleQueryRules vytvořené pro fakturaci pravidel upozornění pomocí [starších Log Analytics rozhraní API](api-alerts.md), může uživatel provést některou z následujících akcí:
+Chcete-li odebrat skryté plánovačIQueryRules prostředky vytvořené pro fakturaci pravidel výstrah pomocí [starší log Analytics API](api-alerts.md), uživatel může provést některou z následujících akcí:
 
-- Uživatel může [přepínat předvolby rozhraní API pro pravidla upozornění v pracovním prostoru Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) , aniž by došlo ke ztrátě svých pravidel nebo monitorování, aby se přesunuly do Azure Resource Manager kompatibilního [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Proto Eliminujte nutnost vytvářet pravidla pro vyúčtování pseudo skrytých výstrah.
-- Nebo pokud uživatel nechce přepnout na Předvolby rozhraní API, bude muset uživatel **Odstranit** původní plán a akci upozornění pomocí [starší verze Log Analytics API](api-alerts.md) nebo odstranit v [Azure Portal původní pravidlo upozornění protokolu](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) .
+- Každý uživatel může [přepnout předvolbu rozhraní API pro pravidla výstrah v pracovním prostoru Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) a bez ztráty jejich pravidel výstrah nebo monitorování přejít na Azure Resource Manager kompatibilní [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Tím eliminovat potřebu, aby se pseudo skryté upozornění pravidla pro fakturaci.
+- Nebo pokud uživatel nechce přepínat předvolbu rozhraní API, uživatel bude muset **odstranit** původní plán a akci výstrahpomocí [staršího rozhraní API Analýzy protokolů](api-alerts.md) nebo odstranit na [webu Azure Portal původní pravidlo upozornění protokolu.](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
 
-Kromě toho, že se skryté prostředky scheduleQueryRules vytvořené pro fakturaci pravidel upozornění používají [starší verze rozhraní API Log Analytics](api-alerts.md), všechny operace změny, jako je třeba PUT, selžou. Pravidla pro `microsoft.insights/scheduledqueryrules` typu pseudo jsou pro účely fakturace pravidla upozornění vytvořená pomocí [starší verze Log Analytics API](api-alerts.md). Jakákoli změna pravidla výstrahy by se měla provádět pomocí [starší verze rozhraní Log Analytics API](api-alerts.md) (nebo). uživatel může místo toho [Přepnout předvolby rozhraní API pro pravidla upozornění](../../azure-monitor/platform/alerts-log-api-switch.md) na použití [rozhraní API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) .
+Navíc pro skryté scheduleQueryRules prostředky vytvořené pro fakturaci pravidel výstrah pomocí [starší log Analytics API](api-alerts.md), všechny operace změny jako PUT se nezdaří. Jako `microsoft.insights/scheduledqueryrules` typ pseudo pravidla jsou pro účely fakturace pravidla výstrah vytvořených pomocí [starší log Analytics API](api-alerts.md). Jakékoli změny pravidla výstrahy by mělo být provedeno pomocí [starší log Analytics API](api-alerts.md) (nebo) uživatel může [přepnout api preference pro pravidla výstrah](../../azure-monitor/platform/alerts-log-api-switch.md) použít [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) místo.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si informace o [vytváření v protokolových výstrahách v Azure](../../azure-monitor/platform/alerts-log.md).
-* Pochopení [webhooků v protokolových výstrahách v Azure](alerts-log-webhook.md).
-* Přečtěte si o [výstrahách Azure](../../azure-monitor/platform/alerts-overview.md).
-* Přečtěte si další informace o [Application Insights](../../azure-monitor/app/analytics.md).
-* Přečtěte si další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Další informace o [vytváření výstrah protokolu v Azure](../../azure-monitor/platform/alerts-log.md).
+* Principy [webhooky ve výstrahách protokolu v Azure](alerts-log-webhook.md).
+* Další informace o [azure upozornění](../../azure-monitor/platform/alerts-overview.md).
+* Další informace o [application insights](../../azure-monitor/app/analytics.md).
+* Další informace o [log analytics](../../azure-monitor/log-query/log-query-overview.md).

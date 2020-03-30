@@ -1,44 +1,44 @@
 ---
-title: Příprava na změnu odchozí IP adresy
-description: Pokud se vaše odchozí IP adresa bude měnit, zjistěte, co dělat, aby vaše aplikace po provedení změny i nadále fungovala.
+title: Příprava na změnu odchozí adresy IP
+description: Pokud se vaše odchozí IP adresa změní, přečtěte si, co dělat, aby vaše aplikace po změně fungovala dál.
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671666"
 ---
-# <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Příprava na změnu odchozí IP adresy
+# <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Jak se připravit na změnu odchozí IP adresy
 
-Pokud jste obdrželi oznámení o změně odchozích IP adres vaší aplikace Azure App Service, postupujte podle pokynů v tomto článku.
+Pokud jste obdrželi oznámení, že se mění odchozí IP adresy vaší aplikace Azure App Service, postupujte podle pokynů v tomto článku.
 
-## <a name="determine-if-you-have-to-do-anything"></a>Určení, jestli je nutné provést cokoli
+## <a name="determine-if-you-have-to-do-anything"></a>Zjistěte, zda musíte něco udělat
 
-* Možnost 1: Pokud vaše aplikace App Service nepoužívá filtrování IP adres, explicitní seznam zahrnutí nebo speciální zpracování odchozích přenosů, jako je směrování nebo brána firewall, nevyžaduje se žádná akce.
+* Možnost 1: Pokud vaše aplikace App Service nepoužívá filtrování IP adres, explicitní seznam zahrnutí nebo speciální zpracování odchozích přenosů, jako je směrování nebo brána firewall, není nutná žádná akce.
 
-* Možnost 2: Pokud vaše aplikace má speciální zacházení s odchozími IP adresami (viz příklady níže), přidejte nové odchozí IP adresy, pokud se zobrazí stávající. Neměňte stávající IP adresy. Nové odchozí IP adresy můžete najít podle pokynů v následující části.
+* Možnost 2: Pokud má vaše aplikace zvláštní zpracování odchozích IP adres (viz příklady níže), přidejte nové odchozí IP adresy všude tam, kde se zobrazí stávající. Nenahrazujte existující IP adresy. Nové odchozí IP adresy najdete podle pokynů v další části.
 
-  Odchozí IP adresa může být například explicitně obsažena v bráně firewall mimo vaši aplikaci, nebo externí platební služba může mít povolený seznam, který obsahuje odchozí IP adresu vaší aplikace. Pokud je vaše odchozí adresa nakonfigurovaná v seznamu kdekoli mimo vaši aplikaci, musí se změnit.
+  Například odchozí IP adresa může být explicitně zahrnuta do brány firewall mimo vaši aplikaci nebo externí platební služba může mít povolený seznam, který obsahuje odchozí IP adresu pro vaši aplikaci. Pokud je vaše odchozí adresa nakonfigurovaná v seznamu kdekoli mimo vaši aplikaci, je třeba to změnit.
 
-## <a name="find-the-outbound-ip-addresses-in-the-azure-portal"></a>Najít odchozí IP adresy v Azure Portal
+## <a name="find-the-outbound-ip-addresses-in-the-azure-portal"></a>Vyhledání odchozích IP adres na webu Azure Portal
 
-Nové odchozí IP adresy se zobrazí na portálu, než začnou platit. Když Azure začne používat nové, staré se už nebudou používat. V jednom okamžiku se používá jenom jedna sada, takže položky v seznamech zahrnutí musí mít staré i nové IP adresy, aby se zabránilo výpadku, když dojde k přepnutí. 
+Nové odchozí IP adresy jsou zobrazeny na portálu dříve, než se projeví. Když Azure začne používat nové, staré se už nebudou používat. Používá se pouze jedna sada najednou, takže položky v seznamech zahrnutí musí mít staré i nové IP adresy, aby se zabránilo výpadku, když dojde k přechodu. 
 
-1.  Otevřete web [Azure Portal](https://portal.azure.com).
+1.  Otevřete [portál Azure](https://portal.azure.com).
 
-2.  V navigační nabídce na levé straně vyberte **App Services**.
+2.  V levé navigační nabídce vyberte **Možnost Služby aplikací**.
 
-3.  Ze seznamu vyberte svou aplikaci App Service.
+3.  Ze seznamu vyberte aplikaci App Service.
 
-1.  Pokud je aplikace Function App, přečtěte si téma aplikace [Function Apps odchozí IP adresy](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
+1.  Pokud se jedná o aplikaci s funkcí, přečtěte si informace o [odchozích IP adresách aplikace](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
 
-4.  V záhlaví **Nastavení** klikněte na tlačítko **vlastnosti** v levém navigačním panelu a vyhledejte část s názvem **odchozí IP adresy**.
+4.  V záhlaví **Nastavení** klikněte v levém navigačním panelu na **Vlastnosti** a vyhledejte oddíl označený **Odchozí IP adresy**.
 
-5. Zkopírujte IP adresy a přidejte je do speciálního zpracování odchozích přenosů, jako je filtr nebo seznam povolených. V seznamu neodstraňujte existující IP adresy.
+5. Zkopírujte ip adresy a přidejte je do speciálního zpracování odchozích přenosů, jako je například filtr nebo povolený seznam. Neodstraňujte existující adresy IP v seznamu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek vysvětluje, jak připravit na změnu IP adresy, kterou iniciovala Azure. Další informace o IP adresách v Azure App Service najdete [v tématu příchozí a odchozí IP adresy v Azure App Service](overview-inbound-outbound-ips.md).
+Tento článek vysvětluje, jak se připravit na změnu IP adresy, která byla iniciována Azure. Další informace o IP adresách ve službě Azure App Service najdete v tématu [Příchozí a odchozí IP adresy ve službě Azure App Service](overview-inbound-outbound-ips.md).

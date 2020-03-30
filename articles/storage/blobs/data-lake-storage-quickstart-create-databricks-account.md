@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks | Microsoft Docs'
-description: Naučte se spouštět úlohu Sparku na Azure Databricks pomocí Azure Portal a účtu úložiště Azure Data Lake Storage Gen2.
+title: 'Úvodní příručka: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks | Dokumenty společnosti Microsoft'
+description: Naučte se spouštět úlohu Spark na Azure Databricks pomocí portálu Azure a účtu úložiště Azure Data Lake Storage Gen2.
 author: normesta
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,34 +9,34 @@ ms.topic: quickstart
 ms.date: 02/17/2020
 ms.reviewer: jeking
 ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77470730"
 ---
-# <a name="quickstart-analyze-data-with-databricks"></a>Rychlý Start: Analýza dat pomocí datacihlů
+# <a name="quickstart-analyze-data-with-databricks"></a>Úvodní příručka: Analýza dat pomocí datových cihel
 
-V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k provádění analýz dat uložených v účtu úložiště. V rámci úlohy Spark budete analyzovat data předplatného rádiového kanálu, abyste získali přehled o bezplatném nebo placeném využití na základě demografických údajů.
+V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k provádění analýz na datech uložených v účtu úložiště. V rámci úlohy Spark budete analyzovat data předplatného rádiových kanálů, abyste získali přehled o bezplatném/placeném využití na základě demografických údajů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Název vašeho účtu úložiště Azure Data Lake Gen2 [Vytvořte účet úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+* Název vašeho účtu úložiště Azure Data Lake Gen2. [Vytvořte účet úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 
-* ID tenanta, ID aplikace a heslo instančního objektu Azure s přiřazenou rolí **přispěvatele dat objektu BLOB služby Storage**. [Vytvoření instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md).
+* ID klienta, ID aplikace a heslo instančního objektu Azure s přiřazenou rolí **přispěvatele dat objektů blob úložiště**. [Vytvořte instanční objekt](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   > [!IMPORTANT]
-  > Přiřaďte roli v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
+  > Přiřaďte roli v oboru účtu úložiště Storage Storage Data Lake Storage. Roli můžete přiřadit nadřazené skupině prostředků nebo předplatnému, ale budete dostávat chyby související s oprávněními, dokud se tato přiřazení rolí nerozšíří do účtu úložiště.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
+1. Na webu Azure Portal vyberte **Vytvořit zdroj** > **Analytics** > **Azure Databricks**.
 
-    ![Datacihly na Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Datacihly na Azure Portal")
+    ![Datové cihly na webu Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Datové cihly na webu Azure Portal")
 
 2. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
@@ -52,7 +52,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |**Umístění**     | Vyberte **USA – západ 2**. Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-3. Vytvoření účtu trvá několik minut. Chcete-li monitorovat stav operace, zobrazte indikátor průběhu v horní části.
+3. Vytvoření účtu trvá několik minut. Chcete-li sledovat stav operace, zobrazte indikátor průběhu nahoře.
 
 4. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
 
@@ -60,13 +60,13 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
-2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový** > **Cluster**.
+2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový** > **cluster**.
 
-    ![Datacihly v Azure](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Datacihly v Azure")
+    ![Datové cihly v Azure](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Datové cihly v Azure")
 
 3. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
 
-    ![Vytvoření clusteru datacihly Spark v Azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Vytvoření clusteru datacihly Spark v Azure")
+    ![Vytvoření clusteru Databricks Spark v Azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
 
     Zadejte hodnoty následujících polí a potvrďte výchozí hodnoty dalších polí:
 
@@ -78,23 +78,23 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
 
-## <a name="create-storage-account-container"></a>Vytvořit kontejner účtu úložiště
+## <a name="create-storage-account-container"></a>Vytvoření kontejneru účtu úložiště
 
-V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, které nakonfigurují účet úložiště.
+V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, kterými nakonfigurujete účet úložiště.
 
 1. Na portálu [Azure Portal](https://portal.azure.com) přejděte do vytvořeného pracovního prostoru Azure Databricks a vyberte **Spustit pracovní prostor**.
 
 2. V levém podokně vyberte **Pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
 
-    ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Vytvoření poznámkového bloku v datacihlech")
+    ![Vytvoření poznámkového bloku v datových cihlách](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Vytvoření poznámkového bloku v datových cihlách")
 
 3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Vyberte jazyk **Scala** a vyberte cluster Spark, který jste vytvořili v předchozí části.
 
-    ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
+    ![Vytvoření poznámkového bloku v datových cihlách](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Vytvoření poznámkového bloku v datových cihlách")
 
-    Vyberte **Create** (Vytvořit).
+    Vyberte **Vytvořit**.
 
-4. Zkopírujte následující blok kódu a vložte ho do první buňky, ale tento kód ještě nespouštějte.
+4. Zkopírujte a vložte následující blok kódu do první buňky, ale tento kód ještě nespouštějte.
 
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
@@ -107,9 +107,9 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
-5. V tomto bloku kódu nahraďte `storage-account-name`, `appID`, `password`a `tenant-id` hodnoty zástupných symbolů v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte hodnotu zástupný symbol `container-name` na libovolný název, který chcete kontejneru přidělit.
+5. V tomto bloku kódu `storage-account-name` `appID`nahraďte hodnoty , , `password`a `tenant-id` zástupný symbol v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. `container-name` Nastavte zástupnou hodnotu na jakýkoli název, který chcete dát kontejneru.
 
-6. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
+6. Stisknutím kláves **SHIFT + ENTER** spusťte kód v tomto bloku.
 
 ## <a name="ingest-sample-data"></a>Ingestace ukázkových dat
 
@@ -119,13 +119,13 @@ Do buňky poznámkového bloku zadejte následující kód:
 
     %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
+V buňce spusťte kód stisknutím **kláves SHIFT + ENTER.**
 
-Nyní vložte následující kód do nové buňky pod tímto kódem a nahraďte hodnoty zobrazené v závorkách stejnými hodnotami, které jste použili dříve:
+Nyní v nové buňce pod touto buňkou zadejte následující kód a nahraďte hodnoty, které se zobrazují v závorkách, stejnými hodnotami, které jste použili dříve:
 
     dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
 
-V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
+V buňce spusťte kód stisknutím **kláves SHIFT + ENTER.**
 
 ## <a name="run-a-spark-sql-job"></a>Spuštění úlohy Spark SQL
 
@@ -156,13 +156,13 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
 3. Zobrazí se tabulkový výstup jako na následujícím snímku obrazovky (zobrazí se jenom některé sloupce):
 
-    ![Ukázková data JSON](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "Ukázková data JSON")
+    ![Ukázka dat JSON](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "Ukázka dat JSON")
 
-    Kromě dalších podrobností vzorová data zachycují pohlaví posluchačů rádiového kanálu (název sloupce, **pohlaví**) a zda je jejich předplatné bezplatné nebo placené (název sloupce, **úroveň**).
+    Ukázková data mimo jiné zachycují pohlaví publika rozhlasového kanálu (název sloupce, **pohlaví)** a to, zda je jejich předplatné bezplatné nebo placené (název sloupce, **úroveň).**
 
 4. Teď vytvoříte vizuální reprezentaci těchto dat, která bude znázorňovat, kolik uživatelů obou pohlaví má bezplatné účty a kolik je platících předplatitelů. Ve spodní části tabulkového výstupu klikněte na ikonu **Bar chart** (Pruhový graf) ikonu a potom na **Plot Options** (Možnosti grafu).
 
-    ![Vytvořit pruhový graf](./media/data-lake-storage-quickstart-create-databricks-account/create-plots-databricks-notebook.png "Vytvořit pruhový graf")
+    ![Vytvoření pruhového grafu](./media/data-lake-storage-quickstart-create-databricks-account/create-plots-databricks-notebook.png "Vytvoření pruhového grafu")
 
 5. V části **Customize Plot** (Přizpůsobit graf) přetáhněte hodnoty, jak ukazuje snímek obrazovky.
 
@@ -181,11 +181,11 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto článkem hotoví, můžete cluster ukončit. V pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery) a najděte cluster, který chcete ukončit. Přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
+Po dokončení tohoto článku můžete cluster ukončit. V pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery) a najděte cluster, který chcete ukončit. Přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
 
-![Zastavení clusteru datacihly](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
+![Zastavení clusteru Databricks](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
-Pokud ručně neukončíte cluster, který se automaticky zastaví, za předpokladu, že jste při vytváření clusteru vybrali zaškrtávací políčko **ukončit po \_\_ minut při nečinnosti** . Pokud jste tuto možnost nastavili, cluster se po stanovené době nečinnosti zastaví.
+Pokud cluster ručně neukončíte, automaticky se zastaví za předpokladu, že jste při vytváření clusteru zaškrtli políčko **Ukončit po \_ \_ minutách nečinnosti.** Pokud jste tuto možnost nastavili, cluster se po stanovené době nečinnosti zastaví.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -194,8 +194,8 @@ V tomto článku jste v Azure Databricks vytvořili cluster Spark a pak jste ke 
 V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
 
 > [!div class="nextstepaction"]
->[Extrakce, transformace a načtení dat pomocí Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
+>[Extrahujte, transformujte a načítajíte data pomocí Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
 
-- Informace o tom, jak importovat data z jiných zdrojů dat do Azure Databricks, najdete v tématu [zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html).
+- Informace o tom, jak importovat data z jiných zdrojů dat do Azure Databricks, najdete v [tématu Zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html).
 
 - Další informace o dalších způsobech přístupu k Azure Data Lake Storage Gen2 z pracovního prostoru Azure Databricks najdete v tématu [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).

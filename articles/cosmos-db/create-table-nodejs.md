@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Table API s využitím Node.js – Azure Cosmos DB'
+title: 'Úvodní příručka: Rozhraní API tabulky s souborem Node.js – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Table API k vytvoření aplikace pomocí webu Azure Portal a Node.js.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: sngun
 ms.openlocfilehash: f317b7b5f3ab60f466054f2043027b13e8396abc
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77212831"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí Node.js a Azure Cosmos DB
@@ -24,13 +24,13 @@ ms.locfileid: "77212831"
 > * [Python](create-table-python.md)
 > 
 
-V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API pro tabulky a pomocí Průzkumník dat a aplikace Node. js naklonované z GitHubu vytvoříte tabulky a entity. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
+V tomto rychlém startu vytvoříte účet rozhraní API tabulky Db Azure Cosmos a pomocí Průzkumníka dat a aplikace Node.js naklonované z GitHubu vytvoříte tabulky a entity. Azure Cosmos DB je vícemodelová databázová služba, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, hodnot klíče a grafů s možností globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčovým `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
-- [Node. js 0.10.29 +](https://nodejs.org/) .
-- [Git](https://git-scm.com/downloads)
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) `https://localhost:8081` s identifikátorem URI a klíč `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
+- [Node.js 0.10.29+](https://nodejs.org/) .
+- [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -52,7 +52,7 @@ V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API pro tab
 
 Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
     ```bash
     md "C:\git-samples"
@@ -72,23 +72,23 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází. 
+Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází. 
 
-1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec**. 
+1. Ve svém účtu Azure Cosmos DB na [webu Azure Portal](https://portal.azure.com/)vyberte Spojovací **řetězec**. 
 
     ![Zobrazení a zkopírování požadovaných informací o připojovacím řetězci v podokně Připojovací řetězec](./media/create-table-nodejs/connection-string.png)
 
-2. Pomocí tlačítka pro kopírování na pravé straně zkopírujte primární připojovací řetězec.
+2. Zkopírujte primární připojovací řetězec pomocí tlačítka kopírování na pravé straně.
 
-3. Otevřete soubor *App. config* a vložte hodnotu do ConnectionString na řádku tři. 
+3. Otevřete soubor *app.config* a vložte hodnotu do řetězce connectionString na řádku tři. 
 
     > [!IMPORTANT]
     > Pokud váš koncový bod používá adresu documents.azure.com, znamená to, že máte účet Preview, a pokud chcete pracovat s obecně dostupnou sadou Table API SDK, musíte si vytvořit [nový účet Table API](#create-a-database-account).
     >
 
-3. Uložte soubor *App. config* .
+3. Uložte soubor *app.config.*
 
-Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s databází Azure Cosmos. 
+Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
@@ -98,13 +98,13 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
     cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. Spuštěním následujícího příkazu nainstalujte moduly [Azure], [Node-UUID], [NConf] a [Async] místně a uložte položku pro ně do souboru *Package. JSON* .
+2. Spusťte následující příkaz k instalaci modulů [azure], [node-uuid], [nconf] a [async] místně a také k uložení položky pro ně do souboru *package.json.*
 
    ```
    npm install azure-storage node-uuid async nconf --save
    ```
 
-2. Spuštěním následujících příkazů v okně terminálu Git spusťte aplikaci Node. js.
+2. V okně terminálu git spusťte následující příkazy a spusťte aplikaci Node.js.
 
     ```
     node ./tableSample.js 
@@ -112,9 +112,9 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
     V okně konzoly se zobrazí přidávání tabulkových dat do nové databáze tabulek ve službě Azure Cosmos DB.
 
-    Vám může nyní přejděte zpět do Průzkumníku dat naleznete v tématu, dotazování, upravit a pracovat s těmito novými daty. 
+    Nyní se můžete vrátit do Průzkumníka dat a zobrazit tato nová data, dotazovat se, upravovat je a pracovat s ním. 
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -124,7 +124,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos DB, vytvořit tabulku pomocí Průzkumník dat a spustit aplikaci Node. js pro přidání dat tabulky.  Teď můžete zadávat dotazy na svá data pomocí rozhraní API tabulky.  
+V tomto rychlém startu jste se naučili, jak vytvořit účet Azure Cosmos DB, vytvořit tabulku pomocí Průzkumníka dat a spustit aplikaci Node.js pro přidání dat tabulky.  Teď můžete zadávat dotazy na svá data pomocí rozhraní API tabulky.  
 
 > [!div class="nextstepaction"]
 > [Import tabulkových dat do rozhraní Table API](table-import.md)

@@ -1,6 +1,6 @@
 ---
-title: Opravte chyby neodpovídajících adresářů v Azure AD Domain Services | Microsoft Docs
-description: Přečtěte si, co znamená chyba neshody adresáře a jak ho vyřešit v Azure AD Domain Services
+title: Oprava chyb neodpovídajícího adresáře ve službě Azure AD Domain Services | Dokumenty společnosti Microsoft
+description: Zjistěte, co znamená chyba neodpovídajícího adresáře a jak ji vyřešit ve službě Azure AD Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,52 +12,52 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
 ms.openlocfilehash: 76dc964b7fe7f5e8acfcfb03b2e89bebb2caa176
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613380"
 ---
-# <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Řešení chyb neodpovídajících adresářů pro existující Azure AD Domain Services spravované domény
+# <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Řešení chyb neodpovídajícího adresáře pro existující spravované domény služby Azure AD Domain Services
 
-Pokud spravovaná doména Azure Active Directory Domain Services (Azure služba AD DS) zobrazuje neshodnou chybu tenanta, nemůžete spravovat spravovanou doménu, dokud nebude vyřešená. K této chybě dojde, pokud je základní virtuální síť Azure přesunuta do jiného adresáře služby Azure AD.
+Pokud spravovaná doména Služby Azure Active Directory Domain Services (Azure AD DS) zobrazuje chybu neodpovídajícího klienta, nemůžete spravovanou doménu spravovat, dokud nebude vyřešena. K této chybě dochází, pokud se základní virtuální síť Azure přesune do jiného adresáře Azure AD.
 
-Tento článek vysvětluje, proč k chybě dochází a jak ho vyřešit.
+Tento článek vysvětluje, proč k chybě dochází a jak ji vyřešit.
 
 ## <a name="what-causes-this-error"></a>Co způsobuje tuto chybu?
 
-Neshodná Chyba adresáře se stane, když spravovaná doména a virtuální síť Azure služba AD DS patří do dvou různých tenantů Azure AD. Můžete mít například spravovanou doménu Azure služba AD DS s názvem *aaddscontoso.com* , která běží v TENANTOVI Azure AD společnosti Contoso. Virtuální síť Azure pro spravovanou doménu je ale součástí tenanta Azure AD společnosti Fabrikam.
+Chyba neodpovídajícího adresáře se stane, když spravovaná doména a virtuální síť Azure AD DS patří do dvou různých klientů Azure AD. Například můžete mít spravovanou doménu Azure AD DS s názvem *aaddscontoso.com,* která běží v tenantovi Azure AD společnosti Contoso. Virtuální síť Azure pro spravovanou doménu je však součástí klienta Služby Azure AD společnosti Fabrikam.
 
-Azure používá řízení přístupu na základě role (RBAC) k omezení přístupu k prostředkům. Pokud povolíte Azure služba AD DS v tenantovi Azure AD, hodnoty hash přihlašovacích údajů se synchronizují do spravované domény. Tato operace vyžaduje, abyste byli správcem tenanta pro adresář služby Azure AD a aby bylo možné řídit přístup k přihlašovacím údajům. K nasazení prostředků do virtuální sítě Azure a řízení provozu musíte mít ve virtuální síti, ve které nasazujete Azure služba AD DS, oprávnění správce.
+Azure používá řízení přístupu na základě rolí (RBAC) k omezení přístupu k prostředkům. Když povolíte Azure AD DS v tenantovi Azure AD, budou se do spravované domény synchronizovat odhady přihlašovacích údajů. Tato operace vyžaduje, abyste byli správcem klienta pro adresář Azure AD a přístup k přihlašovacím údajům musí být řízen. Chcete-li nasadit prostředky do virtuální sítě Azure a řídit provoz, musíte mít oprávnění správce ve virtuální síti, ve které nasazujete Azure AD DS.
 
-Aby RBAC fungovalo konzistentně a zabezpečenému přístupu ke všem prostředkům, které Azure služba AD DS používá, musí Tato spravovaná doména a virtuální síť patřit do stejného tenanta služby Azure AD.
+Aby RBAC fungoval konzistentně a zabezpečeně přístup ke všem prostředkům, které Azure AD DS používá, musí spravovaná doména a virtuální síť patřit do stejného klienta Azure AD.
 
 V prostředí Správce prostředků platí následující pravidla:
 
-- Adresář služby Azure AD může mít několik předplatných Azure.
-- Předplatné Azure může mít několik prostředků, jako jsou virtuální sítě.
-- Pro adresář služby Azure AD je povolená jediná Azure AD Domain Services spravovaná doména.
-- Ve virtuální síti, která patří do jednoho nebo více předplatných Azure v rámci stejného tenanta služby Azure AD, může být povolená Azure AD Domain Services spravovaná doména.
+- Adresář Azure AD může mít více předplatných Azure.
+- Předplatné Azure může mít více prostředků, jako jsou virtuální sítě.
+- Pro adresář Azure AD je povolená jedna spravovaná doména služby Azure AD Domain Services.
+- Spravovaná doména služby Azure AD Domain Services může být povolená ve virtuální síti, která patří do některého z předplatných Azure v rámci stejného klienta Azure AD.
 
 ### <a name="valid-configuration"></a>Platná konfigurace
 
-V následujícím ukázkovém scénáři nasazení je v tenantovi Azure AD ve společnosti Contoso povolená spravovaná doména contoso Azure služba AD DS. Spravovaná doména je nasazená ve virtuální síti, která patří k předplatnému Azure, které vlastní tenant služby Azure AD společnosti Contoso. Spravovaná doména i virtuální síť patří do stejného tenanta služby Azure AD. Tato příklad konfigurace je platná a plně podporovaná.
+V následujícím příkladu scénáře nasazení je spravovaná doména Contoso Azure AD DS povolená v tenantovi Contoso Azure AD. Spravovaná doména se nasadí ve virtuální síti, která patří k předplatnému Azure vlastněném tenantem Contoso Azure AD. Spravovaná doména i virtuální síť patří do stejného klienta Azure AD. Tato příklad konfigurace je platná a plně podporována.
 
-![Platná konfigurace tenanta Azure služba AD DS se spravovanou doménou a částí virtuální sítě stejného tenanta Azure AD](./media/getting-started/valid-tenant-config.png)
+![Platná konfigurace klienta Azure AD DS se spravovanou doménou a součástí virtuální sítě stejného klienta Azure AD](./media/getting-started/valid-tenant-config.png)
 
-### <a name="mismatched-tenant-configuration"></a>Neshoda konfigurace tenanta
+### <a name="mismatched-tenant-configuration"></a>Neodpovídající konfigurace klienta
 
-V tomto ukázkovém scénáři nasazení je v tenantovi Azure AD ve společnosti Contoso povolená spravovaná doména contoso Azure služba AD DS. Spravovaná doména se ale nasadí ve virtuální síti, která patří do předplatného Azure, které vlastní tenant služby Azure AD společnosti Fabrikam. Spravovaná doména a virtuální síť patří do dvou různých tenantů Azure AD. Tato příklad konfigurace nesouhlasí tenanta a není podporovaný. Virtuální síť musí být přesunutá do stejného tenanta Azure AD jako spravovaná doména.
+V tomto příkladu scénáře nasazení je povolená spravovaná doména Contoso Azure AD DS v tenantovi Contoso Azure AD. Spravovaná doména se však nasadí ve virtuální síti, která patří k předplatnému Azure vlastněném klientem Služby Azure AD Společnosti Fabrikam. Spravovaná doména a virtuální síť patří dvěma různým klientům Azure AD. Tato ukázková konfigurace je neodpovídající klient a není podporována. Virtuální síť musí být přesunuta do stejného klienta Azure AD jako spravovaná doména.
 
-![Neshoda konfigurace tenanta](./media/getting-started/mismatched-tenant-config.png)
+![Neodpovídající konfigurace klienta](./media/getting-started/mismatched-tenant-config.png)
 
-## <a name="resolve-mismatched-tenant-error"></a>Vyřešit chybu neshody tenanta
+## <a name="resolve-mismatched-tenant-error"></a>Vyřešit chybu neodpovídajícího klienta
 
-Následující dvě možnosti vyřeší chybu neodpovídajícího adresáře:
+Následující dvě možnosti řeší chybu neodpovídajícího adresáře:
 
-* Odstraňte ze stávajícího adresáře Azure AD [spravovanou doménu azure služba AD DS](delete-aadds.md) . Ve stejném adresáři Azure AD jako virtuální síť, kterou chcete použít, [vytvořte náhradní azure služba AD DS spravovanou doménu](tutorial-create-instance.md) . Až budete připraveni, připojte všechny počítače dříve připojené k odstraněné doméně k znovu vytvořené spravované doméně.
-* [Přesuňte předplatné Azure](../cost-management-billing/manage/billing-subscription-transfer.md) obsahující virtuální síť do stejného adresáře služby Azure AD, jako je spravovaná doména Azure služba AD DS.
+* [Odstraňte spravovanou doménu Azure AD DS](delete-aadds.md) ze svého stávajícího adresáře Azure AD. [Vytvořte náhradní spravovanou doménu Azure AD DS](tutorial-create-instance.md) ve stejném adresáři Azure AD jako virtuální síť, kterou chcete použít. Až budete připraveni, připojte všechny počítače, které byly dříve připojeny k odstraněné doméně, k obnovené spravované doméně.
+* [Přesuňte předplatné Azure](../cost-management-billing/manage/billing-subscription-transfer.md) obsahující virtuální síť do stejného adresáře Azure AD jako spravovaná doména Azure AD DS.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o řešení problémů se službou Azure služba AD DS najdete v [Průvodci odstraňováním potíží](troubleshoot.md).
+Další informace o řešení potíží s Azure AD DS najdete v [průvodci řešením potíží](troubleshoot.md).

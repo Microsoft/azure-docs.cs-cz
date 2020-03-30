@@ -1,6 +1,6 @@
 ---
 title: Adresy pro správu
-description: Vyhledá adresy pro správu používané pro řízení App Service Environment. Nakonfigurují se v směrovací tabulce, aby se předešlo problémům s asymetrickým směrováním.
+description: Najděte adresy správy používané k řízení prostředí služby App Service. Nakonfiguroval je v tabulce tras, aby se zabránilo asymetrickým problémům s směrováním.
 author: ccompy
 ms.assetid: a7738a24-89ef-43d3-bff1-77f43d5a3952
 ms.topic: article
@@ -8,36 +8,36 @@ ms.date: 11/13/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 7d7f97552e8faadee1af928a9ce4e1eea2df476e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687116"
 ---
-# <a name="app-service-environment-management-addresses"></a>Adresy pro správu App Service Environment
+# <a name="app-service-environment-management-addresses"></a>Adresy správy prostředí služby App Service
 
-App Service Environment (pomocného programu) je nasazení jednoho tenanta Azure App Service, které běží ve službě Azure Virtual Network (VNet).  I když je služba pomocného mechanismu spuštěná ve vaší virtuální síti, musí být stále přístupná z řady vyhrazených IP adres, které Azure App Service používá ke správě služby.  V případě pomocného mechanismu řízení prochází provoz pro správu síť řízenou uživatelem. Pokud je tento provoz blokovaný nebo nesměrovaný, pozastaví se. Podrobnosti o závislostech sítě služby pomocného mechanismu najdete v článku [o požadavcích na síť a App Service Environment][networking]. Obecné informace o pomocném mechanismu služby můžete začít s [úvodem do App Service Environment][intro].
+Prostředí služby App Service Environment (ASE) je jednoklientské nasazení služby Azure App Service, která běží ve vaší virtuální síti Azure (Virtuální síť).  Zatímco služba ASE běží ve vaší virtuální síti, musí být stále přístupná z několika vyhrazených IP adres, které služba Azure App Service používá ke správě služby.  V případě rozhraní ASE prochází provoz správy sítí řízenou uživatelem. Pokud je tento provoz blokován nebo nesprávně směrován, služba ASE bude pozastavena. Podrobnosti o závislostech sítě služby ASE načtete [v části Důležité informace o síti a prostředí služby App Service][networking]. Obecné informace o službě ASE můžete začít s [úvodem do prostředí služby App Service][intro].
 
-Všechny služby ASE mají veřejnou VIP, do které patří provoz správy. Příchozí provoz správy z těchto adres se dostane do portů 454 a 455 ve veřejné virtuální IP adrese vašeho pomocného programu. Tento dokument obsahuje App Service zdrojové adresy pro provoz správy do pomocného mechanismu služby. Tyto adresy jsou také ve značce služby IP s názvem AppServiceManagement.
+Všechny ASEs mají veřejné VIP, které řízení provozu přichází do. Příchozí provoz správy z těchto adres přichází z portů 454 a 455 na veřejné VIP vaší službě ASE. Tento dokument obsahuje seznam zdrojových adres služby App Service pro provoz správy služby ASE. Tyto adresy jsou také v výrobním číslo IP s názvem AppServiceManagement.
 
-Níže uvedené adresy se dají nakonfigurovat v směrovací tabulce, aby se předešlo problémům se asymetrickým směrováním s provozem správy. Trasy působí na provoz na úrovni protokolu IP a nemají žádné povědomí o směru přenosu dat nebo o tom, že je přenos součástí zprávy s odpovědí TCP. Pokud se adresa pro odpověď pro požadavek TCP liší od adresy, na kterou byl odeslán, dojde k potížím s asymetrickým směrováním. Abyste se vyhnuli problémům s asymetrickým směrováním u provozu správy pomocného mechanismu, musíte zajistit, aby se odpovědi poslaly zpátky ze stejné adresy, na kterou byly odeslány. Podrobnosti o tom, jak nakonfigurovat přihlašování k provozu v prostředí, ve kterém se odchozí přenosy odesílají místně, najdete v tématu [konfigurace vašeho přístupového mechanismu služby s vynuceným tunelovým propojením][forcedtunnel] .
+Níže uvedené adresy lze nakonfigurovat v tabulce tras, aby se zabránilo asymetrickým problémům s směrováním s provozem správy. Trasy působí na provoz na úrovni IP a nemají povědomí o směru provozu nebo že provoz je součástí zprávy odpovědi TCP. Pokud se adresa odpovědi pro požadavek TCP liší od adresy, na kterou byla odeslána, máte problém s asymetrickým směrováním. Chcete-li se vyhnout asymetrickým problémům se směrováním s provozu správy služby ASE, je třeba zajistit, aby odpovědi byly odeslány zpět ze stejné adresy, na kterou byly odeslány. Podrobnosti o konfiguraci služby ASE pro provoz v prostředí, kde je odchozí provoz odesílán místně, [načtete-li službu ASE s vynuceným tunelovým propojením.][forcedtunnel]
 
 ## <a name="list-of-management-addresses"></a>Seznam adres pro správu ##
 
-| Oblast | Adresy |
+| Region (Oblast) | Adresy |
 |--------|-----------|
-| Všechny veřejné oblasti | 13.64.115.203, 13.66.140.0, 13.67.8.128, 13.69.64.128, 13.69.227.128, 13.70.73.128, 13.71.170.64, 13.71.194.129, 13.75.34.192, 13.75.127.117, 13.77.50.128, 13.78.109.0, 13.89.171.0, 13.94.141.115, 13.94.143.126, 13.94.149.179, 20.36.106.128, 20.36.114.64, 23.100.226.236, 23.102.135.246, 23.102.188.65, 40.69.106.128, 40.70.146.128, 40.71.13.64, 40.74.100.64, 40.78.194.128, 40.79.130.64, 40.79.178.128, 40.83.120.64, 40.83.121.56, 40.83.125.161, 40.90.240.166, 40.91.126.196, 40.112.242.192, 40.119.4.111, 40.124.47.188, 51.140.146.64, 51.140.210.128, 52.151.25.45, 52.162.80.89, 52.162.106.192, 52.165.152.214, 52.165.153.122, 52.165.154.193, 52.165.158.140, 52.174.22.21, 52.178.177.147, 52.178.184.149, 52.178.190.65, 52.178.195.197, 52.187.56.50, 52.187.59.251, 52.187.63.19, 52.187.63.37, 52.224.105.172, 52.225.177.153, 52.231.18.64, 52.231.146.128, 65.52.14.230, 65.52.172.237, 65.52.193.203, 70.37.57.58, 70.37.89.222, 104.43.242.137, 104.44.129.141, 104.44.129.243, 104.44.129.255, 104.44.134.255, 104.208.54.11, 104.211.81.64, 104.211.146.128, 104.214.49.0, 157.55.176.93, 157.55.208.185, 191.233.203.64, 191.236.154.88 |
+| Všechny veřejné regiony | 13.64.115.203, 13.66.140.0, 13.67.8.128, 13.69.64.128, 13.69.227.128, 13.70.73.128, 13.71.170.64, 13.71.194.129, 13.75.34.192, 13.75.127.117, 13.77.50.128, 13.78.109.0, 13.89.171.0, 13.94.141.115, 13.94.143.126, 13.94.149.179, 20.36.106.128, 20.36.114.64, 23.100.226.236, 23.102.135.246, 23.102.188.65, 40.69.106.128, 40.70.146.128, 40.71.13.64, 40.74.100.64, 40.78.194.128, 40.79.130.64, 40.79.178.128, 40.83.120.64, 40.83.121.56, 40.83.125.161, 40.90.240.166, 40.91.126.196, 40.112.242.192, 40.119.4.111, 40.124.47.188, 51.140.146.64, 51.140.210.128, 52.151.25.45, 52.162.80.89, 52.162.106.192, 52.165.152.214, 52.165.153.122, 52.165.154.193, 52.165.158.140, 52.174.22.21, 52.178.177.147, 52.178.184.149, 52.178.190.65, 52.178.195.197, 52.187.56.50, 52.187.59.251, 52.187.63.19, 52.187.63.37, 52.224.105.172, 52.225.177.153, 52.231.18.64, 52.231.146.128, 65.52.14.230, 65.52.172.237, 65.52.193.203, 70.37.57.58, 70.37.89.222, 104.43.242.137, 104.44.129.141, 104.44.129.243, 104.44.129.255, 104.44.134.255, 104.208.54.11, 104.211.81.64, 104.211.146.128, 104.214.49.0, 157.55.176.93, 157.55.208.185, 191.233.203.64, 191.236.154.88 |
 | Microsoft Azure Government | 23.97.29.209, 13.72.53.37, 13.72.180.105, 23.97.0.17, 23.97.16.184 |
 
 ## <a name="configuring-a-network-security-group"></a>Konfigurace skupiny zabezpečení sítě
 
-Se skupinami zabezpečení sítě si nemusíte dělat starosti s jednotlivými adresami nebo zachovat vlastní konfiguraci. K dispozici je značka služby IP s názvem AppServiceManagement, která je stále aktuální se všemi adresami. Pokud chcete tuto značku služby IP v NSG použít, navštivte portál, otevřete uživatelské rozhraní skupin zabezpečení sítě a vyberte příchozí pravidla zabezpečení. Pokud máte již existující pravidlo pro příchozí provoz správy, upravte ho. Pokud se tento NSG nevytvořil s vaším pomocným mechanismem, nebo pokud je to vše nového, vyberte **Přidat**. V rozevíracím seznamu zdroj vyberte možnost **značka služby**.  V části značka zdrojové služby vyberte **AppServiceManagement**. Nastavte rozsahy zdrojových portů na \*, cíl na **libovolný**, rozsahy cílových portů na **454-455**, protokol na **TCP**a akci, která má být **povolena**. Pokud pravidlo vytváříte, musíte nastavit prioritu. 
+Se skupinami zabezpečení sítě se nemusíte starat o jednotlivé adresy nebo údržbu vlastní konfigurace. Existuje značka služby IP s názvem AppServiceManagement, která je udržována v aktuálním stavu se všemi adresami. Chcete-li použít tuto značku služby IP v souboru zabezpečení sítě, přejděte na portál, otevřete ui skupiny zabezpečení sítě a vyberte příchozí pravidla zabezpečení. Pokud máte již existující pravidlo pro příchozí provoz správy, upravte ho. Pokud tento soubor nsg nebyl vytvořen se se sousto, nebo pokud je vše nové, vyberte **přidat**. V rozevíracím okně Zdroj vyberte **Výrobní číslo**.  Pod výrobní majek Zdroj vyberte **AppServiceManagement**. Nastavte rozsahy zdrojových \*portů na , Cíl na **Libovolný**, Rozsahy cílových portů na **454-455**, Protokol na **TCP**a Akce **povolit**. Pokud vytváříte pravidlo, musíte nastavit prioritu. 
 
-![Vytvoření NSG pomocí značky služby][1]
+![vytvoření nsg s výrobním štítkem][1]
 
-## <a name="configuring-a-route-table"></a>Konfigurace směrovací tabulky
+## <a name="configuring-a-route-table"></a>Konfigurace tabulky tras
 
-Adresy pro správu můžete umístit do směrovací tabulky s dalším segmentem směrování Internetu, aby se zajistilo, že všechny příchozí přenosy pro správu budou moct přejít zpátky přes stejnou cestu. Tyto trasy jsou potřeba při konfiguraci vynuceného tunelování. Směrovací tabulku můžete vytvořit pomocí portálu, PowerShellu nebo rozhraní příkazového řádku Azure.  Níže jsou uvedené příkazy k vytvoření směrovací tabulky pomocí Azure CLI z příkazového řádku PowerShellu. 
+Adresy pro správu lze umístit do směrovací tabulky s dalším směrováním internetu, aby bylo zajištěno, že veškerý příchozí provoz správy se bude moci vrátit stejnou cestou. Tyto trasy jsou potřebné při konfiguraci vynuceného tunelového propojení. Chcete-li vytvořit směrovací tabulku, můžete použít portál, PowerShell nebo Azure CLI.  Příkazy k vytvoření směrovací tabulky pomocí azure cli z výzvy PowerShell jsou níže. 
 
     $rg = "resource group name"
     $rt = "route table name"
@@ -49,17 +49,17 @@ Adresy pro správu můžete umístit do směrovací tabulky s dalším segmentem
         az network route-table route create -g $rg --route-table-name $rt -n $ip --next-hop-type Internet --address-prefix ($ip + "/32")
     }
 
-Po vytvoření směrovací tabulky je nutné ji nastavit v podsíti přihlášeného mechanismu.  
+Po vytvoření směrovací tabulky je třeba ji nastavit v podsíti ase.  
 
 ## <a name="get-your-management-addresses-from-api"></a>Získání adres pro správu z rozhraní API ##
 
-Pomocí následujícího volání rozhraní API můžete zobrazit seznam adres pro správu, které se shodují s vaším MECHANISMem řízení.
+Můžete uvést adresy správy, které odpovídají vaší ase s následujícím voláním rozhraní API.
 
     get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
 
-Rozhraní API vrátí dokument JSON, který obsahuje všechny příchozí adresy pro váš pomocného programu. Seznam adres zahrnuje adresy pro správu, VIP využívané vaším pomocným mechanismem a rozsah adres podsítě pro pomocného mechanismu.  
+Rozhraní API vrátí dokument JSON, který obsahuje všechny příchozí adresy pro službu ASE. Seznam adres obsahuje adresy pro správu, virtuální ip adresu používanou vaší ase a samotný rozsah adres podsítě ASE.  
 
-Pro volání rozhraní API pomocí [armclient](https://github.com/projectkudu/ARMClient) použijte následující příkazy, ale NAHRAĎte ID předplatného, skupinu prostředků a název pomocného programu.  
+Chcete-li volat rozhraní API s [armclient](https://github.com/projectkudu/ARMClient) použít následující příkazy, ale nahradit v ID předplatného, skupiny prostředků a název služby ASE.  
 
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01

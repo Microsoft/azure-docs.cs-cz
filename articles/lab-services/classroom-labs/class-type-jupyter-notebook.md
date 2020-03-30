@@ -1,6 +1,6 @@
 ---
-title: Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter | Microsoft Docs
-description: Naučte se, jak nastavit testovací prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter.
+title: Nastavení testovacího prostředí pro výuku datové vědy pomocí pythonových a jupyterových poznámkových bloků | Dokumenty společnosti Microsoft
+description: Naučte se, jak nastavit testovací prostředí pro výuku datové vědy pomocí Pythonu a Jupyterových poznámkových bloků.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -14,66 +14,66 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
 ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444107"
 ---
-# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter
+# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro výuku datové vědy pomocí pythonových a jupyterových poznámkových bloků
 
-V tomto článku se dozvíte, jak nastavit počítač šablony v testovacích službách pomocí nástrojů potřebných pro učení studentů, jak používat [Jupyter poznámkové bloky](http://jupyter-notebook.readthedocs.io).  Jupyter Poznámkový blok je open source projekt, který umožňuje snadno kombinovat text a spustitelný zdrojový kód [Pythonu](https://www.python.org/) na jednom plátně s názvem Poznámkový blok.  Spuštění poznámkového bloku má za následek lineární záznam vstupů a výstupů.  Tyto výstupy můžou zahrnovat text, tabulky informací, bodové a další.
+Tento článek popisuje, jak nastavit šablonu stroj v Lab Services s nástroji potřebnými k učení studentů, jak používat [Jupyter notebooky](http://jupyter-notebook.readthedocs.io).  Jupyter Notebooks je open source projekt, který vám umožní snadno kombinovat bohatý text a spustitelný zdrojový kód [Pythonu](https://www.python.org/) na jednom plátně nazývaném notebook.  Spuštění poznámkového bloku má za následek lineární záznam vstupů a výstupů.  Tyto výstupy mohou zahrnovat text, tabulky informací, bodové obrázky a další.
 
-## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
+## <a name="lab-configuration"></a>Konfigurace laboratoře
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
+Chcete-li nastavit toto testovací prostředí, budete potřebovat předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete. Jakmile získáte předplatné Azure, můžete si vytvořit nový účet testovacího prostředí ve službách Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí naleznete [v kurzu k nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete také použít existující účet testovacího prostředí.
 
-### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
+### <a name="lab-account-settings"></a>Nastavení účtu laboratoře
 
-Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](specify-marketplace-images.md).
+Povolte nastavení popsaná v následující tabulce pro účet testovacího prostředí. Další informace o povolení bitových kopií marketplace najdete [v tématu určení bitových kopií Marketplace, které jsou k dispozici tvůrcům testovacího prostředí](specify-marketplace-images.md).
 
-| Nastavení účtu testovacího prostředí | Pokyny |
+| Nastavení účtu laboratoře | Pokyny |
 | ------------------- | ------------ |
-| Obrázek Marketplace | Povolte image [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) pro použití v rámci vašeho účtu testovacího prostředí. |
+| Obrázek tržiště | Povolte virtuální počítač pro datové vědy – bitovou kopii [Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) pro použití v rámci vašeho účtu testovacího prostředí. |
 
 >[!TIP]
->Tento článek se zaměřuje na konfiguraci počítače šablony, který používá operační systém Windows Server.  Je také možné nastavit třídu pro datové vědy pomocí poznámkových bloků Python a Jupyter pomocí [Data Science Virtual Machine pro Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) nebo [Data Science Virtual Machine pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) imagí z Azure Marketplace.
+>Tento článek se zaměří na konfiguraci počítače se šablonami, který používá operační systém Windows Server.  Je také možné nastavit třídu datové vědy s pythonovými a jupyterovými notebooky pomocí [virtuálního počítače Datové vědy pro Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) nebo [virtuálního počítače pro datové vědy pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) z Azure Marketplace.
 
-### <a name="lab-settings"></a>Nastavení testovacího prostředí
+### <a name="lab-settings"></a>Nastavení laboratoře
 
-Při nastavování testovacího prostředí učebny použijte nastavení v následující tabulce.  Další informace o tom, jak vytvořit prostředí učebny, najdete v tématu [Nastavení kurzu pro prostředí učebny](tutorial-setup-classroom-lab.md).
+Při nastavování učební laboratoře použijte nastavení v následující tabulce.  Další informace o vytvoření učebny naleznete v [tématu nastavení výukového programu pro testovací prostředí ve třídě](tutorial-setup-classroom-lab.md).
 
-| Nastavení testovacího prostředí | Hodnota/pokyny |
+| Nastavení laboratoře | Hodnota/instrukce |
 | ------------ | ------------------ |
-|Velikost virtuálního počítače| Malý grafický procesor (COMPUTE). Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a síťové prostředky, jako je umělá a obsáhlá výuka. |
-|Image virtuálního počítače| Data Science Virtual Machine – Windows 2016|
+|Velikost virtuálního počítače| Malý GPU (Výpočetní). Tato velikost je nejvhodnější pro aplikace náročné na výpočetní výkon a sítě, jako je umělá inteligence a hloubkové učení. |
+|Image virtuálního počítače| Virtuální počítač pro datové vědy – Windows 2016|
 
-## <a name="template-machine"></a>Počítač šablony
+## <a name="template-machine"></a>Šablona stroj
 
-Bitová kopie [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) poskytuje nezbytné architektury a nástroje pro hloubkové učení, které jsou potřebné pro tento typ třídy.  Obrázek obsahuje poznámkové bloky Jupyter a Visual Studio Code.  [Jupyter Poznámkový blok](http://jupyter-notebook.readthedocs.io) je webová aplikace, která umožňuje odborníkům přes data přijímat nezpracované údaje, provádět výpočty a zobrazovat výsledky ve stejném prostředí.  Pro náš počítač šablony bude webová aplikace spuštěna místně.  [Visual Studio Code](https://code.visualstudio.com/) je rozhraní IDE, které poskytuje bohatě interaktivní prostředí při psaní a testování poznámkového bloku.  Další informace najdete v tématu [práce s Jupyter poznámkovým blokem v Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
+Image [Virtuální počítač pro datové vědy – Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) poskytuje nezbytné architektury a nástroje pro hluboké učení potřebné pro tento typ třídy.  Obrázek obsahuje Poznámkové bloky Jupyter a kód sady Visual Studio.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) je webová aplikace, která umožňuje datovým vědcům přijímat nezpracovaná data, spouštět výpočty a vidět výsledky ve stejném prostředí.  Pro náš šablonový stroj bude webová aplikace spuštěna místně.  [Visual Studio Code](https://code.visualstudio.com/) je ide, které poskytuje bohaté interaktivní prostředí při psaní a testování poznámkového bloku.  Další informace naleznete v [tématu Práce s poznámkovými bloky Jupyter v kódu sady Visual Studio](https://code.visualstudio.com/docs/python/jupyter-support).
 
-Zbývajícím úkolem pro nastavení třídy je poskytnutí místních poznámkových bloků.  Pokyny k použití ukázek Azure Machine Learning najdete v tématu [jak nakonfigurovat prostředí pomocí poznámkových bloků Jupyter](../../machine-learning/how-to-configure-environment.md#jupyter).  Můžete také zadat vlastní poznámkové bloky na počítači šablony.  Poznámkové bloky budou zkopírovány do všech počítačů studenta při publikování šablony.
+Zbývající úkol nastavit třídu je poskytnout místní poznámkové bloky.  Pokyny, jak používat ukázky Azure Machine Learning, najdete v [tématu jak nakonfigurovat prostředí s Jupyter notebooky](../../machine-learning/how-to-configure-environment.md#jupyter).  Můžete také zadat vlastní poznámkové bloky na šabloně počítače.  Poznámkové bloky budou při publikování šablony zkopírovány do všech studentských počítačů.
 
 ## <a name="cost-estimate"></a>Odhad nákladů
 
-Pojďme pro tuto třídu pokrýt možné náklady.  Použijeme třídu 25 studentů.  Naplánovaný čas třídy je 20 hodin.  Každý student navíc získá kvótu 10 hodin pro domácí nebo přiřazení mimo plánovanou dobu třídy.  Velikost virtuálního počítače, kterou jsme zvolili, byla malá GPU (COMPUTE), což je 139 jednotek testovacího prostředí.
+Pokryjme možný odhad nákladů pro tuto třídu.  Použijeme třídu 25 studentů.  K dispozici je 20 hodin plánovaného času ve třídě.  Každý student také získá kvótu 10 hodin pro domácí úkoly nebo úkoly mimo plánovaný čas kurzu.  Velikost virtuálního počítače, kterou jsme zvolili, byla malá GPU (výpočetní), což je 139 laboratorních jednotek.
 
 Zde je příklad možného odhadu nákladů pro tuto třídu:
 
-25 studentů \* (20 naplánovaných hodin + 10 hodin) \* 139 jednotek testovacího prostředí \* 0,01 USD za hodinu = 1042,5 USD
+25 \* studentů (20 plánovaných hodin + \* 10 kvótových \* hodin) 139 laboratorních jednotek 0,01 USD za hodinu = 1042,5 USD
 
-Další podrobnosti o cenách najdete v článku [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
+Další podrobnosti o cenách najdete v tématu [Ceny služeb Azure Lab](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto článku jsme vás provedl prostřednictvím kroků pro vytvoření testovacího prostředí pro třídu notebooků Jupyter. Podobné nastavení můžete použít pro jiné třídy strojového učení.
+V tomto článku jsme prošli kroky k vytvoření testovacího prostředí pro třídu Jupyter Notebooks. Podobné nastavení můžete použít pro jiné třídy strojového učení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další kroky jsou běžné pro nastavení testovacího prostředí.
+Další kroky jsou společné pro nastavení libovolného testovacího prostředí.
 
-- [Vytvoření a Správa šablony](how-to-create-manage-template.md)
-- [Přidání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
+- [Vytvoření a správa šablony](how-to-create-manage-template.md)
+- [Přidávání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Nastavení plánu](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mailové registrační odkazy pro studenty](how-to-configure-student-usage.md#send-invitations-to-users)

@@ -3,22 +3,22 @@ title: Vytvoření clusteru Kubernetes s povoleným Azure Dev Spaces – Azure C
 services: azure-dev-spaces
 ms.date: 10/04/2018
 ms.topic: conceptual
-description: Zjistěte, jak rychle vytvořit cluster Kubernetes s povoleným Azure Dev Spaces přímo z prohlížeče, aniž byste museli instalovat cokoli.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
+description: Zjistěte, jak rychle vytvořit cluster Kubernetes, který je povolen pro Azure Dev Spaces přímo z vašeho prohlížeče, aniž byste museli cokoli instalovat.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, Helm, síť služeb, směrování sítě služeb, kubectl, k8s
 ms.openlocfilehash: 5e2e5cfd22eeedd3554737458caeca0b891b62fe
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77605300"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Vytvoření clusteru Kubernetes s povoleným Azure Dev Spaces s Azure Cloud Shell
 
-Pomocí [Azure Cloud Shell](/azure/cloud-shell) můžete vytvořit cluster služby Azure Kubernetes pomocí tlačítka **vyzkoušet** na této stránce. Pokud nejste přihlášení, postupujte podle pokynů pro přihlášení pomocí účtu Azure a pak zadejte příkazy na Azure Cloud Shell výzvy, když se objeví.
+[Azure Cloud Shell](/azure/cloud-shell) můžete použít k vytvoření clusteru služby Azure Kubernetes pomocí tlačítka Try **It** z této stránky. Pokud nejste přihlášení, postupujte podle pokynů pro přihlášení pomocí účtu Azure a po zobrazení zadejte příkazy na výzvu Azure Cloud Shell.
 
 ## <a name="create-the-cluster"></a>Vytvoření clusteru
 
-Nejdřív vytvořte skupinu prostředků v [oblasti, která podporuje Azure dev Spaces][supported-regions].
+Nejprve vytvořte skupinu prostředků v [oblasti, která podporuje Azure Dev Spaces][supported-regions].
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -30,14 +30,14 @@ Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
-Vytvoření clusteru bude trvat několik minut.  Po dokončení se výstup zobrazí ve formátu JSON. Vyhledejte `provisioningState` a ověřte `Succeeded`.
+Vytvoření clusteru bude trvat několik minut.  Po dokončení se výstup zobrazí ve formátu JSON. Vyhledejte `provisioningState` a ověřte, zda je . `Succeeded`
 
 ## <a name="next-steps"></a>Další kroky
 
-Odkazy na úplné kurzy najdete v tématu [Azure dev Spaces](/azure/dev-spaces/) .
+Odkazy na úplné kurzy najdete [v tématu Azure Dev Spaces.](/azure/dev-spaces/)
 
 > [!IMPORTANT]
-> Mnohé z Azure Dev Spaces rychlých startů a kurzů používají k provádění operací Azure Dev Spaces CLI. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
+> Mnoho rychlých startů a kurzů Azure Dev Spaces používá k provádění operací příkazcli Azure Dev Spaces. V prostředí Azure Cloud Shell nelze nainstalovat příkaz příkazpříkaz ový příkaz Azure Dev Spaces.
 
 
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

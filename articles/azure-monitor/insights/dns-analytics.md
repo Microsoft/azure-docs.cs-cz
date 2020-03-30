@@ -1,80 +1,80 @@
 ---
-title: DNS Analytics řešení v Azure Monitor | Microsoft Docs
-description: Nastavte a použijte řešení DNS Analytics v Azure Monitor k získání přehledu o infrastruktuře DNS v oblasti zabezpečení, výkonu a provozu.
+title: Řešení DNS Analytics ve službě Azure Monitor | Dokumenty společnosti Microsoft
+description: Nastavte a použijte řešení DNS Analytics v Azure Monitoru, abyste získali přehled o infrastruktuře DNS o zabezpečení, výkonu a operacích.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657329"
 ---
-# <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
+# <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>S přehledy o infrastruktuře DNS můžete získat pomocí řešení DNS Analytics Preview
 
 ![Symbol DNS Analytics](./media/dns-analytics/dns-analytics-symbol.png)
 
-Tento článek popisuje, jak nastavit a používat řešení Azure DNS Analytics v Azure Monitor k získání přehledu o infrastruktuře DNS v oblasti zabezpečení, výkonu a provozu.
+Tento článek popisuje, jak nastavit a používat řešení Azure DNS Analytics v Azure Monitoru ke shromažďování přehledů o infrastruktuře DNS v oblasti zabezpečení, výkonu a operací.
 
-DNS Analytics vám umožní:
+Služba DNS Analytics vám pomůže:
 
-- Identifikace klientů, které se pokoušejí přeložit škodlivé domény názvy.
-- Identifikace zastaralých záznamů.
-- Identifikujte často doménový názvy a prahová klienti DNS.
-- Zobrazení žádosti o zatížení serverů DNS.
-- Zobrazit chyby registrace dynamického DNS.
+- Identifikujte klienty, kteří se pokoušejí vyřešit škodlivé názvy domén.
+- Identifikujte zastaralé záznamy o prostředcích.
+- Identifikujte často dotazovaná doménová jména a hovorové klienty DNS.
+- Zobrazení zatížení požadavků na serverech DNS.
+- Zobrazení dynamických chyb registrace DNS.
 
-Řešení shromažďuje, analyzuje a koreluje DNS Windows analýzy a protokoly auditu a dalších souvisejících dat ze serverů DNS.
+Řešení shromažďuje, analyzuje a koreluje protokoly analýzy a auditu služby Windows DNS a další související data ze serverů DNS.
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Následující tabulka popisuje připojené zdroje, které podporují toto řešení:
+Následující tabulka popisuje připojené zdroje podporované tímto řešením:
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../platform/agent-windows.md) | Ano | Řešení shromažďuje informace DNS z agentů Windows. |
-| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
-| [System Center Operations Manager skupina pro správu](../platform/om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
+| [Agenti systému Windows](../platform/agent-windows.md) | Ano | Řešení shromažďuje informace DNS od agentů systému Windows. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS od přímých agentů Linuxu. |
+| [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Ano | Řešení shromažďuje informace DNS od agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení agenta Operations Manager u Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure se nepoužívá řešení. |
 
-### <a name="data-collection-details"></a>Podrobné informace o shromažďování dat
+### <a name="data-collection-details"></a>Podrobnosti o shromažďování dat
 
-Řešení shromažďuje inventář DNS a dat týkajících se události DNS ze serverů DNS instalaci agenta Log Analytics. Tato data se pak nahrají do Azure Monitor a zobrazí se na řídicím panelu řešení. Shromažďuje data související s inventářem, jako je například počet serverů DNS, zóny a záznamy o prostředcích, spuštěním rutin Powershellu DNS. Data se aktualizují jednou každé dva dny. Data související s událostmi se shromažďují prakticky v reálném čase z [protokolů analýzy a auditu](https://technet.microsoft.com/library/dn800669.aspx#enhanc) , které nabízí rozšířené protokolování a diagnostika DNS ve Windows Serveru 2012 R2.
+Řešení shromažďuje data inventáře DNS a událostí DNS ze serverů DNS, kde je nainstalován agent Analýzy protokolů. Tato data se pak nahrají do Azure Monitoru a zobrazí se na řídicím panelu řešení. Data související se inventářem, například počet serverů DNS, zón a záznamů o prostředcích, se shromažďují spuštěním rutin dns prostředí PowerShell. Data jsou aktualizována jednou za dva dny. Data související s událostmi jsou shromažďována téměř v reálném čase z [analytických protokolů a protokolů auditu poskytovaných](https://technet.microsoft.com/library/dn800669.aspx#enhanc) rozšířeným protokolováním a diagnostikou DNS v systému Windows Server 2012 R2.
 
 ## <a name="configuration"></a>Konfigurace
 
-Ke konfigurování řešení, použijte následující informace:
+Ke konfiguraci řešení použijte následující informace:
 
-- Na každém serveru DNS, který chcete monitorovat, musíte mít agenta [Windows](../platform/agent-windows.md) nebo [Operations Manager](../platform/om-agents.md) .
-- Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v tématu [přidání Azure monitor řešení z galerie řešení](solutions.md).
+- Na každém serveru DNS, který chcete sledovat, musíte mít agenta [systému Windows](../platform/agent-windows.md) nebo [nástroje Operations Manager.](../platform/om-agents.md)
+- Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Proces popsaný v [části Přidání řešení Azure Monitor](solutions.md)uvidíte také v Galerii řešení .
 
-Shromažďování dat bez nutnosti další konfigurace spuštění řešení. Přizpůsobení shromažďování dat lze však použijte následující konfiguraci.
+Řešení začne shromažďovat data bez nutnosti další konfigurace. K přizpůsobení shromažďování dat však můžete použít následující konfiguraci.
 
-### <a name="configure-the-solution"></a>Konfigurovat řešení
+### <a name="configure-the-solution"></a>Konfigurace řešení
 
-Kliknutím na položku **Konfigurace** na řídicím panelu řešení otevřete stránku konfigurace DNS Analytics. Existují dva typy změn konfigurace, které můžete použít:
+Na řídicím panelu řešení kliknutím na **Konfigurace** otevřete stránku Konfigurace služby DNS Analytics. Existují dva typy změn konfigurace, které můžete provést:
 
-- **Názvy povolených domén**. Řešení nezpracovává vyhledávací dotazy. Udržuje seznam povolených přípon názvů domén. Řešení nezpracovávají vyhledávací dotazy, které odkazují na názvy domén, které odpovídají přípon názvů domén v tomto seznamu povolených IP adres. Nezpracovávání názvů povolených domén pomáhá optimalizovat data odesílaná do Azure Monitor. Výchozí seznam povolených obsahuje názvy populárních veřejných domén, například www.google.com a www.facebook.com. Zobrazení seznamu dokončení výchozí posunutím.
+- **Názvy domén uvedené na seznamu povolených**. Řešení nezpracovává všechny vyhledávací dotazy. Udržuje whitelist přípon názvů domén. Vyhledávací dotazy, které se přelašují na názvy domén, které odpovídají příponám názvů domén v tomto seznamu povolených adres, nejsou řešením zpracovány. Nezpracování názvů domén uvedených na seznamu povolených pomáhá optimalizovat data odeslaná do Služby Azure Monitor. Výchozí seznam povolených obsahuje populární názvy veřejných domén, například www.google.com a www.facebook.com. Celý výchozí seznam můžete zobrazit posouváním.
 
-  Můžete upravit seznam přidat příponu názvu domény, kterou chcete zobrazit přehledy vyhledávání pro. Můžete také odebrat příponu názvu domény, které nechcete zobrazit přehledy vyhledávání pro.
+  Seznam můžete upravit tak, aby přidával libovolnou příponu názvu domény, pro kterou chcete zobrazit přehledy vyhledávání. Můžete také odebrat libovolnou příponu názvu domény, pro kterou nechcete zobrazit přehledy vyhledávání.
 
-- **Prahová hodnota klienta prahová** Klienti DNS, kteří překročí prahovou hodnotu pro počet požadavků na vyhledávání, se v okně **klienti DNS** zvýrazní. Výchozí prahová hodnota je 1 000. Můžete upravit prahovou hodnotu.
+- **Upovídaný práh klienta**. Klienti DNS, kteří překračují prahovou hodnotu pro počet vyhledávacích požadavků, jsou zvýrazněni v okně **Klienti DNS.** Výchozí prahová hodnota je 1 000. Prahovou hodnotu můžete upravit.
 
-    ![Přidat na seznam povolených názvů domén](./media/dns-analytics/dns-config.png)
+    ![Názvy domén na seznamu povolených](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>Sady Management Pack
 
-Pokud používáte Microsoft Monitoring Agent pro připojení k pracovnímu prostoru Log Analytics, je nainstalována následující sady management pack:
+Pokud používáte Microsoft Monitoring Agent pro připojení k pracovnímu prostoru Log Analytics, je nainstalována následující sada Management Pack:
 
-- Sada Microsoft DNS data collector Intelligence Pack (Microsoft. IntelligencePacks. DNS)
+- Sada Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
 
-Pokud vaši skupinu pro správu Operations Manageru je připojený k pracovnímu prostoru Log Analytics, nainstaluje se následující sady management Pack v nástroji Operations Manager při přidání tohoto řešení. Neexistuje žádná požadované konfigurace ani Údržba těchto sad management Pack:
+Pokud je vaše skupina pro správu nástroje Operations Manager připojena k pracovnímu prostoru Analýzy protokolů, jsou v nástroji Operations Manager při přidání tohoto řešení nainstalovány následující sady Management Pack. Neexistuje žádná požadovaná konfigurace nebo údržba těchto sad Management Pack:
 
-- Sada Microsoft DNS data collector Intelligence Pack (Microsoft. IntelligencePacks. DNS)
-- Konfigurace DNS Analytics Microsoft System Center Advisor (Microsoft.IntelligencePack.Dns.Configuration)
+- Sada Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
+- Konfigurace analýzy SLUŽBY DNS poradce systémového centra (Microsoft.IntelligencePack.Dns.Configuration)
 
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../platform/om-agents.md).
 
@@ -83,106 +83,106 @@ Další informace o způsobu, jakým se aktualizují sady pro správu řešení,
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 
-Dlaždice DNS obsahuje počet serverů DNS, ve kterých se shromažďují data. Zahrnuje také počet požadavků provedených klientům přeložit škodlivé domény za posledních 24 hodin. Když kliknete na dlaždici, otevře se řídicí panel řešení.
+Dlaždice DNS obsahuje počet serverů DNS, na kterých jsou data shromažďována. Zahrnuje také počet požadavků klientů na vyřešení škodlivých domén za posledních 24 hodin. Po kliknutí na dlaždici se otevře řídicí panel řešení.
 
 ![Dlaždice DNS Analytics](./media/dns-analytics/dns-tile.png)
 
 ### <a name="solution-dashboard"></a>Řídicí panel řešení
 
-Na řídicím panelu řešení zobrazuje souhrnné informace pro různé funkce řešení. Obsahuje také odkazy na podrobnosti přehledu pro forenzní analýza a Diagnostika. Ve výchozím nastavení se zobrazí data za posledních sedm dní. Rozsah data a času lze změnit pomocí **ovládacího prvku výběru data a času**, jak je znázorněno na následujícím obrázku:
+Řídicí panel řešení zobrazuje souhrnné informace o různých funkcích řešení. Obsahuje také odkazy na podrobný pohled na forenzní analýzu a diagnostiku. Ve výchozím nastavení jsou data zobrazena za posledních sedm dní. Rozsah data a času můžete změnit pomocí **ovládacího prvku výběru data a času**, jak je znázorněno na následujícím obrázku:
 
-![Ovládacího prvku pro výběr času](./media/dns-analytics/dns-time.png)
+![Řízení výběru času](./media/dns-analytics/dns-time.png)
 
-Na řídicím panelu řešení zobrazuje následující listy:
+Řídicí panel řešení zobrazuje následující čepele:
 
-**Zabezpečení DNS**. Sestavy klientů DNS, která se snaží komunikovat s škodlivé domény. Pomocí kanálů analýzy hrozeb Microsoft DNS Analytics dokáže klientských IP adres, který se pokoušíte získat přístup škodlivé domény. V mnoha případech nakažené malwarem zařízení "vytáčet" na střed "příkazy a ovládání" škodlivé domény pomocí překladu názvu domény před škodlivým softwarem.
+**Zabezpečení DNS**. Hlásí klienty DNS, kteří se pokoušejí komunikovat se škodlivými doménami. Pomocí zdrojů Microsoft threat intelligence dokáže služba DNS Analytics rozpoznat klientské IP adresy, které se pokoušejí získat přístup ke škodlivým doménám. V mnoha případech, malware-infikované zařízení "vytočit" na "příkaz a řízení" centrum škodlivé domény vyřešením malware název domény.
 
-![Okno zabezpečení DNS](./media/dns-analytics/dns-security-blade.png)
+![Okno DNS Security](./media/dns-analytics/dns-security-blade.png)
 
-Po kliknutí na IP adresu klienta do seznamu hledání v protokolu otevře a zobrazí podrobnosti vyhledávání odpovídajících dotazu. V následujícím příkladu DNS Analytics zjistila, že komunikace byla provedena s [IRCBot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621):
+Po klepnutí na ip adresu klienta v seznamu se otevře hledání protokolu a zobrazí se podrobnosti o vyhledávání příslušného dotazu. V následujícím příkladu služba DNS Analytics zjistila, že komunikace byla provedena pomocí [zařízení IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621):
 
-![Zobrazuje ircbot výsledků prohledávání protokolu](./media/dns-analytics/ircbot.png)
+![Protokolovat výsledky hledání zobrazující ircbot](./media/dns-analytics/ircbot.png)
 
-Tyto informace vám pomůžou identifikovat:
+Tyto informace vám pomohou identifikovat:
 
-- Klient protokolu IP, který spustil komunikace.
-- Název domény, který se přeloží škodlivou IP adresou.
-- IP adresy, které překládá název domény.
-- Škodlivé IP adresy.
-- Závažnosti problému.
-- Důvod Adaptivně škodlivá IP adresa.
-- Čas detekce.
+- Ip klienta, který inicioval komunikaci.
+- Název domény, který se překládá na škodlivou ADRESU IP.
+- Adresy IP, na které se název domény překládá.
+- Škodlivá IP adresa.
+- Závažnost problému.
+- Důvod pro zařazení na černou listinu škodlivé IP.
+- Doba detekce.
 
-**Dotazování domén**. Poskytuje nejčastěji se vyskytujících názvy domén, která je dotazována klienty DNS ve vašem prostředí. Můžete zobrazit seznam všech názvů domén dotazovat. Můžete také procházet hierarchii vyhledávání žádost o název konkrétní domény v prohledávání protokolu.
+**Dotazované domény**. Poskytuje nejčastější názvy domén dotazované klienty DNS ve vašem prostředí. Můžete zobrazit seznam všech dotazovaných názvů domén. Můžete také přejít k podrobnostem vyhledávací žádosti o konkrétní název domény ve vyhledávání protokolu.
 
-![Okno byl odeslán domén](./media/dns-analytics/domains-queried-blade.png)
+![Okno dotazovaných domén](./media/dns-analytics/domains-queried-blade.png)
 
-**Klienti DNS**. Oznamuje klientům *porušení prahové hodnoty* pro počet dotazů ve zvoleném časovém období. Můžete zobrazit seznam všech klientů DNS a podrobnosti dotazy provedené je v prohledávání protokolu.
+**Klienti DNS**. Hlásí *klientům, kteří překračují prahovou hodnotu* pro počet dotazů ve zvoleném časovém období. Můžete zobrazit seznam všech klientů DNS a podrobnosti o dotazech, které provedli ve vyhledávání protokolů.
 
-![Okně klienti DNS](./media/dns-analytics/dns-clients-blade.png)
+![Okno klienti DNS](./media/dns-analytics/dns-clients-blade.png)
 
-**Dynamické registrace DNS**. Selhání registrace zadejte název sestavy. Všechny chyby registrace [záznamů prostředků](https://en.wikipedia.org/wiki/List_of_DNS_record_types) adres (typ a a AAAA) jsou zvýrazněny spolu s klientskými IP adresami, které vytvořily žádosti o registraci. Tyto informace pak můžete najít hlavní příčinu selhání registrace pomocí následujících kroků:
+**Dynamické registrace DNS**. Hlásí selhání registrace názvů. Všechny chyby registrace [pro záznamy o prostředcích](https://en.wikipedia.org/wiki/List_of_DNS_record_types) adresy (typ A a AAAA) jsou zvýrazněny spolu s IP adresy klienta, které podaly žádosti o registraci. Tyto informace pak můžete použít k nalezení hlavní příčiny selhání registrace pomocí následujících kroků:
 
-1. Najdete zónu, který je autoritativní pro název, který klient se pokouší aktualizovat.
+1. Vyhledejte zónu, která je autoritativní pro název, který se klient pokouší aktualizovat.
 
-1. Pomocí řešení zkontrolujte informace o inventáři této zóny.
+1. Řešení slouží ke kontrole informací o zásobách této zóny.
 
-1. Ověřte, zda je povolena dynamická aktualizace pro zónu.
+1. Ověřte, zda je povolena dynamická aktualizace zóny.
 
-1. Zkontrolujte, zda zóny je nakonfigurovaný pro zabezpečené dynamické aktualizace, nebo ne.
+1. Zkontrolujte, zda je zóna nakonfigurována pro zabezpečenou dynamickou aktualizaci či nikoli.
 
-    ![Dynamické okno registrace DNS](./media/dns-analytics/dynamic-dns-reg-blade.png)
+    ![Dynamické registrace DNS](./media/dns-analytics/dynamic-dns-reg-blade.png)
 
-**Žádosti o registraci názvu** Horní dlaždice ukazuje spojnice trendu úspěšné i neúspěšné požadavky dynamické aktualizace DNS. Nižší dlaždice obsahuje hlavní 10 klienty, kteří odesílají aktualizace neúspěšné DNS na servery DNS, seřazený podle počtu neúspěšných požadavků.
+**Žádosti o registraci názvu**. Horní dlaždice zobrazuje spojnice trendu úspěšných a neúspěšných požadavků na dynamickou aktualizaci DNS. Dolní dlaždice obsahuje seznam 10 nejlepších klientů, kteří odesílají neúspěšné požadavky na aktualizaci DNS na servery DNS seřazené podle počtu chyb.
 
-![Název okna požadavky registrace](./media/dns-analytics/name-reg-req-blade.png)
+![Okno požadavky na registraci názvu](./media/dns-analytics/name-reg-req-blade.png)
 
-**Ukázkové dotazy pro analýzy DDI** Obsahuje seznam nejběžnějších vyhledávacích dotazů, které načítají data nezpracovaná analytics přímo.
+**Ukázkové dotazy Analýzy DDI**. Obsahuje seznam nejběžnějších vyhledávacích dotazů, které přímo načítají nezpracovaná analytická data.
 
 
 ![Ukázkové dotazy](./media/dns-analytics/queries.png)
 
-Tyto dotazy můžete použít jako výchozí bod pro vytvoření vlastní dotazy pro vytváření přizpůsobených sestav. Dotazy na odkaz na stránku prohledávání protokolu DNS Analytics, ve kterém se zobrazí výsledky:
+Tyto dotazy můžete použít jako výchozí bod pro vytváření vlastních dotazů pro vlastní vytváření sestav. Odkaz na dotazy na stránku hledání protokolu služby DNS Analytics, kde jsou zobrazeny výsledky:
 
-- **Seznam serverů DNS**. Zobrazuje seznam všech serverů DNS s jejich přidružené plně kvalifikovaný název domény, název domény, název doménové struktury a IP adresy serveru.
-- **Seznam zóny DNS**. Zobrazí seznam všech zón DNS s názvem přidružené zóny, dynamická aktualizace stavu, názvových serverů a stav podepsání DNSSEC.
-- **Nepoužívané záznamy prostředků** Zobrazuje seznam všech záznamů prostředků nepoužité/zastaralé. Tento seznam obsahuje název záznamu prostředku, typ záznamu o prostředku, přidružený server DNS záznam generování a název zóny. Tento seznam můžete použít k identifikaci záznamy o prostředcích DNS, které jsou již používány. Na základě těchto informací, můžete pak odebrat tyto položky ze serverů DNS.
-- **Načítání dotazů serverů DNS**. Zobrazí informace, takže získáte perspektivy zatížení DNS na serverech DNS. Tyto informace mohou pomoci při plánování kapacity pro servery. Můžete přejít na kartu **metriky** a změnit zobrazení na grafickou vizualizaci. Toto zobrazení pomáhá pochopit, jak se distribuuje zatížení DNS na serverech DNS. Rychlost vývoje pro každý server ukazuje dotaz DNS.
+- **Seznam serverů DNS**. Zobrazí seznam všech serverů DNS s přidruženým názvem FQDN, názvem domény, názvem doménové struktury a ip adresami serveru.
+- **Seznam zón DNS**. Zobrazí seznam všech zón DNS s názvem přidružené zóny, stavem dynamické aktualizace, názvovými servery a stavem podepisování DNSSEC.
+- **Nepoužívané záznamy o prostředcích**. Zobrazí seznam všech nepoužívaných nebo zastaralých záznamů o prostředcích. Tento seznam obsahuje název záznamu o prostředku, typ záznamu prostředku, přidružený server DNS, čas generování záznamů a název zóny. Tento seznam můžete použít k identifikaci záznamů o prostředcích DNS, které se již nepoužívají. Na základě těchto informací pak můžete tyto položky odebrat ze serverů DNS.
+- **Servery DNS načítají dotaz**. Zobrazuje informace, takže můžete získat perspektivu zatížení DNS na serverech DNS. Tyto informace vám mohou pomoci naplánovat kapacitu serverů. Chcete-li změnit zobrazení na grafickou vizualizaci, můžete přejít na kartu **Metriky.** Toto zobrazení vám pomůže pochopit, jak je zatížení DNS distribuováno mezi servery DNS. Zobrazuje trendy rychlosti dotazování DNS pro každý server.
 
-    ![Servery DNS, dotaz výsledků prohledávání protokolu](./media/dns-analytics/dns-servers-query-load.png)
+    ![Výsledky hledání protokolu dotazů dns serverů](./media/dns-analytics/dns-servers-query-load.png)
 
-- **Zóny DNS načtení dotazu**. Zobrazuje statistiku DNS zóny dotazů za sekundu ze všech zón na serverech DNS spravovaných tímto řešením. Klikněte na kartu **metriky** a změňte zobrazení z podrobných záznamů na grafickou vizualizaci výsledků.
-- **Události konfigurace**. Zobrazí všechny události změny konfigurace služby DNS a související zprávy. Potom můžete filtrovat tyto události podle času události, ID události, serveru DNS, nebo kategorie úkolů. Data můžete auditovat změny provedené konkrétními DNS servery v určitých časech.
-- **Protokol analýzy DNS**. Zobrazí všechny analytické události ve všech serverech DNS spravovaných tímto řešením. Potom můžete filtrovat tyto události podle času události, ID události, serveru DNS, IP adresu klienta, který vytvořil vyhledávacího dotazu a kategorie úkolu typu dotazu. Analytické události DNS serveru povolit aktivity sledování na serveru DNS. Analytické událost se protokoluje pokaždé, když server odesílá nebo přijímá informace DNS.
+- **Načtení dotazu zón DNS**. Zobrazuje statistiky dns zóny dotazování za sekundu všech zón na serverech DNS spravovaných řešením. Kliknutím na kartu **Metriky** změníte zobrazení z podrobných záznamů na grafickou vizualizaci výsledků.
+- **Události konfigurace**. Zobrazuje všechny události změny konfigurace DNS a přidružené zprávy. Tyto události pak můžete filtrovat podle času události, ID události, serveru DNS nebo kategorie úkolů. Data vám mohou pomoci auditovat změny provedené na konkrétních serverech DNS v určitých časech.
+- **Analytický protokol DNS**. Zobrazuje všechny analytické události na všech serverech DNS spravovaných řešením. Tyto události pak můžete filtrovat podle času události, ID události, serveru DNS, IP adresy klienta, která provedla vyhledávací dotaz, a kategorie úloh typu dotazu. Analytické události serveru DNS umožňují sledování aktivity na serveru DNS. Analytická událost je zaznamenána při každém odeslání nebo přijetí informací DNS serverem.
 
-### <a name="search-by-using-dns-analytics-log-search"></a>Hledání s využitím prohledávání protokolu DNS Analytics
+### <a name="search-by-using-dns-analytics-log-search"></a>Vyhledávání pomocí vyhledávání protokolů služby DNS Analytics
 
-Na stránce prohledávání protokolů můžete vytvořit dotaz. Můžete filtrovat výsledky hledání s použitím ovládacích prvků omezující vlastnost. Můžete také vytvořit upřesňující dotazy transformace, filtrovat a sestavy na výsledky. Spustit s použitím následující dotazy:
+Na stránce Hledání protokolu můžete vytvořit dotaz. Výsledky hledání můžete filtrovat pomocí ovládacích prvků omezující vlastnosti. Můžete také vytvořit rozšířené dotazy pro transformaci, filtrování a vytváření zpráv o výsledcích. Začněte pomocí následujících dotazů:
 
-1. Do **pole vyhledávací dotaz**zadejte `DnsEvents` pro zobrazení všech událostí DNS generovaných servery DNS, které jsou spravovány řešením. Seznam výsledků obsahuje data protokolu pro všechny události související s vyhledávací dotazy, dynamické registrace a změny konfigurace.
+1. Do **pole vyhledávacího dotazu**zadejte, chcete-li `DnsEvents` zobrazit všechny události DNS generované servery DNS spravované řešením. Ve výsledcích jsou uvedena data protokolu pro všechny události související s vyhledávacími dotazy, dynamickými registracemi a změnami konfigurace.
 
-    ![DnsEvents prohledávání protokolů](./media/dns-analytics/log-search-dnsevents.png)  
+    ![Vyhledávání protokolu DnsEvents](./media/dns-analytics/log-search-dnsevents.png)  
 
-    a. Chcete-li zobrazit data protokolu pro vyhledávací dotazy, vyberte **LookUpQuery** jako filtr **podtypu** z ovládacího prvku omezující vlastnosti na levé straně. Zobrazí se tabulka obsahující seznam všech událostí vyhledávací dotaz pro vybrané časové období.
+    a. Chcete-li zobrazit data protokolu pro vyhledávací dotazy, vyberte **LookUpQuery** jako filtr **podtypu** z ovládacího prvku omezující vlastnost vlevo. Zobrazí se tabulka se seznamem všech událostí vyhledávacího dotazu pro vybrané časové období.
 
-    b. Chcete-li zobrazit data protokolu pro dynamické registrace, vyberte **DynamicRegistration** jako filtr **podtypu** z ovládacího prvku omezující vlastnost na levé straně. Zobrazí se tabulka obsahující seznam všech událostí dynamické registrace pro vybrané časové období.
+    b. Chcete-li zobrazit data protokolu pro dynamické registrace, vyberte **DynamicRegistration** jako filtr **podtypu** z ovládacího prvku omezující vlastnost vlevo. Zobrazí se tabulka se seznamem všech událostí dynamické registrace pro vybrané časové období.
 
-    c. Chcete-li zobrazit data protokolu pro změny konfigurace, vyberte **ConfigurationChange** jako filtr **podtypu** z ovládacího prvku omezující vlastnost na levé straně. Zobrazí se tabulka obsahující seznam všech událostí změny konfigurace pro vybrané časové období.
+    c. Chcete-li zobrazit data protokolu pro změny konfigurace, vyberte **ConfigurationChange** jako filtr **podtypu** z ovládacího prvku omezující vlastnost vlevo. Zobrazí se tabulka se seznamem všech událostí změny konfigurace pro vybrané časové období.
 
-1. Do **pole vyhledávací dotaz**zadejte `DnsInventory` pro zobrazení všech dat týkajících se inventáře DNS pro servery DNS spravované řešením. Seznam výsledků obsahuje data protokolu pro záznamy o prostředcích, servery DNS a zóny DNS.
+1. Do **pole vyhledávacího dotazu**zadejte, `DnsInventory` chcete-li zobrazit všechna data související se inventářem DNS pro servery DNS spravované řešením. Ve výsledcích jsou uvedena data protokolu pro servery DNS, zóny DNS a záznamy o prostředcích.
 
-    ![DnsInventory prohledávání protokolů](./media/dns-analytics/log-search-dnsinventory.png)
+    ![Vyhledávání protokolu DnsInventory](./media/dns-analytics/log-search-dnsinventory.png)
     
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
-Běžné kroky při řešení potíží:
+Běžné kroky řešení potíží:
 
-1. Chybějící data vyhledávání DNS – Chcete-li tento problém vyřešit, zkuste resetovat konfiguraci nebo načíst stránku konfigurace jenom jednou na portálu. Pro obnovení stačí změnit nastavení na jinou hodnotu a pak ho změnit zpátky na původní hodnotu a uložit konfiguraci.
+1. Chybějící data vyhledávání DNS – Chcete-li tento problém vyřešit, zkuste resetovat konfiguraci nebo pouze načíst konfigurační stránku jednou na portálu. Chcete-li resetovat, stačí změnit nastavení na jinou hodnotu, potom ji změnit zpět na původní hodnotu a uložit konfiguraci.
 
-## <a name="feedback"></a>Názor
+## <a name="feedback"></a>Váš názor
 
-Pokud chcete poskytnout zpětnou vazbu, přejděte na [stránku Log Analytics UserVoice](https://aka.ms/dnsanalyticsuservoice) , kde najdete nápady, jak pracovat s funkcemi DNS Analytics. 
+Chcete-li poskytnout zpětnou vazbu, navštivte [stránku UserVoice služby Log Analytics,](https://aka.ms/dnsanalyticsuservoice) kde můžete zveřejnit nápady pro funkce DNS Analytics, na kterých můžete pracovat. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V [protokolech dotazů](../log-query/log-query-overview.md) zobrazíte podrobné záznamy protokolu DNS.
+[Protokoly dotazů](../log-query/log-query-overview.md) pro zobrazení podrobných záznamů protokolu DNS.

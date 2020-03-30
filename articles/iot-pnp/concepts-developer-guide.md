@@ -1,6 +1,6 @@
 ---
-title: Příručka pro vývojáře – IoT technologie Plug and Play Preview | Microsoft Docs
-description: Popis modelování zařízení pro vývojáře IoT technologie Plug and Play
+title: Průvodce pro vývojáře – IoT Plug and Play Preview | Dokumenty společnosti Microsoft
+description: Popis modelování zařízení pro vývojáře IoT Plug and Play
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/26/2019
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77605217"
 ---
-# <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Příručka pro vývojáře pro modelování IoT technologie Plug and Play Preview
+# <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Průvodce vývojářem pro modelování náhledu IoT Plug and Play
 
-IoT technologie Plug and Play Preview umožňuje sestavovat zařízení, která budou inzerovat své možnosti aplikacím Azure IoT. Zařízení IoT technologie Plug and Play nevyžadují ruční konfiguraci, když ji zákazník připojí k aplikacím s podporou IoT technologie Plug and Play. IoT Central je příklad aplikace s podporou technologie Plug and Play IoT.
+IoT Plug and Play Preview umožňuje vytvářet zařízení, která inzerují jejich možnosti pro aplikace Azure IoT. Zařízení IoT Plug and Play nevyžadují ruční konfiguraci, když je zákazník připojí k aplikacím podporujícím technologii IoT Plug a Play. IoT Central je příkladem aplikace s podporou IoT Plug and Play.
 
-Chcete-li vytvořit zařízení IoT technologie Plug and Play, je nutné vytvořit popis zařízení. Popis se provádí pomocí jednoduchého definičního jazyka s názvem Digital DTDL (digitální vlákna).
+Chcete-li vytvořit zařízení IoT Plug and Play, musíte vytvořit popis zařízení. Popis se provádí pomocí jednoduchého definičního jazyka s názvem Digital Twins Definition Language (DTDL).
 
 ## <a name="device-capability-model"></a>Model schopností zařízení
 
-Pomocí DTDL vytvoříte _model schopností zařízení_ , který popisuje části zařízení. Typické zařízení IoT se skládá z těchto součástí:
+S DTDL vytvoříte _model schopností zařízení_ k popisu částí zařízení. Typické zařízení IoT se skládá z:
 
-- Vlastní části, které tvoří jedinečné zařízení.
-- Standardní části, které jsou společné pro všechna zařízení.
+- Vlastní díly, což jsou věci, které činí vaše zařízení jedinečným.
+- Standardní díly, což jsou věci, které jsou společné pro všechna zařízení.
 
-Tyto části se nazývají _rozhraní_ v modelu schopností zařízení. Rozhraní definují podrobnosti jednotlivých částí, které vaše zařízení implementuje.
+Tyto části se nazývají _rozhraní_ v modelu schopností zařízení. Rozhraní definují podrobnosti o každé části, kterou vaše zařízení implementuje.
 
-Následující příklad ukazuje model schopností zařízení pro termostatické zařízení:
+Následující příklad ukazuje model schopností zařízení pro zařízení termostatu:
 
 ```json
 {
@@ -51,27 +51,27 @@ Následující příklad ukazuje model schopností zařízení pro termostatick�
 
 Model schopností má některá povinná pole:
 
-- `@id`: jedinečné ID ve formě jednoduchého uniformního názvu prostředku.
+- `@id`: jedinečné ID ve formě jednoduchého jednotného názvu prostředku.
 - `@type`: deklaruje, že tento objekt je model schopností.
-- `@context`: Určuje verzi DTDL, která se používá pro model schopností.
-- `implements`: vypíše rozhraní, která vaše zařízení implementuje.
+- `@context`: Určuje verzi DTDL použitou pro model schopností.
+- `implements`: uvádí rozhraní, která vaše zařízení implementuje.
 
-Každá položka v seznamu rozhraní v oddílu Implements má:
+Každá položka v seznamu rozhraní v sekci implements má:
 
-- `name`: název programovacího rozhraní.
+- `name`: název programování rozhraní.
 - `schema`: rozhraní, které model schopností implementuje.
 
-K dispozici jsou další volitelná pole, která můžete použít k přidání dalších podrobností do modelu schopností, jako je například zobrazovaný název a popis. Rozhraní, která jsou deklarována v modelu schopností, lze představit jako komponenty zařízení. V případě verze Public Preview může mít seznam rozhraní pouze jednu položku pro každé schéma.
+Existují další volitelná pole, která můžete použít k přidání dalších podrobností do modelu schopností, například zobrazovaný název a popis. Rozhraní, které jsou deklarovány v rámci modelu schopností lze považovat za součásti zařízení. Pro verzi Public Preview může mít seznam rozhraní pouze jednu položku na schéma.
 
 ## <a name="interface"></a>Rozhraní
 
-Pomocí DTDL popíšete možnosti svého zařízení pomocí rozhraní. Rozhraní popisují _vlastnosti_, _telemetrie_a _příkazy_ , které součást vašeho zařízení implementuje:
+S DTDL, můžete popsat možnosti vašeho zařízení pomocí rozhraní. Rozhraní popisují _vlastnosti_, _telemetrii_a _příkazy, které_ část zařízení implementuje:
 
-- `Properties`. Vlastnosti jsou datová pole, která představují stav vašeho zařízení. Použijte vlastnosti, které reprezentují trvalý stav zařízení, jako je například stav Zapnuto pro čerpadlo chladicí kapaliny. Vlastnosti mohou také představovat základní vlastnosti zařízení, například verzi firmwaru zařízení. Vlastnosti můžete deklarovat jako jen pro čtení nebo zapisovatelné.
-- `Telemetry`. Pole telemetrie reprezentují měření od senzorů. Pokaždé, když zařízení získá měření senzorů, mělo by se odeslat událost telemetrie obsahující data ze senzorů.
-- `Commands`. Příkazy reprezentují metody, které můžou uživatelé zařízení na zařízení spouštět. Například příkaz pro obnovení nebo příkaz pro zapnutí nebo vypnutí ventilátoru.
+- `Properties`. Vlastnosti jsou datová pole, která představují stav vašeho zařízení. Vlastnosti slouží k reprezentaci trvalého stavu zařízení, například stavu zapnutí a vypnutí čerpadla chladicí kapaliny. Vlastnosti mohou také představovat základní vlastnosti zařízení, například verzi firmwaru zařízení. Vlastnosti můžete deklarovat jako jen pro čtení nebo zapisovatelné.
+- `Telemetry`. Telemetrická pole představují měření ze senzorů. Kdykoli zařízení provede měření senzoru, mělo by odeslat telemetrickou událost obsahující data senzoru.
+- `Commands`. Příkazy představují metody, které mohou uživatelé vašeho zařízení v zařízení provádět. Například příkaz reset nebo příkaz pro zapnutí nebo vypnutí ventilátoru.
 
-Následující příklad ukazuje rozhraní pro zařízení termostata:
+Následující příklad ukazuje rozhraní pro termostatzařízení:
 
 ```json
 {
@@ -90,58 +90,58 @@ Následující příklad ukazuje rozhraní pro zařízení termostata:
 
 Rozhraní má některá povinná pole:
 
-- `@id`: jedinečné ID ve formě jednoduchého uniformního názvu prostředku.
+- `@id`: jedinečné ID ve formě jednoduchého jednotného názvu prostředku.
 - `@type`: deklaruje, že tento objekt je rozhraní.
-- `@context`: Určuje verzi DTDL, která se používá pro rozhraní.
-- `contents`: zobrazí seznam vlastností, telemetrie a příkazů, které tvoří vaše zařízení.
+- `@context`: určuje verzi DTDL použitou pro rozhraní.
+- `contents`: uvádí vlastnosti, telemetrii a příkazy, které tvoří vaše zařízení.
 
-V tomto jednoduchém příkladu je k dispozici pouze jedno pole telemetrie. Minimální Popis pole má:
+V tomto jednoduchém příkladu existuje pouze jedno pole telemetrie. Minimální popis pole má:
 
-- `@type`: Určuje typ funkce: `Telemetry`, `Property`nebo `Command`.
+- `@type`: určuje typ `Telemetry`schopnosti: `Property`, `Command`, nebo .
 - `name`: poskytuje název hodnoty telemetrie.
-- `schema`: Určuje datový typ telemetrie. Tato hodnota může být primitivní typ, například Double, Integer, Boolean nebo String. Podporují se také komplexní typy objektů, pole a mapy.
+- `schema`: určuje datový typ pro telemetrii. Tato hodnota může být primitivní typ, například dvojité, celé číslo, logická hodnota nebo řetězec. Podporovány jsou také komplexní typy objektů, pole a mapy.
 
-Další volitelná pole, jako je například zobrazované jméno a popis, umožňují přidat další podrobnosti k rozhraní a funkcím.
+Další volitelná pole, například zobrazovaný název a popis, umožňují přidat další podrobnosti do rozhraní a možností.
 
 ### <a name="properties"></a>Vlastnosti
 
-Ve výchozím nastavení jsou vlastnosti jen pro čtení. Vlastnosti jen pro čtení znamenají, že se do služby IoT Hub nahlásí aktualizace hodnoty vlastnosti zařízení. Vaše centrum IoT nemůže nastavit hodnotu vlastnosti jen pro čtení.
+Ve výchozím nastavení jsou vlastnosti jen pro čtení. Vlastnosti jen pro čtení znamenají, že zařízení hlásí aktualizace hodnoty vlastnosti do centra IoT. Vaše centrum IoT nemůže nastavit hodnotu vlastnosti jen pro čtení.
 
-Můžete také označit vlastnost jako zapisovatelnou na rozhraní. Zařízení může obdržet aktualizaci zapisovatelné vlastnosti z vašeho centra IoT a také aktualizovat hodnoty vlastností pro vytváření sestav do vašeho centra.
+Můžete také označit vlastnost jako zapisovatelné na rozhraní. Zařízení může přijímat aktualizaci zapisovatelné vlastnosti z vašeho centra IoT hub, stejně jako vykazování aktualizace hodnoty vlastností do vašeho centra.
 
-Zařízení nemusí být připojená k nastavením hodnot vlastností. Aktualizované hodnoty se přenesou, když se zařízení příště připojí k rozbočovači. Toto chování platí pro vlastnosti jen pro čtení i pro zápis.
+Zařízení nemusí být připojena k nastavení hodnot vlastností. Aktualizované hodnoty jsou přeneseny, když se zařízení dále připojí k rozbočovači. Toto chování platí pro vlastnosti jen pro čtení a zápis.
 
-Nepoužívejte vlastnosti k odeslání telemetrie ze zařízení. Například vlastnost jen pro čtení, jako je například `temperatureSetting=80`, by měla znamenat, že se teplota zařízení nastavila na 80 a zařízení se snaží získat nebo zůstat v této teplotě.
+Nepoužívejte vlastnosti k odesílání telemetrie ze zařízení. Například vlastnost jen pro `temperatureSetting=80` čtení, jako je například by měla znamenat, že teplota zařízení byla nastavena na 80 a zařízení se snaží získat nebo zůstat na této teplotě.
 
-U zapisovatelných vlastností aplikace zařízení vrátí stavový kód požadovaného stavu, verzi a popis, aby označoval, zda obdržel a používal hodnotu vlastnosti.
+Pro zapisovatelné vlastnosti aplikace zařízení vrátí požadovaný stavový kód, verzi a popis, který označuje, zda přijala a použila hodnotu vlastnosti.
 
-### <a name="telemetry"></a>Telemetrická data
+### <a name="telemetry"></a>Telemetrie
 
-Ve výchozím nastavení IoT Hub směruje všechny zprávy telemetrie ze zařízení na [integrovaný koncový bod (**zprávy/události**)](../iot-hub/iot-hub-devguide-messages-read-builtin.md) , který je kompatibilní se službou [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/).
+Ve výchozím nastavení služba IoT Hub směruje všechny telemetrické zprávy ze zařízení do [integrovaného koncového bodu směřujícího ke službě **(zprávy nebo události),**](../iot-hub/iot-hub-devguide-messages-read-builtin.md) který je kompatibilní s [event huby](https://azure.microsoft.com/documentation/services/event-hubs/).
 
-Můžete použít [vlastní koncové body a pravidla směrování IoT Hub](../iot-hub/iot-hub-devguide-messages-d2c.md) k odeslání telemetrie do jiných cílů, jako je úložiště objektů BLOB nebo jiná centra událostí. Pravidla směrování používají vlastnosti zprávy k výběru zpráv.
+[Vlastní koncové body a pravidla směrování služby IoT Hub](../iot-hub/iot-hub-devguide-messages-d2c.md) můžete použít k odesílání telemetrie do jiných cílů, jako je úložiště objektů blob nebo jiná centra událostí. Pravidla směrování používají vlastnosti zprávy k výběru zpráv.
 
 ### <a name="commands"></a>Příkazy
 
-Příkazy jsou buď synchronní, nebo asynchronní. Synchronní příkaz se musí provést během 30 sekund ve výchozím nastavení a zařízení musí být připojené, až se dorazí na příkaz. Pokud zařízení reaguje v čase nebo pokud zařízení není připojené, příkaz se nezdařil.
+Příkazy jsou synchronní nebo asynchronní. Synchronní příkaz musí být ve výchozím nastavení proveden do 30 sekund a zařízení musí být připojeno při doručení příkazu. Pokud zařízení reaguje včas nebo zařízení není připojeno, příkaz se nezdaří.
 
-Pro dlouhotrvající operace použijte asynchronní příkazy. Zařízení odesílá informace o průběhu pomocí zpráv telemetrie. Tyto zprávy o průběhu mají následující vlastnosti záhlaví:
+Pro dlouhotrvající operace používejte asynchronní příkazy. Zařízení odesílá informace o průběhu pomocí telemetrických zpráv. Tyto zprávy o průběhu mají následující vlastnosti záhlaví:
 
-- `iothub-command-name`: název příkazu, například `UpdateFirmware`.
-- `iothub-command-request-id`: ID žádosti vygenerované na straně serveru, které se odešle do zařízení při počátečním volání.
-- `iothub-interface-id`: ID rozhraní, ve kterém je tento příkaz definovaný, například `urn:example:AssetTracker:1`.
- `iothub-interface-name`: název instance tohoto rozhraní, například `myAssetTracker`.
-- `iothub-command-statuscode`: stavový kód vrácený ze zařízení, například `202`.
+- `iothub-command-name`: název příkazu, `UpdateFirmware`například .
+- `iothub-command-request-id`: ID požadavku generované na straně serveru a odeslané do zařízení v počátečním volání.
+- `iothub-interface-id`: ID rozhraní, na které je tento `urn:example:AssetTracker:1`příkaz definován, například .
+ `iothub-interface-name`: název instance tohoto rozhraní, `myAssetTracker`například .
+- `iothub-command-statuscode`: stavový kód vrácený ze `202`zařízení, například .
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-IoT technologie Plug and Play usnadňuje inzerci možností vašeho zařízení. Když technologie Plug and Play IoT se vaše zařízení připojí k IoT Hub, musíte zaregistrovat svůj model schopností zařízení. Registrace umožňuje zákazníkům používat možnosti IoT technologie Plug and Play vašeho zařízení.
+IoT Plug and Play usnadňuje inzerci možností vašeho zařízení. S IoT Plug and Play, po připojení zařízení k IoT Hub, musíte zaregistrovat model funkce zařízení. Registrace umožňuje zákazníkům používat funkce IoT Plug and Play vašeho zařízení.
 
-V této příručce se dozvíte, jak zaregistrovat zařízení pomocí sady SDK pro zařízení Azure IoT pro jazyk C.
+Tato příručka ukazuje, jak zaregistrovat zařízení pomocí sady Azure IoT Device SDK pro C.
 
-Pro každé rozhraní, které vaše zařízení implementuje, je nutné vytvořit rozhraní a připojit ho ke své implementaci.
+Pro každé rozhraní, které vaše zařízení implementuje, je nutné vytvořit rozhraní a připojit jej k jeho implementaci.
 
-Pro rozhraní termostatu zobrazené výše pomocí sady C SDK vytvoříte a připojíte své rozhraní termostata k jeho implementaci:
+Pro rozhraní termostatu zobrazené dříve pomocí sady C SDK vytvoříte a připojíte rozhraní termostatu k jeho implementaci:
 
 ```c
 DIGITALTWIN_INTERFACE_HANDLE thermostatInterfaceHandle;
@@ -162,9 +162,9 @@ result = DigitalTwin_Interface_SetPropertiesUpdatedCallbacks(
 
 ```
 
-Tento kód opakujte pro každé rozhraní, které vaše zařízení implementuje.
+Tento kód opakujte pro každé rozhraní, které zařízení implementuje.
 
-Po vytvoření rozhraní zaregistrujte model a rozhraní schopností zařízení ve službě IoT Hub:
+Po vytvoření rozhraní zaregistrujte model schopností zařízení a rozhraní s centrem IoT:
 
 ```c
 DIGITALTWIN_INTERFACE_CLIENT_HANDLE interfaces[2];
@@ -180,46 +180,46 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 ## <a name="use-a-device"></a>Použití zařízení
 
-IoT technologie Plug and Play umožňuje používat zařízení, která zaregistrovala své možnosti ve službě IoT Hub. Můžete například získat přímý přístup k vlastnostem a příkazům zařízení.
+IoT Plug and Play umožňuje používat zařízení, která zaregistrovala své možnosti ve vašem centru IoT Hub. Můžete například přistupovat k vlastnostem a příkazům zařízení přímo.
 
-Pokud chcete používat technologie Plug and Play IoT, která je připojená ke službě IoT Hub, použijte buď IoT Hub REST API nebo jednu z jazykových sad IoT. V následujících příkladech se používá REST API IoT Hub. Aktuální verze rozhraní API je `2019-07-01-preview`. Přidejte `?api-version=2019-07-01-preview` k vašim voláním REST PI.
+Pokud chcete použít zařízení IoT Plug and Play, které je připojené k vašemu centru IoT hub, použijte rozhraní REST API služby IoT Hub nebo některé z sad SDK v jazyce IoT. Následující příklady používají rozhraní REST rozhraní IoT Hub. Aktuální verze rozhraní API `2019-07-01-preview`je . Připojte `?api-version=2019-07-01-preview` k volání REST PI.
 
-Chcete-li získat hodnotu vlastnosti zařízení, jako je například verze firmwaru (`fwVersion`) v rozhraní `DeviceInformation` ve termostatu, použijte digitální vlákna REST API.
+Chcete-li získat hodnotu vlastnosti zařízení,`fwVersion`jako je `DeviceInformation` například verze firmwaru ( ) v rozhraní v termostatu, použijte digitální dvojčata REST API.
 
-Pokud se zařízení termostatu nazývá `t-123`, získáte všechny vlastnosti ve všech rozhraních implementovaných vaším zařízením pomocí volání REST API GET:
+Pokud se vaše termostatové zařízení nazývá `t-123`, získáte všechny vlastnosti na všech rozhraních implementovaných zařízením s voláním GET rozhraní REST API:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Obecněji jsou k dispozici všechny vlastnosti všech rozhraní s touto šablonou REST API, kde `{device-id}` je identifikátorem zařízení:
+Obecněji řečeno, všechny vlastnosti na všech rozhraních `{device-id}` jsou přístupné pomocí této šablony rozhraní REST API, kde je identifikátor pro zařízení:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Pokud znáte název rozhraní, například `deviceInformation`, a chcete získat vlastnosti pro toto konkrétní rozhraní, vyjistěte obor žádosti na konkrétní rozhraní podle názvu:
+Pokud znáte název rozhraní, například `deviceInformation`, a chcete získat vlastnosti pro toto konkrétní rozhraní, rozsah požadavku na konkrétní rozhraní podle názvu:
 
 ```REST
 GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
-Obecně platí, že k vlastnostem konkrétního rozhraní se dá dostat prostřednictvím této šablony REST API, kde `device-id` je identifikátorem zařízení a `{interface-name}` je název rozhraní:
+Obecněji lze přistupovat k vlastnostem pro konkrétní rozhraní `device-id` prostřednictvím této šablony `{interface-name}` rozhraní REST API, kde je identifikátor pro zařízení a je název rozhraní:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-Můžete volat přímo technologie Plug and Play příkazy pro zařízení IoT. Pokud rozhraní `Thermostat` v `t-123`m zařízení obsahuje `restart` příkaz, můžete ho volat pomocí volání POST REST API:
+Příkazy zařízení IoT Plug and Play můžete volat přímo. Pokud `Thermostat` rozhraní v `t-123` zařízení `restart` obsahuje příkaz, můžete jej volat pomocí volání REST API POST:
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
 ```
 
-Obecně lze příkazy volat pomocí této šablony REST API:
+Obecněji lze příkazy volat prostřednictvím této šablony rozhraní REST API:
 
 - `device-id`: identifikátor zařízení.
-- `interface-name`: název rozhraní z oddílu Implements v modelu schopností zařízení.
+- `interface-name`: název rozhraní z oddílu implements v modelu schopností zařízení.
 - `command-name`: název příkazu.
 
 ```REST
@@ -228,8 +228,8 @@ Obecně lze příkazy volat pomocí této šablony REST API:
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se dozvěděli o modelování zařízení, tady je několik dalších prostředků:
+Teď, když jste se dozvěděli o modelování zařízení, zde jsou některé další zdroje:
 
-- [DTDL (Digital redefinition Language) – jazyk](https://aka.ms/DTDL)
+- [Definiční jazyk digitálního dvojčete (DTDL)](https://aka.ms/DTDL)
 - [Sady SDK pro zařízení jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [REST API IoT](https://docs.microsoft.com/rest/api/iothub/device)
+- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

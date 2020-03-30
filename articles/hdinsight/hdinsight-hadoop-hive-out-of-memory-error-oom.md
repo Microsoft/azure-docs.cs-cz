@@ -1,7 +1,7 @@
 ---
-title: Oprava chyby nedostatku paměti u registru ve službě Azure HDInsight
-description: Oprava chyby nedostatku paměti u registru v HDInsight Scénář zákazníka je dotaz napříč mnoha velkými tabulkami.
-keywords: Chyba při nedostatku paměti, OOM, nastavení podregistru
+title: Oprava chyby nedostatku paměti úlu v Azure HDInsight
+description: Oprava chyby nedostatku paměti hive v HDInsight. Scénář zákazníka je dotaz v mnoha velkých tabulkách.
+keywords: chyba nedostatku paměti, Nastavení OOM, Hive
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
 ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687773"
 ---
-# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Oprava chyby nedostatku paměti Apache Hive ve službě Azure HDInsight
+# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Oprava chyby apache úlu bez paměti v Azure HDInsight
 
-Přečtěte si, jak Apache Hive vyřešit chybu OOM (nedostatek paměti) při zpracování velkých tabulek konfigurací nastavení paměti podregistru.
+Zjistěte, jak opravit chybu Apache Hive bez paměti (OOM) při zpracování velkých tabulek konfigurací nastavení paměti Hive.
 
-## <a name="run-apache-hive-query-against-large-tables"></a>Spuštění dotazu Apache Hive pro velké tabulky
+## <a name="run-apache-hive-query-against-large-tables"></a>Spuštění dotazu Apache Hive proti velkým tabulkám
 
-Zákazník spustil dotaz na podregistr:
+Zákazník spustil dotaz Hive:
 
 ```sql
 SELECT
@@ -42,18 +42,18 @@ where (T1.KEY1 = T2.KEY1….
     …
 ```
 
-Některé drobné odlišnosti tohoto dotazu:
+Některé nuance tohoto dotazu:
 
-* T1 je alias pro velkou tabulku (Tabulka1), která má spoustu typů ŘETĚZCOVého sloupce.
-* Jiné tabulky nejsou velké, ale mají mnoho sloupců.
-* Všechny tabulky se vzájemně spojí, v některých případech s více sloupci v tabulce Tabulka1 a dalších.
+* T1 je alias velké tabulky TABLE1, která má velké typy sloupců STRING.
+* Ostatní tabulky nejsou tak velké, ale mají mnoho sloupců.
+* Všechny tabulky se vzájemně spojují, v některých případech s více sloupci v TABLE1 a další.
 
-Dotaz na podregistr trval 26 minut, než se dokončí na clusteru HDInsight se 24 uzly a3. Zákazník si všiml následující zprávy upozornění:
+Dotaz Hive trvalo 26 minut dokončit v clusteru 24 uzlů A3 HDInsight. Zákazník si všiml následujících varovných zpráv:
 
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-Pomocí spouštěcího modulu Apache Tez. Stejný dotaz běžel po dobu 15 minut a poté vyvolal následující chybu:
+Pomocí apache tez spuštění motoru. Stejný dotaz běžel po dobu 15 minut a pak hodil následující chybu:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -79,15 +79,15 @@ Pomocí spouštěcího modulu Apache Tez. Stejný dotaz běžel po dobu 15 minut
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
 
-Tato chyba zůstane při použití většího virtuálního počítače (například D12).
+Chyba zůstane při použití většího virtuálního počítače (například D12).
 
-## <a name="debug-the-out-of-memory-error"></a>Ladit chybu nedostatku paměti
+## <a name="debug-the-out-of-memory-error"></a>Ladění chyby nedostatku paměti
 
-Naše technické podpory a technické týmy společně nalezly jeden z problémů, které způsobily chybu nedostatku paměti, byl známý problém, který je [popsaný v Apache JIRA](https://issues.apache.org/jira/browse/HIVE-8306):
+Naše týmy podpory a inženýrství společně zjistily, že jedním z problémů, které způsobují chybu nedostatku paměti, byl [známý problém popsaný v Apache JIRA](https://issues.apache.org/jira/browse/HIVE-8306):
 
-"Když je v podregistru. auto. Convert. Join. noconditionaltask = true, zkontrolujeme noconditionaltask. Size a v případě, že součet velikostí tabulek ve spojení s mapou je menší než noconditionaltask. Size by se vytvořilo spojení map. s ohledem na režii, kterou zavádí jiná implementace zatřiďovací tabulky jako výsledek, pokud je součet vstupních velikostí menší než velikost noconditionaltask pomocí malých dotazů na okraje, budou se zasáhnout OOM. "
+"Když hive.auto.convert.join.noconditionaltask = true kontrolujeme noconditionaltask.size a pokud je součet tabulek velikostí v spojení mapy menší než noconditionaltask.size plán by vygeneroval spojení mapy, problém s tím je, že výpočet netrvá v úvahu režie zavedené různé HashTable implementace jako výsledky, pokud součet vstupní velikosti je menší než noconditionaltask velikost i malé dotazy marže narazí na OOM."
 
-**Podregistr. auto. Convert. Join. noconditionaltask** v souboru Hive-site. XML byl nastaven na **hodnotu true**:
+Úloha **hive.auto.convert.join.noconditionaltask** v souboru hive-site.xml byla nastavena na **hodnotu true**:
 
 ```xml
 <property>
@@ -101,22 +101,22 @@ Naše technické podpory a technické týmy společně nalezly jeden z problém�
 </property>
 ```
 
-Je pravděpodobnější, že připojení k mapě je příčinou chyby nedostatku paměti v haldě Java. Jak je vysvětleno v blogu v příspěvku [nastavení paměti Hadoop příze ve službě HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), když se tez prováděcí modul používá ke skutečnému využití prostoru haldy, patří do kontejneru TEZ. Podívejte se na následující obrázek popisující paměť kontejneru TEZ.
+Je pravděpodobné, že spojení mapy bylo příčinou chyby nedostatku paměti haldy java haldy. Jak je vysvětleno v blogu [Hadoop Yarn nastavení paměti v HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), když tez spuštění motoru se používá haldy místo používá skutečně patří do kontejneru Tez. Podívejte se na následující obrázek popisující paměť kontejneru Tez.
 
-![Paměťový diagram kontejneru tez: chyba nedostatek paměti v podregistru](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![Diagram paměti kontejneru Tez: Chyba nedostatku paměti hive](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Jak ukazuje Blogový příspěvek, definuje následující dvě nastavení paměti paměť kontejneru pro haldu: **podregistr. TEZ. Container. Size** a **podregistr. TEZ. Java. výslovný**. Z našeho prostředí neznamená výjimka nedostatku paměti, že velikost kontejneru je příliš malá. Znamená to, že velikost haldy Java (podregistr. TEZ. Java. výslovný) je moc malá. Takže kdykoli se zobrazí nedostatek paměti, můžete se pokusit zvětšit **podregistr. TEZ. Java. výslovný**. V případě potřeby možná budete muset zvětšit **podregistr. TEZ. Container. Size**. Nastavení **Java. výslovný** by mělo být přibližně 80% **kontejneru. Size**.
+Jak naznačuje příspěvek blogu, následující dvě nastavení paměti definují paměť kontejneru pro haldu: **hive.tez.container.size** a **hive.tez.java.opts**. Z našich zkušeností výjimka z nedostatku paměti neznamená, že velikost kontejneru je příliš malá. To znamená, že velikost haldy Java (hive.tez.java.opts) je příliš malá. Takže kdykoli vidíte z paměti, můžete se pokusit zvýšit **hive.tez.java.opts**. V případě potřeby budete muset zvýšit **hive.tez.container.size**. **Java.opts** nastavení by mělo být kolem 80% **container.size**.
 
 > [!NOTE]  
-> Nastavení **podregistr. TEZ. Java. výslovný** musí být vždy menší než **podregistr. TEZ. Container. Size**.
+> Nastavení **hive.tez.java.opts** musí být vždy menší než **hive.tez.container.size**.
 
-Vzhledem k tomu, že počítač s D12 má 28 GB paměti, rozhodli jste se použít velikost kontejneru 10 GB (10240 MB) a přiřadit 80% k Java. výslovný:
+Vzhledem k tomu, že počítač D12 má paměť 28 GB, rozhodli jsme se použít kontejner o velikosti 10 GB (10240 MB) a přiřadit 80% java.opts:
 
     SET hive.tez.container.size=10240
     SET hive.tez.java.opts=-Xmx8192m
 
-S novým nastavením se dotaz úspěšně spustil za méně než 10 minut.
+S novým nastavením byl dotaz úspěšně spuštěn za méně než 10 minut.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se OOM chyba, neznamená to, že velikost kontejneru je moc malá. Místo toho byste měli nakonfigurovat nastavení paměti tak, aby se velikost haldy zvýšila a byla aspoň 80% velikosti paměti kontejneru. Informace o optimalizaci dotazů na podregistry najdete v tématu věnovaném [optimalizaci Apache Hive dotazů pro Apache Hadoop ve službě HDInsight](hdinsight-hadoop-optimize-hive-query.md).
+Získání chyby OOM nemusí nutně znamenat, že velikost kontejneru je příliš malá. Místo toho byste měli nakonfigurovat nastavení paměti tak, aby se zvětšila velikost haldy a byla alespoň 80 % velikosti paměti kontejneru. Informace o optimalizaci dotazů Hive najdete [v tématu Optimalizace dotazů Apache Hive pro Apache Hadoop v HDInsight](hdinsight-hadoop-optimize-hive-query.md).

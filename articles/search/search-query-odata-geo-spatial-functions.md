@@ -1,7 +1,7 @@
 ---
-title: Referenční dokumentace funkce OData geografického prostoru
+title: Odkaz na geoprostorovou funkci OData
 titleSuffix: Azure Cognitive Search
-description: Syntaxe a referenční dokumentace pro použití geograficky funkčních funkcí OData geograficky. Distance a geo-intersects v Azure Kognitivní hledáních dotazech.
+description: Syntaxe a referenční dokumentace pro použití Geo-spatial funkce OData, geo.distance a geo.intersects, v Azure Cognitive Search dotazy.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,24 +20,24 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113177"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Kognitivní hledání-`geo.distance` a `geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geoprostorové funkce OData v `geo.distance` Azure Cognitive Search – a`geo.intersects`
 
-Azure Kognitivní hledání podporuje geografické prostorové dotazy ve [výrazech filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím funkcí `geo.distance` a `geo.intersects`. Funkce `geo.distance` vrací vzdálenost v kilometrech mezi dvěma body, jedno je pole nebo proměnná rozsahu a jedna je konstanta předaná jako součást filtru. Funkce `geo.intersects` vrátí `true`, pokud je daný bod v rámci daného mnohoúhelníku, kde je bod pole nebo proměnná rozsahu a mnohoúhelník je zadán jako součást filtru jako konstanta.
+Azure Cognitive Search podporuje geoprostorové dotazy ve [výrazech filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím funkcí `geo.distance` a. `geo.intersects` Funkce `geo.distance` vrátí vzdálenost v kilometrech mezi dvěma body, z toho jedna je proměnná pole nebo rozsahu a jedna konstanta předávaná jako součást filtru. Funkce `geo.intersects` vrátí, `true` pokud je daný bod v daném polygu, kde bod je proměnná pole nebo rozsah a polygon je určen jako konstanta předaná jako součást filtru.
 
-Funkci `geo.distance` lze také použít v [parametru **$OrderBy** ](search-query-odata-orderby.md) k řazení výsledků hledání podle vzdálenosti od daného bodu. Syntaxe pro `geo.distance` v **$OrderBy** je stejná jako v **$Filter**. Při použití `geo.distance` v **$OrderBy**musí být pole, na které se vztahuje, typu `Edm.GeographyPoint` a musí být také možné je **Seřadit**.
+Funkci `geo.distance` lze také použít v [ **parametru $orderby** ](search-query-odata-orderby.md) k seřazení výsledků hledání podle vzdálenosti od daného bodu. Syntaxe `geo.distance` pro in **$orderby** je stejná jako v **$filter**. Při `geo.distance` použití v **$orderby**musí být pole , `Edm.GeographyPoint` na které se vztahuje, typu a musí být také **seřaditelné**.
 
 > [!NOTE]
-> Při použití `geo.distance` v parametru **$OrderBy** musí pole, které předáte do funkce, obsahovat pouze jeden geografický bod. Jinými slovy, musí být typu `Edm.GeographyPoint` a nesmí `Collection(Edm.GeographyPoint)`. Pro pole kolekce v Azure Kognitivní hledání není možné řadit.
+> Při `geo.distance` použití v **$orderby** parametru musí pole, které předáte funkci, obsahovat pouze jeden geobod. Jinými slovy, musí být `Edm.GeographyPoint` typu `Collection(Edm.GeographyPoint)`a ne . Není možné řadit na sběrných polích v Azure Cognitive Search.
 
 ## <a name="syntax"></a>Syntaxe
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku funkcí `geo.distance` a `geo.intersects` a také geografické hodnoty, na kterých pracují:
+Následující EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `geo.distance` definuje `geo.intersects` gramatiku a funkcí, stejně jako geoprostorové hodnoty, na kterých pracují:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -61,69 +61,69 @@ geo_polygon ::=
 lon_lat_list ::= lon_lat(',' lon_lat)*
 ```
 
-K dispozici je také diagram interaktivní syntaxe:
+K dispozici je také interaktivní syntaktický diagram:
 
 > [!div class="nextstepaction"]
-> [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Syntaxový diagram OData pro Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
+> Viz [odkaz na syntaxi výrazu OData pro Azure Cognitive Search](search-query-odata-syntax-reference.md) pro kompletní EBNF.
 
-### <a name="geodistance"></a>Geografická vzdálenost
+### <a name="geodistance"></a>geo.vzdálenost
 
-Funkce `geo.distance` přebírá dva parametry typu `Edm.GeographyPoint` a vrací `Edm.Double`ou hodnotu, která představuje vzdálenost mezi nimi v kilometrech. To se liší od jiných služeb podporujících geografické prostorové operace OData, které obvykle vracejí vzdálenosti v metrech.
+Funkce `geo.distance` přebírá dva parametry `Edm.GeographyPoint` typu `Edm.Double` a vrátí hodnotu, která je vzdálenost mezi nimi v kilometrech. To se liší od jiných služeb, které podporují OData geoprostorové operace, které obvykle vrátit vzdálenosti v metrech.
 
-Jedním z parametrů `geo.distance` musí být konstanta geografického bodu a druhá musí být cesta k poli (nebo proměnná rozsahu v případě, že je v případě filtru iterace nad polem typu `Collection(Edm.GeographyPoint)`). Pořadí těchto parametrů nezáleží.
+Jedním z parametrů `geo.distance` musí být konstanta bodu zeměpisné oblasti a druhá musí být cesta pole (nebo proměnná rozsahu v `Collection(Edm.GeographyPoint)`případě iterace filtru nad polem typu ). Na pořadí těchto parametrů nezáleží.
 
-Konstanta geografického bodu má `geography'POINT(<longitude> <latitude>)'`formuláře, kde Zeměpisná délka a zeměpis je číselné konstanty.
+Bodová konstanta zeměpisu je ve tvaru `geography'POINT(<longitude> <latitude>)'`, kde zeměpisná délka a zeměpisná šířka jsou číselné konstanty.
 
 > [!NOTE]
-> Při použití `geo.distance` ve filtru je nutné porovnat vzdálenost vrácenou funkcí s konstantou pomocí `lt`, `le`, `gt`nebo `ge`. Operátory `eq` a `ne` nejsou podporovány při porovnávání vzdálenosti. Jedná se například o správné použití `geo.distance`: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.
+> Při `geo.distance` použití ve filtru je nutné porovnat vzdálenost vrácenou `lt`funkcí `le` `gt`s `ge`konstantou používající , , , nebo . Operátory `eq` `ne` a nejsou podporovány při porovnávání vzdáleností. Například se jedná o `geo.distance`správné `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`použití : . .
 
 ### <a name="geointersects"></a>geo.intersects
 
-Funkce `geo.intersects` přebírá proměnnou typu `Edm.GeographyPoint` a konstantní `Edm.GeographyPolygon` a vrací `Edm.Boolean` -- `true`, pokud je bod uvnitř hranice mnohoúhelníku, `false` jinak.
+Funkce `geo.intersects` přebírá proměnnou `Edm.GeographyPoint` typu a `Edm.GeographyPolygon` konstantu `Edm.Boolean`  --  `true` a vrátí, pokud je bod v mezích mnohonožku, `false` jinak.
 
-Mnohoúhelník je dvourozměrná plocha uložená jako sekvence bodů definujících ohraničující prstenec (viz [Příklady](#examples) níže). Mnohoúhelník musí být uzavřen, což znamená, že první a poslední bod musí být stejné. [Body v mnohoúhelníku musí být v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Mnohočinek je dvojrozměrný povrch uložený jako posloupnost bodů definujících ohraničovací kroužek (viz [příklady](#examples) níže). Polygon musí být uzavřen, což znamená, že první a poslední sady bodů musí být stejné. [Body v polygonu musí být v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Geografické prostorové dotazy a mnohoúhelníky, které pokrývá 180th poledníku
+### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Geoprostorové dotazy a polygony zahrnující 180.
 
-V mnoha geograficky integrovaných knihovnách dotazů je vyjednaný dotaz, který obsahuje 180th poledníku (poblíž datová hranice (), je buď vypnutý, nebo vyžaduje alternativní řešení, například rozdělení mnohoúhelníku na dvě, jednu na obě strany poledníku.
+Pro mnoho knihoven geografických prostorových dotazů, které formulují dotaz, který obsahuje 180. poledník (poblíž poledníku), je buď zakázané, nebo vyžaduje řešení, například rozdělení mnohotvaru na dvě, jednu na obou stranách poledníku.
 
-V Azure Kognitivní hledání geografické prostorové dotazy, které zahrnují 180, budou fungovat podle očekávání, pokud je obrazec dotazu obdélníkový a vaše souřadnice jsou zarovnané na rozložení mřížky podél zeměpisné délky a šířky (například `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). V opačném případě u nepravoúhlých nebo nezarovnanéch tvarů zvažte přístup k rozdělenému mnohoúhelníku.  
+V Azure Cognitive Search geoprostorové dotazy, které zahrnují 180 stupňů zeměpisné délky bude fungovat podle očekávání, `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`pokud je tvar dotazu obdélníkový a vaše souřadnice zarovnat rozložení mřížky podél zeměpisné délky a šířky (například ). V opačném případě u nepravoúhlých nebo nezarovnaných obrazců zvažte přístup k rozdělení polygonu.  
 
-### <a name="geo-spatial-functions-and-null"></a>Geografické funkce a `null`
+### <a name="geo-spatial-functions-and-null"></a>Geoprostorové funkce a`null`
 
-Stejně jako všechna ostatní pole bez kolekce v Azure Kognitivní hledání můžou pole typu `Edm.GeographyPoint` obsahovat `null` hodnoty. Když Azure Kognitivní hledání vyhodnotí `geo.intersects` pro pole, které je `null`, bude výsledek vždycky `false`. Chování `geo.distance` v tomto případě závisí na kontextu:
+Stejně jako všechna ostatní pole bez sběru `Edm.GeographyPoint` v `null` Azure Cognitive Search, pole typu může obsahovat hodnoty. Když Azure Cognitive `geo.intersects` Search vyhodnotí `null`pole, které `false`je , výsledek bude vždy . Chování `geo.distance` v tomto případě závisí na kontextu:
 
-- Ve filtrech `geo.distance` `null` pole výsledkem `null`. To znamená, že se dokument neshoduje, protože `null` v porovnání s hodnotou, která není null, je vyhodnocena jako `false`.
-- Při řazení výsledků pomocí **$orderby**`geo.distance` pole `null` má za následek maximální možnou vzdálenost. Dokumenty s takovým polem budou seřazeny menší než všechny ostatní, pokud je použit směr řazení `asc` (výchozí nastavení) a větší než všechny ostatní, pokud je směr `desc`.
+- Ve filtrech `geo.distance` `null` výsledkem `null`pole je . To znamená, že dokument `null` se neshoduje, protože ve `false`srovnání s libovolnou hodnotou bez hodnoty null se vyhodnotí .
+- Při řazení výsledků **$orderby**pomocí `geo.distance` $orderby `null` má pole maximální možnou vzdálenost. Dokumenty s takovým polem budou při použití `asc` směru řazení (výchozí) seřazeny níže `desc`než všechny ostatní a při použití směru vyšší než všechny ostatní.
 
 ## <a name="examples"></a>Příklady
 
-### <a name="filter-examples"></a>Příklady filtru
+### <a name="filter-examples"></a>Příklady filtrů
 
-Najde všechny hotely v rámci 10 kilometrů daného referenčního bodu (kde umístění je pole typu `Edm.GeographyPoint`):
+Najděte všechny hotely do vzdálenosti 10 km od daného `Edm.GeographyPoint`referenčního bodu (kde se nachází pole typu ):
 
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 
-Najde všechny hotely v rámci daného zobrazení popsané jako mnohoúhelník (umístění je pole typu `Edm.GeographyPoint`). Všimněte si, že mnohoúhelník je uzavřený (nastavení prvního a posledního bodu musí být stejné) a [body musí být uvedené v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Najděte všechny hotely v daném výřezu popsaném jako polygon (kde je umístění typu `Edm.GeographyPoint`pole). Všimněte si, že polygon je uzavřen (první a poslední sady bodů musí být stejné) a [body musí být uvedeny v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
-### <a name="order-by-examples"></a>Příklady pořadí
+### <a name="order-by-examples"></a>Příklady objednávek
 
-Seřadit hotely sestupně podle `rating`a vzestupné vzdálenosti od daných souřadnic:
+Seřaďte `rating`hotely sestupující podle , pak stoupání podle vzdálenosti od daných souřadnic:
 
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-Seřaďte hotely v sestupném pořadí podle `search.score` a `rating`a pak ve vzestupném pořadí podle vzdálenosti od daných souřadnic, takže mezi dvěma hotely a identickým hodnocením je nejbližší uveden jako první:
+Seřaďte hotely `search.score` `rating`v sestupném pořadí podle a nastupujícípořadí podle vzdálenosti od daných souřadnic tak, aby mezi dvěma hotely se stejným hodnocením byl nejbližší uveden jako první:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>Další kroky  
 
-- [Filtry v Azure Kognitivní hledání](search-filters.md)
-- [Přehled jazyka výrazů OData pro Azure Kognitivní hledání](query-odata-filter-orderby-syntax.md)
-- [Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání](search-query-odata-syntax-reference.md)
-- [Hledání dokumentů &#40;Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry v Azure Cognitive Search](search-filters.md)
+- [Přehled jazyka OData pro Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Odkaz na syntaxi výrazu OData pro Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Hledání dokumentů &#40;azure kognitivní vyhledávání rozhraní API rozhraní&#41;API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

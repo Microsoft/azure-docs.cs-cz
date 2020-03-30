@@ -1,25 +1,25 @@
 ---
-title: Konfigurace brány firewall databáze Azure blockchain Workbench
-description: Zjistěte, jak nakonfigurovat bránu firewall pro Azure blockchain Workbench Preview tak, aby umožňovala připojení externích klientů a aplikací.
+title: Konfigurace brány firewall databáze Azure Blockchain Workbench
+description: Zjistěte, jak nakonfigurovat databázovou bránu Azure Blockchain Workbench Preview tak, aby se externí klienti a aplikace mohli připojit.
 ms.date: 09/09/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: e6739b7ead9299f020465d3c50ed01826334ca76
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74326005"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Konfigurace brány firewall databáze služby Azure Blockchain Workbench
 
 Tento článek popisuje, jak nakonfigurovat pravidlo brány firewall pomocí Azure Portalu. Pravidla brány firewall umožňují externím klientům nebo aplikacím připojení k databázi služby Azure Blockchain Workbench.
 
-## <a name="connect-to-the-blockchain-workbench-database"></a>Připojení k databázi služby Blockchain Workbench
+## <a name="connect-to-the-blockchain-workbench-database"></a>Připojení k databázi Blockchain Workbench
 
 K databázi, kde chcete nakonfigurovat pravidlo, se připojíte takto:
 
-1. Přihlaste se k Azure Portal pomocí účtu, který má oprávnění **vlastníka** pro prostředky Azure blockchain Workbench.
+1. Přihlaste se k portálu Azure pomocí účtu, který má oprávnění **vlastníka** pro prostředky Azure Blockchain Workbench.
 2. V levém navigačním podokně zvolte **Skupiny prostředků**.
 3. Zvolte název skupiny prostředků svého nasazení služby Blockchain Workbench.
 4. Výběrem možnosti **Typ** tento seznam prostředků seřaďte a pak zvolte **SQL Server**.

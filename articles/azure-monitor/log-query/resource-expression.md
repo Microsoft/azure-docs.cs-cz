@@ -1,40 +1,40 @@
 ---
-title: výraz prostředku () v Azure Monitor dotaz na protokol | Microsoft Docs
-description: Výraz prostředku se používá v dotazu protokolu Azure Monitor orientovaném na prostředky k načtení dat z více zdrojů.
+title: resource() výraz v dotazu protokolu Azure Monitor | Dokumenty společnosti Microsoft
+description: Výraz prostředků se používá v dotazu protokolu Azure Monitor zaměřené na prostředky k načtení dat z více prostředků.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665695"
 ---
-# <a name="resource-expression-in-azure-monitor-log-query"></a>výraz prostředku () v dotazu Azure Monitor protokolu
+# <a name="resource-expression-in-azure-monitor-log-query"></a>výraz resource() v dotazu protokolu Azure Monitor
 
-Výraz `resource` se používá v rámci dotazu Azure Monitor [oboru pro](scope.md#query-scope) načtení dat z jiných prostředků. 
+Výraz `resource` se používá v dotazu Azure Monitor [vymezené prostředek](scope.md#query-scope) k načtení dat z jiných prostředků. 
 
 
 ## <a name="syntax"></a>Syntaxe
 
-*identifikátor* `resource(``)`
+`resource(`*Identifikátor*`)`
 
 ## <a name="arguments"></a>Argumenty
 
-- *Identifikátor*: ID prostředku prostředku.
+- *Identifikátor*: ID prostředku.
 
 | Identifikátor | Popis | Příklad
 |:---|:---|:---|
-| Prostředek | Zahrnuje data pro prostředek. | prostředek ("/Subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup/Providers/Microsoft.COMPUTE/VirtualMachines/myvm") |
-| Skupina prostředků nebo předplatné | Zahrnuje data prostředku a všech prostředků, které obsahuje.  | prostředek ("/Subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup) |
+| Prostředek | Zahrnuje data pro prostředek. | resource("/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup/providers/microsoft.compute/virtualmachines/myvm") |
+| Skupina prostředků nebo předplatné | Zahrnuje data pro prostředek a všechny prostředky, které obsahuje.  | resource("/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup) |
 
 
-## <a name="notes"></a>Poznámky:
+## <a name="notes"></a>Poznámky
 
-* Musíte mít oprávnění ke čtení tohoto prostředku.
+* Musíte mít přístup pro čtení k prostředku.
 
 
 ## <a name="examples"></a>Příklady
@@ -49,5 +49,5 @@ union (Heartbeat),(resource("/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podrobnosti o oboru dotazu najdete v tématu [Rozsah dotazů protokolu a rozsah času ve Azure Monitor Log Analytics](scope.md) .
-- Přístup k celé dokumentaci pro [dotazovací jazyk Kusto](/azure/kusto/query/).
+- Podrobnosti o oboru dotazu najdete v tématu Rozsah a časový rozsah protokolu protokolu [služby Azure Monitor.](scope.md)
+- Získejte přístup k úplné dokumentaci [k dotazovacímu jazyku Kusto](/azure/kusto/query/).

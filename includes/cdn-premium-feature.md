@@ -9,14 +9,14 @@ ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: include file
 ms.openlocfilehash: 5c6f79cb7ad0a31eb3461d6d8e54307537f0491e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74284092"
 ---
 > [!IMPORTANT]
-> Jedná se o funkci **Azure CDN Premium jenom z Verizon** , abyste mohli konfigurovat pravidla **Azure CDN od Microsoftu** , použijte prosím [modul Standard Rules](../articles/cdn/cdn-standard-rules-engine-reference.md). Rozšířená pravidla nejsou k dispozici pro **Azure CDN z Akamai**. Úplné porovnání funkcí CDN najdete v tématu [Azure CDN funkce produktu](../articles/cdn/cdn-features.md). 
+> Toto je funkce **Azure CDN Premium od verizonu** pouze konfigurace pravidel na **Azure CDN od Microsoftu** použijte [modul standardních pravidel](../articles/cdn/cdn-standard-rules-engine-reference.md). Pokročilá pravidla nejsou k dispozici pro **Azure CDN od Akamai**. Úplné porovnání funkcí CDN najdete v tématu [Azure CDN funkce produktu](../articles/cdn/cdn-features.md). 
 > 
 > 
 

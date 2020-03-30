@@ -9,25 +9,25 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 34699ed89e79448d66343021dd624cb872d0172d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77471677"
 ---
-V současné době můžou sdílené disky povolit jenom SSD úrovně Premium. Velikosti disků, které podporují tuto funkci, jsou P15 a vyšší. Různé velikosti disků můžou mít jiný limit `maxShares`, což nemůžete překročit při nastavení `maxShares` hodnoty.
+Prozatím mohou sdílené disky povolit pouze prémiové disky SSD. Velikosti disků, které podporují tuto funkci jsou P15 a větší. Různé velikosti disků `maxShares` mohou mít jiný limit, `maxShares` který nelze překročit při nastavování hodnoty.
 
-Pro každý disk můžete definovat `maxShares` hodnotu, která představuje maximální počet uzlů, které mohou současně sdílet disk. Pokud například plánujete nastavit cluster s podporou převzetí služeb při selhání se dvěma uzly, nastavili jste `maxShares=2`. Maximální hodnota je horní mez. Uzly mohou připojit nebo opustit cluster (připojit nebo odpojit disk), pokud je počet uzlů nižší, než je zadaná hodnota `maxShares`.
+Pro každý disk můžete `maxShares` definovat hodnotu, která představuje maximální počet uzlů, které mohou současně sdílet disk. Pokud například plánujete nastavit cluster s podporou převzetí služeb při `maxShares=2`selhání se 2 uzny, nastavíte . Maximální hodnota je horní mez. Uzly se mohou připojit nebo opustit cluster (připojit nebo odpojit disk), `maxShares` pokud je počet uzlů nižší než zadaná hodnota.
 
 > [!NOTE]
-> Hodnotu `maxShares` lze nastavit nebo upravit pouze v případě, že je disk odpojen ze všech uzlů.
+> Hodnotu `maxShares` lze nastavit nebo upravit pouze v případě, že je disk odpojen od všech uzlů.
 
-Následující tabulka ukazuje povolené maximální hodnoty pro `maxShares` podle velikosti disku:
+Následující tabulka znázorňuje povolené `maxShares` maximální hodnoty podle velikosti disku:
 
-|Velikosti disků  |maxShares limit  |
+|Velikosti disků  |limit maxShares  |
 |---------|---------|
 |P15, P20     |2         |
 |P30, P40, P50     |5         |
 |P60, P70, P80     |10         |
 
-Omezení počtu vstupně-výstupních operací a šířky pásma disku nejsou ovlivněny `maxShares` hodnotou. Například maximální IOPS disku P15 je 1100, zda maxShares = 1 nebo maxShares > 1.
+Viposlužby a omezení šířky pásma `maxShares` pro disk nejsou ovlivněny hodnotou. Například max IOPS disku P15 jsou 1100, zda maxShares = 1 nebo maxShares > 1.

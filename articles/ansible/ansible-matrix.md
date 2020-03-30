@@ -1,30 +1,30 @@
 ---
-title: Modul Ansible a matice verzí pro Azure | Microsoft Docs
-description: Modul Ansible a matice verzí pro Azure
-keywords: Ansible, role, matice, verze, Azure, DevOps
+title: Ansible modul a verze matice pro Azure | Dokumenty společnosti Microsoft
+description: Ansible modul a verze matice pro Azure
+keywords: ansible, role, matice, verze, azurové, devops
 ms.topic: reference
 ms.date: 10/14/2019
 ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74155988"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Modul Ansible a matice verzí
 
-Ansible zahrnuje sadu modulů pro použití při zřizování a konfiguraci prostředků Azure. Mezi tyto prostředky patří virtuální počítače, sady škálování, síťové služby a služby kontejneru. V tomto článku jsou uvedené různé moduly Ansible pro Azure a verze Ansible, ve kterých se dodávají.
+Ansible obsahuje sadu modulů pro použití při zřizování a konfiguraci prostředků Azure. Mezi tyto prostředky patří virtuální počítače, škálovací sady, síťové služby a kontejnerové služby. Tento článek uvádí různé ansible moduly pro Azure a Ansible verze, ve kterých dodávají.
 
-## <a name="ansible-modules-for-azure"></a>Moduly Ansible pro Azure
+## <a name="ansible-modules-for-azure"></a>Ansible moduly pro Azure
 
-Následující moduly lze spustit přímo na vzdálených hostitelích nebo prostřednictvím playbooky.  
+Následující moduly lze provádět přímo na vzdálených hostitelích nebo prostřednictvím playbooků.  
 
-Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících rolí Microsoft PlayBook.
+Tyto moduly jsou k dispozici v oficiálním vydání ansible a z následujících rolí microsoft playbook.
 
 > [!NOTE]
-> Od Ansible 2,9 a dalších jsme přejmenovali všechny * _facts moduly na * _info, aby odpovídaly konvenci pojmenování Ansible. Staré a přejmenované moduly jsou propojené, takže nezávisle na zobrazení upozornění na zastaralost budou všechny moduly fungovat stejně jako dřív.
+> Od ansible 2.9 dále jsme přejmenovali všechny moduly *_facts na *_info dodržovat ansible konvence pojmenování. Staré a přejmenované moduly jsou propojeny tak, že kromě varování před vyřazením fungují všechny moduly jako dříve.
 
-| Modul Ansible pro Azure                   |  Ansible 2,4 |  Ansible 2,5 |  Ansible 2,6 | Ansible 2,7 | Ansible 2,8 | Ansible 2,9 | Role Ansible | 
+| Ansible modul pro Azure                   |  Ansible 2,4 |  Ansible 2,5 |  Ansible 2,6 | Ansible 2,7 | Ansible 2,8 | Ansible 2,9 | Ansible Role | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------|--------------|  
 | **Compute**                    |           |                          |                          |                            |           |           |           |
 | azure_rm_availabilityset                   | Ano          | Ano                         | Ano          | Ano          | Ano          | Ano          | Ano          |
@@ -58,7 +58,7 @@ Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících r
 | azure_rm_virtualmachinescalesetextension_info | -            | -                        | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_virtualmachinescalesetinstance     | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_virtualmachinescalesetinstance_info | -            | -                         | -            | -            | Ano          | Ano          | Ano          |
-| **Sítě**                              |              |                             |              |              |              |              |              |
+| **Síťové služby**                              |              |                             |              |              |              |              |              |
 | azure_rm_appgateway                         | -            | -                           | -            | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_applicationsecuritygroup           | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_applicationsecuritygroup_info     | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
@@ -94,7 +94,7 @@ Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících r
 | azure_rm_virtualnetworkgateway              | -            | -                         | -          | -            | Ano          | Ano          | Ano          |
 | azure_rm_virtualnetworkpeering              | -            | -                         | -          | -            | Ano          | Ano          | Ano          |
 | azure_rm_virtualnetworkpeering_info         | -            | -                         | -          | -            | -            | Ano          | Ano          |
-| **Storage**                    |           |                          |                          |                            |           |           |         |
+| **Úložiště**                    |           |                          |                          |                            |           |           |         |
 | azure_rm_manageddisk                        | Ano          | Ano                         | Ano          | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_manageddisk_info                  | Ano          | Ano                         | Ano          | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_storageaccount                     | Ano          | Ano                         | Ano          | Ano          | Ano          | Ano          | Ano          |
@@ -157,10 +157,10 @@ Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících r
 | azure_rm_sqlfirewallrule_info              | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_sqlserver                          | -            | Ano                         | Ano          | Ano          | Ano          | Ano          | Ano          |
 | azure_rm_sqlserver_info                    | -            | Ano                         | Ano          | Ano          | Ano          | Ano          | Ano          |
-| **Analýzy**                    |           |                          |                          |                             |           |           |          |
+| **Analýza**                    |           |                          |                          |                             |           |           |          |
 | azure_rm_hdinsightcluster                   | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_hdinsightcluster_info              | -            | -                           | -            | -            | -            | Ano          | Ano          |
-| **Spolupráci**                    |           |                          |                          |                             |           |           |          |
+| **Integrace**                    |           |                          |                          |                             |           |           |          |
 | azure_rm_servicebus                         | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_servicebus_info                   | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
 | azure_rm_servicebusqueue                    | -            | -                           | -            | -            | Ano          | Ano          | Ano          |
@@ -215,12 +215,12 @@ Tyto moduly jsou k dispozici v oficiální verzi Ansible a od následujících r
 | azure_rm_iothub_info              | -            | -                         | -          | -          | -          | Ano        | Ano          |
 | azure_rm_iothubconsumergroup      | -            | -                         | -          | -          | -          | Ano        | Ano          |
 
-## <a name="introduction-to-playbook-role-for-azure"></a>Seznámení s rolí PlayBook pro Azure
+## <a name="introduction-to-playbook-role-for-azure"></a>Úvod do role playbooku pro Azure
 
-[Role azure_preview_module PlayBook](https://galaxy.ansible.com/Azure/azure_preview_modules/) zahrnuje všechny nejnovější moduly Azure. Aktualizace a opravy chyb jsou prováděny efektivněji než oficiální verze Ansible. Pokud pro účely zřizování prostředků Azure používáte Ansible, doporučujeme nainstalovat roli `azure_preview_module` PlayBook.
+Role [azure_preview_module playbook](https://galaxy.ansible.com/Azure/azure_preview_modules/) zahrnuje všechny nejnovější moduly Azure. Aktualizace a opravy chyb jsou prováděny včasnějším způsobem než oficiální verze Ansible. Pokud používáte Ansible pro účely zřizování prostředků `azure_preview_module` Azure, doporučujeme nainstalovat roli playbook.
 
-Role `azure_preview_module` PlayBook je vydaná každé tři týdny.
+Role `azure_preview_module` playbooku vychází každé tři týdny.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rolích PlayBook najdete v tématu [vytvoření opakovaně použitelné playbooky](https://docs.ansible.com/ansible/latest/playbooks_reuse.html). 
+Další informace o rolích playbooku naleznete v [tématu Vytváření opakovaně použitelných playbooků](https://docs.ansible.com/ansible/latest/playbooks_reuse.html). 

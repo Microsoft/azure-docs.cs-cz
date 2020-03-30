@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat aplikaci proxy aplikací tak, aby používala PingAccess
-description: Naučte se používat PingAccess k rozšiřování výhod aplikačního proxy serveru na aplikace pomocí ověřování založeného na hlavičkách.
+title: Jak nakonfigurovat aplikaci Proxy aplikace pro použití pingaccessu
+description: Naučte se používat pingaccess k rozšíření výhod proxy aplikace na aplikace používající ověřování založené na záhlaví
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,26 +17,26 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c852c69b6f64b59845b551202bd1a25646a49eb6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275660"
 ---
-# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Jak nakonfigurovat aplikaci proxy aplikací pro použití PingAccess
+# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Konfigurace aplikace Proxy aplikace pro použití technologie PingAccess
 
-Naše spolupráce s PingAccess teď umožňuje rozšiřování výhod aplikačního proxy serveru do aplikací pomocí ověřování založeného na hlavičkách. Pokud vaše aplikace nepoužívají hlavičky, přečtěte si v [dokumentaci k jednotnému přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) podrobnosti o dalších možnostech.
+Naše spolupráce s PingAccess nyní umožňuje rozšířit výhody proxy aplikací na aplikace pomocí ověřování na základě záhlaví. Pokud vaše aplikace záhlaví nepoužívají, přečtěte si naši dokumentaci k [jednotnému přihlašování,](application-proxy-configure-single-sign-on-with-kcd.md) kde najdete podrobnosti o dalších možnostech.
 
 ## <a name="overview-of-steps-and-recommended-documents"></a>Přehled kroků a doporučených dokumentů
 
-Ke konfiguraci aplikace pomocí PingAccess existují čtyři kroky:
+Chcete-li nakonfigurovat aplikaci pomocí technologie PingAccess, existují čtyři kroky:
 
 1.  Konfigurace konektorů proxy aplikací
 
-2.  Vytvoření aplikace Azure Proxy aplikací služby AD
+2.  Vytvoření aplikace proxy aplikace Azure AD
 
-3.  Stažení & konfigurace PingAccess
+3.  Stáhnout & Konfigurace pingaccessu
 
-4.  Konfigurace aplikací v PingAccess
+4.  Konfigurace aplikací v aplikaci PingAccess
 
-Podrobnosti o každém z těchto kroků najdete v našem [jednotném přihlašování s hlavičkou](application-proxy-configure-single-sign-on-with-ping-access.md).
+Podrobnosti o každém z těchto kroků naleznete v [dokumentaci k jednotnému přihlašování s záhlavími](application-proxy-configure-single-sign-on-with-ping-access.md).

@@ -1,6 +1,6 @@
 ---
-title: Postup otevření portů brány firewall vyžadovaných pro aplikaci proxy aplikace
-description: Zjistěte, jaké porty otevřete pro Azure AD Application Proxy fungovat správně
+title: Jak otevřít porty brány firewall potřebné pro aplikaci Proxy aplikace
+description: Zjistěte, jaké porty se mají otevřít pro proxy aplikace Azure AD, aby fungoval správně
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,27 +17,27 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b676508c73ff0233526f19b865bb9e4f7b80f12
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275547"
 ---
-# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Tom, jak otevřít porty brány firewall, vyžaduje se pro aplikaci Proxy aplikací
+# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Jak otevřít porty brány firewall potřebné pro aplikaci Proxy aplikace
 
-Úplný seznam požadovaných portů a funkce jednotlivých portů naleznete v části požadavky v [dokumentaci k proxy aplikací](application-proxy-add-on-premises-application.md). Všimněte si, že Proxy aplikace používá pouze odchozí porty.
+Úplný seznam požadovaných portů a funkce každého portu naleznete v části požadavky [v dokumentaci k proxy aplikaci](application-proxy-add-on-premises-application.md). Všimněte si, že proxy aplikace používá pouze odchozí porty.
 
-Můžete taky zkontrolovat, jestli máte všechny požadované porty otevřené, a to tak, že otevřete [Nástroj pro testování portů konektoru](https://aadap-portcheck.connectorporttest.msappproxy.net/) z místní sítě. Další zelené zaškrtnutí znamená větší odolnost proti chybám. 
+Můžete také zkontrolovat, zda máte všechny požadované porty otevřené otevřením [nástroje Connector Ports Test Tool](https://aadap-portcheck.connectorporttest.msappproxy.net/) z místní sítě. Více zelených značek znamená větší odolnost proti chybám. 
 
-## <a name="app-proxy-regions"></a>Proxy aplikací oblastí
+## <a name="app-proxy-regions"></a>Oblasti proxy aplikace
 
-Pracujeme na způsob, jak vám oznámíme, které z těchto oblastí musí být zelená za vás. Teď Ujistěte se, že všechny jsou. Také je vyžadována bez ohledu na to, jakou oblast v USA (střed).
+Pracujeme na způsobu, jak vám dát vědět, který z těchto regionů pro vás musí být zelený. Prozatím se ujisti, že jsou všichni. Centrální USA je také nutné bez ohledu na to, ve kterém regionu se nacházíte.
 
-Pokud chcete mít jistotu, že nástroj poskytuje správných výsledků, nezapomeňte na následující:
+Chcete-li se ujistit, že nástroj poskytuje správné výsledky, ujistěte se, že:
 
--   Spusťte nástroj v prohlížeči ze serveru, kam jste nainstalovali konektor.
+-   Otevřete nástroj v prohlížeči ze serveru, na kterém jste nainstalovali konektor.
 
--   Ujistěte se, že všechny proxy nebo brány firewall pro váš konektor jsou použita také na této stránce. To lze provést v aplikaci Internet Explorer tak, že v **nastavení** -&gt; **možnosti Internetu** -&gt; **připojení** -&gt; **Nastavení LAN**. Na této stránce se zobrazí pole "Použití Proxy serveru pro svůj LAN". Zaškrtněte toto políčko a vložte adresu proxy serveru do pole "Address".
+-   Ujistěte se, že všechny proxy servery nebo brány firewall, které se vztahují k konektoru jsou také použity na této stránce. To lze provést v aplikaci Internet Explorer najdete **v nastavení**  - &gt; **Nastavení nastavení připojení**  - &gt; **k síti**  - &gt; **LAN .** Na této stránce se zobrazí pole "Použít proxy server pro vaši síť LAN". Toto políčko zaškrtněte a adresu proxy vložte do pole Adresa.
 
 ## <a name="next-steps"></a>Další kroky
-[Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
+[Principy konektorů proxy aplikací Azure AD](application-proxy-connectors.md)

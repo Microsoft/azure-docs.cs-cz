@@ -1,61 +1,61 @@
 ---
-title: Azure Monitor dotazy protokolu | Microsoft Docs
-description: Odkazy na zdroje informací o tom, jak vytvářet dotazy protokolu v Azure Monitor.
+title: Dotazy protokolu Azure Monitor | Dokumenty společnosti Microsoft
+description: Odkazy na prostředky pro učení, jak psát dotazy protokolu v Azure Monitoru.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
 ms.openlocfilehash: fc943ac3cf82d22a58d0ba3390ad8d9bbee6a4c9
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669382"
 ---
-# <a name="azure-monitor-log-queries"></a>Azure Monitor dotazy protokolu
-Protokoly Azure Monitor jsou založené na službě Azure Průzkumník dat a Azure Monitor dotazy protokolu používají verzi stejného dotazovacího jazyka Kusto. [Dokumentace jazyka dotazů Kusto](/azure/kusto/query) má všechny podrobnosti o jazyku a měl by být vaším primárním prostředkem pro zápis Azure Monitorch dotazů protokolu. Tato stránka obsahuje odkazy na další zdroje informací o tom, jak zapisovat dotazy a rozdíly v Azure Monitor implementaci tohoto jazyka.
+# <a name="azure-monitor-log-queries"></a>Dotazy protokolu Azure Monitor
+Protokoly Azure Monitoru jsou postavené na Azure Data Explorer a dotazy protokolu Azure Monitor použít verzi stejného dotazovacího jazyka Kusto. [Kusto dotaz jazyka dokumentace](/azure/kusto/query) obsahuje všechny podrobnosti pro jazyk a měl by být primární prostředek pro psaní dotazů protokolu Azure Monitor. Tato stránka obsahuje odkazy na další prostředky pro učení, jak psát dotazy a na rozdíly s implementací Azure Monitor jazyka.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="getting-started"></a>Začínáme
 
-- [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) je lekce pro psaní dotazů a práce s výsledky v Azure Portal.
-- [Začínáme s Azure monitor dotazy protokolu](get-started-queries.md) jsou lekce pro zápis dotazů využívajících data protokolu Azure monitor.
+- [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) je lekce pro psaní dotazů a práci s výsledky na webu Azure Portal.
+- [Začínáme s dotazy protokolu Azure Monitor](get-started-queries.md) je lekce pro psaní dotazů pomocí dat protokolu Azure Monitor.
 
 ## <a name="concepts"></a>Koncepty
-- [Analýza dat protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md) poskytuje stručný přehled dotazů protokolu a popisuje, jak se strukturují data protokolu Azure monitor.
-- [Zobrazení a analýza dat protokolu v Azure monitor](../../azure-monitor/log-query/portals.md) vysvětluje portály, ve kterých vytváříte a spouštíte dotazy protokolu.
+- [Analýza dat protokolu v Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) poskytuje stručný přehled dotazů protokolu a popisuje, jak azure monitor data protokolu je strukturována.
+- [Zobrazení a analýza dat protokolu v Azure Monitorvysvětluje](../../azure-monitor/log-query/portals.md) portály, kde můžete vytvářet a spouštět dotazy protokolu.
 
-## <a name="reference"></a>Referenční informace
+## <a name="reference"></a>Odkaz
 
-- [Odkaz na jazyk dotazů](/azure/kusto/query) je úplný referenční příručka jazyka pro dotazovací jazyk Kusto.
-- [Rozdíly v jazyce Azure monitor protokolu dotazů](data-explorer-difference.md) popisují rozdíly mezi verzemi dotazovacího jazyka Kusto.
-- [Standardní vlastnosti v Azure monitor záznamy protokolu](../../azure-monitor/platform/log-standard-properties.md) popisují vlastnosti, které jsou standardní pro všechna Azure monitor data protokolu.
-- [Provádění dotazů protokolu meziprostředků v Azure monitor](../../azure-monitor/log-query/cross-workspace-query.md) popisuje, jak zapisovat dotazy protokolů, které používají data z více Log Analytics pracovních prostorů a Application Insights aplikací.
+- [Referenční příručka pro dotazovací jazyk](/azure/kusto/query) je úplný mj.
+- [Azure Monitor dotaz dotazu na rozdíly](data-explorer-difference.md) popisuje rozdíly mezi verzemi dotazovacího jazyka Kusto.
+- [Standardní vlastnosti v záznamech protokolu Azure Monitor](../../azure-monitor/platform/log-standard-properties.md) popisuje vlastnosti, které jsou standardní pro všechna data protokolu Azure Monitor.
+- [Provádění dotazů protokolu mezi prostředky v Azure Monitor](../../azure-monitor/log-query/cross-workspace-query.md) popisuje, jak psát dotazy protokolu, které používají data z více pracovních prostorů Log Analytics a aplikací Přehledy aplikací.
 
 
 ## <a name="examples"></a>Příklady
 
-- [Příklady dotazů protokolu Azure monitor poskytují příklady](examples.md) dotazů využívajících data protokolu Azure monitor.
+- [Příklady dotazů protokolu Azure Monitor](examples.md) poskytuje příklady dotazů pomocí dat protokolu Azure Monitor.
 
 
 
 ## <a name="lessons"></a>Lekce
 
-- [Práce s řetězci v Azure Monitorch dotazech protokolu](string-operations.md) popisuje, jak pracovat s řetězcovými daty.
-- Práce [s hodnotami data a času v Azure Monitorch dotazech protokolu](datetime-operations.md) popisuje, jak pracovat s daty data a času. 
-- [Agregace v Azure monitor dotazy protokolu](aggregations.md) a [rozšířené agregace v Azure monitor dotazech protokolu](advanced-aggregations.md) popisují způsob agregace a sumarizace dat.
-- [Spojení v Azure monitor dotazy protokolu](joins.md) popisují, jak propojit data z více tabulek.
-- [Práce s JSON a datovými strukturami v Azure Monitorch dotazech protokolu](json-data-structures.md) popisuje, jak analyzovat data JSON.
-- [Zápis rozšířených dotazů protokolu v Azure monitor](advanced-query-writing.md) popisuje strategie pro vytváření složitých dotazů a opakované použití kódu.
-- [Vytváření grafů a diagramů z Azure Monitorch dotazů protokolu](charts.md) popisuje, jak vizualizovat data z dotazu protokolu.
+- [Práce s řetězci v dotazech protokolu Azure Monitor](string-operations.md) popisuje, jak pracovat s řetězcovými daty.
+- [Práce s hodnotami času data v dotazech protokolu Azure Monitor](datetime-operations.md) popisuje, jak pracovat s daty data a času. 
+- [Agregace v dotazech protokolu Azure Monitor](aggregations.md) a [rozšířené agregace v dotazech protokolu Azure Monitor](advanced-aggregations.md) popisují, jak agregovat a sumarizovat data.
+- [Spojení v dotazech protokolu Azure Monitor](joins.md) popisuje, jak se připojit data z více tabulek.
+- [Práce s JSON a datové struktury v dotazech protokolu Azure Monitor](json-data-structures.md) popisuje, jak analyzovat json data.
+- [Psaní rozšířené dotazy protokolu v Azure Monitor](advanced-query-writing.md) popisuje strategie pro vytváření složitých dotazů a opětovné použití kódu.
+- [Vytváření grafů a diagramů z dotazů protokolu Azure Monitor](charts.md) popisuje, jak vizualizovat data z dotazu protokolu.
 
 ## <a name="cheatsheets"></a>Přehledy
 
--  [Dotaz SQL na Azure monitor log](sql-cheatsheet.md) pomáhá uživatelům, kteří jsou již obeznámeni s SQL.
--  [Splunk do Azure monitor dotazování protokolu pro](splunk-cheatsheet.md) uživatele, kteří už znají Splunk.
+-  [Dotaz protokolu SQL to Azure Monitor](sql-cheatsheet.md) pomáhá uživatelům, kteří už jsou obeznámeni s SQL.
+-  [Splunk to Azure Monitor dotaz protokolu](splunk-cheatsheet.md) pomáhá uživatelům, kteří jsou již obeznámeni s Splunk.
  
 ## <a name="next-steps"></a>Další kroky
 
-- Přístup k kompletní [dokumentaci k odkazům pro dotazovací jazyk Kusto](/azure/kusto/query/).
+- Získejte přístup k úplné [referenční dokumentaci pro dotazovací jazyk Kusto](/azure/kusto/query/).

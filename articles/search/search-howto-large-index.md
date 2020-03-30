@@ -1,7 +1,7 @@
 ---
-title: Indexování velkých datových sad pomocí předdefinovaných indexerů
+title: Indexování velké datové sady pomocí vestavěných indexerů
 titleSuffix: Azure Cognitive Search
-description: Strategie pro velké indexování dat nebo výpočetně náročné indexování prostřednictvím dávkového režimu, rezdrojů a technik pro plánované, paralelní a distribuované indexování.
+description: Strategie pro indexování velkých dat nebo výpočtově náročné indexování prostřednictvím dávkového režimu, zdrojů a technik pro naplánované, paralelní a distribuované indexování.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,102 +9,102 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190958"
 ---
-# <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indexování velkých datových sad v Azure Kognitivní hledání
+# <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Jak indexovat velké datové sady v Azure Cognitive Search
 
-Vzhledem k nárůstu nebo zpracování objemů dat se můžete setkat s tím, že jednoduché nebo výchozí strategie indexování už nejsou praktické. Pro Azure Kognitivní hledání je k dispozici několik přístupů k větším datovým sadám, od způsobu struktury požadavků na nahrání dat, k používání indexerem specifického pro plánované a distribuované úlohy.
+Jak rostou objemy dat nebo se mění potřeby zpracování, můžete zjistit, že jednoduché nebo výchozí strategie indexování již nejsou praktické. Pro Azure Cognitive Search existuje několik přístupů pro přizpůsobení větší datové sady, od způsobu strukturování žádosti o nahrání dat až po použití indexeru specifického pro zdroj pro naplánované a distribuované úlohy.
 
-Stejné techniky platí i pro dlouhotrvající procesy. Konkrétně postup, který je popsaný v [paralelním indexování](#parallel-indexing) , je užitečný pro výpočetně náročné indexování, jako je například analýza obrázku nebo zpracování přirozeného jazyka v [kanálu rozšíření AI](cognitive-search-concept-intro.md).
+Stejné techniky platí i pro dlouhotrvající procesy. Zejména kroky popsané v [paralelní indexování](#parallel-indexing) jsou užitečné pro výpočtově náročné indexování, jako je například analýza obrazu nebo zpracování přirozeného jazyka v [kanálu obohacení AI](cognitive-search-concept-intro.md).
 
-Následující části Prozkoumejte tři techniky pro indexování velkých objemů dat.
+Následující části popisují tři techniky pro indexování velkého množství dat.
 
-## <a name="option-1-pass-multiple-documents"></a>Možnost 1: předání více dokumentů
+## <a name="option-1-pass-multiple-documents"></a>Možnost 1: Předání více dokumentů
 
-Jedním z nejjednodušších mechanismů indexování větší sady dat je odeslání více dokumentů nebo záznamů v jednom požadavku. Pokud je celá datová část kratší než 16 MB, může požadavek zpracovat až 1000 dokumentů v operaci hromadného nahrávání. Tato omezení platí bez ohledu na to, zda používáte metodu [Add documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) nebo [index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) v sadě .NET SDK. Pro obě rozhraní API byste měli v těle každého požadavku zabalit 1000 dokumentů.
+Jedním z nejjednodušších mechanismů pro indexování větší datové sady je odeslání více dokumentů nebo záznamů v jedné žádosti. Tak dlouho, dokud je celá datová část pod 16 MB, požadavek může zpracovat až 1000 dokumentů v operaci hromadného nahrávání. Tato omezení platí bez ohledu na to, zda používáte rozhraní [API pro čtení dokumentů REST](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) NEBO metodu Index v [sdk](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) .NET. Pro obě rozhraní API by balíček 1000 dokumentů v těle každé žádosti.
 
-Dávkové indexování je implementováno pro jednotlivé požadavky pomocí REST nebo .NET nebo prostřednictvím indexerů. Několik indexerů pracuje v různých omezeních. Indexování objektů BLOB v Azure nastavuje velikost dávky na 10 dokumentů v rozpoznávání větší průměrné velikosti dokumentu. Pro indexery založené na [REST API vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)můžete nastavit argument `BatchSize` pro přizpůsobení tohoto nastavení tak, aby lépe odpovídal charakteristikám vašich dat. 
-
-> [!NOTE]
-> Aby se zachovala velikost dokumentu, vyhněte se přidávání nequeryablech dat do indexu. Image a další binární data se nedají přímo prohledávat a v indexu by se neměly ukládat. Pro integraci nequeryablech dat do výsledků hledání byste měli definovat pole bez možností vyhledávání, které ukládá odkaz na adresu URL do daného prostředku.
-
-## <a name="option-2-add-resources"></a>Možnost 2: Přidání prostředků
-
-Služby, které jsou zřízené na jedné ze [standardních cenových úrovní](search-sku-tier.md) , často využívají kapacitu pro úložiště i úlohy (dotazy nebo indexování), což [zvyšuje počet a velikost replik](search-capacity-planning.md) , které představují zjevné řešení pro využívání větších datových sad. Pro dosažení nejlepších výsledků budete potřebovat oba prostředky: oddíly pro úložiště a repliky pro práci s přijímáním dat.
-
-Zvýšení počtu replik a oddílů jsou Fakturovatelné události, které zvyšují vaše náklady, ale pokud v rámci maximálního zatížení nebudete průběžně indexovat, můžete přidat škálování po dobu trvání procesu indexování a potom po indexování změnit úrovně prostředků směrem dolů. píše.
-
-## <a name="option-3-use-indexers"></a>Možnost 3: použití indexerů
-
-[Indexery](search-indexer-overview.md) se používají k procházení podporovaných zdrojů dat Azure pro prohledávatelný obsah. I když není specificky určená pro indexování ve velkém měřítku, je k dispozici několik možností indexeru, které jsou zvláště užitečné při používání větších datových sad:
-
-+ Plánovače umožňují v pravidelných intervalech vyřídit indexování, takže je můžete v průběhu času rozložit.
-+ Naplánované indexování může pokračovat v posledním známém bodu zastavení. Pokud zdroj dat není plně procházen v průběhu 24 hodin, indexer bude pokračovat v indexování dvou dnů na všech místech, kde se nachází na levé straně.
-+ Rozdělení dat na menší jednotlivé zdroje dat umožňuje paralelní zpracování. Zdrojová data můžete rozdělit do menších součástí, například do více kontejnerů v úložišti objektů BLOB v Azure, a pak vytvořit odpovídající více [objektů zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) v Azure kognitivní hledání, které je možné indexovat paralelně.
+Dávkové indexování je implementováno pro jednotlivé požadavky pomocí REST nebo .NET nebo prostřednictvím indexerů. Několik indexerů pracuje pod různými limity. Konkrétně azure blob indexování nastaví velikost dávky na 10 dokumentů jako uznání větší průměrné velikosti dokumentu. Indexery založené na [rozhraní REST ROZHRANÍ API vytvořit indexeru](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)můžete nastavit `BatchSize` argument pro přizpůsobení tohoto nastavení tak, aby lépe odpovídalcharakteristiky charakteristiky dat. 
 
 > [!NOTE]
-> Indexery jsou specifické pro zdroj dat. použití přístupu indexeru je možné realizovat jenom pro vybrané zdroje dat v Azure: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [BLOB Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+> Chcete-li zachovat zmenšil velikost dokumentu, vyhněte se přidávání nedotazovatelných dat do indexu. Obrázky a další binární data nelze přímo prohledávat a neměly by být uloženy v indexu. Chcete-li integrovat nedotazovatelná data do výsledků hledání, měli byste definovat pole, které není možné prohledávat, které ukládá odkaz na adresu URL na prostředek.
 
-### <a name="scheduled-indexing"></a>Naplánované indexování
+## <a name="option-2-add-resources"></a>Možnost 2: Přidání zdrojů
 
-Plánování indexeru je důležitým mechanismem pro zpracování rozsáhlých datových sad a také pomalým procesům, jako je analýza obrázků v kanálu vyhledávání vnímání. Zpracování indexeru funguje v průběhu 24 hodin. Pokud se zpracování neúspěšně dokončí do 24 hodin, chování plánování indexeru může fungovat na vaši výhodu. 
+Služby, které jsou zřízeny na jedné z [cenových úrovní Standard](search-sku-tier.md) často mají nevyužitou kapacitu pro úložiště i úlohy (dotazy nebo indexování), což zvyšuje [rozdělení a repliky počítá](search-capacity-planning.md) zřejmé řešení pro ubytování větší datové sady. Pro dosažení nejlepších výsledků potřebujete oba prostředky: oddíly pro úložiště a repliky pro práci při přijím dat.
 
-Podle návrhu plánované indexování začíná v určitých intervalech a úloha se obvykle dokončuje před pokračováním v dalším naplánovaném intervalu. Pokud se ale zpracování nedokončilo v intervalu, zastaví se indexer (protože byl mimo čas). V dalším intervalu se zpracování pokračuje tam, kde naposledy skončila, a systém udržuje přehled o tom, kde k tomu dochází. 
+Zvýšení repliky a oddíly jsou fakturovatelné události, které zvyšují náklady, ale pokud jste průběžně indexování pod maximální zatížení, můžete přidat měřítko po dobu trvání procesu indexování a potom upravit úrovně prostředků zpět dolů po indexování je Dokončení.
 
-V praktických případech se pro zatížení indexů, které pokrývá několik dní, dá indexer vložit do 24 hodin. Když indexování pokračuje za dalších 24 hodin, restartuje se v posledním známém dokumentu. Tímto způsobem může indexer pracovat svým způsobem prostřednictvím nevyřízených položek dokumentů v rámci série dnů, dokud nebudou zpracovány všechny nezpracované dokumenty. Další informace o tomto přístupu najdete v tématu [indexování velkých datových sad v úložišti objektů BLOB v Azure](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Další informace o obecném nastavení plánů najdete v tématu [Vytvoření indexeru REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) nebo v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
+## <a name="option-3-use-indexers"></a>Možnost 3: Použití indexerů
+
+[Indexery](search-indexer-overview.md) se používají k procházení podporovaných zdrojů dat Azure pro prohledávatelný obsah. I když není speciálně určen pro rozsáhlé indexování, několik možností indexeru jsou zvláště užitečné pro přizpůsobení větší datové sady:
+
++ Plánovače umožňují parcelovat indexování v pravidelných intervalech, takže je můžete rozložit v průběhu času.
++ Plánované indexování může pokračovat v posledním známém bodu zastavení. Pokud zdroj dat není plně procházeno v rámci 24hodinového okna, indexer bude pokračovat v indexování druhý den kdekoli, kde skončil.
++ Rozdělení dat do menších jednotlivých zdrojů dat umožňuje paralelní zpracování. Zdrojová data můžete rozdělit na menší součásti, například do více kontejnerů v úložišti objektů Blob Azure, a pak vytvořit odpovídající, více [objektů zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) v Azure Cognitive Search, které lze indexovat paralelně.
+
+> [!NOTE]
+> Indexery jsou specifické pro zdroj dat, takže použití přístupu indexeru je životaschopné jenom pro vybrané zdroje dat v Azure: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blob storage](search-howto-indexing-azure-blob-storage.md), Table [storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+
+### <a name="scheduled-indexing"></a>Plánované indexování
+
+Plánování indexeru je důležitým mechanismem pro zpracování velkých datových sad, stejně jako pomalu běžící procesy, jako je analýza obrázků v kanálu kognitivního vyhledávání. Zpracování indexeru pracuje v rámci 24hodinového okna. Pokud se zpracování nepodaří dokončit do 24 hodin, chování indexeru plánování může pracovat ve svůj prospěch. 
+
+Podle návrhu, plánované indexování začíná v určitých intervalech, s úlohou obvykle dokončení před pokračováním v dalším naplánovaném intervalu. Pokud však zpracování není dokončeno v rámci intervalu, indexer se zastaví (protože vypršel čas). V dalším intervalu zpracování pokračuje tam, kde naposledy skončilo, přičemž systém sleduje, kde k tomu dochází. 
+
+V praxi pro index zatížení zahrnující několik dní, můžete umístit indexer na 24hodinový plán. Při obnovení indexování pro další 24hodinový cyklus se restartuje na poslední známý dobrý dokument. Tímto způsobem indexer může pracovat svou cestu přes nevyřízené položky dokumentu v průběhu řady dní, dokud všechny nezpracované dokumenty jsou zpracovány. Další informace o tomto přístupu najdete [v tématu indexování velkých datových sad v úložišti objektů blob Azure](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Další informace o nastavení plánů obecně naleznete v [tématu Vytvoření rozhraní REST API indexeru](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) nebo v [tématu Jak naplánovat indexery pro Azure Cognitive Search](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
 ### <a name="parallel-indexing"></a>Paralelní indexování
 
-Strategie paralelního indexování je založena na indexování více zdrojů dat v úlohách, kde každá definice zdroje dat určuje podmnožinu dat. 
+Strategie paralelního indexování je založena na indexování více zdrojů dat v unisono, kde každá definice zdroje dat určuje podmnožinu dat. 
 
-Pro Neběžné, náročné požadavky na indexování, jako je rozpoznávání OCR u naskenovaných dokumentů v kanálu hledání rozpoznávání, analýza obrázků nebo zpracování v přirozeném jazyce – často se jedná o správný přístup k dokončení dlouhodobě běžící proces v nejkratší době. Pokud můžete eliminovat nebo snižovat požadavky na dotazy, paralelní indexování na službě, která současně nezpracovává dotazy, je nejlepší volbou pro práci prostřednictvím velkého těla pomalého zpracování obsahu. 
+Pro nerutinní, výpočtově náročné požadavky na indexování – například rozpoznávání OCR na skenovaných dokumentech v kanálu kognitivního vyhledávání, analýza obrázků nebo zpracování přirozeného jazyka – je strategie paralelního indexování často správným přístupem k dokončení dlouhotrvajícího procesu v co nejkratším čase. Pokud můžete eliminovat nebo snížit požadavky na dotazy, paralelní indexování ve službě, která není současně zpracování dotazů je nejlepší možnost strategie pro práci prostřednictvím velké množství obsahu pomalé zpracování. 
 
 Paralelní zpracování má tyto prvky:
 
-+ Rozdělte zdrojová data mezi více kontejnerů nebo více virtuálních složek uvnitř stejného kontejneru. 
-+ Namapujte každou Mini datovou sadu na vlastní [zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source), který se spáruje s vlastním [indexerem](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
-+ Pro rozpoznávání rozpoznávání se v každé definici indexeru odkázat na stejný [dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) .
-+ Zapište do stejného cílového vyhledávacího indexu. 
-+ Naplánujte, aby se všechny indexery spouštěly ve stejnou dobu.
++ Rozdělit zdrojová data mezi více kontejnerů nebo více virtuálních složek uvnitř stejného kontejneru. 
++ Namapujte každou mini datovou sadu na vlastní [zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source), spárovaný s vlastním [indexerem](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
++ Pro kognitivní vyhledávání, odkazovat na stejné [dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) v každé definici indexeru.
++ Zapište do stejného indexu hledání cíle. 
++ Naplánujte spuštění všech indexerů současně.
 
 > [!NOTE]
-> V Azure Kognitivní hledání nemůžete přiřadit jednotlivé repliky nebo oddíly k indexování nebo zpracování dotazů. Systém Určuje, jak se prostředky používají. Aby bylo možné pochopit dopad na výkon dotazů, můžete si před přechodem do provozu vyzkoušet paralelní indexování v testovacím prostředí.  
+> V Azure Cognitive Search nelze přiřadit jednotlivé repliky nebo oddíly k indexování nebo zpracování dotazů. Systém určuje způsob použití prostředků. Chcete-li pochopit dopad na výkon dotazu, můžete zkusit paralelní indexování v testovacím prostředí před jeho válcování do produkčního prostředí.  
 
-### <a name="how-to-configure-parallel-indexing"></a>Jak nakonfigurovat paralelní indexování
+### <a name="how-to-configure-parallel-indexing"></a>Konfigurace paralelního indexování
 
-U indexerů se kapacita zpracování volně vychází z jednoho subsystému indexeru pro každou jednotku služby (SU), kterou používá vaše vyhledávací služba. V Azure Kognitivní hledání Services zřízených na úrovni Basic nebo Standard s nejméně dvěma replikami je možné víc souběžných indexerů. 
+U indexerů je kapacita zpracování volně založena na jednom subsystému indexeru pro každou servisní jednotku (SU) používanou vyhledávací službou. Více souběžných indexerů je možné ve službách Azure Cognitive Search zřízených na úrovních Basic nebo Standard, které mají alespoň dvě repliky. 
 
-1. V [Azure Portal](https://portal.azure.com)na stránce **Přehled** řídicího panelu vyhledávací služby zkontrolujte **cenovou úroveň** a potvrďte, že se může přizpůsobit paralelnímu indexování. Úrovně Basic a Standard nabízejí více replik.
+1. Na [portálu Azure](https://portal.azure.com)na stránce **Přehled** řídicího panelu vyhledávací služby zkontrolujte **cenovou úroveň** a potvrďte, že může pojmout paralelní indexování. Úrovně Basic i Standard nabízejí více replik.
 
-2. V **nastavení** > **škálování** [zvětšete repliky](search-capacity-planning.md) pro paralelní zpracování: jednu další repliku pro každou úlohu indexeru. Ponechte dostatečný počet pro existující svazek dotazu. Omezení zatížení dotazů na indexování není dobré kompromisy.
+2. V **nastavení** > **škálování**, [zvýšit repliky](search-capacity-planning.md) pro paralelní zpracování: jedna další replika pro každou úlohu indexeru. Ponechte dostatečný počet pro existující svazek dotazu. Obětování úloh dotazu pro indexování není dobrým kompromisem.
 
-3. Distribuujte data do více kontejnerů na úrovni, které můžou Azure Kognitivní hledání indexerům dosáhnout. Může se jednat o více tabulek v Azure SQL Database, více kontejnerů v úložišti objektů BLOB v Azure nebo víc kolekcí. Definujte jeden objekt zdroje dat pro každou tabulku nebo kontejner.
+3. Distribuujte data do více kontejnerů na úrovni, které mohou dosáhnout indexery Azure Cognitive Search. Může se jednalo o více tabulek v Azure SQL Database, více kontejnerů v úložišti objektů blob Azure nebo více kolekcí. Definujte jeden objekt zdroje dat pro každou tabulku nebo kontejner.
 
-4. Vytvoření a naplánování více indexerů, které mají být spuštěny paralelně:
+4. Vytvořte a naplánujte více indexerů tak, aby běžely paralelně:
 
-   + Vybere službu se šesti replikami. Nakonfigurujte šest indexerů, každý z nich mapovaných na zdroj dat, který obsahuje jednu šestou datovou sadu, pro 6 rozdělte celou datovou sadu. 
+   + Předpokládejme službu se šesti replikami. Nakonfigurujte šest indexerů, z nichž každý je mapován na zdroj dat obsahující jednu šestinu sady dat pro šesticestné rozdělení celé sady dat. 
 
-   + Najeďte jednotlivé indexery na stejný index. Pro zátěžové vyhledávání najeďte jednotlivé indexery na stejný dovednosti.
+   + Najelete každý indexer na stejný index. Pro úlohy kognitivní vyhledávání, přejděte každý indexer na stejnou sadu dovedností.
 
-   + V rámci každé definice indexeru Naplánujte stejný vzor spuštění za běhu. `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` například vytvoří plán na 2018-05-15 u všech indexerů spuštěných ve osmi hodinových intervalech.
+   + V rámci každé definice indexeru naplánujte stejný vzor spuštění za běhu. Například `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` vytvoří plán na 2018-05-15 na všechny indexery, spuštěné v osmihodinových intervalech.
 
-V naplánovaném čase začínají všechny indexery, načítání dat, použití rozšíření (Pokud jste nakonfigurovali kanál vyhledávání rozpoznávání) a zapisujete do indexu. Azure Kognitivní hledání nezamkne index pro aktualizace. Souběžné zápisy jsou spravovány s opakováním, pokud konkrétní zápis při prvním pokusu neproběhne úspěšně.
+V naplánovaném čase všechny indexery zahájit spuštění, načítání dat, použití obohacení (pokud jste nakonfigurovali kanál kognitivní vyhledávání) a zápis do indexu. Azure Cognitive Search neuzamkne index pro aktualizace. Souběžné zápisy jsou spravovány, s opakováním, pokud konkrétní zápis neuspěje na první pokus.
 
 > [!Note]
-> Při zvyšování počtu replik zvažte zvýšení počtu oddílů, pokud je velikost indexu rozrůstat, aby se významně zvýšila. Oddíly ukládají řezy indexovaného obsahu; více oddílů, které máte, menší řez každého z nich musí být uložen.
+> Při zvyšování repliky, zvažte zvýšení počtu oddílů, pokud se předpokládá, že velikost indexu výrazně zvýšit. Oddíly ukládají řezy indexovaného obsahu; čím více oddílů máte, tím menší je řez, který každý z nich musí uložit.
 
 ## <a name="see-also"></a>Viz také
 
 + [Přehled indexeru](search-indexer-overview.md)
 + [Indexování na portálu](search-import-data-portal.md)
-+ [Azure SQL Database indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-+ [Indexer databáze Azure Cosmos](search-howto-index-cosmosdb.md)
++ [Indexer databáze Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Indexer pro Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Indexer pro Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Indexer pro Azure Table Storage](search-howto-indexing-azure-tables.md)
-+ [Zabezpečení v Azure Kognitivní hledání](search-security-overview.md)
++ [Zabezpečení v Azure Cognitive Search](search-security-overview.md)

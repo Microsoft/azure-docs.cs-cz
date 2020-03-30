@@ -1,7 +1,7 @@
 ---
-title: Mapování vstupu na výstupní pole
+title: Mapování vstupu do výstupních polí
 titleSuffix: Azure Cognitive Search
-description: Extrahování a obohacení zdrojových datových polí a mapování na výstupní pole v indexu služby Azure Kognitivní hledání.
+description: Extrahujte a obohaťte zdrojová datová pole a mapujte na výstupní pole v indexu Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74280966"
 ---
-# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Jak mapovat pole obohacená AI na index s možností prohledávání
+# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Jak mapovat pole obohacená umělou ai do indexu s možnostmi vyhledávání
 
-V tomto článku se dozvíte, jak namapovat obohacená vstupní pole na výstupní pole v indexu s možností prohledávání. Po [Definování dovednosti](cognitive-search-defining-skillset.md)je nutné namapovat výstupní pole libovolné dovednosti, která přímo přispívá k danému poli v indexu vyhledávání. 
+V tomto článku se dozvíte, jak mapovat obohacená vstupní pole do výstupních polí v indexu, který lze prohledávat. Po [definování sady dovedností](cognitive-search-defining-skillset.md)je nutné namapovat výstupní pole libovolné dovednosti, která přímo přispívá hodnotami k danému poli v indexu vyhledávání. 
 
-Pro přesun obsahu z obohacených dokumentů do indexu jsou vyžadovány mapování polí výstupu.  Obohacený dokument je ve skutečnosti stromovou strukturou informací, a to i v případě, že existuje podpora složitých typů v indexu, někdy můžete chtít transformovat informace z obohaceného stromu na jednoduchý typ (např. pole řetězců). Mapování polí výstupu vám umožní provádět transformace datových tvarů sloučením informací.
+Mapování výstupního pole jsou vyžadovány pro přesunutí obsahu z obohacených dokumentů do indexu.  Obohacený dokument je opravdu strom informací a přestože je podpora pro komplexní typy v indexu, někdy můžete chtít transformovat informace z obohaceného stromu do jednodušší typ (například pole řetězců). Mapování výstupních polí umožňuje provádět transformace obrazců dat sloučením informací.
 
-## <a name="use-outputfieldmappings"></a>Použití outputFieldMappings
-K mapování polí přidejte `outputFieldMappings` do definice indexeru, jak je znázorněno níže:
+## <a name="use-outputfieldmappings"></a>Použít outputFieldMappings
+Chcete-li mapovat pole, přidejte `outputFieldMappings` do definice indexeru, jak je znázorněno níže:
 
 ```http
 PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -64,21 +64,21 @@ Tělo žádosti je strukturováno takto:
 }
 ```
 
-Pro každé mapování polí výstupu nastavte umístění dat ve stromu obohaceného dokumentu (sourceFieldName) a název pole, jak je odkazováno v indexu (targetFieldName).
+Pro každé mapování výstupního pole nastavte umístění dat ve stromu obohaceného dokumentu (sourceFieldName) a název pole, na které odkazuje index (targetFieldName).
 
-## <a name="flattening-information-from-complex-types"></a>Sloučení informací ze složitých typů 
+## <a name="flattening-information-from-complex-types"></a>Informace o sloučení sloučení ze složitých typů 
 
-Cesta v sourceFieldName může představovat jeden nebo více elementů. V příkladu výše ```/document/content/sentiment``` představuje jednu číselnou hodnotu, zatímco ```/document/content/organizations/*/description``` představuje několik popisů organizace. 
+Cesta ve sourceFieldName může představovat jeden prvek nebo více prvků. Ve výše uvedeném příkladu ```/document/content/sentiment``` představuje ```/document/content/organizations/*/description``` jednu číselnou hodnotu, zatímco představuje několik popisů organizace. 
 
-V případech, kdy existuje několik prvků, jsou "shrnuty" do pole, které obsahuje každý prvek. 
+V případech, kdy existuje několik prvků, jsou "sloučí" do pole, které obsahuje každý z prvků. 
 
-Čím více z nich bude ```/document/content/organizations/*/description``` například, data v poli *descriptions* budou vypadat jako ploché pole popisů předtím, než se naindexuje:
+Konkrétněji, pro ```/document/content/organizations/*/description``` příklad data v poli *popisy* bude vypadat jako ploché pole popisů před získá indexovány:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
 
-Toto je důležitý princip, takže budeme poskytovat další příklad. Představte si, že máte pole komplexních typů jako součást stromu rozšíření. Řekněme, že je členem s názvem customEntities, který obsahuje pole komplexních typů, jako je ten, který je popsán níže.
+Jedná se o důležitou zásadu, proto uvedeme další příklad. Představte si, že máte pole komplexní typy jako součást stromu obohacení. Řekněme, že je člen s názvem customEntities, který má pole komplexní typy, jako je popsáno níže.
 
 ```json
 "document/customEntities": 
@@ -109,9 +109,9 @@ Toto je důležitý princip, takže budeme poskytovat další příklad. Předst
 ]
 ```
 
-Předpokládejme, že váš index obsahuje pole s názvem "nemoci" typu Collection (EDM. String), kde byste chtěli uložit všechny názvy entit. 
+Předpokládejme, že váš index má pole s názvem 'nemoci' typu Collection(Edm.String), kde chcete uložit každý z názvů entit. 
 
-To lze provést snadno pomocí symbolu "\*", jak je znázorněno níže:
+To lze provést snadno pomocí\*symbolu " " takto:
 
 ```json
     "outputFieldMappings": [
@@ -122,13 +122,13 @@ To lze provést snadno pomocí symbolu "\*", jak je znázorněno níže:
     ]
 ```
 
-Tato operace bude jednoduše "shrnout" jednotlivé názvy customEntities prvků do jediného pole řetězců takto:
+Tato operace bude jednoduše "sloučí" každý z názvů vlastníentityprvky do jednoho pole řetězců, jako je tento:
 
 ```json
   "diseases" : ["heart failure","morquio"]
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Po namapování obohacených polí na prohledávatelné pole můžete [jako součást definice indexu](search-what-is-an-index.md)nastavit atributy polí pro každé z polí, která lze prohledávat.
+Po namapování obohacených polí na prohledávatelná pole můžete nastavit atributy polí pro každé prohledávatelné pole [jako součást definice indexu](search-what-is-an-index.md).
 
-Další informace o mapování polí najdete v tématu [mapování polí v indexerech Azure kognitivní hledání](search-indexer-field-mappings.md).
+Další informace o mapování polí najdete [v tématu Mapování polí v indexerech Azure Cognitive Search](search-indexer-field-mappings.md).

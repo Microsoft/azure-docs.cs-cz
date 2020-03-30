@@ -1,43 +1,43 @@
 ---
-title: Ingestování dat mezipaměti HPC Azure – ruční kopírování
-description: Použití příkazů CP k přesunu dat do cíle úložiště objektů BLOB v mezipaměti HPC Azure
+title: Ingestování dat mezipaměti Azure HPC – ruční kopírování
+description: Použití příkazů cp k přesunutí dat do cíle úložiště objektů Blob v azure hpc mezipaměti
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: fc397088e46f0d2b623080f3deed24c386e7d8b4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168479"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Ingestování dat mezipaměti HPC Azure – metoda ručního kopírování
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Ingestování dat mezipaměti Azure HPC – metoda ručního kopírování
 
-Tento článek obsahuje podrobné pokyny pro ruční kopírování dat do kontejneru úložiště objektů BLOB pro použití s mezipamětí Azure HPC. K optimalizaci rychlosti kopírování používá vícevláknové paralelní operace.
+Tento článek obsahuje podrobné pokyny pro ruční kopírování dat do kontejneru úložiště objektů Blob pro použití s mezipamětí Azure HPC. Používá vícevláknové paralelní operace pro optimalizaci rychlosti kopírování.
 
-Další informace o přesouvání dat do úložiště objektů BLOB pro mezipaměť HPC Azure najdete v tématu [přesun dat do úložiště objektů BLOB v Azure](hpc-cache-ingest.md).
+Další informace o přesunu dat do úložiště objektů Blob pro azure hpc mezipaměť najdete v článek [Přesun dat do úložiště objektů blob Azure](hpc-cache-ingest.md).
 
-## <a name="simple-copy-example"></a>Příklad jednoduchého kopírování
+## <a name="simple-copy-example"></a>Příklad jednoduché kopie
 
-Můžete ručně vytvořit vícevláknovou kopii na klientovi spuštěním více než jednoho příkazu kopírování na pozadí v předdefinovaných sadách souborů nebo cest.
+Můžete ručně vytvořit vícevláknovou kopii na straně klienta spuštěním více než jeden příkaz kopie najednou na pozadí proti předdefinované sady souborů nebo cest.
 
-Příkaz ``cp`` Linux/UNIX zahrnuje ``-p`` argumentu, který zachová metadata vlastnictví a mtime. Přidání tohoto argumentu do příkazů níže je volitelné. (Přidáním argumentu se zvýší počet volání systému souborů odeslaných z klienta do cílového systému souborů pro úpravu metadat.)
+Příkaz Linux/UNIX ``cp`` obsahuje ``-p`` argument pro zachování vlastnictví a metadat mtime. Přidání tohoto argumentu do níže uvedených příkazů je volitelné. (Přidání argumentu zvyšuje počet volání systému souborů odeslaných z klienta do cílového systému souborů pro úpravu metadat.)
 
-Tento jednoduchý příklad kopíruje dva soubory paralelně:
+Tento jednoduchý příklad zkopíruje paralelně dva soubory:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Po vystavení tohoto příkazu `jobs` příkaz zobrazí, že jsou spuštěná dvě vlákna.
+Po vydání tohoto příkazu `jobs` příkaz zobrazí, že jsou spuštěna dvě vlákna.
 
 ## <a name="copy-data-with-predictable-file-names"></a>Kopírování dat s předvídatelnými názvy souborů
 
-Pokud jsou názvy souborů předvídatelné, můžete použít výrazy k vytvoření paralelních vláken kopírování. 
+Pokud jsou názvy souborů předvídatelné, můžete pomocí výrazů vytvořit paralelní kopírovací vlákna. 
 
-Pokud například váš adresář obsahuje soubory 1000, které jsou očíslovány postupně z `0001` na `1000`, můžete pomocí následujících výrazů vytvořit deset paralelních vláken, která jsou v každém souboru kopie 100:
+Pokud například adresář obsahuje 1000 souborů, které `0001` jsou `1000`číslovány postupně od do , můžete pomocí následujících výrazů vytvořit deset paralelních vláken, z nichž každý zkopíruje 100 souborů:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -52,11 +52,11 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-## <a name="copy-data-with-unstructured-file-names"></a>Kopírování dat s nestrukturovanými názvy souborů
+## <a name="copy-data-with-unstructured-file-names"></a>Kopírování dat pomocí nestrukturovaných názvů souborů
 
-Pokud vaše struktura pojmenovávání souborů není předvídatelná, můžete soubory seskupit podle názvů adresářů. 
+Pokud struktura pojmenování souborů není předvídatelná, můžete seskupit soubory podle názvů adresářů. 
 
-Tento příklad shromažďuje celé adresáře pro odeslání do ``cp`` příkazy spouštěné jako úlohy na pozadí:
+Tento příklad shromažďuje celé adresáře, které mají být odeslány příkazům ``cp`` spuštěných jako úlohy na pozadí:
 
 ```bash
 /root
@@ -68,7 +68,7 @@ Tento příklad shromažďuje celé adresáře pro odeslání do ``cp`` příkaz
 |-/dir1d
 ```
 
-Po shromáždění souborů můžete spustit paralelní příkazy kopírování pro rekurzivní kopírování podadresářů a veškerého jejich obsahu:
+Po shromáždění souborů můžete spustit příkazy paralelního kopírování a rekurzivně zkopírovat podadresáře a veškerý jejich obsah:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
@@ -81,9 +81,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>Kdy přidat přípojné body
 
-Po zobrazení dostatečného množství paralelních vláken pro jeden přípojný bod systému souborů bude k dispozici bod, ve kterém přidání dalších vláken neposkytuje větší propustnost. (V závislosti na typu dat se měří propustnost v souborech za sekundu nebo v bajtech za sekundu.) Nebo horší, více vláken může někdy způsobit snížení propustnosti.  
+Poté, co máte dostatek paralelních podprocesů, které jdou proti jedinému cílovému bodu připojení systému souborů, bude existovat bod, kde přidání dalších vláken neposkytuje větší propustnost. (Propustnost se měří v souborech za sekundu nebo v bajtech za sekundu v závislosti na typu dat.) Nebo horší, over-threading může někdy způsobit snížení propustnost.  
 
-Pokud k tomu dojde, můžete přidat přípojné body na straně klienta do jiných adres připojení mezipaměti HPC Azure pomocí stejné cesty pro připojení ke vzdálenému systému souborů:
+V takovém případě můžete přidat přípojné body na straně klienta na jiné adresy připojení Azure HPC Cache pomocí stejné cesty připojení vzdáleného systému souborů:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -92,9 +92,9 @@ Pokud k tomu dojde, můžete přidat přípojné body na straně klienta do jin�
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Přidání přípojných bodů na straně klienta umožňuje rozvětvit další příkazy kopírování do dalších `/mnt/destination[1-3]` přípojných bodů a dosáhnout tak dalšího paralelismu.  
+Přidání přípojných bodů na straně klienta umožňuje vyčlenit další příkazy kopírování do dalších `/mnt/destination[1-3]` přípojných bodů a dosáhnout další paralelismu.  
 
-Například pokud jsou soubory velmi velké, můžete definovat příkazy kopírování pro použití odlišných cílových cest a odeslání dalších příkazů paralelně z klienta provádějícího kopírování.
+Pokud jsou například soubory velmi velké, můžete definovat příkazy kopírování, které budou používat odlišné cílové cesty, a současně odesílat další příkazy od klienta provádějícího kopii.
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -108,11 +108,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-V předchozím příkladu jsou všechny tři cílové přípojné body cíleny procesy kopírování souborů klienta.
+Ve výše uvedeném příkladu jsou všechny tři cílové přípojné body cíleny procesy kopírování souborů klienta.
 
 ## <a name="when-to-add-clients"></a>Kdy přidat klienty
 
-Nakonec, pokud jste dosáhli možností klienta, přidání dalších vláken kopírování nebo dalších přípojných bodů nebude zvyšovat žádné další soubory za sekundu nebo bajtů/s. V takové situaci můžete nasadit jiného klienta se stejnou sadou přípojných bodů, na kterých budou spuštěné vlastní sady procesů kopírování souborů. 
+A konečně, když jste dosáhli možnosti klienta, přidání dalších zkopírovat podprocesů nebo další přípojné body nepřinese žádné další soubory/s nebo bajty/s zvyšuje. V takovém případě můžete nasadit jiného klienta se stejnou sadou přípojných bodů, které budou spouštět vlastní sady procesů kopírování souborů. 
 
 Příklad:
 
@@ -134,11 +134,11 @@ Client4: cp -R /mnt/source/dir2/dir2d /mnt/destination/dir2/ &
 Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 ```
 
-## <a name="create-file-manifests"></a>Vytváření manifestů souborů
+## <a name="create-file-manifests"></a>Vytvoření manifestů souborů
 
-Po porozumění výše uvedeným přístupům (více než několik míst pro kopírování na cíl, více cílů na klienta, více klientů na jeden zdrojový souborový systém) zvažte toto doporučení: manifesty souborů sestavení a pak je používejte s kopírováním. příkazy napříč více klienty.
+Po pochopení výše uvedených přístupů (více kopírovacích vláken na cíl, více cílů na klienta, více klientů na zdrojový systém souborů přístupný v síti), zvažte toto doporučení: Sestavte manifesty souborů a pak je použijte s kopií příkazy napříč více klienty.
 
-V tomto scénáři se k vytváření manifestů souborů nebo adresářů používá příkaz UNIX ``find``:
+Tento scénář používá ``find`` příkaz UNIX k vytvoření manifestů souborů nebo adresářů:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -153,9 +153,9 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Přesměrovat tento výsledek do souboru: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Přesměrovat tento výsledek na soubor:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Pak můžete iterovat v manifestu pomocí příkazů BASH pro počítání souborů a určení velikosti podadresářů:
+Pak můžete iteraci prostřednictvím manifestu, pomocí příkazů BASH počítat soubory a určit velikosti podadresářů:
 
 ```bash
 ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
@@ -194,7 +194,7 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Nakonec je nutné, aby byly vlastní příkazy kopírování souborů pro klienty.  
+Nakonec je nutné vytvořit příkazy pro kopírování skutečných souborů klientům.  
 
 Pokud máte čtyři klienty, použijte tento příkaz:
 
@@ -202,26 +202,26 @@ Pokud máte čtyři klienty, použijte tento příkaz:
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-Pokud máte pět klientů, použijte něco podobného:
+Pokud máte pět klientů, použijte něco takového:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-A šest.... Odvodit podle potřeby.
+A za šest... Extrapolovat podle potřeby.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Zobrazí se *N* výsledných souborů, jeden pro každého z vašich klientů *N* , který má názvy cest k adresářům úrovně 4, které byly získány jako součást výstupu z příkazu `find`. 
+Získáte *N* výsledné soubory, jeden pro každého z vašich *klientů N,* který má názvy cest na `find` úroveň čtyři adresáře získané jako součást výstupu z příkazu. 
 
-Pomocí každého souboru Sestavte příkaz pro kopírování:
+K vytvoření příkazu copy použijte každý soubor:
 
 ```bash
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-Výše uvedené soubory vám poskytnou *N* souborů, každý s příkazem kopírování na řádek, který je možné spustit jako bash skript na klientovi. 
+Výše uvedené *vám* N soubory, každý s příkazem kopírovat na řádek, který lze spustit jako bash skript na straně klienta. 
 
-Cílem je spouštět více vláken těchto skriptů souběžně na jednom klientovi paralelně na více klientech.
+Cílem je spustit více vláken těchto skriptů současně na klienta paralelně na více klientů.

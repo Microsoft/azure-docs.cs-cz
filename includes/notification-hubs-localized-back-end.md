@@ -9,13 +9,13 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74260694"
 ---
-Když odesíláte oznámení šablon, stačí zadat sadu vlastností. V tomto scénáři sada vlastností obsahuje lokalizovanou verzi aktuálních zpráv.
+Při odesílání oznámení šablony stačí zadat sadu vlastností. V tomto scénáři sada vlastností obsahují lokalizovanou verzi aktuální zprávy.
 
 ```json
 {
@@ -25,9 +25,9 @@ Když odesíláte oznámení šablon, stačí zadat sadu vlastností. V tomto sc
 }
 ```
 
-### <a name="send-notifications-using-a-c-console-app"></a>Odesílání oznámení pomocí C# konzolové aplikace
+### <a name="send-notifications-using-a-c-console-app"></a>Odesílání oznámení pomocí konzolové aplikace C#
 
-V této části se dozvíte, jak odesílat oznámení pomocí konzolové aplikace. Kód vysílá oznámení do zařízení se systémem Windows Store i iOS. Změňte metodu `SendTemplateNotificationAsync` konzolové aplikace vytvořené dříve přidáním následujícího kódu:
+Tato část ukazuje, jak odesílat oznámení pomocí konzolové aplikace. Kód vysílá oznámení na zařízení s Windows Storem i iOS. Změňte metodu `SendTemplateNotificationAsync` konzolové aplikace vytvořené dříve přidáním následujícího kódu:
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
@@ -66,11 +66,11 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-Metoda SendTemplateNotificationAsync zajišťuje lokalizované části zpráv pro **všechna** vaše zařízení bez ohledu na platformu. Vaše centrum oznámení sestaví a zajišťuje správnou nativní datovou část pro všechna zařízení, která se přihlásila ke konkrétní značce.
+SendTemplateNotificationAsync metoda přináší lokalizované část zprávy do **všech** vašich zařízení, bez ohledu na platformu. Centrum oznámení vytvoří a dodá správnou nativní datovou část všem zařízením, která se přihlásila k odběru konkrétní značky.
 
-### <a name="sending-notification-with-mobile-services"></a>Odesílání oznámení pomocí Mobile Services
+### <a name="sending-notification-with-mobile-services"></a>Odesílání oznámení pomocí mobilních služeb
 
-V Plánovači Mobile Services použijte následující skript:
+V plánovači mobilních služeb použijte následující skript:
 
 ```csharp
 var azure = require('azure');

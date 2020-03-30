@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77474256"
 ---
-Chyby vyvolané v Azure Functions můžou pocházet z některého z následujících zdrojů:
+Chyby vyvolané ve funkcích Azure může pocházet z některého z následujících původů:
 
-- Použití integrovaných [triggerů Azure functions a vazeb](..\articles\azure-functions\functions-triggers-bindings.md)
-- Volání rozhraní API základních služeb Azure
+- Použití integrovaných [aktivačních událostí](..\articles\azure-functions\functions-triggers-bindings.md) Azure
+- Volání k api základních služeb Azure
 - Volání koncových bodů REST
-- Volání klientských knihoven, balíčků nebo rozhraní API třetích stran
+- Volání klientských knihoven, balíčků nebo api třetích stran
 
-Následující postupy při zpracování chyb jsou důležité k tomu, aby se zabránilo ztrátě dat nebo nezmeškaných zpráv. Doporučené postupy pro zpracování chyb zahrnují následující akce:
+Následující solidní postupy zpracování chyb je důležité, aby se zabránilo ztrátě dat nebo zmeškaných zpráv. Doporučené postupy zpracování chyb zahrnují následující akce:
 
-- [Povolit Application Insights](../articles/azure-functions/functions-monitoring.md)
+- [Povolení Application Insights](../articles/azure-functions/functions-monitoring.md)
 - [Použití strukturovaného zpracování chyb](#use-structured-error-handling)
-- [Návrh pro idempotence](../articles/azure-functions/functions-idempotent.md)
-- [Implementujte zásady opakování](../articles/azure-functions/functions-reliable-event-processing.md) (tam, kde je to vhodné).
+- [Návrh pro idempotenci](../articles/azure-functions/functions-idempotent.md)
+- [Implementace zásad opakování](../articles/azure-functions/functions-reliable-event-processing.md) (je-li to vhodné)
 
 ### <a name="use-structured-error-handling"></a>Použití strukturovaného zpracování chyb
 
-Chyby zachytávání a publikování jsou klíčové pro monitorování stavu vaší aplikace. Nejvyšší úroveň každého kódu funkce by měla obsahovat blok try/catch. V bloku catch můžete zachytit a publikovat chyby.
+Zachytávání a publikování chyb je důležité pro sledování stavu vaší aplikace. Nejvyšší úroveň kódu funkce by měla obsahovat blok try/catch. V bloku catch můžete zachytit a publikovat chyby.
 
-### <a name="retry-support"></a>Opakovat podporu
+### <a name="retry-support"></a>Podpora opakování
 
-Následující triggery mají integrovanou podporu opakování:
+Následující aktivační události mají integrovanou podporu opakování:
 
-* [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Úložiště front Azure](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Úložiště objektů blob Azure](../articles/azure-functions/functions-bindings-storage-blob.md)
+* [Úložiště fronty Azure](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (fronta/téma)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Ve výchozím nastavení se tyto triggery spustí znovu a požádá se o pět časů. Po pátém pokusu služba Azure Queue Storage i Azure Service Bus triggery zapíše zprávu do [fronty poškození](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages).
+Ve výchozím nastavení tyto aktivační události opakují požadavky až pětkrát. Po páté mši se spustí úložiště fronty Azure a Azure Service Bus, které zapisují zprávu do [fronty poison](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages).
 
-Je potřeba ručně implementovat zásady opakování pro všechny ostatní triggery nebo typy vazeb. Ruční implementace mohou zahrnovat zápis informací o chybách do [fronty nezpracovatelných zpráv](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs). Když zapíšete do fronty nečinnosti, budete mít příležitost opakovat operace později. Tento přístup je stejný jako ten, který používá Trigger služby Blob Storage.
+Je třeba ručně implementovat zásady opakování pro všechny ostatní aktivační události nebo vazby typy. Ruční implementace mohou zahrnovat zápis informací o chybě do [fronty poškozená zpráva](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs). Zápisem do fronty jed, máte možnost opakovat operace později. Tento přístup je stejný, který používá aktivační událost úložiště objektů blob.

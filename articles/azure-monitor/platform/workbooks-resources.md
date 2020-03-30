@@ -1,5 +1,5 @@
 ---
-title: Parametry prostředků Azure Monitorch sešitů
+title: Azure Monitor parametry prostředků sešitů
 description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů
 services: azure-monitor
 author: mrbullwinkle
@@ -10,108 +10,108 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: cc2cde7932f783f63ee2783f0589ce4f88f248a2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658098"
 ---
-# <a name="workbook-resource-parameters"></a>Parametry prostředku sešitu
+# <a name="workbook-resource-parameters"></a>Parametry prostředků sešitu
 
-Parametry prostředků umožňují vyzvednutí prostředků v sešitech. To je užitečné při nastavení rozsahu, ze kterého se mají data získat. Příklad umožňuje uživatelům vybrat sadu virtuálních počítačů, které grafy později použijí při prezentování dat.
+Parametry zdroje umožňují výběr zdrojů v sešitech. To je užitečné při nastavování oboru, ze kterého chcete získat data. Příkladem je povolení uživatelům vybrat sadu virtuálních počítačů, které grafy později použije při prezentaci dat.
 
-Hodnoty z výběrů prostředků můžou pocházet z kontextu sešitu, statického seznamu nebo dotazů na Azure Resource Graph.
+Hodnoty z výběru prostředků mohou pocházet z kontextu sešitu, statického seznamu nebo z dotazů Azure Resource Graph.
 
-## <a name="creating-a-resource-parameter-workbook-resources"></a>Vytvoření parametru prostředku (zdroje sešitu)
+## <a name="creating-a-resource-parameter-workbook-resources"></a>Vytvoření parametru zdroje (zdroje sešitu)
 1. Začněte s prázdným sešitem v režimu úprav.
-2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
-3. Klikněte na modré tlačítko _Přidat parametr_ .
-4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru: `Applications`
-    2. Typ parametru: `Resource picker`
-    3. Požadováno: `checked`
-    4. Povolí vícenásobné výběry: `checked`
-5. Získat data z: `Workbook Resources`
-6. Zahrnout pouze typy prostředků: `Application Insights`
-7. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
+2. Z odkazů v sešitu zvolte _Přidat parametry._
+3. Klikněte na modré tlačítko _Přidat parametr._
+4. V novém podokně parametrů, které se objeví, zadejte:
+    1. Název parametru:`Applications`
+    2. Typ parametru:`Resource picker`
+    3. Požadované:`checked`
+    4. Povolit více výběrů:`checked`
+5. Získat data z:`Workbook Resources`
+6. Zahrnout pouze typy prostředků:`Application Insights`
+7. Chcete-li vytvořit parametr, zvolte "Uložit".
 
-![Obrázek znázorňující vytvoření parametru prostředku pomocí prostředků sešitu](./media/workbooks-resources/resource-create.png)
+![Obrázek znázorňující vytvoření parametru zdroje pomocí zdrojů sešitu](./media/workbooks-resources/resource-create.png)
 
 ## <a name="creating-a-resource-parameter-azure-resource-graph"></a>Vytvoření parametru prostředku (Azure Resource Graph)
 1. Začněte s prázdným sešitem v režimu úprav.
-2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
-3. Klikněte na modré tlačítko _Přidat parametr_ .
-4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru: `Applications`
-    2. Typ parametru: `Resource picker`
-    3. Požadováno: `checked`
-    4. Povolí vícenásobné výběry: `checked`
-5. Získat data z: `Query`
-    1. Typ dotazu: `Azure Resource Graph`
-    2. Předplatná: `Use default subscriptions`
-    3. V ovládacím prvku dotaz přidejte tento fragment kódu.
+2. Z odkazů v sešitu zvolte _Přidat parametry._
+3. Klikněte na modré tlačítko _Přidat parametr._
+4. V novém podokně parametrů, které se objeví, zadejte:
+    1. Název parametru:`Applications`
+    2. Typ parametru:`Resource picker`
+    3. Požadované:`checked`
+    4. Povolit více výběrů:`checked`
+5. Získat data z:`Query`
+    1. Typ dotazu:`Azure Resource Graph`
+    2. Odběry:`Use default subscriptions`
+    3. V ovládacím prvku dotazu přidejte tento úryvek.
     ```kusto
     where type == 'microsoft.insights/components'
     | project value = id, label = name, selected = false, group = resourceGroup
     ```
-7. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
+7. Chcete-li vytvořit parametr, zvolte "Uložit".
 
-![Obrázek znázorňující vytvoření parametru prostředku pomocí Azure Resource graphu](./media/workbooks-resources/resource-query.png)
+![Obrázek znázorňující vytvoření parametru prostředku pomocí Azure Resource Graph](./media/workbooks-resources/resource-query.png)
 
 > [!NOTE]
-> Graf prostředků Azure ještě není k dispozici ve všech cloudech. Pokud zvolíte tento přístup, ujistěte se, že je podporovaný v cílovém cloudu.
+> Azure Resource Graph ještě není k dispozici ve všech cloudech. Pokud zvolíte tento přístup, ujistěte se, že je podporována v cílovém cloudu.
 
 [Dokumentace ke službě Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)
 
 ## <a name="creating-a-resource-parameter--json-list"></a>Vytvoření parametru prostředku (seznam JSON)
 1. Začněte s prázdným sešitem v režimu úprav.
-2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
-3. Klikněte na modré tlačítko _Přidat parametr_ .
-4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru: `Applications`
-    2. Typ parametru: `Resource picker`
-    3. Požadováno: `checked`
-    4. Povolí vícenásobné výběry: `checked`
-5. Získat data z: `JSON`
-    1. V ovládacím prvku Content přidejte tento fragment kódu JSON.
+2. Z odkazů v sešitu zvolte _Přidat parametry._
+3. Klikněte na modré tlačítko _Přidat parametr._
+4. V novém podokně parametrů, které se objeví, zadejte:
+    1. Název parametru:`Applications`
+    2. Typ parametru:`Resource picker`
+    3. Požadované:`checked`
+    4. Povolit více výběrů:`checked`
+5. Získat data z:`JSON`
+    1. V ovládacím prvku content přidejte tento fragment json.
     ```json
     [
         { "value":"/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication", "label": "acmeauthentication", "selected":true, "group":"Acme Backend" },
         { "value":"/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeweb", "label": "acmeweb", "selected":false, "group":"Acme Frontend" }
     ]
     ```
-    2. Stiskněte tlačítko modrá _aktualizace_ .
-6. Volitelně můžete nastavit `Include only resource types` na _Application Insights_
-7. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
+    2. Stiskněte modré tlačítko _Aktualizovat._
+6. Volitelně nastavte `Include only resource types` na _Přehledy aplikací_
+7. Chcete-li vytvořit parametr, zvolte "Uložit".
 
 ## <a name="referencing-a-resource-parameter"></a>Odkazování na parametr prostředku
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
-2. Pomocí rozevíracího seznamu _Application Insights_ navažte parametr k ovládacímu prvku. Tím se nastaví rozsah dotazu na prostředky vrácené parametrem v době běhu.
-4. Do ovládacího prvku KQL přidejte tento fragment kódu.
+2. Pomocí rozevíracího přehledu _aplikace_ svázat parametr s ovládacím prvkem. Tím nastaví rozsah dotazu na prostředky vrácené parametrem v době běhu.
+4. V ovládacím prvku KQL přidejte tento úryvek
     ```kusto
     requests
     | summarize Requests = count() by appName, name
     | order by Requests desc
     ```
-5. Spusťte dotaz, aby se zobrazily výsledky. 
+5. Spusťte dotaz, abyste viděli výsledky. 
 
-![Obrázek znázorňující parametr prostředku, na který se odkazuje v ovládacím prvku dotazu](./media/workbooks-resources/resource-reference.png)
+![Obrázek znázorňující parametr prostředku odkazovaný v ovládacím prvku dotazu](./media/workbooks-resources/resource-reference.png)
 
-> Tento přístup se dá použít k vázání prostředků na jiné ovládací prvky, jako jsou metriky.
+> Tento přístup lze vytvořit vazbu prostředky na jiné ovládací prvky, jako jsou metriky.
 
-## <a name="resource-parameter-options"></a>Možnosti parametrů prostředku
+## <a name="resource-parameter-options"></a>Možnosti parametru zdroje
 | Parametr | Vysvětlení | Příklad |
 | ------------- |:-------------|:-------------|
-| `{Applications}` | Vybrané ID prostředku | _/Subscriptions/< dílčí identifikátor >/resourceGroups/< Resource-Group >/Providers/< Resource-Type >/acmeauthentication_ |
-| `{Applications:label}` | Popisek vybraného prostředku | `acmefrontend` |
-| `{Applications:value}` | Hodnota vybraného prostředku | _'/Subscriptions/< sub-ID >/resourceGroups/< Resource-Group >/Providers/< Resource-Type >/acmeauthentication '_ |
-| `{Applications:name}` | Název vybraného prostředku | `acmefrontend` |
-| `{Applications:resourceGroup}` | Skupina prostředků vybraného prostředku | `acmegroup` |
-| `{Applications:resourceType}` | Typ vybraného prostředku | _Microsoft. Insights/Components_ |
+| `{Applications}` | ID vybraného zdroje | _/subscriptions/<sub-id>/resourceGroups/<>/providers/<resource-type>/acmeauthentication_ |
+| `{Applications:label}` | Popisek vybraného zdroje | `acmefrontend` |
+| `{Applications:value}` | Hodnota vybraného zdroje | _"/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication"_ |
+| `{Applications:name}` | Název vybraného zdroje | `acmefrontend` |
+| `{Applications:resourceGroup}` | Skupina prostředků vybraného zdroje | `acmegroup` |
+| `{Applications:resourceType}` | Typ vybraného zdroje | _microsoft.insights/components_ |
 | `{Applications:subscription}` | Předplatné vybraného prostředku |  |
-| `{Applications:grid}` | Mřížka znázorňující vlastnosti prostředku. Užitečné pro vykreslování v textovém bloku při ladění  |  |
+| `{Applications:grid}` | Mřížka zobrazující vlastnosti prostředku. Užitečné vykreslení v textovém bloku při ladění  |  |
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
-* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
+* [Začínáte](workbooks-visualizations.md) se učit další informace o sešitech, mnoho bohatých možností vizualizací.
+* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu

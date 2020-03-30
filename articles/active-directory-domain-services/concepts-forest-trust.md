@@ -1,6 +1,6 @@
 ---
-title: Jak vztahy důvěryhodnosti fungují pro Azure AD Domain Services | Microsoft Docs
-description: Další informace o tom, jak vztah důvěryhodnosti doménové struktury funguje s Azure AD Domain Services
+title: Jak fungují vztahy důvěryhodnosti pro služby Azure AD Domain Services | Dokumenty společnosti Microsoft
+description: Další informace o tom, jak funguje důvěryhodnost doménové struktury se službou Azure AD Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,272 +11,272 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 8b79e0fb24c15d2e9f16640e90d62f7df5c21f32
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233698"
 ---
-# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Jak vztahy důvěryhodnosti fungují pro doménové struktury prostředků v Azure Active Directory Domain Services
+# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Jak fungují vztahy důvěryhodnosti pro doménové struktury prostředků ve službě Azure Active Directory Domain Services
 
-Active Directory Domain Services (služba AD DS) poskytuje zabezpečení napříč více doménami nebo doménovými strukturami prostřednictvím vztahů důvěryhodnosti domén a doménových struktur. Předtím, než může ověřování probíhat napříč vztahy důvěryhodnosti, musí systém Windows nejdřív ověřit, jestli má doména, kterou uživatel, počítač nebo služba požaduje vztah důvěryhodnosti s doménou žádajícího účtu.
+Služba AD DS (Active Directory Domain Services) poskytuje zabezpečení napříč více doménami nebo doménovými strukturami prostřednictvím vztahů důvěryhodnosti domény a doménové struktury. Před ověřením mezi vztahy důvěryhodnosti musí systém Windows nejprve zkontrolovat, zda doména požadovaná uživatelem, počítačem nebo službou má vztah důvěryhodnosti s doménou žádajícího účtu.
 
-Pro kontrolu tohoto vztahu důvěryhodnosti systém Windows Security vypočítá cestu vztahu důvěryhodnosti mezi řadičem domény (DC) pro server, který obdrží požadavek a řadič domény v doméně žádajícího účtu.
+Chcete-li zkontrolovat tento vztah důvěryhodnosti, systém zabezpečení systému Windows vypočítá cestu důvěryhodnosti mezi řadičem domény (DC) pro server, který obdrží požadavek, a řadičem domény v doméně žádajícího účtu.
 
-Mechanismy řízení přístupu poskytované služba AD DS a modelem distribuovaného zabezpečení systému Windows poskytují prostředí pro fungování vztahů důvěryhodnosti domény a doménové struktury. Aby tyto vztahy důvěryhodnosti fungovaly správně, musí mít každý prostředek nebo počítač přímo důvěryhodnou cestu k řadiči domény v doméně, ve které se nachází.
+Mechanismy řízení přístupu poskytované službou AD DS a distribuovaným modelem zabezpečení systému Windows poskytují prostředí pro provoz vztahů důvěryhodnosti domény a doménové struktury. Aby tyto vztahy důvěryhodnosti fungovaly správně, musí mít každý prostředek nebo počítač přímou cestu důvěryhodnosti k řadiči domény v doméně, ve které je umístěn.
 
-Cesta vztahu důvěryhodnosti je implementovaná službou přihlašování k síti pomocí ověřeného připojení RPC (Remote Procedure Call) k důvěryhodné autoritě domény. Zabezpečený kanál se také rozšiřuje na jiné služba AD DS domény prostřednictvím vztahů mezi vztahy důvěryhodnosti mezi doménami. Tento zabezpečený kanál slouží k získání a ověření informací o zabezpečení, včetně identifikátorů zabezpečení (SID) pro uživatele a skupiny.
+Cesta důvěryhodnosti je implementována službou Přihlašování k síti pomocí ověřeného připojení vzdáleného volání procedur (RPC) k důvěryhodné autoritě domény. Zabezpečený kanál se také rozšiřuje na další domény služby AD DS prostřednictvím vztahů důvěryhodnosti mezi doménami. Tento zabezpečený kanál slouží k získání a ověření informací o zabezpečení, včetně identifikátorů zabezpečení (SID) pro uživatele a skupiny.
 
 ## <a name="trust-relationship-flows"></a>Toky vztahů důvěryhodnosti
 
-Tok zabezpečené komunikace přes vztahy důvěryhodnosti určuje pružnost vztahu důvěryhodnosti. Způsob vytvoření nebo konfigurace vztahu důvěryhodnosti určuje, jak daleko se komunikace rozšiřuje v rámci doménové struktury nebo napříč doménami.
+Tok zabezpečené komunikace přes svěřenské fondy určuje pružnost vztahu důvěryhodnosti. Způsob vytvoření nebo konfigurace vztahu důvěryhodnosti určuje, do jaké míry se komunikace rozprostírá v doménových strukturách nebo mezi ně.
 
-Tok komunikace v rámci vztahů důvěryhodnosti určuje směr vztahu důvěryhodnosti. Vztahy důvěryhodnosti můžou být jednosměrné nebo obousměrné a můžou být přenosné nebo netranzitivní.
+Tok komunikace přes vztahy důvěryhodnosti je určen směrem vztahu důvěryhodnosti. Vztahy důvěryhodnosti mohou být jednosměrné nebo obousměrné a mohou být přenosné nebo nepřenosné.
 
-Následující diagram znázorňuje, že všechny domény ve *stromové struktuře 1* a *stromu 2* mají ve výchozím nastavení přenositelné vztahy důvěryhodnosti. Výsledkem je, že uživatelé ve *stromové struktuře 1* mají přístup k prostředkům v doménách ve *stromové struktuře 2* a uživatelé ve *stromové struktuře 1* mají přístup k prostředkům ve *stromu 2*, pokud jsou přiřazena správná oprávnění k prostředku.
+Následující diagram ukazuje, že všechny domény ve *stromech 1* a *stromu 2* mají ve výchozím nastavení přenosité vztahy důvěryhodnosti. V důsledku toho mohou uživatelé ve *stromu 1* přistupovat k prostředkům v doménách ve *stromu 2* a uživatelé ve *stromu 1* mají přístup k prostředkům ve *stromu 2*, pokud jsou u prostředku přiřazena správná oprávnění.
 
 ![Diagram vztahů důvěryhodnosti mezi dvěma doménovými strukturami](./media/concepts-forest-trust/trust-relationships.png)
 
 ### <a name="one-way-and-two-way-trusts"></a>Jednosměrné a obousměrné vztahy důvěryhodnosti
 
-Vztahy důvěryhodnosti povolují přístup k prostředkům, které můžou být jednosměrné nebo obousměrné.
+Vztahy důvěryhodnosti umožňují přístup k prostředkům může být jednosměrný nebo obousměrný.
 
-Jednosměrný vztah důvěryhodnosti je jednosměrná ověřovací cesta vytvořená mezi dvěma doménami. V jednosměrovém vztahu důvěryhodnosti mezi *doménou* a a *doménou b*můžou uživatelé v *doméně a* přistupovat k prostředkům v *doméně b*. Uživatelé v *doméně B* ale nemůžou získat přístup k prostředkům v *doméně A*.
+Jednosměrný vztah důvěryhodnosti je jednosměrná cesta ověřování vytvořená mezi dvěma doménami. V jednosměrném vztahu důvěryhodnosti mezi *doménou A* a *doménou B*mají uživatelé v *doméně A* přístup k prostředkům v *doméně B*. Uživatelé v *doméně B* však nemají přístup k prostředkům v *doméně A*.
 
-Některé jednosměrné vztahy důvěryhodnosti mohou být buď netranzitivní, nebo přechodné v závislosti na typu vytvářeného vztahu důvěryhodnosti.
+Některé jednosměrné vztahy důvěryhodnosti mohou být nepřenosné nebo přenosné v závislosti na typu vytvářeného vztahu důvěryhodnosti.
 
-V obousměrném *vztahu důvěryhodnosti doména důvěřuje* *doméně B* a *doména b* důvěřuje *doméně a*. Tato konfigurace znamená, že požadavky na ověřování se dají mezi oběma doménami předávat v obou směrech. Některé obousměrné relace mohou být v závislosti na typu vytvářeného vztahu důvěryhodnosti netranzitivní nebo přechodné.
+Ve obousměrném vztahu *důvěryhodnosti důvěřuje doména A* *doméně B* a domény *B* *důvěřuje doméně A*. Tato konfigurace znamená, že požadavky na ověření mohou být předány mezi dvěma doménami v obou směrech. Některé obousměrné vztahy mohou být nepřenosné nebo přenosné v závislosti na typu vytvářeného vztahu důvěryhodnosti.
 
-Všechny vztahy důvěryhodnosti domén v doménové struktuře služba AD DS jsou obousměrné a přenositelné vztahy důvěryhodnosti. Když se vytvoří nová podřízená doména, mezi novou podřízenou doménou a nadřazenou doménou se automaticky vytvoří obousměrný přenositelný vztah důvěryhodnosti.
+Všechny vztahy důvěryhodnosti domény v doménové struktuře služby AD DS jsou obousměrné přenosné vztahy důvěryhodnosti. Při vytvoření nové podřízené domény se automaticky vytvoří obousměrný přenositý vztah důvěryhodnosti mezi novou podřízenou doménou a nadřazenou doménou.
 
-### <a name="transitive-and-non-transitive-trusts"></a>Přenosné a netranzitivní vztahy důvěryhodnosti
+### <a name="transitive-and-non-transitive-trusts"></a>Přenosité a nepřenosné vztahy důvěryhodnosti
 
-Přenositelnost určuje, zda je možné vztah důvěryhodnosti rozšířit mimo dvě domény, se kterými byl vytvořen.
+Přenositelnost určuje, zda lze vztah důvěryhodnosti rozšířit mimo dvě domény, se kterými byl vytvořen.
 
-* Přenosná důvěra se dá použít k rozšiřování vztahů důvěryhodnosti s ostatními doménami.
-* Netranzitivní vztah důvěryhodnosti lze použít k odepření vztahů důvěryhodnosti s jinými doménami.
+* Přenositý vztah důvěryhodnosti lze použít k rozšíření vztahů důvěryhodnosti s jinými doménami.
+* Nepřenositezvolený vztah důvěryhodnosti lze použít k odepření vztahů důvěryhodnosti s jinými doménami.
 
-Pokaždé, když vytvoříte novou doménu v doménové struktuře, automaticky se vytvoří obousměrný přenositelný vztah důvěryhodnosti mezi novou doménou a nadřazenou doménou. Pokud se do nové domény přidají podřízené domény, prochází cesta vztahu důvěryhodnosti směrem nahoru v doménové hierarchii, která rozšiřuje počáteční cestu důvěryhodnosti vytvořenou mezi novou doménou a nadřazenou doménou. Vztahy s přenositelnými vztahy důvěryhodnosti procházejí při vytváření doménového stromu směrem nahoru a vytvářejí přenositelné vztahy důvěryhodnosti mezi všemi doménami ve stromu domén.
+Při každém vytvoření nové domény v doménové struktuře se automaticky vytvoří obousměrný přenositý vztah důvěryhodnosti mezi novou doménou a její nadřazenou doménou. Pokud jsou do nové domény přidány podřízené domény, cesta důvěryhodnosti natéká nahoru hierarchií domény a rozšiřuje počáteční cestu důvěryhodnosti vytvořenou mezi novou doménou a její nadřazenou doménou. Přenosité vztahy důvěryhodnosti protékají nahoru stromem domény při vytváření přechodných vztahů důvěryhodnosti mezi všemi doménami ve stromu domény.
 
-Žádosti o ověření následují tyto cesty důvěryhodnosti, takže účty z libovolné domény v doménové struktuře se dají ověřit v jakékoli jiné doméně v doménové struktuře. Při jednom procesu přihlášení mají účty s příslušnými oprávněními přístup k prostředkům v libovolné doméně v doménové struktuře.
+Požadavky na ověření následují tyto cesty důvěryhodnosti, takže účty z libovolné domény v doménové struktuře mohou být ověřeny jinou doménou v doménové struktuře. Pomocí jednoho procesu přihlášení mohou účty se správnými oprávněními přistupovat k prostředkům v libovolné doméně v doménové struktuře.
 
 ## <a name="forest-trusts"></a>Vztahy důvěryhodnosti doménové struktury
 
-Vztahy důvěryhodnosti doménové struktury vám pomůžou spravovat segmentované služba AD DS infrastruktury a podporovat přístup k prostředkům a dalším objektům v několika doménových strukturách. Vztahy důvěryhodnosti doménové struktury jsou užitečné pro poskytovatele služeb, společnosti, které procházejí fúzí nebo akvizicou, obchodní extranety pro spolupráci a společnosti, které hledají řešení pro administrativní autonomii.
+Vztahy důvěryhodnosti doménové struktury pomáhají spravovat segmentované infrastruktury služby AD DS a podporují přístup k prostředkům a dalším objektům ve více doménových strukturách. Svěřenské fondy v oblasti domén ové struktury jsou užitečné pro poskytovatele služeb, společnosti, které procházejí fúzemi nebo akvizicemi, extranety pro spolupráci a společnosti, které hledají řešení administrativní autonomie.
 
-Pomocí vztahů důvěryhodnosti doménové struktury můžete propojit dvě různé doménové struktury a vytvořit tak jednosměrný nebo obousměrný vztah s obousměrným vztahem důvěryhodnosti. Vztah důvěryhodnosti doménové struktury umožňuje správcům propojit dvě služba AD DS doménových struktur s jedním vztahem důvěryhodnosti a zajistit tak bezproblémové ověřování a možnosti autorizace napříč doménovými strukturami.
+Pomocí vztahů důvěryhodnosti doménové struktury můžete propojit dvě různé doménové struktury a vytvořit tak jednosměrný nebo obousměrný přenositý vztah důvěryhodnosti. Vztah důvěryhodnosti doménové struktury umožňuje správcům propojit dvě doménové struktury služby AD DS s jedním vztahem důvěryhodnosti a zajistit tak bezproblémové ověřování a autorizaci v doménových strukturách.
 
-Vztah důvěryhodnosti doménové struktury je možné vytvořit jenom mezi kořenovou doménou struktury v jedné doménové struktuře a kořenovou doménou struktury v jiné doménové struktuře. Vztahy důvěryhodnosti doménové struktury je možné vytvořit jenom mezi dvěma doménovými strukturami a nedá se implicitně rozšířit na třetí doménovou strukturu. To znamená, že pokud se vytvoří vztah důvěryhodnosti doménové struktury mezi doménovou strukturou *1* a doménovou strukturou *2*a vytvoří se další vztah důvěryhodnosti doménové struktury mezi *doménovou strukturou 2* a *doménovou* *strukturou*3, *doménová struktura 1* nemá implicitní vztah důvěryhodnosti
+Vztah důvěryhodnosti doménové struktury lze vytvořit pouze mezi kořenovou doménou doménové struktury v jedné doménové struktuře a kořenovou doménou doménové struktury v jiné doménové struktuře. Vztahy důvěryhodnosti doménové struktury lze vytvořit pouze mezi dvěma doménovými strukturami a nelze je implicitně rozšířit na třetí doménovou strukturu. Toto chování znamená, že pokud je vytvořen vztah důvěryhodnosti doménové struktury mezi *doménovou strukturu 1* a *doménovou struktuře 2*a vytvoří se jiný vztah důvěryhodnosti doménové struktury mezi *doménovou strukturu 2* a *doménovou struktuře 3*, *doménová struktura 1* nemá implicitní vztah důvěryhodnosti s *doménovou strukturu 3*.
 
-Následující diagram znázorňuje dva samostatné vztahy důvěryhodnosti doménové struktury mezi třemi služba AD DS doménovou strukturou v jedné organizaci.
+Následující diagram znázorňuje dva samostatné vztahy důvěryhodnosti doménové struktury mezi třemi doménovými strukturami služby AD DS v jedné organizaci.
 
 ![Diagram vztahů důvěryhodnosti doménové struktury v rámci jedné organizace](./media/concepts-forest-trust/forest-trusts.png)
 
-Tato příklad konfigurace poskytuje následující přístup:
+Konfigurace tohoto příkladu poskytuje následující přístup:
 
-* Uživatelé v *doménové struktuře 2* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 1* nebo *doménové struktuře 3* .
-* Uživatelé v *doménové struktuře 3* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 2* .
-* Uživatelé v *doménové struktuře 1* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 2* .
+* Uživatelé v *doménové struktuře 2* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 1* nebo *doménové struktuře 3.*
+* Uživatelé v *doménové struktuře 3* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 2.*
+* Uživatelé v *doménové struktuře 1* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 2.*
 
-Tato konfigurace neumožňuje uživatelům v *doménové struktuře 1* přistupovat k prostředkům v *doménové struktuře 3* nebo naopak. Chcete-li uživatelům v *doménové struktuře 1* a *doménové struktuře 3* dovolit sdílení prostředků, je třeba vytvořit obousměrný tranzitivní vztah důvěryhodnosti mezi dvěma doménovými strukturami.
+Tato konfigurace neumožňuje uživatelům v *doménové struktuře 1* přístup k prostředkům v *doménové struktuře 3* nebo naopak. Chcete-li uživatelům v *doménové struktuře 1* i *doménové struktuře 3* umožnit sdílení prostředků, musí být mezi dvěma doménovými strukturami vytvořen obousměrný přenositý vztah důvěryhodnosti.
 
-Pokud je mezi dvěma doménovými strukturami vytvořen jednosměrný vztah důvěryhodnosti doménové struktury, můžou členové důvěryhodné doménové struktury využívat prostředky umístěné v důvěřující doménové struktuře. Vztah důvěryhodnosti však pracuje pouze v jednom směru.
+Pokud je mezi dvěma doménovými strukturami vytvořen jednosměrný vztah důvěryhodnosti doménové struktury, mohou členové důvěryhodné doménové struktury využívat zdroje umístěné v důvěřující doménové struktuře. Vztah důvěryhodnosti však funguje pouze v jednom směru.
 
-Například když se vztah důvěryhodnosti doménové struktury vytvoří mezi *doménovou* strukturou 1 (důvěryhodná doménová struktura) a *doménovou* strukturou 2 (důvěřující doménová struktura):
+Například při jednosměrné, vztahy důvěryhodnosti doménové struktury mezi *doménovou strukturu 1* (důvěryhodná doménová struktura) a *doménové struktury 2* (důvěřující doménová struktura):
 
-* Členové *doménové struktury 1* mají přístup k prostředkům umístěným v *doménové struktuře 2*.
-* Členové *doménové struktury 2* nemůžou získat přístup k prostředkům umístěným v *doménové struktuře 1* pomocí stejného vztahu důvěryhodnosti.
+* Členové *doménové struktury 1* mají přístup ke zdrojům umístěným v *doménové struktuře 2*.
+* Členové *doménové struktury 2* nemají přístup k prostředkům umístěným v *doménové struktuře 1* pomocí stejného vztahu důvěryhodnosti.
 
 > [!IMPORTANT]
-> Azure AD Domain Services doménová struktura prostředků podporuje pouze jednosměrnou důvěryhodnost doménové struktury k místní službě Active Directory.
+> Doménová struktura prostředků služby Azure AD Domain Services podporuje jenom jednosměrný vztah důvěryhodnosti doménové struktury pro místní službu Active Directory.
 
-### <a name="forest-trust-requirements"></a>Požadavky vztahu důvěryhodnosti doménové struktury
+### <a name="forest-trust-requirements"></a>Požadavky na důvěryhodnost doménové struktury
 
-Než budete moct vytvořit vztah důvěryhodnosti doménové struktury, musíte ověřit, jestli máte zavedenou správnou infrastrukturu DNS (Domain Name System). Vztahy důvěryhodnosti doménové struktury lze vytvořit pouze v případě, že je k dispozici jedna z následujících konfigurací služby DNS:
+Před vytvořením vztahu důvěryhodnosti doménové struktury je třeba ověřit, zda máte k ono správnou infrastrukturu DNS (Domain Name System). Vztahy důvěryhodnosti doménové struktury lze vytvořit pouze v případě, že je k dispozici jedna z následujících konfigurací DNS:
 
-* Jeden kořenový server DNS je kořenový server DNS pro oba obory názvů DNS doménové struktury – kořenová zóna obsahuje delegování pro každý obor názvů DNS a kořenové odkazy všech serverů DNS zahrnuje kořenový server DNS.
-* V případě, že není k dispozici žádný sdílený kořenový server DNS, a kořenové servery DNS pro každý obor názvů DNS doménové struktury používají pro každý obor názvů DNS pro směrování dotazů na názvy v jiném oboru názvů DNS podmíněné předávací služby DNS.
+* Jeden kořenový server DNS je kořenový server DNS pro oba obory názvů DNS doménové struktury - kořenová zóna obsahuje delegování pro každý obor názvů DNS a kořenové rady všech serverů DNS zahrnují kořenový server DNS.
+* Tam, kde neexistuje žádný sdílený kořenový server DNS, a kořenové servery DNS pro každý obor názvů DNS v doménové struktuře DNS používají pro každý obor názvů DNS podmíněné servery DNS ke směrování dotazů na názvy v jiném oboru názvů.
 
     > [!IMPORTANT]
-    > Tato konfigurace DNS musí používat Azure AD Domain Services doménová struktura prostředků. Hostování jiného oboru názvů DNS, než je obor názvů DNS doménové struktury prostředků, není funkce Azure AD Domain Services. Je vhodná konfigurace pro podmíněné dopředné.
+    > Doménová struktura prostředků služby Azure AD Domain Services musí používat tuto konfiguraci DNS. Hostování jiného oboru názvů DNS než oboru názvů DNS doménové struktury není funkcí služby Azure AD Domain Services. Podmíněné předávání je správná konfigurace.
 
-* Pokud není žádný sdílený kořenový server DNS a kořenové servery DNS pro každý obor názvů DNS doménové struktury používají sekundární zóny DNS, nakonfigurují se v každém oboru názvů DNS na směrování dotazů na názvy v jiném oboru názvů.
+* Tam, kde neexistuje žádný sdílený kořenový server DNS, a kořenové servery DNS pro každý obor názvů DNS doménové struktury používají sekundární zóny DNS v každém oboru názvů DNS ke směrování dotazů na názvy v jiném oboru názvů.
 
-Chcete-li vytvořit vztah důvěryhodnosti doménové struktury, musíte být členem skupiny Domain Admins (v kořenové doméně doménové struktury) nebo skupiny Enterprise Admins ve službě Active Directory. Každému vztahu důvěryhodnosti je přiřazeno heslo, které musí znát správci v obou doménových strukturách. Členové skupiny Enterprise Admins v obou doménových strukturách můžou vytvářet vztahy důvěryhodnosti v obou doménových strukturách najednou a v tomto případě je heslo, které je kryptograficky náhodné, automaticky vygenerováno a napsáno pro obě doménové struktury.
+Chcete-li vytvořit vztah důvěryhodnosti doménové struktury, musíte být členem skupiny Domain Admins (v kořenové doméně doménové struktury) nebo skupiny Enterprise Admins ve službě Active Directory. Každému vztahu důvěryhodnosti je přiřazeno heslo, které musí znát správci v obou doménových strukturách. Členové enterprise admins v obou doménových strukturách můžete vytvořit vztahy důvěryhodnosti v obou doménových strukturách najednou a v tomto scénáři je automaticky generováno a zapsáno heslo, které je kryptograficky náhodné je automaticky generováno a zapsáno pro obě doménové struktury.
 
-V Azure Portal se vytvoří odchozí vztah důvěryhodnosti doménové struktury pro Azure AD Domain Services. Nemusíte ručně vytvořit vztah důvěryhodnosti se samotnou spravovanou doménou. Příchozí vztah důvěryhodnosti doménové struktury musí být nakonfigurovaný uživatelem s oprávněními, která se dřív poznamenala v místní službě Active Directory.
+Odchozí doménové struktury pro služby Azure AD Domain Services se vytvoří na webu Azure Portal. Nevytváříte vztah důvěryhodnosti ručně se samotnou spravovanou doménou. Příchozí vztah důvěryhodnosti doménové struktury musí být nakonfigurován uživatelem s oprávněními, která byla dříve zaznamenána v místní službě Active Directory.
 
-## <a name="trust-processes-and-interactions"></a>Vztahy důvěryhodnosti procesů a interakcí
+## <a name="trust-processes-and-interactions"></a>Důvěryhodné procesy a interakce
 
-Mnoho transakcí mezi doménami a mezi doménovými strukturami závisí na vztahu důvěryhodnosti domény nebo doménové struktury, aby bylo možné dokončit různé úlohy. V této části jsou popsány procesy a interakce, ke kterým dochází v případě, že se k prostředkům přistupovaly v rámci vztahů důvěryhodnosti.
+Mnoho transakcí mezi doménami a mezi doménovými strukturami závisí na vztahu důvěryhodnosti domény nebo doménové struktury za účelem dokončení různých úkolů. Tato část popisuje procesy a interakce, ke kterým dochází při přístupu k prostředkům napříč vztahy důvěryhodnosti a vyhodnocují se odkazy na ověřování.
 
-### <a name="overview-of-authentication-referral-processing"></a>Přehled zpracování odkazů ověřování
+### <a name="overview-of-authentication-referral-processing"></a>Přehled zpracování doporučení pro ověřování
 
-Pokud je žádost o ověření odkazována na doménu, musí řadič domény v této doméně určit, zda existuje vztah důvěryhodnosti s doménou, ze které pochází požadavek. Aby bylo možné získat přístup k prostředkům v doméně, je třeba určit směr vztahu důvěryhodnosti a informace o tom, zda je vztah důvěryhodnosti nebo nepřenosný. Proces ověřování, který probíhá mezi důvěryhodnými doménami, se liší podle používaného ověřovacího protokolu. Protokoly Kerberos V5 a NTLM zpracovávají odkazy pro ověřování do domény odlišně.
+Pokud je žádost o ověření odkazována na doménu, musí řadič domény v této doméně určit, zda existuje vztah důvěryhodnosti s doménou, ze které požadavek pochází. Směr vztahu důvěryhodnosti a to, zda je vztah důvěryhodnosti přenositý nebo nepřenositý, musí být také určen před ověřením uživatele pro přístup k prostředkům v doméně. Proces ověřování mezi důvěryhodnými doménami se liší v závislosti na ověřovacím protokolu, který se používá. Protokoly Kerberos V5 a NTLM zpracovávají odkazy na ověřování do domény odlišně
 
 ### <a name="kerberos-v5-referral-processing"></a>Zpracování odkazů protokolu Kerberos V5
 
-Ověřovací protokol Kerberos V5 závisí na službě přihlášení k síti na řadičích domény pro informace o ověřování a autorizaci klientů. Protokol Kerberos se připojuje ke službě KDC (online služba KDC (Key Distribution Center)) a úložišti účtů služby Active Directory pro lístky relací.
+Ověřovací protokol Kerberos V5 je závislý na službě Přihlašování k síti v řadičích domény pro informace o ověřování a autorizaci klientů. Protokol Kerberos se připojuje k online centru distribuce klíčů (KDC) a k úložišti účtů služby Active Directory pro lístky na relace.
 
-Protokol Kerberos používá také vztahy důvěryhodnosti pro služby udělování lístků (TGS) mezi sférami a k ověřování certifikátů atributů oprávnění (PACs) napříč zabezpečeným kanálem. Protokol Kerberos provádí ověřování mezi sférami jenom s sférami protokolu Kerberos v operačním systému, které nepoužívají Windows, jako je například sféra protokolu MIT Kerberos, a nemusí komunikovat se službou přihlašování k síti.
+Protokol Kerberos také používá vztahy důvěryhodnosti pro služby udělování lístků mezi sférami (TGS) a k ověření certifikátů atributů oprávnění (PAC) v zabezpečeném kanálu. Protokol Kerberos provádí ověřování mezi sférami pouze s doménovými oblastmi protokolu Kerberos jiné ho schodišti, jako je například sféra Protokolu Kerberos mit, a nemusí pracovat se službou Přihlášení k síti.
 
-Pokud klient používá k ověřování protokol Kerberos V5, požádá o lístek na server v cílové doméně z řadiče domény ve své doméně účtu. Služba KDC protokolu Kerberos funguje jako důvěryhodný prostředník mezi klientem a serverem a poskytuje klíč relace, který oběma stranám umožňuje vzájemné ověřování. Pokud je cílová doména odlišná od aktuální domény, služba KDC sleduje logický proces a určí, jestli se dá odkazovat na žádost o ověření:
+Pokud klient používá protokol Kerberos V5 pro ověřování, požaduje lístek na server v cílové doméně od řadiče domény v doméně účtu. Protokol Kerberos KDC funguje jako důvěryhodný prostředník mezi klientem a serverem a poskytuje klíč relace, který umožňuje oběma stranám vzájemně se ověřovat. Pokud se cílová doména liší od aktuální domény, KDC následuje logický proces k určení, zda lze odkazovat na požadavek na ověření:
 
 1. Je aktuální doména důvěryhodná přímo doménou serveru, který je požadován?
-    * Pokud ano, pošlete klientovi odkaz na požadovanou doménu.
-    * Pokud ne, pokračujte na další krok.
+    * Pokud ano, odešlete klientovi odkaz na požadovanou doménu.
+    * Pokud ne, přejděte k dalšímu kroku.
 
-2. Existuje mezi aktuální doménou a další doménou v cestě vztahu důvěryhodnosti vztah přenosné důvěryhodnosti?
-    * Pokud ano, pošlete klientovi odkaz na další doménu v cestě důvěryhodnosti.
-    * Pokud ne, pošlete klientovi zprávu o odepřeném přihlášení.
+2. Existuje přenositý vztah důvěryhodnosti mezi aktuální doménou a další doménou na cestě důvěryhodnosti?
+    * Pokud ano, odešlete klientovi odkaz na další doménu na cestě důvěryhodnosti.
+    * Pokud ne, odešlete klientovi zprávu o odepření přihlášení.
 
-### <a name="ntlm-referral-processing"></a>Zpracování odkazů protokolu NTLM
+### <a name="ntlm-referral-processing"></a>Zpracování odkazů NTLM
 
-Ověřovací protokol NTLM závisí na službě přihlášení k síti na řadičích domény pro informace o ověřování a autorizaci klientů. Tento protokol ověřuje klienty, kteří nepoužívají ověřování pomocí protokolu Kerberos. Protokol NTLM používá vztahy důvěryhodnosti k předávání žádostí o ověření mezi doménami.
+Ověřovací protokol NTLM je závislý na službě Přihlašování k síti v řadičích domény pro informace o ověřování a autorizaci klientů. Tento protokol ověřuje klienty, kteří nepoužívají ověřování protokolem Kerberos. NTLM používá vztahy důvěryhodnosti k předání požadavků na ověření mezi doménami.
 
-Pokud klient používá pro ověřování protokol NTLM, počáteční požadavek na ověření směřuje přímo z klienta na server prostředků v cílové doméně. Tento server vytvoří výzvu, na kterou klient odpoví. Server pak pošle reakci uživatele na řadič domény v doméně svého účtu počítače. Tento řadič domény zkontroluje uživatelský účet s databází zabezpečení účtů.
+Pokud klient používá ntlm pro ověřování, počáteční požadavek na ověření jde přímo z klienta na server prostředků v cílové doméně. Tento server vytvoří výzvu, na kterou klient reaguje. Server pak odešle odpověď uživatele do řadiče domény v doméně účtu počítače. Tento řadič domény zkontroluje uživatelský účet v databázi svých účtů zabezpečení.
 
-Pokud účet v databázi neexistuje, řadič domény určí, jestli se má provést předávací ověřování, předání žádosti nebo zamítnutí žádosti pomocí následující logiky:
+Pokud účet v databázi neexistuje, řadič domény určí, zda má provést předávací ověřování, předat požadavek nebo požadavek odepřít pomocí následující logiky:
 
-1. Má aktuální doména vztah s přímým vztahem důvěryhodnosti s doménou uživatele?
-    * Pokud ano, řadič domény pošle přihlašovací údaje klienta k řadiči domény v doméně uživatele pro předávací ověřování.
-    * Pokud ne, pokračujte na další krok.
+1. Má aktuální doména vztah přímédůvěryhodnosti s doménou uživatele?
+    * Pokud ano, řadič domény odešle pověření klienta do řadiče domény v doméně uživatele pro předávací ověřování.
+    * Pokud ne, přejděte k dalšímu kroku.
 
-2. Má aktuální doména vztah přenosného vztahu důvěryhodnosti s doménou uživatele?
-    * Pokud ano, předejte žádost o ověření k další doméně v cestě vztahu důvěryhodnosti. Tento řadič domény tento proces zopakuje kontrolou přihlašovacích údajů uživatele proti vlastní databázi účtů zabezpečení.
-    * Pokud ne, pošlete klientovi zprávu o odepřeném přihlášení.
+2. Má aktuální doména přenositý vztah důvěryhodnosti s doménou uživatele?
+    * Pokud ano, předajte požadavek na ověření další doméně v cestě důvěryhodnosti. Tento řadič domény tento proces zopakuje kontrolou pověření uživatele podle vlastní databáze účtů zabezpečení.
+    * Pokud ne, odešlete klientovi zprávu o odepření přihlášení.
 
-### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Zpracování žádostí o ověření pomocí protokolu Kerberos na základě vztahů důvěryhodnosti doménové struktury
+### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Zpracování požadavků na ověření na základě protokolu Kerberos přes vztahy důvěryhodnosti doménové struktury
 
-Pokud je mezi doménovými strukturami propojeny dvě doménové struktury, požadavky na ověřování vytvořené pomocí protokolů Kerberos V5 nebo NTLM je možné směrovat mezi doménovou strukturou, aby poskytovaly přístup k prostředkům v obou doménových strukturách.
+Pokud jsou dvě doménové struktury propojeny vztahem důvěryhodnosti doménové struktury, mohou být požadavky na ověření provedené pomocí protokolů Kerberos V5 nebo NTLM směrovány mezi doménovými strukturami a poskytovat tak přístup k prostředkům v obou doménových strukturách.
 
-Při prvním navázání vztahu důvěryhodnosti doménové struktury shromáždí každá doménová struktura všechny důvěryhodné obory názvů ve své partnerské struktuře partnerů a uloží je do [objektu důvěryhodné domény](#trusted-domain-object). Mezi důvěryhodné obory názvů patří názvy doménových struktur, přípony hlavního názvu uživatele (UPN), přípony hlavního názvu služby (SPN) a obory názvů identifikátoru zabezpečení (SID) používané v jiné doménové struktuře. Objekty objektu pro replikaci se replikují do globálního katalogu.
+Při prvním vytvoření vztahu důvěryhodnosti doménové struktury shromažďuje každá doménová struktura všechny důvěryhodné obory názvů ve své partnerské doménové struktuře a ukládá informace do [důvěryhodného objektu domény](#trusted-domain-object). Důvěryhodné obory názvů zahrnují názvy doménových stromů, přípony hlavního názvu uživatele (UPN), přípony hlavního názvu služby (SPN) a obory názvů ID zabezpečení používané v jiné doménové struktuře. Objekty TDO jsou replikovány do globálního katalogu.
 
-Než mohou ověřovací protokoly sledovat cestu vztahu důvěryhodnosti doménové struktury, musí být hlavní název služby (SPN) počítače prostředku přeložen do umístění v jiné doménové struktuře. Hlavní název služby (SPN) může být jeden z následujících:
+Před tím, než ověřovací protokoly budou moci sledovat cestu důvěryhodnosti doménové struktury, musí být hlavní název služby (SPN) počítače prostředků přeložen do umístění v jiné doménové struktuře. Hlavní aktualizace služeb spn může být jedna z následujících:
 
 * Název DNS hostitele.
 * Název DNS domény.
-* Rozlišující název objektu spojovacího bodu služby.
+* Rozlišující název objektu bodu připojení služby.
 
-Když se pracovní stanice v jedné doménové struktuře pokusí získat přístup k datům v počítači prostředků v jiné doménové struktuře, proces ověřování protokolu Kerberos kontaktuje řadič domény pro lístek služby na hlavní název služby (SPN) počítače prostředku. Jakmile řadič domény zadá dotaz na globální katalog a zjistí, že hlavní název služby není ve stejné doménové struktuře jako řadič domény, odešle řadič domény odkaz na svou nadřazenou doménu zpátky na pracovní stanici. V tomto okamžiku pracovní stanice zadá dotaz na nadřazenou doménu pro lístek služby a pokračuje podle řetězce odkazů, dokud nedosáhne domény, ve které je prostředek umístěný.
+Pokud se pracovní stanice v jedné doménové struktuře pokusí o přístup k datům v počítači prostředků v jiné doménové struktuře, proces ověřování protokolu Kerberos kontaktuje řadič domény pro lístek služby do hlavního názvu služby počítače poskytujícího prostředky. Jakmile řadič domény zažádá o dotaz globálního katalogu a zjistí, že název SPN není ve stejné doménové struktuře jako řadič domény, odešle řadič domény odkaz pro svou nadřazenou doménu zpět do pracovní stanice. V tomto okamžiku pracovní stanice dotazuje nadřazené domény pro lístek služby a nadále sledovat postoupení řetězce, dokud se nedostane do domény, kde je umístěn prostředek.
 
-Následující diagram a kroky poskytují podrobný popis procesu ověřování protokolu Kerberos, který se používá, když se počítače se systémem Windows pokusí získat přístup k prostředkům z počítače umístěného v jiné doménové struktuře.
+Následující diagram a kroky poskytují podrobný popis procesu ověřování protokolem Kerberos, který se používá, když se počítače se systémem Windows pokusí o přístup k prostředkům z počítače umístěného v jiné doménové struktuře.
 
-![Diagram procesu Kerberos přes vztah důvěryhodnosti doménové struktury](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![Diagram procesu protokolu Kerberos přes vztah důvěryhodnosti doménové struktury](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
 
-1. *Uživatel1* se přihlásí k *Workstation1* pomocí přihlašovacích údajů z domény *Europe.tailspintoys.com* . Uživatel se pak pokusí získat přístup ke sdílenému prostředku ve složce *Server1* umístěné v doménové struktuře *USA.wingtiptoys.com* .
+1. *Uživatel1* se přihlásí k *Workstation1* pomocí pověření z *domény europe.tailspintoys.com.* Uživatel se pak pokusí o přístup ke sdílenému prostředku na *serveru FileServer1* umístěnému v doménové struktuře *usa.wingtiptoys.com.*
 
-2. *Workstation1* kontaktuje službu KDC protokolu Kerberos v řadiči domény ve své doméně, *ChildDC1*a požádá o lístek služby pro *hlavní název* služby (SPN).
+2. *Workstation1* kontaktuje protokol Kerberos KDC na řadiči domény ve své doméně *ChildDC1*a požádá o lístek služby pro hlavní název služby *FileServer1.*
 
-3. *ChildDC1* nenajde hlavní název služby (SPN) v doméně databáze a dotazuje se na globální katalog, aby bylo možné zjistit, zda některé domény v doménové struktuře *tailspintoys.com* obsahují tento název SPN. Vzhledem k tomu, že globální katalog je omezený na vlastní doménovou strukturu, hlavní název služby se nenalezne.
+3. *ChildDC1* nenajde hlavní název služby ve své databázi domény a dotazuje se globálního katalogu, zda některé domény v *tailspintoys.com* doménové struktuře tento název SPN obsahují. Vzhledem k tomu, že globální katalog je omezen na vlastní doménovou strukturu, není název SPN nalezen.
 
-    Globální katalog potom zkontroluje svou databázi, kde zjistí informace o všech vztazích důvěryhodnosti doménové struktury, které jsou vytvořeny s doménovou strukturou. Pokud se najde, porovná přípony názvů uvedené v doménové struktuře Trust Object (důvěryhodné domény) k příponě cílového hlavního názvu služby (SPN), aby nalezla shodu. Po nalezení shody globální katalog poskytne doporučení směrování zpátky na *ChildDC1*.
+    Globální katalog poté zkontroluje v databázi informace o všech doménových fondech vytvořených s doménovou strukturu. Pokud je nalezen, porovná přípony názvů uvedené v důvěryhodném objektu domény důvěryhodnosti doménové struktury (TDO) s příponou cílového názvu SPN a vyhledá shodu. Jakmile je nalezena shoda, globální katalog poskytuje nápovědu směrování zpět na *ChildDC1*.
 
-    Pomocné parametry směrování vám pomůžou s přímými požadavky na ověřování směrem k cílové doménové struktuře. Pomocné parametry se používají jenom v případě, že se hlavní název služby (SPN) nepodaří najít u všech tradičních ověřovacích kanálů, jako je místní řadič domény a pak globální katalog.
+    Tipy při směrování pomáhají směrovat požadavky na ověření směrem k cílové doménové struktuře. Rady při psaní mohou být použity pouze v případě, že všechny tradiční ověřovací kanály, například místní řadič domény a potom globální katalog, nevyhledávají název SPN.
 
-4. *ChildDC1* odešle odkaz na svou nadřazenou doménu zpět na *Workstation1*.
+4. *ChildDC1* odešle odkaz pro svou nadřazenou doménu zpět do *Workstation1*.
 
-5. *Workstation1* kontaktuje řadič domény v *ForestRootDC1* (jeho nadřazená doména) pro odkaz na řadič domény (*ForestRootDC2*) v kořenové doméně doménové struktury *wingtiptoys.com* .
+5. *Workstation1* kontaktuje řadič domény v *doménové struktuře ForestRootDC1* (jeho nadřazená doména) a může být odkazna řadič domény *(ForestRootDC2)* v kořenové doménové struktuře *doménové* struktury wingtiptoys.com.
 
-6. *Workstation1* kontakty *ForestRootDC2* v doménové struktuře *wingtiptoys.com* pro lístek služby na požadovanou službu.
+6. *Pracovní stanice1* kontaktuje *ForestRootDC2* v *wingtiptoys.com* doménové struktuře pro lístek služby k požadované službě.
 
-7. *ForestRootDC2* kontaktuje svůj globální katalog, aby našel hlavní název služby (SPN), a globální katalog najde shodu pro hlavní název služby (SPN) a odešle ho zpátky do *ForestRootDC2*.
+7. *ForestRootDC2* kontaktuje svůj globální katalog, aby našel hlavní název služby, a globální katalog najde shodu pro hlavní název služby a odešle jej zpět do *ForestRootDC2*.
 
-8. *ForestRootDC2* pak odešle odkaz na *USA.wingtiptoys.com* zpět na *Workstation1*.
+8. *ForestRootDC2* pak odešle odkaz na *usa.wingtiptoys.com* zpět do *Workstation1*.
 
-9. *Workstation1* kontaktuje službu KDC na *ChildDC2* a vyjednává lístek pro *Uživatel1* , aby získal přístup k souborům *Server1*.
+9. *Workstation1* kontaktuje KDC na *ChildDC2* a vyjedná lístek pro *User1* získat přístup k *FileServer1*.
 
-10. Jakmile *Workstation1* má lístek služby, pošle lístek služby do příkazu *Server1*, který přečte přihlašovací údaje zabezpečení *user1*a podle toho vytvoří token pro přístup.
+10. Jakmile *workstation1* má lístek služby, odešle lístek služby *FileServer1*, který čte *User1*'s bezpečnostní pověření a vytvoří přístupový token odpovídajícím způsobem.
 
-## <a name="trusted-domain-object"></a>Objekt důvěryhodné domény
+## <a name="trusted-domain-object"></a>Důvěryhodný objekt domény
 
-Každý vztah důvěryhodnosti domény nebo doménové struktury v rámci organizace je reprezentován objektem důvěryhodné domény, který je uložený v kontejneru *System* v rámci příslušné domény.
+Každá doménová struktura nebo vztah důvěryhodnosti doménové struktury v rámci organizace je reprezentována důvěryhodným objektem domény (TDO) *uloženým* v systémovém kontejneru v rámci své domény.
 
-### <a name="tdo-contents"></a>Obsah pro
+### <a name="tdo-contents"></a>Obsah TDO
 
-Informace obsažené v poli se liší v závislosti na tom, jestli byl objekt pro vytváření domén vytvořený pomocí vztahu důvěryhodnosti domény nebo vztahu důvěryhodnosti doménové struktury.
+Informace obsažené v tdo se liší v závislosti na tom, zda tdo byl vytvořen vztah důvěryhodnosti domény nebo důvěryhodnosti doménové struktury.
 
-Když se vytvoří vztah důvěryhodnosti domény, ve kterém se nachází atributy, jako je název domény DNS, identifikátor SID domény, typ důvěryhodnosti, Přenositelnost vztahu důvěryhodnosti a název protější domény. Vztah důvěryhodnosti doménové struktury TDOs ukládá další atributy pro identifikaci všech důvěryhodných oborů názvů z partnerské struktury partnera. Mezi tyto atributy patří názvy doménových struktur, přípony hlavního názvu uživatele (UPN), přípony hlavního názvu služby (SPN) a obory názvů IDENTIFIKÁTORu zabezpečení (SID).
+Při vytvoření vztahu důvěryhodnosti domény jsou v tdo reprezentovány atributy, jako je název domény DNS, SID domény, typ důvěryhodnosti, přenositelnost důvěryhodnosti a reciproční název domény. Úložiště důvěryhodnosti tdos uložit další atributy k identifikaci všech důvěryhodných oborů názvů z partnerské doménové struktury. Mezi tyto atributy patří názvy doménových stromů, přípony hlavního názvu uživatele (UPN), přípony hlavního názvu služby (SPN) a obory názvů ID zabezpečení (SID).
 
-Vzhledem k tomu, že vztahy důvěryhodnosti jsou uloženy ve službě Active Directory jako TDOs, všechny domény v doménové struktuře mají znalosti o vztazích vztahů důvěryhodnosti, které jsou umístěny v celé doménové struktuře. Podobně platí, že pokud jsou dvě nebo více doménových struktur propojených prostřednictvím vztahů důvěryhodnosti doménové struktury, kořenové domény doménové struktury v každé doménové struktuře mají znalosti o vztazích vztahů důvěryhodnosti, které jsou umístěny v rámci všech domén v důvěryhodných doménových strukturách.
+Vzhledem k tomu, že vztahy důvěryhodnosti jsou uloženy ve službě Active Directory jako prodejné vztahy důvěryhodnosti, všechny domény v doménové struktuře mají znalosti vztahů důvěryhodnosti, které jsou v celé doménové struktuře zavedeny. Podobně když jsou dvě nebo více doménových struktur spojeny prostřednictvím vztahů důvěryhodnosti doménové struktury, kořenové domény doménové struktury v každé doménové struktuře znají vztahy důvěryhodnosti, které jsou zavedeny ve všech doménách v důvěryhodných doménových strukturách.
 
-### <a name="tdo-password-changes"></a>Změny hesla pro heslo
+### <a name="tdo-password-changes"></a>Změny hesla TDO
 
-Obě domény ve vztahu důvěryhodnosti sdílejí heslo, které je uloženo v objektu objektů úložiště ve službě Active Directory. V rámci procesu údržby účtu každých 30 dnů změní důvěřující řadič domény heslo uložené v řadiči domény. Vzhledem k tomu, že všechny obousměrné vztahy důvěryhodnosti jsou ve skutečnosti 2 1 vztahy důvěryhodnosti v opačném směru, proces se pro oboustranné vztahy důvěryhodnosti vyskytuje dvakrát.
+Obě domény ve vztahu důvěryhodnosti sdílejí heslo, které je uloženo v objektu TDO ve službě Active Directory. V rámci procesu údržby účtu mění důvěřující řadič domény každých 30 dní heslo uložené v tdo. Vzhledem k tomu, že všechny obousměrné vztahy důvěryhodnosti jsou ve skutečnosti dva jednosměrné vztahy důvěryhodnosti, které jdou opačným směrem, proces probíhá dvakrát pro obousměrné vztahy důvěryhodnosti.
 
-Vztah důvěryhodnosti má důvěřující a důvěryhodnou stranu. Na straně důvěryhodné se dá k procesu použít libovolný zapisovatelný řadič domény. Na straně vztahu důvěryhodnosti provede emulátor primárního řadiče domény změnu hesla.
+Svěřenský fond má důvěřivou a důvěryhodnou stránku. Na důvěryhodné straně lze pro tento proces použít libovolný řadič domény s zapisovatelný. Na důvěřující straně emulátor Primárního řadiče domény provede změnu hesla.
 
-K provedení změny hesla řadiče domény dokončí následující postup:
+Chcete-li změnit heslo, dokončí řadiče domény následující proces:
 
-1. Emulátor primárního řadiče domény v důvěřující doméně vytvoří nové heslo. Řadič domény v důvěryhodné doméně nikdy neinicializuje změnu hesla. Je vždy iniciována důvěryhodným emulátorem primárního řadiče domény.
+1. Emulátor primárního řadiče domény (PDC) v důvěřující doméně vytvoří nové heslo. Řadič domény v důvěryhodné doméně nikdy neiniciuje změnu hesla. Vždy je iniciován důvěřujícím emulátorem PDC domény.
 
-2. Emulátor primárního řadiče domény v důvěřující doméně nastaví pole *oldPassword* objektu na aktuální pole *nové_heslo* .
+2. Emulátor Primárního řadiče domény v důvěřující doméně nastaví pole *OldPassword* objektu TDO na aktuální pole *NewPassword.*
 
-3. Emulátor primárního řadiče domény v důvěřující doméně nastaví pole *nové_heslo* objektu na nové heslo. Když si kopii předchozího hesla zachováte, můžete se vrátit k původnímu heslu v případě, že se řadič domény v důvěryhodné doméně nepovede změnit, nebo pokud se změna nereplikuje předtím, než se vytvoří žádost, která používá nové heslo vztahu důvěryhodnosti.
+3. Emulátor Primárního řadiče domény v důvěřující doméně nastaví pole *NewPassword* objektu TDO na nové heslo. Uchovávání kopie předchozího hesla umožňuje vrátit se ke starému heslu, pokud řadič domény v důvěryhodné doméně změnu neobdrží nebo pokud změna není replikována před vytvořením požadavku, který používá nové heslo důvěryhodnosti.
 
-4. Emulátor primárního řadiče domény v důvěřující doméně vytvoří vzdálené volání řadiče domény v důvěryhodné doméně, aby na něj nastavila heslo pro účet důvěry na nové heslo.
+4. Emulátor Primárního řadiče domény v důvěřující doméně provede vzdálené volání řadiče domény v důvěryhodné doméně a požádá jej o nastavení hesla v účtu důvěryhodnosti na nové heslo.
 
-5. Řadič domény v důvěryhodné doméně změní heslo vztahu důvěryhodnosti na nové heslo.
+5. Řadič domény v důvěryhodné doméně změní důvěryhodné heslo na nové heslo.
 
-6. Na každé straně vztahu důvěryhodnosti se aktualizace replikují do ostatních řadičů domény v doméně. V důvěřující doméně vyvolá změna naléhavou replikaci objektu důvěryhodné domény.
+6. Na každé straně vztahu důvěryhodnosti jsou aktualizace replikovány do ostatních řadičů domény v doméně. V důvěřující doméně změna spustí naléhavou replikaci důvěryhodného objektu domény.
 
-Heslo je nyní změněno na obou řadičích domény. Normální replikace distribuuje objekty objektu datacontroller na ostatní řadiče domény v doméně. Je ale možné, že řadič domény v důvěřující doméně změní heslo, aniž by se úspěšně aktualizoval řadič domény v důvěryhodné doméně. K tomuto scénáři může dojít, protože zabezpečený kanál, který je nutný ke zpracování změny hesla, se nedal zřídit. Je také možné, že řadič domény v důvěryhodné doméně nemusí být v určitém okamžiku během procesu k dispozici a nemusí získat aktualizované heslo.
+Heslo je nyní změněno v obou řadičích domény. Normální replikace distribuuje objekty TDO do jiných řadičů domény v doméně. Je však možné, aby řadič domény v důvěřující doméně změnil heslo, aniž by úspěšně aktualizoval řadič domény v důvěryhodné doméně. K tomuto scénáři může dojít, protože nelze vytvořit zabezpečený kanál, který je nutný ke zpracování změny hesla. Je také možné, že řadič domény v důvěryhodné doméně nemusí být v určitém okamžiku procesu k dispozici a nemusí obdržet aktualizované heslo.
 
-Pokud se chcete zabývat situací, kdy se změna hesla úspěšně nekomunikuje, řadič domény v důvěřující doméně nikdy nemění nové heslo, pokud se úspěšně neověřil (nastavení zabezpečeného kanálu) pomocí nového hesla. To je důvod, proč se stará i nová hesla uchovávají v objektu důvěryhodné domény.
+Chcete-li řešit situace, ve kterých změna hesla není úspěšně sdělena, řadič domény v důvěřující doméně nikdy nezmění nové heslo, pokud úspěšně ověřen (nastavit zabezpečený kanál) pomocí nového hesla. Toto chování je důvod, proč jsou stará i nová hesla uložena v objektu TDO důvěřující domény.
 
-Změna hesla není dokončena, dokud nebude ověřování pomocí hesla úspěšné. Staré uložené heslo lze použít přes zabezpečený kanál, dokud řadič domény v důvěryhodné doméně neobdrží nové heslo, čímž povolí nepřerušenou službu.
+Změna hesla není dokončena, dokud ověření pomocí hesla proběhne úspěšně. Staré uložené heslo lze použít přes zabezpečený kanál, dokud řadič domény v důvěryhodné doméně neobdrží nové heslo, což umožňuje nepřetržitou službu.
 
-Pokud ověřování pomocí nového hesla neproběhne úspěšně, protože heslo je neplatné, pokusí se důvěřující řadič domény ověřit pomocí starého hesla. Pokud se úspěšně ověřuje pomocí starého hesla, pokračuje proces změny hesla během 15 minut.
+Pokud se ověření pomocí nového hesla nezdaří, protože heslo je neplatné, důvěryhodný řadič domény se pokusí ověřit pomocí starého hesla. Pokud se úspěšně ověří pomocí starého hesla, obnoví proces změny hesla do 15 minut.
 
-Aktualizace hesel trustu se musí replikovat na řadiče domény obou stran důvěry do 30 dnů. Pokud je heslo vztahu důvěryhodnosti změněno po 30 dnech a řadič domény pak má pouze heslo N-2, nemůže použít vztah důvěryhodnosti ze strany vztahu důvěryhodnosti a nemůže vytvořit zabezpečený kanál na důvěryhodné straně.
+Aktualizace důvěryhodných hesel je třeba replikovat do řadičů domény na obou stranách vztahu důvěryhodnosti do 30 dnů. Pokud se heslo důvěryhodnosti změní po 30 dnech a řadič domény má pouze heslo N-2, nemůže použít vztah důvěryhodnosti z důvěryhodné strany a nemůže vytvořit zabezpečený kanál na důvěryhodné straně.
 
 ## <a name="network-ports-used-by-trusts"></a>Síťové porty používané vztahy důvěryhodnosti
 
-Vzhledem k tomu, že vztahy důvěryhodnosti musí být nasazeny napříč různými hranicemi sítě, může být nutné rozložit jednu nebo více bran firewall. Pokud se jedná o tento případ, můžete buď tunelovat vztah důvěryhodnosti přes bránu firewall nebo otevřít konkrétní porty v bráně firewall, aby bylo možné předávání provozu.
+Vzhledem k tomu, že vztahy důvěryhodnosti musí být nasazeny přes různé hranice sítě, může být nutné span jeden nebo více bran firewall. V takovém případě můžete buď tunelovat důvěryhodný provoz přes bránu firewall, nebo otevřít určité porty v bráně firewall, aby přenos mohl projít.
 
 > [!IMPORTANT]
-> Active Directory Domain Services nepodporuje omezení provozu služby Active Directory RPC na konkrétní porty.
+> Služba Active Directory Domain Services nepodporuje omezení přenosů vzdáleného volání procedur služby Active Directory na určité porty.
 
-Přečtěte si část podpora Microsoftu článku o **Windows serveru 2008 a novějších verzích** , [jak nakonfigurovat bránu firewall pro domény služby Active Directory a vztahy důvěryhodnosti](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) , abyste se dozvěděli o portech potřebných pro vztah důvěryhodnosti doménové struktury.
+Přečtěte si část Windows **Server 2008 a novější verze** článku o podpoře společnosti Microsoft Jak [nakonfigurovat bránu firewall pro domény a vztahy důvěryhodnosti služby Active Directory,](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) abyste se dozvěděli o portech potřebných pro vztah důvěryhodnosti doménové struktury.
 
 ## <a name="supporting-services-and-tools"></a>Podpůrné služby a nástroje
 
 Pro podporu vztahů důvěryhodnosti a ověřování se používají některé další funkce a nástroje pro správu.
 
-### <a name="net-logon"></a>Přihlášení k síti
+### <a name="net-logon"></a>Přihlašování
 
-Služba přihlášení k síti udržuje zabezpečený kanál z počítače se systémem Windows do řadiče domény. Používá se také v následujících procesech souvisejících s důvěryhodností:
+Služba Přihlašování k síti udržuje zabezpečený kanál z počítače se systémem Windows do řadiče domény. Používá se také v následujících procesech souvisejících s důvěryhodností:
 
-* Nastavení a Správa důvěryhodnosti – přihlášení k síti pomáhá udržovat hesla důvěry, shromažďuje informace o důvěryhodnosti a ověřuje vztahy důvěryhodnosti pomocí interakce s procesem LSA a s DOMÉNou.
+* Nastavení a správa důvěryhodnosti – Přihlašování k síti pomáhá udržovat hesla důvěryhodnosti, shromažďuje informace o důvěryhodnosti a ověřuje vztahy důvěryhodnosti interakcí s procesem LSA a tdo.
 
-    U vztahů důvěryhodnosti doménové struktury obsahují informace o vztahu důvěryhodnosti záznam o vztahu důvěryhodnosti doménové struktury (*FTInfo*), který zahrnuje sadu oborů názvů, které důvěryhodná doménová struktura spravuje, s použitím pole, které indikuje, jestli je každá deklarace identity důvěřující doménové struktuře.
+    U vztahů důvěryhodnosti doménové struktury zahrnují informace o důvěryhodnosti doménové struktury *(FTInfo),* který zahrnuje sadu oborů názvů, které důvěryhodná doménová struktura označuje ke správě, s anotovaným polem označujícím, zda je každá deklarace důvěryhodná důvěřující doménovou struktury důvěryhodná.
 
-* Ověřování – poskytuje přihlašovací údaje uživatele přes zabezpečený kanál k řadiči domény a vrací identifikátory SID domény a uživatelská práva pro uživatele.
+* Ověřování – Poskytuje pověření uživatele prostřednictvím zabezpečeného kanálu řadiči domény a vrátí uživateli sidy domény a uživatelská práva.
 
-* Umístění řadiče domény – pomáhá najít nebo vyhledat řadiče domény v doméně nebo napříč doménami.
+* Umístění řadiče domény – pomáhá při hledání nebo vyhledání řadičů domény v doméně nebo napříč doménami.
 
-* Předávací ověřování – přihlašovací údaje uživatelů v jiných doménách jsou zpracovávány pomocí příkazu Net Logon. Když důvěřující doména potřebuje ověřit identitu uživatele, předá přihlašovací údaje uživatele pomocí příkazu Net Logon k důvěryhodné doméně za účelem ověření.
+* Předávací ověření – Pověření uživatelů v jiných doménách jsou zpracována službou Net Logon. Pokud důvěřující doména potřebuje ověřit identitu uživatele, předá pověření uživatele prostřednictvím aplikace Net Logon důvěryhodné doméně k ověření.
 
-* Ověření certifikátu PAC (Privileged Certificate) – Pokud server, který používá protokol Kerberos pro ověřování, musí ověřit PAC v lístku služby, pošle PAC přes zabezpečený kanál na jeho řadič domény a ověří tak ověření.
+* Ověření certifikátu atributu oprávnění (PAC) – Pokud server používající protokol Kerberos pro ověřování potřebuje ověřit certifikát PAC v lístku služby, odešle certifikát PAC přes zabezpečený kanál k ověření svému řadiči domény.
 
-### <a name="local-security-authority"></a>Místní autorita zabezpečení
+### <a name="local-security-authority"></a>Místní úřad zabezpečení
 
-Místní úřad zabezpečení (LSA) je chráněný podsystém, který uchovává informace o všech aspektech místního zabezpečení v systému. V zásadě označované jako místní zásady zabezpečení poskytuje LSA různé služby pro překlad mezi názvy a identifikátory.
+Místní úřad zabezpečení (LSA) je chráněný subsystém, který uchovává informace o všech aspektech místního zabezpečení v systému. LSA, souhrnně známá jako místní zásady zabezpečení, poskytuje různé služby pro překlad mezi názvy a identifikátory.
 
-Subsystém zabezpečení LSA poskytuje služby v režimu jádra i v uživatelském režimu pro ověřování přístupu k objektům, kontrolu uživatelských oprávnění a generování zpráv auditu. LSA zodpovídá za kontrolu platnosti všech lístků relací prezentovaných službami v důvěryhodných nebo nedůvěryhodných doménách.
+Podsystém zabezpečení LSA poskytuje služby v režimu jádra i v uživatelském režimu pro ověřování přístupu k objektům, kontrolu uživatelských oprávnění a generování zpráv auditu. LSA je zodpovědná za kontrolu platnosti všech lístků relace prezentovaných službami v důvěryhodných nebo nedůvěryhodných doménách.
 
 ### <a name="management-tools"></a>Nástroje pro správu
 
-Správci můžou *domény a vztahy důvěryhodnosti služby Active Directory*používat *k* vystavení, vytváření, odebírání a úpravám vztahů důvěryhodnosti.
+Správci mohou pomocí *domén a vztahů důvěryhodnosti služby Active Directory*, *Netdom* a *Nltest* zpřístupnit, vytvořit, odebrat nebo upravit vztahy důvěryhodnosti.
 
-* *Domény a vztahy důvěryhodnosti služby Active Directory* je konzola MMC (Microsoft Management Console), která slouží ke správě vztahů důvěryhodnosti domén, úrovní funkčnosti domény a doménové struktury a přípon hlavního názvu uživatele.
-* Nástroje příkazového řádku *netdom* a *Nltest* lze použít k vyhledání, zobrazení, vytvoření a správě vztahů důvěryhodnosti. Tyto nástroje komunikují přímo s autoritou LSA na řadiči domény.
+* *Domény a vztahy důvěryhodnosti služby Active Directory* je konzola MMC (MMC), která slouží ke správě vztahů důvěryhodnosti domén, úrovní funkčnosti domény a doménové struktury a přípon hlavních názvů uživatelů.
+* Nástroje příkazového řádku *Netdom* a *Nltest* lze použít k vyhledání, zobrazení, vytvoření a správě vztahů důvěryhodnosti. Tyto nástroje komunikují přímo s autoritou LSA na řadiči domény.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o doménových strukturách prostředků najdete v tématu [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
+Další informace o doménových strukturách prostředků najdete v tématu [Jak fungují vztahy důvěryhodnosti doménové struktury ve službě Azure AD DS?][concepts-trust]
 
-Pokud chcete začít s vytvářením spravované domény Azure služba AD DS pomocí doménové struktury prostředků, přečtěte si téma [Vytvoření a konfigurace spravované domény azure služba AD DS][tutorial-create-advanced]. Pak můžete [vytvořit odchozí vztah důvěryhodnosti doménové struktury k místní doméně (Preview)][create-forest-trust].
+Pokud chcete začít s vytvářením spravované domény Azure AD DS s doménovou doménovou strukturu prostředků, přečtěte si informace [o vytvoření a konfiguraci spravované domény Služby Azure AD DS][tutorial-create-advanced]. Potom můžete [vytvořit odchozí vztah důvěryhodnosti doménové struktury pro místní doménu (náhled).][create-forest-trust]
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

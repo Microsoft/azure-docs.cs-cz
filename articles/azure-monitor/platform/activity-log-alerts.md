@@ -1,64 +1,64 @@
 ---
-title: Výstrahy protokolu aktivit v Azure Monitor
-description: Informujte prostřednictvím SMS, Webhooku, SMS, e-mailu a dalších akcí, když dojde k určitým událostem v protokolu aktivit.
+title: Výstrahy protokolu aktivit ve službě Azure Monitor
+description: Být upozorněni prostřednictvím SMS, webhook, SMS, e-mail a další, když některé události se vyskytují v protokolu aktivit.
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669009"
 ---
-# <a name="alerts-on-activity-log"></a>Výstrahy na protokol aktivit
+# <a name="alerts-on-activity-log"></a>Upozornění na protokol aktivit
 
 ## <a name="overview"></a>Přehled
 
-Výstrahy protokolu aktivit jsou výstrahy, které se aktivují, když dojde k nové [události protokolu aktivit](activity-log-schema.md) , která odpovídá podmínkám zadaným ve výstraze. Na základě pořadí a objemu událostí zaznamenaných v [protokolu aktivit Azure](platform-logs-overview.md)se pravidlo výstrahy aktivuje. Pravidla upozornění protokolu aktivit jsou prostředky Azure, aby je bylo možné vytvořit pomocí šablony Azure Resource Manager. Také je možné je vytvořit, aktualizovat nebo odstranit v Azure Portal. Tento článek představuje koncepty za výstrahami protokolu aktivit. Další informace o vytváření a používání pravidel upozornění protokolů aktivit najdete v tématu [vytváření a správa výstrah protokolu aktivit](alerts-activity-log.md).
+Výstrahy protokolu aktivit jsou výstrahy, které se aktivují, když dojde k nové [události protokolu aktivit,](activity-log-schema.md) která odpovídá podmínkám zadaným ve výstraze. Na základě pořadí a objemu událostí zaznamenaných v [protokolu aktivit Azure](platform-logs-overview.md)se pravidlo výstrahy zapálí. Pravidla výstrah protokolu aktivit jsou prostředky Azure, takže je můžete vytvořit pomocí šablony Azure Resource Manager. Taky je dá vytvořit, aktualizovat nebo odstranit na webu Azure Portal. Tento článek představuje koncepty za výstrahy protokolu aktivit. Další informace o vytváření nebo používání pravidel výstrah protokolu aktivit naleznete v tématu [Vytváření a správa výstrah protokolu aktivit](alerts-activity-log.md).
 
 > [!NOTE]
-> Pro události v kategorii výstrahy protokolu aktivit **nelze** vytvořit výstrahy.
+> Výstrahy **nelze** vytvořit pro události v kategorii výstrahy protokolu aktivit.
 
-Obvykle vytváříte výstrahy protokolu aktivit pro příjem oznámení v těchto případech:
+Obvykle vytváříte výstrahy protokolu aktivit pro příjem oznámení, když:
 
-* K určitým operacím dochází u prostředků ve vašem předplatném Azure, které jsou často vymezeny na konkrétní skupiny prostředků nebo prostředky. Například může být vhodné upozornit, když se odstraní libovolný virtuální počítač v myProductionResourceGroup. Nebo můžete chtít být upozorněni, pokud jsou nové role přiřazeny uživateli v rámci vašeho předplatného.
-* Dojde k události služby Health Service. Události služby Service Health zahrnují oznámení o incidentech a událostech údržby, které se vztahují na prostředky v rámci vašeho předplatného.
+* Konkrétní operace se vyskytují u prostředků ve vašem předplatném Azure, často s rozsahem na konkrétní skupiny prostředků nebo prostředky. Můžete například chtít být upozorněni při odstranění libovolného virtuálního počítače v myProductionResourceGroup. Nebo můžete chtít být upozorněni, pokud jsou nějaké nové role přiřazeny uživateli ve vašem předplatném.
+* Dojde k události stavu služby. Události stavu služby zahrnují oznámení o incidentech a událostech údržby, které se vztahují na prostředky ve vašem předplatném.
 
-Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvořit pravidla výstrah v protokolu aktivit, je prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit v Azure Portal](activity-log-view.md#azure-portal). V protokolu Azure Monitor-Activity může jedna filtrovat nebo najít nezbytnou událost a pak vytvořit výstrahu pomocí tlačítka **Přidat upozornění protokolu aktivit** .
+Jednoduchá analogie pro pochopení podmínek, na kterých se mohou vytvářet pravidla výstrah v protokolu aktivit, je prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit na webu Azure Portal](activity-log-view.md#azure-portal). V Azure Monitor – protokol aktivit, jeden můžete filtrovat nebo najít potřebnou událost a potom vytvořit výstrahu pomocí tlačítka **Přidat protokol aktivit.**
 
-V obou případech se výstraha protokolu aktivit monitoruje jenom pro události v předplatném, ve kterém je tato výstraha vytvořená.
+V obou případech výstraha protokolu aktivit monitoruje pouze události v předplatném, ve kterém je výstraha vytvořena.
 
-Výstrahu protokolu aktivit můžete nakonfigurovat na základě libovolné vlastnosti nejvyšší úrovně v objektu JSON pro událost protokolu aktivit. Další informace najdete v tématu [kategorie v protokolu aktivit](activity-log-view.md#categories-in-the-activity-log). Další informace o událostech stavu služby najdete v tématu [příjem výstrah protokolu aktivit v oznámeních o službě](alerts-activity-log-service-notifications.md). 
+Můžete nakonfigurovat výstrahu protokolu aktivit na základě libovolné vlastnosti nejvyšší úrovně v objektu JSON pro událost protokolu aktivit. Další informace naleznete [v tématu Kategorie v protokolu aktivit](activity-log-view.md#categories-in-the-activity-log). Další informace o událostech stavu služby najdete v [tématu Příjem upozornění protokolu aktivit na oznámení služby](alerts-activity-log-service-notifications.md). 
 
 Výstrahy protokolu aktivit mají několik běžných možností:
 
-- **Kategorie**: administrativní, Service Health, automatické škálování, zabezpečení, zásady a doporučení. 
-- **Scope (obor**): jednotlivý prostředek nebo sada prostředků, pro které je definovaná výstraha protokolu aktivit. Rozsah upozornění protokolu aktivit lze definovat na různých úrovních:
-    - Úroveň prostředku: například pro konkrétní virtuální počítač
-    - Úroveň skupiny prostředků: třeba všechny virtuální počítače v určité skupině prostředků
-    - Úroveň předplatného: například všechny virtuální počítače v předplatném (nebo) všechny prostředky v rámci předplatného
-- **Skupina prostředků**: ve výchozím nastavení se pravidlo výstrahy uloží do stejné skupiny prostředků, která je v cíli definovaná v oboru. Uživatel může také definovat skupinu prostředků, ve které se má pravidlo výstrahy ukládat.
-- **Typ prostředku**: Správce prostředků definovaný obor názvů pro cíl výstrahy.
-- **Název operace**: název [operace Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) používá pro Access Control založenou na rolích. Operace, které nejsou zaregistrované u Azure Resource Manager, se nedají použít v pravidle upozornění protokolu aktivit.
-- **Úroveň**: úroveň závažnosti události (podrobné, informativní, varovná, chyba nebo kritická).
-- **Stav**: stav události, obvykle spuštěno, selhalo nebo proběhlo úspěšně.
-- **Událost iniciovaná**: taky se označuje jako volající. E-mailová adresa nebo Azure Active Directory identifikátor uživatele, který operaci provedl.
+- **Kategorie:** Správa, Stav služby, Automatické škálování, Zabezpečení, Zásady a Doporučení. 
+- **Obor**: Jednotlivé prostředky nebo sady prostředků, pro které je definována výstraha v protokolu aktivit. Obor výstrahy protokolu aktivit lze definovat na různých úrovních:
+    - Úroveň prostředků: Například pro konkrétní virtuální počítač
+    - Úroveň skupiny prostředků: Například všechny virtuální počítače v určité skupině prostředků
+    - Úroveň předplatného: Například všechny virtuální počítače v předplatném (nebo) všechny prostředky v předplatném
+- **Skupina prostředků**: Ve výchozím nastavení je pravidlo výstrahy uloženo ve stejné skupině prostředků jako cíl definovaný v oboru. Uživatel může také definovat skupinu prostředků, kde by mělo být uloženo pravidlo výstrahy.
+- **Typ prostředku**: Obor názvů definovaný správcem prostředků pro cíl výstrahy.
+- **Název operace**: Název [operace Správce prostředků Azure](../../role-based-access-control/resource-provider-operations.md) používaný pro řízení přístupu na základě rolí . Operace, které nejsou registrované ve Správci prostředků Azure, nelze použít v pravidle výstrahy protokolu aktivit.
+- **Úroveň**: Úroveň závažnosti události (Podrobné, Informační, Upozornění, Chyba nebo Kritická).
+- **Stav**: Stav události, obvykle spuštěno, neúspěšné nebo úspěšné.
+- **Událost iniciovaná**: Také známý jako "volající". E-mailová adresa nebo identifikátor služby Azure Active Directory uživatele, který operaci provedl.
 
 > [!NOTE]
-> V rámci předplatného můžete vytvořit pravidla výstrah až 100, a to buď na jeden prostředek, všechny prostředky ve skupině prostředků (nebo) na celé úrovni předplatného.
+> V předplatném lze vytvořit až 100 pravidel výstrah pro aktivitu oboru buď na: jeden prostředek, všechny prostředky ve skupině prostředků (nebo) celou úroveň předplatného.
 
-Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Můžete:
+Když je aktivována výstraha protokolu aktivit, používá skupinu akcí ke generování akcí nebo oznámení. Skupina akcí je opakovaně použitelná sada příjemců oznámení, jako jsou e-mailové adresy, adresy URL webhooku nebo telefonní čísla SMS. Příjemci mohou odkazovat z více výstrah centralizovat a seskupit kanály oznámení. Když definujete výstrahu protokolu aktivit, máte dvě možnosti. Můžete:
 
-* V upozornění protokolu aktivit použijte existující skupinu akcí.
+* Ve výdižce protokolu aktivit použijte existující skupinu akcí.
 * Vytvořte novou skupinu akcí.
 
-Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups in the Azure Portal](action-groups.md).
+Další informace o skupinách akcí najdete [v tématu Vytváření a správa skupin akcí na webu Azure Portal](action-groups.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Získejte [Přehled výstrah](alerts-overview.md).
-- Přečtěte si o [vytváření a úpravách výstrah protokolu aktivit](alerts-activity-log.md).
-- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](activity-log-alerts-webhook.md).
-- Přečtěte si o [oznámeních o stavu služby](service-notifications.md).
+- Získejte [přehled o výstrahách](alerts-overview.md).
+- Informace o [vytváření a úpravách výstrah protokolu aktivit](alerts-activity-log.md).
+- Zkontrolujte [webhookové schéma výstrahy protokolu aktivit](activity-log-alerts-webhook.md).
+- Další informace o [oznámeních o stavu služby](service-notifications.md).

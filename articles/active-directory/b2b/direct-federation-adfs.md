@@ -1,6 +1,6 @@
 ---
-title: Nastavení přímé federace s AD FS pro B2B – Azure AD
-description: Naučte se nastavit AD FS jako zprostředkovatele identity pro přímou federaci, aby se hosté mohli přihlásit k aplikacím Azure AD.
+title: Nastavení přímé federace se službou AD FS pro B2B – Azure AD
+description: Přečtěte si, jak nastavit službu AD FS jako poskytovatele identity pro přímou federaci, aby se hosté mohli přihlásit k vašim aplikacím Azure AD.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,145 +13,145 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272833"
 ---
-# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Příklad: Přímá federace s Active Directory Federation Services (AD FS) (AD FS) (Preview)
+# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Příklad: Přímé federace se službou AD FS (AD FS) (preview)
 |     |
 | --- |
-| Přímá federace je funkce veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Přímá federace je funkce veřejného náhledu služby Azure Active Directory. Další informace o náhledech najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Tento článek popisuje, jak nastavit [přímou federaci](direct-federation.md) pomocí Active Directory Federation Services (AD FS) (AD FS) jako poskytovatele identity SAML 2,0 nebo WS. Aby bylo možné podporovat přímé federace, musí být na zprostředkovateli identity nakonfigurovány určité atributy a deklarace identity. K ilustraci, jak nakonfigurovat poskytovatele identity pro přímou federaci, použijeme jako příklad Active Directory Federation Services (AD FS) (AD FS). Ukážeme, jak nastavit AD FS jako zprostředkovatele identity SAML a jako zprostředkovatele identity WS-dodaný.
+Tento článek popisuje, jak nastavit [přímou federaci](direct-federation.md) pomocí služby AD FS (Active Directory Federation Services) jako zprostředkovatele identity SAML 2.0 nebo WS-Fed. Pro podporu přímé federace musí být u zprostředkovatele identity nakonfigurovány určité atributy a deklarace identity. Pro ilustraci konfigurace zprostředkovatele identity pro přímou federaci použijeme jako příklad službu AD FS (Active Directory Federation Services). Ukážeme vám, jak nastavit službu AD FS jako poskytovatele identity SAML i jako poskytovatele identity WS-Fed.
 
 > [!NOTE]
-> Tento článek popisuje, jak nastavit AD FS pro účely SAML i WS-dodávání pro ilustraci. U přímých integrací federace, kde je poskytovatel identity AD FS, doporučujeme jako protokol použít WS-dodávání. 
+> Tento článek popisuje, jak nastavit ad FS pro SAML a WS-Fed pro ilustrační účely. Pro přímé federace integrace, kde zprostředkovatel identity je AD FS, doporučujeme použít WS-Fed jako protokol. 
 
-## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>Konfigurace AD FS pro 2,0 přímé federace SAML
-Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol SAML s konkrétními požadavky uvedenými níže. V této části se dozvíte, jak nastavit AD FS pro SAML 2,0. 
+## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>Konfigurace služby AD FS pro přímou federaci SAML 2.0
+Azure AD B2B lze nakonfigurovat tak, aby federate s poskytovateli identity, které používají protokol SAML se specifickými požadavky uvedenými níže. Pro ilustraci kroků konfigurace SAML, tato část ukazuje, jak nastavit Službu AD FS pro SAML 2.0. 
 
-Pokud chcete nastavit přímou federaci, musí se v odpovědi SAML 2,0 od poskytovatele identity přijmout následující atributy. Tyto atributy je možné nakonfigurovat tak, že propojíte se souborem XML služby token zabezpečení online nebo je zadáte ručně. Krok 12 v tématu [vytvoření instance testovacího AD FS](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) popisuje, jak najít AD FS koncové body nebo jak generovat adresu URL metadat, například `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
+Chcete-li nastavit přímé federace, musí být přijata následující atributy v odpovědi SAML 2.0 od poskytovatele identity. Tyto atributy lze nakonfigurovat propojením se souborem XML služby tokenů zabezpečení online nebo ručním zadáním. Krok 12 v [souboru Vytvoření instance služby AD FS](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) popisuje, jak najít koncové body služby AD FS nebo jak generovat adresu URL metadat, například `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
 
 |Atribut  |Hodnota  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
-|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Vystavitel     |Identifikátor URI vystaviteli partnerského idp, například`http://www.example.com/exk10l6w90DHM0yi...`         |
 
-V tokenu SAML 2,0 vydaném zprostředkovatelem identity je potřeba nakonfigurovat následující deklarace identity:
+V tokenu SAML 2.0 vydaném poskytovatelem identity je třeba nakonfigurovat následující deklarace identity:
 
 
 |Atribut  |Hodnota  |
 |---------|---------|
-|Formát NameID     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
-|EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
+|NameID formát     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
+|Emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 
-Další část ukazuje, jak nakonfigurovat požadované atributy a deklarace identity pomocí AD FS jako příklad zprostředkovatele identity SAML 2,0.
+V další části je znázorněno, jak nakonfigurovat požadované atributy a deklarace identity pomocí služby AD FS jako příklad poskytovatele identity SAML 2.0.
 
 ### <a name="before-you-begin"></a>Než začnete
 
-Než začnete s tímto postupem, musí být již nastaven a funkční server AD FS. Nápovědu k nastavení serveru AD FS najdete v tématu věnovaném [Vytvoření testovací instance AD FS 3,0 na virtuálním počítači Azure](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
+Server služby AD FS musí být před zahájením tohoto postupu již nastaven a funkční. Nápovědu k nastavení serveru služby AD FS najdete [v tématu Vytvoření testovací instance služby AD FS 3.0 na virtuálním počítači Azure](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
 
-### <a name="add-the-claim-description"></a>Přidat popis deklarace identity
+### <a name="add-the-claim-description"></a>Přidání popisu deklarace
 
-1. Na serveru AD FS vyberte **nástroje** > **AD FS Správa**.
-2. V navigačním podokně vyberte **služba** > **popisy deklarací identity**.
-3. V části **Akce**vyberte **přidat popis deklarace identity**.
-4. V okně **přidat popis deklarace** zadejte následující hodnoty:
+1. Na serveru služby AD FS vyberte nástroj pro správu **služby** > **AD FS**.
+2. V navigačním podokně vyberte **Popisy** > **deklarací služby**.
+3. V části **Akce**vyberte **Přidat popis deklarace .**
+4. V okně **Přidat popis deklarace** zadejte následující hodnoty:
 
-   - **Zobrazovaný název**: trvalý identifikátor
-   - **Identifikátor deklarace identity**: `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
-   - Zaškrtněte políčko **publikovat tento popis deklarace identity ve federačních metadatech jako typ deklarace identity, kterou může tato služba FS přijmout**.
-   - Zaškrtněte políčko **publikovat tento popis deklarace identity ve federačních metadatech jako typ deklarace identity, kterou může tato služba FS odeslat**.
+   - **Zobrazovaný název**: Trvalý identifikátor
+   - **Identifikátor deklarace :**`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
+   - Zaškrtněte políčko **Publikovat tento popis deklarace v metadatech federace jako typ deklarace, který může tato federační služba přijmout**.
+   - Zaškrtněte políčko **Publikovat tento popis deklarace v metadatech federace jako typ deklarace, který může tato federační služba odeslat**.
 
-5. Klikněte na tlačítko **OK**.
+5. Klikněte na **OK**.
 
-### <a name="add-the-relying-party-trust-and-claim-rules"></a>Přidání vztahu důvěryhodnosti předávající strany a pravidel deklarací identity
+### <a name="add-the-relying-party-trust-and-claim-rules"></a>Přidání pravidel důvěryhodnosti a deklarací důvěryhodnosti předávající strany
 
-1. Na AD FS serveru přejdete do části **nástroje** > **AD FS Správa**.
-2. V navigačním podokně vyberte **vztahy důvěryhodnosti** > vztahy **důvěryhodnosti předávající strany**.
-3. V části **Akce**vyberte **Přidat vztah důvěryhodnosti předávající strany**. 
-4. V Průvodci přidáním vztahu důvěryhodnosti předávající strany pro **možnost vybrat zdroj dat**použijte možnost **importovat data o předávající straně, která je publikována online nebo v místní síti**. Zadejte tuto adresu URL federačních metadat – https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml. Ponechte ostatní výchozí výběry. Vyberte **Zavřít**.
-5. Otevře se průvodce **úpravou pravidel deklarací identity** .
-6. V průvodci **úpravou pravidel deklarací** vyberte **Přidat pravidlo**. V **Možnosti zvolit typ pravidla**vyberte **Odeslat atributy LDAP jako deklarace identity**. Vyberte **Next** (Další).
-7. V části **konfigurovat pravidlo deklarace identity**zadejte následující hodnoty: 
+1. Na serveru služby AD FS přejděte na nástroj ovou správu **služby** > **Tools AD FS**.
+2. V navigačním podokně vyberte **možnost Vztahy důvěryhodnosti vztahů** > důvěryhodnosti vztahů**důvěryhodnosti**.
+3. V části **Akce**vyberte **Přidat důvěryhodnost předávající strany**. 
+4. V průvodci přidáním důvěryhodného vztahu předávající strany pro **možnost Vybrat zdroj dat**použijte možnost **Importovat data o předávající straně publikovanou online nebo v místní síti**. Zadejte adresu URL https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xmlmetadat federace- . Ponechte jiné výchozí výběry. Vyberte **Zavřít**.
+5. Otevře se průvodce **Upravit pravidla deklarací.**
+6. V průvodci **Upravit pravidla deklarací** vyberte **Přidat pravidlo**. V **rozezvolte Typ pravidla**vyberte **Odeslat atributy LDAP jako deklarace identity**. Vyberte **další**.
+7. V **poli Konfigurovat pravidlo deklarace**zadejte následující hodnoty: 
 
-   - **Název pravidla deklarace identity**: pravidlo deklarace e-mailu 
+   - **Název pravidla deklarace**tvrdí : Pravidlo deklarace e-mailové deklarace 
    - **Úložiště atributů**: Služba Active Directory 
    - **Atribut LDAP**: E-mailové adresy 
-   - **Typ odchozí deklarace**: e-mailová adresa
+   - **Typ odchozí reklamy**: E-mailová adresa
 
 8. Vyberte **Finish** (Dokončit).
-9. V okně **upravit pravidla deklarací** se zobrazí nové pravidlo. Klikněte na **Použít**. 
-10. Klikněte na tlačítko **OK**.  
+9. V okně **Upravit pravidla deklarací** se zobrazí nové pravidlo. Klikněte na **Použít**. 
+10. Klikněte na **OK**.  
 
-### <a name="create-an-email-transform-rule"></a>Vytvořit pravidlo transformace e-mailu
-1. Přejděte na **upravit pravidla deklarace identity** a klikněte na **Přidat pravidlo**. V **Možnosti zvolit typ pravidla**vyberte **transformovat příchozí deklaraci identity** a klikněte na **Další**. 
-2. V části **konfigurovat pravidlo deklarace identity**zadejte následující hodnoty: 
+### <a name="create-an-email-transform-rule"></a>Vytvoření pravidla transformace e-mailu
+1. Přejděte na **Upravit pravidla deklarací a** klepněte na tlačítko Přidat **pravidlo**. V **poleM Zvolte Typ pravidla**vyberte Transformovat příchozí **deklaraci a** klepněte na tlačítko **Další**. 
+2. V **poli Konfigurovat pravidlo deklarace**zadejte následující hodnoty: 
 
-   - **Název pravidla deklarace identity**: pravidlo transformace e-mailu 
-   - **Typ příchozí deklarace identity**: e-mailová adresa 
-   - **Typ odchozí deklarace**: název ID 
-   - **Formát ID odchozího názvu**: trvalý identifikátor 
+   - **Název pravidla deklarace**tvrdí : Pravidlo transformace e-mailu 
+   - **Typ příchozí reklamace**: E-mailová adresa 
+   - **Typ odchozí deklarace**: ID jména 
+   - **Formát ID odchozího jména**: Trvalý identifikátor 
    - Vyberte **Předávat všechny hodnoty deklarací identity**.
 
-3. Klikněte na **Dokončit**. 
-4. V okně **upravit pravidla deklarací** se zobrazí nová pravidla. Klikněte na **Použít**. 
-5. Klikněte na tlačítko **OK**. AD FS Server je nyní nakonfigurován pro přímou federaci pomocí protokolu SAML 2,0.
+3. Klikněte na **Finish** (Dokončit). 
+4. V okně **Upravit pravidla deklarací** se zobrazí nová pravidla. Klikněte na **Použít**. 
+5. Klikněte na tlačítko **OK**. Server služby AD FS je nyní nakonfigurován pro přímou federaci pomocí protokolu SAML 2.0.
 
-## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>Konfigurace AD FS pro přímé federace WS-dodávání 
-Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol WS-dodávání s konkrétními požadavky uvedenými níže. V současné době byly dva poskytovatelé WS-dodány testováni kvůli kompatibilitě s Azure AD zahrnutí AD FS a Shibboleth. Tady použijeme Active Directory Federation Services (AD FS) (AD FS) jako příklad zprostředkovatele identity WS-dodaného. Další informace o tom, jak vytvořit vztah důvěryhodnosti předávající strany mezi poskytovatelem kompatibilním se specifikací WS a Azure AD, najdete v dokumentech ke kompatibilitě zprostředkovatele identit Azure AD.
+## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>Konfigurace služby AD FS pro přímou federaci WS-Fed 
+Azure AD B2B lze nakonfigurovat tak, aby federate s poskytovateli identity, které používají protokol WS Fed s konkrétní požadavky uvedené níže. V současné době dva poskytovatelé WS-Fed byly testovány na kompatibilitu s Azure AD patří AD FS a Shibboleth. Zde použijeme službu AD FS (Active Directory Federation Services) jako příklad poskytovatele identity WS-Fed. Další informace o vytvoření vztahu důvěryhodnosti předávající strany mezi poskytovatelem kompatibilním s WS-Fed s Azure AD si stáhněte dokumenty kompatibility zprostředkovatele identity Azure AD.
 
-Chcete-li nastavit přímou federaci, je nutné ve zprávě od poskytovatele identity přijmout následující atributy. Tyto atributy je možné nakonfigurovat tak, že propojíte se souborem XML služby token zabezpečení online nebo je zadáte ručně. Krok 12 v tématu [vytvoření instance testovacího AD FS](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) popisuje, jak najít AD FS koncové body nebo jak generovat adresu URL metadat, například `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
+Chcete-li nastavit přímou federaci, musí být ve zprávě WS-Fed od poskytovatele identity přijaty následující atributy. Tyto atributy lze nakonfigurovat propojením se souborem XML služby tokenů zabezpečení online nebo ručním zadáním. Krok 12 v [souboru Vytvoření instance služby AD FS](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) popisuje, jak najít koncové body služby AD FS nebo jak generovat adresu URL metadat, například `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
  
 |Atribut  |Hodnota  |
 |---------|---------|
-|PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
+|PasivníPožadavek     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
-|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Vystavitel     |Identifikátor URI vystaviteli partnerského idp, například`http://www.example.com/exk10l6w90DHM0yi...`         |
 
-Požadované deklarace pro token WS-dodaný vydaný IdP:
+Požadované nároky pro token WS-Fed vydaný idp:
 
 |Atribut  |Hodnota  |
 |---------|---------|
-|ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
-|EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
+|ID neměnné     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
+|Emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-Další část ukazuje, jak nakonfigurovat požadované atributy a deklarace identity pomocí AD FS jako příklad poskytovatele identity WS-dodaného.
+V další části je znázorněno, jak nakonfigurovat požadované atributy a deklarace identity pomocí služby AD FS jako příklad u poskytovatele identity WS-Fed.
 
 ### <a name="before-you-begin"></a>Než začnete
-Než začnete s tímto postupem, musí být již nastaven a funkční server AD FS. Nápovědu k nastavení serveru AD FS najdete v tématu věnovaném [Vytvoření testovací instance AD FS 3,0 na virtuálním počítači Azure](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
+Server služby AD FS musí být před zahájením tohoto postupu již nastaven a funkční. Nápovědu k nastavení serveru služby AD FS najdete [v tématu Vytvoření testovací instance služby AD FS 3.0 na virtuálním počítači Azure](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
 
 
-### <a name="add-the-relying-party-trust-and-claim-rules"></a>Přidání vztahu důvěryhodnosti předávající strany a pravidel deklarací identity 
-1. Na AD FS serveru přejdete do části **nástroje** > **AD FS Správa**. 
-1. V navigačním podokně vyberte **vztahy důvěryhodnosti** > vztahy **důvěryhodnosti předávající strany**. 
-1. V části **Akce**vyberte **Přidat vztah důvěryhodnosti předávající strany**.  
-1. V Průvodci přidáním vztahu důvěryhodnosti předávající strany pro **možnost vybrat zdroj dat**použijte možnost **importovat data o předávající straně, která je publikována online nebo v místní síti**. Zadejte tuto adresu URL federačních metadat: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`.  Ponechte ostatní výchozí výběry. Vyberte **Zavřít**.
-1. Otevře se průvodce **úpravou pravidel deklarací identity** . 
-1. V průvodci **úpravou pravidel deklarací** vyberte **Přidat pravidlo**. V **Možnosti zvolit typ pravidla**vyberte **Odeslat deklarace identity pomocí vlastního pravidla**. Vyberte *Next* (Další). 
-1. V části **konfigurovat pravidlo deklarace identity**zadejte následující hodnoty:
+### <a name="add-the-relying-party-trust-and-claim-rules"></a>Přidání pravidel důvěryhodnosti a deklarací důvěryhodnosti předávající strany 
+1. Na serveru služby AD FS přejděte na nástroj ovou správu **služby** > **Tools AD FS**. 
+1. V navigačním podokně vyberte **možnost Vztahy důvěryhodnosti vztahů** > důvěryhodnosti vztahů**důvěryhodnosti**. 
+1. V části **Akce**vyberte **Přidat důvěryhodnost předávající strany**.  
+1. V průvodci přidáním důvěryhodného vztahu předávající strany použijte v části **Vybrat zdroj dat**možnost **Importovat data o předávající straně publikované online nebo v místní síti**. Zadejte tuto adresu `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`URL metadat federace: .  Ponechte jiné výchozí výběry. Vyberte **Zavřít**.
+1. Otevře se průvodce **Upravit pravidla deklarací.** 
+1. V průvodci **Upravit pravidla deklarací** vyberte **Přidat pravidlo**. V **poleM Zvolte Typ pravidla**vyberte **Odeslat deklarace pomocí vlastního pravidla**. Vyberte *další*. 
+1. V **poli Konfigurovat pravidlo deklarace**zadejte následující hodnoty:
 
-   - **Název pravidla deklarace identity**: neměnné ID problému  
-   - **Vlastní pravidlo**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
+   - **Název pravidla deklarace**: Id neměnného problému  
+   - **Vlastní pravidlo**:`c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. Vyberte **Finish** (Dokončit). 
-1. V okně **upravit pravidla deklarací** se zobrazí nové pravidlo. Klikněte na **Použít**.  
-1. Ve stejném průvodci **úpravou pravidel deklarací identity** vyberte **Přidat pravidlo**. V **typu pravidla kohadice**vyberte **Odeslat atributy LDAP jako deklarace identity**. Vyberte **Next** (Další).
-1. V části **konfigurovat pravidlo deklarace identity**zadejte následující hodnoty: 
+1. V okně **Upravit pravidla deklarací** se zobrazí nové pravidlo. Klikněte na **Použít**.  
+1. Ve stejném **průvodci Upravit pravidla deklarací** vyberte **Přidat pravidlo**. V **pole Typ pravidla cohose**vyberte **Odeslat atributy LDAP jako deklarace identity**. Vyberte **další**.
+1. V **poli Konfigurovat pravidlo deklarace**zadejte následující hodnoty: 
 
-   - **Název pravidla deklarace identity**: pravidlo deklarace e-mailu  
+   - **Název pravidla deklarace**tvrdí : Pravidlo deklarace e-mailové deklarace  
    - **Úložiště atributů**: Služba Active Directory  
    - **Atribut LDAP**: E-mailové adresy  
-   - **Typ odchozí deklarace**: e-mailová adresa 
+   - **Typ odchozí reklamy**: E-mailová adresa 
 
 1.  Vyberte **Finish** (Dokončit). 
-1.  V okně **upravit pravidla deklarací** se zobrazí nové pravidlo. Klikněte na **Použít**.  
-1.  Klikněte na tlačítko **OK**. Server AD FS je nyní nakonfigurován pro přímou federaci pomocí protokolu WS-dodaných.
+1.  V okně **Upravit pravidla deklarací** se zobrazí nové pravidlo. Klikněte na **Použít**.  
+1.  Klikněte na tlačítko **OK**. Server Služby AD FS je nyní nakonfigurován pro přímou federaci pomocí služby WS-Fed.
 
 ## <a name="next-steps"></a>Další kroky
 Dále [nakonfigurujete přímou federaci ve službě Azure AD](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) buď na portálu Azure AD, nebo pomocí PowerShellu. 

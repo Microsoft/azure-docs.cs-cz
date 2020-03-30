@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zásad registrace MFA – Azure Active Directory Identity Protection
-description: Naučte se konfigurovat zásady registrace Azure AD Identity Protection Multi-Factor Authentication.
+title: Konfigurace zásad registrace vícefaktorové registrace – Ochrana identity služby Azure Active Directory
+description: Zjistěte, jak nakonfigurovat zásady registrace vícefaktorového ověřování Azure AD Identity Protection.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,51 +12,51 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382143"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Postupy: Konfigurace zásad registrace Azure Multi-Factor Authentication
+# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Postup: Konfigurace zásad registrace azure vícefaktorového ověřování
 
-Azure AD Identity Protection vám pomůže spravovat zavedení registrace Azure Multi-Factor Authentication (MFA) konfigurací zásady podmíněného přístupu, která vyžaduje registraci MFA, bez ohledu na to, ke které aplikaci moderního ověřování se přihlašujete.
+Azure AD Identity Protection vám pomůže spravovat zavedení registrace Azure Multi-Factor Authentication (MFA) konfigurací zásad podmíněného přístupu tak, aby vyžadovaly registraci vícefaktorové ověřování bez ohledu na to, k jaké moderní ověřovací aplikaci se přihlašujete.
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Co je zásada registrace v Azure Multi-Factor Authentication?
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Co je zásada registrace azure vícefaktorového ověřování?
 
-Azure Multi-Factor Authentication poskytuje způsob, jak ověřit, kdo používáte víc než jenom uživatelské jméno a heslo. Poskytuje druhou vrstvu zabezpečení pro přihlášení uživatelů. Aby uživatelé mohli reagovat na výzvy MFA, musí se nejdřív zaregistrovat pro Azure Multi-Factor Authentication.
+Azure Multi-Factor Authentication poskytuje prostředky k ověření, kdo používáte více než jen uživatelské jméno a heslo. Poskytuje druhou vrstvu zabezpečení pro přihlášení uživatelů. Aby uživatelé mohli reagovat na výzvy vícefaktorové ověřování, musí se nejprve zaregistrovat pro Azure Multi-Factor Authentication.
 
-Doporučujeme, abyste pro přihlášení uživatelů vyžadovali Multi-Factor Authentication Azure, protože:
+Doporučujeme, abyste pro přihlášení uživatelů k Azure vyžadovali vícefaktorové ověřování, protože:
 
-- Poskytuje silné ověřování prostřednictvím řady možností ověřování.
-- Hraje klíčovou roli v rámci přípravy vaší organizace na automatickou nápravu z detekce rizik v rámci Identity Protection.
+- Poskytuje silné ověřování prostřednictvím řady možností ověření.
+- Hraje klíčovou roli při přípravě vaší organizace na vlastní nápravu od detekce rizik v identity protection.
 
-Další informace o Azure Multi-Factor Authentication najdete v tématu [co je azure Multi-Factor Authentication?](../authentication/howto-mfa-getstarted.md)
+Další informace o vícefaktorovém ověřování Azure najdete v tématu [Co je azure vícefaktorové ověřování?](../authentication/howto-mfa-getstarted.md)
 
 ## <a name="policy-configuration"></a>Konfigurace zásad
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory** > **Security** > **Identity Protection** > **zásady registrace MFA**.
-   1. V části **přiřazení**
-      1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
-         1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
-   1. Pod **ovládacími prvky**
-      1. Zajistěte, aby bylo zaškrtnuté políčko **vyžadovat registraci Azure MFA** , a zvolte **Vybrat**.
-   1. **Vynutilit** ** - ** zásad
-   1. **Uloží**
+1. Přejděte na**zásady registrace mfa**ochrany > **Security** >  > **identity zabezpečení služby** **Azure Active Directory**.
+   1. V části **Přiřazení**
+      1. **Uživatelé** – pokud omezíte zavedení, zvolte **Všichni uživatelé** **nebo Vybrat jednotlivce a skupiny.**
+         1. Volitelně můžete vyloučit uživatele ze zásady.
+   1. V části **Ovládací prvky**
+      1. Ujistěte se, že zaškrtávací políčko **Vyžadovat registraci Azure MFA** je zaškrtnuto a zvolte **Vybrat**.
+   1. **Vynutit zásady** - **na**
+   1. **Uložit**
 
-## <a name="user-experience"></a>Činnost koncového uživatele
+## <a name="user-experience"></a>Uživatelské prostředí
 
-Azure Active Directory Identity Protection vyzve uživatele, aby se zaregistrovali při příštím přihlášení, a k dokončení registrace budou mít 14 dní. Během období 14 dní můžou obejít registraci, ale na konci období se budou muset zaregistrovat, aby mohli dokončit proces přihlašování.
+Azure Active Directory Identity Protection vyzve uživatele k registraci při příštím přihlášení interaktivně a budou mít 14 dní na dokončení registrace. Během tohoto 14denního období mohou registraci obejít, ale na konci období se budou muset před dokončením procesu přihlášení zaregistrovat.
 
-Přehled souvisejícího uživatelského prostředí najdete v těchto tématech:
+Přehled souvisejícího uživatelského prostředí naleznete v následujících tématech:
 
-- [Prostředí pro přihlašování pomocí Azure AD Identity Protection](concept-identity-protection-user-experience.md).  
+- [Přihlášení pomocí azure ad identity ochrany](concept-identity-protection-user-experience.md).  
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit přihlašování a zásady rizik uživatelů](howto-identity-protection-configure-risk-policies.md)
+- [Povolení zásad přihlášení a rizik uživatelů](howto-identity-protection-configure-risk-policies.md)
 
-- [Povolit Samoobslužné resetování hesla služby Azure AD](../authentication/howto-sspr-deployment.md)
+- [Povolení samoobslužného resetování hesla azure ad](../authentication/howto-sspr-deployment.md)
 
-- [Povolit Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [Povolení služby Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

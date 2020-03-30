@@ -1,6 +1,6 @@
 ---
-title: Potíže s přihlášením k místní aplikaci pomocí proxy aplikace Azure AD | Microsoft Docs
-description: Řešení běžných problémů s tím, že se nemůžete přihlásit k místní aplikaci integrované s Azure AD pomocí Proxy aplikací služby AD Azure
+title: Problém s přihlášením k místní aplikaci pomocí proxy aplikace Azure AD | Dokumenty společnosti Microsoft
+description: Řešení běžných problémů, kterým čelíte, když se nemůžete přihlásit k místní aplikaci integrované s Azure AD pomocí proxy aplikace Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,15 +16,15 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232329"
 ---
-# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problémy s přihlašováním k místní aplikaci pomocí proxy aplikací služby Azure AD
+# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problémy s přihlášením k místní aplikaci pomocí proxy aplikace Azure AD
 
-Pokud máte problémy s přihlášením do místní aplikace, můžete zkusit problém vyřešit podle následujících pokynů.
+Pokud máte problémy s přihlášením v místní aplikaci, můžete zkusit vyřešit problém podle následujících kroků.
 
 ## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Můžu aplikaci načíst, ale něco na stránce zřejmě není v pořádku
 
@@ -56,7 +56,7 @@ Následující dokumenty vám mohou pomoci při řešení některých nejběžn�
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Mám problém s konektorem agenta Proxy aplikací
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Dochází k problémům při instalaci konektoru agenta Proxy aplikací](application-proxy-connector-installation-problem.md)
+  * [Mám problémy s instalací konektoru Application Proxy Agent Connector](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>Další kroky
 [Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md)

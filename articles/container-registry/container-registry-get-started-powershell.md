@@ -1,33 +1,33 @@
 ---
-title: Rychlý Start – vytvoření registru – PowerShell
-description: Rychle se naučíte, jak vytvořit privátní registr Docker v Azure Container Registry pomocí prostředí PowerShell.
+title: Úvodní příručka – Vytvoření registru – Powershell
+description: Rychle se naučíte vytvářet privátní registr Dockeru v registru kontejnerů Azure pomocí PowerShellu
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74456377"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Úvodní příručka: Vytvoření registru privátního kontejneru pomocí Azure PowerShellu
 
-Azure Container Registry je spravovaná privátní služba registru kontejneru Dockeru, která se používá k vytváření, ukládání a obsluze imagí kontejnerů Dockeru. V tomto rychlém startu se naučíte vytvořit registr kontejneru Azure pomocí PowerShellu. Pak pomocí příkazů Docker nahrajte image kontejneru do registru a nakonec si vydejte a spusťte image z registru.
+Azure Container Registry je spravovaná privátní služba registru kontejneru Dockeru, která se používá k vytváření, ukládání a obsluze imagí kontejnerů Dockeru. V tomto rychlém startu se naučíte vytvořit registr kontejneru Azure pomocí PowerShellu. Potom pomocí příkazů Dockeru vysuňte bitovou kopii kontejneru do registru a nakonec ji vyprovokejte a spusťte z registru.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tento rychlý Start vyžaduje modul Azure PowerShell. Svou nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+Tento rychlý start vyžaduje modul Azure PowerShell. Svou nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
-Je také nutné mít Docker nainstalovaný místně. Docker poskytuje balíčky pro systémy [MacOS][docker-mac], [Windows][docker-windows]a [Linux][docker-linux] .
+Je také nutné mít Docker nainstalovaný místně. Docker poskytuje balíčky pro systémy [macOS][docker-mac], [Windows][docker-windows] a [Linux][docker-linux].
 
 Azure Cloud Shell neobsahuje všechny požadované součásti Dockeru (démon `dockerd`), a proto pro tento rychlý start nelze Cloud Shell použít.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount][Connect-AzAccount] a postupujte podle pokynů na obrazovce.
+Přihlaste se ke svému předplatnému Azure pomocí příkazu [Connect-AzAccount][Connect-AzAccount] a postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzAccount
@@ -35,7 +35,7 @@ Connect-AzAccount
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Až budete s Azure ověřeni, vytvořte skupinu prostředků pomocí [New-AzResourceGroup][New-AzResourceGroup]. Skupina prostředků je logický kontejner, ve kterém nasazujete a spravujete prostředky Azure.
+Po ověření pomocí Azure vytvořte skupinu prostředků s [New-AzResourceGroup][New-AzResourceGroup]. Skupina prostředků je logický kontejner, ve kterém nasazujete a spravujete prostředky Azure.
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -43,7 +43,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-container-registry"></a>Vytvoření registru kontejneru
 
-V dalším kroku vytvořte v nové skupině prostředků registr kontejneru pomocí příkazu [New-AzContainerRegistry][New-AzContainerRegistry] .
+Dále vytvořte registr kontejnerů v nové skupině prostředků pomocí příkazu [New-AzContainerRegistry.][New-AzContainerRegistry]
 
 Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Následující příklad vytvoří registr s názvem myContainerRegistry007. Nahraďte v následujícím příkazu název *myContainerRegistry007* a pak spuštěním tohoto příkazu vytvořte registr:
 
@@ -51,17 +51,17 @@ Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti k dostupným úrovním služeb najdete v tématu [SKU služby Container Registry][container-registry-skus].
+V tomto rychlém startu vytvoříte *základní* registr, což je nákladově optimalizovaná možnost pro vývojáře, kteří se učí o registru kontejnerů Azure. Podrobnosti o dostupných úrovních služeb naleznete [v tématu Kontejner registru SKU][container-registry-skus].
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k registru. V produkčních scénářích byste měli použít jednotlivou identitu nebo instanční objekt pro přístup k registru kontejnerů, ale pokud chcete, aby byl tento rychlý Start krátký, povolte v registru uživatele správce pomocí příkazu [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] :
+Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k registru. V produkčních scénářích byste měli použít individuální identitu nebo instanční objekt pro přístup k registru kontejneru, ale chcete-li zachovat tento rychlý start stručný, povolte uživatele správce v registru pomocí příkazu [Get-AzContainerRegistryCredential:][Get-AzContainerRegistryCredential]
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
 ```
 
-Potom spusťte [přihlášení Docker][docker-login] pro přihlášení:
+Potom k přihlášení spusťte [docker login][docker-login]:
 
 ```powershell
 $creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
@@ -75,7 +75,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete pracovat s prostředky, které jste vytvořili v tomto rychlém startu, odeberte pomocí příkazu [Remove-AzResourceGroup][Remove-AzResourceGroup] skupinu prostředků, registr kontejnerů a image kontejnerů, které jsou tam uložené:
+Po dokončení práce s prostředky, které jste vytvořili v tomto rychlém startu, použijte příkaz [Odebrat AzResourceGroup][Remove-AzResourceGroup] k odebrání skupiny prostředků, registru kontejneru a bitových kopií kontejnerů, které jsou tam uloženy:
 
 ```powershell
 Remove-AzResourceGroup -Name myResourceGroup
@@ -83,10 +83,10 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Azure Container Registry s Azure PowerShell, nahráli jste image kontejneru a z registru jste vyžádali a spustili image. Pokračujte Azure Container Registry výukové kurzy, kde najdete hlubší přehled na ACR.
+V tomto rychlém startu jste vytvořili registr kontejnerů Azure s Azure PowerShell, posunuli image kontejneru a stáhli a spustili image z registru. Pokračujte do kurzů Azure Container Registry pro hlubší pohled na ACR.
 
 > [!div class="nextstepaction"]
-> [Kurzy Azure Container Registry][container-registry-tutorial-quick-task]
+> [Kurzy registru kontejnerů Azure][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

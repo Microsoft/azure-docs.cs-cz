@@ -1,41 +1,41 @@
 ---
 title: Jak integrovat společné schéma výstrah s Logic Apps
-description: Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.
+description: Zjistěte, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah ke zpracování všech vašich výstrah.
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77668226"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak integrovat společné schéma výstrah s Logic Apps
 
-V tomto článku se dozvíte, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah ke zpracování všech výstrah.
+Tento článek ukazuje, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah ke zpracování všech vašich výstrah.
 
 ## <a name="overview"></a>Přehled
 
-[Běžné schéma výstrah](https://aka.ms/commonAlertSchemaDocs) poskytuje standardizované a rozšiřitelné schéma JSON napříč všemi různými typy výstrah. Běžné schéma výstrah je nejužitečnější, když se využívají programově – prostřednictvím webhooků, runbooků a Logic Apps. V tomto článku ukážeme, jak může být jediná aplikace logiky vytvořená pro zpracování všech výstrah. Stejné zásady je možné použít i pro další programové metody. Aplikace logiky popsané v tomto článku vytvoří dobře definované proměnné pro [pole "Essential"](alerts-common-schema-definitions.md#essentials)a také popisuje, jak můžete zpracovat logiku specifickou pro [Typ výstrahy](alerts-common-schema-definitions.md#alert-context) .
+[Společné schéma výstrah](https://aka.ms/commonAlertSchemaDocs) poskytuje standardizované a rozšiřitelné schéma JSON ve všech typech výstrah. Společné schéma výstrah je nejužitečnější při programovém využití – prostřednictvím webhooků, runbooků a aplikací logiky. V tomto článku ukážeme, jak může být vytvořena jedna aplikace logiky pro zpracování všech vašich výstrah. Stejné principy lze použít i na jiné programové metody. Aplikace logiky popsané v tomto článku vytvoří dobře definované proměnné pro ["základní" pole](alerts-common-schema-definitions.md#essentials)a také popisuje, jak můžete zpracovat logiku specifické [pro typ výstrahy.](alerts-common-schema-definitions.md#alert-context)
 
 
 ## <a name="prerequisites"></a>Požadavky 
 
-V tomto článku se předpokládá, že čtenář je známý 
-* Nastavení pravidel upozornění ([metrika](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [protokol](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [Protokol aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
+Tento článek předpokládá, že čtenář je obeznámen s 
+* Nastavení pravidel výstrah[(metrika](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [protokol](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [protokol aktivit)](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 * Nastavení [skupin akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* Povolení [společného schématu výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) v rámci skupin akcí
+* Povolení [schématu běžných výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) z řad skupin akcí
 
-## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Vytvoření aplikace logiky s využitím společného schématu výstrah
+## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Vytvoření aplikace logiky využívající společné schéma výstrah
 
-1. Postupujte podle kroků popsaných v části [Vytvoření aplikace logiky](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
+1. Podle [pokynů uvedených vytvořte aplikaci logiky](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
 
-1.  Vyberte aktivační událost: **když se přijme požadavek HTTP**.
+1.  Vyberte aktivační událost: **Při přijetí požadavku HTTP**.
 
     ![Triggery aplikace logiky](media/action-groups-logic-app/logic-app-triggers.png "Triggery aplikace logiky")
 
-1.  Výběrem **Upravit** změňte aktivační událost požadavku HTTP.
+1.  Výběrem **možnosti Upravit** změníte aktivační událost požadavku HTTP.
 
     ![Aktivační události požadavku HTTP](media/action-groups-logic-app/http-request-trigger-shape.png "Aktivační události požadavku HTTP")
 
@@ -109,28 +109,28 @@ V tomto článku se předpokládá, že čtenář je známý
         }
     ```
 
-1. Vyberte **+** **Nový krok** a pak zvolte **přidat akci**.
+1. Vyberte **+** **Nový krok** a pak zvolte Přidat **akci**.
 
-    ![Přidat akci](media/action-groups-logic-app/add-action.png "Přidat akci")
+    ![Přidání akce](media/action-groups-logic-app/add-action.png "Přidání akce")
 
-1. V této fázi můžete přidat nejrůznější konektory (Microsoft teams, časová rezerva, Salesforce atd.) na základě konkrétních podnikových požadavků. Klíčové slovo "základní" můžete použít předem. 
+1. V této fázi můžete přidat různé konektory (Microsoft Teams, Slack, Salesforce atd.) na základě vašich konkrétních obchodních požadavků. Můžete použít 'základní pole' out-of-the-box. 
 
     ![Základní pole](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Základní pole")
     
-    Alternativně můžete vytvořit podmíněný logiku na základě typu výstrahy pomocí možnosti Expression.
+    Případně můžete vytvářet podmíněnou logiku na základě typu výstrahy pomocí možnosti Výraz.
 
     ![Výraz aplikace logiky](media/alerts-common-schema-integrations/logic-app-expressions.png "Výraz aplikace logiky")
     
-     [Pole ' monitoringService '](alerts-common-schema-definitions.md#alert-context) umožňuje jednoznačně identifikovat typ výstrahy na základě toho, ve kterém můžete vytvořit podmíněný Logic.
+     [Pole "monitoringService"](alerts-common-schema-definitions.md#alert-context) umožňuje jednoznačně identifikovat typ výstrahy, na základě kterého můžete vytvořit podmíněnou logiku.
 
     
-    Například následující fragment kódu kontroluje, zda se jedná o výstrahu protokolu na základě Application Insights, a pokud ano, budou vytištěny výsledky hledání. V opačném případě vytiskne ' NEDEF '.
+    Například níže uvedený výstřižek zkontroluje, zda je výstraha výstraha založená na protokolu application insights, a pokud ano, vytiskne výsledky hledání. Jinak to vytiskne "NA".
 
     ```text
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     Přečtěte si další informace o [psaní výrazů aplikace logiky](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
+     Další informace o [psaní výrazů aplikace logiky](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
 
     
 
@@ -138,5 +138,5 @@ V tomto článku se předpokládá, že čtenář je známý
 ## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si další informace o skupinách akcí](../../azure-monitor/platform/action-groups.md).
-* [Přečtěte si další informace o běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
+* [Další informace o společném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
 

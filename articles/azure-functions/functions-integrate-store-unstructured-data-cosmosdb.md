@@ -1,14 +1,14 @@
 ---
-title: Ukládání nestrukturovaných dat pomocí Azure Cosmos DB a funkcí
+title: Ukládání nestrukturovaných dat pomocí Azure Cosmos DB a functions
 description: Ukládání nestrukturovaných dat pomocí Azure Functions a databáze Cosmos DB
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74230553"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ukládání nestrukturovaných dat pomocí služeb Azure Functions a Azure Cosmos DB
@@ -65,7 +65,7 @@ Před vytvořením výstupní vazby potřebujete účet služby Azure Cosmos DB,
 
 Nahraďte stávající kód funkce následujícím kódem ve zvoleném jazyce:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Nahraďte stávající funkci v C# následujícím kódem:
 
@@ -102,7 +102,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Nahraďte stávající funkci v JavaScriptu následujícím kódem:
 
