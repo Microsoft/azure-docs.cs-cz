@@ -1,47 +1,47 @@
 ---
-title: Rychlý Start – Azure Key Vault klientskou knihovnu pro Java
-description: Poskytuje kritéria formátování a obsahu pro psaní rychlých startů pro klientské knihovny Azure SDK.
+title: Úvodní příručka – klientská knihovna Azure Key Vault pro Javu
+description: Poskytuje kritéria formátu a obsahu pro psaní rychlých startů pro klientské knihovny Sady Azure SDK.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: be76a274671b0112ca0a5e326f6bb6bb8852842b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: fd2373eb1c5cd5b48651c9215b5d6ad85c7acd68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197551"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79457266"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-java"></a>Rychlý Start: Azure Key Vault Klientská knihovna pro Java
+# <a name="quickstart-azure-key-vault-client-library-for-java"></a>Úvodní příručka: Klientská knihovna Azure Key Vault pro Javu
 
-Začněte s knihovnou klienta Azure Key Vault pro Java. Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
+Začínáme s klientskou knihovnou Azure Key Vault pro Jazyk Java. Podle následujících kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly.
 
-Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí klientské knihovny Key Vault pro jazyk Java:
+Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí klientské knihovny Key Vault pro Jazyk Java:
 
 - Zvyšte zabezpečení a kontrolu nad klíči a hesly.
-- Vytvářejte a importujte šifrovací klíče během několika minut.
-- Snižte latenci díky škálování cloudu a globální redundanci.
+- Vytvořte a importujte šifrovací klíče během několika minut.
+- Snižte latenci díky cloudovému škálování a globální redundanci.
 - Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
-- Použijte ověřený HSM úrovně 2 FIPS 140-2.
+- Použijte fips 140-2 úroveň 2 ověřené hmeony.
 
-[Referenční dokumentace k rozhraní API](https://azure.github.io/azure-sdk-for-java) [zdrojového kódu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) |  | [dokumentaci k produktu](index.yml) | [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+[Referenční](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [dokumentace](https://azure.github.io/azure-sdk-for-java) | rozhraní API zdrojového kódu[Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets) [dokumentace k](index.yml) | produktu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší
 - [Apache Maven](https://maven.apache.org)
-- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview)
 
-V tomto rychlém startu se předpokládá, že používáte [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) a [Apache Maven](https://maven.apache.org) v okně terminálu pro Linux.
+Tento rychlý start předpokládá, že používáte [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) a [Apache Maven](https://maven.apache.org) v okně terminálu Linuxu.
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-new-java-console-app"></a>Vytvořit novou konzolovou aplikaci v jazyce Java
+### <a name="create-new-java-console-app"></a>Vytvoření nové konzolové aplikace Java
 
-V okně konzoly pomocí příkazu `mvn` vytvořte novou konzolovou aplikaci v jazyce Java s názvem `akv-java`.
+V okně konzoly `mvn` vytvořte pomocí příkazu novou konzolovou aplikaci Java s názvem `akv-java`.
 
 ```console
 mvn archetype:generate -DgroupId=com.keyvault.quickstart
@@ -51,7 +51,7 @@ mvn archetype:generate -DgroupId=com.keyvault.quickstart
                        -DinteractiveMode=false
 ```
 
-Výstup z generování projektu bude vypadat přibližně takto:
+Výstup z generování projektu bude vypadat nějak takto:
 
 ```console
 [INFO] ----------------------------------------------------------------------------
@@ -75,7 +75,7 @@ Výstup z generování projektu bude vypadat přibližně takto:
 [INFO] ------------------------------------------------------------------------
 ```
 
-Změňte adresář na nově vytvořenou integrace-Java/Folder.
+Změňte svůj adresář na nově vytvořenou složku akv-java/.
 
 ```console
 cd akv-java
@@ -83,7 +83,7 @@ cd akv-java
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-V textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvky závislosti do skupiny závislostí.
+Otevřete soubor *pom.xml* v textovém editoru. Přidejte následující prvky závislostí do skupiny závislostí.
 
 ```xml
     <dependency>
@@ -101,10 +101,10 @@ V textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvky
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Vytvoření skupiny prostředků a trezoru klíčů
 
-V tomto rychlém startu se používá předem vytvořený Trezor klíčů Azure. Trezor klíčů můžete vytvořit podle kroků v [rychlém startu Azure CLI](quick-create-cli.md), [Azure PowerShell rychlý Start](quick-create-powershell.md)nebo v [rychlém startu Azure Portal](quick-create-portal.md). Případně můžete spustit příkazy rozhraní příkazového řádku Azure CLI níže.
+Tento rychlý start používá předem vytvořený trezor klíčů Azure. Trezor klíčů můžete vytvořit podle kroků v [rychlém startu Azure CLI](quick-create-cli.md), [rychlém startu Azure PowerShellu](quick-create-powershell.md)nebo [rychlém startu na webu Azure Portal](quick-create-portal.md). Případně můžete spustit příkazy Azure CLI níže.
 
 > [!Important]
-> Každý Trezor klíčů musí mít jedinečný název. V následujících příkladech nahraďte < název trezoru klíčů jedinečných > s názvem vašeho trezoru klíčů.
+> Každý trezor klíčů musí mít jedinečný název. V následujících příkladech nahraďte <> názvu trezoru s jedinečným klíčem.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -114,15 +114,15 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Nejjednodušší způsob, jak ověřit cloudovou aplikaci, je spravovaná identita. Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](managed-identity.md) . V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu.
+Nejjednodušší způsob ověření cloudové aplikace je se spravovanou identitou; podrobnosti najdete [v tématu Použití spravované identity služby App Service pro přístup k azure key vault](managed-identity.md) pro podrobnosti. Z důvodu jednoduchosti však tento rychlý start vytvoří desktopovou aplikaci, která vyžaduje použití instančního objektu a zásady řízení přístupu.
 
-Vytvořte zásadu služby pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+Vytvořte princip služby pomocí příkazu Azure CLI [az az ad sp create-for-rbac:](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-Tato operace vrátí řadu párů klíč/hodnota. 
+Tato operace vrátí řadu párů klíč / hodnota. 
 
 ```console
 {
@@ -132,18 +132,17 @@ Tato operace vrátí řadu párů klíč/hodnota.
   "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
 
-Poznamenejte si clientId, clientSecret a tenantId, jak je použijeme v následujících dvou krocích.
+Poznamenejte si clientId, clientSecret a tenantId, jako budeme používat v dalších dvou krocích.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Udělte instančnímu objektu přístup k vašemu trezoru klíčů.
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Poskytnutí přístupu k objektu služeb trezoru klíčů
 
-Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění vašemu instančnímu objektu předáním příkazu [AZ klíčového trezoru set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Udělte instančnímu objektu získání, seznam a nastavení oprávnění pro klíče a tajné kódy.
+Vytvořte zásady přístupu pro trezor klíčů, který uděluje oprávnění k instančnímu objektu klienta příkazu [az keyvault set-policy.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) Udělte instančníobjekt get, list a nastavit oprávnění pro klíče i tajné klíče.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
@@ -151,9 +150,9 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Nastavení proměnných prostředí
 
-Metoda DefaultAzureCredential v naší aplikaci spoléhá na tři proměnné prostředí: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`a `AZURE_TENANT_ID`. použijte nastavení těchto proměnných pro hodnoty clientId, clientSecret a tenantId, které jste si poznamenali v kroku [Vytvoření instančního objektu](#create-a-service-principal) výše. Použijte formát `export VARNAME=VALUE` k nastavení proměnných prostředí. (Tato metoda nastavuje jenom proměnné pro vaše aktuální prostředí a procesy vytvořené z prostředí. Pokud chcete tyto proměnné do svého prostředí přidat trvale, upravte soubor `/etc/environment `.) 
+Metoda DefaultAzureCredential v naší aplikaci závisí na `AZURE_CLIENT_ID` `AZURE_CLIENT_SECRET`třech `AZURE_TENANT_ID`proměnných prostředí: , , a . použijte nastavit tyto proměnné clientId, clientSecret a tenantId hodnoty, které jste si poznamenali v [vytvořit instanční objekt](#create-a-service-principal) krok výše. Pomocí `export VARNAME=VALUE` formátu nastavte proměnné prostředí. (Tato metoda pouze nastaví proměnné pro aktuální prostředí a procesy vytvořené z prostředí; trvale `/etc/environment ` přidat tyto proměnné do vašeho prostředí, upravit soubor.) 
 
-Název trezoru klíčů si taky budete muset uložit jako proměnnou prostředí s názvem `KEY_VAULT_NAME`.
+Název trezoru klíčů budete muset také uložit `KEY_VAULT_NAME`jako proměnnou prostředí nazvanou .
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -167,15 +166,15 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Objektový model
 
-Klientská knihovna Azure Key Vault pro jazyk Java umožňuje správu klíčů a souvisejících prostředků, jako jsou certifikáty a tajné klíče. Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
+Klientská knihovna Azure Key Vault pro Jazyk Java umožňuje spravovat klíče a související prostředky, jako jsou certifikáty a tajné klíče. Ukázky kódu níže vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
 
-Celá Konzolová aplikace je [níže](#sample-code).
+Celá konzolová aplikace je [níže](#sample-code).
 
 ## <a name="code-examples"></a>Příklady kódu
 
-### <a name="add-directives"></a>Přidat direktivy
+### <a name="add-directives"></a>Přidání směrnic
 
-Do horní části kódu přidejte následující direktivy:
+Na začátek kódu přidejte následující direktivy:
 
 ```java
 import com.azure.identity.DefaultAzureCredentialBuilder;
@@ -187,7 +186,7 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 
 ### <a name="authenticate-and-create-a-client"></a>Ověření a vytvoření klienta
 
-Ověřování pro váš Trezor klíčů a vytvoření klienta trezoru klíčů závisí na proměnných prostředí v kroku [nastavit proměnné prostředí](#set-environmental-variables) výše. Název trezoru klíčů se rozšíří na identifikátor URI trezoru klíčů ve formátu `https://<your-key-vault-name>.vault.azure.net`.
+Ověření do trezoru klíčů a vytvoření klienta trezoru klíčů závisí na proměnných prostředí v kroku [Nastavit proměnné prostředí](#set-environmental-variables) výše. Název trezoru klíčů je rozšířen na identifikátor URI `https://<your-key-vault-name>.vault.azure.net`trezoru klíčů ve formátu .
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -201,37 +200,37 @@ SecretClient secretClient = new SecretClientBuilder()
 
 ### <a name="save-a-secret"></a>Uložení tajného klíče
 
-Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí metody `secretClient.setSecret`. To vyžaduje název tajného kódu – přiřadili jsme hodnotu "mySecret" do proměnné `secretName` v této ukázce.  
+Nyní, když je aplikace ověřena, můžete vložit tajný `secretClient.setSecret` klíč do trezoru klíčů pomocí metody. To vyžaduje název pro tajný klíč – jsme přiřadili `secretName` hodnotu "mySecret" proměnné v této ukázce.  
 
 ```java
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Můžete ověřit, jestli je tajný kód nastavený pomocí příkazu [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
+Pomocí příkazu [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) můžete ověřit, zda byl tajný klíč nastaven:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-### <a name="retrieve-a-secret"></a>Načtení tajného kódu
+### <a name="retrieve-a-secret"></a>Načtení tajného klíče
 
-Nyní můžete načíst dříve nastavenou hodnotu pomocí metody `secretClient.getSecret`.
+Nyní můžete načíst dříve nastavenou hodnotu `secretClient.getSecret` s metodou.
 
 ```java
 KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
  ```
 
-Nyní můžete k hodnotě načteného tajného klíče přistupovat pomocí `retrievedSecret.getValue()`.
+Nyní můžete získat přístup k hodnotě `retrievedSecret.getValue()`načteného tajného klíče pomocí aplikace .
 
 ### <a name="delete-a-secret"></a>Odstranění tajného klíče
 
-Nakonec pomocí metody `secretClient.beginDeleteSecret` odstraníme tajný klíč z vašeho trezoru klíčů.
+Nakonec odstraníme tajný klíč z trezoru `secretClient.beginDeleteSecret` klíčů pomocí metody.
 
 ```java
 secretClient.beginDeleteSecret(secretName);
 ```
 
-V případě, že se tajný klíč nachází, můžete ověřit pomocí příkazu [AZ klíčů trezor tajné zobrazení](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
+Můžete ověřit, že tajný klíč je pryč s [az keyvault tajné show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) příkazu:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -239,7 +238,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání trezoru klíčů a odpovídající skupiny prostředků použít Azure CLI nebo Azure PowerShell.
+Když už nepotřebujete, můžete použít Azure CLI nebo Azure PowerShell odebrat trezor klíčů a odpovídající skupinu prostředků.
 
 ```azurecli
 az group delete -g "myResourceGroup"
@@ -312,9 +311,9 @@ public class App {
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Chcete-li se dozvědět více o trezoru klíčů a o tom, jak jej integrovat s aplikacemi, pokračujte v následujících článcích.
 
-- Přečtěte si [přehled Azure Key Vault](key-vault-overview.md)
-- Další informace najdete v [příručce pro vývojáře Azure Key Vault](key-vault-developers-guide.md) .
-- Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)
-- Kontrola [Azure Key Vault osvědčených postupů](key-vault-best-practices.md)
+- Přečtěte si [přehled trezoru klíčů Azure](key-vault-overview.md)
+- Podívejte se na [průvodce vývojářem azure key vaultu](key-vault-developers-guide.md)
+- Informace o [klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)
+- Kontrola [doporučených postupů azure key vaultu](key-vault-best-practices.md)

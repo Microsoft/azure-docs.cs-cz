@@ -1,112 +1,112 @@
 ---
-title: Použití podokna nastavení Azure Application Insights Profiler | Microsoft Docs
-description: Viz téma stav profileru a spuštění relací profilace.
+title: Použití podokna nastavení profileru přehledů aplikací Azure | Dokumenty společnosti Microsoft
+description: Viz Stav profileru a zahájení profilování relací
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671626"
 ---
-# <a name="configure-application-insights-profiler"></a>Konfigurace Application Insights Profiler
+# <a name="configure-application-insights-profiler"></a>Konfigurace profileru přehledů aplikací
 
 ## <a name="updated-profiler-agent"></a>Aktualizovaný agent profileru
-Funkce triggeru fungují jenom s verzí 2,6 nebo novějším agenta profileru. Pokud používáte Azure App Service, Agent se automaticky aktualizuje. Můžete si prohlédnout, jakou verzi agenta používáte, pokud přejdete na adresu URL Kudu webu a připojíte \DiagnosticServices na konec IT, například: https://yourwebsite.scm.azurewebsites.net/diagnosticservices. Webová úloha Application Insights Profiler by měla verze 2,6 nebo novější. Upgrade můžete vynutit restartováním webové aplikace. 
+Funkce aktivační události fungují pouze s verzí 2.6 nebo novější agenta profileru. Pokud používáte službu Azure App Service, váš agent se automaticky aktualizuje. Můžete zjistit, jakou verzi agenta používáte, pokud přejdete na adresu URL Kudu pro váš web https://yourwebsite.scm.azurewebsites.net/diagnosticservicesa připojíte \DiagnosticServices na konec, například takto: . Webová úloha Profiler application insights by měla být verze 2.6 nebo novější. Upgrade můžete vynutit restartováním webové aplikace. 
 
-Pokud používáte Profiler na virtuálním počítači nebo cloudové službě, musíte mít nainstalovanou příponu Windows Azure Diagnostics (WAD) verze 16.0.4 nebo novější. Verzi WAD můžete ověřit tak, že se přihlásíte k VIRTUÁLNÍmu počítači a vyhledáte tento adresář: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Název adresáře je verze WAD, která je nainstalována. Agent virtuálního počítače Azure aktualizuje WAD automaticky, když jsou dostupné nové verze.
+Pokud používáte profiler na virtuálním počítači nebo cloudové službě, musíte mít nainstalovanou rozšíření 16.0.4 (Windows Azure Diagnostics) (WAD) nebo novější. Verzi protokolu WAD můžete zkontrolovat tak, že se přihlásíte k virtuálnímu počítači a podíváte se do tohoto adresáře: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Název adresáře je nainstalovaná verze serveru WAD. Agent virtuálního počítače Azure aktualizuje wad automaticky, když jsou k dispozici nové verze.
 
 ## <a name="profiler-settings-page"></a>Stránka nastavení profileru
 
-Chcete-li otevřít podokno nastavení Azure Application Insights Profiler, otevřete podokno výkon Application Insights a pak klikněte na tlačítko **Konfigurovat Profiler** .
+Pokud chcete otevřít podokno nastavení profileru Přehledů aplikací Azure, přejděte do podokna Výkon přehledů aplikací a vyberte tlačítko **Konfigurovat profiler.**
 
-![Odkaz na stránku otevřít nastavení profileru][configure-profiler-entry]
+![Odkaz na stránku nastavení profileru][configure-profiler-entry]
 
 Tím se otevře stránka, která vypadá takto:
 
 ![Stránka nastavení profileru][configure-profiler-page]
 
-Stránka **konfigurace Application Insights Profiler** obsahuje tyto funkce:
+Stránka **Konfigurovat profilování přehledů aplikací** obsahuje tyto funkce:
 
 | | |
 |-|-|
-Profilovat teď | Spustí relace profilování pro všechny aplikace, které jsou propojené s touto instancí Application Insights.
-Aktivační události | Umožňuje konfigurovat triggery, které způsobují, že se Profiler spustí. 
-Nedávné relace profilování | Zobrazí informace o minulých relacích profilace.
+Profil nyní | Spustí profilování relací pro všechny aplikace, které jsou propojeny s touto instancí Application Insights.
+Aktivační události | Umožňuje konfigurovat aktivační události, které způsobí spuštění profileru. 
+Nedávné profilování relací | Zobrazí informace o minulých relacích profilování.
 
-## <a name="profile-now"></a>Profilovat teď
-Tato možnost umožňuje spustit relaci profilování na vyžádání. Po kliknutí na tento odkaz začnou všichni agenti profileru, kteří odesílají data do této instance Application Insights, zachytí profil. Po 5 až 10 minutách se relace profilu zobrazí v následujícím seznamu.
+## <a name="profile-now"></a>Profil nyní
+Tato možnost umožňuje spustit relaci profilování na vyžádání. Po kliknutí na tento odkaz začnou všichni agenti profileru, kteří odesílají data do této instance Application Insights, zachycovat profil. Po 5 až 10 minutách se relace profilu zobrazí v seznamu níže.
 
-Aby mohl uživatel ručně aktivovat relaci profileru, musí pro Application Insights komponentu vyžadovat minimální přístup "Write" na jejich roli. Ve většině případů tento přístup získáte automaticky a nebudete potřebovat žádnou další práci. Pokud máte problémy, obor předplatného, který se má přidat, by byl rolí "Application Insights Přispěvatel komponent". [Přečtěte si další informace o řízení přístupu k rolím pomocí monitorování Azure](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
+Pro uživatele ručně aktivovat relaci profileru, které vyžadují minimálně "zápis" přístup na jejich roli pro součást Application Insights. Ve většině případů získáte tento přístup automaticky a není potřeba žádná další práce. Pokud máte problémy, role oboru předplatného přidat by role "Application Insights komponenty přispěvatele" role. [Další informace o řízení přístupu k rolím pomocí Azure Monitoring](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
 
 ## <a name="trigger-settings"></a>Nastavení aktivační události
-![Informační rámeček nastavení triggeru][trigger-settings-flyout]
+![Informační rámeček Nastavení aktivační události][trigger-settings-flyout]
 
-Kliknutím na tlačítko triggery na řádku nabídek otevřete okno nastavení triggeru. Můžete nastavit aktivační událost pro spuštění profilování, když procento využití procesoru nebo paměti narazí na úroveň, kterou jste nastavili.
+Kliknutím na tlačítko Aktivační události na řádku nabídek se otevře pole nastavení aktivační události. Můžete nastavit aktivační událost pro spuštění profilování, když procento využití procesoru nebo paměti dosáhne nastavené úrovně.
 
 | | |
 |-|-|
-Tlačítko pro zapnutí/vypnutí | Zapnuto: profiler může spustit Tato aktivační událost; Vypnuto: Profiler nespustí Tato aktivační událost.
-Prahová hodnota paměti | V případě, že se toto procento paměti používá, bude spuštěn Profiler.
-Doba platnosti | Nastavuje dobu, po kterou se Profiler spustí, když se aktivuje.
-Cooldown | Nastaví dobu, po kterou Profiler počká, než bude znovu kontrolovat paměť nebo využití procesoru po jeho aktivaci.
+Tlačítko Zapnutí/vypnutí | Zapnuto: profiler lze spustit touto aktivační událostí; Vypnuto: profiler nebude spuštěn touto aktivační událostí.
+Prahová hodnota paměti | Pokud je toto procento paměti používáno, spustí se profiler.
+Doba trvání | Nastaví dobu, po kterou bude profiler spuštěn při spuštění.
+Cooldown | Nastaví dobu, po kterou bude profiler čekat, než znovu zkontroluje využití paměti nebo procesoru po jeho spuštění.
 
 ## <a name="recent-profiling-sessions"></a>Nedávné relace profilování
-Tato část stránky zobrazuje informace o nejnovějších relacích profilování. Relace profilování představuje časový interval, po který agent profileru přebírá profil na jednom z počítačů, které hostují vaši aplikaci. Můžete otevřít profily z relace kliknutím na jeden z řádků. Pro každou relaci se zobrazuje:
+V této části stránky jsou uvedeny informace o nedávných relacích profilování. Profilování relace představuje období, kdy agent profiler byl s profilem na jednom z počítačů hostujících vaši aplikaci. Profily z relace můžete otevřít kliknutím na jeden z řádků. Pro každou relaci ukazujeme:
 
 | | |
 |-|-|
-Aktivoval | Jak byla relace spuštěna, buď triggerem, profilem nyní, nebo s výchozím vzorkováním. 
-Název aplikace | Název aplikace, která byla profilace.
-Instance počítače | Název počítače, ve kterém byl spuštěn Agent profileru.
-Timestamp | Čas, kdy byl profil zachycen.
-Trasovat | Počet trasování, které byly připojeny k jednotlivým požadavkům.
-VČETNĚ | Procento využití procesoru, které bylo používáno během běhu profileru.
-Rezident | Procento paměti, která se použila během běhu profileru.
+Spuštěno | Jak byla relace spuštěna, buď aktivační událostí, profilem nebo výchozím vzorkováním. 
+Název aplikace | Název aplikace, která byla profilována.
+Instance počítače | Název počítače, na který agent profileru běžel.
+Časové razítko | Čas, kdy byl profil zachycen.
+Stopa | Počet trasování, které byly připojeny k jednotlivým požadavkům.
+% využití procesoru | Procento procesoru, který byl používán v době, kdy byl spuštěn profiler.
+Paměť % | Procento paměti, která byla používána v době, kdy byl spuštěn profiler.
 
-## <a id="profileondemand"></a>Použití testů výkonnosti webu k vygenerování provozu do vaší aplikace
+## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a>Generování provozu do aplikace pomocí testů výkonu webu
 
-Profiler můžete aktivovat ručně jediným kliknutím. Předpokládejme, že používáte test výkonnosti webu. Budete potřebovat trasování, které vám pomůžou pochopit, jak je webová aplikace spuštěná při zatížení. Kontrola nad tím, kdy jsou trasování zaznamenávána, je zásadní, protože víte, kdy bude zátěžový test spuštěn. Ale interval náhodného vzorkování může být neúspěšný.
+Profileru můžete spustit ručně jediným kliknutím. Předpokládejme, že používáte test výkonu webu. Budete potřebovat trasování, které vám pomohou pochopit, jak vaše webová aplikace běží při zatížení. Mít kontrolu nad tím, kdy jsou zachyceny trasování, je zásadní, protože víte, kdy bude spuštěn zátěžový test. Ale náhodný interval vzorkování by to mohl chybět.
 
-Následující části znázorňují, jak tento scénář funguje:
+Následující části ilustrují, jak tento scénář funguje:
 
-### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>Krok 1: vygenerujte provoz do webové aplikace spuštěním testu výkonnosti webu
+### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>Krok 1: Generování návštěvnosti webové aplikace spuštěním testu výkonu webu
 
-Pokud vaše webová aplikace již má příchozí provoz nebo pokud chcete pouze vygenerovat provoz, přeskočte tuto část a pokračujte krokem 2.
+Pokud vaše webová aplikace již má příchozí provoz nebo chcete pouze ručně generovat provoz, přeskočte tuto část a pokračujte krokem 2.
 
-1. Na portálu Application Insights vyberte **konfigurovat** > **testování výkonu**. 
+1. Na portálu Application Insights vyberte **Konfigurovat** > **testování výkonu**. 
 
-1. Chcete-li spustit nový test výkonnosti, vyberte tlačítko **Nový** .
+1. Chcete-li spustit nový test výkonu, vyberte tlačítko **Nový.**
 
-   ![vytvořit nový test výkonnosti][create-performance-test]
+   ![vytvořit nový test výkonu][create-performance-test]
 
-1. V podokně **Nový test výkonu** nakonfigurujte adresu URL cíle testu. Přijměte všechna výchozí nastavení a potom vyberte **Spustit test** , aby se spustil zátěžový test.
+1. V podokně **Nové testování výkonu** nakonfigurujte cílovou adresu URL testu. Přijměte všechna výchozí nastavení a pak vyberte **Spustit test** a spusťte zátěžový test.
 
-    ![Konfigurovat zátěžový test][configure-performance-test]
+    ![Konfigurace zátěžového testu][configure-performance-test]
 
-    Nejprve se nový test zařadí do fronty následovaný stavem *probíhá*.
+    Nový test je zařazen do fronty jako první, následovaný stavem *probíhá*.
 
-    ![Zátěžový test se odešle a zařadí do fronty.][load-test-queued]
+    ![Zátěžový test je odeslán a zařazen do fronty.][load-test-queued]
 
-    ![Zátěžový test běží v průběhu][load-test-in-progress]
+    ![Probíhá zátěžový test.][load-test-in-progress]
 
-### <a name="step-2-start-a-profiler-on-demand-session"></a>Krok 2: spuštění relace na vyžádání profileru
+### <a name="step-2-start-a-profiler-on-demand-session"></a>Krok 2: Zahájení relace profileru na vyžádání
 
-1. Když je spuštěn zátěžový test, spusťte profiler pro zachycení trasování webové aplikace během jejího přijetí.
+1. Když je spuštěn zátěžový test, spusťte Profiler pro zachycení trasování ve webové aplikaci, zatímco přijímá zatížení.
 
-1. Přejít do podokna **Konfigurace profileru** .
+1. Přejděte do podokna **Konfigurovat profiler.**
 
 
-### <a name="step-3-view-traces"></a>Krok 3: zobrazení trasování
+### <a name="step-3-view-traces"></a>Krok 3: Zobrazení trasování
 
-Po dokončení profileru postupujte podle pokynů v části oznámení a přejděte do podokna výkon a zobrazte trasování.
+Po dokončení spuštění profileru postupujte podle pokynů k oznámení a přejděte do podokna Výkon a zobrazte trasování.
 
 ## <a name="next-steps"></a>Další kroky
-[Povolení profileru a zobrazení trasování](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
+[Povolení profileru a trasování zobrazení](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png
 [configure-profiler-entry]: ./media/profiler-settings/configure-profiler-entry.png

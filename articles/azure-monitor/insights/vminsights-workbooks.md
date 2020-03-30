@@ -1,134 +1,130 @@
 ---
-title: Vytváření interaktivních sestav Azure Monitor pro virtuální počítače se sešity | Microsoft Docs
-description: Zjednodušte vytváření složitých sestav s předdefinovanými a vlastními parametrizovanými sešity pro Azure Monitor pro virtuální počítače.
+title: Vytváření interaktivních sestav ve službě Azure Monitor pro virtuální počítače s využitím sešitů
+description: Zjednodušte složité vytváření sestav pomocí předdefinovaných a vlastních parametrizovaných sešitů pro Azure Monitor pro virtuální počítače.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670664"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480449"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Vytváření interaktivních sestav Azure Monitor pro virtuální počítače se sešity
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Vytváření interaktivních sestav ve službě Azure Monitor pro virtuální počítače s využitím sešitů
 
-Sešity kombinují text, [dotazy protokolů](../log-query/query-language.md), metriky a parametry do propracovaných interaktivních sestav. Sešity mohou upravovat všichni ostatní členové týmu, kteří mají přístup ke stejným prostředkům Azure.
+Sešity kombinují text, [dotazy protokolu](../log-query/query-language.md), metriky a parametry do bohatých interaktivních sestav. Sešity jsou upravitelné všemi ostatními členy týmu, kteří mají přístup ke stejným prostředkům Azure.
 
-Sešity jsou užitečné pro scénáře, jako například:
+Sešity jsou užitečné pro scénáře, jako jsou:
 
-* Prozkoumejte využití virtuálního počítače, když neznáte metriky, které vás zajímají předem: využití procesoru, místo na disku, paměť, závislosti sítě atd. Na rozdíl od jiných analytických nástrojů se vám sešity můžou kombinovat s několika různými typy vizualizací a analýz, takže jsou skvělé pro tento druh průzkumu volného tvaru.
-* Zobrazením metrik pro klíčové čítače a další události protokolu Vysvětlete vašemu týmu, jak je prováděn nedávno zřízený virtuální počítač.
-* Sdílení výsledků experimentu změny velikosti virtuálního počítače s ostatními členy týmu. Můžete vysvětlit cíle experimentu s textem a pak zobrazit jednotlivé metriky využití a analytické dotazy použité k vyhodnocení experimentu spolu s jasnými voláními pro skutečnost, zda byla každá metrika nad nebo pod cílovou.
-* Oznamujeme dopad výpadku při používání vašeho virtuálního počítače, kombinování dat, vysvětlení textu a diskuzi o dalších krocích, aby se předešlo výpadkům v budoucnosti.
+* Zkoumání využití virtuálního počítače, když neznáte metriky zájmu předem: využití procesoru, místo na disku, paměť, síťové závislosti atd. Na rozdíl od jiných nástrojů pro analýzu využití umožňují sešity kombinovat různé druhy vizualizací a analýz, což je činí skvělými pro tento druh průzkumu volného tvaru.
+* Vysvětlení týmu, jak si nedávno zřízený virtuální počítač vede, zobrazením metrik pro čítače klíčů a další události protokolu.
+* Sdílení výsledků experimentu pro změna velikosti virtuálního počítače s ostatními členy vašeho týmu. Můžete vysvětlit cíle experimentu s textem a pak zobrazit jednotlivé metriky využití a analytické dotazy použité k vyhodnocení experimentu spolu s jasnými popisky pro to, zda byla každá metrika nad nebo pod cílem.
+* Nahlášení dopadu výpadku na využití virtuálního počítače, kombinování dat, vysvětlení textu a diskuse o dalších krocích, jak zabránit výpadkům v budoucnu.
 
-Azure Monitor pro virtuální počítače obsahuje několik sešitů, které vám pomohou začít, a v následujících tabulkách jsou shrnuty.
+Následující tabulka shrnuje sešity, které Azure Monitor pro virtuální počítače obsahuje, abyste mohli začít.
 
-| Pracovní | Popis | Obor |
+| sešit | Popis | Rozsah |
 |----------|-------------|-------|
-| Výkon | Poskytuje přizpůsobitelnou verzi našeho horního zobrazení seznamu a grafů v jednom sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Ve velkém měřítku |
-| Čítače výkonnosti | Zobrazení grafu na nejvyšší úrovni napříč celou sadou čítačů výkonu. | Ve velkém měřítku |
-| Připojení | Připojení poskytují podrobné zobrazení příchozích a odchozích připojení z monitorovaných virtuálních počítačů. | Ve velkém měřítku |
-| Aktivní porty | Obsahuje seznam procesů, které jsou svázané s porty na monitorovaných virtuálních počítačích a jejich aktivitou ve zvoleném časovém období. | Ve velkém měřítku |
+| Výkon | Poskytuje přizpůsobitelnou verzi našeho zobrazení Seznamu n a grafů v jednom sešitu, který využívá všechny čítače výkonu Analýzy protokolů, které jste povolili.| Ve velkém měřítku |
+| Čítače výkonu | Zobrazení grafu Top N v široké sadě čítačů výkonu. | Ve velkém měřítku |
+| Připojení | Připojení poskytuje podrobný pohled na příchozí a odchozí připojení z monitorovaných virtuálních počítačů. | Ve velkém měřítku |
+| Aktivní porty | Obsahuje seznam procesů, které jsou vázány na porty na monitorovaných virtuálních počítačích a jejich aktivitu ve zvoleném časovém rámci. | Ve velkém měřítku |
 | Otevřené porty | Poskytuje počet otevřených portů na monitorovaných virtuálních počítačích a podrobnosti o těchto otevřených portech. | Ve velkém měřítku |
-| Neúspěšná připojení | Zobrazit počet neúspěšných připojení na monitorovaných virtuálních počítačích, trend selhání a v případě, že procento chyb roste v čase. | Ve velkém měřítku |
-| Zabezpečení a audit | Analýza provozu protokolu TCP/IP, která hlásí celkový počet připojení, škodlivá připojení, kde se koncové body IP nacházejí globálně.  Pokud chcete povolit všechny funkce, budete muset povolit detekci zabezpečení. | Ve velkém měřítku |
-| Provoz TCP | Seřazená sestava pro vaše monitorované virtuální počítače a jejich odeslané, přijímané a celkové síťové přenosy v mřížce a zobrazené jako Trendová čára. | Ve velkém měřítku |
-| Porovnání provozu | V těchto sešitech můžete porovnávat trendy síťových přenosů pro jeden počítač nebo skupinu počítačů. | Ve velkém měřítku |
-| Výkon | Poskytuje přizpůsobitelnou verzi našeho zobrazení výkonu, která využívá všechny čítače výkonu Log Analytics, které jste povolili. | Jeden virtuální počítač | 
-| Připojení | Připojení poskytují podrobné zobrazení příchozích a odchozích připojení z virtuálního počítače. | Jeden virtuální počítač |
+| Neúspěšná připojení | Zobrazte počet neúspěšných připojení na monitorovaných virtuálních počítačích, trend selhání a pokud se procento selhání v průběhu času zvyšuje. | Ve velkém měřítku |
+| Zabezpečení a audit | Analýza přenosů protokolu TCP/IP, která hlásí celková připojení, škodlivá připojení, kde se koncové body IP nacházejí globálně.  Chcete-li povolit všechny funkce, budete muset povolit zjišťování zabezpečení. | Ve velkém měřítku |
+| Provoz TCP | Hodnocená sestava pro monitorované virtuální počítače a jejich odeslané, přijaté a celkové síťové přenosy v mřížce a zobrazené jako trendová čára. | Ve velkém měřítku |
+| Porovnání provozu | Tyto sešity umožňují porovnat trendy síťového provozu pro jeden počítač nebo skupinu počítačů. | Ve velkém měřítku |
+| Výkon | Poskytuje přizpůsobitelnou verzi našeho zobrazení výkonu, která využívá všechny čítače výkonu Analýzy protokolů, které jste povolili. | Jeden virtuální počítač | 
+| Připojení | Připojení poskytuje podrobné zobrazení příchozích a odchozích připojení z virtuálního počítače. | Jeden virtuální počítač |
  
-## <a name="starting-with-a-template-or-saved-workbook"></a>Počínaje šablonou nebo uloženým sešitem
+## <a name="creating-a-new-workbook"></a>Vytvoření nového sešitu
 
-Sešit je tvořen oddíly, které se skládají z nezávisle upravitelných grafů, tabulek, textových a vstupních ovládacích prvků. Abychom lépe porozuměli sešitům, začněte tím, že otevřete šablonu a projdeme vytvořením vlastního sešitu. 
+Sešit se skládá z oddílů skládajících se z nezávisle upravitelných grafů, tabulek, textu a vstupních ovládacích prvků. Chcete-li lépe porozumět sešitům, začněme otevřením šablony a projděte si vytvoření vlastního sešitu. 
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-2. Vyberte **Virtual Machines**.
+2. Vyberte **virtuální počítače**.
 
 3. V seznamu vyberte virtuální počítač.
 
-4. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
+4. Na stránce Virtuální počítač včásti **Monitorování** vyberte **Přehledy**.
 
-5. Na stránce s přehledy virtuálních počítačů vyberte kartu **výkon** nebo **mapy** a pak na stránce klikněte na odkaz **Zobrazit sešity** . 
-
-    ![Snímek obrazovky s navigací k sešitům](media/vminsights-workbooks/workbook-option-01.png)
-
-6. V rozevíracím seznamu vyberte **Přejít na galerii** v dolní části seznamu.
+5. Na stránce Přehledy virtuálních počítači vyberte **kartu Výkon** nebo **Mapy** a pak z odkazu na stránce vyberte **Zobrazit sešity.** V rozevíracím seznamu vyberte **Přejít do galerie**.
 
     ![Snímek obrazovky s rozevíracím seznamem sešitu](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
-    Spustí galerii sešitů s několika předem sestavenými sešity, které vám pomůžou začít.
+    Tím se spustí galerie sešitů s řadou předem sestavených sešitů, které vám pomůžou začít.
 
-7. Začneme s **výchozí šablonou**, která je umístěná v části **rychlý Start**nadpisu.
+7. Vytvořte nový sešit výběrem **možnosti Nový**.
 
-    ![Snímek obrazovky Galerie sešitů](media/vminsights-workbooks/workbook-gallery-01.png)
+    ![Snímek obrazovky s galerií sešitů](media/vminsights-workbooks/workbook-gallery-01.png)
 
-## <a name="editing-workbook-sections"></a>Úpravy oddílů sešitu
+## <a name="editing-workbook-sections"></a>Úpravy oddílů sešitů
 
-Sešity mají dva režimy: **režim úprav**a **režim čtení**. Když se poprvé spustí výchozí sešit šablon, otevře se v **režimu úprav**. Zobrazuje celý obsah sešitu včetně všech kroků a parametrů, které jsou jinak skryté. **Režim čtení** prezentuje zjednodušené zobrazení stylů sestav. Režim čtení vám umožňuje vyříznout složitost, která se stala vytvořením sestavy, zatímco pořád má podkladovou mechaniku jenom pár kliknutí v případě potřeby pro úpravy.
+Sešity mají dva režimy: **režim úprav**a **režim čtení**. Při prvním spuštění nového sešitu se otevře v **režimu úprav**. Zobrazuje veškerý obsah sešitu, včetně všech kroků a parametrů, které jsou jinak skryté. **Režim čtení** představuje zjednodušené zobrazení stylu sestavy. Režim čtení umožňuje abstraktní pryč složitost, která šla do vytvoření sestavy, zatímco stále mají základní mechaniky jen pár kliknutí v případě potřeby pro úpravy.
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![Ovládací prvky úprav oddílu Sešity Azure Monitor pro virtuální počítače](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
-1. Po dokončení úprav oddílu klikněte v levém dolním rohu oddílu na **hotové úpravy** .
+1. Až budete úpravy oddílu hotová, klikněte v levém dolním rohu oddílu na **Hotovo.**
 
-2. Chcete-li vytvořit duplikát oddílu, klikněte na ikonu **klonovat tuto část** . Vytváření duplicitních oddílů je skvělým způsobem, jak iterovat na dotaz, aniž by došlo ke ztrátě předchozích iterací.
+2. Chcete-li vytvořit duplikát oddílu, klepněte na ikonu **Klonovat tento oddíl.** Vytváření duplicitních oddílů je skvělý způsob, jak iterate na dotaz bez ztráty předchozíiterace.
 
-3. Chcete-li v sešitu přesunout oddíl nahoru, klikněte na ikonu **Přesunout nahoru** nebo **Přesunout dolů** .
+3. Pokud chcete oddíl v sešitu posunout nahoru, klikněte na ikonu **Přesunout nahoru** nebo **Přesunout dolů.**
 
-4. Pokud chcete oddíl trvale odebrat, klikněte na ikonu **Odebrat** .
+4. Chcete-li oddíl trvale odebrat, klepněte na ikonu **Odebrat.**
 
-## <a name="adding-text-and-markdown-sections"></a>Přidání textových a Markdownuch oddílů
+## <a name="adding-text-and-markdown-sections"></a>Přidávání textových oddílů a oddílů Markdown
 
-Přidávání nadpisů, vysvětlení a komentářů k vašim sešitům usnadňuje vytvoření sady tabulek a grafů do mluveného komentáře. Textové oddíly v sešitech podporují [syntaxi Markdownu](https://daringfireball.net/projects/markdown/) pro formátování textu, jako jsou nadpisy, tučné písmo, kurzíva a seznamy s odrážkami.
+Přidání nadpisů, vysvětlení a komentářů do sešitů pomáhá přeměnit sadu tabulek a grafů na vyprávění. Textové oddíly v sešitech podporují [syntaxi Markdownu](https://daringfireball.net/projects/markdown/) pro formátování textu, jako jsou nadpisy, tučné písmo, kurzíva a seznamy s odrážkami.
 
-Chcete-li přidat textový oddíl do sešitu, použijte tlačítko **Přidat text** v dolní části sešitu nebo dolní část libovolné části.
+Pokud chcete do sešitu přidat textový oddíl, použijte tlačítko **Přidat text** v dolní části sešitu nebo v dolní části libovolného oddílu.
 
-## <a name="adding-query-sections"></a>Přidávání sekcí dotazů
+## <a name="adding-query-sections"></a>Přidávání oddílů dotazů
 
-![Část dotazu v sešitech](media/vminsights-workbooks/005-workbook-query-section.png)
+![Oddíl Dotaz v sešitech](media/vminsights-workbooks/005-workbook-query-section.png)
 
-Chcete-li přidat do sešitu oddíl dotazu, použijte tlačítko **Přidat dotaz** ve spodní části sešitu nebo v dolní části části.
+Pokud chcete do sešitu přidat oddíl dotazu, použijte tlačítko **Přidat dotaz** v dolní části sešitu nebo v dolní části libovolného oddílu.
 
-Oddíly dotazů jsou vysoce flexibilní a dají se použít k zodpovězení otázek, jako je:
+Části dotazu jsou vysoce flexibilní a lze je použít k zodpovězení otázek, jako jsou:
 
-* Jak bylo využití CPU ve stejném časovém období jako zvýšení síťového provozu?
+* Jaké bylo využití procesoru ve stejném časovém období jako zvýšení síťového provozu?
 * Jaký byl trend dostupného místa na disku za poslední měsíc?
-* Kolik chyb připojení k síti mělo za poslední dva týdny moje prostředí pro virtuální počítače? 
+* Kolik selhání síťového připojení se moje prostředí virtuálního připojení za poslední dva týdny? 
 
-Nebudete se také omezovat jenom na dotazování z kontextu virtuálního počítače, ze kterého jste sešit spustili. Můžete zadávat dotazy na více virtuálních počítačů a také Log Analytics pracovní prostory, pokud máte přístupová oprávnění k těmto prostředkům.
+Také nejste omezeni pouze na dotazování z kontextu virtuálního počítače, ze které jste sešit spustili. Můžete dotazovat napříč více virtuálních počítačů, stejně jako Log Analytics pracovníprostory, pokud máte přístup oprávnění k těmto prostředkům.
 
-Chcete-li zahrnout data z jiných Log Analytics pracovních prostorů nebo z konkrétní Application Insights aplikace pomocí identifikátoru **pracovního prostoru** . Další informace o dotazech mezi prostředky najdete v [oficiálních pokynech](../log-query/cross-workspace-query.md).
+Chcete-li zahrnout data z jiných pracovních prostorů Analýzy protokolů nebo z konkrétní aplikace Application Insights pomocí identifikátoru **pracovního prostoru.** Další informace o dotazech na příčné zdroje naleznete v [oficiálních pokynech](../log-query/cross-workspace-query.md).
 
-### <a name="advanced-analytic-query-settings"></a>Pokročilé nastavení analytického dotazu
+### <a name="advanced-analytic-query-settings"></a>Pokročilá nastavení analytického dotazu
 
-Každá část má vlastní Rozšířená nastavení, která jsou přístupná přes ovládací prvky nastavení ![pracovní sešity](media/vminsights-workbooks/006-settings.png) ikonu umístěnou napravo od tlačítka **přidat parametry** .
+Každá část má vlastní pokročilá nastavení, která ![jsou přístupná](media/vminsights-workbooks/006-settings.png) prostřednictvím ikony ovládacích prvků úprav oddílu Sešity, která se nachází vpravo od tlačítka **Přidat parametry.**
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/007-settings-expanded.png)
+![Ovládací prvky úprav oddílu Sešity Azure Monitor pro virtuální počítače](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
-| **Vlastní šířka**    | Provede položku v libovolné velikosti, takže můžete umístit mnoho položek na jeden řádek, což vám umožní lépe uspořádat grafy a tabulky do propracovaných interaktivních sestav.  |
-| **Podmíněně viditelné** | Určuje, že se mají skrýt kroky na základě parametru v režimu čtení. |
-| **Exportovat parametr**| Umožňuje vybranému řádku v mřížce nebo grafu způsobit pozdější postup změny hodnot nebo zobrazení viditelných položek.  |
-| **Zobrazit dotaz, pokud se neupravuje** | Zobrazí dotaz nad grafem nebo tabulkou, a to i v režimu čtení.
-| **Při úpravách zobrazit tlačítko otevřít v analýze** | Přidá ikonu Blue Analytics do pravého horního rohu grafu, aby bylo možné přístup jedním kliknutím.|
+| **Vlastní šířka**    | Nastavuje položku libovolnou velikost, takže se na jeden řádek vejde mnoho položek, což vám umožní lépe uspořádat grafy a tabulky do bohatých interaktivních sestav.  |
+| **Podmíněně viditelné** | Určete, chcete-li skrýt kroky založené na parametru v režimu čtení. |
+| **Export parametru**| Povolte vybranému řádku v mřížce nebo grafu, aby pozdější kroky změnily hodnoty nebo se staly viditelnými.  |
+| **Zobrazit dotaz při neúpravách** | Zobrazí dotaz nad grafem nebo tabulkou, i když je v režimu čtení.
+| **Zobrazit tlačítko Otevřít v analytice, když neupravujete** | Přidá modrou ikonu Analytics do pravého rohu grafu, aby byl umožněn přístup jedním kliknutím.|
 
-Většina těchto nastavení je poměrně intuitivní, ale pro pochopení **exportu parametru** je lepší prozkoumávat sešit, který tuto funkci využívá.
+Většina těchto nastavení je poměrně intuitivní, ale pro pochopení **exportu parametru** je lepší prozkoumat sešit, který využívá tuto funkci.
 
-Jeden z předem připravených sešitů – **přenos TCP**poskytuje informace o metrikách připojení z virtuálního počítače.
+Jeden z předem vytvořených sešitů – **TCP Traffic**, poskytuje informace o metrikách připojení z virtuálního počítači.
 
-První část sešitu je založena na datech dotazů protokolu. Druhá část je také založená na datech dotazů protokolu, ale výběr řádku v první tabulce bude interaktivně aktualizovat obsah grafů:
+První část sešitu je založena na datech dotazu protokolu. Druhá část je také založena na datech dotazu protokolu, ale výběr řádku v první tabulce interaktivně aktualizuje obsah grafů:
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Ovládací prvky úprav oddílu Sešity Azure Monitor pro virtuální počítače](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
-Chování je možné prostřednictvím použití **při výběru položky, export** upřesňujících nastavení parametrů, které jsou povoleny v dotazu protokolu tabulky.
+Chování je možné pomocí **Při výběru položky exportovat parametr** upřesňující nastavení, které jsou povoleny v dotazu protokolu tabulky.
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/009-settings-export.png)
+![Ovládací prvky úprav oddílu Sešity Azure Monitor pro virtuální počítače](media/vminsights-workbooks/009-settings-export.png)
 
-Druhý dotaz protokolu pak použije exportované hodnoty, když se vybere řádek, aby se vytvořila sada hodnot, která se pak používá v záhlaví oddílu a grafech. Pokud není vybraný žádný řádek, skryje nadpis a grafy oddílu. 
+Druhý dotaz protokolu pak použije exportované hodnoty, když je vybrán řádek k vytvoření sady hodnot, které jsou pak použity nadpisem oddílu a grafy. Pokud není vybrán žádný řádek, skryje záhlaví oddílu a grafy. 
 
 Například skrytý parametr v druhé části používá následující odkaz z řádku vybraného v mřížce:
 
@@ -139,58 +135,58 @@ VMConnection
 | summarize Sent = sum(BytesSent), Received = sum(BytesReceived) by bin(TimeGenerated, {TimeRange:grain})
 ```
 
-## <a name="adding-metrics-sections"></a>Přidávání sekcí metriky
+## <a name="adding-metrics-sections"></a>Přidávání oddílů metrik
 
-Oddíly metrik poskytují úplný přístup, který umožňuje začlenit do interaktivních sestav Azure Monitor data metrik. V Azure Monitor pro virtuální počítače budou předem připravené sešity obvykle obsahovat analytická data dotazů, nikoli data metriky.  Můžete se rozhodnout vytvořit sešity s daty metriky, abyste mohli plně využít výhod obou funkcí na jednom místě. Máte také možnost přijímat data metrik z prostředků v libovolném z předplatných, ke kterým máte přístup.
+Části metrik vám poskytují úplný přístup k začlenění dat metrik Azure Monitoru do interaktivních přehledů. V Azure Monitor pro virtuální počítače, předem sestavené sešity obvykle obsahují data analytického dotazu, nikoli metrických dat.  Můžete se rozhodnout vytvořit sešity s metrickými daty, což vám umožní plně využít to nejlepší z obou funkcí na jednom místě. Máte také možnost získat metrická data z prostředků v libovolném předplatných, ke které máte přístup.
 
-Tady je příklad dat virtuálního počítače, která jsou načítána do sešitu, aby bylo možné vytvořit vizualizaci mřížky výkonu procesoru:
+Tady je příklad dat virtuálních strojů, která jsou vtahována do sešitu a poskytují vizualizaci výkonu procesoru:
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/010-metrics-grid.png)
+![Ovládací prvky úprav oddílu Sešity Azure Monitor pro virtuální počítače](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>Přidávání oddílů parametrů
 
-Parametry sešitu umožňují změnit hodnoty v sešitu bez nutnosti ručně upravovat oddíly dotazu nebo textu. Tím se eliminuje nutnost potřebovat porozumět základnímu dotazovacímu jazyku a významně rozšířit potenciální cílovou skupinu vytváření sestav na základě sešitu.
+Parametry sešitu umožňují měnit hodnoty v sešitu, aniž byste museli ručně upravovat části dotazu nebo textu. Tím se odstraní požadavek, že potřebujete porozumět základnímu dotazovacímu jazyku analýzy, a výrazně se rozšíří potenciální cílová skupina sestav založených na sešitu.
 
-Hodnoty parametrů jsou nahrazeny v části Query, text nebo jiné oddíly parametrů vložením názvu parametru do složených závorek, například ``{parameterName}``. Názvy parametrů jsou omezené na podobná pravidla jako identifikátory JavaScriptu, abecední znaky nebo podtržítka, následované alfanumerickými znaky nebo podtržítkem. Například **a1** je povoleno, ale **1a** není povoleno.
+Hodnoty parametrů jsou nahrazeny v dotazu, textu nebo jiných parametrech umístěním názvu ``{parameterName}``parametru do složených závorek, například . Názvy parametrů jsou omezeny na podobná pravidla jako identifikátory JavaScriptu, abecední znaky nebo podtržítka následovaná alfanumerickými znaky nebo podtržítky. Například **a1** je povoleno, ale **1a** není povoleno.
 
-Parametry jsou lineární, počínaje horním okrajem sešitu a natékání dolů na pozdější kroky.  Parametry deklarované později v sešitu mohou přepsat parametry, které byly dříve deklarovány. To také umožňuje parametrům, které používají dotazy pro přístup k hodnotám z parametrů definovaných dříve. V samotném kroku parametru jsou parametry také lineární, zleva doprava, kde parametry vpravo mohou záviset na parametru deklarovaném dříve v tomto kroku.
+Parametry jsou lineární, počínaje horní částí sešitu a stékající dolů do pozdějších kroků.  Parametry deklarované později v sešitu mohou přepsat parametry, které byly deklarovány dříve. To také umožňuje parametry, které používají dotazy pro přístup k hodnotám z parametrů definovaných dříve. V rámci samotného kroku parametru jsou parametry také lineární, zleva doprava, kde parametry vpravo mohou záviset na parametru deklarovaném dříve ve stejném kroku.
  
-Existují čtyři různé typy parametrů, které jsou aktuálně podporovány:
+V současné době jsou podporovány čtyři různé typy parametrů:
 
 |                  |      |
 | ---------------- |:-----|
 | **Text**    | Umožňuje uživateli upravit textové pole a volitelně můžete zadat dotaz k vyplnění výchozí hodnoty. |
-| **Rozevírací seznam** | Umožňuje uživateli vybrat ze sady hodnot. |
-| **Výběr časového rozsahu**| Umožňuje uživateli vybrat z předdefinované sady hodnot časového rozsahu nebo vybrat z vlastního časového rozsahu.|
-| **Výběr prostředku** | Umožňuje uživateli vybrat z prostředků vybraných pro sešit.|
+| **Rozevírací seznam** | Umožňuje uživateli vybrat si ze sady hodnot. |
+| **Výběr časového rozsahu**| Umožňuje uživateli vybrat si z předdefinované sady hodnot časového rozsahu nebo vybrat z vlastního časového rozsahu.|
+| **Výběr zdrojů** | Umožňuje uživateli vybrat si ze zdrojů vybraných pro sešit.|
 
 ### <a name="using-a-text-parameter"></a>Použití textového parametru
 
-Hodnota typ uživatele v textovém poli se nahradí přímo v dotazu bez uvozovacího příkazu ani quotes. Pokud je hodnota, kterou potřebujete, řetězec, dotaz by měl obsahovat uvozovky kolem parametru (například **{Parameter}** ).
+Hodnota, kterou uživatel zadá v textovém poli, je nahrazena přímo v dotazu bez úniku nebo citace. Pokud je hodnota, kterou potřebujete, řetězec, dotaz by měl mít uvozovky kolem parametru (například **{parameter}'**).
 
-Parametr text umožňuje použití hodnoty v textovém poli kdekoli. Může to být název tabulky, název sloupce, název funkce, operátor atd.  Typ textového parametru má nastavení **načíst výchozí hodnotu z analytického dotazu**, které umožňuje autorovi sešitu použít dotaz k naplnění výchozí hodnoty tohoto textového pole.
+Parametr text umožňuje použít hodnotu v textovém poli kdekoli. Může se jedná o název tabulky, název sloupce, název funkce, operátor atd.  Typ parametru textu má nastavení **Získat výchozí hodnotu z analytického dotazu**, která autorovi sešitu umožňuje použít dotaz k naplnění výchozí hodnoty pro toto textové pole.
 
-Při použití výchozí hodnoty z dotazu protokolu je jako výchozí hodnota použita pouze první hodnota prvního řádku (řádek 0, sloupec 0). Proto je doporučeno omezit dotaz tak, aby vracel pouze jeden řádek a jeden sloupec. Všechna ostatní data vrácená dotazem jsou ignorována. 
+Při použití výchozí hodnoty z dotazu protokolu se jako výchozí hodnota používá pouze první hodnota prvního řádku (řádek 0, sloupec 0). Proto se doporučuje omezit dotaz vrátit pouze jeden řádek a jeden sloupec. Všechna ostatní data vrácená dotazem jsou ignorována. 
 
-Libovolná hodnota, kterou dotaz vrátí, se nahradí přímo bez uvozovacích znaků nebo citací. Pokud dotaz nevrátí žádné řádky, výsledek parametru je buď prázdný řetězec (Pokud parametr není požadován) nebo undefined (Pokud je parametr požadován).
+Bez ohledu na hodnotu dotazvrátí bude nahrazen přímo bez úniku nebo citace. Pokud dotaz vrátí žádné řádky, výsledkem parametru je buď prázdný řetězec (pokud parametr není vyžadován) nebo undefined (pokud je parametr požadován).
 
-### <a name="using-a-drop-down"></a>Použití rozevíracího seznamu
+### <a name="using-a-drop-down"></a>Použití rozevíracího
 
-Typ parametru rozevíracího seznamu umožňuje vytvořit ovládací prvek rozevíracího seznamu, který umožňuje výběr jedné nebo více hodnot.
+Typ rozevíracího parametru umožňuje vytvořit ovládací prvek rozevíracího souboru, který umožňuje výběr jedné nebo více hodnot.
 
-Rozevírací seznam se naplní dotazem protokolu nebo JSON. Pokud dotaz vrátí jeden sloupec, hodnoty v tomto sloupci jsou hodnoty a popisek v ovládacím prvku rozevírací seznam. Pokud dotaz vrátí dva sloupce, je prvním sloupcem hodnota a druhý sloupec je popisek zobrazený v rozevíracím seznamu. Pokud dotaz vrátí tři sloupce, použije se třetí sloupec k označení výchozího výběru v tomto rozevíracím seznamu. Tento sloupec může být libovolného typu, ale nejjednodušší je použít bool nebo číselné typy, kde 0 je false a 1 je pravda.
+Rozevírací seznam je naplněn dotazem protokolu nebo JSON. Pokud dotaz vrátí jeden sloupec, hodnoty v tomto sloupci jsou hodnota i popisek v rozevíracím ovládacím prvku. Pokud dotaz vrátí dva sloupce, první sloupec je hodnota a druhý sloupec je popisek zobrazený v rozevíracím seznamu. Pokud dotaz vrátí tři sloupce, třetí sloupec se používá k označení výchozí výběr v tomto rozevíracím seznam. Tento sloupec může být libovolný typ, ale nejjednodušší je použití bool nebo číselné typy, kde 0 je false a 1 je true.
 
-Pokud je sloupec typem řetězce, hodnota null nebo prázdný řetězec se považuje za false a jakákoli jiná hodnota se považuje za true. U rozevíracích seznamu pro jednotlivé výběry se jako výchozí výběr použije první hodnota s hodnotou true.  U rozevíracích seznamu vícenásobného výběru se jako výchozí vybraná sada použijí všechny hodnoty s hodnotou true. Položky v rozevíracím seznamu se zobrazí v jakémkoli pořadí, ve kterém dotaz vrátil řádky. 
+Pokud je sloupec typ řetězce, null/prázdný řetězec je považován za false a všechny ostatní hodnoty je považován za true. Pro rozevírací seznamy s jedním výběrem se jako výchozí výběr použije první hodnota s hodnotou true.  Pro více rozevíracích seznamů výběru jsou jako výchozí vybraná sada použity všechny hodnoty se skutečnou hodnotou. Položky v rozevíracím souboru jsou zobrazeny v libovolném pořadí, ve které dotaz vrátil řádky. 
 
-Pojďme se podívat na parametry, které jsou k dispozici v sestavě Přehled připojení. Klikněte na symbol úprav vedle **směr**.
+Podívejme se na parametry, které jsou k dispozici v sestavě Přehled připojení. Klepněte na symbol úprav vedle **položky Směr**.
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Ovládací prvky úprav oddílu Sešity Azure Monitor pro virtuální počítače](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
-Tím se spustí položka nabídky **Upravit parametr** .
+Tím se spustí položka nabídky **Upravit parametry.**
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Ovládací prvky úprav oddílu Sešity Azure Monitor pro virtuální počítače](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
-KÓD JSON umožňuje vygenerovat libovolnou tabulku naplněnou obsahem. Například následující kód JSON generuje v rozevíracím seznamu dvě hodnoty:
+JSON umožňuje generovat libovolnou tabulku naplněnou obsahem. Například následující JSON generuje dvě hodnoty v rozevíracím jsouvu:
 
 ```
 [
@@ -199,7 +195,7 @@ KÓD JSON umožňuje vygenerovat libovolnou tabulku naplněnou obsahem. Napřík
 ]
 ```
 
-Podrobnější příklad používá rozevírací seznam pro výběr ze sady čítačů výkonu podle názvu:
+Vhodnějším příkladem je použití rozevíracího souboru k výběru ze sady čítačů výkonu podle názvu:
 
 ```
 Perf
@@ -210,42 +206,42 @@ Perf
 
 Dotaz zobrazí výsledky následujícím způsobem:
 
-![Rozevírací seznam čítače výkonu](media/vminsights-workbooks/013-workbook-edit-parameter-perf-counters.png)
+![Rozevírací nabídku čítačů Perf](media/vminsights-workbooks/013-workbook-edit-parameter-perf-counters.png)
 
-Rozevírací nabídky jsou neuvěřitelně výkonné nástroje pro přizpůsobení a vytváření interaktivních sestav.
+Rozevírací seznamy jsou neuvěřitelně výkonné nástroje pro přizpůsobení a vytváření interaktivních sestav.
 
 ### <a name="time-range-parameters"></a>Parametry časového rozsahu
 
-I když můžete vytvořit vlastní parametr časového rozsahu prostřednictvím rozevíracího seznamu, můžete použít také typ parametru časového rozsahu, pokud nepotřebujete stejnou míru flexibility. 
+Zatímco můžete vytvořit vlastní parametr časového rozsahu pomocí typu parametru rozevíracího pole, můžete také použít typ parametru časového rozsahu out-of-box, pokud nepotřebujete stejný stupeň flexibility. 
 
-Typy parametrů časového rozsahu mají 15 výchozích rozsahů, které přecházejí z pěti minut na posledních 90 dní. K dispozici je také možnost Povolit vlastní výběr časového rozsahu, který umožňuje operátorovi sestavy zvolit explicitní hodnoty spuštění a zastavení pro časový rozsah.
+Typy parametrů časového rozsahu mají 15 výchozírozsahy, které přejdou od pěti minut do posledních 90 dnů. K dispozici je také možnost povolit výběr vlastního časového rozsahu, která umožňuje operátoru sestavy zvolit explicitní počáteční a stopové hodnoty pro časový rozsah.
 
-### <a name="resource-picker"></a>Výběr prostředku
+### <a name="resource-picker"></a>Výběr zdrojů
 
-Typ parametru výběru prostředku vám umožní určit rozsah sestavy na určité typy prostředků. Příkladem předem sestaveného sešitu, který využívá typ výběru prostředku, je sešit **výkonu** .
+Typ parametru výběru prostředků umožňuje určit určité typy prostředků. Příkladem předem sestaveného sešitu, který využívá typ výběru prostředků, je sešit **Výkonu.**
 
-![Rozevírací seznam pracovní prostory](media/vminsights-workbooks/014-workbook-edit-parameter-workspaces.png)
+![Rozevírací řešení pracovních prostorů](media/vminsights-workbooks/014-workbook-edit-parameter-workspaces.png)
 
-## <a name="saving-and-sharing-workbooks-with-your-team"></a>Ukládání a sdílení sešitů ve vašem týmu
+## <a name="saving-and-sharing-workbooks-with-your-team"></a>Ukládání sešitů a jejich sdílení v rámci týmu
 
-Sešity se ukládají v pracovním prostoru Log Analytics nebo v prostředku virtuálního počítače v závislosti na tom, jak přistupujete k galerii sešitů. Sešit lze uložit do oddílu **Mé sestavy** , který je pro vás soukromý nebo v oddílu **sdílené sestavy** , který je přístupný všem uživatelům s přístupem k danému prostředku. Chcete-li zobrazit všechny sešity v prostředku, klikněte na panelu akcí na tlačítko **otevřít** .
+Sešity se ukládají v pracovním prostoru Analýzy protokolů nebo v prostředku virtuálního počítače v závislosti na tom, jak přistupujete ke galerii sešitů. Sešit lze uložit do části **Moje sestavy,** která je pro vás soukromá, nebo v části **Sdílené sestavy,** která je přístupná všem uživatelům s přístupem k prostředku. Chcete-li zobrazit všechny sešity v zdroji, klepněte na tlačítko **Otevřít** na panelu akcí.
 
-Sdílení sešitu, který je aktuálně v **Mé sestavy**:
+Sdílení sešitu, který je aktuálně v **seznamu Moje sestavy**:
 
-1. Na panelu akcí klikněte na **otevřít** .
-2. Klikněte na "..." tlačítko vedle sešitu, který chcete sdílet
-3. Klikněte na **přesunout ke sdíleným sestavám**.
+1. Na panelu akcí klikněte na **Otevřít.**
+2. Klikněte na "..." vedle sešitu, který chcete sdílet
+3. Klikněte na **Přesunout do sdílených sestav**.
 
-Pokud chcete sešit sdílet s odkazem nebo e-mailem, klikněte na panelu akcí na **sdílet** . Mějte na paměti, že příjemci odkazu potřebují k tomuto prostředku přístup v Azure Portal k zobrazení sešitu. K provedení úprav potřebují příjemci pro daný prostředek aspoň oprávnění Přispěvatel.
+Pokud chcete sešit sdílet s odkazem nebo e-mailem, klikněte na panelu akcí na **Sdílet.** Mějte na paměti, že příjemci odkazu potřebují přístup k tomuto prostředku na webu Azure Portal, aby mohly sešit zobrazit. K úpravám potřebují příjemci alespoň oprávnění přispěvatele pro prostředek.
 
-Chcete-li připnout odkaz na sešit na řídicí panel Azure:
+Připnutí odkazu na sešit na řídicí panel Azure:
 
-1. Na panelu akcí klikněte na **otevřít** .
-2. Klikněte na "..." tlačítko vedle sešitu, který chcete připnout
-3. Klikněte na **Připnout na řídicí panel**.
+1. Na panelu akcí klikněte na **Otevřít.**
+2. Klikněte na "..." vedle sešitu, který chcete připnout
+3. Klikněte **na Připnout na řídicí panel**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete zjistit omezení a celkový výkon virtuálních počítačů, přečtěte si téma [zobrazení výkonu virtuálního počítače Azure](vminsights-performance.md).
+- Informace o omezeních a celkovém výkonu virtuálních počítačích najdete [v tématu Zobrazení výkonu virtuálních počítačích Azure](vminsights-performance.md).
 
-- Další informace o zjištěných závislostech aplikace najdete v tématu [zobrazení mapy Azure monitor pro virtuální počítače](vminsights-maps.md).
+- Informace o zjištěných závislostech aplikací najdete [v tématu Zobrazení mapy Azure Monitor for VM .](vminsights-maps.md)

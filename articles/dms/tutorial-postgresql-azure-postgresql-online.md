@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: migrace PostgreSQL pro Azure Database for PostgreSQL online prostřednictvím Azure CLI'
+title: 'Kurz: Migrace PostgreSQL do databáze Azure pro PostgreSQL online prostřednictvím azure cli'
 titleSuffix: Azure Database Migration Service
-description: Přečtěte si, jak provést online migraci z místního PostgreSQLu do Azure Database for PostgreSQL pomocí Azure Database Migration Service přes rozhraní příkazového řádku.
+description: Naučte se provádět online migraci z místního PostgreSQL do Databáze Azure pro PostgreSQL pomocí služby Migrace databáze Azure prostřednictvím příkazového příkazového příkazu.
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,60 +12,60 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: fc2852aaa77dec9537aa8fc42f7f08ca441a129a
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 44df35957dfbd3aa4856d256dc1a7d9e6527fde0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255646"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240677"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Kurz: migrace PostgreSQL do Azure DB pro PostgreSQL online pomocí DMS přes Azure CLI
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Kurz: Migrace PostgreSQL do Azure DB pro PostgreSQL online pomocí DMS přes Azure CLI
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL a [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, migraci je možné dosáhnout s minimálními výpadky aplikace. V tomto kurzu migrujete ukázkovou databázi pro **pronájem DVD** z místní instance PostgreSQL 9,6 na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
+Službu migrace databáze Azure můžete použít k migraci databází z místní instance PostgreSQL do [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními prostoji. Jinými slovy migrace lze dosáhnout s minimálníprostožně do aplikace. V tomto kurzu migrujete ukázkovou databázi **dvd z** místní instance PostgreSQL 9.6 do Databáze Azure pro PostgreSQL pomocí aktivity migrace online ve službě Migrace databáze Azure.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
-> * Pomocí nástroje pg_dump proveďte migraci ukázkového schématu.
+> * Migrujte ukázkové schéma pomocí nástroje pg_dump.
 > * Vytvoření instance služby Azure Database Migration Service
 > * Vytvoření projektu migrace pomocí služby Azure Database Migration Service
 > * Spuštění migrace
 > * Monitorování migrace
 
 > [!NOTE]
-> Použití Azure Database Migration Service k provedení online migrace vyžaduje vytvoření instance založené na cenové úrovni Premium.
+> Použití služby Migrace databáze Azure k provedení migrace online vyžaduje vytvoření instance založené na cenové úrovni Premium. Šifrujeme disk, abychom zabránili krádeži dat během procesu migrace.
 
 > [!IMPORTANT]
-> Pro optimální prostředí migrace doporučuje Microsoft vytvořit instanci Azure Database Migration Service ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
+> Pro optimální prostředí migrace Microsoft doporučuje vytvořit instanci služby Migrace databáze Azure ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-* Stáhněte a nainstalujte si [PostgreSQL community edition](https://www.postgresql.org/download/) 9,5, 9,6 nebo 10. Verze zdrojového PostgreSQL serveru musí být 9.5.11, 9.6.7, 10 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+* Stáhněte a nainstalujte [komunitní edici PostgreSQL](https://www.postgresql.org/download/) 9.5, 9.6 nebo 10. Zdroj PostgreSQL Server verze musí být 9.5.11, 9.6.7, 10 nebo novější. Další informace naleznete v článku [Podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
 
     Kromě toho místní verze PostgreSQL musí odpovídat Azure Database for PostgreSQL. Například PostgreSQL verze 9.5.11.5 je možné migrovat pouze do služby Azure Database for PostgreSQL verze 9.5.11 a ne verze 9.6.7.
 
-* [Vytvořte instanci v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) nebo [vytvořte server Azure Database for PostgreSQL-Citus (pro škálování](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)na více instancí).
-* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* [Vytvořte instanci v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) nebo [vytvořte databázi Azure pro server PostgreSQL – Hyperscale (Citus).](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)
+* Vytvořte službu Migrace databáze Microsoft Azure pro Azure pomocí modelu nasazení Azure Resource Manageru, který poskytuje připojení k místním zdrojovým serverům site-to-site pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě naleznete v [dokumentaci k virtuální síti](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlého startu s podrobnými podrobnostmi.
 
     > [!NOTE]
-    > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
+    > Pokud během instalace virtuální sítě používáte ExpressRoute s partnerským vztahem k síti společnosti Microsoft, přidejte do podsítě, ve které bude služba zřízena, následující [koncové body služby:](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
     >
-    > * Koncový bod cílové databáze (například koncový bod SQL, Cosmos DB koncový bod atd.)
+    > * Cílový koncový bod databáze (například koncový bod SQL, koncový bod Cosmos DB a tak dále)
     > * Koncový bod úložiště
-    > * Koncový bod služby Service Bus
+    > * Koncový bod sběrnice
     >
-    > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
+    > Tato konfigurace je nezbytná, protože služba Azure Database Migration Service nemá připojení k internetu.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) vaší virtuální sítě neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+* Ujistěte se, že pravidla skupiny zabezpečení sítě virtuální sítě (NSG) neblokují následující příchozí komunikační porty do služby Migrace databáze Azure: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování přenosů skupin nsg ve virtuální síti naleznete v článku [Filtrování síťového provozu se skupinami zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 * Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Otevřete bránu Windows Firewall, abyste povolili Azure Database Migration Service přístup ke zdrojovému serveru PostgreSQL, který je ve výchozím nastavení port TCP 5432.
+* Otevřete bránu firewall systému Windows, abyste povolili službě Azure Database Migration Service přístup ke zdroji PostgreSQL Server, který je ve výchozím nastavení tcp port 5432.
 * Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace.
-* Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru pro Azure Database for PostgreSQL, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
+* Vytvořte pravidlo [brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru pro Azure Database for PostgreSQL, které umožní službě Migrace databáze Azure přístup k cílovým databázím. Zadejte rozsah podsítí virtuální sítě používané pro službu Migrace databáze Azure.
 * Existují dvě metody pro vyvolání rozhraní příkazového řádku:
 
-  * V pravém horním rohu Azure Portal vyberte tlačítko Cloud Shell:
+  * V pravém horním rohu portálu Azure vyberte tlačítko Cloud Shell:
 
        ![Tlačítko Cloud Shell na webu Azure Portal](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
@@ -78,7 +78,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Povolte logickou repliku v souboru postgresql.config a nastavte následující parametry:
 
   * wal_level = **logical**
-  * max_replication_slots = [počet slotů], doporučuje se nastavit na **pět slotů**
+  * max_replication_slots = [počet slotů], doporučujeme nastavit na **pět slotů**
   * max_wal_senders = [počet souběžných úloh] - parametr max_wal_senders nastaví počet souběžných úloh, které můžete spustit, doporučujeme nastavení na **10 úloh**
 
 ## <a name="migrate-the-sample-schema"></a>Migrace ukázkového schématu
@@ -100,7 +100,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
 2. Vytvořte prázdnou databázi v cílovém prostředí, což je Azure Database for PostgreSQL.
 
-    Podrobnosti o tom, jak připojit a vytvořit databázi, najdete v článku [vytvoření serveru Azure Database for PostgreSQL v Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) nebo [vytvoření serveru Azure Database for PostgreSQLového škálování (Citus) v Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
+    Podrobnosti o tom, jak se připojit a vytvořit databázi, najdete v článku [Vytvoření databáze Azure pro PostgreSQL server na webu Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) nebo vytvoření azure databáze pro [PostgreSQL – hyperškálování (Citus) server na webu Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
 
 3. Importujte schéma do cílové databáze, kterou jste vytvořili pomocí obnovení souboru se schématem výpisu paměti.
 
@@ -108,7 +108,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    Příklad:
+    Například:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -144,7 +144,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
     Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
 
-5. Triggery v datech (trigger vložení nebo aktualizace) budou dříve než u replikovaných dat ze zdroje vynucovat integritu dat v cíli. Doporučuje se zakázat aktivační události ve všech tabulkách v **cíli** během migrace a poté znovu povolit triggery po dokončení migrace.
+5. Triggery v datech (trigger vložení nebo aktualizace) budou dříve než u replikovaných dat ze zdroje vynucovat integritu dat v cíli. Doporučujeme zakázat aktivační události ve všech tabulkách **v cíli** během migrace a po dokončení migrace znovu povolit aktivační události.
 
     Pokud chcete zakázat triggery v cílové databázi, použijte následující příkaz:
 
@@ -153,13 +153,13 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     from information_schema.triggers;
     ```
 
-6. Pokud v některých tabulkách existují datový typ ENUM, doporučujeme ji dočasně aktualizovat na datový typ "Character varyed" v cílové tabulce. Po dokončení replikace dat vraťte datový typ na ENUM.
+6. Pokud jsou v libovolné tabulce datové typy ENUM, doporučujeme jej dočasně aktualizovat na datový typ "znak měnící" v cílové tabulce. Po dokončení replikace dat vraťte datový typ na ENUM.
 
 ## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>Zřízení instance DMS pomocí rozhraní příkazového řádku
 
 1. Nainstalujte rozšíření synchronizace dms:
    * K Azure se přihlásíte spuštěním následujícího příkazu:
-       ```
+       ```azurecli
        az login
        ```
 
@@ -167,47 +167,47 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
    * Přidání rozšíření dms:
        * K zobrazení seznamu dostupných rozšíření spusťte následující příkaz:
 
-           ```
+           ```azurecli
            az extension list-available –otable
            ```
 
        * Rozšíření nainstalujete spuštěním tohoto příkazu:
 
-           ```
+           ```azurecli
            az extension add –n dms-preview
            ```
 
    * Chcete-li ověřit, že máte správně nainstalované rozšíření dms, spusťte následující příkaz:
 
-       ```
+       ```azurecli
        az extension list -otable
        ```
        Měl by se zobrazit následující výstup:
 
-       ```
+       ```output
        ExtensionType    Name
        ---------------  ------
        whl              dms
        ```
 
       > [!IMPORTANT]
-      > Ujistěte se, že verze rozšíření je vyšší než 0.11.0.
+      > Ujistěte se, že vaše verze rozšíření je vyšší než 0.11.0.
 
    * Kdykoli spuštěním zobrazíte všechny příkazy podporované v DMS:
 
-       ```
+       ```azurecli
        az dms -h
        ```
 
    * Pokud máte několik předplatných Azure, spuštěním následujícího příkazu nastavíte předplatné, které chcete použít k zřízení instance služby DMS.
 
-        ```
+        ```azurecli
        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
 2. Zřízení instance DMS spuštěním následujícího příkazu:
 
-   ```
+   ```azurecli
    az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
    ```
 
@@ -218,7 +218,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
    * Název skupina prostředků: PostgresDemo
    * Název služby DMS: PostgresCLI
 
-   ```
+   ```azurecli
    az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name Premium_4vCores
    ```
 
@@ -226,19 +226,19 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
 3. Pokud chcete zjistit IP adresu DMS agenta tak, že ho přidáte do souboru Postgres pg_hba.conf, spusťte následující příkaz:
 
-    ```
+    ```azurecli
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    Příklad:
+    Například:
 
-    ```
+    ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     Zobrazený výsledek by měl vypadat přibližně jako tato adresa: 
 
-    ```
+    ```output
     [
       "172.16.136.18"
     ]
@@ -256,7 +256,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
 5. Dále spuštěním následujícího příkazu vytvořte projekt migrace PostgreSQL:
     
-    ```
+    ```azurecli
     az dms project create -l <location> -g <ResourceGroupName> --service-name <yourServiceName> --source-platform PostgreSQL --target-platform AzureDbforPostgreSQL -n <newProjectName>
     ```
 
@@ -269,7 +269,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
    * Zdrojová platforma: PostgreSQL
    * Cílová platforma: AzureDbForPostgreSql
 
-     ```
+     ```azurecli
      az dms project create -l westcentralus -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
      ```
 
@@ -279,7 +279,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
    * Pokud chcete zobrazit úplný seznam možností, spusťte příkaz:
 
-       ```
+       ```azurecli
        az dms project task create -h
        ```
 
@@ -287,7 +287,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
        Formát objektu připojení JSON pro připojení PostgreSQL.
         
-       ```
+       ```json
        {
                    "userName": "user name",    // if this is missing or null, you will be prompted
                    "password": null,           // if this is missing or null (highly recommended) you will
@@ -299,9 +299,9 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
                }
        ```
 
-   * K dispozici je také soubor JSON možnosti databáze, ve kterém jsou uvedeny objekty JSON. Pro PostgreSQL formát objektu JSON možností databáze je zobrazen níže:
+   * K dispozici je také možnost databáze json soubor, který uvádí json objekty. Pro PostgreSQL formát objektu JSON možností databáze je zobrazen níže:
 
-       ```
+       ```json
        [
            {
                "name": "source database",
@@ -313,7 +313,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
    * Vytvořte soubor json v aplikaci Poznámkový blok, zkopírujte následující příkazy a vložte je do souboru a pak soubor uložte v umístění C:\DMS\source.json.
 
-        ```
+        ```json
        {
                    "userName": "postgres",    
                    "password": null,           
@@ -326,7 +326,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
    * Vytvořte jiný soubor s názvem target.json a uložte ho jako C:\DMS\target.json. Zahrňte následující příkazy:
 
-       ```
+       ```json
        {
                "userName": " dms@builddemotarget",    
                "password": null,           
@@ -338,7 +338,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
    * Vytvořte soubor json možností databáze, který obsahuje seznam inventáře jako databázi, kterou chcete migrovat:
 
-       ``` 
+       ```json
        [
            {
                "name": "dvdrental",
@@ -349,7 +349,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
    * Spusťte následující příkaz, který přijímá zdroj, cíl a soubory json možností databáze.
 
-       ``` 
+       ```azurecli
        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
        ```
 
@@ -357,19 +357,19 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
 7. Chcete-li zobrazit průběh úlohy, spusťte následující příkaz:
 
-   ```
+   ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
    NEBO
 
-    ```
+    ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
 
 8. Můžete také dotázat stav migrace z výstupu rozbalení:
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
     ```
 
@@ -377,7 +377,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
 Ve výstupním souboru existuje několik parametrů, které označují průběh migrace. Viz například následující výstupní soubor:
 
-  ```
+  ```output
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -472,19 +472,19 @@ Aby byla všechna data zachycena, ověřte počet řádků mezi zdrojovými a c�
 
 1. Pomocí následujícího příkazu proveďte úlohu přímé migrace databáze:
 
-    ```
+    ```azurecli
     az dms project task cutover -h
     ```
 
-    Příklad:
+    Například:
 
-    ```
+    ```azurecli
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
     ```
 
 2. Chcete-li sledovat průběh přímé migrace, spusťte následující příkaz:
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
@@ -499,28 +499,28 @@ Pokud potřebujete zrušit nebo odstranit všechny úlohy, projekt nebo služby 
 
 1. Chcete-li zrušit běžící úlohu, použijte následující příkaz:
 
-    ```
+    ```azurecli
     az dms project task cancel --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
      ```
 
 2. Chcete-li odstranit běžící úlohu, použijte následující příkaz:
-    ```
+    ```azurecli
     az dms project task delete --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
 3. Chcete-li zrušit běžící projekt, použijte následující příkaz:
-     ```
+     ```azurecli
     az dms project task cancel -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
      ```
 
 4. Chcete-li odstranit běžící projekt, použijte následující příkaz:
-    ```
+    ```azurecli
     az dms project task delete -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
     ```
 
 5. Chcete-li odstranit službu DMS, použijte následující příkaz:
 
-     ```
+     ```azurecli
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 
@@ -528,4 +528,4 @@ Pokud potřebujete zrušit nebo odstranit všechny úlohy, projekt nebo služby 
 
 * Informace o známých problémech a omezeních při provádění online migrací do služby Azure Database for PostgreSQL najdete v článku [Známé problémy s online migracemi do služby Azure Database for PostgreSQLa jejich řešení](known-issues-azure-postgresql-online.md).
 * Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Informace o Azure Database for PostgreSQL najdete v článku [co je Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
+* Informace o Azure Database for PostgreSQL najdete v článku [Co je databáze Azure pro PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).

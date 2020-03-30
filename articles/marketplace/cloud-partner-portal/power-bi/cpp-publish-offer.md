@@ -1,60 +1,59 @@
 ---
-title: Nabídka pro publikování Power BIch aplikací | Azure Marketplace
-description: Na webu Microsoft AppSource Marketplace publikujete nabídku aplikace Power BI.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: Publikovat nabídku aplikace Power BI | Azure Marketplace
+description: Publikujte nabídku aplikace Power BI na tržišti Microsoft AppSource.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pabutler
-ms.openlocfilehash: 324be960bd2d22623763ca3e24b99be92ff04174
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 89d437fe74d209e0dc04ffc590a1e32426b28732
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826036"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275862"
 ---
-# <a name="publish-a-power-bi-app-offer"></a>Publikování nabídky aplikace v Power BI
+# <a name="publish-a-power-bi-app-offer"></a>Publikování nabídky aplikace Power BI
 
-Poslední krok, po definování nabídky v portál partnerů cloudu a vytvoření přidružených technických prostředků, je odeslání nabídky k publikování. Chcete-li spustit tento proces, vyberte v levém podokně okna **Nová nabídka** možnost **publikovat**. Další informace najdete v tématu [publikování Azure Marketplace a AppSource nabídek](../manage-offers/cpp-publish-offer.md).
+Posledním krokem po definování nabídky na portálu partnerů cloudu a vytvoření souvisejících technických prostředků je odeslání nabídky k publikování. Chcete-li tento proces spustit, vyberte v levém podokně okna **Nová nabídka** **možnost Publikovat**. Další informace najdete [v tématu publikování nabídek Azure Marketplace a AppSource](../manage-offers/cpp-publish-offer.md).
 
 
 ## <a name="publishing-steps"></a>Kroky publikování
 
-Toto jsou hlavní kroky procesu publikování:
+Toto jsou hlavní kroky v procesu publikování:
 
-![Publikování kroků procesu pro Power BI nabídku aplikace](./media/publishing-process-steps.png)
+![Kroky procesu publikování pro nabídku aplikací Power BI](./media/publishing-process-steps.png)
 
-Tato tabulka popisuje jednotlivé kroky a poskytuje odhadovaný čas dokončení:
+Tato tabulka popisuje každý krok a poskytuje jeho odhadovaný čas dokončení:
 
 |   Krok publikování            |   Time     |   Popis                                                                  |
 | --------------------         |------------| ----------------                                                               |
-| Ověřit požadavky       | 15 minut     | Budou ověřeny informace nabídky a nastavení nabídky.                            |
-| Certifikace                | 1-7 dní   | Power BI Certifikační tým analyzuje vaši nabídku. Tým spustí vaši aplikaci v Power BI pomocí testu ručního ověření instalací aplikace prostřednictvím zadané instalační adresy URL. Primární ověřování se provádí jako součást procesu certifikace aplikace (popsaných dále v tomto dokumentu).         |
-| Balení                    | \< 1 hodina  | Technické prostředky nabídky jsou zabaleny pro zákaznické použití.                        |
-| Registrace generování potenciálních zákazníků | \< 1 hodina  | Nakonfigurují a nasazují se systémy potenciálních zákazníků.                                      |
-| Schvalování vydavatele            | \-         | Dokončili jste závěrečnou kontrolu a potvrzení před tím, než bude nabídka živá. Teď budete mít odkaz na náhled vaší nabídky. Až budete spokojeni s tím, jak náhled vypadá, vyberte na kartě **stav** možnost **Přejít na aktivní** . Tím se pošle žádost týmu registrace k vypsání vaší aplikace na AppSource.    |
-| Živé                         | \< 3 hodiny | Vaše nabídka je teď veřejně uvedená ("Live") na AppSource a zákazníci si můžou aplikaci zobrazit a nasadit ji v předplatných Power BI. Obdržíte také potvrzovací e-mail. V pravém sloupci na kartě **všechny nabídky** uvidíte stav všech nabídek. Na kartě **stav** můžete zobrazit podrobný stav postupu publikování pro vaši nabídku. |
+| Ověřit požadavky       | 15 minut     | Informace o nabídce a nastavení nabídky jsou ověřeny.                            |
+| Certifikace                | 1-7 dní   | Certifikační tým Power BI analyzuje vaši nabídku. Tým spustí vaši aplikaci Power BI prostřednictvím ručního ověřovacího testu instalací aplikace přes zadanou adresu URL instalace. Primární ověření se provádějí jako součást procesu certifikace aplikace (popsaného dále v tomto dokumentu).         |
+| Balení                    | \<1 hodina  | Technická aktiva nabídky jsou balena pro použití zákazníkem.                        |
+| Registrace generování potenciálních zákazníků | \<1 hodina  | Systémy potenciálních zákazníků jsou konfigurovány a nasazeny.                                      |
+| Odhlášení vydavatele            | \-         | Před udumí na živo dokončíte závěrečnou recenzi a potvrzení. Nyní budete mít také odkaz na náhled vaší nabídky. Až budete spokojeni s tím, jak bude náhled vypadat, na kartě **Stav** vyberte **Přejít živě.** Tím odešlete žádost onboarding týmu seznam vaší aplikace na AppSource.    |
+| Živé                         | \<3 hodiny | Vaše nabídka je teď veřejně uvedená ("live") na AppSource a zákazníci si můžou vaši aplikaci zobrazit a nasadit ve svých předplatných Power BI. Obdržíte také potvrzovací e-mail. V pravém sloupci na kartě **Všechny nabídky** můžete zobrazit stav všech nabídek. Na kartě **Stav** se zobrazí podrobný stav toku publikování pro vaši nabídku. |
 |   |   |
 
-Umožněte dokončení tohoto procesu až osm dní. Až provedete tyto kroky publikování, vaše nabídka aplikace Power BI se zobrazí v části Power BI aplikace v [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) .
+Vyčkejte až osm dní, než bude tento proces dokončen. Po procházení těchto kroků publikování bude nabídka aplikace Power BI uvedená v části Aplikace [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) Power BI.
 
 
-### <a name="app-certification-process"></a>Proces certifikace aplikace
+### <a name="app-certification-process"></a>Proces certifikace aplikací
 
-Tým Microsoft připojování používá tento postup k ověření vašeho odeslání nabídky Power BI aplikací:
+Tým společnosti Microsoft používá tento proces k ověření odeslání nabídky aplikace Power BI:
 
-1. Projděte si právní dokumenty a odkazy na technickou podporu.
+1. Prohlédněte si právní dokumenty a odkazy na nápovědu.
 2. Ověřte kontaktní informace podpory.
-3. K ověření správné instalace použijte adresu URL instalačního programu.
-4. Naskenujte aplikaci pro malware a další škodlivý obsah.
-5. Ověřte, že zobrazený obsah odpovídá popisu aplikace.
-6. Ověřte, že operace související s aplikacemi fungují podle očekávání v Power BI. Tým otevře sestavy a řídicí panely s ukázkovými daty, připojí se k vlastním zdrojům dat, aktualizuje data a tak dále.
+3. Správná instalace slouží k ověření správné instalace pomocí adresy URL instalačního programu.
+4. Vyhledání malwaru a dalšího škodlivého obsahu v aplikaci.
+5. Ověřte, zda zobrazený obsah odpovídá popisu aplikace.
+6. Ověřte, že operace související s aplikací fungují podle očekávání v Power BI. Tým otevře sestavy a řídicí panely s ukázkovými daty, připojí se k vlastním zdrojům dat, aktualizuje data a tak dále.
 
-Certifikační tým poskytuje zpětnou vazbu, pokud nalezne nějaké problémy.  Další informace o Power BI požadavků aplikací najdete v dokumentaci k [aplikaci Power BI](https://go.microsoft.com/fwlink/?linkid=2028636).
+Certifikační tým poskytuje zpětnou vazbu, pokud zjistí nějaké problémy.  Další informace o požadavcích na aplikace Power BI najdete v [dokumentaci k aplikacím Power BI](https://go.microsoft.com/fwlink/?linkid=2028636).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Doporučujeme pravidelně monitorovat aplikaci na [webu AppSource Marketplace](https://appsource.microsoft.com).  K získání přehledu o vašich zákaznících a využití aplikací byste měli použít také funkci [prodejce Insights](../../cloud-partner-portal-orig/si-getting-started.md) v [portál partnerů cloudu](https://cloudpartner.azure.com/#insights) . Nakonec můžete [nabídku aktualizovat](./cpp-update-existing-offer.md).
+Doporučujeme pravidelně sledovat aplikaci na [trhu AppSource](https://appsource.microsoft.com).  Měli byste také použít funkci [Seller Insights](../../cloud-partner-portal-orig/si-getting-started.md) na [portálu cloudových partnerů,](https://cloudpartner.azure.com/#insights) abyste získali přehled o zákaznících na marketplace a využití aplikací. Nakonec můžete [aktualizovat svou nabídku](./cpp-update-existing-offer.md).

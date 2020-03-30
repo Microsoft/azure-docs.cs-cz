@@ -1,88 +1,88 @@
 ---
-title: Zabezpečení v luskech pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
-description: Naučte se zabezpečit provoz, který se zachází do lusků, pomocí zásad sítě Kubernetes ve službě Azure Kubernetes Service (AKS).
+title: Zabezpečené pody se síťovými zásadami ve službě Azure Kubernetes Service (AKS)
+description: Zjistěte, jak zabezpečit provoz, který proudí do a z podů pomocí zásad sítě Kubernetes ve službě Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592862"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473604"
 ---
-# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
+# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečený provoz mezi pody pomocí síťových zásad ve službě Azure Kubernetes Service (AKS)
 
-Když v Kubernetes spustíte moderní aplikace založené na mikroslužbách, často chcete určit, které součásti můžou vzájemně komunikovat. Zásada minimálního oprávnění by měla být použita na to, jak přenos dat může procházet mezi lusky v clusteru služby Azure Kubernetes (AKS). Řekněme, že pravděpodobně chcete zablokovat provoz přímo do back-endové aplikace. Funkce *zásady sítě* v Kubernetes vám umožňuje definovat pravidla pro příchozí a odchozí provoz mezi lusky v clusteru.
+Při spuštění moderních aplikací založených na mikroslužbách v Kubernetes, často chcete řídit, které součásti mohou komunikovat mezi sebou. Princip nejnižší oprávnění by měla být použita na jak může tok mezi pody v clusteru Služby Azure Kubernetes (AKS). Řekněme, že pravděpodobně budete chtít blokovat provoz přímo do back-endových aplikací. Funkce *Zásady sítě* v Kubernetes umožňuje definovat pravidla pro příchozí a odchozí přenosy mezi pody v clusteru.
 
-V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvořit zásady sítě Kubernetes pro řízení toku provozu mezi lusky v AKS. Zásady sítě by se měly používat jenom pro uzly se systémem Linux a lusky v AKS.
+Tento článek ukazuje, jak nainstalovat modul zásad sítě a vytvořit zásady sítě Kubernetes pro řízení toku provozu mezi pody v AKS. Zásady sítě by se měly používat pouze pro uzly a pody založené na Linuxu v AKS.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalované a nakonfigurované azure CLI verze 2.0.61 nebo novější. Spuštěním `az --version` najděte verzi. Pokud potřebujete nainstalovat nebo upgradovat, přečtěte si informace [o instalaci příkazového příkazového příkazu k webu Azure][install-azure-cli].
 
 > [!TIP]
-> Pokud jste ve verzi Preview použili funkci síťové zásady, doporučujeme [vytvořit nový cluster](#create-an-aks-cluster-and-enable-network-policy).
+> Pokud jste během náhledu použili funkci zásad sítě, doporučujeme [vytvořit nový cluster](#create-an-aks-cluster-and-enable-network-policy).
 > 
-> Pokud chcete pokračovat v používání stávajících testovacích clusterů, které používaly zásady sítě během verze Preview, upgradujte cluster na nové verze Kubernetes pro nejnovější verzi GA a pak nasaďte následující manifest YAML, abyste opravili selhání serveru metrik a Kubernetes ovládacího. Tato oprava se vyžaduje jenom u clusterů, které používaly modul zásad sítě Calico.
+> Pokud chcete pokračovat v používání existujících testovacích clusterů, které používaly zásady sítě během náhledu, upgradujte cluster na nové verze Kubernetes pro nejnovější verzi ga a pak nasaďte následující manifest YAML, abyste opravili server s metrikami a Kubernetes Řídicího panelu. Tato oprava je vyžadována pouze pro clustery, které používají modul zásad sítě Calico.
 >
-> Z hlediska zabezpečení je nejvhodnější [zkontrolovat obsah tohoto MANIFESTU YAML][calico-aks-cleanup] a pochopit, co se nasazuje do clusteru AKS.
+> Jako osvědčený postup zabezpečení [zkontrolujte obsah tohoto manifestu YAML,][calico-aks-cleanup] abyste pochopili, co se nasadí do clusteru AKS.
 >
 > `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
 ## <a name="overview-of-network-policy"></a>Přehled zásad sítě
 
-Všechny lusky v clusteru AKS můžou ve výchozím nastavení odesílat a přijímat přenosy bez omezení. Pro zvýšení zabezpečení můžete definovat pravidla, která řídí tok přenosů. Back-endové aplikace se často zveřejňují jenom pro požadované front-endové služby, například. Nebo součásti databáze jsou přístupné pouze pro aplikační vrstvy, které k nim připojovat.
+Všechny pody v clusteru AKS mohou ve výchozím nastavení odesílat a přijímat přenosy bez omezení. Chcete-li zlepšit zabezpečení, můžete definovat pravidla, která řídí tok provozu. Back-endové aplikace jsou často vystaveny pouze požadované front-endové služby, například. Nebo součásti databáze jsou přístupné pouze pro aplikační vrstvy, které se k nim připojují.
 
-Zásada sítě je specifikace Kubernetes, která definuje zásady přístupu pro komunikaci mezi lusky. Pomocí zásad sítě můžete definovat uspořádanou sadu pravidel pro odesílání a příjem provozu a použít je pro kolekci lusků, která odpovídá jednomu nebo více selektorům popisku.
+Zásady sítě je specifikace Kubernetes, která definuje zásady přístupu pro komunikaci mezi pody. Pomocí zásad sítě definujete uspořádanou sadu pravidel pro odesílání a přijímání přenosů a jejich použití na kolekci podů, které odpovídají jednomu nebo více selektorům popisků.
 
-Tato pravidla zásad sítě se definují jako YAML manifesty. Zásady sítě je možné zahrnout do širšího manifestu, který také vytváří nasazení nebo službu.
+Tato pravidla zásad sítě jsou definována jako manifesty YAML. Síťové zásady mohou být zahrnuty jako součást širšího manifestu, který také vytvoří nasazení nebo službu.
 
 ### <a name="network-policy-options-in-aks"></a>Možnosti zásad sítě v AKS
 
-Azure poskytuje dva způsoby, jak implementovat zásady sítě. Při vytváření clusteru AKS zvolíte možnost Zásady sítě. Po vytvoření clusteru se možnost Zásady nedá změnit:
+Azure poskytuje dva způsoby implementace zásad sítě. Možnost zásad sítě zvolíte při vytváření clusteru AKS. Možnost zásad nelze změnit po vytvoření clusteru:
 
-* Vlastní implementace Azure označovaná jako *zásady sítě Azure*.
-* *Calico zásady sítě*, což je open source řešení zabezpečení sítě a sítě založené na [Tigera][tigera].
+* Vlastní implementace Azure, nazvaná *Zásady sítě Azure*.
+* *Calico Network Policies*, open-source řešení zabezpečení sítě a zabezpečení sítě založené [společností Tigera][tigera].
 
-Obě implementace používají Linux *softwaru iptables* k vykonání zadaných zásad. Zásady jsou přeloženy do sad povolených a nepovolených párů IP adres. Tyto páry se pak naprogramují jako pravidla filtru IPTable.
+Obě implementace používají Linux *IPTables* k vynucení zadaných zásad. Zásady jsou přeloženy do sad povolených a nepovolených párů IP. Tyto páry jsou pak naprogramovány jako pravidla filtru IPTable.
 
-### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Rozdíly mezi zásadami Azure a Calico a jejich funkcemi
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Rozdíly mezi zásadami Azure a Calico a jejich možnostmi
 
-| Schopnost                               | Azure                      | Calico                      |
+| Schopnost                               | Azure                      | Kaliko                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Podporované platformy                      | Linux                      | Linux                       |
-| Podporované síťové možnosti             | Azure CNI                  | Azure CNI a kubenet       |
-| Dodržování předpisů pomocí specifikace Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
-| Další funkce                      | Žádná                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní příkazového řádku `calicoctl` ke správě těchto rozšířených funkcí najdete v článku [referenční informace o uživatelích calicoctl][calicoctl]. |
-| Podpora                                  | Podporováno technickou podporou a technickým týmem pro Azure | Podpora komunity Calico. Další informace o další placené podpoře najdete v tématu [Možnosti podpory pro Project Calico][calico-support]. |
-| Protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
+| Podporované možnosti sítě             | Azure CNI                  | Azure CNI a kubenet       |
+| Soulad se specifikací Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
+| Další funkce                      | Žádný                       | Rozšířený model zásad skládající se z globálních zásad sítě, globální síťové sady a koncového bodu hostitele. Další informace o `calicoctl` použití rozhraní se k dispozici pro správu těchto rozšířených funkcí naleznete v [tématu calicoctl user reference][calicoctl]. |
+| Podpora                                  | S podporou týmu podpory Azure a inženýrství | Podpora komunity Calico. Další informace o další placené podpoře naleznete v [tématu Project Calico support options][calico-support]. |
+| protokolování                                  | Přidaná / odstraněná pravidla v IPTables jsou přihlášena ke každému hostiteli pod */var/log/azure-npm.log* | Další informace naleznete [v protokolech komponent Calico][calico-logs] |
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolení zásad sítě
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolení síťových zásad
 
-Pokud chcete zobrazit zásady sítě v akci, vytvoříme a pak rozbalíme zásadu, která definuje tok přenosů:
+Chcete-li zobrazit zásady sítě v akci, pojďme vytvořit a rozbalit na zásadu, která definuje tok provozu:
 
-* Odepřít veškerý provoz do pod.
-* Povoluje provoz na základě popisků pod.
-* Povolte provoz založený na oboru názvů.
+* Odepřít veškerý provoz na pod.
+* Povolit provoz na základě popisků pod.
+* Povolit provoz na základě oboru názvů.
 
-Nejdřív vytvořte cluster AKS, který podporuje zásady sítě. 
+Nejprve vytvoříme cluster AKS, který podporuje zásady sítě. 
 
 > [!IMPORTANT]
 >
-> Funkce zásady sítě se dá povolit, jenom když je cluster vytvořený. V existujícím clusteru AKS nemůžete povolit síťové zásady.
+> Funkci zásad sítě lze povolit pouze při vytvoření clusteru. Nelze povolit zásady sítě v existujícím clusteru AKS.
 
-Pokud chcete používat zásady sítě Azure, musíte použít [modul plug-in Azure CNI][azure-cni] a definovat vlastní virtuální síť a podsítě. Podrobnější informace o tom, jak naplánovat požadované rozsahy podsítí, najdete v tématu [Konfigurace pokročilých sítí][use-advanced-networking]. Zásady sítě Calico se daly použít buď s tímto stejným modulem plug-in Azure CNI, nebo s modulem plug-in Kubenet CNI.
+Pokud chcete používat zásady sítě Azure, musíte použít [modul plug-in Azure CNI][azure-cni] a definovat vlastní virtuální síť a podsítě. Podrobnější informace o plánování požadovaných rozsahů podsítí naleznete v [tématu Konfigurace pokročilých sítí][use-advanced-networking]. Zásady sítě Calico lze použít buď s tímto stejným modulem plug-in Azure CNI nebo s plug-in Kubenet CNI.
 
-Následující vzorový skript:
+Následující ukázkový skript:
 
 * Vytvoří virtuální síť a podsíť.
 * Vytvoří instanční objekt služby Azure Active Directory (Azure AD) pro použití s clusterem AKS.
-* Přiřadí oprávnění *přispěvatele* pro objekt služby Cluster AKS ve virtuální síti.
-* Vytvoří v definované virtuální síti cluster AKS a povolí zásady sítě.
-    * Použije se možnost Zásady sítě *Azure* . Pokud chcete místo toho použít Calico jako zásadu sítě, použijte parametr `--network-policy calico`. Poznámka: Calico lze použít buď s `--network-plugin azure`, nebo `--network-plugin kubenet`.
+* Přiřadí oprávnění *přispěvatele* pro objekt zabezpečení clusterové služby AKS ve virtuální síti.
+* Vytvoří cluster AKS v definované virtuální síti a povolí zásady sítě.
+    * Používá se možnost zásad sítě *Azure.* Chcete-li místo toho použít Calico `--network-policy calico` jako možnost zásad sítě, použijte parametr. Poznámka: Calico lze použít `--network-plugin azure` `--network-plugin kubenet`s jedním nebo .
 
-Zadejte vlastní zabezpečený *sp_password*. Můžete nahradit proměnné *RESOURCE_GROUP_NAME* a *CLUSTER_NAME* :
+Poskytněte vlastní bezpečné *SP_PASSWORD*. Proměnné *RESOURCE_GROUP_NAME* a *CLUSTER_NAME* můžete nahradit:
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup-NP
@@ -135,44 +135,44 @@ az aks create \
     --network-policy azure
 ```
 
-Vytvoření clusteru bude trvat několik minut. Až bude cluster připravený, nakonfigurujte `kubectl` pro připojení ke clusteru Kubernetes pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
+Vytvoření clusteru bude trvat několik minut. Když je cluster připraven, nakonfigurujte `kubectl` připojení ke clusteru Kubernetes pomocí příkazu [az aks get-credentials.][az-aks-get-credentials] Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového příkazu Kubernetes tak, aby je používalo:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
 ```
 
-## <a name="deny-all-inbound-traffic-to-a-pod"></a>Odepřít veškerý příchozí provoz do pod
+## <a name="deny-all-inbound-traffic-to-a-pod"></a>Odepřít veškerý příchozí provoz do podu
 
-Před definováním pravidel pro povolení konkrétního síťového provozu vytvořte nejprve zásadu sítě, která zamítne veškerý provoz. Tato zásada nabízí výchozí bod, který začíná na seznam povolených přenosů. Můžete také jasně vidět, že při použití zásad sítě dojde k přerušení provozu.
+Před definováním pravidel umožňujících určitý síťový provoz nejprve vytvořte zásadu sítě, která odepře veškerý provoz. Tato zásada poskytuje výchozí bod začít whitelist pouze požadovaný provoz. Můžete také jasně vidět, že provoz je vynechán, když je použita zásada sítě.
 
-V případě ukázkových prostředí aplikace a pravidel přenosů nejprve vytvoříme obor názvů s názvem *vývoj* pro spuštění příkladu lusků:
+Pro ukázkové aplikační prostředí a pravidla provozu nejprve vytvořme obor názvů nazývaný *vývoj* pro spuštění ukázkových podů:
 
 ```console
 kubectl create namespace development
 kubectl label namespace/development purpose=development
 ```
 
-Vytvořte příklad back-endu pod, na kterém běží NGINX. Pomocí tohoto back-endu se dá simulovat Ukázková webová aplikace v back-endu. Vytvořte tuto položku pod oborem názvů pro *vývoj* a otevřete port *80* pro obsloužení webového provozu. Popište ho jako *App = WebApp, role = back-end* , abyste se mohli na něj zaměřit pomocí zásad sítě v následující části:
+Vytvořte ukázkový back-end ový pod, který běží NGINX. Tento back-end pod lze simulovat ukázkové back-end webové aplikace. Vytvořte tento pod v oboru názvů *vývoje* a otevřete port *80,* který bude sloužit webovému provozu. Označte pod *pomocí app=webapp,role=backend,* abychom na něj mohli cílit pomocí zásad sítě v další části:
 
 ```console
 kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
 ```
 
-Vytvořte další pod a připojte relaci terminálu k otestování, jestli můžete úspěšně dosáhnout výchozí webové stránky NGINX:
+Vytvořte jiný pod a připojte terminálovou relaci k testování, že můžete úspěšně dosáhnout výchozí webové stránky NGINX:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k potvrzení, že máte přístup k výchozí webové stránce NGINX:
+Na řádku prostředí `wget` potvrďte, že máte přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend
 ```
 
-Následující vzorový výstup ukazuje, že se vrátila výchozí webová stránka NGINX:
+Následující ukázkový výstup ukazuje, že výchozí webová stránka NGINX byla vrácena:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -180,7 +180,7 @@ Následující vzorový výstup ukazuje, že se vrátila výchozí webová strá
 [...]
 ```
 
-Ukončete připojenou relaci Terminálové programu. Test pod je automaticky odstraněn.
+Ukončete připojenou terminálovou relaci. Testovací pod je automaticky odstraněn.
 
 ```console
 exit
@@ -188,7 +188,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Vytvoření a použití zásad sítě
 
-Teď, když jste se potvrdili, že můžete použít základní webovou stránku NGINX na ukázkovém back-endu pod, vytvořit zásadu sítě, která zamítne veškerý provoz. Vytvořte soubor s názvem `backend-policy.yaml` a vložte následující manifest YAML. Tento manifest používá *podSelector* k připojení zásady k luskům, které mají *aplikaci: WebApp, role: back-end* , jako je ukázka Nginx pod. V rámci příchozího přenosu nejsou definována žádná pravidla, takže veškerý příchozí provoz do *uzlu pod je*odepřen:
+Nyní, když jste potvrdili, že můžete použít základní webovou stránku NGINX na ukázkovém back-endovém podu, vytvořte zásady sítě, které popírají veškerý provoz. Vytvořte soubor `backend-policy.yaml` s názvem a vložte následující manifest YAML. Tento manifest používá *podSelector* k připojení zásady pody, které mají *app:webapp,role:backend* label, jako je ukázkový pod NGINX. V části *příchozí přenos*dat nejsou definována žádná pravidla , takže je odepřen veškerý příchozí provoz do podu:
 
 ```yaml
 kind: NetworkPolicy
@@ -204,40 +204,43 @@ spec:
   ingress: []
 ```
 
-Použijte zásady sítě pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název manifestu YAML:
+Přejděte [https://shell.azure.com](https://shell.azure.com) na otevření Azure Cloud Shell ve vašem prohlížeči.
 
-```azurecli-interactive
+Použijte zásady sítě pomocí příkazu [kubectl apply][kubectl-apply] a zadejte název manifestu YAML:
+
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
-### <a name="test-the-network-policy"></a>Testování zásad sítě
+### <a name="test-the-network-policy"></a>Otestovat zásady sítě
 
-
-Pojďme se podívat, jestli můžete použít webovou stránku NGINX v back-endu pod. Vytvořte další test pod a připojte relaci terminálu:
+Podívejme se, jestli můžete použít webové stránky NGINX na back-end pod znovu. Vytvořte další testovací modul a připojte terminálovou relaci:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí můžete pomocí `wget` zjistit, jestli máte přístup k výchozí webové stránce NGINX. Tentokrát nastavte hodnotu časového limitu na *2* sekund. Zásada sítě teď blokuje veškerý příchozí provoz, takže stránku nejde načíst, jak je znázorněno v následujícím příkladu:
+Na řádku prostředí `wget` použijte, abyste zjistili, zda máte přístup k výchozí webové stránce NGINX. Tentokrát nastavte hodnotu časového času na *2* sekundy. Zásady sítě nyní blokují veškerý příchozí provoz, takže stránku nelze načíst, jak je znázorněno v následujícím příkladu:
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
-Ukončete připojenou relaci Terminálové programu. Test pod je automaticky odstraněn.
+Ukončete připojenou terminálovou relaci. Testovací pod je automaticky odstraněn.
 
 ```console
 exit
 ```
 
-## <a name="allow-inbound-traffic-based-on-a-pod-label"></a>Povolit příchozí provoz na základě popisku pod
+## <a name="allow-inbound-traffic-based-on-a-pod-label"></a>Povolit příchozí provoz na základě popisku podu
 
-V předchozí části se naplánoval back-end NGINX pod tím, že se vytvořila zásada sítě pro zamítnutí veškerého provozu. Pojďme vytvořit front-end pod a aktualizovat zásady sítě tak, aby umožňovaly provoz z front-endovéch lusků.
+V předchozí části byl naplánován back-endový pod NGINX a byla vytvořena síťová zásada, která odepře laušit y veškerý provoz. Pojďme vytvořit front-end pod a aktualizovat zásady sítě povolit provoz z front-endpodů.
 
-Aktualizujte zásady sítě tak, aby povolovaly provoz z lusků s aplikací Labels *: WebApp, role: front-end* a v jakémkoli oboru názvů. Upravte předchozí soubor *back-end-Policy. yaml* a přidejte *matchLabels* pravidla pro příchozí, aby váš manifest vypadal jako v následujícím příkladu:
+Aktualizujte zásady sítě tak, aby přenosy z podů s popisky *app:webapp, role:frontend* a v libovolném oboru názvů. Upravte předchozí soubor *back-end-policy.yaml* a přidejte pravidla příchozího přenosu dat *matchLabels* tak, aby manifest vypadal jako následující příklad:
 
 ```yaml
 kind: NetworkPolicy
@@ -260,29 +263,29 @@ spec:
 ```
 
 > [!NOTE]
-> Tato zásada sítě používá *namespaceSelector* a element *podSelector* pro pravidlo příchozího přenosu dat. Syntaxe YAML je důležitá pro doplňková pravidla příchozího přenosu dat. V tomto příkladu musí oba elementy odpovídat pro použití pravidla příchozího přenosu dat. Verze Kubernetes starší než *1,12* nemusí tyto prvky správně interpretovat a omezit síťový provoz podle očekávání. Další informace o tomto chování najdete v tématu [chování a od selektorů][policy-rules].
+> Tato zásada sítě používá pro pravidlo příchozího přenosu dat prvek *namespaceSelector* a prvek *podSelector.* Syntaxe YAML je důležité pro příchozí ho pravidla, která mají být aditivní. V tomto příkladu musí oba prvky odpovídat pro pravidlo příchozího přenosu dat, které má být použito. Verze Kubernetes před *1.12* nemusí interpretovat tyto prvky správně a omezit síťový provoz podle očekávání. Další informace o tomto chování naleznete v [tématu Chování selektorů do a z][policy-rules].
 
-Použijte aktualizované zásady sítě pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název manifestu YAML:
+Použijte aktualizovanou zásadu sítě pomocí příkazu [kubectl apply][kubectl-apply] a zadejte název manifestu YAML:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
-Naplánujte pod označený jako *App = WebApp, role = front-end* a připojte relaci terminálu:
+Naplánujte pod, který je označen jako *app=webapp,role=frontend* a připojte terminálovou relaci:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` a zjistěte, jestli máte přístup k výchozí webové stránce NGINX:
+Na řádku prostředí `wget` použijte, abyste zjistili, zda máte přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend
 ```
 
-Vzhledem k tomu, že pravidlo příchozího přenosu dat povoluje provoz s lusky, které mají aplikaci Labels *: WebApp, role: front*-end, je povolen provoz z front-endu pod. Následující příklad výstupu ukazuje výchozí webovou stránku NGINX, která se vrátila:
+Vzhledem k tomu, že pravidlo příchozího přenosu dat umožňuje provoz s pody, které mají *aplikace popisky: webapp,role: front-end*, je povolen provoz z front-endového podu. Následující ukázkový výstup ukazuje výchozí vrácenou webovou stránku NGINX:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -290,60 +293,62 @@ Vzhledem k tomu, že pravidlo příchozího přenosu dat povoluje provoz s lusky
 [...]
 ```
 
-Ukončete připojenou relaci Terminálové programu. Pole pod je automaticky odstraněno.
+Ukončete připojenou terminálovou relaci. Pod je automaticky odstraněn.
 
 ```console
 exit
 ```
 
-### <a name="test-a-pod-without-a-matching-label"></a>Test pod bez odpovídajícího popisku
+### <a name="test-a-pod-without-a-matching-label"></a>Testování modulu bez odpovídajícího popisku
 
-Zásady sítě umožňují provoz z lusků s označením *aplikace: WebApp, role: front-end*, ale měla by Odepřít všechny ostatní přenosy. Pojďme se podívat, jestli jiný pod ním bez těchto popisků může mít přístup k back-endové NGINX pod. Vytvořte další test pod a připojte relaci terminálu:
+Zásady sítě umožňuje provoz z podů označené *aplikace: webapp, role: front-end*, ale měl by odepřít všechny ostatní provoz. Pojďme otestovat, zda jiný pod bez těchto štítků přístup back-end NGINX pod. Vytvořte další testovací modul a připojte terminálovou relaci:
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí můžete pomocí `wget` zjistit, jestli máte přístup k výchozí webové stránce NGINX. Zásada sítě blokuje příchozí provoz, takže nelze načíst stránku, jak je znázorněno v následujícím příkladu:
+Na řádku prostředí `wget` použijte, abyste zjistili, zda máte přístup k výchozí webové stránce NGINX. Zásady sítě blokují příchozí provoz, takže stránku nelze načíst, jak je znázorněno v následujícím příkladu:
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
-Ukončete připojenou relaci Terminálové programu. Test pod je automaticky odstraněn.
+Ukončete připojenou terminálovou relaci. Testovací pod je automaticky odstraněn.
 
 ```console
 exit
 ```
 
-## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Povolení provozu pouze v rámci definovaného oboru názvů
+## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Povolit provoz pouze z definovaného oboru názvů
 
-V předchozích příkladech jste vytvořili zásadu sítě, která odepřela veškerý provoz, a pak aktualizovali zásady tak, aby povolovala provoz z lusků s určitým popiskem. Další běžnou potřebou je omezit provoz jenom na v rámci daného oboru názvů. Pokud předchozí příklady byly pro provoz v oboru názvů pro *vývoj* , vytvořte zásady sítě, které brání provozu z jiného oboru názvů, jako je například *Výroba*, od dosažení lusků.
+V předchozích příkladech jste vytvořili zásadu sítě, která odepřela veškerý provoz, a poté jste zásadu aktualizovali tak, aby umožňovala provoz z podů s určitým popiskem. Další běžnou potřebou je omezit provoz pouze v rámci daného oboru názvů. Pokud byly předchozí příklady pro provoz v oboru názvů *vývoje,* vytvořte zásadu sítě, která zabrání přenosu z jiného oboru názvů, například *z produkčního prostředí,* aby se dostaly do podů.
 
-Nejdřív vytvořte nový obor názvů pro simulaci produkčního oboru názvů:
+Nejprve vytvořte nový obor názvů pro simulaci produkčního oboru názvů:
 
 ```console
 kubectl create namespace production
 kubectl label namespace/production purpose=production
 ```
 
-Naplánujte test pod v *produkčním* oboru názvů, který je označený jako *App = WebApp, role = front-endu*. Připojit relaci terminálu:
+Naplánujte testovací pod v *produkčním* oboru názvů, který je označen jako *app=webapp,role=frontend*. Připojte terminálovou relaci:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k potvrzení, že máte přístup k výchozí webové stránce NGINX:
+Na řádku prostředí `wget` potvrďte, že máte přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend.development
 ```
 
-Vzhledem k tomu, že se jmenovky pod shodují s tím, co je aktuálně povoleno v zásadách sítě, je povolen provoz. Zásada sítě se nezobrazuje na oborech názvů, jenom na jmenovky pod. Následující příklad výstupu ukazuje výchozí webovou stránku NGINX, která se vrátila:
+Vzhledem k tomu, že popisky pro pod odpovídají tomu, co je aktuálně povoleno v zásadách sítě, je povolen provoz. Zásady sítě se nedívají na obory názvů, pouze na popisky podů. Následující ukázkový výstup ukazuje výchozí vrácenou webovou stránku NGINX:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -351,7 +356,7 @@ Vzhledem k tomu, že se jmenovky pod shodují s tím, co je aktuálně povoleno 
 [...]
 ```
 
-Ukončete připojenou relaci Terminálové programu. Test pod je automaticky odstraněn.
+Ukončete připojenou terminálovou relaci. Testovací pod je automaticky odstraněn.
 
 ```console
 exit
@@ -359,7 +364,7 @@ exit
 
 ### <a name="update-the-network-policy"></a>Aktualizace zásad sítě
 
-Pojďme aktualizovat oddíl *namespaceSelector* pravidla příchozího přenosu dat, aby povoloval jenom přenosy z oboru názvů pro *vývoj* . Upravte soubor manifestu *back-end-Policy. yaml* , jak je znázorněno v následujícím příkladu:
+Aktualizujte oddíl *namespace ingress pravidlaSelector* tak, aby povoluje provoz pouze z oboru názvů *vývoje.* Upravte soubor manifestu *back-end-policy.yaml,* jak je znázorněno v následujícím příkladu:
 
 ```yaml
 kind: NetworkPolicy
@@ -383,51 +388,53 @@ spec:
           role: frontend
 ```
 
-V složitějších příkladech můžete definovat více pravidel příchozího přenosu dat, jako je *namespaceSelector* , a pak *podSelector*.
+Ve složitějších příkladech můžete definovat více pravidel příchozího přenosu dat, jako je *výběr oboru názvů* a potom *podSelector*.
 
-Použijte aktualizované zásady sítě pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název manifestu YAML:
+Použijte aktualizovanou zásadu sítě pomocí příkazu [kubectl apply][kubectl-apply] a zadejte název manifestu YAML:
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
-### <a name="test-the-updated-network-policy"></a>Otestování aktualizovaných síťových zásad
+### <a name="test-the-updated-network-policy"></a>Otestujte aktualizované zásady sítě
 
-Naplánujte další pod v *produkčním* oboru názvů a připojte relaci terminálu:
+Naplánujte jiný pod v oboru názvů *produkční ho distančního* prostředí a připojte terminálovou relaci:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget`, abyste viděli, že síťové zásady nyní zakazuje provoz:
+Na řádku prostředí `wget` použijte k zobrazení, že zásady sítě nyní odepře provoz:
 
 ```console
-$ wget -qO- --timeout=2 http://backend.development
+wget -qO- --timeout=2 http://backend.development
+```
 
+```output
 wget: download timed out
 ```
 
-Ukončete test pod:
+Výstup ze zkušebního modulu:
 
 ```console
 exit
 ```
 
-Když se provoz zamítl z *produkčního* oboru názvů, naplánujte ho zpátky v oboru názvů pro *vývoj* a připojte relaci Terminálové služby:
+S přenosy odepřen z oboru názvů *v produkčním prostředí,* naplánovat testovací pod zpět do oboru názvů *vývoje* a připojit terminálové relace:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget`, abyste viděli, že síťové zásady povolují přenos:
+Na řádku prostředí `wget` použijte k zobrazení, že zásady sítě umožňují přenos:
 
 ```console
 wget -qO- http://backend
 ```
 
-Provoz je povolen, protože v oboru názvů je naplánováno, které odpovídá tomu, co je v zásadách sítě povoleno. Následující vzorový výstup ukazuje výchozí webovou stránku NGINX, která se vrátila:
+Provoz je povolen, protože pod je naplánováno v oboru názvů, který odpovídá co je povoleno v zásadách sítě. Následující ukázkový výstup ukazuje výchozí vrácenou webovou stránku NGINX:
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -435,7 +442,7 @@ Provoz je povolen, protože v oboru názvů je naplánováno, které odpovídá 
 [...]
 ```
 
-Ukončete připojenou relaci Terminálové programu. Test pod je automaticky odstraněn.
+Ukončete připojenou terminálovou relaci. Testovací pod je automaticky odstraněn.
 
 ```console
 exit
@@ -443,7 +450,7 @@ exit
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto článku jsme vytvořili dva obory názvů a použili jste zásady sítě. K vyčištění těchto prostředků použijte příkaz [kubectl Delete][kubectl-delete] a zadejte názvy prostředků:
+V tomto článku jsme vytvořili dva obory názvů a použili zásady sítě. Chcete-li tyto prostředky vyčistit, použijte příkaz [kubectl delete][kubectl-delete] a zadejte názvy prostředků:
 
 ```console
 kubectl delete namespace production
@@ -452,9 +459,9 @@ kubectl delete namespace development
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o síťových prostředcích najdete v tématu [Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)][concepts-network].
+Další informace o síťových prostředcích najdete [v tématu Síťové koncepty pro aplikace ve službě Azure Kubernetes Service (AKS).][concepts-network]
 
-Další informace o zásadách najdete v tématu [zásady sítě Kubernetes][kubernetes-network-policies].
+Další informace o zásadách najdete v tématu [Zásady sítě Kubernetes][kubernetes-network-policies].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

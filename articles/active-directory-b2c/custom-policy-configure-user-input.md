@@ -1,55 +1,58 @@
 ---
-title: Přidání deklarací identity a přizpůsobení uživatelského vstupu ve vlastních zásadách
+title: Přidání deklarací identity a přizpůsobení vstupu uživatele ve vlastních zásadách
 titleSuffix: Azure AD B2C
-description: Přečtěte si, jak přizpůsobit uživatelský vstup a přidat deklarace do cesty pro registraci nebo přihlašování v Azure Active Directory B2C.
+description: Zjistěte, jak přizpůsobit vstup uživatele a přidat deklarace identity na cestu registrace nebo přihlášení ve službě Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
-ms.translationtype: HT
+ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079885"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473672"
 ---
-#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C
+#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarací identity a přizpůsobení vstupu uživatele pomocí vlastních zásad ve službě Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku shromáždíte nový atribut během cesty pro registraci v Azure Active Directory B2C (Azure AD B2C). Získáte město uživatele, nakonfigurujete ho jako rozevírací seznam a definujete, jestli je potřeba poskytnout.
+V tomto článku shromažďovat nový atribut během cesty registrace v Azure Active Directory B2C (Azure AD B2C). Získáte město uživatelů, nakonfigurujete ho jako rozevírací soubor a určíte, zda je nutné ho poskytnout.
 
-Počáteční data můžete shromažďovat od uživatelů pomocí cesty uživatelů při registraci nebo přihlašování. Další deklarace identity je možné shromažďovat později pomocí profilu upravit cestu uživatele. Kdykoli Azure AD B2C shromažďuje informace přímo od uživatele interaktivně, rozhraní identity Experience Framework používá svůj [technický profil s vlastním uplatněním](self-asserted-technical-profile.md). V této ukázce:
+> [!NOTE]
+> Tato ukázka používá vestavěnou deklaraci "město". Místo toho můžete zvolit jeden z podporovaných [předdefinovaných atributů Azure AD B2C](user-profile-attributes.md) nebo vlastní atribut. Chcete-li použít vlastní atribut, [povolte vlastní atributy v zásadách](custom-policy-custom-attributes.md). Chcete-li použít jiný předdefinovaný nebo vlastní atribut, nahraďte "město" atributem, který si vyberete, například předdefinovaný atribut *jobTitle* nebo vlastní atribut, jako *je extension_loyaltyId*.  
 
-1. Definujte deklaraci identity City.
-1. Požádejte uživatele o své město.
-1. Pochovejte město od města do profilu uživatele v adresáři Azure AD B2C.
-1. Při každém přihlášení si přečtěte deklaraci města z Azure AD B2C adresáře.
-1. Až se přihlásíte nebo se přihlásíte, vraťte město do aplikace předávající strany.  
+Počáteční data od uživatelů můžete shromažďovat pomocí cesty uživatele registrace nebo přihlášení. Další deklarace identity lze shromáždit později pomocí cesty uživatele pro úpravu profilu. Kdykoli v azure ad b2c shromažďuje informace přímo od uživatele interaktivně, rozhraní Identity Experience Framework používá jeho [vlastní uplatněný technický profil](self-asserted-technical-profile.md). V této ukázce:
+
+1. Definujte deklaraci "město". 
+1. Zeptejte se uživatele na jejich město.
+1. Zachovat město na profil uživatele v adresáři Azure AD B2C.
+1. Přečtěte si deklarace města z adresáře Azure AD B2C při každém přihlášení.
+1. Po přihlášení nebo registraci vraťte město do aplikace předávající strany.  
 
 ## <a name="prerequisites"></a>Požadavky
 
-Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlášení pomocí sociálních a místních účtů.
+Proveďte kroky v [části Začínáme s vlastními zásadami](custom-policy-get-started.md). Měli byste mít funkční vlastní zásady pro registraci a přihlášení pomocí sociálních a místních účtů.
 
-## <a name="define-a-claim"></a>Definování deklarace identity
+## <a name="define-a-claim"></a>Definování deklarace
 
-Deklarace identity poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. [Schéma deklarací identity](claimsschema.md) je místo, kde deklarujete deklarace identity. K definování deklarace identity se používají tyto prvky:
+Deklarace poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. [Schéma nároků](claimsschema.md) je místo, kde deklarujete své nároky. K definování deklarace se používají následující prvky:
 
-- **DisplayName** – řetězec definující popisek pro uživatele.
-- [DataType](claimsschema.md#datatype) – typ deklarace identity.
-- **UserHelpText** – pomáhá uživateli pochopit, co je potřeba.
-- [UserInputType](claimsschema.md#userinputtype) – typ ovládacího prvku vstupu, jako je textové pole, přepínač výběr, rozevírací seznam nebo vícenásobný výběr.
+- **DisplayName** - řetězec, který definuje popisek směřující uživatelem.
+- [DataType](claimsschema.md#datatype) - Typ deklarace.
+- **UserHelpText** - Pomáhá uživateli pochopit, co je požadováno.
+- [UserInputType](claimsschema.md#userinputtype) - Typ vstupního ovládacího prvku, například textové pole, výběr rádia, rozevírací seznam nebo více výběrů.
 
-Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+Otevřete soubor přípon zásad. Například <em> `SocialAndLocalAccounts/` </em>.
 
-1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
-1. Vyhledejte element [ClaimsSchema](claimsschema.md) . Pokud element neexistuje, přidejte jej.
-1. Přidejte deklaraci identity města do elementu **ClaimsSchema** .  
+1. Vyhledejte element [BuildingBlocks.](buildingblocks.md) Pokud prvek neexistuje, přidejte jej.
+1. Vyhledejte [ClaimsSchema](claimsschema.md) element. Pokud prvek neexistuje, přidejte jej.
+1. Přidejte deklaraci města do prvku **ClaimsSchema.**  
 
 ```xml
 <ClaimType Id="city">
@@ -64,15 +67,15 @@ Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAc
 </ClaimType>
 ```
 
-## <a name="add-a-claim-to-the-user-interface"></a>Přidání deklarace identity do uživatelského rozhraní
+## <a name="add-a-claim-to-the-user-interface"></a>Přidání deklarace deklarace do uživatelského rozhraní
 
-Následující technické profily jsou vyvolány [vlastním](self-asserted-technical-profile.md)příznakem, vyvolány, když uživatel očekává zadání vstupu:
+Následující technické profily jsou [vlastní-tvrdil , vyvolána,](self-asserted-technical-profile.md)když se očekává, že uživatel poskytnout vstup:
 
-- **LocalAccountSignUpWithLogonEmail** – tok registrace místního účtu.
-- **SelfAsserted –** účet federovaného uživatele při prvním přihlášení.
-- **SelfAsserted-ProfileUpdate** – úprava toku profilu.
+- **LocalAccountSignUpWithWithLogonEmail** - Tok registrace místního účtu.
+- **SelfAsserted-Social** – přihlašování k prvnímu uživateli federovaného účtu.
+- **SelfAsserted-ProfileUpdate** - Upravit tok profilu.
 
-Chcete-li shromáždit deklaraci identity města během registrace, je nutné ji přidat jako výstupní deklaraci do `LocalAccountSignUpWithLogonEmail` Technical Profile. Přepište tento technický profil v souboru rozšíření. Zadejte celý seznam výstupních deklarací identity, abyste mohli řídit pořadí, na kterém jsou deklarace identity zobrazené na obrazovce. Vyhledejte element **ClaimsProviders** . Přidejte nový ClaimsProviders následujícím způsobem:
+Pro vyzvednutí nároku města během registrace musí být přidán jako `LocalAccountSignUpWithLogonEmail` výstupní nárok na technický profil. Přepište tento technický profil v souboru rozšíření. Zadejte celý seznam výstupních deklarací pro řízení pořadí, ve které jsou deklarace uvedeny na obrazovce. Najít **ClaimsProviders** element. Přidejte nové ClaimsProviders takto:
 
 ```xml
 <ClaimsProvider>
@@ -95,7 +98,7 @@ Chcete-li shromáždit deklaraci identity města během registrace, je nutné ji
 <ClaimsProvider>
 ```
 
-Pokud chcete po počátečním přihlášení ke federovanému účtu shromáždit deklaraci města, musíte ji přidat jako výstupní deklaraci do `SelfAsserted-Social` Technical Profile. Aby mohli uživatelé s místními a federovaným účty později upravovat svoje data profilu, přidejte do `SelfAsserted-ProfileUpdate` technického profilu výstupní deklaraci identity. Tyto technické profily popište v souboru rozšíření. Zadejte celý seznam výstupních deklarací identity pro řízení pořadí deklarací identity na obrazovce. Vyhledejte element **ClaimsProviders** . Přidejte nový ClaimsProviders následujícím způsobem:
+Chcete-li získat nárok na město po počátečním přihlášení pomocí federovaného účtu, musí být přidán jako výstupní nárok do technického `SelfAsserted-Social` profilu. Aby mohli uživatelé místního a federovaného účtu později upravovat `SelfAsserted-ProfileUpdate` data svého profilu, přidejte výstupní deklaraci do technického profilu. Přepište tyto technické profily v souboru rozšíření. Zadejte celý seznam výstupních deklarací pro řízení pořadí deklarací identity, které jsou uvedeny na obrazovce. Najít **ClaimsProviders** element. Přidejte nové ClaimsProviders takto:
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -122,12 +125,12 @@ Pokud chcete po počátečním přihlášení ke federovanému účtu shromážd
 </ClaimsProvider>
 ```
 
-## <a name="read-and-write-a-claim"></a>Čtení a zápis deklarace identity
+## <a name="read-and-write-a-claim"></a>Čtení a napsání nároku
 
-Následující technické profily jsou [technické profily služby Active Directory](active-directory-technical-profile.md), které čtou a zapisují data do Azure Active Directory.  
-Použijte `PersistedClaims` k zápisu dat do profilu uživatele a `OutputClaims` ke čtení dat z profilu uživatele v příslušných technických profilech služby Active Directory.
+Následující technické profily jsou [technické profily služby Active Directory](active-directory-technical-profile.md), které přijímají a zapisují data do služby Azure Active Directory.  
+Slouží `PersistedClaims` k zápisu dat `OutputClaims` do uživatelského profilu a ke čtení dat z profilu uživatele v rámci příslušných technických profilů služby Active Directory.
 
-Tyto technické profily popište v souboru rozšíření. Vyhledejte element **ClaimsProviders** .  Přidejte nový ClaimsProviders následujícím způsobem:
+Přepište tyto technické profily v souboru rozšíření. Najít **ClaimsProviders** element.  Přidejte nové ClaimsProviders takto:
 
 ```xml
 <ClaimsProvider>
@@ -167,9 +170,9 @@ Tyto technické profily popište v souboru rozšíření. Vyhledejte element **C
 </ClaimsProvider>
 ```
 
-## <a name="include-a-claim-in-the-token"></a>Zahrnutí deklarace identity do tokenu 
+## <a name="include-a-claim-in-the-token"></a>Zahrnout deklaraci do tokenu 
 
-Pokud chcete vrátit deklaraci města zpět do aplikace předávající strany, přidejte do souboru <em>`SocialAndLocalAccounts/` **`SignUpOrSignIn.xml`** </em> výstupní deklaraci identity. Po úspěšné cestě uživatele se do tokenu přidá výstupní deklarace identity a pošle se do aplikace. Upravte element Technical Profile v části předávající strany a přidejte město jako výstupní deklaraci identity.
+Chcete-li vrátit nárok města zpět do aplikace předávající <em> `SocialAndLocalAccounts/` </em> strany, přidejte výstupní deklaraci do souboru. Výstupní deklarace bude přidána do tokenu po úspěšné cestě uživatele a bude odeslána do aplikace. Upravte prvek technického profilu v části předávající strany a přidejte město jako výstupní deklaraci.
  
 ```xml
 <RelyingParty>
@@ -194,19 +197,19 @@ Pokud chcete vrátit deklaraci města zpět do aplikace předávající strany, 
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
-2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
-3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
-4. Vyberte **architekturu prostředí identity**.
-5. Vyberte **Odeslat vlastní zásadu**a pak nahrajte dva soubory zásad, které jste změnili.
-2. Vyberte zásadu registrace nebo přihlašování, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD výběrem filtru **directory + předplatné** v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta Azure AD.
+3. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak **vyhledejte**a vyberte registrace aplikací .
+4. Vyberte **rozhraní Identity Experience Framework**.
+5. Vyberte **Nahrát vlastní zásady**a potom nahrajte dva soubory zásad, které jste změnili.
+2. Vyberte zásadu registrace nebo přihlášení, kterou jste nahráli, a klikněte na tlačítko **Spustit.**
 3. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy.
 
 Přihlašovací obrazovka by měla vypadat podobně jako na následujícím snímku obrazovky:
 
-![Snímek obrazovky s upravenou možností registrace](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
+![Snímek obrazovky s možností upravené registrace](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
 
-Token, který se odesílá zpátky do vaší aplikace, zahrnuje `city` deklaraci identity.
+Token odeslaný zpět do `city` vaší aplikace obsahuje deklaraci.
 
 ```json
 {
@@ -232,7 +235,7 @@ Token, který se odesílá zpátky do vaší aplikace, zahrnuje `city` deklaraci
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o elementu [ClaimsSchema](claimsschema.md) najdete v referenčních informacích k IEF.
-- Naučte se [používat vlastní atributy v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md).
+- Další informace o [ClaimsSchema](claimsschema.md) prvek v odkazu IEF.
+- Přečtěte si, jak [používat vlastní atributy ve vlastních zásadách pro úpravy profilu](custom-policy-custom-attributes.md).

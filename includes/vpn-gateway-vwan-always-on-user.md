@@ -8,24 +8,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7d2248360e499aab79459d0be549da3d8baa79ab
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500195"
 ---
-## <a name="configure-a-user-tunnel"></a>Konfigurace tunelového propojení uživatele
+1. Nainstalujte klientské certifikáty do klienta Windows 10, jak je znázorněno v tomto článku [klienta VPN typu point-to-site.](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) Certifikát musí být v aktuálním úložišti uživatelů.
 
-1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto článku [klienta VPN typu Point-to-site](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) . Certifikát musí být v úložišti aktuálního uživatele.
+1. Nakonfigurujte klienta VPN always on prostřednictvím prostředí PowerShell, Configuration Manager nebo Intune podle pokynů v [části Konfigurace připojení VPN klienta S Windows 10 always on](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
 
-1. Nakonfigurujete klienta VPN Always On prostřednictvím PowerShellu, Configuration Manager nebo Intune podle pokynů v tématu [Konfigurace připojení k síti VPN na straně klienta s Windows 10](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+### <a name="example-configuration-for-the-user-tunnel"></a>Příklad konfigurace pro uživatelský tunelový propojení
 
-### <a name="example-configuration-for-the-user-tunnel"></a>Příklad konfigurace pro tunelové propojení uživatelů
+Po konfiguraci brány virtuální sítě a instalaci klientského certifikátu v místním úložišti počítače v klientovi windows 10 nakonfigurujte tunelové propojení klientských zařízení pomocí následujících příkladů:
 
-Po nakonfigurování brány virtuální sítě a instalaci klientského certifikátu v úložišti místního počítače na klientovi Windows 10 nakonfigurujte tunelové zařízení klienta pomocí následujících příkladů:
-
-1. Zkopírujte následující text a uložte ho jako *Usercert. ps1*:
+1. Zkopírujte následující text a uložte jej jako *usercert.ps1*:
 
    ```
    Param(
@@ -77,7 +75,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Zkopírujte následující text a uložte ho jako *VPNProfile. XML* ve stejné složce jako *Usercert. ps1*. Upravte následující text tak, aby odpovídal vašemu prostředí:
+1. Zkopírujte následující text a uložte jej jako *soubor VPNProfile.xml* do stejné složky jako *usercert.ps1*. Upravte následující text tak, aby odpovídal vašemu prostředí:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -123,13 +121,13 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    ```
 1. Spusťte PowerShell jako správce.
 
-1. V PowerShellu přejděte do složky, kde se nachází *Usercert. ps1* a *VPNProfile. XML* , a spusťte následující příkaz:
+1. V prostředí PowerShell přepněte do složky, ve které jsou umístěny *soubory usercert.ps1* a *VPNProfile.xml,* a spusťte následující příkaz:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. V části **nastavení sítě VPN**vyhledejte položku **UserTest** a pak vyberte **připojit**.
+1. V části **Nastavení sítě VPN**vyhledejte položku **UserTest** a vyberte **Připojit**.
 
-1. Pokud je připojení úspěšné, úspěšně jste nakonfigurovali tunelové propojení vždycky na uživatele.
+1. Pokud je připojení úspěšné, úspěšně jste nakonfigurovali uživatelský tunel vždy na.

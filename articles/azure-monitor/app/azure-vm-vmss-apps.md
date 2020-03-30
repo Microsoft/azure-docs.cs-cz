@@ -1,55 +1,55 @@
 ---
-title: Monitorování výkonu na virtuálních počítačích Azure – Azure Application Insights
-description: Sledování výkonu aplikací pro virtuální počítače Azure a Azure Virtual Machine Scale Sets. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
+title: Sledování výkonu na virtuálních počítačích Azure – Přehledy aplikací Azure
+description: Monitorování výkonu aplikací pro škálovací sady virtuálních zařízení Azure a virtuálních strojů Azure. Doba načítání a odezvy grafu, informace o závislostech a nastavení výstrah na výkon.
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661324"
 ---
-# <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuální počítače Azure a Azure Virtual Machine Scale Sets
+# <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuálních počítačích Azure a škálovací sady virtuálních počítačů Azure
 
-Povolení monitorování webových aplikací založených na rozhraní .NET běžících na [virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/) a [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) je teď jednodušší než kdy dřív. Získejte všechny výhody použití Application Insights beze změny kódu.
+Povolení monitorování webových aplikací založených na rozhraní .NET spuštěných na [virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/) a [škálovacích sadách virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) je teď jednodušší než kdy dřív. Získejte všechny výhody používání Application Insights bez úpravy kódu.
 
-Tento článek vás provede povolením Application Insights monitorování pomocí agenta Application Insights a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
+Tento článek vás provede povolením monitorování přehledů aplikací pomocí agenta Application Insights a poskytne předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
 > [!IMPORTANT]
-> Agent Azure Application Insights pro .NET je momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
+> Agent Azure Application Insights pro rozhraní .NET je aktuálně ve verzi Public Preview.
+> Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučujeme ji pro produkční úlohy. Některé funkce nemusí být podporovány a některé mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
-Existují dva způsoby, jak povolit monitorování aplikací pro virtuální počítače Azure a hostované aplikace Azure Virtual Machine Scale Sets:
+Existují dva způsoby, jak povolit monitorování aplikací pro virtuální počítače Azure a škálovací sady virtuálních počítačů Azure hostované aplikace:
 
-* Bez **kódu** prostřednictvím agenta Application Insights
-    * Tato metoda je nejjednodušší pro povolení a není nutná žádná pokročilá konfigurace. Často se označuje jako monitorování za běhu.
+* **Bezkódové** prostřednictvím agenta Application Insights
+    * Tato metoda je nejjednodušší povolit a není vyžadována žádná pokročilá konfigurace. Často se označuje jako "runtime" monitorování.
 
-    * Pro virtuální počítače Azure a službu Azure Virtual Machine Scale Sets doporučujeme, abyste tuto úroveň monitorování povedli minimálně. Na základě vašeho konkrétního scénáře můžete vyhodnotit, jestli je potřeba ruční instrumentace.
+    * Pro virtuální počítače Azure a škálovací sady virtuálních počítačů Azure doporučujeme minimálně povolit tuto úroveň monitorování. Poté můžete na základě konkrétního scénáře vyhodnotit, zda je potřeba ruční instrumentace.
 
-    * Agent Application Insights automaticky shromažďuje stejné signály závislostí jako sadu .NET SDK. Další informace najdete v tématu [Automatická kolekce závislostí](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) .
+    * Agent Application Insights automaticky shromažďuje stejné signály závislostí out-of-the-box jako .NET SDK. Další [informace najdete v tématu Automatické shromažďování závislostí.](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net)
         > [!NOTE]
-        > V současné době jsou podporovány pouze aplikace hostované v rozhraní .NET IIS. Použijte SDK pro instrumentaci aplikací ASP.NET Core, Java a Node. js hostovaných na virtuálních počítačích Azure a ve službě Virtual Machine Scale Sets.
+        > V současné době jsou podporovány pouze aplikace hostované pomocí rozhraní IIS. Pomocí sady SDK můžete instrumentovat aplikace ASP.NET jádra, javy a node.js hostované na virtuálních počítačích Azure a škálovacích sadách virtuálních počítačů.
 
-* Pomocí sady SDK **založené na kódu**
+* **Na základě kódu** prostřednictvím sady SDK
 
-    * Tento přístup je mnohem přizpůsobitelnější, ale vyžaduje [Přidání závislosti na balíčky NuGet sady Application Insights SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net). Tato metoda také znamená, že je nutné spravovat aktualizace na nejnovější verzi balíčků sami.
+    * Tento přístup je mnohem více přizpůsobitelné, ale vyžaduje [přidání závislosti na balíčcích Application Insights SDK NuGet](https://docs.microsoft.com/azure/azure-monitor/app/asp-net). Tato metoda také znamená, že budete muset spravovat aktualizace nejnovější verze balíčků sami.
 
-    * Pokud potřebujete vlastní volání rozhraní API ke sledování událostí nebo závislostí, které se ve výchozím nastavení nezachycují pomocí monitorování založeného na agentech, musíte použít tuto metodu. Další informace najdete v [článku rozhraní API pro vlastní události a metriky](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) .
-
-> [!NOTE]
-> Pokud se zjistí jenom monitorování na základě agentů a ruční instrumentaci založené na sadě SDK, bude se dodržovat jenom ruční nastavení instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace o této části najdete v [části řešení potíží](#troubleshooting) níže.
-
-## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Správa Application Insights agenta pro aplikace .NET na virtuálních počítačích Azure pomocí PowerShellu
+    * Pokud potřebujete provést vlastní volání rozhraní API ke sledování událostí nebo závislostí, které nejsou ve výchozím nastavení zachyceny pomocí monitorování založeného na agentovi, budete muset použít tuto metodu. Další informace najdete v [článku api pro vlastní události a metriky.](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)
 
 > [!NOTE]
-> Před instalací agenta Application Insights budete potřebovat připojovací řetězec. [Vytvořte nový prostředek Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) nebo zkopírujte připojovací řetězec z existujícího prostředku Application Insights.
+> Pokud je zjištěno monitorování založené na agentech a ruční instrumentace založená na sadě SDK, bude dodrženo pouze ruční nastavení instrumentace. Tím zabráníte odeslání duplicitních dat. Další informace o tomto článku najdete v [části řešení potíží](#troubleshooting) níže.
+
+## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Správa agenta přehledů aplikací pro aplikace .NET na virtuálních počítačích Azure pomocí PowerShellu
 
 > [!NOTE]
-> Začínáte s PowerShellem? Přečtěte si [příručku Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0).
+> Před instalací agenta Application Insights budete potřebovat připojovací řetězec. [Vytvořte nový prostředek Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) nebo zkopírujte připojovací řetězec z existujícího prostředku přehledů aplikací.
+
+> [!NOTE]
+> Začínáte s powershellem? Podívejte se na [příručku Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0).
 
 Instalace nebo aktualizace agenta Application Insights jako rozšíření pro virtuální počítače Azure
 ```powershell
@@ -77,19 +77,19 @@ Set-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" 
 ```
 
 > [!NOTE]
-> Agenta Application Insights můžete nainstalovat nebo aktualizovat jako rozšíření v rámci více Virtual Machines na škále pomocí smyčky prostředí PowerShell.
+> Agenta Application Insights můžete nainstalovat nebo aktualizovat jako rozšíření napříč více virtuálními počítači ve velkém měřítku pomocí smyčky Powershellu.
 
-Odinstalace rozšíření agenta Application Insights z virtuálního počítače Azure
+Odinstalace rozšíření Agent application insights z virtuálního počítače Azure
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Name "ApplicationMonitoring"
 ```
 
-Dotaz na stav rozšíření agenta Application Insights pro virtuální počítač Azure
+Stav rozšíření agenta přehledů aplikací pro virtuální počítač Azure
 ```powershell
 Get-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Name ApplicationMonitoring -Status
 ```
 
-Získat seznam nainstalovaných rozšíření pro virtuální počítač Azure
+Získání seznamu nainstalovaných rozšíření pro virtuální počítač Azure
 ```powershell
 Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions"
 
@@ -99,14 +99,14 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-Nainstalovaná rozšíření můžete zobrazit také v okně [virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) na portálu.
+Můžete také zobrazit nainstalované rozšíření v [okně virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) na portálu.
 
 > [!NOTE]
-> Ověřte instalaci kliknutím na Live Metrics Stream v rámci prostředku Application Insights přidruženého k připojovacímu řetězci, který jste použili k nasazení rozšíření agenta Application Insights. Pokud odesíláte data z více Virtual Machines, vyberte v části název serveru cílové virtuální počítače Azure. Může trvat až minutu, než se data začnou přesměrovat.
+> Ověřte instalaci kliknutím na stream živých metrik v rámci prostředku Application Insights přidruženého k připojovacímu řetězci, který jste použili k nasazení rozšíření agenta Application Insights. Pokud odesíláte data z více virtuálních počítačů, vyberte cílové virtuální počítače Azure v části Název serveru. Může trvat až minutu, než data začnou proudit.
 
-## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>Správa Application Insights agenta pro aplikace .NET na Azure Virtual Machine Scale Sets pomocí PowerShellu
+## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>Správa agenta přehledů aplikací pro aplikace .NET ve škálovacích sadách virtuálních strojů Azure pomocí powershellu
 
-Instalace nebo aktualizace agenta Application Insights jako rozšíření pro sadu škálování virtuálního počítače Azure
+Instalace nebo aktualizace agenta Application Insights jako rozšíření pro škálovací sadu virtuálních strojů Azure
 ```powershell
 $publicCfgHashtable =
 @{
@@ -136,7 +136,7 @@ Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -Virtu
 # Note: depending on your update policy, you might need to run Update-AzVmssInstance for each instance
 ```
 
-Odinstalace rozšíření monitorování aplikací ze služby Azure Virtual Machine Scale Sets
+Odinstalace rozšíření monitorování aplikací ze škálovacích sad virtuálních strojů Azure
 ```powershell
 $vmss = Get-AzVmss -ResourceGroupName "<myResourceGroup>" -VMScaleSetName "<myVmssName>"
 
@@ -147,12 +147,12 @@ Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -Virtu
 # Note: depending on your update policy, you might need to run Update-AzVmssInstance for each instance
 ```
 
-Dotazování na stav rozšíření monitorování aplikací pro službu Azure Virtual Machine Scale Sets
+Stav rozšíření monitorování aplikací dotazu pro škálovací sady virtuálních strojů Azure
 ```powershell
 # Not supported by extensions framework
 ```
 
-Získat seznam nainstalovaných rozšíření pro Azure Virtual Machine Scale Sets
+Získání seznamu nainstalovaných rozšíření pro škálovací sady virtuálních strojů Azure
 ```powershell
 Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions
 
@@ -163,18 +163,18 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions/ApplicationMonitoringWindows
 ```
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
-Přečtěte si tipy pro řešení potíží pro rozšíření Application Insights Monitoring Agent pro aplikace .NET běžící na virtuálních počítačích Azure a službě Virtual Machine Scale Sets.
+Najděte tipy pro řešení potíží s rozšířením Application Insights Monitoring Agent Extension pro aplikace .NET spuštěné na virtuálních počítačích Azure a škálovacísady virtuálních počítačů.
 
 > [!NOTE]
-> Aplikace .NET Core, Java a Node. js jsou podporované jenom na virtuálních počítačích Azure a Azure Virtual Machine Scale Sets prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
+> Aplikace .NET Core, Java a Node.js jsou podporované jenom na virtuálních počítačích Azure a škálovacích sadách virtuálních počítačů Azure prostřednictvím ruční instrumentace založené na sadě SDK, a proto se následující kroky nevztahují na tyto scénáře.
 
-Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujících adresářích:
+Výstup spuštění rozšíření je zaznamenán do souborů nalezených v následujících adresářích:
 ```Windows
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se, jak [nasadit aplikaci do sady škálování virtuálních počítačů Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md).
-* [Nastavte webové testy dostupnosti](monitor-web-app-availability.md) , které se mají upozornit, pokud je koncový bod mimo provoz.
+* Zjistěte, jak [nasadit aplikaci do škálovací sady virtuálních strojů Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md).
+* [Nastavte webové testy dostupnosti,](monitor-web-app-availability.md) které mají být upozorněny, pokud je koncový bod vypnutý.

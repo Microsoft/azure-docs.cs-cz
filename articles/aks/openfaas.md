@@ -1,53 +1,55 @@
 ---
 title: Použití OpenFaaS se službou Azure Kubernetes Service (AKS)
-description: Nasazení a používání OpenFaaS se službou Azure Kubernetes Service (AKS)
+description: Nasazení a používání OpenFaaS pomocí služby Azure Kubernetes Service (AKS)
 author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: e684aee1469f855ec651567b805262c71aaf32e5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2605489f73063cb16a588d4714955704482327ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594919"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473638"
 ---
-# <a name="using-openfaas-on-aks"></a>Používání OpenFaaS v AKS
+# <a name="using-openfaas-on-aks"></a>Použití OpenFaaS na AKS
 
-[OpenFaaS][open-faas] je architektura pro sestavování funkcí bez serveru prostřednictvím použití kontejnerů. Jako otevřený zdrojový projekt získal v rámci komunity rozsáhlé přijetí. Tento dokument popisuje, jak nainstalovat a používat OpenFaas v clusteru Azure Kubernetes Service (AKS).
+[OpenFaaS][open-faas] je framework pro vytváření bezserverových funkcí pomocí kontejnerů. Jako open source projekt získal v rámci komunity rozsáhlé přijetí. Tento dokument podrobně popisuje instalaci a používání OpenFaas v clusteru Služby Azure Kubernetes (AKS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto článku budete potřebovat následující.
+Chcete-li provést kroky v tomto článku, budete potřebovat následující.
 
-* Základní porozumění Kubernetes.
-* Cluster Azure Kubernetes Service (AKS) a přihlašovací údaje AKS nakonfigurované ve vývojovém systému.
-* Rozhraní příkazového řádku Azure je nainstalované ve vývojovém systému.
+* Základní znalost Kubernetes.
+* Cluster Azure Kubernetes Service (AKS) a přihlašovací údaje AKS nakonfigurované ve vašem vývojovém systému.
+* Azure CLI nainstalované ve vašem vývojovém systému.
 * Nástroje příkazového řádku Git nainstalované ve vašem systému.
 
-## <a name="add-the-openfaas-helm-chart-repo"></a>Přidání úložiště grafu OpenFaaS Helm
+## <a name="add-the-openfaas-helm-chart-repo"></a>Přidání repo grafu kormidelníku OpenFaaS
 
-OpenFaaS udržuje své vlastní Helm grafy, aby se zajistila aktuálnost všech nejnovějších změn.
+Přejděte [https://shell.azure.com](https://shell.azure.com) na otevření Azure Cloud Shell ve vašem prohlížeči.
 
-```azurecli-interactive
+OpenFaaS udržuje své vlastní kormidelní grafy, aby udržel krok se všemi nejnovějšími změnami.
+
+```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/
 helm repo update
 ```
 
 ## <a name="deploy-openfaas"></a>Nasazení OpenFaaS
 
-Osvědčeným postupem je, že funkce OpenFaaS a OpenFaaS by měly být uloženy ve vlastním oboru názvů Kubernetes.
+Jako dobrý postup, OpenFaaS a OpenFaaS funkce by měly být uloženy ve vlastním oboru názvů Kubernetes.
 
-Vytvoření oboru názvů pro OpenFaaS systém a funkce:
+Vytvořte obor názvů pro systém OpenFaaS a funkce:
 
-```azurecli-interactive
+```console
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-Vygenerujte heslo pro portál uživatelského rozhraní OpenFaaS a REST API:
+Vygenerujte heslo pro portál UI OpenFaaS a ROZHRANÍ REST API:
 
-```azurecli-interactive
+```console
 # generate a random password
 PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
 
@@ -56,13 +58,13 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-Hodnotu tajného kódu můžete získat pomocí `echo $PASSWORD`.
+Můžete získat hodnotu tajemství `echo $PASSWORD`s .
 
-Heslo, které tady vytvoříte, bude používat graf Helm k povolení základního ověřování pro bránu OpenFaaS, která je vystavená Internetu prostřednictvím služby Vyrovnávání zatížení cloudu.
+Heslo, které zde vytvoříme, bude použito kormidelním grafem k povolení základního ověřování na bráně OpenFaaS, která je vystavena internetu prostřednictvím cloudového LoadBalancer.
 
-Helm graf pro OpenFaaS je součástí klonovaného úložiště. Pomocí tohoto grafu nasaďte OpenFaaS do svého clusteru AKS.
+Graf Helm pro OpenFaaS je součástí klonovaného úložiště. Tento graf slouží k nasazení OpenFaaS do clusteru AKS.
 
-```azurecli-interactive
+```console
 helm upgrade openfaas --install openfaas/openfaas \
     --namespace openfaas  \
     --set basic_auth=true \
@@ -72,7 +74,7 @@ helm upgrade openfaas --install openfaas/openfaas \
 
 Výstup:
 
-```
+```output
 NAME:   openfaas
 LAST DEPLOYED: Wed Feb 28 08:26:11 2018
 NAMESPACE: openfaas
@@ -92,35 +94,35 @@ To verify that openfaas has started, run:
   kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
-Pro přístup k bráně OpenFaaS se vytvoří veřejná IP adresa. Pokud chcete načíst tuto IP adresu, použijte příkaz [kubectl Get Service][kubectl-get] . Přiřazení IP adresy službě může trvat několik minut.
+Pro přístup k bráně OpenFaaS je vytvořena veřejná IP adresa. Chcete-li načíst tuto ADRESU IP, použijte příkaz [kubectl get service.][kubectl-get] Může trvat minutu, než bude ip adresa přiřazena ke službě.
 
 ```console
 kubectl get service -l component=gateway --namespace openfaas
 ```
 
-Výkonem.
+Výstup.
 
-```console
+```output
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
 gateway            ClusterIP      10.0.156.194   <none>         8080/TCP         7m
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-Chcete-li otestovat systém OpenFaaS, přejděte na externí IP adresu na portu 8080, v tomto příkladu `http://52.186.64.52:8080`. Zobrazí se výzva, abyste se přihlásili. Pokud chcete načíst heslo, zadejte `echo $PASSWORD`.
+Chcete-li otestovat systém OpenFaaS, vyhledejte `http://52.186.64.52:8080` v tomto příkladu externí IP adresu na portu 8080. Budete vyzváni k přihlášení. Chcete-li načíst `echo $PASSWORD`heslo, zadejte .
 
-![Uživatelské rozhraní OpenFaaS](media/container-service-serverless/openfaas.png)
+![OpenFaaS UI](media/container-service-serverless/openfaas.png)
 
-Nakonec nainstalujte rozhraní příkazového řádku OpenFaaS. V tomto příkladu se používá Brew. Další možnosti najdete v dokumentaci k rozhraní příkazového [řádku OpenFaaS][open-faas-cli] .
+Nakonec nainstalujte Cli OpenFaaS. Tento příklad používá vařit, viz [OpenFaaS CLI dokumentace][open-faas-cli] pro další možnosti.
 
 ```console
 brew install faas-cli
 ```
 
-Nastavte `$OPENFAAS_URL` na veřejnou IP adresu, kterou jsme našli výše.
+Nastavte `$OPENFAAS_URL` na veřejnou IP adresu nalezenou výše.
 
-Přihlaste se pomocí Azure CLI:
+Přihlaste se pomocí azure cli:
 
-```azurecli-interactive
+```console
 export OPENFAAS_URL=http://52.186.64.52:8080
 echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
@@ -129,19 +131,19 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 Teď, když je OpenFaaS funkční, vytvořte funkci pomocí portálu OpenFaas.
 
-Klikněte na **nasadit novou funkci** a vyhledejte **FIGlet**. Vyberte funkci FIGlet a klikněte na **nasadit**.
+Klikněte na **Nasadit novou funkci** a vyhledejte **Figlet**. Vyberte funkci Figlet a klepněte na tlačítko **Nasadit**.
 
-![Figlet](media/container-service-serverless/figlet.png)
+![Nafiglet](media/container-service-serverless/figlet.png)
 
-K vyvolání funkce použijte oblé. V následujícím příkladu nahraďte IP adresu bránou OpenFaas.
+Pomocí curl vyvolat funkci. Nahraďte IP adresu v následujícím příkladu adresou vaší brány OpenFaas.
 
-```azurecli-interactive
+```console
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 ```
 
 Výstup:
 
-```console
+```output
  _   _      _ _            _
 | | | | ___| | | ___      / \    _____   _ _ __ ___
 | |_| |/ _ \ | |/ _ \    / _ \  |_  / | | | '__/ _ \
@@ -152,7 +154,7 @@ Výstup:
 
 ## <a name="create-second-function"></a>Vytvořit druhou funkci
 
-Nyní vytvořte druhou funkci. Tento příklad bude nasazen pomocí rozhraní příkazového řádku OpenFaaS a zahrnuje vlastní image kontejneru a načítání dat z Cosmos DB. Před vytvořením funkce je třeba nakonfigurovat několik položek.
+Nyní vytvořte druhou funkci. Tento příklad bude nasazen pomocí OpenFaaS CLI a zahrnuje vlastní image kontejneru a načítání dat z Cosmos DB. Před vytvořením funkce je třeba nakonfigurovat několik položek.
 
 Nejprve vytvořte novou skupinu prostředků pro Cosmos DB.
 
@@ -160,15 +162,15 @@ Nejprve vytvořte novou skupinu prostředků pro Cosmos DB.
 az group create --name serverless-backing --location eastus
 ```
 
-Nasaďte CosmosDB instanci typu `MongoDB`. Instance vyžaduje jedinečný název, `openfaas-cosmos` aktualizace na něco jedinečného pro vaše prostředí.
+Nasazení instance CosmosDB `MongoDB`druhu . Instance potřebuje jedinečný název, `openfaas-cosmos` aktualizovat na něco jedinečného pro vaše prostředí.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
 ```
 
-Získejte připojovací řetězec databáze Cosmos a uložte ho do proměnné.
+Získejte připojovací řetězec databáze Cosmos a uložte jej do proměnné.
 
-Aktualizujte hodnotu argumentu `--resource-group` na název vaší skupiny prostředků a argument `--name` na název vašeho Cosmos DB.
+Aktualizujte hodnotu `--resource-group` argumentu na název skupiny `--name` prostředků a argument na název cosmos db.
 
 ```azurecli-interactive
 COSMOS=$(az cosmosdb list-connection-strings \
@@ -178,7 +180,7 @@ COSMOS=$(az cosmosdb list-connection-strings \
   --output tsv)
 ```
 
-Nyní naplňte Cosmos DB pomocí testovacích dat. Vytvořte soubor s názvem `plans.json` a zkopírujte následující JSON.
+Nyní naplňte Cosmos DB testovacími daty. Vytvořte soubor `plans.json` s názvem a zkopírujte v následujícím json.
 
 ```json
 {
@@ -192,41 +194,41 @@ Nyní naplňte Cosmos DB pomocí testovacích dat. Vytvořte soubor s názvem `p
 }
 ```
 
-K načtení instance CosmosDB s daty použijte nástroj *mongoimport* .
+Pomocí nástroje *mongoimport* načtěte instanci CosmosDB s daty.
 
-V případě potřeby nainstalujte nástroje MongoDB. Následující příklad nainstaluje tyto nástroje pomocí Brew. Další možnosti najdete v [dokumentaci k MongoDB][install-mongo] .
+V případě potřeby nainstalujte nástroje MongoDB. Následující příklad nainstaluje tyto nástroje pomocí vařit, naleznete v [dokumentaci MongoDB][install-mongo] pro další možnosti.
 
-```azurecli-interactive
+```console
 brew install mongodb
 ```
 
 Načtěte data do databáze.
 
-```azurecli-interactive
+```console
 mongoimport --uri=$COSMOS -c plans < plans.json
 ```
 
 Výstup:
 
-```console
+```output
 2018-02-19T14:42:14.313+0000    connected to: localhost
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
-Spuštěním následujícího příkazu vytvořte funkci. Aktualizujte hodnotu argumentu `-g` s adresou brány OpenFaaS.
+Chcete-li vytvořit funkci, spusťte následující příkaz. Aktualizujte hodnotu `-g` argumentu adresou brány OpenFaaS.
 
-```azurecli-interctive
+```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS
 ```
 
-Po nasazení byste měli vidět nově vytvořený koncový bod OpenFaaS pro danou funkci.
+Po nasazení byste měli vidět nově vytvořený koncový bod OpenFaaS pro funkci.
 
-```console
+```output
 Deployed. 202 Accepted.
 URL: http://52.186.64.52:8080/function/cosmos-query
 ```
 
-Otestujte funkci pomocí funkce kudrlinkou. Aktualizujte IP adresu pomocí adresy brány OpenFaaS.
+Otestujte funkci pomocí zvlnění. Aktualizujte IP adresu adresou brány OpenFaaS.
 
 ```console
 curl -s http://52.186.64.52:8080/function/cosmos-query
@@ -238,13 +240,13 @@ Výstup:
 [{"ID":"","Name":"two_person","FriendlyName":"","PortionSize":"","MealsPerWeek":"","Price":72,"Description":"Our basic plan, delivering 3 meals per week, which will feed 1-2 people."}]
 ```
 
-Funkci můžete také otestovat v uživatelském rozhraní OpenFaaS.
+Funkci můžete také otestovat v rámci ustálené ho suopenské strany OpenFaaS.
 
 ![alternativní text](media/container-service-serverless/OpenFaaSUI.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí sady praktických cvičení můžete pokračovat v seznámení se službou OpenFaaS Workshop, která zahrnuje témata, jako je například vytvoření vlastního robota GitHubu, používání tajných kódů, zobrazení metrik a automatické škálování.
+Můžete pokračovat v učení s OpenFaaS workshop prostřednictvím sady praktických laboratoří, které pokrývají témata, jako je například jak vytvořit vlastní GitHub bot, náročné tajné kódy, zobrazení metriky a automatické škálování.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

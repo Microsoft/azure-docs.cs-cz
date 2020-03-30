@@ -1,139 +1,139 @@
 ---
-title: Transformace sloučení v toku dat mapování
-description: Denormalizovat hierarchická data pomocí transformace sloučení
+title: Sloučení transformace v toku dat mapování
+description: Denormalizovat hierarchická data pomocí sloučení transformace
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 74f6df1fbc749a5ec015afb954ca6b12cbe0f18f
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: b19aae8ab6730936a826f5bb069bfdb7d696cdfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086961"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246632"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>Transformace sloučení v toku dat mapování
+# <a name="flatten-transformation-in-mapping-data-flow"></a>Sloučení transformace v toku dat mapování
 
-Použijte transformaci sloučení k převzetí hodnot polí v hierarchických strukturách, jako je JSON, a Odveďte je do jednotlivých řádků. Tento proces se označuje jako denormalizace.
+Pomocí sloučení transformace můžete vzít hodnoty pole do hierarchických struktur, jako je například JSON, a rozbalit je do jednotlivých řádků. Tento proces se nazývá denormalizace.
 
 ## <a name="configuration"></a>Konfigurace
 
-Transformace sloučení obsahuje následující nastavení konfigurace.
+Sloučení transformace obsahuje následující nastavení konfigurace
 
-![Nastavení sloučení průhledností](media/data-flow/flatten1.png "Nastavení sloučení průhledností")
+![Sloučení nastavení](media/data-flow/flatten1.png "Sloučení nastavení")
 
-### <a name="unroll-by"></a>Odvádět od
+### <a name="unroll-by"></a>Odvíjet podle
 
-Vyberte pole, které chcete odznačit. Výstupní data budou mít jeden řádek na každou položku v každém poli. Pokud je pole Nezahrnuto ve vstupním řádku null nebo prázdné, bude jeden výstupní řádek s nenasazenými hodnotami jako null.
+Vyberte pole, které chcete rozbalit. Výstupní data budou mít jeden řádek na položku v každém poli. Pokud rozbalit pole ve vstupním řádku je null nebo prázdné, bude jeden výstupní řádek s unrolled hodnoty jako null.
 
-### <a name="unroll-root"></a>Odveďte kořen
+### <a name="unroll-root"></a>Zrušit kořenový adresář
 
-Ve výchozím nastavení sloučí transformaci pole na horní část hierarchie, ve které existuje. Volitelně můžete vybrat pole jako nekumulativní kořen. Kořenová složka pro odebrání musí být pole komplexních objektů, které je buď nebo obsahuje pole dewind. Pokud je vybráno "kumulativní kořen", budou výstupní data obsahovat alespoň jeden řádek na položky v kořenu kumulativního umístění. Pokud vstupní řádek neobsahuje žádné položky v kořenu, bude z výstupních dat vyřazen. Výběr neúplného kořenu bude vždy mít za následek menší nebo stejný počet řádků než výchozí chování.
+Ve výchozím nastavení sloučení množí se zploštit matice na začátek hierarchie, ve které existuje. Volitelně můžete vybrat pole jako kořenový adresář. Rozbalit kořen musí být pole složitých objektů, které buď je nebo obsahuje rozbalit pole. Pokud je vybrán kořen rozbalovací, výstupní data budou obsahovat alespoň jeden řádek na položky v kořenovém adresáři rozbalit. Pokud vstupní řádek nemá žádné položky v kořenovém adresáři unroll, bude vynechán z výstupních dat. Výběr kořenového adresáře pro rozvrácení bude vždy výstup menší nebo stejný počet řádků než výchozí chování.
 
-### <a name="flatten-mapping"></a>Mapování sloučení
+### <a name="flatten-mapping"></a>Sloučení mapování
 
-Podobně jako u transformace vyberte možnost projekce nové struktury ze příchozích polí a denormalizovaného pole. Pokud je namapováno denormalizované pole, výstupní sloupec bude stejný datový typ jako pole. Pokud je pole unwind v poli složitých objektů, které obsahují podpole, mapování položky tohoto subarry bude mít za následek výstup pole.
+Podobně jako u vybrané transformace zvolte projekci nové struktury z příchozích polí a nenormalizovaného pole. Pokud je namapováno nenormalizované pole, bude výstupní sloupec mít stejný datový typ jako pole. Pokud unroll podle pole je pole složitých objektů, které obsahuje subpole, mapování položky tohoto subarry bude výstup pole.
 
-Pokud chcete ověřit výstup mapování, přečtěte si kartu Kontrola a náhled dat.
+Ověřte výstup mapování na kartě Kontrola a náhledu dat.
 
 ## <a name="examples"></a>Příklady
 
-Viz následující objekt JSON pro níže uvedené příklady transformace sloučení.
+Následující příklady zploštělé transformace naleznete na následujícím objektu JSON.
 
 ``` json
-[{
+{
   "name":"MSFT","location":"Redmond", "satellites": ["Bay Area", "Shanghai"],
   "goods": {
     "trade":true, "customers":["government", "distributer", "retail"],
     "orders":[
         {"orderId":1,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":2}]}},
         {"orderId":2,"orderTotal":323.34,"shipped":{"orderItems":[{"itemName":"Mice","itemQty":2},{"itemName":"Keyboard","itemQty":1}]}}
-    ]}},
+    ]}}
 {"name":"Company1","location":"Seattle", "satellites": ["New York"],
   "goods":{"trade":false, "customers":["store1", "store2"],
   "orders":[
       {"orderId":4,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":3}]}},
       {"orderId":5,"orderTotal":343.24,"shipped":{"orderItems":[{"itemName":"Chair","itemQty":4},{"itemName":"Lamp","itemQty":2}]}}
-    ]}},
+    ]}}
 {"name": "Company2", "location": "Bellevue",
-  "goods": {"trade": true, "customers":["Bank"], "orders": [{"orderId": 4, "orderTotal": 123.34}]}},
-{"name": "Company3", "location": "Kirkland"}]
+  "goods": {"trade": true, "customers":["Bank"], "orders": [{"orderId": 4, "orderTotal": 123.34}]}}
+{"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>Nekumulativní kořen s polem řetězců
+### <a name="no-unroll-root-with-string-array"></a>Žádný kořenový adresář s polem řetězců
 
-| Odvádět od | Odveďte kořen | Projekce |
+| Odvíjet podle | Zrušit kořenový adresář | Projekce |
 | --------- | ----------- | ---------- |
-| zboží. zákazníci | Žádná | jméno <br> Zákazník = zboží. Zákazník |
+| zboží.zákazníci | Žádný | jméno <br> odběratel = goods.customer |
 
 #### <a name="output"></a>Výstup
 
 ```
-{ 'MSFT', 'government'},
-{ 'MSFT', 'distributer'},
-{ 'MSFT', 'retail'},
-{ 'Company1', 'store'},
-{ 'Company1', 'store2'},
-{ 'Company2', 'Bank'},
+{ 'MSFT', 'government'}
+{ 'MSFT', 'distributer'}
+{ 'MSFT', 'retail'}
+{ 'Company1', 'store'}
+{ 'Company1', 'store2'}
+{ 'Company2', 'Bank'}
 { 'Company3', null}
 ```
 
-### <a name="no-unroll-root-with-complex-array"></a>Nekumulativní kořen se složitým polem
+### <a name="no-unroll-root-with-complex-array"></a>Žádný kořenový adresář se složitým polem
 
-| Odvádět od | Odveďte kořen | Projekce |
+| Odvíjet podle | Zrušit kořenový adresář | Projekce |
 | --------- | ----------- | ---------- |
-| zboží. Orders. expedovaných. orderItems | Žádná | jméno <br> ČísloObjednávky = zboží. Orders. ČísloObjednávky <br> Item = zboží. Orders. expedováno. orderItems. Item <br> itemQty = zboží. Orders. dodána. orderItems. itemQty <br> umístění = umístění |
+| goods.orders.shipped.orderItems | Žádný | jméno <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> umístění = umístění |
 
 #### <a name="output"></a>Výstup
 
 ```
-{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
-{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
-{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
-{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
-{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
-{ 'Company1', 4, 'Charger', 3, 'Seattle'},
-{ 'Company1', 5, 'Chair', 4, 'Seattle'},
-{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
-{ 'Company2', 4, null, null, 'Bellevue'},
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'}
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'}
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'}
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'}
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'}
+{ 'Company1', 4, 'Charger', 3, 'Seattle'}
+{ 'Company1', 5, 'Chair', 4, 'Seattle'}
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'}
+{ 'Company2', 4, null, null, 'Bellevue'}
 { 'Company3', null, null, null, 'Kirkland'}
 ```
 
-### <a name="same-root-as-unroll-array"></a>Stejný kořen jako nekumulativní pole
+### <a name="same-root-as-unroll-array"></a>Stejný kořen jako rozbalit pole
 
-| Odvádět od | Odveďte kořen | Projekce |
+| Odvíjet podle | Zrušit kořenový adresář | Projekce |
 | --------- | ----------- | ---------- |
-| zboží. objednávky | zboží. objednávky | jméno <br> Items. Orders. expedovaných. orderItems. Item <br> zboží. zákazníci <br> location |
+| zboží.objednávky | zboží.objednávky | jméno <br> goods.orders.shipped.orderItems.itemName <br> zboží.zákazníci <br> location |
 
 #### <a name="output"></a>Výstup
 
 ```
-{ 'MSFT', ['Laptop','Charger'], ['government','distributer','retail'], 'Redmond'},
-{ 'MSFT', ['Mice', 'Keyboard'], ['government','distributer','retail'], 'Redmond'},
-{ 'Company1', ['Laptop','Charger'], ['store', 'store2'], 'Seattle'},
-{ 'Company1', ['Chair', 'Lamp'], ['store', 'store2'], 'Seattle'},
+{ 'MSFT', ['Laptop','Charger'], ['government','distributer','retail'], 'Redmond'}
+{ 'MSFT', ['Mice', 'Keyboard'], ['government','distributer','retail'], 'Redmond'}
+{ 'Company1', ['Laptop','Charger'], ['store', 'store2'], 'Seattle'}
+{ 'Company1', ['Chair', 'Lamp'], ['store', 'store2'], 'Seattle'}
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>Rozveďte kořen se složitým polem.
+### <a name="unroll-root-with-complex-array"></a>Odvíjet kořen se složitým polem
 
-| Odvádět od | Odveďte kořen | Projekce |
+| Odvíjet podle | Zrušit kořenový adresář | Projekce |
 | --------- | ----------- | ---------- |
-| zboží. Orders. expedovaných. orderItem | zboží. objednávky |jméno <br> ČísloObjednávky = zboží. Orders. ČísloObjednávky <br> Item = zboží. Orders. expedováno. orderItems. Item <br> itemQty = zboží. Orders. dodána. orderItems. itemQty <br> umístění = umístění |
+| goods.orders.shipped.orderItem | zboží.objednávky |jméno <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> umístění = umístění |
 
 #### <a name="output"></a>Výstup
 
 ```
-{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
-{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
-{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
-{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
-{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
-{ 'Company1', 4, 'Charger', 3, 'Seattle'},
-{ 'Company1', 5, 'Chair', 4, 'Seattle'},
-{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'}
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'}
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'}
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'}
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'}
+{ 'Company1', 4, 'Charger', 3, 'Seattle'}
+{ 'Company1', 5, 'Chair', 4, 'Seattle'}
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'}
 { 'Company2', 4, null, null, 'Bellevue'}
 ```
 
@@ -169,5 +169,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>Další kroky
 
-* K pivotování řádků na sloupce použijte [transformaci pivotu](data-flow-pivot.md) .
-* Použijte [transformaci Unpivot](data-flow-unpivot.md) k vytvoření kontingenčních sloupců na řádcích.
+* Transformace [pivotu](data-flow-pivot.md) slouží k přemění řádků ke sloupcům.
+* Transformace [Unpivot](data-flow-unpivot.md) slouží k přeměně sloupců na řádky.

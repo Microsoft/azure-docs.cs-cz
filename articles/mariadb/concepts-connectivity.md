@@ -1,48 +1,48 @@
 ---
-title: Chyby přechodného připojení – Azure Database for MariaDB
-description: Naučte se řešit chyby přechodného připojení pro Azure Database for MariaDB.
-keywords: připojení MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
+title: Přechodné chyby připojení – Azure Database for MariaDB
+description: Zjistěte, jak zpracovat přechodné chyby připojení pro Azure Database pro MariaDB.
+keywords: připojení mysql,připojovací řetězec,problémy s připojením,přechodná chyba,chyba připojení
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: f061f9cc6d3f03acf01995e2632b229aaea5ab8f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 26a6ac4412f1dff450cc087382dc9b0fce443f0b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772858"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532191"
 ---
-# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Manipulace s přechodnými chybami připojení pro Azure Database for MariaDB
+# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Zpracování přechodných chyb připojení pro Azure Database pro MariaDB
 
-Tento článek popisuje, jak zpracovat přechodné chyby při připojování k Azure Database for MariaDB.
+Tento článek popisuje, jak zpracovat přechodné chyby připojení k Azure Database pro MariaDB.
 
 ## <a name="transient-errors"></a>Přechodné chyby
 
-Přechodná chyba, označovaná také jako přechodná chyba, je chyba, která se vyřeší sám. Nejčastěji tyto chyby se manifestují jako připojení k databázovému serveru, který se vynechává. Nová připojení k serveru se taky nedají otevřít. K přechodným chybám může dojít například v případě, že dojde k selhání hardwaru nebo sítě. Dalším důvodem může být nová verze služby PaaS, která se zavádí. Většina těchto událostí je systémem automaticky snížena za méně než 60 sekund. Osvědčeným postupem pro navrhování a vývoj aplikací v cloudu je očekávat přechodné chyby. Předpokládejte, že se k nim může kdykoli docházet v každé komponentě a mít k dispozici odpovídající logiku pro zpracování těchto situací.
+Přechodná chyba, označovaná také jako přechodná chyba, je chyba, která se vyřeší sama. Většina obvykle tyto chyby manifest jako připojení k databázovému serveru je vynechána. Také nelze otevřít nová připojení k serveru. K přechodným chybám může dojít například při selhání hardwaru nebo sítě. Dalším důvodem může být nová verze služby PaaS, která je právě zaváděna. Většina těchto událostí jsou automaticky zmírněny systémem za méně než 60 sekund. Osvědčeným postupem pro navrhování a vývoj aplikací v cloudu je očekávat přechodné chyby. Předpokládejme, že může dojít v libovolné součásti kdykoli a mít příslušnou logiku na místě pro zpracování těchto situací.
 
 ## <a name="handling-transient-errors"></a>Zpracování přechodných chyb
 
-Přechodné chyby by se měly zpracovat pomocí logiky opakování. Situace, které je třeba vzít v úvahu:
+Přechodné chyby by měly být zpracovány pomocí logiky opakování. Situace, které je třeba vzít v úvahu:
 
 * Při pokusu o otevření připojení dojde k chybě.
-* Nečinné připojení je na straně serveru vyřazeno. Když se pokusíte o vydání příkazu, nejde ho spustit.
-* Aktivní připojení, které aktuálně provádí příkaz, je vyřazeno.
+* Na straně serveru je přerušeno nečinné připojení. Při pokusu o vydání příkazu nelze provést
+* Aktivní připojení, které právě provádí příkaz, je vynecháno.
 
-První a druhý případ jsou poměrně přímo předávány na popisovač. Pokuste se znovu otevřít připojení. Po úspěšném provedení přechodné chyby systém sníží. Azure Database for MariaDB můžete použít znovu. Doporučujeme, abyste počkali před opakováním pokusu o připojení. Pokud nedojde k selhání počátečních pokusů, je záložní. Tímto způsobem systém může použít všechny prostředky, které jsou k dispozici k překonání chybové situace. Dobrý vzor, který je potřeba provést:
+První a druhý případ jsou poměrně přímočaré zvládnout. Zkuste připojení otevřít znovu. Když uspějete, přechodná chyba byla zmírněna systémem. Můžete znovu použít databázi Azure pro MariaDB. Doporučujeme mít čeká před opakováním připojení. Pokud se počáteční opakování nezdaří, ustoupíte. Tímto způsobem může systém použít všechny prostředky, které jsou k dispozici k překonání chybové situace. Dobrý vzor následovat, je:
 
-* Počkejte 5 sekund před prvním opakováním.
-* Pro každou z následujících možností zkuste zvětšit počkat exponenciálně až 60 sekund.
-* Nastavte maximální počet opakovaných pokusů, na kterých by vaše aplikace pomohly operaci považovat za neúspěšnou.
+* Před prvním opakováním počkejte 5 sekund.
+* Pro každý následující opakování zvýšit čekání exponenciálně, až 60 sekund.
+* Nastavte maximální počet opakování, ve kterém okamžiku aplikace považuje operaci za neúspěšnou.
 
-V případě, že připojení k aktivní transakci dojde k chybě, je obtížné správně zpracovat obnovení. Existují dva případy: Pokud byla transakce určena jen pro čtení, je bezpečné znovu otevřít připojení a opakovat transakci. Pokud je však transakce také zapsána do databáze, je nutné určit, zda byla transakce vrácena zpět nebo zda byla úspěšná, než došlo k přechodné chybě. V takovém případě je možné, že jste neobdrželi potvrzení potvrzení z databázového serveru.
+Pokud se nezdaří připojení s aktivní transakcí, je obtížnější správně zpracovat obnovení. Existují dva případy: Pokud transakce byla jen pro čtení v přírodě, je bezpečné znovu otevřít připojení a opakovat transakci. Pokud však transakce byla také zápis do databáze, je nutné určit, pokud transakce byla vrácena zpět, nebo pokud byla úspěšná před přechodnou chybu došlo. V takovém případě jste potvrzení potvrzení neobdrželi z databázového serveru.
 
-Jedním ze způsobů, jak to provést, je vygenerovat v klientovi jedinečné ID, které se používá pro všechny opakované pokusy. Toto jedinečné ID předáte jako součást transakce serveru a uložíte ji do sloupce s jedinečným omezením. Tímto způsobem lze transakci bezpečně opakovat. V případě, že předchozí transakce byla vrácena zpět a jedinečné ID generované klientem v systému ještě neexistuje, bude úspěšné. V případě, že se jedinečné ID dříve uložilo z důvodu úspěšného dokončení předchozí transakce, selže oznámení, že dojde k porušení duplicitního klíče.
+Jedním ze způsobů, jak toho dosáhnout, je generovat jedinečné ID na straně klienta, který se používá pro všechny opakování. Toto jedinečné ID předáte jako součást transakce serveru a uložíte ho do sloupce s jedinečným omezením. Tímto způsobem můžete bezpečně opakovat transakci. Bude úspěšná, pokud předchozí transakce byla vrácena zpět a klient vygeneroval jedinečné ID ještě neexistuje v systému. Selhat označující duplicitní narušení klíče, pokud bylo jedinečné ID dříve uloženo, protože předchozí transakce byla úspěšně dokončena.
 
-Když váš program komunikuje s Azure Database for MariaDB prostřednictvím middlewaru třetí strany, požádejte dodavatele, zda middleware obsahuje logiku opakování pro přechodné chyby.
+Když váš program komunikuje s Azure Database pro MariaDB prostřednictvím middleware jiného výrobce, zeptejte se dodavatele, zda middleware obsahuje logiku opakování pro přechodné chyby.
 
-Nezapomeňte otestovat logiku opakování. Například zkuste spustit kód při vertikálním navýšení nebo snížení kapacity výpočetních prostředků Azure Database for MariaDB serveru. Vaše aplikace by měla zpracovávat krátké výpadky zjištěné během této operace bez jakýchkoli problémů.
+Ujistěte se, že test logiku opakování. Například zkuste spustit kód při škálování nahoru nebo dolů výpočetní prostředky z vás Azure Database pro MariaDB server. Aplikace by měla zpracovat krátké prostoje, ke kterým došlo během této operace bez problémů.
 
 ## <a name="next-steps"></a>Další kroky
 

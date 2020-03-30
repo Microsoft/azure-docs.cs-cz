@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – vytvoření virtuálního počítače s Windows pomocí Azure CLI
-description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit virtuální počítač s Windows.
+title: Úvodní příručka – vytvoření virtuálního počítače s Windows pomocí azure cli
+description: V tomto rychlém startu se dozvíte, jak pomocí azure cli vytvořit virtuální počítač s Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,39 +15,39 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fd74b3fad7f0b26eff2fdedddae171a1b7297dcd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 32e7b67cb3dda715127204d77c4988d41ed3f9d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898901"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240288"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Windows pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí Azure CLI nasadit do Azure virtuální počítač s Windows Serverem 2016. Pak se k virtuálnímu počítači připojíte přes protokol RDP a nainstalujete na něj webový server služby IIS, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/bash](https://shell.azure.com/bash)kartě prohlížeče tak, že přejdete na . Vyberte **Kopírovat,** chcete-li zkopírovat bloky kódu, vložte je do prostředí Cloud Shell a stisknutím **klávesy Enter** jej spusťte.
 
-## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus:*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
+## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač *myVM*. V tomto příkladu se pro uživatelské jméno správce používá *azureuser* . 
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální hod s názvem *myVM*. Tento příklad používá *azureuser* pro uživatelské jméno pro správu. 
 
-Budete muset dodat heslo, které splňuje [požadavky na heslo pro virtuální počítače Azure](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-). Pomocí níže uvedeného příkladu se zobrazí výzva k zadání hesla na příkazovém řádku. Můžete také přidat parametr `--admin-password` s hodnotou pro heslo. Uživatelské jméno a heslo se použijí později, až se připojíte k virtuálnímu počítači.
+Budete muset zadat heslo, které splňuje [požadavky na heslo pro virtuální počítače Azure](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+). Pomocí následujícího příkladu budete vyzváni k zadání hesla na příkazovém řádku. Můžete také přidat `--admin-password` parametr s hodnotou pro vaše heslo. Uživatelské jméno a heslo se použije později, když se připojíte k virtuálnímu počítače.
 
 ```azurecli-interactive
 az vm create \
@@ -59,7 +59,7 @@ az vm create \
 
 Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut. Následující příklad ukazuje, že operace vytvoření virtuálního počítače byla úspěšná.
 
-```azurecli-interactive
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -82,7 +82,7 @@ Ve výchozím nastavení jsou při vytváření virtuálního počítače s Wind
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="connect-to-virtual-machine"></a>Připojit k virtuálnímu počítači
+## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 
 Pomocí následujícího příkazu vytvořte ze svého místního počítače relaci vzdálené plochy. Nahraďte IP adresu veřejnou IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytvoření virtuálního počítače:
 

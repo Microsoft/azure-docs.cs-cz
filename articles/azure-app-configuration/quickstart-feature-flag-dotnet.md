@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start pro přidání příznaků funkcí do aplikací .NET Framework | Microsoft Docs | Microsoft Docs
-description: Rychlý Start pro přidání příznaků funkcí do .NET Framework aplikací a jejich správu v konfiguraci aplikací Azure
+title: Úvodní příručka pro přidávání příznaků funkcí do aplikací rozhraní .NET Framework | Dokumenty microsoftu | Dokumenty společnosti Microsoft
+description: Rychlý start pro přidávání příznaků funkcí do aplikací rozhraní .NET Framework a jejich správu v konfiguraci aplikací Azure
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -15,46 +15,46 @@ ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
 ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77619316"
 ---
-# <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace .NET Framework
+# <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Úvodní příručka: Přidání příznaků funkcí do aplikace rozhraní .NET Framework
 
-V tomto rychlém startu zařadíte do aplikace .NET Framework aplikaci Azure App Configuration a vytvoříte ucelenou implementaci správy funkcí. Službu konfigurace aplikací můžete použít k centrálnímu ukládání všech příznaků funkcí a řízení jejich stavů. 
+V tomto rychlém startu začlenit Azure App Configuration do aplikace .NET Framework vytvořit komplexní implementaci správy funkcí. Službu Konfigurace aplikace můžete použít k centrálnímu ukládání všech příznaků funkcí a řízení jejich stavů. 
 
-Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET.
+Knihovny správy funkcí .NET rozšiřují architekturu o komplexní podporu příznaku funkce. Tyto knihovny jsou postaveny na konfiguračním systému .NET. Hladce se integrují s konfigurací aplikací prostřednictvím zprostředkovatele konfigurace rozhraní .NET.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4,8](https://dotnet.microsoft.com/download)
+- [Rozhraní .NET Framework 4.8](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
+## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikací
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce funkcí** >  **+ Přidat** a přidejte příznak funkce s názvem `Beta`.
+6. Vyberte **Správce** > funkcí **+Přidat,** `Beta`chcete-li přidat příznak prvku s názvem .
 
     > [!div class="mx-imgBorder"]
-    > ![povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
+    > ![Povolit příznak funkce s názvem Beta](media/add-beta-feature-flag.png)
 
-    Pro nyní nechejte `label` Nedefinováno.
+    Prozatím `label` nenechte být nedefinovaní.
 
-## <a name="create-a-net-console-app"></a>Vytvoření konzolové aplikace .NET
+## <a name="create-a-net-console-app"></a>Vytvoření aplikace konzoly ROZHRANÍ .NET
 
-1. Spusťte Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
+1. Spusťte Visual Studio a vyberte **Soubor** > **nový** > **projekt**.
 
-1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)** . Klikněte na **Další**.
+1. V **části Vytvořit nový projekt**vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework).** Klikněte na **Další**.
 
-1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4,8** nebo vyšší. Klikněte na možnost **Vytvořit**.
+1. V **okně Konfigurace nového projektu**zadejte název projektu. V části **Framework**vyberte **rozhraní .NET Framework 4.8** nebo vyšší. Klikněte na **Vytvořit**.
 
-## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
+## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikací
 
-1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu následující balíčky NuGet. Pokud je nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
+1. Klikněte pravým tlačítkem myši na projekt a vyberte **spravovat balíčky NuGet**. Na **kartě Procházet** vyhledejte a přidejte do projektu následující balíčky NuGet. Pokud je nemůžete najít, zaškrtněte políčko **Zahrnout předběžnou verzi.**
 
     ```
     Microsoft.Extensions.DependencyInjection
@@ -62,7 +62,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
     Microsoft.FeatureManagement
     ```
 
-1. Otevřete *program.cs* a přidejte následující příkazy:
+1. Otevřete *Program.cs* a přidejte následující příkazy:
 
     ```csharp
     using Microsoft.Extensions.DependencyInjection;
@@ -71,7 +71,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
     using Microsoft.FeatureManagement;
     ```
 
-1. Aktualizujte metodu `Main` pro připojení k konfiguraci aplikace, zadáním možnosti `UseFeatureFlags`, aby se načetly příznaky funkcí. Pokud je povolen příznak funkce `Beta`, zobrazí se zpráva.
+1. Aktualizujte `Main` metodu pro připojení ke `UseFeatureFlags` konfiguraci aplikace a zadejte možnost tak, aby byly načteny příznaky funkce. Potom zobrazte `Beta` zprávu, pokud je povolen příznak funkce.
 
     ```csharp
         public static async Task Main(string[] args)
@@ -101,19 +101,19 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
         }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
+## <a name="build-and-run-the-app-locally"></a>Sestavení a spuštění aplikace místně
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString** na připojovací řetězec úložiště konfigurace vaší aplikace. Pokud použijete příkazový řádek Windows, spusťte následující příkaz:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString** na připojovací řetězec úložiště konfigurace aplikace. Pokud používáte příkazový řádek systému Windows, spusťte následující příkaz:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Pokud používáte Windows PowerShell, spusťte následující příkaz:
+    Pokud používáte prostředí Windows PowerShell, spusťte následující příkaz:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-1. Pokud chcete, aby se změna projevila, restartujte Visual Studio. 
+1. Restartujte visual studio, aby se změna projevila. 
 
-1. Stisknutím kombinace kláves CTRL + F5 Sestavte a spusťte konzolovou aplikaci.
+1. Stisknutím kláves Ctrl + F5 vytvořte a spusťte konzolovou aplikaci.
 
     ![Aplikace s povoleným příznakem funkce](./media/quickstarts/dotnet-app-feature-flag.png)
 
@@ -123,7 +123,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste v konfiguraci aplikace vytvořili příznak funkce a použili ho v aplikaci .NET Framework konzolové aplikace. Pokud se chcete dozvědět, jak dynamicky aktualizovat příznaky funkcí a jiné hodnoty konfigurace bez restartování aplikace, přejděte k dalšímu kurzu.
+V tomto rychlém startu jste vytvořili příznak funkce v konfiguraci aplikace a použili ho s konzolovou aplikací rozhraní .NET Framework. Chcete-li se dozvědět, jak dynamicky aktualizovat příznaky funkcí a další hodnoty konfigurace bez restartování aplikace, pokračujte dalším kurzem.
 
 > [!div class="nextstepaction"]
 > [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-dotnet.md)

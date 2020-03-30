@@ -1,51 +1,51 @@
 ---
-title: Monitorování výkonu webových aplikací Java – Azure Application Insights
-description: Rozšířené monitorování výkonu a využití vašeho webu Java pomocí Application Insights.
+title: Monitorování výkonu webových aplikací v Jazyce – Azure Application Insights
+description: Rozšířené sledování výkonu a využití vašich webových stránek java s Application Insights.
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b29618179d22eac97a07bf41906465aba1fd7929
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657023"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycených výjimek a metod doby provádění ve webových aplikacích Java
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Sledování závislostí, zachycených výjimek a časů spuštění metod ve webových aplikacích Java
 
 
-Pokud jste si nastavili [svou webovou aplikaci v jazyce Java pomocí Application Insights][java], můžete použít agenta Java k získání hlubších přehledů, aniž byste museli měnit kód:
+Pokud jste [svou webovou aplikaci Java instrumentovali pomocí Application Insights][java], můžete pomocí Java Agenta získat hlubší přehledy bez jakýchkoli změn kódu:
 
-* **Závislosti:** Data o voláních, která vaše aplikace vytváří na jiné komponenty, včetně:
-  * Budou zachycena **odchozí volání http** prostřednictvím Apache HttpClient, OkHttp a `java.net.HttpURLConnection`.
-  * **Redis volání** prostřednictvím klienta Jedis.
-  * **Dotazy JDBC** – pro MySQL a PostgreSQL, pokud volání trvá déle než 10 sekund, agent nahlásí plán dotazu.
+* **Závislosti:** Data o volání, která vaše aplikace provádí do jiných součástí, včetně:
+  * **Odchozí HTTP volání** uskutečněná přes Apache HttpClient, OkHttp a `java.net.HttpURLConnection` jsou zachycena.
+  * **Redisovy hovory** přes klienta Jediů jsou zachyceny.
+  * **JDBC dotazy** - Pro MySQL a PostgreSQL, pokud volání trvá déle než 10 sekund, agent hlásí plán dotazu.
 
-* **Protokolování aplikace:** Zachycení a korelace protokolů aplikací pomocí požadavků HTTP a další telemetrie
+* **Protokolování aplikací:** Zachycování a korelace protokolů aplikací s požadavky HTTP a další telemetrií
   * **Log4j 1,2**
-  * **Log4j2**
-  * **Logback**
+  * **Protokol4j2**
+  * **Přihlašování**
 
-* **Lepší pojmenovávání operací:** (používá se pro agregaci požadavků na portálu)
-  * Na **jaře** `@RequestMapping`.
-  * **Jax-RS** – na `@Path`. 
+* **Lepší pojmenování operací:** (používá se pro agregaci požadavků na portálu)
+  * **Jaro** - `@RequestMapping`na základě .
+  * **JAX-RS** - `@Path`na základě . 
 
-Chcete-li použít agenta Java, nainstalujte jej na server. Webové aplikace musí být instrumentované pomocí [Application Insights Java SDK][java]. 
+Chcete-li použít agenta Java, nainstalujte jej na server. Vaše webové aplikace musí být instrumentovány sadou [Application Insights Java SDK][java]. 
 
-## <a name="install-the-application-insights-agent-for-java"></a>Instalace agenta Application Insights pro jazyk Java
+## <a name="install-the-application-insights-agent-for-java"></a>Instalace agenta Application Insights pro Jazyk Java
 1. Na počítači s vaším serverem Java si [stáhněte agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Nezapomeňte si stáhnout stejnou verzi agenta Java, jako je verze základních a webových balíčků sady Application Insights Java SDK.
 2. Upravte spouštěcí skript aplikačního serveru a přidejte následující argument JVM:
    
     `-javaagent:<full path to the agent JAR file>`
    
-    Například v Tomcat na počítači se systémem Linux:
+    Například v Tomcatu na počítači s Linuxem:
    
     `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
 3. Restartujte aplikační server.
 
 ## <a name="configure-the-agent"></a>Konfigurace agenta
-Vytvořte soubor s názvem `AI-Agent.xml` a umístěte ho do stejné složky jako soubor JAR agenta.
+Vytvořte soubor `AI-Agent.xml` s názvem a umístěte jej do stejné složky jako soubor JAR agenta.
 
-Nastavte obsah souboru XML. Úpravou následujícího příkladu zahrnete nebo vynecháte požadované funkce.
+Nastavte obsah souboru XML. Upravte následující příklad tak, aby zahrnoval nebo vynechel požadované funkce.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -75,30 +75,30 @@ Nastavte obsah souboru XML. Úpravou následujícího příkladu zahrnete nebo v
 </ApplicationInsightsAgent>
 ```
 
-## <a name="additional-config-spring-boot"></a>Dodatečná konfigurace (jarní spuštění)
+## <a name="additional-config-spring-boot"></a>Další konfigurace (jarní spuštění)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
-V případě služby Azure App Services postupujte následovně:
+Pro Azure App Services postupujte takto:
 
 * Klikněte na Nastavení > Nastavení aplikace.
 * V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty:
 
-Klíč: `JAVA_OPTS` hodnota: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Klíč: `JAVA_OPTS` Hodnota:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-Nejnovější verzi agenta Java najdete [tady](https://github.com/Microsoft/ApplicationInsights-Java/releases
+Nejnovější verzi java agenta naleznete v [vydáních zde](https://github.com/Microsoft/ApplicationInsights-Java/releases
 ). 
 
-Agent musí být zabalen jako prostředek v projektu tak, že končí na D:/Home/site/wwwroot/Directory. Pokud chcete ověřit, že je váš agent ve správném adresáři App Service, přecházíte na **vývojové nástroje** > **Pokročilé nástroje** > **ladit konzolu** a prozkoumáte obsah adresáře webu.    
+Agent musí být zabalen jako zdroj v projektu tak, aby skončil v adresáři D:/home/site/wwwroot/. Můžete potvrdit, že váš agent je ve správném adresáři služby App Service tím, že přejdete na **vývojové nástroje** > **Rozšířené nástroje** > **ladicí konzoly** a zkoumání obsahu adresáře webu.    
 
-* Uložte nastavení a restartujte aplikaci. (Tyto kroky platí jenom pro App Services spuštěné v systému Windows.)
+* Kliknutím na Uložit uložte nastavení a kliknutím na Restartovat restartujte aplikaci. (Tyto kroky platí jenom pro služby App Services spuštěné ve Windows.)
 
 > [!NOTE]
-> AI-Agent. XML a soubor JAR agenta by měly být ve stejné složce. Jsou často umístěny společně do složky `/resources` projektu.  
+> AI-Agent.xml a soubor agent jar by měly být ve stejné složce. Jsou často umístěny `/resources` společně ve složce projektu.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>Povolit distribuované trasování W3C
 
-Do souboru AI-Agent. xml přidejte následující:
+Do souboru AI-Agent.xml přidejte následující:
 
 ```xml
 <Instrumentation>
@@ -109,22 +109,22 @@ Do souboru AI-Agent. xml přidejte následující:
 ```
 
 > [!NOTE]
-> Režim zpětné kompatibility je ve výchozím nastavení povolený a parametr enableW3CBackCompat je nepovinný a měl by se používat jenom v případě, že ho chcete vypnout. 
+> Režim zpětné kompatibility je ve výchozím nastavení povolen a parametr enableW3CBackCompat je volitelný a měl by být používán pouze v případě, že jej chcete vypnout. 
 
-V ideálním případě se jedná o případ, kdy byly všechny služby aktualizovány na novější verzi sady SDK podporující protokol W3C. Důrazně doporučujeme přesunout na novější verzi sad SDK s podporou konsorcia W3C, jakmile to bude možné.
+V ideálním případě by tomu tak bylo v případě, kdy byly všechny vaše služby aktualizovány na novější verzi sad SDK podporujících protokol W3C. Důrazně doporučujeme přejít na novější verzi sad SDK s podporou W3C co nejdříve.
 
-Ujistěte se, že **konfigurace [příchozího](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) i odchozího (agentu)** jsou přesně stejné.
+Ujistěte se, že ** [příchozí](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) i odchozí (agent) konfigurace** jsou přesně stejné.
 
 ## <a name="view-the-data"></a>Zobrazení dat
-V prostředku Application Insights se na [dlaždici výkon][metrics]zobrazí agregovaná doba spuštění pro vzdálenou závislost a metodu.
+V prostředku Application Insights se agregované vzdálené závislosti a doby spuštění metody zobrazí [pod dlaždicí Výkon][metrics].
 
-Chcete-li vyhledat jednotlivé instance sestav závislostí, výjimek a metod, otevřete [hledání][diagnostic].
+Chcete-li vyhledat jednotlivé instance sestav závislostí, výjimek a metod, otevřete [možnost Hledat][diagnostic].
 
-[Diagnostikování problémů se závislostmi – Další informace](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)
+[Diagnostika problémů se závislostmi – další informace](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
-## <a name="questions-problems"></a>Otázky? Problémy?
+## <a name="questions-problems"></a>Máte dotazy? Problémy?
 * Žádná data? [Nastavení výjimek brány firewall](../../azure-monitor/app/ip-addresses.md)
-* [Řešení potíží s Javou](java-troubleshoot.md)
+* [Řešení potíží Java](java-troubleshoot.md)
 
 <!--Link references-->
 

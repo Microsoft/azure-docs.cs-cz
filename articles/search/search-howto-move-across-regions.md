@@ -1,53 +1,56 @@
 ---
-title: Postup přesunutí prostředku služby napříč oblastmi
+title: Jak přesunout prostředek služby napříč oblastmi
 titleSuffix: Azure Cognitive Search
-description: Tento článek vám ukáže, jak přesunout prostředky Azure Kognitivní hledání z jedné oblasti do jiné v cloudu Azure.
+description: Tento článek vám ukáže, jak přesunout prostředky Azure Cognitive Search z jedné oblasti do druhé v cloudu Azure.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/06/2020
-ms.openlocfilehash: c31a81d2836e9f8c00dec3c0c2eb3a43800a5322
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.date: 03/24/2020
+ms.openlocfilehash: 00f16d11f7a9cd276772eda5e91d6e117ada8c9f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136257"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246297"
 ---
-# <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Přesuňte službu Azure Kognitivní hledání do jiné oblasti Azure.
+# <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Přesunutí služby Azure Cognitive Search do jiné oblasti Azure
 
-Zákazníci se někdy dotazují o přesunu existující služby vyhledávání do jiné oblasti. V současné době nejsou k dispozici žádné předdefinované mechanismy nebo nástroje, které vám s touto úlohou pomohly. Zůstane v tomto článku ruční postup, který je popsaný níže.
+V některých případě se zákazníci ptají na přesunutí vyhledávací služby do jiné oblasti. V současné době neexistuje žádný vestavěný mechanismus nebo nástroje, které by vám pomohly s tímto úkolem, ale tento článek vám může pomoci pochopit ruční kroky pro dosažení stejného výsledku.
 
 > [!NOTE]
-> V Azure Portal všechny služby obsahují příkaz **Exportovat šablonu** . V případě Azure Kognitivní hledání tento příkaz vytvoří základní definici služby (název, umístění, úroveň, repliku a počet oddílů), ale nerozpozná obsah vaší služby, ani nepřenáší klíče, role nebo protokoly. I když tento příkaz existuje, nedoporučujeme ho používat pro přesun vyhledávací služby.
+> Na webu Azure Portal mají všechny služby příkaz **Exportovat šablonu.** V případě Azure Cognitive Search tento příkaz vytváří základní definici služby (název, umístění, vrstva, replika a počet oddílů), ale nerozpozná obsah vaší služby, ani nepřenáší klíče, role nebo protokoly. Přestože příkaz existuje, nedoporučujeme jej používat pro přesunutí vyhledávací služby.
 
-## <a name="steps-for-moving-a-service"></a>Postup přesunutí služby
+## <a name="guidance-for-moving-a-service"></a>Pokyny pro přesun služby
 
-Pokud potřebujete přesunout vyhledávací službu do jiné oblasti, váš přístup by měl vypadat podobně jako v následujících krocích:
+1. Identifikujte závislosti a související služby, abyste pochopili úplný dopad přemístění služby v případě, že potřebujete přesunout víc než jen Azure Cognitive Search.
 
-1. Identifikujte související služby, abyste pochopili úplný dopad přemístění služby. Můžete použít Azure Storage pro protokolování, znalostní bázi Knowledge Store nebo jako externí zdroj dat. Můžete použít Cognitive Services pro obohacení AI. Přístup ke službám v jiných oblastech je běžný, ale obsahuje další poplatky za šířku pásma. Pokud používáte rozšíření AI, musí být Cognitive Services a Azure Kognitivní hledání ve stejné oblasti.
+   Azure Storage se používá pro protokolování, vytváření úložiště znalostí a je běžně používaný externí zdroj dat pro obohacení a indexování AI. Cognitive Services je závislost v obohacení AI. Kognitivní služby a vyhledávací služba musí být ve stejné oblasti, pokud používáte obohacení AI.
 
-1. Inventarizace stávající služby pro úplný seznam objektů ve službě. Pokud jste povolili protokolování, vytvořte a archivujte všechny sestavy, které můžete potřebovat pro historický záznam.
+1. Vytvořte soupis všech objektů ve službě, abyste věděli, co přesunout: indexy, mapy synonym, indexery, zdroje dat, dovednosti. Pokud jste povolili protokolování, vytvořte a archivujte všechny sestavy, které budete potřebovat pro historický záznam.
 
-1. Zkontrolujte ceny a dostupnost v nové oblasti, abyste zajistili dostupnost služby Azure Kognitivní hledání a všech souvisejících služeb, které by mohly být vhodné vytvořit ve stejné oblasti. Podívejte se na paritu funkcí. Některé funkce ve verzi Preview mají omezenou dostupnost.
+1. Zkontrolujte ceny a dostupnost v nové oblasti, abyste zajistili dostupnost Azure Cognitive Search a všech souvisejících služeb v nové oblasti. Většina funkcí je k dispozici ve všech oblastech, ale některé funkce náhledu mají omezenou dostupnost.
 
-1. Vytvořte službu v nové oblasti a znovu publikujte ze zdrojového kódu všechny existující indexy, indexery, zdroje dat, dovednosti, znalostní obchody a mapy synonym. Názvy služeb musí být jedinečné, takže nemůžete znovu použít stávající název.
+1. Vytvořte službu v nové oblasti a znovu publikovat ze zdrojového kódu všechny existující indexy, synonyma mapy, indexery, zdroje dat a dovednosti. Nezapomeňte, že názvy služeb musí být jedinečné, takže existující název nelze znovu použít. Zkontrolujte každou sadu dovedností a zjistěte, zda jsou připojení ke službám Cognitive Services stále platná z hlediska požadavku na stejnou oblast. Pokud se také vytvoří úložiště znalostí, zkontrolujte připojovací řetězce pro Azure Storage, pokud používáte jinou službu.
 
-1. Znovu načtěte indexy a úložiště znalostí, pokud jsou k dispozici. Pomocí kódu aplikace buď zadáte data JSON do indexu, nebo znovu spusťte indexery pro vyžádání dokumentů z externích zdrojů. 
+1. Znovu načtěte indexy a úložiště znalostí, pokud je to možné. Budete buď použít kód aplikace k nabízení dat JSON do indexu, nebo znovu spusťte indexery pro vyžádat dokumenty z externích zdrojů. 
 
-1. Povolit protokolování a pokud je používáte, znovu vytvořit role zabezpečení.
+1. Povolte protokolování a pokud je používáte, znovu vytvořte role zabezpečení.
 
-1. Aktualizujte klientské aplikace a sady testů na použití nového názvu služby a klíčů rozhraní API a otestujte všechny aplikace.
+1. Aktualizujte klientské aplikace a testovací sady tak, aby používaly nový název služby a klíče rozhraní API, a otestujte všechny aplikace.
 
-1. Po úplném otestování a provozu nové služby odstraňte starou službu.
+1. Odstraňte starou službu, jakmile je nová služba plně testována a funkční.
 
 ## <a name="next-steps"></a>Další kroky
 
-+ [Zvolit vrstvu](search-sku-tier.md)
+Následující odkazy vám mohou pomoci najít další informace při dokončení výše uvedených kroků.
+
++ [Ceny a oblasti Azure cognitive search](https://azure.microsoft.com/pricing/details/search/)
++ [Volba úrovně](search-sku-tier.md)
 + [Vytvoření vyhledávací služby](search-create-service-portal.md)
-+ [Načíst dokumenty pro hledání](search-what-is-data-import.md)
++ [Načtení vyhledávacích dokumentů](search-what-is-data-import.md)
 + [Povolení protokolování](search-monitor-logs.md)
 
 
