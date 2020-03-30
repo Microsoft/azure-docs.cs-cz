@@ -1,7 +1,7 @@
 ---
-title: Použití Azure Video Indexer k přizpůsobení modelu značek
+title: Přizpůsobení modelu značek pomocí rozhraní API videoindexeru
 titleSuffix: Azure Media Services
-description: Tento článek ukazuje, jak použít Azure Video Indexer k přizpůsobení modelu značek.
+description: Přečtěte si, jak přizpůsobit model značky pomocí rozhraní API videoindexeru.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,36 +10,36 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 81ba4cc7be5f9361d21aaea2ba78d0fd6f0f8c95
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289913"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127993"
 ---
-# <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značek pomocí rozhraní Video Indexer API
+# <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značek pomocí rozhraní API videoindexeru
 
-Video Indexer podporuje rozpoznávání značek od mluvené řeči a vizuálního textu během indexování a přeindexování videa a zvukového obsahu. Funkce detekce značky identifikuje zmínky o produktech, službách a společnostech, které navrhla databáze značek Bingu. Například pokud se Microsoft zmiňuje v obrazovém nebo zvukovém obsahu nebo pokud se zobrazuje v vizuálním textu ve videu, Video Indexer ho detekuje jako značku v obsahu. Vlastní model značek umožňuje vyloučit z detekce některé značky a zahrnout značky, které by měly být součástí modelu, který nemusí být v databázi značek Bingu.
+Video Indexer podporuje detekci značky z řeči a vizuálního textu během indexování a reindexingu video a audio obsahu. Funkce detekce značek identifikuje zmínky o produktech, službách a společnostech navržených databází značek Bingu. Pokud je například společnost Microsoft zmíněna ve videonebo zvukovém obsahu nebo pokud se ve videu zobrazuje ve vizuálním textu, video indexer ji v obsahu rozpozná jako značku. Vlastní značky model umožňuje vyloučit určité značky z detekce a zahrnují značky, které by měly být součástí vašeho modelu, které nemusí být v databázi značek Bing.
 
-Podrobný přehled najdete v tématu [Přehled](customize-brands-model-overview.md).
+Podrobný přehled naleznete v tématu [Přehled](customize-brands-model-overview.md).
 
-Rozhraní Video Indexer API můžete použít k vytváření, používání a úpravám vlastních značek, které byly zjištěny ve videu, jak je popsáno v tomto tématu. Můžete také použít Video Indexer web, jak je popsáno v tématu [Přizpůsobení modelu značek pomocí webu video indexer](customize-brands-model-with-api.md).
+Pomocí api videoindexeru můžete vytvářet, používat a upravovat vlastní modely značek zjištěné ve videu, jak je popsáno v tomto tématu. Můžete také použít web Video Indexer, jak je popsáno v [přizpůsobit značky modelu pomocí webu Video Indexer](customize-brands-model-with-api.md).
 
 ## <a name="create-a-brand"></a>Vytvoření značky
 
-Rozhraní API pro [vytvoření značky](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) vytvoří novou vlastní značku a přidá ji do vlastního modelu značek pro zadaný účet. 
+Vytvoření rozhraní API [značky](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) vytvoří novou vlastní značku a přidá ji do vlastního modelu značek pro zadaný účet.
 
 > [!NOTE]
-> Nastavení **povoleno** (v těle) na hodnotu true vloží značku do seznamu *vložených* video indexer k detekci. Nastavením **Enabled** na false (NEPRAVDA) zůstane značka v seznamu *vyloučení* , takže ji video indexer nezjistí.
+> Nastavení `enabled` (v těle) na hodnotu true umístí značku do seznamu *Zahrnout* pro indexer videa, aby byla detekována. Nastavení `enabled` na hodnotu false umístí značku do seznamu *Vyloučit,* takže ji indexer videa nerozpozná.
 
-Některé další parametry, které lze nastavit v těle:
+Některé další parametry, které můžete nastavit v těle:
 
-* Hodnota **referenceUrl** může být libovolnými referenčními weby pro značku, jako je například odkaz na její stránku Wikipedii.
-* Hodnota **značky** je seznam značek pro značku. To se zobrazuje v poli *kategorie* značky na webu video indexer. Například značka "Azure" může být označená nebo Kategorizovaná jako "Cloud".
+* Hodnota `referenceUrl` může být jakékoliv referenční webové stránky pro značku, jako je odkaz na její stránku Wikipedie.
+* Hodnota `tags` je seznam značek pro značku. Tato značka se zobrazí v poli *Kategorie značky* na webu Video Indexer. Například značka "Azure" může být označena nebo kategorizována jako "Cloud".
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje informace o značce, kterou jste právě vytvořili, podle formátu níže uvedeného příkladu.
+Odpověď poskytuje informace o značce, kterou jste právě vytvořili podle formátu níže uvedeného příkladu.
 
 ```json
 {
@@ -61,19 +61,19 @@ Odpověď poskytuje informace o značce, kterou jste právě vytvořili, podle f
 
 ## <a name="delete-a-brand"></a>Odstranění značky
 
-Rozhraní API pro [odstranění značky](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) odstraní značku z vlastního modelu značek pro zadaný účet. Účet je zadaný v parametru **accountId** . Po úspěšném volání už nebude značka v seznamech *zahrnutí* nebo *vyloučení* značek.
+Odstranění rozhraní API [značky](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) odebere značku z modelu vlastní značky pro zadaný účet. Účet je určen `accountId` v parametru. Jakmile bude značka úspěšně vyzvána, nebude již uvedena v seznamech *Značek Zahrnout* nebo *Vyloučit.*
 
 ### <a name="response"></a>Odpověď
 
-Po úspěšném odstranění značky se nevrátí žádný obsah.
+Při úspěšném odstranění značky není vrácen žádný vrácený obsah.
 
-## <a name="get-a-specific-brand"></a>Získat konkrétní značku
+## <a name="get-a-specific-brand"></a>Získejte konkrétní značku
 
-Rozhraní API [získat značku](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) vám umožní vyhledat podrobnosti o značce v modelu vlastních značek pro zadaný účet pomocí ID značky.
+Rozhraní [API získání značky](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) umožňuje vyhledat podrobnosti o značce v modelu vlastníznačky pro zadaný účet pomocí ID značky.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje informace o značce, kterou jste hledali (pomocí ID značky), a to podle formátu níže uvedeného příkladu.
+Odpověď poskytuje informace o značce, kterou jste hledali (pomocí ID značky) podle formátu níže uvedeného příkladu.
 
 ```json
 {
@@ -94,15 +94,15 @@ Odpověď poskytuje informace o značce, kterou jste hledali (pomocí ID značky
 ```
 
 > [!NOTE]
-> možnost nastavená na **hodnotu true** znamená, že značka je v seznamu *vložených* hodnot video indexer ke zjištění a **povolená** hodnota false znamená, že se značka nachází v seznamu *vyloučení* , takže video indexer ji nerozpozná.
+> `enabled`nastavení na `true` značku znamená, že značka je v seznamu *Zahrnout* pro `enabled` video indexer, který má detekovat, a je nepravdivé, což znamená, že značka je v seznamu *Vyloučit,* takže video indexer ji nerozpozná.
 
 ## <a name="update-a-specific-brand"></a>Aktualizace konkrétní značky
 
-Rozhraní API pro [aktualizaci značky](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) vám umožní vyhledat podrobnosti o značce v modelu vlastních značek pro zadaný účet pomocí ID značky.
+Aktualizace [značky](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) ROZHRANÍ API umožňuje vyhledat podrobnosti o značce v modelu vlastní značky pro zadaný účet pomocí ID značky.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje aktualizované informace o značce, kterou jste aktualizovali podle formátu níže uvedeného příkladu.
+Odpověď poskytuje aktualizované informace o značce, kterou jste aktualizovali podle formátu následujícího příkladu.
 
 ```json
 {
@@ -122,13 +122,13 @@ Odpověď poskytuje aktualizované informace o značce, kterou jste aktualizoval
 }
 ```
 
-## <a name="get-all-of-the-brands"></a>Získání všech značek
+## <a name="get-all-of-the-brands"></a>Získejte všechny značky
 
-Rozhraní API [získat všechny značky](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) vrátí všechny značky v modelu vlastních značek pro zadaný účet bez ohledu na to, zda je značka v seznamu *zahrnutí* nebo *vyloučení* značek.
+Rozhraní [API get all brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) vrátí všechny značky v modelu vlastníznačky pro zadaný účet bez ohledu na to, zda má být značka v seznamu *Zahrnout* nebo *Vyloučit* značky.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje seznam všech značek ve vašem účtu a každé z jejich podrobností podle formátu níže uvedeného příkladu.
+Odpověď poskytuje seznam všech značek ve vašem účtu a každý z jejich údajů podle formátu níže uvedeného příkladu.
 
 ```json
 [
@@ -160,15 +160,15 @@ Odpověď poskytuje seznam všech značek ve vašem účtu a každé z jejich po
 ```
 
 > [!NOTE]
-> Značka s názvem *example* je v seznamu *include* pro video indexer k detekci a značka s názvem *example2* je v seznamu *vyloučení* , takže video indexer ji nerozpozná.
+> Značka s názvem *Příklad* je v seznamu *Zahrnout* pro video Indexer zjistit a značka s názvem *Example2* je v seznamu *Vyloučit,* takže Video Indexer nebude detekovat.
 
 ## <a name="get-brands-model-settings"></a>Získat nastavení modelu značek
 
-Rozhraní API pro [získání značek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) vrátí nastavení modelu značky v zadaném účtu. Nastavení modelu značek představuje, zda je povoleno zjišťování z databáze značek Bing. Pokud nejsou značky Bingu povolené, Video Indexer detekuje pouze značky z vlastního modelu značek zadaného účtu.
+Rozhraní [API nastavení značek get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) vrátí nastavení modelu značky v zadaném účtu. Nastavení modelu Značky představují, zda je zjišťování z databáze značek Bing povoleno nebo ne. Pokud značky Bing nejsou povoleny, video indexer rozpozná pouze značky z vlastního modelu značek zadaného účtu.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď ukazuje, jestli jsou značky Bingu povolené, a to podle formátu níže uvedeného příkladu.
+Odpověď ukazuje, zda jsou značky Bing povoleny podle formátu následujícího příkladu.
 
 ```json
 {
@@ -178,17 +178,17 @@ Odpověď ukazuje, jestli jsou značky Bingu povolené, a to podle formátu ní�
 ```
 
 > [!NOTE]
-> **useBuiltIn** nastavenou na hodnotu true představuje, že jsou značky Bingu povolené. Pokud je *useBuiltin* false, značky Bingu jsou zakázané. Hodnota **stavu** se může ignorovat, protože je zastaralá.
+> `useBuiltIn`nastavena na hodnotu true představuje, že jsou povoleny značky Bing. Pokud `useBuiltin` je false, bing značky jsou zakázány. Hodnota `state` může být ignorována, protože byla zastaralá.
 
-## <a name="update-brands-model-settings"></a>Aktualizace nastavení modelu značek
+## <a name="update-brands-model-settings"></a>Aktualizovat nastavení modelu značek
 
-[Značka aktualizace](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) aktualizuje nastavení modelu značky v zadaném účtu. Nastavení modelu značek představuje, zda je povoleno zjišťování z databáze značek Bing. Pokud nejsou značky Bingu povolené, Video Indexer detekuje pouze značky z vlastního modelu značek zadaného účtu.
+Rozhraní [API pro aktualizace značek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) aktualizuje nastavení modelu značky v zadaném účtu. Nastavení modelu Značky představují, zda je zjišťování z databáze značek Bing povoleno nebo ne. Pokud značky Bing nejsou povoleny, video indexer rozpozná pouze značky z vlastního modelu značek zadaného účtu.
 
-Příznak **useBuiltIn** nastavený na hodnotu true představuje, že jsou povolené značky Bingu. Pokud je *useBuiltin* false, značky Bingu jsou zakázané.
+Příznak `useBuiltIn` nastavený na hodnotu true znamená, že značky Bing jsou povoleny. Pokud `useBuiltin` je false, bing značky jsou zakázány.
 
 ### <a name="response"></a>Odpověď
 
-Po úspěšné aktualizaci nastavení modelu značek se nevrátí žádný obsah.
+Při úspěšné aktualizaci modelu značky není vrácen žádný vrácený obsah.
 
 ## <a name="next-steps"></a>Další kroky
 

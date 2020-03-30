@@ -1,22 +1,22 @@
 ---
 title: Funkce šablon
-description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
+description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager k načtení hodnot, práci s řetězci a číselnými kódy a načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207038"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156255"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager funkce šablon
+# <a name="arm-template-functions"></a>Funkce šablony ARM
 
-Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manager. Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](template-expressions.md).
+Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manager (ARM). Informace o používání funkcí v šabloně naleznete v [tématu syntaxe šablony](template-expressions.md).
 
-Chcete-li vytvořit vlastní funkce, přečtěte si téma [uživatelsky definované funkce](template-syntax.md#functions).
+Chcete-li vytvořit vlastní funkce, viz [Uživatelem definované funkce](template-syntax.md#functions).
 
-Většina funkcí funguje při nasazení do skupiny prostředků, předplatného, skupiny pro správu nebo tenanta stejné. Ve všech oborech nelze použít několik funkcí. Jsou uvedeny v níže uvedených seznamech.
+Většina funkcí funguje stejně při nasazení do skupiny prostředků, předplatného, skupiny pro správu nebo klienta. Několik funkcí nelze použít ve všech oborech. Jsou uvedeny v níže uvedených seznamech.
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -40,23 +40,23 @@ Většina funkcí funguje při nasazení do skupiny prostředků, předplatného
 
 Správce prostředků poskytuje několik funkcí pro práci s poli a objekty.
 
-* [skupin](template-functions-array.md#array)
-* [COALESCE](template-functions-array.md#coalesce)
-* [spojuje](template-functions-array.md#concat)
-* [zobrazí](template-functions-array.md#contains)
+* [Pole](template-functions-array.md#array)
+* [Coalesce](template-functions-array.md#coalesce)
+* [Concat](template-functions-array.md#concat)
+* [Obsahuje](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
-* [obsahovat](template-functions-array.md#empty)
-* [první](template-functions-array.md#first)
-* [průnik](template-functions-array.md#intersection)
-* [JSON](template-functions-array.md#json)
-* [posledního](template-functions-array.md#last)
-* [časový](template-functions-array.md#length)
-* [dlouhé](template-functions-array.md#min)
-* [počet](template-functions-array.md#max)
-* [oblasti](template-functions-array.md#range)
-* [přímo](template-functions-array.md#skip)
-* [nezbytná](template-functions-array.md#take)
-* [sjednocovací](template-functions-array.md#union)
+* [empty](template-functions-array.md#empty)
+* [První](template-functions-array.md#first)
+* [Průsečíku](template-functions-array.md#intersection)
+* [Json](template-functions-array.md#json)
+* [Poslední](template-functions-array.md#last)
+* [Délka](template-functions-array.md#length)
+* [Min](template-functions-array.md#min)
+* [Max](template-functions-array.md#max)
+* [Rozsah](template-functions-array.md#range)
+* [Přeskočit](template-functions-array.md#skip)
+* [vzít](template-functions-array.md#take)
+* [Unie](template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -66,12 +66,12 @@ Správce prostředků poskytuje několik funkcí pro práci s poli a objekty.
 
 ## <a name="comparison-functions"></a>Funkce porovnání
 
-Správce prostředků poskytuje několik funkcí pro porovnávání v šablonách.
+Resource Manager poskytuje několik funkcí pro porovnávání v šablonách.
 
-* [rovná](template-functions-comparison.md#equals)
-* [tolik](template-functions-comparison.md#less)
+* [equals](template-functions-comparison.md#equals)
+* [less](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
-* [zvýšen](template-functions-comparison.md#greater)
+* [greater](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
@@ -80,12 +80,12 @@ Správce prostředků poskytuje několik funkcí pro porovnávání v šablonác
 
 ## <a name="deployment-value-functions"></a>Funkce hodnoty nasazení
 
-Správce prostředků poskytuje následující funkce pro získání hodnot z částí šablony a hodnot souvisejících s nasazením:
+Správce prostředků poskytuje následující funkce pro získávání hodnot z částí šablony a hodnot souvisejících s nasazením:
 
-* [prostředí](template-functions-deployment.md#deployment)
-* [hlediska](template-functions-deployment.md#environment)
-* [parameters](template-functions-deployment.md#parameters)
-* [proměnné](template-functions-deployment.md#variables)
+* [Nasazení](template-functions-deployment.md#deployment)
+* [environment](template-functions-deployment.md#environment)
+* [Parametry](template-functions-deployment.md#parameters)
+* [Proměnné](template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -97,11 +97,11 @@ Správce prostředků poskytuje následující funkce pro získání hodnot z č
 
 Správce prostředků poskytuje následující funkce pro práci s logickými podmínkami:
 
-* [ani](template-functions-logical.md#and)
-* [logick](template-functions-logical.md#bool)
-* [Přestože](template-functions-logical.md#if)
-* [mění](template-functions-logical.md#not)
-* Hodnota [nebo](template-functions-logical.md#or)
+* [A](template-functions-logical.md#and)
+* [bool](template-functions-logical.md#bool)
+* [if](template-functions-logical.md#if)
+* [Ne](template-functions-logical.md#not)
+* [Nebo](template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -116,18 +116,18 @@ Správce prostředků poskytuje následující funkce pro práci s logickými po
 
 ## <a name="numeric-functions"></a>Numerické funkce
 
-Správce prostředků poskytuje následující funkce pro práci s celými čísly:
+Správce prostředků poskytuje následující funkce pro práci s celáčísla:
 
-* [přidávání](template-functions-numeric.md#add)
+* [add](template-functions-numeric.md#add)
 * [copyIndex](template-functions-numeric.md#copyindex)
-* [značek](template-functions-numeric.md#div)
-* [Plovák](template-functions-numeric.md#float)
-* [hmot](template-functions-numeric.md#int)
-* [dlouhé](template-functions-numeric.md#min)
-* [počet](template-functions-numeric.md#max)
-* [střední](template-functions-numeric.md#mod)
+* [div](template-functions-numeric.md#div)
+* [float](template-functions-numeric.md#float)
+* [int](template-functions-numeric.md#int)
+* [Min](template-functions-numeric.md#min)
+* [Max](template-functions-numeric.md#max)
+* [Mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
-* [jednotk](template-functions-numeric.md#sub)
+* [Dílčí](template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
@@ -142,18 +142,18 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 
 ## <a name="resource-functions"></a>Funkce prostředků
 
-Resource Manager poskytuje následující funkce pro načtení prostředků hodnot:
+Správce prostředků poskytuje následující funkce pro získávání hodnot prostředků:
 
-* [extensionResourceId](template-functions-resource.md#extensionresourceid)
+* [rozšířeníResourceId](template-functions-resource.md#extensionresourceid)
 * [listAccountSas](template-functions-resource.md#list)
-* [Klíče listkey](template-functions-resource.md#listkeys)
+* [seznam kláves](template-functions-resource.md#listkeys)
 * [listSecrets](template-functions-resource.md#list)
-* [seznamu](template-functions-resource.md#list)
-* [dodavateli](template-functions-resource.md#providers)
-* [odkaz](template-functions-resource.md#reference)
-* [](template-functions-resource.md#resourcegroup) skupina prostředků se dá použít jenom v nasazeních do skupiny prostředků.
-* [ResourceID](template-functions-resource.md#resourceid) -lze použít v jakémkoli oboru, ale platné parametry se mění v závislosti na rozsahu.
-* [předplatné](template-functions-resource.md#subscription) – dá se použít jenom v nasazeních do skupiny prostředků nebo předplatného.
+* [seznam*](template-functions-resource.md#list)
+* [Poskytovatelů](template-functions-resource.md#providers)
+* [Odkaz](template-functions-resource.md#reference)
+* [resourceGroup](template-functions-resource.md#resourcegroup) - lze použít pouze v nasazení ch a) do skupiny prostředků.
+* [resourceId](template-functions-resource.md#resourceid) - lze použít v libovolném oboru, ale platné parametry se mění v závislosti na oboru.
+* [předplatné](template-functions-resource.md#subscription) – lze použít pouze v nasazení do skupiny prostředků nebo předplatného.
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -192,43 +192,43 @@ Resource Manager poskytuje následující funkce pro načtení prostředků hodn
 
 Správce prostředků poskytuje následující funkce pro práci s řetězci:
 
-* [Base](template-functions-string.md#base64)
+* [base64](template-functions-string.md#base64)
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
-* [spojuje](template-functions-string.md#concat)
-* [zobrazí](template-functions-string.md#contains)
+* [Concat](template-functions-string.md#concat)
+* [Obsahuje](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
-* [obsahovat](template-functions-string.md#empty)
-* [endsWith](template-functions-string.md#endswith)
-* [první](template-functions-string.md#first)
-* [formátovat](template-functions-string.md#format)
-* [hlavních](template-functions-string.md#guid)
-* [indexOf](template-functions-string.md#indexof)
-* [posledního](template-functions-string.md#last)
-* [lastIndexOf](template-functions-string.md#lastindexof)
-* [časový](template-functions-string.md#length)
+* [empty](template-functions-string.md#empty)
+* [Endswith](template-functions-string.md#endswith)
+* [První](template-functions-string.md#first)
+* [Formát](template-functions-string.md#format)
+* [Identifikátor guid](template-functions-string.md#guid)
+* [Indexof](template-functions-string.md#indexof)
+* [Poslední](template-functions-string.md#last)
+* [Lastindexof](template-functions-string.md#lastindexof)
+* [Délka](template-functions-string.md#length)
 * [newGuid](template-functions-string.md#newguid)
-* [padLeft](template-functions-string.md#padleft)
-* [náhrady](template-functions-string.md#replace)
-* [přímo](template-functions-string.md#skip)
-* [split](template-functions-string.md#split)
-* [startsWith](template-functions-string.md#startswith)
-* [řetezce](template-functions-string.md#string)
-* [podřetězec](template-functions-string.md#substring)
-* [nezbytná](template-functions-string.md#take)
-* [toLower](template-functions-string.md#tolower)
-* [toUpper](template-functions-string.md#toupper)
-* [sklon](template-functions-string.md#trim)
+* [oložek vlevo](template-functions-string.md#padleft)
+* [Nahradit](template-functions-string.md#replace)
+* [Přeskočit](template-functions-string.md#skip)
+* [Rozdělit](template-functions-string.md#split)
+* [Startswith](template-functions-string.md#startswith)
+* [Řetězec](template-functions-string.md#string)
+* [Podřetězec](template-functions-string.md#substring)
+* [vzít](template-functions-string.md#take)
+* [Tolower](template-functions-string.md#tolower)
+* [Toupper](template-functions-string.md#toupper)
+* [Trim](template-functions-string.md#trim)
 * [uniqueString](template-functions-string.md#uniquestring)
-* [identifikátor URI](template-functions-string.md#uri)
+* [Uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
 * [utcNow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](template-syntax.md) .
-* Chcete-li sloučit více šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](linked-templates.md)
-* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](copy-resources.md).
-* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablony Azure Resource Manager](deploy-powershell.md) .
+* Popis oddílů v šabloně ARM naleznete v tématu [Authoring ARM templates](template-syntax.md)
+* Pokud chcete sloučit víc šablon, přečtěte si informace [o použití propojených šablon pomocí Azure Resource Manageru.](linked-templates.md)
+* Chcete-li itrerate zadaný počet časů při vytváření typu prostředku, najdete v [tématu vytvoření více instancí prostředků ve Správci prostředků Azure](copy-resources.md).
+* Postup nasazení vytvořené šablony najdete v [tématu Nasazení aplikace pomocí šablon ARM.](deploy-powershell.md)

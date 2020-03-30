@@ -1,6 +1,6 @@
 ---
-title: Konfigurace Multi-Factor Authentication
-description: Naučte se používat ověřování Multi-Factor Authentication s SSMS pro SQL Database a SQL Data Warehouse.
+title: Konfigurace vícefaktorového ověřování
+description: Přečtěte si, jak používat vícefaktorové ověřování s SSMS pro DATABÁZI SQL a datový sklad SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,64 +11,64 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 7849f6d391cad7e973babfa97f2859b9df40f23e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5d4d410f6fca566dab14e601972952b5996c331a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820883"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124884"
 ---
-# <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace služby Multi-Factor Authentication pro SQL Server Management Studio a Azure AD
+# <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace vícefaktorového ověřování pro SQL Server Management Studio a Azure AD
 
-V tomto tématu se dozvíte, jak používat Azure Active Directory Multi-Factor Authentication (MFA) s SQL Server Management Studio. Azure AD MFA se dá použít při připojování SSMS nebo SqlPackage. exe k Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled Azure SQL Database Multi-Factor Authentication najdete v tématu [univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md).
+Toto téma ukazuje, jak používat vícefaktorové ověřování Azure Active Directory (MFA) se službou SQL Server Management Studio. Azure AD MFA lze použít při připojení SSMS nebo SqlPackage.exe k Azure [SQL Database](sql-database-technical-overview.md) a SQL [Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled vícefaktorového ověřování Azure SQL Database najdete v tématu [univerzální ověřování s databází SQL a sql datový sklad (podpora SSMS pro MFA).](sql-database-ssms-mfa-authentication.md)
 
 > [!NOTE]
 > Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 
 ## <a name="configuration-steps"></a>Postup konfigurace
 
-1. **Konfigurace Azure Active Directory** – Další informace najdete v tématu [Správa adresáře služby Azure AD](https://msdn.microsoft.com/library/azure/hh967611.aspx), [Integrace místních identit s Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [Přidání vlastního názvu domény do Azure AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) [. Microsoft Azure teď podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)a [Spravovat Azure AD pomocí Windows PowerShellu](https://msdn.microsoft.com/library/azure/jj151815.aspx).
-2. **Konfigurace MFA** – podrobné pokyny najdete v tématu [co je Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md), [podmíněný přístup (MFA) s Azure SQL Database a datovým skladem](sql-database-conditional-access.md). (Úplný podmíněný přístup vyžaduje prémiovou Azure Active Directory (Azure AD). Omezená MFA je k dispozici ve standardní službě Azure AD.)
-3. **Konfigurace SQL Database nebo SQL Data Warehouse pro ověřování Azure AD** – podrobné pokyny najdete v tématu [připojení k SQL Database nebo SQL Data Warehouse pomocí Azure Active Directoryho ověřování](sql-database-aad-authentication.md).
-4. **Stáhněte si SSMS** – v klientském počítači stáhněte nejnovější verzi SSMS, ze [Stažení SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Pro všechny funkce v tomto tématu použijte minimálně červenec 2017, verze 17,2.  
+1. **Konfigurace služby Azure Active Directory** – další informace najdete [v tématu Správa adresáře Azure AD](https://msdn.microsoft.com/library/azure/hh967611.aspx), [Integrace místních identit pomocí služby Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), Přidání vlastního názvu domény do Azure [AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure teď podporuje federaci se službou Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)a Správa Azure [AD pomocí Prostředí Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx).
+2. **Konfigurace mfa** – podrobné pokyny najdete v tématu [Co je Azure multi-factor authentication?](../active-directory/authentication/multi-factor-authentication.md), [Podmíněný přístup (MFA) s Azure SQL Database a datového skladu](sql-database-conditional-access.md). (Úplný podmíněný přístup vyžaduje premium Azure Active Directory (Azure AD). Omezené vícefaktorové informace jsou k dispozici se standardním Azure AD.)
+3. **Konfigurace databáze SQL database nebo datového skladu SQL pro ověřování azure ad** – podrobné pokyny najdete v [tématu Připojení k databázi SQL nebo datového skladu SQL pomocí ověřování Azure Active Directory](sql-database-aad-authentication.md).
+4. **Ke stažení SSMS** - Na klientském počítači, stáhněte si nejnovější SSMS, z [download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Pro všechny funkce v tomto tématu použijte alespoň červenec 2017 verze 17.2.  
 
 ## <a name="connecting-by-using-universal-authentication-with-ssms"></a>Připojení pomocí univerzálního ověřování pomocí SSMS
 
-Následující kroky ukazují, jak se připojit k SQL Database nebo SQL Data Warehouse pomocí nejnovější SSMS.
+Následující kroky ukazují, jak se připojit k databázi SQL nebo datovému skladu SQL pomocí nejnovější ssms.
 
-1. Pokud se chcete připojit pomocí univerzálního ověřování, vyberte v dialogovém okně **připojit k serveru** možnost **Active Directory – univerzální s podporou vícefaktorového**ověřování. (Pokud se zobrazí **univerzální ověřování služby Active Directory** , nejste na nejnovější verzi SSMS.)  
-   ![1mfa – Universal-Connect][1]  
-2. Do pole **uživatelské jméno** zadejte přihlašovací údaje Azure Active Directory ve `user_name@domain.com`formátu.  
-   ![1mfa – Universal-Connect – User](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
-3. Pokud se připojujete jako uživatel typu Host, už nemusíte pro uživatele typu Host doplňovat pole název domény služby AD nebo ID tenanta, protože SSMS 18. x nebo novější ho automaticky rozpoznává. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md).
-   ![MFA-No-tenant-SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
+1. Chcete-li se připojit pomocí univerzálního ověřování, vyberte v dialogovém okně **Připojit k serveru** **položku Active Directory - Universal s podporou vícefaktorové ověřování**. (Pokud vidíte **univerzální ověřování služby Active Directory,** nejste na nejnovější verzi služby SSMS.)  
+   ![1mfa-univerzální připojení][1]  
+2. Dokončete pole **Uživatelské jméno** s přihlašovacími `user_name@domain.com`údaji služby Azure Active Directory ve formátu .  
+   ![1mfa-univerzální-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
+3. Pokud se připojujete jako uživatel typu Host, nemusíte již vyplňovat pole Název domény služby AD nebo ID klienta pro uživatele typu Host, protože jej ssms 18.x nebo novější automaticky rozpozná. Další informace naleznete [v tématu univerzální ověřování s databází SQL a SQL Data Warehouse (Podpora SSMS pro vícefaktorové ověřování).](sql-database-ssms-mfa-authentication.md)
+   ![mfa-no-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
 
-   Pokud se však připojujete jako uživatel typu Host pomocí SSMS 17. x nebo staršího, musíte kliknout na možnost **Možnosti**a v dialogovém okně **Vlastnosti připojení** vyplnit pole **název domény služby AD nebo ID tenanta** .
-   ![MFA-tenant-SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
+   Pokud se však připojujete jako uživatel typu Host pomocí souboru SSMS 17.x nebo staršího, musíte klepnout na tlačítko **Možnosti**a v dialogovém okně **Vlastnost připojení** a vyplnit pole **Název domény služby AD nebo ID klienta.**
+   ![mfa-nájemce-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
-4. Jako obvykle pro SQL Database a SQL Data Warehouse musíte kliknout na **Možnosti** a zadat databázi v dialogovém okně **Možnosti** . (Pokud je připojený uživatel uživatel typu Host (tj. joe@outlook.com), musíte zaškrtnout políčko a přidat aktuální název domény služby AD nebo ID tenanta jako součást možností. Viz [univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md). Pak klikněte na **Connect** (Připojit).  
-5. Po zobrazení dialogového okna **Přihlásit se k účtu** zadejte účet a heslo vaší Azure Active Directory identity. Pokud je uživatel součástí domény federované se službou Azure AD, není nutné žádné heslo.  
-   ![2mfa – přihlášení][2]  
+4. Jako obvykle pro databázi SQL a datový sklad SQL musíte klepnout na **položku Možnosti** a zadat databázi v dialogovém okně **Možnosti.** (Pokud je připojený uživatel uživatelem typu joe@outlook.comHost ( tj. ), musíte zaškrtnout políčko a přidat aktuální název domény služby AD nebo ID klienta jako součást možností. Viz [Univerzální ověřování s databází SQL a datovým skladem SQL (podpora SSMS pro vícefaktorové ověřování).](sql-database-ssms-mfa-authentication.md) Pak klikněte na **Connect** (Připojit).  
+5. Až se zobrazí dialogové okno **Přihlásit se k účtu,** zadejte účet a heslo identity služby Azure Active Directory. Žádné heslo je vyžadováno, pokud je uživatel součástí domény federované s Azure AD.  
+   ![2mfa-přihlášení][2]  
 
    > [!NOTE]
-   > Pro univerzální ověřování pomocí účtu, který nepotřebuje MFA, se v tomto okamžiku připojíte. Pro uživatele, kteří vyžadují MFA, pokračujte následujícími kroky:
+   > Pro univerzální ověřování s účtem, který nevyžaduje vícefaktorové ověřování, se připojíte v tomto okamžiku. Pro uživatele, kteří vyžadují vícefaktorové informace, pokračujte následujícími kroky:
    >  
    
-6. Můžou se zobrazit dvě dialogová okna pro nastavení vícefaktorového ověřování. Tato jednorázová operace závisí na nastavení správce MFA, a proto může být volitelná. V případě domény s povolenou MFA je tento krok někdy předem definovaný (například doména vyžaduje, aby uživatelé používali čipovou kartu a PIN kód).  
-   ![3mfa – instalace][3]  
-7. Druhý možný jednorázový dialog umožňuje vybrat podrobnosti metody ověřování. Možné možnosti jsou nakonfigurovány vaším správcem.  
+6. Mohou se zobrazit dvě dialogová okna nastavení vícefaktorové ho dispozice. Tato jednorázová operace závisí na nastavení správce vícefaktorové mfa, a proto může být volitelné. U domény s povolenou mfa je tento krok někdy předdefinovaný (například doména vyžaduje, aby uživatelé používali čipovou kartu a pin).  
+   ![3mfa-nastavení][3]  
+7. Druhé možné jednorázové dialogové okno umožňuje vybrat podrobnosti o metodě ověřování. Možné možnosti nakonfiguruje správce.  
    ![4mfa-ověřit-1][4]  
-8. Azure Active Directory odesílá potvrzující informace. Když obdržíte ověřovací kód, zadejte ho do pole **zadat ověřovací kód** a klikněte na **Přihlásit**se.  
+8. Služba Azure Active Directory vám odešle potvrzující informace. Když ověřovací kód obdržíte, zadejte ho do pole **Zadat ověřovací kód** a klikněte na **Přihlásit se**.  
    ![5mfa-ověřit-2][5]  
 
-Po dokončení ověření se SSMS připojuje obvykle k platným přihlašovacím údajům a přístup k bráně firewall.
+Po dokončení ověření se SSMS připojí obvykle s předpokladem platných přihlašovacích údajů a přístupu brány firewall.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled Azure SQL Database Multi-Factor Authentication najdete v tématu univerzální ověřování pomocí [SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md).  
-- Udělit ostatním přístup k vaší databázi: [SQL Database ověřování a autorizace: udělení přístupu](sql-database-manage-logins.md)  
-- Zajistěte, aby se uživatelé mohli připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí Azure Portal](sql-database-configure-firewall-settings.md)  
-- Při používání **služby Active Directory – univerzální s** ověřováním MFA je k dispozici trasování ADAL od [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ve výchozím nastavení můžete trasování ADAL zapnout pomocí nabídky **nástroje**, **Možnosti** , v části **služby Azure**, **cloud Azure**, **ADAL okno výstup úroveň trasování**a následným povolením **výstupu** v nabídce **zobrazení** . Trasování jsou k dispozici v okně výstup při výběru **možnosti Azure Active Directory**.   
+- Přehled vícefaktorového ověřování Azure SQL Database najdete v tématu univerzální ověřování s [databází SQL a sql datový sklad (podpora SSMS pro MFA).](sql-database-ssms-mfa-authentication.md)  
+- Udělení přístupu k databázi ostatním uživatelům: [Ověřování a autorizace databáze SQL: Udělení přístupu](sql-database-manage-logins.md)  
+- Ujistěte se, že se ostatní můžou připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí portálu Azure](sql-database-configure-firewall-settings.md)  
+- Při použití **služby Active Directory- Universal s ověřováním Vícefaktorové** ověřování je k dispozici trasování ADAL začínající s [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ve výchozím nastavení můžete zapnout trasování ADAL pomocí nabídky **Nástroje**, **Možnosti** v části **Azure Services**, **Azure Cloud**, **ADAL Output Window Trace Level**, následované povolením **výstupu** v nabídce **Zobrazení.** Trasování jsou k dispozici ve výstupním okně při výběru **možnosti služby Azure Active Directory**.   
 
 
 [1]: ./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png

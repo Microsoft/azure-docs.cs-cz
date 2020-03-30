@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d2dba0f657b418267db90c07014dc8996ed12a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174883"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059949"
 ---
-Po vytvoření certifikátu podepsaného svým držitelem exportujte souboru veřejného klíče .cer kořenového certifikátu (ne privátní klíč). Později tento soubor odešlete do Azure. Následující kroky vám pomůžou exportovat soubor .cer pro váš certifikát podepsaný svým držitelem:
+Po vytvoření kořenového certifikátu podepsaného svým držitelem exportujte soubor CER s kořenovým certifikátem (nikoli soukromý klíč). Tento soubor později nahrajete do Azure. Následující kroky vám pomohou exportovat soubor CER pro kořenový certifikát podepsaný svým držitelem:
 
-1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte kořenový certifikát podepsaný svým držitelem, obvykle v Certificates - Current User\Personal\Certificates, a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud nemůžete najít certifikát v části Current User\Personal\Certificates, pravděpodobně jste omylem otevřeli "Certifikáty – místního počítače", spíše než "Certifikáty – aktuální uživatel"). Pokud chcete otevřít Správce certifikátů v aktuálním oboru uživatele pomocí Powershellu, zadáte *certmgr* v okně konzoly.
+1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte kořenový certifikát podepsaný svým držitelem, obvykle v Certificates - Current User\Personal\Certificates, a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud nemůžete najít certifikát v části Aktuální uživatel\Osobní\Certifikáty, je možné, že jste omylem otevřeli "Certifikáty – místní počítač" místo "Certifikáty – aktuální uživatel"). Pokud chcete otevřít Správce certifikátů v aktuálním uživatelském oboru pomocí prostředí PowerShell, zadejte *certmgr* do okna konzoly.
 
    ![Export](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. V průvodci klikněte na **Další**.
@@ -25,22 +25,22 @@ Po vytvoření certifikátu podepsaného svým držitelem exportujte souboru ve�
    ![Export certifikátu](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
 3. Vyberte **Ne, neexportovat privátní klíč** a klikněte na **Další**.
 
-   ![Neexportovat privátní klíč](./media/vpn-gateway-certificates-export-public-key-include/notprivatekey.png)
+   ![Neexportovat soukromý klíč](./media/vpn-gateway-certificates-export-public-key-include/notprivatekey.png)
 4. Na stránce **Formát souboru pro export** vyberte **X.509, kódování Base-64 (CER)** a klikněte na **Další**.
 
-   ![Kódování Base-64](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
-5. Pro **soubor pro Export**, **Procházet** do umístění, do které chcete exportovat certifikát. V části **Název souboru** zadejte název souboru. Pak klikněte na **Další**.
+   ![Základní-64 kódované](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
+5. V **případě exportu souboru** **vyhledejte** umístění, do kterého chcete certifikát exportovat. V části **Název souboru** zadejte název souboru. Potom klepněte na tlačítko **Další**.
 
    ![Procházet](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. Certifikát vyexportujte kliknutím na **Dokončit**.
 
    ![Dokončit](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
-7. Váš certifikát se úspěšně exportoval.
+7. Certifikát je úspěšně exportován.
 
    ![Úspěch](./media/vpn-gateway-certificates-export-public-key-include/success.png)
-8. Exportovaný certifikát vypadá nějak takto:
+8. Exportovaný certifikát vypadá podobně jako tento:
 
    ![Exportovat](./media/vpn-gateway-certificates-export-public-key-include/exported.png)
-9. Pokud otevřete exportovaný certifikát pomocí poznámkového bloku, vypadá podobně jako tento příklad. Modrá obsahuje informace, které se nahraje do Azure. Pokud otevřete certifikát v aplikaci Poznámkový blok a není vypadat podobně jako tento, obvykle to znamená, že není ho exportovat pomocí Base-64 formát X.509 (. Formátu CER). Pokud chcete použít v jiném textovém editoru, Pochopte, že některé editory může způsobovat nežádoucí formátování na pozadí. To můžete vytvářet problémy při nahrání text z tohoto certifikátu do Azure.
+9. Pokud exportovaný certifikát otevřete pomocí poznámkového bloku, uvidíte něco podobného tomuto příkladu. Modrá část obsahuje informace, které se nahrají do Azure. Pokud otevřete certifikát s poznámkovým blokem a nevypadá podobně jako tento, obvykle to znamená, že jste jej neexportovali pomocí kódu Base-64 X.509(. CER). Navíc pokud chcete použít jiný textový editor, pochopit, že některé editory mohou zavést nechtěné formátování na pozadí. To může způsobit problémy při nahrávání textu z tohoto certifikátu do Azure.
 
-   ![Otevřít v programu Poznámkový blok](./media/vpn-gateway-certificates-export-public-key-include/notepad.png)
+   ![Otevřít pomocí poznámkového bloku](./media/vpn-gateway-certificates-export-public-key-include/notepad.png)

@@ -1,64 +1,64 @@
 ---
-title: Společná rozhraní – IoT technologie Plug and Play Preview | Microsoft Docs
-description: Popis společných rozhraní pro vývojáře technologie Plug and Play IoT
+title: Běžná rozhraní – Náhled ioT plug and play | Dokumenty společnosti Microsoft
+description: Popis běžných rozhraní pro vývojáře IoT Plug and Play
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c6ac90f917b9afc37b3a39d8da679fbcad091778
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531407"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234708"
 ---
-# <a name="iot-plug-and-play-preview-common-interfaces"></a>Společná rozhraní IoT technologie Plug and Play ve verzi Preview
+# <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Plug and Play Preview běžná rozhraní
 
-U všech zařízení IoT technologie Plug and Play se očekává implementace některých běžných rozhraní. Společná rozhraní využívají řešení IoT, protože poskytují konzistentní funkce. [Certifikace](tutorial-build-device-certification.md) vyžaduje, aby vaše zařízení implementovalo několik společných rozhraní. Z úložiště veřejného modelu můžete načíst společné definice rozhraní.
+Očekává se, že všechna zařízení IoT Plug and Play implementují některá běžná rozhraní. Běžná rozhraní mají prospěch z řešení IoT, protože poskytují konzistentní funkce. [Certifikace](tutorial-build-device-certification.md) vyžaduje, aby vaše zařízení implementovalo několik běžných rozhraní. Můžete načíst společné definice rozhraní z úložiště veřejného modelu.
 
-## <a name="summary-of-common-interfaces"></a>Souhrn společných rozhraní
+## <a name="summary-of-common-interfaces"></a>Shrnutí společných rozhraní
 
-| Name (Název) | ID | Popis | Implementované sadou Azure IoT SDK | Musí se deklarovat v modelu schopností. |
+| Name (Název) | ID | Popis | Implementovaná sadou Azure IoT SDK | Musí být deklarována v modelu schopností. |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-| Informace o modelu | urn: azureiot: ModelDiscovery: ModelInformation: 1 | Aby zařízení deklarovalo ID a rozhraní modelu schopností. Vyžaduje se pro všechna zařízení technologie Plug and Play IoT. | Ano | Ne |
-| Informace o digitálních nevlákenných klientských SDK | urn: azureiot: Client: SDKInformation: 1 | Klientská sada SDK pro připojení zařízení k Azure Vyžadováno pro [certifikaci](tutorial-build-device-certification.md) | Ano | Ne |
-| Informace o zařízení | urn: azureiot: DeviceManagement: DeviceInformation: 1 | Informace o hardwaru a operačním systému pro zařízení. Vyžadováno pro [certifikaci](tutorial-build-device-certification.md) | Ne | Ano |
-| Definice modelu | urn: azureiot: ModelDiscovery: ModelDefinition: 1 | Aby zařízení deklarovalo úplnou definici pro svůj model a rozhraní schopností. Musí být implementováno, pokud definice modelů nejsou hostovány v úložišti modelu. | Ne | Ano |
-| Digitální vlákna | urn: azureiot: ModelDiscovery: DigitalTwin: 1 | Pro vývojáře řešení můžete načíst ID modelu schopností a ID rozhraní pro digitální vlákna. Toto rozhraní není deklarované nebo implementované zařízením IoT technologie Plug and Play. | Ne | Ne |
+| Informace o modelu | urn:azureiot:ModelDiscovery:ModelInformation:1 | Pro zařízení deklarovat ID modelu schopností a rozhraní. Vyžadováno pro všechna zařízení IoT Plug and Play. | Ano | Ne |
+| Informace o klientovi Digitální dvojče | urn:azureiot:Klient:SDKInformace:1 | Sada SDK klienta pro připojení zařízení k Azure. Vyžadováno pro [certifikaci](tutorial-build-device-certification.md) | Ano | Ne |
+| Informace o zařízení | urn:azureiot:DeviceManagement:DeviceInformation:1 | Informace o hardwaru a operačním systému o zařízení. Vyžadováno pro [certifikaci](tutorial-build-device-certification.md) | Ne | Ano |
+| Definice modelu | urn:azureiot:ModelDiscovery:ModelDefinition:1 | Pro zařízení deklarovat úplnou definici pro jeho model schopností a rozhraní. Musí být implementována, když definice modelu nejsou hostovány v úložišti modelu. | Ne | Ano |
+| Digital Twins | ur:azureiot:ModelDiscovery:DigitalTwin:1 | Pro vývojáře řešení načíst ID modelu schopností a ID rozhraní pro digitální dvojče. Toto rozhraní není deklarováno ani implementováno zařízením IoT Plug and Play. | Ne | Ne |
 
-- Je implementováno sadou Azure IoT SDK – zda sada SDK služby Azure IoT implementuje funkce deklarované v rozhraních. Zařízení IoT technologie Plug and Play, která používají sadu Azure IoT SDK, nepotřebují implementovat toto rozhraní.
-- Musí být deklarovaný v modelu schopností – Pokud ano, toto rozhraní musí být deklarované v rámci `"implements":` v modelu schopností zařízení pro toto zařízení technologie Plug and Play IoT.
+- Implementovaný Sadou Azure IoT SDK – ať už Azure IoT SDK implementuje funkce deklarované v rozhraních. Zařízení IoT Plug and Play, která používají sadku Azure IoT SDK, toto rozhraní nepotřebují implementovat.
+- Musí být deklarována v modelu schopností - Pokud `"implements":` "ano", toto rozhraní musí být deklarováno v části modelu schopností zařízení pro toto zařízení IoT Plug and Play.
 
-## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Načíst definice rozhraní z veřejného úložiště
+## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Načtení definic rozhraní z veřejného úložiště
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
 
-Pomocí rozšíření Azure IoT pro Azure CLI můžete načíst společná rozhraní z úložiště veřejného modelu.
+Rozšíření Azure IoT pro rozhraní příkazového řádku Azure můžete použít k načtení společných rozhraní z úložiště veřejného modelu.
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {InterfaceID}
 ```
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {ModelID}
 ```
 
 ### <a name="vs-code"></a>VS Code
 
-1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů.
+1. K otevření palety příkazů použijte **kombinaci kláves Ctrl+Shift+P.**
 
-1. Zadejte **technologie Plug and Play** a pak vyberte příkaz **IoT technologie Plug and Play: Open model úložiště** . Vyberte **veřejné úložiště**. Úložiště veřejného modelu se otevře v VS Code.
+1. Zadejte **Plug and Play** a pak vyberte příkaz **IoT Plug and Play: Open Model Repository** . Zvolte **Veřejné úložiště**. Úložiště veřejného modelu se otevře v kódu VS.
 
-1. V úložišti veřejného modelu zadejte název rozhraní do vyhledávacího pole.
+1. Do úložiště veřejného modelu zadejte název rozhraní do vyhledávacího pole.
 
-1. Pokud chcete vytvořit místní kopii rozhraní, vyberte ji ve výsledcích hledání a pak vyberte **Stáhnout**.
+1. Chcete-li vytvořit místní kopii rozhraní, vyberte ji ve výsledcích hledání a pak vyberte **stáhnout**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se seznámili s běžnými rozhraními, je zde několik dalších prostředků:
+Nyní, když jste se dozvěděli o běžných rozhraních, zde jsou některé další zdroje:
 
-- [DTDL (Digital redefinition Language) – jazyk](https://aka.ms/DTDL)
+- [Definiční jazyk digitálního dvojčete (DTDL)](https://aka.ms/DTDL)
 - [Sady SDK pro zařízení jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [REST API IoT](https://docs.microsoft.com/rest/api/iothub/device)
+- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

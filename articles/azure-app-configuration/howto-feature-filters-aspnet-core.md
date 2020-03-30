@@ -1,35 +1,35 @@
 ---
 title: Použití filtrů funkcí k povolení funkce pro podmnožinu uživatelů
 titleSuffix: Azure App Configuration
-description: Naučte se používat filtry funkcí k povolení funkce pro podmnožinu uživatelů.
+description: Naučte se používat filtry funkcí k povolení funkce pro podmnožinu uživatelů
 ms.service: azure-app-configuration
 author: lisaguthrie
+ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.author: lcozzens
-ms.openlocfilehash: b01a22d5a7068ee49e718a66432f52a8f6ef02ac
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126500"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056997"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Použití filtrů funkcí k povolení funkce pro podmnožinu uživatelů
 
-Příznaky funkcí umožňují aktivovat nebo deaktivovat funkce v aplikaci. Jednoduchý příznak funkce je buď zapnutý, nebo vypnutý. Aplikace se vždy chová stejným způsobem. Můžete například zavést novou funkci za příznakem funkce. Když je příznak funkce povolený, všichni uživatelé uvidí novou funkci. Zakázáním příznaku funkce se nová funkce skryje.
+Příznaky funkcí umožňují aktivovat nebo deaktivovat funkce v aplikaci. Příznak jednoduché funkce je zapnutý nebo vypnutý. Aplikace se vždy chová stejným způsobem. Můžete například zavést novou funkci za příznakem prvku. Pokud je příznak funkce povolen, všichni uživatelé uvidí novou funkci. Zakázáním příznaku prvku se nový prvek skryje.
 
-Naproti tomu _příznak podmíněné funkce_ umožňuje, aby byl příznak funkce povolen nebo zakázán dynamicky. Aplikace se může chovat odlišně v závislosti na kritériích příznaků funkcí. Předpokládejme, že chcete novou funkci Zobrazit pro malou podmnožinu uživatelů v prvním. Příznak podmíněné funkce vám umožní povolit příznak funkce pro některé uživatele a zároveň ho zakázat ostatním uživatelům. _Filtry funkcí_ určují stav příznaku funkce pokaždé, když se vyhodnotí.
+Naproti tomu _příznak podmíněné funkce_ umožňuje dynamicky povolit nebo zakázat příznak funkce. Aplikace se může chovat odlišně v závislosti na kritériích příznaku prvku. Předpokládejme, že chcete novou funkci nejprve zobrazit malé podmnožině uživatelů. Příznak podmíněné funkce umožňuje povolit příznak funkce pro některé uživatele při jeho zakázání pro ostatní uživatele. _Filtry funkcí_ určují stav příznaku prvku při každém vyhodnocení.
 
 Knihovna `Microsoft.FeatureManagement` obsahuje dva filtry funkcí:
 
-- `PercentageFilter` povoluje příznak funkce na základě procenta.
-- `TimeWindowFilter` povolí příznak funkce během zadaného časového období.
+- `PercentageFilter`povolí příznak prvku na základě procenta.
+- `TimeWindowFilter`povolí příznak prvku během zadaného časového období.
 
-Můžete také vytvořit vlastní filtr funkcí, který implementuje [rozhraní Microsoft. FeatureManagement. IFeatureFilter](/dotnet/api/microsoft.featuremanagement.ifeaturefilter).
+Můžete také vytvořit vlastní filtr funkcí, který implementuje [rozhraní Microsoft.FeatureManagement.IFeatureFilter](/dotnet/api/microsoft.featuremanagement.ifeaturefilter).
 
 ## <a name="registering-a-feature-filter"></a>Registrace filtru funkcí
 
-Zaregistrujte filtr funkcí voláním metody `AddFeatureFilter` a zadáním názvu filtru funkce. Například následující kód registruje `PercentageFilter`:
+Filtr prvku můžete zaregistrovat `AddFeatureFilter` voláním metody a zadáním názvu filtru prvku. Například následující kód registry `PercentageFilter`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -41,46 +41,46 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="configuring-a-feature-filter-in-azure-app-configuration"></a>Konfigurace filtru funkcí v konfiguraci aplikací Azure
 
-Některé filtry funkcí mají další nastavení. Například `PercentageFilter` aktivuje funkci na základě procenta. Má nastavení definující procentuální hodnotu, která se má použít.
+Některé filtry funkcí mají další nastavení. Například `PercentageFilter` aktivuje funkci na základě procenta. Má nastavení definující procento, které má být používáno.
 
-Tato nastavení můžete nakonfigurovat pro příznaky funkcí definované v konfiguraci aplikace Azure. Pomocí následujících kroků můžete například povolit příznak funkce pro 50% požadavků na webovou aplikaci pomocí `PercentageFilter`:
+Tato nastavení můžete nakonfigurovat pro příznaky funkcí definované v konfiguraci aplikace Azure. Chcete-li například povolit `PercentageFilter` příznak funkce pro 50 % požadavků na webovou aplikaci, postupujte takto:
 
-1. Postupujte podle pokynů v [rychlém startu: Přidání příznaků funkcí do aplikace ASP.NET Core](./quickstart-feature-flag-aspnet-core.md) pro vytvoření webové aplikace s příznakem funkce.
+1. Postupujte podle pokynů na [úvodním panelu: Přidání příznaků funkcí do aplikace ASP.NET Core](./quickstart-feature-flag-aspnet-core.md) vytvořte webovou aplikaci s příznakem funkce.
 
-1. V Azure Portal přejděte do úložiště konfigurace a klikněte na **správce funkcí**.
+1. Na webu Azure Portal přejděte do úložiště konfigurace a klikněte na **Správce funkcí**.
 
-1. Klikněte na kontextovou nabídku pro příznak funkce *beta* , který jste vytvořili v rychlém startu. Klikněte na **Upravit**.
-
-    > [!div class="mx-imgBorder"]
-    > ![upravit příznak funkce beta](./media/edit-beta-feature-flag.png)
-
-1. Na obrazovce pro **Úpravy** vyberte přepínač **zapnuto** , pokud ještě není vybraný. Pak klikněte na tlačítko **Přidat filtr** . (Popisek **na** přepínači se změní na číst **podmíněné**.)
-
-1. Do pole **klíč** zadejte *Microsoft. PERCENTAGE*.
+1. Klikněte na místní nabídku pro příznak Funkce *beta,* který jste vytvořili v rychlém startu. Klikněte na **Upravit**.
 
     > [!div class="mx-imgBorder"]
-    > ![přidat filtr funkcí](./media/feature-flag-add-filter.png)
+    > ![Upravit příznak funkce beta verze](./media/edit-beta-feature-flag.png)
 
-1. Klikněte na místní nabídku vedle klíče filtru funkcí. Klikněte na **Upravit parametry**.
+1. Na obrazovce **Úpravy** vyberte **přepínací** tlačítko Zapnuto, pokud ještě není vybrané. Pak klikněte na tlačítko **Přidat filtr.** (Popisek tlačítka **Na** se změní na **podmíněný**.)
 
-    > [!div class="mx-imgBorder"]
-    > ![upravit parametry filtru funkce](./media/feature-flag-edit-filter-parameters.png)
-
-1. Najeďte myší pod záhlavím **název** tak, aby se textová pole zobrazovala v mřížce. Zadejte **název** *hodnoty* a **hodnotu** 50. Pole **hodnota** označuje procento požadavků, u kterých má být filtr funkcí povolen.
+1. Do pole **Klíč** zadejte *Microsoft.Percentage*.
 
     > [!div class="mx-imgBorder"]
-    > ![nastavit parametry filtru funkcí](./media/feature-flag-set-filter-parameters.png)
+    > ![Přidat filtr prvků](./media/feature-flag-add-filter.png)
 
-1. Klikněte na **použít** a vraťte se na obrazovku **příznaku pro úpravu funkce** . Pak klikněte na **použít** znovu a uložte nastavení příznaku funkce.
-
-1. **Stav** příznaku funkce se teď zobrazuje jako *podmíněný*. Tento stav indikuje, že příznak funkce bude povolený nebo zakázaný podle jednotlivých požadavků, a to na základě kritérií vydaných filtrem funkcí.
+1. Klikněte na místní nabídku vedle klíče filtru funkcí. Klepněte na **tlačítko Upravit parametry**.
 
     > [!div class="mx-imgBorder"]
-    > příznak podmíněné funkce ![](./media/feature-flag-filter-enabled.png)
+    > ![Upravit parametry filtru prvků](./media/feature-flag-edit-filter-parameters.png)
+
+1. Najeďte na jenom pod záhlavím **Název,** aby se textová pole zobrazila v mřížce. Zadejte **název** *hodnoty* a **hodnotu** 50. Pole **Hodnota** označuje procento požadavků, pro které má být filtr prvku povolen.
+
+    > [!div class="mx-imgBorder"]
+    > ![Nastavení parametrů filtru prvku](./media/feature-flag-set-filter-parameters.png)
+
+1. Kliknutím na **Použít** se vrátíte na obrazovku **příznaku upravit funkci.** Potom dalším kliknutím na **Použít** uložte nastavení příznaku prvku.
+
+1. **Stav** příznaku prvku se nyní zobrazí jako *Podmíněný*. Tento stav označuje, že příznak funkce bude povolen nebo zakázán na základě požadavku na základě kritérií vynucených filtrem funkce.
+
+    > [!div class="mx-imgBorder"]
+    > ![Příznak podmíněné funkce](./media/feature-flag-filter-enabled.png)
 
 ## <a name="feature-filters-in-action"></a>Filtry funkcí v akci
 
-Chcete-li zobrazit účinky tohoto příznaku funkce, spusťte aplikaci a stiskněte tlačítko **aktualizovat** v prohlížeči několikrát. Uvidíte, že se položka *beta* zobrazí na panelu nástrojů o 50% času. Tato část času je skrytá, protože `PercentageFilter` deaktivuje funkci *beta* pro podmnožinu požadavků. Následující video ukazuje toto chování v akci.
+Chcete-li zobrazit účinky tohoto příznaku funkce, spusťte aplikaci a několikrát stiskněte tlačítko **Aktualizovat** v prohlížeči. Zobrazí se, že se položka *beta* zobrazuje na panelu nástrojů přibližně v 50 % času. Zbytek času je skrytý, protože `PercentageFilter` deaktivuje funkci *Beta* pro podmnožinu požadavků. Následující video ukazuje toto chování v akci.
 
 > [!div class="mx-imgBorder"]
 > ![PercentageFilter v akci](./media/feature-flags-percentagefilter.gif)

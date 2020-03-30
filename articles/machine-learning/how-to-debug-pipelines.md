@@ -1,98 +1,98 @@
 ---
-title: Ladění a řešení potíží s kanály strojového učení
+title: Ladění kanálů strojového učení a řešení souvisejících potíží
 titleSuffix: Azure Machine Learning
-description: Ladit a řešit potíže s kanály strojového učení v sadě Azure Machine Learning SDK pro Python. Seznamte se s běžnými nástrah pro vývoj kanálů a tipů, které vám pomůžou ladit skripty před a během vzdáleného spouštění. Naučte se používat Visual Studio Code k interaktivnímu ladění kanálů strojového učení.
+description: Ladění a řešení potíží s kanály strojového učení v Azure Machine Learning SDK pro Python. Seznamte se s běžnými náskali pro vývoj kanálů a tipy, které vám pomohou ladit skripty před a během vzdáleného spuštění. Naučte se používat visual studio kód interaktivně ladit vaše kanály strojového učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.date: 12/12/2019
-ms.openlocfilehash: c81d4db5798c15327e06471f1cb0da4841bd61b2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/18/2020
+ms.openlocfilehash: 578e935ee742ad476aeafb53670f0a92035249e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283443"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064083"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění a řešení potíží s kanály strojového učení
+# <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak ladit a řešit potíže s [kanály strojového učení](concept-ml-pipelines.md) v sadě [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a v [Návrháři Azure Machine Learning (Preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer). Informace jsou k dispozici v tématu Postupy:
+V tomto článku se dozvíte, jak ladit a řešit [problémy s kanály strojového učení](concept-ml-pipelines.md) v [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a [Azure Machine Learning designer (preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer). Jsou poskytovány informace o tom, jak:
 
 * Ladění pomocí sady Azure Machine Learning SDK
-* Ladění pomocí návrháře Azure Machine Learning
-* Ladění pomocí Application Insights
-* Interaktivní ladění pomocí Visual Studio Code (VS Code) a Python Tools for Visual Studio (PTVSD)
+* Ladění pomocí Návrháře Azure Machine Learning Designer
+* Ladění pomocí přehledů aplikací
+* Interaktivní ladění pomocí kódu Sady Visual Studio (Kód VS) a nástrojů Pythonu pro Visual Studio (PTVSD)
 
-## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Ladění a řešení potíží v sadě Azure Machine Learning SDK
-Následující části poskytují přehled běžných nástrah při vytváření kanálů a různé strategie pro ladění kódu, který běží v kanálu. Následující tipy použijte, pokud máte potíže se spuštěním kanálu podle očekávání.
+## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Ladění a řešení potíží ve steku Azure Machine Learning SDK
+Následující části poskytují přehled běžných úskalí při vytváření kanálů a různé strategie pro ladění kódu, který běží v kanálu. Následující tipy použijte, pokud máte potíže s spuštěním kanálu podle očekávání.
 
-### <a name="testing-scripts-locally"></a>Místní testování skriptů
+### <a name="testing-scripts-locally"></a>Testování skriptů místně
 
-Jedním z nejběžnějších chyb v kanálu je to, že připojený skript (skript pro čištění dat, hodnoticí skript atd.) neběží tak, jak je zamýšlený, nebo obsahuje běhové chyby ve vzdáleném výpočetním kontextu, které se obtížně ladí ve vašem pracovním prostoru na Azure Machine. Learning Studio. 
+Jednou z nejběžnějších chyb v kanálu je, že připojený skript (skript pro čištění dat, skript pro vyhodnocování atd.) není spuštěn tak, jak má, nebo obsahuje chyby za běhu ve vzdáleném výpočetním kontextu, které je obtížné ladit ve vašem pracovním prostoru v Azure Machine Učící se studio. 
 
-Samotné kanály se nedají spouštět místně, ale spuštěné skripty v izolaci na místním počítači vám umožní ladit rychleji, protože nemusíte čekat na proces sestavení výpočtů a prostředí. K tomu je potřeba nějaká vývojová práce:
+Samotné kanály nelze spustit místně, ale spuštění skriptů v izolaci v místním počítači umožňuje ladění rychleji, protože nemusíte čekat na výpočetní a environmentální proces sestavení. K tomu je nutná některá vývojová práce:
 
-* Pokud jsou vaše data v cloudovém úložišti dat, budete muset stáhnout data a zpřístupnit je vašemu skriptu. Použití malého vzorku vašich dat je dobrým způsobem, jak vyjímat modul runtime a rychle získat zpětnou vazbu k chování skriptu.
-* Pokud se pokoušíte simulovat krok zprostředkujícího kanálu, možná budete muset ručně vytvořit typy objektů, které konkrétní skript očekává od předchozího kroku.
-* Budete také muset definovat vlastní prostředí a replikovat závislosti definované ve vzdáleném výpočetním prostředí.
+* Pokud jsou vaše data v cloudovém úložišti dat, budete muset stáhnout data a zpřístupnit je skriptu. Použití malého vzorku dat je dobrý způsob, jak zkrátit dobu běhu a rychle získat zpětnou vazbu o chování skriptu
+* Pokud se pokoušíte simulovat mezilehlý krok kanálu, bude pravděpodobně nutné ručně vytvořit typy objektů, které konkrétní skript očekává od předchozího kroku
+* Budete také muset definovat vlastní prostředí a replikovat závislosti definované ve vzdáleném výpočetním prostředí
 
-Jakmile budete mít Instalační program skriptu spuštěný v místním prostředí, je mnohem jednodušší provádět úlohy ladění, jako je:
+Jakmile budete mít nastavení skriptu pro spuštění v místním prostředí, je mnohem jednodušší provést ladění úloh, jako je:
 
 * Připojení vlastní konfigurace ladění
 * Pozastavení provádění a kontrola stavu objektu
-* Zachycení typu nebo logických chyb, které se nezveřejňují do doby běhu
+* Zachycení typu nebo logické chyby, které nebudou vystaveny až do běhu
 
 > [!TIP] 
-> Jakmile ověříte, že je váš skript spuštěný podle očekávání, dobrým dalším krokem je spuštění skriptu v kanálu s jedním krokem předtím, než se pokusíte spustit v kanálu s více kroky.
+> Jakmile můžete ověřit, že váš skript je spuštěn podle očekávání, dobrým dalším krokem je spuštění skriptu v kanálu jednoho kroku před pokusem o spuštění v kanálu s více kroky.
 
 ### <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
 
-Místní testování skriptů je skvělým způsobem, jak ladit hlavní fragmenty kódu a složitou logiku předtím, než začnete sestavovat kanál, ale v některých případech bude pravděpodobně nutné ladit skripty během samotného spuštění kanálu, zejména při diagnostice chování, ke kterému dojde během interakce mezi jednotlivými kroky kanálu. Ve skriptech v kroku doporučujeme použití `print()`ch příkazů, abyste viděli stav objektu a očekávané hodnoty během vzdáleného spuštění, podobně jako při ladění kódu JavaScriptu.
+Testování skriptů místně je skvělý způsob, jak ladit hlavní fragmenty kódu a komplexní logiku před zahájením vytváření kanálu, ale v určitém okamžiku budete pravděpodobně muset ladit skripty během samotného spuštění kanálu, zejména při diagnostice chování, ke kterému dochází během interakce mezi kroky kanálu. Doporučujeme liberální `print()` použití příkazů ve skriptech kroku, abyste viděli stav objektu a očekávané hodnoty během vzdáleného spuštění, podobně jako byste ladili kód JavaScriptu.
 
-Soubor protokolu `70_driver_log.txt` obsahuje: 
+Soubor `70_driver_log.txt` protokolu obsahuje: 
 
-* Všechny tištěné příkazy během provádění skriptu
+* Všechny vytištěné příkazy během provádění skriptu
 * Trasování zásobníku pro skript 
 
-Chcete-li najít tento a další soubory protokolu na portálu, nejprve klikněte na spuštění kanálu ve vašem pracovním prostoru.
+Chcete-li najít tento a další soubory protokolu na portálu, nejprve klikněte na kanál spustit ve vašem pracovním prostoru.
 
-![Stránka seznamu spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-01.png)
+![Stránka se seznamem spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-01.png)
 
-Přejděte na stránku s podrobnostmi o spuštění kanálu.
+Přejděte na stránku podrobností spuštění kanálu.
 
-![Stránka s podrobnostmi o spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-02.png)
+![Stránka podrobností spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-02.png)
 
-Pro konkrétní krok klikněte na modul. Přejděte na kartu **protokoly** . Další protokoly obsahují informace o procesu sestavení image prostředí a kroku přípravy skriptu.
+Klikněte na modul pro konkrétní krok. Přejděte na kartu **Protokoly.** Další protokoly zahrnují informace o procesu sestavení image prostředí a skripty přípravy kroků.
 
-![Karta protokol stránky podrobností spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-03.png)
+![Karta protokolu podrobností spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-03.png)
 
 > [!TIP]
-> Spuštění *publikovaných kanálů* najdete na kartě **koncové body** v pracovním prostoru. Spuštění pro *nepublikované kanály* se dá najít v **experimentech** nebo **kanálech**.
+> Spuštění *publikovaných kanálů* najdete na kartě **Koncové body** ve vašem pracovním prostoru. Spuštění *nepublikovaných kanálů* naleznete v **experimentech** nebo **kanálech**.
 
 ### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
-Následující tabulka obsahuje běžné problémy při vývoji kanálů s potenciálními řešeními.
+Následující tabulka obsahuje běžné problémy během vývoje kanálu s potenciálními řešeními.
 
 | Problém | Možné řešení |
 |--|--|
-| Nejde předat data do adresáře `PipelineData`. | Ujistěte se, že jste ve skriptu vytvořili adresář, který odpovídá tomu, kde váš kanál očekává výstupní data kroku. Ve většině případů vstupní argument definuje výstupní adresář a pak adresář vytvoří explicitně. K vytvoření výstupního adresáře použijte `os.makedirs(args.output_dir, exist_ok=True)`. V tomto [kurzu](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) najdete příklad ukázkového skriptu, který ukazuje tento vzor návrhu. |
-| Chyby závislostí | Pokud jste vytvořili a otestovali skripty lokálně, ale při spuštění ve vzdálené výpočetní službě v kanálu zjistíte problémy se závislostmi, ujistěte se, že vaše závislosti a verze prostředí COMPUTE odpovídají vašemu testovacímu prostředí. |
-| Dvojznačné chyby s cíli výpočtů | Odstranění a opětovné vytváření výpočetních cílů může vyřešit určité problémy s cíli výpočtů. |
-| Kanál nepoužívá znovu postup | Použití tohoto kroku je ve výchozím nastavení povolené, ale ujistěte se, že jste ho neaktivovali v kroku kanálu. Pokud je zakázané opětovné použití, parametr `allow_reuse` v kroku se nastaví na `False`. |
-| Nenutně funguje kanál. | Aby se zajistilo, že se kroky spustí znovu jenom v případě, že se změní jejich podkladová data nebo skripty, oddělte adresáře pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může docházet k zbytečnému opakovanému spuštění. Použijte parametr `source_directory` u objektu kroku kanálu, který odkazuje na izolovaný adresář pro daný krok, a ujistěte se, že nepoužíváte stejnou `source_directory` cestu pro více kroků. |
+| Nelze předat data `PipelineData` do adresáře. | Ujistěte se, že jste vytvořili adresář ve skriptu, který odpovídá místu, kde váš kanál očekává výstupní data kroku. Ve většině případů vstupní argument definuje výstupní adresář a potom vytvoříte adresář explicitně. Slouží `os.makedirs(args.output_dir, exist_ok=True)` k vytvoření výstupního adresáře. Podívejte se na [příklad bodovacího](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) skriptu, který ukazuje tento návrhový vzor. |
+| Chyby závislostí | Pokud jste vyvinuli a otestovali skripty místně, ale najít problémy se závislostmi při spuštění na vzdálené výpočetní prostředky v kanálu, ujistěte se, že vaše výpočetní prostředí závislosti a verze odpovídají testovací prostředí. (Viz [Vytváření prostředí, ukládání do mezipaměti a opětovné použití](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
+| Nejednoznačné chyby s výpočetními cíli | Odstranění a opětovné vytvoření výpočetních cílů může vyřešit určité problémy s výpočetními cíli. |
+| Potrubí, které nepoužívají kroky opětovného použití | Opakované použití kroku je ve výchozím nastavení povoleno, ale ujistěte se, že jste ho nezakázali v kroku kanálu. Pokud je opakované použití `allow_reuse` zakázáno, parametr v `False`kroku bude nastaven na . |
+| Potrubí se zbytečně přepáčuje | Chcete-li zajistit, aby se kroky znovu spouštěli pouze při změně podkladových dat nebo skriptů, odpojte adresáře pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může dojít k zbytečné opakování. Pomocí `source_directory` parametru na objektu kroku kanálu přejděte na izolovaný adresář pro tento `source_directory` krok a ujistěte se, že nepoužíváte stejnou cestu pro více kroků. |
 
 ### <a name="logging-options-and-behavior"></a>Možnosti a chování protokolování
 
-Následující tabulka poskytuje informace o různých možnostech ladění pro kanály. Nejedná se o vyčerpávající seznam, protože další možnosti existují kromě pouze Azure Machine Learning, Pythonu a OpenCensus, které jsou zde uvedeny.
+Níže uvedená tabulka obsahuje informace o různých možnostech ladění pro kanály. Není to vyčerpávající seznam, protože existují i jiné možnosti kromě azure machine learningu, Pythonu a opencensusu, které jsou zobrazeny zde.
 
 | Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Prostředky                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Sada Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Uživatelské rozhraní portálu Azure Machine Learning             | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br>[AzureML. Core. Run – třída](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Tisk/protokolování v Pythonu    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, Návrhář Azure Machine Learning | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Protokolování Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
-| OpenCensus Python          | Protokol    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights – trasování                | [Ladění kanálů v Application Insights](how-to-debug-pipelines-application-insights.md)<br><br>[Nástroje pro export OpenCensus pro Azure Monitor](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Kuchařka protokolování Pythonu](https://docs.python.org/3/howto/logging-cookbook.html) |
+| Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Azure Machine Learning Portal UI             | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br>[třída azureml.core.Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Python tisk/protokolování    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, Azure Machine Learning Designer | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Protokolování v Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | Protokol    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights – trasování                | [Ladění kanálů ve službě Application Insights](how-to-debug-pipelines-application-insights.md)<br><br>[Nástroje pro export OpenCensus pro Azure Monitor](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python protokolování kuchařka](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>Příklad možností protokolování
 
@@ -126,70 +126,70 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Ladění a řešení potíží v Návrháři Azure Machine Learning (Preview)
+## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Ladění a řešení potíží v návrháři Azure Machine Learning (preview)
 
-Tato část poskytuje přehled o řešení potíží s kanály v návrháři.
-Pro kanály vytvořené v Návrháři můžete najít **soubory protokolu** na stránce vytváření obsahu nebo na stránce s podrobnostmi o spuštění kanálu.
+Tato část obsahuje přehled o řešení potíží s kanály v návrháři.
+U kanálů vytvořených v návrháři můžete **soubory protokolu** najít na stránce vytváření nebo na stránce podrobností spuštění kanálu.
 
-### <a name="access-logs-from-the-authoring-page"></a>Přístup k protokolům ze stránky pro vytváření obsahu
+### <a name="access-logs-from-the-authoring-page"></a>Přístup k protokolům ze stránky pro vytváření
 
-Když odešlete spuštění kanálu a zůstanete na stránce vytváření obsahu, můžete najít soubory protokolů vygenerované pro každý modul.
+Když odešlete spuštění kanálu a zůstanete na stránce vytváření, můžete najít soubory protokolu generované pro každý modul.
 
-1. Vyberte libovolný modul na plátně pro tvorbu obsahu.
-1. V podokně vlastnosti přejdete na kartu **protokoly** .
-1. Vyberte soubor protokolu `70_driver_log.txt`
+1. Vyberte libovolný modul ve vývojovém plátně.
+1. V pravém podokně modulu přejděte na kartu **Výstupy+ogs.**
+1. Výběr souboru protokolu`70_driver_log.txt`
 
-    ![Vytváření protokolů modulu stránky](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![Vytváření protokolů modulů stránky](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>Přístup k protokolům z spuštění kanálu
+### <a name="access-logs-from-pipeline-runs"></a>Přístup k protokolům ze spuštění kanálu
 
-Soubory protokolu konkrétních spuštění můžete také najít na stránce s podrobnostmi o spuštění kanálu v částech **kanály** nebo **experimenty** .
+Soubory protokolu konkrétních spuštění můžete také najít na stránce podrobností spuštění kanálu v **oddílech Kanály** nebo **Experimenty.**
 
-1. Vyberte běh kanálu vytvořený v návrháři.
-    Stránka spuštění kanálu ![](./media/how-to-debug-pipelines/pipelinerun-04.png)
+1. Vyberte spuštění kanálu vytvořené v návrháři.
+    ![Stránka spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. V podokně náhledu vyberte libovolný modul.
-1. V podokně vlastnosti přejdete na kartu **protokoly** .
-1. Vyberte soubor protokolu `70_driver_log.txt`
+1. V pravém podokně modulu přejděte na kartu **Výstupy+ogs.**
+1. Výběr souboru protokolu`70_driver_log.txt`
 
-## <a name="debug-and-troubleshoot-in-application-insights"></a>Ladění a řešení potíží v Application Insights
-Další informace o použití knihovny Pythonu OpenCensus tímto způsobem najdete v této příručce: [ladění a řešení potíží s kanály strojového učení v Application Insights](how-to-debug-pipelines-application-insights.md)
+## <a name="debug-and-troubleshoot-in-application-insights"></a>Ladění a řešení potíží v přehledech aplikací
+Další informace o použití knihovny OpenCensus Python tímto způsobem najdete v této příručce: [Ladění a řešení potíží s kanály strojového učení v Application Insights](how-to-debug-pipelines-application-insights.md)
 
-## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Ladění a řešení potíží v Visual Studio Code
+## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Ladění a řešení potíží v kódu sady Visual Studio
 
-V některých případech možná budete muset interaktivně ladit kód Pythonu, který se používá v kanálu ML. Pomocí Visual Studio Code (VS Code) a Python Tools for Visual Studio (PTVSD) se můžete připojit ke kódu při jeho spuštění ve školicím prostředí.
+V některých případech může být nutné interaktivně ladit kód Pythonu používaný v kanálu ML. Pomocí kódu Visual Studio (VS Code) a Python tools for Visual Studio (PTVSD), můžete připojit ke kódu, jak běží v tréninkovém prostředí.
 
 ### <a name="prerequisites"></a>Požadavky
 
-* __Azure Machine Learning pracovní prostor__ , který je nakonfigurován pro použití __Virtual Network Azure__.
-* __Kanál Azure Machine Learning__ , který jako součást postupu kanálu používá skripty Pythonu. Například PythonScriptStep.
-* Azure Machine Learning výpočetní cluster, který je __ve virtuální síti__ a který je __používán kanálem pro školení__.
-* __Vývojové prostředí__ , které je __ve virtuální síti__. Vývojové prostředí může mít jednu z těchto možností:
+* Pracovní __prostor Azure Machine Learning,__ který je nakonfigurovaný pro použití virtuální sítě __Azure__.
+* Kanál __Azure Machine Learning,__ který používá skripty Pythonu jako součást kroků kanálu. Například PythonScriptStep.
+* Cluster Azure Machine Learning Compute, který je __ve virtuální síti__ a používá se __kanálem pro školení__.
+* __Vývojové prostředí,__ které je __ve virtuální síti__. Vývojové prostředí může být jedna z následujících možností:
 
     * Virtuální počítač Azure ve virtuální síti
     * Výpočetní instance virtuálního počítače poznámkového bloku ve virtuální síti
-    * Klientský počítač připojený k virtuální síti pomocí virtuální privátní sítě (VPN).
+    * Klientský počítač připojený k virtuální síti virtuální privátní sítí (VPN).
 
-Další informace o použití Virtual Network Azure s Azure Machine Learning najdete v tématu [zabezpečení experimentů s Azure ml a odvozování úloh v rámci služby Azure Virtual Network](how-to-enable-virtual-network.md).
+Další informace o používání virtuální sítě Azure s Azure Machine Learning najdete v [tématu Zabezpečené úlohy experimentování azure ml a odvození v rámci virtuální sítě Azure](how-to-enable-virtual-network.md).
 
 ### <a name="how-it-works"></a>Jak to funguje
 
-Postup kanálu ML spouští skripty Pythonu. Tyto skripty jsou upraveny tak, aby prováděly následující akce:
+Kroky kanálu ML spouštějí skripty Pythonu. Tyto skripty jsou upraveny tak, aby prováděly následující akce:
     
-1. Zaprotokolujte IP adresu hostitele, na kterém jsou spuštěná. Tuto IP adresu použijete k připojení ladicího programu ke skriptu.
+1. Protokolovat adresu IP hostitele, na které jsou spuštěny. Ip adresu slouží k připojení ladicího programu ke skriptu.
 
-2. Spusťte ladicí komponentu PTVSD a počkejte, než se ladicí program připojí.
+2. Spusťte součást ladění PTVSD a počkejte na připojení ladicího programu.
 
-3. Ve vašem vývojovém prostředí budete monitorovat protokoly vytvořené procesem školení a zjistit tak IP adresu, na které je skript spuštěný.
+3. Z vývojového prostředí můžete sledovat protokoly vytvořené procesem školení najít IP adresu, kde je spuštěn skript.
 
-4. Určíte VS Code IP adresu pro připojení ladicího programu k pomocí souboru `launch.json`.
+4. Sdělte vs kód IP adresu pro připojení ladicího programu pomocí souboru. `launch.json`
 
-5. Ladicí program můžete připojit a interaktivně krokovat prostřednictvím skriptu.
+5. Připojíte ladicí program a interaktivně krokování skriptu.
 
 ### <a name="configure-python-scripts"></a>Konfigurace skriptů Pythonu
 
-Pokud chcete povolit ladění, proveďte následující změny ve skriptech Pythonu používaných kroky v kanálu ML:
+Chcete-li povolit ladění, proveďte následující změny skriptů Pythonu používaných kroky v kanálu ML:
 
-1. Přidejte následující výpisy importu:
+1. Přidejte následující příkazy importu:
 
     ```python
     import ptvsd
@@ -197,7 +197,7 @@ Pokud chcete povolit ladění, proveďte následující změny ve skriptech Pyth
     from azureml.core import Run
     ```
 
-1. Přidejte následující argumenty. Tyto argumenty umožňují povolit ladicí program podle potřeby a nastavit časový limit pro připojení ladicího programu:
+1. Přidejte následující argumenty. Tyto argumenty umožňují povolit ladicí program podle potřeby a nastavit časový čas pro připojení ladicího programu:
 
     ```python
     parser.add_argument('--remote_debug', action='store_true')
@@ -207,14 +207,14 @@ Pokud chcete povolit ladění, proveďte následující změny ve skriptech Pyth
                     f'will await a connection from a debugger client (VSCODE).')
     ```
 
-1. Přidejte následující příkazy. Tyto příkazy načtou aktuální kontext spuštění, takže můžete protokolovat IP adresu uzlu, na kterém je kód spuštěný:
+1. Přidejte následující příkazy. Tyto příkazy načítají aktuální kontext spuštění, takže můžete protokolovat adresu IP uzlu, na který je kód spuštěn:
 
     ```python
     global run
     run = Run.get_context()
     ```
 
-1. Přidejte příkaz `if`, který spustí PTVSD a počká, až se ladicí program připojí. Pokud se žádný ladicí program nepřipojí před časovým limitem, skript pokračuje jako normální.
+1. Přidejte `if` příkaz, který spustí PTVSD a čeká na připojení ladicího programu. Pokud žádný ladicí program připojí před časový mzda, skript pokračuje jako normální.
 
     ```python
     if args.remote_debug:
@@ -229,7 +229,7 @@ Pokud chcete povolit ladění, proveďte následující změny ve skriptech Pyth
         print(f'Debugger attached = {ptvsd.is_attached()}')
     ```
 
-Následující příklad Pythonu ukazuje základní soubor `train.py`, který umožňuje ladění:
+Následující příklad Pythonu `train.py` ukazuje základní soubor, který umožňuje ladění:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -281,9 +281,9 @@ if not (args.output_train is None):
     print("%s created" % args.output_train)
 ```
 
-### <a name="configure-ml-pipeline"></a>Konfigurovat kanál ML
+### <a name="configure-ml-pipeline"></a>Konfigurace kanálu ML
 
-Aby bylo možné poskytnout balíčky Pythonu potřebné ke spuštění PTVSD a získat kontext spuštění, vytvořte prostředí a nastavte `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`. Změňte verzi sady SDK tak, aby odpovídala hodnotě, kterou používáte. Následující fragment kódu ukazuje, jak vytvořit prostředí:
+Chcete-li poskytnout balíčky Pythonu potřebné ke spuštění PTVSD `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`a získání kontextu spuštění, vytvořte prostředí a nastavte . Změňte verzi sady SDK tak, aby odpovídala verzi, kterou používáte. Následující fragment kódu ukazuje, jak vytvořit prostředí:
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
@@ -308,7 +308,7 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
                                                                            pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
 ```
 
-V části [Konfigurace skriptů v Pythonu](#configure-python-scripts) byly do skriptů používaných vaším postupem kanálu ml přidány dva nové argumenty. Následující fragment kódu ukazuje, jak použít tyto argumenty pro povolení ladění pro komponentu a nastavení časového limitu. Také ukazuje, jak použít prostředí vytvořené dříve nastavením `runconfig=run_config`:
+V části [Konfigurovat skripty Pythonu](#configure-python-scripts) byly přidány dva nové argumenty do skriptů používaných kroky kanálu ML. Následující fragment kódu ukazuje, jak použít tyto argumenty k povolení ladění komponenty a nastavení časového času. Ukazuje také, jak používat prostředí vytvořené `runconfig=run_config`dříve nastavením :
 
 ```python
 # Use RunConfig from a pipeline step
@@ -321,33 +321,33 @@ step1 = PythonScriptStep(name="train_step",
                          allow_reuse=False)
 ```
 
-Po spuštění kanálu vytvoří každý krok podřízený běh. Pokud je povoleno ladění, upravené skripty protokolují informace podobné následujícímu textu v `70_driver_log.txt` pro podřízený běh:
+Při spuštění kanálu, každý krok vytvoří podřízené spuštění. Pokud je povoleno ladění, upravený skript protokoluje informace podobné následujícímu textu v podřízeném `70_driver_log.txt` spuštění:
 
 ```text
 Timeout for debug connection: 300
 ip_address: 10.3.0.5
 ```
 
-Uložte hodnotu `ip_address`. Používá se v další části.
+Uložte `ip_address` hodnotu. Používá se v další části.
 
 > [!TIP]
-> IP adresu můžete najít také z protokolů spuštění pro tento krok kanálu pro podřízený běh. Další informace o tom, jak zobrazit tyto informace, najdete v tématu [monitorování běhů experimentů Azure ml a metrik](how-to-track-experiments.md).
+> Můžete také najít IP adresu z protokolů spuštění pro podřízené spustit pro tento krok kanálu. Další informace o zobrazení těchto informací naleznete v [tématu Sledování spuštění experimentu Azure ML a metriky](how-to-track-experiments.md).
 
 ### <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 
-1. Chcete-li nainstalovat Python Tools for Visual Studio (PTVSD) do vývojového prostředí VS Code, použijte následující příkaz:
+1. Chcete-li nainstalovat nástroje Pythonu pro Visual Studio (PTVSD) do vývojového prostředí Kódu VS, použijte následující příkaz:
 
     ```
     python -m pip install --upgrade ptvsd
     ```
 
-    Další informace o použití PTVSD s VS Code najdete v tématu [vzdálené ladění](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
+    Další informace o používání ptvsd s kódem VS naleznete [v tématu Vzdálené ladění](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
 
-1. Chcete-li nakonfigurovat VS Code ke komunikaci s Azure Machine Learning výpočetní prostředí, které spouští ladicí program, vytvořte novou konfiguraci ladění:
+1. Chcete-li nakonfigurovat kód VS pro komunikaci s výpočetními prostředky Azure Machine Learning, které běží ladicí program, vytvořte novou konfiguraci ladění:
 
-    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Otevře se soubor s názvem __Launch. JSON__ .
+    1. V nabídce VS Code vyberte nabídku __Ladění__ a pak __vyberte Otevřít konfigurace__. Otevře se soubor s názvem __launch.json.__
 
-    1. V souboru __Launch. JSON__ Najděte řádek, který obsahuje `"configurations": [`a vložte za něj následující text. Změňte `"host": "10.3.0.5"` položku na IP adresu vrácenou v protokolech z předchozí části. Změňte položku `"localRoot": "${workspaceFolder}/code/step"` na místní adresář obsahující kopii laděného skriptu:
+    1. V souboru __launch.json__ vyhledejte `"configurations": [`řádek, který obsahuje , a za něj vložte následující text. Změňte `"host": "10.3.0.5"` položku na IP adresu vrácenou v protokolech z předchozí části. Změňte `"localRoot": "${workspaceFolder}/code/step"` položku do místního adresáře, který obsahuje kopii laděného skriptu:
 
         ```json
         {
@@ -367,28 +367,28 @@ Uložte hodnotu `ip_address`. Používá se v další části.
         ```
 
         > [!IMPORTANT]
-        > Pokud již existují další položky v oddílu konfigurace, přidejte čárku (,) za kód, který jste vložili.
+        > Pokud již existují další položky v části konfigurace, přidejte čárku (,) za kód, který jste vložili.
 
         > [!TIP]
-        > Osvědčeným postupem je udržovat prostředky pro skripty v samostatných adresářích, což je důvod, proč `localRoot` ukázkových hodnot odkazuje `/code/step1`.
+        > Osvědčeným postupem je zachovat prostředky pro skripty v samostatných adresářích, což je důvod, proč `localRoot` příklad hodnoty odkazy `/code/step1`.
         >
-        > Pokud ladíte více skriptů, v různých adresářích Vytvořte samostatný konfigurační oddíl pro každý skript.
+        > Pokud ladíte více skriptů, vytvořte v různých adresářích samostatný oddíl konfigurace pro každý skript.
 
-    1. Uložte soubor __Launch. JSON__ .
+    1. Uložte soubor __launch.json.__
 
-### <a name="connect-the-debugger"></a>Připojit ladicí program
+### <a name="connect-the-debugger"></a>Připojení ladicího programu
 
-1. Otevřete VS Code a otevřete místní kopii skriptu.
-2. Nastavte zarážky, u kterých chcete, aby se skript zastavil, jakmile se připojíte.
-3. I když je na podřízeném procesu spuštěn skript a `Timeout for debug connection` se zobrazí v protokolech, použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __Azure Machine Learning Compute: Konfigurace vzdáleného ladění__ . Můžete také vybrat ikonu ladění z bočního panelu, __Azure Machine Learning: položka vzdáleného ladění__ z rozevírací nabídky ladění a potom použít zelenou šipku pro připojení ladicího programu.
+1. Otevřete Kód VS a otevřete místní kopii skriptu.
+2. Po připojení nastavte zarážky na místo, kde má skript zastavit.
+3. Zatímco podřízený proces je spuštěn `Timeout for debug connection` skript a je zobrazen v protokolech, použijte klávesu F5 nebo vyberte __ladění__. Po zobrazení výzvy vyberte __konfiguraci Azure Machine Learning Compute: remote debug.__ Můžete také vybrat ikonu ladění z postranního panelu, __Azure Machine Learning: vzdálená ladicí__ položka z rozbalovací nabídky Ladění a pak pomocí zelené šipky připojit ladicí program.
 
-    V tomto okamžiku se VS Code připojí k PTVSD na výpočetním uzlu a zastaví se na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
+    V tomto okamžiku VS Kód se připojí k PTVSD na výpočetní uzel a zastaví na zarážku, kterou jste nastavili dříve. Nyní můžete krokovat kód při jeho spuštění, zobrazit proměnné atd.
 
     > [!NOTE]
-    > Pokud protokol zobrazí položku informující `Debugger attached = False`, vypršel časový limit a skript pokračuje bez ladicího programu. Odešlete kanál znovu a připojte ladicí program za `Timeout for debug connection`ovou zprávou a před vypršením časového limitu.
+    > Pokud se v protokolu `Debugger attached = False`zobrazí položka s uvedením , vypršel časový limit a skript pokračoval bez ladicího programu. Odešlete kanál znovu a připojte `Timeout for debug connection` ladicí program po zprávě a před vypršením časového limitu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nápovědu k balíčku [AzureML-Pipelines-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) a balíčku [AzureML-Pipelines-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) najdete v referenčních informacích k sadě SDK.
+* Podívejte se na odkaz na sdk nápovědu k balíčku [azureml-pipelines-core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) a balíčku [azureml-pipelines-steps.](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
 
 * Podívejte se na seznam [výjimek návrháře a kódů chyb](algorithm-module-reference/designer-error-codes.md).

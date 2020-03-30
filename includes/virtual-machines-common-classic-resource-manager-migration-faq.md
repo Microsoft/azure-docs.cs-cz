@@ -9,35 +9,35 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78383959"
 ---
-## <a name="what-is-the-time-required-for-migration"></a>Jaký je čas potřebný k migraci?
+## <a name="what-is-the-time-required-for-migration"></a>Jaký je čas potřebný pro migraci?
 
-Plánování a provádění migrace značně závisí na složitosti architektury a může trvat několik měsíců.  
+Plánování a realizace migrace do značné míry závisí na složitosti architektury a může trvat několik měsíců.  
 
-## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Jaká je definice nového zákazníka na virtuálních počítačích s IaaS (Classic)?
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Jaká je definice nového zákazníka na virtuálních počítačích IaaS (klasické)?
 
-Zákazníci, kteří v předplatném neIaaSi virtuální počítače (Classic) v měsíci Febrauary 2020 (měsíc před vyřazením), se považují za nové zákazníky. 
+Zákazníci, kteří neměli v roce 2020 ve svých předplatných virtuální chvat YaaS (klasické) (klasické) jsou považováni za nové zákazníky. 
 
-## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Jaká je definice stávajícího zákazníka v IaaS Virtual Machines (Classic)?
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Jaká je definice existujícího zákazníka na virtuálních počítačích IaaS (klasická)?
 
-Zákazník, který ve svém předplatném v měsíci února 2020 aktivní nebo zastavený, ale přidělené virtuální počítače IaaS (Classic), se považuje za stávajícího zákazníka. Až do 1. března 2023 se k migraci svých virtuálních počítačů z Azure Service Manager do Azure Resource Manager dostanou jenom tito zákazníci. 
+Zákazník, který měl aktivní nebo zastavené, ale přidělil virtuální ms IaaS (Classic) ve svých předplatných v měsíci únoru 2020, se považuje za stávajícího zákazníka. Jenom tito zákazníci se dostanou do 1. 
 
-## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Proč se mi zobrazuje chyba s oznámením "NewClassicVMCreationNotAllowedForSubscription"?
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Proč se zobrazuje chyba s uvedením "NewClassicVMCreationNotAllowedForSubscription"?
 
-V rámci procesu vyřazení již nejsou virtuální počítače IaaS (Classic) k dispozici pro nové zákazníky. Identifikovali jsme vás jako noví zákazníci, takže vaše operace nebyla autorizována. Důrazně doporučujeme používat službu [Azure Virtual Machines s využitím ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Pokud nemůžete použít virtuální počítače Azure s využitím ARM, obraťte se prosím na podporu povoleného předplatného.
+V rámci procesu odchodu do důchodu, IaaS VM (klasické) již nejsou k dispozici pro nové zákazníky. Identifikovali jsme vás jako nové zákazníky, a proto váš provoz nebyl autorizován. Důrazně doporučujeme používat [virtuální počítače Azure pomocí ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Pokud nemůžete používat virtuální počítače Azure pomocí ARM, obraťte se na podporu pro odběr whitelisting.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Má tento plán migrace vliv na některé stávající služby nebo aplikace spuštěné na virtuálních počítačích Azure? 
 
-Ne do 1. března 2023 pro virtuální počítače s IaaS (Classic). Virtuální počítače s IaaS (Classic) mají obecně dostupné služby. I nadále můžete tyto prostředky používat k rozšíření vaší působnosti v systému Microsoft Azure. Od 1. března 2023 se tyto virtuální počítače kompletně vyřadí a všechny aktivní nebo přidělené virtuální počítače se zastaví & přidělení zrušeno. Nebude to mít žádný vliv na jiné klasické prostředky, jako je Cloud Services (Classic), účty úložiště (Classic) atd.   
+Až 1. března 2023 pro virtuální zařízení IaaS (klasické). Virtuální moduly IaaS (klasické) jsou plně podporované služby v obecné dostupnosti. I nadále můžete tyto prostředky používat k rozšíření vaší působnosti v systému Microsoft Azure. března 1st, 2023 tyto virtuální počítače budou plně vyřazené a všechny aktivní nebo přidělené virtuální chody se zastaví & přidělené. Nebude mít žádný vliv na jiné klasické prostředky, jako jsou cloudové služby (Classic), účty úložiště (Classic) atd.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Co se stane s virtuálními počítači, pokud se je nechystám migrovat v blízké budoucnosti? 
 
-1\. března 2023 budou virtuální počítače IaaS (Classic) kompletně vyplněné a všechny aktivní nebo přidělené virtuální počítače se zastaví & přidělení zrušeno. Abychom předešli dopadům na chod firmy, máme v dnešní době komentář k zahájení plánování migrace a dokončit ho do 1. března 2023. Stávající rozhraní API Classic, Cloud Services a model prostředků nepoužíváme. Vzhledem k pokročilým funkcím dostupným v modelu nasazení Resource Manager chceme migraci usnadnit. Doporučujeme, abyste zahájili plánování migrace těchto prostředků na Azure Resource Manager. 
+1. března 2023 budou virtuální počítači IaaS (Classic) plně vyřazené a všechny aktivní nebo přidělené virtuální počítače budou zastaveny & přidělené. Abychom předešli dopadu na podnikání, důrazně doporučujeme, abyste migraci mohli začít plánovat ještě dnes a dokončit ji do 1. března 2023. Nejsme zastaralá existující klasická api, cloudové služby a model prostředků. Vzhledem k pokročilým funkcím dostupným v modelu nasazení Resource Manager chceme migraci usnadnit. Doporučujeme začít plánovat migraci těchto prostředků do Správce prostředků Azure. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Co tento plán migrace znamená pro stávající nástroje? 
 
@@ -53,7 +53,7 @@ Migraci můžete přerušit, dokud jsou prostředky v připraveném stavu. Po ú
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Je možné vrátit migraci zpět v případě, že selže operace potvrzení? 
 
-Pokud selže operace potvrzení, migraci není možné přerušit. Všechny operace migrace, včetně operace potvrzení, jsou idempotentní. Proto doporučujeme, abyste operaci po chvilce zkusili opakovat. Pokud pořád dojde k chybě, vytvořte lístek podpory.
+Pokud selže operace potvrzení, migraci není možné přerušit. Všechny operace migrace, včetně operace potvrzení, jsou idempotentní. Proto doporučujeme, abyste operaci po chvilce zkusili opakovat. Pokud stále čelíte chybě, vytvořte lístek podpory.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Je nutné koupit další okruh ExpressRoute, když potřebuji používat infrastrukturu jako službu (IaaS) v modelu Resource Manager? 
 
@@ -63,24 +63,24 @@ Ne. Nedávno jsme povolili [přesun okruhů ExpressRoute z modelu nasazení Clas
 
 Během migrace se prostředky transformují z modelu Classic na Resource Manager. Proto doporučujeme naplánovat aktualizace zásad řízení přístupu na základě role, které je třeba provést, až po migraci.
 
-## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Tyto klasické virtuální počítače jsem zálohoval do trezoru. Můžu migrovat svoje virtuální počítače z klasického režimu do režimu Resource Manageru a chránit je pomocí trezoru služby Recovery Services?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Své klasické virtuální aplikace jsem zálohoval v trezoru. Můžu migrovat svoje virtuální počítače z klasického režimu do režimu Resource Manageru a chránit je pomocí trezoru služby Recovery Services?
 
-Když přesunete virtuální počítač z klasického do režimu Správce prostředků, zálohy provedené před migrací se nebudou migrovat na nově migrovaný Správce prostředků virtuální počítač. Pokud ale chcete zachovat zálohy klasických virtuálních počítačů, postupujte před migrací pomocí těchto kroků. 
+Když přesunete virtuální ho z klasického režimu do režimu Správce prostředků, zálohy před migrací nebudou migrovat do nově migrovaného virtuálního počítače Správce prostředků. Pokud si ale chcete zachovat zálohy klasických virtuálních počítačů, postupujte před migrací podle těchto kroků. 
 
-1. V trezoru Recovery Services otevřete kartu **chráněné položky** a vyberte virtuální počítač. 
-2. Klikněte na možnost Zastavit ochranu. Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
+1. V trezoru Služby pro obnovení přejděte na kartu **Chráněné položky** a vyberte virtuální počítač. 
+2. Klikněte na Zastavit ochranu. Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
 
 > [!NOTE]
-> Náklady na instanci zálohy se vám budou účtovat, dokud si zachováte data. Záložní kopie se vyřadí jako rozsah pro uchování dat. Poslední záložní kopie je ale vždycky zachovaná, dokud data zálohy explicitně neodstraníte. Po překročení rozsahu uchování doporučujeme, abyste zkontrolovali rozsah uchování virtuálního počítače a aktivovali v chráněné položce v trezoru možnost odstranit data zálohy. 
+> Náklady na instanci zálohování vám budou účtovány, dokud neuchováte data. Záložní kopie budou vyřazovány podle rozsahu uchování. Poslední záložní kopie je však vždy zachována, dokud explicitně neodstraníte záložní data. Doporučujeme zkontrolovat rozsah uchování virtuálního počítače a aktivovat "Odstranit záložní data" na chráněné položce v trezoru, jakmile rozsah uchování je u konce. 
 >
 >
 
-Chcete-li migrovat virtuální počítač do režimu Správce prostředků, 
+Chcete-li přenést virtuální počítač do režimu Správce prostředků, 
 
 1. Odstraňte z virtuálního počítače zálohu/rozšíření snímků.
 2. Proveďte migraci virtuálního počítače z klasického režimu do režimu Resource Manageru. Ověřte, že se do režimu Resource Manager migruje také úložiště a informace o síti odpovídající tomuto virtuálnímu počítači.
 
-Pokud navíc chcete zálohovat migrovaný virtuální počítač, v okně Správa virtuálního počítače [Povolte zálohování](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
+Navíc pokud chcete zálohovat migrovaný virtuální počítač, přejděte na okno pro správu virtuálního počítače [a povolte zálohování](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Je možné ověřit, jestli jsou prostředky nebo předplatné schopné migrace? 
 
@@ -102,6 +102,6 @@ Všechny prostředky, pro které jste explicitně zadali název v modelu nasazen
 
 Okruhy ExpressRoute používající autorizační odkazy mezi předplatnými není možné automaticky migrovat bez výpadku. Nabízíme doprovodné materiály popisující ruční postup jejich migrace. Postup a další informace najdete v článku [Migrace okruhů ExpressRoute a přidružených virtuálních sítí z modelu nasazení Classic na Resource Manager](../articles/expressroute/expressroute-migration-classic-resource-manager.md).
 
-## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Zobrazila se mi zpráva *"virtuální počítač hlásí celkový stav agenta jako Nepřipraveno. Virtuální počítač proto nelze migrovat. Ujistěte se, že agent virtuálního počítače hlásí celkový stav agenta jako připravený nebo zda* *obsahuje rozšíření, jehož stav není hlášený z virtuálního počítače. Proto tento virtuální počítač nejde migrovat. "*
+## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Dostal jsem zprávu *"Virtuální měsíč hlásí celkový stav agenta jako Není připraven. Proto virtuální ho nelze migrovat. Ujistěte se, že agent virtuálního soudu hlásí celkový stav agenta jako připravený"* nebo *"Virtuální jazyk obsahuje rozšíření, jehož stav není hlášen z virtuálního soudu. Proto tento virtuální virtuální ms nelze migrovat."*
 
 Tato zpráva se zobrazí v případě, že virtuální počítač nemá odchozí připojení k internetu. Agent virtuálního počítače se pomocí odchozího připojení spojuje s účtem služby Azure Storage, aby každých pět minut aktualizoval stav agenta.

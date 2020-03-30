@@ -1,6 +1,6 @@
 ---
-title: Použití modulu služby Azure Maps Services | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak pomocí modulu služby Azure Maps Services používat službu Microsoft Azure Maps (REST).
+title: Použití modulu Služby Azure Maps Services | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak využít služby Microsoft Azure Maps REST pomocí modulu služeb Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -9,39 +9,39 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988732"
 ---
-# <a name="use-the-azure-maps-services-module"></a>Použití modulu služby Azure Maps Services
+# <a name="use-the-azure-maps-services-module"></a>Použití modulu služeb Azure Maps
 
-Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná knihovna, která usnadňuje používání služby Azure Maps REST v aplikacích web nebo Node. js pomocí JavaScriptu nebo TypeScript.
+Webová sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná knihovna, která usnadňuje používání služeb Azure Maps REST ve webových aplikacích nebo aplikacích Node.js pomocí JavaScriptu nebo TypeScriptu.
 
 ## <a name="use-the-services-module-in-a-webpage"></a>Použití modulu služby na webové stránce
 
 1. Vytvořte nový soubor HTML.
-1. Načtěte modul Azure Maps Services. Můžete ho načíst jedním ze dvou způsobů:
-    - Použijte globálně hostovanou verzi Content Delivery Network služby Azure Maps Services v rámci Azure. Přidejte odkaz na skript do prvku `<head>` souboru:
+1. Načtěte modul služeb Azure Maps. Můžete jej načíst jedním ze dvou způsobů:
+    - Použijte globálně hostovizované, Azure Content Delivery Network verze modulu služeb Azure Maps. Přidejte odkaz na `<head>` skript k prvku souboru:
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - Případně můžete modul služby pro Azure Maps zdrojového kódu sady web SDK načíst místně pomocí balíčku [Azure-Maps-REST](https://www.npmjs.com/package/azure-maps-rest) npm a potom ho hostovat s vaší aplikací. Tento balíček obsahuje také definice TypeScript. Použijte tento příkaz:
+    - Případně načtěte modul služeb pro zdrojový kód Azure Maps Web SDK místně pomocí balíčku [npm azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest) a pak ho hostujte pomocí aplikace. Tento balíček také obsahuje definice jazyka TypeScript. Pomocí tohoto příkazu:
     
-        > **NPM instalace Azure – Maps – REST**
+        > **npm install azure-maps-rest**
     
-        Pak přidejte odkaz na skript do prvku `<head>` souboru:
+        Potom přidejte odkaz na `<head>` skript k prvku souboru:
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
-1. Vytvořte kanál ověřování. Aby bylo možné inicializovat koncový bod klienta adresy URL služby, musí být kanál vytvořen. Pomocí vlastního klíče účtu Azure Maps nebo přihlašovacích údajů Azure Active Directory (Azure AD) můžete ověřit klienta služby Azure Maps Search. V tomto příkladu se vytvoří klient URL vyhledávací služby. 
+1. Vytvořte kanál ověřování. Před inicializaci koncového bodu klienta adresy URL služby je nutné vytvořit kanál. K ověření klienta služby Azure Maps Search použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje služby Azure Active Directory (Azure AD). V tomto příkladu bude vytvořen klient adresy URL vyhledávací služby. 
 
-    Pokud pro ověřování používáte klíč předplatného:
+    Pokud používáte klíč předplatného pro ověřování:
 
     ```javascript
     // Get an Azure Maps key at https://azure.com/maps.
@@ -59,7 +59,7 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
     var searchURL = new atlas.service.SearchURL(pipeline);
     ```
 
-    Pokud používáte službu Azure AD k ověřování:
+    Pokud používáte Azure AD pro ověřování:
 
     ```javascript
     // Enter your Azure AD client ID.
@@ -122,9 +122,9 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
     }
     ```
 
-    Další informace najdete v tématu [ověřování pomocí Azure Maps](azure-maps-authentication.md).
+    Další informace najdete [v tématu Ověřování pomocí Map Azure](azure-maps-authentication.md).
 
-1. Následující kód používá nově vytvořený klient adresy URL služby Azure Maps Search k obnově kódu adresy: "1 Microsoft Way, Redmond, WA". Kód používá funkci `searchAddress` a zobrazí výsledky jako tabulku v těle stránky.
+1. Následující kód používá nově vytvořené holokaustu Azure Maps Search url klienta geocode adresu: "1 Microsoft Way, Redmond, WA". Kód používá `searchAddress` funkci a zobrazuje výsledky jako tabulku v textu stránky.
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -155,48 +155,48 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
     });
     ```
 
-    Tady je celý běžící ukázka kódu:
+    Zde je úplný, spuštěný ukázkový kód:
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Použití modulu služby" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>pomocí modulu služby</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>pomocí modulu služeb pomocí</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
 
-## <a name="azure-government-cloud-support"></a>Podpora cloudu Azure Government
+## <a name="azure-government-cloud-support"></a>Cloudová podpora Azure Government
 
-Sada Azure Maps Web SDK podporuje cloud Azure Government. Všechny adresy URL JavaScriptu a CSS použité pro přístup k sadě Azure Maps Web SDK zůstávají stejné, ale následující úlohy se musí udělat pro připojení k Azure Government cloudové verzi Azure Maps platformy.
+Webová sada Azure Maps Web SDK podporuje cloud Azure Government. Všechny adresy URL JavaScriptu a CSS používané pro přístup k webové sdk Azure Maps zůstávají stejné, ale pro připojení k cloudové verzi Azure Government platformy Azure Maps je potřeba provést následující úkoly.
 
-Při použití interaktivního ovládacího prvku mapy přidejte následující řádek kódu před vytvořením instance třídy `Map`. 
+Při použití interaktivního ovládacího prvku mapy přidejte před `Map` vytvořením instance třídy následující řádek kódu. 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
 ```
 
-Při ověřování map a služeb nezapomeňte použít podrobnosti ověřování Azure Maps z Azure Government cloudové platformy.
+Nezapomeňte při ověřování mapy Azure použít podrobnosti o ověřování z cloudové platformy Azure Government.
 
-Při použití modulu služeb musí být při vytváření instance koncového bodu adresy URL rozhraní API nastavena doména pro služby. Například následující kód vytvoří instanci třídy `SearchURL` a nasměruje doménu do cloudu Azure Government.
+Při použití modulu služby, doménu pro služby je třeba nastavit při vytváření instance koncového bodu URL rozhraní API. Například následující kód vytvoří instanci `SearchURL` třídy a odkazuje doménu na cloud Azure Government.
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL na `atlas.azure.us`. Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na `https://atlas.azure.us/search/`.
+Pokud máte přímý přístup ke službám Azure `atlas.azure.us`Maps REST, změňte doménu URL na . Pokud například používáte službu rozhraní API `https://atlas.microsoft.com/search/` pro `https://atlas.azure.us/search/`vyhledávání, změňte doménu adresy URL z na .
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o třídách a metodách, které se používají v tomto článku:
+Další informace o třídách a metodách použitých v tomto článku:
 
 > [!div class="nextstepaction"]
-> [MapsURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl?view=azure-maps-typescript-latest)
+> [Adresa Mapy URL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [SearchURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-maps-typescript-latest)
+> [Vyhledávací adresa URL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [RouteURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest)
+> [Routeurl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [SubscriptionKeyCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential?view=azure-maps-typescript-latest)
@@ -204,7 +204,7 @@ Další informace o třídách a metodách, které se používají v tomto člá
 > [!div class="nextstepaction"]
 > [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential?view=azure-maps-typescript-latest)
 
-Další ukázky kódu, které používají modul služby, najdete v těchto článcích:
+Další ukázky kódu, které používají modul služby, naleznete v těchto článcích:
 
 > [!div class="nextstepaction"]
 > [Zobrazit výsledky hledání na mapě](./map-search-location.md)
@@ -213,4 +213,4 @@ Další ukázky kódu, které používají modul služby, najdete v těchto čl�
 > [Získání informací ze souřadnice](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazit směr od A do B](./map-route.md)
+> [Zobrazení pokynů pro trasu z A do B](./map-route.md)

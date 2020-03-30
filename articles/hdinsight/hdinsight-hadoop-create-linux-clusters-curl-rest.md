@@ -1,6 +1,6 @@
 ---
-title: Vytváření clusterů Apache Hadoop s využitím Azure REST API – Azure
-description: Naučte se vytvářet clustery HDInsight odesláním Azure Resource Manager šablon do Azure REST API.
+title: Vytváření clusterů Apache Hadoop pomocí rozhraní Azure REST API – Azure
+description: Zjistěte, jak vytvořit clustery HDInsight odesláním šablon Azure Resource Manager do rozhraní AZURE REST API.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,29 +8,29 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435529"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239925"
 ---
-# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů Apache Hadoop pomocí Azure REST API
+# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytvoření clusterů Apache Hadoop pomocí rozhraní Azure REST API
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Naučte se vytvořit cluster HDInsight pomocí šablony Azure Resource Manager a Azure REST API.
+Zjistěte, jak vytvořit cluster HDInsight pomocí šablony Azure Resource Manager a rozhraní API Azure REST.
 
-Azure REST API umožňuje provádět operace správy u služeb hostovaných na platformě Azure, včetně vytváření nových prostředků, jako jsou clustery HDInsight.
+Rozhraní Azure REST API umožňuje provádět operace správy na službách hostovaných v platformě Azure, včetně vytváření nových prostředků, jako jsou clustery HDInsight.
 
 > [!NOTE]  
-> Kroky v tomto dokumentu používají ke komunikaci s REST API Azure nástroj [kudrlinkou (https://curl.haxx.se/)](https://curl.haxx.se/) .
+> Kroky v tomto dokumentu používají [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) nástroj pro komunikaci s rozhraním API Azure REST.
 
 ## <a name="create-a-template"></a>Vytvoření šablony
 
-Šablony Azure Resource Manager jsou dokumenty JSON, které popisují **skupinu prostředků** a všechny prostředky (například HDInsight). Tento přístup založený na šablonách umožňuje v jedné šabloně definovat prostředky, které potřebujete pro HDInsight.
+Šablony Azure Resource Manageru jsou dokumenty JSON, které popisují **skupinu prostředků** a všechny prostředky v ní (například HDInsight).) Tento přístup založený na šabloně umožňuje definovat prostředky, které potřebujete pro HDInsight v jedné šabloně.
 
-Následující dokument JSON je fúze šablony a souborů parametrů z [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), která vytvoří cluster se systémem Linux s použitím hesla k zabezpečení uživatelského účtu SSH.
+Následující dokument JSON je sloučení souborů šablony a [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password)parametrů z , který vytvoří cluster založený na Linuxu pomocí hesla k zabezpečení uživatelského účtu SSH.
 
    ```json
    {
@@ -205,60 +205,60 @@ Následující dokument JSON je fúze šablony a souborů parametrů z [https://
    }
    ```
 
-Tento příklad se používá v krocích v tomto dokumentu. Nahraďte ukázkové *hodnoty* v oddílu **Parameters** hodnotami pro váš cluster.
+Tento příklad se používá v krocích v tomto dokumentu. Nahraďte ukázkové *hodnoty* v části **Parametry** hodnotami pro váš cluster.
 
 > [!IMPORTANT]  
-> Šablona používá výchozí počet pracovních uzlů (4) pro cluster HDInsight. Pokud plánujete více než 32 pracovních uzlů, musíte vybrat velikost hlavního uzlu s aspoň 8 jádry a 14 GB paměti RAM.
+> Šablona používá výchozí počet pracovních uzlů (4) pro cluster HDInsight. Pokud plánujete na více než 32 pracovních uzlů, pak je nutné vybrat velikost hlavního uzlu s alespoň 8 jader a 14 GB RAM.
 >
 > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure.
+## <a name="sign-in-to-your-azure-subscription"></a>Přihlášení k předplatnému Azure
 
-Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) a připojte se k předplatnému pomocí příkazu `az login`.
+Postupujte podle kroků zdokumentovaných v [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) a připojte se k předplatnému pomocí příkazu. `az login`
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 > [!NOTE]  
-> Tyto kroky jsou zkrácená verze oddílu *vytvořit instanční objekt s heslem* v tématu [použití Azure CLI k vytvoření instančního objektu pro přístup](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) k dokumentu prostředků. Pomocí těchto kroků můžete vytvořit instanční objekt, který se používá k ověření REST API služby Azure.
+> Tyto kroky jsou zkrácená verze *vytvořit instanční objekt s heslem* části [použití nastavení příkazu k řešení Azure k vytvoření instančního objektu pro přístup k prostředkům](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) dokumentu. Tyto kroky vytvořit instanční objekt, který se používá k ověření rozhraní API Azure REST.
 
-1. Z příkazového řádku použijte následující příkaz k vypsání předplatných Azure.
+1. Z příkazového řádku můžete pomocí následujícího příkazu vypsat předplatná Azure.
 
-   ```bash
+   ```azurecli
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    V seznamu vyberte předplatné, které chcete použít, a poznamenejte si **Subscription_ID** a __Tenant_ID__ sloupce. Uložte tyto hodnoty.
+    V seznamu vyberte předplatné, které chcete použít, a poznamenejte si **sloupce Subscription_ID** a __Tenant_ID.__ Uložte tyto hodnoty.
 
-2. K vytvoření aplikace v Azure Active Directory použijte následující příkaz.
+2. Pomocí následujícího příkazu vytvořte aplikaci ve službě Azure Active Directory.
 
-   ```bash
+   ```azurecli
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    Nahraďte hodnoty pro `--display-name`, `--homepage`a `--identifier-uris` vlastními hodnotami. Zadejte heslo pro novou položku služby Active Directory.
+    Nahraďte hodnoty `--display-name` `--homepage`pro `--identifier-uris` , a vlastní mise. Zadejte heslo pro novou položku služby Active Directory.
 
    > [!NOTE]  
-   > Hodnoty `--home-page` a `--identifier-uris` nemusejí odkazovat na vlastní webovou stránku hostovanou na internetu. Musí se jednat o jedinečné identifikátory URI.
+   > Hodnoty `--home-page` `--identifier-uris` a nemusí odkazovat na aktuální webovou stránku hostovací na internetu. Musí se jednat o jedinečné identifikátory URI.
 
    Hodnota vrácená z tohoto příkazu je __ID aplikace__ pro novou aplikaci. Uložte tuto hodnotu.
 
-3. K vytvoření instančního objektu s použitím **ID aplikace**použijte následující příkaz.
+3. Pomocí následujícího příkazu vytvořte instanční objekt pomocí **ID aplikace**.
 
-   ```bash
+   ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
      Hodnota vrácená z tohoto příkazu je __ID objektu__. Uložte tuto hodnotu.
 
-4. Přiřaďte roli **vlastníka** k instančnímu objektu pomocí hodnoty **ID objektu** . Použijte **ID předplatného** , které jste získali dříve.
+4. Přiřaďte roli **Vlastník** instančnímu objektu pomocí hodnoty **ID objektu.** Použijte **ID předplatného,** které jste získali dříve.
 
-   ```bash
+   ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
 ## <a name="get-an-authentication-token"></a>Získání ověřovacího tokenu
 
-K získání ověřovacího tokenu použijte následující příkaz:
+K načtení ověřovacího tokenu použijte následující příkaz:
 
 ```bash
 curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
@@ -270,11 +270,11 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-Nastavte `$TENANTID`, `$APPID`a `$PASSWORD` na hodnoty získané nebo použité dříve.
+Nastavte `$TENANTID` `$APPID`, `$PASSWORD` a na hodnoty získané nebo použité dříve.
 
 Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON.
 
-Dokument JSON vrácený touto žádostí obsahuje element s názvem **access_token**. Hodnota **access_token** se používá k ověřování požadavků na REST API.
+Dokument JSON vrácený tímto požadavkem obsahuje prvek s názvem **access_token**. Hodnota **access_token** se používá pro požadavky na ověření rozhraní REST API.
 
 ```json
 {
@@ -288,12 +288,12 @@ Dokument JSON vrácený touto žádostí obsahuje element s názvem **access_tok
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Chcete-li vytvořit skupinu prostředků, použijte následující postup.
+K vytvoření skupiny prostředků použijte následující postup.
 
-* Nastavte `$SUBSCRIPTIONID` na ID předplatného, které jste obdrželi při vytváření instančního objektu.
-* Nastavte `$ACCESSTOKEN` k přístupovému tokenu, který jste obdrželi v předchozím kroku.
-* Nahraďte `DATACENTERLOCATION` datovým centrem, ve kterém chcete vytvořit skupinu prostředků a prostředky. Například ' Střed USA – jih '.
-* Nastavte `$RESOURCEGROUPNAME` na název, který chcete použít pro tuto skupinu:
+* Nastavte `$SUBSCRIPTIONID` na ID předplatného přijaté při vytváření instančního objektu.
+* Nastavte `$ACCESSTOKEN` přístupový token přijatý v předchozím kroku.
+* Nahraďte `DATACENTERLOCATION` datovým centrem, ve které chcete vytvořit skupinu prostředků a prostředky. Například "Jižní střed USA".
+* Nastavte `$RESOURCEGROUPNAME` název, který chcete použít pro tuto skupinu:
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -304,13 +304,13 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON obsahující informace o této skupině. Element `"provisioningState"` obsahuje hodnotu `"Succeeded"`.
+Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON obsahující informace o skupině. Prvek `"provisioningState"` obsahuje hodnotu `"Succeeded"`.
 
 ## <a name="create-a-deployment"></a>Vytvoření nasazení
 
-K nasazení šablony do skupiny prostředků použijte následující příkaz.
+Pomocí následujícího příkazu nasadit šablonu do skupiny prostředků.
 
-* Nastavte `$DEPLOYMENTNAME` na název, který chcete použít pro toto nasazení.
+* Nastavte `$DEPLOYMENTNAME` název, který chcete použít pro toto nasazení.
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -320,18 +320,18 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 ```
 
 > [!NOTE]  
-> Pokud jste šablonu uložili do souboru, můžete místo `-d "{ template and parameters}"`použít následující příkaz:
+> Pokud jste šablonu uložili do souboru, můžete `-d "{ template and parameters}"`místo následujícího příkazu použít následující příkaz:
 >
 > `--data-binary "@/path/to/file.json"`
 
 Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON obsahující informace o operaci nasazení.
 
 > [!IMPORTANT]  
-> Nasazení bylo odesláno, ale nebylo dokončeno. Dokončení nasazení může trvat několik minut, obvykle přibližně 15.
+> Nasazení bylo odesláno, ale nebylo dokončeno. Dokončení nasazení může trvat několik minut, obvykle kolem 15.
 
-## <a name="check-the-status-of-a-deployment"></a>Zkontroluje stav nasazení.
+## <a name="check-the-status-of-a-deployment"></a>Kontrola stavu nasazení
 
-Chcete-li zjistit stav nasazení, použijte následující příkaz:
+Chcete-li zkontrolovat stav nasazení, použijte následující příkaz:
 
 ```bash
 curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -339,7 +339,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Tento příkaz vrátí dokument JSON obsahující informace o operaci nasazení. Element `"provisioningState"` obsahuje stav nasazení. Pokud tento prvek obsahuje hodnotu `"Succeeded"`, nasazení se úspěšně dokončilo.
+Tento příkaz vrátí dokument JSON obsahující informace o operaci nasazení. Prvek `"provisioningState"` obsahuje stav nasazení. Pokud tento prvek obsahuje `"Succeeded"`hodnotu , bylo nasazení úspěšně dokončeno.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
@@ -347,20 +347,20 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně vytvořili cluster HDInsight, se dozvíte, jak pracovat s clusterem pomocí následujícího postupu.
+Teď, když jste úspěšně vytvořili cluster HDInsight, použijte následující informace o tom, jak s clusterem pracovat.
 
 ### <a name="apache-hadoop-clusters"></a>Clustery Apache Hadoop
 
-* [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md)
+* [Použití mapreduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="apache-hbase-clusters"></a>Clustery Apache HBA
+### <a name="apache-hbase-clusters"></a>Clustery Apache HBase
 
-* [Začínáme s Apache HBA v HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Vývoj aplikací Java pro Apache HBA v HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [Začínáme s Apache HBase na HDInsightu](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Vývoj java aplikací pro Apache HBase na HDInsightu](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="apache-storm-clusters"></a>Clustery Apache Storm
 
-* [Vývoj topologií v jazyce Java pro Apache Storm v HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Použití součástí Pythonu v Apache Storm ve službě HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Nasazení a monitorování topologií pomocí Apache Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Vývoj java topologie pro Apache Storm na HDInsight](storm/apache-storm-develop-java-topology.md)
+* [Použití komponent Pythonu v Apache Storm na HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Nasazení a sledování topologie pomocí Apache Storm na HDInsightu](storm/apache-storm-deploy-monitor-topology-linux.md)

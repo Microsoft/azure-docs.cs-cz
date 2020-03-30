@@ -1,6 +1,6 @@
 ---
 title: IS_OBJECT v dotazovacím jazyce Azure Cosmos DB
-description: Přečtěte si o funkcích systému SQL IS_OBJECT v Azure Cosmos DB.
+description: Přečtěte si o IS_OBJECT funkcí systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 43d8237d859249317d7b581e25ed9a2b34d39d00
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303796"
 ---
 # <a name="is_object-azure-cosmos-db"></a>IS_OBJECT (Azure Cosmos DB)
- Vrátí logickou hodnotu označující, pokud je typ z určeného výrazu objektu JSON.  
+ Vrátí logickou hodnotu označující, zda je typem zadaného výrazu objekt JSON.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -25,8 +25,8 @@ IS_OBJECT(<expr>)
   
 ## <a name="arguments"></a>Argumenty
   
-*výrazu*  
-   Je libovolný výraz.  
+*Výraz*  
+   Je jakýkoliv výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ IS_OBJECT(<expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad kontroluje objekty typu Boolean, Number, String, null, Object, Array a undefined pomocí funkce `IS_OBJECT`.  
+  Následující příklad kontroluje objekty Logických položek JSON, číslo, řetězec, null, `IS_OBJECT` objekt, pole a nedefinované typy pomocí funkce.  
   
 ```sql
 SELECT   
@@ -55,10 +55,10 @@ SELECT
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
+Tato systémová funkce bude mít prospěch z [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce pro kontrolu typu Azure Cosmos DB](sql-query-type-checking-functions.md)
+- [Funkce kontroly typů Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

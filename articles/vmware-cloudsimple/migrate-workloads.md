@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware (AVS) – migrace virtuálních počítačů úloh do služby AVS Private Cloud
-description: Popisuje, jak migrovat virtuální počítače z místního serveru vCenter do služby AVS Private Cloud vCenter.
+title: Řešení Azure VMware od CloudSimple – migrace virtuálních počítačích úloh do privátního cloudu
+description: Popisuje, jak migrovat virtuální počítače z místního virtuálního centra do cloudového privátního cloudu vCenter.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,41 +8,41 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: af02bd947c73b670306704a10a09ca981b34c9a9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 87b8a112a319519dbde977ee30136a884137212d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019991"
 ---
-# <a name="migrate-workload-vms-from-on-premises-vcenter-to-avs-private-cloud-vcenter-environment"></a>Migrace virtuálních počítačů úloh z místního serveru vCenter do prostředí služby AVS Private Cloud vCenter
+# <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>Migrace virtuálních počítačích s pracovními vytížením z místního virtuálního centra do prostředí private cloudvcenter
 
-K migraci virtuálních počítačů z místního datacentra do privátního cloudu služby AVS je k dispozici několik možností. Privátní cloud služby AVS poskytuje nativní přístup k VMware vCenter a nástroje, které VMware podporuje, se dají použít k migraci úloh. Tento článek popisuje některé možnosti migrace vCenter.
+Chcete-li migrovat virtuální počítače z místního datového centra do vašeho cloudu CloudSimple Private Cloud, je k dispozici několik možností.  Privátní cloud poskytuje nativní přístup k vMware vCenter a nástroje podporované vMware lze použít pro migraci úloh. Tento článek popisuje některé možnosti migrace vCenter.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Migrace virtuálních počítačů a dat z místního datacentra vyžaduje připojení k síti z datového centra k prostředí vašeho privátního cloudu služby AVS. K navázání připojení k síti použijte některou z následujících metod:
+Migrace virtuálních počítačů a dat z místního datového centra vyžaduje připojení k síti z datového centra do prostředí privátního cloudu.  K vytvoření připojení k síti použijte některou z následujících metod:
 
-* [Připojení VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) mezi místním prostředím a Vaším privátním cloudem služby AVS.
-* ExpressRoute Global Reach propojení mezi místním okruhem ExpressRoute a okruhem služby AVS ExpressRoute.
+* [Připojení VPN site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) mezi místním prostředím a privátním cloudem.
+* Spojení ExpressRoute Global Reach mezi místním okruhem ExpressRoute a okruhem CloudSimple ExpressRoute.
 
-Síťová cesta z místního prostředí vCenter do privátního cloudu služby AVS musí být dostupná pro migraci virtuálních počítačů pomocí vMotion. VMotion síť na místním serveru vCenter musí mít možnosti směrování. Ověřte, že brána firewall povoluje veškerý vMotion provoz mezi místním serverem vCenter a privátním cloudem vCenter. (V privátním cloudu služby AVS je směrování v síti vMotion ve výchozím nastavení nakonfigurované.)
+Síťová cesta z místního prostředí vCenter do privátního cloudu musí být dostupná pro migraci virtuálních počítačů pomocí vMotion.  VMotion síť na vašem místním vCenter musí mít schopnosti směrování.  Ověřte, zda brána firewall umožňuje veškerý provoz vMotion mezi místním vCenterem a privátním cloudem vCenter. (V privátním cloudu je směrování v síti vMotion ve výchozím nastavení nakonfigurováno.)
 
-## <a name="migrate-isos-and-templates"></a>Migrace soubory ISO a šablon
+## <a name="migrate-isos-and-templates"></a>Migrace ISO a šablon
 
-Pokud chcete vytvořit nové virtuální počítače v privátním cloudu služby AVS, použijte soubory ISO a šablony virtuálních počítačů. Pokud chcete nahrát soubory ISO a šablony do svého privátního cloudu služby AVS a zpřístupnit je, použijte následující metodu.
+Chcete-li vytvořit nové virtuální počítače v privátním cloudu, použijte iso a šablony virtuálních počítačů.  Chcete-li nahrát ISO a šablony do vcenter priviamu cloudu a zpřístupnit je, použijte následující metodu.
 
-1. Nahrajte soubor ISO do privátního cloudu služby AVS z rozhraní vCenter.
-2. [Publikujte knihovnu obsahu](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A0F1C13-7336-45CE-B211-610D39A6E1F4.html) na serveru služby AVS Private Cloud vCenter:
+1. Nahrajte ISO do privátního cloudu vCenter z ui vCenter.
+2. [Publikování knihovny obsahu](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A0F1C13-7336-45CE-B211-610D39A6E1F4.html) v privátním cloudu vCenter:
 
     1. Publikujte místní knihovnu obsahu.
-    2. Vytvořte novou knihovnu obsahu ve službě AVS privátní cloud vCenter.
+    2. Vytvořte novou knihovnu obsahu v privátním cloudu vCenter.
     3. Přihlaste se k odběru publikované místní knihovny obsahu.
-    4. Synchronizuje knihovnu obsahu pro přístup k předplacenému obsahu.
+    4. Synchronizujte knihovnu obsahu pro přístup k odebíranému obsahu.
 
-## <a name="migrate-vms-using-powercli"></a>Migrace virtuálních počítačů pomocí PowerCLI
+## <a name="migrate-vms-using-powercli"></a>Migrace virtuálních proudů pomocí powercli
 
-Pokud chcete migrovat virtuální počítače z místního serveru vCenter do služby AVS (Private Cloud vCenter), použijte VMware PowerCLI nebo nástroj pro migraci úloh pro víc vCenter, který je dostupný na platformě VMware Labs. Následující vzorový skript ukazuje příkazy pro migraci PowerCLI.
+Chcete-li migrovat virtuální počítače z místního virtuálního centra do privátního cloudu vCenter, použijte nástroj VMware PowerCLI nebo Nástroj pro migraci úloh vCenter, který je dostupný v laboratořích VMware.  Následující ukázkový skript zobrazuje příkazy migrace PowerCLI.
 
 ```
 $sourceVC = Connect-VIServer -Server <source-vCenter name> -User <source-vCenter user name> -Password <source-vCenter user password>
@@ -53,19 +53,19 @@ Move-VM -VM $vm -VMotionPriority High -Destination (Get-VMhost -Server $targetVC
 ```
 
 > [!NOTE]
-> Pokud chcete použít názvy cílového serveru vCenter a hostitele ESXi, nakonfigurujte přesměrování DNS z místního prostředí do privátního cloudu služby AVS.
+> Chcete-li používat názvy cílových serverů vCenter a hostitelů ESXi, nakonfigurujte předávání DNS z místního do privátního cloudu.
 
-## <a name="migrate-vms-using-nsx-layer-2-vpn"></a>Migrace virtuálních počítačů pomocí sítě VPN vrstvy 2 NSX
+## <a name="migrate-vms-using-nsx-layer-2-vpn"></a>Migrace virtuálních montovin pomocí sítě VPN vrstvy NSX 2
 
-Tato možnost umožňuje migrovat úlohy z místního prostředí VMware do privátního cloudu služby AVS v Azure. V této roztažené síti vrstvy 2 bude v privátním cloudu služby AVS k dispozici podsíť z místního prostředí. Po migraci se pro virtuální počítače nevyžaduje přiřazení nové IP adresy.
+Tato možnost umožňuje migraci úloh za provozu z místního prostředí VMware do privátního cloudu v Azure.  S touto roztaženou sítí vrstvy 2 bude podsíť z místní sítě dostupná v privátním cloudu.  Po migraci není pro virtuální počítačů vyžadováno přiřazení nové IP adresy.
 
-[Migrace úloh pomocí roztažené sítě vrstvy 2](migration-layer-2-vpn.md) popisuje použití sítě VPN vrstvy 2 k roztažení sítě vrstvy 2 z místního prostředí do privátního cloudu služby AVS.
+[Migrace úloh pomocí roztažených sítí vrstvy 2](migration-layer-2-vpn.md) popisuje, jak pomocí sítě VPN vrstvy 2 roztáhnout síť vrstvy 2 z místního prostředí do privátního cloudu.
 
-## <a name="migrate-vms-using-backup-and-disaster-recovery-tools"></a>Migrace virtuálních počítačů pomocí nástrojů pro zálohování a zotavení po havárii
+## <a name="migrate-vms-using-backup-and-disaster-recovery-tools"></a>Migrace virtuálních počítače pomocí nástrojů pro zálohování a zotavení po havárii
 
-Migraci virtuálních počítačů do privátního cloudu se systémem AVS můžete provést pomocí nástrojů pro zálohování a obnovení a nástroje pro zotavení po havárii. Použijte privátní cloud služby AVS jako cíl pro obnovení ze záloh vytvořených pomocí nástroje třetí strany. Privátní cloud služby AVS se dá také použít jako cíl pro zotavení po havárii pomocí VMware SRM nebo nástroje třetí strany.
+Migraci virtuálních počítače do privátního cloudu lze provést pomocí nástrojů pro zálohování a obnovení a nástrojů pro zotavení po havárii.  Použijte privátní cloud jako cíl pro obnovení ze záloh, které jsou vytvořeny pomocí nástroje jiného výrobce.  Privátní cloud lze také použít jako cíl pro zotavení po havárii pomocí VMware SRM nebo nástroje třetí strany.
 
-Další informace o těchto nástrojích najdete v následujících tématech:
+Další informace pomocí těchto nástrojů naleznete v následujících tématech:
 
-* [Zálohování virtuálních počítačů s úlohami v privátním cloudu se systémem AVS pomocí Veeam B & R](backup-workloads-veeam.md)
-* [Nastavení privátního cloudu pro funkci AVS jako lokality pro zotavení po havárii pro místní úlohy VMware](disaster-recovery-zerto.md)
+* [Zálohování virtuálních počítačů s úlohami v cloudu CloudSimple Private Cloud pomocí Veeam B&R](backup-workloads-veeam.md)
+* [Nastavení cloudového privátního cloudu jako lokality pro zotavení po havárii pro místní úlohy VMware](disaster-recovery-zerto.md)

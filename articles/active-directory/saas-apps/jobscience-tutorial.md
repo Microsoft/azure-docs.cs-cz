@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Jobscience | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jobscience.
+title: 'Kurz: Integrace služby Azure Active Directory s jobscience | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Jobscience.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,274 +15,274 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8199f106c234e216a0982dc9e51413ccf30ae93a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60268698"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80048508"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Kurz: Integrace Azure Active Directory s Jobscience
 
 V tomto kurzu se dozvíte, jak integrovat Jobscience s Azure Active Directory (Azure AD).
 
-Jobscience integraci se službou Azure AD poskytuje následující výhody:
+Integrace Jobscience s Azure AD vám poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Jobscience
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Jobscience (Single Sign-On) s jejich účty Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+- Uživatelům můžete povolit automatické přihlášení k Jobscience (jednotné přihlašování) pomocí jejich účtů Azure AD.
+- Své účty můžete spravovat na jednom centrálním místě – na portálu Azure
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, podívejte se, [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Jobscience, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s Jobscience, budete potřebovat následující položky:
 
 - Předplatné Azure AD
-- Jobscience jednotného přihlašování povolená předplatného
+- Předplatné s povoleným jedním přihlášením Jobscience
 
 > [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
+> Chcete-li otestovat kroky v tomto kurzu, nedoporučujeme používat produkční prostředí.
 
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
 
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební tady: [Zkušební nabídka](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkční prostředí, pokud to není nutné.
+- Pokud nemáte zkušební prostředí Azure AD, můžete získat měsíční zkušební verzi zde: [Zkušební nabídka](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu otestujete jednotné přihlašování Azure AD v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Jobscience z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+1. Přidání Jobscience z galerie
+1. Konfigurace a testování jednotného přihlašování azure ad
 
-## <a name="adding-jobscience-from-the-gallery"></a>Přidání Jobscience z Galerie
-Konfigurace integrace Jobscience do služby Azure AD, budete muset přidat Jobscience z Galerie na váš seznam spravovaných aplikací SaaS.
+## <a name="adding-jobscience-from-the-gallery"></a>Přidání Jobscience z galerie
+Chcete-li nakonfigurovat integraci Jobscience do Azure AD, musíte přidat Jobscience z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Jobscience z galerie, postupujte následovně:**
+**Chcete-li přidat Jobscience z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.** 
 
     ![Active Directory][1]
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte k **podnikovým aplikacím**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Aplikace][3]
 
 1. Do vyhledávacího pole zadejte **Jobscience**.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/jobscience-tutorial/tutorial_jobscience_search.png)
+    ![Vytvoření testovacího uživatele Azure AD](./media/jobscience-tutorial/tutorial_jobscience_search.png)
 
-1. Na panelu výsledků vyberte **Jobscience**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. V panelu výsledků vyberte **Jobscience**a pak klepnutím na **tlačítko Přidat** přidejte aplikaci.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
+    ![Vytvoření testovacího uživatele Azure AD](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování s Jobscience podle testovacího uživatele nazývá "Britta Simon."
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování azure ad
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Jobscience na základě testovacího uživatele s názvem "Britta Simon.".
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Jobscience je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Jobscience potřeba navázat.
+Aby jednotné přihlašování fungovalo, Azure AD potřebuje vědět, co je protějšek uživatele jobscience pro uživatele ve službě Azure AD. Jinými slovy vztah propojení mezi uživatelem Azure AD a související uživatel v Jobscience musí být vytvořen.
 
-V Jobscience, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V Jobscience přiřaďte hodnotu **uživatelského jména** ve službě Azure AD jako hodnotu **uživatelského jména** k vytvoření vztahu propojení.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Jobscience, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Jobscience, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele Jobscience](#creating-a-jobscience-test-user)**  – Pokud chcete mít protějšek Britta Simon Jobscience, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace jednotného přihlašování Azure AD](#configuring-azure-ad-single-sign-on)** – k tomu, aby uživatelé mohli tuto funkci používat.
+1. **[Vytvoření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)** – k testování jednotného přihlašování Azure AD s Brittou Simonovou.
+1. **[Vytvoření jobscience test uživatele](#creating-a-jobscience-test-user)** – mít protějšek Britta Simon v Jobscience, který je propojen s reprezentaci Azure AD uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)** – chcete-li britta Simon používat Azure AD jednotné přihlašování.
+1. **[Testování jednotného přihlášení](#testing-single-sign-on)** - k ověření, zda konfigurace funguje.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Jobscience.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal a nakonfigurujete jednotné přihlašování ve vaší aplikaci Jobscience.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Jobscience, proveďte následující kroky:**
+**Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí jobscience, proveďte následující kroky:**
 
-1. Na webu Azure Portal na **Jobscience** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure klikněte na stránce Integrace aplikací **Jobscience** na **Jedno přihlášení**.
 
     ![Konfigurace jednotného přihlašování][4]
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. V **dialogovém okně Jednotné přihlašování** vyberte **Režim** jako **přihlašování na základě SAML,** abyste povolili jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
-1. Na **Jobscience domény a adresy URL** části, proveďte následující kroky:
+1. V části **Jobscience Domain and URL** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:  `http://<company name>.my.salesforce.com`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > Tato hodnota není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Tuto výhodu získáte [tým podpory Jobscience klienta](https://www.jobscience.com/support) nebo z něj jednotného přihlašování bude vytvořena, což je vysvětleno dále v tomto kurzu. 
+    > Tato hodnota není skutečná. Aktualizujte tuto hodnotu skutečnou přihlašovací adresou URL. Získejte tuto hodnotu [týmem podpory jobscience klienta](https://www.jobscience.com/support) nebo z profilu steso, které vytvoříte, který je vysvětleno dále v kurzu. 
  
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+1. V části **Podpisový certifikát SAML** klikněte na **Certifikát (Base64)** a uložte soubor certifikátu do počítače.
 
     ![Konfigurace jednotného přihlašování](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na **tlačítko Uložit.**
 
     ![Konfigurace jednotného přihlašování](./media/jobscience-tutorial/tutorial_general_400.png)
 
-1. Na **Jobscience konfigurace** klikněte na tlačítko **nakonfigurovat Jobscience** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. V části **Konfigurace jobscience** klikněte na **Konfigurovat Jobscience** a otevřete okno **Konfigurace přihlášení.** Zkopírujte **adresu URL pro odhlášení, ID entity SAML a adresu URL služby jednotného přihlašovacího systému SAML** z části Stručný **přehled.**
 
     ![Konfigurace jednotného přihlašování](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
 1. Přihlaste se na web společnosti Jobscience jako správce.
 
-1. Přejděte na **nastavení**.
+1. Přejděte na **instalační program**.
    
-   ![Instalační program](./media/jobscience-tutorial/IC784358.png "instalační program")
+   ![Nastavení](./media/jobscience-tutorial/IC784358.png "Nastavení")
 
-1. V levém navigačním podokně v **spravovat** klikněte na tlačítko **Správa domén** související rozbalíte, a pak klikněte na **Moje doména** otevřete **Moje doména** stránky. 
+1. V levém navigačním podokně klikněte v části **Správa** na **položku Správa domény** a rozbalte související oddíl a potom kliknutím na **Moje doména** otevřete stránku **Moje doména.** 
    
    ![Moje doména](./media/jobscience-tutorial/ic767825.png "Moje doména")
 
-1. Pokud chcete ověřit, správně nastavené vaší domény, ujistěte se, že je v "**kroku 4 nasazena u uživatelů**" a zkontrolovat vaše "**má nastavení domény**".
+1. Chcete-li ověřit, zda byla vaše doména správně nastavena, zkontrolujte, zda je v kroku**4 nasazeném uživatelům,** a zkontrolujte**nastavení domény**.
 
-    ![Doména uživatele nasazena](./media/jobscience-tutorial/ic784377.png "nasadit na uživatele domény")
+    ![Doména nasazená pro uživatele](./media/jobscience-tutorial/ic784377.png "Doména nasazená pro uživatele")
 
-1. Na webu společnosti Jobscience, klikněte na tlačítko **kontrolních mechanismů pro zabezpečení**a potom klikněte na tlačítko **nastavení jednotného přihlašování**.
+1. Na webu společnosti Jobscience klepněte na **položku Bezpečnostní ovládací prvky**a potom klepněte na **položku Nastavení jednotného přihlášení**.
     
-    ![Kontrolní mechanismy zabezpečení](./media/jobscience-tutorial/ic784364.png "kontrolních mechanismů pro zabezpečení")
+    ![Zabezpečovací mechanismy](./media/jobscience-tutorial/ic784364.png "Zabezpečovací mechanismy")
 
-1. V **nastavení jednotného přihlašování** části, proveďte následující kroky:
+1. V části **Nastavení jednotného přihlášení** proveďte následující kroky:
     
-    ![Jednotné přihlašování – nastavení](./media/jobscience-tutorial/ic781026.png "jednotné přihlašování – nastavení")
+    ![Nastavení jednotného přihlášení](./media/jobscience-tutorial/ic781026.png "Nastavení jednotného přihlášení")
     
-    a. Vyberte **povoleno SAML**.
+    a. Vyberte **možnost SAML Povolená**.
 
-    b. Klikněte na možnost **Nové**.
+    b. Klepněte na tlačítko **Nový**.
 
-1. Na **SAML jednotné přihlašování – nastavení upravit** dialogového okna, proveďte následující kroky:
+1. V dialogovém **okně Úpravy nastavení jednotného přihlášení SAML** proveďte následující kroky:
     
-    ![SAML jednotné přihlašování – nastavení](./media/jobscience-tutorial/ic784365.png "SAML jednotné přihlašování – nastavení")
+    ![Saml nastavení jednotného přihlášení](./media/jobscience-tutorial/ic784365.png "Saml nastavení jednotného přihlášení")
     
-    a. V **název** textového pole zadejte název pro vaši konfiguraci.
+    a. Do textového pole **Název** zadejte název konfigurace.
 
-    b. V **vystavitele** textového pole vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
+    b. V textovém poli **Vystavitena** vložte hodnotu **ID entity SAML**, kterou jste zkopírovali z webu Azure Portal.
 
-    c. V **Entity Id** textové pole, typ `https://salesforce-jobscience.com`
+    c. Do textového pole **Id entity** zadejte`https://salesforce-jobscience.com`
 
-    d. Klikněte na tlačítko **Procházet** chcete nahrát svůj certifikát služby Azure AD.
+    d. Kliknutím na **Procházet** nahrajte certifikát Azure AD.
 
-    e. Jako **typ Identity SAML**vyberte **kontrolní výraz obsahuje ID federace z objektu uživatele**.
+    e. Jako **typ identity SAML**vyberte **assertion obsahuje ID federace z objektu User**.
 
-    f. Jako **umístění Identity SAML**vyberte **identita je v elementu NameIdentfier příkazu subjektu**.
+    f. Jako **umístění identity SAML**je vyberte **Identita v elementu NameIdentfier příkazu Subject**.
 
-    g. V **přihlašovací adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
+    g. V textovém poli **Přihlašovací adresa URL zprostředkovatele identity** vložte hodnotu **adresy URL služby jednotného přihlašování SAML**, kterou jste zkopírovali z webu Azure Portal.
 
-    h. V **odhlašovací adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **odhlašování URL**, který jste zkopírovali z portálu Azure portal.
+    h. V textovém poli **URL odhlášení zprostředkovatele identity** vložte hodnotu **adresy URL pro odhlášení**, kterou jste zkopírovali z webu Azure Portal.
 
     i. Klikněte na **Uložit**.
 
-1. V levém navigačním podokně v **spravovat** klikněte na tlačítko **Správa domén** související rozbalíte, a pak klikněte na **Moje doména** otevřete **Moje doména** stránky. 
+1. V levém navigačním podokně klikněte v části **Správa** na **položku Správa domény** a rozbalte související oddíl a potom kliknutím na **Moje doména** otevřete stránku **Moje doména.** 
     
     ![Moje doména](./media/jobscience-tutorial/ic767825.png "Moje doména")
 
-1. Na **Moje doména** stránku, **Branding přihlašovací stránky** klikněte na tlačítko **upravit**.
+1. Na stránce **Moje doména** klikněte v části **Branding přihlašovací stránky** na **Upravit**.
     
-    ![Branding přihlašovací stránky](./media/jobscience-tutorial/ic767826.png "Branding přihlašovací stránky")
+    ![Přihlašovací stránka značky](./media/jobscience-tutorial/ic767826.png "Přihlašovací stránka značky")
 
-1. Na **Branding přihlašovací stránky** stránku, **ověřovací službu** části název vaší **nastavení jednotného přihlašování SAML** se zobrazí. Vyberte ho a pak klikněte na tlačítko **Uložit**.
+1. Na stránce **Branding přihlašovací stránky** se v části Ověřovací **služba** zobrazí název **nastavení přihlašování saml.** Vyberte ji a klepněte na tlačítko **Uložit**.
     
-    ![Branding přihlašovací stránky](./media/jobscience-tutorial/ic784366.png "Branding přihlašovací stránky")
+    ![Přihlašovací stránka značky](./media/jobscience-tutorial/ic784366.png "Přihlašovací stránka značky")
 
-1. Chcete-li získat SP zahájí jednotné přihlašování na adresu URL pro přihlášení klikněte na **nastavení jednotného přihlašování** v **kontrolních mechanismů pro zabezpečení** části nabídky.
+1. Chcete-li získat SP inicioval jednotného přihlášení URL klikněte na **nastavení jednotného přihlášení** v sekci **Bezpečnostní ovládací prvky.**
 
-    ![Kontrolní mechanismy zabezpečení](./media/jobscience-tutorial/ic784368.png "kontrolních mechanismů pro zabezpečení")
+    ![Zabezpečovací mechanismy](./media/jobscience-tutorial/ic784368.png "Zabezpečovací mechanismy")
     
-    Klikněte na profil jednotného přihlašování, které jste vytvořili v předchozím kroku. Tato stránka zobrazuje jednotného přihlašování na adrese URL vaší společnosti (třeba [ https://companyname.my.salesforce.com?so=companyid ](https://companyname.my.salesforce.com?so=companyid).    
+    Klikněte na profil přistupovače, který jste vytvořili ve výše uvedeném kroku. Na této stránce se zobrazuje adresa URL jednotného přihlášení pro vaši společnost (například `https://companyname.my.salesforce.com?so=companyid`.    
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručnou verzi těchto pokynů uvnitř [portálu Azure](https://portal.azure.com), zatímco nastavujete aplikaci!  Po přidání této aplikace z oddílu **Active Directory > Enterprise Applications** jednoduše klikněte na kartu Jednotné **přihlášení** a získejte přístup k vložené dokumentaci prostřednictvím části **Konfigurace** v dolní části. Další informace o funkci vložené dokumentace najdete zde: [Integrovaná dokumentace azure ad]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
 ![Vytvoření uživatele Azure AD][100]
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. Na **webu Azure Portal**klikněte v levém navigačním podokně na ikonu **Služby Azure Active Directory.**
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/jobscience-tutorial/create_aaduser_01.png) 
+    ![Vytvoření testovacího uživatele Azure AD](./media/jobscience-tutorial/create_aaduser_01.png) 
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **položku Uživatelé a skupiny** a klepněte na tlačítko **Všichni uživatelé**.
     
-    ![Vytváří se testovací uživatele služby Azure AD](./media/jobscience-tutorial/create_aaduser_02.png) 
+    ![Vytvoření testovacího uživatele Azure AD](./media/jobscience-tutorial/create_aaduser_02.png) 
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít dialogové **okno Uživatel,** klepněte v horní části dialogového okna na **Přidat.**
  
-    ![Vytváří se testovací uživatele služby Azure AD](./media/jobscience-tutorial/create_aaduser_03.png) 
+    ![Vytvoření testovacího uživatele Azure AD](./media/jobscience-tutorial/create_aaduser_03.png) 
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na stránce **uživatelského** dialogového okna proveďte následující kroky:
  
-    ![Vytváří se testovací uživatele služby Azure AD](./media/jobscience-tutorial/create_aaduser_04.png) 
+    ![Vytvoření testovacího uživatele Azure AD](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textové pole, typ **BrittaSimon**.
+    a. Do textového pole **Název** zadejte **příkaz BrittaSimon**.
 
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
+    b. Do textového pole **Uživatelské jméno** zadejte **e-mailovou adresu** BrittaSimon.
 
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+    c. Vyberte **Zobrazit heslo** a poznamenejte si hodnotu **hesla**.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
  
-### <a name="creating-a-jobscience-test-user"></a>Vytvoření zkušebního uživatele Jobscience
+### <a name="creating-a-jobscience-test-user"></a>Vytvoření testovacího uživatele Jobscience
 
-Chcete-li povolit uživatele Azure AD se přihlaste k Jobscience, musí být poskytnuty do Jobscience. V případě Jobscience zřizování se ruční úlohy.
+Aby bylo možné uživatelům Azure AD přihlásit se k Jobscience, musí být zřízena do Jobscience. V případě Jobscience zřizování je ruční úlohy.
 
 >[!NOTE]
->Můžete použít jakékoli jiné Jobscience uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Jobscience ke zřízení služby Azure Active Directory uživatelské účty.
+>Ke zřizování uživatelských účtů Azure Active Directory můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů Jobscience nebo rozhraní API poskytovaná jobscienceem.
 >  
         
-**Konfigurace zřizování uživatelů, proveďte následující kroky:**
+**Chcete-li konfigurovat zřizování uživatelů, proveďte následující kroky:**
 
-1. Přihlaste se k vaší **Jobscience** společnosti serveru jako správce.
+1. Přihlaste se na web společnosti **Jobscience** jako správce.
 
 1. Přejděte do instalačního programu.
    
-   ![Instalační program](./media/jobscience-tutorial/ic784358.png "instalační program")
-1. Přejděte na **spravovat uživatele \> uživatelé**.
+   ![Nastavení](./media/jobscience-tutorial/ic784358.png "Nastavení")
+1. Přejděte na **spravovat uživatele \> uživatelů**.
    
-   ![Uživatelé](./media/jobscience-tutorial/ic784369.png "uživatelů")
-1. Klikněte na tlačítko **nového uživatele**.
+   ![Uživatelé](./media/jobscience-tutorial/ic784369.png "Uživatelé")
+1. Klepněte na **položku Nový uživatel**.
    
-   ![Všichni uživatelé](./media/jobscience-tutorial/ic784370.png "všichni uživatelé")
-1. Na **upravit uživatele** dialogového okna, proveďte následující kroky:
+   ![Všichni uživatelé](./media/jobscience-tutorial/ic784370.png "Všichni uživatelé")
+1. V dialogovém okně **Upravit uživatele** proveďte následující kroky:
    
-   ![Úprava uživatele](./media/jobscience-tutorial/ic784371.png "Úprava uživatele")
+   ![Úpravy uživatele](./media/jobscience-tutorial/ic784371.png "Úpravy uživatele")
    
-   a. V **křestní jméno** textového pole zadejte jméno uživatele, jako je Britta.
+   a. Do textového pole **Křestní jméno** zadejte křestní jméno uživatele, jako je Britta.
    
-   b. V **příjmení** textového pole zadejte příjmení uživatele, jako je Simon.
+   b. Do textového pole **Příjmení** zadejte příjmení uživatele, jako je Simon.
    
-   c. V **Alias** textového pole zadejte název aliasu uživatele, jako je brittas.
+   c. Do textového pole **Alias** zadejte alias uživatele jako brittas.
 
-   d. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele Brittasimon@contoso.com.
+   d. Do textového pole **E-mail** zadejte Brittasimon@contoso.come-mailovou adresu uživatele, který se líbí .
 
-   e. V **uživatelské jméno** textové pole, typ uživatelskému jménu uživatele jako Brittasimon@contoso.com.
+   e. Do textového pole **Uživatelské jméno** zadejte Brittasimon@contoso.comuživatelské jméno uživatele, jako se mi líbí .
 
-   f. V **Přezdívka** textového pole zadejte název nick uživatele, jako je Simon.
+   f. Do textového pole **Nick Název** zadejte přezdívku uživatele, jako je Simon.
 
    g. Klikněte na **Uložit**.
 
     
 > [!NOTE]
-> Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
+> Držitel účtu Azure Active Directory obdrží e-mail a následuje odkaz pro potvrzení svého účtu před tím, než se stane aktivním.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k Jobscience použití Azure jednotného přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu jobscience.
 
 ![Přiřadit uživatele][200] 
 
-**Přiřadit Jobscience Britta Simon, proveďte následující kroky:**
+**Chcete-li brittu Simon přiřadit společnosti Jobscience, proveďte následující kroky:**
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+1. Na webu Azure Portal otevřete zobrazení aplikací a přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** a klikněte na **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
@@ -290,30 +290,30 @@ V této části je povolit Britta Simon k udělení přístupu k Jobscience pou�
 
     ![Konfigurace jednotného přihlašování](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce vlevo klikněte na **Uživatelé a skupiny**.
 
     ![Přiřadit uživatele][202] 
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na **tlačítko Přidat.** V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Přiřadit uživatele][203]
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. V dialogovém **okně Uživatelé a skupiny** vyberte **britta Simon** v seznamu Uživatelé.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. V dialogovém okně **Uživatelé a skupiny** klikněte na **tlačítko Vybrat.**
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **Přiřadit.**
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Jobscience na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Jobscience.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici Jobscience na přístupovém panelu byste se měli automaticky přihlásit ke své žádosti Jobscience.
+Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

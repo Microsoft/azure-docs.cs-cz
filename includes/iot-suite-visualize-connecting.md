@@ -9,49 +9,49 @@ ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 9b9e28f18208674609d0842b0e3a54e3fc661c9f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175441"
 ---
 ## <a name="view-device-telemetry"></a>Zobrazení telemetrie zařízení
 
-Můžete zobrazit telemetrická data odesílaná ze zařízení **Device Explorer** stránku v řešení.
+Telemetrická data odeslaná ze zařízení můžete zobrazit na stránce **Průzkumník zařízení** v řešení.
 
-1. Vyberte zařízení, které jsou zřízené v seznamu zařízení na **Device Explorer** stránky. Panelu se zobrazí informace o vašem zařízení, včetně diagramů telemetrie zařízení:
+1. Vyberte zařízení, které jste zřídit v seznamu zařízení na stránce **Průzkumník zařízení.** Panel zobrazuje informace o vašem zařízení včetně vykreslení telemetrie zařízení:
 
     ![Viz podrobnosti o zařízení](media/iot-suite-visualize-connecting/devicesdetail.png)
 
-1. Zvolte **tlak** ke změně zobrazení telemetrických dat:
+1. Chcete-li změnit zobrazení telemetrie, zvolte **Tlak:**
 
-    ![Zobrazení telemetrie tlaku](media/iot-suite-visualize-connecting/devicespressure.png)
+    ![Zobrazit telemetrii tlaku](media/iot-suite-visualize-connecting/devicespressure.png)
 
-1. Chcete-li zobrazit diagnostické informace o zařízení, přejděte dolů k položce **diagnostiky**:
+1. Chcete-li zobrazit diagnostické informace o zařízení, přejděte dolů na **Diagnostika**:
 
-    ![Zobrazit diagnostiku zařízení](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
+    ![Zobrazení diagnostiky zařízení](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
 
-## <a name="act-on-your-device"></a>Reagovat na vaše zařízení
+## <a name="act-on-your-device"></a>Jednejte na svém zařízení
 
-Chcete-li vyvolávat metody v zařízení, použijte **Device Explorer** stránku v řešení vzdáleného monitorování. Například v řešení vzdáleného monitorování **chladič** zařízení implementovat **restartování** metoda.
+Chcete-li vyvolat metody na vašich zařízeních, použijte stránku **Průzkumník zařízení** v řešení vzdáleného monitorování. Například v řešení vzdáleného **monitorování, zařízení chladiče** implementují metodu **reboot.**
 
-1. Zvolte **zařízení** přejděte **Device Explorer** stránku v řešení.
+1. Zvolte **Zařízení,** chcete-li přejít na stránku **Průzkumník zařízení** v řešení.
 
-1. Vyberte zařízení, které jsou zřízené v seznamu zařízení na **Device Explorer** stránky:
+1. Vyberte zařízení, které jste zřídit v seznamu zařízení na stránce **Průzkumník zařízení:**
 
-    ![Vyberte skutečných zařízení](media/iot-suite-visualize-connecting/devicesselect.png)
+    ![Vyberte si skutečné zařízení](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. Chcete-li zobrazit seznam metod, můžete volat na vašem zařízení, zvolte **úlohy**, pak **metody**. Naplánování úlohy spouštět na více zařízeních, můžete vybrat několik zařízení v seznamu. **Úlohy** panelu se zobrazí typy metoda společná pro všechna zařízení, která jste vybrali.
+1. Chcete-li zobrazit seznam metod, které můžete volat na vašem zařízení, zvolte **Úlohy**, pak **Metody**. Chcete-li naplánovat spuštění úlohy na více zařízeních, můžete v seznamu vybrat více zařízení. Panel **Úlohy** zobrazuje typy metod, které jsou společné pro všechna vybraná zařízení.
 
-1. Zvolte **restartovat**, nastavte název úlohy **RebootPhysicalChiller** a klikněte na tlačítko **použít**:
+1. Zvolte **Restartovat**, nastavte název úlohy na **RebootPhysicalChiller** a pak zvolte **Použít**:
 
-    ![Plán aktualizace firmwaru](media/iot-suite-visualize-connecting/deviceschedule.png)
+    ![Naplánování aktualizace firmwaru](media/iot-suite-visualize-connecting/deviceschedule.png)
 
-1. Pořadí zpráv se zobrazí v konzole spuštěný kód vašeho zařízení, když Simulovaná zařízení zpracovává tuto metodu.
+1. Posloupnost zpráv se zobrazí v konzole s kódem zařízení, zatímco simulované zařízení zpracovává metodu.
 
 > [!NOTE]
-> Chcete-li sledovat stav úlohy v řešení, zvolte **zobrazení stavu úlohy**.
+> Chcete-li sledovat stav úlohy v řešení, zvolte **Zobrazit stav úlohy**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek [přizpůsobení akcelerátoru řešení vzdáleného monitorování](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) popisuje některé způsoby, jak přizpůsobení akcelerátoru řešení.
+V článku [Přizpůsobení akcelerátoru řešení vzdáleného monitorování](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) popisuje některé způsoby přizpůsobení akcelerátoru řešení.

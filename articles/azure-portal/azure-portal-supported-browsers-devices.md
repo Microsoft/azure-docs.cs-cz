@@ -1,6 +1,6 @@
 ---
-title: Podporované prohlížeče a zařízení pro Azure Portal | Microsoft Docs
-description: Azure Portal můžete použít na všech moderních zařízeních a s nejnovějšími verzemi prohlížeče. V tomto článku najdete informace o tom, jestli je váš prohlížeč podporovaný.
+title: Podporované prohlížeče a zařízení pro portál Azure | Dokumenty společnosti Microsoft
+description: Portál Azure můžete používat na všech moderních zařízeních a s nejnovějšími verzemi prohlížeče. V tomto článku se ujistěte, že je váš prohlížeč podporován.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -16,15 +16,15 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: 792864022cb7c1b2b4b43a4980d86e32b213525c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75640100"
 ---
 # <a name="supported-devices"></a>Podporovaná zařízení
 
-[Azure Portal](https://portal.azure.com) je webová konzola a běží v prohlížeči všech moderních stolních počítačů a zařízení tabletů. Pokud potřebujete spravovat prostředky Azure z mobilního zařízení, zkuste [mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/). Je k dispozici pro iOS a Android.
+[Portál Azure](https://portal.azure.com) je webová konzola a běží v prohlížeči všech moderních stolních počítačů a tabletů. Pokud potřebujete spravovat prostředky Azure z mobilního zařízení, vyzkoušejte [mobilní aplikaci Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/). Je k dispozici pro iOS a Android.
 
 ## <a name="recommended-browsers"></a>Doporučené prohlížeče
 

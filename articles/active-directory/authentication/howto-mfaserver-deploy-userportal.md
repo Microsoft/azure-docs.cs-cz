@@ -1,5 +1,5 @@
 ---
-title: Portál User Portal pro Azure MFA Server – Azure Active Directory
+title: Uživatelský portál pro Server Azure MFA – Azure Active Directory
 description: Začínáme s Azure MFA a portálem User Portal.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886e6a33428d672a40eae821e035d0b5b7f25578
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2e68c2a75254d1b387c45e31c5830849c6127756
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848166"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051184"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -29,51 +29,51 @@ Správce portálu User Portal je možné nastavit a udělit jim oprávnění př
 V závislosti na vašem prostředí můžete chtít portál User Portal nasadit na stejný server jako Azure Multi-Factor Authentication Server, nebo na jiný server s přístupem k internetu.
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> července 2019 již společnost Microsoft nebude nabízet server MFA pro nová nasazení. Noví zákazníci, kteří by chtěli od svých uživatelů vyžadovat vícefaktorové ověřování, by měli používat vícefaktorové ověřování Azure na základě cloudu. Stávající zákazníci, kteří aktivovali server MFA před 1.
 
-![Přihlašovací stránka uživatelského portálu pro MFA Server](./media/howto-mfaserver-deploy-userportal/portal.png)
+![Přihlašovací stránka uživatelského portálu serveru MFA](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
 > Portál User Portal je k dispozici pouze v Azure Multi-Factor Authentication Serveru. Pokud používáte službu Multi-Factor Authentication v cloudu, odkažte své uživatele na témata [Nastavení účtu pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-first-time.md) nebo [Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md).
 
-## <a name="install-the-web-service-sdk"></a>Instalaci sady SDK webové služby
+## <a name="install-the-web-service-sdk"></a>Instalace sady SDK webové služby
 
 V obou scénářích, pokud sada SDK webové služby Azure Multi-Factor Authentication **není** na Azure Multi-Factor Authentication (MFA) Serveru nainstalovaná, proveďte následující kroky.
 
 1. Otevřete konzolu Multi-Factor Authentication Serveru.
 2. Přejděte do části **Sada SDK webové služby** a vyberte **Instalovat sadu SDK webové služby**.
 3. Dokončete instalaci s použitím výchozích hodnot, pokud je z nějakého důvodu nepotřebujete změnit.
-4. Vytvořte vazbu certifikátu SSL k webu ve službě IIS.
+4. Spojte certifikát TLS/SSL s webem ve službě IIS.
 
-Pokud máte dotazy ke konfiguraci certifikátu SSL na serveru služby IIS, přečtěte si článek [Nastavení protokolu SSL ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Máte-li dotazy týkající se konfigurace certifikátu TLS/SSL na serveru služby IIS, přečtěte si článek [Jak nastavit ssl ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
-Sada SDK webové služby musí být zabezpečená certifikátem SSL. Pro tento účel stačí certifikát podepsaný svým držitelem. Importujte certifikát do úložiště „Důvěryhodné kořenové certifikační autority“ účtu místního počítače na webovém serveru portálu User Portal, aby byl certifikát důvěryhodný při navazování připojení SSL.
+Sada SDK webové služby musí být zabezpečena certifikátem TLS/SSL. Pro tento účel stačí certifikát podepsaný svým držitelem. Importujte certifikát do úložiště Důvěryhodné kořenové certifikační úřady účtu místního počítače na webovém serveru portálu User Portal, aby byl tomuto certifikátu při inicializačním připojení TLS důvěřován.
 
 ![Nastavení konfigurace MFA Serveru – sada SDK webové služby](./media/howto-mfaserver-deploy-userportal/sdk.png)
 
 ## <a name="deploy-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>Nasazení portálu User Portal na stejném serveru, jako je Azure Multi-Factor Authentication Server
 
-Pro instalaci portálu User Portal na **stejném serveru**, jako je Azure Multi-Factor Authentication Server, se vyžaduje následující:
+K instalaci uživatelského portálu na **stejný server** jako server Azure Multi-Factor Authentication Server jsou vyžadovány následující předpoklady:
 
 * Služba IIS, včetně kompatibility s ASP.NET a IIS 6 meta base (pro IIS 7 a novější).
 * Účet s právy správce počítače a případně domény. Tento účet musí mít oprávnění k vytvoření skupin zabezpečení Active Directory.
-* Zabezpečte portál User Portal certifikátem SSL.
-* Zabezpečte sadu SDK webové služby Azure Multi-Factor Authentication certifikátem SSL.
+* Zabezpečte uživatelský portál pomocí certifikátu TLS/SSL.
+* Zabezpečte webovou službu Azure Multi-Factor Authentication Web Service SDK pomocí certifikátu TLS/SSL.
 
 Pokud chcete nasadit portál User Portal, postupujte takto:
 
 1. Otevřete konzolu Azure Multi-Factor Authentication Serveru, klikněte v nabídce na levé straně na ikonu **User Portal** a potom klikněte na **Nainstalovat portál User Portal**.
 2. Dokončete instalaci s použitím výchozích hodnot, pokud je z nějakého důvodu nepotřebujete změnit.
-3. Vytvořte vazbu certifikátu SSL k webu ve službě IIS.
+3. Svázání certifikátu TLS/SSL s webem ve službě IIS
 
    > [!NOTE]
-   > Tento certifikát je obvykle veřejně podepsaný certifikát SSL.
+   > Tento certifikát TLS/SSL je obvykle veřejně podepsaný certifikát TLS/SSL.
 
-4. Na libovolném počítači otevřete webový prohlížeč a přejděte na adresu URL, kam se nainstaloval portál User Portal (příklad: https://mfa.contoso.com/MultiFactorAuth). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
+4. Otevřete webový prohlížeč z libovolného počítače a přejděte na `https://mfa.contoso.com/MultiFactorAuth`adresu URL, kde byl nainstalován uživatelský portál (Příklad: ). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
 
 ![Instalace portálu User Portal pro MFA Server](./media/howto-mfaserver-deploy-userportal/install.png)
 
-Pokud máte dotazy ke konfiguraci certifikátu SSL na serveru služby IIS, přečtěte si článek [Nastavení protokolu SSL ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Máte-li dotazy týkající se konfigurace certifikátu TLS/SSL na serveru služby IIS, přečtěte si článek [Jak nastavit ssl ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>Nasazení portálu User Portal na samostatný server
 
@@ -85,32 +85,32 @@ Pokud vaše organizace jako jednu z metod ověřování používá aplikaci Micr
 * Nainstalujte portál User Portal na webovém serveru s přístupem k internetu a s Internetovou informační službou (IIS) verze 6.x nebo vyšší.
 * Pokud používáte IIS 6.x, ujistěte se, že je nainstalované ASP.NET v2.0.50727, že je zaregistrované a nastavené na **Povoleno**.
 * Pokud používáte IIS 7.x nebo vyšší, vyžaduje se služba IIS, včetně základního ověřování, ASP.NET a kompatibility s IIS 6 meta base.
-* Zabezpečte portál User Portal certifikátem SSL.
-* Zabezpečte sadu SDK webové služby Azure Multi-Factor Authentication certifikátem SSL.
-* Ověřte, že se portál User Portal dokáže připojit k sadě SDK webové služby Azure Multi-Factor Authentication přes protokol SSL.
+* Zabezpečte uživatelský portál pomocí certifikátu TLS/SSL.
+* Zabezpečte webovou službu Azure Multi-Factor Authentication Web Service SDK pomocí certifikátu TLS/SSL.
+* Ujistěte se, že se uživatelský portál může připojit k sdk webové služby Azure Multi-Factor Authentication Web Service přes TLS/SSL.
 * Ověřte, že se portál User Portal dokáže ověřit pro sadu SDK webové služby Azure Multi-Factor Authentication pomocí přihlašovacích údajů účtu služby ve skupině zabezpečení PhoneFactor Admins. Tento účet služby a skupina musí existovat ve službě Active Directory, pokud Azure Multi-Factor Authentication Server běží na serveru připojeném k doméně. Tento účet služby a skupina existují místně na Azure Multi-Factor Authentication Serveru, pokud není připojený k doméně.
 
 Instalace portálu uživatele na jiném serveru, než je Azure Multi-Factor Authentication Server, vyžaduje následující kroky:
 
 1. **Na MFA Serveru** přejděte do instalační cesty (příklad: C:\Program Files\Multi-Factor Authentication Server) a zkopírujte soubor **MultiFactorAuthenticationUserPortalSetup64** do umístění, ke kterému má přístup server s přístupem k internetu, na který budete MFA Server instalovat.
 2. **Na webovém serveru s přístupem k internetu** spusťte instalační soubor MultiFactorAuthenticationUserPortalSetup64 jako správce, změňte v případě potřeby web, a pokud chcete, změňte virtuální adresář na krátký název.
-3. Vytvořte vazbu certifikátu SSL k webu ve službě IIS.
+3. Spojte certifikát TLS/SSL s webem ve službě IIS.
 
    > [!NOTE]
-   > Tento certifikát je obvykle veřejně podepsaný certifikát SSL.
+   > Tento certifikát TLS/SSL je obvykle veřejně podepsaný certifikát TLS/SSL.
 
 4. Přejděte do umístění **C:\inetpub\wwwroot\MultiFactorAuth**.
 5. V Poznámkovém bloku upravte soubor Web.Config.
 
-    * Vyhledejte klíč **"USE_WEB_SERVICE_SDK"** a změňte **value="false"** na **value="true"** .
-    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** a změňte **value=""** na **value="DOMÉNA\Uživatel"** , kde DOMÉNA\Uživatel je účet služby, který je součástí skupiny PhoneFactor Admins.
-    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** a změňte **value=""** na **value="Heslo"** , kde Heslo je heslo pro účet úložiště zadaný na předchozím řádku.
-    * Vyhledejte hodnotu **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** a změňte tuto zástupnou adresu URL na adresu URL sady SDK webové služby, kterou jsme nainstalovali v kroku 2.
+    * Vyhledejte klíč **"USE_WEB_SERVICE_SDK"** a změňte **value="false"** na **value="true"**.
+    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** a změňte **value=""** na **value="DOMÉNA\Uživatel"**, kde DOMÉNA\Uživatel je účet služby, který je součástí skupiny PhoneFactor Admins.
+    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** a změňte **value=""** na **value="Heslo"**, kde Heslo je heslo pro účet úložiště zadaný na předchozím řádku.
+    * Najděte **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** hodnotu a změňte tuto zástupnou adresu URL na adresu URL sady SDK webové služby, kterou jsme nainstalovali v kroku 2.
     * Uložte soubor Web.Config a zavřete Poznámkový blok.
 
-6. Na libovolném počítači otevřete webový prohlížeč a přejděte na adresu URL, kam se nainstaloval portál User Portal (příklad: https://mfa.contoso.com/MultiFactorAuth). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
+6. Otevřete webový prohlížeč z libovolného počítače a přejděte na `https://mfa.contoso.com/MultiFactorAuth`adresu URL, kde byl nainstalován uživatelský portál (Příklad: ). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
 
-Pokud máte dotazy ke konfiguraci certifikátu SSL na serveru služby IIS, přečtěte si článek [Nastavení protokolu SSL ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Máte-li dotazy týkající se konfigurace certifikátu TLS/SSL na serveru služby IIS, přečtěte si článek [Jak nastavit ssl ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurace nastavení portálu User Portal v Azure Multi-Factor Authentication Serveru
 
@@ -118,7 +118,7 @@ Teď, když je portál User Portal nainstalovaný, musíte nakonfigurovat Azure 
 
 1. V konzole Multi-Factor Authentication Serveru klikněte na ikonu **User Portal**. Na kartě Nastavení zadejte adresu URL portálu User Portal do pole **Adresa URL portálu User Portal**. Pokud je zapnutá funkce e-mailu, tato adresa URL se vloží do e-mailů, které se uživatelům pošlou po jejich importování do Azure Multi-Factor Authentication Serveru.
 2. Vyberte nastavení, které chcete v portálu User Portal použít. Pokud si například uživatelé můžou zvolit metodu ověřování, zkontrolujte, že je kromě metod, ze kterých si mohou vybrat, zaškrtnutá i možnost **Povolit uživatelům výběr metody**.
-3. Na kartě **Správci** definujte, kdo by měl být správcům. Pomocí zaškrtávacích políček a rozevíracích seznamů v polích Přidat/upravit můžete vytvořit podrobná oprávnění správce.
+3. Na kartě Administrators definujte, kdo by měl být **správci.** Podrobná oprávnění správce můžete vytvořit pomocí zaškrtávacích políček a rozevíracích seznamů v polích Přidat nebo upravit.
 
 Volitelná konfigurace:
 
@@ -146,15 +146,15 @@ Server Azure Multi-Factor Authentication poskytuje pro uživatelský portál ně
 | Povolit protokolování | Povolí protokolování na portálu User Portal. Protokoly se ukládají do: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
 > [!IMPORTANT]
-> Od března 2019 nebudou možnosti telefonního hovoru dostupné uživatelům MFA serveru v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Telefonní hovor bude dál k dispozici uživatelům v placených klientech Azure AD. Tato změna má vliv jenom na bezplatné nebo zkušební klienty Azure AD.
+> Od března 2019 nebudou možnosti telefonního hovoru dostupné uživatelům serveru MFA v tenantech Azure AD zdarma nebo zkušební verze. Sms zprávy nejsou touto změnou ovlivněny. Telefonní hovor bude i nadále k dispozici uživatelům v placených klientech Azure AD. Tato změna má vliv pouze na bezplatné nebo zkušební klienty Azure AD.
 
 Na portálu se tato nastavení uživatelům zviditelní, jakmile jsou povolena a uživatelé jsou přihlášeni na portálu User Portal.
 
-![Správa účtu serveru MFA pomocí portálu User Portal](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![Správa účtu serveru MFA pomocí uživatelského portálu](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Samoobslužná registrace uživatele
 
-Pokud chcete, aby se uživatelé přihlásili a zaregistrovali, musíte vybrat možnost **dovolit uživatelům přihlášení** a **Povolení registrace uživatelů** na kartě nastavení. Mějte na paměti, že nastavení, které vyberete, bude mít vliv na přihlašovací uživatelské prostředí.
+Pokud chcete, aby se uživatelé přihlašují a registrují, musíte na kartě Nastavení vybrat **možnosti Povolit uživatelům přihlášení** a Povolit možnosti **registrace uživatele.**
 
 Pokud se například uživatel přihlásí k portálu User Portal poprvé, bude přesměrován na stránku Azure Multi-Factor Authentication – Nastavení uživatele. Podle toho, jak jste nakonfigurovali ověřování Azure Multi-Factor Authentication si uživatel možná bude moci vybrat metodu ověření.
 
@@ -166,7 +166,7 @@ Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce
 
 Pokud si uživatel vybere metodu ověření zprávou SMS nebo je tato možnost předem nastavená, na stránce se zobrazí výzva k zadání čísla mobilního telefonu. Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce také výzva k zadání kódu PIN.  Po zadání telefonního čísla a PIN kódu (pokud je potřeba) uživatel klikne na tlačítko **Poslat mi nyní zprávu SMS a ověřit mě**. Azure Multi-Factor Authentication provede ověření tím, že na mobilní telefon uživatele pošle zprávu SMS. Uživatel obdrží zprávu SMS s jednorázovým heslem a odpoví na zprávu s použitím jednorázového hesla spolu s PIN kódem (pokud je potřeba).
 
-![Ověřování pomocí služby SMS na portálu User Portal](./media/howto-mfaserver-deploy-userportal/text.png)
+![Ověření uživatelského portálu pomocí SMS](./media/howto-mfaserver-deploy-userportal/text.png)
 
 Pokud si uživatel vybere metodu ověření pomocí mobilní aplikace, na stránce se zobrazí výzva k instalaci aplikace Microsoft Authenticator na mobilní zařízení a vygenerování aktivačního kódu. Po nainstalování aplikace uživatel klikne na tlačítko Generovat aktivační kód.
 

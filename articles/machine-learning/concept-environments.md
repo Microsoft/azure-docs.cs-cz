@@ -1,104 +1,107 @@
 ---
-title: Informace o prostředích Azure Machine Learning
+title: O prostředích Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: V tomto článku se seznámíte s výhodami strojového učení, které umožňují reprodukovatelná, Auditovaná a přenosné definice závislostí strojového učení napříč různými výpočetními cíli.
+description: V tomto článku se dozvíte výhody prostředí strojového učení, které umožňují reprodukovatelné, auditovatelné a přenosné definice závislostí strojového učení napříč různými výpočetními cíli.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
-ms.date: 01/06/2020
-ms.openlocfilehash: 036efa27fb8d22c32f2f6bce1efe9dea300a3972
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/18/2020
+ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302762"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064189"
 ---
-# <a name="what-are-azure-machine-learning-environments"></a>Co jsou Azure Machine Learning prostředí?
+# <a name="what-are-azure-machine-learning-environments"></a>Co jsou prostředí Azure Machine Learning?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning prostředí určují balíčky Pythonu, proměnné prostředí a nastavení softwaru kolem vašich školicích a vyhodnocovacích skriptů. Určují také časy spuštění (Python, Spark nebo Docker). Prostředí jsou spravovaná a entitami se správou verzí v rámci vašeho Machine Learning pracovního prostoru, které umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
+Prostředí Azure Machine Learning určují balíčky Pythonu, proměnné prostředí a nastavení softwaru kolem vašich školicích a vyhodnocovacích skriptů. Určují také časy spuštění (Python, Spark nebo Docker). Prostředí jsou spravované a verze entity v rámci pracovního prostoru Machine Learning, které umožňují reprodukovatelné, auditovatelné a přenosné pracovní postupy strojového učení napříč různými výpočetními cíli.
 
-Objekt `Environment` v místním výpočetním prostředí můžete použít k těmto akcím:
-* Vytvořte školicí skript.
-* Používejte stejné prostředí v Azure Machine Learning COMPUTE pro modelové školení ve velkém měřítku.
+Objekt v `Environment` místním výpočetním prostředí můžete použít k:
+* Vytvořte si tréninkový skript.
+* Znovu použít stejné prostředí na Azure Machine Learning Compute pro školení modelu ve velkém měřítku.
 * Nasaďte model se stejným prostředím.
 
-Následující diagram znázorňuje, jak můžete použít jeden objekt `Environment` v konfiguraci spuštění, pro školení a konfiguraci nasazení pro nasazení webových služeb.
+Následující diagram znázorňuje, jak `Environment` můžete použít jeden objekt v konfiguraci spuštění, pro školení a odvození a konfigurace nasazení pro nasazení webových služeb.
 
-![Diagram prostředí v pracovním postupu Machine Learning](./media/concept-environments/ml-environment.png)
+![Diagram prostředí v pracovním postupu strojového učení](./media/concept-environments/ml-environment.png)
 
 ## <a name="types-of-environments"></a>Typy prostředí
 
-Prostředí se můžou v podstatě rozdělit do tří *kategorií: řízená*, *uživatelsky spravovaná*a *spravovaná systémem*.
+Prostředí lze obecně rozdělit do tří kategorií: *kurátor ,* *spravovaný uživatelem*a *systémově spravovaný*.
 
-Dodaná prostředí jsou poskytována Azure Machine Learning a jsou ve výchozím nastavení k dispozici ve vašem pracovním prostoru. Obsahují kolekce balíčků a nastavení Pythonu, které vám pomůžou začít s různými architekturami strojového učení. 
+Kurátorská prostředí jsou dostupná od Azure Machine Learning a ve výchozím nastavení jsou dostupná ve vašem pracovním prostoru. Obsahují kolekce balíčků a nastavení Pythonu, které vám pomůžou začít s různými architekturami strojového učení. 
 
-V prostředích spravovaných uživatelem zodpovídáte za nastavení vašeho prostředí a instalaci každého balíčku, který váš školicí skript potřebuje na výpočetním cíli. Conda nekontroluje vaše prostředí ani neinstaluje cokoli za vás. Pokud definujete vlastní prostředí, musíte jako závislost PIP uvést `azureml-defaults` s verzí `>= 1.0.45`. Tento balíček obsahuje funkce, které jsou potřeba pro hostování modelu jako webové služby.
+V prostředích spravovaných uživateli jste zodpovědní za nastavení prostředí a instalaci každého balíčku, který váš školicí skript potřebuje na výpočetní cíl. Conda nekontroluje vaše prostředí ani nic neinstaluje za vás. Pokud definujete vlastní prostředí, musíte uvést `azureml-defaults` s `>= 1.0.45` verzí jako závislost pip. Tento balíček obsahuje funkce, které jsou potřebné k hostování modelu jako webové služby.
 
-Prostředí spravovaná systémem se používají, když chcete, aby [conda](https://conda.io/docs/) spravovalo prostředí Pythonu a závislosti skriptů za vás. Služba ve výchozím nastavení předpokládá tento typ prostředí, protože se jedná o užitečnost vzdálených výpočetních cílů, které se nedají ručně konfigurovat.
+Systémově spravovaná prostředí se používají, když chcete, aby [Conda](https://conda.io/docs/) spravoval prostředí Pythonu a závislosti skriptů za vás. Služba předpokládá tento typ prostředí ve výchozím nastavení, protože jeho užitečnost na vzdálené výpočetní cíle, které nejsou ručně konfigurovatelné.
 
-## <a name="create-and-manage-environments"></a>Vytváření a Správa prostředí
+## <a name="create-and-manage-environments"></a>Vytváření a správa prostředí
 
-Prostředí můžete vytvořit pomocí:
+Prostředí můžete vytvářet takto:
 
-* Definování nových `Environment` objektů, a to buď pomocí spravovaného prostředí, nebo definováním vlastních závislostí.
-* Používání stávajících `Environment` objektů z pracovního prostoru. Tento přístup umožňuje konzistenci a reprodukovatelnosti s vašimi závislostmi.
-* Probíhá import z existující definice prostředí Anaconda.
-* Použití rozhraní příkazového řádku Azure Machine Learning
+* Definování nových `Environment` objektů, buď pomocí kurátorované prostředí nebo definovánívlastní závislosti.
+* Použití `Environment` existujících objektů z pracovního prostoru. Tento přístup umožňuje konzistenci a reprodukovatelnost s vašimi závislostmi.
+* Import z existující definice prostředí Anaconda.
+* Použití cli Azure Machine Learning
 
-Konkrétní ukázky kódu najdete v části Vytvoření prostředí v tématu [opakované použití prostředí pro školení a nasazení](how-to-use-environments.md#create-an-environment). Prostředí je taky možné snadno spravovat přes pracovní prostor. Zahrnují tyto funkce:
+Pro konkrétní ukázky kódu, naleznete v části "Vytvořit prostředí" [znovu použít prostředí pro školení a nasazení](how-to-use-environments.md#create-an-environment). Prostředí se také snadno spravují prostřednictvím pracovního prostoru. Zahrnují následující funkce:
 
-* Prostředí se při odeslání experimentu automaticky zaregistrují do vašeho pracovního prostoru. Můžou se taky registrovat ručně.
-* Můžete načíst prostředí z pracovního prostoru, která se mají použít pro školení nebo nasazení, nebo upravit definici prostředí.
-* Se správou verzí můžete zobrazit změny prostředí v průběhu času, což zajišťuje reprodukovatelnost.
-* Image Docker můžete vytvářet automaticky z prostředí.
+* Prostředí se automaticky zaevidují do pracovního prostoru při odeslání experimentu. Mohou být také ručně registrovány.
+* Můžete načíst prostředí z pracovního prostoru pro školení nebo nasazení nebo provádět úpravy definice prostředí.
+* Pomocí správy verzí můžete v průběhu času zobrazit změny prostředí, což zajišťuje reprodukovatelnost.
+* Můžete vytvářet image Dockeru automaticky z vašeho prostředí.
 
-Ukázky kódu najdete v části "Správa prostředí" v tématu [opakované použití prostředí pro účely školení a nasazení](how-to-use-environments.md#manage-environments).
+Ukázky kódu naleznete v části Správa prostředí [v prostředích opakovaného použití pro školení a nasazení](how-to-use-environments.md#manage-environments).
 
-## <a name="environment-building-caching-and-reuse"></a>Sestavení, ukládání do mezipaměti a opakované použití prostředí
+## <a name="environment-building-caching-and-reuse"></a>Vytváření prostředí, ukládání do mezipaměti a opětovné použití
 
-Služba Azure Machine Learning sestaví definice prostředí do prostředí Docker images a conda. Také ukládá do mezipaměti prostředí, aby je bylo možné znovu použít v následných školicích běhůch a nasazeních koncových bodů služby.
+Služba Azure Machine Learning vytváří definice prostředí do ibi dockerů a prostředí conda. Také ukládá do mezipaměti prostředí, takže je lze znovu použít v následných spuštěních školení a nasazení koncového bodu služby.
 
-### <a name="building-environments-as-docker-images"></a>Sestavování prostředí jako imagí Docker
+### <a name="building-environments-as-docker-images"></a>Vytváření prostředí jako image Dockeru
 
-Při prvním odeslání běhu pomocí prostředí služba Azure Machine Learning vyvolá [úlohu sestavení ACR](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) na Azure Container Registry (ACR), která je přidružena k pracovnímu prostoru. Vytvořená image Docker se pak uloží do mezipaměti v pracovním prostoru ACR. Na začátku spuštění spuštění je image načtena cílem výpočtů.
+Obvykle při prvním odeslání spustit pomocí prostředí, služba Azure Machine Learning vyvolá [úlohu sestavení ACR](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) na registru kontejnerů Azure (ACR) přidružené k pracovního prostoru. Vytvořená bitová kopie Dockeru je pak uložena do mezipaměti v acr pracovního prostoru. Na začátku spuštění spuštění bitové kopie je načten a výpočetní cíl.
 
-Sestavení image se skládá ze dvou kroků:
+Sestavení bitové kopie se skládá ze dvou kroků:
 
- 1. Stažení základní image a provedení všech kroků Docker
- 2. Vytvoření prostředí conda podle závislostí conda zadaných v definici prostředí.
+ 1. Stažení základní bitové kopie a provedení všech kroků Dockeru
+ 2. Vytváření prostředí conda podle conda závislostí zadaných v definici prostředí.
 
-Druhý krok se vynechá, pokud zadáte [závislosti spravované uživatelem](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py). V tomto případě zodpovídáte za instalaci jakýchkoli balíčků Pythonu, zahrnutím do základní Image nebo zadáním vlastních kroků Docker v prvním kroku. Zodpovídáte také za určení správného umístění spustitelného souboru Pythonu.
+Druhý krok je vynechán, pokud zadáte [závislosti spravované uživatelem](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py). V takovém případě jste zodpovědní za instalaci všech balíčků Pythonu, jejich zahrnutím do základní bitové kopie nebo zadáním vlastních kroků Dockeru v prvním kroku. Jste také zodpovědní za určení správného umístění spustitelného souboru Pythonu.
 
 ### <a name="image-caching-and-reuse"></a>Ukládání obrázků do mezipaměti a opakované použití
 
-Použijete-li stejnou definici prostředí pro jiný běh, služba Azure Machine Learning znovu použije obrázek uložený v mezipaměti z pracovního prostoru ACR. 
+Pokud použijete stejnou definici prostředí pro jiné spuštění, služba Azure Machine Learning znovu použije image uloženou v mezipaměti z acr pracovního prostoru. 
 
-Chcete-li zobrazit podrobnosti obrázku v mezipaměti, použijte metodu [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-) .
+Chcete-li zobrazit podrobnosti o bitové kopii uložené v mezipaměti, použijte metodu [Environment.get_image_details.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-)
 
-Aby bylo možné určit, zda znovu použít bitovou kopii v mezipaměti nebo vytvořit novou, služba vypočítá [hodnotu hash](https://en.wikipedia.org/wiki/Hash_table) z definice prostředí a porovná ji s hodnotami hash stávajících prostředí. Hodnota hash je založena na:
+Chcete-li zjistit, zda chcete znovu použít bitovou kopii uloženou v mezipaměti nebo vytvořit novou, vypočítá služba [hodnotu hash](https://en.wikipedia.org/wiki/Hash_table) z definice prostředí a porovná ji s hodnotami hash existujících prostředí. Hash je založen na:
  
- * Základní hodnota vlastnosti Image
- * Hodnota vlastnosti vlastní kroky Docker
- * Seznam balíčků Pythonu v definici conda
- * Seznam balíčků v definici Sparku 
+ * Hodnota vlastnosti základního obrázku
+ * Hodnota vlastnosti Vlastní docker kroky
+ * Seznam balíčků Pythonu v definici Conda
+ * Seznam balíčků v definici Spark 
 
-Hodnota hash není závislá na názvu prostředí nebo verzi. Změny definice prostředí, jako je například přidání nebo odebrání balíčku Pythonu nebo změna verze balíčku, způsobí, že hodnota hash se změní a spustí opětovné sestavení bitové kopie. Pokud však jednoduše přejmenujete prostředí nebo vytvoříte nové prostředí s přesnou vlastností a balíčky existující instance, hodnota hash zůstane stejná a použije se obrázek uložený v mezipaměti.
+Hash nezávisí na názvu prostředí nebo verzi. Změny definice prostředí, jako je například přidání nebo odebrání balíčku Pythonu nebo změna verze balíčku, způsobí změnu hodnoty hash a spustí opětovné sestavení bitové kopie. Pokud však jednoduše přejmenujete prostředí nebo vytvoříte nové prostředí s přesnými vlastnostmi a balíčky existujícího prostředí, zůstane hodnota hash stejná a bude použita bitová kopie uložená v mezipaměti.
 
-Podívejte se na následující diagram, který obsahuje tři definice prostředí. Dva z nich mají odlišný název a verzi, ale stejný základní image a balíčky Pythonu. Mají stejnou hodnotu hash, a proto odpovídají stejné imagi uložené v mezipaměti. Třetí prostředí má různé balíčky a verze Pythonu a proto odpovídá jinému obrázku v mezipaměti.
+Podívejte se na následující diagram, který znázorňuje tři definice prostředí. Dva z nich mají jiný název a verzi, ale identické základní image a balíčky Pythonu. Mají stejnou hodnotu hash, a proto odpovídají stejnému obrázku uloženému v mezipaměti. Třetí prostředí má různé balíčky a verze Pythonu, a proto odpovídá jiné image uložené v mezipaměti.
 
-![Diagram ukládání do mezipaměti prostředí jako imagí Docker](./media/concept-environments/environment-caching.png)
+![Diagram ukládání do mezipaměti prostředí jako imitace Dockeru](./media/concept-environments/environment-caching.png)
 
-Pokud vytvoříte prostředí s nepřipojenou závislostí balíčku, například ```numpy```, bude toto prostředí dál používat verzi balíčku nainstalovanou v době vytváření prostředí. I jakékoli budoucí prostředí s vyhovující definicí bude dál používat starou verzi. Chcete-li aktualizovat balíček, zadejte číslo verze pro vynucení opětovného sestavení obrázku, například ```numpy==1.18.1```. Všimněte si, že se nainstalují nové závislosti včetně vnořených objektů, které by mohly poškodit předchozí pracovní scénář.
+>[!IMPORTANT]
+> Pokud vytvoříte prostředí s nepřipnutým balíčkem závislost, například ```numpy```, že prostředí bude nadále používat verzi balíčku _nainstalovanou v době vytvoření prostředí_. Také jakékoli budoucí prostředí s odpovídající definicí bude nadále používat starou verzi. 
+
+Chcete-li balíček aktualizovat, zadejte číslo verze, které vynutí opětovné sestavení obrazu, například ```numpy==1.18.1```. Všimněte si, že nové závislosti, včetně vnořených ty budou nainstalovány, které by mohly přerušit dříve pracovní scénář.
 
 > [!WARNING]
->  Metoda [prostředí. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace-) znovu sestaví bitovou kopii v mezipaměti s případným vedlejším účinkem aktualizace nepřipnutých balíčků a zásadní reprodukovatelnosti pro všechny definice prostředí odpovídající tomuto obrázku v mezipaměti.
+>  [Metoda Environment.build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) znovu vytvoří bitovou kopii uloženou v mezipaměti s možným vedlejším účinkem aktualizace nepřipnutých balíčků a rozdělení reprodukovatelnosti pro všechny definice prostředí odpovídající této bitové kopii uložené v mezipaměti.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se [vytvářet a používat prostředí](how-to-use-environments.md) v Azure Machine Learning.
-* Viz Referenční dokumentace sady Python SDK pro [třídu prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py).
-* Podívejte se na referenční dokumentaci sady R SDK pro [prostředí](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments).
+* Zjistěte, jak [vytvářet a používat prostředí](how-to-use-environments.md) v Azure Machine Learning.
+* Podívejte se na referenční dokumentaci sady Python SDK pro [třídu prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py).
+* Viz referenční dokumentace sady R SDK pro [prostředí](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments).

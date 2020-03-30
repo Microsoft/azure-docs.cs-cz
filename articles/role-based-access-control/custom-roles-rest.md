@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí REST API
-description: Přečtěte si, jak vypsat, vytvořit, aktualizovat nebo odstranit vlastní role pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure pomocí REST API.
+title: Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí rozhraní REST API
+description: Zjistěte, jak vypsat, vytvořit, aktualizovat nebo odstranit vlastní role pomocí řízení přístupu na základě rolí (RBAC) pro prostředky Azure pomocí rozhraní REST API.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,23 +12,28 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 145bc45e1b7faeddc23cf5f0662337e15ab51c29
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: fda0400310f46da64322654c42af75521746d679
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062194"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí REST API
+# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí rozhraní REST API
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak pomocí REST API vypsat, vytvořit, aktualizovat nebo odstranit vlastní role.
+> [!IMPORTANT]
+> Přidání skupiny `AssignableScopes` pro správu do aplikace je aktuálně ve verzi Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují specifické potřeby vaší organizace, můžete si vytvořit vlastní role. Tento článek popisuje, jak seznam, vytvoření, aktualizaci nebo odstranění vlastních rolí pomocí rozhraní REST API.
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-K vypsání všech vlastních rolí v adresáři použijte REST API [Definice rolí – seznam](/rest/api/authorization/roledefinitions/list) .
+Chcete-li vypsat všechny vlastní role v adresáři, použijte [definice rolí - seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API.
 
 1. Začněte s následujícím požadavkem:
 
@@ -36,39 +41,16 @@ K vypsání všech vlastních rolí v adresáři použijte REST API [Definice ro
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Nahraďte *{Filter}* typem role.
+1. Nahraďte *{filter}* typem role.
 
-    | Filtr | Popis |
-    | --- | --- |
-    | `$filter=type%20eq%20'CustomRole'` | Filtrovat podle typu CustomRole |
+    > [!div class="mx-tableFixed"]
+    > | Filtr | Popis |
+    > | --- | --- |
+    > | `$filter=type+eq+'CustomRole'` | Filtr na základě typu CustomRole |
 
-## <a name="list-custom-roles-at-a-scope"></a>Vypsání vlastních rolí v oboru
+## <a name="list-custom-roles-at-a-scope"></a>Vypsat vlastní role v oboru
 
-K vypsání vlastních rolí v oboru použijte REST API [Definice rolí – seznam](/rest/api/authorization/roledefinitions/list) .
-
-1. Začněte s následujícím požadavkem:
-
-    ```http
-    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
-    ```
-
-1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
-
-    | Obor | Typ |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
-
-1. Nahraďte *{Filter}* typem role.
-
-    | Filtr | Popis |
-    | --- | --- |
-    | `$filter=type%20eq%20'CustomRole'` | Filtrovat podle typu CustomRole |
-
-## <a name="list-a-custom-role-definition-by-name"></a>Výpis definice vlastní role podle názvu
-
-Pokud chcete získat informace o vlastní roli pomocí jejího zobrazovaného názvu, použijte [Definice rolí – získat](/rest/api/authorization/roledefinitions/get) REST API.
+Chcete-li vypsat vlastní role v oboru, použijte [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API.
 
 1. Začněte s následujícím požadavkem:
 
@@ -76,25 +58,55 @@ Pokud chcete získat informace o vlastní roli pomocí jejího zobrazovaného n�
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
     ```
 
-1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
+1. V rámci identifikátoru URI nahraďte *{scope}* oborem, pro který chcete vypsat role.
 
-    | Obor | Typ |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    > [!div class="mx-tableFixed"]
+    > | Rozsah | Typ |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | Předplatné |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | Prostředek |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
 
-1. Nahraďte *{Filter}* zobrazovaným názvem role.
+1. Nahraďte *{filter}* typem role.
 
-    | Filtr | Popis |
-    | --- | --- |
-    | `$filter=roleName%20eq%20'{roleDisplayName}'` | Použijte kódovaný formát URL s přesným zobrazovaným názvem role. `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` například |
+    > [!div class="mx-tableFixed"]
+    > | Filtr | Popis |
+    > | --- | --- |
+    > | `$filter=type+eq+'CustomRole'` | Filtr na základě typu CustomRole |
 
-## <a name="list-a-custom-role-definition-by-id"></a>Výpis definice vlastní role podle ID
+## <a name="list-a-custom-role-definition-by-name"></a>Seznam vlastní definice role podle názvu
 
-Pokud chcete získat informace o vlastní roli pomocí jejího jedinečného identifikátoru, použijte [Definice rolí – získat](/rest/api/authorization/roledefinitions/get) REST API.
+Chcete-li získat informace o vlastní roli podle jejího zobrazovaný název, použijte [definice rolí – získat](/rest/api/authorization/roledefinitions/get) rozhraní REST API.
 
-1. Pro získání identifikátoru GUID pro roli použijte REST API [seznam definice rolí](/rest/api/authorization/roledefinitions/list) .
+1. Začněte s následujícím požadavkem:
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
+    ```
+
+1. V rámci identifikátoru URI nahraďte *{scope}* oborem, pro který chcete vypsat role.
+
+    > [!div class="mx-tableFixed"]
+    > | Rozsah | Typ |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | Předplatné |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | Prostředek |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
+
+1. Nahraďte *{filter}* zobrazovaným názvem role.
+
+    > [!div class="mx-tableFixed"]
+    > | Filtr | Popis |
+    > | --- | --- |
+    > | `$filter=roleName+eq+'{roleDisplayName}'` | Použijte formulář kódované adresou URL přesného zobrazovaného názvu role. Například`$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
+
+## <a name="list-a-custom-role-definition-by-id"></a>Vypsat vlastní definici role podle ID
+
+Chcete-li získat informace o vlastní roli podle jeho jedinečný identifikátor, použijte [definice rolí – získat](/rest/api/authorization/roledefinitions/get) rozhraní REST API.
+
+1. Pomocí [rozhraní ROLE - seznam](/rest/api/authorization/roledefinitions/list) rozhraní REST API získáte identifikátor GUID pro roli.
 
 1. Začněte s následujícím požadavkem:
 
@@ -102,25 +114,27 @@ Pokud chcete získat informace o vlastní roli pomocí jejího jedinečného ide
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
+1. V rámci identifikátoru URI nahraďte *{scope}* oborem, pro který chcete vypsat role.
 
-    | Obor | Typ |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    > [!div class="mx-tableFixed"]
+    > | Rozsah | Typ |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | Předplatné |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | Prostředek |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
 
-1. Nahraďte *{roleDefinitionId}* identifikátorem GUID definice role.
+1. Nahraďte *{roleDefinitionId}* identifikátorem IDENTIFIKÁTOR GUID definice role.
 
 ## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
-Pokud chcete vytvořit vlastní roli, použijte [Definice rolí – vytvořit nebo aktualizovat](/rest/api/authorization/roledefinitions/createorupdate) REST API. Chcete-li volat toto rozhraní API, musíte být přihlášeni pomocí uživatele, kterému je přiřazena role s oprávněním `Microsoft.Authorization/roleDefinitions/write` pro všechny `assignableScopes`. Z předdefinovaných rolí zahrnuje toto oprávnění pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
+Chcete-li vytvořit vlastní roli, použijte [definice rolí - vytvořit nebo aktualizovat](/rest/api/authorization/roledefinitions/createorupdate) rozhraní REST API. Chcete-li volat toto rozhraní API, musíte být přihlášeni `Microsoft.Authorization/roleDefinitions/write` k uživateli, kterému je přiřazena role, která má oprávnění ke všem rozhraním `assignableScopes`. Z předdefinovaných rolí toto oprávnění zahrnuje pouze [vlastník](built-in-roles.md#owner) a [správce přístupu uživatelů.](built-in-roles.md#user-access-administrator)
 
-1. Projděte si seznam [operací poskytovatele prostředků](resource-provider-operations.md) , které jsou k dispozici pro vytvoření oprávnění pro vlastní roli.
+1. Zkontrolujte seznam [operací zprostředkovatele prostředků,](resource-provider-operations.md) které jsou k dispozici k vytvoření oprávnění pro vlastní roli.
 
-1. Pomocí nástroje GUID vygenerujte jedinečný identifikátor, který se použije pro vlastní identifikátor role. Identifikátor má formát: `00000000-0000-0000-0000-000000000000`
+1. Pomocí nástroje GUID vygenerujte jedinečný identifikátor, který bude použit pro vlastní identifikátor role. Identifikátor má formát:`00000000-0000-0000-0000-000000000000`
 
-1. Začněte s následujícím požadavkem a textem:
+1. Začněte s následujícím požadavkem a tělem:
 
     ```http
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
@@ -144,33 +158,40 @@ Pokud chcete vytvořit vlastní roli, použijte [Definice rolí – vytvořit ne
           }
         ],
         "assignableScopes": [
-          "/subscriptions/{subscriptionId}"
+          "/subscriptions/{subscriptionId1}",
+          "/subscriptions/{subscriptionId2}",
+          "/subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}",
+          "/subscriptions/{subscriptionId2}/resourceGroups/{resourceGroup2}",
+          "/providers/Microsoft.Management/managementGroups/{groupId1}"
         ]
       }
     }
     ```
 
-1. V rámci identifikátoru URI nahraďte *{Scope}* první `assignableScopes` vlastní role.
+1. V rámci identifikátoru URI nahraďte *{scope}* první `assignableScopes` vlastní rolí.
 
-    | Obor | Typ |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    > [!div class="mx-tableFixed"]
+    > | Rozsah | Typ |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | Předplatné |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
 
-1. Nahraďte *{roleDefinitionId}* identifikátorem GUID vlastní role.
+1. Nahraďte *{roleDefinitionId}* identifikátorem identifikátoru GUID vlastní role.
 
-1. V těle žádosti ve vlastnosti `assignableScopes` nahraďte *{roleDefinitionId}* identifikátorem GUID.
+1. V těle požadavku nahraďte *{roleDefinitionId}* identifikátorem IDENTIFIKÁTOR GUID.
 
-1. Nahraďte *{SubscriptionId}* identifikátorem vašeho předplatného.
+1. Pokud `assignableScopes` je předplatné nebo skupina prostředků, nahraďte instance *{subscriptionId}* nebo *{resourceGroup}* identifikátory.
 
-1. Do vlastnosti `actions` přidejte operace, které může role provést.
+1. Pokud `assignableScopes` je skupina pro správu, nahraďte instanci *{groupId}* identifikátorem skupiny pro správu. Přidání skupiny `assignableScopes` pro správu do aplikace je aktuálně ve verzi Preview.
 
-1. Do vlastnosti `notActions` přidejte operace, které jsou vyloučeny z povolených `actions`.
+1. Ve `actions` vlastnosti přidejte operace, které umožňuje role provádět.
 
-1. Ve vlastnostech `roleName` a `description` zadejte jedinečný název role a popis. Další informace o vlastnostech naleznete v tématu [Custom Roles](custom-roles.md).
+1. Ve `notActions` vlastnosti přidejte operace, které jsou `actions`vyloučeny z povolené .
 
-    V následujícím příkladu vidíte příklad textu žádosti:
+1. Ve `roleName` vlastnostech a `description` zadejte jedinečný název role a popis. Další informace o vlastnostech naleznete v tématu [Vlastní role](custom-roles.md).
+
+    Následující příklad těla požadavku:
 
     ```json
     {
@@ -197,7 +218,8 @@ Pokud chcete vytvořit vlastní roli, použijte [Definice rolí – vytvořit ne
           }
         ],
         "assignableScopes": [
-          "/subscriptions/00000000-0000-0000-0000-000000000000"
+          "/subscriptions/00000000-0000-0000-0000-000000000000",
+          "/providers/Microsoft.Management/managementGroups/marketing-group"
         ]
       }
     }
@@ -205,9 +227,9 @@ Pokud chcete vytvořit vlastní roli, použijte [Definice rolí – vytvořit ne
 
 ## <a name="update-a-custom-role"></a>Aktualizace vlastní role
 
-Pokud chcete aktualizovat vlastní roli, použijte [Definice rolí – vytvořit nebo aktualizovat](/rest/api/authorization/roledefinitions/createorupdate) REST API. Chcete-li volat toto rozhraní API, musíte být přihlášeni pomocí uživatele, kterému je přiřazena role s oprávněním `Microsoft.Authorization/roleDefinitions/write` pro všechny `assignableScopes`. Z předdefinovaných rolí zahrnuje toto oprávnění pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
+Chcete-li aktualizovat vlastní roli, použijte [definice rolí – vytvořit nebo aktualizovat](/rest/api/authorization/roledefinitions/createorupdate) rozhraní REST API. Chcete-li volat toto rozhraní API, musíte být přihlášeni `Microsoft.Authorization/roleDefinitions/write` k uživateli, kterému je přiřazena role, která má oprávnění ke všem rozhraním `assignableScopes`. Z předdefinovaných rolí toto oprávnění zahrnuje pouze [vlastník](built-in-roles.md#owner) a [správce přístupu uživatelů.](built-in-roles.md#user-access-administrator)
 
-1. Použijte definice [rolí – seznam](/rest/api/authorization/roledefinitions/list) nebo [definice rolí –](/rest/api/authorization/roledefinitions/get) REST API získat informace o vlastní roli. Další informace najdete v části věnované [vlastním rolím seznamu](#list-custom-roles) dříve.
+1. Pomocí [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) nebo [definice rolí – získejte](/rest/api/authorization/roledefinitions/get) rozhraní REST API k získání informací o vlastní roli. Další informace naleznete v části dřívější [seznam vlastních rolí.](#list-custom-roles)
 
 1. Začněte s následujícím požadavkem:
 
@@ -215,17 +237,18 @@ Pokud chcete aktualizovat vlastní roli, použijte [Definice rolí – vytvořit
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. V rámci identifikátoru URI nahraďte *{Scope}* první `assignableScopes` vlastní role.
+1. V rámci identifikátoru URI nahraďte *{scope}* první `assignableScopes` vlastní rolí.
 
-    | Obor | Typ |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    > [!div class="mx-tableFixed"]
+    > | Rozsah | Typ |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | Předplatné |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
 
-1. Nahraďte *{roleDefinitionId}* identifikátorem GUID vlastní role.
+1. Nahraďte *{roleDefinitionId}* identifikátorem identifikátoru GUID vlastní role.
 
-1. Na základě informací o vlastní roli vytvořte text žádosti s následujícím formátem:
+1. Na základě informací o vlastní roli vytvořte tělo požadavku v následujícím formátu:
 
     ```json
     {
@@ -245,15 +268,19 @@ Pokud chcete aktualizovat vlastní roli, použijte [Definice rolí – vytvořit
           }
         ],
         "assignableScopes": [
-          "/subscriptions/{subscriptionId}"
+          "/subscriptions/{subscriptionId1}",
+          "/subscriptions/{subscriptionId2}",
+          "/subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}",
+          "/subscriptions/{subscriptionId2}/resourceGroups/{resourceGroup2}",
+          "/providers/Microsoft.Management/managementGroups/{groupId1}"
         ]
       }
     }
     ```
 
-1. Aktualizujte text žádosti o změny, které chcete provést v rámci vlastní role.
+1. Aktualizujte tělo požadavku změnami, které chcete provést ve vlastní roli.
 
-    V následujícím příkladu vidíte příklad textu žádosti s přidanou novou akcí diagnostického nastavení:
+    Následující text ukazuje příklad těla požadavku s novou akcí nastavení diagnostiky:
 
     ```json
     {
@@ -281,7 +308,8 @@ Pokud chcete aktualizovat vlastní roli, použijte [Definice rolí – vytvořit
           }
         ],
         "assignableScopes": [
-          "/subscriptions/00000000-0000-0000-0000-000000000000"
+          "/subscriptions/00000000-0000-0000-0000-000000000000",
+          "/providers/Microsoft.Management/managementGroups/marketing-group"
         ]
       }
     }
@@ -289,9 +317,9 @@ Pokud chcete aktualizovat vlastní roli, použijte [Definice rolí – vytvořit
 
 ## <a name="delete-a-custom-role"></a>Odstranění vlastní role
 
-Pokud chcete odstranit vlastní roli, použijte [Definice rolí – odstranit](/rest/api/authorization/roledefinitions/delete) REST API. Chcete-li volat toto rozhraní API, musíte být přihlášeni pomocí uživatele, kterému je přiřazena role s oprávněním `Microsoft.Authorization/roleDefinitions/delete` pro všechny `assignableScopes`. Z předdefinovaných rolí zahrnuje toto oprávnění pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
+Chcete-li odstranit vlastní roli, použijte [definice rolí – odstranit](/rest/api/authorization/roledefinitions/delete) rozhraní REST API. Chcete-li volat toto rozhraní API, musíte být přihlášeni `Microsoft.Authorization/roleDefinitions/delete` k uživateli, kterému je přiřazena role, která má oprávnění ke všem rozhraním `assignableScopes`. Z předdefinovaných rolí toto oprávnění zahrnuje pouze [vlastník](built-in-roles.md#owner) a [správce přístupu uživatelů.](built-in-roles.md#user-access-administrator)
 
-1. Použijte definice [rolí – seznam](/rest/api/authorization/roledefinitions/list) nebo [Definice rolí – získat](/rest/api/authorization/roledefinitions/get) REST API pro získání identifikátoru GUID vlastní role. Další informace najdete v části věnované [vlastním rolím seznamu](#list-custom-roles) dříve.
+1. Pomocí [definice rolí – seznam](/rest/api/authorization/roledefinitions/list) nebo [definice rolí – získejte](/rest/api/authorization/roledefinitions/get) rozhraní REST API k získání identifikátoru IDENTIFIKÁTOR GUID vlastní role. Další informace naleznete v části dřívější [seznam vlastních rolí.](#list-custom-roles)
 
 1. Začněte s následujícím požadavkem:
 
@@ -299,18 +327,19 @@ Pokud chcete odstranit vlastní roli, použijte [Definice rolí – odstranit](/
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, ve kterém chcete odstranit vlastní roli.
+1. V rámci identifikátoru URI nahraďte *{scope}* oborem, který chcete odstranit vlastní roli.
 
-    | Obor | Typ |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | Předplatné |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    > [!div class="mx-tableFixed"]
+    > | Rozsah | Typ |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | Předplatné |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
 
-1. Nahraďte *{roleDefinitionId}* identifikátorem GUID vlastní role.
+1. Nahraďte *{roleDefinitionId}* identifikátorem identifikátoru GUID vlastní role.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Vlastní role pro prostředky Azure](custom-roles.md)
-- [Správa přístupu k prostředkům Azure pomocí RBAC a REST API](role-assignments-rest.md)
-- [Reference k rozhraní Azure REST API](/rest/api/azure/)
+- [Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní REST API](role-assignments-rest.md)
+- [Odkaz na rozhraní API Azure REST](/rest/api/azure/)

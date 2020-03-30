@@ -1,104 +1,104 @@
 ---
-title: Doručení výstrah protokolu aktivit v oznámeních služby Azure
-description: Když dojde ke službě Azure, dostanete oznámení prostřednictvím SMS, e-mailu nebo Webhooku.
+title: Příjem upozornění protokolu aktivit na oznámení ch služeb Azure
+description: Získejte upozornění prostřednictvím SMS, e-mailu nebo webhooku, když dojde ke službě Azure.
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749318"
 ---
-# <a name="create-activity-log-alerts-on-service-notifications"></a>Vytváření výstrah protokolu aktivit u oznámení služby
+# <a name="create-activity-log-alerts-on-service-notifications"></a>Vytváření upozornění protokolu aktivit pro oznámení služby
 ## <a name="overview"></a>Přehled
 
-V tomto článku se dozvíte, jak nastavit výstrahy protokolu aktivit pro oznámení o stavu služby pomocí Azure Portal.  
+Tento článek ukazuje, jak nastavit výstrahy protokolu aktivit pro oznámení o stavu služby pomocí portálu Azure.  
 
-Oznámení o stavu služby se ukládají do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) , který dostal potenciálně velký objem informací uložených v protokolu aktivit, existuje samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu služby. 
+Oznámení o stavu služby jsou uloženy v [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) Vzhledem k tomu, že je možné velké množství informací uložených v protokolu aktivit, je samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah na oznámení o stavu služby. 
 
-Když Azure pošle oznámení o stavu služby do vašeho předplatného Azure, můžete obdržet upozornění. Můžete nakonfigurovat výstrahu na základě:
+Můžete obdržet upozornění, když Azure odesílá oznámení o stavu služby do vašeho předplatného Azure. Výstrahu můžete nakonfigurovat na základě:
 
-- Třída oznámení o stavu služby (problémy se službami, plánovaná údržba, Poradce pro stav).
+- Třída oznámení o stavu služby (Problémy se službou, Plánovaná údržba, Doporučení stavu).
 - Ovlivněné předplatné.
-- Služba (y) ovlivnila.
-- Ovlivněné oblasti.
+- Ovlivněné služby.
+- Ovlivněný region(y).
 
 > [!NOTE]
-> Oznámení o stavu služby neodesílají výstrahy týkající se událostí stavu prostředku.
+> Oznámení o stavu služby neodesílá výstrahu týkající se událostí stavu prostředků.
 
-Můžete také nakonfigurovat, komu má být upozornění odesláno:
+Můžete také nakonfigurovat, komu má být výstraha odeslána:
 
 - Vyberte existující skupinu akcí.
-- Vytvořte novou skupinu akcí (kterou lze použít k budoucím výstrahám).
+- Vytvořte novou skupinu akcí (kterou lze použít pro budoucí výstrahy).
 
-Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
+Další informace o skupinách akcí najdete v [tématu Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
 
-Informace o tom, jak nakonfigurovat upozornění na stav služby pomocí šablon Azure Resource Manager, najdete v tématu [Správce prostředků Templates](../azure-monitor/platform/alerts-activity-log.md).
+Informace o konfiguraci výstrah o stavu služby pomocí šablon Azure Resource Manageru najdete v [tématu Šablony Správce prostředků](../azure-monitor/platform/alerts-activity-log.md).
 
-### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Podívejte se na video o nastavení prvního Azure Service Health výstrahy.
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Podívejte se na video o nastavení prvnívýstrahy služby Azure Service Health
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="alert-and-new-action-group-using-azure-portal"></a>Upozornění a nová skupina akcí pomocí Azure Portal
-1. Na [portálu](https://portal.azure.com)vyberte **Service Health**.
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Výstraha a nová skupina akcí pomocí portálu Azure
+1. Na [portálu](https://portal.azure.com)vyberte **možnost Stav služby**.
 
-    ![Služba Service Health](media/alerts-activity-log-service-notifications/home-servicehealth.png)
+    ![Služba "Service Health"](media/alerts-activity-log-service-notifications/home-servicehealth.png)
 
-1. V části **výstrahy** vyberte výstrahy týkající se **stavu**.
+1. V části **Výstrahy** vyberte **výstrahy stavu**.
 
-    ![Karta upozornění na stav](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
+    ![Karta Výstrahy stavu](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. Vyberte **vytvořit upozornění na stav služby** a vyplňte pole.
+1. Vyberte **Vytvořit výstrahu stavu služby** a vyplňte pole.
 
-    ![Příkaz "vytvořit upozornění na stav služby"](media/alerts-activity-log-service-notifications/service-health-alert.png)
+    ![Příkaz Vytvořit výstrahu stavu služby](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. Vyberte **předplatné**, **služby**a **oblasti** , pro které chcete být upozorňováni.
+1. Vyberte **předplatné**, **služby**a **oblasti,** na které chcete být upozorňováni.
 
-    ![Dialogové okno Přidat upozornění protokolu aktivit](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
+    ![Dialogové okno Přidat výstrahu protokolu aktivit](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
 
     > [!NOTE]
-    > Toto předplatné slouží k uložení upozornění protokolu aktivit. Prostředek výstrahy se nasadí do tohoto předplatného a monitoruje události v protokolu aktivit.
+    > Toto předplatné slouží k uložení výstrahy protokolu aktivit. Prostředek výstrahy se nasadí do tohoto předplatného a monitoruje události v protokolu aktivit pro něj.
 
-1. Vyberte **typy událostí** , pro které chcete být upozorňováni: *problém služby*, *plánovaná údržba*a *Poradce pro stav* 
+1. Vyberte **typy událostí,** na které chcete být upozorněni: *Problém se službou*, *Plánovaná údržba*a *Informační zpravodaje stavu.* 
 
-1. Zadejte podrobnosti výstrahy zadáním názvu a **popisu** **pravidla výstrahy** .
+1. Podrobnosti výstrahy definujte zadáním názvu a **popisu** **pravidla výstrahy** .
 
-1. Vyberte **skupinu prostředků** , do které chcete výstrahu Uložit.
+1. Vyberte **skupinu Prostředků,** do které chcete výstrahu uložit.
 
-1. Vytvořte novou skupinu akcí výběrem **nové skupiny akcí**. Zadejte název do pole **název skupiny akcí** a zadejte název do pole **krátký název** . Na zkrácený název se odkazuje v oznámeních, která jsou odeslána při aktivaci této výstrahy.
+1. Vytvořte novou skupinu akcí výběrem **nové skupiny akcí**. Zadejte název do pole **Název skupiny akcí** a do pole **Krátký název** zadejte název. Krátký název je odkazován v oznámení, které jsou odesílány při této výstrahy požáry.
 
-    ![Vytvoří novou skupinu akcí.](media/alerts-activity-log-service-notifications/action-group-creation.png)
+    ![Vytvoření nové skupiny akcí](media/alerts-activity-log-service-notifications/action-group-creation.png)
 
-1. Definujte seznam přijímačů tím, že poskytnete přijímače:
+1. Definujte seznam přijímačů poskytnutím přijímače:
 
-    a. **Název**: Zadejte jméno, alias nebo identifikátor přijímače.
+    a. **Název**: Zadejte jméno, alias nebo identifikátor příjemce.
 
-    b. **Typ akce**: vyberte SMS, e-mail, Webhook, Azure App a další.
+    b. **Typ akce:** Vyberte SMS, e-mail, webhook, aplikaci Azure a další.
 
-    c. **Podrobnosti**: na základě zvoleného typu akce zadejte telefonní číslo, e-mailovou adresu, identifikátor URI Webhooku atd.
+    c. **Podrobnosti**: Na základě zvoleného typu akce zadejte telefonní číslo, e-mailovou adresu, identifikátor URI s webhookem atd.
 
-1. Výběrem **OK** vytvořte skupinu akcí a pak **Vytvořte pravidlo upozornění** pro dokončení výstrahy.
+1. Chcete-li vytvořit skupinu akcí, vyberte **OK** a potom **vytvořte pravidlo výstrahy** k dokončení výstrahy.
 
-Během několika minut je výstraha aktivní a na základě podmínek, které jste zadali během vytváření, se spustí Trigger.
+Během několika minut je výstraha aktivní a začne se aktivovat na základě podmínek, které jste zadali při vytváření.
 
-Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md). Informace o schématu Webhooku pro výstrahy protokolu aktivit najdete v tématu [Webhooky pro výstrahy protokolu aktivit Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+Přečtěte [si, jak konfigurovat oznámení webhooku pro stávající systémy pro správu problémů](service-health-alert-webhook-guide.md). Informace o schématu webhooku pro výstrahy protokolu aktivit naleznete v tématu [Webhooks for Azure activity log alerts](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 >[!NOTE]
->Skupina akcí definovaná v těchto krocích se opakovaně používá jako existující skupina akcí pro všechny budoucí definice výstrah.
+>Skupina akcí definovaná v těchto krocích je opakovaně použitelná jako existující skupina akcí pro všechny budoucí definice výstrah.
 >
 
-## <a name="alert-with-existing-action-group-using-azure-portal"></a>Upozornění s existující skupinou akcí pomocí Azure Portal
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Výstraha s existující skupinou akcí pomocí portálu Azure
 
-1. Postupujte podle kroků 1 až 6 v předchozí části a vytvořte oznámení o stavu služby. 
+1. Podle kroků 1 až 6 v předchozí části vytvořte oznámení o stavu služby. 
 
-1. V části **definovat skupinu akcí**klikněte na tlačítko **Vybrat skupinu akcí** . Vyberte příslušnou skupinu akcí.
+1. V části **Definovat skupinu akcí**klepněte na tlačítko **Vybrat skupinu akcí.** Vyberte příslušnou skupinu akcí.
 
-1. Vyberte **Přidat** a přidejte skupinu akcí a pak **Vytvořte pravidlo upozornění** pro dokončení výstrahy.
+1. Vyberte **Přidat,** chcete-li přidat skupinu akcí, a pak **vytvořit pravidlo výstrahy** k dokončení výstrahy.
 
-Během několika minut je výstraha aktivní a na základě podmínek, které jste zadali během vytváření, se spustí Trigger.
+Během několika minut je výstraha aktivní a začne se aktivovat na základě podmínek, které jste zadali při vytváření.
 
-## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Upozornění a nová skupina akcí pomocí šablon Azure Resource Manager
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Výstraha a nová skupina akcí pomocí šablon Azure Resource Manager
 
 Následuje příklad, který vytvoří skupinu akcí s cílem e-mailu a povolí všechna oznámení o stavu služby pro cílové předplatné.
 
@@ -190,18 +190,18 @@ Následuje příklad, který vytvoří skupinu akcí s cílem e-mailu a povolí 
 
 ## <a name="manage-your-alerts"></a>Správa výstrah
 
-Po vytvoření výstrahy je tato výstraha zobrazená v části **výstrahy** **monitorování**. Vyberte výstrahu, kterou chcete spravovat:
+Po vytvoření výstrahy je viditelná v části **Výstrahy** **v monitoru**. Vyberte výstrahu, kterou chcete spravovat:
 
 * Upravte ji.
-* Odstraňte ji.
-* Zakázat nebo povolit, pokud chcete dočasně zastavit nebo obnovit přijímání oznámení pro výstrahu.
+* Smažte ji.
+* Pokud chcete dočasně zastavit nebo obnovit příjem oznámení o výstraze, zakažte ji nebo ji povolte.
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si o [osvědčených postupech pro nastavení výstrah Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Přečtěte si [o doporučených postupech pro nastavení výstrah Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
 - Přečtěte si, jak [nastavit mobilní nabízená oznámení pro Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
-- Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md).
-- Přečtěte si o [oznámeních o stavu služby](service-notifications.md).
-- Seznamte se s [omezením rychlosti oznámení](../azure-monitor/platform/alerts-rate-limiting.md).
-- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Získejte [Přehled výstrah protokolu aktivit](../azure-monitor/platform/alerts-overview.md)a Naučte se přijímat výstrahy.
+- Přečtěte si, jak [konfigurovat oznámení webhooku pro stávající systémy pro správu problémů](service-health-alert-webhook-guide.md).
+- Další informace o [oznámeních o stavu služby](service-notifications.md).
+- Informace o [omezení rychlosti oznamování](../azure-monitor/platform/alerts-rate-limiting.md).
+- Zkontrolujte [webhookové schéma výstrahy protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md).
+- Získejte [přehled upozornění protokolu aktivit](../azure-monitor/platform/alerts-overview.md)a zjistěte, jak přijímat výstrahy.
 - Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).

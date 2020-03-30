@@ -1,7 +1,7 @@
 ---
-title: Kontrolní výrazy klienta (MSAL.NET) | Azure
+title: Tvrzení klienta (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o podpoře podepsaných klientských výrazů u důvěrných klientských aplikací v knihovně Microsoft Authentication Library pro .NET (MSAL.NET).
+description: Informace o podpoře tvrzení podepsaných klientů pro důvěrné klientské aplikace v knihovně Microsoft Authentication Library pro rozhraní .NET (MSAL.NET).
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,33 +13,33 @@ ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3d73e803a31867bedbd0ff069b8c9321257b78cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695564"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050295"
 ---
-# <a name="confidential-client-assertions"></a>Důvěrné kontrolní výrazy klienta
+# <a name="confidential-client-assertions"></a>Tvrzení důvěrného klienta
 
-Aby bylo možné prokázat svoji identitu, důvěrné klientské aplikace zaměňují tajný kód s Azure AD. Tajný klíč může být:
-- Tajný kód klienta (heslo aplikace).
-- Certifikát, který se používá k vytvoření podepsaného kontrolního výrazu obsahujícího standardní deklarace identity.
+Chcete-li prokázat svou identitu, důvěrné klientské aplikace vyměňovat tajný klíč s Azure AD. Tajemství může být:
+- Tajný klíč klienta (heslo aplikace).
+- Certifikát, který se používá k vytvoření podepsané kontrolní výraz obsahující standardní deklarace identity.
 
-Tento tajný klíč může také představovat přímo podepsaný kontrolní výraz.
+Tento tajný klíč může být také přímo podepsaný mač.
 
-MSAL.NET má čtyři metody pro poskytnutí přihlašovacích údajů nebo kontrolních výrazů do důvěrné klientské aplikace:
+MSAL.NET má čtyři metody, jak poskytnout důvěrné klientské aplikaci pověření nebo kontrolní výrazy:
 - `.WithClientSecret()`
 - `.WithCertificate()`
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
 > [!NOTE]
-> I když je možné pomocí rozhraní `WithClientAssertion()` API získat tokeny pro důvěrného klienta, nedoporučujeme ho používat ve výchozím nastavení, protože je pokročilejší a je navržený tak, aby zpracovával velmi specifické scénáře, které nejsou běžné. Když použijete rozhraní `.WithCertificate()` API, umožní vám to MSAL.NET za vás. Toto rozhraní API nabízí možnost přizpůsobení žádosti o ověření, je-li to nutné, ale výchozí kontrolní výraz vytvořený `.WithCertificate()` bude stačit pro většinu scénářů ověřování. Toto rozhraní API je také možné použít jako alternativní řešení v některých situacích, kdy MSAL.NET nepomůže provést operaci podepisování interně.
+> I když je možné `WithClientAssertion()` použít rozhraní API k získání tokenů pro důvěrného klienta, nedoporučujeme jej používat ve výchozím nastavení, protože je pokročilejší a je navržen tak, aby zpracovával velmi specifické scénáře, které nejsou běžné. Použití `.WithCertificate()` rozhraní API umožní MSAL.NET to za vás zpracovat. Toto rozhraní API nabízí možnost přizpůsobit požadavek na ověření `.WithCertificate()` v případě potřeby, ale výchozí kontrolní výraz vytvořený bude stačit pro většinu scénářů ověřování. Toto rozhraní API lze také použít jako řešení v některých scénářích, kde MSAL.NET nepodaří provést operaci podepisování interně.
 
-### <a name="signed-assertions"></a>Podepsané kontrolní výrazy
+### <a name="signed-assertions"></a>Podepsaná kontrolní výrazy
 
-Podepsaný klientský kontrolní výraz má podobu podepsaného tokenu JWT s datovou částí, která obsahuje požadované deklarace identity ověřování, které jsou v Azure AD zakódované pomocí kódování Base64. Pokud ho chcete použít:
+Podepsané tvrzení klienta má podobu podepsanéjwt s datovou částí obsahující požadované deklarace ověřování nařízené Azure AD, Base64 kódované. Pokud ho chcete použít:
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -48,18 +48,18 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Služba Azure AD očekává deklarace identity:
+Deklarace očekávané službou Azure AD jsou:
 
-Typ deklarace | Hodnota | Popis
+Typ deklarace identity | Hodnota | Popis
 ---------- | ---------- | ----------
-aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Deklarace "AUD" (cílová skupina) identifikuje příjemce, pro které je požadavek JWT určen (tady Azure AD), viz [RFC 7519, Section 4.1.3].
-exp | Čtvrtek června 27 2019 15:04:17 GMT + 0200 (románské země (letní čas)) | Deklarace "EXP" (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí může být požadavek JWT přijat ke zpracování. Viz [RFC 7519, kapitola 4.1.4]
-ISS | ClientID | Deklarace identity "ISS" (Issuer) identifikuje objekt zabezpečení, který vystavil token JWT. Zpracování této deklarace identity je specifické pro aplikaci. Hodnota "ISS" je řetězec rozlišující velká a malá písmena obsahující hodnotu StringOrURI. [RFC 7519, oddíl 4.1.1]
-jti | (identifikátor GUID) | Deklarace identity JTI (ID JWT) poskytuje jedinečný identifikátor pro token JWT. Hodnota identifikátoru musí být přiřazena způsobem, který zajišťuje nezanedbatelnou pravděpodobnost, že stejná hodnota bude omylem přiřazena k jinému datovému objektu. Pokud aplikace používá více vystavitelů, musí být kolizi znemožněna mezi hodnotami vytvořenými různými vystaviteli. Deklaraci identity JTI lze použít k zabránění opakovanému přehrání tokenu JWT. Hodnota "JTI" je řetězec, který rozlišuje velká a malá písmena. [RFC 7519, část 4.1.7]
-nbf | Čtvrtek června 27 2019 14:54:17 GMT + 0200 (románské země (letní čas)) | Deklarace "NBF" (ne dřív) určuje dobu, po jejímž uplynutí nesmí být požadavek JWT přijat ke zpracování. [RFC 7519, oddíl 4.1.5]
-sub | ClientID | Deklarace "sub" (Subject) identifikuje předmět tokenu JWT. Deklarace v tokenu JWT jsou obvykle příkazy pro předmět. Hodnota subjektu musí být buď vymezená, aby byla v kontextu vystavitele místně jedinečná, nebo být globálně jedinečná. Viz [RFC 7519, oddíl 4.1.2].
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Deklarace "aud" (publikum) identifikuje příjemce, pro které je JWT určen (zde Azure AD) Viz [RFC 7519, oddíl 4.1.3]
+exp | Čt Červen 27 2019 15:04:17 GMT+0200 (Romance letní čas) | Deklarace "exp" (expirace) identifikuje čas vypršení platnosti, na kterém nebo po kterém Nesmí být JWT přijat ke zpracování. Viz [RFC 7519, oddíl 4.1.4]
+Iss | {Id klienta} | Deklarace "iss" (emitent) identifikuje jistinu, který vydal JWT. Zpracování této deklarace je specifické pro aplikaci. Hodnota "iss" je řetězec rozlišující malá a velká písmena obsahující hodnotu StringOrURI. [RFC 7519, oddíl 4.1.1]
+jti | (a Guid) | Deklarace "jti" (JWT ID) poskytuje jedinečný identifikátor pro JWT. Hodnota identifikátoru musí být přiřazena způsobem, který zajišťuje, že existuje zanedbatelná pravděpodobnost, že stejná hodnota bude omylem přiřazena jinému datovému objektu; pokud aplikace používá více emitentů, musí být zabráněno kolizím mezi hodnotami vytvořenými i různými emitenty. Tvrzení "jti" lze použít k zabránění přehrání JWT. Hodnota "jti" je řetězec rozlišující malá a velká písmena. [RFC 7519, oddíl 4.1.7]
+Nbf | Čt Červen 27 2019 14:54:17 GMT+0200 (Romance letní čas) | Tvrzení "nbf" (ne dříve) označuje dobu, před kterou nesmí být JWT přijat ke zpracování. [RFC 7519, oddíl 4.1.5]
+Dílčí | {Id klienta} | Pohledávka "sub" (předmět) identifikuje předmět JWT. Tvrzení v JWT jsou obvykle prohlášení o předmětu. Hodnota předmětu musí být vymezena tak, aby byla místně jedinečná v kontextu vystavittele, nebo globálně jedinečná. Viz [RFC 7519, bod 4.1.2]
 
-Tady je příklad, jak vytvořit tyto deklarace identity:
+Zde je příklad, jak řemeslo tyto nároky:
 
 ```csharp
 private static IDictionary<string, string> GetClaims()
@@ -85,7 +85,7 @@ private static IDictionary<string, string> GetClaims()
 }
 ```
 
-Tady je postup, jak vytvořit podepsaný klientský kontrolní výraz:
+Zde je návod, jak vytvořit tvrzení podepsaného klienta:
 
 ```csharp
 string Encode(byte[] arg)
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>Alternativní metoda
 
-Máte také možnost použít k vytvoření kontrolního výrazu [Microsoft. IdentityModel. objekty JsonWebToken](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) . Kód bude elegantní, jak je znázorněno v následujícím příkladu:
+Máte také možnost pomocí [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) vytvořit kontrolní výraz pro vás. Kód bude elegantnější, jak je znázorněno v příkladu níže:
 
 ```csharp
         string GetSignedClientAssertion()
@@ -168,7 +168,7 @@ Máte také možnost použít k vytvoření kontrolního výrazu [Microsoft. Ide
         }
 ```
 
-Jakmile budete mít podepsaného kontrolního výrazu klienta, můžete ho použít s rozhraními API MSAL, jak je znázorněno níže.
+Jakmile máte tvrzení podepsaného klienta, můžete jej použít s apis MSAL, jak je znázorněno níže.
 
 ```csharp
             string signedClientAssertion = GetSignedClientAssertion();
@@ -181,7 +181,7 @@ Jakmile budete mít podepsaného kontrolního výrazu klienta, můžete ho použ
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-ve výchozím nastavení `WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` vytvoří podepsaný kontrolní výraz obsahující deklarace, které očekává služba Azure AD, a další deklarace identity klientů, které chcete odeslat. Zde je fragment kódu, jak to provést.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`ve výchozím nastavení vytvoří podepsané kontrolní výraz obsahující deklarace očekávané službou Azure AD plus další deklarace klienta, které chcete odeslat. Zde je fragment kódu o tom, jak to udělat.
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -194,6 +194,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ```
 
-Pokud je jedna z deklarací ve slovníku, kterou předáte, stejná jako jedna z povinných deklarací, vezme se v úvahu hodnota další deklarace identity. Přepíše deklarace vypočtené pomocí MSAL.NET.
+Pokud je jeden z deklarací ve slovníku, který předáte, stejný jako jeden z povinných nároků, bude zohledněna hodnota dodatečné deklarace. Přepíše deklarace vypočítané MSAL.NET.
 
-Pokud chcete poskytnout vlastní deklarace identity, včetně povinných deklarací, které očekává služba Azure AD, předejte `false` parametru `mergeWithDefaultClaims`.
+Pokud chcete poskytnout vlastní deklarace identity, včetně povinných deklarací očekávaných službou Azure AD, předejte `false` `mergeWithDefaultClaims` parametr.

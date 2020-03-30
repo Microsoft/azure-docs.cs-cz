@@ -1,6 +1,6 @@
 ---
-title: Řešení chyb omezování v Azure | Microsoft Docs
-description: Omezení chyb, opakování a omezení rychlosti ve službě Azure Compute.
+title: Řešení potíží s chybami omezení v Azure | Dokumenty společnosti Microsoft
+description: Omezení chyb, opakování a backoff v Azure Compute.
 services: virtual-machines
 documentationcenter: ''
 author: changov
@@ -14,33 +14,33 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045359"
 ---
-# <a name="troubleshooting-api-throttling-errors"></a>Řešení chyb při omezování rozhraní API 
+# <a name="troubleshooting-api-throttling-errors"></a>Řešení chyb způsobených omezováním rozhraní API 
 
-Požadavky na výpočetní výkon Azure můžou být omezené na základě předplatného a pro jednotlivé oblasti, které vám pomůžou s celkovým výkonem služby. Zajišťujeme všechna volání poskytovatele prostředků Azure COMPUTE (CRP), který spravuje prostředky pod oborem názvů Microsoft. COMPUTE nepřekračuje maximální povolenou rychlost požadavků rozhraní API. Tento dokument popisuje omezování rozhraní API, podrobnosti o tom, jak řešit problémy s omezením, a osvědčené postupy, abyste se vyhnuli omezením.  
+Požadavky na výpočetní prostředky Azure mohou být omezeny na základě předplatného a na základě oblasti, které vám pomohou s celkovým výkonem služby. Zajistíme, aby všechna volání zprostředkovatele výpočetních prostředků Azure (CRP), který spravuje prostředky v rámci oboru názvů Microsoft.Compute, nepřekročila maximální povolenou míru požadavků rozhraní API. Tento dokument popisuje omezení rozhraní API, podrobnosti o řešení problémů omezení a doporučené postupy, aby se zabránilo omezení.  
 
-## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Omezování pomocí Azure Resource Manager zprostředkovatelů prostředků vs  
+## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Omezení pomocí Správce prostředků Azure vs poskytovatelé prostředků  
 
-Jako přední dveře do Azure Azure Resource Manager provádí ověřování a první pořadí ověřování a omezování všech příchozích požadavků rozhraní API. Omezení četnosti volání Azure Resource Manager a související hlavičky protokolu HTTP pro diagnostickou odezvu jsou popsány [zde](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling).
+Jako přední dveře k Azure, Azure Resource Manager provádí ověřování a ověřování prvního řádu a omezení všech příchozích požadavků rozhraní API. Zde jsou [popsány](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)limity rychlosti volání Azure Resource Manager a související hlavičky HTTP diagnostiky .
  
-Když klient rozhraní API Azure získá chybu omezování, stav HTTP je 429 příliš mnoho požadavků. Pokud chcete zjistit, jestli je omezování požadavků prováděné Azure Resource Manager nebo podkladovým poskytovatelem prostředků, jako je CRP, prozkoumejte `x-ms-ratelimit-remaining-subscription-reads` žádostí o získání požadavků a `x-ms-ratelimit-remaining-subscription-writes` hlaviček odpovědí pro žádosti bez získání. Pokud se zbývající počet volání blíží 0, bylo dosaženo obecného limitu volání pro předplatné definovaného Azure Resource Manager. Aktivity všech klientů předplatného se počítají dohromady. V opačném případě omezování přichází z poskytovatele cílového prostředku (ten je adresován `/providers/<RP>` segmentu adresy URL požadavku). 
+Když klient rozhraní API Azure získá chybu omezení, stav HTTP je 429 příliš mnoho požadavků. Chcete-li pochopit, pokud omezení požadavku provádí Správce prostředků Azure nebo základní `x-ms-ratelimit-remaining-subscription-reads` poskytovatel prostředků, `x-ms-ratelimit-remaining-subscription-writes` jako je CRP, zkontrolujte pro požadavky GET a odpovědi pro požadavky bez GET. Pokud se počet zbývajících volání blíží 0, bylo dosaženo obecného limitu volání předplatného definovaného službou Azure Resource Manager. Aktivity všech klientů předplatného se počítají společně. V opačném případě omezení pochází od cílového poskytovatele prostředků (ten, který je určen `/providers/<RP>` segmentem url požadavku). 
 
-## <a name="call-rate-informational-response-headers"></a>Hlavičky informativních odpovědí v kurzu volání 
+## <a name="call-rate-informational-response-headers"></a>Hlavičky odpovědí informační sazby volání 
 
-| Hlavička                            | Formát hodnoty                           | Příklad:                               | Popis                                                                                                                                                                                               |
+| Hlavička                            | Formát hodnoty                           | Příklad                               | Popis                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft. COMPUTE/HighCostGet3Min; 159 | Zbývající počet volání rozhraní API pro zásady omezování zahrnující kontejner prostředků nebo skupinu operací včetně cíle této žádosti                                                                   |
-| x-MS-Request-poplatek               | ```<count>```                             | 1\. místo                                     | Počet volání, která se účtují za tento požadavek HTTP, směrem k příslušnému limitu zásad. Většinou se jedná o 1. Požadavky na dávky, například pro škálování sady škálování virtuálních počítačů, můžou účtovat víc počtů. |
+| x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Počet volání zbývajícírozhraní ROZHRANÍ API pro zásady omezení pokrývající kontejner prostředků nebo skupinu operací včetně cíle tohoto požadavku                                                                   |
+| x-ms-request-charge               | ```<count>```                             | 1                                     | Počet volání počítá "účtovány" pro tento požadavek HTTP na limit příslušné zásady. To je nejvíce typicky 1. Dávkové požadavky, například pro škálování škálovací sady virtuálních strojů, můžete účtovat více počítá. |
 
 
-Všimněte si, že požadavek rozhraní API může podléhat více zásadám omezování. Pro každou zásadu bude k dispozici samostatné záhlaví `x-ms-ratelimit-remaining-resource`. 
+Všimněte si, že požadavek rozhraní API může být podroben více zásad omezení. Pro každou zásadu bude existovat samostatná `x-ms-ratelimit-remaining-resource` hlavička. 
 
-Tady je ukázková odpověď na požadavek na odstranění sady škálování virtuálního počítače.
+Zde je ukázková odpověď na odstranění požadavku na škálovací sadu virtuálních strojů.
 
 ```
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/DeleteVMScaleSet3Min;107 
@@ -49,9 +49,9 @@ x-ms-ratelimit-remaining-resource: Microsoft.Compute/VMScaleSetBatchedVMRequests
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/VmssQueuedVMOperations;4720 
 ```
 
-## <a name="throttling-error-details"></a>Podrobnosti o chybě omezování
+## <a name="throttling-error-details"></a>Podrobnosti chyby omezení
 
-Stav HTTP 429 se běžně používá k zamítnutí požadavku, protože bylo dosaženo limitu frekvence volání. Typická odezva na chybu omezení od poskytovatele výpočetních prostředků bude vypadat jako v následujícím příkladu (zobrazují se pouze relevantní hlavičky):
+Stav 429 HTTP se běžně používá k odmítnutí požadavku, protože je dosaženo limitu rychlosti volání. Typická odpověď na chybu omezení od zprostředkovatele výpočetních prostředků bude vypadat jako následující příklad (zobrazí se pouze příslušná záhlaví):
 
 ```
 HTTP/1.1 429 Too Many Requests
@@ -73,31 +73,31 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Zásada s zbývajícím počtem volání 0 je ta, která je z důvodu, že se vrací chyba omezování. V tomto případě `HighCostGet30Min`. Celkový formát těla odpovědi je obecný formát chyby Azure Resource Manager rozhraní API (v souladu s OData). Hlavní kód chyby, `OperationNotAllowed`, je jeden zprostředkovatel výpočetních prostředků, který používá k nahlášení chyb omezení (mezi další typy chyb klienta). Vlastnost `message` vnitřních chyb obsahuje serializovanou strukturu JSON s podrobnostmi o porušení omezení.
+Zásada se zbývajícím počtem volání 0 je ta, kvůli které je vrácena chyba omezení. V tomto případě, který je `HighCostGet30Min`. Celkový formát těla odezvy je obecný formát chybrozhraní API Azure Resource Manager (conformant s OData). Hlavní kód chyby , `OperationNotAllowed`je jeden zprostředkovatel výpočetních prostředků používá k hlášení chyb omezení (mimo jiné typy chyb klienta). Vlastnost `message` vnitřní error (s) obsahuje serializované JSON struktury s podrobnostmi omezení porušení.
 
-Jak je znázorněno výše, každá chyba omezování zahrnuje hlavičku `Retry-After`, která poskytuje minimální počet sekund, po které by měl klient čekat, než bude požadavek opakovat. 
+Jak je znázorněno výše, každá `Retry-After` chyba omezení zahrnuje záhlaví, které poskytuje minimální počet sekund, které by měl klient čekat před opakováním požadavku. 
 
-## <a name="api-call-rate-and-throttling-error-analyzer"></a>Frekvence volání rozhraní API a analyzátor chyb omezování
-Pro rozhraní API poskytovatele výpočetních prostředků je k dispozici verze Preview funkce řešení potíží. Tyto rutiny PowerShellu poskytují statistiky o počtu požadavků rozhraní API na časový interval na operaci a porušení omezení pro skupinu operací (Policy):
+## <a name="api-call-rate-and-throttling-error-analyzer"></a>Analyzátor chyb volání rozhraní API a omezení
+Pro rozhraní API poskytovatele výpočetních prostředků je k dispozici verze preview funkce řešení potíží. Tyto rutiny prostředí PowerShell poskytují statistické údaje o míře požadavků rozhraní API za časový interval na operaci a omezení porušení na operaci skupiny (zásady):
 -   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [Export-AzLogAnalyticŠkrtdRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
-Statistika volání rozhraní API může poskytovat skvělé informace o chování klientů předplatného a povolit snadnou identifikaci vzorů volání, které způsobují omezení.
+Statistiky volání rozhraní API může poskytnout velký přehled o chování klienta předplatného a umožňují snadnou identifikaci modelů volání, které způsobují omezení.
 
-Časový limit analyzátoru v době, kdy tento čas nepočítá požadavky na typy prostředků disku a snímku (v podpoře spravovaných disků). Vzhledem k tomu, že shromažďuje data z telemetrie CRP, nemůže také pomáhat při identifikaci chyb omezení od ARM. Tyto prvky je ale možné snadno identifikovat na základě hlaviček odpovědí rozlišujícího ARM, jak je popsáno výše.
+Omezení analyzátoru v současné době je, že nepočítá požadavky na typy prostředků disku a snímku (na podporu spravovaných disků). Vzhledem k tomu, že shromažďuje data z telemetrie CRP, také nemůže pomoci při identifikaci chyb omezení z ARM. Ale ty lze snadno identifikovat na základě výrazných hlaviček odpovědí ARM, jak bylo popsáno dříve.
 
-Rutiny PowerShellu používají rozhraní REST API, které můžou klienti snadno volat (i když ještě nemáte oficiální podporu). Pokud chcete zobrazit formát požadavku HTTP, spusťte rutiny s přepínačem-Debug nebo Snoop na jejich spuštění pomocí Fiddler.
+Rutiny prostředí PowerShell používají rozhraní API služby REST, které lze snadno volat přímo klienty (i když zatím bez formální podpory). Chcete-li zobrazit formát požadavku HTTP, spusťte rutiny s přepínačem -Debug nebo špehovat jejich spuštění pomocí Fiddleru.
 
 
 ## <a name="best-practices"></a>Osvědčené postupy 
 
-- Neprovádějte nepodmíněné chyby rozhraní API služby Azure Service API a okamžitě nebo hned znovu. Běžným výskytem je, aby se kód klienta dostal do rychlé smyčky opakování při výskytu chyby, která není znovu schopná. Opakované pokusy budou nakonec vyčerpat povolený limit volání pro skupinu cílových operací a ovlivnit ostatní klienty daného předplatného. 
-- V případech automatizace rozhraní API ve velkém rozsahu zvažte implementaci proaktivní omezování na straně klienta, když počet dostupných volání pro skupinu cílových operací klesne pod určitou nízkou prahovou hodnotu. 
-- Při sledování asynchronních operací respektují pomocné parametry záhlaví opakování. 
-- Pokud kód klienta potřebuje informace o konkrétním virtuálním počítači, Dotazujte ho přímo místo na výpis všech virtuálních počítačů v nadřazené skupině prostředků nebo na celé předplatné a pak na straně klienta vyberte potřebný virtuální počítač. 
-- Pokud klientský kód potřebuje virtuální počítače, disky a snímky z konkrétního umístění Azure, místo dotazování na všechny virtuální počítače předplatného a filtrování podle umístění na straně klienta: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` dotaz na místní koncové body poskytovatele prostředků služby Compute. 
--   Když vytváříte nebo aktualizujete prostředky rozhraní API v rámci konkrétních virtuálních počítačů a virtuálních počítačů, je mnohem efektivnější sledovat vrácenou asynchronní operaci do dokončení, než dotazování na samotné adrese URL prostředku (na základě `provisioningState`).
+- Neopakujte chyby rozhraní API služby Azure bezpodmínečně nebo okamžitě. Běžný výskyt je pro kód klienta se dostat do smyčky rychlé opakování při výskytu chyby, která není možné opakovat. Opakování nakonec vyčerpá povolený limit volání pro skupinu cílové operace a ovlivní ostatní klienty předplatného. 
+- V případech automatizace rozhraní API s velkým objemem zvažte implementaci proaktivního samoomezení na straně klienta, když počet volání k dispozici pro cílovou skupinu operací klesne pod určitou nízkou prahovou hodnotu. 
+- Při sledování asynchronních operací respektujte rady záhlaví Opakování po. 
+- Pokud kód klienta potřebuje informace o konkrétním virtuálním počítači, dotaz, který virtuální počítač přímo namísto výpisu všech virtuálních počítače v obsahující skupiny prostředků nebo celé předplatné a pak výběr emitovaného virtuálního počítače na straně klienta. 
+- Pokud klientský kód potřebuje virtuální počítače, disky a snímky z konkrétního umístění Azure, použijte formulář dotazu na základě umístění namísto `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` dotazování všech virtuálních počítačů předplatného a filtrování podle umístění na straně klienta: dotaz na místní koncové body zprostředkovatele výpočetních prostředků. 
+-   Při vytváření nebo aktualizaci prostředků rozhraní API zejména virtuálních počítačů a škálovací sady virtuálních strojů, je mnohem efektivnější sledovat `provisioningState`vrácenou asynchronní operaci k dokončení než dotazování na adresu URL prostředku samotné (na základě ).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o pokynech pro opakování pro jiné služby v Azure najdete v [pokynech k opakování pro konkrétní služby](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific) .
+Další informace o opakování pokyny pro jiné služby v Azure, najdete v [tématu opakování pokyny pro konkrétní služby](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)

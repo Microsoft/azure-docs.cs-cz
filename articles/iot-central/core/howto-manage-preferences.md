@@ -1,42 +1,42 @@
 ---
-title: Spravujte své osobní preference na IoT Central | Microsoft Docs
-description: Jak spravovat předvolby osobní aplikace, jako je například změna jazyka a motivu v aplikaci IoT Central.
+title: Správa osobních preferencí na IoT Central | Dokumenty společnosti Microsoft
+description: Jak spravovat předvolby osobních aplikací, jako je změna jazyka a motivu v aplikaci IoT Central.
 author: lmasieri
 ms.author: lmasieri
 ms.date: 07/10/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6bfc70ada906f5c444ace5cd7bb96555700586db
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e2b0dbe8b7738a8c4c551eccca72897bbf1594b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157887"
 ---
-# <a name="manage-your-personal-application-preferences"></a>Správa předvoleb osobní aplikace
+# <a name="manage-your-personal-application-preferences"></a>Správa předvoleb osobních aplikací
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
-IoT Central poskytuje flexibilitu pro přizpůsobení vašich aplikací tak, aby vyhovovala vašim potřebám. Nabízíme také značnou flexibilitu pro jednotlivé uživatele, aby bylo možné přizpůsobit vlastní zobrazení. Tento článek popisuje různé možnosti vlastního nastavení, které může uživatel použít pro svůj profil.
+IoT Central poskytuje flexibilitu při přizpůsobení aplikací vašim potřebám. Poskytujeme také určitou flexibilitu pro jednotlivé uživatele, abychom si přizpůsobili vlastní zobrazení. Tento článek popisuje různé možnosti vlastního nastavení, které může uživatel použít pro svůj profil.
 
 ## <a name="changing-language"></a>Změna jazyka
 
-IoT Central se podporuje v několika jazycích. Preferovaný jazyk můžete přepínat pomocí nástroje **pro výběr jazyka** v ikoně nastavení v horním navigačním panelu. Po změně jazyka IoT Central pamatuje výběr a použije ho napříč všemi vašimi aplikacemi. Přizpůsobení v rámci aplikace tyto obrázky řídicích panelů nejsou lokalizovány.
+IoT Central je podporován ve více jazycích. Preferovaný jazyk můžete přepnout pomocí **výběru jazyka** na ikoně nastavení na horním navigačním panelu. Po změně jazyka si IoT Central zapamatuje váš výběr a použije ho ve všech vašich aplikacích. Přizpůsobení v rámci aplikace, jako jsou obrázky řídicího panelu nejsou lokalizovány.
 
 ## <a name="changing-theme"></a>Změna motivu
 
-Podporujeme jak tmavý motiv, tak i světlý motiv. I když je světlý motiv výchozí, můžete změnit motiv výběrem ikony nastavení na horním navigačním panelu.
+Máme podporu jak pro tmavé téma, tak pro světlé téma. Zatímco motiv světla je výchozí, můžete změnit motiv výběrem ikony nastavení na horním navigačním panelu.
 
-![Výběr motivu IoT Central](media/howto-manage-preferences/settings.png)
+![Výběr motivu IoT – střed](media/howto-manage-preferences/settings.png)
 
 > [!NOTE]
-> Možnost výběru mezi světlými a tmavými motivy není k dispozici, pokud správce nakonfiguroval vlastní motiv pro aplikaci.
+> Možnost volby mezi světlá a tmavá témata není k dispozici, pokud správce nakonfiguroval vlastní motiv pro aplikaci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak spravovat profil v Azure IoT Central, je tady doporučený další krok:
+Teď, když jste se naučili spravovat svůj profil ve Službě Azure IoT Central, tady je další doporučený krok:
 
 > [!div class="nextstepaction"]
-> [Přepnout živý chat](howto-show-hide-chat.md)
+> [Přepnutí živého chatu](howto-show-hide-chat.md)

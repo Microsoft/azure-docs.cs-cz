@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 473bc0a58fe49c7f454c81402b57ddce7fc745b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175068"
 ---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>Konfigurace vzdálené správy na cloudovém zařízení
@@ -27,7 +27,7 @@ ms.locfileid: "67175068"
 
     1. Ověřte, že je zapnutá možnost **Povolit vzdálenou správu**.
     2. Výchozí možností je připojení pomocí protokolu HTTPS. Můžete zvolit připojení pomocí protokolu HTTP. Připojení pomocí protokolu HTTP je přijatelné jenom v důvěryhodných sítích. Ujistěte se, že je povolený protokol HTTP.
-    3. Na panelu příkazů v horní části okna klikněte na **... Další** a pak kliknutím na **Stáhnout certifikát** stáhněte certifikát pro vzdálenou správu. Můžete zadat umístění, do kterého chcete tento soubor uložit. Tento certifikát se musí nainstalovat na klientský nebo hostitelský počítač, pomocí kterého se budete připojovat ke cloudovému zařízení.
+    3. Z panelu příkazů v horní části okna klikněte na **... Další** informace a potom klepnutím na tlačítko **Stáhnout certifikát** stáhněte certifikát pro vzdálenou správu. Můžete zadat umístění, do kterého chcete tento soubor uložit. Tento certifikát se musí nainstalovat na klientský nebo hostitelský počítač, pomocí kterého se budete připojovat ke cloudovému zařízení.
 
-        ![Okno Vzdálená správa](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
+        ![Okno pro vzdálenou správu](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
 5. Klikněte na **Uložit** a po zobrazení výzvy potvrďte změny.

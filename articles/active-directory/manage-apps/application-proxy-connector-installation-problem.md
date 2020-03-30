@@ -1,6 +1,6 @@
 ---
-title: Při instalaci konektoru agenta aplikačního proxy serveru došlo k problému | Microsoft Docs
-description: Jak řešit problémy, které se můžou při instalaci konektoru agenta proxy aplikací nainstalovat
+title: Problém s instalací konektoru agenta proxy aplikace | Dokumenty společnosti Microsoft
+description: Řešení problémů, kterým může dohlédnout při instalaci konektoru Agent proxy aplikace
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,64 +16,64 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a35558b81d064680981bcf403a3584e3a3d00e4f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 466e1ce0efbdec3f5475634f3857d02554d93d98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311745"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049136"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
 
-Microsoft AAD Application proxy Connector je interní doménová komponenta, která používá odchozí připojení k navázání připojení z koncového bodu dostupného z cloudu do interní domény.
+Microsoft AAD Application Proxy Connector je interní součást domény, která používá odchozí připojení k navázání připojení z cloudu dostupného koncového bodu k interní doméně.
 
-## <a name="general-problem-areas-with-connector-installation"></a>Obecné oblasti problému s instalací konektoru
+## <a name="general-problem-areas-with-connector-installation"></a>Obecné problémové oblasti s instalací konektoru
 
-V případě selhání instalace konektoru je hlavní příčinou obvykle jedna z následujících oblastí:
+Pokud instalace konektoru selže, hlavní příčinou je obvykle jedna z následujících oblastí:
 
-1.  **Připojení** – aby bylo možné dokončit úspěšnou instalaci, musí nový konektor registrovat a navázat budoucí vlastnosti důvěryhodnosti. To se provádí připojením ke cloudové službě aplikace AAD proxy.
+1.  **Připojení** – k dokončení úspěšné instalace musí nový konektor zaregistrovat a vytvořit budoucí vlastnosti důvěryhodnosti. To se provádí připojením ke cloudové službě Proxy aplikace AAD.
 
-2.  Vystavení **důvěryhodnosti** – nový konektor vytvoří certifikát podepsaný svým držitelem a zaregistruje se do cloudové služby.
+2.  **Trust Establishment** – nový konektor vytvoří certifikát podepsaný svým držitelem a zaregistruje se do cloudové služby.
 
-3.  Při **ověřování správce** – během instalace musí uživatel zadat přihlašovací údaje správce, aby bylo možné dokončit instalaci konektoru.
+3.  **Ověřování správce** – během instalace musí uživatel zadat pověření správce k dokončení instalace konektoru.
 
 > [!NOTE]
-> Protokoly instalace konektoru najdete ve složce% TEMP% a můžou vám poskytnout další informace o tom, co způsobuje selhání instalace.
+> Protokoly instalace konektoru naleznete ve složce %TEMP% a mohou poskytnout další informace o tom, co způsobuje selhání instalace.
 
-## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Ověření připojení ke službě cloud Application proxy a přihlašovací stránce Microsoftu
+## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Ověření připojení ke službě Proxy aplikace cloudu a stránce Microsoft Login
 
-**Cíl:** Ověřte, že se počítač konektoru může připojit ke koncovému bodu registrace proxy aplikace AAD i k přihlašovací stránce Microsoftu.
+**Cíl:** Ověřte, zda se počítač s konektory může připojit ke koncovému bodu registrace proxy aplikace AAD a přihlašovací stránce společnosti Microsoft.
 
-1.  Na serveru konektoru spusťte test portu pomocí [protokolu Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) nebo jiného nástroje pro testování portů, abyste ověřili, že jsou otevřené porty 443 a 80.
+1.  Na konektorovém serveru spusťte test portu pomocí [programu telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) nebo jiného nástroje pro testování portů a ověřte, zda jsou porty 443 a 80 otevřené.
 
-2.  Pokud některý z těchto portů neproběhne úspěšně, ověřte, zda má server firewall nebo back-end proxy přístup k požadovaným doménám a portům v tématu [Příprava místního prostředí](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
+2.  Pokud některý z těchto portů není úspěšný, ověřte, zda brána firewall nebo proxy back-endu má přístup k požadovaným doménám a portům, viz [Příprava místního prostředí](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Otevřete prohlížeč (oddělený tabulátorem) a přejít na následující webovou stránku: <https://login.microsoftonline.com>, ujistěte se, že se k této stránce můžete přihlásit.
+3.  Otevřete prohlížeč (samostatnou kartu) a přejděte na následující webovou stránku: `https://login.microsoftonline.com`, ujistěte se, že se na tuto stránku můžete přihlásit.
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Ověření podpory součástí počítačů a back-endu pro certifikát důvěryhodnosti proxy aplikací
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Ověření podpory součástí počítače a back-endu pro certifikát důvěryhodnosti proxy aplikace
 
-**Cíl:** Ověřte, že počítač konektoru, back-end proxy serveru a firewall může podporovat certifikát vytvořený konektorem pro budoucí důvěryhodnost.
+**Cíl:** Ověřte, zda počítač s konektorem, proxy server back-endu a brána firewall mohou podporovat certifikát vytvořený konektorem pro budoucí důvěryhodnost.
 
 >[!NOTE]
->Konektor se pokusí vytvořit SHA512 certifikát podporovaný protokolem TLS 1.2. Pokud počítač nebo back-end firewall a proxy server nepodporují protokol TLS 1.2, instalace se nezdařila.
+>Spojnice se pokusí vytvořit certifikát SHA512, který je podporován TLS1.2. Pokud počítač nebo back-endfirewall a proxy server nepodporují TLS1.2, instalace se nezdaří.
 >
 >
 
-**Problém vyřešíte takto:**
+**Chcete-li tento problém vyřešit:**
 
-1.  Ověřte, že počítač podporuje TLS 1.2 – všechny verze Windows po 2012 R2 by měly podporovat TLS 1,2. Pokud je váš počítač konektoru z verze 2012 R2 nebo starší, ujistěte se, že je na počítači nainstalovaný následující aktualizací KB: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Ověřte, zda počítač podporuje TLS1.2 – Všechny verze systému Windows po 2012 R2 by měly podporovat TLS 1.2. Pokud je váš konektor ový počítač z verze 2012 R2 nebo předchozí, ujistěte se, že jsou v počítači nainstalovány následující kb:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
-2.  Obraťte se na správce sítě a požádejte ho o ověření, že back-end proxy serveru a brána firewall neblokují SHA512 pro odchozí provoz.
+2.  Obraťte se na správce sítě a požádejte o ověření, zda back-endový proxy server a brána firewall neblokují sha512 pro odchozí provoz.
 
-## <a name="verify-admin-is-used-to-install-the-connector"></a>Ověření, že se k instalaci konektoru používá správce
+## <a name="verify-admin-is-used-to-install-the-connector"></a>Ověření, že správce slouží k instalaci konektoru
 
-**Cíl:** Ověřte, že uživatel, který se pokouší nainstalovat konektor, je správcem se správnými přihlašovacími údaji. V současné době musí být uživatel alespoň správcem aplikace, aby instalace proběhla úspěšně.
+**Cíl:** Ověřte, zda je uživatel, který se pokusí nainstalovat konektor, správcem se správnými pověřeními. V současné době musí být uživatel alespoň správcem aplikace, aby instalace byla úspěšná.
 
-**Ověření správnosti přihlašovacích údajů:**
+**Chcete-li ověřit, že pověření jsou správná:**
 
-Připojte se k <https://login.microsoftonline.com> a používejte stejné přihlašovací údaje. Ujistěte se, že přihlášení bylo úspěšné. Roli uživatele můžete ověřit tak, že na **Azure Active Directory** -&gt; **uživatelé a skupiny** -&gt; **Všichni uživatelé**. 
+Připojte `https://login.microsoftonline.com` se ke stejným přihlašovacím údajům a použijte je. Ujistěte se, že přihlášení je úspěšné. Roli uživatele můžete zkontrolovat tak, že přejdete na Azure **Active Directory**  - &gt; **Users and Groups**  - &gt; **All Users**. 
 
-V výsledné nabídce vyberte svůj uživatelský účet a potom zadejte "role adresáře". Ověřte, jestli je vybraná role Správce aplikací. Pokud nemůžete získat přístup k žádné ze stránek tohoto postupu, nemáte požadovanou roli.
+Vyberte svůj uživatelský účet a pak "Role adresáře" ve výsledné nabídce. Ověřte, zda je vybraná role "Správce aplikace". Pokud se vám nedaří získat přístup k žádné ze stránek v těchto krocích, nemáte požadovanou roli.
 
 ## <a name="next-steps"></a>Další kroky
-[Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)
+[Principy konektorů proxy aplikací Azure AD](application-proxy-connectors.md)

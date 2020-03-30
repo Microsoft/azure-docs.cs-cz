@@ -1,93 +1,101 @@
 ---
-title: Nejčastější dotazy k migraci Azure Migrate serveru
-description: Získejte odpovědi na běžné otázky týkající se použití migrace serveru Azure Migrate k migraci počítačů.
+title: Nejčastější dotazy k migraci serveru Azure
+description: Získejte odpovědi na časté otázky týkající se migrace počítačů pomocí migrace serveru Azure.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939198"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127805"
 ---
-# <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
+# <a name="azure-migrate-server-migration-common-questions"></a>Migrace migrace serveru Azure: Běžné otázky
 
-Tento článek obsahuje odpovědi na běžné dotazy k nástroji Azure Migrate: Server Migration Tool. Pokud máte další otázky, ověřte tyto prostředky:
+Tento článek odpovídá na běžné otázky týkající se nástroje Migrace Azure: Migrace serveru. Máte-li další dotazy, zkontrolujte tyto zdroje:
 
-- [Obecné otázky](resources-faq.md) týkající se Azure Migrate
-- Dotazy týkající se [zařízení Azure Migrate](common-questions-appliance.md)
-- Dotazy týkající [se vizualizace zjišťování, hodnocení a závislostí](common-questions-discovery-assessment.md)
-- Získání otázek zodpovězených ve [fóru Azure Migrate](https://aka.ms/AzureMigrateForum)
+- [Obecné otázky týkající](resources-faq.md) se migrace Azure
+- Otázky týkající se [zařízení Azure Migrate](common-questions-appliance.md)
+- Otázky týkající se [vizualizace zjišťování, hodnocení a závislosti](common-questions-discovery-assessment.md)
+- Získejte odpovědi na otázky ve [fóru Migrace Azure](https://aka.ms/AzureMigrateForum)
 
-## <a name="how-does-agentless-vmware-replication-work"></a>Jak funguje replikace VMware bez agentů?
+## <a name="how-does-agentless-vmware-replication-work"></a>Jak replikace VMware bez agenta funguje?
 
-Metoda replikace bez agenta pro VMware používá snímky VMware a sledování změn ve službě VMware (CBT).
+Metoda replikace bez agenta pro společnost VMware používá snímky VMware a sledování změn bloků (CBT) v systému VMware.
 
-Tady je postup:
+Postup je následující:
 
-1. Při spuštění replikace se naplánuje počáteční cyklus replikace. V počátečním cyklu se vybere snímek virtuálního počítače. Snímek se používá k replikaci virtuálních počítačů VMDK (discích). 
-2. Po dokončení počátečního cyklu replikace se pravidelně naplánovaly rozdílové replikační cykly.
-    - Během rozdílové replikace se pořídí snímek a bloky dat, které se od posledního replikačního cyklu změnily, se replikují.
-    - VMware CBT slouží k určení bloků, které se od posledního cyklu změnily.
-    - Frekvence pravidelných replikačních cyklů je automaticky spravovaná pomocí Azure Migrate a závisí na tom, kolik dalších virtuálních počítačů a disků se souběžně replikuje ze stejného úložiště dat. V ideálních podmínkách se replikace nakonec konverguje na jeden cyklus za hodinu pro každý virtuální počítač.
+1. Při zahájení replikace je naplánován počáteční cyklus replikace. V počátečním cyklu se pořizovat snímek virtuálního počítače. Snímek se používá k replikaci virtuálních počítačů VMDK (disky). 
+2. Po dokončení počátečního cyklu replikace jsou pravidelně naplánovány cykly rozdílové replikace.
+    - Během rozdílové replikace je pořízen snímek a datové bloky, které se změnily od předchozího cyklu replikace jsou replikovány.
+    - VMware CBT se používá k určení bloků, které se změnily od posledního cyklu.
+    - Četnost cyklů pravidelné replikace se automaticky spravuje pomocí Migrace Azure a závisí na tom, kolik dalších virtuálních počítačů a disků se současně replikuje ze stejného úložiště dat. V ideálních podmínkách replikace nakonec konverguje na jeden cyklus za hodinu pro každý virtuální virtuální ms.
 
-Při migraci je naplánováno, aby počítač mohl zachytit zbývající data v cyklu replikace na vyžádání. Aby se zajistila nulová ztráta dat a konzistence aplikací, můžete zvolit vypnutí počítače během migrace.
+Při migraci je naplánován cyklus replikace na vyžádání, aby počítač zachytil všechna zbývající data. Chcete-li zajistit nulovou ztrátu dat a konzistenci aplikace, můžete během migrace vypnout počítač.
 
-## <a name="why-isnt-resynchronization-exposed"></a>Proč není opětovná synchronizace zveřejněna?
+## <a name="why-isnt-resynchronization-exposed"></a>Proč není resynchronizace vystavena?
 
-Při migraci bez agenta se v každém rozdílovém cyklu zapisuje rozdíl mezi aktuálním a předchozím snímkem. Vždy se jedná o rozdíl mezi snímky a skládáním dat v. Pokud se konkrétní sektor napíše *N* mezi snímky, stačí přenést jenom poslední zápis, protože vás zajímá jenom poslední synchronizace. Tento proces se liší od replikace založené na agentech, během které sledujeme a aplikujeme každý zápis. V tomto procesu je každý cyklus rozdílů opakovanou synchronizací. Takže není dostupná žádná možnost opětovné synchronizace. Pokud se disky v tuto minulosti nesynchronizují kvůli selhání, bude opraveno v dalším cyklu. 
+Během migrace bez agenta v každém cyklu delta je zapsán rozdíl mezi aktuální snímek a dříve pořízené snímek. Je to vždy rozdíl mezi snímky, skládání dat palců Pokud je určitý sektor zapsán *N* krát mezi snímky, pouze poslední zápis musí být převedeny, protože máme zájem pouze o poslední synchronizaci. Proces se liší od replikace založené na agentovi, během které sledujeme a aplikujeme každý zápis. V tomto procesu každý cyklus delta je resynchronizace. Takže žádná možnost resynchronizace vystavena. Pokud disky někdy nejsou synchronizovány z důvodu selhání, je stanovena v dalším cyklu. 
 
-## <a name="how-does-churn-rate-affect-agentless-replication"></a>Jak četnost změn ovlivňuje replikaci bez agentů?
+## <a name="how-does-churn-rate-affect-agentless-replication"></a>Jak rychlost konve ovlivňuje replikaci bez agenta?
 
-Vzhledem k tomu, že replikace bez agentů je přeložena v datech, je *vzor* změn důležitější než *frekvence četnosti*změn. Když se znovu zapíše a znovu vytvoří soubor, míra nebude mít žádný vliv. Vzor, ve kterém je zápis všech ostatních sektorů, ale způsobuje vysokou ztrátu v dalším cyklu. Vzhledem k tomu, že minimalizujeme objem přenášených dat, umožňujíme, aby data byla přeložena co nejvíce, než naplánujeme další cyklus.  
+Vzhledem k tomu, že replikace bez agenta se skládá v datech, je *vzorek změn* důležitější než *rychlost změn*. Při zápisu souboru znovu a znovu, rychlost nemá velký vliv. Však vzor, ve kterém je zapsán každý jiný sektor způsobí vysoké změny v dalším cyklu. Vzhledem k tomu, že minimalizujeme množství dat, která přenášíme, umožňujeme, aby se data před naplánováním dalšího cyklu sloužují co nejvíce.  
 
-## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Jak často je naplánováno replikační cyklus?
+## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Jak často je naplánovaný cyklus replikace?
 
-Vzorec k naplánování dalšího cyklu replikace je (předchozí čas cyklu/2) nebo jedna hodina, podle toho, co je vyšší.
+Vzorec pro naplánování dalšího replikačního cyklu je (předchozí doba cyklu / 2) nebo jedna hodina, podle toho, která hodnota je vyšší.
 
-Pokud třeba virtuální počítač pro rozdílový cyklus trvá čtyři hodiny, další cyklus se naplánuje za dvě hodiny, a ne za příští hodinu. Proces se liší od počáteční replikace, když je první cyklus rozdílu naplánován okamžitě.
+Například pokud virtuální hod trvá čtyři hodiny pro cyklus delta, další cyklus je naplánováno za dvě hodiny a ne v další hodině. Proces se liší ihned po počáteční replikaci, když je okamžitě naplánován první cyklus delta.
 
-## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Vliv replikace bez agentů na servery VMware?
+## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Jak replikace bez agenta ovlivňuje servery VMware?
 
-Replikace bez agentů vede k nějakým dopadům na výkon VMware vCenter Server a VMware ESXi hostitelů. Vzhledem k tomu, že replikace bez agenta používá snímky, spotřebovává v úložišti IOPS, takže se vyžaduje některá šířka pásma úložiště IOPS. Pokud máte ve svém prostředí omezení úložiště nebo IOPs, nedoporučujeme používat replikaci bez agentů.
+Výsledkem replikace bez agentů je určitý dopad na výkon hostitelů vMware vCenter Server a VMware ESXi. Vzhledem k tomu, že replikace bez agenta používá snímky, spotřebovává videa VOPS v úložišti, takže je vyžadována určitá šířka pásma úložiště IOPS. Nedoporučujeme používat replikaci bez agenta, pokud máte omezení pro úložiště nebo iOP ve vašem prostředí.
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Můžu bez agenta migrovat virtuální počítače UEFI do Azure Gen 2?
+## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Můžu provést bezagentní migraci virtuálních montovek UEFI do Azure Gen 2?
 
-Ne. Pomocí Azure Site Recovery migrujte tyto virtuální počítače na virtuální počítače s 2. generace. 
+Ne. Pomocí Azure Site Recovery migrujte tyto virtuální počítače do virtuálních počítačů Gen 2 Azure. 
 
-## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Můžu při migraci připnout virtuální počítače na Zóny dostupnosti Azure?
+## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Můžu při migraci připnout virtuální počítače k zónám dostupnosti Azure?
 
-Ne. Zóny dostupnosti Azure se pro migraci Azure Migrate nepodporuje.
+Ne. Zóny dostupnosti Azure nejsou podporované pro migraci Azure.
 
-## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Jaký transportní protokol Azure Migrate použít během replikace?
+## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Jaký přenosový protokol používá Azure Migrate během replikace?
 
-Azure Migrate používá protokol NBD (Network Block Device) se šifrováním SSL.
+Azure Migrate používá protokol NBD (Network Block Device) s šifrováním SSL.
 
-## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Jaká je minimální vCenter Server verze, která se vyžaduje pro migraci?
+## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Jaká je minimální verze serveru vCenter potřebná pro migraci?
 
-Musíte mít minimálně vCenter Server 5,5 a hostitele ESXi verze 5,5.
+Musíte mít alespoň vCenter Server 5.5 a vSphere ESXi hostitele verze 5.5.
 
-## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Můžou zákazníci migrovat svoje virtuální počítače na nespravované disky?
+## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Můžou zákazníci migrovat své virtuální počítače na nespravované disky?
 
-Ne. Azure Migrate podporuje migraci jenom na spravované disky (HDD úrovně Standard, SSD úrovně Premium).
+Ne. Azure Migrate podporuje migraci jenom na spravované disky (Standard HDD, Premium SSD).
 
-## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Kolik virtuálních počítačů je možné najednou replikovat pomocí migrace bez agentů?
+## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Kolik virtuálních virtuálních mů se dá replikovat najednou pomocí migrace bez agentů?
 
-V současné době můžete migrovat 100 virtuálních počítačů na instanci vCenter Server současně. Migrace v dávkách s 10 virtuálními počítači
+V současné době můžete migrovat 100 virtuálních ms na instanci serveru vCenter server současně. Migrovat v dávkách 10 virtuálních discích.
 
-## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Kdy můžu migrovat počítače jako fyzické servery?
+## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Jak můžu omezit replikaci při používání zařízení Azure Migrate pro replikaci vmware bez agenta?  
 
-Migrace počítačů jejich použitím jako fyzických serverů je užitečná v různých scénářích:
+Můžete omezení pomocí NetQosPolicy. Například:
 
-- Migrace místních fyzických serverů.
-- Pokud migrujete virtuální počítače virtualizované pomocí platforem, jako je například Xen, KVM.
-- Migrace virtuálních počítačů Hyper-V nebo VMware, pokud z nějakého důvodu nemůžete použít standardní proces migrace pro [Hyper-v](tutorial-migrate-hyper-v.md)nebo migraci [VMware](server-migrate-overview.md) . Například pokud nepoužíváte VMware vCenter a používáte jenom hostitele ESXi.
-- Migrace virtuálních počítačů, které jsou aktuálně spuštěné v privátních cloudech do Azure
-- Pokud chcete migrovat virtuální počítače běžící ve veřejných cloudech, jako je Amazon Web Services (AWS) nebo Google Cloud Platform (GCP), do Azure.
+AppNamePrefix pro použití v NetQosPolicy je "GatewayWindowsService.exe". Můžete vytvořit zásadu na zařízení Azure Migrate k omezení replikace provoz z zařízení vytvořením zásady, jako je tento:
+ 
+New-NetQosPolicy -Název "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB
 
-## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Potřebuji pro migraci virtuálních počítačů VMware Server VMware vCenter?
-Pokud chcete [migrovat virtuální počítače VMware](server-migrate-overview.md) pomocí agenta VMware nebo migrace bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální počítače umístěné, spravované pomocí vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální počítače VMware tak, že je migrujete jako fyzické servery. [Další informace](migrate-support-matrix-physical-migration.md).
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Kdy mám migrovat počítače jako fyzické servery?
+
+Migrace počítačů tak, že je zacházíte jako s fyzickými servery, je užitečná v řadě scénářů:
+
+- Při migraci místních fyzických serverů.
+- Pokud migrujete virtuální počítače virtualizované platformami, jako je Xen, KVM.
+- Chcete-li migrovat virtuální chod y Hyper-V nebo VMware, pokud z nějakého důvodu nemůžete použít standardní proces migrace pro migraci [Hyper-V](tutorial-migrate-hyper-v.md)nebo [VMware.](server-migrate-overview.md) Například pokud nepoužíváte vMware vCenter a používáte pouze hostitele ESXi.
+- Migrace virtuálních počítačů, které aktuálně běží v privátních cloudech do Azure
+- Pokud chcete migrovat virtuální počítače spuštěné ve veřejných cloudech, jako jsou Amazon Web Services (AWS) nebo Google Cloud Platform (GCP), do Azure.
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Potřebuji k migraci virtuálních měn VMware vCenter?
+Chcete-li [migrovat virtuální počítačvsystému VMware](server-migrate-overview.md) pomocí migrace založené na agentech společnosti VMware nebo bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální servery umístěny, spravováni serverem vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální chod VMware migrací jako fyzické servery. [Další informace](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [přehled Azure Migrate](migrate-services-overview.md).
+Přečtěte si [přehled Migrace Azure](migrate-services-overview.md).

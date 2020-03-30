@@ -9,13 +9,13 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9734859c0bf22201c146e5d8a220f3146f6051c4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174897"
 ---
-Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost podle SKU brány. Tato tabulka platí pro modely nasazení classic i Resource Manager. 
+Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost podle SKU brány. Tato tabulka se vztahuje na Správce prostředků a klasické modely nasazení. 
 
 Ceny se liší pro jednotlivé SKU brány. Další informace najdete v tématu [VPN Gateway – ceny](https://azure.microsoft.com/pricing/details/vpn-gateway).
 
@@ -38,4 +38,4 @@ SKU brány UltraPerformance se v této tabulce neuvádí. Informace o SKU UltraP
 
 (5) Propojení VPN Gateway S2S aktivní-aktivní nejsou pro toto SKU podporovaná. Aktivní-aktivní je podporované jenom v SKU HighPerformance.
 
-(6) základní SKU je pro použití se službou ExpressRoute zastaralá.
+(6) Základní skladová položka je pro použití s ExpressRoute zastaralá.

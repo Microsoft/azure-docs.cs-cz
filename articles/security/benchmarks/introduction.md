@@ -1,6 +1,6 @@
 ---
-title: Úvod do Azure Security srovnávacích testů
-description: Úvod do zabezpečení srovnávacích testů
+title: Úvod ke srovnávacím testům zabezpečení Azure
+description: Zavedení srovnávacího testu zabezpečení
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,33 +9,33 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
 ms.openlocfilehash: 8f65eb008d5df6ea3f2f85778d538023e6ce98eb
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75945323"
 ---
-# <a name="azure-security-benchmark-introduction"></a>Úvod do Azure Security srovnávacích testů
+# <a name="azure-security-benchmark-introduction"></a>Úvod srovnávacího testu zabezpečení Azure
 
-V místním výpočetním prostředí může být několik let nebo dokonce i desetiletí. Víte, jak tato nasazení zabezpečit; ale Cloud se liší. Jak zjistíte, jestli jsou vaše cloudová nasazení zabezpečená? Jaké jsou rozdíly mezi postupy zabezpečení pro místní systémy a nasazení v cloudu?
+Můžete mít několik let nebo dokonce desetiletí zkušeností s místními výpočty. Víte, jak zabezpečit tato nasazení; ale mrak je jiný. Jak poznáte, že jsou vaše cloudová nasazení zabezpečená? Jaké jsou rozdíly mezi postupy zabezpečení pro místní systémy a cloudová nasazení?
 
-Existuje velký počet dokumentů White Paper, osvědčené postupy, referenční architektury, webové doprovodné materiály, nástroje open source, komerční řešení, informační kanály pro Intelligence a další, které vám můžou pomoci zabezpečit Cloud. Jakou možnost byste měli použít? Co můžete udělat, abyste získali přijatelnou úroveň zabezpečení v cloudu? 
+K dispozici je rozsáhlá sbírka dokumentů white paper, osvědčených postupů, referenčních architektur, webových pokynů, nástrojů s otevřeným zdrojovým kódem, komerčních řešení, informačních kanálů o inteligenci a dalších, které lze použít k zabezpečení cloudu. Kterou možnost byste měli použít? Co můžete udělat pro získání přijatelné úrovně zabezpečení v cloudu? 
 
-Jedním z nejlepších způsobů, jak zabezpečit nasazení v cloudu, je zaměřit se na doporučení týkající se srovnávacích standardů cloudového zabezpečení. Doporučení srovnávacích standardů pro zabezpečení jakékoli služby, zahajte základní porozumění riziku kyberbezpečnosti a způsob jejich správy. Toto porozumění pak můžete použít tak, že si od poskytovatele cloudových služeb přijmete doporučení zabezpečení srovnávacích testů, které vám umožní vybrat konkrétní nastavení konfigurace zabezpečení ve vašem prostředí. 
+Jedním z nejlepších způsobů zabezpečení cloudových nasazení je zaměřit se na doporučení pro srovnávací testy zabezpečení cloudu. Referenční doporučení pro zabezpečení jakékoli služby začínají základním chápáním rizikkybernetické bezpečnosti a jeho řízení. Toto porozumění pak můžete použít přijetím doporučení zabezpečení srovnávacích služeb od poskytovatele cloudových služeb, která vám pomohou vybrat konkrétní nastavení konfigurace zabezpečení ve vašem prostředí. 
 
-Srovnávací test zabezpečení Azure zahrnuje kolekci vysoce ovlivňujících doporučení zabezpečení, která můžete použít k zabezpečení většiny služeb, které používáte v Azure. Tato doporučení si můžete představit jako "Obecné" nebo "organizační", protože se vztahují na většinu služeb Azure. Doporučení pro srovnávací testy zabezpečení Azure se pak přizpůsobují pro každou službu Azure a tyto přizpůsobené doprovodné materiály jsou uvedené v článcích o doporučeních pro služby. 
+Azure Security Benchmark obsahuje kolekci doporučení zabezpečení s vysokým dopadem, které můžete použít k zabezpečení většiny služeb, které používáte v Azure. Tato doporučení si můžete myslet jako "obecné" nebo "organizační", protože jsou použitelné pro většinu služeb Azure. Doporučení Azure Security Benchmark jsou pak přizpůsobeny pro každou službu Azure a tyto přizpůsobené pokyny jsou obsaženy v článcích doporučení služby. 
 
-Dokumentace k bezpečnostnímu testu Azure v dokumentaci určuje bezpečnostní mechanismy a doporučení pro služby.
+Dokumentace azure security benchmark určuje ovládací prvky zabezpečení a doporučení služby.
 
-- **Řízení zabezpečení**: doporučení pro srovnávací testy zabezpečení Azure jsou rozdělená do kategorií podle řízení zabezpečení. Ovládací prvky zabezpečení reprezentují požadavky na zabezpečení nezávislá dodavatele na vysoké úrovni, jako je například zabezpečení sítě a ochrana dat. Každé řízení zabezpečení má sadu doporučení zabezpečení a pokyny, které vám pomůžou tato doporučení implementovat. 
-- **Doporučení služby**: Pokud je k dispozici, doporučení pro srovnávací testy pro služby Azure budou zahrnovat doporučení pro srovnávací testy zabezpečení Azure, která jsou upravena speciálně pro danou službu. 
+- **Ovládací prvky zabezpečení**: Doporučení azure benchmark zabezpečení jsou rozděleny do kategorií podle ovládacích prvků zabezpečení. Ovládací prvky zabezpečení představují požadavky na zabezpečení na vysoké úrovni agnostiky dodavatele, jako je například zabezpečení sítě a ochrana dat. Každý ovládací prvek zabezpečení obsahuje sadu doporučení zabezpečení a pokynů, které vám pomohou tato doporučení implementovat. 
+- **Doporučení služby**: Pokud jsou dostupná doporučení pro srovnávací testy pro služby Azure, budou obsahovat doporučení azure security benchmark, která jsou přizpůsobená speciálně pro tuto službu. 
 
-Výrazy "Control", "srovnávací" a "základní" jsou často používány v dokumentaci srovnávacích testů zabezpečení Azure a je důležité porozumět tomu, jak Azure tyto výrazy používá. 
+Termíny "Control", "Benchmark" a "Baseline" se často používají v dokumentaci Azure Security Benchmark a je důležité pochopit, jak Azure používá tyto termíny. 
 
-| Doba účinnosti | Popis | Příklad: |
+| Označení | Popis | Příklad |
 |--|--|--|
-| Řízení | **Ovládací prvek** je podrobný popis funkce nebo aktivity, která se musí řešit a která není specifická pro technologii nebo implementaci. | Ochrana dat je jedním z ovládacích prvků zabezpečení. Tento ovládací prvek obsahuje konkrétní akce, které je třeba řešit, aby bylo zajištěno, že dojde k ochraně dat. |
-| Srovnávací test | **Srovnávací test** obsahuje doporučení pro zabezpečení konkrétní technologie, jako je Azure. Doporučení jsou zařazená do kategorie podle ovládacího prvku, ke kterému patří. | Srovnávací test zabezpečení Azure zahrnuje doporučení týkající se zabezpečení, která jsou specifická pro platformu Azure.  |
-| Reference | **Základní** hodnota je požadavky na zabezpečení organizace. Požadavky na zabezpečení jsou založeny na doporučeních srovnávacích testů. Každá organizace určuje, která doporučení srovnávacích testů se mají zahrnout do jejich standardních hodnot. | Společnost Contoso vytvoří svůj základní plán zabezpečení tím, že se rozhodne, že bude vyžadovat konkrétní doporučení v rámci srovnávacího testu zabezpečení Azure. |
+| Řízení | **Ovládací prvek** je popis funkce nebo aktivity na vysoké úrovni, který je třeba řešit a není specifický pro technologii nebo implementaci. | Ochrana dat je jedním z ovládacích prvků zabezpečení. Tento ovládací prvek obsahuje konkrétní akce, které je třeba řešit, aby bylo zajištěno, že jsou chráněna data. |
+| Srovnávací test | **Srovnávací test** obsahuje doporučení zabezpečení pro konkrétní technologii, jako je například Azure. Doporučení jsou rozděleny do kategorií podle ovládacího prvku, ke kterému patří. | Referenční hodnota zabezpečení Azure zahrnuje doporučení zabezpečení specifická pro platformu Azure  |
+| Standardní hodnoty | **Směrný plán** je požadavky na zabezpečení organizace. Požadavky na zabezpečení jsou založeny na doporučeních pro srovnávací testy. Každá organizace rozhoduje o tom, která doporučení pro srovnávací testy mají být zahrnuta do svého směrného plánu. | Společnost Contoso vytvoří svůj směrný plán zabezpečení tak, že se rozhodne vyžadovat konkrétní doporučení v benchmarku zabezpečení Azure. |
 
-Uvítáme vaše názory na srovnávací testy zabezpečení Azure. V níže uvedené oblasti zpětné vazby doporučujeme zadat komentáře. Pokud dáváte přednost sdílení vašeho vstupu s týmem Azure Security test, budete připraveni vyplnit formulář na https://aka.ms/AzSecBenchmark 
+Uvítáme vaši zpětnou vazbu k benchmarku zabezpečení Azure! Doporučujeme vám poskytnout komentáře v oblasti zpětné vazby níže. Pokud dáváte přednost sdílení vašich vstupů více soukromě s týmem Azure Security Benchmark, můžete vyplnit formulář na adresehttps://aka.ms/AzSecBenchmark 

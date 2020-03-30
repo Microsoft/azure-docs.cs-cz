@@ -1,6 +1,6 @@
 ---
-title: Řízení zabezpečení Azure – zabezpečená konfigurace
-description: Zabezpečená konfigurace řízení zabezpečení
+title: Azure Security Control – zabezpečená konfigurace
+description: Konfigurace zabezpečení ovládacího prvku
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,107 +9,107 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934300"
 ---
-# <a name="security-control-secure-configuration"></a>Řízení zabezpečení: zabezpečená konfigurace
+# <a name="security-control-secure-configuration"></a>Řízení zabezpečení: Zabezpečená konfigurace
 
-Navažte, implementujte a aktivně spravujte (sledujte, vykazovat, opravujte) konfiguraci zabezpečení prostředků Azure, aby útočníci nemohli zneužít ohrožené služby a nastavení.
+Nastavte, implementujte a aktivně spravujte (sledujte, sestavují, opravujte) konfiguraci zabezpečení prostředků Azure, aby útočníci nezneužívali ohrožené služby a nastavení.
 
-## <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
+## <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
 | 7.1 | 5.1 | Zákazník |
 
-K údržbě konfigurací zabezpečení pro všechny prostředky Azure použijte Azure Policy nebo Azure Security Center.
+Pomocí Zásad Azure nebo Azure Security Center můžete udržovat konfigurace zabezpečení pro všechny prostředky Azure.
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-## <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
+## <a name="72-establish-secure-operating-system-configurations"></a>7.2: Vytvoření bezpečných konfigurací operačního systému
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
 | 7.2 | 5.1 | Zákazník |
 
-Pomocí Azure Security Center doporučení &quot;napravit ohrožení zabezpečení v konfiguracích zabezpečení na Virtual Machines&quot; ke správě konfigurací zabezpečení ve všech výpočetních prostředcích.
+Pomocí doporučení &quot;Azure Security Center remediate Chyby zabezpečení&quot; v konfiguraci zabezpečení na virtuálních počítačích udržovat konfigurace zabezpečení na všech výpočetních prostředků.
 
-Jak monitorovat Azure Security Center doporučení:
+Jak sledovat doporučení Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-recommendations
 
-Jak opravit Azure Security Center doporučení:
+Jak napravit doporučení Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-## <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
+## <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Udržování zabezpečených konfigurací prostředků Azure
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
 | 7.3 | 5.2 | Zákazník |
 
-Použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení napříč prostředky Azure.
+Pomocí zásad Azure [odepřít] a [nasadit, pokud neexistují] vynutit zabezpečené nastavení napříč prostředky Azure.
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Pochopení Azure Policych účinků:
+Principy efektů zásad Azure:
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-## <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
+## <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Udržovat bezpečné konfigurace operačního systému
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 7.4 | 5.2 | Shared |
+| 7.4 | 5.2 | Sdílená |
 
-Základní image operačního systému se spravují a spravují od Microsoftu.
+Image základního operačního systému spravuje a spravuje společnost Microsoft.
 
-Můžete ale použít nastavení zabezpečení, které vaše organizace potřebuje, pomocí šablon Azure Resource Manager nebo konfigurace požadovaného stavu.
+Nastavení zabezpečení vyžadovaná vaší organizací však můžete použít pomocí šablon Azure Resource Manager a/nebo konfigurace požadovaného stavu.
 
 Jak vytvořit virtuální počítač Azure ze šablony Azure Resource Manager:
 
 https://docs.microsoft.com/azure/virtual-machines/windows/ps-template
 
-Vysvětlení konfigurace požadovaného stavu pro Azure Virtual Machines:
+Principy konfigurace požadovaného stavu pro virtuální počítače Azure:
 
 https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 
-## <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
+## <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Konfigurace prostředků Azure bezpečně ukládá
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 7.5 | 5.3 | Zákazník |
+| 7,5 | 5.3 | Zákazník |
 
-Pokud používáte vlastní definice zásad Azure, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
+Pokud používáte vlastní definice zásad Azure, použijte Azure DevOps nebo Azure Repos bezpečně ukládat a spravovat svůj kód.
 
 Jak ukládat kód v Azure DevOps:
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos dokumentaci:
+Dokumentace k azure repos:
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-## <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
+## <a name="76-securely-store-custom-operating-system-images"></a>7.6: Bezpečné ukládání vlastních bitových kopií operačního systému
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
 | 7.6 | 5.3 | Zákazník |
 
-Pokud používáte vlastní image, zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé. V případě imagí kontejnerů je uložte do Azure Container Registry a využijte RBAC, aby bylo zajištěno, že k imagí budou mít přístup jenom autorizovaní uživatelé.
+Pokud používáte vlastní obrázky, použijte RBAC, abyste zajistili, že k nim budou mít přístup pouze oprávnění uživatelé. Pro image kontejnerů je uložte do registru kontejnerů Azure a využijte RBAC k zajištění, že k bitovým kopiím mají přístup pouze oprávnění uživatelé.
 
-Princip RBAC v Azure:
+Principy RBAC v Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
 
-Vysvětlení RBAC pro Container Registry:
+Principy RBAC pro registr kontejnerů:
 
 https://docs.microsoft.com/azure/container-registry/container-registry-roles
 
@@ -117,98 +117,98 @@ Jak nakonfigurovat RBAC v Azure:
 
 https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
-## <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
+## <a name="77-deploy-system-configuration-management-tools"></a>7.7: Nasazení nástrojů pro správu konfigurace systému
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
 | 7.7 | 5.4 | Zákazník |
 
-Pomocí Azure Policy můžete vyvarovat, auditovat a vymáhat konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
+Zásady Azure slouží k výstrahám, auditování a vynucování konfigurací systému. Kromě toho vytvořte proces a kanál pro správu výjimek zásad.
 
-Jak nakonfigurovat a spravovat Azure Policy:
+Jak nakonfigurovat a spravovat zásady Azure:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-## <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
+## <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Nasazení nástrojů pro správu konfigurace systému pro operační systémy
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
 | 7.8 | 5.4 | Zákazník |
 
-Použijte výpočetní rozšíření Azure, jako je třeba konfigurace požadovaného stavu prostředí PowerShell pro rozšíření Windows Compute nebo Linux pro Linux.
+Použijte výpočetní rozšíření Azure, jako je konfigurace požadovaného stavu PowerShellu pro windows compute nebo Linux Chef Extension for Linux.
 
-Jak nainstalovat rozšíření virtuálních počítačů v Azure:
+Jak nainstalovat rozšíření virtuálních strojů v Azure:
 
 https://docs.microsoft.com/azure/virtual-machines/extensions/overview#how-can-i-install-an-extension
 
-## <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
+## <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementace automatického monitorování konfigurace pro služby Azure
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 7,9 | 5.5 | Zákazník |
+| 7.9 | 5.5 | Zákazník |
 
-Použití Azure Security Center k provádění kontrol standardních hodnot vašich prostředků Azure
+Použití Centra zabezpečení Azure k provádění základních prohledávek pro vaše prostředky Azure
 
-Postup nápravy doporučení v Azure Security Center:
+Jak napravit doporučení v Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-## <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
+## <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementace automatizovaného monitorování konfigurace operačních systémů
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
 | 7.1 | 5.5 | Zákazník |
 
-Pomocí Azure Security Center můžete provádět kontroly základní hodnoty pro kontejnery a nastavení Docker.
+Azure Security Center slouží k provádění prohledávacích směrných plánů pro nastavení operačního systému a dockeru pro kontejnery.
 
-Vysvětlení Azure Security Centerch doporučení ke kontejneru:
+Seznamte se s doporučeními kontejnerů Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-container-recommendations
 
-## <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure 
+## <a name="711-manage-azure-secrets-securely"></a>7.11: Bezpečná správa tajných kódů Azure 
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 7.11 | 13,1 | Zákazník |
+| 7.11 | 13.1 | Zákazník |
 
-K zjednodušení a zabezpečení správy tajných kódů pro cloudové aplikace můžete použít Identita spravované služby ve spojení s Azure Key Vault.
+Pomocí identity spravované služby ve spojení s Azure Key Vault zjednodušte a zabezpečte správu tajných klíčů pro vaše cloudové aplikace.
 
-Jak integrovat se spravovanými identitami Azure:
+Jak integrovat s Azure Spravované identity:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Postup vytvoření Key Vault:
+Jak vytvořit trezor klíčů:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Jak zajistit Key Vault ověřování pomocí spravované identity:
+Jak zajistit ověřování trezoru klíčů se spravovanou identitou:
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-## <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
+## <a name="712-manage-identities-securely-and-automatically"></a>7.12: Bezpečná a automatická správa identit
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 7,12 | 4.1 | Zákazník |
+| 7.12 | 4.1 | Zákazník |
 
-Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
+Spravované identity slouží k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity umožňuje ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně trezoru klíčů, bez pověření ve vašem kódu.
 
-Postup konfigurace spravovaných identit:
+Jak nakonfigurovat spravované identity:
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-## <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
+## <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Eliminujte nezamýšlenou expozici pověření
 
-| ID Azure | ID služby CI | Odpovědnost |
+| Azure ID | ID CiS | Odpovědnost |
 |--|--|--|
-| 7,13 | 13,3 | Zákazník |
+| 7.13 | 13.3 | Zákazník |
 
-Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
+Implementujte skener pověření k identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů také podpoří přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je azure key vault. 
 
-Jak nastavit skener přihlašovacích údajů:
+Jak nastavit skener pověření:
 
 https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>Další kroky
 
-Zobrazit další řízení zabezpečení: [obrana proti malwaru](security-control-malware-defense.md)
+Podívejte se na další ovládací prvek zabezpečení: [Malware Defense](security-control-malware-defense.md)

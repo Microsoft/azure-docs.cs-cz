@@ -1,6 +1,6 @@
 ---
-title: Přidání brandingu na přihlašovací stránku vaší organizace – Azure AD
-description: Pokyny ohledně toho, jak přidat branding vaší organizace na přihlašovací stránku služby Azure Active Directory.
+title: Přidání značky na přihlašovací stránku vaší organizace – Azure AD
+description: Pokyny, jak přidat značku vaší organizace na přihlašovací stránku služby Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -11,128 +11,128 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: ajburnle
 ms.reviewer: kexia
-ms.custom: fasttrack-edit
+ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422820"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049798"
 ---
-# <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
-Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.
+# <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidání značky na přihlašovací stránku služby Azure Active Directory vaší organizace
+Pomocí loga vaší organizace a vlastních barevných schémat můžete na přihlašovacích stránkách služby Azure Active Directory (Azure AD) zajistit konzistentní vzhled a chování. Vaše přihlašovací stránky se zobrazí, když se uživatelé přihlásí k webovým aplikacím vaší organizace, jako je Office 365, který používá Azure AD jako poskytovatele identity.
 
 >[!Note]
->Přidání vlastní značka vyžaduje použití Azure Active Directory Premium 1, Premium 2 nebo edice Basic nebo máte licenci Office 365. Další informace o licencování a edicích, naleznete v tématu [registrace Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Premium a Basic služby Azure AD jsou zákazníkům v Číně dostupné prostřednictvím celosvětové instance služby Azure Active Directory. Edice Premium a Basic služby Azure AD v současnosti nejsou podporované ve službě Azure provozované v Číně společností 21Vianet. Můžete se na nás obrátit na [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/), kde se dozvíte další informace.
+>Přidání vlastní značky vyžaduje použití edic Azure Active Directory Premium 1, Premium 2 nebo Basic nebo licenci Office 365. Další informace o licencování a edicích najdete v tématu [Registrace k Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Premium a Basic služby Azure AD jsou zákazníkům v Číně dostupné prostřednictvím celosvětové instance služby Azure Active Directory. Edice Premium a Basic služby Azure AD v současnosti nejsou podporované ve službě Azure provozované v Číně společností 21Vianet. Můžete se na nás obrátit na [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/), kde se dozvíte další informace.
 
-## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobit přihlašovací stránku Azure AD
-Můžete přizpůsobit vaší služby Azure AD přihlašovacích stránek služby, které se zobrazí, když se uživatelé přihlásí do aplikace specifickým pro tenanta vaší organizace, jako například [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), nebo při předání proměnné domény, jako je například [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
+## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobení přihlašovací stránky Azure AD
+Přihlašovací stránky Azure AD, které se zobrazí, když se uživatelé přihlásí k aplikacím `https://outlook.com/contoso.com`vaší organizaci specifickým pro `https://passwordreset.microsoftonline.com/?whr=contoso.com`klienta, jako je například aplikace nebo když předávají proměnnou domény, například .
 
-Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na weby, jako je například webová\.office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí. Až se uživatel přihlásí, branding může trvat 15 minut nebo déle. 
+Vaše vlastní značka se okamžitě nezobrazí, když uživatelé\.přejdou na weby, jako je www office.com. Místo toho se uživatel musí přihlásit, než se zobrazí přizpůsobená značka. Po přihlášení uživatele může zobrazení značky trvat 15 minut nebo déle. 
 
 > [!NOTE]
-> Všechny značky elementů jsou volitelné. Například pokud zadáte banner s logem se žádný obrázek na pozadí, přihlašovací stránka zobrazí vaše logo s výchozí obrázek na pozadí z cílové lokality (třeba Office 365).<br><br>Kromě toho branding přihlašovací stránky se nepřenáší na osobní účty Microsoft. Pokud uživatelé nebo obchodní hosté přihlásí pomocí osobního účtu Microsoft, přihlašovací stránka nebude se Branding vaší organizace.
+> Všechny prvky značky jsou volitelné. Pokud například zadáte logo banneru bez obrázku pozadí, zobrazí se na přihlašovací stránce vaše logo s výchozím obrázkem pozadí z cílového webu (například Office 365).<br><br>Značka přihlašovací stránky se navíc nepřenáší na osobní účty Microsoft. Pokud se uživatelé nebo firemní hosté přihlašují pomocí osobního účtu Microsoft, přihlašovací stránka nebude odrážet značku vaší organizace.
 
-### <a name="to-customize-your-branding"></a>Přizpůsobení brandingu
+### <a name="to-customize-your-branding"></a>Přizpůsobení značky
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **značky společnosti**a pak vyberte **konfigurovat**.
+2. Vyberte **Azure Active Directory**a pak vyberte Značka **společnosti**a pak vyberte **Konfigurovat**.
 
-    ![Contoso – přizpůsobení prostředí značce stránku pro společnosti, zvýrazněnou možností konfigurovat](media/customize-branding/company-branding-configure-button.png)
+    ![Stránka Značky Contoso – Firemní značka, Zvýrazněná možnost Konfigurovat](media/customize-branding/company-branding-configure-button.png)
 
-3. Na **konfigurovat vlastní firemní branding** zadejte některé nebo všechny z následujících informací.
+3. Na stránce **Konfigurovat značku společnosti** zadejte některé nebo všechny následující informace.
 
     >[!Important]
-    >Vlastní Image, které přidáte na této stránce mají velikost obrázku (v pixelech) a velikost (KB), omezení potenciálně souboru. Vzhledem k těmto omezením nejpravděpodobnější potřeba k vytvoření imagí přiměřené použít photo editor.
+    >Všechny vlastní obrázky, které přidáte na tuto stránku, mají velikost obrázku (pixely) a potenciálně velikost souboru (KB), omezení. Z důvodu těchto omezení budete s největší pravděpodobností muset použít editor fotografií k vytvoření obrázků správné velikosti.
 
-    - **Obecné nastavení**
+    - **Obecná nastavení**
 
-        ![Konfigurace vlastní firemní branding stránce Obecné nastavení dokončeno](media/customize-branding/configure-company-branding-general-settings.png)
+        ![Konfigurace stránky značky společnosti s dokončením obecných nastavení](media/customize-branding/configure-company-branding-general-settings.png)
 
-        - **Jazyk.** Jazyk se automaticky nastaví jako výchozí a nedá se změnit.
+        - **Jazyk.** Jazyk je automaticky nastaven jako výchozí a nelze jej změnit.
         
-        - **Obrázek pozadí přihlašovací stránky.** Vyberte soubor obrázku ve formátu PNG nebo JPG jako pozadí přihlašovací stránky. 
+        - **Obrázek pozadí přihlašovací stránky** Vyberte soubor png nebo JPG, který se zobrazí jako pozadí vašich přihlašovacích stránek. 
         
-            Na obrázku nemůže být větší než 1920 × 1080 pixelů, velikosti a musí mít velikost souboru menší než 300 kB.
+            Obrázek nesmí být větší než 1920x1080 pixelů velikosti a musí mít velikost souboru menší než 300 kB.
 
-        - **Úvodní nápis logo.** Vyberte verzi .png nebo .jpg logo se zobrazí na přihlašovací stránce poté, co uživatel zadá uživatelské jméno a na **Moje aplikace** stránky portálu.
+        - **Logo banneru.** Vyberte verzi loga PNG nebo JPG, která se zobrazí na přihlašovací stránce poté, co uživatel zadá uživatelské jméno a na stránce Portál **mých aplikací.**
             
-            Obrázek nemůže být větší než 60 pixelů nebo širší než 280 pixelů. Doporučujeme použít průhledný obrázek, protože na pozadí se nemusí shodovat pozadí loga. Doporučujeme také Nepřidání výplně kolem obrázku nebo může mít logo vypadat malé.
+            Obraz nemůže být vyšší než 60 pixelů nebo širší než 280 pixelů. Doporučujeme použít průhledný obrázek, protože pozadí nemusí odpovídat pozadí loga. Doporučujeme také nepřidávat polstrování kolem obrázku nebo by mohlo vaše logo vypadat malé.
 
-        - **Pomocný parametr uživatelského jména.** Zadejte text nápovědy, který se uživatelům zobrazí, pokud zapomenou své uživatelské jméno. Tento text musí být v kódování Unicode, bez odkazů nebo kód a nemůže být delší než 64 znaků. Pokud hosté přihlásí do vaší aplikace, doporučujeme Nepřidání Tento pomocný parametr.
+        - **Nápověda k uživatelskému jménu.** Zadejte text nápovědy, který se uživatelům zobrazí, pokud zapomenou své uživatelské jméno. Tento text musí být Unicode, bez odkazů nebo kódu a nesmí překročit 64 znaků. Pokud se hosté přihlásí do vaší aplikace, doporučujeme tuto nápovědu nepřidávat.
 
-        - **Text přihlašovací stránky.** Zadejte text, který se zobrazí ve spodní části přihlašovací stránky. Tento text můžete sdělit Další informace, jako je třeba telefonní číslo pro vaše oddělení technické podpory nebo právní prohlášení. Tento text musí být v kódování Unicode a není delší než 256 znaků. Doporučujeme také nezahrnuje odkazy nebo značky jazyka HTML.
+        - **Text přihlašovací stránky.** Zadejte text, který se zobrazí v dolní části přihlašovací stránky. Tento text můžete použít ke sdělení dalších informací, jako je telefonní číslo na technickou podporu nebo právní prohlášení. Tento text musí být unicode a nesmí přesáhnout 256 znaků. Doporučujeme také nezačlenovat odkazy nebo značky HTML.
 
-    - **Upřesňující nastavení**
+    - **Upřesnit nastavení**
             
-        ![Konfigurace vlastní firemní branding stránky, s rozšířeným nastavením dokončeno](media/customize-branding/configure-company-branding-advanced-settings.png)   
+        ![Konfigurace stránky značky společnosti s dokončeným rozšířeným nastavením](media/customize-branding/configure-company-branding-advanced-settings.png)   
 
-        - **Barva pozadí přihlašovací stránky.** Určení barvy v šestnáctkovém formátu (bílé je třeba #FFFFFF), který se zobrazí místo image na pozadí v situacích, připojení s malou šířkou pásma. Doporučujeme použít primární barvu vaše banner s logem nebo barvy vaší organizace.
+        - **Barva pozadí přihlašovací stránky** Zadejte šestnáctkovou barvu (například bílá je #FFFFFF), která se zobrazí místo obrázku na pozadí v situacích připojení s malou šířkou pásma. Doporučujeme použít primární barvu loga banneru nebo barvu vaší organizace.
 
-        - **Obrázek čtvercového loga.** Vyberte ve formátu PNG (preferované) nebo JPG obrázek loga vaší organizace se zobrazí uživatelům během procesu instalace pro nové zařízení s Windows 10 Enterprise. Tato image se používá jenom pro ověřování Windows a zobrazí se pouze na klienty, kteří používají [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) pro nasazení nebo pro zadávání hesel stránky v jiných Windows 10 dojde. V některých případech se může zobrazit také v dialogovém okně pro vyjádření souhlasu.
+        - **Obrázek čtvercového loga.** Vyberte obrázek PNG (upřednostňovaný) nebo .jpg loga vaší organizace, který se uživatelům zobrazí během procesu instalace nových zařízení s Windows 10 Enterprise. Tato bitová kopie se používá pouze pro ověřování systému Windows a zobrazuje se pouze u klientů, kteří používají [systém Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) pro nasazení nebo pro stránky pro zadávání hesel v jiných prostředích systému Windows 10. V některých případech se může také zobrazit v dialogovém okně souhlasu.
         
-            Na obrázku nemůže být větší než velikost 240 × 240 pixelů a musí mít velikost souboru menší než 10 kB. Doporučujeme použít průhledný obrázek, protože na pozadí se nemusí shodovat pozadí loga. Doporučujeme také Nepřidání výplně kolem obrázku nebo může mít logo vypadat malé.
+            Obrázek nesmí být větší než 240 x 240 pixelů a musí mít velikost souboru menší než 10 kB. Doporučujeme použít průhledný obrázek, protože pozadí nemusí odpovídat pozadí loga. Doporučujeme také nepřidávat polstrování kolem obrázku nebo by mohlo vaše logo vypadat malé.
     
-        - **Obrázek čtvercového loga, tmavé.** Stejné jako na obrázku čtvercového loga výše. Tento obrázek loga zaujímá místo obrázku čtvercového loga při použití s tmavého pozadí, například s obrazovkami připojený k Windows 10 Azure AD během prostředí out-of-box (OOBE).  Pokud vaše logo vypadá dobře na bílý tmavě modrá a černé pozadí, není nutné přidat tento obrázek. 
+        - **Čtvercový obrázek loga, tmavý motiv.** Stejné jako obrázek čtvercového loga výše. Tento obrázek loga nahrazuje obrázek čtvercového loga při použití s tmavým pozadím, například s obrazovkami s Windows 10 Azure AD připojované obrazovkami během prostředí out-of-box (OOBE).  Pokud vaše logo vypadá dobře na bílém, tmavě modrém a černém pozadí, nemusíte tento obrázek přidávat. 
         
-        - **Zobrazit možnost zachovat přihlášení.** Můžete zvolit, aby vaši uživatelé měli zůstat přihlášení ke službě Azure AD, dokud se explicitně odhlásíte. Pokud zvolíte **ne**, tato možnost bude skrytá a uživatelé se musí přihlašovat pokaždé, když se prohlížeč zavře a znovu otevře.
+        - **Zobrazit možnost zůstat přihlášeni.** Můžete se rozhodnout, že uživatelé zůstanou přihlášení k Azure AD, dokud se explicitně neodhlašujete. Pokud zvolíte **Ne**, bude tato možnost skrytá a uživatelé se musí přihlásit při každém zavření a opětovném otevření prohlížeče.
         
             >[!Note]
             >Některé funkce služeb SharePoint Online a Office 2010 závisí na tom, jestli mají uživatelé možnost zůstat přihlášení. Pokud nastavíte **Ne**, můžou se vašim uživatelům zobrazovat další neočekávané výzvy k přihlášení.
    
 
-3. Po dokončení přidáním brandingu, vyberte **Uložit**.
+3. Po přidání značky vyberte **Uložit**.
 
-    Pokud tento proces vytvoří vaše první vlastní nastavení brandingu, bude výchozí hodnota pro vašeho tenanta. Pokud máte další konfigurace, budete moci zvolit výchozí konfiguraci.
+    Pokud tento proces vytvoří první vlastní konfiguraci značky, stane se výchozím pro vašeho tenanta. Pokud máte další konfigurace, budete moci zvolit výchozí konfiguraci.
     
     >[!Important]
-    >Chcete-li přidat více firemní branding konfigurace k vašemu tenantovi, musíte zvolit **nový jazyk** na **Contoso - firemní branding** stránky. Tím se otevře **konfigurovat vlastní firemní branding** stránku, kde můžete postupovat podle stejných kroků jako výše.
+    >Chcete-li do tenanta přidat další konfigurace firemníznačky, musíte na stránce **značky Contoso – společnost** zvolit **nový jazyk.** Otevře se stránka **Konfigurace značky společnosti,** kde můžete postupovat stejným způsobem jako výše.
 
-## <a name="update-your-custom-branding"></a>Aktualizovat vlastní značky
-Po vytvoření vlastní značky, můžete přejít zpět a změňte všechno, co chcete.
+## <a name="update-your-custom-branding"></a>Aktualizace vlastní značky
+Po vytvoření vlastní značky se můžete vrátit a změnit vše, co chcete.
 
-### <a name="to-edit-your-custom-branding"></a>Chcete-li upravit vlastní značky
+### <a name="to-edit-your-custom-branding"></a>Úprava vlastní značky
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **značky společnosti**a pak vyberte **konfigurovat**.
+2. Vyberte **Azure Active Directory**a pak vyberte Značka **společnosti**a pak vyberte **Konfigurovat**.
 
-    ![Contoso - stránky značky společnosti, s výchozí konfigurací ukázka](media/customize-branding/company-branding-default-config.png)
+    ![Contoso - Stránka značky společnosti s výchozí konfigurací](media/customize-branding/company-branding-default-config.png)
 
-3. Na **konfigurovat vlastní firemní branding** stránce, přidat, odebrat nebo změnit libovolné informace, na základě popisů v [přizpůsobit přihlašovací stránku Azure AD](#customize-your-azure-ad-sign-in-page) části tohoto článku.
+3. Na stránce **Konfigurace značky společnosti** přidejte, odeberte nebo změňte některé informace na základě popisů v části [Přizpůsobit přihlašovací stránku Azure AD v](#customize-your-azure-ad-sign-in-page) tomto článku.
 
 4. Vyberte **Uložit**.
 
    Změny brandingu přihlašovací stránky se můžou projevit třeba až za hodinu.
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>Přidání firemního brandingu pro konkrétní jazyk do adresáře
-Původní konfiguraci jazyka nelze změnit z výchozí jazyk. Pokud potřebujete konfigurace v jiném jazyce, ale můžete vytvořit novou konfiguraci.
+Jazyk původní konfigurace nelze změnit z výchozího jazyka. Pokud však potřebujete konfiguraci v jiném jazyce, můžete vytvořit novou konfiguraci.
 
-### <a name="to-add-a-language-specific-branding-configuration"></a>Chcete-li přidat nastavení brandingu specifické pro jazyk
+### <a name="to-add-a-language-specific-branding-configuration"></a>Přidání konfigurace brandingu specifické pro daný jazyk
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **značky společnosti**a pak vyberte **nový jazyk**.
+2. Vyberte **Azure Active Directory**a pak vyberte Značka **společnosti**a pak vyberte **Nový jazyk**.
 
-    ![Contoso – přizpůsobení prostředí značce stránku společnosti se zvýrazněnou možností nový jazyk](media/customize-branding/company-branding-new-language.png)
+    ![Stránka značky Contoso – Firemní značka se zvýrazněnou možností Nový jazyk](media/customize-branding/company-branding-new-language.png)
 
-3. Na **konfigurovat vlastní firemní branding** stránky, vyberte svůj jazyk (například francouzština) a pak přidejte přeložené údajů na základě popisů v [přizpůsobit přihlašovací stránku Azure AD](#customize-your-azure-ad-sign-in-page) část tohoto článku.
+3. Na stránce **Konfigurace značky společnosti** vyberte jazyk (například francouzštinu) a přidejte přeložené informace na základě popisů v části [Přizpůsobit přihlašovací stránku Azure AD v](#customize-your-azure-ad-sign-in-page) tomto článku.
 
 4. Vyberte **Uložit**.
 
-    **Contoso – vlastní firemní branding** stránka se aktualizuje a zobrazí nové francouzské konfigurace.
+    Aktualizace stránky **značky Contoso – Společnost,** která zobrazuje novou francouzskou konfiguraci.
 
-    ![Contoso - stránky značky společnosti, s výchozí konfigurací ukázka](media/customize-branding/company-branding-french-config.png)
+    ![Contoso - Stránka značky společnosti s výchozí konfigurací](media/customize-branding/company-branding-french-config.png)
 
-## <a name="add-your-custom-branding-to-pages"></a>Přidání vaší vlastní značky na stránky
-Přidat vlastní brandingu na stránky tak, že upravíte konec adresy URL s textem, `?whr=yourdomainname`. Tato změna funguje na několika stránkách, včetně na stránku nastavení služby Multi-Factor Authentication (MFA), na stránku nastavení samoobslužného resetování hesla (SSPR) a přihlašovací stránce.
+## <a name="add-your-custom-branding-to-pages"></a>Přidání vlastní značky na stránky
+Přidejte vlastní značku na stránky úpravou konce adresy `?whr=yourdomainname`URL s textem . Tato změna funguje na několika stránkách, včetně stránky nastavení vícefaktorového ověřování (MFA), stránky nastavení samoobslužného resetování hesla (SSPR) a přihlašovací stránky.
 
 **Příklady:**
 
-**Původní adresu URL:** https://aka.ms/MFASetup<br>
-**Vlastní adresa URL:** https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com
+**Původní adresa URL:**https://aka.ms/MFASetup<br>
+**Vlastní adresa URL:**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`
 
-**Původní adresu URL:** https://aka.ms/SSPR<br>
-**Vlastní adresa URL:** https://passwordreset.microsoftonline.com/?whr=contoso.com
+**Původní adresa URL:**https://aka.ms/SSPR<br>
+**Vlastní adresa URL:**`https://passwordreset.microsoftonline.com/?whr=contoso.com`
 
  
