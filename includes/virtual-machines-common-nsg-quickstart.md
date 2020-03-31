@@ -9,31 +9,31 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174977"
 ---
-Otevření portu nebo vytvoření koncového bodu, virtuálního počítače (VM) v Azure tak, že vytvoříte filtr sítě v podsíti nebo síťovému rozhraní virtuálního počítače. Tyto filtry, které řídí příchozí a odchozí přenosy dat, umístíte na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz.
+Otevřete port nebo vytvoříte koncový bod pro virtuální počítač (VM) v Azure vytvořením síťového filtru v podsíti nebo síťovém rozhraní virtuálního počítače. Tyto filtry, které řídí příchozí i odchozí provoz, umístíte do skupiny zabezpečení sítě připojené k prostředku, který přijímá přenosy.
 
-V příkladu v tomto článku ukazuje, jak vytvořit filtr sítě, který používá standardní port TCP 80 (se předpokládá, že jste již zahájeno příslušné služby a otevřít žádná pravidla brány firewall operačního systému na virtuálním počítači).
+Příklad v tomto článku ukazuje, jak vytvořit síťový filtr, který používá standardní port TCP 80 (předpokládá se, že jste již spustili příslušné služby a otevřeli všechna pravidla brány firewall operačního systému na virtuálním počítači).
 
-Po vytvoření virtuálního počítače, který je nakonfigurovaný pro obsloužení webové požadavky na standardní port TCP 80, můžete:
+Po vytvoření virtuálního počítače, který je nakonfigurovaný tak, aby zobrazoval webové požadavky na standardním portu TCP 80, můžete:
 
 1. Vytvořte skupinu zabezpečení sítě.
 
-2. Vytvoření pravidla zabezpečení příchozích dat umožňuje provoz a přiřadit hodnoty následujícího nastavení:
+2. Vytvořte příchozí pravidlo zabezpečení umožňující přenos a přiřaďte hodnoty následujícím nastavením:
 
-   - **Rozsahy cílových portů**: 80
+   - **Rozsahy cílových přístavů**: 80
 
-   - **Zdrojové rozsahy portů**: * (umožňuje jakéhokoli zdrojového portu)
+   - **Rozsahy zdrojových portů**: * (umožňuje libovolný zdrojový port)
 
-   - **Hodnota priority**: Zadejte hodnotu, která je menší než příchozí pravidlo odepřít 65,500 a vyšší prioritou než výchozí pokrývající vše.
+   - **Hodnota priority**: Zadejte hodnotu, která má nižší než 65 500 priorit, než je výchozí pravidlo příchozího režimu catch-all.
 
-3. Přidružte síťové rozhraní virtuálního počítače nebo podsítě skupinu zabezpečení sítě.
+3. Přidružte skupinu zabezpečení sítě k síťovému rozhraní nebo podsíti virtuálního zařízení.
 
-Přestože tento příklad používá jednoduché pravidlo pro povolení provozu HTTP, můžete také použít skupiny zabezpečení sítě a pravidla k vytvoření složitějších konfigurací sítě. 
+Přestože tento příklad používá jednoduché pravidlo pro povolení přenosu http, můžete také použít skupiny zabezpečení sítě a pravidla k vytvoření složitějšíkonfigurace sítě. 
 
 
 

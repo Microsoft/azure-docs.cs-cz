@@ -1,45 +1,45 @@
 ---
 title: Povolit offline synchronizaci (Android)
-description: Naučte se používat App Service Mobile Apps k ukládání a synchronizaci offline dat v aplikaci pro Android.
+description: Přečtěte si, jak používat mobilní aplikace App Service k ukládání dat do mezipaměti a synchronizaci offline dat v aplikaci pro Android.
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: c215105af5fe1ef8056b0d816cf2c2a6b96f2038
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461619"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikaci pro Android
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz se zabývá funkcí offline synchronizace pro Azure Mobile Apps pro Android. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací&mdash;zobrazení, přidání nebo úprava dat&mdash;i v případě, že není k dispozici žádné síťové připojení. Změny jsou uloženy v místní databázi. Jakmile je zařízení zase online, tyto změny se synchronizují se vzdáleným back-endu.
+Tento kurz se zabývá funkcí offline synchronizace mobilních aplikací Azure pro Android. Offline synchronizace umožňuje koncovým uživatelům&mdash;pracovat se zobrazením,&mdash;přidáváním nebo úpravou dat mobilní aplikací, i když neexistuje žádné síťové připojení. Změny jsou uloženy v místní databázi. Jakmile je zařízení opět online, tyto změny se synchronizují se vzdáleným back-endem.
 
-Pokud je to vaše první prostředí s Azure Mobile Apps, měli byste nejdřív dokončit kurz [Vytvoření aplikace pro Android]. Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, musíte do svého projektu přidat balíčky rozšíření pro přístup k datům. Další informace o balíčcích rozšíření serveru najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Pokud je to vaše první zkušenost s Mobilní aplikace Azure, měli byste nejprve dokončit kurz [Vytvořit aplikaci pro Android]. Pokud nepoužíváte stažený projekt serveru rychlého startu, je nutné do projektu přidat balíčky rozšíření pro přístup k datům. Další informace o balíčcích rozšíření serveru naleznete v [tématu Práce s back-endovým serverem .NET SDK pro mobilní aplikace Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-Další informace o funkci offline synchronizace najdete v tématu [Synchronizace offline dat v prostředí Azure Mobile Apps].
+Další informace o funkci offline synchronizace najdete v tématu [Offline synchronizace dat v Mobilních aplikacích Azure].
 
-## <a name="update-the-app-to-support-offline-sync"></a>Aktualizace aplikace na podporu offline synchronizace
-Offline synchronizace vám umožní číst a zapisovat z *synchronizační tabulky* (pomocí rozhraní *IMobileServiceSyncTable* ), které je součástí databáze **SQLite** na vašem zařízení.
+## <a name="update-the-app-to-support-offline-sync"></a>Aktualizace aplikace pro podporu offline synchronizace
+S offline synchronizací čtete a píšete ze *synchronizační tabulky* (pomocí rozhraní *IMobileServiceSyncTable),* která je součástí databáze **SQLite** na vašem zařízení.
 
-Pokud chcete vložit a stáhnout změny mezi zařízením a Mobile Services Azure, použijte *kontext synchronizace* (*MobileServiceClient. SyncContext*), který se inicializuje s místní databází pro místní ukládání dat.
+Chcete-li push a vyžádat změny mezi zařízením a Azure Mobile Services, použijte *kontext synchronizace* *(MobileServiceClient.SyncContext*), který inicializovat s místní databází pro místní ukládání dat místně.
 
-1. V `TodoActivity.java`zakomentujte existující definici `mToDoTable` a odkomentujte verzi synchronizační tabulky:
+1. V `TodoActivity.java`aplikaci comment out `mToDoTable` the existing definition of and uncomment the sync table version: In , comment out the existing definition of and uncomment the sync table version: In , comment out the existing definition of and uncomment the sync table version: In
    
         private MobileServiceSyncTable<ToDoItem> mToDoTable;
-2. V metodě `onCreate` přidejte komentář k existující inicializaci `mToDoTable` a odkomentujte tuto definici:
+2. V `onCreate` metodě zakomentujte existující `mToDoTable` inicializaci a odkomentujte tuto definici:
    
         mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
-3. V `refreshItemsFromTable` Odkomentujte definici `results` a odkomentujte tuto definici:
+3. V `refreshItemsFromTable` komentáři se `results` definice a odkomentujte tuto definici:
    
         // Offline Sync
         final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
-4. Odkomentujte definici `refreshItemsFromMobileServiceTable`.
-5. Odkomentujte definici `refreshItemsFromMobileServiceTableSyncTable`:
+4. Komentář k definici `refreshItemsFromMobileServiceTable`.
+5. Odkomentujte `refreshItemsFromMobileServiceTableSyncTable`definici :
    
         private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
             //sync the data
@@ -48,7 +48,7 @@ Pokud chcete vložit a stáhnout změny mezi zařízením a Mobile Services Azur
                     eq(val(false));
             return mToDoTable.read(query).get();
         }
-6. Odkomentujte definici `sync`:
+6. Odkomentujte `sync`definici :
    
         private AsyncTask<Void, Void, Void> sync() {
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
@@ -68,32 +68,32 @@ Pokud chcete vložit a stáhnout změny mezi zařízením a Mobile Services Azur
         }
 
 ## <a name="test-the-app"></a>Otestování aplikace
-V této části otestujete chování pomocí Wi-Fi na a pak vypněte Wi-Fi a vytvořte offline scénář.
+V této části otestujete chování se zapnutou Wi-Fi a pak vypnete WiFi a vytvoříte offline scénář.
 
-Když přidáte datové položky, jsou uchovávány v místním úložišti SQLite, ale nejsou synchronizovány do mobilní služby, dokud nestisknete tlačítko **aktualizovat** . Jiné aplikace mohou mít různé požadavky týkající se synchronizace dat, ale pro demonstrační účely tento kurz uživateli výslovně vyžádá.
+Když přidáte datové položky, jsou uchovávány v místním úložišti SQLite, ale nejsou synchronizovány s mobilní službou, dokud nestisknete tlačítko **Aktualizovat.** Jiné aplikace mohou mít různé požadavky týkající se potřeby synchronizace dat, ale pro ukázkové účely tento kurz má uživatel explicitně požádat.
 
-Po stisknutí tohoto tlačítka se spustí nová úloha na pozadí. Nejprve pošle všechny změny provedené v místním úložišti pomocí kontextu synchronizace a potom všechna změněná data z Azure vyžádá do místní tabulky.
+Po stisknutí tohoto tlačítka se spustí nová úloha na pozadí. Nejprve odešle všechny změny provedené v místním úložišti pomocí kontextu synchronizace a pak vytáhne všechna změněná data z Azure do místní tabulky.
 
-### <a name="offline-testing"></a>Testování offline
-1. Zařízení nebo simulátor umístěte do *režimu v letadle*. Tím se vytvoří scénář offline.
-2. Přidejte některé položky *TODO* nebo označte některé položky jako dokončené. Ukončete zařízení nebo simulátor (nebo aplikaci vynuceně ukončete) a restartujte ji. Ověřte, že vaše změny byly na zařízení trvalé, protože jsou uložené v místním úložišti SQLite.
-3. Zobrazte obsah tabulky Azure *TodoItem* buď pomocí nástroje SQL, jako je například *SQL Server Management Studio*, nebo klienta REST, jako je například *Fiddler* nebo *Poster*. Ověřte, *že se nové* položky nesynchronizoval na server.
+### <a name="offline-testing"></a>Offline testování
+1. Umístěte zařízení nebo simulátor do *režimu letadlo*. Tím se vytvoří offline scénář.
+2. Přidejte některé položky *todo* nebo označte některé položky jako dokončené. Ukončete zařízení nebo simulátor (nebo aplikaci násilně zavřete) a restartujte počítač. Ověřte, zda byly změny v zařízení trvalé, protože jsou uloženy v místním úložišti SQLite.
+3. Zobrazení obsahu tabulky Azure *TodoItem* buď pomocí nástroje SQL, jako je *SQL Server Management Studio*, nebo klienta REST, jako je *Fiddler* nebo *Postman*. Ověřte, zda *not* nebyly nové položky synchronizovány se serverem
    
-       + Pro back-end Node. js přejděte na [Azure Portal](https://portal.azure.com/)a v back-endu mobilní aplikace klikněte na možnost **jednoduché tabulky** > **TodoItem** . zobrazí se obsah tabulky `TodoItem`.
-       + V případě back-endu .NET můžete zobrazit obsah tabulky buď pomocí nástroje SQL, jako je *SQL Server Management Studio*, nebo klienta REST, jako je *Fiddler* nebo *post*.
-4. Zapnout Wi-Fi v zařízení nebo simulátoru. Potom stiskněte tlačítko **aktualizovat** .
-5. Zobrazte data TodoItem znovu v Azure Portal. Nyní by se měla zobrazit nová a změněná TodoItems.
+       + Pro back-end Node.js přejděte na [portál Azure](https://portal.azure.com/)a v back-endu mobilní aplikace klikněte na **Položku snadné tabulky** > **TodoItem** a zobrazte obsah `TodoItem` tabulky.
+       + Pro back-end .NET zobrazte obsah tabulky pomocí nástroje SQL, jako je *například SQL Server Management Studio*, nebo klienta REST, například *Fiddler* nebo *Postman*.
+4. Zapněte Wi-Fi v zařízení nebo simulátoru. Dále stiskněte tlačítko **Aktualizovat.**
+5. Zobrazte znovu data TodoItem na webu Azure Portal. Nyní by se měly zobrazit nové a změněné položky TodoItems.
 
-## <a name="additional-resources"></a>Další prostředky
-* [Synchronizace offline dat v prostředí Azure Mobile Apps]
-* [Cloudové pokrytí: offline synchronizace v Azure Mobile Services] \(Poznámka: video je na Mobile Services, ale offline synchronizace funguje podobným způsobem jako v Azure Mobile Apps\)
+## <a name="additional-resources"></a>Další zdroje
+* [Offline synchronizace dat pro Azure Mobile Apps]
+* [Cloud Cover: Offline synchronizace v mobilních službách] \(Azure poznámka: video je na mobilní služby, ale offline synchronizace funguje podobným způsobem v Azure Mobile Apps\)
 
 <!-- URLs. -->
 
-[Synchronizace offline dat v prostředí Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Offline synchronizace dat pro Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 
 [Vytvoření aplikace pro Android]: app-service-mobile-android-get-started.md
 
-[Cloudové pokrytí: offline synchronizace v Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Cloud Cover: Offline synchronizace v mobilních službách Azure]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 

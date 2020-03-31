@@ -11,14 +11,14 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  ms.date: 03/04/2020
+  ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0071d4da31e4739ccf53e9570bc7d0ed61c01bc4
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: f047af5d14ed6b18c559f814b35d730ba7ce0f6a
+  ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943319"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80244320"
 highlightedContent:
   items:
   - title: Co je služba Speech?
@@ -37,15 +37,15 @@ conceptualContent:
   items:
   - title: Převod řeči na text
     links:
+    - itemType: how-to-guide
+      text: Základy rozpoznávání řeči
+      url: speech-to-text-basics.md
     - itemType: quickstart
       text: Rozpoznávání řeči z mikrofonu
       url: quickstarts/speech-to-text-from-microphone.md
     - itemType: quickstart
-      text: Rozpoznávání řeči v dávkovém režimu
-      url: batch-transcription.md
-    - itemType: how-to-guide
-      text: Přizpůsobení rozpoznávání řeči pro vaše aplikace
-      url: how-to-custom-speech.md
+      text: Rozpoznávání řeči ze zvukového souboru
+      url: quickstarts/speech-to-text-from-file.md
     footerLink:
       text: Další informace
       url: index-speech-to-text.yml
@@ -94,10 +94,10 @@ conceptualContent:
   - title: Scénáře konverzace
     links:
     - itemType: overview
-      text: Informace o přepisu konverzace
+      text: Informace o přepisu konverzace (schůzky)
       url: conversation-transcription.md
     - itemType: overview
-      text: Informace o konverzacích více zařízení
+      text: Informace o konverzacích více zařízení (schůzky)
       url: multi-device-conversation.md
     - itemType: how-to-guide
       text: Přepis nahrávek z call centra
@@ -152,9 +152,6 @@ conceptualContent:
     - itemType: how-to-guide
       text: Migrace ze Zpracování řeči Bingu
       url: how-to-migrate-from-bing-speech.md
-    - itemType: how-to-guide
-      text: Migrace ze služby Custom Speech
-      url: how-to-migrate-from-custom-speech-service.md
     - itemType: how-to-guide
       text: Migrace z rozhraní Translator Speech API
       url: how-to-migrate-from-translator-speech-api.md

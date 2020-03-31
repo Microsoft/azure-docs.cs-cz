@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování virtuálních počítačů Azure
 description: Obsahuje souhrn nastavení podpory a omezení při zálohování virtuálních počítačích Azure se službou Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247901"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389286"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -115,7 +115,6 @@ Body obnovení na disku DPM/MABS | 64 pro souborové servery a 448 pro aplikačn
 **Obnovení** | **Podporovány**
 --- | ---
 Obnovení souborů v operačních systémech | Soubory můžete obnovit v libovolném počítači, který má stejný (nebo kompatibilní) operační systém jako zálohovaný virtuální počítač. Viz [tabulka Kompatibilní operační systém](backup-azure-restore-files-from-vm.md#system-requirements).
-Obnovení souborů na klasických virtuálních počítačích | Není podporováno.
 Obnovení souborů ze šifrovaných virtuálních mích | Není podporováno.
 Obnovení souborů z účtů úložiště s omezeným přístupem k síti | Není podporováno.
 Obnovení souborů na virtuálních počítačích pomocí prostorů úložiště Windows | Obnovení není podporováno na stejném virtuálním počítači.<br/><br/> Místo toho obnovte soubory na kompatibilním virtuálním počítači.
