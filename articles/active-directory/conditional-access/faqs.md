@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Nejčastější dotazy podmíněného přístupu | Microsoft Docs
-description: Získejte odpovědi na nejčastější dotazy týkající se podmíněného přístupu v Azure Active Directory.
+title: Časté otázky podmíněného přístupu služby Azure Active Directory | Dokumenty společnosti Microsoft
+description: Získejte odpovědi na nejčastější dotazy týkající se podmíněného přístupu ve službě Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,50 +12,50 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368084"
 ---
-# <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Nejčastější dotazy týkající se podmíněného přístupu
+# <a name="azure-active-directory-conditional-access-faqs"></a>Časté otázky podmíněného přístupu služby Azure Active Directory
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>Které aplikace pracují se zásadami podmíněného přístupu?
 
-Informace o aplikacích, které pracují se zásadami podmíněného přístupu, najdete v tématu [aplikace a prohlížeče, které používají pravidla podmíněného přístupu v Azure Active Directory](concept-conditional-access-cloud-apps.md).
+Informace o aplikacích, které fungují se zásadami podmíněného přístupu, najdete v [tématu Aplikace a prohlížeče, které používají pravidla podmíněného přístupu ve službě Azure Active Directory](concept-conditional-access-cloud-apps.md).
 
-## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Jsou pro spolupráci B2B a uživatele typu Host vynutily zásady podmíněného přístupu?
+## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Jsou zásady podmíněného přístupu vynuceny pro spolupráci B2B a uživatele typu Host?
 
-Pro uživatele spolupráce B2B (Business-to-Business) se vynutily zásady. V některých případech ale uživatel nemusí být schopný splnit požadavky zásad. Například organizace hostovaného uživatele nemusí podporovat službu Multi-Factor Authentication. 
+Zásady jsou vynuceny pro uživatele spolupráce mezi podniky (B2B). V některých případech však uživatel nemusí být schopen splnit požadavky zásad. Například organizace uživatele typu Host nemusí podporovat vícefaktorové ověřování. 
 
-## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Vztahují se zásady SharePointu Online i na OneDrive pro firmy?
+## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Platí zásady SharePointu Online taky na OneDrivu pro firmy?
 
-Ano. Zásady SharePointu Online platí i pro OneDrive pro firmy.
+Ano. Zásady SharePointu Online platí taky pro OneDrive pro firmy.
 
-## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Proč nejde nastavit zásadu přímo na klientských aplikacích, jako je Word nebo Outlook?
+## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Proč nemůžu nastavit zásady přímo u klientských aplikací, jako je Word nebo Outlook?
 
-Zásada podmíněného přístupu nastavuje požadavky pro přístup ke službě. Vynutilo se při ověřování k této službě. Zásady nejsou nastaveny přímo v klientské aplikaci. Místo toho se použije, když klient zavolá službu. Například zásada nastavená na SharePointu se vztahuje na klienty, kteří volají SharePoint. Zásada nastavená na Exchangi se vztahuje na Outlook.
+Zásady podmíněného přístupu nastavují požadavky pro přístup ke službě. Je vynuceno při ověřování této služby dojde. Zásada není nastavena přímo v klientské aplikaci. Místo toho se použije, když klient volá službu. Zásada nastavená na SharePointu se například vztahuje na klienty volající na SharePoint. Zásada nastavená na Serveru Exchange se vztahuje na aplikaci Outlook.
 
-## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Vztahují se zásady podmíněného přístupu na účty služeb?
+## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Platí zásady podmíněného přístupu pro účty služeb?
 
-Zásady podmíněného přístupu se vztahují na všechny uživatelské účty. To zahrnuje uživatelské účty, které se používají jako účty služeb. Účet služby, který běží bez obsluhy, často nesplňuje požadavky zásad podmíněného přístupu. Například může být vyžadováno Multi-Factor Authentication. Účty služeb se dají vyloučit ze zásady pomocí nastavení správy zásad podmíněného přístupu. 
+Zásady podmíněného přístupu platí pro všechny uživatelské účty. To zahrnuje uživatelské účty, které se používají jako účty služeb. Účet služby, který běží bez obslužné rutiny, často nemůže splňovat požadavky zásad podmíněného přístupu. Může být například vyžadováno vícefaktorové ověřování. Účty služeb lze vyloučit ze zásad pomocí nastavení správy zásad podmíněného přístupu. 
 
-## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Jsou k dispozici Microsoft Graph rozhraní API pro konfiguraci zásad podmíněného přístupu?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Jsou rozhraní API aplikace Microsoft Graph k dispozici pro konfiguraci zásad podmíněného přístupu?
 
 V současné době ne. 
 
 ## <a name="what-is-the-default-exclusion-policy-for-unsupported-device-platforms"></a>Jaké jsou výchozí zásady vyloučení pro nepodporované platformy zařízení?
 
-V současné době se zásady podmíněného přístupu selektivně vynutily u uživatelů zařízení s iOS a Androidem. Aplikace na jiných platformách zařízení jsou ve výchozím nastavení neovlivněné zásadami podmíněného přístupu pro zařízení s iOS a Androidem. Správce tenanta se může rozhodnout přepsat globální zásady, aby nepovolovaly přístup uživatelům na nepodporovaných platformách.
+V současné době jsou zásady podmíněného přístupu selektivně vynucovány na uživatele zařízení se systémem iOS a Android. Aplikace na jiných platformách zařízení nejsou ve výchozím nastavení ovlivněny zásadami podmíněného přístupu pro zařízení se systémem iOS a Android. Správce klienta se může rozhodnout přepsat globální zásady a zakázat přístup uživatelům na platformách, které nejsou podporovány.
 
 ## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Jak fungují zásady podmíněného přístupu pro Microsoft Teams?
 
-Microsoft Teams spoléhá na Exchange Online a SharePoint Online ve scénářích základní produktivity, jako jsou schůzky, kalendáře a sdílení souborů. Zásady podmíněného přístupu, které jsou nastavené pro tyto cloudové aplikace, platí pro Microsoft teams, když se uživatel přihlásí přímo do Microsoft Teams.
+Microsoft Teams do značné míry spoléhá na Exchange Online a SharePoint Online pro základní scénáře produktivity, jako jsou schůzky, kalendáře a sdílení souborů. Zásady podmíněného přístupu, které jsou nastavené pro tyto cloudové aplikace, platí pro Microsoft Teams, když se uživatel přihlásí přímo do Microsoft Teams.
 
-Microsoft Teams se podporuje taky samostatně jako cloudová aplikace v Azure Active Directory zásadách podmíněného přístupu. Zásady podmíněného přístupu, které jsou nastavené pro cloudovou aplikaci, platí pro Microsoft teams, když se uživatel přihlásí. Ale bez správných zásad na jiných aplikacích, jako je Exchange Online a uživatelé SharePointu Online, můžou mít stále přístup k těmto prostředkům přímo.
+Microsoft Teams se taky podporuje samostatně jako cloudová aplikace v zásadách podmíněného přístupu Azure Active Directory. Zásady podmíněného přístupu, které jsou nastavené pro cloudovou aplikaci, platí pro Microsoft Teams, když se uživatel přihlásí. Bez správných zásad v jiných aplikacích, jako jsou Exchange Online a SharePoint Online, však uživatelé mohou mít stále přímý přístup k těmto prostředkům.
 
-Klienti Microsoft Teams Desktop pro Windows a Mac podporují moderní ověřování. Moderní ověřování přináší přihlášení na základě knihovny Azure Active Directory Authentication Library (ADAL), která systém Microsoft Office klientské aplikace napříč platformami.
+Desktopoví klienti Microsoft Teams pro Windows a Mac podporují moderní ověřování. Moderní ověřování přináší přihlášení na základě Azure Active Directory Authentication Library (ADAL) do klientských aplikací Microsoft Office napříč platformami.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
+- Pokud chcete nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [doporučené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md). 

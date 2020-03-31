@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Apache Spark clusterů pomocí Azure CLI – Azure HDInsight'
-description: V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit cluster Apache Spark ve službě Azure HDInsight.
+title: 'Úvodní příručka: Clustery Apache Spark s rozhraním příkazového příkazu Azure – Azure HDInsight'
+description: Tento rychlý start ukazuje, jak pomocí rozhraní příkazového příkazu Azure vytvořit cluster Apache Spark v Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.openlocfilehash: e4679d5a04be7b8c0145fd93818e4187170b4194
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77049684"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Úvodní příručka: Vytvoření clusteru Apache Spark v Azure HDInsight pomocí rozhraní příkazového příkazu Azure
 
-V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure HDInsight pomocí rozhraní příkazového řádku (CLI) Azure. Azure HDInsight je spravovaná opensourcová analytická služba určená pro podniky. Rozhraní Apache Spark Framework for HDInsight umožňuje rychlé analýzy dat a výpočetní výkon clusteru pomocí zpracování v paměti. Azure CLI je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
+V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure HDInsight pomocí rozhraní příkazového řádku Azure (CLI). Azure HDInsight je spravovaná opensourcová analytická služba určená pro podniky. Architektura Apache Spark pro HDInsight umožňuje rychlou analýzu dat a clusterové výpočty pomocí zpracování v paměti. Azure CLI je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,7 +27,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure 
 
 ## <a name="create-an-apache-spark-cluster"></a>Vytvoření clusteru Apache Spark
 
-1. Přihlaste se ke svému předplatnému Azure. Pokud plánujete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu následujícího bloku kódu. V opačném případě zadejte následující příkaz:
+1. Přihlaste se ke svému předplatnému Azure. Pokud máte v plánu používat Azure Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu následujícího bloku kódu. Jinak zadejte následující příkaz:
 
     ```azurecli-interactive
     az login
@@ -36,7 +36,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure 
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Nastavte proměnné prostředí. Použití proměnných v tomto rychlém startu je založené na bash. Pro ostatní prostředí se budou potřebovat mírné variace. V následujícím fragmentu kódu nahraďte RESOURCEGROUPNAME, LOCATION, název_clusteru, STORAGEACCOUNTNAME a PASSWORD požadovanými hodnotami. Pak zadejte příkazy rozhraní příkazového řádku pro nastavení proměnných prostředí.
+2. Nastavte proměnné prostředí. Použití proměnných v tomto rychlém startu je založeno na Bash. Pro jiná prostředí budou zapotřebí drobné odchylky. Nahraďte název RESOURCEGROUPNAME, UMÍSTĚNÍ, NÁZEV_CLUSTERNAME, STORAGEACCOUNTNAME a HESLO Ve fragmentu kódu níže požadované hodnoty. Poté zadejte příkazy příkazu příkazu k příkazu pro nastavení proměnných prostředí.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -61,7 +61,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure 
         --name $resourceGroupName
     ```
 
-4. Vytvořte účet úložiště Azure zadáním následujícího příkazu:
+4. Vytvořte si účet úložiště Azure zadáním následujícího příkazu:
 
     ```azurecli-interactive
     az storage account create \
@@ -73,7 +73,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure 
         --sku Standard_LRS
     ```
 
-5. Extrahujte primární klíč z účtu služby Azure Storage a uložte ho do proměnné zadáním následujícího příkazu:
+5. Extrahujte primární klíč z účtu úložiště Azure a uložte ho do proměnné zadáním následujícího příkazu:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -113,9 +113,9 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení rychlého startu možná budete chtít cluster odstranit. Ve službě HDInsight jsou vaše data uložená v Azure Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají.
+Po dokončení rychlého startu můžete cluster odstranit. S HDInsight, vaše data jsou uloženy ve službě Azure Storage, takže můžete bezpečně odstranit clusteru, když není v provozu. Účtuje se vám také cluster HDInsight, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster jsou mnohonásobně vyšší než poplatky za úložiště, má ekonomické smysl odstranit clustery, když nejsou používány.
 
-Pro odebrání prostředků zadejte všechny nebo některé z následujících příkazů:
+Chcete-li odebrat prostředky, zadejte všechny nebo některé z následujících příkazů:
 
 ```azurecli-interactive
 # Remove cluster
@@ -140,7 +140,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak vytvořit cluster Apache Spark v Azure HDInsight pomocí rozhraní příkazového řádku Azure CLI.  Přejděte k dalšímu kurzu, kde se dozvíte, jak používat cluster HDInsight ke spouštění interaktivních dotazů na ukázkových datech.
+V tomto rychlém startu jste se naučili, jak vytvořit cluster Apache Spark v Azure HDInsight pomocí Rozhraní příkazového příkazového příkazu Azure.  Přejdete k dalšímu kurzu, kde se dozvíte, jak pomocí clusteru HDInsight spouštět interaktivní dotazy na ukázková data.
 
 > [!div class="nextstepaction"]
 > [Spouštění interaktivních dotazů na Apache Spark](./apache-spark-load-data-run-query.md)

@@ -1,31 +1,31 @@
 ---
-title: Připojovací řetězce – Azure Database for MariaDB
-description: Tento dokument obsahuje seznam aktuálně podporovaných připojovacích řetězců pro aplikace pro připojení k Azure Database for MariaDB, včetně ADO.NETC#(), JDBC, Node. js, ODBC, php, Pythonu a Ruby.
+title: Připojovací řetězce – databáze Azure pro MariaDB
+description: Tento dokument obsahuje seznam aktuálně podporovaných připojovacích řetězců pro aplikace pro připojení k Azure Database pro MariaDB, včetně ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python a Ruby.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 1b598385d533b3fc157a7a90ecc34c3cb18df4ac
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 74574fb905ae4ebd2552ef97cd0b5430eea6363a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530219"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Postup připojení aplikací k Azure Database for MariaDB
-Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azure Database for MariaDB, spolu se šablonami a příklady. V připojovacím řetězci můžete mít různé parametry a nastavení.
+Toto téma uvádí typy připojovacích řetězců, které jsou podporované Azure Database pro MariaDB, spolu se šablonami a příklady. V připojovacím řetězci můžete mít různé parametry a nastavení.
 
-- Informace o získání certifikátu najdete v tématu [Jak konfigurovat protokol SSL](./howto-configure-ssl.md).
-- {your_host} = [servername]. MariaDB. Database. Azure. com
-- {your_user} @ {servername} = formát userID pro ověřování správně.  Pokud použijete identifikátor userID, ověření se nezdaří.
+- Chcete-li získat certifikát, naleznete v tématu [Konfigurace protokolu SSL](./howto-configure-ssl.md).
+- {your_host} = [název_serveru].mariadb.database.azure.com
+- {your_user}@{název_serveru} = formát id uživatele pro správné ověřování.  Pokud používáte pouze ID uživatele, ověřování se nezdaří.
 
 ## <a name="adonet"></a>ADO.NET
 ```csharp
 Server={your_host}; Port=3306; Database={your_database}; Uid={username@servername}; Pwd={your_password}; SslMode=Preferred;
 ```
 
-V tomto příkladu je název serveru `mydemoserver`, název databáze je `wpdb`, uživatelské jméno `WPAdmin`a heslo je `mypassword!2`. V důsledku toho by měl být připojovací řetězec:
+V tomto příkladu je `mydemoserver`název serveru `wpdb`, název databáze `WPAdmin`je , `mypassword!2`uživatelské jméno je a heslo je . V důsledku toho by měl být připojovací řetězec:
 
 ```csharp
 Server= "mydemoserver.mariadb.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -61,10 +61,10 @@ cnx = mysql.connector.connect(user="{username@servername}", password={your_passw
 client = Mysql2::Client.new(username: "{username@servername}", password: {your_password}, database: {your_database}, host: "{your_host}", port: 3306, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA')
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o připojovacím řetězci z Azure Portal
-V [Azure Portal](https://portal.azure.com)přejděte na Azure Database for MariaDB Server a pak klikněte na **připojovací řetězce** . zobrazí se seznam řetězců pro vaši instanci: ![podokně připojovací řetězce v Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získání podrobností o připojovacím řetězci z webu Azure Portal
+Na [webu Azure Portal](https://portal.azure.com)přejděte na server Azure Database for MariaDB a potom kliknutím ![na **připojovací řetězce** získejte seznam řetězců pro vaši instanci: Podokno Připojovací řetězce na webu Azure Portal.](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-Řetězec poskytuje podrobnosti, jako je například ovladač, server a další parametry připojení databáze. Upravte tyto příklady tak, aby používaly vlastní parametry, jako je třeba název databáze, heslo a tak dále. Pak můžete použít tento řetězec pro připojení k serveru z kódu a aplikací.
+Řetězec obsahuje podrobnosti, jako je například ovladač, server a další parametry připojení databáze. Upravte tyto příklady tak, aby používaly vlastní parametry, například název databáze, heslo a tak dále. Tento řetězec pak můžete použít pro připojení k serveru z kódu a aplikací.
 
 <!-- 
 ## Next steps

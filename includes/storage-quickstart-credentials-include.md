@@ -9,17 +9,17 @@ ms.date: 11/23/2019
 ms.author: mhopkins
 ms.custom: include file
 ms.openlocfilehash: 7dd22886d11c3a35a7a866ff7c9a4f56ea74cab7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75351221"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Zkopírování přihlašovacích údajů z webu Azure Portal
 
-Když ukázková aplikace odešle požadavek na Azure Storage, musí být ověřena. K autorizaci žádosti přidejte do aplikace přihlašovací údaje účtu úložiště jako připojovací řetězec. Přihlašovací údaje účtu úložiště zobrazíte pomocí následujícího postupu:
+Když ukázková aplikace provede požadavek na Azure Storage, musí být autorizovaná. Chcete-li žádost autorizovat, přidejte do aplikace přihlašovací údaje účtu úložiště jako připojovací řetězec. Přihlašovací údaje účtu úložiště zobrazíte pomocí následujícího postupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 2. Vyhledejte svůj účet úložiště.
 3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**. Tady se zobrazí přístupové klíče vašeho účtu a úplný připojovací řetězec pro jednotlivé klíče.
 4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a výběrem tlačítka **Kopírovat** zkopírujte připojovací řetězec. V dalším kroku přidáte hodnotu připojovacího řetězce do proměnné prostředí.
@@ -28,7 +28,7 @@ Když ukázková aplikace odešle požadavek na Azure Storage, musí být ověř
 
 ### <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 
-Po zkopírování připojovacího řetězce ho zapište do nové proměnné prostředí na místním počítači, na kterém aplikaci spouštíte. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` skutečným připojovacím řetězcem.
+Po zkopírování připojovacího řetězce ho zapište do nové proměnné prostředí na místním počítači, na kterém aplikaci spouštíte. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` aktuálním připojovacím řetězcem.
 
 #### <a name="windows"></a>Windows
 
@@ -50,6 +50,6 @@ export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 ```
 
-#### <a name="restart-programs"></a>Restartovat programy
+#### <a name="restart-programs"></a>Restartování programů
 
 Po přidání proměnné prostředí restartujte všechny spuštěné programy, které budou muset číst proměnnou prostředí. Před pokračováním například restartujte vývojové prostředí nebo editor.

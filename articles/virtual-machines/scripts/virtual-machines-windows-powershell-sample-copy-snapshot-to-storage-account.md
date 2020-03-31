@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 12b6c2abc9641f884cf1b90216cc1db0c53d0260
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e8a141710b9011fc46eb8df594725bf76c3d69cf
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75368721"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385125"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Export/kopírování spravovaných snímků jako virtuálního pevného disku do účtu úložiště v jiné oblasti pomocí Prostředí PowerShell
 
@@ -43,8 +43,8 @@ Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a 
 | Příkaz | Poznámky |
 |---|---|
 | [Udělit azsnapshotaccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Generuje identifikátor URI SAS pro snímek, který se používá ke kopírování do účtu úložiště. |
-| [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Vytvoří kontext účtu úložiště s použitím názvu a klíče účtu. Tento kontext je možné použít k provádění operací čtení a zápisu v účtu úložiště. |
-| [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Zkopíruje základní virtuální pevný disk snímku do účtu úložiště. |
+| [New-AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) | Vytvoří kontext účtu úložiště s použitím názvu a klíče účtu. Tento kontext je možné použít k provádění operací čtení a zápisu v účtu úložiště. |
+| [Start-AzStorageBlobCopy](https://docs.microsoft.com/powershell/module/az.storage/start-azstorageblobcopy) | Zkopíruje základní virtuální pevný disk snímku do účtu úložiště. |
 
 ## <a name="next-steps"></a>Další kroky
 

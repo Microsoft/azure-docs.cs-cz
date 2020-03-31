@@ -7,7 +7,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: REST API
       expanded: true
@@ -41,7 +41,11 @@
       href: tutorial-visual-search-image-upload.md
     - name: Oříznutí a prohledání oblasti obrázku
       href: tutorial-visual-search-crop-area-results.md
-- name: Ukázky
+    - name: Vyhledání podobných obrázků z předchozích hledání
+      href: tutorial-visual-search-insights-token.md
+    - name: Vytvoření jednostránkové webové aplikace
+      href: tutorial-bing-visual-search-single-page-app.md
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search'
@@ -63,10 +67,6 @@
     - name: Změna velikosti a oříznutí miniatur
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: Hledání obrázků s využitím přehledových tokenů obrázků
-      href: tutorial-visual-search-insights-token.md
-    - name: Vytvoření jednostránkové webové aplikace
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: Referenční informace
   items:
     - name: REST v7 API

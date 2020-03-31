@@ -1,6 +1,6 @@
 ---
-title: Co je stránka pro dodatečné ověření? – Azure AD
-description: Jak se dostat na stránku dodatečného ověření zabezpečení pro dvoustupňové ověřování.
+title: Co je stránka pro dodatečné ověření? - Azure AD
+description: Jak se dostat na stránku Dodatečné ověření zabezpečení pro dvoufaktorové ověření.
 services: active-directory
 author: curtand
 manager: daveba
@@ -11,68 +11,68 @@ ms.topic: overview
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 5a7f0e10b23bf1a541fe83c3112962c38f7e1331
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77062553"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Co je stránka pro dodatečné ověření?
 
-Od někoho z IT nebo od šéfa jste dostali e-mail s informací, že k vašemu účtu organizace přidala další ověřování zabezpečení. Co to tedy znamená? Znamená to, že vaše organizace podniká další kroky k zajištění, že jste tím, za koho se při přihlášení vydáváte. Toto dodatečné ověření, označované také jako dvojúrovňové ověřování, se provádí kombinací uživatelského jména, hesla a mobilního zařízení nebo telefonu.
+Od někoho z IT nebo od šéfa jste dostali e-mail s informací, že k vašemu účtu organizace přidala další ověřování zabezpečení. Co to tedy znamená? Znamená to, že vaše organizace podniká další kroky k zajištění, že jste tím, za koho se při přihlášení vydáváte. Toto dodatečné ověření, známé také jako dvoufaktorové ověření, se provádí kombinací uživatelského jména, hesla a mobilního zařízení nebo telefonu.
 
-Dvojúrovňové ověřování je bezpečnější než heslo, protože spoléhá na dvě formy ověřování: něco, co znáte, a něco, co s vámi máte. Něco, co znáte, je vaše heslo. Něco, co máte u sebe, je telefon nebo zařízení, které běžně nosíte. Dvojúrovňové ověřování může přispět k zastavení škodlivého hackera před tím, než budete mít v úmyslu, protože i když mají heslo, lichá, že nemají vaše zařízení.
+Dvoufaktorové ověřování je bezpečnější než jen heslo, protože se spoléhá na dvě formy ověřování: něco, co víte, a něco, co máte s sebou. Něco, co znáte, je vaše heslo. Něco, co máte u sebe, je telefon nebo zařízení, které běžně nosíte. Dvoufaktorové ověření může pomoci zabránit škodlivým hackerům, aby předstírali, že jste vy, protože i když mají vaše heslo, je pravděpodobné, že nemají také vaše zařízení.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí použít dvojúrovňové ověřování pomocí pracovního nebo školního účtu (například alain@contoso.com). Pokud jste správcem a hledáte informace o tom, jak zapnout dvojúrovňové ověřování pro zaměstnance nebo jiné uživatele, přečtěte si [dokumentaci k ověřování Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/).
+>Tento článek je určen pro uživatele, kteří se pokoušejí použít dvoufaktorové ověření s pracovním nebo školním účtem alain@contoso.com(například). Pokud jste správce, který hledá informace o tom, jak zapnout dvoufaktorové ověřování pro zaměstnance nebo jiné uživatele, přečtěte si [dokumentaci k ověřování služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/).
 
-## <a name="who-decides-if-you-use-this-feature"></a>Kdo se rozhodne, jestli tuto funkci používáte?
+## <a name="who-decides-if-you-use-this-feature"></a>Kdo rozhoduje o tom, zda tuto funkci používáte?
 
-V závislosti na typu účtu může vaše organizace rozhodnout, že je nutné použít dvojúrovňové ověřování, nebo se můžete rozhodnout sami.
+V závislosti na typu účtu může vaše organizace rozhodnout, že musíte použít dvoufaktorové ověření, nebo se můžete rozhodnout sami.
 
-- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (například alain@contoso.com), je to až do vaší organizace bez ohledu na to, jestli musíte použít dvojúrovňové ověřování společně s konkrétními metodami ověřování. Vzhledem k tomu, že vaše organizace rozhodla použít tuto funkci, neexistuje způsob, jak ji individuálně vypnout.
+- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (například ), je na vaší organizaci, alain@contoso.comzda musíte použít dvoufaktorové ověření spolu s konkrétními metodami ověřování. Vzhledem k tomu, že se vaše organizace rozhodla, že musíte tuto funkci používat, neexistuje žádný způsob, jak ji jednotlivě vypnout.
 
-- **Osobní účet Microsoft.** Pro osobní účty Microsoft (například alain@outlook.com) si můžete nastavit dvojúrovňové ověřování. Pokud máte problémy se dvojúrovňovém ověřováním a osobním účet Microsoft, přečtěte si téma [Zapnutí a vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Vzhledem k tomu, že se rozhodnete, jestli chcete tuto funkci používat, můžete ji zapnout nebo vypnout, kdykoli budete chtít.
+- **Osobní účet Microsoft.** Můžete nastavit dvoufaktorové ověření pro své osobní účty Microsoft alain@outlook.com(například). Pokud máte problémy s dvoufaktorovým ověřením a osobním účtem Microsoft, přečtěte si část [Zapnutí nebo vypnutí dvoufaktorového ověření pro svůj účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Protože se rozhodnete, zda chcete tuto funkci používat, můžete ji kdykoli zapnout a vypnout.
 
     >[!Note]
-    >Pokud máte problémy se dvojúrovňovém ověřováním a jedním z vašich osobních účtů Microsoft (například danielle@outlook.com), můžete vyzkoušet návrhy, [jak použít dvoustupňové ověřování pomocí účet Microsoft](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification).
+    >Pokud máte problémy s dvoufaktorovým ověřením a jedním z danielle@outlook.comvašich osobních účtů Microsoft (například), můžete vyzkoušet návrhy na způsob [použití dvoustupňového ověření s účtem Microsoft](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification).
 
-## <a name="access-the-additional-security-verification-page"></a>Přístup k další stránce ověření zabezpečení
+## <a name="access-the-additional-security-verification-page"></a>Přístup na stránku Další ověření zabezpečení
 
-Jakmile vaše organizace zapne a nastaví dvojúrovňové ověřování, zobrazí se výzva, abyste zadali další informace, které vám pomůžou zajistit zabezpečení vašeho účtu.
+Po zapnutí a nastavení dvoufaktorového ověření zobrazí výzva, abyste vám poskytli další informace, které vám pomohou zabezpečit váš účet.
 
-![Další informace vyžadovat výzvu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-initial-prompt.png)
+![Další informace vyžaduje výzvu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-initial-prompt.png)
 
-### <a name="to-access-the-additional-security-verification-page"></a>Přístup k další stránce ověření zabezpečení
+### <a name="to-access-the-additional-security-verification-page"></a>Přístup ke stránce Další ověření zabezpečení
 
-1. V části **Další informace požadované** na příkazovém řádku vyberte **Další** .
+1. V **Next** části **Další informace v požadované** výzvě vyberte Další.
 
-    Zobrazí se stránka **Další ověření zabezpečení** .
+    Zobrazí se stránka **Další ověření zabezpečení.**
 
-2. Na stránce **Další ověření zabezpečení** musíte rozhodnout, kterou ověřovací metodu ověření použít k ověření, na koho jste se přihlásili k pracovnímu nebo školnímu účtu. Můžete vybrat:
+2. Na stránce **Další ověření zabezpečení** se musíte rozhodnout, kterou metodu dvoufaktorového ověření použít k ověření, kdo říkáte, že jste po přihlášení k pracovnímu nebo školnímu účtu. Můžete vybrat:
 
-    | Způsob kontaktu | Popis |
+    | Kontaktní metoda | Popis |
     | --- | --- |
-    | Mobilní aplikace | <ul><li>**Dostanou oznámení k ověření.** Tato možnost vloží oznámení do aplikace ověřovatele na telefonu Smartphone nebo tabletu. Podívejte se na oznámení a pokud je legitimní, vyberte v aplikaci **ověřit** . Vaše práce nebo škola může vyžadovat zadání kódu PIN před ověřením.</li><li>**Použijte ověřovací kód.** V tomto režimu aplikace ověřovatele vygeneruje ověřovací kód, který se aktualizuje každých 30 sekund. Do přihlašovací obrazovky zadejte nejaktuálnější ověřovací kód.<br>Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594).</li></ul> |
-    | Telefon pro ověření | <ul><li>**Telefonní hovor** vede automatizované hlasové volání na telefonní číslo, které zadáte. Přivolejte volání a stisknutím křížku (#) na klávesnici telefonu proveďte ověření.</li><li>**Textová zpráva** končí textovou zprávou obsahující ověřovací kód. Po zobrazení výzvy v textu odpovězte buď na textovou zprávu, nebo zadejte ověřovací kód, který jste zadali do přihlašovacího rozhraní.</li></ul> |
-    | Telefon do kanceláře | Vloží automatizované hlasové volání do telefonního čísla, které zadáte. Přivolejte volání a stisknutím křížku (#) na klávesnici telefonu proveďte ověření. |
+    | Mobilní aplikace | <ul><li>**Dostávat oznámení k ověření.** Tato možnost odešle oznámení do ověřovací aplikace na smartphonu nebo tabletu. Zobrazení oznámení a pokud je legitimní, vyberte **ověřit** v aplikaci. Vaše práce nebo škola může vyžadovat, abyste před ověřením zadali KÓD PIN.</li><li>**Použijte ověřovací kód.** V tomto režimu ověřovací aplikace generuje ověřovací kód, který se aktualizuje každých 30 sekund. Na přihlašovací obrazovce zadejte nejaktuálnější ověřovací kód.<br>Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594).</li></ul> |
+    | Ověřovací telefon | <ul><li>**Telefonní hovor** umožňuje automatické hlasové volání na telefonní číslo, které zadáte. Přijměte hovor a stisknutím klávesy libra (#) na klávesnici telefonu ověřte.</li><li>**Textová zpráva** ukončí textovou zprávu obsahující ověřovací kód. Po zobrazení výzvy v textu odpovíte na textovou zprávu nebo zadejte ověřovací kód poskytnutý do přihlašovacího rozhraní.</li></ul> |
+    | Telefon do kanceláře | Umístí automatický hlasový hovor na telefonní číslo, které zadáte. Přijměte hovor a stisknutím klávesy libra (#) na klávesnici telefonu ověřte. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Po otevření stránky pro **Další ověření zabezpečení** je nutné vybrat a nastavit metodu ověřování dvou faktorů:
+Po přístupu na stránku **Další ověření zabezpečení** musíte vybrat a nastavit dvoufaktorovou metodu ověření:
 
-- [Nastavení mobilního zařízení jako metody ověřování](multi-factor-authentication-setup-phone-number.md)
+- [Nastavení mobilního zařízení jako ověřovací metody](multi-factor-authentication-setup-phone-number.md)
 
-- [Nastavte si telefon do kanceláře jako metodu ověřování.](multi-factor-authentication-setup-office-phone.md)
+- [Nastavení telefonu v kanceláři jako způsobu ověření](multi-factor-authentication-setup-office-phone.md)
 
-- [Nastavení aplikace Microsoft Authenticator jako metody ověřování](multi-factor-authentication-setup-auth-app.md)
+- [Nastavení aplikace Microsoft Authenticator jako metody ověření](multi-factor-authentication-setup-auth-app.md)
 
 ## <a name="related-resources"></a>Související prostředky
 
-- [Správa nastavení dvojúrovňové metody ověřování](multi-factor-authentication-end-user-manage-settings.md)
+- [Správa nastavení dvoufaktorových metod ověření](multi-factor-authentication-end-user-manage-settings.md)
 
 - [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md)
 
-- [Přihlášení Pomocí dvojúrovňového ověřování](multi-factor-authentication-end-user-signin.md)
+- [Přihlášení pomocí dvoufaktorového ověření](multi-factor-authentication-end-user-signin.md)
 
-- [Získat pomoc se dvojúrovňovém ověřováním](multi-factor-authentication-end-user-troubleshoot.md) 
+- [Získání nápovědy k dvoufaktorovému ověření](multi-factor-authentication-end-user-troubleshoot.md) 

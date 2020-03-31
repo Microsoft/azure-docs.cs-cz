@@ -15,6 +15,9 @@
       href: quick-create-powershell.md
     - name: Vytvoření Application Gateway – Azure CLI
       href: quick-create-cli.md
+    - name: Vytvoření Application Gateway – šablona Resource Manageru
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: Kurzy
   items:
     - name: Zabezpečení pomocí protokolu SSL
@@ -47,6 +50,8 @@
           href: application-gateway-components.md
         - name: Přehled konfigurace
           href: configuration-overview.md
+    - name: Podpora vysokého provozu
+      href: high-traffic-support.md
     - name: SKU pro Automatické škálování v2
       href: application-gateway-autoscaling-zone-redundant.md
     - name: Směrování

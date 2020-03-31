@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – vytvoření sady škálování virtuálních počítačů pomocí Azure PowerShell
-description: Začněte s nasazeními a Naučte se, jak rychle vytvořit škálování virtuálního počítače pomocí Azure PowerShell.
+title: Úvodní příručka – vytvoření škálovací sady virtuálních strojů pomocí Azure PowerShellu
+description: S nasazením můžete začít tím, že se naučíte, jak rychle vytvořit škálování virtuálních strojů pomocí Azure PowerShellu.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -9,31 +9,31 @@ ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: cynthn
 ms.openlocfilehash: b3454291a40a1d39b281e28b7d1ebdbcac4020b4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76270893"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
 
 
-Sada škálování virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí Azure PowerShellu.
+Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí Azure PowerShellu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Než budete moct vytvořit sadu škálování, vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Před vytvořením škálovací sady vytvořte skupinu prostředků pomocí [skupiny New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus:*
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```
 
-Teď vytvořte sadu škálování virtuálního počítače pomocí [New-AzVmss](/powershell/module/az.compute/new-azvmss). Následující příklad vytvoří škálovací sadu *myScaleSet*, která používá image platformy *Windows Server 2016 Datacenter*. Automaticky se vytvoří síťové prostředky Azure pro virtuální síť, veřejná IP adresa a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy můžete pro instance virtuálních počítačů v sadě škálování nastavit vlastní přihlašovací údaje pro správu:
+Nyní vytvořte škálovací sadu virtuálních strojů s [novou AzVmss](/powershell/module/az.compute/new-azvmss). Následující příklad vytvoří škálovací sadu *myScaleSet*, která používá image platformy *Windows Server 2016 Datacenter*. Automaticky se vytvoří síťové prostředky Azure pro virtuální síť, veřejná IP adresa a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy můžete nastavit vlastní pověření pro správu pro instance virtuálních počítače ve škálovací sadě:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>Povolení provozu do aplikace
 
- K povolení přístupu k základní webové aplikaci vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Další informace najdete v tématu věnovaném [síti pro Azure Virtual Machine Scale Sets](virtual-machine-scale-sets-networking.md).
+ Chcete-li povolit přístup k základní webové aplikaci, vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Další informace najdete [v tématu Sítě pro škálovací sady virtuálních strojů Azure](virtual-machine-scale-sets-networking.md).
 
  ```azurepowershell-interactive
  # Get information about the scale set
@@ -133,7 +133,7 @@ Update-AzVmss `
  ```
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Pokud chcete vidět svou škálovací sadu v akci, přejděte ve webovém prohlížeči na ukázkovou webovou aplikaci. Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress). V následujícím příkladu se zobrazí IP adresa vytvořená ve skupině prostředků *myResourceGroup* :
+Pokud chcete vidět svou škálovací sadu v akci, přejděte ve webovém prohlížeči na ukázkovou webovou aplikaci. Získejte veřejnou IP adresu vašeho vyrovnávání zatížení pomocí [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress). V následujícím příkladu je zobrazena adresa IP vytvořená ve skupině prostředků *myResourceGroup:*
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
@@ -145,7 +145,7 @@ Zadejte veřejnou IP adresu nástroje pro vyrovnávání zatížení do webovéh
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, sady škálování a všech souvisejících prostředků použít [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , a to následujícím způsobem. Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
+Pokud již není potřeba, můžete použít [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) odebrat skupinu prostředků, škálovací sadu a všechny související prostředky následujícím způsobem. Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

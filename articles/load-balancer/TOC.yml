@@ -28,11 +28,11 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurace přesměrování portů v Load Balanceru
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: powershell-samples.md
 - name: Koncepty
   items:
@@ -64,6 +64,14 @@
       href: load-balancer-security-controls.md
 - name: Postup
   items:
+    - name: Škálovací sady virtuálních počítačů
+      items:
+        - name: Použití s existujícím Azure Load Balancerem – portál
+          href: configure-vm-scale-set-portal.md
+        - name: Použití s existujícím Azure Load Balancerem – PowerShell
+          href: configure-vm-scale-set-powershell.md
+        - name: Použití s existujícím Azure Load Balancerem – CLI
+          href: configure-vm-scale-set-cli.md
     - name: Upgrade nástroje pro vyrovnávání zatížení verze Basic na verzi Standard Load Balancer
       items:
         - name: Upgrade veřejného nástroje pro vyrovnávání zatížení verze Basic
@@ -74,17 +82,17 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Konfigurace odchozích pravidel
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: configure-load-balancer-outbound-powershell.md
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6
       items:
         - name: Azure CLI
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
         - name: Šablona Azure Resource Manageru
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
@@ -93,7 +101,7 @@
       items:
         - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: load-balancer-get-started-ilb-arm-ps.md
         - name: Šablona Azure Resource Manageru
           href: load-balancer-get-started-ilb-arm-template.md
@@ -107,7 +115,7 @@
       items:
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
     - name: Konfigurace portů s vysokou dostupností pro interní nástroj pro vyrovnávání zatížení
       href: load-balancer-configure-ha-ports.md
@@ -129,7 +137,7 @@
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.network
     - name: Azure CLI
       href: /cli/azure/network/lb

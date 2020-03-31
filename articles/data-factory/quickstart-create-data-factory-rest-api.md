@@ -1,5 +1,5 @@
 ---
-title: Vytvoření datové továrny Azure pomocí REST API
+title: Vytvoření azure datové továrny pomocí rozhraní REST API
 description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
 services: data-factory
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
 ms.openlocfilehash: fbfd3e2577655e8cfccd84fffe2971ff509bd2f4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240769"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlý Start: vytvoření datové továrny Azure a kanálu pomocí REST API
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Úvodní příručka: Vytvoření azure datové továrny a kanálu pomocí rozhraní REST API
 
-> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](quickstart-create-data-factory-rest-api.md)
 
@@ -30,21 +30,21 @@ Azure Data Factory je cloudová služba pro integraci dat umožňující vytvá�
 
 Tento rychlý start popisuje použití rozhraní REST API k vytvoření datové továrny Azure. Kanál v této datové továrně kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Předplatné Azure**. Pokud předplatné nemáte, můžete si vytvořit [bezplatný zkušební](https://azure.microsoft.com/pricing/free-trial/) účet.
-* **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** a **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
+* **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** a **jímku**. Pokud nemáte účet úložiště Azure, najdete v článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) pro kroky k jeho vytvoření.
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), můžete použít k připojení k úložišti objektů blob v Azure, k vytvoření kontejneru objektů blob, nahrání vstupního souboru a ověření výstupního souboru.
 * Nainstalujte **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps). Tento rychlý start využívá PowerShell k vyvolání volání rozhraní REST API.
-* **V Azure Active Directory vytvořte aplikaci** s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
+* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID klienta**. Přiřaďte aplikaci roli **Přispěvatel**.
 
 ## <a name="set-global-variables"></a>Nastavení globálních proměnných
 
-1. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu.
+1. Spusťte **prostředí PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu.
 
     Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
 
@@ -56,7 +56,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
     ```powershell
     Get-AzSubscription
     ```
-    Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **SubscriptionId** použijte ID vašeho předplatného Azure:
+    Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte **Id předplatného** ID vašeho předplatného Azure:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
@@ -115,9 +115,9 @@ Je třeba počítat s následujícím:
     ```
     Data factory name "ADFv2QuickStartDataFactory" is not available.
     ```
-* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
-Tady je ukázková odezva:
+Zde je ukázková odezva:
 
 ```json
 {  
@@ -169,7 +169,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Tady je ukázkový výstup:
+Zde je ukázkový výstup:
 
 ```json
 {  
@@ -190,9 +190,9 @@ Tady je ukázkový výstup:
 ```
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-Nadefinujete datovou sadu, která představuje data ke kopírování ze zdroje do jímky. V tomto příkladu vytvoříte dvě datové sady: InputDataset a OutputDataset. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (Input) a soubor (EMP. txt) obsahující zdrojová data. Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (výstup) a soubor, do kterého se data zkopírují.
+Definujete datovou sadu, která představuje data pro kopírování ze zdroje do jímky. V tomto příkladu vytvoříte dvě datové sady: InputDataset a OutputDataset. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob (adftutorial), složku (input) a soubor (emp.txt) obsahující zdrojová data. Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob (adftutorial), složku (output) a soubor, do kterého se data kopírují.
 
-**Vytvořit InputDataset**
+**Vytvořit sadu InputDataset**
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/InputDataset?api-version=${apiVersion}"
@@ -223,7 +223,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Tady je ukázkový výstup:
+Zde je ukázkový výstup:
 
 ```json
 {  
@@ -246,7 +246,7 @@ Tady je ukázkový výstup:
     "etag":"07011c57-0000-0100-0000-5d6e14b40000"
 }
 ```
-**Vytvořit OutputDataset**
+**Vytvořit výstupní sadu dat**
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/OutputDataset?api-version=${apiVersion}"
@@ -276,7 +276,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Tady je ukázkový výstup:
+Zde je ukázkový výstup:
 
 ```json
 {  
@@ -301,7 +301,7 @@ Tady je ukázkový výstup:
 ```
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
-V tomto příkladu tento kanál obsahuje jednu aktivitu a přebírá dva parametry – cestu ke vstupnímu objektu blob a cestu k výstupnímu objektu blob. Hodnoty pro tyto parametry se nastaví při aktivaci nebo spuštění kanálu. Aktivita kopírování odkazuje na stejnou datovou sadu objektů blob, kterou jste vytvořili v předchozím kroku jako vstup a výstup. Když se tato datová sada použije jako vstupní, zadá se vstupní cesta. A když se tato datová sada použije jako výstupní, zadá se výstupní cesta.
+V tomto příkladu tento kanál obsahuje jednu aktivitu a přebírá dva parametry – vstupní cestu objektů blob a výstupní cestu objektů blob. Hodnoty pro tyto parametry se nastaví při aktivaci nebo spuštění kanálu. Aktivita kopírování odkazuje na stejnou datovou sadu objektů blob, kterou jste vytvořili v předchozím kroku jako vstup a výstup. Když se tato datová sada použije jako vstupní, zadá se vstupní cesta. A když se tato datová sada použije jako výstupní, zadá se výstupní cesta.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
@@ -360,7 +360,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Tady je ukázkový výstup:
+Zde je ukázkový výstup:
 
 ```json
 {  
@@ -383,7 +383,7 @@ Tady je ukázkový výstup:
 
 V tomto kroku jako hodnoty parametrů **inputPath** a **outputPath** zadaných v kanálu nastavíte skutečné cesty k objektům blob zdroje a jímky a aktivujete spuštění kanálu. ID spuštění kanálu vrácené v textu odpovědi se použije později v rozhraní API pro monitorování.
 
-Než soubor uložíte, hodnoty položek **inputPath** a **outputPath** nahraďte cestami k objektům blob zdroje a jímky, ze kterých a do kterých se data mají kopírovat.
+Nahraďte hodnotu **inputPath** a **outputPath** cestou zdrojového objektu blob a jímky, ze kterých chcete kopírovat data z a do před uložením souboru.
 
 
 ```powershell
@@ -393,7 +393,7 @@ $response | ConvertTo-Json
 $runId = $response.runId
 ```
 
-Tady je ukázkový výstup:
+Zde je ukázkový výstup:
 
 ```json
 {  
@@ -421,7 +421,7 @@ Tady je ukázkový výstup:
     }
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     {  
@@ -460,7 +460,7 @@ Tady je ukázkový výstup:
     $response = Invoke-RestMethod -Method POST -Uri $request -Header $authHeader
     $response | ConvertTo-Json
     ```
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     {  
@@ -491,7 +491,7 @@ Tady je ukázkový výstup:
     ```
 ## <a name="verify-the-output"></a>Ověření výstupu
 
-Pomocí nástroje Azure Storage Explorer ověřte, zda je soubor zkopírován do "outputPath" z "inputPath", jak jste určili při vytváření spuštění kanálu.
+Pomocí Průzkumníka úložiště Azure zkontrolujte, zda se soubor zkopíruje do "outputPath" z "inputPath", jak jste zadali při vytváření spuštění kanálu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete odstranit [skupinu prostředků Azure](../azure-resource-manager/management/overview.md), což zahrnuje odstranění všech prostředků v této skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze datovou továrnu, kterou jste vytvořili v tomto kurzu.
@@ -508,4 +508,4 @@ Remove-AzDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<Name
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

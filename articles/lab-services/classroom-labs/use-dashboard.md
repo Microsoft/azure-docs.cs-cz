@@ -1,6 +1,6 @@
 ---
-title: Použití řídicího panelu pro prostředí učebny v Azure Lab Services | Microsoft Docs
-description: Naučte se používat řídicí panel pro prostředí učebny v Azure Lab Services.
+title: Použití řídicího panelu pro testovací prostředí učebny ve službě Azure Lab Services | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak používat řídicí panel pro testovací prostředí učebny ve službě Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,59 +14,59 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 363e5705e9ccf4aa207ff7e5cafb615bc01bc7d3
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538936"
 ---
-# <a name="dashboard-for-classroom-labs"></a>Řídicí panel pro učebn Labs
-Tento článek popisuje zobrazení řídicího panelu pro prostředí učebny v Azure Lab Services. 
+# <a name="dashboard-for-classroom-labs"></a>Řídicí panel pro laboratoře ve třídě
+Tento článek popisuje zobrazení řídicího panelu testovacího prostředí učebny ve službě Azure Lab Services. 
 
 ![Řídicí panel](../media/use-dashboard/dashboard.png)
 
-## <a name="costs-and-billing-tile"></a>Dlaždice náklady a fakturace
-Tato dlaždice nabízí následující podrobné informace odhadu nákladů:
+## <a name="costs-and-billing-tile"></a>Dlaždice nákladů a fakturace
+Tato dlaždice obsahuje následující podrobnosti o odhadu nákladů:
 
 | Nastavení | Hodnota | 
 | ------- | ----- | 
-| Hodiny kvóty | Maximální počet hodin, po které může uživatel virtuální počítač použít mimo naplánovanou dobu. |
-| Naplánované hodiny | Hodiny, které budou vynaloženy na základě plánu nastaveného v testovacím prostředí. Tato hodnota je k dispozici pouze v případě, že je pro všechny události plánu nastaveno datum od/k. |
-| Hodiny/uživatel | Součet hodin a naplánovaných hodin v kvótě. |
-| Maximální počet uživatelů | Maximální počet uživatelů v testovacím prostředí na základě všech virtuálních počítačů, které mají být vyžádány. |
+| Kvótové hodiny | Maximální počet hodin, po které může uživatel virtuální ho disponizovat mimo naplánované hodiny. |
+| Plánované hodiny | Hodiny, které budou vynaloženy na základě plánu nastaveného v testovacím prostředí. Tato hodnota je k dispozici pouze v případě, že je nastaveno datum od/do na všech událostech plánu. |
+| Hodiny/uživatel | Součet hodin kvót a plánovaných hodin. |
+| Maximální počet uživatelů | Maximální počet uživatelů v testovacím prostředí na základě všech virtuálních počítačů, které mají být nárokovány. |
 | Hodiny x uživatelů | Hodiny/uživatel vynásobený počtem uživatelů. |
-| Upravená kvóta | Součet kvótových hodin přidaných pro konkrétní uživatele. |
-| Celkový počet hodin * $ za hodinu | Cena za hodinu na základě vybrané velikosti virtuálního počítače Tato volba je založena na běžné platbě za cenu. |
+| Upravená kvóta | Součet hodin kvóty přidaných konkrétním uživatelům. |
+| Celkový počet hodin * $/hodina | Náklady za hodinu na základě vybrané velikosti virtuálního počítače. To je založeno na pravidelné mzdy, jak jdete cenu. |
 | Celkové odhadované náklady | Toto je maximální cena pro toto testovací prostředí na základě aktuálního nastavení. |
 
-## <a name="template-tile"></a>Dlaždice šablony
-Na této dlaždici vidíte následující informace:
+## <a name="template-tile"></a>Dlaždice Šablony
+Na této dlaždici se zobrazí následující informace:
 
-- Datum, kdy byla šablona vytvořena 
-- Datum, kdy byla šablona naposledy publikována 
+- Datum vytvoření šablony 
+- Datum posledního publikování šablony 
 
-Má také odkaz pro přechod na stránku **šablony** , kde můžete [spravovat virtuální počítač šablony](how-to-create-manage-template.md) pro třídu. 
+Má také odkaz na přechod na stránku **Šablona,** kde můžete [spravovat virtuální počítače šablony](how-to-create-manage-template.md) pro třídu. 
 
-## <a name="virtual-machine-pool-tile"></a>Dlaždice fondu virtuálních počítačů
+## <a name="virtual-machine-pool-tile"></a>Dlaždice fondu virtuálních strojů
 
-Na této dlaždici vidíte následující informace:
+Na této dlaždici se zobrazí následující informace:
 
 - Počet virtuálních počítačů, které jsou přiřazeny studentům (uživatelům)
 - Počet virtuálních počítačů, které ještě nebyly přiřazeny studentům
 
-Obsahuje taky odkaz pro přechod na stránku **fondu virtuálních počítačů** , kde můžete [Spravovat fond virtuálních počítačů](how-to-set-virtual-machine-passwords.md) v testovacím prostředí. 
+Má také odkaz na přechod na stránku **fondu virtuálních počítačů,** kde můžete [spravovat fond virtuálních počítačů](how-to-set-virtual-machine-passwords.md) v testovacím prostředí. 
 
-## <a name="users-tile"></a>Dlaždice uživatelé
+## <a name="users-tile"></a>Dlaždice Uživatelé
 
-Na této dlaždici vidíte následující informace:
+Na této dlaždici se zobrazí následující informace:
 
-- Počet uživatelů registrovaných ve třídě
-- Počet uživatelů, kteří jsou přidáni do testovacího prostředí, ale nejsou zaregistrovaní ve třídě 
+- Počet uživatelů registrovaných do třídy
+- Počet uživatelů, kteří jsou přidáni do testovacího prostředí, ale nejsou registrováni do třídy 
 
-Obsahuje také odkaz pro přechod na stránku **Uživatelé** , kde můžete [Spravovat uživatele](how-to-configure-student-usage.md) pro testovací prostředí. 
+Má také odkaz pro přechod na stránku **Uživatelé,** kde můžete [spravovat uživatele](how-to-configure-student-usage.md) pro testovací prostředí. 
 
-## <a name="schedules-tile"></a>Dlaždice plány
-Na dlaždici vidíte aktuální naplánované události pro testovací prostředí. Má také odkaz pro přechod na stránku **plánu** , kde můžete [vytvářet a spravovat plány](how-to-create-schedules.md). Na dlaždici se zobrazí podrobnosti jenom pro dvě naplánované události a počet zbývajících naplánovaných událostí pro testovací prostředí. 
+## <a name="schedules-tile"></a>Dlaždice Plány
+Na dlaždici se zobrazí aktuální naplánované události pro testovací prostředí. Obsahuje také odkaz na přechod na stránku **Plán,** kde můžete [vytvářet a spravovat plány](how-to-create-schedules.md). Na dlaždici se zobrazí podrobnosti pouze o dvou naplánovaných událostech a o počtu zbývajících naplánovaných událostí pro testovací prostředí. 
 
 ![Naplánované události](../media/use-dashboard/scheduled-events.png)
 

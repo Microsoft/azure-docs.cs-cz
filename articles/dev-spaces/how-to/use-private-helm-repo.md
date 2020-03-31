@@ -5,23 +5,23 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 08/22/2019
 ms.topic: conceptual
-description: Využijte soukromé úložiště Helm v prostoru pro vývoj v Azure.
+description: Použijte privátní úložiště Helm v Azure Dev Space.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery, Helm
 manager: gwallace
-ms.openlocfilehash: 6036184c43242f2ec2279438950b26dfb53e9bb4
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538665"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240473"
 ---
-# <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Použití privátního úložiště Helm v Azure Dev Spaces
+# <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Použití soukromého úložiště Helm v Azure Dev Spaces
 
-[Helm][helm] je správce balíčků pro Kuberentes. Helm používá k zabalení závislosti formát [grafu][helm-chart] . Grafy Helm se ukládají v úložišti, které může být veřejné nebo soukromé. Azure Dev Spaces načte grafy Helm z veřejných úložišť při spuštění aplikace. V případech, kdy je úložiště Helm soukromé nebo Azure Dev Spaces k němu nemá přístup, můžete přidat graf z tohoto úložiště přímo do aplikace. Přidáním grafu můžete přímo Azure Dev Spaces spustit aplikaci, aniž byste museli přistupovat k privátnímu úložišti Helm.
+[Helm][helm] je správce balíčků pro Kubernetes. Helm používá formát [grafu][helm-chart] k balení závislostí. Grafy helmu jsou uloženy v úložišti, které může být veřejné nebo soukromé. Azure Dev Spaces načte grafy helmu pouze z veřejných úložišť při spuštění aplikace. V případech, kdy je úložiště Helm soukromé nebo azure dev spaces k němu nemají přístup, můžete přidat graf z tohoto úložiště přímo do vaší aplikace. Přidání grafu přímo umožňuje Azure Dev Spaces spustit vaši aplikaci bez nutnosti přístupu k privátní úložiště Helm.
 
-## <a name="add-the-private-helm-repository-to-your-local-machine"></a>Přidat úložiště privátního Helm do místního počítače
+## <a name="add-the-private-helm-repository-to-your-local-machine"></a>Přidání soukromého úložiště Helm do místního počítače
 
-K získání přístupu k privátnímu úložišti Helm z místního počítače použijte [Helm úložiště přidat][helm-repo-add] a [Helm aktualizace úložiště][helm-repo-update] .
+Použijte [helm repo přidat][helm-repo-add] a helm [repo aktualizace][helm-repo-update] pro přístup k soukromému úložiště Helm z místního počítače.
 
 ```cmd
 helm repo add privateRepoName http://example.com/helm/v1/repo --username user --password 5tr0ng_P@ssw0rd!
@@ -30,16 +30,16 @@ helm repo update
 
 ## <a name="add-the-chart-to-your-application"></a>Přidání grafu do aplikace
 
-Přejděte do adresáře projektu a spusťte `azds prep`.
+Přejděte do adresáře projektu `azds prep`a spusťte aplikaci .
 
 ```cmd
 azds prep --enable-ingress
 ```
 
 > [!TIP]
-> Příkaz `prep` se pokusí vygenerovat [graf souboru Dockerfile a Helm](../how-dev-spaces-works.md#prepare-your-code) pro váš projekt. Azure Dev Spaces používá tyto soubory k sestavení a spuštění kódu, ale můžete upravit tyto soubory, pokud chcete změnit způsob sestavení a spuštění projektu.
+> Příkaz `prep` se pokusí vygenerovat [Dockerfile a Helm graf](../how-dev-spaces-works-prep.md#prepare-your-code) pro váš projekt. Azure Dev Spaces používá tyto soubory k sestavení a spuštění kódu, ale můžete upravit tyto soubory, pokud chcete změnit způsob sestavení a spuštění projektu.
 
-Pomocí grafu v adresáři grafu vaší aplikace vytvořte soubor [. yaml požadavků][helm-requirements] . Například pokud má vaše aplikace název *app1*, měli byste vytvořit *grafy/app1/požadavky. yaml*.
+Vytvořte soubor [requirements.yaml][helm-requirements] s grafem v adresáři grafu aplikace. Například pokud vaše aplikace s názvem *app1*, byste vytvořit *charts/app1/requirements.yaml*.
 
 ```yaml
 dependencies:
@@ -48,19 +48,19 @@ dependencies:
       repository:  http://example.com/helm/v1/repo
 ```
 
-Přejděte do adresáře grafu vaší aplikace a pomocí [aktualizace závislostí Helm][helm-dependency-update] aktualizujte závislosti Helm pro vaši aplikaci a stáhněte graf z privátního úložiště.
+Přejděte do adresáře grafu vaší aplikace a pomocí [aktualizace závislostí helmu][helm-dependency-update] aktualizujte závislosti helmu pro vaši aplikaci a stáhněte graf z privátního úložiště.
 
 ```cmd
 helm dependency update
 ```
 
-Ověřte, že se do adresáře grafů vaší aplikace přidal podadresář *grafů* se souborem *tgz* . Například *grafy/app1/grafy/Mychart-0.1.0. tgz*.
+Ověřte, zda byl do adresáře grafu aplikace přidán podadresář *grafů* se souborem *tgz.* Například *grafy/app1/charts/mychart-0.1.0.tgz*.
 
-Graf z privátního úložiště Helm se stáhl a přidal do projektu. Odeberte soubor *požadavky. yaml* , aby se vývojové prostory nepokusily aktualizovat tuto závislost.
+Graf z vašeho soukromého úložiště Helm byl stažen a přidán do vašeho projektu. Odeberte soubor *requirements.yaml,* aby se dev Spaces nepokusili tuto závislost aktualizovat.
 
 ## <a name="run-your-application"></a>Spusťte aplikaci
 
-Přejděte do kořenového adresáře vašeho projektu a spusťte `azds up`, abyste ověřili, že se vaše aplikace úspěšně spouštěla ve vývojovém prostoru.
+Přejděte do kořenového adresáře `azds up` projektu a spusťte a ověřte, zda se aplikace úspěšně spustí v prostoru pro vývoj.
 
 ```cmd
 $ azds up
@@ -77,7 +77,7 @@ Service 'app1' port 80 (http) is available at http://localhost:54256
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [Helm a o tom, jak funguje][helm].
+Přečtěte si více o [Helm a jak to funguje][helm].
 
 [helm]: https://docs.helm.sh
 [helm-chart]: https://helm.sh/docs/topics/charts/

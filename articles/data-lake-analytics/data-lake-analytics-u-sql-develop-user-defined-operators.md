@@ -1,6 +1,6 @@
 ---
 title: Vývoj uživatelem definovaných operátorů U-SQL – Azure Data Lake Analytics
-description: Naučte se vyvíjet uživatelsky definované operátory, které se použijí a znovu použijí v úlohách Azure Data Lake Analytics.
+description: Zjistěte, jak vyvinout uživatelem definované operátory, které se mají používat a znovu používat v azure data lake analytics úlohy.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,22 +10,22 @@ ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: b2d1293b06b4d8791138ed666bc3cb4abe3adf40
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71316544"
 ---
-# <a name="develop-u-sql-user-defined-operators-udos"></a>Vývoj uživatelem definovaných operátorů U-SQL (Udo)
-Tento článek popisuje, jak vyvíjet uživatelsky definované operátory pro zpracování dat v úloze U-SQL.
+# <a name="develop-u-sql-user-defined-operators-udos"></a>Vývoj uživatelem definovaných operátorů U-SQL (UDO)
+Tento článek popisuje, jak vyvíjet uživatelem definované operátory pro zpracování dat v úloze U SQL.
 
 ## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>Definování a použití uživatelem definovaného operátoru v U-SQL
 **Vytvoření a odeslání úlohy U-SQL**
 
-1. V aplikaci Visual Studio vyberte **soubor > nový projekt > > U-SQL**.
-2. Klikněte na **OK**. Visual Studio vytvoří řešení se souborem Script. usql.
-3. Z **Průzkumník řešení**rozbalte položku Script. usql a dvakrát klikněte na položku **script.usql.cs**.
-4. Do souboru vložte následující kód:
+1. Ve Visual Studiu vyberte **Soubor > Nový > projekt > U-SQL Project**.
+2. Klikněte na tlačítko **OK**. Visual Studio vytvoří řešení se souborem Script.usql.
+3. V **Průzkumníku řešení**rozbalte soubor Script.usql a poklepejte na **Script.usql.cs**.
+4. Vložte do souboru následující kód:
 
         using Microsoft.Analytics.Interfaces;
         using System.Collections.Generic;
@@ -82,7 +82,7 @@ Tento článek popisuje, jak vyvíjet uživatelsky definované operátory pro zp
                 }
             }
         }
-6. Otevřete **skript. usql**a vložte následující skript U-SQL:
+6. Otevřete **soubor Script.usql**a vložte následující skript U-SQL:
 
         @drivers =
             EXTRACT UserID      string,
@@ -114,15 +114,15 @@ Tento článek popisuje, jak vyvíjet uživatelsky definované operátory pro zp
 7. Zadejte účet Data Lake Analytics, Databázi a Schéma.
 8. V **Průzkumníku řešení** klikněte pravým tlačítkem na položku **Script.usql** a pak klikněte na možnost **Sestavit skript**.
 9. V **Průzkumníku řešení** klikněte pravým tlačítkem na položku **Script.usql** a pak klikněte na položku **Odeslat skript**.
-10. Pokud jste se nepřipojili k předplatnému Azure, budete vyzváni k zadání přihlašovacích údajů k účtu Azure.
-11. Klikněte na **Submit** (Odeslat). Výsledky odeslání a odkaz na úlohu jsou k dispozici v okně výsledků po dokončení odeslání.
-12. Kliknutím na tlačítko **aktualizovat** zobrazíte nejnovější stav úlohy a aktualizujete obrazovku.
+10. Pokud jste se k předplatnému Azure nepřipojili, budete vyzváni k zadání přihlašovacích údajů k účtu Azure.
+11. Klepněte na **tlačítko Odeslat**. Výsledky odeslání a odkaz na úlohu jsou k dispozici v okně Výsledky po dokončení odeslání.
+12. Kliknutím na tlačítko **Aktualizovat** zobrazíte nejnovější stav úlohy a aktualizujte obrazovku.
 
-**Zobrazení výstupu**
+**Chcete-li zobrazit výstup**
 
-1. V **Průzkumník serveru**rozbalte položku **Azure**, rozbalte položku **Data Lake Analytics**, rozbalte účet služby Data Lake Analytics, rozbalte položku **účty úložiště**, klikněte pravým tlačítkem na výchozí úložiště a pak klikněte na tlačítko **Průzkumník**.
-2. Rozbalte položku ukázky, rozbalte položku výstupy a dvakrát klikněte na položku **ovladače. csv**.
+1. V **Průzkumníkovi serveru**rozbalte **Azure**, rozbalte Data **Lake Analytics**, rozbalte účet Data Lake Analytics, **rozbalte účty úložiště**, klikněte pravým tlačítkem myši na výchozí úložiště a potom klikněte na **Explorer**.
+2. Rozbalte ukázky, rozbalte výstupy a poklepejte na **položku Drivers.csv**.
 
-## <a name="see-also"></a>Viz také:
-* [Rozšíření výrazů U-SQL s uživatelským kódem](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
-* [Použití Data Lake nástrojů pro Visual Studio pro vývoj aplikací U-SQL](data-lake-analytics-data-lake-tools-get-started.md)
+## <a name="see-also"></a>Viz také
+* [Rozšíření výrazů U-SQL pomocí uživatelského kódu](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
+* [Použití nástrojů data lake pro Visual Studio pro vývoj aplikací U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

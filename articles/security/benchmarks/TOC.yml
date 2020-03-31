@@ -32,11 +32,23 @@
   items:
     - name: Přehled standardních hodnot zabezpečení Azure
       href: security-baselines-overview.md
+    - name: Standardní hodnoty zabezpečení pro Azure Cache for Redis
+      href: ../../azure-cache-for-redis/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Batch
       href: ../../batch/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Key Vault
-      href: ../../key-vault/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Container Registry
+      href: ../../container-registry/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Cosmos DB
+      href: ../../cosmos-db/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro HDInsight
       href: ../../hdinsight/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Key Vault
+      href: ../../key-vault/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro MariaDB
+      href: ../../mariadb/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro MySQL
+      href: ../../mysql/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro PostgreSQL
+      href: ../../postgresql/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro SQL Database
       href: ../../sql-database/security-baseline.md

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: vytvoření Load Balancer-Azure PowerShell'
+title: 'Úvodní příručka: Vytvoření nástrojů pro vyrovnávání zatížení – Azure PowerShell'
 titleSuffix: Azure Load Balancer
-description: V tomto rychlém startu se dozvíte, jak vytvořit Load Balancer pomocí Azure PowerShell
+description: Tento úvodní příručka ukazuje, jak vytvořit balancer zatížení pomocí Azure PowerShellu
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: f169d7694199e496e472a6c32312cf6782270378
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470407"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80247210"
 ---
-# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Rychlý Start: vytvoření Load Balancer pomocí Azure PowerShell
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Úvodní příručka: Vytvoření nástrojů pro vyrovnávání zatížení pomocí Azure PowerShellu
 
-Tento rychlý start ukazuje, jak pomocí Azure PowerShellu vytvořit Load Balancer úrovně Standard. K otestování nástroje pro vyrovnávání zatížení nasadíte tři virtuální počítače s Windows serverem a vyrovnáváte zatížení webové aplikace mezi virtuálními počítači. Další informace o Load Balanceru úrovně Standard najdete v tématu [Co je Load Balancer úrovně Standard](load-balancer-standard-overview.md).
+Tento rychlý start ukazuje, jak pomocí Azure PowerShellu vytvořit Load Balancer úrovně Standard. Chcete-li otestovat nástroj pro vyrovnávání zatížení, nasadíte tři virtuální počítače (VM) se systémem Windows server a vyrovnávání zatížení webové aplikace mezi virtuálními počítači. Další informace o Load Balanceru úrovně Standard najdete v tématu [Co je Load Balancer úrovně Standard](load-balancer-standard-overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použ
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Než budete moct vytvořit nástroj pro vyrovnávání zatížení, musíte vytvořit skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSLB* v umístění *EastUS* :
+Před vytvořením správce zatížení je nutné vytvořit skupinu prostředků s [new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSLB* v umístění *EastUS:*
 
 ```azurepowershell
 $rgName='MyResourceGroupSLB'
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Následující příklad vytvoří zónu redundantní veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupSLB* :
+Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu s [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Následující příklad vytvoří zónovou redundantní veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupSLB:*
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,7 +56,7 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-K vytvoření veřejné IP adresy oblasti v zóně 1 použijte následující:
+Chcete-li vytvořit zonální veřejnou IP adresu v zóně 1, použijte následující:
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -64,30 +64,30 @@ $publicIp = New-AzPublicIpAddress `
  -Name 'myPublicIP' `
  -Location $location `
  -AllocationMethod static `
- -SKU Standard
+ -SKU Standard `
  -zone 1
 ```
 
-K vytvoření základní veřejné IP adresy použijte ```-SKU Basic```. Základní veřejné IP adresy nejsou kompatibilní se službou Load Balancer **úrovně Standard** . Microsoft doporučuje používat pro produkční úlohy **Standard** .
+Slouží ```-SKU Basic``` k vytvoření základní veřejné IP adresy. Základní veřejné IP adresy nejsou kompatibilní se **standardním** vyvažovačem zatížení. Společnost Microsoft doporučuje používat **standard** pro produkční úlohy.
 
 > [!IMPORTANT]
-> Zbytek v tomto rychlém startu předpokládá, že se během výše uvedeného procesu výběru skladové položky vybere **standardní** SKU.
+> Zbytek tohoto rychlého startu předpokládá, že **standardní** skladová položka je vybrána během výše uvedeného procesu výběru skladové položky.
 
-## <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
+## <a name="create-load-balancer"></a>Vytvořit balancer zatížení
 
-V této části nakonfigurujete front-end IP adresu a fond back-end adres pro nástroj pro vyrovnávání zatížení a potom vytvoříte Standard Load Balancer.
+V této části nakonfigurujete front-endIP a back-endový fond adres pro vyrovnávání zatížení a pak vytvoříte standardní vyrovnávání zatížení.
 
 ### <a name="create-frontend-ip"></a>Vytvoření front-endové IP adresy
 
-Vytvořte front-end IP adresu pomocí [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Následující příklad vytvoří konfiguraci front-end IP adresy s názvem *myFrontEnd* a připojí *myPublicIP* adresu:
+Vytvořte front-end IP s [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Následující příklad vytvoří front-endovou konfiguraci IP s názvem *myFrontEnd* a připojí adresu *myPublicIP:*
 
 ```azurepowershell
 $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEndPool' -PublicIpAddress $publicIp
 ```
 
-### <a name="configure-back-end-address-pool"></a>Konfigurovat fond back-endu adres
+### <a name="configure-back-end-address-pool"></a>Konfigurace fondu adres back-end
 
-Vytvořte fond back-endové adresy pomocí [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). Virtuální počítače se připojují k tomuto fondu back-end ve zbývajících krocích. Následující příklad vytvoří fond back-end adres s názvem *myBackEndPool*:
+Vytvořte back-end ový fond adres pomocí [new-azloadbalancerbackendaddressconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). Virtuální virtuální chod připojit k tomuto fondu back-end ve zbývajících krocích. Následující příklad vytvoří fond back-endových adres s názvem *myBackEndPool*:
 
 ```azurepowershell-interactive
 $bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
@@ -98,7 +98,7 @@ Pokud chcete nástroji pro vyrovnávání zatížení povolit monitorování sta
 
 Následující příklad vytvoří sondu protokolu TCP. Pokud potřebujete jemněji odstupňované kontroly stavu, můžete vytvářet i vlastní sondy protokolu HTTP. Pokud použijete vlastní sondu protokolu HTTP, musíte vytvořit stránku kontroly stavu, například *healthcheck.aspx*. Aby nástroj pro vyrovnávání zatížení udržel hostitele v oběhu, musí sonda vracet odpověď **HTTP 200 OK**.
 
-K vytvoření sondy stavu protokolu TCP použijte [příkaz Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig). Následující příklad vytvoří sondu stavu s názvem *myHealthProbe* monitorující jednotlivé virtuální počítače na portu *HTTP* *80*:
+Chcete-li vytvořit sondu stavu TCP, použijte [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig). Následující příklad vytvoří sondu stavu s názvem *myHealthProbe* monitorující jednotlivé virtuální počítače na portu *HTTP**80*:
 
 ```azurepowershell
 $probe = New-AzLoadBalancerProbeConfig `
@@ -108,9 +108,9 @@ $probe = New-AzLoadBalancerProbeConfig `
 ```
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
-Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Abyste zajistili, že provoz budou přijímat pouze virtuální počítače, které jsou v pořádku, nadefinujte také sondu stavu, která se má použít.
+Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Abyste zajistili, že provoz budou přijímat pouze virtuální počítače, které jsou v pořádku, nadefinujete také sondu stavu, která se má použít.
 
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Následující příklad vytvoří pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRule* a nastaví vyrovnávání provozu na portu *TCP* *80*:
+Vytvořte pravidlo pro vyrovnávání zatížení pomocí [doplňku Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Následující příklad vytvoří pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRule* a nastaví vyrovnávání provozu na portu *TCP**80*:
 
 ```azurepowershell
 $rule = New-AzLoadBalancerRuleConfig `
@@ -122,7 +122,7 @@ $rule = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>Vytvoření pravidel překladu adres
 
-Vytvořte pravidla překladu adres (NAT) pomocí [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Následující příklad vytvoří pravidla překladu adres (NAT) s názvem *myLoadBalancerRDP1* a *myLoadBalancerRDP2* , aby povolovala připojení RDP k back-end serverům s porty 4221 a 4222:
+Vytvořte pravidla NAT pomocí [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Následující příklad vytvoří pravidla NAT s názvem *myLoadBalancerRDP1* a *myLoadBalancerRDP2,* která umožňují připojení RDP k serverům back-end s portem 4221 a 4222:
 
 ```azurepowershell
 $natrule1 = New-AzLoadBalancerInboundNatRuleConfig `
@@ -148,7 +148,7 @@ $natrule3 = New-AzLoadBalancerInboundNatRuleConfig `
 
 ### <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Vytvořte Standard Load Balancer pomocí [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří veřejné Standard Load Balancer s názvem myLoadBalancer pomocí konfigurace front-end IP adresy, fondu back-endu, sondy stavu, pravidla vyrovnávání zatížení a pravidel NAT, která jste vytvořili v předchozích krocích:
+Vytvořte standardní vyvažovač zatížení s [new-azloadbalancer](/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří veřejný standardní nástroj pro vyrovnávání zatížení s názvem myLoadBalancer pomocí konfigurace front-endu IP, back-endového fondu, sondy stavu, pravidla vyrovnávání zatížení a pravidel NAT, které jste vytvořili v předchozích krocích:
 
 ```azurepowershell
 $lb = New-AzLoadBalancer `
@@ -163,16 +163,16 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
-K vytvoření základního Load Balancer použijte ```-SKU Basic```. Microsoft doporučuje používat pro produkční úlohy Standard.
+Slouží ```-SKU Basic``` k vytvoření základního vytápětku zatížení. Společnost Microsoft doporučuje používat standard pro produkční úlohy.
 
 > [!IMPORTANT]
-> Zbytek v tomto rychlém startu předpokládá, že se během výše uvedeného procesu výběru skladové položky vybere **standardní** SKU.
+> Zbytek tohoto rychlého startu předpokládá, že **standardní** skladová položka je vybrána během výše uvedeného procesu výběru skladové položky.
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj nástroj pro vyrovnávání zatížení, musíte vytvořit podpůrné síťové prostředky – virtuální síť a virtuální síťové karty. 
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVnet* s podsítí *mySubnet*:
+Vytvořte virtuální síť s [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVnet* s podsítí *mySubnet*:
 
 ```azurepowershell
 # Create subnet config
@@ -188,9 +188,9 @@ $vnet = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $subnetConfig
 ```
-### <a name="create-public-ip-addresses-for-the-vms"></a>Vytvoření veřejných IP adres pro virtuální počítače
+### <a name="create-public-ip-addresses-for-the-vms"></a>Vytvoření veřejných IP adres pro virtuální hod.
 
-Pro přístup k virtuálním počítačům pomocí připojení RDP budete potřebovat veřejnou IP adresu pro virtuální počítače. Vzhledem k tomu, že se v tomto scénáři používá Standard Load Balancer, musíte pro virtuální počítače vytvořit standardní veřejné IP adresy pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress).
+Chcete-li získat přístup k virtuálním počítačům pomocí připojení RDP, potřebujete veřejnou IP adresu pro virtuální počítače. Vzhledem k tomu, že standardní vyrovnávání zatížení se používá v tomto scénáři, je nutné vytvořit standardní veřejné IP adresy pro virtuální počítače s [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress).
 
 ```azurepowershell
 $RdpPublicIP_1 = New-AzPublicIpAddress `
@@ -218,13 +218,13 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
 
 ```
 
-Pomocí ```-SKU Basic``` můžete vytvořit základní veřejné IP adresy. Microsoft doporučuje používat pro produkční úlohy Standard.
+Slouží ```-SKU Basic``` k vytvoření základních veřejných IP adresy. Společnost Microsoft doporučuje používat standard pro produkční úlohy.
 
 ### <a name="create-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení k vaší virtuální síti.
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Vytvoření pravidla skupiny zabezpečení sítě pro port 3389
-Vytvořte pravidlo skupiny zabezpečení sítě, které povolí připojení RDP přes port 3389 s [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+Vytvořte pravidlo skupiny zabezpečení sítě, které umožní připojení protokolu RDP prostřednictvím portu 3389 pomocí [programu New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
 ```azurepowershell
 
@@ -235,7 +235,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig -Name 'myNetworkSecurityGroupRuleRDP' -
 ```
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Vytvoření pravidla skupiny zabezpečení sítě pro port 80
-Vytvořte pravidlo skupiny zabezpečení sítě, které povolí příchozí připojení přes port 80 s [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+Vytvořte pravidlo skupiny zabezpečení sítě, které umožní příchozí připojení přes port 80 s [programem New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
 ```azurepowershell
 $rule2 = New-AzNetworkSecurityRuleConfig -Name 'myNetworkSecurityGroupRuleHTTP' -Description 'Allow HTTP' `
@@ -246,7 +246,7 @@ $rule2 = New-AzNetworkSecurityRuleConfig -Name 'myNetworkSecurityGroupRuleHTTP' 
 
 #### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+Vytvořte skupinu zabezpečení sítě pomocí skupiny [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
 ```azurepowershell
 $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RgName -Location $location `
@@ -254,7 +254,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RgName -Location $location
 ```
 
 ### <a name="create-nics"></a>Vytvoření síťových rozhraní
-Vytvořte virtuální síťové karty a přidružte se k veřejné IP adrese a skupinám zabezpečení sítě vytvořeným v předchozích krocích pomocí [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). Následující příklad vytvoří tři virtuální síťové karty. (Jednu virtuální síťovou kartu pro každý virtuální počítač, který pro svou aplikaci vytvoříte v následujících krocích). Kdykoli můžete vytvořit další virtuální síťové karty a virtuální počítače a přidat je do nástroje pro vyrovnávání zatížení:
+Vytvořte virtuální síťové karty a přidružte k veřejným skupinám zabezpečení IP adres a sítě vytvořeným v předchozích krocích pomocí [rozhraní New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). Následující příklad vytvoří tři virtuální síťové karty. (Jednu virtuální síťovou kartu pro každý virtuální počítač, který pro svou aplikaci vytvoříte v následujících krocích). Kdykoli můžete vytvořit další virtuální síťové karty a virtuální počítače a přidat je do nástroje pro vyrovnávání zatížení:
 
 ```azurepowershell
 # Create NIC for VM1
@@ -279,7 +279,7 @@ Pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/
 $cred = Get-Credential
 ```
 
-Nyní můžete vytvořit virtuální počítače pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří dva virtuální počítače a požadované součásti virtuální sítě, pokud ještě neexistují. V tomto příkladu jsou síťové karty (*MyNic1*, *MyNic2*a *MyNic3*) vytvořené v předchozím kroku přiřazené k virtuálním počítačům *myVM1*, *myVM2*a *VM3*. Vzhledem k tomu, že síťové adaptéry jsou přidruženy k back-end fondu nástroje pro vyrovnávání zatížení, virtuální počítače se automaticky přidají do fondu back-endu.
+Teď můžete vytvářet virtuální hospova s [New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří dva virtuální počítače a požadované součásti virtuální sítě, pokud ještě neexistují. V tomto příkladu jsou síťové karty (*MyNic1*, *MyNic2*a *MyNic3*) vytvořené v předchozím kroku přiřazeny virtuálním *počítačům myVM1*, *myVM2*a *VM3*. Navíc vzhledem k tomu, že síťové karty jsou přidruženy k back-endového fondu vykladače vyrovnávání zatížení, virtuální počítače se automaticky přidají do back-endového fondu.
 
 ```azurepowershell
 
@@ -317,20 +317,20 @@ $vmConfig = New-AzVMConfig -VMName 'myVM3' -VMSize Standard_DS1_v2 `
 $vm3 = New-AzVM -ResourceGroupName $rgName -Zone 3 -Location $location -VM $vmConfig
 ```
 
-Vytvoření a konfigurace tří virtuálních počítačů trvá několik minut.
+Vytvoření a konfigurace tří virtuálních počítače trvá několik minut.
 
 ### <a name="install-iis-with-a-custom-web-page"></a>Instalace služby IIS s vlastní webovou stránkou
 
-Nainstalujte službu IIS s vlastní webovou stránkou na back-endové virtuální počítače následujícím způsobem:
+Nainstalujte službu IIS s vlastní webovou stránkou na obou záložních virtuálních počítačích takto:
 
-1. Získejte veřejné IP adresy tří virtuálních počítačů pomocí `Get-AzPublicIPAddress`.
+1. Získejte veřejné IP adresy tří virtuálních `Get-AzPublicIPAddress`počítačů pomocí .
 
    ```azurepowershell
      $vm1_rdp_ip = (Get-AzPublicIPAddress -ResourceGroupName $rgName -Name "RdpPublicIP_1").IpAddress
      $vm2_rdp_ip = (Get-AzPublicIPAddress -ResourceGroupName $rgName -Name "RdpPublicIP_2").IpAddress
      $vm3_rdp_ip = (Get-AzPublicIPAddress -ResourceGroupName $rgName -Name "RdpPublicIP_3").IpAddress
     ```
-2. Pomocí veřejných IP adres virtuálních počítačů Vytvořte připojení ke vzdálené ploše s *myVM1*, *myVM2*a *myVM3* , a to následujícím způsobem: 
+2. Vytvořte připojení ke vzdálené ploše s *myVM1*, *myVM2*a *myVM3* pomocí veřejných IP adres virtuálních počítačů následujícím způsobem: 
 
    ```azurepowershell    
      mstsc /v:$vm1_rdp_ip
@@ -339,8 +339,8 @@ Nainstalujte službu IIS s vlastní webovou stránkou na back-endové virtuáln�
    
     ```
 
-3. Zadejte přihlašovací údaje pro každý virtuální počítač, aby se spustila relace RDP.
-4. Na každém virtuálním počítači spusťte Windows PowerShell a pomocí následujících příkazů nainstalujte server IIS a aktualizujte výchozí soubor htm.
+3. Zadejte pověření pro každý virtuální virtuální ms pro spuštění relace RDP.
+4. Spusťte prostředí Windows PowerShell na každém virtuálním počítači a pomocí následujících příkazů nainstalujte server Služby IIS a aktualizujte výchozí soubor HTM.
 
     ```azurepowershell
     # Install IIS
@@ -353,11 +353,11 @@ Nainstalujte službu IIS s vlastní webovou stránkou na back-endové virtuáln�
      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from host " + $env:computername)
     ```
 
-5. Zavřete připojení RDP pomocí *myVM1*, *myVM2*a *myVM3*.
+5. Zavřete připojení RDP s *myVM1*, *myVM2*a *myVM3*.
 
 
 ## <a name="test-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
-Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
+Získejte veřejnou IP adresu svého vyvyčovávače zatížení pomocí [aplikace Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
 
 ```azurepowershell
 Get-AzPublicIPAddress `
@@ -373,7 +373,7 @@ Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížen
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
+Když už nepotřebujete, můžete použít příkaz [Odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků, virtuálního virtuálního času a všech souvisejících prostředků.
 
 ```azurepowershell
 Remove-AzResourceGroup -Name myResourceGroupSLB
@@ -381,6 +381,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Standard Load Balancer k němu připojené virtuální počítače, nakonfigurovali jste pravidlo Load Balancer přenosů dat, sondu stavu a pak jste otestovali Load Balancer. Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte [Azure Load Balancer kurzy](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
+V tomto rychlém startu jste vytvořili standardní vytápěč zatížení, připojili k němu virtuální počítače, nakonfigurovali pravidlo provozu nástrojů vyrovnávání zatížení, sondu stavu a poté otestovali systém vyrovnávání zatížení. Další informace o Azure Load Balancer, pokračujte v [azure balancer kurzy](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-Přečtěte si další informace o [Load Balancer a zónách dostupnosti](load-balancer-standard-availability-zones.md).
+Další informace o [nástrojůch pro vyrovnávání zatížení a zónách dostupnosti](load-balancer-standard-availability-zones.md).

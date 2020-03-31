@@ -1,6 +1,6 @@
 ---
-title: Přidání objektů zabezpečení clusteru pro Azure Průzkumník dat pomocí šablony Azure Resource Manager
-description: V tomto článku se dozvíte, jak přidat objekty zabezpečení clusteru pro Azure Průzkumník dat pomocí šablony Azure Resource Manager.
+title: Přidání objektů zabezpečení clusteru pro Azure Data Explorer pomocí šablony Azure Resource Manageru
+description: V tomto článku se dozvíte, jak přidat objekty zabezpečení clusteru pro Azure Data Explorer pomocí šablony Azure Resource Manager.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 22423568ab0b3b55d8d9566df4829eb6070b5f8c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965044"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Přidání objektů zabezpečení clusteru pro Azure Průzkumník dat pomocí šablony Azure Resource Manager
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Přidání objektů zabezpečení clusteru pro Azure Data Explorer pomocí šablony Azure Resource Manageru
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Šablona Azure Resource Manageru](cluster-principal-resource-manager.md)
 
-Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku přidáte objekty zabezpečení clusteru pro Azure Průzkumník dat pomocí šablony Azure Resource Manager.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku přidáte objekty zabezpečení clusteru pro Azure Data Explorer pomocí šablony Azure Resource Manager.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Vytvořte cluster](create-cluster-database-portal.md).
 
-## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>Šablona Azure Resource Manager pro přidání objektu clusteru
+## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>Šablona Azure Resource Manager pro přidání objektu zabezpečení clusteru
 
-Následující příklad ukazuje šablonu Azure Resource Manager pro přidání objektu zabezpečení clusteru.  Šablonu můžete [v Azure Portal upravit a nasadit](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) pomocí formuláře.
+Následující příklad ukazuje šablonu Azure Resource Manager pro přidání objektu zabezpečení clusteru.  Šablonu můžete [upravit a nasadit na webu Azure Portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) pomocí formuláře.
 
 ```json
 {
@@ -97,4 +97,4 @@ Následující příklad ukazuje šablonu Azure Resource Manager pro přidání 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přidat objekty zabezpečení databáze](database-principal-resource-manager.md)
+* [Přidání objektů zabezpečení databáze](database-principal-resource-manager.md)

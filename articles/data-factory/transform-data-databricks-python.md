@@ -1,6 +1,6 @@
 ---
-title: Transformace dat pomocí Pythonu datacihlů
-description: Naučte se zpracovávat nebo transformovat data spuštěním Pythonu datacihly.
+title: Transformace dat pomocí Databricks Python
+description: Naučte se zpracovávat nebo transformovat data spuštěním Databricks Python.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,23 +12,23 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 ms.openlocfilehash: be2e389a0f103983a566a3f74d201e5589d84586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926722"
 ---
-# <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformujte data spuštěním aktivity Pythonu v Azure Databricks
+# <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformace dat spuštěním aktivity Pythonu v Azure Databricks
 
-Aktivita Azure Databricks Pythonu v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v clusteru Azure Databricks soubor Pythonu. Tento článek navazuje na [aktivity transformace dat](transform-data.md) článku, který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Aktivita Pythonu Azure Databricks v [kanálu datové továrny](concepts-pipelines-activities.md) spouští soubor Pythonu v clusteru Azure Databricks. Tento článek vychází z článku [aktivit transformace](transform-data.md) dat, který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
 Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
-## <a name="databricks-python-activity-definition"></a>Definice aktivity v Pythonu datacihly
+## <a name="databricks-python-activity-definition"></a>Definice aktivity Databricks Python
 
-Tady je ukázková definice JSON aktivity datacihly v Pythonu:
+Zde je ukázka JSON definice Databricks Python aktivity:
 
 ```json
 {
@@ -57,23 +57,23 @@ Tady je ukázková definice JSON aktivity datacihly v Pythonu:
 }
 ```
 
-## <a name="databricks-python-activity-properties"></a>Vlastnosti aktivity Pythonu datacihly
+## <a name="databricks-python-activity-properties"></a>Vlastnosti aktivity Databricks Pythonu
 
-Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
+Následující tabulka popisuje vlastnosti JSON použité v definici JSON:
 
 |Vlastnost|Popis|Požaduje se|
 |---|---|---|
 |jméno|Název aktivity v kanálu.|Ano|
 |description|Text popisující, co aktivita dělá.|Ne|
-|type|Pro aktivitu Python datacihly je typ aktivity DatabricksSparkPython.|Ano|
-|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Pokud se o této propojené službě chcete dozvědět víc, přečtěte si článek článku [služby COMPUTE](compute-linked-services.md) .|Ano|
-|pythonFile|Identifikátor URI souboru Pythonu, který má být spuštěn. Jsou podporovány pouze DBFS cesty.|Ano|
-|parameters|Parametry příkazového řádku, které budou předány souboru Python. Toto je pole řetězců.|Ne|
-|knihovny|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole < řetězec, objekt >|Ne|
+|type|Pro Databricks Python Activity je typem aktivity DatabricksSparkPython.|Ano|
+|linkedServiceName|Název propojené služby Databricks, na které je spuštěna aktivita Pythonu. Další informace o této propojené službě najdete v článku [Výpočetní propojené služby.](compute-linked-services.md) |Ano|
+|pythonFile|Identifikátor URI souboru Pythonu, který má být proveden. Podporovány jsou pouze cesty DBFS.|Ano|
+|parameters|Parametry příkazového řádku, které budou předány souboru Pythonu. Toto je pole řetězců.|Ne|
+|Knihovny|Seznam knihoven, které mají být nainstalovány v clusteru, který bude úlohu provádět. Může to být pole <řetězec, objekt>|Ne|
 
-## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity datacihly
+## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity datových cihel
 
-Ve výše uvedené definici aktivity datacihly zadáte tyto typy knihoven: *jar*, *vejce*, *Maven*, *PyPI*, *Cran*.
+Ve výše uvedené definici aktivity Databricks zadáte tyto typy knihoven: *jar*, *egg*, *maven*, *pypi*, *cran*.
 
 ```json
 {
@@ -107,18 +107,18 @@ Ve výše uvedené definici aktivity datacihly zadáte tyto typy knihoven: *jar*
 
 ```
 
-Další podrobnosti najdete v [dokumentaci k datacihlám](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) pro typy knihoven.
+Další podrobnosti naleznete v [dokumentaci databricks](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) pro typy knihoven.
 
-## <a name="how-to-upload-a-library-in-databricks"></a>Postup nahrání knihovny v datacihlách
+## <a name="how-to-upload-a-library-in-databricks"></a>Jak nahrát knihovnu v Databricks
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Použití uživatelského rozhraní pracovního prostoru datacihly](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-ui"></a>[Použití uj.](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-Chcete-li získat cestu dBFS knihovny přidané pomocí uživatelského rozhraní, můžete použít rozhraní příkazového [řádku datacihly (instalace)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+Chcete-li získat dbfs cestu knihovny přidané pomocí ui, můžete použít [Databricks CLI (instalace)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Knihovny jar jsou obvykle uloženy v dBFS:/úložiště/jar při používání uživatelského rozhraní. Můžete zobrazit seznam všech prostřednictvím rozhraní příkazového řádku: *datacihly FS LS dBFS:/úložiště/jar* 
+Knihovny Jar jsou obvykle uloženy pod dbfs:/FileStore/jars při používání uživatelského uživatelského nastavení. Můžete seznam všech prostřednictvím CLI: *databricks fs ls dbfs:/FileStore/jars* 
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopírování knihovny pomocí rozhraní příkazového řádku datacihly](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-cli"></a>[Kopírování knihovny pomocí příkazového příkazu Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
-Příklad: *datacihly FS CP sparkpi-Assembly-0,1. jar dBFS:/úložiště/jar*
+Příklad: *databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars*

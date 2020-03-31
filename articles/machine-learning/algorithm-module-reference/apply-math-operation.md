@@ -1,7 +1,7 @@
 ---
 title: Použití matematických operací
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul použití matematické operace v Azure Machine Learning k použití matematické operace na hodnoty sloupce v kanálu.
+description: Zjistěte, jak použít modul Použít matematické operace v Azure Machine Learning použít matematické operace na hodnoty sloupců v kanálu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,99 +9,99 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: b136f408bbc4fbf13bba902f76f7d33ce6b2ba96
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314568"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456739"
 ---
 # <a name="apply-math-operation"></a>Použití matematických operací
 
-Tento článek popisuje modul návrháře Azure Machine Learning.
+Tento článek popisuje modul Návrháře Azure Machine Learning (preview).
 
-Použijte operaci použít matematický postup k vytvoření výpočtů, které jsou použity na číselné sloupce vstupní datové sady. 
+Pomocí operace Použít matematickou operaci můžete vytvořit výpočty, které se použijí na číselné sloupce ve vstupní datové sadě. 
 
-Podporované matematické operace zahrnují běžné aritmetické funkce, jako je násobení a dělení, trigonometrické funkce, celá řada funkcí zaokrouhlení a speciální funkce používané v oblasti datových věd, jako je například hodnota gamma a funkce Error.  
+Podporované matematické operace zahrnují běžné aritmetické funkce, jako je násobení a dělení, goniometrické funkce, různé funkce zaokrouhlení a speciální funkce používané v datové vědě, jako jsou funkce gama a chyb.  
 
-Po definování operace a spuštění kanálu jsou hodnoty přidány do datové sady. V závislosti na tom, jak nakonfigurujete modul, můžete:
+Po definování operace a spuštění kanálu se hodnoty přidají do datové sady. V závislosti na konfiguraci modulu můžete:
 
 + Přidejte výsledky do datové sady. To je užitečné zejména při ověřování výsledku operace.
-+ Nahraďte hodnoty sloupců novými, vypočítanými hodnotami.
-+ Vygeneruje nový sloupec pro výsledky a nezobrazuje původní data. 
++ Nahraďte hodnoty sloupců novými vypočítanými hodnotami.
++ Vygenerujte nový sloupec pro výsledky a nezobrazujte původní data. 
 
-Hledání potřebných operací v těchto kategoriích:  
+Podívejte se na operaci, kterou potřebujete v těchto kategoriích:  
 
 - [Basic](#basic-math-operations)  
   
-     Funkce v kategorii **Basic** lze použít k manipulaci s jednou hodnotou nebo sloupcem hodnot. Například můžete získat absolutní hodnotu všech čísel ve sloupci nebo vypočítat druhou odmocninu každé hodnoty ve sloupci.  
+     Funkce v **základní** kategorii lze použít k manipulaci s jedinou hodnotou nebo sloupcem hodnot. Můžete například získat absolutní hodnotu všech čísel ve sloupci nebo vypočítat druhou odmocninu každé hodnoty ve sloupci.  
   
--   [Compare](#comparison-operations)  
+-   [Porovnání](#comparison-operations)  
   
-      Funkce v kategorii **porovnání** jsou použity pro porovnání: můžete provést párové porovnání hodnot ve dvou sloupcích nebo můžete porovnat jednotlivé hodnoty ve sloupci se zadanou konstantou. Můžete například porovnat sloupce a určit, zda byly hodnoty stejné ve dvou datových sadách. Nebo můžete použít konstantu, jako je například maximální povolená hodnota, abyste našli odlehlé hodnoty v číselném sloupci.  
+      Funkce v kategorii **Porovnat** se používají pro porovnání: můžete provést porovnání hodnot ve dvou sloupcích nebo můžete porovnat každou hodnotu ve sloupci se zadanou konstantou. Můžete například porovnat sloupce a určit, zda byly hodnoty ve dvou datových sadách stejné. Nebo můžete použít konstantu, například maximální povolenou hodnotu, k vyhledání odlehlých hodnot v číselném sloupci.  
   
 -   [Provoz](#arithmetic-operations)  
   
-     Kategorie **operace** zahrnuje základní matematické funkce: sčítání, odčítání, násobení a dělení. Můžete pracovat s buď sloupci, nebo konstantami. Například můžete přidat hodnotu do sloupce A do hodnoty ve sloupci B. Případně můžete z každé hodnoty ve sloupci A odečíst konstantu, jako je například dříve vypočtená střední hodnota.  
+     Kategorie **Operace** zahrnuje základní matematické funkce: sčítání, odčítání, násobení a dělení. Můžete pracovat se sloupci nebo konstantami. Můžete například přidat hodnotu ve sloupci A k hodnotě ve sloupci B. Nebo můžete odečíst konstantu, například dříve vypočtenou střední hodnotu, od každé hodnoty ve sloupci A.  
   
--   [Kusov](#rounding-operations)  
+-   [Zaokrouhlení](#rounding-operations)  
   
-     Kategorie **Zaokrouhlení** zahrnuje řadu funkcí pro provádění operací, jako je zaokrouhlení, strop, patra a zkrácení na různé úrovně přesnosti. Můžete určit úroveň přesnosti pro Desítková i celá čísla.  
+     Kategorie **Zaokrouhlení** zahrnuje celou řadu funkcí pro provádění operací, jako je zaoblení, strop, podlaha a zkrácení na různé úrovně přesnosti. Můžete určit úroveň přesnosti pro desetinná i celá čísla.  
   
--   [Speciální](#special-math-functions)  
+-   [Zvláštní](#special-math-functions)  
   
-     **Speciální** kategorie obsahuje matematické funkce, které jsou obzvláště používány v oblasti datové vědy, jako jsou eliptické integrály a funkce pro chybu Gaussovské.  
+     **Kategorie Special** zahrnuje matematické funkce, které se používají zejména v datové vědě, jako jsou eliptické integrály a Gaussova chybová funkce.  
   
 -   [Trigonometrické](#trigonometric-functions)  
   
-     **Trigonometrické** kategorie zahrnuje všechny standardní trigonometrické funkce. Například můžete převést radiány na stupně nebo výpočetní funkce, jako je například Tečna v radiánech nebo stupních.
-     Tyto funkce jsou Unární, což znamená, že přebírají jeden sloupec hodnot jako vstup, aplikují trigonometrické funkci a vrátí sloupec hodnot jako výsledek.  Proto je nutné se ujistit, že vstupní sloupec je odpovídající typ a obsahuje správný druh hodnot pro určenou operaci.   
+     Kategorie **goniometriky** zahrnuje všechny standardní goniometrické funkce. Můžete například převést radiány na stupně nebo vypočítat funkce, jako je tečna, buď radiány, nebo stupňů.
+     Tyto funkce jsou unární, což znamená, že berou jeden sloupec hodnot jako vstup, použít goniometrické funkce a vrátit sloupec hodnot jako výsledek.  Proto je třeba se ujistit, že vstupní sloupec je vhodný typ a obsahuje správný druh hodnot pro zadanou operaci.   
 
-## <a name="how-to-configure-apply-math-operation"></a>Postup konfigurace použití operace Math  
+## <a name="how-to-configure-apply-math-operation"></a>Jak nakonfigurovat použít matematickou operaci  
 
-Modul **použití matematické operace** vyžaduje datovou sadu, která obsahuje alespoň jeden sloupec obsahující pouze čísla. Čísla mohou být diskrétní nebo souvislá, ale musí být číselného datového typu, nikoli řetězce.
+Modul **Použít matematickou operaci** vyžaduje datovou sadu, která obsahuje alespoň jeden sloupec obsahující pouze čísla. Čísla mohou být diskrétní nebo souvislá, ale musí být číselného datového typu, nikoli řetězce.
 
-Stejnou operaci můžete použít na několik číselných sloupců, ale všechny sloupce musí být ve stejné datové sadě. 
+Stejnou operaci můžete použít na více číselných sloupců, ale všechny sloupce musí být ve stejné datové sadě. 
 
-Každá instance tohoto modulu může v jednom okamžiku provádět pouze jeden typ operace. Chcete-li provádět složité matematické operace, může být nutné zřetězit několik instancí modulu **použití matematické operace** .  
+Každá instance tohoto modulu může provádět pouze jeden typ operace najednou. Chcete-li provádět složité matematické operace, může být nutné zřetězit několik instancí modulu **Použít operaci matematiky.**  
   
-1.  Přidejte do svého kanálu modul **použití matematické operace** .
+1.  Přidejte do kanálu modul **Použít operaci matematiky.**
 
-1. Připojte datovou sadu, která obsahuje alespoň jeden numerický sloupec.  
+1. Připojte datovou sadu, která obsahuje alespoň jeden číselný sloupec.  
 
-1.  Vyberte jeden nebo více zdrojových sloupců, u kterých chcete provést výpočet.   
+1.  Vyberte jeden nebo více zdrojových sloupců, na kterých chcete provést výpočet.   
   
     - Libovolný sloupec, který zvolíte, musí být číselný datový typ. 
-    - Rozsah dat musí být platný pro vybranou matematickou operaci. V opačném případě může dojít k chybě nebo NaN (nejedná se o číslo). Například ln (-1,0) je neplatná operace a výsledkem je hodnota `NaN`.
+    - Rozsah dat musí být platný pro vybranou matematickou operaci. V opačném případě může dojít k chybě nebo výsledku NaN (nikoli čísla). Například Ln(-1.0) je neplatná operace a `NaN`má za následek hodnotu .
   
-1.  Kliknutím na **kategorie** vyberte **typ** matematické operace, která se má provést.
+1.  Klepnutím na **tlačítko Kategorie** vyberte **typ** matematické operace, kterou chcete provést.
     
-1. Vyberte konkrétní operaci ze seznamu v této kategorii.
+1. Vyberte konkrétní operaci ze seznamu v dané kategorii.
   
-1.  Nastavte další parametry požadované jednotlivými typy operace.  
+1.  Nastavte další parametry vyžadované jednotlivými typy operací.  
   
-1.  Použijte možnost **výstupní režim** k určení, jak chcete, aby se vygenerovala Matematická operace: 
+1.  Pomocí možnosti **Výstupní režim** můžete určit, jak chcete vygenerovat operaci matematiky: 
 
-    - **Připojit**. Do výstupní datové sady jsou zahrnuty všechny sloupce používané jako vstupy a navíc je připojen jeden další sloupec, který obsahuje výsledky matematické operace.
-    - Na **místě**. Hodnoty ve sloupcích použitých jako vstupy jsou nahrazeny novými počítanými hodnotami. 
-    - **ResultOnly**. Vrátí se jeden sloupec obsahující výsledky matematické operace.
+    - **Připojit**. Všechny sloupce použité jako vstupy jsou zahrnuty ve výstupní datové sadě plus jeden další sloupec je připojen, který obsahuje výsledky matematické operace.
+    - **Na místě**. Hodnoty ve sloupcích použitých jako vstupy jsou nahrazeny novými vypočtenými hodnotami. 
+    - **ResultOnly**. Je vrácen jeden sloupec obsahující výsledky matematické operace.
   
-1.  Spuštění kanálu  
+1.  Odešlete potrubí.  
   
 ## <a name="results"></a>Výsledky
 
-Vygenerujete-li výsledky pomocí možností **připojit** nebo **ResultOnly** , budou záhlaví sloupců vrácené datové sady označovat operaci a sloupce, které byly použity. Například pokud porovnáte dva sloupce pomocí operátoru **Equals** , výsledky budou vypadat takto:  
+Pokud generujete výsledky pomocí možností **Připojit** nebo **ResultOnly,** záhlaví sloupců vrácené datové sady označují operaci a sloupce, které byly použity. Pokud například porovnáte dva sloupce pomocí operátoru **Rovná** se, výsledky budou vypadat takto:  
   
--   **Equals (Col2_Col1)** , což značí, že jste otestovali col2 proti sloupci Sloupec1.  
--   **Rovná se (Col2_ $10)** , což značí, že jste porovnali sloupec 2 s konstantou 10.  
+-   **Equals(Col2_Col1)**, což znamená, že jste testovali Col2 proti Col1.  
+-   **Rovná se (Col2_$10)**, což znamená, že jste porovnali sloupec 2 s konstantou 10.  
 
-I když použijete možnost **umístění** , zdrojová data se neodstraní ani nezmění. sloupec v původní datové sadě je stále k dispozici v návrháři. Chcete-li zobrazit původní data, můžete připojit modul [Přidat sloupce](add-columns.md) a spojit ho s výstupem **použití matematické operace**.  
+I když použijete možnost **Inplace,** zdrojová data se neodstraní ani nezmění; sloupec v původní datové sadě je stále k dispozici v návrháři. Chcete-li zobrazit původní data, můžete připojit modul [Přidat sloupce](add-columns.md) a připojit jej k výstupu operace **Použít matematickou operaci**.  
     
 ## <a name="basic-math-operations"></a>Základní matematické operace 
 
-Funkce v **základní** kategorii obvykle přebírají jednu hodnotu ze sloupce, provádějí předdefinovanou operaci a vracejí jednu hodnotu. U některých funkcí můžete zadat konstantu nebo sadu sloupců jako druhý argument.  
+Funkce v **základní** kategorii obvykle trvat jednu hodnotu ze sloupce, provést předdefinovanou operaci a vrátit jednu hodnotu. U některých funkcí můžete jako druhý argument zadat konstantu nebo sadu sloupců.  
   
- Azure Machine Learning podporuje následující funkce v kategorii **základní** :  
+ Azure Machine Learning podporuje následující funkce v **základní** kategorii:  
 
 ### <a name="abs"></a>Abs
 
@@ -109,90 +109,90 @@ Vrátí absolutní hodnotu vybraných sloupců.
   
 ### <a name="atan2"></a>Atan2
 
-Vrátí hyperbolický tangens o čtyřnásobné čtvrti.  
+Vrátí inverzní tečnu se čtyřmi kvadranty.  
 
 Vyberte sloupce, které obsahují souřadnice bodu. Pro druhý argument, který odpovídá souřadnici x, můžete také zadat konstantu.  
 
-Odpovídá funkci ARCTG2 v programu MATLAB.  
+Odpovídá funkci ATAN2 v Matlabu.  
 
 ### <a name="conj"></a>Conj
 
-Vrátí sdruženou hodnotu ve vybraném sloupci.  
+Vrátí konjugát pro hodnoty ve vybraném sloupci.  
 
-### <a name="cuberoot"></a>CubeRoot
+### <a name="cuberoot"></a>Kořen ová cube
 
-Vypočítá kořenovou datovou krychli pro hodnoty ve vybraném sloupci.  
+Vypočítá kořen krychle pro hodnoty ve vybraném sloupci.  
 
-### <a name="doublefactorial"></a>DoubleFactorial  
- Vypočítá hodnotu Double faktoriál pro hodnoty ve vybraném sloupci. Dvojitý faktoriál je rozšíření normálního faktoriál funkce a je označeno jako x!!.  
+### <a name="doublefactorial"></a>Dvojitý faktor  
+ Vypočítá dvojitý faktoriál pro hodnoty ve vybraném sloupci. Dvojitý faktoriál je rozšíření masívní faktoriální funkce a je označen jako x!!.  
 
-### <a name="eps"></a>EPS
+### <a name="eps"></a>Eps
 
-Vrátí velikost mezery mezi aktuální hodnotou a nejbližším číslem s dvojitou přesností. Odpovídá funkci EPS v programu MATLAB.  
+Vrátí velikost mezery mezi aktuální hodnotou a dalším nejvyšším číslem s dvojitou přesností. Odpovídá funkci EPS v Matlabu.  
   
 ### <a name="exp"></a>Exp
 
-Vrátí hodnotu e umocněnou na mocninu hodnoty ve vybraném sloupci. To je stejné jako funkce Excelu EXP.  
+Vrátí hodnotu e na hodnotu ve vybraném sloupci. Je to stejné jako funkce Excel EXP.  
 
-### <a name="exp2"></a>Exp2 –
+### <a name="exp2"></a>Exp2
 
-Vrátí exponenciální hodnotu argumentu (Base-2) argumentů a řešení pro y = x * 2<sup>t</sup> , kde t je sloupec hodnot obsahující exponenty.  
+Vrátí hodnotu argumentů base-2, která řeší pro y = x * 2<sup>t,</sup> kde t je sloupec hodnot obsahujících exponenty.  
 
-V části **sada sloupců**vyberte sloupec, který obsahuje hodnoty exponentu t.
+V **sadě sloupců**vyberte sloupec, který obsahuje exponentní hodnoty t.
 
-Pro **exp2 –** můžete zadat druhý argument x, který může být buď konstantou, nebo jiným sloupcem hodnot. V poli **typ druhého argumentu**určete, zda budete zadat násobitel x jako konstantu nebo hodnotu ve sloupci.  
+Pro **Exp2** můžete zadat druhý argument x, který může být buď konstanta nebo jiný sloupec hodnot. V **second type argument**, označte, zda zadáte násobič x jako konstantu nebo hodnotu ve sloupci.  
 
-Pokud například vyberete sloupec s hodnotami {0,1,2,3,4,5} pro násobitel i exponent, funkce vrátí hodnotu {0, 2, 8, 24, 64 160).  
+Pokud například vyberete sloupec s {0,1,2,3,4,5} hodnotami pro násobič i exponent, vrátí funkce {0, 2, 8, 24, 64 160).  
 
 ### <a name="expminus1"></a>ExpMinus1 
 
-Vrátí záporné exponent pro hodnoty ve vybraném sloupci.  
+Vrátí záporný exponent pro hodnoty ve vybraném sloupci.  
 
 ### <a name="factorial"></a>Faktoriál
-Vrátí faktoriál hodnot ve vybraném sloupci.  
+Vrátí faktoriál pro hodnoty ve vybraném sloupci.  
 
-### <a name="hypotenuse"></a>Přepony
-Vypočítá přepony pro trojúhelník, ve kterém je délka jedné strany zadána jako sloupec hodnot, a délka druhé strany je zadána buď jako konstanta, nebo jako dva sloupce.  
+### <a name="hypotenuse"></a>Přepona
+Vypočítá přeponu pro trojúhelník, ve kterém je délka jedné strany určena jako sloupec hodnot a délka druhé strany je určena buď jako konstanta, nebo jako dva sloupce.  
 
 ### <a name="ln"></a>Logaritmus
 
-Vrátí přirozený logaritmus hodnot ve vybraném sloupci.  
+Vrátí přirozený logaritmus pro hodnoty ve vybraném sloupci.  
 
-### <a name="lnplus1"></a>LnPlus1
+### <a name="lnplus1"></a>Informace o tom, že
 
-Vrátí přirozený logaritmus a jeden pro hodnoty ve vybraném sloupci.  
+Vrátí přirozený logaritmus plus jeden pro hodnoty ve vybraném sloupci.  
 
 ### <a name="log"></a>Protokol
 
-Vrátí protokol hodnot ve vybraném sloupci, které jsou zadané základem.  
+Vrátí protokol hodnot ve vybraném sloupci za daný základ.  
 
-Základní (druhý argument) můžete určit buď jako konstantu, nebo výběrem jiného sloupce hodnot.  
+Základ (druhý argument) můžete určit buď jako konstantu, nebo výběrem jiného sloupce hodnot.  
 
 ### <a name="log10"></a>Log10
 
-Vrátí logaritmické hodnoty o základu 10 pro vybraný sloupec.  
+Vrátí základní 10 hodnot logaritmu pro vybraný sloupec.  
 
-### <a name="log2"></a>Log2 –
+### <a name="log2"></a>Protokol2
 
-Vrátí hodnoty logaritmu základního 2 pro vybraný sloupec.  
+Vrátí hodnoty logaritmu báze 2 pro vybraný sloupec.  
 
 ### <a name="nthroot"></a>NthRoot
-Vrátí n-tý kořen hodnoty s použitím n, který zadáte.  
+Vrátí n-tý kořen hodnoty pomocí n, který zadáte.  
 
-Vyberte sloupce, pro které chcete vypočítat kořen, pomocí možnosti **sadou sloupců** .  
+Pomocí možnosti **ColumnSet** vyberte sloupce, pro které chcete kořenový adresář vypočítat.  
 
-V **druhém typu argumentu**vyberte jiný sloupec, který obsahuje kořen, nebo zadejte konstantu, která má být použita jako kořenová.  
+V **poli Druhý typ argumentu**vyberte jiný sloupec, který obsahuje kořen, nebo určete konstantu, která se má použít jako kořen.  
 
-Pokud je druhým argumentem sloupec, všechny hodnoty ve sloupci se použijí jako hodnota n pro odpovídající řádek. Pokud je druhý argument konstanta, zadejte hodnotu pro n do textového pole **druhý argument** .
-### <a name="pow"></a>Log
+Pokud druhý argument je sloupec, každá hodnota ve sloupci se používá jako hodnota n pro odpovídající řádek. Pokud je druhý argument konstanta, zadejte hodnotu pro n do textového pole **Druhý argument.**
+### <a name="pow"></a>Pow
 
-Vypočítá X umocněnou na mocninu Y pro každou hodnotu ve vybraném sloupci.  
+Vypočítá X umocněnou na hodnotu Y pro každou z hodnot ve vybraném sloupci.  
 
-Nejprve vyberte sloupce, které obsahují **základ**, který by měl být typu float, a to pomocí možnosti **sadou sloupců** .  
+Nejprve vyberte sloupce, které obsahují **základnu**, která by měla být float, pomocí **ColumnSet** možnost.  
 
-V **druhém typu argumentu**vyberte sloupec, který obsahuje exponent, nebo zadejte konstantu, která má být použita jako exponent.  
+V **poli Druhý typ argumentu**vyberte sloupec, který obsahuje exponent, nebo zadejte konstantu, která se má použít jako exponent.  
 
-Pokud je druhým argumentem sloupec, všechny hodnoty ve sloupci se použijí jako exponent pro odpovídající řádek. Je-li druhý argument konstanta, zadejte hodnotu exponent do textového pole **druhý argument** .  
+Pokud druhý argument je sloupec, každá hodnota ve sloupci se používá jako exponent pro odpovídající řádek. Pokud je druhý argument konstanta, zadejte hodnotu exponentu do textového pole **Druhý argument.**  
 
 ### <a name="sqrt"></a>Sqrt
 
@@ -200,103 +200,103 @@ Vrátí druhou odmocninu hodnot ve vybraném sloupci.
 
 ### <a name="sqrtpi"></a>SqrtPi
 
-Pro každou hodnotu ve vybraném sloupci vynásobí hodnotu hodnotou PI a potom vrátí druhou odmocninu výsledku.  
+Pro každou hodnotu ve vybraném sloupci vynásobí hodnotu pí a poté vrátí druhou odmocninu výsledku.  
 
 ### <a name="square"></a>Square
 
-Odmocninuje hodnoty ve vybraném sloupci.  
+Urovná hodnoty ve vybraném sloupci.  
 
-## <a name="comparison-operations"></a>Operace porovnání  
+## <a name="comparison-operations"></a>Srovnávací operace  
 
-Použijte funkce porovnávání v Návrháři Azure Machine Learning, kdykoli potřebujete testovat dvě sady hodnot mezi sebou. Například v kanálu může být nutné provést tyto operace porovnání:  
+Pomocí funkcí porovnání v návrháři Azure Machine Learning kdykoli, že budete potřebovat otestovat dvě sady hodnot proti sobě. Například v kanálu může být nutné provést tyto operace porovnání:  
 
-- Vyhodnotit sloupec s rizikovým skóre modelu s prahovou hodnotou.
-- Určí, zda jsou dvě sady výsledků stejné. Pro každý řádek, který je jiný, přidejte příznak FALSE, který lze použít pro další zpracování nebo filtrování.  
+- Vyhodnoťte model skóre sloupce pravděpodobnosti oproti prahové hodnotě.
+- Zjistěte, zda jsou dvě sady výsledků stejné. Pro každý jiný řádek přidejte příznak FALSE, který lze použít pro další zpracování nebo filtrování.  
 
-### <a name="equalto"></a>EqualTo
+### <a name="equalto"></a>Rovno
 
-Vrátí hodnotu true, pokud jsou hodnoty stejné.  
+Vrátí hodnotu True, pokud jsou hodnoty stejné.  
 
 ### <a name="greaterthan"></a>GreaterThan
 
-Vrátí hodnotu true, pokud jsou hodnoty v **sadě sloupců** větší než zadaná konstanta nebo větší než odpovídající hodnoty ve sloupci porovnání.  
+Vrátí hodnotu True, pokud jsou hodnoty v **sadě sloupců** větší než zadaná konstanta nebo větší než odpovídající hodnoty ve sloupci porovnání.  
 
-### <a name="greaterthanorequalto"></a>GreaterThanOrEqualTo
+### <a name="greaterthanorequalto"></a>GreaterThanorEqualto
 
-Vrátí hodnotu true, pokud jsou hodnoty v **sadě sloupců** větší než nebo rovny zadané konstantě nebo větší nebo rovny odpovídajícím hodnotám ve sloupci porovnání.  
+Vrátí hodnotu True, pokud jsou hodnoty v **sadě sloupců** větší nebo rovny zadané konstantě nebo větší nebo rovny odpovídajícím hodnotám ve sloupci porovnání.  
 
 ### <a name="lessthan"></a>LessThan
 
-Vrátí hodnotu true, pokud jsou hodnoty v **sadě sloupců** menší než zadaná konstanta nebo menší než odpovídající hodnoty ve sloupci porovnání.  
+Vrátí hodnotu True, pokud jsou hodnoty v **sadě sloupců** menší než zadaná konstanta nebo menší než odpovídající hodnoty ve sloupci porovnání.  
   
-### <a name="lessthanorequalto"></a>LessThanOrEqualTo
+### <a name="lessthanorequalto"></a>LessthanorEqualto
 
-Vrátí hodnotu true, pokud jsou hodnoty v **sadě sloupců** menší nebo rovny zadané konstantě nebo menší nebo rovny odpovídajícím hodnotám ve sloupci porovnání.  
+Vrátí hodnotu True, pokud jsou hodnoty v **sadě sloupců** menší nebo rovny zadané konstantě nebo menší nebo rovny odpovídajícím hodnotám ve sloupci porovnání.  
 
-### <a name="notequalto"></a>NotEqualTo
+### <a name="notequalto"></a>NotequalTo
 
-Vrátí hodnotu true, pokud hodnoty v **sadě sloupců** nejsou rovny sloupci konstanta nebo porovnání, a vrátí hodnotu false, pokud jsou stejné.  
+Vrátí hodnotu True, pokud se hodnoty v **sadě sloupců** nerovnají konstantě nebo sloupci porovnání, a vrátí hodnotu False, pokud jsou stejné.  
 
 ### <a name="pairmax"></a>PairMax
 
-Vrátí hodnotu, která je větší, hodnota v **sadě sloupců** nebo hodnota ve sloupci konstanta nebo porovnání.  
+Vrátí hodnotu, která je větší – hodnotu v **sadě sloupců** nebo hodnotu ve sloupci konstanty nebo porovnání.  
 
-### <a name="pairmin"></a>PairMin
+### <a name="pairmin"></a>PárMin
 
-Vrátí hodnotu, která je menší, hodnota v **sadě sloupců** nebo hodnota ve sloupci konstanta nebo porovnání.  
+Vrátí hodnotu, která je menší – hodnotu v **sadě sloupců** nebo hodnotu ve sloupci konstanty nebo porovnání.  
   
 ##  <a name="arithmetic-operations"></a>Aritmetické operace   
 
-Zahrnuje základní aritmetické operace: sčítání a odčítání, dělení a násobení.  Vzhledem k tomu, že většina operací je binární, vyžaduje dvě čísla, nejprve zvolíte operaci a pak zvolíte sloupec nebo čísla, které chcete použít v prvním a druhém argumentu.
+Zahrnuje základní aritmetické operace: sčítání a odčítání, dělení a násobení.  Vzhledem k tomu, že většina operací jsou binární, vyžadující dvě čísla, nejprve zvolte operaci a pak zvolte sloupec nebo čísla, která chcete použít v prvním a druhém argumentu.
 
-Pořadí, ve kterém zvolíte sloupce pro dělení a odčítání, se může zdát neintuitivní; aby bylo ale snazší pochopit výsledky, nadpis sloupce poskytuje název operace a pořadí, ve kterém byly sloupce použity.
+Pořadí, ve kterém zvolíte sloupce pro dělení a odčítání, se může zdát neintuitivní; aby však bylo snazší pochopit výsledky, nadpis sloupce obsahuje název operace a pořadí, ve kterém byly sloupce použity.
 
-Operace|Num1|Num2|Sloupec výsledku|Výsledná hodnota|
+Operace|Číslo 1|Číslo 2|Sloupec Výsledek|Výsledná hodnota|
 ----|----|----|----|----
-|Součet|1\. místo|5|Přidat (Num2_Num1)| 4|
-|Násobení|1\. místo|5|Vícenásobný (Num2_Num1)|5|
-|Odčítání|1\. místo|5|Odečíst (Num2_Num1)|4|
-|Odčítání|0|1\. místo|Odečíst (Num2_Num1)|0|
-|Oddělení|1\. místo|5|Dělit (Num2_Num1)|5|
-|Oddělení|0|1\. místo|Dělit (Num2_Num1)|Infinity|
+|Sčítání|1|5|Přidat (Num2_Num1)| 4|
+|Násobení|1|5|Více (Num2_Num1)|5|
+|Odčítání|1|5|Odečíst (Num2_Num1)|4|
+|Odčítání|0|1|Odečíst (Num2_Num1)|0|
+|Dělení|1|5|Rozdělit (Num2_Num1)|5|
+|Dělení|0|1|Rozdělit (Num2_Num1)|Nekonečno|
 
 ### <a name="add"></a>Přidat
 
-Zadejte zdrojové sloupce pomocí **sady sloupců**a potom do těchto hodnot přidejte číslo zadané v **druhém argumentu**.  
+Zadejte zdrojové sloupce pomocí **sady sloupců**a pak k těmto hodnotám přidejte číslo určené v **argumentu Druhý**.  
 
-Chcete-li přidat hodnoty ve dvou sloupcích, zvolte sloupec nebo sloupce pomocí **sady sloupců**a pak vyberte druhý sloupec pomocí **druhého argumentu**.  
+Chcete-li přidat hodnoty ve dvou sloupcích, zvolte sloupec nebo sloupce pomocí **sady sloupců**a pak zvolte druhý sloupec pomocí **druhého argumentu**.  
 
 ### <a name="divide"></a>Dělení
 
-Vydělí hodnoty ve **sloupci** pomocí konstanty nebo hodnoty sloupce definované v **druhém argumentu**.  Jinými slovy, můžete nejprve vybrat dělitele a potom dividendy. Výstupní hodnota je podíl.
+Vydělí hodnoty ve **sloupci nastavené** konstantou nebo hodnotami sloupců definovanými v **argumentu Druhý**.  Jinými slovy, nejprve si vyberete dělitela a pak dividendu. Výstupní hodnota je podíl.
 
-### <a name="multiply"></a>Krát
+### <a name="multiply"></a>Násobení
 
-Vynásobí hodnoty v **sadě sloupců** zadanými hodnotami konstanty nebo sloupce.  
+Vynásobí hodnoty ve **sloupci nastavené** zadanou hodnotou konstanty nebo sloupců.  
 
-### <a name="subtract"></a>Odebrat
+### <a name="subtract"></a>Odčítání
 
-Určete sloupec hodnot, na kterých se má ( *minuend*) pracovat, výběrem jiného sloupce pomocí možnosti **sada sloupců** . Pak zadejte číslo, které se má odečíst ( *subtrahend*), a to pomocí rozevíracího seznamu **druhý argument** . Můžete zvolit buď konstantu, nebo sloupec hodnot.
+Zadejte sloupec hodnot, na kterých se má pracovat *(minuend),* výběrem jiného sloupce pomocí možnosti **Sada sloupců.** Potom zadejte číslo odečíst *(subtrahend*) pomocí druhý **argument** rozevírací seznam. Můžete zvolit konstantu nebo sloupec hodnot.
 
-##  <a name="rounding-operations"></a>Operace zaokrouhlení 
+##  <a name="rounding-operations"></a>Zaokrouhlení operace 
 
-Návrhář Azure Machine Learning podporuje nejrůznější operace zaokrouhlení. Pro mnoho operací je nutné zadat množství přesnosti, které se má použít při zaokrouhlování. Můžete použít buď statickou úroveň přesnosti, zadanou jako konstantu, nebo můžete použít hodnotu dynamické přesnosti získanou ze sloupce hodnot.  
+Azure Machine Learning návrhář podporuje celou řadu operací zaokrouhlení. Pro mnoho operací je nutné zadat míru přesnosti, která se má použít při zaokrouhlení. Můžete použít buď statickou úroveň přesnosti, určenou jako konstanta, nebo můžete použít hodnotu dynamické přesnosti získanou ze sloupce hodnot.  
 
-- Použijete-li konstantu, nastavte **typ přesnosti** na **konstantní** a pak zadejte počet číslic jako celé číslo v textovém poli **přesnost konstanty** . Pokud zadáte jiné než celé číslo, modul nevyvolává chybu, ale výsledky mohou být neočekávané.  
+- Pokud používáte konstantu, nastavte **typ přesnosti** na **konstantní** a zadejte počet číslic jako celé číslo do textového pole **Konstantní přesnost.** Pokud zadáte necelé číslo, modul nevyvolá chybu, ale výsledky mohou být neočekávané.  
 
-- Chcete-li pro každý řádek datové sady použít jinou hodnotu přesnosti, nastavte **typ přesnosti** na **sadou sloupců**a pak vyberte sloupec, který obsahuje odpovídající hodnoty přesnosti.  
+- Chcete-li pro každý řádek datové sady použít jinou hodnotu přesnosti, nastavte **hodnotu typu Přesnost** na **columnset**a pak zvolte sloupec, který obsahuje příslušné hodnoty přesnosti.  
 
 ### <a name="ceiling"></a>Ceiling
 
 Vrátí strop pro hodnoty v **sadě sloupců**.  
 
-### <a name="ceilingpower2"></a>CeilingPower2
+### <a name="ceilingpower2"></a>Stropní síla2
 
-Vrátí čtvercovou mez pro hodnoty v **sadě sloupců**.  
+Vrátí čtvercový strop pro hodnoty v **sadě sloupců**.  
 
 ### <a name="floor"></a>Floor
 
-Vrátí podlahovou hodnotu pro hodnoty ve **sloupci nastavené**na zadanou přesnost.  
+Vrátí podlahu pro hodnoty v **sadě sloupců**na zadanou přesnost.  
 
 ### <a name="mod"></a>Mod
 
@@ -308,7 +308,7 @@ Vrátí zlomkovou část hodnot v **sadě sloupců**na zadanou přesnost.
 
 ### <a name="remainder"></a>Zbytek
 
-Vrátí zbytek hodnot v **sadě sloupců**.  
+Vrátí zbytek pro hodnoty v **sadě sloupců**.  
 
 ### <a name="rounddigits"></a>RoundDigits
 
@@ -320,127 +320,127 @@ Vrátí hodnoty v **sadě sloupců**zaokrouhlené dolů na zadaný počet čísl
 
 ### <a name="roundup"></a>RoundUp
 
-Vrátí hodnoty v **sadě sloupců**zaokrouhlené až na zadaný počet číslic.  
+Vrátí hodnoty v **sadě sloupců**zaokrouhlené nahoru na zadaný počet číslic.  
 
-### <a name="toeven"></a>ToEven
+### <a name="toeven"></a>Toeven (Až po sudý)
 
-Vrátí hodnoty v **sadě sloupců**zaokrouhlené na nejbližší celé číslo, sudé číslo.  
+Vrátí hodnoty v **sadě sloupců**zaokrouhlené na nejbližší celé sudé číslo.  
 
-### <a name="toodd"></a>ToOdd
+### <a name="toodd"></a>Toodd (Toodd)
 
 Vrátí hodnoty v **sadě sloupců**zaokrouhlené na nejbližší celé, liché číslo.  
 
 ### <a name="truncate"></a>Truncate
 
-Zkrátí hodnoty v **sadě sloupců** odebráním všech číslic, které nejsou povoleny zadanou přesností.  
+Zkrátí hodnoty ve **sloupci nastavené** odebráním všech číslic, které nejsou povoleny zadanou přesností.  
   
 ## <a name="special-math-functions"></a>Speciální matematické funkce
 
-Tato kategorie zahrnuje specializované matematické funkce často používané v oblasti datových věd. Není-li uvedeno jinak, funkce je unární a vrátí zadaný výpočet pro každou hodnotu ve vybraném sloupci nebo sloupci.  
+Tato kategorie zahrnuje specializované matematické funkce, které se často používají v datové vědě. Není-li uvedeno jinak, funkce je unární a vrátí zadaný výpočet pro každou hodnotu ve vybraném sloupci nebo sloupcích.  
 
 ### <a name="beta"></a>Beta
 
-Vrátí hodnotu funkce beta Eulerova.  
+Vrátí hodnotu Eulerovy beta funkce.  
 
 ### <a name="ellipticintegrale"></a>EllipticIntegralE
-Vrací hodnotu neúplného eliptického integrálu.  
+Vrátí hodnotu neúplného eliptického integrálu.  
   
 
 ### <a name="ellipticintegralk"></a>EllipticIntegralK
 
-Vrátí hodnotu úplného typu eliptického integrálu (K).  
+Vrátí hodnotu celého eliptický integrál (K).  
 
-### <a name="erf"></a>ERF
+### <a name="erf"></a>Erf (Erf)
 
-Vrátí hodnotu funkce Error.  
+Vrátí hodnotu chybové funkce.  
 
-Funkce Error (označovaná také jako funkce Error Gauss) je zvláštní funkcí tvaru sigmoid, který se používá v pravděpodobnosti k popisu difúze.  
+Chybová funkce (také nazývaná Gaussova chybová funkce) je speciální funkce sigmoidního tvaru, která se používá pravděpodobně k popisu difúze.  
 
-### <a name="erfc"></a>ERFC –
+### <a name="erfc"></a>Erfc (Fr.)
 
-Vrátí hodnotu doplňkové chybové funkce.  
+Vrátí hodnotu funkce doplňkové chyby.  
 
-ERFC – je definována jako 1 – ERF (x).  
+Erfc je definována jako 1 – erf(x).  
 
 ### <a name="erfscaled"></a>ErfScaled
 
-Vrátí hodnotu funkce s možností horizontálního navýšení kapacity.  
+Vrátí hodnotu chybové funkce s měřítkem.  
 
-Pomocí škálované verze funkce Error lze zabránit aritmetickému podtečení.  
+Škálované verze funkce chyby lze zabránit aritmetické podtečení.  
 
 ### <a name="erfinverse"></a>ErfInverse
 
-Vrátí hodnotu inverzní funkce ERF.  
+Vrátí hodnotu inverzní funkce erf.  
 
-### <a name="exponentialintegralein"></a>ExponentialIntegralEin
+### <a name="exponentialintegralein"></a>ExponenciálníIntegralEin
 
-Vrátí hodnotu exponenciálního integrálu EI.  
+Vrátí hodnotu exponenciálního integrálu Ei.  
 
-### <a name="gamma"></a>Hodnot
+### <a name="gamma"></a>Gama
 
-Vrátí hodnotu funkce gamma.  
+Vrátí hodnotu funkce gama.  
 
 ### <a name="gammaln"></a>GammaLn
 
-Vrátí přirozený logaritmus funkce gamma.  
+Vrátí přirozený logaritmus funkce gama.  
 
-### <a name="gammaregularizedp"></a>GammaRegularizedP
+### <a name="gammaregularizedp"></a>GamaRegularizedP
 
-Vrací hodnotu regulární neúplné funkce gamma.  
+Vrátí hodnotu regularizované neúplné funkce gama.  
 
-Tato funkce přijímá druhý argument, který lze zadat buď jako konstantu, nebo jako sloupec hodnot.  
+Tato funkce má druhý argument, který může být poskytnuta buď jako konstanta nebo sloupec hodnot.  
 
-### <a name="gammaregularizedpinverse"></a>GammaRegularizedPInverse
+### <a name="gammaregularizedpinverse"></a>GamaRegularizedPInverse
 
-Vrátí hodnotu inverzní nekompletní funkce gamma.  
+Vrátí hodnotu inverzní regularizované neúplné funkce gama.  
 
-Tato funkce přijímá druhý argument, který lze zadat buď jako konstantu, nebo jako sloupec hodnot.  
+Tato funkce má druhý argument, který může být poskytnuta buď jako konstanta nebo sloupec hodnot.  
 
-### <a name="gammaregularizedq"></a>GammaRegularizedQ  
+### <a name="gammaregularizedq"></a>GamaRegularizedQ  
 
-Vrací hodnotu regulární neúplné funkce gamma.  
+Vrátí hodnotu regularizované neúplné funkce gama.  
 
-Tato funkce přijímá druhý argument, který lze zadat buď jako konstantu, nebo jako sloupec hodnot.  
+Tato funkce má druhý argument, který může být poskytnuta buď jako konstanta nebo sloupec hodnot.  
 
-### <a name="gammaregularizedqinverse"></a>GammaRegularizedQInverse
+### <a name="gammaregularizedqinverse"></a>GamaRegularizedQInverse
 
-Vrací hodnotu inverzní generalizované neúplné funkce gamma.
+Vrátí hodnotu inverzní generalizované regularizované neúplné funkce gama.
 
-Tato funkce přijímá druhý argument, který lze zadat buď jako konstantu, nebo jako sloupec hodnot.  
+Tato funkce má druhý argument, který může být poskytnuta buď jako konstanta nebo sloupec hodnot.  
 
-### <a name="polygamma"></a>Hodnota Gamma
+### <a name="polygamma"></a>PolyGamma
 
-Vrátí hodnotu funkce gamma.  
+Vrátí hodnotu funkce polygammu.  
 
-Tato funkce přijímá druhý argument, který lze zadat buď jako konstantu, nebo jako sloupec hodnot.
+Tato funkce má druhý argument, který může být poskytnuta buď jako konstanta nebo sloupec hodnot.
 
-##  <a name="trigonometric-functions"></a>Trigonometrické funkce 
+##  <a name="trigonometric-functions"></a>Goniometrické funkce 
 
-Tato kategorie iIncludes většinu důležitých trigonometrických a inverzních trigonometrických funkcí. Všechny trigonometrické funkce jsou unární a nevyžadují žádné další argumenty.  
+Tato kategorie iZahrnuje většinu důležitých goniometrických a inverzních goniometrických funkcí. Všechny goniometrické funkce jsou unární a nevyžadují žádné další argumenty.  
 
 ### <a name="acos"></a>Acos
 
-Vypočítá Arkus kosinus pro hodnoty sloupce.  
+Vypočítá arckosinus pro hodnoty sloupců.  
 
 ### <a name="acosdegree"></a>AcosDegree
 
-Vypočítá Arkus kosinus hodnot sloupce ve stupních.  
+Vypočítá arckosinus hodnot sloupců ve stupních.  
 
-### <a name="acosh"></a>Acosh –
+### <a name="acosh"></a>Acosh
 
-Vypočítá Hyperbolický arkuskosinus hodnot sloupců.  
+Vypočítá hyperbolický arckosinu hodnot sloupců.  
 
 ### <a name="acot"></a>Acot
 
-Vypočítá Arkus kotangens hodnot sloupců.  
+Vypočítá arccotangent hodnot sloupců.  
 
 ### <a name="acotdegrees"></a>AcotDegrees
 
-Vypočítá Arkus kotangens hodnot sloupce ve stupních.  
+Vypočítá arccotangent hodnot sloupců ve stupních.  
 
-### <a name="acoth"></a>Acoth
+### <a name="acoth"></a>Acoth (Acoth)
 
-Vypočítá hyperbolický Arkus kotangens hodnot sloupců.  
+Vypočítá hyperbolický arccotangent hodnot sloupců.  
 
 ### <a name="acsc"></a>Acsc
 
@@ -448,42 +448,42 @@ Vypočítá arccosecant hodnot sloupců.
 
 ### <a name="acscdegrees"></a>AcscDegrees
 
-Vypočítá arccosecant hodnot sloupce ve stupních.  
+Vypočítá arccosecant hodnot sloupců ve stupních.  
 ### <a name="asec"></a>Asec
 
 Vypočítá arcsecant hodnot sloupců.  
 
 ### <a name="asecdegrees"></a>AsecDegrees
 
-Vypočítá arcsecant hodnot sloupce ve stupních.  
+Vypočítá arcsecant hodnot sloupců ve stupních.  
 
-### <a name="asech"></a>Asech
+### <a name="asech"></a>Asech (Asech)
 
 Vypočítá hyperbolický arcsecant hodnot sloupců.  
 
 ### <a name="asin"></a>Asin
 
-Vypočítá Arkus sinus hodnot sloupců.  
+Vypočítá arcinsin hodnot sloupců.  
 
 ### <a name="asindegrees"></a>AsinDegrees
 
-Vypočítá Arkus sinus hodnot sloupce ve stupních.  
+Vypočítá arcinsin hodnot sloupců ve stupních.  
 
-### <a name="asinh"></a>Asinh –
+### <a name="asinh"></a>Asinh (Asinh)
 
-Vypočítá hyperbolický arkussinus pro hodnoty sloupce.  
+Vypočítá hyperbolický arcinin pro hodnoty sloupců.  
 
 ### <a name="atan"></a>Atan
 
-Vypočítá arkustangens hodnot sloupců.  
+Vypočítá arctangent hodnot sloupců.  
 
 ### <a name="atandegrees"></a>AtanDegrees
 
-Vypočítá arkustangens hodnot sloupce ve stupních.  
+Vypočítá arctangent hodnot sloupců ve stupních.  
 
-### <a name="atanh"></a>Atanh –
+### <a name="atanh"></a>Atanh (Atanh)
 
-Vypočítá hyperbolický arkustangens hodnot sloupců.  
+Vypočítá hyperbolický arctangent hodnot sloupců.  
 
 ### <a name="cos"></a>Cos
 
@@ -491,66 +491,66 @@ Vypočítá kosinus hodnot sloupců.
 
 ### <a name="cosdegrees"></a>CosDegrees
 
-Vypočítá kosinus pro hodnoty sloupce ve stupních.  
+Vypočítá kosinus pro hodnoty sloupců ve stupních.  
 
 ### <a name="cosh"></a>Cosh
 
-Vypočítá hyperbolický kosinus hodnot sloupců.  
+Vypočítá hyperbolický kosinus pro hodnoty sloupců.  
 
 ### <a name="cot"></a>Cot
 
-Vypočítá kotangens hodnot sloupců.  
+Vypočítá kotangent pro hodnoty sloupců.  
 
-### <a name="cotdegrees"></a>CotDegrees
+### <a name="cotdegrees"></a>Dětská uchy
 
-Vypočítá kotangens hodnot sloupců ve stupních.  
+Vypočítá kotangent pro hodnoty sloupců ve stupních.  
 
 ### <a name="coth"></a>Coth
-Vypočítá hyperbolický kotangens pro hodnoty sloupce.  
+Vypočítá hyperbolický kotangenpro hodnoty sloupců.  
 
-### <a name="csc"></a>Soubor
+### <a name="csc"></a>Csc
 
-Vypočítá kosekans pro hodnoty sloupce.  
+Vypočítá kosekanpro hodnoty sloupců.  
 
 ### <a name="cscdegrees"></a>CscDegrees
 
-Vypočítá kosekans pro hodnoty sloupce ve stupních.  
+Vypočítá kosekant pro hodnoty sloupců ve stupních.  
 
-### <a name="csch"></a>Csch
+### <a name="csch"></a>Čsch
 
-Vypočítá hyperbolický kosekans pro hodnoty sloupce.  
+Vypočítá hyperbolický kosekanpro hodnoty sloupců.  
 
 ### <a name="degreestoradians"></a>DegreesToRadians
 
 Převede stupně na radiány.  
 
-### <a name="sec"></a>Sek.
+### <a name="sec"></a>Sec
 
 Vypočítá sekans hodnot sloupců.  
 
 ### <a name="asecdegrees"></a>aSecDegrees
 
-Vypočítá sekans pro hodnoty sloupce ve stupních.  
+Vypočítá sekan pro hodnoty sloupců ve stupních.  
 
 ### <a name="asech"></a>aSech
 
 Vypočítá hyperbolický sekans hodnot sloupců.  
 
-### <a name="sign"></a>Podepsat
+### <a name="sign"></a>Znaménko
 
-Vrátí znaménko hodnot sloupce.  
+Vrátí znaménko hodnot sloupců.  
 
 ### <a name="sin"></a>Sin
 
-Vypočítá sinus hodnot sloupce.  
+Vypočítá sinus hodnot sloupců.  
 
-### <a name="sinc"></a>Sinc
+### <a name="sinc"></a>Sink
 
-Vypočítá hodnotu hodnoty sloupce ve sinus-kosinus hodnot.  
+Vypočítá hodnotu sinusového kosinusu hodnot sloupců.  
 
 ### <a name="sindegrees"></a>SinDegrees
 
-Vypočítá sinus hodnot sloupce ve stupních.  
+Vypočítá sinus pro hodnoty sloupců ve stupních.  
 
 ### <a name="sinh"></a>Sinh
 
@@ -558,35 +558,35 @@ Vypočítá hyperbolický sinus hodnot sloupců.
 
 ### <a name="tan"></a>Tan
 
-Vypočítá tangens hodnot sloupců.  
+Vypočítá tečnu hodnot sloupců.  
 
 ### <a name="tandegrees"></a>TanDegrees
 
-Vypočítá tangens argumentu ve stupních.  
+Vypočítá tečnu pro argument ve stupních.  
 
 ### <a name="tanh"></a>Tanh
 
-Vypočítá hyperbolický tangens hodnot sloupců.  
+Vypočítá hyperbolickou tečnu hodnot sloupců.  
   
 ## <a name="technical-notes"></a>Technické poznámky
 
-Buďte opatrní, když vyberete více než jeden sloupec jako druhý operátor. Výsledky jsou snadno srozumitelné, pokud je operace jednoduchá, například přidání konstanty do všech sloupců. 
+Buďte opatrní, když vyberete více než jeden sloupec jako druhý operátor. Výsledky jsou snadno pochopitelné, pokud je operace jednoduchá, například přidání konstanty do všech sloupců. 
 
-Předpokládejme, že vaše datová sada obsahuje více sloupců, a vy přidáte datovou sadu do sebe samé. Ve výsledcích jsou jednotlivé sloupce přidány do sebe samé takto:  
+Předpokládejme, že vaše datová sada obsahuje více sloupců a přidáte ji do sebe. Ve výsledcích je každý sloupec přidán sám k sobě, a to následovně:  
   
-|Num1|Num2|Num3|Přidat (Num1_Num1)|Přidat (Num2_Num2)|Přidat (Num3_Num3)|
+|Číslo 1|Číslo 2|Číslo 3|Přidat (Num1_Num1)|Přidat (Num2_Num2)|Přidat (Num3_Num3)|
 |----|----|----|----|----|----|
-|1\. místo|5|2|2|10|4|
+|1|5|2|2|10|4|
 |2|3|-1|4|6|-2|
-|0|1\. místo|-1|0|2|-2|
+|0|1|-1|0|2|-2|
 
-Pokud potřebujete provádět složitější výpočty, můžete zřetězit více instancí **operace použití matematických operací**. Například můžete přidat dva sloupce pomocí jedné instance **použití matematické operace**a potom použít jinou instanci **operace Apply** (použít) k rozdělení součtu konstantou pro získání střední hodnoty.  
+Pokud potřebujete provádět složitější výpočty, můžete zřetězit více instancí **použít operaci matematiky**. Můžete například přidat dva sloupce pomocí jedné instance **operace Použít matematický a**potom použít jinou instanci operace Použít **matematický** k rozdělení součtu konstantou pro získání střední.  
   
-Případně můžete použít jeden z následujících modulů k provedení všech výpočtů najednou, pomocí jazyka SQL, R nebo skriptu Python:
+Případně použijte jeden z následujících modulů k provedení všech výpočtů najednou pomocí skriptu SQL, R nebo Pythonu:
  
-+ [Spustit skript jazyka R](execute-r-script.md)
-+ [Spustit skript jazyka Python](execute-python-script.md)
-+ [Použít transformaci SQL](apply-sql-transformation.md)   
++ [Spouštění skriptů R](execute-r-script.md)
++ [Spouštění skriptů Pythonu](execute-python-script.md)
++ [Použití transformace SQL](apply-sql-transformation.md)   
   
 ## <a name="next-steps"></a>Další kroky
 
