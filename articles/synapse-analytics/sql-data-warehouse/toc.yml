@@ -16,12 +16,12 @@
       href: sql-data-warehouse-service-capacity-limits.md
     - name: Nejčastější dotazy
       href: sql-data-warehouse-overview-faq.md
-- name: Poznámky k verzi
-  items:
-    - name: Nedávno vydaná verze
-      href: release-notes-10-0-10106-0.md
-    - name: Plán upgradu oblastí Gen2
-      href: gen2-migration-schedule.md
+    - name: "Poznámky k\_verzi"
+      items:
+        - name: Nedávno vydaná verze
+          href: release-notes-10-0-10106-0.md
+        - name: Plán upgradu oblastí Gen2
+          href: gen2-migration-schedule.md
 - name: Rychlé starty
   expanded: true
   items:

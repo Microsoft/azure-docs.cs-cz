@@ -1,45 +1,45 @@
 ---
-title: Co je kontroler služby Azure Application Gateway pro příchozí přenosy?
-description: Tento článek poskytuje Úvod k tomu, co je Application Gateway řadič příchozího přenosu dat.
+title: Co je řadič příchozího přenosu dat aplikační brány Azure?
+description: Tento článek obsahuje úvod k tomu, co je řadič příchozího přenosu dat in-gress brány aplikace.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 838145f8573e11deff8566c932a9c73c6f59f03b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d6a63b6276c07b1fe6487b97f5c7fc255b6d3411
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335802"
 ---
-# <a name="what-is-application-gateway-ingress-controller"></a>Co je Application Gateway kontroler příchozího přenosu dat?
-AGIC) je Kubernetes aplikace, díky které můžou zákazníci [služby Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) využít Azure azure Native [Application Gateway](https://azure.microsoft.com/services/application-gateway/) (pro vyrovnávání zatížení L7) a zveřejnit tak cloudový software na Internet. Application Gateway AGIC monitoruje cluster Kubernetes, na kterém je hostovaný, a nepřetržitě aktualizuje Application Gateway, aby se vybrané služby zobrazovaly na internetu.
+# <a name="what-is-application-gateway-ingress-controller"></a>Co je řadič příchozího přenosu dat v aplikační bráně?
+Řadič vstupního přenosu dat aplikační brány (AGIC) je aplikace Kubernetes, která zákazníkům [služby Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) umožňuje využívat nativní vyvažovač zatížení Azure Pro nativní [aplikační bránu](https://azure.microsoft.com/services/application-gateway/) L7 k vystavení cloudového softwaru k Internetu. AGIC monitoruje cluster Kubernetes, ve kterých je hostován, a průběžně aktualizuje aplikační bránu, takže vybrané služby jsou vystaveny Internetu.
 
-Kontroler příchozího provozu je spuštěný pod AKS zákazníka. AGIC monitoruje podmnožinu prostředků Kubernetes pro změny. Stav clusteru AKS se převede na Application Gateway specifickou konfiguraci a použije se na [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Řadič příchozího přenosu dat běží ve vlastním podu na AKS zákazníka. AGIC monitoruje podmnožinu Kubernetes Resources pro změny. Stav clusteru AKS se přeloží na konkrétní konfiguraci aplikační brány a použije se ve [Správci prostředků Azure (ARM).](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
 
-## <a name="benefits-of-application-gateway-ingress-controller"></a>Výhody Application Gatewayho řadiče pro příchozí přenos dat
-AGIC umožňuje vašemu nasazení řídit více clusterů AKS pomocí jednoho kontroleru Application Gateway příchozího přenosu dat. AGIC také pomáhá eliminovat nutnost mít další službu Vyrovnávání zatížení/veřejnou IP adresu před clusterem AKS a před požadavky na cluster AKS zabrání vícenásobnému směrování ve vaší datacestách. Application Gateway mluví s lusky pomocí jejich privátní IP adresy přímo a nevyžaduje služby NodePort nebo KubeProxy. Tím se také zvýší výkon pro vaše nasazení.
+## <a name="benefits-of-application-gateway-ingress-controller"></a>Výhody řadiče příchozího přenosu dat aplikační brány
+AGIC umožňuje nasazení řídit více clusterů AKS s jedním řadičem příchozího přenosu dat aplikační brány. AGIC také pomáhá eliminovat potřebu mít další vyrovnávání zatížení/veřejnou IP adresu před clusterem AKS a vyhýbá se více směrování v datové cestě před požadavky dosáhnout clusteru AKS. Aplikace Gateway mluví s pody pomocí jejich privátní IP přímo a nevyžaduje NodePort nebo KubeProxy služby. To také přináší lepší výkon pro vaše nasazení.
 
-Kontroler příchozího přenosu dat podporuje výhradně Standard_v2 a WAF_v2 SKU, což také přináší výhody automatického škálování. Application Gateway může reagovat při reakci na zvýšení nebo snížení zatížení provozu a odpovídajícím způsobem škálovat, aniž by se musely spotřebovávat žádné prostředky z clusteru AKS.
+Ingress Controller je podporován výhradně Standard_v2 a WAF_v2 sku, což také přináší výhody automatického škálování. Aplikační brána může reagovat v reakci na zvýšení nebo snížení zatížení provozu a škálování odpovídajícím způsobem, aniž by spotřebovávat všechny prostředky z clusteru AKS.
 
-Použití Application Gateway kromě AGIC také pomáhá chránit cluster AKS tím, že poskytuje zásady TLS a funkce firewallu webových aplikací (WAF).
+Použití aplikační brány kromě AGIC také pomáhá chránit cluster AKS tím, že poskytuje zásady TLS a funkce brány WAF (Web Application Firewall).
 
-![Azure Application Gateway + AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
+![Azure Aplikační brána + AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
 
-AGIC se konfiguruje prostřednictvím [prostředku](https://kubernetes.io/docs/user-guide/ingress/)Kubernetes příchozího přenosu společně se službami a nasazeními/lusky. Poskytuje řadu funkcí, které využívají nativní službu pro vyrovnávání zatížení Azure Application Gateway. Několik názvů:
+AGIC je konfigurován prostřednictvím [prostředku Příchozí přenos](https://kubernetes.io/docs/user-guide/ingress/)dat Kubernetes spolu se službou a nasazeními/pody. Poskytuje řadu funkcí, které využívají nativní nástroje pro vyrovnávání zatížení Azure nativní aplikační brány L7. Abychom jmenovali několik:
   - Směrování adres URL
   - Spřažení na základě souborů cookie.
-  - Ukončení protokolu SSL
-  - Kompletní SSL
-  - Podpora veřejných, privátních a hybridních webů
-  - Integrovaný Firewall webových aplikací
+  - Ukončení TLS
+  - Komplexní TLS
+  - Podpora veřejných, soukromých a hybridních webových stránek
+  - Brána firewall pro integrovanou webovou aplikaci
 
-AGIC je schopen zpracovat více oborů názvů a má ProhibitedTargets, což znamená, že AGIC může nakonfigurovat Application Gateway specificky pro clustery AKS, aniž by to ovlivnilo jiné stávající back-endy. 
+AGIC je schopen zpracovat více oborů názvů a má zakázané cíle, což znamená, že AGIC můžete nakonfigurovat aplikační bránu speciálně pro clustery AKS bez ovlivnění jiných existujících back-endů. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [**Nasazení bezserverová**](ingress-controller-install-new.md): pokyny k instalaci AGIC, AKS a Application Gateway v infrastruktuře s prázdnou a neslat.
-- [**Nasazení brownfield**](ingress-controller-install-existing.md): Nainstalujte AGIC na existující AKS a Application Gateway.
+- [**Nasazení na zelené poli**](ingress-controller-install-new.md): Pokyny k instalaci AGIC, AKS a aplikační brány na infrastrukturu s prázdnou břidlicí.
+- [**Brownfield Nasazení**](ingress-controller-install-existing.md): Nainstalujte AGIC na existující AKS a aplikační brány.
 

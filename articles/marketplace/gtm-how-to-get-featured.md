@@ -1,52 +1,51 @@
 ---
-title: Služby pro uvedení na trh – jak získat vybrané na webu Marketplace | Azure
-description: Služby pro uvedení na trh – v této části se dozvíte, jak získat seznam doporučený pro Azure Marketplace
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Go-To-Market Services - Jak se dostat vystupoval na trhu | Azure
+description: Služby go-to-market – tato část popisuje, jak získat výpis, který se zobrazuje na Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/21/2018
-ms.author: ellacroi
-ms.openlocfilehash: 12dcdff082ce1bac350d0e3a426df6acec6efe99
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286281"
 ---
-# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak získat Doporučené informace v AppSource a Azure Marketplace
+# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak se dostat do AppSource a Azure Marketplace
 
-Azure Marketplace a AppSource obsahují oddíly s **vybranými aplikacemi** , kde můžete mít vybranou aplikaci:
+Azure Marketplace a AppSource mají doporučené části **aplikací,** kde můžete získat aplikaci:
 
-* Za prvé, pokud máte nabídku zkušební verze nebo transakce, můžete využít výhody "propagace kategorií" prostřednictvím [výhod komerčního tržiště](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
-* Potom si přečtěte seznam osvědčených postupů a kritérií níže, abyste mohli získat na místě.
+* Za prvé, pokud máte zkušební verzi nebo transakci nabídku, můžete použít "kategorie propagace" prospěch prostřednictvím [komerčního trhu výhody](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+* Za druhé, zkontrolujte níže uvedený seznam osvědčených postupů a kritérií, abyste získali místo.
 
-Algoritmus výběru vybrané aplikace vygeneruje skóre pro aplikaci od Microsoftu, stejně jako platební skóre osoby v USA.  Týdenní výběr doporučených aplikací bude založen na výpočtu výkonu aplikace a služby.
+Algoritmus výběru vybraných aplikací generuje skóre do aplikace od společnosti Microsoft, stejně jako kreditní skóre osoby v USA.  Týdenní výběr doporučených aplikací bude založen na výpočtu výkonu aplikací a služeb.
 
-## <a name="steps-to-take"></a>Kroky, které je potřeba provést
+## <a name="steps-to-take"></a>Kroky, které je třeba podniknout
 
-Ke zlepšení skóre můžete použít následující akce:
+Ke zlepšení skóre můžete provést následující položky akce:
 
-1. *Ujistěte se, že je vaše aplikace nebo služba vhodně zařazené*: vyberte tři kategorie, které reprezentují možnosti vaší aplikace nebo služby.
-2. *Azure Marketplace aplikace: Rozšiřte využití Azure za měsíc měsíčně.* Pokud můžete dosáhnout 1 000 hodin využití Azure v měsíci, bude se vám značně zvyšovat pravděpodobnost, že se vám bude podařit.
-3. *Aplikace AppSource: Zvyšte akvizice, které připravujeme na vaši nabídku.* Pokud máte možnost dosáhnout 10 akvizic za měsíc, budete značně zvyšovat pravděpodobnost, že se vám bude vymezit. 
-4. *Dosažení stavu připraveného pro společný prodej*: splnění požadavků pro spoluprodejní přípravu.
-5. *Zlepšení kvality vaší nabídky*: informace o tom, jak upravit nabídku, najdete v [pokynech pro výpis obsahu](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) .
-6. Publikujete několik nabídek na webu Marketplace: jsou uvedené všechny vaše základní aplikace a služby? Máte zkušební prostředí?
-7. Doporučte zákazníkům psát recenze.
+1. *Ujistěte se, že vaše aplikace nebo služba je správně kategorizována:* zvolte tři kategorie, které představují možnosti aplikace nebo služby.
+2. *Aplikace Azure Marketplace: spotřebovávejte azure měsíc za měsíc.* Pokud se vám podaří dosáhnout 1 000 hodin využití Azure měsíčně, výrazně zvýšíte vaše šance na nejlepší roli.
+3. *AppSource Apps: zvyšte akvizice, které přicházejí do vaší nabídky.* Pokud jste schopni dosáhnout 10 akvizic za měsíc, budete výrazně zvýšit své šance na bytí vystupoval. 
+4. *Dosáhněte stavu Co-Sell ready*: vyplňte požadavky na co-sell ready.
+5. *Zlepšete kvalitu nabídky*: informace o úpravě nabídky naleznete v [pokynech](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) pro obsah
+6. Publikování více nabídek na Marketplace: jsou uvedeny všechny základní aplikace a služby? Máte zkušební zkušenosti?
+7. Povzbuďte své zákazníky, aby psali recenze.
 
-Vybrané aplikace propagační akce fungují odděleně od vyhledávacího algoritmu.
+Doporučené nabídky aplikací fungují odděleně od vyhledávacího algoritmu.
 
 >[!Note]
->Pokud se vaše řešení ve výsledcích hledání nezobrazuje správně, požádejte o pomoc lístek podpory prostřednictvím nabídky Help v [portál partnerů cloudu](https://cloudpartner.azure.com/).
+>Pokud se vaše řešení ve výsledcích hledání nezobrazuje správně, najděte lístek podpory prostřednictvím nabídky Nápověda [na portálu partnerů cloudu](https://cloudpartner.azure.com/).
 
-Vaše podpora GTM také obsahuje úplnou knihovnu šablon samoobslužných pomoc, webového obsahu, školení a nástrojů, které vám pomůžou lépe propagovat vaše výpisy a vaše podnikání.
+Vaše podpora GTM také obsahuje úplnou knihovnu svépomocných šablon, webového obsahu, školení a nástrojů, které vám pomohou dále propagovat vaše zápisy a vaši firmu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [výhodách komerčního tržiště](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+Přečtěte si další informace o [výhodách komerčního trhu](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
-Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com) a vytvořte a nakonfigurujte vaši nabídku.
+Přihlaste se k [portálu cloudových partnerů](https://cloudpartner.azure.com) a vytvořte a nakonfigurujte svou nabídku.
 
 ---

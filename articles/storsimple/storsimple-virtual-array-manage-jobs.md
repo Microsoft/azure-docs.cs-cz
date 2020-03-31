@@ -1,6 +1,6 @@
 ---
-title: Zobrazení a Správa úloh StorSimple Virtual Array | Dokumentace Microsoftu
-description: Popisuje úlohy stránce služby Správce zařízení StorSimple a použít ho ke sledování nedávných a aktuálních úloh pro StorSimple Virtual Array.
+title: Zobrazit a spravovat úlohy StorSimple Virtual Array | Dokumenty společnosti Microsoft
+description: Popisuje stránku Úlohy služby StorSimple Device Manager a způsob, jak ji použít ke sledování posledních a aktuálních úloh pro virtuální pole StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,54 +15,54 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60302476"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Slouží k zobrazení úloh pro StorSimple Virtual Array do služby Správce zařízení StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Použití služby StorSimple Device Manager k zobrazení úloh pro virtuální pole StorSimple
 ## <a name="overview"></a>Přehled
-**Úlohy** okno poskytuje jednu centrální portál pro zobrazování a správu úloh, které jsou spuštěny na virtuální pole, které jsou připojené ke službě Správce zařízení StorSimple. Můžete zobrazit spuštěné, dokončenou a neúspěšné úlohy pro více virtuálních zařízení. Výsledky jsou uvedené ve formátu tabulky.
+Okno **Úlohy** poskytuje jeden centrální portál pro zobrazení a správu úloh, které jsou spuštěny na virtuálních polích, které jsou připojeny k vaší službě StorSimple Device Manager. Můžete zobrazit spuštěné, dokončené a neúspěšné úlohy pro více virtuálních zařízení. Výsledky jsou prezentovány v tabulkovém formátu.
 
-![Okno úlohy](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+![Kotouč pracovních míst](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 
-Můžete rychle najít úloh, které mají zájem pomocí filtrování pole, jako:
+Úlohy, které vás zajímají, můžete rychle najít filtrováním polí, jako jsou:
 
-* **Časový rozsah** – úlohy je možné filtrovat podle rozsahu datum a čas.
-* **Zařízení** – úlohy se zahájí na konkrétní zařízení připojené k vaší službě. Filtrované úlohy jsou pak uvedených na základě následujících atributů:
+* **Časový rozsah** – Úlohy lze filtrovat na základě data a časového rozsahu.
+* **Zařízení** – úlohy se inicializuje na konkrétním zařízení připojeném k vaší službě. Filtrované úlohy jsou pak tabulkovány podle následujících atributů:
   
-  * **Název** – název úlohy může být **všechny**, **zálohování**, **klonování**, **převzetí služeb při selhání**, **stahování aktualizací**, nebo **instalovat aktualizace**.
-  * **Stav** – úlohy můžou být **všechny**, **probíhá**, **Succeeded**, nebo **neúspěšné**, nebo **zrušeno**.
-  * **Entity** – úlohy, které mohou být spojeny s svazek, sdílená složka nebo zařízení.
-  * **Zařízení** – název zařízení, na kterém byla spuštěna úloha.
-  * **Spustit na** – čas zahájení úlohy.
-  * **Doba trvání** – doba trvání podle kterého se spouští úloha.
-* **Stav** – můžete vyhledat všechny spuštěné, Dokončeno nebo neúspěšné úlohy.
-* **Typ úlohy** – typ úlohy být vše, zálohování, obnovení, převzetí služeb při selhání, stažení aktualizací nebo instalace aktualizací.
+  * **Název** – Název úlohy může být **Vše**, **Zálohování**, **Klonování**, **Převzetí služeb při selhání**, Stažení **aktualizací**nebo **Instalace aktualizací**.
+  * **Stav** – Úlohy mohou být **Všechny**, **Probíhá**, **Úspěšné**nebo **Neúspěšné**nebo **Zrušené**.
+  * **Entita** – úlohy lze přidružit ke svazku, sdílené složce nebo zařízení.
+  * **Zařízení** – název zařízení, na kterém byla úloha spuštěna.
+  * **Začalo** to – čas, kdy byla úloha spuštěna.
+  * **Doba trvání** – doba trvání, po kterou byla úloha spuštěna.
+* **Stav** – Můžete vyhledat všechny, spuštěné, dokončené nebo neúspěšné úlohy.
+* **Typ úlohy** – Typ úlohy může být všechny, zálohování, obnovení, převzetí služeb při selhání, stahování aktualizací nebo instalace aktualizací.
 
 Seznam úloh se aktualizuje každých 30 sekund.
 
 ## <a name="view-job-details"></a>Zobrazení podrobností o úloze
-Proveďte následující kroky, chcete-li zobrazit podrobnosti libovolné úlohy.
+Chcete-li zobrazit podrobnosti o libovolné úloze, proveďte následující kroky.
 
-#### <a name="to-view-job-details"></a>Chcete-li zobrazit podrobnosti o úloze
-1. Na **úlohy** okně zobrazení úlohy mají zájem spuštěním dotazu s vhodné filtry. Můžete vyhledat spuštěné nebo dokončené úlohy.
+#### <a name="to-view-job-details"></a>Zobrazení podrobností o úloze
+1. V okně **Úlohy** zobrazte úlohy, které vás zajímají, spuštěním dotazu s příslušnými filtry. Můžete vyhledat dokončené nebo spuštěné úlohy.
 2. Vyberte úlohu z tabulkového seznamu úloh.
    
-    ![Okno úlohy](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
-3. V dolní části stránky klikněte na tlačítko **podrobnosti**.
-4. V **podrobnosti** dialogovém okně můžete zobrazit stav, podrobnosti a statistiku časových údajů. Následující obrázek znázorňuje příklad **podrobnosti úlohy zálohování** dialogové okno.
+    ![Pracovní čepel](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+3. V dolní části stránky klikněte na **Podrobnosti**.
+4. V dialogovém okně **Podrobnosti** můžete zobrazit stav, podrobnosti a statistiky času. Následující obrázek znázorňuje příklad dialogového okna **Podrobnosti zálohovací úlohy.**
    
     ![Podrobnosti o úloze](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
-#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Selhání úlohy, když se virtuální počítač pozastaví v hypervisoru
-Když úloha je ve průběh StorSimple Virtual Array a zařízení (virtuální počítač zřízený v hypervisoru) je pozastaven na více než 15 minut, úloha se nezdaří. To je z důvodu času StorSimple Virtual Array nejsou synchronizovány s časem služby Microsoft Azure. 
+#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Selhání úlohy při pozastavení virtuálního počítače v hypervisoru
+Pokud probíhá úloha na virtuálním poli StorSimple a zařízení (virtuální počítač zřízený v hypervisoru) je pozastaveno na více než 15 minut, úloha se nezdaří. Důvodem je, že váš čas virtuálního pole StorSimple není synchronizován s časem Microsoft Azure. 
 
-Zobrazí se následující chyba: "Čas zařízení není synchronizovaný s časem služby Microsoft Azure o víc než 15 minut. Ujistěte se, že hypervisoru a zařízení, které časy jsou synchronizovány pomocí serveru NTP. Ověřte, že zde nejsou žádné problémy s připojením. K řešení problémů s připojením, spusťte diagnostické testy z místního webového uživatelského rozhraní vašeho virtuálního zařízení."
+Zobrazí se následující chyba: "Čas vašeho zařízení není synchronizován s časem Microsoft Azure o více než 15 minut. Ujistěte se, že hypervisor a časy zařízení jsou synchronizovány se serverem NTP. Ověřte, zda nejsou žádné problémy s připojením. Chcete-li vyřešit problémy s připojením, spusťte diagnostické testy z místního webového uživatelského rozhraní virtuálního zařízení."
 
-Tyto chyby se vztahují na úlohy zálohování, obnovení, aktualizace a převzetí služeb při selhání. Pokud zřízení virtuálního počítače Hyper-v na počítači nakonec synchronizuje čas s vaší hypervisoru. Jakmile se to stane, můžete restartovat úlohy.
+Tato selhání platí pro úlohy zálohování, obnovení, aktualizace a převzetí služeb při selhání. Pokud váš virtuální počítač je zřízena v Hyper-V, počítač nakonec synchronizuje čas s hypervisorem. Jakmile se to stane, můžete restartovat svou úlohu.
 
-## <a name="next-steps"></a>Další postup
-[Další informace o použití místního webového uživatelského rozhraní pro správu StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+## <a name="next-steps"></a>Další kroky
+[Přečtěte si, jak používat místní webové uživatelské prostředí ke správě virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md).
 

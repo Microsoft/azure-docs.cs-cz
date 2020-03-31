@@ -1,6 +1,6 @@
 ---
-title: Horizontální navýšení kapacity Azure DevTest Labs infrastruktury
-description: Tento článek poskytuje pokyny pro škálování infrastruktury Azure DevTest Labs.
+title: Škálování infrastruktury Azure DevTest Labs
+description: Tento článek obsahuje pokyny pro škálování infrastruktury Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,57 +14,57 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644830"
 ---
-# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Horizontální navýšení kapacity Azure DevTest Labs infrastruktury
-Před implementací DevTest Labs v podnikovém měřítku je k dispozici několik klíčových rozhodovacích bodů. Porozumění těmto rozhodovacím bodům na vysoké úrovni pomáhá organizaci s rozhodováním o návrhu v budoucnu. Nicméně tyto body by neměly mít v organizaci zpětnou kontrolu konceptu. V horních třech oblastech pro počáteční plánování horizontálního navýšení kapacity jsou:
+# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Škálování infrastruktury Azure DevTest Labs
+Před implementací DevTest Labs v podnikovém měřítku existuje několik klíčových bodů rozhodnutí. Pochopení těchto rozhodovacích bodů na vysoké úrovni pomáhá organizaci s rozhodnutími o návrhu v budoucnu. Tyto body by však neměly zadržet organizaci od spuštění dokladu o konceptu. První tři oblasti pro počáteční plánování rozšiřování jsou:
 
-- Sítě a zabezpečení
+- Vytváření sítí a zabezpečení
 - Topologie předplatného
 - Role a odpovědnosti
 
-## <a name="networking-and-security"></a>Sítě a zabezpečení
-Sítě a zabezpečení jsou základem pro všechny organizace. I když nasazení na podnikové úrovni vyžaduje mnohem hlubší analýzu, existuje omezený počet požadavků na úspěšné provedení zkušebního konceptu. Mezi několik klíčových oblastí fokusu patří:
+## <a name="networking-and-security"></a>Vytváření sítí a zabezpečení
+Vytváření sítí a zabezpečení jsou základními kameny pro všechny organizace. Zatímco celopodnikové nasazení vyžaduje mnohem hlubší analýzu, existuje omezený počet požadavků na úspěšné provedení důkazu koncepce. Několik klíčových oblastí zájmu patří:
 
-- **Předplatné Azure** – nasazení DevTest Labs vyžaduje přístup k předplatnému Azure s odpovídajícími právy k vytváření prostředků. Existuje několik způsobů, jak získat přístup k předplatným Azure, včetně smlouva Enterprise a průběžné platby. Další informace o získání přístupu k předplatnému Azure najdete v tématu [licencování Azure pro podnik](https://azure.microsoft.com/pricing/enterprise-agreement/).
-- **Přístup k místním prostředkům** – některé organizace vyžadují, aby jejich prostředky v DevTest Labs měly přístup k místním prostředkům. Je potřeba zabezpečené připojení z místního prostředí k Azure. Proto je důležité nastavit/nakonfigurovat připojení VPN nebo Express Route předtím, než začnete. Další informace najdete v tématu [Přehled virtuálních sítí](../virtual-network/virtual-networks-overview.md).
-- **Další požadavky na zabezpečení** – další požadavky na zabezpečení, jako jsou zásady počítače, přístup k veřejným IP adresám, připojení k Internetu, jsou scénáře, které je třeba před implementací testování konceptu zkontrolovat. 
+- **Předplatné Azure** – K nasazení DevTest Labs, musíte mít přístup k předplatnému Azure s příslušnými právy k vytváření prostředků. Existuje několik způsobů, jak získat přístup k předplatným Azure, včetně smlouvy Enterprise a průběžných plateb. Další informace o získání přístupu k předplatnému Azure najdete v [tématu Licencování Azure pro podnik](https://azure.microsoft.com/pricing/enterprise-agreement/).
+- **Přístup k místním prostředkům** – některé organizace vyžadují své prostředky v DevTest Labs mají přístup k místním prostředkům. Je potřeba zabezpečené připojení z místního prostředí do Azure. Proto je důležité nastavit nebo nakonfigurovat připojení VPN nebo Express Route před zahájením. Další informace naleznete v tématu [Přehled virtuálních sítí](../virtual-network/virtual-networks-overview.md).
+- **Další požadavky na zabezpečení** – Další požadavky na zabezpečení, jako jsou zásady počítače, přístup k veřejným IP adresám, připojení k Internetu, jsou scénáře, které může být nutné zkontrolovat před implementací dokladu koncepce. 
 
 ## <a name="subscription-topology"></a>Topologie předplatného
-Topologie předplatného je důležitým aspektem návrhu při nasazení DevTest Labs do podniku. Není však nutné přesvědčit všechna rozhodnutí až do doby, kdy byl proveden důkaz konceptu. Při vyhodnocování počtu předplatných potřebných pro podnikovou implementaci existují dvě extrémní podmínky: 
+Topologie předplatného je důležitým aspektem návrhu při nasazování devtest labs na enterprise. Není však nutné všechna rozhodnutí zpevňovat, dokud nebude dokončen doklad o koncepci. Při vyhodnocování počtu předplatných požadovaných pro podnikovou implementaci existují dva extrémy: 
 
 - Jedno předplatné pro celou organizaci
 - Předplatné na uživatele
 
-V dalším kroku zvýrazníme profesionály každého přístupu.
+Dále zdůrazníme výhody každého přístupu.
 
 ### <a name="one-subscription"></a>Jedno předplatné
-Přístup k jednomu předplatnému se často nedá spravovat ve velkém podniku. Omezení počtu předplatných ale přináší následující výhody:
+Přístup jednoho předplatného často nelze spravovat ve velkém podniku. Omezení počtu předplatných však poskytuje následující výhody:
 
-- **Odhad** nákladů na podnik.  Rozpočtování je v rámci jednoho předplatného mnohem jednodušší, protože všechny prostředky jsou v jednom fondu. Tento přístup umožňuje jednodušší rozhodování o tom, kdy v jednom okamžiku vydávat míry řízení nákladů v rámci fakturačního cyklu.
-- **Spravovatelnost** virtuálních počítačů, artefaktů, vzorců, konfigurace sítě, oprávnění, zásad atd. je jednodušší, protože všechny aktualizace jsou vyžadovány pouze v jednom předplatném, nikoli při provádění aktualizací v mnoha předplatných.
-- **Síťové** úsilí se značně zjednodušuje v jednom předplatném pro podniky, u kterých je místní připojení potřeba. Propojení virtuálních sítí mezi předplatnými (model hvězdicové sítě) se vyžaduje u dalších odběrů, které vyžadují další konfiguraci, správu, adresní prostory IP adres atd.
-- **Týmová spolupráce** je jednodušší, když všichni pracují ve stejném předplatném, například je snazší změnit přiřazení virtuálního počítače spolupracovnímu procesu, sdílet týmové prostředky atd.
+- **Prognózování** nákladů pro podnik.  Rozpočtování se stává mnohem jednodušší v jednom předplatném, protože všechny prostředky jsou v jednom fondu. Tento přístup umožňuje jednodušší rozhodování o tom, kdy v daném okamžiku uplatnit opatření pro kontrolu nákladů v fakturačním cyklu.
+- **Správa** virtuálních počítačů, artefaktů, vzorců, konfigurace sítě, oprávnění, zásad atd.
+- **Síťové** úsilí je značně zjednodušeno v jednom předplatném pro podniky, kde je vyžadováno místní připojení. Připojení virtuálních sítí napříč předplatnými (model rozbočovače) je vyžadováno s dalšími předplatnými, což vyžaduje další konfiguraci, správu, prostory IP adres atd.
+- **Týmová spolupráce** je jednodušší, když všichni pracují ve stejném předplatném – například je jednodušší přiřadit virtuální ho k virtuálnímu zařízení spolupracovníkovi, sdílet prostředky týmu atd.
 
 ### <a name="subscription-per-user"></a>Předplatné na uživatele
-Samostatné předplatné na uživatele poskytuje stejné možnosti jako alternativní spektrum. Mezi výhody, které mají mnoho předplatných, patří:
+Samostatné předplatné na uživatele poskytuje rovné příležitosti pro alternativní spektrum. Mezi výhody mnoha předplatných patří:
 
-- **Kvóty Azure pro škálování** nebrání v přijetí. Například v případě tohoto zápisu Azure povoluje 200 účtů úložiště na předplatné. Pro většinu služeb v Azure existují provozní kvóty (mnoho se dá přizpůsobit, některé ale nemůžou). V tomto modelu předplatného na uživatele je vysoce pravděpodobné, že většina kvót dosáhne. Další informace o aktuálních kvótách škálování Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
-- **Vratek** do skupin nebo jednotlivých vývojářů se stane mnohem jednodušším, aby organizacím zohlednily náklady pomocí jejich současného modelu.
-- **Vlastnictví & oprávnění** prostředí DevTest Labs je jednoduché. Vývojářům poskytujete přístup na úrovni předplatného a 100% zodpovídá za všechno, co zahrnuje konfiguraci sítě, zásady testovacího prostředí a správu virtuálních počítačů.
+- **Azure škálování kvóty** nebudou bránit přijetí. Například k tomuto psaní Azure umožňuje 200 účtů úložiště na předplatné. Existují provozní kvóty pro většinu služeb v Azure (mnoho z nich lze přizpůsobit, některé ne. V tomto modelu předplatného na uživatele je vysoce nepravděpodobné, že by bylo dosaženo většiny kvót. Další informace o aktuálních kvótách škálování Azure najdete v [tématu Omezení předplatného a služeb Azure, kvóty a omezení](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- Zpětné náklady pro **skupiny** nebo jednotlivé vývojáře se stávají mnohem jednoduššími, což organizacím umožňuje účtovat náklady pomocí aktuálního modelu.
+- **Vlastnictví & oprávnění** prostředí DevTest Labs jsou jednoduchá. Vývojářům poskytujete přístup na úrovni předplatného a jsou 100% zodpovědní za vše, včetně konfigurace sítě, zásad testovacího prostředí a správy virtuálních počítačů.
 
-V podniku může být k dispozici dostatek omezení pro extrémní spektrum. Proto možná budete muset nastavit odběry způsobem, který spadá do středu těchto extrémních hodnot. V rámci osvědčeného postupu by měl být cílem organizace použití minimálního počtu předplatných, pokud je to možné, mějte na paměti vynucené funkce, které zvyšují celkový počet předplatných. Pro opakování iterace je topologie předplatného zásadní pro podnikové nasazení DevTest Labs, ale nemělo by se zpozdit o koncept. V článku týkajícím se [zásad správného řízení](devtest-lab-guidance-governance-policy-compliance.md) najdete další podrobnosti o tom, jak se rozhodnout na členitosti a předplatném v organizaci.
+Na Enterprise může být dost omezení na extrémy spektra. Proto může být nutné nastavit odběry způsobem, který spadá do prostřed těchto extrémů. Jako osvědčený postup by mělo být cílem organizace použít minimální počet předplatných, jak je to možné s ohledem na vynucení funkce, které zvyšují celkový počet odběrů. Chcete-li zopakovat, topologie předplatného je důležité pro podnikové nasazení DevTest Labs, ale neměl by zpozdit doklad koncepce. Další podrobnosti v článku [zásad správného řízení](devtest-lab-guidance-governance-policy-compliance.md) o tom, jak rozhodnout o předplatné a rozlišovací schopnost laboratoře v organizaci.
 
 ## <a name="roles-and-responsibilities"></a>Role a odpovědnosti
-Koncepce konceptu DevTest Labs má tři primární role s definovanými zodpovědností – vlastníkem předplatného, vlastníkem DevTest Labs a uživatelem DevTest Labs a volitelně také přispěvatelem.
+DevTest Labs proof concept má tři primární role s definovanými odpovědnostmi – vlastník předplatného, vlastník DevTest Labs, uživatel DevTest Labs a volitelně přispěvatel.
 
-- **Vlastník předplatného** – vlastník předplatného má práva ke správě předplatného Azure, včetně přiřazování uživatelů, správy zásad, vytváření & správy síťové topologie, vyžádání zvýšení kvóty atd. Další informace najdete v [tomto článku](../role-based-access-control/rbac-and-directory-admin-roles.md).
-- **Vlastník DevTest Labs** – vlastník DevTest Labs má úplný přístup správce k testovacímu prostředí. Tato osoba zodpovídá za přidání a odebrání uživatelů, správu nastavení nákladů, Obecné nastavení testovacího prostředí a další úlohy založené na virtuálních počítačích/artefaktech. Vlastník testovacího prostředí má také všechna práva uživatele DevTest Labs.
-- **Uživatel DevTest Labs** – uživatel DevTest Labs může vytvářet a využívat virtuální počítače v testovacím prostředí. Tito jednotlivci mají některé minimální administrativní funkce na virtuálních počítačích, které vytvoří (spustí/zastaví/odstraní nebo nakonfigurují své virtuální počítače). Uživatelé nemůžou spravovat virtuální počítače jiných uživatelů.
+- **Vlastník předplatného** – Vlastník předplatného má práva ke správě předplatného Azure, včetně přiřazování uživatelů, správy zásad, vytváření & správu síťové topologie, požadování zvýšení kvóty atd. Další informace naleznete v [tomto článku](../role-based-access-control/rbac-and-directory-admin-roles.md).
+- **DevTest Labs vlastník** – DevTest Labs vlastník má plný přístup pro správu do laboratoře. Tato osoba je zodpovědná za přidání nebo odebrání uživatelů, správu nastavení nákladů, obecné nastavení testovacího prostředí a další úlohy založené na virtuálních počítačůch nebo artefaktech. Vlastník testovacího prostředí má také všechna práva uživatele DevTest Labs.
+- **DevTest Labs uživatel** – DevTest Labs uživatel můžete vytvořit a využívat virtuální počítače v testovacím prostředí. Tito jednotlivci mají některé minimální možnosti správy na virtuálních počítačích, které vytvářejí (start/stop/delete/configure their VMs). Uživatelé nemohou spravovat virtuální uživatele jiných uživatelů.
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další článek v této sérii: [orchestrujte implementaci Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)
+Podívejte se na další článek v této sérii: [Orchestrate implementace Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)

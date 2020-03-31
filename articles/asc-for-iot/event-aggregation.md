@@ -1,6 +1,6 @@
 ---
-title: Principy Azure Security Center pro agregaci událostí IoT | Microsoft Docs
-description: Přečtěte si o Azure Security Center pro agregaci událostí IoT.
+title: Principy Azure Security Center pro agregaci událostí IoT| Dokumenty společnosti Microsoft
+description: Přečtěte si o azure security center pro agregaci událostí IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,84 +16,84 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73928961"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center pro agregaci událostí IoT
 
-Azure Security Center pro agenty zabezpečení IoT shromažďují data a systémové události z místního zařízení a odesílají tato data do cloudu Azure pro zpracování a analýzu. Agent zabezpečení shromažďuje mnoho typů událostí zařízení, včetně nového procesu a událostí nového připojení. Události nového procesu a nového připojení se můžou na zařízení v druhé době často vyskytnout a i když jsou důležité pro robustní a komplexní zabezpečení, může se stát, že se počet zpráv, které agenti zabezpečení donutí, rychle dostanou nebo překročí IoT Hub omezení kvóty a nákladů. Tyto události však obsahují vysoce cenné informace o zabezpečení, které jsou zásadní pro ochranu zařízení.
+Agenti zabezpečení Azure Security Center pro IoT shromažďuje data a systémové události z místního zařízení a odesílají tato data do cloudu Azure pro zpracování a analýzu. Agent zabezpečení shromažďuje mnoho typů událostí zařízení, včetně nového procesu a nové události připojení. Nový proces i nové události připojení se mohou v zařízení během sekundy legitimně vyskytovat často a i když je důležitý pro robustní a komplexní zabezpečení, počet zpráv, které jsou agenti zabezpečení nuceni odesílat, může rychle dosáhnout nebo překročit vaše centrum IoT Hub. kvóta a nákladové limity. Tyto události však obsahují vysoce cenné informace o zabezpečení, které jsou zásadní pro ochranu vašeho zařízení.
 
-Pokud chcete snížit další kvótu a náklady a zachovat chráněná zařízení, Azure Security Center pro agenty IoT agregovat tyto typy událostí.
+Chcete-li snížit další kvóty a náklady při zachování vašich zařízení chráněné, Azure Security Center pro agenty IoT agregovat tyto typy událostí.
 
-Agregace událostí je ve výchozím nastavení **zapnutá** a i když se nedoporučuje, dá se v jakémkoli okamžiku ručně **vypnout** .
+Agregace událostí je ve výchozím nastavení **zapnutá** a i když se nedoporučuje, lze ji kdykoli ručně **vypnout.**
 
-Agregace je aktuálně k dispozici pro následující typy událostí:
+Agregace je v současné době k dispozici pro následující typy událostí:
 * ProcessCreate
-* ConnectionCreate
-* ProcessTerminate (jenom Windows)
+* Vytvoření připojení
+* ProcessTerminate (pouze systém Windows)
 
 ## <a name="how-does-event-aggregation-work"></a>Jak funguje agregace událostí?
-Když je agregace **událostí ponechána**, Azure Security Center pro agenty IoT agregovat události pro období intervalu nebo časový interval.
-Po uplynutí časového intervalu pošle agent agregované události do cloudu Azure pro další analýzu.
-Agregované události jsou uloženy v paměti, dokud nejsou odesílány do cloudu Azure.
+Když je agregace událostí ponechána **na**, Azure Security Center pro agenty IoT agregovat události pro interval období nebo časové okno.
+Po uplynutí intervalu agent odešle agregované události do cloudu Azure pro další analýzu.
+Agregované události se ukládají v paměti, dokud se neodešlou do cloudu Azure.
 
-Aby se snížilo nároky na paměť agenta, pokaždé, když agent shromáždí identickou událost k tomu, že se už uchovává v paměti, agent zvyšuje počet volání této konkrétní události. Po úspěšném časovém intervalu agregace pošle agentovi počet přístupů každého konkrétního typu události, ke které došlo. Agregace událostí je jednoduše agregace počtu přístupů každého shromážděného typu události.
+Chcete-li snížit nároky na paměť agenta, vždy, když agent shromažďuje identickou událost, která je již uchovávána v paměti, agent zvýší počet přístupů této konkrétní události. Když časové okno agregace projde, agent odešle počet přístupů každého konkrétního typu události, ke které došlo. Agregace událostí je jednoduše agregace počtu přístupů každého shromážděného typu události.
 
-Události se považují za identické jenom v případě, že jsou splněné následující podmínky: 
+Události jsou považovány za identické pouze v případě, že jsou splněny následující podmínky: 
 
-* ProcessCreate události – když je **příkazový řádek**, **spustitelný soubor**, **username**a **UserID** , je stejný
-* ConnectionCreate události – když se příkaz **CommandLine**, **userId**, **směr**, **místní adresa**, **Vzdálená adresa**, * * protokol a **cílový port** shodují
-* ProcessTerminate události – když je stav **spustitelného souboru** a **ukončení** shodný
+* ProcessCreate události - když **příkazLine**, **spustitelný soubor**, **uživatelské jméno**a **userid** jsou identické
+* ConnectionCreate události - když **commandLine**, **userId**, **směr**, **místní adresa**, **vzdálená adresa**, **protokol a cílový **port** jsou identické
+* ProcessTerminate události - když **spustitelný soubor** a **stav ukončení** jsou identické
 
 ### <a name="working-with-aggregated-events"></a>Práce s agregovanými událostmi
 
-Během agregace se vlastnosti události, které nejsou agregované, zahodí a zobrazují se v Log Analytics s hodnotou 0. 
-* Události ProcessCreate- **ProcessID**a **parentProcessId** jsou nastaveny na 0.
-* Události ConnectionCreate- **ProcessID**a **zdrojový port** jsou nastaveny na 0.
+Během agregace jsou zahozeny vlastnosti událostí, které nejsou agregovány, a zobrazí se v analýze protokolu s hodnotou 0. 
+* ProcessCreate události - **processId**a **parentProcessId** jsou nastaveny na 0
+* ConnectionCreate události - **processId**a **zdrojový port** jsou nastaveny na 0
 
 ## <a name="event-aggregation-based-alerts"></a>Výstrahy založené na agregaci událostí 
-Po analýze Azure Security Center pro IoT vytvoří výstrahy zabezpečení pro podezřelé agregované události. Výstrahy vytvořené z agregovaných událostí se u každé agregované události zobrazují jenom jednou.
+Po analýze Azure Security Center pro IoT vytvoří výstrahy zabezpečení pro podezřelé agregované události. Výstrahy vytvořené z agregovaných událostí se zobrazí pouze jednou pro každou agregoci události.
 
-Čas zahájení agregace, koncový čas a počet průchodů každé události jsou protokolovány v poli Event **ExtraDetails** v rámci Log Analytics pro použití během vyšetřování. 
+Čas zahájení agregace, čas ukončení a počet přístupů pro každou událost jsou zaznamenány v poli **extradetails** události v rámci analýzy protokolů pro použití během šetření. 
 
-Každá agregovaná událost představuje 24hodinové období shromážděných výstrah. Pomocí nabídky možnosti události v levém horním rohu každé události můžete **Zavřít** každou jednotlivou agregovanou událost.    
+Každá agregovaná událost představuje 24hodinové období shromážděných výstrah. Pomocí nabídky možností události v levém horním rohu každé události můžete každou jednotlivou agregovotou událost **zavřít.**    
 
-## <a name="event-aggregation-twin-configuration"></a>Konfigurace zdvojené agregace událostí
-Proveďte změny v konfiguraci Azure Security Center pro agregaci událostí IoT uvnitř [objektu konfigurace agenta](how-to-agent-configuration.md) s doplněním identity modulu **azureiotsecurity** .
+## <a name="event-aggregation-twin-configuration"></a>Konfigurace dvojčete agregace událostí
+Proveďte změny konfigurace Azure Security Center pro ioT agregace událostí uvnitř [objektu konfigurace agenta](how-to-agent-configuration.md) identity dvojčete modulu **azureiotsecurity.**
 
 | Název konfigurace | Možné hodnoty | Podrobnosti | Poznámky |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | Boolean | Povolit/zakázat agregaci události pro události vytvoření procesu |
-| aggregationIntervalProcessCreate | Řetězec ISO8601 TimeSpan | Interval agregace pro události vytvoření procesu |
-| aggregationEnabledConnectionCreate | Boolean| Povolit/zakázat agregaci události pro události vytvoření připojení |
-| aggregationIntervalConnectionCreate | Řetězec ISO8601 TimeSpan | Interval agregace pro události vytvoření připojení |
-| aggregationEnabledProcessTerminate | Boolean | Povolit/zakázat agregaci události pro události ukončení procesu | Pouze Windows|
-| aggregationIntervalProcessTerminate | Řetězec ISO8601 TimeSpan | Interval agregace pro události ukončení procesu | Pouze Windows|
+| agregaceEnabledProcessCreate | Boolean | Povolit nebo zakázat agregaci událostí pro události vytváření procesů |
+| agregaceIntervalProcessCreate | Řetězec ISO8601 Timespan | Interval agregace pro události vytvoření procesu |
+| agregaceEnabledConnectionCreate | Boolean| Povolit nebo zakázat agregaci událostí pro události vytvoření připojení |
+| agregaceIntervalConnectionCreate | Řetězec ISO8601 Timespan | Interval agregace pro události vytvoření připojení |
+| aggregaceEnabledProcessTerminate | Boolean | Povolit nebo zakázat agregaci událostí pro události ukončení procesu | Jen ve Windows|
+| aggregationIntervalProcessTerminate | Řetězec ISO8601 Timespan | Interval agregace pro události ukončení procesu | Jen ve Windows|
 |
 
-## <a name="default-configurations-settings"></a>Výchozí nastavení konfigurace
+## <a name="default-configurations-settings"></a>Výchozí nastavení konfigurací
 
 | Název konfigurace | Výchozí hodnoty |
 |:-----------|:---------------|
-| aggregationEnabledProcessCreate | true (pravda) |
-| aggregationIntervalProcessCreate | PT1H|
-| aggregationEnabledConnectionCreate | true (pravda) |
-| aggregationIntervalConnectionCreate | PT1H|
-| aggregationEnabledProcessTerminate | true (pravda) |
-| aggregationIntervalProcessTerminate | PT1H|
+| agregaceEnabledProcessCreate | true |
+| agregaceIntervalProcessCreate | "PT1H"|
+| agregaceEnabledConnectionCreate | true |
+| agregaceIntervalConnectionCreate | "PT1H"|
+| aggregaceEnabledProcessTerminate | true |
+| aggregationIntervalProcessTerminate | "PT1H"|
 |
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili s Azure Security Center pro agregaci agenta zabezpečení IoT a dostupných možností konfigurace událostí.
+V tomto článku jste se dozvěděli o Azure Security Center pro agregaci agenta zabezpečení IoT a možnosti konfigurace událostí k dispozici.
 
-Pokud chcete pokračovat v seznámení s Azure Security Center pro nasazení IoT, postupujte podle následujících článků:
+Pokud chcete pokračovat v začínáme s Azure Security Center pro nasazení IoT, použijte následující články:
 
-- Porozumění [metodám ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)
+- Principy [metod ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)
 - Výběr a nasazení [agenta zabezpečení](how-to-deploy-agent.md)
-- Kontrola [požadovaných součástí Azure Security Center služby](service-prerequisites.md) IoT
-- Naučte se, jak [povolit Azure Security Center pro službu IoT v IoT Hub](quickstart-onboard-iot-hub.md)
-- Další informace o službě najdete v tématu [Nejčastější dotazy k Azure Security Center pro IoT](resources-frequently-asked-questions.md)
+- Projděte si požadavky Centra zabezpečení Azure pro [Službu](service-prerequisites.md) IoT
+- Přečtěte si, jak [povolit službu Azure Security Center for IoT ve vašem Centru IoT Hub](quickstart-onboard-iot-hub.md)
+- Další informace o službě v [centru zabezpečení Azure pro ioT nejčastější dotazy](resources-frequently-asked-questions.md)

@@ -3,16 +3,16 @@ title: Architektura zařízení Azure Migrate
 description: Obsahuje přehled zařízení Azure Migrate používaného při hodnocení serveru a migraci.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 25dc530199cde3408ce3bd6641aeb9bb8595465d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337594"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389014"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura zařízení Azure Migrate
 
-Tento článek popisuje architekturu a procesy zařízení Azure Migrate. Zařízení Azure Migrate je zjednodušené zařízení, které se nasadí místně, aby zjistilo virtuální počítače a fyzické servery, které chcete posoudit pro migraci do Azure. 
+Tento článek popisuje architekturu a procesy zařízení Azure Migrate. Zařízení Azure Migrate je zjednodušené zařízení, které se nasadí místně, aby bylo vidět virtuální počítače a fyzické servery pro migraci do Azure. 
 
 ## <a name="deployment-scenarios"></a>Scénáře nasazení
 
@@ -20,10 +20,10 @@ Zařízení Migrace Azure se používá v následujících scénářích.
 
 **Scénář** | **Nástroj** | **Použití** 
 --- | --- | ---
-**Vyhodnocení virtuálního vana v vvware vv** | Migrace Azure: Vyhodnocení serveru | Objevte virtuální mise VMware.<br/><br/> Seznamte se s aplikacemi a závislostmi počítače.<br/><br/> Shromažďujte metadata počítače a informace o výkonu a odesílejte je do Azure.
-**Migrace virtuálního zařízení VMware (bez agentů)** | Migrace Azure: Migrace serveru | Objevte virtuální mise VMware<br/><br/>  Replikujte virtuální virtuální mame VMware pomocí [migrace bez agenta](server-migrate-overview.md).
-**Vyhodnocení virtuálního aplikace Hyper-V** | Migrace Azure: Vyhodnocení serveru | Objevte virtuální aplikace Hyper-V.<br/><br/> Shromažďujte metadata počítače a informace o výkonu a odesílejte je do Azure.
-**Fyzický stroj** |  Migrace Azure: Vyhodnocení serveru |  Objevte fyzické servery.<br/><br/> Shromažďujte metadata počítače a informace o výkonu a odesílejte je do Azure.
+**Vyhodnocení virtuálního vana v vvware vv** | Migrace Azure:Vyhodnocení serveru | Objevte virtuální mise VMware.<br/><br/> Seznamte se s aplikacemi a závislostmi počítače.<br/><br/> Shromažďujte metadata počítače a informace o výkonu a odesílejte je do Azure.
+**Migrace virtuálního zařízení VMware (bez agentů)** | Migrace Azure:Migrace serveru | Objevte virtuální mise VMware<br/><br/>  Replikujte virtuální virtuální mame VMware pomocí [migrace bez agenta](server-migrate-overview.md).
+**Vyhodnocení virtuálního aplikace Hyper-V** | Migrace Azure:Vyhodnocení serveru | Objevte virtuální aplikace Hyper-V.<br/><br/> Shromažďujte metadata počítače a informace o výkonu a odesílejte je do Azure.
+**Fyzický stroj** |  Migrace Azure:Vyhodnocení serveru |  Objevte fyzické servery.<br/><br/> Shromažďujte metadata počítače a informace o výkonu a odesílejte je do Azure.
 
 ## <a name="appliance-components"></a>Součásti spotřebičů
 
@@ -40,25 +40,25 @@ Přístroj má řadu součástí.
 
 ## <a name="appliance-deployment"></a>Nasazení zařízení
 
-- Zařízení Migrace Azure lze nastavit pomocí šablony (pouze technologie Hyper-V nebo VMware) nebo instalačního programu skriptu Prostředí PowerShell. [Přečtěte si další informace](deploy-appliance.md#deployment-options) o možnostech. 
+- Zařízení Migrace Azure lze nastavit pomocí šablony pro [technologie Hyper-V](how-to-set-up-appliance-hyper-v.md) nebo [VMware](how-to-set-up-appliance-vmware.md) nebo pomocí instalačního programu skriptu PowerShell pro [vmware/hyper-V](deploy-appliance-script.md)a pro [fyzické servery](how-to-set-up-appliance-physical.md). 
 - Požadavky na podporu zařízení a požadavky na nasazení jsou shrnuty v [matici podpory zařízení](migrate-appliance.md).
 
 
 ## <a name="appliance-registration"></a>Registrace spotřebiče
 
-Během instalace zařízení zaregistrujete zařízení pomocí Migrace Azure.Během instalace a registrace dojde k akcím shrnutým v tabulce.
+Během instalace zařízení zaregistrujete zařízení pomocí Migrace Azure a dojde k akcím sumarovaným v tabulce.
 
 **Akce** | **Podrobnosti** | **Oprávnění**
 --- | --- | ---
 **Zaregistrovat poskytovatele zdrojů** | Tito zprostředkovatelé prostředků jsou registrováni v předplatném, které zvolíte během instalace zařízení: Microsoft.OffAzure, Microsoft.Migrate a Microsoft.KeyVault.<br/><br/> Registrace poskytovatele prostředků nakonfiguruje vaše předplatné tak, aby fungovalo s poskytovatelem prostředků. | Chcete-li zaregistrovat zprostředkovatele prostředků, potřebujete roli přispěvatele nebo vlastníka v předplatném.
-**Vytvoření komunikace aplikací Azure AD** | Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD) pro komunikaci (ověřování a autorizaci) mezi agenty spuštěným na zařízení a jejich příslušnými službami spuštěným v Azure.<br/><br/> Tato aplikace nemá oprávnění k volání Správce prostředků Azure nebo přístup RBAC na libovolný prostředek. | K vytvoření aplikace potřebujete [tato oprávnění](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) pro Migraci Azure.
+**Vytvoření komunikace aplikací Azure AD** | Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD) pro komunikaci (ověřování a autorizaci) mezi agenty spuštěným na zařízení a jejich příslušnými službami spuštěným v Azure.<br/><br/> Tato aplikace nemá oprávnění k volání Azure Resource Manager nebo přístup RBAC na libovolný prostředek. | K vytvoření aplikace potřebujete [tato oprávnění](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) pro Migraci Azure.
 **Vytvoření trezoru aplikací Azure AD s klíči** | Tato aplikace se vytvoří jenom pro migraci virtuálních počítačích VMware do Azure bez agentů.<br/><br/> Používá se výhradně pro přístup k trezoru klíčů vytvořeného v předplatném uživatele pro migraci bez agenta.<br/><br/> Má přístup RBAC v trezoru klíčů Azure (vytvořené v tenantovi zákazníka), při zjišťování je zahájeno ze zařízení. | K vytvoření aplikace potřebujete [tato oprávnění](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) pro Migraci Azure.
 
 
 
 ## <a name="collected-data"></a>Shromážděná data
 
-Data shromážděná klientem pro všechny scénáře nasazení jsou plně zachycena v [matici podpory zařízení](migrate-appliance.md).
+Data shromážděná klientem pro všechny scénáře nasazení jsou shrnuta v [matici podpory zařízení](migrate-appliance.md).
 
 ## <a name="discovery-and-collection-process"></a>Proces zjišťování a sběru
 
@@ -89,7 +89,8 @@ Zařízení komunikuje se servery vCenter a hostiteli/clustery Technologie Hyper
 
 Zařízení je upgradováno jako agenti Azure Migrate spuštěné na zařízení jsou aktualizovány. K tomu dochází automaticky, protože ve výchozím nastavení je v zařízení povolena automatická aktualizace. Toto výchozí nastavení můžete změnit tak, aby agenti aktualizovali ručně.
 
-Automatickou aktualizaci v registru vypnete nastavením HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft\AzureAppliance "AutoUpdate" na 0 (DWORD). Pokud se rozhodnete použít ruční aktualizace, je důležité aktualizovat všechny agenty v zařízení současně pomocí tlačítka **Aktualizovat** pro každého zastaralého agenta v zařízení.
+Automatickou aktualizaci v registru vypnete nastavením klíče HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MicrosoftAppliance "AutoUpdate" na 0 (DWORD).
+
  
 
 ## <a name="next-steps"></a>Další kroky

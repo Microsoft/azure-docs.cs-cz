@@ -1,6 +1,6 @@
 ---
-title: Postup přidání referenčních datových sad do prostředí – Azure Time Series Insights | Microsoft Docs
-description: Tento článek popisuje, jak přidat referenční datovou sadu pro rozšíření dat v prostředí Azure Time Series Insights.
+title: Jak přidat referenční sady dat do vašeho prostředí - Azure Time Series Insights | Dokumenty společnosti Microsoft
+description: Tento článek popisuje, jak přidat referenční sadu dat pro rozšíření dat v prostředí Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,110 +12,110 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18~~~~
 ms.openlocfilehash: 79628ed44753577023464ef6208027e1b7996d30
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087244"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí Azure Portal
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí portálu Azure
 
-Tento článek popisuje, jak přidat referenční datovou sadu do prostředí Azure Time Series Insights. Referenční data jsou užitečná pro připojení ke svým zdrojovým datům za účelem rozšíření těchto hodnot.
+Tento článek popisuje, jak přidat referenční sadu dat do prostředí Azure Time Series Insights. Referenční data jsou užitečná pro připojení ke zdrojovým datům za účelem zvýšení hodnot.
 
-Referenční sada dat je kolekce položek, které rozšiřují události ze zdroje událostí. Time Series Insights vstupním modulem spojí každou událost ze zdroje událostí s odpovídajícím řádkem dat ve vaší referenční sadě dat. Tato rozšířená událost je pak k dispozici pro dotaz. Toto spojení je založené na sloupcích primárního klíče definované ve vaší referenční sadě dat.
+Referenční sada dat je kolekce položek, které rozšiřují události ze zdroje událostí. Modul příchozího přenosu dat Time Series Insights připojí každou událost ze zdroje událostí s odpovídajícím datovým řádkem v sadě referenčních dat. Tato rozšířená událost je pak k dispozici pro dotaz. Toto spojení je založeno na sloupech primárního klíče definovaných v sadě referenčních dat.
 
-Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuálnímu a budoucímu příchozímu přenosu dat a připojí se k sadě referenčního data, jakmile se nakonfigurují a nahrají.
+Referenční data nejsou spojena se zpětnou platností. Proto pouze aktuální a budoucí příchozí přenos dat je spárována a připojena k referenční sadu dat, jakmile byla nakonfigurována a odeslána.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Přečtěte si referenční datový model pro přehledy časových řad.</br>
+### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Přečtěte si o referenčním datovém modelu Time Series Insight.</br>
 
 > [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
 
-## <a name="add-a-reference-data-set"></a>Přidání referenční sady dat
+## <a name="add-a-reference-data-set"></a>Přidání sady referenčních dat
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-1. Vyhledejte existující Azure Time Series Insights prostředí. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
+1. Vyhledejte stávající prostředí Azure Time Series Insights. Vyberte **všechny prostředky** v nabídce na levé straně portálu Azure. Vyberte vaše prostředí Time Series Insights.
 
-1. Vyberte stránku **Přehled** . Rozbalením části **základy** v horní části stránky vyhledejte **adresu URL aplikace Time Series Insights Explorer** a otevřete odkaz.  
+1. Vyberte stránku **Přehled.** Rozbalte oddíl **Essentials** v horní části stránky, vyhledejte **adresu URL průzkumníka Time Series Insights** a otevřete odkaz.  
 
-   [![část rozbalit základy](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
+   [![Sekce Rozbalit základní věci](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-   Zobrazení Průzkumníka Time Series Insightsho prostředí.
+   Prohlédněte si průzkumníka pro prostředí Time Series Insights.
 
-1. Rozbalte selektor prostředí v Průzkumníkovi Time Series Insights. Vyberte aktivní prostředí. V pravém horním rohu stránky v Průzkumníkovi vyberte ikonu referenční data.
+1. Rozbalte volič prostředí v průzkumníku Time Series Insights. Zvolte aktivní prostředí. Vyberte ikonu referenčních dat v pravém horním horním textu na stránce průzkumníka.
 
-   [![přidání referenčních dat](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
+   [![Přidání referenčních dat](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 
-1. Vyberte tlačítko **+ Přidat datovou sadu** a začněte přidávat novou datovou sadu.
+1. Chcete-li začít přidávat novou sadu dat, vyberte tlačítko **+ Přidat sadu dat.**
 
-   [![Přidat datovou sadu](media/add-reference-data-set/tsi-add-a-reference-data-set.png)](media/add-reference-data-set/tsi-add-a-reference-data-set.png#lightbox)
+   [![Přidání sady dat](media/add-reference-data-set/tsi-add-a-reference-data-set.png)](media/add-reference-data-set/tsi-add-a-reference-data-set.png#lightbox)
 
-1. Na stránce **Nová datová sada referenčních dat** vyberte formát dat:
+1. Na stránce **Nová referenční sada dat** zvolte formát dat:
 
-   - Pro data oddělená čárkami vyberte **CSV** . První řádek se považuje za řádek záhlaví.
-   - Pro formátovaná data ve formátu JavaScript Object Notation (JSON) vyberte **pole JSON** .
+   - Zvolte **CSV** pro data oddělená čárkami. První řádek je považován za řádek záhlaví.
+   - Zvolte **JSON Array** pro data ve formátu JavaScriptu (JSON).
 
-   [![zvolit formát dat.](media/add-reference-data-set/tsi-select-data-upload-option.png)](media/add-reference-data-set/tsi-select-data-upload-option.png#lightbox)
+   [![Zvolte formát dat.](media/add-reference-data-set/tsi-select-data-upload-option.png)](media/add-reference-data-set/tsi-select-data-upload-option.png#lightbox)
 
-1. Data zadejte pomocí jedné ze dvou metod:
+1. Zadejte data pomocí jedné ze dvou metod:
 
-   - Vložte data do textového editoru. Pak vyberte tlačítko **analyzovat referenční data** .
-   - Kliknutím na tlačítko **zvolit soubor** přidejte data z místního textového souboru.
+   - Vložte data do textového editoru. Potom vyberte **analyzovat referenční data** tlačítko.
+   - Chcete-li přidat data z místního textového souboru, vyberte **tlačítko Vybrat soubor.**
 
-   Například vložte data CSV: [![vložená data CSV](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
+   Například vložit data CSV: [ ![Vložená data CSV](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
 
-   Například vložte data pole JSON: [![vkládat data JSON](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
+   Například vložte data pole JSON: [ ![Vložte data JSON](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
 
-   Pokud při analýze hodnot dat dojde k chybě, zobrazí se chyba červeně v dolní části stránky, například `CSV parsing error, no rows extracted`.
+   Pokud dojde k chybě při analýzě datových hodnot, zobrazí se v dolní `CSV parsing error, no rows extracted`části stránky červeně, například .
 
-1. Po úspěšném analyzování dat se zobrazí datová mřížka zobrazující sloupce a řádky reprezentující data. Zkontrolujte datovou mřížku, abyste zajistili správnost.
+1. Po úspěšném proanalýzu dat se zobrazí datová mřížka zobrazující sloupce a řádky představující data. Zkontrolujte datovou mřížku, abyste zajistili správnost.
 
    [![Kontrola referenčních dat](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. Projděte si jednotlivé sloupce, abyste porozuměli předpokládanému typu dat a v případě potřeby změnili datový typ.  Vyberte symbol datového typu v záhlaví sloupce: **#** pro dvojitá (číselná data), **t | F** pro logickou hodnotu nebo **ABC** pro řetězec.
+1. Zkontrolujte každý sloupec, abyste pochopili předpokládaný datový typ, a v případě potřeby změňte datový typ.  Vyberte symbol datového typu **#** v záhlaví sloupce: pro dvojité (číselné údaje), **T| F** pro logickou hodnotu nebo **Abc** pro řetězec.
 
-   [![zvolit typy dat pro záhlaví sloupců.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
+   [![V záhlaví sloupců zvolte datové typy.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
-1. V případě potřeby přejmenujte záhlaví sloupců. Název klíčového sloupce je potřebný pro připojení k odpovídající vlastnosti ve zdroji události. 
+1. V případě potřeby přejmenujte záhlaví sloupců. Název sloupce klíče je nutné připojit k odpovídající vlastnost ve zdroji událostí. 
 
    > [!IMPORTANT]
-   > Zajistěte, aby se názvy sloupců klíčů referenčních dat přesně shodovaly s názvem události pro příchozí data, včetně rozlišování velkých a malých písmen. Názvy sloupců, které nejsou klíčovým sloupcem, se používají k rozšíření příchozích dat s odpovídajícími hodnotami referenčních dat.
+   > Ujistěte se, že názvy sloupců klíče referenčních dat přesně odpovídají názvu události příchozím datům, včetně rozlišování velkých a malých písmen. Názvy sloupců, které nejsou klíčové, se používají k rozšíření příchozích dat o odpovídající hodnoty referenčních dat.
 
-1. Zadejte hodnotu do pole **Filtrovat řádky...** a podle potřeby zkontrolujte konkrétní řádky. Filtr je vhodný pro kontrolu dat, ale při nahrávání dat se nepoužívá.
+1. Zadejte hodnotu do pole **Filtrovat řádky... a** podle potřeby zkontrolujte určité řádky. Filtr je užitečný pro kontrolu dat, ale není použit při nahrávání dat.
 
-1. Pojmenujte sadu dat tak, že vyplníte pole **název sady dat** nad datovou mřížkou.
+1. Pojmenujte sadu dat vyplněním pole **Název datové sady** nad mřížkou dat.
 
-    [![název sady dat.](media/add-reference-data-set/enter-reference-data-set-name.png)](media/add-reference-data-set/enter-reference-data-set-name.png#lightbox)
+    [![Pojmenujte sadu dat.](media/add-reference-data-set/enter-reference-data-set-name.png)](media/add-reference-data-set/enter-reference-data-set-name.png#lightbox)
 
-1. Zadejte sloupec **primárního klíče** v sadě dat tak, že vyberete rozevírací seznam nad datovou mřížkou.
+1. Zadejte sloupec **Primární klíč** v datové sadě výběrem rozevíracího políčka nad datovou mřížkou.
 
-    [![vybrat sloupce s klíčem.](media/add-reference-data-set/select-primary-key-column.png)](media/add-reference-data-set/select-primary-key-column.png#lightbox)
+    [![Vyberte klíčové sloupce.](media/add-reference-data-set/select-primary-key-column.png)](media/add-reference-data-set/select-primary-key-column.png#lightbox)
 
-    **(Volitelné)** Výběrem tlačítka **+** přidáte sloupec sekundárního klíče jako složený primární klíč. Pokud potřebujete zrušit výběr, vyberte prázdnou hodnotu z rozevíracího seznamu a odeberte tak sekundární klíč.
+    **(Nepovinné)** Vyberte **+** tlačítko pro přidání sloupce sekundárního klíče jako složeného primárního klíče. Pokud potřebujete výběr vrátit se změnami, zvolte prázdnou hodnotu z rozevíracího pole a odeberte sekundární klíč.
 
-1. Pokud chcete data nahrát, vyberte tlačítko **Odeslat řádky** .
+1. Chcete-li data nahrát, vyberte tlačítko **Odeslat řádky.**
 
-    [![nahrajte řádky a potvrďte data.](media/add-reference-data-set/confirm-upload-reference-data.png)](media/add-reference-data-set/confirm-upload-reference-data.png#lightbox)
+    [![Nahrajte řádky a potvrďte data.](media/add-reference-data-set/confirm-upload-reference-data.png)](media/add-reference-data-set/confirm-upload-reference-data.png#lightbox)
 
-    Na stránce se potvrdí dokončení nahrávání a zobrazí se zpráva, že **datová sada se úspěšně nahrála**.
+    Stránka potvrdí dokončené nahrání a zobrazí zprávu **Úspěšně nahraná datová sada**.
 
     > [!WARNING]
-    > Sloupce nebo vlastnosti sdílené mezi referenčními datovými sadami zobrazí chybu při nahrávání **duplicitního názvu vlastnosti** . Chyba nezabrání úspěšnému nahrání referenčních datových sad. Dá se odebrat kombinováním řádků, které sdílí název duplicitní vlastnosti.
+    > Sloupce nebo vlastnosti sdílené mezi sadami referenčních dat zobrazí chybu odeslání **duplicitního názvu vlastnosti.** Chyba nezabrání úspěšnému nahrání referenčních datových sad. Lze jej odstranit kombinací řádků sdílejících duplicitní název vlastnosti.
 
-1. Vyberte **Přidat řádek**, **hromadné importy řádků**nebo **přidejte sloupec** pro přidání dalších hodnot referenčních dat podle potřeby.
+1. Vyberte **Přidat řádek**, **Hromadně importovat řádky**nebo Podle potřeby přidat **sloupec,** chcete-li přidat další hodnoty referenčních dat.
 
-    [![přidat řádek, hromadné importy řádků nebo přidat sloupec.](media/add-reference-data-set/add-row-or-bulk-upload.png)](media/add-reference-data-set/add-row-or-bulk-upload.png#lightbox)
+    [![Přidejte řádek, řádky hromadného importu nebo přidání sloupce.](media/add-reference-data-set/add-row-or-bulk-upload.png)](media/add-reference-data-set/add-row-or-bulk-upload.png#lightbox)
 
    > [!IMPORTANT]
-   > Všechny řádky, které sdílí jedinečný klíč s jiným řádkem, budou mít své sloupce přepsané posledním přidaným řádkem, který tento jedinečný klíč sdílí.
+   > Každý řádek, který sdílí jedinečný klíč s jiným řádkem, bude mít své sloupce přepsány posledním dalším dalším kliknutím, který tento jedinečný klíč sdílí.
 
    > [!NOTE]
-   > Přidané řádky **nemusejí být** *pravoúhlé* , mohou mít méně, více nebo různé sloupce z dalších položek v referenční sadě dat.
+   > Přidané řádky **nemusí** být *obdélníkové* – mohou mít méně, větší nebo různé sloupce z ostatních položek v sadě referenčních dat.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Spravujte referenční data](time-series-insights-manage-reference-data-csharp.md) prostřednictvím kódu programu.
 
-* Úplný odkaz na rozhraní API najdete v dokumentu [rozhraní API pro referenční data](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) .
+* Úplný odkaz na rozhraní API najdete v dokumentu [reference data API.](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)

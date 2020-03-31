@@ -1,97 +1,97 @@
 ---
-title: Přehled linkeru
-description: Získání přehledu linkeru
+title: Přehled linkerdů
+description: Získat přehled linkerd
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593763"
 ---
-# <a name="linkerd"></a>Linker
+# <a name="linkerd"></a>Linkerd
 
 ## <a name="overview"></a>Přehled
 
-[Linker][linkerd] je snadno použitelný a odlehčená síť služby.
+[Linkerd][linkerd] je snadno použitelná a lehká servisní síť.
 
 ## <a name="architecture"></a>Architektura
 
-Linkerd poskytuje rovinu dat, která se skládá z Ultralight [linkeru][linkerd-proxy] specializovaného proxy sajdkáry. Tyto inteligentní proxy servery řídí veškerý síťový provoz v a z vašich aplikací a úloh. Proxy servery také zpřístupňují metriky prostřednictvím koncových bodů metriky [Prometheus][prometheus] .
+Linkerd poskytuje datovou rovinu, která se skládá z ultralehkých [linkerdspecializovaných][linkerd-proxy] proxy sidecars. Tyto inteligentní proxy servery řídí veškerý síťový provoz ve vašich aplikacích a úlohách. Proxy servery také zveřejňují metriky prostřednictvím koncových bodů metrik [Prometheus.][prometheus]
 
-Rovina ovládacího prvku spravuje konfiguraci a agregovanou telemetrii prostřednictvím následujících [komponent][linkerd-architecture]:
+Řídicí rovina spravuje konfiguraci a agregovotní telemetrii pomocí [následujících součástí][linkerd-architecture]:
 
-- **Controller** – poskytuje rozhraní API, které řídí linkerem rozhraní příkazového řádku a řídicího panelu. Poskytuje konfiguraci pro proxy.
+- **Řadič** - Poskytuje rozhraní API, které řídí linkerd cli a řídicí hospo- Poskytuje konfiguraci pro proxy servery.
 
-- **Klepněte** na požadavky a odpovědi navažte v reálném čase.
+- **Klepněte** na - Vytvořte hodinky v reálném čase na požadavky a odpovědi.
 
-- **Identita** – poskytuje možnosti identity a zabezpečení, které umožňují mTLS mezi službami.
+- **Identita** – poskytuje funkce identity a zabezpečení, které umožňují mTLS mezi službami.
 
-- **Web** – poskytuje linkerový řídicí panel.
-
-
-Následující diagram architektury znázorňuje, jak různé komponenty v rovině dat a řídící rovině pracují.
+- **Web** - Poskytuje řídicí panel Linkerd.
 
 
-![Přehled Linkerových komponent a architektury.](media/servicemesh/linkerd/about-architecture.png)
+Následující diagram architektury ukazuje, jak různé součásti v rovině dat a rovině ovládacího prvku interagují.
+
+
+![Přehled komponent a architektury linkerdu.](media/servicemesh/linkerd/about-architecture.png)
 
 
 ## <a name="selection-criteria"></a>Kritéria výběru
 
-Při hodnocení linkeru pro vaše úlohy je důležité pochopit a zvážit následující oblasti:
+Při vyhodnocování linkerdu pro vaše úlohy je důležité porozumět následujícím oblastem a zvážit je:
 
 - [Principy návrhu](#design-principles)
-- [Vestavěn](#capabilities)
+- [Možnosti](#capabilities)
 - [Scénáře](#scenarios)
 
 
 ### <a name="design-principles"></a>Principy návrhu
 
-Následující zásady návrhu [provedou][design-principles] linkerový projekt:
+Projekt Linkerd [se řídí][design-principles] následujícími principy návrhu:
 
-- **Snadné použití** a pochopení.
+- **Keep it Simple** - Musí být snadné použití a pochopení.
 
-- **Minimalizace požadavků na prostředky** – omezení minimálního výkonu a nákladů na prostředky.
+- **Minimalizovat požadavky na prostředky** – zavést minimální výkon a náklady na prostředky.
 
-- **Pouze práce** – Nerušit stávající aplikace a nevyžadují složitou konfiguraci.
+- **Jen práce** – nepřerušuj stávající aplikace a nevyžadují složitou konfiguraci.
 
 
 ### <a name="capabilities"></a>Možnosti
 
 Linkerd poskytuje následující sadu funkcí:
 
-- **Síť** – možnost integrovaného ladění
+- **Mesh** – vestavěná možnost ladění
 
-- **Správa provozu** – rozdělení, vypršení časových limitů, opakování, příchozí přenos dat
+- **Řízení provozu** – rozdělení, časové osázy, opakování, příchozí přenos dat
 
-- **Zabezpečení** – šifrování (mTLS), certifikáty se pro automatické střídání každých 24 hodin
+- **Zabezpečení** – šifrování (mTLS), certifikáty autorotated každých 24 hodin
 
-- **Pozorování** – zlatá metrika, klepnutí, trasování, profily služeb a metriky jednotlivých tras, webový řídicí panel s grafy topologie, Prometheus, grafana
+- **Pozorovatelnost** – zlatá metrika, klepnutí, trasování, profily služeb a metriky trasy, webový přístrojový panel s grafy topologie, prometheus, grafana
 
 
 ### <a name="scenarios"></a>Scénáře
 
-Linker je vhodný pro a navržený z následujících scénářů:
+Linkerd je vhodný a navrhl pro následující scénáře:
 
-- Jednoduché pro použití jenom se základní sadou požadavků na funkce
+- Jednoduché použití pouze se základní sadou požadavků na schopnosti
 
-- Nízká latence, nízká režie, se zaměřením na dodržování a jednoduché řízení provozu
+- Nízká latence, nízká režie, se zaměřením na pozorovatelnost a jednoduché řízení provozu
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující dokumentace popisuje, jak můžete nainstalovat linker ve službě Azure Kubernetes (AKS):
+Následující dokumentace popisuje, jak můžete nainstalovat Linkerd na Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Instalace linkeru ve službě Azure Kubernetes Service (AKS)][linkerd-install]
+> [Instalace linkerdu ve službě Azure Kubernetes Service (AKS)][linkerd-install]
 
-Můžete také dále prozkoumat Linkerované funkce a architekturu:
+Můžete také dále prozkoumat funkce a architekturu linkerdu:
 
-- [Linkerované funkce][linkerd-features]
-- [Linkerovaná architektura][linkerd-architecture]
+- [Propojovací funkce][linkerd-features]
+- [Architektura linkerdů][linkerd-architecture]
 
 <!-- LINKS - external -->
 [linkerd]: https://linkerd.io/2/overview/

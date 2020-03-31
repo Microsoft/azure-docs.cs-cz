@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 4d92bd3709c5f56db0095ca1be2caa0e9c78b42f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336817"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389371"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení widgetů Video Indexer u svých aplikací
 
@@ -48,7 +48,7 @@ Pomocí widgetu Přehrávač můžete streamovat video pomocí adaptivní přeno
 |`showCaptions` | Logická hodnota | Přehrávač se načte s už povolenými titulky.<br/> Příklad: `showCaptions=true`. |
 |`type`| | Aktivuje vzhled zvukového přehrávače (část videa je odstraněna).<br/> Příklad: `type=audio`. |
 |`autoplay` | Logická hodnota | Označuje, zda by měl přehrávač při načtení začít přehrávat video. Výchozí hodnota je `true`.<br/> Příklad: `autoplay=false`. |
-|`language` | Kód jazyka | Ovládá jazyk přehrávače. Výchozí hodnota je `en-US`.<br/>Příklad: `language=de-DE`.|
+|`language`/`locale` | Kód jazyka | Ovládá jazyk přehrávače. Výchozí hodnota je `en-US`.<br/>Příklad: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Editor widget
 
@@ -233,14 +233,14 @@ Pokud vložíte přehledy video indexeru s vlastním [přehrávačem médií Azu
 
 Můžete zvolit typy přehledů, které chcete. Chcete-li to provést, zadejte je jako hodnotu pro následující parametr URL, který je přidán do `&widgets=<list of wanted widgets>`kódu pro vložení, který získáte (z rozhraní API nebo z webové aplikace): .
 
-Možné hodnoty jsou: **lidé**, **klíčová slova**, **sentiment ,** **přepis**a **vyhledávání**.
+Možné `people`hodnoty jsou: `animatedCharacters` `keywords`, `labels` `sentiments`, `emotions` `topics`, `keyframes` `transcript`, `ocr` `speakers`, `scenes`, `namedEntities`, , , , , , a .
 
-Pokud například chcete vložit widget, který obsahuje pouze lidi a vyhledat přehledy, bude adresa URL pro vložení prvku iframe vypadat takto:
+Pokud například chcete vložit widget, který obsahuje pouze přehledy lidí a klíčových slov, bude adresa URL pro vložení prvku iframe vypadat takto:
 
-`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-Název okna iframe lze také přizpůsobit poskytnutím `&title=<YourTitle>` adresy URL prvku iframe. (Přizpůsobí název \<HTML> hodnotu).
-
+Název okna iframe lze také přizpůsobit poskytnutím `&title=<YourTitle>` adresy URL prvku iframe. (Přizpůsobuje hodnotu <title> HTML).
+   
 Chcete-li například dát oknu iframe název "MyInsights", bude adresa URL vypadat takto:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
@@ -257,15 +257,14 @@ Například:
 
 Ve výchozím nastavení přehrávač Video Indexer automaticky vygeneroval skryté titulky, které jsou založeny na přepisu videa. Přepis je extrahován z videa se zdrojovým jazykem, který byl vybrán při nahrávání videa.
 
-Pokud chcete vložit s jiným jazykem, `&captions=< Language | "all" | "false" >` můžete přidat do adresy URL pro vložení přehrávače. Pokud chcete titulky ve všech dostupných `all`jazycích, použijte hodnotu . Pokud chcete, aby se titulky zobrazovaly ve `&showCaptions=true`výchozím nastavení, můžete je předat .
+Pokud chcete vložit s jiným jazykem, můžete přidat &titulky =< kód jazyka > na adresu URL přehrávače pro vložení. Pokud chcete, aby se titulky zobrazovaly ve výchozím nastavení, můžete předat &showCaptions=true.
 
 Adresa URL pro vložení pak bude vypadat takto:
 
-`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
-
-Chcete-li zakázat titulky, můžete `captions` předat `false`hodnotu parametru jako .
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
 #### <a name="autoplay"></a>Automatické přehrávání
+
 Ve výchozím nastavení začne přehrávač video přehrávat. můžete se rozhodnout, `&autoplay=false` že tak nechcete, přejdete na předchozí adresu URL pro vložení.
 
 ## <a name="code-samples"></a>Ukázky kódů

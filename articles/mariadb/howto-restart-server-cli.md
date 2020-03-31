@@ -1,33 +1,33 @@
 ---
-title: Restart serveru – Azure CLI – Azure Database for MariaDB
-description: Tento článek popisuje, jak můžete restartovat server Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure CLI.
+title: Restartovat server – Azure CLI – databáze Azure pro MariaDB
+description: Tento článek popisuje, jak můžete restartovat azure databáze pro mariadb server pomocí azure cli.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 9c3b86cb278d25b6200753f2f418c5aa82ca86ce
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: f5572611b99245fd62b4e0a9d73e6ed728e42f5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530644"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Restartování serveru Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
-Toto téma popisuje, jak můžete restartovat server Azure Database for MariaDB. Možná budete muset restartovat server z důvodů údržby, což způsobí krátký výpadek, protože server tuto operaci provede.
+# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Restartujte azure database pro server MariaDB pomocí příkazového příkazového příkazu k Azure
+Toto téma popisuje, jak můžete restartovat azure databáze pro mariadb server. Pravděpodobně bude nutné restartovat server z důvodů údržby, což způsobí krátký výpadek, protože server provádí operaci.
 
-Pokud je služba zaneprázdněná, restart serveru se zablokuje. Například služba může zpracovávat dříve požadovanou operaci, jako je například škálování virtuální jádra.
+Restartování serveru bude blokováno, pokud je služba zaneprázdněna. Služba může například zpracovávat dříve požadovanou operaci, jako je například škálování virtuálních jader.
 
-Čas potřebný k dokončení restartování závisí na procesu obnovení MariaDB. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
+Doba potřebná k dokončení restartování závisí na procesu obnovení MariaDB. Chcete-li zkrátit dobu restartování, doporučujeme minimalizovat množství aktivity, ke kterým na serveru dochází před restartováním.
 
-## <a name="prerequisites"></a>Předpoklady
-K dokončení tohoto průvodce budete potřebovat:
-- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
+## <a name="prerequisites"></a>Požadavky
+Chcete-li dokončit tento návod, potřebujete:
+- [Databáze Azure pro server MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že na příkazovém řádku Azure CLI zadáte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje, abyste používali Azure CLI verze 2.0 nebo novější. Chcete-li verzi potvrdit, zadejte `az --version`na příkazovém řádku příkazového řádku Azure . Informace o instalaci nebo upgradu najdete [v tématu Instalace příkazového příkazového příkazu k webu Azure]( /cli/azure/install-azure-cli).
 
 
 ## <a name="restart-the-server"></a>Restartování serveru
@@ -40,4 +40,4 @@ az mariadb server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o [Nastavení parametrů v Azure Database for MariaDB](howto-configure-server-parameters-cli.md)
+Informace o [tom, jak nastavit parametry v Azure Database pro MariaDB](howto-configure-server-parameters-cli.md)

@@ -1,5 +1,5 @@
 ---
-title: Filtrovat aktivitu v Azure Data Factory
+title: Filtrování aktivity ve Službě Azure Data Factory
 description: Aktivita filtru filtruje vstupy.
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679862"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Filtrovat aktivitu v Azure Data Factory
-Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupní pole. 
+# <a name="filter-activity-in-azure-data-factory"></a>Filtrování aktivity ve Službě Azure Data Factory
+Aktivitu filtru v kanálu můžete použít k použití výrazu filtru na vstupní pole. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -38,14 +38,14 @@ Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupn
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity `Filter` | Řetězec | Ano
-type | Musí být nastavené na **Filter**. | Řetězec | Ano
-Pomocné | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Ano
-položek | Vstupní pole, ve kterém se má použít filtr | Výraz | Ano
+jméno | Název aktivity. `Filter` | Řetězec | Ano
+type | Musí být nastavena na **filtr**. | Řetězec | Ano
+Podmínka | Podmínka, která má být použita pro filtrování vstupu. | Expression | Ano
+Položky | Vstupní pole, na které by měl být filtr použit. | Expression | Ano
 
 ## <a name="example"></a>Příklad
 
-V tomto příkladu má kanál dvě aktivity: **Filter** a **foreach**. Aktivita filtru je nakonfigurována tak, aby vyfiltroval vstupní pole pro položky s hodnotou větší než 3. Aktivita ForEach pak provede iteraci filtrovaných hodnot a nastaví **test** proměnné na aktuální hodnotu.
+V tomto příkladu má kanál dvě aktivity: **Filter** a **ForEach**. Aktivita filtru je nakonfigurována tak, aby filtrovala vstupní pole pro položky s hodnotou větší než 3. ForEach aktivita pak iterates přes filtrované hodnoty a nastaví **test** proměnné na aktuální hodnotu.
 
 ```json
 {
@@ -112,12 +112,12 @@ V tomto příkladu má kanál dvě aktivity: **Filter** a **foreach**. Aktivita 
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další aktivity toku řízení podporované Data Factory: 
+Podívejte se na další aktivity toku řízení podporované factory: 
 
 - [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
-- [Pro každou aktivitu](control-flow-for-each-activity.md)
-- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Aktivita For Each](control-flow-for-each-activity.md)
+- [Získat aktivitu metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

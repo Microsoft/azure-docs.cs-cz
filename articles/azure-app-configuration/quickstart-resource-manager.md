@@ -1,6 +1,6 @@
 ---
-title: Automatizované nasazení virtuálních počítačů s rychlým startem konfigurace Azure App
-description: Tento rychlý Start ukazuje, jak použít modul Azure PowerShell a šablony Azure Resource Manager k nasazení úložiště konfigurace aplikace Azure. Pak použijte hodnoty z úložiště k nasazení virtuálního počítače.
+title: Rychlé spuštění automatického virtuálního počítače pomocí rychlého spuštění konfigurace aplikací Azure
+description: Tento rychlý start ukazuje, jak používat modul Azure PowerShell a šablony Azure Resource Manager k nasazení úložiště Konfigurace aplikací Azure. Pak použijte hodnoty v úložišti k nasazení virtuálního soudu.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 03/05/2020
@@ -10,17 +10,17 @@ ms.custom:
 - mvc
 - subject-armqs
 ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79126378"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Rychlý Start: automatizované nasazení virtuálních počítačů s konfigurací aplikace a šablonou Správce prostředků
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Úvodní příručka: Automatické nasazení virtuálních počítačů pomocí šablony Konfigurace aplikace a Správce prostředků
 
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure pomocí rutin PowerShellu nebo skriptů. V tomto rychlém startu se dozvíte, jak používat šablony Azure PowerShell a Azure Resource Manager k nasazení úložiště konfigurace aplikace Azure. Pak se dozvíte, jak pomocí hodnot klíč-hodnoty v úložišti nasadit virtuální počítač.
+Modul Azure PowerShell se používá k vytváření a správě prostředků Azure pomocí rutin nebo skriptů PowerShellu. Tento úvodní příručka ukazuje, jak používat šablony Azure PowerShell u Azure Resource Managerka k nasazení úložiště Konfigurace aplikací Azure. Pak se dozvíte, jak použít hodnoty klíče v úložišti k nasazení virtuálního virtuálního soudu.
 
-Pomocí šablony požadovaných součástí můžete vytvořit úložiště konfigurace aplikace a potom do úložiště přidat klíčové hodnoty pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI. Primární šablona odkazuje na stávající konfigurace klíč-hodnota z existujícího úložiště konfigurace. Načtené hodnoty slouží k nastavení vlastností prostředků vytvořených šablonou, jako je třeba virtuální počítač v tomto příkladu.
+Pomocí šablony předpokladů můžete vytvořit úložiště konfigurace aplikací a pak do úložiště přidat hodnoty klíčů pomocí portálu Azure nebo velpříkazového příkazového nastavení Azure. Primární šablona odkazuje na existující konfigurace klíč-hodnota z existujícího úložiště konfigurace. Načtené hodnoty se používají k nastavení vlastností prostředků vytvořených šablonou, jako je virtuální počítače v tomto příkladu.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -28,20 +28,20 @@ Pomocí šablony požadovaných součástí můžete vytvořit úložiště konf
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/)
 
-* Tento rychlý Start vyžaduje modul Azure PowerShell. Pomocí příkazu `Get-Module -ListAvailable Az` vyhledejte verzi, která je nainstalovaná na místním počítači. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Tento rychlý start vyžaduje modul Azure PowerShell. Pomocí příkazu `Get-Module -ListAvailable Az` vyhledejte verzi, která je nainstalovaná na místním počítači. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a zadejte svoje přihlašovací údaje Azure v místním prohlížeči:
+Přihlaste se k `Connect-AzAccount` předplatnému Azure pomocí příkazu a zadejte svá přihlašovací údaje Azure v rozbalovacím prohlížeči:
 
 ```azurepowershell-interactive
 # Connect to your Azure account
 Connect-AzAccount
 ```
 
-Pokud máte více než jedno předplatné, vyberte předplatné, které chcete použít pro tento rychlý Start, a spusťte následující rutiny. Nezapomeňte nahradit `<your subscription name>` názvem vašeho předplatného:
+Pokud máte více než jedno předplatné, vyberte předplatné, které chcete použít pro tento rychlý start, spuštěním následujících rutin. Nezapomeňte nahradit `<your subscription name>` název předplatného:
 
 ```azurepowershell-interactive
 # List all available subscriptions.
@@ -53,7 +53,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků Azure s [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 ```azurepowershell-interactive
 $resourceGroup = "StreamAnalyticsRG"
@@ -63,11 +63,11 @@ New-AzResourceGroup `
     -Location $location
 ```
 
-## <a name="deploy-an-azure-app-configuration-store"></a>Nasazení úložiště konfigurace aplikace Azure
+## <a name="deploy-an-azure-app-configuration-store"></a>Nasazení úložiště Konfigurace aplikací Azure
 
-Než budete moct použít hodnoty klíč-hodnota k virtuálnímu počítači, musíte mít existující úložiště konfigurace aplikace Azure. Tato část podrobně popisuje, jak nasadit úložiště konfigurace aplikace Azure pomocí šablony Azure Resource Manager. Pokud již máte úložiště konfigurace aplikace, můžete přejít k další části tohoto článku. 
+Než budete moct použít hodnoty klíčů na virtuální počítač, musíte mít existující Azure App Configuration store. Tato část podrobně popisuje, jak nasadit úložiště Konfigurace aplikací Azure pomocí šablony Azure Resource Manager. Pokud už máte obchod config aplikace, můžete přejít na další část tohoto článku. 
 
-1. Zkopírujte následující kód JSON a vložte ho do nového souboru s názvem *požadavků ohlásila. azuredeploy. JSON*.
+1. Zkopírujte a vložte následující kód json do nového souboru s názvem *prereq.azuredeploy.json*.
 
    ```json
    {
@@ -109,7 +109,7 @@ Než budete moct použít hodnoty klíč-hodnota k virtuálnímu počítači, mu
    }
    ```
 
-1. Zkopírujte následující kód JSON a vložte ho do nového souboru s názvem *požadavků ohlásila. azuredeploy. Parameters. JSON*. Nahraďte **příkaz Get-Unique** jedinečným názvem úložiště konfigurace.
+1. Zkopírujte a vložte následující kód json do nového souboru s názvem *prereq.azuredeploy.parameters.json*. Nahraďte **GET-UNIQUE** jedinečným názvem pro váš konfigurační obchod.
 
    ```json
    {
@@ -123,7 +123,7 @@ Než budete moct použít hodnoty klíč-hodnota k virtuálnímu počítači, mu
    }
    ```
 
-1. V okně PowerShellu spusťte následující příkaz, který nasadí úložiště konfigurace aplikace Azure. Nezapomeňte nahradit název skupiny prostředků, cestu k souboru šablony a cestu k souboru parametrů šablony.
+1. V okně PowerShellu spusťte následující příkaz pro nasazení úložiště Azure App Configuration Store. Nezapomeňte nahradit název skupiny prostředků, cestu k souboru šablony a cestu k souboru parametru šablony.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
@@ -132,28 +132,28 @@ Než budete moct použít hodnoty klíč-hodnota k virtuálnímu počítači, mu
        -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
    ```
 
-## <a name="add-vm-configuration-key-values"></a>Přidat konfigurační klíč virtuálního počítače – hodnoty
+## <a name="add-vm-configuration-key-values"></a>Přidání hodnot konfiguračního klíče virtuálního počítače
 
-Můžete vytvořit úložiště konfigurace aplikace pomocí šablony Azure Resource Manager, ale je potřeba přidat klíčové hodnoty pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI. V tomto rychlém startu přidáte klíčové hodnoty pomocí Azure Portal.
+Úložiště konfigurace aplikací můžete vytvořit pomocí šablony Azure Resource Manager, ale potřebujete přidat hodnoty klíčů pomocí portálu Azure nebo azure cli. V tomto rychlém startu přidáte hodnoty klíče pomocí portálu Azure.
 
-1. Po dokončení nasazení přejděte do nově vytvořeného úložiště konfigurace aplikace v [Azure Portal](https://portal.azure.com).
+1. Po dokončení nasazení přejděte do nově vytvořeného úložiště Konfigurace aplikací na [webu Azure Portal](https://portal.azure.com).
 
-1. Vyberte **nastavení** > **přístupové klíče**. Poznamenejte si primární připojovací řetězec klíče jen pro čtení. Pomocí tohoto připojovacího řetězce později nakonfigurujete aplikaci tak, aby komunikovala s úložištěm konfigurace aplikace, které jste vytvořili.
+1. Vyberte **možnost Nastavení** > **přístupových kláves**. Poznamenejte si připojovací řetězec primárního klíče jen pro čtení. Tento připojovací řetězec budete později používat ke konfiguraci aplikace pro komunikaci s úložištěm konfigurace aplikací, které jste vytvořili.
 
-1. Vyberte **Průzkumník** konfigurace > **vytvořit** a přidejte následující páry klíč-hodnota:
+1. Vyberte Vytvořit **průzkumníka** > **konfigurace,** chcete-li přidat následující dvojice klíč-hodnota:
 
    |Klíč|Hodnota|
    |-|-|
-   |windowsOsVersion|2019 – Datacenter|
-   |diskSizeGB|1023|
+   |windowsOsVersion|2019-Datové centrum|
+   |diskVelikostGB|1023|
   
-   Zadejte *šablonu* pro **popisek**, ale **typ obsahu** zůstane prázdný.
+   Zadejte *šablonu* pro **Popisek**, ale ponechte **typ obsahu** prázdný.
 
-## <a name="deploy-vm-using-stored-key-values"></a>Nasazení virtuálního počítače pomocí uložených hodnot klíčů
+## <a name="deploy-vm-using-stored-key-values"></a>Nasazení virtuálního mísa pomocí uložených hodnot klíčů
 
-Teď, když jste do úložiště přidali klíčové hodnoty, jste připraveni nasadit virtuální počítač pomocí šablony Azure Resource Manager. Šablona odkazuje na klíče **windowsOsVersion** a **diskSizeGB** , které jste vytvořili.
+Teď, když jste do úložiště přidali hodnoty klíčů, jste připraveni nasadit virtuální počítač pomocí šablony Azure Resource Manager. Šablona odkazuje na **windowsOsVersion** a **diskSizeGB** klíče, které jste vytvořili.
 
-1. Zkopírujte následující kód JSON a vložte ho do nového souboru s názvem *azuredeploy. JSON*nebo ho stáhněte ze šablon pro [rychlý Start Azure](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json).
+1. Zkopírujte a vložte následující kód json do nového souboru s názvem *azuredeploy.json*nebo stáhněte soubor ze [šablon Azure Quickstart](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json).
 
    ```json
    {
@@ -375,7 +375,7 @@ Teď, když jste do úložiště přidali klíčové hodnoty, jste připraveni n
    }
    ```
 
-1. Zkopírujte následující kód JSON a vložte ho do nového souboru s názvem *azuredeploy. Parameters. JSON*nebo ho stáhněte ze šablon pro [rychlý Start Azure](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json).
+1. Zkopírujte a vložte následující kód json do nového souboru s názvem *azuredeploy.parameters.json*nebo stáhněte soubor ze [šablon Azure Quickstart](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json).
 
    ```json
    {
@@ -414,16 +414,16 @@ Teď, když jste do úložiště přidali klíčové hodnoty, jste připraveni n
 
    |Parametr|Hodnota|
    |-|-|
-   |adminPassword|Heslo správce pro virtuální počítač.|
-   |appConfigStoreName|Název úložiště konfigurace aplikace Azure.|
-   |appConfigStoreResourceGroup|Skupina prostředků, která obsahuje vaše úložiště konfigurace aplikace.|
-   |vmSkuKey|*windowsOSVersion*|
-   |diskSizeKey|*diskSizeGB*|
-   |adminUsername|Uživatelské jméno správce pro virtuální počítač.|
-   |storageAccountName|Jedinečný název účtu úložiště, který je přidružený k virtuálnímu počítači.|
+   |adminPassword|Heslo správce pro virtuální počítače.|
+   |název appConfigStore|Název vašeho úložiště Konfigurace aplikací Azure.|
+   |appConfigStoreResourceGroup|Skupina prostředků, která obsahuje úložiště konfigurace aplikací.|
+   |vmSkuKlíč|*windowsOSVersion*|
+   |diskVelikostklíče|*diskVelikostGB*|
+   |adminUsername|Uživatelské jméno správce pro virtuální ho.|
+   |storageAccountName|Jedinečný název pro účet úložiště přidružený k virtuálnímu virtuálnímu ms.|
    |domainNameLabel|Jedinečný název domény.|
 
-1. V okně PowerShellu spusťte následující příkaz, který nasadí úložiště konfigurace aplikace Azure. Nezapomeňte nahradit název skupiny prostředků, cestu k souboru šablony a cestu k souboru parametrů šablony.
+1. V okně PowerShellu spusťte následující příkaz pro nasazení úložiště Azure App Configuration Store. Nezapomeňte nahradit název skupiny prostředků, cestu k souboru šablony a cestu k souboru parametru šablony.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
@@ -432,11 +432,11 @@ Teď, když jste do úložiště přidali klíčové hodnoty, jste připraveni n
        -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
    ```
 
-Blahopřejeme! Nasadili jste virtuální počítač pomocí konfigurací uložených v konfiguraci aplikace Azure.
+Blahopřejeme! Virtuální počítač jste nasadili pomocí konfigurací uložených v konfiguraci aplikací Azure.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, úložiště konfigurace aplikace, virtuální počítač a všechny související prostředky. Pokud plánujete používat úložiště konfigurace aplikace nebo virtuální počítač v budoucnu, můžete ho odstranit. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené tímto rychlým startem spuštěním následující rutiny:
+Když už nepotřebujete, odstraňte skupinu prostředků, úložiště konfigurace aplikací, virtuální počítače a všechny související prostředky. Pokud plánujete v budoucnu používat úložiště konfigurace aplikací nebo virtuální počítače, můžete jeho odstranění přeskočit. Pokud nebudete pokračovat v používání této úlohy, odstraňte všechny prostředky vytvořené tímto rychlým startem spuštěním následující rutiny:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup `
@@ -445,9 +445,9 @@ Remove-AzResourceGroup `
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili virtuální počítač pomocí šablony Azure Resource Manager a hodnot klíč-hodnota z konfigurace aplikace Azure.
+V tomto rychlém startu jste nasadili virtuální počítač pomocí šablony Azure Resource Manager a hodnoty klíčů z konfigurace aplikace Azure.
 
-Další informace o vytváření dalších aplikací s konfigurací aplikace Azure najdete v následujícím článku:
+Další informace o vytváření dalších aplikací pomocí konfigurace aplikací Azure najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure](quickstart-aspnet-core-app.md)
+> [Úvodní příručka: Vytvoření aplikace ASP.NET Core s konfigurací aplikací Azure](quickstart-aspnet-core-app.md)

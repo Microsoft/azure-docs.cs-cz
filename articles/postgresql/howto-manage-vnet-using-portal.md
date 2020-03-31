@@ -1,64 +1,64 @@
 ---
-title: Použít pravidla virtuální sítě-Azure Portal-Azure Database for PostgreSQL-Single server
-description: Vytvoření a správa koncových bodů a pravidel služby virtuální sítě Azure Database for PostgreSQL – jeden server pomocí Azure Portal
+title: Použití pravidel virtuální sítě – portál Azure – Databáze Azure pro PostgreSQL – jeden server
+description: Vytvoření a správa koncových bodů a pravidel služby Virtuální sítě Azure Database for PostgreSQL – jeden server pomocí portálu Azure
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 413c3a7b6fdcda996d3db548fb53f358eb8c71e0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978280"
 ---
-# <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>Vytváření a správa koncových bodů služby virtuální sítě a pravidel virtuální sítě na serveru Azure Database for PostgreSQL – s využitím Azure Portal
-Koncovými body a pravidly služby Virtual Network (VNet) přesahují privátní adresní prostor Virtual Network na server Azure Database for PostgreSQL. Přehled koncových bodů služby virtuální sítě Azure Database for PostgreSQL, včetně omezení, najdete v tématu [koncové body služby virtuální sítě v Azure Database for PostgreSQL serveru](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastech pro Azure Database for PostgreSQL.
+# <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>Vytváření a správa koncových bodů služby virtuální sítě a pravidel virtuální sítě v databázi Azure pro PostgreSQL – jeden server pomocí portálu Azure
+Koncové body a pravidla služeb virtuální sítě (Virtuální síť) rozšiřují privátní adresní prostor virtuální sítě na váš server Azure Database for PostgreSQL. Přehled koncových bodů služby Azure Database for PostgreSQL VNet, včetně omezení, najdete v [tématu Azure Database for PostgreSQL Server Virtuální síť koncových bodů](concepts-data-access-and-security-vnet.md). Koncové body služby Virtuální sítě jsou dostupné ve všech podporovaných oblastech pro Azure Database for PostgreSQL.
 
 > [!NOTE]
-> Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
-> V případě partnerského vztahu virtuálních sítí platí, že pokud přenos prochází přes společnou bránu virtuální sítě s koncovými body služby a měl by se přesměrovat na partnera, vytvořte prosím pravidlo seznamu ACL/virtuální sítě, které povolí službě Azure Virtual Machines ve virtuální síti brány pro přístup k serveru Azure Database for PostgreSQL.
+> Podpora koncových bodů služby virtuální sítě je jenom pro servery optimalizované pro obecné účely a paměť.
+> V případě partnerského vztahu virtuální sítě, pokud provoz protéká společnou bránou virtuální sítě s koncovými body služby a má tok do druhé strany, vytvořte pravidlo ACL/Virtuální sítě, které umožní virtuálním počítačům Azure ve virtuální síti brány přístup k databázi Azure pro postgreSQL server.
 
 
-## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Vytvoření pravidla virtuální sítě a povolení koncových bodů služby v Azure Portal
+## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Vytvoření pravidla virtuální sítě a povolení koncových bodů služby na webu Azure Portal
 
-1. Na stránce serveru PostgreSQL v části Nastavení klikněte na **zabezpečení připojení** . tím otevřete podokno zabezpečení připojení pro Azure Database for PostgreSQL. 
+1. Na stránce PostgreSQL server v záhlaví Nastavení klikněte na **Zabezpečení připojení** a otevřete podokno Zabezpečení připojení pro Azure Database for PostgreSQL. 
 
-2. Zajistěte, aby byl ovládací prvek povolení přístupu ke službám Azure nastavený na **vypnuto**.
+2. Ujistěte se, že povolit přístup ke službám Azure ovládací prvek je nastavena na **VYPNUTO**.
 
 > [!Important]
-> Pokud ovládací prvek necháte nastavený na ZAPNUTo, Server databáze Azure PostgreSQL přijme komunikaci ze všech podsítí. Ponechání ovládacího prvku na ZAPNUTo může být nadměrný přístup z hlediska zabezpečení. Funkce koncového bodu služby Microsoft Azure Virtual Network, v koordinaci s funkcí pravidla virtuální sítě Azure Database for PostgreSQL, společně může snížit oblast zabezpečení.
+> Pokud ponecháte ovládací prvek nastavený na ZAPNUTO, váš server Azure PostgreSQL Database server přijímá komunikaci z libovolné podsítě. Ponechání ovládacího prvku nastaveného na zapnuto může být nadměrný přístup z hlediska zabezpečení. Funkce koncového bodu služby Virtuální síť Microsoft Azure v koordinaci s funkcí pravidla virtuální sítě v Azure Database for PostgreSQL může společně snížit plochu zabezpečení.
 
-3. Potom klikněte na **+ Přidat existující virtuální síť**. Pokud nemáte existující virtuální síť, můžete ji vytvořit kliknutím na **+ vytvořit novou virtuální síť** . Další informace najdete v tématu [rychlý Start: vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/quick-create-portal.md)
+3. Dále klikněte na **+ Přidání existující virtuální sítě**. Pokud nemáte existující virtuální síť, můžete kliknout na **+ Vytvořit novou virtuální síť** a vytvořit ji. Viz [Úvodní příručka: Vytvoření virtuální sítě pomocí portálu Azure](../virtual-network/quick-create-portal.md)
 
-   ![Azure Portal – kliknutí na zabezpečení připojení](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   ![Portál Azure – klikněte na zabezpečení připojení.](./media/howto-manage-vnet-using-portal/1-connection-security.png)
 
-4. Zadejte název pravidla virtuální sítě, vyberte předplatné, virtuální síť a název podsítě a pak klikněte na **Povolit**. Tím se automaticky povolí koncové body služby virtuální sítě v podsíti s použitím značky služby **Microsoft. SQL** .
+4. Zadejte název pravidla virtuální sítě, vyberte předplatné, virtuální síť a název podsítě a klikněte na **Povolit**. To automaticky povolí koncové body služby virtuální sítě v podsíti pomocí značky služby **Microsoft.SQL.**
 
-   ![Azure Portal – konfigurace virtuální sítě](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
+   ![Portál Azure – konfigurace virtuální sítě](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
 
     Účet musí mít potřebná oprávnění k vytvoření virtuální sítě a koncového bodu služby.
 
-    Koncové body služby je možné konfigurovat na virtuálních sítích nezávisle na uživateli s oprávněním k zápisu do virtuální sítě.
+    Koncové body služby lze konfigurovat ve virtuálních sítích nezávisle uživatelem s přístupem pro zápis do virtuální sítě.
     
-    Aby bylo možné zabezpečit prostředky služeb Azure pro virtuální síť, musí mít uživatel pro přidávané podsítě oprávnění k Microsoft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/. Toto oprávnění je ve výchozím nastavení součástí předdefinovaných rolí správců služeb a může se upravit vytvořením vlastních rolí.
+    Chcete-li zabezpečit prostředky služby Azure do virtuální sítě, musí mít uživatel oprávnění k "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/" pro přidávané podsítě. Toto oprávnění je ve výchozím nastavení součástí předdefinovaných rolí správců služeb a může se upravit vytvořením vlastních rolí.
     
     Další informace o [předdefinovaných rolích](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) a přiřazení konkrétních oprávnění k [vlastním rolím](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
     
-    Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud jsou virtuální síť a prostředky služeb Azure v různých předplatných, musí být prostředky ve stejném tenantovi Active Directory (AD). Zajistěte, aby oba odběry měly zaregistrovaný poskytovatel prostředků **Microsoft. SQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
+    Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud jsou prostředky virtuální sítě a služby Azure v různých předplatných, prostředky by měly být pod stejným klientem služby Active Directory (AD). Ujistěte se, že obě předplatná mají registrovaného zprostředkovatele prostředků **Microsoft.Sql.** Další informace naleznete v odkazech [na registraci správce prostředků][resource-manager-portal]
 
    > [!IMPORTANT]
-   > Před konfigurací koncových bodů služby se důrazně doporučuje přečíst si tento článek o konfiguracích koncových bodů a požadavcích služby. **Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. Koncové body služeb virtuální sítě používají název typu služby **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database. Tato značka služby platí také pro Azure SQL Database služby Azure Database for PostgreSQL a MySQL. Je důležité si uvědomit, že pokud použijete značku služby **Microsoft. SQL** pro koncový bod služby virtuální sítě, nakonfiguruje se provoz koncového bodu služby pro všechny služby Azure Database, včetně Azure SQL Database, Azure Database for PostgreSQL a Azure Database for MySQL serverů v podsíti. 
+   > Důrazně doporučujeme přečíst si tento článek o konfiguraci koncového bodu služby a důležité informace před konfigurací koncových bodů služby. **Koncový bod služby Virtuální síť:** [Koncový bod služby Virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služby Azure. Koncové body služeb virtuální sítě používají název typu služby **Microsoft.Sql**, který odkazuje na službu Azure s názvem SQL Database. Tato značka služby platí také pro Azure SQL Database, Azure Database for PostgreSQL a MySQL služby. Je důležité si uvědomit, že při použití značky služby **Microsoft.Sql** na koncový bod služby virtuální sítě konfiguruje provoz koncových bodů služby pro všechny služby Azure Database, včetně Azure SQL Database, Azure Database for PostgreSQL a Azure Database for MySQL servery v podsíti. 
    > 
 
 5. Po povolení klikněte na **OK** a uvidíte, že koncové body služby virtuální sítě jsou povolené spolu s pravidlem virtuální sítě.
 
-   ![Povolené koncové body služby virtuální sítě a vytvořené pravidlo virtuální sítě](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   ![Koncové body služby Virtuální sítě jsou povoleny a pravidlo virtuální sítě je vytvořeno.](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
 ## <a name="next-steps"></a>Další kroky
-- Podobně můžete skript pro [Povolení koncových bodů služby virtuální sítě a vytvoření pravidla virtuální sítě pro Azure Database for PostgreSQL pomocí Azure CLI](howto-manage-vnet-using-cli.md).
-- Nápovědu k připojení k serveru Azure Database for PostgreSQL najdete v tématu [knihovny připojení pro Azure Database for PostgreSQL](./concepts-connection-libraries.md)
+- Podobně můžete skriptovat [povolit koncové body služby virtuální sítě a vytvořit pravidlo virtuální sítě pro Azure Database for PostgreSQL pomocí Azure CLI](howto-manage-vnet-using-cli.md).
+- Nápovědu k připojení k azure databázi pro postgreSQL server najdete v [tématu Knihovny připojení pro Azure Database for PostgreSQL.](./concepts-connection-libraries.md)
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

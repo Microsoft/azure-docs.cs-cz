@@ -1,6 +1,6 @@
 ---
-title: Relace Azure Service Bus zpráv | Microsoft Docs
-description: Tento článek vysvětluje, jak pomocí relací povolit společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv.
+title: Relace zpráv Azure Service Bus | Dokumenty společnosti Microsoft
+description: Tento článek vysvětluje, jak použít relace povolit společné a uspořádané zpracování neohraničené sekvence souvisejících zpráv.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,97 +14,97 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660661"
 ---
 # <a name="message-sessions"></a>Relace zpráv
-Microsoft Azure Service Bus relace umožňují společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv. Relace se dají použít v vzorcích first in, First out (FIFO) a Request-Response. Tento článek popisuje, jak používat relace k implementaci těchto vzorů při použití Service Bus. 
+Relace služby Microsoft Azure Service Bus umožňují společné a seřazené zpracování neomezených sekvencí souvisejících zpráv. Relace lze použít v první dovnitř, první ven (FIFO) a požadavky na odpověď vzory. Tento článek ukazuje, jak používat relace k implementaci těchto vzorů při použití service bus. 
 
-## <a name="first-in-first-out-fifo-pattern"></a>Vzor first-in, First out (FIFO)
-Pokud chcete v Service Bus realizovat jistotu FIFO, použijte relace. Service Bus není podrobnější informace o povaze vztahu mezi zprávami a také nedefinuje konkrétní model pro zjištění, kde začíná nebo končí sekvence zpráv.
+## <a name="first-in-first-out-fifo-pattern"></a>Vzor prvního vak, prvního outu (FIFO)
+Chcete-li realizovat záruku FIFO v service bus, použijte relace. Service Bus není normativní o povaze vztahu mezi zprávami a také nedefinuje konkrétní model pro určení, kde sekvence zpráv začíná nebo končí.
 
 > [!NOTE]
-> Základní Service Bus úrovně nepodporuje relace. Úrovně Standard a Premium podporují relace. Rozdíly mezi těmito úrovněmi najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
+> Základní úroveň Service Bus nepodporuje relace. Standardní a prémiové úrovně podporují relace. Rozdíly mezi těmito úrovněmi najdete v tématu [Ceny service bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
-Každý odesilatel může vytvořit relaci při odesílání zpráv do tématu nebo do fronty nastavením vlastnosti [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) na některý identifikátor definovaný aplikací, který je pro relaci jedinečný. Na úrovni protokolu AMQP 1,0 se tato hodnota mapuje na vlastnost *Group-ID* .
+Každý odesílatel může vytvořit relaci při odesílání zpráv do tématu nebo fronty nastavením [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) vlastnost některé aplikace definované identifikátor, který je jedinečný pro relaci. Na úrovni protokolu AMQP 1.0 se tato hodnota mapuje na vlastnost *id skupiny.*
 
-U front a předplatných, které pracují s relacemi, se relace nacházejí v případě, že existuje alespoň jedna zpráva s [identifikátorem SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId)relace. Po existující relaci není k dispozici žádný definovaný čas nebo rozhraní API pro dobu, kdy relace vyprší nebo zmizí. Teoreticky se dá přijmout zpráva pro relaci dnes, další zpráva v roce a v případě, že se **SessionID** shodují, relace je stejná jako v Service Bus perspektivě.
+Ve frontách nebo předplatných s ohledem na relace dojde k relacím, když je alespoň jedna zpráva s [sessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId)relace . Jakmile relace existuje, neexistuje žádný definovaný čas nebo rozhraní API pro kdy relace vyprší nebo zmizí. Teoreticky může být přijata zpráva pro relaci dnes, další zpráva v roce čas a pokud **SessionId** odpovídá, relace je stejný z hlediska sběrnice služby.
 
-Obvykle však aplikace má jasný pojem, kde se spustí a končí sada souvisejících zpráv. Service Bus nenastavuje žádná konkrétní pravidla.
+Aplikace má však obvykle jasnou představu o tom, kde začíná a končí sada souvisejících zpráv. Service Bus nenastavuje žádná konkrétní pravidla.
 
-Příkladem, jak určit sekvenci pro přenos souboru, je nastavit vlastnost **popisek** první zprávy na **Start**, pro mezilehlé zprávy na **obsah**a na **konec**poslední zprávy. Relativní umístění zpráv obsahu lze vypočítat jako aktuální rozdíl *SequenceNumber* zprávy ze *SequenceNumber* **spuštění** zprávy.
+Příkladem vymezení sekvence pro přenos souboru je nastavení **vlastnosti Label** pro první **zprávu,** která má být zahájena , pro zprostředkující zprávy na **obsah**a pro poslední zprávu, která má **být ukončena**. Relativní pozici obsahu zpráv lze vypočítat jako aktuální zpráva *SequenceNumber* delta z **počáteční** zprávy *SequenceNumber*.
 
-Funkce Session v Service Bus umožňuje určitou operaci přijímání, ve formě [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) v rozhraních API C# a Java. Tuto funkci povolíte nastavením vlastnosti [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) ve frontě nebo předplatném pomocí Azure Resource Manager nebo nastavením příznaku na portálu. Je nutné, abyste se pokusili použít související operace rozhraní API.
+Funkce relace v Service Bus umožňuje konkrétní operaci příjmu, ve formě [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) v C# a Java API. Funkci povolíte nastavením vlastnosti [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) ve frontě nebo předplatném prostřednictvím Správce prostředků Azure nebo nastavením příznaku na portálu. Je nutné před pokusem o použití související chod rozhraní API.
 
-Na portálu nastavte příznak následujícím zaškrtávacím políčkem:
+Na portálu nastavte příznak s následujícím zaškrtávacím políčkem:
 
 ![][2]
 
 > [!NOTE]
-> Když jsou povoleny relace ve frontě nebo v předplatném, klientské aplikace ***již*** nemohou odesílat a přijímat pravidelné zprávy. Všechny zprávy musí být odesílány v rámci relace (nastavením ID relace) a přijaty přijetím relace.
+> Pokud jsou relace povoleny ve frontě nebo předplatném, klientské aplikace ***již*** nemohou odesílat a přijímat běžné zprávy. Všechny zprávy musí být odeslány jako součást relace (nastavením ID relace) a přijaty přijetím relace.
 
-Rozhraní API pro relace existují na klientech front a předplatných. Existuje imperativní model, který řídí, kdy jsou přijímány relace a zprávy, a model založený na obslužných rutinách, podobně jako- *Message*, který skrývá složitost správy přijímací smyčky.
+Api pro relace existují na frontách a předplacených klientech. Existuje imperativní model, který řídí při přijetí relací a zpráv, a model založený na obslužné rutině, podobně jako *OnMessage*, který skryje složitost správy smyčky příjmu.
 
 ### <a name="session-features"></a>Funkce relace
 
-Relace poskytují souběžné demultiplexování datových proudů zpráv při zachování a zaručení objednaného doručení.
+Relace poskytují souběžné de-multiplexování prokládání datových proudů zpráv při zachování a zaručení objednaného doručení.
 
 ![][1]
 
-Příjemce [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) je vytvořen klientem, který přijímá relaci. Klient volá [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) nebo [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) v C#. V modelu reaktivního zpětného volání zaregistruje obslužnou rutinu relace.
+Příjemce [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) je vytvořen klientem, který přijímá relaci. Klient volá [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) nebo [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) v c#. V modelu zpětného volání reaktivní registruje obslužnou rutinu relace.
 
-Když je objekt [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) přijatý a i když ho drží klient, má tento klient exkluzivní zámek na všech zprávách s [identifikátorem SessionID](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) relace, který existuje ve frontě nebo předplatném, a také na všech zprávách s **identifikátorem SessionID** , který je stále přítomen v době, kdy se relace koná.
+Když [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) objekt je přijat a při jeho držení klientem, tento klient drží výhradní zámek na všechny zprávy s [sessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) relace, které existují ve frontě nebo předplatné a také na všechny zprávy s **sessionId,** které stále dorazí, zatímco relace je držena.
 
-Zámek se uvolní při volání funkce **Close** nebo **CloseAsync** nebo po vypršení platnosti zámku v případech, kdy aplikace nemůže provést operaci Zavřít. Zámek relace by měl být považován za výhradní zámek u souboru, což znamená, že aplikace by měla relaci ukončit, jakmile ji již nepotřebuje a/nebo neočekává žádné další zprávy.
+Zámek je uvolněna **při Close** nebo **CloseAsync** jsou volány, nebo když vyprší platnost zámku v případech, ve kterých aplikace není schopen provést operaci zavření. Zámek relace by měl být zpracován jako výhradní zámek v souboru, což znamená, že aplikace by měla ukončit relaci, jakmile ji již nepotřebuje a/nebo neočekává žádné další zprávy.
 
-Pokud je z fronty vyžádané více souběžných přijímačů, zprávy patřící do určité relace jsou odesílány na konkrétního příjemce, který v současné době zámek pro danou relaci obsahuje. V takovém případě se prokládaný datový proud zpráv v jedné frontě nebo předplatném čistí čistě proti různým přijímačům a jejich přijímače můžou být živé i v různých klientských počítačích, protože správa zámků nastane na straně služby v rámci Service Bus.
+Při více souběžných příjemců vytáhnout z fronty, zprávy, které patří do určité relace jsou odeslány na konkrétní příjemce, který aktuálně drží zámek pro tuto relaci. S tímto provozem prokládání zprávy proud v jedné frontě nebo odběr je čistě de-multiplexní na různé příjemce a tyto přijímače mohou také žít na různých klientských počítačích, protože správa zámku se stane service-side, uvnitř Service Bus.
 
-Na předchozím obrázku vidíte tři přijímače souběžných relací. Jedna relace s `SessionId` = 4 nemá žádné aktivní, vlastnícího klienta, což znamená, že z této konkrétní relace nebudou doručovány žádné zprávy. Relace funguje mnoha způsoby jako podfrontu.
+Předchozí obrázek znázorňuje tři souběžné relace přijímače. Jedna relace `SessionId` s = 4 nemá žádného aktivního klienta, což znamená, že z této konkrétní relace nejsou doručovány žádné zprávy. Relace funguje mnoha způsoby jako dílčí fronty.
 
-Zámek relace uchovávaný příjemcem relace je zastřešující pro zámky zpráv používané režimem vyrovnávání *proti prohlížení* . Přijímač nemůže mít současně dvě zprávy "v letu", ale zprávy musí být zpracovány v daném pořadí. Novou zprávu lze získat pouze v případě, že byla předchozí zpráva dokončena nebo byla nedoručena. Zrušením zprávy dojde k opětovnému doručení stejné zprávy s další operací Receive.
+Zámek relace v držení příjemce relace je zastřešující pro uzamčení zprávy používá *peek-lock* režimu vyrovnání. Příjemce nemůže mít dvě zprávy současně "v letu", ale zprávy musí být zpracovány v pořadí. Novou zprávu lze získat pouze po dokončení předchozí zprávy nebo nedoručené zprávě. Opuštění zprávy způsobí, že stejná zpráva má být znovu doručena s další operaci příjmu.
 
 ### <a name="message-session-state"></a>Stav relace zprávy
 
-Když jsou pracovní postupy zpracovávány ve vysoce škálovatelných cloudových systémech s vysokou dostupností, musí být obslužná rutina pracovního postupu přidružená k určité relaci schopna zotavení z neočekávaných selhání a může obnovit částečně dokončenou práci na jiném procesu nebo počítači z kde práce začala.
+Při zpracování pracovních postupů v cloudových systémech s vysokou dostupností, obslužná rutina pracovního postupu přidružená k určité relaci musí být schopna zotavit se z neočekávaných chyb a může pokračovat v částečně dokončené práci na jiném procesu nebo počítači z kde práce započala.
 
-Zařízení stavu relace umožňuje v rámci zprostředkovatele zadat anotaci zprávy definované aplikací, aby zaznamenaný stav zpracování relativní k této relaci byl okamžitě dostupný, když je relace získána novým procesorem.
+Zařízení stavu relace umožňuje aplikaci definované poznámky relace zprávy uvnitř zprostředkovatele, takže zaznamenaný stav zpracování vzhledem k této relaci bude okamžitě k dispozici, když je relace získána novým procesorem.
 
-Z Service Bus perspektivy je stav relace zprávy neprůhledný binární objekt, který může uchovávat data velikosti jedné zprávy, což je 256 KB pro Service Bus Standard a 1 MB pro Service Bus Premium. Stav zpracování relativní vůči relaci lze uchovávat v rámci stavu relace nebo stav relace může ukazovat na některé umístění úložiště nebo databázový záznam, který obsahuje tyto informace.
+Z hlediska service bus stav relace zprávy je neprůhledný binární objekt, který může obsahovat data o velikosti jedné zprávy, což je 256 KB pro Service Bus Standard a 1 MB pro Service Bus Premium. Stav zpracování vzhledem k relaci může být držen uvnitř stavu relace nebo stav relace může překážet na některé umístění úložiště nebo záznam databáze, který tyto informace obsahuje.
 
-Rozhraní API pro správu stavu relace, [setstate](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) a [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)lze nalézt v objektu [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) v rozhraních API C# a Java. Relace, která dříve neměla nastaven stav relace, vrací odkaz s **hodnotou null** pro **GetState**. Vymazání dříve nastaveného stavu relace se provádí s [setstate (null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_).
+Api pro správu stavu relace [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) a [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState), lze nalézt na [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) objektu v C# a Java API. Relace, která dříve žádná sada stavu relace vrátí **nulový** odkaz pro **GetState**. Vymazání dříve nastavený stav relace se provádí s [SetState(null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_).
 
-Stav relace zůstane tak dlouho, dokud se nevymaže (vrátí **hodnotu null**) i v případě, že jsou všechny zprávy v relaci spotřebovány.
+Stav relace zůstane tak dlouho, dokud není vymazán (vrácení **null**), i v případě, že jsou spotřebovány všechny zprávy v relaci.
 
-U všech existujících relací ve frontě nebo předplatném se dá vytvořit výčet pomocí metody **SessionBrowser** v rozhraní Java API a [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) v [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) a [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) v klientovi .NET.
+Všechny existující relace ve frontě nebo předplatném mohou být uvedeny pomocí metody **SessionBrowser** v rozhraní Java API a [s GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) na [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) a [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) v klientovi .NET.
 
-Stav relace uložený ve frontě nebo v předplatném se počítá s kvótou úložiště této entity. Až se aplikace dokončí s relací, doporučuje se, aby aplikace vyčistila svůj zachovaná stav, aby nedocházelo k externím nákladům na správu.
+Stav relace podržený ve frontě nebo v předplatném se započítává do kvóty úložiště této entity. Po dokončení aplikace s relace, proto se doporučuje pro aplikaci vyčistit jeho zachovaného stavu, aby se zabránilo externí náklady na správu.
 
-### <a name="impact-of-delivery-count"></a>Dopad počtu doručení
+### <a name="impact-of-delivery-count"></a>Dopad počtu dodávek
 
-Definice počtu doručení na zprávu v kontextu relací se mírně liší od definice při absenci relací. Zde je souhrn tabulky při zvýšení počtu doručení.
+Definice počtu doručení na zprávu v kontextu relací se mírně liší od definice v nepřítomnosti relací. Zde je tabulka shrnující, kdy se počet dodávek zintálí.
 
-| Scénář | Zvyšuje se počet doručení zprávy |
+| Scénář | Je počet doručení zprávy přírůstý |
 |----------|---------------------------------------------|
-| Relace je přijata, ale zámek relace vyprší (z důvodu vypršení časového limitu). | Ano |
-| Relace je přijata, zprávy v relaci nejsou dokončeny (i v případě, že jsou uzamčené) a relace je zavřena. | Ne |
-| Relace je přijata, zprávy jsou dokončeny a relace je explicitně zavřena. | Není k dispozici (Jedná se o standardní tok. Z relace se odeberou tyto zprávy.) |
+| Relace je akceptována, ale platnost zámku relace vyprší (kvůli vypršení časového limitu). | Ano |
+| Relace je přijata, zprávy v rámci relace nejsou dokončeny (i když jsou uzamčeny) a relace je uzavřena | Ne |
+| Relace je přijata, zprávy jsou dokončeny a potom je relace explicitně uzavřena. | Není k němu k ono (Je to standardní tok. Zde zprávy jsou odstraněny z relace) |
 
 ## <a name="request-response-pattern"></a>Vzor požadavku a odpovědi
-[Vzor požadavku a odpovědi](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) je dobře zavedený model integrace, který umožňuje aplikaci odesílatele odeslat žádost a dát příjemci možnost správně odeslat odpověď zpět do aplikace odesílatele. Tento vzor obvykle vyžaduje krátkodobou frontu nebo téma, aby aplikace odesílala odpovědi na. V tomto scénáři představují relace jednoduché alternativní řešení s srovnatelnou sémantikou. 
+[Vzor odpověď na požadavek](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) je dobře zavedený vzor integrace, který umožňuje aplikaci odesílatele odeslat požadavek a poskytuje způsob, jak příjemce správně odeslat odpověď zpět do aplikace odesílatele. Tento vzor obvykle potřebuje krátkodobou frontu nebo téma pro aplikaci k odeslání odpovědí. V tomto scénáři relace poskytují jednoduché alternativní řešení se srovnatelnou sémantiku. 
 
-Více aplikací může odesílat požadavky do jediné fronty požadavků, přičemž konkrétní parametr hlavičky je nastaven pro jedinečnou identifikaci aplikace odesílatele. Aplikace příjemce může zpracovat žádosti přicházející do fronty a odesílat odpovědi ve frontě s povolenými relacemi, přičemž nastaví ID relace na jedinečný identifikátor, který odesilatel poslal ve zprávě požadavku. Aplikace, která odeslala požadavek, může následně přijímat zprávy na konkrétní ID relace a správně zpracovat odpovědi.
+Více aplikací může odesílat své požadavky do fronty jednoho požadavku s určitým parametrem záhlaví nastaveným pro jedinečnou identifikaci aplikace odesílatele. Aplikace příjemce může zpracovávat požadavky přicházející do fronty a odesílat odpovědi ve frontě s povolenými relacemi a nastavit ID relace na jedinečný identifikátor, který odesílatel odeslal na zprávu požadavku. Aplikace, která odeslala požadavek, pak může přijímat zprávy na konkrétní ID relace a správně zpracovat odpovědi.
 
 > [!NOTE]
-> Aplikace, která odesílá počáteční požadavky, by měla znát ID relace a použít `SessionClient.AcceptMessageSession(SessionID)` k uzamknutí relace, na které očekává odpověď. Je vhodné použít identifikátor GUID, který jedinečně identifikuje instanci aplikace jako ID relace. Ve frontě by neměl být žádná obslužná rutina relace ani `AcceptMessageSession(timeout)`, aby bylo možné zajistit, aby byly odpovědi k dispozici pro uzamknutí a zpracování konkrétními přijímači.
+> Aplikace, která odešle počáteční požadavky by měl vědět `SessionClient.AcceptMessageSession(SessionID)` o ID relace a použít k uzamčení relace, na které očekává odpověď. Je vhodné použít identifikátor GUID, který jednoznačně identifikuje instanci aplikace jako ID relace. Ve frontě by `AcceptMessageSession(timeout)` neměla být žádná obslužná rutina relace ani ve frontě, aby bylo zajištěno, že odpovědi budou k dispozici pro uzamčení a zpracování určitými příjemci.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Příklad, který používá klienta .NET Framework ke zpracování zpráv s podporou relací, najdete v ukázkách [Microsoft. Azure. ServiceBus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) nebo [Microsoft. ServiceBus. Messaging](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) . 
+- Ukázky [microsoft.azure.servicebusu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) nebo [microsoft.servicebus.messaging](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) najdete v příkladu, který ke zpracování zpráv podporujících relace používá klienta rozhraní .NET Framework. 
 
-Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
+Další informace o zasílání zpráv služby Service Bus najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

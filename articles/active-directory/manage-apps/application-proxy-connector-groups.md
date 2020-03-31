@@ -1,6 +1,6 @@
 ---
 title: Publikování aplikací v samostatných sítích prostřednictvím skupin konektorů – Azure AD
-description: Popisuje, jak vytvářet a spravovat skupiny konektorů v Azure AD Application Proxy.
+description: Popisuje, jak vytvořit a spravovat skupiny konektorů v proxy aplikací Azure AD.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -15,118 +15,118 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275567"
 ---
-# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů
+# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů
 
-Zákazníci využívat Azure AD Application Proxy pro další a další scénáře a aplikace. Proto jsme Proxy aplikací ještě flexibilnější povolením více topologií. Můžete vytvořit skupiny konektorů Proxy aplikací, takže můžete přiřadit konkrétní konektory k poskytování určité aplikace. Tato funkce nabízí další ovládací prvek a způsoby, jak optimalizovat nasazení vašeho Proxy aplikací.
+Zákazníci využívají proxy aplikací Azure AD pro další a další scénáře a aplikace. Takže jsme udělali App Proxy ještě flexibilnější tím, že umožňuje více topologie. Můžete vytvořit skupiny konektorů proxy aplikace, takže můžete přiřadit určité konektory pro konkrétní aplikace. Tato funkce poskytuje větší kontrolu a způsoby optimalizace nasazení proxy aplikací.
 
-Každý konektor Proxy aplikací je přiřazen do skupiny konektorů. Všechny konektory, které patří do stejné skupiny konektor bude fungovat jako samostatná jednotka pro vysokou dostupnost a vyrovnávání zatížení. Všechny konektory patří do skupiny konektorů. Pokud nevytvoříte skupin, všechny konektory jsou ve výchozí skupině. Váš správce můžete vytvářet nové skupiny a přiřaďte konektory k nim na webu Azure Portal.
+Každý konektor proxy aplikace je přiřazen ke skupině konektorů. Všechny konektory, které patří do stejné skupiny konektorů, fungují jako samostatná jednotka pro vysokou dostupnost a vyrovnávání zatížení. Všechny konektory patří do skupiny konektorů. Pokud skupiny nevytvoříte, budou všechny konektory ve výchozí skupině. Správce může vytvářet nové skupiny a přiřazovat jim konektory na webu Azure Portal.
 
-Všechny aplikace jsou přiřazeny skupině konektorů. Pokud nevytvoříte skupin, všechny aplikace přiřazené do výchozí skupiny. Ale pokud své konektory uspořádáte do skupin, můžete nastavit každou aplikaci pro práci s konkrétním konektorům skupiny. V takovém případě pouze konektorů v této skupině poskytovat aplikaci na vyžádání. Tato funkce je užitečná, pokud vaše aplikace hostované v různých umístěních. Skupiny konektorů v závislosti na umístění, můžete vytvořit tak, aby aplikace se vždycky obsluhují konektory, které jsou fyzicky blízko je.
+Všechny aplikace jsou přiřazeny ke skupině konektorů. Pokud skupiny nevytvoříte, budou všechny aplikace přiřazeny k výchozí skupině. Ale pokud uspořádáte konektory do skupin, můžete nastavit každou aplikaci pro práci s konkrétní skupinou konektorů. V tomto případě pouze konektory v této skupině slouží aplikace na vyžádání. Tato funkce je užitečná, pokud jsou aplikace hostovány na různých místech. Skupiny spojnic můžete vytvořit na základě umístění, aby aplikace byly vždy obsluhovány konektory, které jsou fyzicky blízko k nim.
 
 > [!TIP]
-> Pokud máte velké nasazení Proxy aplikací, nepřiřazovat všechny aplikace do výchozí skupiny konektoru. Tímto způsobem nové konektory nepřijímají žádné živé přenosy, dokud je nezařadíte do skupiny konektor služby active. Tato konfigurace umožňuje také můžete umístit konektory v režimu nečinnosti jejich přesunutím zpět do výchozí skupiny, takže můžete provést údržbu, aniž to ovlivní vaše uživatele.
+> Pokud máte velké nasazení proxy aplikací, nepřiřazuj te žádné aplikace k výchozí skupině konektorů. Tímto způsobem nové konektory neobdrží žádné živé přenosy, dokud je nepřiřadíte k aktivní skupině konektorů. Tato konfigurace také umožňuje umístit konektory do nečinného režimu přesunutím zpět do výchozí skupiny, takže můžete provádět údržbu bez dopadu na uživatele.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li seskupit konektory, musíte se ujistit, že jste [nainstalovali více konektorů](application-proxy-add-on-premises-application.md). Při instalaci nového konektoru se automaticky připojí **výchozí** skupina konektorů.
+Chcete-li seskupit konektory, musíte se ujistit, že jste [nainstalovali více konektorů](application-proxy-add-on-premises-application.md). Když nainstalujete nový konektor, automaticky se připojí k **výchozí** skupině konektorů.
 
-## <a name="create-connector-groups"></a>Vytvoření skupiny konektorů
+## <a name="create-connector-groups"></a>Vytvoření skupin konektorů
 
-Pomocí těchto kroků můžete vytvořit libovolný počet skupin konektoru.
+Pomocí těchto kroků vytvořte libovolný počet skupin spojnic.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. Vyberte **Azure Active Directory** > **podnikové aplikace** > **aplikační proxy**.
-1. Vyberte možnost **Nová skupina konektorů**. Otevře se okno Nová skupina konektorů.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Vyberte azure **active directory** > **podnikové aplikace** > **proxy aplikace**.
+1. Vyberte **nová skupina spojnic**. Zobrazí se okno Nová skupina konektorů.
 
-   ![Zobrazuje obrazovku pro výběr nové skupiny konektorů.](./media/application-proxy-connector-groups/new-group.png)
+   ![Zobrazí obrazovku pro výběr nové skupiny konektorů.](./media/application-proxy-connector-groups/new-group.png)
 
-1. Nová skupina konektorů pojmenujte a pak pomocí rozevírací nabídky vyberte, které konektory patří do této skupiny.
+1. Pojmenujte novou skupinu konektorů a pomocí rozevírací nabídky vyberte, které konektory do této skupiny patří.
 1. Vyberte **Uložit**.
 
-## <a name="assign-applications-to-your-connector-groups"></a>Přiřazení aplikací do skupiny konektorů
+## <a name="assign-applications-to-your-connector-groups"></a>Přiřazení aplikací ke skupinám konektorů
 
-Tyto kroky použijte pro každou aplikaci, kterou jste publikovali pomocí Proxy aplikace. Když nejprve publikovat, nebo můžete použít tyto kroky pro změnu přiřazení je vždy, když chcete, můžete přiřadit aplikace do skupiny konektorů.
+Tyto kroky použijte pro každou aplikaci, kterou jste publikovali s proxy aplikací. Při prvním publikování můžete přiřadit aplikaci skupině konektorů nebo můžete pomocí těchto kroků změnit přiřazení, kdykoli budete chtít.
 
-1. Z řídicího panelu pro správu vašeho adresáře vyberte **podnikové aplikace** > **všechny aplikace** > aplikaci, kterou chcete přiřadit ke skupině konektorů > **proxy aplikací**.
-1. Pomocí rozevírací nabídky **Skupina konektoru** vyberte skupinu, kterou chcete použít v aplikaci.
-1. Vyberte **Uložit** a použijte změnu.
+1. Na řídicím panelu správy pro váš adresář vyberte **podnikové aplikace** > **Všechny aplikace** > aplikaci, kterou chcete přiřadit skupině konektorů > proxy **aplikace**.
+1. Pomocí rozevírací nabídky **Skupina konektorů** vyberte skupinu, kterou má aplikace používat.
+1. Chcete-li změnu použít, vyberte **Uložit.**
 
 ## <a name="use-cases-for-connector-groups"></a>Případy použití pro skupiny konektorů
 
 Skupiny konektorů jsou užitečné pro různé scénáře, včetně:
 
-### <a name="sites-with-multiple-interconnected-datacenters"></a>Servery s několika propojených datových centrech
+### <a name="sites-with-multiple-interconnected-datacenters"></a>Lokality s více propojenými datovými centry
 
-Mnoho organizací mají počet propojených datových centrech. V tomto případě chcete zachovat co nejvíce přenosů v rámci datacentra nejdříve, protože odkazy na víc datacenter jsou pomalé a drahé. Nasazením konektorů v každé datové centrum, která bude sloužit pouze aplikace, které se nacházejí v rámci datového centra. Tento přístup minimalizuje odkazy mezi datovým centrem a nabízí zcela transparentní prostředí pro vaše uživatele.
+Mnoho organizací má několik propojených datových center. V takovém případě chcete zachovat co nejvíce provozu v rámci datového centra, protože propojení mezi datovými centry jsou drahá a pomalá. Můžete nasadit konektory v každém datovém centru sloužit pouze aplikace, které jsou umístěny v rámci datového centra. Tento přístup minimalizuje propojení mezi datovými centry a poskytuje uživatelům zcela transparentní prostředí.
 
 ### <a name="applications-installed-on-isolated-networks"></a>Aplikace nainstalované v izolovaných sítích
 
-Aplikace je možné hostovat v sítích, které nejsou součástí hlavní podnikové sítě. Skupiny konektorů můžete použít k instalaci vyhrazené konektory na izolované sítě také izolovat aplikace k síti. Obvykle se to stane, když dalších dodavatelů udržuje konkrétní aplikaci pro vaši organizaci.
+Aplikace mohou být hostovány v sítích, které nejsou součástí hlavní podnikové sítě. Skupiny konektorů můžete použít k instalaci vyhrazených konektorů v izolovaných sítích a izolovat tak aplikace do sítě. K tomu obvykle dochází, když dodavatel třetí strany udržuje konkrétní aplikaci pro vaši organizaci.
 
-Skupiny konektorů umožňují nainstalovat vyhrazený konektory pro tyto sítě, které publikují jenom konkrétní aplikace, takže snadněji a bezpečněji externí správu aplikací na jiných výrobců.
+Skupiny konektorů umožňují instalovat vyhrazené konektory pro sítě, které publikují pouze určité aplikace, což usnadňuje a zabezpečuje správu aplikací dodavatelům třetích stran.
 
 ### <a name="applications-installed-on-iaas"></a>Aplikace nainstalované na IaaS
 
-Skupiny konektorů pro aplikace nainstalované na IaaS pro přístup k cloudu, poskytuje běžné služby zabezpečený přístup ke všem aplikacím. Skupiny konektorů není vytvoření další závislosti na vaší podnikové síti nebo fragment prostředí aplikace. Konektory lze nainstalovat na každý datového centra v cloudu a slouží pouze aplikace, které se nacházejí v dané síti. Můžete nainstalovat několik konektorů, abyste dosáhli vysoké dostupnosti.
+Pro aplikace nainstalované na IaaS pro přístup ke cloudu, skupiny konektorů poskytují společnou službu pro zabezpečení přístupu ke všem aplikacím. Skupiny konektorů nevytvářejí další závislost na podnikové síti ani nefragmentují prostředí aplikace. Konektory lze nainstalovat do každého cloudového datového centra a obsluhovat pouze aplikace, které jsou umístěny v této síti. Můžete nainstalovat několik konektorů pro dosažení vysoké dostupnosti.
 
-Provést třeba, že organizace, která má několik virtuální počítače připojené k vlastní IaaS hostované virtuální sítě. Umožňuje uživatelům používat tyto aplikace jsou těchto privátních sítí připojené k podnikové síti prostřednictvím sítě site-to-site VPN. Nabízí kvalitní prostředí pro zaměstnance, kteří se nacházejí na místních. Ale nemusí být ideální pro vzdálení zaměstnanci, protože vyžaduje další místní infrastruktury pro směrování přístup, jak je vidět na následujícím diagramu:
+Vezměme si jako příklad organizace, která má několik virtuálních počítačů připojených k jejich vlastní virtuální síti hostované IaaS. Aby mohli zaměstnanci používat tyto aplikace, jsou tyto privátní sítě připojeny k podnikové síti pomocí sítě VPN site-to-site. To poskytuje dobré prostředí pro zaměstnance, kteří se nacházejí v místním prostředí. Ale nemusí být ideální pro vzdálené zaměstnance, protože vyžaduje další místní infrastrukturu pro směrování přístupu, jak můžete vidět v diagramu níže:
 
-![Diagram, který ilustruje síť Azure AD IaaS](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Diagram, který znázorňuje síť Azure AD IaaS](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
-Pomocí skupiny konektorů Proxy aplikací Azure AD můžete povolit běžné služby k zabezpečení přístupu ke všem aplikacím bez vytvoření další závislosti ve vaší podnikové síti:
+Pomocí skupin konektoru proxy aplikací Azure AD můžete povolit společnou službu pro zabezpečení přístupu ke všem aplikacím bez vytváření dalších závislostí na podnikové síti:
 
-![Dodavatelé více cloudů Azure AD IaaS](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Azure AD IaaS více cloudových dodavatelů](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
-### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Více doménových struktur – skupiny různých konektorů pro každou doménovou strukturu
+### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Vícedoménová doménová struktura – různé skupiny spojnic pro každou doménovou strukturu
 
-Většina zákazníků, kteří mají nasazenou Proxy aplikací používají jeho jednotného přihlašování (SSO) funkce pomocí protokolu Kerberos omezené delegování (KCD). Za tím účelem počítače tento konektor potřeba být připojený k doméně, která může delegovat uživatelů k aplikaci. KCD podporuje možnosti mezi doménovými strukturami. Ale pro společnosti, kteří mají odlišná vícedoménových prostředí bez vztahu důvěryhodnosti mezi nimi, jeden konektor nelze použít pro všechny doménové struktury. 
+Většina zákazníků, kteří nasadili proxy aplikace, používá jeho funkce jednotného přihlašování (SSO) provedením delegování s omezeným i protokolem Kerberos (KCD). K dosažení tohoto cíle je nutné připojit počítače konektoru k doméně, která může delegovat uživatele směrem k aplikaci. KCD podporuje možnosti mezi doménami. Ale pro společnosti, které mají odlišné prostředí s více doménovými strukturami bez důvěry mezi nimi, jeden konektor nelze použít pro všechny doménové struktury. 
 
-Konkrétní konektory můžete být v tomto případě nasazení pro každou doménovou strukturu a nastavit k poskytování aplikací, které byly publikovány poskytovat uživatelům této konkrétní doménové struktury. Každá skupina konektorů představuje jiné doménové struktuře. Když tenanta a většina prostředí jednotně pro všechny doménové struktury, uživatelům je možné přiřadit ke svým aplikacím doménové struktury pomocí skupin Azure AD.
+V takovém případě lze nasadit konkrétní konektory pro jednotlivé doménové struktury a nastavit tak, aby sloužily aplikacím, které byly publikovány tak, aby sloužily pouze uživatelům této konkrétní doménové struktury. Každá skupina spojnic představuje jinou doménovou strukturu. Zatímco tenant a většina prostředí je jednotná pro všechny doménové struktury, uživatelé mohou být přiřazeny k jejich aplikacím doménové struktury pomocí skupin Azure AD.
 
-### <a name="disaster-recovery-sites"></a>Servery pro zotavení po havárii
+### <a name="disaster-recovery-sites"></a>Weby zotavení po havárii
 
-Existují dva různé přístupy, které můžete provést pomocí webu pro zotavení po havárii, v závislosti na tom, jak jsou implementované vaše weby:
+Existují dva různé přístupy, které můžete provést s webem zotavení po havárii (DR), v závislosti na tom, jak jsou vaše weby implementovány:
 
-* Pokud váš web pro zotavení po Havárii je postavený na režim aktivní – aktivní, kde je úplně stejně jako hlavní lokalitu a má stejné sítě a nastavení služby AD, můžete vytvořit konektory v lokalitě zotavení po Havárii ve stejné skupině konektoru jako hlavní lokalitu. To umožňuje službě Azure AD ke zjišťování převzetí služeb při selhání.
-* Pokud webu zotavení po Havárii je oddělená od hlavní web, můžete vytvořit skupinu jiný konektor v lokalitě zotavení po Havárii a buď (1) mít zálohovací aplikace nebo (2) ručně přesměrovat existující aplikace do skupiny konektor zotavení po Havárii podle potřeby.
+* Pokud je váš web zotavení po Havárii zabudován v aktivním aktivním režimu, kde je přesně jako hlavní web a má stejné nastavení sítě a služby AD, můžete vytvořit konektory na webu zotavení po Havárii ve stejné skupině konektorů jako hlavní síť. To umožňuje Azure AD ke zjištění převzetí služeb při selhání pro vás.
+* Pokud je váš lokalita zotavení po Havárii oddělená od hlavní lokality, můžete v lokalitě zotavení po havárii vytvořit jinou skupinu konektorů a buď 1) mít zálohovací aplikace nebo 2) ručně přesměrovat existující aplikaci do skupiny konektorů zotavení po Havárii podle potřeby.
 
-### <a name="serve-multiple-companies-from-a-single-tenant"></a>Poskytování více společností z jednoho tenanta
+### <a name="serve-multiple-companies-from-a-single-tenant"></a>Obsluhovat více společností z jednoho klienta
 
-Existuje mnoho různých způsobů implementace modelu, ve kterém jednoho poskytovatele nasadí a Azure AD udržuje týkající se služby pro více společností. Skupiny konektorů pomoc správci oddělit konektorů a aplikací do různých skupin. Jedním ze způsobů, který je vhodný pro malé společnosti, je použití jedné službě Azure AD tenanta jiné společnosti mají své vlastní název domény a sítě. To platí také pro scénáře M & A a situace, kde jeden IT oddělení slouží několik společností zákonné nebo obchodní důvody.
+Existuje mnoho různých způsobů, jak implementovat model, ve kterém jeden poskytovatel služeb nasazuje a udržuje služby související s Azure AD pro více společností. Skupiny konektorů pomáhají správci oddělit konektory a aplikace do různých skupin. Jedním ze způsobů, který je vhodný pro malé společnosti, je mít jednoho klienta Azure AD, zatímco různé společnosti mají svůj vlastní název domény a sítě. To platí i pro scénáře M&A a situace, kdy jedna divize IT obsluhuje několik společností z regulačních nebo obchodních důvodů.
 
-## <a name="sample-configurations"></a>Ukázky konfigurace
+## <a name="sample-configurations"></a>Ukázkové konfigurace
 
-Mezi příklady, které můžete implementovat, patří následující skupiny konektorů.
+Některé příklady, které můžete implementovat, zahrnují následující skupiny konektorů.
 
 ### <a name="default-configuration--no-use-for-connector-groups"></a>Výchozí konfigurace – bez použití pro skupiny konektorů
 
-Pokud nepoužíváte skupiny konektorů, bude konfigurace vypadat takto:
+Pokud nepoužíváte skupiny konektorů, bude vaše konfigurace vypadat takto:
 
-![Příklad služby Azure AD – žádné skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Příklad Azure AD Žádné skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
-Tato konfigurace je dostatečná pro malá nasazení a testů. Také bude fungovat, pokud má vaše organizace bez stromové struktury síťové topologie.
+Tato konfigurace je dostatečná pro malá nasazení a testy. Bude také fungovat dobře, pokud vaše organizace má topologii ploché sítě.
 
-### <a name="default-configuration-and-an-isolated-network"></a>Výchozí konfigurace a izolované síti
+### <a name="default-configuration-and-an-isolated-network"></a>Výchozí konfigurace a izolovaná síť
 
-Tato konfigurace je vývojem představ o výchozí hodnotu, ve kterém je konkrétní aplikaci, která běží v izolované síti jako jsou například IaaS, virtuální sítě:
+Tato konfigurace je vývoj výchozí, ve kterém je konkrétní aplikace, která běží v izolované síti, jako je například virtuální síť IaaS:
 
-![Příklad služby Azure AD žádné skupiny konektorů a izolované sítě](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Příklad Azure AD Žádné skupiny konektorů a izolované sítě](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
-### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Doporučená konfigurace – několik konkrétních skupin a výchozí skupiny pro nečinnosti
+### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Doporučená konfigurace – několik specifických skupin a výchozí skupina pro nečinnosti
 
-Doporučenou konfiguraci pro velkých a složitých organizací je výchozí skupina konektorů jako skupina bariéru všechny aplikace, která se používá pro nečinných nebo nově nainstalované konektory. Všechny aplikace jsou obsluhovány pomocí skupin vlastní konektor. To umožňuje všem složitosti scénáře popsané výše.
+Doporučená konfigurace pro velké a složité organizace je mít výchozí skupinu konektorů jako skupinu, která neslouží žádné aplikace a používá se pro nečinné nebo nově nainstalované konektory. Všechny aplikace jsou obsluhovány pomocí přizpůsobených skupin konektorů. To umožňuje všechny složitosti scénářů popsaných výše.
 
-V následujícím příkladu společnost má dvě datová centra, A a B, s dva konektory, které každé lokality slouží. Každá lokalita má jiné aplikace, které běží na ní.
+V níže uvedeném příkladu má společnost dvě datová centra, A a B, se dvěma konektory, které obsluhují každou lokalitu. Každý web má různé aplikace, které běží na něm.
 
-![Příklad společnosti se dvěma datacentry a 2 konektory](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![Příklad společnosti se 2 datovými centry a 2 konektory](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
+* [Principy konektorů proxy aplikací Azure AD](application-proxy-connectors.md)
 * [Povolení jednoduchého přihlášení](what-is-single-sign-on.md)

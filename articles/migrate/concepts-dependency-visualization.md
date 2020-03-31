@@ -1,66 +1,84 @@
 ---
-title: Vizualizace závislostí ve službě Azure Migrate
-description: Poskytuje přehled výpočtů posouzení ve službě hodnocení serveru v Azure Migrate
+title: Analýza závislostí v azure migrate server assessment
+description: Popisuje, jak použít analýzu závislostí pro hodnocení pomocí Azure Migrate Server Assessment.
 ms.topic: conceptual
-ms.date: 02/24/2020
-ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/11/2020
+ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269702"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455634"
 ---
-# <a name="dependency-visualization"></a>Vizualizace závislostí
+# <a name="dependency-analysis"></a>Analýza závislostí
 
-Tento článek popisuje vizualizaci závislostí v Azure Migrate: posouzení serveru.
+Tento článek popisuje analýzu závislostí v Azure Migrate:Server Assessment.
 
-## <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
+## <a name="overview"></a>Přehled
 
-Vizualizace závislostí vám pomůže identifikovat závislosti mezi místními počítači, které chcete vyhodnotit a migrovat do Azure. 
+Analýza závislostí vám pomůže identifikovat závislosti mezi místními počítači, které chcete posoudit a migrovat do Azure. 
 
-- V Azure Migrate: vyhodnocení serveru shromažďujete počítače do skupiny a pak ji vyhodnotí. Vizualizace závislostí umožňuje přesněji seskupit počítače a zajistit vysokou spolehlivost pro posouzení.
-- Vizualizace závislostí umožňuje identifikovat počítače, které se musí migrovat dohromady. Můžete určit, jestli se počítače používají, nebo jestli je možné je vyřadit z provozu místo migrace.
-- Vizualizace závislostí pomáhá zajistit, že nic není na pozadí, a během migrace se vyhnete nepřekročení výpadků.
-- Vizualizace je užitečná hlavně v případě, že si nejste jistí, jestli jsou počítače součástí nasazení aplikace, které chcete migrovat do Azure.
+- V Azure Migrate:Server Assessment shromažďujete počítače do skupiny a pak vyhodnoťte skupinu. Analýza závislostí pomáhá seskupit počítače přesněji, s vysokou jistotou pro posouzení.
+- Analýza závislostí umožňuje identifikovat počítače, které je třeba migrovat společně. Můžete určit, zda jsou stroje používány nebo zda je lze vyřadit z provozu namísto migrace.
+- Analýza závislostí pomáhá zajistit, že nic nezůstane pozadu, a vyhnout se výpadkům překvapení během migrace.
+- Analýza je užitečná zejména v případě, že si nejste jistí, jestli jsou počítače součástí nasazení aplikace, které chcete migrovat do Azure.
+- [Projděte si](common-questions-discovery-assessment.md#what-is-dependency-visualization) běžné otázky týkající se analýzy závislostí.
 
+Existují dvě možnosti nasazení analýzy závislostí.
+
+- **Agent-** Analýza závislostí založená na agentovi vyžaduje, aby agenti byli nainstalováni v každém místním počítači, který chcete analyzovat.
+- **Agentless**: S analýzou bez agentů není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální měna VMware.
 
 > [!NOTE]
-> Vizualizace závislostí není v Azure Government k dispozici.
+> Analýza závislostí není ve službě Azure Government dostupná.
 
-## <a name="agent-basedagentless-visualization"></a>Vizualizace založená na agentech nebo bez agentů
+## <a name="agentless-analysis"></a>Analýza bez agentů
 
-Existují dvě možnosti nasazení Vizualizace závislostí:
+Analýza závislostí bez agenta funguje tak, že zachytí data připojení TCP z počítačů, pro které je povolena. V počítačích, které chcete analyzovat, nejsou nainstalováni žádní agenti.
 
-- **Založený na agentovi**: Vizualizace závislostí založená na agentech vyžaduje instalaci agentů na každý místní počítač, který chcete analyzovat.
-- Bez **agenta**: s touto možností není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware.
+### <a name="collected-data"></a>Shromážděná data
+
+Po spuštění zjišťování závislostí zařízení dotazování dat z počítačů každých pět minut shromažďovat data. Tato data se shromažďují z hostovaných virtuálních stránek prostřednictvím serveru vCenter Server pomocí vSphere API. Shromážděná data se zpracovávají na zařízení Azure Migrate, aby se odvodily informace o identitě, a odesílají se do Azure Migrate každých šest hodin.
+
+Dotazování shromažďuje tato data ze počítačů: 
+- Název procesů, které mají aktivní připojení.
+- Název aplikace, která spouštějí procesy s aktivními připojeními.
+- Cílový port na aktivních připojeních.
+
+## <a name="agent-based-analysis"></a>Analýza založená na agentech
+
+Pro analýzu založenou na agentovi používá server Assessment [řešení Map služeb](../azure-monitor/insights/service-map.md) v Azure Monitoru k povolení vizualizace a analýzy závislostí. [Agent microsoft monitoring agent/Log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent) a agent [závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent), musí být nainstalovány v každém počítači, který chcete analyzovat.
+
+### <a name="collected-data"></a>Shromážděná data
+
+Pro vizualizaci založenou na agentovi jsou shromažďována následující data:
+
+- Název zdrojového počítače, proces, název aplikace.
+- Název serveru cílového počítače, proces, název aplikace a port.
+- Počet připojení, latence a informace o přenosu dat jsou shromažďovány a k dispozici pro dotazy Log Analytics. 
 
 
-## <a name="agent-based-visualization"></a>Vizualizace založená na agentech
+## <a name="compare-agentless-and-agent-based"></a>Porovnání bez agenta a na základě agenta
 
-**Požadavek** | **Podrobnosti** | **Další informace**
+Rozdíly mezi vizualizací bez agenta a vizualizací na základě agenta jsou shrnuty v tabulce.
+
+**Požadavek** | **Bez agenta** | **Na základě agenta**
 --- | --- | ---
-**Před nasazením** | Měli byste mít Azure Migrate projekt, a to pomocí Azure Migrate: Nástroj pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování vašich místních počítačů. | [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/><br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/><br/> Naučte se, jak nastavit zařízení Azure Migrate pro posouzení [technologie Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)nebo fyzických serverů.
-**Vyžadovaná agenti** | Na každém počítači, který chcete analyzovat, nainstalujte následující agenty:<br/><br/> [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/><br/> [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Pokud nejsou místní počítače připojené k Internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics. | Přečtěte si další informace o instalaci [agenta závislostí](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) a [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
-**Log Analytics** | Azure Migrate používá řešení [Service map](../operations-management-suite/operations-management-suite-service-map.md) v [protokolech Azure monitor](../log-analytics/log-analytics-overview.md) pro vizualizaci závislostí.<br/><br/> K projektu Azure Migrate přidružíte nový nebo existující Log Analytics pracovní prostor. Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit. <br/><br/> Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Pracovní prostor se musí nacházet v oblastech Východní USA, jihovýchodní Asie nebo Západní Evropa. Pracovní prostory v jiných oblastech nelze přidružit k projektu.<br/><br/> Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).<br/><br/> V Log Analytics je pracovní prostor přidružený k Azure Migrate označený klíčem projektu migrace a názvem projektu.
-**Ceny** | V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní (od dne, kdy přidružíte pracovní prostor Log Analytics k projektu Azure Migrate)/<br/><br/> Po 180 dnech budou platit standardní poplatky za Log Analytics.<br/><br/> Použití jiného řešení než Service Map v přidruženém pracovním prostoru Log Analytics bude účtovat [standardní poplatky](https://azure.microsoft.com/pricing/details/log-analytics/) za Log Analytics.<br/><br/> Když se projekt Azure Migrate odstraní, pracovní prostor se spolu s ním neodstraní. Po odstranění projektu Service Map využití není volné a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru/<br/><br/>Pokud máte projekty, které jste vytvořili před Azure Migrate všeobecné dostupnosti (GA-28 února 2018), mohly by vám být účtovány další Service Map poplatky. Aby se zajistila platba jenom po 180 dnech, doporučujeme vytvořit nový projekt, protože stávající pracovní prostory před GAm jsou stále Fakturovatelné.
-**Správu** | Při registraci agentů do pracovního prostoru použijete ID a klíč poskytnutý Azure Migrate projektem.<br/><br/> Pracovní prostor Log Analytics můžete použít mimo Azure Migrate.<br/><br/> Pokud odstraníte přidružený Azure Migrate projekt, pracovní prostor se automaticky neodstraní. [Odstraňte ji ručně](../azure-monitor/platform/manage-access.md).<br/><br/> Pokud neodstraníte projekt Azure Migrate, neodstraňujte pracovní prostor vytvořený pomocí Azure Migrate. Pokud to uděláte, funkce vizualizace závislosti nebude fungovat podle očekávání.
+Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální měna VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) podporované operační systémy. | V obecné dostupnosti (GA).
+Agent | Není třeba instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří mají být nainstalováni v každém místním počítači, který chcete analyzovat: [Agent monitorování společnosti Microsoft (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)a Agent [závislostí](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+Log Analytics | Není vyžadováno. | Azure Migrate používá řešení [map služeb](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) u analýzy závislostí. 
+Jak to funguje | Zachytí data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění shromažďuje data v intervalech pěti minut. | Agenti mapy služeb nainstalovaní v počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro každý proces.
+Data | Název zdrojového počítače, proces, název aplikace.<br/><br/> Název serveru cílového počítače, proces, název aplikace a port. | Název zdrojového počítače, proces, název aplikace.<br/><br/> Název serveru cílového počítače, proces, název aplikace a port.<br/><br/> Počet připojení, latence a informace o přenosu dat jsou shromažďovány a k dispozici pro dotazy Log Analytics. 
+Vizualizace | Mapu závislostí jednoho serveru lze zobrazit po dobu jedné hodiny až 30 dnů. | Mapa závislostí jednoho serveru.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte a odeberte servery ve skupině ze zobrazení mapy.
+Export dat | Nelze aktuálně stáhnout v tabulkovém formátu. | Data mohou být dotazováni pomocí Analýzy protokolů.
 
-## <a name="agentless-visualization"></a>Vizualizace bez agentů
-
-
-**Požadavek** | **Podrobnosti** | **Další informace**
---- | --- | ---
-**Před nasazením** | Měli byste mít Azure Migrate projekt, a to pomocí Azure Migrate: Nástroj pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování místních počítačů VMWare. | [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/><br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/><br/> Přečtěte si, jak nastavit zařízení Azure Migrate pro posouzení virtuálních počítačů [VMware](how-to-set-up-appliance-vmware.md) .
-**Vyžadovaná agenti** | Na počítačích, které chcete analyzovat, není vyžadován žádný agent.
-**Podporované operační systémy** | Projděte si [operační systémy](migrate-support-matrix-vmware.md#agentless-dependency-visualization) , které jsou podporované pro vizualizaci bez agentů.
-**Virtuální počítače** | **Nástroje VMware**: na virtuálních počítačích, které chcete analyzovat, musí být nainstalované a spuštěné nástroje VMware.<br/><br/> **Účet**: na zařízení Azure Migrate musíte přidat uživatelský účet, který se dá použít pro přístup k virtuálním počítačům pro účely analýzy.<br/><br/> **Virtuální počítače s Windows**: uživatelský účet musí být na počítači místním správcem nebo správcem domény.<br/><br/> **Virtuální počítače se systémem Linux**: na účtu se vyžaduje oprávnění root. Tento uživatelský účet také vyžaduje tyto dvě funkce na/bin/netstat a/bin/LS soubory: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE. | [Přečtěte si o](migrate-appliance.md) zařízení Azure Migrate.
-**VMware** | **vCenter**: zařízení vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >.<br/><br/> **Hostitelé ESXi**: na hostiteli ESXi, na kterých běží virtuální počítače, které chcete analyzovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
-**Shromážděná data** |  Analýza závislostí bez agentů funguje tak, že zachytává data připojení TCP z počítačů, na kterých je povolená. Po povolení zjišťování závislostí zařízení shromáždí data o připojení TCP každých 5 minut od virtuálních počítačů hosta. Tato data se shromažďují z virtuálních počítačů hosta prostřednictvím vCenter Server pomocí rozhraní API vSphere. Shromážděná data se zpracovávají na zařízení, aby se odvodit informace o závislostech a odesílaly Azure Migrate každých 6 hodin. Z každého počítače se shromažďují následující data: <br/> – Názvy procesů, které mají aktivní připojení.<br/> – Názvy aplikací, které spouštějí proces s aktivními připojeními.<br/> – Cílový port aktivních připojení.
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Nastavení Vizualizace závislostí](how-to-create-group-machine-dependencies.md)
-- [Vyzkoušejte vizualizaci závislostí bez agentů](how-to-create-group-machine-dependencies-agentless.md) pro virtuální počítače VMware.
-- Přečtěte si [běžné otázky](common-questions-discovery-assessment.md#what-is-dependency-visualization) k vizualizaci závislostí.
+- Projděte si požadavky na nastavení analýzy založené na agentech pro [virtuální zařízení VMware](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), [fyzické servery](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)a [virtuální zařízení Hyper-V](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+- [Projděte si](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) požadavky na analýzu virtuálních měn VMware bez agentů.
+- [Nastavení](how-to-create-group-machine-dependencies.md) vizualizace závislostí založených na agentovi
+- [Vyzkoušejte](how-to-create-group-machine-dependencies-agentless.md) vizualizaci závislostí bez agenta pro virtuální zařízení VMware.
+- Projděte si [běžné otázky](common-questions-discovery-assessment.md#what-is-dependency-visualization) týkající se vizualizace závislostí.
 
 

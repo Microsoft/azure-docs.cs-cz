@@ -1,6 +1,6 @@
 ---
-title: Odesílání událostí služby Azure Blob storage na web koncového bodu – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage. Události odesíláte na Webhooku. Zpracování událostí ve webové aplikaci.
+title: Odeslání událostí úložiště objektů blob Azure do koncového bodu webu – Azure CLI | Dokumenty společnosti Microsoft
+description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage. Odeslat události webhooku. Zpracování událostí ve webové aplikaci.
 author: normesta
 ms.author: normesta
 ms.reviewer: cbrooks
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 93a146e481e6bb8b9180012d8c569d45521b4450
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269312"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Rychlý start: Směrování událostí úložiště na webový koncový bod pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Úvodní příručka: Směrování událostí úložiště do koncového bodu webu pomocí azure CLI
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí služby Blob Storage a aktivujete událost, abyste viděli výsledek.
 
@@ -29,11 +29,11 @@ Po dokončení kroků popsaných v tomto článku uvidíte, že se data událost
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou nejnovější verzi rozhraní příkazového řádku Azure CLI (2.0.70 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat příkazcli místně, tento článek vyžaduje, abyste spouštěli nejnovější verzi Azure CLI (2.0.70 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Pokud nepoužíváte Cloud Shell, musíte se nejprve přihlásit pomocí příkazu `az login`.
 
-## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve skupině prostředků Azure. Skupina prostředků je logická kolekce, ve které se nasazují a spravují prostředky Azure.
 
@@ -45,9 +45,9 @@ Následující příklad vytvoří skupinu prostředků `<resource_group_name>` 
 az group create --name <resource_group_name> --location westcentralus
 ```
 
-## <a name="create-a-storage-account"></a>Vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. Účty úložiště pro **obecné účely verze 2** podporují všechny funkce ve všech službách úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
+Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. Účty úložiště pro **obecné účely verze 2** podporují všechny funkce ve všech službách úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je účet specializovaného úložiště pro ukládání nestrukturovaných dat jako objektů objektů (objektů) ve službě Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 Nahraďte `<storage_account_name>` jedinečným názvem vašeho účtu úložiště a `<resource_group_name>` skupinou prostředků, kterou jste vytvořili dříve.
 

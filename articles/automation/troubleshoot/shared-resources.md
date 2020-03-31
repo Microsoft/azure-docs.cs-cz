@@ -1,6 +1,6 @@
 ---
-title: Řešení chyb s Azure Automation sdílenými prostředky
-description: Naučte se řešit problémy s Azure Automation sdílenými prostředky podporujícími Runbooky.
+title: Poradce při potížích se sdílenými prostředky Azure Automation
+description: Zjistěte, jak řešit a řešit problémy se sdílenými prostředky Azure Automation podporujícími sady Runbook.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,41 +9,41 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278321"
 ---
-# <a name="troubleshoot-errors-with-shared-resources"></a>Řešení chyb se sdílenými prostředky
+# <a name="troubleshoot-errors-with-shared-resources"></a>Poradce při potížích se sdílenými prostředky
 
-Tento článek popisuje řešení problémů, ke kterým může při použití sdílených prostředků v Azure Automation běžet.
+Tento článek popisuje řešení problémů, které můžete narazit při použití sdílených prostředků v Azure Automation.
 
 ## <a name="modules"></a>Moduly
 
-### <a name="module-stuck-importing"></a>Scénář: modul se zablokuje při importu.
+### <a name="scenario-a-module-is-stuck-importing"></a><a name="module-stuck-importing"></a>Scénář: Modul je zablokovaný import
 
 #### <a name="issue"></a>Problém
 
-Když naimportujete nebo aktualizujete moduly ve službě Azure Automation, modul se zablokuje ve stavu **importu** .
+Modul se při importu nebo aktualizaci modulů v automatizaci Azure zasekne ve stavu **Importing.**
 
 #### <a name="cause"></a>Příčina
 
-Import modulů PowerShellu je složitý proces s více kroky. Tento proces zavádí možnost nesprávného importu modulu. Pokud k tomuto problému dojde, modul, který importujete, se může zablokovat v přechodném stavu. Další informace o tomto procesu najdete v tématu [importování modulu PowerShellu](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
+Import modulů prostředí PowerShell je složitý vícekrokový proces. Tento proces zavádí možnost, že modul nebude importován správně. Pokud nastane tento problém, modul, který importujete může být zaseknutý v přechodném stavu. Další informace o tomto procesu najdete [v tématu Import modulu Prostředí PowerShell](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný ve stavu **Import** pomocí rutiny [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) . Pak můžete modul znovu importovat.
+Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný ve stavu **importu** pomocí rutiny [Remove-AzureRmAutomationModule.](/powershell/module/azurerm.automation/remove-azurermautomationmodule) Potom můžete opakovat import modulu.
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>Scénář: moduly AzureRM se zablokují import po pokusu o jejich aktualizaci.
+### <a name="scenario-azurerm-modules-are-stuck-importing-after-trying-to-update-them"></a><a name="update-azure-modules-importing"></a>Scénář: Moduly AzureRM se zaseknou importují po pokusu o jejich aktualizaci
 
 #### <a name="issue"></a>Problém
 
-Po pokusu o aktualizaci modulů AzureRM zůstane v účtu banner s následující zprávou:
+Banner s následující zprávou zůstane ve vašem účtu po pokusu o aktualizaci modulů AzureRM:
 
 ```error
 Azure modules are being updated
@@ -51,53 +51,53 @@ Azure modules are being updated
 
 #### <a name="cause"></a>Příčina
 
-Došlo k známému problému s aktualizací AzureRM modulů v účtu Automation, který je ve skupině prostředků s číselným názvem, který začíná na 0.
+Je známý problém s aktualizací modulů AzureRM v automatizačním účtu, který je ve skupině prostředků s číselným názvem začínajícím na 0.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
-Pokud chcete v účtu Automation aktualizovat moduly Azure, musí být ve skupině prostředků, která má alfanumerický název. Skupiny prostředků s číselnými názvy začínající hodnotou 0 nemůžou v tuto chvíli aktualizovat moduly AzureRM.
+Chcete-li aktualizovat moduly Azure ve vašem účtu Automation, musí být ve skupině prostředků, která má alfanumerický název. Skupiny prostředků s číselnými názvy začínajícími na 0 nemohou v tuto chvíli aktualizovat moduly AzureRM.
 
-### <a name="module-fails-to-import"></a>Scénář: modul nelze importovat nebo rutiny nejde spustit po importu.
-
-#### <a name="issue"></a>Problém
-
-Modul se nepodařilo úspěšně importovat nebo importovat, ale neextrahují se žádné rutiny.
-
-#### <a name="cause"></a>Příčina
-
-Některé běžné důvody, proč se modul nemusí úspěšně naimportovat do Azure Automation:
-
-* Struktura neodpovídá struktuře, ve které je automatizace potřebuje.
-* Modul závisí na jiném modulu, který nebyl nasazen do vašeho účtu Automation.
-* V modulu chybí závislosti ve složce.
-* Rutina `New-AzureRmAutomationModule` slouží k nahrání modulu a neobdrželi jste celou cestu k úložišti, nebo jste nenapsali modul pomocí veřejně přístupné adresy URL.
-
-#### <a name="resolution"></a>Rozlišení
-
-Problém vyřeší některá z následujících řešení:
-
-* Ujistěte se, že modul používá následující formát: název modulu. zip **->** název modulu nebo číslo verze **->** (Module. psm1, Module. psd1).
-* Otevřete soubor. psd1 a podívejte se, jestli má modul nějaké závislosti. V takovém případě nahrajte tyto moduly do účtu Automation.
-* Ujistěte se, že se ve složce modulu nacházejí všechny odkazované knihovny DLL.
-
-### <a name="all-modules-suspended"></a>Scénář: Update-AzureModule. ps1 se při aktualizaci modulů pozastaví.
+### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a><a name="module-fails-to-import"></a>Scénář: Modul se nepodaří importovat nebo rutiny nelze provést po importu
 
 #### <a name="issue"></a>Problém
 
-Když při použití Runbooku [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) aktualizujete moduly Azure, aktualizace modulu proces aktualizace pozastaví.
+Modul se nezdaří importovat nebo importovat úspěšně, ale žádné rutiny jsou extrahovány.
 
 #### <a name="cause"></a>Příčina
 
-Výchozí nastavení, které určuje, kolik modulů se má aktualizovat současně, je 10 při použití skriptu `Update-AzureModule.ps1`. Proces aktualizace je náchylný k chybám, když se v jednom okamžiku aktualizuje příliš mnoho modulů.
+Některé běžné důvody, že modul nemusí úspěšně importovat do Azure Automation jsou:
 
-#### <a name="resolution"></a>Rozlišení
+* Struktura neodpovídá struktuře, kterou automatizace potřebuje.
+* Modul závisí na jiném modulu, který nebyl nasazen do vašeho účtu automation.
+* Modul unikne jeho závislosti ve složce.
+* Rutina se `New-AzureRmAutomationModule` používá k nahrání modulu a nedali jste úplnou cestu úložiště nebo jste nenačetli modul pomocí veřejně přístupné adresy URL.
 
-Není běžné, že všechny moduly AzureRM jsou nutné ve stejném účtu Automation. Doporučuje se importovat jenom moduly AzureRM, které potřebujete.
+#### <a name="resolution"></a>Řešení
+
+Problém vyřeší některou z následujících řešení:
+
+* Ujistěte se, že modul následuje podle následujícího formátu: **->** **->** ModuleName.Zip ModuleName nebo číslo verze (ModuleName.psm1, ModuleName.psd1)
+* Otevřete soubor PSD1 a zjistěte, zda modul obsahuje nějaké závislosti. Pokud ano, nahrajte tyto moduly do účtu Automatizace.
+* Ujistěte se, že všechny odkazované dlls jsou přítomny ve složce modulu.
+
+### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Scénář: Update-AzureModule.ps1 pozastaví při aktualizaci modulů
+
+#### <a name="issue"></a>Problém
+
+Při použití sady Runbook [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) k aktualizaci modulů Azure se aktualizuje proces aktualizace, proces aktualizace se pozastaví.
+
+#### <a name="cause"></a>Příčina
+
+Výchozí nastavení k určení, kolik modulů získat aktualizovány `Update-AzureModule.ps1` současně je 10 při použití skriptu. Proces aktualizace je náchylný k chybám, když je současně aktualizováno příliš mnoho modulů.
+
+#### <a name="resolution"></a>Řešení
+
+Není běžné, že všechny moduly AzureRM jsou vyžadovány ve stejném účtu Automatizace. Doporučujeme importovat jenom moduly AzureRM, které potřebujete.
 
 > [!NOTE]
-> Vyhněte se importování modulu **AzureRM** . Import modulů **AzureRM** způsobí import všech modulů **AzureRM.\*** , takže to není doporučeno.
+> Vyhněte se importu modulu **AzureRM.** Import modulů **AzureRM** způsobí import všech modulů **AzureRM.\* ** to není recommened.
 
-Je-li proces aktualizace pozastaven, je nutné přidat parametr `SimultaneousModuleImportJobCount` do skriptu `Update-AzureModules.ps1` a zadat nižší hodnotu, než je výchozí hodnota 10. Doporučuje se, Pokud implementujete tuto logiku, abyste začali s hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount` je parametr Runbooku `Update-AutomationAzureModulesForAccount` systému, který se používá k aktualizaci modulů Azure. Tato změna způsobí, že proces bude delší dobu, ale bude mít lepší šanci na jeho dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
+Pokud se proces aktualizace pozastaví, `SimultaneousModuleImportJobCount` je třeba `Update-AzureModules.ps1` přidat parametr do skriptu a zadat nižší hodnotu než výchozí hodnota, která je 10. Doporučujeme, pokud implementujete tuto logiku, začít s hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount`je parametr systému `Update-AutomationAzureModulesForAccount` runbook, který se používá k aktualizaci modulů Azure. Tato změna umožňuje proces běžet déle, ale má větší šanci na dokončení. Následující příklad ukazuje parametr a kam ho umístit do runbooku:
 
  ```powershell
          $Body = @"
@@ -118,11 +118,11 @@ Je-li proces aktualizace pozastaven, je nutné přidat parametr `SimultaneousMod
 
 ## <a name="run-as-accounts"></a>Účty Spustit jako
 
-### <a name="unable-create-update"></a>Scénář: nemůžete vytvořit nebo aktualizovat účet Spustit jako.
+### <a name="scenario-youre-unable-to-create-or-update-a-run-as-account"></a><a name="unable-create-update"></a>Scénář: Nelze vytvořit nebo aktualizovat účet Spustit jako
 
 #### <a name="issue"></a>Problém
 
-Když se pokusíte vytvořit nebo aktualizovat účet Spustit jako, zobrazí se chyba podobná této chybové zprávě:
+Při pokusu o vytvoření nebo aktualizaci účtu Spustit jako se zobrazí chyba podobná následující chybové zprávě:
 
 ```error
 You do not have permissions to create…
@@ -130,19 +130,19 @@ You do not have permissions to create…
 
 #### <a name="cause"></a>Příčina
 
-Nemáte oprávnění, která potřebujete k vytvoření nebo aktualizaci účtu Spustit jako, nebo zda je prostředek uzamčen na úrovni skupiny prostředků.
+Nemáte oprávnění, která potřebujete k vytvoření nebo aktualizaci účtu Spustit jako nebo je prostředek uzamčen na úrovni skupiny prostředků.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
-Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít příslušná oprávnění k různým prostředkům používaným účtem spustit jako. Další informace o oprávněních potřebných k vytvoření nebo aktualizaci účtu Spustit jako najdete v tématu [oprávnění účtu Spustit jako](../manage-runas-account.md#permissions).
+Chcete-li vytvořit nebo aktualizovat účet Spustit jako, musíte mít příslušná oprávnění k různým prostředkům používaným účtem Spustit jako. Informace o oprávněních potřebných k vytvoření nebo aktualizaci účtu Spustit jako naleznete v tématu [Spustit jako oprávnění účtu](../manage-runas-account.md#permissions).
 
-Pokud k problému dochází z důvodu zámku, ověřte, že zámek je OK, aby ho bylo možné odebrat. Pak přejděte k prostředku, který je uzamčený, klikněte pravým tlačítkem na zámek a zvolte **Odstranit** , aby se zámek odebral.
+Pokud je problém z důvodu zámku, ověřte, zda je zámek v pořádku jej odebrat. Pak přejděte na prostředek, který je uzamčen, klikněte pravým tlačítkem myši na zámek a zvolte **Odstranit** odebrat zámek.
 
-### <a name="iphelper"></a>Scénář: při provádění Runbooku se zobrazí chyba "v souboru DLL" iplpapi. dll "" nelze najít vstupní bod s názvem ' GetPerAdapterInfo '.
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Scénář: Při provádění sady Runbook se zobrazí chyba "Nelze najít vstupní bod s názvem GetPerAdapterInfo" v knihovně DLL iplpapi.dll.
 
 #### <a name="issue"></a>Problém
 
-Při spouštění sady Runbook se zobrazí následující výjimka:
+Při provádění runbooku obdržíte následující výjimku:
 
 ```error
 Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
@@ -150,11 +150,11 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba je pravděpodobně způsobena nesprávně nakonfigurovaným [účtem spustit jako](../manage-runas-account.md).
+Tato chyba je pravděpodobně způsobena nesprávně nakonfigurovaným [účtem Spustit jako](../manage-runas-account.md).
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
-Ujistěte se, že je váš [účet Spustit jako](../manage-runas-account.md) správně nakonfigurovaný. Jakmile je správně nakonfigurována, ujistěte se, že máte ve svém Runbooku správný kód pro ověření pomocí Azure. Následující příklad ukazuje fragment kódu pro ověření v Azure v sadě Runbook pomocí účtu Spustit jako.
+Zkontrolujte, zda je [účet Spustit jako](../manage-runas-account.md) správně nakonfigurován. Jakmile je správně nakonfigurovaný, ujistěte se, že máte správný kód ve vašem runbooku k ověření pomocí Azure. Následující příklad ukazuje úryvek kódu k ověření azure v runbooku pomocí spustit jako účet.
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
@@ -164,8 +164,8 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.
-* Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s – oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí propojením komunity Azure se správnými prostředky: odpověďmi, podporou a odborníky.
+* Pokud potřebujete další pomoc, můžete nastolet incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.
