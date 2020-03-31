@@ -1,61 +1,62 @@
 ---
-title: Azure Cosmos DB dodržování předpisů
-description: Tento článek popisuje pokrytí certifikace pro Azure Cosmos DB nabídky dodržování předpisů.
+title: Dodržování předpisů Azure Cosmos DB
+description: Tento článek popisuje certifikační pokrytí nabídek dodržování předpisů Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a41d95a5ab0665698676d0f17333e2f5c7f467eb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872199"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527363"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Dodržování předpisů ve službě Azure Cosmos DB 
 
-Azure Cosmos DB je k dispozici ve všech oblastech Azure. Společnost Microsoft pro zákazníky zpřístupní pět různých cloudových prostředí Azure:
+Azure Cosmos DB je k dispozici ve všech oblastech Azure. Microsoft zpřístupňuje zákazníkům pět různých cloudových prostředí Azure:
 
-* **Veřejné Azure** cloudu, což je dostupná globálně.
+* Veřejný cloud **Azure,** který je dostupný globálně.
 
-* **Azure Čína 21Vianet** je k dispozici prostřednictvím jedinečného partnerství mezi společnostmi Microsoft a 21Vianet (jedním z největších poskytovatelů internetových služeb v zemi).
+* **Azure China 21Vianet** je k dispozici prostřednictvím jedinečného partnerství mezi společností Microsoft a 21Vianet, jedním z největších poskytovatelů internetu v zemi.
 
-* **Služba Azure Germany** poskytuje služby v rámci modelu zplnomocněnec dat, který zajišťuje tohoto zákazníka data zůstanou v Německu pod kontrolou T-Systems International GmbH – pobočka společnosti Deutsche Telecom, který funguje jako důvěryhodný datový zplnomocněnec.
+* **Azure Germany** poskytuje služby v rámci modelu správce dat, který zajišťuje, že zákaznická data zůstanou v Německu pod kontrolou společnosti T-Systems International GmbH, dceřiné společnosti Deutsche Telecom, která působí jako německý datový správce.
 
-* **Azure Government** je k dispozici ve čtyřech oblastech ve Spojených státech amerických pro instituce státní správy USA a jejich partnery. 
+* **Azure Government** je k dispozici ve čtyřech oblastech ve Spojených státech pro vládní agentury USA a jejich partnery. 
 
-* **Azure Government pro oddělení nuclear Information,** je k dispozici ve dvou oblastech v USA ministerstva obrany USA.
+* **Azure Government for Department of Defense(DoD)** je k dispozici ve dvou oblastech ve Spojených státech ministerstvu obrany USA.
 
-Pro pomoc zákazníkům, kteří splnili vlastní povinnosti dodržování předpisů napříč regulovanými průmyslovými odvětvími a trhy po celém světě, Azure udržuje největší portfolio dodržování předpisů v oboru, a to z hlediska šířky (celkového počtu nabídek) a hloubky (počet zákazníků orientovaných na zákazníky). služby v oboru posouzení).  Nabídky dodržování předpisů Azure se seskupují do čtyř segmentů – platí globálně, pro státní správu USA, konkrétní obor a oblast nebo konkrétní zemi nebo oblast.  Nabídky dodržování předpisů jsou založené na různých typech zárukou, včetně formálních certifikace, atestů, ověření, autorizací a hodnocení vyprodukovaných nezávislými společnostmi pro audit třetích stran, jakož i o smluvních změnách. samoobslužné posouzení a dokumenty s pokyny pro zákazníky, které vytvořil Microsoft.
+Aby chomovali zákazníkům plnit jejich vlastní povinnosti v oblasti dodržování předpisů napříč regulovanými odvětvími a trhy po celém světě, azure udržuje největší portfolio dodržování předpisů v oboru, a to jak z hlediska šířky (celkový počet nabídek), tak z hlediska hloubky (počet zákazníků služeb v rozsahu hodnocení).  Nabídky dodržování předpisů Azure jsou seskupeny do čtyř segmentů – globálně použitelné, vlády USA, specifické pro odvětví a konkrétní oblasti nebo země nebo oblasti.  Nabídky dodržování předpisů jsou založeny na různých typech záruk, včetně formálních certifikací, osvědčení, validací, povolení a hodnocení vypracovaných nezávislými auditorskými společnostmi třetích stran, jakož i na smluvních změnách, hodnocení a pokynů pro zákazníky vytvořených společností Microsoft.
 
-## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB certifikace  
+## <a name="azure-cosmos-db-certifications"></a>Certifikace Azure Cosmos DB  
 
-Počet certifikací služby Azure Cosmos DB se neustále zvyšuje. V současné době je Azure Cosmos DB certifikováno pomocí následujících certifikátů:
+Počet certifikací služby Azure Cosmos DB se neustále zvyšuje. V současné době je Azure Cosmos DB certifikován následujícími certifikáty:
 
-| **Globálně použitelné** | **US Government** | **Specifické pro obor** | **Konkrétní oblast nebo země** |
+| **Celosvětově použitelné** | **US Government** | **Specifické pro odvětví** | **Konkrétní region nebo země** |
 | --- | --- | --- | --- |
-| Certifikace CSA STAR | DoD SRG úrovně 2 | HIPAA BAA | IRAP Austrálie |
-| Atestace CSA STAR | FedRAMP Moderate | HITRUST | Německo C5|
-| ISO 20000-1:2011 | GxP (FDA 21 CFR část 11) | PCI DSS | Singapur MTCS úrovně 3 |
-| ISO 22301:2012 | | | Španělsko ENS vysoký|
+| Certifikace ČSA STAR | Dod SRG úroveň 2 | HIPAA BAA | Austrálie IRAP |
+| Atestace Hvězdy ČSA | FedRAMP Moderate | HITRUST | Německo C5|
+| ISO 20000-1:2011 | GxP (FDA 21 CFR část 11) | PCI DSS | Singapur MTCS Úroveň 3 |
+| ISO 22301:2012 | | | Španělsko ENS Vysoká|
 | ISO 27001:2013| | | |
 | ISO 27017:2015 | | | |
 | ISO 27018:2014 | | | |
 | ISO 9001:2015 | | | |
+| ISO 27701:2019| | | |
 | SOC 1, 2, 3 | | | |
 
-Další informace o každé z těchto nabídek dodržování předpisů a o tom, jak vám můžou těžit, najdete v tématu [přehled Microsoft Azure dodržování předpisů](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) .
+Další informace o jednotlivých těchto nabídkách dodržování předpisů a o tom, jak vám budou přínosem, najdete na stránce [Přehled dodržování předpisů microsoft azure.](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)
 
-V následující tabulce jsou uvedeny certifikace podporované nástrojem Azure Cosmos DB v Azure Government:
+V následující tabulce jsou uvedeny certifikace podporované službou Azure Cosmos DB v Azure Government:
 
-| **Globálně použitelné** | **US Government** | **Specifické pro obor** | 
+| **Celosvětově použitelné** | **US Government** | **Specifické pro odvětví** | 
 | --- | --- | --- | --- |
-| Certifikace CSA STAR | CJIS| HIPAA BAA | 
-| Atestace CSA STAR| DoD SRG úrovně 2| HITRUST  | 
-| ISO 20000-1:2011 | DoD SRG úrovně 4 | PCI DSS | 
-| ISO 9001:2012 | DoD SRG úrovně 5 | | 
+| Certifikace ČSA STAR | CJIS| HIPAA BAA | 
+| Atestace Hvězdy ČSA| Dod SRG úroveň 2| HITRUST  | 
+| ISO 20000-1:2011 | Dod SRG úroveň 4 | PCI DSS | 
+| ISO 9001:2012 | Dod SRG úroveň 5 | | 
 | ISO 27001:2013 | FedRAMP High | |
 | ISO 9001:2015 | IRS 1075|  |
 | ISO 27017:2014 | NIST CSF | |
@@ -65,10 +66,10 @@ V následující tabulce jsou uvedeny certifikace podporované nástrojem Azure 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o certifikaci dodržování předpisů Azure najdete v následujících článcích:
+Další informace o certifikacích dodržování předpisů Azure najdete v následujících článcích:
 
-* Nejnovější certifikace dodržování předpisů pro Azure Cosmos DB najdete v tématu [Přehled dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).  
+* Nejnovější certifikace dodržování předpisů pro Azure Cosmos DB najdete v [článku Přehled dodržování předpisů v Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).  
 
-* Přehled zabezpečení Azure Cosmos DB a nejnovější vylepšení najdete v článku o [zabezpečení databáze Azure Cosmos](database-security.md) .
+* Přehled zabezpečení Azure Cosmos DB a nejnovější vylepšení najdete v článku [zabezpečení databáze Azure Cosmos.](database-security.md)
 
-* Další informace o certifikacích Microsoft najdete v tématu [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/).
+* Další informace o certifikacích Microsoftu najdete v [Centru zabezpečení Azure](https://azure.microsoft.com/support/trust-center/).

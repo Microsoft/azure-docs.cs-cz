@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: tabulky ARP – řešení potíží'
-description: Tato stránka poskytuje pokyny k získání tabulek ARP pro okruh ExpressRoute.
+title: 'Azure ExpressRoute: Tabulky ARP – řešení potíží'
+description: Tato stránka obsahuje pokyny k získání tabulek ARP pro okruh ExpressRoute
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -9,40 +9,40 @@ ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 4f1bd064dbc0909be3deba9180be1d8b3c066fd4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076586"
 ---
-# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Získání tabulek protokolu ARP v modelu nasazení Správce prostředků
+# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Získání tabulek ARP v modelu nasazení Správce prostředků
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell – Classic](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-Tento článek vás provede jednotlivými kroky pro seznámení s tabulkami ARP pro okruh ExpressRoute.
+Tento článek vás provede kroky, jak se naučit tabulky ARP pro okruh ExpressRoute.
 
 > [!IMPORTANT]
-> Tento dokument je určený k tomu, aby vám mohl pomoct diagnostikovat a opravovat jednoduché problémy. Není určena jako náhrada za podporu Microsoftu. Pokud tento problém nemůžete vyřešit pomocí pokynů uvedených níže, musíte otevřít lístek podpory s [podporou Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
+> Tento dokument je určen k diagnostice a opravě jednoduchých problémů. Není určena jako náhrada za podporu společnosti Microsoft. Pokud se vám nedaří problém vyřešit pomocí níže popsaných pokynů, je nutné otevřít lístek podpory s [podporou společnosti Microsoft.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 > 
 > 
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Protokol ARP (Address Resolution Protocol) a ARP Tables
-Protokol ARP (Address Resolution Protocol) je protokol vrstvy 2 definovaný v [dokumentu RFC 826](https://tools.ietf.org/html/rfc826). Protokol ARP slouží k mapování adresy Ethernet (adresy MAC) s IP adresou.
+## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Tabulky protokolu ARP (Address Resolution Protocol) a ARP
+Protokol ARP (Address Resolution Protocol) je protokol vrstvy 2 definovaný v [protokolu RFC 826](https://tools.ietf.org/html/rfc826). ARP se používá k mapování ethernetové adresy (MAC adresy) s IP adresou.
 
-Tabulka ARP poskytuje mapování adresy IPv4 a adresy MAC pro konkrétní partnerský vztah. Tabulka ARP pro partnerský vztah okruhu ExpressRoute poskytuje následující informace pro každé rozhraní (primární a sekundární).
+Tabulka ARP obsahuje mapování adresy ipv4 a adresy MAC pro konkrétní partnerský vztah. Tabulka ARP pro partnerský vztah okruhu ExpressRoute poskytuje následující informace pro každé rozhraní (primární a sekundární)
 
-1. Mapování IP adresy místního rozhraní směrovače na adresu MAC
+1. Mapování ip adresy rozhraní místního routeru na MAC adresu
 2. Mapování IP adresy rozhraní směrovače ExpressRoute na adresu MAC
 3. Stáří mapování
 
-Tabulky ARP můžou pomáhat ověřit konfiguraci vrstvy 2 a řešit problémy s připojením základní vrstvy 2. 
+Tabulky ARP mohou pomoci ověřit konfiguraci vrstvy 2 a řešit problémy se základním připojením vrstvy 2. 
 
-Příklad tabulky protokolu ARP: 
+Příklad tabulky ARP: 
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -50,26 +50,26 @@ Příklad tabulky protokolu ARP:
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-V následující části najdete informace o tom, jak můžete zobrazit tabulky ARP zobrazené směrovači ExpressRoute Edge. 
+Následující část obsahuje informace o tom, jak můžete zobrazit tabulky ARP, které vidí hraniční směrovače ExpressRoute. 
 
-## <a name="prerequisites-for-learning-arp-tables"></a>Předpoklady pro získávání tabulek ARP
-Než budete pokračovat, ujistěte se, že máte následující:
+## <a name="prerequisites-for-learning-arp-tables"></a>Předpoklady pro učení Tabulek ARP
+Ujistěte se, že máte následující, než budete postupovat dále
 
-* Platný okruh ExpressRoute nakonfigurovaný minimálně s jedním partnerským vztahem. Okruh musí být plně nakonfigurovaný poskytovatelem připojení. U tohoto okruhu musíte (nebo poskytovatel připojení) nakonfigurovat aspoň jedno z partnerských vztahů (privátní Azure, Azure Public a Microsoft).
-* Rozsahy IP adres, které se používají ke konfiguraci partnerských vztahů (privátní Azure, veřejný Azure a Microsoft). Podívejte se na příklady přiřazení IP adres na [stránce požadavky na směrování ExpressRoute](expressroute-routing.md) , kde se seznámíte s tím, jak se IP adresy mapují na rozhraní na vaší straně a na ExpressRoute straně. Informace o konfiguraci partnerského vztahu můžete získat pomocí [stránky konfigurace partnerského vztahu ExpressRoute](expressroute-howto-routing-arm.md).
-* Informace z vašeho síťového týmu/poskytovatele připojení na adresách MAC rozhraní používaných s těmito IP adresami.
-* Musíte mít nejnovější modul PowerShellu pro Azure (verze 1,50 nebo novější).
+* Platný okruh ExpressRoute nakonfigurovaný s alespoň jedním partnerským vztahem. Okruh musí být plně nakonfigurován poskytovatelem připojení. Vy (nebo váš poskytovatel připojení) musíte mít nakonfigurované alespoň jeden z partnerských styků (Azure private, Azure public a Microsoft) v tomto okruhu.
+* Rozsahy IP adres používané pro konfiguraci partnerských uživatelů (Azure private, Azure public a Microsoft). Projděte si příklady přiřazení IP adres na [stránce požadavky na směrování ExpressRoute,](expressroute-routing.md) abyste získali přehled o tom, jak jsou ip adresy mapovány na rozhraní na vaší straně a na straně ExpressRoute. Informace o konfiguraci partnerského vztahu můžete získat kontrolou [stránky konfigurace partnerského vztahu ExpressRoute](expressroute-howto-routing-arm.md).
+* Informace od vašeho síťového týmu / poskytovatele připojení na MAC adresy rozhraní používaných s těmito IP adresami.
+* Musíte mít nejnovější modul PowerShellu pro Azure (verze 1.50 nebo novější).
 
 > [!NOTE]
-> Pokud poskytovatel služby poskytuje vrstvu 3 a tabulky ARP jsou v níže uvedeném portálu/výstupu prázdné, aktualizujte konfiguraci okruhu pomocí tlačítka Aktualizovat na portálu. Tato operace použije na okruhu správnou konfiguraci směrování. 
+> Pokud je vrstva 3 poskytována poskytovatelem služeb a tabulky ARP jsou prázdné v níže uvedeném portálu nebo výstupu, aktualizujte konfiguraci okruhu pomocí tlačítka aktualizace na portálu. Tato operace bude mít na okruhu správnou konfiguraci směrování. 
 >
 >
 
-## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>Získávání tabulek ARP pro okruh ExpressRoute
-V této části najdete informace o tom, jak můžete zobrazit tabulky ARP na partnerské vztahy pomocí prostředí PowerShell. Než budete pokračovat, musíte vy nebo váš poskytovatel připojení nakonfigurovat partnerský vztah. Každý okruh má dvě cesty (primární a sekundární). Tabulku ARP můžete pro každou cestu kontrolovat nezávisle.
+## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>Získání tabulek ARP pro okruh ExpressRoute
+Tato část obsahuje pokyny, jak můžete zobrazit tabulky ARP na partnerský vztah pomocí prostředí PowerShell. Vy nebo váš poskytovatel připojení musíte nakonfigurovat partnerský vztah před dalším postupováním. Každý okruh má dvě cesty (primární a sekundární). Tabulku ARP můžete zkontrolovat pro každou cestu nezávisle.
 
-### <a name="arp-tables-for-azure-private-peering"></a>Tabulky ARP pro privátní partnerské vztahy Azure
-Následující rutina poskytuje tabulky ARP pro privátní partnerské vztahy Azure
+### <a name="arp-tables-for-azure-private-peering"></a>Tabulky ARP pro privátní partnerský vztah Azure
+Následující rutina poskytuje tabulky ARP pro privátní partnerský vztah Azure
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -81,7 +81,7 @@ Následující rutina poskytuje tabulky ARP pro privátní partnerské vztahy Az
         # ARP table for Azure private peering - Secondary path
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
-Vzorový výstup se zobrazuje níže pro jednu z cest.
+Ukázkový výstup je uveden níže pro jednu z cest
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -89,8 +89,8 @@ Vzorový výstup se zobrazuje níže pro jednu z cest.
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-azure-public-peering"></a>Tabulky ARP pro veřejné partnerské vztahy Azure
-Následující rutina poskytuje tabulky ARP pro veřejné partnerské vztahy Azure
+### <a name="arp-tables-for-azure-public-peering"></a>Tabulky ARP pro veřejný partnerský vztah Azure
+Následující rutina poskytuje tabulky ARP pro veřejný partnerský vztah Azure
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -103,7 +103,7 @@ Následující rutina poskytuje tabulky ARP pro veřejné partnerské vztahy Azu
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
-Vzorový výstup se zobrazuje níže pro jednu z cest.
+Ukázkový výstup je uveden níže pro jednu z cest
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -112,7 +112,7 @@ Vzorový výstup se zobrazuje níže pro jednu z cest.
 
 
 ### <a name="arp-tables-for-microsoft-peering"></a>Tabulky ARP pro partnerský vztah Microsoftu
-Následující rutina poskytuje tabulky ARP pro partnerský vztah Microsoftu.
+Následující rutina obsahuje tabulky ARP pro partnerský vztah Microsoftu
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -125,7 +125,7 @@ Následující rutina poskytuje tabulky ARP pro partnerský vztah Microsoftu.
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
-Vzorový výstup se zobrazuje níže pro jednu z cest.
+Ukázkový výstup je uveden níže pro jednu z cest
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -133,28 +133,28 @@ Vzorový výstup se zobrazuje níže pro jednu z cest.
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 
-## <a name="how-to-use-this-information"></a>Jak používat tyto informace
-Tabulku ARP partnerského vztahu lze použít k určení ověřování konfigurace a připojení vrstvy 2. Tato část poskytuje přehled o tom, jak budou tabulky ARP vypadat v různých scénářích.
+## <a name="how-to-use-this-information"></a>Jak tyto informace používat
+Tabulku ARP partnerského vztahu lze použít k určení ověření konfigurace vrstvy 2 a připojení. Tato část obsahuje přehled o tom, jak budou tabulky ARP vypadat v různých scénářích.
 
-### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>Tabulka ARP, když je okruh v provozním stavu (očekávaný stav)
-* Tabulka ARP bude obsahovat položku pro místní stranu s platnou IP adresou a adresou MAC a podobnou položkou pro stranu Microsoftu. 
-* Poslední oktet místní IP adresy bude vždycky liché číslo.
-* Poslední oktet IP adresy Microsoftu bude vždycky sudé číslo.
-* Na straně Microsoftu se zobrazí stejná adresa MAC pro všechny 3 partnerské vztahy (primární/sekundární). 
+### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>Tabulka ARP, když je obvod v provozním stavu (očekávaný stav)
+* Tabulka ARP bude mít položku pro místní stranu s platnou IP adresou a adresou MAC a podobnou položkou na straně Microsoft. 
+* Poslední oktet místní IP adresy bude vždy liché číslo.
+* Poslední oktet adresy IP společnosti Microsoft bude vždy sudé číslo.
+* Stejná adresa MAC se zobrazí na straně Microsoftu pro všechny 3 partnerské vztahy (primární / sekundární). 
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
          10 On-Prem           65.0.0.1   ffff.eeee.dddd
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Tabulka protokolu ARP, pokud je na straně místního nebo poskytovatele připojení problémy
-Pokud se vyskytnou problémy s místním připojením nebo poskytovatelem připojení, může se stát, že se v tabulce ARP zobrazí jenom jedna položka, nebo se na místní adrese MAC zobrazí možnost nekompletní. Tím se zobrazí mapování mezi adresou MAC a IP adresou použitou na straně Microsoftu. 
+### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Tabulka ARP, když má problémy na straně místního poskytovatele připojení / zprostředkovatele připojení
+Pokud se objeví problémy s místním poskytovatelem připojení nebo poskytovatelem připojení, může se zobrazit, že se v tabulce ARP zobrazí pouze jedna položka nebo místní adresa MAC bude neúplná. Zobrazí se mapování mezi adresou MAC a adresou IP použitou na straně společnosti Microsoft. 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    
          0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-nebo
+– nebo –
        
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------   
@@ -163,20 +163,20 @@ nebo
 
 
 > [!NOTE]
-> Pokud chcete ladit takové problémy, otevřete žádost o podporu u svého poskytovatele připojení. Pokud tabulka protokolu ARP nemá IP adresy rozhraní namapovaných na adresy MAC, přečtěte si následující informace:
+> Otevřete žádost o podporu s poskytovatelem připojení k ladění těchto problémů. Pokud tabulka ARP nemá IP adresy rozhraní mapovaných na adresy MAC, přečtěte si následující informace:
 > 
-> 1. Pokud se první IP adresa podsítě/30 přiřazené k propojení mezi MSEE-PR a MSEE používá v rozhraní MSEE-PR. Azure vždycky používá druhou IP adresu pro směrovači msee.
-> 2. Ověřte, zda značky VLAN zákazníka (značka C) a Service (S-tag) odpovídají obou dvojicím MSEE-PR a MSEE.
+> 1. Pokud je na rozhraní MSEE-PR použita první IP adresa podsítě /30 přiřazená pro spojení mezi MSEE-PR a MSEE. Azure vždy používá druhou IP adresu pro msees.
+> 2. Ověřte, zda značky VLAN zákazníka (C-Tag) a služby (S-Tag) odpovídají dvojici MSEE-PR i MSEE.
 > 
 
-### <a name="arp-table-when-microsoft-side-has-problems"></a>Tabulka protokolu ARP, když má strana Microsoftu problémy
-* V případě, že se na straně Microsoftu vyskytují problémy, nezobrazí se tabulka protokolu ARP zobrazená pro partnerský vztah. 
-* Otevřete lístek podpory s [podporou Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Určete, že máte problém s připojením vrstvy 2. 
+### <a name="arp-table-when-microsoft-side-has-problems"></a>Tabulka ARP, pokud má problémy na straně microsoftu
+* Pokud se na straně microsoftu objeví tabulka ARP pro partnerský vztah, nezobrazí se tabulka ARP. 
+* Otevřete lístek podpory s [podporou společnosti Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Určete, že máte problém s připojením vrstvy 2. 
 
 ## <a name="next-steps"></a>Další kroky
-* Ověření konfigurace vrstvy 3 pro okruh ExpressRoute
-  * Získat souhrn tras k určení stavu relací protokolu BGP 
-  * Získat směrovací tabulku, která určuje, které předpony se budou inzerovat napříč ExpressRoute
-* Ověření přenosu dat kontrolou bajtů v/v
-* Vytvořit lístek podpory s [podpory Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Pokud stále dochází k problémům.
+* Ověření konfigurací vrstvy 3 pro okruh ExpressRoute
+  * Získání souhrnu trasy k určení stavu relací protokolu BGP 
+  * Získání směrovací tabulky k určení, které předpony jsou inzerovány v rámci ExpressRoute
+* Ověření přenosu dat kontrolou bajtů dovnitř/ven
+* Pokud stále dochází k problémům, otevřete lístek podpory s [podporou Microsoftu.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 

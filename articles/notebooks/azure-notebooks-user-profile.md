@@ -1,64 +1,64 @@
 ---
-title: Profil a ID uživatele pro použití s Azure Notebooks Preview
-description: Jak vytvořit a spravovat profil uživatele a ID uživatele pomocí Azure Notebooks, které se stávají součástí adresy URL sdílených poznámkových bloků.
+title: Profil uživatele a ID pro použití s azure notebooky Preview
+description: Jak vytvořit a spravovat svůj uživatelský profil a ID uživatele pomocí poznámkových bloků Azure, které se stanou součástí adresy URL sdílených poznámkových bloků.
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646275"
 ---
-# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Váš profil a ID uživatele pro Azure Notebooks Preview
+# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Váš profil a ID uživatele pro poznámkové bloky Azure Preview
 
-Profil uživatele v prostoru výkonné a spolupráci poznámkových bloků Azure představuje veřejné image ostatním uživatelům:
+V rámci výkonného prostoru pro spolupráci v poznámkových blocích Azure váš uživatelský profil představuje vaši veřejnou image ostatním:
 
-[![stránku profilu Azure Notebooks](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![Stránka profilu poznámkových bloků Azure](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
-Vaše ID uživatele je součástí adresy URL můžete použít ke sdílení projektů a poznámkové bloky. Následující seznam popisuje různé vzory adres URL:
+Vaše ID uživatele je součástí adres URL, které používáte ke sdílení projektů a poznámkových bloků. Následující seznam popisuje různé vzory adres URL:
 
 - `https://notebooks.azure.com/<user_id>`: Stránka vašeho profilu.
-- `https://notebooks.azure.com/<user_id>/projects`: Vaše projekty. Zobrazí všechny projekty; ostatní uživatelé uvidí jenom veřejné projekty.
+- `https://notebooks.azure.com/<user_id>/projects`: Vaše projekty. Zobrazí se všechny projekty; ostatním uživatelům se zobrazí pouze vaše veřejné projekty.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Soubory projektu.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klony konkrétních projektů.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Náhled HTML konkrétní Poznámkový blok nebo souboru.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Náhled HTML konkrétního poznámkového bloku nebo souboru.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-## <a name="your-user-id"></a>Vaše ID uživatele
+## <a name="your-user-id"></a>ID uživatele
 
-Při přihlašování do poznámkových bloků Azure poprvé, váš účet se automaticky přiřadí dočasné uživatelské ID, jako je například "anonymně idr3ca". Za předpokladu, máte ID uživatele, který začíná "anonymně-", poznámkových bloků Azure vás vyzve, abyste ho změnit pokaždé, když se přihlásíte:
+Při prvním přihlášení k poznámkovým blokům Azure je vašemu účtu automaticky přiřazeno dočasné ID uživatele, například "anon-idr3ca". Pokud máte ID uživatele, které začíná na "anon-", poznámkové bloky Azure vás vyzve ke změně při každém přihlášení:
 
-![Zobrazit výzvu k vytvoření ID uživatele při přihlašování do poznámkových bloků Azure](media/accounts/create-user-id.png)
+![Výzva k vytvoření ID uživatele při přihlašování k poznámkovým blokům Azure](media/accounts/create-user-id.png)
 
-A **nakonfigurovat ID uživatele** příkaz také zobrazí vedle názvu dočasného uživatele:
+Vedle dočasného uživatelského jména se zobrazí také příkaz **Konfigurovat ID** uživatele:
 
-![Příkaz ID uživatele, který se zobrazí, když používáte dočasné ID konfigurace](media/accounts/configure-user-id-command.png)
+![Konfigurace příkazu ID uživatele, který se zobrazí při použití dočasného ID](media/accounts/configure-user-id-command.png)
 
-Vaše ID uživatele můžete kdykoli změnit také na stránce svého profilu.
+ID uživatele můžete také kdykoli změnit na stránce svého profilu.
 
-ID uživatele musí být tvořeno čtyřmi a šestnáct písmeny, číslicemi a spojovníky. Žádná ostatní znaky jsou povolené a ID uživatele nesmí začínat nebo končit pomlčkou ani použít víc spojovníků za sebou. Vzhledem k tomu, že ID uživatelů jsou v rámci všech účtů Azure Notebooks jedinečné, může se zobrazit zpráva "ID uživatele se již používá". (Tato zpráva se zobrazí také v případě, že se pokusíte použít ochrannou známku společnosti Microsoft jako ID uživatele.) V těchto případech vyberte jiné ID uživatele.
+ID uživatele se musí skládat ze čtyř až šestnácti písmen, čísel a spojovníků. Nejsou povoleny žádné další znaky a ID uživatele nemůže začínat ani končit pomlčkou ani používat více spojovníků v řádku. Vzhledem k tomu, že ID uživatelů jsou jedinečná ve všech účtech poznámkových bloků Azure, může se zobrazit zpráva "ID uživatele se už používá". (Zpráva se zobrazí také v případě, že se pokusíte použít ochrannou známku společnosti Microsoft jako ID uživatele.) V těchto případech zvolte jiné ID uživatele.
 
 > [!Important]
-> Změna ID vašeho zruší platnost žádné adresy URL možná jste sdíleli pomocí předchozí ID. Můžete změnit ID zpět k předchozí ID na znovu ověřit odkazy. Nicméně je možné pro jiného uživatele, pokud chcete uplatnit nárok nepoužité ID do té doby.
+> Změna id zruší platnost všech adres URL, které jste sdíleli pomocí předchozího ID. Chcete-li znovu ověřit platnost odkazů, můžete změnit své ID zpět na předchozí ID. Je však možné, aby jiný uživatel nárokovat nevyužité ID do té doby.
 
 ## <a name="your-profile"></a>Váš profil
 
-Váš profil se skládá z veřejně zobrazitelné informace na adrese URL, `https://notebooks.azure.com/<user_id>`. Stránku s vaším profilem také ukazuje naposledy použitých projekty i jakékoli označených hvězdičkou.
+Váš profil se skládá z veřejně zobrazitelných `https://notebooks.azure.com/<user_id>`informací na adrese URL . Na stránce profilu se také zobrazují nedávno použité projekty a všechny projekty s hvězdičkou.
 
-Chcete-li upravit svůj profil, použijte **úprava informací profilu** příkaz na stránce svého profilu. V částech vašeho profilu jsou následující:
+Chcete-li upravit svůj profil, použijte příkaz **Upravit informace o profilu** na stránce profilu. Části vašeho profilu jsou následující:
 
 | Sekce | Obsah |
 | --- | --- |
-| Profilové fotky | Obrázek, který se zobrazí na stránce svého profilu. |
-| Informace o účtu | Zobrazované jméno, ID uživatele a veřejné e-mailový účet. E-mailový účet poskytuje ostatním uživatelům mean se vás kontaktovat a může se lišit od [účet](azure-notebooks-user-account.md) používáte k přihlášení do Azure poznámkových bloků, samotného. |
-| Informace o profilu | Vaše poloha, společnosti, pracovní pozice, web a krátký popis sami. |
-| Sociální profily | GItHub, Twitter a Facebook ID, pokud chcete sdílet. |
-| Nastavení ochrany osobních údajů | Poskytuje dva příkazy:<ul><li>**Exportovat profil**: vytvoří a stáhne *ZIP* soubor, který obsahuje všechny informace, které se uloží poznámkových bloků Azure ve vašem profilu, včetně fotografie, informace o profilu a protokoly zabezpečení.</li><li>**Odstranit tento účet**: trvale odstraní všechny vaše osobní údaje uložené v poznámkových bloků Azure.</li></ul> |
-| Povolení funkce webu | Umožňuje ovládat chování poznámkových bloků Azure:<ul><li>**Sjednocené front-endu pro poznámkové bloky**: umožňuje rychlejší spuštění poznámkového bloku a lepší trvalosti.</li><li>**Ve výchozím nastavení spouští v JupyterLab**: ve výchozím nastavení, poznámkových bloků Azure poskytuje jednoduché uživatelské rozhraní, který je vhodný pro většinu uživatelů. JupyterLab poskytuje širší ale složitější rozhraní pro zkušené uživatele.</li><li>**Web VNext**: Povolí rozložení modernizované webové stránky zobrazené v této dokumentaci.</li></ul> |
+| Profilová fotografie | Obrázek zobrazený na stránce vašeho profilu. |
+| Informace o účtu | Vaše zobrazované jméno, ID uživatele a veřejný e-mailový účet. E-mailový účet zde poskytuje ostatním uživatelům způsob, jak vás kontaktovat a může se lišit od [účtu,](azure-notebooks-user-account.md) který používáte k přihlášení do samotných poznámkových bloků Azure. |
+| Informace o profilu | Vaše poloha, společnost, pracovní pozice, webové stránky a krátký popis sebe sama. |
+| Profily na sociálních sítích | Vaše GItHub, Twitter a Facebook ID, pokud je chcete sdílet. |
+| Nastavení ochrany osobních údajů | Obsahuje dva příkazy:<ul><li>**Exportovat můj profil**: vytvoří a stáhne soubor *ZIP* obsahující všechny informace, které poznámkové bloky Azure uloží do vašeho profilu, včetně fotografie, informací o profilu a protokolů zabezpečení.</li><li>**Odstranit můj účet:** Trvale odstraní všechny vaše osobní údaje uložené v poznámkových blocích Azure.</li></ul> |
+| Povolení funkcí webu | Umožňuje řídit aspekty chování poznámkových bloků Azure:<ul><li>**Unified Frontend pro poznámkové bloky**: umožňuje rychlejší spuštění notebooku a lepší trvalost.</li><li>**Ve výchozím nastavení spouštění v JupyterLabu**: Ve výchozím nastavení poskytují poznámkové bloky Azure jednoduché uživatelské rozhraní, které je vhodné pro většinu uživatelů. JupyterLab poskytuje bohatší, ale složitější rozhraní pro zkušené uživatele.</li><li>**VNext Website**: umožňuje modernizované webové rozložení uvedené v této dokumentaci.</li></ul> |
 
 ## <a name="next-steps"></a>Další kroky  
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření spustit Poznámkový blok Jupyter provedete lineární regrese](tutorial-create-run-jupyter-notebook.md)
+> [Kurz: vytvoření spuštění notebooku Jupyter dělat lineární regrese](tutorial-create-run-jupyter-notebook.md)

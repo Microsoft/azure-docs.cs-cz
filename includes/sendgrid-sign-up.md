@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75463571"
 ---
-Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Tyto 25 000 bezplatných měsíčních e-mailů vám umožní přístup k pokročilým vytváření sestav a analýzám a [všem rozhraním API][all APIs] (web, SMTP, Event, Analyze a další). Informace o dalších službách poskytovaných službou SendGrid najdete na stránce [řešení SendGrid][SendGrid Solutions] .
+Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Tyto měsíční e-maily zdarma 25 000 vám umožní přístup k pokročilým přehledům a analýzám a [všem apim][all APIs] (web, SMTP, Událost, Analýza a další). Informace o dalších službách, které SendGrid poskytuje, najdete na stránce [SendGrid Solutions][SendGrid Solutions] (Řešení SendGrid).
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Registrace účtu SendGrid
-1. Přihlaste se na web [Azure Portal][Azure portal].
-2. V nabídce Azure Portal nebo na domovské stránce vyberte **vytvořit prostředek**.
+1. Přihlaste se k [portálu Azure][Azure portal].
+2. V nabídce Portál Azure nebo na domovské stránce vyberte **Vytvořit prostředek**.
 
     ![command-bar-new][command-bar-new]
 3. Vyhledejte a vyberte **SendGrid**.
@@ -26,7 +26,7 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
     ![sendgrid-create][sendgrid-create]
 5. Zadejte **Název** pro identifikaci služby SendGrid v nastavení Azure. Název musí mít délku 1 až 100 znaků a musí obsahovat pouze alfanumerické znaky, pomlčky, tečky a podtržítka. Název musí být v seznamu předplacených položek Azure Storu jedinečný.
 6. Zadejte a potvrďte **Heslo**.
-7. Zvolte vaše **Předplatné**.
+7. Zvolte **předplatné**.
 8. Vytvořte novou **Skupinu prostředků**, nebo použijte existující.
 9. V části **Cenová úroveň** vyperte plán SendGrid, který si chcete zaregistrovat.
 
@@ -34,11 +34,11 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
 10. Zadejte **Propagační kód**, pokud nějaký máte.
 11. Zadejte své **Kontaktní informace**.
 12. Přečtěte si a přijměte **Právní podmínky**.
-13. Po potvrzení nákupu se zobrazí automaticky otevírané okno pro **úspěšné nasazení** a zobrazí se Váš účet.
+13. Po potvrzení nákupu se zobrazí **vyskakovací okno Deployment Succeeded** a zobrazí se v seznamu vašeho účtu.
 
     ![all-resources][all-resources]
 
-    Jakmile dokončíte nákup a kliknutím na tlačítko **Manage** (Spravovat) zahájíte proces ověření e-mailu, přijde vám od SendGridu e-mail s výzvou k ověření účtu. Pokud tento e-mail neobdržíte nebo máte problémy s ověřením účtu, přečtěte si naše Nejčastější dotazy.
+    Jakmile dokončíte nákup a kliknutím na tlačítko **Manage** (Spravovat) zahájíte proces ověření e-mailu, přijde vám od SendGridu e-mail s výzvou k ověření účtu. Pokud tento e-mail neobdržíte nebo máte problémy s ověřením svého účtu, přečtěte si naše nejčastější dotazy.
 
     ![manage][manage]
 
@@ -58,7 +58,7 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
 
     ![api-keys][api-keys]
 
-3. Klikněte na tlačítko **vytvořit klíč rozhraní API**.
+3. Klepněte na **tlačítko Vytvořit klíč rozhraní API**.
 
     ![general-api-key][general-api-key]
 4. Zadejte minimálně hodnotu **Name of this key** (Název tohoto klíče) a umožněte úplný přístup k funkci **Mail Send** (Odesílání e-mailů) a vyberte **Save** (Uložit).
@@ -76,7 +76,7 @@ Pokud chcete spravovat nastavení doručitelnosti e-mailů, klikněte na **tlač
 
 ![manage][manage]
 
-Další informace o posílání e-mailů prostřednictvím SendGrid najdete v článku [Přehled rozhraní API pro e-maily][Email API Overview].
+Další informace o odesílání e-mailů prostřednictvím SendGrid najdete v [přehledu rozhraní API e-mailu][Email API Overview].
 
 <!--images-->
 

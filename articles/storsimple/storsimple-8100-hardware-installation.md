@@ -1,6 +1,6 @@
 ---
-title: Nainstalovat zařízení Microsoft Azure StorSimple 8100
-description: Popisuje, jak před nasazením a konfigurací softwaru rozbalit, montovat do racku a zapojte zařízení s StorSimple 8100.
+title: Instalace zařízení Microsoft Azure StorSimple 8100
+description: Popisuje, jak rozbalit, rack připojit a kabel zařízení StorSimple 8100 před nasazením a konfigurací softwaru.
 author: alkohli
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
@@ -8,196 +8,196 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267583"
 ---
-# <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8100
+# <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Vybalte, namontujte do racku a kabelujte zařízení StorSimple 8100
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Přehled
-Microsoft Azure StorSimple 8100 je jediná skříň zařízení připojená k racku. V tomto kurzu se dozvíte, jak před konfigurací a nasazením zařízení StorSimple nabalit, montovat a kabelovat hardware zařízení StorSimple 8100.
+Vaše Zařízení Microsoft Azure StorSimple 8100 je jedno skříňové zařízení připojené do racku. Tento kurz vysvětluje, jak rozbalit, rack-mount a kabel StorSimple 8100 hardware zařízení před konfigurací a nasazením zařízení StorSimple.
 
-## <a name="unpack-your-storsimple-8100-device"></a>Rozbalení zařízení StorSimple 8100
-Následující kroky poskytují jasné a podrobné pokyny k rozbalení úložného zařízení StorSimple 8100. Toto zařízení se dodává v jedné krabici.
+## <a name="unpack-your-storsimple-8100-device"></a>Rozbalte zařízení StorSimple 8100
+Následující kroky poskytují jasné a podrobné pokyny o tom, jak rozbalit paměťové zařízení StorSimple 8100. Toto zařízení se dodává v jedné krabici.
 
 ### <a name="prepare-to-unpack-your-device"></a>Příprava na rozbalení zařízení
-Před rozbalením zařízení si přečtěte následující informace.
+Před rozbalením zařízení zkontrolujte následující informace.
 
-Ikona upozornění ![](./media/storsimple-safety/IC740879.png)![ikonu velké váhy](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
+![Upozornění](./media/storsimple-safety/IC740879.png)![Ikona těžké](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) váhy ikona **VAROVÁNÍ!**
 
-1. Ujistěte se, že máte k dispozici dvě lidi, abyste mohli spravovat váhu skříně, pokud ji zpracováváte ručně. Plně nakonfigurovaná skříň může vážit až 32 kg (70 kg).
+1. Ujistěte se, že máte k dispozici dvě osoby pro správu hmotnosti skříně, pokud s ním manipulujete ručně. Plně nakonfigurovaná skříň může vážit až 32 kg.
 2. Umístěte krabici na rovný povrch.
 
-Dále proveďte následující kroky a rozbalte své zařízení.
+Dále proveďte následující kroky k rozbalení zařízení.
 
-#### <a name="to-unpack-your-device"></a>Postup rozbalení zařízení
-1. Zkontrolujte krabici a výplňový materiál, jestli nejsou pomačkané, pořezané nebo poškozené vodou nebo jestli nenesou stopy jiného zjevného poškození. Pokud jsou krabice nebo obal vážně poškozené, krabici neotevírejte. Obraťte se prosím na [Podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) , které vám pomůžou posoudit, jestli je zařízení v dobrém provozním pořadí.
-2. Rozbalte krabici. Na následujícím obrázku vidíte nebalené zobrazení zařízení StorSimple.
+#### <a name="to-unpack-your-device"></a>Rozbalení zařízení
+1. Zkontrolujte krabici a výplňový materiál, jestli nejsou pomačkané, pořezané nebo poškozené vodou nebo jestli nenesou stopy jiného zjevného poškození. Pokud jsou krabice nebo obal vážně poškozené, krabici neotevírejte. Obraťte se na [podporu společnosti Microsoft,](storsimple-8000-contact-microsoft-support.md) která vám pomůže posoudit, zda je zařízení v dobrém stavu.
+2. Rozbalte krabici. Následující obrázek znázorňuje nezabalené zobrazení zařízení StorSimple.
    
-     ![Rozbalení úložného zařízení](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
+     ![Rozbalení paměťového zařízení](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
    
-    **Nebalené zobrazení úložného zařízení**
+    **Rozbalené zobrazení paměťového zařízení**
    
    | Popisek | Popis |
    | --- | --- |
-   |   1 |Expediční box |
+   |   1 |Balicí krabice |
    |   2 |Spodní pěna |
    |   3 |Zařízení |
-   |   4 |Hlavní pěna |
-   |   5 |Pole pro příslušenství |
+   |   4 |Horní pěna |
+   |   5 |Krabice s příslušenstvím |
 3. Po rozbalení krabice se ujistěte, že obsahuje následující:
    
-   * 1 zařízení s jednou skříňkou
-   * 2 napájecí šňůra
-   * 1 křížený kabel Ethernet
-   * 2 kabely sériové konzoly
-   * 1 sériový převaděč USB pro sériový přístup
-   * 1 T10 Screwdriver pro kontrolu proti falšování
-   * 4 QSFP-to-SFP + adaptéry pro použití se síťovými rozhraními 10 GbE
-   * 1 skříň – přípojný Kit (2 Side kolejnice s připojením hardwaru)
-   * Dokumentace k Začínáme
+   * 1 jedno skříňové zařízení
+   * 2 napájecí kabely
+   * 1 křížený ethernetový kabel
+   * 2 kabely sériové konzole
+   * 1 sériový USB převodník pro sériový přístup
+   * 1 šroubovák T10 odolný proti manipulaci
+   * 4 adaptéry QSFP-to-SFP+ pro použití se síťovými rozhraními 10 GbE
+   * 1 sada pro montáž do racku (2 boční lišty s montážním hardwarem)
+   * Dokumentace začínáme
      
-     Pokud jste neobdrželi žádnou z výše uvedených položek, [kontaktujte podpora Microsoftu](storsimple-8000-contact-microsoft-support.md).
+     Pokud jste neobdrželi žádnou z výše uvedených položek, [obraťte se na podporu společnosti Microsoft](storsimple-8000-contact-microsoft-support.md).
 
 Dalším krokem je usazení zařízení do racku.
 
-## <a name="rack-mount-your-storsimple-8100-device"></a>Stojan – připojení zařízení StorSimple 8100
-Postupujte podle dalších kroků a nainstalujte zařízení úložiště StorSimple 8100 ve standardní racku na 19 – 15palcový s předními a zadními příspěvky. Zařízení StorSimple 8100 má jednu primární skříň.
+## <a name="rack-mount-your-storsimple-8100-device"></a>Montáž zařízení StorSimple 8100 do racku
+Postupujte podle následujících kroků k instalaci paměťového zařízení StorSimple 8100 do standardního 19palcového racku s předními a zadními sloupky . Zařízení StorSimple 8100 má jednu primární skříň.
 
-Instalace se skládá z několika kroků, z nichž každá je popsána v následujících postupech.
+Instalace se skládá z několika kroků, z nichž každý je popsán v následujících postupech.
 
 > [!IMPORTANT]
-> Zařízení StorSimple musí být připojená do racku pro správnou operaci.
+> Zařízení StorSimple musí být namontována do racku pro správnou funkci.
 > 
 > 
 
 ### <a name="prepare-the-site"></a>Příprava webu
-Zařízení musí být nainstalované na standardu 19 palců, který obsahuje obě přední i zadní stanoviště. K přípravě instalace racku použijte následující postup.
+Zařízení musí být instalováno ve standardním 19palcovém stojanu, který má přední i zadní sloupky. Pro přípravu na instalaci do racku použijte následující postup.
 
-#### <a name="to-prepare-the-site-for-rack-installation"></a>Příprava lokality na instalaci racku
+#### <a name="to-prepare-the-site-for-rack-installation"></a>Příprava místa pro instalaci do racku
 1. Ujistěte se, že je zařízení bezpečně umístěné na rovném a stabilním pracovním povrchu (nebo něčem podobném).
-2. Ověřte, že lokalita, kde máte v úmyslu nastavit, má standardní sílu napájení z nezávislého zdroje nebo jednotky PDU napájení (AC) s nepřerušitelným zdrojem napájení (UPS).
-3. Ujistěte se, že je na stojanu, ve kterém chcete zařízení připojit, jeden slot 2U.
+2. Ověřte, zda je na webu, kde chcete nastavit, standardní střídavý proud z nezávislého zdroje nebo z rozdělovací jednotky do racku (PDU) s nepřerušitelným zdrojem napájení (UPS).
+3. Ujistěte se, že je na stojanu, do kterého chcete zařízení namontovat, k dispozici jeden slot 2U.
 
-Ikona upozornění ![](./media/storsimple-safety/IC740879.png)![ikonu velké váhy](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
+![Upozornění](./media/storsimple-safety/IC740879.png)![Ikona těžké](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) váhy ikona **VAROVÁNÍ!**
 
-Ujistěte se, že máte ke správě váhy k dispozici dvě osoby, pokud spouštíte ruční nastavení zařízení. Plně nakonfigurovaná skříň může vážit až 32 kg (70 kg).
+Pokud s nastavením zařízení manipulujete ručně, ujistěte se, že máte k dispozici dvě osoby pro správu hmotnosti. Plně nakonfigurovaná skříň může vážit až 32 kg.
 
-### <a name="rack-prerequisites"></a>Požadavky na stojan
-Skříň 8100 je navržená pro instalaci ve standardní skříňové skříni z 19 mm s:
+### <a name="rack-prerequisites"></a>Předpoklady racku
+Skříň 8100 je určena pro instalaci do standardní 19palcové rackové skříňky s:
 
-* Minimální hloubka 27,84 palců z rackového příspěvku k příspěvku
-* Maximální váha 32 kg pro zařízení
-* Maximální tlak v 5 Pascal (0,5 mm měřiče vody).
+* Minimální hloubka 27,84 palce od stojanu na sloupek.
+* Maximální hmotnost zařízení 32 kg
+* Maximální protitlak 5 Pascal (0,5 mm vodoměr).
 
-### <a name="rack-mounting-rail-kit"></a>Montážní skříň – montáž železniční Kit
-K dispozici je sada montážní kolejnice, která se používá pro skříň na racku 19 – 15palcový. Kolejnice byly testovány tak, aby zpracovávala maximální váhu skříně. Tyto kolejnice budou také umožňovat instalaci více skříní bez ztráty místa v rámci stojanu.
+### <a name="rack-mounting-rail-kit"></a>Sada kolejnic pro montáž do racku
+Sada montážních lišt je k dispozici pro použití s 19-palcovou rackovou skříní. Kolejnice byly testovány tak, aby zvládly maximální hmotnost skříně. Tyto kolejnice také umožní instalaci více skříní bez ztráty místa v racku.
 
-#### <a name="to-install-the-device-on-the-rails"></a>Instalace zařízení do kolejnic
-1. Tento krok proveďte jenom v případě, že na zařízení nejsou nainstalované vnitřní kolejnice. Vnitřní kolejnice jsou obvykle nainstalovány v továrně. Pokud nejsou kolejnice nainstalované, nainstalujte snímky z levé a pravé kolejnice na strany skříně skříně. Připojovat se šesti metrickými šrouby na každé straně. Pro usnadnění orientace jsou železniční snímky označeny jako **LH – přední** a **RH – dopředu**a konec, který je připevněn ke zadní části skříně, má zúžený konec.<br/>
+#### <a name="to-install-the-device-on-the-rails"></a>Instalace zařízení na kolejnice
+1. Tento krok proveďte pouze v případě, že v zařízení nejsou nainstalovány vnitřní lišty. Obvykle jsou vnitřní kolejnice instalovány ve výrobě. Pokud nejsou instalovány kolejnice, nainstalujte po stranách podvozku skříně po levé a pravé liště. Připevňují pomocí šesti metrických šroubů na každé straně. Pro orientaci jsou lištové sklíčka označeny **jako LH – Přední** a RH – **Přední**a konec, který je připevněn k zadní části krytu, má zúžený konec.<br/>
    
-    ![Připojení železničních snímků k skříni skříně](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Připevnění kolejnicových sklíčka k podvozku skříně](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
-    **Připojení vnitřních vlakových snímků ke stěnám skříně**
+    **Připevnění vnitřních lištových skluzů po stranách krytu**
    
     Popisek | Popis
     ----- | -----------
-    1     | M 3x4 tlačítka – šrouby hlav
-    2     | Snímky skříní
+    1     | Šrouby s knoflíkovou hlavou M 3x4
+    2     | Snímky podvozku
 
-2. Připojte vnějšího a vnějšího železničního sestavení se svislými členy racku Cabinet. Hranaté závorky jsou označeny jako **LH**, **RH**a **Tato strana až** po správné orientaci.
-3. Vyhledejte čepy v přední a zadní části montážní lišty. Rozšíříte kolejnici tak, aby vyhovovala mezi příspěvky v racku, a vkládat PIN kódy do čelního a zadního skříňku pro vertikální členské otvory. Ujistěte se, že je na úrovni železničního sestavení úroveň.
-4. Pomocí dvou z poskytnutých šrouby metriky Zabezpečte železniční sestavení se svislými členy stojanu. Použijte jeden šroub na přední stranu a druhý na zadní straně.
-5. Opakujte tyto kroky pro druhé železniční sestavení.<br/>
+2. Připojte vnější levou lištu a vnější pravé lišty k vertikálním členům rozvaděče. Závorky jsou označeny **jako LH**, **RH**a Tato **strana nahoru,** aby vás provedla správnou orientací.
+3. Vyhledejte čepy v přední a zadní části montážní lišty. Vysuňte kolejnici tak, aby se vešla mezi sloupky stojanu, a vložte kolíky do předních a zadních sloupků stojanu svislých otvorů pro členy. Ujistěte se, že sestava kolejnice je v rovině.
+4. K zajištění sestavy kolejnice na svislé členy stojanu použijte dva z dodaných metrických šroubů. Použijte jeden šroub vpředu a jeden na zadní straně.
+5. Opakujte tyto kroky pro druhou sestavu kolejnice.<br/>
    
-     ![Připojení snímků po železnici k racku CAB](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Připevnění lištových sklíčka k rozvaděči](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
-    **Připojení vnějších železničních sestavení k stojanu**
+    **Připevnění sestav vnější kolejnice ke stojanu**
    
    | Popisek | Popis |
    | --- | --- |
-   |   1 |Montážní šroub |
-   |   2 |Šroubový prstenec na druhou stranu |
-   |   3 |PIN kódy na levé straně kolejnice |
-   |   4 |Montážní šroub |
-   |   5 |PIN kódy zadních míst v železnici |
+   |   1 |Upínací šroub |
+   |   2 |Čtvercový přední šroub ový sloupek |
+   |   3 |Kolíky levého předního místa |
+   |   4 |Upínací šroub |
+   |   5 |Levé kolejnice zadní umístění kolíky |
 
-### <a name="mounting-the-device-in-the-rack"></a>Zařízení se připojuje do stojanu.
-Pomocí následujících kroků připojte zařízení v racku a použijte přitom rackové kolejnice, které jste právě nainstalovali, a proveďte následující kroky.
+### <a name="mounting-the-device-in-the-rack"></a>Montáž zařízení do racku
+Pomocí právě nainstalovaných lišt racků proveďte následující kroky pro montáž zařízení do stojanu.
 
 #### <a name="to-mount-the-device"></a>Připojení zařízení
-1. S pomocníkem, zvedněte skříň a zarovnejte ji se rozvaděčovou kolejnicí.
-2. Zařízení pečlivě vložte do kolejnic a pak zařízení nahrajte do racku CAB.<br/>
+1. S asistentem zvedněte kryt a zarovnejte jej s lištami racku.
+2. Opatrně zasuňte zařízení do kolejnic a poté jej zcela zatlačte do rozvaděče.<br/>
    
-    ![Vkládání zařízení do stojanu](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
+    ![Vložení zařízení do stojanu](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
    
-    **Zařízení se připojuje do stojanu.**
-3. Odstraňte levou a pravou přední stranu přírubu tím, že uvolníte bezplatnou volnost. Zakončení přírub stačí Přitahovat na příruby.
-4. Zabezpečíte skříň v racku tak, že jednou přírubou přivedete jednu ze Phillips šroubů, doleva a doprava.
-5. Nastavte zakončení přírub tak, že je stisknete na místo a přichycením na místě.<br/>
+    **Montáž zařízení do racku**
+3. Odstraňte levé a pravé přední kryty příruby vytažením víčka. Krytky příruby se jednoduše přichytí k přírubám.
+4. Zajistěte kryt ve stojanu instalací jednoho dodanýho šroubu s křížovou hlavou přes každou přírubu, levou a pravou.
+5. Nasaďte kryty příruby tak, že je zatlačíte do polohy a přitisknete je na místo.<br/>
    
-     ![Instalace Cap k přírubám](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
+     ![Instalace krytů přírub](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
    
-    **Instalace Cap k přírubám**
+    **Instalace krytů přírub**
    
    | Popisek | Popis |
    | --- | --- |
-   |   1 |Šroub uzávěrky skříně |
+   |   1 |Upevnění šroubu skříně |
 
-Dalším krokem je připojení zařízení k napájení, síti a sériovému přístupu.
+Dalším krokem je kabel zařízení pro napájení, síť a sériový přístup.
 
-## <a name="cable-your-storsimple-8100-device"></a>Zapojte zařízení StorSimple 8100
-Následující postupy vysvětlují, jak můžete zařízení StorSimple 8100 připojit k napájení, síťovému a sériovému připojení.
+## <a name="cable-your-storsimple-8100-device"></a>Zapojení kabeláže zařízení StorSimple 8100
+Následující postupy vysvětlují, jak vytvořit kabel zařízení StorSimple 8100 pro napájení, síť a sériová připojení.
 
 ### <a name="prerequisites"></a>Požadavky
 Než začnete zapojovat kabeláž zařízení, budete potřebovat následující:
 
-* Zařízení úložiště, kompletně nezabalená a připojená do racku.
-* 2 napájecí kabely dodávané s vaším zařízením
-* Přístup k 2 jednotkám distribuce napájení (doporučeno).
+* Vaše úložné zařízení, zcela vybalené a namontované do racku.
+* 2 napájecí kabely dodané se zařízením
+* Přístup ke 2 napájecím distribučním jednotkám (doporučeno).
 * Síťové kabely
-* Zadané sériové kabely
-* Převaděč sériového USB s příslušným ovladačem nainstalovaným na vašem počítači (v případě potřeby)
-* Poskytnuté 4 adaptéry QSFP-to-SFP + pro použití se síťovými rozhraními 10 GbE
+* Dodávané sériové kabely
+* Sériový USB převodník s příslušným ovladačem nainstalovaným v počítači (v případě potřeby)
+* Za předpokladu, 4 QSFP-to-SFP + adaptéry pro použití s 10 GbE síťových rozhraní
 * [Podporovaný hardware pro síťová rozhraní 10 GbE na zařízení StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### <a name="power-cabling"></a>Kabely napájení
-Vaše zařízení obsahuje redundantní moduly napájení a chlazení (PCMs). Aby se zajistila vysoká dostupnost, musí být nainstalovaná a připojená PCMs k různým zdrojům napájení.
+### <a name="power-cabling"></a>Elektrická kabeláž
+Zařízení obsahuje redundantní napájecí a chladicí moduly (PCM). Aby byla zajištěna vysoká dostupnost, musí být oba pcmy nainstalovány a připojeny k různým zdrojům napájení.
 
-Pomocí následujících kroků Zapojte zařízení do elektrického napájení.
+Proveďte následující kroky k připojení zařízení k napájení.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
-### <a name="network-cabling"></a>Síťové kabely
-Vaše zařízení je konfigurací v aktivním pohotovostním režimu: v jednom okamžiku je aktivní jeden modul kontroleru a zpracovává všechny operace disku a sítě, zatímco je druhý modul kontroleru v pohotovostním režimu. Pokud se kontroler nepovede, kontroler pohotovostní se aktivuje okamžitě a pokračuje všemi operacemi na disku a v síti.
+### <a name="network-cabling"></a>Síťová kabeláž
+Vaše zařízení je aktivní konfigurace v pohotovostním režimu: v každém okamžiku je jeden modul řadiče aktivní a zpracovává všechny operace na disku a síti, zatímco druhý modul řadiče je v pohotovostním režimu. Pokud řadič selže, pohotovostní řadič se aktivuje okamžitě a pokračuje ve všech operacích disku a sítě.
 
-Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba kabelovat síť zařízení, jak je popsáno v následujícím postupu.
+Chcete-li podpořit tento redundantní řadič převzetí služeb při selhání, je třeba kabel sítě zařízení, jak je popsáno v následujících krocích.
 
-#### <a name="to-cable-for-network-connection"></a>Pro připojení k síti
-1. Vaše zařízení má na každém řadiči šest síťových rozhraní: čtyři porty sítě Ethernet 1 GB/s a 2 10 GB/s. Identifikujte různé datové porty v rámci plánu zařízení.
+#### <a name="to-cable-for-network-connection"></a>Kabel pro připojení k síti
+1. Vaše zařízení má na každém řadiči šest síťových rozhraní: čtyři 1 Gb/s a dva ethernetové porty 10 Gb/s. Identifikujte různé datové porty v backplane vašeho zařízení.
    
-    ![Backplane pro zařízení 8100](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
+    ![Zadní rovina zařízení 8100](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
-    **Zpět zařízení, které zobrazuje datové porty**
+    **Zadní část zařízení zobrazující datové porty**
    
    | Popisek | Popis |
    | --- | --- |
-   |   0,1,4,5 |Síťová rozhraní 1 GbE |
-   |   2,3 |Síťová rozhraní 10 GbE |
+   |   0,1,4,5 |1 GbE síťová rozhraní |
+   |   2,3 |10 GbE síťová rozhraní |
    |   6 |Sériové porty |
-2. Podívejte se na následující diagram pro síťové kabely. (Minimální konfigurace sítě se zobrazuje na plných modrých řádcích. Další konfigurace požadovaná pro vysokou dostupnost a výkon se zobrazuje pomocí teček.)
+2. Síťové kabely naleznete v následujícím diagramu. (Minimální konfigurace sítě je zobrazena plnými modrými čarami. Další konfigurace požadovaná pro vysokou dostupnost a výkon je zobrazena tečkovanými čarami.)
 
-    ![Zapojení zařízení 2U do sítě](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
+    ![Kabel zařízení 2U pro síť](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
 
-    **Síťové kabely pro vaše zařízení**
+    **Síťová kabeláž pro vaše zařízení**
 
    |Popisek | Popis |
    |----- | ----------- |
-   | A    | SÍŤ LAN s přístupem k Internetu |
+   | A    | LAN s přístupem k internetu |
    | B    | Kontroler 0 |
    | C    | PCM 0 |
    | D    | Kontroler 1 |
@@ -207,41 +207,41 @@ Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba 
 
 
 
-Minimální konfigurace při kabeláži zařízení vyžaduje:
+Při kabeláži zařízení vyžaduje minimální konfigurace:
 
-* Aspoň dvě síťová rozhraní připojená na každém řadiči s jedním pro cloudový přístup a jednu pro iSCSI. Port DATA 0 je automaticky povolen a nakonfigurován prostřednictvím sériové konzoly zařízení. Kromě DATA 0 je také potřeba nakonfigurovat další datový port na portálu Azure Classic. V takovém případě připojte k primární síti LAN port DATA 0 (síť s přístupem k Internetu). Ostatní datové porty lze připojit k segmentu sítě SAN nebo iSCSI LAN (VLAN) v závislosti na zamýšlené roli.
-* Stejné rozhraní na každém řadiči připojeném ke stejné síti, aby se zajistila dostupnost, pokud dojde k převzetí služeb při selhání řadiče. Pokud se například rozhodnete připojit k jednomu z řadičů DATA 0 a DATA 3, musíte na druhém řadiči připojit odpovídající DATA 0 a DATA 3.
+* Alespoň dvě síťová rozhraní připojená na každém řadiči s jedním pro přístup ke cloudu a jedním pro iSCSI. Port DATA 0 je automaticky povolen a konfigurován prostřednictvím sériové konzoly zařízení. Kromě DATA 0, další datový port také musí být nakonfigurován prostřednictvím klasického portálu Azure. V takovém případě připojte port DATA 0 k primární síti LAN (síť s přístupem k internetu). Ostatní datové porty mohou být připojeny k segmentu sítě SÍTĚ SÍTĚ/iSCSI LAN (VLAN) v závislosti na zamýšlené roli.
+* Identické rozhraní na každém řadiči připojeném ke stejné síti, aby byla zajištěna dostupnost, pokud dojde k převzetí služeb při selhání řadiče. Pokud se například rozhodnete připojit data 0 a data 3 pro jeden z řadičů, musíte připojit odpovídající DATA 0 a DATA 3 na druhém řadiči.
 
-Pamatujte na vysokou dostupnost a výkon:
+Mějte na paměti vysokou dostupnost a výkon:
 
-* Pokud je to možné, nakonfigurujte dvojici síťového rozhraní pro cloudový přístup (1 GbE) a další pár pro iSCSI (doporučeno 10 MB) na každém řadiči.
-* Pokud je to možné, připojte síťová rozhraní z každého kontroleru k dvěma různým přepínačům, abyste zajistili dostupnost v případě výpadku přepínače. Obrázek znázorňuje síťová rozhraní 2 10 GbE, DATA 2 a DATA 3 z každého kontroleru připojeného ke dvěma různým přepínačům.
+* Pokud je to možné, nakonfigurujte dvojici síťového rozhraní pro přístup ke cloudu (1 GbE) a další dvojici pro iSCSI (doporučeno 10 GbE) na každém řadiči.
+* Pokud je to možné, připojte síťová rozhraní z každého řadiče ke dvěma různým přepínačům, abyste zajistili dostupnost proti selhání přepínače. Obrázek znázorňuje dvě síťová rozhraní 10 GbE, DATA 2 a DATA 3, z každého řadiče připojeného ke dvěma různým přepínačům.
 
-Další informace najdete v tématu **Síťová rozhraní** podle [požadavků vysoké dostupnosti pro vaše zařízení StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
-
-> [!NOTE]
-> Pokud používáte přijímače SFP a přijímače se síťovými rozhraními 10 GbE, použijte dodávané adaptéry QSFP-SFP +. Další informace najdete na [podporovaném hardwaru pro síťová rozhraní 10 GbE na zařízení StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
-> 
-> 
-
-### <a name="serial-port-cabling"></a>Kabely sériového portu
-K zapojení sériového portu proveďte následující kroky.
-
-#### <a name="to-cable-for-serial-connection"></a>Kabel pro sériové připojení
-1. Vaše zařízení má sériový port na každém kontroleru, který je identifikovaný ikonou klíče. Pokud chcete najít sériové porty pro reportování zařízení, přečtěte si část ilustrace [síťového kabeláže](#network-cabling) .
-2. Identifikujte aktivní kontroler v rámci plánu vašeho zařízení. Blikání INDIKÁTORu Blue indikuje, že je kontroler aktivní.
-3. Použijte zadané sériové kabely (v případě potřeby i převodník sériového čísla USB pro přenosný počítač) a připojte svoji konzolu nebo počítač (s emulací terminálu k zařízení) k sériovému portu aktivního řadiče.
-4. Nainstalujte na svém počítači ovladače sériového rozhraní USB (dodávané se zařízením).
-5. Nastavte sériové připojení následujícím způsobem: 115 200 baud, 8 datových bitů, 1 stop bitů, žádná parita a řízení toku nastaveno na hodnotu žádné.
-6. Ověřte, zda připojení funguje, stisknutím klávesy ENTER v konzole nástroje. Měla by se zobrazit nabídka konzoly sériového portu.
+Další informace naleznete v **části Síťová rozhraní** v části Požadavky na vysokou dostupnost zařízení [StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
-> **Správa světla**: Pokud je zařízení nainstalované ve vzdáleném datovém centru nebo v počítači s omezeným přístupem, ujistěte se, že sériová připojení k oběma řadičům jsou vždycky připojená k přepínači sériové konzoly nebo podobnému vybavení. To umožňuje vzdálené řízení a operace podpory mimo pásmo, pokud dojde k výpadkům sítě nebo neočekávaným selháním.
+> Pokud používáte vysílače SFP+ se síťovými rozhraními 10 GbE, použijte dodaný adaptérY QSFP-SFP+. Další informace naleznete v části [Podporovaný hardware síťových rozhraní 10 GbE na zařízení StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 > 
 > 
 
-Vaše zařízení je teď kabelové pro napájení, přístup k síti a sériové připojení. Dalším krokem je konfigurace softwaru a nasazení zařízení.
+### <a name="serial-port-cabling"></a>Kabeláž sériového portu
+Provedením následujících kroků pro kabel sériového portu.
+
+#### <a name="to-cable-for-serial-connection"></a>Ke kabelu pro sériové připojení
+1. Zařízení má na každém ovladači sériový port, který je označen ikonou klíče. V části [Síťová kabeláž](#network-cabling) vyhledejte sériové porty v propojovací rovině zařízení na obrázku.
+2. Identifikujte aktivní ovladač v backplane zařízení. Blikající modrá LED dioda signalizuje, že ovladač je aktivní.
+3. Použijte dodaný sériový kabel (v případě potřeby usb-sériový převodník pro váš notebook) a připojte konzolu nebo počítač (s emulací terminálu k zařízení) k sériovému portu aktivního ovladače.
+4. Nainstalujte do počítače ovladače sériového USB (dodávané se zařízením).
+5. Sériové připojení nastavte takto: 115 200 baudů, 8 datových bitů, 1 stop bit, žádná parita a řízení toku nastaveno na možnost Žádný.
+6. Stisknutím klávesy Enter na konzole ověřte, zda připojení funguje. Měla by se zobrazit nabídka sériové konzoly.
+
+> [!NOTE]
+> **Správa zhasínání světel**: Pokud je zařízení nainstalováno ve vzdáleném datovém centru nebo v počítačové místnosti s omezeným přístupem, ujistěte se, že sériová připojení k oběma řadičům jsou vždy připojena k přepínači sériové konzole nebo podobnému zařízení. To umožňuje mimo pásmové operace vzdáleného řízení a podpory, pokud dojde k přerušení sítě nebo neočekávaným selháním.
+> 
+> 
+
+Zařízení je nyní připojeno k síti pro napájení, přístup k síti a sériové připojení. Dalším krokem je konfigurace softwaru a nasazení zařízení.
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si, jak [nasadit a nakonfigurovat vaše místní zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+Přečtěte si, jak [nasadit a nakonfigurovat místní zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 

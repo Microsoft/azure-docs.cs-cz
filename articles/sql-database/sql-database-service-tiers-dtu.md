@@ -1,6 +1,6 @@
 ---
-title: Úrovně služeb – model nákupu na základě DTU
-description: Přečtěte si o úrovních služeb v nákupním modelu založeném na DTU pro databáze typu Single a Pool pro zajištění výpočtů a velikosti úložiště.
+title: Úrovně služeb – nákupní model založený na DTU
+description: Další informace o úrovních služeb v modelu nákupu založeném na DTU pro jednu a sdružené databáze pro poskytování velikostí výpočetních prostředků a úložiště.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,169 +12,169 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 2f316e57e407a0588e77f56d6e1fbe8c19ba5fee
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75562115"
 ---
-# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služeb v modelu nákupu založeném na DTU
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 
-Úrovně služeb v modelu nákupu na základě DTU jsou rozlišené rozsahem výpočetních velikostí s pevným množstvím zahrnutého úložiště, pevným obdobím uchovávání záloh a pevnou cenou. Všechny úrovně služeb v modelu nákupu založeném na DTU poskytují flexibilitu při změně výpočetních velikostí s minimálními [výpadky](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/). v průběhu období ale dojde k přepnutí připojení do databáze po krátkou dobu, kterou je možné zmírnit pomocí logiky opakování. Izolované databáze a elastické fondy se účtují po hodinách na základě úrovně služeb a výpočetního prostředí.
+Úrovně služeb v nákupním modelu založeném na DTU se liší řadou výpočetních velikostí s pevnou částkou zahrnutého úložiště, pevnou dobou uchování pro zálohování a pevnou cenou. Všechny úrovně služeb v nákupním modelu založeném na DTU poskytují flexibilitu při změně velikosti výpočetních prostředků s minimálními [prostoji](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); však je přepínač přes období, kdy dojde ke ztrátě připojení k databázi na krátkou dobu, které lze zmírnit pomocí logiky opakování. Jednotlivé databáze a elastické fondy se účtují každou hodinu na základě úrovně služeb a výpočetní velikosti.
 
 > [!IMPORTANT]
-> SQL Database spravovaná instance nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
+> Spravovaná instance SQL Database nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
 > [!NOTE]
-> Informace o úrovních služeb založený na virtuálních jádrech najdete v tématu [úrovně služeb založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Informace o odlišení těchto služeb na základě jednotek DTU úrovně a úrovní služeb založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-purchase-models.md).
+> Informace o úrovních služeb založených na virtuálních jádrech najdete v [tématu úrovně služeb založené na virtuálních jádrech](sql-database-service-tiers-vcore.md). Informace o rozlišování úrovní služeb založených na DTU a úrovních služeb založených na virtuálních jádrech najdete v [tématu Nákupní modely Azure SQL Database](sql-database-purchase-models.md).
 
-## <a name="compare-the-dtu-based-service-tiers"></a>Porovnání úrovní služeb na základě DTU
+## <a name="compare-the-dtu-based-service-tiers"></a>Porovnání úrovní služeb založených na DTU
 
-Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikových procesů, úložiště a požadavky na výkon.
+Výběr úrovně služeb závisí především na požadavcích na kontinuitu provozu, úložiště a výkon.
 
-||Úroveň Basic|Úroveň Standard|Premium|
+||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
-|Cílové úlohy|Vývoj a provoz|Vývoj a provoz|Vývoj a provoz|
-|Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|
-|Maximální uchovávání záloh|7 dní|po dobu 35 dní|po dobu 35 dní|
-|Procesor|Nízký|Nízká, střední, vysoká|Střední, vysoká|
-|Vstupně-výstupní propustnost (přibližné) |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
-|Vstupně-výstupní latence (přibližné)|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
-|Indexu Columnstore |Nevztahuje se|S3 a novější|Podporováno|
-|OLTP v paměti|Nevztahuje se|Nevztahuje se|Podporováno|
+|Cílové pracovní zatížení|Vývoj a výroba|Vývoj a výroba|Vývoj a výroba|
+|Doba sla|99,99 %|99,99 %|99,99 %|
+|Maximální uchovávání záloh|7 dní|35 dní|35 dní|
+|Procesor|Nízká|Nízká, Střední, Vysoká|Střední, Vysoká|
+|Propustnost vo (přibližná) |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 VOPS na DTU|
+|Latence vi (přibližná)|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení/zápis)|
+|Columnstore indexování |Není dostupné.|S3 a vyšší|Podporuje se|
+|OLTP v paměti|Není dostupné.|Není dostupné.|Podporuje se|
 |||||
 
 > [!IMPORTANT]
-> Úrovně služeb Basic, Standard S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
+> Úrovně služeb Basic, Standard S0, S1 a S2 poskytují méně než jeden virtuální jádro (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služeb S3 nebo vyšší. 
 >
->V případě úložiště dat se úrovně služeb Basic, Standard S0 a S1 nacházejí v objektech blob stránky úrovně Standard. Objekty blob stránky úrovně Standard využívají úložná média založená na pevných discích (HDD) a jsou nejvhodnější pro vývoj, testování a jiné zřídka používané úlohy, které jsou méně citlivé na variabilitu výkonu.
+>Pokud jde o ukládání dat, úrovně služeb Basic, Standard S0 a S1 jsou umístěny na objektech BLOB standardní stránky. Objekty BLOB se standardní stránkou používají paměťová média založená na pevném disku (HDD) a jsou nejvhodnější pro vývoj, testování a další zřídka přístupné úlohy, které jsou méně citlivé na variabilitu výkonu.
 >
 
 > [!NOTE]
-> Můžete získat bezplatnou službu Azure SQL Database na úrovni služeb Basic ve spojení s bezplatným účtem Azure a prozkoumat Azure. Informace najdete v tématu [vytvořte si spravovanou cloudovou databázi s bezplatným účtem Azure](https://azure.microsoft.com/free/services/sql-database/).
+> Bezplatnou databázi Azure SQL můžete získat na úrovni základní služby ve spojení s bezplatným účtem Azure a prozkoumat Azure. Další informace najdete [v tématu Vytvoření spravované cloudové databáze pomocí bezplatného účtu Azure](https://azure.microsoft.com/free/services/sql-database/).
 
-## <a name="single-database-dtu-and-storage-limits"></a>Omezení úložiště a jednotek DTU izolované databáze
+## <a name="single-database-dtu-and-storage-limits"></a>Limity DTU pro jednu databázi a úložiště
 
-Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o DTU a eDTU najdete v tématu [nákupní model založený na DTU](sql-database-purchase-models.md#dtu-based-purchasing-model).
+Výpočetní velikosti jsou vyjádřeny z hlediska jednotek transakcí databáze (DTU) pro jednotlivé databáze a elastické jednotky transakcí databáze (eDTU) pro elastické fondy. Další informace o dtu a eDTU najdete v [tématu nákupní model založený na DTU](sql-database-purchase-models.md#dtu-based-purchasing-model).
 
-||Úroveň Basic|Úroveň Standard|Premium|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
-| Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
-| Maximální počet jednotek Dtu | 5 | 3000 | 4000 | 
+| Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
+| Maximální DTUs | 5 | 3000 | 4000 | 
 |||||
 
 > [!IMPORTANT]
-> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností může být nutné zmenšit databázi, aby bylo možné uvolnit nevyužité místo. Další informace najdete [v tématu Správa místa v souborech v Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení databázi ve fondu, úložiště a eDTU pro elastický fond
+## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>EDTU eDTU, úložiště a limity sdružené databáze v eDTU, úložiště a sdružené databáze
 
 | | **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
-| Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
-| Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB |
-| Maximální počet Edtu na databázi | 5 | 3000 | 4000 |
-| Maximální počet Edtu na fond | 1600 | 3000 | 4000 |
+| Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
+| Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB |
+| Maximální počet eDTU na databázi | 5 | 3000 | 4000 |
+| Maximální počet eDTU na fond | 1600 | 3000 | 4000 |
 | Maximální počet databází na fond | 500  | 500 | 100 |
 |||||
 
 > [!IMPORTANT]
-> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Více než 1 TB úložiště na úrovni Premium je v současné době k dispozici ve všech oblastech kromě: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Západní střed USA, USA DoD a Us Government Central. V těchto oblastech je maximální úložiště na úrovni Premium omezeno na 1 TB.  Další informace naleznete v [aktuálních omezeních P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
-> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností může být nutné zmenšit databázi, aby bylo možné uvolnit nevyužité místo. Další informace najdete [v tématu správa místa v souborech v Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="dtu-benchmark"></a>Srovnávací test DTU
+## <a name="dtu-benchmark"></a>Měřítko DTU
 
-Fyzické charakteristiky (procesoru, paměti, vstupně-výstupních operací) přidružené k každá míra DTU se kalibrují srovnávací test, který simuluje skutečná databázové úlohy.
+Fyzické vlastnosti (CPU, paměť, IO) přidružené ke každému měření DTU jsou kalibrovány pomocí srovnávacího testu, který simuluje zatížení databáze v reálném světě.
 
-### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelace výsledky srovnávacích testů výkonu databáze reálného světa
+### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelování výsledků srovnávacích testů s výkonností databáze v reálném světě
 
-Je důležité pochopit, že všechny srovnávací testy jsou pouze reprezentativní a orientační. Rychlost transakcí s srovnávací test aplikace nesmí být stejné jako ty, které může dosáhnout s jinými aplikacemi. Test výkonnosti se skládá z kolekce různých transakce typech spustit proti schématu obsahující celou řadu tabulek a datové typy. Během testu využije stejné základní operace, které jsou společné pro všechny úlohy OLTP, nepředstavuje žádné konkrétní třídu databáze nebo aplikace. Cílem testu je poskytovat přiměřenou Průvodce relativní výkon databáze, která může očekávat, že při škálování směrem nahoru nebo dolů mezi velikostí výpočetních. Ve skutečnosti jsou různé velikosti a složitosti databáze, nastat různé mix úloh a bude odpovídat různými způsoby. Například aplikace náročné na vstupně-výstupní operace narazit na limity vstupně-výstupní operace dříve, nebo aplikace náročné na CPU narazit na omezení procesoru dříve. Neexistuje žádná záruka, že se stejným způsobem jako srovnávací test v rámci zvýšení zatížení výkonu škálovaly jakékoli konkrétní databáze.
+Je důležité si uvědomit, že všechna referenční hodnoty jsou pouze reprezentativní a orientační. Transakční sazby dosažené referenční aplikací nebudou stejné jako sazby, kterých by mohlo být dosaženo u jiných aplikací. Referenční hodnota zahrnuje kolekci různých typů transakcí spuštěných proti schématu obsahujícímu řadu tabulek a datových typů. Zatímco benchmark provádí stejné základní operace, které jsou společné pro všechny úlohy OLTP, nepředstavuje žádnou konkrétní třídu databáze nebo aplikace. Cílem srovnávacího testu je poskytnout přiměřené vodítko pro relativní výkon databáze, které lze očekávat při škálování nahoru nebo dolů mezi výpočetní velikosti. Ve skutečnosti jsou databáze různých velikostí a složitosti, setkávají se s různými kombinacemi úloh a budou reagovat různými způsoby. Například aplikace náročné na vi může zasáhnout prahové hodnoty vi dříve nebo aplikace náročné na procesor může zasáhnout limity procesoru dříve. Neexistuje žádná záruka, že konkrétní databáze bude škálovat stejným způsobem jako referenční hodnota při zvýšení zatížení.
 
-Test výkonnosti a jeho metodologie jsou popsány podrobněji níže.
+Referenční hodnota a její metodika jsou podrobněji popsány níže.
 
-### <a name="benchmark-summary"></a>Přehled srovnávacích testů
+### <a name="benchmark-summary"></a>Souhrn srovnávacího testu
 
-Srovnávací test měří výkon kombinace základních databázových operací, ke kterým dochází nejčastěji v úlohách OLTP (online Transaction Processing). I když testu je navržená s cloud computingu v paměti, schéma databáze, pro naplnění dat a transakcí byly navrženy široce reprezentativní základní elementy nejčastěji používané úlohy OLTP.
+Srovnávací test měří výkon kombinace základních databázových operací, ke kterým dochází nejčastěji v úlohách zpracování online transakcí (OLTP). Přestože je srovnávací test navržen s ohledem na cloud computing, schéma databáze, populace dat a transakce byly navrženy tak, aby byly široce reprezentativní pro základní prvky, které se nejčastěji používají v úlohách OLTP.
 
 ### <a name="schema"></a>Schéma
 
-Schéma zajišťuje mají dostatek různých a složitosti a podporují řadu operací. Test výkonnosti se spustí databázi, který se skládá z šesti tabulky. Tabulky spadají do tří kategorií: pevné velikosti, škálování a stále se rozšiřující. Existují dvě tabulky pevné velikosti; tři horizontální tabulkách. a rostoucí jednu tabulku. Tabulky pevné velikosti mají konstantní počet řádků. Škálování tabulky obsahují kardinalitu, který je úměrný výkon databáze, ale nedojde ke změně během testu. Rostoucí tabulky je velikost jako tabulka škálování na počátečním načtení, ale pak Kardinalita změny při spuštění testu výkonnosti, jako jsou při vkládání a odstraňování řádků.
+Schéma je navrženo tak, aby bylo dostatečně rozlišené a složité pro podporu široké škály operací. Benchmark běží proti databázi složené ze šesti tabulek. Tabulky spadají do tří kategorií: pevná velikost, změna měřítka a růst. Existují dvě tabulky pevné velikosti; tři tabulky měřítka; a jeden rostoucí stůl. Tabulky s pevnou velikostí mají konstantní počet řádků. Škálování tabulky mají mohutnost, která je úměrná výkonu databáze, ale nezmění během benchmarku. Rostoucí tabulka je velikost jako škálování tabulky na počáteční zatížení, ale pak mohutnost změny v průběhu spuštění benchmark jako řádky jsou vloženy a odstraněny.
 
-Schéma obsahuje kombinaci různých typů dat, včetně celé číslo, číselné, znakové a data a času. Schéma obsahuje primární a sekundární klíče, ale ne všechny cizí klíče – to znamená, že jsou bez omezení referenční integrity mezi tabulkami.
+Schéma obsahuje kombinaci datových typů, včetně celéčíslo, číselné, znak a datum a čas. Schéma obsahuje primární a sekundární klíče, ale ne žádné cizí klíče – to znamená, že neexistují žádná omezení referenční integrity mezi tabulkami.
 
-Program generování dat generuje data pro výchozí databáze. Data o celé číslo a číselné je vytvořen s různé strategie. V některých případech se náhodně distribuují hodnoty v rozsahu. V ostatních případech sadu hodnot je náhodně permutovanou funkci k zajištění, že konkrétní distribuční zachovaný. Textová pole se generují z vážený seznam slov k vytvoření realistické vypadající data.
+Program generování dat generuje data pro počáteční databázi. Celá čísla a číselná data jsou generována s různými strategiemi. V některých případech jsou hodnoty distribuovány náhodně v rozsahu. V ostatních případech je sada hodnot náhodně permutována, aby bylo zajištěno, že je zachováno určité rozdělení. Textová pole jsou generována z váženého seznamu slov, aby se vytvořila realisticky vypadající data.
 
-Databáze je velikost podle "koeficient." Měřítko (zkracuje SF) určuje Kardinalita škálování a stále se rozšiřující tabulky. Jak je popsáno níže v části Uživatelé a Pacing, velikost databáze, počtu uživatelů a maximální výkon všech škálování poměru mezi sebou.
+Velikost databáze je na základě "faktor měřítka.". Faktor měřítka (zkráceně SF) určuje mohutnost škálování a růst tabulek. Jak je popsáno níže v části Uživatelé a tempo, velikost databáze, počet uživatelů a maximální výkon všech měřítko v poměru k sobě navzájem.
 
 ### <a name="transactions"></a>Transakce
 
-Zatížení se skládá z devíti transakce typech, jak je znázorněno v následující tabulce. Každá transakce je navržen pro zvýraznit konkrétní sadu vlastností systému v databázi modulu a systém hardwaru, s vysokým kontrastem z jiné transakce. Tento přístup usnadňuje posoudit dopad na celkový výkon různé součásti. Například "Čtení Heavy" transakce vytváří velký počet operací čtení z disku.
+Pracovní vytížení se skládá z devíti typů transakcí, jak je znázorněno v tabulce níže. Každá transakce je navržena tak, aby zvýraznila určitou sadu vlastností systému v databázovém stroji a systémovém hardwaru s vysokým kontrastem od ostatních transakcí. Tento přístup usnadňuje posouzení dopadu různých součástí na celkový výkon. Například transakce "Čtení heavy" vytváří významný počet operací čtení z disku.
 
-| Typ transakce | Popis |
+| Transaction Type (Typ transakce) | Popis |
 | --- | --- |
-| Čtení Lite |VYBERTE; v paměti. jen pro čtení |
-| Média pro čtení |VYBERTE; většinou v paměti; jen pro čtení |
-| Čtení náročná na výkon |VYBERTE; většinou nejsou v paměti; jen pro čtení |
-| Aktualizace Lite |AKTUALIZACE; v paměti. čtení a zápis |
-| Aktualizovat náročná na výkon |AKTUALIZACE; většinou nejsou v paměti; čtení a zápis |
-| Vložit Lite |VLOŽIT. v paměti. čtení a zápis |
-| Vložit náročná na výkon |VLOŽIT. většinou nejsou v paměti; čtení a zápis |
-| Odstranit |ODSTRANIT; kombinace v paměti a ne v paměti; čtení a zápis |
-| Náročná na výkon procesoru |VYBERTE; v paměti. relativně velké zatížení procesoru; jen pro čtení |
+| Přečtěte si Lite |VYBERTE; v paměti; jen pro čtení |
+| Čtení média |VYBERTE; většinou v paměti; jen pro čtení |
+| Přečtěte si těžké |VYBERTE; většinou není v paměti; jen pro čtení |
+| Aktualizace Lite |AKTUALIZACE; v paměti; čtení a zápis |
+| Aktualizovat těžké |AKTUALIZACE; většinou není v paměti; čtení a zápis |
+| Vložit lite |Vložte; v paměti; čtení a zápis |
+| Vložit těžké |Vložte; většinou není v paměti; čtení a zápis |
+| Odstranění |ODSTRANIT; kombinace v paměti a ne v paměti; čtení a zápis |
+| TĚŽKÝ PROCESOR |VYBERTE; v paměti; poměrně vysoké zatížení CPU; jen pro čtení |
 
-### <a name="workload-mix"></a>Kombinace úloh
+### <a name="workload-mix"></a>Kombinace pracovních vytížení
 
-Transakce jsou z vážená distribuce s následující celkový poměr vybraného náhodně. Celkový poměr je poměr čtení/zápis přibližně 2:1.
+Transakce jsou náhodně vybrány z váženého rozdělení s následujícím celkovým mixem. Celkový mix má poměr čtení a zápisu přibližně 2:1.
 
-| Typ transakce | % poměru |
+| Transaction Type (Typ transakce) | % směsi |
 | --- | --- |
-| Čtení Lite |35 |
-| Média pro čtení |20 |
-| Čtení náročná na výkon |5 |
+| Přečtěte si Lite |35 |
+| Čtení média |20 |
+| Přečtěte si těžké |5 |
 | Aktualizace Lite |20 |
-| Aktualizovat náročná na výkon |3 |
-| Vložit Lite |3 |
-| Vložit náročná na výkon |2 |
-| Odstranit |2 |
-| Náročná na výkon procesoru |10 |
+| Aktualizovat těžké |3 |
+| Vložit lite |3 |
+| Vložit těžké |2 |
+| Odstranění |2 |
+| TĚŽKÝ PROCESOR |10 |
 
-### <a name="users-and-pacing"></a>Uživatelé a interval
+### <a name="users-and-pacing"></a>Uživatelé a tempo
 
-Úlohou srovnávacího testu vychází z nástroj, který odešle transakce mezi sadu připojení pro simulaci chování počet souběžných uživatelů. I když nejsou všechny transakcí a připojení počítače, generovány, pro jednoduchost označujeme tato připojení "uživatelů." I když každý uživatel pracuje nezávisle všem ostatním uživatelům, všichni uživatelé provádět stejné cyklu kroků dole:
+Úloha benchmarku je řízena z nástroje, který odesílá transakce přes sadu připojení k simulaci chování několika souběžných uživatelů. Přestože jsou všechna připojení a transakce generovány počítačem, pro jednoduchost označujeme tato připojení jako "uživatelé". Ačkoli každý uživatel pracuje nezávisle na všech ostatních uživatelích, všichni uživatelé provádějí stejný cyklus kroků uvedených níže:
 
 1. Navázání připojení k databázi.
-2. Opakujte, dokud signál, ukončete:
-   - Vyberte transakce (z náhodně vážená distribuce).
-   - Provedení vybrané transakce a měření doby odezvy.
-   - Vyčkat, než nemusely zpoždění.
-3. Ukončete připojení k databázi.
-4. Ukončení.
+2. Opakujte, dokud není signalizováno ukončení:
+   - Vyberte transakci náhodně (z váženého rozdělení).
+   - Proveďte vybranou transakci a změřte dobu odezvy.
+   - Počkejte na zpoždění.
+3. Zavřete připojení k databázi.
+4. Ukončit.
 
-Nemusely zpoždění (v kroku 2c) je vybrán náhodně, ale s distribuci, která má průměrem 1.0 sekundu. Každý uživatel proto můžete generovat v průměru nejvýše jedna transakce za sekundu.
+Zpoždění tempo (v kroku 2c) je vybráno náhodně, ale s rozdělením, které má průměr 1,0 sekundy. Každý uživatel tak může v průměru generovat maximálně jednu transakci za sekundu.
 
-### <a name="scaling-rules"></a>Škálování pravidla
+### <a name="scaling-rules"></a>Změna velikosti pravidel
 
-Počet uživatelů se určuje podle velikosti databáze (v jednotkách škálování dvouúrovňové). Existuje jeden uživatel, za každých pět jednotky škálování dvouúrovňové. Z důvodu nemusely zpoždění může jeden uživatel generovat nejvýše jedna transakce za sekundu, v průměru.
+Počet uživatelů je určen velikostí databáze (v jednotkách faktoru měřítka). Pro každých pět jednotek s faktorem měřítka je jeden uživatel. Z důvodu zpoždění přecházení může jeden uživatel generovat v průměru maximálně jednu transakci za sekundu.
 
-Například-koeficient 500 (SF = 500) databáze bude mít 100 uživatelů a můžete dosáhnout maximální počet 100 TPS. Centrum umožňující prosazovat vyšší TPS míra vyžaduje více uživatelů a větší databáze.
+Například měřítko 500 (SF = 500) databáze bude mít 100 uživatelů a může dosáhnout maximální rychlost 100 TPS. Chcete-li řídit vyšší rychlost TPS vyžaduje více uživatelů a větší databáze.
 
-### <a name="measurement-duration"></a>Měření doby trvání
+### <a name="measurement-duration"></a>Doba měření
 
-Platný spuštění testu výkonnosti vyžaduje stálé měření doba trvání aspoň jednu hodinu.
+Platné spuštění srovnávacího testu vyžaduje dobu měření v ustáleném stavu nejméně jednu hodinu.
 
 ### <a name="metrics"></a>Metriky
 
-Klíčové metriky na test výkonnosti se propustnost a dobu odezvy.
+Klíčovými metrikami v benchmarku jsou propustnost a doba odezvy.
 
-- Propustnost se měří základní výkon v průběhu testu. Propustnost je uveden v transakcí na jednotku of-time, počítací všechny transakce typech.
-- Doba odezvy je míra předvídatelnost výkonu. Omezení času odezvy se liší podle třídy služeb, s vyšší třídy služby, která má přísnější požadavky čas odezvy, jak je znázorněno níže.
+- Propustnost je základním měřítkem výkonu v benchmarku. Propustnost je vykazována v transakcích za jednotku času, včetně všech typů transakcí.
+- Doba odezvy je měřítkem předvídatelnosti výkonu. Omezení doby odezvy se liší podle třídy služby, přičemž vyšší třídy služeb mají přísnější požadavek na dobu odezvy, jak je znázorněno níže.
 
-| Třída služeb | Měření propustnosti | Požadavky na dobu odezvy |
+| Třída služeb | Míra propustností | Požadavek na dobu odezvy |
 | --- | --- | --- |
-| Premium |Transakce za sekundu |95. percentil na 0,5 sekund. |
-| Úroveň Standard |Transakce za minutu |90. percentil na 1.0 sekund. |
-| Úroveň Basic |Transakce za hodinu |80. percentil na 2.0 sekund. |
+| Premium |Transakce za sekundu |95. percentil při 0,5 sekundě |
+| Standard |Transakce za minutu |90. percentil za 1,0 sekundy |
+| Basic |Transakce za hodinu |80. percentil za 2,0 sekundy |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [omezení prostředků založený na DTU databáze SQL pro izolované databáze](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro elastické fondy, najdete v části [omezení prostředků na základě DTU databáze SQL](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
+- Podrobnosti o konkrétních výpočetních velikostech a možnostech velikosti úložiště, které jsou k dispozici pro jednotlivé databáze, naleznete [v tématu limity prostředků založených na databázi SQL Database pro jednotlivé databáze](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Podrobnosti o konkrétních velikostech výpočetních prostředků a možnostech velikosti úložiště, které jsou k dispozici pro elastické fondy, naleznete [v tématu limity prostředků založených na databázi SQL Database DTU](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

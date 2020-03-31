@@ -1,7 +1,7 @@
 ---
-title: Chování výzvy interaktivního požadavku (MSAL. js) | Azure
+title: Interaktivní chování výzvy k požadavku (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Naučte se přizpůsobit chování výzvy v interaktivních voláních pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
+description: Naučte se přizpůsobit chování výzev v interaktivních hovorech pomocí knihovny Microsoft Authentication Library for JavaScript (MSAL.js).
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,19 +14,19 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 778e89655019a49a30904fbe8d8e6aedf1833e9a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76695972"
 ---
-# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Chování výzvy v interaktivních žádostech MSAL. js
+# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Prompt chování v interaktivních požadavcích MSAL.js
 
-Když uživatel navázal aktivní relaci Azure AD s několika uživatelskými účty, zobrazí se ve výchozím nastavení přihlašovací stránka Azure AD, aby uživatel před přihlášením vybral účet. Pokud bude k dispozici jenom jedna ověřená relace se službou Azure AD, uživatelé nebudou vidět prostředí pro výběr účtu.
+Když uživatel vytvořil aktivní relaci Azure AD s více uživatelskými účty, přihlašovací stránka Azure AD ve výchozím nastavení vyzve uživatele k výběru účtu před pokračováním k přihlášení. Uživatelé neuvidí prostředí výběru účtu, pokud existuje pouze jedna ověřená relace s Azure AD.
 
-Knihovna MSAL. js (začínající v v 0.2.4) neodesílá parametr výzvy během interaktivních požadavků (`loginRedirect`, `loginPopup`, `acquireTokenRedirect` a `acquireTokenPopup`), a proto nevynutila žádné chování výzvy. Pro požadavky na tiché tokeny pomocí metody `acquireTokenSilent` předává MSAL. js parametr Prompt nastavený na `none`.
+Knihovna MSAL.js (počínaje v0.2.4) neodesílá parametr výzvy`loginRedirect`během `loginPopup` `acquireTokenRedirect` interaktivních požadavků ( , , a ), a `acquireTokenPopup`tím nevynucuje žádné chování výzvy. Pro požadavky tichých `acquireTokenSilent` tokenů pomocí metody msal.js `none`předá parametr výzvy nastavený na .
 
-V závislosti na scénáři vaší aplikace můžete řídit chování výzvy pro interaktivní požadavky tím, že nastavíte parametr Prompt v parametrech požadavku předaných metodám. Například pokud chcete vyvolat prostředí pro výběr účtu:
+Na základě scénáře aplikace můžete řídit chování výzvy pro interaktivní požadavky nastavením parametru výzvy v parametrech požadavku předaných metodám. Například pokud chcete vyvolat prostředí výběru účtu:
 
 ```javascript
 var request = {
@@ -38,16 +38,16 @@ userAgentApplication.loginRedirect(request);
 ```
 
 
-Při ověřování ve službě Azure AD můžete předat následující hodnoty dotazu:
+Následující hodnoty výzvy lze předat při ověřování pomocí Azure AD:
 
-**přihlašovací jméno:** Tato hodnota vynutí, aby uživatel zadal přihlašovací údaje k žádosti o ověření.
+**přihlášení:** Tato hodnota vynutí, aby uživatel zadali pověření v požadavku na ověření.
 
-**select_account:** Tato hodnota uživateli poskytne seznam všech účtů v relaci, který bude mít možnost výběru účtu.
+**select_account:** Tato hodnota poskytne uživateli možnost i možnost výběru účtu se seznamem všech účtů v relaci.
 
-**souhlas:** Tato hodnota vyvolá dialog pro vyjádření souhlasu OAuth, který umožňuje uživatelům udělit oprávnění k aplikaci.
+**souhlas:** Tato hodnota vyvolá dialog o souhlasu OAuth, který umožňuje uživatelům udělit oprávnění k aplikaci.
 
-**žádné:** Tato hodnota zajistí, že uživatel nebude zobrazovat žádné interaktivní výzvy. Doporučuje se předat tuto hodnotu do interaktivních metod v MSAL. js, protože to může mít neočekávané chování. Místo toho použijte metodu `acquireTokenSilent` k zajištění tichého volání.
+**žádné:** Tato hodnota zajistí, že uživatel nezobrazí žádnou interaktivní výzvu. Doporučuje se nepředávat tuto hodnotu interaktivním metodám v souboru MSAL.js, protože může mít neočekávané chování. Místo toho `acquireTokenSilent` použijte metodu k dosažení tichých volání.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o parametru `prompt` v protokolu [OAuth 2,0 implicitního udělení](v2-oauth2-implicit-grant-flow.md) , který používá knihovna MSAL. js.
+Přečtěte si `prompt` více o parametru v [implicitním grantovém protokolu OAuth 2.0,](v2-oauth2-implicit-grant-flow.md) který používá knihovna MSAL.js.

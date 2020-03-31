@@ -1,6 +1,6 @@
 ---
-title: Toky dat tahání v Azure Data Factory
-description: Přehled toků dat tahání v Azure Data Factory
+title: Hašteření datových toků v Azure Data Factory
+description: Přehled hašteření datových toků v Azure Data Factory
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: gamal
@@ -8,60 +8,60 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048361"
 ---
-# <a name="what-are-wrangling-data-flows"></a>Co jsou toky dat tahání?
+# <a name="what-are-wrangling-data-flows"></a>Co jsou toky dat?
 
-Organizace musí provést přípravu a tahání dat, aby bylo možné přesně analyzovat složitá data, která se budou dál rozšiřovat každý den. Příprava dat je povinná, aby organizace mohli používat data v různých obchodních procesech a zkrátit čas na hodnotu.
+Organizace musí provádět přípravu dat a hašteření pro přesnou analýzu komplexních dat, která každým dnem rostou. Příprava dat je vyžadována, aby organizace mohly data používat v různých obchodních procesech a zkrátit dobu potřebnou k dosažení hodnoty.
 
-Tahání datové toky v Azure Data Factory umožňují iterativní přípravu dat bez kódu na úrovni cloudu. Tahání datové toky se integrují s [Power Query online](https://docs.microsoft.com/power-query/) a zpřístupňují Power Query M funkcí pro uživatele Data Factory.
+Hašteření datových toků v Azure Data Factory vám umožní provést přípravu dat bez kódu v cloudovém měřítku iterativně. Hašteření datových toků se integruje s [Power Query Online](https://docs.microsoft.com/power-query/) a zpřístupňuje funkce Power Query M uživatelům datové továrny.
 
-Tok dat tahání transformuje M vygenerované online editorem hybridních webových Power Query aplikací do kódu Spark pro provádění škálování cloudu.
+Hádání tok dat převádí M generované Power Query Online Mashup Editor do jiskry kód pro cloud škálování spuštění.
 
-Toky dat tahání jsou zvláště užitečné pro inženýry dat nebo "občany pro datové integrátory".
+Hašteření datových toků je užitečné zejména pro datové inženýry nebo "integrátory údajů občanů".
 
 ## <a name="use-cases"></a>Případy použití
 
-### <a name="fast-interactive-data-exploration-and-preparation"></a>Rychlé interaktivní zkoumání a Příprava dat
+### <a name="fast-interactive-data-exploration-and-preparation"></a>Rychlý interaktivní průzkum a příprava dat
 
-Více datových techniků a integrátorů dat občana může interaktivně prozkoumat a připravit datové sady v cloudovém měřítku. Díky nárůstu objemu, rozmanitosti a rychlosti dat v datových lakůch potřebují uživatelé účinný způsob, jak prozkoumat a připravit datové sady. Například může být nutné vytvořit datovou sadu, která obsahuje demografické údaje o zákaznících pro nové zákazníky od 2017. Nejste mapováni na známý cíl. Zkoumáte, tahání a připravujete datové sady, abyste splnili požadavky před jejich publikováním v Lake. Toky dat tahání se často používají pro méně formální analytické scénáře. Datové sady připravenou se dají použít k provádění transformací a operací strojového učení.
+Více datových inženýrů a integrátorů dat občanů může interaktivně zkoumat a připravovat datové sady v cloudovém měřítku. S nárůstem objemu, rozmanitosti a rychlosti dat v datových jezerech potřebují uživatelé efektivní způsob, jak prozkoumat a připravit datové sady. Například možná budete muset vytvořit datovou sadu, která "má všechny demografické informace o zákaznících pro nové zákazníky od roku 2017". Nemapujete na známý cíl. Zkoumáte, hádáte a připravujete datové sady, abyste splnili požadavek před publikováním v jezeře. Hašteření datových toků se často používá pro scénáře méně formální analýzy. Přípravné datové sady lze použít pro provedení transformace a operace strojového učení po proudu.
 
-### <a name="code-free-agile-data-preparation"></a>Agilní Příprava dat bez kódu
+### <a name="code-free-agile-data-preparation"></a>Agilní příprava dat bez kódu
 
-Integrátory dat občana stráví více než 60% času hledáním a přípravou dat. Hledají si ho jako bezplatný kód pro zlepšení provozní produktivity. Umožnění rozšíření, tvaru a publikování dat občanům, kteří mají k disPower Query v rámci škálovatelné nástroje, jako je online, výrazně zlepšuje produktivitu. Tahání data flow v Azure Data Factory umožňuje známé Power Query online editoru hybridních webových aplikací, které umožňují integrátorům dat občanů rychle opravovat chyby, standardizovat data a vytvářet vysoce kvalitní data pro podporu obchodních rozhodnutí.
+Integrátoři údajů o občanech tráví více než 60 % svého času hledáním a přípravou dat. Chtějí to udělat bez kódu, aby zlepšili provozní produktivitu. Povolení integrátorům dat občanů obohacovat, tvarovat a publikovat data pomocí známých nástrojů, jako je Power Query Online, škálovatelným způsobem, výrazně zvyšuje jejich produktivitu. Tok dat v Azure Data Factory umožňuje známému editoru mashup Power Query Online, který umožňuje integrátorům dat občanů rychle opravovat chyby, standardizovat data a vytvářet vysoce kvalitní data pro podporu obchodních rozhodnutí.
 
-### <a name="data-validation"></a>Ověření dat
+### <a name="data-validation"></a>Ověřování dat
 
-Vizuálně naskenujte vaše data způsobem bez kódu, abyste mohli odebrat jakékoli odlehlé hodnoty, anomálie a odpovídat na obrazec pro rychlou analýzu.
+Vizuálně naskenujte data způsobem bez kódu, abyste odstranili všechny odlehlé hodnoty, anomálie a přizpůsobili je obrazci pro rychlou analýzu.
 
 ## <a name="supported-sources"></a>Podporované zdroje
 
-| Spojovací čára | Formát dat | Typ ověřování |
+| Konektor | Formát dat | Typ ověřování |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet | Klíč účtu |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | SDÍLENÝ SVAZEK CLUSTERU | Instanční objekt |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Klíč účtu, instanční objekt |
+| [Úložiště objektů blob Azure](connector-azure-blob-storage.md) | CSV, Parkety | Klíč účtu |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Instanční objekt |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parkety | Klíč účtu, instanční objekt |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | Ověřování pomocí SQL |
-| [Azure synapse Analytics](connector-azure-sql-data-warehouse.md) | - | Ověřování pomocí SQL |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | Ověřování pomocí SQL |
 
-## <a name="the-mashup-editor"></a>Editor hybridní webové aplikace
+## <a name="the-mashup-editor"></a>Editor mashup
 
-Při vytváření toku dat tahání se všechny zdrojové datové sady stanou dotazy datových sad a jsou umístěné ve složce **ADFResource** . Ve výchozím nastavení bude UserQuery ukazovat na první dotaz DataSet. Všechny transformace by se měly provádět na UserQuery, protože změny dotazů na datovou sadu se nepodporují, ani nebudou trvalé. Přejmenování, přidání a odstranění dotazů není aktuálně podporováno.
+Když vytvoříte tok dat hádání, všechny zdrojové datové sady se stanou dotazy datové sady a jsou umístěny ve složce **ADFResource.** Ve výchozím nastavení bude UserQuery ukazovat na první dotaz na datovou sadu. Všechny transformace by měly být provedeny na UserQuery jako změny dotazů datové sady nejsou podporovány ani budou trvalé. Přejmenování, přidání a odstranění dotazů není aktuálně podporováno.
 
-![Tahání](media/wrangling-data-flow/editor.png)
+![Hádky](media/wrangling-data-flow/editor.png)
 
-V současné době nejsou všechny funkce Power Query M podporovány pro tahání dat, přestože jsou k dispozici při vytváření obsahu. Při sestavování datových toků tahání se zobrazí výzva s následující chybovou zprávou, pokud funkce není podporována:
+V současné době nejsou podporovány všechny funkce Power Query M pro hádání dat, přestože jsou k dispozici během vytváření. Při vytváření toků dat hádání se zobrazí výzva s následující chybovou zprávou, pokud funkce není podporována:
 
 `The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
 
-Další informace o podporovaných transformacích najdete v tématu [tahání data Flow Functions](wrangling-data-flow-functions.md).
+Další informace o podporovaných transformacích naleznete [v tématu hádání funkce toku dat](wrangling-data-flow-functions.md).
 
-Datový tok aktuálně tahání podporuje zápis pouze do jedné jímky.
+V současné době hádání tok dat podporuje pouze zápis do jednoho jímky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se [vytvářet tahání tok dat](wrangling-data-flow-tutorial.md).
+Přečtěte si, jak [vytvořit tok dat v hašteření](wrangling-data-flow-tutorial.md).

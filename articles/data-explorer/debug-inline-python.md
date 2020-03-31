@@ -1,6 +1,6 @@
 ---
-title: Ladění Kusto dotazovacího jazyka vloženého Pythonu pomocí VS Code-Azure Průzkumník dat
-description: Naučte se ladit vložené Pythony Kusto Query Language (KQL) pomocí VS Code.
+title: Ladění dotazovacího jazyka Kusto v členě Pythonu pomocí kódu VS – Průzkumník dat Azure
+description: Naučte se ladit Kusto dotazovací jazyk (KQL) vložkou Python pomocí VS Code.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,52 +8,52 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444474"
 ---
-# <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Ladění Kusto dotazovacího jazyka vložené Pythonu pomocí VS Code
+# <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Ladění dotazovacího jazyka Kusto v souladu s Pythonem pomocí kódu VS
 
-Azure Průzkumník dat podporuje spouštění kódu Pythonu vloženého v dotazovacím jazyce Kusto pomocí [modulu plug-in Pythonu ()](/azure/kusto/query/pythonplugin). Běhový modul plug-in je hostovaný v izolovaném prostoru, izolovaném a zabezpečeném prostředí Pythonu. Schopnosti modulu plug-in Pythonu () rozšiřují nativní funkce jazyka dotazů Kusto s obrovským archivem balíčků OSS Python. Toto rozšíření umožňuje spouštět v rámci dotazu pokročilé algoritmy, jako je Machine Learning, umělá logika, statistická a časová řada.
+Azure Data Explorer podporuje spuštění kódu Pythonu vloženého do dotazovacího jazyka Kusto pomocí [pluginu python().](/azure/kusto/query/pythonplugin) Modul runtime pluginu je hostován v izolovaném a zabezpečeném prostředí Pythonu. Python() plugin schopnost rozšiřuje Kusto dotazovací jazyk nativní funkce s obrovským archiv balíčků OSS Python. Toto rozšíření umožňuje spouštět pokročilé algoritmy, jako je například strojové učení, umělá inteligence, statistické a časové řady jako součást dotazu.
 
-Nástroje dotazovacího jazyka Kusto nejsou vhodné pro vývoj a ladění algoritmů Pythonu. Proto si vyvinete algoritmus ve svém oblíbeném vývojovém prostředí integrovaném v Pythonu, jako je Jupyter, PyCharm, VS nebo VS Code. Po dokončení algoritmu zkopírujte a vložte do KQL. Pro zlepšení a zjednodušení tohoto pracovního postupu Azure Průzkumník dat podporuje integraci mezi Kusto Explorerem nebo webovými klienty uživatelského rozhraní a VS Code pro vytváření a ladění vloženého kódu Pythonu KQL. 
+Nástroje pro dotazovací jazyk Kusto nejsou vhodné pro vývoj a ladění algoritmů Pythonu. Proto rozvíjet algoritmus na své oblíbené vývojové prostředí integrované Pythonu, jako je Jupyter, PyCharm, VS nebo VS kód. Po dokončení algoritmu zkopírujte a vložte do KQL. Pro zlepšení a zefektivnění tohoto pracovního postupu podporuje Azure Data Explorer integraci mezi klienty Kusto Explorer nebo Web UI a Kód VS pro vytváření a ladění kódu KQL v pythonu. 
 
 > [!NOTE]
-> Tento pracovní postup se dá použít jenom k ladění relativně malých vstupních tabulek (až pár MB). Proto možná budete muset omezit vstup pro ladění.  Pokud potřebujete zpracovat velkou tabulku, omezte ji pro ladění pomocí `| take`, `| sample`nebo `where rand() < 0.x`.
+> Tento pracovní postup lze použít pouze k ladění relativně malé vstupní tabulky (až několik MB). Proto může být nutné omezit vstup pro ladění.  Pokud potřebujete zpracovat velkou tabulku, omezte `| take` `| sample`ji `where rand() < 0.x`pro ladění pomocí , , nebo .
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Instalace [distribuce Python Anaconda](https://www.anaconda.com/distribution/#download-section) V okně **Upřesnit možnosti**vyberte **Přidat Anaconda do proměnné prostředí moje cesta**.
-2. Instalace [Visual Studio Code](https://code.visualstudio.com/Download)
-3. Nainstalovat [rozšíření Python pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+1. Nainstalujte [pythona Anaconda distribuce](https://www.anaconda.com/distribution/#download-section). V **části Upřesnit možnosti**vyberte **přidat anakondu do proměnné prostředí PATH**.
+2. Instalace [kódu sady Visual Studio](https://code.visualstudio.com/Download)
+3. Nainstalujte [rozšíření Pythonu pro visual studio kód](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
 ## <a name="run-your-query-in-your-client-application"></a>Spuštění dotazu v klientské aplikaci
 
-1. V klientské aplikaci použijte předponu dotazu obsahujícího vložené Python s `set query_python_debug;`
+1. V klientské aplikaci předponujedotaz obsahující vsazený Python s`set query_python_debug;`
 1. Spusťte dotaz.
-    * Kusto Explorer: VS Code se automaticky spustí se skriptem *debug_python. py* .
-    * Webové uživatelské rozhraní Kusto: 
-        1. Stáhněte a uložte *debug_python. py*, *DF. txt*a *kargs. txt*. V okně vyberte možnost **povoleno**. **Uloží** soubory do vybraného adresáře. 
+    * Kusto Explorer: VS Code se automaticky spustí se skriptem *debug_python.py.*
+    * Webové uživatelské uzliNa Kusto: 
+        1. Stáhněte a uložte *soubor debug_python.py*, *df.txt*a *kargs.txt*. V okně vyberte **Povolit**. **Uložit** soubory do vybraného adresáře. 
 
-            ![Webové uživatelské rozhraní stáhne vložené soubory Pythonu.](media/debug-inline-python/webui-inline-python.png)
+            ![Webové uživatelské rozhraní stáhne vložkové soubory pythonu](media/debug-inline-python/webui-inline-python.png)
 
-        1. Klikněte pravým tlačítkem na *debug_python. py* a otevřete s vs Code. 
-        Skript *debug_python. py* obsahuje vložený kód Pythonu z dotazu KQL, který je předpevněný kódem šablony, aby inicializoval vstupní datový rámec od *DF. txt* a slovníku parametrů z *kargs. txt*.    
+        1. Klikněte pravým tlačítkem myši *na soubor debug_python.py* a otevřete jej pomocí kódu VS. 
+        Skript *debug_python.py* obsahuje vložený kód Pythonu z dotazu KQL, který je předponou kódem šablony pro inicializaci vstupního datového rámce z *souboru df.txt* a slovníku parametrů z *souboru kargs.txt*.    
             
-1. V nástroji VS Code spusťte ladicí program VS Code Debugger: **ladění** > **Spustit ladění (F5)** , vyberte konfigurace **Pythonu** . Ladicí program spustí a automaticky zarážku pro ladění vloženého kódu.
+1. V kódu VS spusťte ladicí program kódu VS: **Ladění** > **ladění start ování (F5)**, vyberte konfiguraci **Pythonu.** Ladicí program se spustí a automaticky zarážka ladit vložených kód.
 
-### <a name="how-does-inline-python-debugging-in-vs-code-work"></a>Jak funguje vložené ladění v jazyce Python v VS Code?
+### <a name="how-does-inline-python-debugging-in-vs-code-work"></a>Jak funguje vslaná ladění Pythonu v kódu VS?
 
-1. Dotaz se analyzuje a spustí na serveru, dokud se nedosáhne požadované klauzule `| evaluate python()`.
-1. Je vyvolán izolovaný prostor (sandbox) Pythonu, ale místo spuštění kódu je serializována vstupní tabulka, slovník parametrů a kód a pošle se zpátky klientovi.
-1. Tyto tři objekty jsou uloženy ve třech souborech: *DF. txt*, *kargs. txt*a *debug_python. py* ve vybraném adresáři (webové uživatelské rozhraní) nebo v adresáři klienta% Temp% (Kusto Explorer).
-1. Kód VS se spustí, předem načtený s *debug_python. py* , který obsahuje kód předpony pro inicializaci DF a kargs ze svých příslušných souborů následovaný skriptem Pythonu vloženým do dotazu KQL.
+1. Dotaz je analyzován a proveden na serveru, `| evaluate python()` dokud není dosaženo požadované klauzule.
+1. Izolovaného prostoru Pythonu je vyvolána, ale místo spuštění kódu serializuje vstupní tabulku, slovník parametrů a kód a odešle je zpět klientovi.
+1. Tyto tři objekty jsou uloženy ve třech souborech: *df.txt*, *kargs.txt*a *debug_python.py* ve vybraném adresáři (Webové uživatelské rozhraní) nebo v adresáři %TEMP% klienta (Kusto Explorer).
+1. VS kód je spuštěn, předinstalovaný se souborem *debug_python.py,* který obsahuje předponový kód pro inicializaci souborů DF a kargs z příslušných souborů, následovaný skriptem Pythonu vloženým do dotazu KQL.
 
 ## <a name="query-example"></a>Příklad dotazu
 
-1. Spusťte následující dotaz KQL v klientské aplikaci:
+1. Spusťte v klientské aplikaci následující dotaz KQL:
 
     ```kusto
     range x from 1 to 4 step 1
@@ -64,16 +64,16 @@ Nástroje dotazovacího jazyka Kusto nejsou vhodné pro vývoj a ladění algori
     , pack('exp', 4))
     ```
 
-    Podívejte se na výslednou tabulku:
+    Viz výsledná tabulka:
 
-    | x  | X4  |
+    | x  | x4  |
     |---------|---------|
-    | 1\. místo     |   1\. místo      |
+    | 1     |   1      |
     | 2     |   16      |
     | 3     |   81      |
     | 4     |    256     |
     
-1. Spusťte stejný dotaz KQL v klientské aplikaci pomocí `set query_python_debug;`:
+1. Spusťte stejný dotaz KQL `set query_python_debug;`v klientské aplikaci pomocí :
 
     ```kusto
     set query_python_debug;
@@ -85,13 +85,13 @@ Nástroje dotazovacího jazyka Kusto nejsou vhodné pro vývoj a ladění algori
     , pack('exp', 4))
     ```
 
-1. VS Code se spustí:
+1. VS Code je spuštěn:
 
-    ![spustit VS Code](media/debug-inline-python/launch-vs-code.png)
+    ![spuštění vs kódu](media/debug-inline-python/launch-vs-code.png)
 
-1. VS Code ladí a tiskne "výsledek" dataframe v konzole ladění:
+1. VS Kód odchybovat a vytiskne 'výsledek' datový rámec v konzole ladění:
 
-    ![Ladění VS Code](media/debug-inline-python/debug-vs-code.png)
+    ![Ladění kódu VS](media/debug-inline-python/debug-vs-code.png)
 
 > [!NOTE]
-> Mezi obrázkem v izolovaném prostoru (sandbox) a místní instalaci může docházet k rozdílům. [Podívejte se na obrázek izolovaného prostoru pro konkrétní balíčky pomocí dotazu na modul plug-in](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl).
+> Mezi bitovou kopii izolovaného prostoru Pythonu a místní instalací mohou být rozdíly. [Zkontrolujte obrázek izolovaného prostoru pro konkrétní balíčky dotazem plugin](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl).

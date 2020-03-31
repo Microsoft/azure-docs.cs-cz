@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 75bcb9d27ee6f66a1d9c15093d9f933a3ad25881
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175504"
 ---
-1. V Průzkumníku řešení Visual Studio klikněte pravým tlačítkem na projekt aplikace Windows Store. Potom vyberte **Store** > **přidružit aplikaci Store**.
+1. V Průzkumníkovi řešení Visual Studia klikněte pravým tlačítkem myši na projekt aplikace pro Windows Store. Pak vyberte **Store** > **Přidružit aplikaci ke Storu**.
 
-    ![Propojit aplikaci s Windows Store](./media/app-service-mobile-register-wns/notification-hub-associate-win8-app.png)
-2. V průvodci vyberte **Další**. Pak se přihlaste pomocí svého účtu Microsoft. V **rezervovat nový název aplikace**, zadejte název pro vaši aplikaci a pak vyberte **rezervy**.
-3. Po registraci aplikace je úspěšně vytvořen, vyberte nový název aplikace. Vyberte **Další**a pak vyberte **přidružit**. Tento postup přidá požadované informace o registraci Windows Store do manifestu aplikace.
-4. Opakujte kroky 1 až 3 pro projekt aplikace Windows Phone Store s použitím stejného registrace, který jste dříve vytvořili pro aplikace Windows Store.  
-5. Přejděte [Windows Dev Center](https://dev.windows.com/en-us/overview)a pak se přihlaste pomocí svého účtu Microsoft. V **Moje aplikace**, vyberte možnost registrace nové aplikace. Pak rozbalte **služby** > **nabízená oznámení**.
-6. Na **nabízená oznámení** stránce v části **Windows Push Notification Services (WNS) a Microsoft Azure Mobile Apps**vyberte **Web služeb Live Services**.  Poznamenejte si hodnoty **SID balíčku** a *aktuální* hodnota v **tajný klíč aplikace**. 
+    ![Přidružení aplikace k Windows Storu](./media/app-service-mobile-register-wns/notification-hub-associate-win8-app.png)
+2. V průvodci vyberte **Další**. Pak se přihlaste pomocí svého účtu Microsoft. V **popřípadě Rezervovat nový název aplikace**zadejte název aplikace a pak vyberte **Rezervovat**.
+3. Po úspěšném vytvoření registrace aplikace vyberte nový název aplikace. Vyberte **Další**a pak vyberte **Přidružit**. Tento proces přidá požadované informace o registraci windows store do manifestu aplikace.
+4. Opakujte kroky 1 a 3 pro projekt aplikace pro Windows Phone Store pomocí stejné registrace, kterou jste pro aplikaci pro Windows Store vytvořili dříve.  
+5. Přejděte na [Windows Dev Center](https://dev.windows.com/en-us/overview)a přihlaste se pomocí svého účtu Microsoft. V **části Moje aplikace**vyberte novou registraci aplikace. Potom rozbalte**nabízená oznámení** **služby** > .
+6. Na stránce **Nabízená oznámení** vyberte v části **Služby nabízených oznámení Windows (WNS) a Mobilní aplikace Microsoft Azure**v yberte Live Services **.**  Poznamenejte si hodnoty **sid balíčku** a *aktuální* hodnotu v **tajné aplikaci**. 
 
-    ![Nastavení aplikace v Centru pro vývojáře](./media/app-service-mobile-register-wns/mobile-services-win8-app-push-auth.png)
+    ![Nastavení aplikace v centru pro vývojáře](./media/app-service-mobile-register-wns/mobile-services-win8-app-push-auth.png)
 
    > [!IMPORTANT]
-   > Tajný klíč aplikace a SID balíčku jsou důležité přihlašovací údaje zabezpečení. Nemáte s kýmkoli sdílet tyto hodnoty ani je nedistribuujte s vaší aplikací.
+   > Tajný klíč aplikace a SID balíčku jsou důležité přihlašovací údaje zabezpečení. Tyto hodnoty s nikým nesdílejte ani je nedistribuujte s aplikací.
    >
    >

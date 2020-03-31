@@ -1,6 +1,6 @@
 ---
-title: Schéma přihlašovacího protokolu v Azure Monitor | Microsoft Docs
-description: Popište schéma protokolu přihlášení Azure AD pro použití v Azure Monitor
+title: Schéma přihlášení přihlášení přihlášení v Azure Monitoru | Dokumenty společnosti Microsoft
+description: Popište schéma protokolu přihlášení služby Azure AD pro použití v Azure Monitoru
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748666"
 ---
-# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretujte schéma přihlašovacích protokolů služby Azure AD v Azure Monitor
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretace schématu protokolů přihlášení Azure AD v Azure Monitoru
 
-Tento článek popisuje schéma protokolu přihlašování Azure Active Directory (Azure AD) v Azure Monitor. Většina informací, které se vztahují k přihlašování, je k dispozici v atributu *Properties* objektu `records`.
+Tento článek popisuje schéma přihlášení přihlášení služby Azure Active Directory (Azure AD) v Azure Monitoru. Většina informací, které souvisí s přihlášeníje je k dispozici `records` v rámci *vlastnosti* atribut objektu.
 
 
 ```json
@@ -145,29 +145,29 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 
 | Název pole | Popis |
 |------------|-------------|
-| Time | Datum a čas ve standardu UTC. |
-| ResourceId | Tato hodnota není mapována a můžete toto pole bezpečně ignorovat.  |
+| Time | Datum a čas v utc. |
+| ResourceId | Tato hodnota není namapována a toto pole můžete bezpečně ignorovat.  |
 | OperationName | Pro přihlášení je tato hodnota vždy *aktivita přihlášení*. |
-| OperationVersion | Verze REST API, kterou klient požaduje. |
-| Kategorie | U přihlášení se tato *hodnota vždy*přihlašuje. | 
-| TenantId | Identifikátor GUID tenanta, který je přidružený k protokolům. |
-| ResultType | Výsledkem operace přihlášení může být *úspěch* nebo *neúspěch*. | 
+| OperationVersion | Verze rozhraní REST API, která je požadována klientem. |
+| Kategorie | Pro přihlášení je tato hodnota vždy *Přihlásit*. | 
+| TenantId | Identifikátor GUID klienta, který je přidružen k protokolům. |
+| Type výsledku | Výsledkem operace přihlášení může být *úspěch* nebo *neúspěch*. | 
 | ResultSignature | Obsahuje kód chyby, pokud existuje, pro operaci přihlášení. |
-| ResultDescription | Poskytuje popis chyby pro operaci přihlášení. |
-| riskDetail | riskDetail | Poskytuje "důvod" za konkrétní stav rizikového uživatele, přihlášení nebo zjišťování rizik. Možné hodnoty jsou: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. Hodnota `none` znamená, že uživatel ani se k tomu zatím neudělala žádná akce. <br>**Poznámka:** Podrobnosti této vlastnosti vyžadují licenci Azure AD Premium P2. Jiné licence vracejí hodnotu `hidden`. |
-| riskEventTypes | riskEventTypes | Typy detekce rizik spojené s přihlášením Možné hodnoty jsou: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic`a `unknownFutureValue`. |
-| riskLevelAggregated | riskLevel | Agregovaná úroveň rizika. Možné hodnoty jsou: `none`, `low`, `medium`, `high`, `hidden`a `unknownFutureValue`. Hodnota `hidden` znamená, že uživatel nebo přihlášení nebylo pro Azure AD Identity Protection povoleno. **Poznámka:** Podrobnosti této vlastnosti jsou k dispozici pouze pro zákazníky Azure AD Premium P2. Všichni ostatní zákazníci budou vráceni `hidden`. |
-| riskLevelDuringSignIn | riskLevel | Úroveň rizika během přihlašování Možné hodnoty jsou: `none`, `low`, `medium`, `high`, `hidden`a `unknownFutureValue`. Hodnota `hidden` znamená, že uživatel nebo přihlášení nebylo pro Azure AD Identity Protection povoleno. **Poznámka:** Podrobnosti této vlastnosti jsou k dispozici pouze pro zákazníky Azure AD Premium P2. Všichni ostatní zákazníci budou vráceni `hidden`. |
-| riskState | riskState | Oznamuje stav rizikového uživatele, přihlášení nebo zjišťování rizik. Možné hodnoty jsou: `none`, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, `confirmedCompromised`, `unknownFutureValue`. |
-| Trvání v MS |  Tato hodnota není mapována a můžete toto pole bezpečně ignorovat. |
-| CallerIpAddress | IP adresa klienta, který odeslal požadavek. | 
-| CorrelationId | Volitelný identifikátor GUID, který je předán klientem. Tato hodnota může pomoct sladit operace na straně klienta s operacemi na straně serveru a je užitečná při sledování protokolů, které zahrnují služby. |
-| Identita | Identita z tokenu, který byl předložen při podání žádosti. Může to být uživatelský účet, systémový účet nebo instanční objekt. |
-| Úroveň | Poskytuje typ zprávy. Pro audit je vždy *informativní*. |
-| Umístění | Poskytuje umístění přihlašovací aktivity. |
-| Vlastnosti | Zobrazí seznam všech vlastností, které jsou spojeny s přihlášeními. Další informace najdete v tématu [Microsoft Graph Reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Toto schéma používá pro účely čitelnosti stejné názvy atributů jako přihlašovací prostředek.
+| VýsledekPopis | Obsahuje popis chyby pro operaci přihlášení. |
+| riskDetail | riskDetail | Poskytuje "důvod" za konkrétní stav rizikového uživatele, přihlášení nebo detekce rizika. Možné hodnoty `none`jsou: `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe` `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser` `adminConfirmedSigninCompromised`, `unknownFutureValue`, , , , , . Hodnota `none` znamená, že dosud nebyla provedena žádná akce u uživatele nebo přihlášení. <br>**Poznámka:** Podrobnosti o této vlastnosti vyžadují licenci Azure AD Premium P2. Jiné licence vrátí `hidden`hodnotu . |
+| typy událostí rizika | typy událostí rizika | Typy zjišťování rizik přidružené k přihlášení. Možné hodnoty `unlikelyTravel`jsou: `anonymizedIPAddress` `maliciousIPAddress`, `unfamiliarFeatures` `malwareInfectedIPAddress`, `suspiciousIPAddress` `leakedCredentials`, `investigationsThreatIntelligence` `generic`, `unknownFutureValue`, , , , , a . |
+| riskLevelAgregovaný | rizikoÚroveň | Agregovaná úroveň rizika. Možné hodnoty `none`jsou: `low` `medium`, `high` `hidden`, `unknownFutureValue`, , a . Hodnota `hidden` znamená, že uživatel nebo přihlášení nebylo povoleno pro Azure AD Identity Protection. **Poznámka:** Podrobnosti o této vlastnosti jsou k dispozici jenom pro zákazníky Azure AD Premium P2. Všichni ostatní zákazníci `hidden`budou vráceni . |
+| riskLevelDuringSignIn | rizikoÚroveň | Úroveň rizika při přihlašování. Možné hodnoty `none`jsou: `low` `medium`, `high` `hidden`, `unknownFutureValue`, , a . Hodnota `hidden` znamená, že uživatel nebo přihlášení nebylo povoleno pro Azure AD Identity Protection. **Poznámka:** Podrobnosti o této vlastnosti jsou k dispozici jenom pro zákazníky Azure AD Premium P2. Všichni ostatní zákazníci `hidden`budou vráceni . |
+| riskState | riskState | Hlásí stav rizikového uživatele, přihlášení nebo detekce rizik. Možné `none`hodnoty jsou: `confirmedSafe` `remediated`, `dismissed` `atRisk`, `confirmedCompromised` `unknownFutureValue`, , , . . |
+| DurationMs |  Tato hodnota není namapována a toto pole můžete bezpečně ignorovat. |
+| Adresa CallerIpAddress | IP adresa klienta, který podal požadavek. | 
+| CorrelationId | Volitelný identifikátor GUID, který je předán klientem. Tato hodnota může pomoci korelovat operace na straně klienta s operacemi na straně serveru a je užitečné, když sledujete protokoly, které pokrývají služby. |
+| Identita | Identita z tokenu, který byl předložen při požadavku. Může se jedná o uživatelský účet, systémový účet nebo instanční objekt. |
+| Úroveň | Obsahuje typ zprávy. Pro audit je vždy *informační*. |
+| Umístění | Poskytuje umístění aktivity přihlášení. |
+| Vlastnosti | Zobrazí seznam všech vlastností, které jsou přidruženy k přihlášení. Další informace naleznete v [tématu Microsoft Graph API Reference](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Toto schéma používá pro čitelnost stejné názvy atributů jako prostředek přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Interpretace schématu protokolů auditu ve službě Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Interpretace schématu protokolů auditu v Azure Monitoru](reference-azure-monitor-audit-log-schema.md)
 * [Další informace o diagnostických protokolech Azure](../../azure-monitor/platform/platform-logs-overview.md)

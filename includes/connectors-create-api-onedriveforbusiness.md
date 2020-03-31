@@ -5,26 +5,26 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/03/2016
 ms.openlocfilehash: 3a0cb48e7fe5f3eef101f644e4f72fcfa2689d6e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789442"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet [OneDrivu](https://OneDrive.com) 
 
-Než budete moct účet OneDrivu pro firmy použít v aplikaci logiky, musíte aplikaci logiky autorizovat, aby se připojila k vašemu účtu OneDrivu pro firmy. Naštěstí to můžete provést snadno v rámci aplikace logiky na webu Azure Portal. 
+Než budete moct používat svůj účet OneDrivu pro firmy v aplikaci Logika, musíte autorizovat aplikaci Logika pro připojení k účtu OneDrivu pro firmy. Naštěstí to můžete udělat snadno z aplikace Logika na webu Azure Portal. 
 
-Tady je postup, jak autorizovat aplikaci logiky pro připojení k účtu OneDrivu pro firmy:
+Tady jsou kroky, jak autorizovat aplikaci Logika pro připojení k účtu OneDrivu pro firmy:
 
-1. Pokud chcete vytvořit připojení k OneDrivu pro firmy, v návrháři aplikace logiky vyberte v rozevíracím seznamu **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte *OneDrive pro firmy* . Vyberte aktivační událost nebo akci, kterou chcete použít:  
+1. Pokud chcete vytvořit připojení k OneDrivu pro firmy, v yberte V návrháři aplikace Logika v rozevíracím seznamu **Zobrazit rozhraní API spravovaná Microsoftem** a do vyhledávacího pole zadejte *OneDrive pro firmy.* Vyberte aktivační událost nebo akci, kterou chcete použít:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Pokud jste ještě nevytvořili žádná připojení k OneDrivu pro firmy, zobrazí se výzva k zadání přihlašovacích údajů pro OneDrive pro firmy. Tyto přihlašovací údaje budou použity k autorizaci aplikace logiky k připojení a přístup k datům účtu OneDrivu pro firmy:  
+2. Pokud jste ještě nevytvořili žádná připojení k OneDrivu pro firmy, zobrazí se výzva k zadání přihlašovacích údajů k OneDrivu pro firmy. Tato pověření se použijí k autorizaci aplikace Logiky pro připojení k datům vašeho účtu OneDrivu pro firmy a k přístupu k nim:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Zadejte uživatelské jméno a heslo pro OneDrive pro firmy, abyste mohli autorizovat vaši aplikaci logiky:  
+3. Zadejte své uživatelské jméno a heslo onedru pro firmy, abyste mohly aplikaci Logiku autorizovat:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Všimněte si, že připojení bylo vytvořeno a vy teď můžete pokračovat dalšími kroky ve vaší aplikaci logiky:  
+4. Všimněte si, že připojení bylo vytvořeno a nyní můžete pokračovat v dalších krocích v aplikaci Logika:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 

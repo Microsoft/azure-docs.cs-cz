@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: glenga
 ms.openlocfilehash: 437b4ab62cc8c4903af88ca2f9632e89b953c798
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68669582"
 ---
-Postup zapnutí protokolů streamování aplikace Function App v Azure:
+Zapnutí protokolů streamování pro vaši funkční aplikaci v Azure:
 
-1. Výběrem F1 otevřete paletu příkazů a pak vyhledejte a spusťte příkaz **Azure Functions: Spusťte streamování**protokolů.
+1. Výběrem klávesy F1 otevřete paletu příkazů a pak vyhledejte a spusťte příkaz **Funkce Azure: Spusťte protokoly streamování**.
 
-1. Vyberte svou aplikaci Function App v Azure a pak vyberte **Ano** , pokud chcete povolit protokolování aplikací pro aplikaci Function App.
+1. Vyberte aplikaci funkcí v Azure a pak vyberte **Ano,** abyste povolili protokolování aplikací pro aplikaci funkcí.
 
-1. Aktivujte své funkce v Azure. Všimněte si, že data protokolu se zobrazí v okně výstup v Visual Studio Code.
+1. Spusťte své funkce v Azure. Všimněte si, že data protokolu se zobrazí v okně Výstup v kódu sady Visual Studio.
 
-1. Až budete hotovi, nezapomeňte spustit příkaz **Azure Functions: Pokud chcete zakázat** protokolování aplikace Function App, zastavte protokoly streamování.
+1. Až budete hotovi, nezapomeňte spustit příkaz **Azure Functions: Stop Streaming Protokoly** zakázat protokolování pro aplikaci funkce.

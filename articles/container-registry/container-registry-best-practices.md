@@ -4,17 +4,17 @@ description: Zjistěte, jak pomocí těchto osvědčených postupů efektivně p
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247069"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Osvědčené postupy pro službu Azure Container Registry
 
 Když se budete řídit těmito osvědčenými postupy, můžete maximalizovat výkon a nákladově efektivní používání svého privátního registru Dockeru v Azure.
 
-V tématu také najdete [doporučení pro označování a image kontejnerů](container-registry-image-tag-version.md) pro strategie pro označení a verze imagí v registru. 
+Viz také [Doporučení pro označování a správu verzí iobrazek kontejnerů](container-registry-image-tag-version.md) pro strategie pro označení a verze iimages v registru. 
 
 ## <a name="network-close-deployment"></a>Nasazení blízko sítě
 
@@ -33,7 +33,7 @@ Informace o použití geografické replikace najdete v třídílném kurzu [Geog
 
 S využitím oborů názvů úložiště můžete umožnit sdílení jednoho registru napříč několika skupinami v rámci vaší organizace. Registry se můžou sdílet napříč nasazeními a týmy. Azure Container Registry podporuje vnořené obory názvů a díky tomu umožňuje izolaci skupin.
 
-Představte si například následující značky image kontejneru. Image používané v rámci podnikové sítě, jako je `aspnetcore`, jsou umístěné v kořenovém oboru názvů, zatímco image kontejneru vlastněné produkty a marketingovými skupinami používají své vlastní obory názvů.
+Představte si například následující značky image kontejneru. Bitové kopie, které se `aspnetcore`používají celopodnikové, například , jsou umístěny v kořenovém oboru názvů, zatímco image kontejnerů vlastněné skupinami Produkty a Marketing používají své vlastní obory názvů.
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -42,11 +42,11 @@ Představte si například následující značky image kontejneru. Image použ�
 
 ## <a name="dedicated-resource-group"></a>Vyhrazená skupina prostředků
 
-Vzhledem k tomu, že registry kontejnerů jsou prostředky, které se používají na více hostitelích kontejnerů, měl by být registr umístěný ve vlastní skupině prostředků.
+Vzhledem k tomu, že registry kontejnerů jsou prostředky, které se používají ve více hostitelích kontejnerů, registr by měl být umístěn ve vlastní skupině prostředků.
 
 I když můžete experimentovat s konkrétním typem hostitele, jako je služba Azure Container Instances, pravděpodobně budete chtít instanci kontejneru odstranit, jakmile budete hotovi. Můžete však také chtít zachovat kolekci imagí, které jste nasdíleli do služby Azure Container Registry. Umístěním registru do vlastní skupiny prostředků minimalizujete riziko nechtěného odstranění kolekce imagí v registru při odstraňování skupiny prostředků instance kontejneru.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Při ověřování ve službě Azure Container Registry existují dva primární scénáře: jednotlivé ověření a ověření služby (neboli bezobslužné ověření). Následující tabulka obsahuje stručný přehled těchto scénářů a doporučenou metodu ověřování pro každý z nich.
 
@@ -59,9 +59,9 @@ Podrobné informace o ověřování ve službě Azure Container Registry najdete
 
 ## <a name="manage-registry-size"></a>Správa velikosti registru
 
-Omezení úložiště každé skladové položky [registru kontejneru][container-registry-skus] mají být v souladu s obvyklým scénářem: **Basic** pro začátek, **Standard** pro většinu produkčních aplikací a **Premium** pro výkon a [geografickou replikaci][container-registry-geo-replication]na úrovni Hyper. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
+Omezení úložiště pro jednotlivé [skladové položky registru kontejneru][container-registry-skus] by měla odpovídat obvyklému scénáři: **Basic** pro začátek, **Standard** pro většinu produkčních aplikací a **Premium** pro zajištění vysoce škálovatelného výkonu a [geografické replikace][container-registry-geo-replication]. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
 
-Pomocí příkazu Azure CLI [AZ ACR show-Usage][az-acr-show-usage] zobrazte aktuální velikost registru:
+Použití příkazu Azure CLI [az acr show-usage][az-acr-show-usage] k zobrazení aktuální velikosti registru:
 
 ```azurecli
 az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -74,15 +74,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-Můžete také najít aktuální úložiště použité v **přehledu** registru v Azure Portal:
+Aktuální úložiště použité na webu **Přehled** registru najdete také na webu Azure Portal:
 
 ![Informace o využití registru na webu Azure Portal][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Odstranit data obrázku
+### <a name="delete-image-data"></a>Odstranění obrazových dat
 
-Azure Container Registry podporuje několik metod odstranění dat imagí z registru kontejneru. Můžete odstranit obrázky podle značky nebo výtahu manifestu nebo odstranit celé úložiště.
+Azure Container Registry podporuje několik metod pro odstranění obrazových dat z registru kontejneru. Můžete odstranit obrázky tagnebo manifest digest, nebo odstranit celé úložiště.
 
-Podrobnosti o odstranění dat imagí z registru, včetně neoznačeného (někdy nazývaného "dangling" nebo "osamocené") imagí, najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
+Podrobnosti o odstranění bitových kopií z registru, včetně netagovaných (někdy označovaných jako "visící" nebo "osamocené") bitové kopie, najdete [v tématu Odstranění ibi kopií kontejnerů v registru kontejnerů Azure](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Další kroky
 

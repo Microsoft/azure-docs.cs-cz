@@ -1,6 +1,6 @@
 ---
-title: Seznam členství ve skupině hromadného stahování – Azure Active Directory portálu | Microsoft Docs
-description: Hromadné přidání uživatelů do centra pro správu Azure.
+title: Seznam členství ve skupině hromadného stahování – portál Azure Active Directory | Dokumenty společnosti Microsoft
+description: Přidejte uživatele hromadně v Centru pro správu Azure.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,34 +14,34 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e29aacb1357509e2b000a9d05c5ced8f9a30dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517156"
 ---
-# <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Hromadné stažení členů skupiny (Preview) v Azure Active Directory
+# <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Hromadná stahování členů skupiny (preview) ve službě Azure Active Directory
 
-Pomocí portálu Azure Active Directory (Azure AD) můžete hromadně stahovat členy skupiny ve vaší organizaci do souboru hodnot oddělených čárkami (CSV).
+Pomocí portálu Azure Active Directory (Azure AD) můžete hromadně stáhnout členy skupiny ve vaší organizaci do souboru hodnot oddělených čárkami (CSV).
 
-## <a name="to-bulk-download-group-membership"></a>Postup hromadného stažení členství ve skupině
+## <a name="to-bulk-download-group-membership"></a>Hromadné stahování členství ve skupině
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce uživatele v organizaci. Vlastníci skupiny můžou také hromadně stahovat členy skupin, které vlastní.
-1. V Azure AD vyberte **skupiny**  > **všechny skupiny**.
-1. Otevřete skupinu, jejíž členství chcete stáhnout, a pak vyberte **Členové**.
-1. Na stránce **Členové** vyberte **Stáhnout členy** a Stáhněte si soubor CSV se seznamem členů skupiny.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí účtu správce uživatele v organizaci. Vlastníci skupin mohou také hromadně stahovat členy skupin, které vlastní.
+1. Ve službě Azure AD vyberte **Skupiny** > **všechny skupiny**.
+1. Otevřete skupinu, jejíž členství chcete stáhnout, a vyberte **členové**.
+1. Na stránce **Členové** vyberte **Stáhnout členy** a stáhněte soubor CSV se seznamem členů skupiny.
 
-   ![Příkaz pro stažení členů je na stránce profilu pro skupinu](./media/groups-bulk-download-members/download-panel.png)
+   ![Příkaz Stáhnout členy je na stránce profilu skupiny.](./media/groups-bulk-download-members/download-panel.png)
 
-## <a name="check-download-status"></a>Kontrolovat stav stahování
+## <a name="check-download-status"></a>Zkontrolovat stav stahování
 
-Na stránce **výsledky hromadných operací (Preview)** můžete zobrazit stav všech vašich nevyřízených hromadných požadavků.
+Stav všech nevyřízených hromadných požadavků můžete zobrazit na stránce **Výsledky hromadné operace (preview).**
 
-   ![Stránka s výsledky hromadných operací zobrazuje stav hromadné žádosti](./media/groups-bulk-download-members/bulk-center.png)
+   ![Stránka Výsledky hromadných operací zobrazuje stav hromadnéžádosti](./media/groups-bulk-download-members/bulk-center.png)
 
-## <a name="bulk-download-service-limits"></a>Omezení služby hromadného stahování
+## <a name="bulk-download-service-limits"></a>Limity služby hromadného stahování
 
-Každá Hromadná aktivita pro stažení seznamu členů skupiny může běžet až po dobu jedné hodiny. To vám umožní stáhnout seznam minimálně 500 000 členů.
+Každá hromadná aktivita ke stažení seznamu členů skupiny může běžet až jednu hodinu. To vám umožní stáhnout seznam alespoň 500 000 členů.
 
 ## <a name="next-steps"></a>Další kroky
 

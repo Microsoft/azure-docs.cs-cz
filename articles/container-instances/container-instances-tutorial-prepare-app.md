@@ -1,17 +1,17 @@
 ---
-title: Kurz – Příprava image kontejneru pro nasazení
-description: Azure Container Instances kurzu – část 1 ze 3 – Příprava aplikace v imagi kontejneru pro nasazení do Azure Container Instances
+title: Kurz – příprava bitové kopie kontejneru pro nasazení
+description: Kurz instance Azure Container 1 z 3 – příprava aplikace v image kontejneru pro nasazení do instancí kontejneru Azure
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74533342"
 ---
-# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Kurz: Vytvoření image kontejneru pro nasazení do instancí kontejneru Azure
 
 Azure Container Instances umožňuje nasazení kontejnerů Dockeru na infrastrukturu Azure bez zřizování virtuálních počítačů nebo využívání služby vyšší úrovně. V tomto kurzu zabalíte malou webovou aplikaci Node.js do image kontejneru, kterou bude možné spustit pomocí služby Azure Container Instances.
 
@@ -30,7 +30,7 @@ V druhé a třetím kurzu nahrajete svou image do služby Azure Container Regist
 
 ## <a name="get-application-code"></a>Získání kódu aplikace
 
-Ukázková aplikace v tomto kurzu je jednoduchou webovou aplikací vytvořenou v [Node. js][nodejs]. Tato aplikace slouží jako statická stránka HTML a vypadá podobně jako následující snímek obrazovky:
+Ukázková aplikace v tomto kurzu je jednoduchá webová aplikace vytvořená v [Node.js][nodejs]. Tato aplikace slouží jako statická stránka HTML a vypadá podobně jako následující snímek obrazovky:
 
 ![Ukázková aplikace zobrazená v prohlížeči][aci-tutorial-app]
 
@@ -40,11 +40,11 @@ Pomocí Gitu naklonujte úložiště ukázkové aplikace:
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
-[Archiv zip][aci-helloworld-zip] můžete také stáhnout přímo z GitHubu.
+[Archiv ZIP][aci-helloworld-zip] můžete také stáhnout přímo z GitHubu.
 
 ## <a name="build-the-container-image"></a>Sestavení image kontejneru
 
-Soubor Dockerfile v ukázkové aplikaci ukazuje postup sestavení kontejneru. Začíná od [oficiální image Node. js][docker-hub-nodeimage] založené na systému [Alpine Linux][alpine-linux], malé distribuci, která je vhodná pro použití s kontejnery. Potom zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti pomocí Node Package Manageru a nakonec aplikaci spustí.
+Soubor Dockerfile v ukázkové aplikaci ukazuje postup sestavení kontejneru. Začíná od [oficiální image Node.js][docker-hub-nodeimage] založené na systému [Alpine Linux][alpine-linux], malé distribuci vhodné pro použití s kontejnery. Potom zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti pomocí Node Package Manageru a nakonec aplikaci spustí.
 
 ```Dockerfile
 FROM node:8.9.3-alpine
@@ -55,13 +55,13 @@ RUN npm install
 CMD node /usr/src/app/index.js
 ```
 
-Pomocí příkazu [Docker Build][docker-build] vytvořte image kontejneru a označte ji jako *ACI-tutorial-App*:
+Pomocí příkazu [docker build][docker-build] vytvořte image kontejneru a označte ji jako *aci-tutorial-app*:
 
 ```bash
 docker build ./aci-helloworld -t aci-tutorial-app
 ```
 
-Výstup příkazu [Docker Build][docker-build] je podobný následujícímu (zkrácení pro čitelnost):
+Výstup příkazu [docker build][docker-build] je podobný následujícímu výstupu (zkrácenému pro lepší čitelnost):
 
 ```console
 $ docker build ./aci-helloworld -t aci-tutorial-app
@@ -83,7 +83,7 @@ Successfully built 6edad76d09e9
 Successfully tagged aci-tutorial-app:latest
 ```
 
-Pomocí příkazu [Docker images][docker-images] Zobrazte sestavenou Image:
+Pomocí příkazu [docker images][docker-images] zobrazte sestavenou image:
 
 ```bash
 docker images
@@ -99,7 +99,7 @@ aci-tutorial-app    latest    5c745774dfa9    39 seconds ago    68.1 MB
 
 ## <a name="run-the-container-locally"></a>Místní spuštění kontejneru
 
-Před nasazením kontejneru do Azure Container Instances použijte příkaz [Docker Run][docker-run] pro jeho spuštění místně a potvrďte, že funguje. Přepínač `-d` umožňuje spuštění kontejneru na pozadí, zatímco přepínač `-p` umožňuje mapování libovolného portu vašeho počítače na port 80 kontejneru.
+Než kontejner nasadíte do služby Azure Container Instances, spusťte ho místně pomocí příkazu [docker run][docker-run] a ověřte, že funguje. Přepínač `-d` umožňuje spuštění kontejneru na pozadí, zatímco přepínač `-p` umožňuje mapování libovolného portu vašeho počítače na port 80 kontejneru.
 
 ```bash
 docker run -d -p 8080:80 aci-tutorial-app

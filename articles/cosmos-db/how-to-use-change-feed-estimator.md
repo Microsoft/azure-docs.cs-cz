@@ -1,66 +1,66 @@
 ---
-title: Použití estimatoru Change feed-Azure Cosmos DB
-description: Naučte se používat estimatoru Change feed k analýze průběhu procesoru změny kanálu.
+title: Použití odhadu podavače změn – Azure Cosmos DB
+description: Přečtěte si, jak pomocí odhadu zdroje změn analyzovat průběh procesoru zdroje změn
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77585284"
 ---
-# <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
+# <a name="use-the-change-feed-estimator"></a>Použít odhad posuvu změn
 
-Tento článek popisuje, jak můžete monitorovat průběh instancí [procesoru změn kanálu](./change-feed-processor.md) při čtení kanálu změn.
+Tento článek popisuje, jak můžete sledovat průběh instancí [procesoru kanálu změn](./change-feed-processor.md) při čtení kanálu změn.
 
-## <a name="why-is-monitoring-progress-important"></a>Proč je monitorování důležité?
+## <a name="why-is-monitoring-progress-important"></a>Proč je sledování pokroku důležité?
 
-Procesor změn kanálu funguje jako ukazatel, který přechází mezi [kanálem změn](./change-feed.md) a přináší změny implementace delegáta. 
+Procesor kanálu změn funguje jako ukazatel, který se pohybuje vpřed v kanálu [změn](./change-feed.md) a přináší změny do implementace delegáta. 
 
-Nasazení procesoru změny kanálu může zpracovávat změny za určitou míru na základě dostupných prostředků, jako jsou například CPU, paměť, síť a tak dále.
+Nasazení procesoru kanálu změn může zpracovávat změny určitou rychlostí na základě dostupných prostředků, jako je procesor, paměť, síť a tak dále.
 
-Pokud je tato rychlost pomalejší než frekvence, s jakou se vaše změny vyskytují v rámci vašeho kontejneru Azure Cosmos, váš procesor se zahájí na zpoždění.
+Pokud je tato rychlost pomalejší než rychlost, jakou dochází k vašim změnám v kontejneru Azure Cosmos, procesor začne zaostávat.
 
-Identifikace tohoto scénáře vám pomůže pochopit, jestli potřebujeme škálovat naše nasazení procesoru Change feed.
+Identifikace tohoto scénáře pomáhá pochopit, pokud potřebujeme škálovat nasazení našeho procesoru kanálu změn.
 
-## <a name="implement-the-change-feed-estimator"></a>Implementace Estimator kanálu změn
+## <a name="implement-the-change-feed-estimator"></a>Implementace odhadu posuvu změn
 
-Podobně jako u [procesoru Change feed](./change-feed-processor.md)funguje Estimator kanálu změn jako model nabízených oznámení. Estimator vyhodnotí rozdíl mezi poslední zpracovávanou položkou (definovanou stavem kontejneru zapůjčení) a poslední změnou v kontejneru a nasdílením této hodnoty do delegáta. Interval, ve kterém je měření prováděno, lze také přizpůsobit výchozí hodnotu 5 sekund.
+Podobně jako [při posuvu změn](./change-feed-processor.md)funguje odhad posuvu změn jako model push. Odhad změří rozdíl mezi poslední zpracovanou položkou (definovanou stavem kontejneru zapůjčení) a poslední změnou v kontejneru a tuto hodnotu posune delegátovi. Interval, ve kterém je měření přijato, lze také přizpůsobit s výchozí hodnotou 5 sekund.
 
-Pokud je například procesor pro změnu kanálu definován takto:
+Jako příklad, pokud je procesor zdroje změn definován takto:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
-Správný způsob inicializace Estimator k měření, že procesor by používal `GetChangeFeedEstimatorBuilder` například:
+Správný způsob, jak inicializovat odhad pro měření, že procesor by se pomocí `GetChangeFeedEstimatorBuilder` takto:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 
-Kde jak procesor i Estimator sdílejí stejné `leaseContainer` a stejným názvem.
+Pokud procesor i odhad sdílejí stejný `leaseContainer` a stejný název.
 
-Další dva parametry jsou delegát, který obdrží číslo, které představuje, **kolik změn čeká na jejich čtení** procesorem, a časový interval, ve kterém chcete toto měření provést.
+Další dva parametry jsou delegát, který obdrží číslo, které **představuje, kolik změn čeká na čtení** procesorem a časový interval, ve kterém chcete, aby toto měření bylo přijato.
 
-Příklad delegáta, který obdrží odhad, je:
+Příkladem delegáta, který obdrží odhad je:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
 
-Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení toho, jak se v průběhu času chová průběh.
+Tento odhad můžete odeslat do vašeho řešení monitorování a použít jej k pochopení, jak se váš pokrok chová v průběhu času.
 
 > [!NOTE]
-> Estimator kanálu změn není nutné nasazovat jako součást procesoru změny kanálu ani být součástí stejného projektu. Může být nezávislý a musí běžet v zcela jiné instanci. Stačí použít stejný název a konfiguraci zapůjčení.
+> Odhad kanálu změn nemusí být nasazen jako součást procesoru kanálu změn ani být součástí stejného projektu. Může být nezávislý a spustit ve zcela jiné instanci. Je třeba použít stejný název a konfiguraci zapůjčení.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [Ukázky využití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
+Další informace o procesoru kanálu změn můžete získat v následujících článcích:
 
-* [Přehled procesoru Change feed](change-feed-processor.md)
-* [Změna počátečního času procesoru kanálu](how-to-configure-change-feed-start-time.md)
+* [Přehled zpracovatele zdrojů změn](change-feed-processor.md)
+* [Počáteční čas procesoru kanálu změn](how-to-configure-change-feed-start-time.md)
