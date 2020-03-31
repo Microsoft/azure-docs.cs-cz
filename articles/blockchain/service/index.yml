@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 11/04/2019
-  ms.openlocfilehash: 5af8999a32682df18d1e4f1be192c2d4be628860
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: c388f08ae3e1323af48f486730699aee4f205468
+  ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74285083"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80348329"
 landingContent:
 - title: Informace o službě Azure Blockchain
   linkLists:
@@ -47,8 +47,6 @@ landingContent:
       url: connect-metamask.md
     - text: Použití rozšíření Geth pro připojení k transakčnímu uzlu
       url: connect-geth.md
-    - text: Použití rozšíření Truffle pro připojení k transakčnímu uzlu
-      url: connect-truffle.md
   - linkListType: tutorial
     links:
     - text: Použití editoru Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv

@@ -1,6 +1,6 @@
 ---
-title: Výkon velikost řad hybridní připojení virtuálního počítače – Azure Virtual Machines | Dokumentace Microsoftu
-description: Další informace o výkonu, výsledky testování pro velikosti virtuálních počítačů řady hybridní připojení v Azure.
+title: Výkon velikosti virtuálních počítačů řady HC – virtuální počítače Azure | Dokumenty společnosti Microsoft
+description: Přečtěte si o výsledcích testování výkonu pro velikosti virtuálních počítačů řady HC v Azure.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,25 +13,25 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: cea772f03d5e2838b44d50f3cf5e926d740be5f0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707686"
 ---
-# <a name="hc-series-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady hybridní připojení
+# <a name="hc-series-virtual-machine-sizes"></a>Velikosti virtuálních strojů řady HC
 
-Několika testech výkonu byly spuštěny na velikost series hybridní připojení. Následují některé z výsledků testování výkonnosti.
+Několik výkonnostních testů bylo spuštěno na velikostech řady HC. Následují některé z výsledků tohoto testování výkonu.
 
 | Úloha                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| Datový proud chaloupka                                    | ~190 GB/s (Intel MLC AVX-512)  |
-| Vysoce výkonné Linpack (HPL)                  | ~ 3520 GigaFLOPS (Rpeak), ~ 2970 GigaFLOPS (Rmax) |
-| Latence RDMA & šířky pásma                        | 1.80 mikrosekundách 96.3 Gb/s   |
-| FIO na místní disk SSD NVMe                           | Čtení ~1.3 GB/s, ~ 900 MB/s zapíše |  
-| IOR na 4 Azure Premium SSD (P30 spravované disky, 0) **  | ~ 780 MB/s, přečte ~ 780 MB/zápisu |
+| Stream Triáda                                    | ~190 GB/s (Intel MLC AVX-512)  |
+| Vysoce výkonný linpack (HPL)                  | ~3520 GigaFLOPS (Rpeak), ~2970 GigaFLOPS (Rmax) |
+| Latence RDMA & šířku pásma                        | 1,80 mikrosekund, 96,3 Gb/s   |
+| FIO na lokálním NVMe SSD                           | ~ 1,3 GB / s čte, ~ 900 MB / s píše |  
+| IOR na 4 SSD Azure Premium (spravované disky P30, RAID0)**  | ~780 MB/s čtení, ~780 MB/zápis |
 
-## <a name="infiniband-send-latency"></a>Latence odesílání přes sítí InfiniBand
+## <a name="infiniband-send-latency"></a>Latence odesílání infiniBandu
 
 Mellanox Perftest.
 
@@ -39,30 +39,30 @@ Mellanox Perftest.
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
-|  #bytes         | #iterations     | t_min[microsecond]     | t_max[microsecond]     | t_typical[microsecond] | t_avg[microsecond]     | t_stdev[microsecond]   |
+|  #bytes         | #iterations     | t_min[mikrosekunda]     | t_max[mikrosekunda]     | t_typical[mikrosekunda] | t_avg[mikrosekunda]     | t_stdev[mikrosekunda]   |
 |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| 2               | 1000            | 1.80            | 7.50            | 1.85            | 1.86            | 0.20            |
-| 4               | 1000            | 1.79            | 6.06            | 1.83            | 1.84            | 0.20            |
+| 2               | 1000            | 1.80            | 7.50            | 1.85            | 1.86            | 0,20            |
+| 4               | 1000            | 1.79            | 6.06            | 1.83            | 1.84            | 0,20            |
 | 8               | 1000            | 1.78            | 5.26            | 1.83            | 1.84            | 0.19            |
-| 16              | 1000            | 1.79            | 6.21            | 1.83            | 1.84            | 0.22            |
+| 16              | 1000            | 1.79            | 6.21            | 1.83            | 1.84            | 0,22            |
 | 32              | 1000            | 1.80            | 6.82            | 1.84            | 1.85            | 0.24            |
-| 64              | 1000            | 1.85            | 5.47            | 1.88            | 1.86            | 0.12            |
-| 128             | 1000            | 1.88            | 5.61            | 1.93            | 1.89            | 0.25            |
+| 64              | 1000            | 1.85            | 5.47            | 1.88            | 1.86            | 0,12            |
+| 128             | 1000            | 1.88            | 5.61            | 1.93            | 1.89            | 0,25            |
 | 256             | 1000            | 2.24            | 6.39            | 2.28            | 2.02            | 0.18            |
 | 512             | 1000            | 2.32            | 5.42            | 2.36            | 2.30            | 0.17            |
 | 1024            | 1000            | 2.43            | 6.22            | 2.48            | 2.38            | 0.21            |
-| 2048            | 1000            | 2.68            | 6.14            | 2.75            | 2.52            | 0.20            |
-| 4096            | 1000            | 3.17            | 7.02            | 3.26            | 2.81            | 0.24            |
+| 2 048            | 1000            | 2.68            | 6.14            | 2.75            | 2.52            | 0,20            |
+| 4 096            | 1000            | 3.17            | 7.02            | 3.26            | 2.81            | 0.24            |
 
-## <a name="osu-mpi-latency-test"></a>Test latencí OSU MPI
+## <a name="osu-mpi-latency-test"></a>Test latence MPI OSU
 
-Testování v5.4.3 latencí OSU MPI.
+Test latence MPI OSU v5.4.3.
 
 ```azure-cli
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-| #bytes  | Latence [úrovni mikrosekund] (MPICH 3.3 + CH4) | Latence [úrovni mikrosekund] (OpenMPI 4.0.0) | Latence [úrovni mikrosekund] (MVAPICH2 2.3) |
+| #bytes  | Latence [mikrosekunda] (MPICH 3.3 + CH4) | Latence [mikrosekunda] (OpenMPI 4.0.0) | Latence [mikrosekunda] (MVAPICH2 2.3) |
 |------|----------|----------|----------|
 | 2    | 1.84     | 1.78     | 2.08     |
 | 4    | 1.84     | 1.79     | 2.08     |
@@ -74,12 +74,12 @@ Testování v5.4.3 latencí OSU MPI.
 | 256  | 2.48     | 2.44     | 2.75     |
 | 512  | 2.57     | 2.52     | 2.81     |
 | 1024 | 2.76     | 2.71     | 2.97     |
-| 2048 | 3.09     | 3.11     | 3.34     |
-| 4096 | 3.72     | 3.91     | 4.44     |
+| 2 048 | 3.09     | 3.11     | 3.34     |
+| 4 096 | 3.72     | 3.91     | 4.44     |
 
 ## <a name="mpi-bandwidth"></a>Šířka pásma MPI
 
-Testování šířky pásma OSU MPI v5.4.3.
+Test šířky pásma MpI OSU v5.4.3.
 
 ```azure-cli
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
@@ -97,8 +97,8 @@ Testování šířky pásma OSU MPI v5.4.3.
 | 256     | 756.32           | 6.05056          |
 | 512     | 1434.2           | 11.4736          |
 | 1024    | 2663.8           | 21.3104          |
-| 2048    | 4396.99          | 35.17592         |
-| 4096    | 6365.86          | 50.92688         |
+| 2 048    | 4396.99          | 35.17592         |
+| 4 096    | 6365.86          | 50.92688         |
 | 8192    | 8137.9           | 65.1032          |
 | 16384   | 9218.29          | 73.74632         |
 | 32768   | 10564.61         | 84.51688         |

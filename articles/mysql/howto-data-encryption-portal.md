@@ -1,116 +1,116 @@
 ---
-title: Šifrování dat – Azure Portal Azure Database for MySQL
-description: Naučte se, jak nastavit a spravovat šifrování dat pro Azure Database for MySQL pomocí Azure Portal.
+title: Šifrování dat – portál Azure – Azure Database for MySQL
+description: Zjistěte, jak nastavit a spravovat šifrování dat pro databázi Azure pro MySQL pomocí portálu Azure.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 78a290b1e2984719645fb4d4ff253ab021a0826e
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299035"
 ---
-# <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for MySQL pomocí Azure Portal
+# <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for MySQL pomocí portálu Azure
 
-Naučte se používat Azure Portal k nastavení a správě šifrování dat pro Azure Database for MySQL.
+Přečtěte si, jak pomocí portálu Azure nastavit a spravovat šifrování dat pro azure databázi pro MySQL.
 
-## <a name="prerequisites-for-azure-cli"></a>Předpoklady pro Azure CLI
+## <a name="prerequisites-for-azure-cli"></a>Požadavky pro azure cli
 
-* Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
-* V Azure Key Vault vytvořte Trezor klíčů a klíč, který se použije pro klíč spravovaný zákazníkem.
-* Trezor klíčů musí mít následující vlastnosti, které se mají použít jako klíč spravovaný zákazníkem:
+* Musíte mít předplatné Azure a být správcem tohoto předplatného.
+* V trezoru klíčů Azure vytvořte trezor klíčů a klíč, který se použije pro klíč spravovaný zákazníkem.
+* Trezor klíčů musí mít následující vlastnosti, které chcete použít jako klíč spravovaný zákazníkem:
   * [Obnovitelné odstranění](../key-vault/key-vault-ovw-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Vyprázdnit chráněné](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+  * [Vyčištění chráněno](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* Klíč musí obsahovat následující atributy, které se použijí jako klíč spravovaný zákazníkem:
-  * Žádné datum vypršení platnosti
-  * Nezakázáno
-  * Může provádět operace Get, Wrap Key, rozbalení klíčových operací.
+* Klíč musí mít následující atributy, které chcete použít jako klíč spravovaný zákazníkem:
+  * Bez data vypršení platnosti
+  * Není zakázáno
+  * Schopen provádět get, wrap klíč, rozbalit operace klíče
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Nastavení správných oprávnění pro klíčové operace
 
-1. V Key Vault vyberte **zásady přístupu** > **Přidat zásady přístupu**.
+1. V trezoru klíčů vyberte **možnost Přístupové zásady** > **Přidat zásady přístupu**.
 
-   ![Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   ![Snímek obrazovky s trezorem klíčů se zvýrazněnými zásadami přístupu a funkceMi Přidat zásady přístupu](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. Vyberte **klíčová oprávnění**a vyberte **získat**, **zalamovat**, **rozbalení**a **objekt zabezpečení**, což je název serveru MySQL. Pokud se váš hlavní server nenašel v seznamu existujících objektů zabezpečení, je potřeba ho zaregistrovat. Budete vyzváni k registraci objektu zabezpečení serveru, když se pokusíte nastavit šifrování dat poprvé, a dojde k chybě.
+2. Vyberte **Klíčová oprávnění**a vyberte **Možnost Získat**, **Obtékat**, **Rozbalit**a **Objekt zabezpečení**, což je název serveru MySQL. Pokud objekt zabezpečení serveru nelze nalézt v seznamu existujících objektů zabezpečení, je třeba jej zaregistrovat. Při prvním pokusu o nastavení šifrování dat se zobrazí výzva k registraci objektu zabezpečení serveru a selže.
 
    ![Přehled zásad přístupu](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
 ## <a name="set-data-encryption-for-azure-database-for-mysql"></a>Nastavení šifrování dat pro Azure Database for MySQL
 
-1. V Azure Database for MySQL pro nastavení klíče spravovaného zákazníkem vyberte možnost **šifrování dat** .
+1. V Azure Database for MySQL vyberte **šifrování dat** a nastavte klíč spravovaný zákazníkem.
 
-   ![Snímek obrazovky Azure Database for MySQL se zvýrazněným šifrováním dat](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   ![Snímek obrazovky s databází Azure pro MySQL se zvýrazněným šifrováním dat](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
 
-2. Můžete buď vybrat Trezor klíčů a pár klíčů, nebo zadat identifikátor klíče.
+2. Můžete buď vybrat trezor klíčů a dvojici klíčů, nebo zadat identifikátor klíče.
 
-   ![Snímek obrazovky Azure Database for MySQL s zvýrazněnými možnostmi šifrování dat](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   ![Snímek obrazovky s databází Azure pro MySQL se zvýrazněnými možnostmi šifrování dat](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
-4. Aby bylo zajištěno, že všechny soubory (včetně dočasných souborů) jsou plně zašifrované, restartujte server.
+4. Chcete-li zajistit, aby všechny soubory (včetně dočasných souborů) byly plně zašifrovány, restartujte server.
 
-## <a name="restore-or-create-a-replica-of-the-server"></a>Obnovit nebo vytvořit repliku serveru
+## <a name="restore-or-create-a-replica-of-the-server"></a>Obnovení nebo vytvoření repliky serveru
 
-Když je Azure Database for MySQL zašifrovaný pomocí spravovaného klíče zákazníka uloženého v Key Vault, všechny nově vytvořené kopie serveru se taky šifrují. Tuto novou kopii můžete vytvořit buď prostřednictvím operace místního nebo geografického obnovení, nebo prostřednictvím operace repliky (místní/napříč oblastí). Pro zašifrovaný Server MySQL pak můžete použít následující postup k vytvoření šifrovaného obnoveného serveru.
+Po Azure Database for MySQL je šifrována s klientem spravovaný klíč uložený v trezoru klíčů, všechny nově vytvořené kopie serveru je také šifrována. Tuto novou kopii můžete vytvořit buď prostřednictvím místní operace nebo operace geografického obnovení, nebo prostřednictvím operace repliky (místní/mezi oblastmi). Takže pro šifrovaný server MySQL můžete použít následující kroky k vytvoření šifrovaného obnoveného serveru.
 
-1. Na serveru vyberte **přehled** > **obnovit**.
+1. Na serveru vyberte **možnost Obnovení přehledu** > **Restore**.
 
-   ![Snímek obrazovky Azure Database for MySQL s zvýrazněným přehledem a obnovením](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   ![Snímek obrazovky s databází Azure pro MySQL se zvýrazněnou možností Přehled a Obnovení](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   V případě serveru s povolenou replikací vyberte v části **Nastavení** možnost **replikace**.
+   Nebo pro server s podporou replikace vyberte v části **Nastavení** v záhlaví **Replikace**.
 
-   ![Snímek obrazovky Azure Database for MySQL s zvýrazněnou replikací](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
+   ![Snímek obrazovky s databází Azure pro MySQL se zvýrazněnou možností Replikace](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
 
-2. Po dokončení operace obnovení bude nový server vytvořen zašifrovaný pomocí klíče primárního serveru. Funkce a možnosti na serveru jsou ale zakázané a server není dostupný. Tím zabráníte manipulaci s daty, protože identitě nového serveru ještě nebyla udělena oprávnění pro přístup k trezoru klíčů.
+2. Po dokončení operace obnovení je nový vytvořený server zašifrován pomocí klíče primárního serveru. Funkce a možnosti na serveru jsou však zakázány a server je nepřístupný. Tím se zabrání jakékoli manipulaci s daty, protože identita nového serveru ještě nebyla udělena oprávnění k přístupu do trezoru klíčů.
 
-   ![Snímek obrazovky Azure Database for MySQL s zvýrazněným stavem nepřístupu](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   ![Snímek obrazovky s databází Azure pro MySQL se zvýrazněným nepřístupným stavem](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Aby byl server přístupný, znovu ověřte klíč na obnoveném serveru. Vyberte možnost **šifrování dat** > znovu **Ověřit klíč**.
+3. Chcete-li server zpřístupnit, znovu ověřte klíč na obnoveném serveru. Vyberte **možnost Šifrování** > dat**Znovu ověřit klíč**.
 
    > [!NOTE]
-   > První pokus o nové ověření se nezdaří, protože instanční objekt nového serveru musí mít přístup k trezoru klíčů. Chcete-li vygenerovat instanční objekt, vyberte znovu **Ověřit klíč**, čímž se zobrazí chyba, ale vygeneruje se instanční objekt. Potom si přečtěte tento [postup](#set-the-right-permissions-for-key-operations) výše v tomto článku.
+   > První pokus o opětovné ověření se nezdaří, protože instanční objekt nového serveru musí mít přístup k trezoru klíčů. Chcete-li generovat instanční objekt, vyberte **možnost Znovu ověřit klíč**, který zobrazí chybu, ale vygeneruje instanční objekt. Poté naleznete [v těchto krocích](#set-the-right-permissions-for-key-operations) dříve v tomto článku.
 
-   ![Snímek obrazovky Azure Database for MySQL se zvýrazněným krokem replatným](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   ![Snímek obrazovky s databází Azure pro MySQL se zvýrazněným krokem pro prodloužení platnosti](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   Bude nutné poskytnout Trezor klíčů k novému serveru.
+   Budete muset udělit klíč trezoru přístup k novému serveru.
 
-4. Po registraci instančního objektu znovu ověřte klíč a server obnoví své běžné funkce.
+4. Po registraci instančního objektu znovu obnovte klíč a server obnoví normální funkčnost.
 
-   ![Snímek obrazovky Azure Database for MySQL se zobrazením obnovených funkcí](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   ![Snímek obrazovky s databází Azure pro MySQL s obnovenou funkcí](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 
 
-## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Použití šablony Azure Resource Manager k povolení šifrování dat
+## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Povolení šifrování dat pomocí šablony Azure Resource Manageru
 
-Kromě Azure Portal můžete taky povolit šifrování dat na Azure Database for MySQL serveru pomocí šablon Azure Resource Manager pro nové i existující servery.
+Kromě portálu Azure můžete taky povolit šifrování dat na serveru Azure Database for MySQL pomocí šablon Azure Resource Manager pro nové i stávající servery.
 
 ### <a name="for-a-new-server"></a>Pro nový server
 
-Použijte jednu z předem vytvořených šablon Azure Resource Manager k zřízení serveru s povoleným šifrováním dat: [příklad s šifrováním dat](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
+Použití jedné z předem vytvořených šablon Azure Resource Manageru k zřízení serveru s povoleným šifrováním dat: [Příklad s šifrováním dat](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
 
-Tato šablona Azure Resource Manager vytvoří server Azure Database for MySQL a použije **trezor** **klíčů a klíč** předaný jako parametry pro povolení šifrování dat na serveru.
+Tato šablona Azure Resource Manager vytvoří Azure Database for MySQL server a používá **KeyVault** a **Key** předaný jako parametry pro povolení šifrování dat na serveru.
 
 ### <a name="for-an-existing-server"></a>Pro existující server
-Kromě toho můžete pomocí Azure Resource Manager šablon povolit šifrování dat na stávajících serverech Azure Database for MySQL.
+Kromě toho můžete použít šablony Azure Resource Manager uvolit šifrování dat na stávajících azure databáze pro servery MySQL.
 
-* Předejte identifikátor URI Azure Key Vaultho klíče, který jste zkopírovali dříve pod vlastností `keyVaultKeyUri` v objektu Properties (vlastnosti).
+* Předajurien identifikátor URI klíče Azure Key `keyVaultKeyUri` Vault, který jste zkopírovali dříve pod vlastností v objektu vlastností.
 
-* Jako verzi rozhraní API použijte *2020-01-01-Preview* .
+* Jako verzi rozhraní API použijte *náhled 2020-01-01.*
 
 ```json
 {
@@ -222,4 +222,4 @@ Kromě toho můžete pomocí Azure Resource Manager šablon povolit šifrování
 
 ## <a name="next-steps"></a>Další kroky
 
- Další informace o šifrování dat najdete v tématu [Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem](concepts-data-encryption-mysql.md).
+ Další informace o šifrování dat najdete v [tématu Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem](concepts-data-encryption-mysql.md).

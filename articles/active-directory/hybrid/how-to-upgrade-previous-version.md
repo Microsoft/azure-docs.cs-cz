@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Upgrade z předchozí verze | Dokumentace Microsoftu'
-description: Vysvětluje různé metody pro upgrade na nejnovější verzi Azure Active Directory Connect, včetně místního upgradu a postupné migraci.
+title: 'Azure AD Connect: Upgrade z předchozí verze | Dokumenty společnosti Microsoft'
+description: Vysvětluje různé metody upgradu na nejnovější verzi služby Azure Active Directory Connect, včetně upgradu na místě a migrace švihákem.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,109 +17,109 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60347687"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi
-Toto téma popisuje různé metody, které můžete použít k upgradu na nejnovější verzi vaší instalace služby Azure Active Directory (Azure AD) Connect. Doporučujeme ponechat si aktuální s verzemi služby Azure AD Connect. Také postupujte podle kroků v [Postupná migrace](#swing-migration) části Pokud provedete významné změny konfigurace.
+Toto téma popisuje různé metody, které můžete použít k upgradu instalace služby Azure Active Directory (Azure AD) Připojení na nejnovější verzi. Doporučujeme, abyste se udržovali aktuální s verzemi Azure AD Connect. Kroky v části [Migrace švihnutí](#swing-migration) se také používají, když provedete podstatnou změnu konfigurace.
 
 >[!NOTE]
-> Aktuálně podporuje se upgrade z libovolné verze služby Azure AD Connect na aktuální verzi. Nepodporují se místní upgrady DirSync nebo ADSync a postupné migraci je povinný.  Pokud chcete provést upgrade z nástroje DirSync, přečtěte si téma [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](how-to-dirsync-upgrade-get-started.md) nebo [Postupná migrace](#swing-migration) oddílu.  </br>V praxi zákazníci s velmi staré verze setkat s problémy souvisejícími přímo do Azure AD Connect. Servery, které byly v produkčním prostředí několik let, obvykle mají několik použitých k nim a všechny z nich můžou být zahrnuté.  Zákazníci, kteří se neupgradovali v 12 až 18 měsíců obecně platí, zvažte swing upgrade místo toho, je to možnost nejrestriktivnější a minimální rizikové.
+> Aktuálně se podporuje upgrade z libovolné verze služby Azure AD Connect na aktuální verzi. Inadická inovace dirsync nebo ADSync nejsou podporovány a je vyžadována migrace švihu.  Pokud chcete upgradovat z DirSync, najdete v článku [upgrade z nástroje synchronizace Azure AD (DirSync)](how-to-dirsync-upgrade-get-started.md) nebo v části [migrace Swing.](#swing-migration)  </br>V praxi se zákazníci v extrémně starých verzích mohou setkat s problémy, které přímo nesouvisejí s Azure AD Connect. Servery, které byly ve výrobě již několik let, obvykle měly několik oprav, které byly aplikovány na ně a ne všechny z nich mohou být účtovány.  Obecně platí, že zákazníci, kteří nemají upgrade v 12-18 měsíců by měl zvážit swing upgrade místo toho, jak to je nejkonzervativnější a nejméně riskantní možnost.
 
-Pokud chcete provést upgrade z nástroje DirSync, přečtěte si téma [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](how-to-dirsync-upgrade-get-started.md) místo.
+Pokud chcete upgradovat z DirSync, najdete v článku [Upgrade z nástroje synchronizace Azure AD (DirSync)](how-to-dirsync-upgrade-get-started.md) místo.
 
-Existuje několik různé strategie, které můžete použít k upgradu služby Azure AD Connect.
+Existuje několik různých strategií, které můžete použít k upgradu Azure AD Connect.
 
 | Metoda | Popis |
 | --- | --- |
-| [Automatický upgrade](how-to-connect-install-automatic-upgrade.md) |Toto je nejjednodušší metoda pro zákazníky s Expresní instalace. |
-| [Místní upgrade](#in-place-upgrade) |Pokud máte jeden server, můžete upgradovat instalaci na místě na stejném serveru. |
-| [Postupná migrace](#swing-migration) |Dva servery můžete připravit jeden ze serverů se nová verze nebo konfigurace a změnit server, active, až budete připravení. |
+| [Automatický upgrade](how-to-connect-install-automatic-upgrade.md) |Jedná se o nejjednodušší metodu pro zákazníky s expresní instalací. |
+| [Místní upgrade](#in-place-upgrade) |Pokud máte jeden server, můžete inovovat instalaci na stejném serveru. |
+| [Postupná migrace](#swing-migration) |Se dvěma servery můžete připravit jeden ze serverů s novou verzí nebo konfigurací a změnit aktivní server, až budete připraveni. |
 
-Informace o oprávnění, najdete v článku [oprávnění potřebná pro upgrade](reference-connect-accounts-permissions.md#upgrade).
+Informace o oprávněních naleznete v [tématu oprávnění požadovaná pro upgrade](reference-connect-accounts-permissions.md#upgrade).
 
 > [!NOTE]
-> Po povolení nový server Azure AD Connect zahájení synchronizace změn do služby Azure AD, nemůžete se už vrátit k používání DirSync nebo Azure AD Sync. Downgrade z Azure AD Connect na starší verze klientů, včetně nástrojů DirSync a Azure AD Sync, není podporováno a může vést k problémům, například ke ztrátě dat ve službě Azure AD.
+> Po povolení nového serveru Azure AD Connect pro zahájení synchronizace změn ve službě Azure AD se nesmíte vrátit zpět k používání DirSync nebo Azure AD Sync. Přechod ze služby Azure AD Connect na starší klienty, včetně DirSync a Azure AD Sync, není podporován a může vést k problémům, jako je ztráta dat ve službě Azure AD.
 
 ## <a name="in-place-upgrade"></a>Místní upgrade
-Místní upgrade funguje pro přechod z Azure AD Sync nebo Azure AD Connect. Nefunguje pro přesun z nástroje DirSync nebo řešení Forefront Identity Manager (FIM) + konektoru služby Azure AD.
+Vlastní upgrade funguje pro přechod z Azure AD Sync nebo Azure AD Connect. Nefunguje pro přechod z DirSync nebo pro řešení s Forefront Identity Manager (FIM) + Azure AD Connector.
 
-Tato metoda se upřednostňuje v případě, že máte jeden server a o méně než 100 000 objektů. Pokud jsou všechny změny out-of-box synchronizační pravidla, úplný import a úplnou synchronizaci vzniknout po upgradu. Tato metoda zajišťuje, že nová konfigurace se použije u všech existujících objektů v systému. Tento běh může trvat několik hodin v závislosti na počtu objektů, které jsou v rozsahu synchronizačního modulu. Plánovač synchronizační normální rozdílová (což ve výchozím nastavení synchronizuje každých 30 minut) je pozastavená, ale pokračuje v synchronizaci hesel. Můžete zvážit provedení místního upgradu během víkendu. Pokud nejsou žádné změny konfigurace out-of-box s Azure AD Connect novou verzi, pak normální rozdílová import nebo synchronizaci spustí místo.  
+Tato metoda je upřednostňována, pokud máte jeden server a méně než 100 000 objektů. Pokud dojde ke změnám pravidel synchronizace předváděcí okno, dojde po upgradu k úplnému importu a úplné synchronizaci. Tato metoda zajišťuje, že nová konfigurace je použita pro všechny existující objekty v systému. Toto spuštění může trvat několik hodin, v závislosti na počtu objektů, které jsou v rozsahu synchronizačního modulu. Normální plánovač synchronizace delta (který synchronizuje každých 30 minut ve výchozím nastavení) je pozastavena, ale synchronizace hesla pokračuje. Můžete zvážit provedení in-place upgrade během víkendu. Pokud neexistují žádné změny v konfiguraci out-of-box s novou verzí Azure AD Connect, pak normální delta import/synchronizace spustí místo.  
 ![Místní upgrade](./media/how-to-upgrade-previous-version/inplaceupgrade.png)
 
-Pokud jste provedli změny out-of-box synchronizační pravidla, tato pravidla jsou nastaveny zpět na výchozí nastavení při upgradu. Pokud chcete mít jistotu, že se ukládají vaše konfigurace mezi upgrady, ujistěte se, že provedete změny, jak jste je popsáno v [osvědčené postupy pro změnu výchozí konfigurace](how-to-connect-sync-best-practices-changing-default-configuration.md).
+Pokud jste provedli změny pravidel synchronizace předpoložky, pak tato pravidla jsou nastaveny zpět na výchozí konfiguraci při upgradu. Chcete-li se ujistit, že je vaše konfigurace mezi inovacemi zachována, proveďte změny tak, jak jsou popsány v [doporučených postupech pro změnu výchozí konfigurace](how-to-connect-sync-best-practices-changing-default-configuration.md).
 
-Při upgradu na místě, může být změny zavedené, které vyžadují konkrétní synchronizační aktivity (včetně kroky úplný Import a úplnou synchronizaci), který se spustí po dokončení upgradu. Odložení takovýchto aktivit, najdete v části [jak odložit úplnou synchronizaci po upgradu](#how-to-defer-full-synchronization-after-upgrade).
+Během inovace na místě mohou být zavedeny změny, které vyžadují konkrétní synchronizační aktivity (včetně kroku úplného importu a úplného kroku synchronizace), které mají být provedeny po dokončení upgradu. Chcete-li tyto aktivity odložit, naleznete v části [Jak odložit úplnou synchronizaci po upgradu](#how-to-defer-full-synchronization-after-upgrade).
 
-Pokud používáte Azure AD Connect s nestandardní konektor (například obecný konektor LDAP a pro obecný konektor SQL), musíte aktualizovat odpovídající konfigurace konektoru v [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) Po upgradu na místě. Podrobnosti o tom, jak aktualizovat konfiguraci konektoru, najdete v části [historie verzí konektoru - řešení potíží s](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Pokud není aktualizace konfigurace, import a export spustit kroky nebude fungovat správně při použití konektoru. Zobrazí se následující chybu v protokolu událostí aplikace se zprávou *"verze sestavení v konfiguraci konektoru AAD ("X.X.XXX. X") je dřívější než aktuální verze ("X.X.XXX. X") z"C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll".*
+Pokud používáte Azure AD Connect s nestandardníkonektor (například obecný ldap konektor a obecný konektor SQL), je nutné aktualizovat odpovídající konfiguraci konektoru ve [Správci služeb synchronizace](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) po inovaci na místě. Podrobnosti o aktualizaci konfigurace konektoru naleznete v článku [Historie verzí verzí konektoru – Poradce při potížích](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Pokud konfiguraci neaktualizujete, kroky spuštění importu a exportu nebudou pro konektor fungovat správně. V protokolu událostí aplikace se zobrazí následující chyba se zprávou *"Verze sestavení v konfiguraci konektoru AAD ("X.X.XXX. X") je starší než skutečná verze ("X.X.XXX. X") z "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll".*
 
 ## <a name="swing-migration"></a>Postupná migrace
-Pokud máte velký počet objektů nebo komplexních nasazení, může být nepraktické provést místní upgrade na systém za provozu. Pro některé zákazníky tento proces může trvat několik dní – a během této doby jsou zpracovány žádné rozdílové změny. Tuto metodu můžete použít také pokud plánujete udělat podstatné změny konfigurace a chcete si je vyzkoušet předtím, než jste nahráli do cloudu.
+Pokud máte komplexní nasazení nebo mnoho objektů, může být nepraktické provést upgrade na místě v živém systému. U některých zákazníků může tento proces trvat několik dní a během této doby nejsou zpracovány žádné rozdílové změny. Tuto metodu můžete také použít, když plánujete provést podstatné změny konfigurace a chcete je vyzkoušet dříve, než jsou posunuty do cloudu.
 
-Doporučenou metodou pro tyto scénáře je použití postupnou migraci. Potřebujete (minimálně) dva servery – jeden aktivní server a jedna pracovní server. Aktivní server (zobrazeno se modré čáry na následujícím obrázku) zodpovídá za aktivní produkční zatížení. Pracovní server (ukázka s přerušované čáry fialová) je připravený pomocí nové vydané verze nebo konfigurace. Pokud je to plně připravené, tento server se stane aktivní. Předchozí active server, která nyní obsahuje starší verze nebo konfigurace nainstalované, se provádí na testovacím serveru a se upgraduje.
+Doporučená metoda pro tyto scénáře je použití migrace houpavého. Potřebujete (alespoň) dva servery – jeden aktivní server a jeden pracovní server. Aktivní server (zobrazený s plnými modrými čarami na následujícím obrázku) je zodpovědný za aktivní výrobní zatížení. Pracovní server (zobrazený s přerušovanými fialovými čarami) je připraven s novou verzí nebo konfigurací. Když je plně připraven, tento server je aktivní. Předchozí aktivní server, který má nyní nainstalovanou starou verzi nebo konfiguraci, je převeden na pracovní server a je inovován.
 
-Dva servery můžete použít různé verze. Například aktivní server, který chcete vyřadit z provozu, můžete použít Azure AD Sync, a nové pracovní server můžete použít Azure AD Connect. Pokud pomocí migrace swing vyvíjet novou konfiguraci, je dobré mít stejné verze na dvou serverech.  
+Oba servery mohou používat různé verze. Například aktivní server, který plánujete vyřazení z provozu můžete použít Azure AD Sync a nový pracovní server můžete použít Azure AD Connect. Pokud k vývoji nové konfigurace použijete migraci houpavého zařízení, je vhodné mít na obou serverech stejné verze.  
 ![Pracovní server](./media/how-to-upgrade-previous-version/stagingserver1.png)
 
 > [!NOTE]
-> Zákazníci, kteří mají tři nebo čtyři servery pro tento scénář dávají přednost. Pokud se upgraduje pracovní server není nutné záložní server pro [zotavení po havárii](how-to-connect-sync-staging-server.md#disaster-recovery). Tři nebo čtyři servery můžete připravit jednu sadu serverů primární/úsporný režim s novou verzi, která zajistí, že je vždycky pracovní server, který je připraven k převzetí.
+> Někteří zákazníci dávají přednost tři nebo čtyři servery pro tento scénář. Při upgradu pracovního serveru nemáte záložní server pro [zotavení po havárii](how-to-connect-sync-staging-server.md#disaster-recovery). Se třemi nebo čtyřmi servery můžete připravit jednu sadu primárních/pohotovostních serverů s novou verzí, která zajistí, že vždy existuje pracovní server, který je připraven k převzetí.
 
-Tyto kroky pro přesun z Azure AD Sync nebo řešení s FIM + konektoru služby Azure AD také pracovat. Tyto kroky nefungují pro nástroj DirSync, ale stejné postupné migrace (neboli paralelní nasazení) s kroky pro nástroj DirSync je metoda v [Upgrade služby Azure Active Directory sync (DirSync)](how-to-dirsync-upgrade-get-started.md).
+Tyto kroky také fungují k přechodu z Azure AD Sync nebo řešení s FIM + Azure AD Connector. Tyto kroky nefungují pro DirSync, ale stejná metoda migrace houpání (označovaná také jako paralelní nasazení) s kroky pro DirSync je v [synchronizaci služby Azure Active Directory (DirSync).](how-to-dirsync-upgrade-get-started.md)
 
-### <a name="use-a-swing-migration-to-upgrade"></a>Pomocí migrace swing upgradovat
-1. Pokud používáte Azure AD Connect na obou serverech a v plánu provést pouze konfiguraci změnit, ujistěte se, že váš aktivní server a pracovní server jsou obě používají stejnou verzi. Který usnadňuje později porovnat rozdíly. Pokud provádíte upgrade ze služby Azure AD Sync, tyto servery mají různé verze. Pokud upgradujete ze starší verze služby Azure AD Connect, je vhodné spustit se dvěma servery, které používají stejnou verzi, ale to není nutné.
-2. Pokud jste provedli vlastní konfigurace a pracovní server nemá, postupujte podle kroků v části [přesunout vlastní konfiguraci z aktivního serveru pracovní server](#move-a-custom-configuration-from-the-active-server-to-the-staging-server).
-3. Pokud upgradujete ze starší verze služby Azure AD Connect, upgradujte pracovní server na nejnovější verzi. Pokud přesouváte ze služby Azure AD Sync, nainstalujte na testovacím serveru služby Azure AD Connect.
-4. Umožní synchronizační modul na testovacím serveru spustit úplný import a úplnou synchronizaci.
-5. Ověřte, že novou konfiguraci neměli způsobit neočekávané změny pomocí kroků v části "Ověřit" v [ověřte konfiguraci serveru](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server). Pokud není něco podle očekávání, opravte ji, spusťte import a synchronizaci a ověřit data, dokud vypadá dobře, pomocí následujících kroků.
-6. Přepněte pracovní server byl aktivní server. Toto je poslední krok "Přepínač aktivního serveru" v [ověřte konfiguraci serveru](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server).
-7. Pokud provádíte upgrade služby Azure AD Connect, upgradujte server, který je teď v pracovním režimu na nejnovější verzi. Postupujte stejným způsobem jako před k získání dat a konfigurace upgradu. Pokud jste provedli upgrade ze služby Azure AD Sync, můžete nyní vypnout a váš starý server vyřadit z provozu.
+### <a name="use-a-swing-migration-to-upgrade"></a>Upgrade pomocí migrace švihu
+1. Pokud používáte Azure AD Connect na obou serverech a plánujete jenom provést změnu konfigurace, ujistěte se, že váš aktivní server a pracovní server používají stejnou verzi. To usnadňuje porovnání rozdílů později. Pokud upgradujete z Azure AD Sync, pak tyto servery mají různé verze. Pokud upgradujete ze starší verze Azure AD Connect, je vhodné začít se dvěma servery, které používají stejnou verzi, ale není to povinné.
+2. Pokud jste provedli vlastní konfiguraci a pracovní server ji nemá, postupujte podle pokynů v části [Přesunutí vlastní konfigurace z aktivního serveru na pracovní server](#move-a-custom-configuration-from-the-active-server-to-the-staging-server).
+3. Pokud upgradujete z dřívější verze Služby Azure AD Connect, upgradujte pracovní server na nejnovější verzi. Pokud přecházíte z Azure AD Sync, nainstalujte Azure AD Connect na pracovní server.
+4. Nechte synchronizační modul spustit úplný import a úplnou synchronizaci na pracovním serveru.
+5. Ověřte, zda nová konfigurace nezpůsobila žádné neočekávané změny pomocí kroků v části Ověření v [části Ověření konfigurace serveru](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server). Pokud něco není podle očekávání, opravte to, spusťte import a synchronizaci a ověřte data, dokud nebude vypadat dobře, podle kroků.
+6. Přepněte pracovní server na aktivní server. Toto je poslední krok "Přepnout aktivní server" v [Ověření konfigurace serveru](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server).
+7. Pokud upgradujete Azure AD Connect, upgradujte server, který je teď v pracovním režimu, na nejnovější verzi. Chcete-li upgradovat data a konfiguraci, postupujte stejným způsobem jako dříve. Pokud jste upgradovali z Azure AD Sync, můžete teď vypnout a vyřadit z provozu starý server.
 
-### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>Přesunout vlastní konfigurace z aktivního serveru na testovacím serveru
-Pokud jste provedli změny v konfiguraci aktivní server, budete muset Ujistěte se, že stejné změny se použijí pracovní server. Smyslem tohoto přesunutí, můžete použít [dokumentace služby Azure AD Connect konfigurace](https://github.com/Microsoft/AADConnectConfigDocumenter).
+### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>Přesunutí vlastní konfigurace z aktivního serveru na pracovní server
+Pokud jste provedli změny konfigurace aktivního serveru, musíte se ujistit, že stejné změny jsou použity na pracovní server. Chcete-li pomoci s tímto krokem, můžete použít [dokumentátor konfigurace Azure AD Connect](https://github.com/Microsoft/AADConnectConfigDocumenter).
 
-Můžete přesunout že vlastní synchronizační pravidla, že jste vytvořili pomocí prostředí PowerShell. Musíte použít jiné změny stejným způsobem jako ve všech systémech a není možné migrovat změny. [Konfigurace dokumentace](https://github.com/Microsoft/AADConnectConfigDocumenter) vám umožňují porovnání těchto dvou systémech, abyste měli jistotu, že jsou identické. Nástroj může také pomoct při automatizaci kroky v této části.
+Vlastní pravidla synchronizace, která jste vytvořili, můžete přesunout pomocí PowerShellu. Ostatní změny je nutné použít stejným způsobem v obou systémech a změny nelze migrovat. [Konfigurační dokumentátor](https://github.com/Microsoft/AADConnectConfigDocumenter) vám může pomoci porovnat oba systémy a ujistit se, že jsou identické. Nástroj může také pomoci při automatizaci kroků v této části.
 
-Budete muset nakonfigurovat následující věci stejným způsobem jako na obou serverech:
+Na obou serverech je třeba nakonfigurovat následující věci stejným způsobem:
 
-* Připojení ke stejné doménové struktury
-* Všechny domény a filtrování podle organizačních jednotek
-* Stejné volitelné funkce, jako je například synchronizace hesel a zpětný zápis hesla
+* Připojení ke stejným doménovým strukturám
+* Filtrování libovolné domény a ou.
+* Stejné volitelné funkce, jako je synchronizace hesel a zpětný zápis hesla
 
-**Přesunout vlastní synchronizační pravidla**  
-Pokud chcete přesunout vlastní synchronizační pravidla, postupujte takto:
+**Přesunutí vlastních pravidel synchronizace**  
+Chcete-li přesunout vlastní pravidla synchronizace, postupujte takto:
 
-1. Otevřít **Editor pravidel synchronizace** na váš aktivní server.
-2. Vyberte vlastní pravidlo. Klikněte na tlačítko **exportovat**. Otevře se okno Poznámkový blok. Dočasný soubor uložte s příponou PS1. Díky tomu skript prostředí PowerShell. Zkopírujte soubor PS1 pracovní server.  
-   ![Export pravidla synchronizace](./media/how-to-upgrade-previous-version/exportrule.png)
-3. Identifikátor GUID konektoru se liší na testovacím serveru a je nutné změnit. Chcete-li získat identifikátor GUID, spusťte **Editor pravidel synchronizace**, vyberte jednu z out-of-box pravidla, která představují stejné připojený systém a klikněte na tlačítko **exportovat**. Identifikátor GUID v souboru PS1 nahraďte identifikátorem GUID z pracovního serveru.
-4. V řádku prostředí PowerShell spusťte soubor PS1. Tím se vytvoří vlastní synchronizačního pravidla na testovacím serveru.
+1. Sem **otevřete Editor pravidel synchronizace** na aktivním serveru.
+2. Vyberte vlastní pravidlo. Klikněte na **Exportovat**. Tím se vyvolá okno poznámkového bloku. Uložte dočasný soubor s příponou PS1. Díky tomu je skript prostředí PowerShell. Zkopírujte soubor PS1 na pracovní server.  
+   ![Export pravidel synchronizace](./media/how-to-upgrade-previous-version/exportrule.png)
+3. Identifikátor GUID konektoru se na pracovním serveru liší a je nutné jej změnit. Chcete-li získat identifikátor GUID, **spusťte Editor pravidel synchronizace**, vyberte jedno z pravidel out-of-box, které představují stejný připojený systém, a klepněte na tlačítko **Exportovat**. Nahraďte identifikátor GUID v souboru PS1 identifikátorem GUID z pracovního serveru.
+4. V příkazovém řádku prostředí PowerShell spusťte soubor PS1. Tím se vytvoří vlastní pravidlo synchronizace na pracovní server.
 5. Tento postup opakujte pro všechna vlastní pravidla.
 
 ## <a name="how-to-defer-full-synchronization-after-upgrade"></a>Jak odložit úplnou synchronizaci po upgradu
-Při upgradu na místě, může být změny zavedené, které vyžadují konkrétní synchronizační aktivity (včetně kroky úplný Import a úplnou synchronizaci) má být proveden. Například vyžadují změny schématu konektor **úplný import** krok a out-of-box změny pravidel synchronizace vyžadují **úplné synchronizace** krok má být proveden na ovlivněných konektory. Během upgradu, Azure AD Connect, určuje, jaké aktivity synchronizace jsou povinné a zaznamenává je jako *přepíše*. V následující synchronizační cyklus Plánovač synchronizace vybere tato přepsání a provede je. Jakmile přepsání je úspěšně spuštěn, bude odebrán.
+Během inovace na místě mohou být zavedeny změny, které vyžadují provádění konkrétních synchronizačních aktivit (včetně kroku úplného importu a úplné synchronizace). Například změny schématu konektoru vyžadují úplný krok **importu** a změny pravidel synchronizace předboxu vyžadují provedení úplného kroku **synchronizace** na ovlivněných konektorech. Během upgradu Azure AD Connect určuje, jaké aktivity synchronizace jsou požadovány a zaznamenává je jako *přepsání*. V následujícím cyklu synchronizace plánovač synchronizace vyzvedne tato přepsání a provede je. Jakmile je přepsání úspěšně provedeno, je odebráno.
 
-Může nastat situace, kdy nechcete, aby tato přepsání projevily hned po upgradu. Například máte mnoho synchronizované objekty a chcete tyto kroky synchronizace má být provedena po pracovní době. Chcete-li odebrat tato přepsání:
+Mohou nastat situace, kdy nechcete, aby tato přepsání proběhla ihned po upgradu. Například máte mnoho synchronizovaných objektů a chcete, aby tyto kroky synchronizace dojít po pracovní době. Chcete-li odstranit tato přepsání:
 
-1. Během upgradu **zrušte zaškrtnutí políčka** možnost **po dokončení konfigurace spustit proces synchronizace**. To zakáže Plánovač synchronizace a zabrání synchronizační cyklus dochází automaticky před odstraněním přepsání.
+1. Během upgradu **odškrtnete** možnost **Spusťte proces synchronizace po dokončení konfigurace**. Tím zakážete plánovač synchronizace a zabráníte automatickému cyklu synchronizace před odebráním přepsání.
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![Zakázatupgrade FullSyncAfter](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
-2. Po dokončení upgradu, zjistěte, jaké přepsání byly přidány následující rutiny: `Get-ADSyncSchedulerConnectorOverride | fl`
+2. Po dokončení upgradu spusťte následující rutinu, abyste zjistili, jaká přepsání byla přidána:`Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
-   > Přepsání jsou specifické pro konektor. V následujícím příkladu kroky úplný Import a úplnou synchronizaci byly přidány do obou místní AD Connector a konektor služby Azure AD.
+   > Přepsání jsou specifické pro konektor. V následujícím příkladu úplné import krok a úplné synchronizace krok byly přidány do místní ho aD konektor a Konektor Azure AD.
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync02.png)
+   ![Zakázatupgrade FullSyncAfter](./media/how-to-upgrade-previous-version/disablefullsync02.png)
 
-3. Poznamenejte si stávající přepsání, které byly přidány.
+3. Poznamenejte si existující přepsání, které byly přidány.
    
-4. Odebrat přepisy pro úplný import a úplnou synchronizaci konektoru služby libovolného, spusťte následující rutinu: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. Chcete-li odstranit lokální změny pro úplný import i úplnou synchronizaci na libovolné spojnici, spusťte následující rutinu:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
-   Chcete-li odebrat přepsání na všechny konektory, spusťte následující skript prostředí PowerShell:
+   Chcete-li odstranit lokální změny na všech konektorech, spusťte následující skript prostředí PowerShell:
 
    ```
    foreach ($connectorOverride in Get-ADSyncSchedulerConnectorOverride)
@@ -128,23 +128,23 @@ Může nastat situace, kdy nechcete, aby tato přepsání projevily hned po upgr
    }
    ```
 
-5. Pokud chcete obnovit Plánovač, spusťte následující rutinu: `Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Chcete-li pokračovat v plánovači, spusťte následující rutinu:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
-   > Nezapomeňte, proveďte nejdříve kroky požadované synchronizace. Můžete buď ručně provést tento postup pomocí Synchronization Service Manager nebo přidat přepsání zpátky pomocí rutiny Set-ADSyncSchedulerConnectorOverride.
+   > Nezapomeňte provést požadované kroky synchronizace co nejdříve. Tyto kroky můžete provést ručně pomocí Správce synchronizačních služeb nebo přidat přepsání zpět pomocí rutiny Set-ADSyncSchedulerConnectorOverride.
 
-Přidání přepsání pro úplný import a úplnou synchronizaci v libovolné konektoru, spusťte následující rutinu:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+Chcete-li přidat lokální změny pro úplný import i úplnou synchronizaci na libovolné spojnici, spusťte následující rutinu:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Následující část obsahuje řešení problémů a informace, které můžete použít, pokud narazíte na problém, upgrade služby Azure AD Connect.
+Následující část obsahuje řešení potíží a informace, které můžete použít, pokud narazíte na problém s upgradem služby Azure AD Connect.
 
-### <a name="azure-active-directory-connector-missing-error-during-azure-ad-connect-upgrade"></a>Azure Active Directory connector chybějící při došlo k chybě služby Azure AD Connect upgradovat
+### <a name="azure-active-directory-connector-missing-error-during-azure-ad-connect-upgrade"></a>Chybějící chyba konektoru Azure Active Directory během upgradu služby Azure AD Connect
 
-Když upgradujete z předchozí verze služby Azure AD Connect, budete pravděpodobně dojde k chybě na začátku upgradu 
+Při upgradu Azure AD Connect z předchozí verze, může dojít k následující chyby na začátku upgradu 
 
 ![Chyba](./media/how-to-upgrade-previous-version/error1.png)
 
-K této chybě dochází, protože konektor služby Azure Active Directory s identifikátorem b891884f-051e-4a83-95af - 2544101c 9083, neexistuje v aktuální konfiguraci Azure AD Connect. Pokud chcete ověřit, že jde o tento případ, otevřete okno prostředí PowerShell, spusťte rutinu `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
+K této chybě dochází, protože konektor Azure Active Directory s identifikátorem, b891884f-051e-4a83-95af-2544101c9083, neexistuje v aktuální konfiguraci Azure AD Connect. Chcete-li ověřit tento případ, otevřete okno prostředí PowerShell, spusťte rutinu`Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083
@@ -159,13 +159,13 @@ At line:1 char:1
 
 ```
 
-Rutiny Powershellu zaznamená chybu **nebyl nalezen zadaný MA**.
+Rutina prostředí PowerShell hlásí **chybu, kterou zadaný ma nebyl nalezen**.
 
-Z důvodu, že to nastane totiž aktuální konfiguraci Azure AD Connect není podporována pro upgrade. 
+Důvodem, proč k tomu dochází, je, že aktuální konfigurace Azure AD Connect není podporována pro upgrade. 
 
-Pokud chcete nainstalovat novější verze služby Azure AD Connect: zavřete průvodce službou Azure AD Connect, odinstalujte existující Azure AD Connect a proveďte čistou instalaci novější Azure AD Connect.
+Pokud chcete nainstalovat novější verzi Azure AD Connect: zavřete průvodce Azure AD Connect, odinstalujte stávající Azure AD Connect a proveďte čistou instalaci novějšího Azure AD Connect.
 
 
 
-## <a name="next-steps"></a>Další postup
-Další informace o [integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [integraci místních identit pomocí služby Azure Active Directory](whatis-hybrid-identity.md).

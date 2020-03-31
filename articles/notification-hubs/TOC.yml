@@ -1,4 +1,4 @@
-- name: Dokumentace ke službě Notification Hubs
+- name: Dokumentace k Notification Hubs
   href: index.yml
 - name: Přehled
   items:
@@ -11,7 +11,9 @@
   items:
     - name: Vytvoření centra oznámení – Azure Portal
       href: create-notification-hub-portal.md
-    - name: Konfigurace centra oznámení – Azure Portal
+    - name: Vytvoření centra oznámení – Azure CLI
+      href: create-notification-hub-azure-cli.md
+    - name: Konfigurace centra oznámení
       href: configure-notification-hub-portal-pns-settings.md
 - name: Kurzy
   items:
@@ -140,6 +142,8 @@
       href: notification-hubs-push-notification-fixer.md
     - name: Nabízená oznámení odesílaná s využitím nabízených oznámení cloudu Baidu
       href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: Použití APNS VOIP prostřednictvím Notification Hubs
+      href: voip-apns.md
 - name: Referenční informace
   items:
     - name: .NET

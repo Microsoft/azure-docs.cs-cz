@@ -1,28 +1,28 @@
 ---
-title: Aktivační událost Azure Cosmos DB pro Functions 2. x
-description: Naučte se používat aktivační událost Azure Cosmos DB v Azure Functions.
+title: Aktivační událost Azure Cosmos DB pro funkce 2.x
+description: Naučte se používat aktivační událost Azure Cosmos DB ve funkcích Azure.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277567"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Aktivační událost Azure Cosmos DB pro Azure Functions 2. x
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Aktivační událost Azure Cosmos DB pro funkce Azure 2.x
 
-Aktivační událost Azure Cosmos DB používá [Azure Cosmos DB změnu kanálu](../cosmos-db/change-feed.md) k naslouchání vkládání a aktualizací v různých oddílech. Kanál změn publikuje vkládání a aktualizace, odstranění není.
+Azure Cosmos DB Trigger používá [kanál změn Azure Cosmos DB](../cosmos-db/change-feed.md) k naslouchání vkládání a aktualizacím napříč oddíly. Kanál změn publikuje vložení a aktualizace, nikoli odstranění.
 
-Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](./functions-bindings-cosmosdb-v2.md).
+Informace o nastavení a konfiguraci naleznete v [přehledu](./functions-bindings-cosmosdb-v2.md).
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která je vyvolána při vložení nebo aktualizaci v zadané databázi a kolekci.
+Následující příklad ukazuje [c# funkce,](functions-dotnet-class-library.md) která je vyvolána, když jsou vloží nebo aktualizace v zadané databázi a kolekci.
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -54,11 +54,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje Cosmos DB aktivační vazby v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
+Následující příklad ukazuje vazby aktivační události Cosmos DB v souboru *function.json* a [funkci skriptu Jazyka C#,](functions-reference-csharp.md) která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Zde jsou data vazby v souboru *function.json:*
 
 ```json
 {
@@ -73,7 +73,7 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Tady je kód skriptu jazyka C#:
+Zde je kód skriptu C#:
 
 ```cs
     #r "Microsoft.Azure.DocumentDB.Core"
@@ -90,11 +90,11 @@ Tady je kód skriptu jazyka C#:
     }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Následující příklad ukazuje Cosmos DB aktivační vazby v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
+Následující příklad ukazuje vazby aktivační události Cosmos DB v souboru *function.json* a [funkci JavaScriptu,](functions-reference-node.md) která používá vazbu. Funkce zapisuje zprávy protokolu při přidání nebo úpravě záznamů Cosmos DB.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Zde jsou data vazby v souboru *function.json:*
 
 ```json
 {
@@ -109,7 +109,7 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Tady je kód jazyka JavaScript:
+Zde je kód JavaScript:
 
 ```javascript
     module.exports = function (context, documents) {
@@ -121,9 +121,9 @@ Tady je kód jazyka JavaScript:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje Cosmos DB aktivační vazby v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při změně záznamů Cosmos DB.
+Následující příklad ukazuje vazby aktivační události Cosmos DB v souboru *function.json* a [funkci Pythonu,](functions-reference-python.md) která používá vazbu. Funkce zapisuje zprávy protokolu při změně záznamů Cosmos DB.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Zde jsou data vazby v souboru *function.json:*
 
 ```json
 {
@@ -138,7 +138,7 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Tady je kód Pythonu:
+Zde je kód Pythonu:
 
 ```python
     import logging
@@ -152,7 +152,7 @@ Tady je kód Pythonu:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Tato funkce je vyvolána, když jsou vloženy nebo aktualizovány v zadané databázi a kolekci.
+Tato funkce je vyvolána, pokud jsou v zadané databázi a kolekci vloženy nebo aktualizace.
 
 ```java
     @FunctionName("cosmosDBMonitor")
@@ -169,17 +169,17 @@ Tato funkce je vyvolána, když jsou vloženy nebo aktualizovány v zadané data
 ```
 
 
-V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBTrigger` anotaci u parametrů, jejichž hodnota pochází z Cosmos DB.  Tuto poznámku lze použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>`.
+V [knihovně runtime funkcí Javy](/java/api/overview/azure/functions/runtime)použijte poznámku `@CosmosDBTrigger` k parametrům, jejichž hodnota by pocházela z Cosmos DB.  Tuto poznámku lze použít s nativními typy Jazyka Java, `Optional<T>`POJOnebo hodnotami s možnou hodnotou s hodnotou s nulou pomocí .
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) .
+V [knihovnách tříd Jazyka C#](functions-dotnet-class-library.md)použijte atribut [CosmosDBTrigger.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs)
 
-Konstruktor atributu má název databáze a název kolekce. Informace o těchto nastaveních a dalších vlastnostech, které můžete konfigurovat, najdete v tématu [Trigger-Configuration](#configuration). Tady je příklad atributu `CosmosDBTrigger` v signatuře metody:
+Konstruktor atributu přebírá název databáze a název kolekce. Informace o těchto nastaveních a dalších vlastnostech, které můžete konfigurovat, naleznete v tématu [Trigger - configuration](#configuration). Zde je `CosmosDBTrigger` příklad atributu v podpisu metody:
 
 ```csharp
     [FunctionName("DocumentUpdates")]
@@ -192,63 +192,63 @@ Konstruktor atributu má název databáze a název kolekce. Informace o těchto 
     }
 ```
 
-Úplný příklad najdete v tématu [Trigger](#example).
+Úplný příklad naleznete v tématu [Trigger](#example).
 
-# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-C# Skript nepodporuje atributy.
+Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Atributy nejsou podporovány jazykem JavaScript.
+Atributy nejsou podporovány javascriptem.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python nepodporuje atributy.
+Atributy nejsou podporovány Pythonem.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Z [běhové knihovny Functions jazyka Java](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)použijte anotaci `@CosmosDBInput` u parametrů, které čtou data z Cosmos DB.
+Z [knihovny runtime funkcí](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) `@CosmosDBInput` Java použijte poznámku k parametrům, které čtou data z Cosmos DB.
 
 ---
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `CosmosDBTrigger`.
+Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nastavili `CosmosDBTrigger` v souboru *function.json* a atributu.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|vlastnost function.json | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | Musí být nastavené na `cosmosDBTrigger`. |
-|**direction** | neuvedeno | Musí být nastavené na `in`. Tento parametr je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**Jméno** | neuvedeno | Název této proměnné v kódu funkce, která představuje seznam dokumentů se změnami. |
-|**connectionStringSetting**|**ConnectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec použitý pro připojení k účtu Azure Cosmos DB, který je monitorován. |
-|**Databáze**|**Databáze**  | Název databáze Azure Cosmos DB s kolekcí monitorovány. |
-|**collectionName** |**CollectionName** | Název kolekce monitorovány. |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | Volitelné Název nastavení aplikace, které obsahuje připojovací řetězec k účtu Azure Cosmos DB, který obsahuje kolekci zapůjčení. Pokud není nastavena, je použita hodnota `connectionStringSetting`. Tento parametr je automaticky nastaven při vytvoření vazby na portálu. Připojovací řetězec pro kolekci zapůjčení musí mít oprávnění k zápisu.|
-|**leaseDatabaseName** |**LeaseDatabaseName** | (Volitelné) Název databáze, která obsahuje kolekci pro ukládání zapůjčení. Pokud není nastavená, použije se hodnota nastavení `databaseName`. Tento parametr je automaticky nastaven při vytvoření vazby na portálu. |
-|**leaseCollectionName** | **LeaseCollectionName** | (Volitelné) Název kolekce pro ukládání zapůjčení. Pokud není nastavena, je použita hodnota `leases`. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Volitelné Když se nastaví na `true`, kolekce zapůjčení se automaticky vytvoří, když už neexistuje. Výchozí hodnota je `false`. |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| Volitelné Definuje počet jednotek žádostí, které se mají přiřadit při vytváření kolekce zapůjčení. Toto nastavení se používá pouze v případě, že je `createLeaseCollectionIfNotExists` nastaveno na hodnotu `true`. Tento parametr je automaticky nastaven při vytvoření vazby na portálu.
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| Volitelné Při nastavení se hodnota přidá jako předpona pro zapůjčení vytvořená v kolekci zapůjčení pro tuto funkci. Použití předpony umožňuje dvě samostatné Azure Functions sdílet stejnou kolekci zapůjčení s použitím různých předpon.
-|**feedPollDelay**| **FeedPollDelay**| Volitelné Doba (v milisekundách), která se má zpozdit při cyklickém dotazování oddílu na nové změny v informačním kanálu po vyprázdnění všech aktuálních změn. Výchozí hodnota je 5 000 milisekund nebo 5 sekund.
-|**leaseAcquireInterval**| **LeaseAcquireInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval aktivovala úloha Vypočítat, pokud oddíly jsou rovnoměrně mezi známými hostiteli instance. Výchozí hodnota je 13000 (13 sekund).
-|**leaseExpirationInterval**| **LeaseExpirationInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, pro kterou je zapůjčení pořízené zapůjčení představující oddílu. Pokud v rámci tohoto intervalu nedojde k jeho prodloužení zapůjčení, způsobí vypršení platnosti a vlastnictví oddílu se přesune do jiné instance. Výchozí hodnota je 60000 (60 sekund).
-|**leaseRenewInterval**| **LeaseRenewInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval obnovení pro všechny zapůjčení pro oddíly právě načtený v instanci. Výchozí hodnota je 17000 (17 sekund).
-|**checkpointFrequency**| **CheckpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po volání funkce.
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| Volitelné Při nastavení tato vlastnost nastaví maximální počet položek přijatých na volání funkce. Pokud se operace v monitorované kolekci provádějí prostřednictvím uložených procedur, [obor transakce](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) se zachová při čtení položek z kanálu změn. V důsledku toho může být počet přijatých položek vyšší, než je zadaná hodnota, aby byly položky změněné stejnou transakcí vráceny jako součást jedné atomická dávky.
-|**startFromBeginning**| **StartFromBeginning**| Volitelné Tato možnost oznamuje triggeru, aby přečetl změny ze začátku historie změn kolekce místo začátku v aktuálním čase. Čtení od začátku funguje jenom při prvním spuštění triggeru, stejně jako v dalších spuštěních, kontrolní body už jsou uložené. Nastavení této možnosti na `true`, pokud jsou již vytvořeny zapůjčené adresy, nemá žádný vliv. |
-|**preferredLocations**| **PreferredLocations**| Volitelné Definuje upřednostňovaná umístění (oblasti) pro geograficky replikované databázové účty ve službě Azure Cosmos DB. Hodnoty by měly být oddělené čárkami. Například "Východní USA, Střed USA – jih, Severní Evropa". |
+|**Typ** | neuvedeno | Musí být `cosmosDBTrigger`nastavena na . |
+|**direction** | neuvedeno | Musí být `in`nastavena na . Tento parametr se nastaví automaticky při vytváření aktivační události na webu Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje seznam dokumentů se změnami. |
+|**connectionStringSetting**|**ConnectionStringSetting** | Název nastavení aplikace, která obsahuje připojovací řetězec používaný k připojení k účtu Azure Cosmos DB, který se monitoruje. |
+|**Databasename**|**DatabaseName**  | Název databáze Azure Cosmos DB s kolekcí, která je monitorována. |
+|**název kolekce** |**CollectionName** | Název kolekce, která je sledována. |
+|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Nepovinné) Název nastavení aplikace, která obsahuje připojovací řetězec k účtu Azure Cosmos DB, který obsahuje kolekci zapůjčení. Není-li nastavena, použije se `connectionStringSetting` hodnota. Tento parametr je automaticky nastaven při vytvoření vazby na portálu. Připojovací řetězec pro kolekci zapůjčení musí mít oprávnění k zápisu.|
+|**leaseDatabaseName** |**Název_databáze Lease** | (Nepovinné) Název databáze, která obsahuje kolekci slouží k ukládání zapůjčení. Pokud není nastavena, `databaseName` použije se hodnota nastavení. Tento parametr je automaticky nastaven při vytvoření vazby na portálu. |
+|**leaseCollectionName** | **Název kolekce lease** | (Nepovinné) Název kolekce slouží k ukládání zapůjčení. Není-li nastavena, použije se hodnota. `leases` |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Nepovinné) Pokud je `true`nastavena na , kolekce zapůjčení je automaticky vytvořena, pokud ještě neexistuje. Výchozí hodnota je `false`. |
+|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| (Nepovinné) Definuje počet jednotek požadavků, které mají být přiřazeny při vytvoření kolekce zapůjčení. Toto nastavení se `createLeaseCollectionIfNotExists` používá `true`pouze v případě, že je nastaveno na . Tento parametr je automaticky nastaven při vytvoření vazby pomocí portálu.
+|**leaseCollectionPrefix**| **Předpona kolekce zapůjčení**| (Nepovinné) Při nastavení je hodnota přidána jako předpona zapůjčených zapůjčených vytvořených v kolekci zapůjčení pro tuto funkci. Použití předpony umožňuje dvě samostatné funkce Azure sdílet stejnou kolekci Zapůjčení pomocí různých předponami.
+|**feedPollDelay**| **FeedPollDelay**| (Nepovinné) Čas (v milisekundách) pro zpoždění mezi dotazování oddíl pro nové změny v kanálu, po vyčerpání všech aktuálních změn. Výchozí hodnota je 5 000 milisekund nebo 5 sekund.
+|**leaseAcquireInterval**| **LeaseAcquireInterval**| (Nepovinné) Při nastavení definuje v milisekundách interval pro zahájení úlohy pro výpočet, pokud jsou oddíly rovnoměrně rozloženy mezi známé instance hostitele. Výchozí hodnota je 13000 (13 sekund).
+|**leaseExpirationInterval**| **Interval vypršení platnosti zapůjčení**| (Nepovinné) Při nastavení definuje v milisekundách interval, pro který je zapůjčení přijato na zapůjčení představující oddíl. Pokud zapůjčení není obnovena v rámci tohoto intervalu, způsobí, že vyprší jeho platnost a vlastnictví oddílu se přesune do jiné instance. Výchozí hodnota je 60000 (60 sekund).
+|**leaseRenewInterval**| **Obnovit interval**| (Nepovinné) Při nastavení definuje v milisekundách interval obnovení pro všechny zapůjčené pro oddíly, které jsou aktuálně v držení instance. Výchozí hodnota je 17000 (17 sekund).
+|**kontrolní bodFrekvence**| **Kontrolní frekvence**| (Nepovinné) Při nastavení definuje v milisekundách interval mezi kontrolními body zapůjčení. Výchozí hodnota je vždy po každém volání funkce.
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Nepovinné) Pokud je tato vlastnost nastavena, nastaví maximální počet položek přijatých na volání funkce. Pokud operace ve sledované kolekci jsou prováděny prostřednictvím uložených procedur, [rozsah transakce](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) je zachována při čtení položek z kanálu změn. V důsledku toho počet přijatých položek může být vyšší než zadaná hodnota tak, aby položky změněné stejnou transakcí byly vráceny jako součást jedné atomické dávky.
+|**startFromBeginning**| **StartFromBeginning**| (Nepovinné) Tato možnost sděluje Trigger číst změny od začátku historie změn kolekce namísto spuštění v aktuálním čase. Čtení od začátku funguje pouze při prvním spuštění triggeru, jako v následných spuštěních jsou kontrolní body již uloženy. Nastavení této `true` možnosti na v případě, že již byly vytvořeny zapůjčení, nemá žádný vliv. |
+|**preferredLocations**| **Preferované umístění**| (Nepovinné) Definuje upřednostňovaná umístění (oblasti) pro geograficky replikované databázové účty ve službě Azure Cosmos DB. Hodnoty by měly být odděleny čárkami. Například "Východní USA, jižní střed USA, severní Evropa". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Využití
 
-Trigger vyžaduje druhou kolekci, kterou používá k ukládání _zapůjčení_ do oddílů. Kolekce, monitoruje a kolekci, která obsahuje zapůjčení musí být k dispozici pro aktivační událost pro práci.
+Aktivační událost vyžaduje druhou kolekci, která používá k ukládání _zapůjčení_ přes oddíly. Kolekce, která je sledována, a kolekce, která obsahuje zapůjčení, musí být k dispozici pro aktivační událost.
 
 >[!IMPORTANT]
-> Pokud je pro stejnou kolekci nakonfigurované víc funkcí Cosmos DB triggeru, každá z těchto funkcí by měla používat vyhrazenou kolekci zapůjčení nebo pro každou funkci zadat jiný `LeaseCollectionPrefix`. V opačném případě se aktivuje jenom jedna z funkcí. Informace o předponě najdete v [části věnované konfiguraci](#configuration).
+> Pokud více funkcí jsou nakonfigurovány pro použití aktivační události Cosmos DB pro stejnou kolekci, každá z funkcí by měla používat vyhrazenou kolekci zapůjčení nebo zadat jinou `LeaseCollectionPrefix` pro každou funkci. V opačném případě bude spuštěna pouze jedna z funkcí. Informace o předponě naleznete v [části Konfigurace](#configuration).
 
-Aktivační událost neukazuje, jestli dokument byl aktualizaci nebo vložení, stačí poskytuje samotný dokument. Pokud budete potřebovat pro zpracování aktualizací a vloží odlišně, můžete to udělat pomocí implementace pole časového razítka pro vložení nebo aktualizace.
+Aktivační událost neoznačuje, zda byl dokument aktualizován nebo vložen, pouze poskytuje samotný dokument. Pokud potřebujete zpracovávat aktualizace a vloží jinak, můžete to provést implementací polí časového razítka pro vložení nebo aktualizaci.
 
 ## <a name="next-steps"></a>Další kroky
 

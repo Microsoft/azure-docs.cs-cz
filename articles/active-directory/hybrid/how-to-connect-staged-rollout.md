@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: cloudové ověřování prostřednictvím připraveného zavedení | Microsoft Docs'
-description: Tento článek vysvětluje, jak migrovat z federovaného ověřování na cloudové ověřování pomocí připraveného zavedení.
+title: 'Azure AD Connect: Cloudové ověřování prostřednictvím postupného zavádění | Dokumenty společnosti Microsoft'
+description: Tento článek vysvětluje, jak migrovat z federovaného ověřování na cloudové ověřování pomocí fázovaného zavedení.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,229 +11,229 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3044ebdd716eb85dc63d3a77089912d0d51d8b6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74915236"
 ---
-# <a name="migrate-to-cloud-authentication-by-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
+# <a name="migrate-to-cloud-authentication-by-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí fázovaného zavedení (preview)
 
-Pomocí postupu při dvoufázovém zavedení můžete migrovat z federovaného ověřování na cloudové ověřování. Tento článek popisuje, jak provést tento přepínač. Než začnete postupovat podle fáze zavedení, měli byste zvážit důsledky, pokud je splněna jedna nebo více z následujících podmínek:
+Pomocí fázovaného přístupu k zavádění můžete přejít z federovaného ověřování na cloudové ověřování. Tento článek popisuje, jak provést přepínač. Před zahájením fázovaného zavádění byste však měli zvážit důsledky, pokud platí jedna nebo více z následujících podmínek:
     
--  Aktuálně používáte místní Multi-Factor Authentication Server. 
--  Pro ověřování používáte čipové karty. 
--  Váš aktuální server nabízí určité jenom federační funkce.
+-  Aktuálně používáte místní server vícefaktorového ověřování. 
+-  Používáte čipové karty pro ověřování. 
+-  Aktuální server nabízí určité funkce pouze pro federaci.
 
-Než se pustíte do této funkce, doporučujeme, abyste si přečtěte náš průvodce pro výběr správné metody ověřování. Další informace najdete v tabulce "porovnání metod" v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods).
+Než tuto funkci vyzkoušíte, doporučujeme, abyste si přečetli našeho průvodce výběrem správné metody ověřování. Další informace najdete v tabulce Porovnání metod v [části Volba správné metody ověřování pro řešení hybridní identity služby Azure Active Directory](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods).
 
-Přehled této funkce najdete v tomto tématu Azure Active Directory: co je postupné zavedení?. Obrazový
+Přehled této funkce naleznete v tomto "Azure Active Directory: Co je postupné zavádění?" Video:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE3inQJ]
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
--   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
+-   Máte klienta Azure Active Directory (Azure AD) s federovanými doménami.
 
--   Rozhodli jste se přesunout jednu ze dvou možností:
-    - **Možnost** - *synchronizace hodnot hash hesel (Sync)*  + *bezproblémové jednotné přihlašování (SSO)*
-    - **Možnost B** - *předávací ověřování* + *bezproblémové jednotné přihlašování*
+-   Rozhodli jste se přejít na jednu ze dvou možností:
+    - **Možnost Synchronizace** - *hash hesla (synchronizace)* + *bezproblémové jednotné přihlašování (SSO)*
+    - **Možnost B** - *předávací ověřování* + *bezproblémové jednotné přihlaštení*
     
-    I když je *snadné jednotné přihlašování* volitelné, doporučujeme, aby mu zajistili tiché přihlašování pro uživatele, kteří používají počítače připojené k doméně v rámci podnikové sítě.
+    Přestože *bezproblémové jednotné přihlašování* je volitelné, doporučujeme povolit k dosažení tiché přihlašovací prostředí pro uživatele, kteří jsou spuštěny počítače spojené s doménou z uvnitř podnikové sítě.
 
--   Pro uživatele, kteří se migrují do cloudového ověřování, jste nakonfigurovali všechny příslušné zásady klienta a zásad podmíněného přístupu, které potřebujete.
+-   Nakonfigurovali jste všechny příslušné zásady značky klienta a podmíněného přístupu, které potřebujete pro uživatele, kteří jsou migrováni do cloudového ověřování.
 
--   Pokud plánujete použít Azure Multi-Factor Authentication, doporučujeme použít [sblíženou registraci pro Samoobslužné resetování hesla (SSPR) a Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , aby vaši uživatelé mohli své metody ověřování registrovat jednou.
+-   Pokud máte v plánu používat Azure Multi-Factor Authentication, doporučujeme použít [konvergované registrace pro samoobslužné resetování hesla (SSPR) a vícefaktorové ověřování,](../authentication/concept-registration-mfa-sspr-combined.md) aby vaši uživatelé zaregistrovat své metody ověřování jednou.
 
--   Pokud chcete použít funkci dvoufázové zavedení, musíte být globálním správcem vašeho tenanta.
+-   Chcete-li použít funkci postupného zavádění, musíte být globálním správcem ve vašem tenantovi.
 
--   Pokud chcete povolit *bezproblémové přihlašování* v konkrétní doménové struktuře služby Active Directory, musíte být správce domény.
+-   Chcete-li povolit *bezproblémové jednotné přihlašování* v určité doménové struktuře služby Active Directory, musíte být správcem domény.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-Následující scénáře jsou podporovány pro připravené zavedení. Funkce funguje pouze pro:
+Následující scénáře jsou podporovány pro postupné zavádění. Tato funkce funguje pouze pro:
 
-- Uživatele, kteří jsou zřízeni ve službě Azure AD pomocí Azure AD Connect. Netýká se pouze cloudových uživatelů.
+- Uživatelé, kteří jsou zřizované do Azure AD pomocí Azure AD Connect. Nevztahuje se na uživatele pouze pro cloud.
 
-- Přihlašovací data uživatelů v prohlížečích a v *moderních ověřovacích* klientech. Aplikace nebo cloudové služby, které používají starší verze ověřování, se vrátí do toků federovaného ověřování. Příkladem může být Exchange Online se moderním ověřováním vypnuto nebo Outlook 2010, které nepodporuje moderní ověřování.
+- Provoz přihlašování uživatelů v prohlížečích a *moderních ověřovacích* klientech. Aplikace nebo cloudové služby, které používají starší verze ověřování, se vrátí k federovaným tokům ověřování. Příkladem může být Exchange online s vypnutým moderním ověřováním nebo Outlook 2010, který nepodporuje moderní ověřování.
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
-Následující scénáře nejsou podporovány pro fáze zavedení:
+Následující scénáře nejsou podporovány pro postupné zavádění:
 
-- Určité aplikace odesílají parametr dotazu "domain_hint" do služby Azure AD během ověřování. Tyto toky budou pokračovat a uživatelé, kteří jsou povoleni pro dvoufázové zavedení, budou pro ověřování nadále používat federaci.
+- Některé aplikace odeslat parametr dotazu "domain_hint" do Služby Azure AD během ověřování. Tyto toky budou pokračovat a uživatelé, kteří jsou povoleni pro postupné zavedení, budou nadále používat federaci pro ověřování.
 
 <!-- -->
 
-- Správci mohou zavést cloudové ověřování pomocí skupin zabezpečení. Abyste se vyhnuli latenci při použití místních skupin zabezpečení služby Active Directory, doporučujeme, abyste používali skupiny zabezpečení cloudu. Platí následující podmínky:
+- Správci můžou zavést cloudové ověřování pomocí skupin zabezpečení. Chcete-li se vyhnout latenci synchronizace při používání místních skupin zabezpečení služby Active Directory, doporučujeme použít skupiny zabezpečení cloudu. Platí tyto podmínky:
 
-    - Na jednu funkci můžete použít maximálně 10 skupin. To znamená, že můžete použít 10 skupin pro každou *synchronizaci hodnot hash hesel*, *předávací ověřování*a *bezproblémové jednotné přihlašování*.
-    - Vnořené skupiny se *nepodporují*. Tento obor platí i pro Public Preview.
-    - Pro fáze zavedení se *nepodporují* dynamické skupiny.
-    - Objekty kontaktu uvnitř skupiny zablokují přidávání skupiny.
+    - Můžete použít maximálně 10 skupin na funkci. To znamená, že můžete použít 10 skupin pro *synchronizaci hash hesla*, *předávací ověřování*a *bezproblémové jednotné přihlašovat.*
+    - Vnořené skupiny *nejsou podporovány*. Tento obor platí také pro verzi Public Preview.
+    - Dynamické skupiny *nejsou podporovány* pro postupné zavádění.
+    - Objekty kontaktu uvnitř skupiny zabrání přidání skupiny.
 
-- Ke konečnému přímou migraci je potřeba z federovaných na cloudové ověřování vytvořit pomocí Azure AD Connect nebo PowerShellu. Při přípravě na přípravu se nemění doména ze federované na spravovanou.
+- Pořád potřebujete provést konečné cutover z federované ho cloudu ověřování pomocí Azure AD Connect nebo PowerShell. Postupné zavádění nepřepíná domény z federovaných na spravované.
 
-- Když poprvé přidáte skupinu zabezpečení pro dvoufázové zavedení, budete omezeni na 200 uživatelů, aby nedocházelo k vypršení časového limitu uživatelského prostředí. Po přidání skupiny můžete podle potřeby přidat do ní další uživatele přímo.
+- Při prvním přidání skupiny zabezpečení pro postupné zavádění jste omezeni na 200 uživatelů, abyste se vyhnuli časovému limitu uživatelského uživatelského nastavení. Po přidání skupiny můžete podle potřeby přidat další uživatele přímo do skupiny.
 
-## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
+## <a name="get-started-with-staged-rollout"></a>Začínáme s fázovaným zaváděním
 
-Pokud chcete otestovat přihlášení k *synchronizaci hodnot hash hesel* pomocí připraveného zavedení, postupujte podle pokynů v následující části.
+Chcete-li otestovat přihlášení *synchronizace hash hesla* pomocí fázovaného zavedení, postupujte podle pokynů pro předběžnou práci v další části.
 
-Informace o tom, které rutiny prostředí PowerShell použít, najdete v tématu [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Informace o tom, které rutiny prostředí PowerShell použít, naleznete v [tématu Azure AD 2.0 preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
-## <a name="pre-work-for-password-hash-sync"></a>Předběžná práce pro synchronizaci hodnot hash hesel
+## <a name="pre-work-for-password-hash-sync"></a>Předprací pro synchronizaci hash hesel
 
-1. Možnost povolit *synchronizaci hodnot hash hesel* na stránce [volitelné funkce](how-to-connect-install-custom.md#optional-features) v Azure AD Connect. 
+1. Povolte  *synchronizaci hash hesel*ze stránky [Volitelné funkce](how-to-connect-install-custom.md#optional-features) ve službě Azure AD Connect. 
 
-   ![Snímek obrazovky se stránkami volitelné funkce v Azure Active Directory Connect](media/how-to-connect-staged-rollout/sr1.png)
+   ![Snímek obrazovky se stránkou Volitelné funkce ve službě Azure Active Directory Connect](media/how-to-connect-staged-rollout/sr1.png)
 
-1. Zajistěte, aby byl spuštěn cyklus *synchronizace hodnot hash celého hesla* , aby všechny hodnoty hash hesel uživatelů byly synchronizovány do služby Azure AD. Ke kontrole stavu *synchronizace hodnot hash hesel*můžete použít diagnostiku PowerShellu při [řešení potíží se synchronizací hodnot hash hesel pomocí Azure AD Connect synchronizace](tshoot-connect-password-hash-synchronization.md).
+1. Ujistěte se, že byl spuštěn úplný cyklus *synchronizace hash hesel,* aby byly všechny hashy hesel uživatelů synchronizovány se službou Azure AD. Chcete-li zkontrolovat stav *synchronizace hash hesla*, můžete použít diagnostiku prostředí PowerShell v [řešení synchronizace hash hesla pomocí synchronizace azure ad connect](tshoot-connect-password-hash-synchronization.md).
 
-   ![Snímek obrazovky s protokolem pro řešení potíží s AADConnect](./media/how-to-connect-staged-rollout/sr2.png)
+   ![Snímek obrazovky s protokolem poradce při potížích s připojením AADConnect](./media/how-to-connect-staged-rollout/sr2.png)
 
-Pokud chcete testovat *předávací ověřování* při přihlášení pomocí připraveného zavedení, povolte ho podle pokynů v následující části.
+Pokud chcete otestovat *předávací ověřování* přihlášení pomocí fázované zavedení, povolte jej podle pokynů před prací v další části.
 
-## <a name="pre-work-for-pass-through-authentication"></a>Předběžná práce pro předávací ověřování
+## <a name="pre-work-for-pass-through-authentication"></a>Předprací pro předávací ověřování
 
-1. Identifikujte Server se systémem Windows Server 2012 R2 nebo novějším, kde chcete spustit agenta *předávacího ověřování* . 
+1. Identifikujte server se systémem Windows Server 2012 R2 nebo novějším, na kterém chcete spustit *předávacího agenta ověřování.* 
 
-   *Nevybírejte server* Azure AD Connect. Ujistěte se, že je server připojený k doméně, umožňuje ověřovat vybrané uživatele pomocí služby Active Directory a může komunikovat se službou Azure AD na odchozích portech a adresách URL. Další informace najdete v části "krok 1: ověření požadavků" v tématu [rychlý Start: Azure AD bezproblémové jednotné přihlašování](how-to-connect-sso-quick-start.md).
+   *Nevybírejte* server Azure AD Connect.Ujistěte se, že server je připojen k doméně, můžete ověřit vybrané uživatele pomocí služby Active Directory a můžete komunikovat s Azure AD na odchozí porty a adresy URL. Další informace naleznete v části "Krok 1: Kontrola požadavků" [na úvodním startu: Azure AD bezproblémové jednotné přihlašování](how-to-connect-sso-quick-start.md).
 
-1. [Stáhněte si Azure AD Connect ověřovacího agenta](https://aka.ms/getauthagent)a nainstalujte ho na server. 
+1. [Stáhněte si agenta ověřování Azure AD Connect](https://aka.ms/getauthagent)a nainstalujte ho na server. 
 
-1. Pokud chcete povolit [vysokou dostupnost](how-to-connect-sso-quick-start.md), nainstalujte další ověřovací agenty na jiné servery.
+1. Chcete-li povolit [vysokou dostupnost](how-to-connect-sso-quick-start.md), nainstalujte další agenty ověřování na jiné servery.
 
-1. Ujistěte se, že jste správně nakonfigurovali [Nastavení inteligentního uzamčení](../authentication/howto-password-smart-lockout.md) . Díky tomu je možné zajistit, aby účty uživatelů místní služby Active Directory nebyly uzamčeny nesprávnými aktéry.
+1. Ujistěte se, že jste správně nakonfigurovali [nastavení inteligentního uzamčení.](../authentication/howto-password-smart-lockout.md) To pomáhá zajistit, aby místní účty služby Active Directory vašich uživatelů nebyly uzamčeny špatnými aktéry.
 
-Doporučujeme, abyste povolili *bezproblémové přihlašování* bez ohledu na způsob přihlašování (*synchronizace hodnot hash hesel* nebo *předávací ověřování*), který jste vybrali pro připravené zavedení. Pokud chcete povolit *bezproblémové jednotné přihlašování*, postupujte podle pokynů v následující části.
+Doporučujeme povolit *bezproblémové jednotné přihlašování* bez ohledu na metodu přihlášení *(synchronizace hash hesel* nebo *předávací ověřování),* kterou vyberete pro postupné zavedení. Chcete-li povolit *bezproblémové jednotné přihlašující*, postupujte podle pokynů pro předběžnou práci v další části.
 
-## <a name="pre-work-for-seamless-sso"></a>Předběžná práce pro bezproblémové přihlašování
+## <a name="pre-work-for-seamless-sso"></a>Před-práce pro bezproblémové jednotné přihlašované
 
-Pomocí prostředí PowerShell povolte *bezproblémové jednotného přihlašování* v doménových strukturách služby Active Directory. Pokud máte více než jednu doménovou strukturu služby Active Directory, povolte ji pro každou doménovou strukturu jednotlivě.  *Bezproblémové jednotné přihlašování* se aktivuje jenom pro uživatele, kteří jsou vybráni pro připravené zavedení. Nemá vliv na stávající nastavení federace.
+Povolte *bezproblémové jednotné přihlašování* v doménových strukturách služby Active Directory pomocí prostředí PowerShell. Pokud máte více doménové struktury služby Active Directory, povolte ji pro každou doménovou strukturu jednotlivě.  *Bezproblémové jednotné přihlašování* se aktivuje pouze pro uživatele, kteří jsou vybráni pro postupné zavedení. Nemá vliv na stávající nastavení federace.
 
-Pomocí následujícího postupu povolte *bezproblémové přihlašování* :
+Povolit *bezproblémové jednotné přihlašuje* tím, že provádí tenásledující:
 
 1. Přihlaste se k serveru Azure AD Connect.
 
-2. Přejít do složky  *% ProgramFiles%\\Microsoft Azure Active Directory Connect* .
+2. Přejděte do složky *%programfiles%\\služby Microsoft Azure Active Directory Connect.* 
 
-3. Pomocí následujícího příkazu Importujte modul prostředí PowerShell pro *bezproblémové přihlašování* : 
+3. Importujte *bezešvý* modul Jednotné ho so powershellu spuštěním následujícího příkazu: 
 
    `Import-Module .\AzureADSSO.psd1`
 
-4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext`. Tento příkaz otevře podokno, kde můžete zadat přihlašovací údaje globálního správce vašeho tenanta.
+4. Spusťte PowerShell jako správce. V Prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext`. Tento příkaz otevře podokno, ve kterém můžete zadat pověření globálního správce klienta.
 
-5. Zavolejte `Get-AzureADSSOStatus | ConvertFrom-Json`. Tento příkaz zobrazí seznam doménových struktur služby Active Directory (viz seznam domény), na kterém je tato funkce povolená. Ve výchozím nastavení je nastavena na hodnotu false na úrovni tenanta.
+5. Zavolejte `Get-AzureADSSOStatus | ConvertFrom-Json`. Tento příkaz zobrazí seznam doménových struktur služby Active Directory (viz seznam Domény), ve kterých byla tato funkce povolena. Ve výchozím nastavení je nastavena na false na úrovni klienta.
 
-   ![Příklad výstupu Windows PowerShellu](./media/how-to-connect-staged-rollout/sr3.png)
+   ![Příklad výstupu prostředí Windows PowerShell](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. Zavolejte `$creds = Get-Credential`. Na příkazovém řádku zadejte přihlašovací údaje správce domény pro požadovanou doménovou strukturu služby Active Directory.
+6. Zavolejte `$creds = Get-Credential`. Na výzvu zadejte pověření správce domény pro zamýšlenou doménovou strukturu služby Active Directory.
 
-7. Zavolejte `Enable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz vytvoří účet počítače AZUREADSSOACC z místního řadiče domény pro doménovou strukturu služby Active Directory, která je potřebná pro *bezproblémové jednotné přihlašování*.
+7. Zavolejte `Enable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz vytvoří účet počítače AZUREADSSOACC z místního řadiče domény pro doménovou strukturu služby Active Directory, která je vyžadována pro *bezproblémové jednotné přihlašování*.
 
-8. *Bezproblémové jednotné přihlašování* vyžaduje, aby adresy URL byly v zóně intranetu. Pokud chcete tyto adresy URL nasadit pomocí zásad skupiny, přečtěte si [rychlý Start: Azure AD bezproblémové jednotné přihlašování](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature).
+8. *Bezproblémové jednotné přihlašování* vyžaduje adresy URL, které mají být v zóně intranet. Informace o nasazení těchto adres URL pomocí zásad skupiny najdete v [tématu Úvodní příručka: Azure AD bezproblémové jednotné přihlašování](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature).
 
-9. Úplný návod vám umožní také stáhnout [plány nasazení](https://aka.ms/SeamlessSSODPDownload) pro *bezproblémové přihlašování*.
+9. Pro úplný návod, můžete si také stáhnout naše [plány nasazení](https://aka.ms/SeamlessSSODPDownload) pro *bezproblémové jednotné přihlašování*.
 
-## <a name="enable-staged-rollout"></a>Povolit připravené zavedení
+## <a name="enable-staged-rollout"></a>Povolení postupného zavádění
 
-Pokud chcete zavést konkrétní funkci (*předávací ověřování*, *synchronizaci hodnot hash hesel*nebo *bezproblémové přihlašování*) k výběru skupiny uživatelů ve skupině, postupujte podle pokynů v dalších částech.
+Chcete-li zavést určitou funkci (*předávací ověřování*, *synchronizace hash hesel*nebo *bezproblémové jednotné přihlašování*) do vybrané sady uživatelů ve skupině, postupujte podle pokynů v následujících částech.
 
-### <a name="enable-a-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Povolit dvoufázové zavedení konkrétní funkce ve vašem tenantovi
+### <a name="enable-a-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Povolení postupného zavedení určité funkce v tenantovi
 
 Můžete zavést jednu z těchto možností:
 
-- **Možnost** - *synchronizace hodnot hash hesla* + *bezproblémové jednotné přihlašování*
-- **Možnost B** - *předávací ověřování* + *bezproblémové jednotné přihlašování*
-- **Nepodporovaná** - *synchronizace hodnot hash hesla* + *předávací ověřování* + *bezproblémové jednotné přihlašování*
+- **Možnost Synchronizace** - *nastavení* + hash hesla*bezproblémová jednotné přihlašuje*
+- **Možnost B** - *předávací ověřování* + *bezproblémové jednotné přihlaštení*
+- **Není podporováno** - *heslo hash synchronizace* + *předávací ověřování* + *bezproblémové jednotné přihlašuje*
 
 Udělejte toto:
 
-1. Pokud chcete získat přístup k UŽIVATELSKÉmu rozhraní verze Preview, přihlaste se k [portálu Azure AD](https://aka.ms/stagedrolloutux).
+1. Chcete-li získat přístup k uživatelskému uživatelskému panelu ve verzi Preview, přihlaste se na [portál Azure AD](https://aka.ms/stagedrolloutux).
 
-2. Vyberte odkaz **povolit dvoufázové zavedení pro přihlášení ke spravovanému uživateli (Preview)** .
+2. Vyberte odkaz **Povolit postupné zavádění pro přihlašování spravovaného uživatele (preview).**
 
-   Chcete-li například povolit *možnost a*, posuňte **synchronizaci hodnot hash hesel** a **bezproblémové jednotné přihlašování** na **zapnuto**, jak je znázorněno na následujících obrázcích.
+   Chcete-li například povolit *možnost A*, posuňte ovládací prvky **synchronizace hash hesel** a **bezešvé jednotné přihlašování** do **možnosti Zapnuto**, jak je znázorněno na následujících obrázcích.
 
    ![Stránka Azure AD Connect](./media/how-to-connect-staged-rollout/sr4.png)
 
-   ![Stránka "povolit funkce pro přípravu na více verzí (Preview)"](./media/how-to-connect-staged-rollout/sr5.png)
+   ![Stránka Povolit funkce postupného zavádění (náhled)"](./media/how-to-connect-staged-rollout/sr5.png)
 
-3. Přidejte skupiny do funkce, aby se povolilo *předávací ověřování* a *bezproblémové jednotné přihlašování*. Aby nedošlo k vypršení časového limitu uživatelského rozhraní, ujistěte se, že skupiny zabezpečení neobsahují nejdříve 200 členů.
+3. Přidejte skupiny do funkce povolit *předávací ověřování* a *bezproblémové jednotné přihlašovat*. Chcete-li se vyhnout časovému odpočitadlu uživatelského nastavení, ujistěte se, že skupiny zabezpečení zpočátku neobsahují více než 200 členů.
 
-   ![Stránka "Správa skupin pro synchronizaci hodnot hash hesel (Preview)"](./media/how-to-connect-staged-rollout/sr6.png)
+   ![Stránka Správa skupin pro synchronizaci hash hesel (preview)"](./media/how-to-connect-staged-rollout/sr6.png)
 
    >[!NOTE]
-   >Členové ve skupině jsou automaticky povoleni pro připravené zavedení. Vnořené a dynamické skupiny se pro připravené zavedení nepodporují.
+   >Členové ve skupině jsou automaticky povoleny pro postupné zavádění. Vnořené a dynamické skupiny nejsou podporovány pro postupné zavádění.
 
 ## <a name="auditing"></a>Auditování
 
-Povolili jsme události auditu pro různé akce, které provedeme pro připravené zavedení:
+Povolili jsme události auditu pro různé akce, které provádíme pro postupné zavádění:
 
-- Událost auditu, když povolíte dvoufázové zavedení pro *synchronizaci hodnot hash hesel*, *předávací ověřování*nebo *bezproblémové jednotné přihlašování*.
-
-  >[!NOTE]
-  >Událost auditu je zaznamenána v případě, že je zapnuté *bezproblémové jednotné přihlašování* pomocí připraveného zavedení.
-
-  ![Podokno vytvořit zásady zavedení pro funkci – karta aktivita](./media/how-to-connect-staged-rollout/sr7.png)
-
-  ![Karta vlastnosti pro vytvoření zásady zavedení pro funkci – změněné vlastnosti](./media/how-to-connect-staged-rollout/sr8.png)
-
-- Událost auditu při přidání skupiny do *synchronizace hodnot hash hesel*, *předávacího ověřování*nebo *bezproblémového přihlašování*
+- Auditovat událost, když povolíte postupné zavedení *synchronizace hash hesel*, *předávacího ověřování*nebo *bezproblémového jednotného přihlašování*.
 
   >[!NOTE]
-  >Událost auditu se zaprotokoluje, když se do *synchronizace hodnot hash hesel* pro připravené zavedení přidá skupina.
+  >Událost auditu je zaznamenána při *bezproblémové jednotné přihlašování* je zapnuto pomocí postupného zavádění.
 
-  ![Podokno přidat skupinu do funkce – karta aktivita](./media/how-to-connect-staged-rollout/sr9.png)
+  ![Podokno Vytvořit zásadu zavedení funkce – karta Aktivita](./media/how-to-connect-staged-rollout/sr7.png)
 
-  ![Podokno přidat skupinu do zavedení funkcí – Změna vlastností – karta vlastnosti](./media/how-to-connect-staged-rollout/sr10.png)
+  ![Podokno Vytvořit zásadu zavedení funkce – karta Upravená vlastnosti](./media/how-to-connect-staged-rollout/sr8.png)
 
-- Událost auditu, pokud je uživatel, který byl přidán do skupiny, povolen pro připravené zavedení.
+- Auditovat událost při přidání skupiny do *synchronizace hash hesel*, *předávacího ověřování*nebo *bezproblémového jednotného přihlašování*.
 
-  ![Podokno pro přidání uživatele do funkce – karta aktivita](media/how-to-connect-staged-rollout/sr11.png)
+  >[!NOTE]
+  >Událost auditu je zaznamenána, když je skupina přidána do *synchronizace hodnoty hash hesla* pro postupné zavedení.
 
-  ![Karta cíle v podokně Přidat uživatele do funkce – cíl (s)](./media/how-to-connect-staged-rollout/sr12.png)
+  ![Podokno "Přidat skupinu k zavedení prvku" – karta Aktivita](./media/how-to-connect-staged-rollout/sr9.png)
 
-## <a name="validation"></a>Ověření
+  ![Podokno "Přidat skupinu k zavedení prvku" – karta Upravená vlastnosti](./media/how-to-connect-staged-rollout/sr10.png)
 
-Pokud chcete otestovat přihlášení pomocí *synchronizace hodnot hash hesel* nebo *předávacího ověřování* (uživatelské jméno a heslo), udělejte toto:
+- Auditovat událost, když je uživatel, který byl přidán do skupiny, povolen pro postupné zavedení.
 
-1. V extranetu přejděte na [stránku aplikace](https://myapps.microsoft.com) v privátní relaci prohlížeče a pak zadejte hodnotu USERPRINCIPALNAME (UPN) uživatelského účtu, který je vybraný pro připravené zavedení.
+  ![Podokno Přidat uživatele k zavedení funkce – karta Aktivita](media/how-to-connect-staged-rollout/sr11.png)
 
-   Uživatelé, na které bylo cíleno na přípravu, nejsou přesměrováni na vaši federované přihlašovací stránku. Místo toho se zobrazí výzva, abyste se přihlásili na přihlašovací stránce klienta Azure AD – branding.
+  ![Podokno "Přidat uživatele k zavedení funkce" – karta Cíl (cíle)](./media/how-to-connect-staged-rollout/sr12.png)
 
-1. Zajistěte, aby se přihlášení úspěšně zobrazilo v [sestavě aktivit přihlášení Azure AD](../reports-monitoring/concept-sign-ins.md) pomocí filtrování pomocí třídy userPrincipalName.
+## <a name="validation"></a>Ověřování
+
+Chcete-li otestovat přihlášení pomocí *synchronizace hash hesel* nebo *předávacího ověřování* (uživatelské jméno a přihlášení k heslu), postupujte takto:
+
+1. Na extranetu přejděte na [stránku Aplikace](https://myapps.microsoft.com) v relaci soukromého prohlížeče a zadejte UserPrincipalName (UPN) uživatelského účtu, který je vybrán pro postupné zavedení.
+
+   Uživatelé, kteří byli zacíleni na postupné zavedení, nebudou přesměrováni na federovanou přihlašovací stránku. Místo toho jsou požádáni o přihlášení na přihlašovací stránce značky tenanta Azure AD.
+
+1. Ujistěte se, že přihlášení úspěšně zobrazí v [sestavě aktivity přihlášení Služby Azure AD](../reports-monitoring/concept-sign-ins.md) filtrováním s UserPrincipalName.
 
 Testování přihlášení pomocí *bezproblémového jednotného přihlašování*:
 
-1. V intranetu přejděte na [stránku aplikace](https://myapps.microsoft.com) v privátní relaci prohlížeče a pak zadejte hodnotu USERPRINCIPALNAME (UPN) uživatelského účtu, který je vybraný pro připravené zavedení.
+1. V intranetu přejděte na [stránku Aplikace](https://myapps.microsoft.com) v soukromé relaci prohlížeče a zadejte UserPrincipalName (UPN) uživatelského účtu, který je vybrán pro postupné zavedení.
 
-   Uživatelům, kteří byli cíleni na dvoufázové zavedení *bezproblémového PŘIhlašování* , se zobrazí zpráva "Probíhá pokus o přihlášení..." zpráva před tím, než se tiše přihlásí.
+   Uživatelům, kteří byli zacíleni na postupné zavádění *bezproblémového jednotného přihlašování,* se zobrazí "Pokus o přihlášení ..." zprávu před tichým přihlášením.
 
-1. Zajistěte, aby se přihlášení úspěšně zobrazilo v [sestavě aktivit přihlášení Azure AD](../reports-monitoring/concept-sign-ins.md) pomocí filtrování pomocí třídy userPrincipalName.
+1. Ujistěte se, že přihlášení úspěšně zobrazí v [sestavě aktivity přihlášení Služby Azure AD](../reports-monitoring/concept-sign-ins.md) filtrováním s UserPrincipalName.
 
-   Pokud chcete sledovat přihlašování uživatelů, ke kterým stále dochází na Active Directory Federation Services (AD FS) (AD FS) pro vybrané uživatele se zahrnutými fázemi, postupujte podle pokynů v tématu [AD FS řešení potíží: události a protokolování](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events). Podívejte se na dokumentaci výrobce, kde najdete informace o tom, jak tuto kontrolu u poskytovatelů federačních třetích stran vyzkoušet.
+   Chcete-li sledovat přihlášení uživatelů, ke kterým stále dochází ve službě AD FS (AD FS) u vybraných uživatelů postupného zavádění, postupujte podle pokynů při [řešení potíží služby AD FS: Události a protokolování](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events). Zkontrolujte dokumentaci dodavatele o tom, jak zkontrolovat to na zprostředkovatele federace třetích stran.
 
-## <a name="remove-a-user-from-staged-rollout"></a>Odebrání uživatele z připraveného zavedení
+## <a name="remove-a-user-from-staged-rollout"></a>Odebrání uživatele z postupného zavedení
 
-Odebráním uživatele ze skupiny se pro tohoto uživatele zakáže fáze zavedení. Pokud chcete funkci dvoufázové zavedení zakázat, přesuňte ovládací prvek zpět na **off**.
+Odebráním uživatele ze skupiny zakážete postupné zavedení pro tohoto uživatele. Chcete-li funkci fázovaného zavedení zakázat, posuňte ovládací prvek zpět na **vypnuto**.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka: je možné tuto funkci použít v produkčním prostředí?**
+**Otázka: Lze tuto funkci použít v produkčním prostředí?**
 
-Odpověď: Ano, tuto funkci můžete použít ve vašem provozním tenantovi, ale doporučujeme, abyste si ji nejprve vyzkoušeli ve vašem tenantovi test.
+A: Ano, můžete použít tuto funkci ve vašem produkčním tenantovi, ale doporučujeme nejprve vyzkoušet v testovacím tenantovi.
 
-**Otázka: Tato funkce se dá použít k údržbě trvalé "společné existence", kde někteří uživatelé používají federované ověřování a jiní používají cloudové ověřování?**
+**Otázka: Lze tuto funkci použít k zachování trvalého "koexistence", kde někteří uživatelé používají federované ověřování a jiní používají cloudové ověřování?**
 
-Odpověď: Ne, tato funkce je navržena pro migraci z federovaných do cloudového ověřování ve fázích a pak na jejich následné vyjmutí do cloudového ověřování. Nedoporučujeme používat trvalý smíšený stav, protože tento přístup by mohl vést k neočekávaným tokům ověřování.
+A: Ne, tato funkce je určena pro migraci z federované ho do cloudu ověřování ve fázích a nakonec přejít na cloud ověřování. Nedoporučujeme používat trvalý smíšený stav, protože tento přístup může vést k neočekávaným tokům ověřování.
 
-**Otázka: mohu použít PowerShell k provedení připraveného zavedení?**
+**Otázka: Můžu použít PowerShell k provedení postupného zavádění?**
 
-Odpověď: Ano. Další informace o tom, jak používat PowerShell k provádění připraveného zavedení, najdete v tématu [Azure AD Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Odpověď: Ano. Informace o tom, jak pomocí PowerShellu provádět postupné zavádění, najdete v [tématu Azure AD Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="next-steps"></a>Další kroky
-- [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2.0 preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

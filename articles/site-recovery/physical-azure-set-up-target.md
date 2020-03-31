@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953905"
 ---
-# <a name="prepare-target-vmware-to-azure"></a>Připravit cíl (z VMware do Azure)
+# <a name="prepare-target-vmware-to-azure"></a>Příprava cíle (VMware do Azure)
 
-Tento článek popisuje, jak připravit prostředí Azure tak, aby se spustila replikace fyzických serverů (x64) se systémem Windows nebo Linux do Azure.
+Tento článek popisuje, jak připravit prostředí Azure tak, aby začalo replikovat fyzické servery (x64) se systémem Windows nebo Linux do Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Článek předpokládá:
-- Vytvořili jste Recovery Services trezor pro ochranu fyzických serverů. Z [Azure Portal](https://portal.azure.com "portál Azure")můžete vytvořit trezor Recovery Services.
-- Máte [nastavené místní prostředí](physical-azure-disaster-recovery.md) pro replikaci fyzických serverů do Azure.
+- Vytvořili jste trezor služby Recovery Services, který chrání fyzické servery. Trezor služby Recovery Services můžete vytvořit z [webu Azure Portal](https://portal.azure.com "portál Azure").
+- Máte [nastavení místního prostředí](physical-azure-disaster-recovery.md) pro replikaci fyzických serverů do Azure.
 
 ## <a name="prepare-target"></a>Připravit cíl
 
-Po dokončení **kroku 1: Vyberte cíl ochrany** a **Krok 2: připravit zdroj**. provedete to **krokem 3: Target**
+Po dokončení **kroku 1: Vyberte cíl ochrany** a krok **2: Připravit zdroj**, budete přejit krok **3: Cíl**
 
 ![Připravit cíl](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
 1. **Předplatné:** V rozevírací nabídce vyberte předplatné, do kterého chcete replikovat fyzické servery.
-2. **Model nasazení:** Vyberte model nasazení (Classic nebo Správce prostředků).
+2. **Model nasazení:** Vyberte model nasazení (Klasický nebo Správce prostředků)
 
-Na základě zvoleného modelu nasazení se spustí ověřování, aby se zajistilo, že budete mít aspoň jeden kompatibilní účet úložiště a virtuální síť v cílovém předplatném pro replikaci a převzetí služeb při selhání fyzických serverů na.
+Na základě zvoleného modelu nasazení je spuštěno ověření, aby bylo zajištěno, že máte v cílovém předplatném alespoň jeden kompatibilní účet úložiště a virtuální síť, na které můžete replikovat fyzické servery a převzetí služeb při selhání.
 
-Po úspěšném ověření se kliknutím na tlačítko OK přejděte k dalšímu kroku.
+Po úspěšném dokončení ověření přejděte klepnutím na tlačítko OK k dalšímu kroku.
 
-Pokud nemáte kompatibilní účet úložiště Správce prostředků nebo virtuální síť, můžete ho vytvořit kliknutím na tlačítko **+ účet úložiště** nebo **+ síť** v horní části stránky.
+Pokud nemáte kompatibilní účet úložiště Správce prostředků nebo virtuální síť, můžete jej vytvořit kliknutím na tlačítka **+ účet úložiště** nebo + **síť** v horní části stránky.
 
 ## <a name="next-steps"></a>Další kroky
-[Nakonfigurujte nastavení replikace](vmware-azure-set-up-replication.md).
+[Konfigurace nastavení replikace](vmware-azure-set-up-replication.md).

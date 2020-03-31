@@ -95,6 +95,9 @@
     - name: Trénování modelu
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: Distribuované trénování
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: Správa modelů (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +114,9 @@
     - name: Automatizované strojové učení
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: Správa nástrah ML
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: Instance služby Compute
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -184,39 +190,47 @@
           href: concept-train-model-git-integration.md
     - name: Práce s daty
       items:
-        - name: Připojení k datům ve službě Azure Storage
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: Získání dat z úložiště dat
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: Trénování s datovými sadami
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: Import dat v návrháři
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: Detekce posunů u datových sad
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: Správa verzí a sledování datových sad
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
-        - name: Označení dat popisky
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: Označení obrázků
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: Vytváření datových sad s popisky
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: Příjem dat s využitím Azure Data Factory
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: DevOps pro příjem dat
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+        - name: Označení dat
+          items:
+            - name: Označení dat popisky
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: Označení obrázků
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: Vytváření datových sad s popisky
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: Získání dat
+          items:
+            - name: Příjem dat s využitím Azure Data Factory
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: DevOps pro příjem dat
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: Import dat v návrháři
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: Přístup k datům
+          items:
+            - name: Připojení ke službě Azure Storage
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: Získání dat z úložiště dat
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: Správa a využívání dat
+          items:
+            - name: Trénování s datovými sadami
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: Detekce posunů u datových sad
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: Správa verzí a sledování datových sad
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: Trénování modelů
       items:
         - name: Použití nástrojů pro odhady pro ML
@@ -337,6 +351,7 @@
         - name: Aktivace kanálu
           href: how-to-trigger-published-pipeline.md
         - name: Ladění a řešení potíží s kanály
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: Ladění kanálů ve službě Application Insights
           displayname: 'pipelines, log, monitor'

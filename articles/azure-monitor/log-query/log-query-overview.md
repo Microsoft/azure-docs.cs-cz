@@ -1,50 +1,50 @@
 ---
-title: Přehled dotazů protokolu v Azure Monitor | Microsoft Docs
-description: Odpoví na běžné otázky související s dotazy protokolu a pomůže vám s jejich pomocí začít.
+title: Přehled dotazů protokolů ve službě Azure Monitor | Dokumenty společnosti Microsoft
+description: Odpovědi na běžné otázky týkající se dotazů protokolu a nastartuje je.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670113"
 ---
-# <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled dotazů protokolu v Azure Monitor
-Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v [protokolech Azure monitor](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz.
+# <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled dotazů protokolů v Azure Monitoru
+Protokolové dotazy vám pomohou plně využít hodnotu dat shromážděných v [protokolech monitorování Azure](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět složité operace s minimálním kódem. Prakticky všechny otázky mohou být zodpovězeny a analýzy provedeny tak dlouho, dokud byla shromážděna podpůrná data a chápete, jak vytvořit správný dotaz.
 
-Některé funkce v Azure Monitor, jako jsou [přehledy](../insights/insights-overview.md) a [řešení](../insights/solutions-inventory.md) , zpracovávají data protokolu bez odhalení základních dotazů. Abyste mohli plně využít jiné funkce Azure Monitor, měli byste pochopit, jak se vytvářejí dotazy a jak je můžete používat k interaktivní analýze dat v protokolech Azure Monitor.
+Některé funkce v Azure Monitoru, jako jsou [přehledy](../insights/insights-overview.md) a [řešení](../insights/solutions-inventory.md) zpracování dat protokolu bez vystavení podkladových dotazů. Chcete-li plně využít další funkce Azure Monitoru, měli byste pochopit, jak se výpočty dotazů a jak je můžete použít k interaktivní analýze dat v protokolech azure monitoru.
 
-V tomto článku se dozvíte, jak se naučíte používat dotazy protokolu v Azure Monitor. Odpovídá na časté otázky a poskytuje odkazy na další dokumentaci, která poskytuje další podrobnosti a lekce.
+Tento článek použijte jako výchozí bod pro učení o dotazech protokolu v Azure Monitoru. Odpovídá na běžné otázky a obsahuje odkazy na další dokumentaci, která poskytuje další podrobnosti a lekce.
 
-## <a name="how-can-i-learn-how-to-write-queries"></a>Jak se můžu dozvědět, jak zapisovat dotazy?
-Pokud chcete přejít přímo na nějaké věci, můžete začít s následujícími kurzy:
+## <a name="how-can-i-learn-how-to-write-queries"></a>Jak se mohu dozvědět, jak psát dotazy?
+Pokud chcete skočit přímo do věcí, můžete začít s následujícími kurzy:
 
-- Začněte [s Log Analytics v Azure monitor](get-started-portal.md).
-- [Začínáme s dotazy protokolu v Azure monitor](get-started-queries.md).
+- [Začínáme s Analýzou protokolů ve službě Azure Monitor](get-started-portal.md).
+- [Začínáme s dotazy protokolu v Azure Monitoru](get-started-queries.md).
 
-Jakmile vyberete základní informace, Projděte si více lekcí s využitím vlastních dat nebo dat z našeho ukázkového prostředí od: 
+Jakmile budete mít základy dolů, projděte si několik lekcí pomocí vlastních dat nebo dat z našeho demo prostředí, počínaje: 
 
-- [Práce s řetězci v Azure Monitorch dotazech protokolu](string-operations.md)
+- [Práce s řetězci v dotazech protokolu Azure Monitor](string-operations.md)
  
 ## <a name="what-language-do-log-queries-use"></a>Jaký jazyk používají dotazy protokolu?
-Protokoly Azure Monitor jsou založené na [Azure Průzkumník dat](/azure/data-explorer)a dotazy protokolu se zapisují pomocí stejného dotazovacího jazyka KQL (Kusto Query Language). Jedná se o bohatou jazyk navržený tak, aby bylo snadné ho číst a vytvářet a abyste ho mohli začít používat s minimálními pokyny.
+Protokoly monitorování Azure je založen na [Azure Data Explorer](/azure/data-explorer)a dotazy protokolu se zapisují pomocí stejného dotazovacího jazyka Kusto (KQL). Jedná se o bohatý jazyk navržený tak, aby byl snadno čitelný a autorský, a měli byste být schopni začít používat s minimálním vedením.
 
-Úplnou dokumentaci k KQL najdete v [dokumentaci k Azure Průzkumník dat KQL](/azure/kusto/query) a referenční informace k různým dostupným funkcím.<br>
-Rychlý návod k jazyku s použitím dat z protokolů Azure Monitor najdete [v tématu Začínáme s dotazy protokolu v Azure monitor](get-started-queries.md) .
-V tématu [Azure monitor rozdíly v jazyce dotazů protokolu](data-explorer-difference.md) pro drobné rozdíly ve verzi KQL používané v Azure monitor.
+Přečtěte si [dokumentaci k KQL průzkumníka dat Azure](/azure/kusto/query) pro úplnou dokumentaci k KQL a odkaz na různé funkce, které jsou k dispozici.<br>
+Rychlý návod k jazyku pomocí dat z protokolů Azure Monitor utématite v tématu [Začínáme s dotazy protokolů v Azure Monitoru.](get-started-queries.md)
+Viz [Azure Monitor dotaz dotazovat se na rozdíly](data-explorer-difference.md) v dotazu na drobné rozdíly ve verzi KQL používané službou Azure Monitor.
 
-## <a name="what-data-is-available-to-log-queries"></a>Jaká data jsou k dispozici pro dotazy protokolů?
-Všechna data shromážděná v protokolech Azure Monitor jsou k dispozici pro načtení a analýzu v protokolových dotazech. Různé zdroje dat zapisují svá data do různých tabulek, ale k analýze dat napříč více zdroji můžete použít více tabulek v jednom dotazu. Když vytváříte dotaz, začnete tím, že určíte, které tabulky mají data, která hledáte, takže byste měli mít aspoň základní znalosti o tom, jak jsou data v Azure Monitorch protokolech strukturovaná.
+## <a name="what-data-is-available-to-log-queries"></a>Jaká data jsou k dispozici pro protokolování dotazů?
+Všechna data shromážděná v protokolech monitorování Azure jsou k dispozici k načtení a analýze v dotazech protokolu. Různé zdroje dat budou zapisovat svá data do různých tabulek, ale do jednoho dotazu můžete zahrnout více tabulek a analyzovat data z více zdrojů. Při vytváření dotazu začnete určením, které tabulky obsahují data, která hledáte, takže byste měli mít alespoň základní znalosti o tom, jak jsou data v protokolech monitorování Azure strukturována.
 
-Seznam různých zdrojů dat, které naplňují protokoly Azure Monitor, najdete v tématu [zdroje protokolů Azure monitor](../platform/data-platform-logs.md#sources-of-azure-monitor-logs).<br>
-Vysvětlení způsobu strukturování dat najdete v tématu [Struktura protokolů Azure monitor](logs-structure.md) .
+V části [Zdroje protokolů monitorování Azure](../platform/data-platform-logs.md#sources-of-azure-monitor-logs)najdete seznam různých zdrojů dat, které naplňují protokoly monitorování Azure.<br>
+Vysvětlení, jak jsou data strukturována, najdete v tématu [Struktura protokolů monitorování Azure.](logs-structure.md)
 
 ## <a name="what-does-a-log-query-look-like"></a>Jak vypadá dotaz protokolu?
-Dotaz může být jednoduchý jako název jedné tabulky pro načtení všech záznamů z této tabulky:
+Dotaz může být stejně jednoduchý jako název jedné tabulky pro načítání všech záznamů z této tabulky:
 
 ```Kusto
 Syslog
@@ -70,35 +70,35 @@ app("ContosoRetailWeb").requests
       by bin(TimeGenerated,1hr))
 on $left.timestamp == $right.TimeGenerated
 ```
-I když nejste obeznámeni s KQL, měli byste být schopni aspoň zjistit základní logiku, kterou tyto dotazy používají. Začínají názvem tabulky a potom přidávají více příkazů pro filtrování a zpracování těchto dat. Dotaz může používat libovolný počet příkazů a můžete psát složitější dotazy, jak se seznámit s různými KQL příkazy k dispozici.
+I v případě, že nejste obeznámeni s KQL, měli byste být schopni alespoň zjistit základní logiku, kterou tyto dotazy používají. Začínají názvem tabulky a pak přidají více příkazů pro filtrování a zpracování těchto dat. Dotaz může používat libovolný počet příkazů a můžete psát složitější dotazy, jakmile se seznámíte s různými příkazy KQL, které jsou k dispozici.
 
-V tématu Začínáme [s dotazy protokolu v Azure monitor](get-started-queries.md) najdete kurz o dotazech protokolů, které zavádí jazyk a běžné funkce.<br>
+Viz [Začínáme s dotazy protokolu v Azure Monitoru](get-started-queries.md) pro kurz o dotazech protokolu, který zavádí jazyk a běžné funkce .<br>
 
 
 ## <a name="what-is-log-analytics"></a>Co je služba Log Analytics?
-Log Analytics je primárním nástrojem v Azure Portal pro zápis dotazů protokolu a interaktivní analýze jejich výsledků. I v případě, že se dotaz protokolu používá jinde v Azure Monitor, obvykle nejprve zapíšete a otestujete dotaz pomocí Log Analytics.
+Log Analytics je primární nástroj na portálu Azure pro psaní dotazů protokolu a interaktivní analýzu jejich výsledků. I v případě, že dotaz protokolu se používá jinde ve službě Azure Monitor, obvykle zapíšete a otestujete dotaz nejprve pomocí Log Analytics.
 
-Můžete začít Log Analytics z několika míst v Azure Portal. Rozsah dat, která jsou k dispozici pro Log Analytics, je určen podle toho, jak je spustíte. Další podrobnosti najdete v [oboru dotazů](scope.md) .
+Analýzu protokolů můžete spustit z několika míst na webu Azure Portal. Rozsah dat, která jsou k dispozici pro analýzu protokolů, je určen způsobem, jakým je spustíte. Další podrobnosti najdete [v tématu Obor dotazu.](scope.md)
 
-- Z nabídky **Azure monitor** nebo z nabídky **pracovní prostory Log Analytics** vyberte **protokoly** .
-- Na stránce **Přehled** aplikace Application Insights vyberte **Analytics** .
-- V nabídce prostředku Azure vyberte **protokoly** .
+- V nabídce **Azure Monitor** nebo **v pracovních prostorech Log Analytics vyberte** **Protokoly.**
+- Na stránce **Přehled** aplikace Application Insights vyberte **Analytics.**
+- V nabídce prostředku Azure vyberte **Protokoly.**
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)
 
-V článku [Začínáme s Log Analytics v Azure monitor](get-started-portal.md) najdete návod k Log Analytics, který přináší několik jeho funkcí.
+Podívejte [se na začínáme s Log Analytics v Azure Monitor](get-started-portal.md) pro výukový návod log analytics, který zavádí několik jeho funkcí.
 
 ## <a name="where-else-are-log-queries-used"></a>Kde jinde se používají dotazy protokolu?
-Kromě interaktivní práce s dotazy protokolů a jejich výsledky v Log Analytics oblasti v Azure Monitor, kde budete používat dotazy, patří následující:
+Kromě interaktivní práce s dotazy protokolu a jejich výsledky v Log Analytics, oblasti ve službě Azure Monitor, kde budete používat dotazy patří následující:
 
-- **Pravidla výstrah.** [Pravidla výstrah](../platform/alerts-overview.md) proaktivně identifikují problémy z dat ve vašem pracovním prostoru.  Každé pravidlo výstrahy je založené na prohledávání protokolu, které se automaticky spouští v pravidelných intervalech.  Výsledky jsou zkontrolovány, aby bylo možné určit, zda má být vytvořena výstraha.
-- **Řídicí panely.** Výsledky jakéhokoli dotazu můžete připnout na [řídicí panel Azure](../learn/tutorial-logs-dashboards.md) , který vám umožní vizualizovat data protokolů a metrik společně a volitelně sdílet s ostatními uživateli Azure.
-- **Náhled.**  Vizualizace dat, která se mají zahrnout do uživatelských řídicích panelů, můžete vytvořit pomocí [návrháře zobrazení](../platform/view-designer.md).  Dotazy protokolu poskytují data používaná [dlaždicemi](../platform/view-designer-tiles.md) a [částmi vizualizace](../platform/view-designer-parts.md) v každém zobrazení.  
-- **Export.**  Když importujete data protokolu z Azure Monitor do aplikace Excel nebo [Power BI](../platform/powerbi.md), vytvoříte dotaz protokolu pro definování dat k exportu.
-- **Prostředí.** PowerShellový skript můžete spustit z příkazového řádku nebo Azure Automation Runbooku, který pomocí rutiny [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) načte data protokolu z Azure monitor.  Tato rutina vyžaduje dotaz k určení dat, která se mají načíst.
-- **Rozhraní API protokolů Azure Monitor.**  [Rozhraní API protokolů Azure monitor](https://dev.loganalytics.io) umožňuje každému klientovi REST API načíst data protokolu z pracovního prostoru.  Požadavek rozhraní API obsahuje dotaz, který se spouští proti Azure Monitor k určení dat, která se mají načíst.
+- **Pravidla upozornění.** [Pravidla výstrah](../platform/alerts-overview.md) proaktivně identifikují problémy z dat ve vašem pracovním prostoru.  Každé pravidlo výstrahy je založeno na hledání protokolu, které je automaticky spuštěno v pravidelných intervalech.  Výsledky jsou kontrolovány k určení, pokud by měla být vytvořena výstraha.
+- **Řídicích panelů.** Výsledky libovolného dotazu můžete připnout do [řídicího panelu Azure,](../learn/tutorial-logs-dashboards.md) který vám umožní společně vizualizovat data protokolu a metrik y a volitelně je sdílet s ostatními uživateli Azure.
+- **Zobrazení.**  Pomocí [aplikace View Designer](../platform/view-designer.md)můžete vytvářet vizualizace dat, která budou zahrnuta do řídicích panelů uživatelů .  Dotazy protokolu poskytují data používaná [dlaždicemi](../platform/view-designer-tiles.md) a [vizualizačními částmi](../platform/view-designer-parts.md) v každém zobrazení.  
+- **Vývozní.**  Při importu dat protokolu z Azure Monitoru do Excelu nebo [Power BI](../platform/powerbi.md)vytvoříte dotaz protokolu, který definuje data, která se mají exportovat.
+- **Powershell.** Skript PowerShellu můžete spustit z příkazového řádku nebo runbooku Azure Automation, který používá [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) k načtení dat protokolu z Azure Monitoru.  Tato rutina vyžaduje dotaz k určení dat k načtení.
+- **Rozhraní API protokolů azure monitoru.**  Rozhraní [API protokolů monitorování Azure](https://dev.loganalytics.io) umožňuje libovolnému klientovi rozhraní REST API načíst data protokolu z pracovního prostoru.  Požadavek rozhraní API obsahuje dotaz, který je spuštěn proti Azure Monitor k určení dat k načtení.
 
 
 ## <a name="next-steps"></a>Další kroky
-- Projděte si [kurz použití Log Analytics v Azure Portal](get-started-portal.md).
-- Projděte si [kurz týkající se psaní dotazů](get-started-queries.md).
+- Projděte si [kurz o používání Log Analytics na webu Azure Portal](get-started-portal.md).
+- Projděte si [návod na psaní dotazů](get-started-queries.md).

@@ -1,86 +1,86 @@
 ---
-title: Nejčastější dotazy k monitorování výstrah a sestav
-description: V tomto článku najdete odpovědi na běžné otázky týkající se výstrahy monitorování Azure Backup a Azure Backup sestav.
+title: Nejčastější dotazy k monitorování výstrah a zpráv
+description: V tomto článku se dozvíte odpovědi na běžné otázky týkající se azure backup monitoring alert a Azure Backup sestavy.
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989565"
 ---
-# <a name="azure-backup-monitoring-alert---faq"></a>Výstraha monitorování Azure Backup – Nejčastější dotazy
+# <a name="azure-backup-monitoring-alert---faq"></a>Výstraha monitorování zálohování Azure – nejčastější dotazy
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se Azure Backup monitorování a vytváření sestav.
+Tento článek odpovídá na běžné otázky týkající se monitorování a vytváření sestav azure backup.
 
 ## <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Návody ověřit, zda byla data vytváření sestav spouštěna v pracovním prostoru Log Analytics (LA)?
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Jak zkontroluji, jestli data přehledů nezačala proudit do pracovního prostoru Analýzy protokolů (LA)?
 
-Přejděte do pracovního prostoru LA, který jste nakonfigurovali, přejděte na položku nabídky **protokoly** a spusťte dotaz CoreAzureBackup | Vezměte 1. Pokud se zobrazí vracený záznam, znamená to, že se data začala přesměrovat do pracovního prostoru. Počáteční nabízení dat může trvat až 24 hodin.
+Přejděte do pracovního prostoru LA, který jste nakonfigurovali, přejděte na položku nabídky **Protokoly** a spusťte dotaz CoreAzureBackup | trvat 1. Pokud se zobrazí záznam, který se vrací, znamená to, že data začala proudit do pracovního prostoru. Počáteční nabízení dat může trvat až 24 hodin.
 
-### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Jaká je frekvence nabízených dat do pracovního prostoru LA?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Jaká je frekvence nabízení dat do pracovního prostoru LA?
 
-Diagnostická data z trezoru se do Log Analyticsho pracovního prostoru napumpa s určitou prodlevou. Každá událost se doručí na Log Analytics pracovní prostor od 20 do 30 minut od jeho vložení z trezoru Recovery Services. Tady jsou další podrobnosti o prodlevě:
+Diagnostická data z trezoru jsou čerpána do pracovního prostoru Log Analytics s určitým zpožděním. Každá událost dorazí do pracovního prostoru Log Analytics 20 až 30 minut po jeho vytlačení z trezoru služby Recovery Services. Zde jsou další podrobnosti o zpoždění:
 
-* V rámci všech řešení se integrované výstrahy služby Backup odešlou hned po jejich vytvoření. Proto se obvykle zobrazují v pracovním prostoru Log Analytics po 20 až 30 minutách.
-* V rámci všech řešení se úlohy zálohování na vyžádání a úlohy obnovení odešlou hned po dokončení.
-* Pro všechna řešení kromě zálohování SQL se naplánované úlohy zálohování odešlou hned po dokončení.
-* U služby SQL Backup, protože k zálohování protokolů může docházet každých 15 minut, informace o všech dokončených úlohách plánovaného zálohování, včetně protokolů, jsou dávkové a vložené každých 6 hodin.
-* V rámci všech řešení se pro všechny ostatní informace, jako je například zálohovaná položka, zásada, body obnovení, úložiště a tak dále, je alespoň jednou denně nabízena.
-* Změna v konfiguraci zálohování (například změna zásady nebo zásady úprav) aktivuje vložení všech souvisejících informací o zálohování.
+* Ve všech řešeních jsou integrované výstrahy služby zálohování nabízeny ihned po jejich vytvoření. Takže se obvykle zobrazí v pracovním prostoru Log Analytics po 20 až 30 minutách.
+* Ve všech řešeních jsou úlohy zálohování na vyžádání a úlohy obnovení posunuty, jakmile skončí.
+* Pro všechna řešení s výjimkou zálohování SQL jsou naplánované úlohy zálohování posunuty, jakmile skončí.
+* Pro zálohování SQL, protože zálohy protokolu může dojít každých 15 minut, informace pro všechny dokončené naplánované úlohy zálohování, včetně protokolů, je dávkově a nabízeny každých 6 hodin.
+* Ve všech řešeních jsou další informace, jako je položka zálohování, zásady, body obnovení, úložiště a tak dále, posunuty alespoň jednou denně.
+* Změna konfigurace zálohování (například změna zásad nebo zásad úprav) spustí nabízení všech souvisejících informací o zálohování.
 
-### <a name="how-long-can-i-retain-reporting-data"></a>Jak dlouho mohu uchovávat data vytváření sestav?
+### <a name="how-long-can-i-retain-reporting-data"></a>Jak dlouho mohu uchovávat údaje o vykazování?
 
-Po vytvoření pracovního prostoru LA se můžete rozhodnout, že budete uchovávat data po dobu maximálně 2 let. Ve výchozím nastavení uchovává pracovní prostor LA data po dobu 31 dnů.
+Po vytvoření pracovního prostoru LA můžete uchovávat data maximálně po dobu 2 let. Ve výchozím nastavení zachová pracovní prostor LA data po dobu 31 dnů.
 
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>Budou se po konfiguraci pracovního prostoru LA zobrazovat všechna moje data v sestavách?
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>Zobrazí se po konfiguraci pracovního prostoru LA všechna data v sestavách?
 
- Všechna data vygenerovaná po konfiguraci nastavení diagnostiky se odešlou do pracovního prostoru LA a jsou dostupná v sestavách. Probíhající úlohy nejsou nabízeny pro vytváření sestav. Až se úloha dokončí nebo dojde k jejímu výpadku, pošle se do sestav.
+ Všechna data vygenerovaná po konfiguraci nastavení diagnostiky jsou převedena do pracovního prostoru LA a jsou k dispozici v sestavách. Probíhající úlohy nejsou pro vytváření sestav tlačeny. Po dokončení nebo selhání úlohy je odeslána do sestav.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Můžu zobrazit sestavy napříč trezory a předplatnými?
 
-Ano, sestavy můžete zobrazit v rámci trezorů a odběrů i oblastí. Vaše data můžou být uložená v jednom pracovním prostoru LA nebo skupině pracovních prostorů LA.
+Ano, sestavy můžete zobrazit v trezorech a předplatných i v oblastech. Vaše data mohou být umístěna v jednom pracovním prostoru LA nebo ve skupině pracovních prostorů LA.
 
-### <a name="can-i-view-reports-across-tenants"></a>Můžu zobrazit sestavy v klientech?
+### <a name="can-i-view-reports-across-tenants"></a>Můžu zobrazit sestavy mezi tenanty?
 
-Pokud jste uživatelem [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) , který má delegovaný přístup k pracovním prostorům pro vaše zákazníky nebo k pracovním prostorům La, můžete pomocí sestav zálohování zobrazit data ve všech klientech.
+Pokud jste uživatel [Služby Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) s delegovaným přístupem k předplatným vašich zákazníků nebo k pracovním prostorům LA, můžete pomocí sestav zálohování zobrazit data ve všech vašich tenantech.
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá, než se stav úlohy agenta Azure Backup projeví na portálu?
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá, než se stav úlohy agenta zálohování Azure projeví na portálu?
 
-Azure Portal může trvat až 15 minut, než bude odpovídat stavu úlohy agenta Azure Backup.
+Portál Azure může trvat až 15 minut, než bude odrážet stav úlohy agenta zálohování Azure.
 
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>V případě, že se úloha zálohování nezdařila, jak dlouho trvá vyvolání výstrahy?
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Když úloha zálohování selže, jak dlouho trvá aktivace upozornění?
 
-Výstraha se vyvolá do 20 minut od selhání zálohování Azure.
+Výstraha se zobrazí do 20 minut od selhání zálohování Azure.
 
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Existuje případ, kdy se e-mail neposílá, pokud jsou nakonfigurovaná oznámení?
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Existuje případ, kdy e-mail nebude odeslán, pokud jsou nakonfigurována oznámení?
 
-Ano. V následujících situacích se oznámení neodesílají.
+Ano. V následujících situacích nejsou odesílána oznámení.
 
-* Pokud jsou oznámení konfigurována každou hodinu a je vyvolána a vyřešena v průběhu hodiny
-* Při zrušení úlohy
-* Pokud druhá úloha zálohování neproběhne úspěšně, protože probíhá původní úloha zálohování
+* Pokud jsou oznámení konfigurována každou hodinu a výstraha je vyvolána a vyřešena během hodiny
+* Když je úloha zrušena
+* Pokud se druhá úloha zálohování nezdaří, protože probíhá původní úloha zálohování
 
-## <a name="recovery-services-vault"></a>Recovery Services trezor
+## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá, než se stav úlohy agenta Azure Backup projeví na portálu?
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá, než se stav úlohy agenta zálohování Azure projeví na portálu?
 
-Azure Portal může trvat až 15 minut, než bude odpovídat stavu úlohy agenta Azure Backup.
+Portál Azure může trvat až 15 minut, než bude odrážet stav úlohy agenta zálohování Azure.
 
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>V případě, že se úloha zálohování nezdařila, jak dlouho trvá vyvolání výstrahy?
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Když úloha zálohování selže, jak dlouho trvá aktivace upozornění?
 
-Výstraha se vyvolá do 20 minut od selhání zálohování Azure.
+Výstraha se zobrazí do 20 minut od selhání zálohování Azure.
 
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Existuje případ, kdy se e-mail neposílá, pokud jsou nakonfigurovaná oznámení?
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Existuje případ, kdy e-mail nebude odeslán, pokud jsou nakonfigurována oznámení?
 
-Ano. V následujících situacích se oznámení neodesílají:
+Ano. V následujících situacích nejsou odesílána oznámení:
 
-* Pokud jsou oznámení konfigurována každou hodinu a je vyvolána a vyřešena v průběhu hodiny
-* Při zrušení úlohy
-* Pokud druhá úloha zálohování neproběhne úspěšně, protože probíhá původní úloha zálohování
+* Pokud jsou oznámení konfigurována každou hodinu a výstraha je vyvolána a vyřešena během hodiny
+* Když je úloha zrušena
+* Pokud se druhá úloha zálohování nezdaří, protože probíhá původní úloha zálohování
 
 ## <a name="next-steps"></a>Další kroky
 

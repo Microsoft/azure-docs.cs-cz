@@ -1,110 +1,110 @@
 ---
-title: Vytvoření vyhledávací aplikace v Azure Portal
+title: Vytvoření vyhledávací aplikace na Webu Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Spusťte Průvodce vytvořením aplikace (Preview) a vygenerujte HTML stránky a skript pro provozní webovou aplikaci. Stránka obsahuje panel hledání, oblast výsledků, postranní panel a podporu typeahead.
+description: Spusťte průvodce vytvořením aplikace (preview) a vygenerujte stránky HTML a skript pro provozní webovou aplikaci. Stránka obsahuje panel hledání, oblast výsledků, postranní panel a podporu dopředného psaní.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/25/2020
+ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841076"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369708"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Rychlý Start: Vytvoření vyhledávací aplikace na portálu (Azure Kognitivní hledání)
+# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Úvodní příručka: Vytvoření vyhledávací aplikace na portálu (Azure Cognitive Search)
 
-Pomocí průvodce **vytvořením vyhledávací aplikace** na portálu vygenerujte webovou aplikaci ve stylu "localhost", která běží v prohlížeči. V závislosti na konfiguraci je vygenerovaná aplikace při prvním použití funkční, s živým připojením ke vzdálenému indexu. Výchozí aplikace může obsahovat panel hledání, oblast výsledků, filtry bočního panelu a podporu typeahead.
+Pomocí průvodce **vytvořením vyhledávací aplikace** portálu vygenerujte webovou aplikaci ve stylu localhost, která se spouští v prohlížeči ke stažení. V závislosti na konfiguraci je vygenerovaná aplikace funkční při prvním použití s živým připojením ke vzdálenému indexu. Výchozí aplikace může obsahovat panel hledání, oblast výsledků, filtry postranního panelu a podporu dopředného psaní.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tuto chvíli budete chtít upgradovat na [nejnovější verzi Microsoft Edge](https://www.microsoft.com/edge) nebo použít prohlížeč Chrome pro Google.
+Upgradujte na [nejnovější verzi aplikace Microsoft Edge](https://www.microsoft.com/edge) nebo pro tento rychlý start použijte prohlížeč Google Chrome.
 
-[Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
+[Vytvořte službu Azure Cognitive Search](search-create-service-portal.md) nebo [najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý start můžete využít bezplatnou službu. 
 
-[Vytvořte index](search-create-index-portal.md) , který se použije jako základ vaší aplikace. 
+[Vytvořte index,](search-create-index-portal.md) který chcete použít jako základ aplikace. 
 
-V tomto rychlém startu se používají Vestavěná ukázková data a index reálného majetku, protože mají miniatury obrázků. Pokud chcete vytvořit index použitý v tomto cvičení, spusťte průvodce **importem dat** a vyberte zdroj dat *realestate-US-Sample* .
+Tento rychlý start používá předdefinovaná ukázková data a index nemovitostí, protože obsahuje miniatury (průvodce podporuje přidávání obrázků na stránku s výsledky). Chcete-li vytvořit index použitý v tomto cvičení, spusťte Průvodce **importem dat** a zvolte zdroj dat *realestate-us-sample.*
 
-![Stránka zdroje dat pro ukázková data](media/search-create-app-portal/import-data-realestate.png)
+![stránka zdroje dat pro ukázková data](media/search-create-app-portal/import-data-realestate.png)
 
-Až bude index připravený k použití, přejděte k dalšímu kroku.
+Když je index připraven k použití, přejděte k dalšímu kroku.
 
-## <a name="start-the-wizard"></a>Spustit Průvodce
+## <a name="start-the-wizard"></a>Spuštění průvodce
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a [vyhledejte vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) a [vyhledejte svou vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
 
-1. Na stránce Přehled v odkazech uprostřed stránky vyberte **indexy**. 
+1. Na stránce Přehled vyberte z odkazů uprostřed stránky **položku Indexy**. 
 
-1. V seznamu existujících indexů vyberte *realestate-US-Sample-index* .
+1. Ze seznamu existujících indexů zvolte *realestate-us-sample-index.*
 
-1. Na stránce index v horní části vyberte **vytvořit vyhledávací aplikaci (Preview)** a spusťte tak průvodce.
+1. Na stránce rejstříku vhorní části vyberte **Vytvořit vyhledávací aplikaci (náhled)** a spusťte průvodce.
 
-1. Na první stránce průvodce vyberte **Povolit sdílení prostředků mezi zdroji (CORS)** a přidejte do definice indexu podporu CORS. Tento krok je nepovinný, ale vaše místní webová aplikace se nebude bez něj připojovat ke vzdálenému indexu.
+1. Na první stránce průvodce vyberte **Povolit sdílení prostředků mezi zdroji (CORS),** chcete-li přidat podporu CORS do definice indexu. Tento krok je volitelný, ale místní webová aplikace se bez něj ke vzdálenému indexu nepřipojí.
 
 ## <a name="configure-search-results"></a>Konfigurace výsledků hledání
 
-Průvodce poskytuje základní rozložení pro vykreslené výsledky hledání, které obsahují místo pro miniaturu obrázku, název a popis. Zálohování každého z těchto prvků je pole v indexu, které poskytuje data. 
+Průvodce poskytuje základní rozložení pro vykreslené výsledky hledání, které obsahuje místo pro miniaturu, název a popis. Zálohování každého z těchto prvků je pole v indexu, který poskytuje data. 
 
-1. V části Miniatura vyberte pole *Miniatura* v indexu *realestate-US-Sample* . Tato ukázka se stane zahrnutím miniatur obrázků do formátu obrázků adres URL uložených v poli s názvem *Miniatura*. Pokud váš index neobsahuje obrázky, ponechte toto pole prázdné.
+1. V části Miniatura zvolte pole *miniatur* v indexu *realestate-us-sample.* Tato ukázka obsahuje miniatury obrázků ve formě obrázků url uložených v poli nazvaném *miniatura*. Pokud index obrázky neobsahuje, ponechte toto pole prázdné.
 
-1. V části název vyberte pole, které vyjadřuje jedinečnost každého dokumentu. V této ukázce je ID výpisu rozumného výběru.
+1. V poli, které vyjadřuje jedinečnost každého dokumentu, zvolte pole, které vyjadřuje jedinečnost jednotlivých dokumentů. V této ukázce je ID výpisu přiměřeným výběrem.
 
-1. V poli Popis zvolte pole, které poskytuje podrobné informace, které mohou někomu pomáhat při rozhodování, zda kliknout do konkrétního dokumentu.
+1. V poli Description zvolte pole, které obsahuje podrobnosti, které může někomu pomoci rozhodnout se, zda na daný dokument klikne.
 
-![Stránka zdroje dat pro ukázková data](media/search-create-app-portal/configure-results.png)
+![stránka zdroje dat pro ukázková data](media/search-create-app-portal/configure-results.png)
 
-## <a name="add-a-sidebar"></a>Přidat postranní panel
+## <a name="add-a-sidebar"></a>Přidání postranního panelu
 
-Vyhledávací služba podporuje omezující navigaci, která se často vykresluje jako postranní panel. Omezující vlastnosti jsou založené na filtrovacích a tváře polích, jak je vyjádřeno ve schématu indexu.
+Vyhledávací služba podporuje fazetovou navigaci, která je často vykreslena jako postranní panel. Omezující vlastnosti jsou založeny na filtrovatelných a omezujících vlastnostech, jak je vyjádřeno ve schématu indexu.
 
-V Azure Kognitivní hledání je nahodnocená navigace kumulativním prostředím pro filtrování. Výběr více filtrů v rámci kategorie rozšiřuje výsledky (například výběr Praha a Bellevue v rámci města). V různých kategoriích výběr více filtrů zužuje výsledky.
+V Azure Cognitive Search famitní navigace je kumulativní filtrování prostředí. V rámci kategorie výběr více filtrů rozbalí výsledky (například výběrseattle a Bellevue v rámci města). Výběr více filtrů napříč kategoriemi výsledky zužuje.
 
 > [!TIP]
-> Úplné schéma indexu můžete zobrazit na portálu. Vyhledejte odkaz **definice indexu (JSON)** na stránce Přehled v jednotlivých indexech. Pole, která jsou kvalifikována pro přecházení s omezujícími vlastnostmi, mají "filtrovatelné: true" a "FACET: true" atributy.
+> Můžete zobrazit úplné schéma indexu na portálu. Vyhledejte odkaz **definice indexu (JSON)** na stránce přehledu každého indexu. Pole, která mají nárok na fazetovou navigaci, mají atributy "filterable: true" a "facetable: true".
 
-Přijměte aktuální výběr omezujících vlastností a pokračujte na další stránku.
+Přijměte aktuální výběr omezujících stránek a pokračujte na další stránku.
 
 
-## <a name="add-typeahead"></a>Přidat typeahead
+## <a name="add-typeahead"></a>Přidání typu dopřed
 
-Funkce typeahead je k dispozici ve formě automatického dokončování a návrhů dotazů. Průvodce podporuje návrhy dotazů. Na základě vstupů z klávesnice, které poskytuje uživatel, služba Search vrátí seznam "dokončených" řetězců dotazů, které je možné vybrat jako vstup.
+Funkce dopředného dopředného dotazu je k dispozici ve formě automatických dokončování a návrhů dotazů. Průvodce podporuje návrhy dotazů. Na základě vstupů stisknutí klávesy poskytnutých uživatelem vrátí vyhledávací služba seznam "dokončených" řetězců dotazu, které lze vybrat jako vstup.
 
-Návrhy jsou povolené pro konkrétní definice polí. Průvodce vám nabídne možnosti konfigurace, kolik informací je součástí návrhu. 
+Návrhy jsou povoleny pro konkrétní definice polí. Průvodce nabízí možnosti konfigurace, kolik informací je zahrnuto v návrhu. 
 
-Následující snímek obrazovky ukazuje možnosti v průvodci, juxtaposed s vykreslenou stránkou v aplikaci. Můžete vidět, jak se používají výběry polí, a jak se má v návrhu zahrnout nebo vyloučit označení "Zobrazit název pole".
+Následující snímek obrazovky ukazuje možnosti v průvodci, vedle sebe s vykreslenou stránkou v aplikaci. Můžete vidět, jak se používají výběry polí a jak se v návrhu používá "Zobrazit název pole" k zahrnutí nebo vyloučení označení.
 
 ![Konfigurace návrhů dotazů](media/search-create-app-portal/suggestions.png)
 
-## <a name="create-download-and-execute"></a>Vytvoření, stažení a spuštění
+## <a name="create-download-and-execute"></a>Vytvořit, stáhnout a spustit
 
-1. Vyberte **vytvořit vyhledávací aplikaci** pro vygenerování souboru HTML.
+1. Vyberte **Vytvořit vyhledávací aplikaci,** chcete-li vygenerovat soubor HTML.
 
-1. Po zobrazení výzvy vyberte **Stáhnout aplikaci** a Stáhněte si soubor.
+1. Po zobrazení výzvy vyberte **Stáhnout aplikaci** a stáhněte soubor.
 
-1. Otevřete tento soubor. Měla by se zobrazit stránka podobná následujícímu snímku obrazovky. Zadejte termín a použijte filtry k zúžení výsledků. 
+1. Otevřete tento soubor. Měli byste vidět stránku podobnou následujícímu snímku obrazovky. Zadejte termín a pomocí filtrů zúžíte výsledky. 
 
-Základní index se skládá z fiktivních generovaných dat, která byla duplikována v rámci dokumentů, a popisy se někdy neshodují s obrázkem. Pokud vytváříte aplikaci na základě vlastních indexů, můžete očekávat ucelenější prostředí.
+Základní index se skládá z fiktivních generovaných dat, která byla duplikována napříč dokumenty, a popisy někdy neodpovídají obrázku. Při vytváření aplikace založené na vlastních indexech můžete očekávat soudržnější prostředí.
 
 ![Spuštění aplikace](media/search-create-app-portal/run-app.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné na konci projektu zjistit, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
-Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
+Můžete najít a spravovat prostředky na portálu pomocí odkazu **Všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
-Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
+Pokud používáte bezplatnou službu, nezapomeňte, že jste omezeni na tři indexy, indexery a zdroje dat. Můžete odstranit jednotlivé položky na portálu, abyste zůstali pod limitem. 
 
 ## <a name="next-steps"></a>Další kroky
 
-I když je výchozí aplikace užitečná při počátečním a malém úkolu, podrobnější informace o rozhraních API vám pomůžou porozumět konceptům a pracovním postupům na hlubší úrovni:
+Zatímco výchozí aplikace je užitečná pro počáteční průzkum a malé úkoly, kontrola api v rané fázi vám pomůže pochopit koncepty a pracovní postupy na hlubší úrovni:
 
 > [!div class="nextstepaction"]
 > [Vytvoření indexu pomocí sady .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)

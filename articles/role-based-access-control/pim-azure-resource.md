@@ -1,6 +1,6 @@
 ---
 title: Správa přístupu k prostředkům Azure pomocí Azure AD a PIM
-description: Přečtěte si o správě přístupu k prostředkům Azure pomocí Azure Active Directory Privileged Identity Management (PIM) a řízení přístupu na základě role (RBAC).
+description: Další informace o správě přístupu k prostředkům Azure pomocí Azure Active Directory Privileged Identity Management (PIM) a řízení přístupu na základě rolí (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,21 +16,21 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.openlocfilehash: 53c6375ce04425eae27f4c935e613cc27d058dc8
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77138042"
 ---
-# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Správa přístupu k prostředkům Azure pomocí Azure AD Privileged Identity Management
+# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Správa přístupu k prostředkům Azure pomocí správy privilegovaných identit Azure AD
 
-K ochraně privilegovaných účtů před škodlivými internetovými útoky můžete pomocí Azure Active Directory Privileged Identity Management (PIM) snížit dobu expozice oprávnění a zvýšit viditelnost jejich používání prostřednictvím sestav a výstrah. PIM to dělá tak, že uživatelům omezí jenom přístup k jejich oprávněním (JIT) nebo přiřazením oprávnění pro zkrácenou dobu trvání, po které se oprávnění automaticky odvolají. 
+Chcete-li chránit privilegované účty před škodlivými kybernetickými útoky, můžete pomocí správy privilegovaných identit služby Azure Active Directory (PIM) snížit dobu expozice oprávnění a zvýšit viditelnost jejich použití prostřednictvím sestav a výstrah. PIM to tím, že omezuje uživatele pouze převzetí jejich oprávnění "just in time" (JIT), nebo přiřazením oprávnění pro zkrácenou dobu, po které jsou oprávnění automaticky odvolána. 
 
-Ke správě, řízení a monitorování přístupu k prostředkům Azure teď můžete použít PIM s řízením přístupu na základě role (RBAC) Azure. PIM může spravovat členství předdefinovaných a vlastních rolí, které vám pomůžou: 
+Teď můžete používat PIM s řízením přístupu na základě rolí Azure (RBAC) ke správě, řízení a monitorování přístupu k prostředkům Azure. PIM může spravovat členství v předdefinovaných a vlastních rolích, které vám pomohou: 
 
-- Povolení přístupu k prostředkům Azure na vyžádání a přístup k prostředkům za běhu
-- Automaticky vyprší přístup k prostředkům pro přiřazené uživatele a skupiny.
-- Přiřazení dočasného přístupu k prostředkům Azure pro rychlé úlohy nebo plány volání
-- Získat výstrahy, když přiřadíte přístup k prostředkům novým uživatelům nebo skupinám a když aktivujete oprávněná přiřazení
+- Povolení přístupu k prostředkům Azure na vyžádání a "právě včas"
+- Automaticky vyprší platnost přístupu k prostředkům pro přiřazené uživatele a skupiny
+- Přiřazení dočasného přístupu k prostředkům Azure pro rychlé úkoly nebo plány na zavolání
+- Získejte upozornění, když je novým uživatelům nebo skupinám přiřazen přístup ke zdrojům a kdy aktivují způsobilá přiřazení
 
-Další informace najdete v tématu [co je Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md).
+Další informace naleznete v tématu [Co je správa privilegovaných identit Azure AD?](../active-directory/privileged-identity-management/pim-configure.md).

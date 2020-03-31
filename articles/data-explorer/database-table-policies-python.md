@@ -1,6 +1,6 @@
 ---
-title: 'Vytvoření zásad pro cluster a databázi Azure Průzkumník dat pomocí knihovny Pythonu v Azure Průzkumník dat '
-description: V tomto článku se dozvíte, jak vytvářet zásady pomocí Pythonu.
+title: 'Vytváření zásad pro cluster a databázi Azure Data Explorer pomocí knihovny Azure Data Explorer Python '
+description: V tomto článku se dozvíte, jak vytvořit zásady pomocí Pythonu.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,25 +8,25 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667281"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Vytvoření zásad databáze a tabulek pro Azure Průzkumník dat pomocí Pythonu
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Vytvoření zásad databáze a tabulek pro Azure Data Explorer pomocí Pythonu
 
 > [!div class="op_single_selector"]
-> * [C#](database-table-policies-csharp.md)
+> * [C #](database-table-policies-csharp.md)
 > * [Python](database-table-policies-python.md)
 >
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku vytvoříte zásady databáze a tabulek pro Azure Průzkumník dat pomocí Pythonu.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku vytvoříte zásady databáze a tabulky pro Azure Data Explorer pomocí Pythonu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Testovací cluster a databáze](create-cluster-database-python.md)
+* [Testovací cluster a databázi](create-cluster-database-python.md)
 * [Testovací tabulka](python-ingest-data.md#create-a-table-on-your-cluster)
 
 ## <a name="install-the-data-libraries"></a>Instalace datových knihoven
@@ -37,11 +37,11 @@ pip install azure-mgmt-kusto
 pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
-## <a name="authentication"></a>Ověření
-Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pro ověřování z [testovacího clusteru a databáze](create-cluster-database-csharp.md#authentication)můžete použít stejnou aplikaci Azure AD. Pokud chcete použít jinou aplikaci Azure AD, přečtěte si téma [Vytvoření aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) pro vytvoření bezplatné aplikace Azure AD a přidání přiřazení role v oboru předplatného. Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID`a `Client Secret`. Je možné, že budete muset přidat novou aplikaci Azure AD jako objekt zabezpečení v databázi, viz téma [Správa oprávnění pro databázi azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
+## <a name="authentication"></a>Ověřování
+Pro spuštění příklady v tomto článku potřebujeme azure ad aplikace a instanční objekt, který může získat přístup k prostředkům. Můžete použít stejnou aplikaci Azure AD pro ověřování z [testovacího clusteru a databáze](create-cluster-database-csharp.md#authentication). Pokud chcete použít jinou aplikaci Azure AD, najdete [v tématu vytvoření aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) k vytvoření bezplatné aplikace Azure AD a přidání přiřazení role v oboru předplatného. To také `Directory (tenant) ID`ukazuje, jak `Application ID`získat `Client Secret`, a . Možná budete muset přidat novou aplikaci Azure AD jako hlavní v databázi, najdete v [tématu Správa oprávnění databáze Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
 
 ## <a name="alter-database-retention-policy"></a>Změnit zásady uchovávání informací databáze
-Nastaví zásady uchovávání informací s obdobím tichého odstranění 10 dnů.
+Nastaví zásady uchovávání informací s 10denním obdobím obnovitelného odstranění.
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -73,8 +73,8 @@ poller = kustoManagementClient.databases.update(resource_group_name=resource_gro
                                            parameters=DatabaseUpdate(soft_delete_period=datetime.timedelta(days=10)))
 ```
 
-## <a name="alter-database-cache-policy"></a>Změnit zásady mezipaměti databáze
-Nastaví zásady mezipaměti pro databázi, že posledních pět dnů dat bude v clusteru SSD.
+## <a name="alter-database-cache-policy"></a>Změnit zásadu mezipaměti databáze
+Nastaví zásady mezipaměti pro databázi, která bude posledních pět dní dat na ssd disk clusteru.
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -106,8 +106,8 @@ poller = kustoManagementClient.databases.update(resource_group_name=resource_gro
                                            parameters=DatabaseUpdate(hot_cache_period=datetime.timedelta(days=5)))
 ```
 
-## <a name="alter-table-cache-policy"></a>Změnit zásady mezipaměti tabulek
-Nastaví zásady mezipaměti pro tabulku, která bude obsahovat posledních pět dní dat v clusteru SSD.
+## <a name="alter-table-cache-policy"></a>Změnit zásadu mezipaměti tabulky
+Nastaví zásady mezipaměti pro tabulku, která bude posledních pět dní dat na ssd disk clusteru.
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
@@ -132,7 +132,7 @@ kusto_client.execute_mgmt(database_name, command)
 ```
 
 ## <a name="add-a-new-principal-for-database"></a>Přidání nového objektu zabezpečení pro databázi
-Přidání nové aplikace Azure AD jako hlavního správce pro databázi
+Přidání nové aplikace Azure AD jako hlavního povinného správce pro databázi
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient

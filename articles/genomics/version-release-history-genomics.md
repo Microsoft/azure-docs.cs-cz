@@ -1,7 +1,7 @@
 ---
 title: Historie vydaných verzí
 titleSuffix: Microsoft Genomics
-description: Historie verzí aktualizací klienta Microsoft Genomics Python pro opravy a nové funkce.
+description: Historie vydání aktualizací klienta Microsoft Genomics Python pro opravy a nové funkce.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,36 +10,36 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76991078"
 ---
 # <a name="version-release-history"></a>Historie vydaných verzí
-Tým Microsoft Genomics pravidelně aktualizuje klienta Microsoft Genomics Pythonu pro opravy a nové funkce. 
+Tým Microsoft Genomics pravidelně aktualizuje klienta Microsoft Genomics Python pro opravy a nové funkce. 
 
 ## <a name="latest-release"></a>Nejnovější verze
-Aktuální klient Pythonu má verzi 0.9.0. Byl vydán Únor 6 2019 a podporuje spuštěné pracovní postupy s GENOME 3,5 a GATK4. Podporuje výstup gVCF a může přijmout volitelný argument pro výstupní kompresi.
+Aktuální klient Pythonu je verze 0.9.0. Byl vydán v únoru 6 2019 a podporuje běh pracovních postupů s GATK 3.5 a GATK4. Podporuje výstup gVCF a může přijmout volitelný argument pro výstupní kompresi.
 
 
-## <a name="release-history"></a>Historie verzí 
-Nové verze Microsoft Genomics klienta Pythonu jsou vydávány přibližně jednou za rok. Při vydání nových verzí klienta Microsoft Genomics Pythonu se tady aktualizuje seznam oprav a funkcí. Při vydání nových verzí by měly být starší verze i nadále podporovány alespoň 90 dnů. V případě, že předchozí verze již nejsou podporovány, budou na této stránce označeny. 
+## <a name="release-history"></a>Historie vydání 
+Nové verze klienta Microsoft Genomics Python jsou vydávány přibližně jednou ročně. Při vydání nových verzí klienta Microsoft Genomics Python je zde aktualizován seznam oprav a funkcí. Po vydání nových verzí by předchozí verze měly být nadále podporovány po dobu nejméně 90 dnů. Pokud předchozí verze již nejsou podporovány, bude uvedeno na této stránce. 
 
-### <a name="version-090"></a>0\.9.0 verze
-0\.9.0 verze obsahuje podporu pro komprimaci výstupu. Jedná se o ekvivalent spuštění `-bgzip`, po kterém následuje `-tabix` ve výstupu VCF nebo gvcf. Další informace najdete v článku [Nejčastější dotazy](frequently-asked-questions-genomics.md). 
+### <a name="version-090"></a>Verze 0.9.0
+Verze 0.9.0 obsahuje podporu pro výstupní kompresi. To je ekvivalentní `-bgzip` spuštění `-tabix` následuje na výstupu vcf nebo gvcf. Další informace naleznete [v tématu Nejčastější dotazy](frequently-asked-questions-genomics.md). 
 
-### <a name="version-081"></a>0\.8.1 verze
-0\.8.1 verze obsahuje drobné opravy chyb.  
+### <a name="version-081"></a>Verze 0.8.1
+Verze 0.8.1 obsahuje drobné opravy chyb.  
 
 ### <a name="version-080"></a>Verze 0.8.0
-0\.8.0 verze obsahuje podporu pro GATK4 a gVCFs.  
+Verze 0.8.0 obsahuje podporu pro GATK4 a odchozí gVCFs.  
 
-### <a name="version-074"></a>0\.7.4 verze
-Verze 0.7.4 zahrnuje podporu pro přijímání tokenů SAS místo klíčů účtu ve vstupu `config.txt`. Další informace najdete v tématu [rychlý Start – vstupní tokeny SAS](quickstart-input-sas.md). 
+### <a name="version-074"></a>Verze 0.7.4
+Verze 0.7.4 obsahuje podporu pro přijímání tokenů SAS namísto klíčů účtu ve `config.txt` vstupu. Další informace naleznete [v tématu Input SAS tokens quickstart](quickstart-input-sas.md). 
 
-### <a name="version-073"></a>0\.7.3 verze
-0\.7.3 verze obsahuje drobné opravy chyb.
+### <a name="version-073"></a>Verze 0.7.3
+Verze 0.7.3 obsahuje drobné opravy chyb.
 
-### <a name="version-072"></a>0\.7.2 verze
-Verze 0.7.2 je počáteční verze. Byla vydána v listopadu 1 2017.
+### <a name="version-072"></a>Verze 0.7.2
+Verze 0.7.2 je počáteční verze. To bylo propuštěno listopad 1 2017.

@@ -1,6 +1,6 @@
 ---
-title: Doporučení zabezpečení pro Azure IoT | Microsoft Docs
-description: Tento článek shrnuje další kroky, které zajišťují zabezpečení ve vašem řešení Azure IoT Hub.
+title: Doporučení zabezpečení pro Azure IoT | Dokumenty společnosti Microsoft
+description: Tento článek shrnuje další kroky k zajištění zabezpečení v řešení Azure IoT Hub.
 author: dsk-2015
 manager: philmea
 ms.service: iot-hub
@@ -10,60 +10,60 @@ ms.date: 11/13/2019
 ms.author: dkshir
 ms.custom: security-recommendations
 ms.openlocfilehash: 0ada9a520a5be56444a1c3e746a68dbcf9275686
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048459"
 ---
-# <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Doporučení zabezpečení pro nasazení Azure Internet věcí (IoT)
+# <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Doporučení zabezpečení pro nasazení Azure Internet of Things (IoT)
 
-Tento článek obsahuje doporučení zabezpečení pro IoT. Implementace těchto doporučení vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem sdíleném modelu zodpovědnosti. Další informace o tom, co společnost Microsoft splní zodpovědností poskytovatele služeb, najdete v článku [sdílené odpovědnosti pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
+Tento článek obsahuje doporučení zabezpečení pro IoT. Implementace těchto doporučení vám pomůže splnit vaše bezpečnostní povinnosti, jak je popsáno v našem modelu sdílené odpovědnosti. Další informace o tom, co společnost Microsoft dělá pro plnění povinností poskytovatele služeb, našlápne [na sdílené odpovědnosti za cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
-Některá doporučení obsažená v tomto článku můžete automaticky monitorovat pomocí Azure Security Center. Azure Security Center je první linií obrany při ochraně vašich prostředků v Azure. Pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Pak vám poskytne doporučení, jak je řešit.
+Některá doporučení zahrnutá v tomto článku můžete automaticky sledovat pomocí Azure Security Center. Azure Security Center je první obranná linie ochrany vašich prostředků v Azure. Pravidelně analyzuje stav zabezpečení prostředků Azure k identifikaci potenciálních chyb zabezpečení. Poté poskytuje doporučení, jak je řešit.
 
-- Další informace o Azure Security Center doporučeních najdete v tématu [doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md).
-- Informace o Azure Security Center najdete v [Azure Security Center?](../security-center/security-center-intro.md)
+- Další informace o doporučeních Azure Security Center najdete [v tématu Doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md).
+- Informace o Azure Security Center najdete v tématu [Co je Azure Security Center?](../security-center/security-center-intro.md)
 
 ## <a name="general"></a>Obecné
 
-| Doporučení | Komentáře | Podporováno v ASC |
+| Doporučení | Komentáře | Podporováno ASC |
 |-|----|--|
-| Stále aktuální | Používejte nejnovější verze podporovaných platforem, programovacích jazyků, protokolů a platforem. | - |
-| Zachování ověřovacích klíčů v bezpečí | Po nasazení Udržujte ID zařízení a jejich ověřovací klíče fyzicky bezpečně. Vyhnete se tak poškození zařízení jako registrovaného zařízení. | - |
-| Pokud je to možné, používejte sady SDK zařízení | Sady SDK pro zařízení implementují celou řadu funkcí zabezpečení, například šifrování, ověřování atd., které vám pomůžou při vývoji robustní a zabezpečené aplikace zařízení. Další informace najdete v tématu [pochopení a používání sad SDK pro Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) . | - |
+| Buďte v obraze | Používejte nejnovější verze podporovaných platforem, programovacích jazyků, protokolů a architektur. | - |
+| Zachování bezpečného klíče ověřování | Po nasazení uchovávejte ID zařízení a jejich ověřovací klíče fyzicky v bezpečí. Tím se zabrání škodlivé zařízení maskovat jako registrované zařízení. | - |
+| Pokud je to možné, používejte sady SDK zařízení | Sady SDK zařízení implementují různé funkce zabezpečení, jako je šifrování, ověřování a tak dále, které vám pomohou při vývoji robustní a zabezpečené aplikace zařízení. Další informace najdete [v tématu Principy a používání sad SDK služby Azure IoT Hub.](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) | - |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu 
 
-| Doporučení | Komentáře | Podporováno v ASC |
+| Doporučení | Komentáře | Podporováno ASC |
 |-|----|--|
-| Definování řízení přístupu pro centrum | [Pochopení a definování typu přístupu ke](iot-security-deployment.md#securing-the-cloud) každé komponentě bude mít vaše řešení IoT Hub, a to na základě funkcí. Povolená oprávnění jsou *Read*, *RegistryReadWrite*, *ServiceConnect*a *DeviceConnect*registru. Výchozí [zásady sdíleného přístupu ve službě IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) vám pomůžou také definovat oprávnění pro jednotlivé komponenty na základě její role. | - |
-| Definování řízení přístupu pro back-endové služby | Data ingestovaná pomocí řešení IoT Hub můžou využívat jiné služby Azure, jako jsou [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/), [Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), [App Service](https://docs.microsoft.com/azure/app-service/), [Logic Apps](https://docs.microsoft.com/azure/logic-apps/)a [BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). Ujistěte se, že rozumíte a povolíte odpovídající přístupová oprávnění pro tyto služby. | - |
+| Definování řízení přístupu pro rozbočovač | [Pochopit a definovat typ přístupu](iot-security-deployment.md#securing-the-cloud) každé součásti bude mít ve vašem řešení služby IoT Hub, na základě funkce. Povolená oprávnění jsou *Čtení registru*, *RegistryReadWrite*, *ServiceConnect*a *DeviceConnect*. Výchozí [zásady sdíleného přístupu ve službě IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) můžou také pomoci definovat oprávnění pro každou komponentu na základě její role. | - |
+| Definovat řízení přístupu pro back-endové služby | Data požitá vaším řešením IoT Hub můžou spotřebovávat jiné služby Azure, jako je [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/), [Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), [App Service](https://docs.microsoft.com/azure/app-service/), [Logic Apps](https://docs.microsoft.com/azure/logic-apps/)a úložiště [objektů blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). Ujistěte se, že rozumíte příslušným přístupovým oprávněním a povolujete je, jak jsou pro tyto služby zdokumentována. | - |
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Doporučení | Komentáře | Podporováno v ASC |
+| Doporučení | Komentáře | Podporováno ASC |
 |-|----|--|
-| Zabezpečené ověřování zařízení | Zajistěte zabezpečenou komunikaci mezi zařízeními a centrem IoT pomocí [jedinečného klíče identity nebo tokenu zabezpečení](iot-security-deployment.md#iot-hub-security-tokens)nebo [certifikátu X. 509 na zařízení](iot-security-deployment.md#x509-certificate-based-device-authentication) pro každé zařízení. Použijte odpovídající metodu pro [použití tokenů zabezpečení na základě zvoleného protokolu (MQTT, AMQP nebo https)](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security). | - |
-| Zabezpečená komunikace zařízení | IoT Hub zabezpečení připojení k zařízením pomocí standardu TLS (Transport Layer Security), který podporuje verze 1,2 a 1,0. K zajištění maximálního zabezpečení použijte protokol [TLS 1,2](https://tools.ietf.org/html/rfc5246) . | - |
-| Zabezpečená komunikace služby | IoT Hub poskytuje koncové body pro připojení ke službám back-end, jako je [Azure Storage](/azure/storage/) nebo [Event Hubs](/azure/event-hubs) jenom pomocí protokolu TLS, a nezveřejňuje se žádný koncový bod na nešifrovaném kanálu. Jakmile tato data dorazí na tyto back-endové služby pro ukládání a analýzu, nezapomeňte využít příslušné metody zabezpečení a šifrování pro danou službu a chránit citlivé informace na back-endu. | - |
+| Ověřování zabezpečeného zařízení | Zajistěte zabezpečenou komunikaci mezi vašimi zařízeními a službou IoT hub pomocí [jedinečného klíče identity nebo tokenu zabezpečení](iot-security-deployment.md#iot-hub-security-tokens)nebo [certifikátu X.509 na zařízení](iot-security-deployment.md#x509-certificate-based-device-authentication) pro každé zařízení. Pomocí vhodné metody [použijte tokeny zabezpečení založené na zvoleném protokolu (MQTT, AMQP nebo HTTPS).](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security) | - |
+| Zabezpečená komunikace se zařízením | IoT Hub zabezpečuje připojení k zařízením pomocí standardu TLS (Transport Layer Security), který podporuje verze 1.2 a 1.0. Pro zajištění maximální bezpečnosti použijte [TLS 1.2.](https://tools.ietf.org/html/rfc5246) | - |
+| Zabezpečená komunikace se službami | IoT Hub poskytuje koncové body pro připojení k back-endovým službám, jako je [Azure Storage](/azure/storage/) nebo [Event Hubs,](/azure/event-hubs) které používají jenom protokol TLS, a žádný koncový bod není vystaven na nešifrovaném kanálu. Jakmile tato data dosáhnou těchto back-endových služeb pro úložiště nebo analýzu, ujistěte se, že používáte vhodné metody zabezpečení a šifrování pro tuto službu a chráníte citlivé informace v back-endu. | - |
 
-## <a name="networking"></a>Sítě
+## <a name="networking"></a>Síťové služby
 
-| Doporučení | Komentáře | Podporováno v ASC |
+| Doporučení | Komentáře | Podporováno ASC |
 |-|----|--|
-| Ochrana přístupu k zařízením | Udržujte hardwarové porty ve vašich zařízeních na minimum, aby nedocházelo k nežádoucímu přístupu. Kromě toho mechanismy sestavení pro prevenci nebo detekci fyzické manipulace se zařízením. Podrobnosti najdete v článku [osvědčené postupy zabezpečení IoT](iot-security-best-practices.md) . | - |
-| Sestavit zabezpečený hardware | Zahrňte funkce zabezpečení, jako je šifrované úložiště nebo čip TPM (Trusted Platform Module), aby se zařízení a infrastruktura lépe zabezpečily. Udržujte operační systém zařízení a ovladače upgradovány na nejnovější verze a v případě, že je to možné místo, nainstalujte antivirové a antimalwarové funkce. Přečtěte si [architekturu zabezpečení IoT](iot-security-architecture.md) , abyste zjistili, jak to může přispět k zmírnění několika bezpečnostních hrozeb. | - |
+| Ochrana přístupu k zařízením | Udržujte hardwarové porty ve svých zařízeních na minimum, abyste předešli nežádoucímu přístupu. Kromě toho sestavení mechanismy k prevenci nebo detekci fyzické manipulace zařízení. Podrobnosti načláneknete v [doporučených postupech zabezpečení IoT.](iot-security-best-practices.md) | - |
+| Vytváření zabezpečeného hardwaru | Začleňte funkce zabezpečení, jako je šifrované úložiště nebo modul TPM (Trusted Platform Module), abyste zajistili větší zabezpečení zařízení a infrastruktury. Udržujte operační systém zařízení a ovladače upgradované na nejnovější verze, a pokud to prostor dovolí, nainstalujte antivirové a antimalwarové funkce. Přečtěte si [architekturu zabezpečení IoT, abyste pochopili,](iot-security-architecture.md) jak to může pomoci zmírnit několik bezpečnostních hrozeb. | - |
 
 ## <a name="monitoring"></a>Monitorování
 
-| Doporučení | Komentáře | Podporováno v ASC |
+| Doporučení | Komentáře | Podporováno ASC |
 |-|----|--|
-| Monitorování neoprávněného přístupu k vašim zařízením |  Pomocí funkce protokolování v operačním systému zařízení můžete monitorovat veškerá porušení zabezpečení nebo fyzické falšování zařízení nebo jeho portů. | - |
-| Monitorování řešení IoT z cloudu | Monitorujte celkový stav IoT Hub řešení pomocí [metrik v Azure monitor](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). | - |
-| Nastavení diagnostiky | Pozorně sledujte své operace protokolováním událostí ve vašem řešení a poté odesláním diagnostických protokolů Azure Monitor, abyste získali přehled o výkonu. Další informace najdete [v tématu monitorování a Diagnostika problémů ve službě IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) . | - |
+| Sledování neoprávněného přístupu k vašim zařízením |  Pomocí funkce protokolování operačního systému zařízení můžete sledovat jakékoli narušení zabezpečení nebo fyzické neoprávněnýzásahy zařízení nebo jeho portů. | - |
+| Monitorování řešení IoT z cloudu | Sledujte celkový stav vašeho řešení IoT Hub pomocí [metriky v Azure Monitoru](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). | - |
+| Nastavení diagnostiky | Pečlivě sledujte vaše operace protokolováním událostí ve vašem řešení a následným odesláním diagnostických protokolů do Služby Azure Monitor, abyste získali přehled o výkonu. Další informace najdou další informace načlánekněte [monitor a diagnostikujte problémy ve vašem centru IoT Hub.](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) | - |
 
 ## <a name="next-steps"></a>Další kroky
 
-V případě pokročilých scénářů, které zahrnují Azure IoT, možná budete muset zvážit další požadavky na zabezpečení. Další pokyny najdete v tématu [Architektura zabezpečení IoT](iot-security-architecture.md) .
+Pro pokročilé scénáře zahrnující Azure IoT, budete muset zvážit další požadavky na zabezpečení. Další informace najdete v [tématu Architektura zabezpečení IoT.](iot-security-architecture.md)
 

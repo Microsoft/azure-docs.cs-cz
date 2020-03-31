@@ -1,108 +1,105 @@
 ---
-title: Použití rozšíření Azure IoT pro Azure CLI k interakci se zařízeními IoT technologie Plug and Play Preview | Microsoft Docs
-description: Nainstalujte rozšíření Azure IoT pro Azure CLI a použijte ho k interakci se zařízeními IoT technologie Plug and Play připojenými ke službě IoT Hub.
+title: Použití rozšíření Azure IoT pro Azure CLI k interakci se zařízeními IoT Plug and Play Preview | Dokumenty společnosti Microsoft
+description: Nainstalujte rozšíření Azure IoT pro Azure CLI a použijte ho k interakci se zařízeními IoT Plug and Play připojenými k mému centru IoT.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b5907c0fb127947e90352e68b2726a22f5afea0d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251013"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234687"
 ---
-# <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalace a použití rozšíření Azure IoT pro rozhraní příkazového řádku Azure
+# <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalace a použití rozšíření Azure IoT pro azure cli
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Hub. Rozhraní příkazového řádku Azure je dostupné v systémech Windows, Linux a MacOS. Rozhraní příkazového řádku Azure je také předem nainstalováno v [Azure Cloud Shell](https://shell.azure.com). Rozhraní příkazového řádku Azure umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra bez nutnosti instalovat jakákoli rozšíření.
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source multiplatformní příkazový řádek nástroj pro správu prostředků Azure, jako je IoT Hub. Rozhraní příkazového odpočitatelů Azure je dostupné ve Windows, Linuxu a MacOS. Vytelatá podávací miska Azure se taky předinstaluje v [prostředí Azure Cloud Shell](https://shell.azure.com). Rozhraní příkazového příkazu k řešení Azure umožňuje spravovat prostředky azure iot hubu, instance služby zřizování zařízení a propojená centra bez nutnosti instalace rozšíření.
 
-Rozšíření Azure IoT pro Azure CLI je nástroj příkazového řádku pro interakci s a testování zařízení IoT technologie Plug and Play ve verzi Preview. Rozšíření můžete použít k těmto akcím:
+Rozšíření Azure IoT pro Azure CLI je nástroj příkazového řádku pro interakci s a testování zařízení IoT Plug and Play Preview. Rozšíření můžete použít k:
 
 - Připojte se k zařízení.
-- Podívejte se na telemetrii, kterou zařízení odesílá.
-- Práce s vlastnostmi zařízení
-- Zavolejte příkazy zařízení.
+- Zobrazení telemetrie, kterou zařízení odesílá.
+- Práce s vlastnostmi zařízení.
+- Volání příkazů zařízení.
 
 V tomto článku se dozvíte, jak:
 
-- Nainstalujte a nakonfigurujte rozšíření Azure IoT pro rozhraní příkazového řádku Azure CLI.
-- Použijte rozšíření pro interakci a testování vašich zařízení.
-- Pomocí tohoto rozšíření můžete spravovat rozhraní v úložišti modelu.
+- Nainstalujte a nakonfigurujte rozšíření Azure IoT pro rozhraní příkazového příkazového příkazu k Azure.
+- Pomocí rozšíření můžete se zařízeními komunikovat a testovat je.
+- Rozšíření slouží ke správě rozhraní v úložišti modelu.
 
-## <a name="install-azure-iot-extension-for-the-azure-cli"></a>Instalace rozšíření Azure IoT pro rozhraní příkazového řádku Azure
+## <a name="install-azure-iot-extension-for-the-azure-cli"></a>Instalace rozšíření Azure IoT pro azure cli
 
-### <a name="step-1---install-the-azure-cli"></a>Krok 1 – instalace rozhraní příkazového řádku Azure
+### <a name="step-1---install-the-azure-cli"></a>Krok 1 – Instalace příkazového příkazového příkazu Azure
 
-Podle [pokynů k instalaci](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nastavte Azure CLI ve vašem prostředí. Pokud chcete použít všechny níže uvedené příkazy, musí mít vaše verze Azure CLI verzi 2.0.73 nebo vyšší. Ke kontrole použijte příkaz `az -–version`.
+Podle [pokynů k instalaci](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nastavte vnastavení příkazového příkazu Azure ve vašem prostředí. Chcete-li použít všechny příkazy níže, vaše verze Azure CLI musí být verze 2.0.73 nebo vyšší. Ke kontrole použijte příkaz `az -–version`.
 
-### <a name="step-2---install-iot-extension"></a>Krok 2 – instalace rozšíření IoT
+### <a name="step-2---install-iot-extension"></a>Krok 2 – Instalace rozšíření IoT
 
 Soubor [Readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension) obsahuje popis několika způsobů instalace rozšíření. Nejjednodušším způsobem je spustit příkaz `az extension add --name azure-iot`. Po instalaci můžete pomocí příkazu `az extension list` ověřit aktuálně nainstalovaná rozšíření nebo pomocí příkazu `az extension show --name azure-iot` zobrazit podrobnosti o rozšíření IoT. K odebrání rozšíření můžete použít příkaz `az extension remove --name azure-iot`.
 
-## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Použití rozšíření Azure IoT pro rozhraní příkazového řádku Azure
+## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Použití rozšíření Azure IoT pro azure cli
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-Pokud se chcete přihlásit ke svému předplatnému Azure, spusťte následující příkaz:
+Pokud se chcete přihlásit k předplatnému Azure, spusťte následující příkaz:
 
-```cmd/sh
+```azurecli
 az login
 ```
 
 > [!NOTE]
-> Pokud používáte Azure Cloud Shell, jste přihlášeni automaticky a nemusíte spouštět předchozí příkaz.
+> Pokud používáte cloudové prostředí Azure, jste automaticky přihlášeni a nemusíte spouštět předchozí příkaz.
 
-Pokud chcete používat rozšíření Azure IoT pro rozhraní příkazového řádku Azure CLI, budete potřebovat:
+Chcete-li použít rozšíření Azure IoT pro azure cli, potřebujete:
 
-- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je například [vytvoření centra IoT pomocí Azure CLI](../iot-hub/iot-hub-create-using-cli.md). Abyste mohli spouštět příkazy rozšíření Azure IoT, potřebujete připojovací řetězec služby IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Azure IoT hub. Existuje mnoho způsobů, jak přidat službu IoT hub do vašeho předplatného Azure, jako je [například vytvoření centra IoT pomocí azure cli](../iot-hub/iot-hub-create-using-cli.md). Ke spuštění příkazů rozšíření Azure IoT potřebujete připojovací řetězec služby IoT hub. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-    > [!NOTE]
-    > Během veřejné verze Preview jsou funkce IoT technologie Plug and Play dostupné jenom v centrech IoT vytvořených v oblastech **střed USA**, **Severní Evropa**a **Japonsko – východ** .
+- Zařízení registrované ve vašem centru IoT hub. K registraci zařízení můžete použít následující příkaz příkazu Azure `{YourIoTHubName}` `{YourDeviceID}` CLI, nezapomeňte nahradit zástupné symboly vašimi hodnotami:
 
-- Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure, nezapomeňte nahradit `{YourIoTHubName}` a `{YourDeviceID}` zástupné symboly pomocí vašich hodnot:
-
-    ```cmd/sh
+    ```azurecli
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
     ```
 
-- Některé příkazy potřebují připojovací řetězec pro úložiště podnikového modelu. Úložiště modelu pro vaši společnost se vytvoří při první [registraci na portálu Azure Certified for IoT](howto-onboard-portal.md). Třetí strana může sdílet připojovací řetězec úložiště modelu s vámi, abyste měli přístup k jejich rozhraním a modelům.
+- Některé příkazy potřebují připojovací řetězec pro úložiště modelu společnosti. Úložiště modelu pro vaši společnost se vytvoří při prvním [na palubě portálu Azure Certified for IoT](howto-onboard-portal.md). Třetí strana může sdílet svůj řetězec připojení úložiště modelu s vámi, aby vám přístup k jejich rozhraní a modely.
 
 ### <a name="interact-with-a-device"></a>Interakce se zařízením
 
-Rozšíření můžete použít k zobrazení a interakci se zařízeními IoT technologie Plug and Play, která jsou připojená ke službě IoT Hub. Toto rozšíření spolupracuje s digitálním vlákna, které představuje zařízení IoT technologie Plug and Play.
+Rozšíření můžete použít k zobrazení a interakci se zařízeními IoT Plug and Play, která jsou připojená k centru IoT Hub. Rozšíření funguje s digitální dvojče, které představuje zařízení IoT Plug and Play.
 
-#### <a name="list-devices-and-interfaces"></a>Vypsat zařízení a rozhraní
+#### <a name="list-devices-and-interfaces"></a>Seznam zařízení a rozhraní
 
-Vypsat všechna zařízení v IoT Hub:
+Seznam všech zařízení na ioT hubu:
 
-```cmd/sh
+```azurecli
 az iot hub device-identity list --hub-name {YourIoTHubName}
 ```
 
-Vypíše všechna rozhraní registrovaná zařízením IoT technologie Plug and Play:
+Seznam všech rozhraní registrovaných zařízením IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 ```
 
 #### <a name="properties"></a>Vlastnosti
 
-Vypíše všechny vlastnosti a hodnoty vlastností pro rozhraní na zařízení:
+Seznam všech vlastností a hodnot vlastností rozhraní na zařízení:
 
-```cmd/sh
+```azurecli
 az iot dt list-properties --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login "{YourCompanyModelRepoConnectionString}"
 ```
 
-Nastavte hodnotu vlastnosti pro čtení i zápis:
+Nastavte hodnotu vlastnosti pro čtení a zápis:
 
-```cmd/sh
+```azurecli
 az iot dt update-property --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface-payload {JSONPayload or FilePath}
 ```
 
-Příkladem souboru datové části pro nastavení vlastnosti **název** v rozhraní **snímače** zařízení na **Contoso** vypadá takto:
+Ukázkový soubor datové části pro nastavení vlastnosti **name** v rozhraní **senzoru** zařízení na **Contoso** vypadá takto:
 
 ```json
 {
@@ -120,114 +117,114 @@ Příkladem souboru datové části pro nastavení vlastnosti **název** v rozhr
 
 #### <a name="commands"></a>Příkazy
 
-Vypíše všechny příkazy pro rozhraní v zařízení:
+Seznam všech příkazů pro rozhraní na zařízení:
 
-```cmd/sh
+```azurecli
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-Bez parametru `--repo-login` tento příkaz používá úložiště veřejného modelu.
+Bez `--repo-login` parametru tento příkaz používá úložiště veřejného modelu.
 
 Vyvolat příkaz:
 
-```cmd/sh
+```azurecli
 az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="digital-twin-events"></a>Digitální zdvojené události
+#### <a name="digital-twin-events"></a>Události digitálního dvojčete
 
-Monitorujte všechny události IoT technologie Plug and Play digitálních událostí z konkrétního zařízení a rozhraní, které se přesměrují do skupiny uživatelů centra událostí **$Default** :
+Sledujte všechny události digitálního dvojčete IoT Plug and Play z konkrétního zařízení a rozhraní, které přejdete do skupiny spotřebitelů **centra událostí $Default:**
 
-```cmd/sh
+```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Monitorujte všechny události IoT technologie Plug and Play digitálních událostí z konkrétního zařízení a rozhraní, které se přesměrují na konkrétní skupinu příjemců:
+Sledujte všechny události digitálního dvojčete IoT Plug and Play z konkrétního zařízení a rozhraní, které bude pro konkrétní skupinu spotřebitelů:
 
-```cmd/sh
+```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
-### <a name="manage-interfaces-in-a-model-repository"></a>Správa rozhraní v úložišti modelu
+### <a name="manage-interfaces-in-a-model-repository"></a>Správa rozhraní v úložišti modelů
 
-V následujících příkazech se používá veřejné úložiště modelu IoT technologie Plug and Play. Pokud chcete použít úložiště podnikového modelu, přidejte argument `--login` s připojovacím řetězcem úložiště modelu.
+Následující příkazy používají veřejné úložiště modelu IoT Plug and Play. Chcete-li použít úložiště modelu `--login` společnosti, přidejte argument s připojovacím řetězcem úložiště modelu.
 
-Vypíše rozhraní ve veřejném úložišti IoT technologie Plug and Play model:
+Seznam rozhraní ve veřejném úložišti modelů IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot pnp interface list
 ```
 
-Zobrazení rozhraní ve veřejném úložišti IoT technologie Plug and Play modelu:
+Zobrazení rozhraní ve veřejném úložišti modelu IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {YourInterfaceId}
 ```
 
-V úložišti IoT technologie Plug and Play společnosti vytvořte rozhraní:
+Vytvořte rozhraní v úložišti firemních modelů IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot pnp interface create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-V úložišti veřejného modelu nemůžete přímo vytvořit rozhraní.
+Nelze přímo vytvořit rozhraní v úložišti veřejného modelu.
 
-Aktualizujte rozhraní v úložišti IoT technologie Plug and Play společnosti:
+Aktualizace rozhraní v úložišti firemních modelů IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot pnp interface update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Nemůžete přímo aktualizovat rozhraní v úložišti veřejného modelu.
+Rozhraní nelze přímo aktualizovat v úložišti veřejného modelu.
 
-Publikujte rozhraní z úložiště IoT technologie Plug and Play společnosti do úložiště veřejného modelu. Tato operace způsobí neproměnlivé rozhraní:
+Publikujte rozhraní z úložiště firemních modelů IoT Plug and Play do úložiště veřejných modelů. Tato operace umožňuje rozhraní neměnné:
 
-```cmd/sh
+```azurecli
 az iot pnp interface publish --interface {YourInterfaceID} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Pouze partneři Microsoftu mohou publikovat rozhraní do úložiště veřejného modelu.
+Rozhraní do úložiště veřejného modelu mohou publikovat pouze partneři společnosti Microsoft.
 
-### <a name="manage-device-capability-models-in-a-model-repository"></a>Správa modelů schopností zařízení v úložišti modelu
+### <a name="manage-device-capability-models-in-a-model-repository"></a>Správa modelů schopností zařízení v úložišti modelů
 
-V následujících příkazech se používá veřejné úložiště modelu IoT technologie Plug and Play. Pokud chcete použít úložiště podnikového modelu, přidejte argument `--login` s připojovacím řetězcem úložiště modelu.
+Následující příkazy používají veřejné úložiště modelu IoT Plug and Play. Chcete-li použít úložiště modelu `--login` společnosti, přidejte argument s připojovacím řetězcem úložiště modelu.
 
-Seznamte se s možnostmi modelu zařízení v úložišti IoT technologie Plug and Play Public model:
+Seznam modelů schopností zařízení v úložišti veřejných modelů IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model list
 ```
 
-Zobrazit model schopností zařízení v úložišti IoT technologie Plug and Play Public model:
+Zobrazení modelu schopností zařízení v úložišti veřejného modelu IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {YourModelID}
 ```
 
-Vytvoření modelu schopností zařízení v úložišti IoT technologie Plug and Play společnosti:
+Vytvořte model schopností zařízení v úložišti firemních modelů IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Model nelze přímo vytvořit v úložišti veřejného modelu.
+Nelze přímo vytvořit model v úložišti veřejného modelu.
 
-Aktualizujte model schopností zařízení v úložišti IoT technologie Plug and Play společnosti:
+Aktualizace modelu schopností zařízení v úložišti firemních modelů IoT Plug and Play:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
 Model nelze přímo aktualizovat v úložišti veřejného modelu.
 
-Publikujte model schopností zařízení z úložiště IoT technologie Plug and Play společnosti do úložiště veřejného modelu. Tato operace způsobuje neproměnlivý model:
+Publikujte model schopností zařízení z úložiště firemních modelů IoT Plug and Play do úložiště veřejných modelů. Tato operace činí model neměnným:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Pouze partneři Microsoftu mohou publikovat modely do úložiště veřejného modelu.
+Modely do úložiště veřejných modelů mohou publikovat pouze partneři společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku se naučíte, jak nainstalovat a používat rozšíření Azure IoT pro rozhraní příkazového řádku Azure pro interakci s technologie Plug and Playmi zařízeními. Navržený další krok se naučíte, jak [Spravovat modely](./howto-manage-models.md).
+V tomto článku s návody jste se naučili, jak nainstalovat a používat rozšíření Azure IoT pro Azure CLI pro interakci s vašimi zařízeními Plug and Play. Dalším navrhovaným krokem je naučit se [spravovat modely](./howto-manage-models.md).

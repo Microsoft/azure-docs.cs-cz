@@ -1,14 +1,14 @@
 ---
 title: Kurz – konfigurace témat v Azure Service Bus pomocí Ansible
-description: Naučte se používat Ansible k vytvoření tématu Azure Service Bus
-keywords: Ansible, Azure, DevOps, bash, PlayBook, Service Bus, témata, předplatná
+description: Přečtěte si, jak pomocí ansible vytvořit téma Azure Service Bus
+keywords: ansible, azure, devops, bash, playbook, service bus, témata, předplatná
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155790"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Kurz: Konfigurace témat v Azure Service Bus pomocí Ansible
@@ -23,22 +23,22 @@ ms.locfileid: "74155790"
 >
 > * Vytvoření tématu
 > * Vytvoření odběru
-> * Vytvoření zásady SAS
-> * Načíst informace oboru názvů
-> * Načtení informací o tématu a předplatném
-> * Odvolání zásad SAS
+> * Vytvoření zásadY SAS
+> * Načíst informace o oboru názvů
+> * Načtení tématu a informací o předplatném
+> * Odvolat zásadu SAS
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-the-service-bus-topic"></a>Vytvoření tématu Service Bus
+## <a name="create-the-service-bus-topic"></a>Vytvoření tématu Sběrnice
 
-Vzorový PlayBook kód vytvoří následující prostředky:
+Ukázkový kód playbooku vytvoří následující zdroje:
 - Skupina prostředků Azure
-- Obor názvů Service Bus v rámci skupiny prostředků
-- Service Bus téma s oborem názvů
+- Obor názvů služby Service Bus v rámci skupiny prostředků
+- Téma služby Service Bus s oborem názvů
 
 Uložte následující ukázkový playbook jako `servicebus_topic.yml`:
 
@@ -69,7 +69,7 @@ Uložte následující ukázkový playbook jako `servicebus_topic.yml`:
           var: topic
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook servicebus_topic.yml
@@ -77,7 +77,7 @@ ansible-playbook servicebus_topic.yml
 
 ## <a name="create-the-subscription"></a>Vytvoření předplatného
 
-Vzorový kód PlayBook vytvoří odběr v rámci Service Bus tématu. Témata Azure Service Bus můžou mít víc předplatných. Odběratel k tématu může dostávat kopii každé zprávy odeslané do tématu. Předplatná jsou pojmenované entity, které jsou trvale vytvořené, ale můžou volitelně vypršet.
+Ukázkový kód playbooku vytvoří předplatné v rámci tématu Service Bus. Témata Azure Service Bus můžou mít víc předplatných. Odběratel tématu může obdržet kopii každé zprávy odeslané do tématu. Odběry jsou pojmenované entity, které jsou trvale vytvořeny, ale může volitelně vyprší.
 
 ```yml
 ---
@@ -102,7 +102,7 @@ Vzorový kód PlayBook vytvoří odběr v rámci Service Bus tématu. Témata Az
 
 Uložte následující ukázkový playbook jako `servicebus_subscription.yml`:
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook servicebus_subscription.yml
@@ -110,9 +110,9 @@ ansible-playbook servicebus_subscription.yml
 
 ## <a name="create-the-sas-policy"></a>Vytvoření zásad SAS
 
-[Sdílený přístupový podpis (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) je ověřovací mechanismus založený na deklaracích, který používá tokeny. 
+Sdílený [přístupový podpis (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) je mechanismus autorizace založený na deklaracích pomocí tokenů. 
 
-Vzorový kód PlayBook vytvoří dvě zásady SAS pro Service Bus frontu s různými oprávněními.
+Ukázkový kód playbooku vytvoří dvě zásady SAS pro frontu služby Service Bus s různými oprávněními.
 
 Uložte následující ukázkový playbook jako `servicebus_topic_policy.yml`:
 
@@ -139,15 +139,15 @@ Uložte následující ukázkový playbook jako `servicebus_topic_policy.yml`:
           var: policy
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook servicebus_topic_policy.yml
 ```
 
-## <a name="retrieve-namespace-information"></a>Načíst informace oboru názvů
+## <a name="retrieve-namespace-information"></a>Načíst informace o oboru názvů
 
-Vzorový kód PlayBook se dotazuje na informace oboru názvů.
+Ukázkový kód playbooku se dotazuje na informace o oboru názvů.
 
 Uložte následující ukázkový playbook jako `servicebus_namespace_info.yml`:
 
@@ -169,20 +169,20 @@ Uložte následující ukázkový playbook jako `servicebus_namespace_info.yml`:
           var: ns
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
-- Hodnota `show_sas_policies` označuje, jestli se mají v rámci zadaného oboru názvů zobrazovat zásady SAS. Ve výchozím nastavení je hodnota `False`, aby nedošlo k další režii sítě.
+Před spuštěním playbooku se podívejte na následující poznámky:
+- Hodnota `show_sas_policies` označuje, zda se mají zobrazit zásady SAS pod zadaným oborem názvů. Ve výchozím nastavení `False` je hodnota, aby se zabránilo další zatížení sítě.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
 ```
 
-## <a name="retrieve-topic-and-subscription-information"></a>Načtení informací o tématu a předplatném
+## <a name="retrieve-topic-and-subscription-information"></a>Načtení tématu a informací o předplatném
 
-Vzorový kód PlayBook se dotazuje na následující informace:
-- Informace o Service Busm tématu
-- Seznam podrobností o předplatném pro téma
+Ukázkový kód playbooku se dotazuje na následující informace:
+- Informace o tématu služby Service Bus
+- Seznam podrobností o předplatném tématu
  
 Uložte následující ukázkový playbook jako `servicebus_list.yml`:
 
@@ -216,18 +216,18 @@ Uložte následující ukázkový playbook jako `servicebus_list.yml`:
         - subs_fact.servicebuses
 ```
 
-Před spuštěním PlayBook se podívejte na následující poznámky:
-- Hodnota `show_sas_policies` označuje, jestli se mají v zadané frontě zobrazovat zásady SAS. Ve výchozím nastavení je tato hodnota nastavená na `False`, aby se předešlo dalšímu síťovému zatížení.
+Před spuštěním playbooku se podívejte na následující poznámky:
+- Hodnota `show_sas_policies` označuje, zda se mají zobrazit zásady SAS pod zadanou frontou. Ve výchozím nastavení je `False` tato hodnota nastavena tak, aby se zabránilo další režii sítě.
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook servicebus_list.yml
 ```
 
-## <a name="revoke-the-queue-sas-policy"></a>Odvolat zásady SAS pro frontu
+## <a name="revoke-the-queue-sas-policy"></a>Odvolat zásadu SAS fronty
 
-Vzorový kód PlayBook odstraní zásady SAS pro frontu.
+Ukázkový kód playbooku odstraní zásadu SAS fronty.
 
 Uložte následující ukázkový playbook jako `servicebus_queue_policy_delete.yml`:
 
@@ -248,7 +248,7 @@ Uložte následující ukázkový playbook jako `servicebus_queue_policy_delete.
           state: absent
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook servicebus_topic_policy_delete.yml
@@ -256,9 +256,9 @@ ansible-playbook servicebus_topic_policy_delete.yml
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku. 
 
-Následující kód uložte jako `cleanup.yml`:
+Uložte následující `cleanup.yml`kód jako :
 
 ```yml
 ---
@@ -294,7 +294,7 @@ Následující kód uložte jako `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook cleanup.yml

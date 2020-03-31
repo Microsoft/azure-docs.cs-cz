@@ -8,16 +8,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257937"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388895"
 ---
 # <a name="about-migration"></a>Informace o migraci
 
 Přečtěte si tento článek, kde najdete rychlý přehled o tom, jak vám služba [Azure Site Recovery](site-recovery-overview.md) pomáhá migrovat počítače. 
+
+> [!TIP]
+> Teď byste měli použít službu Azure Migrate k migraci virtuálních počítačů a serverů do Azure, namísto služby Azure Site Recovery. [Další informace](../migrate/migrate-services-overview.md).
+
 
 Co můžete migrovat pomocí site recovery:
 

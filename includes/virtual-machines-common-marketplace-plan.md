@@ -9,21 +9,21 @@ ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 8e0e549f88caf4a541642bab77faf54b5e536b29
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71174938"
 ---
-## <a name="deploy-an-image-with-marketplace-terms"></a>Nasazení image s podmínkami Marketplace
+## <a name="deploy-an-image-with-marketplace-terms"></a>Nasazení bitové kopie s podmínkami Marketplace
 
-Některé image virtuálních počítačů v Azure Marketplace mají další licenční a nákupní podmínky, které musíte přijmout, než je můžete nasadit programově.  
+Některé image virtuálních počítačů na Azure Marketplace mají další licenční a nákupní podmínky, které musíte přijmout, než je budete moct nasadit programově.  
 
-Pokud chcete nasadit virtuální počítač z takové image, musíte přijmout podmínky image a povolit programové nasazení. To je potřeba udělat jenom jednou pro každé předplatné. Potom budete muset pokaždé, když nasadíte virtuální počítač programově z image, taky zadat parametry *plánu nákupu* .
+Chcete-li nasadit virtuální ho virtuálního počítače z takové image, budete muset přijmout podmínky image a povolit programové nasazení. To budete muset udělat jen jednou za předplatné. Potom pokaždé, když nasadíte virtuální ho susky programově z bitové kopie, budete také muset zadat parametry *plánu nákupu.*
 
 Následující části ukazují, jak:
 
-* Zjistěte, jestli má image Marketplace další licenční smlouvy. 
-* Přijměte podmínky programově
-* Zadání parametrů plánu nákupu při programovém nasazení virtuálního počítače
+* Zjistěte, jestli má obrázek Marketplace další licenční podmínky 
+* Přijmout termíny programově
+* Při programovém nasazení virtuálního montovana zadejte parametry plánu nákupu.
 

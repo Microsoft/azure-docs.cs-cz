@@ -1,6 +1,6 @@
 ---
-title: Rozdíly v ověřování podle podporovaných typů účtů – Microsoft Identity Platform | Azure
-description: Přečtěte si o rozdílech mezi ověřováním různých vlastností pro různé podporované typy účtů při registraci aplikace pomocí platformy Microsoft identity.
+title: Rozdíly ve ověření podle podporovaných typů účtů – platforma identit Microsoftu | Azure
+description: Informace o rozdílech ověření různých vlastností pro různé typy podporovaných účtů při registraci aplikace na platformě identit Microsoftu.
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
@@ -10,44 +10,44 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 812ca0d502572f43c968c75dee17f45d066bcf04
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701293"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128859"
 ---
-# <a name="validation-differences-by-supported-account-types-signinaudience"></a>Rozdíly v ověřování podle podporovaných typů účtů (signInAudience)
+# <a name="validation-differences-by-supported-account-types-signinaudience"></a>Rozdíly ověření podle podporovaných typů účtů (signInAudience)
 
-Při registraci aplikace s platformou Microsoft identity pro vývojáře budete požádáni, abyste vybrali, které typy účtů vaše aplikace podporuje. V objektu aplikace a manifestu je tato vlastnost `signInAudience`.
+Při registraci aplikace s platformou identit microsoftu pro vývojáře budete vyzváni k výběru typů účtů, které vaše aplikace podporuje. V objektu aplikace a manifestu je `signInAudience`tato vlastnost .
 
-Mezi tyto možnosti patří:
+Možnosti zahrnují následující:
 
-- *AzureADMyOrg*: pouze účty v adresáři organizace, ve kterém je aplikace zaregistrovaná (jeden tenant)
-- *AzureADMultipleOrgs*: účty v jakémkoli organizačním adresáři (více tenantů)
-- *AzureADandPersonalMicrosoftAccount*: účty v jakémkoli adresáři organizace (multi-tenant) a osobní účty Microsoft (například Skype, Xbox a Outlook.com)
+- *AzureADMyOrg*: Pouze účty v adresáři organizace, kde je aplikace registrována (jeden tenant)
+- *AzureADMultipleOrgs*: Účty v libovolném adresáři organizace (více klientů)
+- *AzureADandPersonalMicrosoftAccount*: Účty v libovolném organizačním adresáři (víceklientských) a osobních účtech Microsoftu (například Skype, Xbox a Outlook.com)
 
-U registrovaných aplikací můžete najít hodnotu pro podporované typy účtů v části **ověřování** aplikace. Můžete ji také najít pod vlastností `signInAudience` v **manifestu**.
+U registrovaných aplikací můžete hodnotu podporovaných typů účtů najít v části **Ověřování** aplikace. Můžete ji také najít `signInAudience` pod vlastností v **manifestu**.
 
-Hodnota, kterou vyberete pro tuto vlastnost, má vliv na jiné vlastnosti objektu aplikace. Výsledkem je, že pokud změníte tuto vlastnost, možná budete muset nejdřív změnit další vlastnosti.
+Hodnota, kterou vyberete pro tuto vlastnost, má vliv na jiné vlastnosti objektu aplikace. V důsledku toho pokud změníte tuto vlastnost, budete muset nejprve změnit další vlastnosti.
 
-V následující tabulce jsou uvedeny rozdíly v ověřování různých vlastností pro různé podporované typy účtů.
+V následující tabulce naleznete rozdíly ověření různých vlastností pro různé podporované typy účtů.
 
-| Vlastnost | `AzureADMyOrg` | `AzureADMultipleOrgs`  | `AzureADandPersonalMicrosoftAccount` |
+| Vlastnost | `AzureADMyOrg` | `AzureADMultipleOrgs` | `AzureADandPersonalMicrosoftAccount` a `PersonalMicrosoftAccount` |
 |--------------|---------------|----------------|----------------|
-| Identifikátor URI ID aplikace (`identifierURIs`)  | Musí být v tenantovi jedinečný. <br><br> urn://jsou podporovaná. <br><br> Zástupné znaky se nepodporují. <br><br> Podporované řetězce a fragmenty dotazů <br><br> Maximální délka 255 znaků <br><br> Bez omezení * počtu identifierURIs  | Musí být globálně jedinečný. <br><br> urn://jsou podporovaná. <br><br> Zástupné znaky se nepodporují. <br><br> Podporované řetězce a fragmenty dotazů <br><br> Maximální délka 255 znaků <br><br> Bez omezení * počtu identifierURIs | Musí být globálně jedinečný. <br><br> schémata urn://nejsou podporovaná. <br><br> Zástupné znaky, fragmenty a řetězce dotazů nejsou podporované. <br><br> Maximální délka 120 znaků <br><br> Maximálně 50 identifierURIs |
-| Certifikáty (`keyCredentials`) | Symetrický podpisový klíč | Symetrický podpisový klíč | Šifrovací a asymetrický podpisový klíč | 
-| Tajné kódy klienta (`passwordCredentials`) | Bez omezení * | Bez omezení * | Pokud je povoleno liveSDK: maximum ze 2 klientských tajných klíčů | 
-| Identifikátory URI pro přesměrování (`replyURLs`) | Další informace najdete v tématu [omezení a omezení adresy URL pro přesměrování/adresa URL pro odpověď](reply-url.md) . | | | 
-| Oprávnění rozhraní API (`requiredResourceAccess`) | Bez omezení * | Bez omezení * | Maximální povolený počet 30 oprávnění na prostředek (např. Microsoft Graph) | 
-| Obory definované tímto rozhraním API (`oauth2Permissions`) | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů |  Maximální délka názvu rozsahu 40 znaků <br><br> Je definovaných maximálně 100 oborů. | 
-| Autorizované klientské aplikace (`preautorizedApplications`) | Bez omezení * | Bez omezení * | Celkem maximum 500 <br><br> Je definovaných maximálně 100 klientských aplikací. <br><br> Maximálně 30 oborů definovaných na klienta | 
-| appRoles | Podporováno <br> Bez omezení * | Podporováno <br> Bez omezení * | Nepodporováno | 
-| Adresa URL – odhlášení | http://localhost je povolený. <br><br> Maximální délka 255 znaků | http://localhost je povolený. <br><br> Maximální délka 255 znaků | <br><br> https://localhost je povolená, http://localhost pro MSA se nezdařila. <br><br> Maximální délka 255 znaků <br><br> Schéma HTTP není povolené. <br><br> Zástupné znaky se nepodporují. | 
+| Identifikátor URI ID aplikace (`identifierURIs`)  | Musí být jedinečný v tenantovi <br><br> urn:// jsou podporovány <br><br> Zástupné znaky nejsou podporovány. <br><br> Řetězce dotazu a fragmenty jsou podporovány <br><br> Maximální délka 255 znaků <br><br> Žádné omezení* počtu identifikátoruri  | Musí být globálně jedinečný <br><br> urn:// jsou podporovány <br><br> Zástupné znaky nejsou podporovány. <br><br> Řetězce dotazu a fragmenty jsou podporovány <br><br> Maximální délka 255 znaků <br><br> Žádné omezení* počtu identifikátoruri | Musí být globálně jedinečný <br><br> urn:// schémata nejsou podporována. <br><br> Zástupné znaky, fragmenty a řetězce dotazů nejsou podporovány. <br><br> Maximální délka 120 znaků <br><br> Maximálně 50 identifikátoruri |
+| Certifikáty`keyCredentials`( ) | Symetrický podpisový klíč | Symetrický podpisový klíč | Šifrování a asymetrický podpisový klíč | 
+| Tajemství klienta (`passwordCredentials`) | Bez omezení* | Bez omezení* | Pokud je povolena sada liveSDK: Maximálně 2 tajné klíče klientů | 
+| Přesměrování identifikátorů`replyURLs`URI ( ) | Další informace najdete [v tématu Přesměrování omezení adres URL a adres URL adres URL přesměrování.](reply-url.md) | | | 
+| Oprávnění rozhraní`requiredResourceAccess`API ( ) | Bez omezení* | Bez omezení* | Maximálně 30 povolených oprávnění na prostředek (např. | 
+| Obory definované tímto`oauth2Permissions`rozhraním API ( ) | Maximální délka názvu oboru 120 znaků <br><br> Žádné omezení* počtu definovaných oborů | Maximální délka názvu oboru 120 znaků <br><br> Žádné omezení* počtu definovaných oborů |  Maximální délka názvu oboru 40 znaků <br><br> Bylo definováno maximálně 100 oborů | 
+| Autorizované klientské aplikace (`preautorizedApplications`) | Bez omezení* | Bez omezení* | Celkem maximálně 500 <br><br> Definováno maximálně 100 klientských aplikací <br><br> Maximálně 30 oborů definovaných na klienta | 
+| appRoles | Podporuje se <br> Bez omezení* | Podporuje se <br> Bez omezení* | Nepodporuje se | 
+| Adresa URL odhlášení | http://localhostje povoleno <br><br> Maximální délka 255 znaků | http://localhostje povoleno <br><br> Maximální délka 255 znaků | <br><br> https://localhostje povoleno, http://localhost selže pro MSA <br><br> Maximální délka 255 znaků <br><br> Schéma HTTP není povoleno. <br><br> Zástupné znaky nejsou podporovány. | 
 
-\* V rámci všech vlastností kolekce objektu aplikace je globální limit o 1000 položek.
+*Globální limit je asi 1000 položek ve všech vlastnostech kolekce na objektaplikace
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [registraci aplikace](app-objects-and-service-principals.md)
+- Další informace o [registraci přihlášky](app-objects-and-service-principals.md)
 - Další informace o [manifestu aplikace](reference-app-manifest.md)

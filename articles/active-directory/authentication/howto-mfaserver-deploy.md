@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Azure MFA serverem – Azure Active Directory
+title: Začínáme s Azure MFA Server – Azure Active Directory
 description: Podrobný návod, jak začít s místním Azure MFA Serverem
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,22 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263696"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
 <center>
 
-![Začínáme s MFA serverem v místním prostředí](./media/howto-mfaserver-deploy/server2.png)</center>
+![Začínáme s místním serverem MFA Server](./media/howto-mfaserver-deploy/server2.png)</center>
 
 Tato stránka popisuje novou instalaci serveru a jeho nastavení pro spolupráci s místní službou Active Directory. Pokud už máte nainstalovaný server MFA a chcete provést upgrade, přečtěte si téma [Upgrade na nejnovější verzi Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-upgrade.md). Pokud hledáte informace pouze o instalaci webové služby, přečtěte si téma [Nasazení webové služby mobilní aplikace Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-mobileapp.md).
 
 > [!IMPORTANT]
-> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> července 2019 již společnost Microsoft nebude nabízet server MFA pro nová nasazení. Noví zákazníci, kteří by chtěli od svých uživatelů vyžadovat vícefaktorové ověřování, by měli používat vícefaktorové ověřování Azure na základě cloudu. Stávající zákazníci, kteří aktivovali server MFA před 1.
 
 ## <a name="plan-your-deployment"></a>Plánování nasazení
 
@@ -55,7 +55,7 @@ Ujistěte se, že server, který používáte pro Azure Multi-Factor Authenticat
 |:--- |:--- |
 | Hardware |<li>200 MB volného místa na pevném disku</li><li>Procesor kompatibilní s x32 nebo x64</li><li>1 GB RAM nebo víc</li> |
 | Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, aktualizace SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, aktualizace SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice</li><li>Windows Vista, všechny edice, aktualizace SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
-| Oprávnění | Účet správce domény nebo účet správce rozlehlé sítě pro registraci ve službě Active Directory |
+| Oprávnění | Účet správce domény nebo podnikového správce pro registraci ve službě Active Directory |
 
 ### <a name="azure-mfa-server-components"></a>Komponenty Azure MFA Serveru
 
@@ -77,7 +77,7 @@ Každý server MFA musí být schopný komunikovat na odchozím portu 443 s těm
 
 Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsahy IP adres:
 
-| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
+| Podsíť IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
@@ -85,7 +85,7 @@ Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsah
 
 Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužívají k ověřování ze zařízení v podnikové síti mobilní aplikace, potřebujete pouze následující rozsahy:
 
-| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
+| Podsíť IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79 |
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
@@ -95,12 +95,12 @@ Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužíva
 
 Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication Server z webu Azure Portal:
 
-1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **zabezpečení** > **MFA**.
-3. V části **správce MFA serveru**vyberte **nastavení serveru**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) jako správce.
+2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **možnost Zabezpečení** > **vícefaktorové informace**.
+3. V části **Správce serveru MFA**vyberte **nastavení serveru**.
 4. Vyberte **Stáhnout** a podle pokynů na stránce pro stažení uložte instalační program. 
 
-   ![Stažení MFA serveru z Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![Stažení serveru MFA z webu Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. Ponechte tuto stránku otevřenou, protože se k ní vrátíme po spuštění instalačního programu.
 
@@ -109,7 +109,7 @@ Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication S
 Teď, když jste server stáhli, ho můžete nainstalovat a nastavit. Ujistěte se, že server, na kterém ho chcete nainstalovat, splňuje požadavky uvedené v části věnované plánování.
 
 1. Dvakrát klikněte na spustitelný soubor.
-2. Na obrazovce Výběr instalační složky zkontrolujte, že je složka zadaná správně, a klikněte na **Další**.
+2. Na obrazovce Vybrat instalační složku zkontrolujte, zda je složka správná, a klepněte na tlačítko **Další**.
 3. Až instalace skončí, klikněte na **Dokončit**. Spustí se průvodce konfigurací.
 4. Na úvodní obrazovce průvodce konfigurací zaškrtněte políčko **Vynechat použití průvodce konfigurací ověřování** a klikněte na **Další**. Průvodce se zavře a spustí se server.
 
@@ -118,7 +118,7 @@ Teď, když jste server stáhli, ho můžete nainstalovat a nastavit. Ujistěte 
 5. Zpátky na stránce, odkud jste server stáhli, klikněte na tlačítko **Vytvoření přihlašovacích údajů pro aktivaci**. Tyto údaje zkopírujte do příslušných polí v Azure MFA Serveru a klikněte na **Aktivovat**.
 
 > [!NOTE]
-> Přihlašovací údaje pro aktivaci v Azure Portal můžou generovat jenom globální správci.
+> Na webu Azure Portal mohou generovat aktivační pověření jenom globální správci.
 
 ## <a name="send-users-an-email"></a>Zaslání e-mailu uživatelům
 
@@ -136,7 +136,7 @@ Kliknutím vlevo na ikonu e-mailu můžete změnit nastavení odesílání těch
 
 Na kartě Obsah e-mailu uvidíte šablony e-mailů, ze kterých si můžete vybrat. V závislosti na tom, jak jste uživatelům nakonfigurovali dvoustupňové ověřování, vyberte nejvhodnější šablonu.
 
-![Šablony e-mailu MFA serveru v konzole](./media/howto-mfaserver-deploy/email2.png)
+![Šablony e-mailů serveru MFA v konzole](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Import uživatelů ze služby Active Directory
 
@@ -149,7 +149,7 @@ Teď, když je server nainstalovaný, budete chtít přidat uživatele. Můžete
 3. Teď můžete hledat jednotlivé uživatele nebo v adresáři AD vyhledat organizační jednotky, ve kterých jsou uživatelé. V tomto případě vyhledáme OJ uživatele.
 4. Vpravo označte všechny uživatele a klikněte na **Importovat**. Mělo by se zobrazit vyskakovací okno s informací, že akce proběhla úspěšně. Zavřete okno importu.
 
-   ![Import uživatele MFA serveru ze služby Active Directory](./media/howto-mfaserver-deploy/import2.png)
+   ![Import uživatele serveru MFA ze služby Active Directory](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>Automatizovaná synchronizace se službou Active Directory
 
@@ -177,7 +177,7 @@ Když Multi-Factor Authentication (MFA) Server používáte lokálně, uživatel
 Vedle těchto polí se s ověřovacími údaji uloží taky výsledek ověření (úspěch/zamítnuto) a případně důvod zamítnutí, které jsou dostupné v sestavách o ověřování/používání.
 
 > [!IMPORTANT]
-> Od března 2019 nebudou možnosti telefonního hovoru dostupné uživatelům MFA serveru v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Telefonní hovor bude dál k dispozici uživatelům v placených klientech Azure AD. Tato změna má vliv jenom na bezplatné nebo zkušební klienty Azure AD.
+> Od března 2019 nebudou možnosti telefonního hovoru dostupné uživatelům serveru MFA v tenantech Azure AD zdarma nebo zkušební verze. Sms zprávy nejsou touto změnou ovlivněny. Telefonní hovor bude i nadále k dispozici uživatelům v placených klientech Azure AD. Tato změna má vliv pouze na bezplatné nebo zkušební klienty Azure AD.
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Zálohování a obnovení Azure MFA Serveru
 
@@ -204,5 +204,5 @@ Po upgradu na MFA Server verze 8.x nebo novější nebo jeho instalaci se doporu
 - Nastavení a konfigurace portálu [User Portal](howto-mfaserver-deploy-userportal.md) pro uživatelskou samoobsluhu.
 - Nastavení a konfigurace Azure MFA Serveru pomocí [služby Active Directory Federation Service](multi-factor-authentication-get-started-adfs.md), [ověřování pomocí protokolu RADIUS](howto-mfaserver-dir-radius.md) nebo [ověřování pomocí protokolu LDAP](howto-mfaserver-dir-ldap.md).
 - Nastavení a konfigurace [Brány vzdálené plochy a Azure Multi-Factor Authentication Serveru používajícího protokol RADIUS](howto-mfaserver-nps-rdg.md).
-- [Nasazení webové služby mobilní aplikace Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-mobileapp.md).
-- [Pokročilé scénáře se službou Azure Multi-Factor Authentication a sítěmi VPN třetích stran](howto-mfaserver-nps-vpn.md).
+- [Nasazení webové služby serveru pro vícenásobné ověřování Azure](howto-mfaserver-deploy-mobileapp.md).
+- [Pokročilé scénáře s azure multi-factor authentication a virtuálními sítěmi třetích stran](howto-mfaserver-nps-vpn.md).

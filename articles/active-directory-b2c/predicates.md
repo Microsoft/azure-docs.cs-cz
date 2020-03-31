@@ -1,7 +1,7 @@
 ---
-title: Predikáty a PredicateValidations
+title: Predikáty a predikátyvalidace
 titleSuffix: Azure AD B2C
-description: Zabránit přidávání poškozených dat do tenanta Azure AD B2C pomocí vlastních zásad v Azure Active Directory B2C.
+description: Zabraňte přidání poškozených dat do klienta Azure AD B2C pomocí vlastních zásad ve službě Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,62 +12,62 @@ ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187232"
 ---
-# <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
+# <a name="predicates-and-predicatevalidations"></a>Predikáty a predikátyvalidace
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Predikáty** a **PredicateValidations** prvky umožňují provést proces ověřování, aby bylo zajištěno, že budou do tenanta Azure Active Directory B2C (Azure AD B2C) zadávána pouze správně vytvořená data.
+**Predikáty** a **PredicateValidations prvky** umožňují provést proces ověření k zajištění, že pouze správně vytvořená data je zadána do vašeho klienta Azure Active Directory B2C (Azure AD B2C).
 
 Následující diagram znázorňuje vztah mezi prvky:
 
-![Diagram znázorňující vztah ověření a predikátu predikátu](./media/predicates/predicates.png)
+![Diagram znázorňující vztah predikáty a predikáty ověření](./media/predicates/predicates.png)
 
 ## <a name="predicates"></a>Predikáty
 
-Prvek **predikátu** definuje základní ověření pro kontrolu hodnoty typu deklarace a vrátí `true` nebo `false`. Ověřování je provedeno pomocí zadaného prvku **metody** a sady prvků **parametru** , které jsou relevantní pro metodu. Predikát například může ověřit, zda délka hodnoty deklarace řetězce spadá do rozsahu minimálního a maximálního zadaného parametru nebo zda hodnota deklarace řetězce obsahuje znaková sada. Element **UserHelpText** poskytuje uživatelům chybovou zprávu, pokud se ověření nepovede. Hodnotu prvku **UserHelpText** lze lokalizovat pomocí [přizpůsobení jazyka](localization.md).
+**Predikát** prvek definuje základní ověření ke kontrole hodnoty typu `true` deklarace a vrátí nebo `false`. Ověření se provádí pomocí zadaného prvku **Method** a sady prvků **Parametr** relevantních pro metodu. Predikát může například zkontrolovat, zda je délka hodnoty deklarace řetězce v rozsahu minimálních a maximálních zadaných parametrů nebo zda hodnota deklarace řetězce obsahuje znakovou sadu. Prvek **UserHelpText** poskytuje uživatelům chybovou zprávu, pokud se kontrola nezdaří. Hodnota prvku **UserHelpText** může být lokalizována pomocí [přizpůsobení jazyka](localization.md).
 
-Element **predikáts** musí být uveden přímo za elementem **ClaimsSchema** v rámci elementu [BuildingBlocks](buildingblocks.md) .
+**Predikáty** prvek musí zobrazit přímo za **ClaimsSchema** prvek v rámci [BuildingBlocks](buildingblocks.md) element.
 
-Element **predikáts** obsahuje následující element:
+Prvek **Predikáty** obsahuje následující prvek:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Predikát | 1: n | Seznam predikátů. |
+| Predikátu | 1:n | Seznam predikátů. |
 
-Element **predikátu** obsahuje následující atributy:
+**Predikát** ový prvek obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro predikát. Ostatní elementy můžou tento identifikátor v zásadách použít. |
-| Metoda | Ano | Typ metody, který se má použít pro ověření. Možné hodnoty: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**nebo **IsDateRange**. Hodnota **IsLengthRange** ověří, zda je délka hodnoty deklarace řetězce v rozsahu zadaného minimálního a maximálního počtu zadaných parametrů. Hodnota **MatchesRegex** zkontroluje, jestli hodnota deklarace řetězce odpovídá regulárnímu výrazu. Hodnota **IncludesCharacters** zkontroluje, jestli hodnota deklarace řetězce obsahuje znaková sada. Hodnota **IsDateRange** zkontroluje, jestli je hodnota deklarace data v rozsahu zadaného minimálního a maximálního počtu parametrů. |
-| HelpText | Ne | Chybová zpráva pro uživatele, pokud se ověření nepovede. Tento řetězec se dá lokalizovat pomocí [přizpůsobení jazyka](localization.md) . |
+| ID | Ano | Identifikátor, který se používá pro predikát. Ostatní prvky můžete použít tento identifikátor v zásadě. |
+| Metoda | Ano | Typ metody, který se má použít pro ověření. Možné hodnoty: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**nebo **IsDateRange**. Hodnota **IsLengthRange** kontroluje, zda je délka hodnoty deklarace řetězce v rozsahu minimálních a maximálních zadaných parametrů. Hodnota **MatchesRegex** kontroluje, zda hodnota deklarace řetězce odpovídá regulárnímu výrazu. Hodnota **IncludesCharacters** kontroluje, zda hodnota deklarace řetězce obsahuje znakovou sadu. Hodnota **IsDateRange** kontroluje, zda je hodnota deklarace data mezi rozsahem minimálních a maximálních zadaných parametrů. |
+| Helptext | Ne | Chybová zpráva pro uživatele, pokud se kontrola nezdaří. Tento řetězec lze lokalizovat pomocí [přizpůsobení jazyka.](localization.md) |
 
-Element **predikát** obsahuje následující prvky:
+**Predikát** prvek obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | Zastaralé Chybová zpráva pro uživatele, pokud se ověření nepovede. |
-| Parametry | 1:1 | Parametry pro typ metody pro ověření řetězce. |
+| Text uživatelské nápovědy | 0:1 | (Zastaralé) Chybová zpráva pro uživatele, pokud se kontrola nezdaří. |
+| Parametry | 1:1 | Parametry pro typ metody ověření řetězce. |
 
-Element **Parameters** obsahuje následující prvky:
+**Parametry** Element obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Parametr | 1: n | Parametry pro typ metody pro ověření řetězce. |
+| Parametr | 1:n | Parametry pro typ metody ověření řetězce. |
 
-Element **Parameter** obsahuje následující atributy:
+Parametr **Element** obsahuje následující atributy:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| ID | 1:1 | Identifikátor parametru |
+| ID | 1:1 | Identifikátor parametru. |
 
-Následující příklad ukazuje metodu `IsLengthRange` s parametry `Minimum` a `Maximum`, které určují rozsah délky řetězce:
+Následující příklad ukazuje `IsLengthRange` metodu s `Minimum` `Maximum` parametry a které určují rozsah délky řetězce:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -78,7 +78,7 @@ Následující příklad ukazuje metodu `IsLengthRange` s parametry `Minimum` a 
 </Predicate>
 ```
 
-Následující příklad ukazuje metodu `MatchesRegex` s parametrem `RegularExpression`, který určuje regulární výraz:
+Následující příklad ukazuje `MatchesRegex` metodu `RegularExpression` s parametrem, který určuje regulární výraz:
 
 ```XML
 <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
@@ -88,7 +88,7 @@ Následující příklad ukazuje metodu `MatchesRegex` s parametrem `RegularExpr
 </Predicate>
 ```
 
-Následující příklad ukazuje metodu `IncludesCharacters` s parametrem `CharacterSet`, který určuje množinu znaků:
+Následující příklad ukazuje `IncludesCharacters` metodu `CharacterSet` s parametrem, který určuje sadu znaků:
 
 ```XML
 <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
@@ -98,7 +98,7 @@ Následující příklad ukazuje metodu `IncludesCharacters` s parametrem `Chara
 </Predicate>
 ```
 
-Následující příklad ukazuje metodu `IsDateRange` s parametry `Minimum` a `Maximum`, které určují rozsah kalendářních dat pomocí formátu `yyyy-MM-dd` a `Today`.
+Následující příklad ukazuje `IsDateRange` metodu s `Minimum` `Maximum` parametry a které určují `yyyy-MM-dd` rozsah `Today`dat s formátem a .
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -109,11 +109,11 @@ Následující příklad ukazuje metodu `IsDateRange` s parametry `Minimum` a `M
 </Predicate>
 ```
 
-## <a name="predicatevalidations"></a>PredicateValidations
+## <a name="predicatevalidations"></a>PredikateValidations
 
-I když predikáty definují ověření pro kontrolu proti typu deklarace, skupina **PredicateValidations** sadu predikátů pro vytvoření ověřování vstupu uživatele, které lze použít na typ deklarace identity. Každý element **PredicateValidation** obsahuje sadu elementů **predikátu** , které obsahují sadu elementů **PredicateReference** , které odkazují na **predikát**. Chcete-li předat ověření, hodnota deklarace by měla předat všechny testy predikátu v rámci všechny skupiny **predikátů** s jejich sadou **PredicateReference** prvků.
+Zatímco predikáty definovat ověření pro kontrolu proti typu **deklarace, PredicateValidations skupiny** sadu predikáty tvořit ověření vstupu uživatele, které lze použít pro typ deklarace. Každý **predikátValidation** prvek obsahuje sadu **PredicateGroup** prvky, které obsahují sadu **PredicateReference** prvky, které odkazuje na **predikát**. Chcete-li předat ověření, hodnota deklarace by měla projít všechny testy všechny predikátu v rámci všech **PredicateGroup** s jejich sadu **PredicateReference** prvky.
 
-Element **PredicateValidations** se musí objevit přímo za prvkem **predikáts** v rámci elementu [BuildingBlocks](buildingblocks.md) .
+**PredikateValidations** element musí být uveden přímo za **Predicates** prvek v rámci [BuildingBlocks](buildingblocks.md) element.
 
 ```XML
 <PredicateValidations>
@@ -133,56 +133,56 @@ Element **PredicateValidations** se musí objevit přímo za prvkem **predikáts
 </PredicateValidations>
 ```
 
-Element **PredicateValidations** obsahuje následující element:
+**PredikateValidations** prvek obsahuje následující prvek:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| PredicateValidation | 1: n | Seznam ověření predikátu |
+| Predikatevalidation | 1:n | Seznam ověření predikátu. |
 
-Element **PredicateValidation** obsahuje následující atribut:
+**PredikateValidation** element obsahuje následující atribut:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro ověření predikátu. Element **ClaimType** může použít tento identifikátor v zásadách. |
+| ID | Ano | Identifikátor, který se používá pro ověření predikátu. **ClaimType** Element můžete použít tento identifikátor v zásadě. |
 
-Element **PredicateValidation** obsahuje následující element:
+**PredikateValidation** prvek obsahuje následující prvek:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| PredicateGroups | 1: n | Seznam skupin predikátů. |
+| Predikátové skupiny | 1:n | Seznam predikátových skupin. |
 
-Element **PredicateGroups** obsahuje následující element:
+**PredikátGroups** Prvek obsahuje následující prvek:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| PredicateGroup | 1: n | Seznam predikátů. |
+| Predikátová skupina | 1:n | Seznam predikátů. |
 
-Element **predikátu** obsahuje následující atribut:
+Prvek **PredikateGroup** obsahuje následující atribut:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro skupinu predikátů.  |
+| ID | Ano | Identifikátor, který se používá pro skupinu predikátu.  |
 
-Element **predikátu** obsahuje následující prvky:
+Prvek **PredikateGroup** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 |  Popis predikátu, který může být užitečný pro uživatele, aby věděli, jaká hodnota by měla být typu. |
-| PredicateReferences | 1: n | Seznam odkazů na predikáty |
+| Text uživatelské nápovědy | 0:1 |  Popis predikátu, který může být pro uživatele užitečný, aby věděli, jakou hodnotu by měli zadat. |
+| PredikátOdkazy | 1:n | Seznam predikátových odkazů. |
 
-Element **PredicateReferences** obsahuje následující atributy:
+Prvek **PredicateReferences** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Ne | Určuje, že hodnota se musí shodovat s minimálním počtem definic predikátu, aby bylo možné vstup přijmout. Pokud není zadán, hodnota musí odpovídat všem definicím predikátu. |
+| Matchatleast | Ne | Určuje, že hodnota musí odpovídat alespoň tolik a mnoho predikát definice pro vstup, který má být přijat. Pokud není zadán, hodnota musí odpovídat všem predikátdefinice. |
 
-Element **PredicateReferences** obsahuje následující prvky:
+**PredikátReferenceelement** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| PredicateReference | 1: n | Odkaz na predikát. |
+| PredikátOdkaz | 1:n | Odkaz na predikát. |
 
-Element **PredicateReference** obsahuje následující atributy:
+**PredikátReference** element obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
@@ -191,16 +191,16 @@ Element **PredicateReference** obsahuje následující atributy:
 
 ## <a name="configure-password-complexity"></a>Konfigurace složitosti hesla
 
-Pomocí **predikátů** a **PredicateValidationsInput** můžete řídit požadavky na složitost pro hesla poskytnutá uživatelem při vytváření účtu. Ve výchozím nastavení používá Azure AD B2C používání silných hesel. Azure AD B2C podporuje také možnosti konfigurace pro kontrolu složitosti hesel, která zákazníci můžou používat. Složitost hesla můžete definovat pomocí těchto elementů predikátů:
+S **Predicáty** a **PredicateValidationsInput** můžete řídit požadavky na složitost pro hesla poskytované uživatelem při vytváření účtu. Ve výchozím nastavení Azure AD B2C používá silná hesla. Azure AD B2C také podporuje možnosti konfigurace pro řízení složitosti hesel, které zákazníci mohou používat. Složitost hesla můžete definovat pomocí těchto predikátových prvků:
 
-- **IsLengthBetween8And64** pomocí metody `IsLengthRange` ověří, že heslo musí mít 8 až 64 znaků.
-- **Malá písmena** pomocí metody `IncludesCharacters` ověří, jestli heslo obsahuje malé písmeno.
-- **Velká písmena** pomocí metody `IncludesCharacters` ověří, jestli heslo obsahuje velké písmeno.
-- **Číslo** pomocí metody `IncludesCharacters` ověří, zda heslo obsahuje číslici.
-- **Symbol** pomocí metody `IncludesCharacters` ověří, zda heslo obsahuje jeden z několika znaků symbolu.
-- **Pomocí metody** `MatchesRegex` se ověří, zda heslo obsahuje pouze čísla.
-- **AllowedAADCharacters** pomocí metody `MatchesRegex` ověří, zda byl zadán pouze neplatný znak hesla.
-- **DisallowedWhitespace** pomocí metody `MatchesRegex` ověří, zda heslo nezačíná nebo nekončí prázdným znakem.
+- **IsLengthBetween8And64** pomocí `IsLengthRange` metody, ověří, že heslo musí být mezi 8 a 64 znaků.
+- **Malá písmena** pomocí `IncludesCharacters` metody, ověří, že heslo obsahuje malé písmeno.
+- **Velká písmena** pomocí `IncludesCharacters` metody, ověří, že heslo obsahuje velké písmeno.
+- **Číslo** pomocí `IncludesCharacters` metody, ověří, že heslo obsahuje číslici.
+- **Symbol** pomocí `IncludesCharacters` metody ověří, zda heslo obsahuje jeden z několika znaků symbolu.
+- **PIN** pomocí `MatchesRegex` metody, ověří, že heslo obsahuje pouze čísla.
+- **AllowedAADCharacters** pomocí `MatchesRegex` metody, ověří, že heslo pouze neplatný znak byl poskytnut.
+- **NepovolenýWhitespace** pomocí `MatchesRegex` metody, ověří, že heslo nezačíná nebo končí s prázdné znaky.
 
 ```XML
 <Predicates>
@@ -254,11 +254,11 @@ Pomocí **predikátů** a **PredicateValidationsInput** můžete řídit požada
   </Predicate>
 ```
 
-Po definování základních ověření je můžete kombinovat dohromady a vytvořit sadu zásad hesel, které můžete použít v zásadách:
+Po definování základních ověření je můžete kombinovat a vytvořit sadu zásad hesel, které můžete použít v zásadách:
 
-- **SimplePassword** ověřuje DisallowedWhitespace, AllowedAADCharacters a IsLengthBetween8And64
-- **Strongpassword** ověří DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. Poslední `CharacterClasses` skupiny spustí další sadu predikátů s `MatchAtLeast` nastavenou na 3. Heslo uživatele musí mít 8 až 16 znaků a tři z následujících znaků: malá písmena, Velká písmena, číslice nebo symboly.
-- **CustomPassword** ověří pouze DisallowedWhitespace, AllowedAADCharacters. Takže uživatel může zadat jakékoli heslo s libovolnou délkou, pokud jsou tyto znaky platné.
+- **SimplePassword** ověří disallowedWhitespace, AllowedAADCharacters a IsLengthBetween8And64
+- **StrongPassword** ověří DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. Poslední skupina `CharacterClasses` spustí další sadu predikátů s `MatchAtLeast` nastavenou na 3. Uživatelské heslo musí mít 8 až 16 znaků a tři z následujících znaků: Malá písmena, Velká písmena, Číslo nebo Symbol.
+- **CustomPassword** ověří pouze DisallowedWhitespace, AllowedAADCharacters. Takže uživatel může poskytnout libovolné heslo s libovolnou délkou, pokud jsou znaky platné.
 
 ```XML
 <PredicateValidations>
@@ -328,7 +328,7 @@ Po definování základních ověření je můžete kombinovat dohromady a vytvo
 </PredicateValidations>
 ```
 
-V typu deklarace přidejte element **PredicateValidationReference** a určete identifikátor jako jeden z ověření predikátu, jako je například SimplePassword, strongpassword nebo CustomPassword.
+V typu deklarace aplikace přidejte **predikátValidationReference** element a zadejte identifikátor jako jeden z ověření predikátu, jako je například SimplePassword, StrongPassword nebo CustomPassword.
 
 ```XML
 <ClaimType Id="password">
@@ -341,13 +341,13 @@ V typu deklarace přidejte element **PredicateValidationReference** a určete id
 </ClaimType>
 ```
 
-Následující příklad ukazuje, jak jsou prvky uspořádány, když Azure AD B2C zobrazuje chybovou zprávu:
+Následující ukazuje, jak jsou uspořádány prvky při Azure AD B2C zobrazí chybovou zprávu:
 
-![Diagram pro příklad složitosti hesla a predikátu](./media/predicates/predicates-pass.png)
+![Příklad složitosti hesla predikátu a predikátuSkupiny](./media/predicates/predicates-pass.png)
 
-## <a name="configure-a-date-range"></a>Konfigurace rozsahu kalendářních dat
+## <a name="configure-a-date-range"></a>Konfigurace rozsahu dat
 
-Pomocí **predikátů** a elementů **PredicateValidations** můžete řídit minimální a maximální hodnoty data **UserInputType** pomocí `DateTimeDropdown`. To provedete tak, že vytvoříte **predikát** s metodou `IsDateRange` a zadáte minimální a maximální parametry.
+S **Predikáty** a **PredicateValidations prvky** můžete řídit minimální a maximální hodnoty `DateTimeDropdown`data **UserInputType** pomocí . Chcete-li to provést, vytvořte `IsDateRange` **predikát** s metodou a zadejte minimální a maximální parametry.
 
 ```XML
 <Predicates>
@@ -360,7 +360,7 @@ Pomocí **predikátů** a elementů **PredicateValidations** můžete řídit mi
 </Predicates>
 ```
 
-Přidejte **PredicateValidation** s odkazem na predikát `DateRange`.
+Přidejte **PredikátValidation** s odkazem na `DateRange` predikát.
 
 ```XML
 <PredicateValidations>
@@ -376,7 +376,7 @@ Přidejte **PredicateValidation** s odkazem na predikát `DateRange`.
 </PredicateValidations>
 ```
 
-V typu deklarace přidejte element **PredicateValidationReference** a určete identifikátor jako `CustomDateRange`.
+Do typu deklarace aplikace přidejte prvek **PredicateValidationReference** a zadejte identifikátor jako `CustomDateRange`.
 
 ```XML
 <ClaimType Id="dateOfBirth">
