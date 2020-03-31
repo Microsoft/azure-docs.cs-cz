@@ -1,89 +1,89 @@
 ---
-title: Příprava na migraci Azure Monitor klasických výstrah pomocí aktualizace aplikací logiky a runbooků
-description: Naučte se, jak upravit Webhooky, Logic Apps a runbooky pro přípravu na dobrovolné migrace.
+title: Příprava migrace klasických výstrah Azure Monitoru aktualizací aplikací logiky a sad Runbook
+description: Přečtěte si, jak upravit webhooky, aplikace logiky a runbooky a připravit se na dobrovolnou migraci.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665588"
 ---
-# <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Příprava aplikací logiky a runbooků pro migraci klasických pravidel upozornění
+# <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Příprava aplikací logiky a runbooků na migraci klasických pravidel upozornění
 
-Jak [už jsme oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor se v září 2019 (původně z července 2019). Nástroj pro migraci je k dispozici v Azure Portal zákazníkům, kteří používají pravidla pro klasické výstrahy a kteří chtějí aktivovat migraci sami.
+Jak [již bylo oznámeno](monitoring-classic-retirement.md), klasické výstrahy ve službě Azure Monitor se vyřazují v září 2019 (původně v červenci 2019). Nástroj pro migraci je k dispozici na webu Azure Portal zákazníkům, kteří používají klasická pravidla výstrah a chtějí migraci spustit sami.
 
 > [!NOTE]
-> Vzhledem k prodlevám při zavádění migračního nástroje pro migraci se datum vyřazení pro migraci klasických výstrah rozšířila na 31. srpna 2019 od původně oznámeného dne 30. června 2019.
+> Kvůli zpoždění při zavádění migračního nástroje bylo datum odchodu do důchodu pro klasickou výstrahu prodlouženo na 31.
 
-Pokud se rozhodnete, že chcete migrovat pravidla vašich klasických výstrah na nová pravidla upozornění, pamatujte na to, že mezi těmito dvěma systémy existují rozdíly. V tomto článku se dozvíte o těchto rozdílech a o tom, jak můžete tuto změnu připravit.
+Pokud se rozhodnete dobrovolně migrovat klasická pravidla výstrah na nová pravidla výstrah, uvědomte si, že mezi těmito dvěma systémy existují určité rozdíly. Tento článek vysvětluje tyto rozdíly a jak se můžete připravit na změnu.
 
 ## <a name="api-changes"></a>Změny rozhraní API
 
-Rozhraní API, která vytvářejí a spravují pravidla upozornění Classic (`microsoft.insights/alertrules`), se liší od rozhraní API, která vytvářejí a spravují nové výstrahy metriky (`microsoft.insights/metricalerts`). Pokud máte v dnešní době programově vytvářet a spravovat pravidla výstrah, aktualizujte skripty pro nasazení tak, aby fungovaly s novými rozhraními API.
+Pravidla API, která vytvářejí a`microsoft.insights/alertrules`spravují klasická pravidla výstrah ( ) se`microsoft.insights/metricalerts`liší od api, která vytvářejí a spravují nové výstrahy metrik ( ). Pokud programově vytvoříte a spravujete klasická pravidla výstrah ještě dnes, aktualizujte skripty nasazení tak, aby fungovaly s novými pravidly API.
 
-Následující tabulka je odkazem na programová rozhraní pro klasické a nové výstrahy:
+Následující tabulka je odkazem na programová rozhraní pro klasické i nové výstrahy:
 
-|         |Klasická upozornění  |Nové výstrahy metriky |
+|         |Klasická upozornění  |Nová upozornění na metriky |
 |---------|---------|---------|
-|REST API     | [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [AZ monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [AZ monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Referenční informace](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referenční informace](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Šablona Azure Resource Manageru | [Pro klasické výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Nové výstrahy metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+|REST API     | [Microsoft.Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [az monitor výstraha](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [upozornění na metriky az monitoru](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [Odkaz](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Odkaz](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Šablona Azure Resource Manageru | [Pro klasická upozornění](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Pro nová upozornění na metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>Změny datové části oznámení
 
-Formát datové části oznámení se mírně liší mezi [pravidly upozornění Classic](alerts-webhooks.md) a [novými výstrahami metriky](alerts-metric-near-real-time.md#payload-schema). Pokud máte žádné Webhooky, aplikace logiky nebo akce sady Runbook aktivované klasickými pravidly upozornění, je nutné aktualizovat tyto koncové body oznámení tak, aby přijímaly formát datové části nových výstrah metrik.
+Formát datové části oznámení se mírně liší mezi [klasickými pravidly výstrah](alerts-webhooks.md) a [novými upozorněními metriky](alerts-metric-near-real-time.md#payload-schema). Pokud máte nějaké webhooku, aplikace logiky nebo akce sady Runbook, které jsou spouštěny klasickými pravidly výstrah, je nutné aktualizovat tyto koncové body oznámení přijmout formát datové části nové výstrahy metriky.
 
-Pomocí následující tabulky namapujte pole datové části Webhooku z klasického formátu do nového formátu:
+Následující tabulka slouží k mapování polí datové části webového háku z klasického formátu na nový formát:
 
-|  |Klasická upozornění  |Nové výstrahy metriky |
+|  |Klasická upozornění  |Nová upozornění na metriky |
 |---------|---------|---------|
-|Aktivovala se výstraha nebo se vyřešila?    | **stav**       | **data. status** |
-|Kontextové informace o výstraze     | **souvislost**        | **data. Context**        |
-|Časové razítko, u kterého se výstraha aktivovala nebo vyřešila     | **Context. timestamp**       | **data. Context. timestamp**        |
+|Bylo upozornění aktivováno nebo vyřešeno?    | **status**       | **data.status** |
+|Kontextové informace o výstraze     | **Kontextu**        | **data.context**        |
+|Časové razítko, při kterém bylo upozornění aktivováno nebo vyřešeno     | **context.timestamp**       | **data.context.timestamp**        |
 | ID pravidla výstrahy | **context.id** | **data.context.id** |
-| Název pravidla výstrahy | **context.name** | **data.context.name** |
-| Popis pravidla výstrahy | **Context. Description** | **data. Context. Description** |
-| Podmínka pravidla výstrahy | **Context. Condition** | **data. Context. Condition** |
-| Název metriky | **Context. Condition. metric** | **data. Context. Condition. allOf [0]. metric** |
-| Časová agregace (jak je metrika agregována v okně vyhodnocení)| **Context. Condition. timeAggregation** | **Context. Condition. timeAggregation** |
-| Zkušební období | **Context. Condition. windowSize** | **data. Context. Condition. windowSize** |
-| (Způsob porovnání agregované hodnoty metriky s prahovou hodnotou) | **Context. Condition. operator** | **data. Context. Condition. operator** |
-| Prahová hodnota | **Context. Condition. Threshold** | **data. Context. Condition. allOf [0]. prahová hodnota** |
-| Hodnota metriky | **Context. Condition. metricValue** | **data. Context. Condition. allOf [0]. metricValue** |
-| ID předplatného | **Context. subscriptionId** | **data. Context. subscriptionId** |
-| Skupina prostředků ovlivněného prostředku | **Context. resourceName** | **data. Context. resourceName** |
-| Název ovlivněného prostředku | **Context. resourceName** | **data. Context. resourceName** |
-| Typ ovlivněného prostředku | **Context. ResourceType** | **data. Context. ResourceType** |
-| ID prostředku ovlivněného prostředku | **Context. resourceId** | **data. Context. resourceId** |
-| Přímý odkaz na stránku souhrnu prostředků na portálu | **Context. portalLink** | **data. Context. portalLink** |
-| Vlastní pole datové části, která se mají předat Webhooku nebo aplikaci logiky | **vlastnosti** | **data. Properties** |
+| Název pravidla upozornění | **context.name** | **data.context.name** |
+| Popis pravidla výstrahy | **context.description** | **data.context.description** |
+| Podmínka pravidla výstrahy | **context.condition** | **data.context.condition** |
+| Název metriky | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
+| Agregace času (jak se metrika agreguje v okně hodnocení)| **context.condition.timeAgregace** | **context.condition.timeAgregace** |
+| Období hodnocení | **context.condition.windowVelikost** | **data.context.condition.windowVelikost** |
+| Operátor (jak se porovnávaná hodnota metriky s prahovou hodnotou) | **context.condition.operator** | **data.context.condition.operator** |
+| Prahová hodnota | **context.condition.threshold** | **threshold data.context.condition.allOf[0].** |
+| Metrická hodnota | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
+| ID předplatného | **context.subscriptionId** | **data.context.subscriptionId** |
+| Skupina prostředků ohroženého zdrojem | **context.resourceGroup** | **data.context.resourceGroup** |
+| Název ohroženého prostředku | **context.resourceName** | **data.context.resourceName** |
+| Typ ovlivněného zdroje | **context.resourceType** | **data.context.resourceType** |
+| ID prostředku postiženého prostředku | **context.resourceId** | **data.context.resourceId** |
+| Přímý odkaz na stránku souhrnu prostředků portálu | **context.portalLink** | **data.context.portalLink** |
+| Vlastní pole datové části, která mají být předána webhooku nebo aplikaci logiky | **Vlastnosti** | **data.properties** |
 
-Datová část je podobná, jak vidíte. Následující část nabízí:
+Užitečné zatížení jsou podobné, jak můžete vidět. Následující sekce nabízí:
 
-- Podrobnosti o úpravách Logic Apps pro práci s novým formátem.
-- Příklad Runbooku, který analyzuje datovou část oznámení pro nové výstrahy.
+- Podrobnosti o úpravě aplikací logiky pro práci s novým formátem.
+- Příklad runbooku, který analyzuje datovou část oznámení pro nové výstrahy.
 
-## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>Úprava aplikace logiky pro příjem upozornění na upozornění metriky
+## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>Úprava aplikace logiky pro příjem upozornění na metriku
 
-Pokud používáte Logic Apps s klasickými výstrahami, musíte upravit logiku – kód aplikace a analyzovat novou datovou část upozornění metrik. Postupujte následovně:
+Pokud používáte aplikace logiky s klasickými výstrahami, musíte upravit kód aplikace logiky, abyste analýzu nové metriky výstrahy datové části. Postupujte následovně:
 
 1. Vytvořte novou aplikaci logiky.
 
-1. Použijte šablonu obslužná rutina výstrahy Azure Monitor – metriky. Tato šablona obsahuje aktivační událost **požadavku HTTP** s definovaným příslušným schématem.
+1. Použijte šablonu "Azure Monitor – metriky Obslužná rutina výstrah". Tato šablona obsahuje aktivační událost **požadavku HTTP** s definovaným příslušným schématem.
 
-    ![Logic-App-Template](media/alerts-migration/logic-app-template.png "Šablona výstrahy metriky")
+    ![šablona logika-aplikace](media/alerts-migration/logic-app-template.png "Šablona upozornění metriky")
 
 1. Přidejte akci pro hostování logiky zpracování.
 
-## <a name="use-an-automation-runbook-that-receives-a-metric-alert-notification"></a>Použití Runbooku služby Automation, který obdrží oznámení výstrahy metriky
+## <a name="use-an-automation-runbook-that-receives-a-metric-alert-notification"></a>Použití runbooku automatizace, který obdrží upozornění na metriku
 
-Následující příklad poskytuje kód PowerShellu pro použití v Runbooku. Tento kód může analyzovat datové části pro pravidla upozornění na klasickou metriku a nová pravidla upozornění na metriky.
+Následující příklad obsahuje kód prostředí PowerShell, který se má použít v runbooku. Tento kód může analyzovat datové části pro klasická pravidla upozornění metriky a nová pravidla upozornění metriky.
 
 ```PowerShell
 ## Example PowerShell code to use in a runbook to handle parsing of both classic and new metric alerts.
@@ -150,17 +150,17 @@ else {
 
 ```
 
-Úplný příklad Runbooku, který zastaví virtuální počítač, když se aktivuje výstraha, najdete v [dokumentaci k Azure Automation](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook).
+Úplný příklad sady Runbook, která zastaví virtuální počítač při aktivaci výstrahy, najdete v [dokumentaci k Azure Automation](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook).
 
 ## <a name="partner-integration-via-webhooks"></a>Integrace partnerů prostřednictvím webhooků
 
-Většina [našich partnerů, kteří se integrují s klasickými výstrahami,](https://docs.microsoft.com/azure/azure-monitor/platform/partners) už v rámci svých integrací podporuje novější výstrahy metriky. Známé integrace, které už fungují s novými výstrahami metriky:
+Většina [našich partnerů, kteří se integrují s klasickými výstrahami,](https://docs.microsoft.com/azure/azure-monitor/platform/partners) již prostřednictvím svých integrací podporuje novější upozornění na metriky. Známé integrace, které již fungují s novými upozorněními na metriky, jsou:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-Pokud používáte integraci partnera, která zde není uvedená, potvrďte u poskytovatele Integration zprostředkovatele, že integrace funguje s novými výstrahami metriky.
+Pokud používáte integraci partnera, která zde není uvedena, potvrďte u poskytovatele integrace, že integrace funguje s novými upozorněními na metriky.
 
 ## <a name="next-steps"></a>Další kroky
 

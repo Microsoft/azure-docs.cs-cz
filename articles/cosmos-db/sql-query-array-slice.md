@@ -1,6 +1,6 @@
 ---
 title: ARRAY_SLICE v dotazovacím jazyce Azure Cosmos DB
-description: Přečtěte si, jak funkce systému SQL řezu Array v Azure Cosmos DB vrací část výrazu pole.
+description: Informace o tom, jak funkce systému SQL řezu pole v Azure Cosmos DB vrací část výrazu pole
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303320"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
- Vrátí část reprezentující výraz pole.
+ Vrátí část výrazu pole.
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -29,9 +29,9 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
    Je libovolný výraz pole.  
   
 *num_expr*  
-   Založený na nule číselný index, na kterém má být pole. Záporné hodnoty slouží k určení počátečního indexu relativnímu k poslední prvek pole tedy -1 odkazy na poslední prvek v poli.  
+   Nulový číselný index, ve kterém má být pole zahájeno. Záporné hodnoty mohou být použity k určení počátečního indexu vzhledem k poslednímu prvku pole, tj.  
 
-*num_expr* Volitelný numerický výraz, který nastaví maximální počet prvků ve výsledném poli.    
+*num_expr* Volitelný číselný výraz, který nastavuje maximální počet prvků ve výsledném poli.    
 
 ## <a name="return-types"></a>Návratové typy
   
@@ -69,7 +69,7 @@ SELECT
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude index využívat.
+Tato systémová funkce nebude využívat index.
 
 ## <a name="next-steps"></a>Další kroky
 

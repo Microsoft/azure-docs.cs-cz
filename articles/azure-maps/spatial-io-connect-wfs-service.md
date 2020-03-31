@@ -1,51 +1,51 @@
 ---
 title: Připojení ke službě webové funkce (WFS) | Mapy Microsoft Azure
-description: Přečtěte si, jak se připojit ke službě WFS, a pak pomocí Azure Maps Web SDK a modulu pro prostor v/v vytvořit dotaz na službu WFS.
-author: farah-alyasari
-ms.author: v-faalya
+description: Zjistěte, jak se připojit ke službě WFS, a pak se na službu WFS zadejte pomocí webové sady Azure Maps SDK a modulu Prostorové iO.
+author: philmea
+ms.author: philmea
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 18ac583837c7cb8b2dabbfa6f7d7210c8afe3fcb
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402750"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334203"
 ---
 # <a name="connect-to-a-wfs-service"></a>Připojení ke službě WFS
 
-Služba webové funkce (WFS) je webová služba pro dotazování prostorových dat s standardizovaným rozhraním API, které je definováno Open Geospatial Consortium (OGC). Třída `WfsClient` v modulu pro prostorové vstupně-výstupní operace umožňuje vývojářům připojit se ke službě WFS a dotazovat se na data ze služby.
+Webfeature Service (WFS) je webová služba pro dotazování prostorových dat, která má standardizované rozhraní API, které je definováno open geoprostorové konsorcium (OGC). Třída `WfsClient` v modulu prostorových IO umožňuje vývojářům připojit se ke službě WFS a dotazovat data ze služby.
 
-Třída `WfsClient` podporuje následující funkce:
+`WfsClient` Třída podporuje následující funkce:
 
-- Podporované verze: `1.0.0`, `1.1.0`a `2.0.0`
-- Podporované operátory filtru: binární porovnávání, Logic, Math, Value a `bbox`.
-- Žádosti se provádějí jenom pomocí `HTTP GET`.
+- Podporované verze: `1.0.0` `1.1.0`, , a`2.0.0`
+- Podporované operátory filtrů: binární porovnání, logika, matematika, hodnota a `bbox`.
+- Žádosti jsou prováděny `HTTP GET` pouze pomocí.
 - Podporované operace:
 
     | | |
     | :-- | :-- |
-    | GetCapabilities | Vygeneruje dokument metadat s platnými operacemi a parametry WFS. |
-    | Getfeature | Vrátí výběr funkcí ze zdroje dat. |
-    | DescribeFeatureType | Vrátí podporované typy funkcí. |
+    | GetCapabilities | Generuje dokument metadat s platnými operacemi a parametry WFS. |
+    | Funkce GetFeature | Vrátí výběr funkcí ze zdroje dat. |
+    | Typ describefeature | Vrátí podporované typy funkcí. |
 
 ## <a name="using-the-wfs-client"></a>Použití klienta WFS
 
-Třída `atlas.io.ogc.WfsClient` v modulu pro prostorové vstupně-výstupní operace usnadňuje dotazování na službu WFS a převádění odpovědí na objekty třídyal JSON. Tento objekt pro objektiv JSON se pak dá použít pro jiné účely mapování.
+Třída `atlas.io.ogc.WfsClient` v modulu prostorových IO usnadňuje dotazování na službu WFS a převést odpovědi na objekty GeoJSON. Tento objekt GeoJSON pak lze použít pro jiné účely mapování.
 
-Následující kód dotazuje službu WFS a vykresluje vrácené funkce na mapě.
+Následující kód se dotazuje služby WFS a vykresluje vrácené funkce na mapě.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Příklad jednoduchého WFSu' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Azure Maps <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>Ukázka jednoduchého</a> pera v WFS (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Jednoduchý příklad WFS' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>příklad jednoduchého</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>pera WFS podle Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="supported-filters"></a>Podporované filtry
 
-Specifikace pro WFS Standard využívá filtry OGC. Níže uvedené filtry jsou podporovány klientem WFS za předpokladu, že služba volána také podporuje tyto filtry. Vlastní řetězce filtru lze předat do `CustomFilter` třídy.
+Specifikace standardu WFS využívá filtry OGC. Níže uvedené filtry jsou podporovány klientem WFS za předpokladu, že volaná služba tyto filtry také podporuje. Vlastní řetězce filtru mohou být `CustomFilter` předány do třídy.
 
 **Logické operátory**
 
@@ -78,53 +78,35 @@ Specifikace pro WFS Standard využívá filtry OGC. Níže uvedené filtry jsou 
 - `PropertyIsNil`
 - `PropertyIsBetween`
 
-Následující kód demonstruje použití různých filtrů s klientem WFS.
+Následující kód ukazuje použití různých filtrů s klientem WFS.
 
 <br/>
 
-<iframe height='500' scrolling='no' title= 'Příklady filtru WFS' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>se podívejte na <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>Příklady filtru pera WFS</a> .
+<iframe height='500' scrolling='no' title= 'Příklady filtrů WFS' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>příklady filtru</a> Pen<a href='https://codepen.io/azuremaps'>@azuremaps</a>WFS podle Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="wfs-service-explorer"></a>Průzkumník služby WFS
+## <a name="wfs-service-explorer"></a>Průzkumník služeb WFS
 
-Následující kód používá klienta WFS k prozkoumání služeb WFS. Vyberte vrstvu typu vlastnosti v rámci služby a zobrazte přidruženou legendu.
+Následující kód používá klienta WFS k prozkoumání služeb WFS. Vyberte vrstvu typu vlastnosti v rámci služby a podívejte se na přidruženou legendu.
 
 <br/>
 
-<iframe height='700' style='width: 100%;' scrolling='no' title= 'Průzkumník služby WFS' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>WFS (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>najdete v Azure Maps <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>Průzkumníkovi služby</a> pero.
+<iframe height='700' style='width: 100%;' scrolling='no' title= 'Průzkumník služeb WFS' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>průzkumník služby</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>Pen WFS podle Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-K načtení prostředků hostovaných v doménách, které nejsou povolené CORs, můžete taky použít proxy službu. Nejdřív byste definovali proměnnou pro uchování adresy URL proxy služby a nastavili možnost `proxyService` pro klienta WFS. Pokud chcete pro uživatele vykreslit možnost služby proxy, přidejte do uživatelského rozhraní uživatelský vstup. Načte adresu URL služby, když se klikne na vstup. Následující fragmenty kódu ukazují, jak používat službu proxy.
+Pro přístup ke službám WFS hostovaným na koncových bodech, které nejsou `proxyService` povoleny cors, může být proxy služba s podporou CORS předána do možnosti klienta WFS, jak je znázorněno níže. 
 
 ```JavaScript
-
-//A variable to hold the URL of the proxy service
-var proxyServiceUrl = window.location.origin + 'CorsEnabledProxyService.ashx?url=';
-
 //Create the WFS client to access the service and use the proxy service settings
 client = new atlas.io.ogc.WfsClient({
     url: url,
-    proxyService: (document.getElementById('useProxyService').checked) ? proxyServiceUrl : null
+    proxyService: window.location.origin + '/YourCorsEnabledProxyService.ashx?url='
 });
-
-function proxyOptionChanged() {
-    if (currentServiceUrl) {
-        loadClient(currentServiceUrl);
-    }
-}
-
-```
-
-Fragment kódu HTML níže odpovídá výše uvedenému kódu JavaScriptu:
-
-```html
-<!-- use the proxy service -->
-<input id="useProxyService" type="checkbox" onclick="proxyOptionChanged()"/>
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o třídách a metodách, které se používají v tomto článku:
+Další informace o třídách a metodách použitých v tomto článku:
 
 > [!div class="nextstepaction"]
 > [WfsClient](https://docs.microsoft.com/JavaScript/api/azure-maps-spatial-io/atlas.io.ogc.wfsclient)
@@ -132,7 +114,7 @@ Další informace o třídách a metodách, které se používají v tomto člá
 > [!div class="nextstepaction"]
 > [WfsServiceOptions](https://docs.microsoft.com/JavaScript/api/azure-maps-spatial-io/atlas.wfsserviceoptions)
 
-Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
+Další ukázky kódu, které chcete přidat do map, naleznete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Využití základních operací](spatial-io-core-operations.md)

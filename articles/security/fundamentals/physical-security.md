@@ -1,6 +1,6 @@
 ---
-title: Fyzické zabezpečení datových center Azure – Microsoft Azure | Microsoft Docs
-description: Tento článek popisuje, co Microsoft dělá k zabezpečení datových center Azure, včetně fyzické infrastruktury, zabezpečení a nabídek dodržování předpisů.
+title: Fyzické zabezpečení datových center Azure – Microsoft Azure | Dokumenty společnosti Microsoft
+description: Článek popisuje, co Microsoft dělá pro zabezpečení datových center Azure, včetně fyzické infrastruktury, zabezpečení a nabídky dodržování předpisů.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,74 +16,74 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726728"
 ---
-# <a name="azure-facilities-premises-and-physical-security"></a>Zařízení, místní a fyzické zabezpečení Azure
-Tento článek popisuje, co Microsoft dělá k zabezpečení infrastruktury Azure.
+# <a name="azure-facilities-premises-and-physical-security"></a>Zařízení Azure, prostory a fyzické zabezpečení
+Tento článek popisuje, co Microsoft dělá pro zabezpečení infrastruktury Azure.
 
-## <a name="datacenter-infrastructure"></a>Infrastruktura Datacenter
-Azure se skládá z [globálně distribuované infrastruktury Datacenter](https://azure.microsoft.com/global-infrastructure/), podporuje tisíce online služby a pokrývá více než 100 vysoce zabezpečených zařízení po celém světě.
+## <a name="datacenter-infrastructure"></a>Infrastruktura datového centra
+Azure se skládá z [globálně distribuované infrastruktury datových center](https://azure.microsoft.com/global-infrastructure/), která podporuje tisíce online služeb a zahrnuje více než 100 vysoce zabezpečených zařízení po celém světě.
 
-Infrastruktura je navržená tak, aby přiblížila aplikace uživatelům po celém světě, zachovává zaregistrování dat a nabízela zákazníkům komplexní možnosti dodržování předpisů a odolnosti proti chybám. Azure má 52 oblastí po celém světě a je k dispozici ve 140 zemích nebo oblastech.
+Infrastruktura je navržena tak, aby aplikace přibližovala uživatelům po celém světě, zachovala rezidenci dat a nabízela zákazníkům komplexní možnosti dodržování předpisů a odolnosti. Azure má 52 oblastí po celém světě a je k dispozici ve 140 zemích nebo oblastech.
 
-Oblast je sada datových center, která je propojená pomocí obrovské a odolné sítě. Síť zahrnuje distribuci obsahu, Vyrovnávání zatížení, redundanci a šifrování ve výchozím nastavení. V případě více globálních oblastí než jakýkoli jiný poskytovatel cloudu vám Azure poskytne flexibilitu při nasazování aplikací tam, kde je potřebujete.
+Oblast je sada datových center, která je propojena prostřednictvím masivní a odolné sítě. Síť ve výchozím nastavení zahrnuje distribuci obsahu, vyrovnávání zatížení, redundanci a šifrování. Díky více globálním oblastem než kterýkoli jiný poskytovatel cloudu vám Azure poskytuje flexibilitu při nasazování aplikací tam, kde je potřebujete.
 
-Oblasti Azure jsou uspořádané do zeměpisných oblastí. Zeměpisná oblast Azure zaručuje, že se v rámci příslušných zeměpisných hranic dodržují požadavky na rezidenci dat, suverenitu, dodržování předpisů a zajištění odolnosti.
+Oblasti Azure jsou uspořádány do zeměpisných oblastí. Azure geografie zajišťuje, že data rezidence, suverenity, dodržování předpisů a odolnost i požadavky odolnosti jsou dodržovány v rámci geografických hranic.
 
-Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Geografické oblasti jsou odolné proti chybám, aby odolaly kompletní selhání oblasti prostřednictvím připojení k vyhrazené síťové infrastruktuře s vysokou kapacitou.
+Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Zeměpisné oblasti jsou odolné proti chybám, aby odolaly úplnému selhání oblasti prostřednictvím jejich připojení k vyhrazené, vysokokapacitní síťové infrastruktuře.
 
-Zóny dostupnosti jsou fyzicky oddělená umístění v rámci oblasti Azure. Každá zóna dostupnosti se skládá z jednoho nebo více datových center vybavených nezávislými napájením, chlazením a sítěmi. Zóny dostupnosti umožňují spouštět klíčové aplikace s vysokou dostupností a replikací s nízkou latencí.
+Zóny dostupnosti jsou fyzicky samostatná umístění v rámci oblasti Azure. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. Zóny dostupnosti umožňují spouštět kritické aplikace s vysokou dostupností a replikací s nízkou latencí.
 
-Následující obrázek ukazuje, jak globální infrastruktura Azure spáruje oblast a zóny dostupnosti v rámci stejné hranice umístění dat pro zajištění vysoké dostupnosti, zotavení po havárii a zálohování.
+Následující obrázek ukazuje, jak se oblast globální infrastruktury Azure a zóny dostupnosti v rámci stejné hranice rezidence dat pro vysokou dostupnost, zotavení po havárii a zálohování.
 
-![Diagram znázorňující hranici zasídlí dat](./media/physical-security/data-residency-boundary.png)
+![Diagram znázorňující hranici rezidence dat](./media/physical-security/data-residency-boundary.png)
 
-Geograficky distribuovaná datacentra umožňují Microsoftu blízko zákazníkům, aby se snížila latence sítě a umožňovala geograficky redundantní zálohování a převzetí služeb při selhání.
+Geograficky distribuovaná datová centra umožňují společnosti Microsoft být blízko zákazníkům, snížit latenci sítě a umožnit geograficky redundantní zálohování a převzetí služeb při selhání.
 
 ## <a name="physical-security"></a>Fyzické zabezpečení
-Microsoft navrhuje, sestavuje a provozuje datacentra způsobem, který přesně řídí fyzický přístup k oblastem, kde jsou uložená vaše data. Společnost Microsoft chápe důležitost ochrany vašich dat a je potvrzena pro pomoc s zabezpečením datových center, která obsahují vaše data. Máme celé oddělení Microsoftu zaměřené na návrh, sestavování a provoz fyzických zařízení podporujících Azure. Tento tým je investoval do zachování nejmodernějšího fyzického zabezpečení.
+Společnost Microsoft navrhuje, vytváří a provozuje datová centra způsobem, který přísně řídí fyzický přístup k oblastem, kde jsou data uložena. Společnost Microsoft chápe důležitost ochrany vašich dat a zavazuje se pomáhat zabezpečit datová centra, která obsahují vaše data. V Microsoftu máme celou divizi, která se věnuje navrhování, vytváření a provozování fyzických zařízení podporujících Azure. Tento tým je investován do udržování nejmodernější fyzické bezpečnosti.
 
-Microsoft využívá k fyzickému zabezpečení vrstvený přístup, aby snížil riziko neautorizovaných uživatelů, kteří získají fyzický přístup k datům a prostředkům datacentra. Datová centra spravovaná Microsoftem mají rozsáhlou vrstvu ochrany: ke schválení přístupu v hraničním zařízení, na hraničním zařízení, v rámci budovy a v centru Datacenter. Vrstvy fyzického zabezpečení jsou:
+Společnost Microsoft zaujímá vrstvený přístup k fyzickému zabezpečení, aby se snížilo riziko, že neoprávnění uživatelé získají fyzický přístup k datům a prostředkům datového centra. Datová centra spravovaná společností Microsoft mají rozsáhlé vrstvy ochrany: schválení přístupu na obvodu zařízení, na obvodu budovy, uvnitř budovy a na podlaze datového centra. Úrovně fyzického zabezpečení jsou:
 
-- **Žádosti o přístup a schválení.** Před příchodem do datacentra musíte požádat o přístup. Pro vaši návštěvu, jako je třeba dodržování předpisů nebo auditování, potřebujete poskytnout platné obchodní odůvodnění. Všechny požadavky se schvalují pro zaměstnance Microsoftu na základě potřeby přístupu. Základ pro přístup pomáhá udržet počet jednotlivců potřebných k dokončení úkolu v datových centrech až po minimální dobu. Jakmile Microsoft udělí oprávnění, má individuální přístup jenom k diskrétní oblasti požadovaného datacentra na základě schváleného obchodního odůvodnění. Oprávnění jsou omezená na určitou dobu a potom vyprší.
+- **Žádost o přístup a schválení.** Před příjezdem do datového centra musíte požádat o přístup. Jste povinni poskytnout platné obchodní odůvodnění vaší návštěvy, jako jsou účely dodržování předpisů nebo auditování. Všechny požadavky jsou schváleny na základě potřeby přístupu zaměstnanci společnosti Microsoft. Základ pro přístup k potřebám pomáhá udržet počet osob potřebných k dokončení úkolu v datových centrech na minimum. Poté, co společnost Microsoft udělí oprávnění, má jednotlivec přístup pouze k samostatné oblasti požadovaného datového centra na základě schváleného obchodního odůvodnění. Oprávnění jsou omezena na určitou dobu a pak vyprší.
 
-- **Hraniční zařízení.** Když přijdete do datového centra, budete muset projít dobře definovaným přístupovým bodem. Obvykle se vysoké ochranné ploty z oceli a betonu skládají z každé palce obvodu. Existují fotoaparáty v datových centrech, přičemž tým zabezpečení neustále monitoruje svá videa.
+- **Perimetr zařízení.** Když dorazíte do datového centra, musíte projít dobře definovaným přístupovým bodem. Typicky, vysoké ploty z oceli a betonu zahrnují každý centimetr obvodu. Kolem datových center jsou kamery, kde bezpečnostní tým neustále sleduje jejich videa.
 
-- **Sestavování vchodu.** Vstup datového centra je personálem s profesionálními bezpečnostními důstojníky, kteří prošli přísnými školeními a kontrolami na pozadí. Tito bezpečnostníci také rutinním způsobem dohlíží do datového centra a neustále monitorují videa o fotoaparátech v datacentru.
+- **Vchod do budovy.** Vstup do datového centra je vybaven profesionálními bezpečnostními pracovníky, kteří prošli přísným školením a ověřením spolehlivosti. Tito bezpečnostní pracovníci také běžně hlídkují v datovém centru a neustále monitorují videa kamer uvnitř datového centra.
 
-- **Uvnitř budovy.** Po zadání budovy musíte přes biometrika předat dvojúrovňové ověřování, aby bylo možné pokračovat v přesouvání prostřednictvím datového centra. Pokud je vaše identita ověřená, můžete zadat jenom část datacentra, ke které jste schválili přístup. Můžete zůstat až po dobu trvání schváleného času.
+- **Uvnitř budovy.** Po vstupu do budovy musíte projít dvoufaktorovým ověřováním s biometrickými údaji, abyste pokračovali v pohybu přes datové centrum. Pokud je vaše identita ověřena, můžete zadat pouze část datového centra, ke kterému jste schválili přístup. Můžete tam zůstat pouze po dobu schválené.
 
-- **Datacenter** Povoluje se jenom na podlaze, kterou jste schválili. Je nutné, abyste vyhověli úplnému prověřování detekce základního kovu. Aby se snížilo riziko neautorizovaných dat, která vstupují do datacentra a opouští je, bez vědomí, můžou mít jenom schválená zařízení přístup k podlaze Datacenter. Kromě toho videokamery monitorují přední a zadní stranu každého racku serveru. Až skončíte s podlahou Datacenter, musíte znovu projít úplným prověřováním detekce základního kovu. Chcete-li opustit datové centrum, je nutné projít další kontrolu zabezpečení.
+- **Podlaha datového centra.** Máte povoleno pouze na podlahu, na kterou máte povolení vstoupit. Jste povinni projít celotělové detekce kovů. Aby se snížilo riziko neoprávněného vstupu nebo opuštění datového centra bez našeho vědomí, mohou se do podlahy datového centra dostat pouze schválená zařízení. Kromě toho videokamery monitorují přední a zadní stranu každého serverového racku. Při ukončení podlahy datového centra, musíte znovu projít full body detekce kovů. Chcete-li datové centrum opustit, musíte projít další bezpečnostní prohledávací.
 
-Společnost Microsoft vyžaduje, aby návštěvníci po odchodu z jakéhokoli zařízení Microsoftu přepředali označení.
+Společnost Microsoft vyžaduje, aby se návštěvníci vzdali odznaky při odjezdu z jakéhokoli zařízení společnosti Microsoft.
 
-## <a name="physical-security-reviews"></a>Posouzení fyzického zabezpečení
-Pravidelně provádíme kontroly fyzického zabezpečení těchto zařízení, abychom zajistili správné řešení požadavků na zabezpečení Azure v datacentrech. Zaměstnanci poskytovatele hostingu Datacenter neposkytují správu služeb Azure. Zaměstnanci se nemůžou přihlásit k systémům Azure a nemají fyzický přístup k místnosti a kleci Azure.
+## <a name="physical-security-reviews"></a>Kontroly fyzického zabezpečení
+Pravidelně provádíme fyzické kontroly zabezpečení zařízení, abychom zajistili, že datová centra budou správně řešit požadavky na zabezpečení Azure. Pracovníci poskytovatele hostingu datového centra neposkytují správu služeb Azure. Personál se nemůže přihlásit k systémům Azure a nemají fyzický přístup k místnosti a klece azure společného umístění.
 
-## <a name="data-bearing-devices"></a>Data nesoucí zařízení
-Microsoft používá osvědčené postupy a řešení mazání, které je [kompatibilní s NIST 800-88](https://csrc.nist.gov/publications/detail/sp/800-88/archive/2006-09-01). Pro pevné disky, které se nedají vymazat, používáme proces zničení, který ho zničí a vykreslí obnovení informací nemožné. Tento proces zničení může být disintegrate, skartovat, pulverize nebo spálen. Způsob vyřazení určíme podle typu assetu. Uchováváme záznamy o zničení.  
+## <a name="data-bearing-devices"></a>Datová ložisková zařízení
+Společnost Microsoft používá postupy osvědčených postupů a řešení stírání, které je [kompatibilní s NIST 800-88](https://csrc.nist.gov/publications/detail/sp/800-88/archive/2006-09-01). Pro pevné disky, které nelze vymazat, používáme proces ničení, který ji zničí a znemožní obnovení informací. Tento proces ničení může být rozpad, drcení, rozdrcení nebo spálení. Způsob vyřazení určujeme podle typu majetku. Uchováváme záznamy o zničení.  
 
-## <a name="equipment-disposal"></a>Odstraňování zařízení
-Po skončení životnosti systému Microsoft Operational personál dodržuje přísné postupy pro zpracování a odstraňování hardwaru, aby se zajistilo, že hardware obsahující vaše data není dostupný nedůvěryhodným stranám. Pro pevné disky, které to podporují, používáme zabezpečený přístup k vymazání. Pro pevné disky, které se nedají vymazat, používáme proces zničení, který tuto jednotku zničí a vykreslí obnovení informací, které není možné. Tento proces zničení může být disintegrate, skartovat, pulverize nebo spálen. Způsob vyřazení určíme podle typu assetu. Uchováváme záznamy o zničení. Všechny služby Azure používají schválené služby pro správu mediálních úložišť a odstraňování.
+## <a name="equipment-disposal"></a>Likvidace zařízení
+Po skončení životnosti systému se provozní pracovníci společnosti Microsoft řídí přísnými postupy zpracování dat a likvidace hardwaru, aby zajistili, že hardware obsahující vaše data nebude k dispozici nedůvěryhodným stranám. Používáme bezpečný přístup k vymazání pro pevné disky, které jej podporují. U pevných disků, které nelze vymazat, používáme proces zničení, který disk zničí a znemožní obnovení informací. Tento proces ničení může být rozpad, drcení, rozdrcení nebo spálení. Způsob vyřazení určujeme podle typu majetku. Uchováváme záznamy o zničení. Všechny služby Azure využívají schválené služby správy úložiště a likvidace médií.
 
 ## <a name="compliance"></a>Dodržování předpisů
-Navrhujeme a spravujeme infrastrukturu Azure pro splnění široké škály mezinárodních a specifických standardů dodržování předpisů, jako jsou ISO 27001, HIPAA, FedRAMP, SOC 1 a SOC 2. Splňujeme také standardy pro konkrétní země nebo oblast, včetně Austrálie IRAP, UK G-Cloud a Singapuru MTCS. Přísné audity třetích stran, jako jsou ty, které provádí British Standards Institute, ověřují dodržování přísných kontrol zabezpečení těchto standardů.
+Navrhujeme a spravujeme infrastrukturu Azure tak, aby splňovala širokou škálu mezinárodních a oborově specifických standardů dodržování předpisů, jako jsou ISO 27001, HIPAA, FedRAMP, SOC 1 a SOC 2. Splňujeme také standardy specifické pro jednotlivé země nebo oblasti, včetně Austrálie IRAP, UK G-Cloud a Singapur MTCS. Přísné audity třetích stran, jako jsou audity provedené Britským institutem pro normalizaci, ověřují dodržování přísných bezpečnostních kontrol, které tyto standardy vyžadují.
 
-Úplný seznam standardů dodržování předpisů, které Azure dodržuje, najdete v tématu [nabídky dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
+Úplný seznam standardů dodržování předpisů, které Azure dodržuje, najdete v [nabídce dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure, najdete tady:
+Další informace o tom, co Microsoft dělá, aby zabezpečil infrastrukturu Azure, najdete v tématu:
 
 - [Dostupnost infrastruktury Azure](infrastructure-availability.md)
-- [Komponenty a hranice informačních systémů Azure](infrastructure-components.md)
+- [Součásti a hranice informačního systému Azure](infrastructure-components.md)
 - [Architektura sítě Azure](infrastructure-network.md)
 - [Produkční síť Azure](production-network.md)
 - [Funkce zabezpečení Azure SQL Database](infrastructure-sql.md)
-- [Provozní provoz a Správa Azure](infrastructure-operations.md)
+- [Produkční operace a správa Azure](infrastructure-operations.md)
 - [Monitorování infrastruktury Azure](infrastructure-monitoring.md)
 - [Integrita infrastruktury Azure](infrastructure-integrity.md)
 - [Ochrana zákaznických dat Azure](protection-customer-data.md)

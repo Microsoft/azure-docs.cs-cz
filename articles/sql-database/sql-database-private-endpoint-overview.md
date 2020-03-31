@@ -1,6 +1,6 @@
 ---
 title: Privátní propojení
-description: Přehled funkce privátního koncového bodu
+description: Přehled funkce Soukromého koncového bodu
 author: rohitnayakmsft
 ms.author: rohitna
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -9,103 +9,103 @@ ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78945376"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Privátní odkaz pro Azure SQL Database a datový sklad
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Privátní propojení pro Azure SQL Database a datový sklad
 
-Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu**. Seznam pro PaaS služby, které podporují funkce privátního propojení, najdete na stránce [dokumentace k privátním linkám](../private-link/index.yml) . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../virtual-network/virtual-networks-overview.md) síti a podsíti. 
+Private Link umožňuje připojení k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu**. Seznam služeb PaaS, které podporují funkce private link, naleznete na stránce [Dokumentace k soukromému odkazu.](../private-link/index.yml) Privátní koncový bod je privátní IP adresa v rámci konkrétní [virtuální sítě](../virtual-network/virtual-networks-overview.md) a podsítě. 
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database.
+> Tento článek se vztahuje na Server Azure SQL a databáze SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se *nevztahuje* na nasazení **spravované instance** v Azure SQL Database.
 
 ## <a name="data-exfiltration-prevention"></a>Prevence exfiltrace dat
 
-Exfiltrace dat v Azure SQL Database je v případě, že ověřený uživatel, jako je správce databáze, může extrahovat data z jednoho systému a přesunout ho do jiného umístění nebo systému mimo organizaci. Uživatel například přesune data do účtu úložiště, jehož vlastníkem je třetí strana.
+Exfiltrace dat v Azure SQL Database je, když oprávněný uživatel, jako je například správce databáze, je schopen extrahovat data z jednoho systému a přesunout ho do jiného umístění nebo systému mimo organizaci. Uživatel například přesune data do účtu úložiště vlastněného třetí stranou.
 
-Vezměte v úvahu scénář s uživatelem, který je spuštěný SQL Server Management Studio (SSMS) ve virtuálním počítači Azure, který se připojuje k SQL Database. Tato SQL Database je v datovém centru Západní USA. Následující příklad ukazuje, jak omezit přístup k veřejným koncovým bodům na SQL Database pomocí řízení přístupu k síti.
+Zvažte scénář s uživatelem, který používá SQL Server Management Studio (SSMS) uvnitř virtuálního počítače Azure připojení k databázi SQL. Tato databáze SQL je v datovém centru v USA v usa. Následující příklad ukazuje, jak omezit přístup s veřejnými koncovými body v databázi SQL pomocí ovládacích prvků přístupu k síti.
 
-1. Nastavením povolit službám Azure na **off**zakažte veškerý provoz služeb azure pro SQL Database prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall na úrovni serveru a databáze povolená žádná IP adresa. Další informace najdete v tématu [Azure SQL Database a řízení přístupu k síti datového skladu](sql-database-networkaccess-overview.md).
-1. Povolte provoz do SQL Database jenom pomocí privátní IP adresy virtuálního počítače. Další informace najdete v článcích o [pravidlech brány firewall pro virtuální](sql-database-firewall-configure.md)počítače a [služby](sql-database-vnet-service-endpoint-rule-overview.md) .
-1. Na virtuálním počítači Azure upřesněte rozsah odchozího připojení pomocí [skupin zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/manage-network-security-group.md) a značek služeb následujícím způsobem.
-    - Zadejte pravidlo NSG, které povolí provoz pro tag Service = SQL. WestUs – umožňuje připojení k SQL Database jenom v Západní USA
-    - Zadejte pravidlo NSG (s **vyšší prioritou**) pro odepření provozu pro značku služby = SQL – odepření připojení k SQL Database ve všech oblastech.
+1. Zakažte veškerý provoz služeb Azure do databáze SQL prostřednictvím veřejného koncového bodu nastavením Povolit služby Azure **off**. Ujistěte se, že v pravidlech brány firewall na úrovni serveru a databáze nejsou povoleny žádné adresy IP. Další informace najdete v tématu [Azure SQL Database a ovládací prvky přístupu k síti datového skladu](sql-database-networkaccess-overview.md).
+1. Povolit pouze provoz do databáze SQL pomocí privátní IP adresu virtuálního počítačů. Další informace naleznete v článcích o [pravidlech](sql-database-firewall-configure.md)brány firewall [služby Endpoint](sql-database-vnet-service-endpoint-rule-overview.md) a brány firewall virtuální sítě .
+1. Na virtuálním počítači Azure zúžit rozsah odchozí připojení pomocí [skupin zabezpečení sítě (NSGs)](../virtual-network/manage-network-security-group.md) a značky služeb takto
+    - Zadejte pravidlo nsg povolit provoz pro výrobní číslo = SQL. WestUs - povolení připojení k databázi SQL v západní USA
+    - Zadejte pravidlo sítě zabezpečení sítě (s **vyšší prioritou),** které odepře provoz pro výrobní číslo = SQL - odepření připojení k databázi SQL ve všech oblastech
 
-Na konci této instalace se virtuální počítač Azure může připojit pouze k databázím SQL v oblasti Západní USA. Připojení ale není omezené na jednu SQL Database. Virtuální počítač se stále může připojit k libovolným databázím SQL v oblasti Západní USA, včetně databází, které nejsou součástí předplatného. I když jsme snížili rozsah exfiltrace dat ve výše uvedeném scénáři na konkrétní oblast, neodstraníme ji úplně.
+Na konci tohoto nastavení virtuálnípočítač Azure můžete připojit pouze k databázím SQL v oblasti západní USA. Připojení však není omezeno na jednu databázi SQL. Virtuální modul se stále může připojit k libovolné databáze SQL v oblasti západní USA, včetně databází, které nejsou součástí předplatného. I když jsme snížili rozsah exfiltrace dat ve výše uvedeném scénáři na konkrétní oblast, neodstranili jsme ji úplně.
 
-Pomocí privátního propojení teď můžou zákazníci nastavit řízení přístupu k síti, jako je skupin zabezpečení sítě, aby se omezil přístup k privátnímu koncovému bodu. Jednotlivé prostředky Azure PaaS se pak namapují na konkrétní soukromé koncové body. Škodlivý program Insider má přístup jenom k mapovanému prostředku PaaS (například SQL Database) a žádnému jinému prostředku. 
+Pomocí služby Private Link mohou zákazníci nyní nastavit ovládací prvky přístupu k síti, jako jsou skupiny zabezpečení sítě, a omezit tak přístup k privátnímu koncovému bodu. Jednotlivé prostředky Azure PaaS se pak namapují na konkrétní soukromé koncové body. Škodlivý insider může přistupovat pouze k mapovanému prostředku PaaS (například k databázi SQL) a k žádnému jinému prostředku. 
 
 ## <a name="on-premises-connectivity-over-private-peering"></a>Místní připojení přes soukromý partnerský vztah
 
-Když se zákazníci připojí k veřejnému koncovému bodu z místních počítačů, musí se jejich IP adresa přidat do brány firewall založené na protokolu IP pomocí [pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md). I když tento model funguje dobře a umožňuje přístup k jednotlivým počítačům pro vývoj nebo testování, je obtížné ho spravovat v produkčním prostředí.
+Když se zákazníci připojují k veřejnému koncovému bodu z místních počítačů, je třeba jejich IP adresu přidat do brány firewall založené na protokolu IP pomocí [pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md). Zatímco tento model funguje dobře pro povolení přístupu k jednotlivým počítačům pro dev nebo testovací úlohy, je obtížné spravovat v produkčním prostředí.
 
-Pomocí privátního propojení můžou zákazníci povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí tunelového propojení [ExpressRoute](../expressroute/expressroute-introduction.md), privátního partnerského vztahu nebo VPN. Zákazníci pak můžou zakázat veškerý přístup přes Veřejný koncový bod a nepoužívat bránu firewall založenou na protokolu IP k povolení jakýchkoli IP adres.
+Pomocí služby Private Link mohou zákazníci povolit přístup k privátnímu koncovému bodu pomocí [služby ExpressRoute](../expressroute/expressroute-introduction.md), soukromého partnerského vztahu nebo tunelového propojení VPN. Zákazníci pak mohou zakázat veškerý přístup prostřednictvím veřejného koncového bodu a nepoužívat bránu firewall založenou na protokolu IP k povolení jakýchkoli adres IP.
 
-## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Jak nastavit privátní odkaz pro Azure SQL Database 
+## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Jak nastavit privátní propojení pro Azure SQL Database 
 
 ### <a name="creation-process"></a>Proces vytváření
-Soukromé koncové body lze vytvořit pomocí portálu, PowerShellu nebo rozhraní příkazového řádku Azure:
-- [Azure Portal](../private-link/create-private-endpoint-portal.md)
+Privátní koncové body lze vytvořit pomocí portálu, Prostředí PowerShell nebo Azure CLI:
+- [Portál](../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../private-link/create-private-endpoint-powershell.md)
-- [Rozhraní příkazového řádku](../private-link/create-private-endpoint-cli.md)
+- [Cli](../private-link/create-private-endpoint-cli.md)
 
-### <a name="approval-process"></a>Proces schválení
-Po vytvoření privátního koncového bodu (PE) správcem sítě může správce SQL spravovat připojení privátního koncového bodu (PEC) k SQL Database.
+### <a name="approval-process"></a>Schvalovací proces
+Jakmile správce sítě vytvoří privátní koncový bod (PE), správce SQL může spravovat privátní koncového bodu připojení (PEC) k databázi SQL.
 
-1. V Azure Portal přejděte na prostředek SQL serveru, jak je znázorněno na snímku obrazovky níže.
+1. Přejděte na prostředek serveru SQL na webu Azure Portal podle kroků uvedených na následujícím snímku obrazovky.
 
-    - (1) v levém podokně vyberte připojení privátního koncového bodu.
-    - (2) zobrazuje seznam všech připojení privátního koncového bodu (PECs).
-    - (3) bylo vytvořeno odpovídající privátní koncový bod (PE) ![snímku všech PECs][3]
+    - (1) V levém podokně vyberte soukromá připojení koncového bodu
+    - (2) Zobrazuje seznam všech privátních koncových bodů připojení (PEC)
+    - (3) Odpovídající soukromý koncový bod ![(PE) vytvořil snímek obrazovky všech PEC][3]
 
-1. Vyberte jednotlivé řadiče PEC ze seznamu tím, že je vyberete.
-![vybraný snímek][6] PEC
+1. Vyberte jednotlivé PEC ze seznamu výběrem.
+![Snímek obrazovky vybraný PEC][6]
 
-1. Správce SQL se může rozhodnout pro schválení nebo zamítnutí serveru PEC a volitelně také přidat krátkou odpověď na text.
-![snímku][4] pro schvalování PEC
+1. Správce SQL může schválit nebo odmítnout PEC a volitelně přidat krátkou textovou odpověď.
+![Snímek obrazovky se schválením PEC][4]
 
-1. Po schválení nebo odmítnutí bude seznam odpovídat příslušnému stavu spolu s textem odpovědi.
-![snímek obrazovky všech PECs po schválení][5]
+1. Po schválení nebo odmítnutí bude seznam odrážet příslušný stav spolu s textem odpovědi.
+![Snímek obrazovky se všemi pes po schválení][5]
 
-## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Případy použití privátního odkazu pro Azure SQL Database 
+## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Případy použití privátního propojení pro Azure SQL Database 
 
-Klienti se můžou připojit ke soukromým koncovým bodem ze stejné virtuální sítě, partnerské virtuální sítě ve stejné oblasti nebo prostřednictvím připojení VNet-to-VNet napříč oblastmi. Klienti se navíc mohou připojit z místního prostředí pomocí ExpressRoute, privátního partnerského vztahu nebo tunelového propojení VPN. Níže je zjednodušený diagram znázorňující běžné případy použití.
+Klienti se můžou připojit k privátnímu koncovému bodu ze stejné virtuální sítě, partnerské virtuální sítě ve stejné oblasti nebo prostřednictvím připojení virtuální sítě k virtuální síti napříč oblastmi. Kromě toho se klienti mohou připojit z místního prostředí pomocí ExpressRoute, soukromého partnerského vztahu nebo tunelového propojení VPN. Níže je zjednodušený diagram znázorňující běžné případy použití.
 
  ![Diagram možností připojení][1]
 
-## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>Otestujte připojení k SQL Database z virtuálního počítače Azure ve stejné Virtual Network (virtuální síť).
+## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>Testování připojení k databázi SQL z virtuálního počítače Azure ve stejné virtuální síti (VNet)
 
-V tomto scénáři Předpokládejme, že jste vytvořili virtuální počítač Azure s Windows serverem 2016. 
+V tomto scénáři předpokládejme, že jste vytvořili virtuální počítač Azure (VM) se systémem Windows Server 2016. 
 
 1. [Spusťte relaci vzdálené plochy (RDP) a připojte se k virtuálnímu počítači](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine). 
-1. Pak můžete provést některé základní kontroly připojení, abyste zajistili, že se virtuální počítač připojuje k SQL Database prostřednictvím privátního koncového bodu pomocí následujících nástrojů:
+1. Potom můžete provést některé základní kontroly připojení k zajištění, že virtuální modul se připojuje k databázi SQL prostřednictvím privátního koncového bodu pomocí následujících nástrojů:
     1. Telnet
     1. Psping
     1. Nmap
     1. SQL Server Management Studio (SSMS)
 
-### <a name="check-connectivity-using-telnet"></a>Zjištění připojení pomocí Telnet
+### <a name="check-connectivity-using-telnet"></a>Kontrola připojení pomocí programu Telnet
 
-[Klient služby Telnet](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) je funkce systému Windows, kterou lze použít k otestování připojení. V závislosti na verzi operačního systému Windows možná budete muset tuto funkci povolit explicitně. 
+[Klient Telnet](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) je funkce systému Windows, kterou lze použít k testování připojení. V závislosti na verzi operačního systému Windows může být nutné tuto funkci explicitně povolit. 
 
-Po instalaci Telnet otevřete okno příkazového řádku. Spusťte příkaz Telnet a zadejte IP adresu a soukromý koncový bod SQL Database.
+Po instalaci programu Telnet otevřete okno příkazového řádku. Spusťte příkaz Telnet a zadejte adresu IP a soukromý koncový bod databáze SQL.
 
 ```
 >telnet 10.1.1.5 1433
 ```
 
-Po úspěšném připojení Telnet se v příkazovém okně zobrazí prázdná obrazovka, jak ukazuje následující obrázek:
+Když se Telnet úspěšně připojí, zobrazí se v příkazovém okně prázdná obrazovka, jako je následující obrázek:
 
- ![Diagram Telnet][2]
+ ![Diagram telnetu][2]
 
-### <a name="check-connectivity-using-psping"></a>Ověření připojení pomocí Psping
+### <a name="check-connectivity-using-psping"></a>Kontrola připojení pomocí služby Psping
 
-[Psping](/sysinternals/downloads/psping) se dá použít k ověření, že připojení privátního koncového bodu (PEC) naslouchá připojením na portu 1433.
+[Psping](/sysinternals/downloads/psping) lze použít takto ke kontrole, že soukromé koncového bodu připojení (PEC) naslouchá připojení na portu 1433.
 
-Spusťte psping následujícím způsobem zadáním plně kvalifikovaného názvu domény pro váš SQL Database Server a port 1433:
+Spusťte psping následujícím způsobem tím, že poskytuje hlavní název ndn pro váš sql databázový server a port 1433:
 
 ```
 >psping.exe mysqldbsrvr.database.windows.net:1433
@@ -123,13 +123,13 @@ Connecting to 10.6.1.4:1433: from 10.6.0.4:49956: 1.43ms
 Connecting to 10.6.1.4:1433: from 10.6.0.4:49958: 2.28ms
 ```
 
-Výstup ukazuje, že Psping může testovat privátní IP adresu přidruženou k řadiči PEC.
+Výstup ukazují, že psping může ping privátní IP adresu přidruženou k PEC.
 
-### <a name="check-connectivity-using-nmap"></a>Ověření připojení pomocí nmap
+### <a name="check-connectivity-using-nmap"></a>Kontrola připojení pomocí Nmap
 
-Nmap (mapovač sítě) je bezplatný a open source nástroj, který se používá pro zjišťování sítě a auditování zabezpečení. Další informace a odkaz ke stažení najdete na https://nmap.org. Tento nástroj můžete použít k zajištění toho, aby privátní koncový bod naslouchal připojení na portu 1433.
+Nmap (Network Mapper) je bezplatný a open-source nástroj používaný pro zjišťování sítě a auditování zabezpečení. Pro více informací a odkaz https://nmap.orgke stažení, navštivte . Tento nástroj můžete použít k zajištění, že soukromý koncový bod naslouchá připojení na portu 1433.
 
-Spusťte Nmap následujícím způsobem zadáním rozsahu adres podsítě, která je hostitelem privátního koncového bodu.
+Spusťte Nmap takto poskytnutím rozsahu adres podsítě, která hostuje soukromý koncový bod.
 
 ```
 >nmap -n -sP 10.1.1.0/24
@@ -140,14 +140,14 @@ Host is up (0.00s latency).
 Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 ```
 
-Výsledkem je, že jedna IP adresa je nahoru. který odpovídá IP adrese privátního koncového bodu.
+Výsledek ukazuje, že jedna ADRESA IP je nahoru; která odpovídá IP adrese privátního koncového bodu.
 
 
-### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Ověření připojení pomocí SQL Server Management Studio (SSMS)
+### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Kontrola připojení pomocí aplikace SQL Server Management Studio (SSMS)
 > [!NOTE]
-> Pro klienty použijte **plně kvalifikovaný název domény (FQDN)** serveru v připojovacích řetězcích. Jakékoli pokusy o přihlášení provedené přímo na IP adresu se nezdaří. Toto chování je záměrné, protože privátní koncový bod směruje provoz do brány SQL v oblasti a je nutné zadat plně kvalifikovaný název domény, aby přihlášení bylo úspěšné.
+> Použijte **plně kvalifikovaný název domény (FQDN)** serveru v připojovacích řetězcích pro své klienty. Všechny pokusy o přihlášení provedené přímo na IP adresu se nezdaří. Toto chování je záměrné, protože soukromý koncový bod směruje provoz do brány SQL v oblasti a musí být zadán okonečném prostřednictvím, aby bylo možné úspěšně přihlásit.
 
-Pokud se [chcete k SQL Database připojit pomocí SSMS](sql-database-connect-query-ssms.md), postupujte podle těchto kroků. Po připojení k SQL Database pomocí SSMS ověřte, že se připojujete z privátní IP adresy virtuálního počítače Azure spuštěním následujícího dotazu:
+Postupujte podle pokynů zde použít [SSMS pro připojení k databázi SQL](sql-database-connect-query-ssms.md). Po připojení k databázi SQL pomocí SSMS ověřte, že se připojujete z privátní IP adresy virtuálního počítače Azure spuštěním následujícího dotazu:
 
 ````
 select client_net_address from sys.dm_exec_connections 
@@ -155,35 +155,35 @@ where session_id=@@SPID
 ````
 
 ## <a name="limitations"></a>Omezení 
-Připojení k privátnímu koncovému bodu podporují **proxy server** jenom jako [zásady připojení](sql-database-connectivity-architecture.md#connection-policy) .
+Připojení k privátnímu koncovému bodu podporují pouze **proxy** server jako [zásady připojení](sql-database-connectivity-architecture.md#connection-policy)
 
 
-## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Připojení z virtuálního počítače Azure v partnerském Virtual Network (VNet) 
+## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Připojení z virtuálního počítače Azure v partnerské virtuální síti (Virtuální síť) 
 
-Nakonfigurujte [partnerský vztah](../virtual-network/tutorial-connect-virtual-networks-powershell.md) virtuálních sítí pro navázání připojení k SQL Database z virtuálního počítače Azure ve virtuální síti s partnerským vztahem.
+Nakonfigurujte [partnerský vztah virtuální sítě](../virtual-network/tutorial-connect-virtual-networks-powershell.md) tak, aby bylo možné vytvořit připojení k databázi SQL z virtuálního počítače Azure v partnerské virtuální síti.
 
-## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Připojení z virtuálního počítače Azure v prostředí VNet-to-VNet
+## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Připojení z virtuálního počítače Azure v prostředí Virtuální sítě k virtuální síti
 
-Nakonfigurujte [připojení typu VNet-to-VNet ke službě VPN Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) , aby se navázalo připojení k SQL Database z virtuálního počítače Azure v jiné oblasti nebo předplatném.
+Nakonfigurujte připojení brány VPN virtuální [sítě k virtuální síti](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) a navazujte připojení k databázi SQL z virtuálního počítače Azure v jiné oblasti nebo předplatném.
 
-## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Připojení z místního prostředí přes síť VPN
+## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Připojení z místního prostředí přes VPN
 
-Pokud chcete navázat připojení z místního prostředí k SQL Database, vyberte a implementujte jednu z možností:
-- [Připojení Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
-- [Připojení VPN typu Site-to-site](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+Chcete-li vytvořit připojení z místního prostředí k databázi SQL, zvolte a implementujte jednu z možností:
+- [Připojení z bodu na pracoviště](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+- [Připojení site-to-site VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 - [Okruh ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>Připojení z Azure SQL Data Warehouse k Azure Storage pomocí základu
+## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>Připojení z datového skladu Azure SQL k úložišti Azure pomocí Polybase
 
-Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azure Storagech účtů. Pokud účet Azure Storage, ze kterého načítáte data, omezuje přístup jenom k sadě virtuálních sítí VNet přes soukromé koncové body, koncové body služby nebo brány firewall založené na protokolu IP, připojení ze základů účtu se přeruší. Pokud chcete povolit jak základní scénáře importu i exportu, tak i Azure SQL Data Warehouse připojení k Azure Storage, která jsou zabezpečená pro virtuální síť, postupujte podle kroků uvedených [tady](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
+PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z účtů úložiště Azure. Pokud účet Azure Storage, který načítáte data z omezení přístupu jenom k sadě podsítí virtuální sítě prostřednictvím privátních koncových bodů, koncových bodů služby nebo bran firewall založených na PROTOKOLU IP, připojení z PolyBase k účtu se přeruší. Chcete-li povolit scénáře importu i exportu PolyBase pomocí Azure SQL Data Warehouse, který se připojuje k Azure Storage, který je zabezpečený k virtuální síti, postupujte podle pokynů [uvedených zde](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled zabezpečení Azure SQL Database najdete v tématu [zabezpečení databáze](sql-database-security-overview.md) .
-- Přehled připojení Azure SQL Database najdete v tématu [Architektura připojení k Azure SQL](sql-database-connectivity-architecture.md) .
+- Přehled zabezpečení Azure SQL Database najdete v tématu [Zabezpečení databáze](sql-database-security-overview.md)
+- Přehled připojení k Azure SQL Database najdete v článku [Architektura připojení Azure SQL](sql-database-connectivity-architecture.md)
 
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/pe-connect-overview.png

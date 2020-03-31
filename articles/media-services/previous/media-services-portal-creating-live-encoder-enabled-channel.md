@@ -1,5 +1,5 @@
 ---
-title: Umožňuje živé streamování pomocí Azure Media Services k vytváření datových proudů s více přenosovými rychlostmi pomocí Azure Portal | Microsoft Docs
+title: Živé streamování pomocí Azure Media Services k vytváření datových proudů s více přenosovými rychlostmi pomocí portálu Azure | Dokumenty společnosti Microsoft
 description: Tento kurz vás provede kroky k vytvoření kanálu, který přijímá datový proud s jednou přenosovou rychlostí a kóduje ho do datového proudu s více přenosovými rychlostmi pomocí webu Azure Portal.
 services: media-services
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162561"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Umožňuje živé streamování pomocí Media Services k vytváření datových proudů s více přenosovými rychlostmi pomocí Azure Portal  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Živé streamování pomocí mediálních služeb k vytváření datových proudů s více přenosovými rychlostmi pomocí portálu Azure  
 > [!div class="op_single_selector"]
-> * [Azure Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
+> * [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [ROZHRANÍ API PRO ODPOČINEK](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
 
 Tento kurz vás provede kroky k vytvoření **kanálu**, který přijímá datový proud s jednou přenosovou rychlostí a kóduje ho do datového proudu s více přenosovými rychlostmi.
 
@@ -41,10 +41,10 @@ Následující část představuje obecné kroky, které jsou součástí proces
 > [!NOTE]
 > V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amshelp@microsoft.com.
 
-1. Připojte k počítači videokameru. <br/>V případě nápadů při instalaci se podívejte na [Nastavení jednoduchého a přenosného kormidelního videa událostí]( https://link.medium.com/KNTtiN6IeT).
+1. Připojte k počítači videokameru. <br/>Pro nastavení nápady, podívejte se na [jednoduché a přenosné události video zařízení nastavení]( https://link.medium.com/KNTtiN6IeT).
 
-    Pokud nemáte přístup k kameře, můžete pomocí nástrojů, jako je [Wirecastový Stream](media-services-configure-wirecast-live-encoder.md) , vygenerovat živý kanál ze souboru videa.
-1. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který umí produkovat stream s jednou přenosovou rychlostí v jednom z následujících protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Podívejte se také na tento blog: [živá streamovaná výroba pomocí OBS](https://link.medium.com/ttuwHpaJeT).
+    Pokud nemáte přístup ke kameře, nástroje, jako je [Telestream Wirecast,](media-services-configure-wirecast-live-encoder.md) mohou být použity, generovat živý přenos z video souboru.
+1. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který umí produkovat stream s jednou přenosovou rychlostí v jednom z následujících protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Také, podívejte se na tento blog: [Live streaming produkce s OBS](https://link.medium.com/ttuwHpaJeT).
 
     Tento krok můžete provést i po vytvoření kanálu.
 1. Vytvořte a spusťte kanál. 
@@ -61,12 +61,12 @@ Následující část představuje obecné kroky, které jsou součástí proces
 1. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte událost.
 1. Odstraňte událost (volitelně můžete odstranit i asset).   
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující:
 
 * K dokončení tohoto kurzu potřebujete mít účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. 
-  Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+  Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Vytvoření účtu](media-services-portal-create-account.md).
 * Webová kamera a kodér, který dokáže odesílat živý datový proud s jednou přenosovou rychlostí.
 
@@ -94,7 +94,7 @@ K dokončení kurzu potřebujete následující:
         Možnost protokolu nelze změnit, pokud kanál nebo jeho přidružené události nebo programy právě běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý protokol streamování.  
    2. Na ingestování můžete použít omezení IP adres. 
 
-       Můžete definovat IP adresy, které mají v tomto kanálu povoleno ingestování videa. Povolené IP adresy je možné zadat buď jako jednu IP adresu (např. 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (např. 10.0.0.1/22), nebo rozsah IP adres pomocí IP adresy a masky s tečkami v desítkové soustavě (např. 10.0.0.1 (255.255.252.0)).
+       Můžete definovat IP adresy, které mají v tomto kanálu povoleno ingestování videa. Povolené IP adresy lze zadat buď jako jednu IP adresu (např. "10.0.0.1"), rozsah IP adres a masky podsítě CIDR (např. "10.0.0.1/22"), nebo rozsah IP adres pomocí IP adresy a tečkované desetinné masky podsítě (např.
 
        Pokud žádné IP adresy nezadáte a nedefinujete žádné pravidlo, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
 6. Na kartě **Náhled** použijte na náhled omezení IP adres.
@@ -112,9 +112,9 @@ Po vytvoření kanálu můžete kliknutím na kanál a výběrem **Nastavení** 
 Další informace najdete v článku [Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="get-ingest-urls"></a>Získání ingestovaných adres URL
-Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého datového proudu.
+Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého proudu.
 
-![adresy URL pro příjem](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
+![ingestovat adresy URL](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 ## <a name="create-and-manage-events"></a>Vytvoření a správa událostí
 
@@ -165,7 +165,7 @@ Publikovanou událost můžete sledovat na stránce **Živá událost**.
 Pokud kliknete na tlačítko **Zrušit streamování**, zastaví se všechny živé události. 
 
 ## <a name="watch-the-event"></a>Sledování události
-Pokud chcete sledovat událost, klikněte na tlačítko **Sledovat** na portálu Azure nebo zkopírujte adresu URL streamování a použijte přehrávač dle svého výběru. 
+Pokud chcete sledovat událost, klikněte na tlačítko **Sledovat** na webu Azure Portal nebo zkopírujte adresu URL streamování a použijte přehrávač dle svého výběru. 
 
 ![Vytvořeno](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
@@ -175,13 +175,13 @@ Při zastavení se živá událost automaticky převede na obsah na vyžádání
 Pokud jste dokončili streamování událostí a chcete dříve zřízené prostředky vyčistit, postupujte podle následujícího návodu.
 
 * Zastavte odesílání datového proudu z kodéru.
-* Zastavte kanál. Zastavený kanál zastaví narůstání poplatků. Když ho budete potřebovat znovu spustit, budete mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
+* Zastavte kanál. Zastavený kanál zastaví narůstání poplatků. Když bude potřeba kanál znovu spustit, bude mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
 * Pokud nechcete pokračovat v poskytování archivu živé události ve formě datového proudu na vyžádání, můžete koncový bod streamování zastavit. Pokud je kanál v zastaveném stavu, nebudou vám narůstat poplatky.
 
 ## <a name="view-archived-content"></a>Zobrazení archivovaného obsahu
 I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
 
-Chcete-li spravovat prostředky, vyberte **Nastavení** a klikněte na **Prostředky**.
+Chcete-li spravovat datové zdroje, vyberte **možnost Nastavení** a klepněte na **položku Datové zdroje**.
 
 ![Prostředky](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
@@ -194,6 +194,6 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

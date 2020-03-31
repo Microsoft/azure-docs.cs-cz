@@ -1,7 +1,7 @@
 ---
-title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
+title: Šifrování v klidovém stavu pomocí klíčů spravovaných zákazníkem
 titleSuffix: Azure Cognitive Search
-description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Kognitivní hledání pomocí klíčů, které vytvoříte a spravujete v Azure Key Vault.
+description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Cognitive Search pomocí klíčů, které vytvoříte a spravujete v Azure Key Vault.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
@@ -9,43 +9,43 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76899946"
 ---
-# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování v klidovém formátu obsahu v Azure Kognitivní hledání používání klíčů spravovaných zákazníkem v Azure Key Vault
+# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování v úložišti obsahu v Azure Cognitive Search pomocí klíčů spravovaných zákazníky v Azure Key Vault
 
-Ve výchozím nastavení služba Azure Kognitivní hledání šifruje indexovaný obsah v klidovém stavu pomocí [klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit pomocí dalších vrstev šifrování s použitím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky.
+Ve výchozím nastavení Azure Cognitive Search šifruje indexovaný obsah v klidovém stavu pomocí [klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit o další vrstvu šifrování pomocí klíčů, které vytvoříte a spravujete v azure key vaultu. Tento článek vás provede kroky.
 
-Šifrování na straně serveru je podporováno prostřednictvím integrace s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování šifrovacích klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče. 
+Šifrování na straně serveru je podporováno prostřednictvím integrace s [azure key vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít Azure Key Vault je API pro generování šifrovacích klíčů. Pomocí služby Azure Key Vault můžete také auditovat využití klíčů. 
 
-Šifrování pomocí klíčů spravovaných zákazníkem se při vytváření těchto objektů konfiguruje na úrovni mapy index nebo synonym, a ne na úrovni vyhledávací služby. Nemůžete zašifrovat obsah, který už existuje. 
+Šifrování pomocí klíčů spravovaných zákazníkem je konfigurováno na úrovni indexu nebo mapy synonyma při vytvoření těchto objektů, nikoli na úrovni vyhledávací služby. Obsah, který již existuje, nelze šifrovat. 
 
-Klíče nemusí být ve stejném Key Vault. Jedna vyhledávací služba může hostovat víc šifrovaných indexů nebo synonym, která se zašifrují vlastními šifrovacími klíči spravovanými zákazníky uloženými v různých trezorech klíčů.  Můžete mít také indexy a mapy synonym ve stejné službě, které nejsou šifrovány pomocí klíčů spravovaných zákazníkem. 
+Klíče nemusí být všechny ve stejném trezoru klíčů. Jedna vyhledávací služba může hostovat více šifrovaných indexů nebo map synonym, z nichž každý je zašifrován vlastními šifrovacími klíči spravovanými zákazníky uloženými v různých trezorech klíčů.  Můžete také mít indexy a synonyma mapy ve stejné službě, které nejsou šifrovány pomocí klíčů spravovaných zákazníkem. 
 
 > [!IMPORTANT] 
-> Tato funkce je k dispozici na [REST API verze 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md). V tuto chvíli není v Azure Portal žádná podpora ke konfiguraci šifrovacích klíčů spravovaných zákazníkem. Vyhledávací služba musí být vytvořená po 2019. lednu a nemůže být volná (sdílená) služba.
+> Tato funkce je k dispozici na [rozhraní REST API verze 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) a [.NET SDK verze 8.0-preview](search-dotnet-sdk-migration-version-9.md). Momentálně neexistuje žádná podpora konfigurace šifrovacích klíčů spravovaných zákazníky na webu Azure Portal. Vyhledávací služba musí být vytvořena po lednu 2019 a nemůže být bezplatnou (sdílenou) službou.
 
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto příkladu se používají následující služby. 
 
-+ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. 
++ [Vytvořte službu Azure Cognitive Search](search-create-service-portal.md) nebo [najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. 
 
-+ [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo v rámci svého předplatného Najděte existující trezor.
++ [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo najděte existující trezor v rámci vašeho předplatného.
 
-+ Pro úlohy konfigurace se používá [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
++ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) se používá pro úlohy konfigurace.
 
-+ K volání REST API lze použít [post](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) a [Azure kognitivní hledání SDK](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádná podpora portálu pro šifrování spravované zákazníkem.
++ [Pošťák](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) a [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) se dá použít k volání rozhraní REST API. V tuto chvíli neexistuje žádná podpora portálu pro šifrování spravované zákazníkem.
 
 >[!Note]
-> Vzhledem k povaze šifrování s použitím klíčů spravovaných zákazníkem nebude Azure Kognitivní hledání moct načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobenému Key Vault náhodným odstraněním klíčů, **musíte** povolit ochranu před odstraněním a vyprázdněním v Key Vault, aby ji bylo možné použít. Další informace najdete v tématu [Azure Key Vault obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
+> Vzhledem k povaze šifrování pomocí funkce klíčů spravovaných zákazníkem nebude Azure Cognitive Search moct načíst vaše data, pokud se odstraní klíč trezoru Azure Key. Chcete-li zabránit ztrátě dat způsobené náhodným odstraněním klíčů trezoru klíčů, **musíte** před použitím povolit funkci Obnovitelné odstranění a odstranění v trezoru klíčů. Další informace naleznete v [tématu Azure Key Vault obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
-## <a name="1---enable-key-recovery"></a>1 – povolit obnovení klíče
+## <a name="1---enable-key-recovery"></a>1 - Povolit obnovení klíče
 
-Po vytvoření prostředku Azure Key Vault Povolte ochranu proti **odstranění** a **vyprázdnění** ve vybraném trezoru klíčů spuštěním následujících příkazů PowerShellu nebo rozhraní příkazového řádku Azure CLI:   
+Po vytvoření prostředku azure key vault povolte **soft delete** a **purge protection** ve vybraném trezoru klíčů provedením následujících příkazů PowerShellu nebo Azure CLI:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -61,78 +61,78 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
 ```
 
-## <a name="2---create-a-new-key"></a>2\. vytvoření nového klíče
+## <a name="2---create-a-new-key"></a>2 - Vytvoření nového klíče
 
-Pokud k šifrování obsahu Azure Kognitivní hledání používáte existující klíč, přeskočte tento krok.
+Pokud používáte existující klíč k šifrování obsahu Azure Cognitive Search, tento krok přeskočte.
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com) a přejděte do řídicího panelu trezoru klíčů.
+1. [Přihlaste se na portál Azure portal](https://portal.azure.com) a přejděte na řídicí panel trezoru klíčů.
 
-1. V levém navigačním podokně vyberte nastavení **klíče** a klikněte na **+ Generovat/importovat**.
+1. V levém navigačním podokně vyberte nastavení **Klávesy** a klepněte na tlačítko **+ Generovat/importovat**.
 
-1. V podokně **vytvořit klíč** klikněte v seznamu **možností**na metodu, kterou chcete použít k vytvoření klíče. Můžete **vygenerovat** nový klíč, **nahrát** existující klíč nebo použít **obnovení zálohy** k výběru zálohy klíče.
+1. V **podokně Vytvořit klíč** vyberte ze seznamu **Možnosti**metodu, kterou chcete použít k vytvoření klíče. Můžete **vygenerovat** nový klíč, **nahrát** existující klíč nebo pomocí **nástroje Obnovit zálohování** vybrat zálohu klíče.
 
 1. Zadejte **název** klíče a volitelně vyberte další vlastnosti klíče.
 
-1. Kliknutím na tlačítko **vytvořit** spusťte nasazení.
+1. Kliknutím na tlačítko **Vytvořit** spusťte nasazení.
 
-Poznamenejte si identifikátor klíče – to se skládá z **identifikátoru URI hodnoty klíče**, **názvu klíče**a **verze klíče**. Budete je potřebovat k definování šifrovaného indexu v Azure Kognitivní hledání.
+Poznamenejte si identifikátor klíče – skládá se z **hodnoty klíče Uri**, názvu **klíče**a **verze klíče**. Budete je potřebovat k definování šifrovaného indexu v Azure Cognitive Search.
  
-![Vytvoří nový klíč trezoru klíčů.](./media/search-manage-encryption-keys/create-new-key-vault-key.png "Vytvoří nový klíč trezoru klíčů.")
+![Vytvoření nového klíče trezoru klíčů](./media/search-manage-encryption-keys/create-new-key-vault-key.png "Vytvoření nového klíče trezoru klíčů")
 
-## <a name="3---create-a-service-identity"></a>3\. vytvoření identity služby
+## <a name="3---create-a-service-identity"></a>3 - Vytvoření identity služby
 
-Přiřazení identity ke službě Search vám umožní udělit službě vyhledávání Key Vault přístupová oprávnění. Vaše vyhledávací služba bude používat svoji identitu k ověřování pomocí trezoru klíčů Azure.
+Přiřazení identity vyhledávací službě umožňuje udělit vyhledávací službě přístupová oprávnění trezoru klíčů. Vyhledávací služba použije svou identitu k ověření pomocí trezoru Azure Key.
 
-Azure Kognitivní hledání podporuje dva způsoby přiřazení identity: spravovaná identita nebo externě spravovaná Azure Active Directory aplikace. 
+Azure Cognitive Search podporuje dva způsoby přiřazování identity: spravovanou identitu nebo externě spravovanou aplikaci Azure Active Directory. 
 
-Pokud je to možné, použijte spravovanou identitu. Je nejjednodušší způsob, jak přiřadit identitu službě vyhledávání a ve většině scénářů fungovat. Pokud používáte více klíčů pro indexy a mapy synonym nebo pokud je vaše řešení v distribuované architektuře, která ruší ověřování na základě identity, použijte pokročilý [externě spravovaný Azure Active Directory přístup](#aad-app) , který je popsaný na konci tohoto článku.
+Pokud je to možné, použijte spravovanou identitu. Jedná se o nejjednodušší způsob přiřazení identity k vyhledávací službě a měl by fungovat ve většině scénářů. Pokud používáte více klíčů pro indexy a mapy synonym nebo pokud je vaše řešení v distribuované architektuře, která dekvalifikuje ověřování založené na identitě, použijte pokročilý [externě spravovaný přístup Azure Active Directory](#aad-app) popsaný na konci tohoto článku.
 
- Obecně spravovaná identita umožňuje službě vyhledávání ověřovat Azure Key Vault bez uložení přihlašovacích údajů do kódu. Životní cyklus tohoto typu spravované identity je svázán s životním cyklem služby vyhledávání, který může mít pouze jednu spravovanou identitu. [Přečtěte si další informace o spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+ Obecně platí, že spravovaná identita umožňuje vaší vyhledávací službě ověřit se v azure key vaultu bez ukládání přihlašovacích údajů v kódu. Životní cyklus tohoto typu spravované identity je vázán na životní cyklus vaší vyhledávací služby, která může mít pouze jednu spravovanou identitu. [Další informace o spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-1. Pokud chcete vytvořit spravovanou identitu, [Přihlaste se k portálu toAzure](https://portal.azure.com) a otevřete řídicí panel vyhledávací služby. 
+1. Pokud chcete vytvořit spravovanou identitu, [přihlaste se na portál Azure](https://portal.azure.com) a otevřete řídicí panel vyhledávací služby. 
 
-1. V levém navigačním podokně klikněte na **Identita** , změňte její stav na **zapnuto**a klikněte na **Uložit**.
+1. V levém navigačním podokně klepněte na **položku Identita,** změňte její stav **na Zapnuto**a klepněte na **tlačítko Uložit**.
 
-![Povolení spravované identity](./media/search-enable-msi/enable-identity-portal.png "Povolení identity spravovaných")
+![Povolení spravované identity](./media/search-enable-msi/enable-identity-portal.png "Povolení manged identity")
 
-## <a name="4---grant-key-access-permissions"></a>4 – udělení přístupových oprávnění k klíčům
+## <a name="4---grant-key-access-permissions"></a>4 - Udělení přístupových oprávnění klíče
 
-Pokud chcete, aby služba vyhledávání mohla používat váš Key Vault klíč, budete muset udělit vašim vyhledávacím službám určitá přístupová oprávnění.
+Chcete-li vyhledávací službě povolit použití klíče trezoru klíčů, budete muset vyhledávací službě udělit určitá přístupová oprávnění.
 
-Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvolání se žádný index služby vyhledávání nebo mapa synonym používající tento trezor klíčů stane nepoužitelným. Obnovení přístupových oprávnění trezoru klíčů později obnoví přístup k mapě index\synonym. Další informace najdete v tématu [zabezpečený přístup k trezoru klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
+Přístupová oprávnění mohou být kdykoli odvolána. Po odvolání se všechny indexy vyhledávacích služeb nebo mapy synonym, které používají tento trezor klíčů, stanou nepoužitelnými. Obnovení mačkání oprávnění k trezoru klíčů později obnoví přístup k mapování index\synonymum. Další informace naleznete [v tématu Zabezpečený přístup k trezoru klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com) a otevřete stránku s přehledem trezoru klíčů. 
+1. [Přihlaste se na Portál Azure](https://portal.azure.com) a otevřete stránku s přehledem trezoru klíčů. 
 
-1. V levém navigačním podokně vyberte nastavení **zásady přístupu** a klikněte na **+ Přidat nový**.
+1. V levém navigačním podokně vyberte nastavení **zásad aplikace Access** a klepněte na tlačítko **+Přidat nové**.
 
-   ![Přidat nové zásady přístupu trezoru klíčů](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "Přidat nové zásady přístupu trezoru klíčů")
+   ![Přidání nové zásady přístupu k trezoru klíčů](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "Přidání nové zásady přístupu k trezoru klíčů")
 
-1. Klikněte na **Vybrat objekt zabezpečení** a vyberte službu Azure kognitivní hledání. Můžete ho vyhledat podle názvu nebo ID objektu, které se zobrazilo po povolení spravované identity.
+1. Klikněte na **Vybrat hlavní a** vyberte službu Azure Cognitive Search. Můžete vyhledat podle názvu nebo ID objektu, který byl zobrazen po povolení spravované identity.
 
-   ![Výběr objektu zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "Výběr objektu zásad přístupu trezoru klíčů")
+   ![Vybrat zásadu přístupu k trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "Vybrat zásadu přístupu k trezoru klíčů")
 
-1. Klikněte na **klíčová oprávnění** a vyberte *získat*, *Rozbalit klíč* a *zabalit klíč*. Pomocí šablony *Azure Data Lake Storage nebo Azure Storage* můžete rychle vybrat požadovaná oprávnění.
+1. Klikněte na **Oprávnění klíče** a vyberte *Získat*, *Rozbalit klíč* a *Zalamovat klíč*. Pomocí šablony *Azure Data Lake Storage nebo Azure Storage* můžete rychle vybrat požadovaná oprávnění.
 
-   Pro Azure Kognitivní hledání musí být udělená následující [přístupová oprávnění](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations):
+   Azure Cognitive Search musí být uděleno s následujícími [přístupovými oprávněními](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations):
 
-   * *Get* – umožní službě vyhledávání načíst veřejné části klíče ve Key Vault
-   * *Zalamovat klíč* – umožní službě vyhledávání používat klíč k ochraně interního šifrovacího klíče.
-   * *Rozbalení klíče* – umožní službě vyhledávání používat klíč k rozbalení interního šifrovacího klíče.
+   * *Get* - umožňuje vyhledávací službě načíst veřejné části klíče v trezoru klíčů
+   * *Wrap Key* - umožňuje vyhledávací službě používat klíč k ochraně vnitřního šifrovacího klíče
+   * *Rozbalit klíč* - umožňuje vyhledávací službě použít klíč k rozbalení interního šifrovacího klíče
 
-   ![Výběr oprávnění klíče zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Výběr oprávnění klíče zásad přístupu trezoru klíčů")
+   ![Vybrat oprávnění klíče zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Vybrat oprávnění klíče zásad přístupu trezoru klíčů")
 
-1. Klikněte na **OK** a **uložte** změny zásad přístupu.
+1. Klikněte na **OK** a **Uložte** změny zásad přístupu.
 
 > [!Important]
-> Šifrovaný obsah ve službě Azure Kognitivní hledání je nakonfigurovaný tak, aby používal konkrétní Azure Key Vault klíč s určitou **verzí**. Pokud změníte klíč nebo verzi, je nutné aktualizovat index nebo mapu synonym, aby používaly nové key\version **před** odstraněním předchozího key\version. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné. po ztrátě přístupu ke klíči nebude možné obsah dešifrovat.   
+> Šifrovaný obsah ve službě Azure Cognitive Search je nakonfigurovaný tak, aby používal konkrétní klíč Azure Key Vault s konkrétní **verzí**. Pokud změníte klíč nebo verzi, musí být index nebo mapa synonym aktualizována, aby používala nový klíč\verze **před** odstraněním předchozího klíče\verze. Pokud tak neučiníte, bude index nebo synonymum mapy nepoužitelný, na vás nebude moci dešifrovat obsah, jakmile dojde ke ztrátě přístupu ke klíči.   
 
-## <a name="5---encrypt-content"></a>5\. šifrování obsahu
+## <a name="5---encrypt-content"></a>5 - Šifrování obsahu
 
-Vytvoření mapy indexů nebo synonym šifrovaných pomocí klíče spravovaného zákazníkem zatím není možné pomocí Azure Portal. Pomocí služby Azure Kognitivní hledání REST API vytvořte takový index nebo mapu synonym.
+Vytvoření mapy indexu nebo synonym zašifrované klíčem spravovaným zákazníkem ještě není možné pomocí portálu Azure Portal. Pomocí rozhraní AZURE Cognitive Search REST API vytvořte takový index nebo mapu synonym.
 
-Index i mapa synonym podporují novou vlastnost **EncryptionKey** na nejvyšší úrovni, která se používá k zadání klíče. 
+Mapa indexu i synonyma podporují novou vlastnost **šifrování Key** nejvyšší úrovně, která slouží k určení klíče. 
 
-Pomocí **identifikátoru URI trezoru klíčů**, **názvu klíče** a **verze** klíče trezoru klíčů můžeme vytvořit definici **EncryptionKey** :
+Pomocí **trezoru klíčů Uri**, **název klíče** a **klíčové verze** klíče trezoru klíčů, můžeme vytvořit **encryptionKey** definice:
 
 ```json
 {
@@ -144,9 +144,9 @@ Pomocí **identifikátoru URI trezoru klíčů**, **názvu klíče** a **verze**
 }
 ```
 > [!Note] 
-> Žádná z těchto podrobností trezoru klíčů není považována za tajnou a lze ji snadno načíst procházením příslušné Azure Key Vault klíčovou stránkou v Azure Portal.
+> Žádný z těchto podrobností trezoru klíčů jsou považovány za tajné a lze snadno získat procházením příslušné stránky klíče Azure Key Vault na webu Azure Portal.
 
-Pokud používáte aplikaci AAD pro Key Vault ověřování namísto použití spravované identity, přidejte **přihlašovací údaje** k aplikaci AAD do svého šifrovacího klíče: 
+Pokud používáte aplikaci AAD pro ověřování trezoru klíčů namísto spravované identity, přidejte k šifrovacímu **klíči přihlašovací údaje pro aplikaci** AAD: 
 ```json
 {
   "encryptionKey": {
@@ -161,8 +161,8 @@ Pokud používáte aplikaci AAD pro Key Vault ověřování namísto použití s
 }
 ```
 
-## <a name="example-index-encryption"></a>Příklad: šifrování indexu
-Podrobnosti o vytvoření nového indexu prostřednictvím REST API najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index), kde jediným rozdílem je zadání podrobností šifrovacího klíče v rámci definice indexu: 
+## <a name="example-index-encryption"></a>Příklad: Indexové šifrování
+Podrobnosti o vytvoření nového indexu prostřednictvím rozhraní REST API lze nalézt na [vytvořit index (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index), kde jediný rozdíl zde je určení podrobnosti o šifrovací klíč jako součást definice indexu: 
 
 ```json
 {
@@ -186,11 +186,11 @@ Podrobnosti o vytvoření nového indexu prostřednictvím REST API najdete v t�
  }
 }
 ```
-Nyní můžete odeslat požadavek na vytvoření indexu a pak začít používat rejstřík normálně.
+Nyní můžete odeslat požadavek na vytvoření indexu a začít používat index normálně.
 
-## <a name="example-synonym-map-encryption"></a>Příklad: šifrování mapování synonym
+## <a name="example-synonym-map-encryption"></a>Příklad: Šifrování mapy synonym
 
-Podrobnosti o vytvoření nové mapy synonym prostřednictvím REST API najdete v tématu [vytvoření mapy synonym (Azure Kognitivní hledání REST API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map), kde jediným rozdílem je zadání podrobností šifrovacího klíče v rámci definice mapy synonym: 
+Podrobnosti o vytvoření nové mapy synonymprostřednictvím rozhraní REST API najdete na [webu Create Synonym Map (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map), kde jediným rozdílem je určení podrobností o šifrovacím klíči jako součást definice mapy synonyma: 
 
 ```json
 {   
@@ -205,35 +205,35 @@ Podrobnosti o vytvoření nové mapy synonym prostřednictvím REST API najdete 
   }
 }
 ```
-Nyní můžete odeslat požadavek na vytvoření mapy synonym a pak ho začít používat normálně.
+Nyní můžete odeslat žádost o vytvoření mapy synonyma a pak ji začít používat normálně.
 
 >[!Important] 
-> I když **EncryptionKey** nejde přidat k existujícím indexům kognitivní hledání Azure nebo mapováním synonym, může se aktualizovat zadáním různých hodnot pro všechny tři podrobnosti trezoru klíčů (například aktualizace verze klíče). Když se změní na nový klíč Key Vault nebo na novou verzi klíče, musí se nejdřív aktualizovat index Azure Kognitivní hledání nebo mapa synonym, která tento klíč používá, aby používala nový key\version **před** odstraněním předchozího key\version. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.   
-> Obnovení přístupu k obsahu později obnoví přístupová oprávnění trezoru klíčů.
+> Zatímco **encryptionKey** nelze přidat do existujících indexů Azure Cognitive Search nebo synonymmap, může být aktualizován poskytnutím různých hodnot pro všechny tři podrobnosti trezoru klíčů (například aktualizace verze klíče). Při přechodu na nový klíč trezoru klíčů nebo novou verzi klíče, všechny Azure Cognitive Search index nebo synonymum mapy, která používá klíč musí být nejprve aktualizovány použít nový klíč\verze **před** odstraněním předchozí klíč\verze. Pokud tak neučiníte, bude index nebo synonymum mapy nepoužitelný, protože nebude moci dešifrovat obsah po ztrátě přístupu ke klíči.   
+> Obnovení přístupových oprávnění trezoru klíčů později obnoví přístup k obsahu.
 
-## <a name="aad-app"></a>Upřesnit: použití externě spravované aplikace Azure Active Directory
+## <a name="advanced-use-an-externally-managed-azure-active-directory-application"></a><a name="aad-app"></a>Upřesnit: Použití externě spravované aplikace Azure Active Directory
 
-Pokud není možná spravovaná identita, můžete vytvořit aplikaci Azure Active Directory s objektem zabezpečení pro službu Azure Kognitivní hledání. Konkrétně spravovaná identita není za těchto podmínek životaschopná:
+Pokud spravovanou identitu není možné, můžete vytvořit aplikaci Azure Active Directory s objektem zabezpečení pro službu Azure Cognitive Search. Konkrétně spravovaná identita není životaschopná za těchto podmínek:
 
-* Přístup k trezoru klíčů nelze udělit přímo vašim oprávněním služby Search (například pokud je vyhledávací služba v jiném tenantovi služby Active Directory než Azure Key Vault).
+* Nelze přímo udělit přístupová oprávnění vyhledávací služby trezoru klíčů (například pokud je vyhledávací služba v jiném tenantovi služby Active Directory než trezor klíčů Azure).
 
-* Pro hostování více šifrovaných map indexes\synonym je potřeba jedna vyhledávací služba, z nichž každá používá jiný klíč z jiného trezoru klíčů, kde každý Trezor klíčů musí pro ověřování použít **jinou identitu** . Pokud používáte jinou identitu pro správu různých trezorů klíčů, není nutné zvážit použití možnosti spravovaná identita výše.  
+* Jedna vyhledávací služba je vyžadována k hostování více šifrovaných indexů\synonymmap, z nichž každá používá jiný klíč z jiného trezoru klíčů, kde každý trezor klíčů musí pro ověřování používat **jinou identitu.** Pokud použití jiné identity ke správě různých trezorů klíčů není požadavek, zvažte použití výše uvedené možnosti spravované identity.  
 
-Pro uspokojení takových topologií Azure Kognitivní hledání podporuje použití aplikací Azure Active Directory (AAD) k ověřování mezi vaší službou vyhledávání a Key Vault.    
+Pro přizpůsobení těchto topologií podporuje Azure Cognitive Search použití aplikací Azure Active Directory (AAD) pro ověřování mezi vyhledávací službou a trezorem klíčů.    
 Vytvoření aplikace AAD na portálu:
 
 1. [Vytvořte aplikaci Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 
-1. [Získejte ID aplikace a ověřovací klíč](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) , protože se budou vyžadovat pro vytvoření šifrovaného indexu. Hodnoty, které budete muset zadat, zahrnují **ID aplikace** a **ověřovací klíč**.
+1. [Získejte ID aplikace a ověřovací klíč,](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) protože ty budou vyžadovány pro vytvoření šifrovaného indexu. Mezi hodnoty, které budete muset zadat, patří **ID aplikace** a **ověřovací klíč**.
 
 >[!Important]
-> Pokud se rozhodnete použít aplikaci AAD ověřování místo spravované identity, zvažte skutečnost, že Azure Kognitivní hledání nemá oprávnění ke správě vaší aplikace AAD vaším jménem a je až do správy aplikace AAD, jako je například pravidelná. rotace ověřovacího klíče aplikace
-> Při změně aplikace AAD nebo jejího ověřovacího klíče se musí nejdřív aktualizovat index služby Azure Kognitivní hledání nebo mapa synonym, která tuto aplikaci používá, aby používala novou aplikaci ID\key **před** odstraněním předchozí aplikace nebo jejího autorizačního klíče a před tím, než odvoláte Key Vault přístup k ní.
-> Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.   
+> Při rozhodování o použití aplikace ověřování AAD namísto spravované identity zvažte skutečnost, že Azure Cognitive Search není oprávněn spravovat vaši aplikaci AAD vaším jménem a je na vás, abyste mohli spravovat aplikaci AAD, jako je například periodická střídání ověřovacího klíče aplikace.
+> Při změně aplikace AAD nebo jejího ověřovacího klíče musí být index Azure Cognitive Search nebo mapa synonym, která používá tuto aplikaci, nejprve aktualizován, aby používal nové ID\klíč aplikace **před** odstraněním předchozí aplikace nebo jejího autorizačního klíče a před zrušením přístupu k trezoru klíčů.
+> Pokud tak neučiníte, bude index nebo synonymum mapy nepoužitelný, protože nebude moci dešifrovat obsah po ztrátě přístupu ke klíči.   
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud nejste obeznámeni s architekturou zabezpečení Azure, přečtěte si [dokumentaci k zabezpečení Azure](https://docs.microsoft.com/azure/security/)a zejména tento článek:
+Pokud nejste obeznámeni s architekturou zabezpečení Azure, přečtěte si [dokumentaci zabezpečení Azure](https://docs.microsoft.com/azure/security/)a zejména tento článek:
 
 > [!div class="nextstepaction"]
 > [Šifrování neaktivních dat](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

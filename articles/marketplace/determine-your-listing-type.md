@@ -1,70 +1,65 @@
 ---
-title: Určete možnost publikování v Azure Marketplace | Azure
-description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování, které partneři pokoušejí pochopit, jak publikovat aplikace na Azure Marketplace.
+title: Určení možnosti publikování v Microsoft AppSource a Azure Marketplace
+description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování, kteří se snaží pochopit, jak publikovat aplikace na Microsoft AppSource a Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: ed25b92dc759f687e35a8424558453a830369a57
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.topic: conceptual
+ms.date: 03/26/2020
+ms.author: dsindona
+ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548361"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349527"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
-Možnost publikování, kterou zvolíte pro vaši nabídku, se vztahuje přímo na požadavky na způsobilost i na výhody GTM na webu Marketplace. Důležitější je, že výběr možnosti publikování a typu nabídky definuje způsob, jakým uživatelé budou pracovat s vaší nabídkou Marketplace.
 
-Pokud chcete konfigurovat vaši nabídku, budete muset pochopit následující klíčové pojmy Marketplace: možnosti publikování, typy nabídek a konfigurace a volání akce, která se řídí tím, jak a kde se nabídka zobrazuje na webu Marketplace prodejní místa.
+Možnost publikování, kterou zvolíte pro svou nabídku, se přímo vztahuje jak na požadavky na způsobilost, tak na výhody GTM na komerčním trhu. Ještě důležitější je, že výběr možnosti publikování a typu nabídky definuje, jak budou uživatelé komunikovat s vaší komerční nabídkou tržiště.
 
-![](./media/marketplace-publishers-guide/storefronts_options_table.png)
+Chcete-li nakonfigurovat nabídku, musíte pochopit následující klíčové koncepty komerčního tržiště: možnosti publikování, typy nabídek a konfigurace a výzvy k akci, které budou řídit, jak a kde je vaše nabídka prezentována na komerčním trhu. Vitríny.
 
+![Obchodní výlohy a možnosti publikování na komerčním trhu společnosti Microsoft](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
-V tomto článku se naučíte...
-<ul><li>    Určení vhodného prezentace pro vaše řešení </ul></li>
-<ul><li>    Které možnosti publikování a volání akce jsou k dispozici v každém prezentace </ul></li>
-<ul><li>    Které typy nabídek jsou k dispozici pro jednotlivé možnosti publikování </ul></li>
+V tomto článku se dozvíte:
 
+- Jak určit vhodnou výkladní skříň pro vaše řešení
+- Které možnosti publikování a výzvy k akci jsou k dispozici v každé výloze
+- Které typy nabídek jsou k dispozici pro každou možnost publikování
 
-## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>Výběr prezentace, možnosti publikování a typu nabídky pro vaše řešení
+## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>Výběr výkladní skříně, možnost publikování a typu nabídky pro vaše řešení
 
-Než vyberete možnost publikování, je důležité pochopit požadavky na prezentace nárok na řešení, aplikace a služby Marketplace:
+Než vyberete možnost publikování, je důležité porozumět požadavkům na nárok na obchodní prostory pro řešení, aplikace a služby komerčního tržiště:
 
-**Azure Marketplace** aplikace jsou technická "stavební a integrovaná řešení" založená na Azure, která jsou určená pro vývojáře IT nebo vývojářů. Azure Marketplace konzultační služby jsou profesionální nabídky služeb, které zákazníkům pomůžou začít s využitím nebo urychlit používání Azure.
+**Aplikace Microsoft AppSource** jsou podniková řešení, která můžou být integrovaná v Azure nebo integrovaná pro: Dynamics 365, Office 365, Power BI nebo Power Apps. Poradenské služby AppSource jsou nabídky profesionálních služeb, které zákazníkům pomáhají začít s dynamics 365 a Power BI nebo je urychlit.
 
-**AppSource** aplikace jsou podniková řešení, která je možné integrovat na Azure nebo integrovanou pro: Dynamics 365, Office 365, Power BI nebo Power Apps. Konzultační služby AppSource jsou profesionální nabídky služeb, které zákazníkům pomůžou začít s využitím nebo zrychlit používání Dynamics 365 a Power BI.
+**Aplikace Azure Marketplace** jsou technická řešení "building-block" integrovaná nebo integrovaná pro Azure a určená pro it nebo vývojářskou publikum. Poradenské služby Azure Marketplace jsou nabídky profesionálních služeb, které zákazníkům pomáhají začít používat Azure nebo ho urychlit.
 
+## <a name="understand-storefront-selection"></a>Principy výběru výlohy
 
-## <a name="understand-storefront-selection"></a>Pochopení výběru prezentace
-
-Každý prezentace slouží jako jedinečné požadavky zákazníků. Prezentace, kde bude vaše nabídka publikovaná, se určí podle typu nabídky, nabídne možnosti Transact a kategorie nebo výběr v oboru pro konkrétní cílovou skupinu. 
+Každá výkladní skříň slouží jedinečným požadavkům zákazníků. Výkladní skříň, kde bude vaše nabídka zveřejněna, bude určena typem nabídky, nabídnou možnosti transaktu a výběr kategorií a / nebo odvětví, aby se zaměřili na konkrétní publikum. 
 
 >[!Note]
->"Křížové výpisy" (pouze pro aplikace SaaS): Pokud seznam nebo nabídka na základě zkušební verze splňuje kritéria pro cílovou skupinu uživatelů technické i obchodní skupiny, vaše nabídka bude uvedena v obou prodejní místa. Další informace o možnostech publikování najdete níže.
+>"Cross-listing" (pouze pro aplikace SaaS): pokud seznam nebo nabídka založená na zkušební verzi splňuje kritéria pro okruh uživatelů technického i podnikového uživatele, vaše nabídka bude uvedena v obou výkladních skříních. Další informace o možnostech publikování najdete níže.
 
-## <a name="choose-a-publishing-option"></a>Zvolit možnost publikování
+## <a name="choose-a-publishing-option"></a>Volba možnosti publikování
 
-Dostupné možnosti publikování nabízejí odlišnou zákaznickou zapojení a zároveň vám dávají přístup k výhodám sdílení potenciálních zákazníků a [komerčních webů na webu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).  Všimněte si volání akce, které odpovídá možnosti publikování:
+Dostupné možnosti publikování nabízejí diferencované zapojení zákazníků a zároveň vám poskytují přístup k hlavnímu sdílení a [výhodám komerčního tržiště](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).  Všimněte si výzvy k akci, které odpovídají možnosti publikování:
 
 | **Možnost publikování**    | **Popis**  |
 | :------------------- | :-------------------|
-| **Seznamu** | Jednoduchý seznam vaší aplikace nebo služby, který uživateli Marketplace umožní požádat o připojení k zákazníkovi prostřednictvím **kontaktních** hovorů |
-| **Zkušební verze** | Pomocí Marketplace můžete vylepšit zjistitelnost a automatizovat zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům využívat prostředí SaaS, IaaS nebo Microsoft v rámci aplikace zdarma, a to po dobu určitou dobu, než se nakupují. Možnost volání na akci, která se používá pro možnost publikování zkušební verze, je buď: **bezplatná zkušební verze** , nebo **testovací jednotka**. |
-|**BYOL**  |Na webu Marketplace můžete vylepšit zjistitelnost a automatizovat zřizování vašeho řešení a dokončit finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Volání akce je **teď získat**.
-| **Provedena** | Vaše aplikace běží v Azure a je možné ji zřídit jako prostředek přímo do předplatného Azure zákazníka, když zákazník vybere akci **získat nyní** volání. Vaše licenční poplatky za software se můžou volitelně koupit a fakturovat podle volby platebního nástroje zákazníka a podmínek a můžete si vybrat, jestli chcete časově omezený přístup k **bezplatné zkušební verzi softwaru** (k dispozici jenom pro Azure Marketplace). |
+| **Seznamu** | Jednoduchý výpis vaší aplikace nebo služby, který umožňuje uživateli komerčního tržiště požádat vás o připojení se zákazníkem prostřednictvím výzvy k akci **Kontaktujte mě.** |
+| **Zkušební verze** | Pomocí komerčního tržiště můžete vylepšit zjistitelnost a automatizovat zřizování zkušebního prostředí vašeho řešení, což potenciálním uživatelům umožní používat vaše prostředí SaaS, IaaS nebo Microsoft v aplikacích zdarma po omezenou dobu před nákupem. Výzvy k akci použité pro možnost publikování zkušební verze jsou **bezplatná zkušební verze** nebo **zkušební verze**. |
+| **BYOL** | Použijte komerční tržiště ke zlepšení zjistitelnosti a automatizaci zřizování vašeho řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro místní migrace do cloudu. Výzva k akci je **Získat nyní**.
+| **Transact** | Nabídky Transact se prodávají prostřednictvím komerčního trhu. Společnost Microsoft je zodpovědná za fakturaci a kolekce. Výzva k akci je **Získat nyní**.|
 
 >[!Note]
->Při použití možnosti publikování v transakčním systému je důležité pochopit důležité informace o cenách, fakturaci, fakturaci a výběru před výběrem typu nabídky a vytvořením nabídky. [Další informace najdete v článku fakturace a obchodní informace na webu Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).
+>Při použití možnosti publikování aplikace Transact je důležité pochopit ceny, fakturaci, fakturaci a výplatu před výběrem typu nabídky a vytvořením nabídky. Další informace naleznete v [článku Fakturace a obchodní účely webu Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-*   Jakmile se rozhodnete pro možnost publikování, budete připraveni [Vybrat typ nabídky](./publisher-guide-by-offer-type.md) , který se bude používat k prezentaci vaší nabídky.
-*   Pokud chcete dokončit výběr a konfiguraci vaší nabídky, přečtěte si požadavky na způsobilost v části Možnosti publikování podle typu nabídky.
-*   Prohlédněte si vzory publikování podle prezentace, kde najdete příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.
-
-
-
+- Jakmile se rozhodnete pro možnost publikování, jste připraveni [vybrat typ nabídky,](./publisher-guide-by-offer-type.md) který bude použit k prezentaci vaší nabídky.
+- Zkontrolujte požadavky na způsobilost v části Možnosti publikování podle typu nabídky a dokončte výběr a konfiguraci nabídky.
+- Projděte si vzory publikování podle výkladní skříně, kde například vypadá, jak se vaše řešení mapuje na typ nabídky a konfiguraci.

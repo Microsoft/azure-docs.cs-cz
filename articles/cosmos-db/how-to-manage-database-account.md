@@ -1,16 +1,16 @@
 ---
 title: Informace o správě účtů databáze ve službě Azure Cosmos DB
-description: Naučte se spravovat Azure Cosmos DB prostředky pomocí šablon Azure Portal, PowerShellu, CLI a Azure Resource Manager.
+description: Zjistěte, jak spravovat prostředky Azure Cosmos DB pomocí azure portalu, PowerShellu, CLI a Azure Resource Manageru.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247381"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
@@ -19,35 +19,35 @@ Tento článek popisuje, jak spravovat různé úlohy účtu služby Azure Cosmo
 
 ## <a name="create-an-account"></a>Vytvoření účtu
 
-### <a id="create-database-account-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Portál Azure
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-### <a id="create-database-account-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLI
 
-Přečtěte si prosím téma [Vytvoření účtu Azure Cosmos DB pomocí Azure CLI](manage-with-cli.md#create-an-azure-cosmos-db-account) .
+Přečtěte si článek [Vytvoření účtu Azure Cosmos DB pomocí azure CLI](manage-with-cli.md#create-an-azure-cosmos-db-account)
 
-### <a id="create-database-account-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
-Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB pomocí PowerShellu](manage-with-powershell.md#create-account) .
+Přečtěte si článek [Vytvoření účtu Azure Cosmos DB s Powershellem.](manage-with-powershell.md#create-account)
 
-### <a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manager
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manageru
 
-Tato šablona Azure Resource Manager vytvoří účet Azure Cosmos pro rozhraní SQL API nakonfigurovaný se dvěma oblastmi a možnostmi pro výběr úrovně konzistence, automatického převzetí služeb při selhání a více hlavních serverů. Pokud chcete tuto šablonu nasadit, klikněte na stránce Readme na nasadit do Azure a [vytvořte účet Azure Cosmos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql) .
+Tato šablona Azure Resource Manager vytvoří účet Azure Cosmos pro ROZHRANÍ SQL API nakonfigurovaný se dvěma oblastmi a možnostmi pro výběr úrovně konzistence, automatického převzetí služeb při selhání a více hlavních. Chcete-li tuto šablonu nasadit, klikněte na tlačítko Nasazení do Azure na stránce [Readme, Vytvořit účet Azure Cosmos.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Přidání oblastí do účtu databáze nebo jejich odebrání
 
-### <a id="add-remove-regions-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Portál Azure
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-1. Přejděte k účtu Azure Cosmos a otevřete nabídku **replikovat data globálně** .
+1. Přejděte na svůj účet Azure Cosmos a otevřete **globální nabídku Replikovat data.**
 
-1. Chcete-li přidat oblasti, vyberte šestiúhelníky na mapě pomocí popisku **+** , který odpovídá vašim požadovaným oblastem (y). Pokud chcete přidat oblast, vyberte možnost **+ Přidat oblast** a v rozevírací nabídce vyberte oblast.
+1. Chcete-li přidat oblasti, vyberte šestiúhelníky na mapě s popiskem, **+** který odpovídá požadované oblasti(s). Chcete-li přidat oblast, vyberte možnost **+ Přidat oblast** a z rozevírací nabídky zvolte oblast.
 
-1. Chcete-li odebrat oblasti, zrušte zaškrtnutí jedné nebo více oblastí z mapy tak, že vyberete modré šestiúhelníky se značkami zaškrtnutí. Nebo vyberte ikonu "wastebasket" (🗑) vedle oblasti na pravé straně.
+1. Chcete-li odebrat oblasti, vymažte jednu nebo více oblastí z mapy výběrem modrých šestiúhelníků se značkami zaškrtnutí. Nebo vyberte ikonu "odpadkový koš" (🗑) vedle oblasti na pravé straně.
 
-1. Pokud chcete změny uložit, vyberte **OK**.
+1. Chcete-li změny uložit, vyberte **možnost OK**.
 
    ![Nabídka Přidat nebo odebrat oblasti](./media/how-to-manage-database-account/add-region.png)
 
@@ -55,33 +55,33 @@ V režimu zápisu do jedné oblasti není možné odebrat oblast zápisu. Před 
 
 V režimu zápisu do více oblastí můžete přidat nebo odebrat libovolnou oblast, pokud máte alespoň jednu oblast.
 
-### <a id="add-remove-regions-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLI
 
-Podívejte se prosím na téma [Přidání nebo odebrání oblastí pomocí Azure CLI](manage-with-cli.md#add-or-remove-regions) .
+Přečtěte si informace [o přidání nebo odebrání oblastí pomocí příkazového příkazu k příkazu Azure.](manage-with-cli.md#add-or-remove-regions)
 
-### <a id="add-remove-regions-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
-Podívejte se prosím na téma [Přidání nebo odebrání oblastí pomocí PowerShellu](manage-with-powershell.md#update-account) .
+Přečtěte si informace [o přidání nebo odebrání oblastí pomocí prostředí Powershell.](manage-with-powershell.md#update-account)
 
-## <a id="configure-multiple-write-regions"></a>Konfigurace více oblastí pro zápis
+## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>Konfigurace několika oblastí zápisu
 
-### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Portál Azure
 
-Otevřete kartu **replikace dat globálně** a výběrem **Povolit** povolte zápisy ve více oblastech. Po povolení zápisů ve více oblastech se všechny oblasti čtení, které v daném účtu aktuálně máte, stanou oblastmi pro čtení a zápis.
+Otevřete kartu **Replikovat data globálně** a vyberte **Povolit,** chcete-li povolit zápisy ve více oblastech. Po povolení zápisů ve více oblastech se všechny oblasti čtení, které aktuálně máte na účtu, stanou oblastmi pro čtení a zápis.
 
-![Účet Azure Cosmos konfiguruje snímek s více hlavními servery.](./media/how-to-manage-database-account/single-to-multi-master.png)
+![Účet Azure Cosmos konfiguruje snímek obrazovky s více servery](./media/how-to-manage-database-account/single-to-multi-master.png)
 
-### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
-Přečtěte si prosím téma [Povolení oblastí s více zápisy pomocí Azure CLI](manage-with-cli.md#enable-multiple-write-regions) .
+Přečtěte si, [že pomocí azure CLI najdete v tématu Povolení k zápisu s více násobnými zápisy.](manage-with-cli.md#enable-multiple-write-regions)
 
-### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-Viz téma [Povolení oblastí s několika zápisy pomocí prostředí PowerShell](manage-with-powershell.md#multi-master) .
+Viz [Povolení oblastí více zápisů pomocí prostředí Powershell](manage-with-powershell.md#multi-master)
 
-### <a id="configure-multiple-write-regions-arm"></a>Šablona Resource Manageru
+### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Šablona Správce prostředků
 
-Účet lze migrovat z jednoho hlavního serveru do více hlavních serverů nasazením šablony Správce prostředků používané k vytvoření účtu a nastavením `enableMultipleWriteLocations: true`. Následující šablona Azure Resource Manager je minimální šablona, která nasadí účet Azure Cosmos pro rozhraní SQL API se dvěma oblastmi a více umístěními pro zápis povolených.
+Účet lze migrovat z jednoho hlavního serveru na více hlavních zdrojů nasazením `enableMultipleWriteLocations: true`šablony Správce prostředků použité k vytvoření účtu a nastavení . Následující šablona Azure Resource Manager je holé minimální šablona, která nasadí účet Azure Cosmos pro SQL API se dvěma oblastmi a více povolených úložišť zápisu.
 
 ```json
 {
@@ -139,98 +139,98 @@ Viz téma [Povolení oblastí s několika zápisy pomocí prostředí PowerShell
 }
 ```
 
-## <a id="automatic-failover"></a>Povolení automatického převzetí služeb při selhání pro účet Azure Cosmos
+## <a name="enable-automatic-failover-for-your-azure-cosmos-account"></a><a id="automatic-failover"></a>Povolení automatického převzetí služeb při selhání u účtu služby Azure Cosmos DB
 
-Možnost automatického převzetí služeb při selhání umožňuje Azure Cosmos DB převzetí služeb při selhání do oblasti s nejvyšší prioritou převzetí služeb při selhání bez akce uživatele, pokud se oblast stane nedostupnou. Když je povolené automatické převzetí služeb při selhání, může se upravit priorita oblasti. Aby bylo možné povolit automatické převzetí služeb při selhání, musí mít účet dvě nebo více oblastí.
+Možnost automaticképřevzetí služeb při selhání umožňuje Azure Cosmos DB převzetí služeb při selhání do oblasti s nejvyšší prioritou převzetí služeb při selhání bez akce uživatele by oblast nebude k dispozici. Pokud je povoleno automatické převzetí služeb při selhání, lze změnit prioritu oblasti. Účet musí mít dvě nebo více oblastí, aby bylo možné automaticky přepojit na znovu.
 
-### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Portál Azure
 
-1. Z účtu Azure Cosmos otevřete podokno **globálně replikovat data** .
+1. Z vašeho účtu Azure Cosmos otevřete globální podokno **Replikovat data.**
 
-2. V horní části podokna vyberte **automatické převzetí služeb při selhání**.
+2. V horní části podokna vyberte **Možnost Automatické převzetí služeb při selhání**.
 
    ![Nabídka Globální replikace dat](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto**. 
+3. V podokně **Automatické převzetí služeb při selhání** zkontrolujte, zda je možnost **Povolit automatické převzetí služeb při selhání** nastavena na **zapnuto**. 
 
-4. Vyberte **Save** (Uložit).
+4. Vyberte **Uložit**.
 
    ![Nabídka portálu Automatické převzetí služeb při selhání](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="enable-automatic-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
-Viz [Povolení automatického převzetí služeb při selhání pomocí Azure CLI](manage-with-cli.md#enable-automatic-failover) .
+Přečtěte si informace [o povolení automatického převzetí služeb při selhání pomocí příkazového příkazu k řešení Azure.](manage-with-cli.md#enable-automatic-failover)
 
-### <a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-Viz [Povolení automatického převzetí služeb při selhání pomocí PowerShellu](manage-with-powershell.md#enable-automatic-failover)
+Viz [Povolení automatického převzetí služeb při selhání pomocí prostředí Powershell](manage-with-powershell.md#enable-automatic-failover)
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Nastavení priorit převzetí služeb při selhání u účtu služby Azure Cosmos DB
 
-Po nakonfigurování účtu Cosmos pro automatické převzetí služeb při selhání je možné změnit prioritu převzetí služeb při selhání pro oblasti.
+Po konfiguraci účtu Cosmos pro automatické převzetí služeb při selhání, prioritu převzetí služeb při selhání pro oblasti lze změnit.
 
 > [!IMPORTANT]
-> Pokud je účet nakonfigurovaný na automatické převzetí služeb při selhání, nemůžete upravit oblast zápisu (priorita převzetí služeb při selhání nula). Chcete-li změnit oblast zápisu, je nutné zakázat automatické převzetí služeb při selhání a provést ruční převzetí služeb při selhání.
+> Oblast zápisu (priorita převzetí služeb při selhání nula) nelze změnit, pokud je účet nakonfigurován pro automatické převzetí služeb při selhání. Chcete-li změnit oblast zápisu, je nutné zakázat automatické převzetí služeb při selhání a provést ruční převzetí služeb při selhání.
 
-### <a id="set-failover-priorities-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Portál Azure
 
-1. Z účtu Azure Cosmos otevřete podokno **globálně replikovat data** .
+1. Z vašeho účtu Azure Cosmos otevřete globální podokno **Replikovat data.**
 
-2. V horní části podokna vyberte **automatické převzetí služeb při selhání**.
+2. V horní části podokna vyberte **Možnost Automatické převzetí služeb při selhání**.
 
    ![Nabídka Globální replikace dat](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto**.
+3. V podokně **Automatické převzetí služeb při selhání** zkontrolujte, zda je možnost **Povolit automatické převzetí služeb při selhání** nastavena na **zapnuto**.
 
-4. Pokud chcete změnit prioritu převzetí služeb při selhání, přetáhněte oblasti čtení přes tři tečky na levé straně řádku, která se zobrazí, když na ně najedete myší.
+4. Chcete-li upravit prioritu převzetí služeb při selhání, přetáhněte oblasti čtení přes tři tečky na levé straně řádku, které se zobrazí, když na ně najedete myší.
 
-5. Vyberte **Save** (Uložit).
+5. Vyberte **Uložit**.
 
    ![Nabídka portálu Automatické převzetí služeb při selhání](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="set-failover-priorities-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
-Podívejte se prosím na [Nastavení priority převzetí služeb při selhání pomocí Azure CLI](manage-with-cli.md#set-failover-priority) .
+Přečtěte [si, že najdete v tématu Nastavení priority převzetí služeb při selhání pomocí příkazového příkazu k řešení Azure.](manage-with-cli.md#set-failover-priority)
 
-### <a id="set-failover-priorities-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
-Viz [Nastavení priority převzetí služeb při selhání pomocí PowerShellu](manage-with-powershell.md#modify-failover-priority) .
+Přečtěte si informace [o nastavení priority převzetí služeb při selhání pomocí prostředí Powershell.](manage-with-powershell.md#modify-failover-priority)
 
-## <a id="manual-failover"></a>Provedení ručního převzetí služeb při selhání v účtu Azure Cosmos
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Provedení ručního převzetí služeb při selhání účtu služby Azure Cosmos DB
 
 > [!IMPORTANT]
-> Aby tato operace proběhla úspěšně, musí být účet Azure Cosmos nakonfigurovaný na ruční převzetí služeb při selhání.
+> Účet Azure Cosmos musí být nakonfigurovaný pro ruční převzetí služeb při selhání, aby tato operace byla úspěšná.
 
-Proces ručního převzetí služeb při selhání zahrnuje změnu oblasti zápisu účtu (priorita převzetí služeb při selhání = 0) na jinou oblast nakonfigurovanou pro tento účet.
+Proces provedení ručnípřevzetí služeb při selhání zahrnuje změnu oblasti zápisu účtu (priorita převzetí služeb při selhání = 0) na jinou oblast nakonfigurovanou pro účet.
 
 > [!NOTE]
-> Pro účty s více hlavními servery nejde ručně převzít službu při selhání. V případě aplikací, které používají sadu Azure Cosmos SDK, bude sada SDK detekovat, kdy se oblast přestane používat, a pak automaticky přesměruje na nejbližší nejbližší oblast, pokud v sadě SDK používáte rozhraní API pro více koncových míst.
+> Vícehlavních účtů nelze ručně převzetí mísy při selhání. Pro aplikace pomocí sady Azure Cosmos SDK sada SDK zjistí, kdy oblast přestane být k dispozici, pak přesměrovat automaticky do nejbližší oblasti, pokud používáte více naváděcí rozhraní API v sdk.
 
-### <a id="enable-manual-failover-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Portál Azure
 
-1. Přejděte k účtu Azure Cosmos a otevřete nabídku **replikovat data globálně** .
+1. Přejděte na svůj účet Azure Cosmos a otevřete **globální nabídku Replikovat data.**
 
 2. V horní části nabídky vyberte **ruční převzetí služeb při selhání**.
 
    ![Nabídka Globální replikace dat](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. V nabídce **ruční převzetí služeb při selhání** vyberte novou oblast pro zápis. Zaškrtnutím políčka označíte, že pochopení této možnosti mění vaši oblast zápisu.
+3. V nabídce **Ruční převzetí služeb při selhání** vyberte novou oblast zápisu. Zaškrtnutím tohoto políčka označíte, že tato možnost mění oblast zápisu.
 
-4. Pokud chcete převzetí služeb při selhání aktivovat, vyberte **OK**.
+4. Chcete-li spustit převzetí služeb při selhání, vyberte **možnost OK**.
 
    ![Nabídka portálu Ruční převzetí služeb při selhání](./media/how-to-manage-database-account/manual-failover.png)
 
-### <a id="enable-manual-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 
-Podívejte se prosím na [ruční převzetí služeb při selhání pomocí Azure CLI](manage-with-cli.md#trigger-manual-failover) .
+Viz [Aktivační událost s převzetím služeb při selhání pomocí příkazového příkazového příkazu Azure](manage-with-cli.md#trigger-manual-failover)
 
-### <a id="enable-manual-failover-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
-Podívejte se prosím na [ruční převzetí služeb při selhání pomocí PowerShellu](manage-with-powershell.md#trigger-manual-failover)
+Viz [Aktivační událost s převzetím služeb při selhání pomocí prostředí Powershell](manage-with-powershell.md#trigger-manual-failover)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace a příklady, jak spravovat účet Azure Cosmos i databáze a kontejnery, najdete v následujících článcích:
+Další informace a příklady správy účtu Azure Cosmos, databáze a kontejnery našly, načtete následující články:
 
-* [Správa Azure Cosmos DB pomocí Azure PowerShell](manage-with-powershell.md)
+* [Správa Azure Cosmos DB pomocí Azure PowerShellu](manage-with-powershell.md)
 * [Správa služby Azure Cosmos DB pomocí Azure CLI](manage-with-cli.md)

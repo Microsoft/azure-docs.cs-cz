@@ -1,70 +1,70 @@
 ---
-title: Konfigurace SSL-Azure Database for MariaDB
-description: Pokyny, jak správně nakonfigurovat Azure Database for MariaDB a přidružené aplikace pro správné použití připojení SSL
+title: Konfigurace protokolu SSL – databáze Azure pro MariaDB
+description: Pokyny pro správnou konfiguraci databáze Azure pro MariaDB a přidružené aplikace správně používat připojení SSL
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: a0fb1bdf1aac9b3c5a2d8c83d0597326de38caaf
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 668b72fa89916de6d2aa5971543b0ec085de8263
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767360"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530678"
 ---
-# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MariaDB
-Azure Database for MariaDB podporuje připojení Azure Database for MariaDBho serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
+# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurace připojení SSL ve vaší aplikaci pro bezpečné připojení k Azure Database pro MariaDB
+Azure Database for MariaDB podporuje připojení databáze Azure pro server MariaDB ke klientským aplikacím pomocí ssl (Secure Sockets Layer). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
 
 ## <a name="obtain-ssl-certificate"></a>Získat certifikát SSL
-Stáhněte si certifikát potřebný ke komunikaci přes SSL s Azure Database for MariaDB serverem z [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) a uložte soubor certifikátu na místní disk (v tomto kurzu se používá například c:\ssl).
-**Pro Microsoft Internet Explorer a Microsoft Edge:** Po dokončení stahování přejmenujte certifikát na BaltimoreCyberTrustRoot. CRT. pem.
+Stáhněte si certifikát potřebný ke komunikaci přes SSL [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) s azure database pro mariadb server a uložte soubor certifikátu na místní jednotku (tento kurz používá například c:\ssl).
+**Pro aplikaci Microsoft Internet Explorer a Microsoft Edge:** Po dokončení stahování přejmenujte certifikát na BaltimoreCyberTrustRoot.crt.pem.
 
-## <a name="bind-ssl"></a>Vázání SSL
+## <a name="bind-ssl"></a>Vázat ssl
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>Připojení k serveru pomocí aplikace MySQL Workbench přes SSL
-Nakonfigurujte aplikaci MySQL Workbench pro zabezpečené připojení přes SSL. 
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>Připojení k serveru pomocí MySQL Workbench přes SSL
+Nakonfigurujte mysql workbench pro bezpečné připojení přes SSL. 
 
-1. V dialogovém okně nastavení nového připojení přejděte na kartu **SSL** . 
+1. V dialogu Nastavení nového připojení přejděte na kartu **SSL.** 
 
-1. Aktualizujte pole **Použít SSL** na "vyžadovat".
+1. Aktualizujte pole **Použít SSL** na "Vyžadovat".
 
-1. Do pole **soubor CA SSL:** zadejte umístění souboru **BaltimoreCyberTrustRoot. CRT. pem**. 
+1. Do pole **SSL CA File:** zadejte umístění souboru **baltimoreCyberTrustRoot.crt.pem**. 
     
     ![Uložit konfiguraci SSL](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-U existujících připojení můžete propojit SSL tak, že kliknete pravým tlačítkem na ikonu připojení a zvolíte upravit. Pak přejděte na kartu **SSL** a navažte na soubor certifikátu.
+U existujících připojení můžete svázat ssl kliknutím pravým tlačítkem myši na ikonu připojení a zvolte upravit. Potom přejděte na kartu **SSL** a spojte soubor certifikátu.
 
-### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Připojení k serveru pomocí rozhraní příkazového řádku MySQL přes SSL
-Dalším způsobem, jak vytvořit propojení s certifikátem SSL, je použití rozhraní příkazového řádku MySQL spuštěním následujících příkazů. 
+### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Připojení k serveru pomocí příkazového příkazu CLI MySQL přes SSL
+Dalším způsobem, jak svázat certifikát SSL, je použití rozhraní příkazového řádku MySQL provedením následujících příkazů. 
 
 ```bash
 mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
 
 > [!NOTE]
-> Při použití rozhraní příkazového řádku MySQL v systému Windows se může zobrazit chyba `SSL connection error: Certificate signature check failed`. Pokud k tomu dojde, nahraďte parametry `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametrem `--ssl`.
+> Při použití rozhraní příkazového řádku MySQL v systému Windows se může zobrazit chyba `SSL connection error: Certificate signature check failed`. Pokud k tomu dojde, nahraďte `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametry . `--ssl`
 
-## <a name="enforcing-ssl-connections-in-azure"></a>Vynucování připojení SSL v Azure 
+## <a name="enforcing-ssl-connections-in-azure"></a>Vynucení připojení SSL v Azure 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
-Pomocí Azure Portal přejděte na server Azure Database for MariaDB a pak klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolte nebo zakažte nastavení **Vynutilí připojení SSL** a pak klikněte na **Uložit**. Microsoft doporučuje vždy povolit nastavení **Vynutilí připojení SSL** pro rozšířené zabezpečení.
-![Enable-SSL](./media/howto-configure-ssl/enable-ssl.png)
+Na webu Azure najdete na serveru Azure Database for MariaDB a klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka můžete povolit nebo zakázat nastavení **Vynucení připojení SSL** a klepněte na tlačítko **Uložit**. Společnost Microsoft doporučuje vždy povolit nastavení **připojení Vynucení SSL** pro rozšířené zabezpečení.
+![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
-Parametr **SSL-Enforcement** můžete zapnout nebo vypnout pomocí povolených nebo zakázaných hodnot v Azure CLI.
+Parametr **vynucení protokolu ssl** můžete povolit nebo zakázat pomocí hodnot Povoleno nebo Zakázáno v rozhraní příkazového řádku Azure.
 ```azurecli-interactive
 az mariadb server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="verify-the-ssl-connection"></a>Ověření připojení SSL
-Spuštěním příkazu pro **stav** MySQL ověřte, že jste se připojili k serveru MariaDB pomocí protokolu SSL:
+Spusťte příkaz **stav** mysql a ověřte, zda jste se připojili k serveru MariaDB pomocí ssl:
 ```sql
 status
 ```
-Ověřte, že je připojení zašifrované, a to tak, že zkontroluje výstup, který by měl zobrazovat: **SSL: šifrování se používá, AES256-SHA.** 
+Potvrďte, že připojení je šifrováno kontrolou výstupu, který by měl zobrazovat: **SSL: Používá se šifra je AES256-SHA** 
 
 ## <a name="sample-code"></a>Ukázka kódu
-K navázání zabezpečeného připojení k Azure Database for MariaDB přes SSL z vaší aplikace, přečtěte si následující ukázky kódu:
+Pokud chcete vytvořit zabezpečené připojení k Azure Database pro MariaDB přes SSL z vaší aplikace, podívejte se na následující ukázky kódu:
 
 ### <a name="php"></a>PHP
 ```php

@@ -1,30 +1,30 @@
 ---
 title: Řízení údržby pro virtuální počítače Azure pomocí PowerShellu
-description: Naučte se řídit, kdy se na virtuální počítače Azure používá údržba pomocí řízení údržby a PowerShellu.
+description: Zjistěte, jak řídit, když se údržba použije na vaše virtuální počítače Azure pomocí řízení údržby a PowerShellu.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 7e4586a5fba91fbc7432aa352b9608be728e8654
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: dc47afe9cb6eca1b10f8caca7b85087023c5eadf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267024"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060141"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Preview: řízení aktualizací pomocí řízení údržby a Azure PowerShell
+# <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Náhled: Řízení aktualizací pomocí řízení údržby a Azure PowerShellu
 
-Spravujte aktualizace platforem, které nevyžadují restart, pomocí řízení údržby. Azure často aktualizuje svoji infrastrukturu, aby vylepšila spolehlivost, výkon, zabezpečení a spouštěla nové funkce. Většina aktualizací je pro uživatele transparentní. Některé citlivé úlohy, jako jsou hraní her, streamování médií a finanční transakce, neumožňují tolerovat zamrznutí nebo odpojení virtuálních počítačů za účelem údržby ani pár sekund. Řízení údržby vám dává možnost počkat na aktualizace platformy a použít ji v průběhu 35ého okna. 
+Spravujte aktualizace platformy, které nevyžadují restartování pomocí řízení údržby. Azure často aktualizuje svou infrastrukturu, aby zlepšil spolehlivost, výkon, zabezpečení nebo spustil nové funkce. Většina aktualizací je pro uživatele transparentní. Některé citlivé úlohy, jako je hraní her, streamování médií a finanční transakce, nemohou tolerovat ani několik sekund zamrznutí nebo odpojení virtuálního počítače z důvodu údržby. Řízení údržby vám dává možnost čekat na aktualizace platformy a aplikovat je v rámci 35denního rolovacího okna. 
 
-Řízení údržby vám umožní určit, kdy se mají pro izolované virtuální počítače použít aktualizace.
+Řízení údržby umožňuje rozhodnout, kdy použít aktualizace na izolované virtuální počítače.
 
-Pomocí řízení údržby můžete:
-- Dávka se aktualizuje do jednoho balíčku aktualizace.
-- Počkejte až 35 dní, než se aktualizace použijí. 
-- Automatizujte aktualizace platforem pro okno údržby pomocí Azure Functions.
-- Konfigurace údržby pracují v rámci předplatných a skupin prostředků. 
+S kontrolou údržby můžete:
+- Dávkové aktualizace do jednoho balíčku aktualizace.
+- Vyčkejte až 35 dní, než chcete nainstalovat aktualizace. 
+- Automatizujte aktualizace platformy pro okno údržby pomocí Funkce Azure.
+- Konfigurace údržby fungují napříč předplatnými a skupinami prostředků. 
 
 > [!IMPORTANT]
 > Řízení údržby je aktuálně ve verzi Public Preview.
@@ -33,34 +33,34 @@ Pomocí řízení údržby můžete:
 
 ## <a name="limitations"></a>Omezení
 
-- Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
-- Po 35 dnech se automaticky použije aktualizace.
-- Uživatel musí mít přístup k **přispěvateli prostředků** .
+- Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořeny pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
+- Po 35 dnech bude automaticky použita aktualizace.
+- Uživatel musí mít přístup **přispěvatele prostředků.**
 
 
-## <a name="enable-the-powershell-module"></a>Povolit modul prostředí PowerShell
+## <a name="enable-the-powershell-module"></a>Povolení modulu PowerShellu
 
-Ujistěte se, že je `PowerShellGet` aktuální.
+Ujistěte `PowerShellGet` se, že je aktuální.
 
 ```azurepowershell-interactive
 Install-Module -Name PowerShellGet -Repository PSGallery -Force
 ```
 
-Rutiny AZ. Maintenance PowerShell jsou ve verzi Preview, takže je potřeba nainstalovat modul s parametrem `AllowPrerelease` v Cloud Shell nebo v místní instalaci PowerShellu.   
+Rutiny Prostředí Az.Maintenance PowerShell jsou ve verzi preview, takže `AllowPrerelease` je třeba nainstalovat modul s parametrem v prostředí Cloud Shell nebo místní instalaci prostředí PowerShell.   
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Maintenance -AllowPrerelease
 ```
 
-Pokud instalujete místně, ujistěte se, že jste otevřeli příkazový řádek PowerShellu jako správce.
+Pokud instalujete místně, ujistěte se, že otevřete výzvu prostředí PowerShell jako správce.
 
-Může se zobrazit také výzva k potvrzení, že chcete nainstalovat z *nedůvěryhodného úložiště*. Zadejte `Y` nebo vyberte **Ano pro všechny** pro instalaci modulu.
+Můžete být také požádáni o potvrzení, že chcete nainstalovat z *nedůvěryhodného úložiště*. Zadejte `Y` nebo vyberte **možnost Ano všem,** chcete-li modul nainstalovat.
 
 
 
-## <a name="create-a-maintenance-configuration"></a>Vytvořit konfiguraci údržby
+## <a name="create-a-maintenance-configuration"></a>Vytvoření konfigurace údržby
 
-Vytvořte skupinu prostředků jako kontejner pro vaši konfiguraci. V tomto příkladu se vytvoří skupina prostředků s názvem *myMaintenanceRG* v *eastus*. Pokud již máte skupinu prostředků, kterou chcete použít, můžete tuto část přeskočit a nahradit název skupiny prostředků vlastní ve zbývajících příkladech.
+Vytvořte skupinu prostředků jako kontejner pro vaši konfiguraci. V tomto příkladu je vytvořena skupina prostředků s názvem *myMaintenanceRG* v *eastus*. Pokud již máte skupinu prostředků, kterou chcete použít, můžete tuto část přeskočit a nahradit název skupiny prostředků vlastním ve zbývajících příkladech.
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -68,7 +68,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-Pomocí [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) vytvořte konfiguraci údržby. Tento příklad vytvoří konfiguraci údržby s názvem *myConfig* s oborem názvů hostitele. 
+Pomocí [funkce New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) vytvořte konfiguraci údržby. Tento příklad vytvoří konfiguraci údržby s názvem *myConfig* s rozsahem hostitele. 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -78,11 +78,11 @@ $config = New-AzMaintenanceConfiguration `
    -Location  eastus
 ```
 
-Pomocí `-MaintenanceScope host` zajistíte, aby se konfigurace údržby používala k řízení aktualizací hostitele.
+Použití `-MaintenanceScope host` zajišťuje, že konfigurace údržby se používá pro řízení aktualizací hostitele.
 
-Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurace musí být pro vaše předplatné jedinečné.
+Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurací musí být jedinečné pro vaše předplatné.
 
-K dostupným konfiguracím údržby se můžete dotázat pomocí příkazu [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration).
+Můžete dotaz na dostupné konfigurace údržby pomocí [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration).
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
@@ -90,11 +90,11 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace
 
-Pomocí [New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) přiřaďte konfiguraci k vašemu IZOLOVANÉmu virtuálnímu počítači nebo vyhrazenému hostiteli Azure.
+Pomocí [new-azconfigurationassignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) přiřadit konfiguraci k izolovanému virtuálnímu počítači nebo vyhrazenému hostiteli Azure.
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
-Použijte konfiguraci na virtuální počítač s použitím ID konfigurace. Zadejte `-ResourceType VirtualMachines` a zadejte název virtuálního počítače pro `-ResourceName`a skupinu prostředků virtuálního počítače pro `-ResourceGroupName`. 
+Použijte konfiguraci na virtuální ms pomocí ID konfigurace. Zadejte `-ResourceType VirtualMachines` a zadejte název `-ResourceName`virtuálního_ virtuálního_ a. `-ResourceGroupName` 
 
 ```azurepowershell-interactive
 New-AzConfigurationAssignment `
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Chcete-li použít konfiguraci pro vyhrazeného hostitele, je také nutné zahrnout `-ResourceType hosts`, `-ResourceParentName` s názvem skupiny hostitelů a `-ResourceParentType hostGroups`. 
+Chcete-li použít konfiguraci na vyhrazeného `-ResourceType hosts`hostitele, musíte také zahrnout `-ResourceParentName` , `-ResourceParentType hostGroups`s názvem skupiny hostitelů a . 
 
 
 ```azurepowershell-interactive
@@ -125,11 +125,11 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-## <a name="check-for-pending-updates"></a>Vyhledat nedokončené aktualizace
+## <a name="check-for-pending-updates"></a>Vyhledat čekající aktualizace
 
-Pokud chcete zjistit, jestli čekají na aktualizace, použijte [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) . Pomocí `-subscription` určete předplatné Azure pro virtuální počítač, pokud se liší od přihlášení, které jste přihlásili.
+Pomocí [funkce Get-AzMaintenanceUpdate zjistěte,](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) zda existují čekající aktualizace. Slouží `-subscription` k určení předplatného Azure virtuálního počítače, pokud se liší od toho, ke kterému jste přihlášeni.
 
-Pokud nejsou k dispozici žádné aktualizace k zobrazení, tento příkaz nebude nic vracet. V opačném případě vrátí objekt PSApplyUpdate:
+Pokud nejsou k dispozici žádné aktualizace zobrazit, tento příkaz vrátí nic. V opačném případě vrátí objekt PSApplyUpdate:
 
 ```json
 {
@@ -143,9 +143,9 @@ Pokud nejsou k dispozici žádné aktualizace k zobrazení, tento příkaz nebud
 } 
 ```
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
-Vyhledejte nedokončené aktualizace pro izolovaný virtuální počítač. V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost.
+Zkontrolujte čekající aktualizace pro izolovaný virtuální ms. V tomto příkladu je výstup formátován jako tabulka pro čitelnost.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceUpdate `
@@ -158,7 +158,7 @@ Get-AzMaintenanceUpdate `
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Pro kontrolu nedokončených aktualizací pro vyhrazeného hostitele. V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost. Nahraďte hodnoty pro prostředky vlastními.
+Chcete-li vyhledat čekající aktualizace pro vyhrazeného hostitele. V tomto příkladu je výstup formátován jako tabulka pro čitelnost. Nahraďte hodnoty prostředků vlastními.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceUpdate `
@@ -173,11 +173,11 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>Instalace aktualizací
 
-Použijte [příkaz New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) k instalaci nedokončených aktualizací.
+Použijte [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) použít čekající aktualizace.
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
-Vytvořte žádost o použití aktualizací pro izolovaný virtuální počítač.
+Vytvořte požadavek na použití aktualizací na izolovaný virtuální ms.
 
 ```azurepowershell-interactive
 New-AzApplyUpdate `
@@ -187,11 +187,11 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-Po úspěšném provedení tohoto příkazu vrátí objekt `PSApplyUpdate`. Chcete-li zjistit stav aktualizace, můžete použít atribut Name v příkazu `Get-AzApplyUpdate`. Podívejte se na téma [Zkontrolujte stav aktualizace](#check-update-status).
+Při úspěchu tento příkaz `PSApplyUpdate` vrátí objekt. Pomocí atributu Name v `Get-AzApplyUpdate` příkazu můžete zkontrolovat stav aktualizace. Viz [Kontrola stavu aktualizace](#check-update-status).
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Použijte aktualizace na vyhrazeného hostitele.
+Použijte aktualizace vyhrazeného hostitele.
 
 ```azurepowershell-interactive
 New-AzApplyUpdate `
@@ -203,8 +203,8 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-## <a name="check-update-status"></a>Kontrolovat stav aktualizace
-Ke kontrole stavu aktualizace použijte [příkaz Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) . Níže uvedené příkazy zobrazují stav nejnovější aktualizace pomocí `default` pro parametr `-ApplyUpdateName`. Můžete nahradit název aktualizace (vrácenou příkazem [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) ) a získat tak stav konkrétní aktualizace.
+## <a name="check-update-status"></a>Zkontrolovat stav aktualizace
+Pomocí [funkce Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) zkontrolujte stav aktualizace. Níže uvedené příkazy zobrazují stav nejnovější aktualizace `default` pomocí `-ApplyUpdateName` parametru. Můžete nahradit název aktualizace (vrácené příkazem [New-AzApplyUpdate)](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) získat stav konkrétní aktualizace.
 
 ```text
 Status         : Completed
@@ -216,11 +216,11 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-LastUpdateTime bude čas, kdy se aktualizace dokončila, ať už iniciovaná vámi, nebo platformou v případě, že se okno samoobslužné údržby nepoužilo. Pokud se v rámci řízení údržby nikdy nepoužila aktualizace, zobrazí se výchozí hodnota.
+LastUpdateTime bude čas, kdy aktualizace byla dokončena, buď iniciované vámi, nebo platformou v případě, že okno samoúdržby nebylo použito. Pokud nikdy nebyla provedena aktualizace prostřednictvím řízení údržby, zobrazí se výchozí hodnota.
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+### <a name="isolated-vm"></a>Izolovaný virtuální virtuální ms
 
-Vyhledat aktualizace konkrétního virtuálního počítače.
+Zkontrolujte aktualizace konkrétního virtuálního počítače.
 
 ```azurepowershell-interactive
 Get-AzApplyUpdate `
@@ -233,7 +233,7 @@ Get-AzApplyUpdate `
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Vyhledat aktualizace vyhrazeného hostitele.
+Zkontrolujte aktualizace vyhrazeného hostitele.
 
 ```azurepowershell-interactive
 Get-AzApplyUpdate `
@@ -246,15 +246,15 @@ Get-AzApplyUpdate `
    -ApplyUpdateName myUpdateName
 ```
 
-## <a name="remove-a-maintenance-configuration"></a>Odebrat konfiguraci údržby
+## <a name="remove-a-maintenance-configuration"></a>Odebrání konfigurace údržby
 
-Chcete-li odstranit konfiguraci údržby, použijte [příkaz Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) .
+Pomocí [funkce Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) odstraňte konfiguraci údržby.
 
-```azurecli-interactive
+```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `
    -ResourceGroupName myResourceGroup `
    -Name $config.Name
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v tématu [Údržba a aktualizace](maintenance-and-updates.md).
+Další informace najdete v [tématu Údržba a aktualizace](maintenance-and-updates.md).

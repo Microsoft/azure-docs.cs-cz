@@ -1,6 +1,6 @@
 ---
-title: Chyba RequestBodyTooLarge z aplikace Apache Spark App – Azure HDInsight
-description: NativeAzureFileSystem ... RequestBodyTooLarge se zobrazí v protokolu pro aplikaci streamování Apache Spark ve službě Azure HDInsight.
+title: RequestBodyTooLarge chyba z aplikace Apache Spark - Azure HDInsight
+description: NativníAzureFileSystem ... RequestBodyTooLarge se zobrazí v protokolu pro streamovací aplikaci Apache Spark v Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,44 +8,44 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894405"
 ---
-# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge "se zobrazuje v protokolu aplikací streamování aplikace Apache Spark v HDInsight
+# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativníAzureFileSystem... RequestBodyTooLarge" se objeví v apache spark streaming app log v HDInsight
 
-Tento článek popisuje postup řešení potíží a možná řešení potíží při používání komponent Apache Spark v clusterech Azure HDInsight.
+Tento článek popisuje kroky řešení potíží a možná řešení problémů při používání komponent Apache Spark v clusterech Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Chyba: `NativeAzureFileSystem ... RequestBodyTooLarge` se zobrazí v protokolu ovladače aplikace streamování Apache Spark.
+Chyba: `NativeAzureFileSystem ... RequestBodyTooLarge` Zobrazí se v protokolu ovladačů pro streamovací aplikaci Apache Spark.
 
 ## <a name="cause"></a>Příčina
 
-Váš soubor protokolu událostí Spark pravděpodobně zasáhne omezení délky souboru pro WASB.
+Soubor protokolu událostí Spark pravděpodobně dosahuje limitu délky souboru pro WASB.
 
-V Spark 2,3 každá aplikace Spark generuje jeden soubor protokolu událostí Spark. Soubor protokolu událostí Spark pro aplikaci pro streamování Sparku se v době, kdy je aplikace spuštěná, dál zvětšuje. V současné době má soubor v WASB limit bloku 50000 a výchozí velikost bloku je 4 MB. Proto je ve výchozí konfiguraci maximální velikost souboru 195 GB. Azure Storage však zvýšila maximální velikost bloku na 100 MB, což efektivně zavedlo omezení jednoho souboru na 4,75 TB. Další informace najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../../storage/blobs/scalability-targets.md).
+Ve Sparku 2.3 každá aplikace Spark generuje jeden soubor protokolu událostí Spark. Soubor protokolu událostí Spark pro streamovací aplikaci Spark se stále zvětšuje, když je aplikace spuštěná. Dnes soubor na WASB má limit bloku 50000 a výchozí velikost bloku je 4 MB. Takže ve výchozí konfiguraci je maximální velikost souboru 195 GB. Azure Storage však zvýšil maximální velikost bloku na 100 MB, což efektivně přineslo limit jednoho souboru na 4,75 TB. Další informace najdete v tématu [Škálovatelnost a cíle výkonu pro úložiště objektů Blob](../../storage/blobs/scalability-targets.md).
 
-## <a name="resolution"></a>Rozlišení
+## <a name="resolution"></a>Řešení
 
-K dispozici jsou tři řešení pro tuto chybu:
+Pro tuto chybu jsou k dispozici tři řešení:
 
-* Zvětšete velikost bloku na až 100 MB. V uživatelském rozhraní Ambari upravte konfigurační vlastnost HDFS `fs.azure.write.request.size` (nebo ji vytvořte v `Custom core-site` části). Nastavte vlastnost na větší hodnotu, například: 33554432. Uložte aktualizovanou konfiguraci a restartujte příslušné součásti.
+* Zvětšete velikost bloku až na 100 MB. V uzdu Ambari upravte `fs.azure.write.request.size` vlastnost konfigurace `Custom core-site` HDFS (nebo ji vytvořte v sekci). Nastavte vlastnost na větší hodnotu, například: 33554432. Uložte aktualizovanou konfiguraci a restartujte ohrožené součásti.
 
-* Pravidelně zastavte a znovu odešlete úlohu Spark-streamování.
+* Pravidelně zastavte a znovu odešlete úlohu streamování jiskry.
 
-* Pomocí HDFS můžete ukládat protokoly událostí Spark. Použití HDFS pro úložiště může způsobit ztrátu dat událostí Spark během škálování clusteru nebo upgrady Azure.
+* Pomocí HDFS uložte protokoly událostí Spark. Použití HDFS pro úložiště může mít za následek ztrátu dat událostí Spark během škálování clusteru nebo upgradů Azure.
 
-    1. Provádění změn `spark.eventlog.dir` a `spark.history.fs.logDirectory` prostřednictvím uživatelského rozhraní Ambari:
+    1. Proveďte `spark.eventlog.dir` změny `spark.history.fs.logDirectory` v a prostřednictvím ui Ambari:
 
         ```
         spark.eventlog.dir = hdfs://mycluster/hdp/spark2-events
         spark.history.fs.logDirectory = "hdfs://mycluster/hdp/spark2-events"
         ```
 
-    1. Vytvořit adresáře na HDFS:
+    1. Vytváření adresářů na HDFS:
 
         ```
         hadoop fs -mkdir -p hdfs://mycluster/hdp/spark2-events
@@ -54,14 +54,14 @@ K dispozici jsou tři řešení pro tuto chybu:
         hadoop fs -chmod -R o+t hdfs://mycluster/hdp/spark2-events
         ```
 
-    1. Všechny ovlivněné služby restartujte přes uživatelské rozhraní Ambari.
+    1. Restartujte všechny ovlivněné služby prostřednictvím ui.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
 
-* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure, který zlepšuje zákaznickou zkušenost tím, že propojuje komunitu Azure se správnými prostředky: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najdete v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

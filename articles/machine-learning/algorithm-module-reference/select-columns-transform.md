@@ -1,7 +1,7 @@
 ---
-title: 'Vybrat sloupce transformace: odkaz na modul'
+title: 'Vybrat transformaci sloupců: Odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí modulu výběr sloupců transformace v Azure Machine Learning vytvořit transformaci, která vybere stejnou podmnožinu sloupců jako v dané datové sadě.
+description: Zjistěte, jak pomocí modulu Vybrat sloupce transformace v Azure Machine Learning vytvořit transformaci, která vybere stejnou podmnožinu sloupců jako v dané datové sady.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,48 +9,48 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: c8d58180b11c12afb256dc888406c7c0d58fb119
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314313"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455906"
 ---
 # <a name="select-columns-transform"></a>Transformace pro výběr sloupců
 
-Tento článek popisuje, jak použít modul pro výběr sloupců transformace v Návrháři Azure Machine Learning. Účelem modulu transformace sloupce Select je zajistit, aby se v operacích navazujícího strojového učení používala předvídatelná a konzistentní sada sloupců.
+Tento článek popisuje, jak používat modul Vyberte sloupce transformace v návrháři Azure Machine Learning (preview). Účelem modulu Select Columns Transform je zajistit, aby se v následných operacích strojového učení používala předvídatelná a konzistentní sada sloupců.
 
-Tento modul je užitečný pro úlohy, jako je například bodování, které vyžadují konkrétní sloupce. Změny v dostupných sloupcích můžou kanál přerušit nebo změnit výsledky.
+Tento modul je užitečný pro úkoly, jako je například vyhodnocování, které vyžadují určité sloupce. Změny v dostupných sloupcích mohou přerušit kanál nebo změnit výsledky.
 
-Pomocí transformace vybrat sloupce můžete vytvořit a uložit sadu sloupců. Pak použijte modul [použít transformaci](apply-transformation.md) k použití těchto výběrů pro nová data.
+Pomocí příkazu Vybrat transformaci sloupců můžete vytvořit a uložit sadu sloupců. Potom použijte [modul Použít transformaci](apply-transformation.md) k použití těchto výběrů na nová data.
 
-## <a name="how-to-use-select-columns-transform"></a>Jak použít transformaci Select Columns
+## <a name="how-to-use-select-columns-transform"></a>Použití transformace vybraných sloupců
 
-V tomto scénáři se předpokládá, že chcete pomocí výběru funkcí vygenerovat dynamickou sadu sloupců, které se použijí pro školení modelu. Chcete-li zajistit, aby výběry sloupců byly pro proces bodování stejné, použijte modul Výběr sloupců transformace k zachycení výběrů sloupců a použijte je jinde v kanálu.
+Tento scénář předpokládá, že chcete použít výběr funkce ke generování dynamické sady sloupců, které budou použity pro trénování modelu. Chcete-li zajistit, aby výběry sloupců byly pro proces vyhodnocování stejné, použijte modul Vybrat transformaci sloupců k zachycení výběru sloupců a jejich použití jinde v kanálu.
 
 1. Přidejte vstupní datovou sadu do kanálu v návrháři.
 
-2. Přidejte instanci [výběru funkcí založenou na filtrech](filter-based-feature-selection.md).
+2. Přidejte instanci [výběru funkcí založených na filtru](filter-based-feature-selection.md).
 
-3. Propojte moduly a nakonfigurujte modul pro výběr funkcí tak, aby automaticky hledal počet nejlepších funkcí ve vstupní datové sadě.
+3. Připojte moduly a nakonfigurujte modul pro výběr funkcí tak, aby automaticky našel řadu nejlepších funkcí ve vstupní datové sadě.
 
-4. Přidejte instanci [výukového modelu](train-model.md) a jako vstup pro školení použijte výstup [výběru funkcí založeného na filtrech](filter-based-feature-selection.md) .
+4. Přidejte instanci [modelu vlaku](train-model.md) a použijte výstup [výběru funkcí založených na filtru](filter-based-feature-selection.md) jako vstup pro školení.
 
     > [!IMPORTANT]
-    > Vzhledem k tomu, že důležitost funkcí je založena na hodnotách ve sloupci, nemůžete předem zjistit, které sloupce mohou být k dispozici pro vstup do [modelu výuky](train-model.md).  
-5. Připojte instanci modulu výběr sloupců transformace. 
+    > Vzhledem k tomu, že důležitost funkce je založena na hodnotách ve sloupci, nemůžete předem vědět, které sloupce mohou být k dispozici pro vstup do [modelu vlaku](train-model.md).  
+5. Připojte instanci modulu Vyberte sloupce transformace. 
 
-    Tento krok vygeneruje výběr sloupce jako transformaci, kterou lze uložit nebo použít pro jiné datové sady. Tento krok zajistí, že sloupce identifikované v výběru funkcí budou uloženy pro jiné moduly pro opakované použití.
+    Tento krok generuje výběr sloupce jako transformaci, kterou lze uložit nebo použít na jiné datové sady. Tento krok zajistí, že sloupce uvedené ve výběru funkcí jsou uloženy pro další moduly k opakovanému použití.
 
-6. Přidejte modul určení [skóre modelu](score-model.md) . 
+6. Přidejte modul [Model skóre.](score-model.md) 
 
-   *Nepřipojujte vstupní datovou sadu.* Místo toho přidejte modul [použít transformaci](apply-transformation.md) a připojte výstup transformace výběru funkce.
+   *Nepřipojujte vstupní datovou sadu.* Místo toho přidejte modul [Použít transformaci](apply-transformation.md) a připojte výstup transformace výběru prvku.
 
    > [!IMPORTANT]
-   > Pro datovou sadu bodování nelze očekávat použití [výběru funkcí založených na filtrech](filter-based-feature-selection.md) a získat stejné výsledky. Vzhledem k tomu, že výběr funkcí je založený na hodnotách, může zvolit jinou sadu sloupců, což by způsobilo selhání operace bodování.
-7. Spuštění kanálu
+   > Nelze očekávat, že použít [filtr na základě funkce výběru](filter-based-feature-selection.md) vyhodnocování datové sady a získat stejné výsledky. Vzhledem k tomu, že výběr funkcí je založen na hodnotách, může zvolit jinou sadu sloupců, což by způsobilo selhání operace vyhodnocování.
+7. Odešlete potrubí.
 
-Tento proces ukládání a následného výběru sloupce zajišťuje, aby bylo pro účely školení a bodování dostupné stejné schéma dat.
+Tento proces ukládání a následnépoužití výběru sloupců zajišťuje, že stejné schéma dat je k dispozici pro školení a vyhodnocování.
 
 
 ## <a name="next-steps"></a>Další kroky

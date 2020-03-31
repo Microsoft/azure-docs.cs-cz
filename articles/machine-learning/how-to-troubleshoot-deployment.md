@@ -1,7 +1,7 @@
 ---
 title: Průvodce řešením problémů s nasazením
 titleSuffix: Azure Machine Learning
-description: Naučte se řešit, řešit a řešit běžné chyby nasazení Docker pomocí služby Azure Kubernetes a Azure Container Instances pomocí Azure Machine Learning.
+description: Zjistěte, jak pomocí Azure Machine Learning vyřešit, vyřešit a řešit běžné chyby nasazení Dockeru pomocí služby Azure Kubernetes Service a Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,47 +12,47 @@ ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399681"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s nasazením služby Azure Machine Learning Azure Kubernetes Service a Azure Container Instances
 
-Naučte se, jak obejít nebo vyřešit běžné chyby nasazení Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
+Zjistěte, jak pomocí Azure Machine Learning vyřešit nebo řešit běžné chyby nasazení Dockeru pomocí instancí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS).
 
-Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh.
+Při nasazování modelu v Azure Machine Learning, systém provádí řadu úkolů.
 
-Doporučený a nejaktuálnější přístup k nasazení modelu je prostřednictvím rozhraní API [modelu. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) pomocí objektu [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako vstupní parametr. V tomto případě naše služba vytvoří základní image Docker za vás během fáze nasazení a všechny požadované modely připojte v jednom volání. Základní úlohy nasazení:
+Doporučený a nejaktuálnější přístup pro nasazení modelu je prostřednictvím [rozhraní API Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) pomocí objektu [Prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako vstupní parametr. V takovém případě naše služba vytvoří základní image dockeru pro vás během fáze nasazení a připojit požadované modely vše v jednom volání. Základní úlohy nasazení jsou:
 
-1. Zaregistrujte model v registru pracovního prostoru modelu.
+1. Zaregistrujte model v registru modelu pracovního prostoru.
 
-2. Definovat odvozenou konfiguraci:
-    1. Vytvořte objekt [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) na základě závislostí, které zadáte v souboru YAML prostředí, nebo použijte jedno z našich pořízených prostředí.
-    2. Vytvořte odvozenou konfiguraci (objekt InferenceConfig) na základě prostředí a hodnoticího skriptu.
+2. Definujte konfiguraci odvození:
+    1. Vytvořte objekt [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) na základě závislostí, které zadáte v souboru yaml prostředí nebo použijte jedno z našich obstarávaných prostředí.
+    2. Vytvořte konfiguraci odvození (objekt InferenceConfig) na základě prostředí a bodovacího skriptu.
 
-3. Nasaďte model do služby Azure Container instance (ACI) nebo do služby Azure Kubernetes Service (AKS).
+3. Nasazení modelu do služby Azure Container Instance (ACI) nebo do služby Azure Kubernetes Service (AKS).
 
-Další informace o tomto procesu najdete v úvodu [Správa modelů](concept-model-management-and-deployment.md) .
+Další informace o tomto procesu naleznete v úvodu [správy modelů.](concept-model-management-and-deployment.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
-* [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
-* Chcete-li ladit místně, je nutné mít v místním systému funkční instalaci Docker.
+* Předplatné **Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree).
+* Azure [Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Rozšíření cli pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* Chcete-li ladit místně, musíte mít pracovní instalaci Dockeru v místním systému.
 
-    K ověření instalace Docker použijte příkaz `docker run hello-world` z terminálu nebo příkazového řádku. Informace o instalaci Docker nebo odstraňování potíží s chybami Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
+    Chcete-li ověřit instalaci dockeru, použijte příkaz `docker run hello-world` z terminálu nebo příkazového řádku. Informace o instalaci Dockeru nebo řešení potíží s chybami Dockeru najdete v tématu [Dokumentace k Dockeru](https://docs.docker.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Pokud narazíte na jakékoli potíže, je prvním krokem je rozdělit úlohu nasazení (viz předchozí) do jednotlivých kroků a izolovat daný problém.
+Pokud narazíte na jakýkoli problém, první věc, kterou musíte udělat, je rozdělit úlohu nasazení (dříve popsané) do jednotlivých kroků k izolování problému.
 
-Za předpokladu, že používáte novou/doporučenou metodu nasazení prostřednictvím rozhraní API [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) s objektem [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako vstupní parametr, váš kód může být rozdělen na tři hlavní kroky:
+Za předpokladu, že používáte novou/doporučenou metodu nasazení prostřednictvím rozhraní [API Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) s objektem [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako vstupním parametrem, může být váš kód rozdělen do tří hlavních kroků:
 
-1. Zaregistrujte model. Zde je ukázkový kód:
+1. Zaregistrujte model. Zde je několik ukázkový kód:
 
     ```python
     from azureml.core.model import Model
@@ -65,7 +65,7 @@ Za předpokladu, že používáte novou/doporučenou metodu nasazení prostředn
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Definovat odvozenou konfiguraci pro nasazení:
+2. Definujte konfiguraci odvození pro nasazení:
 
     ```python
     from azureml.core.model import InferenceConfig
@@ -77,7 +77,7 @@ Za předpokladu, že používáte novou/doporučenou metodu nasazení prostředn
     inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. Nasaďte model pomocí konfigurace odvození vytvořeného v předchozím kroku:
+3. Nasazení modelu pomocí konfigurace odvození vytvořené v předchozím kroku:
 
     ```python
     from azureml.core.webservice import AciWebservice
@@ -93,16 +93,16 @@ Za předpokladu, že používáte novou/doporučenou metodu nasazení prostředn
     aci_service.wait_for_deployment(show_output=True)
     ```
 
-Jakmile máte rozdělené procesu nasazení do jednotlivých kroků, abychom se mohli podívat na některé z nejběžnějších chyb.
+Jakmile rozdělíte proces nasazení na jednotlivé úkoly, můžeme se podívat na některé z nejběžnějších chyb.
 
-## <a name="debug-locally"></a>Místní ladění
+## <a name="debug-locally"></a>Ladění místně
 
-Pokud narazíte na problémy s nasazením modelu do ACI nebo AKS, zkuste ho nasadit jako místní webovou službu. Použití místní webové služby usnadňuje řešení problémů. Image Docker obsahující model se stáhne a spustí v místním systému.
+Pokud narazíte na problémy s nasazením modelu do ACI nebo AKS, zkuste jej nasadit jako místní webovou službu. Použití místní webové služby usnadňuje řešení problémů. Image Dockerobsahující model je stažena a spuštěna v místním systému.
 
 > [!WARNING]
-> Nasazení místních webových služeb se v produkčních scénářích nepodporují.
+> Nasazení místních webových služeb nejsou podporovány pro produkční scénáře.
 
-Chcete-li nasadit místně, upravte kód tak, aby používal `LocalWebservice.deploy_configuration()` k vytvoření konfigurace nasazení. Pak použijte `Model.deploy()` k nasazení služby. Následující příklad nasadí model (obsažený v proměnné modelu) jako místní webovou službu:
+Chcete-li nasadit místně, `LocalWebservice.deploy_configuration()` upravte kód, který chcete použít k vytvoření konfigurace nasazení. Potom `Model.deploy()` použijte k nasazení služby. Následující příklad nasazuje model (obsažený v proměnné modelu) jako místní webovou službu:
 
 ```python
 from azureml.core.environment import Environment
@@ -124,9 +124,9 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-Počítejte s tím, že pokud definujete vlastní conda specifikace YAML, je nutné vytvořit seznam AzureML-Defaults s verzí > = 1.0.45 jako závislost PIP. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby.
+Vezměte prosím na vědomí, že pokud definujete vlastní conda specifikace YAML, musíte uvést azureml-defaults s verzí >= 1.0.45 jako pip závislost. Tento balíček obsahuje funkce potřebné k hostování modelu jako webové služby.
 
-V tuto chvíli můžete pracovat se službou jako normální. Například následující kód ukazuje odeslání dat do služby:
+V tomto okamžiku můžete pracovat se službou jako obvykle. Například následující kód ukazuje odesílání dat do služby:
 
 ```python
 import json
@@ -142,14 +142,14 @@ prediction = service.run(input_data=test_sample)
 print(prediction)
 ```
 
-Další informace o přizpůsobení prostředí Pythonu najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md). 
+Další informace o přizpůsobení prostředí Pythonu najdete v [tématu Vytváření a správa prostředí pro školení a nasazení](how-to-use-environments.md). 
 
 ### <a name="update-the-service"></a>Aktualizace služby
 
-Během místního testování možná budete muset aktualizovat soubor `score.py`, aby se přidalo protokolování, nebo se pokusí vyřešit všechny problémy, které jste zjistili. Chcete-li znovu načíst změny v souboru `score.py`, použijte `reload()`. Například následující kód znovu načte skript pro službu a poté do něj pošle data. Data se vyhodnotí pomocí aktualizovaného `score.py` souboru:
+Během místního testování může být `score.py` nutné aktualizovat soubor, chcete-li přidat protokolování nebo se pokusit vyřešit všechny zjištěné problémy. Chcete-li znovu `score.py` načíst `reload()`změny souboru, použijte . Například následující kód znovu načte skript pro službu a odešle data do něj. Data jsou hodnocena pomocí `score.py` aktualizovaného souboru:
 
 > [!IMPORTANT]
-> Metoda `reload` je k dispozici pouze pro místní nasazení. Informace o aktualizaci nasazení na jiný cíl služby COMPUTE najdete v části aktualizace v tématu [nasazení modelů](how-to-deploy-and-where.md#update).
+> Metoda `reload` je k dispozici pouze pro místní nasazení. Informace o aktualizaci nasazení na jiný výpočetní cíl najdete v části aktualizace [nasazení modelů](how-to-deploy-and-where.md#update).
 
 ```python
 service.reload()
@@ -157,9 +157,9 @@ print(service.run(input_data=test_sample))
 ```
 
 > [!NOTE]
-> Skript se znovu načte z umístění určeného objektem `InferenceConfig`, který služba používá.
+> Skript je znovu načten z umístění `InferenceConfig` určeného objektem používaným službou.
 
-Chcete-li změnit model, závislosti conda nebo konfiguraci nasazení, použijte [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-). Následující příklad aktualizuje model používaný službou:
+Chcete-li změnit model, conda závislosti nebo konfigurace nasazení, použijte [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-). Následující příklad aktualizuje model používaný službou:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -167,11 +167,11 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>Odstranit službu
 
-Pokud chcete službu odstranit, použijte [Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--).
+Chcete-li službu odstranit, použijte [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--).
 
-### <a id="dockerlog"></a>Kontrola protokolu Docker
+### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a>Kontrola protokolu Dockeru
 
-Můžete vytisknout podrobné zprávy protokolu modulu Dockeru z objektu služby. Můžete zobrazit protokol pro ACI, AKS a místní nasazení. Následující příklad ukazuje, jak tisknout protokoly.
+Můžete vytisknout podrobné zprávy protokolu modulu Docker z objektu služby. Můžete zobrazit protokol pro nasazení ACI, AKS a Místní. Následující příklad ukazuje, jak vytisknout protokoly.
 
 ```python
 # if you already have the service object handy
@@ -181,15 +181,15 @@ print(service.get_logs())
 print(ws.webservices['mysvc'].get_logs())
 ```
 
-## <a name="service-launch-fails"></a>Selhání spuštění služby
+## <a name="service-launch-fails"></a>Spuštění služby se nezdaří.
 
-Po úspěšném vytvoření image se systém pokusí spustit kontejner pomocí konfigurace nasazení. V rámci procesu spuštění kontejneru je funkce `init()` ve vašem skriptu bodování vyvolána systémem. Pokud se ve funkci `init()` nezachycené výjimky, může se v chybové zprávě zobrazit chyba **CrashLoopBackOff** .
+Po úspěšném vytvoření bitové kopie se systém pokusí spustit kontejner pomocí konfigurace nasazení. Jako součást procesu spuštění kontejneru funkce ve skriptu `init()` bodování je vyvolána systémem. Pokud jsou nezachycené výjimky ve `init()` funkci, může se zobrazit **CrashLoopBackOff** chyba v chybové zprávě.
 
-Použijte informace v části Kontrola [protokolu Docker](#dockerlog) pro kontrolu protokolů.
+Pomocí informací v části [Kontrola protokolu Dockeru](#dockerlog) zkontrolujte protokoly.
 
-## <a name="function-fails-get_model_path"></a>Selže funkce: get_model_path()
+## <a name="function-fails-get_model_path"></a>Funkce se nezdaří: get_model_path()
 
-Často je ve funkci `init()` ve skriptu bodování volána funkce [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) pro vyhledání souboru modelu nebo složky souborů modelu v kontejneru. Pokud soubor modelu nebo složku nelze nalézt, funkce se nezdařila. Nejjednodušší způsob, jak ladění této chyby je spustit níže uvedeného kódu Pythonu v prostředí kontejneru:
+Funkce `init()` [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) je často volána ve funkci ve skriptu hodnocení, která vyhledává soubor modelu nebo složku souborů modelu v kontejneru. Pokud soubor modelu nebo složku nelze najít, funkce se nezdaří. Nejjednodušší způsob, jak ladit tuto chybu, je spustit níže uvedený kód Pythonu v prostředí Container:
 
 ```python
 from azureml.core.model import Model
@@ -198,13 +198,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Tento příklad vytiskne místní cestu (vzhledem k `/var/azureml-app`) v kontejneru, ve kterém váš skript bodování očekává nalezení souboru modelu nebo složky. Potom můžete ověřit, pokud soubor nebo složka jsou skutečně kde se očekává se.
+Tento příklad vytiskne místní `/var/azureml-app`cestu (vzhledem k ) v kontejneru, kde je bodovací skript očekává, že najít soubor modelu nebo složku. Pak můžete ověřit, zda je soubor nebo složka skutečně tam, kde se očekává.
 
-Nastavení úrovně protokolování na ladění může způsobit, že budou protokolovány Další informace, které mohou být užitečné při identifikaci selhání.
+Nastavení úrovně protokolování na debug může způsobit další informace, které mají být zaznamenány, což může být užitečné při identifikaci selhání.
 
-## <a name="function-fails-runinput_data"></a>Selže funkce: run(input_data)
+## <a name="function-fails-runinput_data"></a>Funkce se nezdaří: run(input_data)
 
-Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce `run(input_data)` přidat příkaz pro zachycení chyb, aby se místo toho vrátila podrobná chybová zpráva. Příklad:
+Pokud je služba úspěšně nasazena, ale dojde k chybě při zaúčtování dat do koncového `run(input_data)` bodu vyhodnocování, můžete přidat příkaz zachycení chyby ve vaší funkci tak, aby místo toho vrátí podrobnou chybovou zprávu. Například:
 
 ```python
 def run(input_data):
@@ -219,30 +219,30 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Poznámka**: vrácení chybových zpráv z `run(input_data)` volání by mělo být provedeno pouze pro účely ladění. Z bezpečnostních důvodů byste neměli vracet chybové zprávy tímto způsobem v produkčním prostředí.
+**Poznámka:** Vrácení chybových `run(input_data)` zpráv z volání by mělo být provedeno pouze pro účely ladění. Z bezpečnostních důvodů byste neměli vracet chybové zprávy tímto způsobem v provozním prostředí.
 
 ## <a name="http-status-code-502"></a>Stavový kód HTTP 502
 
-Stavový kód 502 označuje, že služba vyvolala výjimku nebo došlo k chybě v metodě `run()` souboru score.py. K ladění souboru použijte informace v tomto článku.
+Stavový kód 502 označuje, že služba vyvolala výjimku nebo došlo k `run()` chybě v metodě score.py souboru. Informace v tomto článku slouží k ladění souboru.
 
 ## <a name="http-status-code-503"></a>Stavový kód HTTP 503
 
-Nasazení služby Azure Kubernetes podporují automatické škálování, které umožňuje přidat repliky pro podporu dalšího zatížení. Automatické škálování je však navrženo pro zpracování **postupných** změn v zatížení. Pokud v požadavcích za sekundu obdržíte velké špičky, mohou klienti obdržet stavový kód HTTP 503.
+Nasazení služby Azure Kubernetes podporují automatické škálování, které umožňuje přidat repliky pro podporu dalšího zatížení. Autoscaler je však navržen tak, aby **zvládal postupné** změny zatížení. Pokud obdržíte velké špičky v požadavcích za sekundu, klienti mohou obdržet stavový kód HTTP 503.
 
-K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 503:
+Existují dvě věci, které mohou pomoci zabránit 503 stavové kódy:
 
-* Změňte úroveň využití, při které automatické škálování vytvoří nové repliky.
+* Změňte úroveň využití, při které automatické škálování vytváří nové repliky.
     
-    Ve výchozím nastavení je cílení na automatické škálování nastaveno na 70%, což znamená, že služba dokáže zpracovávat špičky v požadavcích za sekundu (RPS) až o 30%. Cíl využití můžete upravit nastavením `autoscale_target_utilization` na nižší hodnotu.
+    Ve výchozím nastavení je využití cíle automatického škálování nastaveno na 70 %, což znamená, že služba dokáže zpracovat špičky v požadavcích za sekundu (RPS) až o 30 %. Cíl využití můžete upravit nastavením `autoscale_target_utilization` na nižší hodnotu.
 
     > [!IMPORTANT]
-    > Tato změna nezpůsobí *rychlejší*vytváření replik. Místo toho jsou vytvořeny s nižší prahovou hodnotou využití. Místo čekání na vyčerpání služby 70% se změna hodnoty na 30% způsobí, že se repliky vytvoří, když dojde k 30% využití.
+    > Tato změna nezpůsobí, že repliky budou vytvořeny *rychleji*. Místo toho jsou vytvořeny s nižší prahovou hodnotou využití. Namísto čekání na službu 70 % využita, změna hodnoty na 30 % způsobí, že repliky budou vytvořeny, když dojde k využití 30 %.
     
-    Pokud už webová služba používá aktuální maximální počet replik a stále se zobrazuje stavové kódy 503, zvyšte hodnotu `autoscale_max_replicas`, abyste zvýšili maximální počet replik.
+    Pokud webová služba již používá aktuální maximální repliky a stále se zobrazují `autoscale_max_replicas` stavové kódy 503, zvyšte hodnotu a zvyšte maximální počet replik.
 
-* Změňte minimální počet replik. Zvýšení minimálního počet replik poskytuje větší fond pro zpracování příchozích špiček.
+* Změňte minimální počet replik. Zvýšení minimální repliky poskytuje větší fond pro zpracování příchozí špičky.
 
-    Pokud chcete zvýšit minimální počet replik, nastavte `autoscale_min_replicas` na vyšší hodnotu. Požadované repliky můžete vypočítat pomocí následujícího kódu a nahradit hodnoty hodnotami specifickými pro váš projekt:
+    Chcete-li zvýšit minimální počet `autoscale_min_replicas` replik, nastavte na vyšší hodnotu. Požadované repliky můžete vypočítat pomocí následujícího kódu, který nahradí hodnoty hodnotami specifickými pro váš projekt:
 
     ```python
     from math import ceil
@@ -262,40 +262,40 @@ K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 5
     ```
 
     > [!NOTE]
-    > Pokud obdržíte špičky žádostí větší, než jsou nové minimální repliky schopné zpracovat, můžete se 503s znovu dostat. Například při zvyšování provozu na službu možná budete muset zvětšit minimální repliky.
+    > Pokud obdržíte špičky požadavku větší než nové minimální repliky může zpracovat, můžete obdržet 503s znovu. Například jako provoz na službu zvyšuje, může být nutné zvýšit minimální repliky.
 
-Další informace o nastavení `autoscale_target_utilization`, `autoscale_max_replicas`a `autoscale_min_replicas` pro najdete v tématu Reference k modulu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
+Další informace o `autoscale_target_utilization` `autoscale_max_replicas`nastavení `autoscale_min_replicas` , a pro naleznete v odkazu na modul [AksWebservice.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py)
 
 ## <a name="http-status-code-504"></a>Stavový kód HTTP 504
 
-Stavový kód 504 označuje, že vypršel časový limit žádosti. Výchozí časový limit je 1 minuta.
+Stavový kód 504 označuje, že časový čas požadavku byl vybit. Výchozí časový limit je 1 minuta.
 
-Časový limit můžete zvýšit nebo se pokusit o urychlení služby úpravou score.py pro odebrání nepotřebných volání. Pokud tyto akce problém nevyřeší, použijte informace v tomto článku k ladění souboru score.py. Kód může být ve stavu neodpovídá nebo nekonečné smyčce.
+Můžete zvýšit časový čas nebo se pokusit urychlit službu úpravou score.py odebrat nepotřebná volání. Pokud tyto akce problém nevyřeší, použijte informace v tomto článku k ladění score.py souboru. Kód může být v stavu hung nebo nekonečné smyčky.
 
 ## <a name="advanced-debugging"></a>Pokročilé ladění
 
-V některých případech možná budete muset interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí Visual Studio Code a Python Tools for Visual Studio (PTVSD) se můžete připojit ke kódu běžícímu uvnitř kontejneru Docker.
+V některých případech může být nutné interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud vstupní skript selhává a důvod nelze určit dalším protokolováním. Pomocí kódu Sady Visual Studio a nástrojů Pythonu pro Visual Studio (PTVSD) můžete připojit ke kódu spuštěnému uvnitř kontejneru Dockeru.
 
 > [!IMPORTANT]
-> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí metody [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
+> Tato metoda ladění nefunguje při použití `Model.deploy()` `LocalWebservice.deploy_configuration` a nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí [Metody Model.package().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)
 
-Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovacího prostředí v místním systému. Další informace o používání Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
+Nasazení místních webových služeb vyžadují funkční instalaci Dockeru v místním systému. Další informace o používání Dockeru najdete v [dokumentaci Dockeru](https://docs.docker.com/).
 
 ### <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 
-1. Chcete-li nainstalovat Python Tools for Visual Studio (PTVSD) do místního vývojového prostředí VS Code, použijte následující příkaz:
+1. Chcete-li nainstalovat nástroje Pythonu pro Visual Studio (PTVSD) do místního vývojového prostředí VS Code, použijte následující příkaz:
 
     ```
     python -m pip install --upgrade ptvsd
     ```
 
-    Další informace o použití PTVSD s VS Code najdete v tématu [vzdálené ladění](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
+    Další informace o používání ptvsd s kódem VS naleznete [v tématu Vzdálené ladění](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
 
-1. Pokud chcete nakonfigurovat VS Code ke komunikaci s imagí Docker, vytvořte novou konfiguraci ladění:
+1. Chcete-li nakonfigurovat kód VS pro komunikaci s bitovou stránkou Dockeru, vytvořte novou konfiguraci ladění:
 
-    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Otevře se soubor s názvem __Launch. JSON__ .
+    1. V nabídce VS Code vyberte nabídku __Ladění__ a pak __vyberte Otevřít konfigurace__. Otevře se soubor s názvem __launch.json.__
 
-    1. V souboru __Launch. JSON__ Najděte řádek, který obsahuje `"configurations": [`a vložte následující text za něj:
+    1. V souboru __launch.json__ vyhledejte `"configurations": [`řádek, který obsahuje , a za dejte za něj následující text:
 
         ```json
         {
@@ -314,15 +314,15 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
         ```
 
         > [!IMPORTANT]
-        > Pokud již existují další položky v oddílu konfigurace, přidejte čárku (,) za kód, který jste vložili.
+        > Pokud již existují další položky v části konfigurace, přidejte čárku (,) za kód, který jste vložili.
 
-        Tato část se připojuje k kontejneru Docker pomocí portu 5678.
+        Tato část se připojuje ke kontejneru Dockerpomocí portu 5678.
 
-    1. Uložte soubor __Launch. JSON__ .
+    1. Uložte soubor __launch.json.__
 
-### <a name="create-an-image-that-includes-ptvsd"></a>Vytvoření image, která zahrnuje PTVSD
+### <a name="create-an-image-that-includes-ptvsd"></a>Vytvoření obrázku, který obsahuje PTVSD
 
-1. Upravte prostředí conda pro nasazení tak, aby zahrnovalo PTVSD. Následující příklad ukazuje přidání pomocí parametru `pip_packages`:
+1. Upravte prostředí conda pro vaše nasazení tak, aby zahrnovala PTVSD. Následující příklad ukazuje přidání pomocí `pip_packages` parametru:
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
@@ -338,7 +338,7 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
         f.write(myenv.serialize_to_string())
     ```
 
-1. Pokud chcete začít PTVSD a po spuštění služby počkat na připojení, přidejte do horní části souboru `score.py` následující:
+1. Chcete-li spustit bod PTVSD a čekat na připojení při spuštění `score.py` služby, přidejte do horní části souboru následující:
 
     ```python
     import ptvsd
@@ -349,10 +349,10 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
     print("Debugger attached...")
     ```
 
-1. Vytvořte bitovou kopii založenou na definici prostředí a přetáhnout image do místního registru. Během ladění možná budete chtít provést změny v souborech v imagi, aniž byste je museli znovu vytvářet. Chcete-li nainstalovat textový editor (vim) v imagi Docker, použijte vlastnosti `Environment.docker.base_image` a `Environment.docker.base_dockerfile`:
+1. Vytvořte bitovou kopii na základě definice prostředí a nakreslete bitovou kopii do místního registru. Během ladění můžete chtít provést změny souborů v obraze, aniž byste je museli znovu vytvořit. Chcete-li nainstalovat textový editor (vim) v `Environment.docker.base_image` `Environment.docker.base_dockerfile` bitové kopii Dockeru, použijte vlastnosti a:
 
     > [!NOTE]
-    > V tomto příkladu se předpokládá, že `ws` odkazuje na pracovní prostor Azure Machine Learning a že `model` je model nasazený. `myenv.yml` soubor obsahuje závislosti conda vytvořené v kroku 1.
+    > Tento příklad předpokládá, že `ws` odkazuje na pracovní prostor `model` Azure Machine Learning a to je model, který se nasazuje. Soubor `myenv.yml` obsahuje conda závislosti vytvořené v kroku 1.
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies
@@ -369,76 +369,76 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
     package.pull()
     ```
 
-    Po vytvoření a stažení Image se zobrazí cesta k imagi (včetně úložiště, názvu a značky, která v tomto případě je také její výtah), a to podobně jako v následující zprávě:
+    Jakmile je obrázek vytvořen a stažen, cesta k obrázku (obsahuje úložiště, název a značku, která je v tomto případě také jeho digest) se zobrazí ve zprávě podobné následující:
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. Pro usnadnění práce s imagí použijte následující příkaz a přidejte značku. Nahraďte `myimagepath` hodnotou umístění z předchozího kroku.
+1. Chcete-li usnadnit práci s obrazem, přidejte značku pomocí následujícího příkazu. Nahraďte `myimagepath` hodnotou umístění z předchozího kroku.
 
     ```bash
     docker tag myimagepath debug:1
     ```
 
-    V případě zbývajících kroků můžete jako `debug:1` použít místní obrázek místo hodnoty úplná cesta k imagi.
+    Pro zbývající kroky můžete odkazovat na místní `debug:1` obrázek jako namísto úplné hodnoty cesty obrázku.
 
 ### <a name="debug-the-service"></a>Ladění služby
 
 > [!TIP]
-> Pokud nastavíte časový limit pro připojení PTVSD v souboru `score.py`, je nutné připojit VS Code k ladicí relaci před vypršením časového limitu. Spusťte VS Code, otevřete místní kopii `score.py`, nastavte zarážku a připravte ji, abyste mohli použít kroky v této části.
+> Pokud nastavíte časový limit pro připojení PTVSD v souboru, `score.py` je nutné připojit Kód VS k relaci ladění před vypršením časového limitu. Spusťte Kód VS, `score.py`otevřete místní kopii aplikace , nastavte zarážku a připravte ji před použitím kroků v této části.
 >
-> Další informace o ladění a nastavení zarážek naleznete v tématu [ladění](https://code.visualstudio.com/Docs/editor/debugging).
+> Další informace o ladění a nastavení zarážek naleznete v [tématu Ladění](https://code.visualstudio.com/Docs/editor/debugging).
 
-1. Pokud chcete spustit kontejner Docker pomocí Image, použijte následující příkaz:
+1. Chcete-li spustit kontejner Dockeru pomocí bitové kopie, použijte následující příkaz:
 
     ```bash
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Pokud chcete připojit VS Code k PTVSD uvnitř kontejneru, otevřete VS Code a použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __Azure Machine Learning: konfigurace ladění Docker__ . Můžete také vybrat ikonu ladění z bočního panelu, __Azure Machine Learning: položku ladění Docker__ z rozevírací nabídky ladění a potom použít zelenou šipku pro připojení ladicího programu.
+1. Chcete-li připojit kód VS k identifikátoru PTVSD uvnitř kontejneru, otevřete kód VS a použijte klávesu F5 nebo vyberte __možnost Ladění__. Po zobrazení výzvy vyberte konfiguraci __Azure Machine Learning: Docker Debug.__ Můžete také vybrat ikonu ladění z postranního panelu, __Azure Machine Learning: Docker Ladění__ položky z nabídky ladění a pak použijte zelenou šipku připojit ladicí program.
 
-    ![Ikona ladění, tlačítko Spustit ladění a selektor konfigurace](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    ![Ikona ladění, tlačítko spuštění ladění a volič konfigurace](./media/how-to-troubleshoot-deployment/start-debugging.png)
 
-V tomto okamžiku se VS Code připojí k PTVSD uvnitř kontejneru Docker a zastaví se na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
+V tomto okamžiku vs kód připojí k PTVSD uvnitř kontejneru Dockeru a zastaví na zarážky, kterou jste nastavili dříve. Nyní můžete krokovat kód při jeho spuštění, zobrazit proměnné atd.
 
-Další informace o použití VS Code k ladění Pythonu najdete v tématu [ladění kódu Pythonu](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
+Další informace o použití kódu VS k ladění Pythonu najdete v [tématu Ladění kódu Pythonu](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
 
 <a id="editfiles"></a>
-### <a name="modify-the-container-files"></a>Úprava souborů kontejneru
+### <a name="modify-the-container-files"></a>Úprava souborů kontejnerů
 
-Chcete-li provést změny v souborech v imagi, můžete se připojit ke spuštěnému kontejneru a spustit prostředí bash. Odtud můžete použít systémem VIM k úpravě souborů:
+Chcete-li provést změny souborů v bitové kopii, můžete připojit ke spuštěnému kontejneru a spustit prostředí bash. Odtud můžete použít vim k úpravám souborů:
 
-1. Pokud se chcete připojit ke spuštěnému kontejneru a spustit prostředí bash v kontejneru, použijte následující příkaz:
+1. Chcete-li se připojit ke spuštěnému kontejneru a spustit prostředí bash v kontejneru, použijte následující příkaz:
 
     ```bash
     docker exec -it debug /bin/bash
     ```
 
-1. Pokud chcete najít soubory používané službou, použijte následující příkaz z prostředí bash v kontejneru, pokud se výchozí adresář liší od `/var/azureml-app`:
+1. Chcete-li najít soubory používané službou, použijte následující příkaz z prostředí bash v `/var/azureml-app`kontejneru, pokud se výchozí adresář liší od :
 
     ```bash
     cd /var/azureml-app
     ```
 
-    Odsud můžete soubor `score.py` upravit pomocí služby Vim. Další informace o používání systému vim najdete v tématu [použití Editoru systému vim](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
+    Zde můžete soubor upravit `score.py` pomocí vimu. Další informace o používání vimu najdete [v tématu Použití editoru Vim](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
 
-1. Změny v kontejneru nejsou obvykle trvalé. Pokud chcete uložit provedené změny, použijte následující příkaz před ukončením prostředí spuštěného v předchozím kroku (tj. v jiném prostředí):
+1. Změny kontejneru nejsou obvykle trvalé. Chcete-li uložit provedené změny, použijte následující příkaz, než ukončíte prostředí spuštěné v kroku výše (to znamená v jiném prostředí):
 
     ```bash
     docker commit debug debug:2
     ```
 
-    Tento příkaz vytvoří nový obrázek s názvem `debug:2`, který obsahuje vaše úpravy.
+    Tento příkaz vytvoří nový `debug:2` obrázek s názvem, který obsahuje vaše úpravy.
 
     > [!TIP]
     > Budete muset zastavit aktuální kontejner a začít používat novou verzi, než se změny projeví.
 
-1. Zajistěte, aby byly změny provedené v souborech v kontejneru synchronizovány s místními soubory, které VS Code používá. V opačném případě nebude prostředí ladicího programu fungovat podle očekávání.
+1. Ujistěte se, že změny provedené v souborech v kontejneru synchronizujete s místními soubory, které používá VS Code. V opačném případě nebude prostředí ladicího programu fungovat podle očekávání.
 
 ### <a name="stop-the-container"></a>Zastavení kontejneru
 
-Chcete-li zastavit kontejner, použijte následující příkaz:
+Chcete-li kontejner zastavit, použijte následující příkaz:
 
 ```bash
 docker stop debug
@@ -449,4 +449,4 @@ docker stop debug
 Další informace o nasazení:
 
 * [Jak nasadit a kde](how-to-deploy-and-where.md)
-* [Kurz: výuka & nasazení modelů](tutorial-train-models-with-aml.md)
+* [Kurz: Školení & nasazovat modely](tutorial-train-models-with-aml.md)

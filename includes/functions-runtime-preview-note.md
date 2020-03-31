@@ -8,11 +8,11 @@ ms.date: 4/10/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 8f5793a132684ab71405278a2866bce7a72968fa
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279520"
 ---
 > [!IMPORTANT]
-> Modul runtime služby Azure Functions Preview 2 podporuje pouze verzi 1. x Azure Functions runtime. Tato funkce verze Preview není aktualizována na podporu verze 2. x a vyšší z modulu runtime a nejsou plánovány žádné budoucí aktualizace. Pokud potřebujete hostovat modul runtime Azure Functions mimo Azure, zvažte [použití Azure Functions v Kubernetes s keda](../articles/azure-functions/functions-kubernetes-keda.md)
+> Azure Functions Runtime preview 2 podporuje jenom verzi 1.x runtime Funkce Azure. Tato funkce náhledu není aktualizována tak, aby podporovala verzi 2.x a vyšší z běhu a nejsou plánovány žádné budoucí aktualizace. Pokud potřebujete hostovat runtime Azure Functions mimo Azure, zvažte [použití funkcí Azure na Kubernetes s KEDA](../articles/azure-functions/functions-kubernetes-keda.md)

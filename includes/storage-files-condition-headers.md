@@ -9,24 +9,24 @@ ms.date: 09/04/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 4604616cd4f2d6c75c272586df1331fc405061cb
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70737487"
 ---
-## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>Chyba ConditionHeadersNotSupported z webové aplikace pomocí služby soubory Azure z prohlížeče
+## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>Chyba VheadersNotPodporováno z webové aplikace pomocí souborů Azure z prohlížeče
 
-K chybě ConditionHeadersNotSupported dojde při přístupu k obsahu hostovanému v souborech Azure pomocí aplikace, která využívá podmíněná záhlaví, jako je webový prohlížeč, ale přístup se nezdařil. Chyba uvádí, že hlavičky podmínek nejsou podporovány.
+Chyba ConditionHeadersNotSupported nastane při přístupu k obsahu hostovanému v souborech Azure prostřednictvím aplikace, která využívá podmíněné hlavičky, jako je například webový prohlížeč, přístup se nezdaří. Chyba uvádí, že záhlaví podmínky nejsou podporovány.
 
-![Chyba podmíněných hlaviček souborů Azure](media/storage-files-condition-headers/conditionalerror.png)
+![Chyba podmíněných záhlaví Azure Files](media/storage-files-condition-headers/conditionalerror.png)
 
 ### <a name="cause"></a>Příčina
 
-Podmíněné hlavičky ještě nejsou podporované. Aplikace, které je implementují, budou muset požádat o úplný soubor pokaždé, když se k souboru dostanete.
+Podmíněná záhlaví ještě nejsou podporována. Aplikace, které je implementují, budou muset požádat o úplný soubor při každém přístupu k souboru.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-Když se nahraje nový soubor, ve výchozím nastavení vlastnost Control cache je "no-cache". Chcete-li vynutit, aby aplikace vyžadovala soubor pokaždé, je nutné aktualizovat vlastnost řízení mezipaměti souboru z "no-cache" na "no-cache" No-Store ", musí-revalidate". Toho lze dosáhnout pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
+Při nahrání nového souboru je vlastnost řízení mezipaměti ve výchozím nastavení "bez mezipaměti". Chcete-li vynutit aplikaci požadovat soubor pokaždé, je třeba aktualizovat vlastnost správce mezipaměti souboru z "no-cache" na "no-cache, no-store, must-validate". Toho lze dosáhnout pomocí [Průzkumníka úložiště Azure](https://azure.microsoft.com/features/storage-explorer/).
 
-![Úprava mezipaměti obsahu Průzkumníka služby Storage pro podmíněná záhlaví souborů Azure](media/storage-files-condition-headers/storage-explorer-cache.png)
+![Úprava mezipaměti mezipaměti průzkumníka úložiště pro podmíněné hlavičky Souborů Azure](media/storage-files-condition-headers/storage-explorer-cache.png)

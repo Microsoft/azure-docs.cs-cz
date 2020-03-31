@@ -1,61 +1,61 @@
 ---
-title: Rozšířená ochrana před internetovými útoky – Azure Portal-Azure Database for MariaDB
-description: Ochrana před hrozbami detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze.
+title: Pokročilá ochrana před hrozbami – portál Azure – databáze Azure pro MariaDB
+description: Ochrana před hrozbami detekuje neobvyklé databázové aktivity označující potenciální ohrožení zabezpečení databáze.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 1d6eafd38d418066ddf5933139bd4caf6e69ddea
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: de056f61337311642589ba937c6d9842d8354d36
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766969"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530134"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
+# <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Pokročilá ochrana před hrozbami pro databázi Azure pro MariaDB
 
-Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
+Pokročilá ochrana před internetovými hrozbami pro Azure Database for MariaDB detekuje neobvyklé aktivity označující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Rozšířená ochrana před internetovými útoky je součástí rozšířené nabídky zabezpečení dat, což je jednotný balíček pro pokročilé funkce zabezpečení. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím [Azure Portal](https://portal.azure.com).
+Advanced Threat Protection je součástí nabídky Advanced Data Security, což je jednotný balíček pro pokročilé možnosti zabezpečení. Pokročilá ochrana před internetovými zprávami je přístupná a spravovaná prostřednictvím [portálu Azure](https://portal.azure.com).
 
 > [!IMPORTANT]
-> Rozšířená ochrana před internetovými útoky je ve verzi Public Preview. Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for MariaDB nasazeny pro Pro obecné účely a paměťově optimalizované servery.
+> Rozšířená ochrana před hrozbami je ve verzi Public Preview. Tato funkce je dostupná ve všech oblastech Azure, kde se Azure Database for MariaDB nasazuje pro servery optimalizované pro obecné účely a paměť.
 
 > [!NOTE]
-> Funkce rozšířené ochrany před internetovými útoky **není dostupná v** těchto oblastech cloudu Azure a v svrchovaném cloudu: US Gov – Texas, US Gov – Arizona, US gov – Iowa, US, gov) – virginia, US DoD – východ, US DoD – střed, Německo Central, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
+> Funkce Advanced Threat Protection **není** dostupná v následujících oblastech vlády Azure a suverénního cloudu: US Gov Texas, US Gov Arizona, US Gov Iowa, US, Gov Virginia, US DoD East, US DoD Central, Germany Central, Germany North, China East, China East 2. Obecné informace o dostupnosti produktů naleznete [na produktech dostupných podle regionu.](https://azure.microsoft.com/global-infrastructure/services/)
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
-1. [https://portal.azure.com](https://portal.azure.com)spusťte Azure Portal.
-2. Přejděte na stránku konfigurace serveru Azure Database for MariaDB, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)** .
-3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
+1. Spusťte portál [https://portal.azure.com](https://portal.azure.com)Azure na webu .
+2. Přejděte na konfigurační stránku serveru Azure Database for MariaDB, který chcete chránit. V nastavení zabezpečení vyberte **Upřesnit ochranu před internetovými hrozbami (Náhled).**
+3. Na konfigurační stránce **Advanced Threat Protection (Preview):**
 
-   - Povolit rozšířenou ochranu před internetovými útoky na serveru.
-   - V části **Upřesnit nastavení ochrany před internetovými útoky**zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
+   - Povolte rozšířenou ochranu před internetovými hrozbami na serveru.
+   - V **rozšířené nastavení ochrany před internetovými zprávami**, v poli **Odeslat výstrahy do** textového pole, zadejte seznam e-mailů pro příjem výstrah zabezpečení při zjišťování neobvyklých databázových aktivit.
   
    ![Nastavení detekce hrozeb](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
-## <a name="explore-anomalous-database-activities"></a>Prozkoumejte aktivity databáze neobvyklé
+## <a name="explore-anomalous-database-activities"></a>Prozkoumejte neobvyklé databázové aktivity
 
-Po detekci neobvykléch databázových aktivit obdržíte e-mailové oznámení. E-mail obsahuje informace o podezřelé události zabezpečení, včetně povahy aktivit neobvyklé, názvu databáze, názvu serveru, názvu aplikace a času události. Kromě toho e-mail poskytuje informace o možných příčinách a doporučených akcích k prošetření a zmírnění potenciální hrozby pro databázi.
+Obdržíte e-mailové oznámení po zjištění neobvyklé databázové aktivity. E-mail obsahuje informace o podezřelé události zabezpečení, včetně povahy anomální chaktivity, název databáze, název serveru, název aplikace a čas události. Kromě toho e-mail poskytuje informace o možných příčinách a doporučených akcích k prošetření a zmírnění potenciálního ohrožení databáze.
  
-1. Kliknutím na odkaz **Zobrazit nedávné výstrahy** v e-mailu spustíte Azure Portal a zobrazí se stránka Azure Security Center výstrahy, která poskytuje přehled aktivních hrozeb zjištěných v databázi SQL.
+1. Kliknutím na odkaz **Zobrazit poslední výstrahy** v e-mailu spusťte portál Azure portal a zobrazte stránku výstrah Centra zabezpečení Azure, která poskytuje přehled aktivních hrozeb zjištěných v databázi SQL.
     
-    ![Sestava aktivity neobvyklé](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    ![Sestava anomální aktivity](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
 
     Zobrazit aktivní hrozby:
 
     ![Aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
 
-2. Kliknutím na konkrétní výstrahu získáte další podrobnosti a akce pro šetření této hrozby a opravaí budoucích hrozeb.
+2. Kliknutím na konkrétní výstrahu získáte další podrobnosti a akce pro vyšetřování této hrozby a nápravu budoucích hrozeb.
     
     ![Konkrétní výstraha](./media/howto-database-threat-protection-portal/specific-alert.png)
 
-## <a name="explore-threat-detection-alerts"></a>Prozkoumat výstrahy detekce hrozeb
+## <a name="explore-threat-detection-alerts"></a>Prozkoumejte výstrahy detekce hrozeb
 
-SQL Database detekce hrozeb integruje své výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živá dlaždice detekce hrozeb SQL v rámci databáze a oken ATP SQL v Azure Portal sledují stav aktivních hrozeb.
+Rozpoznávání hrozeb SQL Database integruje své výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé dlaždice detekce hrozeb SQL v rámci databáze a sql atp listy na portálu Azure sleduje stav aktivních hrozeb.
 
-Kliknutím na **výstrahu detekce hrozeb** spustíte stránku Azure Security Center výstrahy a získáte přehled o aktivních hrozbách SQL zjištěných v databázi.
+Kliknutím na **výstrahu detekce hrozeb** spusťte stránku výstrah Centra zabezpečení Azure a získejte přehled o aktivních hrozbách SQL zjištěných v databázi.
 
    ![Výstraha detekce hrozeb](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
@@ -63,4 +63,4 @@ Kliknutím na **výstrahu detekce hrozeb** spustíte stránku Azure Security Cen
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Další informace o cenách najdete na stránce s [cenami Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/) .  
+* Další informace o cenách najdete na [stránce Azure Database for MariaDB Pricing .](https://azure.microsoft.com/pricing/details/mariadb/)  

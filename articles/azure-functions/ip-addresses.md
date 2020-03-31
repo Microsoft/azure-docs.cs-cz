@@ -1,62 +1,62 @@
 ---
-title: IP adresy v Azure Functions
-description: Přečtěte si, jak najít příchozí a odchozí IP adresy pro aplikace Function App a jaké způsobují jejich změnu.
+title: IP adresy ve funkcích Azure
+description: Přečtěte si, jak najít příchozí a odchozí IP adresy pro funkční aplikace a co způsobí jejich změnu.
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276488"
 ---
-# <a name="ip-addresses-in-azure-functions"></a>IP adresy v Azure Functions
+# <a name="ip-addresses-in-azure-functions"></a>IP adresy ve funkcích Azure
 
-Tento článek vysvětluje následující témata týkající se IP adres aplikací Function App:
+Tento článek vysvětluje následující témata týkající se IP adres funkčních aplikací:
 
-* Jak najít IP adresy, které aktuálně používá aplikace Function App.
-* Co způsobí změnu IP adres aplikace Function App.
-* Jak omezit IP adresy, které mají přístup k aplikaci Function App.
-* Jak získat vyhrazené IP adresy pro aplikaci Function App.
+* Jak najít IP adresy, které právě používá aplikace funkce.
+* Co způsobí, že ip adresy aplikace funkce se změní.
+* Jak omezit IP adresy, které mají přístup k aplikaci funkce.
+* Jak získat vyhrazené IP adresy pro funkční aplikaci.
 
-IP adresy jsou spojené s aplikacemi Function App, ne s jednotlivými funkcemi. Příchozí požadavky HTTP nemohou použít příchozí IP adresu pro volání jednotlivých funkcí; musí používat výchozí název domény (functionappname.azurewebsites.net) nebo vlastní název domény.
+IP adresy jsou spojeny s funkčními aplikacemi, ne s jednotlivými funkcemi. Příchozí požadavky HTTP nemohou používat příchozí IP adresu k volání jednotlivých funkcí. musí používat výchozí název domény (functionappname.azurewebsites.net) nebo vlastní název domény.
 
-## <a name="function-app-inbound-ip-address"></a>Příchozí IP adresa aplikace Function App
+## <a name="function-app-inbound-ip-address"></a>Vstupní IP adresa aplikace pro funkci
 
-Každá aplikace Function App má jednu příchozí IP adresu. Zjištění této IP adresy:
+Každá aplikace funkce má jednu příchozí IP adresu. Chcete-li najít tuto IP adresu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejděte do aplikace Function App.
-3. Vyberte **funkce platformy**.
-4. Vyberte **vlastnosti**a v části **virtuální IP adresa**se zobrazí příchozí IP adresa.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Přejděte do aplikace funkce.
+3. Vyberte **Funkce platformy**.
+4. Vyberte **Vlastnosti**a příchozí adresa IP se zobrazí v části **Virtuální ADRESA IP**.
 
-## <a name="find-outbound-ip-addresses"></a>Odchozí IP adresy aplikace Function App
+## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>Odchozí IP adresy aplikace pro funkce
 
-Každá aplikace Function App má sadu dostupných odchozích IP adres. Jakékoli odchozí připojení z funkce, jako je například databáze back-end, používá jako zdrojovou IP adresu jednu z dostupných odchozích IP adres. Nemůžete předem znát, která IP adresa dané připojení bude používat. Z tohoto důvodu musí vaše back-end služba otevřít bránu firewall pro všechny odchozí IP adresy aplikace Function App.
+Každá aplikace funkce má sadu dostupných odchozích IP adres. Jakékoli odchozí připojení z funkce, například do back-endové databáze, používá jako původní IP adresu jednu z dostupných odchozích IP adres. Nemůžete předem vědět, kterou IP adresu dané připojení použije. Z tohoto důvodu musí služba back-endotevřít bránu firewall pro všechny odchozí IP adresy aplikace funkce.
 
-Vyhledání odchozích IP adres dostupných pro aplikaci Function App:
+Vyhledání odchozích IP adres dostupných pro funkční aplikaci:
 
-1. Přihlaste se k [Azure Resource Explorer](https://resources.azure.com).
-2. Vyberte **předplatná > {vaše předplatné} > poskytovatelé > weby Microsoft. Web >** .
-3. Na panelu JSON Najděte lokalitu s vlastností `id`, která končí názvem vaší aplikace Function App.
-4. Viz témata `outboundIpAddresses` a `possibleOutboundIpAddresses`. 
+1. Přihlaste se k [Průzkumníku prostředků Azure](https://resources.azure.com).
+2. Vyberte **předplatná > {vaše předplatné} > zprostředkovatelé > webech microsoft.web >**.
+3. V panelu JSON najděte `id` web s vlastností, která končí názvem aplikace funkce.
+4. Zobrazit `outboundIpAddresses` `possibleOutboundIpAddresses`a . 
 
-Sada `outboundIpAddresses` je aktuálně k dispozici pro aplikaci Function App. Sada `possibleOutboundIpAddresses` obsahuje IP adresy, které budou k dispozici pouze v případě, že aplikace Function App se [škáluje na jiné cenové úrovně](#outbound-ip-address-changes).
+Sada aplikace `outboundIpAddresses` je v současné době k dispozici pro aplikaci funkce. Sada obsahuje `possibleOutboundIpAddresses` IP adresy, které budou k dispozici pouze v případě, že aplikace funkce [se škáluje na jiné cenové úrovně](#outbound-ip-address-changes).
 
-K dispozici je alternativní způsob, jak najít dostupné odchozí IP adresy pomocí [Cloud Shell](../cloud-shell/quickstart.md):
+Alternativní způsob, jak najít dostupné odchozí IP adresy, je pomocí [prostředí Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
 > [!NOTE]
-> Když se škáluje aplikace Function App, která běží na [plánu spotřeby](functions-scale.md#consumption-plan) , může se přiřadit nový rozsah odchozích IP adres. Při spuštění plánu spotřeby možná budete muset povolit celé datové centrum.
+> Při škálování aplikace funkce, která běží v [plánu Spotřeba,](functions-scale.md#consumption-plan) může být přiřazen a nový rozsah odchozích IP adres. Při spuštění v plánu Spotřeba může být nutné zařadit do seznamu celé ho datového centra.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Odchozí IP adresy datového centra
 
-Pokud potřebujete povolit odchozí IP adresy používané vašimi aplikacemi Function App, je další možností seznam povolených datových center aplikace Function App (oblast Azure). Můžete [si stáhnout soubor JSON se seznamem IP adres pro všechna datová centra Azure](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Pak najděte fragment JSON, který se vztahuje na oblast, ve které běží vaše aplikace Function App.
+Pokud potřebujete zařadit odchozí IP adresy používané vašimi funkčními aplikacemi, další možností je zařazení datového centra aplikací funkcí (oblast Azure). Můžete [si stáhnout soubor JSON se seznamem IP adres pro všechna datová centra Azure](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Pak najděte fragment JSON, který se vztahuje k oblasti, ve které je spuštěna vaše aplikace funkce.
 
-Například to vypadá, že fragment JSON západní Evropa může vypadat takto:
+Například, to je to, co západní Evropa JSON fragment může vypadat:
 
 ```
 {
@@ -78,56 +78,56 @@ Například to vypadá, že fragment JSON západní Evropa může vypadat takto:
 }
 ```
 
- Informace o tom, kdy se tento soubor aktualizuje a kdy se změní IP adresy, najdete v části **Podrobnosti** [stránky Stažení softwaru](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
+ Informace o tom, kdy je tento soubor aktualizován a kdy se změní adresy IP, získáte v části **Podrobnosti** na [stránce Centrum pro stahování](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 
-## <a name="inbound-ip-address-changes"></a>Změny příchozích IP adres
+## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>Změny příchozí adresy IP
 
-Příchozí IP adresa se **může** změnit, když:
+Příchozí adresa IP **se může** změnit, pokud:
 
 - Odstraňte aplikaci funkcí a znovu ji vytvořte v jiné skupině prostředků.
-- Odstraňte poslední aplikaci Function App v kombinaci skupiny prostředků a oblasti a vytvořte ji znovu.
-- Odstraňte vazbu SSL, například během [obnovování certifikátu](../app-service/configure-ssl-certificate.md#renew-certificate).
+- Odstraňte poslední aplikaci funkcí v kombinaci skupiny prostředků a oblasti a znovu ji vytvořte.
+- Odstraňte vazbu SSL, například během [obnovení certifikátu](../app-service/configure-ssl-certificate.md#renew-certificate).
 
-Když aplikace Function App běží v [plánu spotřeby](functions-scale.md#consumption-plan), může se příchozí IP adresa změnit i v případě, že jste neudělali žádné akce, jako jsou ty, které jsou [uvedené výše](#inbound-ip-address-changes).
+Když vaše aplikace funkce běží v [plánu spotřeby](functions-scale.md#consumption-plan), příchozí IP adresa se může také změnit, i když jste neprovedli žádné akce, jako jsou ty [uvedené výše](#inbound-ip-address-changes).
 
-## <a name="outbound-ip-address-changes"></a>Změny odchozích IP adres
+## <a name="outbound-ip-address-changes"></a>Změny odchozí ip adresy
 
-Sada dostupných odchozích IP adres pro aplikaci Function App se může změnit v těchto případech:
+Sada dostupných odchozích IP adres pro aplikaci funkcí se může změnit, když:
 
-* Proveďte jakoukoli akci, která může změnit příchozí IP adresu.
-* Změňte cenovou úroveň plánu App Service. Seznam všech možných odchozích IP adres, které vaše aplikace může používat, je pro všechny cenové úrovně ve vlastnosti `possibleOutboundIPAddresses`. Viz [Najít odchozí IP adresy](#find-outbound-ip-addresses).
+* Provádějte jakoukoli akci, která může změnit příchozí adresu IP.
+* Změňte cenovou úroveň plánu služby App Service. Seznam všech možných odchozích IP adres, které vaše aplikace může používat `possibleOutboundIPAddresses` pro všechny cenové úrovně, je ve vlastnosti. Viz [Najít odchozí IP adresy](#find-outbound-ip-addresses).
 
-Když aplikace Function App běží v [plánu spotřeby](functions-scale.md#consumption-plan), odchozí IP adresa se může změnit i v případě, že jste neudělali žádné akce, jako jsou ty, které jsou [uvedené výše](#inbound-ip-address-changes).
+Když vaše funkční aplikace běží v [plánu spotřeby](functions-scale.md#consumption-plan), může se odchozí IP adresa změnit i v případě, že jste neprovedli žádné akce, jako jsou ty, které [jsou uvedeny výše](#inbound-ip-address-changes).
 
-K úmyslnému vynucení změny odchozí IP adresy:
+Chcete-li záměrně vynutit změnu odchozí adresy IP:
 
-1. Škálujte App Service Naplánujte směrem nahoru nebo dolů mezi cenovými úrovněmi Standard a Premium v2.
+1. Škálujte plán služby App Service mezi standardními a prémiovými úrovněmi v2 nahoru nebo dolů.
 2. Počkejte 10 minut.
-3. Škálujte zpátky na místo, kde jste začali.
+3. Vraťte se tam, kde jste začali.
 
-## <a name="ip-address-restrictions"></a>Omezení podle IP adresy
+## <a name="ip-address-restrictions"></a>omezení IP adresy
 
-Můžete nakonfigurovat seznam IP adres, u kterých chcete povolit nebo odepřít přístup k aplikaci Function App. Další informace najdete v tématu [Azure App Service omezení statických IP adres](../app-service/app-service-ip-restrictions.md).
+Můžete nakonfigurovat seznam adres IP, které chcete povolit nebo odepřít přístup k aplikaci funkce. Další informace najdete v [tématu Azure App Service Statická omezení IP](../app-service/app-service-ip-restrictions.md).
 
 ## <a name="dedicated-ip-addresses"></a>Vyhrazené IP adresy
 
-Pokud potřebujete statické a vyhrazené IP adresy, doporučujeme [App Service prostředí](../app-service/environment/intro.md) ( [izolovaná úroveň](https://azure.microsoft.com/pricing/details/app-service/) App Service plánů). Další informace najdete v tématu [App Service Environment IP adresy](../app-service/environment/network-info.md#ase-ip-addresses) a [postup řízení příchozího provozu do App Service Environment](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
+Pokud potřebujete statické, vyhrazené IP adresy, doporučujeme [prostředí služby App Service](../app-service/environment/intro.md) [(izolovaná úroveň](https://azure.microsoft.com/pricing/details/app-service/) plánů služby App Service). Další informace najdete v tématu [IP adresy prostředí služby App Service](../app-service/environment/network-info.md#ase-ip-addresses) a Jak řídit příchozí provoz do prostředí [služby App Service](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
 
-Pokud chcete zjistit, jestli vaše aplikace Function App běží na App Service Environment:
+Jak zjistit, jestli vaše aplikace funkcí běží v prostředí služby App Service:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejděte do aplikace Function App.
-3. Vyberte kartu **Přehled** .
-4. Úroveň plánu App Service se zobrazí v části **App Service plán/cenová úroveň**. Cenová úroveň App Service Environment je **izolovaná**.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+2. Přejděte do aplikace funkce.
+3. Vyberte kartu **Přehled**.
+4. Úroveň plánu služby App Service se zobrazí v části **Plán/cenová úroveň služby App Service**. Cenová úroveň Prostředí služby App Service je **izolovaná**.
  
-Alternativně můžete použít [Cloud Shell](../cloud-shell/quickstart.md):
+Jako alternativu můžete použít [Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-App Service Environment `sku` je `Isolated`.
+Prostředí `sku` služby `Isolated`App Service je .
 
 ## <a name="next-steps"></a>Další kroky
 
-Běžnou příčinou změn IP adres je změna měřítka aplikace Function App. [Přečtěte si další informace o škálování aplikace Function App](functions-scale.md).
+Častou příčinou změn IP je změna měřítka aplikace funkce. [Přečtěte si další informace o škálování aplikací funkcí](functions-scale.md).

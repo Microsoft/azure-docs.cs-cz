@@ -1,6 +1,6 @@
 ---
-title: Analýza výkonu hraničních uzlů v Azure CDN | Dokumentace Microsoftu
-description: Analýza výkonu hraničního uzlu v Microsoft Azure CDN. Analýza výkonu hranice poskytuje podrobné informace o provozu a využití šířky pásma pro CDN.
+title: Analýza výkonu hraničních uzlů v Azure CDN | Dokumenty společnosti Microsoft
+description: Analyzujte výkon hraničních uzlů v microsoft azure cdn. Edge Performance Analytics poskytuje podrobný informační provoz a využití šířky pásma pro CDN.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,177 +15,177 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593901"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Přehled
-Analýza výkonu hranice poskytuje podrobné informace o provozu a využití šířky pásma pro CDN. Tyto informace lze potom použít ke generování statistik trendů. navíc, které vám umožní získat přehled o tom, jak se vaše assety ukládají do mezipaměti a doručují klientům. Pak díky tomu můžete k vytvoření strategii a o tom, jak optimalizovat doručování vašeho obsahu a určit, co by měl být problémy řešeny lepší využití CDN. V důsledku toho nejen bude je možné ke zlepšení výkonu při doručování dat, ale také moct snížit náklady na síť CDN.
+Edge performance analytics poskytuje podrobné informace provoz a využití šířky pásma pro CDN. Tyto informace pak lze použít ke generování statistik trendů, které vám umožní získat přehled o tom, jak jsou vaše prostředky ukládány do mezipaměti a doručovány vašim klientům. Na druhé straně, to vám umožní vytvořit strategii o tom, jak optimalizovat doručování obsahu a určit, jaké problémy by měly být řešeny lépe využít CDN. V důsledku toho budete nejen moci zlepšit výkon doručování dat, ale budete také moci snížit náklady na CDN.
 
 > [!NOTE]
-> Všechny sestavy používají UTC/GMT notation při zadávání datum/čas.
+> Všechny sestavy používají zápis UTC/GMT při zadávání data a času.
 > 
 > 
 
 ## <a name="reports-and-log-collection"></a>Sestavy a shromažďování protokolů
-Data aktivit CDN je třeba shromažďovat modulem Analýza výkonu hranice předtím, než ho můžete generovat sestavy na něj. Tento proces kolekce proběhne jednou denně a popisuje aktivity, ke kterým došlo během předchozího dne. To znamená, že představujících statistiky sestavy ukázka denních statistik v době zpracování a nejsou nutně obsahovat úplnou sadu dat pro aktuální den. Primární funkce tyto sestavy je k vyhodnocení výkonu. Používají by neměla pro účely fakturace nebo přesnou číselné statistiky.
+Data aktivity CDN musí být shromážděna modulem Edge Performance Analytics, aby na něm mohla generovat sestavy. Tento proces sběru probíhá jednou denně a zahrnuje aktivitu, která proběhla během předchozího dne. To znamená, že statistiky sestavy představují vzorek denní statistiky v době, kdy byla zpracována, a nemusí nutně obsahovat úplnou sadu dat pro aktuální den. Primární funkcí těchto zpráv je posoudit výkon. Neměly by být používány pro účely fakturace nebo přesné číselné statistiky.
 
 > [!NOTE]
-> Nezpracovaná data, ze které se generují Edge výkonu analytické sestavy je k dispozici po dobu minimálně 90 dnů.
+> Nezpracovaná data, ze kterých se generují přehledy Edge Performance Analytic, jsou k dispozici po dobu nejméně 90 dnů.
 > 
 > 
 
 ## <a name="dashboard"></a>Řídicí panel
-Řídicí panel Analýza výkonu hranice sleduje aktuální a historický CDN provoz prostřednictvím grafu a statistiky. Pomocí tohoto řídicího panelu ke zjištění poslední a dlouhodobé trendy na výkon CDN provoz pro váš účet.
+Řídicí panel Edge Performance Analytics sleduje aktuální a historický provoz CDN prostřednictvím grafu a statistiky. Tento řídicí panel slouží ke zjišťování nejnovějších a dlouhodobých trendů ve výkonu provozu CDN pro váš účet.
 
-Tento řídicí panel se skládá ze:
+Tento řídicí panel se skládá z:
 
-* Interaktivní graf, který umožňuje vizualizace klíčových metrik a trendy.
-* Časová osa, který poskytuje představu o dlouhodobém horizontu vzory pro klíčové metriky a trendy.
-* Klíčové metriky a statistické informace o naší síti CDN zlepšuje provoz lokality měřený podle celkový výkon, využití a efektivitu.
+* Interaktivní graf, který umožňuje vizualizaci klíčových metrik a trendů.
+* Časová osa, která poskytuje pocit dlouhodobé vzory pro klíčové metriky a trendy.
+* Klíčové metriky a statistické informace o tom, jak naše síť CDN zlepšuje návštěvnost webu měřenou celkovým výkonem, výkonem a efektivitou.
 
-### <a name="accessing-the-edge-performance-dashboard"></a>Přístup k řídicím panelu edge výkonu
-1. Z okna profil CDN, klikněte na tlačítko **spravovat** tlačítko.
+### <a name="accessing-the-edge-performance-dashboard"></a>Přístup k řídicímu panelu výkonu okrajů
+1. V okně profilu CDN klepněte na tlačítko **Spravovat.**
    
-    ![Tlačítko Spravovat okno profilu CDN](./media/cdn-edge-performance/cdn-manage-btn.png)
+    ![Tlačítko pro správu okna profilu CDN](./media/cdn-edge-performance/cdn-manage-btn.png)
    
-    Otevře se na portálu pro správu CDN.
-2. Najeďte myší **Analytics** kartu a pak najeďte myší **Analýza výkonu hranice** Kontextová nabídka.  Klikněte na **řídicí panel**.
+    Otevře se portál pro správu CDN.
+2. Najeďte na kartu **Analytics** a najeďte na informační rámeček **Edge Performance Analytics.**  Klikněte na **řídicí panel**.
    
-    Zobrazí se řídicí panel analýza uzlu edge.
+    Zobrazí se řídicí panel analýzy hraničních uzlů.
 
 ### <a name="chart"></a>Graf
-Řídicí panel obsahuje graf, který sleduje metriky za časové období na časové ose, které se zobrazí přímo pod něj vybrána.  Časové osy, grafy až na poslední dva roky CDN aktivity se zobrazí přímo pod grafem.
+Řídicí panel obsahuje graf, který sleduje metriku za časové období vybrané na časové ose, která se zobrazí přímo pod ní.  Časová osa, která mapuje až poslední dva roky aktivity CDN, se zobrazí přímo pod grafem.
 
-#### <a name="using-the-chart"></a>Pomocí grafu
-* Ve výchozím nastavení budou zobrazena frekvence efektivitu mezipaměti za posledních 30 dní.
-* Tento graf se vygeneruje z dat porovnávány každý den.
-* Najetí myší za den na spojnicový graf označí data a hodnota metriky k tomuto datu.
-* Kliknutím zvýrazněte víkendy, chcete-li přepnout překrytí světle šedá svislé pruhy, které představují víkendy do grafu. Tento typ překrytí je užitečné pro identifikaci vzorů provozu přes víkendy.
-* Klikněte na tlačítko zobrazit jeden rok před přepnete překrytí předchozího roku aktivity za stejné období do grafu. Tento typ porovnání, nabízí pohled na dlouhodobé vzorce využití CDN. Pravém dolním rohu grafu obsahuje legendu, která určuje kód barvy pro každý spojnicový graf.
+#### <a name="using-the-chart"></a>Použití grafu
+* Ve výchozím nastavení bude zmapována míra efektivity mezipaměti za posledních 30 dní.
+* Tento graf je generován z dat shromaždených denně.
+* Když najedete přes den v čárovém grafu, bude uvádět datum a hodnotu metriky k tomuto datu.
+* Kliknutím na Zvýraznit víkendy přepněte do grafu překrytí světle šedých svislých pruhů, které představují víkendy. Tento typ překrytí je užitečný pro identifikaci dopravních vzorců během víkendů.
+* Kliknutím na Zobrazit před rokem přepnete do grafu překrytí aktivity předchozího roku za stejné časové období. Tento typ porovnání poskytuje přehled o dlouhodobé vzory použití CDN. Pravý horní roh grafu obsahuje legendu, která označuje barevný kód pro každý spojnicový graf.
 
 #### <a name="updating-the-chart"></a>Aktualizace grafu
-* Časový rozsah: Proveďte jeden z následujících akcí:
-  * Vyberte požadovanou oblast na časové ose. Grafu se aktualizují data, která odpovídá vybrané časové období.
-  * Klikněte dvakrát na grafu pro zobrazení všech dostupných historických dat až do maximálního počtu dva roky.
-* Metrika: Klikněte na ikonu, která se zobrazí vedle požadovanou metriku. S daty odpovídající metriky se budou aktualizovat grafu a na časové ose.
+* Časový rozsah: Proveďte jednu z následujících akcí:
+  * Vyberte požadovanou oblast na časové ose. Graf bude aktualizován daty, která odpovídají vybranému časovému období.
+  * Poklepáním na graf zobrazíte všechna dostupná historická data maximálně dva roky.
+* Metrika: Klikněte na ikonu grafu, která se zobrazí vedle požadované metriky. Graf a časová osa budou aktualizovány daty pro odpovídající metriku.
 
 ### <a name="key-metrics-and-statistics"></a>Klíčové metriky a statistiky
-#### <a name="efficiency-metrics"></a>Efektivita metriky
-Účelem těchto metrikách je chcete zobrazit, zda se může zlepšit efektivitu mezipaměti. Hlavní výhody odvozený od efektivitu mezipaměti jsou:
+#### <a name="efficiency-metrics"></a>Metriky efektivity
+Účelem těchto metrik je zjistit, zda lze zlepšit efektivitu mezipaměti. Hlavní výhody vyplývající z efektivity mezipaměti jsou:
 
-* Na původním serveru, což může vést ke snížení zatížení:
+* Snížené zatížení původního serveru, které může vést k:
   * Lepší výkon webového serveru.
-  * Snížit provozní náklady.
-* Zrychlení doručování dat lepší, protože žádosti více bude obsluhovat přímo z CDN.
+  * Snížení provozních nákladů.
+* Vylepšené zrychlení doručování dat, protože více požadavků bude doručeno přímo z CDN.
 
 | Pole | Popis |
 | --- | --- |
-| Efektivitu mezipaměti |Informuje o procentu přenesená data, která byla obsluhovat z mezipaměti. Zpracování této metriky opatření, pokud verze uložené v mezipaměti požadovaného obsahu přímo z CDN (hraniční servery) na žadatelů o deklaraci (například webový prohlížeč) |
-| Počet přístupů |Informuje o procentu požadavků, které se obsluhují z mezipaměti. Tato metrika opatření při verze uložené v mezipaměti požadovaného obsahu vyřídila přímo z CDN (hraniční servery) na žadatelů o deklaraci (například webový prohlížeč). |
-| % bajtů vzdálené - žádné konfigurace mezipaměti |Informuje o procentu přenosů, které se obsluhují z původních serverů do sítě CDN (hraniční servery), která nebudou zapisována do mezipaměti jako výsledek funkce paměť Cache můžete přeskočit (stroj pravidel HTTP). |
-| % Vzdálené bajtů - vypršení platnosti mezipaměti |Informuje o procentu přenosů, které se obsluhují z původních serverů do sítě CDN (hraniční servery) v důsledku zastaralé opětovné ověření obsahu. |
+| Efektivita mezipaměti |Označuje procento přenesených dat, která byla doručena z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu uložená v mezipaměti doručena přímo z CDN (hraniční servery) uchazečům (např. webovému prohlížeči). |
+| Míra přístupů |Označuje procento požadavků, které byly obsluhovány z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu uložená v mezipaměti doručena přímo z CDN (hraniční servery) uchazečům (např. webovému prohlížeči). |
+| % vzdálených bajtů – konfigurace bez mezipaměti |Označuje procento provozu, který byl obsluhován ze serverů původu do sítě CDN (hraniční servery), která nebude uložena do mezipaměti v důsledku funkce Obejít mezipaměť (Modul pravidel HTTP). |
+| % vzdálených bajtů – mezipaměť s ukončenou platností |Označuje procento provozu, který byl obsluhován ze serverů původu na CDN (hraniční servery) v důsledku opětovného ověření zastaralého obsahu. |
 
 #### <a name="usage-metrics"></a>Metriky využití
-Účelem těchto metrikách je k poskytování přehledů o následující míry společné náklady:
+Účelem těchto metrik je poskytnout přehled o následujících opatřeních ke snížení nákladů:
 
-* Minimalizovat provozní náklady prostřednictvím CDN.
-* Snižuje výdaje CDN prostřednictvím efektivitu mezipaměti a provádí kompresi.
+* Minimalizace provozních nákladů prostřednictvím cdn.
+* Snížení výdajů CDN prostřednictvím efektivity mezipaměti a komprese.
 
 > [!NOTE]
-> Čísla multilicenčních provoz představují provoz, který byl použit ve výpočtech poměry a procenta a může zobrazit jenom část z celkového provozu pro vysoký počet zákazníků.
+> Čísla objemu provozu představují provoz, který byl použit ve výpočtech poměrů a procent, a může zobrazovat pouze část celkového provozu pro velkoobjemové zákazníky.
 > 
 > 
 
 | Pole | Popis |
 | --- | --- |
-| Odchozí bajty uložit |Označuje průměrný počet bajtů přenesených pro každý požadavek poskytnutá z CDN (hraniční servery) žadateli (například webový prohlížeč). |
-| Frekvence Config bajt bez mezipaměti |Informuje o procentu provoz poskytnutá z CDN (hraniční servery) žadateli (například webový prohlížeč), která nebudou zapisována do mezipaměti kvůli funkci paměť Cache můžete přeskočit. |
-| Míra komprimované bajtů |Informuje o procentu provoz odeslaný na žadatelů o deklaraci (například webový prohlížeč) z CDN (hraniční servery) ve formátu komprimované. |
-| Odchozí bajty |Určuje množství dat v bajtech, které byly dodány z CDN (hraniční servery) žadateli (například webový prohlížeč). |
-| Bajty |Určuje množství dat v bajtech odeslaných z žadatelů o deklaraci (například webový prohlížeč) do sítě CDN (hraniční servery). |
-| Vzdálené bajtů |Určuje množství dat v bajtech odeslaných ze sítě CDN a zákazníka původních serverů do CDN (hraniční servery). |
+| Ave bajty ven |Označuje průměrný počet bajtů přenesených pro každý požadavek obsluhovaný z CDN (hraniční servery) žadateli (např. webový prohlížeč). |
+| Rychlost bajtů konfigurace konfigurace mezipaměti |Označuje procento provozu obsluhovaného z CDN (hraniční servery) žadateli (např. webovému prohlížeči), který nebude uložen do mezipaměti z důvodu funkce Obejít mezipaměť. |
+| Rychlost komprimovaného bajtu |Označuje procento provozu odeslaného z CDN (hraniční servery) uchazečům (např. webový prohlížeč) v komprimovaném formátu. |
+| Ubajtů ven |Označuje množství dat v bajtů, které byly dodány z CDN (hraniční servery) žadateli (např. webový prohlížeč). |
+| Bajty v |Označuje množství dat v bajtů odeslaných od uchazečů (např. webového prohlížeče) do sítě CDN (hraniční servery). |
+| Vzdálené bajty |Označuje množství dat v bajtů odeslaných ze serverů CDN a původu zákazníka do sítě CDN (hraniční servery). |
 
 #### <a name="performance-metrics"></a>Metriky výkonu
-Účelem těchto metrikách je sledovat celkový výkon CDN pro provoz.
+Účelem těchto metrik je sledovat celkový výkon CDN pro váš provoz.
 
 | Pole | Popis |
 | --- | --- |
-| Přenosová rychlost |Určuje průměrnou rychlost, jakou bylo na žadatele obsah převedeno z CDN. |
-| Doba trvání |Označuje, Průměrná doba v milisekundách, jakou trvalo pro doručení assetu do žadateli (například webový prohlížeč). |
-| Komprimované žádostí |Informuje o procentu přístupů, které byly dodány z CDN (hraniční servery) žadateli (například webový prohlížeč) ve formátu komprimované. |
-| Míra chyb 4xx |Informuje o procentu přístupů, které generují stavový kód 4xx. |
-| Míra chyb 5xx |Informuje o procentu přístupů, které generují stavový kód 5xx. |
-| Počet přístupů |Označuje počet žádostí o obsahu CDN. |
+| Přenosová rychlost |Označuje průměrnou rychlost přenosu obsahu z sítě CDN na uchazeče. |
+| Doba trvání |Označuje průměrnou dobu v milisekundách, po kterou bylo nutné doručit datový zdroj žadateli (např. webovému prohlížeči). |
+| Rychlost komprimovaných požadavků |Označuje procento přístupů, které byly doručeny z CDN (hraniční servery) žadateli (např. webový prohlížeč) v komprimovaném formátu. |
+| 4xx Chybová frekvence |Označuje procento přístupů, které vygenerovaly stavový kód 4xx. |
+| 5xx Chybová frekvence |Označuje procento přístupů, které vygenerovaly stavový kód 5xx. |
+| Hits |Označuje počet požadavků na obsah CDN. |
 
-#### <a name="secure-traffic-metrics"></a>Zabezpečení provozu metriky
-Účelem těchto metrikách je sledovat výkon sítě CDN pro komunikaci přes protokol HTTPS.
+#### <a name="secure-traffic-metrics"></a>Metriky zabezpečeného provozu
+Účelem těchto metrik je sledovat výkon CDN pro provoz HTTPS.
 
 | Pole | Popis |
 | --- | --- |
-| Zabezpečení efektivitu mezipaměti |Informuje o procentu data přenesená požadavkům HTTPS, které byly obsluhovat z mezipaměti. Tato metrika opatření při verze uložené v mezipaměti požadovaného obsahu vyřídila přímo z CDN (hraniční servery) na žadatelů o deklaraci (například webový prohlížeč) přes protokol HTTPS. |
-| Zabezpečené přenosová rychlost |Určuje průměrnou rychlost, jakou bylo obsah převedeno z CDN (hraniční servery) žadatelů o deklaraci (třeba webové servery) přes protokol HTTPS. |
-| Průměrná doba trvání zabezpečené |Označuje, Průměrná doba v milisekundách, jakou trvalo pro doručení assetu do žadateli (například webový prohlížeč) přes protokol HTTPS. |
-| Zabezpečené přístupů |Označuje počet požadavky HTTPS k obsahu CDN. |
-| Zabezpečit odchozí bajty |Určuje objem provozu HTTPS v bajtech, které byly dodány z CDN (hraniční servery) žadateli (například webový prohlížeč). |
+| Bezpečná efektivita mezipaměti |Označuje procento dat přenesených pro požadavky HTTPS, které byly obsluhovány z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu uložená v mezipaměti doručena přímo z CDN (hraniční servery) uchazečům (např. webovému prohlížeči) prostřednictvím protokolu HTTPS. |
+| Bezpečná přenosová rychlost |Označuje průměrnou rychlost přenosu obsahu z CDN (hraničních serverů) na uchazeče (např. webové servery) přes protokol HTTPS. |
+| Průměrná doba bezpečného zajištění |Označuje průměrnou dobu v milisekundách, po kterou bylo nutné doručit datový zdroj žadateli (např. webovému prohlížeči) přes protokol HTTPS. |
+| Zabezpečené přístupy |Označuje počet požadavků HTTPS pro obsah CDN. |
+| Bezpečné bajty ven |Označuje množství přenosů HTTPS v bajtech, které byly dodány z CDN (hraniční servery) žadateli (např. webovému prohlížeči). |
 
 ## <a name="reports"></a>Sestavy
-Každá sestava v tomto modulu obsahuje graf a statistiky o využití šířky pásma a provoz pro různé typy metriky (například stavové kódy HTTP, mezipaměť stavové kódy, žádost o adresu URL, atd.). Tyto informace slouží delve hlouběji do jak se obsah obsluhuje klienty a optimalizovat chování CDN ke zlepšení výkonu při doručování dat.
+Každá sestava v tomto modulu obsahuje graf a statistiky o šířce pásma a využití provozu pro různé typy metrik (např. stavové kódy HTTP, stavové kódy mezipaměti, adresa URL požadavku atd.). Tyto informace mohou být použity k podrobnějšímu prohloubení způsobu zobrazování obsahu vašim klientům a k jemnému doladění chování CDN za účelem zlepšení výkonu doručování dat.
 
-### <a name="accessing-the-edge-performance-reports"></a>Přístup k hraniční sestavy výkonu
-1. Z okna profil CDN, klikněte na tlačítko **spravovat** tlačítko.
+### <a name="accessing-the-edge-performance-reports"></a>Přístup k přehledům výkonu hraničních
+1. V okně profilu CDN klepněte na tlačítko **Spravovat.**
    
-    ![Tlačítko Spravovat okno profilu CDN](./media/cdn-edge-performance/cdn-manage-btn.png)
+    ![Tlačítko pro správu okna profilu CDN](./media/cdn-edge-performance/cdn-manage-btn.png)
    
-    Otevře se na portálu pro správu CDN.
-2. Najeďte myší **Analytics** kartu a pak najeďte myší **Analýza výkonu hranice** Kontextová nabídka.  Klikněte na **velkého objektu HTTP**.
+    Otevře se portál pro správu CDN.
+2. Najeďte na kartu **Analytics** a najeďte na informační rámeček **Edge Performance Analytics.**  Klikněte na **HTTP Velký objekt**.
    
-    Zobrazí se obrazovka hraniční uzel analytics sestavy.
+    Zobrazí se obrazovka sestav analýzy hraničních uzlů.
 
-| Zpráva | Popis |
+| Sestava | Popis |
 | --- | --- |
-| Denní souhrn |Umožňuje zobrazit trendy každodenní provoz za zadané časové období. Každý řádek v tomto grafu představuje konkrétní datum. Velikost panelu indikuje celkový počet přístupů, ke kterým došlo k tomuto datu. |
-| Hodinový přehled |Umožňuje zobrazit trendy provozu po hodinách za zadané časové období. Každý řádek v tomto grafu představuje jednu hodinu v konkrétní den. Velikost panelu indikuje celkový počet přístupů, ke kterým došlo během dané hodiny. |
-| Protokoly |Zobrazí rozpis provoz mezi protokoly HTTP a HTTPS. Prstencový graf informuje o procentu úspěšných, ke kterým došlo u každého typu protokolu. |
-| Metody HTTP |Umožňuje získat rychlý přehled o tom HTTP, které metody se používají k vyžádání vaše data. Obvykle jsou nejběžnější metody požadavku HTTP GET, HEAD a příspěvku. Prstencový graf informuje o procentu úspěšných, ke kterým došlo u každého typu metoda požadavku HTTP. |
-| Adresy URL |Obsahuje graf zobrazující hlavní 10 požadované adresy URL. Panelu se zobrazí pro každou adresu URL. Výška pruhu určuje počet přístupů, generovaných určité adresy URL za časové období, kterou sestava postihuje. Statistika pro 100 nejoblíbenějších požadovaného že adresy URL se zobrazí přímo pod tohoto grafu. |
-| CNAMEs |Obsahuje graf zobrazující top 10 záznamů CNAME používaná pro požádání o prostředky čase span sestavy. Statistika pro 100 nejoblíbenějších požadovaného že záznamy CNAME se zobrazí přímo pod tohoto grafu. |
-| Zdroje |Obsahuje graf zobrazující hlavní 10 CDN nebo zákazník původních serverů, ze kterých byly požadované prostředky v zadaném časovém období. Statistika pro 100 nejoblíbenějších požadovaného přímo pod tento graf se zobrazují servery původu CDN nebo zákazníků. Zákazník původních serverů jsou identifikovány názvem definovaným ve variantě pro název adresáře. |
-| Geograficky POP |Ukazuje, jak velká část provozu je směrovány přes určitého bodu of-presence (POP). Dvoupísmennou zkratku představuje místní nabídky v naší síti CDN. |
-| Klienti |Obsahuje graf zobrazující hlavní 10 klientů, které požadované prostředky v zadaném časovém období. Pro účely této sestavy se všechny požadavky, které pocházejí ze stejné IP adresy jsou považovány za ze stejného klienta. Přímo pod tento graf se zobrazují statistiky pro začátek 100 klientů. Tato sestava je užitečná pro určení vzory aktivity ke stažení pro začátek klienty. |
-| Stavy mezipaměti |Je podrobný rozpis chování mezipaměti, což může vést k odhalení přístupy k zlepšení celkové prostředí koncového uživatele. Vzhledem k tomu, abyste dosáhli nejlepšího výkonu pochází z přístupů k mezipaměti, můžete optimalizovat doručování rychlosti dat tak, že minimalizovat Neúspěšné přístupy do mezipaměti a přístupů k mezipaměti vypršela platnost. |
-| ŽÁDNÉ podrobnosti |Obsahuje graf zobrazující hlavní 10 adresy URL pro prostředky, u kterých nebyla zkontrolována aktuálnosti obsahu mezipaměti po zadanou dobu. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy prostředků. |
-| Podrobnosti o CONFIG_NOCACHE |Obsahuje graf, který zobrazuje prvních 10 adres URL pro prostředky, které nebyly uloženy v mezipaměti z důvodu konfigurace CDN zákazníka. Tyto typy prostředků nebyly obsluhovat přímo server původu. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy prostředků. |
-| UNCACHEABLE podrobnosti |Obsahuje graf zobrazující hlavní 10 adresy URL pro prostředky, které nelze uložit do mezipaměti kvůli data hlavičky žádosti. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy prostředků. |
-| Podrobnosti o TCP_HIT |Obsahuje graf zobrazující hlavní 10 adresy URL pro prostředky, které jsou okamžitě obsluhovat z mezipaměti. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy prostředků. |
-| Podrobnosti o TCP_MISS |Obsahuje graf zobrazující hlavní 10 adresy URL pro prostředky, které mají stav mezipaměti TCP_MISS. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy prostředků. |
-| Podrobnosti o TCP_EXPIRED_HIT |Obsahuje graf zobrazující hlavní 10 adresy URL pro zastaralé prostředky, které byly obsluhovat přímo server POP. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy prostředků. |
-| Podrobnosti o TCP_EXPIRED_MISS |Obsahuje graf zobrazující hlavní 10 adresy URL pro zastaralé prostředky, u kterých musel načíst ze zdrojového serveru novou verzi. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy prostředků. |
-| TCP_CLIENT_REFRESH_MISS Details |Obsahuje pruhový graf, který zobrazuje prvních 10 adres URL pro prostředky, které byly získány ze zdrojového serveru z důvodu no-cache žádosti z klienta. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy požadavků. |
-| Typy žádostí klienta |Určuje typy požadavků, které byly provedeny klienty HTTP (například prohlížeče). Tato sestava obsahuje prstencový graf, který poskytuje představu, jak se právě zpracovává požadavky. Informace o šířku pásma a provoz pro každý typ žádosti se zobrazí pod grafem. |
-| Uživatelský Agent |Obsahuje pruhový graf zobrazující hlavní 10 Uživatelští agenti pro vyžádání obsahu prostřednictvím naší síti CDN. Uživatelský agent je obvykle webový prohlížeč, media player nebo prohlížeči mobilního telefonu. Přímo pod tento graf se zobrazují statistiky pro začátek 100 Uživatelští agenti. |
-| Odkazující servery |Obsahuje pruhový graf zobrazující hlavní 10 odkazující servery k obsahu přistupovat prostřednictvím naší síti CDN. Adresa URL webové stránky nebo prostředek, který obsahuje odkazy na váš obsah je obvykle odkazující server. Podrobné informace jsou uvedeny níže grafu pro 100 nejoblíbenějších odkazující servery. |
-| Kompresní typy |Obsahuje prstencový graf, který rozděluje požadovaných prostředků tak, zda byly komprimované naše servery edge. Procento komprimované prostředky je rozdělené podle typu použít kompresi. Podrobné informace jsou poskytovány pod grafem pro každý typ komprese a stav. |
-| Typy souborů |Obsahuje pruhový graf zobrazující hlavní typy 10 souborů, které bylo vyžádáno prostřednictvím naší síti CDN pro váš účet. Pro účely této sestavy je definován typ souboru příponu názvu souboru assetu a typ média Internetu (například HTML \[text/html\], .htm \[text/html\], aspx \[text/html\]atd.). Podrobné informace jsou uvedeny níže grafu pro hlavní typy 100 souborů. |
-| Jedinečné soubory |Obsahuje graf, který znázorňuje celkový počet jedinečných prostředky, které bylo vyžádáno v určitý den v zadaném časovém období. |
-| Token Souhrn ověření |Obsahuje výsečový graf, který poskytuje rychlý přehled o Určuje, zda byly požadovaných prostředků chráněny pomocí ověřování založeného na tokenech. Chráněné prostředky jsou zobrazené v grafu podle výsledků neúspěšné pokusy o ověření. |
-| Ověření tokenu odepřít podrobnosti |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, které byly odmítnut na základě ověřování pomocí tokenu. |
-| Kódy odpovědí protokolu HTTP |Obsahuje rozpis systémů stavové kódy HTTP (například 200 OK, 403 Zakázáno, 404 Nenalezeno, atd.), který se doručují klientům protokolu HTTP naše servery edge. Výsečový graf umožňuje rychle posoudit, jak se vaše prostředky služby. Poskytuje podrobné statistická data pro každý z kódů odpovědi pod grafem. |
-| Chyby 404 |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, z kterých vzniklo 404 kód odpovědi nebyl nalezen. |
-| Chyby 403 |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, z kterých vzniklo kód odpovědi 403 Zakázáno. Kód odpovědi 403 Zakázáno nastane, pokud zdrojový server zákazníka nebo hraniční server v našem POP odepření požadavku. |
-| Chyb 4xx |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, z kterých vzniklo kódem odpovědi v rozsahu 400. Vyloučené z této sestavy jsou 403 nebyl nalezen a kódů odpovědi 404 zakázáno. Kód odpovědi 4xx obvykle, dochází, když požadavek byl odepřen v důsledku chyby klienta. |
-| 504 chyby |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, z kterých vzniklo 504 kód odpovědi vypršel časový limit brány. 504 kód odpovědi vypršel časový limit brány nastane, když dojde k vypršení časového limitu, když proxy server HTTP se pokouší komunikovat s jiným serverem. V případě naší síti CDN 504 kód odpovědi vypršel časový limit brány obvykle dochází, když hraniční server nelze navázat komunikaci se serverem původu zákazníka. |
-| 502 chyby |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, z kterých vzniklo 502 Chybná brána kód odpovědi. Kód odpovědi 502 Chybná brána nastane, pokud dojde k chybě protokolu HTTP mezi serverem a proxy server HTTP. V případě naší síti CDN 502 Chybná brána kód odpovědi obvykle dochází, když zákazník zdrojový server vrátí neplatnou odpověď na hraniční server. Odpověď je neplatný, pokud ho nelze analyzovat nebo pokud je neúplný. |
-| Chyby 5xx |Obsahuje sloupcový graf, který vám umožní zobrazit hlavních 10 požadavků, z kterých vzniklo kódem odpovědi v rozsahu 500.  Vyloučené z této sestavy jsou 502 – Chybná brána a 504 kódy odpovědí vypršel časový limit brány. |
+| Denní souhrn |Umožňuje zobrazit denní trendy provozu za zadané časové období. Každý pruh v tomto grafu představuje konkrétní datum. Velikost pruhu označuje celkový počet přístupů, ke kterým k tomuto datu došlo. |
+| Hodinový souhrn |Umožňuje zobrazit hodinové trendy provozu za zadané časové období. Každý pruh v tomto grafu představuje jednu hodinu k určitému datu. Velikost pruhu označuje celkový počet přístupů, ke kterým došlo během této hodiny. |
+| Protokoly |Zobrazuje rozdělení provozu mezi protokoly HTTP a HTTPS. Graf koblihy označuje procento přístupů, ke kterým došlo pro každý typ protokolu. |
+| Metody PROTOKOLU HTTP |Umožňuje získat rychlý přehled o tom, které metody HTTP se používají k vyžádání dat. Nejběžnější metody požadavku HTTP jsou obvykle GET, HEAD a POST. Graf donut označuje procento přístupů, ke kterým došlo pro každý typ metody požadavku HTTP. |
+| URL – adresy |Obsahuje graf, který zobrazuje 10 nejvyšších požadovaných adres URL. Pro každou adresu URL se zobrazí pruh. Výška panelu označuje, kolik přístupů, které konkrétní adresa URL vygenerovala v časovém rozpětí pokrytém sestavou. Statistiky pro 100 požadovaných adres URL jsou zobrazeny přímo pod tímto grafem. |
+| CNAMEs |Obsahuje graf, který zobrazuje 10 nejlepších CNAMEs používaných k vyžádání datových zdrojů v časovém rozpětí sestavy. Statistiky pro 100 požadovaných CNAMes jsou zobrazeny přímo pod tímto grafem. |
+| Původ |Obsahuje graf, který zobrazuje 10 nejvyšších serverů CDN nebo původu zákazníka, ze kterých byly požadovány prostředky za zadané časové období. Statistiky pro 100 požadovaných serverů CDN nebo serverů původu zákazníka jsou zobrazeny přímo pod tímto grafem. Servery původu zákazníka jsou označeny názvem definovaným v možnosti Název adresáře. |
+| Geografické POP |Zobrazuje, jak velká část provozu je směrována prostřednictvím určitého bodu přítomnosti (POP). Třípísmenná zkratka představuje pop v naší síti CDN. |
+| Klienti |Obsahuje graf, který zobrazuje prvních 10 klientů, kteří požadovali majetek za zadané časové období. Pro účely této sestavy jsou všechny požadavky, které pocházejí ze stejné adresy IP, považovány za od stejného klienta. Statistiky pro top 100 klientů jsou zobrazeny přímo pod tímto grafem. Tato sestava je užitečná pro určení vzorců aktivit stahování pro nejlepší klienty. |
+| Stavy mezipaměti |Poskytuje podrobný rozpis chování mezipaměti, které může odhalit přístupy ke zlepšení celkového prostředí koncového uživatele. Vzhledem k tomu, že nejrychlejší výkon pochází z přístupů do mezipaměti, můžete optimalizovat rychlost doručování dat minimalizací neúspěšných přístupů do mezipaměti a přístupů do mezipaměti, jejichž platnost vypršela. |
+| NONE Podrobnosti |Obsahuje graf, který zobrazuje 10 hlavních adres URL pro datové zdroje, u kterých nebyla za zadané časové období zkontrolována čerstvost obsahu mezipaměti. Statistiky pro 100 hlavních adres pro tyto typy datových zdrojů jsou zobrazeny přímo pod tímto grafem. |
+| podrobnosti o CONFIG_NOCACHE |Obsahuje graf, který zobrazuje 10 hlavních adres URL pro datové zdroje, které nebyly uloženy do mezipaměti z důvodu konfigurace CDN zákazníka. Tyto typy datových zdrojů byly obsluhovány přímo ze serveru původu. Statistiky pro 100 hlavních adres pro tyto typy datových zdrojů jsou zobrazeny přímo pod tímto grafem. |
+| Podrobnosti o neuložení do mezipaměti |Obsahuje graf, který zobrazuje 10 hlavních adres, které obsahují 10 hlavních adres URL pro datové zdroje, které nelze uložit do mezipaměti z důvodu dat hlavičky požadavku. Statistiky pro 100 hlavních adres pro tyto typy datových zdrojů jsou zobrazeny přímo pod tímto grafem. |
+| podrobnosti o TCP_HIT |Obsahuje graf, který zobrazuje 10 hlavních adres URL pro datové zdroje, které jsou obsluhovány okamžitě z mezipaměti. Statistiky pro 100 hlavních adres pro tyto typy datových zdrojů jsou zobrazeny přímo pod tímto grafem. |
+| podrobnosti o TCP_MISS |Obsahuje graf, který zobrazuje 10 hlavních adres URL pro datové zdroje, které mají stav mezipaměti TCP_MISS. Statistiky pro 100 hlavních adres pro tyto typy datových zdrojů jsou zobrazeny přímo pod tímto grafem. |
+| TCP_EXPIRED_HIT podrobnosti |Obsahuje graf, který zobrazuje 10 hlavních adres URL pro zastaralé datové zdroje, které byly obsluhovány přímo z protokolu POP. Statistiky pro 100 hlavních adres pro tyto typy datových zdrojů jsou zobrazeny přímo pod tímto grafem. |
+| podrobnosti TCP_EXPIRED_MISS |Obsahuje graf, který zobrazuje 10 hlavních adres URL pro zastaralé datové zdroje, pro které bylo třeba načíst novou verzi ze zdrojového serveru. Statistiky pro 100 hlavních adres pro tyto typy datových zdrojů jsou zobrazeny přímo pod tímto grafem. |
+| podrobnosti TCP_CLIENT_REFRESH_MISS |Obsahuje pruhový graf, který zobrazuje 10 hlavních adres URL pro datové zdroje, které byly načteny ze zdrojového serveru z důvodu požadavku klienta bez mezipaměti. Statistiky pro 100 hlavních adres url pro tyto typy požadavků jsou zobrazeny přímo pod tímto grafem. |
+| Typy požadavků klienta |Označuje typ požadavků, které byly provedeny klienty HTTP (např. prohlížeče). Tato sestava obsahuje graf koblihy, který poskytuje představu o tom, jak jsou zpracovávány požadavky. Šířka pásma a informace o provozu pro každý typ požadavku se zobrazí pod grafem. |
+| Uživatelský agent |Obsahuje sloupcový graf zobrazující 10 nejlepších uživatelských agentů, kteří požadují váš obsah prostřednictvím naší sítě CDN. Uživatelský maješ obvykle webový prohlížeč, přehrávač médií nebo prohlížeč mobilních telefonů. Statistiky pro 100 nejlepších uživatelských agentů jsou zobrazeny přímo pod tímto grafem. |
+| Přišli |Obsahuje sloupcový graf zobrazující 10 hlavních odkazujících na obsah přístupný prostřednictvím našeho CDN. Odkazovaný odkazovaný objekt je obvykle adresa URL webové stránky nebo prostředku, který odkazuje na váš obsah. Podrobné informace jsou uvedeny pod grafem pro 100 hlavních odkazovaných. |
+| Typy komprese |Obsahuje graf koblih, který rozděluje požadované prostředky podle toho, zda byly komprimovány našimi hraničními servery. Procento komprimovaných datových zdrojů se člení podle typu použité komprese. Podrobné informace jsou uvedeny pod grafem pro každý typ komprese a stav. |
+| Typy souborů |Obsahuje sloupcový graf, který zobrazuje 10 nejlepších typů souborů, které byly požadovány prostřednictvím našeho CDN pro váš účet. Pro účely této sestavy je typ souboru definován příponou názvu datového zdroje a typem \[internetového\]média (např. text\]html/html \[,\]text htm/html \[, text aspx atd.). Podrobné informace jsou uvedeny pod grafem pro prvních 100 typů souborů. |
+| Jedinečné soubory |Obsahuje graf, který vykresluje celkový počet jedinečných aktiv, které byly požadovány v určitý den za zadané časové období. |
+| Přehled tokenu |Obsahuje výsečový graf, který poskytuje rychlý přehled o tom, zda byly požadované prostředky chráněny ověřováním na základě tokenu. Chráněné prostředky jsou zobrazeny v grafu podle výsledků jejich pokusu o ověření. |
+| Podrobnosti o zamítnutí tokenu |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které byly odepřeny z důvodu ověřování na základě tokenu. |
+| Kódy odpovědí HTTP |Obsahuje rozpis stavových kódů HTTP (např. 200 OK, 403 Forbidden, 404 Not Found atd.), které byly doručeny vašim http klientům našimi hraničními servery. Výsečový graf umožňuje rychle posoudit, jak byl váš majetek obsluhován. Podrobné statistické údaje jsou uvedeny pro každý kód odpovědi pod grafem. |
+| 404 Chyby |Obsahuje sloupcový graf, který umožňuje zobrazit prvních 10 požadavků, které vyústily v kód odpovědi 404 Not Found. |
+| 403 Chyby |Obsahuje sloupcový graf, který umožňuje zobrazit prvních 10 požadavků, které vyústily v 403 Zakázaný kód odpovědi. 403 Zakázaný kód odpovědi nastane, když je požadavek odepřen serverem původu zákazníka nebo hraničním serverem na našem bodu POP. |
+| 4xx Chyby |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které vyústily v kód odpovědi v rozsahu 400. Z této sestavy jsou vyloučeny 403 nebyly nalezeny a 404 Zakázaných kódů odpovědí. Kód odpovědi 4xx obvykle nastane, když je požadavek odepřen v důsledku chyby klienta. |
+| 504 Chyby |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které vyústily v kód odpovědi 504 Gateway Timeout. Kód odpovědi 504 Gateway Timeout nastane, když dojde k časovému výpadku, když se proxy server HTTP pokouší komunikovat s jiným serverem. V případě našeho CDN kód odpovědi 504 Gateway Timeout obvykle dochází, když hraniční server není schopen navázat komunikaci se serverem původu zákazníka. |
+| 502 Chyb |Obsahuje sloupcový graf, který umožňuje zobrazit prvních 10 požadavků, které vyústily v kód odpovědi 502 Bad Gateway. Kód odpovědi 502 Bad Gateway nastane, když dojde k selhání protokolu HTTP mezi serverem a proxy serverem HTTP. V případě našeho CDN kód odpovědi 502 Bad Gateway obvykle dochází, když server původu zákazníka vrátí neplatnou odpověď na hraniční server. Odpověď je neplatná, pokud ji nelze analyzovat nebo pokud je neúplná. |
+| 5xx Chyby |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které vyústily v kód odpovědi v rozsahu 500.  Z této sestavy jsou vyloučeny kódy odpovědí 502 Bad Gateway a 504 Gateway Timeout. |
 
-## <a name="see-also"></a>Viz také:
-* [Azure CDN – přehled](cdn-overview.md)
-* [Statistiky v reálném čase v Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Přepisování výchozího chování HTTP pomocí stroje pravidel](cdn-rules-engine.md)
-* [Rozšířené sestavy HTTP](cdn-advanced-http-reports.md)
+## <a name="see-also"></a>Viz také
+* [CDN Azure – Přehled](cdn-overview.md)
+* [Statistiky v reálném čase v microsoft azure cdn](cdn-real-time-stats.md)
+* [Přepsání výchozího chování PROTOKOLU HTTP pomocí modulu pravidel](cdn-rules-engine.md)
+* [Rozšířené sestavy PROTOKOLU HTTP](cdn-advanced-http-reports.md)
 

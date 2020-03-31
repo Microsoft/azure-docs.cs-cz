@@ -1,34 +1,33 @@
 ---
-title: Migrace do partnerského centra | Azure Marketplace
-description: Migrace nabídek z portál partnerů cloudu do partnerského centra.
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: Migrace do Partnerského centra | Azure Marketplace
+description: Migrace nabídek z portálu partnerů cloudu do centra partnerů.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.author: v-chjen
-ms.openlocfilehash: cf1f7f7ebd7d0761f3bec0ab5a27e1d54fde256e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 8ef117425f945d14db535ea3ecedc50d18819868
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480655"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280163"
 ---
-# <a name="cloud-partner-portal-migration-to-partner-center"></a>Migrace portál partnerů cloudu do partnerského centra
+# <a name="cloud-partner-portal-migration-to-partner-center"></a>Migrace portálu partnerů cloudu do Partnerského centra
 
-Společnost Microsoft migruje nabídky z portál partnerů cloudu do partnerského centra, aby zjednodušila vaše účty a možnosti správy nabídek. Pokud v současné době spravujete společné obchodní materiály v katalogu Microsoft Partner pro uvedení na trh (OCP GTM), budete moct v partnerském centru brzy aktualizovat své proprodejní materiály.
+Aby microsoft zjednodušil možnosti správy vašeho účtu a nabídky, migruje nabídky z portálu partnerů cloudu do Centra partnerů. Pokud v současné době spravujete kolaterál spoluprodeje v katalogu One Commercial Partner Go-to-Market (OCP GTM), budete moci brzy aktualizovat kolaterál spoluprodeje v Partnerském centru.
 
-| **Typ nabídky** | **Správa nabídek migrována z portál partnerů cloudu do partnerského centra** | **Možnost aktualizace prodávaných materiálů v partnerském centru** |
+| **Typ nabídky** | **Správa nabídek migrovala z portálu partnerů cloudu do partnerského centra** | **Možnost aktualizace kolaterálu v Partnerském centru** |
 |    -----------------------    |    -----------------------------  |  -----------------------------  |
-| Software jako služba (SaaS) |     Nově dostupné       |   Obecná dostupnost v 2020. února      |
-| Dynamics 365 pro Customer Engagement & PowerApps      |     Nově dostupné        |   Nově dostupné      |
+| Software jako služba (SaaS) |     Nově dostupné       |   Obecná dostupnost kolem února 2020      |
+| Dynamics 365 pro zapojení zákazníků & PowerApps      |     Nově dostupné        |   Nově dostupné      |
 | Dynamics 365 for Operations     |     Nově dostupné       |   Nově dostupné     |
-| Dynamics 365 Business Central      |     Nově dostupné        |   Obecná dostupnost v 2020. února     |
-| Azure Application     |     Obecná dostupnost – prosinec. 2019       |   Obecná dostupnost v 2020. února     |
-| Virtuální počítače Azure      |     Oznámí se       |   Oznámí se    |
-| Kontejner Azure     |     Oznámí se       |   Oznámí se     |
-| Konzultační služba      |     Oznámí se       |   Oznámí se     |
-| Modul IoT Edge      |     Oznámí se       |   Oznámí se     |
-| Aplikace služby Power BI     |     Oznámí se       |   Oznámí se     |
+| Dynamics 365 Business Central      |     Nově dostupné        |   Obecná dostupnost kolem února 2020     |
+| Azure Application     |     Všeobecné dostupnost Prosinec 2019       |   Obecná dostupnost kolem února 2020     |
+| Virtuální počítač Azure      |     Bude oznámeno       |   Bude oznámeno    |
+| Kontejner Azure     |     Bude oznámeno       |   Bude oznámeno     |
+| Konzultační služba      |     Bude oznámeno       |   Bude oznámeno     |
+| Modul IoT Edge      |     Bude oznámeno       |   Bude oznámeno     |
+| Aplikace Služby Power BI     |     Bude oznámeno       |   Bude oznámeno     |
 |  |  |

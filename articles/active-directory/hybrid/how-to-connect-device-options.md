@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Možnosti zařízení | Dokumentace Microsoftu'
-description: Tento dokument podrobně popisuje možnosti zařízení, které jsou k dispozici ve službě Azure AD Connect
+title: 'Azure AD Connect: Možnosti zařízení | Dokumenty společnosti Microsoft'
+description: Tento dokument podrobně popisuje možnosti zařízení, které jsou dostupné ve službě Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,34 +17,34 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96ddcdb67ef079cfa23902a1dcb03b0ec61077fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109529"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect: Možnosti zařízení
 
-V následující dokumentaci najdete informace o různých možnostech zařízení, která je k dispozici ve službě Azure AD Connect. Azure AD Connect můžete nakonfigurovat následující dvě operace: 
-* **Připojení k hybridní službě Azure AD**: Pokud má místní prostředí AD nároky na místo a chcete výhody služby Azure AD, můžete implementovat hybridních zařízení připojených k Azure AD. Tato zařízení jsou připojené k vaší místní Active Directory a Azure Active Directory.
-* **Zpětný zápis zařízení**: Zpětný zápis zařízení se používá k povolení podmíněného přístupu založené na zařízení se službou AD FS (2012 R2 nebo vyšší) chráněný zařízení
+Následující dokumentace obsahuje informace o různých možnostech zařízení, které jsou k dispozici ve službě Azure AD Connect. Azure AD Connect můžete použít ke konfiguraci následujících dvou operací: 
+* **Hybridní připojení Azure AD**: Pokud vaše prostředí má místní stopu služby AD a chcete výhody Azure AD, můžete implementovat hybridní zařízení připojená k Azure AD. Tato zařízení jsou připojena k místnímu službě Active Directory i k vaší službě Azure Active Directory.
+* **Zpětný zápis zařízení**: Zpětný zápis zařízení se používá k povolení podmíněného přístupu na základě zařízení chráněných zařízení služby AD FS (2012 R2 nebo vyšší).
 
-## <a name="configure-device-options-in-azure-ad-connect"></a>Konfigurovat možnosti zařízení ve službě Azure AD Connect
+## <a name="configure-device-options-in-azure-ad-connect"></a>Konfigurace možností zařízení ve službě Azure AD Connect
 
-1.  Spuštění služby Azure AD Connect. V **další úkoly** stránce **konfigurovat možnosti zařízení**.  Klikněte na **Další**.
-    ![Konfigurovat možnosti zařízení](./media/how-to-connect-device-options/deviceoptions.png) 
+1.  Spusťte Azure AD Connect. Na stránce **Další úkoly** vyberte **Konfigurovat možnosti zařízení**.  Klikněte na **Další**.
+    ![Konfigurace možností zařízení](./media/how-to-connect-device-options/deviceoptions.png) 
 
-    **Přehled** stránky zobrazují podrobnosti.
+    Na stránce **Přehled** se zobrazí podrobnosti.
     ![Přehled](./media/how-to-connect-device-options/deviceoverview.png)
 
     >[!NOTE]
-    > K dispozici pouze ve verzi 1.1.819.0 a novějších verzí se nakonfigurovat možnosti zařízení.
+    > Nové možnosti konfigurovat zařízení je k dispozici pouze ve verzi 1.1.819.0 a novější.
 
-2.  Po zadání přihlašovacích údajů pro službu Azure AD, můžete zvolit operaci provést na stránce Možnosti zařízení.
-    ![Operace zařízení](./media/how-to-connect-device-options/deviceoptionsselection.png)
+2.  Po zadání přihlašovacích údajů pro Azure AD, můžete zvolit operaci, která má být provedena na stránce možnosti zařízení.
+    ![Provoz zařízení](./media/how-to-connect-device-options/deviceoptionsselection.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Konfigurace připojení k hybridní službě Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)
-* [Konfigurace / zakázat zpětný zápis zařízení](how-to-connect-device-writeback.md)
+* [Konfigurace hybridního připojení Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [Konfigurace / zakázání zpětného zápisu zařízení](how-to-connect-device-writeback.md)
 

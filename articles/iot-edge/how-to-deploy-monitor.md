@@ -1,6 +1,6 @@
 ---
-title: Nasazení modulů ve velkém měřítku v Azure Portal-Azure IoT Edge
-description: Pomocí webu Azure portal k vytvoření automatického nasazení pro skupiny služby IoT Edge zařízení
+title: Nasazení modulů ve velkém měřítku na webu Azure Portal – Azure IoT Edge
+description: Použití portálu Azure k vytvoření automatických nasazení pro skupiny zařízení IoT Edge
 keywords: ''
 author: kgremban
 manager: philmea
@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271431"
 ---
-# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí webu Azure portal
+# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí portálu Azure
 
-Vytvořte **IoT Edge automatické nasazení** v Azure Portal, abyste mohli spravovat průběžná nasazení pro mnoho zařízení najednou. Automatická nasazení pro IoT Edge jsou součástí funkce [automatické správy zařízení](/azure/iot-hub/iot-hub-automatic-device-management) v IoT Hub. Nasazení jsou dynamické procesy, které umožňují nasadit více modulů na více zařízení, sledovat stav a stav modulů a v případě potřeby provádět změny.
+Vytvořte **automatické nasazení IoT Edge** na webu Azure Portal pro správu probíhajících nasazení pro mnoho zařízení najednou. Automatická nasazení pro IoT Edge jsou součástí funkce [automatické správy zařízení](/azure/iot-hub/iot-hub-automatic-device-management) služby IoT Hub. Nasazení jsou dynamické procesy, které umožňují nasadit více modulů do více zařízení, sledovat stav a stav modulů a v případě potřeby provádět změny.
 
-Další informace najdete v tématu [vysvětlení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
+Další informace najdete [v tématu Principy automatického nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
 
 ## <a name="identify-devices-using-tags"></a>Identifikace zařízení pomocí značek
 
-Před vytvořením nasazení, budete muset mít k určení zařízení, která chcete ovlivnit. Azure IoT Edge identifikuje zařízení pomocí **značek** v zařízení s dvojitou signalizací. Každé zařízení může mít několik značek, které můžete definovat jakýmkoli způsobem, který dává smysl pro vaše řešení.
+Před vytvořením nasazení musíte být schopni určit, která zařízení chcete ovlivnit. Azure IoT Edge identifikuje zařízení pomocí **značek** v dvojčeti zařízení. Každé zařízení může mít více značek, které definujete jakýmkoli způsobem, který dává smysl pro vaše řešení.
 
-Pokud například spravujete areály inteligentních budov, můžete přidat umístění, typ místnosti a značky prostředí do zařízení:
+Pokud například spravujete kampus inteligentních budov, můžete do zařízení přidat značky polohy, typu místnosti a prostředí:
 
 ```json
 "tags":{
@@ -39,200 +39,200 @@ Pokud například spravujete areály inteligentních budov, můžete přidat um�
 }
 ```
 
-Další informace o tom, jaké jsou vlákna a značky zařízení, najdete [v tématu pochopení a používání nevláken zařízení v IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Další informace o dvojčata zařízení a značky, [najdete v tématu Principy a použití dvojčatzařízení v centru IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Vytvoření nasazení
 
-IoT Edge poskytuje dva různé typy automatických nasazení, které můžete použít k přizpůsobení scénáře. Můžete vytvořit standardní *nasazení*, které zahrnuje moduly runtime systému a všechny další moduly a trasy. Každé zařízení může použít jenom jedno nasazení. Můžete také vytvořit *vrstvené nasazení*, které zahrnuje pouze vlastní moduly a trasy, nikoli modul runtime systému. Mnoho vrstev nasazení lze v zařízení kombinovat na standardní nasazení. Další informace o tom, jak dva typy automatických nasazení vzájemně spolupracují, najdete v tématu [pochopení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
+IoT Edge poskytuje dva různé typy automatických nasazení, které můžete použít k přizpůsobení scénáře. Můžete vytvořit standardní *nasazení*, které zahrnuje moduly modulů modulů modulů runtime systému a všechny další moduly a trasy. Každé zařízení může použít pouze jedno nasazení. Nebo můžete vytvořit *vrstvené nasazení*, které zahrnuje pouze vlastní moduly a trasy, nikoli modul runtime systému. Mnoho vrstvených nasazení lze kombinovat na zařízení, nad standardní nasazení. Další informace o tom, jak dva typy automatických nasazení spolupracují, naleznete [v tématu Principy automatických nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
 
-Postup vytvoření nasazení a navrstveného nasazení je velmi podobný. V následujících krocích jsou vyvolány jakékoli rozdíly.
+Kroky pro vytvoření nasazení a vrstvené nasazení jsou velmi podobné. Všechny rozdíly jsou volány v následujících krocích.
 
-1. V [Azure Portal](https://portal.azure.com)přejdete do IoT Hub.
-1. V nabídce v levém podokně vyberte **IoT Edge** v části **Automatická správa zařízení**.
-1. Na horním panelu vyberte **vytvořit nasazení** nebo **vytvořit vrstvené nasazení**.
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte do služby IoT Hub.
+1. V nabídce v levém podokně vyberte v části **Automatická správa zařízení** **položku IoT Edge** .
+1. Na horním panelu vyberte **Vytvořit nasazení** nebo Vytvořit nasazení **s vrstvami**.
 
-Existuje pět kroků pro vytvoření nasazení. V následujících částech se provedou v rámci každé z nich.
+Existuje pět kroků k vytvoření nasazení. Následující části procházejí každou z nich.
 
-### <a name="step-1-name-and-label"></a>Krok 1: název a popisek
+### <a name="step-1-name-and-label"></a>Krok 1: Název a popisek
 
-1. Zadejte jedinečný název, který je malá písmena až 128 vašeho nasazení. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`.
-1. Můžete přidat popisky jako páry klíč-hodnota, které vám pomůžou sledovat vaše nasazení. Například **HostPlatform** , **Linux**nebo **Version** a **3.0.1**.
-1. Vyberte **Další: moduly** , které se mají přesunout na krok 2.
+1. Pojmenujte nasazení jedinečný název, který je až 128 malá písmena. Vyhněte se mezerám `& ^ [ ] { } \ | " < > /`a následujícím neplatným znakům: .
+1. Štítky můžete přidat jako páry klíč-hodnota, které vám pomohou sledovat vaše nasazení. Například **HostPlatform** a **Linux**nebo **Version** a **3.0.1**.
+1. Vyberte **Další: Moduly** se přesunete ke kroku dva.
 
-### <a name="step-2-modules"></a>Krok 2: moduly
+### <a name="step-2-modules"></a>Krok 2: Moduly
 
 Do nasazení můžete přidat až 20 modulů. Pokud vytvoříte nasazení bez modulů, odebere všechny aktuální moduly z cílových zařízení.
 
-V nasazeních můžete spravovat nastavení pro IoT Edge agenta a IoT Edge moduly centra. Vyberte **nastavení modulu runtime** a nakonfigurujte dva běhové moduly. V vrstveném nasazení nejsou moduly runtime zahrnuty, takže není možné je nakonfigurovat.
+V nasazenímůžete spravovat nastavení pro moduly agenta IoT Edge a Centra IoT Edge. Chcete-li nakonfigurovat dva moduly modulů runtime, vyberte **možnost Nastavení modulu runtime.** V nasazení vrstvené moduly runtime nejsou zahrnuty, takže nelze nakonfigurovat.
 
 Můžete přidat tři typy modulů:
 
 * Modul IoT Edge
-* Modul Marketplace
+* Modul marketplace
 * Modul Azure Stream Analytics
 
-#### <a name="add-an-iot-edge-module"></a>Přidat modul IoT Edge
+#### <a name="add-an-iot-edge-module"></a>Přidání modulu IoT Edge
 
-Chcete-li přidat vlastní kód jako modul, nebo chcete-li ručně přidat modul služby Azure, postupujte takto:
+Chcete-li přidat vlastní kód jako modul nebo ručně přidat modul služby Azure, postupujte takto:
 
-1. V části **Container Registry přihlašovací údaje** na stránce zadejte názvy a přihlašovací údaje pro všechny Registry privátních kontejnerů, které obsahují image modulů pro toto nasazení. Agent IoT Edge ohlásí chybu 500, pokud nemůže najít přihlašovací údaje registru kontejneru pro bitovou kopii Docker.
-1. V části **IoT Edge moduly** na stránce klikněte na **Přidat**.
-1. V rozevírací nabídce vyberte **modul IoT Edge** .
-1. Dejte modulu **IoT Edge název modulu**.
-1. Do pole **identifikátor URI image** zadejte image kontejneru pro váš modul.
-1. Pomocí rozevírací nabídky vyberte **zásadu restartování**. Zvolte jednu z následujících možností:
-   * **Always** – modul se vždy restartuje, pokud se z nějakého důvodu vypíná.
-   * **nikdy** – modul se nikdy nerestartuje, pokud se z nějakého důvodu vypíná.
-   * **při selhání** – modul se restartuje, pokud dojde k chybě, ale ne v případě, že se vypíná čistě.
-   * stav není **v pořádku** – modul se restartuje, pokud dojde k chybě, nebo vrátí stav není v pořádku. Záleží jen na každý modul implementovat funkci zdravotní stav.
-1. Pomocí rozevírací nabídky vyberte **požadovaný stav** pro modul. Zvolte jednu z následujících možností:
-   * **spuštění** je výchozí možnost. V modulu začne okamžitě po nasazení spustí.
-   * **Zastaveno** – po nasazení přestane modul zůstat nečinný, dokud se nespustí a nezačne vámi nebo jiným modulem.
-1. Zadejte všechny **možnosti vytvoření kontejneru** , které by měly být předány do kontejneru. Další informace najdete v tématu [Docker Create](https://docs.docker.com/engine/reference/commandline/create/).
-1. Pokud chcete přidat značky nebo jiné vlastnosti do modulu s dvojitou výjimkou, vyberte možnost **Nastavení vláken modulu** .
+1. V části **Pověření registru kontejneru** na stránce zadejte názvy a pověření pro všechny privátní kontejnerové registry, které obsahují ibitové kopie modulu pro toto nasazení. Agent IoT Edge ohlásí chybu 500, pokud nemůže najít pověření registru kontejneru pro bitovou kopii Dockeru.
+1. V části **Moduly okrajů IoT** na stránce klikněte na **Přidat**.
+1. V rozevírací nabídce vyberte **Modul IoT Edge.**
+1. Zadejte svému modulu **název modulu IoT Edge**.
+1. Do pole **Identifikátor URI bitové kopie** zadejte obrázek kontejneru pro modul.
+1. V rozevírací nabídce vyberte **zásadu restartování**. Vybírat můžete z těchto možností:
+   * **vždy** - Modul se vždy restartuje, pokud se z nějakého důvodu vypne.
+   * **never** - Modul se nikdy nerestartuje, pokud se z nějakého důvodu vypne.
+   * **on-failure** - Modul se restartuje, pokud dojde k chybě, ale ne, pokud se vypne čistě.
+   * **on-nev pořádku** - modul se restartuje, pokud dojde k chybě nebo vrátí stav není v pořádku. Je na každém modulu k implementaci funkce stavu stavu.
+1. Pomocí rozevírací nabídky vyberte **požadovaný stav** modulu. Vybírat můžete z těchto možností:
+   * **běh** - Spuštění je výchozí možnost. Modul se spustí ihned po nasazení.
+   * **zastaveno** – po nasazení zůstane modul nečinný, dokud nebude vyzván ke spuštění vámi nebo jiným modulem.
+1. Zadejte všechny **možnosti vytvoření kontejneru,** které by měly být předány do kontejneru. Další informace naleznete v [tématu docker create](https://docs.docker.com/engine/reference/commandline/create/).
+1. Pokud chcete do dvojčete modulu přidat značky nebo jiné vlastnosti, vyberte **nastavení dvojčete** modulu.
 1. Zadejte **proměnné prostředí** pro tento modul. Proměnné prostředí poskytují informace o konfiguraci modulu.
-1. Vyberte **Přidat** a přidejte do nasazení modul.
+1. Chcete-li přidat modul do nasazení, vyberte **přidat.**
 
-#### <a name="add-a-module-from-the-marketplace"></a>Přidání modulu z Marketplace
+#### <a name="add-a-module-from-the-marketplace"></a>Přidání modulu z webu Marketplace
 
-Chcete-li přidat modul z Azure Marketplace, postupujte podle následujících kroků:
+Pokud chcete přidat modul z Azure Marketplace, postupujte takto:
 
-1. V části **IoT Edge moduly** na stránce klikněte na **Přidat**.
-1. Z rozevírací nabídky vyberte **modul Marketplace** .
-1. Vyberte modul na stránce **IoT Edge modulu pro Marketplace** . Vybraný modul se automaticky nakonfiguruje pro vaše předplatné, skupinu prostředků a zařízení. Pak se zobrazí v seznamu IoT Edge moduly. Některé moduly můžou vyžadovat další konfiguraci. Další informace najdete v tématu [nasazení modulů z webu Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace).
+1. V části **Moduly okrajů IoT** na stránce klikněte na **Přidat**.
+1. V rozevírací nabídce vyberte **Modul Marketplace.**
+1. Zvolte modul ze stránky **Webu Marketplace modulu IoT Edge.** Vybraný modul se automaticky nakonfiguruje pro vaše předplatné, skupinu prostředků a zařízení. Pak se zobrazí v seznamu modulů IoT Edge. Některé moduly mohou vyžadovat další konfiguraci. Další informace najdete [v tématu Nasazení modulů z Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace).
 
-#### <a name="add-a-stream-analytics-module"></a>Přidat modul Stream Analytics
+#### <a name="add-a-stream-analytics-module"></a>Přidání modulu Stream Analytics
 
-Přidat modul z Azure Stream Analytics, postupujte podle těchto kroků:
+Pokud chcete přidat modul z Azure Stream Analytics, postupujte takto:
 
-1. V části **IoT Edge moduly** na stránce klikněte na **Přidat**.
-1. V rozevírací nabídce vyberte **modul Azure Stream Analytics** .
-1. V pravém podokně vyberte své **předplatné**.
-1. Vyberte svoji **úlohu IoT Edge**.
-1. Vyberte **Uložit** a přidejte do nasazení modul.
+1. V části **Moduly okrajů IoT** na stránce klikněte na **Přidat**.
+1. V rozevírací nabídce vyberte **modul Azure Stream Analytics.**
+1. V pravém podokně zvolte **předplatné**.
+1. Vyberte si **úlohu**IoT Edge .
+1. Výběrem **možnosti Uložit** přidáte modul do nasazení.
 
-#### <a name="configure-module-settings"></a>Konfigurovat nastavení modulu
+#### <a name="configure-module-settings"></a>Konfigurace nastavení modulu
 
-Po přidání modulu do nasazení můžete vybrat jeho název a otevřít tak stránku **aktualizovat IoT Edge modul** . Na této stránce můžete upravit nastavení modulu, proměnné prostředí, možnosti vytváření a vlákna v modulu. Pokud jste přidali modul z webu Marketplace, může již mít některé z těchto parametrů vyplněno.
+Po přidání modulu do nasazení můžete vybrat jeho název a otevřít stránku **Modul u aktualizace IoT Edge.** Na této stránce můžete upravit nastavení modulu, proměnné prostředí, vytvářet možnosti a dvojče modulu. Pokud jste přidali modul z trhu, může již mít některé z těchto parametrů vyplněny.
 
-Pokud vytváříte vrstvené nasazení, můžete nakonfigurovat modul, který existuje v jiných nasazeních, která cílí na stejná zařízení. Pokud chcete modul bez přepsání jiných verzí aktualizovat, otevřete kartu nastavení s **dvojitou** přesností. Vytvořte novou **vlastnost s dvojitou** přesností modulu s jedinečným názvem pro dílčí oddíl v rámci požadovaných vlastností vlákna, například `properties.desired.settings`. Definujete-li vlastnosti pouze v poli `properties.desired`, přepíší se požadované vlastnosti pro modul definovaný v libovolném nasazení s nižší prioritou.
+Pokud vytváříte vrstvené nasazení, je možné, že konfigurujete modul, který existuje v jiných nasazeních zaměřených na stejná zařízení. Chcete-li aktualizovat dvojče modulu bez přepsání jiných verzí, **Module Twin Property** otevřete kartu Nastavení `properties.desired.settings` **dvojčete modulu.** Pokud definujete vlastnosti `properties.desired` v rámci pouze pole, přepíše požadované vlastnosti pro modul definovaný v jakékoli nasazení s nižší prioritou.
 
-![Nastavit vlastnost s dvojitým modulem pro vrstvené nasazení](./media/how-to-deploy-monitor/module-twin-property.png)
+![Nastavit vlastnost dvojčete modulu pro nasazení vrstvené](./media/how-to-deploy-monitor/module-twin-property.png)
 
-Další informace o konfiguraci zdvojeného modulu v vrstveném nasazení najdete v tématu [vrstvené nasazení](module-deployment-monitoring.md#layered-deployment).
+Další informace o konfiguraci dvojčete modulu v nasazeních s vrstvami naleznete v tématu [Layered deployment](module-deployment-monitoring.md#layered-deployment).
 
-Jakmile budete mít nakonfigurované všechny moduly pro nasazení, vyberte **Další: trasy** , které chcete přesunout na krok 3.
+Jakmile budete mít všechny moduly pro nasazení nakonfigurováno, vyberte **Další: Trasy** přesunout do kroku tři.
 
-### <a name="step-3-routes"></a>Krok 3: trasy
+### <a name="step-3-routes"></a>Krok 3: Trasy
 
-Trasy definovat, jak moduly navzájem komunikují v rámci nasazení. Ve výchozím nastavení vám průvodce poskytne trasu s **názvem** **/messages/\* do $upstream**, což znamená, že všechny zprávy ve službě IoT Hub budou odesílány do výstupů.  
+Trasy definují, jak moduly vzájemně komunikují v rámci nasazení. Ve výchozím nastavení průvodce poskytuje trasu snázvem **upstream** a definované jako **FROM\* /messages/ INTO $upstream**, což znamená, že všechny zprávy výstupní všechny moduly jsou odesílány do centra IoT.  
 
-Přidejte nebo aktualizujte trasy s informacemi z [deklarace směrování](module-composition.md#declare-routes)a pak výběrem **Další** pokračujte do části přezkoumání.
+Přidejte nebo aktualizujte trasy informacemi z [deklarovat trasy](module-composition.md#declare-routes)a pak vyberte **Další** a pokračujte v oddílu revize.
 
-Vyberte **Další: metriky**.
+Vyberte **další: Metriky**.
 
-### <a name="step-4-metrics"></a>Krok 4: metriky
+### <a name="step-4-metrics"></a>Krok 4: Metriky
 
-Metriky poskytují souhrnné počty různých stavů, které může zařízení nahlásit zpět v důsledku použití konfiguračního obsahu.
+Metriky poskytují souhrnpočty různých stavů, které zařízení může hlásit zpět v důsledku použití obsahu konfigurace.
 
-1. Zadejte název **metriky**.
+1. Zadejte název pro **Název metriky**.
 
-1. Zadejte dotaz na **kritéria metriky**. Dotaz vychází z IoT Edge [nahlášených vlastností](module-edgeagent-edgehub.md#edgehub-reported-properties)modulu centra rozbočovače. Metrika představuje počet řádků vrácených dotazem.
+1. Zadejte dotaz na **kritéria metriky**. Dotaz je založen na vlastnostech modulu modulu centra IoT Edge [.](module-edgeagent-edgehub.md#edgehub-reported-properties) Metrika představuje počet řádků vrácených dotazem.
 
-   Příklad:
+   Například:
 
    ```sql
    SELECT deviceId FROM devices
      WHERE properties.reported.lastDesiredStatus.code = 200
    ```
 
-Vyberte **Další: cílová zařízení**.
+Vyberte **další: Cílová zařízení**.
 
-### <a name="step-5-target-devices"></a>Krok 5: cílová zařízení
+### <a name="step-5-target-devices"></a>Krok 5: Cílová zařízení
 
-Můžete cílit na konkrétní zařízení, které by měl obdrží toto nasazení vlastnost značek z vašich zařízení.
+Pomocí vlastnosti tags ze svých zařízení zacilte na konkrétní zařízení, která by měla toto nasazení přijmout.
 
-Protože více nasazení mohou být zaměřeny na stejném zařízení, je třeba přiřadit každého nasazení priorita. Pokud dojde ke konfliktu, nasazení s nejvyšší prioritou (větší hodnoty označuje vyšší prioritu) WINS. Pokud mají dvě nasazení stejnou prioritu číslo, ten, který byl vytvořen většina nedávno wins.
+Vzhledem k tomu, že více nasazení může cílit na stejné zařízení, měli byste každému nasazení udělit číslo priority. Pokud někdy dojde ke konfliktu, nasazení s nejvyšší prioritou (větší hodnoty označují vyšší prioritu) vyhrává. Pokud dvě nasazení mají stejné číslo priority, vyhrává ten, který byl vytvořen naposledy.
 
-Pokud je pro stejné zařízení cíleno více nasazení, bude použito pouze jedno s vyšší prioritou. Pokud je pro stejné zařízení cíleno více vrstev nasazení, jsou všechny aplikovány. Pokud jsou však některé vlastnosti duplikovány, například pokud existují dvě trasy se stejným názvem, pak jedna z vrstev nasazení s vyšší prioritou přepíše zbytek.
+Pokud více nasazení cílí na stejné zařízení, použije se pouze jedno s vyšší prioritou. Pokud více vrstvených nasazení cílí na stejné zařízení, pak jsou všechny použity. Pokud jsou však duplikovány všechny vlastnosti, například pokud existují dvě trasy se stejným názvem, přepíše zbytek z nich.
 
-Všechna vrstvená nasazení, která cílí na zařízení, musí mít vyšší prioritu než základní nasazení, aby se daly použít.
+Jakékoli vrstvené nasazení zaměřené na zařízení musí mít vyšší prioritu než základní nasazení, aby bylo možné použít.
 
-1. Zadejte kladné celé číslo pro **prioritu**nasazení.
-1. Zadejte **cílovou podmínku** pro určení, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`.
+1. Zadejte kladné celé číslo pro **prioritu**nasazení .
+1. Zadejte **cílovou podmínku,** která určí, která zařízení budou s tímto nasazením zaměřena.Podmínka je založena na značky dvojčete zařízení nebo dvojče zařízení hlášené vlastnosti a by měla odpovídat formátu výrazu.Příkladem je `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`.
 
-Vyberte **Další: zkontrolovat + vytvořit** a přejděte k poslednímu kroku.
+Vyberte **Další: Kontrola + Vytvořit** pro přechod na poslední krok.
 
 ### <a name="step-6-review-and-create"></a>Krok 6: Kontrola a vytvoření
 
-Zkontrolujte informace o svém nasazení a pak vyberte **vytvořit**.
+Zkontrolujte informace o nasazení a vyberte **Vytvořit**.
 
-## <a name="monitor-a-deployment"></a>Monitorování nasazení
+## <a name="monitor-a-deployment"></a>Sledování nasazení
 
-Chcete-li zobrazit podrobnosti o nasazení a monitorování zařízení, na kterých je spuštěná, použijte následující postup:
+Chcete-li zobrazit podrobnosti o nasazení a sledovat zařízení, která jej spouštějí, postupujte takto:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k IoT Hub.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) a přejděte do služby IoT Hub.
 1. Vyberte **IoT Edge**.
-1. Vyberte kartu **nasazení IoT Edge** .
+1. Vyberte kartu **Nasazení IoT Edge.**
 
    ![Zobrazení nasazení IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Zkontrolujte seznam nasazení. Pro každé nasazení si můžete zobrazit následující podrobnosti:
-   * **ID** – název nasazení.
-   * **Typ** – **typ nasazení, nasazení nebo nasazení** v **vrstveném**prostředí.
-   * **Podmínka cíle** – značka používaná k definování cílových zařízení.
-   * **Priorita** – číslo priority přiřazené k nasazení.
-   * **Systémové metriky** - **cíle** určují počet nepodmíněných zařízení v IoT Hub, které odpovídají podmínce cíle, a **použije** se hodnota určuje počet zařízení, u kterých byl obsah nasazení použit v případě, že je v modulu IoT Hub.
-   * **Metriky zařízení** – počet IoT Edge zařízení v průběhu generování sestav o úspěchu nebo chybách z IoT Edge modulu runtime klienta.
-   * **Vlastní metriky** – počet IoT Edgech zařízení v datech generování sestav nasazení pro jakékoli metriky, které jste definovali pro nasazení.
-   * **Čas vytvoření** – časové razítko z doby, kdy bylo vytvořeno nasazení. Tímto časovým razítkem se používá pro přerušení vazby, pokud mají dvě nasazení stejnou prioritu.
-1. Vyberte nasazení, které chcete monitorovat.  
-1. Zkontrolujte podrobnosti o nasazení. Chcete-li zkontrolovat podrobnosti nasazení můžete použít karty.
+1. Zkontrolujte seznam nasazení.Pro každé nasazení můžete zobrazit následující podrobnosti:
+   * **ID** - název nasazení.
+   * **Typ** – typ nasazení, **nasazení** nebo **nasazení s vrstvami**.
+   * **Cílová podmínka** - značka používaná k definování cílových zařízení.
+   * **Priorita** - číslo priority přiřazené nasazení.
+   * **Systémové metriky** - **Cílené** určuje počet dvojčat zařízení v centru IoT Hub, které odpovídají podmínku cílení a **Applied** určuje počet zařízení, která měla obsah nasazení použít na jejich dvojčata modulu v centru IoT.
+   * **Metriky zařízení** – počet zařízení IoT Edge v nasazení hlásí úspěch nebo chyby z runtime klienta IoT Edge.
+   * **Vlastní metriky** – počet zařízení IoT Edge v datech sestav nasazení pro všechny metriky, které jste definovali pro nasazení.
+   * **Čas vytvoření** - časové razítko od okamžiku, kdy bylo vytvořeno nasazení. Toto časové razítko se používá k přerušení vazeb, pokud dvě nasazení mají stejnou prioritu.
+1. Vyberte nasazení, které chcete sledovat.  
+1. Zkontrolujte podrobnosti nasazení. Pomocí karet můžete zkontrolovat podrobnosti o nasazení.
 
-## <a name="modify-a-deployment"></a>Upravit nasazení
+## <a name="modify-a-deployment"></a>Úprava nasazení
 
-Při úpravě nasazení změny se okamžitě replikují do všechna cílová zařízení.
+Když upravíte nasazení, změny se okamžitě replikují do všech cílených zařízení.
 
-Pokud aktualizujete cílovou podmínku, dojde k následující aktualizace:
+Pokud aktualizujete cílovou podmínku, dojde k následujícím aktualizacím:
 
-* Pokud nesplnilo původní cílovou podmínku zařízení, ale splňuje novou cílovou podmínku a toto nasazení je nejvyšší prioritou pro dané zařízení, se použije toto nasazení do zařízení.
-* Pokud zařízení aktuálně s tímto nasazením již splňuje cílovou podmínku, dojde k odinstalování tohoto nasazení a provede na další nejvyšší prioritu nasazení.
-* Pokud se zařízení aktuálně s tímto nasazením již splňuje cílovou podmínku a nesplňuje cílová podmínka všechna nasazení, pak nedošlo k žádné změně na zařízení. Zařízení pokračuje její aktuální moduly v jejich aktuální stav, ale jako součást tohoto nasazení už nespravuje. Jakmile splňuje cílovou podmínku jakékoli jiné nasazení, dojde k odinstalování tohoto nasazení a provede na novou.
+* Pokud zařízení nesplnilo starou cílovou podmínku, ale splňuje novou cílovou podmínku a toto nasazení je pro toto zařízení nejvyšší prioritou, bude toto nasazení použito pro zařízení.
+* Pokud zařízení, které aktuálně používá toto nasazení, již nesplňuje cílovou podmínku, odinstaluje toto nasazení a převezme další nasazení s nejvyšší prioritou.
+* Pokud zařízení aktuálně spuštěné toto nasazení již nesplňuje cílovou podmínku a nesplňuje cílovou podmínku jiných nasazení, nedojde v zařízení k žádné změně. Zařízení pokračuje ve spuštění svých aktuálních modulů v aktuálním stavu, ale již není spravováno jako součást tohoto nasazení. Jakmile splní cílovou podmínku jiného nasazení, odinstaluje toto nasazení a převezme nové.
 
-Pokud chcete upravit nasazení, postupujte následovně:
+Chcete-li upravit nasazení, použijte následující kroky:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k IoT Hub.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) a přejděte do služby IoT Hub.
 1. Vyberte **IoT Edge**.
-1. Vyberte kartu **nasazení IoT Edge** .
+1. Vyberte kartu **Nasazení ioT edge.**
 
    ![Zobrazení nasazení IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Vyberte nasazení, které chcete upravit.
-1. Proveďte aktualizace na následujících kartách:
+1. Aktualizace na následujících kartách:
    * **Cílová podmínka**
    * **Metriky** – můžete upravit nebo odstranit metriky, které jste definovali, nebo přidat nové.
    * **Popisky**
-   * **Aktualizuj**
-   * **Tras**
+   * **Moduly**
+   * **Trasy**
    * **Nasazení**
 
-1. Vyberte **Save** (Uložit).
-1. Pokud chcete sledovat změny, postupujte podle kroků v části [monitorování nasazení](#monitor-a-deployment) .
+1. Vyberte **Uložit**.
+1. Postupujte podle kroků v [monitoru nasazení](#monitor-a-deployment) sledovat změny zaváděcí.
 
-## <a name="delete-a-deployment"></a>Odstranit nasazení
+## <a name="delete-a-deployment"></a>Odstranění nasazení
 
-Při odstranění nasazení převezmou všechna nasazená zařízení nasazení s další nejvyšší prioritou. Pokud vaše zařízení nesplňuje cílová podmínka jakékoli jiné nasazení, moduly se neodeberou při nasazení se odstraní.
+Když odstraníte nasazení, všechna nasazená zařízení převezmou další nasazení s nejvyšší prioritou. Pokud vaše zařízení nesplňují cílovou podmínku jiného nasazení, moduly se při odstranění nasazení neodeberou.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k IoT Hub.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) a přejděte do služby IoT Hub.
 1. Vyberte **IoT Edge**.
-1. Vyberte kartu **nasazení IoT Edge** .
+1. Vyberte kartu **Nasazení ioT edge.**
 
    ![Zobrazení nasazení IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Pomocí zaškrtávacího políčka vyberte nasazení, které chcete odstranit.
 1. Vyberte **Odstranit**.
-1. Řádku bude informovat, že tato akce bude toto nasazení odstranit a vrátit do předchozího stavu pro všechna zařízení.  To znamená, že bude platit nasazení s nižší prioritou. Pokud není zacíleno žádné jiné nasazení, nebudou odebrány žádné moduly. Pokud chcete odebrat všechny moduly ze zařízení, vytvořit nasazení s nulovou moduly a nasadíte ho do stejného zařízení. Pokračujte výběrem **Ano** .
+1. Výzva vás bude informovat, že tato akce odstraní toto nasazení a vrátí se do předchozího stavu pro všechna zařízení.To znamená, že bude platit nasazení s nižší prioritou.Pokud není cílem žádné jiné nasazení, nebudou odebrány žádné moduly. Pokud chcete odebrat všechny moduly ze zařízení, vytvořte nasazení s nulovými moduly a nasaďte je do stejných zařízení.Chcete-li pokračovat, vyberte **možnost Ano.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [nasazení modulů do zařízení IoT Edge](module-deployment-monitoring.md).
+Další informace o [nasazení modulů do zařízení IoT Edge](module-deployment-monitoring.md).

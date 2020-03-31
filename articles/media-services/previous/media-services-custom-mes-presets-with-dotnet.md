@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení Media Encoder Standard přednastavení | Microsoft Docs
-description: V tomto tématu se dozvíte, jak provést rozšířené kódování přizpůsobením Media Encoder Standard přednastavení úloh. Téma ukazuje, jak pomocí Media Services .NET SDK vytvořit úlohu kódování a úlohu. Také ukazuje, jak poskytovat vlastní přednastavení pro úlohu kódování.
+title: Přizpůsobení standardních přednastavení kodéru médií | Dokumenty společnosti Microsoft
+description: Toto téma ukazuje, jak provádět pokročilé kódování přizpůsobením přednastavení úloh kodéru médií. Téma ukazuje, jak pomocí sady Media Services .NET SDK vytvořit úlohu a úlohu kódování. Také ukazuje, jak dodat vlastní přednastavení úlohy kódování.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251242"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení přednastavených Media Encoder Standard  
+# <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení standardních přednastavení kodéru médií  
 
 ## <a name="overview"></a>Přehled
 
-Tento článek ukazuje, jak provést rozšířené kódování pomocí Media Encoder Standard (status) pomocí vlastní předvolby. V tomto článku se používá .NET k vytvoření úlohy kódování a úlohy, která tuto úlohu spustí.  
+Tento článek ukazuje, jak provádět pokročilé kódování pomocí standardu Media Encoder Standard (MES) pomocí vlastního přednastavení. Článek používá rozhraní .NET k vytvoření úlohy kódování a úlohy, která tuto úlohu provede.  
 
-V tomto článku se dozvíte, jak přizpůsobit předvolbu pomocí přednastavení [H264 s více přenosovými rychlostmi](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) a snížením počtu vrstev. Článek [přizpůsobení Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) ukazuje vlastní předvolby, které lze použít k provádění pokročilých úloh kódování.
+Tento článek ukazuje, jak přizpůsobit přednastavení tím, že [H264 vícebitový přenos 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) přednastavení a snížení počtu vrstev. Vlastní [přednastavení standardu standardu přizpůsobení média](media-services-advanced-encoding-with-mes.md) znázorňuje vlastní přednastavení, která lze použít k provádění pokročilých úloh kódování.
 
 > [!NOTE]
-> Vlastní předvolby popsané v tomto článku nelze použít v [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) transformes nebo příkazech CLI. Další podrobnosti najdete v [pokynech k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
+> Vlastní přednastavení popsaná v tomto článku nelze použít v transformacích [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) nebo příkazech příkazu příkazu příkazu cli. Další podrobnosti najdete v [pokynech k migraci z v2 na v3.](../latest/migrate-from-v2-to-v3.md)
 
-## <a id="customizing_presets"></a>Přizpůsobení přednastavené ekonomiky
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>Přizpůsobení přednastavení MES
 
-### <a name="original-preset"></a>Původní předvolba
+### <a name="original-preset"></a>Původní přednastavení
 
-Uložte JSON definovaný v článku [H264 s více přenosovými přenosovými 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) v souboru s příponou. JSON. Například **CustomPreset_JSON. JSON**.
+Uložte JSON definované v [článku H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) v některém souboru s příponou JSON. Například **CustomPreset_JSON.json**.
 
-### <a name="customized-preset"></a>Přizpůsobená předvolba
+### <a name="customized-preset"></a>Přizpůsobené přednastavení
 
-Otevřete soubor **CustomPreset_JSON. JSON** a odeberte první tři vrstvy z **H264Layers** , aby váš soubor vypadal.
+Otevřete soubor **CustomPreset_JSON.json** a odeberte první tři vrstvy z **H264Layers,** aby váš soubor vypadal takto.
 
 ```json 
     {  
@@ -113,22 +113,22 @@ Otevřete soubor **CustomPreset_JSON. JSON** a odeberte první tři vrstvy z **H
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Kódování pomocí sady Media Services .NET SDK
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kódování pomocí sady Media Services .NET SDK
 
-Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
+Následující příklad kódu používá k provádění následujících úloh sad Media Services .NET SDK následující úkoly:
 
 - Vytvořte úlohu kódování.
-- Získejte odkaz na kodér Media Encoder Standard.
+- Získejte odkaz na standardní kodér mediálního kodéru.
 - Načtěte vlastní přednastavení JSON, které jste vytvořili v předchozí části. 
   
         // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
 - Přidejte úlohu kódování do úlohy. 
-- Určete vstupní Asset, který se má zakódovat.
-- Vytvořte výstupní Asset, který obsahuje kódovaný Asset.
+- Zadejte vstupní datový zdroj, který má být kódován.
+- Vytvořte výstupní datový zdroj, který obsahuje kódovaný datový zdroj.
 - Přidejte obslužnou rutinu události pro kontrolu průběhu úlohy.
-- Odešlete úlohu.
+- Odešlete práci.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
@@ -264,13 +264,13 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [Postup při kódování s vlastní transformací pomocí rozhraní příkazového řádku](../latest/custom-preset-cli-howto.md)
+- [Kódování pomocí vlastní transformace pomocí funkce cli](../latest/custom-preset-cli-howto.md)
 - [Kódování pomocí Media Services verze 3](../latest/encoding-concept.md)
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

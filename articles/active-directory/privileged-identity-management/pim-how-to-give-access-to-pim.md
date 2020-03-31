@@ -1,6 +1,6 @@
 ---
-title: Udělení přístupu ke správě PIM-Azure Active Directory | Microsoft Docs
-description: Přečtěte si, jak udělit přístup ostatním správám za účelem správy Azure AD Privileged Identity Management (PIM).
+title: Udělení přístupu ke správě PIM – Azure Active Directory | Dokumenty společnosti Microsoft
+description: Zjistěte, jak udělit přístup jiným správám ke správě privilegované správy identit Azure AD (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,77 +15,77 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7424e92f8520d13137b6ac8787523095058a005f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022118"
 ---
-# <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Udělte ostatním správcům přístup ke správě Privileged Identity Management
+# <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Udělit přístup ostatním správcům ke správě privilegovaných identit
 
-Globální správce, který umožňuje Privileged Identity Management (PIM) pro organizaci, automaticky získá přiřazení rolí a přístup k Privileged Identity Management. Nikdo jiný ve vaší Azure Active Directory (Azure AD) nezíská ve výchozím nastavení přístup pro zápis, včetně jiných globálních správců. Jiní globální správci, správci zabezpečení a čtenáři zabezpečení mají přístup jen pro čtení k Privileged Identity Management. Pokud chcete udělit přístup Privileged Identity Management, může první uživatel přiřadit jiné roli **správce privilegované role** .
+Globální správce, který umožňuje správu privilegovaných identit (PIM) pro organizaci, automaticky získá přiřazení rolí a přístup ke správě privilegovaných identit. Nikdo jiný ve vaší organizaci Azure Active Directory (Azure AD) nezíská přístup pro zápis ve výchozím nastavení, včetně dalších globálních správců. Ostatní globální správci, správci zabezpečení a čtenáři zabezpečení mají přístup ke správě privilegovaných identit jen pro čtení. Chcete-li udělit přístup ke správě privilegovaných identit, může první uživatel přiřadit roli **Správce privilegovaných rolí** ostatním uživatelům.
 
 > [!NOTE]
-> Správa Privileged Identity Management vyžaduje Azure Multi-Factor Authentication. Vzhledem k tomu, že účty Microsoft se nemůžou registrovat pro Azure Multi-Factor Authentication, uživatel, který se přihlásí pomocí účet Microsoft, nemá přístup k Privileged Identity Management.
+> Správa správy privilegovaných identit vyžaduje azure multifaktorové ověřování. Vzhledem k tomu, že účty Microsoft se nemohou zaregistrovat pro azure vícefaktorové ověřování, uživatel, který se přihlásí pomocí účtu Microsoft, nemá přístup ke správě privilegovaných identit.
 
-Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň dva uživatelé, pokud je jeden uživatel uzamčený nebo se jeho účet odstraní.
+Ujistěte se, že v roli správce privilegované role jsou vždy alespoň dva uživatelé v případě, že je jeden uživatel uzamčen nebo je odstraněn jejich účet.
 
-## <a name="grant-access-to-manage-pim"></a>Udělení přístupu ke správě PIM
+## <a name="grant-access-to-manage-pim"></a>Udělit přístup ke správě PIM
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-1. V Azure AD otevřete **Privileged Identity Management**.
+1. Ve službě Azure AD otevřete **správu privilegovaných identit**.
 
 1. Vyberte **role Azure AD**.
 
 1. Vyberte **role**.
 
-    ![Privileged Identity Management rolí Azure AD – role](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+    ![Role Azure AD správy privilegovaných identit – role](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
-1. Vyberte roli **správce privilegovaných rolí** a otevřete stránku členové.
+1. Chcete-li otevřít stránku členů, vyberte roli **Správce privilegovaných rolí.**
 
-    ![Správce privilegovaných rolí – členové](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
+    ![Správce privilegovaných rolí - členové](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Vyberte **Přidat člena** a otevřete tak podokno přidat spravované členy.
+1. Výběrem **možnosti Přidat člena** otevřete podokno Přidat spravované členy.
 
-1. Vyberte **Vybrat členy** a otevřete tak podokno vybrat členy.
+1. Výběrem **možnosti Vybrat členy** otevřete podokno Vybrat členy.
 
     ![Správce privilegovaných rolí – výběr členů](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 
-1. Vyberte člena a pak klikněte na **Vybrat**.
+1. Vyberte člena a klepněte na tlačítko **Vybrat**.
 
-1. Vyberte **OK** , pokud chcete, aby měl člen nárok na roli **správce privilegovaných rolí** .
+1. Vyberte **OK,** aby byl člen způsobilý pro roli **Správce privilegovaných rolí.**
 
-    Když někomu v Privileged Identity Management přiřadíte novou roli, automaticky se nakonfigurují jako **opravňující** k aktivaci role.
+    Když někomu ve správě privilegovaných identit přiřadíte novou roli, bude automaticky nakonfigurován jako **způsobilý** k aktivaci role.
 
-1. Pokud chcete, aby byl člen trvalý, vyberte uživatele v seznamu privilegovaných rolí správce.
+1. Chcete-li, aby byl člen trvalý, vyberte uživatele v seznamu členů správce privilegovaných rolí.
 
-1. Vyberte možnost **Další** a poté **proveďte trvalé** přiřazení.
+1. Vyberte **Více** a pak **make permanentní,** aby se přiřazení trvalé.
 
-    ![Správce privilegovaných rolí – vytvořit trvalý](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
+    ![Správce privilegovaných rolí – nastavení trvalého](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
 
-1. Odeslat uživateli odkaz pro [zahájení používání Privileged Identity Management](pim-getting-started.md).
+1. Odešlete uživateli odkaz na [začít používat správu privilegovaných identit](pim-getting-started.md).
 
-## <a name="remove-access-to-manage-pim"></a>Odebrání přístupu pro správu PIM
+## <a name="remove-access-to-manage-pim"></a>Odebrání přístupu ke správě PIM
 
-Než odeberete někoho z role správce privilegované role, ujistěte se, že se k němu pořád přiřadí aspoň dva uživatelé.
+Před odebráním uživatele z role Správce privilegovaných rolí vždy zkontrolujte, zda k němu budou stále přiřazeni alespoň dva uživatelé.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-1. Otevřete **Azure AD Privileged Identity Management**.
+1. Otevřete **správu privilegovaných identit Azure AD**.
 
 1. Vyberte **role Azure AD**.
 
 1. Vyberte **role**.
 
-1. Vyberte roli **správce privilegovaných rolí** a otevřete stránku členové.
+1. Chcete-li otevřít stránku členů, vyberte roli **Správce privilegovaných rolí.**
 
-1. Zaškrtněte políčko vedle uživatele, kterého chcete odebrat, a pak vyberte **odebrat člena**.
+1. Zaškrtněte políčko vedle uživatele, kterého chcete odebrat, a pak vyberte **Odebrat člena**.
 
     ![Správce privilegovaných rolí – odebrání člena](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
 
-1. Když se zobrazí výzva k potvrzení, že chcete člena z role odebrat, vyberte **Ano**.
+1. Pokud budete vyzváni k potvrzení, že chcete odebrat člena z role, vyberte **ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Začněte používat Privileged Identity Management](pim-getting-started.md)
+- [Zahájení využití technologie Privileged Identity Management](pim-getting-started.md)

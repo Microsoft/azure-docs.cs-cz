@@ -9,20 +9,20 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8a2e5defd0672516d52d4f3477641f39eca63368
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597780"
 ---
-Ve výchozím nastavení mohou standardní sdílené složky zahrnovat pouze až 5 TiB, i když limit sdílení lze zvýšit na 100 TiB. K tomu je potřeba, aby byla na úrovni účtu úložiště zapnutá funkce *Velká sdílená složka* . Účty úložiště úrovně Premium *(účty úložiště úložiště* ) nemají příznak funkce Velká sdílená složka, protože všechny soubory Premium jsou už povolené pro zřizování až pro celou 100 TIB kapacitu.
+Ve výchozím nastavení mohou standardní sdílené složky span pouze 5 TiB, i když limit sdílení lze zvýšit na 100 TiB. Chcete-li to provést, musí být na úrovni účtu úložiště povolena funkce *sdílení velkých souborů.* Účty úložiště Premium (Účty úložiště*úložiště úložiště filestorage)* nemají příznak funkce velké sdílené složky, protože všechny sdílené složky premium jsou již povoleny pro zřizování až do plné kapacity 100 TiB.
 
-Můžete povolit jenom velké sdílené složky na místně redundantních nebo v neredundantních účtech úložiště zóny Standard. Jakmile povolíte příznak funkce pro velký sdílený soubor, nemůžete změnit úroveň redundance na geograficky redundantní nebo geograficky redundantní úložiště.
+Velké sdílené složky můžete povolit pouze na místně redundantních nebo zónově redundantních účtech standardního úložiště. Jakmile aktivujete příznak funkce velké sdílené složky, nemůžete změnit úroveň redundance na geograficky redundantní úložiště nebo úložiště s geografickou zónou.
 
-Pokud chcete povolit velké sdílené složky v existujícím účtu úložiště, přejděte do zobrazení **Konfigurace** v obsahu účtu úložiště a přepněte přepínač Rock Shared Shared File na Enabled:
+Chcete-li povolit velké sdílené složky na existujícím účtu úložiště, přejděte do zobrazení **Konfigurace** v obsahu účtu úložiště a přepněte přepínač rocker sdílené velké soubory na povolený:
 
-![Snímek obrazovky s přepínačem Povolit u velkého sdíleného souboru sdílené složky v Azure Portal](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
+![Snímek obrazovky s přepínačem povolit přechod pro sdílení velkých souborů na webu Azure Portal](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
 
-Pomocí rutiny [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) PowerShellu a příkazu [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) rozhraní příkazového řádku Azure CLI můžete taky povolit 100 TIB sdílené složky.
+Můžete také povolit 100 sdílených [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) složek TiB [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) prostřednictvím rutiny prostředí PowerShell a příkazu Azure CLI.
 
-Další informace o tom, jak povolit velké sdílené složky pro nové účty úložiště, najdete v tématu [Vytvoření sdílené složky Azure](../articles/storage/files/storage-how-to-create-file-share.md).
+Další informace o povolení velkých sdílených složek na nových účtech úložiště najdete [v tématu vytvoření sdílené složky Azure](../articles/storage/files/storage-how-to-create-file-share.md).

@@ -1,7 +1,7 @@
 ---
-title: Automatizace NSG auditování – zobrazení skupiny zabezpečení
+title: Automatizace auditování skupiny zabezpečení - zobrazení skupiny zabezpečení
 titleSuffix: Azure Network Watcher
-description: Tato stránka poskytuje pokyny, jak nakonfigurovat auditování skupiny zabezpečení sítě.
+description: Tato stránka obsahuje pokyny ke konfiguraci auditování skupiny zabezpečení sítě.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,41 +13,41 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 59c1b6e6c281a736a79d110bd7d943344bcd5130
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840974"
 ---
-# <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatizace NSG auditování pomocí zobrazení skupiny zabezpečení Azure Network Watcher
+# <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatizace auditování skupinn nsg pomocí zobrazení skupiny Sledování sítě Azure
 
-Zákazníci se často setkávají s výzvou k ověření stav zabezpečení jejich infrastruktury. Tato výzva není pro své virtuální počítače v Azure odlišná. Je důležité mít podobný profil zabezpečení na základě použitých pravidel skupiny zabezpečení sítě (NSG). Pomocí zobrazení skupiny zabezpečení teď můžete získat seznam pravidel použitých pro virtuální počítač v rámci NSG. Můžete definovat zlatý NSG profil zabezpečení a spustit zobrazení skupiny zabezpečení na týdenní tempo a porovnat výstup s zlatým profilem a vytvořit sestavu. Tímto způsobem můžete snadno identifikovat všechny virtuální počítače, které neodpovídají předepsanému profilu zabezpečení.
+Zákazníci se často potýkají s výzvou ověření stavu zabezpečení své infrastruktury. Tato výzva se nijak neliší pro jejich virtuální počítače v Azure. Je důležité mít podobný profil zabezpečení založený na použitých pravidlech skupiny zabezpečení sítě (NSG). Pomocí zobrazení skupiny zabezpečení teď můžete získat seznam pravidel použitých pro virtuální hod v rámci skupiny zabezpečení. Můžete definovat zlatý profil zabezpečení skupiny nsg a zahájit zobrazení skupiny zabezpečení na týdenní kadenci a porovnat výstup se zlatým profilem a vytvořit sestavu. Tímto způsobem můžete snadno identifikovat všechny virtuální aplikace, které neodpovídají předepsanému profilu zabezpečení.
 
-Pokud neznáte skupiny zabezpečení sítě, přečtěte si téma [Přehled zabezpečení sítě](../virtual-network/security-overview.md).
+Pokud nejste obeznámeni se skupinami zabezpečení sítě, přečtěte si informace [o přehledu zabezpečení sítě](../virtual-network/security-overview.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto scénáři porovnáte známý dobrý směrný plán k výsledkům zobrazení ve skupině zabezpečení vráceným pro virtuální počítač.
+V tomto scénáři porovnáte známé dobré směrný plán s výsledky zobrazení skupiny zabezpečení vrácené pro virtuální počítač.
 
-V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher. Scénář také předpokládá, že je k dispozici skupina prostředků s platným virtuálním počítačem.
+Tento scénář předpokládá, že jste již postupovali podle kroků v [části Vytvoření sledovacího programu sítě](network-watcher-create.md) k vytvoření sledovacího programu sítě. Scénář také předpokládá, že skupina prostředků s platným virtuálním počítačem existuje pro použití.
 
 ## <a name="scenario"></a>Scénář
 
-Scénář popsaný v tomto článku získá zobrazení skupiny zabezpečení pro virtuální počítač.
+Scénář, který je popsán v tomto článku získá zobrazení skupiny zabezpečení pro virtuální počítač.
 
-V tomto scénáři provedete tyto kroky:
+V tomto scénáři budete:
 
-- Načtení známé funkční sady pravidel
-- Načtení virtuálního počítače pomocí rozhraní REST API
-- Získat zobrazení skupiny zabezpečení pro virtuální počítač
+- Načtení známé sady osvědčených pravidel
+- Načtení virtuálního počítače pomocí rozhraní Rest API
+- Získání zobrazení skupiny zabezpečení pro virtuální počítač
 - Vyhodnotit odpověď
 
 ## <a name="retrieve-rule-set"></a>Načíst sadu pravidel
 
-Prvním krokem v tomto příkladu je práce s existujícím směrným plánem. Následující příklad je ukázkový kód JSON extrahovaný z existující skupiny zabezpečení sítě pomocí rutiny `Get-AzNetworkSecurityGroup`, která se používá jako základ pro tento příklad.
+Prvním krokem v tomto příkladu je práce s existující směrný plán. Následující příklad je některé json extrahované z `Get-AzNetworkSecurityGroup` existující skupiny zabezpečení sítě pomocí rutiny, která se používá jako směrný plán pro tento příklad.
 
 ```json
 [
@@ -114,25 +114,25 @@ Prvním krokem v tomto příkladu je práce s existujícím směrným plánem. N
 ]
 ```
 
-## <a name="convert-rule-set-to-powershell-objects"></a>Převod sady pravidel na objekty prostředí PowerShell
+## <a name="convert-rule-set-to-powershell-objects"></a>Převést sadu pravidel na objekty PowerShellu
 
-V tomto kroku čteme soubor JSON, který byl vytvořen dříve s pravidly, která by měla být ve skupině zabezpečení sítě v tomto příkladu.
+V tomto kroku čteme soubor json, který byl vytvořen dříve s pravidly, která se očekává, že bude ve skupině zabezpečení sítě v tomto příkladu.
 
 ```powershell
 $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 ```
 
-## <a name="retrieve-network-watcher"></a>Načíst Network Watcher
+## <a name="retrieve-network-watcher"></a>Načíst sledovací modul sítě
 
-Dalším krokem je načtení instance Network Watcher. Do rutiny `AzNetworkWatcherSecurityGroupView` se předává Proměnná `$networkWatcher`.
+Dalším krokem je načtení instance Sledování sítě. Proměnná `$networkWatcher` je předána rutině. `AzNetworkWatcherSecurityGroupView`
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 ```
 
-## <a name="get-a-vm"></a>Získání virtuálního počítače
+## <a name="get-a-vm"></a>Získání virtuálního virtuálního mě
 
-Pro spuštění rutiny `Get-AzNetworkWatcherSecurityGroupView` se vyžaduje virtuální počítač. Následující příklad načte objekt virtuálního počítače.
+Virtuální počítač je nutné `Get-AzNetworkWatcherSecurityGroupView` spustit rutinu proti. Následující příklad získá objekt virtuálního soudu.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
@@ -140,7 +140,7 @@ $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
 
 ## <a name="retrieve-security-group-view"></a>Načíst zobrazení skupiny zabezpečení
 
-Dalším krokem je načtení výsledku zobrazení skupiny zabezpečení. Tento výsledek je porovnán s kódem JSON "směrný plán", který byl zobrazen dříve.
+Dalším krokem je načtení výsledku zobrazení skupiny zabezpečení. Tento výsledek je porovnán s "směrným plánem" json, který byl zobrazen dříve.
 
 ```powershell
 $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
@@ -148,9 +148,9 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 ## <a name="analyzing-the-results"></a>Analýza výsledků
 
-Odpověď je seskupena podle síťových rozhraní. U různých typů vrácených pravidel jsou platná a výchozí pravidla zabezpečení. Výsledek je dále rozepsán podle toho, jak je použit, a to buď v podsíti, nebo ve virtuální síťové kartě.
+Odpověď je seskupena podle síťových rozhraní. Různé typy vrácených pravidel jsou efektivní a výchozí pravidla zabezpečení. Výsledek je dále rozdělen podle způsobu jeho použití, a to buď v podsíti, nebo ve virtuální síťové síti.
 
-Následující skript prostředí PowerShell porovná výsledky zobrazení skupiny zabezpečení s existujícím výstupem NSG. V následujícím příkladu je jednoduchý příklad, jak lze výsledky porovnat s `Compare-Object` rutinou.
+Následující skript prostředí PowerShell porovnává výsledky zobrazení skupiny zabezpečení s existujícím výstupem skupiny zabezpečení. Následující příklad je jednoduchý příklad toho, jak lze `Compare-Object` porovnat výsledky s rutinou.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `
@@ -158,7 +158,7 @@ Compare-Object -ReferenceObject $nsgbaserules `
 -Property Name,Description,Protocol,SourcePortRange,DestinationPortRange,SourceAddressPrefix,DestinationAddressPrefix,Access,Priority,Direction
 ```
 
-Následující příklad je výsledkem. V porovnání se zobrazí dvě pravidla, která byla uvedena v první sadě pravidel.
+Následující příklad je výsledek. Můžete vidět dvě z pravidel, která byla v první sadě pravidel nebyly přítomny v porovnání.
 
 ```
 Name                     : My2ndRuleDoNotDelete
@@ -188,7 +188,7 @@ SideIndicator            : <=
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se nastavení změnila, přečtěte si téma [Správa skupin zabezpečení](../virtual-network/manage-network-security-group.md) sítě a sledujte příslušné skupiny zabezpečení sítě a pravidla zabezpečení.
+Pokud byla změněna nastavení, [přečtěte si](../virtual-network/manage-network-security-group.md) informace o sledování dané skupiny zabezpečení sítě v tématu Správa skupin zabezpečení sítě a pravidel zabezpečení.
 
 
 

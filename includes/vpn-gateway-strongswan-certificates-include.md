@@ -9,10 +9,10 @@ ms.date: 09/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1c2525b352c25f470814ce909a8d10ff821d9e32
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70961594"
 ---
 Vygenerujte certifikát certifikační autority.
@@ -22,7 +22,7 @@ Vygenerujte certifikát certifikační autority.
   ipsec pki --self --in caKey.pem --dn "CN=VPN CA" --ca --outform pem > caCert.pem
   ```
 
-Vytiskněte certifikát certifikační autority ve formátu base64. Formát podporovaný v Azure. Tento certifikát nahrajete do Azure jako součást [kroků konfigurace P2S](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+Tisk certifikátu certifikační autority ve formátu base64 Toto je formát, který je podporován Azure. Tento certifikát nahrajete do Azure jako součást [kroků konfigurace P2S](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
   ```
   openssl x509 -in caCert.pem -outform der | base64 -w0 ; echo
@@ -38,7 +38,7 @@ Vygenerujte uživatelský certifikát.
   ipsec pki --pub --in "${USERNAME}Key.pem" | ipsec pki --issue --cacert caCert.pem --cakey caKey.pem --dn "CN=${USERNAME}" --san "${USERNAME}" --flag clientAuth --outform pem > "${USERNAME}Cert.pem"
   ```
 
-Vygenerujte sadu P12 obsahující certifikát uživatele. Tato sada se použije v dalších krocích při práci s konfiguračními soubory klienta.
+Vygenerujte balíček p12 obsahující uživatelský certifikát. Tento balíček bude použit v dalších krocích při práci s konfiguračními soubory klienta.
 
   ```
   openssl pkcs12 -in "${USERNAME}Cert.pem" -inkey "${USERNAME}Key.pem" -certfile caCert.pem -export -out "${USERNAME}.p12" -password "pass:${PASSWORD}"

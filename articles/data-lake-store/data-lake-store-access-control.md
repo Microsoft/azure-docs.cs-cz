@@ -1,6 +1,6 @@
 ---
-title: Přehled řízení přístupu v Data Lake Storage Gen1 | Dokumentace Microsoftu
-description: Vysvětlení, jak funguje řízení přístupu v Azure Data Lake Storage Gen1
+title: Přehled řízení přístupu v úložišti datových jezer Gen1 | Dokumenty společnosti Microsoft
+description: Zjistěte, jak funguje řízení přístupu v Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260329"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
+# <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage Gen1 implementuje model řízení přístupu, který je odvozen z HDFS, který je zase odvozený z modelu řízení přístupu POSIX. Tento článek shrnuje základy modelu řízení přístupu pro Data Lake Storage Gen1. 
+Azure Data Lake Storage Gen1 implementuje model řízení přístupu, který je odvozen od HDFS, který zase pochází z modelu řízení přístupu POSIX. Tento článek shrnuje základy modelu řízení přístupu pro data Lake Storage Gen1. 
 
 ## <a name="access-control-lists-on-files-and-folders"></a>Seznamy řízení přístupu k souborům a složkám
 
@@ -45,11 +45,11 @@ Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
 
 Pro objekt systému souborů jsou definována oprávnění **Číst**, **Zapisovat** a **Provést** a pro soubory a složky je lze používat podle následující tabulky:
 
-|            |    Soubor     |   Složka |
+|            |    File     |   Složka |
 |------------|-------------|----------|
 | **Číst (R)** | Může číst obsah souboru | Pro vypsání obsahu složky jsou vyžadována oprávnění **Číst** a **Provést**.|
 | **Zapisovat (W)** | Může zapisovat do souboru nebo k němu připojovat data | Pro vytváření podřízených položek ve složce jsou vyžadována oprávnění **Zapisovat** a **Provést**. |
-| **Provést (X)** | Nemá žádný význam v kontextu Data Lake Storage Gen1 | Je vyžadováno k procházení podřízenými položkami složky. |
+| **Provést (X)** | Neznamená nic v kontextu Data Lake Storage Gen1 | Je vyžadováno k procházení podřízenými položkami složky. |
 
 ### <a name="short-forms-for-permissions"></a>Zkrácené verze oprávnění
 
@@ -59,27 +59,27 @@ Zápis **RWX** se používá k označení **Číst + Zapisovat + Provést**. Pou
 |--------------|------------|------------------------|
 | 7            | `RWX`        | Číst + Zapisovat + Provést |
 | 5            | `R-X`        | Číst + Provést         |
-| 4            | `R--`        | Číst                   |
+| 4            | `R--`        | Čtení                   |
 | 0            | `---`        | Žádná oprávnění         |
 
 
 ### <a name="permissions-do-not-inherit"></a>Oprávnění se nedědí
 
-V modelu stylu POSIX, který používá Data Lake Storage Gen1 jsou oprávnění pro položku uložena přímo s příslušnou položkou. Jinými slovy: oprávnění pro položku nelze zdědit z nadřazených položek.
+V modelu stylu POSIX, který používá Data Lake Storage Gen1, jsou oprávnění pro položku uložena na samotné položce. Jinými slovy: oprávnění pro položku nelze zdědit z nadřazených položek.
 
 ## <a name="common-scenarios-related-to-permissions"></a>Běžné scénáře týkající se oprávnění
 
-Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit, jaká oprávnění jsou nutná k provádění určitých operací s účtem Data Lake Storage Gen1.
+Níže jsou uvedeny některé běžné scénáře, které vám pomohou pochopit, která oprávnění jsou potřeba k provedení určitých operací na účtu Data Lake Storage Gen1.
 
-| Operace | Objekt              |    /      | Seattle /   | Portland /   | Data.txt       |
+| Operace | Objekt              |    /      | Praha/   | Portland/   | Soubor Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| Číst      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Připojení k | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Odstranit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Vytvořit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Čtení      | Soubor Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Připojit k | Soubor Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Odstranění    | Soubor Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Vytvořit    | Soubor Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Seznam      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Seznam      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| Seznam      | /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Seznam      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -98,17 +98,17 @@ Každý soubor a složka má samostatná oprávnění pro tyto identity:
 * Pojmenované skupiny
 * Všichni ostatní uživatelé
 
-Identity uživatelů a skupin jsou identity Azure Active Directory (Azure AD). Takže pokud není uvedeno jinak, "user," v kontextu Data Lake Storage Gen1, může znamenat buď uživatele služby Azure AD nebo skupiny zabezpečení služby Azure AD.
+Identity uživatelů a skupin jsou identity Azure Active Directory (Azure AD). Takže pokud není uvedeno jinak, "uživatel", v kontextu Data Lake Storage Gen1, může znamenat uživatele Azure AD nebo skupiny zabezpečení Azure AD.
 
 ### <a name="the-super-user"></a>Superuživatel
 
-Superuživatel má většina oprávnění ze všech uživatelů v účtu Data Lake Storage Gen1. Superuživatel:
+Superuživatel má nejvíce práv ze všech uživatelů v účtu Data Lake Storage Gen1. Superuživatel:
 
 * Má oprávnění RWX ke **všem** souborům a složkám.
 * Může měnit oprávnění pro kterýkoli soubor nebo složku.
 * Může měnit vlastnícího uživatele nebo vlastnící skupinu pro kterýkoli soubor nebo složku.
 
-Všichni uživatelé, kteří jsou součástí role **vlastníci** pro účet Data Lake Storage Gen1, jsou automaticky výhradním uživatelem.
+Všichni uživatelé, kteří jsou součástí role **Vlastníci** pro účet Data Lake Storage Gen1, jsou automaticky superuživatelem.
 
 ### <a name="the-owning-user"></a>Vlastnící uživatel
 
@@ -128,11 +128,11 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 
 V seznamech ACL POSIX je ke každému uživateli přiřazena „primární skupina“. Uživatel „alice“ může například patřit do skupiny „finance“. Alice může patřit do více skupin, ale jedna skupina je vždy určena jako její primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
 
-Protože neexistuje žádná "primární skupina" přidružené k uživateli v Data Lake Storage Gen1, vlastnící skupinu je přiřazen jako níže.
+Vzhledem k tomu, že neexistuje žádná "primární skupina" přidružené k uživatelům v Datové jezero Storage Gen1, vlastnící skupina je přiřazena jako níže.
 
 **Přiřazení vlastnící skupiny pro nový soubor nebo složku**
 
-* **Případ 1:** Kořenová složka „/“. Tato složka se vytvoří při vytvoření účtu Data Lake Storage Gen1. V takovém případě je vlastnící skupina nastavena na identifikátor GUID pro všemi nulovými.  Tato hodnota neumožňuje přístup.  Do té doby, které je skupina přiřazena je zástupný symbol.
+* **Případ 1:** Kořenová složka „/“. Tato složka je vytvořena při vytvoření účtu Data Lake Storage Gen1. V tomto případě je vlastnící skupina nastavena na hodnotu GUID s nulou.  Tato hodnota neumožňuje žádný přístup.  Jedná se o zástupný symbol, dokud není přiřazena skupina.
 * **Případ 2** (všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazené složky.
 
 **Změna vlastnící skupiny**
@@ -144,12 +144,12 @@ Vlastnící skupinu smí změnit:
 > [!NOTE]
 > Vlastnící skupina *nemůže* měnit přístupové seznamy souboru nebo složky.
 >
-> Pro účty vytvořené před 1. září 2018 byla vlastnící skupina nastavena na uživatele, který účet vytvořil v případě kořenové složky pro **případ 1**, výše.  Jeden uživatelský účet není možné poskytnout oprávnění prostřednictvím vlastnící skupiny, tedy žádná oprávnění jsou udělena podle tohoto výchozího nastavení. Tato oprávnění můžete přiřadit platné skupině uživatelů.
+> U účtů vytvořených v září 2018 nebo před ním byla vlastnící skupina nastavena na uživatele, který účet vytvořil v případě kořenové složky pro **případ 1**výše.  Jeden uživatelský účet není platný pro poskytování oprávnění prostřednictvím vlastnící skupiny, proto nejsou tímto výchozím nastavením udělena žádná oprávnění. Toto oprávnění můžete přiřadit platné skupině uživatelů.
 
 
 ## <a name="access-check-algorithm"></a>Algoritmus kontroly přístupu
 
-Následujícím pseudokódu představuje algoritmu kontroly přístupu pro účty Data Lake Storage Gen1.
+Následující pseudokód představuje algoritmus kontroly přístupu pro účty Data Lake Storage Gen1.
 
 ```
 def access_check( user, desired_perms, path ) : 
@@ -197,17 +197,17 @@ def access_check( user, desired_perms, path ) :
 Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro **pojmenované uživatele**, **vlastnící skupinu**a **pojmenované skupiny**.  
 
 > [!NOTE]
-> Pro nový účet Data Lake Storage Gen1 je použita výchozí maska přístupového seznamu ACL kořenové složky ("/") hodnotou rwx.
+> Pro nový účet Data Lake Storage Gen1 je maska pro přístupový acl kořenové složky ("/") výchozí rwx.
 >
 >
 
 ### <a name="the-sticky-bit"></a>Bit sticky
 
-Bit sticky představuje pokročilejší funkci systému souborů POSIX. V kontextu Data Lake Storage Gen1 je pravděpodobné, že bude potřeba sticky bit. Stručně řečeno pokud je sticky bit zapnutá ve složce, podřízené položky můžete pouze smazány nebo přejmenovány vlastnící uživatel podřízenou položku.
+Bit sticky představuje pokročilejší funkci systému souborů POSIX. V kontextu Data Lake Storage Gen1 je nepravděpodobné, že bude potřeba lepkavý bit. Stručně řečeno, pokud je ve složce povolen nepřístupný bit, může být podřízená položka odstraněna nebo přejmenována pouze vlastnícím uživatelem podřízené položky.
 
 Bit sticky se na webu Azure Portal nezobrazuje.
 
-## <a name="default-permissions-on-new-files-and-folders"></a>Výchozí oprávnění u nových souborů a složek
+## <a name="default-permissions-on-new-files-and-folders"></a>Výchozí oprávnění pro nové soubory a složky
 
 Při vytvoření nového souboru nebo složky v rámci existující složky se podle výchozího seznamu ACL pro nadřazenou složku určí:
 
@@ -216,19 +216,19 @@ Při vytvoření nového souboru nebo složky v rámci existující složky se p
 
 ### <a name="umask"></a>Vlastnost umask
 
-Při vytváření souboru nebo složky, vlastnost umask se používá k úpravě nastavení výchozí seznamy ACL na podřízené položky. umask je 9 bitová hodnota u nadřazených složek, které obsahují hodnotu RWX pro **vlastnícího uživatele**, **vlastnící skupinu**a **Další**.
+Při vytváření souboru nebo složky se umask používá k úpravě nastavení výchozích seznamů ACL pro podřízenou položku. umask je 9bitová hodnota v nadřazených složkách, která obsahuje hodnotu RWX pro **vlastnící uživatele**, **vlastnící skupinu**a **další**.
 
-Umask pro Azure Data Lake Storage Gen1 je konstantní hodnota nastavená na 007. Tato hodnota se přeloží na
+Umask pro Azure Data Lake Storage Gen1 je konstantní hodnota nastavená na 007. Tato hodnota se promítá do
 
-| Vlastnost umask komponenty     | Číselný tvar | Krátký tvar | Význam |
+| komponenta umask     | Číselný tvar | Krátký tvar | Význam |
 |---------------------|--------------|------------|---------|
-| umask.owning_user   |    0         |   `---`      | Pro vlastnícího uživatele, zkopírujte výchozí seznam ACL nadřazené položky do přístupového seznamu ACL podřízené | 
-| umask.owning_group  |    0         |   `---`      | Pro vlastnící skupinu, zkopírujte výchozí seznam ACL nadřazené položky do přístupového seznamu ACL podřízené | 
-| umask.Other         |    7         |   `RWX`      | Pro ostatní odeberte všechna oprávnění na přístupový seznam ACL podřízeného |
+| umask.owning_user   |    0         |   `---`      | Pro vlastnící uživatele zkopírujte výchozí přístupový kód nadřazeného uživatele do přístupového přístupu dítěte | 
+| umask.owning_group  |    0         |   `---`      | Pro vlastnící skupinu zkopírujte výchozí přístupový soubor ACL nadřazeného dítěte do přístupového přístupu dítěte. | 
+| umask.other         |    7         |   `RWX`      | Pro ostatní odebrat všechna oprávnění na přístupový přístup dítěte ACL |
 
-Hodnota umask efektivně používat Azure Data Lake Storage Gen1 znamená, že hodnota pro ostatní se nikdy nepřenáší ve výchozím nastavení na nové podřízené položky – bez ohledu na to, co znamená výchozí seznam ACL. 
+Hodnota umask používaná Azure Data Lake Storage Gen1 efektivně znamená, že hodnota pro ostatní se nikdy nepřenáší ve výchozím nastavení na nové podřízené položky – bez ohledu na to, co označuje výchozí přístupový bod. 
 
-Následujícím pseudokódu ukazuje, jak vlastnost umask se použije při vytváření seznamů ACL pro podřízené položky.
+Následující pseudokód ukazuje, jak je maska použita při vytváření seznamů ACPro pro podřízenou položku.
 
 ```
 def set_default_acls_for_new_child(parent, child):
@@ -246,11 +246,11 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Běžné dotazy týkající se seznamů ACL v Data Lake Storage Gen1
+## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Časté otázky týkající se aklů v úložišti datových jezer Gen1
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
-Ne. Řízení přístupu prostřednictvím seznamů ACL je vždycky aktivní pro účet Data Lake Storage Gen1.
+Ne. Řízení přístupu přes ACLs je vždy zapnuto pro účet Data Lake Storage Gen1.
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>Jaká oprávnění jsou vyžadována pro rekurzivní odstranění složky a jejího obsahu?
 
@@ -282,14 +282,14 @@ Položky v seznamech ACL se ukládají jako identifikátory GUID odpovídající
 
 Identifikátor GUID se zobrazí v případě, že daný uživatel již ve službě Azure AD neexistuje. K tomu obvykle dochází, když uživatel opustí společnost nebo když je jeho účet odstraněn ve službě Azure AD.
 
-### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen1 dědění seznamů ACL?
+### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Podporuje data Lake Storage Gen1 dědičnost aklů?
 
 Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro podřízené soubory a složku nově vytvořené v nadřazené složce.  
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Kde najdu další informace o modelu řízení přístupu POSIX?
 
 * [POSIX Access Control Lists on Linux (Seznamy řízení přístupu v rámci specifikace POSIX v Linuxu)](https://www.linux.com/news/posix-acls-linux)
-* [HDFS Permissions Guide (Průvodce oprávněními v HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+* [Průvodce oprávněními HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 * [Nejčastější dotazy týkající se specifikace POSIX](https://www.opengroup.org/austin/papers/posix_faq.html)
 * [POSIX 1003.1 2008](https://standards.ieee.org/findstds/standard/1003.1-2008.html)
 * [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
@@ -297,6 +297,6 @@ Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro 
 * [POSIX ACL na Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)

@@ -1,7 +1,7 @@
 ---
 title: Opětovné nasazení balíčků SSIS do jediné databáze SQL
 titleSuffix: Azure Database Migration Service
-description: Naučte se migrovat nebo znovu nasadit balíčky a projekty služba SSIS (SQL Server Integration Services), abyste Azure SQL Database izolovanou databázi pomocí Azure Database Migration Service a Data Migration Assistant.
+description: Zjistěte, jak migrovat nebo znovu nasadit balíčky a projekty služby SQL Server Integration Services do jedné databáze Azure SQL Database pomocí služby migrace databáze Azure a Pomocníka pro migraci dat.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,106 +13,106 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77648525"
 ---
-# <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Opětovné nasazení balíčků SSIS do Azure SQL Database s využitím Azure Database Migration Service
+# <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Opětovné nasazení balíčků SSIS do databáze Azure SQL pomocí služby Migrace databáze Azure
 
-Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) a chcete migrovat projekty a balíčky SSIS ze zdrojového SSISDBu hostovaného SQL Server do cílového SSISDB hostovaného v Azure SQL Database, můžete je znovu nasadit pomocí Průvodce nasazením integračních služeb. Průvodce můžete spustit v rámci SQL Server Management Studio (SSMS).
+Pokud používáte službu SQL Server Integration Services (SSIS) a chcete migrovat projekty/balíčky SSIS ze zdrojového SSISDB hostovaného SQL Serverem do cílové databáze SSISDB hostované službou Azure SQL Database, můžete je znovu nasadit pomocí Průvodce nasazením integračních služeb. Průvodce můžete spustit z aplikace SQL Server Management Studio (SSMS).
 
-Pokud verze SSIS, kterou používáte, je starší než 2012, před opětovným nasazením SSIS projektů/balíčků do modelu nasazení projektu je nejprve nutné je převést pomocí Průvodce převodem projektu integrační služby, který lze také spustit z SSMS. Další informace naleznete v článku [Převod projektů do modelu nasazení projektu](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Pokud je verze SSIS, kterou používáte, starší než 2012, před opětovným nasazením projektů/balíčků SSIS do modelu nasazení projektu je třeba nejprve převést pomocí Průvodce převodem projektu integračních služeb, který lze také spustit ze služby SSMS. Další informace naleznete v článku [Převod projektů na model nasazení projektu](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
 
 > [!NOTE]
-> Azure Database Migration Service (DMS) v současné době nepodporuje migraci zdrojového SSISDBu na Azure SQL Database Server, ale projekty a balíčky SSIS můžete znovu nasadit pomocí následujícího postupu.
+> Služba Migrace databáze Azure (DMS) aktuálně nepodporuje migraci zdrojového SSISDB na server Azure SQL Database, ale můžete znovu nasadit projekty/balíčky SSIS pomocí následujícího procesu.
 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 >
-> * Vyhodnoťte zdrojové SSIS projekty/balíčky.
-> * Migrujte projekty a balíčky SSIS do Azure.
+> * Posoudit zdroj SSIS projekty/balíčky.
+> * Migrace projektů/balíčků SSIS do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení těchto kroků potřebujete:
+Chcete-li provést tyto kroky, potřebujete:
 
-* SSMS verze 17,2 nebo novější.
-* Instance cílového databázového serveru pro hostování SSISDB. Pokud ho ještě nemáte, vytvořte Azure SQL Database Server (bez databáze) pomocí Azure Portal přejděte na [formulář](https://ms.portal.azure.com/#create/Microsoft.SQLServer)SQL Server (jenom logický Server).
-* SSIS se musí zřídit v Azure Data Factory (ADF) obsahující Azure-SSIS Integration Runtime (IR) s cílovým SSISDB hostovaným instancí Azure SQL Database serveru (jak je popsáno v článku [zřizování Azure-SSIS Integration runtime v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)).
+* SSMS verze 17.2 nebo novější.
+* Instance cílového databázového serveru pro hostování SSISDB. Pokud ho ještě nemáte, vytvořte databázový server Azure SQL (bez databáze) pomocí portálu Azure tak, že přejdete do [formuláře](https://ms.portal.azure.com/#create/Microsoft.SQLServer)SQL Server (pouze logický server).
+* SSIS musí být zřízena v Azure Data Factory (ADF) obsahující Azure-SSIS Integrace Runtime (IR) s cílOvou SSISDB hostované instance serveru Azure SQL Database (jak je popsáno v článku [Zřízení Azure-SSIS Integrace Runtime v Azure Data Factory).](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)
 
-## <a name="assess-source-ssis-projectspackages"></a>Vyhodnocení zdrojového SSIS projektů/balíčků
+## <a name="assess-source-ssis-projectspackages"></a>Posoudit zdroj projektů/balíčků SSIS
 
-I když se hodnocení source SSISDB ještě Neintegruje do databáze Pomocník s migrací (DMA) nebo Azure Database Migration Service (DMS), vaše projekty nebo balíčky SSIS se vyhodnotí nebo ověří při jejich opětovném nasazení do cílového SSISDB hostovaného na Azure SQL Database serveru.
+Zatímco hodnocení zdrojového SSISDB ještě není integrováno do Pomocníka pro migraci databáze (DMA) nebo služby Migrace databáze Azure (DMS), vaše projekty/balíčky SSIS se vyhodnotí nebo ověří, jakmile se znovu nasadí do cílové databáze SSISDB hostované na serveru Azure SQL Database.
 
-## <a name="migrate-ssis-projectspackages"></a>Migrace projektů a balíčků SSIS
+## <a name="migrate-ssis-projectspackages"></a>Migrace projektů/balíčků SSIS
 
-Chcete-li migrovat SSIS projekty/balíčky na server Azure SQL Database, proveďte následující kroky.
+Chcete-li migrovat projekty/balíčky SSIS na server Azure SQL Database, proveďte následující kroky.
 
-1. Otevřete SSMS a pak vyberte **Možnosti** , které se zobrazí v dialogovém okně **připojit k serveru** .
+1. Otevřete SSMS a pak vyberte **Možnosti,** které chcete zobrazit v dialogovém okně **Připojit k serveru.**
 
-2. Na kartě **přihlášení** zadejte informace potřebné pro připojení k serveru Azure SQL Database, který bude HOSTOVAT cílovou SSISDB.
+2. Na kartě **Přihlášení** zadejte informace potřebné pro připojení k serveru Azure SQL Database, který bude hostitelem cílové databáze SSISDB.
 
-    ![Karta přihlášení k SSIS](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
+    ![Karta Přihlášení SSIS](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
-3. Na kartě **Vlastnosti připojení** v textovém poli **připojit k databázi** vyberte nebo zadejte **SSISDB**a pak vyberte **připojit**.
+3. Na kartě **Vlastnosti připojení** vyberte nebo zadejte v textovém poli **Připojit k databázi** **sisisdb**a pak vyberte **Připojit**.
 
     ![Karta Vlastnosti připojení SSIS](media/how-to-migrate-ssis-packages/dms-ssis-conncetion-properties-tab.png)
 
-4. V Průzkumník objektů SSMS rozbalte uzel **katalogy integračních služeb** , rozbalte **SSISDB**a pokud nejsou žádné existující složky, klikněte pravým tlačítkem myši na **SSISDB** a vytvořte novou složku.
+4. V Průzkumníku objektů SSMS rozbalte uzel **Katalogy integračních služeb,** rozbalte **SSISDB**a pokud neexistují žádné existující složky, klepněte pravým tlačítkem myši na **položku SSISDB** a vytvořte novou složku.
 
-5. V části **SSISDB**rozbalte všechny složky, klikněte pravým tlačítkem na **projekty**a pak vyberte **nasadit projekt**.
+5. V **části SSISDB**rozbalte libovolnou složku, klikněte pravým tlačítkem myši na **projekty**a vyberte **nasadit project**.
 
-    ![Rozbalený uzel SSIS SSISDB](media/how-to-migrate-ssis-packages/dms-ssis-ssisdb-node-expanded.png)
+    ![SSIS SSISDB uzel rozšířen](media/how-to-migrate-ssis-packages/dms-ssis-ssisdb-node-expanded.png)
 
-6. V Průvodci nasazením integrační služby zkontrolujte informace na stránce **Úvod** a potom vyberte **Další**.
+6. V Průvodci nasazením integračních služeb na stránce **Úvod** zkontrolujte informace a vyberte **další**.
 
     ![Úvodní stránka Průvodce nasazením](media/how-to-migrate-ssis-packages/dms-deployment-wizard-introduction-page.png)
 
-7. Na stránce **Vybrat zdroj** Zadejte existující projekt SSIS, který chcete nasadit.
+7. Na stránce **Vybrat zdroj** zadejte existující projekt SSIS, který chcete nasadit.
 
-    Pokud je SSMS také připojeno k SQL Server hostujícím zdrojové SSISDB, vyberte **katalog integračních služeb**a potom zadejte název serveru a cestu k projektu ve vašem katalogu, abyste nasadili projekt přímo.
+    Pokud je Služba SSMS také připojena k serveru SQL Server hostujícízdrojový SSISDB, vyberte **katalog integration services**a zadejte název serveru a cestu k projektu do katalogu a nasadit projekt přímo.
 
-    Případně vyberte **soubor nasazení projektu**a pak zadejte cestu k existujícímu souboru nasazení projektu (. ispac) pro nasazení projektu.
+    Alternativně vyberte **soubor nasazení projektu**a zadejte cestu k existujícímu souboru nasazení projektu (.ispac) k nasazení projektu.
 
-    ![Stránka pro výběr zdrojové stránky Průvodce nasazením](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
+    ![Stránka Vybrat zdroj průvodce nasazením](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
-8. Vyberte **Další**.
-9. Na stránce **vybrat cíl** zadejte cíl pro váš projekt.
+8. Vyberte **další**.
+9. Na stránce **Vybrat cíl** zadejte cíl projektu.
 
-    a. Do textového pole název serveru zadejte plně kvalifikovaný název serveru Azure SQL Database (< server_name >. Database. Windows. NET).
+    a. Do textového pole Název serveru zadejte plně kvalifikovaný název serveru Azure SQL Database (<server_name>.database.windows.net).
 
-    b. Zadejte ověřovací informace a pak vyberte **připojit**.
+    b. Zadejte informace o ověření a pak vyberte **připojit**.
 
-    ![Stránka pro výběr cílové stránky Průvodce nasazením](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-destination-page.png)
+    ![Stránka Průvodce nasazením Vybrat cíl](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-destination-page.png)
 
-    c. Vyberte **Procházet** a určete cílovou SLOŽKU v SSISDB a pak vyberte **Další**.
-
-    > [!NOTE]
-    > Tlačítko **Další** bude povoleno až po výběru **připojit**.
-
-10. Na stránce **ověřit** zobrazte všechny chyby a upozornění a v případě potřeby upravte balíčky odpovídajícím způsobem.
-
-    ![Stránka pro ověření Průvodce nasazením](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
-
-11. Vyberte **Další**.
-
-12. Na stránce **Kontrola** zkontrolujte nastavení nasazení.
+    c. Výběrem **možnosti Procházet** určete cílovou složku v SSISDB a pak vyberte **Další**.
 
     > [!NOTE]
-    > Nastavení můžete změnit výběrem možnosti **Předchozí** nebo výběrem kteréhokoli z odkazů na krok v levém podokně.
+    > Tlačítko **Další** je povoleno až po výběru možnosti **Připojit**.
 
-13. Vyberte **nasadit** a spusťte proces nasazení.
+10. Na stránce **Ověření** zobrazte všechny chyby/upozornění a v případě potřeby odpovídajícím způsobem upravte balíčky.
 
-14. Po dokončení procesu nasazení si můžete zobrazit stránku výsledků, která zobrazuje úspěšnost nebo selhání každé akce nasazení.
-    a. Pokud se některá akce nezdařila, ve sloupci **výsledek** vyberte **nezdařilo se** Zobrazit vysvětlení chyby.
-    b. Volitelně můžete vybrat **Uložit sestavu** a výsledky Uložit do souboru XML.
+    ![Stránka Ověření Průvodce nasazením](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
-15. Kliknutím na **Zavřít** ukončíte průvodce nasazením integračních služeb.
+11. Vyberte **další**.
 
-Pokud se nasazení projektu zdaří bez selhání, můžete vybrat všechny balíčky, které obsahuje, aby běžely na Azure-SSIS IR.
+12. Na stránce **Revize** zkontrolujte nastavení nasazení.
+
+    > [!NOTE]
+    > Nastavení můžete změnit výběrem **možnosti Předchozí** nebo výběrem libovolného fázového propojení v levém podokně.
+
+13. Chcete-li zahájit proces nasazení, vyberte **možnost Nasadit.**
+
+14. Po dokončení procesu nasazení můžete zobrazit stránku Výsledky, která zobrazuje úspěch nebo neúspěch každé akce nasazení.
+    a. Pokud se některá akce nezdařila, vyberte ve sloupci **Výsledek** **možnost Nepodařilo** se zobrazit vysvětlení chyby.
+    b. Volitelně můžete vybrat **Uložit sestavu,** chcete-li výsledky uložit do souboru XML.
+
+15. Chcete-li ukončit Průvodce nasazením integračních služeb, vyberte **zavřít.**
+
+Pokud nasazení projektu proběhne bez selhání, můžete vybrat všechny balíčky, které obsahuje ke spuštění na Azure-SSIS IR.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si pokyny k migraci v [Průvodci migrací databáze](https://datamigration.microsoft.com/)společnosti Microsoft.
+* Přečtěte si pokyny k migraci v [Příručce pro migraci databáze](https://datamigration.microsoft.com/)společnosti Microsoft .

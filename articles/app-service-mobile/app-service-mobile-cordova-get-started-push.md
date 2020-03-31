@@ -1,16 +1,16 @@
 ---
 title: Přidání nabízených oznámení do aplikace Apache Cordova
-description: Naučte se používat Mobile Apps k odesílání nabízených oznámení do aplikace Apache Cordova.
+description: Přečtěte si, jak pomocí mobilních aplikací odesílat nabízená oznámení do aplikace Apache Cordova.
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 08260437076728421cb6fa393f481d27b95b1782
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461602"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Přidání nabízených oznámení do aplikace Apache Cordova
@@ -19,52 +19,52 @@ ms.locfileid: "77461602"
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení do projektu pro [rychlý start Apache Cordova][5] , takže se do zařízení pošle nabízené oznámení pokaždé, když se záznam vloží.
+V tomto kurzu přidáte nabízená oznámení do projektu [rychlého startu Apache Cordova][5] tak, aby nabízené oznámení je odeslána do zařízení při každém vložení záznamu.
 
-Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem sady .NET pro Mobile Apps][1].
+Pokud nepoužíváte stažený projekt serveru rychlého startu, budete potřebovat balíček rozšíření nabízených oznámení. Další informace naleznete [v tématu Práce s sadou SDK back-end serveru .NET pro mobilní aplikace][1].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
 
-V tomto kurzu se předpokládá, že máte Apache Cordova aplikaci, která byla vyvinuta se sadou Visual Studio 2015. Toto zařízení by mělo běžet na Google Android Emulator, zařízení s Androidem, zařízení s Windows nebo zařízení s iOS.
+Tento kurz předpokládá, že máte aplikaci Apache Cordova, která byla vyvinuta s Visual Studio 2015. Toto zařízení by mělo běžet na Google Android Emulator, zařízení Android, zařízení se systémem Windows nebo zařízení se systémem iOS.
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* POČÍTAČ se sadou [Visual Studio Community 2015][2] nebo novější
-* [Visual Studio Tools for Apache Cordova][4]
+* Počítač s [visual studio community 2015][2] nebo novější
+* [Nástroje Visual Studia pro Apache Cordova][4]
 * [Aktivní účet Azure][3]
-* Dokončený [rychlý úvodní Apache Cordova][5] projekt
-* Svém [Účet Google][6] s ověřenou e-mailovou adresou
-* iOS [Členství v programu Apple Developer][7] a zařízení s iOS (simulátor iOS nepodporuje nabízená oznámení)
-* Systému [Vývojářský účet Microsoft Store][8] a zařízení s Windows 10
+* Dokončený projekt [rychlého startu Apache Cordova][5]
+* (Android) [Účet Google][6] s ověřenou e-mailovou adresou
+* (iOS) [Členství v programu pro vývojáře Apple][7] a zařízení se systémem iOS (simulátor iOS nepodporuje nabízená oznámení)
+* (Windows) [Vývojářský účet Microsoft Storu][8] a zařízení s Windows 10
 
-## <a name="configure-hub"></a>Konfigurace centra oznámení
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>Konfigurace centra oznámení
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-[Podívejte se na video se zobrazením kroků v této části][9].
+[Podívejte se na video s postupem v této části][9].
 
-## <a name="update-the-server-project"></a>Aktualizovat serverový projekt
+## <a name="update-the-server-project"></a>Aktualizace projektu serveru
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="add-push-to-app"></a>Úprava aplikace Cordova
+## <a name="modify-your-cordova-app"></a><a name="add-push-to-app"></a>Upravte aplikaci Cordova
 
-Chcete-li zajistit, aby byl projekt aplikace Apache Cordova připravený na zpracování nabízených oznámení, nainstalujte modul plug-in Cordova push a všechny služby nabízených oznámení pro konkrétní platformu.
+Chcete-li zajistit, aby váš projekt aplikace Apache Cordova byl připraven zpracovávat nabízená oznámení, nainstalujte plugin push Cordova a všechny nabízené služby specifické pro platformu.
 
-#### <a name="update-the-cordova-version-in-your-project"></a>Aktualizujte verzi Cordova ve vašem projektu.
+#### <a name="update-the-cordova-version-in-your-project"></a>Aktualizujte verzi Cordova v projektu.
 
-Pokud váš projekt používá verzi Apache Cordova, která je starší než verze 6.1.1, aktualizujte projekt klienta. Chcete-li aktualizovat projekt, proveďte následující kroky:
+Pokud váš projekt používá verzi Apache Cordova, která je starší než verze 6.1.1, aktualizujte klientský projekt. Chcete-li projekt aktualizovat, postupujte takto:
 
-* Chcete-li otevřít návrháře konfigurace, klikněte pravým tlačítkem na `config.xml`.
-* Vyberte kartu **platformy** .
+* Chcete-li otevřít návrhářkonfigurace, `config.xml`klepněte pravým tlačítkem myši na položku .
+* Vyberte kartu **Platformy.**
 * V textovém poli **Cordova CLI** vyberte **6.1.1**. 
-* Chcete-li aktualizovat projekt, vyberte možnost **sestavit**a pak vyberte možnost **Sestavit řešení**.
+* Chcete-li projekt aktualizovat, vyberte **build**a pak vyberte **Build Solution**.
 
-#### <a name="install-the-push-plugin"></a>Instalace modulu plug-in push
+#### <a name="install-the-push-plugin"></a>Instalace pluginu push
 
-Apache Cordova aplikace nezpracovávají nativně možnosti zařízení nebo sítě.  Tyto možnosti nabízí moduly plug-in, které jsou publikované buď na [npm][10] nebo na GitHubu. Modul plug-in `phonegap-plugin-push` zpracovává nabízená oznámení ze sítě.
+Aplikace Apache Cordova nezpracovávají nativně funkce zařízení nebo sítě.  Tyto funkce jsou poskytovány pluginy, které jsou publikovány buď na [npm][10] nebo na GitHubu. Plugin `phonegap-plugin-push` zpracovává oznámení o nabízení sítí.
 
-Modul plug-in push můžete nainstalovat jedním z následujících způsobů:
+Plugin push můžete nainstalovat jedním z následujících způsobů:
 
 **Z příkazového řádku:**
 
@@ -72,34 +72,34 @@ Spusťte následující příkaz:
 
     cordova plugin add phonegap-plugin-push
 
-**Z aplikace Visual Studio:**
+**Z visual studia:**
 
-1. V Průzkumník řešení otevřete `config.xml` soubor. V dalším kroku vyberte **moduly plug-in** > **vlastní**. Pak jako zdroj instalace vyberte **Git** .
+1. V Průzkumníku řešení `config.xml` otevřete soubor. Dále vyberte **vlastní pluginy** > **.** Pak vyberte **Git** jako zdroj instalace.
 
-2. Jako zdroj zadejte `https://github.com/phonegap/phonegap-plugin-push`.
+2. Zadejte `https://github.com/phonegap/phonegap-plugin-push` jako zdroj.
 
-    ![Otevřete soubor config. XML v Průzkumník řešení][img1]
+    ![Otevření souboru config.xml v Průzkumníku řešení][img1]
 
 3. Vyberte šipku vedle zdroje instalace.
 
-4. V **SENDER_ID**, pokud už máte ID číselného projektu pro projekt vývojářské konzoly Google, můžete ho přidat tady. V opačném případě zadejte hodnotu zástupného symbolu, například 777777. Pokud cílíte na Android, můžete tuto hodnotu aktualizovat později v souboru config. XML.
+4. V **SENDER_ID**, pokud již máte číselné ID projektu pro vývojářskou konzolu Google, můžete ho přidat zde. V opačném případě zadejte zástupnou hodnotu, například 777777. Pokud cílíte na android, můžete tuto hodnotu později aktualizovat v souboru config.xml.
 
     >[!NOTE]
-    >Od verze 2.0.0 je nutné nainstalovat Google-Services. JSON do kořenové složky projektu, aby bylo možné konfigurovat ID odesílatele. Další informace najdete v [dokumentaci k instalaci.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
+    >Od verze 2.0.0 je třeba nainstalovaný soubor google-services.json do kořenové složky projektu, aby bylo možné nakonfigurovat ID odesílatele. Další informace naleznete v dokumentaci k [instalaci.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
 
 5. Vyberte **Přidat**.
 
-Modul plug-in Push je teď nainstalovaný.
+Push plugin je nyní nainstalován.
 
-#### <a name="install-the-device-plugin"></a>Instalace modulu plug-in zařízení
+#### <a name="install-the-device-plugin"></a>Instalace pluginu zařízení
 
-Postupujte stejným způsobem, jako jste použili k instalaci modulu plug-in push. Přidejte modul plug-in zařízení ze seznamu základních modulů plug-in. (Pokud ho chcete najít, vyberte **moduly plug-in** > **jádro**.) Tento modul plug-in potřebujete k získání názvu platformy.
+Postupujte stejným způsobem, který jste použili k instalaci push plugin. Přidejte plugin zařízení ze seznamu základních pluginů. (Chcete-li jej najít, vyberte **pluginy** > **Core**.) Potřebujete tento plugin získat název platformy.
 
 #### <a name="register-your-device-when-the-application-starts"></a>Registrace zařízení při spuštění aplikace 
 
-Zpočátku jsme zahrnuli minimální kód pro Android. Později můžete aplikaci upravit tak, aby běžela v iOS nebo Windows 10.
+Zpočátku jsme zahrnout některé minimální kód pro Android. Později můžete upravit aplikaci tak, aby běžela v iOS nebo Windows 10.
 
-1. Přidání volání **registerForPushNotifications** během zpětného volání pro proces přihlášení. Případně ho můžete přidat na konec metody **onDeviceReady** :
+1. Přidejte volání **registerForPushNotifications** během zpětného volání pro proces přihlášení. Alternativně můžete přidat v dolní části **onDeviceReady** metoda:
 
     ```javascript
     // Log in to the service.
@@ -123,7 +123,7 @@ Zpočátku jsme zahrnuli minimální kód pro Android. Později můžete aplikac
 
     Tento příklad ukazuje volání **registerForPushNotifications** po úspěšném ověření. Můžete volat `registerForPushNotifications()` tak často, jak je požadováno.
 
-2. Přidejte novou metodu **registerForPushNotifications** následujícím způsobem:
+2. Přidejte novou metodu **registerForPushNotifications** takto:
 
     ```javascript
     // Register for push notifications. Requires that phonegap-plugin-push be installed.
@@ -169,25 +169,25 @@ Zpočátku jsme zahrnuli minimální kód pro Android. Později můžete aplikac
     pushRegistration.on('error', handleError);
     }
     ```
-3. Svém V předchozím kódu nahraďte `Your_Project_ID` číslem ID projektu vaší aplikace z [konzole pro vývojáře Google][18].
+3. (Android) V předchozím kódu nahraďte `Your_Project_ID` číselným ID projektu pro vaši aplikaci z Google Developer [Console][18].
 
-## <a name="optional-configure-and-run-the-app-on-android"></a>Volitelné Konfigurace a spuštění aplikace v Androidu
+## <a name="optional-configure-and-run-the-app-on-android"></a>(Nepovinné) Konfigurace a spuštění aplikace v systému Android
 
-Dokončete tuto část, pokud chcete povolit nabízená oznámení pro Android.
+Chcete-li povolit nabízená oznámení pro Android, vyplňte tuto část.
 
-#### <a name="enable-gcm"></a>Povolení zasílání zpráv Firebase do cloudu
+#### <a name="enable-firebase-cloud-messaging"></a><a name="enable-gcm"></a>Povolení služby Firebase Cloud Messaging
 
-Vzhledem k tomu, že cílíte na platformu Google Android, musíte povolit zasílání zpráv Firebase do cloudu.
+Vzhledem k tomu, že zpočátku cílíte na platformu Google Android, musíte povolit Firebase Cloud Messaging.
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="configure-backend"></a>Konfigurace back-endu mobilní aplikace pro posílání nabízených žádostí pomocí FCM
+#### <a name="configure-the-mobile-app-back-end-to-send-push-requests-using-fcm"></a><a name="configure-backend"></a>Konfigurace back-endu mobilní aplikace pro odesílání nabízených požadavků pomocí FCM
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 #### <a name="configure-your-cordova-app-for-android"></a>Konfigurace aplikace Cordova pro Android
 
-V aplikaci Cordova otevřete **soubor config. XML**. Potom nahraďte `Your_Project_ID` číslem ID projektu vaší aplikace z [konzole pro vývojáře Google][18].
+V aplikaci Cordova otevřete **soubor config.xml**. Potom `Your_Project_ID` nahraďte číselným ID projektu pro vaši aplikaci z [Google Developer Console][18].
 
 ```xml
 <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
@@ -195,7 +195,7 @@ V aplikaci Cordova otevřete **soubor config. XML**. Potom nahraďte `Your_Proje
 </plugin>
 ```
 
-Otevřete **index. js**. Pak aktualizujte kód tak, aby používal vaše číselné ID projektu.
+Otevřete **soubor index.js**. Potom aktualizujte kód tak, aby používal číselné ID projektu.
 
 ```javascript
 pushRegistration = PushNotification.init({
@@ -205,69 +205,69 @@ pushRegistration = PushNotification.init({
 });
 ```
 
-#### <a name="configure-device"></a>Konfigurace zařízení s Androidem pro ladění USB
+#### <a name="configure-your-android-device-for-usb-debugging"></a><a name="configure-device"></a>Konfigurace zařízení Android pro ladění USB
 
-Než budete moct nasadit aplikaci na zařízení s Androidem, musíte povolit ladění USB. Na telefonu s Androidem proveďte následující kroky:
+Než budete moci nasadit aplikaci do zařízení Android, musíte povolit ladění USB. V telefonu s Androidem postupujte takto:
 
-1. Přejít na **nastavení** > **o telefonu**. Pak klepněte na **číslo sestavení** , dokud není povolen režim pro vývojáře (přibližně sedm).
-2. Zpátky v **nastavení** > **Možnosti pro vývojáře**, povolit **ladění USB**. Pak připojte telefon s Androidem k vývojovému počítači pomocí kabelu USB.
+1. Přejděte na **Nastavení** > **o telefonu**. Pak klepněte na **číslo sestavení,** dokud není povolen režim vývojáře (asi sedmkrát).
+2. Zpět v **nastavení** > **možnosti pro vývojáře**, povolit **ladění USB**. Poté připojte telefon Android k vývojovému počítači pomocí kabelu USB.
 
-Otestovali jsme to pomocí zařízení Google Nexus pětinásobné se systémem Android 6,0 (Marshmallow). Nicméně postupy jsou společné v rámci moderní verze Androidu.
+Testovali jsme to pomocí zařízení Google Nexus 5X se systémem Android 6.0 (Marshmallow). Nicméně, techniky jsou společné v každém moderním android verzi.
 
-#### <a name="install-google-play-services"></a>Nainstalovat Služby Google Play
+#### <a name="install-google-play-services"></a>Instalace služeb Google Play
 
-Modul plug-in push spoléhá na Služby Google Play Androidu pro nabízená oznámení.
+Push plugin se spoléhá na služby Android Google Play pro nabízená oznámení.
 
-1. V aplikaci Visual Studio vyberte **nástroje** > **Android** > **Android SDK Manager**. Pak rozbalte složku **Další** . Zaškrtněte příslušná políčka, abyste měli jistotu, že jsou nainstalované všechny následující sady SDK:
+1. V sadě Visual Studio vyberte **Nástroje** > **Správce** > **sady Android SDK**. Pak rozbalte složku **Extras.** Zkontrolujte příslušná políčka a ujistěte se, že je nainstalována každá z následujících sad SDK:
 
-   * Android 2,3 nebo vyšší
+   * Android 2.3 nebo vyšší
    * Revize úložiště Google 27 nebo vyšší
    * Služby Google Play 9.0.2 nebo vyšší
 
-2. Vyberte **instalovat balíčky**. Potom počkejte na dokončení instalace.
+2. Vyberte **možnost Instalovat balíčky**. Poté počkejte na dokončení instalace.
 
-Aktuální požadované knihovny jsou uvedené v dokumentaci k [instalaci PhoneGap-plugin-push][19].
+Aktuální požadované knihovny jsou uvedeny v [dokumentaci k instalaci phonegap-plugin-push][19].
 
-#### <a name="test-push-notifications-in-the-app-on-android"></a>Testování nabízených oznámení v aplikaci v Androidu
+#### <a name="test-push-notifications-in-the-app-on-android"></a>Testování nabízených oznámení v aplikaci na Androidu
 
-Nabízená oznámení teď můžete testovat spuštěním aplikace a vložením položek do tabulky TodoItem. Můžete testovat ze stejného zařízení nebo z druhého zařízení, pokud používáte stejný back-end. Otestujte aplikaci Cordova na platformě Android jedním z následujících způsobů:
+Nyní můžete testovat nabízená oznámení spuštěním aplikace a vložením položek do tabulky TodoItem. Můžete testovat ze stejného zařízení nebo z druhého zařízení, pokud používáte stejný back-end. Otestujte svou aplikaci Cordova na platformě Android jedním z následujících způsobů:
 
-* *Na fyzickém zařízení:* Připojte své zařízení s Androidem k vývojovému počítači pomocí kabelu USB.  Místo **Google Android Emulator**vyberte **zařízení**. Visual Studio nasadí aplikaci do zařízení a spustí aplikaci. Pak můžete s aplikací pracovat na zařízení.
+* *Na fyzickém zařízení:* Připojte zařízení Android k vývojovému počítači pomocí kabelu USB.  Místo **emulátoru Google Android**vyberte **možnost Zařízení**. Visual Studio nasazuje aplikaci do zařízení a spouští aplikaci. Potom můžete pracovat s aplikací v zařízení.
 
-  Aplikace pro sdílení obrazovky, jako je [Mobizen][20] , vám můžou pomoct při vývoji aplikací pro Android. Mobizen projekty na obrazovku Androidu do webového prohlížeče na svém počítači.
+  Aplikace pro sdílení obrazovky, jako je [Mobizen,][20] vám mohou pomoci při vývoji aplikací pro Android. Mobizen promítá obrazovku Android do webového prohlížeče v počítači.
 
-* *V emulátoru Androidu:* Při použití emulátoru jsou potřeba další kroky konfigurace.
+* *Na emulátoru Android:* Existují další kroky konfigurace, které jsou vyžadovány při použití emulátoru.
 
-    Ujistěte se, že nasazujete na virtuální zařízení, které má rozhraní Google API nastavené jako cíl, jak je znázorněno na AVD (Virtual Device Manager) pro Android.
+    Ujistěte se, že nasazujete do virtuálního zařízení, které má jako cíl nastavená rozhraní API Google, jak je znázorněno ve správci virtuálního zařízení Android (AVD).
 
-    ![Android Virtual Device Manager](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
+    ![Správce virtuálních zařízení android](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
 
-    Pokud chcete použít rychlejší emulátor x86, [nainstalujte ovladač modul HAXM][11]a potom nakonfigurujte emulátor tak, aby ho používal.
+    Pokud chcete použít rychlejší emulátor x86, [nainstalujte ovladač HAXM][11]a nakonfigurujte emulátor tak, aby jej používal.
 
-    Vyberte **aplikace** > **Nastavení** > **Přidat účet**a přidejte na zařízení s Androidem účet Google. Pak postupujte podle pokynů.
+    Přidejte účet Google do zařízení Android výběrem**nastavení** >  **aplikace** > **Přidat účet**. Pak postupujte podle pokynů.
 
-    ![Přidání účtu Google na zařízení s Androidem](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
+    ![Přidání účtu Google do zařízení Android](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
-    Spusťte aplikaci ToDoList jako dřív a vložte novou položku todo. Tentokrát se v oznamovací oblasti zobrazí ikona oznámení. K zobrazení úplného textu oznámení můžete otevřít zásuvku oznámení.
+    Spusťte aplikaci todolist jako dříve a vložte novou položku úkolů. Tentokrát se v oznamovací oblasti zobrazí ikona oznámení. Můžete otevřít zásuvku oznámení a zobrazit úplný text oznámení.
 
     ![Zobrazit oznámení](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
 
-## <a name="optional-configure-and-run-on-ios"></a>Volitelné Konfigurace a spuštění v iOS
+## <a name="optional-configure-and-run-on-ios"></a>(Nepovinné) Konfigurace a spuštění v iOS
 
-Tato část je určena pro spuštění projektu Cordova na zařízeních s iOS. Pokud nepracujete se zařízeními s iOS, můžete tuto část přeskočit.
+Tato část je určen pro spuštění projektu Cordova na zařízeních se systémem iOS. Pokud nepracujete se zařízeními se systémem iOS, můžete tuto část přeskočit.
 
 #### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Instalace a spuštění agenta vzdáleného sestavení iOS na Macu nebo cloudové službě
 
-Před spuštěním aplikace Cordova v systému iOS pomocí sady Visual Studio Projděte kroky v [Průvodci nastavením iOS][12] a nainstalujte a spusťte agenta vzdáleného sestavení.
+Než budete moci spustit aplikaci Cordova v iOS pomocí sady Visual Studio, projděte si kroky v [průvodci nastavením iOS][12] a nainstalujte a spusťte agenta vzdáleného sestavení.
 
-Ujistěte se, že můžete sestavit aplikaci pro iOS. Kroky v příručce pro instalaci se vyžadují pro sestavení aplikace pro iOS ze sady Visual Studio. Pokud nemáte počítač Mac, můžete sestavit pro iOS pomocí vzdáleného agenta sestavení na službě, jako je MacInCloud. Další informace najdete v tématu [spuštění aplikace pro iOS v cloudu][21].
+Ujistěte se, že můžete vytvořit aplikaci pro iOS. Kroky v průvodci nastavením jsou vyžadovány pro vytváření aplikace pro iOS z Visual Studia. Pokud mac nemáte, můžete vytvořit pro iOS pomocí vzdáleného agenta sestavení ve službě, jako je MacInCloud. Další informace najdete [v tématu Spuštění aplikace pro iOS v cloudu][21].
 
 > [!NOTE]
-> K použití modulu plug-in Push v iOS se vyžaduje Xcode 7 nebo novější.
+> Xcode 7 nebo vyšší je nutné použít push plugin na iOS.
 
-#### <a name="find-the-id-to-use-as-your-app-id"></a>Najít ID, které se má použít jako ID aplikace
+#### <a name="find-the-id-to-use-as-your-app-id"></a>Najděte ID, které chcete použít jako ID aplikace
 
-Před registrací aplikace pro nabízená oznámení otevřete soubor config. XML v aplikaci Cordova, vyhledejte v prvku widget hodnotu atributu `id` a pak ho zkopírujte pro pozdější použití. V následujícím kódu XML je `io.cordova.myapp7777777`ID.
+Než aplikaci zaregistrujete pro nabízená oznámení, otevřete v aplikaci Cordova soubor config.xml, najděte hodnotu `id` atributu v elementu widgetu a zkopírujte ji pro pozdější použití. V následujícím jazyce XML `io.cordova.myapp7777777`je ID .
 
 ```xml
 <widget defaultlocale="en-US" id="io.cordova.myapp7777777"
@@ -275,9 +275,9 @@ Před registrací aplikace pro nabízená oznámení otevřete soubor config. XM
     xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
 ```
 
-Později tento identifikátor použijte při vytváření ID aplikace na portálu pro vývojáře od společnosti Apple. Pokud na portálu pro vývojáře vytvoříte jiné ID aplikace, musíte provést několik dalších kroků, které jsou dále v tomto kurzu. ID v prvku widget se musí shodovat s ID aplikace na portálu pro vývojáře.
+Později použijte tento identifikátor při vytváření ID aplikace na portálu pro vývojáře společnosti Apple. Pokud na portálu pro vývojáře vytvoříte jiné ID aplikace, musíte provést několik dalších kroků později v tomto kurzu. ID v elementu widgetu se musí shodovat s ID aplikace na portálu pro vývojáře.
 
-#### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Registrace aplikace pro nabízená oznámení na portálu pro vývojáře od společnosti Apple
+#### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Registrace aplikace pro nabízená oznámení na vývojářském portálu Apple
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
@@ -287,51 +287,51 @@ Později tento identifikátor použijte při vytváření ID aplikace na portál
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-#### <a name="verify-that-your-app-id-matches-your-cordova-app"></a>Ověřte, že ID aplikace odpovídá vaší aplikaci Cordova.
+#### <a name="verify-that-your-app-id-matches-your-cordova-app"></a>Ověřte, zda vaše ID aplikace odpovídá vaší aplikaci Cordova
 
-Pokud ID aplikace, které jste vytvořili v účtu Apple Developer, už odpovídá ID prvku widgetu v souboru config. XML, můžete tento krok přeskočit. Pokud se však ID neshodují, proveďte následující kroky:
+Pokud ID aplikace, které jste vytvořili ve svém vývojářském účtu Apple, již odpovídá ID prvku widgetu v souboru config.xml, můžete tento krok přeskočit. Pokud se však ID neshodují, postupujte takto:
 
-1. Odstraňte složku Platforms z projektu.
-2. Odstraňte složku plugins z projektu.
+1. Odstraňte složku platformy z projektu.
+2. Odstraňte složku pluginů z projektu.
 3. Odstraňte složku node_modules z projektu.
-4. Aktualizujte atribut ID prvku widget v souboru config. XML tak, aby používal ID aplikace, které jste vytvořili v účtu Apple Developer.
+4. Aktualizujte atribut id prvku widgetu v souboru config.xml tak, aby používal ID aplikace, které jste vytvořili ve svém vývojářském účtu Apple.
 5. Znovu sestavte projekt.
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>Testování nabízených oznámení v aplikaci pro iOS
 
-1. V aplikaci Visual Studio se ujistěte, že je jako cíl nasazení vybrán systém **iOS** . Pak vyberte **zařízení** a spusťte nabízená oznámení na připojeném zařízení s iOS.
+1. V sadě Visual Studio se ujistěte, že je jako cíl nasazení vybrán **iOS.** Pak vyberte **Zařízení,** které chcete spustit nabízená oznámení na připojeném iOS zařízení.
 
-    Nabízená oznámení můžete spustit na zařízení s iOS, které je připojené k počítači přes iTunes. Simulátor iOS nepodporuje nabízená oznámení.
+    Nabízená oznámení můžete spouštět na iOS zařízení, které je připojené k počítači s iTunes. Simulátor iOS nepodporuje nabízená oznámení.
 
-2. Vyberte tlačítko **Spustit** nebo **F5** v aplikaci Visual Studio a sestavte projekt a spusťte aplikaci na zařízení se systémem iOS. Pak vyberte **OK** pro příjem nabízených oznámení.
+2. Vyberte tlačítko **Spustit** nebo **F5** v Sadě Visual Studio k sestavení projektu a spuštění aplikace v zařízení se systémem iOS. Pak vyberte **OK,** chcete-li přijmout nabízená oznámení.
 
    > [!NOTE]
-   > Aplikace žádá o potvrzení nabízených oznámení během prvního spuštění.
+   > Aplikace požaduje potvrzení nabízených oznámení během prvního spuštění.
 
-3. V aplikaci zadejte úlohu a potom vyberte ikonu plus **(+)** .
-4. Ověřte, že bylo přijato oznámení. Pak kliknutím na **OK** zavřete oznámení.
+3. V aplikaci zadejte úkol a pak vyberte ikonu plus **(+).**
+4. Ověřte, zda bylo přijato oznámení. Pak vyberte **OK,** chcete-li oznámení zavřít.
 
-## <a name="optional-configure-and-run-on-windows"></a>Volitelné Konfigurace a spuštění ve Windows
+## <a name="optional-configure-and-run-on-windows"></a>(Nepovinné) Konfigurace a spuštění v systému Windows
 
-Tato část popisuje, jak spustit projekt Apache Cordova aplikace na zařízeních s Windows 10 (modul plug-in PhoneGap Push je podporován ve Windows 10). Pokud nepracujete se zařízeními s Windows, můžete tuto část přeskočit.
+Tato část popisuje, jak spustit projekt aplikace Apache Cordova na zařízeních s Windows 10 (push plugin PhoneGap je podporován ve Windows 10). Pokud nepracujete se zařízeními se systémem Windows, můžete tuto část přeskočit.
 
-#### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>Registrace aplikace pro Windows pro nabízená oznámení pomocí WNS
+#### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>Registrace aplikace pro Windows pro nabízená oznámení pomocí služby WNS
 
-Chcete-li použít možnosti úložiště v aplikaci Visual Studio, vyberte cílový systém Windows ze seznamu platformy řešení, například **Windows-x64** nebo **Windows-x86**. (Nepoužívejte **Windows-anycpu** pro nabízená oznámení.)
+Chcete-li použít možnosti obchodu v sadě Visual Studio, vyberte cíl systému Windows ze seznamu Platformy řešení, například **Windows-x64** nebo **Windows-x86**. (Vyhněte se **Windows AnyCPU** pro nabízená oznámení.)
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
 [Podívejte se na video zobrazující podobný postup.][13]
 
-#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurace centra oznámení pro WNS
+#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurace centra oznámení pro službu WNS
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-#### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Konfigurace aplikace Cordova pro podporu nabízených oznámení systému Windows
+#### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Konfigurace aplikace Cordova pro podporu nabízených oznámení ve Windows
 
-Otevřete návrháře konfigurace tak, že kliknete pravým tlačítkem na **soubor config. XML**. Pak vyberte **Zobrazit návrháře**. Potom vyberte kartu **Windows** a v části **cílová verze Windows**vyberte **Windows 10** .
+Otevřete návrháře konfigurace klepnutím pravým tlačítkem myši na **soubor config.xml**. Pak vyberte **Zobrazit Návrhář**. Dále vyberte kartu **Windows** a pak v části **Windows Target Version**vyberte Windows **10** .
 
-Aby bylo možné podporovat nabízená oznámení ve vašich výchozích (ladicích) sestaveních, otevřete soubor **Build. JSON** . Pak zkopírujte konfiguraci "Release" do konfigurace ladění.
+Chcete-li podporovat nabízená oznámení ve výchozích (ladicích) sestaveních, otevřete soubor **build.json.** Pak zkopírujte konfiguraci "release" do konfigurace ladění.
 
 ```json
 "windows": {
@@ -342,7 +342,7 @@ Aby bylo možné podporovat nabízená oznámení ve vašich výchozích (ladic�
 }
 ```
 
-Po aktualizaci by měl soubor **Build. JSON** obsahovat následující kód:
+Po aktualizaci by měl soubor **build.json** obsahovat následující kód:
 
 ```json
 "windows": {
@@ -357,24 +357,24 @@ Po aktualizaci by měl soubor **Build. JSON** obsahovat následující kód:
     }
 ```
 
-Sestavte aplikaci a ověřte, že nedošlo k chybám. Klientská aplikace by teď měla zaregistrovat oznámení z Mobile Apps back-endu. Tento oddíl opakujte pro každý projekt Windows ve vašem řešení.
+Vytvořte aplikaci a ověřte, že nemáte žádné chyby. Vaše klientská aplikace by se teď měla zaregistrovat pro oznámení z back-endu mobilních aplikací. Opakujte tuto část pro každý projekt systému Windows ve vašem řešení.
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Testování nabízených oznámení v aplikaci pro Windows
 
-V aplikaci Visual Studio se ujistěte, že je jako cíl nasazení vybraná platforma Windows, jako je například **Windows-x64** nebo **Windows-x86**. Chcete-li spustit aplikaci na počítači s Windows 10, který je hostitelem sady Visual Studio, vyberte možnost **místní počítač**.
+V sadě Visual Studio zkontrolujte, zda je jako cíl nasazení vybrána platforma Windows, například **Windows-x64** nebo **Windows-x86**. Pokud chcete aplikaci spustit na počítači s Windows 10, který je hostitelem Visual Studia, zvolte **Místní počítač**.
 
-1. Vyberte tlačítko **Spustit** a sestavte projekt a spusťte aplikaci.
+1. Vyberte tlačítko **Spustit** pro sestavení projektu a spuštění aplikace.
 
-2. V aplikaci zadejte název nového TodoItem a potom vyberte ikonu plus **(+)** , kterou chcete přidat.
+2. V aplikaci zadejte název nové todopoložky a pak ji přidejte vyberte ikonu plus **(+).**
 
-Ověřte, že je při přidání položky přijata oznámení.
+Ověřte, zda je přijato oznámení při přidání položky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a><a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [Notification Hubs][17] , kde se dozvíte o nabízených oznámeních.
-* Pokud jste to ještě neudělali, pokračujte v kurzu [přidáním ověřování][14] do aplikace Apache Cordova.
+* Přečtěte si o [centrech oznámení,][17] kde se dozvíte o nabízených oznámeních.
+* Pokud jste tak ještě neučinili, pokračujte v kurzu [přidáním ověřování][14] do aplikace Apache Cordova.
 
-Naučte se používat tyto sady SDK:
+Přečtěte si, jak používat následující sady SDK:
 
 * [Apache Cordova SDK][15]
 * [ASP.NET Server SDK][1]

@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Security Center? | Microsoft Docs
-description: Tato stránka popisuje klíčové výhody Security Center – zjišťuje stav zabezpečení a zlepšuje se s využitím cloudových a premch prostředků.
+description: Tato stránka popisuje klíčové výhody Centra zabezpečení – zjištění stavu zabezpečení a jeho zlepšení pomocí pokrytí cloudových a on-prem prostředků.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,136 +15,136 @@ ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
 ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77918753"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
-Azure Security Center je jednotný systém pro správu zabezpečení infrastruktury, který posílí stav zabezpečení vašich datových center a poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu – ať už jsou v Azure, nebo ne, a také místně.
+Azure Security Center je jednotný systém správy zabezpečení infrastruktury, který posiluje stav zabezpečení vašich datových center a poskytuje pokročilou ochranu před hrozbami napříč hybridními úlohami v cloudu – ať už jsou v Azure nebo ne – stejně jako v prostorách.
 
-Zajištění bezpečnosti vašich prostředků je společné úsilí mezi vaším poskytovatelem cloudu, Azure a zákazníkem. Je nutné zajistit, aby vaše úlohy byly při přesunu do cloudu zabezpečené, a když přesunete na IaaS (infrastruktura jako služba), je k dispozici více zodpovědnosti zákazníka, než kolik jich bylo v PaaS (platforma jako služba), a SaaS (software jako služba). Azure Security Center poskytuje nástroje potřebné k posílení vaší sítě, zabezpečení služeb a zajištění, že jste na stav zabezpečení.
+Zajištění bezpečnosti vašich prostředků je společné úsilí mezi vaším poskytovatelem cloudu, Azure a vámi, zákazníkem. Musíte se ujistit, že vaše úlohy jsou zabezpečené při přechodu do cloudu a současně, když se přesunete do IaaS (infrastruktura jako služba), je větší odpovědnost zákazníků než v PaaS (platforma jako služba) a SaaS (software jako služba). Azure Security Center vám poskytuje nástroje potřebné k posílení vaší sítě, zabezpečení služeb a ujistěte se, že jste na vrcholu svého stavu zabezpečení.
 
-Azure Security Center řeší tři naléhavé problémy se zabezpečením:
+Azure Security Center řeší tři nejnaléhavější nároky na zabezpečení:
 
--   **Rychle se měnící úlohy** – jedná se o sílu i test cloudu. Na jedné straně je koncoví uživatelé k tomu oprávněni. V ostatních případech se můžete ujistit, že stále se měnící služby, které používají a které se vytvářejí, patří do standardů zabezpečení a dodržují osvědčené postupy zabezpečení?
+-   **Rychle se měnící úlohy** – jedná se o silné a zároveň slabé místo cloudu. Na jedné straně mají koncoví uživatelé větší možnosti. Na straně druhé, jak zajistíte, aby stále se měnící služby, které uživatelé používají a vytvářejí, vyhovovaly standardům zabezpečení a dodržovaly osvědčené postupy zabezpečení?
 
--   **Stále sofistikované útoky** – bez ohledu na to, jak vaše úlohy spouštíte, jsou útoky mnohem důmyslnější. Musíte zabezpečit svoje úlohy veřejného cloudu, což jsou vlastněné internetové úlohy, které vám pomůžou ještě více zranitelnější, pokud nedodržujete osvědčené postupy zabezpečení.
+-   **Stále důmyslnější útoky** – bez ohledu na to, kde své úlohy provozujete, jsou útoky stále důmyslnější. Musíte zabezpečit své úlohy ve veřejném cloudu, což jsou vlastně úlohy přístupné z internetu, které ještě více zvyšují vaši zranitelnost, pokud nedodržujete osvědčené postupy zabezpečení.
 
--   Důležité informace o **zabezpečení jsou v krátkém** vlastnictví – počet výstrah zabezpečení a systémů s výstrahami, které výrazně vycházejí z počtu správců, kteří potřebují zajistit, aby byla vaše prostředí chráněná. Udržování aktuálnosti díky nejnovějším útokům je stálou výzvou, takže není možné zůstat na místě, zatímco je svět zabezpečení neustále se měnícím frontou.
+-   **Nedostatek dovedností souvisejících se zabezpečením** – počet výstrah zabezpečení a varovných systémů značně převyšuje počet správců s potřebnou praxí a zkušenostmi, kteří zajistí ochranu vašich prostředí. Udržení kroku s nejnovějšími útoky je nepřetržitý úkol, který vám neumožňuje ustrnout na místě, zatímco se oblast zabezpečení neustále proměňuje.
 
-Abychom vám pomohli chránit před těmito výzvami, Security Center poskytuje nástroje pro:
+Kvůli ochraně před těmito hrozbami poskytuje Security Center nástroje, které umožňují:
 
--   **Posílit zabezpečení stav**: Security Center vyhodnocuje vaše prostředí a umožní vám pochopit stav vašich prostředků a to, jestli jsou zabezpečené.
+-   **Posílení stavu zabezpečení**: Centrum zabezpečení vyhodnocuje vaše prostředí a umožňuje pochopit stav vašich prostředků a jejich zabezpečení.
 
--   **Ochrana před hrozbami**: Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy zabezpečení.
+-   **Ochrana před hrozbami**: Centrum zabezpečení vyhodnocuje vaše úlohy a zvyšuje doporučení pro prevenci hrozeb a výstrahy zabezpečení.
 
--   **Rychlejší zabezpečení**: v Security Center se všechno provádí v rychlosti cloudu. Vzhledem k tomu, že je nativně integrovaná, nasazení Security Center je jednoduché a poskytuje vám možnost autozřizování a ochrana pomocí služeb Azure.
+-   **Rychlejší zabezpečení**: V Centru zabezpečení se vše provádí rychlostí cloudu. Vzhledem k tomu, že je nativně integrovaná, nasazení Security Center je snadné, poskytuje vám automatické zřizování a ochranu se službami Azure.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="architecture"></a>Architektura
 
-Vzhledem k tomu, že Security Center je nativně součástí Azure, služby PaaS v Azure – včetně Service Fabric, databází SQL a účtů úložiště – jsou monitorovány a chráněny Security Center bez nutnosti jakéhokoli nasazení.
+Vzhledem k tomu, že Security Center je nativně součástí Azure, služby PaaS v Azure – včetně Service Fabric, SQL databases a účty úložiště – jsou monitorovány a chráněny Security Center bez nutnosti nasazení.
 
-Kromě toho Security Center chránit i servery a virtuální počítače, které nejsou v Azure, v cloudu i v místním prostředí, a to pomocí instalace Microsoft Monitoring Agent na serverech se systémem Windows i Linux. Virtuální počítače Azure se automaticky zřídí v Security Center.
+Centrum zabezpečení navíc chrání servery a virtuální počítače jiného než Azure v cloudu nebo v místním prostředí pro servery windows i linux, a to instalací agenta monitorování Microsoftu. Virtuální počítače Azure se automaticky zřaží v Centru zabezpečení.
 
-Události shromážděné z agentů a z Azure jsou spojené s modulem Security Analytics, aby vám poskytovala přizpůsobená doporučení (posílení úloh), která vám pomůžou zajistit zabezpečení vašich úloh a výstrahy zabezpečení. Tyto výstrahy byste měli prozkoumat co nejdřív, abyste se ujistili, že se na vašich úlohách neprovádějí škodlivé útoky.
+Události shromážděné od agentů a z Azure jsou korelovány v modulu analýzy zabezpečení, aby vám poskytovaly přizpůsobená doporučení (úlohy posílení zabezpečení), které byste měli dodržovat, abyste se ujistili, že vaše úlohy jsou zabezpečené a výstrahy zabezpečení. Tyto výstrahy byste měli prozkoumat co nejdříve, abyste se ujistili, že ve vašich úlohách nedochází ke škodlivým útokům.
 
-Pokud povolíte Security Center, v části Security Center kategorie se tato zásada zabezpečení Security Center zařadí do Azure Policy jako integrovaná iniciativa. Předdefinovaná iniciativa se automaticky přiřadí všem Security Center registrovaným předplatným (úrovně Free nebo Standard). Integrovaná iniciativa obsahuje pouze zásady auditu. Další informace o zásadách Security Center v Azure Policy najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
+Když povolíte Security Center, zásady zabezpečení integrované do Centra zabezpečení se projeví v Zásadách Azure jako vestavěná iniciativa v kategorii Centrum zabezpečení. Předdefinovaná iniciativa je automaticky přiřazena všem předplatným registrovaným v Centru zabezpečení (úrovně Free nebo Standard). Integrovaná iniciativa obsahuje pouze zásady auditu. Další informace o zásadách Centra zabezpečení v zásadách Azure najdete v [tématu Práce se zásadami zabezpečení](tutorial-security-policy.md).
 
 ## <a name="strengthen-security-posture"></a>Posílení stavu zabezpečení
 
-Azure Security Center vám umožní posílit stav zabezpečení. To znamená, že vám pomůže identifikovat a provádět úlohy posílení zabezpečení doporučené jako osvědčené postupy zabezpečení a implementovat je napříč vašimi počítači, datovými službami a aplikacemi. To zahrnuje správu a vynucování zásad zabezpečení a zajištění, že vaše virtuální počítače Azure, servery mimo Azure a služby Azure PaaS splňují předpisy. Security Center poskytuje nástroje, které potřebujete k zobrazení očí na vašich úlohách, s soustředěnou viditelností na majetku zabezpečení vaší sítě. 
+Azure Security Center umožňuje posílit stav zabezpečení. To znamená, že vám pomůže identifikovat a provádět úlohy posílení zabezpečení doporučené jako doporučené postupy zabezpečení a implementovat je napříč počítači, datovými službami a aplikacemi. To zahrnuje správu a vynucování zásad zabezpečení a zajištění, aby vaše virtuální počítače Azure, servery než Azure a služby Azure PaaS byly kompatibilní. Security Center vám poskytuje nástroje, které potřebujete k tomu, abyste měli výhled z ptačí perspektivy na své úlohy, se soustředěnou viditelností na vašem zabezpečení sítě. 
 
-### <a name="manage-organization-security-policy-and-compliance"></a>Správa zásad zabezpečení a dodržování předpisů v organizaci
+### <a name="manage-organization-security-policy-and-compliance"></a>Správa zásad zabezpečení organizace a dodržování předpisů
 
-Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše úlohy zabezpečené a že se spustí s přizpůsobenými zásadami zabezpečení. Vzhledem k tomu, že všechny zásady v Security Center jsou postavené nad ovládacími prvky zásad Azure, získáte celou škálu a flexibilitu **špičkového řešení zásad**. V Security Center můžete nastavit, aby se zásady spouštěly ve skupinách pro správu, mezi předplatnými a dokonce i pro celého tenanta.
+Je to základní zabezpečení vědět a ujistěte se, že vaše úlohy jsou zabezpečené, a začíná s přizpůsobené zásady zabezpečení na místě. Vzhledem k tomu, že všechny zásady v Centru zabezpečení jsou postavené na ovládacích prvcích zásad Azure, získáte plný rozsah a flexibilitu **řešení zásad světové třídy**. V Centru zabezpečení můžete nastavit zásady tak, aby se spouštěla ve skupinách pro správu, napříč předplatnými a dokonce i pro celého tenanta.
 
 ![Řídicí panel Security Center](media/security-center-intro/sc-dashboard.png)
 
-Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazením předplatných, která **nejsou pokrytá** na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
+Security Center vám pomůže **identifikovat předplatná Shadow IT**. Když se podíváte na předplatná označená, že **nejsou zahrnuta** v řídicím panelu, můžete okamžitě vědět, kdy existují nově vytvořená předplatná, a ujistěte se, že se na ně vztahují vaše zásady a že jsou chráněna Centrem zabezpečení Azure.
 
-![Řídicí panel zásad Security Center](media/security-center-intro/sc-policy-dashboard.png)
+![Řídicí panel zásad Centra zabezpečení](media/security-center-intro/sc-policy-dashboard.png)
 
-Rozšířené možnosti monitorování v Security Center také umožňují **sledovat a spravovat dodržování předpisů a zásady správného řízení v průběhu času**. **Celkové dodržování předpisů** poskytuje míru, kolik vašich předplatných vyhovuje zásadám přidruženým k vašim úlohám. 
+Pokročilé funkce monitorování v Centru zabezpečení také umožňují **sledovat a spravovat dodržování předpisů a zásadsprávné řízení v průběhu času**. **Celkové dodržování předpisů** poskytuje míru, do jaké míry jsou vaše předplatná kompatibilní se zásadami přidruženými k vaší pracovní zátěži. 
 
-![Zásady Security Center v průběhu času](media/security-center-intro/sc-policy-time.png)
+![Zásady Centra zabezpečení v průběhu času](media/security-center-intro/sc-policy-time.png)
 
-### <a name="continuous-assessments"></a>Nepřetržité hodnocení
+### <a name="continuous-assessments"></a>Průběžné hodnocení
 
-Security Center nepřetržitě zjišťuje nové prostředky, které jsou nasazené napříč vašimi úlohami, a vyhodnocuje, jestli jsou nakonfigurované v souladu s osvědčenými postupy zabezpečení, pokud ne, jsou označeny a vy získáte seznam doporučení pro co Chcete-li chránit počítače, je třeba ji opravit.
+Security Center průběžně zjišťuje nové prostředky, které jsou nasazovány v rámci vašich úloh, a vyhodnocuje, zda jsou nakonfigurovány podle doporučených postupů zabezpečení, pokud ne, jsou označeny příznakem a získáte seznam doporučení s prioritou pro to, co musíte opravit, abyste ochránili své stroje.
 
-Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepřetržité monitorování stavu zabezpečení vaší sítě, je **Mapa sítě**. Mapa vám umožní zobrazit topologii vašich úloh, abyste viděli, jestli je každý uzel správně nakonfigurovaný. Vidíte, jak jsou uzly připojené, což vám pomůže zablokovat nechtěné připojení, která by mohla útočníkovi usnadnit nárůst vaší sítě.
+Jedním z nejvýkonnějších nástrojů Security Center poskytuje pro průběžné sledování stavu zabezpečení vaší sítě je **mapa sítě**. Mapa umožňuje zobrazit topologii úloh, takže můžete zjistit, zda je každý uzel správně nakonfigurován. Můžete vidět, jak jsou vaše uzly připojeny, což vám pomůže blokovat nežádoucí připojení, která by mohla útočníkovi usnadnit přichůzka v síti.
 
-![Mapa Security Center sítě](media/security-center-intro/sc-net-map.png)
+![Mapa sítě Centra zabezpečení](media/security-center-intro/sc-net-map.png)
 
-Security Center zjednodušuje výstrahy zabezpečení o krokování v jednom kroku přidáním **zabezpečeného skóre**. Pro každé doporučení, které obdržíte, se teď přiřadí bezpečnostní skóre, které vám pomohou pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení. To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
+Centrum zabezpečení usnadňuje zmírnění výstrah zabezpečení o jeden krok tím, že přidává **zabezpečené skóre**. Zabezpečené skóre jsou nyní spojeny s každým doporučením, které obdržíte, aby vám pomohlo pochopit, jak důležité je každé doporučení pro celkové stav zabezpečení. To je zásadní pro to, abyste **upřednostnili práci v zabezpečení**.
 
-![Security Center zabezpečeného skóre](media/security-center-intro/sc-secure-score.png)
+![Skóre zabezpečení Centra zabezpečení](media/security-center-intro/sc-secure-score.png)
 
-### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Optimalizace a vylepšení zabezpečení konfigurací doporučených ovládacích prvků
+### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Optimalizace a zlepšení zabezpečení konfigurací doporučených ovládacích prvků
 
-Srdcová hodnota Azure Security Center leží ve svých doporučeních. Doporučení jsou přizpůsobená konkrétním problémům zabezpečení zjištěným na vašich úlohách a Security Center zajišťuje, aby správce zabezpečení pracoval jenom s vašimi hrozbami, ale poskytoval vám konkrétní pokyny, jak je zbavit.
+Hlavní hodnota Azure Security Center spočívá v jeho doporučení. Doporučení jsou přizpůsobena konkrétním problémům se zabezpečením, které se nacházejí ve vašich úlohách, a Security Center dělá správce zabezpečení za vás, a to nejen vyhledáním vašich chyb zabezpečení, ale také poskytnutím konkrétních pokynů, jak se jich zbavit.
 
-![Security Center doporučení](media/security-center-intro/sc-recommendations.png)
+![Doporučení Centra zabezpečení](media/security-center-intro/sc-recommendations.png)
 
-Tímto způsobem Security Center umožňuje nejen nastavovat zásady zabezpečení, ale používat standardy zabezpečené konfigurace napříč prostředky.
+Tímto způsobem centrum zabezpečení umožňuje nejen nastavit zásady zabezpečení, ale použít standardy zabezpečené konfigurace napříč prostředky.
 
-Doporučení vám pomůžou snížit plochu pro útok na jednotlivé prostředky. To zahrnuje virtuální počítače Azure, servery mimo Azure a služby Azure PaaS, jako jsou SQL a účty úložiště, a další informace o tom, kde se každý typ prostředku vyhodnocuje odlišně a má vlastní standardy.
+Doporučení vám pomohou snížit prostor pro útok napříč jednotlivými prostředky. To zahrnuje virtuální počítače Azure, servery než Azure a služby Azure PaaS, jako jsou účty SQL a Storage a další – kde se každý typ prostředku vyhodnocuje jinak a má své vlastní standardy.
 
-![Příklad doporučení Security Center](media/security-center-intro/sc-recommendation-example.png)
+![Příklad doporučení Centra zabezpečení](media/security-center-intro/sc-recommendation-example.png)
 
 ## <a name="protect-against-threats"></a>Ochrana před hrozbami
 
-Ochrana před hrozbami Security Center vám umožní detekovat a bránit hrozbám na úrovni infrastruktury jako služby (IaaS), serverech mimo Azure a také pro platformy jako služby (PaaS) v Azure.
+Ochrana zabezpečení Center umožňuje detekovat a předcházet hrozbám na vrstvě Infrastruktura jako služba (IaaS), serverů chod ů Azure i pro platformy jako služba (PaaS) v Azure.
 
-Ochrana před hrozbami Security Center zahrnuje analýzu dezaktivačního řetězu fúze, která automaticky koreluje výstrahy ve vašem prostředí založené na počítačové analýze dezaktivačního řetězu, což vám pomůže lépe pochopit úplný příběh kampaně při útoku, kde začala a co druh dopadu, který měl na vašich prostředcích.
+Ochrana před hrozbami centra zabezpečení zahrnuje analýzu fúzního řetězce, která automaticky koreluje výstrahy ve vašem prostředí na základě analýzy kybernetického řetězce, která vám pomůže lépe pochopit celý příběh útočné kampaně, kde začala a co měl na vaše zdroje takový dopad.
 
 
 
-![Doporučení Security Centerho útoku](media/security-center-intro/sc-attack-recommendation.png)
+![Doporučení k útoku centra zabezpečení](media/security-center-intro/sc-attack-recommendation.png)
 
-### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integrace pomocí rozšířené ochrany před internetovými útoky v programu Microsoft Defender
+### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integrace s pokročilou ochranou před hrozbami v programu Microsoft Defender
 
-Security Center zahrnuje automatickou nativní integraci s rozšířenou ochranou před internetovými útoky v programu Microsoft Defender. To znamená, že bez jakékoli konfigurace jsou počítače s Windows a Linux plně integrované s doporučeními a posouzením Security Center.
+Security Center zahrnuje automatickou nativní integraci s programem Microsoft Defender Advanced Threat Protection. To znamená, že bez jakékoli konfigurace jsou vaše počítače se systémem Windows a Linux plně integrovány s doporučeními a hodnoceními security centra.
 
-Security Center navíc umožňuje automatizovat zásady řízení aplikací v prostředích serveru. Adaptivní řízení aplikací v Security Center umožní kompletní aplikaci, která je povolená pro všechny servery s Windows. Nemusíte vytvářet pravidla a kontrolovat porušení, je to vše hotovo automaticky za vás.
+Centrum zabezpečení navíc umožňuje automatizovat zásady řízení aplikací v serverových prostředích. Adaptivní ovládací prvky aplikací v Centru zabezpečení umožňují seznam povolených aplikací na serverech windows. Nemusíte vytvářet pravidla a kontrolovat porušení, to vše se provádí automaticky za vás.
 
-### <a name="protect-paas"></a>Ochrana PaaS
+### <a name="protect-paas"></a>Chraňte PaaS
 
-Security Center vám pomůže detekovat hrozby napříč službami Azure PaaS. Můžete zjišťovat hrozby, které cílí na služby Azure, včetně Azure App Service, Azure SQL, Azure Storage účtu a dalších datových služeb. Můžete také využít výhod nativní integrace s uživateli Microsoft Cloud App Security a UEBA (User-Analytics) a provádět detekci anomálií v protokolech aktivit Azure.
+Security Center pomáhá detekovat hrozby napříč službami Azure PaaS. Můžete zjistit hrozby cílené na služby Azure, včetně Azure App Service, Azure SQL, Azure Storage Account a dalších datových služeb. Můžete také využít nativní integraci s microsoft cloudovým zabezpečením zabezpečení aplikací user and entity Behavioral Analytics (UEBA) k provádění detekce anomálií v protokolech aktivit Azure.
 
-### <a name="block-brute-force-attacks"></a>Zablokovat útoky hrubou silou
+### <a name="block-brute-force-attacks"></a>Blokovat útoky hrubou silou
 
-Security Center vám pomůže omezit vystavení útokům hrubou silou. Omezením přístupu k portům virtuálních počítačů pomocí přístupu k virtuálnímu počítači za běhu můžete posílit svou síť tím, že zabráníte zbytečnému přístupu. Na vybraných portech můžete nastavit zásady zabezpečeného přístupu, jenom pro autorizované uživatele, povolené rozsahy IP adres nebo IP adresy a omezené množství času.
+Security Center pomáhá omezit vystavení útokům hrubou silou. Snížením přístupu k portům virtuálních počítačů pomocí přístupu k virtuálním počítači za chvíli můžete posílit síť tím, že zabráníte zbytečnému přístupu. Zásady zabezpečeného přístupu můžete nastavit na vybraných portech, pouze pro oprávněné uživatele, povolené rozsahy zdrojových ip adres nebo adresy IP a na omezenou dobu.
 
-![Security Center hrubou silou](media/security-center-intro/sc-brute-force.png)
+![Příměsí centra zabezpečení](media/security-center-intro/sc-brute-force.png)
 
 ### <a name="protect-data-services"></a>Ochrana datových služeb
 
-Security Center obsahuje možnosti, které vám pomůžou provést automatickou klasifikaci vašich dat v Azure SQL. Můžete také získat vyhodnocení potenciálních chyb zabezpečení napříč službou Azure SQL a služby úložiště a doporučení, jak je zmírnit.
+Security Center obsahuje funkce, které vám pomohou provádět automatickou klasifikaci dat v Azure SQL. Můžete také získat hodnocení potenciálních chyb zabezpečení napříč službami Azure SQL a Storage a doporučení, jak je zmírnit.
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>Ochrana úloh IoT a hybridního cloudu
 
-Azure Security Center pro IoT (Internet věcí) zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a kontrolu, prevenci proti hrozbám a inteligentní ochranu před hrozbami a reakci napříč úlohami, které běží na hraničních zařízeních. v Azure a v jiných cloudech. Další informace najdete v tématu [Azure Security Center pro IoT](https://docs.microsoft.com/azure/asc-for-iot/).
+Azure Security Center for IoT (Internet of Things) zjednodušuje ochranu hybridníúlohy tím, že poskytuje jednotnou viditelnost a řízení, adaptivní prevenci hrozeb a inteligentní ochranu před hrozbami a odezvu napříč úlohami spuštěnými na hraničních zařízeních. v Azure a v jiných cloudech. Další informace najdete v [tématu Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
-## <a name="get-secure-faster"></a>Rychlejší získání zabezpečení
+## <a name="get-secure-faster"></a>Rychlejší zabezpečení
 
-Nativní Integrace Azure (včetně protokolů Azure Policy a Azure Monitor) v kombinaci s bezproblémovou integrací s dalšími řešeními zabezpečení Microsoftu, jako je Microsoft Cloud App Security a Rozšířená ochrana před internetovými útoky v programu Windows Defender, zajišťuje, aby řešení zabezpečení je ucelené a umožňuje snadnou registraci a zavedení.
+Nativní integrace Azure (včetně protokolů Azure Policy a Azure Monitor) v kombinaci s bezproblémovou integrací s dalšími řešeními zabezpečení Microsoftu, jako je Microsoft Cloud App Security a Windows Defender Advanced Threat Protection bezpečnostní řešení je komplexní, stejně jako jednoduché na palubě a zavádění.
 
 Kromě toho můžete rozšířit úplné řešení mimo Azure na úlohy spuštěné v jiných cloudech a v místních datových centrech.
 
-### <a name="automatically-discover-and-onboard-azure-resources"></a>Automatické zjišťování a zprovoznění prostředků Azure
+### <a name="automatically-discover-and-onboard-azure-resources"></a>Automatické zjišťování a navšlápáme prostředky Azure
 
-Security Center poskytuje bezproblémovou a nativní integraci s prostředky Azure a Azure. To znamená, že si můžete vyžádat kompletní bezpečnostní příběh, který zahrnuje Azure Policy a předdefinované Security Center zásady napříč všemi prostředky Azure a zajistěte, aby se celá věc automaticky používala u nově zjištěných prostředků při jejich vytváření. v Azure.
+Security Center poskytuje bezproblémovou nativní integraci s prostředky Azure a Azure. To znamená, že můžete sestavit kompletní příběh zabezpečení zahrnující zásady Azure a integrované zásady Centra zabezpečení napříč všemi vašimi prostředky Azure a ujistit se, že se celá věc automaticky použije na nově objevené prostředky při jejich vytváření. v Azure.
 
-Rozsáhlá kolekce protokolů – protokoly z Windows a Linux se využívají v modulu Security Analytics a používají se k vytváření doporučení a upozornění.
+Rozsáhlá kolekce protokolů – protokoly z Windows a Linuxu jsou všechny využívány v modulu analýzy zabezpečení a slouží k vytváření doporučení a výstrah.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete začít využívat Security Center, musíte mít předplatné Microsoft Azure. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-- V rámci vašeho předplatného Azure je povolená cenová úroveň bezplatného Security Center. Aby bylo možné využít pokročilé možnosti správy zabezpečení a ochrany před internetovými útoky, je nutné upgradovat na cenovou úroveň Standard. Úroveň Standard se dá zdarma zkoušet po dobu 30 dnů. Další informace najdete na stránce s [cenami Security Center](https://azure.microsoft.com/pricing/details/security-center/).
-- Pokud jste připraveni povolit Security Center Standard nyní, [rychlý Start: připojení předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede jednotlivými kroky.
+- Pokud chcete začít využívat Security Center, musíte mít předplatné Microsoft Azure. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+- Bezplatná cenová úroveň Security Center je povolená s vaším předplatným Azure. Chcete-li využít výhod rozšířené správy zabezpečení a možností ochrany před hrozbami, je nutné upgradovat na standardní cenovou úroveň. Standardní úroveň lze vyzkoušet zdarma po dobu 30 dnů. Další informace naleznete na [stránce Scenní centrum zabezpečení](https://azure.microsoft.com/pricing/details/security-center/).
+- Pokud jste připraveni povolit standard Security Center nyní, [rychlý start: Onboard předplatné Azure security center standard](security-center-get-started.md) vás provede kroky.

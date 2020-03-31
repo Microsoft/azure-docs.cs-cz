@@ -1,6 +1,6 @@
 ---
 title: Domény událostí v Azure Event Grid
-description: Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních událostí v různých obchodních organizacích, zákaznících nebo aplikacích.
+description: Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních událostí do různých obchodních organizací, zákazníků nebo aplikací.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,64 +8,64 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898868"
 ---
-# <a name="understand-event-domains-for-managing-event-grid-topics"></a>Porozumění doménám událostí pro správu Event Grid témata
+# <a name="understand-event-domains-for-managing-event-grid-topics"></a>Principy domén událostí pro správu témat služby Event Grid
 
-Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních událostí v různých obchodních organizacích, zákaznících nebo aplikacích. Domény událostí použijte k těmto akcím:
+Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních událostí do různých obchodních organizací, zákazníků nebo aplikací. Pomocí domén událostí můžete:
 
-* Spravujte škálovatelné architektury pro víceklientské řízení událostí.
+* Spravujte víceklientské architektury událostí ve velkém měřítku.
 * Spravujte autorizaci a ověřování.
-* Rozdělte témata, aniž byste je museli spravovat jednotlivě.
-* Nevybírejte jednotlivě publikování do každého z vašich koncových bodů vašeho tématu.
+* Rozdělte témata bez správy jednotlivých.
+* Vyhněte se individuálnípublikování na každý z koncových bodů tématu.
 
 ## <a name="event-domain-overview"></a>Přehled domény událostí
 
-Doména události je nástroj pro správu velkého počtu Event Gridch témat týkajících se stejné aplikace. Můžete si ho představit jako meta téma, které může obsahovat tisíce jednotlivých témat.
+Doména událostí je nástroj pro správu pro velký počet témat event gridu souvisejících se stejnou aplikací. Můžete si to myslet jako meta-téma, které může mít tisíce jednotlivých témat.
 
-Domény událostí zpřístupňují stejnou architekturu, kterou používají služby Azure (například úložiště a IoT Hub) k publikování jejich událostí. Umožňují publikovat události do tisíců témat. Domény také poskytují autorizaci a kontrolu ověřování pro jednotlivá témata, abyste mohli rozdělit klienty na oddíly.
+Domény událostí vám zpřístupní stejnou architekturu, kterou používají služby Azure (jako je Storage a IoT Hub) k publikování svých událostí. Umožňují publikovat události na tisíce témat. Domény také poskytují oprávnění a ověřování kontrolu nad jednotlivými tématy, takže můžete rozdělit své klienty.
 
 ### <a name="example-use-case"></a>Příklad případu použití
 
-Domény událostí se nejsnadněji vysvětlí pomocí příkladu. Řekněme, že spouštíte výrobní stroj contoso, kde vytváříte traktory, prozkoumá vybavení a další těžká zařízení. V rámci provozu firmy zadáváte zákazníkům informace o údržbě zařízení, stavu systémů a aktualizacích smluv v reálném čase. Všechny tyto informace se přenášejí do různých koncových bodů, včetně vaší aplikace, koncových bodů zákazníka a jiné infrastruktury, kterou si zákazníci nastavili.
+Domény událostí lze nejsnadněji vysvětlit pomocí příkladu. Řekněme, že provozujete společnosti Contoso Construction Machinery, kde vyrábíte traktory, výkopové zařízení a další těžké stroje. V rámci provozování podniku můžete zákazníkům v reálném čase informace o údržbě zařízení, stavu systémů a aktualizacích smluv. Všechny tyto informace přejde do různých koncových bodů, včetně vaší aplikace, koncových bodů zákazníků a další infrastruktury, kterou zákazníci nastavili.
 
-Domény událostí umožňují modelovat strojová konstrukce společnosti Contoso jako jednu entitu událostí. Každý z vašich zákazníků je reprezentován jako téma v rámci domény. Ověřování a autorizace jsou zpracovávány pomocí Azure Active Directory. Každý z vašich zákazníků se může přihlásit k odběru svého tématu a získat jejich události do nich. Spravovaný přístup prostřednictvím domény události zajišťuje, že budou moct přistupovat jenom k jejich tématu.
+Domény událostí umožňují modelovat stavební stroje Contoso jako jednu entitu událostí. Každý z vašich zákazníků je reprezentován jako téma v rámci domény. Ověřování a autorizace se zpracovávají pomocí služby Azure Active Directory. Každý z vašich zákazníků se může přihlásit k odběru svého tématu a nechat si své události doručit. Spravovaný přístup prostřednictvím domény událostí zajišťuje, že mají přístup pouze ke svému tématu.
 
-Poskytuje taky jeden koncový bod, na který můžete publikovat všechny události zákazníků. Event Grid se postará o to, aby každé téma bylo důležité pouze o událostech, které jsou vymezeny pro svého tenanta.
+Poskytuje také jeden koncový bod, do kterého můžete publikovat všechny události zákazníků. Event Grid se postará o to, aby každé téma vědělo pouze o událostech, které jsou vymezeny jeho tenantovi.
 
-![Příklad konstrukce contoso](./media/event-domains/contoso-construction-example.png)
+![Příklad výstavby společnosti Contoso](./media/event-domains/contoso-construction-example.png)
 
 ## <a name="access-management"></a>Správa přístupu
 
-V rámci domény získáte prostřednictvím řízení přístupu na základě role (RBAC) v Azure podrobné řízení autorizace a ověřování pro každé téma. Pomocí těchto rolí můžete omezit každého tenanta ve vaší aplikaci jenom na témata, ke kterým chcete udělit přístup.
+S doménou získáte jemné oprávnění zrnitosti a kontrolu ověřování nad každým tématem prostřednictvím řízení přístupu azure na základě rolí (RBAC). Tyto role můžete použít k omezení každého klienta ve vaší aplikaci pouze na témata, ke kterým chcete udělit přístup.
 
-RBAC v doménách událostí funguje stejným způsobem jako [spravované řízení přístupu](security-authorization.md) ve zbývajících Event Grid a Azure. Pomocí RBAC vytvořte a vynuťte definice vlastních rolí v doménách událostí.
+RBAC v událostech domény funguje stejným způsobem [spravované řízení přístupu](security-authorization.md) funguje ve zbytku Event Grid a Azure. Pomocí RBAC vytvořte a vynucujte vlastní definice rolí v doménách událostí.
 
-### <a name="built-in-roles"></a>Předdefinované role
+### <a name="built-in-roles"></a>Vytvořené role
 
-Event Grid má dvě předdefinované definice rolí, které zjednodušují práci s doménami událostí. Tyto role jsou **EventGrid EventSubscription Přispěvatel (Preview)** a **EventGrid EventSubscription Reader (Preview)** . Tyto role přiřadíte uživatelům, kteří se potřebují přihlašovat k odběru témat v doméně událostí. Přiřadíte rozsah přiřazení role pouze k tématu, které uživatelé potřebují k přihlášení k odběru.
+Event Grid má dvě předdefinované definice rolí, které usnadňují RBAC pro práci s doménami událostí. Tyto role jsou **EventGrid EventSubscription Přispěvatel (Náhled)** a **EventGrid EventSubscription Reader (Preview)**. Tyto role přiřadíte uživatelům, kteří se potřebují přihlásit k odběru témat ve vaší doméně událostí. Přiřazení role můžete obor pouze téma, které uživatelé potřebují k odběru.
 
-Informace o těchto rolích najdete v tématu [předdefinované role pro Event Grid](security-authorization.md#built-in-roles).
+Informace o těchto rolích naleznete [v tématu Předdefinované role pro event grid](security-authorization.md#built-in-roles).
 
 ## <a name="subscribing-to-topics"></a>Přihlášení k odběru témat
 
-Přihlášení k odběru událostí v tématu v rámci domény události je stejné jako [Vytvoření odběru události pro vlastní téma](./custom-event-quickstart.md) nebo přihlášení k odběru události ze služby Azure.
+Přihlášení k odběru událostí na téma v doméně událostí je stejné jako [vytvoření odběru událostí na vlastní téma](./custom-event-quickstart.md) nebo přihlášení k odběru události ze služby Azure.
 
-### <a name="domain-scope-subscriptions"></a>Předplatné oboru domény
+### <a name="domain-scope-subscriptions"></a>Odběry oboru domény
 
-Domény událostí také umožňují odběry rozsahu domény. Odběr události v doméně události obdrží všechny události, které jsou odeslány do domény bez ohledu na téma, na které jsou události odesílány. Odběry oborů domény mohou být užitečné pro účely správy a auditování.
+Domény událostí také umožňují odběry oboru domény. Odběr událostí v doméně událostí obdrží všechny události odeslané do domény bez ohledu na téma, na které jsou události odesílány. Odběry oboru domény může být užitečné pro účely správy a auditování.
 
 ## <a name="publishing-to-an-event-domain"></a>Publikování do domény událostí
 
-Když vytvoříte doménu události, budete mít k disEvent Grid koncový bod publikování podobný tomu, pokud jste vytvořili téma v. 
+Když vytvoříte doménu událostí, dostanete koncový bod publikování podobný, jako když jste vytvořili téma v Event Grid. 
 
-Pokud chcete publikovat události do libovolného tématu v doméně události, nahrajte události do koncového bodu domény [stejným způsobem jako u vlastního tématu](./post-to-custom-topic.md). Jediným rozdílem je, že musíte zadat téma, do kterého chcete událost doručit.
+Chcete-li publikovat události na libovolné téma v doméně událostí, posuňte události do koncového bodu domény [stejným způsobem jako u vlastního tématu](./post-to-custom-topic.md). Jediným rozdílem je, že je nutné zadat téma, do kterého chcete událost doručit.
 
-Publikování následujícího pole událostí by například poslalo událost s `"id": "1111"` k tématu `foo`, zatímco se událost with `"id": "2222"` pošle do tématu `bar`:
+Například publikování následujícího pole událostí by `"id": "1111"` odeslat událost s tématem, `foo` zatímco událost s `"id": "2222"` by být odeslány na téma `bar`:
 
 ```json
 [{
@@ -94,24 +94,24 @@ Publikování následujícího pole událostí by například poslalo událost s
 }]
 ```
 
-Domény událostí zpracovávají publikování na témata za vás. Místo publikování událostí pro každé téma, které spravujete jednotlivě, můžete publikovat všechny události do koncového bodu domény. Event Grid zajišťují, aby se všechny události poslaly do správného tématu.
+Domény událostí zpracovávají publikování na témata za vás. Místo publikování událostí ke každému tématu, které spravujete jednotlivě, můžete publikovat všechny události do koncového bodu domény. Event Grid zajišťuje, že každá událost je odeslána na správné téma.
 
 ## <a name="limits-and-quotas"></a>Omezení a kvóty
-Tady jsou limity a kvóty související s doménami událostí:
+Zde jsou limity a kvóty související s doménami událostí:
 
-- témata 100 000 na doménu události 
-- 100 domén událostí na předplatné Azure 
-- 500 odběry událostí na téma v doméně události
-- 50 rozsahů doménových předplatných 
-- frekvence příjmu událostí 5 000 za sekundu (do domény)
+- 100 000 témat na doménu události 
+- 100 domén událostí na jedno předplatné Azure 
+- 500 odběrů událostí na téma v doméně událostí
+- 50 odběrů oboru domény 
+- Rychlost požití 5 000 událostí za sekundu (do domény)
 
-Pokud vám tato omezení neodpovídají, můžete se obrátit na produktový tým otevřením lístku podpory nebo odesláním e-mailu [askgrid@microsoft.com](mailto:askgrid@microsoft.com). 
+Pokud vám tato omezení nevyhovují, oslovte produktový tým otevřením [askgrid@microsoft.com](mailto:askgrid@microsoft.com)lístku podpory nebo odesláním e-mailu na adresu . 
 
 ## <a name="pricing"></a>Ceny
-Domény událostí používají stejné [ceny operací](https://azure.microsoft.com/pricing/details/event-grid/) jako u všech ostatních funkcí v Event Grid použít.
+Domény událostí používají stejné [provozní ceny,](https://azure.microsoft.com/pricing/details/event-grid/) jakoy používají všechny ostatní funkce v event gridu.
 
-Operace fungují v doménách událostí stejně jako v uživatelských tématech. Každá příchozí událost události do domény události je operace a každý pokus o doručení události je operace.
+Operace fungují v doménách událostí stejně jako ve vlastních tématech. Každý příchozí přenos události do domény události je operace a každý pokus o doručení pro událost je operace.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o nastavení domén událostí, vytváření témat, vytváření odběrů událostí a publikování událostí najdete v tématu [Správa domén událostí](./how-to-event-domains.md).
+* Informace o nastavení domén událostí, vytváření témat, vytváření odběrů událostí a publikování událostí najdete v tématu [Správa domén událostí](./how-to-event-domains.md).

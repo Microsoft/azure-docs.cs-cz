@@ -12,18 +12,18 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 31ad373b1544fc601a9c37e05e324a9c1dfb3f73
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183771"
 ---
-# <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Přihlaste se pomocí aplikace pro Android v Azure Active Directory B2C
+# <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Přihlášení pomocí aplikace pro Android ve službě Azure Active Directory B2C
 
-Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Tyto standardy vám umožní využít libovolnou knihovnu, kterou chcete integrovat s Azure Active Directory B2C. Abyste mohli využít jiné knihovny, můžete použít Názorný postup, který vám ukáže, jak nakonfigurovat knihovny třetích stran pro připojení k platformě Microsoft identity. Většina knihoven, které implementují [specifikaci RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) , se může připojit k platformě Microsoft identity.
+Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Tyto standardy umožňují využít všechny knihovny, které chcete integrovat s Azure Active Directory B2C. Chcete-li použít jiné knihovny, můžete pomocí návodu, jako je tento, předvést, jak nakonfigurovat knihovny třetích stran pro připojení k platformě identit microsoftu. Většina knihoven, které [implementují specifikace RFC6749 OAuth2,](https://tools.ietf.org/html/rfc6749) se může připojit k platformě Microsoft Identity.
 
 > [!WARNING]
-> Microsoft neposkytuje opravy pro knihovny třetích stran a neprovádí revize těchto knihoven. Tato ukázka používá knihovnu třetích stran s názvem AppAuth, která byla testována z hlediska kompatibility v základních scénářích s Azure AD B2C. Žádosti o problémy a funkce by měly být směrovány na open source projekt knihovny. Další informace najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) .
+> Společnost Microsoft neposkytuje opravy pro knihovny třetích stran a neprovedla kontrolu těchto knihoven. Tato ukázka používá knihovnu třetích stran s názvem AppAuth, která byla testována na kompatibilitu v základních scénářích s Azure AD B2C. Problémy a požadavky na funkce by měly být směrovány do open source projektu knihovny. Další informace naleznete v [tomto článku.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)
 >
 >
 
@@ -35,50 +35,50 @@ Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresá
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-V dalším kroku zaregistrujete aplikaci do svého tenanta Azure AD B2C. To poskytuje službě Azure AD informace, které potřebuje pro bezpečnou komunikaci s vaší aplikací.
+Dále zaregistrujte aplikaci v tenantovi Azure AD B2C. To poskytuje Azure AD informace, které potřebuje ke komunikaci bezpečně s vaší aplikací.
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
+Zaznamenejte **ID aplikace (klienta)** pro pozdější krok.
 
-Také zaznamenejte vlastní identifikátor URI přesměrování pro použití v pozdějším kroku. například `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Také zaznamenejte vlastní identifikátor URI přesměrování pro pozdější krok. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Vytvoření uživatelských toků
 
-V Azure AD B2C je každé uživatelské prostředí definované [uživatelským tokem](user-flow-overview.md), což je sada zásad, které řídí chování služby Azure AD. Tato aplikace vyžaduje přihlášení a uživatelský tok pro přihlášení. Při vytváření toku uživatele nezapomeňte:
+Ve službě Azure AD B2C je každé uživatelské prostředí definováno [tok emitovaného uživatelem](user-flow-overview.md), což je sada zásad, které řídí chování Azure AD. Tato aplikace vyžaduje přihlášení a přihlášení uživatele tok. Při vytváření toku uživatele nezapomeňte:
 
-* V toku uživatele vyberte **Zobrazovaný název** jako atribut pro registraci.
-* V toku každého uživatele vyberte **zobrazované deklarace názvu** a **ID objektu** . Můžete zvolit i další deklarace identity.
-* Po vytvoření si zkopírujte **název** každého toku uživatele. Měl by mít předponu `b2c_1_`.  Název toku uživatele budete potřebovat později.
+* V toku uživatele zvolte **zobrazovaný název** jako atribut registrace.
+* V každém toku uživatele zvolte deklarace identity **zobrazované jméno** a **ID objektu.** Můžete zvolit i další deklarace identity.
+* Zkopírujte **název** každého toku uživatele po jeho vytvoření. Měl by mít předponu `b2c_1_`.  Název toku uživatele budete potřebovat později.
 
-Po vytvoření toků uživatelů budete připraveni k sestavení aplikace.
+Po vytvoření toků uživatelů jste připraveni vytvořit aplikaci.
 
 ## <a name="download-the-sample-code"></a>Stažení ukázkového kódu
 
-Poskytujeme pracovní ukázku, která používá AppAuth s Azure AD B2C [na GitHubu](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Můžete stáhnout kód a spustit ho. Můžete rychle začít s vlastní aplikací pomocí vlastní konfigurace Azure AD B2C podle pokynů v tématu [Readme.MD](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md).
+Poskytli jsme pracovní ukázku, která používá AppAuth s Azure AD B2C [na GitHubu](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Můžete si stáhnout kód a spustit jej. Můžete rychle začít s vlastní aplikací pomocí vlastní konfigurace Azure AD B2C podle pokynů v [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md).
 
-Ukázka je úprava ukázky, kterou poskytuje [AppAuth](https://openid.github.io/AppAuth-Android/). Další informace o AppAuth a jejích funkcích najdete na stránce.
+Vzorek je modifikace vzorku poskytnuté [AppAuth](https://openid.github.io/AppAuth-Android/). Další informace o AppAutha a jeho funkcích naleznete na jejich stránce.
 
-## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Úprava aplikace pro použití Azure AD B2C s AppAuth
+## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Úprava aplikace tak, aby používala Azure AD B2C s AppAuth
 
 > [!NOTE]
-> AppAuth podporuje Android API 16 (Jellybean) a vyšší. Doporučujeme používat rozhraní API 23 a novější.
+> AppAuth podporuje Android API 16 (Jellybean) a výše. Doporučujeme používat rozhraní API 23 a vyšší.
 >
 
 ### <a name="configuration"></a>Konfigurace
 
-Komunikaci s Azure AD B2C můžete nakonfigurovat buď zadáním identifikátoru URI zjišťování, nebo zadáním identifikátoru URI koncového bodu autorizace i koncových bodů tokenu. V obou případech budete potřebovat následující informace:
+Můžete nakonfigurovat komunikaci s Azure AD B2C buď zadáním identifikátoru URI zjišťování nebo zadáním koncový bod autorizace a token koncový bod URI. V obou případech budete potřebovat následující informace:
 
-* ID tenanta (např. contoso.onmicrosoft.com)
-* Název toku uživatele (např. B2C\_1\_SignUpIn)
+* ID nájemce (např. contoso.onmicrosoft.com)
+* Uživatelské tokové jméno (např.\_b2C 1\_SignUpIn)
 
-Pokud se rozhodnete automaticky zjistit identifikátory URI koncového bodu autorizace a tokenu, bude nutné načíst informace z identifikátoru URI zjišťování. Identifikátor URI zjišťování se dá vygenerovat tak, že nahradíte ID\_klienta a\_název zásady v následující adrese URL:
+Pokud se rozhodnete automaticky zjišťovat identifikátory URI pro autorizaci a koncový bod tokenu, budete muset načíst informace z identifikátoru URI zjišťování. Identifikátor URI zjišťování lze vygenerovat\_nahrazením ID\_klienta a názvu zásady v následující adrese URL:
 
 ```java
 String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
 ```
 
-Pak můžete získat identifikátory URI koncového bodu autorizace a tokenu a vytvořit objekt AuthorizationServiceConfiguration spuštěním následujícího:
+Potom můžete získat identifikátory URI koncový bod autorizace a tokenu a vytvořit objekt AuthorizationServiceConfiguration spuštěním následujícího:
 
 ```java
 final Uri issuerUri = Uri.parse(mDiscoveryURI);
@@ -99,7 +99,7 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-Místo použití funkce zjišťování pro získání autorizačních identifikátorů URI a koncových bodů tokenu je můžete zadat explicitně tak, že nahradíte ID klienta\_a zásadu\_název v níže uvedené adrese URL:
+Místo použití zjišťování k získání identifikátorů URI pro autorizaci a koncový bod\_tokenu je\_můžete také explicitně zadat nahrazením ID klienta a názvu zásady v následujících adresách URL:
 
 ```java
 String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
@@ -107,7 +107,7 @@ String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2
 String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
 ```
 
-Spusťte následující kód pro vytvoření objektu AuthorizationServiceConfiguration:
+Spusťte následující kód a vytvořte objekt AuthorizationServiceConfiguration:
 
 ```java
 AuthorizationServiceConfiguration config =
@@ -118,12 +118,12 @@ AuthorizationServiceConfiguration config =
 
 ### <a name="authorizing"></a>Autorizace
 
-Jakmile nakonfigurujete nebo načtete konfiguraci autorizační služby, může být vytvořen požadavek na autorizaci. Chcete-li vytvořit požadavek, budete potřebovat následující informace:
+Po konfiguraci nebo načtení konfigurace autorizační služby lze sestavit žádost o autorizaci. Chcete-li vytvořit požadavek, budete potřebovat následující informace:
 
-* ID klienta (ID aplikace), které jste si poznamenali dříve. například `00000000-0000-0000-0000-000000000000`.
-* Vlastní identifikátor URI pro přesměrování, který jste si poznamenali dříve. například `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+* ID klienta (ID aplikace), které jste zaznamenali dříve. Například, `00000000-0000-0000-0000-000000000000`.
+* Vlastní identifikátor URI přesměrování, který jste zaznamenali dříve. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
-Obě položky by měly být uloženy při [registraci aplikace](#create-an-application).
+Obě položky měly být uloženy při [registraci aplikace](#create-an-application).
 
 ```java
 AuthorizationRequest req = new AuthorizationRequest.Builder(
@@ -134,4 +134,4 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
     .build();
 ```
 
-Další informace o tom, jak dokončit zbytek procesu, najdete v [Průvodci AppAuth](https://openid.github.io/AppAuth-Android/) . Pokud potřebujete rychle začít pracovat s pracovní aplikací, podívejte se na [naši ukázku](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Postupujte podle kroků v [Readme.MD](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) a zadejte vlastní konfiguraci Azure AD B2C.
+Přečtěte si [prosím AppAuth průvodce](https://openid.github.io/AppAuth-Android/) o dokončení zbytku procesu. Pokud potřebujete rychle začít pracovat s pracovní aplikací, podívejte se na [náš ukázkový příklad](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Podle pokynů v [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) zadejte vlastní konfiguraci Azure AD B2C.

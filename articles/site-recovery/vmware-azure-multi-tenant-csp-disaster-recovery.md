@@ -1,6 +1,6 @@
 ---
-title: Nastavení zotavení po havárii VMware do Azure v prostředí více tenantů pomocí Site Recovery a programu Cloud Solution Provider (CSP) | Dokumentace Microsoftu
-description: Popisuje, jak nastavit zotavení po havárii VMware v prostředí s více tenanty pomocí Azure Site Recovery.
+title: Nastavení zotavení po havárii společnosti VMware do Azure v prostředí s více klienty pomocí programu Site Recovery a programu Zprostředkovatel cloudových řešení (CSP) | Dokumenty společnosti Microsoft
+description: Popisuje, jak nastavit zotavení po havárii v systému VMware ve víceklientském prostředí pomocí Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,97 +8,97 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60460983"
 ---
-# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení zotavení po havárii VMware v prostředí více tenantů v programu Cloud Solution Provider (CSP)
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení zotavení po havárii společnosti VMware v prostředí s více klienty pomocí programu Zprostředkovatel cloudových řešení (CSP)
 
-[Programu CSP](https://partner.microsoft.com/en-US/cloud-solution-provider) podporovalo společně lepší scénáře pro cloudové služby Microsoftu, včetně Office 365, Enterprise Mobility Suite a Microsoft Azure. S CSP partneři vlastní začátku do konce vztah se zákazníky a stát vztah primární kontaktní bod. Partneři můžete nasadit předplatná Azure pro zákazníky a kombinovat předplatných s využitím vlastní s přidanou hodnotou, přizpůsobené nabídky.
+[Program CSP](https://partner.microsoft.com/en-US/cloud-solution-provider) podporuje lepší články pro cloudové služby Microsoftu, včetně Office 365, Enterprise Mobility Suite a Microsoft Azure. S csp, partneři vlastní vztah mezi koncovými zákazníky a stát se primárním kontaktním bodem vztahu. Partneři můžou nasadit předplatná Azure pro zákazníky a kombinovat předplatná s vlastními nabídkami s přidanou hodnotou.
 
-S [Azure Site Recovery](site-recovery-overview.md), jako partneři můžou spravovat zotavení po havárii pro zákazníky, kteří přímo prostřednictvím zprostředkovatele kryptografických služeb. Alternativně můžete nastavit prostředí Site Recovery pomocí zprostředkovatele kryptografických služeb a umožněte zákazníkům spravovat jejich vlastní potřebovat obnovení po havárii v podobě samoobslužné služby. V obou případech jsou partneři spolupráci mezi Site Recovery a jejich zákazníky. Partneři služeb vztah se zákazníkem a vyúčtování pro zákazníky za použití Site Recovery.
+S [Azure Site Recovery](site-recovery-overview.md), jako partneři můžete spravovat zotavení po havárii pro zákazníky přímo prostřednictvím CSP. Alternativně můžete použít csp nastavit prostředí site recovery a nechat zákazníky spravovat své vlastní potřeby zotavení po havárii samoobslužným způsobem. V obou scénářích jsou partneři prostředníkem mezi site recovery a jejich zákazníky. Partneři obsluhují vztah se zákazníky a účtují zákazníkům využití obnovení webu.
 
-Tento článek popisuje, jak můžete jako partner můžete vytvořit a spravovat tenanta předplatná prostřednictvím zprostředkovatele kryptografických služeb, pro scénářích replikace VMware s více tenanty.
+Tento článek popisuje, jak můžete jako partner vytvářet a spravovat předplatná tenanta prostřednictvím csp, pro scénář replikace více klientů VMware.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nastavení replikace VMware, postupujte takto:
+Chcete-li nastavit replikaci společnosti VMware, musíte provést následující kroky:
 
-- [Příprava](tutorial-prepare-azure.md) prostředky Azure, včetně předplatného služby Azure, virtuální síť Azure a účet úložiště.
-- [Příprava](vmware-azure-tutorial-prepare-on-premises.md) místních serverů VMware a virtuálních počítačů.
-- Pro každého klienta vytvořte samostatné management server, který může komunikovat s virtuální počítače klientů a serverů vCenter. Pouze jako partner měli byste přístupová práva k tomuto serveru pro správu. Další informace o [víceklientské prostředí](vmware-azure-multi-tenant-overview.md).
+- [Připravte si](tutorial-prepare-azure.md) Prostředky Azure, včetně předplatného Azure, virtuální sítě Azure a účtu úložiště.
+- [Připravte](vmware-azure-tutorial-prepare-on-premises.md) místní servery vmware a virtuální chod.
+- Pro každého klienta vytvořte samostatný server pro správu, který může komunikovat s virtuálními počítači klienta a servery vCenter. Přístupová práva k tomuto serveru pro správu byste měli mít pouze vy jako partner. Další informace o [prostředích s více klienty](vmware-azure-multi-tenant-overview.md).
 
-## <a name="create-a-tenant-account"></a>Vytvořte si účet tenanta
+## <a name="create-a-tenant-account"></a>Vytvoření účtu klienta
 
-1. Prostřednictvím [Microsoft Partner Center](https://partnercenter.microsoft.com/), přihlaste se ke svému účtu CSP.
-2. Na **řídicí panel** nabídce vyberte možnost **zákazníkům**.
-3. Na stránce, které se otevře, klikněte na tlačítko **odběratele přidat** tlačítko.
-4. V **nového zákazníka** stránky, zadejte podrobné informace o účtu pro příslušného tenanta.
+1. Prostřednictvím [Centra partnerů společnosti Microsoft](https://partnercenter.microsoft.com/)se přihlaste ke svému účtu CSP.
+2. V nabídce **Řídicí panel** vyberte **položku Zákazníci**.
+3. Na stránce, která se otevře, klikněte na tlačítko **Přidat zákazníka.**
+4. Na stránce **Nový zákazník** vyplňte podrobnosti o účtu pro klienta.
 
-    ![Na stránce informace o účtu](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
+    ![Stránka Informace o účtu](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. Pak klikněte na tlačítko **Další: Předplatná**.
-6. Na stránce Výběr předplatných, vyberte **Microsoft Azure** zaškrtávací políčko. Můžete přidat další předplatná nyní nebo v každém okamžiku.
-7. Na **revize** stránce, potvrďte podrobnosti o tenantovi a klikněte na **odeslat**.
-8. Po vytvoření účtu tenanta, zobrazí se stránka s potvrzením, zobrazení podrobností o výchozí účet a heslo pro dané předplatné. Uložte si informace a změnit heslo později podle potřeby přes Azure portal – přihlašovací stránku.
+5. Pak klikněte na **Další: Odběry**.
+6. Na stránce výběru předplatných zaškrtněte políčko **Microsoft Azure.** Další předplatná můžete přidat nyní nebo kdykoli jindy.
+7. Na stránce **Revize** potvrďte podrobnosti o klientovi a klikněte na **Odeslat**.
+8. Po vytvoření účtu klienta se zobrazí stránka s potvrzením, která zobrazuje podrobnosti o výchozím účtu a heslo pro toto předplatné. Uložte informace a později změňte heslo, jak je to nutné, prostřednictvím přihlašovací stránky portálu Azure Portal.
 
-Tyto informace můžete sdílet s tenantem, jako je, nebo můžete vytvářet a sdílet samostatný účet, v případě potřeby.
+Tyto informace můžete sdílet s klientem tak, jak jsou, nebo můžete v případě potřeby vytvořit a sdílet samostatný účet.
 
-## <a name="access-the-tenant-account"></a>Přístup k účtu tenanta
+## <a name="access-the-tenant-account"></a>Přístup k účtu klienta
 
-Předplatné klienta přístupné prostřednictvím řídicího panelu Microsoft Partner Center.
+K předplatnému klienta můžete přistupovat prostřednictvím řídicího panelu Microsoft Partner Center.
 
-1. Na **zákazníkům** klikněte na název účtu tenanta.
-2. V **předplatná** stránky účtu tenanta, můžete sledovat na stávající předplatná účtu a přidat další předplatná, podle potřeby.
-3. Ke správě tenanta operace zotavení po havárii, vyberte **všechny prostředky (portál Azure portal)** . To vám uděluje že přístup k předplatným Azure vašeho tenanta.
+1. Na stránce **Zákazníci** klikněte na název účtu klienta.
+2. Na stránce **Předplatná** účtu klienta můžete sledovat existující předplatná účtu a podle potřeby přidat další předplatná.
+3. Chcete-li spravovat operace zotavení po havárii klienta, vyberte **všechny prostředky (portál Azure).** To vám uděluje přístup k předplatným Azure klienta.
 
-    ![Odkaz všechny prostředky](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
+    ![Odkaz Všechny zdroje](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
 
-4. Přístup můžete ověřit kliknutím na odkaz Azure Active Directory v horním pravém rohu webu Azure portal.
+4. Přístup můžete ověřit kliknutím na odkaz Azure Active Directory v pravém horním rohu portálu Azure.
 
     ![Propojení služby Azure Active Directory](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
 
-Teď můžete provádět a spravovat všechny operace Site Recovery pro příslušného tenanta na portálu Azure portal. Pro přístup k předplatnému klienta prostřednictvím zprostředkovatele kryptografických služeb pro spravované zotavení po havárii, postupujte podle procesu popsané.
+Teď můžete provádět a spravovat všechny operace obnovení webu pro klienta na webu Azure Portal. Chcete-li získat přístup k předplatnému klienta prostřednictvím csp pro spravované zotavení po havárii, postupujte podle výše popsaného procesu.
 
-## <a name="assign-tenant-access-to-the-subscription"></a>Přiřadit přístup klienta k předplatnému
+## <a name="assign-tenant-access-to-the-subscription"></a>Přiřazení přístupu klienta k předplatnému
 
-1. Ujistěte se, že je nastavení infrastruktury pro zotavení po havárii. Partneři přístup tenanta předplatná prostřednictvím portálu pro CSP, bez ohledu na to, zda je spravováno zotavení po havárii nebo samoobslužné funkce. Nastavit trezor a zaregistrujte infrastrukturu pro předplatná tenanta.
-2. Zadejte tenanta s [účtu vytvořeného](#create-a-tenant-account).
-3. Nového uživatele můžete přidat do předplatného tenanta na portálu zprostředkovatele kryptografických služeb následujícím způsobem:
+1. Ujistěte se, že je nastavena infrastruktura pro zotavení po havárii. Partneři přistupují k předplatným klienta prostřednictvím portálu CSP, bez ohledu na to, jestli se spravuje nebo samoobslužné obnovení po havárii. Nastavte trezor a zaregistrujte infrastrukturu na předplatná klienta.
+2. Poskytněte klientovi [účet, který jste vytvořili](#create-a-tenant-account).
+3. Nového uživatele můžete přidat do předplatného klienta prostřednictvím portálu CSP následujícím způsobem:
 
-    (a) přejděte na stránku předplatné tenanta CSP a pak vyberte **uživatelé a licence** možnost.
+    a) Přejděte na stránku předplatného CSP klienta a vyberte možnost **Uživatelé a licence.**
 
-      ![Stránku odběru služby CSP vašeho tenanta](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+      ![Stránka předplatného CSP klienta](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) vytvoření nového uživatele, nyní zadáním relevantní podrobnosti a výběrem oprávnění, nebo tak že nahrajete seznam uživatelů v souboru CSV.
+    b) Nyní vytvořte nového uživatele zadáním příslušných údajů a výběrem oprávnění nebo nahráním seznamu uživatelů do souboru CSV.
     
-    c) po vytvoření nového uživatele, přejděte zpět na web Azure Portal. V **předplatné** stránky, vyberte příslušné předplatné.
+    c) Po vytvoření nového uživatele se vraťte na portál Azure. Na stránce **Předplatné** vyberte příslušné předplatné.
 
-    d) vyberte **řízení přístupu (IAM)** a potom klikněte na tlačítko **přiřazení rolí**.
+    d) Vyberte **ovládací prvek přístupu (IAM)** a klepněte na **položku Přiřazení rolí**.
 
-    (e) klikněte na **přidat přiřazení role** přidat uživatele s úrovní odpovídající přístup. Uživatelé, které byly vytvořeny na portálu zprostředkovatele kryptografických služeb se zobrazují na kartě přiřazení Role.
+    e) Kliknutím na **Přidat přiřazení role** přidáte uživatele s příslušnou úrovní přístupu. Uživatelé, kteří byli vytvořeni prostřednictvím portálu CSP, jsou zobrazeni na kartě Přiřazení rolí.
 
       ![Přidání uživatele](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
-- K většině operací správy *Přispěvatel* roli je dostatečná. Uživatelé s touto úrovní přístupu můžou provádět vše na předplatné s tím rozdílem, změna úrovně přístupu (pro který *vlastníka*– úroveň přístupu se vyžaduje).
-- Site Recovery má také tři [předdefinované role uživatelů](site-recovery-role-based-linked-access-control.md), který lze použít pro další omezení úrovně přístupu podle potřeby.
+- Pro většinu operací správy je dostatečná role *přispěvatele.* Uživatelé s touto úrovní přístupu můžete dělat vše, co na předplatné s výjimkou změnit úrovně přístupu (pro které je vyžadován přístup na úrovni *vlastníka).*
+- Obnovení webu má také tři [předdefinované uživatelské role](site-recovery-role-based-linked-access-control.md), které lze použít k dalšímu omezení úrovní přístupu podle potřeby.
 
-## <a name="multi-tenant-environments"></a>Prostředí s více tenanty
+## <a name="multi-tenant-environments"></a>Prostředí s více klienty
 
-Existují tři hlavní modely víceklientské:
+Existují tři hlavní víceklientské modely:
 
-* **Sdílené služby poskytovatele hostingu (HSP)** : Partner vlastní fyzické infrastruktury, a používá sdílené prostředky (vCenter, datová centra, fyzického úložiště a tak dále) pro hostování více klientské virtuální počítače ve stejné infrastruktuře. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit zotavení po havárii jako řešení samoobslužné služby.
+* **Poskytovatel sdílených hostingových služeb (HSP):** Partner vlastní fyzickou infrastrukturu a používá sdílené prostředky (vCenter, datová centra, fyzické úložiště a tak dále) k hostování více virtuálních počítačů klientů na stejné infrastruktuře. Partner může poskytovat správu zotavení po havárii jako spravovanou službu nebo klient může vlastní zotavení po havárii jako samoobslužné řešení.
 
-* **Vyhrazené poskytovatele služby hostingu**: Partner vlastní fyzické infrastruktury, ale používá vyhrazené prostředky (více vCenters fyzických úložišť a tak dále) pro hostování virtuálních počítačů každého tenanta do samostatného infrastruktury. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit jako řešení samoobslužné služby.
+* **Vyhrazený poskytovatel hostingových služeb:** Partner vlastní fyzickou infrastrukturu, ale používá vyhrazené prostředky (více center vCenters, úložiště fyzických dat a tak dále) k hostování virtuálních počítačů každého klienta na samostatné infrastruktuře. Partner může poskytovat správu zotavení po havárii jako spravovanou službu nebo ji klient může vlastnit jako samoobslužné řešení.
 
-* **Spravovat poskytovatele služeb (MSP)** : Zákazník je vlastníkem fyzické infrastruktury, který hostuje virtuální počítače a partnera poskytuje funkce pro kontrolu zotavení po havárii a správu.
+* **Zprostředkovatel spravovaných služeb (MSP):** Zákazník vlastní fyzickou infrastrukturu, která hostuje virtuální zařízení, a partner poskytuje povolení a správu zotavení po havárii.
 
-Pomocí nastavení předplatného tenanta, jak je popsáno v tomto článku, vám rychle začít, takže se zákazníci můžou v žádné z příslušných modely více tenantů. Další informace o různých modelů více tenantů a povolení místních řízení přístupu [tady](vmware-azure-multi-tenant-overview.md).
+Nastavením předplatných tenantů, jak je popsáno v tomto článku, můžete rychle spustit povolení zákazníkům v některém z relevantních modelů více klientů. Další informace o různých víceklientských modelech a povolení místních řízení přístupu [najdete zde](vmware-azure-multi-tenant-overview.md).
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [řízení přístupu na základě rolí](site-recovery-role-based-linked-access-control.md) ke správě nasazení Azure Site Recovery.
-- Další informace o replikaci z VMware do Azure [architektura replikace](vmware-azure-architecture.md).
-- [Najdete v kurzu](vmware-azure-tutorial.md) pro replikaci virtuálních počítačů VMware do Azure.
-Další informace o [víceklientské prostředí](vmware-azure-multi-tenant-overview.md) pro replikaci virtuálních počítačů VMware do Azure.
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si další informace o [řízení přístupu na základě rolí](site-recovery-role-based-linked-access-control.md) pro správu nasazení Azure Site Recovery.
+- Další informace o [replikační architektuře](vmware-azure-architecture.md)VMware do Azure .
+- [Projděte si kurz](vmware-azure-tutorial.md) pro replikaci virtuálních počítačů VMware do Azure.
+Další informace o [prostředích s více tenanty](vmware-azure-multi-tenant-overview.md) pro replikaci virtuálních počítačů VMware do Azure.

@@ -1,6 +1,6 @@
 ---
-title: Migrace dat ze služby Data Lake a Data Warehouse do Azure
-description: Pomocí Azure Data Factory migrujte data ze svých datových Lake a datových skladů do Azure.
+title: Migrace dat z datového jezera a datového skladu do Azure
+description: Azure Data Factory slouží k migraci dat z datového jezera a datového skladu do Azure.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,52 +12,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: aaf1593cc049e8b23f8ebe36fea022b3029ccd04
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930806"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Použití Azure Data Factory k migraci dat ze služby Data Lake nebo datového skladu do Azure
+# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Migrace dat z datového jezera nebo datového skladu do Azure pomocí Azure Data Factory
 
-Pokud chcete migrovat data Lake nebo Podnikový datový sklad (podnikového) na Microsoft Azure, zvažte použití Azure Data Factory. Azure Data Factory je vhodným způsobem pro následující scénáře:
+Pokud chcete migrovat datové jezero nebo podnikový datový sklad (EDW) do Microsoft Azure, zvažte použití Azure Data Factory. Azure Data Factory se dobře hodí pro následující scénáře:
 
-- Migrace úlohy s velkým objemem dat ze služby Amazon Simple Storage Service (Amazon S3) nebo místní Hadoop systém souborů DFS (Distributed File System) (HDFS) do Azure
-- Migrace podnikového z Oracle Exadata, Netezza, Teradata nebo Amazon RedShift do Azure
+- Migrace úloh velkých objemů dat ze služby Amazon Simple Storage Service (Amazon S3) nebo místního distribuovaného souborového systému Hadoop (HDFS) do Azure
+- Migrace EDW z aplikací Oracle Exadata, Netezza, Teradata nebo Amazon Redshift do Azure
 
-Azure Data Factory může přesunout petabajty (PB) dat pro migraci Data Lake a desítky terabajtů (TB) dat pro migraci datového skladu.
+Azure Data Factory můžete přesunout petabajty (PB) dat pro migraci datového jezera a desítky terabajtů (TB) dat pro migraci datového skladu.
 
-## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Proč se dá Azure Data Factory použít k migraci dat
+## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Proč se Azure Data Factory dá použít pro migraci dat
 
-- Azure Data Factory může snadno škálovat množství výkonu zpracování, aby bylo možné přesouvat data bez serveru s vysokým výkonem, odolností a škálovatelností. A platíte jenom za to, co využijete. Všimněte si také následujícího: 
-  - Azure Data Factory nemá žádná omezení na datový svazek ani na počet souborů.
-  - Azure Data Factory může plně využít vaši síť a šířku pásma úložiště k dosažení nejvyššího objemu propustnosti přesunu dat ve vašem prostředí.
-  - Azure Data Factory využívá metodu s průběžnými platbami, takže platíte jenom za čas, který skutečně využijete ke spuštění migrace dat do Azure.  
-- Azure Data Factory může provádět jednorázové historické zatížení i plánovaná přírůstková zatížení.
-- Azure Data Factory používá prostředí Azure Integration runtime (IR) k přesouvání dat mezi veřejně přístupnými koncovými body datového Lake a skladu. Může taky používat místní prostředí IR pro přesun dat pro koncové body Data Lake a Warehouse v Azure Virtual Network (VNet) nebo za bránou firewall.
-- Azure Data Factory má zabezpečení na podnikové úrovni: pro zabezpečenou integraci služeb a služeb můžete použít Instalační služba systému Windows (MSI) nebo identitu služby, případně můžete použít Azure Key Vault pro správu přihlašovacích údajů.
-- Azure Data Factory poskytuje prostředí pro vytváření obsahu bez kódu a bohatě integrovaný řídicí panel pro monitorování.  
+- Azure Data Factory můžete snadno vertikálně navýšit kapacitu výpočetního výkonu pro přesun dat bez serveru s vysokým výkonem, odolností a škálovatelností. A platíte jen za to, co používáte. Všimněte si také následující: 
+  - Azure Data Factory nemá žádná omezení na objem dat nebo na počet souborů.
+  - Azure Data Factory může plně využít šířku pásma sítě a úložiště k dosažení nejvyššího objemu propustnosti pohybu dat ve vašem prostředí.
+  - Azure Data Factory používá metodu průběžných plateb, takže platíte jenom za dobu, kterou skutečně použijete ke spuštění migrace dat do Azure.  
+- Azure Data Factory můžete provádět jednorázové historické zatížení a naplánované přírůstkové zatížení.
+- Azure Data Factory používá runtime integrace Azure (IR) k přesunu dat mezi veřejně přístupnými datovými jezery a koncovými body skladu. Může také použít samoobslužné infračervené ovládání pro přesun dat pro koncové body datových jezer a skladů uvnitř virtuální sítě Azure (VNet) nebo za bránou firewall.
+- Azure Data Factory má zabezpečení na podnikové úrovni: Můžete použít Instalační službu Windows (MSI) nebo Identitu služby pro integraci zabezpečené služby ke službě nebo použít Azure Key Vault pro správu přihlašovacích údajů.
+- Azure Data Factory poskytuje prostředí pro vytváření bez kódu a bohatý integrovaný řídicí panel monitorování.  
 
-## <a name="online-vs-offline-data-migration"></a>Online vs. migrace offline dat
+## <a name="online-vs-offline-data-migration"></a>Migrace dat online vs. offline
 
-Azure Data Factory je standardní nástroj pro migraci dat online pro přenos dat přes síť (Internet, ER nebo VPN). Vzhledem k tomu, že při migraci offline dat uživatelé fyzicky dodávají zařízení pro přenos dat ze své organizace do datového centra Azure.  
+Azure Data Factory je standardní online nástroj pro migraci dat pro přenos dat přes síť (internet, ER nebo VPN). Vzhledem k tomu, že při migraci dat offline uživatelé fyzicky doručují zařízení pro přenos dat ze své organizace do datového centra Azure.  
 
-Existují tři klíčové důležité důvody, pokud si vyberete mezi online a offline migrací:  
+Při výběru mezi přechodem migrace online a offline existují tři klíčové aspekty:  
 
-- Velikost dat, která se mají migrovat
+- Velikost migrovaných dat
 - Šířka pásma sítě
 - Okno migrace
 
-Předpokládejme například, že plánujete použít Azure Data Factory k dokončení migrace dat do dvou týdnů ( *okna migrace*). Všimněte si růžového nebo modrého vyjmutého řádku v následující tabulce. Nejnižší růžová buňka pro libovolný daný sloupec zobrazuje párování velikosti dat a šířky pásma sítě, jejichž okno migrace je nejblíže, ale méně než dva týdny. (Jakékoli párování velikosti a šířky pásma v modré buňce má okno online migrace delší než dva týdny.) 
+Předpokládejme například, že plánujete použít Azure Data Factory k dokončení migrace dat do dvou týdnů *(okno migrace).* Všimněte si růžovo-modré řezané čáry v následující tabulce. Nejnižší růžová buňka pro daný sloupec zobrazuje párování šířky pásma dat/šířky pásma sítě, jehož okno migrace je nejblíže, ale méně než dva týdny. (Jakékoli párování velikosti a šířky pásma v modré buňce má okno migrace online více než dva týdny.) 
 
-![online vs.](media/data-migration-guidance-overview/online-offline.png) této tabulce vám pomůže určit, jestli můžete požadované okno migrace dodržet prostřednictvím online migrace (Azure Data Factory) na základě velikosti vašich dat a dostupné šířky pásma sítě. Pokud je okno online migrace delší než dva týdny, budete chtít použít offline migraci.
+![online vs offline](media/data-migration-guidance-overview/online-offline.png) Tato tabulka vám pomůže určit, jestli můžete splnit zamýšlené okno migrace prostřednictvím migrace online (Azure Data Factory) na základě velikosti dat a dostupné šířky pásma sítě. Pokud je okno migrace online delší než dva týdny, budete chtít použít offline migraci.
 
 > [!NOTE]
-> Při použití online migrace můžete pomocí jediného nástroje dosáhnout historických a koncových informačních kanálů od začátku do konce.  Prostřednictvím tohoto přístupu se vaše data dají během celého okna migrace synchronizovat mezi existujícím a novým úložištěm. To znamená, že můžete logiku ETL znovu sestavit v novém úložišti s aktualizovanými daty.
+> Pomocí migrace online můžete dosáhnout načítání historických dat i přírůstkových kanálů od konce ke konci prostřednictvím jediného nástroje.  Prostřednictvím tohoto přístupu mohou být data synchronizována mezi existujícím úložištěm a novým úložištěm během celého okna migrace. To znamená, že můžete znovu sestavit logiku ETL v novém úložišti s aktualizovanými daty.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Migrace dat z AWS S3 do Azure](data-migration-guidance-s3-azure-storage.md)
-- [Migrace dat z místního clusteru Hadoop do Azure](data-migration-guidance-hdfs-azure-storage.md)
+- [Migrace dat z místního clusteru hadoop do Azure](data-migration-guidance-hdfs-azure-storage.md)
 - [Migrace dat z místního serveru Netezza do Azure](data-migration-guidance-netezza-azure-sqldw.md)

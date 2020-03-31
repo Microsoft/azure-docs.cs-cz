@@ -1,80 +1,80 @@
 ---
-title: Vytváření vlastních zásad zabezpečení v Azure Security Center | Microsoft Docs
-description: Definice vlastních zásad Azure monitorují Azure Security Center.
+title: Vytvoření vlastních zásad zabezpečení v Azure Security Center | Dokumenty společnosti Microsoft
+description: Definice vlastních zásad Azure monitorované službou Azure Security Center.
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/25/2020
 ms.author: memildin
-ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: c709890ae6c57a001c6a0e9df4e973bd3bd24602
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666631"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258256"
 ---
-# <a name="using-custom-security-policies-preview"></a>Použití vlastních zásad zabezpečení (Preview)
+# <a name="using-custom-security-policies"></a>Použití vlastních zásad zabezpečení
 
-Kvůli lepšímu zabezpečení systémů a prostředí Azure Security Center vygeneruje doporučení zabezpečení. Tato doporučení jsou založená na osvědčených postupech, které jsou součástí obecných výchozích zásad zabezpečení dodaných všem zákazníkům. Můžou také pocházet ze zkušeností Security Center v oboru a zákonných standardů.
+Azure Security Center generuje doporučení zabezpečení, které vám pomůže zabezpečit vaše systémy a prostředí. Tato doporučení jsou založena na osvědčených postupech v oboru, které jsou začleněny do obecných výchozích zásad zabezpečení dodávaných všem zákazníkům. Mohou také pocházet ze znalostí Security Center průmyslu a regulačních norem.
 
-Pomocí této funkce ve verzi Preview můžete přidat *vlastní iniciativy.* Pak dostanete doporučení, pokud vaše prostředí nedodržuje zásady, které vytvoříte. Všechny vlastní podněty, které vytvoříte, se zobrazí společně s integrovanou iniciativou na řídicím panelu dodržování předpisů, který je popsaný v kurzu. [tím se vylepšit dodržování předpisů](security-center-compliance-dashboard.md).
+Pomocí této funkce můžete přidat *vlastní* iniciativy. Pokud vaše prostředí nedodržuje zásady, které vytvoříte, obdržíte doporučení. Všechny vlastní iniciativy, které vytvoříte, se zobrazí společně s předdefinovanými iniciativami na řídicím panelu dodržování předpisů popsaném v kurzu [Vylepšete dodržování předpisů](security-center-compliance-dashboard.md).
 
-Jak je [popsáno v](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) dokumentaci k Azure Policy, když zadáte umístění pro vlastní iniciativu, musí se jednat o skupinu pro správu nebo o předplatné. 
+Jak je popsáno [zde](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) v dokumentaci zásad Azure, když zadáte umístění pro vlastní iniciativu, musí to být skupina pro správu nebo předplatné. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Přidání vlastní iniciativy do předplatného 
 
-1. Na bočním panelu Security Center otevřete stránku **zásady zabezpečení** .
+1. Na postranním panelu centra zabezpečení otevřete stránku **zásad zabezpečení.**
 
-1. Vyberte předplatné nebo skupinu pro správu, ke kterým chcete přidat vlastní podnět.
+1. Vyberte předplatné nebo skupinu pro správu, do které chcete přidat vlastní iniciativu.
 
-    [![výběru předplatného, pro které vytvoříte vlastní zásadu.](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+    [![Výběr předplatného, pro které vytvoříte vlastní zásady](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Je nutné přidat vlastní standardy na úrovni předplatného (nebo vyšší), aby je bylo možné vyhodnotit a zobrazit v Security Center. 
+    > Chcete-li je vyhodnotit a zobrazit v Centru zabezpečení, je nutné přidat vlastní standardy na úrovni předplatného (nebo vyšší). 
     >
-    > Když přidáte vlastní Standard, přiřadí se k tomuto oboru *iniciativa* . Proto doporučujeme vybrat nejširší rozsah vyžadovaný pro toto přiřazení.
+    > Když přidáte vlastní standard, přiřadí *iniciativu* k tomuto oboru. Proto doporučujeme vybrat nejširší obor požadovaný pro toto přiřazení.
 
-1. Na stránce Zásady zabezpečení v části vaše vlastní iniciativy (Preview) klikněte na **Přidat vlastní iniciativu**.
+1. Na stránce Zásady zabezpečení klikněte v části Vaše vlastní iniciativy na **Přidat vlastní iniciativu**.
 
-    [![klikněte na * * přidat vlastní iniciativu * *.](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![Klikněte na **Přidat vlastní iniciativu**](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     Zobrazí se následující stránka:
 
-    ![Vytvořit nebo přidat zásadu](media/custom-security-policies/create-or-add-custom-policy.png)
+    ![Vytvoření nebo přidání zásady](media/custom-security-policies/create-or-add-custom-policy.png)
 
-1. Na stránce přidat vlastní podněty si Projděte seznam vlastních zásad, které jsou už ve vaší organizaci vytvořené. Pokud se vám zobrazí ten, který chcete přidružit k předplatnému, klikněte na **Přidat**. Pokud v seznamu, který vyhovuje vašim potřebám, není iniciativa, tento krok přeskočte.
+1. Na stránce Přidat vlastní iniciativy zkontrolujte seznam vlastních zásad, které již byly ve vaší organizaci vytvořeny. Pokud vidíte jedno, které chcete přiřadit k předplatnému, klikněte na **Přidat**. Pokud v seznamu není žádná iniciativa, která by splňovala vaše potřeby, tento krok přeskočte.
 
 1. Vytvoření nové vlastní iniciativy:
 
-    1. Klikněte na **vytvořit nový**.
+    1. Klepněte na **tlačítko Vytvořit nový**.
     1. Zadejte umístění a název definice.
-    1. Vyberte zásady, které chcete zahrnout, a klikněte na **Přidat**.
-    1. Zadejte požadované parametry.
-    1. Klikněte na možnost **Uložit**.
-    1. Na stránce přidat vlastní iniciativy klikněte na aktualizovat a vaše nová iniciativa se zobrazí jako dostupná.
-    1. Klikněte na **Přidat** a přiřaďte ho k vašemu předplatnému.
+    1. Vyberte zásady, které chcete zahrnout, a klepněte na tlačítko **Přidat**.
+    1. Zadejte všechny požadované parametry.
+    1. Klikněte na **Uložit**.
+    1. Na stránce Přidat vlastní iniciativy klikněte na Aktualizovat a nová iniciativa se zobrazí jako dostupná.
+    1. Klikněte na **Přidat** a přiřaďte ho k předplatnému.
 
     > [!NOTE]
-    > Vytváření nových iniciativ vyžaduje přihlašovací údaje vlastníka předplatného. Další informace o rolích Azure najdete [v tématu oprávnění v Azure Security Center](security-center-permissions.md).
+    > Vytváření nových iniciativ vyžaduje pověření vlastníka předplatného. Další informace o rolích Azure najdete [v tématu Oprávnění v Azure Security Center](security-center-permissions.md).
 
-    Vaše nová iniciativa se projeví a dopad můžete zobrazit následujícími dvěma způsoby:
+    Nová iniciativa se projeví a můžete vidět dopad následujícími dvěma způsoby:
 
-    * Na bočním panelu Security Center v části zásady & Kompatibilita vyberte **dodržování předpisů**. Otevře se řídicí panel dodržování předpisů, ve kterém se zobrazí vaše nová vlastní iniciativa spolu s integrovanými iniciativami.
+    * Na postranním panelu Centra zabezpečení včásti Zásady & dodržování předpisů vyberte **vyberte dodržování předpisů**. Otevře se řídicí panel dodržování předpisů, který vám vedle integrovaných iniciativ ukáže vaši novou vlastní iniciativu.
     
-    * Začnete dostávat doporučení, pokud vaše prostředí nedodržuje zásady, které jste definovali.
+    * Doporučení začnete dostávat, pokud vaše prostředí nedodržuje zásady, které jste definovali.
 
-1. Pokud si chcete zobrazit výsledná doporučení pro vaši zásadu, otevřete stránku doporučení kliknutím na **doporučení** na postranním panelu. Doporučení se zobrazí s popiskem "vlastní" a budou k dispozici do přibližně jedné hodiny.
+1. Pokud chcete zobrazit výsledná doporučení pro zásady, kliknutím na **Doporučení** z postranního panelu otevřete stránku doporučení. Doporučení se zobrazí s popiskem "Vlastní" a budou k dispozici přibližně do jedné hodiny.
 
-    [![vlastní doporučení](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [![Vlastní doporučení](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak vytvořit vlastní zásady zabezpečení. 
+V tomto článku jste se dozvěděli, jak vytvořit vlastní zásady zabezpečení. 
 
-Další související materiály najdete v následujících článcích: 
+Další související materiály naleznete v následujících článcích: 
 
 - [Přehled zásad zabezpečení](tutorial-security-policy.md)
 - [Seznam předdefinovaných zásad zabezpečení](security-center-policy-definitions.md)

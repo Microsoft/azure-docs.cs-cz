@@ -1,36 +1,33 @@
 ---
-title: Přehled Azure Active Directory pro vývojáře (v 1.0)
-description: Tento článek poskytuje přehled o podepisování pracovních a školních účtů Microsoft pomocí koncového bodu a platformy Azure Active Directory v 1.0.
+title: Přehled služby Azure Active Directory pro vývojáře (v1.0)
+description: Tento článek obsahuje přehled podepisování v pracovních a školních účtech Microsoftu pomocí koncového bodu a platformy Azure Active Directory v1.0.
 services: active-directory
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 638c265fda3c8b331415d54047180b3c0ee2174a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ROBOTS: NOINDEX
+ms.openlocfilehash: ade350c91ebd2f3a68b52011e598f739a14c220f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79263527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154487"
 ---
-# <a name="azure-active-directory-for-developers-v10-overview"></a>Přehled Azure Active Directory pro vývojáře (v 1.0)
+# <a name="azure-active-directory-for-developers-v10-overview"></a>Přehled služby Azure Active Directory pro vývojáře (v1.0)
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 Azure Active Directory (Azure AD) je cloudová služba identit umožňující vývojářům sestavovat aplikace, které bezpečně přihlásí uživatele s pracovním nebo školním účtem Microsoft. Azure AD podporuje vývojáře vytvářející jak obchodní aplikace s jedním tenantem, tak i vývojáře, kteří se zajímají o vyvíjení aplikací s více tenanty. Kromě základního přihlašování umožňuje Azure AD volat nejen rozhraní API Microsoftu, jako je [Microsoft Graph](https://docs.microsoft.com/graph/overview), ale i vlastní rozhraní API vytvořená na platformě Azure AD. Tato dokumentace vám ukáže, jak do vlastní aplikace přidat podporu Azure AD s použitím standardních oborových protokolů, jako jsou OAuth 2.0 a OpenID Connect.
 
 > [!NOTE]
-> Většina obsahu na této stránce se zaměřuje na koncový bod a platformu v 1.0, které podporují jenom pracovní nebo školní účty Microsoftu. Pokud se chcete přihlásit k uživatelským nebo osobním účtům Microsoft, přečtěte si informace na [koncovém bodu a platformě verze 2.0](../develop/v2-overview.md). Koncový bod v 2.0 nabízí jednotné vývojářské prostředí pro aplikace, které se chtějí přihlašovat ke všem identitám Microsoftu.
+> Většina obsahu na této stránce se zaměřuje na koncový bod a platformu v1.0, která podporuje pouze pracovní nebo školní účty Microsoft. Pokud se chcete přihlásit k spotřebitelským nebo osobním účtům Microsoft, přečtěte si informace o [koncovém bodu v2.0 a platformě](../develop/v2-overview.md). Koncový bod v2.0 nabízí jednotné vývojářské prostředí pro aplikace, které se chtějí přihlásit ke všem identitám Microsoftu.
 
 | | |
 | --- | --- |
@@ -40,11 +37,11 @@ Azure Active Directory (Azure AD) je cloudová služba identit umožňující v�
 
 ## <a name="get-started"></a>Začínáme
 
-Rychlé starty a kurzy v 1.0 vás provedou vytvořením aplikace na upřednostňované platformě pomocí sady SDK knihovny ověřování v Azure AD. Pokud chcete začít, podívejte se na **kurzy** **rychlý Start v 1.0** a v 1.0 v tématu [Microsoft Identity Platform (Azure Active Directory pro vývojáře)](index.yml) .
+Rychlé starty v1.0 a kurzy vás provedou vytvářením aplikace na upřednostňované platformě pomocí sady Azure AD Authentication Library (ADAL) SDK. Další informace o tom, jak začít, najdete v kurzech **v1.0 Quickstarts** a **v1.0** na [platformě microsoftových identit (Azure Active Directory pro vývojáře).](index.yml)
 
 ## <a name="how-to-guides"></a>Návody
 
-Podrobné informace a návody nejběžnějších úloh v Azure AD najdete v tématu **návody v 1.0** .
+Podrobné informace a návody k nejběžnějším úkolům ve službě Azure AD najdete v **návodech k tématu v1.0.**
 
 ## <a name="reference-topics"></a>Referenční témata
 
@@ -54,11 +51,11 @@ Následující články poskytují podrobné informace o rozhraních API, zpráv
 | ----------------------------------------------------------------------------------| --- |
 | [Knihovny ověřování (ADAL)](active-directory-authentication-libraries.md)   | Přehled knihoven a sad SDK, které poskytuje Azure AD |
 | [Ukázky kódu](sample-v1-code.md)                                  | Seznam všech ukázek kódu Azure AD |
-| [Glosář](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | Terminologie a definice slov, která se používají v této dokumentaci |
+| [Slovníček](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | Terminologie a definice slov, která se používají v této dokumentaci |
 |  |  |
 
 ## <a name="videos"></a>Videa
 
-Další informace o migraci na novou platformu Microsoft identity najdete v tématu [Azure Active Directory videí pro vývojářskou platformu](videos.md) .
+Nápovědu k migraci na novou platformu microsoftu najdete v [videích vývojářské platformy Azure Active Directory.](videos.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

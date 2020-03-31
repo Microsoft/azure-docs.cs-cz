@@ -1,6 +1,6 @@
 ---
-title: Zpracování textových souborů s pevnou délkou s použitím mapování toků dat v Azure Data Factory
-description: Naučte se zpracovávat textové soubory s pevnou délkou v Azure Data Factory pomocí mapování toků dat.
+title: Zpracování textových souborů s pevnou délkou s mapováním toků dat v Azure Data Factory
+description: Zjistěte, jak zpracovat textové soubory s pevnou délkou v Azure Data Factory pomocí toků mapovacích dat.
 services: data-factory
 author: balakreshnan
 ms.service: data-factory
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
 ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72387048"
 ---
-# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Zpracování textových souborů s pevnou délkou pomocí Data Factory mapování datových toků
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Zpracování textových souborů s pevnou délkou pomocí toků dat mapování datové továrny
 
-Pomocí mapování toků dat v Microsoft Azure Data Factory můžete transformovat data z textových souborů s pevnou šířkou. V následujícím úkolu definujeme datovou sadu pro textový soubor bez oddělovače a pak nastavíte dílčí řetězce rozdělení na základě pořadového čísla pozice.
+Pomocí mapování datových toků v Microsoft Azure Data Factory, můžete transformovat data z textových souborů s pevnou šířkou. V následujícím úkolu definujeme datovou sadu pro textový soubor bez oddělovače a pak nastavíme rozdělení podřetězců na základě ordinální polohy.
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1. Vyberte **+ Nový kanál** a vytvořte nový kanál.
+1. Chcete-li vytvořit nový kanál, vyberte **možnost +Nový kanál.**
 
-2. Přidání aktivity toku dat, která bude použita pro zpracování souborů s pevnou šířkou:
+2. Přidejte aktivitu toku dat, která bude použita pro zpracování souborů s pevnou šířkou:
 
-    ![Kanál s pevnou šířkou](media/data-flow/fwpipe.png)
+    ![Potrubí s pevnou šířkou](media/data-flow/fwpipe.png)
 
 3. V aktivitě toku dat vyberte **Nový tok dat mapování**.
 
-4. Přidat zdroj, odvozený sloupec, výběr a transformaci jímky:
+4. Přidejte transformaci Zdroje, Odvozeného sloupce, Výběr uhloubení a jímky:
 
-    ![Tok dat pevné šířky](media/data-flow/fw2.png)
+    ![Datový tok s pevnou šířkou](media/data-flow/fw2.png)
 
-5. Nakonfigurujte transformaci zdrojového kódu tak, aby používala novou datovou sadu, která bude obsahovat textový typ s oddělovači.
+5. Nakonfigurujte transformaci Source tak, aby používala novou datovou sadu, která bude typu Oddělovač textu.
 
-6. Nenastaví žádné oddělovače sloupců ani záhlaví.
+6. Nenastavujte žádný oddělovač sloupců ani záhlaví.
 
-   Nyní nastavíme počáteční body a délky polí pro obsah tohoto souboru:
+   Nyní pro obsah tohoto souboru nastavíme počáteční body a délky polí:
 
     ```
     1234567813572468
@@ -55,13 +55,13 @@ Pomocí mapování toků dat v Microsoft Azure Data Factory můžete transformov
     1234567813572468
     ```
 
-7. Na kartě **projekce** ve zdrojové transformaci by se měl zobrazit sloupec s řetězcem s názvem *Column_1*.
+7. Na kartě **Projekce** transformace Zdroj byste měli vidět sloupec řetězce s názvem *Column_1*.
 
-8. V odvozeném sloupci vytvořte nový sloupec.
+8. Ve sloupci Odvozené vytvořte nový sloupec.
 
-9. Pro sloupce poskytneme jednoduché názvy, jako je *Sloupec1*.
+9. Dáme sloupce jednoduché názvy jako *col1*.
 
-10. V Tvůrci výrazů zadejte následující:
+10. Do tvůrce výrazů zadejte následující příkaz:
 
     ```substring(Column_1,1,4)```
 
@@ -69,24 +69,24 @@ Pomocí mapování toků dat v Microsoft Azure Data Factory můžete transformov
 
 11. Opakujte krok 10 pro všechny sloupce, které potřebujete analyzovat.
 
-12. Kliknutím na kartu **zkontrolovat** zobrazíte nové sloupce, které budou vygenerovány:
+12. Výběrem karty **Zkontrolovat** zobrazíte nové sloupce, které budou generovány:
 
-    ![Prohlížen](media/data-flow/fwinspect.png)
+    ![Zkontrolovat](media/data-flow/fwinspect.png)
 
-13. Pomocí transformace vybrat Transform odstraňte všechny sloupce, které nepotřebujete pro transformaci:
+13. Pomocí transformace Select odeberte všechny sloupce, které pro transformaci nepotřebujete:
 
     ![vybrat transformaci](media/data-flow/fwselect.png)
 
-14. Pro výstup dat do složky použijte jímku:
+14. Pomocí jímky navýstupu dat do složky:
 
-    ![jímka pevné šířky](media/data-flow/fwsink.png)
+    ![umyvadlo s pevnou šířkou](media/data-flow/fwsink.png)
 
-    Výstup vypadá takto:
+    Zde je to, co výstup vypadá takto:
 
-    ![výstup pevné šířky](media/data-flow/fxdoutput.png)
+    ![výstup s pevnou šířkou](media/data-flow/fxdoutput.png)
 
-  Data s pevnou šířkou jsou nyní rozdělena se čtyřmi znaky a přiřazena ke sloupci Sloupec1, col2, Col3, Col4 a tak dále. Na základě předchozího příkladu jsou data rozdělena do čtyř sloupců.
+  Data s pevnou šířkou jsou nyní rozdělena, každý se čtyřmi znaky a přiřazenými k col1, col2, col3, col4 a tak dále. Na základě předchozího příkladu jsou data rozdělena do čtyř sloupců.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Sestavte zbývající část logiky toku dat pomocí [transformací](concepts-data-flow-overview.md)mapování toků dat.
+* Vytvořte zbytek logiky toku dat pomocí mapování [transformace](concepts-data-flow-overview.md)toků dat .
