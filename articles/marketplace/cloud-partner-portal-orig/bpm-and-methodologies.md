@@ -1,23 +1,21 @@
 ---
 title: Knihovny obchodních procesů | Azure Marketplace
-description: Tento článek v CPP se nepoužívá a odkazuje na počítač v článku; Bylo to "vysvětlení knihoven obchodních procesů a metodologií".
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+description: Zastaralé tento článek CPP a souvisí s PC článku; Byl "Vysvětlení obchodních procesů knihoven a metodik."
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: f23bc3374b50271398979271bd43ab7533f5214b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 60c83f037f95f1a1ec59075708caacdce4e5be81
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819774"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280554"
 ---
 # <a name="business-process-libraries"></a>Knihovny obchodních procesů
 
-[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu Dynamics 365 pro nabídky finance a operace. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové nabídky Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) již nepodporuje vytváření a správu nabídek Dynamics 365 for Finance and Operations. Místo toho byla tato funkce přesunuta na [portál Microsoft Partner Center](https://partner.microsoft.com/). Další informace naleznete [v tématu Vytvoření nové nabídky Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-Před vytvořením nové nabídky Dynamics 365 for Operations byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) se zvolenou stránkou s **přehledem** . Podle pokynů v tématu [Vytvoření nové nabídky Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) vytvořte nabídku.
+Před vytvořením nové nabídky Dynamics 365 for Operations byste si měli přečíst [článek Vytvořit účet Centra partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít řídicí panel Komerční [tržiště](https://partner.microsoft.com/dashboard/directory) s vybranou stránkou **Přehled.** Podle pokynů v [části Vytvoření nové nabídky Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) vytvořte svou nabídku.

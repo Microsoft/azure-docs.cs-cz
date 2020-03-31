@@ -1,6 +1,6 @@
 ---
 title: Iterativní vývoj a ladění v Azure Data Factory
-description: Naučte se vyvíjet a ladit kanály Data Factory v Azure Portal iterativním způsobem.
+description: Zjistěte, jak iterativně vyvíjet a ladit kanály Data Factory na webu Azure Portal.
 ms.date: 09/26/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,67 +11,67 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 3a771181f8f2785339cbc47e0a0234b9c4e39adc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926845"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterativní vývoj a ladění pomocí Azure Data Factory
 
-Azure Data Factory umožňuje iterativní vývoj a ladění Data Factory kanálů.
+Azure Data Factory umožňuje iterativně vyvíjet a ladit kanály Data Factory.
 
-Po dobu osmi minut a ukázku této funkce se podívejte na toto video:
+Osmiminutový úvod a ukázku této funkce najdete v následujícím videu:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
-## <a name="iterative-debugging-features"></a>Funkce iterativního ladění
-Vytvářejte kanály a provádějte testovací běhy pomocí možnosti **ladění** na plátně kanálu, aniž byste museli psát jediný řádek kódu.
+## <a name="iterative-debugging-features"></a>Iterativní ladicí funkce
+Vytvořte kanály a proveďte testovací běhy pomocí funkce **ladění** na plátně kanálu bez psaní jediného řádku kódu.
 
 ![Možnost ladění na plátně kanálu](media/iterative-development-debugging/iterative-development-image1.png)
 
-Zobrazte výsledky testovacích běhů v okně **výstup** plátna kanálu.
+Výsledky testovacích běhů můžete zobrazit v okně **Výstup** na plátně kanálu.
 
-![Okno výstup plátna kanálu](media/iterative-development-debugging/iterative-development-image2.png)
+![Výstupní okno plátna potrubí](media/iterative-development-debugging/iterative-development-image2.png)
 
-Po úspěšném spuštění testu přidejte do kanálu další aktivity a pokračujte v ladění iterativním způsobem. Můžete také **Zrušit** testovací běh, dokud probíhá.
+Po úspěšném spuštění testu přidejte další aktivity do kanálu a pokračujte v ladění iterativním způsobem. Můžete také **zrušit** zkušební běh, zatímco probíhá.
 
-![Zrušení testovacího běhu](media/iterative-development-debugging/iterative-development-image3.png)
+![Zrušení zkušebního běhu](media/iterative-development-debugging/iterative-development-image3.png)
 
-Při spuštění testů není nutné publikovat změny do objektu pro vytváření dat před výběrem příkazu **ladit**. Tato funkce je užitečná ve scénářích, ve kterých se chcete ujistit, že změny fungují podle očekávání, než aktualizujete pracovní postup datové továrny.
+Při provádění testů není nutné publikovat změny v datové továrně, než vyberete **možnost Ladění**. Tato funkce je užitečná ve scénářích, kde se chcete ujistit, že změny fungují podle očekávání před aktualizací pracovního postupu factory dat.
 
 > [!IMPORTANT]
-> Když vyberete **ladit** , kanál se ve skutečnosti spustí. Pokud například kanál obsahuje aktivitu kopírování, testovací běh zkopíruje data ze zdroje do cíle. V důsledku toho doporučujeme, abyste při ladění používali testovací složky v aktivitách kopírování a dalších aktivitách. Po ladění kanálu přepněte do vlastních složek, které chcete použít při normálním provozu.
+> **Výběr** ladění skutečně spustí kanál. Takže například pokud kanál obsahuje aktivitu kopírování, spuštění testu zkopíruje data ze zdroje do cíle. V důsledku toho doporučujeme použít testovací složky v aktivitách kopírování a další aktivity při ladění. Po odladění kanálu přepněte na skutečné složky, které chcete použít v normálních operacích.
 
-## <a name="visualizing-debug-runs"></a>Vizualizace běhů ladění
+## <a name="visualizing-debug-runs"></a>Vizualizace spuštění ladění
 
-Můžete vizualizovat všechna spuštění ladění, která pro datovou továrnu právě probíhá na jednom místě. V pravém horním rohu stránky vyberte **Zobrazit ladicí běhy** . Tato funkce je užitečná ve scénářích, kde jsou hlavní kanály spouštěny z ladicích běhů pro podřízené kanály, a vy chcete zobrazit všechna aktivní ladicí běhy v jednom zobrazení.
+Můžete vizualizovat všechny ladění spustí, které probíhají pro vaši data factory na jednom místě. V pravém horním rohu stránky vyberte **Zobrazit ladicí běhy.** Tato funkce je užitečná v situacích, kdy hlavní kanály zahajují spuštění ladění pro podřízené kanály a chcete, aby jedno zobrazení vidělo všechny spuštěné aktivní ladění.
 
-![Vyberte ikonu Zobrazit aktivní ladicí běhy.](media/iterative-development-debugging/view-debug-runs-image1.png)
+![Vyberte ikonu Zobrazit aktivní ladění spustí](media/iterative-development-debugging/view-debug-runs-image1.png)
 
-![Ukázkový seznam aktivních běhů ladění](media/iterative-development-debugging/view-debug-runs-image2.png)
+![Ukázkový seznam spuštěných aktivních ladění](media/iterative-development-debugging/view-debug-runs-image2.png)
 
 Pokud máte aktivní relace ladění toku dat, tyto relace se zobrazí v dolní části aktivního okna ladění. Můžete vybrat aktivní relaci toku dat a zastavit příslušný cluster.
 
 ![Ukázkový seznam spuštění ladění aktivního toku dat](media/data-flow/dfsessions.png)
 
-## <a name="monitoring-debug-runs"></a>Monitorování běhů ladění
+## <a name="monitoring-debug-runs"></a>Sledování ladění běží
 
-Testovací běhy iniciované funkcí **ladění** nejsou k dispozici v seznamu na kartě **monitorování** . Na kartě **monitorování** můžete zobrazit jenom běhy aktivované aktivačními **událostmi**triggeru, **plánovaného**nebo **bubnového okna** . Poslední testovací běh iniciované funkcí **ladění** můžete zobrazit v okně **výstup** plátna kanálu.
+Spuštění testů zahájených pomocí funkce **ladění** nejsou k dispozici v seznamu na kartě **Monitor.** Spuštění spuštěná lze zobrazit pouze pomocí aktivačních událostí **Trigger Now**, **Schedule**nebo **Tumbling Window** na kartě **Monitor.** Poslední spuštění testu, které bylo zahájeno s možností **ladění,** se zobrazí v okně **Výstup** na plátně kanálu.
 
 ## <a name="setting-breakpoints-for-debugging"></a>Nastavení zarážek pro ladění
 
-Data Factory také umožňuje ladit, dokud nedosáhnete určité aktivity na plátně kanálu. Pouze umístěte zarážku na aktivitu, dokud nechcete testovat, a vyberte **ladit**. Data Factory zajistí, že se test spustí pouze do aktivity zarážky na plátně kanálu. Tento *ladicí program* je použitelný, dokud nechcete testovat celý kanál, ale pouze podmnožinu aktivit uvnitř kanálu.
+Data Factory také umožňuje ladit, dokud nedosáhnete určité aktivity na plátně kanálu. Stačí umístit zarážku na aktivitu, do které chcete testovat, a vyberte **ladění**. Data Factory zajišťuje, že test běží pouze do aktivity zarážky na plátně kanálu. Tato funkce *Ladění Do* je užitečná, pokud nechcete otestovat celý kanál, ale pouze podmnožinu aktivit uvnitř kanálu.
 
-![Zarážky na plátně kanálu](media/iterative-development-debugging/iterative-development-image4.png)
+![Zarážky na plátně potrubí](media/iterative-development-debugging/iterative-development-image4.png)
 
-Chcete-li nastavit zarážku, vyberte element na plátně kanálu. *Ladění, dokud* se možnost neobjeví jako prázdný červený kruh v pravém horním rohu elementu.
+Chcete-li nastavit zarážku, vyberte prvek na plátně kanálu. Možnost *Ladění Dokud* se zobrazí jako prázdný červený kruh v pravém horním rohu prvku.
 
-![Před nastavením zarážky pro vybraný element](media/iterative-development-debugging/iterative-development-image5.png)
+![Před nastavením zarážky u vybraného prvku](media/iterative-development-debugging/iterative-development-image5.png)
 
-Po výběru možnosti *ladit* do této možnosti se změní na vyplněný červený kroužek, aby označoval, že je povolená zarážka.
+Po výběru *možnosti Ladění do* se změní na vyplněný červený kruh, což znamená, že je povolena zarážky.
 
-![Po nastavení zarážky u vybraného elementu](media/iterative-development-debugging/iterative-development-image6.png)
+![Po nastavení zarážky na vybraném prvku](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>Další kroky
-[Průběžná integrace a nasazování v Azure Data Factory](continuous-integration-deployment.md)
+[Průběžná integrace a nasazení v Azure Data Factory](continuous-integration-deployment.md)

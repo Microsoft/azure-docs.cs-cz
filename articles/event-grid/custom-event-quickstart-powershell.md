@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: odesílání vlastních událostí do webového koncového bodu – Event Grid, PowerShell'
-description: 'Rychlý Start: použití Azure Event Grid a PowerShellu k publikování vlastního tématu a přihlášení k odběru událostí pro toto téma. Události jsou zpracovávány webovou aplikací.'
+title: 'Úvodní příručka: Odeslání vlastních událostí do webového koncového bodu – Event Grid, PowerShell'
+description: 'Úvodní příručka: Pomocí Azure Event Grid a PowerShellu publikujte vlastní téma a přihlaste se k odběru událostí pro toto téma. Události jsou zpracovány webovou aplikací.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: bc92e0cf579bc008fdb09c9cbb576d8cac0191cb
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73721429"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Rychlý Start: směrování vlastních událostí do webového koncového bodu pomocí PowerShellu a Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Úvodní příručka: Směrování vlastních událostí do webového koncového bodu pomocí PowerShellu a Grid událostí
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí Azure PowerShellu vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -34,7 +34,7 @@ Tento článek vyžaduje použití nejnovější verze Azure PowerShellu. Pokud 
 
 Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve skupině prostředků Azure. Skupina prostředků je logická kolekce, ve které se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
+Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup.](/powershell/module/az.resources/new-azresourcegroup)
 
 Následující příklad vytvoří skupinu prostředků *gridResourceGroup* v umístění *westus2*.
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name gridResourceGroup -Location westus2
 
 ## <a name="create-a-custom-topic"></a>Vytvoření vlastního tématu
 
-Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<your-topic-name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože je součástí položky DNS. Navíc musí mít 3-50 znaků a obsahovat pouze hodnoty a-z, A-Z, 0-9 a "-"
+Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<your-topic-name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože je součástí položky DNS. Kromě toho musí být mezi 3-50 znaky a obsahovat pouze hodnoty a-z, A-Z, 0-9 a "-"
 
 ```powershell-interactive
 $topicname="<your-topic-name>"

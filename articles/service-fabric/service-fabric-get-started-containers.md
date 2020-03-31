@@ -1,13 +1,13 @@
 ---
-title: Vytvoření aplikace Azure Service Fabric Container
-description: Vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric. Sestavte image Docker pomocí aplikace Pythonu, nahrajte image do registru kontejneru a potom Sestavte a nasaďte kontejner do Azure Service Fabric.
+title: Vytvoření aplikace kontejneru Azure Service Fabric
+description: Vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric. Vytvořte image Dockeru s aplikací Pythonu, převeďte ji do registru kontejnerů a pak vytvořte a nasaďte kontejner do Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258470"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
@@ -16,10 +16,10 @@ ms.locfileid: "79258470"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Docker [obsahující webovou aplikaci](http://flask.pocoo.org/) v Pythonu a nasazením do clusteru Azure Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
+Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Azure Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 > [!NOTE]
-> Tento článek se týká prostředí pro vývoj ve Windows.  Modul runtime clusteru Service Fabric a modul runtime Docker musí být spuštěný ve stejném operačním systému.  Kontejnery Windows nelze spouštět v clusteru se systémem Linux.
+> Tento článek se vztahuje na vývojové prostředí systému Windows.  Za běhu clusteru Service Fabric a dockeru musí být spuštěnve stejném os.  Kontejnery systému Windows nelze spustit v clusteru Linux.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -28,26 +28,26 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 
 * Vývojový počítač s:
   * Visual Studio 2015 nebo Visual Studio 2019.
-  * [Sada Service Fabric SDK a nástroje](service-fabric-get-started.md).
+  * [Service Fabric SDK a nástroje](service-fabric-get-started.md).
   *  Docker pro Windows. [Získejte Docker CE pro Windows (stabilní verze)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
-* Cluster se systémem Windows se třemi nebo více uzly, které jsou spuštěny v systému Windows Server s kontejnery. 
+* Cluster systému Windows se třemi nebo více uzly spuštěnými v systému Windows Server s kontejnery. 
 
-  V tomto článku se verze (sestavení) Windows serveru s kontejnery běžícími na uzlech clusteru musí shodovat s tím, že se nachází na vašem vývojovém počítači. Důvodem je to, že na svém vývojovém počítači sestavíte image Docker a že existují omezení kompatibility mezi verzemi operačního systému kontejneru a hostitelského operačního systému, na kterém je nasazený. Další informace najdete v tématu [věnovaném systému Windows Server Container OS a kompatibility s hostitelským operačním systémem](#windows-server-container-os-and-host-os-compatibility). 
+  Pro tento článek verze (sestavení) systému Windows Server s kontejnery spuštěnými v uzlech clusteru musí odpovídat verzi (sestavení) systému Windows Server s kontejnery spuštěnými v uzlech clusteru, která se musí shodovat s verzí ve vývojovém počítači. Důvodem je, že sestavení image dockeru na vývojovém počítači a existují omezení kompatibility mezi verzemi operačního systému kontejneru a hostitelského operačního systému, na kterém je nasazen. Další informace naleznete v tématu [Windows Server container OS and host OS Compatibility](#windows-server-container-os-and-host-os-compatibility). 
   
-Pokud chcete zjistit verzi Windows serveru s kontejnery, které potřebujete pro svůj cluster, spusťte příkaz `ver` z příkazového řádku Windows na vašem vývojovém počítači:
+Chcete-li zjistit verzi systému Windows Server s `ver` kontejnery, kterou potřebujete pro svůj cluster, spusťte příkaz z příkazového řádku systému Windows ve vývojovém počítači:
 
-* Pokud verze obsahuje *x. x. 14323. x*, vyberte pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md) *windowsserver 2016 – Datacenter-with-Containers* .
-  * Pokud verze obsahuje *x. x. 16299. x*, vyberte *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md).
+* Pokud verze obsahuje *soubor x.x.14323.x*, vyberte při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md)pro operační systém *položku WindowsServer 2016-Datacenter-with-Containers* .
+  * Pokud verze obsahuje *soubor x.x.16299.x*, vyberte při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md)pro operační systém *položku WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* .
 
 * Registr ve službě Azure Container Registry – [Vytvořte registr kontejneru](../container-registry/container-registry-get-started-portal.md) ve svém předplatném Azure.
 
 > [!NOTE]
-> Nasazení kontejnerů do clusteru Service Fabric se systémem Windows 10 je podporováno.  V [tomto článku](service-fabric-how-to-debug-windows-containers.md) najdete informace o tom, jak nakonfigurovat Windows 10 pro spouštění kontejnerů Windows.
+> Nasazení kontejnerů do clusteru Service Fabric spuštěného ve Windows 10 je podporované.  V [tomto článku](service-fabric-how-to-debug-windows-containers.md) najdete informace o konfiguraci Windows 10 pro spouštění kontejnerů windows.
 >   
 
 > [!NOTE]
-> Service Fabric verze 6,2 a novější podporují nasazení kontejnerů do clusterů se systémem Windows Server verze 1709.  
+> Service Fabric verze 6.2 a novější podporují nasazení kontejnerů do clusterů spuštěných v systému Windows Server verze 1709.  
 > 
 
 ## <a name="define-the-docker-container"></a>Definice kontejneru Dockeru
@@ -142,12 +142,12 @@ Po spuštění kontejneru vyhledejte jeho IP adresu, abyste se ke spuštěnému 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Pokud příkaz nic nevrátí, spusťte následující příkaz a prozkoumejte IP adresu v elementu **NetworkSettings**->**Networks** (Nastavení sítě -> Sítě):
+Pokud tento příkaz nic nevrátí, spusťte následující příkaz a zkontrolujte prvek **NetworkSettings**->**Networks** pro adresu IP:
 ```
 docker inspect my-web-site
 ```
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na vrácenou IP adresu, například http:\//172.31.194.61. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč směřující na vrácenou IP\/adresu, například "http: /172.31.194.61". V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 Pokud chcete kontejner zastavit, spusťte:
 
@@ -166,7 +166,7 @@ docker rm my-web-site
 
 Po ověření, že se kontejner spustí na vývojovém počítači, nahrajte image do vašeho registru ve službě Azure Container Service.
 
-Spusťte ``docker login`` a přihlaste se k registru kontejneru pomocí svých [přihlašovacích údajů do registru](../container-registry/container-registry-authentication.md).
+Spusťte ``docker login`` přihlášení k registru kontejneru pomocí [pověření registru](../container-registry/container-registry-authentication.md).
 
 Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
 
@@ -189,7 +189,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Vytvoření kontejnerizované služby v sadě Visual Studio
 Sada Service Fabric SDK a nástroje poskytují šablonu služby, která vám pomůže s vytvořením kontejnerizované aplikace.
 
-1. Spusťte Visual Studio. Vyberte **Soubor** > **Nový** > **Projekt**.
+1. Spusťte Visual Studio. Vyberte **Soubor** > **nový** > **projekt**.
 2. Vyberte **Aplikace Service Fabric**, pojmenujte ji MyFirstContainer a klikněte na **OK**.
 3. Ze seznamu **šablon služeb** vyberte **Kontejner**.
 4. Do pole **Název image** zadejte „myregistry.azurecr.io/samples/helloworldapp“, tedy image, kterou jste nahráli do úložiště kontejnerů.
@@ -206,7 +206,7 @@ Kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Do souboru Ser
 </Resources>
 ```
 > [!NOTE]
-> Další koncové body pro službu lze přidat deklarováním dalších prvků koncového bodu s použitelnými hodnotami vlastností. Každý port může deklarovat jenom jednu hodnotu protokolu.
+> Další koncové body pro službu lze přidat deklarováním dalších prvků EndPoint s příslušnými hodnotami vlastností. Každý port může deklarovat pouze jednu hodnotu protokolu.
 
 Když Service Fabric definuje koncový bod, publikuje ho ve službě pojmenování. Ostatní služby spuštěné v clusteru mohou tento kontejner vyhledat. Ke komunikaci mezi kontejnery můžete také využít [reverzní proxy server](service-fabric-reverseproxy.md). Komunikace se provede tak, že se reverznímu proxy serveru poskytne port pro naslouchání HTTP a název služeb, se kterými chcete komunikovat, jako proměnné prostředí.
 
@@ -252,14 +252,14 @@ Nakonfigurujte port hostitele používaný ke komunikaci s kontejnerem. Vazba po
 </ServiceManifestImport>
 ```
 > [!NOTE]
-> Další PortBindings pro službu lze přidat deklarováním dalších prvků PortBinding s použitelnými hodnotami vlastností.
+> Další PortBindings pro službu lze přidat deklarováním další portbinding prvky s příslušnými hodnotami vlastností.
 
 ## <a name="configure-container-repository-authentication"></a>Konfigurace ověřování úložiště kontejnerů
 
-V tématu [ověřování úložiště kontejnerů](configure-container-repository-credentials.md)se dozvíte, jak nakonfigurovat různé typy ověřování pro stahování imagí kontejneru.
+Informace o [konfiguraci](configure-container-repository-credentials.md)různých typů ověřování pro stahování bitových obrázků kontejneru najdete v tématu Ověřování úložiště kontejnerů.
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
-Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. V režimu izolace procesů všechny kontejnery spuštěné na stejném hostitelském počítači sdílejí jádro s hostitelem. V režimu izolace Hyper-V se jádra pro jednotlivé kontejnery Hyper-V a hostitele kontejneru izolují. Režim izolace určuje element `ContainerHostPolicies` v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozím nastavením je režim izolace procesů na hostitelích se systémem Windows Server. V hostitelích s Windows 10 se podporuje jenom režim izolace Hyper-V, takže se kontejner spouští v režimu izolace technologie Hyper-V bez ohledu na nastavení režimu izolace. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
+Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. V režimu izolace procesů všechny kontejnery spuštěné na stejném hostitelském počítači sdílejí jádro s hostitelem. V režimu izolace Hyper-V se jádra pro jednotlivé kontejnery Hyper-V a hostitele kontejneru izolují. Režim izolace určuje element `ContainerHostPolicies` v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozí je režim izolace procesů u hostitelů systému Windows Server. Na hostitelích systému Windows 10 je podporován pouze režim izolace Technologie Hyper-V, takže kontejner běží v režimu izolace Hyper-V bez ohledu na nastavení režimu izolace. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
@@ -283,11 +283,11 @@ Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V.
 ```
 ## <a name="configure-docker-healthcheck"></a>Konfigurace dockeru HEALTHCHECK 
 
-Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud **health_status** je [healthy](service-fabric-visualizing-your-cluster.md), v *Service Fabric Exploreru* se zobrazí sestava stavu *OK*. Pokud **health_status** je *unhealthy*, zobrazí se *UPOZORNĚNÍ*. 
+Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. 
 
-Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená, zobrazí se zpráva o stavu **OK** , když *health_status* je *v pořádku* a zobrazí se **Chyba** , když *health_status* není v *pořádku*.
+Počínaje nejnovější aktualizací verze verze v6.4, máte možnost určit, že docker HEALTHCHECK hodnocení by měly být hlášeny jako chyba. Pokud je tato možnost povolena, zobrazí se sestava stavu **OK,** když je *health_status* *v pořádku* a chyba se **zobrazí,** když *health_status* není *v pořádku*.
 
-Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru Dockerfile použitém při generování image kontejneru.
+**Instrukce HEALTHCHECK** ukazující na skutečnou kontrolu, která se provádí pro sledování stavu kontejneru musí být k dispozici v Dockerfile používá při generování image kontejneru.
 
 ![HealthCheckHealthy][3]
 
@@ -309,18 +309,18 @@ Chování **HEALTHCHECK** pro jednotlivé kontejnery můžete nakonfigurovat zad
     </Policies>
 </ServiceManifestImport>
 ```
-Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
+Ve výchozím nastavení je *includeDockerHealthStatusInSystemHealthReport* nastaven na **hodnotu true**, *funkce RestartContainerOnUnhealthDockerHealthStatus* je nastavena na **hodnotu false**a hodnota *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
 
 Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true**, kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
 
-Pokud je *TreatContainerUnhealthyStatusAsError* nastavené na **true**, zobrazí se **chybové** zprávy o stavu, když *health_status* kontejneru není v *pořádku*.
+Pokud *je chyba,* health_status kontejneru *není v pořádku*, je nastavena na **hodnotu true**, zobrazí se zprávy o stavu **CHYBy.** *health_status*
 
 Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric, musíte nastavit [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) na **false**.
 
 ## <a name="deploy-the-container-application"></a>Nasazení aplikace typu kontejner
 Uložte všechny provedené změny a sestavte aplikaci. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na **MyFirstContainer** v Průzkumníku řešení a vyberte **Publikovat**.
 
-Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. například `containercluster.westus2.cloudapp.azure.com:19000`. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
+Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Například, `containercluster.westus2.cloudapp.azure.com:19000`. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
 
 Klikněte na **Publikovat**.
 
@@ -341,34 +341,34 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
-## <a name="windows-server-container-os-and-host-os-compatibility"></a>Systém Windows Server Container OS a kompatibilita s hostitelským operačním systémem
+## <a name="windows-server-container-os-and-host-os-compatibility"></a>Kompatibilita s kontejnerem Windows Server a hostitelským osem
 
-Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Příklad:
+Kontejnery systému Windows Server nejsou kompatibilní ve všech verzích hostitelského operačního systému. Například:
  
-- Kontejnery Windows serveru sestavené pomocí Windows serveru verze 1709 nefungují na hostiteli se systémem Windows Server verze 2016. 
-- Kontejnery Windows serveru vytvořené pomocí systému Windows Server 2016 fungují v režimu izolace technologie Hyper-V pouze v hostiteli se systémem Windows Server verze 1709. 
-- Pomocí kontejnerů Windows serveru vytvořených pomocí systému Windows Server 2016 může být nutné zajistit, aby revize operačního systému v kontejneru a hostitelském operačním systému byla stejná při spuštění v režimu izolace procesu na hostiteli se systémem Windows Server 2016.
+- Kontejnery Windows Serveru vytvořené pomocí systému Windows Server verze 1709 nefungují na hostiteli se systémem Windows Server verze 2016. 
+- Kontejnery Windows Serveru vytvořené pomocí systému Windows Server 2016 fungují v izolovaném režimu Technologie Hyper-V pouze na hostiteli se systémem Windows Server verze 1709. 
+- Při kontejnerech Windows Serveru vytvořených pomocí Windows Serveru 2016 může být nutné zajistit, aby revize operačního systému kontejneru a hostitelského operačního systému byla stejná, když běží v režimu izolace procesů na hostiteli se systémem Windows Server 2016.
  
-Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+Další informace naleznete v [tématu Kompatibilita verzí kontejneru systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Při sestavování a nasazování kontejnerů do clusteru Service Fabric zvažte kompatibilitu s hostitelským operačním systémem a vaším kontejnerovým operačním systémem. Příklad:
+Při vytváření a nasazování kontejnerů do clusteru Service Fabric zvažte kompatibilitu hostitelského operačního systému a operačního systému kontejnerů. Například:
 
-- Ujistěte se, že jste nasadili kontejnery s operačním systémem kompatibilním s operačním systémem na uzlech clusteru.
-- Zajistěte, aby byl režim izolace zadaný pro vaši aplikaci kontejneru konzistentní s podporou pro kontejnerový operační systém na uzlu, na kterém je nasazený.
-- Vezměte v úvahu, jak může mít upgrade operačního systému na uzly nebo kontejnery clusteru vliv na jejich kompatibilitu. 
+- Ujistěte se, že nasazujete kontejnery s osem kompatibilním s osem na uzlech clusteru.
+- Ujistěte se, že režim izolace určený pro aplikaci kontejneru je konzistentní s podporou pro operační systém kontejneru na uzlu, kde se nasazuje.
+- Zvažte, jak upgrady operačního systému na uzly nebo kontejnery clusteru může ovlivnit jejich kompatibilitu. 
 
-Doporučujeme, abyste se ujistili, že se kontejnery na Service Fabricovém clusteru správně nasazují v následujících postupech:
+Doporučujeme následující postupy, abyste se ujistili, že kontejnery jsou správně nasazeny v clusteru Service Fabric:
 
-- Pomocí explicitního označování imagí s imagemi Docker určete verzi operačního systému Windows Server, ze které je kontejner sestavený. 
-- Používejte [označení operačního systému](#specify-os-build-specific-container-images) v souboru manifestu aplikace, abyste měli jistotu, že je vaše aplikace kompatibilní napříč různými verzemi a upgrady Windows serveru.
+- Pomocí explicitního označování bitových kopií s imfanatii Dockeru určete verzi operačního systému Windows Server, ze které je vytvořen kontejner. 
+- Pomocí [označování operačního systému](#specify-os-build-specific-container-images) v souboru manifestu aplikace se ujistěte, že je vaše aplikace kompatibilní v různých verzích a inovacích systému Windows Server.
 
 > [!NOTE]
-> Pomocí Service Fabric verze 6,2 a novější můžete nasazovat kontejnery založené na systému Windows Server 2016 místně na hostiteli s Windows 10. V systému Windows 10 jsou kontejnery spouštěny v režimu izolace technologie Hyper-V bez ohledu na režim izolace nastavený v manifestu aplikace. Další informace najdete v tématu [Konfigurace režimu izolace](#configure-isolation-mode).   
+> S Service Fabric verze 6.2 a novější, můžete nasadit kontejnery založené na Windows Server 2016 místně na Windows 10 hostitele. V systému Windows 10 kontejnery spustit v režimu izolace Hyper-V, bez ohledu na režim izolace nastavené v manifestu aplikace. Další informace naleznete v [tématu Konfigurace izolovaného režimu](#configure-isolation-mode).   
 >
  
 ## <a name="specify-os-build-specific-container-images"></a>Zadání imagí kontejneru pro konkrétní sestavení operačního systému 
 
-Kontejnery Windows serveru nemusí být kompatibilní napříč různými verzemi operačního systému. Například kontejnery Windows serveru sestavené pomocí Windows serveru 2016 nefungují na Windows serveru verze 1709 v režimu izolace procesů. Proto pokud jsou uzly clusteru aktualizovány na nejnovější verzi, služba kontejneru vytvořená pomocí předchozích verzí operačního systému může selhat. Chcete-li obejít tento postup s verzí 6,1 modulu runtime a novějším, Service Fabric podporuje určení více imagí operačního systému na kontejner a jejich označení s verzemi sestavení operačního systému v manifestu aplikace. Verzi buildu operačního systému můžete získat spuštěním `winver` na příkazovém řádku Windows. Nejprve aktualizujte manifesty aplikací a zadejte přepsání image pro jednotlivé verze operačního systému a teprve potom aktualizujte operační systém na uzlech. Následující fragment kódu ukazuje, jak v manifestu aplikace **ApplicationManifest.xml** zadat několik imagí kontejneru:
+Kontejnery systému Windows Server nemusí být kompatibilní v různých verzích operačního systému. Kontejnery windows serveru vytvořené například pomocí systému Windows Server 2016 nefungují v systému Windows Server verze 1709 v režimu izolace procesu. Proto pokud uzly clusteru jsou aktualizovány na nejnovější verzi, kontejnerové služby vytvořené pomocí staršíverze operačního systému může selhat. Chcete-li obejít pomocí verze 6.1 runtime a novější, Service Fabric podporuje určení více bitových kopií operačního systému na kontejner a jejich označování s verzemi sestavení operačního systému v manifestu aplikace. Verzi operačního systému sestavení můžete `winver` získat spuštěním na příkazovém řádku systému Windows. Nejprve aktualizujte manifesty aplikací a zadejte přepsání image pro jednotlivé verze operačního systému a teprve potom aktualizujte operační systém na uzlech. Následující fragment kódu ukazuje, jak v manifestu aplikace **ApplicationManifest.xml** zadat několik imagí kontejneru:
 
 
 ```xml
@@ -496,7 +496,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurace časového intervalu před vynuceným ukončením kontejneru
 
-Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. Oddíl `Hosting` lze přidat při vytváření clusteru nebo později v upgradu konfigurace. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
+Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. Oddíl `Hosting` lze přidat při vytvoření clusteru nebo později při upgradu konfigurace. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
 
 ```json
 "fabricSettings": [
@@ -518,7 +518,7 @@ Výchozí časový interval je nastavený na 10 sekund. Vzhledem k tomu, že je 
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Konfigurace modulu runtime pro odebrání nepoužívaných imagí kontejneru
 
-Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepoužívané image kontejneru. Tato konfigurace umožňuje znovu získat místo na disku v případě, že je na uzlu příliš mnoho imagí kontejneru. Chcete-li povolit tuto funkci, aktualizujte část [hostování](service-fabric-cluster-fabric-settings.md#hosting) v manifestu clusteru, jak je znázorněno v následujícím fragmentu kódu: 
+Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepoužívané image kontejneru. Tato konfigurace umožňuje znovu získat místo na disku v případě, že je na uzlu příliš mnoho imagí kontejneru. Chcete-li tuto funkci povolit, aktualizujte oddíl [Hostování](service-fabric-cluster-fabric-settings.md#hosting) v manifestu clusteru, jak je znázorněno v následujícím fragmentu: 
 
 
 ```json

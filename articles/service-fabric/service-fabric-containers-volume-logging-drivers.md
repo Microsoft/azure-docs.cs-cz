@@ -1,37 +1,37 @@
 ---
-title: Ovladač svazku souborů Azure pro Service Fabric
+title: Ovladač svazku souborů Azure pro service fabric
 description: Service Fabric podporuje použití souborů Azure k zálohování svazků z vašeho kontejneru.
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750038"
 ---
-# <a name="azure-files-volume-driver-for-service-fabric"></a>Ovladač svazku souborů Azure pro Service Fabric
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Ovladač svazku souborů Azure pro service fabric
 
-Ovladač svazku souborů Azure je [modul plug-in Docker Volume](https://docs.docker.com/engine/extend/plugins_volume/) , který poskytuje svazky na bázi [Azure Files](/azure/storage/files/storage-files-introduction) pro kontejnery Docker. Je zabalen jako aplikace Service Fabric, která se dá nasadit do clusteru Service Fabric, aby poskytovala svazky pro jiné Service Fabric aplikace kontejneru v clusteru.
+Ovladač svazku Soubory Azure je [modul plugin svazek Dockeru,](https://docs.docker.com/engine/extend/plugins_volume/) který poskytuje svazky založené na [Azure Files](/azure/storage/files/storage-files-introduction) pro kontejnery Dockeru. Je zabalen jako aplikace Service Fabric, kterou lze nasadit do clusteru Service Fabric a poskytovat svazky pro jiné aplikace kontejnerů Service Fabric v rámci clusteru.
 
 > [!NOTE]
-> Pro obecnou dostupnost byla vydaná verze 6.5.661.9590 modulu plug-in svazku souborů Azure.
+> Verze 6.5.661.9590 modulu plug-in svazku souborů Azure byla vydána pro obecnou dostupnost.
 >
 
 ## <a name="prerequisites"></a>Požadavky
-* Verze Windows pro modul plug-in Volume Files ve Windows funguje v [systému Windows Server verze 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [windows 10 verze 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) nebo novější operační systémy.
+* Verze modulu plug-in svazku Souborů Azure funguje pouze v operačních systémech [Windows Server verze 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [Windows 10 verze 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) nebo novějších.
 
-* Verze Linux modulu plug-in Volume Files pro Linux funguje na všech verzích operačních systémů podporovaných nástrojem Service Fabric.
+* Linuxová verze modulu plug-in svazku souborů Azure funguje ve všech verzích operačního systému podporovaných service fabricem.
 
-* Modul plug-in svazku soubory Azure funguje jenom na Service Fabric verze 6,2 a novější.
+* Modul plug-in svazku souborů Azure funguje jenom na Service Fabric verze 6.2 a novější.
 
-* Postupujte podle pokynů v [dokumentaci k souborům Azure](/azure/storage/files/storage-how-to-create-file-share) a vytvořte sdílenou složku pro Service Fabric aplikaci typu kontejner, kterou chcete použít jako svazek.
+* Podle pokynů v [dokumentaci k souborům Azure](/azure/storage/files/storage-how-to-create-file-share) vytvořte sdílenou složku pro aplikaci kontejneru Service Fabric, která se použije jako svazek.
 
-* Budete potřebovat [PowerShell s nainstalovaným modulem Service Fabric](/azure/service-fabric/service-fabric-get-started) nebo [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) .
+* Budete potřebovat [Powershell s modulem Service Fabric](/azure/service-fabric/service-fabric-get-started) nebo [nainstalovaným SFCTL.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)
 
-* Pokud používáte kontejnery Hyper-V, je třeba přidat následující fragmenty kódu do části manifestem clusteru (místní cluster) nebo fabricSettings v šabloně Azure Resource Manager (cluster Azure) nebo ClusterConfig. JSON (samostatný cluster).
+* Pokud používáte hyper-v kontejnery, je třeba přidat následující úryvky v clusteruManifest (místní cluster) nebo fabricSettings části v šabloně Správce prostředků Azure (cluster Azure) nebo ClusterConfig.json (samostatný cluster).
 
-V manifestem clusteru je nutné přidat následující v části hosting. V tomto příkladu je název svazku **sfazurefile** a port, na který naslouchá na clusteru, je **19100**. Nahraďte je správnými hodnotami pro váš cluster.
+V ClusterManifest následující musí být přidány v části Hostování. V tomto příkladu je název svazku **sfazurefile** a port, který naslouchá v clusteru **je 19100**. Nahraďte je správnými hodnotami pro váš cluster.
 
 ``` xml 
 <Section Name="Hosting">
@@ -39,7 +39,7 @@ V manifestem clusteru je nutné přidat následující v části hosting. V tomt
 </Section>
 ```
 
-V části fabricSettings v šabloně Azure Resource Manager (pro nasazení Azure) nebo ClusterConfig. JSON (pro samostatná nasazení) je potřeba přidat následující fragment kódu. Znovu nahraďte hodnoty název svazku a port vlastními.
+V části fabricSettings v šabloně Azure Resource Manager (pro nasazení Azure) nebo ClusterConfig.json (pro samostatná nasazení) je potřeba přidat následující fragment. Opět nahraďte název svazku a hodnoty portů vlastními.
 
 ```json
 "fabricSettings": [
@@ -55,31 +55,31 @@ V části fabricSettings v šabloně Azure Resource Manager (pro nasazení Azure
 ]
 ```
 
-## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Nasazení ukázkové aplikace pomocí Service Fabric ovladače svazku souborů Azure
+## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Nasazení ukázkové aplikace pomocí ovladače svazku Service Fabric Azure Files
 
-### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>Použití Azure Resource Manager prostřednictvím poskytnutého skriptu PowerShellu (doporučeno)
+### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>Použití Správce prostředků Azure prostřednictvím poskytnutého skriptu Powershellu (doporučeno)
 
-Pokud je váš cluster založený na Azure, doporučujeme do něj nasadit aplikace pomocí modelu prostředku Azure Resource Manager aplikace, aby se usnadnilo použití, a mohl by se přecházet k modelu údržby infrastruktury jako kódu. Tento přístup eliminuje nutnost sledovat verzi aplikace pro ovladač svazku souborů Azure. Umožňuje také udržovat samostatné šablony Azure Resource Manager pro každý podporovaný operační systém. Skript předpokládá, že nasazujete nejnovější verzi aplikace soubory Azure a použijete parametry pro typ operačního systému, ID předplatného clusteru a skupinu prostředků. Skript si můžete stáhnout z [webu Service Fabric stáhnout](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip). Všimněte si, že tato funkce automaticky nastaví adresu ListenPort, což je port, na kterém modul plug-in svazku souborů Azure vystavuje požadavky z démona Docker na 19100. Můžete ji změnit přidáním parametru s názvem listenPort. Ujistěte se, že port není v konfliktu s žádným jiným portem, který používá cluster nebo aplikace.
+Pokud váš cluster je založen v Azure, doporučujeme nasadit aplikace do něj pomocí modelu prostředků Azure Resource Manager pro snadné použití a pomoci přejít k modelu údržby infrastruktury jako kódu. Tento přístup eliminuje potřebu sledovat verzi aplikace pro ovladač svazku Azure Files. Umožňuje také udržovat samostatné šablony Azure Resource Manager u každého podporovaného operačního systému. Skript předpokládá, že nasazujete nejnovější verzi aplikace Azure Files a přebírá parametry pro typ operačního systému, ID předplatného clusteru a skupinu prostředků. Skript si můžete stáhnout z [webu pro stahování Service Fabric](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip). Všimněte si, že to automaticky nastaví ListenPort, což je port, na kterém modul plug-in svazku Soubory Azure naslouchá žádosti od daemon Dockeru, na 19100. Můžete jej změnit přidáním parametru s názvem "listenPort". Ujistěte se, že port není v konfliktu s jiným portem, který cluster nebo vaše aplikace používají.
  
 
-Příkaz nasazení Azure Resource Manager pro Windows:
+Příkaz nasazení Azure Resource Manageru pro Windows:
 ```powershell
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -windows
 ```
 
-Příkaz nasazení Azure Resource Manager pro Linux:
+Příkaz nasazení Azure Resource Managerpro Linux:
 ```powershell
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
 ```
 
-Po úspěšném spuštění skriptu můžete přejít na [oddíl konfigurace aplikace.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)
+Po úspěšném spuštění skriptu můžete přeskočit na [konfiguraci části aplikace.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)
 
 
 ### <a name="manual-deployment-for-standalone-clusters"></a>Ruční nasazení pro samostatné clustery
 
-Aplikace Service Fabric, která poskytuje svazky pro vaše kontejnery, se dá stáhnout z [webu Service Fabric pro stažení](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip). Aplikaci můžete nasadit do clusteru prostřednictvím [rozhraní API](./service-fabric-deploy-remove-applications-fabricclient.md) [PowerShellu](./service-fabric-deploy-remove-applications.md), [CLI](./service-fabric-application-lifecycle-sfctl.md) nebo FabricClient.
+Aplikace Service Fabric, která poskytuje svazky pro vaše kontejnery lze stáhnout z [webu pro stahování Service Fabric](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip). Aplikaci lze nasadit do clusteru prostřednictvím [powershellových,](./service-fabric-deploy-remove-applications.md) [cli](./service-fabric-application-lifecycle-sfctl.md) nebo [infrastrukturových klientských api](./service-fabric-deploy-remove-applications-fabricclient.md).
 
-1. Pomocí příkazového řádku změňte adresář do kořenového adresáře staženého balíčku aplikace.
+1. Pomocí příkazového řádku změňte adresář na kořenový adresář staženého balíčku aplikace.
 
     ```powershell
     cd .\AzureFilesVolume\
@@ -89,7 +89,7 @@ Aplikace Service Fabric, která poskytuje svazky pro vaše kontejnery, se dá st
     cd ~/AzureFilesVolume
     ```
 
-2. Dále zkopírujte balíček aplikace do úložiště imagí s příslušnými hodnotami pro [ApplicationPackagePath] a [ImageStoreConnectionString]:
+2. Dále zkopírujte balíček aplikace do úložiště obrázků s příslušnými hodnotami pro [ApplicationPackagePath] a [ImageStoreConnectionString]:
 
     ```powershell
     Copy-ServiceFabricApplicationPackage -ApplicationPackagePath [ApplicationPackagePath] -ImageStoreConnectionString [ImageStoreConnectionString] -ApplicationPackagePathInImageStore AzureFilesVolumePlugin
@@ -100,7 +100,7 @@ Aplikace Service Fabric, která poskytuje svazky pro vaše kontejnery, se dá st
     sfctl application upload --path [ApplicationPackagePath] --show-progress
     ```
 
-3. Registrace typu aplikace
+3. Registrace typu přihlášky
 
     ```powershell
     Register-ServiceFabricApplicationType -ApplicationPathInImageStore AzureFilesVolumePlugin
@@ -110,7 +110,7 @@ Aplikace Service Fabric, která poskytuje svazky pro vaše kontejnery, se dá st
     sfctl application provision --application-type-build-path [ApplicationPackagePath]
     ```
 
-4. Vytvořte aplikaci a Zaměřte se na hodnotu parametru aplikace **ListenPort** . Tato hodnota je port, na kterém modul plug-in svazku souborů Azure naslouchá žádostem z démona Docker. Ujistěte se, že port poskytnutý aplikaci odpovídá VolumePluginPorts v manifestem clusteru a není v konfliktu s žádným jiným portem, který používá cluster nebo aplikace.
+4. Vytvořte aplikaci a věnujte velkou pozornost hodnotě parametru aplikace **ListenPort.** Tato hodnota je port, na kterém modul plug-in svazku Soubory Azure naslouchá požadavkům od daemon dockeru. Ujistěte se, že port poskytnutý aplikaci odpovídá VolumePluginPorts v ClusterManifest a není v konfliktu s jiným portem, který používá cluster nebo vaše aplikace.
 
     ```powershell
     New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
@@ -122,12 +122,12 @@ Aplikace Service Fabric, která poskytuje svazky pro vaše kontejnery, se dá st
 
 > [!NOTE]
 > 
-> Windows Server 2016 Datacenter nepodporuje mapování přípojných připojení SMB na kontejnery ([které jsou podporované jenom ve Windows serveru verze 1709](/virtualization/windowscontainers/manage-containers/container-storage)). Toto omezení zabrání mapování svazků sítě a ovladačů svazků služby soubory Azure ve verzích starších než 1709.
+> Windows Server 2016 Datacenter nepodporuje mapování připojení SMB na kontejnery ([To je podporováno pouze v systému Windows Server verze 1709](/virtualization/windowscontainers/manage-containers/container-storage)). Toto omezení zabraňuje mapování svazků sítě a ovladače svazku Soubory Azure ve verzích starších než 1709.
 
-#### <a name="deploy-the-application-on-a-local-development-cluster"></a>Nasazení aplikace do místního vývojového clusteru
-Postupujte podle kroků 1-3 [uvedených výše.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)
+#### <a name="deploy-the-application-on-a-local-development-cluster"></a>Nasazení aplikace v místním vývojovém clusteru
+Postupujte podle kroků 1-3 z [výše uvedeného.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)
 
- Výchozí počet instancí služby pro aplikaci modulu plug-in svazku souborů Azure je-1, což znamená, že je v clusteru nasazena instance služby. Při nasazování aplikace modulu plug-in svazku soubory Azure do místního vývojového clusteru se ale musí zadat počet instancí služby jako 1. To lze provést prostřednictvím parametru aplikace **InstanceCount** . Proto příkaz pro vytvoření aplikace modulu plug-in svazku souborů Azure v místním vývojovém clusteru je:
+ Výchozí počet instancí služby pro aplikaci modulů plug-in svazku Azure Files je -1, což znamená, že existuje instance služby nasazené do každého uzlu v clusteru. Však při nasazování aplikace modulů plug-up svazku Souborů Azure v clusteru místního vývoje, počet instancí služby by měl být určen jako 1. To lze provést pomocí parametru aplikace **InstanceCount.** Proto příkaz pro vytvoření aplikace modulu plug-in svazku Souborů Azure v clusteru místního vývoje je:
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
@@ -137,8 +137,8 @@ New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp 
 sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 
-## <a name="configure-your-applications-to-use-the-volume"></a>Konfigurace aplikací pro použití svazku
-Následující fragment kódu ukazuje, jak lze zadat svazek založený na souborech Azure v souboru manifestu aplikace vaší aplikace. Konkrétním prvkem zájmu je značka **svazku** :
+## <a name="configure-your-applications-to-use-the-volume"></a>Konfigurace aplikací tak, aby používaly svazek
+Následující úryvek ukazuje, jak lze zadat svazek založený na souboru manifestu aplikace vaší aplikace. Specifickým prvkem zájmu je značka **Volume:**
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -172,17 +172,17 @@ Následující fragment kódu ukazuje, jak lze zadat svazek založený na soubor
 </ApplicationManifest>
 ```
 
-Název ovladače pro modul plug-in svazku souborů Azure se **sfazurefile**. Tato hodnota je nastavena pro atribut **ovladače** elementu **Volume** tag v manifestu aplikace.
+Název ovladače pro modul plug-in svazku Souborů Azure je **sfazurefile**. Tato hodnota je nastavena pro atribut **Driver** prvku **tag volume** v manifestu aplikace.
 
-V příznaku **svazku** ve fragmentu výše vyžaduje modul plug-in svazku soubory Azure následující atributy:
-- **Source** – jedná se o název svazku. Uživatel může pro svůj svazek vybrat libovolný název.
-- **Cíl** – tento atribut je umístění, na které je svazek mapován v rámci běžícího kontejneru. Proto vaše cílové umístění nemůže být umístěním, které již existuje ve vašem kontejneru.
+Ve značce **Svazek** ve výstřižku výše vyžaduje modul plug-in svazku Souborů Azure následující atributy:
+- **Zdroj** - Toto je název svazku. Uživatel si může vybrat libovolné jméno pro svůj svazek.
+- **Cíl** - Tento atribut je umístění, které je namapováno na svazek v rámci spuštěného kontejneru. Cíl tedy nemůže být místem, které již v kontejneru existuje.
 
-Jak je znázorněno v **DriverOption** prvcích ve fragmentu, modul plug-in svazku souborů Azure podporuje následující možnosti ovladače:
-- **název_sdílené_položky** – název sdílené složky souborů Azure, která poskytuje svazek pro kontejner.
-- **storageAccountName** – název účtu úložiště Azure, který obsahuje sdílenou složku souborů Azure.
-- **storageAccountKey** – přístupový klíč pro účet služby Azure Storage, který obsahuje sdílenou složku souborů Azure File.
-- **storageAccountFQDN** – název domény přidružený k účtu úložiště. Pokud není zadán parametr storageAccountFQDN, bude název domény vytvořen pomocí výchozí přípony (. File. Core. Windows. NET) s parametrem storageAccountName.  
+Jak je znázorněno v **DriverOption** prvky ve výstřižku výše, modul plug-in svazku Soubory Azure podporuje následující možnosti ovladače:
+- **shareName** – název sdílené složky soubory Azure Files, která poskytuje svazek pro kontejner.
+- **storageAccountName** – název účtu úložiště Azure, který obsahuje sdílenou složku Soubory Azure.
+- **storageAccountKey** – přístupový klíč pro účet úložiště Azure, který obsahuje sdílenou složku Souborů Azure.
+- **storageAccountFQDN** - Název domény přidružený k účtu úložiště. Pokud není zadán storageAccountFQDN, bude název domény vytvořen pomocí výchozí přípony(.file.core.windows.net) s storageAccountName.  
 
     ```xml
     - Example1: 
@@ -197,10 +197,10 @@ Jak je znázorněno v **DriverOption** prvcích ve fragmentu, modul plug-in svaz
         <DriverOption Name="storageAccountFQDN" Value="myaccount2.file.core.chinacloudapi.cn" />
     ```
 
-## <a name="using-your-own-volume-or-logging-driver"></a>Používání vlastního ovladače svazku nebo protokolování
-Service Fabric také umožňuje použití vlastních ovladačů [svazků](https://docs.docker.com/engine/extend/plugins_volume/) nebo [protokolování](https://docs.docker.com/engine/admin/logging/overview/) . Pokud ovladač svazků nebo protokolování Docker není v clusteru nainstalovaný, můžete ho ručně nainstalovat pomocí protokolů RDP/SSH. Pomocí těchto protokolů můžete provést instalaci prostřednictvím [spouštěcího skriptu sady škálování virtuálního počítače](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) nebo [skriptu SetupEntryPoint](/azure/service-fabric/service-fabric-application-model).
+## <a name="using-your-own-volume-or-logging-driver"></a>Použití vlastního ovladače svazku nebo protokolování
+Service Fabric také umožňuje použití vlastní [chod nebo](https://docs.docker.com/engine/extend/plugins_volume/) [ovladače protokolování.](https://docs.docker.com/engine/admin/logging/overview/) Pokud ovladač svazku/protokolování dockeru není v clusteru nainstalován, můžete jej nainstalovat ručně pomocí protokolů RDP/SSH. Instalaci s těmito protokoly můžete provést pomocí [skriptu pro spuštění sady škálování virtuálních strojů](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) nebo [skriptu SetupEntryPoint](/azure/service-fabric/service-fabric-application-model).
 
-Příkladem skriptu pro instalaci [ovladače svazku Docker pro Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) je následující:
+Příklad skriptu pro instalaci [ovladače svazku Dockeru pro Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) je následující:
 
 ```bash
 docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
@@ -210,7 +210,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
     DEBUG=1
 ```
 
-Chcete-li v aplikacích použít svazek nebo ovladač protokolování, který jste nainstalovali, je nutné zadat příslušné hodnoty v části **Volume** a **LogConfig** elementy v manifestu aplikace **ContainerHostPolicies** .
+Chcete-li ve svých aplikacích použít nainstalovaný ovladač svazku nebo protokolování, je nutné zadat příslušné hodnoty v elementech **Volume** a **LogConfig** v části **ContainerHostPolicies** v manifestu aplikace.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv">
@@ -227,7 +227,7 @@ Chcete-li v aplikacích použít svazek nebo ovladač protokolování, který js
 </ContainerHostPolicies>
 ```
 
-Při zadávání modulu plug-in svazku Service Fabric automaticky vytvoří svazek pomocí zadaných parametrů. **Zdrojovou** značkou prvku **svazek** je název svazku a značka **ovladače** určuje modul plug-in ovladače svazku. **Cílová** značka je umístění, na které je **zdroj** namapován v rámci běžícího kontejneru. Proto vaše cílové umístění nemůže být umístěním, které již existuje ve vašem kontejneru. Možnosti lze zadat pomocí značky **DriverOption** následujícím způsobem:
+Při zadávání modulu plug-in svazku service fabric automaticky vytvoří svazek pomocí zadaných parametrů. **Zdrojová** značka elementu **Volume** je název svazku a značka **Ovladač** určuje modul plug-in ovladače svazku. **Cílová** značka je umístění, na které je **zdroj** mapován v rámci spuštěného kontejneru. Cíl tedy nemůže být umístění, které již v kontejneru existuje. Možnosti lze zadat pomocí značky **DriverOption** následujícím způsobem:
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">
@@ -235,10 +235,10 @@ Při zadávání modulu plug-in svazku Service Fabric automaticky vytvoří svaz
 </Volume>
 ```
 
-Parametry aplikace jsou podporovány pro svazky, jak je znázorněno v předchozím fragmentu manifestu (vyhledejte `MyStorageVar` pro příklad použití).
+Parametry aplikace jsou podporovány pro svazky, jak je znázorněno `MyStorageVar` v předchozím fragmentu manifestu (vyhledejte příklad použití).
 
-Pokud je zadán ovladač protokolu Docker, je nutné nasadit agenty (nebo kontejnery) pro zpracování protokolů v clusteru. Pomocí značky **DriverOption** lze zadat možnosti pro ovladač protokolu.
+Pokud je zadán ovladač protokolu Dockeru, je třeba nasadit agenty (nebo kontejnery) pro zpracování protokolů v clusteru. Značku **DriverOption** lze použít k určení možností ovladače protokolu.
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud chcete zobrazit ukázky kontejnerů včetně ovladače svazku, navštivte prosím [ukázky Service Fabric kontejneru](https://github.com/Azure-Samples/service-fabric-containers) .
-* Chcete-li nasadit kontejnery do clusteru Service Fabric, přečtěte si článek [nasazení kontejneru v Service Fabric](service-fabric-deploy-container.md)
+* Chcete-li zobrazit vzorky kontejnerů, včetně ovladače svazku, navštivte [vzorky kontejneru Service Fabric](https://github.com/Azure-Samples/service-fabric-containers)
+* Chcete-li nasadit kontejnery do clusteru Service Fabric, přečtěte si článek [Nasazení kontejneru na Service Fabric](service-fabric-deploy-container.md)

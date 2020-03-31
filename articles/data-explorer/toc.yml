@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: Kurzy
   items:
+    - name: Zápis dotazů
+      href: write-queries.md
     - name: Programový příjem dat objektů blob E2E
       items:
         - name: 'C#'
@@ -32,14 +34,22 @@
         - name: Přehled ingestování dat
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: Vlastnosti příjmu dat
+          href: ingestion-properties.md
+        - name: Formáty pro příjem dat
+          href: ingestion-supported-formats.md
     - name: Dotazovací jazyk Kusto
       items:
         - name: Stručná referenční příručka
           href: kql-quick-reference.md
     - name: Přehled vizualizace dat
       href: viz-overview.md
-    - name: Přehled zabezpečení
-      href: security.md
+    - name: Zabezpečení
+      items:
+        - name: Přehled zabezpečení
+          href: security.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Vytvoření clusteru a databáze
@@ -60,6 +70,8 @@
           href: ingest-data-one-click.md
         - name: Ingestování streamování
           href: ingest-data-streaming.md
+        - name: S využitím LightIngestu
+          href: lightingest.md
         - name: Centrum událostí
           items:
             - name: portál Azure
@@ -106,8 +118,6 @@
           href: ingest-json-formats.md
     - name: Dotazování dat
       items:
-        - name: Zápis dotazů
-          href: write-queries.md
         - name: Dotazování na data ve službě Azure Data Lake
           href: data-lake-query-data.md
         - name: Dotazování na data ve službě Azure Monitor
@@ -158,12 +168,22 @@
           href: k2bridge.md
     - name: Zabezpečení
       items:
+        - name: Izolace sítě (virtuální síť)
+          items:
+            - name: Vytvoření clusteru ve virtuální síti – portál
+              href: vnet-create-cluster-portal.md
+            - name: Nasazení clusteru do virtuální sítě
+              href: vnet-deployment.md
+            - name: 'Řešení potíží s vytvářením, připojením a provozem clusterů virtuální sítě'
+              href: vnet-deploy-troubleshoot.md
         - name: Správa zabezpečení clusteru
           href: manage-cluster-security.md
         - name: Konfigurace spravovaných identit
           href: managed-identities.md
         - name: Konfigurace klíčů spravovaných zákazníkem
           items:
+            - name: Portál
+              href: customer-managed-keys-portal.md
             - name: 'C#'
               href: customer-managed-keys-csharp.md
             - name: Šablona Azure Resource Manageru
@@ -214,10 +234,6 @@
               href: delete-data.md
             - name: Řešení duplicitních dat
               href: dealing-with-duplicates.md
-    - name: Nasazení
-      items:
-        - name: Nasazení clusteru do virtuální sítě
-          href: vnet-deployment.md
     - name: Monitorování
       items:
         - name: Použití diagnostických protokolů k monitorování příjmu dat
@@ -236,6 +252,12 @@
               href: data-factory-template.md
             - name: Spouštění řídicích příkazů s využitím Azure Data Factory
               href: data-factory-command-activity.md
+        - name: Konektor služby Microsoft Flow
+          items:
+            - name: Konektor služby Microsoft Flow
+              href: flow.md
+            - name: Příklady využití konektoru služby Microsoft Flow
+              href: flow-usage.md
         - name: Konektor Apache Spark
           href: spark-connector.md
         - name: Připojení z Databricks pomocí Pythonu

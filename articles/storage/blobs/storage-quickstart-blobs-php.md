@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726393"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
@@ -21,7 +21,7 @@ V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisov
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Ujistěte se, že máte nainstalované následující další požadavky:
+Ujistěte se, že máte nainstalovány následující další požadavky:
 
 * [PHP](https://php.net/downloads.php)
 * [Azure Storage SDK pro PHP](https://github.com/Azure/azure-storage-php)
@@ -29,7 +29,7 @@ Ujistěte se, že máte nainstalované následující další požadavky:
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-php-quickstart.git) použitá v tomto rychlém startu je základní aplikace PHP.  
 
-Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojového prostředí. 
+Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do vývojového prostředí. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
@@ -42,14 +42,14 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 V aplikaci musíte zadat název svého účtu úložiště a klíč účtu pro vytvoření instance **BlobRestProxy** ve vaší aplikaci. Doporučujeme uložit tyto identifikátory do proměnné prostředí v místním počítači, na kterém aplikaci spouštíte. V závislosti na operačním systému vytvořte proměnnou prostředí pomocí jednoho z následujících příkladů. Hodnoty **youraccountname** a **youraccountkey** nahraďte názvem a klíčem vašeho účtu.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -91,7 +91,7 @@ První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty slouží
 Jakmile budete mít objekt kontejneru **blobClient**, můžete vytvořit objekt blob **Block**, který odkazuje na konkrétní objekt blob, který vás zajímá. Pak můžete provádět operace, jako jsou nahrávání, stahování a kopírování.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 V této části vytvoříte instanci klienta úložiště Azure, instanci objektu služby Blob, nový kontejner a nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné. Kontejner má název **quickstartblobs**. 
 
@@ -122,7 +122,7 @@ V této části vytvoříte instanci klienta úložiště Azure, instanci objekt
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody **createBlockBlob()** . 
+Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody **createBlockBlob()**. 
 
 Ukázkový kód vezme místní soubor a nahraje ho do Azure. Soubor se uloží jako **myfile** a název objektu blob se v kódu uloží jako **fileToUpload**. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
 
@@ -141,11 +141,11 @@ Ukázkový kód vezme místní soubor a nahraje ho do Azure. Soubor se uloží j
     $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 ```
 
-Pokud chcete upravit část obsahu objektu blob bloku, použijte metodu **createblocklist()** . Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Doplňovací objekt blob by se měl používat v modelu s jedním zapisujícím procesem. Většina objektů blob ukládaných do úložiště jsou typu blok.
+Pokud chcete upravit část obsahu objektu blob bloku, použijte metodu **createblocklist()**. Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Doplňovací objekt blob by se měl používat v modelu s jedním zapisujícím procesem. Většina objektů uložených v úložišti objektů blob je objekty blob bloku.
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Seznam souborů v kontejneru můžete získat pomocí metody **listBlobs()** . Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí názvy nalezených objektů blob v kontejneru.  
+Seznam souborů v kontejneru můžete získat pomocí metody **listBlobs()**. Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí názvy nalezených objektů blob v kontejneru.  
 
 ```PHP
     $listBlobsOptions = new ListBlobsOptions();
@@ -166,7 +166,7 @@ Seznam souborů v kontejneru můžete získat pomocí metody **listBlobs()** . N
 
 ### <a name="get-the-content-of-your-blobs"></a>Získání obsahu objektů blob
 
-Obsah objektů blob získáte pomocí metody **getBlob()** . Následující kód zobrazí obsah objektu blob nahraného v předchozí části.
+Obsah objektů blob získáte pomocí metody **getBlob()**. Následující kód zobrazí obsah objektu blob nahraného v předchozí části.
 
 ```PHP
     $blob = $blobClient->getBlob($containerName, $fileToUpload);
@@ -174,7 +174,7 @@ Obsah objektů blob získáte pomocí metody **getBlob()** . Následující kód
 ```
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody **deleteContainer()** . Pokud už nepotřebujete vytvořené soubory, pomocí metody **deleteBlob()** je odstraníte.
+Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody **deleteContainer()**. Pokud už nepotřebujete vytvořené soubory, pomocí metody **deleteBlob()** je odstraníte.
 
 ```PHP
     // Delete blob.
@@ -202,12 +202,12 @@ Prohlédněte si tyto další zdroje informací o vývoji v PHP s využitím úl
 - Prohlédněte, stáhněte a nainstalujte si [zdrojový kód klientské knihovny pro PHP](https://github.com/Azure/azure-storage-php) pro službu Azure Storage na GitHubu.
 - Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob) napsané s využitím klientské knihovny pro PHP.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
  
 V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí PHP. Další informace o práci s PHP najdete v našem Centru pro vývojáře PHP.
 
 > [!div class="nextstepaction"]
-> [Centrum pro vývojáře PHP](https://azure.microsoft.com/develop/php/)
+> [Centrum vývojářů PHP](https://azure.microsoft.com/develop/php/)
 
 
 Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

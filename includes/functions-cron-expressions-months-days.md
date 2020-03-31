@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: danlep
 ms.openlocfilehash: 8444a2a99977f0e8f6324423ea676c7763481a53
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67508287"
 ---
-Chcete-li určit měsíců nebo i dny můžete číselné hodnoty, názvy nebo jejich zkratky názvů:
+Chcete-li zadat měsíce nebo dny, můžete použít číselné hodnoty, názvy nebo zkratky názvů:
 
-* Pro dny číselné hodnoty jsou 0 až 6, kde 0 začíná neděli.
+* Pro dny jsou číselné hodnoty 0 až 6, kde 0 začíná na neděli.
 * Jména jsou v angličtině. Příklad: `Monday`, `January`.
-* Názvy jsou malá a velká písmena.
-* Názvy mohou být zkrácena. Tří písmen je délka doporučené zkratku.  Příklad: `Mon`, `Jan`. 
+* Názvy nerozlišují malá a velká písmena.
+* Jména mohou být zkrácena. Doporučená délka zkratky jsou tři písmena.  Příklad: `Mon`, `Jan`. 

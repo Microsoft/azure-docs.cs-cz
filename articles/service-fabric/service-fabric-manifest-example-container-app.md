@@ -1,29 +1,29 @@
 ---
-title: Příklady manifestu aplikace Azure Service Fabric Container
-description: Přečtěte si, jak nakonfigurovat nastavení manifestu aplikace a služby pro aplikaci Service Fabric více kontejnerů.
+title: Příklady manifestu kontejneru Azure Service Fabric
+description: Zjistěte, jak nakonfigurovat nastavení manifestu aplikací a služeb pro aplikaci Service Fabric s více kontejnery.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258392"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Příklady manifestu služeb a vícekontejnerové aplikace
-Níže jsou uvedeny příklady manifestů aplikace a služby pro aplikaci Service Fabric více kontejnerů. Účelem těchto příkladů je Ukázat, jaká nastavení jsou k dispozici a jak je používat. Tyto manifesty aplikací a služeb jsou založené na [ukázkových manifestech kontejnerů pro Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .
+Následují příklady manifestů aplikace a služby pro aplikaci Service Fabric s více kontejnery. Účelem těchto příkladů je ukázat, jaká nastavení jsou k dispozici a jak je používat. Tyto manifesty aplikací a služeb jsou založeny na [manifestech ukázky kontejneru systému Windows Server 2016.](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)
 
-Zobrazí se následující funkce:
+Jsou zobrazeny následující funkce:
 
 |Manifest|Funkce|
 |---|---|
-|[Manifest aplikace](#application-manifest)| [přepsat proměnné prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [nakonfigurovat mapování portů kontejneru na hostitele](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [Konfigurovat ověřování registrů kontejnerů](service-fabric-get-started-containers.md#configure-container-repository-authentication), zásady [správného řízení prostředků](service-fabric-resource-governance.md), [nastavit režim izolace](service-fabric-get-started-containers.md#configure-isolation-mode), [zadat image kontejneru specifické pro sestavení operačního systému](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
-|[Manifest služby FrontEndService](#frontendservice-service-manifest)| [nastavení proměnných prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [Konfigurace koncového bodu](service-fabric-get-started-containers.md#configure-communication), předávání příkazů do kontejneru, [Import certifikátu do kontejneru](service-fabric-securing-containers.md)| 
-|[Manifest služby BackEndService](#backendservice-service-manifest)|[nastavení proměnných prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [Konfigurace koncového bodu](service-fabric-get-started-containers.md#configure-communication), [Konfigurace ovladače svazku](service-fabric-containers-volume-logging-drivers.md)| 
+|[Manifest aplikace](#application-manifest)| [přepsat proměnné prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [konfigurovat mapování mezi porty kontejneru](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [konfigurovat ověřování registru kontejnerů](service-fabric-get-started-containers.md#configure-container-repository-authentication), [zásady správného řízení prostředků](service-fabric-resource-governance.md), nastavit režim [izolace](service-fabric-get-started-containers.md#configure-isolation-mode), [zadat ifotky kontejnerů specifických pro sestavení operačního systému](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[Manifest služby FrontEndService](#frontendservice-service-manifest)| [nastavit proměnné prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [nakonfigurovat koncový bod](service-fabric-get-started-containers.md#configure-communication), předat příkazy do kontejneru, [importovat certifikát do kontejneru](service-fabric-securing-containers.md)| 
+|[Manifest služby BackEndService](#backendservice-service-manifest)|[nastavení proměnných prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [konfigurace koncového bodu](service-fabric-get-started-containers.md#configure-communication), konfigurace ovladače [svazku](service-fabric-containers-volume-logging-drivers.md)| 
 
-Další informace o konkrétních prvcích XML naleznete v tématech [prvky manifestu aplikace](#application-manifest-elements), [prvky manifestu služby FrontEndService](#frontendservice-service-manifest-elements)a [prvky manifestu služby BackEndService](#backendservice-service-manifest-elements) .
+Další informace o [konkrétních elementech](#application-manifest-elements)XML naleznete v tématu Application manifest elements , [FrontEndService service manifest elements](#frontendservice-service-manifest-elements)a [BackEndService service manifest.](#backendservice-service-manifest-elements)
 
 ## <a name="application-manifest"></a>Manifest aplikace
 
@@ -256,156 +256,156 @@ Další informace o konkrétních prvcích XML naleznete v tématech [prvky mani
 ```
 
 ## <a name="application-manifest-elements"></a>Prvky manifestu aplikace
-### <a name="applicationmanifest-element"></a>Element souboru ApplicationManifest
-Deklarativně popisuje typ a verzi aplikace. Jeden nebo více manifestů služeb prvků se odkazuje na vytvoření typu aplikace. Nastavení konfigurace služeb prvků lze přepsat pomocí parametrizovaných nastavení aplikace. Výchozí služby, šablony služeb, objekty zabezpečení, zásady, nastavení diagnostiky a certifikáty mohou být deklarovány také na úrovni aplikace. Další informace naleznete v tématu [souboru ApplicationManifest element](service-fabric-service-model-schema-elements.md#ApplicationManifestElementApplicationManifestTypeComplexType)
+### <a name="applicationmanifest-element"></a>ApplicationManifest Element
+Deklarativně popisuje typ aplikace a verzi. Jeden nebo více manifestů služby základních služeb se odkazuje na sestavení typu aplikace. Nastavení konfigurace základních služeb lze přepsat pomocí parametrizovaného nastavení aplikace. Výchozí služby, šablony služeb, objekty zabezpečení, zásady, nastavení diagnostiky a certifikáty mohou být deklarovány také na úrovni aplikace. Další informace naleznete v tématu [ApplicationManifest Element](service-fabric-service-model-schema-elements.md#ApplicationManifestElementApplicationManifestTypeComplexType)
 
-### <a name="parameters-element"></a>Element Parameters
-Deklaruje parametry, které se používají v manifestu této aplikace. Hodnotu těchto parametrů lze zadat při vytváření instance aplikace a lze ji použít k přepsání nastavení konfigurace aplikace nebo služby. Další informace naleznete v tématu [element Parameters](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType) .
+### <a name="parameters-element"></a>Parametry Element
+Deklaruje parametry, které se používají v tomto manifestu aplikace. Hodnotu těchto parametrů lze zadat při vytvoření instance aplikace a lze ji použít k přepsání nastavení konfigurace aplikace nebo služby. Další informace naleznete v tématu [Element Parameters](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>Element parametru
-Parametr aplikace, který se má použít v tomto manifestu. Hodnotu parametru lze změnit během vytváření instance aplikace, nebo, pokud není zadána žádná hodnota, je použita výchozí hodnota. Další informace naleznete v tématu [element Parameter](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement) .
+### <a name="parameter-element"></a>Parameter – element
+Parametr aplikace, který má být použit v tomto manifestu. Hodnotu parametru lze změnit během instance aplikace nebo, pokud není zadána žádná hodnota, je použita výchozí hodnota. Další informace naleznete [v tématu Element parametru](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
-### <a name="servicemanifestimport-element"></a>Element ServiceManifestImport
-Importuje manifest služby vytvořený vývojářem služby. Pro každou službu prvků v aplikaci je nutné importovat manifest služby. Pro manifest služby lze deklarovat přepsání a zásady konfigurace. Další informace naleznete v tématu [ServiceManifestImport element](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
+### <a name="servicemanifestimport-element"></a>ServiceManifestImport Element
+Importuje manifest služby vytvořený vývojářem služby. Manifest služby musí být importován pro každou základní službu v aplikaci. Přepsání konfigurace a zásady lze deklarovat pro manifest služby. Další informace naleznete v tématu [ServiceManifestImport Element](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="servicemanifestref-element"></a>Element ServiceManifestRef
-Importuje manifest služby podle odkazu. V současné době musí být soubor manifestu služby (ServiceManifest. XML) přítomen v balíčku buildu. Další informace naleznete v tématu [ServiceManifestRef element](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
+### <a name="servicemanifestref-element"></a>ServiceManifestRef Element
+Importuje manifest služby odkazem. V současné době musí být soubor manifestu služby (ServiceManifest.xml) přítomen v balíčku sestavení. Další informace naleznete v tématu [ServiceManifestRef Element](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="policies-element"></a>Element policies
-Popisuje zásady (vazby koncového bodu, sdílení balíčku, spuštění jako a zabezpečení přístupu), které se použijí na importovaný manifest služby. Další informace najdete v tématu věnovaném [elementu policies](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement) .
+### <a name="policies-element"></a>Prvek zásad
+Popisuje zásady (vazba koncového bodu, sdílení balíčků, run-as a přístup k zabezpečení), které mají být použity v manifestu importované služby. Další informace naleznete v tématu [Zásady Element](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="servicepackageresourcegovernancepolicy-element"></a>Element ServicePackageResourceGovernancePolicy
-Definuje zásadu správného řízení prostředků, která se použije na úrovni celého balíčku služby. Další informace naleznete v tématu [ServicePackageResourceGovernancePolicy element](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)
+### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy Element
+Definuje zásady zásady zásady správného řízení prostředků, které se používají na úrovni celého balíčku služeb. Další informace naleznete v tématu [ServicePackageResourceGovernancePolicy Element](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)
 
-### <a name="resourcegovernancepolicy-element"></a>Element ResourceGovernancePolicy
-Určuje omezení prostředků pro balíček kódu. Další informace naleznete v tématu [ResourceGovernancePolicy element](service-fabric-service-model-schema-elements.md#ResourceGovernancePolicyElementResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelementDefinedInDigestedEndpointelement)
+### <a name="resourcegovernancepolicy-element"></a>ResourceGovernancePolicy Element
+Určuje omezení prostředků pro balíček kódu. Další informace naleznete v tématu [ResourceGovernancePolicy Element](service-fabric-service-model-schema-elements.md#ResourceGovernancePolicyElementResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelementDefinedInDigestedEndpointelement)
 
-### <a name="containerhostpolicies-element"></a>Element ContainerHostPolicies
-Určuje zásady pro aktivaci hostitelů kontejnerů. Další informace naleznete v tématu [ContainerHostPolicies element](service-fabric-service-model-schema-elements.md#ContainerHostPoliciesElementContainerHostPoliciesTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)
+### <a name="containerhostpolicies-element"></a>ContainerHostPolicies Element
+Určuje zásady pro aktivaci hostitelů kontejnerů. Další informace naleznete v [tématu ContainerHostPolicies Element](service-fabric-service-model-schema-elements.md#ContainerHostPoliciesElementContainerHostPoliciesTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="repositorycredentials-element"></a>Element RepositoryCredentials
-Přihlašovací údaje pro úložiště imagí kontejneru pro vyžádání imagí z. Další informace naleznete v tématu [RepositoryCredentials element](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+### <a name="repositorycredentials-element"></a>RepositoryCredentials Element
+Pověření pro úložiště bitové kopie kontejneru pro vyžádat obrázky z. Další informace naleznete v [tématu RepositoryCredentials Element](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="portbinding-element"></a>Element PortBinding
-Určuje prostředek koncového bodu, který se má navazovat na port vystaveného kontejneru. Další informace naleznete v tématu [PortBinding element](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInServicePackageContainerPolicyTypecomplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+### <a name="portbinding-element"></a>PortBinding Element
+Určuje, který prostředek koncového bodu se má vázat na nechráněný port kontejneru. Další informace naleznete v tématu [PortBinding Element](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInServicePackageContainerPolicyTypecomplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="volume-element"></a>Element Volume
-Určuje svazek, který má být svázán s kontejnerem. Další informace naleznete v tématu [Volume element](service-fabric-service-model-schema-elements.md#VolumeElementContainerVolumeTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+### <a name="volume-element"></a>Element svazku
+Určuje svazek, který má být vázán na kontejner. Další informace naleznete v tématu [Volume Element](service-fabric-service-model-schema-elements.md#VolumeElementContainerVolumeTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="driveroption-element"></a>Element DriverOption
-Možnosti ovladače, které mají být předány ovladači. Další informace naleznete v tématu [DriverOption element](service-fabric-service-model-schema-elements.md#DriverOptionElementDriverOptionTypeComplexTypeDefinedInContainerLoggingDriverTypecomplexTypeDefinedInContainerVolumeTypecomplexType)
+### <a name="driveroption-element"></a>DriverOption Element
+Možnosti ovladače, které mají být předány řidiči. Další informace naleznete v tématu [DriverOption Element](service-fabric-service-model-schema-elements.md#DriverOptionElementDriverOptionTypeComplexTypeDefinedInContainerLoggingDriverTypecomplexTypeDefinedInContainerVolumeTypecomplexType)
 
-### <a name="imageoverrides-element"></a>Element ImageOverrides
-Kontejnery Windows serveru nemusí být kompatibilní napříč různými verzemi operačního systému.  Můžete zadat více imagí operačního systému na kontejner a označit je pomocí verzí sestavení operačního systému. Získat verzi buildu operačního systému spuštěním příkazu "winver" na příkazovém řádku systému Windows. Pokud je základní operační systém sestavení verze 16299 (Windows Server verze 1709), Service Fabric vybere image kontejneru označená operačním systémem = "16299". Předpokládá se, že neoznačená image kontejneru funguje ve všech verzích operačního systému a Přepisuje image zadanou v manifestu služby. Další informace naleznete v tématu [ImageOverrides element](service-fabric-service-model-schema-elements.md#ImageOverridesElementImageOverridesTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+### <a name="imageoverrides-element"></a>Prvek ImageOverrides
+Kontejnery systému Windows Server nemusí být kompatibilní v různých verzích operačního systému.  Můžete zadat více bitových kopií operačního systému na kontejner a označit je verzemi sestavení operačního systému. Získejte verzi operačního systému sestavení spuštěním příkazu Winver na příkazovém řádku systému Windows. Pokud je základní operační systém sestavení verze 16299 (Windows Server verze 1709), Service Fabric vybere image kontejneru označené Os = "16299". Netagovaný image kontejneru se předpokládá, že pracovat ve všech verzích operačního systému a přepíše image zadané v manifestu služby. Další informace naleznete v tématu [ImageOverrides Element](service-fabric-service-model-schema-elements.md#ImageOverridesElementImageOverridesTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="image-element"></a>Element image
-Image kontejneru odpovídající číslu verze buildu operačního systému, který se má spustit Pokud atribut OS není zadán, předpokládá se, že image kontejneru bude fungovat ve všech verzích operačního systému a přepíše bitovou kopii zadanou v manifestu služby. Další informace naleznete v tématu [element image](service-fabric-service-model-schema-elements.md#ImageElementImageTypeComplexTypeDefinedInImageOverridesTypecomplexType) .
+### <a name="image-element"></a>Prvek obrázku
+Image kontejneru odpovídající číslo verze sestavení operačního systému, které má být spuštěno. Pokud není zadán atribut Operačního systému, předpokládá se, že image kontejneru bude fungovat ve všech verzích operačního systému a přepíše bitovou kopii zadanou v manifestu služby. Další informace naleznete v [tématu Image Element](service-fabric-service-model-schema-elements.md#ImageElementImageTypeComplexTypeDefinedInImageOverridesTypecomplexType)
 
-### <a name="environmentoverrides-element"></a>Element EnvironmentOverrides
- Další informace naleznete v tématu [EnvironmentOverrides element](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
+### <a name="environmentoverrides-element"></a>Prvek EnvironmentOverrides
+ Další informace naleznete v tématu [EnvironmentOverrides Element](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="environmentvariable-element"></a>Element objekt EnvironmentVariable
-Proměnná prostředí. Další informace naleznete v tématu [objekt EnvironmentVariable element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
+### <a name="environmentvariable-element"></a>Proměnlivý prvek prostředí
+Proměnná prostředí. Další informace naleznete v tématu [EnvironmentVariable Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
-### <a name="certificateref-element"></a>Element CertificateRef
-Určuje informace o certifikátu x509, který má být vystaven prostředí kontejneru. Certifikát musí být nainstalovaný v LocalMachine úložišti všech uzlů clusteru.
-Po spuštění aplikace modul runtime přečte certifikát a vygeneruje soubor PFX a heslo (ve Windows) nebo soubor PEM (na platformě Linux).
-Soubor PFX a heslo jsou přístupné v kontejneru pomocí proměnných prostředí Certificates_ServicePackageName_CodePackageName_CertName_PFX a Certificates_ServicePackageName_CodePackageName_CertName_Password. Soubor PEM je v kontejneru přístupný pomocí proměnných prostředí Certificates_ServicePackageName_CodePackageName_CertName_PEM a Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey. Další informace naleznete v tématu [CertificateRef element](service-fabric-service-model-schema-elements.md#CertificateRefElementContainerCertificateTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+### <a name="certificateref-element"></a>CertificateRef Element
+Určuje informace o certifikátu X509, který má být vystaven prostředí kontejneru. Certifikát musí být nainstalován v úložišti LocalMachine všech uzlů clusteru.
+Při spuštění aplikace runtime přečte certifikát a vygeneruje soubor PFX a heslo (v systému Windows) nebo soubor PEM (na Linuxu).
+Soubor A heslo PFX jsou přístupné v kontejneru pomocí Certificates_ServicePackageName_CodePackageName_CertName_PFX a Certificates_ServicePackageName_CodePackageName_CertName_Password proměnné prostředí. Soubor PEM je přístupný v kontejneru pomocí Certificates_ServicePackageName_CodePackageName_CertName_PEM a Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey proměnné prostředí. Další informace naleznete v tématu [CertificateRef Element](service-fabric-service-model-schema-elements.md#CertificateRefElementContainerCertificateTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="defaultservices-element"></a>Element DefaultServices
-Deklaruje instance služby, které jsou automaticky vytvořeny pokaždé, když je vytvořena instance aplikace proti tomuto typu aplikace. Další informace naleznete v tématu [DefaultServices element](service-fabric-service-model-schema-elements.md#DefaultServicesElementDefaultServicesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType)
+### <a name="defaultservices-element"></a>DefaultServices Element
+Deklaruje instance služby, které jsou automaticky vytvořeny vždy, když je vytvořena instance aplikace proti tomuto typu aplikace. Další informace naleznete v tématu [DefaultServices Element](service-fabric-service-model-schema-elements.md#DefaultServicesElementDefaultServicesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType)
 
-### <a name="service-element"></a>Element služby
-Deklaruje službu, která má být vytvořena automaticky při vytvoření instance aplikace. Další informace najdete v tématu [element služby](service-fabric-service-model-schema-elements.md#ServiceElementanonymouscomplexTypeComplexTypeDefinedInDefaultServicesTypecomplexType) .
+### <a name="service-element"></a>Prvek služby
+Deklaruje službu, která má být vytvořena automaticky při vytvoření instance aplikace. Další informace naleznete v tématu [Service Element](service-fabric-service-model-schema-elements.md#ServiceElementanonymouscomplexTypeComplexTypeDefinedInDefaultServicesTypecomplexType)
 
-### <a name="statelessservice-element"></a>Element StatelessService
-Definuje bezstavovou službu. Další informace naleznete v tématu [StatelessService element](service-fabric-service-model-schema-elements.md#StatelessServiceElementStatelessServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
-
-
-## <a name="frontendservice-service-manifest-elements"></a>Prvky manifestu služby FrontEndService
-### <a name="servicemanifest-element"></a>Element ServiceManifest
-Deklarativně popisuje typ a verzi služby. Uvádí nezávisle aktualizovatelný kód, konfiguraci a datové balíčky, které dohromady tvoří balíček služby pro podporu jednoho nebo více typů služeb. Jsou také určeny prostředky, nastavení diagnostiky a metadata služby, jako je například typ služby, vlastnosti stavu a metriky vyrovnávání zatížení. Další informace naleznete v tématu [ServiceManifest element](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
-
-### <a name="servicetypes-element"></a>ServiceTypes – element
-Definuje typy služeb, které CodePackage v tomto manifestu podporují. Při vytváření instance služby proti jednomu z těchto typů služeb jsou všechny balíčky kódu deklarované v tomto manifestu aktivovány spuštěním jejich vstupních bodů. Typy služeb jsou deklarovány na úrovni manifestu a nikoli na úrovni balíčku kódu. Další informace naleznete v tématu [ServiceTypes element](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
-
-### <a name="statelessservicetype-element"></a>Element StatelessServiceType
-Popisuje bezstavový typ služby. Další informace naleznete v tématu [StatelessServiceType element](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
-
-### <a name="codepackage-element"></a>Element CodePackage
-Popisuje balíček kódu, který podporuje definovaný typ služby. Při vytváření instance služby proti jednomu z těchto typů služeb jsou všechny balíčky kódu deklarované v tomto manifestu aktivovány spuštěním jejich vstupních bodů. U výsledných procesů se očekává, že se v době běhu zaregistrují podporované typy služeb. Pokud existuje více balíčků kódu, jsou všechny aktivovány vždy, když systém vyhledá některý z deklarovaných typů služeb. Další informace naleznete v tématu [CodePackage element](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
-
-### <a name="entrypoint-element"></a>EntryPoint – element
-Spustitelný soubor určený parametrem EntryPoint je obvykle dlouhodobě běžící hostitel služby. Přítomnost samostatného vstupního bodu instalace zabrání nutnosti spustit hostitele služby s vysokými oprávněními pro delší časová období. Spustitelný soubor určený parametrem EntryPoint je spuštěn po úspěšném ukončení SetupEntryPoint. Výsledný proces se monitoruje a restartuje (znovu začíná SetupEntryPoint), pokud se někdy ukončí nebo dojde k chybě. Další informace naleznete v tématu [EntryPoint element](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType) .
-
-### <a name="containerhost-element"></a>Element ContainerHost
- Další informace naleznete v tématu [ContainerHost element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
-
-### <a name="imagename-element"></a>ImageName Element
-Úložiště a obrázek v [https://hub.docker.com](https://hub.docker.com) nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
-
-### <a name="environmentvariables-element"></a>Element EnvironmentVariables
-Předání proměnných prostředí kontejneru nebo exe.  Další informace naleznete v tématu [EnvironmentVariables element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
-
-### <a name="environmentvariable-element"></a>Element objekt EnvironmentVariable
-Proměnná prostředí. Další informace naleznete v tématu [objekt EnvironmentVariable element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
-
-### <a name="configpackage-element"></a>Element ConfigPackage
-Deklaruje složku, která je pojmenována atributem Name, který obsahuje soubor Settings. XML. Tento soubor obsahuje oddíly nastavení páru klíč-hodnota definované uživatelem, které lze v průběhu běhu číst. Pokud se během upgradu změnila jenom verze ConfigPackage, spuštěný proces se nerestartuje. Místo toho zpětné volání upozorní proces, že došlo ke změně nastavení konfigurace, aby bylo možné je znovu načíst dynamicky. Další informace naleznete v tématu [ConfigPackage element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
-
-### <a name="datapackage-element"></a>Element DataPackage
-Deklaruje složku, která je pojmenována atributem Name, který obsahuje soubory statických dat. Service Fabric bude recyklovat všechny exe a DLLHOSTs zadané v hostitelích a balíčky podpory, pokud jsou všechny datové balíčky uvedené v manifestu služby upgradovány. Další informace naleznete v tématu [element DataPackage](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement) .
-
-### <a name="resources-element"></a>Resources – element
-Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu [Resources – element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
-
-### <a name="endpoints-element"></a>Element Endpoints
-Definuje koncové body pro službu. Další informace naleznete v tématu [element Endpoints](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
-
-### <a name="endpoint-element"></a>Element Endpoint
-Další informace najdete v tématu [element Endpoint](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement) .
+### <a name="statelessservice-element"></a>Prvek bezstavové služby
+Definuje bezstavovou službu. Další informace naleznete v tématu [StatelessService Element](service-fabric-service-model-schema-elements.md#StatelessServiceElementStatelessServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
 
 
-## <a name="backendservice-service-manifest-elements"></a>Prvky manifestu služby BackEndService
-### <a name="servicemanifest-element"></a>Element ServiceManifest
-Deklarativně popisuje typ a verzi služby. Uvádí nezávisle aktualizovatelný kód, konfiguraci a datové balíčky, které dohromady tvoří balíček služby pro podporu jednoho nebo více typů služeb. Jsou také určeny prostředky, nastavení diagnostiky a metadata služby, jako je například typ služby, vlastnosti stavu a metriky vyrovnávání zatížení. Další informace naleznete v tématu [ServiceManifest element](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
+## <a name="frontendservice-service-manifest-elements"></a>Elementy manifestu služby FrontEndService
+### <a name="servicemanifest-element"></a>ServiceManifest Element
+Deklarativně popisuje typ a verzi služby. Obsahuje seznam nezávisle rozšiřitelných balíčků kódu, konfigurace a dat, které společně tvoří balíček služeb pro podporu jednoho nebo více typů služeb. Prostředky, nastavení diagnostiky a metadata služby, jako je například typ služby, vlastnosti stavu a metriky vyrovnávání zatížení, jsou také určeny. Další informace naleznete v tématu [ServiceManifest Element](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
 
-### <a name="servicetypes-element"></a>ServiceTypes – element
-Definuje typy služeb, které CodePackage v tomto manifestu podporují. Při vytváření instance služby proti jednomu z těchto typů služeb jsou všechny balíčky kódu deklarované v tomto manifestu aktivovány spuštěním jejich vstupních bodů. Typy služeb jsou deklarovány na úrovni manifestu a nikoli na úrovni balíčku kódu. Další informace naleznete v tématu [ServiceTypes element](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+### <a name="servicetypes-element"></a>ServiceTypes Element
+Definuje, jaké typy služeb jsou podporovány CodePackage v tomto manifestu. Při vytvoření instance služby proti jednomu z těchto typů služeb jsou všechny balíčky kódu deklarované v tomto manifestu aktivovány spuštěním vstupních bodů. Typy služeb jsou deklarovány na úrovni manifestu a nikoli na úrovni balíčku kódu. Další informace naleznete v tématu [ServiceTypes Element](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
-### <a name="statelessservicetype-element"></a>Element StatelessServiceType
-Popisuje bezstavový typ služby. Další informace naleznete v tématu [StatelessServiceType element](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
+### <a name="statelessservicetype-element"></a>StatelessServiceType Element
+Popisuje typ bezstavové služby. Další informace naleznete v tématu [StatelessServiceType Element](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
 
-### <a name="codepackage-element"></a>Element CodePackage
-Popisuje balíček kódu, který podporuje definovaný typ služby. Při vytváření instance služby proti jednomu z těchto typů služeb jsou všechny balíčky kódu deklarované v tomto manifestu aktivovány spuštěním jejich vstupních bodů. U výsledných procesů se očekává, že se v době běhu zaregistrují podporované typy služeb. Pokud existuje více balíčků kódu, jsou všechny aktivovány vždy, když systém vyhledá některý z deklarovaných typů služeb. Další informace naleznete v tématu [CodePackage element](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
+### <a name="codepackage-element"></a>CodePackage Element
+Popisuje balíček kódu, který podporuje definovaný typ služby. Při vytvoření instance služby proti jednomu z těchto typů služeb jsou všechny balíčky kódu deklarované v tomto manifestu aktivovány spuštěním vstupních bodů. Očekává se, že výsledné procesy budou registrovat podporované typy služeb za běhu. Pokud existuje více balíčků kódu, jsou všechny aktivovány vždy, když systém hledá některý z deklarovaných typů služeb. Další informace naleznete v tématu [CodePackage Element](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="entrypoint-element"></a>EntryPoint – element
-Spustitelný soubor určený parametrem EntryPoint je obvykle dlouhodobě běžící hostitel služby. Přítomnost samostatného vstupního bodu instalace zabrání nutnosti spustit hostitele služby s vysokými oprávněními pro delší časová období. Spustitelný soubor určený parametrem EntryPoint je spuštěn po úspěšném ukončení SetupEntryPoint. Výsledný proces se monitoruje a restartuje (znovu začíná SetupEntryPoint), pokud se někdy ukončí nebo dojde k chybě. Další informace naleznete v tématu [EntryPoint element](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType) .
+### <a name="entrypoint-element"></a>EntryPoint Element
+Spustitelný soubor určený entrypointem je obvykle dlouhotrvající hostitel služby. Přítomnost samostatného vstupního bodu nastavení zabraňuje nutnosti spouštět hostitele služby s vysokými oprávněními po delší dobu. Spustitelný soubor určený službou EntryPoint je spuštěn po úspěšném ukončení programu SetupEntryPoint. Výsledný proces je sledován a restartován (počínaje znovu setupEntryPoint), pokud někdy ukončí nebo dojde k chybě. Další informace naleznete v tématu [EntryPoint Element](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
-### <a name="containerhost-element"></a>Element ContainerHost
-Další informace naleznete v tématu [ContainerHost element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
+### <a name="containerhost-element"></a>ContainerHost Element
+ Další informace naleznete v [tématu ContainerHost Element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName Element
-Úložiště a obrázek v [https://hub.docker.com](https://hub.docker.com) nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Repo a image [https://hub.docker.com](https://hub.docker.com) na nebo Registru kontejnerů Azure. Další informace naleznete v tématu [ImageName Element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
-### <a name="commands-element"></a>Command – element
-Předat kontejneru čárkami oddělený seznam příkazů. Další informace naleznete v tématu [element Commands](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+### <a name="environmentvariables-element"></a>EnvironmentVariables Element
+Předejte proměnné prostředí do kontejneru nebo exe.  Další informace naleznete v tématu [EnvironmentVariables Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
-### <a name="environmentvariables-element"></a>Element EnvironmentVariables
-Předání proměnných prostředí kontejneru nebo exe.  Další informace naleznete v tématu [EnvironmentVariables element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
+### <a name="environmentvariable-element"></a>Proměnlivý prvek prostředí
+Proměnná prostředí. Další informace naleznete v tématu [EnvironmentVariable Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
-### <a name="environmentvariable-element"></a>Element objekt EnvironmentVariable
-Proměnná prostředí. Další informace naleznete v tématu [objekt EnvironmentVariable element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
+### <a name="configpackage-element"></a>Prvek configPackage
+Deklaruje složku pojmenovanou podle atributu Name, která obsahuje soubor Settings.xml. Tento soubor obsahuje části uživatelem definované nastavení páru klíč-hodnota, které může proces číst zpět za běhu. Pokud se během inovace změnila pouze verze ConfigPackage, nebude spuštěný proces restartován. Místo toho zpětné volání upozorní proces, že nastavení konfigurace se změnily tak, aby mohly být znovu načteny dynamicky. Další informace naleznete v tématu [ConfigPackage Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
-### <a name="configpackage-element"></a>Element ConfigPackage
-Deklaruje složku, která je pojmenována atributem Name, který obsahuje soubor Settings. XML. Tento soubor obsahuje oddíly nastavení páru klíč-hodnota definované uživatelem, které lze v průběhu běhu číst. Pokud se během upgradu změnila jenom verze ConfigPackage, spuštěný proces se nerestartuje. Místo toho zpětné volání upozorní proces, že došlo ke změně nastavení konfigurace, aby bylo možné je znovu načíst dynamicky. Další informace naleznete v tématu [ConfigPackage element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+### <a name="datapackage-element"></a>Element datového balíčku
+Deklaruje složku pojmenovanou atributem Name, která obsahuje statické datové soubory. Service Fabric bude recyklovat všechny EXEs a DLLHOSTs zadané v hostitelských a podpůrných balíčků při upgradu některého z datových balíčků uvedených v manifestu služby. Další informace naleznete v tématu [DataPackage Element](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
 
-### <a name="resources-element"></a>Resources – element
-Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu [Resources – element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+### <a name="resources-element"></a>Prvek zdroje
+Popisuje prostředky používané touto službou, které lze deklarovat bez úpravy kompilovaného kódu a změnit při nasazení služby. Přístup k těmto prostředkům je řízen prostřednictvím oddílů Objekty zásad a zásady manifestu aplikace. Další informace naleznete v tématu [Resources Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
-### <a name="endpoints-element"></a>Element Endpoints
-Definuje koncové body pro službu. Další informace naleznete v tématu [element Endpoints](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
+### <a name="endpoints-element"></a>Element koncových bodů
+Definuje koncové body pro službu. Další informace naleznete [v tématu Prvek koncových bodů](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
 
-### <a name="endpoint-element"></a>Element Endpoint
- Další informace najdete v tématu [element Endpoint](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement) .
+### <a name="endpoint-element"></a>Element koncového bodu
+Další informace naleznete [v tématu Endpoint Element](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
+
+
+## <a name="backendservice-service-manifest-elements"></a>Elementy manifestu služby BackEndService
+### <a name="servicemanifest-element"></a>ServiceManifest Element
+Deklarativně popisuje typ a verzi služby. Obsahuje seznam nezávisle rozšiřitelných balíčků kódu, konfigurace a dat, které společně tvoří balíček služeb pro podporu jednoho nebo více typů služeb. Prostředky, nastavení diagnostiky a metadata služby, jako je například typ služby, vlastnosti stavu a metriky vyrovnávání zatížení, jsou také určeny. Další informace naleznete v tématu [ServiceManifest Element](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
+
+### <a name="servicetypes-element"></a>ServiceTypes Element
+Definuje, jaké typy služeb jsou podporovány CodePackage v tomto manifestu. Při vytvoření instance služby proti jednomu z těchto typů služeb jsou všechny balíčky kódu deklarované v tomto manifestu aktivovány spuštěním vstupních bodů. Typy služeb jsou deklarovány na úrovni manifestu a nikoli na úrovni balíčku kódu. Další informace naleznete v tématu [ServiceTypes Element](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+
+### <a name="statelessservicetype-element"></a>StatelessServiceType Element
+Popisuje typ bezstavové služby. Další informace naleznete v tématu [StatelessServiceType Element](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
+
+### <a name="codepackage-element"></a>CodePackage Element
+Popisuje balíček kódu, který podporuje definovaný typ služby. Při vytvoření instance služby proti jednomu z těchto typů služeb jsou všechny balíčky kódu deklarované v tomto manifestu aktivovány spuštěním vstupních bodů. Očekává se, že výsledné procesy budou registrovat podporované typy služeb za běhu. Pokud existuje více balíčků kódu, jsou všechny aktivovány vždy, když systém hledá některý z deklarovaných typů služeb. Další informace naleznete v tématu [CodePackage Element](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
+
+### <a name="entrypoint-element"></a>EntryPoint Element
+Spustitelný soubor určený entrypointem je obvykle dlouhotrvající hostitel služby. Přítomnost samostatného vstupního bodu nastavení zabraňuje nutnosti spouštět hostitele služby s vysokými oprávněními po delší dobu. Spustitelný soubor určený službou EntryPoint je spuštěn po úspěšném ukončení programu SetupEntryPoint. Výsledný proces je sledován a restartován (počínaje znovu setupEntryPoint), pokud někdy ukončí nebo dojde k chybě. Další informace naleznete v tématu [EntryPoint Element](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
+
+### <a name="containerhost-element"></a>ContainerHost Element
+Další informace naleznete v [tématu ContainerHost Element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
+
+### <a name="imagename-element"></a>ImageName Element
+Repo a image [https://hub.docker.com](https://hub.docker.com) na nebo Registru kontejnerů Azure. Další informace naleznete v tématu [ImageName Element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+
+### <a name="commands-element"></a>Commands – element
+Předají kontejneru seznam příkazů oddělených čárkou. Další informace naleznete v tématu [Commands Element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+
+### <a name="environmentvariables-element"></a>EnvironmentVariables Element
+Předejte proměnné prostředí do kontejneru nebo exe.  Další informace naleznete v tématu [EnvironmentVariables Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
+
+### <a name="environmentvariable-element"></a>Proměnlivý prvek prostředí
+Proměnná prostředí. Další informace naleznete v tématu [EnvironmentVariable Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
+
+### <a name="configpackage-element"></a>Prvek configPackage
+Deklaruje složku pojmenovanou podle atributu Name, která obsahuje soubor Settings.xml. Tento soubor obsahuje části uživatelem definované nastavení páru klíč-hodnota, které může proces číst zpět za běhu. Pokud se během inovace změnila pouze verze ConfigPackage, nebude spuštěný proces restartován. Místo toho zpětné volání upozorní proces, že nastavení konfigurace se změnily tak, aby mohly být znovu načteny dynamicky. Další informace naleznete v tématu [ConfigPackage Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+
+### <a name="resources-element"></a>Prvek zdroje
+Popisuje prostředky používané touto službou, které lze deklarovat bez úpravy kompilovaného kódu a změnit při nasazení služby. Přístup k těmto prostředkům je řízen prostřednictvím oddílů Objekty zásad a zásady manifestu aplikace. Další informace naleznete v tématu [Resources Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+
+### <a name="endpoints-element"></a>Element koncových bodů
+Definuje koncové body pro službu. Další informace naleznete [v tématu Prvek koncových bodů](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
+
+### <a name="endpoint-element"></a>Element koncového bodu
+ Další informace naleznete [v tématu Endpoint Element](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 

@@ -1,6 +1,6 @@
 ---
-title: Směrování síťového provozu – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: V tomto článku se dozvíte, jak ke směrování síťového provozu s směrovací tabulky pomocí rozhraní příkazového řádku Azure.
+title: Provoz v síti tras – Azure CLI | Dokumenty společnosti Microsoft
+description: V tomto článku se dozvíte, jak směrovat síťový provoz pomocí směrovací tabulky pomocí azure CLI.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -17,14 +17,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: ff5897766bb56b76a34940ecd786773fd844a336
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683117"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235052"
 ---
-# <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrování provozu sítě s směrovací tabulky pomocí rozhraní příkazového řádku Azure
+# <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrování síťového provozu pomocí směrovací tabulky pomocí příkazového příkazového příkazu Azure
 
 Azure ve výchozím nastavení automaticky směruje provoz mezi všemi podsítěmi v rámci virtuální sítě. Můžete vytvořit vlastní trasy a přepsat tak výchozí směrování Azure. Možnost vytvářet vlastní trasy je užitečná například v případě, že chcete směrovat provoz mezi podsítěmi přes síťové virtuální zařízení. V tomto článku získáte informace o těchto tématech:
 
@@ -36,7 +36,7 @@ Azure ve výchozím nastavení automaticky směruje provoz mezi všemi podsítě
 * Nasazení virtuálních počítačů do různých podsítí
 * Směrování provozu z jedné podsítě do jiné přes síťové virtuální zařízení
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,18 +44,18 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-route-table"></a>Vytvoření směrovací tabulky
 
-Než vytvoříte směrovací tabulku, vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group) pro všechny prostředky vytvořené v tomto článku. 
+Před vytvořením tabulky tras vytvořte skupinu prostředků s [vytvořením skupiny az](/cli/azure/group) pro všechny zdroje vytvořené v tomto článku. 
 
 ```azurecli-interactive
 # Create a resource group.
 az group create \
   --name myResourceGroup \
   --location eastus
-``` 
+```
 
-Vytvoření směrovací tabulky s [vytvořit sítě az route-table](/cli/azure/network/route-table#az-network-route-table-create). Následující příklad vytvoří směrovací tabulku s názvem *myRouteTablePublic*. 
+Vytvořte směrovací tabulku s [vytvořením az síťové směrovací tabulky](/cli/azure/network/route-table#az-network-route-table-create). Následující příklad vytvoří tabulku tras s názvem *myRouteTablePublic*. 
 
-```azurecli-interactive 
+```azurecli-interactive
 # Create a route table
 az network route-table create \
   --resource-group myResourceGroup \
@@ -64,7 +64,7 @@ az network route-table create \
 
 ## <a name="create-a-route"></a>Vytvoření trasy
 
-Vytvoření trasy ve směrovací tabulce s [az network route-table postupu vytvoření](/cli/azure/network/route-table/route#az-network-route-table-route-create). 
+Vytvořte trasu v tabulce tras s [vytvořením trasy az sítě route-table](/cli/azure/network/route-table/route#az-network-route-table-route-create). 
 
 ```azurecli-interactive
 az network route-table route create \
@@ -74,11 +74,11 @@ az network route-table route create \
   --address-prefix 10.0.1.0/24 \
   --next-hop-type VirtualAppliance \
   --next-hop-ip-address 10.0.2.4
-``` 
+```
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení směrovací tabulky k podsíti
 
-Než budete moct přidružit směrovací tabulky k podsíti, budete muset vytvořit virtuální síť a podsíť. Vytvoření virtuální sítě s jednou podsítí s [az network vnet vytvořit](/cli/azure/network/vnet).
+Před přidružením směrovací tabulky k podsíti je třeba vytvořit virtuální síť a podsíť. Vytvořte virtuální síť s jednou podsítí s [vytvořením virtuální sítě AZ](/cli/azure/network/vnet).
 
 ```azurecli-interactive
 az network vnet create \
@@ -89,7 +89,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-Vytvořte dva další podsítě s [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet).
+Vytvořte dvě další podsítě s [vytvořením podsítě sítě AZ](/cli/azure/network/vnet/subnet).
 
 ```azurecli-interactive
 # Create a private subnet.
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Přidružit *myRouteTablePublic* tabulky tras, abyste *veřejné* podsíť s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet).
+Přidružte tabulku směrování *myRouteTablePublic* k *veřejné* podsíti s [aktualizací podsítě sítě AZ](/cli/azure/network/vnet/subnet).
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -121,9 +121,9 @@ az network vnet subnet update \
 
 Síťové virtuální zařízení je virtuální počítač, který provádí síťovou funkci, jako je směrování, brána firewall nebo optimalizace sítě WAN.
 
-Vytvoření síťového virtuálního zařízení v *DMZ* podsíť s [az vm vytvořit](/cli/azure/vm). Při vytváření virtuálního počítače Azure vytvoří a přiřadí veřejnou IP adresu virtuálního počítače, ve výchozím nastavení. `--public-ip-address ""` Parametr instruuje Azure vytvořit a přiřadit veřejnou IP adresu virtuálního počítače, protože virtuální počítač nemusí být připojen k z Internetu. Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Vytvořte síťové virtuální sítě v podsíti *DMZ* pomocí [vytvoření az vm](/cli/azure/vm). Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří a přiřadí virtuálnímu počítači veřejnou IP adresu. Parametr `--public-ip-address ""` instruuje Azure, aby nevytvářel a přiřazoval virtuálnímu počítači veřejnou IP adresu, protože virtuální počítač nemusí být připojený z internetu. Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
-```azure-cli-interactive
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVmNva \
@@ -134,9 +134,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Nepokračujte k dalšímu kroku dokud Azure nedokončí vytváření virtuálního počítače a vrátí výstup o virtuálním počítači. 
+Vytvoření virtuálního počítače trvá několik minut. Nepokračujte k dalšímu kroku, dokud Azure nedokončí vytváření virtuálního počítače a vrátí výstup o virtuálním počítači. 
 
-Aby síťové rozhraní mohlo směrovat síťový provoz, který se do něj odešle a který není určený pro jeho vlastní IP adresu, musí být pro síťové rozhraní povolené předávání IP. Povolit předávání IP pro síťové rozhraní s [az network nic update](/cli/azure/network/nic).
+Aby síťové rozhraní mohlo směrovat síťový provoz, který se do něj odešle a který není určený pro jeho vlastní IP adresu, musí být pro síťové rozhraní povolené předávání IP. Povolte předávání IP adres pro síťové rozhraní pomocí [aktualizace az network nic](/cli/azure/network/nic).
 
 ```azurecli-interactive
 az network nic update \
@@ -145,7 +145,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-Operační systém nebo aplikace spuštěná v rámci virtuálního počítače musí také být schopné směrovat síťový provoz. Povolení předávání IP v rámci Virtuálního počítače s operačním systémem [sada rozšíření az vm](/cli/azure/vm/extension):
+Operační systém nebo aplikace spuštěná v rámci virtuálního počítače musí také být schopné směrovat síťový provoz. Povolit předávání IP adres v rámci operačního systému virtuálního počítačů s [rozšiřující sadou az vm](/cli/azure/vm/extension):
 
 ```azurecli-interactive
 az vm extension set \
@@ -155,13 +155,14 @@ az vm extension set \
   --publisher Microsoft.Azure.Extensions \
   --settings '{"commandToExecute":"sudo sysctl -w net.ipv4.ip_forward=1"}'
 ```
-Příkaz může trvat až jednu minutu ke spuštění.
+
+Provedení příkazu může trvat až minutu.
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-Vytvoření dvou virtuálních počítačů ve virtuální síti, abyste mohli ověřit provozu z *veřejné* podsítě se směruje na *privátní* podsítě v pozdějším kroku. 
+Vytvořte dva virtuální počítače ve virtuální síti, abyste mohli ověřit, že provoz z *veřejné* podsítě je směrován do *soukromé* podsítě prostřednictvím síťového virtuálního zařízení v pozdějším kroku. 
 
-Vytvářet virtuální počítače *veřejné* podsíť s [az vm vytvořit](/cli/azure/vm). `--no-wait` Parametr umožňuje systému Azure, aby příkaz spustila na pozadí, takže můžete pokračovat k dalšímu příkazu. Pro zjednodušení tohoto článku, je použít heslo. Klíče se obvykle používají v produkčním prostředí. Pokud používáte klíče, musíte také nakonfigurovat přesměrování agenta SSH. Další informace naleznete v dokumentaci k vašemu klientovi SSH. Nahraďte `<replace-with-your-password>` v následujícím příkazu s heslem podle vašeho výběru.
+Vytvořte virtuální virtuální ho v *veřejné* podsíti s [vytvořením virtuálního va](/cli/azure/vm). Parametr `--no-wait` umožňuje Azure spustit příkaz na pozadí, takže můžete pokračovat na další příkaz. Chcete-li zefektivnit tento článek, heslo se používá. Klíče se obvykle používají v produkčních nasazeních. Pokud používáte klíče, musíte také nakonfigurovat předávání agentů SSH. Další informace naleznete v dokumentaci pro vašeho klienta SSH. Nahraďte `<replace-with-your-password>` v následujícím příkazu heslo podle vašeho výběru.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -177,7 +178,7 @@ az vm create \
   --no-wait
 ```
 
-Vytvářet virtuální počítače *privátní* podsítě.
+Vytvořte virtuální hod v *soukromé* podsíti.
 
 ```azurecli-interactive
 az vm create \
@@ -190,9 +191,9 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítače Azure CLI zobrazí podobné informace jako v následujícím příkladu: 
+Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtuálního počítače azure cli zobrazí informace podobné v následujícím příkladu: 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVmPrivate",
@@ -204,25 +205,26 @@ Vytvoření virtuálního počítače trvá několik minut. Po vytvoření virtu
   "resourceGroup": "myResourceGroup"
 }
 ```
-Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu počítači z Internetu v pozdějším kroku.
+
+Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu virtuálnímu mněmu z internetu v pozdějším kroku.
 
 ## <a name="route-traffic-through-an-nva"></a>Směrování provozu přes síťové virtuální zařízení
 
-Pomocí následujícího příkazu vytvořte relaci SSH s *myVmPrivate* virtuálního počítače. Nahraďte  *\<publicIpAddress >* veřejnou IP adresou vašeho virtuálního počítače. V předchozím příkladu je IP adresa *13.90.242.231*.
+Pomocí následujícího příkazu vytvořte relaci SSH s virtuálním virtuálním mem *myVmPrivate.* Nahraďte * \<>publicIpAddress* veřejnou IP adresou virtuálního počítače. Ve výše uvedeném příkladu je adresa IP *13.90.242.231*.
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-Po zobrazení výzvy k zadání hesla, zadejte heslo, které jste vybrali v [vytvářet virtuální počítače](#create-virtual-machines).
+Po zobrazení výzvy k zadání hesla zadejte heslo, které jste vybrali v části [Vytvořit virtuální počítače](#create-virtual-machines).
 
-Použijte následující příkaz k instalaci na trasování tras *myVmPrivate* virtuálního počítače:
+Pomocí následujícího příkazu nainstalujte trasovací trasování na virtuální počítač *myVmPrivate:*
 
-```bash 
+```bash
 sudo apt-get install traceroute
 ```
 
-Použijte následující příkaz k otestování směrování pro síťový provoz *myVmPublic* z virtuálního počítače *myVmPrivate* virtuálního počítače.
+Pomocí následujícího příkazu otestujte směrování pro síťový provoz na virtuální ms *myVmPublic* z virtuálního virtuálního mm *myVmPrivate.*
 
 ```bash
 traceroute myVmPublic
@@ -230,26 +232,26 @@ traceroute myVmPublic
 
 Odpověď bude podobná jako v následujícím příkladu:
 
-```bash
+```output
 traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 1  10.0.0.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
 
-Jak vidíte, provoz se směruje přímo z virtuálního počítače *myVmPrivate* do virtuálního počítače *myVmPublic*. Výchozí trasy, směrovat provoz přímo mezi podsítěmi. 
+Jak vidíte, provoz se směruje přímo z virtuálního počítače *myVmPrivate* do virtuálního počítače *myVmPublic*. Výchozí trasy Azure, směrovat provoz přímo mezi podsítěmi. 
 
-Použijte následující příkaz pro připojení SSH k *myVmPublic* z virtuálního počítače *myVmPrivate* virtuálního počítače:
+Použijte následující příkaz pro SSH na *myVmPublic* VM z virtuálního virtuálního měna *myVmPrivate:*
 
-```bash 
+```bash
 ssh azureuser@myVmPublic
 ```
 
-Použijte následující příkaz k instalaci na trasování tras *myVmPublic* virtuálního počítače:
+Pomocí následujícího příkazu nainstalujte trasovací trasování na virtuální počítač *myVmPublic:*
 
-```bash 
+```bash
 sudo apt-get install traceroute
 ```
 
-Použijte následující příkaz k otestování směrování pro síťový provoz *myVmPrivate* z virtuálního počítače *myVmPublic* virtuálního počítače.
+Pomocí následujícího příkazu otestujte směrování pro síťový provoz na virtuální ms *myVmPrivate* z virtuálního virtuálního mm *myVmPublic.*
 
 ```bash
 traceroute myVmPrivate
@@ -257,25 +259,26 @@ traceroute myVmPrivate
 
 Odpověď bude podobná jako v následujícím příkladu:
 
-```bash
+```output
 traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 1  10.0.2.4 (10.0.2.4)  0.781 ms  0.780 ms  0.775 ms
 2  10.0.1.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
+
 Jak vidíte, první segment směrování je 10.0.2.4, což je privátní IP adresa síťového virtuálního zařízení. Druhý segment směrování je 10.0.1.4, což je privátní IP adresa virtuálního počítače *myVmPrivate*. Trasa přidaná do směrovací tabulky *myRouteTablePublic* a přidružená k podsíti *Public* způsobila, že Azure směruje provoz přes síťové virtuální zařízení, a ne přímo do podsítě *Private*.
 
-Zavření relace SSH k oběma *myVmPublic* a *myVmPrivate* virtuálních počítačů.
+Zavřete relace SSH pro virtuální chod *myVmPublic* i *myVmPrivate.*
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, použijte [odstranění skupiny az](/cli/azure/group) k odebrání skupiny prostředků a všech prostředků, které obsahuje.
+Pokud již není potřeba, použijte [az skupiny odstranit](/cli/azure/group) odebrat skupinu prostředků a všechny prostředky, které obsahuje.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili směrovací tabulku a přidruženou k podsíti. Vytvořili jste jednoduché síťové virtuální zařízení, které směrovalo provoz z veřejné podsítě do privátní podsítě. Z webu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) můžete nasadit různá předem nakonfigurovaná síťová virtuální zařízení, která provádí síťové funkce, jako je brána firewall a optimalizace sítě WAN. Další informace o směrování najdete v tématech [Přehled směrování](virtual-networks-udr-overview.md) a [Správa směrovací tabulky](manage-route-table.md).
+V tomto článku jste vytvořili tabulku tras a přidružili ji k podsíti. Vytvořili jste jednoduché síťové virtuální zařízení, které směrovalo provoz z veřejné podsítě do privátní podsítě. Z webu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) můžete nasadit různá předem nakonfigurovaná síťová virtuální zařízení, která provádí síťové funkce, jako je brána firewall a optimalizace sítě WAN. Další informace o směrování najdete v tématech [Přehled směrování](virtual-networks-udr-overview.md) a [Správa směrovací tabulky](manage-route-table.md).
 
-Přestože v rámci virtuální sítě můžete nasadit řadu prostředků Azure, prostředky některých služeb Azure PaaS do virtuální sítě nasadit nejde. Přesto můžete omezit přístup k prostředkům některých služeb Azure PaaS pouze pro provoz z podsítě virtuální sítě. Další informace o postupu [omezení síťového přístupu k prostředkům PaaS](tutorial-restrict-network-access-to-resources-cli.md).
+Přestože v rámci virtuální sítě můžete nasadit řadu prostředků Azure, prostředky některých služeb Azure PaaS do virtuální sítě nasadit nejde. Přesto můžete omezit přístup k prostředkům některých služeb Azure PaaS pouze pro provoz z podsítě virtuální sítě. Informace o tom, jak, naleznete [v tématu Omezení přístupu k síti k prostředkům PaaS](tutorial-restrict-network-access-to-resources-cli.md).

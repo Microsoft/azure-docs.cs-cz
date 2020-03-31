@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute: přesunutí okruhů z klasického na Azure Resource Manager'
-description: Přehled přemostění Datacenter klasické modely nasazení a modely nasazení Resource Manager.
+title: 'ExpressRoute: Přesun okruhů z klasického do Správce prostředků Azure'
+description: Přehled přemostění klasických modelů a modelů nasazení Správce prostředků.
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
 ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645901"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager
@@ -57,7 +57,7 @@ Podporovány jsou následující klasické operace pro okruh ExpressRoute, pokud
 * Vytvoření, aktualizace, získání nebo odstranění propojení virtuální sítě ke klasickým virtuálním sítím
 * Vytvoření, aktualizace, získání nebo odstranění autorizací propojení virtuální sítě pro připojení mezi předplatnými
 
-Ale když **allowClassicOperations** je nastavena na hodnotu TRUE, nelze provádět následující klasické operace:
+Pokud je však **allowClassicOperations** nastavena na hodnotu TRUE, nelze provádět následující klasické operace:
 
 * Vytvoření, aktualizace, získání nebo odstranění partnerských vztahů protokolu BGP pro soukromé partnerské vztahy Azure, veřejné partnerské vztahy Azure a partnerské vztahy Microsoftu
 * Odstranění okruhů ExpressRoute

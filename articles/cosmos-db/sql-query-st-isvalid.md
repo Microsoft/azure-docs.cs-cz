@@ -1,6 +1,6 @@
 ---
-title: ST_ISVALID v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o ST_ISVALID funkcí SQL systému v Azure Cosmos DB.
+title: ST_ISVALID v dotazovacím jazyce Azure Cosmos DB
+description: Další informace o ST_ISVALID funkcí systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8fbddbe82ae13585b8259a66dffaeef8024baf5d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349357"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
- Vrátí logickou hodnotu označující, zda je zadaný výraz GeoJSON bodu mnohoúhelníku či LineString platný.  
+ Vrátí logickou hodnotu označující, zda je zadaný výraz GeoJSON Point, Polygon nebo LineString platný.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ ST_ISVALID(<spatial_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *spatial_expr*  
-   Je bodový bod JSON, mnohoúhelník nebo LineString výraz.  
+   Je výraz Bodu GeoJSON, polygon nebo linestring.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,17 +34,17 @@ ST_ISVALID(<spatial_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak zkontrolovat, zda je platný pomocí ST_VALID bod.  
+  Následující příklad ukazuje, jak zkontrolovat, zda je bod platný pomocí ST_VALID.  
   
-  Například tento bod má hodnotu šířky, který není v platném rozsahu hodnot [-90, 90], takže dotaz vrátí hodnotu false.  
+  Například tento bod má hodnotu šířky, která není v platném rozsahu hodnot [-90, 90], takže dotaz vrátí false.  
   
-  Mnohoúhelníky vyžaduje specifikaci GeoJSON poslední souřadnic pár poskytuje by měl být stejný jako první, chcete-li vytvořit zavřeného tvaru. Body v rámci mnohoúhelníku musí zadat v pořadí proti směru hodinových ručiček. Mnohoúhelník zadat v pořadí po směru hodinových ručiček představuje inverzní oblasti v rámci něj.  
+  U vícenohých polygonů specifikace GeoJSON vyžaduje, aby poslední zadaný pár souřadnic byl stejný jako první, aby se vytvořil uzavřený tvar. Body v polygonu musí být zadány v pořadí proti směru hodinových ručiček. Polygon zadaný v pořadí ve směru hodinových ručiček představuje inverzní oblast v něm.  
   
 ```sql
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b 
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{ "b": false }]  
@@ -52,6 +52,6 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Cosmos DB prostorových funkcí](sql-query-spatial-functions.md)
+- [Prostorové funkce Azure Cosmos DB](sql-query-spatial-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

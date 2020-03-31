@@ -1,6 +1,6 @@
 ---
-title: Kopírovat data z ServiceNow
-description: Zjistěte, jak kopírovat data z ServiceNow úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat ze služby ServiceNow
+description: Zjistěte, jak zkopírovat data z ServiceNow do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,49 +12,49 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: dabcc5afe4a092e4919c854071a698c6e6ebf0b3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926168"
 ---
-# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory
+# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat ze služby ServiceNow pomocí Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z ServiceNow. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z ServiceNow. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor ServiceNow je podporován pro následující činnosti:
+Tento konektor ServiceNow je podporován pro následující aktivity:
 
-- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
-- [Aktivita Lookup](control-flow-lookup-activity.md)
+- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
+- [Vyhledávací aktivita](control-flow-lookup-activity.md)
 
-Kopírování dat z ServiceNow do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Můžete zkopírovat data z ServiceNow do libovolného úložiště dat podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
 
-Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, proto není nutné ručně instalovat žádný ovladač pomocí tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor ServiceNow.
+V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Factory dat specifických pro konektor ServiceNow.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
 
-Pro ServiceNow propojené služby jsou podporovány následující vlastnosti:
+Pro propojenou službu ServiceNow jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **ServiceNow** | Ano |
-| endpoint | Koncový bod serveru ServiceNow (`http://<instance>.service-now.com`).  | Ano |
-| authenticationType. | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **základní**, **OAuth2** | Ano |
-| uživatelské jméno | Uživatelské jméno pro připojení k ServiceNow server pro ověřování Basic a OAuth2.  | Ano |
-| heslo | Uživatelské jméno pro ověřování OAuth2 pomocí Basic a odpovídající heslo. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| type | Vlastnost type musí být nastavena na: **ServiceNow** | Ano |
+| endpoint | Koncový bod serveru ServiceNow`http://<instance>.service-now.com`( ).  | Ano |
+| authenticationType | Typ ověřování, který chcete použít. <br/>Povolené hodnoty jsou: **Základní**, **OAuth2** | Ano |
+| uživatelské jméno | Uživatelské jméno používané pro připojení k serveru ServiceNow pro základní ověřování a ověřování OAuth2.  | Ano |
+| heslo | Heslo odpovídající uživatelskému jménu pro základní a oauth2 ověřování. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
 | clientId | ID klienta pro ověřování OAuth2.  | Ne |
-| clientSecret | Tajný kód klienta pro ověřování OAuth2. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
-| useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
-| usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
+| clientSecret | Tajný klíč klienta pro ověřování OAuth2. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ne |
+| použitíEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, zda má být při připojování přes SSL vyžadován název hostitele v certifikátu serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes SSL. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad:**
 
@@ -78,14 +78,14 @@ Pro ServiceNow propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje ServiceNow datové sady.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou ServiceNow.
 
-Ke zkopírování dat z ServiceNow, nastavte vlastnost typ datové sady na **ServiceNowObject**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z ServiceNow, nastavte vlastnost type datové sady na **ServiceNowObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **ServiceNowObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
+| type | Vlastnost type datové sady musí být nastavena na: **ServiceNowObject.** | Ano |
+| tableName | Název tabulky. | Ne (pokud je zadán "dotaz" ve zdroji aktivity) |
 
 **Příklad**
 
@@ -106,24 +106,24 @@ Ke zkopírování dat z ServiceNow, nastavte vlastnost typ datové sady na **Ser
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem ServiceNow.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem ServiceNow.
 
 ### <a name="servicenow-as-source"></a>ServiceNow jako zdroj
 
-Ke zkopírování dat z ServiceNow, nastavte typ zdroje v aktivitě kopírování do **ServiceNowSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z ServiceNow, nastavte typ zdroje v aktivitě kopírování na **ServiceNowSource**. V části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **ServiceNowSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Actual.alm_asset"`. | Ne (když je "tableName" v datové sadě zadán) |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavena **na: ServiceNowSource** | Ano |
+| query | Ke čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Actual.alm_asset"`. | Ne (pokud je v datové sadě zadán "název_tabulky") |
 
-Při zadání schématu ve sloupci pro ServiceNow v dotazu, pamatujte na Tyhle a **najdete [tipy ke zvýšení výkonu](#performance-tips) na dopad na výkon kopírování**.
+Všimněte si následující při zadávání schématu a sloupce servicenow v dotazu a **naleznete v tipy pro výkon [výkonu](#performance-tips) kopírování důsledky**.
 
-- **Schéma:** zadejte schéma jako `Actual` nebo `Display` v dotazu, ServiceNow, které můžete na něj podíváte jako parametr `sysparm_display_value` jako true nebo false, při volání metody [rozhraní restful API ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Sloupec:** název sloupce pro skutečné hodnoty v rámci `Actual` schéma je `[column name]_value`, zatímco pro zobrazení hodnoty v rámci `Display` schéma je `[column name]_display_value`. Poznámka: název sloupce musí mapování schématu je použitý v dotazu.
+- **Schéma:** zadejte `Actual` schéma jako `Display` nebo v servicenow dotazu, který můžete podívat na `sysparm_display_value` to jako parametr jako true nebo false při volání [ServiceNow restful ROZHRANÍ API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
+- **Sloupec:** název sloupce pro `Actual` skutečnou hodnotu `[column name]_value`ve schématu `Display` je , zatímco `[column name]_display_value`pro zobrazovanou hodnotu pod schématem je . Všimněte si, že název sloupce musí být mapován na schéma používané v dotazu.
 
 **Ukázkový dotaz:** 
- `SELECT col_value FROM Actual.alm_asset` nebo 
+ `SELECT col_value FROM Actual.alm_asset` NEBO 
 `SELECT col_display_value FROM Display.alm_asset`
 
 **Příklad:**
@@ -159,20 +159,20 @@ Při zadání schématu ve sloupci pro ServiceNow v dotazu, pamatujte na Tyhle a
 ```
 ## <a name="performance-tips"></a>Tipy pro zvýšení výkonu
 
-### <a name="schema-to-use"></a>Schématu se má použít
+### <a name="schema-to-use"></a>Schéma, které má být
 
-ServiceNow má 2 různých schémat, jeden je **"Skutečný"** vracející skutečná data, druhá **"Zobrazit"** vracející zobrazení hodnoty data. 
+ServiceNow má 2 různé schémata, jeden je **"Skutečné",** který vrací skutečná data, druhý je **"Display",** který vrací zobrazované hodnoty dat. 
 
-Pokud máte v dotazu filtr, pomocí schématu "Skutečný", která má lepší výkon kopírování. Při dotazování na "Skutečný" schéma, ServiceNow nativně podporují filtr při načítání dat do vrátit pouze filtrovaná sada výsledků, že při dotazování na schéma "Display", ADF načíst všechna data a použít filtr interně.
+Pokud máte filtr v dotazu, použijte "Skutečné" schéma, které má lepší výkon kopírování. Při dotazování proti "Skutečné" schéma ServiceNow nativně podporují filtr při načítání dat pouze vrátit filtrované resultset, zatímco při dotazování "Zobrazit" schéma, ADF načíst všechna data a použít filtr interně.
 
 ### <a name="index"></a>Index
 
-ServiceNow tabulka indexu může pomoct zlepšit výkon dotazů, přečtěte si [vytvořit index tabulky](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
+ServiceNow tabulka index může pomoci zlepšit výkon dotazu, viz [Vytvoření indexu tabulky](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
 
-## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
+## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
 
-Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

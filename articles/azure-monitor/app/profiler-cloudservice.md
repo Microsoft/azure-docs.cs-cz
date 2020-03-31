@@ -1,49 +1,49 @@
 ---
-title: Profilování živě Cloud Services Azure pomocí Application Insights | Microsoft Docs
-description: Povolí Application Insights Profiler pro Azure Cloud Services.
+title: Profilovat živé cloudové služby Azure pomocí přehledů aplikací | Dokumenty společnosti Microsoft
+description: Povolte Profiler přehledů aplikací pro cloudové služby Azure.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671660"
 ---
-# <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profilování živě Cloud Services Azure pomocí Application Insights
+# <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profilovat živé cloudové služby Azure pomocí přehledů aplikací
 
-Application Insights Profiler můžete nasadit i na tyto služby:
+Profileru přehledů aplikací můžete také nasadit na tyto služby:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Aplikace Service Fabric Azure](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Aplikace Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Virtuální počítače Azure](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Profiler se instaluje s rozšířením Azure Diagnostics. Stačí nakonfigurovat Azure Diagnostics pro instalaci profileru a odesílání profilů do prostředku Application Insights.
+Profiler Přehledy aplikací se nainstalovaný s rozšířením Diagnostika Azure. Stačí nakonfigurovat Diagnostika Azure k instalaci Profiler a odeslat profily do vašeho prostředku Application Insights.
 
-## <a name="enable-profiler-for-azure-cloud-services"></a>Povolení profileru pro Azure Cloud Services
-1. Zkontrolujte, jestli používáte [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější. Pokud používáte operační systém řady 4, budete muset nainstalovat .NET Framework 4.6.1 nebo novější pomocí [úlohy po spuštění](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet). Řada operačních systémů 5 zahrnuje ve výchozím nastavení kompatibilní verzi .NET Framework. 
+## <a name="enable-profiler-for-azure-cloud-services"></a>Povolení profileru pro cloudové služby Azure
+1. Zkontrolujte, zda používáte [rozhraní .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější. Pokud používáte os rodiny 4, budete muset nainstalovat rozhraní .NET Framework 4.6.1 nebo novější s [úlohou při spuštění](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet). OS Family 5 ve výchozím nastavení obsahuje kompatibilní verzi rozhraní .NET Framework. 
 
-1. Přidejte [sadu Application Insights SDK do Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
+1. Přidejte do [Cloudových služeb Azure schartizity aplikací](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 
-    **Byla opravena chyba v profileru, která se dodává v WAD pro Cloud Services.** Nejnovější verze WAD (1.12.2.0) pro Cloud Services funguje se všemi nejnovějšími verzemi sady App Insights SDK. Hostitelé cloudové služby budou upgradovat WAD automaticky, ale nejsou okamžité. K vynucení upgradu můžete znovu nasadit službu nebo restartovat uzel.
+    **Chyba v profileru, který je dodáván v WAD pro cloudové služby byla opravena.** Nejnovější verze wadu (1.12.2.0) pro cloudové služby funguje se všemi nejnovějšími verzemi sady App Insights SDK. Hostitelé cloudových služeb upgradují wad automaticky, ale není okamžitý. Chcete-li vynutit upgrade, můžete znovu nasadit službu nebo restartovat uzel.
 
-1. Sledovat žádosti pomocí Application Insights:
+1. Sledování požadavků pomocí přehledů aplikací:
 
-    * U ASP.NET webových rolí může Application Insights sledovat požadavky automaticky.
+    * Pro ASP.NET webových rolí může Application Insights sledovat požadavky automaticky.
 
-    * Pro role pracovního procesu [přidejte kód pro sledování požadavků](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json).
+    * U rolí pracovního procesu [přidejte kód ke sledování požadavků](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json).
 
-1. Nakonfigurujte rozšíření Azure Diagnostics pro povolení profileru:
+1. Nakonfigurujte rozšíření Diagnostika Azure tak, aby bylo profileru povolováno:
 
-    a. Vyhledejte soubor [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *Diagnostics. wadcfgx* pro vaši aplikační roli, jak je znázorněno zde:  
+    a. Vyhledejte soubor [Diagnostika Diagnostika](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *Azure.wadcfgx* pro roli aplikace, jak je znázorněno tady:  
 
-      ![Umístění konfiguračního souboru diagnostiky](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
+      ![Umístění diagnostického konfiguračního souboru](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      Pokud soubor nemůžete najít, přečtěte si téma [nastavení diagnostiky pro Azure Cloud Services a Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
+      Pokud soubor nemůžete najít, přečtěte si informace [o nastavení diagnostiky pro Cloudové služby Azure a virtuální počítače](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-    b. Přidejte následující oddíl `SinksConfig` jako podřízený prvek `WadCfg`:  
+    b. Přidejte `SinksConfig` následující oddíl jako `WadCfg`podřízený prvek :  
 
       ```xml
       <WadCfg>
@@ -58,18 +58,18 @@ Application Insights Profiler se instaluje s rozšířením Azure Diagnostics. S
       ```
 
     > [!NOTE]
-    > Pokud soubor *Diagnostics. wadcfgx* obsahuje také další jímku typu ApplicationInsights, musí se shodovat všechny tři z následujících klíčů instrumentace:  
+    > Pokud soubor *diagnostics.wadcfgx* obsahuje také další jímky typu ApplicationInsights, musí všechny tři následující instrumentace klíče odpovídat:  
     > * Klíč, který používá vaše aplikace. 
-    > * Klíč, který používá jímka ApplicationInsights. 
+    > * Klíč, který se používá jímky ApplicationInsights. 
     > * Klíč, který používá jímka ApplicationInsightsProfiler. 
     >
-    > Aktuální hodnotu klíče instrumentace, kterou používá `ApplicationInsights` jímka, najdete v souborech *ServiceConfiguration.\*. cscfg* . 
-    > Po vydání sady Visual Studio 15,5 Azure SDK se musí navzájem shodovat pouze klíče instrumentace používané aplikací a jímka ApplicationInsightsProfiler.
+    > Skutečnou hodnotu klíče instrumentace, kterou `ApplicationInsights` používá jímka, najdete v *konfiguraci\*serviceconfiguration. . cscfg* soubory. 
+    > Po vydání sady Visual Studio 15.5 Azure SDK je třeba, aby se vzájemně shodovaly pouze klíče instrumentace, které používá aplikace a jímka ApplicationInsightsProfiler.
 
-1. Nasaďte službu s novou konfigurací diagnostiky a Application Insights Profiler je nakonfigurovaná tak, aby běžela ve vaší službě.
+1. Nasaďte svou službu pomocí nové konfigurace diagnostiky a profiler application insights je nakonfigurovaný tak, aby se ve vaší službě spouštěl.
  
 ## <a name="next-steps"></a>Další kroky
 
-* Vygenerujte provoz do vaší aplikace (například spusťte [Test dostupnosti](monitor-web-app-availability.md)). Potom počkejte 10 až 15 minut, než se trasování začnou odesílat do instance Application Insights.
-* Viz [trasování profileru](profiler-overview.md?toc=/azure/azure-monitor/toc.json) v Azure Portal.
-* Řešení potíží s profilerem najdete v tématu [řešení potíží s profilerem](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
+* Vygenerujte provoz do aplikace (například spusťte [test dostupnosti).](monitor-web-app-availability.md) Potom počkejte 10 až 15 minut trasování začít odesílat do application insights instance.
+* Viz [Trasování profileru](profiler-overview.md?toc=/azure/azure-monitor/toc.json) na webu Azure Portal.
+* Potíže s profilerem najdete v [tématu Poradce při potížích s profilerem](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).

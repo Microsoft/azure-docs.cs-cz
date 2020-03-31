@@ -1,38 +1,38 @@
 ---
-title: CredentialsCombo – element uživatelského rozhraní
-description: Popisuje prvek uživatelského rozhraní Microsoft. Compute. CredentialsCombo pro Azure Portal.
+title: PověřeníPrvek ui rozhraní
+description: Popisuje element microsoft.compute.credentialscombo ui pro portál Azure.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652135"
 ---
-# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. Compute. CredentialsCombo – element uživatelského rozhraní
+# <a name="microsoftcomputecredentialscombo-ui-element"></a>Element rozhraní Microsoft.Compute.CredentialsCombo
 
-Skupina ovládacích prvků s integrovaným ověřováním pro hesla systémů Windows a Linux a veřejných klíčů SSH.
+Skupina ovládacích prvků s integrovanou validací pro hesla Systému Windows a Linux a veřejné klíče SSH.
 
-## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+## <a name="ui-sample"></a>Ukázka ui
 
-Pro Windows uživatelé uvidí:
+V systému Windows se uživatelé zobrazují na příkladu:
 
 ![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
 
-Pro systém Linux s vybraným heslem uvidí uživatelé tyto informace:
+Pro Linux s vybraným heslem se uživatelé podívat na:
 
-![Heslo k Microsoft. Compute. CredentialsCombo Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Microsoft.Compute.CredentialsCombo Linux heslo](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
 
-Pro Linux s vybraným veřejným klíčem SSH uvidí uživatelé tyto informace:
+Pro Linux s vybraným veřejným klíčem SSH se uživateli viz:
 
-![Microsoft. Compute. CredentialsCombo – klíč Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Klíč Microsoft.Compute.CredentialsCombo Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schéma
 
-Pro Windows použijte následující schéma:
+V systému Windows použijte následující schéma:
 
 ```json
 {
@@ -91,7 +91,7 @@ Pro **Linux**použijte následující schéma:
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
-Pokud je `osPlatform` **Windows**, nebo `osPlatform` se systémem **Linux** a uživatel zadal heslo místo veřejného klíče SSH, vrátí tento ovládací prvek následující výstup:
+Pokud `osPlatform` **Windows**je Windows `osPlatform` , nebo je **Linux** a uživatel zapředpokladu heslo namísto ssh veřejný klíč, ovládací prvek vrátí následující výstup:
 
 ```json
 {
@@ -100,7 +100,7 @@ Pokud je `osPlatform` **Windows**, nebo `osPlatform` se systémem **Linux** a u�
 }
 ```
 
-Pokud je `osPlatform` **Linux** a uživatel zadal veřejný klíč SSH, vrátí ovládací prvek následující výstup:
+Pokud `osPlatform` je **Linux** a uživatel za předpokladu, SSH veřejný klíč, ovládací prvek vrátí následující výstup:
 
 ```json
 {
@@ -111,13 +111,13 @@ Pokud je `osPlatform` **Linux** a uživatel zadal veřejný klíč SSH, vrátí 
 
 ## <a name="remarks"></a>Poznámky
 
-- je nutné zadat `osPlatform` a může být buď **Windows** , nebo **Linux**.
-- Pokud je `constraints.required` nastavené na **hodnotu true**, musí být v textových polích heslo nebo veřejný klíč SSH hodnoty k úspěšnému ověření. Výchozí hodnota je **true (pravda**).
-- Pokud je `options.hideConfirmation` nastaveno na **hodnotu true**, pak je skryté druhé textové pole pro potvrzení hesla uživatele. Výchozí hodnota je **false**.
-- Pokud je `options.hidePassword` nastavené na **hodnotu true**, pak je možnost použít ověřování heslem skrytá. Dá se použít jenom v případě, že je `osPlatform` **Linux**. Výchozí hodnota je **false**.
-- Další omezení povolených hesel lze implementovat pomocí vlastnosti `customPasswordRegex`. Řetězec v `customValidationMessage` se zobrazí, když se heslo nezdařilo vlastní ověření. Výchozí hodnota pro obě vlastnosti je **null**.
+- `osPlatform`musí být zadána a může být buď **Windows** nebo **Linux**.
+- Pokud `constraints.required` je nastavena na **hodnotu true**, musí mít textová pole s heslem nebo veřejným klíčem SSH hodnoty, které budou úspěšně ověřovat. Výchozí hodnota je **true**.
+- Pokud `options.hideConfirmation` je nastavena na **hodnotu true**, pak druhé textové pole pro potvrzení hesla uživatele je skrytý. Výchozí hodnota je **false** (nepravda).
+- Pokud `options.hidePassword` je nastavena na **hodnotu true**, možnost použít ověřování hesla je skryta. To může být `osPlatform` použit pouze tehdy, když je **Linux**. Výchozí hodnota je **false** (nepravda).
+- Další omezení povolených hesel lze implementovat pomocí vlastnosti. `customPasswordRegex` Řetězec v `customValidationMessage` je zobrazen, když heslo selže vlastní ověření. Výchozí hodnota pro obě vlastnosti je **null**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).
+* Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).
