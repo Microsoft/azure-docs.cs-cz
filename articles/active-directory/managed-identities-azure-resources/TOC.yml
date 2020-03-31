@@ -4,7 +4,7 @@
   items:
     - name: Informace o spravovaných identitách pro prostředky Azure
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Použití spravované identity na virtuálním počítači pro přístup k Azure Resource Manageru
       items:
@@ -51,7 +51,7 @@
     - name: Azure App Service a Functions
       href: /azure/app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Event Hubs
-      href: /azure/event-hubs/authenticate-managed-identity.md?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+      href: /azure/event-hubs/authenticate-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Container Instances
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
 - name: Návody
@@ -86,7 +86,7 @@
       items:
         - name: Získání přístupového tokenu
           href: how-to-use-vm-token.md
-        - name: Přihlášení k Powershellu a rozhraní příkazového řádku pomocí spravované identity
+        - name: Přihlášení k PowerShellu a rozhraní příkazového řádku pomocí spravované identity
           href: how-to-use-vm-sign-in.md
         - name: Použití se sadami Azure SDK
           href: how-to-use-vm-sdk.md

@@ -1,7 +1,7 @@
 ---
 title: Další informace o MSAL | Azure
 titleSuffix: Microsoft identity platform
-description: Knihovna Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací získat tokeny, aby mohli volat zabezpečená webová rozhraní API. Tato webová rozhraní API můžou být Microsoft Graph, jiná rozhraní API Microsoftu, webová rozhraní API třetích stran nebo vlastní webové rozhraní API. MSAL podporuje více architektur aplikací a platforem.
+description: Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací získat tokeny za účelem volání zabezpečených webových rozhraní API. Tato webová rozhraní API mohou být Microsoft Graph, jiné rozhraní API společnosti Microsoft, webová rozhraní API jiných výrobců nebo vlastní webové rozhraní API. MSAL podporuje více architektur aplikací a platforem.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,51 +14,51 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: c20d93c70484dc7ea800898da4309af2699c718e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085733"
 ---
-# <a name="overview-of-microsoft-authentication-library-msal"></a>Přehled knihovny Microsoft Authentication Library (MSAL)
-Knihovna Microsoft Authentication Library (MSAL) umožňuje vývojářům získat [tokeny](developer-glossary.md#security-token) z koncového bodu Microsoft Identity Platform, aby mohli přistupovat k zabezpečeným webovým rozhraním API. Tato webová rozhraní API můžou být Microsoft Graph, jiná rozhraní API Microsoftu, webová rozhraní API třetích stran nebo vlastní webové rozhraní API. MSAL je k dispozici pro .NET, JavaScript, Android a iOS, které podporují spoustu různých architektur aplikací a platforem.
+# <a name="overview-of-microsoft-authentication-library-msal"></a>Přehled knihovny ověřování společnosti Microsoft (MSAL)
+Microsoft Authentication Library (MSAL) umožňuje vývojářům získat [tokeny](developer-glossary.md#security-token) z koncového bodu platformy identit microsoftu pro přístup k zabezpečeným webovým rozhraním API. Tato webová rozhraní API mohou být Microsoft Graph, jiné rozhraní API společnosti Microsoft, webová rozhraní API jiných výrobců nebo vlastní webové rozhraní API. MSAL je k dispozici pro .NET, JavaScript, Android a iOS, které podporují mnoho různých architektur aplikací a platforem.
 
-MSAL poskytuje mnoho způsobů, jak získat tokeny s konzistentním rozhraním API pro celou řadu platforem. Použití MSAL přináší následující výhody:
+MSAL poskytuje mnoho způsobů, jak získat tokeny, s konzistentní rozhraní API pro řadu platforem. Použití msal poskytuje následující výhody:
 
-* Není nutné přímo používat knihovny a kód OAuth s protokolem ve vaší aplikaci.
-* Získá tokeny jménem uživatele nebo jménem aplikace (pokud to platí pro platformu).
-* Udržuje mezipaměť tokenů a aktualizuje tokeny za vás, pokud se blíží vypršení platnosti. Nemusíte sami zpracovávat vypršení platnosti tokenu.
-* Vám pomůže určit cílovou skupinu, se kterou chcete, aby se vaše aplikace přihlásila (vaše organizace, několik organizace, pracovních a školních a osobních účtů Microsoftu, sociální identity Azure AD B2C, uživatelů v svrchovaném a národním cloudech).
-* Pomůže vám nastavit aplikaci z konfiguračních souborů.
-* Pomáhá při řešení potíží s aplikací tím, že vystavuje akce, protokolování a telemetrii s výjimkou.
+* Není třeba přímo používat knihovny OAuth nebo kód proti protokolu ve vaší aplikaci.
+* Získá tokeny jménem uživatele nebo jménem aplikace (pokud se vztahuje na platformu).
+* Udržuje mezipaměť tokenů a aktualizuje tokeny za vás, když jsou blízko k vypršení platnosti. Není nutné zpracovávat vypršení platnosti tokenu na vlastní pěst.
+* Pomáhá určit, které okruhy uživatelů chcete, aby se vaše aplikace přihlašovala (vaše organizace, několik orgů, pracovní a školní osobní účty a osobní účty Microsoftu, sociální identity s Azure AD B2C, uživatelé ve suverénních a národních cloudech).
+* Pomáhá nastavit aplikaci z konfiguračních souborů.
+* Pomáhá řešit problémy s aplikací tím, že vystaví použitelné výjimky, protokolování a telemetrii.
 
-## <a name="application-types-and-scenarios"></a>Typy a scénáře aplikací
-Pomocí MSAL lze token získat z několika typů aplikací: webové aplikace, webová rozhraní API, jednostránkové aplikace (JavaScript), mobilní a nativní aplikace a démoni a aplikace na straně serveru.
+## <a name="application-types-and-scenarios"></a>Typy aplikací a scénáře
+Pomocí MSAL lze získat token z řady typů aplikací: webové aplikace, webová api, jednostránkové aplikace (JavaScript), mobilní a nativní aplikace a daemons a aplikace na straně serveru.
 
-MSAL se dá použít v mnoha scénářích aplikací, včetně následujících:
+MSAL lze použít v mnoha scénářích aplikace, včetně následujících:
 
 * [Jednostránkové aplikace (JavaScript)](scenario-spa-overview.md)
-* [Webová aplikace přihlašování uživatelů](scenario-web-app-sign-user-overview.md)
-* [Webová aplikace, která přihlašuje uživatele a volá webové rozhraní API jménem uživatele](scenario-web-app-call-api-overview.md)
-* [Ochrana webového rozhraní API, aby k němu měli přístup jenom ověření uživatelé](scenario-protected-web-api-overview.md)
-* [Webové rozhraní API, které jménem přihlášeného uživatele volá jiné webové rozhraní API pro příjem dat](scenario-web-api-call-api-overview.md)
-* [Aplikace klasické pracovní plochy, která jménem přihlášeného uživatele volá webové rozhraní API](scenario-desktop-overview.md)
-* [Mobilní aplikace, která volá webové rozhraní API jménem uživatele, který je přihlášený interaktivně](scenario-mobile-overview.md).
-* [Aplikace démona plochy/služby – volání webového rozhraní API jménem sebe sama](scenario-daemon-overview.md)
+* [Přihlášení uživatelů pomocí webové aplikace](scenario-web-app-sign-user-overview.md)
+* [Přihlášení webové aplikace k uživateli a volání webového rozhraní API jménem uživatele](scenario-web-app-call-api-overview.md)
+* [Ochrana webového rozhraní API, aby k němu měli přístup pouze ověření uživatelé](scenario-protected-web-api-overview.md)
+* [Webové rozhraní API volající jiné podřízené webové rozhraní API jménem přihlášeného uživatele](scenario-web-api-call-api-overview.md)
+* [Desktopová aplikace volající webové rozhraní API jménem přihlášeného uživatele](scenario-desktop-overview.md)
+* [Mobilní aplikace volá webové rozhraní API jménem uživatele, který je přihlášen interaktivně](scenario-mobile-overview.md).
+* [Desktop/service daemon aplikace volání webové rozhraní API jménem sebe](scenario-daemon-overview.md)
 
-## <a name="languages-and-frameworks"></a>Jazyky a rozhraní
+## <a name="languages-and-frameworks"></a>Jazyky a rámce
 
-| Knihovna | Podporované platformy a architektury|
+| Knihovna | Podporované platformy a rámce|
 | --- | --- |
-| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Univerzální platforma Windows|
-| [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| Rozhraní JavaScript/TypeScript, jako je AngularJS, života. js nebo Durandal. js|
+| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| Rozhraní .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, univerzální platforma Windows|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript architektury jako AngularJS, Ember.js nebo Durandal.js|
 | [MSAL pro Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
-| [MSAL pro iOS a macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS a macOS|
-| [MSAL Java (Preview)](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
-| [MSAL Python (Preview)](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Python|
+| [MSAL pro iOS a MacOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS a macOS|
+| [MSAL Java (náhled)](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
+| [MSAL Python (náhled)](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Python|
 
 ## <a name="differences-between-adal-and-msal"></a>Rozdíly mezi ADAL a MSAL
 
-Active Directory Authentication Library (ADAL) se integruje s koncovým bodem Azure AD for Developers (v 1.0), kde MSAL se integruje s koncovým bodem Microsoft Identity Platform (v 2.0). Koncový bod v 1.0 podporuje pracovní účty, ale ne osobní účty. Koncový bod v 2.0 je sjednocením osobních účtů a pracovních účtů společnosti Microsoft do jednoho ověřovacího systému. Navíc můžete pomocí MSAL získat také ověřování pro Azure AD B2C.
+Knihovna adisponátu Služby Active Directory (ADAL) se integruje s koncovým bodem Azure AD pro vývojáře (v1.0), kde se MSAL integruje s koncovým bodem platformy Microsoft identit (v2.0). Koncový bod v1.0 podporuje pracovní účty, ale ne osobní účty. Koncový bod verze 2.0 je sjednocení osobních účtů Microsoft a pracovních účtů do jediného ověřovacího systému. Kromě toho s MSAL můžete také získat ověřování pro Azure AD B2C.
 
-Konkrétnější informace najdete v tématu [migrace na MSAL.NET z ADAL.NET](msal-net-migration.md) a [migrace na MSAL. js z ADAL. js](msal-compare-msal-js-and-adal-js.md).
+Podrobnější informace naleznete v informacích o [migraci do MSAL.NET z ADAL.NET](msal-net-migration.md) a [migraci na soubor MSAL.js z adal.js](msal-compare-msal-js-and-adal-js.md).

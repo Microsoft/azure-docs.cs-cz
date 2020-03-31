@@ -1,6 +1,6 @@
 ---
-title: Parametry rozevíracího seznamu Azure Monitorho sešitu
-description: Zjednodušení složitých sestav s předem sestavenými a vlastními parametrizovanými sešity, které obsahují parametry rozevíracího seznamu
+title: Rozevírací parametry sešitu Azure Monitor
+description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů obsahujících rozevírací parametry
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,30 +10,30 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658277"
 ---
-# <a name="workbook-drop-down-parameters"></a>Parametry rozevíracího seznamu sešitu
+# <a name="workbook-drop-down-parameters"></a>Rozevírací parametry sešitu
 
-Rozevírací nabídky umožňují uživateli shromáždit jednu nebo více vstupních hodnot ze známé sady (například vybrat jednu z požadavků vaší aplikace). Rozevírací nabídky poskytují uživatelsky přívětivý způsob, jak shromažďovat libovolné vstupy uživatelů. Rozevírací seznam je zvláště užitečný při povolování filtrování v interaktivních sestavách. 
+Rozevírací obsah umožňuje uživateli shromažďovat jednu nebo více vstupních hodnot ze známé sady (například vyberte jeden z požadavků aplikace). Rozevírací obsah poskytují uživatelsky přívětivý způsob shromažďování libovolných vstupů od uživatelů. Rozevírací seznamy jsou užitečné zejména při povolování filtrování v interaktivních sestavách. 
 
-Nejjednodušší způsob, jak určit rozevírací seznam, je poskytnutím statického seznamu v nastavení parametru. Zajímavějším způsobem je získat seznam dynamicky prostřednictvím dotazu KQL. Nastavení parametrů vám také umožní určit, jestli je jeden nebo vícenásobný výběr, a pokud je vícenásobný výběr, jak by měla být naformátovaná sada výsledků (oddělovač, citace atd.).
+Nejjednodušší způsob, jak zadat rozevírací seznam, je poskytnutí statického seznamu v nastavení parametru. Zajímavější způsob, jak je získat seznam dynamicky prostřednictvím dotazu KQL. Nastavení parametrů také umožňuje určit, zda je jeden nebo multi-select, a pokud je multi-select, jak má být sada výsledků formátována (oddělovač, nabídka, atd.).
 
-## <a name="creating-a-static-drop-down-parameter"></a>Vytvoření statického parametru rozevíracího seznamu
+## <a name="creating-a-static-drop-down-parameter"></a>Vytvoření statického rozevíracího parametru
 
 1. Začněte s prázdným sešitem v režimu úprav.
-2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
-3. Klikněte na modré tlačítko _Přidat parametr_ .
-4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru: `Environment`
-    2. Typ parametru: `Drop down`
-    3. Požadováno: `checked`
-    4. Allow `multiple selection`: `unchecked`
-    5. Získat data z: `JSON`
-5. Do textového bloku JSON Input vložte tento fragment kódu JSON:
+2. Z odkazů v sešitu zvolte _Přidat parametry._
+3. Klikněte na modré tlačítko _Přidat parametr._
+4. V novém podokně parametrů, které se objeví, zadejte:
+    1. Název parametru:`Environment`
+    2. Typ parametru:`Drop down`
+    3. Požadované:`checked`
+    4. Povolit `multiple selection`:`unchecked`
+    5. Získat data z:`JSON`
+5. Do textového bloku Vstup JSON vložte tento fragment json:
     ```json
     [
         { "value":"dev", "label":"Development" },
@@ -41,14 +41,14 @@ Nejjednodušší způsob, jak určit rozevírací seznam, je poskytnutím static
         { "value":"prod", "label":"Production", "selected":true }
     ]
     ```
-6. Stiskněte modré `Update` tlačítko.
-7. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
-8. Parametr prostředí bude rozevírací seznam se třemi hodnotami.
+6. Zmáčkni `Update` modré tlačítko.
+7. Chcete-li vytvořit parametr, zvolte "Uložit".
+8. Environment Parametr bude rozevírací seznam se třemi hodnotami.
 
-    ![Obrázek znázorňující vytvoření statického drowN](./media/workbook-dropdowns/dropdown-create.png)
+    ![Obrázek znázorňující vytvoření statického utonutí](./media/workbook-dropdowns/dropdown-create.png)
 
 ## <a name="creating-a-static-dropdown-with-groups-of-items"></a>Vytvoření statického rozevíracího seznamu se skupinami položek
-Pokud výsledek dotazu/JSON obsahuje pole "skupina", zobrazí se v rozevíracím seznamu skupiny hodnot. Postupujte podle výše uvedeného příkladu, ale místo toho použijte následující kód JSON:
+Pokud výsledek dotazu/json obsahuje pole "skupina", v rozevíracím seznamu se zobrazí skupiny hodnot. Postupujte podle výše uvedeného vzorku, ale místo toho použijte následující json:
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -64,31 +64,31 @@ Pokud výsledek dotazu/JSON obsahuje pole "skupina", zobrazí se v rozevíracím
 
 ## <a name="creating-a-dynamic-drop-down-parameter"></a>Vytvoření dynamického rozevíracího parametru
 1. Začněte s prázdným sešitem v režimu úprav.
-2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
-3. Klikněte na modré tlačítko _Přidat parametr_ .
-4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru: `RequestName`
-    2. Typ parametru: `Drop down`
-    3. Požadováno: `checked`
-    4. Allow `multiple selection`: `unchecked`
-    5. Získat data z: `Query`
-5. Do textového bloku JSON Input vložte tento fragment kódu JSON:
+2. Z odkazů v sešitu zvolte _Přidat parametry._
+3. Klikněte na modré tlačítko _Přidat parametr._
+4. V novém podokně parametrů, které se objeví, zadejte:
+    1. Název parametru:`RequestName`
+    2. Typ parametru:`Drop down`
+    3. Požadované:`checked`
+    4. Povolit `multiple selection`:`unchecked`
+    5. Získat data z:`Query`
+5. Do textového bloku Vstup JSON vložte tento fragment json:
 
     ```kusto
         requests
         | summarize by name
         | order by name asc
     ```
-1. Stiskněte modré `Run Query` tlačítko.
-2. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
-3. Parametr název žádosti bude rozevírací seznam všech požadavků v aplikaci.
+1. Zmáčkni `Run Query` modré tlačítko.
+2. Chcete-li vytvořit parametr, zvolte "Uložit".
+3. Parametr RequestName bude rozevírací seznam názvů všech požadavků v aplikaci.
 
-    ![Obrázek znázorňující vytvoření dynamického rozevíracího seznamu](./media/workbook-dropdowns/dropdown-dynamic.png)
+    ![Obrázek znázorňující vytvoření dynamickérozerozerozevírací rozevírací možnosti](./media/workbook-dropdowns/dropdown-dynamic.png)
 
-## <a name="referencing-drop-down-parameter"></a>Odkazování na parametr rozevíracího seznamu
+## <a name="referencing-drop-down-parameter"></a>Odkazování na rozevírací parametr
 ### <a name="in-kql"></a>V KQL
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
-2. V editoru KQL zadejte tento fragment kódu.
+2. V editoru KQL zadejte tento úryvek.
 
     ```kusto
         requests
@@ -96,7 +96,7 @@ Pokud výsledek dotazu/JSON obsahuje pole "skupina", zobrazí se v rozevíracím
         | summarize Requests = count() by bin(timestamp, 1h)
 
     ```
-3. Tím se rozšíří doba vyhodnocování dotazu na:
+3. Tím se čas vyhodnocení dotazu rozšiřuje na:
 
     ```kusto
         requests
@@ -104,15 +104,15 @@ Pokud výsledek dotazu/JSON obsahuje pole "skupina", zobrazí se v rozevíracím
         | summarize Requests = count() by bin(timestamp, 1h)
     ```
 
-4. Spusťte dotaz, aby se zobrazily výsledky. Případně ho vykreslete jako graf.
+4. Spusťte dotaz, abyste viděli výsledky. Volitelně jej vykreslete jako graf.
 
-    ![Obrázek znázorňující rozevírací seznam, na který odkazuje KQL](./media/workbook-dropdowns/dropdown-reference.png)
+    ![Obrázek znázorňující rozevírací nabídku odkazovanou v KQL](./media/workbook-dropdowns/dropdown-reference.png)
 
 
 ## <a name="parameter-value-label-selection-and-group"></a>Hodnota parametru, popisek, výběr a skupina
-Dotaz použitý v parametru dynamického rozevíracího seznamu výše vrací jenom seznam hodnot, které jsou v rozevíracím seznamu vykresleny s přístupnými hodnotami. Ale co když jste si chtěli vybrat jiný zobrazovaný název, nebo pokud chcete vybrat jednu z nich? Parametry rozevíracího seznamu umožňují tuto možnost prostřednictvím sloupců hodnot, popisků, výběru a skupin.
+Dotaz použitý v parametru dynamickérozetvírací seznam výše pouze vrátí seznam hodnot, které jsou vykreslovány věrně v rozevíracím seznamu. Ale co když chcete, aby byl vybrán jiný zobrazovaný název, nebo jeden z nich? Rozevírací parametry to umožňují prostřednictvím sloupců hodnoty, popisku, výběru a skupiny.
 
-Následující ukázka ukazuje, jak získat seznam závislostí Application Insights, jejichž zobrazované názvy mají styl Emoji, má první vybraný a je seskupen podle názvů operací.
+Následující ukázka ukazuje, jak získat seznam závislostí Application Insights, jejichž zobrazované názvy jsou stylizovány s emodži, má první vybrané a je seskupena podle názvů operací.
 
 ```kusto
 dependencies
@@ -125,19 +125,19 @@ dependencies
     ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
-## <a name="drop-down-parameter-options"></a>Parametry rozevíracího seznamu
+## <a name="drop-down-parameter-options"></a>Možnosti rozevíracího parametru
 | Parametr | Vysvětlení | Příklad |
 | ------------- |:-------------|:-------------|
-| `{DependencyName}` | Vybraná hodnota | ZÍSKAT fabrikamaccount |
-| `{DependencyName:label}` | Vybraný popisek | 🌐 ZÍSKAT fabrikamaccount |
-| `{DependencyName:value}` | Vybraná hodnota | ZÍSKAT fabrikamaccount |
+| `{DependencyName}` | Vybraná hodnota | GET fabrikamaccount |
+| `{DependencyName:label}` | Vybraný popisek | 🌐 GET fabrikamaccount |
+| `{DependencyName:value}` | Vybraná hodnota | GET fabrikamaccount |
 
 ## <a name="multiple-selection"></a>Vícenásobný výběr
-Příklady, které byly doposud explicitně nastaveny tak, aby v rozevíracím seznamu vybrali pouze jednu hodnotu. Parametry rozevíracího seznamu také podporují `multiple selection` – toto povolení je jednoduché, protože kontroluje možnost `Allow multiple selection`. 
+Příklady zatím explicitně nastavit parametr pro výběr pouze jednu hodnotu v rozevíracím seznam. Drop down parametry `multiple selection` také podporují - povolení je `Allow multiple selection` stejně jednoduché jako kontrola možnosti. 
 
-Uživatel má také možnost zadat formát sady výsledků prostřednictvím nastavení `delimiter` a `quote with`. Výchozí hodnota vrátí hodnoty jako kolekci v tomto formátu: "a", "b", "c". Mají taky možnost omezit počet výběrů.
+Uživatel má také možnost zadat formát sady výsledků `delimiter` prostřednictvím `quote with` nastavení a. Výchozí pouze vrátí hodnoty jako kolekce v tomto formuláři: 'a', 'b', 'c'. Mají také možnost omezit počet výběrů.
 
-KQL odkazující na parametr bude muset změnit na práci s formátem výsledku. Nejběžnější způsob, jak ho povolit, je prostřednictvím operátoru `in`.
+KQL odkazující na parametr bude muset změnit pracovat s formátem výsledku. Nejběžnější způsob, jak to povolit, je prostřednictvím operátora. `in`
 
 ```kusto
 dependencies
@@ -145,11 +145,11 @@ dependencies
 | summarize Requests = count() by bin(timestamp, 1h), name
 ```
 
-Tady je příklad pro rozevírací seznam s vícenásobným výběrem v práci:
+Zde je příklad pro vícenásobné rozevírací rozevírací v práci:
 
-![Obrázek znázorňující parametr rozevíracího seznamu s vícenásobným výběrem](./media/workbook-dropdowns/dropdown-multiselect.png)
+![Obrázek znázorňující vícenásobný výběrový parametr](./media/workbook-dropdowns/dropdown-multiselect.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
-* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
+* [Začínáte](workbooks-visualizations.md) se učit další informace o sešitech, mnoho bohatých možností vizualizací.
+* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu

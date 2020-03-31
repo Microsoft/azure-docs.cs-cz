@@ -4,7 +4,7 @@
   items:
     - name: Co je podmíněný přístup?
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vyžadování přijetí podmínek použití
       href: require-tou.md
@@ -58,22 +58,24 @@
       href: best-practices.md
     - name: Běžné zásady podmíněného přístupu
       items:
+        - name: Blokování starší verze ověřování
+          href: howto-conditional-access-policy-block-legacy.md
         - name: Vyžadování MFA pro správce
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Vyžadování MFA pro správu Azure
           href: howto-conditional-access-policy-azure-management.md
         - name: Vyžadování MFA pro všechny uživatele
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Blokování starší verze ověřování
-          href: howto-conditional-access-policy-block-legacy.md
         - name: Podmíněný přístup podle rizika
           href: howto-conditional-access-policy-risk.md
-        - name: Vyžadování důvěryhodného umístění pro registraci MFA
+        - name: Zabezpečení registrace bezpečnostních údajů
           href: howto-conditional-access-policy-registration.md
         - name: Blokování přístupu podle umístění
           href: howto-conditional-access-policy-location.md
         - name: 'Vyžadování zařízení, které splňuje požadavky'
           href: howto-conditional-access-policy-compliant-device.md
+        - name: Blokování přístupu
+          href: howto-conditional-access-policy-block-access.md
     - name: Blokování starší verze ověřování
       href: block-legacy-authentication.md
     - name: Vyžadování klientem schválených aplikací
@@ -94,6 +96,8 @@
       href: policy-migration-mfa.md
     - name: Řešení potíží
       items:
+        - name: Řešení potíží s přihlášením
+          href: troubleshoot-conditional-access.md
         - name: Řešení potíží pomocí nástroje What If
           href: troubleshoot-conditional-access-what-if.md
 - name: Zdroje a prostředky

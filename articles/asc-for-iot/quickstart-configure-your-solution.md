@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: konfigurace Azure Security Center pro řešení IoT'
+title: 'Úvodní příručka: Konfigurace řešení Azure Security Center for IoT'
 description: V tomto rychlém startu se dozvíte, jak nakonfigurovat komplexní řešení IoT pomocí Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -16,46 +16,46 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73904154"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Rychlý Start: konfigurace řešení IoT
+# <a name="quickstart-configure-your-iot-solution"></a>Úvodní příručka: Konfigurace řešení IoT
 
-Tento článek poskytuje vysvětlení, jak provést počáteční konfiguraci řešení zabezpečení IoT pomocí Azure Security Center pro IoT. 
+Tento článek obsahuje vysvětlení, jak provést počáteční konfiguraci řešení zabezpečení IoT pomocí Azure Security Center pro IoT. 
 
 ## <a name="azure-security-center-for-iot"></a>Azure Security Center for IoT
 
-Azure Security Center pro IoT poskytují ucelené zabezpečení pro řešení IoT založená na Azure.
+Azure Security Center pro IoT poskytuje komplexní komplexní zabezpečení pro řešení IoT založená na Azure.
 
-Díky Azure Security Center pro IoT můžete monitorovat celé řešení IoT na jednom řídicím panelu, zpřístupnění všechna vaše zařízení IoT, platformy IoT a prostředky back-endu v Azure.
+Pomocí Azure Security Center pro IoT můžete monitorovat celé vaše řešení IoT na jednom řídicím panelu a vynořovat všechna vaše zařízení IoT, platformy IoT a back-endové prostředky v Azure.
 
-Po povolení IoT Hub Azure Security Center pro IoT automaticky identifikuje další služby Azure, připojí se taky k vašemu IoT Hub a v souvislosti s vaším řešením IoT.
+Jakmile je Azure Security Center for IoT v centru IoT povoleno, automaticky identifikuje další služby Azure, které jsou také připojené k vašemu IoT Hubu a souvisejí s vaším řešením IoT.
 
-Kromě automatického zjišťování vztahů můžete také vybrat, které další skupiny prostředků Azure chcete označit jako součást řešení IoT. 
+Kromě automatického zjišťování vztahů můžete také vybrat, které další skupiny prostředků Azure označit jako součást řešení IoT. 
 
-Vaše výběry umožňují přidat celé odběry, skupiny prostředků nebo jeden prostředek. 
+Vaše výběry umožňují přidat celá předplatná, skupiny prostředků nebo jednotlivé prostředky. 
 
-Po definování všech vztahů prostředků Azure Security Center pro IoT využít Azure Security Center k poskytnutí doporučení a výstrah zabezpečení pro tyto prostředky.
+Po definování všech vztahů prostředků využívá Azure Security Center for IoT Azure Security Center k poskytování doporučení zabezpečení a výstrah pro tyto prostředky.
 
-## <a name="add-azure-resources-to-your-iot-solution"></a>Přidání prostředků Azure do řešení IoT
+## <a name="add-azure-resources-to-your-iot-solution"></a>Přidání prostředků Azure do svého řešení IoT
 
-Pokud chcete přidat nový prostředek do řešení IoT, udělejte toto: 
+Pokud chcete do řešení IoT přidat nový prostředek, postupujte takto: 
 
-1. Otevřete **IoT Hub** v Azure Portal. 
-1. V nabídce **zabezpečení** v nabídce vlevo vyberte a otevřete **prostředky** . 
+1. Otevřete **ioT hub** na Webu Azure Portal. 
+1. V levé nabídce vyberte a otevřete položku **Zdroje** z pole **Zabezpečení.** 
 1. Vyberte **Upravit** a zvolte skupiny prostředků, které patří do vašeho řešení IoT.
 1. Klikněte na **Přidat**. 
 
-Blahopřejeme! Přidali jste do řešení IoT novou skupinu prostředků.
+Blahopřejeme! Do řešení IoT jste přidali novou skupinu prostředků.
 
-Azure Security Center pro IoT teď monitoruje nově přidávané skupiny prostředků a v rámci vašeho řešení IoT obnáší relevantní doporučení a výstrahy zabezpečení.
+Azure Security Center pro IoT teď monitoruje nově přidané skupiny prostředků a zobrazuje příslušná doporučení zabezpečení a výstrahy jako součást vašeho řešení IoT.
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším článku se dozvíte, jak vytvářet moduly zabezpečení...
+Přejdete k dalšímu článku a dozvíte se, jak vytvořit bezpečnostní moduly...
 
 > [!div class="nextstepaction"]
-> [Vytváření modulů zabezpečení](quickstart-create-security-twin.md)
+> [Vytvoření modulů zabezpečení](quickstart-create-security-twin.md)

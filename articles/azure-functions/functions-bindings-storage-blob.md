@@ -1,53 +1,53 @@
 ---
-title: Aktivační událost a vazby služby Azure Blob Storage pro Azure Functions
-description: Naučte se používat v Azure Functions Trigger a vazby služby Azure Blob Storage.
+title: Aktivační událost úložiště objektů blob Azure a vazby pro funkce Azure
+description: Naučte se používat aktivační událost úložiště objektů blob Azure a vazby v Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277229"
 ---
-# <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Přehled vazeb Azure Blob Storage pro Azure Functions
+# <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Blob storage vazby pro Azure Functions přehled
 
-Azure Functions se integruje s [Azure Storage](https://docs.microsoft.com/azure/storage/) prostřednictvím [triggerů a vazeb](./functions-triggers-bindings.md). Integrace s úložištěm objektů BLOB umožňuje vytvářet funkce, které reagují na změny v datech objektů blob, i na hodnoty pro čtení a zápis.
+Azure Functions se integruje s [Azure Storage](https://docs.microsoft.com/azure/storage/) prostřednictvím [aktivačních událostí a vazeb](./functions-triggers-bindings.md). Integrace s úložištěm objektů blob umožňuje vytvářet funkce, které reagují na změny v datech objektů blob, stejně jako čtení a zápis hodnoty.
 
 | Akce | Typ |
 |---------|---------|
-| Spustit funkci jako změny dat v úložišti objektů BLOB | [Trigger](./functions-bindings-storage-blob-trigger.md) |
-| Čtení dat služby Blob Storage ve funkci | [Vstupní vazba](./functions-bindings-storage-blob-input.md) |
-| Povolení funkce pro zápis dat služby Blob Storage |[Výstupní vazba](./functions-bindings-storage-blob-output.md) |
+| Spuštění funkce při změnách dat úložiště objektů blob | [Trigger](./functions-bindings-storage-blob-trigger.md) |
+| Čtení dat úložiště objektů blob ve funkci | [Vstupní vazba](./functions-bindings-storage-blob-input.md) |
+| Povolení zápisu dat úložiště objektů blob |[Výstupní vazba](./functions-bindings-storage-blob-output.md) |
 
-## <a name="add-to-your-functions-app"></a>Přidat do aplikace Functions
+## <a name="add-to-your-functions-app"></a>Přidání do aplikace Funkce
 
-### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
+### <a name="functions-2x-and-higher"></a>Funkce 2.x a vyšší
 
-Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
+Práce s aktivační událost a vazby vyžaduje, abyste odkazovat na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, zatímco rozšíření svazku se používá pro všechny ostatní typy aplikací.
 
-| Jazyk                                        | Přidat do...                                   | Poznámky 
+| Jazyk                                        | Přidat podle...                                   | Poznámky 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Instalace [Balíček NuGet]verze 3. x | |
-| C#Skript, Java, JavaScript, Python, PowerShell | Registrace [Sada rozšíření]          | [Rozšíření Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) se doporučuje používat s Visual Studio Code. |
-| C#Skript (online – pouze v Azure Portal)         | Přidání vazby                            | Pokud chcete aktualizovat existující rozšíření vazby bez nutnosti opětovného publikování aplikace Function App, přečtěte si téma [aktualizace rozšíření]. |
+| C#                                              | Instalace [balíčku NuGet], verze 3.x | |
+| C# Script, Java, JavaScript, Python, PowerShell | Registrace [rozšíření balíčku]          | Rozšíření [Nástroje Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) se doporučuje používat s Visual Studio Code. |
+| Skript C# (jenom online na webu Azure Portal)         | Přidání vazby                            | Pokud chcete aktualizovat existující rozšíření o vazby, aniž byste museli znovu publikovat aplikaci funkcí, přečtěte si informace [o aktualizaci rozšíření]. |
 
 [core tools]: ./functions-run-local.md
-[Sada rozšíření]: ./functions-bindings-register.md#extension-bundles
+[rozšiřující balíček]: ./functions-bindings-register.md#extension-bundles
 [Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
 [Aktualizace rozšíření]: ./install-update-binding-extensions-manual.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x
 
-Aplikace Functions 1. x mají automaticky odkaz na balíček NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) , verze 2. x.
+Aplikace functions 1.x mají automaticky odkaz na balíček [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet verze 2.x.
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spustit funkci při změně dat služby Blob Storage](./functions-bindings-storage-blob-trigger.md)
-- [Při spuštění funkce číst data služby Blob Storage](./functions-bindings-storage-blob-input.md)
-- [Zápis dat služby Blob Storage z funkce](./functions-bindings-storage-blob-output.md)
+- [Spuštění funkce při změně dat úložiště objektů blob](./functions-bindings-storage-blob-trigger.md)
+- [Čtení dat úložiště objektů blob při spuštění funkce](./functions-bindings-storage-blob-input.md)
+- [Zápis dat úložiště objektů blob z funkce](./functions-bindings-storage-blob-output.md)

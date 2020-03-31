@@ -1,7 +1,7 @@
 ---
 title: Stav scénáře migrace databází
 titleSuffix: Azure Database Migration Service
-description: Přečtěte si o stavu scénářů migrace podporovaných nástrojem Azure Database Migration Service.
+description: Přečtěte si o stavu scénářů migrace podporovaných službou Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,41 +13,41 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
 ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254920"
 ---
-# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migračních scénářů, které podporuje Azure Database Migration Service
+# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav scénářů migrace podporovaných službou Migrace databáze Azure
 
-Azure Database Migration Service je navržený tak, aby podporoval různé scénáře migrace (páry zdroj/cíl) pro offline (jednorázovou) i online (nepřetržitou synchronizaci) migrace. Pokrytí scénáře, které poskytuje Azure Database Migration Service, se v průběhu času rozšiřuje. V pravidelných intervalech se přidávají nové scénáře. Tento článek popisuje scénáře migrace, které jsou aktuálně podporovány nástrojem Azure Database Migration Service a stav (privátní verze Preview, verze Public Preview nebo Obecná dostupnost) pro každý scénář.
+Služba Migrace databáze Azure je navržena tak, aby podporovala různé scénáře migrace (páry zdroj/cíl) pro offline (jednorázové) i online (nepřetržité synchronizace) migrace. Pokrytí scénáře poskytované službou Migrace databáze Azure se v průběhu času prodlužuje. Nové scénáře jsou přidávány v pravidelných intervalech. Tento článek identifikuje scénáře migrace aktuálně podporované službou Migrace databáze Azure a stav (privátní verze Preview, verze public preview nebo obecná dostupnost) pro každý scénář.
 
-## <a name="offline-versus-online-migrations"></a>Offline online migrace
+## <a name="offline-versus-online-migrations"></a>Offline versus online migrace
 
-Pomocí Azure Database Migration Service můžete provést offline nebo online migraci. Při *offline* migraci začíná výpadek aplikace ve stejnou dobu, kdy se spustí migrace. Pokud chcete omezit prostoje na dobu potřebnou k obnově prostředí po dokončení migrace, použijte *online* migraci. Doporučuje se otestovat offline migraci, abyste zjistili, jestli je výpadky přijatelné; Pokud ne, proveďte online migraci.
+Se službou Azure Database Migration Service můžete provést migraci offline nebo online. Při *offline* migraci začíná prostoje aplikací ve stejnou dobu, kdy se migrace spustí. Chcete-li omezit prostoje na dobu potřebnou k přechodu na nové prostředí po dokončení migrace, použijte migraci *online.* Doporučujeme otestovat offline migraci, abyste zjistili, zda je prostoje přijatelné. pokud ne, proveďte online migraci.
 
 ## <a name="migration-scenario-status"></a>Stav scénáře migrace
 
-Stav migračních scénářů, které Azure Database Migration Service podporuje, se liší v závislosti na čase. Obecně jsou scénáře vydávány v **privátní verzi Preview**. Účast v privátní verzi Preview vyžaduje, aby zákazníci odeslali jmenování prostřednictvím [webu DMS Preview](https://aka.ms/dms-preview). Po použití privátní verze Preview se stav scénáře změní na **Public Preview**. Azure Database Migration Service uživatelé můžou vyzkoušet scénáře migrace ve verzi Public Preview přímo z uživatelského rozhraní. Nevyžaduje se žádné registraci.  Nicméně scénáře migrace ve verzi Public Preview nemusí být k dispozici ve všech oblastech a mohou před finální verzí podléhat dalším změnám. Po zobrazení verze Public Preview se stav scénáře změní na **všeobecně dostupné**. Všeobecná dostupnost (GA) je konečný stav vydaných verzí a funkce je kompletní a dostupná pro všechny uživatele.
+Stav scénářů migrace podporovaných službou Migrace databáze Azure se časem liší. Obecně platí, že scénáře jsou nejprve vydány v **privátní verzi Preview**. Účast v privátní verzi Preview vyžaduje, aby zákazníci předložili nominaci prostřednictvím [webu DMS Preview](https://aka.ms/dms-preview). Po verzi Private Preview se stav scénáře změní na **public Preview**. Uživatelé služby Azure Database Migration Service si můžou vyzkoušet scénáře migrace ve verzi Public Preview přímo z uživatelského rozhraní. Registrace není nutná.  Scénáře migrace ve verzi Public Preview však nemusí být k dispozici ve všech oblastech a mohou projít dalšími změnami před konečnou verzí. Po verzi Public Preview se stav scénáře změní na **obecně dostupnost**. Obecná dostupnost (GA) je stav konečné verze a funkce je kompletní a přístupná všem uživatelům.
 
 ## <a name="migration-scenario-support"></a>Podpora scénářů migrace
 
-Následující tabulky ukazují, které scénáře migrace jsou podporované při použití Azure Database Migration Service.
+V následujících tabulkách jsou uvedeny scénáře migrace, které jsou podporované při používání služby Migrace databáze Azure.
 
 > [!NOTE]
-> Pokud se v uživatelském rozhraní nezobrazí scénář uvedený jako podporovaný, obraťte se prosím na alias služby [Azure Database migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) , kde najdete další informace.
+> Pokud se níže uvedený scénář nezobrazuje v uživatelském rozhraní, požádejte o další informace alias [Ask Azure Database Migrations.](mailto:AskAzureDatabaseMigrations@service.microsoft.com)
 
 > [!IMPORTANT]
-> Chcete-li zobrazit všechny scénáře, které jsou aktuálně podporovány nástrojem Azure Database Migration Service v privátní verzi Preview, přečtěte si [Web DMS Preview](https://aka.ms/dms-preview).
+> Pokud chcete zobrazit všechny scénáře aktuálně podporované službou Migrace databáze Azure v privátní verzi Preview, podívejte se na [web DMS Preview](https://aka.ms/dms-preview).
 
-### <a name="offline-one-time-migration-support"></a>Podpora migrace v režimu offline (jednorázová)
+### <a name="offline-one-time-migration-support"></a>Podpora offline (jednorázové) migrace
 
-Následující tabulka ukazuje podporu offline migrací Azure Database Migration Service.
+V následující tabulce je uvedena podpora služby Migrace databáze Azure pro offline migrace.
 
 | Cíl  | Zdroj | Podpora | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **DATABÁZE SQL Azure** | SQL Server | ✔ | GA |
+| **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
@@ -55,33 +55,33 @@ Následující tabulka ukazuje podporu offline migrací Azure Database Migration
 |   | Oracle |  |   |
 | **Virtuální počítač Azure SQL** | SQL Server | ✔ | GA |
 |   | Oracle |   |   |
-| **Databáze Azure Cosmos** | MongoDB | ✔ | GA |
-| **Azure DB pro MySQL** | MySQL |   |   |
+| **Azure Cosmos DB** | MongoDB | ✔ | GA |
+| **Azure DB for MySQL** | MySQL |   |   |
 |   | RDS MySQL |   |   |
-| **Azure DB pro PostgreSQL** | PostgreSQL |  |
+| **Azure DB for PostgreSQL** | PostgreSQL |  |
 |  | RDS PostgreSQL |   |   |
 
-### <a name="online-continuous-sync-migration-support"></a>Podpora migrace online (nepřetržitá synchronizace)
+### <a name="online-continuous-sync-migration-support"></a>Online (nepřetržitá synchronizace) podpora migrace
 
-Následující tabulka uvádí Azure Database Migration Service podporu pro online migrace.
+V následující tabulce je uvedena podpora služby Migrace databáze Azure pro migrace online.
 
 | Cíl  | Zdroj | Podpora | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **DATABÁZE SQL Azure** | SQL Server | ✔ | GA |
+| **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
 |   | Oracle |  |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
-|   | Oracle | ✔ | Privátní verze Preview |
+|   | Oracle | ✔ | Soukromý náhled |
 | **Virtuální počítač Azure SQL** | SQL Server |   |   |
 |   | Oracle  |  |  |
-| **Databáze Azure Cosmos** | MongoDB | ✔ | GA |
-| **Azure DB pro MySQL** | MySQL | ✔ | GA |
+| **Azure Cosmos DB** | MongoDB | ✔ | GA |
+| **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
-| **Azure DB pro PostgreSQL** | PostgreSQL | ✔ | GA |
+| **Azure DB for PostgreSQL** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | ✔ | Verze Public Preview |
+|   | Oracle | ✔ | Veřejná verze Preview |
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled Azure Database Migration Service a regionální dostupnosti najdete v článku [co je to Azure Database Migration Service](dms-overview.md).
+Přehled služby migrace databáze Azure a místní dostupnosti najdete v článku [Co je služba migrace databáze Azure](dms-overview.md).

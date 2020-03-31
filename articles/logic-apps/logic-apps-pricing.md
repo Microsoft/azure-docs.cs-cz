@@ -1,6 +1,6 @@
 ---
-title: Model fakturace ceny &
-description: Přehled o tom, jak model cen a fakturace funguje Azure Logic Apps
+title: Cenová & fakturační model
+description: Přehled o tom, jak funguje model cen a fakturace pro Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,160 +9,160 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270456"
 ---
-# <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
+# <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro aplikace Azure Logic Apps
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) vám pomůže vytvářet a spouštět pracovní postupy automatizované integrace, které se můžou škálovat v cloudu. Tento článek popisuje, jak fakturace a cenová práce pro Azure Logic Apps. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps).
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) vám pomůže vytvářet a spouštět pracovní postupy automatizované integrace, které se můžou škálovat v cloudu. Tento článek popisuje, jak fakturace a ceny fungují pro Azure Logic Apps. Cenové sazby najdete v tématu [Logic Apps Pricing](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="consumption-pricing"></a>
 
 ## <a name="consumption-pricing-model"></a>Cenový model spotřeby
 
-Pro nové aplikace logiky, které běží na veřejné nebo "globální" Azure Logic Apps službě, platíte jenom za to, co využijete. Tyto aplikace logiky využívají plán a cenový model založený na spotřebě. V aplikaci logiky je každý krok akce a Azure Logic Apps měřiče všech akcí, které běží ve vaší aplikaci logiky.
+U nových aplikací logiky, které běží ve veřejné nebo "globální" službě Azure Logic Apps, platíte jenom za to, co používáte. Tyto aplikace logiky používají plán a cenový model založený na spotřebě. Ve vaší aplikaci logiky každý krok je akce a Azure Logic Apps měří všechny akce, které běží ve vaší aplikaci logiky.
 
-Například akce zahrnují:
+Akce zahrnují například:
 
-* Triggery, což jsou speciální akce. Všechny Logic Apps vyžadují Trigger jako první krok.
-* ["Předdefinované" nebo nativní akce](../connectors/apis-list.md#built-in) , jako je například http, volání Azure Functions a API Management atd.
-* Volání [spravovaných konektorů](../connectors/apis-list.md#managed-connectors) , jako je například Outlook 365, Dropbox atd.
-* Postup řízení kroků toku, jako jsou smyčky, podmíněné příkazy atd.
+* Aktivační události, což jsou speciální akce. Všechny aplikace logiky vyžadují aktivační událost jako první krok.
+* ["Předdefinované" nebo nativní akce,](../connectors/apis-list.md#built-in) jako je HTTP, volání funkcí Azure a správa rozhraní API a tak dále
+* Volání [spravovaných konektorů,](../connectors/apis-list.md#managed-connectors) jako je Outlook 365, Dropbox a tak dále
+* Řízení kroků toku, jako jsou smyčky, podmíněné příkazy a tak dále
 
-[Standardní konektory](../connectors/apis-list.md#managed-connectors) se účtují podle [ceny za konektor Standard](https://azure.microsoft.com/pricing/details/logic-apps). Všeobecně dostupné [podnikové konektory](../connectors/apis-list.md#managed-connectors) se účtují podle [ceny za konektor Enterprise](https://azure.microsoft.com/pricing/details/logic-apps), zatímco konektory Enterprise ve verzi Public Preview se účtují podle [ceny za konektor Standard](https://azure.microsoft.com/pricing/details/logic-apps).
+[Standardní konektory](../connectors/apis-list.md#managed-connectors) se nabíjejí za [standardní cenu konektoru](https://azure.microsoft.com/pricing/details/logic-apps). Obecně dostupné [podnikové konektory](../connectors/apis-list.md#managed-connectors) se účtují podle ceny [konektoru Enterprise](https://azure.microsoft.com/pricing/details/logic-apps), zatímco konektory Public Preview Enterprise se účtují [za standardní cenu konektoru](https://azure.microsoft.com/pricing/details/logic-apps).
 
-Přečtěte si další informace o tom, jak účtování funguje pro [aktivační události](#triggers) a [Akce](#actions).
+Přečtěte si další informace o tom, jak funguje fakturace pro [aktivační události](#triggers) a [akce](#actions).
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>Pevný cenový model
 
-[ *Prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) nabízí izolovaný způsob, jak vytvářet a spouštět aplikace logiky, které mají přístup k prostředkům ve službě Azure Virtual Network. Pro nové aplikace logiky, které běží v rámci ISE, platíte [pevnou měsíční cenu](https://azure.microsoft.com/pricing/details/logic-apps) za tyto funkce:
+[ *Prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) poskytuje izolovaný způsob, jak vytvářet a spouštět aplikace logiky, které mají přístup k prostředkům ve virtuální síti Azure. U nových aplikací logiky, které běží uvnitř služby ISE, platíte [pevnou měsíční cenu](https://azure.microsoft.com/pricing/details/logic-apps) za tyto funkce:
 
-* [Předdefinované](../connectors/apis-list.md#built-in) triggery a akce
+* [Integrované](../connectors/apis-list.md#built-in) aktivační události a akce
 
-  V rámci ISE se předdefinované aktivační události a akce zobrazují jako **základní** popisek a spouštějí se ve stejném ISE jako vaše aplikace logiky.
+  V rámci služby ISE integrované aktivační události a akce zobrazují popisek **Core** a běží ve stejné službě ISE jako vaše aplikace logiky.
 
-* [Standardní](../connectors/apis-list.md#managed-connectors) konektory a [podnikové](../connectors/apis-list.md#enterprise-connectors) konektory (tolik podnikových připojení, kolik potřebujete)
+* [Standardní](../connectors/apis-list.md#managed-connectors) konektory a [podnikové](../connectors/apis-list.md#enterprise-connectors) konektory (tolik připojení Enterprise, kolik chcete)
 
-   Konektory Standard a Enterprise, které zobrazují popisek **ISE** , se spouštějí ve stejném ISE jako vaše aplikace logiky. Konektory, které nezobrazují ISE, se spouštějí v globálním Logic Apps službě. Pevné měsíční ceny platí i pro konektory, které běží v globální službě, když je používáte s Logic Apps, které běží v ISE.
+   Standardní a podnikové konektory, které zobrazují popisek **ISE,** běží ve stejné službě ISE jako aplikace logiky. Konektory, které nezobrazují popisek ISE spustit v globální službě Logic Apps. Pevné měsíční ceny platí také pro konektory, které běží v globální službě, když je používáte s aplikacemi logiky, které běží v ISE.
 
-* Využití [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) bez dalších poplatků na základě [SKU ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
+* [Využití integračního účtu](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) bez dalších nákladů na základě vaší [skladové položky ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 
-  * **SKU úrovně Premium**: jeden účet pro integraci na úrovni [Standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
+  * **Prémiová skladová položka:** Jeden účet pro integraci [úrovně Standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
-  * **SKU pro vývojáře**: jeden účet pro integraci [bezplatné úrovně](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
+  * **Vývojářská skladová položka**: Jeden účet integrace [úrovně Free](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
-  Každá SKU ISE je omezená na 5 celkových integračních účtů. Další náklady získáte tak, že budete mít na základě SKU ISE k dispozici víc účtů pro integraci:
+  Každá skladová položka ISE je omezena na 5 účtů celkové integrace. Za příplatek můžete mít více účtů integrace na základě sku služby ISE:
 
-  * **SKU úrovně Premium**: až čtyři další standardní účty. Žádné účty zdarma nebo Basic.
+  * **Prémiová skladová položka**: Až čtyři další standardní účty. Žádné bezplatné nebo základní účty.
 
-  * **SKU pro vývojáře**: buď až 4 účty na úrovni Standard, nebo až 5 celkových standardních účtů. Žádné základní účty.
+  * **Vývojářská skladová položka**: Buď až 4 další standardní účty, nebo až 5 celkových standardních účtů. Žádné základní účty.
 
-  Další informace o omezeních účtu pro integraci najdete v tématu [omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Další informace o [úrovních účtu integrace a jejich cenovém modelu](#integration-accounts) najdete dále v tomto tématu.
+  Další informace o omezeníúčtů integrace naleznete [v tématu Omezení a konfigurace aplikací logiky](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Další informace o [úrovních účtů integrace a jejich cenovém modelu](#integration-accounts) najdete dále v tomto tématu.
 
-Pokud zvolíte ISE SKU úrovně Premium, základní jednotka má pevnou kapacitu. Pokud potřebujete větší propustnost, můžete [Přidat další jednotky škálování](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)během vytváření nebo později. ISE SKU pro vývojáře nemá schopnost přidávat další jednotky škálování. Logic Apps, které běží ve ISE, neúčtují náklady na uchovávání dat.
+Pokud zvolíte sku premium ISE, základní jednotka má pevnou kapacitu. Pokud potřebujete větší propustnost, můžete [přidat další jednotky škálování](../logic-apps/ise-manage-integration-service-environment.md#add-capacity), buď během vytváření, nebo po něm. Vývojářská skladová položka ISE nemá možnost přidávat další jednotky škálování. Aplikace logiky, které běží v ISE nevznikají náklady na uchovávání dat.
 
-Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps).
+Cenové sazby najdete v tématu [Logic Apps pricing](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="connectors"></a>
 
 ## <a name="connectors"></a>Konektory
 
-Konektory Azure Logic Apps vám pomůžou aplikace logiky přistupovat k aplikacím, službám a systémům v cloudu nebo místně tím, že poskytují [triggery](#triggers), [Akce](#actions)nebo obojí. Konektory jsou klasifikovány buď jako standard, nebo jako podnikové. Přehled těchto konektorů najdete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md). Pokud pro rozhraní REST API, která chcete použít ve svých aplikacích logiky, nejsou k dispozici žádné předem připravené konektory, můžete vytvořit [vlastní konektory](https://docs.microsoft.com/connectors/custom-connectors), které jsou kolem těchto rozhraní REST API jenom obálkami. Vlastní konektory se účtují jako standardní konektory. V následujících částech najdete další informace o tom, jak fakturace pro aktivační události a akce fungují.
+Konektory Azure Logic Apps pomáhají aplikacím logiky přistupovat k aplikacím, službám a systémům v cloudu nebo v místním prostředí tím, že poskytují [aktivační události](#triggers), [akce](#actions)nebo obojí. Konektory jsou klasifikovány jako standardní nebo enterprise. Přehled těchto konektorů najdete v tématu [Konektory pro Azure Logic Apps](../connectors/apis-list.md). Pokud žádné předem sestavené konektory jsou k dispozici pro rozhraní API REST, které chcete použít v [aplikacích logiky,](https://docs.microsoft.com/connectors/custom-connectors)můžete vytvořit vlastní konektory , které jsou pouze obálky kolem těchto rozhraní API REST. Vlastní konektory se účtují jako standardní konektory. V následujících částech jsou uvedeny další informace o tom, jak fakturace aktivačních událostí a akcí funguje.
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>Aktivační události
 
-Triggery jsou speciální akce, které vytvoří instanci aplikace logiky, když dojde ke konkrétní události. Triggery fungují různými způsoby, které mají vliv na měření aplikace logiky. Tady jsou různé druhy aktivačních událostí, které existují v Azure Logic Apps:
+Aktivační události jsou speciální akce, které vytvářejí instanci aplikace logiky, když dojde k určité události. Aktivační události působí různými způsoby, které ovlivňují způsob, jakým se měří aplikace logiky. Tady jsou různé druhy aktivačních událostí, které existují v Aplikacích Azure Logic:
 
-* **Aktivační událost cyklického dotazování**: Tato aktivační událost nepřetržitě kontroluje koncový bod pro zprávy, které odpovídají kritériím pro vytvoření instance aplikace logiky a spuštění pracovního postupu. I v případě, že se nevytvoří žádná instance aplikace logiky, Logic Apps měřiče dotazovat jednotlivé požadavky jako spuštění. Pokud chcete zadat interval dotazování, nastavte Trigger pomocí návrháře aplikace logiky.
+* **Aktivační událost dotazování**: Tato aktivační událost neustále kontroluje koncový bod pro zprávy, které splňují kritéria pro vytvoření instance aplikace logiky a spuštění pracovního postupu. I v případě, že se nevytvoří žádná instance aplikace logiky, aplikace logiky měří každý požadavek na dotazování jako spuštění. Chcete-li zadat interval dotazování, nastavte aktivační událost prostřednictvím Návrháře aplikace logiky.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Trigger Webhooku**: Tato aktivační událost čeká, až klient pošle požadavek do konkrétního koncového bodu. Každý požadavek odeslaný na koncový bod Webhooku se počítá jako provedení akce. Například triggerem Webhooku žádosti a HTTP jsou triggery Webhooku.
+* **Aktivační událost webhooku**: Tato aktivační událost čeká na odeslání požadavku klienta do určitého koncového bodu. Každý požadavek odeslaný do koncového bodu webhooku se počítá jako spuštění akce. Například request a HTTP Webhook aktivační události jsou obě webové hák aktivační události.
 
-* **Trigger opakování**: Tato aktivační událost vytvoří instanci aplikace logiky založenou na intervalu opakování, který jste nastavili v aktivační události. Můžete například nastavit Trigger opakování, který se spouští každé tři dny nebo složitějším plánem.
+* **Aktivační událost opakování**: Tato aktivační událost vytvoří instanci aplikace logiky na základě intervalu opakování, který jste nastavili v aktivační události. Můžete například nastavit aktivační událost opakování, která se spouští každé tři dny nebo podle složitějšího plánu.
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>Akce
 
-"Integrované" akce Azure Logic Apps měřičů, jako jsou například HTTP, jako nativní akce. Například integrované akce zahrnují volání HTTP, volání z Azure Functions nebo API Management a kroky toku řízení, jako jsou podmínky, smyčky a příkazy Switch. Každá akce má svůj vlastní typ akce. Například akce, které volají [konektory](https://docs.microsoft.com/connectors) , mají typ "vstupech apiconnection". Tyto konektory jsou klasifikované jako konektory Standard nebo Enterprise, které se měří na základě příslušných [cen](https://azure.microsoft.com/pricing/details/logic-apps). Podnikové konektory ve *verzi Preview* se účtují jako standardní konektory.
+Azure Logic Apps měří "předdefinované" akce, jako je http, jako nativní akce. Integrované akce například zahrnují volání HTTP, volání z Azure Functions nebo API Management a kroky toku řízení, jako jsou podmínky, smyčky a příkazy switch. Každá akce má svůj vlastní typ akce. Například akce, které volají [konektory](https://docs.microsoft.com/connectors) mají typ "ApiConnection". Tyto konektory jsou klasifikovány jako standardní nebo podnikové konektory, které jsou měřeny na základě jejich příslušných [cen](https://azure.microsoft.com/pricing/details/logic-apps). Podnikové konektory ve *verzi Preview* se účtují jako standardní konektory.
 
-Azure Logic Apps měřiče všech úspěšných a neúspěšných akcí jako spuštění. Logic Apps ale neměří na tyto akce:
+Aplikace Azure Logic Apps měří všechny úspěšné a neúspěšné akce jako spuštění. Aplikace Logika však neměří tyto akce:
 
-* Akce, které se přeskočily kvůli nesplnění podmínkám
-* Akce, které nespustíme, protože aplikace logiky se zastavila před dokončením
+* Akce, které jsou přeskočeny kvůli nesplněných podmínek
+* Akce, které se nespustí, protože aplikace logiky se zastavila před dokončením
 
-Pro akce, které se spouští uvnitř smyček, Azure Logic Apps počítá každou akci pro každý cyklus ve smyčce. Předpokládejme například, že máte smyčku "for each", která zpracovává seznam. Logic Apps měřiče v této smyčce akci vynásobením počtu položek seznamu s počtem akcí ve smyčce a přidá akci, která spustí smyčku. Proto je výpočet pro seznam 10 položek (10 * 1) + 1, což vede ke zpracování 11 akcí.
+Pro akce, které běží uvnitř smyčky Azure Logic Apps počítá každou akci pro každý cyklus ve smyčce. Předpokládejme například, že máte smyčku "pro každý", která zpracovává seznam. Logic Apps měří akci v této smyčce vynásobením počtu položek seznamu s počtem akcí ve smyčce a přidá akci, která spustí smyčku. Takže výpočet pro seznam 10 položek je (10 * 1) + 1, což má za následek 11 spuštění akce.
 
 ## <a name="disabled-logic-apps"></a>Zakázané aplikace logiky
 
-Zakázané aplikace logiky se neúčtují, protože nemůžou vytvářet nové instance, když jsou zakázané. Po zakázání aplikace logiky může kterákoli z aktuálně spuštěných instancí nějakou dobu trvat, než se úplně zastaví.
+Zakázané aplikace logiky se neúčtují, protože nemohou vytvářet nové instance, když jsou zakázané. Po zakázání aplikace logiky může trvat nějakou dobu, než se všechny instance zastaví.
 
 <a name="integration-accounts"></a>
 
 ## <a name="integration-accounts"></a>Účty pro integraci
 
-[Pevný cenový model](https://azure.microsoft.com/pricing/details/logic-apps) se vztahuje na [účty pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , kde můžete prozkoumat, vyvíjet a testovat funkce [B2B a EDI](logic-apps-enterprise-integration-b2b.md) a [zpracování XML](logic-apps-enterprise-integration-xml.md) v Azure Logic Apps bez dalších nákladů. Každé předplatné Azure může mít až [určitý limit integračních účtů](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Každý účet pro integraci může ukládat až do konkrétního [limitu artefaktů](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits), včetně obchodních partnerů, smluv, map, schémat, sestavení, certifikátů, konfigurací dávek a tak dále.
+Pevný [cenový model](https://azure.microsoft.com/pricing/details/logic-apps) se vztahuje na [účty integrace,](logic-apps-enterprise-integration-create-integration-account.md) kde můžete prozkoumat, vyvíjet a testovat funkce zpracování [B2B a EDI](logic-apps-enterprise-integration-b2b.md) a [XML](logic-apps-enterprise-integration-xml.md) v Azure Logic Apps bez dalších nákladů. Každé předplatné Azure může mít až [určitý limit účtů integrace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Každý účet integrace může ukládat až do [určitého limitu artefaktů](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits), které zahrnují obchodní partnery, dohody, mapy, schémata, sestavení, certifikáty, dávkové konfigurace a tak dále.
 
-Azure Logic Apps nabízí účty pro integraci Free, Basic a Standard. Úrovně Basic a Standard jsou podporovány Logic Apps smlouvou o úrovni služeb (SLA), zatímco úroveň Free není podporována smlouvou SLA a má omezení propustnosti a využití. S výjimkou účtů pro integraci bezplatné úrovně můžete mít v každé oblasti Azure více než jeden účet pro integraci. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
+Azure Logic Apps nabízí bezplatné, základní a standardní integrační účty. Úrovně Basic a Standard jsou podporovány smlouvou o úrovni služeb Logic Apps (SLA), zatímco úroveň Free není podporována smlouvou SLA a má omezení propustnost a využití. S výjimkou účtů integrace úrovně Free můžete mít v každé oblasti Azure více než jeden účet integrace. Cenové sazby najdete v tématu [Logic Apps pricing](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-Pokud máte [ *prostředí ISE (Integration Service Environment* ) (](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) [Premium nebo Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)), vaše ISE může mít 5 celkových účtů pro integraci. Další informace o tom, jak model fixního cenového modelu funguje pro ISE, najdete v části předchozí [pevný cenový model](#fixed-pricing) v tomto tématu. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps).
+Pokud máte [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), [Premium nebo Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), vaše ISE může mít 5 celkových integračních účtů. Informace o tom, jak pevný cenový model funguje pro ise, naleznete v předchozí části [Pevný cenový model](#fixed-pricing) v tomto tématu. Cenové sazby najdete v tématu [Logic Apps pricing](https://azure.microsoft.com/pricing/details/logic-apps).
 
-Pokud si chcete vybrat mezi účtem pro integraci Free, Basic nebo Standard, přečtěte si tyto popisy případů použití:
+Chcete-li si vybrat mezi účtem pro integraci zdarma, základní nebo standardní, přečtěte si tyto popisy případu použití:
 
-* **Zdarma**: v případě, že chcete vyzkoušet průzkumné scénáře, nikoli produkční scénáře
+* **Volný:** Pro když chcete vyzkoušet průzkumné scénáře, ne produkční scénáře
 
-* **Basic**: Pokud chcete, aby zpracování zpráv fungovalo jako malý obchodní partner, který má vztah obchodního partnera s větší obchodní entitou
+* **Základní**: Pokud chcete pouze zpracování zpráv nebo jako malý obchodní partner, který má obchodní vztah s větším obchodním subjektem
 
-* **Standard**: Pokud máte SLOŽITĚJŠÍ vztahy B2B a vyšší počet entit, které musíte spravovat
+* **Standard**: Pro případy, kdy máte složitější vztahy B2B a zvýšený počet entit, které musíte spravovat
 
 <a name="data-retention"></a>
 
 ## <a name="data-retention"></a>Uchovávání dat
 
-S výjimkou aplikací logiky, které běží v prostředí ISE (Integration Service Environment), se všechny vstupy a výstupy, které jsou uložené v historii spuštění vaší aplikace logiky, účtují na základě [doby uchování běhu](logic-apps-limits-and-config.md#run-duration-retention-limits)aplikace logiky. Logic Apps, které běží ve ISE, neúčtují náklady na uchovávání dat. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps).
+S výjimkou aplikací logiky, které běží v prostředí služby integrace (ISE), všechny vstupy a výstupy, které jsou uloženy v historii spuštění aplikace logiky se účtují na základě [doby uchovávání spuštění](logic-apps-limits-and-config.md#run-duration-retention-limits)aplikace logiky . Aplikace logiky, které běží v ISE nevznikají náklady na uchovávání dat. Cenové sazby najdete v tématu [Logic Apps pricing](https://azure.microsoft.com/pricing/details/logic-apps).
 
-Abyste mohli monitorovat spotřebu úložiště vaší aplikace logiky, můžete:
+Chcete-li vám pomoci sledovat spotřebu úložiště aplikace logiky, můžete:
 
-* Podívejte se na počet jednotek úložiště v GB, které vaše aplikace logiky používá měsíčně.
-* Zobrazení velikosti pro vstupy a výstupy konkrétní akce v historii spuštění aplikace logiky
+* Zobrazení počtu jednotek úložiště v GB, které vaše aplikace logiky používá měsíčně.
+* Zobrazení velikosti pro vstupy a výstupy konkrétní akce v historii spuštění aplikace logiky.
 
 <a name="storage-consumption"></a>
 
 ### <a name="view-logic-app-storage-consumption"></a>Zobrazit spotřebu úložiště aplikace logiky
 
-1. V Azure Portal Najděte a otevřete aplikaci logiky.
+1. Na webu Azure Portal najděte a otevřete aplikaci logiky.
 
-1. V nabídce aplikace logiky v části **monitorování**vyberte **metriky**.
+1. V nabídce aplikace logiky vyberte v části **Sledování** **položku Metriky**.
 
-1. V pravém podokně v části **název grafu**vyberte v seznamu **metrika** možnost **využití fakturace pro spouštění spotřeby úložiště**.
+1. V pravém podokně v části **Název grafu**v seznamu **Metrika** vyberte **možnost Fakturační využití pro spouštění spotřeby úložiště**.
 
    Tato metrika poskytuje počet jednotek spotřeby úložiště v GB za měsíc, které se účtují.
 
 <a name="input-output-sizes"></a>
 
-### <a name="view-action-input-and-output-sizes"></a>Zobrazit vstupní a výstupní velikosti akce
+### <a name="view-action-input-and-output-sizes"></a>Zobrazit vstupní a výstupní velikosti akcí
 
-1. V Azure Portal Najděte a otevřete aplikaci logiky.
+1. Na webu Azure Portal najděte a otevřete aplikaci logiky.
 
-1. V nabídce aplikace logiky zvolte **Přehled**.
+1. V nabídce aplikace logiky vyberte **Přehled**.
 
-1. V pravém podokně v části **historie spuštění**vyberte běh, který obsahuje vstupy a výstupy, které chcete kontrolovat.
+1. V pravém podokně vyberte v části **Historie spuštění**spuštění, které má vstupy a výstupy, které chcete zkontrolovat.
 
-1. V části **spuštění aplikace logiky**klikněte na tlačítko **Spustit podrobnosti**.
+1. V části **Spuštění aplikace logiky**zvolte **Spustit podrobnosti**.
 
-1. V podokně s **podrobnostmi o spuštění aplikace logiky** v tabulce akce, které uvádí stav a dobu trvání jednotlivých akcí, vyberte akci, kterou chcete zobrazit.
+1. V podokně **podrobností spuštění aplikace Logika** vyberte v tabulce akcí, která uvádí stav a dobu trvání jednotlivých akcí, akci, kterou chcete zobrazit.
 
-1. V podokně **Akce aplikace logiky** vyhledejte v části **vstupy odkaz** a **výstupy**odkazy velikosti pro vstupy a výstupy této akce.
+1. V podokně **akcí aplikace Logika** najděte velikosti vstupů a výstupů této akce v části **Odkaz vstupy** a **Výstupy**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o Azure Logic Apps](logic-apps-overview.md)
+* [Další informace o aplikacích Azure Logic Apps](logic-apps-overview.md)
 * [Vytvoření první aplikace logiky](quickstart-create-first-logic-app-workflow.md)

@@ -5,7 +5,7 @@
   items:
     - name: Co je rozhraní API Detektoru anomálií?
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Klientská knihovna
@@ -78,6 +78,16 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: Zdroje a prostředky
   items:
+    - name: Podpora
+      items:
+        - name: Získat podporu
+          href: 'https://aka.ms/adsupport'
+        - name: Stack Overflow
+          href: 'https://aka.ms/adso'
+        - name: MSDN
+          href: 'https://aka.ms/admsdn'
+        - name: User Voice
+          href: 'https://aka.ms/aduservoice'
     - name: Ceny
       href: 'https://aka.ms/adpricing'
     - name: Regionální dostupnost
@@ -90,13 +100,3 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-- name: Podpora
-  items:
-    - name: Získat podporu
-      href: 'https://aka.ms/adsupport'
-    - name: Stack Overflow
-      href: 'https://aka.ms/adso'
-    - name: MSDN
-      href: 'https://aka.ms/admsdn'
-    - name: User Voice
-      href: 'https://aka.ms/aduservoice'

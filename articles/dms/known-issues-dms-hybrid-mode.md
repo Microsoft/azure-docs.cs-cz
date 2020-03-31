@@ -1,6 +1,6 @@
 ---
-title: Známé problémy/omezení migrace s využitím hybridního režimu
-description: Přečtěte si o známých problémech nebo omezeních migrace pomocí Azure Database Migration Service v hybridním režimu.
+title: Známé problémy/omezení migrace při použití hybridního režimu
+description: Přečtěte si o známých problémech/omezenímigrace pomocí služby Migrace databáze Azure v hybridním režimu.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,91 +12,91 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649598"
 ---
-# <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Známé problémy/omezení migrace s využitím hybridního režimu
+# <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Známé problémy/omezení migrace s použitím hybridního režimu
 
-Známé problémy a omezení související s používáním Azure Database Migration Service v hybridním režimu jsou popsány v následujících částech.
+Známé problémy a omezení spojené s používáním služby Migrace databáze Azure v hybridním režimu jsou popsány v následujících částech.
 
-## <a name="installer-fails-to-authenticate"></a>Nepodařilo se ověřit instalační program
+## <a name="installer-fails-to-authenticate"></a>Instalačnímu programu se nepodařilo ověřit
 
-Po nahrání certifikátu do AdApp nastane zpoždění až několik minut, než se bude moct ověřit pomocí Azure. Instalační program se pokusí o opakování s určitou prodlevou, ale je možné, že zpoždění šíření bude delší než opakování, a zobrazí se zpráva **FailedToGetAccessTokenException** . Pokud byl certifikát nahrán do správného AdApp a v dmsSettings. JSON byl zadán správný identifikátor AppId, zkuste znovu spustit instalační příkaz.
+Po nahrání certifikátu do AdAppu dochází ke zpoždění až několik minut, než se bude moci ověřit pomocí Azure. Instalační program se pokusí opakovat s určitým zpožděním, ale je možné, že zpoždění šíření bude delší než opakování a zobrazí se zpráva **FailedToGetAccessTokenException.** Pokud byl certifikát nahrán na správný AdApp a správný AppId byl poskytnut v souboru dmsSettings.json, zkuste spustit příkaz install znovu.
 
 ## <a name="service-offline-after-successful-installation"></a>Služba "offline" po úspěšné instalaci
 
-Pokud se služba po úspěšném dokončení procesu instalace zobrazí jako offline, zkuste použít následující postup.
+Pokud se služba po úspěšném dokončení procesu instalace zobrazí jako offline, zkuste použít následující kroky.
 
-1. V Azure Portal v instanci Azure Database Migration Service přejděte na kartu **hybridní** nastavení a pak ověřte, že je pracovní proces zaregistrován pomocí kontroly mřížky registrovaných pracovních procesů.
+1. Na webu Azure Portal ve vaší instanci služby Migrace databáze Azure přejděte na kartu **Hybridní** nastavení a ověřte, zda je pracovník registrovaný, a to kontrolou mřížky registrovaných pracovníků.
 
-    Stav tohoto pracovního procesu by měl být **online**, ale pokud dojde k potížím, může se zobrazit jako **offline** .
+    Stav tohoto pracovníka by měl být **online**, ale může se zobrazit jako **offline,** pokud dojde k potížím.
 
-2. V pracovním počítači ověřte stav služby spuštěním následujícího příkazu PowerShellu:
+2. V pracovním počítači zkontrolujte stav služby spuštěním následujícího příkazu Prostředí PowerShell:
 
     ```
     Get-Service Scenario*
     ```
 
-    Tento příkaz vám poskytne stav služby systému Windows, která spouští pracovní proces. Měl by existovat jenom jeden výsledek. Pokud je pracovní proces zastavený, můžete se ho pokusit znovu spustit pomocí následujícího příkazu PowerShellu:
+    Tento příkaz poskytuje stav služby systému Windows spuštěného pracovníka. Měl by existovat pouze jeden výsledek. Pokud je pracovník zastaven, můžete se ho pokusit restartovat pomocí následujícího příkazu Prostředí PowerShell:
 
     ```
     Start-Service Scenario*
     ```
 
-    Službu můžete také vyhledat v uživatelském rozhraní služeb systému Windows.
+    Můžete také zkontrolovat službu v uzdu služby systému Windows.
 
-3. Pokud se služba Windows cyklicky spouští a zastavila, pak pracovní proces narazil na problémy. Pokud chcete zjistit problém, zkontrolujte protokoly Azure Database Migration Service Hybrid Worker.
+3. Pokud služby systému Windows cykly mezi spuštěna a zastavena, pak pracovník došlo k problémům spuštění. Chcete-li zjistit problém, zkontrolujte protokoly hybridních pracovních pracovníků služby Azure Database Migration Service.
 
-    - Protokoly procesu instalace se ukládají do složky Logs ve složce, ze které se spustil spustitelný soubor instalačního programu.
-    - Protokoly Azure Database Migration Service Hybrid Worker se ukládají do složky **WorkerLogs** ve složce, ve které je nainstalovaný pracovní proces. Výchozí umístění souborů protokolu hybridního pracovního procesu je **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**.
+    - Protokoly procesu instalace jsou uloženy ve složce "protokoly" ve složce, ze které byl spuštěn spustitelný soubor instalačního programu.
+    - Protokoly hybridních pracovních pracovníků služby Azure Database Migration Service jsou uloženy ve složce **WorkerLogs** ve složce, ve které je nainstalován pracovník. Výchozí umístění souborů protokolu hybridního pracovního procesu je **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**.
 
-## <a name="using-your-own-signed-certificate"></a>Používání vlastního podepsaného certifikátu
+## <a name="using-your-own-signed-certificate"></a>Použití vlastního podepsaného certifikátu
 
-Certifikát generovaný akcí GenerateCert je certifikát podepsaný svým držitelem, který nemusí být přijatelný v závislosti na vašich interních zásadách zabezpečení. Místo použití tohoto certifikátu můžete zadat vlastní certifikát a poskytnout kryptografický otisk v dmsSettings. JSON. Tento certifikát bude nutné nahrát do AdApp a nainstalovat na počítač, na který instalujete Azure Database Migration Service Hybrid Worker. Pak tento certifikát nainstalujte pomocí privátního klíče do úložiště certifikátů místního počítače.
+Certifikát generovaný akcí GenerateCert je certifikát podepsaný svým držitelem, který nemusí být přijatelný na základě zásad vnitřního zabezpečení. Namísto použití tohoto certifikátu můžete poskytnout vlastní certifikát a poskytnout kryptografický otisk v souboru dmsSettings.json. Tento certifikát bude potřeba nahrát do adAppu a nainstalovat do počítače, do kterého instalujete hybridního pracovníka služby Migrace databáze Azure. Potom nainstalujte tento certifikát s privátním klíčem do úložiště certifikátů místního počítače.
 
-## <a name="running-the-worker-service-as-a-low-privilege-account"></a>Spuštění služby pracovního procesu jako účtu s nízkou úrovní oprávnění
+## <a name="running-the-worker-service-as-a-low-privilege-account"></a>Spuštění pracovní služby jako účtu s nízkými oprávněními
 
-Ve výchozím nastavení se služba Azure Database Migration Service Hybrid Worker spouští jako účet místního systému. Účet, který se používá pro tuto službu, můžete změnit, pokud účet, který používáte, má síťová oprávnění. Chcete-li změnit účet Spustit jako služby, použijte následující postup.
+Ve výchozím nastavení se služba hybridního pracovního procesu služby Migrace databáze Azure spustí jako účet místního systému. Účet používaný pro tuto službu můžete změnit, pokud má používaný účet síťová oprávnění. Chcete-li změnit účet služby "spustit jako", použijte následující proces.
 
-1. Zastavte službu buď prostřednictvím služeb systému Windows, nebo pomocí příkazu stop-Service v prostředí PowerShell.
+1. Zastavte službu prostřednictvím služeb systému Windows nebo pomocí příkazu Stop-Service v prostředí PowerShell.
 
 2. Aktualizujte službu tak, aby používala jiný přihlašovací účet.
 
-3. V části CertMgr pro certifikáty místního počítače udělte tomuto účtu oprávnění privátního klíče pro nový účet pro **klíč hybridní aplikace DMS** a certifikáty pro **dvojici klíčů v modulu scénáře DMS** .
+3. V certifikátech certmgr pro místní počítač udělte oprávnění soukromého klíče k novému účtu pro certifikáty **DMS Hybrid App Key** a **DMS Scenario Engine Key Pair.**
 
-    a. Otevřete certmgr pro zobrazení následujících klíčů:
+    a. Chcete-li zobrazit následující klávesy, otevřete certmgr:
 
     - Klíč hybridní aplikace DMS
-    - Instalační klíč Hybrid Worker DMS
-    - Pár klíčů pro jádro scénáře DMS
+    - Klíč nastavení hybridního pracovního procesu DMS
+    - DMS scénář dvojice klíčů motoru
 
-    b. Klikněte pravým tlačítkem myši na položku **klíčová aplikace DMS Hybrid App** , přejděte na **všechny úlohy**a pak vyberte **Spravovat privátní klíče**.
+    b. Klepněte pravým tlačítkem myši na položku **DMS Hybrid App Key** , přejděte na **všechny úkoly**a vyberte příkaz **Spravovat soukromé klíče**.
 
-    c. Na kartě **zabezpečení** vyberte **Přidat**a potom zadejte název účtu.
+    c. Na kartě **Zabezpečení** vyberte **Přidat**a zadejte název účtu.
 
-    d. Použijte stejný postup pro udělení oprávnění privátního klíče pro nový účet do certifikátu **páru klíčů pro modul DMS scénáře** .
+    d. Stejným postupem udělte oprávnění soukromého klíče pro nový účet certifikátu **spárem klíčů modulu DMS.**
 
-## <a name="unregistering-the-worker-manually"></a>Ruční zrušení registrace pracovního procesu
+## <a name="unregistering-the-worker-manually"></a>Ruční zrušení registrace pracovníka
 
-Pokud již nemáte přístup k pracovnímu počítači, můžete zrušit registraci pracovního procesu a znovu použít instanci Azure Database Migration Service provedením následujících kroků:
+Pokud už nemáte přístup k pracovnímu počítači, můžete zrušit registraci pracovníka a znovu použít instanci služby Migrace databáze Azure provedením následujících kroků:
 
-1. V Azure Portal přijděte ke své instanci Azure Database Migration Service a pak přejděte na stránku **hybridní** nastavení.
+1. Na webu Azure Portal se dostal do instance služby Migrace databáze Azure a pak přejděte na stránku **Hybridní** nastavení.
 
-   Položka pracovního procesu se zobrazí v seznamu se stavem zobrazeným v **režimu offline**.
+   Položka pracovníka se zobrazí v seznamu se stavem **offline**.
 
-2. Do pravého seznamu položek pracovního procesu vyberte tři tečky a pak vyberte zrušit **registraci**.
+2. Zcela vpravo od výpisu položky pracovníka vyberte tři tečky a pak vyberte **Zrušit registraci**.
 
 ## <a name="addressing-issues-for-specific-migration-scenarios"></a>Řešení problémů pro konkrétní scénáře migrace
 
-Níže uvedené části popisují problémy specifické pro scénáře týkající se použití Azure Database Migration Service hybridního režimu k provedení migrace online.
+Následující části popisují problémy specifické pro scénář související s použitím hybridního režimu služby Migrace databáze Azure k provedení migrace online.
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Online migrace do Azure SQL Database spravované instance
+### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Online migrace do spravované instance Azure SQL Database
 
 **Vysoké využití procesoru**
 
-**Problém**: u online migrací do SQL Database spravované instance se na počítači, na kterém hybridní pracovní proces pracuje, zaznamená vysoké využití procesoru, pokud je moc velký počet záloh nebo pokud jsou zálohy moc velké.
+**Problém**: Pro online migrace do instance spravované službou SQL Database počítač s hybridním pracovníkem narazí na vysoké využití procesoru, pokud existuje příliš mnoho záloh nebo pokud jsou zálohy příliš velké.
 
-**Zmírnění rizika**: Pokud chcete tento problém zmírnit, použijte komprimované zálohy, rozdělte migraci tak, aby používala víc sdílených složek, nebo nahorizontální navýšení kapacity počítače, na kterém běží hybridní pracovní proces.
+**Zmírnění :** Chcete-li tento problém zmírnit, použijte komprimované zálohy, rozdělte migraci tak, aby používala více sdílených složek, nebo vertikálně navýšit kapacitu počítače s hybridním pracovníkem.

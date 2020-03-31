@@ -1,65 +1,65 @@
 ---
 title: Obnovení aplikace ze snímku
-description: Přečtěte si, jak obnovit aplikaci ze snímku. Obnovte z neočekávané ztráty dat na úrovni Premium pomocí automatických stínových kopií.
+description: Přečtěte si, jak obnovit aplikaci ze snímku. Obnovte se z neočekávané ztráty dat na úrovni Premium pomocí automatických stínových kopií.
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255153"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Obnovení aplikace v Azure ze snímku
-V tomto článku se dozvíte, jak obnovit aplikaci v [Azure App Service](../app-service/overview.md) ze snímku. Můžete obnovit aplikaci do předchozího stavu, a to na základě jedné z snímků vaší aplikace. Není nutné povolit zálohování snímků, platforma automaticky uloží snímek všech aplikací pro účely obnovení dat.
+Tento článek ukazuje, jak obnovit aplikaci ve [službě Azure App Service](../app-service/overview.md) ze snímku. Aplikaci můžete obnovit do předchozího stavu na základě jednoho ze snímků aplikace. Není nutné povolit zálohování snímků, platforma automaticky uloží snímek všech aplikací pro účely obnovení dat.
 
-Snímky jsou přírůstkové stínové kopie a nabízejí několik výhod oproti pravidelným [zálohám](manage-backup.md):
-- Kvůli zámkům souborů se nenašly žádné chyby kopírování souborů.
-- Žádné omezení velikosti úložiště
+Snímky jsou přírůstkové stínové kopie a nabízejí několik výhod oproti pravidelným [zálohováním](manage-backup.md):
+- Žádné chyby kopírování souborů z důvodu uzamčení souborů.
+- Žádné omezení velikosti úložiště.
 - Není nutná žádná konfigurace.
 
-Obnovení ze snímků je k dispozici pro aplikace běžící na úrovni **Premium** nebo vyšší. Informace o škálování aplikace najdete v tématu [horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md).
+Obnovení ze snímků je k dispozici pro aplikace spuštěné na úrovni **Premium** nebo vyšší. Informace o škálování aplikace najdete [v tématu Vertika navýšit kapacitu aplikace v Azure](manage-scale-up.md).
 
 ## <a name="limitations"></a>Omezení
 
-- Tato funkce je aktuálně ve verzi Preview.
-- Můžete obnovit pouze do stejné aplikace nebo do slotu patřícího k dané aplikaci.
-- Při obnovení App Service zastaví cílovou aplikaci nebo cílovou pozici.
-- App Service zachovává tři měsíce na snímky pro účely obnovení dat platformy.
-- Snímky můžete obnovit jenom za posledních 30 dní.
-- App Services spuštěné v App Service Environment nepodporují snímky.
+- Funkce je aktuálně ve verzi Preview.
+- Můžete obnovit pouze do stejné aplikace nebo do slotu, který patří do této aplikace.
+- Služba App Service zastaví cílovou aplikaci nebo cílový slot při obnovení.
+- Služba App Service uchovává snímky v hodnotě tří měsíců pro účely obnovení dat platformy.
+- Snímky lze obnovit pouze za posledních 30 dní.
+- Služby aplikací spuštěné v prostředí služby App Service nepodporují snímky.
  
 
 ## <a name="restore-an-app-from-a-snapshot"></a>Obnovení aplikace ze snímku
 
-1. Na stránce **Nastavení** aplikace v [Azure Portal](https://portal.azure.com)klikněte na **zálohování** . zobrazí se stránka **zálohy** . Pak klikněte na **obnovit** v části **snímek (Preview)** .
+1. Na stránce **Nastavení** aplikace na [webu Azure Portal](https://portal.azure.com)klikněte na **Zálohy** a zobrazte stránku **Zálohy.** Potom klikněte na **Obnovit** v části **Snímek(Náhled).**
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 
-2. Na stránce **obnovení** vyberte snímek, který chcete obnovit.
+2. Na stránce **Obnovení** vyberte snímek, který chcete obnovit.
    
     ![](./media/app-service-web-restore-snapshots/2.png)
    
-3. Zadejte cíl pro obnovení aplikace v umístění pro **obnovení**.
+3. Zadejte cíl pro obnovení aplikace v **cíli obnovení**.
    
     ![](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > Pokud zvolíte možnost **přepsat**, všechna stávající data v aktuálním systému souborů vaší aplikace budou smazána a přepsána. Než kliknete na **OK**, ujistěte se, že to je to, co chcete udělat.
+   > Pokud zvolíte **Přepsat**, všechna existující data v aktuálním systému souborů aplikace se smaže a přepíší. Než klepnete na tlačítko **OK**, ujistěte se, že je to, co chcete udělat.
    > 
    > 
       
    > [!Note]
-   > Kvůli aktuálním technickým omezením můžete jenom obnovit aplikace jenom ve stejné jednotce škálování. Toto omezení bude v budoucí verzi odebráno.
+   > Vzhledem k aktuálním technickým omezením můžete obnovit pouze aplikace ve stejné jednotce škálování. Toto omezení bude odebráno v budoucí verzi.
    > 
    > 
    
-    Můžete vybrat **existující aplikaci** , která se má obnovit do slotu. Než použijete tuto možnost, měli byste už ve své aplikaci vytvořit slot.
+    Můžete vybrat **existující aplikace** obnovit do patice. Než použijete tuto možnost, měli jste už v aplikaci vytvořit patici.
 
-4. Můžete zvolit obnovení konfigurace lokality.
+4. Můžete obnovit konfiguraci webu.
    
     ![](./media/app-service-web-restore-snapshots/4.png)
 

@@ -5,8 +5,12 @@
   items:
     - name: Představení služby Azure Active Directory
       href: active-directory-whatis.md
+    - name: Porovnání Azure AD a ADDS
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Novinky ve službě Azure Active Directory
       href: whats-new.md
+    - name: Novinky ve službě Microsoft 365 Government
+      href: whats-new-microsoft-365-government.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -17,8 +21,6 @@
 - name: Koncepty
   expanded: true
   items:
-    - name: Identity Secure Score
-      href: identity-secure-score.md
     - name: Zabezpečení
       items:
         - name: Povolení MFA
@@ -27,24 +29,30 @@
           href: concept-fundamentals-security-defaults.md
         - name: Blokování starší verze ověřování
           href: concept-fundamentals-block-legacy-authentication.md
-    - name: Správa přístupu a skupin
-      href: active-directory-manage-groups.md
-    - name: Licencování na základě skupin
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Architektura Azure AD
-      href: active-directory-architecture.md
-    - name: Výchozí uživatelská oprávnění
-      href: users-default-permissions.md
-    - name: 'Nasazení 30, 90 a dál'
+        - name: Identity Secure Score
+          href: identity-secure-score.md
+    - name: Skupiny a uživatelé
+      items:
+        - name: Správa přístupu a skupin
+          href: active-directory-manage-groups.md
+        - name: Licencování na základě skupin
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: Výchozí uživatelská oprávnění
+          href: users-default-permissions.md
+    - name: Architektura
+      items:
+        - name: Architektura Azure AD
+          href: active-directory-architecture.md
+    - name: Průvodce nasazením
+      items:
+        - name: 'Nasazení 30, 90 a dál'
       href: active-directory-deployment-checklist-p2.md
-    - name: Úložiště dat identity pro EU
-      href: active-directory-data-storage-eu.md
-    - name: Úložiště dat identity pro Austrálii a Nový Zéland
-      href: active-directory-data-storage-australia-newzealand.md
-    - name: Novinky ve službě Microsoft 365 Government
-      href: whats-new-microsoft-365-government.md
-    - name: Porovnání Azure AD a ADDS
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: Úložiště dat
+      items:
+        - name: Úložiště dat identity pro Evropu
+          href: active-directory-data-storage-eu.md
+        - name: Úložiště dat identity pro Austrálii a Nový Zéland
+          href: active-directory-data-storage-australia-newzealand.md
     - name: Reference operací Azure AD
       items:
         - name: Úvod

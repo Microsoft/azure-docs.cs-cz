@@ -1,6 +1,6 @@
 ---
 title: Změny provedené v projektu MVC při připojení ke službě Azure AD
-description: Popisuje, co se stane s projektem MVC při připojení ke službě Azure AD pomocí připojených služeb sady Visual Studio.
+description: Popisuje, co se stane s vaším projektem MVC při připojení k Azure AD pomocí připojených služeb Visual Studia
 author: ghogen
 manager: jillfra
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
@@ -12,68 +12,68 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79036957"
 ---
-# <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem MVC (připojená služba Visual Studio Azure Active Directory)?
+# <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem MVC (propojená služba Visual Studio Azure Active Directory)?
 
 > [!div class="op_single_selector"]
 > - [Začínáme](vs-active-directory-dotnet-getting-started.md)
 > - [Co se přihodilo](vs-active-directory-dotnet-what-happened.md)
 
-Tento článek popisuje přesné změny provedené v projektu ASP.NET MVC při přidávání [Azure Active Directory připojené služby pomocí sady Visual Studio](vs-active-directory-add-connected-service.md).
+Tento článek identifikuje přesné změny provedené v projektu ASP.NET MVC při přidávání [připojené služby Azure Active Directory pomocí sady Visual Studio](vs-active-directory-add-connected-service.md).
 
-Informace o práci s připojenou službou najdete v tématu [Začínáme](vs-active-directory-dotnet-getting-started.md).
+Informace o práci s připojenou službou naleznete v [tématu Začínáme](vs-active-directory-dotnet-getting-started.md).
 
 ## <a name="added-references"></a>Přidané odkazy
 
-Má vliv na soubor projektu (*. NET References) a `packages.config` (odkazy na NuGet).
+Ovlivňuje soubor projektu (*.NET odkazy) a `packages.config` (NuGet odkazy).
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
-| .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
+| .NET; NuGet | Rozšíření Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
 | .NET; NuGet | Microsoft.Owin.Security |
 | .NET; NuGet | Microsoft.Owin.Security.Cookies |
 | .NET; NuGet | Microsoft.Owin.Security.OpenIdConnect |
-| .NET; NuGet | Owin |
-| .NET        | System.IdentityModel |
+| .NET; NuGet | Owin (Owin) |
+| .NET        | Model System.IdentityModel |
 | .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 | .NET        | System.Runtime.Serialization |
 
-Další odkazy, pokud jste vybrali možnost **data pro čtení adresáře** :
+Další odkazy, pokud jste vybrali možnost **Číst data adresáře:**
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
-| .NET        | EntityFramework. SqlServer (pouze Visual Studio 2015) |
-| .NET; NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
+| .NET        | EntityFramework.SqlServer (pouze Visual Studio 2015) |
+| .NET; NuGet | Klient Microsoft.Azure.ActiveDirectory.Graph |
 | .NET; NuGet | Microsoft.Data.Edm |
 | .NET; NuGet | Microsoft.Data.OData |
-| .NET; NuGet | Microsoft.Data.Services.Client |
+| .NET; NuGet | Microsoft.data.Services.client |
 | .NET; NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
-| .NET        | Microsoft. IdentityModel. clients. Active. WindowsForms (pouze Visual Studio 2015) |
-| .NET; NuGet | System. prostor |
+| .NET        | Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms (pouze Visual Studio 2015) |
+| .NET; NuGet | System.Spatial |
 
-Následující odkazy jsou odebrány (pouze projekty ASP.NET 4, jako v aplikaci Visual Studio 2015):
+Následující odkazy jsou odebrány (ASP.NET pouze 4 projekty, jako v Sadě Visual Studio 2015):
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
-| .NET; NuGet | Microsoft.AspNet.Identity.Owin |
+| .NET; NuGet | Soubor Microsoft.AspNet.Identity.Owin |
 
-## <a name="project-file-changes"></a>Změny souborů projektu
+## <a name="project-file-changes"></a>Změny souboru projektu
 
-- Nastavte vlastnost `IISExpressSSLPort` na jedinečné číslo.
-- Nastavte vlastnost `WebProject_DirectoryAccessLevelKey` na hodnotu 0 nebo 1, pokud jste vybrali možnost **číst data adresáře** .
-- Nastavte vlastnost `IISUrl` na `https://localhost:<port>/`, kde `<port>` odpovídá hodnotě `IISExpressSSLPort`.
+- Nastavte vlastnost `IISExpressSSLPort` na odlišné číslo.
+- Nastavte vlastnost `WebProject_DirectoryAccessLevelKey` na 0 nebo 1, pokud jste vybrali možnost **Číst data adresáře.**
+- Nastavte vlastnost `IISUrl` `https://localhost:<port>/` na `<port>` místo, kde odpovídá hodnotě. `IISExpressSSLPort`
 
-## <a name="webconfig-or-appconfig-changes"></a>změny souboru Web. config nebo App. config
+## <a name="webconfig-or-appconfig-changes"></a>web.config nebo app.config se mění
 
 - Přidány následující položky konfigurace:
 
@@ -87,17 +87,17 @@ Následující odkazy jsou odebrány (pouze projekty ASP.NET 4, jako v aplikaci 
     </appSettings>
     ```
 
-- Přidány `<dependentAssembly>` prvky pod uzlem `<runtime><assemblyBinding>` pro `System.IdentityModel.Tokens.Jwt` a `Microsoft.IdentityModel.Protocol.Extensions`.
+- Přidány `<dependentAssembly>` prvky `<runtime><assemblyBinding>` pod `System.IdentityModel.Tokens.Jwt` uzlem pro a `Microsoft.IdentityModel.Protocol.Extensions`.
 
-Další změny, pokud jste vybrali možnost **číst data adresáře** :
+Další změny, pokud jste vybrali možnost **Číst data adresáře:**
 
-- Do `<appSettings>`přidat následující položku konfigurace:
+- V části byla `<appSettings>`přidána následující položka konfigurace :
 
     ```xml
     <add key="ida:ClientSecret" value="<Azure AD app's new client secret>" />
     ```
 
-- Do `<configuration>`byly přidány následující prvky: hodnoty pro projekt-MDF-File a Project-Catalog-ID se budou lišit:
+- Do aplikace byly `<configuration>`přidány následující prvky ; hodnoty pro project-mdf-file a project-catalog-id se budou lišit:
 
     ```xml
     <configSections>
@@ -121,29 +121,29 @@ Další změny, pokud jste vybrali možnost **číst data adresáře** :
     </entityFramework>
     ```
 
-- Přidány `<dependentAssembly>` prvky pod uzlem `<runtime><assemblyBinding>` pro `Microsoft.Data.Services.Client`, `Microsoft.Data.Edm`a `Microsoft.Data.OData`.
+- Přidány `<dependentAssembly>` prvky `<runtime><assemblyBinding>` pod `Microsoft.Data.Services.Client`uzel `Microsoft.Data.Edm`pro `Microsoft.Data.OData`, a .
 
-## <a name="code-changes-and-additions"></a>Změny kódu a přidání
+## <a name="code-changes-and-additions"></a>Změny kódu a dodatky
 
-- Přidání atributu `[Authorize]` do `Controllers/HomeController.cs` a dalších existujících řadičů.
+- Byl `[Authorize]` přidán `Controllers/HomeController.cs` atribut a všechny ostatní existující řadiče.
 
-- Přidala se spouštěcí třída ověřování, `App_Start/Startup.Auth.cs`, která obsahuje spouštěcí logiku pro ověřování Azure AD. Pokud jste vybrali možnost **číst data adresáře** , tento soubor také obsahuje kód pro příjem kódu OAuth a jeho výměnu pro přístupový token.
+- Byla přidána třída `App_Start/Startup.Auth.cs`spuštění ověřování , která obsahuje logiku spuštění pro ověřování Azure AD. Pokud jste vybrali možnost **Číst data adresáře,** tento soubor také obsahuje kód pro příjem kódu OAuth a jeho výměnu za přístupový token.
 
-- Přidala se třída kontroleru `Controllers/AccountController.cs`, která obsahuje metody `SignIn` a `SignOut`.
+- Přidána třída `Controllers/AccountController.cs`kontroleru `SignIn` , `SignOut` obsahující a metody.
 
-- Přidání částečného zobrazení `Views/Shared/_LoginPartial.cshtml`, které obsahuje odkaz akce pro `SignIn` a `SignOut`.
+- Bylo přidáno `Views/Shared/_LoginPartial.cshtml`částečné zobrazení , obsahující `SignIn` `SignOut`odkaz na akci pro a .
 
-- Přidání částečného zobrazení, `Views/Account/SignoutCallback.cshtml`obsahujícího kód HTML pro přihlašovací uživatelské rozhraní.
+- Přidáno částečné `Views/Account/SignoutCallback.cshtml`zobrazení , obsahující HTML pro odhlašovací uI.
 
-- Byla aktualizována metoda `Startup.Configuration`, aby zahrnovala volání `ConfigureAuth(app)`, pokud třída již existovala; v opačném případě přidali třídu `Startup`, která obsahuje volání metody.
+- Byla `Startup.Configuration` aktualizována metoda tak, aby zahrnovala volání, `ConfigureAuth(app)` pokud třída již existovala; jinak přidal `Startup` třídu, která zahrnuje volání metody.
 
-- Přidáno `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) nebo `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) obsahující informace, které Visual Studio používá ke sledování přidávání připojené služby.
+- Přidáno `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) nebo `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015), obsahující informace, které Visual Studio používá ke sledování přidání připojené služby.
 
-- Pokud jste vybrali možnost **číst data adresáře** , přidali `Models/ADALTokenCache.cs` a `Models/ApplicationDbContext.cs`, aby se podporovalo ukládání tokenu do mezipaměti. Přidali jsme také další kontroler a zobrazení pro ilustraci přístupu k informacím o profilu uživatele pomocí rozhraní API Azure Graph: `Controllers/UserProfileController.cs`, `Views/UserProfile/Index.cshtml`a `Views/UserProfile/Relogin.cshtml`
+- Pokud jste vybrali možnost Číst `Models/ADALTokenCache.cs` data `Models/ApplicationDbContext.cs` **adresáře,** byla přidána a podporovala ukládání tokenů do mezipaměti. Přidali také další řadič a zobrazení pro ilustraci `Controllers/UserProfileController.cs`přístupu k informacím o profilu uživatele pomocí rozhraní API grafu Azure: , `Views/UserProfile/Index.cshtml`a`Views/UserProfile/Relogin.cshtml`
 
 ### <a name="file-backup-visual-studio-2015"></a>Zálohování souborů (Visual Studio 2015)
 
-Při přidávání připojené služby Visual Studio 2015 zálohované a odebrané soubory se změnily. Všechny ovlivněné soubory jsou uloženy ve složce `Backup/AzureAD`. Visual Studio 2017 a novější nevytváří zálohy.
+Při přidávání připojené služby Visual Studio 2015 zálohy změněné a odebrané soubory. Všechny ohrožené soubory jsou `Backup/AzureAD`uloženy ve složce . Visual Studio 2017 a novější nevytváří zálohy.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`
@@ -156,12 +156,12 @@ Při přidávání připojené služby Visual Studio 2015 zálohované a odebran
 
 ## <a name="changes-on-azure"></a>Změny v Azure
 
-- V doméně, kterou jste vybrali při přidávání připojené služby, se vytvořila aplikace služby Azure AD.
-- Aplikace se aktualizovala tak, aby zahrnovala oprávnění **číst data adresáře** , pokud se tato možnost vybrala.
+- Vytvořil aplikaci Azure AD v doméně, kterou jste vybrali při přidávání připojené služby.
+- Byla aktualizována aplikace tak, aby zahrnovala oprávnění **Číst data adresáře,** pokud byla tato možnost vybrána.
 
-[Přečtěte si další informace o Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
+[Další informace o službě Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
-- [Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu](quickstart-v2-aspnet-webapp.md)
+- [Scénáře ověřování pro Službu Azure Active Directory](authentication-scenarios.md)
+- [Přidání přihlášení s Microsoftem do ASP.NET webové aplikace](quickstart-v2-aspnet-webapp.md)

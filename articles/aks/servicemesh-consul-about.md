@@ -1,101 +1,101 @@
 ---
-title: Přehled Consul
-description: Získání přehledu o Consul
+title: Přehled konzula
+description: Získat přehled o konzul
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594205"
 ---
-# <a name="consul"></a>Consul
+# <a name="consul"></a>Konzul
 
 ## <a name="overview"></a>Přehled
 
-[Consul][consul] je řešení pro síťové služby podporující více datových center pro připojení a zabezpečení služeb napříč platformami za běhu. [Connect][consul-features] je součást poskytující možnosti sítě služby.
+[Consul][consul] je síťové řešení pro více datových center pro připojení a zabezpečení služeb napříč platformami runtime. [Připojit][consul-features] je součást, která poskytuje možnosti sítě služby.
 
 ## <a name="architecture"></a>Architektura
 
-Consul poskytuje rovinu dat, která se skládá z [sajdkáry][consul-sidecar] založeného na [zástupné][envoy-proxy]ve výchozím nastavení. Consul má připojenou architekturu proxy serveru. Tyto inteligentní proxy servery řídí veškerý síťový provoz v a z vašich aplikací a úloh.
+Konzul poskytuje datovou rovinu, která se ve výchozím nastavení skládá z postranních [vozů][consul-sidecar] založených na [vyslanci.][envoy-proxy] Konzul má připojitelnou proxy architekturu. Tyto inteligentní proxy servery řídí veškerý síťový provoz ve vašich aplikacích a úlohách.
 
-Rovina ovládacího prvku spravuje konfiguraci a zásady prostřednictvím následujících [komponent][consul-architecture]:
+Řídicí rovina spravuje konfiguraci a zásady prostřednictvím [následujících součástí][consul-architecture]:
 
-- **Server** – agent Consul spuštěný v režimu serveru, který udržuje stav clusteru Consul.
+- **Server** - Agent konzula spuštěný v režimu serveru, který udržuje stav clusteru konzula.
 
-- **Klient** -agent Consul spuštěný v režimu zjednodušeného klienta. Každý výpočetní uzel musí mít spuštěného klientského agenta. Tento klient brokere konfiguraci a zásadu mezi úlohami a konfigurací Consul. 
+- **Klient** - Consul Agent běží v režimu zjednodušeného klienta. Každý výpočetní uzel musí mít spuštěného agenta klienta. Tento klient zprostředkovává konfiguraci a zásady mezi úlohami a konfigurací konzula. 
 
-Následující diagram architektury znázorňuje, jak různé komponenty v rovině dat a řídící rovině pracují.
+Následující diagram architektury ukazuje, jak různé součásti v rovině dat a rovině ovládacího prvku interagují.
 
-![Přehled komponent a architektury Consul](media/servicemesh/consul/about-architecture.png)
+![Přehled consulských komponent a architektury.](media/servicemesh/consul/about-architecture.png)
 
 
 ## <a name="selection-criteria"></a>Kritéria výběru
 
-Při vyhodnocování Consul pro vaše úlohy je důležité pochopit a vzít v úvahu následující oblasti:
+Při hodnocení konzula pro vaše úlohy je důležité porozumět následujícím oblastem a zvážit je:
 
-- [Principy Consul](#consul-principles)
-- [Vestavěn](#capabilities)
+- [Principy konzula](#consul-principles)
+- [Možnosti](#capabilities)
 - [Scénáře](#scenarios)
 
 
-### <a name="consul-principles"></a>Principy Consul
+### <a name="consul-principles"></a>Principy konzula
 
-Následující principy [provedou][consul-principles] projekt Consul:
+Projekt konzula [se řídí][consul-principles] následujícími zásadami:
 
-- **Rozhraní API – řízené** Codify všechny konfigurace a zásady.
+- **API-Driven** - Kodifikujte všechny konfigurace a zásady.
 
-- **Spouštění a připojování úloh odkudkoli a** připojení napříč platformami za běhu (Kubernetes, virtuální počítače a bez serveru).
+- **Spouštět a připojovat odkudkoli** – propojovat úlohy napříč platformami runtime (Kubernetes, VMs, Serverless).
 
-- **Rozšíří a integruje** úlohy s bezpečným připojením napříč infrastrukturou.
+- **Rozšířit a integrovat** – bezpečně propojovat úlohy napříč infrastrukturou.
 
 
 ### <a name="capabilities"></a>Možnosti
 
-Consul poskytuje následující sadu funkcí:
+Konzul poskytuje následující sadu funkcí:
 
-- **Síť** – brána (více datových Center), virtuální počítače (z uzlů clusteru), synchronizace služby, integrovaná možnost ladění
+- **Mesh** – brána (multi datová centra), virtuální počítače (mimo uzly clusteru), synchronizace služeb, integrovaná možnost ladění
 
-- **Proxy servery** – zástupné, integrovaný proxy server, který je možné připojit k dispozici pro úlohy Windows
+- **Proxy servery** – vyslanec, vestavěný proxy server, připojitelný, l4 proxy k dispozici pro úlohy systému Windows
 
-- **Správa provozu** – směrování, rozdělování, řešení
+- **Řízení provozu** – směrování, rozdělení, řešení
 
-- **Zásady** – záměry, seznamy ACL
+- **Politika** – záměry, ACL
 
-- **Zabezpečení** – autorizace, ověřování, šifrování, identity založené na SPIFFE, externí certifikační autorita (trezor), Správa certifikátů a rotace
+- **Zabezpečení** – autorizace, ověřování, šifrování, identity založené na SPIFFE, externí CA (Vault), správa certifikátů a rotace
 
-- **Pozorování** – metriky, řídicí panel uživatelského rozhraní, Prometheus, grafana
+- **Pozorovatelnost** – metriky, ui přístrojová deska, prometheus, grafana
 
 
 ### <a name="scenarios"></a>Scénáře
 
-Consul je vhodný pro a navržený z následujících scénářů:
+Konzul je vhodný a navrhl pro následující scénáře:
 
-- Rozšíření stávajících úloh připojených k Consul
+- Rozšíření stávajících propojených úloh konzula
 
-- Požadavky na dodržování předpisů kolem správy certifikátů
+- Požadavky na dodržování předpisů týkající se správy certifikátů
 
-- Síť s více clustery
+- Síť více clusterových služeb
 
-- Úlohy na bázi virtuálních počítačů, které se mají zahrnout do sítě
+- Úlohy založené na virtuálních mkcích, které mají být zahrnuty do sítě služeb
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující dokumentace popisuje, jak můžete nainstalovat Consul do služby Azure Kubernetes Service (AKS):
+Následující dokumentace popisuje, jak můžete nainstalovat konzula do služby Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Instalace Consul ve službě Azure Kubernetes (AKS)][consul-install]
+> [Instalace konzula ve službě Azure Kubernetes Service (AKS)][consul-install]
 
-Můžete také dále prozkoumat funkce a architekturu Consul:
+Můžete také dále prozkoumat funkce a architekturu konzula:
 
-- [Funkce Consul][consul-features]
-- [Architektura Consul][consul-architecture]
-- [Consul – jak funguje připojení][consul-how-connect-works]
+- [Funkce konzula][consul-features]
+- [Konzularchitektura][consul-architecture]
+- [Konzul - Jak connect funguje][consul-how-connect-works]
 
 <!-- LINKS - external -->
 [consul]: https://www.consul.io/mesh.html

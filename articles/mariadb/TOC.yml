@@ -63,6 +63,8 @@
           href: concepts-data-access-security-private-link.md
         - name: Rozšířená ochrana před internetovými útoky
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Kontinuita podnikových procesů
       items:
         - name: Úvod do provozní kontinuity
@@ -138,6 +140,10 @@
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+    - name: Odepření přístupu k veřejné síti
+      items:
+        - name: portál Azure
+          href: howto-deny-public-network-access.md
     - name: Přístup k protokolům serveru
       items:
         - name: Protokoly pomalých dotazů

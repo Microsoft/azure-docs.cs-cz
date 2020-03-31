@@ -1,6 +1,6 @@
 ---
-title: Použití rozhraní Python API ke spuštění úlohy Azure Batch
-description: Pomocí klientské knihovny Batch Pythonu rychle spustíte ukázkovou úlohu Azure Batch a úlohy. Seznamte se s klíčovými koncepty služby Batch.
+title: Spuštění dávkové úlohy Azure pomocí rozhraní API pythonu
+description: Pomocí klientské knihovny Batch Python můžete rychle spustit ukázkovou úlohu azure batch a úlohy. Seznamte se s klíčovými koncepty služby Batch.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -13,29 +13,29 @@ ms.custom:
 - seo-python-october2019
 - mvc
 ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77086039"
 ---
-# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Rychlý Start: použití rozhraní Python API ke spuštění úlohy Azure Batch
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Úvodní příručka: Spuštění dávkové úlohy Azure pomocí rozhraní Python API
 
-V tomto rychlém startu použijete rozhraní Python API ke spuštění Azure Batch úlohy z aplikace. Aplikace nahrává vstupní datové soubory pro Azure Storage a vytvoří *fond* výpočetních uzlů Batch (virtuálních počítačů). Pak vytvoří *úlohu* , která spustí *úlohy* ke zpracování jednotlivých vstupních souborů ve fondu pomocí příkazu Basic.
+V tomto rychlém startu použijete rozhraní PYTHON API ke spuštění úlohy Azure Batch z aplikace. Aplikace nahraje vstupní datové soubory do Azure Storage a vytvoří *fond* dávkových výpočetních uzlů (virtuálních počítačů). Potom vytvoří *úlohu,* která spouští *úlohy* pro zpracování každého vstupního souboru ve fondu pomocí základního příkazu.
 
-Tady se dozvíte o klíčových konceptech služby Batch a o tom, jak se dá vyzkoušet dávka s efektivnějšími úlohami ve větším měřítku.
+Zde se dozvíte klíčové koncepty služby Batch a budete připraveni vyzkoušet batch s realističtějšími úlohami ve větším měřítku.
 
 ![Přehled pracovního postupu Azure Batch](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Účet **Azure Batch** a propojený **Azure Storage** účet. K vytvoření těchto účtů použijte [Azure Portal](quick-create-portal.md) nebo [CLI](quick-create-cli.md) .
-- [Python](https://python.org/downloads), verze 2,7 nebo 3,3 nebo novější, včetně Správce balíčků [PIP](https://pip.pypa.io/en/stable/installing/)
+- Účet **Azure Batch** a propojený účet Azure **Storage.** Pomocí [portálu Azure nebo](quick-create-portal.md) [cli](quick-create-cli.md) k vytvoření těchto účtů.
+- [Python](https://python.org/downloads), verze 2.7 nebo 3.3 nebo novější, včetně správce [balíčků pip](https://pip.pypa.io/en/stable/installing/)
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -47,7 +47,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-V adresáři, který obsahuje skript Pythonu `python_quickstart_client.py`, přejít.
+Přejděte do adresáře, `python_quickstart_client.py`který obsahuje skript Pythonu .
 
 Ve vývojovém prostředí Pythonu nainstalujte vyžadované balíčky pomocí `pip`.
 
@@ -55,7 +55,7 @@ Ve vývojovém prostředí Pythonu nainstalujte vyžadované balíčky pomocí `
 pip install -r requirements.txt
 ```
 
-Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s hodnotami získanými pro účty. Příklad:
+Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s hodnotami získanými pro účty. Například:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -108,7 +108,7 @@ Když aplikaci spouštíte v její výchozí konfiguraci, je obvyklá doba prov�
 Aplikace Python v tomto rychlém startu provádí tyto kroky:
 
 * Odešle tři malé textové soubory do kontejneru objektů blob ve vašem účtu služby Azure Storage. Tyto soubory představují vstup pro zpracování úlohami služby Batch.
-* Vytvoří fond dvou výpočetních uzlů se systémem Ubuntu 18,04 LTS.
+* Vytvoří fond dvou výpočetních uzlů se systémem Ubuntu 18.04 LTS.
 * Vytvoří úlohu a tři úkoly ke spuštění v uzlech. Každý úkol zpracovává pomocí příkazového řádku prostředí Bash jeden vstupní soubor.
 * Zobrazí soubory vrácené úkoly.
 
@@ -147,9 +147,9 @@ batch_client = batch.BatchServiceClient(
     batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
-### <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
+### <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
-K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure-batch/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
+K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Zde objekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) určuje [imageReference](/python/api/azure-batch/azure.batch.models.imagereference) image na bitovou kopii Ubuntu Server 18.04 LTS publikovanou na Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 
 Počet uzlů (`_POOL_NODE_COUNT`) a velikost virtuálního počítače (`_POOL_VM_SIZE`) jsou definované konstanty. Ukázka ve výchozím nastavení vytvoří fond se 2 uzly velikosti *Standard_A1_v2*. Navržená velikost nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
 
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Vytvoření úlohy Batch
 
-Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Aplikace používá třídu [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [Job. Add](/python/api/azure-batch/azure.batch.operations.joboperations) přidá úlohu do zadaného účtu Batch. Na začátku úloha neobsahuje žádné úkoly.
+Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Aplikace používá třídu [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) přidá úlohu k zadanému účtu Batch. Na začátku úloha neobsahuje žádné úkoly.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -228,9 +228,9 @@ for task in tasks:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Za fond, ve kterém jsou spuštěné uzly, se účtují poplatky, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
+Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Provedete to tak, že v Azure Portal vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Pokud tak chcete provést na webu Azure Portal, vyberte skupinu prostředků pro účet Batch a vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 

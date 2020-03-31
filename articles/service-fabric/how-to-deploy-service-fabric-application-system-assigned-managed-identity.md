@@ -1,27 +1,27 @@
 ---
-title: Nasazení aplikace Service Fabric se systémem MI přiřazeným
-description: V tomto článku se dozvíte, jak přiřadit spravovanou identitu přiřazenou systémem k aplikaci Azure Service Fabric.
+title: Nasazení aplikace Service Fabric se systémem přiřazeným MI
+description: Tento článek ukazuje, jak přiřadit systémem přiřazenou spravovanou identitu k aplikaci Azure Service Fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614821"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Nasazení aplikace Service Fabric pomocí spravované identity přiřazené systémem (Preview)
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Nasazení aplikace Service Fabric se spravovanou identitou přiřazenou systémem (preview)
 
-Aby bylo možné získat přístup k funkci Managed identity pro aplikace Service Fabric Azure, musíte nejdřív v clusteru povolit službu Managed identity token. Tato služba zodpovídá za ověřování Service Fabric aplikací pomocí svých spravovaných identit a pro získání přístupových tokenů jejich jménem. Jakmile je služba povolená, můžete ji zobrazit v Service Fabric Explorer v části **systém** v levém podokně, která je spuštěná pod názvem **Fabric:/System/ManagedIdentityTokenService** vedle ostatních systémových služeb.
+Chcete-li získat přístup k funkci spravované identity pro aplikace Azure Service Fabric, musíte nejprve povolit službu Token spravované identity v clusteru. Tato služba je zodpovědná za ověřování aplikací Service Fabric pomocí jejich spravovaných identit a za získání přístupových tokenů jejich jménem. Jakmile je služba povolena, můžete ji vidět v aplikaci Service Fabric Explorer v části **Systém** v levém podokně, spuštěné pod názvem **fabric:/System/ManagedIdentityTokenService** vedle jiných systémových služeb.
 
 > [!NOTE] 
-> Nasazení aplikací Service Fabric se spravovanými identitami se podporuje od verze rozhraní API `"2019-06-01-preview"`. Můžete použít také stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby. Minimální podporovaná Service Fabric runtime je 6,5 CU2. V additoin by prostředí pro sestavení nebo balení mělo mít také SF .NET SDK na CU2 nebo vyšší.
+> Nasazení aplikací Service Fabric se spravovanými `"2019-06-01-preview"`identitami je podporováno počínaje verzí rozhraní API . Můžete také použít stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby. Minimální podporovaný modul runtime Service Fabric je 6,5 CU2. V additoin, sestavení / balíček prostředí by měl mít také SF .Net SDK na CU2 nebo vyšší
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
 ### <a name="application-template"></a>Šablona aplikace
 
-Chcete-li povolit aplikaci se spravovanou identitou přiřazenou systémem, přidejte do prostředku aplikace vlastnost **identity** s typem **systemAssigned** , jak je znázorněno v následujícím příkladu:
+Chcete-li povolit aplikaci se systémem přiřazenou spravovanou identitou, přidejte vlastnost **identity** do prostředku aplikace s **typem systemAssigned,** jak je znázorněno v příkladu níže:
 
 ```json
     {
@@ -43,13 +43,13 @@ Chcete-li povolit aplikaci se spravovanou identitou přiřazenou systémem, při
       }
     }
 ```
-Tato vlastnost deklaruje (pro Azure Resource Manager a poskytovatele prostředků spravované identity a Service Fabric, v uvedeném pořadí, že tento prostředek musí mít spravovanou identitu (`system assigned`).
+Tato vlastnost deklaruje (Správce prostředků Azure a zprostředkovatelé prostředků spravované identity a prostředků`system assigned`infrastruktury služeb, respektive, že tento prostředek musí mít implicitní ( ) spravované identity.
 
-### <a name="application-and-service-package"></a>Balíček aplikace a služby
+### <a name="application-and-service-package"></a>Balíček aplikací a služeb
 
-1. Aktualizujte manifest aplikace a přidejte tak element **ManagedIdentity** v části **objekty zabezpečení** obsahující jednu položku, jak je znázorněno níže:
+1. Aktualizujte manifest aplikace a přidejte element **ManagedIdentity** do části **Principals** obsahující jednu položku, jak je znázorněno níže:
 
-    **Souboru ApplicationManifest. XML**
+    **ApplicationManifest.xml**
 
     ```xml
     <Principals>
@@ -58,11 +58,11 @@ Tato vlastnost deklaruje (pro Azure Resource Manager a poskytovatele prostředk�
       </ManagedIdentities>
     </Principals>
     ```
-    Tato služba mapuje identitu přiřazenou aplikaci jako prostředek k popisnému názvu, aby bylo možné další přiřazení ke službám, které tvoří aplikaci. 
+    To mapuje identitu přiřazenou aplikaci jako prostředek na popisný název pro další přiřazení ke službám obsahujícím aplikaci. 
 
-2. V části **ServiceManifestImport** , která odpovídá službě, ke které je přiřazena spravovaná identita, přidejte element **IdentityBindingPolicy** , jak je uvedeno níže:
+2. V části **ServiceManifestImport** odpovídající službě, které je přiřazena spravovaná identita, přidejte element **IdentityBindingPolicy,** jak je uvedeno níže:
 
-    **Souboru ApplicationManifest. XML**
+    **ApplicationManifest.xml**
 
       ```xml
         <ServiceManifestImport>
@@ -72,11 +72,11 @@ Tato vlastnost deklaruje (pro Azure Resource Manager a poskytovatele prostředk�
         </ServiceManifestImport>
       ```
 
-    Tento prvek přiřadí identitu aplikace ke službě. bez tohoto přiřazení nebude služba moci získat přístup k identitě aplikace. Ve fragmentu kódu výše je `SystemAssigned` identita (což je rezervované klíčové slovo) namapována na definici služby v rámci popisného názvu `WebAdmin`.
+    Tento prvek přiřadí identitu aplikace službě; bez tohoto přiřazení nebude mít služba přístup k identitě aplikace. Ve výše uvedeném fragmentu `SystemAssigned` je identita (což je vyhrazené klíčové slovo) mapována `WebAdmin`na definici služby pod popisným názvem .
 
-3. Aktualizujte manifest služby pro přidání elementu **ManagedIdentity** do oddílu **Resources** s názvem, který odpovídá hodnotě nastavení `ServiceIdentityRef` z definice `IdentityBindingPolicy` v manifestu aplikace:
+3. Aktualizujte manifest služby a přidejte prvek **ManagedIdentity** do části `ServiceIdentityRef` **Prostředky** s názvem odpovídajícím hodnotě nastavení z `IdentityBindingPolicy` definice v manifestu aplikace:
 
-    **ServiceManifest. XML**
+    **ServiceManifest.xml**
 
     ```xml
       <Resources>
@@ -86,12 +86,12 @@ Tato vlastnost deklaruje (pro Azure Resource Manager a poskytovatele prostředk�
         </ManagedIdentities>
       </Resources>
     ```
-    Jedná se o ekvivalentní mapování identity ke službě, jak je popsáno výše, ale z perspektivy definice služby. Na identitu tady odkazuje jeho popisný název (`WebAdmin`), jak je deklarované v manifestu aplikace.
+    Toto je ekvivalentní mapování identity na službu, jak je popsáno výše, ale z hlediska definice služby. Identita je zde odkazována popisný název (`WebAdmin`), jak je uvedeno v manifestu aplikace.
 
 ## <a name="next-steps"></a>Další kroky
-* Kontrola [podpory spravovaných identit](./concepts-managed-identity.md) v Azure Service Fabric
-* [Nasadit novou](./configure-new-azure-service-fabric-enable-managed-identity.md) Cluster Azure Service Fabric s podporou spravované identity 
+* Kontrola [podpory spravovaných identit](./concepts-managed-identity.md) ve službě Azure Service Fabric
+* [Nasazení nového](./configure-new-azure-service-fabric-enable-managed-identity.md) Cluster Azure Service Fabric s podporou spravovaných identit 
 * [Povolení spravované identity](./configure-existing-cluster-enable-managed-identity-token-service.md) v existujícím clusteru Azure Service Fabric
-* Využití spravované identity Service Fabric aplikace [ze zdrojového kódu](./how-to-managed-identity-service-fabric-app-code.md)
+* Využití spravované identity aplikace Service Fabric [ze zdrojového kódu](./how-to-managed-identity-service-fabric-app-code.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Udělení přístupu k aplikacím Azure Service Fabric k ostatním prostředkům Azure](./how-to-grant-access-other-resources.md)
+* [Udělení přístupu aplikací Azure Service Fabric k dalším prostředkům Azure](./how-to-grant-access-other-resources.md)

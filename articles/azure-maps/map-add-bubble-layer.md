@@ -1,6 +1,6 @@
 ---
-title: Přidat bublinovou vrstvu do mapy | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak přidat bublinovou vrstvu k mapě pomocí webové sady SDK Microsoft Azure Maps.
+title: Přidání bublinové vrstvy do mapy | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak přidat vrstvu Bublina do mapy pomocí sady Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,22 +10,22 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77208552"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Přidání bublinové vrstvy do mapy
 
-V tomto článku se dozvíte, jak vykreslovat data bodů ze zdroje dat jako bublinovou vrstvu na mapě. Bubliny vrstev vykreslí body jako kružnice na mapě s pevným poloměrem v pixelech. 
+Tento článek ukazuje, jak vykreslit data bodů ze zdroje dat jako bublinovou vrstvu na mapě. Vrstvy bublin vykreslují body jako kružnice na mapě s pevným poloměrem obrazových bodů. 
 
 > [!TIP]
-> Bublinové vrstvy ve výchozím nastavení budou kreslit souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu, nastavte vlastnost `filter` vrstvy na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, pokud chcete zahrnout i funkce systému MultiPoint.
+> Vrstvy bublin ve výchozím nastavení vykreslí souřadnice všech geometrií ve zdroji dat. Chcete-li vrstvu omezit tak, aby vykreslovala pouze prvky geometrie bodů, nastavte `filter` vlastnost hladiny na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` pokud chcete zahrnout také prvky Vícebodového bodu.
 
 ## <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
-Následující kód načte pole bodů do zdroje dat. Datové body se pak připojí k [bublinové vrstvě](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). Bublinová vrstva vykresluje poloměr každého bublinu s pěti obrazovými body a barvou výplně bílá. A, Barva tahu modrou a šířka tahu šest pixelů. 
+Následující kód načte pole bodů do zdroje dat. Poté připojí datové body k [bublinové vrstvě](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). Bublinová vrstva vykreslí poloměr každé bubliny pěti obrazovými body a barvou výplně bílou. A barva tahu modré a šířka tahu šest pixelů. 
 
 ```javascript
 //Add point locations.
@@ -53,51 +53,51 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 }));
 ```
 
-Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce.
+Níže je kompletní ukázka spuštěného kódu výše uvedených funkcí.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer zdroj dat' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>si prohlédněte <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>zdroj dat pera BubbleLayer</a> .
+<iframe height='500' scrolling='no' title='Zdroj dat vrstvy bublin' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na Pero <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="show-labels-with-a-bubble-layer"></a>Zobrazit popisky s bublinovou vrstvou
+## <a name="show-labels-with-a-bubble-layer"></a>Zobrazení popisků s bublinovou vrstvou
 
-Tento kód ukazuje, jak použít bublinovou vrstvu pro vykreslení bodu na mapě. A jak použít vrstvu symbolů pro vykreslení popisku. Chcete-li skrýt ikonu vrstvy symbolů, nastavte vlastnost `image` možností ikony na `'none'`.
+Tento kód ukazuje, jak použít bublinovou vrstvu k vykreslení bodu na mapě. A jak použít vrstvu symbolu k vykreslení popisku. Chcete-li skrýt ikonu vrstvy `image` symbolů, nastavte `'none'`vlastnost voleb ikon na .
 
 <br/>
 
-<iframe height='500' scrolling='no' title='MultiLayer zdroj dat' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>si prohlédněte <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>zdroj dat pera MultiLayer</a> .
+<iframe height='500' scrolling='no' title='Vícevrstvý zdroj dat' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>vícevrstvé DataSource</a> podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-a-bubble-layer"></a>Přizpůsobení bublinové vrstvy
 
-Bublinová vrstva má pouze několik možností stylu. Tady je nástroj pro jejich vyzkoušení.
+Vrstva Bublina má pouze několik možností stylů. Zde je nástroj, jak je vyzkoušet.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti bublinové vrstvy' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>Možnosti vrstvy bublinového</a> pera podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Volby bublinové vrstvy' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>možnosti bublinové vrstvy</a> pera podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o třídách a metodách, které se používají v tomto článku:
+Další informace o třídách a metodách použitých v tomto článku:
 
 > [!div class="nextstepaction"]
-> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
+> [Vrstva bublin](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [Možnosti bublinové vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
 
-Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
+Další ukázky kódu, které chcete přidat do map, naleznete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Vytvoření zdroje dat](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu symbolů](map-add-pin.md)
+> [Přidání vrstvy symbolů](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Použití výrazů stylu založených na datech](data-driven-style-expressions-web-sdk.md)
+> [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)

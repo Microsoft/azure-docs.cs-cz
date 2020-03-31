@@ -24,6 +24,8 @@
           href: cloud-governed-management-for-on-premises.md
         - name: Čtyři kroky k posílení základu identit
           href: four-steps.md
+        - name: Volba hybridní metody ověřování identit
+          href: choose-ad-authn.md
     - name: Azure AD Connect a Connect Health
       items:
         - name: Co je Azure AD Connect a Connect Health?
@@ -312,6 +314,8 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: Potíže s instalací
           href: tshoot-connect-install-issues.md
+        - name: Změny hlavního názvu uživatele (UPN)
+          href: howto-troubleshoot-upn-changes.md
 - name: Referenční informace
   items:
     - name: 'Porty a protokoly, které vyžaduje hybridní identita'

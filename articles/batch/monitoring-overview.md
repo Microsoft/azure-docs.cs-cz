@@ -1,6 +1,6 @@
 ---
-title: Azure Batch monitorování | Microsoft Docs
-description: Přečtěte si o službě Azure Monitoring Services, metrikách, diagnostických protokolech a dalších funkcích monitorování pro Azure Batch.
+title: Monitorování azure batch | Dokumenty společnosti Microsoft
+description: Přečtěte si o službách monitorování Azure, metrikách, diagnostických protokolech a dalších funkcích monitorování pro Azure Batch.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -11,61 +11,61 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: labrenne
 ms.openlocfilehash: d251229c522bd4d6daca894513eaae14d244d8a1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025856"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorování řešení Batch
 
-Azure a služba Batch poskytují řadu služeb, nástrojů a rozhraní API pro monitorování vašich řešení Batch. Tento přehledový článek vám pomůže vybrat přístup pro monitorování, který vyhovuje vašim potřebám.
+Azure a služba Batch poskytují řadu služeb, nástrojů a api pro monitorování vašich dávkových řešení. Tento přehled článku vám pomůže zvolit přístup monitorování, který vyhovuje vašim potřebám.
 
-Přehled komponent a služeb Azure, které jsou k dispozici pro monitorování prostředků Azure, najdete v tématu [monitorování aplikací a prostředků Azure](../monitoring-and-diagnostics/monitoring-overview.md).
+Přehled součástí a služeb Azure dostupných ke sledování prostředků Azure najdete v [tématu Monitorování aplikací a prostředků Azure](../monitoring-and-diagnostics/monitoring-overview.md).
 
 ## <a name="subscription-level-monitoring"></a>Monitorování na úrovni předplatného
 
-Na úrovni předplatného, která zahrnuje účty Batch, shromažďuje [Protokol aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) data provozní události v [několika kategoriích](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log).
+Na úrovni předplatného, která zahrnuje účty Batch, [protokol aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) shromažďuje data provozních událostí v několika [kategoriích](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log).
 
-Pro účty Batch konkrétně protokol aktivit shromažďuje události související se vytvářením a odstraňováním účtů a správou klíčů.
+Pro dávkové účty konkrétně protokol aktivit shromažďuje události související s vytvořením a odstraněním účtu a správou klíčů.
 
-Jedním ze způsobů, jak načíst události z protokolu aktivit, je použít Azure Portal. Klikněte na **všechny služby** > **protokolu aktivit**. Nebo se můžete dotazovat na události pomocí rozhraní příkazového řádku Azure CLI, rutin PowerShellu nebo Azure Monitor REST API. Můžete také exportovat protokol aktivit nebo nakonfigurovat [výstrahy protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
+Jedním ze způsobů, jak načíst události z vašeho protokolu aktivit, je použití portálu Azure. Klepněte na**položku Protokol aktivit** **všech služeb** > . Nebo dotaz na události pomocí Azure CLI, Rutiny PowerShell nebo rozhraní API Azure Monitor REST. Můžete také exportovat protokol aktivit nebo nakonfigurovat [výstrahy protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
 
-## <a name="batch-account-level-monitoring"></a>Monitorování na úrovni účtu Batch
+## <a name="batch-account-level-monitoring"></a>Dávkové monitorování na úrovni účtu
 
-Monitorujte každý účet Batch pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [metriky](../azure-monitor/platform/data-platform-metrics.md) a volitelně [diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md) pro prostředky s rozsahem na úrovni účtu Batch, jako jsou fondy, úlohy a úkoly. Shromažďovat a spotřebovávat tato data ručně nebo programově, abyste mohli monitorovat aktivity v účtu Batch a diagnostikovat problémy. Podrobnosti najdete v tématu [metriky, výstrahy a protokoly služby Batch pro vyhodnocení a monitorování diagnostiky](batch-diagnostics.md).
+Sledujte každý účet Batch pomocí funkcí [Azure Monitoru](../azure-monitor/overview.md). Azure Monitor shromažďuje [metriky](../azure-monitor/platform/data-platform-metrics.md) a volitelně [diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md) pro prostředky vymezené na úrovni účtu Batch, jako jsou fondy, úlohy a úkoly. Shromažďujte a konzumujte tato data ručně nebo programově, abyste sledovali aktivity ve vašem účtu Batch a diagnostikovali problémy. Podrobnosti naleznete v [tématu Dávkové metriky, výstrahy a protokoly pro diagnostické vyhodnocení a monitorování](batch-diagnostics.md).
  
 > [!NOTE]
-> Metriky jsou ve výchozím nastavení k dispozici ve vašem účtu Batch bez další konfigurace a mají 30denní průběžnou historii. Je nutné povolit protokolování diagnostiky pro účet Batch a za účelem uložení nebo zpracování dat protokolů diagnostiky můžete účtovat další náklady. 
+> Metriky jsou ve výchozím nastavení k dispozici ve vašem účtu Batch bez další konfigurace a mají 30denní klouzavou historii. Je nutné povolit protokolování diagnostiky pro účet Batch a může vám vzniknout další náklady na ukládání nebo zpracování diagnostických dat protokolu. 
 
-## <a name="batch-resource-monitoring"></a>Sledování prostředků Batch
+## <a name="batch-resource-monitoring"></a>Monitorování dávkových prostředků
 
-V aplikacích Batch pomocí rozhraní API služby Batch můžete monitorovat stav svých prostředků, včetně úloh, úkolů, uzlů a fondů, a dotazovat se na ně. Příklad:
+V dávkových aplikacích použijte dávková api ke sledování nebo dotazování na stav prostředků, včetně úloh, úkolů, uzlů a fondů. Například:
 
-* [Počet úloh a výpočetních uzlů podle stavu](batch-get-resource-counts.md)
-* [Efektivní vytváření dotazů k vypsání prostředků Batch](batch-efficient-list-queries.md)
-* [Vytváření závislostí úloh](batch-task-dependencies.md)
-* Použití [úkolu správce úloh](/rest/api/batchservice/job/add#jobmanagertask)
-* Monitorování [stavu úlohy](/rest/api/batchservice/task/list#taskstate)
-* Monitorování [stavu uzlu](/rest/api/batchservice/computenode/list#computenodestate)
-* Monitorování [stavu fondu](/rest/api/batchservice/pool/get#poolstate)
-* Monitorovat [využití fondu v účtu](/rest/api/batchservice/pool/listusagemetrics)
-* [Počet uzlů fondu podle stavu](/rest/api/batchservice/account/listpoolnodecounts)
+* [Počítání úloh a výpočet uzlů podle stavu](batch-get-resource-counts.md)
+* [Vytvoření dotazů pro efektivní seznam dávkových prostředků](batch-efficient-list-queries.md)
+* [Vytvoření závislostí mezi úkoly](batch-task-dependencies.md)
+* Použití [úlohy správce úloh](/rest/api/batchservice/job/add#jobmanagertask)
+* Sledování [stavu úlohy](/rest/api/batchservice/task/list#taskstate)
+* Sledování [stavu uzlu](/rest/api/batchservice/computenode/list#computenodestate)
+* Sledování [stavu fondu](/rest/api/batchservice/pool/get#poolstate)
+* Sledování [využití fondu v účtu](/rest/api/batchservice/pool/listusagemetrics)
+* [Počítat uzly fondu podle stavu](/rest/api/batchservice/account/listpoolnodecounts)
 
 ## <a name="vm-performance-counters-and-application-monitoring"></a>Čítače výkonu virtuálních počítačů a monitorování aplikací
 
-* [Application Insights](../azure-monitor/app/app-insights-overview.md) je služba Azure, kterou můžete použít k programovému monitorování dostupnosti, výkonu a využití úloh a úloh služby Batch. Snadno získáte čítače výkonu z výpočetních uzlů (virtuálních počítačů) a vlastní informace pro úlohy mimo virtuální počítače. 
+* [Application Insights](../azure-monitor/app/app-insights-overview.md) je služba Azure, kterou můžete použít k programovému sledování dostupnosti, výkonu a využití dávkových úloh a úloh. Snadno získat čítače výkonu z výpočetních uzlů (VM) a vlastní informace pro úkoly mimo virtuální počítače. 
 
-  Příklad najdete v tématu [monitorování a ladění aplikace Batch .NET pomocí Application Insights](monitor-application-insights.md) a doprovodného [kódu](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights).
+  Příklad najdete v tématu [Sledování a ladění aplikace Batch .NET s application insights](monitor-application-insights.md) a ukázkou doprovodného [kódu](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights).
 
   > [!NOTE]
-  > K používání Application Insights můžete účtovat další poplatky. Podívejte se na [cenové možnosti](https://azure.microsoft.com/pricing/details/application-insights/). 
+  > Za používání Application Insights vám mohou vzniknout dodatečné náklady. Podívejte se na [cenové možnosti](https://azure.microsoft.com/pricing/details/application-insights/). 
   >
 
-* [Batch Explorer](https://github.com/Azure/BatchExplorer) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který vám umožní vytvářet, ladit a monitorovat Azure Batch aplikace. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows. Volitelně můžete nakonfigurovat řešení Batch tak, aby [zobrazovalo Application Insights data](https://github.com/Azure/batch-insights) , jako jsou čítače výkonu virtuálních počítačů v Batch Explorer.
+* [Batch Explorer](https://github.com/Azure/BatchExplorer) je bezplatný, bohatý, samostatný klientský nástroj, který pomáhá vytvářet, ladit a monitorovat aplikace Azure Batch. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows. Volitelně nakonfigurujte dávkové řešení tak, aby [zobrazovalo data Application Insights,](https://github.com/Azure/batch-insights) jako jsou čítače výkonu virtuálních her v Průzkumníku dávek.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
-* Přečtěte si další informace o [protokolování diagnostiky](batch-diagnostics.md) pomocí dávky.
+* Přečtěte si další informace o [diagnostickém protokolování](batch-diagnostics.md) pomocí služby Batch.

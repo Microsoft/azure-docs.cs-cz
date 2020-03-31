@@ -9,13 +9,13 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 1240b4b7e2c84e798c6d7e5257e459628da1420f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68642082"
 ---
-Ve výstupu `identity` příkazu se v části zobrazuje identita typu `UserAssigned` nastavená v úloze:
+Ve výstupu příkazu `identity` se v části `UserAssigned` zobrazí identita typu nastavená v úloze:
 
 ```console
 [...]

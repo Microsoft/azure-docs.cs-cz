@@ -1,6 +1,6 @@
 ---
-title: 'Předávací ověřování Azure AD: Historie vydání verze | Microsoft Docs'
-description: V tomto článku jsou uvedené všechny verze agenta předávacího ověřování Azure AD.
+title: 'Předávací ověřování Azure AD: Historie verzí verze | Dokumenty společnosti Microsoft'
+description: Tento článek obsahuje seznam všech verzí agenta předávacího ověřování Azure AD
 services: active-directory
 author: billmath
 manager: daveba
@@ -13,68 +13,68 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c5d0efe8e662544dc69356c6b17dd7eca6f3a50
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74786448"
 ---
-# <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Ověřovací agent předávacího ověřování Azure AD: Historie verzí 
+# <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Agent předávacího ověřování Azure AD: Historie verzí vydání 
  
-Agenti místně nainstalovanou k povolení předávacího ověřování se pravidelně aktualizují, aby poskytovaly nové funkce. Tento článek obsahuje seznam verzí a funkcí, které se přidávají při zavedení nových funkcí. Agenti předávacího ověřování se automaticky aktualizují při vydání nové verze. 
+Agenti nainstalované v místním prostředí, které umožňují předávací ověřování, jsou pravidelně aktualizováni, aby poskytovali nové funkce. Tento článek uvádí verze a funkce, které jsou přidány při zavedení nové funkce. Předávací ověřování agenti jsou aktualizovány automaticky při vydání nové verze. 
 
-Tady jsou Příbuzná témata: 
+Zde jsou související témata: 
 
 - [Přihlášení uživatele pomocí předávacího ověřování Azure AD](how-to-connect-pta.md) 
-- [Instalace ověřovacího agenta předávacího ověřování Azure AD](how-to-connect-pta-quick-start.md) 
+- [Instalace agenta předávacího ověřování Azure AD](how-to-connect-pta-quick-start.md) 
 
 
 
 ## <a name="1510070"></a>1.5.1007.0 
 ### <a name="release-status"></a>Stav verze 
-1/22/2019: vydáno ke stažení  
+1/22/2019: Vydáno ke stažení  
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
-- Přidání podpory Service Bus spolehlivých kanálů pro přidání další vrstvy odolnosti připojení pro odchozí připojení 
-- Vynutilit TLS 1,2 během registrace agenta 
+- Přidána podpora spolehlivých kanálů Service Bus pro přidání další vrstvy odolnosti připojení pro odchozí připojení 
+- Vynutit TLS 1.2 během registrace agenta 
 
 ## <a name="156430"></a>1.5.643.0 
 ### <a name="release-status"></a>Stav verze 
-4/10/2018: vydáno ke stažení  
+10.4.2018: Vydáno ke stažení  
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
 - Podpora připojení webového soketu 
-- Nastavte TLS 1,2 jako výchozí protokol pro agenta. 
+- Nastavení protokolu TLS 1.2 jako výchozího protokolu agenta 
  
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Stav verze 
-1/31/2018: vydáno ke stažení  
+1/31/2018: Vydáno ke stažení  
 ### <a name="fixed-issues"></a>Oprava potíží 
 
-- Opravili jsme chybu, která způsobila nevracení paměti v agentovi. 
-- Aktualizace verze Azure Service Bus, která zahrnuje opravu chyby pro problémy s časovým limitem konektoru. 
+- Opravena chyba, která způsobovala některé nevracení paměti v agentovi. 
+- Byla aktualizována verze služby Azure Service Bus, která zahrnuje opravu chyb pro problémy s časovým časem konektoru. 
  
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Stav verze 
-11/26/2017: vydáno ke stažení  
+11/26/2017: Vydáno ke stažení  
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
-- Přidání podpory pro připojení založená na protokolu WebSocket mezi agentem a službami Azure AD za účelem zvýšení odolnosti připojení 
+- Přidána podpora pro připojení založená na websocketu mezi agentem a službami Azure AD pro zlepšení odolnosti proti připojení 
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>Stav verze 
-11/25/2017: vydáno ke stažení  
+11/25/2017: Vydáno ke stažení  
 ### <a name="fixed-issues"></a>Oprava potíží 
-- Opravené chyby související s mezipamětí DNS pro výchozí scénáře proxy 
+- Opraveny chyby související s mezipamětí DNS pro výchozí scénáře proxy serveru 
  
 ## <a name="153890"></a>1.5.389.0 
 ### <a name="release-status"></a>Stav verze 
-10/17/2017: vydáno ke stažení  
+10/17/2017: Vydáno ke stažení  
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
-- Přidání funkce mezipaměti DNS pro odchozí připojení, aby se přidala odolnost proti chybám DNS 
+- Přidána funkce mezipaměti DNS pro odchozí připojení pro přidání odolnosti proti chybám DNS 
  
 ## <a name="152610"></a>1.5.261.0 
 ### <a name="release-status"></a>Stav verze 
-08/31/2017: vydáno ke stažení  
+08/31/2017: Vydáno ke stažení  
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
-- GA verze agenta předávacího ověřování Azure AD 
+- Verze GA předávacího agenta Azure AD 
 
 ## <a name="next-steps"></a>Další kroky
 

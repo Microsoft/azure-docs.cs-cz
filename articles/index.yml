@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 015631efc0077bdaab9a335b4a38fbf4f927e22d
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80129809"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80286009"
 highlightedContent:
   items:
   - title: Úvodní příručka pro vývojáře v Azure
@@ -32,7 +32,7 @@ highlightedContent:
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
   - title: Získávání dovedností pomocí Microsoft Learn
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
 productDirectory:
   title: Produkty Azure
   items:
@@ -129,14 +129,14 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/bing-web-search/overview.md
-  - title: Kognitivní služby
+  - title: Cognitive Services
     summary: Rozšíření inteligentních funkcí rozhraní API pro kontextové interakce
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - featured
     - ai-machine-learning
     url: cognitive-services/index.yml
-  - title: Počítačové zpracování obrazu
+  - title: Computer Vision
     summary: Zjištění využitelných informací z obrázků
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
@@ -372,7 +372,7 @@ productDirectory:
     azureCategories:
     - blockchain
     url: blockchain/workbench/index.yml
-  - title: Databáze Azure Cosmos
+  - title: Azure Cosmos DB
     summary: Globálně distribuovaná databázová služba pro libovolné škálování
     imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
     azureCategories:
@@ -527,7 +527,7 @@ productDirectory:
     - compute
     - windows-virtual-desktop
     url: virtual-desktop/index.yml
-  - title: Virtuální počítače s Windows
+  - title: Windows Virtual Machines
     summary: Zřizování virtuálních počítačů s Windows v řádu sekund
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
     azureCategories:
@@ -1203,7 +1203,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/queues/index.yml
-  - title: Úložiště
+  - title: Storage
     summary: Zajištění zabezpečeného, masivně škálovatelného cloudového úložiště pro data, aplikace a úlohy
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
@@ -1248,7 +1248,7 @@ tools:
   - title: REST API
     imageSrc: https://docs.microsoft.com/media/logos/logo_REST.svg
     url: https://docs.microsoft.com/rest/api/
-  - title: Azure Powershell
+  - title: Azure PowerShell
     imageSrc: https://docs.microsoft.com/media/logos/logo_powershell.svg
     url: https://docs.microsoft.com/powershell/azure/
   - title: Azure CLI

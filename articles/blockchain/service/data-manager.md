@@ -1,46 +1,46 @@
 ---
-title: Co je blockchain Data Manager pro službu Azure blockchain
-description: Blockchain Data Manager pro zachycení, transformuje a doručuje Blockchainá data pro Event Grid témata.
+title: Co je Blockchain Data Manager pro službu Azure Blockchain
+description: Blockchain Data Manager pro zachycení, transformaci a dodává data blockchainu do témat Event Grid.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: chroyal
 ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77209439"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Co je Blockchain Data Manager pro Azure Blockchain Service?
 
-Blockchain Data Manager zachycuje, transformuje a doručuje data transakcí služby Azure blockchain a Azure Event Grid témata poskytující spolehlivou a škálovatelnou integraci blockchain v rámci služeb Azure.
+Blockchain Data Manager zachycuje, transformuje a doručuje transakční data služby Azure Blockchain Service do témat Azure Event Grid, která poskytují spolehlivou a škálovatelnou integraci blockchainové knihy se službami Azure.
 
-Ve většině scénářů Enterprise Blockchain je hlavní kniha blockchain jednou součástí řešení. Například pro přenos assetu z jedné entity do jiné potřebujete mechanismus pro odeslání transakce. Pak budete potřebovat mechanismus pro čtení dat hlavní knihy, abyste zajistili, že transakce byla přijata, a výsledné změny stavu jsou pak integrovány do kompletního řešení. Pokud v tomto příkladu napíšete pro přenos assetů inteligentní kontrakt, můžete k integraci aplikací a úložišť dat mimo řetěz použít Data Manager blockchain. Pokud se příklad přenosu assetu přenáší do blockchain, jsou události a změny stavu vlastností doručovány pomocí služby blockchain Data Manager prostřednictvím Event Grid. Pak můžete použít více možných obslužných rutin událostí pro Event Grid k uložení dat blockchain mimo řetěz nebo reakci na změny stavu v reálném čase.
+Ve většině scénářů podnikového blockchainu je hlavní kniha blockchainu jednou součástí řešení. Chcete-li například převést majetek z jedné entity do druhé, potřebujete mechanismus pro odeslání transakce. Potom potřebujete mechanismus pro čtení dat hlavní knihy, abyste zajistili, že k transakci došlo, byla přijata a výsledné změny stavu jsou pak integrovány s řešením dokončení. V tomto příkladu pokud napíšete inteligentní smlouvu pro přenos datových zdrojů, můžete pomocí Správce dat Blockchain integrovat aplikace mimo řetězec a úložiště dat. V příkladu převodu aktiv, když je aktivum převedeno na blockchain, události a změny stavu majetku jsou dodávány blockchainovým datovým managerem prostřednictvím Event Grid. Potom můžete použít více možných obslužných rutin událostí pro Event Grid k ukládání dat blockchain u řetězu nebo reagovat na změny stavu v reálném čase.
 
-Blockchain Data Manager provádí tři hlavní funkce: zachytit, transformovat a dodat.
+Blockchain Data Manager plní tři hlavní funkce: zachycování, transformaci a doručování.
 
-![Funkce Data Manager blockchain](./media/data-manager/functions.png)
+![Funkce Správce dat blockchainu](./media/data-manager/functions.png)
 
 ## <a name="capture"></a>Zachycování
 
-Každá instance blockchain Data Manager se připojuje k jednomu uzlu členské transakce služby Azure blockchain. Připojení, které zajišťuje správné řízení přístupu k zákaznickým datům, může vytvořit pouze uživatelé s přístupem k uzlu transakce. Blockchain Data Manager instance spolehlivě zachycuje všechna nezpracovaná a nezpracovaná data transakcí z uzlu transakce a je možné ji škálovat na podporu podnikových úloh.
+Každá instance Správce dat Blockchain se připojuje k jednomu členskému uzlu služby Azure Blockchain Service. Pouze uživatelé s přístupem k uzlu transakce můžete vytvořit připojení zajišťující správné řízení přístupu k datům zákazníka. Instance Správce dat Blockchain spolehlivě zachycuje všechna nezpracovaná data bloků a nezpracovaných transakcí z transakčního uzlu a může škálovat pro podporu podnikových úloh.
 
 ## <a name="transform"></a>Transformace
 
-Blockchain Data Manager můžete použít k dekódování událostí a stavu vlastností tím, že v blockchain Data Manager nakonfigurujete aplikace inteligentních smluv. Chcete-li přidat inteligentní kontrakt, zadejte kontrakt ABI a kód. Blockchain Data Manager používá artefakty inteligentních kontraktů k dekódování a zjišťování adres smluv. Po přidání aplikace blockchain do instance blockchain Data Manager dynamicky zjistí adresu inteligentního kontraktu, když se inteligentní kontrakt nasadí do konsorcia a pošle Dekódovatelné události a stav vlastnosti do nakonfigurovaných cílů.
+Správce dat Blockchain můžete použít k dekódování událostí a stavu vlastností konfigurací inteligentních smluvních aplikací v rámci Správce dat Blockchain. Chcete-li přidat inteligentní smlouvy, zadejte smlouvu ABI a bytecode. Blockchain Data Manager používá inteligentní artefakty smlouvy k dekódování a zjišťování adres smluv. Po přidání blockchainové aplikace do instance Blockchain Data Manager dynamicky zjišťuje adresu inteligentní smlouvy při nasazení inteligentní smlouvy do konsorcia a odešle dekódované události a stav vlastnosti do nakonfigurovaných cílů.
 
 ## <a name="deliver"></a>Doručování
 
-Blockchain Data Manager podporuje vícenásobná odchozí připojení Event Grid tématu pro všechny dané instance služby blockchain Data Manager. Blockchain data můžete odesílat do jednoho cíle nebo odesílat blockchain data do více cílů. Pomocí Data Manager blockchain můžete vytvořit škálovatelné řešení publikování dat založené na událostech pro jakékoli nasazení blockchain.
+Blockchain Data Manager podporuje více odchozích připojení Event Grid Topic pro danou instanci Blockchain Data Manager. Data blockchainu můžete odesílat do jednoho cíle nebo data blockchainu do více destinací. Pomocí Správce dat blockchainu můžete vytvořit škálovatelné řešení pro publikování dat založené na událostech pro jakékoli nasazení blockchainu.
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Blockchain Data Manager můžete nakonfigurovat tak, aby vyhovovala potřebám vašeho řešení. Můžete například zřídit:
+Správce dat blockchainu můžete nakonfigurovat tak, aby vyhovoval potřebám vašeho řešení. Můžete například zřídit:
 
-* Jedna instance blockchain Data Manager pro člena služby Azure blockchain.
-* Blockchain Data Manager instance na uzel transakce služby Azure blockchain. Například uzly privátních transakcí mohou mít svou vlastní instanci blockchain Data Manager, aby bylo možné zachovat důvěrnost.
-* Instance Data Manager blockchain může podporovat více výstupních připojení. Jednu instanci blockchain Data Manager lze použít ke správě všech integračních bodů publikování dat pro člena služby Azure blockchain.
+* Jedna instance Správce dat blockchainu pro člena služby Azure Blockchain Service.
+* Instance Správce dat blockchain u transakčního uzlu služby Azure Blockchain Service. Například uzly soukromých transakcí mohou mít vlastní instanci Správce dat Blockchain, aby byla zachována důvěrnost.
+* Instance Správce dat Blockchain může podporovat více výstupních připojení. Jednu instanci Správce dat blockchainu lze použít ke správě všech integračních bodů pro publikování dat pro člena služby Azure Blockchain.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkuste [vytvořit instanci Blockchain data Manager](data-manager-portal.md) pro člena služby Azure blockchain.
+Zkuste [vytvořit instanci Správce dat blockchainu](data-manager-portal.md) pro člena služby Azure Blockchain Service.

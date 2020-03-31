@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72801876"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Metody a procesy pro zavádění služby Azure Data Catalog
@@ -54,7 +54,7 @@ Zde uvádíme tipy, které vám mohou pomoct definovat vizi:
 
 Zde je příklad sdělení vize pro plán přijetí katalogu Data Catalog fiktivní společnosti Adventure Works:
 
-**Azure Data Catalog** zmocňuje tým finančního oddělení společnosti Adventure Works ke spolupráci na klíčových zdrojích dat, takže každý člen týmu může snadno vyhledat a použít potřebná data a sdílet své poznatky s týmem jako celek.
+**Azure Data Catalog** umožňuje týmu Adventure Works Finance spolupracovat na klíčových zdrojích dat, takže každý člen týmu může snadno najít a používat data, která potřebuje, a může sdílet své znalosti s týmem jako celkem.
 
 Jakmile máte zřetelné sdělení vize, měli byste identifikovat vhodný pilotní projekt pro službu Data Catalog. Obecně platí, že pro službu Data Catalog bude existovat několik scénářů, takže v další části najdete několik užitečných tipů k identifikaci relevantních případů použití.
 
@@ -69,7 +69,7 @@ Zde jsou některé tipy k identifikaci případů použití:
 * **Definování cílů týmu** – jak tým dosahuje svých cílů? Ještě se nezaměřujte na katalog Data Catalog, protože v této fázi chcete být objektivní. Mějte na paměti, že se že jedná o obchodní výsledky, nikoli o technologii.
 * **Definování obchodního problému** – jaké jsou problémy, týkající se hledání a získávání informací o datových prostředcích, jimž tým čelí? Například informace o důležitých zdrojích dat lze nalézt v sešitech aplikace Excel v síťové složce a tým může trávit spoustu času vyhledáním příslušných sešitů.
 * **Pochopení kultury týmu související se změnou** – mnoho problémů s přijetím se týká odporu vůči změně místo zavádění nového nástroje. Jak týmy reagují na změnu je důležité při identifikaci případů použití, protože existující proces může být používán, neboť "takhle jsme to dělali vždycky" nebo "pokud to není rozbité, proč to opravovat?". Přijetí nového nástroje nebo procesu je vždy jednodušší, když postižení zaměstnanci chápou hodnotu, která se má změnou realizovat a chápou závažnost problémů, které mají být vyřešeny.
-* Zajistěte, aby se v **souvislosti s datovými assety zaměřily** na obchodní problémy, které tým čelí, potřebujete "vyříznout obsahy plevele" a soustředit se na to, co je důležité k efektivnější využívání podnikových datových prostředků.
+* **Mějte zaměření související s datovými prostředky** - Při diskusi o obchodních problémech, kterým tým čelí, musíte "proříznout plevel" a zaměřit se na to, co je důležité pro efektivnější využití aktiv podnikových dat.
 
 Zde jsou některé případy použití příklad týkající se katalogu Data Catalog:
 
@@ -91,7 +91,7 @@ Pilotní plán by měl postupně zavádět obchodní cíle, které chcete dosáh
 
 ### <a name="target-the-right-team"></a>Zaměření se na správný tým
 
-Když zvolíte pilotní projekt, vyberte tým s nejvíce přitažlivými scénáři, které řeší stávající podnikový problém. Například obchodní analytička Jana vytváří sestavy z databáze serveru SQL Server. Problémem je to, že se o zdroji dat dozvěděly až po komunikaci s několika kolegy. Nakonec po plýtvání časem, který se snaží najít zdroje dat, které se mají použít, se objevily informace o excelovém sešitu, který obsahuje popis každého zdroje dat. I když excelový sešit odpovídajícím způsobem popisuje tabulky, které potřebují, mohl by tyto zdroje dat rychle najít, pokud byly zaregistrovány a opatřeny poznámkami v **Azure Data Catalog**.
+Když zvolíte pilotní projekt, vyberte tým s nejvíce přitažlivými scénáři, které řeší stávající podnikový problém. Například obchodní analytička Jana vytváří sestavy z databáze serveru SQL Server. Problém je v tom, že se o zdroji dat dozvěděli až po rozhovoru s několika kolegy. Nakonec se po plýtvání časem snaží zjistit, které zdroje dat použít, zjistili o sešitu aplikace Excel, který obsahuje popis každého zdroje dat. Přestože sešit aplikace Excel adekvátně popisuje tabulky, které potřebují, by tyto zdroje dat rychle našli, pokud by byly zaregistrovány a anotovány v **katalogu dat Azure**.
 
 ### <a name="identify-data-heroes"></a>Identifikace hrdinů dat
 
@@ -101,7 +101,7 @@ První pilotní projekt by měl zahrnovat několik jednotlivců, kteří produku
 
 **Spotřebitelé dat** jsou zaměstnanci s odbornými znalostmi ohledně použití dat k řešení obchodních problémů. Například Nancy je obchodní analytik a používá zdroje dat SQL Server společnosti Adventure Works k analýze dat.
 
-Jeden z obchodních problémů, který řeší služba **Azure Data Catalog**, je připojení **Producentů dat** ke **Spotřebitelům dat**. Toho dosahuje tím, že slouží jako centrální úložiště pro informace o zdrojích dat organizace. Pomocí katalogu Data Catalog David zaregistruje datové zdroje společnosti Adventure Works a serveru SQL Server. Pomocí crowdsourcingový každý uživatel, který zjistí tento zdroj dat, může sdílet své názory na data, a to i s využitím dat, která zjistil. Například Nancy zjistí zdroje dat prohledáním katalogu a podělí se o své specializované znalosti o datech.  Nyní se mohou ostatní uživatelé v organizaci těžit ze sdílené znalostní báze vyhledáním v katalogu dat.
+Jeden z obchodních problémů, který řeší služba **Azure Data Catalog**, je připojení **Producentů dat** ke **Spotřebitelům dat**. Toho dosahuje tím, že slouží jako centrální úložiště pro informace o zdrojích dat organizace. Pomocí katalogu Data Catalog David zaregistruje datové zdroje společnosti Adventure Works a serveru SQL Server. Pomocí crowdsourcingu může každý uživatel, který objeví tento zdroj dat, sdílet své názory na data a používat data, která objevili. Například Nancy zjistí zdroje dat prohledáním katalogu a podělí se o své specializované znalosti o datech.  Nyní se mohou ostatní uživatelé v organizaci těžit ze sdílené znalostní báze vyhledáním v katalogu dat.
 
 * Další informace o registraci zdrojů dat naleznete v tématu [Registrování zdrojů dat](data-catalog-get-started.md).
 * Další informace o zjišťování zdrojů dat naleznete v tématu [Prohledávání zdrojů dat](data-catalog-get-started.md).
@@ -116,7 +116,7 @@ Další část popisuje příklad projektu ze společnosti Adventure Works.
 
 ### <a name="an-example-project"></a>Příklad projektu
 
-V tomto příkladu obchodní analytička Nancy vytváří sestavy pro svůj tým pomocí dat z databáze serveru SQL Server. Problémem je to, že se o zdroji dat dozvěděly až po komunikaci s několika kolegy. V případě, že byly zaregistrovány a opatřeny poznámkami v centrálním umístění, jako je například **Azure Data Catalog**, byly tyto zdroje dat rychle nalezeny.
+V tomto příkladu obchodní analytička Nancy vytváří sestavy pro svůj tým pomocí dat z databáze serveru SQL Server. Problém je v tom, že se o zdroji dat dozvěděli až po rozhovoru s několika kolegy. Tyto zdroje dat by rychle našli, pokud by byly zaregistrovány a anotovány v centrálním umístění, jako je **například Azure Data Catalog**.
 
 Pro ilustraci, jak snadno může Nancy a její tým najít hodnotná data, použijete nástroj pro registraci zdroje dat k vyplnění katalogu informacemi (metadata) o zdrojích dat. Tímto způsobem jsou informace o databázi k dispozici týmu a podniku a nikoli pouze několika jednotlivcům. Jakmile se zdroje dat zaregistrují ve službě Data Catalog, Nancy a její tým je mohou snadno použít. Výsledkem je komplexnější a relevantní katalog dat pro její tým i celý podnik. Čím více týmů přijme katalog Data Catalog, tím snadnější bude vyhledání a používání zdrojů obchodních dat, což vytvoří datově orientovanější kulturu, která s vašimi daty dosáhne lepších výsledků.
 
@@ -165,4 +165,4 @@ Tento článek byl o seznámení se službou **Azure Data Catalog** ve vaší or
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření Azure Data Catalog](data-catalog-get-started.md)
+[Vytvoření Azure Data Catalogu](data-catalog-get-started.md)

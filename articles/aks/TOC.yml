@@ -14,7 +14,8 @@
           href: kubernetes-walkthrough.md
         - name: Použití webu Azure Portal
           href: kubernetes-walkthrough-portal.md
-        - name: Použití šablony Resource Manageru
+        - name: Použití šablony ARM
+          displayName: Resource Manager
           href: kubernetes-walkthrough-rm-template.md
     - name: Vývoj aplikací
       expanded: true
@@ -73,6 +74,8 @@
       href: concepts-storage.md
     - name: Měřítko
       href: concepts-scale.md
+    - name: Automatické opravy uzlů
+      href: node-auto-repair.md
     - name: Osvědčené postupy
       items:
         - name: Přehled
@@ -123,6 +126,8 @@
           href: upgrade-cluster.md
         - name: Aktualizace operačního systému procesních uzlů
           href: node-updates-kured.md
+        - name: Konfigurace clusteru AKS
+          href: cluster-configuration.md
         - name: Integrace ACR s clusterem AKS
           href: cluster-container-registry-integration.md
         - name: Vytváření virtuálních uzlů
@@ -198,7 +203,7 @@
       items:
         - name: Vytvoření instančního objektu
           href: kubernetes-service-principal.md
-        - name: Použití spravovaných identit (Preview)
+        - name: Použití spravovaných identit
           href: use-managed-identity.md
         - name: Omezení přístupu ke konfiguračnímu souboru clusteru
           href: control-kubeconfig-access.md
@@ -216,6 +221,8 @@
           href: limit-egress-traffic.md
         - name: Povolení integrace Azure Active Directory
           items:
+            - name: Integrace Azure AD (Preview)
+              href: azure-ad-v2.md
             - name: Použití Azure CLI
               href: azure-ad-integration-cli.md
             - name: Použití webu Azure Portal

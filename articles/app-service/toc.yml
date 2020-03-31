@@ -265,6 +265,8 @@
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Řešení potíží
       items:
+        - name: Řešení občasných chyb odchozího připojení
+          href: troubleshoot-intermittent-outbound-connection-errors.md
         - name: Řešení potíží se sadou Visual Studio
           href: troubleshoot-dotnet-visual-studio.md
         - name: Řešení potíží s aplikací v Node.js

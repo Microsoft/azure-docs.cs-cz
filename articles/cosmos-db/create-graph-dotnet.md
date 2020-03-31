@@ -1,5 +1,5 @@
 ---
-title: Vytvoření Azure Cosmos DB .NET Framework, základní aplikace pomocí rozhraní Gremlin API
+title: Vytvoření rozhraní Azure Cosmos DB .NET Framework, základní aplikace pomocí rozhraní Gremlin API
 description: Obsahuje ukázku kódu v .NET Framework a .NET Core, kterou můžete použít k připojení ke službě Azure Cosmos DB a jejímu dotazování.
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
 ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240188"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: vytvoření .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Úvodní příručka: Vytvoření rozhraní .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -26,13 +26,13 @@ ms.locfileid: "79240188"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
 
-Tento rychlý Start ukazuje, jak vytvořit Azure Cosmos DB účet [rozhraní API Gremlin](graph-introduction.md) , databázi a graf (kontejner) pomocí Azure Portal. Potom sestavíte a spustíte konzolovou aplikaci pomocí open source ovladače [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
+Tento rychlý start ukazuje, jak vytvořit účet rozhraní API Azure Cosmos DB [Gremlin,](graph-introduction.md) databázi a graf (kontejner) pomocí portálu Azure. Potom sestavíte a spustíte konzolovou aplikaci pomocí open source ovladače [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+Pokud ještě nemáte nainstalovaný Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,7 +48,7 @@ Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si st
 
 Teď naklonujeme aplikaci rozhraní Gremlin API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
     ```bash
     md "C:\git-samples"
@@ -79,50 +79,50 @@ Teď naklonujeme aplikaci rozhraní Gremlin API z GitHubu, nastavíme připojov
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace připojovacího řetězce](#update-your-connection-string). 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
 
 Všechny následující fragmenty kódu pocházejí ze souboru Program.cs.
 
-* Nastavte parametry připojení na základě účtu vytvořeného výše: 
+* Nastavte parametry připojení na základě výše vytvořeného účtu: 
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="configureConnectivity":::
 
-* Gremlin příkazy, které se mají spustit, jsou uvedené ve slovníku:
+* Příkazy Gremlin, které mají být provedeny, jsou uvedeny ve slovníku:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
-* Vytvořte nové `GremlinServer` a `GremlinClient` objekty připojení pomocí výše uvedených parametrů:
+* Vytvořte `GremlinServer` nové `GremlinClient` a připojovací objekty pomocí výše uvedených parametrů:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* Spusťte každý dotaz Gremlin pomocí objektu `GremlinClient` s asynchronní úlohou. Můžete číst dotazy Gremlin ze slovníku definovaného v předchozím kroku a provést je. Později Získejte výsledek a přečtěte si hodnoty, které jsou ve formátu slovníku, pomocí `JsonSerializer` třídy z balíčku Newtonsoft. JSON:
+* Spusťte každý gremlin dotaz pomocí objektu `GremlinClient` s asynchronní úlohou. Můžete si přečíst Gremlin dotazy ze slovníku definovaného v předchozím kroku a provést je. Později získat výsledek a číst hodnoty, které jsou formátovány `JsonSerializer` jako slovník, pomocí třídy z newtonsoft.Json balíčku:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
+Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
 1. Na webu [Azure Portal](https://portal.azure.com/) přejděte k vašemu účtu databáze grafů. Na kartě **Přehled** se zobrazují dva koncové body: 
  
-   **.NET SDK URI** – tato hodnota se používá, když se připojíte k účtu grafu pomocí knihovny Microsoft. Azure. Graphs. 
+   **Identifikátor URI sady .NET SDK** – tato hodnota se používá při připojení k účtu grafu pomocí knihovny Microsoft.Azure.Graphs. 
 
    **Koncový bod Gremlin** – Tato hodnota se použije, když se k účtu databáze grafů připojíte s využitím knihovny Gremlin.Net.
 
     ![Kopírování koncového bodu](./media/create-graph-dotnet/endpoint.png)
 
-   Pokud chcete tuto ukázku spustit, zkopírujte hodnotu **Gremlin koncového bodu** , odstraňte číslo portu na konci, to znamená, že se identifikátor URI `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Hodnota koncového bodu by měla vypadat jako `testgraphacct.gremlin.cosmosdb.azure.com`
+   Chcete-li spustit tuto ukázku, zkopírujte hodnotu **Gremlin Endpoint,** odstraňte číslo portu na konci, to znamená, že se identifikátor URI stane `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Hodnota koncového bodu by měla vypadat`testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. Potom přejděte na kartu **klíče** a zkopírujte hodnotu **primárního klíče** z Azure Portal. 
+1. Dále přejděte na kartu **Klíče** a zkopírujte hodnotu **PRIMÁRNÍ KLÍČ** z webu Azure Portal. 
 
-1. Po zkopírování identifikátoru URI a primárního klíče účtu ho uložte do nové proměnné prostředí v místním počítači, na kterém je spuštěná aplikace. Chcete-li nastavit proměnnou prostředí, otevřete okno příkazového řádku a spusťte následující příkaz. Nezapomeňte nahradit < Your_Azure_Cosmos_account_URI > a hodnoty < Your_Azure_Cosmos_account_PRIMARY_KEY >.
+1. Po zkopírování identifikátoru URI a primárního klíče účtu je uložte do nové proměnné prostředí v místním počítači se spuštěnou aplikací. Chcete-li nastavit proměnnou prostředí, otevřete okno příkazového řádku a spusťte následující příkaz. Nezapomeňte nahradit hodnoty>> <Your_Azure_Cosmos_account_URI a <Your_Azure_Cosmos_account_PRIMARY_KEY Your_Azure_Cosmos_account_PRIMARY_KEY.
 
    ```console
    setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmosdb.azure.com"
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. Otevřete soubor *program.cs* a aktualizujte proměnné "Database a Container" pomocí databáze a kontejneru (což je také název grafu), které jste vytvořili výše.
+1. Otevřete *soubor Program.cs* a aktualizujte proměnné "databáze a "kontejner" s výše vytvořenými názvy databáze a kontejneru (což je také název grafu).
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -148,7 +148,7 @@ Teď se můžete vrátit do Průzkumníku dat na webu Azure Portal, procházet n
 
     ![Zobrazení grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-dotnet/graph-explorer.png)
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

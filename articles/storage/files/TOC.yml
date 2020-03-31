@@ -39,8 +39,11 @@
       href: storage-files-scale-targets.md
     - name: Autorizace a ověřování na základě identit
       href: storage-files-active-directory-overview.md
-    - name: Šifrování neaktivních uložených dat
+    - name: Šifrování neaktivních uložených dat ve službě Azure Storage
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      items:
+        - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nabídky pro dodržování předpisů
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Vývoj
@@ -93,6 +96,10 @@
           href: storage-how-to-use-files-mac.md
     - name: Síť
       items:
+        - name: Konfigurace koncových bodů sítě služby Azure Files
+          href: storage-files-networking-endpoints.md
+        - name: Konfigurace přesměrování DNS pro Azure Files
+          href: storage-files-networking-dns.md
         - name: Konfigurace VPN typu site-to-site
           href: storage-files-configure-s2s-vpn.md
         - name: Konfigurace VPN typu point-to-site ve Windows
@@ -117,12 +124,22 @@
           href: storage-sync-files-monitoring.md
     - name: Migrace
       items:
-        - name: Migrace do Synchronizace souborů Azure
-          href: storage-sync-offline-data-transfer.md
-        - name: Průvodce migrací StorSimple 8100 a 8600
-          href: storage-files-migration-storsimple-8000.md
-        - name: Průvodce migrací StorSimple 1200
-          href: storage-files-migration-storsimple-1200.md
+        - name: Migrace do sdílených složek Azure
+          href: storage-files-migration-overview.md
+        - name: Cílení na hybridní nasazení
+          items:
+            - name: Migrace hromadných dat do Azure File Sync s využitím Azure DataBoxu
+              href: storage-sync-offline-data-transfer.md
+            - name: Migrace z Linuxu na hybridní souborový server s využitím služby Synchronizace souborů Azure
+              href: storage-files-migration-linux-hybrid.md
+            - name: Migrace z místního serveru NAS na hybridní souborový server s využitím služby Azure File Sync
+              href: storage-files-migration-nas-hybrid.md
+        - name: Ze StorSimple
+          items:
+            - name: Průvodce migrací StorSimple 8100 a 8600
+              href: storage-files-migration-storsimple-8000.md
+            - name: Průvodce migrací StorSimple 1200
+              href: storage-files-migration-storsimple-1200.md
     - name: Vývoj
       items:
         - name: Konfigurace připojovacích řetězců

@@ -1,91 +1,91 @@
 ---
-title: Šablony tokenů Azure blockchain
-description: Šablony tokenů Azure blockchain jsou standardizované a opakovaně použitelné šablony, které zjednodušují vytváření a nasazování tokenů založených na hlavní knize.
+title: Šablony tokenů Azure Blockchain
+description: Šablony tokenů Azure Blockchain jsou standardizované a opakovaně použitelné šablony, které zjednodušují vytváření a nasazování tokenů založených na hlavní knize.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252204"
 ---
-# <a name="azure-blockchain-tokens-templates"></a>Šablony tokenů Azure blockchain
+# <a name="azure-blockchain-tokens-templates"></a>Šablony tokenů Azure Blockchain
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Šablona tokenů Azure Blockchain je standardizovaná a opakovaně použitelná šablona, která zjednodušuje vytváření a nasazování tokenů založených na hlavní knize. Šablona se skládá ze vzorce, který je založen na gramatikě [tokenů taxonomie (TTF) tokenů](overview.md#token-taxonomy-framework) . Gramatika zahrnuje základní typ tokenu a sadu chování pro token.  
+Šablona Tokenů Blockchain Azure je standardizovaná a opakovaně použitelná šablona, která zjednodušuje vytváření a nasazování tokenů založených na hlavní knize. Šablona se skládá ze vzorce, který je založen na gramatice [Token Taxonomy Framework (TTF).](overview.md#token-taxonomy-framework) Gramatika zahrnuje typ základního tokenu a sadu chování pro token.  
 
-Například šablona tokenu **τϜ {d, m, b, r}** popisuje fungible základní token, který je dílčí dělitelné, mintable, vypálitelné a má podporu rolí.
+Například šablona tokenu **τ{{d,m,b,r}** popisuje zaměnitelný základní token, který je sub-dělitelný, mintable, burnable a má podporu role.
   
-## <a name="base-token-types"></a>Základní typy tokenů
+## <a name="base-token-types"></a>Typy základních tokenů
 
-Při definování a vytváření tokenu založeného na hlavní knize pro konkrétní prostředek je důležité zvážit, jaký základní token se má použít.
+Při definování a vytváření tokenu založeného na hlavní knize pro konkrétní majetek je důležité zvážit, jaký základní token použít.
 
-### <a name="fungible"></a>Fungible
+### <a name="fungible"></a>Zaměnitelné
 
-Fungible tokeny (τF) mají vzájemně zaměnitelné hodnoty, pokud jsou ve stejné třídě nebo řadách. Jeden token má stejnou hodnotu jako jiný token nebo dané množství tokenů má stejnou hodnotu jako jiné stejné množství. Například dolar je fungible token. Pokud si každý z nich drží fakturu ze dolarů, můžou si tyto poplatky za tento dolar vyměňovat bez předchozího postupu. Platby v dolarech mají stejnou hodnotu. 
+Zaměnitelné tokeny (τF) mají vzájemně zaměnitelnou hodnotu, pokud jsou ve stejné třídě nebo řadě. Jeden token má stejnou hodnotu jako jiný token nebo dané množství tokenů má stejnou hodnotu jako jiné stejné množství. Například dolar je zastupitelný žeton. Pokud dva lidé jsou každý drží dolarovou bankovku, mohou vyměnit tyto dolarové bankovky bez následků. Dolarové bankovky mají stejnou hodnotu. 
 
-### <a name="non-fungible"></a>Bez Fungible
+### <a name="non-fungible"></a>Nezastupitelné
 
-Nefungible tokeny (τN) nejsou vzájemně zaměnitelné s jinými tokeny stejného typu, protože mají obvykle jiné hodnoty. Například název vlastnosti je token, který není fungible. Názvy vlastností dvou různých objektů Apartment v typu Apartment nejsou nutně rovny hodnotě z důvodu umístění jednotky nebo, na které je jednotka zapnuta. Vnímaná hodnota dvou tokenů názvu vlastnosti se nerovná.
+Nezastupitelné tokeny (τN) nejsou zaměnitelné s jinými tokeny stejného typu, jako mají obvykle různé hodnoty. Například název vlastnosti je nezastupitelný token. Majetkové tituly do dvou různých bytů v bytovém komplexu nemusí mít nutně stejnou hodnotu, a to buď z důvodu umístění jednotky nebo z důvodu, na kterém patře se jednotka nachází. Vnímaná hodnota dvou tokenů název vlastnosti nejsou stejné.
 
 ### <a name="hybrid"></a>Hybridní
 
-Hybridní tokeny jsou tokeny, které mají komponenty tokenů fungible i tokeny fungible. Hybridní token je základní typ tokenu, který vlastní třídu jiného typu tokenu.
+Hybridní tokeny jsou tokeny, které mají součásti zaměnitelné tokeny a nezastupitelné tokeny. Hybridní token je typ základního tokenu, který vlastní třídu jiného typu tokenu.
 
-#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hybridní fungible základ s fungible segmenty
+#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hybridní nezastupitelná základna s zastupitelnými segmenty
 
-Hybridní fungible základ s tokenem fungible segmentů má nefungible základnu s segmenty tokenů fungible.
-Například letenka je hybridní token, kde datum a čas koshodě je základní token, který není fungible. Lístky v různých oddílech k sezení pro danou koshodě jsou segmenty s fungible tokeny. Lístky jsou v jednotlivých oddílech k disexchangi, ale ne napříč oddíly.
+Hybridní nezastupitelná základna s tokenem zastupitelných segmentů má nezastupitelnou základnu s zastupitelnými segmenty tokenů.
+Například vstupenka na koncert je hybridní žeton, kde datum a čas koncertu je nezastupitelný základní token. Vstupenky v různých sekcích sedadel pro daný koncert jsou segmenty s zastupitelnými žetony. Vstupenky jsou vyměnitelné v jednotlivých sekcích sedadel, ale ne napříč sekcemi.
 
-#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Hybridní fungible základ s fungible segmenty
+#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Hybridní zastupitelná základna s nezastupitelnými segmenty
 
-Hybridní fungible základ s tokenem fungible segmentů má fungible základnu s segmenty tokenů bez fungible. Například zabezpečení hypotéky je hybridní token, ve kterém je více vlastníků fungible základ, který je rozdělen mezi mnoho vlastníků. Zabezpečení je zaměnitelné. Jednotlivé hypotéky jsou fungible segmenty, které představují konkrétní zabezpečení hypotéky.
+Hybridní zastupitelná základna s tokenem nezastupitelných segmentů má zastupitelnou základnu s nezastupitelnými segmenty tokenů. Například zabezpečení s hypotékou je hybridní token, kde více vlastníků je zastupitelnou základnou, která je rozdělena mezi mnoho vlastníků. Bezpečnost je zaměnitelná. Jednotlivé hypotéky jsou nezastupitelné segmenty, které představují konkrétní hypotéku couval cenných papír.
 
 ## <a name="token-behaviors"></a>Chování tokenu
 
-Chování tokenu definuje možnosti nebo omezení tokenu. Chování zahrnuje podporu vlastností, které jsou součástí definice tokenu. Chování lze použít napříč všemi typy tokenů nebo pouze jedním. Chování může být interní nebo externí v závislosti na tom, jaké účinky chování. Vnitřní chování povoluje nebo omezuje vlastnosti samotného tokenu. Externí chování povoluje nebo omezuje vyvolání chování z externího objektu actor.
+Chování tokenu definuje možnosti nebo omezení tokenu. Chování zahrnuje podpůrné vlastnosti, které jsou součástí definice tokenu. Chování lze použít napříč všemi typy tokenů nebo pouze jeden. Chování může být interní nebo externí v závislosti na tom, jaké účinky chování. Vnitřní chování umožňuje nebo omezuje vlastnosti na samotný token. Externí chování umožňuje nebo omezuje vyvolání chování z externího objektu actor.
 
-Další informace o tokenech služby Azure blockchain podporované tokeny pro tokeny služby taxonomie (TTF) najdete v tématu popisujícím možnosti [vytváření tokenů](composability.md).
+Další informace o chování tokenů Tokeny Token taxonomy Framework (TTF) podporované Azure Blockchain tokeny, najdete v článku [slohozovací schopnost tokenu](composability.md).
 
-## <a name="pre-built-token-templates"></a>Předem připravené šablony tokenů
+## <a name="pre-built-token-templates"></a>Předem sestavené šablony tokenů
 
-Tokeny Azure blockchain poskytují čtyři předem připravené šablony tokenů, které je možné použít bez úprav. Do těchto předem sestavených šablon můžete zavolat pro většinu případů použití, abyste mohli rychle začít vytvářet, nasazovat a spravovat vaše tokeny.
+Tokeny Azure Blockchain poskytují čtyři předem sestavené šablony tokenů, které lze použít bez úprav. Můžete volat do těchto předem vytvořených šablon pro většinu případů použití a rychle začít vytvářet, nasazovat a spravovat tokeny.
 
-### <a name="commodity-tokens"></a>Tokeny komodit
+### <a name="commodity-tokens"></a>Komoditní žetony
 
-Tokeny komodit mají konzistentní hodnoty a jsou voditelné. Například barel oleje nebo jednotka energie.
+Komoditní tokeny mají konzistentní hodnotu a jsou přenositelné. Například barel ropy nebo jednotka energie.
 
-**τF {~ d, t, m, b, r}** -fungible, celý, převoditelný, mintable, vypálitelné a mají podporu rolí.
+**τF{~d,t,m,b,r}** - zastupitelné, celé, přenosné, mintable, burnable a mají podporu role
 
-Řada blockchainch scénářů vyžaduje transparentnost a viditelnost napříč dodavatelským řetězcem nebo více organizacemi. Tokeny komodit jsou založené na těchto běžných případech použití. Tokeny jsou vzájemně zaměnitelné a konzistentní. Šablona tokenu komodit je flexibilní a přizpůsobitelná s metadaty.
+Mnoho scénářů blockchainu vyžaduje transparentnost a viditelnost v dodavatelském řetězci nebo v několika organizacích. Komoditní tokeny jsou založeny na těchto běžných případech použití. Tokeny jsou zaměnitelné a konzistentní. Šablona komoditního tokenu je flexibilní a přizpůsobitelná pomocí metadat.
 
-### <a name="qualified-tokens"></a>Kvalifikované tokeny
+### <a name="qualified-tokens"></a>Kvalifikované žetony
 
-Kvalifikované tokeny představují něco získaného a jsou obvykle přidruženy k jedné entitě a nelze je přenést. Například diplom nebo narušení parkování.
+Kvalifikované tokeny představují něco získaného a jsou obvykle přidruženy k jedné entitě a nelze je převést. Například diplom nebo porušení parkovacích míst.
 
-**τN {s, ~ t}** -non-fungible, singleton a nepřevoditelný
+**τN{s,~t}** - nezastupitelné, singleton a nepřenosné
 
-Různé scénáře auditu a ověřování vyžadují, aby vlastnictví tokenu nebylo možné změnit. K dispozici je sada případů použití, která musí poskytnout kvalifikovaný token, zda je přiřazení správné nebo špatné.
+Různé scénáře auditu a ověřování vyžadují, aby vlastnictví tokenu nelze změnit. Existuje sada případů použití, které mají potřebu poskytnout kvalifikovaný token, zda je přidružení dobré nebo špatné.
 
-### <a name="asset-tokens"></a>Tokeny assetu
+### <a name="asset-tokens"></a>Tokeny majetku
 
-Tokeny prostředků mají na položku závislé jedinečné hodnoty a nejsou commoditized. Například artefakt Museum nebo název vlastnosti.
+Tokeny majetku mají jedinečnou hodnotu v závislosti na položce a nejsou komoditizovány. Například muzejní artefakt nebo název nemovitosti.
 
-**τN {s, t}** – non-fungible, singleton a převoditelný
+**τN{s,t}** - nezastupitelné, singleton a přenositelné
 
-Tokeny assetů se můžou zaměňovat s tokeny komodit. Hlavní rozdíl mezi těmito dvěma tokeny spočívá v tom, že tokeny prostředků jsou v podstatě jedinečné a hodnota je nezávislá na typu tokenu, který je. Například kus kresby, jako je olivový olej, je vybarvení oleje zavedený interpretem je token assetu. Obrázek Mona Lisa se však považuje za zbožový token. Podobně název vlastnosti je token assetu, protože tato hodnota existuje v subjektivních kvalitách vlastnosti.
+Tokeny aktiv mohou být zaměněny s komoditními tokeny. Hlavní rozdíl mezi dvěma tokeny je, že tokeny majetku jsou ze své podstaty jedinečné a hodnota je nezávislá na typu tokenu, který je. Například umělecké dílo, jako je olejomalba od zavedeného umělce, je tokenem aktiv. Nicméně, umělecký tisk Mona Lisa je považován za komoditní token. Podobně název vlastnosti je token majetku, protože hodnota existuje v subjektivní vlastnosti vlastnosti.
 
-### <a name="ticket-tokens"></a>Tokeny lístku
+### <a name="ticket-tokens"></a>Tokeny vstupenek
 
-Tokeny lístků mají konzistentní hodnotu, ale obvykle vyprší jejich platnost. Například lístek roviny.
+Tokeny lístku mají konzistentní hodnotu, ale obvykle vyprší. Například letenka.
 
-**τN {m, b, r}** – non-fungible, mintable, vypálitelné a mají podporu rolí.
+**τN{m,b,r}** - nezastupitelné, mintable, burnable a mají podporu role.
 
-Tokeny lístku mají obvykle datum vypršení platnosti, které se liší od běžného tokenu komodity. Například lístek v letadle, lístek koshodě nebo sportovní lístek obsahuje možnosti přiřazené k sezení s konkrétními daty o použití. Nemůžete snadno zamezit lístky mezi daty nebo místy k sezení.
+Tokeny lístků mají obvykle datum vypršení platnosti, které je odlišuje od běžného komoditního tokenu. Například letenka, vstupenka na koncert nebo sportovní vstupenka mají možnost i přiřazené sezení s konkrétními daty použití. Nemůžete snadno vyměnit vstupenky mezi termíny nebo posezením.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud pro svůj scénář potřebujete větší flexibilitu, přečtěte si informace o vytváření vlastních šablon tokenů pomocí možností [vytváření tokenů](composability.md).
+Pokud požadujete větší flexibilitu pro váš scénář, přečtěte si informace o vytváření vlastních šablon tokenů pomocí [kompostovatelnosti tokenů](composability.md).

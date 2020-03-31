@@ -9,24 +9,24 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: d06bda1826964b019edb156375885c7f389ca6ec
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175656"
 ---
-Pomocí následujícího postupu zobrazovat a aktualizovat verzi modulu runtime momentálně používáte aplikaci function app.
+Pomocí následujícího postupu můžete zobrazit a aktualizovat verzi runtime aktuálně používanou aplikací funkcí.
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do aplikace function app.
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte do aplikace funkce.
 
-1. V části **nakonfigurovat funkce**, zvolte **fungovat nastavení aplikace**.
+1. V části **Nakonfigurované funkce**zvolte **Nastavení aplikace Funkce**.
 
-    ![Vyberte nastavení aplikace function app](./media/functions-view-update-version-portal/add-update-app-setting.png)
+    ![Výběr nastavení aplikace funkcí](./media/functions-view-update-version-portal/add-update-app-setting.png)
 
-1. V **fungovat nastavení aplikace** kartu, vyhledejte **verze modulu Runtime**. Poznamenejte si verzi modulu runtime specifické a požadovaný hlavní verze. V následujícím příkladu verze nastavena `~2`.
+1. Na kartě **Nastavení aplikace Funkce** vyhledejte verzi **runtime**. Všimněte si konkrétní verze runtime a požadované hlavní verze. V níže uvedeném příkladu `~2`je verze nastavena na .
 
-   ![Vyberte nastavení aplikace function app](./media/functions-view-update-version-portal/function-app-view-version.png)
+   ![Výběr nastavení aplikace funkcí](./media/functions-view-update-version-portal/function-app-view-version.png)
 
-1. Chcete-li připnout aplikace function app na modul runtime verze 1.x, zvolte **~ 1** pod **verze modulu Runtime**. Tento přepínač je zakázaný, pokud máte ve vaší aplikaci funkcí.
+1. Chcete-li připnout aplikaci funkce na runtime verze 1.x, zvolte **~1** v části **Runtime version**. Tento přepínač je zakázán, pokud máte v aplikaci funkce.
 
-1. Při změně verze modulu runtime, vraťte se do **přehled** kartě a zvolte **restartovat** aplikaci restartovat.  Restartování aplikace function app běží na modul runtime verze 1.x a šablony verze 1.x se používají při vytváření funkce.
+1. Když změníte verzi runtime, přejděte zpět na kartu **Přehled** a zvolte **Restartovat,** chcete-li aplikaci restartovat.  Aplikace funkce se restartuje spuštěna v době runtime verze 1.x a při vytváření funkcí se používají šablony verze 1.x.

@@ -6,31 +6,31 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473621"
 ---
-# <a name="running-apache-spark-jobs-on-aks"></a>Spouštění úloh Apache Spark v AKS
+# <a name="running-apache-spark-jobs-on-aks"></a>Spuštění pracovních míst Apache Spark na AKS
 
-[Apache Spark][apache-spark] je rychlý modul pro zpracování velkých objemů dat. Od [verze Spark 2.3.0][spark-latest-release]Apache Spark podporuje nativní integraci s clustery Kubernetes. Služba Azure Kubernetes Service (AKS) je spravované prostředí Kubernetes běžící v Azure. Tento dokument popisuje přípravu a spouštění úloh Apache Spark v clusteru služby Azure Kubernetes (AKS).
+[Apache Spark][apache-spark] je rychlý motor pro rozsáhlé zpracování dat. Od [verze Spark 2.3.0][spark-latest-release]podporuje Apache Spark nativní integraci s klastry Kubernetes. Azure Kubernetes Service (AKS) je spravované prostředí Kubernetes běžící v Azure. Tento dokument podrobně popisuje přípravu a spuštění úloh Apache Spark v clusteru služby Azure Kubernetes Service (AKS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto článku budete potřebovat následující.
+Chcete-li provést kroky v tomto článku, budete potřebovat následující.
 
-* Základní porozumění Kubernetes a [Apache Spark][spark-quickstart].
-* Účet [Docker Hub][docker-hub] nebo [Azure Container Registry][acr-create].
-* Rozhraní příkazového řádku Azure je [nainstalované][azure-cli] ve vývojovém systému.
-* V systému je nainstalovaný [JDK 8][java-install] .
-* SBT ([Nástroj pro vytváření Scala][sbt-install]) je nainstalovaný na vašem systému.
+* Základní znalosti Kubernetes a [Apache Spark][spark-quickstart].
+* [Účet Docker Hub][docker-hub] u. Azure nebo [registr kontejnerů Azure][acr-create].
+* Azure CLI [nainstalované][azure-cli] ve vašem vývojovém systému.
+* [JDK 8][java-install] nainstalován na vašem systému.
+* SBT ([Scala Build Tool][sbt-install]) nainstalovaný ve vašem systému.
 * Nástroje příkazového řádku Git nainstalované ve vašem systému.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Spark se používá pro zpracování velkých objemů dat a vyžaduje, aby uzly Kubernetes splňovaly požadavky na prostředky Sparku. Pro uzly služby Azure Kubernetes (AKS) doporučujeme minimální velikost `Standard_D3_v2`.
+Spark se používá pro rozsáhlé zpracování dat a vyžaduje, aby uzly Kubernetes byly dimenzovány tak, aby splňovaly požadavky na prostředky Spark. Doporučujeme minimální velikost `Standard_D3_v2` pro vaše uzly Služby Azure Kubernetes (AKS).
 
 Pokud potřebujete cluster AKS, který splňuje toto minimální doporučení, spusťte následující příkazy.
 
@@ -40,13 +40,13 @@ Vytvořte skupinu prostředků pro cluster.
 az group create --name mySparkCluster --location eastus
 ```
 
-Vytvořte instanční objekt pro cluster. Po vytvoření budete pro další příkaz potřebovat instanční objekt appId a heslo.
+Vytvořte instanční objekt pro cluster. Po vytvoření budete potřebovat appId instančního objektu a heslo pro další příkaz.
 
 ```azurecli
 az ad sp create-for-rbac --name SparkSP
 ```
 
-Vytvořte cluster AKS s uzly, které mají velikost `Standard_D3_v2`a hodnoty appId a Password předané jako parametry služby-Principal a Client-Secret.
+Vytvořte cluster AKS s uzly, které jsou velikosti `Standard_D3_v2`a hodnoty appId a heslo předané jako parametry instančního objektu a klientského tajného klíče.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -58,38 +58,38 @@ Připojte se ke clusteru AKS.
 az aks get-credentials --resource-group mySparkCluster --name mySparkCluster
 ```
 
-Pokud používáte Azure Container Registry (ACR) k ukládání imagí kontejneru, nakonfigurujte ověřování mezi AKS a ACR. Postup najdete v [dokumentaci k ověřování ACR][acr-aks] .
+Pokud k ukládání ibikopií kontejnerů používáte Azure Container Registry (ACR), nakonfigurujte ověřování mezi AKS a ACR. Viz [ověřování ACR dokumentace][acr-aks] pro tyto kroky.
 
 ## <a name="build-the-spark-source"></a>Sestavení zdroje Spark
 
-Před spuštěním úloh Sparku v clusteru AKS je potřeba vytvořit zdrojový kód Spark a zabalit ho do image kontejneru. Zdroj Spark obsahuje skripty, které lze použít k dokončení tohoto procesu.
+Před spuštěním úloh Spark v clusteru AKS je potřeba vytvořit zdrojový kód Spark a zabalit ho do image kontejneru. Zdroj Spark obsahuje skripty, které lze použít k dokončení tohoto procesu.
 
-Naklonujte úložiště Sparku do vašeho vývojového systému.
+Naklonujte úložiště projektu Spark do vašeho vývojového systému.
 
 ```bash
 git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
-Přejděte do adresáře klonovaného úložiště a uložte cestu ke zdroji Spark do proměnné.
+Změňte se do adresáře klonovaného úložiště a uložte cestu zdroje Spark do proměnné.
 
 ```bash
 cd spark
 sparkdir=$(pwd)
 ```
 
-Pokud máte nainstalované více verzí JDK, nastavte `JAVA_HOME` pro použití verze 8 pro aktuální relaci.
+Pokud máte nainstalováno více verzí JDK, nastavte `JAVA_HOME` pro aktuální relaci použít verzi 8.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
 ```
 
-Spuštěním následujícího příkazu Sestavte zdrojový kód Spark s podporou Kubernetes.
+Spusťte následující příkaz k vytvoření zdrojového kódu Spark s podporou Kubernetes.
 
 ```bash
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Následující příkazy vytvoří image kontejneru Spark a nahrajte je do registru imagí kontejneru. Nahraďte `registry.example.com` názvem vašeho registru kontejneru a `v1` značku, kterou preferujete použít. Pokud používáte Docker Hub, tato hodnota je název registru. Pokud používáte Azure Container Registry (ACR), je tato hodnota název přihlašovacího serveru ACR.
+Následující příkazy vytvoří image kontejneru Spark a zasunou ji do registru bitové kopie kontejneru. Nahraďte `registry.example.com` název registru kontejnerů a `v1` značkou, kterou chcete použít. Pokud používáte Docker Hub, tato hodnota je název registru. Pokud používáte Azure Container Registry (ACR), tato hodnota je název přihlašovacího serveru ACR.
 
 ```bash
 REGISTRY_NAME=registry.example.com
@@ -100,7 +100,7 @@ REGISTRY_TAG=v1
 ./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ```
 
-Nahrajte image kontejneru do registru imagí kontejneru.
+Zasuňte bitovou kopii kontejneru do registru bitové kopie kontejneru.
 
 ```bash
 ./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
@@ -108,22 +108,22 @@ Nahrajte image kontejneru do registru imagí kontejneru.
 
 ## <a name="prepare-a-spark-job"></a>Příprava úlohy Spark
 
-Dále Připravte úlohu Spark. Soubor JAR se používá k uchování úlohy Spark a je potřeba při spuštění příkazu `spark-submit`. JAR lze zpřístupnit prostřednictvím veřejné adresy URL nebo předběžného balení v rámci image kontejneru. V tomto příkladu je vytvořena ukázka JAR pro vypočítání hodnoty pí. Tento JAR se pak nahraje do služby Azure Storage. Pokud máte stávající jar, nebojte se nahradit
+Dále připravte úlohu Spark. Jar soubor se používá k uložení úlohy Spark `spark-submit` a je potřeba při spuštění příkazu. Nádoba může být zpřístupněna prostřednictvím veřejné adresy URL nebo zabalena v rámci obrázku kontejneru. V tomto příkladu je vytvořena ukázková nádoba pro výpočet hodnoty Pi. Tato nádoba se pak nahraje do úložiště Azure. Pokud máte existující nádobu, neváhejte a
 
-Vytvořte adresář, kde byste chtěli vytvořit projekt pro úlohu Spark.
+Vytvořte adresář, ve kterém chcete vytvořit projekt pro úlohu Spark.
 
 ```bash
 mkdir myprojects
 cd myprojects
 ```
 
-Vytvoří nový projekt Scala ze šablony.
+Vytvořte nový projekt Scala ze šablony.
 
 ```bash
 sbt new sbt/scala-seed.g8
 ```
 
-Po zobrazení výzvy zadejte `SparkPi` pro název projektu.
+Po zobrazení výzvy zadejte `SparkPi` název projektu.
 
 ```bash
 name [Scala Seed Project]: SparkPi
@@ -135,14 +135,14 @@ Přejděte do nově vytvořeného adresáře projektu.
 cd sparkpi
 ```
 
-Spuštěním následujících příkazů přidejte modul plug-in SBT, který umožňuje sbalení projektu jako souboru jar.
+Spusťte následující příkazy pro přidání pluginu SBT, který umožňuje balení projektu jako jar souboru.
 
 ```bash
 touch project/assembly.sbt
 echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
-Spusťte tyto příkazy pro zkopírování ukázkového kódu do nově vytvořeného projektu a přidejte všechny nezbytné závislosti.
+Spusťte tyto příkazy zkopírovat ukázkový kód do nově vytvořeného projektu a přidat všechny potřebné závislosti.
 
 ```bash
 EXAMPLESDIR="src/main/scala/org/apache/spark/examples"
@@ -158,13 +158,13 @@ sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
-Chcete-li projekt zabalit do JAR, spusťte následující příkaz.
+Chcete-li projekt zabalit do nádoby, spusťte následující příkaz.
 
 ```bash
 sbt assembly
 ```
 
-Po úspěšném sbalení by se měl zobrazit výstup podobný následujícímu.
+Po úspěšném balení byste měli vidět výstup podobný následujícímu.
 
 ```bash
 [info] Packaging /Users/me/myprojects/sparkpi/target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar ...
@@ -184,9 +184,9 @@ az storage account create --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT 
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT -o tsv`
 ```
 
-Nahrajte soubor JAR do účtu služby Azure Storage pomocí následujících příkazů.
+Nahrajte soubor jar do účtu úložiště Azure pomocí následujících příkazů.
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -201,30 +201,30 @@ az storage blob upload --container-name $CONTAINER_NAME --file $FILE_TO_UPLOAD -
 jarUrl=$(az storage blob url --container-name $CONTAINER_NAME --name $BLOB_NAME | tr -d '"')
 ```
 
-Proměnná `jarUrl` nyní obsahuje veřejně dostupnou cestu k souboru jar.
+Proměnná `jarUrl` nyní obsahuje veřejně přístupnou cestu k souboru jar.
 
-## <a name="submit-a-spark-job"></a>Odeslat Sparkovou úlohu
+## <a name="submit-a-spark-job"></a>Odeslat úlohu Spark
 
-Spusťte Kube-proxy na samostatném příkazovém řádku s následujícím kódem.
+Spusťte kube-proxy v samostatném příkazovém řádku s následujícím kódem.
 
 ```bash
 kubectl proxy
 ```
 
-Přejděte zpátky do kořene úložiště Spark.
+Přejděte zpět do kořenového adresáře úložiště Spark.
 
 ```bash
 cd $sparkdir
 ```
 
-Vytvořte účet služby, který má dostatečná oprávnění ke spuštění úlohy.
+Vytvořte účet služby, který má dostatečná oprávnění pro spuštění úlohy.
 
 ```bash
 kubectl create serviceaccount spark
 kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
 ```
 
-Odešlete úlohu pomocí `spark-submit`.
+Odešlete `spark-submit`úlohu pomocí aplikace .
 
 ```bash
 ./bin/spark-submit \
@@ -238,11 +238,13 @@ Odešlete úlohu pomocí `spark-submit`.
   $jarUrl
 ```
 
-Tato operace spustí úlohu Spark, která streamuje stav úlohy do vaší relace prostředí. Když je úloha spuštěná, můžete si prohlédnout ovladač Spark pod a prováděcí modul v části pomocí příkazu kubectl získat lusky. Otevřete druhou relaci terminálu pro spuštění těchto příkazů.
+Tato operace spustí úlohu Spark, která streamuje stav úlohy do relace prostředí. Zatímco úloha je spuštěna, můžete vidět Spark driver pod a executor pods pomocí příkazu kubectl get pods. Chcete-li tyto příkazy spustit, otevřete druhou relaci terminálu.
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -250,19 +252,19 @@ spark-pi-2232778d0f663768ab27edc35cb73040-exec-2   0/1       Init:0/1   0       
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-3   0/1       Init:0/1   0          4s
 ```
 
-I když je úloha spuštěná, můžete taky získat přístup k uživatelskému rozhraní Spark. V druhé relaci terminálu použijte příkaz `kubectl port-forward`, který poskytuje přístup k uživatelskému rozhraní Spark.
+Když je úloha spuštěná, můžete také přistupovat k ui Spark. V druhé terminálové relaci `kubectl port-forward` použijte příkaz, který poskytuje přístup k uzlení Spark.
 
 ```bash
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-Pokud chcete získat přístup k uživatelskému rozhraní Spark, otevřete adresu `127.0.0.1:4040` v prohlížeči.
+Chcete-li získat přístup k `127.0.0.1:4040` uzlení, otevřete adresu v prohlížeči.
 
-![ROZHRANÍ Spark](media/aks-spark-job/spark-ui.png)
+![Jiskra UI](media/aks-spark-job/spark-ui.png)
 
-## <a name="get-job-results-and-logs"></a>Získání výsledků a protokolů úlohy
+## <a name="get-job-results-and-logs"></a>Získání výsledků úlohy a protokolů
 
-Po dokončení úlohy bude ovladač pod stavem Dokončeno. Pomocí následujícího příkazu Získejte název pod názvem.
+Po dokončení úlohy bude pod ovladače ve stavu Dokončeno. Získejte název modulu pomocí následujícího příkazu.
 
 ```bash
 kubectl get pods --show-all
@@ -270,30 +272,30 @@ kubectl get pods --show-all
 
 Výstup:
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
 
-K získání protokolů z ovladače Spark pod použijte příkaz `kubectl logs`. Nahraďte název pod názvem ovladače pod názvem.
+Pomocí `kubectl logs` příkazu získat protokoly z pod ovladače jiskry. Nahraďte název podu názvem modulu ovladače.
 
 ```bash
 kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 ```
 
-V těchto protokolech vidíte výsledek úlohy Spark, což je hodnota pí.
+V těchto protokolech můžete zobrazit výsledek úlohy Spark, což je hodnota Pi.
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 
-## <a name="package-jar-with-container-image"></a>Balíček jar s imagí kontejneru
+## <a name="package-jar-with-container-image"></a>Nádoba na balení s obrázkem kontejneru
 
-V předchozím příkladu se soubor JAR Spark nahrál do služby Azure Storage. Další možností je zabalit soubor JAR do vlastních imagí Docker.
+Ve výše uvedeném příkladu byl soubor sídž jar nahrán do úložiště Azure. Další možností je zabalit soubor jar do vlastních iobrazů Dockeru.
 
-Provedete to tak, že vyhledáte `dockerfile` pro Image Sparku umístěnou v adresáři `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`. Přidat příkaz `ADD` am pro úlohu Spark `jar` mezi `WORKDIR` a `ENTRYPOINT`mi deklaracemi.
+Chcete-li tak `dockerfile` učinit, najděte `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` obrázek Spark umístěný v adresáři. Přidat `ADD` am prohlášení pro `jar` úlohu Spark někde mezi `WORKDIR` a `ENTRYPOINT` deklarace.
 
-Aktualizujte cestu jar na umístění souboru `SparkPi-assembly-0.1.0-SNAPSHOT.jar` ve vývojovém systému. Můžete také použít vlastní soubor JAR.
+Aktualizujte cestu jar na `SparkPi-assembly-0.1.0-SNAPSHOT.jar` umístění souboru ve vývojovém systému. Můžete také použít vlastní jar soubor.
 
 ```bash
 WORKDIR /opt/spark/work-dir
@@ -303,14 +305,14 @@ ADD /path/to/SparkPi-assembly-0.1.0-SNAPSHOT.jar SparkPi-assembly-0.1.0-SNAPSHOT
 ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ```
 
-Sestavte a nahrajte Image pomocí zahrnutých skriptů Spark.
+Vytvořte a posuňte obraz pomocí zahrnutých skriptů Spark.
 
 ```bash
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> build
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> push
 ```
 
-Při spuštění úlohy místo označení vzdálené adresy URL JAR se dá použít schéma `local://` s cestou k souboru jar v imagi Docker.
+Při spuštění úlohy namísto označení adresy URL `local://` vzdálené nádoby lze schéma použít s cestou k souboru jar v bitové kopii Dockeru.
 
 ```bash
 ./bin/spark-submit \
@@ -325,14 +327,14 @@ Při spuštění úlohy místo označení vzdálené adresy URL JAR se dá použ
 ```
 
 > [!WARNING]
-> Z [dokumentace ke][spark-docs]Sparku: "Plánovač Kubernetes je momentálně experimentální. V budoucích verzích se můžou nacházet změny v konfiguraci, image kontejnerů a vstupní soubory.
+> Z [dokumentace][spark-docs]Spark : "Plánovač Kubernetes je v současné době experimentální. V budoucích verzích mohou být změny chování kolem konfigurace, image kontejneru a entrypoints".
 
 ## <a name="next-steps"></a>Další kroky
 
-Další podrobnosti najdete v dokumentaci k Sparku.
+Další podrobnosti najdete v dokumentaci ke Sparku.
 
 > [!div class="nextstepaction"]
-> [Dokumentace Spark][spark-docs]
+> [Dokumentace k jiskrám][spark-docs]
 
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/

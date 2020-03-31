@@ -1,76 +1,76 @@
 ---
-title: Obsluha obsahu z Azure Storage do kontejnerů Linux
-description: Naučte se, jak připojit vlastní sdílenou síťovou složku ke kontejneru Linux v Azure App Service. Sdílet soubory mezi aplikacemi, spravovat statický obsah vzdáleně a přistupovat místně atd.
+title: Obsluha obsahu z Azure Storage do linuxových kontejnerů
+description: Zjistěte, jak připojit vlastní sdílenou síťovou složku ke svému linuxovému kontejneru ve službě Azure App Service. Sdílejte soubory mezi aplikacemi, spravujte statický obsah vzdáleně a přistupujte místně atd.
 author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
 ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297913"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Obsluha obsahu z Azure Storage v App Service v systému Linux
+# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Obsluha obsahu z Azure Storage ve službě App Service na Linuxu
 
 > [!NOTE]
-> Tento článek se týká kontejnerů Linux. Pokud chcete nasadit vlastní kontejnery Windows, přečtěte si téma [Konfigurace souborů Azure v kontejneru Windows na App Service](../configure-connect-to-azure-storage.md). Azure Storage v App Service na Linux je funkce ve **verzi Preview** . Tato funkce není **podporována v produkčních scénářích**.
+> Tento článek se vztahuje na linuxové kontejnery. Informace o nasazení do vlastních kontejnerů Windows najdete [v tématu Konfigurace souborů Azure v kontejneru Windows ve službě App Service](../configure-connect-to-azure-storage.md). Azure Storage ve službě App Service na Linuxu je funkce **náhledu.** Tato funkce **není podporována pro produkční scénáře**.
 >
 
-V této příručce se dozvíte, jak připojit Azure Storage k App Service v systému Linux. K výhodám patří zabezpečený obsah, přenositelnost obsahu, trvalé úložiště, přístup k více aplikacím a více metod přenosu.
+Tato příručka ukazuje, jak připojit Azure Storage ke službě App Service na Linuxu. Mezi výhody patří zabezpečený obsah, přenositelnost obsahu, trvalé úložiště, přístup k více aplikacím a více způsobů přenosu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 nebo novější).
-- Existující [App Service v aplikaci pro Linux](https://docs.microsoft.com/azure/app-service/containers/).
-- [Účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)
-- [Sdílená složka Azure a adresář](../../storage/files/storage-how-to-use-files-cli.md).
+- Existující [app service na Linuxu aplikace](https://docs.microsoft.com/azure/app-service/containers/).
+- [Účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)
+- [Sdílená složka a adresář azure souboru](../../storage/files/storage-how-to-use-files-cli.md).
 
 
-## <a name="limitations-of-azure-storage-with-app-service"></a>Omezení Azure Storage s App Service
+## <a name="limitations-of-azure-storage-with-app-service"></a>Omezení úložiště Azure pomocí služby App Service
 
-- Azure Storage s App Service je **ve verzi Preview** pro App Service v systémech Linux a Web App for Containers. Nepodporují **not supported** se v **produkčních scénářích**.
-- Azure Storage s App Service podporuje připojování **kontejnerů souborů Azure** (čtení a zápis) a **kontejnerů objektů blob Azure** (jen pro čtení).
-- Azure Storage s App Service v důsledku omezení infrastruktury **nepodporuje** použití konfigurace **brány firewall úložiště** .
-- Azure Storage s App Service vám umožní zadat **až pět** přípojných bodů na jednu aplikaci.
-- Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-- Azure Storage není **součástí** vaší webové aplikace a účtuje se samostatně. Přečtěte si další informace o [cenách Azure Storage](https://azure.microsoft.com/pricing/details/storage).
+- Azure Storage with App Service je **ve verzi** pro App Service na Linuxu a Web App pro kontejnery. Není **podporována** pro **produkční scénáře**.
+- Azure Storage se službou App Service podporuje připojení **kontejnerů souborů Azure** (čtení a zápis) a **kontejnerů objektů Blob Azure** (jen pro čtení)
+- Azure Storage se službou App Service **nepodporuje** použití konfigurace **brány firewall úložiště** z důvodu omezení infrastruktury.
+- Azure Storage se službou App Service umožňuje zadat **až pět** přípojné body na aplikaci.
+- Azure Storage připojené k aplikaci není přístupný prostřednictvím koncových bodů FTP/FTP služby App Service. Použijte [Průzkumník a průzkumník azure.](https://azure.microsoft.com/features/storage-explorer/)
+- Azure Storage **není součástí** vaší webové aplikace a účtuje se samostatně. Přečtěte si další informace o [cenách Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 > [!WARNING]
-> Konfigurace App Service s využitím Azure Blob Storage se načtou jenom v únoru 2020. [Další informace](https://github.com/Azure/app-service-linux-docs/blob/master/BringYourOwnStorage/mounting_azure_blob.md)
+> Konfigurace služby App Service pomocí azure blob storage se stanou jen pro čtení v únoru 2020. [Další informace](https://github.com/Azure/app-service-linux-docs/blob/master/BringYourOwnStorage/mounting_azure_blob.md)
 >
 
 ## <a name="configure-your-app-with-azure-storage"></a>Konfigurace aplikace pomocí Azure Storage
 
-Po vytvoření [účtu Azure Storage, sdílené složky a adresáře](#prerequisites)teď můžete aplikaci nakonfigurovat pomocí Azure Storage.
+Po vytvoření účtu [Azure Storage, sdílené složky a adresáře](#prerequisites)teď můžete aplikaci nakonfigurovat pomocí Azure Storage.
 
-Pokud chcete účet úložiště připojit k adresáři v aplikaci App Service, použijte příkaz [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) . Typ úložiště může být Azureblobu nebo AzureFiles. V tomto příkladu se používá AzureFiles.
+Chcete-li připojit účet úložiště do adresáře v [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) aplikaci App Service, použijte příkaz. Typ úložiště může být AzureBlob nebo AzureFiles. AzureFiles se používá v tomto příkladu.
 
 
 > [!CAUTION]
-> Adresář zadaný jako cesta pro připojení ve vaší webové aplikaci by měl být prázdný. Veškerý obsah uložený v tomto adresáři bude odstraněn při přidání externího připojení. Pokud migrujete soubory pro existující aplikaci, vytvořte před zahájením zálohování své aplikace a jejího obsahu.
+> Adresář zadaný jako cesta k připojení ve webové aplikaci by měl být prázdný. Veškerý obsah uložený v tomto adresáři bude odstraněn při přidání externího připojení. Pokud migrujete soubory pro existující aplikaci, vytvořte zálohu aplikace a jejího obsahu, než začnete.
 >
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory>
 ```
 
-To byste měli udělat pro všechny ostatní adresáře, které chcete propojit s účtem úložiště.
+Měli byste to udělat pro všechny ostatní adresáře, které chcete propojit s účtem úložiště.
 
-## <a name="verify-azure-storage-link-to-the-web-app"></a>Ověřit Azure Storage odkaz na webovou aplikaci
+## <a name="verify-azure-storage-link-to-the-web-app"></a>Ověření odkazu úložiště Azure na webovou aplikaci
 
-Jakmile je kontejner úložiště propojený s webovou aplikací, můžete to ověřit spuštěním následujícího příkazu:
+Jakmile je kontejner úložiště propojen s webovou aplikací, můžete to ověřit spuštěním následujícího příkazu:
 
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
 
-## <a name="use-azure-storage-in-docker-compose"></a>Použití Azure Storage v Docker Compose
+## <a name="use-azure-storage-in-docker-compose"></a>Použití Azure Storage v Dockercomse
 
-Azure Storage můžete připojit s aplikacemi s více kontejnery pomocí vlastního identifikátoru. Chcete-li zobrazit název vlastního ID, spusťte příkaz [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+Azure Storage se dá namontovat pomocí aplikací s více kontejnery pomocí vlastního ID. Chcete-li zobrazit vlastní název [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)id, spusťte .
 
-V souboru *Docker-Compose. yml* namapujte možnost `volumes` na `custom-id`. Příklad:
+V souboru *docker-compose.yml* `volumes` namapujte možnost na `custom-id`. Například:
 
 ```yaml
 wordpress:
@@ -81,5 +81,5 @@ wordpress:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nakonfigurujte webové aplikace v Azure App Service](../configure-common.md).
+- [Konfigurace webových aplikací ve službě Azure App Service](../configure-common.md).
 

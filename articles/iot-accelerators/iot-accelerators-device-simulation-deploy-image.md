@@ -1,6 +1,6 @@
 ---
-title: Nasadit vlastní image simulace zařízení – Azure | Dokumentace Microsoftu
-description: V této příručce s postupy se dozvíte, jak nasadit řešení pro simulaci zařízení vlastní image Dockeru do Azure.
+title: Nasazení vlastní bitové kopie simulace zařízení – Azure| Dokumenty společnosti Microsoft
+description: V tomto návodu se dozvíte, jak nasadit vlastní image Dockeru řešení Simulace zařízení do Azure.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,52 +10,52 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61448391"
 ---
-# <a name="deploy-a-custom-device-simulation-docker-image"></a>Nasadit vlastní image dockeru simulace zařízení
+# <a name="deploy-a-custom-device-simulation-docker-image"></a>Nasazení vlastní bitové kopie dockeru simulace zařízení
 
-Můžete upravit řešení simulace zařízení k přidání vlastních funkcí. Například [serializovat telemetrie pomocí Protocol Buffers](iot-accelerators-device-simulation-protobuf.md) článku se dozvíte, jak přidat vlastní zařízení do řešení, které používá Protocol Buffers (Protobuf) odesílat telemetrická data. Dalším krokem po otestujete své změny místně, je vaše změny nasadí do vaší instance simulaci zařízení v Azure. K dokončení této úlohy, budete muset vytvořit a nasadit image Dockeru obsahující váš upravenou službu.
+Můžete upravit řešení Simulace zařízení a přidat vlastní funkce. Například [Serializovat telemetrická data pomocí vyrovnávacípaměti protokolu](iot-accelerators-device-simulation-protobuf.md) článek ukazuje, jak přidat vlastní zařízení do řešení, které používá vyrovnávací paměti protokolu (Protobuf) k odesílání telemetrie. Po otestování změn místně je dalším krokem nasazení změn do instance Simulace zařízení v Azure. Chcete-li dokončit tento úkol, je třeba vytvořit a nasadit image Dockeru, který obsahuje upravenou službu.
 
-Kroky v tomto postupy-k-Průvodci ukazují, jak do:
+Kroky v tomto návodu vám ukážou, jak:
 
 1. Příprava vývojového prostředí
-1. Generovat nové image Dockeru
-1. Konfigurace simulace zařízení používat nová image Dockeru
-1. Spuštění simulace pomocí nové bitové kopie
+1. Generovat novou image Dockeru
+1. Konfigurace simulace zařízení pro použití nové bitové kopie Dockeru
+1. Spuštění simulace pomocí nového obrázku
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v této příručce s postupy, musíte:
+Chcete-li provést kroky v tomto návodu, potřebujete:
 
-* Nasazený [simulace zařízení](quickstart-device-simulation-deploy.md) instance.
-* Docker Stáhněte si [Docker Community Edition](https://www.docker.com/products/docker-engine#/download) pro vaši platformu.
-* A [účtu Docker Hubu](https://hub.docker.com/) kde můžete nahrát imagí Dockeru. Ve vašem účtu Docker Hubu vytvoření veřejného úložiště volána **simulace zařízení**.
-* A upravovat a testovat [řešení simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) na místním počítači. Například můžete upravit řešení tak, aby [serializovat telemetrie pomocí Protocol Buffers](iot-accelerators-device-simulation-protobuf.md).
-* Prostředí, které můžete spustit SSH. Pokud nainstalujete Git pro Windows, můžete použít **bash** prostředí, které je součástí instalace th. Můžete také použít vaše [Azure Cloud Shell](https://shell.azure.com/).
+* Nasaditá instance [Simulace zařízení.](quickstart-device-simulation-deploy.md)
+* Dockeru, co se má. Stáhněte si [verzi Docker Community Edition](https://www.docker.com/products/docker-engine#/download) pro vaši platformu.
+* [Účet Docker Hub,](https://hub.docker.com/) kde můžete nahrát image Dockeru. Ve svém účtu Docker Hub vytvořte veřejné úložiště nazývané **simulace zařízení**.
+* Upravené a testované [řešení simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) v místním počítači. Můžete například upravit řešení [serializovat telemetrii pomocí vyrovnávacích pamětí protokolu](iot-accelerators-device-simulation-protobuf.md).
+* Shell, který může spustit SSH. Pokud nainstalujete Git pro Windows, můžete použít **bash** shell, který je součástí instalace th. Můžete také použít azure [cloud shell](https://shell.azure.com/).
 
-Pokyny v tomto článku se předpokládá, že používáte Windows. Pokud používáte jiný operační systém, budete muset upravit některé cesty k souborům a příkazů podle vašich potřeb.
+Pokyny v tomto článku předpokládají, že používáte systém Windows. Pokud používáte jiný operační systém, bude pravděpodobně nutné upravit některé cesty a příkazy souborů tak, aby vyhovovaly vašemu prostředí.
 
 ## <a name="create-a-new-docker-image"></a>Vytvoření nové image Dockeru
 
-Pokud chcete nasadit vlastní změny ve službě simulace zařízení, budete muset upravit skripty sestavení a nasazení v **scripts\docker** složku k nahrání kontejnery do vašeho účtu docker hubu
+Chcete-li nasadit vlastní změny do služby Simulace zařízení, je třeba upravit skripty sestavení a nasazení ve složce **Scripts\docker** a nahrát kontejnery do účtu docker-hub
 
-### <a name="modify-the-docker-scripts"></a>Upravit skripty dockeru
+### <a name="modify-the-docker-scripts"></a>Úprava skriptů dockeru
 
-Upravit Dockeru **build.cmd**, **publish.cmd**, a **run.cmd** skripty v **scripts\docker** složky Docker hubu informace o úložišti. Tento postup předpokládá, že jste vytvořili veřejného úložiště volána **simulace zařízení**:
+Upravte skripty **Docker build.cmd**, **publish.cmd**a **skripty run.cmd** ve složce **scripts\docker** s informacemi o úložišti Docker Hub. Tyto kroky předpokládají, že jste vytvořili veřejné úložiště nazývané **simulace zařízení**:
 
 `DOCKER_IMAGE={your-docker-hub-username}/device-simulation`
 
-Aktualizace **docker-compose.yml** to následujícím způsobem:
+Aktualizujte soubor **docker-compose.yml** takto:
 
 `image: {your-docker-hub-username}/device-simulation`
 
-### <a name="configure-the-solution-to-include-any-new-files"></a>Nakonfigurujte řešení, aby všechny nové soubory k zahrnutí
+### <a name="configure-the-solution-to-include-any-new-files"></a>Nakonfigurujte řešení tak, aby zahrnovalo všechny nové soubory
 
-Pokud jste přidali všechny nové soubory model zařízení, musíte výslovně nezahrnete do řešení. Přidání položky do **services/services.csproj** pro každý další soubor zahrnout. Například, pokud jste dokončili [serializovat telemetrie pomocí Protocol Buffers](iot-accelerators-device-simulation-protobuf.md) s postupy, přidejte následující položky:
+Pokud jste přidali nové soubory modelu zařízení, je třeba explicitně zahrnout do řešení. Přidejte položku do **services/services.csproj** pro každý další soubor, který chcete zahrnout. Pokud jste například [dokončili serializovat telemetrii pomocí návodu](iot-accelerators-device-simulation-protobuf.md) na vyrovnávací paměti protokolu, přidejte následující položky:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -66,25 +66,25 @@ Pokud jste přidali všechny nové soubory model zařízení, musíte výslovně
 </None>
 ```
 
-### <a name="generate-new-docker-images-and-push-to-docker-hub"></a>Generovat nové Image Dockeru a odeslání do Docker Hubu
+### <a name="generate-new-docker-images-and-push-to-docker-hub"></a>Generování nových iobrazů Dockeru a nabízení do centra Dockeru
 
-Publikujte nové image Dockeru do Docker Hubu pomocí svého účtu docker hubu:
+Publikujte novou image Dockeru do Docker Hubu pomocí svého účtu docker-hub:
 
-1. Otevřete příkazový řádek a přejděte do místní kopie úložiště simulaci zařízení.
+1. Otevřete příkazový řádek a přejděte na místní kopii úložiště simulace zařízení.
 
-1. Přejděte **docker** složky:
+1. Přejděte do složky **dockeru:**
 
     ```cmd
     cd scripts\docker
     ```
 
-1. Spuštěním následujícího příkazu sestavte image Dockeru:
+1. Chcete-li vytvořit bitovou kopii Dockeru, spusťte následující příkaz:
 
     ```cmd
     build.cmd
     ```
 
-1. Spusťte následující příkaz k publikování image Dockeru do Docker Hubu úložiště. Přihlaste se k Dockeru pomocí svých přihlašovacích údajů Docker Hub:
+1. Spusťte následující příkaz a publikujte image Dockeru do úložiště Docker Hubu. Přihlaste se k Dockeru pomocí přihlašovacích údajů dockerhubu:
 
     ```cmd
     docker login
@@ -97,27 +97,27 @@ Publikujte nové image Dockeru do Docker Hubu pomocí svého účtu docker hubu:
 
 ## <a name="update-the-service"></a>Aktualizace služby
 
-K aktualizaci kontejneru simulace zařízení pro použití vlastní image, proveďte následující kroky:
+Chcete-li aktualizovat kontejner Simulace zařízení tak, aby používal vlastní bitovou kopii, proveďte následující kroky:
 
-* Pomocí SSH se připojte k virtuálnímu počítači, který je hostitelem vaší instance simulace zařízení. Použijte IP adresu a heslo, které jste si poznamenali v předchozí části:
+* Pomocí SSH se můžete připojit k virtuálnímu počítači, který hostuje instanci Simulace zařízení. Použijte IP adresu a heslo, které jste si poznamenali v předchozí části:
 
     ```sh
     ssh azureuser@{your vm ip address}
     ```
 
-* Přejděte **/app** adresáře:
+* Přejděte do adresáře **/app:**
 
     ```sh
     cd /app
     ```
 
-* Upravit **docker-compose.yml** souboru:
+* Upravte soubor **docker-compose.yml:**
 
     ```sh
     sudo nano docker-compose.yml
     ```
 
-    Upravit **image** tak, aby odkazoval vlastní **simulace zařízení** image se odeslala do úložiště Docker Hub:
+    Upravte **bitovou kopii** tak, aby ukazovala na vlastní **bitovou kopii simulace zařízení,** kterou jste nahráli do úložiště Docker Hubu:
 
     ```yml
     image: {your-docker-hub-username}/device-simulation
@@ -125,20 +125,20 @@ K aktualizaci kontejneru simulace zařízení pro použití vlastní image, prov
 
     Uložte provedené změny.
 
-* Spuštěním následujícího příkazu restartujete mikroslužby:
+* Chcete-li mikroslužby restartovat, spusťte následující příkaz:
 
     ```sh
     sudo start.sh
     ```
 
-## <a name="run-your-simulation"></a>Spustit simulaci
+## <a name="run-your-simulation"></a>Spusťte simulaci
 
-Teď můžete spouštět simulace využívat vaše vlastní řešení simulaci zařízení:
+Nyní můžete spustit simulaci pomocí přizpůsobeného řešení simulace zařízení:
 
-1. Spuštění simulace vaše zařízení webové uživatelské rozhraní z [akcelerátory řešení IoT Microsoft Azure](https://www.azureiotsolutions.com/Accelerators#dashboard).
+1. Spusťte webové uživatelské rozhraní simulace zařízení z [akcelerátorů řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard).
 
-1. Použijte ke konfiguraci a spuštění simulace ve webovém uživatelském rozhraní. Pokud jste již dříve dokončili [serializovat telemetrie pomocí Protocol Buffers](iot-accelerators-device-simulation-protobuf.md), můžete použít model vlastní zařízení.
+1. Pomocí webového uživatelského rozhraní nakonfigurujte a spusťte simulaci. Pokud jste dříve [dokončili serializovat telemetrii pomocí vyrovnávacích pamětí protokolu](iot-accelerators-device-simulation-protobuf.md), můžete použít vlastní model zařízení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Nyní jste zjistili, jak chcete nasadit vlastní image simulace zařízení, možná budete chtít zjistěte, jak [akcelerátor řešení simulace zařízení pomocí stávající služby IoT hub](iot-accelerators-device-simulation-choose-hub.md).
+Nyní jste se naučili, jak nasadit vlastní bitovou kopii Simulace zařízení, možná se budete chtít dozvědět, jak [používat existující centrum IoT hub s akcelerátorem řešení Simulace zařízení](iot-accelerators-device-simulation-choose-hub.md).

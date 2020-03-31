@@ -1,6 +1,6 @@
 ---
-title: Zmenšit privátní cloud řešení Azure VMware (AVS)
-description: Popisuje, jak zmenšit privátní cloud služby AVS.
+title: Zmenšení řešení Azure VMware podle cloudového privátního cloudu
+description: Popisuje, jak zmenšit CloudSimple privátní cloud.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -8,60 +8,59 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0ea764081cd0b4d5c6d44cd7364d1e9a89a3cec3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014262"
 ---
-# <a name="shrink-an-avs-private-cloud"></a>Zmenšení privátního cloudu služby AVS
+# <a name="shrink-a-cloudsimple-private-cloud"></a>Zmenšení cloudového jednoduchého privátního cloudu
 
-AVS nabízí flexibilitu pro dynamické zmenšování privátního cloudu služby AVS. Privátní cloud služby AVS se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při zmenšování privátního cloudu služby AVS odeberete uzel z existujícího clusteru nebo odstraníte celý cluster. 
+CloudSimple poskytuje flexibilitu dynamicky zmenšit privátní cloud.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při zmenšování privátního cloudu odeberete uzel z existujícího clusteru nebo odstraníte celý cluster. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před zmenšením privátního cloudu služby AVS je nutné splnit následující podmínky. Cluster pro správu (první cluster) se vytvoří při vytvoření privátního cloudu služby AVS. Nedá se odstranit.
+Pro zmenšení privátního cloudu musí být splněny následující podmínky.  Cluster pro správu (první cluster) vytvořený při vytvoření privátního cloudu nelze odstranit.
 
-* Cluster vSphere musí mít tři uzly. Cluster se třemi uzly nelze zmenšit.
-* Celkové spotřebované úložiště by nemělo po zmenšení clusteru překročit celkovou kapacitu.
-* Ověřte, jestli některá pravidla plánovače distribuovaných zdrojů (DRS) brání vMotion virtuálního počítače. Pokud jsou pravidla k dispozici, zakažte nebo odstraňte pravidla. Pravidla DRS zahrnují pravidla vztahů mezi virtuálními počítači a hostiteli.
-
+* Cluster vSphere musí mít tři uzly.  Cluster s pouze třemi uzly nelze ztíst.
+* Celkové spotřebované úložiště by nemělo překročit celkovou kapacitu po zmenšení clusteru.
+* Zkontrolujte, zda některá pravidla plánovače distribuovaných prostředků (DRS) brání vMotion virtuálního počítače.  Pokud jsou pravidla k dispozici, zakažte nebo odstraňte pravidla.  Pravidla DRS zahrnují virtuální počítač pro pravidla spřažení.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
-## <a name="shrinking-an-avs-private-cloud"></a>Zmenšení privátního cloudu služby AVS
+## <a name="shrink-a-private-cloud"></a>Zmenšení privátního cloudu
 
-1. [Přístup k portálu AVS](access-cloudsimple-portal.md).
+1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otevřete stránku **prostředky** .
+2. Otevřete stránku **Zdroje.**
 
-3. Klikněte na privátní cloud AVS, který chcete zmenšit.
+3. Klikněte na privátní cloud, který chcete zmenšit
 
-4. Na stránce Souhrn klikněte na tlačítko **zmenšit**.
+4. Na stránce souhrnu klikněte na **zmenšit**.
 
-    ![Zmenšení privátního cloudu pro funkci AVS](media/shrink-private-cloud.png)
+    ![Zmenšení privátního cloudu](media/shrink-private-cloud.png)
 
 5. Vyberte cluster, který chcete zmenšit nebo odstranit. 
 
-    ![Zmenšení privátního cloudu služby AVS – výběr clusteru](media/shrink-private-cloud-select-cluster.png)
+    ![Zmenšení privátního cloudu – výběr clusteru](media/shrink-private-cloud-select-cluster.png)
 
-6. Vyberte **odebrat jeden uzel** nebo **odstranit celý cluster**. 
+6. Vyberte **Odebrat jeden uzel** nebo **Odstranit celý cluster**. 
 
 7. Ověření kapacity clusteru
 
-8. Klikněte na **Odeslat** a zmenšete privátní cloud AVS.
+8. Chcete-li soukromý cloud zmenšit, klepněte na **tlačítko Odeslat.**
 
-Spouští se zmenšování privátního cloudu pro funkci AVS. Průběh můžete sledovat v úlohách. Proces zmenšení může trvat několik hodin v závislosti na datech, která se musí znovu synchronizovat v síti vSAN.
+Zmenšit privátního cloudu spustí.  Průběh úkolů můžete sledovat.  Proces zmenšení může trvat několik hodin v závislosti na datech, které je třeba resynced na vSAN.
 
 > [!NOTE]
-> 1. Pokud zmenšíte privátní cloud odstraněním posledního nebo jediného clusteru v datacentru, datacentrum se neodstraní.
-> 2. Pokud dojde k nějakému porušení pravidla DRS, uzel nebude odebrán z clusteru a popis úlohy zobrazí, že při odebrání uzlu dojde k porušení pravidel DRS v clusteru.    
+> 1. Pokud zmenšíte privátní cloud odstraněním posledního nebo jediného clusteru v datovém centru, datové centrum se neodstraní.
+> 2. Pokud dojde k porušení pravidel DRS, uzel nebude odebrán z clusteru a popis úkolu ukazuje, že odebrání uzlu poruší pravidla DRS v clusteru.    
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
-* Další informace o [privátních cloudech](cloudsimple-private-cloud.md) pro funkci AVS
+* [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
+* Další informace o [privátních cloudech](cloudsimple-private-cloud.md)

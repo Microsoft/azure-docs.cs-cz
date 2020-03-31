@@ -3,7 +3,7 @@ documentType: LandingData
 title: Škálovatelnost
 metadata:
   title: Azure SQL Database – škálovatelnost
-  meta.description: Learn how to scale your Azure SQL Database.
+  description: 'Přečtěte si, jak Azure SQL Database umožňuje snadno škálovat databázi přidáním vyššího výpočetního výkonu (vertikální navýšení kapacity) nebo přidáním dalších jednotek databáze (škálování na více instancí).'
   services: sql-database
   ms.subservice: scale-out
   author: jovanpop-msft
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 01/25/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph

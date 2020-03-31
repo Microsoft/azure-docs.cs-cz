@@ -1,6 +1,6 @@
 ---
-title: Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure | Microsoft Docs
-description: Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure
+title: Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6.0 v Azure | Dokumenty společnosti Microsoft
+description: Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6.0 v Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
@@ -16,112 +16,112 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616693"
 ---
-# <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure
-Tento článek popisuje, jak nasadit systém SAP v systému SAP se systémem SQL Server a operačním systémem Windows v Azure pomocí knihovny cloudových zařízení SAP (SAP CAL) 3,0. Snímky obrazovky ukazují podrobný proces. Pokud chcete nasadit jiné řešení, použijte stejný postup.
+# <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6.0 v Azure
+Tento článek popisuje, jak nasadit systém SAP IDES se systémem SQL Server a operační systém Windows v Azure prostřednictvím SAP Cloud Appliance Library (SAP CAL) 3.0. Snímky obrazovky ukazují postup ný krok za krokem. Chcete-li nasadit jiné řešení, postupujte stejným způsobem.
 
-Pokud chcete začít se službou SAP CAL, přečtěte si web [Knihovna cloudových zařízení SAP](https://cal.sap.com/) . SAP má také blog o nové [knihovně cloudových zařízení SAP 3,0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
+Chcete-li začít s SAP CAL, přejděte na web [knihovny cloudových spotřebičů SAP.](https://cal.sap.com/) SAP má také blog o nové [knihovně SAP Cloud Appliance Library 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
-> Od 29. května 2017 můžete k nasazení SAP CAL použít i model nasazení Azure Resource Manager společně s méně upřednostňovaným modelem nasazení Classic. Doporučujeme použít nový model nasazení Správce prostředků a ignorovat model nasazení Classic.
+> května 2017 můžete kromě méně upřednostňovaného klasického modelu nasazení k nasazení sap cal použít model nasazení Azure Resource Manageru. Doporučujeme použít nový model nasazení Resource Manager a ignorovat klasický model nasazení.
 
-Pokud jste už vytvořili účet SAP CAL, který používá klasický model, *budete muset vytvořit jiný účet SAP CAL*. Tento účet se musí nasadit do Azure výhradně pomocí modelu Správce prostředků.
+Pokud jste již vytvořili účet SAP CAL, který používá klasický model, *musíte vytvořit jiný účet SAP CAL*. Tento účet musí být nasazen výhradně do Azure pomocí modelu Správce prostředků.
 
-Až se přihlásíte ke službě SAP CAL, první stránka obvykle vás provede na stránku **řešení** . Řešení, která jsou nabízená v rámci SAP CAL, se stále zvyšují, takže možná budete muset posouvat poměrně trochu, abyste našli řešení, které chcete. Zvýrazněné řešení SAP v systému Windows, které je dostupné výhradně v Azure, předvádí proces nasazení:
+Po přihlášení k sap cal vás první stránka obvykle přenese na stránku **Řešení.** Řešení nabízená na SAP CAL se neustále zvyšují, takže možná budete muset trochu posunout, abyste našli řešení, které chcete. Zvýrazněné řešení SAP IDES založené na systému Windows, které je dostupné výhradně v Azure, demonstruje proces nasazení:
 
 ![Řešení SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic1.jpg)
 
-### <a name="create-an-account-in-the-sap-cal"></a>Vytvoření účtu v rámci SAP CAL
-1. K prvnímu přihlášení ke službě SAP CAL použijte svého uživatele SAP S nebo jiného uživatele zaregistrovaného v SAP. Pak definujte účet SAP CAL, který je používán službou SAP CAL k nasazení zařízení v Azure. V definici účtu potřebujete:
+### <a name="create-an-account-in-the-sap-cal"></a>Vytvoření účtu v sap cal
+1. Chcete-li se poprvé přihlásit k sap cal, použijte SAP S-User nebo jiného uživatele registrovaného u SAP. Pak definujte účet SAP CAL, který používá SAP CAL k nasazení zařízení v Azure. V definici účtu je třeba:
 
-    a. Vyberte model nasazení v Azure (Správce prostředků nebo Classic).
+    a. Vyberte model nasazení v Azure (Správce prostředků nebo klasické).
 
-    b. Zadejte své předplatné Azure. Účet SAP CAL se dá přiřadit jenom k jednomu předplatnému. Pokud potřebujete více než jedno předplatné, budete muset vytvořit jiný účet SAP CAL.
+    b. Zadejte předplatné Azure. Účet SAP CAL lze přiřadit pouze k jednomu předplatnému. Pokud potřebujete více než jedno předplatné, musíte vytvořit jiný účet SAP CAL.
     
-    c. Udělte oprávnění SAP CAL k nasazení do vašeho předplatného Azure.
+    c. Udělit SAP CAL oprávnění k nasazení do předplatného Azure.
 
    > [!NOTE]
-   >  Další kroky ukazují, jak vytvořit účet SAP CAL pro nasazení Správce prostředků. Pokud už máte účet SAP CAL, který je propojený s modelem nasazení Classic, je *potřeba* pomocí těchto kroků vytvořit nový účet SAP CAL. Nový účet SAP CAL musí být nasazený v modelu Správce prostředků.
+   >  Další kroky ukazují, jak vytvořit účet SAP CAL pro nasazení Správce prostředků. Pokud již máte účet SAP CAL, který je propojen s klasickým modelem nasazení, *musíte* vytvořit nový účet SAP CAL následujícím postupem. Nový účet SAP CAL je třeba nasadit v modelu Resource Manager.
 
-1. Pokud chcete vytvořit nový účet SAP CAL, zobrazí se na stránce **účty** dvě možnosti pro Azure: 
+1. Chcete-li vytvořit nový účet SAP CAL, stránka **Účty** zobrazuje dvě možnosti pro Azure: 
 
-    a. **Microsoft Azure (Classic)** je model nasazení Classic a již není upřednostňovaný.
+    a. **Microsoft Azure (klasický)** je klasický model nasazení a už není upřednostňovaný.
 
     b. **Microsoft Azure** je nový model nasazení Správce prostředků.
 
     ![Účty SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
-    Chcete-li nasadit v modelu Správce prostředků, vyberte možnost **Microsoft Azure**.
+    Pokud chcete nasadit v modelu Správce prostředků, vyberte **Microsoft Azure**.
 
     ![Účty SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-1. Zadejte **ID předplatného** Azure, které najdete na Azure Portal. 
+1. Zadejte **ID předplatného** Azure, které se najdete na webu Azure Portal. 
 
     ![ID předplatného SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-1. Kliknutím na **autorizovat**autorizujete službu SAP CAL k nasazení do vámi definovaného předplatného Azure. Na kartě prohlížeč se zobrazí následující stránka:
+1. Pokud chcete autorizovat nasazení sap cal do definovaného předplatného Azure, klikněte na **Autorizovat**. Na kartě prohlížeče se zobrazí následující stránka:
 
-    ![Přihlášení ke cloudovým službám v Internet Exploreru](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic4c.PNG)
+    ![Přihlášení ke cloudovým službám Internet Exploreru](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic4c.PNG)
 
-1. Pokud je v seznamu uvedeno více uživatelů, vyberte účet Microsoft propojených se správcem předplatného Azure, které jste vybrali. Na kartě prohlížeč se zobrazí následující stránka:
+1. Pokud je v seznamu uvedeno více uživatelů, zvolte účet Microsoft, který je propojený, aby byl spolusprávcem vybraného předplatného Azure. Na kartě prohlížeče se zobrazí následující stránka:
 
-    ![Potvrzení Cloud Services v Internet Exploreru](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
+    ![Potvrzení cloudových služeb aplikace Internet Explorer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-1. Klikněte na **přijmout**. Pokud je autorizace úspěšná, znovu se zobrazí definice účtu SAP CAL. Po krátké době zpráva potvrdí, že proces autorizace byl úspěšný.
+1. Klikněte na **Přijmout**. Pokud je autorizace úspěšná, definice účtu SAP CAL se znovu zobrazí. Po krátké době zpráva potvrzuje, že proces autorizace byl úspěšný.
 
-1. Pokud chcete uživateli přiřadit nově vytvořený účet SAP CAL, zadejte své **ID uživatele** do textového pole vpravo a klikněte na **Přidat**. 
+1. Chcete-li uživateli přiřadit nově vytvořený účet SAP CAL, zadejte **své ID uživatele** do textového pole vpravo a klepněte na tlačítko **Přidat**. 
 
-    ![Účet pro přidružení uživatele](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
+    ![Přidružení účtu k uživateli](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
 
-1. Chcete-li přidružit svůj účet k uživateli, který používáte k přihlášení k SAP CAL, klikněte na tlačítko **zkontrolovat**. 
+1. Pokud chcete přidružit svůj účet k uživateli, kterého používáte k přihlášení k programu SAP CAL, klikněte na **Zkontrolovat**. 
 
-1. Pokud chcete vytvořit přidružení mezi vaším uživatelem a nově vytvořeným účtem SAP CAL, klikněte na **vytvořit**.
+1. Chcete-li vytvořit přidružení mezi uživatelem a nově vytvořeným účtem SAP CAL, klepněte na tlačítko **Vytvořit**.
 
     ![Přidružení uživatele k účtu](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic9b.PNG)
 
-Úspěšně jste vytvořili účet SAP CAL, který může:
+Úspěšně jste vytvořili účet SAP CAL, který je schopen:
 
-- Použijte model nasazení Správce prostředků.
+- Použijte model nasazení Resource Manager.
 - Nasaďte systémy SAP do svého předplatného Azure.
 
 > [!NOTE]
-> Než budete moct nasadit řešení SAP IDES založené na Windows a SQL Server, možná budete muset zaregistrovat předplatné SAP CAL. V opačném případě se řešení může na stránce Přehled zobrazit jako **uzamčené** .
+> Před nasazením řešení SAP IDES na základě Windows a SQL Server, možná budete muset zaregistrovat předplatné SAP CAL. V opačném případě se řešení může zobrazit jako **Uzamčeno** na stránce přehledu.
 
 ### <a name="deploy-a-solution"></a>Nasazení řešení
-1. Po nastavení účtu SAP CAL vyberte **řešení SAP v systému Windows a SQL Server** řešení. Klikněte na **vytvořit instanci**a potvrďte podmínky použití a podmínky. 
+1. Po nastavení účtu SAP CAL vyberte řešení SAP IDES v řešení **Windows a SQL Server.** Klikněte na **Vytvořit instanci**a potvrďte použití a podmínky. 
 
-1. Na stránce **Základní režim: vytvořit instanci** budete potřebovat:
+1. V **základním režimu: Vytvořit instanci,** musíte:
 
-    a. Zadejte **název**instance.
+    a. Zadejte **název**instance .
 
-    b. Vyberte **oblast**Azure. Abyste mohli získat více oblastí Azure, budete možná potřebovat předplatné SAP CAL.
+    b. Vyberte **oblast**Azure . Možná budete potřebovat předplatné SAP CAL, abyste získali více oblastí Azure nabízených.
 
-    c.  Zadejte hlavní **heslo** pro řešení, jak je znázorněno níže:
+    c.  Zadejte hlavní **heslo** pro řešení, jak je znázorněno na obrázku:
 
-    ![Základní režim SAP CAL: vytvořit instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL Základní režim: Vytvořit instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. Klikněte na možnost **Vytvořit**. Po určité době v závislosti na velikosti a složitosti řešení (odhad licencí SAP CAL poskytuje odhad) se stav zobrazuje jako aktivní a připravený k použití: 
+1. Klikněte na **Vytvořit**. Po určité době, v závislosti na velikosti a složitosti řešení (SAP CAL poskytuje odhad), je stav zobrazen jako aktivní a připravený k použití: 
 
     ![Instance SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 
-1. Pokud chcete najít skupinu prostředků a všechny její objekty, které vytvořila služba SAP CAL, navštivte Azure Portal. Virtuální počítač se dá najít počínaje stejným názvem instance, který byl zadaný v rámci SAP CAL.
+1. Pokud chcete najít skupinu prostředků a všechny její objekty, které byly vytvořeny pomocí SAP CAL, přejděte na portál Azure. Virtuální počítač lze nalézt počínaje stejným názvem instance, který byl uveden v SAP CAL.
 
     ![Objekty skupiny prostředků](./media/cal-ides-erp6-ehp7-sp3-sql/ides_resource_group.PNG)
 
-1. Na portálu CAL pro SAP přejděte do části nasazené instance a klikněte na **připojit**. Zobrazí se následující automaticky otevírané okno: 
+1. Na portálu SAP CAL přejděte na nasazené instance a klikněte na **připojit**. Zobrazí se následující vyskakovací okno: 
 
-    ![Připojit k instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
+    ![Připojení k instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
 
-1. Než budete moct použít jednu z možností pro připojení k nasazeným systémům, klikněte na **Začínáme Průvodce**. Dokumentace pro každou metodu připojení pojmenuje uživatele. Hesla pro tyto uživatele jsou nastavena na heslo hlavního serveru, které jste definovali na začátku procesu nasazení. V dokumentaci jsou další funkční uživatelé uvedeni s hesly, které můžete použít k přihlášení do nasazeného systému.
+1. Než se budete moci připojit k nasazeným systémům pomocí jedné z možností, klepněte na tlačítko **Příručka Začínáme**. Dokumentace pojmenuje uživatele pro každou metodu připojení. Hesla pro tyto uživatele jsou nastavena na hlavní heslo, které jste definovali na začátku procesu nasazení. V dokumentaci jsou uvedeni další funkční uživatelé se svými hesly, která můžete použít k přihlášení k nasazenému systému.
 
-    ![Úvodní dokumentace SAP](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic15.jpg)
+    ![Uvítací dokumentace SAP](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic15.jpg)
 
-Během několika hodin se v Azure nasadí dobrý systém pro platformu SAP.
+Během několika hodin se v Azure nasadí zdravý systém SAP IDES.
 
-Pokud jste si koupili předplatné SAP CAL, SAP plně podporuje nasazení prostřednictvím SAP CAL v Azure. Fronta podpory je BC-VCM-CAL.
+Pokud jste si zakoupili předplatné SAP CAL, SAP plně podporuje nasazení prostřednictvím SAP CAL v Azure. Fronta podpory je BC-VCM-CAL.
 

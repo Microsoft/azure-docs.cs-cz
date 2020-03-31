@@ -1,6 +1,6 @@
 ---
 title: Zastaralé výstrahy Apache Ambari v Azure HDInsight
-description: Diskuze a analýza možných důvodů a řešení pro zastaralá upozornění Apache Ambari v HDInsight.
+description: Diskuse a analýza možných důvodů a řešení pro upozornění Apache Ambari zatuchlých v HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,82 +8,82 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77539106"
 ---
-# <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scénář: zastaralá upozornění Apache Ambari v Azure HDInsight
+# <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scénář: Apache Ambari zastaralé výstrahy v Azure HDInsight
 
-Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
+Tento článek popisuje kroky řešení potíží a možná řešení problémů při interakci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-V uživatelském rozhraní Apache Ambari se může zobrazit výstraha podobná této:
+V ui Apache Ambari se může zobrazit výstraha, jako je tato:
 
-![Příklad zastaralá výstraha Apache Ambari](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
+![Příklad výstrahy Apache Ambari stale](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
 
 ## <a name="cause"></a>Příčina
 
-Ambari agenti nepřetržitě monitorují stav mnoha prostředků. *Výstrahy* je možné nakonfigurovat tak, aby vás upozornily na to, jestli konkrétní vlastnosti clusteru jsou v rámci předem stanovených prahových hodnot. Pokud je splněna podmínka upozornění, Ambari agenti po každém spuštění kontroly prostředků stav vrátí zpět na server Ambari a aktivuje výstrahu. Pokud se výstraha nekontroluje podle intervalu v profilu výstrahy, server aktivuje výstrahu *zastaralá upozornění Ambari serveru* .
+Ambari agenti neustále sledovat stav mnoha zdrojů. *Výstrahy* lze nakonfigurovat tak, aby vás upozorňovaly, zda jsou určité vlastnosti clusteru v rámci předem určených prahových hodnot. Po spuštění každé kontroly prostředků, pokud je splněna podmínka výstrahy, agenti Ambari hlásí stav zpět na server Ambari a aktivují výstrahu. Pokud výstraha není zkontrolována podle intervalu v profilu výstrah, server spustí výstrahu *ambari server stale alerts.*
 
-Existují různé důvody, proč není možné spustit kontrolu stavu ve stanoveném intervalu:
+Existují různé důvody, proč se kontrola stavu nemusí spustit v definovaném intervalu:
 
-* Hostitelé mají těžké použití (vysoké využití procesoru), takže agent Ambari nemůže získat dostatek systémových prostředků, aby bylo možné výstrahy spustit včas.
+* Hostitelé jsou pod velkým použitím (vysoké využití procesoru), takže agent Ambari nemůže získat dostatek systémových prostředků pro spuštění výstrah včas.
 
 * Cluster je zaneprázdněn prováděním mnoha úloh nebo služeb během období vysokého zatížení.
 
-* Malý počet hostitelů v clusteru je hostitelem mnoha komponent, takže je potřeba, abyste mohli spouštět mnoho výstrah. Pokud je počet komponent velký, můžou úlohy výstrahy vyčkat na naplánované intervaly.
+* Malý počet hostitelů v clusteru jsou hostování mnoho součástí, a proto jsou nutné spustit mnoho výstrah. Pokud je počet součástí velký, úlohy výstrah mohou zmeškat naplánované intervaly.
 
 ## <a name="resolution"></a>Řešení
 
-Vyzkoušejte následující metody, abyste vyřešili problémy se zastaralými výstrahami Ambari.
+Vyzkoušejte následující metody k vyřešení problémů se zastaralými výstrahami Ambari.
 
-### <a name="increase-the-alert-interval-time"></a>Zvýšit čas intervalu výstrahy
+### <a name="increase-the-alert-interval-time"></a>Prodloužení intervalu výstrah
 
-Hodnotu jednotlivého intervalu výstrah můžete zvýšit na základě doby odezvy a zatížení clusteru:
+Můžete zvýšit hodnotu jednotlivých intervalů výstrah na základě doby odezvy a zatížení clusteru:
 
-1. V uživatelském rozhraní Apache Ambari vyberte kartu **výstrahy** .
-1. Vyberte název definice výstrahy, který chcete.
-1. Z definice vyberte **Upravit**.
-1. Zvyšte hodnotu **intervalu kontroly** a pak vyberte **Uložit**.
+1. V uzu Apache Ambari vyberte kartu **Výstrahy.**
+1. Vyberte požadovaný název definice výstrahy.
+1. V definici vyberte **Upravit**.
+1. Zvyšte hodnotu **Zkontrolovat interval** a pak vyberte **Uložit**.
 
-### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Zvyšte čas časového intervalu výstrahy pro Ambari výstrahy serveru.
+### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Prodloužení intervalu výstrah pro výstrahy serveru Ambari
 
-1. V uživatelském rozhraní Apache Ambari vyberte kartu **výstrahy** .
-1. V rozevíracím seznamu **skupiny** vyberte **AMBARI výchozí**.
-1. Vyberte výstrahu **výstrahy serveru Ambari** .
-1. Z definice vyberte **Upravit**.
-1. Zvyšte hodnotu **intervalu kontroly** .
-1. Zvyšte hodnotu **násobitele intervalu** a pak vyberte **Save (Uložit**).
+1. V uzu Apache Ambari vyberte kartu **Výstrahy.**
+1. V rozevíracím seznamu **Skupiny** vyberte **možnost AMBARI Default**.
+1. Vyberte výstrahu **výstrahy serveru Ambari.**
+1. V definici vyberte **Upravit**.
+1. Zvyšte hodnotu **Interval kontroly.**
+1. Zvyšte hodnotu **Násobitel intervalu** a pak vyberte **Uložit**.
 
-### <a name="disable-and-reenable-the-alert"></a>Zakázat a znovu povolit upozornění
+### <a name="disable-and-reenable-the-alert"></a>Zakázání a opětovné povolení výstrahy
 
-Pokud chcete zahodit zastaralou výstrahu, zakažte ji a pak ji znovu povolte:
+Chcete-li zahodit zatuchlou výstrahu, zakažte ji a znovu ji povolte:
 
-1. V uživatelském rozhraní Apache Ambari vyberte kartu **výstrahy** .
-1. Vyberte název definice výstrahy, který chcete.
-1. Z definice vyberte možnost **povoleno** v pravém rohu uživatelského rozhraní.
-1. V automaticky otevíraném okně pro **potvrzení** vyberte **Potvrdit zakázat**.
-1. Počkejte několik sekund na vymazání všech výstrah "instance" zobrazených na stránce.
-1. Z definice vyberte v pravém dolním rohu uživatelského rozhraní možnost **zakázáno** .
-1. V automaticky otevíraném okně pro **potvrzení** vyberte **Potvrdit povolit**.
+1. V uzu Apache Ambari vyberte kartu **Výstrahy.**
+1. Vyberte požadovaný název definice výstrahy.
+1. V definici vyberte **Povoleno** v úplně pravé části ui.
+1. V rozbalovacím okně **Potvrzení** vyberte **Potvrdit zakázat**.
+1. Počkejte několik sekund, než budou vymazány všechny instance výstrahy zobrazené na stránce.
+1. V definici vyberte **Zakázáno** v úplně pravé části ui.
+1. V rozbalovacím okně **Potvrzení** vyberte **Potvrdit povolení**.
 
-### <a name="increase-the-alert-grace-period"></a>Prodloužit dobu odkladu výstrahy
+### <a name="increase-the-alert-grace-period"></a>Prodloužení výstražné lhůty
 
-Před tím, než agent Ambari oznámí, že nakonfigurované upozornění nenalezlo svůj plán, je období odkladu. Pokud výstraha nepřinesla svůj plánovaný čas, ale běžela v období odkladu, negeneruje se zastaralá výstraha.
+Před oznámením agenta Ambari, že nakonfigurovaná výstraha zmeškala svůj plán, je období odkladu. Pokud výstraha zmeškala naplánovaný čas, ale běžela v období odkladu, nevytvoří se zastaralá výstraha.
 
-Výchozí hodnota `alert_grace_period` je 5 sekund. Toto nastavení můžete nakonfigurovat v/etc/Ambari-agent/conf/Ambari-agent.ini. Pro hostitele, na kterých se v pravidelných intervalech vyskytují zastaralé výstrahy, zkuste zvýšit hodnotu na 10. Pak restartujte agenta Ambari.
+Výchozí `alert_grace_period` hodnota je 5 sekund. Toto nastavení můžete nakonfigurovat v souboru /etc/ambari-agent/conf/ambari-agent.ini. U hostitelů, u kterých dochází k zastaralým výstrahám v pravidelných intervalech, zkuste zvýšit hodnotu na 10. Potom restartujte agenta Ambari.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se tady problém nezmiňuje nebo ho nemůžete vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud zde váš problém nebyl zmíněn nebo jej nemůžete vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure v [komunitní podpoře pro Azure](https://azure.microsoft.com/support/community/).
+* Odpovědi od odborníků na Azure najdete na [komunitní podpoře Azure](https://azure.microsoft.com/support/community/).
 
-* Spojte se s [@AzureSupport](https://twitter.com/azuresupport) na Twitteru. Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s na Twitteru. Toto je oficiální účet Microsoft Azure pro zlepšení zákaznického prostředí. Propojuje komunitu Azure se správnými prostředky: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, odešlete žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Tam si můžete vybrat nápovědu ( **?** ) z nabídky portál nebo otevřít podokno Nápověda a **Podpora** . Další informace najdete v tématu [Postup vytvoření žádosti o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
+* Pokud potřebujete další pomoc, odešlete žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Chcete-li se tam dostat, vyberte v nabídce portálu nápovědu (**?**) nebo otevřete podokno **Nápověda + podpora.** Další informace najdete v [tématu Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
 
-  Součástí předplatného Microsoft Azure je podpora správy předplatných a fakturace. Technická podpora je dostupná prostřednictvím [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+  Podpora pro správu předplatného a fakturaci je součástí vašeho předplatného Microsoft Azure. Technická podpora je dostupná prostřednictvím [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

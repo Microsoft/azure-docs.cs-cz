@@ -1,6 +1,6 @@
 ---
-title: Dostupnost a konzistence – Azure Event Hubs | Dokumentace Microsoftu
-description: Jak zadat maximální dobu, dostupnost a konzistence pomocí Azure Event Hubs pomocí oddíly.
+title: Dostupnost a konzistence – Azure Event Hubs | Dokumenty společnosti Microsoft
+description: Jak poskytnout maximální dostupnost a konzistenci s Azure Event Hubs pomocí oddílů.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,40 +14,40 @@ ms.workload: na
 ms.date: 01/29/2020
 ms.author: shvija
 ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904482"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 
 ## <a name="overview"></a>Přehled
-Služba Azure Event Hubs využívá [dělení modelu](event-hubs-scalability.md#partitions) ke zlepšení dostupnosti a paralelního zpracování v rámci jednoho centra událostí. Například pokud má čtyři oddíly centra událostí a jeden z těchto oddílů je přesunout z jednoho serveru na jiný v operaci Vyrovnávání zatížení, můžete stále odesílat a přijímat z tři další oddíly. Kromě toho s více oddílů vám umožní mít více souběžných čtenářů zpracování dat, zlepšení agregovanou propustnost. Vysvětlení důsledků vytváření oddílů a řazení v distribuovaném systému je důležitý aspekt návrhu řešení.
+Azure Event Hubs používá [model dělení](event-hubs-scalability.md#partitions) ke zlepšení dostupnosti a paralelizace v rámci jednoho centra událostí. Například pokud rozbočovač událostí má čtyři oddíly a jeden z těchto oddílů se přesune z jednoho serveru na jiný v operaci vyrovnávání zatížení, můžete stále odesílat a přijímat ze tří dalších oddílů. Navíc s více oddílů umožňuje mít více souběžných čteček zpracování dat, zlepšení agregační propustnost. Pochopení důsledků dělení a řazení v distribuovaném systému je kritickým aspektem návrhu řešení.
 
-Pomoci s vysvětlením kompromis mezi řazení a dostupnosti, najdete v článku [věty](https://en.wikipedia.org/wiki/CAP_theorem), označovaný také jako věta Bureš společnosti. Tento článek popisuje tento věta možností volby mezi konzistencí, dostupností a tolerance oddílu. Uvádí, že pro systémy rozdělené podle sítě je vždycky kompromis mezi konzistencí a dostupností.
+Chcete-li vysvětlit kompromis mezi objednáváním a dostupností, podívejte se na [teorém SZP](https://en.wikipedia.org/wiki/CAP_theorem), známý také jako Brewerova teorém. Tato teoreta popisuje volbu mezi konzistence, dostupnost a tolerance oddílu. Uvádí, že pro systémy rozdělené podle sítě je vždy kompromis mezi konzistence a dostupnost.
 
-Bureš společnosti věta definuje konzistenci a dostupnost následujícím způsobem:
-* Rozdělit proti chybám: schopnost systému zpracování dat pokračovat zpracování dat i v případě, že dojde k selhání oddílu.
-* Dostupnost: bez selhání uzlu vrátí přiměřené odpověď v rozumném čase (pomocí žádné chyby nebo vypršení časového limitu).
-* Konzistence: čtení je zaručeno, vraťte poslední zápis pro daného klienta.
+Brewerova teorém definuje konzistenci a dostupnost takto:
+* Tolerance oddílu: schopnost systému zpracování dat pokračovat ve zpracování dat i v případě, že dojde k selhání oddílu.
+* Dostupnost: uzel bez selhání vrátí přiměřenou odpověď v přiměřené době (bez chyb nebo časového období).
+* Konzistence: čtení je zaručeno, že vrátí nejnovější zápis pro daného klienta.
 
 ## <a name="partition-tolerance"></a>Tolerance oddílu
-Event Hubs je nástavbou dělená data modelu. Můžete nakonfigurovat počet oddílů v Centru událostí během instalace, ale tuto hodnotu nemůžete změnit později. Jelikož oddíly musí používat s Event Hubs, budete muset učinit rozhodnutí o dostupnosti a konzistence pro vaši aplikaci.
+Centra událostí je postavena na nad oddíly datového modelu. Počet oddílů v centru událostí můžete během instalace nakonfigurovat, ale tuto hodnotu nelze později změnit. Vzhledem k tomu, že je nutné použít oddíly s Event Hubs, musíte se rozhodnout o dostupnosti a konzistenci pro vaši aplikaci.
 
 ## <a name="availability"></a>Dostupnost
-Nejjednodušší způsob, jak začít pracovat s Event Hubs je použije výchozí chování. Pokud vytvoříte nový **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektu a použít **[odeslat](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** metody událostí je automaticky distribuovaná mezi oddíly v Centru událostí. Toto chování umožňuje co největší množství doba provozu.
+Nejjednodušší způsob, jak začít s Event Hubs je použít výchozí chování. Pokud vytvoříte nový objekt **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** a použijete metodu **[Send,](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** vaše události se automaticky distribuují mezi oddíly v centru událostí. Toto chování umožňuje největší množství času nahoru.
 
-Pro případy použití, které vyžadují maximální doba provozu tento model je upřednostňována.
+Pro případy použití, které vyžadují maximální dobu provozu, je tento model upřednostňován.
 
 ## <a name="consistency"></a>Konzistence
-V některých případech může být řazení událostí důležité. Například můžete váš back-end systém ke zpracování příkazu k aktualizaci před příkaz pro odstranění. V takovém případě můžete nastavit klíč oddílu na události, nebo použít `PartitionSender` objekt jenom k odesílání událostí do určité oddílu. Tím se zajistí, že při čtení z oddílu tyto události jsou načteny v pořadí.
+V některých scénářích může být důležité pořadí událostí. Můžete například chtít, aby systém back-end zpracoval příkaz aktualizace před příkazem delete. V tomto případě můžete buď nastavit klíč oddílu na `PartitionSender` událost, nebo použít objekt pouze k odeslání událostí do určitého oddílu. Tím zajistíte, že při čtení těchto událostí z oddílu jsou čteny v pořadí.
 
-S touto konfigurací Uvědomte si, že pokud konkrétní oddíl, do kterého odesíláte není k dispozici, zobrazí se chybová odpověď. Jako bod porovnání Pokud nemáte spřažení pro jeden oddíl, službu Event Hubs odesílá události do další dostupný oddíl.
+Při této konfiguraci mějte na paměti, že pokud konkrétní oddíl, do kterého odesíláte, není k dispozici, obdržíte odpověď na chybu. Pro srovnání, pokud nemáte spřažení s jedním oddílem, služba Event Hubs odešle událost do dalšího dostupného oddílu.
 
-Jedním z možných řešení k zajištění, řazení a také maximalizuje čas, bude pro agregaci událostí v rámci vaší aplikace pro zpracování událostí. Nejjednodušší způsob, jak to provést, je razítku událost s vlastností číslo vlastní pořadí. Příklad ukazuje následující kód:
+Jedním z možných řešení pro zajištění řazení a zároveň maximalizace doby využití by bylo agregovat události jako součást aplikace pro zpracování událostí. Nejjednodušší způsob, jak toho dosáhnout, je razítko události s vlastní vlastnost pořadové číslo. Příklad ukazuje následující kód:
 
-#### <a name="azuremessagingeventhubs-500-or-latertablatest"></a>[Azure. Messaging. EventHubs (5.0.0 nebo novější)](#tab/latest)
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 nebo novější)](#tab/latest)
 
 ```csharp
 // create a producer client that you can use to send events to an event hub
@@ -73,7 +73,7 @@ await using (var producerClient = new EventHubProducerClient(connectionString, e
 }
 ```
 
-#### <a name="microsoftazureeventhubs-410-or-earliertabold"></a>[Microsoft. Azure. EventHubs (4.1.0 nebo starší)](#tab/old)
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 nebo starší)](#tab/old)
 ```csharp
 // Create an Event Hubs client
 var client = new EventHubClient(connectionString, eventHubName);
@@ -95,7 +95,7 @@ await producer.SendAsync(data);
 ```
 ---
 
-Tento příklad odešle událost k jednomu z dostupných oddílů v Centru událostí a nastaví odpovídající pořadové číslo z vaší aplikace. Toto řešení vyžaduje stav uchovávat ve vaší aplikaci na zpracování, ale dává váš odesílatelů koncový bod, který je pravděpodobně být k dispozici.
+Tento příklad odešle událost do jednoho z dostupných oddílů v centru událostí a nastaví odpovídající pořadové číslo z vaší aplikace. Toto řešení vyžaduje stav, který má být zachován vaší aplikací zpracování, ale dává odesílatelům koncový bod, který je pravděpodobnější, že bude k dispozici.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Event Hubs najdete na následujících odkazech:

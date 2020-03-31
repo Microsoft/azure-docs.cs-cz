@@ -1,6 +1,6 @@
 ---
-title: Přihlášení k samoobslužné aplikaci & přihlašování – Microsoft Identity Platform | Azure
-description: Informace o tom, jak vytvořit jednostránkovou aplikaci (přihlášení)
+title: Přihlášení k jednostránkové aplikaci & odhlášení – platforma microsoft identity | Azure
+description: Přečtěte si, jak vytvořit jednostránkovou aplikaci (přihlášení)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,37 +17,37 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159960"
 ---
-# <a name="single-page-application-sign-in-and-sign-out"></a>Jednostránkové aplikace: přihlášení a odhlášení
+# <a name="single-page-application-sign-in-and-sign-out"></a>Jednostránková aplikace: Přihlášení a odhlášení
 
-Naučte se, jak přidat přihlášení k kódu pro aplikaci s jednou stránkou.
+Přečtěte si, jak přidat přihlášení ke kódu jednostránkové aplikace.
 
-Než budete moct získat tokeny pro přístup k rozhraním API ve vaší aplikaci, potřebujete kontext ověřeného uživatele. Uživatele můžete do aplikace v MSAL. js přihlašovat dvěma způsoby:
+Než budete moci získat tokeny pro přístup k rozhraní API ve vaší aplikaci, budete potřebovat kontext ověřeného uživatele. Uživatelé můžete přihlásit k aplikaci v MSAL.js dvěma způsoby:
 
-* [Automaticky otevírané okno](#sign-in-with-a-pop-up-window)pomocí metody `loginPopup`
-* [Přesměrování](#sign-in-with-redirect)pomocí metody `loginRedirect`
+* [Rozbalovací okno](#sign-in-with-a-pop-up-window)pomocí `loginPopup` metody
+* [Přesměrování](#sign-in-with-redirect)pomocí `loginRedirect` metody
 
-Volitelně můžete také předávat obory rozhraní API, pro které budete potřebovat souhlas uživatele v době přihlášení.
+Můžete také volitelně předat obory rozhraní API, pro které potřebujete, aby uživatel souhlasil v době přihlášení.
 
 > [!NOTE]
-> Pokud má vaše aplikace již přístup k kontextu ověřeného uživatele nebo ID tokenu, můžete přeskočit krok přihlášení a přímo získat tokeny. Podrobnosti najdete v tématu [SSO bez přihlášení MSAL. js](msal-js-sso.md#sso-without-msaljs-login).
+> Pokud vaše aplikace již má přístup k kontextu ověřeného uživatele nebo tokenu ID, můžete přeskočit krok přihlášení a přímo získat tokeny. Podrobnosti naleznete v [tématu SSO bez přihlášení MSAL.js](msal-js-sso.md#sso-without-msaljs-login).
 
-## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Volba mezi prostředím pro místní nebo přesměrování
+## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Výběr mezi automaticky otevíranou nebo přesměrovací masovou
 
-V aplikaci nemůžete použít metody automaticky otevíraných oken a přesměrování. Volba mezi zobrazováním překryvných nebo přesměrování závisí na vašem toku aplikace:
+V aplikaci nelze použít metody automaticky otevíraných i přesměrovacích adres. Volba mezi automaticky otevírané nebo přesměrovací prostředí závisí na toku aplikace:
 
-* Pokud nechcete, aby se uživatelé během ověřování přesunuli ze stránky hlavní aplikace, doporučujeme použít místní metodu. Vzhledem k tomu, že k přesměrování ověřování dojde v překryvném okně, zůstane zachován stav hlavní aplikace.
+* Pokud nechcete, aby se uživatelé během ověřování vzdalovali od hlavní stránky aplikace, doporučujeme metodu automaticky otevíraných míst. Vzhledem k tomu, že přesměrování ověřování se stane v automaticky otevírané okno, stav hlavní aplikace je zachována.
 
-* Pokud uživatelé mají omezení nebo zásady prohlížeče, kde jsou automaticky otevíraná okna zakázaná, můžete použít metodu přesměrování. Použijte metodu přesměrování v prohlížeči Internet Explorer, protože u [automaticky otevíraných oken v aplikaci Internet Explorer jsou známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
+* Pokud mají uživatelé omezení prohlížeče nebo zásady, kde jsou zakázána automaticky otevíraná okna, můžete použít metodu přesměrování. Metodu přesměrování použijte v prohlížeči Internet Explorer, protože jsou [v aplikaci Internet Explorer známy problémy s automaticky otevíranými okny](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
 
-## <a name="sign-in-with-a-pop-up-window"></a>Přihlášení pomocí automaticky otevíraného okna
+## <a name="sign-in-with-a-pop-up-window"></a>Přihlášení pomocí automaticky otevíraných oken
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,9 +63,9 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-MSALá obálka umožňuje zabezpečit konkrétní trasy ve vaší aplikaci přidáním `MsalGuard` do definice trasy. Tato ochrana vyvolá metodu pro přihlášení k této trase.
+Obálka MSAL Angular umožňuje zabezpečit konkrétní trasy v `MsalGuard` aplikaci přidáním do definice trasy. Tento stráž vyvolá metodu pro přihlášení při přístupu k této trase.
 
 ```javascript
 // In app.routes.ts
@@ -77,7 +77,7 @@ MSALá obálka umožňuje zabezpečit konkrétní trasy ve vaší aplikaci přid
   { path: 'myProfile' ,component: MsGraphComponent, canActivate : [MsalGuard] },
 ```
 
-Pro Automatické zobrazování oken povolte možnost konfigurace `popUp`. Obory, které vyžadují souhlas, můžete také předat následujícím způsobem:
+Pro prostředí automaticky otevíraných `popUp` oken povolte možnost konfigurace. Můžete také předat obory, které vyžadují souhlas takto:
 
 ```javascript
 //In app.module.ts
@@ -91,11 +91,11 @@ Pro Automatické zobrazování oken povolte možnost konfigurace `popUp`. Obory,
 ```
 ---
 
-## <a name="sign-in-with-redirect"></a>Přihlášení pomocí přesměrování
+## <a name="sign-in-with-redirect"></a>Přihlášení s přesměrováním
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Metody přesměrování nevrací příslib z důvodu přesunu z hlavní aplikace. Aby bylo možné zpracovat a přistupovat ke vráceným tokenům, je nutné před voláním metod přesměrování zaregistrovat úspěšné a zpětné volání chyb.
+Metody přesměrování nevrátí slib z důvodu přechodu od hlavní aplikace. Chcete-li zpracovat a získat přístup k vrácené tokeny, je třeba zaregistrovat úspěch a zpětná volání chyb před voláním metody přesměrování.
 
 ```javascript
 function authCallback(error, response) {
@@ -111,22 +111,22 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-Kód je stejný, jak je popsáno výše v části o přihlášení pomocí překryvného okna. Výchozím tokem je přesměrování.
+Kód je zde stejný, jak je popsáno výše v části o přihlášení s automaticky otevíraným oknem. Výchozí tok je přesměrování.
 
 > [!NOTE]
-> Token ID neobsahuje odsouhlasené obory a reprezentuje pouze ověřeného uživatele. Přijaté obory se vrátí v přístupovém tokenu, který získáte v dalším kroku.
+> Token ID neobsahuje sypké obory a představuje pouze ověřeného uživatele. Souhlasné obory jsou vráceny v přístupovém tokenu, který získáte v dalším kroku.
 
 ---
 
 ## <a name="sign-out"></a>Odhlášení
 
-Knihovna MSAL poskytuje metodu `logout`, která vymaže mezipaměť v prohlížeči úložiště a pošle žádost o odhlášení do Azure Active Directory (Azure AD). Po odhlášení se knihovna přesměruje zpátky na úvodní stránku aplikace ve výchozím nastavení.
+Knihovna MSAL `logout` poskytuje metodu, která vymaže mezipaměť v úložišti prohlížeče a odešle požadavek na odhlášení do služby Azure Active Directory (Azure AD). Po odhlášení knihovna ve výchozím nastavení přesměruje zpět na úvodní stránku aplikace.
 
-Můžete nakonfigurovat identifikátor URI, na který se má přesměrovat po odhlášení, nastavením `postLogoutRedirectUri`. Tento identifikátor URI by měl být také zaregistrován jako identifikátor URI pro odhlášení v registraci vaší aplikace.
+Identifikátor URI, do kterého by měl být po `postLogoutRedirectUri`odhlášení přesměrován, můžete nakonfigurovat nastavením . Tento identifikátor URI by měl být také registrován jako identifikátor URI při registraci aplikace.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -143,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts

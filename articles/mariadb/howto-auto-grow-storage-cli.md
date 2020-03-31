@@ -1,41 +1,41 @@
 ---
-title: Automatické zvětšování úložiště – Azure CLI – Azure Database for MariaDB
-description: Tento článek popisuje, jak můžete povolit automatické zvětšování úložiště pomocí rozhraní příkazového řádku Azure v Azure Database for MariaDB.
+title: Automatické úložiště růstu – Azure CLI – databáze Azure pro MariaDB
+description: Tento článek popisuje, jak můžete povolit automatické zvětšit úložiště pomocí Azure CLI v Azure Database pro MariaDB.
 author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 4c9677f31128076a80ec168151e74247bdc8bc51
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 4be84c750f6a3ca7a0d48aa2b98d75272c1cbadf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771858"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529080"
 ---
-# <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>Automatické zvětšování Azure Database for MariaDBho úložiště pomocí Azure CLI
-Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for MariaDB pro růst, aniž by to ovlivnilo zatížení.
+# <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>Automatické prodnosí databáze Azure pro úložiště MariaDB pomocí azure cli
+Tento článek popisuje, jak můžete nakonfigurovat Azure Database pro úložiště serveru MariaDB růst bez dopadu na zatížení.
 
-Server, který [dosáhl limitu úložiště](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#reaching-the-storage-limit), je nastaven na hodnotu jen pro čtení. Pokud je pro servery s méně než 100 GB zřízené úložiště povolené automatické zvětšování úložiště, velikost zřízeného úložiště se zvýší o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Maximální limity úložiště, jak je uvedeno [zde](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#storage) , platí.
+Server, [který dosáhne limitu úložiště](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#reaching-the-storage-limit), je nastaven na jen pro čtení. Pokud úložiště auto růst je povolena pak pro servery s méně než 100 GB zřízeného úložiště, zřízené úložiště se zvýší o 5 GB, jakmile je volné úložiště je nižší než 1 GB nebo 10 % zřízeného úložiště. U serverů s více než 100 GB zřízeného úložiště se zřízené úložiště zvýší o 5 %, když je volný úložný prostor nižší než 5 % zřízené velikosti úložiště. Platí maximální limity úložiště, jak [je uvedeno zde.](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#storage)
 
-## <a name="prerequisites"></a>Předpoklady
-K dokončení tohoto průvodce budete potřebovat:
-- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
+## <a name="prerequisites"></a>Požadavky
+Chcete-li dokončit tento návod, potřebujete:
+- [Databáze Azure pro server MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že na příkazovém řádku Azure CLI zadáte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje, abyste používali Azure CLI verze 2.0 nebo novější. Chcete-li verzi potvrdit, zadejte `az --version`na příkazovém řádku příkazového řádku Azure . Informace o instalaci nebo upgradu najdete [v tématu Instalace příkazového příkazového příkazu k webu Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="enable-mariadb-server-storage-auto-grow"></a>Povolit automatické zvětšování úložiště serveru MariaDB
 
-Pomocí následujícího příkazu Povolte automatické zvětšení úložiště na stávajícím serveru:
+Povolte úložiště s automatickým rozrůstatím serveru na existujícím serveru pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az mariadb server update --name mydemoserver --resource-group myresourcegroup --auto-grow Enabled
 ```
 
-Při vytváření nového serveru pomocí následujícího příkazu Povolte automatické zvětšování úložiště serveru:
+Povolte úložiště s automatickým rozrůstatím serveru při vytváření nového serveru pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --auto-grow Enabled --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.3
@@ -43,4 +43,4 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si informace o [tom, jak vytvářet výstrahy na metrikách](howto-alert-metric.md).
+Přečtěte [si, jak vytvářet upozornění na metriky](howto-alert-metric.md).

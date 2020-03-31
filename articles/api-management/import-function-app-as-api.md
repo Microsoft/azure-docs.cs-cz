@@ -1,5 +1,5 @@
 ---
-title: Import Function App Azure jako rozhraní API v API Management
+title: Import aplikace funkce Azure jako rozhraní API ve správě rozhraní API
 titleSuffix: Azure API Management
 description: V tomto kurzu se dozvíte, jak importovat aplikaci Azure Function App do služby Azure API Management jako rozhraní API.
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
 ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209184"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management
@@ -35,14 +35,14 @@ V tomto kurzu se naučíte:
 > * Testovat rozhraní API na portálu Azure Portal
 > * Testování rozhraní API na portálu pro vývojáře
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Projděte si rychlý start [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 * Zkontrolujte, jestli máte v předplatném aplikaci Azure Functions. Další informace najdete v tématu [Vytvoření aplikace Azure Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Musí obsahovat funkce s triggerem HTTP a úrovní autorizace nastavenou na *Anonymní* nebo *Funkce*.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="add-new-api-from-azure-function-app"></a>Import aplikace Azure Function App jako nového rozhraní API
+## <a name="import-an-azure-function-app-as-a-new-api"></a><a name="add-new-api-from-azure-function-app"></a>Import aplikace Azure Function App jako nového rozhraní API
 
 Podle následujícího postupu vytvoříte z aplikace Azure Function App nové rozhraní API.
 
@@ -75,9 +75,9 @@ Podle následujícího postupu vytvoříte z aplikace Azure Function App nové r
 
     ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-06.png)
 
-8. Klikněte na možnost **Vytvořit**.
+8. Klikněte na **Vytvořit**.
 
-## <a name="append-azure-function-app-to-api"></a>Připojení aplikace Azure Function App k existujícímu rozhraní API
+## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a>Připojení aplikace Azure Function App k existujícímu rozhraní API
 
 Podle následujícího postupu připojíte aplikaci Azure Function App k existujícímu rozhraní API.
 
@@ -107,18 +107,18 @@ Podle následujícího postupu připojíte aplikaci Azure Function App k existuj
 
     ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-05.png)
 
-8. Klikněte na **Importovat**.
+8. Klepněte na **tlačítko Importovat**.
 
     ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a>Udělován
+## <a name="authorization"></a><a name="authorization"></a>Autorizace
 
 Při importu aplikace Azure Function App se automaticky vygeneruje:
 
-* Klíč hostitele v rámci Function App s názvem APIM-{*název instance služby Azure API Management*}
-* Pojmenovaná hodnota v rámci instance služby Azure API Management s názvem {*název instance azure Function App*} – klíč, který obsahuje vytvořený klíč hostitele.
+* Klíč hostitele uvnitř aplikace function app s názvem apim-{*název instance služby Azure API Management*},
+* Pojmenovaná hodnota uvnitř instance Azure API Management s názvem {*název instance aplikace Azure Function App*}-key, který obsahuje vytvořený klíč hostitele.
 
-Pro rozhraní API vytvořená po 4. dubnu 2019 se hostitelský klíč předává v požadavcích HTTP od API Management do Function App v hlavičce. Starší rozhraní API předejte klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Toto chování může být změněno pomocí `PATCH Backend` [REST API voláním](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) *back-end* entity přidružené k Function App.
+Pro rozhraní API vytvořená po 4. Starší rozhraní API předají klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Toto chování může `PATCH Backend` být změněno prostřednictvím [volání rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) na entitu *Back-end* přidružené k aplikaci funkce.
 
 > [!WARNING]
 > Odebráním nebo změnou hodnoty klíče hostitele aplikace Azure Function App nebo pojmenované hodnoty ve službě Azure API Management se přeruší komunikace mezi službami. Tyto hodnoty se nesynchronizují automaticky.
@@ -143,7 +143,7 @@ Přejděte k vaší instanci služby Azure API Management a v nabídce na levé 
 
 ![Přidání z aplikace Function App](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Testování nového rozhraní API na webu Azure Portal
 
 Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí pohodlný způsob zobrazení a testování operací v rozhraní API.  
 
@@ -153,7 +153,7 @@ Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí po
 
 3. Vyberte operaci.
 
-    Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jednou z hlaviček je klíč **Ocp-Apim-Subscription-Key**. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby API Management, jste už správcem a klíč se tedy vyplní automaticky. 
+    Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jedním z hlaviček je **Ocp-Apim-Subscription-Key**, pro klíč předplatného produktu, který je přidružen k tomuto rozhraní API. Pokud jste vytvořili instanci služby API Management, jste už správcem a klíč se tedy vyplní automaticky. 
 
 4. Vyberte **Poslat**.
 

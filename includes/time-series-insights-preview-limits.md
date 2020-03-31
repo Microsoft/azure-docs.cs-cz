@@ -10,48 +10,48 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77123215"
 ---
-### <a name="general-availability-and-preview-comparison"></a>Obecná dostupnost a porovnání verze Preview
+### <a name="general-availability-and-preview-comparison"></a>Obecné dostupnosti a porovnání náhledů
 
-Následující tabulka shrnuje několik hlavních rozdílů mezi Azure Time Series Insights obecné dostupnosti (GA) a instance Preview.
+Následující tabulka shrnuje několik klíčových rozdílů mezi instancemi Azure Time Series Insights obecné dostupnosti (GA) a náhledu.
 
 | | GA | Preview |
 | --- | --- | ---|
-| Občan první třídy | Orientované na události | Orientované na časovou řadu |
-| Sémantický důvod | Nízká úroveň (referenční data) | Nejvyšší úroveň (modely) |
-| Kontextová data | Úroveň bez zařízení | Na úrovni zařízení a mimo zařízení |
-| Úložiště COMPUTE Logic | Ne | Uloženo v části typu proměnné modelu |
-| Úložiště a řízení přístupu | Ne | Povoleno přes model |
-| Agregace a vzorkování | Ne | Vážené a časově vážené události |
+| Prvotřídní občan | Zaměřené na události | Centrické časové řady |
+| Sémantické uvažování | Nízká úroveň (referenční údaje) | Na vysoké úrovni (modely) |
+| Kontextová souvislost dat | Úroveň mimo zařízení | Úroveň zařízení a jiného zařízení |
+| Úložiště výpočetní logiky | Ne | Uloženo v typových proměnných, které jsou součástí modelu |
+| Řízení úložiště a přístupu | Ne | Povoleno pomocí modelu |
+| Agregace/vzorkování | Ne | Vážená událost a vážený čas |
 | Rekonstrukce signálu | Ne | Interpolace |
-| Výroba odvozených časových řad | Ne | Ano, sloučit a spojení |
-| Flexibilita jazyka | Bez možnosti složení | Sestavitelné |
-| Jazyk výrazů | Řetězec predikátu | Výrazy časových řad (řetězce predikátů, hodnoty, výrazy a funkce) |
+| Výroba odvozených časových řad | Ne | Ano, sloučení a spojení |
+| Jazyková flexibilita | Nekomposable | Komodasable |
+| Jazyk výrazů | Predikátový řetězec | Výrazy časových řad (predikátové řetězce, hodnoty, výrazy a funkce) |
 
 ### <a name="property-limits"></a>Omezení vlastností
 
-Time Series Insights limity vlastností se zvýšily na 1 000 z maximálního limitu 800 v GA. Zadané vlastnosti události mají odpovídající sloupce JSON, CSV a grafu, které můžete zobrazit v [průzkumníkovi Time Series Insights Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+Limity vlastností Time Series Insights se zvýšily na 1 000 z maximálního limitu 800 v GA. Zadané vlastnosti událostí mají odpovídající sloupce JSON, CSV a grafu, které lze zobrazit v [průzkumníku náhledu přehledů časové řady](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
-| Skladová položka | Maximální vlastnosti |
+| Skladová jednotka (SKU) | Maximální vlastnosti |
 | --- | --- |
-| Náhled PAYG | 1 000 vlastnosti (sloupce) |
-| GA S1 | 600 vlastnosti (sloupce) |
-| GA S2 | 800 vlastnosti (sloupce) |
+| Náhled PAYG | 1 000 vlastností (sloupců) |
+| GA S1 | 600 vlastností (sloupců) |
+| GA S2 | 800 vlastností (sloupce) |
 
 ### <a name="event-sources"></a>Zdroje událostí
 
-Podporuje se maximálně dva zdroje událostí na instanci. 
+Je podporovány maximálně dva zdroje událostí na instanci. 
 
-* Naučte se [Přidat zdroj centra událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
-* Nakonfigurujte [Zdroj služby IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
+* Přečtěte si, jak [přidat zdroj centra událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+* Konfigurace [zdroje centra IoT](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
 
-Ve výchozím nastavení [podporují prostředí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) pro příchozí přenosy až **1 megabajt za sekundu (MB/s) na prostředí**. Zákazníci můžou v případě potřeby škálovat v prostředích ve verzi Preview až o **16 MB/s** . K dispozici je také omezení počtu **0,5 MB/s**na oddíly. 
+Ve výchozím nastavení [podporují prostředí Preview rychlost příchozího přenosu dat](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) až 1 **mb/s na prostředí**. Zákazníci mohou v případě potřeby škálovat prostředí preview až na **16 MB/s.** K dispozici je také limit pro oddíl **0,5 MB/s**. 
 
-### <a name="api-limits"></a>Omezení rozhraní API
+### <a name="api-limits"></a>Limity rozhraní API
 
-Omezení REST API pro Time Series Insights Preview jsou uvedena v [referenční dokumentaci k REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#limits).
+Omezení rozhraní API doby pro náhled přehledů časových řad jsou specifikována v [referenční dokumentaci rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#limits).

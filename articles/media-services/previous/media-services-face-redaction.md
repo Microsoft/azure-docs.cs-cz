@@ -1,6 +1,6 @@
 ---
-title: Redigování plošek s Azure Media Analytics | Microsoft Docs
-description: Azure Media Redactor je Azure Media Analytics multimediální procesor, který nabízí škálovatelné redigování tváře v cloudu. Tento článek ukazuje, jak pomocí Azure Media Analytics naredigování obličeje.
+title: Redigovat tváře s Azure Media Analytics | Dokumenty společnosti Microsoft
+description: Azure Media Redactor je mediální procesor Azure Media Analytics, který nabízí škálovatelnou redigování tváří v cloudu. Tento článek ukazuje, jak redigovat tváře pomocí azure media analytics.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900306"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>Redigování ploch pomocí Azure Media Analytics 
+# <a name="redact-faces-with-azure-media-analytics"></a>Redigovat tváře pomocí Azure Media Analytics 
 ## <a name="overview"></a>Přehled
-**Azure Media redactor** je [Azure Media Analytics](media-services-analytics-overview.md) multimediální procesor (MP), který nabízí škálovatelné redigování tváře v cloudu. Naredigování obličeje umožňuje upravit vaše video, aby se rozostří plošky vybraných jednotlivců. Je možné, že budete chtít použít službu redigování obličeje ve scénářích veřejného zabezpečení a média pro příspěvky. Několik minut záběrů, které obsahují více plošek, může trvat hodiny na redigování ručně, ale v rámci této služby bude proces redigování obličeje vyžadovat jenom několik jednoduchých kroků. Další informace najdete v [tomto](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
+**Azure Media Redactor** je mediální procesor [Azure Media Analytics](media-services-analytics-overview.md) (MP), který nabízí škálovatelnou redigování tváří v cloudu. Redigování obličeje umožňuje upravit video tak, aby rozmazalo tváře vybraných jedinců. Službu redigování obličeje můžete použít ve scénářích veřejné bezpečnosti a zpravodajských médií. Několik minut záznamu, který obsahuje více tváří, může trvat hodiny, než se ručně rediguje, ale s touto službou bude proces redigování obličeje vyžadovat jen několik jednoduchých kroků. Další informace naleznete v [tomto](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
 
-Tento článek obsahuje podrobné informace o **Azure Media redactor** a ukazuje, jak ho používat s Media Services SDK pro .NET.
+Tento článek obsahuje podrobnosti o **Azure Media Redactor** a ukazuje, jak ji používat s Media Services SDK pro .NET.
 
 ## <a name="face-redaction-modes"></a>Režimy redigování obličeje
-Redigování obličeje funguje tak, že detekuje obličeje v každém snímku videa a sleduje objekt Face v čase dopředu a dozadu, aby se stejná osoba mohla rozmazaný i z jiných úhlů. Automatizovaný proces redigování je složitý a nikdy nevytváří 100% požadovaného výstupu, z tohoto důvodu Media Analytics poskytuje několik způsobů, jak změnit konečný výstup.
+Redigování obličeje funguje tak, že detekuje tváře v každém snímku videa a sleduje objekt obličeje dopředu i dozadu v čase, takže stejný jedinec může být rozmazaný i z jiných úhlů. Automatizovaný proces redigování je složitý a ne vždy vytváří 100 % požadovaného výstupu, z tohoto důvodu vám služba Media Analytics poskytuje několik způsobů, jak upravit konečný výstup.
 
-Kromě plného automatického režimu je k dispozici pracovní postup se dvěma průchody, který umožňuje výběr a zrušení výběru nalezených obličeje pomocí seznamu ID. K provedení libovolných úprav v rámci jednotlivých snímků sada MP používá soubor metadat ve formátu JSON. Tento pracovní postup je rozdělen na režimy **analyzování** a **redigování** . Oba režimy můžete zkombinovat v jednom průchodu, který spouští obě úlohy v jedné úloze. Tento režim se nazývá **Kombinovaná**.
+Kromě plně automatického režimu je k dispozici dvouprůchodový pracovní postup, který umožňuje výběr/devýběr nalezených ploch prostřednictvím seznamu ID. Chcete-li provést libovolné úpravy na snímek, mp používá soubor metadat ve formátu JSON. Tento pracovní postup je rozdělen do **režimu Analyzovat** a **redigovat.** Můžete kombinovat dva režimy v jednom průchodu, který spouští oba úkoly v jedné úloze; Tento režim se nazývá **Combined**.
 
 ### <a name="combined-mode"></a>Kombinovaný režim
-Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
+Tím se automaticky vytvoří redigovaný mp4 bez ručního zadávání.
 
-| Stage | Název souboru | Poznámky |
+| Krok | Název souboru | Poznámky |
 | --- | --- | --- |
-| Vstupní Asset |foo. bar |Video ve formátu WMV, MOV nebo MP4 |
-| Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' kombinované '}} |
-| Výstupní Asset |foo_redacted.mp4 |Video s použitím rozostření |
+| Vstupní majetek |foo.bar |Video ve formátu WMV, MOV nebo MP4 |
+| Vstupní konfigurace |Přednastavení konfigurace úlohy |{'version':'1.0', 'options': {'mode':'combined'}} |
+| Výstupní majetek |foo_redacted.mp4 |Video s použitým rozostřením |
 
 #### <a name="input-example"></a>Příklad vstupu:
-[Zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
+[zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
 
 #### <a name="output-example"></a>Příklad výstupu:
-[Zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
+[zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
-### <a name="analyze-mode"></a>Režim analýzy
-Úspěšnost **analýzy** obousměrného pracovního postupu provede vstup videa a vytvoří soubor JSON pro umístění obličeje a obrázky ve formátu jpg každé zjištěné plochy.
+### <a name="analyze-mode"></a>Analyzovat režim
+Průchod **analýzy** dvouprůchodového pracovního postupu přebírá vstup videa a vytváří soubor JSON s umístěními ploch a jpg obrazy každé zjištěné plochy.
 
-| Stage | Název souboru | Poznámky |
+| Krok | Název souboru | Poznámky |
 | --- | --- | --- |
-| Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4 |
-| Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' Analyze '}} |
-| Výstupní Asset |foo_annotations.json |Data poznámek pro umístění obličeje ve formátu JSON. Tuto možnost může upravit uživatel, aby bylo možné upravovat rozmazaný ohraničovací rámečky. Viz ukázka níže. |
-| Výstupní Asset |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Oříznutý jpg každé zjištěné plochy, kde číslo označuje labelId obličej |
+| Vstupní majetek |foo.bar |Video ve formátu WMV, MPV nebo MP4 |
+| Vstupní konfigurace |Přednastavení konfigurace úlohy |{'version':'1.0', 'options': {'mode':'analyze'}} |
+| Výstupní majetek |foo_annotations.json |Anotační data umístění ploch ve formátu JSON. Uživatel ji může upravit tak, aby upravoval ohraničovací rámečky rozostření. Viz ukázka níže. |
+| Výstupní majetek |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Oříznutý jpg každé zjištěné plochy, kde číslo označuje označení Id plochy |
 
 #### <a name="output-example"></a>Příklad výstupu:
 
@@ -108,26 +108,26 @@ Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 ```
 
 ### <a name="redact-mode"></a>Režim redigování
-Druhý průchod pracovního postupu přebírá větší počet vstupů, které musí být sloučeny do jediného assetu.
+Druhý průchod pracovního postupu trvá větší počet vstupů, které musí být sloučeny do jednoho datového zdroje.
 
-To zahrnuje seznam ID, která se mají Rozostřit, původní video a poznámky JSON. Tento režim používá poznámky pro použití rozostření na vstupním videu.
+To zahrnuje seznam ID rozostření, původní video a poznámky JSON. Tento režim používá poznámky k aplikování rozostření na vstupní video.
 
-Výstup z průchodu Analyze nezahrnuje původní video. Video se musí nahrát do vstupního assetu pro úlohu režimu redigování a vybrané jako primární soubor.
+Výstup z průchodu Analyzovat neobsahuje původní video. Video musí být nahráno do vstupního datového zdroje pro úlohu režimu Redact a vybráno jako primární soubor.
 
-| Stage | Název souboru | Poznámky |
+| Krok | Název souboru | Poznámky |
 | --- | --- | --- |
-| Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4. Stejné video jako v kroku 1. |
-| Vstupní Asset |foo_annotations.json |poznámky soubor metadat z fáze One, s volitelnými úpravami. |
-| Vstupní Asset |foo_IDList. txt (volitelné) |Nepovinný nový řádek oddělený seznam ID tváře k redigování Pokud pole necháte prázdné, rozostří všechny plošky. |
-| Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' redigování}} |
-| Výstupní Asset |foo_redacted.mp4 |Video s rozostřením aplikovaným na základě poznámek |
+| Vstupní majetek |foo.bar |Video ve formátu WMV, MPV nebo MP4. Stejné video jako v kroku 1. |
+| Vstupní majetek |foo_annotations.json |soubor metadat anotací z první fáze s volitelnými úpravami. |
+| Vstupní majetek |foo_IDList.txt (volitelné) |Volitelný nový řádek oddělený seznam id plochy redigovat. Pokud zůstane prázdná, rozostří to všechny tváře. |
+| Vstupní konfigurace |Přednastavení konfigurace úlohy |{'version':'1.0', 'options': {'mode':'redact'}} |
+| Výstupní majetek |foo_redacted.mp4 |Video s rozostřením na základě anotací |
 
 #### <a name="example-output"></a>Příklad výstupu
-Toto je výstup z IDList s jedním vybraným ID.
+Toto je výstup z IDList s jedním ID vybrané.
 
-[Zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
+[zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
-Příklad foo_IDList. txt
+Příklad foo_IDList.txt
  
      1
      2
@@ -135,9 +135,9 @@ Příklad foo_IDList. txt
 
 ## <a name="blur-types"></a>Typy rozostření
 
-V **kombinovaném** , nebo v režimu **redigování** , existuje 5 různých režimů rozostření, ze kterých můžete vybírat prostřednictvím vstupní konfigurace JSON: **Nízká**, **med**, **High**, **box**a **Black**. Ve výchozím nastavení se používá **med** .
+V režimu **Combined** nebo **Redact** je k dispozici 5 různých režimů rozostření, ze kterých si můžete vybrat prostřednictvím vstupní konfigurace JSON: **Nízká**, **Med**, **Vysoká**, **Box**a **Černá**. Ve výchozím nastavení se používá **Med.**
 
-Můžete najít ukázky níže uvedených typů rozostření.
+Ukázky typů rozostření naleznete níže.
 
 ### <a name="example-json"></a>Příklad JSON:
 
@@ -145,38 +145,38 @@ Můžete najít ukázky níže uvedených typů rozostření.
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
 ```
 
-#### <a name="low"></a>Nízký
+#### <a name="low"></a>Nízká
 
-![Nízký](./media/media-services-face-redaction/blur1.png)
+![Nízká](./media/media-services-face-redaction/blur1.png)
  
-#### <a name="med"></a>Tahač
+#### <a name="med"></a>Med
 
-![Tahač](./media/media-services-face-redaction/blur2.png)
+![Med](./media/media-services-face-redaction/blur2.png)
 
-#### <a name="high"></a>Vysoký
+#### <a name="high"></a>Vysoká
 
-![Vysoký](./media/media-services-face-redaction/blur3.png)
+![Vysoká](./media/media-services-face-redaction/blur3.png)
 
 #### <a name="box"></a>Box
 
 ![Box](./media/media-services-face-redaction/blur4.png)
 
-#### <a name="black"></a>Černá
+#### <a name="black"></a>Black
 
-![Černá](./media/media-services-face-redaction/blur5.png)
+![Black](./media/media-services-face-redaction/blur5.png)
 
 ## <a name="elements-of-the-output-json-file"></a>Prvky výstupního souboru JSON
 
-MP pro redigování poskytuje detekci a sledování polohy s vysokou přesností, které dokáže detekovat až 64 lidských plošek ve snímku videa. Přední plošky poskytují nejlepší výsledky, zatímco strany a malé plošky (menší nebo rovny 24x24 pixelů) jsou náročné.
+Redakce MP poskytuje vysoce přesné rozpoznávání polohy obličeje a sledování, které dokáže detekovat až 64 lidských tváří v rámci videa. Nejlepší výsledky poskytují čelní plochy, zatímco boční plochy a malé plochy (menší nebo rovné 24 x 24 pixelům) jsou náročné.
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
-## <a name="net-sample-code"></a>Vzorový kód .NET
+## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
 Následující program ukazuje, jak:
 
-1. Vytvořte Asset a nahrajte do něj mediální soubor.
-2. Vytvořte úlohu s úkolem redigování obličeje na základě konfiguračního souboru, který obsahuje následující předvolbu JSON: 
+1. Vytvořte datový zdroj a nahrajte do něj mediální soubor.
+2. Vytvořte úlohu s úlohou redigování obličeje na základě konfiguračního souboru, který obsahuje následující přednastavení json: 
 
     ```json
             {
@@ -193,7 +193,7 @@ Následující program ukazuje, jak:
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```csharp
 using System;
@@ -367,11 +367,11 @@ namespace FaceRedaction
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
+[Přehled analýzy Mediálních služeb Azure](media-services-analytics-overview.md)
 
 [Ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

@@ -9,19 +9,19 @@ ms.date: 03/05/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78669372"
 ---
 >[!NOTE]
->Těžko pracujeme na přidání dalších oblastí. Po přidání oblasti ji přidáme do tohoto seznamu.
+>Usilovně pracujeme na přidání dalších regionů. Po přidání oblasti ji přidáme do tohoto seznamu.
 >
 
-**Jižní**
+**Amerika**
 * Brazílie – jih
-* Kanada – střed
+* Střední Kanada
 * USA – střed
 * USA – východ
 * USA – východ 2
@@ -34,8 +34,8 @@ ms.locfileid: "78669372"
 **Evropa**
 * Francie – střed
 * Severní Evropa
-* Norsko – východ
-* Velká Británie – jih
+* Norsko východ
+* Spojené království – jih
 * Spojené království – západ
 * Západní Evropa
 
@@ -53,7 +53,7 @@ ms.locfileid: "78669372"
 
 **Střední východ a Afrika**
 * Jižní Afrika – sever
-* Spojené arabské emiráty – střed
+* SAE Centrální
 
 **Azure Government**
 * US DoD – střed

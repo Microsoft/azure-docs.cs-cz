@@ -4,7 +4,7 @@
   items:
     - name: Co je služba Azure Notebooks?
       href: azure-notebooks-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Přihlášení a nastavení ID uživatele
       href: quickstart-sign-in-azure-notebooks.md
@@ -20,7 +20,7 @@
   items:
     - name: Vytvoření a spuštění poznámkového bloku
       href: tutorial-create-run-jupyter-notebook.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázkové poznámkové bloky
       href: azure-notebooks-samples.md
@@ -46,5 +46,3 @@
       href: access-data-resources-jupyter-notebooks.md
     - name: Použití virtuálních počítačů pro vědecké zpracování dat
       href: use-data-science-virtual-machine.md
-    - name: Používání Azure Machine Learningu
-      href: use-machine-learning-services-jupyter-notebooks.md

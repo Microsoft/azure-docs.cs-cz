@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 01/29/2020
-  ms.openlocfilehash: 28cfe37f6058dbedb11fb6fe01d932cbb10cbd18
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77162952"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80288287"
 landingContent:
 - title: Informace o službě Event Hubs
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Vytvoření centra událostí s podporou Apache Kafka
-      url: event-hubs-create-kafka-enabled.md
+      url: event-hubs-create.md
     - text: Zrcadlení zprostředkovatele Kafka v centru událostí
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: Připojení Apache Sparku k centru událostí
@@ -143,7 +143,7 @@ landingContent:
       url: event-hubs-ip-filtering.md
     - text: Použití koncových bodů služby pro virtuální síť
       url: event-hubs-service-endpoints.md
+    - text: Použití privátních koncových bodů
+      url: private-link-service.md
     - text: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat
       url: configure-customer-managed-key.md
-    - text: Povolení bran firewall a integrace virtuálních sítí
-      url: event-hubs-tutorial-virtual-networks-firewalls.md

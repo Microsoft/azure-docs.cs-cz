@@ -1,7 +1,7 @@
 ---
-title: Použití Video Indexer k automatické identifikaci mluvených jazyků – Azure
+title: Automatické identifikaci mluvených jazyků pomocí videoindexeru – Azure
 titleSuffix: Azure Media Services
-description: Tento článek popisuje, jak se Video Indexer model identifikace jazyka používá k automatické identifikaci mluveného jazyka ve videu.
+description: Tento článek popisuje, jak se model identifikace jazyka Video Indexer používá k automatické identifikaci mluveného jazyka ve videu.
 services: media-services
 author: juliako
 manager: femila
@@ -11,29 +11,29 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
 ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513877"
 ---
-# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automaticky identifikovat mluvený jazyk pomocí modelu identifikace jazyka
+# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatická identifikace mluveného jazyka pomocí modelu identifikace jazyka
 
-Video Indexer podporuje automatickou identifikaci jazyka (víka), což je proces automatického určení mluveného obsahu z zvuku a odeslání mediálního souboru, který bude přepisu v dominantním jazyce. V současnosti se víka podporuje angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a portugalština (Brazílie). 
+Video Indexer podporuje automatickou identifikaci jazyka (LID), což je proces automatické identifikace mluveného jazyka ze zvuku a odeslání mediálního souboru, který má být přepsán v dominantním identifikovaném jazyce. V současné době LID podporuje angličtinu, španělštinu, francouzštinu, němčinu, italštinu, čínštinu (zjednodušenou), japonštinu, ruštinu a portugalštinu (brazilskou). 
 
-## <a name="choosing-auto-language-identification-on-indexing"></a>Výběr automatické identifikace jazyka při indexování
+## <a name="choosing-auto-language-identification-on-indexing"></a>Volba automatické identifikace jazyka při indexování
 
-Při indexování nebo [opětovném indexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí rozhraní API vyberte v parametrech `sourceLanguage` možnost `auto detect`.
+Při indexování nebo [přeindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí `auto detect` rozhraní API `sourceLanguage` zvolte možnost v parametru.
 
-Když používáte portál, přejděte na **video o účtu** na domovské stránce [video indexer](https://www.videoindexer.ai/) a najeďte myší na název videa, které chcete znovu indexovat. V pravém dolním rohu klikněte na tlačítko znovu indexovat. V dialogovém okně **znovu indexovat video** vyberte v rozevíracím seznamu **jazyk zdrojové video** možnost *automaticky rozpoznat* .
+Při používání portálu přejděte na domovskou stránku [videoindexeru](https://www.videoindexer.ai/) na **videa svého účtu** a najeďte na název videa, které chcete přeindexovat. V pravém dolním rohu klikněte na tlačítko re-index. V dialogovém okně **Přeindexovat video** zvolte *Automaticky rozpoznat* z rozevíracího pole Zdrojový **jazyk videa.**
 
-![automaticky rozpoznat](./media/language-identification-model/auto-detect.png)
+![automatické rozpoznání](./media/language-identification-model/auto-detect.png)
 
 ## <a name="model-output"></a>Výstup modelu
 
-Pokud je spolehlivost tohoto jazyka `> 0.6`, Video Indexer video transcribes podle nejpravděpodobnějšího jazyka. Pokud jazyk nelze identifikovat s jistotou, předpokládá se, že mluvený jazyk je angličtina. 
+Video Indexer přepisuje video podle nejpravděpodobnějšího jazyka, pokud `> 0.6`je důvěra pro tento jazyk . Pokud jazyk nelze identifikovat s důvěrou, předpokládá, že mluvený jazyk je angličtina. 
 
-Jazyk dominantního modelu je k dispozici ve formátu JSON Insights jako atribut `sourceLanguage` (pod položkou root/video/Insights). Odpovídající hodnocení spolehlivosti je také k dispozici v atributu `sourceLanguageConfidence`.
+Model dominantní jazyk je k dispozici v `sourceLanguage` přehledech JSON jako atribut (pod root/videos/insights). Odpovídající skóre spolehlivosti je `sourceLanguageConfidence` také k dispozici pod atributem.
 
 ```json
 "insights": {
@@ -50,14 +50,14 @@ Jazyk dominantního modelu je k dispozici ve formátu JSON Insights jako atribut
 ## <a name="guidelines-and-limitations"></a>Pokyny a omezení
 
 * Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a brazilská portugalština.
-* Pokud zvuk obsahuje jiné jazyky než seznam podporované, výsledek je neočekávaný.
-* Pokud Video Indexer nemůže určit jazyk s dostatečnou spolehlivostí (`>0.6`), je záložní jazyk angličtina.
-* Neexistuje žádná aktuální podpora pro soubor se smíšenými jazyky. Pokud zvuk obsahuje smíšené jazyky, výsledek je neočekávaný. 
-* Zvuk nízké kvality může mít vliv na výsledky modelu.
-* Model vyžaduje ve zvukovém zařízení alespoň jednu minutu řeči.
-* Model je navržený pro rozpoznávání spontánních konverzací mluveného slova (ne hlasové příkazy, přihlásí atd.).
+* Pokud zvuk obsahuje jiné jazyky než výše podporovaný seznam, výsledek je neočekávaný.
+* Pokud Video Indexer nelze identifikovat jazyk s`>0.6`dostatečně vysokou spolehlivostí ( ), záložní jazyk je angličtina.
+* Neexistuje žádná aktuální podpora pro soubor se smíšenými jazyky zvuku. Pokud zvuk obsahuje smíšené jazyky, výsledek je neočekávaný. 
+* Na výsledky modelu může mít vliv zvuk nízké kvality.
+* Model vyžaduje alespoň jednu minutu řeči ve zvuku.
+* Model je navržen tak, aby rozpoznal spontánní konverzační řeč (ne hlasové příkazy, zpěv atd.).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Přehled](video-indexer-overview.md)
-* [Automatické určení a přepisovat obsahu s více jazyky](multi-language-identification-transcription.md)
+* [Automatická identifikace a přepis obsahu ve více jazycích](multi-language-identification-transcription.md)
