@@ -1,158 +1,159 @@
 ---
-title: Vyhledat chyby fondu a uzlů – Azure Batch
-description: Tento článek se zabývá operacemi na pozadí, ke kterým může dojít, a s chybami pro kontrolu a jejich zamezení při vytváření fondů a uzlů.
+title: Kontrola chyb fondu a uzlu – Azure Batch
+description: Tento článek popisuje operace na pozadí, které mohou nastat, spolu s chybami ke kontrole a jak se jim vyhnout při vytváření fondů a uzlů.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 95f7d4d03fbac6ec7c27630f1210ef999ddc776c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: a68d812a044c776819d169d5bf179f011d06390f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79369263"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472941"
 ---
-# <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
+# <a name="check-for-pool-and-node-errors"></a>Kontrola chyb fondu a uzlu
 
-Když vytváříte a spravujete fondy Azure Batch, dojde k okamžitému provedení některých operací. Některé operace jsou však asynchronní a spouštěny na pozadí, přičemž dokončení trvá několik minut.
+Když vytváříte a spravujete fondy Azure Batch, některé operace se stanou okamžitě. Některé operace jsou však asynchronní a spustit na pozadí, trvá několik minut na dokončení.
 
-Zjištění selhání operací, které jsou okamžitě prováděné, je jednoduché, protože jakékoli chyby jsou vráceny hned rozhraním API, CLI nebo UI.
+Zjišťování selhání pro operace, které probíhají okamžitě, je jednoduché, protože všechny chyby jsou vráceny okamžitě rozhraní API, rozhraní CLI nebo ui.
 
-Tento článek popisuje operace na pozadí, ke kterým může dojít pro fondy a uzly fondu. Určuje, jak můžete detekovat a vyhnout se chybám.
+Tento článek popisuje operace na pozadí, které mohou nastat pro fondy a uzly fondu. Určuje, jak lze zjistit a vyhnout se chybám.
 
 ## <a name="pool-errors"></a>Chyby fondu
 
-### <a name="resize-timeout-or-failure"></a>Změnit časový limit nebo selhání
+### <a name="resize-timeout-or-failure"></a>Změna velikosti časového opojení nebo selhání
 
-Při vytváření nového fondu nebo změně velikosti existujícího fondu zadejte cílový počet uzlů.  Operace vytvoření nebo změny velikosti se okamžitě dokončí, ale skutečné přidělení nových uzlů nebo odebrání stávajících uzlů může trvat několik minut.  Časový limit pro změnu velikosti můžete zadat v rozhraní API pro [Vytvoření](https://docs.microsoft.com/rest/api/batchservice/pool/add) nebo [změnu velikosti](https://docs.microsoft.com/rest/api/batchservice/pool/resize) . Pokud dávka nemůže získat cílový počet uzlů během časového limitu změny velikosti, fond přejde do stabilního stavu a sestavy změní velikost.
+Při vytváření nového fondu nebo změna velikosti existujícího fondu zadáte cílový počet uzlů.  Operace vytvoření nebo změny velikosti se dokončí okamžitě, ale skutečné přidělení nových uzlů nebo odebrání existujících uzlů může trvat několik minut.  Časový čas změny velikosti zadáte v [rozhraní API pro vytvoření](https://docs.microsoft.com/rest/api/batchservice/pool/add) nebo [velikost.](https://docs.microsoft.com/rest/api/batchservice/pool/resize) Pokud Batch nemůže získat cílový počet uzlů během období časového období změny velikosti fondu přejde do ustáleného stavu a hlásí chyby změny velikosti.
 
-Vlastnost [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) pro nejnovější hodnocení vypíše seznam chyb, ke kterým došlo.
+Vlastnost [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) pro poslední vyhodnocení uvádí chyby, ke kterým došlo.
 
 Mezi běžné příčiny chyb změny velikosti patří:
 
-- Časový limit změny velikosti je moc krátký.
+- Časový čas změny velikosti je příliš krátký.
   - Ve většině případů je výchozí časový limit 15 minut dostatečně dlouhý pro přidělení nebo odebrání uzlů fondu.
-  - Pokud přidělujete velký počet uzlů, doporučujeme nastavit časový limit pro změnu velikosti na 30 minut. Například když měníte velikost na více než 1 000 uzlů z bitové kopie Azure Marketplace nebo na více než 300 uzlů z vlastní image virtuálního počítače.
+  - Pokud přidělujete velký počet uzlů, doporučujeme nastavit časový rozsah změny velikosti na 30 minut. Například když převádíte velikost na více než 1 000 uzlů z image Azure Marketplace nebo na více než 300 uzlů z vlastní image virtuálního počítače.
 - Nedostatečná kvóta jádra
-  - Účet Batch je omezený počtem jader, které může přidělit napříč všemi fondy. Dávka ukončí přidělování uzlů po dosažení této kvóty. [Můžete zvýšit](https://docs.microsoft.com/azure/batch/batch-quota-limit) základní kvótu, aby dávka mohla přidělit více uzlů.
-- Nedostatečné IP adresy podsítě [, pokud je fond ve virtuální síti](https://docs.microsoft.com/azure/batch/batch-virtual-network)
-  - Podsíť virtuální sítě musí mít dostatek nepřiřazených IP adres, které by bylo možné přidělit každému požadovanému uzlu fondu. V opačném případě nelze uzly vytvořit.
+  - Účet Batch je omezen v počtu jader, které může přidělit ve všech fondech. Dávka zastaví přidělování uzlů, jakmile bylo dosaženo této kvóty. [Můžete zvýšit](https://docs.microsoft.com/azure/batch/batch-quota-limit) kvótu jádra tak, aby Batch můžete přidělit více uzlů.
+- Nedostatek IP programů podsítě, pokud [je fond ve virtuální síti](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+  - Podsíť virtuální sítě musí mít dostatek nepřiřazených adres IP, které budou přidělovat každému požadovanému uzlu fondu. V opačném případě nelze vytvořit uzly.
 - Nedostatek prostředků, pokud [je fond ve virtuální síti](https://docs.microsoft.com/azure/batch/batch-virtual-network)
-  - V rámci stejného předplatného jako účet Batch můžete vytvořit prostředky, jako jsou třeba nástroje pro vyrovnávání zatížení, veřejné IP adresy a skupiny zabezpečení sítě. Ověřte, jestli jsou pro tyto prostředky dostatečné kvóty předplatného.
-- Velké fondy s vlastními imagemi virtuálních počítačů
-  - U velkých fondů, které používají vlastní image virtuálních počítačů, může docházet k přidělení a změně velikosti časových limitů.  Doporučení týkající se omezení a konfigurace najdete v tématu [Vytvoření fondu pomocí Galerie sdílených imagí](batch-sig-images.md) .
+  - Můžete vytvořit prostředky, jako jsou vyvažovače zatížení, veřejné IP adresy a skupiny zabezpečení sítě ve stejném předplatném jako účet Batch. Zkontrolujte, zda kvóty předplatného jsou dostatečné pro tyto prostředky.
+- Velké fondy s vlastními image virtuálních můník
+  - Velké fondy, které používají vlastní image virtuálních počítače může trvat déle přidělit a změnit velikost časové opozí může dojít.  Doporučení týkající se omezení a konfigurace [najdete v tématu Vytvoření fondu s Galerií sdílených obrázků.](batch-sig-images.md)
 
-### <a name="automatic-scaling-failures"></a>Automatické škálování – chyby
+### <a name="automatic-scaling-failures"></a>Selhání automatického škálování
 
-Můžete také nastavit Azure Batch pro automatické škálování počtu uzlů ve fondu. Definujete parametry pro [vzorec automatického škálování pro fond](https://docs.microsoft.com/azure/batch/batch-automatic-scaling). Služba Batch používá vzorec k pravidelnému vyhodnocení počtu uzlů ve fondu a k nastavení nového cílového čísla. Může dojít k následujícím typům problémů:
+Můžete také nastavit Azure Batch automaticky škálovat počet uzlů ve fondu. Definujete parametry [vzorce automatického škálování pro fond](https://docs.microsoft.com/azure/batch/batch-automatic-scaling). Služba Batch používá vzorec k pravidelnému vyhodnocení počtu uzlů ve fondu a nastavení nového cílového čísla. Může dojít k následujícím typům problémů:
 
-- Automatické vyhodnocení měřítka se nezdařilo.
-- Výsledkem operace změny velikosti je chyba a vypršel časový limit.
-- Problém se vzorcem automatického škálování vede k neplatným cílovým hodnotám uzlů. Velikost buď funguje, nebo je mimo časový limit.
+- Automatické škálování vyhodnocení nezdaří.
+- Výsledná operace změny velikosti se nezdaří a časový čas.
+- Problém se vzorcem automatického škálování vede k nesprávným cílovým hodnotám uzlu. Změna velikosti funguje nebo časový čas.
 
-Informace o posledním automatickém vyhodnocení měřítka můžete získat pomocí vlastnosti [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) . Tato vlastnost oznamuje dobu hodnocení, hodnoty a výsledek a všechny chyby výkonu.
+Můžete získat informace o poslední automatické škálování hodnocení pomocí [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) vlastnost. Tato vlastnost hlásí čas vyhodnocení, hodnoty a výsledek a všechny chyby výkonu.
 
-[Událost dokončení změny velikosti fondu](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) zachycuje informace o všech hodnoceních.
+Změna [velikosti fondu complete událost](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) zachycuje informace o všech hodnocení.
 
 ### <a name="delete"></a>Odstranění
 
-Když odstraníte fond, který obsahuje uzly, první Batch tyto uzly odstraní. Pak odstraní samotný objekt fondu. Odstranění uzlů fondu může trvat několik minut.
+Když odstraníte fond, který obsahuje uzly, první Batch odstraní uzly. Potom odstraní samotný objekt fondu. Může trvat několik minut pro uzly fondu, které mají být odstraněny.
 
-Batch nastaví [stav fondu](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) na **odstranění** během procesu odstranění. Volající aplikace může zjistit, zda odstranění fondu trvá příliš dlouho pomocí vlastností **State** a **stateTransitionTime** .
+Batch nastaví [stav fondu](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) na **odstranění** během procesu odstranění. Volající aplikace může zjistit, pokud odstranění fondu trvá příliš dlouho pomocí **state** a **stateTransitionTime** vlastnosti.
 
 ## <a name="pool-compute-node-errors"></a>Chyby výpočetního uzlu fondu
 
-I když Batch úspěšně přiděluje uzly ve fondu, můžou různé problémy způsobit, že některé uzly nejsou v pořádku a nemůžou spouštět úlohy. Těmto uzlům se pořád účtují poplatky, takže je důležité detekovat problémy, abyste se vyhnuli placení uzlů, které se nedají použít. Kromě běžných chyb uzlů je důležité vědět, že aktuální [stav úlohy](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate) je užitečný při řešení potíží.
+I v případě, že Batch úspěšně přiděluje uzly ve fondu, různé problémy mohou způsobit, že některé uzly nejsou v pořádku a nelze spustit úlohy. Těmto uzlům stále vznikají poplatky, takže je důležité zjistit problémy, abyste se vyhnuli placení za uzly, které nelze použít. Kromě běžných chyb uzlů je znalost aktuálního [stavu úlohy](/rest/api/batchservice/job/get#jobstate) užitečná pro řešení potíží.
 
-### <a name="start-task-failures"></a>Selhání úlohy spuštění
+### <a name="start-task-failures"></a>Spuštění selhání úloh
 
-Možná budete chtít zadat volitelný [spouštěcí úkol](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) pro fond. Stejně jako u jakékoli úlohy můžete použít příkazový řádek a soubory prostředků ke stažení z úložiště. Spouštěcí úkol se spustí pro každý uzel po jeho spuštění. Vlastnost **waitForSuccess** určuje, zda bude dávka čekat, než se úloha spuštění dokončí úspěšně předtím, než naplánuje úlohy na uzel.
+Můžete chtít zadat volitelnou [počáteční úlohu](/rest/api/batchservice/pool/add#starttask) pro fond. Stejně jako u všech úloh můžete ke stažení z úložiště použít příkazový řádek a soubory prostředků. Počáteční úloha je spuštěna pro každý uzel po jeho spuštění. Vlastnost **waitForSuccess** určuje, zda batch čeká, dokud se úloha zahájení úspěšně nedokončí, než naplánuje všechny úkoly do uzlu.
 
-Co dělat v případě, že jste uzel nakonfigurovali tak, aby čekal na úspěšné dokončení úlohy spuštění, ale počáteční úkol se nezdařil? V takovém případě se uzel nebude používat, ale přesto se vám budou účtovat poplatky.
+Co když jste nakonfigurovali uzel tak, aby čekal na úspěšné dokončení úkolu zahájení, ale počáteční úloha se nezdaří? V takovém případě uzel nebude použitelný, ale bude stále účtovány poplatky.
 
-Chyby spuštění úlohy můžete detekovat pomocí vlastností [Result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) a [FailureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) vlastnosti uzlu [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) nejvyšší úrovně.
+Selhání úloh spuštění můžete zjistit pomocí vlastností [result](/rest/api/batchservice/computenode/get#taskexecutionresult) a [failureInfo](/rest/api/batchservice/computenode/get#taskfailureinformation) vlastností uzlu [startTaskInfo](/rest/api/batchservice/computenode/get#starttaskinformation) nejvyšší úrovně.
 
-Neúspěšná úloha spuštění také způsobí, že služba Batch nastaví [stav](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) uzlu na **starttaskfailed** , pokud byla **waitForSuccess** nastavena na **hodnotu true**.
+Úloha spuštění se nezdařilo také způsobí, že Batch nastavit [stav](/rest/api/batchservice/computenode/get#computenodestate) uzlu **starttaskfailed,** pokud **waitForSuccess** byla nastavena na **hodnotu true**.
 
-Stejně jako u jakékoli úlohy může být mnoho příčin neúspěšného spuštění úlohy.  Pokud chcete řešit potíže, podívejte se na záznam stdout, stderr a všechny další soubory protokolu pro konkrétní úlohy.
+Stejně jako u všech úkolů může existovat mnoho příčin selhání počáteční úlohy.  Chcete-li vyřešit potíže, zkontrolujte stdout, stderr a další soubory protokolu specifické pro úlohy.
 
-Spouštěcí úlohy je nutné znovu vytvořit, protože je možné, že je spouštěcí úkol ve stejném uzlu několikrát spuštěný. spouštěcí úkol se spustí, když se uzel znovu spustí nebo restartuje. Ve výjimečných případech se spustí spouštěcí úkol po události, která způsobila restart uzlu, kdy se jeden z operačních systémů nebo dočasné disky obnovil z image. Vzhledem k tomu, že úlohy spuštění služby Batch (stejně jako všechny úlohy služby Batch) běží na dočasném disku, obvykle to není problém, ale v některých případech, kdy spouštěcí úkol instaluje aplikaci na disk s operačním systémem a udržuje další data na dočasném disku, to může způsobit problémy, protože věci nejsou synchronizované. Pokud používáte oba disky, zabezpečte svou aplikaci odpovídajícím způsobem.
+Počáteční úkoly musí být znovu účastníkem, protože je možné, že počáteční úloha je spuštěna vícekrát na stejném uzlu; počáteční úloha je spuštěna při opětovném zobrazení nebo restartování uzlu. Ve výjimečných případech bude počáteční úloha spuštěna poté, co událost způsobila restartování uzlu, kde byl jeden z operačního systému nebo dočasných disků znovu zobrazen, zatímco druhý nebyl. Vzhledem k tomu, batch spuštění úlohy (stejně jako všechny dávkové úlohy) spustit z dočasného disku, to není obvykle problém, ale v některých případech, kdy je počáteční úloha instalace aplikace na disk operačního systému a zachování dalších dat na dočasný disk, to může způsobit problémy, protože věci jsou nesynchronizované. Chraňte aplikaci odpovídajícím způsobem, pokud používáte oba disky.
 
-### <a name="application-package-download-failure"></a>Chyba stahování balíčku aplikace
+### <a name="application-package-download-failure"></a>Selhání stahování balíčku aplikace
 
-Můžete určit jeden nebo více balíčků aplikací pro fond. Batch stáhne zadané soubory balíčku do každého uzlu a dekomprimuje soubory po spuštění uzlu, ale před naplánováním úkolů. V kombinaci s balíčky aplikací je běžné použít příkazový řádek spouštěcího úkolu. Například ke zkopírování souborů do jiného umístění nebo ke spuštění instalačního programu.
+Můžete zadat jeden nebo více balíčků aplikací pro fond. Batch stáhne zadané soubory balíčků do každého uzlu a rozbalí soubory po spuštění uzlu, ale před naplánováním úloh. Je běžné používat příkazový řádek úlohy start ve spojení s balíčky aplikací. Chcete-li například zkopírovat soubory do jiného umístění nebo spustit instalační program.
 
-Vlastnost [Errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlu hlásí selhání stažení a zrušení komprimace balíčku aplikace. stav uzlu je nastaven na **nepoužitelné**.
+Vlastnost [chyb uzlu](/rest/api/batchservice/computenode/get#computenodeerror) hlásí selhání stažení a odkomprimování balíčku aplikace; stav uzlu je nastaven na **nepoužitelný**.
 
 ### <a name="container-download-failure"></a>Selhání stahování kontejneru
 
-Můžete zadat jeden nebo více odkazů na kontejner ve fondu. Batch stáhne zadané kontejnery do každého uzlu. Vlastnost [Errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlu hlásí selhání stažení kontejneru a nastaví stav uzlu na **Nepoužito**.
+Můžete zadat jeden nebo více odkazů kontejnerů ve fondu. Batch stáhne zadané kontejnery do každého uzlu. Vlastnost [chyb uzlu](/rest/api/batchservice/computenode/get#computenodeerror) hlásí selhání stažení kontejneru a nastaví stav uzlu na **nepoužitelný**.
 
 ### <a name="node-in-unusable-state"></a>Uzel v nepoužitelném stavu
 
-Azure Batch může nastavit [stav uzlu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) na **nepoužitelné** z mnoha důvodů. Když je stav uzlu nastavený na **nepoužitelné**, úlohy nejde naplánovat na uzel, ale pořád se tam účtují poplatky.
+Azure Batch může nastavit [stav uzlu](/rest/api/batchservice/computenode/get#computenodestate) na **nepoužitelný** z mnoha důvodů. Se stavem uzlu nastaveným na **nepoužitelný**, úkoly nelze naplánovat do uzlu, ale stále se účtuje poplatky.
 
-Uzly v **nepoužitelném** stavu, ale bez [chyb](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) znamená, že Batch nemůže komunikovat s virtuálním počítačem. V takovém případě se dávka vždy pokusí o obnovení virtuálního počítače. Dávka se automaticky nepokusí obnovit virtuální počítače, které selhaly při instalaci balíčků nebo kontejnerů aplikací, i když jejich stav není **použitelný**.
+Uzly v **nepoužitelném** stavu, ale bez [chyb](/rest/api/batchservice/computenode/get#computenodeerror) znamená, že Batch není schopen komunikovat s virtuálním virtuálním ms. V tomto případě Batch vždy pokusí obnovit virtuální ho. Batch se automaticky nepokusí obnovit virtuální chřtinové služby, kterým se nepodařilo nainstalovat balíčky aplikací nebo kontejnery, přestože jejich stav je **nepoužitelný**.
 
-Pokud Batch může určit příčinu, vlastnost [chyb](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlů ji ohlásí.
+Pokud Batch může určit příčinu, vlastnost [chyb uzlu](/rest/api/batchservice/computenode/get#computenodeerror) ji hlásí.
 
-Mezi další příklady příčin **nepoužitelných** uzlů patří:
+Mezi další příčiny **nepoužitelných** uzlů patří:
 
-- Vlastní image virtuálního počítače je neplatná. Například obrázek, který není správně připraven.
+- Vlastní obrázek virtuálního virtuálního klienta je neplatný. Například obrázek, který není správně připraven.
 
-- Virtuální počítač se přesune kvůli selhání infrastruktury nebo upgradu na nižší úrovni. Batch obnoví uzel.
+- Virtuální virtuální byl přesunut z důvodu selhání infrastruktury nebo upgradu nízké úrovně. Batch obnoví uzel.
 
-- Image virtuálního počítače se nasadila na hardware, který ho nepodporuje. Například při pokusu o spuštění image CentOS HPC na [Standard_D1_v2m](../virtual-machines/dv2-dsv2-series.md) virtuálním počítači.
+- Image virtuálního počítače byla nasazená na hardware, který ji nepodporuje. Například při pokusu o spuštění image CentOS HPC na [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) virtuálním počítači.
 
-- Virtuální počítače jsou ve [virtuální síti Azure](batch-virtual-network.md)a provoz se zablokoval na porty klíčů.
+- Virtuální počítače jsou ve [virtuální síti Azure](batch-virtual-network.md)a provoz byl zablokován na klíčové porty.
 
-- Virtuální počítače jsou ve virtuální síti, ale odchozí provoz do služby Azure Storage je blokovaný.
+- Virtuální počítače jsou ve virtuální síti, ale odchozí provoz do úložiště Azure je blokován.
 
-- Virtuální počítače jsou ve virtuální síti s konfigurací DNS zákazníka a server DNS nemůže přeložit službu Azure Storage.
+- Virtuální počítače jsou ve virtuální síti s konfigurací DNS zákazníka a DNS server nemůže vyřešit úložiště Azure.
 
 ### <a name="node-agent-log-files"></a>Soubory protokolu agenta uzlu
 
-Proces dávkového agenta, který běží na jednotlivých uzlech fondu, může poskytovat soubory protokolu, které můžou být užitečné, pokud potřebujete kontaktovat podporu týkající se problému s uzlem fondu. Soubory protokolu pro uzel lze nahrát prostřednictvím Azure Portal, Batch Explorer nebo [rozhraní API](https://docs.microsoft.com/rest/api/batchservice/computenode/uploadbatchservicelogs). Je vhodné nahrávat a ukládat soubory protokolu. Potom můžete uzel nebo fond odstranit, abyste ušetřili náklady na běžící uzly.
+Proces agenta batch, který běží na každém uzlu fondu, může poskytnout soubory protokolu, které mohou být užitečné, pokud potřebujete kontaktovat podporu týkající se problému s uzlem fondu. Soubory protokolu pro uzel lze nahrát prostřednictvím portálu Azure, Batch Explorer nebo [rozhraní API](/rest/api/batchservice/computenode/uploadbatchservicelogs). Je užitečné nahrát a uložit soubory protokolu. Poté můžete odstranit uzel nebo fond a ušetřit náklady na spuštěné uzly.
 
-### <a name="node-disk-full"></a>Plný disk uzlu
+### <a name="node-disk-full"></a>Disk uzlu je plný.
 
-Dočasná jednotka pro virtuální počítač uzlu fondu je používána dávkou pro soubory úloh, soubory úloh a sdílené soubory.
+Dočasná jednotka pro virtuální virtuální uzel fondu používá Batch pro soubory úloh, soubory úloh a sdílené soubory.
 
 - Soubory balíčků aplikací
 - Soubory prostředků úkolu
-- Soubory specifické pro aplikaci se stáhly do jedné ze složek Batch.
-- Stdout a stderr soubory pro každou úlohu spuštění aplikace
+- Soubory specifické pro aplikaci stažené do jedné ze složek Batch
+- Stdout a stderr soubory pro každé spuštění aplikace úlohy
 - Výstupní soubory specifické pro aplikaci
 
-Některé z těchto souborů se napíší jenom jednou, když se vytvoří uzly fondu, jako jsou balíčky aplikací fondu nebo zdrojové soubory úloh spuštění fondu. I v případě, že se při vytvoření uzlu napíše jenom jednou, pokud jsou tyto soubory moc velké, můžou doplňovat dočasné jednotky.
+Některé z těchto souborů jsou zapsány pouze jednou při vytvoření uzlů fondu, jako jsou balíčky aplikací fondu nebo soubory prostředků spuštění fondu úlohy. I v případě, že pouze jednou při vytvoření uzlu, pokud tyto soubory jsou příliš velké, které by mohly vyplnit dočasnou jednotku.
 
-Pro každý úkol, který běží na uzlu, jako je stdout a stderr, se zapisují jiné soubory. Pokud je ve stejném uzlu spuštěn velký počet úloh nebo jsou soubory úlohy příliš velké, může doplňovat dočasnou jednotku.
+Ostatní soubory jsou zapsány pro každou úlohu, která je spuštěna na uzlu, například stdout a stderr. Pokud je na stejném uzlu spuštěn velký počet úloh nebo jsou soubory úloh příliš velké, mohou zaplnit dočasnou jednotku.
 
-Velikost dočasné jednotky závisí na velikosti virtuálního počítače. Jediným aspektem při výběru velikosti virtuálního počítače je zajistit, aby na dočasném disku bylo dost místa.
+Velikost dočasné jednotky závisí na velikosti virtuálního počítače. Při výběru velikosti virtuálního počítače je třeba zajistit, aby dočasná jednotka byla dostatek místa.
 
-- V Azure Portal při přidávání fondu je možné zobrazit úplný seznam velikostí virtuálních počítačů a sloupec "velikost disku prostředku".
-- Články popisující všechny velikosti virtuálních počítačů mají tabulky se sloupcem dočasné úložiště; například [výpočetní optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute)
+- Na webu Azure Portal při přidávání fondu se dá zobrazit úplný seznam velikostí virtuálních počítačů a je sloupec Velikost disku prostředků.
+- Články popisující všechny velikosti virtuálních zařízení mají tabulky se sloupcem Dočasné úložiště; Například [velikosti virtuálních počítačů optimalizované pro výpočetní výkon](/azure/virtual-machines/windows/sizes-compute)
 
-Pro soubory vytvářené jednotlivými úlohami je možné určit dobu uchovávání dat pro každou úlohu, která určuje, jak dlouho jsou soubory úlohy zachované, než se automaticky vyčistí. Dobu uchovávání můžete snížit, abyste snížili požadavky na úložiště.
+U souborů zapsaných jednotlivými úkoly lze pro každý úkol zadat čas uchování, který určuje, jak dlouho budou soubory úloh uchovávány před automatickým vyčištěním. Retenční čas lze zkrátit, aby se snížily požadavky na úložiště.
 
-Pokud dojde volné místo na dočasném disku (nebo se velmi blízko z místa), uzel se přesune do [nepoužitelného](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) stavu a chyba uzlu (použijte odkaz, který už existuje) se dohlásí, že je disk plný.
+
+Pokud dočasný disk vyčerpá místo (nebo je velmi blízko k vyčerpání místa), uzel se přesune do [stavu Nepoužitelný](/rest/api/batchservice/computenode/get#computenodestate) a bude hlášena chyba uzlu s udáním, že disk je plný.
 
 ### <a name="what-to-do-when-a-disk-is-full"></a>Co dělat, když je disk plný
 
-Určete, proč je disk plný: Pokud si nejste jistí, co zabírá místo v uzlu, doporučujeme vzdálené řízení s uzlem a prozkoumat ručně, kde se místo dokončí. Můžete také využít [rozhraní API soubory služby Batch](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) k prohlédnutí souborů ve spravovaných složkách služby Batch (například výstupy úloh). Všimněte si, že toto rozhraní API obsahuje jenom soubory ve spravovaných adresářích Batch, a pokud vaše úkoly vytvořily soubory jinde, neuvidíte je.
+Zjistěte, proč je disk plný: Pokud si nejste jisti, co zabírá místo v uzlu, doporučujeme vzdálenit uzel a ručně zkoumat, kde se místo dostalo. Rozhraní [API Dávkových seznamů souborů](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) můžete také využít ke kontrole souborů ve spořitelé složky batch (například výstupy úloh). Všimněte si, že toto rozhraní API obsahuje pouze soubory v adresářích spravovaných dávkou a pokud vaše úkoly vytvořily soubory jinde, neuvidíte je.
 
-Ujistěte se, že všechna data, která potřebujete, byla načtena z uzlu nebo odeslána do trvalého úložiště. Veškerá zmírnění problému s plným diskem zahrnuje odstranění dat, aby se uvolnilo místo.
+Ujistěte se, že všechna data, která potřebujete, byla načtena z uzlu nebo odeslána do trvalého úložiště. Všechny zmírnění problému celého disku zahrnují odstranění dat, aby se uvolnilo místo.
 
-### <a name="recovering-the-node"></a>Obnovování uzlu
+### <a name="recovering-the-node"></a>Obnovení uzlu
 
-1. Pokud je váš fond fondem [C. loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) , můžete uzel znovu vytvořit pomocí [rozhraní API služby Batch pro opětovné](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)vytvoření bitové kopie. Tím se vyčistí celý disk. Pro [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) fondy se v současné době nepodporuje znovu image.
+1. Pokud váš fond je [C.loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) fondu, můžete re-image uzlu prostřednictvím [dávky re-image ROZHRANÍ API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage). Tím se vyčistí celý disk. Re-image není aktuálně podporována pro fondy [VirtualMachineConfiguration.](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)
 
-2. Pokud je váš fond [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration), můžete odebrat uzel z fondu pomocí [rozhraní API odebrat uzly](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes). Pak můžete znovu zvětšit fond a nahradit špatný uzel jeho novou.
+2. Pokud je váš fond [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration), můžete uzel z fondu odebrat pomocí [rozhraní API pro odebrání uzlů](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes). Poté můžete znovu pěstovat fond, abyste nahradili špatný uzel novým.
 
-3.  Odstraňte staré dokončené úlohy nebo staré dokončené úlohy, jejichž data úkolů jsou stále na uzlech. V případě, že jsou data úloh a úkolů na uzlech, která jsou na uzlech, můžete hledat v [kolekci RecentTasks](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) v uzlu nebo v [souborech na uzlu](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode). Odstraněním úlohy dojde k odstranění všech úkolů v úloze a odstranění úloh v úloze aktivuje data v adresářích úloh na uzlu, aby se odstranila. tím se uvolní místo. Až uvolníte dostatek místa, restartujte uzel a měl by přesunout nečinný stav a nečinné znovu.
+3.  Odstraňte staré dokončené úlohy nebo staré dokončené úkoly, jejichž data úkolů jsou stále v uzlech. Nápovědu k datům úloh a úkolů v uzlech můžete hledat v [kolekci RecentTasks](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) v uzlu nebo v [souborech v uzlu](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode). Odstraněním úlohy odstraníte všechny úkoly v úloze a odstranění mačkání mne v úloze spustí data v adresářích úloh v uzlu, který má být odstraněn, čímž se uvolní místo. Jakmile uvolníte dostatek místa, restartujte uzel a měl by se přesunout ze stavu "Nepoužitelný" a znovu do "Idle".
 
 ## <a name="next-steps"></a>Další kroky
 
-Ověřte, že jste nastavili aplikaci pro implementaci komplexní kontroly chyb, zejména pro asynchronní operace. Může být zásadní, aby mohl rychle detekovat a diagnostikovat problémy.
+Zkontrolujte, zda jste nastavili aplikaci pro implementaci komplexní kontroly chyb, zejména pro asynchronní operace. Může být důležité okamžitě zjistit a diagnostikovat problémy.

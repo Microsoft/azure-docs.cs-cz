@@ -1,83 +1,83 @@
 ---
-title: Využití sys_schema-Azure Database for MySQL
-description: Naučte se používat sys_schema k nalezení potíží s výkonem a údržbě databáze v Azure Database for MySQL.
+title: Využití sys_schema – Databáze Azure pro MySQL
+description: Zjistěte, jak pomocí sys_schema najít problémy s výkonem a udržovat databázi v Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
-ms.translationtype: MT
+ms.date: 3/18/2020
+ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775941"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067870"
 ---
-# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Použití sys_schema k vyladění výkonu a údržbě databáze v Azure Database for MySQL
+# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Použití sys_schema pro optimalizaci výkonu a údržbu databáze v Azure Database for MySQL
 
-Performance_schema MySQL, která je v MySQL 5,5 poprvé dostupná, poskytuje instrumentaci pro spoustu důležitých prostředků serveru, jako je přidělování paměti, uložené programy, uzamykání metadat atd. Performance_schema však obsahuje více než 80 tabulek a získávání potřebných informací často vyžaduje spojení tabulek v rámci performance_schema a také tabulek z information_schema. Při sestavování na performance_schema i information_schema poskytuje sys_schema výkonnou kolekci uživatelsky [přívětivých zobrazení](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) v databázi jen pro čtení a je plně zapnutá v Azure Database for MySQL verze 5,7.
+MySQL performance_schema, první k dispozici v MySQL 5.5, poskytuje instrumentaci pro mnoho důležitých serverových zdrojů, jako je přidělování paměti, uložené programy, zamykání metadat, atd. performance_schema však obsahuje více než 80 tabulek a získání potřebných informací často vyžaduje spojení tabulek v rámci performance_schema, stejně jako tabulky z information_schema. V návaznosti na performance_schema i information_schema poskytuje sys_schema výkonnou kolekci [uživatelsky přívětivých zobrazení](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) v databázi jen pro čtení a je plně povolená v Azure Database for MySQL verze 5.7.
 
-![zobrazení sys_schema](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
+![pohledy na sys_schema](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
-V sys_schema se nachází 52 zobrazení a každé zobrazení má jednu z následujících předpon:
+V sys_schema je 52 zobrazení a každé zobrazení má jednu z následujících předponek:
 
-- Host_summary nebo IO: latence v/v související s/O.
-- InnoDB: InnoDB stav vyrovnávací paměti a zámky.
-- Paměť: využití paměti pro hostitele a uživatele.
-- Schéma: informace týkající se schématu, jako je například Automatický přírůstek, indexy atd.
-- Příkaz: informace o příkazech SQL; může se jednat o příkaz, který vyplynule úplnou kontrolu tabulky nebo dlouhou dobu dotazování.
-- Uživatel: prostředky spotřebované a seskupené podle uživatelů. Příkladem jsou vstupně-výstupy souborů, připojení a paměť.
-- Čekání: Počkejte události seskupené podle hostitele nebo uživatele.
+- Host_summary nebo VO: Vstupně-výstupní chodsouvisející chaná.
+- InnoDB: Stav vyrovnávací paměti InnoDB a zámky.
+- Paměť: Využití paměti hostitelem a uživateli.
+- Schéma: Informace související se schématem, jako je automatický přírůstek, indexy atd.
+- Prohlášení: Informace o příkazech SQL; může se jedná o příkaz, který vedl k úplnému prohledání tabulky nebo dlouhé době dotazu.
+- Uživatel: Prostředky spotřebované a seskupené podle uživatelů. Příkladem jsou vstupně-styky se soubory, připojení a paměť.
+- Počkejte: Počkejte události seskupené podle hostitele nebo uživatele.
 
-Teď se podíváme na některé běžné způsoby použití sys_schema. Aby bylo možné začít používat, seskupte vzory využití do dvou kategorií: **optimalizace výkonu** a **Údržba databáze**.
+Nyní se podívejme na některé běžné vzorce používání sys_schema. Nejprve seskupili vzorce využití do dvou kategorií: **Optimalizace výkonu** a **Údržba databáze**.
 
 ## <a name="performance-tuning"></a>Ladění výkonu
 
-### <a name="sysuser_summary_by_file_io"></a>*sys. user_summary_by_file_io*
+### <a name="sysuser_summary_by_file_io"></a>*sys.user_summary_by_file_io*
 
-V/v databáze je nejdražší operace v databázi. Průměrná latence v/v se dá zjistit dotazem na zobrazení *Sys. user_summary_by_file_io* . S výchozí 125 GB zřízeného úložiště je moje latence v/v asi 15 sekund.
+IO je nejdražší operace v databázi. Průměrnou latenci vi. můžeme zjistit dotazem na zobrazení *sys.user_summary_by_file_io.* S výchozí 125 GB zřízeného úložiště je latence vi mých vipřibližně 15 sekund.
 
-![vstupně-výstupní latence: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+![latence io: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
-Vzhledem k tomu, že Azure Database for MySQL škáluje vstupně-výstupní operace s ohledem na úložiště, po zvýšení zřízeného úložiště na 1 TB se latence v/v snižuje na 571 MS.
+Protože Azure Database for MySQL škáluje vstupně-výstupních služeb s ohledem na úložiště, po zvýšení mého zřízeného úložiště na 1 TB se latence vstupně-výstupních služeb sníží na 571 ms.
 
-![vstupně-výstupní latence: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![latence io: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
-### <a name="sysschema_tables_with_full_table_scans"></a>*sys. schema_tables_with_full_table_scans*
+### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
-Bez ohledu na pečlivé plánování může mnoho dotazů pořád vést k kompletním kontrolám tabulky. Další informace o typech indexů a o tom, jak je optimalizovat, najdete v tomto článku: [jak řešit potíže s výkonem dotazů](./howto-troubleshoot-query-performance.md). Úplné prohledávání tabulek je náročné na prostředky a snižuje výkon databáze. Nejrychlejší způsob, jak najít tabulky pomocí úplného prohledávání tabulky, je dotazování zobrazení *Sys. schema_tables_with_full_table_scans* .
+I přes pečlivé plánování může mnoho dotazů stále vést k úplnému prohledávaní tabulky. Další informace o typech indexů a jejich optimalizaci naleznete v tomto článku: [Řešení potíží s výkonem dotazu](./howto-troubleshoot-query-performance.md). Úplné prohledává tabulky jsou náročné na prostředky a snížit výkon databáze. Nejrychlejší způsob, jak najít tabulky s úplnou prohledávací tabulka, je dotaz na zobrazení *sys.schema_tables_with_full_table_scans.*
 
-![úplné prohledávání tabulek](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
+![úplné prohledávací skeny stolů](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 
-### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
+### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
-Aby bylo možné řešit problémy s výkonem databáze, může být užitečné identifikovat události, které se provedou v rámci vaší databáze, a pomocí zobrazení *Sys. user_summary_by_statement_type* může jednoduše dělat štych.
+Chcete-li vyřešit problémy s výkonem databáze, může být užitečné identifikovat události, ke nimž dochází uvnitř databáze, a pomocí zobrazení *sys.user_summary_by_statement_type* může stačit.
 
-![Summary podle – příkaz](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
+![souhrn podle výpisu](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
-V tomto příkladu Azure Database for MySQL strávila 53 minut vyprázdnit protokol dotazu slog 44579 krát. To je dlouhou dobu a mnoho IOs. Tuto aktivitu můžete zkrátit tím, že zakážete protokol pomalých dotazů nebo snížíte frekvenci pomalých přihlašovacích Azure Portal dotazů.
+V tomto příkladu Azure Database for MySQL strávil 53 minut vyprázdnění protokolu dotazu slog 44579 krát. To je dlouhá doba a mnoho iOs. Tuto aktivitu můžete snížit buď zakázat váš protokol pomalý dotaz nebo snížit četnost pomalé přihlášení dotazu portálu Azure.
 
 ## <a name="database-maintenance"></a>Údržba databáze
 
-### <a name="sysinnodb_buffer_stats_by_table"></a>*sys. innodb_buffer_stats_by_table*
+### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
 
-Fond vyrovnávacích pamětí InnoDB se nachází v paměti a jedná se o mechanismus hlavní mezipaměti mezi systémy DBMS a úložištěm. Velikost fondu vyrovnávací paměti InnoDB je svázána s úrovní výkonu a nelze jej změnit, pokud není zvolena jiná SKU produktu. Stejně jako u paměti v operačním systému jsou staré stránky zaměněny, aby uvolnily místo pro data z čerstvého počítače. Pokud chcete zjistit, které tabulky využívají většinu paměti fondu InnoDB vyrovnávací paměti, můžete zadat dotaz na zobrazení *Sys. innodb_buffer_stats_by_table* .
+Fond vyrovnávací paměti InnoDB je umístěn v paměti a je hlavní mechanismus mezipaměti mezi DBMS a úložištěm. Velikost fondu vyrovnávací paměti InnoDB je vázána na úroveň výkonu a nelze ji změnit, pokud není vybrána jiná skladová položka produktu. Stejně jako u paměti v operačním systému jsou staré stránky vyměněny, aby se vytvořil prostor pro čerstvější data. Chcete-li zjistit, které tabulky spotřebovávají většinu paměti fondu vyrovnávací paměti InnoDB, můžete dotaz ovat zobrazení *sys.innodb_buffer_stats_by_table.*
 
 ![Stav vyrovnávací paměti InnoDB](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
 
-Na obrázku výše je zřejmé, že kromě systémových tabulek a zobrazení je každá tabulka v databázi mysqldatabase033, která hostuje jeden z mých webů WordPress, zabírá 16 KB nebo 1 stránku dat v paměti.
+Na obrázku výše, je zřejmé, že jiné než systémové tabulky a zobrazení, každá tabulka v databázi mysqldatabase033, který hostí jeden z mých stránek WordPress, zabírá 16 KB, nebo 1 stránka, dat v paměti.
 
-### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys. schema_unused_indexes* & *Sys. schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
 
-Indexy jsou skvělé nástroje pro zlepšení výkonu čtení, ale u vkládání a ukládání se účtují další poplatky. *Sys. schema_unused_indexes* a *Sys. schema_redundant_indexes* poskytují přehled o nepoužívaných nebo duplicitních indexech.
+Indexy jsou skvělé nástroje pro zlepšení výkonu čtení, ale vznikají jim další náklady na vložení a úložiště. *Sys.schema_unused_indexes* a *sys.schema_redundant_indexes* poskytují přehled o nevyužitých nebo duplicitních indexech.
 
-![nepoužívané indexy](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
+![nevyužité indexy](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
 
-![nadbytečné indexy](./media/howto-troubleshoot-sys-schema/redundant-indexes.png)
+![redundantní indexy](./media/howto-troubleshoot-sys-schema/redundant-indexes.png)
 
 ## <a name="conclusion"></a>Závěr
 
-V souhrnu je sys_schema skvělým nástrojem pro ladění výkonu i údržbu databáze. Ujistěte se, že jste tuto funkci využili ve svém Azure Database for MySQL. 
+Stručně řečeno, sys_schema je skvělý nástroj pro ladění výkonu a údržbu databáze. Využijte tuto funkci v azure databázi pro MySQL. 
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, navštivte [Fórum MSDN](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Chcete-li najít odpovědi na odpovědi na vaše nejzvětšenější otázky nebo zveřejnit novou otázku / odpověď, navštivte [fórum MSDN](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) nebo [Přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-database-mysql).

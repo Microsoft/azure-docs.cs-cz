@@ -1,6 +1,6 @@
 ---
-title: Sledovat vaše zařízení Azure Data Box brány | Dokumentace Microsoftu
-description: Popisuje, jak pomocí webu Azure portal a místního webového uživatelského rozhraní pro monitorování Azure Data Box Gateway.
+title: Monitorování zařízení Azure Data Box Gateway | Dokumenty společnosti Microsoft
+description: Popisuje, jak používat portál Azure a místní webové uživatelské prostředí ke sledování brány datové schránky Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,24 +9,24 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 61da2454d6a72d43a7b4600d7ea85e6a3f82958f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60754951"
 ---
-# <a name="monitor-your-azure-data-box-gateway"></a>Monitorování brány Azure Data Box
+# <a name="monitor-your-azure-data-box-gateway"></a>Sledování brány datové schránky Azure
 
-Tento článek popisuje, jak monitorovat bránu Azure Data Box. K monitorování zařízení, můžete použít portál Azure nebo místního webového uživatelského rozhraní. Pomocí webu Azure portal do zobrazení událostí zařízení, konfigurovat a spravovat výstrahy a zobrazení metrik.
+Tento článek popisuje, jak sledovat bránu datové schránky Azure. Ke sledování zařízení můžete použít portál Azure nebo místní webové uživatelské rozhraní. Na webu Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Zobrazit odpovídající výstrahy a události zařízení
-> * Zobrazit kapacita a transakce metriky pro vaše zařízení
-> * Konfigurace a Správa výstrah
+> * Zobrazení událostí zařízení a odpovídajících výstrah
+> * Zobrazení metrik kapacity a transakcí pro vaše zařízení
+> * Konfigurace a správa výstrah
 
-## <a name="view-device-events"></a>Zobrazení událostí modulu zařízení
+## <a name="view-device-events"></a>Zobrazit události zařízení
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-view-device-events.md)]
 
@@ -34,10 +34,10 @@ V tomto článku získáte informace o těchto tématech:
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-view-metrics.md)]
 
-## <a name="manage-alerts"></a>Správa výstrah
+## <a name="manage-alerts"></a>Správa upozornění
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-manage-alerts.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o [správě šířky pásma](data-box-gateway-manage-bandwidth-schedules.md).

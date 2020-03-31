@@ -1,6 +1,6 @@
 ---
-title: Apache Storm topologie se sadou Visual Studio C# a – Azure HDInsight
-description: Naučte se vytvářet topologie zaplavení v C#. Vytvořte topologii počtu slov v aplikaci Visual Studio pomocí nástrojů Hadoop pro Visual Studio.
+title: Topologie Apache Storm s Visual Studio a C# - Azure HDInsight
+description: Přečtěte si, jak vytvořit topologii Storm v c#. Vytvořte topologii počtu slov v sadě Visual Studio pomocí nástrojů Hadoop pro Visual Studio.
 ROBOTS: NOINDEX
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75612287"
 ---
-# <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj C# topologií pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
+# <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj topologií Jazyka C# pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
 
-Naučte se vytvářet C# Apache Storm topologii pomocí nástrojů Azure Data Lake (Apache Hadoop) pro Visual Studio. Tento dokument vás provede procesem vytvoření projektu zaplavení v aplikaci Visual Studio, jeho otestováním lokálně a nasazením do Apache Storm v clusteru Azure HDInsight.
+Zjistěte, jak vytvořit topologii C# Apache Storm pomocí nástrojů Azure Data Lake (Apache Hadoop) pro Visual Studio. Tento dokument vás provede procesem vytváření projektu Storm ve Visual Studiu, testování místně a jeho nasazení do clusteru Apache Storm v Azure HDInsight.
 
-Naučíte se také, jak vytvořit hybridní topologie, C# které používají komponenty a součásti Java.
+Dozvíte se také, jak vytvořit hybridní topologie, které používají komponenty Jazyka C# a Java.
 
-C#topologie používají .NET 4,5 a ke spuštění v clusteru HDInsight použijte mono. Informace o možných nekompatibilitách najdete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/). Pokud chcete použít C# topologii, musíte aktualizovat balíček NuGet `Microsoft.SCP.Net.SDK`, který váš projekt používá, na verzi 0.10.0.6 nebo novější. Verze balíčku se zároveň musí shodovat s hlavní verzí Stormu nainstalovanou ve službě HDInsight.
+Topologií jazyka C# používá rozhraní .NET 4.5 a ke spuštění v clusteru HDInsight použijte mono. Informace o potenciální nekompatibilitě naleznete v [tématu Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/). Chcete-li použít topologii jazyka C#, je nutné aktualizovat balíček `Microsoft.SCP.Net.SDK` NuGet používaný projektem na verzi 0.10.0.6 nebo novější. Verze balíčku se zároveň musí shodovat s hlavní verzí Stormu nainstalovanou ve službě HDInsight.
 
-| Verze HDInsight | Verze Apache Storm | Verze SCP.NET | Výchozí verze mono |
+| VERZE HDInsight | Apache Storm verze | SCP.NET verze | Výchozí verze Mono |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
 | 3,5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
@@ -31,27 +31,27 @@ C#topologie používají .NET 4,5 a ke spuštění v clusteru HDInsight použijt
 
 ## <a name="prerequisite"></a>Požadavek
 
-Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
+Cluster Apache Storm na HDInsight. Viz [Vytvoření clusterů Apache Hadoop pomocí portálu Azure](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **Storm** pro **typ clusteru**.
 
 ## <a name="install-visual-studio"></a>Instalace sady Visual Studio
 
-Můžete vyvíjet C# topologie pomocí SCP.NET pomocí sady [Visual Studio](https://visualstudio.microsoft.com/downloads/). Zde uvedené pokyny používají sadu Visual Studio 2019, ale můžete použít také starší verze sady Visual Studio.
+Topologií jazyka C# můžete vyvíjet pomocí SCP.NET pomocí [sady Visual Studio](https://visualstudio.microsoft.com/downloads/). Pokyny zde používají Visual Studio 2019, ale můžete také použít starší verze sady Visual Studio.
 
-## <a name="install-data-lake-tools-for-visual-studio"></a>Nainstalovat Data Lake nástroje pro Visual Studio
+## <a name="install-data-lake-tools-for-visual-studio"></a>Instalace nástrojů datového jezera pro Visual Studio
 
-Chcete-li nainstalovat nástroje Data Lake Tools for Visual Studio, postupujte podle kroků v části [Začínáme používat data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio).
+Chcete-li nainstalovat nástroje Data Lake pro Visual Studio, postupujte podle pokynů v [části Začínáme používat nástroje Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio).
 
-## <a name="install-java"></a>Nainstalovat Java
+## <a name="install-java"></a>Instalace Javy
 
-Při odeslání topologie negenerovaného toku ze sady Visual Studio vygeneruje SCP.NET soubor zip, který obsahuje topologii a závislosti. Jazyk Java slouží k vytvoření těchto souborů zip, protože používá formát, který je více kompatibilní s clustery se systémem Linux.
+Při odeslání topologie Storm z visual studia, SCP.NET generuje soubor zip, který obsahuje topologii a závislosti. Java se používá k vytvoření těchto zip souborů, protože používá formát, který je více kompatibilní s Linux-založené clustery.
 
-1. Do vývojového prostředí nainstalujte sadu Java Developer Kit (JDK) 7 nebo novější. Oracle JDK můžete získat od [Oracle](https://openjdk.java.net/). Můžete také použít [jiné distribuce Java](/java/azure/jdk/).
+1. Nainstalujte do vývojového prostředí java vývojářskou sadu (JDK) 7 nebo novější. Sada Oracle JDK můžete získat od společnosti [Oracle](https://openjdk.java.net/). Můžete také použít [jiné distribuce Java](/java/azure/jdk/).
 
-2. Nastavte proměnnou prostředí `JAVA_HOME` na adresář, který obsahuje Java.
+2. Nastavte `JAVA_HOME` proměnnou prostředí do adresáře, který obsahuje jazyk Java.
 
-3. Nastavte proměnnou prostředí `PATH` tak, aby zahrnovala `%JAVA_HOME%\bin` adresář.
+3. Nastavte `PATH` proměnnou prostředí `%JAVA_HOME%\bin` tak, aby zahrnovala adresář.
 
-Můžete sestavit a spustit následující C# konzolovou aplikaci, abyste ověřili, že Java a JDK jsou správně nainstalované:
+Můžete vytvořit a spustit následující konzolovou aplikaci C# a ověřit, zda jsou java a JDK správně nainstalovány:
 
 ```csharp
 using System;
@@ -87,74 +87,74 @@ namespace ConsoleApplication2
 
 ## <a name="apache-storm-templates"></a>Šablony Apache Storm
 
-Nástroje pro Data Lake pro Visual Studio poskytují následující šablony:
+Nástroje Data Lake pro Visual Studio poskytují následující šablony:
 
 | Typ projektu | Demonstruje |
 | --- | --- |
-| Aplikace Stormu |Prázdný projekt topologie naplnění. |
-| Ukázka funkce pro vyplavení Azure SQL Writer |Jak zapisovat do Azure SQL Database. |
-| Ukázka Azure Cosmos DBho čtecího modulu pro čtení |Jak číst z Azure Cosmos DB. |
-| Ukázka funkce pro zápis Azure Cosmos DBho zápisu |Jak zapisovat do Azure Cosmos DB. |
-| Ukázka čtečky EventHub pro EventHub |Jak číst z Azure Event Hubs. |
-| Ukázka zapisovače nástroje pro vyplavení EventHub |Jak zapisovat do Azure Event Hubs. |
-| Ukázka čtecího modulu pro vyplavování HBA |Jak číst z adaptérů HBA v clusterech HDInsight. |
-| Ukázka zapisovače pro vyplavování HBA |Jak zapisovat do adaptérů HBA v clusterech HDInsight. |
-| Hybridní ukázka Stormu |Jak používat komponentu Java. |
-| Ukázka Stormu |Základní topologie počtu slov. |
+| Aplikace Storm |Prázdný projekt topologie Storm. |
+| Ukázka zapisovače SQL Storm Azure |Jak psát do Azure SQL Database. |
+| Ukázka čtečky DB Storm Cosmos |Jak číst z Azure Cosmos DB. |
+| Ukázka zapisovače Storm Cosmos DB |Jak zapisovat do Azure Cosmos DB. |
+| Ukázka čtečky Storm EventHub |Jak číst z Azure Event Hubs. |
+| Ukázka zapisovače Storm EventHub |Jak psát do Azure Event Hubs. |
+| Ukázka čtečky Storm HBase |Jak číst z HBase na HDInsight clusterech. |
+| Ukázka zapisovače Storm HBase |Jak psát do HBase na HDInsight clusterech. |
+| Storm Hybridní vzorek |Jak používat komponentu Java. |
+| Ukázka bouře |Základní topologie počtu slov. |
 
 > [!WARNING]  
-> Ne všechny šablony pracují se systémem Linux HDInsight. Balíčky NuGet používané šablonami nemusí být kompatibilní s mono. Pokud chcete zjistit možné problémy, přečtěte si téma [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/) a použijte [analyzátor přenositelnosti .NET](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis).
+> Ne všechny šablony fungují s HdInsight založeným na Linuxu. Balíčky NuGet používané šablonami nemusí být kompatibilní s Mono. Chcete-li zjistit potenciální problémy, [přečtěte si informace o kompatibilitě mono](https://www.mono-project.com/docs/about-mono/compatibility/) a použijte [nástroj .NET Portability Analyzer](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis).
 
-V krocích v tomto dokumentu použijete k vytvoření topologie typ projektu základní aplikace pro zaplavení.
+V krocích v tomto dokumentu použijete základní typ projektu aplikace Storm k vytvoření topologie.
 
-### <a name="apache-hbase-templates"></a>Šablony Apache HBA
+### <a name="apache-hbase-templates"></a>Šablony Apache HBase
 
-Šablony pro čtečku a zapisovače HBA používají adaptéry HBA REST API, ne adaptéry Java API pro komunikaci s HBA v clusteru HDInsight.
+Šablony čtečky a zapisovače HBase používají ke komunikaci s hbase v clusteru HDInsight rozhraní MBase REST, nikoli rozhraní HBase Java API.
 
 ### <a name="eventhub-templates"></a>Šablony EventHub
 
 > [!IMPORTANT]  
-> Komponenta EventHub Spout na bázi Java, která je součástí šablony čtečky EventHub, nemusí fungovat se zaplavou ve službě HDInsight verze 3,5 nebo novější. Aktualizovaná verze této součásti je k dispozici na [GitHubu](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/HDI3.5/lib).
+> Komponenta hubice EventHub založená na jazyce Java, která je součástí šablony EventHub Reader, nemusí fungovat s Stormem na HDInsight verze 3.5 nebo novější. Aktualizovaná verze této součásti je k dispozici na [GitHubu](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/HDI3.5/lib).
 
-Příklad topologie, která používá tuto součást a pracuje se zachováním v HDInsight 3,5, najdete v tématu [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
+Příklad topologie, která používá tuto komponentu a pracuje s Storm na HDInsight 3.5, najdete v [tématu GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
 
-## <a name="create-a-c-topology"></a>Vytvoření C# topologie
+## <a name="create-a-c-topology"></a>Vytvoření topologie jazyka C#
 
-Postup vytvoření projektu C# topologie v aplikaci Visual Studio:
+Vytvoření projektu topologie Jazyka C# v sadě Visual Studio:
 
 1. Otevřete sadu Visual Studio.
 
-1. V okně **Start** vyberte **vytvořit nový projekt**.
+1. V okně **Start** vyberte **Vytvořit nový projekt**.
 
-1. V okně **vytvořit nový projekt** přejděte na a vyberte možnost **aplikace**pro zaplavení a pak vyberte **Další**.
+1. V okně **Vytvořit nový projekt** přejděte na **položku Storm Application**a vyberte ji **Další**.
 
-1. V okně **Konfigurovat nový projekt** zadejte **název projektu** *WORDCOUNT*, přejděte na nebo vytvořte cestu k adresáři **umístění** pro projekt a pak vyberte **vytvořit**.
+1. V okně **Konfigurovat nový projekt** zadejte název **projektu** *WordCount*, přejděte nebo vytvořte cestu k adresáři **Umístění** pro projekt a pak vyberte **Vytvořit**.
 
-    ![Zaplavení aplikace, konfigurace dialogového okna Nový projekt, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
+    ![Storm aplikace, Konfigurace nového dialogového okna projektu, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 Po vytvoření projektu byste měli mít následující soubory:
 
-* *Program.cs*: definice topologie pro váš projekt. Ve výchozím nastavení se vytvoří výchozí topologie, která se skládá z jednoho Spout a jednoho šroubu.
+* *Program.cs*: Definice topologie pro váš projekt. Ve výchozím nastavení je vytvořena výchozí topologie, která se skládá z jednoho výtoku a jednoho šroubu.
 
-* *Spout.cs*: příklad Spout, který generuje náhodná čísla.
+* *Spout.cs*: Příklad výtoku, který vydává náhodná čísla.
 
-* *Bolt.cs*: příklad typu, který udržuje počet čísel generovaných Spout.
+* *Bolt.cs*: Ukázkový šroub, který udržuje počet čísel vyzařovaných výtokem.
 
-Při vytváření projektu NuGet stáhne nejnovější [balíček SCP.NET](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
+Při vytváření projektu, NuGet stáhne nejnovější [SCP.NET balíček](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
 
-### <a name="implement-the-spout"></a>Implementace rozhraní Spout
+### <a name="implement-the-spout"></a>Provádění výtoku
 
-Dále přidejte kód pro Spout, který se používá ke čtení dat v topologii z externího zdroje. Tento Spout náhodně generuje větu do topologie.
+Dále přidejte kód pro výtok, který se používá ke čtení dat v topologii z externího zdroje. Tato výtok náhodně vyzařuje větu do topologie.
 
-1. Otevřete *Spout.cs*. Hlavní součásti pro Spout jsou:
+1. Otevřít *Spout.cs*. Hlavními složkami výtoku jsou:
 
-   * `NextTuple`: volá se v případě, že je povoleno generovat nové řazené kolekce členů (Spout).
+   * `NextTuple`: Volána Storm, když výtok je dovoleno vyzařovat nové řazené kolekce členů.
 
-   * `Ack` (pouze transakční topologie): zpracovává potvrzovací potvrzení spuštěná jinými komponentami v topologii pro řazené kolekce členů odeslané z Spout. Potvrzením řazené kolekce členů umožní Spout zjistit, že byl úspěšně zpracován pomocí součástí podřízené součásti.
+   * `Ack`(pouze transakční topologie): Zpracovává potvrzení spuštěná jinými součástmi v topologii pro řazené kolekce členů odeslané z výtoku. Potvrzení řazené kolekce členů umožní výtoku vědět, že byl úspěšně zpracován podřízené součásti.
 
-   * `Fail` (pouze transakční topologie): zpracovává řazené kolekce členů, které zpracovávají selhání jiných komponent v topologii. Implementace metody `Fail` umožňuje znovu vygenerovat řazenou kolekci členů, aby ji bylo možné znovu zpracovat.
+   * `Fail`(pouze transakční topologie): Zpracovává řazené kolekce členů, které jsou zpracování selhání další součásti v topologii. Implementace `Fail` metody umožňuje znovu vyzařovat řazenou kolekce členů, aby mohla být znovu zpracována.
 
-2. Obsah třídy `Spout` nahraďte následujícím textem:
+2. Nahraďte obsah `Spout` třídy následujícím textem:
 
     ```csharp
     private Context ctx;
@@ -214,24 +214,24 @@ Dále přidejte kód pro Spout, který se používá ke čtení dat v topologii 
     }
     ```
 
-### <a name="implement-the-bolts"></a>Implementace šrouby
+### <a name="implement-the-bolts"></a>Realizovat šrouby
 
-Nyní v tomto příkladu vytvořte dvě šrouby:
+Nyní vytvořte dva šrouby Storm v tomto příkladu:
 
-1. Odstraňte existující soubor *Bolt.cs* z projektu.
+1. Odstraňte existující *soubor Bolt.cs* z projektu.
 
-2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Přidat** > **Nová položka**. V seznamu vyberte možnost **přešroubování**a jako název zadejte *Splitter.cs* . V kódu nového souboru změňte název oboru názvů na `WordCount`. Pak tento postup opakujte, abyste vytvořili druhý šroub s názvem *Counter.cs*.
+2. V **Průzkumníku řešení**klepněte pravým tlačítkem myši na projekt a vyberte **přidat** > **novou položku**. V seznamu vyberte **Storm Bolt**a zadejte *Splitter.cs* jako název. V kódu nového souboru změňte název `WordCount`oboru názvů na . Poté tento postup opakujte a vytvořte druhý šroub s názvem *Counter.cs*.
 
-   * *Splitter.cs*: implementuje šroub, který rozdělí věty na jednotlivá slova a vygeneruje nový proud slov.
+   * *Splitter.cs*: Implementuje šroub, který rozdělí věty na jednotlivá slova a vyzařuje nový proud slov.
 
-   * *Counter.cs*: implementuje šroub, který počítá každé slovo, a vygeneruje nový proud slov a počet pro každé slovo.
+   * *Counter.cs*: Implementuje šroub, který počítá každé slovo, a vydává nový proud slov a počet pro každé slovo.
 
      > [!NOTE]  
-     > Tyto šrouby čtou a zapisují do datových proudů, ale můžete také použít šroub ke komunikaci se zdroji, jako je databáze nebo služba.
+     > Tyto šrouby číst a zapisovat do datových proudů, ale můžete také použít šroub pro komunikaci se zdroji, jako je například databáze nebo služby.
 
-3. Otevřete *Splitter.cs*. Ve výchozím nastavení má pouze jednu metodu: `Execute`. Metoda `Execute` je volána, když šroub obdrží řazenou kolekci členů ke zpracování. Tady můžete číst a zpracovávat příchozí řazené kolekce členů a generovat odchozí řazené kolekce členů.
+3. Otevřít *Splitter.cs*. Má ve výchozím nastavení `Execute`pouze jednu metodu: . Metoda `Execute` je volána při šroubobdrží řazenou kolekce členů pro zpracování. Zde můžete číst a zpracovávat příchozí řazené kolekce členů a vyzařovat odchozí řazené kolekce členů.
 
-4. Obsah třídy `Splitter` nahraďte následujícím kódem:
+4. Nahraďte obsah `Splitter` třídy následujícím kódem:
 
     ```csharp
     private Context ctx;
@@ -333,15 +333,15 @@ Nyní v tomto příkladu vytvořte dvě šrouby:
 
 ### <a name="define-the-topology"></a>Definování topologie
 
-Spoutů a šrouby jsou uspořádány do grafu, který definuje způsob toku dat mezi komponentami. V této topologii je graf následující:
+Výtoky a šrouby jsou uspořádány v grafu, který definuje, jak data toky mezi součástmi. Pro tuto topologii je graf následující:
 
-![Diagram uspořádání komponent Spout a šroubů, topologie rozplavení](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
+![Schéma uspořádání výtoku a šroubových součástí, topologie bouře](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
-Spout vygeneruje věty, které jsou distribuovány do instancí rozdělovače. Šroubce přerušuje věty na slova, která jsou distribuována do čítače čítačů.
+Výtok vyzařuje věty, které jsou distribuovány do instancí šroubu splitteru. Šroub rozdělovače přeruší věty na slova, která jsou distribuována do šroubu čítače.
 
-Vzhledem k tomu, že instance čítače obsahuje počet slov místně, chcete zajistit, aby určitá slova byla v toku ke stejné instanci šroubu čítače. Každá instance uchovává záznam o konkrétních slovech. Vzhledem k tomu, že rozdělovač oddělovače udržuje žádný stav, nezáleží na tom, která instance rozdělovače obdrží tuto větu.
+Vzhledem k tomu, že instance Čítače obsahuje počet slov místně, chcete se ujistit, že určitá slova toku do stejné instance counter šroub. Každá instance sleduje konkrétní slova. Vzhledem k tomu, že šroub Splitter udržuje žádný stav, opravdu nezáleží na tom, která instance rozdělovače obdrží který trest.
 
-Otevřete *program.cs*. Důležitou metodou je `GetTopologyBuilder`, která se používá k definování topologie, která je odeslána do přeplavení. Nahraďte obsah `GetTopologyBuilder` následujícím kódem k implementaci topologie popsané dříve:
+Otevřít *Program.cs*. Důležitou metodou `GetTopologyBuilder`je , která se používá k definování topologie, která je odeslána storm. Nahraďte `GetTopologyBuilder` obsah následujícího kódu k implementaci topologie popsané výše:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -405,92 +405,92 @@ return topologyBuilder;
 
 Nyní jste připraveni odeslat topologii do clusteru HDInsight.
 
-1. Přejděte k **zobrazení** > **Průzkumník serveru**.
+1. Přejděte do **aplikace View** > **Server Explorer**.
 
-1. Klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit k Microsoft Azure předplatnému...** a dokončete proces přihlašování.
+1. Klikněte pravým tlačítkem na **Azure**, vyberte **Připojit k předplatnému Microsoft Azure...** a dokončete proces přihlášení.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Odeslat pro**zaplavení v HDInsight.
+1. V **Průzkumníku řešení**klikněte pravým tlačítkem myši na projekt a **v HDInsightu**zvolte Odeslat bouři .
 
-1. V dialogovém okně **Odeslat topologii** v rozevíracím seznamu cluster nenáročného **clusteru** zvolte své zaplavení na clusteru HDInsight a pak vyberte **Odeslat**. Můžete ověřit, zda je odeslání úspěšné, zobrazením podokna **výstup** .
+1. V dialogovém okně **Odeslat topologii** vyberte v rozevíracím seznamu **Storm Cluster** bouři v clusteru HDInsight a pak vyberte **Odeslat**. Zobrazením podokna **Výstup** můžete zkontrolovat, zda je odeslání úspěšné.
 
-    Po úspěšném odeslání topologie by se měla zobrazit okno **zobrazení topologií** vyplavení pro daný cluster. Vyberte topologii **WORDCOUNT** ze seznamu a zobrazte informace o spuštěné topologii.
+    Po úspěšném odeslání topologie by se mělo zobrazit okno **Zobrazení totopologie bouře** pro cluster. Chcete-li zobrazit informace o spuštěné topologii, zvolte topologii **WordCount** ze seznamu.
 
-    ![Okno zobrazení topologie navýšení, cluster HDInsight, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
-
-    > [!NOTE]  
-    > **Topologie** **přePrůzkumník serveru**můžete zobrazit také z. Rozbalte **Azure** > **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak zvolte **Zobrazit topologie**přeplavování.
-
-    Chcete-li zobrazit informace o součástech v topologii, vyberte součást v diagramu.
-
-1. V části **Souhrn topologie** vyberte možnost **Kill** a zastavte topologii.
+    ![Okno zobrazení topologie bouře, cluster HDInsight, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > Topologie zaplavování se nadále spouštějí, dokud nejsou deaktivovány, nebo když se cluster odstraní.
+    > **Topologií bouře** můžete také zobrazit z **Průzkumníka serveru**. Rozbalte **Azure** > **HDInsight**, klikněte pravým tlačítkem myši na storm v clusteru HDInsight a pak zvolte **Zobrazit topologii bouře**.
+
+    Chcete-li zobrazit informace o součástech v topologii, vyberte komponentu v diagramu.
+
+1. V části **Souhrn topologie** vyberte **Zabít,** chcete-li topologii zastavit.
+
+    > [!NOTE]  
+    > Topologií bouře se nadále spouští, dokud nejsou deaktivovány nebo dokud není cluster odstraněn.
 
 ## <a name="transactional-topology"></a>Transakční topologie
 
-Předchozí topologie je jiná než transakční. Komponenty v topologii neimplementují funkce pro přehrávání zpráv. Příklad transakční topologie získáte tak, že vytvoříte projekt a jako typ projektu vyberete možnost Nevytvářet **vzorek** .
+Předchozí topologie je netransakční. Součásti v topologii neimplementují funkce pro přehrání zpráv. Příklad transakční topologie vytvořte projekt a jako typ projektu vyberte **ukázku bouře.**
 
-Transakční topologie implementují následující, aby podporovaly přehrávání dat:
+Transakční topologie implementují následující pro podporu přehrání dat:
 
-* **Ukládání metadat do mezipaměti**: Spout musí ukládat metadata o vysílaných datech, aby se data mohla načíst a emitovat znovu, pokud dojde k selhání. Vzhledem k tomu, že data vygenerovaná ukázkou jsou malá, jsou nezpracovaná data pro každou řazenou kolekci členů uložena ve slovníku pro opětovné přehrání.
+* **Ukládání metadat do mezipaměti**: Výtok musí ukládat metadata o emitovaných datech, aby je bylo možné data znovu načíst a vyzařovat, pokud dojde k chybě. Vzhledem k tomu, že data vyzařovaná ukázkou jsou malá, nezpracovaná data pro každou řazenou n-tice jsou uložena ve slovníku pro přehrání.
 
-* **ACK**: každé pole topologie může volat `this.ctx.Ack(tuple)` k potvrzení, že úspěšně zpracovalo řazenou kolekci členů. Když všechny šrouby potvrdí řazenou kolekci členů, vyvolá se `Ack` metoda Spout. Metoda `Ack` umožňuje Spout odebrat data, která byla uložena do mezipaměti pro opětovné přehrání.
+* **Ack**: Každý šroub v `this.ctx.Ack(tuple)` topologii může volat potvrdit, že úspěšně zpracoval n-tice. Když všechny šrouby potvrdí n-tice, `Ack` je vyvolána metoda výtoku. Metoda `Ack` umožňuje výtoku odebrat data, která byla uložena do mezipaměti pro přehrání.
 
-* **Selhání**: každé šrouby může volat `this.ctx.Fail(tuple)` k označení toho, že zpracování se nezdařilo u řazené kolekce členů. Selhání se šíří do metody `Fail` Spout, kde je možné znovu přehrát řazenou kolekci členů pomocí metadat uložených v mezipaměti.
+* **Selhání**: Každý `this.ctx.Fail(tuple)` šroub může volat k označení, že zpracování se nezdařilo pro řazenou kolekce členů. Selhání se šíří na `Fail` metodu výtoku, kde lze n-tice přehrát pomocí metadat uložených v mezipaměti.
 
-* **ID sekvence**: při generování řazené kolekce členů lze zadat jedinečné ID sekvence. Tato hodnota určuje řazenou kolekci členů pro zpracování opětovného přehrání (`Ack` a `Fail`). Například Spout v projektu s **ukázkovým** zaplavení používá při vygenerování dat následující volání metody:
+* **ID sekvence**: Při vyzařování n-tice lze zadat jedinečné ID sekvence. Tato hodnota identifikuje řazenou`Ack` n-tice pro opětovné přehrání ( a `Fail`) zpracování. Například výtok v projektu **Ukázka bouře** používá následující volání metody při vyzařování dat:
 
   `this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);`
 
-  Tento kód vygeneruje řazenou kolekci členů, která obsahuje větu k výchozímu datovému proudu, s hodnotou ID sekvence obsaženou v `lastSeqId`. V tomto příkladu se `lastSeqId` zvyšuje pro každou vydanou řazenou kolekci členů.
+  Tento kód vysílá řazenou skupinu členů, která obsahuje větu do `lastSeqId`výchozího datového proudu, s hodnotou ID sekvence obsaženou v . V tomto `lastSeqId` příkladu se zintáží pro každou n-tice emitované.
 
-Jak je znázorněno v projektu **ukázkového** navýšení, zda je součást transakční, lze nastavit za běhu na základě konfigurace.
+Jak je ukázáno v projektu **Ukázka bouře,** zda je komponenta transakční lze nastavit za běhu, na základě konfigurace.
 
-## <a name="hybrid-topology-with-c-and-java"></a>Hybridní topologie pomocí C# a Java
+## <a name="hybrid-topology-with-c-and-java"></a>Hybridní topologie s C# a Javou
 
-Můžete také použít nástroje Data Lake Tools for Visual Studio k vytvoření hybridních topologií, kde některé součásti C# a jiné jsou Java.
+Pomocí nástrojů Data Lake pro Visual Studio můžete také vytvořit hybridní topologie, kde některé součásti jsou C# a jiné jsou Java.
 
-Příklad hybridní topologie získáte tak, že vytvoříte projekt a vyberete možnost navýšit **hybridní vzorek**. Tento vzorový typ předvádí následující koncepty:
+Příklad hybridní topologie vytvořte projekt a vyberte **storm hybridní vzorek**. Tento typ vzorku ukazuje následující koncepty:
 
-* **Java Spout** a  **C# šroub**: definováno ve třídě `HybridTopology_javaSpout_csharpBolt`.
+* **Java hubice** a **šroub C#:** Definováno ve `HybridTopology_javaSpout_csharpBolt` třídě.
 
-  Transakční verze je definována ve třídě `HybridTopologyTx_javaSpout_csharpBolt`.
+  Transakční verze je definována `HybridTopologyTx_javaSpout_csharpBolt` ve třídě.
 
-* Spout a **Java šroub**: definováno ve třídě `HybridTopology_csharpSpout_javaBolt`. **C#**
+* **Výtok C#** a **Java** `HybridTopology_csharpSpout_javaBolt` šroub : Definováno ve třídě.
 
-  Transakční verze je definována ve třídě `HybridTopologyTx_csharpSpout_javaBolt`.
+  Transakční verze je definována `HybridTopologyTx_csharpSpout_javaBolt` ve třídě.
 
   > [!NOTE]  
-  > Tato verze také ukazuje, jak použít kód Clojure z textového souboru jako součást Java.
+  > Tato verze také ukazuje, jak používat Clojure kód z textového souboru jako součást Java.
 
-Chcete-li přepnout topologii, která se používá při odeslání projektu, přesuňte příkaz `[Active(true)]` do topologie, kterou chcete použít, před odesláním do clusteru.
+Chcete-li přepnout topologii, která se používá `[Active(true)]` při odeslání projektu, přesuňte příkaz do topologie, kterou chcete použít, před jeho odesláním do clusteru.
 
 > [!NOTE]  
-> Všechny soubory Java, které jsou požadovány, jsou k dispozici jako součást tohoto projektu ve složce *JavaDependency* .
+> Všechny soubory Java, které jsou požadovány jsou k dispozici jako součást tohoto projektu ve složce *JavaDependency.*
 
-Při vytváření a odesílání hybridní topologie Vezměte v úvahu následující skutečnosti:
+Při vytváření a odesílání hybridní topologie zvažte následující:
 
-* K vytvoření instance třídy Java pro Spout nebo šroub použijte `JavaComponentConstructor`.
+* Slouží `JavaComponentConstructor` k vytvoření instance třídy Java pro výtok nebo šroub.
 
-* Použijte `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` k serializaci dat do komponent Java z objektů Java do formátu JSON nebo z nich.
+* Slouží `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` k serializaci dat do nebo z komponent Java z objektů Java do JSON.
 
-* Při odesílání topologie na server je nutné použít možnost **dalších konfigurací** k určení **cest k souborům Java**. Zadaná cesta by měla být adresář, který obsahuje soubory JAR obsahující vaše třídy Java.
+* Při odesílání topologie na server je nutné použít možnost **Další konfigurace** k určení **cest souboru jazyka Java**. Zadaná cesta by měla být adresář, který obsahuje jar soubory obsahující vaše java třídy.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-SCP.NET verze 0.9.4.203 zavádí novou třídu a metodu specificky pro práci s centrem událostí Spout (Java Spout, který čte z Event Hubs). Když vytváříte topologii, která používá centrum událostí Spout (například pomocí **ukázkové šablony čtečky EventHub** , použijte následující rozhraní API):
+SCP.NET verze 0.9.4.203 zavádí novou třídu a metodu speciálně pro práci s výtokem Centra událostí (java hub, který čte z Event Hubs). Když vytvoříte topologii, která používá hub událostí hub (například pomocí ukázkové šablony **Storm EventHub Reader),** použijte následující api:
 
-* `EventHubSpoutConfig` třída: vytvoří objekt, který obsahuje konfiguraci pro komponentu Spout.
+* `EventHubSpoutConfig`třída: Vytvoří objekt, který obsahuje konfiguraci komponenty výtoku.
 
-* `TopologyBuilder.SetEventHubSpout` metoda: přidá do topologie komponentu Spout centra událostí.
+* `TopologyBuilder.SetEventHubSpout`metoda: Přidá komponentu hubu událostí do topologie.
 
 > [!NOTE]  
-> K serializaci dat vytvořených v Spout je nutné stále používat `CustomizedInteropJSONSerializer`.
+> Stále je nutné `CustomizedInteropJSONSerializer` použít serializovat data produkovaná výtokem.
 
-## <a name="use-configurationmanager"></a>Použití ConfigurationManager
+## <a name="use-configurationmanager"></a>Použít nástroj ConfigurationManager
 
-Nepoužívejte **ConfigurationManager** k načtení hodnot konfigurace ze součástí šroubů a Spout. V takovém případě může dojít k výjimce ukazatele s hodnotou null. Místo toho předejte konfiguraci pro váš projekt do topologie pro zaplavení jako dvojici klíč a hodnota v kontextu topologie. Každá komponenta, která závisí na hodnotách konfigurace, musí být při inicializaci načítána z kontextu.
+Nepoužívejte **ConfigurationManager** k načtení hodnot konfigurace z komponent šroubu a hubice. To může způsobit výjimku ukazatele null. Místo toho předejte konfiguraci projektu do topologie Storm jako dvojice klíčů a hodnot v kontextu topologie. Každá součást, která závisí na hodnotách konfigurace, je musí načíst z kontextu během inicializace.
 
 Následující kód ukazuje, jak načíst tyto hodnoty:
 
@@ -517,7 +517,7 @@ public class MyComponent : ISCPBolt
 }
 ```
 
-Použijete-li metodu `Get` pro vrácení instance komponenty, je nutné zajistit, aby do konstruktoru bylo předána parametr `Context` a `Dictionary<string, Object>`. Následující příklad je základní `Get` metoda, která správně předává tyto hodnoty:
+Pokud použijete `Get` metodu k vrácení instance komponenty, musíte zajistit, že předá konstruktoru `Context` parametry a `Dictionary<string, Object>` parametry. Následující příklad je `Get` základní metoda, která správně předá tyto hodnoty:
 
 ```csharp
 public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
@@ -526,63 +526,63 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 }
 ```
 
-## <a name="how-to-update-scpnet"></a>Postup aktualizace SCP.NET
+## <a name="how-to-update-scpnet"></a>Jak aktualizovat SCP.NET
 
-Nejnovější verze SCP.NET podporují upgrade balíčku prostřednictvím NuGet. Když je k dispozici nová aktualizace, obdržíte oznámení o upgradu. Chcete-li provést ruční kontrolu upgradu, postupujte podle následujících kroků:
+Poslední verze SCP.NET upgrade balíčku podpory prostřednictvím NuGet. Pokud je k dispozici nová aktualizace, obdržíte oznámení o upgradu. Chcete-li upgrade zkontrolovat ručně, postupujte takto:
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Správa balíčků NuGet**.
 
-2. Ve Správci balíčků vyberte **aktualizace**. Pokud je k dispozici aktualizace pro balíček podpory SCP.NET, je uvedena v seznamu. Vyberte **aktualizace** balíčku a potom v dialogovém okně **Náhled změn** vyberte **OK** a nainstalujte ho.
+2. Ve správci balíčků vyberte **aktualizace**. Pokud je k dispozici aktualizace balíčku podpory SCP.NET, je uvedena. Vyberte **Aktualizovat** balíček a pak v dialogovém okně **Náhled změn** vyberte **OK,** abyste ho nainstalovali.
 
 > [!IMPORTANT]  
-> Pokud byl projekt vytvořen pomocí starší verze SCP.NET, která nepoužívala NuGet, je nutné provést následující kroky, aby se aktualizovala na novější verzi:
+> Pokud byl váš projekt vytvořen s dřívější verzí SCP.NET, která nepoužívala NuGet, je nutné provést následující kroky k aktualizaci na novější verzi:
 >
 > 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Správa balíčků NuGet**.
-> 2. Pomocí **vyhledávacího** pole vyhledejte a přidejte `Microsoft.SCP.Net.SDK` k projektu.
+> 2. Pomocí pole **Hledat** vyhledejte a přidejte `Microsoft.SCP.Net.SDK` do projektu.
 
-## <a name="troubleshoot-common-issues-with-topologies"></a>Řešení běžných potíží s topologiemi
+## <a name="troubleshoot-common-issues-with-topologies"></a>Řešení běžných problémů s topologiemi
 
-### <a name="null-pointer-exceptions"></a>Výjimky ukazatele s hodnotou null
+### <a name="null-pointer-exceptions"></a>Výjimky ukazatele Null
 
-Pokud používáte C# topologii s clusterem HDInsight se systémem Linux, musí komponenty šroubů a Spout, které používají **ConfigurationManager** ke čtení konfiguračních nastavení za běhu, vracet výjimky ukazatele s hodnotou null.
+Pokud používáte topologii Jazyka C# s clusterem HDInsight založeným na Linuxu, komponenty šroubů a výtoků, které používají **ConfigurationManager** ke čtení nastavení konfigurace za běhu, mohou vrátit výjimky ukazatele null.
 
-Konfigurace pro váš projekt je předána do topologie přetvoření jako dvojice klíč a hodnota v kontextu topologie. Dá se načíst z objektu Dictionary, který se předává komponentám při inicializaci.
+Konfigurace pro váš projekt je předána do topologie Storm jako dvojice klíčů a hodnot v kontextu topologie. Lze jej načíst z objektu slovníku, který je předán vašim součástem při jejich inicializování.
 
-Další informace najdete v části [použití ConfigurationManager](#use-configurationmanager) tohoto dokumentu.
+Další informace naleznete v části [Use ConfigurationManager](#use-configurationmanager) tohoto dokumentu.
 
 ### <a name="systemtypeloadexception"></a>System.TypeLoadException
 
-Při použití C# topologie s clusterem HDInsight se systémem Linux může docházet k následující chybě:
+Pokud používáte topologii Jazyka C# s clusterem HDInsight založeným na Linuxu, můžete narazit na následující chybu:
 
 `System.TypeLoadException: Failure has occurred while loading a type.`
 
-K této chybě dochází, pokud použijete binární soubor, který není kompatibilní s verzí rozhraní .NET, kterou mono podporuje.
+K této chybě dochází při použití binárního souboru, který není kompatibilní s verzí rozhraní .NET, kterou mono podporuje.
 
-U clusterů HDInsight se systémem Linux se ujistěte, že váš projekt používá binární soubory kompilované pro .NET 4,5.
+U clusterů HDInsight založených na Linuxu se ujistěte, že váš projekt používá binární soubory zkompilované pro rozhraní .NET 4.5.
 
-### <a name="test-a-topology-locally"></a>Místní otestování topologie
+### <a name="test-a-topology-locally"></a>Testování topologie místně
 
-I když je možné topologii nasadit do clusteru, může být v některých případech potřeba topologii otestovat místně. Následující postup použijte k místnímu spuštění a otestování ukázkové topologie v tomto článku ve vývojovém prostředí.
+I když je snadné nasadit topologii do clusteru, v některých případech může být nutné otestovat topologii místně. Pomocí následujících kroků spusťte a otestujte ukázkovou topologii v tomto článku místně ve vývojovém prostředí.
 
 > [!WARNING]  
-> Místní testování funguje pouze pro základní C#topologie. Místní testování nelze použít pro hybridní topologie nebo topologie, které používají více datových proudů.
+> Místní testování funguje pouze pro základní topologie pouze c#. Nelze použít místní testování pro hybridní topologie nebo topologie, které používají více datových proudů.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **vlastnosti**. Ve vlastnostech projektu. Pak změňte **Typ výstupu** na **konzolovou aplikaci**.
+1. V **Průzkumníku řešení**klepněte pravým tlačítkem myši na projekt a vyberte **příkaz Vlastnosti**. Ve vlastnostech projektu. Potom změňte **typ výstupu** na **konzolovou aplikaci**.
 
-   ![Aplikace HDInsight-zaplavení, vlastnosti projektu, typ výstupu](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
+   ![APLIKACE HDInsight Storm, vlastnosti projektu, typ výstupu](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
-   > Nezapomeňte změnit **Typ výstupu** zpátky do **knihovny tříd** před nasazením topologie do clusteru.
+   > Nezapomeňte před nasazením topologie do clusteru změnit **typ výstupu** zpět do **knihovny tříd.**
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Přidat** > **Nová položka**. Vyberte **Třída**a jako název třídy zadejte *LocalTest.cs* . Nakonec vyberte **Přidat**.
+1. V **Průzkumníku řešení**klikněte pravým tlačítkem myši na projekt a potom vyberte **Přidat** > **novou položku**. Vyberte **Třída**a zadejte *LocalTest.cs* jako název třídy. Nakonec vyberte **přidat**.
 
-1. Otevřete *LocalTest.cs*a přidejte následující příkaz `using` v horní části:
+1. Otevřete *LocalTest.cs*a `using` nahoře přidejte následující příkaz:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-1. Jako obsah třídy `LocalTest` použijte následující kód:
+1. Jako obsah `LocalTest` třídy použijte následující kód:
 
     ```csharp
     // Drives the topology components
@@ -661,9 +661,9 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
     }
     ```
 
-    Věnujte si chvilku, abyste si přečetli komentáře ke kódu. Tento kód používá `LocalContext` ke spuštění komponent ve vývojovém prostředí. Ukládá datový proud mezi součástmi do textových souborů na místním disku.
+    Udělejte si chvilku a přečtěte si komentáře kódu. Tento kód `LocalContext` používá ke spuštění součásti ve vývojovém prostředí. Zachová datový proud mezi součástmi do textových souborů na místní jednotce.
 
-1. Otevřete *program.cs*a přidejte následující kód do metody `Main`:
+1. Otevřete *Program.cs*a přidejte `Main` do metody následující kód:
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -684,85 +684,85 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
     Console.ReadKey();
     ```
 
-1. Uložte změny a pak vyberte **F5** nebo vyberte **ladit** > **Spustit ladění** a spusťte tak projekt. Mělo by se zobrazit okno konzoly a log status jako průběh testů. Po zobrazení `Tests finished` se zobrazí jakákoli klávesa a okno se zavře.
+1. Uložte změny a pak vyberte **F5** nebo zvolte **Ladění** > **Start Ladění** zahájit projekt. Okno konzoly by se mělo zobrazit a stav protokolu jako průběh testů. Po `Tests finished` zjevu vyberte libovolnou klávesu pro zavření okna.
 
-1. Pomocí **Průzkumníka Windows** vyhledejte adresář, který obsahuje váš projekt. (Například: *C:\\Users\\\<your_user_name >\\zdroj\\úložišť\\WordCount\\WORDCOUNT*.) Pak v tomto adresáři otevřete *přihrádku*a potom vyberte *ladit*. Měli byste vidět textové soubory, které byly vytvořeny při spuštění testů: *věty. txt*, *Counter. txt*a *rozdělovač. txt*. Otevřete každý textový soubor a zkontrolujte data.
+1. Pomocí **Průzkumníka Windows** vyhledejte adresář, který obsahuje váš projekt. (Například: *\\C: Uživatelé\\\\\\\\\<your_user_name>\\zdroj repos WordCount WordCount*.) Potom v tomto adresáři otevřete *bin*a vyberte *možnost Ladění*. Měli byste vidět textové soubory, které byly vytvořeny při spuštění testů: *sentences.txt*, *counter.txt*a *splitter.txt*. Otevřete každý textový soubor a zkontrolujte data.
 
    > [!NOTE]  
-   > Řetězcová data v těchto souborech přetrvají jako pole desítkových hodnot. Například `[[97,103,111]]` v souboru **rozdělovače. txt** představuje *před*slovem.
+   > Řetězcová data zůstanou v těchto souborech jako pole desetinných hodnot. Například `[[97,103,111]]` v souboru **splitter.txt** představuje slovo *před*.
 
 > [!NOTE]  
-> Nezapomeňte nastavit **typ projektu** zpět na **knihovnu tříd** ve vlastnostech projektu před nasazením na šíření v clusteru HDInsight.
+> Nezapomeňte nastavit **typ projektu** zpět do **knihovny tříd** ve vlastnostech projektu před nasazením do clusteru Storm na HDInsight.
 
 ### <a name="log-information"></a>Informace protokolu
 
-Informace ze svých komponent topologie můžete snadno protokolovat pomocí `Context.Logger`. Například následující příkaz vytvoří informační položku protokolu:
+Informace z komponent topologie můžete snadno `Context.Logger`protokolovat pomocí aplikace . Například následující příkaz vytvoří položku informačního protokolu:
 
 `Context.Logger.Info("Component started");`
 
-Protokolované informace můžete zobrazit z **protokolu služby Hadoop**, který najdete v **Průzkumník serveru**. Rozbalte položku pro vaše vyplavení v clusteru HDInsight a potom rozbalte **protokol služby Hadoop**. Nakonec vyberte soubor protokolu, který chcete zobrazit.
+Protokolované informace lze zobrazit z **protokolu služeb Hadoop**, který se nachází v **Průzkumníku serveru**. Rozbalte položku pro svůj cluster Storm v clusteru HDInsight a potom rozbalte **protokol služeb Hadoop**. Nakonec vyberte soubor protokolu, který chcete zobrazit.
 
 > [!NOTE]  
-> Protokoly se ukládají do účtu služby Azure Storage, který používá váš cluster. Chcete-li zobrazit protokoly v aplikaci Visual Studio, musíte se přihlásit k předplatnému Azure, které vlastní účet úložiště.
+> Protokoly jsou uloženy v účtu úložiště Azure, který používá váš cluster. Chcete-li zobrazit protokoly v sadě Visual Studio, musíte se přihlásit k předplatnému Azure, které vlastní účet úložiště.
 
 ### <a name="view-error-information"></a>Zobrazit informace o chybě
 
-Chcete-li zobrazit chyby, ke kterým došlo ve spuštěné topologii, použijte následující postup:
+Chcete-li zobrazit chyby, ke kterým došlo v běžící topologii, postupujte takto:
 
-1. V **Průzkumník serveru**klikněte pravým tlačítkem na cluster se systémem HDInsight a vyberte **Zobrazit topologie**přeplavení.
+1. V **Průzkumníkovi serveru**klikněte pravým tlačítkem myši na cluster Storm v clusteru HDInsight a vyberte **zobrazit topologii bouře**.
 
-   Sloupec **Poslední chyba** pro **Spout** a **šrouby**obsahuje informace o Poslední chybě.
+   Pro **výtok** a **šrouby**, sloupec **Poslední chyba** obsahuje informace o poslední chybě.
 
-2. Vyberte **ID Spout** nebo **ID šroubu** pro komponentu, u které je uvedená chyba. Stránka Podrobnosti obsahuje další informace o chybě v části **chyby** v dolní části stránky.
+2. Vyberte **ID výtoku** nebo **ID šroubu** pro součást, která má uvedenou chybu. Stránka podrobností zobrazuje další informace o chybě v části **Chyby** v dolní části stránky.
 
-3. Pokud chcete získat další informace, vyberte **port** z části **vykonavatelé** na stránce, abyste viděli protokol pracovního procesu pro více než posledních pár minut.
+3. Chcete-li získat další informace, vyberte **port** z oddílu **Executors** na stránce, chcete-li zobrazit protokol pracovníka bouře za posledních několik minut.
 
 ### <a name="errors-submitting-topologies"></a>Chyby při odesílání topologií
 
-Pokud provedete chyby při odesílání topologie do HDInsight, můžete najít protokoly pro serverové komponenty, které zpracovávají odesílání topologie v clusteru HDInsight. Chcete-li stáhnout tyto protokoly, použijte následující příkaz z příkazového řádku:
+Pokud narazíte na chyby odesílání topologie do HDInsight, můžete najít protokoly pro součásti na straně serveru, které zpracovávají odesílání topologie v clusteru HDInsight. Chcete-li tyto protokoly stáhnout, použijte následující příkaz z příkazového řádku:
 
 ```cmd
 scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 ```
 
-Nahraďte *sshuser* uživatelským účtem SSH pro cluster. Položku *název_clusteru* nahraďte názvem clusteru HDInsight. Další informace o používání `scp` a `ssh` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Nahraďte *sshuser* uživatelským účtem SSH pro cluster. Nahraďte *název clusteru* názvem clusteru HDInsight. Další informace o `scp` `ssh` používání a používání HDInsight najdete v [tématu Použití SSH s HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Odesílání může selhat z několika důvodů:
+Odeslání může selhat z několika důvodů:
 
-* JDK není nainstalován nebo není v cestě.
-* Požadované závislosti Java nejsou zahrnuté do odeslání.
+* Sada JDK není nainstalována nebo není v cestě.
+* Požadované závislosti jazyka Java nejsou zahrnuty v odeslání.
 * Závislosti jsou nekompatibilní.
-* Názvy topologie jsou duplicitní.
+* Názvy topologie jsou duplikovány.
 
-Pokud soubor protokolu *HDInsight-scpwebapi. out* obsahuje `FileNotFoundException`, může být výjimka způsobena těmito podmínkami:
+Pokud soubor protokolu *hdinsight-scpwebapi.out* obsahuje `FileNotFoundException`soubor protokolu , může být výjimka způsobena následujícími podmínkami:
 
-* JDK není v cestě k vývojovému prostředí. Ověřte, že je JDK nainstalovaný ve vývojovém prostředí a že se `%JAVA_HOME%/bin` nachází v cestě.
-* Chybí závislost Java. Ujistěte se, že jako součást odeslání budete zahrnovat všechny požadované soubory. jar.
+* JDK není v cestě na vývojovéprostředí. Ověřte, zda je jdk nainstalován `%JAVA_HOME%/bin` ve vývojovém prostředí a že je v cestě.
+* Chybí vám závislost na Javě. Ujistěte se, že jste včetně všech požadovaných .jar soubory jako součást podání.
 
 ## <a name="next-steps"></a>Další kroky
 
-Příklad zpracování dat z Event Hubs najdete v tématu [zpracování událostí z Azure Event Hubs se](apache-storm-develop-csharp-event-hub-topology.md)zaplavou v HDInsight.
+Příklad zpracování dat z centra událostí najdete v tématu [Zpracování událostí z Center událostí Azure s Stormem na HDInsightu](apache-storm-develop-csharp-event-hub-topology.md).
 
-Příklad C# topologie, která rozdělí streamovaná data do více datových proudů, najdete v tématu [ C# příklad](https://github.com/Blackmist/csharp-storm-example)zaplavení.
+Příklad topologie Jazyka C#, který rozděluje data datového proudu na více datových proudů, naleznete v [příkladu C# Storm](https://github.com/Blackmist/csharp-storm-example).
 
-Další informace o vytváření C# topologií najdete v tématu [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md).
+Další informace o vytváření topologií jazyka C# najdete v tématu [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md).
 
-Další způsoby, jak pracovat se službou HDInsight a větším využitím ukázek HDInsight, najdete v následujících dokumentech:
+Další způsoby práce s HDInsight a další Storm na ukázkách HDInsight, najdete v následujících dokumentech:
 
 **Microsoft SCP.NET**
 
-* [Průvodce programováním SCP pro Apache Storm ve službě Azure HDInsight](apache-storm-scp-programming-guide.md)
+* [Programovací průvodce SCP pro Apache Storm v Azure HDInsight](apache-storm-scp-programming-guide.md)
 
-**Apache Storm ve službě HDInsight**
+**Apache Storm v HDInsight**
 
-* [Nasazení a Správa topologií Apache Storm v Azure HDInsight](apache-storm-deploy-monitor-topology-linux.md)
-* [Příklady Apache Storm topologie v Azure HDInsight](apache-storm-example-topology.md)
+* [Nasazení a správa topologie Apache Storm na Azure HDInsight](apache-storm-deploy-monitor-topology-linux.md)
+* [Příklad topologie Apache Storm v Azure HDInsight](apache-storm-example-topology.md)
 
-**Apache Hadoop ve službě HDInsight**
+**Apache Hadoop na HDInsight**
 
-* [Co je Apache Hive a HiveQL ve službě Azure HDInsight?](../hadoop/hdinsight-use-hive.md)
+* [Co je Apache Hive a HiveQL na Azure HDInsight?](../hadoop/hdinsight-use-hive.md)
 * [Použití MapReduce v Apache Hadoopu ve službě HDInsight](../hadoop/hdinsight-use-mapreduce.md)
 
-**Apache HBA v HDInsight**
+**Apache HBase ve službě HDInsight**
 
-* [Použití Apache HBA v Azure HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Použití Apache HBase v Azure HDInsightu](../hbase/apache-hbase-tutorial-get-started-linux.md)

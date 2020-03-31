@@ -1,6 +1,6 @@
 ---
-title: Nepodařilo se spustit Apache HBase Master ve službě Azure HDInsight
-description: Službu Apache HBase Master (HMaster) se nepodařilo spustit ve službě Azure HDInsight.
+title: Apache HBase Master se nepodařilo spustit v Azure HDInsight
+description: Apache HBase Master (HMaster) se nepodařilo spustit v Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,62 +8,62 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887202"
 ---
-# <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Službu Apache HBase Master (HMaster) se nepodařilo spustit ve službě Azure HDInsight.
+# <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) se nepodařilo spustit v Azure HDInsight
 
-Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
+Tento článek popisuje kroky řešení potíží a možná řešení problémů při interakci s clustery Azure HDInsight.
 
-## <a name="scenario-atomic-renaming-failure"></a>Scénář: selhání při přejmenování Atomie
+## <a name="scenario-atomic-renaming-failure"></a>Scénář: Atomické přejmenování selhání
 
 ### <a name="issue"></a>Problém
 
-Během procesu spuštění byly zjištěny neočekávané soubory.
+Během procesu spouštění byly zjištěny neočekávané soubory.
 
 ### <a name="cause"></a>Příčina
 
-Během procesu spuštění provede HMaster spoustu inicializačních kroků, včetně přesunu dat ze složky (. tmp) do složky data. HMaster také zjistí, jestli neexistují žádné nereagující servery oblastí (WAL).
+Během procesu spuštění hmaster provádí mnoho kroků inicializace, včetně přesunutí dat od začátku (.tmp) složky do datové složky. HMaster se také dívá na složku protokolů wal (write-ahead" a zobrazí, pokud existují nějaké servery oblasti, které nereagují.
 
-HMaster provede základní příkaz seznamu ve složkách WAL. Pokud HMaster zobrazí neočekávaný soubor v některé z těchto složek, vyvolá výjimku a nespustí se.
+HMaster dělá základní seznam příkaz u wal složek. Pokud kdykoli HMaster vidí neočekávaný soubor v některé z těchto složek, vyvolá výjimku a nespustí.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
-Zkontrolujte zásobník volání a pokuste se určit, která složka může způsobovat problém (například může se jednat o složku WAL nebo složku. tmp). Potom v Průzkumníku cloudu nebo pomocí příkazů HDFS zkuste najít soubor problému. Obvykle se jedná o soubor `*-renamePending.json`. (`*-renamePending.json` soubor je soubor deníku, který se používá k implementaci operace pro atomické přejmenování v ovladači WASB. Z důvodu chyb v této implementaci mohou být tyto soubory ponechány po selhání procesu a tak dále.) Vynutit – odstraňte tento soubor buď v Průzkumníku cloudu, nebo pomocí příkazů HDFS.
+Zkontrolujte zásobník volání a pokuste se zjistit, která složka může být příčinou problému (například může to být složka WAL nebo složka TMP). Potom v Cloud Exploreru nebo pomocí příkazů HDFS zkuste najít problémový soubor. Obvykle se jedná `*-renamePending.json` o soubor. (Soubor `*-renamePending.json` je soubor deníku, který se používá k implementaci operace atomického přejmenování v ovladači WASB. Kvůli chybám v této implementaci mohou tyto soubory zůstat po selhání procesu a tak dále.) Vynucené odstranění tohoto souboru buď v Cloud Exploreru, nebo pomocí příkazů HDFS.
 
-V tomto umístění může být někdy také dočasný soubor s názvem něco jako `$$$.$$$`. Tento soubor můžete zobrazit pomocí příkazu HDFS `ls`. soubor se v Průzkumníku cloudu nezobrazuje. K odstranění tohoto souboru použijte příkaz HDFS `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.
+Někdy může být také dočasný soubor `$$$.$$$` s názvem něco jako v tomto umístění. Chcete-li zobrazit tento `ls` soubor, musíte použít příkaz HDFS. soubor v Aplikaci Cloud Explorer nevidíte. Chcete-li tento soubor odstranit, `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`použijte příkaz HDFS .
 
-Po spuštění těchto příkazů by se měl HMaster spustit hned.
+Po spuštění těchto příkazů by měl HMaster začít okamžitě.
 
 ---
 
-## <a name="scenario-no-server-address-listed"></a>Scénář: není uvedená žádná adresa serveru.
+## <a name="scenario-no-server-address-listed"></a>Scénář: Není uvedena žádná adresa serveru.
 
 ### <a name="issue"></a>Problém
 
-Může se zobrazit zpráva s oznámením, že `hbase: meta` tabulka není online. Spuštění `hbck` může oznámit, že `hbase: meta table replicaId 0 is not found on any region.` v protokolech HMaster, může se zobrazit zpráva: `No server address listed in hbase: meta for region hbase: backup <region name>`.  
+Může se zobrazit zpráva, `hbase: meta` že tabulka není online. Spuštění `hbck` může `hbase: meta table replicaId 0 is not found on any region.` hlásit, že v protokolech HMaster `No server address listed in hbase: meta for region hbase: backup <region name>`se může zobrazit zpráva: .  
 
 ### <a name="cause"></a>Příčina
 
-HMaster nebylo možné inicializovat po restartování HBA.
+HMaster nelze inicializovat po restartování HBase.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
-1. V prostředí HBA zadejte následující příkazy (podle potřeby změňte skutečné hodnoty):
+1. V prostředí HBase zadejte následující příkazy (podle potřeby změňte skutečné hodnoty):
 
     ```hbase
     scan 'hbase:meta'
     delete 'hbase:meta','hbase:backup <region name>','<column name>'
     ```
 
-1. Odstraňte položku `hbase: namespace`. Tato položka může být stejná jako chyba, která je hlášena při kontrole `hbase: namespace` tabulky.
+1. Odstraňte `hbase: namespace` položku. Tato položka může být stejná chyba, `hbase: namespace` která je hlášena při skenování tabulky.
 
-1. Restartujte aktivní HMaster z uživatelského rozhraní Ambari a zobrazte adaptéry HBA ve spuštěném stavu.
+1. Restartujte aktivní hmaster z ambarského uznatého počítače HBase ve spuštěném stavu.
 
-1. V prostředí HBA spusťte následující příkaz a zobrazte tak všechny offline tabulky:
+1. Chcete-li vyvolat všechny offline tabulky, spusťte v prostředí HBase následující příkaz:
 
     ```hbase
     hbase hbck -ignorePreCheckPermission -fixAssignments
@@ -71,33 +71,33 @@ HMaster nebylo možné inicializovat po restartování HBA.
 
 ---
 
-## <a name="scenario-javaioioexception-timedout"></a>Scénář: v jazyce Java. IO. IOException: vypršel časový limit
+## <a name="scenario-javaioioexception-timedout"></a>Scénář: java.io.IOException: Timedout
 
 ### <a name="issue"></a>Problém
 
-HMaster vyprší s závažnou výjimkou podobnou této: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`.
+HMaster out s fatální výjimku podobné: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`.
 
 ### <a name="cause"></a>Příčina
 
-K tomuto problému může dojít, pokud máte spoustu tabulek a oblastí, které se při restartování služeb HMaster nevyprázdnily. Časový limit je známá vada s HMaster. Obecné úlohy při spuštění clusteru můžou trvat dlouhou dobu. HMaster se vypne, pokud ještě není přiřazená tabulka oboru názvů. Úkony po spuštění dochází tam, kde velké množství nevyprázdněných dat existuje a není dostačující časový limit pět minut.
+K tomuto problému může dojít, pokud máte mnoho tabulek a oblastí, které nebyly vyprázdněny při restartování služeb HMaster. Time-out je známá vada s HMaster. Obecné úlohy spuštění clusteru může trvat dlouhou dobu. HMaster se vypne, pokud tabulka oboru názvů ještě není přiřazena. Zdlouhavé úlohy při spuštění dojít, kde existuje velké množství nevyprázdněných dat a časový čas pět minut není dostačující.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
-1. V uživatelském rozhraní Apache Ambariu přejdete na **hba** > **Konfigurace**. Do vlastního souboru `hbase-site.xml` přidejte následující nastavení:
+1. Z ui Apache Ambari přejděte na **HBase** > **Configs**. Do vlastního `hbase-site.xml` souboru přidejte následující nastavení:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
     ```
 
-1. Restartujte požadované služby (HMaster a případně jiné služby HBA).
+1. Restartujte požadované služby (HMaster a případně další služby HBase).
 
 ---
 
-## <a name="scenario-frequent-region-server-restarts"></a>Scénář: častý restart serveru oblasti
+## <a name="scenario-frequent-region-server-restarts"></a>Scénář: Server frequent region se restartuje
 
 ### <a name="issue"></a>Problém
 
-Uzly jsou pravidelně restartovány. V protokolech serveru oblastí se můžou zobrazit podobné položky:
+Uzly se pravidelně restartují. Z protokolů serveru oblasti se mohou zobrazit položky podobné:
 
 ```
 2017-05-09 17:45:07,683 WARN  [JvmPauseMonitor] util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 31000ms
@@ -107,15 +107,15 @@ Uzly jsou pravidelně restartovány. V protokolech serveru oblastí se můžou z
 
 ### <a name="cause"></a>Příčina
 
-Long `regionserver` pozastavení GC JVM. Pozastavení způsobí, že `regionserver` nereagují a nebude moct odeslat srdcový signál HMaster v rámci časového limitu ZK relace 40s. HMaster se bude domnívat, že `regionserver` je mrtvý a přeruší `regionserver` a restartuje se.
+Dlouhá `regionserver` pauza JVM GC. Pauza způsobí, `regionserver` že přestane reagovat a není schopen poslat tlukot srdce na HMaster v rámci časového režimu relace zk 40s. HMaster bude `regionserver` věřit, že `regionserver` je mrtvý a přeruší a restartovat.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
-Změňte časový limit relace Zookeeper, ne pouze `hbase-site` nastavení `zookeeper.session.timeout`, ale také Zookeeper `zoo.cfg` nastavení `maxSessionTimeout` nutné změnit.
+Změnit časový čas relace Zookeeper, `zookeeper.session.timeout` a to `zoo.cfg` `maxSessionTimeout` nejen `hbase-site` nastavení, ale také Zookeeper nastavení je třeba změnit.
 
-1. Přístup k uživatelskému rozhraní Ambari, přejděte na **adaptéry HBA-> konfigurace-> nastavení**, v části časové limity změňte hodnotu časový limit relace Zookeeper.
+1. Přístup k uzlu Ambari, přejděte na **HBase -> Configs -> Nastavení**, v části Časové tovy, změňte hodnotu časového omezení relace Zookeeper.
 
-1. Přístup k uživatelskému rozhraní Ambari, přejděte na **Zookeeper-> config-> Custom** `zoo.cfg`, přidejte nebo změňte následující nastavení. Ujistěte se, že hodnota je stejná jako HBA `zookeeper.session.timeout`.
+1. Přístup k uzlu Ambari, přejděte na **Zookeeper -> Configs -> Custom** `zoo.cfg`, přidejte nebo změňte následující nastavení. Ujistěte se, že hodnota `zookeeper.session.timeout`je stejná jako HBase .
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -125,28 +125,28 @@ Změňte časový limit relace Zookeeper, ne pouze `hbase-site` nastavení `zook
 
 ---
 
-## <a name="scenario-log-splitting-failure"></a>Scénář: Chyba při rozdělování protokolu
+## <a name="scenario-log-splitting-failure"></a>Scénář: Selhání rozdělení protokolu
 
 ### <a name="issue"></a>Problém
 
-HMasters se nepodařilo provést v clusteru HBA.
+HMasters se nepodařilo přijít na clusteru HBase.
 
 ### <a name="cause"></a>Příčina
 
-Nesprávně nakonfigurované nastavení HDFS a HBA pro sekundární účet úložiště
+Chybně nakonfigurovaná nastavení HDFS a HBase pro účet sekundárního úložiště.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
-Nastavte adaptéry HBA. RootDir: wasb://@.blob.core.windows.net/hbase a restartujte služby na Ambari.
+nastavit hbase.rootdir: wasb://@.blob.core.windows.net/hbase a restartovat služby na Ambari.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
 
-* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí. Propojení komunity Azure se správnými prostředky: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najděte v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -1,6 +1,6 @@
 ---
 title: Dostupnost infrastruktury Azure – zabezpečení Azure
-description: Tento článek obsahuje informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure a poskytování maximální dostupnosti zákaznických dat.
+description: Tento článek obsahuje informace o tom, co Microsoft dělá pro zabezpečení infrastruktury Azure a poskytují maximální dostupnost dat zákazníků.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,42 +16,42 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727217"
 ---
 # <a name="azure-infrastructure-availability"></a>Dostupnost infrastruktury Azure
-Tento článek obsahuje informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure a poskytování maximální dostupnosti zákaznických dat. Azure poskytuje robustní dostupnost na základě rozsáhlé redundance dosažené technologií virtualizace.
+Tento článek obsahuje informace o tom, co Microsoft dělá pro zabezpečení infrastruktury Azure a poskytují maximální dostupnost dat zákazníků. Azure poskytuje robustní dostupnost na základě rozsáhlé redundance dosažené pomocí virtualizační technologie.
 
-## <a name="temporary-outages-and-natural-disaster"></a>Dočasné výpadky a přírodní havárie
-Microsoft Cloud infrastruktury a provozního týmu navrhuje, sestavuje, pracuje a vylepšuje zabezpečení cloudové infrastruktury. Tento tým zajišťuje, aby infrastruktura Azure zajišťovala vysokou dostupnost a spolehlivost, vysokou efektivitu a chytrou škálovatelnost. Tým poskytuje bezpečnější, privátní a důvěryhodný cloud.
+## <a name="temporary-outages-and-natural-disaster"></a>Dočasné výpadky a přírodní katastrofy
+Tým Microsoft Cloud Infrastructure and Operations navrhuje, vytváří, provozuje a zlepšuje zabezpečení cloudové infrastruktury. Tento tým zajišťuje, že infrastruktura Azure poskytuje vysokou dostupnost a spolehlivost, vysokou efektivitu a inteligentní škálovatelnost. Tým poskytuje bezpečnější, privátnější a důvěryhodnější cloud.
 
-Nepřerušitelný zdroj napájení a nepřeberné banky baterie zajistí, že elektřina zůstane nepřetržitá, pokud dojde k krátkodobému výpadku napájení. Nouzové generátory poskytují výkon zálohování pro rozšířené výpadky a plánovanou údržbu. Pokud dojde k přirozené havárii, může datové centrum využívat rezervy pohonných hmot na pracovišti.
+Nepřerušitelné zdroje napájení a obrovské banky baterií zajišťují, že elektřina zůstane nepřetržitá, pokud dojde ke krátkodobému výpadku napájení. Nouzové generátory poskytují záložní napájení pro delší výpadky a plánovanou údržbu. Pokud dojde k přírodní katastrofě, může datové centrum využívat zásoby paliva na místě.
 
-Vysokorychlostní a robustní síťové optické sítě spojují datacentra s dalšími hlavními rozbočovači a uživateli internetu. Výpočetní uzly hostují úlohy blíže uživatelům, aby snížily latenci, poskytovaly geografickou redundanci a zvýšily celkovou odolnost služby. Tým techniků pracuje s časem, aby bylo zajištěno trvalé dostupnosti služeb.
+Vysokorychlostní a robustní optické sítě propojují datová centra s dalšími hlavními rozbočovači a uživateli internetu. Výpočetní uzly hostitelské úlohy blíže k uživatelům snížit latenci, poskytují geografickou redundanci a zvýšit celkovou odolnost služby. Tým inženýrů pracuje nepřetržitě, aby zajistil, že služby jsou trvale dostupné.
 
-Microsoft zajišťuje vysokou dostupnost prostřednictvím pokročilého monitorování a reakce na incidenty, podporu služeb a možnosti převzetí služeb při selhání zálohování. Geograficky distribuované provozní centra Microsoftu pracují 24/7/365. Síť Azure je jedním z největších světových. Optická síť a distribuce obsahu propojuje datová centra a hraniční uzly, aby se zajistil vysoký výkon a spolehlivost.
+Společnost Microsoft zajišťuje vysokou dostupnost prostřednictvím pokročilého monitorování a reakce na incidenty, servisní podpory a možnosti převzetí služeb při selhání zálohování. Geograficky distribuovaná operační střediska Microsoftfungují 24/7/365. Síť Azure je jedna z největších na světě. Síť pro distribuci optických vláken a obsahu propojuje datová centra a hraniční uzly, aby byla zajištěna vysoká výkonnost a spolehlivost.
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii
-Azure udržuje data trvalá na dvou místech. Můžete zvolit umístění záložní lokality. V obou umístěních Azure neustále udržuje tři dobré repliky vašich dat.
+Azure udržuje vaše data trvanlivá ve dvou umístěních. Můžete zvolit umístění záložního webu. V obou umístěních Azure neustále udržuje tři repliky v pořádku vašich dat.
 
 ## <a name="database-availability"></a>Dostupnost databáze
-Azure zajišťuje, že je databáze přístupná přes internetovou bránu s využitím trvalé dostupnosti databáze. Monitorování vyhodnocuje stav a stav aktivních databází v intervalech po dobu pěti minut.
+Azure zajišťuje, že databáze je přístupná přes internet ovou bránu s trvalou dostupností databáze. Monitorování vyhodnocuje stav a stav aktivních databází v pětiminutových časových intervalech.
 
 ## <a name="storage-availability"></a>Dostupnost úložiště
-Azure poskytuje úložiště prostřednictvím vysoce škálovatelné a odolné služby úložiště, která poskytuje koncové body připojení. To znamená, že aplikace může přistupovat přímo ke službě úložiště. Služba úložiště zpracovává požadavky na příchozí úložiště efektivně a s transakční integritou.
+Azure poskytuje úložiště prostřednictvím vysoce škálovatelné a trvanlivé služby úložiště, která poskytuje koncové body připojení. To znamená, že aplikace může přistupovat ke službě úložiště přímo. Služba úložiště zpracovává příchozí požadavky na úložiště efektivně s transakční integritou.
 
-## <a name="next-steps"></a>Další postup
-Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure, najdete tady:
+## <a name="next-steps"></a>Další kroky
+Další informace o tom, co Microsoft dělá, aby zabezpečil infrastrukturu Azure, najdete v tématu:
 
-- [Zařízení, místní a fyzické zabezpečení Azure](physical-security.md)
-- [Komponenty a hranice informačních systémů Azure](infrastructure-components.md)
+- [Zařízení Azure, prostory a fyzické zabezpečení](physical-security.md)
+- [Součásti a hranice informačního systému Azure](infrastructure-components.md)
 - [Architektura sítě Azure](infrastructure-network.md)
 - [Produkční síť Azure](production-network.md)
 - [Funkce zabezpečení Azure SQL Database](infrastructure-sql.md)
-- [Provozní provoz a Správa Azure](infrastructure-operations.md)
+- [Produkční operace a správa Azure](infrastructure-operations.md)
 - [Monitorování infrastruktury Azure](infrastructure-monitoring.md)
 - [Integrita infrastruktury Azure](infrastructure-integrity.md)
 - [Ochrana zákaznických dat Azure](protection-customer-data.md)

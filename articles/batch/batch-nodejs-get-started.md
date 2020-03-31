@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
 ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023646"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
@@ -43,7 +43,7 @@ Klient Node.js nasadí dávkovou úlohu s přípravným úkolem (podrobně si ho
 
 > [!TIP]
 > Klient Node.js na uvedeném odkazu neobsahuje konkrétní kód umožňující nasadit ho jako aplikaci Azure Function App. Na následujících odkazech najdete pokyny k jejímu vytvoření.
-> - [Vytvoření aplikace Function App](../azure-functions/functions-create-first-azure-function.md)
+> - [Vytvoření aplikace funkcí](../azure-functions/functions-create-first-azure-function.md)
 > - [Vytvoření funkce pro aktivaci časovače](../azure-functions/functions-bindings-timer.md)
 >
 >
@@ -67,7 +67,7 @@ Tento příkaz nainstaluje nejnovější verzi sady azure-batch node SDK.
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Krok 2: Vytvoření účtu Azure Batch
 
-Můžete ho vytvořit z [Azure Portal](batch-account-create-portal.md) nebo z příkazového řádku ([POWERSHELL](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)).
+Můžete ji vytvořit z [portálu Azure](batch-account-create-portal.md) nebo z příkazového řádku[(PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)).
 
 Následující příkazy vytvoří účet prostřednictvím Azure CLI.
 

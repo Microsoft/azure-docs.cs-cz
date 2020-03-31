@@ -1,5 +1,5 @@
 ---
-title: Služba Media Services kvóty a omezení | Dokumentace Microsoftu
+title: Kvóty a omezení mediálních služeb | Dokumenty společnosti Microsoft
 description: Toto téma popisuje kvóty a omezení související se službou Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -15,26 +15,26 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: dc0d41457729bf5fd78adb88d683ab4fbe23a148
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60557136"
 ---
 # <a name="quotas-and-limitations"></a>Kvóty a omezení
 
-Tento článek popisuje kvóty a omezení související se službou Microsoft Azure Media Services.
+Tento článek popisuje kvóty a omezení související s Microsoft Azure Media Services.
 
 [!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
 
-## <a name="open-a-support-ticket-to-request-changes-to-the-default-quotas"></a>Otevření lístku podpory požádat o změny výchozích kvót
-Požádat o změny k dispozici výchozí kvóty, můžete otevřít lístek podpory. V žádosti o změny požadované kvóty a scénáře použití a oblastech je potřeba uveďte podrobné informace.
+## <a name="open-a-support-ticket-to-request-changes-to-the-default-quotas"></a>Otevření lístku podpory pro vyžádání změn výchozích kvót
+Chcete-li požádat o změny výchozích kvót, můžete otevřít lístek podpory. V požadavku uveďte podrobné informace o požadovaných změnách kvót, scénářích použití a požadovaných oblastech.
 
-### <a name="how-to-open-a-support-ticket"></a>Jak vytvořit lístek podpory
-Na webu Azure Portal, přejděte na [Nápověda a podpora](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Pokud nejste přihlášení k Azure, budete vyzváni k zadání přihlašovacích údajů.
+### <a name="how-to-open-a-support-ticket"></a>Jak otevřít lístek podpory
+Na webu Azure Portal přejděte na [Nápověda + podpora](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Pokud nejste přihlášeni k Azure, budete vyzváni k zadání přihlašovacích údajů.
 
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby

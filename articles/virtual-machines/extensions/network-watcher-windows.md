@@ -1,6 +1,6 @@
 ---
-title: Rozšíření pro virtuální počítače s agentem Azure Network Watcher pro Windows
-description: Nasaďte agenta Network Watcher na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
+title: Rozšíření virtuálního počítače o agenta Azure Network Watcher pro Windows
+description: Nasazení agenta sledování sítě ve virtuálním počítači se systémem Windows pomocí rozšíření virtuálního počítače
 services: virtual-machines-windows
 documentationcenter: ''
 author: gurudennis
@@ -15,34 +15,34 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
 ms.openlocfilehash: 998e160edce25b9d466a1db090abcefeb7870172
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073685"
 ---
-# <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Network Watcher agenta pro Windows
+# <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače agenta sledování sítě pro Windows
 
 ## <a name="overview"></a>Přehled
 
-[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) je služba pro sledování, diagnostiku a analýzu výkonu sítě, která umožňuje monitorování sítí Azure. Rozšíření virtuálního počítače Network Watcher agentem je požadavek na zachytávání síťového provozu na vyžádání a další pokročilé funkce na virtuálních počítačích Azure.
+[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) je služba pro monitorování, diagnostiku a analýzu výkonu sítě, která umožňuje monitorování sítí Azure. Rozšíření virtuálního počítače agenta sledování sítě je požadavek pro zachytávání síťového provozu na vyžádání a další pokročilé funkce na virtuálních počítačích Azure.
 
 
-Tento dokument podrobně popisuje podporované platformy a možnosti nasazení pro rozšíření virtuálního počítače Network Watcher agenta pro systém Windows. Instalace agenta neruší nebo vyžaduje restartování virtuálního počítače. Rozšíření můžete nasadit do virtuálních počítačů, které nasadíte. Pokud je virtuální počítač nasazený službou Azure, Projděte si dokumentaci ke službě, kde zjistíte, jestli umožňuje nainstalovat rozšíření na virtuálním počítači.
+Tento dokument podrobně popisuje podporované platformy a možnosti nasazení pro rozšíření virtuálního počítače Network Watcher Agent pro Windows. Instalace agenta nenaruší nebo nevyžaduje restartování virtuálního počítače. Rozšíření můžete nasadit do virtuálních počítačů, které nasadíte. Pokud se virtuální počítač nasadí službou Azure, zkontrolujte dokumentaci pro službu a zjistěte, zda umožňuje instalaci rozšíření ve virtuálním počítači.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření agenta Network Watcher pro systém Windows lze spustit pro systémy Windows Server 2008 R2, 2012, 2012 R2 a 2016 verze. Nano Server se v tuto chvíli nepodporuje.
+Rozšíření Agent sledování sítě pro Windows lze spustit ve verzích Windows Server 2008 R2, 2012, 2012 R2 a 2016. Nano Server není v současné době podporován.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Některé funkce agenta Network Watcher vyžadují, aby byl cílový virtuální počítač připojený k Internetu. Bez možnosti navázání odchozích připojení agent Network Watcher nebude moci nahrávat zachytávání paketů do svého účtu úložiště. Další podrobnosti najdete v [dokumentaci k Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md).
+Některé funkce agenta sledování sítě vyžadují připojení cílového virtuálního počítače k Internetu. Bez možnosti navázat odchozí připojení nebude agent sledovacího procesu sítě moci nahrát zachytávání paketů do vašeho účtu úložiště. Další podrobnosti naleznete v [dokumentaci k programu Sledování sítě](../../network-watcher/network-watcher-monitoring-overview.md).
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. Přípona nevyžaduje ani žádná nastavení zadaná uživatelem a spoléhá na její výchozí konfiguraci.
+Následující JSON zobrazuje schéma rozšíření agenta sledovacího modulu sítě. Rozšíření nevyžaduje, ani podporuje žádné uživatelem zadané nastavení a spoléhá na jeho výchozí konfiguraci.
 
 ```json
 {
@@ -64,21 +64,21 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota / příklad |
+| Name (Název) | Hodnota / Příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| publisher | Microsoft.Azure.NetworkWatcher |
+| vydavatel | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentWindows |
 | typeHandlerVersion | 1.4 |
 
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon Azure Resource Manager. Můžete použít schéma JSON popsané v předchozí části šablony Azure Resource Manager ke spuštění rozšíření agenta Network Watcher během nasazování šablony Azure Resource Manager.
+Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon Azure Resource Manager. Schéma JSON popsané v předchozí části v šabloně Správce prostředků Azure můžete použít ke spuštění rozšíření agenta sledování sítě během nasazení šablony Azure Resource Manager.
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
-Pomocí příkazu `Set-AzVMExtension` nasaďte rozšíření virtuálního počítače Network Watcher agenta do existujícího virtuálního počítače:
+Pomocí `Set-AzVMExtension` příkazu nasaďte rozšíření virtuálního počítače agenta sledování sítě do existujícího virtuálního počítače:
 
 ```powershell
 Set-AzVMExtension `
@@ -93,15 +93,15 @@ Set-AzVMExtension `
 
 ## <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření můžete načíst z Azure Portal a PowerShellu. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell:
+Data o stavu nasazení rozšíření můžete načíst z portálu Azure a PowerShellu. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell:
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
-Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujícím adresáři:
+Výstup spuštění rozšíření je zaznamenán do souborů nalezených v následujícím adresáři:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\
@@ -109,4 +109,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentW
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další nápovědu v jakémkoli bodě tohoto článku, můžete se přečtěte v dokumentaci k Network Watcher uživatelské příručce nebo se obraťte na odborníky na Azure na [fórech MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete odkazovat na dokumentaci network watcher user guide nebo se obraťte na odborníky Azure Azure [a zásobníku overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat podporu. Informace o používání podpory Azure načtete v [nejčastějších dotazech k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).

@@ -1,53 +1,53 @@
 ---
 title: Nasazení přidružení pro spravovanou aplikaci pomocí zásad
-description: Přečtěte si o nasazení přidružení pro spravovanou aplikaci pomocí Azure Policy služby.
+description: Přečtěte si o nasazení přidružení pro spravovanou aplikaci pomocí služby Azure Policy.
 author: msHich
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650939"
 ---
-# <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>Nasazení přidružení pro spravovanou aplikaci pomocí Azure Policy
+# <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>Nasazení přidružení pro spravovanou aplikaci pomocí zásad Azure
 
-Zásady Azure je možné použít k nasazení přidružení pro přidružení prostředků ke spravované aplikaci. V tomto článku jsme popsali předdefinované zásady, které nasazují přidružení a způsob, jakým můžete tyto zásady použít.
+Zásady Azure se můžou použít k nasazení přidružení k přidružení prostředků ke spravované aplikaci. V tomto článku popisujeme předdefinované zásady, které nasazuje přidružení a jak můžete použít tuto zásadu.
 
-## <a name="built-in-policy-to-deploy-associations"></a>Integrovaná zásada pro nasazení přidružení
+## <a name="built-in-policy-to-deploy-associations"></a>Integrované zásady pro nasazení přidružení
 
-Nasazení přidružení pro spravovanou aplikaci je předdefinovaná zásada, která se dá použít k nasazení přidružení pro přidružení prostředku ke spravované aplikaci. Zásada akceptuje tři parametry:
+Nasazení přidružení pro spravovanou aplikaci je předdefinovaná zásada, kterou lze použít k nasazení přidružení k přidružení prostředku ke spravované aplikaci. Zásady přijímá tři parametry:
 
-- ID spravované aplikace – toto ID je ID prostředku spravované aplikace, ke které se prostředky musí přidružit.
-- Typy prostředků, které se mají přidružit – tyto typy prostředků jsou seznam typů prostředků, které se mají přidružit ke spravované aplikaci. Pomocí stejných zásad můžete k spravované aplikaci přidružit více typů prostředků.
-- Předpona názvu přidružení – tento řetězec představuje předponu, která se má přidat do názvu prostředku přidružení, který se vytváří. Výchozí hodnota je "DeployedByPolicy".
+- ID spravované aplikace – toto ID je ID prostředku spravované aplikace, ke kterému musí být prostředky přidruženy.
+- Typy prostředků, které je třeba přidružit – Tyto typy prostředků jsou seznamem typů prostředků, které mají být přidruženy ke spravované aplikaci. Ke spravované aplikaci můžete přidružit více typů prostředků pomocí stejné zásady.
+- Předpona názvu přidružení - Tento řetězec je předponou, která má být přidána k názvu vytvářeného prostředku přidružení. Výchozí hodnota je "DeployedByPolicy".
 
-Tato zásada používá DeployIfNotExists vyhodnocení. Spustí se poté, co poskytovatel prostředků zpracuje požadavek na vytvoření nebo aktualizaci prostředku vybraného typu prostředku a vyhodnocení vrátilo stavový kód úspěchu. Potom se prostředek přidružení nasadí pomocí nasazení šablony.
-Další informace o přidruženích najdete v tématu věnovaném [registraci prostředků vlastních zprostředkovatelů Azure](../custom-providers/concepts-resource-onboarding.md)
+Zásada používá deployifnotexists hodnocení. Spustí se poté, co poskytovatel prostředků zpracoval požadavek na vytvoření nebo aktualizaci prostředků vybraných typů prostředků a vyhodnocení vrátilo stavový kód úspěchu. Poté se prostředek přidružení nasadí pomocí nasazení šablony.
+Další informace o přidružení, najdete [v tématu Azure vlastní zprostředkovatelé připojení prostředků](../custom-providers/concepts-resource-onboarding.md)
 
-## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>Jak používat vestavěnou zásadu nasazení přidružení 
+## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>Použití integrované zásady nasazení přidružení 
 
 ### <a name="prerequisites"></a>Požadavky
-Pokud spravovaná aplikace potřebuje k provedení akce oprávnění k předplatnému, nasazení zásad prostředku přidružení by nefungovalo bez udělení oprávnění.
+Pokud spravovaná aplikace potřebuje oprávnění k předplatnému k provedení akce, nasazení zásad prostředku přidružení by nefungovalo bez udělení oprávnění.
 
 ### <a name="policy-assignment"></a>Přiřazení zásad
-Pokud chcete použít předdefinovanou zásadu, vytvořte přiřazení zásady a přiřaďte přidružení nasazení pro zásadu spravované aplikace. Po úspěšném přiřazení zásady budou zásady identifikovat prostředky, které nedodržují předpisy, a nasazovat přidružení pro tyto prostředky.
+Chcete-li použít předdefinované zásady, vytvořte přiřazení zásad a přiřaďte přidružení nasazení pro zásady spravované aplikace. Po úspěšném přiřazení zásady bude zásada identifikovat nekompatibilní prostředky a nasadit přidružení pro tyto prostředky.
 
 ![Přiřazení předdefinovaných zásad](media/concepts-built-in-policy/assign-builtin-policy-managedapp.png)
 
 ## <a name="getting-help"></a>Získání nápovědy
 
-Pokud máte dotazy týkající se vývoje vlastních poskytovatelů prostředků Azure, zkuste je zeptatte na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobná otázka již mohla být zodpovězena, před odesláním proto nejprve proveďte kontrolu. Přidejte ```azure-custom-providers``` značek, abyste získali rychlou odezvu.
+Pokud máte dotazy týkající se vývoje vlastních zprostředkovatelů prostředků Azure, zkuste se jich zeptat na [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobná otázka již mohla být zodpovězena, takže nejprve zkontrolujte před odesláním. Přidejte ```azure-custom-providers``` značku, abyste získali rychlou odpověď!
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku se naučíte používat předdefinované zásady pro nasazení přidružení. Další informace najdete v těchto článcích:
+V tomto článku se dozvíte o použití předdefinované zásady k nasazení přidružení. Další informace najdete v těchto článcích:
 
-- [Koncepty: registrace prostředků vlastních zprostředkovatelů Azure](../custom-providers/concepts-resource-onboarding.md)
-- [Kurz: připojování prostředků s vlastními poskytovateli](../custom-providers/tutorial-resource-onboarding.md)
-- [Kurz: vytvoření vlastních akcí a prostředků v Azure](../custom-providers/tutorial-get-started-with-custom-providers.md)
-- [Rychlý Start: Vytvoření vlastního poskytovatele prostředků a nasazení vlastních prostředků](../custom-providers/create-custom-provider.md)
-- [Postupy: Přidání vlastních akcí do Azure REST API](../custom-providers/custom-providers-action-endpoint-how-to.md)
-- [Postupy: Přidání vlastních prostředků do Azure REST API](../custom-providers/custom-providers-resources-endpoint-how-to.md)
+- [Koncepty: Registrace prostředků vlastních poskytovatelů Azure](../custom-providers/concepts-resource-onboarding.md)
+- [Kurz: Připojení zdrojů s vlastními poskytovateli](../custom-providers/tutorial-resource-onboarding.md)
+- [Kurz: Vytváření vlastních akcí a prostředků v Azure](../custom-providers/tutorial-get-started-with-custom-providers.md)
+- [Úvodní příručka: Vytvoření vlastního zprostředkovatele prostředků a nasazení vlastních prostředků](../custom-providers/create-custom-provider.md)
+- [Postup: Přidání vlastních akcí do rozhraní API Azure REST](../custom-providers/custom-providers-action-endpoint-how-to.md)
+- [Postup: Přidání vlastních prostředků do rozhraní API Azure REST](../custom-providers/custom-providers-resources-endpoint-how-to.md)
