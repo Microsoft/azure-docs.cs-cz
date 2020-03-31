@@ -1,6 +1,6 @@
 ---
-title: Transformace dat pomocí aktivity podregistru – Azure
-description: Přečtěte si, jak můžete použít aktivitu podregistru v Azure Data Factory ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
+title: Transformace dat pomocí aktivity Hive – Azure
+description: Zjistěte, jak můžete použít aktivitu Hive v datové továrně Azure ke spuštění dotazů Hive v clusteru HDInsight na vyžádání nebo ve vlastním clusteru HDInsight.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703359"
 ---
-# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity podregistru v Azure Data Factory 
-> [!div class="op_single_selector" title1="Aktivity transformace"]
-> * [Aktivita v podregistru](data-factory-hive-activity.md) 
-> * [Aktivita prasete](data-factory-pig-activity.md)
+# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hive v Azure Data Factory 
+> [!div class="op_single_selector" title1="Transformační aktivity"]
+> * [Aktivita úlu](data-factory-hive-activity.md) 
+> * [Aktivita prasat](data-factory-pig-activity.md)
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
-> * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
-> * [Aktivita Sparku](data-factory-spark.md)
+> * [Aktivita streamování hadoopu](data-factory-hadoop-streaming-activity.md)
+> * [Aktivita jiskry](data-factory-spark.md)
 > * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
 > * [Aktivita Aktualizace prostředků služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
@@ -33,12 +33,12 @@ ms.locfileid: "74703359"
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [transformace dat pomocí aktivity podregistru v Data Factory](../transform-data-using-hadoop-hive.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte [si téma transformace dat pomocí aktivity Hive v datové továrně](../transform-data-using-hadoop-hive.md).
 
-Aktivita podregistru HDInsight v Data Factoryovém [kanálu](data-factory-create-pipelines.md) spouští dotazy na podregistry ve [vašem](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight založeném na systému Windows/Linux nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](data-factory-data-transformation-activities.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
+Aktivita HDInsight Hive v [kanálu](data-factory-create-pipelines.md) Data Factory provádí dotazy Hive na [vašem vlastním](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo na [vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) windows/linuxového clusteru HDInsight. Tento článek vychází z článku [aktivit transformace dat,](data-factory-data-transformation-activities.md) který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
 > [!NOTE] 
-> Pokud se Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: [Vytvoření prvního datového kanálu](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku. 
+> Pokud jste s Azure Data Factory teprve noví, přečtěte si [úvodní článek azure data factory](data-factory-introduction.md) a proveďte kurz: [Sestavte si první datový kanál](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -77,17 +77,17 @@ Aktivita podregistru HDInsight v Data Factoryovém [kanálu](data-factory-create
 | jméno |Název aktivity |Ano |
 | description |Text popisující, k čemu se aktivita používá |Ne |
 | type |HDinsightHive |Ano |
-| vztahují |Vstupy spotřebované aktivitou podregistru |Ne |
-| činnosti |Výstupy vytvářené aktivitou podregistru |Ano |
-| linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory |Ano |
-| . |Zadat vložený skript podregistru |Ne |
-| scriptPath |Uložte skript podregistru do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |Ne |
-| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro podregistr pomocí příkazu ' hiveconf '. |Ne |
+| Vstupy |Vstupy spotřebované aktivitou Hive |Ne |
+| Výstupy |Výstupy produkované činností Hive |Ano |
+| linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Datové továrně |Ano |
+| . |Zadání vlože skriptu Hive |Ne |
+| scriptPath |Uložte skript Hive do úložiště objektů blob Azure a zadejte cestu k souboru. Použijte vlastnost 'script' nebo 'scriptPath'. Obojí nelze použít společně. Název souboru rozlišuje malá a velká písmena. |Ne |
+| Definuje |Zadejte parametry jako dvojice klíč/hodnota pro odkazování ve skriptu Hive pomocí "hiveconf" |Ne |
 
-## <a name="example"></a>Příklad:
-Podívejme se na příklad analýzy herních protokolů, u kterých chcete zjistit čas strávený uživateli, kteří hry zahájili při hraní her, které vaše společnost spustila. 
+## <a name="example"></a>Příklad
+Podívejme se na příklad analýzy herních protokolů, kde chcete identifikovat čas strávený uživateli, kteří hrají hry spuštěné vaší společností. 
 
-Následující protokol je ukázkový protokol hry, který je oddělen čárkou (`,`) a obsahuje následující pole – ProfileID, SessionStart, Duration, SrcIPAddress a GameType.
+Následující protokol je ukázkový herní protokol, který`,`je čárka ( ) oddělena a obsahuje následující pole – ProfileID, SessionStart, Duration, SrcIPAddress a GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -97,7 +97,7 @@ Následující protokol je ukázkový protokol hry, který je oddělen čárkou 
 .....
 ```
 
-**Skript podregistru** pro zpracování těchto dat:
+**Skript Hive** pro zpracování těchto dat:
 
 ```
 DROP TABLE IF EXISTS HiveSampleIn; 
@@ -124,18 +124,18 @@ Select
 FROM HiveSampleIn Group by ProfileID
 ```
 
-Chcete-li spustit tento skript podregistru v kanálu Data Factory, je nutné provést následující akci:
+Chcete-li spustit tento skript Hive v kanálu Data Factory, musíte provést následující kroky
 
-1. Vytvořte propojenou službu pro registraci [vlastního výpočetního clusteru HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo nakonfigurujte [výpočetní cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Pojďme zavolat tuto propojenou službu "HDInsightLinkedService".
-2. Vytvořte [propojenou službu](data-factory-azure-blob-connector.md) , abyste nakonfigurovali připojení k úložišti objektů BLOB v Azure, která hostují data. Pojďme zavolat tuto propojenou službu "StorageLinkedService"
-3. Vytvořte datové [sady](data-factory-create-datasets.md) ukazující na vstupní a výstupní data. Pojďme zavolat vstupní datovou sadu "HiveSampleIn" a výstupní datovou sadu "HiveSampleOut".
-4. Zkopírujte dotaz na podregistr jako soubor do Azure Blob Storage nakonfigurovaný v kroku #2. Pokud se úložiště pro hostování dat liší od toho, který hostuje tento soubor dotazů, vytvořte samostatnou propojenou službu Azure Storage a v aktivitě na ni uveďte. Pomocí **ScriptPath** zadejte cestu k souboru dotazů na podregistr a **ScriptLinkedService** určete úložiště Azure, které obsahuje soubor skriptu. 
+1. Vytvořte propojenou službu pro [registraci vlastního výpočetního clusteru HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo nakonfigurujte [výpočetní cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Nazvěme tuto propojenou službu "HDInsightLinkedService".
+2. Vytvořte [propojenou službu](data-factory-azure-blob-connector.md) pro konfiguraci připojení k úložišti objektů Blob Azure, které jsou hostující data. Nazvěme tuto propojenou službu "StorageLinkedService"
+3. Vytvořte [datové sady](data-factory-create-datasets.md) směřující na vstupní a výstupní data. Zavolejte vstupní datovou sadu "HiveSampleIn" a výstupní datovou sadu "HiveSampleOut"
+4. Zkopírujte dotaz Hive jako soubor do úložiště objektů blob Azure nakonfigurovaného v kroku #2. Pokud se úložiště pro hostování dat liší od úložiště, které je hostitelem tohoto souboru dotazu, vytvořte samostatnou propojenou službu Azure Storage a podívejte se na ji v aktivitě. Pomocí **scriptPath** určete cestu k souboru dotazu podregistru a **skriptLinkedService** k určení úložiště Azure, které obsahuje soubor skriptu. 
    
    > [!NOTE]
-   > Do definice aktivity můžete také zadat vložený skript podregistru pomocí vlastnosti **skriptu** . Tento postup nedoporučujeme, protože všechny speciální znaky ve skriptu v dokumentu JSON musí být uvozené řídicím znakem a můžou způsobit problémy s laděním. Osvědčeným postupem je postupovat podle kroků #4.
+   > Můžete také zadat vsazený skript Hive v definici aktivity pomocí vlastnosti **script.** Tento přístup nedoporučujeme, protože všechny speciální znaky ve skriptu v dokumentu JSON musí být uvozeny a mohou způsobit problémy s laděním. Osvědčeným postupem je postupovat podle #4 kroků.
    > 
    > 
-5. Vytvořte kanál s aktivitou HDInsightHive. Aktivita zpracovává nebo transformuje data.
+5. Vytvořte kanál s hdinsighthive aktivitou. Aktivita zpracovává/transformuje data.
 
     ```JSON   
     {   
@@ -169,15 +169,15 @@ Chcete-li spustit tento skript podregistru v kanálu Data Factory, je nutné pro
         }
     }
     ```
-6. Nasaďte kanál. Podrobnosti najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . 
-7. Monitorujte kanál pomocí zobrazení pro monitorování a správu objektu pro vytváření dat. Podrobnosti najdete v článku [monitorování a Správa kanálů Data Factory](data-factory-monitor-manage-pipelines.md) . 
+6. Nasaďte potrubí. Podrobnosti [najdete v článku Vytváření kanálů.](data-factory-create-pipelines.md) 
+7. Sledujte kanál pomocí zobrazení monitorování a správy datové továrny. Podrobnosti najdete v článku [Monitorování a správa kanálů datové továrny.](data-factory-monitor-manage-pipelines.md) 
 
-## <a name="specifying-parameters-for-a-hive-script"></a>Určení parametrů pro skript podregistru
-V tomto příkladu jsou protokoly her ingestované každý den do Azure Blob Storage a jsou uložené ve složce s oddíly s datem a časem. Chcete parametrizovat skript podregistru a dynamicky předat umístění vstupní složky během běhu a také vytvořit výstup rozdělený do oddílů s datem a časem.
+## <a name="specifying-parameters-for-a-hive-script"></a>Určení parametrů pro skript Hive
+V tomto příkladu jsou protokoly her ingestovány denně do úložiště objektů blob Azure a jsou uloženy ve složce rozdělené podle data a času. Chcete parametrizovat skript Hive a dynamicky předat umístění vstupní složky za běhu a také vytvořit výstup rozdělený s datem a časem.
 
-Pokud chcete použít parametrizovaný skript podregistru, udělejte toto:
+Chcete-li použít parametrizovaný skript Hive, postupujte takto
 
-* Definujte parametry v **definuje**.
+* Definujte parametry v **definicích**.
 
     ```JSON  
     {
@@ -215,7 +215,7 @@ Pokud chcete použít parametrizovaný skript podregistru, udělejte toto:
       }
     }
     ```
-* V rámci skriptu pro podregistr, použijte parametr **$ {hiveconf: ParameterName}** . 
+* Ve skriptu Hive se podívejte na parametr pomocí **${hiveconf:parameterName}**. 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 
@@ -242,9 +242,9 @@ Pokud chcete použít parametrizovaný skript podregistru, udělejte toto:
     FROM HiveSampleIn Group by ProfileID
     ```
   ## <a name="see-also"></a>Viz také
-* [Aktivita prasete](data-factory-pig-activity.md)
+* [Aktivita prasat](data-factory-pig-activity.md)
 * [Aktivita MapReduce](data-factory-map-reduce.md)
-* [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
+* [Aktivita streamování hadoopu](data-factory-hadoop-streaming-activity.md)
 * [Vyvolání programů Spark](data-factory-spark.md)
 * [Vyvolání skriptů jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

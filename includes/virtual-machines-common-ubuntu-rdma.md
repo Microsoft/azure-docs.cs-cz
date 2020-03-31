@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d41b86b902d9a58b144e251e6922fbd95d459031
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67671209"
 ---
 1. Instalace dapl, rdmacm, ibverbs a mlx4
@@ -20,7 +20,7 @@ ms.locfileid: "67671209"
 
    ```
 
-2. V /etc/waagent.conf povolte RDMA pomocí uncommenting následující řádky konfigurace. Potřebujete kořenový přístup k úpravě tohoto souboru.
+2. V souboru /etc/waagent.conf povolte rdma zrušením komentování následujících konfiguračních řádků. K úpravě tohoto souboru potřebujete root přístup.
   
    ```
    OS.EnableRDMA=y
@@ -28,7 +28,7 @@ ms.locfileid: "67671209"
    OS.UpdateRdmaDriver=y
    ```
 
-3. Přidat nebo změnit následující nastavení paměti v KB /etc/security/limits.conf souboru. Potřebujete kořenový přístup k úpravě tohoto souboru. Pro účely testování můžete nastavit memlock na neomezený. Například: `<User or group name>   hard    memlock   unlimited`.
+3. Přidejte nebo změňte následující nastavení paměti v kb v souboru /etc/security/limits.conf. K úpravě tohoto souboru potřebujete root přístup. Pro účely testování můžete nastavit memlock na neomezené. Například: `<User or group name>   hard    memlock   unlimited`.
 
    ```
    <User or group name> hard    memlock <memory required for your application in KB>
@@ -36,17 +36,17 @@ ms.locfileid: "67671209"
    <User or group name> soft    memlock <memory required for your application in KB>
    ```
   
-4. Nainstalujte knihovnu Intel MPI. Buď [zakoupit a stáhnout](https://software.intel.com/intel-mpi-library/) knihovnu z Intel nebo ke stažení [bezplatné zkušební verze](https://registrationcenter.intel.com/en/forms/?productid=1740).
+4. Nainstalujte knihovnu Intel MPI. Buď [koupit a stáhnout](https://software.intel.com/intel-mpi-library/) knihovnu od společnosti Intel nebo stáhnout [bezplatnou zkušební verzi](https://registrationcenter.intel.com/en/forms/?productid=1740).
 
    ```bash
    wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
    ```
  
-   Jsou podporovány pouze moduly runtime 5.x Intel MPI.
+   Podporovány jsou pouze moduly runtimes Intel MPI 5.x.
  
-   Postup instalace najdete v tématu [Intel MPI knihovny instalační příručce](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
+   Kroky instalace naleznete v [Průvodci instalací knihovny Intel MPI](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
 
-5. Povolte ptrace pro nekořenovými procesy mimo ladicí program (třeba pro nejnovější verze Intel MPI).
+5. Povolte ptrace pro nekořenové procesy bez ladicího programu (potřebné pro nejnovější verze technologie Intel MPI).
  
    ```bash
    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope

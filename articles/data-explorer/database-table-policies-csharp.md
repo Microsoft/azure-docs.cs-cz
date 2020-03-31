@@ -1,6 +1,6 @@
 ---
-title: Vytvoření zásad pomocí sady Azure Průzkumník dat C# SDK
-description: V tomto článku se naučíte, jak vytvářet zásady pomocí C#.
+title: Vytváření zásad pomocí sady Azure Data Explorer C# SDK
+description: V tomto článku se dozvíte, jak vytvořit zásady pomocí jazyka C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,39 +8,39 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667294"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Vytvoření zásad databáze a tabulek pro Azure Průzkumník dat pomocíC#
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Vytvoření zásad databáze a tabulek pro Azure Data Explorer pomocí C #
 
 > [!div class="op_single_selector"]
-> * [C#](database-table-policies-csharp.md)
+> * [C #](database-table-policies-csharp.md)
 > * [Python](database-table-policies-python.md)
 >
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku vytvoříte zásady databáze a tabulek pro Azure Průzkumník dat pomocí C#.
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku vytvoříte zásady databáze a tabulky pro Azure Data Explorer pomocí C#.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Visual Studio 2019. Pokud nemáte Visual Studio 2019, můžete si stáhnout a použít *bezplatnou* [visual Studio Community 2019](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio vybrat možnost **vývoj pro Azure** .
-* Předplatné Azure. Pokud potřebujete, můžete si před zahájením vytvořit [bezplatný účet Azure](https://azure.microsoft.com/free/) .
+* Visual Studio 2019. Pokud visual studio 2019 nemáte, můžete si stáhnout a použít *bezplatnou* [komunitu Visual Studio 2019](https://www.visualstudio.com/downloads/). Nezapomeňte vybrat **vývoj Azure** během nastavení Visual Studia.
+* Předplatné Azure. Pokud potřebujete, můžete si vytvořit [bezplatný účet Azure,](https://azure.microsoft.com/free/) než začnete.
 * [Testovací cluster a databáze](create-cluster-database-csharp.md).
-* [Testovací tabulka](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* [Testovací tabulka](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 
-## <a name="install-c-nuget"></a>Nainstalovat C# NuGet
+## <a name="install-c-nuget"></a>Instalace jazyka C# NuGet
 
-* Nainstalujte [balíček NuGet pro Azure Průzkumník dat (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Nainstalujte [balíček NuGet Microsoft. Azure. Kusto. data. NETStandard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Volitelné, pro změnu zásad tabulky.)
-* Pro ověřování nainstalujte [balíček NuGet Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
+* Nainstalujte [balíček NuGet aplikace Azure Data Explorer (Kusto).](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
+* Nainstalujte [balíček Microsoft.Azure.Kusto.Data.NETStandard NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Volitelné, pro zásady přebalovací tabulky.)
+* Nainstalujte [balíček Microsoft.IdentityModel.Clients.ActiveDirectory NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)pro ověření.
 
-## <a name="authentication"></a>Ověření
-Chcete-li spustit příklady v tomto článku, potřebujete aplikaci Azure Active Directory (Azure AD) a instanční objekt, který má přístup k prostředkům. Můžete použít stejnou aplikaci Azure AD pro ověřování z [testovacího clusteru a databáze](create-cluster-database-csharp.md#authentication). Pokud chcete použít jinou aplikaci Azure AD, přečtěte si téma [Vytvoření aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) pro vytvoření bezplatné aplikace Azure AD a přidání přiřazení role v oboru předplatného. Tento článek také ukazuje, jak získat `Directory (tenant) ID`, `Application ID`a `Client secret`. Může být nutné přidat novou aplikaci Azure AD jako objekt zabezpečení v databázi. Další informace najdete v tématu [Správa oprávnění pro databázi Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).
+## <a name="authentication"></a>Ověřování
+Chcete-li spustit příklady v tomto článku, budete potřebovat azure active directory (Azure AD) aplikace a instanční objekt, který může přistupovat k prostředkům. Můžete použít stejnou aplikaci Azure AD pro ověřování z [testovacího clusteru a databáze](create-cluster-database-csharp.md#authentication). Pokud chcete použít jinou aplikaci Azure AD, najdete [v tématu vytvoření aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) k vytvoření bezplatné aplikace Azure AD a přidání přiřazení role v oboru předplatného. Tento článek také `Directory (tenant) ID`ukazuje, `Application ID`jak `Client secret`získat , a . Možná budete muset přidat novou aplikaci Azure AD jako hlavní v databázi. Další informace najdete [v tématu Správa oprávnění databáze Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).
 
 ## <a name="alter-database-retention-policy"></a>Změnit zásady uchovávání informací databáze
-Nastaví zásady uchovávání informací s dobou tlumeného odstranění 10 dní.
+Nastaví zásady uchovávání informací s 10denním obdobím obnovitelného odstranění.
     
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -65,8 +65,8 @@ var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(softDeletePeriod: TimeSpan.FromDays(10)));
 ```
 
-## <a name="alter-database-cache-policy"></a>Změnit zásady mezipaměti databáze
-Nastaví zásady mezipaměti pro databázi. Předchozí pět dní dat bude v clusteru SSD.
+## <a name="alter-database-cache-policy"></a>Změnit zásadu mezipaměti databáze
+Nastaví zásadu mezipaměti pro databázi. Předchozích pět dní dat bude na ssd disk clusteru.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -91,8 +91,8 @@ var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(hotCachePeriod: TimeSpan.FromDays(5)));
 ```
 
-## <a name="alter-table-cache-policy"></a>Změnit zásady mezipaměti tabulek
-Nastaví zásady mezipaměti pro tabulku. Předchozí pět dní dat bude v clusteru SSD.
+## <a name="alter-table-cache-policy"></a>Změnit zásadu mezipaměti tabulky
+Nastaví zásadu mezipaměti pro tabulku. Předchozích pět dní dat bude na ssd disk clusteru.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -124,7 +124,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ```
 
 ## <a name="add-a-new-principal-for-the-database"></a>Přidání nového objektu zabezpečení pro databázi
-Přidá novou aplikaci Azure AD jako hlavní správce databáze.
+Přidá novou aplikaci Azure AD jako objekt zabezpečení správce pro databázi.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID

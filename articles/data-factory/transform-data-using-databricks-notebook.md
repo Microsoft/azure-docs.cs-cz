@@ -1,5 +1,5 @@
 ---
-title: Spuštění poznámkového bloku datacihly s aktivitou
+title: Spuštění poznámkového bloku Databricks s aktivitou
 description: Zjistěte, jak můžete pomocí aktivity poznámkového bloku Databricks v datové továrně Azure spustit poznámkový blok Databricks pro cluster úloh Databricks.
 services: data-factory
 ms.service: data-factory
@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: 39b8745b65eccd8e4d1b5986490e30be443ad656
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74913504"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Spuštění poznámkového bloku Databricks s využitím aktivity poznámkového bloku Databricks ve službě Azure Data Factory
@@ -32,13 +32,13 @@ V tomto kurzu provedete následující kroky:
 
   - Monitorování spuštění kanálu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/ingest-prepare-and-transform-using-azure-databricks-and-data-factory/player]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
   - **Pracovní prostor Azure Databricks**. [Vytvořte pracovní prostor Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) nebo použijte existující. V pracovním prostoru Azure Databricks vytvoříte poznámkový blok Python. Pak poznámkový blok spustíte a pomocí služby Azure Data Factory do něj předáte parametry.
 
@@ -52,7 +52,7 @@ Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
 1.  V podokně **Nová datová továrna** zadejte do pole **Název** text **ADFTutorialDataFactory**.
 
-    Název datové továrny Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny. (Použijte třeba název **\<vaše_jméno\>ADFTutorialDataFactory**). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](https://docs.microsoft.com/azure/data-factory/naming-rules).
+    Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny. (Například použijte ** \<název\>ADFTutorialDataFactory**). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](https://docs.microsoft.com/azure/data-factory/naming-rules).
 
     ![Zadání názvu nové datové továrny](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -60,18 +60,18 @@ Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
 1.  U položky **Skupina prostředků** proveďte jeden z následujících kroků:
     
-    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
+    - V rozevíracím seznamu vyberte **Použít existující** a vyberte existující skupinu prostředků.
     
     - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.
 
-    Některé kroky v tomto rychlém startu vychází z předpokladu, že pro skupinu prostředků použijete název **ADFTutorialResourceGroup**. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+    Některé kroky v tomto rychlém startu předpokládají, že pro skupinu prostředků použijete název **ADFTutorialResourceGroup.** Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
-1.  Jako **Verzi** vyberte **V2**.
+1.  V poli **Verze** vyberte **V2**.
 
-1.  Jako **Umístění** vyberte umístění datové továrny.
+1.  V poli **Umístění** vyberte umístění pro datovou továrnu.
 
-    Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
-1.  Vyberte **Create** (Vytvořit).
+    Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
+1.  Vyberte **Vytvořit**.
 
 
 1.  Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
@@ -98,7 +98,7 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
 1.  V okně **Nová propojená služba** proveďte následující kroky:
     
-    1.  Do pole **Název** zadejte ***AzureDatabricks\_LinkedService***.
+    1.  V **případě Název**zadejte ***AzureDatabricks LinkedService.\_***
     
     1.  Vyberte příslušný **Pracovní prostor Databricks**, ve kterém poznámkový blok spustíte.
 
@@ -108,19 +108,19 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
     1.  **Přístupový token** vygenerujte z pracovního prostoru Azure Databricks. Postup najdete [tady](https://docs.databricks.com/api/latest/authentication.html#generate-token).
 
-    1.  V případě **verze clusteru**vyberte **4,2** (s Apache Spark 2.3.1, Scala 2,11).
+    1.  Pro **verzi clusteru**vyberte **4.2** (s Apache Spark 2.3.1, Scala 2.11)
 
     1.  V části **Typ uzlu clusteru** vyberte **Standardní\_D3\_v2** pod kategorií **Pro obecné účely (HDD)** pro tento kurz. 
     
     1.  V části **Pracovní procesy** zadejte hodnotu **2**.
     
-    1.  Vyberte **Dokončit**.
+    1.  Vybrat **dokončit**
 
         ![Dokončení vytváření propojené služby](media/transform-data-using-databricks-notebook/new-databricks-linkedservice.png)
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1.  Vyberte tlačítko **+** (plus) a potom v nabídce vyberte **Kanál**.
+1.  Vyberte **+** tlačítko (plus) a v nabídce vyberte **Pipeline.**
 
     ![Tlačítka pro vytvoření nového kanálu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
@@ -134,13 +134,13 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
     ![Přetažení poznámkového bloku na plochu návrháře](media/transform-data-using-databricks-notebook/new-adf-pipeline.png)
 
-1.  Ve vlastnostech v dolní části okna aktivity **Poznámkový blok** **Databricks** proveďte následující kroky:
+1.  Ve vlastnostech okna **aktivity databricks** **poznámkového bloku** v dolní části proveďte následující kroky:
 
     a. Přepněte na kartu **Azure Databricks**.
 
     b. Vyberte službu **AzureDatabricks\_LinkedService** (tu jste vytvořili v předchozím kroku).
 
-    c. Přepněte na kartu **Nastavení**.
+    c. Přepnutí na kartu **Nastavení**
 
     c. Přejděte na **cestu k poznámkovému bloku** Databricks. Teď vytvoříme poznámkový blok a zadáme cestu. Cestu k poznámkovému bloku získáte pomocí následujících několika kroků.
 
@@ -150,7 +150,7 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
           ![Vytvoření nové složky](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Vytvořte nový Poznámkový blok](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), zavolejte ho **MyNotebook** ve složce **adftutorial** , klikněte na **vytvořit.**
+       1. [Vytvořte nový poznámkový blok](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), nazvěme ho **mynotebook** pod **adftutorial** folder, klikněte na **Vytvořit.**
 
           ![Vytvoření nového poznámkového bloku](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -177,9 +177,9 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
        ![Přidání parametru](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Pojmenujte parametr jako **vstup** a zadejte hodnotu jako Expression **\@Pipeline (). Parameters. Name**.
+    b.  Pojmenujte parametr jako **vstup** a zadejte hodnotu jako kanál ** \@výrazu().parameters.name**.
 
-1.  Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Okno ověřování zavřete výběrem tlačítka **\>\>** (šipka doprava).
+1.  Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Ověřovací okno zavřete vyberte ** \> ** tlačítko (šipka vpravo).
 
     ![Ověření kanálu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image18.png)
 
@@ -193,13 +193,13 @@ Vyberte na panelu nástrojů **Aktivační událost** a potom vyberte **Aktivova
 
 ![Výběr příkazu Aktivovat](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image20.png)
 
-Dialogové okno **Spuštění kanálu** vyzve k zadání parametru **name** (název). Jako parametr zde použijte **/path/filename**. Klikněte na **Dokončit**.
+Dialogové okno **Spuštění kanálu** vyzve k zadání parametru **name** (název). Jako parametr zde použijte **/path/filename**. Klikněte na **Dokončit.**
 
 ![Zadání hodnoty pro parametr name (název)](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image21.png)
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
-1.  Přepněte na kartu **monitorování** . Ověřte, že se zobrazí spuštění kanálu. Vytvoření clusteru úloh Databricks, ve kterém se poznámkový blok spustí, trvá přibližně 5 až 8 minut.
+1.  Přepněte na kartu **Monitor.** Zkontrolujte, zda se uvástováno je spuštění kanálu. Vytvoření clusteru úloh Databricks, ve kterém se poznámkový blok spustí, trvá přibližně 5 až 8 minut.
 
     ![Monitorování kanálu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 

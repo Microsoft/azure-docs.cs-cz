@@ -1,6 +1,6 @@
 ---
-title: ZASTARALÉ Správa clusteru Azure Kubernetes s webovým uživatelským rozhraním
-description: Použití webového uživatelského rozhraní Kubernetes v Azure Container Service
+title: (ZASTARALÉ) Správa clusteru Azure Kubernetes pomocí webového uživatelského uživatelského panelu
+description: Použití webového uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského
 author: bburns
 ms.service: container-service
 ms.topic: conceptual
@@ -8,40 +8,40 @@ ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371133"
 ---
-# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>ZASTARALÉ Použití webového uživatelského rozhraní Kubernetes s Azure Container Service
+# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(ZASTARALÉ) Používání webového uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského uživatelského
 
 > [!TIP]
-> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v tématu [přístup k webovému řídicímu panelu Kubernetes ve službě Azure Kubernetes Service (AKS)](../../aks/kubernetes-dashboard.md).
+> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete [v článku Přístup k webovému řídicímu panelu Kubernetes ve službě Azure Kubernetes Service (AKS).](../../aks/kubernetes-dashboard.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Tento návod předpokládá, že jste [vytvořili cluster Kubernetes pomocí Azure Container Service](container-service-kubernetes-walkthrough.md).
+Tento návod předpokládá, že jste [vytvořili cluster Kubernetes pomocí služby Azure Container Service](container-service-kubernetes-walkthrough.md).
 
 
-Také předpokládá, že máte nainstalované nástroje Azure CLI a `kubectl`.
+Také předpokládá, že máte nainstalované `kubectl` azure cli a nástroje.
 
-Můžete otestovat, jestli máte nainstalovaný nástroj `az`, a to spuštěním:
+Můžete otestovat, zda `az` máte nástroj nainstalován spuštěním:
 
 ```azurecli
 az --version
 ```
 
-Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azure-cli#installation)najdete pokyny.
+Pokud nástroj nemáte nainstalovaný, `az` jsou [zde](https://github.com/azure/azure-cli#installation)pokyny .
 
-Můžete otestovat, jestli máte nainstalovaný nástroj `kubectl`, a to spuštěním:
+Můžete otestovat, zda `kubectl` máte nástroj nainstalován spuštěním:
 
 ```console
 kubectl version
 ```
 
-Pokud nemáte nainstalované `kubectl`, můžete spustit:
+Pokud nemáte `kubectl` nainstalovaný, můžete spustit:
 
 ```azurecli
 az acs kubernetes install-cli
@@ -49,83 +49,83 @@ az acs kubernetes install-cli
 
 ## <a name="overview"></a>Přehled
 
-### <a name="connect-to-the-web-ui"></a>Připojení k webovému uživatelskému rozhraní
-Webové uživatelské rozhraní Kubernetes můžete spustit spuštěním:
+### <a name="connect-to-the-web-ui"></a>Připojení k webovému uživatelskému uživatelskému uživatelskému
+Webové uživatelské uzla Kubernetes můžete spustit spuštěním:
 
 ```azurecli
 az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
-Mělo by se otevřít webový prohlížeč nakonfigurovaný tak, aby komunikoval s zabezpečeným proxy serverem, který připojuje váš místní počítač k webovému uživatelskému rozhraní Kubernetes.
+To by mělo otevřít webový prohlížeč nakonfigurován tak, aby mluvit s bezpečným proxy spojující místní počítač k webovému uživatelskému uživatelského prostředí Kubernetes.
 
 ### <a name="create-and-expose-a-service"></a>Vytvoření a vystavení služby
-1. Ve webovém uživatelském rozhraní Kubernetes klikněte na tlačítko **vytvořit** v pravém horním rohu okna.
+1. Ve webovém uživatelském okně Kubernetes klikněte v pravém horním okně na **tlačítko Vytvořit.**
 
-    ![Kubernetes vytvořit uživatelské rozhraní](./media/container-service-kubernetes-ui/create.png)
+    ![Kubernetes vytvořit ui](./media/container-service-kubernetes-ui/create.png)
 
-    Otevře se dialogové okno, kde můžete začít vytvářet aplikace.
+    Otevře se dialogové okno, ve kterém můžete začít vytvářet aplikaci.
 
-2. Dejte mu název `hello-nginx`. Použijte [kontejner`nginx` z Docker](https://hub.docker.com/_/nginx/) a nasaďte tři repliky této webové služby.
+2. Dejte mu `hello-nginx`jméno . Použijte [ `nginx` kontejner z Dockeru](https://hub.docker.com/_/nginx/) a nasaďte tři repliky této webové služby.
 
-    ![Dialog vytvořit Kubernetes pod](./media/container-service-kubernetes-ui/nginx.png)
+    ![Dialogové okno Vytvořit kubernetes pod](./media/container-service-kubernetes-ui/nginx.png)
 
-3. V části **Služba**vyberte **externí** a zadejte port 80.
+3. V části **Služba**vyberte **Externí** a zadejte port 80.
 
-    Toto nastavení vyrovnává zatížení provozu do tří replik.
+    Toto nastavení zatížení vyvažuje provoz na tři repliky.
 
-    ![Dialog vytvořit službu Kubernetes](./media/container-service-kubernetes-ui/service.png)
+    ![Dialogové okno Vytvoření služby Kubernetes](./media/container-service-kubernetes-ui/service.png)
 
-4. Kliknutím na **nasadit** nasaďte tyto kontejnery a služby.
+4. Kliknutím na **Nasadit** tyto kontejnery a služby nasadíte.
 
     ![Nasazení Kubernetes](./media/container-service-kubernetes-ui/deploy.png)
 
 ### <a name="view-your-containers"></a>Zobrazení kontejnerů
-Po kliknutí na **nasadit**se v uživatelském rozhraní zobrazí zobrazení vaší služby při nasazení:
+Po klepnutí na tlačítko **Nasadit**se v ui zobrazí zobrazení vaší služby při jeho nasazení:
 
 ![Stav Kubernetes](./media/container-service-kubernetes-ui/status.png)
 
-Stav každého objektu Kubernetes můžete zobrazit v kruhu na levé straně uživatelského rozhraní v části **lusky**. Pokud se jedná o částečně plný kroužek, je objekt stále nasazen. Když je objekt plně nasazený, zobrazí se zelená značka zaškrtnutí:
+Stav každého Objektu Kubernetes můžete vidět v kruhu na levé straně ui **pods, pods**. Pokud je částečně plný kruh, objekt je stále nasazuje. Když je objekt plně nasazen, zobrazí zelenou značku zaškrtnutí:
 
-![Nasazené Kubernetes](./media/container-service-kubernetes-ui/deployed.png)
+![Kubernetes nasazen](./media/container-service-kubernetes-ui/deployed.png)
 
-Jakmile bude vše spuštěné, klikněte na jednu z lusků a zobrazte si podrobnosti o běžící webové službě.
+Jakmile je vše spuštěno, klikněte na jeden z podů a podívejte se na podrobnosti o spuštěné webové službě.
 
-![Kubernetes lusky](./media/container-service-kubernetes-ui/pods.png)
+![Kubernetes Lusky](./media/container-service-kubernetes-ui/pods.png)
 
-V zobrazení **lusky** můžete zobrazit informace o kontejnerech v poli pod a také prostředky procesoru a paměti, které tyto kontejnery používají:
+V zobrazení **Pods** můžete zobrazit informace o kontejnerech v podu, stejně jako cpu a paměťové prostředky používané těmito kontejnery:
 
-![Prostředky Kubernetes](./media/container-service-kubernetes-ui/resources.png)
+![Zdroje společnosti Kubernetes](./media/container-service-kubernetes-ui/resources.png)
 
-Pokud prostředky nevidíte, možná budete muset několik minut počkat, než se data monitorování rozšíří.
+Pokud nevidíte prostředky, budete muset počkat několik minut pro data monitorování k šíření.
 
-Pokud chcete zobrazit protokoly pro svůj kontejner, klikněte na **Zobrazit protokoly**.
+Chcete-li zobrazit protokoly pro kontejner, klepněte na tlačítko **Zobrazit protokoly**.
 
-![Protokoly Kubernetes](./media/container-service-kubernetes-ui/logs.png)
+![Kubernetes protokoly](./media/container-service-kubernetes-ui/logs.png)
 
-### <a name="viewing-your-service"></a>Zobrazení vaší služby
-Kromě spuštění kontejnerů vytvořil uživatelské rozhraní Kubernetes externí `Service`, který zřídí Nástroj pro vyrovnávání zatížení k přenosu provozu do kontejnerů ve vašem clusteru.
+### <a name="viewing-your-service"></a>Zobrazení služby
+Kromě spuštění kontejnerů vytvořilo unové i. kubernetes externí, `Service` které zřizovat eviduje vyrovnávání zatížení, aby přenosy do kontejnerů ve vašem clusteru.
 
-V levém navigačním podokně klikněte na **služby** , aby se zobrazily všechny služby (měla by existovat jenom jedna).
+V levém navigačním podokně klikněte na **Služby,** chcete-li zobrazit všechny služby (měla by být pouze jedna).
 
 ![Služby Kubernetes](./media/container-service-kubernetes-ui/service-deployed.png)
 
-V tomto zobrazení by se měl zobrazit externí koncový bod (IP adresa), který byl přidělen vaší službě.
-Pokud kliknete na tuto IP adresu, měli byste vidět, že váš kontejner Nginx běží za nástrojem pro vyrovnávání zatížení.
+V tomto zobrazení byste měli vidět externí koncový bod (IP adresa), který byl přidělen vaší službě.
+Pokud kliknete na tuto IP adresu, měli byste vidět váš kontejner Nginx běží za vyrovnávání zatížení.
 
-![zobrazení Nginx](./media/container-service-kubernetes-ui/nginx-page.png)
+![nginx zobrazení](./media/container-service-kubernetes-ui/nginx-page.png)
 
-### <a name="resizing-your-service"></a>Změna velikosti vaší služby
-Kromě zobrazení objektů v uživatelském rozhraní můžete upravit a aktualizovat objekty rozhraní API Kubernetes.
+### <a name="resizing-your-service"></a>Změna velikosti služby
+Kromě zobrazení objektů v ui můžete upravovat a aktualizovat objekty rozhraní API Kubernetes.
 
-Nejdřív v levém navigačním podokně klikněte na **nasazení** , abyste viděli nasazení služby.
+Nejprve klikněte na **Nasazení** v levém navigačním podokně a podívejte se na nasazení vaší služby.
 
-Až budete v tomto zobrazení, klikněte na sadu replik a potom v horním navigačním panelu klikněte na **Upravit** :
+Po zobrazení klikněte na sadu replik a potom klikněte na **upravit** na horním navigačním panelu:
 
-![Kubernetes úpravy](./media/container-service-kubernetes-ui/edit.png)
+![Kubernetes Upravit](./media/container-service-kubernetes-ui/edit.png)
 
-Upravte pole `spec.replicas`, které chcete `2`, a klikněte na tlačítko **aktualizovat**.
+Upravte `spec.replicas` pole, `2`které má být , a klepněte na tlačítko **Aktualizovat**.
 
-To způsobí, že počet replik může být mezi dvěma odstraněním jednoho z vašich lusků.
+To způsobí, že počet replik klesnout na dvě odstraněním jednoho z podů.
 
  
 

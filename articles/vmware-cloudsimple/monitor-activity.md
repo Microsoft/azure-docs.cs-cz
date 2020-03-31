@@ -1,7 +1,7 @@
 ---
-title: Řešení Azure VMware (AVS) – monitorování aktivity privátního cloudu služby AVS
-description: V této části najdete popis dostupných informací o aktivitách v řešení Azure VMware pomocí služby AVS, včetně výstrah, událostí, úloh a auditu.
-titleSuffix: Azure VMware Solutions (AVS)
+title: Sledování aktivity privátního cloudu
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Popisuje informace dostupné o aktivitách v řešení Azure VMware podle cloudového jednoduchého prostředí, včetně výstrah, událostí, úkolů a auditu.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/13/2019
@@ -9,108 +9,108 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6fd1b92db62ab7cc9edd47c601910b8148bb95
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019668"
 ---
-# <a name="monitor-vmware-solutions-avs-activity"></a>Monitorování aktivity řešení VMware (AVS)
+# <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Monitorování řešení VMware podle aktivity CloudSimple
 
-Protokoly aktivit služby AVS poskytují přehled o operacích provedených na portálu AVS. Seznam obsahuje výstrahy, události, úlohy a audit. Pomocí protokolů aktivit můžete určit, kdo a jaké operace byly provedeny. Protokoly aktivit nezahrnují žádné operace čtení provedené uživatelem.
+CloudSimple protokoly aktivit poskytují přehled o operacích provedených na portálu CloudSimple.  Seznam obsahuje výstrahy, události, úkoly a audit.  Protokoly aktivit slouží k určení, kdo, kdy a jaké operace byly provedeny.  Protokoly aktivit neobsahují žádné operace čtení provedené uživatelem.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
 
-## <a name="access-the-avs-portal"></a>Přístup k portálu pro funkci AVS
+## <a name="access-the-cloudsimple-portal"></a>Přístup k portálu CloudSimple
 
-Přístup k [portálu AVS](access-cloudsimple-portal.md).
+Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
 ## <a name="activity-information"></a>Informace o aktivitě
 
-Chcete-li získat přístup ke stránkám aktivity, vyberte v postranní nabídce položku **aktivita** .
+Chcete-li získat přístup ke stránkám Aktivita, vyberte v boční nabídce položku **Aktivita.**
 
 ![Přehled stránky aktivity](media/activity-page-overview.png)
 
-Chcete-li zobrazit podrobnosti o jakékoli aktivitě na stránce aktivity, vyberte aktivitu. Otevře se panel podrobností na pravé straně. Akce na panelu závisí na typu aktivity. Kliknutím na **X** zavřete panel.
+Chcete-li zobrazit podrobnosti o některé z aktivit na stránce aktivity, vyberte aktivitu. Vpravo se otevře panel podrobností. Akce v panelu závisí na typu aktivity. Klepnutím na **x** panel zavřete.
 
-Kliknutím na záhlaví sloupce seřadíte zobrazení. Můžete filtrovat sloupce pro konkrétní hodnoty, které chcete zobrazit. Kliknutím na ikonu **Stáhnout jako sdílený svazek clusteru** si Stáhněte sestavu aktivity.
+Klikněte na záhlaví sloupce pro seřazení displeje.  Sloupce můžete filtrovat pro konkrétní hodnoty, které chcete zobrazit.  Stáhněte si zprávu o aktivitách kliknutím na **ikonu Stáhnout jako CSV.**
 
 ## <a name="alerts"></a>Výstrahy
 
-Výstrahy jsou oznámením významné aktivity ve vašem prostředí služby AVS. Výstrahy obsahují události, které mají vliv na fakturaci nebo přístup uživatelů.
+Výstrahy jsou oznámení o jakékoli významné aktivity ve vašem clouduSimple prostředí.  Výstrahy zahrnují události, které ovlivňují fakturaci nebo přístup uživatelů.
 
-Pokud chcete výstrahy potvrdit a odebrat je ze seznamu, vyberte jednu nebo víc ze seznamu a klikněte na **Potvrdit**.
+Chcete-li potvrdit výstrahy a odebrat je ze seznamu, vyberte jednu nebo více ze seznamu a klepněte na tlačítko **Potvrdit**.
 
-Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
+Následující sloupce informací jsou k dispozici pro výstrahy. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Column | Popis |
+| Sloupec | Popis |
 ------------ | ------------- |
-| Typ výstrahy | Kategorie výstrahy|
+| Typ výstrahy | Kategorie výstrahy.|
 | Time | Čas, kdy došlo k upozornění. |
-| Závažnost | Význam výstrahy.|
-| Název prostředku | Název přiřazený k prostředku, například název privátního cloudu pro funkci AVS |
-| Typ prostředku | Kategorie prostředku: privátní cloud AVS, cloudový stojan. |
-| ID prostředku | Identifikátor prostředku |
-| Popis | Popis, který výstrahu aktivoval. |
-| Potvrzení | Označení, zda je výstraha potvrzena. |
+| Severity | Význam výstrahy.|
+| Název prostředku | Název přiřazený prostředku, například název privátního cloudu. |
+| Typ prostředku | Kategorie zdrojů: Privátní cloud, Cloud Rack. |
+| ID prostředku | Identifikátor prostředku. |
+| Popis | Popis toho, co spustilo výstrahu. |
+| Potvrzeno | Údaj o tom, zda je záznam potvrzen. |
 
-## <a name="events"></a>Akce
+## <a name="events"></a>Události
 
-Události zobrazují aktivitu uživatelů a systému na portálu pro funkci AVS. Na stránce události je uvedena aktivita přidružená ke konkrétnímu prostředku a závažnost dopadu.
+Události ukazují aktivitu uživatelů a systému na portálu CloudSimple. Na stránce Události je uvedena aktivita přidružená k určitému prostředku a závažnost dopadu.
 
-Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
+Následující sloupce informací jsou k dispozici pro výstrahy. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Column | Popis |
+| Sloupec | Popis |
 ------------ | ------------- |
-| Time | Datum a čas, kdy došlo k události. |
-| Typ události | Číselný kód identifikující událost. |
-| Závažnost | Závažnost události.|
-| Název prostředku | Název přiřazený k prostředku, například název privátního cloudu pro funkci AVS |
-| Typ prostředku | Kategorie prostředku: privátní cloud AVS, cloudový stojan. |
-| Popis | Popis, který výstrahu aktivoval. |
+| Time | Datum a čas došlo k události. |
+| Event Type | Číselný kód, který identifikuje událost. |
+| Severity | Závažnost události.|
+| Název prostředku | Název přiřazený prostředku, například název privátního cloudu. |
+| Typ prostředku | Kategorie zdrojů: Privátní cloud, Cloud Rack. |
+| Popis | Popis toho, co spustilo výstrahu. |
 
 ## <a name="tasks"></a>Úlohy
 
-Úlohy jsou aktivity privátního cloudu pro funkci AVS, u kterých se očekává, že budou trvat 30 sekund nebo více. (Aktivity, které se očekávají za méně než 30 sekund, se oznamují jenom jako události.) Otevřete stránky úlohy a sledujte průběh úloh vašeho privátního cloudu služby AVS.
+Úkoly jsou aktivity privátního cloudu, u kterých se očekává dokončení 30 sekund nebo déle. (Aktivity, u kterých se očekává, že budou trvat méně než 30 sekund, jsou hlášeny pouze jako události.) Otevřete stránky Úkoly a sledujte průběh úkolů privátního cloudu.
 
-Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
+Následující sloupce informací jsou k dispozici pro výstrahy. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Column | Popis |
+| Sloupec | Popis |
 ------------ | ------------- |
 | ID úlohy | Jedinečný identifikátor úkolu |
-| Operace | Akce, kterou úkol provede. |
-| Uživatel | Uživatel přiřazený k dokončení úlohy. |
-| Název prostředku | Název přiřazený k prostředku |
-| Typ prostředku | Kategorie prostředku: privátní cloud AVS, cloudový stojan. |
-| ID prostředku | Identifikátor prostředku |
-| Začátek | Čas spuštění úlohy. |
-| Konec | Čas ukončení úlohy |
-| Stav | Aktuální stav úlohy. |
-| Uplynulý čas | Čas potřebný k dokončení úkolu (Pokud je dokončen) nebo v současné době (pokud probíhá). |
-| Popis | Popis úlohy |
+| Operace | Akce, kterou úloha provede. |
+| Uživatel | Uživatel přiřazený k dokončení úkolu. |
+| Název prostředku | Název přiřazený zdroji. |
+| Typ prostředku | Kategorie zdrojů: Privátní cloud, Cloud Rack. |
+| ID prostředku | Identifikátor prostředku. |
+| Start | Čas zahájení úkolu |
+| End | Čas ukončení úkolu. |
+| Status | Aktuální stav úkolu. |
+| Uplynulý čas | Čas, který úkol trvalo k dokončení (pokud je dokončen) nebo je právě přijímá (pokud probíhá). |
+| Popis | Popis úkolu. |
 
 ## <a name="audit"></a>Auditování
 
-Protokoly auditu udržují přehled o aktivitě uživatelů. Protokoly auditování můžete použít k monitorování aktivity uživatelů pro všechny uživatele.
+Protokoly auditu sledují aktivitu uživatele. Protokoly auditu můžete použít ke sledování aktivity uživatelů pro všechny uživatele.
 
-Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
+Následující sloupce informací jsou k dispozici pro výstrahy. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Column | Popis |
+| Sloupec | Popis |
 ------------ | ------------- |
-| Time | Čas položky auditu |
-| Operace | Akce, kterou úkol provede. |
-| Uživatel | Uživatel přiřazený k úkolu |
-| Název prostředku | Název přiřazený k prostředku |
-| Typ prostředku | Kategorie prostředku: privátní cloud AVS, cloudový stojan. |
-| ID prostředku | Identifikátor prostředku |
-| Výsledek | Výsledek aktivity, například **úspěch**. |
-| Doba trvání | Čas k dokončení úkolu. |
-| Popis | Popis akce |
+| Time | Čas zadání auditu. |
+| Operace | Akce, kterou úloha provede. |
+| Uživatel | Uživatel přiřazený k úkolu. |
+| Název prostředku | Název přiřazený zdroji. |
+| Typ prostředku | Kategorie zdrojů: Privátní cloud, Cloud Rack. |
+| ID prostředku | Identifikátor prostředku. |
+| Výsledek | Výsledek aktivity, například **Úspěch**. |
+| Doba trvání | Čas na dokončení úkolu. |
+| Popis | Popis akce. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
-* Další informace o [privátních cloudech](cloudsimple-private-cloud.md) pro funkci AVS
+* [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
+* Další informace o [privátních cloudech](cloudsimple-private-cloud.md)

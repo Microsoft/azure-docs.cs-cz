@@ -1,6 +1,6 @@
 ---
-title: Co je OPC Publisher – Azure | Microsoft Docs
-description: Tento článek obsahuje přehled funkcí aplikace OPC Publisher. Umožňuje publikovat kódovaná data telemetrie JSON pomocí datové části JSON do Azure IoT Hub.
+title: Co je Vydavatel OPC – Azure | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje přehled funkcí Vydavatele OPC. Umožňuje publikovat kódovaná telemetrická data JSON pomocí datové části JSON do služby Azure IoT Hub.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -9,38 +9,38 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 2310a81d3cfaeff203134af9968bc2d5caea3e9c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73824783"
 ---
-# <a name="what-is-opc-publisher"></a>Co je OPC Publisher?
+# <a name="what-is-opc-publisher"></a>Co je Vydavatel OPC?
 
-Vydavatel OPC je referenční implementace, která ukazuje, jak:
+OPC Publisher je referenční implementace, která ukazuje, jak:
 
-- Připojte se k existujícím serverům OPC UA.
-- Publikujte data telemetrie kódovaná pomocí JSON ze serverů OPC UA v OPC UA/sub Format s použitím datové části JSON do Azure IoT Hub.
+- Připojte se ke stávajícím serverům OPC UA.
+- Publikujte telemetrická data kódovaná JSON ze serverů OPC UA ve formátu OPC UA Pub/Sub pomocí datové části JSON do azure IoT hubu.
 
-Můžete použít libovolný přenosový protokol, který podporuje klientská sada SDK pro Azure IoT Hub: HTTPS, AMQP a MQTT.
+Můžete použít libovolný přenosový protokol, který podporuje sada Azure IoT Hub client SDK: HTTPS, AMQP a MQTT.
 
 Referenční implementace zahrnuje:
 
-- *Klient* OPC UA pro připojení k existujícím SERVERŮM OPC UA, které máte ve vaší síti.
-- *Server* OPC ua na portu 62222, který můžete použít ke správě co publikovaných a nabízí IoT Hub přímých metod, které se mají provést.
+- Klient OPC *UA* pro připojení ke stávajícím serverům OPC UA, které máte v síti.
+- Server OPC *UA* na portu 62222, který můžete použít ke správě publikovaného publikovaného a nabízí přímé metody služby IoT Hub, které mají provést totéž.
 
-[Referenční implementaci pro vydavatele OPC](https://github.com/Azure/iot-edge-opc-publisher) si můžete stáhnout z GitHubu.
+Můžete si stáhnout [referenční implementaci OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) z GitHubu.
 
-Aplikace je implementována pomocí technologie .NET Core a může běžet na libovolné platformě, kterou podporuje .NET Core.
+Aplikace je implementována pomocí technologie .NET Core a může běžet na libovolné platformě podporované rozhraním .NET Core.
 
-OPC Publisher implementuje logiku opakování pro navázání připojení k koncovým bodům, které nereagují na určitý počet požadavků Keep Alive. Například pokud server OPC UA přestane reagovat z důvodu výpadku napájení.
+OPC Publisher implementuje logiku opakování k navázání připojení ke koncovým bodům, které nereagují na určitý počet požadavků keep alive. Například pokud server OPC UA přestane reagovat z důvodu výpadku napájení.
 
-U každého jedinečného intervalu publikování na server OPC UA vytvoří aplikace samostatné předplatné, přes které se aktualizují všechny uzly s tímto intervalem publikování.
+Pro každý odlišný interval publikování na serveru OPC UA aplikace vytvoří samostatné předplatné, přes které jsou aktualizovány všechny uzly s tímto intervalem publikování.
 
-Vydavatel OPC podporuje dávkování dat odesílaných do IoT Hub, aby se snížilo zatížení sítě. Tato dávkování odešle paket, který se IoT Hub jenom v případě dosažení nakonfigurované velikosti paketu.
+Vydavatel OPC podporuje dávkování dat odeslaných do služby IoT Hub za účelem snížení zatížení sítě. Toto dávkování odešle paket do služby IoT Hub pouze v případě, že je dosaženo nakonfigurované velikosti paketu.
 
-Tato aplikace používá referenční zásobník OPC Foundation OPC UA jako balíčky NuGet. Licenční podmínky najdete v tématu [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) .
+Tato aplikace používá Reference Zásobník OPC OPC OA jako Balíčky NuGet. Viz [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) licenční podmínky.
 
 ### <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, co je Vydavatel OPC, což je doporučený další krok, kde se dozvíte, jak [nakonfigurovat OPC Publisher](howto-opc-publisher-configure.md).
+Nyní jste se dozvěděli, co Je OPC Publisher, navrhovaný další krok je naučit se [konfigurovat OPC Publisher](howto-opc-publisher-configure.md).

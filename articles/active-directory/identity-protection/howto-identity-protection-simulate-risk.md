@@ -1,6 +1,6 @@
 ---
-title: Simulace zjišťování rizik v Azure AD Identity Protection
-description: Naučte se simulovat detekci rizik v Identity Protection.
+title: Simulace detekce rizik v azure ad identity protection
+description: Zjistěte, jak simulovat detekci rizik v identitě Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,123 +12,123 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72886932"
 ---
-# <a name="simulating-risk-detections-in-identity-protection"></a>Simulace zjišťování rizik v Identity Protection
+# <a name="simulating-risk-detections-in-identity-protection"></a>Simulace detekce rizik v ochraně identity
 
-Správci mohou chtít simulovat riziko ve svém prostředí, aby mohli provádět následující položky:
+Správci mohou chtít simulovat riziko ve svém prostředí, aby dosáhli následujících položek:
 
-- Naplňte data v prostředí Identity Protection tím, že simulujete detekci rizik a ohrožení zabezpečení.
-- Nastavte zásady podmíněného přístupu na základě rizika a otestujte dopad těchto zásad.
+- Naplňte data v prostředí identity Protection simulací detekce rizik a chyb zabezpečení.
+- Nastavte zásady podmíněného přístupu založené na rizicích a otestujte dopad těchto zásad.
 
-Tento článek popisuje kroky pro simulaci následujících typů detekce rizik:
+Tento článek obsahuje postup pro simulaci následujících typů zjišťování rizik:
 
-- Anonymní IP adresa (Snadná)
-- Neznámou vlastnost přihlášení (střední)
-- Neobvyklá cestování (obtížné)
+- Anonymní IP adresa (snadné)
+- Neznámé přihlašovací vlastnosti (střední)
+- Atypické cestování (obtížné)
 
-Jiné zjišťování rizik se nedají simulovat zabezpečeným způsobem.
+Jiné detekce rizik nelze simulovat bezpečným způsobem.
 
-Další informace o jednotlivých detekcích rizik najdete v článku [co je to riziko](concept-identity-protection-risks.md).
+Další informace o každé detekci rizik naleznete v článku [Co je riziko](concept-identity-protection-risks.md).
 
 ## <a name="anonymous-ip-address"></a>Anonymní IP adresa
 
-Dokončení následujícího postupu vyžaduje, abyste použili:
+Dokončení následujícího postupu vyžaduje použití:
 
-- [Prohlížeč mandátu](https://www.torproject.org/projects/torbrowser.html.en) pro simulaci anonymních IP adres. Je možné, že budete muset virtuální počítač použít, pokud vaše organizace omezuje používání prohlížeče pro prostředí.
-- Testovací účet, který ještě není zaregistrovaný pro Azure Multi-Factor Authentication.
+- [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) pro simulaci anonymních IP adres. Možná budete muset použít virtuální počítač, pokud vaše organizace omezuje používání prohlížeče Tor.
+- Testovací účet, který ještě není registrovaný pro Azure Multi-Factor Authentication.
 
 **Chcete-li simulovat přihlášení z anonymní IP adresy, proveďte následující kroky**:
 
-1. Pomocí [prohlížeče](https://www.torproject.org/projects/torbrowser.html.en)pro práci se systémem, přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).   
-2. Zadejte přihlašovací údaje účtu, který se má zobrazit v sestavě **přihlášení z anonymních IP adres** .
+1. Pomocí [prohlížeče Tor](https://www.torproject.org/projects/torbrowser.html.en)přejděte na . [https://myapps.microsoft.com](https://myapps.microsoft.com)   
+2. Zadejte přihlašovací údaje účtu, který se má zobrazit **v sestavě Přihlášení z anonymních IP adres.**
 
-Přihlašování se zobrazuje na řídicím panelu Identity Protection během 10-15 minut. 
+Přihlášení se zobrazí na řídicím panelu identity protection během 10 - 15 minut. 
 
-## <a name="unfamiliar-sign-in-properties"></a>Neznámou vlastnost přihlášení
+## <a name="unfamiliar-sign-in-properties"></a>Neznámé přihlašovací vlastnosti
 
-Abyste mohli simulovat neznámou polohu, musíte se přihlásit z umístění a zařízení, ke kterému váš zkušební účet ještě nebyl přihlášený.
+Chcete-li simulovat neznámé umístění, musíte se přihlásit z umístění a zařízení, ze které se testovací účet dosud nepřihlásil.
 
-Následující postup používá nově vytvořenou:
+Níže uvedený postup používá nově vytvořený:
 
-- Připojení k síti VPN pro simulaci nového umístění.
-- Virtuální počítač, abyste mohli simulovat nové zařízení.
+- připojení VPN, pro simulaci nového umístění.
+- Virtuální stroj, simulovat nové zařízení.
 
-Provedení následujícího postupu vyžaduje, abyste použili uživatelský účet, který má:
+Dokončení následujícího postupu vyžaduje použití uživatelského účtu, který má:
 
-- Aspoň 30 dní na historii přihlášení.
-- Azure Multi-Factor Authentication povolen.
+- Alespoň 30-ti denní přihlašovací historie.
+- Vícefaktorové ověřování Azure povoleno.
 
 **Chcete-li simulovat přihlášení z neznámého umístění, proveďte následující kroky**:
 
-1. Když se přihlašujete pomocí testovacího účtu, selže výzva služby Multi-Factor Authentication (MFA), protože neprojde dotaz MFA.
-2. Pomocí nové sítě VPN přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com) a zadejte přihlašovací údaje k vašemu testovacímu účtu.
+1. Při přihlášení pomocí testovacího účtu nesplníte výzvu vícefaktorového ověřování (MFA) tím, že nepředá výzvu mfa.
+2. Pomocí nové sítě VPN [https://myapps.microsoft.com](https://myapps.microsoft.com) přejděte na přihlašovací údaje testovacího účtu a zadejte je.
 
-Přihlašování se zobrazuje na řídicím panelu Identity Protection během 10-15 minut.
+Přihlášení se zobrazí na řídicím panelu identity protection během 10 - 15 minut.
 
-## <a name="atypical-travel"></a>Neobvyklé cestování
+## <a name="atypical-travel"></a>Atypické cestování
 
-Simulace netypických cestovních cest je obtížné, protože algoritmus využívá Machine Learning k pleveli falešně pozitivních hodnot, jako je například neobvyklá cesta ze známých zařízení, nebo přihlášení z sítí VPN, které používají jiní uživatelé v adresáři. Kromě toho algoritmus vyžaduje historii přihlášení 14 dní a 10 přihlášení uživatele, než začne generovat detekci rizik. Z důvodu komplexních modelů strojového učení a výše uvedených pravidel existuje možnost, že následující kroky nebudou mít za následek detekci rizik. Tyto kroky můžete chtít replikovat pro více účtů Azure AD, abyste mohli simulovat toto zjišťování.
+Simulace atypické cestovní podmínky je obtížné, protože algoritmus používá strojové učení k vyřazení falešných poplachů, jako je atypické cestování ze známých zařízení nebo přihlášení z virtuálních ny, které používají ostatní uživatelé v adresáři. Kromě toho algoritmus vyžaduje historii přihlášení 14 dny a 10 přihlášení uživatele před zahájením generování detekce rizik. Vzhledem ke složitým modelům strojového učení a nad pravidly existuje pravděpodobnost, že následující kroky nepovedou ke zjištění rizik. Můžete chtít replikovat tyto kroky pro více účtů Azure AD simulovat toto zjišťování.
 
-**Chcete-li simulovat detekci netypických cest na cestách, proveďte následující kroky**:
+**Chcete-li simulovat atypickou detekci cestovního rizika, proveďte následující kroky**:
 
-1. Pomocí standardního prohlížeče přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).  
-2. Zadejte přihlašovací údaje účtu, pro který chcete vygenerovat kontrolu neobvyklých rizik pro služební vztah.
-3. Změňte svého uživatelského agenta. Uživatelský agent můžete změnit v Microsoft Edge z Vývojářské nástroje (F12).
-4. Změňte IP adresu. IP adresu můžete změnit pomocí sítě VPN, samoobslužného doplňku nebo vytvořením nového virtuálního počítače v Azure v jiném datovém centru.
-5. Přihlaste se, abyste [https://myapps.microsoft.com](https://myapps.microsoft.com) používali stejné přihlašovací údaje jako před a během několika minut po předchozím přihlášení.
+1. Pomocí standardního prohlížeče [https://myapps.microsoft.com](https://myapps.microsoft.com)přejděte na .  
+2. Zadejte přihlašovací údaje účtu, pro který chcete vygenerovat atypickou detekci cestovních rizik.
+3. Změňte uživatelského agenta. Uživatelského agenta v Microsoft Edge můžete změnit z nástrojů pro vývojáře (F12).
+4. Změňte svou IP adresu. Svou IP adresu můžete změnit pomocí VPN, doplňku Tor nebo vytvořením nového virtuálního počítače v Azure v jiném datovém centru.
+5. Přihlaste [https://myapps.microsoft.com](https://myapps.microsoft.com) se k používání stejných přihlašovacích údajů jako před a během několika minut po předchozím přihlášení.
 
-Přihlašování se zobrazuje na řídicím panelu Identity Protection během 2-4 hodin.
+Přihlášení se zobrazí na řídicím panelu ochrany identity během 2-4 hodin.
 
-## <a name="testing-risk-policies"></a>Testování rizikových zásad
+## <a name="testing-risk-policies"></a>Testovací rizikové politiky
 
-V této části najdete postup testování uživatelů a zásad rizik přihlašování vytvořených v článku [Postupy: konfigurace a povolení zásad rizik](howto-identity-protection-configure-risk-policies.md).
+Tato část obsahuje postup testování uživatele a zásady rizik přihlášení vytvořené v článku [Postup: Konfigurace a povolení zásad rizik](howto-identity-protection-configure-risk-policies.md).
 
-### <a name="user-risk-policy"></a>Zásady rizik uživatelů
+### <a name="user-risk-policy"></a>Zásady rizika pro uživatele
 
 Chcete-li otestovat zásady zabezpečení rizik uživatelů, proveďte následující kroky:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory** >  > **Přehled** **zabezpečení** .
-1. Vyberte **Konfigurovat zásady rizik uživatelů**.
-   1. V části **přiřazení**
-      1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
-         1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
-      1. **Podmínky** - **riziku pro uživatele** Microsoftu je nastavit tuto možnost na **Vysoká**.
-   1. Pod **ovládacími prvky**
-      1. **Přístup** – doporučení Microsoftu je **Povolení přístupu** a **vyžadování změny hesla**.
-   1. **Vynutilit** ** - ** zásad
-   1. **Uložit** – Tato akce vás vrátí na stránku **Přehled** .
-1. Zvyšte riziko pro uživatele testovacího účtu, a to například simulací některého z detekcí rizika několikrát.
-1. Počkejte pár minut a pak ověřte, že riziko pro vašeho uživatele má vyšší oprávnění. Pokud ne, simulovat pro uživatele více detekcí rizik.
-1. Vraťte se k vašim rizikovým zásadám a nastavte **zásadu Vynutilit** na **zapnuto** a **uložte** změnu zásad.
-1. Můžete teď otestovat podmíněný přístup na základě rizik uživatelů přihlášením pomocí uživatele se zvýšenou úrovní rizika.
+1. Přejděte na**přehled****zabezpečení** >  **služby Azure Active Directory** > .
+1. Vyberte **konfigurovat zásady rizika uživatele**.
+   1. V části **Přiřazení**
+      1. **Uživatelé** – pokud omezíte zavedení, zvolte **Všichni uživatelé** **nebo Vybrat jednotlivce a skupiny.**
+         1. Volitelně můžete vyloučit uživatele ze zásady.
+      1. **Podmínky** - **Uživatelské riziko** Microsoft doporučení je nastavit tuto možnost na **vysoké**.
+   1. V části **Ovládací prvky**
+      1. **Access** – Doporučení společnosti Microsoft je **povolit přístup** a **vyžadovat změnu hesla**.
+   1. **Vynutit zásady** - **vypnuto**
+   1. **Uložit** – Tato akce vás vrátí na stránku **Přehled.**
+1. Zvyšte riziko uživatele testovacího účtu například simulací jedné z detekcí rizik několikrát.
+1. Počkejte několik minut a ověřte, zda se riziko pro uživatele zvýšilo. Pokud ne, simulujte více detekcí rizik pro uživatele.
+1. Vraťte se do zásad rizik a nastavte **možnost Vynutit zásady** **na Zapnuto** a **Uložit** změnu zásad.
+1. Podmíněný přístup založený na rizicích uživatele teď můžete otestovat tak, že se přihlásíte pomocí uživatele se zvýšenou úrovní rizika.
 
-### <a name="sign-in-risk-security-policy"></a>Zásady zabezpečení rizik přihlašování
+### <a name="sign-in-risk-security-policy"></a>Zásady zabezpečení rizik přihlášení
 
-Chcete-li otestovat rizikové zásady přihlašování, proveďte následující kroky:
+Chcete-li otestovat zásady rizikpřihlášení, proveďte následující kroky:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory** >  > **Přehled** **zabezpečení** .
-1. Vyberte **Konfigurovat zásady rizik přihlašování**.
-   1. V části **přiřazení**
-      1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
-         1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
-      1. **Podmínky** - **rizika přihlašování** od Microsoftu je nastavení této možnosti na **střední a vyšší**.
-   1. Pod **ovládacími prvky**
-      1. **Přístup** – doporučení Microsoftu je **Povolení přístupu** a **vyžadování služby Multi-Factor Authentication**.
-   1. **Vynutilit** ** - ** zásad
-   1. **Uložit** – Tato akce vás vrátí na stránku **Přehled** .
-1. Nyní můžete otestovat podmíněný přístup na základě rizik přihlašování pomocí rizikové relace (například pomocí prohlížeče služby 
+1. Přejděte na**přehled****zabezpečení** >  **služby Azure Active Directory** > .
+1. Vyberte **Konfigurovat zásady rizika přihlášení**.
+   1. V části **Přiřazení**
+      1. **Uživatelé** – pokud omezíte zavedení, zvolte **Všichni uživatelé** **nebo Vybrat jednotlivce a skupiny.**
+         1. Volitelně můžete vyloučit uživatele ze zásady.
+      1. **Podmínky** - **Riziko přihlášení Microsoft** doporučuje nastavit tuto možnost na střední a **vyšší**.
+   1. V části **Ovládací prvky**
+      1. **Access** – Doporučení společnosti Microsoft je **povolit přístup** a **vyžadovat vícefaktorové ověřování**.
+   1. **Vynutit zásady** - **na**
+   1. **Uložit** – Tato akce vás vrátí na stránku **Přehled.**
+1. Podmíněný přístup založený na přihlašovacích rizicích můžete nyní otestovat tak, že se přihlásíte pomocí rizikové relace (například pomocí prohlížeče Tor). 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je riziko?](concept-identity-protection-risks.md)
 
-- [Postupy: konfigurace a povolení zásad rizik](howto-identity-protection-configure-risk-policies.md)
+- [Postup: Konfigurace a povolení zásad rizik](howto-identity-protection-configure-risk-policies.md)
 
-- [Azure Active Directory Identity Protection](overview-identity-protection.md)
+- [Ochrana identit služby Azure Active Directory](overview-identity-protection.md)

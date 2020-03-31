@@ -1,7 +1,7 @@
 ---
-title: Reference na vstupy a výstupy v dovednosti
+title: Referenční vstupy a výstupy v skillsets
 titleSuffix: Azure Cognitive Search
-description: Vysvětluje syntaxi poznámek a postup odkazování na anotaci v vstupech a výstupech dovednosti v kanálu rozšíření AI v Azure Kognitivní hledání.
+description: Vysvětluje syntaxi poznámky a jak odkazovat na poznámku ve vstupech a výstupech skillset v kanálu obohacení AI v Azure Cognitive Search.
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -9,33 +9,33 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113867"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Postup při odkazování na poznámky v Azure Kognitivní hledání dovednosti
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Jak odkazovat na poznámky v sadě dovedností Azure Cognitive Search
 
-V tomto článku se dozvíte, jak odkazovat na poznámky v definicích dovedností, a to pomocí příkladů k ilustraci různých scénářů. Vzhledem k tomu, že obsah dokumentu projde sadou dovedností, je obohacen s poznámkami. Poznámky se dají použít jako vstupy pro další rozšíření pro příjem dat nebo namapované na výstupní pole v indexu. 
+V tomto článku se dozvíte, jak odkazovat na poznámky v definicích dovedností, pomocí příkladů pro ilustraci různých scénářů. Jak obsah dokumentu protéká sadou dovedností, obohacuje se o poznámky. Anotace lze použít jako vstupy pro další následné obohacení nebo namapovat na výstupní pole v indexu. 
  
-Příklady v tomto článku jsou založené na poli *obsahu* generovaném automaticky [indexery Azure Blob](search-howto-indexing-azure-blob-storage.md) v rámci fáze odhalující dokumentu. Při odkazování na dokumenty z kontejneru objektů BLOB použijte formát, jako je například `"/document/content"`, kde je pole *obsah* součástí *dokumentu*. 
+Příklady v tomto článku jsou založeny na poli *obsahu* generované automaticky [indexery objektů blob Azure](search-howto-indexing-azure-blob-storage.md) jako součást fáze prolomení dokumentu. Když odkazujete na dokumenty z kontejneru objektů `"/document/content"`Blob, použijte formát, například , kde je pole *obsahu* součástí *dokumentu*. 
 
-## <a name="background-concepts"></a>Koncepce na pozadí
+## <a name="background-concepts"></a>Koncepty pozadí
 
-Než začnete s syntaxí zkontrolovat, Podívejme se na několik důležitých konceptů, abychom lépe porozuměli ukázkám uvedeným dále v tomto článku.
+Před kontrolou syntaxe, pojďme znovu několik důležitých konceptů lépe pochopit příklady uvedené dále v tomto článku.
 
 | Označení | Popis |
 |------|-------------|
-| Obohacený dokument | Obohacený dokument je interní struktura vytvořená a používaná kanálem, aby obsahovala všechny poznámky týkající se dokumentu. Obohacený dokument si můžete představit jako strom poznámek. Obecně platí, že Poznámka vytvořená z předchozí poznámky se zobrazí jako podřízená.<p/>Obohacené dokumenty existují pouze po dobu trvání provádění dovednosti. Po namapování obsahu na index vyhledávání už obohacený dokument není potřeba. I když nepracujete s obohacenými dokumenty přímo, je vhodné mít při vytváření dovednosti k dispozici duševní modely dokumentů. |
-| Kontext obohacení | Kontext, ve kterém probíhá obohacení, s ohledem na to, který prvek je obohacen. Ve výchozím nastavení je kontext rozšíření obohacen na úroveň `"/document"` a je vymezen na jednotlivé dokumenty. Když se dovednost spustí, výstupy této dovednosti se stanou [vlastnostmi definovaného kontextu](#example-2).|
+| Obohacený dokument | Obohacený dokument je vnitřní struktura vytvořená a používaná kanálem k uložení všech poznámk souvisejících s dokumentem. Hledějte obohacený dokument jako strom anotací. Obvykle se anotace vytvořená z předchozí poznámky stane jejím podřízeným.<p/>Obohacené dokumenty existují pouze po dobu provádění sady dovedností. Jakmile je obsah mapován na index vyhledávání, obohacený dokument již není potřeba. I když s obohacenými dokumenty nekomunikujete přímo, je užitečné mít mentální model dokumentů při vytváření dovedností. |
+| Kontext obohacení | Kontext, ve kterém dochází k obohacení, v souvislosti s tím, který prvek je obohacen. Ve výchozím nastavení je kontext `"/document"` obohacení na úrovni, s rozsahem jednotlivých dokumentů. Při spuštění dovednosti se výstupy této dovednosti stanou [vlastnostmi definovaného kontextu](#example-2).|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>Příklad 1: odkaz na jednoduchou poznámku
+## <a name="example-1-simple-annotation-reference"></a>Příklad 1: Jednoduchý odkaz na poznámky
 
-V úložišti objektů BLOB v Azure Předpokládejme, že máte nejrůznější soubory obsahující odkazy na názvy lidí, které chcete extrahovat pomocí rozpoznávání entit. V definici dovednosti níže je `"/document/content"` textové znázornění celého dokumentu a "lidé" je extrakce úplných názvů entit identifikovaných jako osoby.
+V úložišti objektů blob Azure předpokládejme, že máte různé soubory obsahující odkazy na názvy lidí, které chcete extrahovat pomocí rozpoznávání entit. V níže uvedené `"/document/content"` definici dovednosti je textová reprezentace celého dokumentu a "lidé" je extrakce úplných jmen pro subjekty identifikované jako osoby.
 
-Vzhledem k tomu, že výchozí kontext je `"/document"`, seznam lidí teď může být odkazován jako `"/document/people"`. V tomto konkrétním případě je `"/document/people"` anotaci, která by teď mohla být namapována na pole v indexu nebo použita v jiné dovednosti ve stejném dovednosti.
+Vzhledem k `"/document"`tomu, že výchozí kontext je `"/document/people"`, lze nyní odkazovat na seznam osob jako na . V tomto `"/document/people"` konkrétním případě je anotace, která by nyní mohla být mapována na pole v indexu nebo použita v jiné dovednosti ve stejné sadě dovedností.
 
 ```json
   {
@@ -59,11 +59,11 @@ Vzhledem k tomu, že výchozí kontext je `"/document"`, seznam lidí teď můž
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>Příklad 2: odkazování na pole v rámci dokumentu
+## <a name="example-2-reference-an-array-within-a-document"></a>Příklad 2: Odkazování na pole v dokumentu
 
-Tento příklad sestaví na předchozím, kde se dozvíte, jak v jednom dokumentu vyvolat krok obohacení několikrát. Předpokládejte, že předchozí příklad vygeneroval pole řetězců s 10 jmény osob z jednoho dokumentu. Přiměřeným dalším krokem může být druhé rozšíření, které extrahuje příjmení z celého jména. Vzhledem k tomu, že existuje 10 názvů, budete chtít, aby tento krok byl v tomto dokumentu v jednom případě v každém z nich zavolán desetkrát. 
+Tento příklad vychází z předchozího, ukazuje, jak vyvolat krok obohacení vícekrát přes stejný dokument. Předpokládejme, že předchozí příklad vygeneroval pole řetězců s názvy 10 osob z jednoho dokumentu. Rozumným dalším krokem může být druhé obohacení, které extrahuje příjmení z celého jména. Vzhledem k tomu, že existuje 10 jmen, chcete, aby byl tento krok v tomto dokumentu volán 10krát, jednou pro každou osobu. 
 
-Chcete-li vyvolat správný počet iterací, nastavte kontext jako `"/document/people/*"`, kde hvězdička (`"*"`) představuje všechny uzly v obohaceném dokumentu jako následníky `"/document/people"`. I když je tato dovednost definována pouze jednou v poli dovednosti, je volána pro každého člena v rámci dokumentu, dokud nebudou všichni členové zpracováni.
+Chcete-li vyvolat správný počet iterací, nastavte kontext `"/document/people/*"`jako`"*"`, kde hvězdička ( ) představuje všechny `"/document/people"`uzly v obohaceném dokumentu jako následníky . Přestože je tato dovednost definována pouze jednou v poli dovednosti, je volána pro každého člena v dokumentu, dokud nebudou zpracovány všechny členy.
 
 ```json
   {
@@ -87,15 +87,15 @@ Chcete-li vyvolat správný počet iterací, nastavte kontext jako `"/document/p
   }
 ```
 
-Když jsou poznámky pole nebo kolekce řetězců, můžete chtít cílit na konkrétní členy, nikoli na pole jako celek. Výše uvedený příklad generuje poznámku nazvanou `"last"` pod každým uzlem reprezentovaným kontextem. Pokud chcete odkazovat na tuto rodinu poznámek, můžete použít syntaxi `"/document/people/*/last"`. Pokud chcete odkazovat na konkrétní anotaci, můžete použít explicitní index: `"/document/people/1/last`"pro odkazování na příjmení první osoby identifikované v dokumentu. Všimněte si, že v těchto polích syntaxe jsou "0 Indexed".
+Pokud jsou poznámky matice nebo kolekce řetězců, můžete chtít cílit na určité členy, nikoli na pole jako celek. Výše uvedený příklad generuje poznámku `"last"` volanou pod každým uzlem reprezentovaným kontextem. Pokud chcete odkazovat na tuto rodinu anotací, `"/document/people/*/last"`můžete použít syntaxi . Pokud chcete odkazovat na konkrétní poznámku, můžete použít `"/document/people/1/last`explicitní index: " k odkazu na příjmení první osoby identifikované v dokumentu. Všimněte si, že v této pole syntaxe jsou "0 indexovány".
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>Příklad 3: referenční členové v rámci pole
+## <a name="example-3-reference-members-within-an-array"></a>Příklad 3: Referenční členy v rámci pole
 
-Někdy je nutné seskupit všechny poznámky určitého typu, aby je bylo možné předat konkrétní dovednosti. Vezměte v úvahu hypotetickou vlastní dovednost, která určuje nejběžnější příjmení ze všech posledních názvů extrahovaných v příkladu 2. Chcete-li zadat pouze poslední názvy vlastní dovednosti, určete kontext jako `"/document"` a vstup jako `"/document/people/*/lastname"`.
+Někdy je třeba seskupit všechny poznámky určitého typu, abyste je předali určité dovednosti. Zvažte hypotetickou vlastní dovednost, která identifikuje nejběžnější příjmení ze všech příjmení extrahovaných v příkladu 2. Chcete-li zadat pouze příjmení vlastní dovednosti, `"/document"` zadejte kontext `"/document/people/*/lastname"`jako a vstup jako .
 
-Všimněte si, že mohutnost `"/document/people/*/lastname"` je větší než v dokumentu. V případě, že je pro tento dokument k dispozici pouze jeden uzel dokumentu, může dojít k 10 uzlům LastName. V takovém případě systém automaticky vytvoří pole `"/document/people/*/lastname"` obsahující všechny prvky v dokumentu.
+Všimněte si, že `"/document/people/*/lastname"` mohutnost je větší než dokument. Může existovat 10 lastname uzly, zatímco je pouze jeden uzel dokumentu pro tento dokument. V takovém případě systém automaticky vytvoří `"/document/people/*/lastname"` pole obsahující všechny prvky v dokumentu.
 
 ```json
   {
@@ -121,7 +121,7 @@ Všimněte si, že mohutnost `"/document/people/*/lastname"` je větší než v 
 
 
 ## <a name="see-also"></a>Viz také
-+ [Jak integrovat vlastní dovednosti do kanálu pro obohacení](cognitive-search-custom-skill-interface.md)
-+ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Mapování obohacených polí na index](cognitive-search-output-field-mapping.md)
++ [Jak integrovat vlastní dovednost do kanálu obohacování](cognitive-search-custom-skill-interface.md)
++ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
++ [Vytvořit sadu dovedností (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Jak mapovat obohacená pole do indexu](cognitive-search-output-field-mapping.md)

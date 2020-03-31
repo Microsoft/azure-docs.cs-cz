@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor návrháře zobrazení na sešity převod běžných úloh
+title: Návrhář zobrazení Azure Monitor u běžných úloh převodu sešitů
 description: ''
 author: austonli
 ms.author: aul
@@ -7,50 +7,50 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658740"
 ---
-# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Úlohy návrháře zobrazení pro převod na sešity běžné úkoly
-[Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Budou postupně vyladěny a nahrazeny sešity, které poskytují další funkce. Tento článek podrobně popisuje úlohy, které jsou běžné při převádění zobrazení na sešity.
+# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Zobrazení běžných úkolů převodu návrháře do sešitů
+[Návrhář zobrazení](view-designer.md) je funkce Azure Monitoru, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics pomocí grafů, seznamů a časových os. Jsou postupně ukončovány a nahrazovány sešity, které poskytují další funkce. Tento článek podrobně popisuje úkoly, které jsou běžné při převodu zobrazení na sešity.
 
 
-## <a name="quickstart-with-preset-view-designer-templates"></a>Rychlý Start s přednastavenými šablonami návrháře zobrazení
+## <a name="quickstart-with-preset-view-designer-templates"></a>Úvodní příručka s přednastavenými šablonami návrháře zobrazení
 
-Sešity v pracovních prostorech v Log Analytics již mají šablony vytvořené tak, aby odpovídaly některým zobrazením v Návrháři zobrazení. V kategorii **příručky návrháře zobrazení** vyberte **Zobrazit průvodce přechodem návrháře** , kde se dozvíte o možnostech nebo vyberte jednu z přednastavených šablon.
+Sešity v pracovních prostorech Analýzy protokolů už mají šablony, které odpovídají některým zobrazením v návrháři zobrazení. V části Průvodce **návrháře zobrazení** vyberte **Průvodce přechodem návrháře zobrazení,** abyste se dozvěděli o svých možnostech, nebo vyberte jednu z přednastavených šablon.
 
-![Příklad šablony](media/view-designer-conversion-tasks/templates.png)
+![Ukázkové šablony](media/view-designer-conversion-tasks/templates.png)
 
-## <a name="enabling-time-range-filter"></a>Povoluje se filtr časového rozsahu.
-Návrhář zobrazení má integrovaný výchozí filtr časového rozsahu, ale v sešitech toto nastavení není ve výchozím nastavení povolené. Pracovní sešity umožňují uživatelům vytvářet vlastní filtry časového rozsahu, které by mohly být pro své datové protokoly užitečnější. Níže je uvedený postup pro vygenerování filtru:
+## <a name="enabling-time-range-filter"></a>Povolení filtru časového rozsahu
+Návrhář zobrazení má předdefinovaný výchozí filtr časového rozsahu, ale v sešitech toto nastavení není ve výchozím nastavení povoleno. Sešity umožňují uživatelům vytvářet vlastní filtry časového rozsahu, které by mohly být vhodnější pro jejich protokoly dat. Postup generování filtru je uveden níže:
 
-Vyberte možnost **přidat parametry** . Výchozí **styl** je nastaven na *Pills*.
+Vyberte možnost **Přidat parametry.** Výchozí **styl** je nastaven na *pilulky*.
 
 ![Přidat param](media/view-designer-conversion-tasks/add-param.png)
 
- Vyberte tlačítko **Přidat parametr** .
+ Vyberte tlačítko **Přidat parametr.**
 
 ![Přidat parametr](media/view-designer-conversion-tasks/add-parameter.png)
 
-V nabídce bočního panelu zadejte do textového pole **název parametru** *TimeRange*. Nastavte **typ parametru** jako *časový rozsah pro výběr*. Zaškrtněte políčko **požadováno?** .
+Z nabídky postranního panelu zadejte do textového pole **Název parametru** *položku Časový rozsah*. Nastavit **typ parametru** jako *výběr časového rozsahu*. Zaškrtněte **políčko Povinné?**
 
 ![Nabídka parametrů](media/view-designer-conversion-tasks/parameter-menu.png)
 
-Uložte parametr v levém horním rohu nabídky bočního panelu. Rozevírací seznam můžete *ponechat ve výchozím nastavení, nebo* vyberte výchozí hodnotu **TimeRange** , například *24 hodin*. Vyberte **hotové úpravy**.
+Uložte parametr v levém horním rohu nabídky postranního panelu. Rozevírací nabídku můžete ve výchozím nastavení ponechat jako *odnastavenou* nebo vybrat výchozí hodnotu **TimeRange,** například *24 hodin*. Vyberte **Hotovo úpravy**.
 
-Parametry lze použít v dotazech přidáním složených závorek {} kolem názvu parametru. Další podrobnosti o parametrech najdete v dokumentaci k [parametrům v dokumentaci k pracovním sešitům](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md).
+Parametry lze použít v dotazech přidáním {} složené závorky kolem názvu parametru. Další podrobnosti o parametrech naleznete v [dokumentaci k sešitům o parametrech](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md).
 
 ## <a name="updating-queries-with-the-timerange-parameter"></a>Aktualizace dotazů pomocí parametru TimeRange
 
-### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>Možnost 1: vyberte TimeRange z rozevíracího seznamu časový rozsah.
+### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>Možnost 1: V rozevíracím období vyberte časový rozsah.
 
 ![Časový parametr](media/view-designer-conversion-tasks/time-parameter.png)
 
-### <a name="option-2-update-your-log-queries"></a>Možnost 2: aktualizace dotazů protokolu
+### <a name="option-2-update-your-log-queries"></a>Možnost 2: Aktualizace dotazů protokolu
 
-Do dotazu přidejte řádek: `| where TimeGenerated {TimeRange}` jako v následujícím příkladu:
+Do dotazu přidejte `| where TimeGenerated {TimeRange}` řádek: jako v následujícím příkladu:
 
 Původní dotaz
 ```KQL
@@ -65,16 +65,16 @@ search *
 | summarize count() by Type
 ```
 
-## <a name="including-a-list"></a>Zahrnutí seznamu
-Většina zobrazení návrháře zobrazení obsahuje seznam a tento standardní seznam můžete v sešitu reprodukován.
+## <a name="including-a-list"></a>Včetně seznamu
+Většina zobrazení návrháře zobrazení obsahuje seznam a tento standardní seznam můžete reprodukovat v sešitu.
 
 ![Seznam dlaždic](media/view-designer-conversion-tasks/tile-list.png)
 
-Přidejte vizualizaci kliknutím na **Přidat dotaz** z možností buňky.
+Vizualizaci přidáte kliknutím na **Přidat dotaz** z možností buňky.
 
 ![Přidat param](media/view-designer-conversion-tasks/add-param.png)
 
-Návrhář zobrazení využívá výchozí dotaz, který se shoduje s syntaxí z původního příkladu. Dá se aktualizovat tak, že změníte dotaz na aktualizovaný formulář, jak je uvedeno v následujícím příkladu:
+Návrhář zobrazení používá výchozí dotaz, který odpovídá syntaxi z původního příkladu. To lze aktualizovat změnou dotazu na aktualizovaný formulář jako v následujícím příkladu:
 
 Původní dotaz
 ```KQL
@@ -88,12 +88,12 @@ search *
 | summarize Count = count() by Type
 ```
 
-Vygeneruje se seznam, který vypadá podobně jako následující:
+Tím se vygeneruje seznam, který vypadá podobně jako následující:
 
 ![Příklad seznamu](media/view-designer-conversion-tasks/list-example.png)
 
 ## <a name="enabling-sparklines"></a>Povolení minigrafů
-Běžnou funkcí pro mřížky je přidání minigrafů za účelem sumarizace různých vzorů dat v průběhu času. Návrhář zobrazení nabízí funkci **Povolit minigrafy** pro všechny seznamy, stejně jako sešity. Chcete-li zahrnout minigrafy do vašich dat, která odpovídají Návrháři zobrazení, připojte data s původním dotazem jako v následujícím příkladu:
+Běžnou funkcí pro mřížky je přidání minigrafů pro shrnutí různých datových vzorů v průběhu času. Návrhář zobrazení nabízí funkci **Povolit minigrafy** pro všechny seznamy, stejně jako sešity. Chcete-li do dat zahrnout minigrafy, které odpovídají návrháři zobrazení, připojte data k původnímu dotazu jako v následujícím příkladu:
 
 Původní dotaz
 ```KQL
@@ -111,47 +111,47 @@ search *
 ```
 
 Vyberte **Nastavení sloupce**.
-Nastavení sloupce ![](media/view-designer-conversion-tasks/column-settings.png)
+![Nastavení sloupců](media/view-designer-conversion-tasks/column-settings.png)
 
-Aktualizujte rozevírací seznam **rendereru sloupce** tak, aby byl *oblastí Spark*.
-](media/view-designer-conversion-tasks/sparkline.png) ![minigrafy
+Aktualizujte rozevírací seznam **Vykreslovače sloupců** tak, aby se z *ní stala oblast Spark*.
+![Minigrafy](media/view-designer-conversion-tasks/sparkline.png)
 
-Uložte nastavení a spusťte dotaz znovu, aby se tabulka aktualizovala tak, aby obsahovala minigraf.
+Uložte nastavení a spusťte dotaz znovu, chcete-li aktualizovat tabulku tak, aby obsahovala minigraf.
 
-Výsledná mřížka bude vypadat podobně jako následující: ![příklad minigrafu](media/view-designer-conversion-tasks/sparkline-example.png)
+Výsledná mřížka bude vypadat ![podobně jako následující: Příklad minigrafu](media/view-designer-conversion-tasks/sparkline-example.png)
 
-## <a name="advanced-cell-settings"></a>Pokročilá nastavení buněk
-Pro návrháře zobrazení zrcadlení můžete provádět úkoly, jako je například změna velikosti buněk sešitu nebo přidávání kódů PIN a externích odkazů do protokolů.
+## <a name="advanced-cell-settings"></a>Upřesňující nastavení buněk
+Chcete-li zrcadlit návrháře zobrazení, můžete provádět úkoly, jako je změna velikosti buněk sešitu nebo přidání kolíků a externích odkazů do protokolů.
 
-Pokud chcete získat přístup k **rozšířeným nastavením** , vyberte ikonu ozubeného kolečka v dolní části každé buňky.
+Chcete-li získat přístup **k pokročilým nastavením,** vyberte ikonu ozubeného kola v dolní části každé buňky.
 
 ![Upřesnit nastavení](media/view-designer-conversion-tasks/advanced-settings.png)
 
 Zobrazí se nabídka s různými možnostmi:
 
-![Nastavení rozšířeného nastavení](media/view-designer-conversion-tasks/advanced-settings-settings.png)
+![Upřesňující nastavení nastavení](media/view-designer-conversion-tasks/advanced-settings-settings.png)
 
-Chcete-li přidat kód PIN a odkaz na externí dotaz, zaškrtněte příslušná políčka. Chcete-li do buňky přidat název, zadejte požadovaný název do oddílu **Nadpis grafu** .
+Chcete-li přidat špendlík a odkaz na externí dotaz, zaškrtněte příslušná políčka. Chcete-li do buňky přidat název, zadejte požadovaný název do části **Název grafu.**
 
-Ve výchozím nastavení je každá buňka sešitů nastavená tak, aby zabrala celou šířku stránky, ale můžete ji upravit tak, že na kartě **styl** v nabídce **Upřesnit nastavení** narozdělíte velikost buňky dolů.
+Ve výchozím nastavení je každá buňka sešitů nastavena tak, aby zabíjela celou šířku stránky, ale můžete ji upravit změnou velikosti **buňky** pod kartou Styl v nabídce **Upřesnit nastavení.**
 
-![Upřesnit nastavení – styl](media/view-designer-conversion-tasks/advanced-settings-style.png)
+![Styl upřesňujících nastavení](media/view-designer-conversion-tasks/advanced-settings-style.png)
 
  
 ## <a name="additional-parameters"></a>Další parametry
-Vyberte **Přidat parametr** a vytvořte nový parametr v sešitu. 
+Vyberte **Přidat parametr,** chcete-li v sešitu vytvořit nový parametr. 
 
-Pokud chcete vybrat předplatné, zadejte do pole **název parametru** v nabídce na straně *předplatné* a v rozevírací nabídce **typ parametru** vyberte *Výběr předplatného* .
+Chcete-li vybrat předplatné, zadejte *odběr* do pole **Název parametru** v boční nabídce a v rozevíracím seznamu **Typ předplatného** vyberte *Výběr předplatného.*
 
-![Nabídka odběr](media/view-designer-conversion-tasks/subscription-filter.png)
+![Nabídka předplatného](media/view-designer-conversion-tasks/subscription-filter.png)
 
-Chcete-li vybrat prostředek, zadejte do pole **název parametru** v postranní nabídce *prostředek* a vyberte možnost *Výběr prostředku* z rozevíracího seznamu **typ parametru** .
+Chcete-li vybrat zdroj, zadejte *zdroj* do pole **Název parametru** v boční nabídce a v rozevíracím seznamu **Typ parametru** vyberte *Výběr zdrojů.*
 
-![Nabídka prostředků](media/view-designer-conversion-tasks/resource-filter.png)
+![Nabídka Zdroje](media/view-designer-conversion-tasks/resource-filter.png)
 
-Tím budou vloženy rozevírací seznamy, které vám umožní přístup k různým předplatným a prostředkům.
+Tím vložíte rozevírací nabídky, které vám umožní přístup k různým předplatným a prostředkům.
 
-![Rozevírací seznam prostředků odběru](media/view-designer-conversion-tasks/subscription-resource.png)
+![Rozbalovací seznam prostředků předplatného](media/view-designer-conversion-tasks/subscription-resource.png)
 
 
 ## <a name="next-steps"></a>Další kroky

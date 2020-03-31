@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat ze zdroje REST pomocí Azure Data Factory
-description: Naučte se, jak kopírovat data z cloudu nebo místního zdroje REST do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+description: Zjistěte, jak kopírovat data z cloudu nebo místního zdroje REST do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75867370"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu REST pomocí Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z koncového bodu REST. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí kopírovat aktivity v Azure Data Factory ke kopírování dat z koncového bodu REST. Článek vychází [z aktivity kopírování v Azure Data Factory](copy-activity-overview.md), která představuje obecný přehled aktivity kopírování.
 
-Rozdíl mezi tímto konektorem REST, [konektorem http](connector-http.md) a [konektorem webové tabulky](connector-web-table.md) :
+Rozdíl mezi tímto konektorem REST, [konektorem HTTP](connector-http.md) a [konektorem webové tabulky](connector-web-table.md) jsou:
 
-- **Konektor REST** přímo podporuje kopírování dat z rozhraní API RESTful. 
-- **Konektor http** je obecný k načtení dat z libovolného koncového bodu http, třeba ke stažení souboru. Než bude tento konektor REST k dispozici, můžete k tomu použít konektor HTTP ke kopírování dat z rozhraní RESTful API, které je podporováno, ale méně funkčních porovnání s konektorem REST.
+- **REST konektor** konkrétně podporuje kopírování dat z RESTful rozhraní API; 
+- **Http konektor** je obecný pro načtení dat z libovolného koncového bodu HTTP, například ke stažení souboru. Před tento konektor REST k dispozici, může dojít ke použití konektoru HTTP ke kopírování dat z rozhraní RESTful API, který je podporován, ale méně funkční ve srovnání s konektorem REST.
 - **Konektor webové tabulky** extrahuje obsah tabulky z webové stránky HTML.
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
-Data ze zdroje REST můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
+Data ze zdroje REST můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která podporují aktivita kopírování jako zdroje a propady, naleznete v [tématu Podporovaná úložiště a formáty dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Konkrétně tento obecný konektor REST podporuje:
 
-- Načítání dat z koncového bodu REST pomocí metod **Get** nebo **post** .
-- Načítají se data pomocí jednoho z následujících ověřování: **anonymní**, **základní**, **AAD instanční objekt**a **spravované identity pro prostředky Azure**.
-- **[Stránkování](#pagination-support)** v rozhraní REST API.
-- Kopírování odpovědi REST JSON [tak, jak jsou](#export-json-response-as-is) , nebo je analyzovat pomocí [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping). Je podporována pouze datová část odpovědi ve formátu **JSON** .
+- Načítání dat z koncového bodu REST pomocí get **nebo** **POST** metody.
+- Načítání dat pomocí jednoho z následujících ověřování: **Anonymní**, **Základní**, **Instanční objekt Služby AAD**a **spravované identity pro prostředky Azure**.
+- **[Stránkování](#pagination-support)** v rest API.
+- Kopírování odpovědi REST JSON [jako-je](#export-json-response-as-is) nebo analyzovat pomocí [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping). Podporována je pouze datová část odpovědi v **JSON.**
 
 > [!TIP]
-> Chcete-li otestovat požadavek na načtení dat před konfigurací konektoru REST v Data Factory, přečtěte si informace o specifikaci rozhraní API pro požadavky hlaviček a textu. K ověření můžete použít nástroje, jako je například nástroj pro odeslání nebo webový prohlížeč.
+> Chcete-li otestovat požadavek na načtení dat před konfigurací konektoru REST v datové továrně, přečtěte si informace o specifikaci rozhraní API pro požadavky na záhlaví a tělo. K ověření můžete použít nástroje, jako je Postman nebo webový prohlížeč.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobné informace o vlastnostech, které můžete použít k definování Data Factory entit specifických pro konektor REST.
+V následujících částech jsou uvedeny podrobnosti o vlastnostech, které můžete použít k definování entit Data Factory, které jsou specifické pro konektor REST.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
 
 Pro propojenou službu REST jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** musí být nastavená na **RestService**. | Ano |
+| type | Vlastnost **type** musí být nastavena na **RestService**. | Ano |
 | url | Základní adresa URL služby REST. | Ano |
-| enableServerCertificateValidation | Zda se má při připojování ke koncovému bodu ověřit certifikát SSL na straně serveru. | Ne<br /> (výchozí hodnota je **true**) |
-| authenticationType. | Typ ověřování, který se používá pro připojení ke službě REST Povolené hodnoty jsou **anonymní**, **Basic**, **AadServicePrincipal** a **ManagedServiceIdentity**. Další informace a příklady najdete v odpovídajících částech. | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud tento parametr nezadáte, použije tato vlastnost výchozí Azure Integration Runtime. |Ne |
+| enableServerCertificateValidation | Určuje, zda se má při připojování ke koncovému bodu ověřit certifikát SSL na straně serveru. | Ne<br /> (výchozí nastavení je **pravda**) |
+| authenticationType | Typ ověřování používaný pro připojení ke službě REST. Povolené hodnoty jsou **Anonymous**, **Basic**, **AadServicePrincipal** a **ManagedServiceIdentity**. Podívejte se na odpovídající části níže na více vlastností a příklady, resp. | Ano |
+| connectVia | [Prostředí Integrace Runtime](concepts-integration-runtime.md) pro připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, tato vlastnost používá výchozí Azure Integration Runtime. |Ne |
 
-### <a name="use-basic-authentication"></a>Použít základní ověřování
+### <a name="use-basic-authentication"></a>Použití základního ověřování
 
-Nastavte vlastnost **AuthenticationType** na hodnotu **Basic**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
+Nastavte vlastnost **authenticationType** na **základní**. Kromě obecných vlastností popsaných v předchozí části zadejte následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| userName | Uživatelské jméno, které se má použít pro přístup ke koncovému bodu REST. | Ano |
-| heslo | Heslo pro uživatele ( **userName** hodnota). Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| userName | Uživatelské jméno, které chcete použít pro přístup ke koncovému bodu REST. | Ano |
+| heslo | Heslo pro uživatele (hodnota **userName).** Označte toto pole jako typ **SecureString** pro bezpečné uložení v datové továrně. Můžete také [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad**
 
@@ -97,16 +97,16 @@ Nastavte vlastnost **AuthenticationType** na hodnotu **Basic**. Kromě obecných
 }
 ```
 
-### <a name="use-aad-service-principal-authentication"></a>Použít ověřování instančního objektu služby AAD
+### <a name="use-aad-service-principal-authentication"></a>Použití ověřování instančního objektu služby AAD
 
-Nastavte vlastnost **AuthenticationType** na **AadServicePrincipal**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
+Nastavte vlastnost **authenticationType** na **AadServicePrincipal**. Kromě obecných vlastností popsaných v předchozí části zadejte následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| servicePrincipalId | Zadejte ID klienta Azure Active Directory aplikace. | Ano |
-| servicePrincipalKey | Zadejte klíč Azure Active Directory aplikace. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení podržením ukazatele myši v pravém horním rohu webu Azure portal. | Ano |
-| aadResourceId | Zadejte prostředek AAD, který požadujete pro autorizaci, například `https://management.core.windows.net`.| Ano |
+| servicePrincipalId | Zadejte ID klienta aplikace Azure Active Directory. | Ano |
+| servicePrincipalKey | Zadejte klíč aplikace Azure Active Directory. Označte toto pole jako **SecureString** bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
+| Nájemce | Zadejte informace o klientovi (název domény nebo ID klienta), pod kterým se aplikace nachází. Načtěte ji najetím myší v pravém horním rohu portálu Azure. | Ano |
+| aadResourceId | Zadejte prostředek AAD, který požadujete pro `https://management.core.windows.net`autorizaci, například .| Ano |
 
 **Příklad**
 
@@ -134,13 +134,13 @@ Nastavte vlastnost **AuthenticationType** na **AadServicePrincipal**. Kromě obe
 }
 ```
 
-### <a name="managed-identity"></a>Použití spravovaných identit pro ověřování prostředků Azure
+### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Použití spravovaných identit pro ověřování prostředků Azure
 
-Nastavte vlastnost **AuthenticationType** na **ManagedServiceIdentity**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
+Nastavte vlastnost **authenticationType** na **ManagedServiceIdentity**. Kromě obecných vlastností popsaných v předchozí části zadejte následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| aadResourceId | Zadejte prostředek AAD, který požadujete pro autorizaci, například `https://management.core.windows.net`.| Ano |
+| aadResourceId | Zadejte prostředek AAD, který požadujete pro `https://management.core.windows.net`autorizaci, například .| Ano |
 
 **Příklad**
 
@@ -164,18 +164,18 @@ Nastavte vlastnost **AuthenticationType** na **ManagedServiceIdentity**. Kromě 
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-V této části najdete seznam vlastností, které datová sada REST podporuje. 
+Tato část obsahuje seznam vlastností, které podporuje datová sada REST. 
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). 
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete [v tématu Datové sady a propojené služby](concepts-datasets-linked-services.md). 
 
-Chcete-li kopírovat data z REST, jsou podporovány následující vlastnosti:
+Chcete-li zkopírovat data z REST, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** datové sady musí být nastavená na **RestResource**. | Ano |
-| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud tato vlastnost není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. Konektor HTTP kopíruje data z kombinované adresy URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Ne |
+| type | Vlastnost **type** datové sady musí být nastavena na **RestResource**. | Ano |
+| Relativeurl | Relativní adresa URL prostředku, který obsahuje data. Pokud tato vlastnost není zadána, použije se pouze adresa URL zadaná v definici propojené služby. Konektor HTTP zkopíruje data z `[URL specified in linked service]/[relative URL specified in dataset]`kombinované adresy URL: . | Ne |
 
-Pokud jste nacházeli `requestMethod`, `additionalHeaders`, `requestBody` a `paginationRules` v datové sadě, je tato možnost stále podporovaná tak, jak je, a když jste se rozhodli použít nový model ve zdroji aktivity, který je dál k dispozici.
+Pokud jste `requestMethod`nastavili `requestBody` `paginationRules` , `additionalHeaders`a v datové sadě, je stále podporována tak, jak je, zatímco se doporučuje použít nový model ve zdroji aktivity do budoucna.
 
 **Příklad:**
 
@@ -196,30 +196,30 @@ Pokud jste nacházeli `requestMethod`, `additionalHeaders`, `requestBody` a `pag
 }
 ```
 
-## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
+## <a name="copy-activity-properties"></a>Kopírovat vlastnosti aktivity
 
-V této části najdete seznam vlastností, které podporuje zdroj REST.
+Tato část obsahuje seznam vlastností, které podporuje zdroj REST.
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v [tématu Potrubí](concepts-pipelines-activities.md). 
 
-### <a name="rest-as-source"></a>REST as source
+### <a name="rest-as-source"></a>REST jako zdroj
 
-Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+V části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **RestSource**. | Ano |
-| requestMethod | Metoda HTTP Povolené hodnoty jsou **Get** (default) a **post**. | Ne |
-| additionalHeaders | Další hlavičky požadavku HTTP | Ne |
-| částmi | Tělo požadavku HTTP | Ne |
-| paginationRules | Pravidla stránkování pro vytváření žádostí o další stránku. Podrobnosti najdete v části [Podpora stránkování](#pagination-support) . | Ne |
-| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**.  | Ne |
-| requestInterval | Doba, po kterou se má čekat před odesláním žádosti o další stránku. Výchozí hodnota je **00:00:01** . |  Ne |
+| type | Vlastnost **type** zdroje aktivity kopírování musí být nastavena na **stav RestSource**. | Ano |
+| requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** (výchozí) a **Post**. | Ne |
+| additionalHeaders | Další hlavičky požadavku HTTP. | Ne |
+| requestBody | Tělo pro požadavek HTTP. | Ne |
+| paginationRules | Stránkování pravidla pro skládání další chpožadavků stránky. Podrobnosti naleznete v části [podpory stránkování.](#pagination-support) | Ne |
+| httpRequestTimeout | Časový čas (hodnota **TimeSpan)** pro požadavek HTTP získat odpověď. Tato hodnota je časový čas získat odpověď, nikoli časový čas pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**.  | Ne |
+| requestInterval | Doba čekání před odesláním požadavku na další stránku. Výchozí hodnota je **00:00:01** |  Ne |
 
 >[!NOTE]
->Konektor REST ignoruje všechny hlavičky Accept zadané v `additionalHeaders`. Protože konektor REST podporuje pouze odpověď ve formátu JSON, automaticky vygeneruje hlavičku `Accept: application/json`.
+>Konektor REST ignoruje všechny hlavičky `additionalHeaders`"Přijmout" zadané v . Jako REST konektor podporuje pouze odpověď v JSON, `Accept: application/json`bude automaticky generovat záhlaví .
 
-**Příklad 1: použití metody Get se stránkováním**
+**Příklad 1: Použití metody Get s stránkováním**
 
 ```json
 "activities":[
@@ -257,7 +257,7 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 ]
 ```
 
-**Příklad 2: použití metody post**
+**Příklad 2: Použití metody Post**
 
 ```json
 "activities":[
@@ -291,39 +291,39 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 ]
 ```
 
-## <a name="pagination-support"></a>Podpora stránkování
+## <a name="pagination-support"></a>Podpora pro pagination
 
-Za normálních okolností REST API omezuje velikost datové části odpovědi na jednu žádost v rozumném čísle. i když vrátí velké množství dat, rozdělí výsledek na více stránek a vyžaduje volajícím odeslání po sobě jdoucích požadavků na získání další stránky výsledku. Požadavek na jednu stránku je obvykle dynamický a skládá se z informací vrácených z odpovědi na předchozí stránku.
+Rozhraní REST API obvykle omezuje velikost užitečné ho zatížení odpovědi jednoho požadavku na základě přiměřeného počtu. zatímco vrátit velké množství dat, rozdělí výsledek na více stránek a vyžaduje, aby volající odeslat po sobě jdoucí chyzení, aby získali další stránku výsledku. Požadavek na jednu stránku je obvykle dynamický a skládá se z informací vrácených z odpovědi předchozí stránky.
 
 Tento obecný konektor REST podporuje následující vzory stránkování: 
 
-* Absolutní nebo relativní adresa URL nové žádosti = hodnota vlastnosti v aktuálním textu odpovědi
-* Absolutní nebo relativní URL nové žádosti = hodnota hlavičky v aktuálních hlavičkách odpovědi
-* Parametr dotazu další žádosti = hodnota vlastnosti v aktuálním textu odpovědi
-* Parametr dotazu další žádosti = hodnota hlavičky v aktuálních hlavičkách odpovědi
-* Hlavička další žádosti = hodnota vlastnosti v aktuálním těle odpovědi
-* Hlavička další žádosti = hodnota hlavičky v aktuálních hlavičkách odpovědi
+* Absolutní nebo relativní adresa URL dalšího požadavku = hodnota vlastnosti v aktuálním těle odpovědi
+* Absolutní nebo relativní adresa URL dalšího požadavku = hodnota záhlaví v aktuálních hlavičkách odpovědí
+* Parametr dotazu dalšího požadavku = hodnota vlastnosti v aktuálním těle odpovědi
+* Parametr dotazu dalšího požadavku = hodnota záhlaví v aktuálních hlavičkách odpovědí
+* Hlavička dalšího požadavku = hodnota vlastnosti v aktuálním těle odpovědi
+* Hlavička dalšího požadavku = hodnota hlavičky v aktuálních hlavičkách odpovědí
 
-**Pravidla stránkování** jsou definována jako slovník v datové sadě, který obsahuje jednu nebo více párů klíč-hodnota s rozlišováním velkých a malých písmen. Konfigurace se použije k vygenerování požadavku od druhé stránky. Konektor ukončí iteraci, když Získá stavový kód HTTP 204 (žádný obsah) nebo žádný z výrazů JSONPath v "paginationRules" vrátí hodnotu null.
+**Stránkovací pravidla** jsou definována jako slovník v datové sadě, která obsahuje jeden nebo více párů klíč-hodnota rozlišující malá a velká písmena. Konfigurace bude použita ke generování požadavku od druhé stránky. Konektor přestane iterace, když získá stavový kód HTTP 204 (žádný obsah) nebo některý z výrazů JSONPath v "paginationRules" vrátí null.
 
 **Podporované klíče** v pravidlech stránkování:
 
 | Klíč | Popis |
 |:--- |:--- |
-| AbsoluteUrl | Označuje adresu URL pro vydání dalšího požadavku. Může to být **buď absolutní adresa URL, nebo relativní adresa URL**. |
-| QueryParameters. *request_query_parameter* NEBO QueryParameters [' request_query_parameter '] | "request_query_parameter" je uživatelem definovaný uživatel, který odkazuje na jeden název parametru dotazu v další adrese URL požadavku HTTP. |
-| Záhlaví. *request_header* NEBO hlavičky [' request_header '] | "request_header" je definováno uživatelem, který odkazuje na jeden název záhlaví v další žádosti HTTP. |
+| AbsoluteUrl | Označuje adresu URL, která má vydat další požadavek. Může to být **absolutní nebo relativní adresa URL**. |
+| Parametry dotazu. *request_query_parameter* NEBO QueryParameters['request_query_parameter'] | "request_query_parameter" je definován uživatelem, který odkazuje na jeden název parametru dotazu v další adrese URL požadavku HTTP. |
+| Záhlaví. *request_header* Nebo záhlaví['request_header'] | "request_header" je definován uživatelem, který odkazuje na jeden název záhlaví v dalším požadavku HTTP. |
 
 **Podporované hodnoty** v pravidlech stránkování:
 
 | Hodnota | Popis |
 |:--- |:--- |
-| Záhlaví. *response_header* NEBO hlavičky [' response_header '] | "response_header" je definováno uživatelem, který odkazuje na jeden název záhlaví v aktuální odpovědi HTTP, hodnota, která bude použita k vystavení dalšího požadavku. |
-| Výraz JSONPath začínající znakem "$" (představuje kořen textu odpovědi) | Tělo odpovědi by mělo obsahovat pouze jeden objekt JSON. Výraz JSONPath by měl vracet jedinou primitivní hodnotu, která bude použita k vystavení dalšího požadavku. |
+| Záhlaví. *response_header* Nebo záhlaví['response_header'] | "response_header" je definován uživatelem, který odkazuje na jeden název záhlaví v aktuální odpovědi HTTP, jejíž hodnota bude použita k vydání dalšího požadavku. |
+| Výraz JSONPath začínající písmenem $(představující kořen těla odezvy) | Tělo odpovědi by mělo obsahovat pouze jeden objekt JSON. Výraz JSONPath by měl vrátit jednu primitivní hodnotu, která bude použita k vydání dalšího požadavku. |
 
 **Příklad:**
 
-Facebook Graph API vrátí odpověď v následující struktuře, kde adresa URL další stránky je reprezentovaná na ***stránkování. další***:
+Rozhraní FACEBOOK Graph API vrátí odpověď v následující struktuře, v takovém případě je adresa URL následující stránky reprezentována v ***stránkování.next***:
 
 ```json
 {
@@ -355,7 +355,7 @@ Facebook Graph API vrátí odpověď v následující struktuře, kde adresa URL
 }
 ```
 
-Odpovídající konfigurace zdroje aktivity pro kopírování REST, zejména `paginationRules`, je následující:
+Odpovídající konfigurace zdroje aktivity `paginationRules` kopírování REST, zejména je následující:
 
 ```json
 "typeProperties": {
@@ -373,82 +373,82 @@ Odpovídající konfigurace zdroje aktivity pro kopírování REST, zejména `pa
 ```
 
 ## <a name="use-oauth"></a>Použití OAuth
-Tato část popisuje, jak použít šablonu řešení ke kopírování dat z konektoru REST do Azure Data Lake Storage ve formátu JSON pomocí OAuth. 
+Tato část popisuje, jak pomocí šablony řešení kopírovat data z konektoru REST do Azure Data Lake Storage ve formátu JSON pomocí OAuth. 
 
-### <a name="about-the-solution-template"></a>O šabloně řešení
+### <a name="about-the-solution-template"></a>Šablona řešení
 
 Šablona obsahuje dvě aktivity:
-- Aktivita **webu** načte nosný token a pak ho předá do následné aktivity kopírování jako autorizaci.
-- Aktivita **kopírování** kopíruje data z REST do Azure Data Lake Storage.
+- **Webová** aktivita načte token nosiče a pak jej předá následné copy aktivity jako autorizace.
+- **Kopírování** aktivity zkopíruje data z REST do Azure Data Lake Storage.
 
 Šablona definuje dva parametry:
-- **SinkContainer** je cesta ke kořenové složce, do které se zkopírují data do svého Azure Data Lake Storage. 
-- **SinkDirectory** je cesta k adresáři v kořenovém adresáři, kam se zkopírují data do Azure Data Lake Storage. 
+- **SinkContainer** je cesta kořenové složky, do které se data zkopírují ve vašem azure úložiště datového jezera. 
+- **SinkDirectory** je cesta k adresáři pod kořenem, kde se data zkopírují do úložiště Azure Data Lake. 
 
-### <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
+### <a name="how-to-use-this-solution-template"></a>Použití této šablony řešení
 
-1. Přejděte na adresu **REST nebo HTTP pomocí šablony OAuth** . Vytvořte nové připojení pro zdrojové připojení. 
-    ![vytvořit nová připojení](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+1. Přejděte na kopii z REST nebo HTTP pomocí šablony **OAuth.** Vytvořte nové připojení pro zdrojové připojení. 
+    ![Vytvoření nových připojení](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
 
-    Níže jsou uvedené klíčové kroky pro nastavení nové propojené služby (REST):
+    Níže jsou uvedeny klíčové kroky pro nastavení nových propojených služeb (REST):
     
-     1. V části **základní adresa URL**zadejte parametr adresy URL pro vlastní zdrojovou službu REST. 
-     2. Jako **typ ověřování**vyberte *Anonymous (anonymní*).
-        ![nové připojení REST](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+     1. V části **Základní adresa URL**zadejte parametr url pro vlastní zdrojovou službu REST. 
+     2. Pro **typ ověřování**zvolte *Anonymní*.
+        ![Nové připojení REST](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
 
-2. Vytvoří nové připojení pro cílové připojení.  
+2. Vytvořte nové připojení pro cílové připojení.  
     ![Nové připojení Gen2](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
 
 3. Vyberte **Použít tuto šablonu**.
-    ![použít tuto šablonu](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+    ![Použít tuto šablonu](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. Zobrazí se vytvořený kanál, jak je znázorněno v následujícím příkladu: kanál ![](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. Zobrazí se vytvořený kanál, jak je ![znázorněno v následujícím příkladu: Pipeline](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
-5. Vyberte aktivitu **webu** . V **Nastavení**zadejte odpovídající **adresu URL**, **metodu**, **záhlaví**a **text** pro načtení tokenu Bearer OAuth z rozhraní API pro přihlášení služby, ze které chcete kopírovat data. Zástupný symbol v šabloně prezentuje ukázku protokolu OAuth pro Azure Active Directory (AAD). Poznámka: ověřování AAD je nativně podporované konektorem REST, tady je jenom příklad toku OAuth. 
+5. Vyberte **aktivitu na webu.** V **nastavení**zadejte odpovídající **adresu URL**, **metodu**, **záhlaví**a **tělo** pro načtení tokenu nosiče OAuth z přihlašovacího rozhraní API služby, ze které chcete kopírovat data. Zástupný symbol v šabloně představuje ukázku OAuth služby Azure Active Directory (AAD). Poznámka: Ověřování AAD je nativně podporováno konektorem REST, zde je pouze příklad toku OAuth. 
 
     | Vlastnost | Popis |
     |:--- |:--- |:--- |
-    | Adresa URL |Zadejte adresu URL, ze které se má načíst token nosiče OAuth. například v ukázce je https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
-    | Metoda | Metoda HTTP Povolené hodnoty jsou **post** a **Get**. | 
-    | Hlavičky | Záhlaví je definováno uživatelem, které odkazuje na jeden název záhlaví v požadavku HTTP. | 
-    | Tělo | Tělo požadavku HTTP | 
+    | zprostředkovatele identity |Zadejte adresu url, ze které chcete načíst token nosiče OAuth. například ve vzorku zde je tohttps://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | Metoda | Metoda HTTP. Povolené hodnoty jsou **Zaúčtovat** a **získat**. | 
+    | Hlavičky | Hlavička je definována uživatelem, která odkazuje na jeden název záhlaví v požadavku HTTP. | 
+    | Tělo | Tělo pro požadavek HTTP. | 
 
     ![Kanál](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
-6. V části aktivita **kopírování dat** vyberte kartu *zdroj* . můžete vidět, že nosný token (access_token) načtený z předchozího kroku se předává aktivitě kopírovat data jako **autorizace** v dalších hlavičkách. Před spuštěním spuštění kanálu potvrďte nastavení následujících vlastností.
+6. V **aktivitě Kopírovat data** vyberte kartu *Zdroj,* můžete vidět, že token nosiče (access_token) načtený z předchozího kroku by byl předán kopírovat aktivitu dat jako **autorizaci** v části Další záhlaví. Před spuštěním spuštění kanálu potvrďte nastavení následujících vlastností.
 
     | Vlastnost | Popis |
     |:--- |:--- |:--- | 
-    | Request – metoda | Metoda HTTP Povolené hodnoty jsou **Get** (default) a **post**. | 
-    | Další záhlaví | Další hlavičky požadavku HTTP| 
+    | Metoda požadavku | Metoda HTTP. Povolené hodnoty jsou **Get** (výchozí) a **Post**. | 
+    | Další záhlaví | Další hlavičky požadavku HTTP.| 
 
-   ![Kopírovat ověření zdroje](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+   ![Ověřování zdroje kopírování](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
 
-7. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
-   ![spuštění kanálu](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+7. Vyberte **Ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+   ![Spuštění kanálu](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. Po úspěšném dokončení kanálu by se zobrazil výsledek podobný následujícímu příkladu: ![výsledek spuštění kanálu](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. Po úspěšném dokončení spuštění kanálu se zobrazí výsledek podobný následujícímu příkladu: ![Výsledek spuštění kanálu](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
-9. Klikněte na ikonu "výstup" aktivity webactivity ve sloupci **Actions (akce** ). zobrazí se access_token vrácená službou.
+9. Klikněte na ikonu "Výstup" ve sloupci WebActivity ve **sloupci Akce,** zobrazí se access_token vrácená službou.
 
    ![Výstup tokenu](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
 
-10. Klikněte na ikonu Input (vstup) CopyActivity ve sloupci **Actions (akce** ). zobrazí se zpráva, Access_token že aktivita získaná funkcí webactivity se předává CopyActivity pro ověřování. 
+10. Klikněte na ikonu "Vstup" copyactivity ve **sloupci Akce,** uvidíte access_token načtený WebActivity je předán CopyActivity pro ověřování. 
 
     ![Vstup tokenu](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
         
     >[!CAUTION] 
-    >Aby nedocházelo k přihlašování do prostého textu, povolte v aktivitě kopírování "zabezpečený výstup" v aktivitě web a "zabezpečený vstup".
+    >Chcete-li zabránit protokolovanému tokenu ve formátu prostého textu, povolte "Zabezpečený výstup" ve webové aktivitě a "Zabezpečený vstup" v aktivitě kopírování.
 
 
-## <a name="export-json-response-as-is"></a>Exportovat odpověď JSON tak, jak je
+## <a name="export-json-response-as-is"></a>Exportovat odpověď JSON jako-je
 
-Pomocí tohoto konektoru REST můžete exportovat REST API odpověď JSON tak, jak se nachází v různých úložištích založených na souborech. Chcete-li dosáhnout takového schématu – nezávislá kopírování, přeskočte oddíl Structure (označuje se také jako *schéma*) v datové sadě a mapování schématu v aktivitě kopírování.
+Tento konektor REST můžete použít k exportu odpovědi REST API JSON jako-je do různých úložišť založených na souborech. Chcete-li dosáhnout takové schéma-agnostik kopírování, přeskočte část "struktura" (také volal *schéma*) v datové sadě a mapování schématu v aktivitě kopírování.
 
-## <a name="schema-mapping"></a>Schema mapping
+## <a name="schema-mapping"></a>Mapování schématu
 
-Chcete-li kopírovat data z koncového bodu REST do tabulkové jímky, přečtěte si téma [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping).
+Chcete-li zkopírovat data z koncového bodu REST do tabulkového jímky, podívejte se na [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat, která podporují aktivity kopírování jako zdroje a propady v Azure Data Factory, najdete v [tématu Podporovaná úložiště dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).

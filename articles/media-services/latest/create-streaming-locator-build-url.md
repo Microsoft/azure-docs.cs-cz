@@ -1,6 +1,6 @@
 ---
-title: Vytvoření lokátoru streamování a adres URL sestavení – Azure Media Services
-description: Tento článek ukazuje, jak vytvořit Lokátor streamování a adresy URL sestavení.
+title: Vytvoření lokátoru streamování a vytváření adres URL – Azure Media Services
+description: Tento článek ukazuje, jak vytvořit lokátor streamování a vytvořit adresy URL.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304560"
 ---
-# <a name="create-a-streaming-locator-and-build-urls"></a>Vytvoření lokátoru streamování a adres URL sestavení
+# <a name="create-a-streaming-locator-and-build-urls"></a>Vytvoření lokátoru streamování a vytváření adres URL
 
-Pokud chcete v Azure Media Services vytvořit adresu URL streamování, musíte nejdřív vytvořit [Lokátor streamování](streaming-locators-concept.md). Potom zřetězete název hostitele [koncového bodu streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) a cestu k **lokátoru streamování** . V této ukázce se používá *výchozí* **koncový bod streamování** . Když poprvé vytvoříte účet služby Media Service, bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže musíte zavolat **Spustit** , aby se spustilo streamování.
+Chcete-li ve službě Azure Media Services vytvořit adresu URL streamování, musíte nejprve vytvořit [lokátor streamování](streaming-locators-concept.md). Potom zřetězit název hostitele [koncového bodu streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) a **cesty lokátoru streamování.** V této ukázce se používá *výchozí* **koncový bod streamování.** Při prvním vytvoření účtu služby Media Service bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže je třeba volat **Start** a spustit streamování.
 
-Tento článek ukazuje, jak vytvořit Lokátor streamování a vytvořit adresu URL streamování pomocí sad Java a .NET SDK.
+Tento článek ukazuje, jak vytvořit lokátor streamování a vytvořit adresu URL streamování pomocí sad Java a .NET SDK.
 
 ## <a name="prerequisite"></a>Požadavek 
 
@@ -85,7 +85,7 @@ private static List<String> getStreamingUrls(MediaManager manager, String resour
 }
 ```
 
-Viz kompletní ukázka kódu: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+Podívejte se na celou ukázku kódu: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -158,13 +158,13 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 }
 ```
 
-Viz kompletní ukázka kódu: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+Podívejte se na celou ukázku kódu: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
 ## <a name="see-also"></a>Viz také
 
 * [Vytváření filtrů pomocí .NET](filters-dynamic-manifest-dotnet-howto.md)
 * [Vytváření filtrů pomocí REST](filters-dynamic-manifest-rest-howto.md)
-* [Vytváření filtrů pomocí rozhraní příkazového řádku](filters-dynamic-manifest-cli-howto.md)
+* [Vytváření filtrů pomocí cli](filters-dynamic-manifest-cli-howto.md)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Použití příkazů řízení Azure Průzkumník dat v Azure Data Factory
-description: V tomto tématu použijte příkazy pro řízení Průzkumník dat Azure v Azure Data Factory
+title: Použití ovládacích příkazů Průzkumníka dat Azure v Azure Data Factory
+description: V tomto tématu použijte příkazy ovládacího prvku Azure Data Explorer v Azure Data Factory
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,89 +9,89 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72264487"
 ---
-# <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Použití aktivity Azure Data Factory příkazu pro spuštění příkazů Azure Průzkumník dat Control
+# <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Spuštění příkazů ovládacího prvku Azure Data Explorer pomocí aktivity příkazů Azure Data Factory
 
-[Azure Data Factory](/azure/data-factory/) (ADF) je cloudová služba pro integraci dat, která umožňuje provádět kombinaci aktivit s daty. Pomocí ADF můžete vytvářet pracovní postupy řízené daty pro orchestraci a automatizaci přesunu dat a transformaci dat. Aktivita **příkazu azure Průzkumník dat** v Azure Data Factory umožňuje spouštět [příkazy řízení služby Azure Průzkumník dat](/azure/kusto/concepts/#control-commands) v rámci pracovního postupu ADF. V tomto článku se naučíte, jak vytvořit kanál s aktivitou vyhledávání a aktivitou ForEach, která obsahuje aktivitu příkazu Azure Průzkumník dat.
+[Azure Data Factory](/azure/data-factory/) (ADF) je cloudová služba integrace dat, která umožňuje provádět kombinaci aktivit na datech. Pomocí adf můžete vytvářet pracovní postupy řízené daty pro orchestraci a automatizaci přesunu dat a transformace dat. Aktivita **příkazu Azure Data Explorer** v Azure Data Factory umožňuje spouštět [příkazy řízení Průzkumníka dat Azure](/azure/kusto/concepts/#control-commands) v rámci pracovního postupu ADF. Tento článek vás naučí, jak vytvořit kanál s vyhledávací aktivitou a aktivitou ForEach obsahující aktivitu příkazu Průzkumníka dat Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Cluster a databáze Azure Průzkumník dat](create-cluster-database-portal.md)
+* [Cluster a databáze Průzkumníka dat Azure](create-cluster-database-portal.md)
 * Zdroj dat.
-* [Datová továrna](data-factory-load-data.md#create-a-data-factory)
+* [Továrna na data](data-factory-load-data.md#create-a-data-factory)
 
-## <a name="create-a-new-pipeline"></a>Vytvořit nový kanál
+## <a name="create-a-new-pipeline"></a>Vytvoření nového kanálu
 
-1. Vyberte nástroj pro **tvorbu** tužky. 
-1. Vytvořte nový kanál výběrem **+** a pak v rozevíracím seznamu vyberte **kanál** .
+1. Vyberte nástroj **autora** tužky. 
+1. Vytvořte nový kanál **+** výběrem a pak v rozevíracím seznamu vyberte **Pipeline.**
 
    ![vytvořit nový kanál](media/data-factory-command-activity/create-pipeline.png)
 
-## <a name="create-a-lookup-activity"></a>Vytvoření aktivity vyhledávání
+## <a name="create-a-lookup-activity"></a>Vytvoření vyhledávací aktivity
 
-[Aktivita vyhledávání](/azure/data-factory/control-flow-lookup-activity) může načíst datovou sadu z libovolného zdroje dat podporovaného Azure Data Factory. Výstup aktivity vyhledávání lze použít v ForEach nebo jiné aktivitě.
+[Vyhledávací aktivita](/azure/data-factory/control-flow-lookup-activity) můžete načíst datovou sadu z libovolného zdroje dat podporované Azure Data Factory. Výstup z aktivity vyhledávání lze použít v ForEach nebo jiné aktivity.
 
-1. V podokně **aktivity** v části **Obecné**vyberte aktivitu **vyhledávání** . Přetáhněte ho na hlavní plátno na pravé straně.
+1. V podokně **Aktivity** vyberte v části **Obecné**aktivitu **vyhledávání.** Přetáhněte jej do hlavního plátna vpravo.
  
-    ![vybrat aktivitu vyhledávání](media/data-factory-command-activity/select-activity.png)
+    ![vybrat vyhledávací aktivitu](media/data-factory-command-activity/select-activity.png)
 
-1. Plátno teď obsahuje aktivitu vyhledávání, kterou jste vytvořili. Pomocí karet pod plátnem můžete změnit všechny relevantní parametry. V části **Obecné**přejmenujte aktivitu. 
+1. Plátno nyní obsahuje vyhledávací aktivitu, kterou jste vytvořili. Pomocí karet pod plátnem můžete změnit všechny relevantní parametry. **Obecně platí**, přejmenujte aktivitu. 
 
-    ![Upravit aktivitu vyhledávání](media/data-factory-command-activity/edit-lookup-activity.PNG)
+    ![upravit vyhledávací aktivitu](media/data-factory-command-activity/edit-lookup-activity.PNG)
 
     > [!TIP]
-    > Kliknutím na prázdnou oblast plátna zobrazíte vlastnosti kanálu. K přejmenování kanálu použijte kartu **Obecné** . Náš kanál se nazývá *kanál-4-docs*.
+    > Kliknutím na prázdnou oblast plátna zobrazíte vlastnosti kanálu. K přejmenování kanálu použijte kartu **Obecné.** Náš kanál se jmenuje *pipeline-4-docs*.
 
-### <a name="create-an-azure-data-explorer-dataset-in-lookup-activity"></a>Vytvoření datové sady Azure Průzkumník dat v aktivitě vyhledávání
+### <a name="create-an-azure-data-explorer-dataset-in-lookup-activity"></a>Vytvoření datové sady Průzkumníka dat Azure ve vyhledávací aktivitě
 
-1. V **Nastavení**vyberte předem vytvořenou **zdrojovou datovou sadu**Azure Průzkumník dat nebo vyberte **+ Nová** a vytvořte novou datovou sadu.
+1. V **nastavení**vyberte předem vytvořenou **zdrojovou datovou sadu**Průzkumníka dat Azure nebo vyberte + **Nový** a vytvořte novou datovou sadu.
  
-    ![Přidat datovou sadu v nastavení vyhledávání](media/data-factory-command-activity/lookup-settings.png)
+    ![přidání datové sady v nastavení vyhledávání](media/data-factory-command-activity/lookup-settings.png)
 
-1. V okně **Nová datová sada** vyberte datovou sadu **Azure Průzkumník dat (Kusto)** . Chcete-li přidat novou datovou sadu, vyberte **pokračovat** .
+1. Vyberte datovou sadu **Průzkumníka dat Azure (Kusto)** z okna **Nová datová sada.** Výběrem **možnosti Pokračovat** přidejte novou datovou sadu.
 
    ![vybrat novou datovou sadu](media/data-factory-command-activity/select-new-dataset.png) 
 
-1. Nové parametry datové sady Azure Průzkumník dat jsou v **Nastavení**viditelné. Chcete-li aktualizovat parametry, vyberte možnost **Upravit**.
+1. Nové parametry datové sady Azure Data Explorer jsou viditelné v **nastavení**. Chcete-li parametry aktualizovat, vyberte **možnost Upravit**.
 
-    ![nastavení vyhledávání s datovou sadou Azure Průzkumník dat](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
+    ![nastavení vyhledávání pomocí datové sady Azure Data Explorer](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
 
 1. Otevře se nová karta **AzureDataExplorerTable** na hlavním plátně. 
     * Vyberte **Obecné** a upravte název datové sady. 
-    * Vyberte **připojení** , chcete-li upravit vlastnosti datové sady. 
-    * Vyberte **propojenou službu** z rozevíracího seznamu nebo vyberte **+ Nová** a vytvořte novou propojenou službu.
+    * Vyberte **Připojení,** chcete-li upravit vlastnosti datové sady. 
+    * V rozevíracím souboru vyberte **službu Propojeno** nebo vyberte **+ Nový** a vytvořte novou propojenou službu.
 
-    ![Upravit vlastnosti datové sady Azure Průzkumník dat](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
+    ![Úprava vlastností datové sady Průzkumníka dat Azure](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
 
-1. Při vytváření nové propojené služby se otevře stránka **Nová propojená služba (Azure Průzkumník dat)** :
+1. Při vytváření nové propojené služby se otevře stránka **Nová propojená služba (Průzkumník dat Azure):**
 
     ![Nová propojená služba ADX](media/data-factory-command-activity/adx-new-linked-service.png)
 
-   * Vyberte **název** propojené služby Azure Průzkumník dat. V případě potřeby přidejte **Popis** .
-   * V možnosti **připojit prostřednictvím prostředí Integration runtime**v případě potřeby změňte aktuální nastavení. 
-   * V části **metoda výběru účtu** vyberte svůj cluster pomocí jedné ze dvou metod: 
-        * Vyberte přepínač **z předplatného Azure** a vyberte svůj účet **předplatného Azure** . Pak vyberte svůj **cluster**. Poznámka: rozevírací seznam bude zobrazovat jenom clustery, které patří k uživateli.
-        * Místo toho vyberte **zadat ručně** přepínač a zadejte **koncový bod** (URL clusteru).
+   * Vyberte **Název** propojené služby Azure Data Explorer. V případě potřeby přidejte **popis.**
+   * V **části Připojit pomocí integračního runtime**v případě potřeby změňte aktuální nastavení. 
+   * V **metodě výběru účtu** vyberte cluster pomocí jedné ze dvou metod: 
+        * Vyberte **přepínací** tlačítko Z předplatného Azure a vyberte účet **předplatného Azure.** Potom vyberte **cluster**. Všimněte si, že rozevírací seznam bude seznam pouze clustery, které patří uživateli.
+        * Místo toho vyberte **Ručně** zadat přepínací tlačítko a zadejte **koncový bod** (adresu URL clusteru).
     * Zadejte **tenanta**.
-    * Zadejte **ID instančního objektu**. ID objektu zabezpečení musí mít odpovídající oprávnění podle úrovně oprávnění požadované použitým příkazem.
-    * Vyberte tlačítko **klíč instančního objektu** a zadejte **klíč instančního objektu služby**.
-    * Z rozevírací nabídky vyberte svou **databázi** . Případně můžete vybrat zaškrtávací políčko **Upravit** a zadat název databáze.
-    * Vyberte **Test připojení** a otestujte připojení propojené služby, které jste vytvořili. Pokud se můžete připojit k instalaci, **zobrazí se zelený symbol zaškrtnutí.**
-    * Vytvoření propojené služby dokončíte kliknutím na **Dokončit** .
+    * Zadejte **ID instančního objektu**. ID objektu zabezpečení musí mít odpovídající oprávnění podle úrovně oprávnění vyžadované používaným příkazem.
+    * Vyberte tlačítko **hlavního povinného servisu** a zadejte **hlavní klíč servisu**.
+    * V rozevírací nabídce vyberte **databázi.** Případně zaškrtněte políčko **Upravit** a zadejte název databáze.
+    * Vyberte **Testovat připojení,** chcete-li otestovat připojení propojené služby, které jste vytvořili. Pokud se můžete připojit k nastavení, zobrazí se zelená značka **Připojení jako úspěšné.**
+    * Chcete-li dokončit vytvoření propojené služby, vyberte **možnost Dokončit.**
 
-1. Jakmile nanastavíte propojenou službu, v **AzureDataExplorerTable** **připojení** >  přidejte název **tabulky** . Vyberte **Náhled dat**, abyste se ujistili, že se data zobrazují správně.
+1. Po nastavení propojené služby v **azuredataexplorertable** > **připojení**, přidejte název **tabulky.** Vyberte **Náhled dat**, abyste se ujistili, že jsou data zobrazena správně.
 
-   Vaše datová sada je teď připravená a můžete pokračovat v úpravách kanálu.
+   Vaše datová sada je nyní připravena a můžete pokračovat v úpravách kanálu.
 
-### <a name="add-a-query-to-your-lookup-activity"></a>Přidat dotaz do aktivity vyhledávání
+### <a name="add-a-query-to-your-lookup-activity"></a>Přidání dotazu k vyhledávací aktivitě
 
-1. V**Nastavení** **kanál-4-docs** >  přidejte do textového pole **dotazu** dotaz, například:
+1. V**nastavení** **pipeline-4-docs** > přidejte dotaz do textového pole **Dotaz,** například:
 
     ```kusto
     ClusterQueries
@@ -99,39 +99,39 @@ ms.locfileid: "72264487"
     | summarize count() by Database
     ```
 
-1. V případě potřeby změňte **časový limit dotazu** nebo pouze vlastnosti **zkrácení** a **první řádek** . V tomto toku zachováme výchozí **časový limit dotazu** a zrušíte zaškrtnutí těchto políček. 
+1. Podle potřeby změňte **časový limit dotazu** nebo **žádné zkrácení** a **pouze první řádek vlastnosti.** V tomto toku zachováme výchozí **časový limit dotazu** a zrušit zaškrtnutí políček. 
 
-    ![Konečné nastavení aktivity vyhledávání](media/data-factory-command-activity/lookup-activity-final-settings.png)
+    ![Konečné nastavení vyhledávací aktivity](media/data-factory-command-activity/lookup-activity-final-settings.png)
 
-## <a name="create-a-for-each-activity"></a>Vytvoření aktivity for-each 
+## <a name="create-a-for-each-activity"></a>Vytvoření aktivity pro každý 
 
-Aktivita [for-each](/azure/data-factory/control-flow-for-each-activity) se používá k iteraci v kolekci a provádění zadaných aktivit ve smyčce. 
+[For-Each](/azure/data-factory/control-flow-for-each-activity) aktivita se používá k iterátu přes kolekci a spustit zadané aktivity ve smyčce. 
 
-1. Nyní do kanálu přidáte aktivitu for-each. Tato aktivita zpracuje data vrácená z aktivity vyhledávání. 
-    * V podokně **aktivity** v části **iterace & Podmíněné podmínky**vyberte aktivitu **foreach** a přetáhněte ji na plátno.
-    * Nakreslete čáru mezi výstupem aktivity vyhledávání a vstupem aktivity ForEach na plátně, abyste je připojili.
+1. Nyní přidáte aktivitu Pro každý do kanálu. Tato aktivita bude zpracovávat data vrácená z aktivity vyhledávání. 
+    * V podokně **Aktivity** vyberte v části **Iterace & podmíněných podmínek**aktivitu **ForEach** a přetáhněte ji do plátna.
+    * Nakreslete čáru mezi výstupem aktivity vyhledávání a vstupem aktivity ForEach na plátně, která je spojuje.
 
         ![Aktivita ForEach](media/data-factory-command-activity/for-each-activity.png)
 
 1.  Vyberte aktivitu ForEach na plátně. Na kartě **Nastavení** níže:
-    * Zaškrtněte políčko **sekvenční** pro sekvenční zpracování výsledků vyhledávání nebo ho nechte nezaškrtnuté, chcete-li vytvořit paralelní zpracování.
-    * Nastavte **počet dávek**.
-    * V části **položky**zadejte následující odkaz na výstupní hodnotu: *@activity (' Lookup1 '). Output. Value*
+    * Zaškrtněte políčko **Sekvenční** pro sekvenční zpracování výsledků vyhledávání nebo ponechat nezaškrtnuté vytvořit paralelní zpracování.
+    * Nastavit **počet dávek**.
+    * V **části Položky**uveďte následující odkaz na výstupní hodnotu: * @activity('Lookup1').output.value*
 
        ![Nastavení aktivity ForEach](media/data-factory-command-activity/for-each-activity-settings.png)
 
-## <a name="create-an-azure-data-explorer-command-activity-within-the-foreach-activity"></a>Vytvoření aktivity příkazu Azure Průzkumník dat v rámci aktivity ForEach
+## <a name="create-an-azure-data-explorer-command-activity-within-the-foreach-activity"></a>Vytvoření aktivity příkazu Průzkumníka dat Azure v rámci aktivity ForEach
 
-1. Poklikejte na aktivitu ForEach na plátně a otevřete ji na novém plátně a určete aktivity v rámci ForEach.
-1. V podokně **aktivity** v části **Azure Průzkumník dat**vyberte aktivitu **příkazu Azure Průzkumník dat** a přetáhněte ji na plátno.
+1. Poklepáním na aktivitu ForEach na plátně ji otevřete na novém plátně a určete aktivity v rámci foreach.
+1. V podokně **Aktivity** vyberte v části **Průzkumník dat Azure**aktivitu **příkazu Průzkumníka dat Azure** a přetáhněte ji na plátno.
 
-    ![Aktivita příkazu Azure Průzkumník dat](media/data-factory-command-activity/adx-command-activity.png)
+    ![Aktivita příkazu Azure Data Explorer](media/data-factory-command-activity/adx-command-activity.png)
 
-1.  Na kartě **připojení** vyberte dříve vytvořenou propojenou službu.
+1.  Na kartě **Připojení** vyberte stejnou propojenou službu, která byla dříve vytvořena.
 
-    ![karta připojení aktivity příkazu v Průzkumníku dat Azure](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
+    ![karta připojení k aktivitě příkazu azure data explorer](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
 
-1. Na kartě **příkaz** zadejte následující příkaz:
+1. Na kartě **Příkaz** zadejte následující příkaz:
 
     ```kusto
     .export
@@ -143,34 +143,34 @@ Aktivita [for-each](/azure/data-factory/control-flow-for-each-activity) se použ
     <| ClusterQueries | where Database == "@{item().Database}"
     ```
 
-    **Příkaz** dá službě Azure Průzkumník dat pokyn Exportovat výsledky daného dotazu do úložiště objektů BLOB v komprimovaném formátu. Spouští se asynchronně (pomocí modifikátoru Async).
-    Dotaz řeší sloupec databáze každého řádku ve výsledku hledání aktivity vyhledávání. **Časový limit příkazu** může být ponechán beze změny.
+    **Příkaz** instruuje Azure Data Explorer exportovat výsledky daného dotazu do úložiště objektů blob v komprimovaném formátu. Spouští se asynchronně (pomocí asynchronního modifikátoru).
+    Dotaz řeší sloupec databáze každého řádku ve výsledku aktivity vyhledávání. **Časový čas příkazu** může zůstat beze změny.
 
     ![aktivita příkazu](media/data-factory-command-activity/command.png)   
 
     > [!NOTE]
     > Aktivita příkazu má následující omezení:
-    > * Omezení velikosti: 1 MB velikosti odpovědi
-    > * Časový limit: 20 minut (výchozí), 1 hodina (maximum).
-    > * V případě potřeby můžete k výsledku připojit dotaz pomocí [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands)a snížit tak výslednou velikost a čas.
+    > * Omezení velikosti: velikost odezvy 1 MB
+    > * Časový limit: 20 minut (výchozí), 1 hodina (maximálně).
+    > * V případě potřeby můžete připojit dotaz k výsledku pomocí [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands), chcete-li snížit výslednou velikost/čas.
 
-1.  Kanál je teď připravený. Kliknutím na název kanálu se můžete vrátit k hlavnímu Zobrazení kanálu.
+1.  Teď je potrubí připraveno. Kliknutím na název kanálu se můžete vrátit do zobrazení hlavního kanálu.
 
-    ![Kanál příkazů Azure Průzkumník dat](media/data-factory-command-activity/adx-command-pipeline.png)
+    ![Kanál příkazů Průzkumníka dat Azure](media/data-factory-command-activity/adx-command-pipeline.png)
 
-1. Před publikováním kanálu vyberte **ladit** . Průběh kanálu lze monitorovat na kartě **výstup** .
+1. Před publikováním kanálu vyberte **Ladění.** Průběh kanálu lze sledovat na kartě **Výstup.**
 
-    ![výstup aktivity příkazů v Průzkumníku dat Azure](media/data-factory-command-activity/command-activity-output.png)
+    ![výstup aktivity příkazu průzkumníka dat Azure](media/data-factory-command-activity/command-activity-output.png)
 
-1. Můžete **publikovat vše** a potom **Přidat aktivační událost** pro spuštění kanálu. 
+1. Můžete **publikovat vše** a pak **přidat aktivační událost** pro spuštění kanálu. 
 
-## <a name="control-command-outputs"></a>Výstupy řídicích příkazů
+## <a name="control-command-outputs"></a>Řídicí výstupy příkazů
 
-Struktura výstupu aktivity příkazu je popsána níže. Tento výstup může použít další aktivita v kanálu.
+Struktura výstupu aktivity příkazu je podrobně popsána níže. Tento výstup lze použít další aktivity v kanálu.
 
-### <a name="returned-value-of-a-non-async-control-command"></a>Vrácená hodnota řídicího příkazu, který není asynchronní
+### <a name="returned-value-of-a-non-async-control-command"></a>Vrácená hodnota příkazu neasynchronního řízení
 
-V neasynchronním řídicím příkazu je struktura vrácené hodnoty podobná struktuře výsledku vyhledávací aktivity. Pole `count` označuje počet vrácených záznamů. Pole s pevným polem `value` obsahuje seznam záznamů. 
+V příkazu řízení bez asynchronního je struktura vrácené hodnoty podobná struktuře výsledku aktivity vyhledávání. Toto `count` pole označuje počet vrácených záznamů. Pole s `value` pevným polem obsahuje seznam záznamů. 
 
 ```json
 { 
@@ -190,9 +190,9 @@ V neasynchronním řídicím příkazu je struktura vrácené hodnoty podobná s
 } 
 ```
  
-### <a name="returned-value-of-an-async-control-command"></a>Vrácená hodnota příkazu asynchronního řízení
+### <a name="returned-value-of-an-async-control-command"></a>Vrácená hodnota příkazu asynchronního ovládacího prvku
 
-V příkazu asynchronního řízení se aktivita dotazuje tabulky operací na pozadí, dokud není asynchronní operace dokončena nebo vypršel časový limit. Proto Vrácená hodnota bude obsahovat výsledek `.show operations OperationId` pro danou vlastnost **OperationId** . Zkontrolujte hodnoty vlastností **stav** a **stav** , abyste ověřili úspěšné dokončení operace.
+V příkazu asynchronního ovládacího prvku aktivita dotazování tabulka operací na pozadí, dokud asynchronní operace je dokončena nebo časový čas. Proto vrácená hodnota bude obsahovat výsledek `.show operations OperationId` pro danou **OperationId** vlastnost. Zkontrolujte hodnoty **vlastností Stav** a **Stav,** chcete-li ověřit úspěšné dokončení operace.
 
 ```json
 { 
@@ -219,5 +219,5 @@ V příkazu asynchronního řízení se aktivita dotazuje tabulky operací na po
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si informace o tom, jak [Kopírovat data do Azure Průzkumník dat pomocí Azure Data Factory](data-factory-load-data.md).
-* Přečtěte si o použití [šablony Azure Data Factory pro hromadné kopírování z databáze do Azure Průzkumník dat](data-factory-template.md).
+* Přečtěte si, jak [zkopírovat data do Azure Data Exploreru pomocí Azure Data Factory](data-factory-load-data.md).
+* Přečtěte si o používání [šablony Azure Data Factory pro hromadné kopírování z databáze do Průzkumníka dat Azure](data-factory-template.md).

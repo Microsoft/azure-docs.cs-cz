@@ -1,6 +1,6 @@
 ---
-title: Posílání a přijímání událostí z Azure Event Hubs pomocí Java (nejnovější)
-description: Tento článek popisuje postup vytvoření aplikace Java, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure-Messaging-eventhubs.
+title: Odesílání nebo přijímání událostí z Azure Event Hubs pomocí Javy (nejnovější)
+description: Tento článek obsahuje návod k vytvoření aplikace Java, která odesílá a přijímá události do/z Azure Event Hubs pomocí nejnovějšího balíčku azure-messaging eventhubs.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,34 +9,34 @@ ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 44f57f52be512924e228d6488a786d117c6444e7
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79370589"
 ---
-# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-zasílání zpráv – eventhubs)
-V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku Java **-Messaging-eventhubs** Java.
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Použití jazyka Java k odesílání událostí nebo přijímání událostí z Azure Event Hubs (azure-messaging eventhubs)
+Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je z centra událostí pomocí balíčku **Java azure-messaging eventhubs.**
 
 > [!IMPORTANT]
-> V tomto rychlém startu se používá nový balíček **Azure-Messaging-eventhubs** . Pro rychlý Start, který používá staré balíčky **Azure-eventhubs** a **Azure-eventhubs-EPH** , najdete informace v tématu [posílání a přijímání událostí pomocí Azure-eventhubs a Azure-eventhubs-EPH](event-hubs-java-get-started-send.md). 
+> Tento rychlý start používá nový balíček **azure-messaging eventhubs.** Pro rychlý start, který používá staré **balíčky azure-eventhubs** a **azure-eventhubs-eph,** najdete v tématu [Odesílání a přijímání událostí pomocí azure-eventhubs a azure-eventhubs-eph](event-hubs-java-get-started-send.md). 
 
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
+Pokud s Azure Event Hubs tečujete, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
 
-K dokončení tohoto rychlého startu potřebujete následující požadavky:
+Chcete-li tento rychlý start dokončit, potřebujete následující požadavky:
 
-- **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
-- Vývojové prostředí Java. V tomto rychlém startu se používá [zatmění](https://www.eclipse.org/). Vyžaduje se sada Java Development Kit (JDK) s verzí 8 nebo vyšší. 
-- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů Event Hubs** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
+- **Předplatné Microsoft Azure**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo použít výhody předplatitele MSDN při vytváření [účtu](https://azure.microsoft.com).
+- Vývojové prostředí Javy. Tento rychlý start používá [Eclipse](https://www.eclipse.org/). Java Development Kit (JDK) s verzí 8 nebo vyšší je vyžadována. 
+- **Vytvořte obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [portálu Azure](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Chcete-li vytvořit obor názvů a centrum událostí, postupujte podle postupu v [tomto článku](event-hubs-create.md). Potom získejte **připojovací řetězec pro obor názvů Event Hubs** podle následujících pokynů z článku: [Získat připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
 
 ## <a name="send-events"></a>Odesílání událostí 
-V této části se dozvíte, jak vytvořit aplikaci Java pro posílání událostí do centra událostí. 
+V této části se zobrazí, jak vytvořit java aplikaci pro odesílání událostí z centra událostí. 
 
-### <a name="add-reference-to-azure-event-hubs-library"></a>Přidat odkaz na knihovnu služby Azure Event Hubs
+### <a name="add-reference-to-azure-event-hubs-library"></a>Přidání odkazu na knihovnu Azure Event Hubs
 
-Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/search?q=a:azure-messaging-eventhubs). Na tuto knihovnu můžete odkazovat pomocí následující deklarace závislosti v rámci souboru projektu Maven:
+Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [Centrálního úložiště Maven](https://search.maven.org/search?q=a:azure-messaging-eventhubs). Na tuto knihovnu můžete odkazovat pomocí následující deklarace závislostí uvnitř souboru projektu Maven:
 
 ```xml
 <dependency>
@@ -48,7 +48,7 @@ Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektec
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
-Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Přidejte třídu s názvem `SimpleSend`a do třídy přidejte následující kód:
+Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Přidejte třídu s názvem `SimpleSend`a přidejte do ní následující kód:
 
 ```java
 import com.azure.messaging.eventhubs.*;
@@ -61,15 +61,15 @@ public class Sender {
 ```
 
 ### <a name="connection-string-and-event-hub"></a>Připojovací řetězec a centrum událostí
-Tento kód používá připojovací řetězec k oboru názvů Event Hubs a název centra událostí pro sestavení klienta Event Hubs. 
+Tento kód používá připojovací řetězec do oboru názvů Event Hubs a název centra událostí k vytvoření klienta Event Hubs. 
 
 ```java
 String connectionString = "<CONNECTION STRING to EVENT HUBS NAMESPACE>";
 String eventHubName = "<EVENT HUB NAME>";
 ```
 
-### <a name="create-an-event-hubs-producer-client"></a>Vytvoření klienta Event Hubsho producenta 
-Tento kód vytvoří objekt klienta producenta, který se používá k vytvoření nebo odeslání událostí do centra událostí. 
+### <a name="create-an-event-hubs-producer-client"></a>Vytvoření klienta výrobce centra událostí 
+Tento kód vytvoří objekt klienta výrobce, který se používá k výrobě nebo odesílání událostí do centra událostí. 
 
 ```java
 EventHubProducerClient producer = new EventHubClientBuilder()
@@ -89,20 +89,20 @@ batch.tryAdd(new EventData("Fourth event"));
 batch.tryAdd(new EventData("Fifth event"));
 ```
 
-### <a name="send-the-batch-of-events-to-the-event-hub"></a>Odeslání dávky událostí do centra událostí
-Tento kód pošle dávku událostí, které jste připravili v předchozím kroku, do centra událostí. Následující bloky kódu na operaci odeslání. 
+### <a name="send-the-batch-of-events-to-the-event-hub"></a>Odeslat dávku událostí do centra událostí
+Tento kód odešle dávku událostí, které jste připravili v předchozím kroku do centra událostí. Následující kód blokuje na operaci odeslání. 
 
 ```java
 producer.send(batch);
 ```
 
 ### <a name="close-and-cleanup"></a>Zavřít a vyčistit
-Tento kód zavírá producenta. 
+Tento kód zavře výrobce. 
 
 ```java
 producer.close();
 ```
-### <a name="complete-code-to-send-events"></a>Dokončení kódu pro odesílání událostí
+### <a name="complete-code-to-send-events"></a>Kompletní kód pro odesílání událostí
 Tady je kompletní kód pro odesílání událostí do centra událostí. 
 
 ```java
@@ -135,14 +135,14 @@ public class Sender {
 }
 ```
 
-Sestavte program a zajistěte, aby nedocházelo k chybám. Po spuštění programu přijímače budete tento program spouštět. 
+Sestavení programu a ujistěte se, že neexistují žádné chyby. Tento program spustíte po spuštění programu příjemce. 
 
 ## <a name="receive-events"></a>Příjem událostí
-Kód v tomto kurzu je založený na [ukázce EventProcessorClient na GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java), kterou si můžete prohlédnout, abyste viděli úplnou funkční aplikaci.
+Kód v tomto kurzu je založen na [ukázku EventProcessorClient na GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java), který můžete prozkoumat zobrazit úplné pracovní aplikace.
 
 ### <a name="create-a-java-project"></a>Vytvoření projektu Java
 
-Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)a lze na ni odkazovat pomocí následující deklarace závislosti v souboru projektu Maven: 
+Klientská knihovna Java pro centra událostí je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)a může být odkazována pomocí následující deklarace závislostí uvnitř souboru projektu Maven: 
 
 ```xml
 <dependencies>
@@ -154,7 +154,7 @@ Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektec
 </dependencies>
 ```
 
-1. Použijte následující kód k vytvoření nové třídy s názvem `Receiver`. Nahraďte zástupné symboly hodnotami použitými při vytváření event hubu a úložiště účtu:
+1. Použijte následující kód k vytvoření nové třídy s názvem `Receiver`. Nahraďte zástupné symboly hodnotami použitými při vytváření centra událostí a účtu úložiště:
    
    ```java
      import com.azure.messaging.eventhubs.*;
@@ -208,15 +208,15 @@ Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektec
      }
     ```
     
-2. Stáhněte si soubor **InMemoryCheckpointStore. Java** z [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/InMemoryCheckpointStore.java)a přidejte ho do svého projektu. 
-3. Sestavte program a zajistěte, aby nedocházelo k chybám. 
+2. Stáhněte si soubor **InMemoryCheckpointStore.java** z [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/InMemoryCheckpointStore.java)a přidejte ho do projektu. 
+3. Sestavení programu a ujistěte se, že neexistují žádné chyby. 
 
 ## <a name="run-the-applications"></a>Spuštění aplikací
-1. Nejdřív spusťte aplikaci **příjemce** .
-1. Pak spusťte aplikaci **sender** . 
-1. V okně **přijímač** aplikace potvrďte, že vidíte události, které byly publikovány aplikací odesílatele.
-1. Stisknutím klávesy **ENTER** v okně přijímače aplikace zastavte aplikaci. 
+1. Nejprve spusťte aplikaci **přijímače.**
+1. Potom spusťte aplikaci **odesílatele.** 
+1. V okně aplikace **příjemce** potvrďte, že se zobrazí události, které byly publikovány aplikací odesílatele.
+1. Stisknutím **klávesy ENTER** v okně aplikace přijímače aplikaci zastavíte. 
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se [na ukázky Java SDK na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) .
+Podívejte se [na ukázky sady Java SDK na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 

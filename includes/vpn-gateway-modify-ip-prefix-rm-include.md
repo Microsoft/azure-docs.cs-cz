@@ -9,13 +9,13 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174844"
 ---
-### <a name="noconnection"></a>Úprava předpon IP adres místní síťové brány – žádné připojení brány
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>Úprava předpon IP adres místní síťové brány – žádné připojení brány
 
 Přidání dalších předpon adres:
 
@@ -33,21 +33,21 @@ Přidání dalších předpon adres:
 
 Odebrání předpon adres:
 
-  Vynechte předpony, které už nepotřebujete. V tomto příkladu jsme už nepotřebujeme předponu 10.101.2.0/24 (z předchozího příkladu), takže bránu místní sítě aktualizujeme, a tuto předponu vyloučíme.
+  Vynechte předpony, které už nepotřebujete. V tomto příkladu již nepotřebujeme předponu 10.101.2.0/24 (z předchozího příkladu), takže aktualizujeme bránu místní sítě, s výjimkou této předpony.
 
 1. Nastavte proměnnou pro LocalNetworkGateway.
 
    ```azurepowershell-interactive
    $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
    ```
-2. Nastavte bránu s předponami aktualizované.
+2. Nastavte bránu s aktualizovanými předponami.
 
    ```azurepowershell-interactive
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
    -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
    ```
 
-### <a name="withconnection"></a>Úprava předpon IP adres místní síťové brány – existující připojení brány
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>Úprava předpon IP adres místní síťové brány – existující připojení brány
 
 Pokud máte připojení k bráně a chcete přidat nebo odebrat předpony IP adres obsažené v bráně místní sítě, musíte v uvedeném pořadí provést následující kroky. Způsobí to určitý výpadek připojení VPN. Při upravování předpon IP adres není potřeba odstraňovat bránu VPN. Stačí jenom odebrat připojení.
 
@@ -56,7 +56,7 @@ Pokud máte připojení k bráně a chcete přidat nebo odebrat předpony IP adr
    ```azurepowershell-interactive
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
-2. Nastavte bránu místní sítě s upravenou předpony.
+2. Nastavte bránu místní sítě s upravenými předponami adres.
    
    Nastavte proměnnou pro LocalNetworkGateway.
 

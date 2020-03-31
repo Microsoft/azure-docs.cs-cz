@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269435"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387831"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů GPU AMD na virtuální chody řady N se systémem Windows
 
@@ -40,7 +40,7 @@ Základní specifikace, kapacity úložiště a podrobnosti o disku najdete [v t
 
 2. Pokud jste zákazník s náhledem NVv4, zastavte virtuální ho a počkejte, až se přesune do stavu Zastaveno(Deallocated).
 
-3. Spusťte virtuální ho spouštění virtuálního počítačů a potom odinstalujte ovladač náhledu spuštěním programu amdcleanuputility-x64.exe umístěného ve složce "...\AMDCleanUninstallUtility". Přesná cesta se bude lišit v závislosti na tom, kde jsou předchozí instalační soubory ovladače.  
+3. Spusťte virtuální hospodařící spouštění a stáhněte si nejnovější [nástroj AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Odinstalujte existující ovladač spuštěním programu amdcleanuputility-x64.exe. Nepoužívejte žádný nástroj exisitng cleanup, který byl nainstalován s předchozím ovladačem.  
 
 4. Stáhněte a nainstalujte nejnovější ovladač.
 

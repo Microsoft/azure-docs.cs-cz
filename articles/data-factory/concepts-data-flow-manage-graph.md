@@ -1,6 +1,6 @@
 ---
 title: Grafy toku dat
-description: Jak pracovat s grafy toku dat Data Factory
+description: Jak pracovat s grafy toku dat z továrny na data
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,42 +8,42 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/04/2019
 ms.openlocfilehash: da180bfb1aec29fa15b070fd73ba84d708ada927
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928309"
 ---
 # <a name="mapping-data-flow-graphs"></a>Mapování grafů toku dat
 
-Návrhová plocha mapování toků dat je "stavební" plocha, kde můžete vytvářet toky dat shora dolů, zleva doprava. Pro každou transformaci se symbolem plus (+) je připojena sada nástrojů. Soustřeďte se na obchodní logiku místo propojení uzlů pomocí okrajů v DAG prostředí s bezplatným formulářem.
+Mapovací data toky návrhový povrch je "konstrukce" povrch, kde se staví toky dat shora dolů, zleva doprava. Ke každé transformaci je připojena sada nástrojů se symbolem plus (+). Soustřeďte se na obchodní logiku namísto připojení uzlů přes hrany ve volném prostředí DAG.
 
-Níže jsou uvedené předdefinované mechanismy pro správu grafu toku dat.
+Níže jsou vestavěné mechanismy pro správu grafu toku dat.
 
 ## <a name="move-nodes"></a>Přesun uzlů
 
-![Možnosti agregované transformace](media/data-flow/agghead.png "záhlaví Agregátoru")
+![Agregační možnosti transformace](media/data-flow/agghead.png "záhlaví agregátoru")
 
-Bez možnosti přetahování přetahováním je možné změnit příchozí datový proud tak, aby "přesunul" transformační uzel. Místo toho převedete transformované transformace změnou "příchozího datového proudu".
+Bez paradigma drag-and-drop je způsob, jak "přesunout" transformační uzel, změnit příchozí datový proud. Místo toho budete pohybovat transformace kolem změnou "příchozí datový proud".
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Datové proudy dat v toku dat
+## <a name="streams-of-data-inside-of-data-flow"></a>Datové proudy dat uvnitř toku dat
 
-V Azure Data Factory tok dat prezentují toky dat. V podokně nastavení transformace se zobrazí pole příchozí Stream. Tím se dozvíte, který příchozí datový proud dodává tuto transformaci. Fyzické umístění svého transformačního uzlu můžete změnit v grafu kliknutím na název příchozího datového proudu a výběrem jiného datového proudu. Aktuální transformace spolu se všemi následnými transformacemi v tomto datovém proudu se pak přesune na nové místo.
+V Toku dat Azure Data Factory představují datové toky tok dat. V podokně nastavení transformace se zobrazí pole Příchozí datový proud. To vám řekne, který příchozí datový proud je krmení, že transformace. Fyzické umístění uzlu transformace v grafu můžete změnit kliknutím na název příchozího datového proudu a výběrem jiného datového proudu. Aktuální transformace spolu se všemi následnými transformacemi v tomto datovém proudu se pak přesune do nového umístění.
 
-Pokud přesouváte transformaci s jednou nebo více transformacemi po ní, bude nové umístění v toku dat připojeno prostřednictvím nové větve.
+Pokud přesouváte transformaci s jednou nebo více transformacemi za ní, bude nové umístění v toku dat spojeno prostřednictvím nové větve.
 
-Pokud po zvoleném uzlu nemáte žádné následné transformace, pak se pouze tato transformace přesune do nového umístění.
+Pokud nemáte žádné následné transformace po uzlu, který jste vybrali, pak pouze tato transformace se přesune do nového umístění.
 
-## <a name="hide-graph-and-show-graph"></a>Skrýt graf a zobrazit graf
+## <a name="hide-graph-and-show-graph"></a>Skrytí grafu a zobrazení grafu
 
-Na pravé straně dolního podokna konfigurace je tlačítko, kde při práci na konfiguracích transformace můžete rozbalit dolní podokno na celou obrazovku. To vám umožní procházet konfigurace grafu pomocí tlačítek předchozí a další. Chcete-li přejít zpět do zobrazení grafu, klikněte na tlačítko dolů a vraťte se k rozdělené obrazovce.
+V pravém dolním konfiguračním podokně je tlačítko, kde můžete při práci na konfiguracích transformace rozbalit dolní podokno na celou obrazovku. To vám umožní používat "předchozí" a "další" tlačítka pro navigaci v konfiguraci grafu. Chcete-li se vrátit zpět do zobrazení grafu, klikněte na tlačítko dolů a vraťte se na rozdělenou obrazovku.
 
-## <a name="search-graph"></a>Vyhledat graf
+## <a name="search-graph"></a>Graf hledání
 
-Graf můžete vyhledat pomocí tlačítka Hledat na návrhové ploše.
+Graf můžete prohledávat pomocí vyhledávacího tlačítka na návrhové ploše.
 
-![Search](media/data-flow/search001.png "Vyhledat graf")
+![Hledat](media/data-flow/search001.png "Graf hledání")
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení návrhu toku dat zapněte tlačítko ladění a otestujte ho v režimu ladění buď přímo v [Návrháři toku dat](concepts-data-flow-debug-mode.md) , nebo v [ladění kanálu](control-flow-execute-data-flow-activity.md).
+Po dokončení návrhu toku dat zapněte tlačítko ladění a otestujte ho v režimu ladění buď přímo v [návrháři toku dat](concepts-data-flow-debug-mode.md) nebo [ladění kanálu](control-flow-execute-data-flow-activity.md).

@@ -1,7 +1,7 @@
 ---
-title: Metriky a výstrahy pro Azure Virtual Network NAT
+title: Metriky a výstrahy pro virtuální síť Azure NAT
 titleSuffix: Azure Virtual Network
-description: Pochopení Azure Monitor metrik a upozornění dostupných pro Virtual Network překladu adres (NAT)
+description: Seznamte se s metrikami a výstrahami Azure Monitor, které jsou k dispozici pro virtuální síť NAT.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -15,49 +15,49 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
 ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79202174"
 ---
-# <a name="azure-virtual-network-nat-metrics"></a>Metriky služby Azure Virtual Network NAT
+# <a name="azure-virtual-network-nat-metrics"></a>Metriky virtuální sítě Azure
 
-Prostředky brány Azure Virtual Network NAT poskytují multidimenzionální metriky. Tyto metriky můžete použít ke sledování operace a k [řešení problémů](nat-metrics.md).  Výstrahy je možné nakonfigurovat pro kritické problémy, jako je například vyčerpání SNAT.
+Prostředky brány virtuální sítě Azure poskytují vícerozměrné metriky. Tyto metriky můžete použít ke sledování operace a k [řešení potíží](nat-metrics.md).  Výstrahy lze nakonfigurovat pro kritické problémy, jako je vyčerpání SNAT.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
+  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtuální síť NAT pro odchozí do Internetu">
 </p>
 
-*Obrázek: Virtual Network NAT pro odchozí připojení do Internetu*
+*Obrázek: Virtuální síť NAT pro odchozí do Internetu*
 
 ## <a name="metrics"></a>Metriky
 
-Prostředky brány NAT poskytují v Azure Monitor následující multidimenzionální metriky:
+Prostředky brány NAT poskytují v Azure Monitoru následující vícerozměrné metriky:
 
 | Metrika | Popis | Doporučená agregace | Dimenze |
 |---|---|---|---|
-| B | Příchozí a odchozí bajty zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |
-| Rámců | Příchozí a odchozí pakety zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |
-| Vyřazené pakety | Pakety vyřazené bránou NAT | Součet | / |
+| Bajty | Počet zpracovaných příchozích a odchozích | Součet | Směr (V; Out), Protokol (6 TCP; 17 UDP) |
+| Pakety | Příchozí a odchozí pakety | Součet | Směr (V; Out), Protokol (6 TCP; 17 UDP) |
+| Vynecháné pakety | Pakety vynechané bránou NAT | Součet | / |
 | Počet připojení SNAT | Přechody stavu za interval | Součet | Stav připojení, protokol (6 TCP; 17 UDP) |
-| Celkový počet připojení SNAT | Aktuální aktivní připojení SNAT (počet používaných portů: ~ SNAT) | Součet | Protokol (6 TCP; 17 UDP) |
+| Celkový počet připojení SNAT | Aktuální aktivní připojení SNAT (~ porty SNAT v provozu) | Součet | Protokol (6 TCP; 17 UDP) |
 
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
-Výstrahy pro metriky je možné nakonfigurovat v Azure Monitor pro každou z výše uvedených [metrik](#metrics).
+Výstrahy pro metriky lze nakonfigurovat v Azure Monitoru pro každou z [předchozích metrik](#metrics).
 
 ## <a name="limitations"></a>Omezení
 
-Resource Health se nepodporuje.
+Stav prostředků není podporován.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o [Virtual Network NAT](nat-overview.md)
-* Další informace o [prostředku brány NAT](nat-gateway-resource.md)
-* Informace o [Azure monitor](../azure-monitor/overview.md)
-* Přečtěte si informace o [řešení potíží s prostředky brány NAT](troubleshoot-nat.md).
-* [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
+* Další informace o [překladu virtuálních sítí](nat-overview.md)
+* Informace o [prostředku brány NAT](nat-gateway-resource.md)
+* Další informace o [Azure Monitoru](../azure-monitor/overview.md)
+* Informace o [řešení potíží s prostředky brány NAT](troubleshoot-nat.md).
+* [Řekněte nám, co se má stavět pro virtuální síť NAT v UserVoice](https://aka.ms/natuservoice).
 
 

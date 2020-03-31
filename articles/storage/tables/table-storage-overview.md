@@ -10,10 +10,10 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: c850d2b01e098a10aacf383f0ed4340cb9e64e10
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62129761"
 ---
 # <a name="introduction-to-table-storage-in-azure"></a>Úvod k úložišti Table Storage v Azure
@@ -26,7 +26,7 @@ Table Storage můžete používat k ukládání flexibilních datových sad, nap
 
 [!INCLUDE [storage-table-concepts-include](../../../includes/storage-table-concepts-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 
@@ -34,6 +34,6 @@ Table Storage můžete používat k ukládání flexibilních datových sad, nap
 
 * Projděte si referenční dokumentaci ke službě Table service, kde najdete úplné podrobnosti o dostupných rozhraních API:
 
-    * [Klientská knihovna Storage pro .NET – referenční informace](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [Klientská knihovna úložiště pro odkaz .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST API – referenční informace](https://msdn.microsoft.com/library/azure/dd179355)
+    * [Odkaz na rozhraní REST API](https://msdn.microsoft.com/library/azure/dd179355)

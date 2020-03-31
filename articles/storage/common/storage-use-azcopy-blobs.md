@@ -1,6 +1,6 @@
 ---
-title: Přenos dat do nebo z úložiště objektů BLOB v Azure pomocí AzCopy v10 za účelem | Microsoft Docs
-description: Tento článek obsahuje kolekci AzCopy ukázkových příkazů, které vám pomůžou vytvářet kontejnery, kopírovat soubory a synchronizovat adresáře mezi místními systémy souborů a kontejnery.
+title: Přenos dat do úložiště objektů Blob Azure nebo z nich pomocí AzCopy v10 | Dokumenty společnosti Microsoft
+description: Tento článek obsahuje kolekci příkazů AzCopy příklad, které vám pomohou vytvářet kontejnery, kopírovat soubory a synchronizovat adresáře mezi místními systémy souborů a kontejnery.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,354 +9,354 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933578"
 ---
-# <a name="transfer-data-with-azcopy-and-blob-storage"></a>Přenos dat pomocí AzCopy a BLOB Storage
+# <a name="transfer-data-with-azcopy-and-blob-storage"></a>Přenos dat pomocí úložiště AzCopy a Blob
 
-AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování dat do, z nebo mezi účty úložiště. Tento článek obsahuje příklady příkazů, které fungují s úložištěm objektů BLOB.
+AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování dat do účtů úložiště, z nich nebo mezi nimi. Tento článek obsahuje ukázkové příkazy, které fungují s úložištěm objektů Blob.
 
 ## <a name="get-started"></a>Začínáme
 
-V článku Začínáme [s AzCopy](storage-use-azcopy-v10.md) si můžete stáhnout AzCopy a seznamte se s různými způsoby, jak můžete službě úložiště poskytnout autorizační přihlašovací údaje.
+Podívejte se na [článek Začínáme s AzCopy,](storage-use-azcopy-v10.md) kde si můžete stáhnout AzCopy a dozvědět se o způsobech, jak můžete službě úložiště poskytnout pověření k autorizaci.
 
 > [!NOTE]
-> V příkladech v tomto článku se předpokládá, že jste ověřili vaši identitu pomocí příkazu `AzCopy login`. AzCopy pak použije účet Azure AD k autorizaci přístupu k datům v úložišti objektů BLOB.
+> Příklady v tomto článku předpokládají, že jste ověřili `AzCopy login` identitu pomocí příkazu. AzCopy pak používá váš účet Azure AD k autorizaci přístupu k datům v úložišti objektů Blob.
 >
-> Pokud místo toho chcete použít token SAS k autorizaci přístupu k datům objektu blob, můžete tento token připojit k adrese URL prostředku v každém příkazu AzCopy.
+> Pokud chcete raději použít token SAS k autorizaci přístupu k datům objektů blob, můžete tento token připojit k adrese URL prostředku v každém příkazu AzCopy.
 >
 > Například: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
 > [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (' '). Použijte jednoduché uvozovky ve všech příkazových prostředích s výjimkou příkazového prostředí systému Windows (cmd. exe). Pokud používáte příkazové prostředí systému Windows (cmd. exe), uzavřete argumenty cesty pomocí dvojitých uvozovek ("") místo jednoduchých uvozovek (' ').
+> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
 
-K vytvoření kontejneru můžete použít příkaz [AzCopy vytvořit](storage-ref-azcopy-make.md) . Příklady v této části vytvoří kontejner s názvem `mycontainer`.
+Můžete použít [příkaz azcopy make](storage-ref-azcopy-make.md) k vytvoření kontejneru. Příklady v této části vytvoří `mycontainer`kontejner s názvem .
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
+| **Syntaxe** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
 | **Příklad** | `azcopy make 'https://mystorageaccount.blob.core.windows.net/mycontainer'` |
 | **Příklad** (hierarchický obor názvů) | `azcopy make 'https://mystorageaccount.dfs.core.windows.net/mycontainer'` |
 
-Podrobné referenční dokumentaci najdete v tématu [AzCopy](storage-ref-azcopy-make.md).
+Podrobné referenční dokumenty viz [azcopy make](storage-ref-azcopy-make.md).
 
 ## <a name="upload-files"></a>Nahrání souborů
 
-Příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) můžete použít k nahrání souborů a adresářů z místního počítače.
+Příkaz [azcopy copy](storage-ref-azcopy-copy.md) můžete použít k nahrání souborů a adresářů z místního počítače.
 
 Tato část obsahuje následující příklady:
 
 > [!div class="checklist"]
 > * Nahrání souboru
-> * Odeslat adresář
-> * Nahrajte obsah adresáře. 
-> * Odeslat konkrétní soubory
+> * Nahrání adresáře
+> * Nahrání obsahu adresáře 
+> * Nahrání konkrétních souborů
 
-Podrobné referenční dokumentaci najdete v tématu [AzCopy Copy](storage-ref-azcopy-copy.md).
+Podrobné referenční dokumenty viz [azcopy copy](storage-ref-azcopy-copy.md).
 
 > [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (' '). Použijte jednoduché uvozovky ve všech příkazových prostředích s výjimkou příkazového prostředí systému Windows (cmd. exe). Pokud používáte příkazové prostředí systému Windows (cmd. exe), uzavřete argumenty cesty pomocí dvojitých uvozovek ("") místo jednoduchých uvozovek (' ').
+> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
 
 ### <a name="upload-a-file"></a>Nahrání souboru
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
+| **Syntaxe** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
 | **Příklad** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-Soubor můžete také nahrát pomocí zástupného symbolu (*) kdekoli v cestě k souboru nebo v názvu souboru. Například: `'C:\myDirectory\*.txt'`nebo `C:\my*\*.txt`.
+Soubor můžete také nahrát pomocí zástupný symbol (*) kdekoli v cestě k souboru nebo názvu souboru. Například: `'C:\myDirectory\*.txt'`, `C:\my*\*.txt`nebo .
 
 > [!NOTE]
-> AzCopy ve výchozím nastavení nahrává data jako objekty blob bloku. Chcete-li odeslat soubory jako doplňovací objekty blob nebo objekty blob stránky, použijte příznak `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
-> AzCopy ve výchozím nastavení nahrává vaše data, aby zdědily úroveň přístupu k účtu. Chcete-li odeslat soubory do konkrétní [vrstvy přístupu](../blobs/storage-blob-storage-tiers.md), použijte příznak `--block-blob-tier=[Hot|Cool|Archive]`.
+> AzCopy ve výchozím nastavení nahrává data jako objekty BLOB bloku. Chcete-li nahrát soubory jako objekty BLOB pro `--blob-type=[BlockBlob|PageBlob|AppendBlob]`připojení nebo objekty BLOB stránky, použijte příznak .
+> AzCopy ve výchozím nastavení nahrává vaše data, aby zdědila úroveň přístupu k účtu. Chcete-li odeslat soubory do určité `--block-blob-tier=[Hot|Cool|Archive]` [vrstvy přístupu](../blobs/storage-blob-storage-tiers.md), použijte příznak .
 
-### <a name="upload-a-directory"></a>Odeslat adresář
+### <a name="upload-a-directory"></a>Nahrání adresáře
 
-Tento příklad zkopíruje adresář (a všechny soubory v tomto adresáři) do kontejneru objektů BLOB. Výsledkem je adresář v kontejneru se stejným názvem.
+Tento příklad zkopíruje adresář (a všechny soubory v tomto adresáři) do kontejneru objektů blob. Výsledkem je adresář v kontejneru se stejným názvem.
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
+| **Syntaxe** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
 | **Příklad** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --recursive` |
 
-Pokud chcete kopírovat do adresáře v rámci kontejneru, stačí zadat název tohoto adresáře do řetězce příkazu.
+Chcete-li kopírovat do adresáře v kontejneru, zadejte název tohoto adresáře v příkazovém řetězci.
 
 |    |     |
 |--------|-----------|
 | **Příklad** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 
-Pokud zadáte název adresáře, který v kontejneru neexistuje, vytvoří AzCopy nový adresář s tímto názvem.
+Pokud zadáte název adresáře, který v kontejneru neexistuje, AzCopy vytvoří nový adresář s tímto názvem.
 
-### <a name="upload-the-contents-of-a-directory"></a>Nahrajte obsah adresáře.
+### <a name="upload-the-contents-of-a-directory"></a>Nahrání obsahu adresáře
 
-Můžete nahrát obsah adresáře bez kopírování samotného nadřazeného adresáře pomocí zástupného znaku (*).
+Obsah adresáře můžete nahrát bez kopírování samotného obsahujícího adresáře pomocí zástupného symbolu (*).
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
+| **Syntaxe** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
 | **Příklad** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
-> Připojením příznaku `--recursive` nahrajte soubory ve všech podadresářích.
+> Připojte `--recursive` příznak pro nahrání souborů ve všech podadresářích.
 
-### <a name="upload-specific-files"></a>Odeslat konkrétní soubory
+### <a name="upload-specific-files"></a>Nahrání konkrétních souborů
 
-Můžete zadat úplný název souboru nebo použít částečné názvy se zástupnými znaky (*).
+Můžete zadat úplné názvy souborů nebo použít částečné názvy se zástupnými znaky (*).
 
-#### <a name="specify-multiple-complete-file-names"></a>Zadat více úplných názvů souborů
+#### <a name="specify-multiple-complete-file-names"></a>Určení více úplných názvů souborů
 
-Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s možností `--include-path`. Jednotlivé názvy souborů oddělte středníkem (`;`).
+Použijte příkaz [azcopy](storage-ref-azcopy-copy.md) copy `--include-path` s volbou. Oddělte jednotlivé názvy souborů`;`pomocí středníku ( ).
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
+| **Syntaxe** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
 | **Příklad** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
-V tomto příkladu AzCopy přenáší `C:\myDirectory\photos` adresář a `C:\myDirectory\documents\myFile.txt` soubor. Pro přenos všech souborů v adresáři `C:\myDirectory\photos` je nutné použít možnost `--recursive`.
+V tomto příkladu AzCopy `C:\myDirectory\photos` přenáší `C:\myDirectory\documents\myFile.txt` adresář a soubor. Je třeba zahrnout `--recursive` možnost přenosu všech `C:\myDirectory\photos` souborů v adresáři.
 
-Soubory můžete také vyloučit pomocí možnosti `--exclude-path`. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
+Soubory můžete také vyloučit `--exclude-path` pomocí možnosti. Další informace najdete [v tématu azcopy copy copy](storage-ref-azcopy-copy.md) reference docs.
 
-#### <a name="use-wildcard-characters"></a>Použít zástupné znaky
+#### <a name="use-wildcard-characters"></a>Použití zástupných znaků
 
-Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s možností `--include-pattern`. Zadejte částečné názvy, které obsahují zástupné znaky. Oddělte názvy pomocí semicolin (`;`). 
+Použijte příkaz [azcopy](storage-ref-azcopy-copy.md) copy `--include-pattern` s volbou. Zadejte částečné názvy, které obsahují zástupné znaky. Samostatné názvy pomocí semicolin (`;`). 
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **Syntaxe** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **Příklad** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-Soubory můžete také vyloučit pomocí možnosti `--exclude-pattern`. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
+Soubory můžete také vyloučit `--exclude-pattern` pomocí možnosti. Další informace najdete [v tématu azcopy copy copy](storage-ref-azcopy-copy.md) reference docs.
 
-Možnosti `--include-pattern` a `--exclude-pattern` se vztahují pouze na názvy souborů, nikoli na cestu.  Pokud chcete zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte možnost `–recursive` pro získání celého adresářového stromu a pak použijte `–include-pattern` a zadejte `*.txt` pro získání všech textových souborů.
+`--include-pattern` Volby `--exclude-pattern` a platí pouze pro názvy souborů a nikoli na cestu.  Pokud chcete zkopírovat všechny textové soubory, které existují ve `–recursive` stromu adresářů, použijte možnost `–include-pattern` získat `*.txt` celý adresářový strom a pak použijte a určete získat všechny textové soubory.
 
 ## <a name="download-files"></a>Stažení souborů
 
-K stažení objektů blob, adresářů a kontejnerů do místního počítače můžete použít příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) .
+Příkaz [azcopy copy](storage-ref-azcopy-copy.md) můžete použít ke stažení objektů BLOB, adresářů a kontejnerů do místního počítače.
 
 Tato část obsahuje následující příklady:
 
 > [!div class="checklist"]
 > * Stažení souboru
-> * Stáhnout adresář
+> * Stažení adresáře
 > * Stažení obsahu adresáře
-> * Stáhnout konkrétní soubory
+> * Stažení konkrétních souborů
 
 > [!NOTE]
-> Pokud hodnota vlastnosti `Content-md5` objektu BLOB obsahuje hodnotu hash, nástroj AzCopy vypočítá hodnotu hash MD5 pro stažená data a ověří, že hodnota hash MD5 uložená ve vlastnosti `Content-md5` objektu BLOB odpovídá počítané hodnotě hash. Pokud se tyto hodnoty neshodují, stažení se nezdaří, pokud toto chování neprovedete připojením `--check-md5=NoCheck` nebo `--check-md5=LogOnly` k příkazu Copy.
+> Pokud `Content-md5` hodnota vlastnosti objektu blob obsahuje hodnotu hash, AzCopy vypočítá hodnotu hash MD5 pro stažená data a `Content-md5` ověří, zda hodnota hash MD5 uložená ve vlastnosti objektu blob odpovídá vypočtené hodnotě hash. Pokud se tyto hodnoty neshodují, stahování se nezdaří, `--check-md5=NoCheck` pokud `--check-md5=LogOnly` toto chování nepřepíšete připojením nebo příkazem copy.
 
-Podrobné referenční dokumentaci najdete v tématu [AzCopy Copy](storage-ref-azcopy-copy.md).
+Podrobné referenční dokumenty viz [azcopy copy](storage-ref-azcopy-copy.md).
 
 > [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (' '). Použijte jednoduché uvozovky ve všech příkazových prostředích s výjimkou příkazového prostředí systému Windows (cmd. exe). Pokud používáte příkazové prostředí systému Windows (cmd. exe), uzavřete argumenty cesty pomocí dvojitých uvozovek ("") místo jednoduchých uvozovek (' ').
+> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
 
 ### <a name="download-a-file"></a>Stažení souboru
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
+| **Syntaxe** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
 | **Příklad** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 
-### <a name="download-a-directory"></a>Stáhnout adresář
+### <a name="download-a-directory"></a>Stažení adresáře
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
+| **Syntaxe** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **Příklad** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
-Tento příklad vede k adresáři s názvem `C:\myDirectory\myBlobDirectory`, který obsahuje všechny stažené soubory.
+Výsledkem tohoto příkladu `C:\myDirectory\myBlobDirectory` je adresář s názvem, který obsahuje všechny stažené soubory.
 
 ### <a name="download-the-contents-of-a-directory"></a>Stažení obsahu adresáře
 
-Obsah adresáře si můžete stáhnout bez zkopírování samotného obsahujícího adresáře pomocí zástupného znaku (*).
+Obsah adresáře můžete stáhnout bez kopírování samotného obsahujícího adresáře pomocí zástupného symbolu (*).
 
 > [!NOTE]
 > V současné době je tento scénář podporován pouze pro účty, které nemají hierarchický obor názvů.
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
+| **Syntaxe** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
 | **Příklad** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
 
 > [!NOTE]
-> Přidejte příznak `--recursive` ke stažení souborů ve všech podadresářích.
+> Připojte `--recursive` příznak pro stahování souborů ve všech podadresářích.
 
-### <a name="download-specific-files"></a>Stáhnout konkrétní soubory
+### <a name="download-specific-files"></a>Stažení konkrétních souborů
 
-Můžete zadat úplný název souboru nebo použít částečné názvy se zástupnými znaky (*).
+Můžete zadat úplné názvy souborů nebo použít částečné názvy se zástupnými znaky (*).
 
-#### <a name="specify-multiple-complete-file-names"></a>Zadat více úplných názvů souborů
+#### <a name="specify-multiple-complete-file-names"></a>Určení více úplných názvů souborů
 
-Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s možností `--include-path`. Jednotlivé názvy souborů oddělte pomocí semicolin (`;`).
+Použijte příkaz [azcopy](storage-ref-azcopy-copy.md) copy `--include-path` s volbou. Samostatné názvy jednotlivých souborů`;`pomocí semicolin ( ).
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
+| **Syntaxe** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **Příklad** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-V tomto příkladu AzCopy přenáší `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` adresář a `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` soubor. Pro přenos všech souborů v adresáři `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` je nutné použít možnost `--recursive`.
+V tomto příkladu AzCopy `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` přenáší `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` adresář a soubor. Je třeba zahrnout `--recursive` možnost přenosu všech `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` souborů v adresáři.
 
-Soubory můžete také vyloučit pomocí možnosti `--exclude-path`. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
+Soubory můžete také vyloučit `--exclude-path` pomocí možnosti. Další informace najdete [v tématu azcopy copy copy](storage-ref-azcopy-copy.md) reference docs.
 
-#### <a name="use-wildcard-characters"></a>Použít zástupné znaky
+#### <a name="use-wildcard-characters"></a>Použití zástupných znaků
 
-Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s možností `--include-pattern`. Zadejte částečné názvy, které obsahují zástupné znaky. Oddělte názvy pomocí semicolin (`;`).
+Použijte příkaz [azcopy](storage-ref-azcopy-copy.md) copy `--include-pattern` s volbou. Zadejte částečné názvy, které obsahují zástupné znaky. Samostatné názvy pomocí semicolin (`;`).
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **Syntaxe** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **Příklad** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-Soubory můžete také vyloučit pomocí možnosti `--exclude-pattern`. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
+Soubory můžete také vyloučit `--exclude-pattern` pomocí možnosti. Další informace najdete [v tématu azcopy copy copy](storage-ref-azcopy-copy.md) reference docs.
 
-Možnosti `--include-pattern` a `--exclude-pattern` se vztahují pouze na názvy souborů, nikoli na cestu.  Pokud chcete zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte možnost `–recursive` pro získání celého adresářového stromu a pak použijte `–include-pattern` a zadejte `*.txt` pro získání všech textových souborů.
+`--include-pattern` Volby `--exclude-pattern` a platí pouze pro názvy souborů a nikoli na cestu.  Pokud chcete zkopírovat všechny textové soubory, které existují ve `–recursive` stromu adresářů, použijte možnost `–include-pattern` získat `*.txt` celý adresářový strom a pak použijte a určete získat všechny textové soubory.
 
-## <a name="copy-blobs-between-storage-accounts"></a>Kopírování objektů BLOB mezi účty úložiště
+## <a name="copy-blobs-between-storage-accounts"></a>Kopírování objektů blob mezi účty úložiště
 
-Pomocí AzCopy můžete kopírovat objekty blob do jiných účtů úložiště. Operace kopírování je synchronní, takže když příkaz vrátí, znamená to, že byly zkopírovány všechny soubory. 
+AzCopy můžete použít ke kopírování objektů BLOB do jiných účtů úložiště. Operace kopírování je synchronní, takže když příkaz vrátí, který označuje, že všechny soubory byly zkopírovány. 
 
-AzCopy používá [](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [rozhraní API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)pro servery, takže se data zkopírují přímo mezi úložnými servery. Tyto operace kopírování nepoužívají šířku pásma sítě vašeho počítače. Propustnost těchto operací můžete zvýšit nastavením hodnoty proměnné prostředí `AZCOPY_CONCURRENCY_VALUE`. Další informace najdete v tématu [optimalizace propustnosti](storage-use-azcopy-configure.md#optimize-throughput).
+AzCopy používá [api](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url) [mezi servery](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) , takže data jsou zkopírována přímo mezi servery úložiště. Tyto operace kopírování nepoužívají šířku pásma sítě počítače. Propustnost těchto operací můžete zvýšit nastavením `AZCOPY_CONCURRENCY_VALUE` hodnoty proměnné prostředí. Další informace naleznete v [tématu Optimalizace propustnost .](storage-use-azcopy-configure.md#optimize-throughput)
 
 > [!NOTE]
-> Tento scénář má v aktuální verzi následující omezení.
+> Tento scénář má následující omezení v aktuální verzi.
 >
-> - Je nutné připojit token SAS ke každé zdrojové adrese URL. Pokud přihlašovací údaje pro autorizaci zadáte pomocí Azure Active Directory (AD), můžete token SAS vynechat jenom z cílové adresy URL.
->-  Účty úložiště blob bloku úrovně Premium nepodporují úrovně přístupu. Vynechejte úroveň přístupu objektu BLOB z operace kopírování nastavením `s2s-preserve-access-tier` na `false` (například: `--s2s-preserve-access-tier=false`).
+> - Ke každé zdrojové adrese URL je třeba připojit token SAS. Pokud zadáte pověření autorizace pomocí služby Azure Active Directory (AD), můžete vynechat token SAS pouze z cílové adresy URL.
+>-  Účty úložiště objektů blob s prémiovými bloky nepodporují úrovně přístupu. Vynechte úroveň přístupu objektu blob `s2s-preserve-access-tier` z `false` operace kopírování `--s2s-preserve-access-tier=false`nastavením na (Například: ).
 
 Tato část obsahuje následující příklady:
 
 > [!div class="checklist"]
 > * Kopírování objektu blob do jiného účtu úložiště
-> * Zkopírování adresáře do jiného účtu úložiště
+> * Kopírování adresáře do jiného účtu úložiště
 > * Kopírování kontejneru do jiného účtu úložiště
 > * Kopírování všech kontejnerů, adresářů a souborů do jiného účtu úložiště
 
-Podrobné referenční dokumentaci najdete v tématu [AzCopy Copy](storage-ref-azcopy-copy.md).
+Podrobné referenční dokumenty viz [azcopy copy](storage-ref-azcopy-copy.md).
 
 > [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (' '). Použijte jednoduché uvozovky ve všech příkazových prostředích s výjimkou příkazového prostředí systému Windows (cmd. exe). Pokud používáte příkazové prostředí systému Windows (cmd. exe), uzavřete argumenty cesty pomocí dvojitých uvozovek ("") místo jednoduchých uvozovek (' ').
+> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
 
- Tyto příklady také fungují s účty, které mají hierarchický obor názvů. [Přístup k více protokolům na data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) umožňuje použít stejnou syntaxi URL (`blob.core.windows.net`) na těchto účtech. 
+ Tyto příklady také pracují s účty, které mají hierarchický obor názvů. [Víceprotokolový přístup v úložišti Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) `blob.core.windows.net`umožňuje používat u těchto účtů stejnou syntaxi adresy URL ( ). 
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Kopírování objektu blob do jiného účtu úložiště
 
-Pro účty, které mají hierarchický obor názvů, použijte stejnou syntaxi URL (`blob.core.windows.net`).
+Pro účty, které`blob.core.windows.net`mají hierarchický obor názvů, použijte stejnou syntaxi adresy URL ( ).
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
+| **Syntaxe** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Příklad** (hierarchický obor názvů) | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 
-### <a name="copy-a-directory-to-another-storage-account"></a>Zkopírování adresáře do jiného účtu úložiště
+### <a name="copy-a-directory-to-another-storage-account"></a>Kopírování adresáře do jiného účtu úložiště
 
-Pro účty, které mají hierarchický obor názvů, použijte stejnou syntaxi URL (`blob.core.windows.net`).
+Pro účty, které`blob.core.windows.net`mají hierarchický obor názvů, použijte stejnou syntaxi adresy URL ( ).
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Syntaxe** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Příklad** (hierarchický obor názvů)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="copy-a-container-to-another-storage-account"></a>Kopírování kontejneru do jiného účtu úložiště
 
-Pro účty, které mají hierarchický obor názvů, použijte stejnou syntaxi URL (`blob.core.windows.net`).
+Pro účty, které`blob.core.windows.net`mají hierarchický obor názvů, použijte stejnou syntaxi adresy URL ( ).
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Syntaxe** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Příklad** (hierarchický obor názvů)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>Kopírování všech kontejnerů, adresářů a objektů blob do jiného účtu úložiště
+### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>Kopírování všech kontejnerů, adresářů a objektů BLOB do jiného účtu úložiště
 
-Pro účty, které mají hierarchický obor názvů, použijte stejnou syntaxi URL (`blob.core.windows.net`).
+Pro účty, které`blob.core.windows.net`mají hierarchický obor názvů, použijte stejnou syntaxi adresy URL ( ).
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
+| **Syntaxe** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 | **Příklad** (hierarchický obor názvů)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 
-## <a name="synchronize-files"></a>Synchronizovat soubory
+## <a name="synchronize-files"></a>Synchronizace souborů
 
-Obsah místního systému souborů můžete synchronizovat s kontejnerem objektů BLOB. Můžete také synchronizovat kontejnery a virtuální adresáře mezi sebou. Synchronizace je jednosměrná. Jinými slovy, jste si zvolili, který z těchto dvou koncových bodů je zdroj a který je cílový. Synchronizace používá také server k rozhraní API serveru. Příklady uvedené v této části také fungují s účty, které mají hierarchický obor názvů. 
-
-> [!NOTE]
-> Aktuální verze AzCopy se nesynchronizuje mezi ostatními zdroji a cíli (například: File Storage nebo Amazon Web Services (AWS) S3).
-
-Příkaz [synchronizovat](storage-ref-azcopy-sync.md) porovná názvy souborů a poslední upravená časová razítka. Nastavte `--delete-destination` volitelné příznaku na hodnotu `true` nebo `prompt` pro odstranění souborů v cílovém adresáři, pokud už tyto soubory ve zdrojovém adresáři neexistují.
-
-Pokud nastavíte příznak `--delete-destination` na `true` AzCopy odstraní soubory bez zadání výzvy. Pokud chcete, aby se zobrazila výzva, než AzCopy odstraní soubor, nastavte příznak `--delete-destination` na `prompt`.
+Obsah místního systému souborů můžete synchronizovat s kontejnerem objektů blob. Můžete také vzájemně synchronizovat kontejnery a virtuální adresáře. Synchronizace je jednosměrná. Jinými slovy, můžete zvolit, který z těchto dvou koncových bodů je zdroj a který z nich je cíl. Synchronizace také používá server k serveru API. Příklady uvedené v této části také pracovat s účty, které mají hierarchický obor názvů. 
 
 > [!NOTE]
-> Chcete-li zabránit nechtěnému odstranění, nezapomeňte před použitím příznaku `--delete-destination=prompt|true` povolit funkci [obnovitelného odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) .
+> Aktuální verze AzCopy se nesynchronizuje mezi jinými zdroji a cíli (například: Úložiště souborů nebo Kontejnery S3 (Amazon Web Services ( AWS).
 
-Podrobné referenční dokumentaci najdete v tématu [AzCopy Sync](storage-ref-azcopy-sync.md).
+Příkaz [synchronizace](storage-ref-azcopy-sync.md) porovnává názvy souborů a naposledy změněné časová razítka. Pokud `--delete-destination` tyto soubory ve `true` zdrojovém adresáři již neexistují, nastavte volitelný příznak na hodnotu nebo `prompt` odstraňte soubory v cílovém adresáři.
+
+Pokud nastavíte `--delete-destination` `true` příznak AzCopy odstraní soubory bez zadání výzvy. Pokud chcete, aby se výzva objevila před odstraněním `--delete-destination` souboru `prompt`azCopy, nastavte příznak na .
+
+> [!NOTE]
+> Chcete-li zabránit nechtěnému odstranění, před použitím příznaku `--delete-destination=prompt|true` nezapomeňte povolit funkci [obnovitelného odstranění.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)
+
+Podrobné referenční dokumenty naleznete v části [azcopy sync](storage-ref-azcopy-sync.md).
 
 > [!TIP]
-> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (' '). Použijte jednoduché uvozovky ve všech příkazových prostředích s výjimkou příkazového prostředí systému Windows (cmd. exe). Pokud používáte příkazové prostředí systému Windows (cmd. exe), uzavřete argumenty cesty pomocí dvojitých uvozovek ("") místo jednoduchých uvozovek (' ').
+> Příklady v této části uzavírají argumenty cesty s jednoduchými uvozovkami (''). Ve všech příkazových prostředích s výjimkou prostředí Windows Command Shell (cmd.exe) používejte jednoduché uvozovky. Pokud používáte prostředí Windows Command Shell (cmd.exe), uzavřete argumenty cesty s dvojitými uvozovkami ("") namísto jednoduchých uvozovek ('').
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualizace kontejneru se změnami v místním systému souborů
 
-V tomto případě je kontejnerem cíl a místní systém souborů je zdroj. 
+V tomto případě je cílem kontejneru a zdrojem je místní systém souborů. 
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Syntaxe** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Příklad** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Aktualizace místního systému souborů se změnami kontejneru
 
-V tomto případě je místní systém souborů cílový a kontejner je zdroj.
+V tomto případě je cílem místní systém souborů a zdroj je kontejner.
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
+| **Syntaxe** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
 | **Příklad** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
 
 ### <a name="update-a-container-with-changes-in-another-container"></a>Aktualizace kontejneru se změnami v jiném kontejneru
 
-Prvním kontejnerem, který se zobrazí v tomto příkazu, je zdroj. Druhá je cílová.
+První kontejner, který se zobrazí v tomto příkazu je zdroj. Druhý je cíl.
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Syntaxe** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Příklad** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Aktualizace adresáře se změnami v adresáři v jiné sdílené složce
 
-Prvním adresářem, který se zobrazí v tomto příkazu, je zdroj. Druhá je cílová.
+První adresář, který se zobrazí v tomto příkazu je zdroj. Druhý je cíl.
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
+| **Syntaxe** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
 | **Příklad** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další příklady najdete v některém z těchto článků:
 
-- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
+- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 
-- [Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
+- [Kurz: Migrace místních dat do cloudového úložiště pomocí AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 
-- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
 
-- [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
+- [Přenos dat pomocí kbelíků AzCopy a Amazon S3](storage-use-azcopy-s3.md)
 
-- [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
+- [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)

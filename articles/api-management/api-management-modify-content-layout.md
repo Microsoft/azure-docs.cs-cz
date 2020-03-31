@@ -1,5 +1,5 @@
 ---
-title: Úprava obsahu stránky na portálu pro vývojáře v API Management
+title: Úprava obsahu stránky na portálu pro vývojáře ve správě rozhraní API
 titleSuffix: Azure API Management
 description: Naučte se upravovat obsah stránek na portálu pro vývojáře ve službě Azure API Management.
 services: api-management
@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
 ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430639"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Úprava obsahu a rozložení stránek na portálu pro vývojáře ve službě Azure API Management
 Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývojáře ve službě Azure API Management:
 
-* [Úprava obsahu statických stránek a elementů rozložení stránky][modify-content-layout] (vysvětlení v této příručce)
-* [Aktualizace stylů použitých pro prvky stránky napříč portálem pro vývojáře][customize-styles]
-* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (například dokumentace k rozhraní API, produkty, ověřování uživatelů atd.)
+* [Úprava obsahu statických stránek a elementů rozložení stránek][modify-content-layout] (vysvětlení obsahuje tento průvodce)
+* [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles]
+* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (například dokumentace rozhraní API, produkty, ověřování uživatelů atd.)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>Struktura stránek portálu pro vývojáře
+## <a name="structure-of-developer-portal-pages"></a><a name="page-structure"> </a>Struktura stránek portálu pro vývojáře
 
 Portál pro vývojáře je založený na systému CMS (Content Management System). Rozložení jednotlivých stránek je založené na základě sady malých elementů stránek, které se označují jako widgety:
 
@@ -42,7 +42,7 @@ Všechny widgety se dají upravovat.
 
 Při běžných úpravách stránek se často mění jenom widget Content, který má pro každou jednotlivou stránku jiný obsah.
 
-## <a name="modify-layout-widget"> </a>Úprava obsahu widgetu rozložení
+## <a name="modifying-the-contents-of-a-layout-widget"></a><a name="modify-layout-widget"> </a>Změně obsahu widgetu rozložení
 
 Portál pro vývojáře je přístupný z webu Azure Portal.
 
@@ -55,9 +55,9 @@ Portál pro vývojáře je přístupný z webu Azure Portal.
 
 Nové záhlaví by se teď mělo zobrazovat na každé stránce portálu pro vývojáře.
 
-## <a name="next-steps"> </a>Další kroky
-* [Aktualizace stylů použitých pro prvky stránky napříč portálem pro vývojáře][customize-styles]
-* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (například dokumentace k rozhraní API, produkty, ověřování uživatelů atd.)
+## <a name="next-steps"></a><a name="next-steps"> </a>Další kroky
+* [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles]
+* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (například dokumentace rozhraní API, produkty, ověřování uživatelů atd.)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

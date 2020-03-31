@@ -1,6 +1,6 @@
 ---
-title: Řešení chyb při spouštění BitLockeru na virtuálním počítači Azure | Microsoft Docs
-description: Přečtěte si, jak řešit potíže se spouštěním nástroje BitLocker na virtuálním počítači Azure.
+title: Poradce při potížích s chybami spuštění nástroje BitLocker u virtuálního počítače Azure | Dokumenty společnosti Microsoft
+description: Zjistěte, jak řešit chyby při spuštění nástroje BitLocker ve virtuálním počítači Azure
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,43 +13,43 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250007"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na virtuálním počítači Azure
 
- Tento článek popisuje chyby nástroje BitLocker, ke kterým může dojít při spuštění virtuálního počítače s Windows v Microsoft Azure.
+ Tento článek popisuje chyby nástroje BitLocker, ke kterým může dojít při spuštění virtuálního počítače (VM) windows v Microsoft Azure.
 
  
 
-## <a name="symptom"></a>Symptom
+## <a name="symptom"></a>Příznak
 
- Virtuální počítač s Windows se nespustí. Po kontrole snímků obrazovky v okně [diagnostiky spouštění](../windows/boot-diagnostics.md) se zobrazí jedna z následujících chybových zpráv:
+ Virtuální ho virtuálního mísa systému Windows se nespustí. Když zkontrolujete snímky obrazovky v okně [Diagnostika spouštění,](../windows/boot-diagnostics.md) zobrazí se jedna z následujících chybových zpráv:
 
-- Připojte ovladač USB s klíčem BitLockeru.
+- Připojte ovladač USB s klíčem BitLocker
 
-- Jste uzamčeni! Zadejte obnovovací klíč, který se má znovu zobrazit (rozložení klávesnice: US). nesprávné přihlašovací údaje byly zadány příliš mnohokrát, takže váš počítač byl uzamčen, aby chránil vaše osobní údaje. Pokud chcete získat obnovovací klíč, použijte https://windows.microsoft.com/recoverykeyfaq z jiného počítače nebo mobilního zařízení. V případě potřeby je ID klíče XXXXXXX. Nebo můžete resetovat počítač.
+- Jste zamčení! Zadejte obnovovací klíč, abyste mohli začít znovu (Rozložení klávesnice: USA) Nesprávné přihlašovací údaje byly zadány příliš mnohokrát, takže váš počítač byl uzamčen, aby bylo chráněno vaše soukromí. Chcete-li obnovit klíč, https://windows.microsoft.com/recoverykeyfaq přejděte na něj z jiného počítače nebo mobilního zařízení. V případě, že ji budete potřebovat, id klíče je XXXXXXX. Nebo můžete obnovit počítač.
 
-- Zadejte heslo k odemknutí této jednotky [] stisknutím klávesy INSERT zobrazíte heslo při psaní.
-- Zadejte obnovovací klíč, který načte obnovovací klíč ze zařízení USB.
+- Zadejte heslo pro odemknutí této jednotky [ ] Stisknutím klávesy Insert Key zobrazíte heslo při psaní.
+- Zadejte obnovovací klíč Načtení obnovovacího klíče ze zařízení USB.
 
 ## <a name="cause"></a>Příčina
 
-K tomuto problému může dojít, pokud virtuální počítač nemůže najít soubor klíče bek (BitLocker Recovery Key) k dešifrování šifrovaného disku.
+K tomuto problému může dojít, pokud virtuální modul nemůže najít soubor obnovovacího klíče nástroje BitLocker (BEK) k dešifrování šifrovaného disku.
 
 ## <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, zastavte a uvolněte virtuální počítač a pak ho znovu spusťte. Tato operace vynutí, aby virtuální počítač načetl soubor klíče bek z Azure Key Vault a pak ho umístil na zašifrovaný disk. 
+Chcete-li tento problém vyřešit, zastavte a navrátit virtuální počítač a restartujte jej. Tato operace vynutí virtuální počítač načíst soubor BEK z trezoru klíčů Azure a pak jej umístit na šifrovaný disk. 
 
-Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovte soubor klíče bek ručně:
+Pokud tato metoda problém nevyřeší, postupujte ručně a obnovte soubor BEK:
 
-1. Pořídit snímek systémového disku ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
-2. [Připojte systémový disk k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md). Pokud chcete spustit příkaz [Manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) v kroku 7, musí být na virtuálním počítači pro obnovení povolená funkce **Nástroj BitLocker Drive Encryption** .
+1. Pořizovat snímek systémového disku ovlivněného virtuálního počítače jako zálohu. Další informace naleznete [v tématu Snímek disku](../windows/snapshot-copy-managed-disk.md).
+2. [Připojte systémový disk k virtuálnímu virtuálnímu počítače pro obnovení](troubleshoot-recovery-disks-portal-windows.md). Chcete-li spustit příkaz [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) v kroku 7, musí být funkce **Šifrování jednotky nástrojem BitLocker** povolena ve virtuálním virtuálním zařízení pro obnovení.
 
-    Když připojíte spravovaný disk, může se zobrazit zpráva "obsahuje nastavení šifrování, a proto nemůže být použita jako chybová zpráva" datový disk ". V takovém případě spusťte následující skript a pokuste se znovu připojit disk:
+    Při připojení spravovaného disku se může zobrazit chybová zpráva "obsahuje nastavení šifrování, a proto jej nelze použít jako datový disk". V takovém případě spusťte následující skript a zkuste znovu připojit disk:
 
     ```Powershell
     $rgName = "myResourceGroup"
@@ -67,17 +67,17 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
 
     Update-AzVM -VM $vm -ResourceGroupName $recoveryVMRG
     ```
-     Spravovaný disk nemůžete připojit k virtuálnímu počítači, který se obnovil z Image objektu BLOB.
+     Spravovaný disk nelze připojit k virtuálnímu virtuálnímu počítače, který byl obnoven z bitové kopie objektu blob.
 
-3. Po připojení disku vytvořte připojení ke vzdálené ploše k virtuálnímu počítači pro obnovení, abyste mohli spouštět některé skripty Azure PowerShell. Ujistěte se, že máte na virtuálním počítači pro obnovení nainstalovanou [nejnovější verzi Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
+3. Po připojení disku vytvořte připojení ke vzdálené ploše k virtuálnímu počítači pro obnovení, abyste mohli spustit některé skripty Azure PowerShellu. Ujistěte se, že máte nainstalovanou [nejnovější verzi Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) na virtuálním počítači pro obnovení.
 
-4. Otevřete relaci Azure PowerShell se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy, abyste se přihlásili k předplatnému Azure:
+4. Otevřete relaci Azure PowerShellu se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy pro přihlášení k předplatnému Azure:
 
     ```Powershell
     Add-AzAccount -SubscriptionID [SubscriptionID]
     ```
 
-5. Spuštěním následujícího skriptu zkontrolujete název souboru klíče bek:
+5. Chcete-li zkontrolovat název souboru BEK, spusťte následující skript:
 
     ```powershell
     $vmName = "myVM"
@@ -90,7 +90,7 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
                 @{Label ="DiskEncryptionKeyFileName"; Expression = {$_.Tags.DiskEncryptionKeyFileName}}
     ```
 
-    Následuje ukázka výstupu. Vyhledejte název souboru klíče bek připojeného disku. V takovém případě předpokládáme, že písmeno připojené jednotky na disku je F a soubor klíče bek je EF7B2F5A-50C6-4637-9F13-7F599C12F85C. Klíče bek.
+    Následuje ukázka výstupu. Vyhledejte název souboru BEK pro připojený disk. V tomto případě předpokládáme, že písmeno jednotky připojeného disku je F a soubor BEK je EF7B2F5A-50C6-4637-9F13-7F599C12F85C. BEK.
 
     ```
     Created             Content Type Volume DiskEncryptionKeyFileName               
@@ -101,13 +101,13 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
     4/7/2018 7:26:26 PM Wrapped BEK  H:\    5745719F-4886-4940-9B51-C98AFABE5305.BEK
     ```
 
-    Pokud vidíte dva duplicitní svazky, svazek, který má novější časové razítko, je aktuální soubor klíče bek, který je používán virtuálním počítačem pro obnovení.
+    Pokud se zobrazí dva duplicitní svazky, svazek, který má novější časové razítko je aktuální soubor BEK, který se používá pro obnovení virtuálního času.
 
-    Pokud je hodnota **typu obsahu** **zabalená klíče bek**, přečtěte si [scénáře použití klíčového šifrovacího klíče (KEK)](#key-encryption-key-scenario).
+    Pokud je hodnota **Typ obsahu** **Zabalená BEK**, přejděte do [scénáře kek (Key Encryption Key).](#key-encryption-key-scenario)
 
-    Teď, když máte název souboru klíče bek pro jednotku, je nutné vytvořit název tajného souboru. KLÍČE bek soubor k odemknutí jednotky.
+    Nyní, když máte název souboru BEK pro jednotku, musíte vytvořit tajný soubor-název. BEK pro odemknutí jednotky.
 
-6.  Stáhněte si soubor klíče bek na disk pro obnovení. Následující příklad uloží soubor klíče bek do složky C:\BEK. Ujistěte se, že cesta `C:\BEK\` existuje před spuštěním skriptů.
+6.  Stáhněte soubor BEK na disk pro obnovení. Následující ukázka uloží soubor BEK do složky C:\BEK. Před spuštěním `C:\BEK\` skriptů se ujistěte, že cesta existuje.
 
     ```powershell
     $vault = "myKeyVault"
@@ -119,34 +119,34 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  K odemknutí připojeného disku pomocí souboru klíče bek spusťte následující příkaz.
+7.  Chcete-li připojený disk odemknout pomocí souboru BEK, spusťte následující příkaz.
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
-    V této ukázce je připojen disk s operačním systémem jednotka F. Ujistěte se, že používáte správné písmeno jednotky. 
+    V této ukázce je připojený disk operačního systému Jednotka F. Ujistěte se, že používáte správné písmeno jednotky. 
 
-8. Po úspěšném odemknutí disku pomocí klíče klíče bek odpojte disk od virtuálního počítače pro obnovení a pak znovu vytvořte virtuální počítač pomocí tohoto nového disku s operačním systémem.
+8. Po úspěšném odemknutí disku pomocí klíče BEK odpojte disk od virtuálního počítače pro obnovení a potom znovu vytvořte virtuální modul pomocí tohoto nového disku operačního systému.
 
     > [!NOTE]
-    > Výměna disku s operačním systémem se pro virtuální počítače, které používají šifrování disků, nepodporuje.
+    > Prohození disku operačního systému není podporováno pro virtuální počítače pomocí šifrování disku.
 
-9. Pokud se nový virtuální počítač pořád nemůže spustit normálně, zkuste po odemčení jednotky použít některý z následujících kroků:
+9. Pokud se nový virtuální virtuální může normálně spustit, zkuste po odemknutí jednotky jeden z následujících kroků:
 
-    - Pozastavení ochrany pro dočasné zapnutí nástroje BitLocker spuštěním následujícího:
+    - Pozastavit ochranu pro dočasné vypnutí nástroje BitLocker spuštěním následujícího spuštění:
 
                     manage-bde -protectors -disable F: -rc 0
            
-    - Jednotku úplně dešifrujte. Chcete-li to provést, spusťte následující příkaz:
+    - Plně dešifrujte jednotku. Provedete to spuštěním následujícího příkazu:
 
                     manage-bde -off F:
 
 ### <a name="key-encryption-key-scenario"></a>Scénář šifrovacího klíče klíče
 
-V případě scénáře použití klíčového šifrovacího klíče postupujte následovně:
+Pro scénář klíč šifrovací klíč postupujte takto:
 
-1. Ujistěte se, že účet přihlášeného uživatele vyžaduje oprávnění "nezabaleno" v zásadách přístupu Key Vault v **uživateli | Oprávnění klíče | Kryptografické operace | Rozbalení klíče**
-2. Uložte následující skript do souboru. Soubor PS1:
+1. Ujistěte se, že přihlášený uživatelský účet vyžaduje "rozbalené" oprávnění v zásadách přístupu k trezoru klíčů v **uživateli| Klíčová oprávnění| Kryptografické operace| Rozbalit klíč**.
+2. Uložte následující skript do . Ps1 soubor:
 
     ```powershell
     #Set the Parameters for the script
@@ -232,9 +232,9 @@ V případě scénáře použití klíčového šifrovacího klíče postupujte 
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. Nastavte parametry. Skript zpracuje tajný klíč KEK, aby vytvořil klíč klíče bek, a pak ho uloží do místní složky na virtuálním počítači pro obnovení. Pokud při spuštění skriptu dojde k chybám, přečtěte si část [odstraňování potíží se skriptem](#script-troubleshooting) .
+3. Nastavte parametry. Skript zpracuje tajný klíč KEK k vytvoření klíče BEK a potom jej uloží do místní složky na virtuálním počítači pro obnovení. Pokud se při spuštění skriptu zobrazí chyby, přečtěte si část [řešení potíží se skripty.](#script-troubleshooting)
 
-4. Po zahájení skriptu se zobrazí následující výstup:
+4. Při zahájení skriptu se zobrazí následující výstup:
 
         GAC    Version        Location                                                                              
         ---    -------        --------                                                                              
@@ -248,45 +248,45 @@ V případě scénáře použití klíčového šifrovacího klíče postupujte 
         VERBOSE: received 360-byte response of content type application/json; charset=utf-8
 
 
-5. K odemknutí připojeného disku pomocí souboru klíče bek spusťte následující příkaz:
+5. Chcete-li připojený disk odemknout pomocí souboru BEK, spusťte následující příkaz:
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
-    V této ukázce je připojen disk s operačním systémem jednotka F. Ujistěte se, že používáte správné písmeno jednotky. 
+    V této ukázce je připojený disk operačního systému Jednotka F. Ujistěte se, že používáte správné písmeno jednotky. 
 
-6. Po úspěšném odemknutí disku pomocí klíče klíče bek odpojte disk od virtuálního počítače pro obnovení a pak znovu vytvořte virtuální počítač pomocí tohoto nového disku s operačním systémem. 
+6. Po úspěšném odemknutí disku pomocí klíče BEK odpojte disk od virtuálního počítače pro obnovení a potom znovu vytvořte virtuální modul pomocí tohoto nového disku operačního systému. 
 
     > [!NOTE]
-    > Výměna disku s operačním systémem se pro virtuální počítače, které používají šifrování disků, nepodporuje.
+    > Prohození disku operačního systému není podporováno pro virtuální počítače pomocí šifrování disku.
 
-7. Pokud se nový virtuální počítač pořád nemůže spustit normálně, zkuste po odemčení jednotky použít některý z následujících kroků:
+7. Pokud se nový virtuální virtuální může normálně spustit, zkuste po odemknutí jednotky jeden z následujících kroků:
 
-    - Pozastavení ochrany pro dočasné zapnutí nástroje BitLocker spuštěním následujícího příkazu:
+    - Pozastavit ochranu pro dočasné vypnutí nástroje BitLocker spuštěním následujícího příkazu:
 
              manage-bde -protectors -disable F: -rc 0
            
-    - Jednotku úplně dešifrujte. Chcete-li to provést, spusťte následující příkaz:
+    - Plně dešifrujte jednotku. Provedete to spuštěním následujícího příkazu:
 
                     manage-bde -off F:
-## <a name="script-troubleshooting"></a>Odstraňování potíží se skripty
+## <a name="script-troubleshooting"></a>Řešení potíží se skripty
 
-**Chyba: nepovedlo se načíst soubor nebo sestavení.**
+**Chyba: Nelze načíst soubor nebo sestavení.**
 
-K této chybě dochází, protože cesty k sestavení ADAL jsou chybné. Pokud je modul AZ Module nainstalován pouze pro aktuálního uživatele, budou sestavení ADAL umístěna v `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
+K této chybě dochází, protože cesty ADAL sestavení jsou nesprávné. Pokud je modul AZ nainstalován pouze pro aktuálního uživatele, budou `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`sestavení ADAL umístěna v aplikaci .
 
-Můžete také vyhledat složku `Az.Accounts` a vyhledat správnou cestu.
+Můžete také vyhledat `Az.Accounts` složku a najít správnou cestu.
 
-**Chyba: Get-AzKeyVaultSecret nebo Get-AzKeyVaultSecret není rozpoznán jako název rutiny.**
+**Chyba: Get-AzKeyVaultSecret nebo Get-AzKeyVaultSecret není rozpoznán jako název rutiny**
 
-Pokud používáte starý modul AZ PowerShell, je nutné změnit dva příkazy na `Get-AzureKeyVaultSecret` a `Get-AzureKeyVaultSecret`.
+Pokud používáte starý modul AZ PowerShell, je nutné `Get-AzureKeyVaultSecret` změnit `Get-AzureKeyVaultSecret`dva příkazy na a .
 
-**Ukázky parametrů**
+**Vzorky parametrů**
 
 | Parametry  | Ukázka hodnoty  |Komentáře   |
 |---|---|---|
-|  $keyVaultName | myKeyVault2112852926  | Název trezoru klíčů, ve kterém se klíč ukládá |
-|$kekName   |mykey   | Název klíče, který se používá k šifrování virtuálního počítače.|
-|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | Název tajného klíče virtuálního počítače|
-|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D. KLÍČE bek |Cesta pro zápis souboru klíče bek|
-|$adTenant  |contoso.onmicrosoft.com   | Plně kvalifikovaný název domény nebo identifikátor GUID vašeho Azure Active Directory, který hostuje Trezor klíčů |
+|  $keyVaultName | myKeyVault2112852926  | Název trezoru klíčů, který ukládá klíč |
+|$kekName   |mykey   | Název klíče, který se používá k šifrování virtuálního mísy|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | Název tajného klíče virtuálního_kontví|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D. BEK |Cesta pro zápis souboru BEK.|
+|$adTenant  |contoso.onmicrosoft.com   | FQDN nebo identifikátor GUID služby Azure Active Directory, který je hostitelem trezoru klíčů |

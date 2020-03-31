@@ -1,6 +1,6 @@
 ---
-title: Analýzy ve službě SQL Data Warehouse pomocí T-SQL, Python - týmu vědecké zpracování dat
-description: Příklady, které vás prostřednictvím SQL Data Warehouse pro prediktivní analýzy.
+title: Analýza datového skladu SQL s T-SQL, Pythonem - Proces vědecké analýzy týmových dat
+description: Příklady, které procházejí pomocí sql data warehouse k prediktivní analýzy.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,27 +11,27 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4c8be715391f71e281ca41cc68428a2d29d78783
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864124"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128167"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Návody vědy dat SQL Data Warehouse pomocí T-SQL a Pythonu v Azure
+# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Datové vědecké návody datového skladu SQL pomocí T-SQL a Pythonu v Azure
 
-Tyto postupy použijte služby SQL Data Warehouse pro prediktivní analýzy. Postupujte podle kroků uvedených v vědecké zpracování týmových dat. Přehled vědeckého zpracování týmových dat, naleznete v tématu [vědecké zpracování dat](overview.md). Úvod do služby SQL Data Warehouse, najdete v článku [co je Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Tyto návody použití SQL Data Warehouse k prediktivní analýzy. Postupujte podle kroků uvedených v procesu vědecké vědy o týmových datech. Přehled procesu vědecké ho spoje týmových dat naleznete v tématu [Proces datové vědy](overview.md). Úvod do datového skladu SQL najdete v tématu [Co je Datový sklad Azure SQL?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Další data science návody, které jsou spouštěny vědecké zpracování týmových dat jsou seskupené podle **platformy** , které používají. Zobrazit [názorné postupy vědeckého zpracování týmových dat provádění](walkthroughs.md) pro rozpis tyto příklady.
+Další datové vědy návody, které provádějí proces vědecké správy týmových dat jsou seskupeny podle **platformy,** které používají. Viz [návody provádění procesu vědecké ho týmových dat](walkthroughs.md) pro rozepsání těchto příkladů.
 
 
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Předpovídání spropitného pro taxikáře službou SQL Data Warehouse pomocí T-SQL a IPython notebook
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Předvídejte tipy pro taxi pomocí poznámkových bloků T-SQL a IPython s datovým skladem SQL
 
-[Návod k použití SQL Data Warehouse](sqldw-walkthrough.md) ukazuje, jak sestavit a nasadit modely klasifikace a regrese Machine learning pomocí SQL Data Warehouse (SQL DW).  Tato data jsou veřejně dostupnou datovou sadou NYC taxislužby Trip a jízdné.
+[Návod použít datový sklad SQL ukazuje,](sqldw-walkthrough.md) jak vytvářet a nasazovat modely klasifikace a regrese strojového učení pomocí datového skladu SQL (SQL DW).  Data jsou veřejně dostupné NYC taxi výlet a tarif dataset.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmových dat, naleznete v tématu [přehled vědeckého zpracování týmových dat](overview.md).
+Pro diskusi o klíčových komponent, které tvoří proces vědecké vědy o týmových datech, naleznete [v přehledu vědeckého procesu týmových dat](overview.md).
 
-Diskuzi o životním cyklu vědeckého zpracování týmových dat najdete v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 
+Pro diskusi o životní cyklus procesu vědecké ho spoje v oblasti týmových dat, najdete [v tématu Team Data Science Process lifecycle](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 

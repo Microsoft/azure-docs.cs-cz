@@ -1,6 +1,6 @@
 ---
-title: Zpracování událostí z Event Hubs s využitím více než Azure HDInsight
-description: Naučte se zpracovávat data z Azure Event Hubs pomocí C# topologie pro zaplavení vytvořenou v aplikaci Visual Studio pomocí nástrojů HDInsight pro Visual Studio.
+title: Zpracovávat události z centra událostí pomocí Stormu – Azure HDInsight
+description: Zjistěte, jak zpracovávat data z Center událostí Azure pomocí topologie C# Storm vytvořené v Sadě Visual Studio pomocí nástrojů HDInsight pro Visual Studio.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,48 +8,48 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981642"
 ---
-# <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs s využitím Apache Storm veC#službě HDInsight ()
+# <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Centra událostí Azure pomocí Apache Storm na HDInsightu (C#)
 
-Naučte se pracovat s Azure Event Hubs z [Apache Storm](https://storm.apache.org/) v HDInsight. Tento dokument používá C# topologii pro čtení a zápis dat z Event Hubs
+Přečtěte si, jak pracovat s Azure Event Hubs z [Apache Storm](https://storm.apache.org/) na HDInsightu. Tento dokument používá topologii C# Storm ke čtení a zápisu dat z event hubů
 
 > [!NOTE]  
-> Verzi tohoto projektu v jazyce Java najdete v tématu [zpracování událostí z Azure Event Hubs s Apache Storm v HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
+> Java verzi tohoto projektu najdete v tématu [zpracování událostí z Azure Event Hubs s Apache Storm na HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
 ## <a name="scpnet"></a>SCP.NET
 
-Kroky v tomto dokumentu používají SCP.NET, balíček NuGet, který usnadňuje vytváření C# topologií a komponent pro použití s využitím více než v HDInsight.
+Kroky v tomto dokumentu používají SCP.NET, balíček NuGet, který usnadňuje vytváření topologií c# a komponent pro použití s Storm na HDInsight.
 
-HDInsight 3,4 a vyšší použití mono ke spuštění C# topologií. Příklad použitý v tomto dokumentu funguje se službou HDInsight 3,6. Pokud máte v úmyslu vytvořit vlastní řešení .NET pro HDInsight, podívejte se na dokument [kompatibility mono](https://www.mono-project.com/docs/about-mono/compatibility/) , abyste mohli nekompatibilní problémy.
+HDInsight 3.4 a více použití Mono ke spuštění C# topologie. Příklad použitý v tomto dokumentu pracuje s HDInsight 3.6. Pokud máte v plánu na vytvoření vlastních řešení .NET pro HDInsight, zkontrolujte mono [kompatibility](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentu pro potenciální nekompatibility.
 
 ### <a name="cluster-versioning"></a>Správa verzí clusteru
 
-Balíček NuGet Microsoft. SCP. NET. SDK, který použijete pro váš projekt, musí odpovídat hlavní verzi systému, která je nainstalovaná v HDInsight. Verze HDInsight 3,5 a 3,6 používají přeplavi 1. x, takže musíte použít SCP.NET verze 1.0. x. x s těmito clustery.
+Balíček Microsoft.SCP.Net.SDK NuGet, který používáte pro svůj projekt, se musí shodovat s hlavní verzí stormu nainstalovanou na webu HDInsight. HdInsight verze 3.5 a 3.6 používat Storm 1.x, takže je nutné použít SCP.NET verze 1.0.x.x s těmito clustery.
 
-C#topologie musí také cílit na rozhraní .NET 4,5.
+Topologií jazyka C# musí být také cílováno na rozhraní .NET 4.5.
 
-## <a name="how-to-work-with-event-hubs"></a>Jak pracovat s Event Hubs
+## <a name="how-to-work-with-event-hubs"></a>Jak pracovat s event huby
 
-Společnost Microsoft poskytuje sadu komponent Java, které lze použít ke komunikaci s Event Hubs z topologie s více podmnožinami. Soubor archivu Java (JAR), který obsahuje verzi kompatibilní s HDInsight 3,6, najdete na adrese [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Společnost Microsoft poskytuje sadu součástí jazyka Java, které lze použít ke komunikaci s centry událostí z topologie bouře. Soubor archivu Java (JAR), který obsahuje verzi těchto komponent kompatibilní s [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)HDInsight 3.6, naleznete na adrese .
 
 > [!IMPORTANT]  
-> I když jsou komponenty napsané v jazyce Java, můžete je snadno použít z C# topologie.
+> Zatímco komponenty jsou napsány v jazyce Java, můžete je snadno použít z topologie Jazyka C#.
 
-V tomto příkladu se používají následující komponenty:
+V tomto příkladu se používají následující součásti:
 
-* __EventHubSpout__: čte data z Event Hubs.
-* __EventHubBolt__: zapisuje data do Event Hubs.
-* __EventHubSpoutConfig__: používá se ke konfiguraci EventHubSpout.
-* __EventHubBoltConfig__: používá se ke konfiguraci EventHubBolt.
+* __EventHubSpout__: Čte data z centra událostí.
+* __EventHubBolt__: Zapisuje data do centra událostí.
+* __EventHubSpoutConfig__: Používá se ke konfiguraci EventHubSpout.
+* __EventHubBoltConfig__: Používá se ke konfiguraci EventHubBolt.
 
-### <a name="example-spout-usage"></a>Příklad použití Spout
+### <a name="example-spout-usage"></a>Příklad použití výtoku
 
-SCP.NET poskytuje metody pro přidání EventHubSpout do topologie. Tyto metody usnadňují přidání Spout než použití obecných metod pro přidání komponenty Java. Následující příklad ukazuje, jak vytvořit Spout pomocí metod __SetEventHubSpout__ a **EventHubSpoutConfig** poskytovaných SCP.NET:
+SCP.NET poskytuje metody pro přidání EventHubSpout do topologie. Tyto metody usnadňují přidání výtoku než použití obecných metod pro přidání komponenty Java. Následující příklad ukazuje, jak vytvořit hubici pomocí metod __SetEventHubSpout__ a **EventHubSpoutConfig** poskytovaných SCP.NET:
 
 ```csharp
  topologyBuilder.SetEventHubSpout(
@@ -63,11 +63,11 @@ SCP.NET poskytuje metody pro přidání EventHubSpout do topologie. Tyto metody 
     eventHubPartitions);
 ```
 
-Předchozí příklad vytvoří novou komponentu Spout s názvem __EventHubSpout__a nakonfiguruje ji ke komunikaci s centrem událostí. Pomocný parametr paralelismus pro komponentu je nastaven na počet oddílů v centru událostí. Toto nastavení umožňuje vytvořit instanci součásti pro každý oddíl.
+Předchozí příklad vytvoří novou komponentu výtoku s názvem __EventHubSpout__a nakonfiguruje ji pro komunikaci s centrem událostí. Nápověda paralelismu pro komponentu je nastavena na počet oddílů v centru událostí. Toto nastavení umožňuje storm vytvořit instanci komponenty pro každý oddíl.
 
 ### <a name="example-bolt-usage"></a>Příklad použití šroubu
 
-K vytvoření instance šroubu použijte metodu **JavaComponmentConstructor** . Následující příklad ukazuje, jak vytvořit a nakonfigurovat novou instanci rozhraní **EventHubBolt**:
+Pomocí metody **JavaComponmentConstructor** vytvořte instanci šroubu. Následující příklad ukazuje, jak vytvořit a nakonfigurovat novou instanci **EventHubBolt**:
 
 ```csharp
 // Java construcvtor for the Event Hub Bolt
@@ -90,107 +90,107 @@ topologyBuilder.SetJavaBolt(
 ```
 
 > [!NOTE]  
-> Tento příklad používá výraz Clojure předaný jako řetězec namísto použití **JavaComponentConstructor** k vytvoření **EventHubBoltConfig**, jako by byl použit jako příklad Spout. Kterákoli z metod funguje. Použijte metodu, která je pro vás nejvhodnější.
+> Tento příklad používá Clojure výraz předaný jako řetězec, namísto použití **JavaComponentConstructor** k vytvoření **EventHubBoltConfig**, jako příklad výtoku. Obě metody funguje. Použijte metodu, která vám připadá nejlepší.
 
-## <a name="download-the-completed-project"></a>Stáhnout dokončený projekt
+## <a name="download-the-completed-project"></a>Stažení dokončeného projektu
 
-Kompletní verzi projektu vytvořeného v tomto článku si můžete stáhnout z [GitHubu](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Přesto ale budete muset zadat nastavení konfigurace podle kroků v tomto článku.
+Můžete si stáhnout kompletní verzi projektu vytvořeného v tomto článku z [GitHubu](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Stále však potřebujete poskytnout nastavení konfigurace podle kroků v tomto článku.
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
+* Cluster Apache Storm na HDInsight. Viz [Vytvoření clusterů Apache Hadoop pomocí portálu Azure](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **Storm** pro **typ clusteru**.
 
-* [Centrum událostí Azure](../../event-hubs/event-hubs-create.md).
+* Centrum [událostí Azure](../../event-hubs/event-hubs-create.md).
 
-* [Sada Azure .NET SDK](https://azure.microsoft.com/downloads/).
+* Sada [Azure .NET SDK](https://azure.microsoft.com/downloads/).
 
 * [Nástroje HDInsight pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-* Java JDK 1,8 nebo novější ve vašem vývojovém prostředí. Soubory ke stažení JDK jsou k dispozici od [Oracle](https://aka.ms/azure-jdks).
+* Java JDK 1.8 nebo novější ve vývojovém prostředí. Soubory ke stažení z jdk jsou k dispozici u společnosti [Oracle](https://aka.ms/azure-jdks).
 
-  * Proměnná prostředí **JAVA_HOME** musí odkazovat na adresář, který obsahuje Java.
-  * Adresář **% JAVA_HOME%/bin** musí být v cestě.
+  * Proměnná **prostředí JAVA_HOME** musí ukazovat na adresář, který obsahuje jazyk Java.
+  * Adresář **%JAVA_HOME%/bin** musí být v cestě.
 
-## <a name="download-the-event-hubs-components"></a>Stáhnout součásti Event Hubs
+## <a name="download-the-event-hubs-components"></a>Stažení součástí Centra událostí
 
-Z [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)si stáhněte komponentu Event Hubs Spout a šroub.
+Stáhněte si huby událostí a [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)součást šroubu z .
 
-Vytvořte adresář s názvem `eventhubspout`a uložte soubor do adresáře.
+Vytvořte adresář `eventhubspout`s názvem a uložte soubor do adresáře.
 
-## <a name="configure-event-hubs"></a>Konfigurace Event Hubs
+## <a name="configure-event-hubs"></a>Konfigurace centra událostí
 
-Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvoření centra událostí tématu Začínáme [s Event Hubs](../../event-hubs/event-hubs-create.md).
+Centrum událostí je zdrojem dat pro tento příklad. Použijte informace v části "Vytvořit centrum událostí" [začínáme s event huby](../../event-hubs/event-hubs-create.md).
 
-1. Po vytvoření centra událostí si prohlédněte nastavení **EventHub** v Azure Portal a vyberte **zásady sdíleného přístupu**. Vyberte **+ Přidat** a vytvořte následující zásady:
+1. Po vytvoření centra událostí zobrazte nastavení **EventHubu** na webu Azure Portal a vyberte **zásady sdíleného přístupu**. Výběrem **možnosti + přidat** vytvořte následující zásady:
 
    | Name (Název) | Oprávnění |
    | --- | --- |
-   | archiv |Odeslat |
-   | modulu |Naslouchat |
+   | Spisovatel |Odeslat |
+   | Čtenář |Naslouchat |
 
-    ![Snímek obrazovky okna zásady přístupu ke sdílení](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
+    ![Snímek obrazovky s oknem Zásady přístupu ke sdílení](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
-2. Vyberte zásady **čtecího zařízení** a **zapisovače** . Zkopírujte a uložte hodnotu primárního klíče pro obě zásady, protože se tyto hodnoty použijí později.
+2. Vyberte zásady **čtečky** a **zapisovače.** Zkopírujte a uložte hodnotu primárního klíče pro obě zásady, protože tyto hodnoty se použijí později.
 
-## <a name="configure-the-eventhubwriter"></a>Konfigurace EventHubWriter
+## <a name="configure-the-eventhubwriter"></a>Konfigurace eventhubwriteru
 
-1. Pokud jste ještě nenainstalovali nejnovější verzi nástrojů HDInsight pro Visual Studio, přečtěte si téma Začínáme [používat nástroje HDInsight pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+1. Pokud jste ještě nenainstalovali nejnovější verzi nástrojů HDInsight pro Visual Studio, přečtěte si část [Začínáme používat nástroje HDInsight pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-2. Stáhněte řešení z centra pro zaplavení [– hybridní](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
+2. Stáhněte si řešení z [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
 
-3. Otevřete **EventHubExample. sln**. V projektu **EventHubWriter** otevřete soubor **App. config** . Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
+3. Otevřete **soubor EventHubExample.sln**. V projektu **EventHubWriter** otevřete soubor **App.config.** Použijte informace z centra událostí, které jste nakonfigurovali dříve k vyplnění hodnoty pro následující klíče:
 
    | Klíč | Hodnota |
    | --- | --- |
-   | EventHubPolicyName |zapisovač (Pokud jste pro zásadu s oprávněním *Odeslat* použili jiný název, použijte ji místo toho.) |
+   | Název EventHubPolicyName |Zapisovač (Pokud jste pro zásadu použili jiný název se oprávněním *Odeslat,* použijte ho místo něj.) |
    | EventHubPolicyKey |Klíč pro zásady zapisovače. |
-   | EventHubNamespace |Obor názvů, který obsahuje centrum událostí. |
-   | EventHubName |Název vašeho centra událostí. |
+   | Obor EventHubNamespace |Obor názvů, který obsahuje centrum událostí. |
+   | Název EventHubName |Název centra událostí. |
    | EventHubPartitionCount |Počet oddílů v centru událostí. |
 
-4. Uložte a zavřete soubor **App. config** .
+4. Uložte a zavřete soubor **App.config.**
 
-## <a name="configure-the-eventhubreader"></a>Konfigurace EventHubReader
+## <a name="configure-the-eventhubreader"></a>Konfigurace aplikace EventHubReader
 
-1. Otevřete projekt **EventHubReader** .
+1. Otevřete projekt **EventHubReader.**
 
-2. Otevřete soubor **App. config** pro **EventHubReader**. Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
+2. Otevřete soubor **App.config** pro **aplikaci EventHubReader**. Použijte informace z centra událostí, které jste nakonfigurovali dříve k vyplnění hodnoty pro následující klíče:
 
    | Klíč | Hodnota |
    | --- | --- |
-   | EventHubPolicyName |Čtenář (Pokud jste pro zásadu použili jiný název, použijte místo toho oprávnění k *naslouchání* .) |
-   | EventHubPolicyKey |Klíč pro zásady čtenáře |
-   | EventHubNamespace |Obor názvů, který obsahuje centrum událostí. |
-   | EventHubName |Název vašeho centra událostí. |
+   | Název EventHubPolicyName |čtečka (Pokud jste pro zásadu použili jiný název s oprávněním *k naslouchání,* použijte ji místo něj.) |
+   | EventHubPolicyKey |Klíč pro zásady čtečky. |
+   | Obor EventHubNamespace |Obor názvů, který obsahuje centrum událostí. |
+   | Název EventHubName |Název centra událostí. |
    | EventHubPartitionCount |Počet oddílů v centru událostí. |
 
-3. Uložte a zavřete soubor **App. config** .
+3. Uložte a zavřete soubor **App.config.**
 
-## <a name="deploy-the-topologies"></a>Nasazení topologií
+## <a name="deploy-the-topologies"></a>Nasazení topologie
 
-1. Z **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **EventHubReader** a vyberte **Odeslat pro**zaplavení v HDInsight.
+1. V **Průzkumníku řešení**klikněte pravým tlačítkem myši na projekt **EventHubReader** a vyberte **odeslat storm na HDInsight**.
 
-    ![Snímek obrazovky Průzkumník řešení se zvýrazněnou možností odeslat na HDInsight ve službě HDInsight](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
+    ![Snímek obrazovky Průzkumníka řešení se zvýrazněnou možností Odeslat bouři na hdinsightu](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
-2. V dialogovém okně **Odeslat topologii** vyberte svůj **cluster**pro zaplavení. Rozbalte **Další konfigurace**, vyberte **cesty k souborům Java**, vyberte **...** a vyberte adresář, který obsahuje soubor JAR, který jste předtím stáhli. Nakonec klikněte na **Odeslat**.
+2. V dialogovém okně **Odeslat topologii** vyberte **storm cluster**. Rozbalte **další konfigurace**, vyberte **položku Cesty k souborům v jazyce Java**, vyberte **...** a vyberte adresář obsahující dříve stažený soubor JAR. Nakonec klepněte na tlačítko **Odeslat**.
 
-    ![Snímek obrazovky dialogového okna pro odeslání topologie](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
+    ![Snímek obrazovky s dialogovým oknem Odeslat topologii](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
-3. Po odeslání topologie se zobrazí **prohlížeč topologie** pro vyplavení. Pokud chcete zobrazit informace o topologii, vyberte topologii **EventHubReader** v levém podokně.
+3. Po odeslání topologie se zobrazí **prohlížeč topologií bouře.** Chcete-li zobrazit informace o topologii, vyberte topologii **EventHubReader** v levém podokně.
 
-    ![Snímek obrazovky s prohlížečem topologií s více podsystému](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
+    ![Snímek obrazovky prohlížeče Storm Topologies Viewer](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
-4. Z **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **EventHubWriter** a vyberte **Odeslat pro**zaplavení v HDInsight.
+4. V **Průzkumníku řešení**klikněte pravým tlačítkem myši na projekt **EventHubWriter** a vyberte **odeslat storm na HDInsight**.
 
-5. V dialogovém okně **Odeslat topologii** vyberte svůj **cluster**pro zaplavení. Rozbalte **Další konfigurace**, vyberte **cesty k souborům Java**, vyberte **...** a vyberte adresář, který obsahuje soubor JAR, který jste stáhli dříve. Nakonec klikněte na **Odeslat**.
+5. V dialogovém okně **Odeslat topologii** vyberte **storm cluster**. Rozbalte **další konfigurace**, vyberte **položku Cesty k souborům v jazyce Java**, vyberte **...** a vyberte adresář obsahující dříve stažený soubor JAR. Nakonec klepněte na tlačítko **Odeslat**.
 
-6. Po odeslání topologie aktualizujte seznam topologie v **prohlížeči topologií** se všemi topologiemi, abyste ověřili, že oba topologie jsou v clusteru spuštěné.
+6. Po odeslání topologie aktualizujte seznam topologie v **prohlížeči topologií bouře a** ověřte, zda jsou v clusteru spuštěny obě topologie.
 
-7. V **prohlížeči topologií se všemi topologiemi**vyberte topologii **EventHubReader** .
+7. V **prohlížeči Storm Topologies vyberte**topologii **EventHubReader.**
 
-8. Chcete-li otevřít souhrn komponenty pro šroub, dvakrát klikněte na součást **LogBolt** v diagramu.
+8. Chcete-li otevřít souhrn součásti šroubu, poklepejte na komponentu **LogBolt** v diagramu.
 
-9. V části **vykonavatelé** vyberte jeden z odkazů ve sloupci **port** . Zobrazí se informace zaprotokolované součástí. Protokolované informace jsou podobné následujícímu textu:
+9. V části **Executors** vyberte jeden z odkazů ve sloupci **Port.** Zobrazí se informace zaznamenané komponentou. Protokolované informace jsou podobné následujícímu textu:
 
     ```output
     2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
@@ -200,9 +200,9 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 ## <a name="stop-the-topologies"></a>Zastavení topologií
 
-Chcete-li zastavit topologie, vyberte každou topologii v **prohlížeči topologie**neplní a klikněte na tlačítko **ukončit**.
+Chcete-li topologii zastavit, vyberte jednotlivé topologie v **prohlížeči topologie bouře**a klepněte na tlačítko **Zabít**.
 
-![Snímek obrazovky s prohlížečem topologie s více podsystému, se zvýrazněným tlačítkem Kill](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
+![Snímek obrazovky prohlížeče topologie bouře se zvýrazněným tlačítkem Zabít](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 
 ## <a name="delete-your-cluster"></a>Odstranění clusteru
 
@@ -210,8 +210,8 @@ Chcete-li zastavit topologie, vyberte každou topologii v **prohlížeči topolo
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste se naučili, jak používat Java Event Hubs Spout a šroub z C# topologie pro práci s daty v Azure Event Hubs. Další informace o vytváření C# topologií najdete v následujících tématech:
+V tomto dokumentu jste se naučili, jak používat huby událostí Java a šroub z topologie C# pro práci s daty v Azure Event Hubs. Další informace o vytváření topologií jazyka C# najdete v následujících tématech:
 
-* [Vývoj C# topologií pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Vývoj topologií Jazyka C# pro Apache Storm na HDInsightu pomocí Visual Studia](apache-storm-develop-csharp-visual-studio-topology.md)
 * [Průvodce programováním SCP](apache-storm-scp-programming-guide.md)
 * [Příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md)

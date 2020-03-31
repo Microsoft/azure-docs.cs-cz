@@ -1,6 +1,6 @@
 ---
-title: Data bodu clusteringu na mapě | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak pomocí webové sady SDK služby Microsoft Azure Maps vykreslit data bodu clusteru a vykreslovat je na mapě.
+title: Data bodů clusteru na mapě | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak sdružovat data bodů a vykreslit je na mapě pomocí sady Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,23 +10,23 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen
 ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190268"
 ---
-# <a name="clustering-point-data"></a>Data bodu clusteringu
+# <a name="clustering-point-data"></a>Data bodů clusteru
 
-Při vizualizaci řady datových bodů na mapě se mohou datové body překrývat mezi sebou. Překrytí může způsobit, že mapa může být nečitelná a obtížné ji používat. Data bodu clusteringu je proces kombinování bodových dat blízko sebe a jejich reprezentace na mapě jako jeden clusterovaný datový bod. Když se uživatel přiblíží k mapě, rozdělí se clustery do jednotlivých datových bodů. Když pracujete s velkým počtem datových bodů, pomocí procesů clusteringu Vylepšete uživatelské prostředí.
+Při vizualizaci mnoha datových bodů na mapě se mohou datové body překrývat mezi sebou. Překrytí může způsobit, že se mapa může stát nečitelnou a obtížně použitelnou. Data bodů clusteringu je proces kombinování bodových dat, která jsou blízko sebe a představují je na mapě jako jeden clusterovaný datový bod. Jak se uživatel přiblíží k mapě, clustery se rozpadají na své jednotlivé datové body. Při práci s velkým počtem datových bodů, použijte clustering procesy ke zlepšení uživatelského prostředí.
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-## <a name="enabling-clustering-on-a-data-source"></a>Povolení clusteringu u zdroje dat
+## <a name="enabling-clustering-on-a-data-source"></a>Povolení clusteringu ve zdroji dat
 
-Povolte clusteringu ve třídě `DataSource` nastavením možnosti `cluster` na true (pravda). Nastavte `ClusterRadius` pro výběr okolních bodů a jejich kombinování do clusteru. Hodnota `ClusterRadius` je v pixelech. Pomocí `clusterMaxZoom` můžete určit úroveň přiblížení, na které se má zakázat logika clusteringu. Tady je příklad, jak povolit clusteringu ve zdroji dat.
+Povolit clustering `DataSource` ve třídě `cluster` nastavením možnosti true. Nastavte `ClusterRadius` na výběr blízkých bodů a zkombinuje je do clusteru. Hodnota `ClusterRadius` je v pixelech. Slouží `clusterMaxZoom` k určení úrovně zvětšení, při které chcete zakázat logiku clusteringu. Zde je příklad, jak povolit clustering ve zdroji dat.
 
 ```javascript
 //Create a data source and enable clustering.
@@ -44,109 +44,109 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> Pokud jsou na zemi blízko sebe dva datové body, je možné, že cluster nebude nikdy rozdělen bez ohledu na to, jak se uživatel blíží. Chcete-li to vyřešit, můžete nastavit možnost `clusterMaxZoom` pro zakázání logiky clusteringu a jednoduše zobrazit vše.
+> Pokud jsou dva datové body blízko u sebe na zemi, je možné, že se cluster nikdy nerozpadne, bez ohledu na to, jak blízko uživatel přiblíží. Chcete-li tento problém `clusterMaxZoom` vyřešit, můžete nastavit možnost zakázat logiku clusteringu a jednoduše zobrazit vše.
 
-Tady jsou další metody, které třída `DataSource` poskytuje pro clusteringu:
+Zde jsou další `DataSource` metody, které poskytuje třídy pro clustering:
 
 | Metoda | Návratový typ | Popis |
 |--------|-------------|-------------|
-| getClusterChildren (clusterId: Number) | &lt;funkce&lt;Promise&lt;geometrii, všechny&gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
-| getClusterExpansionZoom (clusterId: Number) | Číslo&lt;Promise&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
-| getClusterLeaves (clusterId: Number; limit: Number; offset: Number) | &lt;funkce&lt;Promise&lt;geometrii, všechny&gt; \| tvar&gt;&gt; | Načte všechny body v clusteru. Nastavte `limit` pro vrácení podmnožiny bodů a použijte `offset` ke stránkám prostřednictvím bodů. |
+| getClusterChildren(clusterId: číslo) | Geometrie&lt;prvku pole&gt; \| &lt;&lt;Slib, libovolný tvar&gt;&gt; | Načte podřízené děti daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkce s vlastnostmi odpovídající clusteredProperties. |
+| getClusterExpansionZoom(clusterId: číslo) | Číslo&lt;příslibu&gt; | Vypočítá úroveň zvětšení, při které se cluster začne rozšiřovat nebo rozpadat. |
+| getClusterLeaves(clusterId: číslo, limit: číslo, posun: číslo) | Geometrie&lt;prvku pole&gt; \| &lt;&lt;Slib, libovolný tvar&gt;&gt; | Načte všechny body v clusteru. Nastavte `limit` pro vrácení podmnožiny bodů a `offset` použijte stránku procházet body. |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>Zobrazení clusterů pomocí bublinové vrstvy
 
-Bublinová vrstva je skvělým způsobem, jak vykreslovat seskupené body. Použijte výrazy pro horizontální navýšení kapacity poloměru a změnu barvy na základě počtu bodů v clusteru. Pokud zobrazíte clustery pomocí bublinové vrstvy, pak byste měli použít samostatnou vrstvu pro vykreslení neclusterovaných datových bodů.
+Bublinová vrstva je skvělý způsob, jak vykreslit seskupené body. Pomocí výrazů můžete změnit měřítko poloměru a změnit barvu na základě počtu bodů v clusteru. Pokud clustery zobrazujete pomocí bublinové vrstvy, měli byste použít samostatnou vrstvu k vykreslení neseskupených datových bodů.
 
-Chcete-li zobrazit velikost clusteru nad bublinou, použijte symbolovou vrstvu s textem a nepoužívejte ikonu.
+Chcete-li zobrazit velikost clusteru nad bublinou, použijte vrstvu symbolů s textem a nepoužívejte ikonu.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Základní clustery s bublinovou vrstvou" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-V <a href='https://codepen.io'>CodePen</a>(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>clustery s bublinovou vrstvou</a> pera na základní úrovni.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Základní shlukování bublinových vrstev" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>clustering bublinové vrstvy</a> pera Základní podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="display-clusters-using-a-symbol-layer"></a>Zobrazení clusterů pomocí vrstvy symbolů
 
-Při vizualizaci datových bodů vrstva symbolu automaticky skryje symboly, které se vzájemně překrývají, aby se zajistilo, že bude čisticí uživatelské rozhraní. Toto výchozí chování může být nežádoucí, pokud chcete zobrazit hustotu datových bodů na mapě. Tato nastavení se ale dají změnit. Chcete-li zobrazit všechny symboly, nastavte `allowOverlap` možnost `iconOptions` vlastnosti vrstvy symbolů na `true`. 
+Při vizualizaci datových bodů vrstva symbolů automaticky skryje symboly, které se navzájem překrývají, aby bylo zajištěno čistší uživatelské rozhraní. Toto výchozí chování může být nežádoucí, pokud chcete zobrazit hustotu datových bodů na mapě. Tato nastavení však lze změnit. Chcete-li zobrazit všechny `allowOverlap` symboly, `iconOptions` nastavte `true`volbu vlastnosti Symbol vrstvy na . 
 
-Použití clusteringu k zobrazení hustoty datových bodů při zachování čistého uživatelského rozhraní. Následující ukázka ukazuje, jak přidat vlastní symboly a reprezentovat clustery a jednotlivé datové body pomocí vrstvy symbolů.
+Pomocí clusteringu můžete zobrazit hustotu datových bodů při zachování čistého uživatelského rozhraní. Následující ukázka ukazuje, jak přidat vlastní symboly a reprezentovat clustery a jednotlivé datové body pomocí vrstvy symbolů.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Clusterovaný Symbolová vrstva" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-V CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'></a>se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>vrstvu se clusterovaným symbolem</a> pera.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vrstva seskupených symbolů" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>vrstvu Pseudonym</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>ový symbol podle Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="clustering-and-the-heat-maps-layer"></a>Vytváření clusterů a vrstva Heat mapy
+## <a name="clustering-and-the-heat-maps-layer"></a>Shlukování a vrstva tepelných map
 
-Heat mapy představují skvělý způsob, jak zobrazit hustotu dat na mapě. Tato metoda vizualizace může zpracovat velký počet datových bodů sami. Pokud jsou datové body clusterované a velikost clusteru se používá jako váha Heat mapy, pak může Heat mapa zvládnout ještě víc dat. Chcete-li dosáhnout této možnosti, nastavte možnost `weight` vrstvy Heat mapy na hodnotu `['get', 'point_count']`. Pokud je poloměr clusteru malý, bude Heat mapa téměř totožná s Heat mapou pomocí neclusterovaných datových bodů, ale bude to mít mnohem lepší výkon. Čím menší je ale poloměr clusteru, tím přesnější bude Heat mapa, ale s méně výhodami výkonu.
+Tepelné mapy jsou skvělým způsobem, jak zobrazit hustotu dat na mapě. Tato metoda vizualizace může zpracovat velký počet datových bodů samostatně. Pokud jsou datové body seskupeny a velikost clusteru se používá jako hmotnost tepelné mapy, pak tepelná mapa zvládne ještě více dat. Chcete-li této možnosti dosáhnout, nastavte `weight` `['get', 'point_count']`volbu vrstvy tepelné mapy na . Když je poloměr clusteru malý, bude tepelná mapa vypadat téměř stejně jako tepelná mapa pomocí neseskupených datových bodů, ale bude fungovat mnohem lépe. Čím menší je však poloměr clusteru, tím přesnější bude tepelná mapa, ale s menšími výhodami výkonu.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Vážená Heat mapa clusteru" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na CodePen (@azuremaps) na <a href='https://codepen.io'></a>(<a href='https://codepen.io/azuremaps'> </a>) na základě <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>váženého Heat Azure Maps mapy clusteru</a> pera.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Mapa tepla vážená klastrem" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>upevňovaná tepelná mapa</a> clusteru pera podle Map Azure (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>codepenu</a>.
 </iframe>
 
 ## <a name="mouse-events-on-clustered-data-points"></a>Události myši v clusterovaných datových bodech
 
-Pokud dojde k událostem myši na vrstvě, která obsahuje seskupené datové body, vrátí se clusterový datový bod do události jako objekt funkce bodu injson. Tato funkce Point bude mít následující vlastnosti:
+Pokud dojde k událostem myši ve vrstvě, která obsahuje clusterované datové body, clusterovaný datový bod se vrátí k události jako objekt prvku bodu GeoJSON. Tento bodový prvek bude mít následující vlastnosti:
 
 | Název vlastnosti             | Typ    | Popis   |
 |---------------------------|---------|---------------|
-| `cluster`                 | Boolean | Indikuje, že funkce představuje cluster. |
-| `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s metodami DataSource `getClusterExpansionZoom`, `getClusterChildren`a `getClusterLeaves`. |
+| `cluster`                 | Boolean | Označuje, zda funkce představuje cluster. |
+| `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít `getClusterExpansionZoom`se `getClusterChildren`zdrojem dat , a `getClusterLeaves` metodami. |
 | `point_count`             | číslo  | Počet bodů, které cluster obsahuje.  |
-| `point_count_abbreviated` | řetězec  | Řetězec, který zkrátí `point_count` hodnotu, pokud je Long. (například 4 000 se bude 4K)  |
+| `point_count_abbreviated` | řetězec  | Řetězec, který zkracuje `point_count` hodnotu, pokud je dlouhá. (například 4 000 se změní na 4K)  |
 
-Tento příklad přebírá bublinovou vrstvu, která vykresluje body clusteru a přidává událost Click. Při triggeru události Click kód vypočítá a přiblíží mapu k další úrovni přiblížení, na které se cluster rozdělí. Tato funkce je implementována pomocí metody `getClusterExpansionZoom` třídy `DataSource` a vlastnosti `cluster_id` kliknutí na clusterovaný datový bod.
+Tento příklad přebírá bublinovou vrstvu, která vykresluje body clusteru a přidává událost kliknutí. Když se událost kliknutí aktivuje, kód vypočítá a přiblíží mapu na další úroveň přiblížení, při které se cluster rozpadne. Tato funkce je implementována pomocí `getClusterExpansionZoom` metody `DataSource` třídy a `cluster_id` vlastností klepnunutého clusterovaného datového bodu.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="GetClusterExpansionZoom clusteru" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na Azure Maps <a href='https://codepen.io/azuremaps/pen/moZWeV/'>getClusterExpansionZoom</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na CodePen (pero) na <a href='https://codepen.io'></a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/moZWeV/'>pero clusteru getClusterExpansionZoom</a> podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="display-cluster-area"></a>Zobrazit oblast clusteru 
 
-Data bodu, která cluster představuje, jsou rozložena v oblasti. V této ukázce když je ukazatel myši umístěn na clusteru, dojde k dvou hlavním chování. Nejprve se pro výpočet vypouklé trupu použijí jednotlivé datové body obsažené v clusteru. Pak se na mapě zobrazí vypuklý trup, který zobrazí oblast.  Vypuklý trup je mnohoúhelník, který zabalí sadu bodů jako elastický pruh a dá se vypočítat pomocí metody `atlas.math.getConvexHull`. Všechny body obsažené v clusteru lze načíst ze zdroje dat pomocí metody `getClusterLeaves`.
+Bodová data, která představuje cluster, jsou rozložena do oblasti. V této ukázce, když je myš je vznášet nad clusteru, dojde ke dvěma hlavním chováním. Za prvé, jednotlivé datové body obsažené v clusteru budou použity k výpočtu konvexního trupu. Poté se na mapě zobrazí konvexní korbor, který zobrazí oblast.  Konvexní trup je polygon, který zabalí sadu bodů, jako `atlas.math.getConvexHull` je elastický pás, a lze jej vypočítat pomocí metody. Všechny body obsažené v clusteru lze načíst ze `getClusterLeaves` zdroje dat pomocí metody.
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Vypuklý trup oblasti clusteru" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>oblast clusteru pera vypuklý trup</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Konvexní trup oblasti clusteru" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>konvexní konvexní trup oblasti clusteru</a> pera podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="aggregating-data-in-clusters"></a>Agregace dat v clusterech
 
-Clustery se často reprezentují pomocí symbolu s počtem bodů, které jsou v clusteru. Někdy je ale vhodné přizpůsobit styl clusterů s dalšími metrikami. Pomocí agregovaných hodnot clusteru lze vytvořit vlastní vlastnosti a naplnit je pomocí výpočtu [agregačního výrazu](data-driven-style-expressions-web-sdk.md#aggregate-expression) .  Agregace clusterů lze definovat v `clusterProperties` možnosti `DataSource`.
+Clustery jsou často reprezentovány pomocí symbolu s počtem bodů, které jsou v rámci clusteru. Někdy je však žádoucí přizpůsobit styl clusterů pomocí dalších metrik. Pomocí agregace clusteru lze vytvořit a naplnit vlastní vlastnosti pomocí výpočtu [agregačního výrazu.](data-driven-style-expressions-web-sdk.md#aggregate-expression)  Agregace clusteru `clusterProperties` lze `DataSource`definovat v možnosti .
 
-Následující příklad používá agregační výraz. Kód vypočítá počet založený na vlastnosti typ entity každého datového bodu v clusteru. Když uživatel klikne na cluster, zobrazí se automaticky otevírané okno s dalšími informacemi o clusteru.
+Následující ukázka používá agregační výraz. Kód vypočítá počet na základě vlastnosti typu entity každého datového bodu v clusteru. Když uživatel klikne na clusteru, zobrazí se vyskakovací okno s dalšími informacemi o clusteru.
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Agregace clusteru" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>agregace clusteru</a> pera pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>agregace clusteru</a> pera podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o třídách a metodách, které se používají v tomto článku:
+Další informace o třídách a metodách použitých v tomto článku:
 
 > [!div class="nextstepaction"]
-> [DataSource – třída](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [Třída DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Objekt DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Atlas. Math – obor názvů](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+> [obor názvů atlas.math](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
 
-Další funkce pro přidání funkcí do aplikace najdete v příkladech kódu:
-
-> [!div class="nextstepaction"]
-> [Přidat bublinovou vrstvu](map-add-bubble-layer.md)
+Podívejte se na příklady kódu pro přidání funkcí do aplikace:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu symbolů](map-add-pin.md)
+> [Přidání vrstvy bublin](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu Heat mapy](map-add-heat-map-layer.md)
+> [Přidání vrstvy symbolů](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Přidání vrstvy heat mapy](map-add-heat-map-layer.md)

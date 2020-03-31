@@ -1,5 +1,5 @@
 ---
-title: Monitorování integrity souborů v Azure Security Center
+title: Monitorování integrity souborů ve službě Azure Security Center
 description: Přečtěte si, jak porovnat směrné plány s monitorováním integrity souborů v Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -14,78 +14,78 @@ ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
 ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73664415"
 ---
-# <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Porovnání směrných plánů pomocí monitorování integrity souborů (FIM)
+# <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Porovnání standardních hodnot s využitím monitorování integrity souborů
 
-Monitorování integrity souborů (FIM) vás informuje, když dojde ke změnám citlivých oblastí ve vašich prostředcích, takže můžete prozkoumat a vyřešit neoprávněné aktivity. FIM monitoruje soubory Windows, Registry Windows a soubory Linux.
+Monitorování integrity souborů (FIM) vás informuje o tom, kdy dojde ke změnám v citlivých oblastech ve vašich prostředcích, takže můžete prozkoumat a řešit neautorizovanou aktivitu. FIM monitoruje soubory systému Windows, registry systému Windows a soubory Linux.
 
-Toto téma vysvětluje, jak povolit FIM pro soubory a Registry. Další informace o produktu FIM najdete v tématu [monitorování integrity souborů v Azure Security Center](security-center-file-integrity-monitoring.md).
+Toto téma vysvětluje, jak povolit FIM v souborech a registrech. Další informace o FIM najdete [v tématu Monitorování integrity souborů v Centru zabezpečení Azure](security-center-file-integrity-monitoring.md).
 
-## <a name="why-use-fim"></a>Proč používat produkt FIM?
+## <a name="why-use-fim"></a>Proč používat FIM?
 
-Operační systém, aplikace a přidružené konfigurace řídí chování a stav zabezpečení vašich prostředků. Proto útočníci cílí na soubory, které ovládají vaše prostředky, aby overtake operační systém prostředku a/nebo prováděly aktivity, aniž by se zjistily.
+Operační systém, aplikace a přidružené konfigurace řídí chování a stav zabezpečení prostředků. Útočníci proto cílí na soubory, které řídí vaše prostředky, aby předběhli operační systém prostředku nebo provedli aktivity bez zjištění.
 
-Mnoho standardů dodržování předpisů, jako je PCI-DSS & ISO 17799, ale vyžaduje implementaci ovládacích prvků FIM.  
+Ve skutečnosti mnoho norem pro dodržování předpisů, jako je PCI-DSS & ISO 17799, vyžaduje implementaci kontrol FIM.  
 
-## <a name="enable-built-in-recursive-registry-checks"></a>Povolit integrované rekurzivní kontroly registru
+## <a name="enable-built-in-recursive-registry-checks"></a>Povolení předdefinovaných rekurzivních kontrol registru
 
-Výchozí nastavení podregistru služby FIM nabízí pohodlný způsob, jak monitorovat rekurzivní změny v rámci běžných oblastí zabezpečení.  Nežádoucí osoba může například nakonfigurovat skript, který se spustí v kontextu LOCAL_SYSTEM, nakonfigurováním spuštění při spuštění nebo vypnutí.  Chcete-li monitorovat změny tohoto typu, povolte vestavěnou kontrolu.  
+Výchozí hodnoty podregistru FIM poskytují pohodlný způsob sledování rekurzivních změn v rámci společných oblastí zabezpečení.  Protivník může například nakonfigurovat skript, který se má spustit v LOCAL_SYSTEM kontextu konfigurací spuštění při spuštění nebo vypnutí.  Chcete-li sledovat změny tohoto typu, povolte předdefinované vrácení se změnami.  
 
 ![Registr](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
-> Rekurzivní kontroly se vztahují jenom na Doporučené podregistry zabezpečení a ne na vlastní cesty registru.  
+> Rekurzivní kontroly se vztahují pouze na doporučené podregistry zabezpečení a nikoli na vlastní cesty registru.  
 
 ## <a name="adding-a-custom-registry-check"></a>Přidání vlastní kontroly registru
 
-Směrné plány FIM začínají určením vlastností známého stavu, který je pro operační systém a podporu aplikace v pořádku.  V tomto příkladu se zaměříme na konfigurace zásad hesel pro Windows Server 2008 a novější.
+Směrné plány FIM začínají identifikací charakteristik stavu považovaného za dobrý pro operační systém a podpůrnou aplikací.  V tomto příkladu se zaměříme na konfigurace zásad hesel pro systém Windows Server 2008 a vyšší.
 
 
 |Název zásady                 | Nastavení registru|
 |---------------------------------------|-------------|
-|Řadič domény: odmítnout změny hesla účtu počítače| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
-|Člen domény: digitálně zašifrovat nebo podepsat data zabezpečeného kanálu (vždy)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
-|Člen domény: digitálně Zašifrujte data zabezpečeného kanálu (Pokud je to možné).|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
-|Člen domény: digitálně podepsat data zabezpečeného kanálu (Pokud je to možné)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
-|Člen domény: Zakázat změny hesla účtu počítače|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DisablePasswordChange|
-|Člen domény: maximální stáří hesla účtu počítače|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
-|Člen domény: vyžadovat silný klíč relace (Windows 2000 nebo novější)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
-|Zabezpečení sítě: omezit protokol NTLM: ověřování NTLM v této doméně|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
-|Zabezpečení sítě: omezit protokol NTLM: přidat výjimky serveru v této doméně|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
-|Zabezpečení sítě: omezit protokol NTLM: Auditovat ověřování NTLM v této doméně|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
+|Řadič domény: Nepovolit změnu hesla účtu počítače| STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
+|Člen domény: Vždy digitálně zašifrovat nebo podepsat data zabezpečeného kanálu|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
+|Člen domény: Je-li možno, digitálně zašifrovat data zabezpečeného kanálu|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
+|Člen domény: Je-li možno, digitálně podepsat data zabezpečeného kanálu|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
+|Člen domény: Nepovolit změnu hesla účtu počítače|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\DisablePasswordChange|
+|Člen domény: Maximální doba platnosti hesla účtu počítače|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
+|Člen domény: Vyžadovat silný klíč relace (Windows 2000 nebo vyšší)|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
+|Zabezpečení sítě: Omezit ntlm: Ověřování NTLM v této doméně|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
+|Zabezpečení sítě: Omezit protokol NTLM: Přidat výjimky pro servery v této doméně|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
+|Zabezpečení sítě: Omezit ntlm: Auditovat ověřování NTLM v této doméně|STROJ\Systém\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Další informace o nastaveních registru podporovaných různými verzemi operačních systémů najdete v [referenční tabulce nastavení zásady skupiny](https://www.microsoft.com/download/confirmation.aspx?id=25250).
+> Další informace o nastavení registru podporovaném různými verzemi operačního systému naleznete v [referenční tabulce Nastavení zásad skupiny](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
-*Konfigurace produktu FIM pro monitorování standardních hodnot registru:*
+*Konfigurace fim pro sledování směrných plánů registru:*
 
-1. V okně **Přidat registr systému Windows pro Change Tracking** zadejte do textového pole **klíč registru systému Windows** klíč registru.
+1. V okně **Přidat registr systému Windows pro sledování změn** zadejte do textového pole Klíč registru **systému Windows** klíč registru.
 
     <code>
 
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
     </code>
 
-      ![Povolení produktu FIM v registru](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+      ![Povolení fim v registru](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Sledování změn souborů Windows
+## <a name="tracking-changes-to-windows-files"></a>Sledování změn souborů systému Windows
 
-1. V okně **Přidat soubor Windows pro Change Tracking** zadejte do textového pole **zadat cestu** složku obsahující soubory, které chcete sledovat. V příkladu na následujícím obrázku se **Webová aplikace Contoso** nachází v D:\. jednotka ve struktuře složek **ContosWebApp**  
-1. Vytvořte vlastní položku souboru systému Windows zadáním názvu třídy nastavení, povolením rekurze a zadáním horní složky se zástupnou příponou (*).
+1. V okně **Přidat soubor systému Windows pro sledování změn** zadejte do textového pole Enter **cesty** složku obsahující soubory, které chcete sledovat. V příkladu na následujícím obrázku se **contoso Web App** nachází v d:\ jednotky v rámci struktury složek **ContosWebApp.**  
+1. Vytvořte vlastní položku souboru systému Windows zadáním názvu třídy nastavení, povolením rekurze a určením horní složky s příponou se zástupnými symboly (*).
 
-    ![Povolit FIM pro soubor](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    ![Povolení FIM v souboru](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
 ## <a name="retrieving-change-data"></a>Načítání dat změn
 
-Data monitorování integrity souborů se nacházejí v sadě tabulek Azure Log Analytics/ConfigurationChange.  
+Data monitorování integrity souborů jsou umístěna v sadě tabulek Azure Log Analytics / ConfigurationChange.  
 
- 1. Nastavte časový rozsah pro načtení souhrnu změn podle prostředku.
-V následujícím příkladu načítáme všechny změny za posledních 14 dní v kategoriích registru a souborů:
+ 1. Nastavte časový rozsah pro načtení souhrnu změn podle zdroje.
+V následujícím příkladu načítáme všechny změny za posledních čtrnáct dní v kategoriích registru a souborů:
 
     <code>
 
@@ -99,10 +99,10 @@ V následujícím příkladu načítáme všechny změny za posledních 14 dní 
 
     </code>
 
-1. Chcete-li zobrazit podrobnosti o změnách v registru:
+1. Chcete-li zobrazit podrobnosti o změnách registru:
 
-    1. Odebrat **soubory** z klauzule **WHERE** , 
-    1. Odeberte řádek Shrnutí a nahraďte ho klauzulí řazení:
+    1. Odebrat **soubory** z klauzule **kde,** 
+    1. Odeberte řádek souhrnu a nahraďte jej klauzulí řazení:
 
     <code>
 
@@ -116,6 +116,6 @@ V následujícím příkladu načítáme všechny změny za posledních 14 dní 
 
     </code>
 
-Sestavy můžete exportovat do sdíleného svazku clusteru pro účely archivace nebo kanálu do sestavy Power BI.  
+Sestavy lze exportovat do csv pro archivaci a/nebo směrovat do sestavy Power BI.  
 
-![Data FIM](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)
+![Fim data](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)

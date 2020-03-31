@@ -1,126 +1,127 @@
 ---
-title: Konfigurace rozšířené ochrany před internetovými útoky
+title: Konfigurace rozšířené ochrany před hrozbami
 titleSuffix: Azure Storage
-description: Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage k detekci anomálií v aktivitě účtu a upozornění na potenciálně nebezpečné pokusy o přístup k vašemu účtu.
+description: Nakonfigurujte pokročilou ochranu před hrozbami pro Azure Storage, abyste zjistili anomálie v aktivitě účtu a byli upozorňováni na potenciálně škodlivé pokusy o přístup k vašemu účtu.
 services: storage
 author: tamram
 ms.service: storage
+ms.subservice: common
 ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: d97b63aa87bfd8cf8ca1a3f5b213d6b16ca066df
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 27860b8761c565c45a604253efdff5f77606606e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616849"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061298"
 ---
-# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage
+# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace pokročilé ochrany před hrozbami pro Azure Storage
 
-Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby bez nutnosti být odborníkem na zabezpečení nebo správou systémů monitorování zabezpečení.
+Pokročilá ochrana před hrozbami pro Azure Storage poskytuje další vrstvu inteligence zabezpečení, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo zneužití účtů úložiště. Tato vrstva ochrany umožňuje řešit hrozby, aniž byste byli odborníkem na zabezpečení nebo spravovali systémy monitorování zabezpečení.
 
-Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
+Výstrahy zabezpečení se aktivují, když dojde k anomáliím v aktivitě. Tyto výstrahy zabezpečení jsou integrované s [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány e-mailem správcům předplatného, s podrobnostmi o podezřelé aktivity a doporučení, jak vyšetřovat a napravit hrozby.
 
 > [!NOTE]
-> Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuálně dostupná jenom pro úložiště objektů BLOB. Není k dispozici v oblastech cloudu Azure pro státní správu a svrchované oblasti. Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
+> Pokročilá ochrana před hrozbami pro Azure Storage je momentálně dostupná jenom pro úložiště objektů Blob. Není k dispozici ve vládních a suverénních cloudových oblastech Azure. Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Centra zabezpečení Azure]( https://azure.microsoft.com/pricing/details/security-center/).
 
-Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje diagnostické protokoly žádostí o čtení, zápis a odstranění do úložiště objektů BLOB pro detekci hrozeb. Pokud chcete prozkoumat výstrahy od rozšířené ochrany před internetovými útoky, můžete zobrazit související aktivitu úložiště pomocí Analýza úložiště protokolování. Další informace najdete v tématu **Konfigurace protokolování** v [monitorování účtu úložiště v Azure Portal](storage-monitor-storage-account.md#configure-logging).
+Pokročilá ochrana před hrozbami pro Azure Storage ingestuje diagnostické protokoly požadavků na čtení, zápis a odstranění do úložiště objektů Blob pro detekci hrozeb. Chcete-li prozkoumat výstrahy z pokročilé ochrany před hrozbami, můžete zobrazit související aktivitu úložiště pomocí protokolování Služby Storage Analytics. Další informace najdete v **tématu Konfigurace protokolování** v [monitoru účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md#configure-logging).
 
-## <a name="set-up-advanced-threat-protection"></a>Nastavení rozšířené ochrany před internetovými útoky
+## <a name="set-up-advanced-threat-protection"></a>Nastavení pokročilé ochrany před hrozbami
 
-Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovolným z několika způsobů popsaných v následujících částech.
+Pokročilou ochranu před hrozbami můžete nakonfigurovat několika způsoby popsanými v následujících částech.
 
-### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Spusťte [Azure Portal](https://portal.azure.com/).
-1. Přejděte na účet Azure Storage. V části **Nastavení**vyberte **Rozšířené zabezpečení**.
-1. Na stránce Upřesnit konfiguraci zabezpečení vyberte odkaz **Nastavení** .
-1. Nastavte **Rozšířené zabezpečení** **na zapnuto**.
-1. Kliknutím na **Uložit** uložte nové nebo aktualizované zásady.
+1. Spusťte [portál Azure](https://portal.azure.com/).
+1. Přejděte na svůj účet Azure Storage. V části **Nastavení**vyberte **Upřesnit zabezpečení**.
+1. Na stránce konfigurace rozšířeného zabezpečení vyberte odkaz **Nastavení.**
+1. Nastavte **rozšířené zabezpečení** na **ZAPNUTO**.
+1. Kliknutím na **Uložit** uložte novou nebo aktualizovanou zásadu.
 
-    ![Zapnutí Azure Storage rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+    ![Zapnutí pokročilé ochrany před hrozbami azure storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
-Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Rozšířená ochrana před internetovými útoky se automaticky nastaví na všechny vaše účty úložiště. Rozšířenou ochranu před internetovými útoky pro účty úložiště v rámci určitého předplatného můžete povolit nebo zakázat následujícím způsobem:
+Když se přihlásíte k odběru úrovně Standard v Azure Security Center, pokročilá ochrana před hrozbami se automaticky nastaví na všech vašich účtech úložiště. Pokročilou ochranu před hrozbami pro účty úložiště v rámci konkrétního předplatného můžete povolit nebo zakázat následujícím způsobem:
 
-1. Spusťte **Azure Security Center** v [Azure Portal](https://portal.azure.com).
-1. V hlavní nabídce klikněte na **ceny & nastavení**.
-1. Klikněte na předplatné, u kterého chcete povolit nebo zakázat ochranu před hrozbami pro své účty úložiště.
+1. Spusťte **Azure Security Center** na webu Azure [Portal](https://portal.azure.com).
+1. V hlavní nabídce klikněte na **Nastavení & ceny**.
+1. Klikněte na předplatné, které chcete povolit nebo zakázat ochranu před hrozbami pro jeho účty úložiště.
 
     ![Výběr předplatného](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
-1. Klikněte na **cenová úroveň**.
-1. V části **Vybrat cenovou úroveň podle typu prostředku** na řádku **účty úložiště** klikněte na **povoleno** nebo **zakázáno**.
+1. Klikněte na **Cenová úroveň**.
+1. V části **Vybrat cenovou úroveň podle typu prostředku** klikněte v řádku Účty **úložiště** na **Povoleno** nebo **Zakázáno**.
 
-    ![Povolit ATP v Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
+    ![Povolení ochrany ATP v Centru zabezpečení](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Klikněte na **Uložit**.
 
-### <a name="template"></a>[Šablona](#tab/template)
+### <a name="template"></a>[Šablony](#tab/template)
 
-Pomocí šablony Azure Resource Manager nasaďte účet Azure Storage s povolenou rozšířenou ochranou hrozeb. Další informace najdete v tématu [účet úložiště s pokročilou ochranou hrozeb](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+Pomocí šablony Azure Resource Manager nasadit účet Azure Storage s rozšířenou ochranu před hrozbami povoleno. Další informace naleznete v [tématu Účet úložiště s pokročilou ochranou před hrozbami](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
+### <a name="azure-policy"></a>[Zásady Azure](#tab/azure-policy)
 
-Pomocí Azure Policy můžete povolit rozšířenou ochranu před internetovými útoky napříč účty úložiště v rámci konkrétního předplatného nebo skupiny prostředků.
+Pomocí zásad Azure můžete povolit pokročilou ochranu před hrozbami napříč účty úložiště v rámci konkrétního předplatného nebo skupiny prostředků.
 
-1. Spusťte stránku Azure **Policy-definitions** .
+1. Spusťte stránku Zásady Azure **– definice.**
 
-1. Vyhledejte zásadu **nasazení rozšířené ochrany před internetovými útoky na účty úložiště** .
+1. Vyhledejte zásadu **Nasazení rozšířené ochrany před hrozbami u účtů úložiště.**
 
      ![Zásady hledání](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
 
-1. Vyberte předplatné nebo skupinu prostředků Azure.
+1. Vyberte předplatné Azure nebo skupinu prostředků.
 
     ![Vybrat předplatné nebo skupinu](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
 
 1. Přiřaďte zásadu.
 
-    ![Stránka definice zásad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
+    ![Stránka Definice zásad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-api"></a>[REST API](#tab/rest-api)
+### <a name="rest-api"></a>[ROZHRANÍ API PRO ODPOČINEK](#tab/rest-api)
 
-Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo získat nastavení rozšířené ochrany před internetovými útoky pro určitý účet úložiště.
+Pomocí příkazů rest API můžete vytvořit, aktualizovat nebo získat pokročilé nastavení ochrany před hrozbami pro konkrétní účet úložiště.
 
-* [Rozšířená ochrana před internetovými útoky – vytvořit](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-* [Rozšířená ochrana před internetovými útoky – získání](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+* [Pokročilá ochrana před hrozbami – vytvořit](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
+* [Pokročilá ochrana před hrozbami – získejte](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Použijte následující rutiny PowerShellu:
+Použijte následující rutiny prostředí PowerShell:
 
-* [Povolit rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-* [Získat rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-* [Zakázat rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+* [Povolit pokročilou ochranu před hrozbami](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Získejte pokročilou ochranu před hrozbami](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [Zakázání rozšířené ochrany před hrozbami](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ---
 
-## <a name="explore-security-anomalies"></a>Prozkoumejte anomálie zabezpečení
+## <a name="explore-security-anomalies"></a>Prozkoumejte bezpečnostní anomálie
 
-Když se vyskytnou anomálie aktivity úložiště, obdržíte e-mailové oznámení s informacemi o podezřelé události zabezpečení. Podrobnosti události zahrnují:
+Když dojde k anomáliím aktivity úložiště, obdržíte e-mailové oznámení s informacemi o podezřelé události zabezpečení. Podrobnosti o události zahrnují:
 
-* Povaha anomálií
+* Povaha anomálie
 * Název účtu úložiště
 * Čas události
 * Typ úložiště
 * Potenciální příčiny
-* Kroky pro šetření
-* Postup odstranění problému
+* Vyšetřovací kroky
+* Nápravné kroky
 
-E-mail obsahuje také podrobnosti o možných příčinách a doporučené akce pro prošetření a zmírnění potenciální hrozby.
+E-mail také obsahuje podrobnosti o možných příčinách a doporučených akcích k prošetření a zmírnění potenciální hrozby.
 
-![Azure Storage e-mailové výstrahy rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
+![Azure Storage pokročilé ochrany před hrozbami upozornění e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Aktuální výstrahy zabezpečení můžete zkontrolovat a spravovat z [dlaždice výstrahy zabezpečení](../../security-center/security-center-managing-and-responding-alerts.md)Azure Security Center. Kliknutím na konkrétní výstrahu získáte podrobnosti a akce pro zkoumání aktuální hrozby a vyřešení budoucích hrozeb.
+Aktuální výstrahy zabezpečení můžete zkontrolovat a spravovat z [dlaždice výstrah zabezpečení](../../security-center/security-center-managing-and-responding-alerts.md)centra zabezpečení Azure . Kliknutím na konkrétní výstrahu získáte podrobnosti a akce pro vyšetřování aktuální hrozby a řešení budoucích hrozeb.
 
-![Azure Storage e-mailové výstrahy rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
+![Azure Storage pokročilé ochrany před hrozbami upozornění e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 
-Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům úložiště nebo jejich zneužití. Seznam výstrah pro Azure Storage najdete v části **úložiště** v tématu [Ochrana před hrozbami pro datové služby v Azure Security Center](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage).
+Výstrahy jsou generovány neobvyklé a potenciálně škodlivé pokusy o přístup nebo zneužití účtů úložiště. Seznam upozornění pro Azure Storage najdete v části **Úložiště** v [části Ochrana před hrozbami pro datové služby v Centru zabezpečení Azure](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [protokolech v Azure Storage účtech](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* Další informace o [protokolech v účtech Azure Storage](/rest/api/storageservices/About-Storage-Analytics-Logging)
 * Další informace o [Azure Security Center](../../security-center/security-center-intro.md)

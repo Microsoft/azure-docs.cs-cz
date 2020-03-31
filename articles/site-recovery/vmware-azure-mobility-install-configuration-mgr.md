@@ -1,75 +1,75 @@
 ---
-title: Automatizovaná služba mobility pro zotavení po havárii při instalaci v Azure Site Recovery
-description: Jak automaticky nainstalovat službu mobility pro zotavení po havárii VMware/Physical serveru pomocí Azure Site Recovery.
+title: Automatizace služby mobility pro zotavení po havárii instalace v Azure Site Recovery
+description: Jak automaticky nainstalovat službu mobility pro obnovu po havárii v systému VMware /fyzického serveru pomocí azure site recovery.
 author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77252223"
 ---
-# <a name="automate-mobility-service-installation"></a>Automatizace instalace služby mobility
+# <a name="automate-mobility-service-installation"></a>Automatizace instalace služby Mobility Service
 
 Tento článek popisuje, jak automatizovat instalaci a aktualizace pro agenta služby mobility v [Azure Site Recovery](site-recovery-overview.md).
 
-Když nasadíte Site Recovery pro zotavení po havárii místních virtuálních počítačů VMware a fyzických serverů do Azure, nainstalujete agenta služby mobility na každý počítač, který chcete replikovat. Služba mobility zachycuje zápisy dat na počítači a předá je do Site Recovery procesového serveru pro replikaci. Službu mobility můžete nasadit několika způsoby:
+Když nasadíte site recovery pro zotavení po havárii místních virtuálních počítačích VMware a fyzických serverů do Azure, nainstalujete agenta služby mobility do každého počítače, který chcete replikovat. Služba mobility zachytí zápisy dat v počítači a předá je serveru obnovení webu k replikaci. Službu mobility můžete nasadit několika způsoby:
 
-- **Nabízená instalace**: umožňuje Site Recovery nainstalovat agenta služby mobility, když povolíte replikaci pro počítač v Azure Portal.
-- **Ruční instalace**: Nainstalujte službu mobility ručně na každý počítač. [Přečtěte si další informace](vmware-physical-mobility-service-overview.md) o nabízených a ručních instalacích.
-- **Automatizované nasazení**: automatizujte instalaci pomocí nástrojů pro nasazení softwaru, jako je Microsoft Endpoint Configuration Manager nebo nástrojů třetích stran, jako je JetPatch.
+- **Nabízená instalace**: Umožněte site recovery nainstalovat agenta služby Mobility, když povolíte replikaci pro počítač na webu Azure Portal.
+- **Ruční instalace**: Nainstalujte službu Mobility ručně na každý počítač. [Přečtěte si další informace](vmware-physical-mobility-service-overview.md) o nabízení a ruční instalaci.
+- **Automatické nasazení**: Automatizujte instalaci pomocí nástrojů pro nasazení softwaru, jako je microsoft endpoint configuration manager nebo nástroje jiných výrobců, jako je JetPatch.
 
-Automatizovaná instalace a aktualizace poskytuje řešení v těchto případech:
+Automatická instalace a aktualizace poskytují řešení, pokud:
 
 - Vaše organizace neumožňuje nabízenou instalaci na chráněných serverech.
-- Zásady vaší společnosti vyžadují pravidelné změny hesel. Je nutné zadat heslo pro nabízenou instalaci.
-- Vaše zásady zabezpečení nedovolují přidávání výjimek brány firewall pro konkrétní počítače.
-- Pracujete jako poskytovatel hostingové služby a nechcete poskytnout přihlašovací údaje počítače zákazníka potřebné pro nabízenou instalaci s Site Recovery.
-- Je potřeba škálovat instalace agenta na hodně serverů současně.
-- Chcete naplánovat instalace a upgrady během plánovaných časových období údržby.
+- Zásady společnosti vyžadují pravidelnou změnu hesel. Je nutné zadat heslo pro nabízenou instalaci.
+- Zásady zabezpečení nepovolují přidávání výjimek brány firewall pro konkrétní počítače.
+- Jednáte jako poskytovatel hostingových služeb a nechcete poskytnout pověření počítače zákazníka, které jsou potřebné pro nabízenou instalaci s site recovery.
+- Je třeba škálovat instalace agentů na velké množství serverů současně.
+- Chcete naplánovat instalace a upgrady během plánovaných oken údržby.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K automatizaci instalace potřebujete následující položky:
+Chcete-li instalaci automatizovat, potřebujete následující položky:
 
 - Nasazené řešení instalace softwaru, například [Configuration Manager](/configmgr/) nebo [JetPatch](https://jetpatch.com/microsoft-azure-site-recovery/).
-- Požadavky na nasazení, které jsou v [Azure](tutorial-prepare-azure.md) [a místní pro](vmware-azure-tutorial-prepare-on-premises.md) zotavení po havárii VMware, nebo pro zotavení po havárii [fyzického serveru](physical-azure-disaster-recovery.md) . Projděte si [požadavky na podporu](vmware-physical-azure-support-matrix.md) pro zotavení po havárii.
+- Předpoklady nasazení v [Azure](tutorial-prepare-azure.md) a [místně](vmware-azure-tutorial-prepare-on-premises.md) pro zotavení po havárii v systému VMware nebo pro zotavení [po havárii fyzického serveru.](physical-azure-disaster-recovery.md) Zkontrolujte požadavky na [podporu](vmware-physical-azure-support-matrix.md) pro zotavení po havárii.
 
 ## <a name="prepare-for-automated-deployment"></a>Příprava na automatizované nasazení
 
-Následující tabulka shrnuje nástroje a procesy pro automatizaci nasazení služby mobility.
+Následující tabulka shrnuje nástroje a procesy pro automatizaci nasazení služby Mobility Service.
 
-**Nástroj** | **Podrobnosti** | **Pokynů**
+**Nástroj** | **Podrobnosti** | **Pokyny**
 --- | --- | ---
-**Configuration Manager** | 1. Ověřte, že jsou splněné [požadavky](#prerequisites) uvedené výše. <br/><br/> 2. Nasaďte zotavení po havárii nastavením zdrojového prostředí, včetně stažení souboru s VAJÍČKy k nasazení Site Recovery konfiguračního serveru jako virtuálního počítače VMware pomocí šablony OVF.<br/><br/> 3. zaregistrujete konfigurační server pomocí služby Site Recovery, nastavíte cílové prostředí Azure a nakonfigurujete zásady replikace.<br/><br/> 4. pro automatizované nasazení služby mobility vytvoříte síťovou sdílenou složku obsahující heslo konfigurační server a instalační soubory služby mobility.<br/><br/> 5. vytvoříte balíček Configuration Manager obsahující instalaci nebo aktualizace a připravíte nasazení služby mobility.<br/><br/> 6. potom můžete povolit replikaci do Azure pro počítače, ve kterých je nainstalovaná služba mobility. | [Automatizace pomocí Configuration Manager](#automate-with-configuration-manager)
-**JetPatch** | 1. Ověřte, že jsou splněné [požadavky](#prerequisites) uvedené výše. <br/><br/> 2. Nasaďte zotavení po havárii nastavením zdrojového prostředí, včetně stažení a nasazení správce agentů JetPatch pro Azure Site Recovery ve vašem Site Recovery prostředí pomocí šablony OVF.<br/><br/> 3. zaregistrujete konfigurační server pomocí Site Recovery, nastavíte cílové prostředí Azure a nakonfigurujete zásady replikace.<br/><br/> 4. pro automatizované nasazení inicializujte a dokončete konfiguraci správce agentů JetPatch.<br/><br/> 5. v JetPatch můžete vytvořit zásady Site Recovery pro automatizaci nasazení a upgradu agenta služby mobility. <br/><br/> 6. potom můžete povolit replikaci do Azure pro počítače, ve kterých je nainstalovaná služba mobility. | [Automatizace pomocí Správce agenta JetPatch](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [Řešení potíží s instalací agenta v JetPatch](https://kc.jetpatch.com/hc/articles/360035981812)
+**Configuration Manager** | 1. Ověřte, zda máte výše uvedené [požadavky.](#prerequisites) <br/><br/> 2. Nasazení zotavení po havárii nastavením zdrojového prostředí, včetně stažení souboru OVA pro nasazení konfiguračního serveru site recovery jako virtuálního počítače VMware pomocí šablony OVF.<br/><br/> 3. Konfigurační server zaregistrujete službou Site Recovery, nastavíte cílové prostředí Azure a nakonfigurujete zásady replikace.<br/><br/> 4. Pro automatizované nasazení služby Mobility Service vytvoříte sdílenou síťovou složku obsahující přístupové heslo konfiguračního serveru a instalační soubory služby Mobility Service.<br/><br/> 5. Vytvoříte balíček nástroje Configuration Manager obsahující instalaci nebo aktualizace a připravíte se na nasazení služby Mobility Service.<br/><br/> 6. Potom můžete povolit replikaci do Azure pro počítače, které mají nainstalovanou službu mobility. | [Automatizace pomocí nástroje Configuration Manager](#automate-with-configuration-manager)
+**JetPatch** | 1. Ověřte, zda máte výše uvedené [požadavky.](#prerequisites) <br/><br/> 2. Nasazení zotavení po havárii nastavením zdrojového prostředí, včetně stahování a nasazování JetPatch Agent Manager pro Azure Site Recovery v prostředí site recovery pomocí šablony OVF.<br/><br/> 3. Konfigurační server zaregistrujete pomocí site recovery, nastavíte cílové prostředí Azure a nakonfigurujete zásady replikace.<br/><br/> 4. Pro automatické nasazení inicializovat a dokončit konfiguraci JetPatch Agent Manager.<br/><br/> 5. V JetPatch můžete vytvořit zásady obnovení webu pro automatizaci nasazení a upgradu agenta služby mobility. <br/><br/> 6. Potom můžete povolit replikaci do Azure pro počítače, které mají nainstalovanou službu mobility. | [Automatizace pomocí správce agentů JetPatch](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [Poradce při potížích s instalací agenta v jetPatch](https://kc.jetpatch.com/hc/articles/360035981812)
 
-## <a name="automate-with-configuration-manager"></a>Automatizace pomocí Configuration Manager
+## <a name="automate-with-configuration-manager"></a>Automatizace pomocí nástroje Configuration Manager
 
 ### <a name="prepare-the-installation-files"></a>Příprava instalačních souborů
 
-1. Ujistěte se, že máte zavedené požadavky.
-1. Vytvořte zabezpečenou síťovou sdílenou složku (SMB), ke které se dá dostat z počítače, na kterém běží konfigurační server.
-1. V Configuration Manager [zařaďte do kategorií servery](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections) , na kterých chcete nainstalovat nebo aktualizovat službu mobility. Jedna kolekce by měla obsahovat všechny servery Windows, ostatní všechny servery Linux.
+1. Ujistěte se, že máte předpoklady na místě.
+1. Vytvořte zabezpečenou sdílenou síťovou složku (sdílenou složku SMB), ke které má počítač se systémem konfiguračního serveru přístup.
+1. V nástroji Configuration Manager [zahrávat servery,](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections) na které chcete nainstalovat nebo aktualizovat službu mobility. Jedna kolekce by měla obsahovat všechny servery Windows, druhá všechny servery Linux.
 1. Ve sdílené síťové složce vytvořte složku:
 
-   - Pro instalaci na počítačích s Windows vytvořte složku s názvem _MobSvcWindows_.
-   - Pro instalaci na počítače se systémem Linux vytvořte složku s názvem _MobSvcLinux_.
+   - Pro instalaci na počítačích se systémem Windows vytvořte složku s názvem _MobSvcWindows_.
+   - Pro instalaci na linuxových počítačích vytvořte složku s názvem _MobSvcLinux_.
 
 1. Přihlaste se k počítači konfiguračního serveru.
-1. Na počítači konfiguračního serveru otevřete příkazový řádek pro správu.
-1. Chcete-li vygenerovat soubor s heslem, spusťte tento příkaz:
+1. V počítači konfiguračního serveru otevřete příkazový řádek pro správu.
+1. Chcete-li vygenerovat soubor hesel, spusťte tento příkaz:
 
     ```Console
     cd %ProgramData%\ASR\home\svsystems\bin
     genpassphrase.exe -v > MobSvc.passphrase
     ```
 
-1. Zkopírujte soubor _MobSvc. hesla_ do složky Windows a do složky Linux.
-1. Chcete-li přejít do složky, která obsahuje instalační soubory, spusťte tento příkaz:
+1. Zkopírujte soubor _MobSvc.passphrase_ do složky Windows a linuxové složky.
+1. Chcete-li přejít do složky obsahující instalační soubory, spusťte tento příkaz:
 
     ```Console
     cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository
@@ -77,27 +77,27 @@ Následující tabulka shrnuje nástroje a procesy pro automatizaci nasazení sl
 
 1. Zkopírujte tyto instalační soubory do sdílené síťové složky:
 
-   - Pro Windows zkopírujte soubor _Microsoft-ASR_UA_version_Windows_GA_date_Release. exe_ do _MobSvcWindows_.
-   - Pro Linux zkopírujte následující soubory do _MobSvcLinux_:
-     - _Microsoft-ASR_UARHEL6 -64release. tar. gz_
-     - _Microsoft-ASR_UARHEL7 -64release. tar. gz_
-     - _Microsoft-ASR_UASLES11-SP3-64release. tar. gz_
-     - _Microsoft-ASR_UASLES11-SP4-64release. tar. gz_
-     - _Microsoft-ASR_UAOL6 -64release. tar. gz_
-     - _Microsoft-ASR_UAUBUNTU-14.04 -64release. tar. gz_
+   - V systému Windows zkopírujte _program Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ do _programu MobSvcWindows_.
+   - Pro Linux, zkopírujte následující soubory _mobsvcLinux_:
+     - _Microsoft-ASR_UARHEL6-64release.tar.gz_
+     - _Microsoft-ASR_UARHEL7-64release.tar.gz_
+     - _Microsoft-ASR_UASLES11-SP3-64release.tar.gz_
+     - _Microsoft-ASR_UASLES11-SP4-64release.tar.gz_
+     - _Microsoft-ASR_UAOL6-64release.tar.gz_
+     - _Microsoft-ASR_UAUBUNTU-14.04-64release.tar.gz_
 
-1. Jak je popsáno v následujících postupech, zkopírujte kód do složky systému Windows nebo Linux. Předpokládáme, že:
+1. Jak je popsáno v následujících postupech, zkopírujte kód do složek systému Windows nebo Linux. Předpokládáme, že:
 
-   - IP adresa konfiguračního serveru je `192.168.3.121`.
-   - Zabezpečená síťová sdílená složka je `\\ContosoSecureFS\MobilityServiceInstallers`.
+   - Adresa IP konfiguračního serveru je `192.168.3.121`.
+   - Zabezpečená síťová `\\ContosoSecureFS\MobilityServiceInstallers`sdílená složka je .
 
-### <a name="copy-code-to-the-windows-folder"></a>Zkopírovat kód do složky Windows
+### <a name="copy-code-to-the-windows-folder"></a>Kopírování kódu do složky Windows
 
 Zkopírujte následující kód:
 
-- Uložte kód ve složce _MobSvcWindows_ jako _install. bat_.
-- Nahraďte zástupné symboly `[CSIP]` v tomto skriptu skutečnými hodnotami IP adresy konfiguračního serveru.
-- Skript podporuje nové instalace agenta služby mobility a aktualizuje agenty, které jsou už nainstalované.
+- Uložte kód ve složce _MobSvcWindows_ jako _install.bat_.
+- Nahraďte `[CSIP]` zástupné symboly v tomto skriptu skutečnými hodnotami adresy IP konfiguračního serveru.
+- Skript podporuje nové instalace agenta služby Mobility Service a aktualizace agentů, kteří jsou již nainstalováni.
 
 ```DOS
 Time /t >> C:\Temp\logfile.log
@@ -194,13 +194,13 @@ IF NOT %ERRORLEVEL% EQU 0 (
     echo "End of script." >> C:\Temp\logfile.log
 ```
 
-### <a name="copy-code-to-the-linux-folder"></a>Kopírovat kód do složky Linux
+### <a name="copy-code-to-the-linux-folder"></a>Kopírování kódu do složky Linux
 
 Zkopírujte následující kód:
 
-- Uložte kód ve složce _MobSvcLinux_ jako _install_linux. sh_.
-- Nahraďte zástupné symboly `[CSIP]` v tomto skriptu skutečnými hodnotami IP adresy konfiguračního serveru.
-- Skript podporuje nové instalace agenta služby mobility a aktualizuje agenty, které jsou už nainstalované.
+- Uložte kód do složky _MobSvcLinux_ jako _install_linux.sh_.
+- Nahraďte `[CSIP]` zástupné symboly v tomto skriptu skutečnými hodnotami adresy IP konfiguračního serveru.
+- Skript podporuje nové instalace agenta služby Mobility Service a aktualizace agentů, kteří jsou již nainstalováni.
 
 ```Bash
 #!/usr/bin/env bash
@@ -338,65 +338,65 @@ cd /tmp
 
 ### <a name="create-a-package"></a>Vytvoření balíčku
 
-1. Přihlaste se ke konzole Configuration Manager a v části **softwarová knihovna** >  > **balíčky**pro **správu aplikací** .
-1. Klikněte pravým tlačítkem na **balíčky** > **vytvořit balíček**.
-1. Zadejte podrobnosti balíčku, včetně názvu, popisu, výrobce, jazyka a verze.
+1. Přihlaste se ke konzole Configuration Manager a přejděte na**balíčky**pro**správu** > aplikací **knihovny** > softwaru .
+1. Klepněte pravým tlačítkem myši na **položku Balíčky** > **vytvořit balíček**.
+1. Zadejte podrobnosti o balíčku včetně názvu, popisu, výrobce, jazyka a verze.
 1. Vyberte **Tento balíček obsahuje zdrojové soubory**.
-1. Klikněte na tlačítko **Procházet**a vyberte sdílenou síťovou složku a složku obsahující příslušný instalační program (_MobSvcWindows_ nebo _MobSvcLinux_). Pak vyberte **Next** (Další).
+1. Klepněte na **tlačítko Procházet**a vyberte sdílenou síť ovou složku, která obsahuje příslušný instalační program (_MobSvcWindows_ nebo _MobSvcLinux_. Potom vyberte **Další**.
 
-   ![Snímek obrazovky Průvodce vytvořením balíčku a programu](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
+   ![Snímek obrazovky s průvodcem Vytvořit balíček a program](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-1. Na stránce **Zvolte typ programu, který chcete vytvořit** vyberte možnost **standardní program** > **Další**.
+1. V **části Vyberte typ programu, který chcete vytvořit,** vyberte **možnost Standardní program** > **Další**.
 
-   ![Snímek obrazovky Průvodce vytvořením balíčku a programu](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![Snímek obrazovky s průvodcem Vytvořit balíček a program](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-1. Na stránce **Zadejte informace o tomto standardním programu** zadejte následující hodnoty:
+1. V části Určit informace o této stránce **standardního programu** zadejte následující hodnoty:
 
-    **Ukazatele** | **Hodnota Windows** | **Hodnota Linux**
+    **Parametr** | **Hodnota systému Windows** | **Hodnota Linuxu**
     --- | --- | ---
-    **Název** | Instalace služby mobility Microsoft Azure (Windows) | Nainstalujte službu Microsoft Azure mobility (Linux).
+    **Název** | Instalace služby Microsoft Azure Mobility Service (Windows) | Nainstalujte službu Microsoft Azure Mobility Service (Linux).
     **Příkazový řádek** | install.bat | ./install_linux.sh
-    **Program lze spustit** | Nezávisle na přihlášení uživatele. | Nezávisle na přihlášení uživatele.
+    **Program lze spustit** | Zda je uživatel přihlášen | Zda je uživatel přihlášen
     **Další parametry** | Použít výchozí nastavení | Použít výchozí nastavení
 
-   ![Snímek obrazovky Průvodce vytvořením balíčku a programu](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
+   ![Snímek obrazovky s průvodcem Vytvořit balíček a program](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-1. V části **Zadejte požadavky pro tento standardní program**proveďte následující úlohy:
+1. V **části Určení požadavků pro tento standardní program**proveďte následující úkoly:
 
-   - V případě počítačů se systémem Windows vyberte možnost **Tento program může běžet pouze na zadaných platformách**. Pak vyberte [podporované operační systémy Windows](vmware-physical-azure-support-matrix.md#replicated-machines) a vyberte **Další**.
-   - V případě počítačů se systémem Linux vyberte možnost **Tento program může běžet na libovolné platformě**. Pak vyberte **Další**.
+   - U počítačů se systémem Windows vyberte **možnost Tento program lze spustit pouze na určených platformách**. Potom vyberte [podporované operační systémy Windows](vmware-physical-azure-support-matrix.md#replicated-machines) a vyberte **Další**.
+   - Pro linuxové počítače vyberte **Tento program lze spustit na libovolné platformě**. Pak vyberte **Další**.
 
 1. Dokončete průvodce.
 
-### <a name="deploy-the-package"></a>Nasadit balíček
+### <a name="deploy-the-package"></a>Nasazení balíčku
 
-1. V konzole Configuration Manager klikněte pravým tlačítkem na balíček a vyberte **distribuovat obsah**.
+1. V konzole Configuration Manager klepněte pravým tlačítkem myši na balíček a vyberte **distribuovat obsah**.
 
-   ![Snímek obrazovky s konzolou Configuration Manager](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
+   ![Snímek obrazovky konzoly Nástroje pro přizpůsobení](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
 1. Vyberte distribuční body, do kterých mají být balíčky zkopírovány. [Další informace](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
 1. Dokončete průvodce. Balíček se pak začne replikovat do zadaných distribučních bodů.
-1. Po dokončení distribuce balíčku klikněte pravým tlačítkem na balíček > **nasadit**.
+1. Po dokončení distribuce balíčku klepněte pravým tlačítkem myši na balíček > **deploy**.
 
-   ![Snímek obrazovky s konzolou Configuration Manager](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+   ![Snímek obrazovky konzoly Nástroje pro přizpůsobení](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 
-1. Vyberte kolekci zařízení se systémem Windows nebo Linux, kterou jste vytvořili dříve.
-1. Na stránce **Zadejte cíl obsahu** vyberte možnost **distribuční body**.
-1. V **Možnosti zadejte nastavení pro řízení způsobu nasazení tohoto softwaru** nastavte **účel** na **požadováno**.
+1. Vyberte kolekci zařízení windows nebo linux, kterou jste vytvořili dříve.
+1. Na stránce **Určení cíle obsahu** vyberte Distribuční **body**.
+1. V **části Určení nastavení určujícízpůsob nasazení tohoto softwaru** nastavte možnost **Účel** na **Povinné**.
 
-   ![Snímek obrazovky Průvodce nasazením softwaru](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
+   ![Snímek obrazovky s průvodcem Nasazení softwaru](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-1. V **části zadejte plán pro toto nasazení**nastavte plán. [Další informace](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
+1. V **části Zadejte plán pro toto nasazení**nastavte plán. [Další informace](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
 
-   - Služba mobility se nainstaluje podle zadaného plánu.
-   - Aby nedocházelo k zbytečnému restartování, naplánujte instalaci balíčku během měsíčního časového období údržby nebo v okně aktualizace softwaru.
+   - Služba mobility je nainstalována v souladu se zadaným plánem.
+   - Chcete-li se vyhnout zbytečným restartováním, naplánujte instalaci balíčku během okna měsíční údržby nebo okna aktualizací softwaru.
 
-1. Na stránce **distribuční body** nakonfigurujte nastavení a dokončete průvodce.
-1. Sledujte průběh nasazení v konzole Configuration Manager. V\> ** > ** **nasazení** >  _\<název balíčku_ .
+1. Na stránce **Distribuční body** nakonfigurujte nastavení a dokončete průvodce.
+1. Sledujte průběh nasazení v konzole nástroje Configuration Manager. Přejděte na **možnost Sledování** > **nasazení** > _\<názvu\>balíčku_.
 
 ### <a name="uninstall-the-mobility-service"></a>Odinstalace služby mobility
 
-Můžete vytvořit balíčky Configuration Manager pro odinstalaci služby mobility. Například následující skript odinstaluje službu mobility:
+Můžete vytvořit balíčky nástroje Configuration Manager pro odinstalaci služby Mobility. Služba mobility například odinstaluje následující skript:
 
 ```DOS
 Time /t >> C:\logfile.log
@@ -420,4 +420,4 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
 
 ## <a name="next-steps"></a>Další kroky
 
-[Povolte replikaci](vmware-azure-enable-replication.md) pro virtuální počítače.
+[Povolte replikaci](vmware-azure-enable-replication.md) pro virtuální chod.

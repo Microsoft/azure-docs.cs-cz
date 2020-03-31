@@ -1,6 +1,6 @@
 ---
-title: Přehrávání obsahu pomocí stávajících hráčů – Azure | Microsoft Docs
-description: Tento článek obsahuje seznam existujících přehrávačů, které můžete použít k přehrávání obsahu.
+title: Použití stávajících přehrávačů k přehrávání obsahu – Azure | Dokumenty společnosti Microsoft
+description: V tomto článku jsou uvedeny existující přehrávače, které můžete použít k přehrávání obsahu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565821"
 ---
-# <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu pomocí stávajících přehrávačů
-Azure Media Services podporuje spoustu oblíbených formátů streamování, například Smooth Streaming, HTTP Live Streaming a MPEG-pomlčky. Toto téma ukazuje na existující přehrávače, které můžete použít k otestování vašich datových proudů.
+# <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu ve stávajících přehrávačích
+Azure Media Services podporuje mnoho populárních formátů streamování, jako je plynulé streamování, živé streamování HTTP a MPEG-Dash. Toto téma odkazuje na stávající přehrávače, které můžete použít k testování datových proudů.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Přehrávač obsahu Azure Portal Media Services
-**Azure** Portal poskytuje přehrávač obsahu, který můžete použít k otestování videa.
+### <a name="the-azure-portal-media-services-content-player"></a>Přehrávač obsahu Mediálních služeb portálu Azure
+Portál **Azure** poskytuje přehrávač obsahu, který můžete použít k testování videa.
 
-Klikněte na požadované video (Ujistěte se, že je [publikované](media-services-portal-publish.md)) a klikněte na tlačítko **Přehrát** v dolní části portálu.
+Klikněte na požadované video (ujistěte se, že bylo [publikováno)](media-services-portal-publish.md)a klikněte na tlačítko **Přehrát** v dolní části portálu.
 
 Musí být splněny určité předpoklady:
 
@@ -35,38 +35,38 @@ Musí být splněny určité předpoklady:
 
 ![AMSPlayer][AMSPlayer]
 
-### <a name="azure-media-player"></a>Azure Media Player
+### <a name="azure-media-player"></a>Přehrávač médií Azure
 
-Použijte [Azure Media Player](https://aka.ms/azuremediaplayer) k přehrávání obsahu (Clear nebo Protected) v některém z následujících formátů:
+Pomocí [programu Azure Media Player](https://aka.ms/azuremediaplayer) můžete přehrávat obsah (jasný nebo chráněný) v některém z následujících formátů:
 
 * Technologie Smooth Streaming
 * MPEG DASH
 * HLS
 * Progresivní MP4
 
-### <a name="flash-player"></a>Přehrávač Flash
+### <a name="flash-player"></a>Flash Player
 
-#### <a name="aes-encrypted-with-token"></a>AES – zašifrovaný pomocí tokenu
+#### <a name="aes-encrypted-with-token"></a>AES-šifrované s tokenem
 
 [https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
-#### <a name="playready-with-token"></a>PlayReady s tokenem
+#### <a name="playready-with-token"></a>PlayReady s žetonem
 
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
-### <a name="dash-players"></a>PŘERUŠOVANé přehrávače
+### <a name="dash-players"></a>Dash hráči
 
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Ostatní
-K testování adres URL HLS můžete také použít:
+Chcete-li otestovat adresy URL HLS, můžete také použít:
 
-* **Safari** na zařízení s iOS nebo
-* **3ivx HLS Player** ve Windows
+* **Safari** na iOS zařízení nebo
+* **3ivx HLS Player** na Windows.
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby

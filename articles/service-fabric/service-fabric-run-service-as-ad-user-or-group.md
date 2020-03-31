@@ -1,25 +1,25 @@
 ---
-title: Spuštění služby Azure Service Fabric jako uživatele nebo skupiny AD
-description: Naučte se, jak spustit službu jako uživatel nebo skupinu služby Active Directory v Service Fabric samostatném clusteru se systémem Windows.
+title: Spuštění služby Azure Service Fabric jako uživatele nebo skupiny služby AD
+description: Zjistěte, jak spustit službu jako uživatel nebo skupina služby Active Directory v samostatném clusteru service fabric systému Windows.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464245"
 ---
-# <a name="run-a-service-as-an-active-directory-user-or-group"></a>Spuštění služby jako uživatel nebo skupina služby Active Directory
-V samostatném clusteru se systémem Windows Server můžete službu spustit jako uživatele nebo skupinu služby Active Directory pomocí zásad RunAs.  Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric. exe. Spouštění aplikací v rámci různých účtů, i ve sdíleném hostovaném prostředí, je mezi sebou bezpečnější. Všimněte si, že se používá místní služba Active Directory v rámci vaší domény a ne Azure Active Directory (Azure AD).  Službu můžete také spustit jako [skupinový účet spravované služby (gMSA)](service-fabric-run-service-as-gmsa.md).
+# <a name="run-a-service-as-an-active-directory-user-or-group"></a>Spuštění služby jako uživatele nebo skupiny služby Active Directory
+V samostatném clusteru systému Windows Server můžete spustit službu jako uživatel nebo skupinu služby Active Directory pomocí zásad runas.  Ve výchozím nastavení service fabric aplikace spustit pod účtem, který Fabric.exe proces běží pod. Spouštění aplikací pod různými účty, a to i ve sdíleném hostovaném prostředí, je činí bezpečnějšími mezi sebou navzájem. Všimněte si, že to používá službu Active Directory místně v rámci vaší domény a ne Azure Active Directory (Azure AD).  Službu můžete také spustit jako [skupinový účet spravované služby (gMSA).](service-fabric-run-service-as-gmsa.md)
 
-Pomocí uživatele nebo skupiny domény pak můžete přistupovat k dalším prostředkům v doméně (například ke sdíleným složkám souborů), kterým bylo uděleno oprávnění.
+Pomocí uživatele domény nebo skupiny pak můžete přistupovat k dalším prostředkům v doméně (například ke sdíleným položkám souborů), kterým byla udělena oprávnění.
 
-Následující příklad ukazuje uživatele služby Active Directory s názvem *testuser* s heslem v doméně zašifrovaným pomocí certifikátu s názvem *mycert*. Pomocí příkazu `Invoke-ServiceFabricEncryptText` PowerShellu můžete vytvořit tajný text šifry. Podrobnosti najdete [v tématu Správa tajných klíčů v aplikacích Service Fabric](service-fabric-application-secret-management.md) .
+Následující příklad ukazuje uživatele služby Active Directory s názvem *TestUser* s heslem domény zašifrovaným pomocí certifikátu *mycert*. Příkaz `Invoke-ServiceFabricEncryptText` PowerShell můžete použít k vytvoření tajného šifrovacího textu. Podrobnosti [najdete v tématu Správa tajných kódů v aplikacích Service Fabric.](service-fabric-application-secret-management.md)
 
-Privátní klíč certifikátu je nutné nasadit k dešifrování hesla k místnímu počítači pomocí vzdálené metody (v Azure je to přes Azure Resource Manager). Poté, když Service Fabric nasadí balíček služby do počítače, je možné dešifrovat tajný klíč a (společně s uživatelským jménem) ověřit pomocí služby Active Directory, aby se pod těmito přihlašovacími údaji spouštěly.
+Musíte nasadit soukromý klíč certifikátu k dešifrování hesla do místního počítače pomocí metody out-of-band (v Azure je to přes Azure Resource Manager). Potom, když Service Fabric nasadí balíček služby do počítače, je schopen dešifrovat tajný klíč a (spolu s uživatelským jménem) ověřit pomocí služby Active Directory spustit pod těmito pověřeními.
 
 ```xml
 <Principals>
@@ -37,12 +37,12 @@ Privátní klíč certifikátu je nutné nasadit k dešifrování hesla k místn
 ```
 
 > [!NOTE] 
-> Pokud použijete zásadu RunAs na službu a manifest služby deklaruje prostředky koncového bodu s protokolem HTTP, je nutné zadat také **SecurityAccessPolicy**.  Další informace najdete v tématu [přiřazení zásad zabezpečení přístupu k koncovým bodům http a HTTPS](service-fabric-assign-policy-to-endpoint.md). 
+> Pokud použijete zásadu RunAs pro službu a manifest služby deklaruje prostředky koncového bodu pomocí protokolu HTTP, musíte také zadat **SecurityAccessPolicy**.  Další informace naleznete [v tématu Přiřazení zásad přístupu k zabezpečení pro koncové body PROTOKOLU HTTP a HTTPS](service-fabric-assign-policy-to-endpoint.md). 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-V dalším kroku si přečtěte následující články:
-* [Pochopení aplikačního modelu](service-fabric-application-model.md)
+Jako další krok si přečtěte následující články:
+* [Principy aplikačního modelu](service-fabric-application-model.md)
 * [Určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md)
 * [Nasazení aplikace](service-fabric-deploy-remove-applications.md)
 
