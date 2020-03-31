@@ -1,6 +1,6 @@
 ---
-title: Plánování úloh
-description: Pomocí plánování úloh můžete spravovat úkoly.
+title: Naplánujte si své úlohy
+description: Ke správě úkolů použijte plánování úloh.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -13,73 +13,73 @@ ms.date: 02/20/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 55ea8fb4cc0e65deaa89d718c4a46513716dcf54
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672430"
 ---
-# <a name="schedule-jobs-for-efficiency"></a>Plánování úloh pro efektivitu
+# <a name="schedule-jobs-for-efficiency"></a>Naplánovat úlohy pro efektivitu
 
-Plánování dávkových úloh umožňuje určit prioritu úloh, které chcete spustit jako první, a vzít v úvahu úlohy, které mají závislosti na jiných úkolech. Když naplánujete úlohy, můžete zajistit, abyste používali aspoň množství prostředků. Uzly mohou být vyřazeny z provozu, pokud není potřeba, úkoly, které jsou závislé na jiných úkolech, jsou v průběhu optimalizace pracovních postupů k disviset přesně v čase. V jednom okamžiku běží pouze jedna úloha. Nový se nespustí, dokud se nedokončí předchozí. Můžete nastavit úlohu na automatické dokončování. 
+Plánování dávkových úloh umožňuje určit prioritu úloh, které chcete spustit jako první, s přihlédnutím k úkolům, které mají závislosti na jiných úkolech. Plánováním úloh můžete zajistit, abyste použili co nejméně zdrojů. Uzly mohou být vyřazeny z provozu, když nejsou potřeba, úkoly, které jsou závislé na jiných úkolech, se stočily právě včas a optimalizovaly pracovní postupy. Spustí se pouze jedna úloha. Nový se nespustí, dokud se nedokončí předchozí. Úlohu můžete nastavit tak, aby byla automaticky dokončována. 
 
 ## <a name="benefit-of-job-scheduling"></a>Výhody plánování úloh
 
-Výhodou plánování úloh je, že můžete zadat plán pro vytvoření úlohy. Úkoly, které naplánujete pomocí úlohy Správce úloh, jsou přidružené k úloze. Úkol správce úloh vytvoří úlohy pro úlohu. K tomu je potřeba úkol správce úloh ověřit s účtem Batch. Použijte přístupový token AZ_BATCH_AUTHENTICATION_TOKEN. Token umožní přístup ke zbytku úlohy. 
+Výhodou plánování úloh je, že můžete zadat plán pro vytváření pracovních míst. Úkoly, které naplánujete pomocí úlohy správce úloh, jsou přidruženy k úloze. Úloha správce úloh vytvoří úkoly pro úlohu. Chcete-li tak učinit, úloha správce úloh musí být ověřena pomocí účtu Batch. Použijte přístupový token AZ_BATCH_AUTHENTICATION_TOKEN. Token umožní přístup ke zbytku úlohy. 
 
 ## <a name="use-the-portal-to-schedule-a-job"></a>Naplánování úlohy pomocí portálu
 
    1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-   2. Vyberte účet Batch, ve kterém chcete úlohy naplánovat.
+   2. Vyberte dávkový účet, ve kterém chcete naplánovat úlohy.
 
-   3. Vyberte **Přidat** a vytvořte nový plán úlohy a vyplňte **základní formulář**.
+   3. Výběrem **možnosti Přidat** vytvořte nový plán úloh a vyplňte **základní formulář**.
 
 
 
 ![Naplánování úlohy][1]
 
-**ID plánu úlohy**: jedinečný identifikátor pro tento plán úlohy.
+**ID plánu úloh**: Jedinečný identifikátor tohoto plánu úloh.
 
-**Zobrazovaný název**: zobrazovaný název úlohy nemusí být jedinečný, ale může mít maximální délku 1024 znaků.
+**Zobrazovaný název**: Zobrazovaný název úlohy nemusí být jedinečný, ale má maximální délku 1024 znaků.
 
-**Nespouštět do**: Určuje čas, kdy se úloha spustí. Pokud toto nastavení nenastavíte, plán se hned spustí, aby se spouštěly úlohy.
+**Nespouštějte, dokud**: Určuje nejbližší čas spuštění úlohy. Pokud tuto skutečnost nenastavíte, plán bude připraven ke spuštění úloh okamžitě.
 
-**Nespouštět po**: po dobu, kterou tady nastavíte, se nespouštějí žádné úlohy. Pokud nezadáte čas, vytvoří se plán opakované úlohy, který zůstane aktivní, dokud ho neukončíte explicitně.
+**Nespouštějte po**: Po nastavené době nejsou spuštěny žádné úlohy. Pokud nezadáte čas, vytváříte opakovaný plán úloh, který zůstane aktivní, dokud jej explicitně neukončíte.
 
-**Interval opakování**: můžete určit dobu mezi úlohami. V jednom okamžiku může být naplánována pouze jedna úloha, takže pokud je čas vytvořit novou úlohu v rámci plánu úlohy, ale předchozí úloha stále běží, služba Batch novou úlohu nevytvoří až do dokončení předchozí úlohy.  
+**Interval opakování**: Můžete určit dobu mezi úlohami. Můžete mít pouze jednu úlohu v čase naplánované, takže pokud je čas vytvořit novou úlohu v rámci plánu úloh, ale předchozí úloha je stále spuštěna, služba Dávka nevytvoří novou úlohu, dokud nebude dokončena předchozí úloha.  
 
-**Spouštěcí okno**: tady zadáte časový interval od času, kdy plán indikuje, že se má úloha vytvořit, až do chvíle, kdy by se měla dokončit. Pokud aktuální úloha není během svého okna dokončena, další úloha se nespustí.
+**Počáteční okno**: Zde zadáte časový interval, počínaje časem, kdy plán označuje, že má být úloha vytvořena, až do doby, kdy by měla být dokončena. Pokud se aktuální úloha nedokončí během svého okna, další úloha se nespustí.
 
-V dolní části základního formuláře určíte fond, na kterém chcete úlohu spustit. Pokud chcete zjistit informace o ID fondu, vyberte **aktualizovat**. 
+V dolní části základního formuláře určíte fond, ve kterém má být úloha spuštěna. Chcete-li najít informace o ID fondu, vyberte **možnost Aktualizovat**. 
 
-![Zadat fond][2]
+![Určení fondu][2]
 
 
-**ID fondu**: Identifikujte fond, na kterém budete úlohu spouštět.
+**ID fondu**: ID fondu : IDentifikujte fond, ve kterých budete úlohu spouštět.
 
-**Úloha konfigurace úlohy**: vyberte **aktualizovat** , pokud chcete pojmenovat úlohu správce úloh i úkoly přípravy a vydání úlohy, pokud je používáte.
+**Úloha konfigurace úlohy**: Vyberte **aktualizovat,** chcete-li pojmenovat úlohu Správce úloh, jakož i úlohy přípravy a uvolnění úlohy, pokud je používáte.
 
-**Priorita**: Udělte úloze prioritu.
+**Priorita**: Dejte práci prioritu.
 
-**Maximální doba na zdi**: Nastavte maximální dobu, po kterou může úloha běžet. Pokud se nedokončí v časovém rámci, dávka úlohu ukončí. Pokud jste to nestavili, nebudete mít pro úlohu žádný časový limit.
+**Maximální doba nástěnných hodin**: Nastavte maximální dobu, po kterou může být úloha spuštěna. Pokud se nedokončí v časovém rámci, Batch ukončí úlohu. Pokud to toto nenastavíte, neexistuje žádný časový limit pro práci.
 
-**Maximální počet opakovaných pokusů o úlohu**: Určete počet opakovaných pokusů o úlohu, která může být provedena maximálně čtyřikrát. To není stejné jako počet opakovaných pokusů o volání rozhraní API.
+**Maximální počet opakování úkolu**: Zadejte, kolikrát lze úkol opakovat maximálně čtyřikrát. To není stejné jako počet opakování volání rozhraní API může mít.
 
-**Po dokončení všech úloh**: výchozí hodnota není žádná akce.
+**Po dokončení všech úkolů**: Výchozí hodnota není akce.
 
-V **případě neúspěchu úlohy**: výchozí hodnota není žádná akce. Úloha se nezdařila, pokud je počet opakování vyčerpán nebo při spuštění úlohy došlo k chybě. 
+**Pokud úloha selže**: Výchozí hodnota není akce. Úloha se nezdaří, pokud je počet opakování vyčerpán nebo došlo k chybě při spuštění úlohy. 
 
-Pokud v levém navigačním panelu kliknete **na možnost** **Uložit**, můžete sledovat provádění úlohy, a to tak, že vyberete **informace o spuštění**.
+Po výběru **možnosti Uložit**, pokud přejdete na **plány úloh** v levé navigaci, můžete sledovat provádění úlohy výběrem **informace o spuštění**.
 
 
 ## <a name="for-more-information"></a>Další informace
 
-Pokud chcete spravovat úlohu pomocí Azure CLI, přečtěte si téma [AZ batch job-Schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest).
+Pokud chcete spravovat úlohu pomocí příkazového příkazu k řešení Azure, přečtěte si seznam [dávkového plánu úloh az](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvořte závislosti úkolů pro spouštění úloh, které jsou závislé na jiných úkolech](batch-task-dependencies.md).
+[Vytvořte závislosti mezi úkoly pro spouštění úloh, které závisí na jiných úkolech](batch-task-dependencies.md).
 
 
 

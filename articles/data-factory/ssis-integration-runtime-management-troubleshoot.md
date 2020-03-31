@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se správou Integration Runtime SSIS
-description: Tento článek popisuje pokyny k odstraňování potíží se správou SSIS Integration Runtime (SSIS IR)
+title: Poradce při potížích se správou runtime integrace SSIS
+description: Tento článek obsahuje pokyny pro řešení potíží se správou prostředí SSIS Integration Runtime (SSIS IR)
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -12,25 +12,25 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74941847"
 ---
-# <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Řešení potíží se správou SSIS Integration Runtime v Azure Data Factory
+# <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Poradce při potížích se správou runtime integrace SSIS v Azure Data Factory
 
-V tomto článku najdete pokyny k odstraňování potíží se správou v Azure-služba SSIS (SQL Server Integration Services) (SSIS) Integration Runtime (IR), označované taky jako SSIS IR.
+Tento článek obsahuje pokyny pro řešení potíží se správou v modulu Runtime integrace Azure-SQL Server Integration Services (SSIS), známém také jako SSIS IR.
 
 ## <a name="overview"></a>Přehled
 
-Pokud narazíte na problém při zřizování nebo rušení zřizování SSIS IR, zobrazí se na portálu Microsoft Azure Data Factory chybová zpráva nebo v rutině PowerShellu se vrátila Chyba. Chyba se vždycky zobrazuje ve formátu kódu chyby s podrobnou chybovou zprávou.
+Pokud narazíte na jakýkoli problém při zřizování nebo zrušení zřízení služby SSIS IR, zobrazí se chybová zpráva na portálu Microsoft Azure Data Factory nebo chyba vrácená z rutiny prostředí PowerShell. Chyba se vždy zobrazí ve formátu kódu chyby s podrobnou chybovou zprávou.
 
-Pokud kód chyby je Nenalezeno, služba obsahuje přechodné problémy a tuto operaci byste měli opakovat později. Pokud to nepomůže, obraťte se na tým podpory Azure Data Factory.
+Pokud je kód chyby InternalServerError, služba má přechodné problémy a operaci byste měli zopakovat později. Pokud opakování nepomůže, obraťte se na tým podpory Azure Data Factory.
 
-Jinak tři hlavní závislosti můžou způsobit chyby: Azure SQL Database Server nebo spravovaná instance, vlastní instalační skript a konfigurace virtuální sítě.
+V opačném případě mohou způsobit chyby tři hlavní externí závislosti: server Azure SQL Database nebo spravovaná instance, vlastní instalační skript a konfigurace virtuální sítě.
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Problémy Azure SQL Database serveru nebo spravované instance
+## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Problémy s databázovým serverem Azure SQL nebo spravovanou instancí
 
 Pokud zřizujete prostředí SSIS IR s databází katalogu SSIS, vyžaduje se spravovaná instance nebo server služby Azure SQL Database. Prostředí SSIS IR musí mít přístup ke spravované instanci nebo serveru služby Azure SQL Database. Účet spravované instance nebo serveru služby Azure SQL Database by také měl mít oprávnění k vytvoření databáze katalogu SSIS (SSISDB). Pokud dojde k chybě, na portálu služby Data Factory se zobrazí kód chyby s podrobnou zprávou o výjimce SQL. Při řešení potíží s jednotlivými kódy chyb využijte informace v následujícím seznamu.
 
@@ -42,9 +42,9 @@ K tomuto problému může dojít při zřizování nového prostředí SSIS IR n
 * Přihlášení selhalo během ověřování SQL. Zadaný účet se nemůže přihlásit k databázi SQL Serveru. Ujistěte se, že jste zadali správný uživatelský účet.
 * Přihlášení selhalo během ověřování Microsoft Azure Active Directory (Azure AD) (spravovaná identita). Přidejte spravovanou identitu vaší továrny do skupiny AAD a ujistěte se, že spravovaná identita má přístupová oprávnění k databázovému serveru katalogu.
 * Vypršení časového limitu připojení. Příčinou této chyby je vždy konfigurace související se zabezpečením. Doporučený postup:
-  1. Vytvořte nový virtuální počítač.
-  1. Připojte se k virtuálnímu počítači ke stejnému Microsoft Azure Virtual Network IR, pokud je IR ve virtuální síti.
-  1. Nainstalujte SSMS a ověřte stav Azure SQL Database serveru nebo spravované instance.
+  1. Vytvořte nový virtuální virtuální ms.
+  1. Připojte virtuální počítač ke stejné virtuální síti Microsoft Azure infračerveného zařízení, pokud je infračervený přenos ve virtuální síti.
+  1. Nainstalujte SSMS a zkontrolujte stav azure sql database serveru nebo spravované instance.
 
 V případě jiných problémů opravte problém uvedený v podrobné chybové zprávě o výjimce SQL. Pokud stále máte problémy, kontaktujte tým podpory pro spravovanou instanci nebo server služby Azure SQL Database.
 
@@ -52,12 +52,12 @@ Pokud k této chybě dojde za běhu prostředí IR, nějaké změny skupiny zabe
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
-Tento druh chybové zprávy může vypadat takto: "databáze ' SSISDB ' dosáhla kvóty velikosti. Můžete rozdělit nebo odstranit data, vyřadit indexy nebo si v dokumentaci vyhledat možná řešení. " 
+Zde je to, co tento druh chybové zprávy může vypadat: "Databáze 'SSISDB' dosáhla své kvóty velikosti. Rozdělení nebo odstranění dat, přetažení indexů nebo prohledání možných řešení v dokumentaci." 
 
 Mezi možná řešení patří:
-* Zvyšte velikost kvóty vašeho SSISDB.
+* Zvětšete velikost kvóty sisisdb.
 * Zmenšení velikosti změnou konfigurace databáze SSISDB:
-   * Zkrácení doby uchování a počtu verzí projektu.
+   * Zkrácení doby uchovávání a počtu verzí projektu.
    * Zkrácení doby uchování protokolu.
    * Změna výchozí úrovně protokolu.
 
@@ -76,7 +76,7 @@ V případě jiných problémů zkontrolujte chybovou zprávu o výjimce SQL a o
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Tento druh chybové zprávy vypadá takto: "neplatný název objektu" Catalog. catalog_properties. V této situaci už buď máte databázi s názvem SSISDB, ale ta se nevytvořila v SSIS IR, nebo se databáze nachází v neplatném stavu, který způsobuje chyby při posledním zřizování SSIS IR. Můžete odstranit stávající databázi s názvem SSISDB nebo pro prostředí IR můžete nakonfigurovat novou spravovanou instanci nebo server služby Azure SQL Database.
+Tento druh chybové zprávy vypadá takto: "Neplatný název objektu 'catalog.catalog_properties'." V takovém případě buď již máte databázi s názvem SSISDB, ale nebyla vytvořena pomocí služby SSIS IR, nebo je databáze v neplatném stavu, který je způsoben chybami v posledním zřizování infračerveného systému SSIS. Můžete odstranit stávající databázi s názvem SSISDB nebo pro prostředí IR můžete nakonfigurovat novou spravovanou instanci nebo server služby Azure SQL Database.
 
 ## <a name="custom-setup-issues"></a>Problémy s vlastním nastavením
 
@@ -86,7 +86,7 @@ Ujistěte se, že váš kontejner obsahuje pouze potřebné soubory vlastní ins
 
 Vzhledem k tomu, že se prostředí SSIS IR pravidelně aktualizuje, za běhu prostředí IR se zkontroluje kontejner se skriptem vlastní instalace. Tyto aktualizace vyžadují přístup ke kontejneru, aby bylo možné stáhnout skript vlastní instalace a znovu provést instalaci. V rámci tohoto procesu se také zkontroluje, jestli je kontejner dostupný a jestli existuje soubor main.cmd.
 
-Pro všechny chyby, které zahrnují vlastní instalaci, se zobrazí kód chyby CustomSetupScriptFailure s podklíčovým kódem, jako je CustomSetupScriptBlobContainerInaccessible nebo CustomSetupScriptNotFound.
+U každé chyby, která zahrnuje vlastní nastavení, se zobrazí kód chyby CustomSetupScriptFailure s dílčím kódem, jako je CustomSetupScriptBlobContainerInaccessible nebo CustomSetupScriptNotFound.
 
 ### <a name="customsetupscriptblobcontainerinaccessible"></a>CustomSetupScriptBlobContainerInaccessible
 
@@ -122,7 +122,7 @@ K této chybě může dojít z nejrůznějších důvodů. Informace o jejím ř
 
 ### <a name="forbidden"></a>Forbidden
 
-Tento druh chyby může vypadat přibližně takto: "SubnetId není pro aktuální účet povolené. Zprostředkovatel prostředků Microsoft. Batch není zaregistrován v rámci stejného předplatného virtuální sítě.
+Tento druh chyby může vypadat takto: "Podsouborní číslo Není povoleno pro běžný účet. Poskytovatel prostředků Microsoft.Batch není registrovaný pod stejným předplatným virtuální sítě."
 
 Tyto podrobnosti znamenají, že služba Azure Batch nemá přístup k vaší virtuální síti. Zaregistrujte poskytovatele prostředků Microsoft.Batch ve stejném předplatném jako virtuální síť.
 
@@ -130,14 +130,14 @@ Tyto podrobnosti znamenají, že služba Azure Batch nemá přístup k vaší vi
 
 Tento druh chyby může vypadat nějak takto: 
 
-- Buď zadaná virtuální síť neexistuje, nebo k ní služba Batch nemá přístup. "
+- "Zadaná virtuální síť neexistuje nebo k ní služba Batch nemá přístup."
 - "Zadaná podsíť xxx neexistuje."
 
 Tyto chyby znamenají, že virtuální síť neexistuje, služba Azure Batch k ní nemá přístup nebo neexistuje poskytovatel podsítě. Ujistěte se, že virtuální síť i podsíť existují a že k nim má služba Azure Batch přístup.
 
 ### <a name="misconfigureddnsserverornsgsettings"></a>MisconfiguredDnsServerOrNsgSettings
 
-Tento druh chybové zprávy může vypadat takto: "nepovedlo se zřídit Integration Runtime ve virtuální síti. Pokud jsou nakonfigurovaná nastavení server DNS nebo NSG, ujistěte se, že je server DNS přístupný a že je NSG správně nakonfigurovaný. "
+Tento druh chybové zprávy může vypadat takto: "Nepodařilo se zřídit integrační runtime ve virtuální síti. Pokud jsou nakonfigurována nastavení serveru DNS nebo souboru zabezpečení sítě, zkontrolujte, zda je server DNS přístupný a že je správně nakonfigurován soubor zabezpečení sítě."
 
 V této situaci pravděpodobně máte přizpůsobenou konfiguraci nastavení serveru DNS nebo skupiny zabezpečení sítě, což brání překladu názvu serveru Azure, který vyžaduje prostředí SSIS IR, nebo přístupu k tomuto serveru. Další informace najdete v tématu [Konfigurace virtuální sítě SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Pokud stále máte problémy, obraťte se na tým podpory pro Azure Data Factory.
 
@@ -159,35 +159,35 @@ K této chybě dochází, když je prostředí IR spuštěné, a znamená, že p
 
 ## <a name="static-public-ip-addresses-configuration"></a>Konfigurace statických veřejných IP adres
 
-Když se připojíte k Azure-SSIS IR ke službě Azure Virtual Network, můžete také využít vlastní statické veřejné IP adresy pro infračervený přenos, aby IR mohl přistupovat ke zdrojům dat, které omezují přístup ke konkrétním IP adresám. Další informace najdete v tématu [Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+Když se připojíte k zařízení Azure-SSIS IR do virtuální sítě Azure, můžete také přenést vlastní statické veřejné IP adresy pro infračervený přenos, aby infračervený přenos měl přístup ke zdrojům dat, které omezují přístup k určitým IP adresám. Další informace najdete v tématu [Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
-Kromě výše uvedených potíží s virtuální sítí můžete také splnit problémy související se statickými veřejnými IP adresami. Nápovědu najdete v následujících chybách.
+Kromě výše uvedených problémů s virtuální sítí se můžete setkat také se statickými problémy souvisejícími s veřejnými IP adresami. V nápovědě naleznete následující chyby.
 
-### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+### <a name="invalidpublicipspecified"></a><a name="InvalidPublicIPSpecified"></a>Neplatný publicIPspecifikován
 
-K této chybě může dojít z nejrůznějších důvodů při spuštění Azure-SSIS IR:
+K této chybě může dojít z různých důvodů při spuštění azure-SSIS IR:
 
 | Chybová zpráva | Řešení|
 |:--- |:--- |
-| Zadaná statická veřejná IP adresa se už používá. Zadejte prosím pro svůj Azure-SSIS Integration Runtime dvě nepoužité. | Měli byste vybrat dvě nepoužívané statické veřejné IP adresy nebo odebrat aktuální odkazy na zadanou veřejnou IP adresu a pak restartovat Azure-SSIS IR. |
-| Zadaná statická veřejná IP adresa nemá žádný název DNS, zadejte prosím pro Azure-SSIS Integration Runtime dva názvy DNS. | Název DNS veřejné IP adresy můžete nastavit v Azure Portal, jak ukazuje následující obrázek. Konkrétní kroky jsou následující: (1) otevřít Azure Portal a přejít na stránku prostředku této veřejné IP adresy; (2) vyberte **konfigurační** oddíl a nastavte název DNS a pak klikněte na tlačítko **Uložit** . (3) restartujte Azure-SSIS IR. |
-| Zadaná virtuální síť VNet a statické veřejné IP adresy pro váš Azure-SSIS Integration Runtime musí být ve stejném umístění. | V souladu s požadavky sítě Azure by statická veřejná IP adresa a virtuální síť měla být ve stejném umístění a předplatném. Poskytněte prosím dvě platné statické veřejné IP adresy a restartujte Azure-SSIS IR. |
-| Poskytnutá statická veřejná IP adresa je základní, zadejte prosím pro svůj Azure-SSIS Integration Runtime dvě standardní. | Nápovědu najdete v [části SKU veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) . |
+| Zadaný statický veřejný IP adresa se již používá, uveďte dvě nepoužívané pro váš Azure-SSIS Integration Runtime. | Měli byste vybrat dvě nepoužívané statické veřejné IP adresy nebo odebrat aktuální odkazy na zadanou veřejnou IP adresu a potom restartovat azure-SSIS IR. |
+| Poskytnutá statická veřejná IP adresa nemá žádný název DNS, zadejte dva z nich s názvem DNS pro prostředí Azure-SSIS Integration Runtime. | Název DNS veřejné IP adresy můžete nastavit na webu Azure Portal, jak ukazuje obrázek níže. Konkrétní kroky jsou následující: (1) Otevřete portál Azure a přejděte na stránku prostředků této veřejné IP adresy; (2) Vyberte oddíl **Konfigurace** a nastavte název DNS a klepněte na tlačítko **Uložit.** (3) Restartujte infračervený přenos Zařízení Azure-SSIS. |
+| Zadaný virtuální síť a statické veřejné IP adresy pro váš Azure-SSIS Integration Runtime musí být ve stejném umístění. | Podle požadavků sítě Azure by měla být statická veřejná IP adresa a virtuální síť ve stejném umístění a předplatné. Zadejte dvě platné statické veřejné IP adresy a restartujte infračervený přenos Azure-SSIS. |
+| Poskytnutá statická veřejná IP adresa je základní, poskytněte dvě standardní pro prostředí Azure-SSIS Integration Runtime. | Nápovědu naleznete v [části SKU veřejné IP adresy.](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) |
 
 ![Prostředí Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 
 ### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
 
-Pokud se Azure-SSIS IR zřizování nepovede, odstraní se všechny prostředky, které byly vytvořeny. Pokud ale dojde k uzamčení prostředku v předplatném nebo ve skupině prostředků (která obsahuje vaši statickou veřejnou IP adresu), síťové prostředky se neodstraní podle očekávání. Chcete-li chybu opravit, odeberte zámek proti odstranění a restartujte technologii IR.
+Pokud azure-SSIS Ir zřizování selže, všechny prostředky, které byly vytvořeny jsou odstraněny. Pokud je však prostředek odstranit zámek na úrovni předplatného nebo skupiny prostředků (která obsahuje statickou veřejnou IP adresu), síťové prostředky nejsou odstraněny podle očekávání. Chcete-li chybu opravit, odeberte zámek odstranění a restartujte infračervený přenos.
 
 ### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
 
-Když zastavíte Azure-SSIS IR, odstraní se všechny síťové prostředky vytvořené ve skupině prostředků, která obsahuje vaši veřejnou IP adresu. Odstranění ale může selhat, pokud existuje zámek odstranění prostředku v předplatném nebo ve skupině prostředků (která obsahuje vaši statickou veřejnou IP adresu). Odeberte prosím zámek proti odstranění a restartujte IR.
+Když zastavíte Azure-SSIS IR, budou odstraněny všechny síťové prostředky vytvořené ve skupině prostředků obsahující vaši veřejnou IP adresu. Odstranění však může selhat, pokud je zámek odstranění prostředku na úrovni předplatného nebo skupiny prostředků (která obsahuje statickou veřejnou IP adresu). Odstraňte zámek odstranění a restartujte infračervený přenos.
 
 ### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
 
-Azure-SSIS IR se pravidelně aktualizuje v pravidelných intervalech. Během upgradu se vytvoří nové uzly IR a staré uzly se odstraní. Také se odstraní vytvořené síťové prostředky (například nástroj pro vyrovnávání zatížení a skupina zabezpečení sítě) pro staré uzly a nové síťové prostředky se vytvoří v rámci vašeho předplatného. Tato chyba znamená, že odstranění síťových prostředků pro staré uzly selhalo kvůli zámku odstranění v předplatném nebo ve skupině prostředků (která obsahuje vaši statickou veřejnou IP adresu). Odeberte prosím zámek proti odstranění, aby bylo možné vyčistit staré uzly a uvolnit statickou veřejnou IP adresu pro staré uzly. V opačném případě se statická veřejná IP adresa nedá uvolnit a nebudeme moct dál upgradovat IR.
+Azure-SSIS IR se pravidelně aktualizuje automaticky. Nové infračervené uzly jsou vytvořeny během upgradu a staré uzly budou odstraněny. Vytvořené síťové prostředky (např. správce zatížení a skupina zabezpečení sítě) pro staré uzly jsou také odstraněny a nové síťové prostředky jsou vytvořeny v rámci vašeho předplatného. Tato chyba znamená, že odstranění síťových prostředků pro staré uzly se nezdařilo z důvodu odstranění zámku na úrovni předplatného nebo prostředků (která obsahuje statickou veřejnou IP adresu). Odeberte zámek odstranění, abychom mohli vyčistit staré uzly a uvolnit statickou veřejnou IP adresu pro staré uzly. V opačném případě nelze uvolnit statickou veřejnou IP adresu a nebudeme moci infračervený přenos dále upgradovat.
 
-### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
+### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableduringUpgrade
 
-Pokud chcete použít vlastní statické veřejné IP adresy, je třeba poskytnout dvě veřejné IP adresy. Jedna z nich se použije k okamžitému vytvoření uzlů IR a druhá se použije při upgradu IR. K této chybě může dojít, pokud není během upgradu možné použít jinou veřejnou IP adresu. Možné příčiny najdete v [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) .
+Pokud chcete přenést vlastní statické veřejné IP adresy, měly by být k dispozici dvě veřejné IP adresy. Jeden z nich bude použit k okamžitému vytvoření infračervených uzlů a další bude použit při upgradu infračerveného uzliny. K této chybě může dojít, pokud je během inovace nepoužitelná jiná veřejná adresa IP. Možné příčiny naleznete [v poli InvalidPublicIPSpecified.](#InvalidPublicIPSpecified)

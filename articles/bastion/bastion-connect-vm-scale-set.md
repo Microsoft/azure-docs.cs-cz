@@ -1,6 +1,6 @@
 ---
-title: Připojení k sadě škálování virtuálních počítačů s Windows pomocí Azure bastionu | Microsoft Docs
-description: V tomto článku se dozvíte, jak se připojit k sadě škálování virtuálních počítačů Azure pomocí Azure bastionu.
+title: Připojení k škálovací sadě virtuálních strojů s Windows pomocí Azure Bastion | Dokumenty společnosti Microsoft
+description: V tomto článku se dozvíte, jak se připojit k škálovací sadě virtuálních strojů Azure pomocí Azure Bastion.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4f513aaf113ef4bd6e75e5c4b31e0f0252d45f10
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988086"
 ---
-# <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Připojení k sadě škálování virtuálního počítače pomocí Azure bastionu
+# <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Připojení k škálovací sadě virtuálních strojů pomocí Azure Bastion
 
-V tomto článku se dozvíte, jak bezpečně a hladce RDP na instanci sady škálování virtuálních počítačů s Windows ve službě Azure Virtual Network pomocí Azure bastionu. K instanci sady škálování virtuálního počítače se můžete připojit přímo z Azure Portal. Při použití Azure Bastionu virtuální počítače nevyžadují žádného klienta, agenta ani další software. Další informace o Azure bastionu najdete v tématu [Přehled](bastion-overview.md).
+Tento článek ukazuje, jak bezpečně a bezproblémově rdp do vašeho windows virtuálního počítače škálovací sady instance ve virtuální síti Azure pomocí Azure Bastion. K instanci škálovací sady virtuálního počítače se můžete připojit přímo z portálu Azure. Při použití Azure Bastion virtuální počítače nevyžadují klienta, agenta nebo další software. Další informace o Azure Bastion najdete v tématu [Přehled](bastion-overview.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ujistěte se, že jste pro virtuální síť nastavili hostitele Azure bastionu, ve kterém se sada škálování virtuálního počítače nachází. Další informace najdete v tématu [Vytvoření hostitele Azure bastionu](bastion-create-host-portal.md). Jakmile je služba bastionu zřízená a nasazená ve vaší virtuální síti, můžete ji použít pro připojení k instanci sady škálování virtuálního počítače v této virtuální síti. Bastionu předpokládá, že používáte protokol RDP pro připojení k sadě škálování virtuálních počítačů s Windows, a SSH pro připojení k sadě škálování virtuálních počítačů se systémem Linux. Informace o připojení k virtuálnímu počítači se systémem Linux najdete v tématu [připojení k virtuálnímu počítači](bastion-connect-vm-ssh.md)se systémem Linux.
+Ujistěte se, že jste nastavili hostitele Azure Bastion pro virtuální síť, ve které se nachází škálovací sada virtuálních strojů. Další informace najdete [v tématu Vytvoření hostitele Bašty Azure](bastion-create-host-portal.md). Jakmile je služba Bastion zřízena a nasazena ve vaší virtuální síti, můžete ji použít k připojení k instanci škálovací sady virtuálních strojů v této virtuální síti. Bastion předpokládá, že používáte RDP pro připojení k škálovací sadě virtuálních strojů Windows a SSH pro připojení k škálovací sadě virtuálních strojů linux. Informace o připojení k virtuálnímu počítači SIP najdete v [tématu Připojení k virtuálnímu počítači – Linux](bastion-connect-vm-ssh.md).
 
-## <a name="rdp"></a>Připojit pomocí protokolu RDP
+## <a name="connect-using-rdp"></a><a name="rdp"></a>Připojení pomocí prv
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte do sady škálování virtuálních počítačů, ke které se chcete připojit.
+1. Otevřete [portál Azure](https://portal.azure.com). Přejděte na škálovací sadu virtuálních strojů, ke které se chcete připojit.
 
-   ![otevře](./media/bastion-connect-vm-scale-set/1.png)
-2. Přejděte do instance sady škálování virtuálních počítačů, ke které se chcete připojit, a pak vyberte **připojit**. Při použití připojení RDP by měla být sada škálování virtuálního počítače nastavená na sadu škálování virtuálních počítačů s Windows.
+   ![navigate](./media/bastion-connect-vm-scale-set/1.png)
+2. Přejděte na instanci škálovací sady virtuálního počítače, ke které se chcete připojit, a pak vyberte **Připojit**. Při použití připojení RDP by škálovací sada virtuálních strojů měla být škálovací sada virtuálního počítače windows.
 
-   ![sada škálování virtuálních počítačů](./media/bastion-connect-vm-scale-set/2.png)
-3. Po výběru **připojit**se zobrazí boční panel se třemi kartami – RDP, SSH a bastionu. Na bočním panelu vyberte kartu **bastionu** . Pokud jste nezřídili bastionu pro virtuální síť, můžete vybrat odkaz pro konfiguraci bastionu. Pokyny ke konfiguraci najdete v tématu [Konfigurace bastionu](bastion-create-host-portal.md).
+   ![škálovací sada virtuálních strojů](./media/bastion-connect-vm-scale-set/2.png)
+3. Po výběru **možnosti Připojit**se zobrazí boční panel se třemi kartami – RDP, SSH a Bastion. Na bočním panelu vyberte kartu **Bastion.** Pokud jste baštu pro virtuální síť nezřizovali, můžete vybrat odkaz pro konfiguraci Bastionu. Pokyny ke konfiguraci naleznete v [tématu Konfigurace bašty](bastion-create-host-portal.md).
 
-   ![Karta bastionu](./media/bastion-connect-vm-scale-set/3.png)
-4. Na kartě bastionu zadejte uživatelské jméno a heslo pro sadu škálování virtuálního počítače a pak vyberte **připojit**.
+   ![Karta Bašta](./media/bastion-connect-vm-scale-set/3.png)
+4. Na kartě Bastion zadejte uživatelské jméno a heslo pro škálovací sadu virtuálních strojů a pak vyberte **Připojit**.
 
    ![připojit](./media/bastion-connect-vm-scale-set/4.png)
-5. Připojení RDP k tomuto virtuálnímu počítači prostřednictvím bastionu se otevře přímo v Azure Portal (přes HTML5) pomocí portu 443 a služby bastionu.
+5. Připojení RDP k tomuto virtuálnímu počítači přes Bastion se otevře přímo na portálu Azure (přes HTML5) pomocí portu 443 a služby Bastion.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [Nejčastější dotazy k bastionu](bastion-faq.md).
+Přečtěte si nejčastější dotazy k [baště](bastion-faq.md).

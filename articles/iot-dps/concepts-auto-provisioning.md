@@ -1,6 +1,6 @@
 ---
-title: IoT Hub Device Provisioning Service – koncepty automatického zřizování
-description: Tento článek obsahuje koncepční přehled fází automatického zřizování zařízení pomocí služby IoT Device Provisioning (DPS), IoT Hub a klientských sad SDK.
+title: Služba zřizování zařízení služby IoT Hub – koncepty automatického zřizování
+description: Tento článek obsahuje koncepční přehled fází automatického zřizování zařízení pomocí služby DPS (IoT Device Provisioning Service), služby IoT Hub a sad SDK klienta.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -9,104 +9,104 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975325"
 ---
-# <a name="auto-provisioning-concepts"></a>Koncepce automatického zřizování
+# <a name="auto-provisioning-concepts"></a>Koncepty automatického zřizování
 
-Jak je popsáno v [přehledu](about-iot-dps.md), Služba Device Provisioning je pomocná služba, která umožňuje zřizování zařízení do služby IoT Hub za běhu bez nutnosti zásahu člověka. Po úspěšném zřízení se zařízení připojují přímo k určeným IoT Hub. Tento proces se označuje jako Automatické zřizování a poskytuje možnosti registrace a počáteční konfigurace pro zařízení.
+Jak je popsáno v [přehledu](about-iot-dps.md), služba zřizování zařízení je pomocná služba, která umožňuje zřizování zařízení za chvíli do služby IoT hub, aniž by bylo nutné lidský zásah. Po úspěšném zřizování se zařízení přímo připojují ke svému určenému centru IoT Hub. Tento proces se označuje jako automatické zřizování a poskytuje out-of-the-box registrace a počáteční konfigurace pro zařízení.
 
 ## <a name="overview"></a>Přehled
 
-Automatické zřizování Azure IoT se dá rozdělit do tří fází:
+Automatické zřizování Azure IoT lze rozdělit do tří fází:
 
-1. **Konfigurace služby** – jednorázová konfigurace instancí Azure IoT Hub a IoT Hub Device Provisioning Service, jejich zřizování a vytváření propojení mezi nimi.
+1. **Konfigurace služby** – jednorázová konfigurace azure iot hub a služby IoT Hub Device Provisioning Service, jejich vytvoření a vytváření propojení mezi nimi.
 
    > [!NOTE]
-   > Bez ohledu na velikost řešení IoT, a to i v případě, že máte v plánu podporovat miliony zařízení, jde o **jednorázovou konfiguraci**.
+   > Bez ohledu na velikost vašeho řešení IoT, i když máte v plánu podporovat miliony zařízení, jedná se o **jednorázovou konfiguraci**.
 
-2. **Registrace zařízení** – proces zpřístupnění instance služby Device Provisioning u zařízení, která se budou pokoušet zaregistrovat v budoucnu. [Registraci](concepts-service.md#enrollment) je možné provést konfigurací informací o identitě zařízení ve službě zřizování, jako "individuální registrace" pro jedno zařízení, nebo "skupinové registrace" pro více zařízení. Identita je založena na [mechanismu ověření](concepts-security.md#attestation-mechanism) identity, který zařízení používá, což umožňuje službě zřizování ověřit pravost zařízení během registrace:
+2. **Registrace zařízení** – proces zpřístupňování instance služby Zřizování zařízení o zařízeních, která se pokusí zaregistrovat v budoucnu. [Registrace](concepts-service.md#enrollment) se provádí konfigurací informací o identitě zařízení ve službě zřizování, jako "individuální registrace" pro jedno zařízení nebo "registrace skupiny" pro více zařízení. Identita je založena na [mechanismu ověřování,](concepts-security.md#attestation-mechanism) který je zařízení navrženo k použití, což umožňuje službě zřizování dosvědčit pravost zařízení při registraci:
 
-   - **TPM**: nakonfigurovaná jako "individuální registrace", identita zařízení je založená na ID registrace čipu TPM a veřejného ověřovacího klíče. Vzhledem k tom, že TPM je [specifikace](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/), očekává služba pouze ověření identity podle specifikace bez ohledu na implementaci čipu TPM (hardware nebo software). Podrobnosti o ověřování založeném na čipu TPM najdete v tématu [zřizování zařízení: identita identity s čipem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) . 
+   - **Čip TPM**: nakonfigurován jako "individuální registrace", identita zařízení je založena na ID registrace čipu TPM a veřejného ověřovacího klíče. Vzhledem k tomu, že čip TPM je [specifikace](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/), služba očekává pouze dokončování podle specifikace, bez ohledu na implementaci čipu TPM (hardware nebo software). Podrobnosti o atestaci založeném na čipu TPM najdete v tématu [Zřizování zařízení: Ověření identity čipem TPM.](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) 
 
-   - **X509**: nakonfigurováno jako "individuální registrace" nebo "skupinové registrace", identita zařízení je založena na digitálním certifikátu X. 509, který je odeslán do registrace jako soubor. pem nebo. cer.
+   - **X509**: nakonfigurován jako "individuální zápis" nebo "registrace skupiny", identita zařízení je založena na digitálním certifikátu X.509, který je odeslán do zápisu jako soubor .pem nebo .cer.
 
    > [!IMPORTANT]  
-   > I když se nejedná o požadavky na používání služeb Device Provisioning, důrazně doporučujeme, aby zařízení používalo modul hardwarového zabezpečení (HSM) k ukládání citlivých informací o identitě zařízení, jako jsou klíče a certifikáty X. 509.
+   > I když není podmínkou pro použití služby device provisioning Services, důrazně doporučujeme, aby vaše zařízení používat hardware Security Module (HSM) pro ukládání citlivých informací o identitě zařízení, jako jsou klíče a certifikáty X.509.
 
-3. **Registrace a konfigurace zařízení** – zahájené při spuštění podle registračního softwaru, který je sestavený pomocí klientské sady SDK služby Device Provisioning, která je vhodná pro mechanismus zařízení a ověření identity. Software naváže připojení ke službě zřizování pro ověřování zařízení a následné registraci v IoT Hub. Po úspěšné registraci se zařízení dokončí s jeho IoT Hub jedinečné ID zařízení a informace o připojení, což mu umožní načíst počáteční konfiguraci a zahájit proces telemetrie. V produkčních prostředích může tato fáze nastat po týdnech nebo měsících po předchozích dvou fázích.
+3. **Registrace a konfigurace zařízení** - iniciovaná při spuštění registračním softwarem, který je vytvořen pomocí sady SDK klienta Device Provisioning Service vhodné pro zařízení a mechanismus ověřování. Software naváže připojení ke službě zřizování pro ověřování zařízení a následnou registraci v centru IoT Hub. Po úspěšné registraci je zařízení vybaveno jedinečným ID zařízení služby IoT Hub a informacemi o připojení, což mu umožňuje vyžádat počáteční konfiguraci a zahájit proces telemetrie. V produkčním prostředí může k této fázi dojít týdny nebo měsíce po předchozích dvou fázích.
 
 ## <a name="roles-and-operations"></a>Role a operace
 
-Fáze popsané v předchozí části můžou být v rozmezí týdnů nebo měsíců z důvodu produkčních realit, jako je výrobní čas, dodávka, celní proces atd. Kromě toho mohou rozbírat aktivity napříč více rolemi, které jsou dány různým subjektům. V této části se podíváme na různé role a operace související s jednotlivými fázemi a pak tento tok znázorňuje v sekvenčním diagramu. 
+Fáze diskutované v předchozí části mohou tkat týdny nebo měsíce, vzhledem k výrobním skutečnostem, jako je výrobní čas, doprava, celní proces atd. Kromě toho mohou span aktivity přes více rolí vzhledem k různým zapojeným entit. Tato část se podrobněji podíváme na různé role a operace související s každou fází a pak ilustruje tok v sekvenčním diagramu. 
 
-Automatické zřizování také umístí požadavky na výrobce zařízení, které jsou specifické pro povolení mechanismu ověřování. Výrobní operace mohou také nastat nezávisle na načasování fází automatického zřizování, zejména v případech, kdy jsou nová zařízení zavedena po vytvoření automatického zřizování.
+Automatické zřizování také klade požadavky na výrobce zařízení, specifické pro povolení mechanismu ověřování. Výrobní operace mohou také nastat nezávisle na načasování fází automatického zřizování, zejména v případech, kdy jsou nová zařízení pořízena po již navázání automatického zřizování.
 
-Řada rychlých startů je k dispozici v obsahu vlevo, což vám umožní vysvětlit Automatické zřizování prostřednictvím praktických zkušeností. Aby bylo možné zjednodušit a zjednodušit proces učení, používá se software k simulaci fyzického zařízení pro registraci a registraci. Některé rychlé starty vyžadují, abyste splnili operace pro více rolí, včetně operací pro neexistující role, a to kvůli simulované povaze rychlých startů.
+Řada rychlých startů jsou k dispozici v obsahu vlevo, které vám pomohou vysvětlit automatické zřizování prostřednictvím praktických zkušeností. Aby se usnadnil/zjednodušil proces učení, používá se software k simulaci fyzického zařízení pro registraci a registraci. Některé rychlé starty vyžadují, abyste splnili operace pro více rolí, včetně operací pro neexistující role, vzhledem k simulované povaze rychlých startů.
 
 | Role | Operace | Popis |
 |------| --------- | ------------|
-| Výrobce | Adresa URL pro kódování identity a registrace | Na základě použitého mechanismu ověřování je výrobce zodpovědný za kódování informací o identitě zařízení a adresu URL pro registraci služby Device Provisioning.<br><br>**Rychlé starty**: vzhledem k tomu, že zařízení je simulované, není k dispozici žádná role výrobce. Podrobnosti o tom, jak získáte tyto informace, které se používají při kódování ukázkové registrační aplikace, najdete v tématu role vývojáře. |
-| | Zadejte identitu zařízení. | Jako původce informace o identitě zařízení je výrobce zodpovědný za jeho komunikaci s operátorem (nebo určeným agentem) nebo jeho přímým zápisem do služby Device Provisioning prostřednictvím rozhraní API.<br><br>**Rychlé starty**: vzhledem k tomu, že zařízení je simulované, není k dispozici žádná role výrobce. Podrobnosti o tom, jak získat identitu zařízení, která se používá k registraci simulovaného zařízení v instanci služby Device Provisioning, najdete v tématu role operátora. |
-| Operátor | Konfigurace automatického zřizování | Tato operace odpovídá první fázi automatického zřizování.<br><br>**Rychlé starty**: provádíte roli operátora a nakonfigurujete službu Device Provisioning a instance IoT Hub v předplatném Azure. |
-|  | Registrovat identitu zařízení | Tato operace odpovídá druhé fázi automatického zřizování.<br><br>**Rychlé starty**: provádíte roli operátora a zaregistrujete simulované zařízení do instance služby Device Provisioning. Identitu zařízení určuje metoda ověření identity, která se simuluje v rychlém startu (TPM nebo X. 509). Podrobnosti o ověření najdete v tématu role vývojáře. |
-| Služba Device Provisioning<br>Centrum IoT | \<všechny operace\> | Pro produkční implementaci s fyzickými zařízeními a rychlé starty se simulovanými zařízeními jsou tyto role splněné prostřednictvím služeb IoT, které nakonfigurujete ve svém předplatném Azure. Role/operace fungují přesně stejně, protože služby IoT se neliší od zřizování fyzických a simulovaných zařízení. |
-| Developer | Sestavit/nasadit registrační software | Tato operace odpovídá třetí fázi automatického zřizování. Vývojář zodpovídá za sestavení a nasazení registračního softwaru do zařízení pomocí příslušné sady SDK.<br><br>**Rychlé starty**: Ukázková registrační aplikace, kterou sestavíte, simuluje reálné zařízení, pro zvolenou platformu nebo jazyk, která se spouští na vaší pracovní stanici (místo nasazení na fyzické zařízení). Registrační aplikace provádí stejné operace jako jeden nasazený na fyzickém zařízení. Pro instanci služby Device Provisioning můžete zadat metodu ověření identity (TPM nebo X. 509 Certificate) a adresu URL pro registraci a obor ID. Identita zařízení je určena logikou ověření sady SDK za běhu na základě vámi zadané metody: <ul><li>**Ověření identity čipem TPM** – vaše vývojová pracovní stanice spouští [aplikaci simulátoru TPM](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator). Po spuštění se k extrakci "ověřovacího klíče TPM" a "ID registrace" použije samostatná aplikace pro použití při registraci identity zařízení. Logika ověření sady SDK také používá simulátor během registrace k zobrazení podepsaného tokenu SAS pro ověřování a ověření registrace.</li><li>**Ověření identity x509** – pomocí nástroje [Vygenerujte certifikát](how-to-use-sdk-tools.md#x509-certificate-generator). Po vygenerování se vytvoří soubor s certifikátem, který se vyžaduje pro použití při registraci. Logika ověření sady SDK také používá certifikát při registraci, aby bylo možné provést ověření ověřování a registrace.</li></ul> |
-| Zařízení | Spouštění a registrovat | Tato operace odpovídá třetí fázi automatického zřizování, kterou splňuje software pro registraci zařízení sestavený vývojářem. Podrobnosti najdete v tématu role vývojáře. Při prvním spuštění: <ol><li>Aplikace se připojí k instanci služby Device Provisioning pro každou globální adresu URL a službu "obor ID", která se zadala během vývoje.</li><li>Po připojení se zařízení ověří metodou ověření identity a identitou zadanou během registrace.</li><li>Po ověření se zařízení zaregistruje s instancí IoT Hub určenou instancí služby zřizování.</li><li>Po úspěšné registraci se do registrační aplikace vrátí jedinečné ID zařízení a IoT Hub koncový bod pro komunikaci s IoT Hub.</li><li> Odtud může zařízení načítat počáteční stav nedokončeného [zařízení](~/articles/iot-hub/iot-hub-devguide-device-twins.md) pro konfiguraci a zahájit proces vytváření sestav dat telemetrie.</li></ol>**Rychlé starty**: vzhledem k tomu, že se zařízení simuluje, je registrační software spuštěný na vaší pracovní stanici pro vývoj.|
+| Výrobce | Zakódovat identitu a adresu URL registrace | Na základě použitého mechanismu ověřování je výrobce zodpovědný za kódování informací o identitě zařízení a registrační adresy URL služby Device Provisioning Service.<br><br>**Rychlé starty**: vzhledem k tomu, že je zařízení simulováno, neexistuje žádná role výrobce. Podrobnosti o tom, jak tyto informace získat, který se používá při kódování ukázkové registrační aplikace, naleznete v roli vývojáře. |
+| | Zadejte identitu zařízení | Jako původce informací o identitě zařízení je výrobce odpovědný za jejich sdělování operátorovi (nebo určenému zástupci) nebo za jeho přímou registraci do služby device provisioning service prostřednictvím rozhraní API.<br><br>**Rychlé starty**: vzhledem k tomu, že je zařízení simulováno, neexistuje žádná role výrobce. Podrobnosti o tom, jak získat identitu zařízení, která se používá k registraci simulovaného zařízení v instanci služby Device Provisioning Service, najdete v roli Operátor. |
+| Operátor | Konfigurace automatického zřizování | Tato operace odpovídá první fázi automatického zřizování.<br><br>**Rychlé starty**: Provedete roli Operátor, konfigurace služby zřizování zařízení a ioT hub instance ve vašem předplatném Azure. |
+|  | Registrace identity zařízení | Tato operace odpovídá druhé fázi automatického zřizování.<br><br>**Rychlé starty**: Provedete roli Operátor a zaregistrujete simulované zařízení do instance služby Zřizování zařízení. Identita zařízení je určena simulační metodou, která je simulována v rychlém startu (TPM nebo X.509). Podrobnosti o potvrzení naleznete v roli vývojáře. |
+| Služba zřizování zařízení,<br>IoT Hub | \<všechny operace\> | Pro produkční implementaci s fyzickými zařízeními a rychlé starty se simulovanými zařízeními jsou tyto role splněny prostřednictvím služeb IoT, které nakonfigurujete ve vašem předplatném Azure. Role/operace fungují přesně stejně, protože služby IoT jsou lhostejné k zřizování fyzických vs. simulovaných zařízení. |
+| Developer | Sestavení/nasazení registračního softwaru | Tato operace odpovídá třetí fázi automatického zřizování. Vývojář je zodpovědný za vytváření a nasazování registračního softwaru do zařízení pomocí příslušné sady SDK.<br><br>**Rychlé starty**: Ukázková registrační aplikace, kterou vytvoříte, simuluje skutečné zařízení pro vaši platformu/jazyk, který běží na vaší pracovní stanici (namísto jeho nasazení do fyzického zařízení). Registrační aplikace provádí stejné operace jako jeden nasazený do fyzického zařízení. Zadáte metodu ověřování (certifikát TPM nebo X.509) plus adresu URL registrace a "Obor ID" instance služby Zřizování zařízení. Identita zařízení je určena logikou ověření sady SDK za běhu na základě zadané metody: <ul><li>**Atestace TPM** - vaše vývojová pracovní stanice spouští [aplikaci simulátoru TPM](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator). Po spuštění se k extrahování "ověřovacího klíče" čipu TPM a "Registračního ID" pro použití při registraci identity zařízení používá samostatná aplikace. Logika ověření sady SDK také používá simulátor během registrace k prezentaci podepsaného tokenu SAS pro ověřování a ověřování registrace.</li><li>**X509 atestace** - používáte nástroj pro [generování certifikátu](how-to-use-sdk-tools.md#x509-certificate-generator). Po vygenerování vytvoříte soubor certifikátu potřebný pro použití při zápisu. Logika ověření sady SDK také používá certifikát při registraci k prezentaci pro ověření a ověření zápisu.</li></ul> |
+| Zařízení | Bootup a registr | Tato operace odpovídá třetí fázi automatického zřizování, kterou plní software pro registraci zařízení vytvořený vývojářem. Podrobnosti najdete v roli vývojáře. Při prvním spuštění: <ol><li>Aplikace se připojí k instanci Služby zřizování zařízení podle globální adresy URL a služby "ID Obor" zadané během vývoje.</li><li>Po připojení je zařízení ověřeno podle metody ověření a identity zadané během registrace.</li><li>Po ověření se zařízení zaregistruje s instancí služby IoT Hub určené instancí zřizovací služby.</li><li>Po úspěšné registraci se jedinečné ID zařízení a koncový bod služby IoT Hub vrátí do registrační aplikace pro komunikaci s IoT Hub.</li><li> Odtud zařízení můžete stáhnout jeho počáteční stav [dvojčete zařízení](~/articles/iot-hub/iot-hub-devguide-device-twins.md) pro konfiguraci a zahájit proces vykazování telemetrických dat.</li></ol>**Rychlé starty**: vzhledem k tomu, že je zařízení simulováno, registrační software běží na vývojové pracovní stanici.|
 
-Následující diagram shrnuje role a sekvencování operací při automatickém zřizování zařízení:
+Následující diagram shrnuje role a pořadí operací během automatického zřizování zařízení:
 <br><br>
-[![sekvence automatického zřizování pro zařízení](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
+[![Pořadí automatického zřizování zařízení](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
-> V případě potřeby může výrobce také provést operaci registrovat identitu zařízení pomocí rozhraní API služby Device Provisioning (místo přes operátor). Podrobnou diskuzi o tomto sekvencování a další informace najdete v tématu [registrace zařízení s nulovou dotykovou registrací pomocí Azure IoT video](https://youtu.be/cSbDRNg72cU?t=2460) (počínaje značkou 41:00).
+> Volitelně může výrobce také provádět operaci "Zapsat identitu zařízení" pomocí rozhraní API služby zřizování zařízení (namísto prostřednictvím operátora). Podrobné informace o tomto řazení a další informace najdete v tématu [Nula dotykové zařízení registrace s Azure IoT video](https://youtu.be/cSbDRNg72cU?t=2460) (od značky 41:00)
 
 ## <a name="roles-and-azure-accounts"></a>Role a účty Azure
 
-Způsob mapování jednotlivých rolí na účet Azure závisí na scénáři a existuje poměrně několik scénářů, které mohou být zahrnuty. Níže uvedené běžné vzory by vám měly poskytnout obecné informace o tom, jak jsou role všeobecně mapované na účet Azure.
+Jak je každá role mapována na účet Azure je závislá na scénáři a existuje poměrně málo scénářů, které mohou být zapojeny. Běžné vzory níže by měly pomoci poskytnout obecné znalosti o tom, jak jsou role obecně mapovány na účet Azure.
 
-#### <a name="chip-manufacturer-provides-security-services"></a>Výrobce čipu poskytuje bezpečnostní služby
+#### <a name="chip-manufacturer-provides-security-services"></a>Výrobce čipů poskytuje bezpečnostní služby
 
-V tomto scénáři výrobce spravuje zabezpečení pro zákazníky úrovně One. Tento scénář můžou být upřednostňovány těmito zákazníky úrovně, protože nemusejí spravovat podrobné zabezpečení. 
+V tomto scénáři výrobce spravuje zabezpečení pro zákazníky úrovně jedna. Tento scénář může být upřednostňován těmito zákazníky první úrovně, protože nemusí spravovat podrobné zabezpečení. 
 
-Výrobce zavádí zabezpečení v modulech hardwarového zabezpečení (HSM). Toto zabezpečení může zahrnovat výrobce získávající klíče, certifikáty atd. od potenciálních zákazníků, kteří už mají nastavování instancí DPS a skupin registrace. Výrobce může také vygenerovat tyto informace o zabezpečení pro své zákazníky.
+Výrobce zavádí zabezpečení do modulů hardwarového zabezpečení (HSM). Toto zabezpečení může zahrnovat výrobce získání klíčů, certifikátů atd. Výrobce může také generovat tyto informace o zabezpečení pro své zákazníky.
 
-V tomto scénáři můžou být zapojené dva účty Azure:
+V tomto scénáři může existovat dva účty Azure:
 
-- **#1 účtu**: v některém stupni se nejspíš sdílí mezi operátorem a rolemi vývojářů. Tato strana může koupit čipy HSM od výrobce. Tyto čipy odkazují na instance DPS přidružené k účtu #1. V případě registrace DPS může tato strana zapůjčit zařízení několika zákazníkům na úrovni dvou úrovní tím, že překonfiguruje nastavení registrace zařízení v DPS. Tato strana může také mít k rozhraní back-end koncových uživatelů přidělená zařízení, aby bylo možné získat přístup k telemetrie zařízení atd. V takovém případě nemusí být potřeba druhý účet.
+- **#1 účtu:** Pravděpodobně do určité míry sdíleny napříč rolemi operátora a vývojáře. Tato strana může zakoupit čipy HSM od výrobce. Tyto čipy jsou odkazovány na instance DPS spojené s #1 účtu. S registrací DPS může tato strana pronajímat zařízení více zákazníkům úrovně dvě změnou konfigurace nastavení registrace zařízení v DPS. Tato strana může mít také služby IoT huby přidělené pro back-endové systémy koncových uživatelů pro rozhraní za účelem přístupu k telemetrii zařízení atd. V tomto druhém případě nemusí být druhý účet nutný.
 
-- **#2 účtu**: koncoví uživatelé, úroveň-dva zákazníci můžou mít svoje vlastní centra IoT. Strana přidružená k účtu #1 v tomto účtu jenom zařízení pronajatá na správné centrum. Tato konfigurace vyžaduje propojování rozbočovačů DPS a IoT v rámci účtů Azure, které je možné provádět pomocí Azure Resource Manager šablon.
+- **#2 účtu**: Koncoví uživatelé, zákazníci druhé úrovně mohou mít vlastní centra IoT. Strana přidružená k účtu #1 pouze nakvačuje pronajatá zařízení do správného centra v tomto účtu. Tato konfigurace vyžaduje propojení dps a ioT hubů napříč účty Azure, což se dá dělat pomocí šablon Azure Resource Manager.
 
-#### <a name="all-in-one-oem"></a>Vše v jednom výrobci OEM
+#### <a name="all-in-one-oem"></a>Vše v jednom OEM
 
-Výrobcem může být "All-in-One OEM", kde bude potřeba jenom jeden účet výrobce. Výrobce zpracovává zabezpečení a zřizování na konci.
+Výrobcem by mohl být "All-in-one OEM", kde by byl zapotřebí pouze jeden účet výrobce. Výrobce zpracovává zabezpečení a zřizování od konce do konce.
 
-Výrobce může poskytnout cloudovou aplikaci zákazníkům, kteří si zakoupí zařízení. Tato aplikace by měla být v rozhraní IoT Hub přidělená výrobcem.
+Výrobce může zákazníkům, kteří si zařízení zakoupí, poskytnout cloudovou aplikaci. Tato aplikace by rozhraní s ioT hub přidělené výrobcem.
 
-Příklady pro tento scénář představuje prodejní počítače nebo automatizované kávové počítače.
+Příkladem tohoto scénáře jsou prodejní automaty nebo automaty na kávovary.
 
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Může být užitečné, abyste tento článek mohli označit jako bod odkazu, jak budete pracovat prostřednictvím odpovídajících rychlých startů pro Automatické zřizování. 
+Může být užitečné záložku tento článek jako referenční bod, jak si práci si cestu přes odpovídající automatické zřizování Rychlé starty. 
 
-Začněte tím, že vyplníte "nastavení automatického zřizování", které nejlépe vyhovuje předvolbám nástrojů pro správu, které vás provede fází konfigurace služby:
+Začněte dokončením úvodního úvodního panelu "Nastavení automatického zřizování", který nejlépe vyhovuje vašim preferencím nástroje pro správu, který vás provede fází "Konfigurace služby":
 
-- [Nastavení automatického zřizování pomocí Azure CLI](quick-setup-auto-provision-cli.md)
-- [Nastavení automatického zřizování pomocí Azure Portal](quick-setup-auto-provision.md)
+- [Nastavení automatického zřizování pomocí azure cli](quick-setup-auto-provision-cli.md)
+- [Nastavení automatického zřizování pomocí portálu Azure](quick-setup-auto-provision.md)
 - [Nastavení automatického zřizování pomocí šablony Správce prostředků](quick-setup-auto-provision-rm.md)
 
-Pak pokračujte v rychlém startu "automatické zřízení simulovaného zařízení", které vyhovuje mechanismu ověřování zařízení a předvolbu pro sadu SDK/jazyka služeb Device Provisioning. V tomto rychlém startu si projdete fáze "registrace zařízení" a "registrace zařízení a konfigurace": 
+Pak pokračujte s rychlým startem "Automatické zřízení simulované zařízení", který vyhovuje mechanismu ověřování zařízení a předvolbě služby Device Provisioning Service SDK/jazyk. V tomto rychlém startu procházíte fázemi "Registrace zařízení" a "Registrace a konfigurace zařízení": 
 
-|  | Mechanismus ověřování simulovaného zařízení | Rychlý Start SDK/jazyk |  |
+|  | Mechanismus atestace simulovaných zařízení | Sada SDK/jazyk rychlého startu |  |
 |--|--|--|--|
-|  | Čip TPM (Trusted Platform Module) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | Certifikát X. 509 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+|  | Čip TPM (Trusted Platform Module) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C #](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
+|  | Certifikát X.509 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C #](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
 
 
 

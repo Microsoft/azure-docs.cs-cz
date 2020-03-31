@@ -3,7 +3,7 @@ documentType: LandingData
 title: Spravovaná instance SQL
 metadata:
   title: 'Dokumentace ke spravovaným instancím – kurzy, reference k rozhraní API'
-  meta.description: Learn how to use a managed instance in Azure SQL Database.
+  description: 'Projděte si rychlá zprovoznění, kurzy a ukázky pro spravovanou instanci Azure SQL Database. Tato plně spravovaná instance databázového stroje SQL Serveru je hostovaná v cloudu.'
   services: sql-database
   author: jovanpop-msft
   ms.reviewer: carlrab

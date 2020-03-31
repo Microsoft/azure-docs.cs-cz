@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení prostředků Azure CDN pomocí ověřování tokenu | Dokumentace Microsoftu
-description: Další informace o použití ověřování pomocí tokenu zabezpečení přístupu pro vaše prostředky Azure CDN.
+title: Zabezpečení prostředků Azure CDN pomocí ověřování tokenů| Dokumenty společnosti Microsoft
+description: Přečtěte si, jak používat ověřování pomocí tokenu k zabezpečení přístupu k prostředkům Azure CDN.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -15,82 +15,82 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
 ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593393"
 ---
-# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpečení prostředků Azure CDN pomocí ověření tokenu
+# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpečení prostředků Azure CDN pomocí ověřování tokenů
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Přehled
 
-Ověřování pomocí tokenu je mechanismus, který umožňuje zabránit obsluhující prostředky neoprávněné klientům Azure Content Delivery Network (CDN). Ověřování pomocí tokenu se obvykle provádí, aby se zabránilo *hotlinking* obsahu, ve kterém používá jiný web, jako je například panel zpráv, vaše prostředky bez oprávnění. Hotlinking může mít vliv na náklady na doručování obsahu. Když zapnete ověřování pomocí tokenu v CDN, jsou požadavky ověřována CDN hraniční server před CDN nabízí obsah. 
+Ověřování tokenů je mechanismus, který umožňuje zabránit síti pro doručování obsahu Azure (CDN) v zobrazování prostředků neoprávněným klientům. Ověřování tokenů se obvykle provádí, aby se zabránilo *hotlinking* obsahu, ve kterém jiný web, jako je například vývěska, používá vaše prostředky bez povolení. Hotlinking může mít vliv na náklady na doručování obsahu. Povolením ověřování tokenů na síti CDN jsou požadavky ověřeny serverem EDGE CDN před tím, než cdn doručí obsah. 
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Ověřování pomocí tokenu ověřuje, že žádosti jsou generovány jako důvěryhodný vyžadováním požadavky tak, aby obsahovala hodnotu tokenu, že kódování obsahuje informace o žadateli. Pouze v případě, že kódovaného informace splňuje požadavky; se obsah obsluhuje pro žadatele v opačném případě požadavků byl odepřen. Požadavky můžete nastavit pomocí jednoho nebo více z následujících parametrů:
+Ověřování tokenu ověří, že požadavky jsou generovány důvěryhodným webem tím, že vyžadují, aby požadavky obsahovaly hodnotu tokenu, která obsahuje kódované informace o žadateli. Obsah se žadateli doručuje pouze v případě, že kódované informace splňují požadavky; v opačném případě jsou požadavky odepřeny. Požadavky můžete nastavit pomocí jednoho nebo více z následujících parametrů:
 
-- Země: Povolit nebo odepřít požadavky, které pocházejí z určeného zemí nebo oblastí jejich [směrové číslo země](/previous-versions/azure/mt761717(v=azure.100)).
-- Adresa URL: Povolit pouze požadavky, které odpovídají zadaného prostředku nebo cesta.
-- Hostitel: Povolit nebo odmítnout požadavky, které používají zadaní hostitelé v hlavičce požadavku.
-- Odkazující server: Povolí nebo zakáže žádost ze zadaného odkazující server.
-- IP adresa: Povolit pouze požadavky pocházejících z konkrétní IP adresu nebo podsíť protokolu IP.
-- Protokol: Povolit nebo odepřít požadavky založené na protokol použitý pro vyžádání obsahu.
-- Čas vypršení platnosti: Přiřaďte určité datum a čas, ujistěte se, že odkaz zůstane platný pouze pro omezené časové období.
+- Země: Povolit nebo odepřít žádosti, které pocházejí ze zemí nebo oblastí určených jejich [kódem země](/previous-versions/azure/mt761717(v=azure.100)).
+- Adresa URL: Povolit pouze požadavky, které odpovídají zadanému datovému zdroji nebo cestě.
+- Hostitel: Povolit nebo odepřít požadavky, které používají zadané hostitele v hlavičce požadavku.
+- Odkazný odkaz: Povolit nebo odepřít požadavek od zadaného odkazu.
+- IP adresa: Povolit pouze požadavky, které pocházejí z určité adresy IP nebo podsítě IP.
+- Protokol: Povolit nebo odepřít požadavky na základě protokolu použitého k vyžádání obsahu.
+- Čas vypršení platnosti: Přiřaďte datum a časové období, abyste zajistili, že odkaz zůstane platný pouze po omezenou dobu.
 
-Další informace, podívejte se na příklady podrobnou konfiguraci pro každý parametr [nastavení ověřování pomocí tokenu](#setting-up-token-authentication).
+Další informace naleznete v podrobných příkladech konfigurace pro každý parametr v [nastavení ověřování tokenu](#setting-up-token-authentication).
 
 >[!IMPORTANT] 
-> Pokud token autorizace je povolená pro libovolnou cestu pro tento účet, režimu mezipaměti standard je jediný režim, který slouží k ukládání do mezipaměti řetězce dotazu. Další informace najdete v tématu [Řízení chování Azure CDN při ukládání řetězců dotazu do mezipaměti](cdn-query-string-premium.md).
+> Pokud je povolena autorizace tokenu pro libovolnou cestu v tomto účtu, režim standardní mezipaměti je jediný režim, který lze použít pro ukládání řetězce dotazu do mezipaměti. Další informace najdete v tématu [Řízení chování Azure CDN při ukládání řetězců dotazu do mezipaměti](cdn-query-string-premium.md).
 
 ## <a name="reference-architecture"></a>Referenční architektura
 
-Následující diagram pracovního postupu popisuje, jak síť CDN používá ověřování pomocí tokenu pro práci s vaší webovou aplikací.
+Následující diagram pracovního postupu popisuje, jak CDN používá ověřování tokenů pro práci s vaší webovou aplikací.
 
-![Pracovní postup ověřování pomocí tokenu CDN](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
+![Pracovní postup ověřování tokenů CDN](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
 
-## <a name="token-validation-logic-on-cdn-endpoint"></a>Logika ověřování tokenů na koncový bod CDN
+## <a name="token-validation-logic-on-cdn-endpoint"></a>Logika ověření tokenu v koncovém bodě CDN
     
-Následující diagram popisuje, jak Azure CDN ověří požadavek klienta při ověřování tokenu je nakonfigurovaná na koncový bod CDN.
+Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek klienta při ověřování tokenu je nakonfigurován na koncovém bodu CDN.
 
-![Logika ověřování tokenů CDN](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
+![Logika ověření tokenu CDN](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
 
-## <a name="setting-up-token-authentication"></a>Nastavení ověřování pomocí tokenu
+## <a name="setting-up-token-authentication"></a>Nastavení ověřování tokenu
 
-1. Z [webu Azure portal](https://portal.azure.com), přejděte na svůj profil CDN a pak vyberte **spravovat** spustit doplňkového portálu.
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte do svého profilu CDN a pak vyberte **Spravovat** a spusťte doplňkový portál.
 
     ![Tlačítko Spravovat profil CDN](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. Najeďte myší na **HTTP velké**a pak vyberte **tokenu ověřování** v informační rámeček. Můžete pak nastavit šifrovací klíč a parametry šifrování následujícím způsobem:
+2. Najeďte přes **HTTP Large**a v informačním rámečku vyberte **Uštovit token.** Poté můžete nastavit šifrovací klíč a parametry šifrování následujícím způsobem:
 
-   1. Vytvořte jeden nebo více šifrovací klíče. Šifrovací klíč je velká a malá písmena a může obsahovat libovolnou kombinaci alfanumerických znaků. Jiné druhy znaků včetně mezer, nejsou povoleny. Maximální délka je 250 znaků. K zajištění, že šifrovací klíče jsou náhodně, doporučujeme vám vytvořit pomocí [OpenSSL nástroj](https://www.openssl.org/). 
+   1. Vytvořte jeden nebo více šifrovacích klíčů. Šifrovací klíč rozlišuje malá a velká písmena a může obsahovat libovolnou kombinaci alfanumerických znaků. Jiné typy znaků, včetně mezer, nejsou povoleny. Maximální délka je 250 znaků. Chcete-li zajistit, aby šifrovací klíče byly náhodné, doporučujeme je vytvořit pomocí [nástroje OpenSSL](https://www.openssl.org/). 
 
       Nástroj OpenSSL má následující syntaxi:
 
       ```rand -hex <key length>```
 
-      Příklad:
+      Například:
 
       ```OpenSSL> rand -hex 32``` 
 
-      Výpadky, vytvořte primární a záložní klíč. Záložní klíč poskytuje zajistit nepřerušený přístup k vašemu obsahu při aktualizaci váš primární klíč.
+      Chcete-li se vyhnout prostojům, vytvořte primární i záložní klíč. Záložní klíč poskytuje nepřetržitý přístup k obsahu při aktualizaci primárního klíče.
     
-   2. Zadejte jedinečný šifrovací klíč v **primární klíč** pole a volitelně zadat záložní klíč v **záložní klíč** pole.
+   2. Do pole **Primární klíč** zadejte jedinečný šifrovací klíč a volitelně zadejte záložní klíč do pole **Klíč zálohování.**
 
-   3. Vyberte verzi minimální šifrování pro každý klíč z jeho **minimální verze šifrování** seznamu a pak vyberte **aktualizace**:
-      - **V2**: Označuje, že klíč můžete použít ke generování tokenů verze 2.0 a 3.0. Tuto možnost použijte jenom v případě, že se převádějí ze starší verze 2.0 šifrovací klíč na klíč verze 3.0.
-      - **V3**: (Doporučeno) Označuje, že klíč jde použít jenom ke generování tokenů verze 3.0.
+   3. Vyberte minimální verzi šifrování pro každý klíč ze seznamu **Minimální verze šifrování** a pak vyberte **Aktualizovat**:
+      - **V2**: Označuje, že klíč lze použít ke generování tokenů verze 2.0 a 3.0. Tuto možnost použijte pouze v případě, že přecházíte ze staršího šifrovacího klíče verze 2.0 na klíč verze 3.0.
+      - **V3**: (Doporučeno) Označuje, že klíč lze použít pouze ke generování tokenů verze 3.0.
 
-      ![Klíč nastavení tokenu ověřování CDN](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+      ![Klíč nastavení tokenu CDN](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. Pomocí nástroje šifrovat nastavit parametry šifrování a generovat token. Pomocí nástroje šifrování můžete povolit nebo odepřít požadavky na základě čas vypršení platnosti, země/oblast, referrer, protokol a IP adresa klienta (v libovolnou kombinaci). Ačkoli neexistuje žádné omezení počtu a kombinace parametrů, které mohou být kombinovány k vytvoření tokenu, celková délka tokenu je omezen na 512 znaků. 
+   4. Pomocí šifrovacího nástroje nastavte parametry šifrování a vygenerujte token. Pomocí šifrovacího nástroje můžete povolit nebo odepřít požadavky na základě doby vypršení platnosti, země nebo oblasti, odkazované adresy, protokolu a IP adresy klienta (v libovolné kombinaci). Přestože neexistuje žádné omezení počtu a kombinace parametrů, které lze kombinovat do vytvoření tokenu, celková délka tokenu je omezena na 512 znaků. 
 
-      ![CDN šifrování nástroje](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+      ![Nástroj pro šifrování CDN](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
-      Zadejte hodnoty pro jeden nebo více z následujících parametrů šifrování v **šifrování nástroj** části: 
+      Do části **Šifrovací nástroj** zadejte hodnoty pro jeden nebo více následujících parametrů šifrování: 
 
       > [!div class="mx-tdCol2BreakAll"] 
       > <table>
@@ -100,95 +100,95 @@ Následující diagram popisuje, jak Azure CDN ověří požadavek klienta při 
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
-      >    <td>Přiřadí čas vypršení platnosti tokenu, po jejímž uplynutí vyprší platnost tokenu. Žádosti odeslané po čas vypršení platnosti je odepřen. Tento parametr používá unixové časové razítko, která je založena na počtu sekund od standardní epocha Unix `1/1/1970 00:00:00 GMT`. (Můžete použít online nástrojů pro převod mezi (běžný čas) a Unixový čas.)> 
-      >    Například, pokud chcete, aby tokenu vyprší za `12/31/2016 12:00:00 GMT`, zadejte hodnotu časového razítka Unix `1483185600`. 
+      >    <td>Přiřadí čas vypršení platnosti tokenu, po kterém vyprší platnost tokenu. Požadavky odeslané po vypršení platnosti jsou odmítnuty. Tento parametr používá unixové časové razítko, které je založeno na počtu `1/1/1970 00:00:00 GMT`sekund od standardní unixové epochy . (Můžete použít on-line nástroje pro převod mezi standardním časem a unixového času.)> 
+      >    Pokud například chcete, aby platnost `12/31/2016 12:00:00 GMT`tokenu vypršela na `1483185600`, zadejte hodnotu časového razítka Unixu . 
       > </tr>
       > <tr>
       >    <td><b>ec_url_allow</b></td> 
-      >    <td>Umožňuje přizpůsobit tokeny do příslušného prostředku nebo cesta. Omezuje přístup na požadavky, jejichž adresy URL začínat konkrétní relativní cesta. Adresy URL jsou malá a velká písmena. Zadejte více cest podle jednotlivé cesty oddělte čárkou; Nepřidávejte mezery. V závislosti na požadavcích můžete nastavit různé hodnoty poskytují různé úrovně přístupu.> 
-      >    Například pro adresu URL `http://www.mydomain.com/pictures/city/strasbourg.png`, tyto požadavky jsou povolené pro následující vstupní hodnoty: 
+      >    <td>Umožňuje přizpůsobit tokeny konkrétnímu prostředku nebo cestě. Omezuje přístup k požadavkům, jejichž adresa URL začíná určitou relativní cestou. Adresy URL rozlišují malá a velká písmena. Zadejte více cest oddělením každé cesty čárkou; nepřidávejte mezery. V závislosti na vašich požadavcích můžete nastavit různé hodnoty, které poskytují různé úrovně přístupu.> 
+      >    Například pro adresu `http://www.mydomain.com/pictures/city/strasbourg.png`URL jsou tyto požadavky povoleny pro následující vstupní hodnoty: 
       >    <ul>
-      >       <li>Vstupní hodnota `/`: Jsou povoleny všechny požadavky.</li>
-      >       <li>Vstupní hodnota `/pictures`, jsou povoleny následující požadavky: <ul>
+      >       <li>Vstupní `/`hodnota : Všechny požadavky jsou povoleny.</li>
+      >       <li>Vstupní `/pictures`hodnota , jsou povoleny následující požadavky: <ul>
       >          <li>`http://www.mydomain.com/pictures.png`</li>
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>Vstupní hodnota `/pictures/`: Vyžádá obsahující pouze `/pictures/` cesty jsou povoleny. Například, `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
-      >       <li>Vstupní hodnota `/pictures/city/strasbourg.png`: Jsou povoleny pouze požadavky pro tento konkrétní cesty a prostředků.</li>
+      >       <li>Vstupní `/pictures/`hodnota : Jsou povoleny pouze požadavky obsahující `/pictures/` cestu. Například, `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+      >       <li>Vstupní `/pictures/city/strasbourg.png`hodnota : Jsou povoleny pouze požadavky pro tuto konkrétní cestu a prostředek.</li>
       >    </ul>
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Umožňuje pouze požadavky, které pocházejí z jednoho nebo více zadanou zemí nebo oblastí. Požadavky, které pocházejí ze všech jiných zemích nebo oblastech je odepřen. Použití dvou písmen [směrové číslo země ISO 3166](/previous-versions/azure/mt761717(v=azure.100)) pro jednotlivé země a oddělit každou z nich čárkou; nepřidávejte mezerou. Například pokud chcete povolit přístup ze Spojených států a (Francie), zadejte `US,FR`.</td>
+      >    <td>Umožňuje pouze požadavky, které pocházejí z jedné nebo více určených zemí nebo oblastí. Požadavky, které pocházejí ze všech ostatních zemí nebo oblastí, jsou odmítnuty. Pro každou zemi použijte dvoupísmenný [kód země ISO 3166](/previous-versions/azure/mt761717(v=azure.100)) a každou z nich oddělte čárkou; nepřidávejte mezeru. Chcete-li například povolit přístup pouze ze Spojených `US,FR`států a Francie, zadejte .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Odmítne požadavky, které pocházejí z jednoho nebo více zadanou zemí nebo oblastí. Jsou povoleny požadavky, které pocházejí z všechny ostatní země/oblasti. Implementace je stejné jako <b>ec_country_allow</b> parametru. Pokud je k dispozici v obou kód země <b>ec_country_allow</b> a <b>ec_country_deny</b> parametry, <b>ec_country_allow</b> parametr má přednost.</td>
+      >    <td>Odmítne požadavky, které pocházejí z jedné nebo více určených zemí nebo oblastí. Požadavky, které pocházejí ze všech ostatních zemí nebo oblastí, jsou povoleny. Implementace je stejná jako <b>parametr ec_country_allow.</b> Pokud je v parametrech <b>ec_country_allow</b> i <b>ec_country_deny</b> k dispozici kód země, má přednost <b>ec_country_allow</b> parametr.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
-      >    <td>Umožňuje pouze požadavky ze zadaného odkazující server. Odkazující server určuje adresu URL webové stránky, který je propojený s požadovaný prostředek. Nesmí obsahovat protokol hodnoty parametru.> 
-      >    Jsou povoleny následující typy vstupu:
+      >    <td>Umožňuje pouze požadavky od zadaného odkazu. Odkazovatel identifikuje adresu URL webové stránky, která je propojena s požadovaným zdrojem. Nezahrnejte protokol do hodnoty parametru.> 
+      >    Následující typy vstupů jsou povoleny:
       >    <ul>
-      >       <li>Název hostitele nebo název hostitele a cestu.</li>
-      >       <li>Více odkazující servery. Chcete-li přidat více odkazující servery, oddělte čárkou; každý odkazující server Nepřidávejte mezerou. Pokud zadáte hodnotu odkazující server však referrer informace nebudou odeslány v požadavek z důvodu konfigurace prohlížeče, je požadavek ve výchozím nastavení zakázaný.</li> 
-      >       <li>Požadavky s informacemi o odkazujícího serveru chybí nebo je prázdný. Ve výchozím nastavení <b>ec_ref_allow</b> parametr blokuje tyto druhy žádostí. Pokud chcete povolit tyto požadavky, zadejte buď textu "chybí", nebo zadejte prázdnou hodnotu (s použitím koncovou čárkou).</li> 
-      >       <li>Subdomény. Chcete-li povolit subdomény, zadejte hvězdičku (\*). Například chcete povolit všechny subdomény `contoso.com`, zadejte `*.contoso.com`.</li>
+      >       <li>Název hostitele nebo název hostitele a cesta.</li>
+      >       <li>Několik odkazovatelé. Chcete-li přidat více odkazovat, oddělte každý odkazovat s čárkou; nepřidávejte mezeru. Pokud zadáte hodnotu odkazovat, ale odkazovat informace není odeslána v požadavku z důvodu konfigurace prohlížeče, požadavek je ve výchozím nastavení odepřen.</li> 
+      >       <li>Požadavky s chybějícími nebo prázdnými informacemi referreru. Ve výchozím nastavení <b>ec_ref_allow</b> parametr blokuje tyto typy požadavků. Chcete-li tyto požadavky povolit, zadejte buď text "chybí", nebo zadejte prázdnou hodnotu (pomocí koncové čárky).</li> 
+      >       <li>Subdomény. Chcete-li povolit subdomény, zadejte hvězdičku (\*). Chcete-li například povolit `contoso.com`všechny `*.contoso.com`subdomény položky , zadejte .</li>
       >    </ul> 
-      >    Například, pokud chcete povolit přístup pro žádosti od `www.contoso.com`, všem dílčím doménám domény `contoso2.com`, a zadejte požadavky s prázdnou nebo chybějící odkazující servery `www.contoso.com,*.contoso.com,missing`.</td>
+      >    Chcete-li například povolit `www.contoso.com`přístup k požadavkům `contoso2.com`z , všech subdomén v `www.contoso.com,*.contoso.com,missing`písmenu a) a požadavků s prázdnými nebo chybějícími odkazujícími osobami, zadejte .</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_ref_deny</b></td>
-      >    <td>Odmítne požadavky z zadané odkazující server. Implementace je stejné jako <b>ec_ref_allow</b> parametru. Pokud je k dispozici v obou odkazující <b>ec_ref_allow</b> a <b>ec_ref_deny</b> parametry, <b>ec_ref_allow</b> parametr má přednost před.</td>
+      >    <td>Odmítne požadavky od zadaného odkazu. Implementace je stejná jako <b>parametr ec_ref_allow.</b> Pokud odkazovaní je k dispozici v <b>ec_ref_allow</b> a <b>ec_ref_deny</b> parametry, <b>ec_ref_allow</b> parametr má přednost.</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_proto_allow</b></td> 
-      >    <td>Umožňuje pouze požadavky od zadaného protokolu. Platné hodnoty jsou `http`, `https`, nebo `http,https`.</td>
+      >    <td>Umožňuje pouze požadavky ze zadaného protokolu. Platné hodnoty `http` `https`jsou `http,https`, , nebo .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_proto_deny</b></td>
-      >    <td>Odmítne požadavky z zadaný protokol. Implementace je stejné jako <b>ec_proto_allow</b> parametru. Pokud je k dispozici v obou protokol <b>ec_proto_allow</b> a <b>ec_proto_deny</b> parametry, <b>ec_proto_allow</b> parametr má přednost.</td>
+      >    <td>Odmítne požadavky ze zadaného protokolu. Implementace je stejná jako <b>parametr ec_proto_allow.</b> Pokud je protokol k dispozici v <b>ec_proto_allow</b> i <b>ec_proto_deny</b> parametry, <b>ec_proto_allow</b> parametr má přednost.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_clientip</b></td>
-      >    <td>Omezuje přístup k zadané žadateli IP adresu. Jsou podporovány adresy IPV4 a IPV6. Můžete zadat jeden požadavek IP adresu nebo IP adresy přidružené k určité podsíti. Například `11.22.33.0/22` umožňuje požadavky z IP adres 11.22.32.1 k 11.22.35.254.</td>
+      >    <td>Omezuje přístup k IP adrese zadaného uchazeče. Jsou podporovány protokoly IPV4 i IPV6. Můžete zadat adresu IP s jedním požadavkem nebo adresy IP přidružené k určité podsíti. Například `11.22.33.0/22` umožňuje požadavky z IP adres 11.22.32.1 na 11.22.35.254.</td>
       > </tr>
       > </table>
 
-   5. Po dokončení zadávání hodnot parametru šifrování, vyberte klíč k šifrování (Pokud jste vytvořili primární a záložní klíč) z **klíč k šifrování** seznamu.
+   5. Po zadání hodnot parametrů šifrování vyberte klíč, který chcete šifrovat (pokud jste vytvořili primární i záložní klíč) ze seznamu **Klíč k šifrování.**
     
-   6. Vyberte verzi šifrování z **šifrování verze** seznamu: **V2** verze 2 nebo **V3** verze 3 (doporučeno). 
+   6. Vyberte verzi šifrování ze seznamu **Verze šifrování:** **V2** pro verzi 2 nebo **V3** pro verzi 3 (doporučeno). 
 
-   7. Vyberte **šifrovat** k vygenerování tokenu.
+   7. Chcete-li token **vygenerovat,** vyberte šifrovat.
 
-      Po vygenerování tokenu se zobrazí **vygenerovat Token** pole. Pokud chcete použít token, připojte ho jako řetězec dotazu na konec souboru v cestě adresy URL. Například, `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
+      Po vygenerování tokenu se zobrazí v poli **Generovaný token.** Chcete-li použít token, přidejte jej jako řetězec dotazu na konec souboru v cestě url. Například, `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-   8. Volitelně můžete otestujte tokenu pomocí nástroje pro dešifrování tak, aby se zobrazí váš token parametry. Vložte hodnotu tokenu ve **Token dešifrovat** pole. Vyberte šifrovací klíč ze **klíč pro dešifrování** seznamu a pak vyberte **dešifrovat**.
+   8. Volitelně otestujte token pomocí dešifrovacího nástroje, abyste mohli zobrazit parametry tokenu. Vložte hodnotu tokenu do pole **Token k dešifrování.** Vyberte šifrovací klíč, který chcete použít, ze seznamu **Kód k dešifrování** a pak vyberte **Dešifrovat**.
 
-      Poté, co se dešifrují token, jejích parametrů se zobrazí v **původní parametry** pole.
+      Po dešifrování tokenu jsou jeho parametry zobrazeny v poli **Původní parametry.**
 
-   9. Volitelně můžete upravte typ odpovědi kódu, která je vrácena, pokud je zamítl žádost o. Vyberte **povoleno**, vyberte kód odpovědi **kód odpovědi** seznamu. **Název hlavičky** se automaticky nastaví na **umístění**. Vyberte **Uložit** implementovat nový kód odpovědi. U určitých kódy odpovědí, musí také zadáte adresu URL stránky chyby v **hodnota hlavičky** pole. **403** je standardně vybraná kód odpovědi (zakázáno). 
+   9. Volitelně můžete přizpůsobit typ kódu odpovědi, který je vrácen při odepření požadavku. Vyberte **Možnost Povoleno**a pak vyberte kód odpovědi ze seznamu **Kód odpovědi.** **Název záhlaví** je automaticky nastaven na **umístění**. Chcete-li implementovat nový kód odpovědi, vyberte **možnost Uložit.** U některých kódů odpovědí musíte také zadat adresu URL chybové stránky do pole **Hodnota záhlaví.** Ve výchozím nastavení je vybrán kód odpovědi **403** (Zakázáno). 
 
-3. V části **HTTP velké**vyberte **stroj pravidel**. Stroj pravidel můžete definovat cesty k použít funkci, povolit ověřování pomocí tokenu funkci a povolit další token funkce související s ověřováním. Další informace najdete v tématu [referenční informace ke stroji pravidel](cdn-rules-engine-reference.md).
+3. V části **HTTP Large**vyberte **Modul pravidel**. Modul pravidel slouží k definování cest pro použití funkce, povolení funkce ověřování tokenů a povolení dalších funkcí souvisejících s ověřováním tokenů. Další informace naleznete v [tématu Rules engine reference](cdn-rules-engine-reference.md).
 
-   1. Vybrat existující pravidlo nebo vytvořit nové pravidlo, které definují asset nebo cesty, pro kterou chcete použít ověřování pomocí tokenu. 
-   2. Pokud chcete povolit ověřování pomocí tokenu na pravidla, vyberte **[tokenu ověřování](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** z **funkce** seznamu a pak vyberte **povoleno**. Vyberte **aktualizace** při aktualizaci pravidla nebo **přidat** Pokud vytváříte pravidlo.
+   1. Vyberte existující pravidlo nebo vytvořte nové pravidlo pro definování datového zdroje nebo cesty, pro kterou chcete použít ověřování tokenu. 
+   2. Chcete-li povolit ověřování tokenů u pravidla, vyberte v seznamu **Funkce** možnost **[Token Auth](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** a pak vyberte **Povoleno**. Pokud aktualizujete pravidlo, vyberte **aktualizovat** nebo **Přidat,** pokud vytváříte pravidlo.
         
-      ![Příklad povolit ověřování pomocí tokenu ke stroji pravidel CDN](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
+      ![Příklad ověřování tokenů modulu pravidel CDN](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. V modulu pravidla můžete také povolit další token funkce související s ověřováním. Chcete-li některý z následujících funkcí, vyberte ho v **funkce** seznamu a pak vyberte **povoleno**.
+4. V modulu pravidel můžete také povolit další funkce související s ověřováním tokenů. Chcete-li povolit některou z následujících funkcí, vyberte ji ze seznamu **Funkce** a pak vyberte **Možnost Povoleno**.
     
-   - **[Token kódu s cílem odepření vícefaktorového ověřování](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** : Určuje typ odpovědi, který je vrácen uživateli po odepření požadavku. Přepsat pravidla, která nastavuje tady odpovědi kódu v **vlastní zpracování odmítnutí** části na stránce ověřování na základě tokenu.
+   - **[Kód odmítnutí ověření tokenu](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)**: Určuje typ odpovědi, která je vrácena uživateli při odepření požadavku. Zde nastavená pravidla přepíší kód odpovědi nastavený v části **Vlastní zpracování odmítnutí** na stránce ověřování založené na tokenech.
 
-   - **[Token ověření ignorovat velikost písmen URL](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** : Určuje, zda je adresa URL sloužící k ověření tokenu malá a velká písmena.
+   - **[Token Umítat ignorovat url případ:](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** Určuje, zda adresa URL použitá k ověření tokenu je malá a velká písmena.
 
-   - **[Token ověření parametru](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** : Přejmenuje tokenu ověřování parametru řetězce dotazu, který se zobrazí požadovanou adresu URL. 
+   - **[Parametr token ututh](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)**: Přejmenuje parametr řetězce dotazu tokenu, který se zobrazí v požadované adrese URL. 
         
-     ![Příklad nastavení ověřování pomocí tokenu ke stroji pravidel CDN](./media/cdn-token-auth/cdn-rules-engine2.png)
+     ![Příklad nastavení ověřování tokenu tokenu modulu pravidel CDN](./media/cdn-token-auth/cdn-rules-engine2.png)
 
-5. Můžete přizpůsobit svůj token díky přístupu do zdrojového kódu v [Githubu](https://github.com/VerizonDigital/ectoken).
-   Dostupné jazyky patří:
+5. Token můžete přizpůsobit přístupem ke zdrojovému kódu na [GitHubu](https://github.com/VerizonDigital/ectoken).
+   Mezi dostupné jazyky patří:
     
    - C
    - C#
@@ -197,6 +197,6 @@ Následující diagram popisuje, jak Azure CDN ověří požadavek klienta při 
    - Java
    - Python 
 
-## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN funkce a ceny poskytovatele
+## <a name="azure-cdn-features-and-provider-pricing"></a>Funkce Azure CDN a ceny poskytovatelů
 
-Informace o funkcích najdete v tématu [funkce produktu Azure CDN](cdn-features.md). Informace o cenách najdete v tématu [ceny Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
+Informace o funkcích naleznete v [tématu Azure CDN product features](cdn-features.md). Informace o cenách naleznete v [tématu Content Delivery Network pricing](https://azure.microsoft.com/pricing/details/cdn/).

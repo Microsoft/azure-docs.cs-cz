@@ -1,6 +1,6 @@
 ---
-title: Hybridní identita návrh – požadavky na vícefaktorové ověřování Azure | Dokumentace Microsoftu
-description: Pomocí řízení podmíněného přístupu Azure Active Directory ověří zvláštní podmínky, kterou vyberete při ověřování uživatele a před povolením přístupu k aplikaci. Po splnění těchto podmínek, uživatel ověří a povolí se přístup k aplikaci.
+title: Návrh hybridní identity – vícefaktorové požadavky na ověřování Azure | Dokumenty společnosti Microsoft
+description: Pomocí řízení podmíněného přístupu služba Azure Active Directory zkontroluje konkrétní podmínky, které vyberete při ověřování uživatele a před povolením přístupu k aplikaci. Jakmile jsou tyto podmínky splněny, uživatel je ověřen a povolen přístup k aplikaci.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,46 +18,46 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109296"
 ---
-# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na ověření službou Multi-Factor Authentication pro vaše řešení hybridní identity
-V tomto světě nastavení mobilních zařízení s uživateli přístup k datům a aplikacím v cloudu a z jakéhokoli zařízení a zabezpečení těchto informací se stal prvořadá.  Každý den se nový nadpis o porušení zabezpečení.  I když není zaručeno před takové porušením, ověřování službou Multi-Factor Authentication poskytuje další úroveň zabezpečení, které pomáhají zabránit těchto porušení.
-Začněte tím, že vaše rozhodnutí vyzkoušet požadavky organizace na ověřování službou Multi-Factor Authentication. To znamená co je organizace pokoušíte zabezpečit.  Toto testování je důležité definovat technické požadavky pro nastavení a povolení uživatelé organizace pro ověřování službou Multi-Factor Authentication.
+# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Určení vícefaktorových požadavků na ověřování pro řešení hybridní identity
+V tomto světě mobility, kdy uživatelé přistupují k datům a aplikacím v cloudu a z jakéhokoli zařízení, se zabezpečení těchto informací stalo prvořadým.  Každý den se píše nový titulek o narušení bezpečnosti.  Ačkoli neexistuje žádná záruka proti takovému porušení, vícefaktorové ověřování, poskytuje další vrstvu zabezpečení, která pomáhá předcházet těmto porušením.
+Začněte vyhodnocením požadavků organizací na vícefaktorové ověřování. To znamená, co je organizace se snaží zajistit.  Toto hodnocení je důležité definovat technické požadavky pro nastavení a povolení organizací uživatelům pro vícefaktorové ověřování.
 
-Ujistěte se, že odpovědět následující:
+Ujistěte se, že jste odpověděli na následující:
 
-* Je vaší společnosti pokoušíte zabezpečit aplikace od Microsoftu? 
-* Jak tyto aplikace jsou publikovány?
-* Poskytuje společnosti vzdálený přístup k zaměstnancům přístup k místním aplikacím?
+* Snaží se vaše společnost zabezpečit aplikace Microsoft? 
+* Jak jsou tyto aplikace publikovány?
+* Poskytuje vaše společnost vzdálený přístup, který zaměstnancům umožňuje přístup k místním aplikacím?
 
-Pokud ano, jaký typ vzdáleného přístupu? Také musíte vyhodnotit, kde budou umístěné uživatele, kteří přistupují k těmto aplikacím. Toto hodnocení se jiný důležitým krokem k definování strategie pro správné ověřování službou Multi-Factor Authentication. Ujistěte se, že odpovědět na následující otázky:
+Pokud ano, jaký typ vzdáleného přístupu? Musíte také vyhodnotit, kde budou umístěni uživatelé, kteří přistupují k těmto aplikacím. Toto hodnocení je dalším důležitým krokem k definování správné strategie vícefaktorového ověřování. Ujistěte se, že jste odpověděli na následující otázky:
 
-* Pokud budou uživatelé budou umístěné?
-* Můžou se být umístěná kdekoli?
-* Vaše společnost chce vytvořit omezení podle umístění uživatele?
+* Kde budou uživatelé umístěni?
+* Mohou být umístěny kdekoliv?
+* Chce vaše společnost stanovit omezení podle polohy uživatele?
 
-Jakmile pochopíte tyto požadavky je potřeba také měli zvážit požadavky na uživatele Multi-Factor Authentication. Toto testování je důležité, protože ho budou definovat požadavky na použití služby Multi-Factor authentication. Ujistěte se, že odpovědět na následující otázky:
+Jakmile porozumíte těmto požadavkům, je důležité také vyhodnotit požadavky uživatele na vícefaktorové ověřování. Toto hodnocení je důležité, protože bude definovat požadavky na zavedení vícefaktorového ověřování. Ujistěte se, že jste odpověděli na následující otázky:
 
-* Jsou uživatelé obeznámeni s ověřováním Multi-Factor Authentication?
-* Využijete, se bude vyžadovat další ověřování?  
-  * Pokud ano, vždy, když pocházející z externí sítě nebo přístup k určité aplikace, nebo v jiných podmínkách?
-* Uživatelé budou vyžadovat školení o tom, jak nastavit a zaveďte vícefaktorové ověřování?
-* Jaké jsou klíčové scénáře, které chce vaše společnost povolení služby Multi-Factor authentication pro uživatele?
+* Jsou uživatelé obeznámeni s vícefaktorovým ověřováním?
+* Budou k poskytnutí dalšího ověřování vyžadována některá použití?  
+  * Pokud ano, po celou dobu, když přichází z externích sítí, nebo přístup k určitým aplikacím, nebo za jiných podmínek?
+* Budou uživatelé vyžadovat školení o tom, jak nastavit a implementovat vícefaktorové ověřování?
+* Jaké jsou klíčové scénáře, které vaše společnost chce povolit vícefaktorové ověřování pro své uživatele?
 
-Po zvolení odpovědi na otázky předchozí, bude moci porozumět tomu při ověřování službou Multi-Factor Authentication již implementováno místní. Toto testování je důležité definovat technické požadavky pro nastavení a povolení uživatelé organizace pro ověřování službou Multi-Factor Authentication. Ujistěte se, že odpovědět na následující otázky:
+Po zodpovězení předchozích otázek budete moci pochopit, zda již existují vícefaktorové ověřování v místním prostředí. Toto hodnocení je důležité definovat technické požadavky pro nastavení a povolení organizací uživatelům pro vícefaktorové ověřování. Ujistěte se, že jste odpověděli na následující otázky:
 
-* Potřebuje vaše společnost pro ochranu privilegovaných účtů s MFA?
-* Potřebuje vaše společnost jak zapnout MFA pro určité aplikace kvůli dodržování předpisů?
-* Potřebuje vaše společnost povolte MFA pro všichni oprávnění uživatelé tyto aplikace, nebo jenom správci?
-* Třeba máte vždy povolená služba MFA nebo pouze při přihlášení uživatele mimo vaši firemní síť?
+* Potřebuje vaše společnost chránit privilegované účty pomocí vícefaktorové pomoci?
+* Potřebuje vaše společnost povolit vícefaktorové povolení pro určité aplikace z důvodů dodržování předpisů?
+* Potřebuje vaše společnost povolit vícefaktorové povolení pro všechny oprávněné uživatele těchto aplikací nebo pouze pro správce?
+* Potřebujete mít mfa vždy povoleno, nebo pouze v případě, že uživatelé jsou přihlášeni mimo vaši podnikovou síť?
 
-## <a name="next-steps"></a>Další postup
-[Definování strategie přijetí hybridní identity](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+## <a name="next-steps"></a>Další kroky
+[Definování strategie přechodu hybridní identity](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
-[Přehled aspektů návrhu](plan-hybrid-identity-design-considerations-overview.md)
+## <a name="see-also"></a>Viz také
+[Přehled aspekty návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

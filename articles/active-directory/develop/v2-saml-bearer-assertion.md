@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity Platform & tok kontrolního výrazu SAML nosiče | Azure
-description: Naučte se, jak načíst data z Microsoft Graph bez vyzvání uživatele k zadání přihlašovacích údajů pomocí toku kontrolního výrazu SAML.
+title: Platforma identity společnosti Microsoft & tok kontrolního výrazu nosiče SAML | Azure
+description: Zjistěte, jak načíst data z microsoft graphu bez zobrazení výzvy uživateli k použití toku kontrolního výrazu nosiče SAML.
 services: active-directory
 documentationcenter: ''
 author: umeshbarapatre
@@ -18,82 +18,82 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76700205"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform a OAuth 2,0 – tok kontrolního výrazu SAML
-Tok kontrolního výrazu SAML 2,0 OAuth vám umožní požádat o přístupový token OAuth pomocí kontrolního výrazu SAML, když klient potřebuje použít stávající vztah důvěryhodnosti. Signatura použitá pro kontrolní výraz SAML zajišťuje ověřování autorizované aplikace. Kontrolní výraz SAML je token zabezpečení XML vydaný zprostředkovatelem identity a spotřebovaný poskytovatelem služeb. Poskytovatel služeb spoléhá na jeho obsah, aby identifikoval Předmět kontrolního výrazu pro účely související se zabezpečením.
+# <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Platforma identity Microsoft a OAuth 2.0 SAML tok kontrolního výrazu nosiče
+Tok kontrolního výrazu nosiče OAuth 2.0 SAML umožňuje požádat o přístupový token OAuth pomocí kontrolního výrazu SAML, když klient potřebuje použít existující vztah důvěryhodnosti. Podpis použitý na kontrolní výraz SAML poskytuje ověřování autorizované aplikace. Kontrolní výraz SAML je token zabezpečení XML vydaný poskytovatelem identity a spotřebovaný poskytovatelem služeb. Poskytovatel služeb spoléhá na svůj obsah při identifikaci předmětu kontrolního výrazu pro účely související se zabezpečením.
 
-Kontrolní výraz SAML je publikovaný do koncového bodu tokenu OAuth.  Koncový bod zpracuje kontrolní výraz a vydá přístupový token na základě předchozího schválení aplikace. Klient nevyžaduje nebo neuloží obnovovací token, ani není nutné předat tajný klíč klienta k koncovému bodu tokenu.
+Kontrolní výraz SAML je zaúčtován do koncového bodu tokenu OAuth.  Koncový bod zpracuje kontrolní výraz a vydá přístupový token na základě předchozího schválení aplikace. Klient není nutné mít nebo ukládat obnovovací token, ani je tajný klíč klienta musí být předány koncovému bodu tokenu.
 
-Tok kontrolního výrazu SAML je užitečný při načítání dat z rozhraní API Microsoft Graph (která podporují jenom delegovaná oprávnění) bez vyzvání uživatele k zadání přihlašovacích údajů. V tomto scénáři nefunguje udělení přihlašovacích údajů klienta, které je upřednostňováno pro procesy na pozadí.
+Tok kontrolního výrazu saml je užitečný při načítání dat z rozhraní API aplikace Microsoft Graph (která podporují pouze delegovaná oprávnění) bez zobrazení výzvy uživateli k získání pověření. V tomto scénáři udělení pověření klienta, který je upřednostňován pro procesy na pozadí, nefunguje.
 
-Pro aplikace, které umožňují interaktivní přihlášení založené na prohlížeči pro získání kontrolního výrazu SAML a pak chcete přidat přístup k rozhraní API Protected OAuth (například Microsoft Graph), můžete vytvořit žádost OAuth pro získání přístupového tokenu pro rozhraní API. Když je prohlížeč přesměrován do služby Azure AD za účelem ověření uživatele, prohlížeč zahájí relaci z přihlášení SAML a uživatel nebude muset zadávat své přihlašovací údaje.
+Pro aplikace, které interaktivní přihlášení založené na prohlížeči získat kontrolní výraz SAML a pak chcete přidat přístup k rozhraní API chráněné OAuth (například Microsoft Graph), můžete provést žádost OAuth získat přístupový token pro rozhraní API. Když je prohlížeč přesměrován na Azure AD k ověření uživatele, prohlížeč převezme relaci z přihlášení SAML a uživatel nemusí zadávat své přihlašovací údaje.
 
-Pro uživatele, kteří se ověřují pomocí zprostředkovatelů identity, jako je Active Directory Federation Services (AD FS) (AD FS), je pro Azure Active Directory taky podporovaný tok kontrolního výrazu OAuth.  Kontrolní výraz SAML získaný ze služby AD FS se dá použít v toku OAuth k ověření uživatele.
+Tok kontrolního výrazu OAuth SAML je také podporován pro uživatele, kteří ověřují s poskytovateli identit, jako je služba ADFS (Active Directory) federovaná do služby Azure Active Directory.  Kontrolní výraz SAML získaný z adfs lze použít v toku OAuth k ověření uživatele.
 
-![Tok OAuth](./media/v2-saml-bearer-assertion/1.png)
+![OAuth tok](./media/v2-saml-bearer-assertion/1.png)
 
-## <a name="call-graph-using-saml-bearer-assertion"></a>Graf volání pomocí kontrolního výrazu SAML nosiče
-Teď nám dejte vědět, jak můžeme skutečně načíst kontrolní výraz SAML programově. Tento přístup se testuje pomocí služby AD FS. To ale funguje u libovolného poskytovatele identity, který podporuje návrat programově kontrolního výrazu SAML. Základní proces je: Získání kontrolního výrazu SAML, získání přístupového tokenu a přístup k Microsoft Graph.
+## <a name="call-graph-using-saml-bearer-assertion"></a>Volání grafu pomocí kontrolního výrazu nositele SAML
+Nyní pojďme pochopit, jak můžeme skutečně přinést SAML tvrzení programově. Tento přístup je testován pomocí adfs. To však funguje s libovolným zprostředkovatelem identity, který podporuje vrácení výrazu SAML programově. Základní proces je: získat kontrolní výraz SAML, získat přístupový token a přístup k microsoft graphu.
 
 ### <a name="prerequisites"></a>Požadavky
 
-Navažte vztah důvěryhodnosti mezi autorizačním serverem/prostředím (Microsoft 365) a poskytovatelem identity nebo vystavitelem kontrolního výrazu SAML 2,0 (ADFS). Pokud chcete nakonfigurovat službu AD FS pro jednotné přihlašování a jako poskytovatele identity, můžete se na [Tento článek](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)podívat.
+Vytvořte vztah důvěryhodnosti mezi autorizačním serverem/prostředím (Microsoft 365) a poskytovatelem identity nebo vystavitelem kontrolního výrazu nosiče SAML 2.0 (ADFS). Chcete-li nakonfigurovat službu ADFS pro jednotné přihlašování a jako zprostředkovatele identity, můžete odkazovat na [tento článek](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/).
 
-Zaregistrovat aplikaci na [portálu](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade):
-1. Přihlaste se do okna [Registrace aplikace portálu](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) (Všimněte si, že používáme koncové body v 2.0 pro Graph API, a proto je potřeba zaregistrovat aplikaci na tomto portálu. V opačném případě jsme mohli použít registrace ve službě Azure Active Directory). 
-1. Vyberte **Nová registrace**.
+Zaregistrujte aplikaci na [portálu](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade):
+1. Přihlaste se k [portálu pro registraci aplikace](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) (Upozorňujeme, že pro rozhraní Graph API používáme koncové body v2.0 a proto je potřeba aplikaci zaregistrovat na tomto portálu. V opačném případě bychom mohli použít registrace ve službě Azure active directory). 
+1. Vyberte **možnost Nová registrace**.
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace: 
     1. **Název** – Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace.
     1. **Podporované typy účtu** – Vyberte účty, které chcete, aby vaše aplikace podporovala.
-    1. **Identifikátor URI pro přesměrování (volitelné)** – vyberte typ aplikace, kterou vytváříte, web nebo veřejný klient (Mobile & Desktop), a pak zadejte identifikátor URI přesměrování (nebo adresu URL odpovědi) pro vaši aplikaci.
+    1. **Přesměrování identifikátoru URI (volitelné)** – vyberte typ aplikace, kterou vytváříte, web nebo veřejného klienta (mobilní & plochy) a zadejte identifikátor URI přesměrování (nebo adresu URL odpovědi) pro vaši aplikaci.
     1. Až budete hotovi, vyberte **Zaregistrovat**.
 1. Poznamenejte si ID aplikace (klienta).
-1. V levém podokně vyberte **certifikáty & tajných**kódů. V části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** . Zkopírování nového tajného klíče klienta nebudete moct načíst, když necháte okno opustit.
-1. V levém podokně vyberte **oprávnění rozhraní API** a pak **přidejte oprávnění**. Vyberte **Microsoft Graph**, pak **delegovaná oprávnění**a pak vyberte **úkoly. číst** , protože hodláte používat Graph API Outlooku. 
+1. V levém podokně vyberte **certifikáty & tajných kódů**. V části Tajné **klíče klienta** klepněte na **položku Nový tajný klíč klienta.** Zkopírujte nový tajný klíč klienta, nebudete moci načíst při opuštění okna.
+1. V levém podokně vyberte **oprávnění rozhraní API** a potom **přidejte oprávnění**. Vyberte **Microsoft Graph**, pak **delegovaná oprávnění**a potom vyberte **Tasks.read,** protože máme v úmyslu použít rozhraní API aplikace Outlook Graph. 
 
-Nainstalovat [post](https://www.getpostman.com/), nástroj potřebný k otestování ukázkových požadavků.  Později můžete převést požadavky na kód.
+Nainstalujte [Pošťáka](https://www.getpostman.com/), nástroj potřebný k testování požadavků na vzorky.  Později můžete převést požadavky na kód.
 
-### <a name="get-the-saml-assertion-from-adfs"></a>Získání kontrolního výrazu SAML ze služby ADFS
-Vytvoření požadavku POST na koncový bod služby ADFS pomocí obálky SOAP pro načtení kontrolního výrazu SAML:
+### <a name="get-the-saml-assertion-from-adfs"></a>Získání kontrolního výrazu SAML z adfs
+Vytvořte požadavek POST do koncového bodu Služby ADFS pomocí obálky SOAP k načtení kontrolního výrazu SAML:
 
 ![Získat kontrolní výraz SAML](./media/v2-saml-bearer-assertion/2.png)
 
-Hodnoty hlaviček:
+Hodnoty záhlaví:
 
-![Hodnoty hlaviček](./media/v2-saml-bearer-assertion/3.png)
+![Hodnoty záhlaví](./media/v2-saml-bearer-assertion/3.png)
 
-Tělo žádosti ADFS:
+Tělo požadavku služby ADFS:
 
-![Tělo žádosti ADFS](./media/v2-saml-bearer-assertion/4.png)
+![Tělo požadavku služby ADFS](./media/v2-saml-bearer-assertion/4.png)
 
-Po úspěšném odeslání této žádosti byste měli obdržet kontrolní výraz SAML ze služby AD FS. Je požadována pouze data značky **SAML: assertion** , převeďte je na kódování Base64, aby bylo možné je použít v dalších požadavcích.
+Jakmile je tento požadavek úspěšně zaúčtován, měli byste obdržet kontrolní výraz SAML ze služby ADFS. Je vyžadována pouze data značky **SAML:Assertion,** převeďte je na kódování base64 pro použití v dalších požadavcích.
 
 ### <a name="get-the-oauth2-token-using-the-saml-assertion"></a>Získání tokenu OAuth2 pomocí kontrolního výrazu SAML 
-V tomto kroku načtete token OAuth2 pomocí odpovědi kontrolního výrazu ADFS.
+V tomto kroku načíst token OAuth2 pomocí kontrolní odpověď Služby ADFS.
 
-1. Vytvořte požadavek POST, jak je znázorněno níže s hodnotami hlaviček:
+1. Vytvořte požadavek POST, jak je znázorněno níže s hodnotami záhlaví:
 
-    ![POST – požadavek](./media/v2-saml-bearer-assertion/5.png)
-1. V těle žádosti nahraďte **client_id**, **client_secret**a **kontrolní výraz** (kontrolní výraz SAML kódovaný jako base64 získal předchozí krok):
+    ![Požadavek POST](./media/v2-saml-bearer-assertion/5.png)
+1. V textu požadavku nahraďte **client_id**, **client_secret**a **kontrolní výraz** (kontrolní výraz saml kódovaný na základě základny 64 získaný v předchozím kroku):
 
     ![Text požadavku](./media/v2-saml-bearer-assertion/6.png)
-1. Po úspěšné žádosti obdržíte přístupový token z Azure Active Directory.
+1. Na základě úspěšné žádosti obdržíte přístupový token ze služby Azure active directory.
 
-### <a name="get-the-data-with-the-oauth-token"></a>Získání dat pomocí tokenu OAuth
+### <a name="get-the-data-with-the-oauth-token"></a>Získání dat pomocí tokenu Oauth
 
-Po přijetí přístupového tokenu volejte rozhraní API grafu (v tomto příkladu úkoly Outlooku). 
+Po obdržení přístupového tokenu volejte grafová api (v tomto příkladu úkoly aplikace Outlook). 
 
-1. Vytvořte žádost o získání pomocí přístupového tokenu načteného v předchozím kroku:
+1. Vytvořte požadavek GET s přístupovým tokenem načteným v předchozím kroku:
 
-    ![ZÍSKAT žádost](./media/v2-saml-bearer-assertion/7.png)
+    ![Požadavek GET](./media/v2-saml-bearer-assertion/7.png)
 
-1. Po úspěšné žádosti se zobrazí odpověď JSON.
+1. Na základě úspěšné žádosti obdržíte odpověď JSON.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si o různých [tocích ověřování a scénářích aplikací](authentication-flows-app-scenarios.md).
+Informace o různých [tocích ověřování a scénářích aplikací](authentication-flows-app-scenarios.md).

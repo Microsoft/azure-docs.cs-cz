@@ -1,6 +1,6 @@
 ---
-title: Rozšíření skriptů U-SQL pomocí Pythonu v Azure Data Lake Analytics
-description: Zjistěte, jak spustit kód v Pythonu v skriptů U-SQL pomocí Azure Data Lake Analytics
+title: Rozšíření skriptů U-SQL s Pythonem v Azure Data Lake Analytics
+description: Přečtěte si, jak spustit kód Pythonu ve skriptech U-SQL pomocí Azure Data Lake Analytics
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,30 +10,30 @@ ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60813400"
 ---
-# <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Rozšíření skriptů U-SQL pomocí kódu v Pythonu v Azure Data Lake Analytics
+# <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Rozšíření skriptů U-SQL pomocí kódu Pythonu v Azure Data Lake Analytics
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že rozšíření Python jsou nainstalovány ve vašem účtu Azure Data Lake Analytics.
+Než začnete, ujistěte se, že rozšíření Pythonu jsou nainstalovaná ve vašem účtu Azure Data Lake Analytics.
 
-* Na webu Azure Portal přejděte do účtu Data Lake Analytics
-* V nabídce vlevo v části **ZAČÍNÁME** klikněte na **ukázkové skripty**
-* Klikněte na tlačítko **nainstalovat rozšíření U-SQL** pak **OK**
+* Přejděte k účtu Data Lake Analytics na webu Azure Portal
+* V levém menu klikněte v části **ZAČÍNÁME** na **Ukázkové skripty**
+* Klikněte na **Nainstalovat rozšíření U-SQL a** pak **OK**
 
 ## <a name="overview"></a>Přehled 
 
-Rozšíření Pythonu pro U-SQL umožňují vývojářům provádět masivně paralelní provádění kódu v Pythonu. Následující příklad ukazuje základní kroky:
+Rozšíření Pythonu pro U-SQL umožňují vývojářům provádět masivně paralelní spuštění kódu Pythonu. Následující příklad ilustruje základní kroky:
 
-* Použití `REFERENCE ASSEMBLY` příkaz povolení rozšíření Python pro skript U-SQL
-* Použití `REDUCE` operace rozdělit vstupní data na klíč
-* Rozšíření Pythonu pro U-SQL zahrnují integrované redukční funkci (`Extension.Python.Reducer`), která spustí kód v Pythonu na každý vrchol přiřazené redukční funkci
-* Skript U-SQL obsahuje vložený kód Pythonu, který má funkci s názvem `usqlml_main` , který přijímá pandas DataFrame jako vstup a vrátí pandas DataFrame jako výstup.
+* Použití `REFERENCE ASSEMBLY` příkazu k povolení rozšíření Pythonu pro U-SQL Script
+* Použití `REDUCE` operace k rozdělení vstupních dat na klíč
+* Rozšíření Pythonu pro U-SQL obsahují vestavěný reduktor (`Extension.Python.Reducer`), který spouští kód Pythonu na každém vrcholu přiřazeném reduktoru
+* Skript U-SQL obsahuje vložený kód Pythonu, `usqlml_main` který má funkci nazvanou, která přijímá pandas DataFrame jako vstup a vrací pandas DataFrame jako výstup.
 
 --
 
@@ -68,40 +68,40 @@ Rozšíření Pythonu pro U-SQL umožňují vývojářům provádět masivně pa
         TO "/tweetmentions.csv"
         USING Outputters.Csv();
 
-## <a name="how-python-integrates-with-u-sql"></a>Jak se integruje Python pomocí U-SQL
+## <a name="how-python-integrates-with-u-sql"></a>Jak se Python integruje s U-SQL
 
 ### <a name="datatypes"></a>Datové typy
 
-* Jako jsou převést řetězcové a číselné sloupce v U-SQL-mezi Pandas a jazykem U-SQL
-* Hodnoty Null U-SQL se převedou do a z Pandas `NA` hodnoty
+* Řetězce a číselné sloupce z U-SQL jsou převedeny jako -je mezi Pandas a U-SQL
+* U-SQL Nulls jsou převedeny na `NA` a z Pandy hodnoty
 
 ### <a name="schemas"></a>Schémata
 
-* Index vektory v Pandas nejsou podporovány v U-SQL. Všechny snímky vstupní data v Pythonu – funkce mají vždy číselný index od 0 do počtu řádků minus 1 64-bit. 
-* U-SQL datové sady nemůže mít duplicitní názvy sloupců
-* Názvy sloupců datových sad U-SQL, které nejsou řetězce. 
+* Index vektory v Pandy nejsou podporovány v U-SQL. Všechny rámce vstupních dat ve funkci Pythonu mají vždy 64bitový číselný index od 0 do počtu řádků mínus 1. 
+* Datové sady U-SQL nemohou obsahovat duplicitní názvy sloupců.
+* Názvy sloupců datových sad U-SQL, které nejsou řetězci. 
 
-### <a name="python-versions"></a>Python Versions
-Je podporován pouze Python 3.5.1 (zkompilován pro Windows). 
+### <a name="python-versions"></a>Verze Pythonu
+Podporován je pouze Python 3.5.1 (kompilovaný pro Windows). 
 
 ### <a name="standard-python-modules"></a>Standardní moduly Pythonu
-Jsou zahrnuty všechny standardní moduly Pythonu.
+Součástí balení jsou všechny standardní moduly Pythonu.
 
 ### <a name="additional-python-modules"></a>Další moduly Pythonu
-Kromě standardní knihovny jazyka Python jsou zahrnuty několik běžně používaných python knihoven:
+Kromě standardních knihoven Pythonu je zahrnuto několik běžně používaných knihoven pythonu:
 
     pandas
     numpy
     numexpr
 
-### <a name="exception-messages"></a>Zprávy o výjimkách
-V současné době se výjimka v kódu Pythonu zobrazí jako obecný vrcholu selhání. Chybové zprávy úloh U-SQL v budoucnu, se zobrazí zpráva o výjimce Python.
+### <a name="exception-messages"></a>Zprávy o výjimky
+V současné době se výjimka v kódu Pythonu zobrazí jako obecné selhání vrcholu. V budoucnu se chybové zprávy U-SQL Job zobrazí zpráva o výjimce Pythonu.
 
-### <a name="input-and-output-size-limitations"></a>Vstup a výstup omezení velikosti
-Každý vrchol má omezené množství paměti přidělené k němu. Toto omezení je v současné době 6 GB pro jednotkách analýzy. Protože vstupních a výstupních datových rámců musí existovat v paměti v kódu Pythonu, celková velikost pro vstup a výstup nesmí přesáhnout 6 GB.
+### <a name="input-and-output-size-limitations"></a>Omezení velikosti vstupů a výstupů
+Ke každému vrcholu je přiřazeno omezené množství paměti. V současné době je tento limit 6 GB pro AU. Vzhledem k tomu, že vstupní a výstupní datové rámce musí existovat v paměti v kódu Pythonu, celková velikost vstupu a výstupu nesmí překročit 6 GB.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [Pomocí funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)
-* [Pomocí nástrojů Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
+* [Použití funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)
+* [Použití nástrojů Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)

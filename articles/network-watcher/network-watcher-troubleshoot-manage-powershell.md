@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží s bránou virtuální sítě Azure a připojeními – Azure PowerShell
+title: Poradce při potížích s bránou a připojením virtuální sítě Azure – Azure PowerShell
 titleSuffix: Azure Network Watcher
-description: Tato stránka vysvětluje, jak používat rutinu PowerShellu pro řešení potíží s Network Watcher Azure
+description: Tato stránka vysvětluje, jak používat rutinu Azure Network Watcher pro řešení potíží s prostředím PowerShell
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,54 +13,54 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 0723ddc9b0e2f15d5c8e51c96d51f58f1313493a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673656"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher PowerShellu
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Poradce při potížích s bránou virtuální sítě a připojenípomocí prostředí PowerShell Azure Network Watcher
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](diagnose-communication-problem-between-networks.md)
+> - [Portál](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
-> - [REST API](network-watcher-troubleshoot-manage-rest.md)
+> - [ROZHRANÍ API PRO ODPOČINEK](network-watcher-troubleshoot-manage-rest.md)
 
-Network Watcher poskytuje řadu možností, které se týkají porozumění síťovým prostředkům v Azure. Jednou z těchto funkcí je řešení potíží s prostředky. Řešení potíží s prostředky je možné volat prostřednictvím portálu, PowerShellu, rozhraní příkazového řádku nebo REST API. Při volání Network Watcher zkontroluje stav Virtual Network brány nebo připojení a vrátí své závěry.
+Network Watcher poskytuje mnoho funkcí, pokud jde o pochopení vašich síťových prostředků v Azure. Jednou z těchto možností je řešení potíží s prostředky. Řešení potíží s prostředky lze volat prostřednictvím portálu, prostředí PowerShell, ROZHRANÍ API nebo rozhraní REST API. Při volání, Network Watcher zkontroluje stav brány virtuální sítě nebo připojení a vrátí jeho zjištění.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
+Tento scénář předpokládá, že jste již postupovali podle kroků v [části Vytvoření sledovacího programu sítě](network-watcher-create.md) k vytvoření sledovacího programu sítě.
 
-Seznam podporovaných typů bran najdete v části [podporované typy bran](network-watcher-troubleshoot-overview.md#supported-gateway-types).
+Seznam podporovaných typů bran naleznete na stránce [Podporované typy bran](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Přehled
 
-Řešení potíží s prostředky poskytuje možnost řešit problémy, které vznikají Virtual Network Branch a připojeních. Při odstraňování potíží s prostředky se protokoly dotazují a kontrolují. Po dokončení kontroly se vrátí výsledky. Požadavky na řešení potíží s prostředky jsou dlouho běžící požadavky, což může trvat několik minut, než se výsledek vrátí. Protokoly z řešení potíží se ukládají do kontejneru v účtu úložiště, který je určený.
+Řešení potíží s prostředky poskytuje možnost řešení problémů, které vznikají s bránami virtuální sítě a připojení. Při požadavku na řešení potíží s prostředky protokoly jsou dotazovány a kontrolovány. Po dokončení kontroly jsou vráceny výsledky. Požadavky na řešení potíží s prostředky jsou dlouho běžící požadavky, které může trvat několik minut vrátit výsledek. Protokoly z řešení potíží jsou uloženy v kontejneru na účet úložiště, který je zadán.
 
-## <a name="retrieve-network-watcher"></a>Načíst Network Watcher
+## <a name="retrieve-network-watcher"></a>Načíst sledovací modul sítě
 
-Prvním krokem je načtení instance Network Watcher. Proměnná `$networkWatcher` je předána rutině `Start-AzNetworkWatcherResourceTroubleshooting` v kroku 4.
+Prvním krokem je načíst instanci Network Watcher. Proměnná `$networkWatcher` je předána rutině `Start-AzNetworkWatcherResourceTroubleshooting` v kroku 4.
 
 ```powershell
 $networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
 ```
 
-## <a name="retrieve-a-virtual-network-gateway-connection"></a>Načtení připojení Virtual Network brány
+## <a name="retrieve-a-virtual-network-gateway-connection"></a>Načtení připojení brány virtuální sítě
 
-V tomto příkladu Probíhá odstraňování potíží s prostředky v připojení. Můžete ji také předat Virtual Network bránu.
+V tomto příkladu je v připojení spuštěno řešení potíží s prostředky. Můžete také předat virtuální síť brány.
 
 ```powershell
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Řešení potíží s prostředky vrátí data o stavu prostředku, ale také uloží protokoly do účtu úložiště, který se má zkontrolovat. V tomto kroku vytvoříme účet úložiště, pokud už existuje existující účet úložiště, který můžete použít.
+Řešení potíží s prostředky vrátí data o stavu prostředku, také uloží protokoly do účtu úložiště, který má být zkontrolován. V tomto kroku vytvoříme účet úložiště, pokud existuje existující účet úložiště, můžete ho použít.
 
 ```powershell
 $sa = New-AzStorageAccount -Name "contosoexamplesa" -SKU "Standard_LRS" -ResourceGroupName "testrg" -Location "WestCentralUS"
@@ -68,25 +68,25 @@ Set-AzCurrentStorageAccount -ResourceGroupName $sa.ResourceGroupName -Name $sa.S
 $sc = New-AzStorageContainer -Name logs
 ```
 
-## <a name="run-network-watcher-resource-troubleshooting"></a>Řešení potíží se spuštěním Network Watcher prostředků
+## <a name="run-network-watcher-resource-troubleshooting"></a>Spuštění řešení potíží s prostředky sledování sítě
 
-Problémy s prostředky pomocí rutiny `Start-AzNetworkWatcherResourceTroubleshooting`. Rutinu předáte objekt Network Watcher, ID připojení nebo Virtual Network bránu, ID účtu úložiště a cestu k uložení výsledků.
+Řešení potíží s `Start-AzNetworkWatcherResourceTroubleshooting` prostředky s rutinou. Přejdeme rutinu objekt uchvátí sítě, ID připojení nebo virtuální síťové brány, ID účtu úložiště a cestu k uložení výsledků.
 
 > [!NOTE]
-> Rutina `Start-AzNetworkWatcherResourceTroubleshooting` je dlouho spuštěná a dokončení může trvat několik minut.
+> Rutina `Start-AzNetworkWatcherResourceTroubleshooting` je dlouhá a může trvat několik minut.
 
 ```powershell
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"
 ```
 
-Po spuštění rutiny Network Watcher zkontroluje prostředek a ověří stav. Vrátí výsledky do prostředí a uloží protokoly výsledků v zadaném účtu úložiště.
+Po spuštění rutiny, Network Watcher zkontroluje prostředek k ověření stavu. Vrátí výsledky do prostředí a uloží protokoly výsledků v zadaném účtu úložiště.
 
-## <a name="understanding-the-results"></a>Porozumění výsledkům
+## <a name="understanding-the-results"></a>Pochopení výsledků
 
-Text akce poskytuje obecné pokyny k vyřešení tohoto problému. Pokud je možné provést akci pro daný problém, je k dispozici odkaz s dalšími pokyny. V případě, že nejsou k dispozici žádné další doprovodné materiály, odpověď poskytne adresu URL pro otevření případu podpory.  Další informace o vlastnostech odpovědi a o tom, co je zahrnuto, najdete v tématu [Network Watcher řešení potíží – přehled](network-watcher-troubleshoot-overview.md)
+Text akce obsahuje obecné pokyny, jak problém vyřešit. Pokud lze pro tento problém přijmout akci, je k dispozici odkaz s dalšími pokyny. V případě, že neexistuje žádné další pokyny, odpověď poskytuje adresu URL otevřít případ podpory.  Další informace o vlastnostech odpovědi a o tom, co je zahrnuto, naleznete v [přehledu řešení potíží s sledováním sítě.](network-watcher-troubleshoot-overview.md)
 
-Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu [Začínáme s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Průzkumník služby Storage se dá použít jiný nástroj. Další informace o Průzkumník služby Storage najdete na následujícím odkazu: [Průzkumník služby Storage](https://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů azure storage najdete v článku [Začínáme s úložištěm objektů blob Azure pomocí rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Dalším nástrojem, který lze použít, je Průzkumník úložiště. Další informace o Průzkumníku úložiště naleznete zde na následujícím odkazu: [Průzkumník úložiště](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se změnila nastavení, která zastavují připojení k síti VPN, přečtěte si téma [Správa skupin zabezpečení](../virtual-network/manage-network-security-group.md) sítě a sledujte skupinu zabezpečení sítě a pravidla zabezpečení, která mohou být v dané otázce.
+Pokud byla změněna nastavení, která zastaví připojení k síti VPN, [přečtěte si](../virtual-network/manage-network-security-group.md) informace o sledování skupiny zabezpečení sítě a pravidel zabezpečení, která se mohou dít, v tématu Správa skupin zabezpečení sítě.

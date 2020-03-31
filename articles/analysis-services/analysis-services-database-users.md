@@ -1,6 +1,6 @@
 ---
-title: Správa databázových rolí a uživatelů v Azure Analysis Services | Microsoft Docs
-description: Naučte se spravovat databázové role a uživatele na Analysis Servicesm serveru v Azure.
+title: Správa databázových rolí a uživatelů ve službě Azure Analysis Services | Dokumenty společnosti Microsoft
+description: Zjistěte, jak spravovat databázové role a uživatele na serveru Analysis Services v Azure.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,88 +8,88 @@ ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273702"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
 
-Na úrovni databáze modelu musí všichni uživatelé patřit do role. Role definují uživatele s konkrétními oprávněními pro modelovou databázi. Každý uživatel nebo skupina zabezpečení přidaná do role musí mít účet v tenantovi Azure AD ve stejném předplatném jako server. 
+Na úrovni databáze modelu musí všichni uživatelé patřit do role. Role definují uživatele s konkrétními oprávněními pro databázi modelu. Každý uživatel nebo skupina zabezpečení přidaná do role musí mít účet v tenantovi Azure AD ve stejném předplatném jako server. 
 
-Způsob, jakým definujete role, se liší v závislosti na použitém nástroji, ale účinek je stejný.
+Způsob definování rolí se liší v závislosti na nástroji, který používáte, ale efekt je stejný.
 
 Oprávnění role zahrnují:
-*  **Správce** – uživatelé mají úplná oprávnění pro databázi. Databázové role s oprávněními správce se liší od správců serverů.
-*  **Proces** – uživatelé se mohou k databázi připojit a provádět operace procesu a analyzovat data databáze modelu.
-*  **Čtení** – uživatelé můžou použít klientskou aplikaci pro připojení k datům databáze modelu a k jejich analýze.
+*  **Správce** – uživatelé mají úplná oprávnění k databázi. Role databáze s oprávněními správce se liší od úloh správců serveru.
+*  **Proces** – uživatelé se mohou připojit k databázi a provádět je a provádět je a analyzovat data databáze modelu.
+*  **Čtení** – uživatelé mohou používat klientskou aplikaci pro připojení a analýzu dat databáze modelu.
 
-Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte uživatele nebo skupiny k těmto rolím pomocí Správce rolí v aplikaci Visual Studio s Analysis Services projekty. Při nasazení na server můžete k přidávání a odebírání rolí a uživatelských členů použít rutiny SQL Server Management Studio (SSMS), [Analysis Services rutiny prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo TMSL ( [Tabular model Scripting Language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) ).
+Při vytváření projektu tabulkového modelu vytvoříte role a přidáte uživatele nebo skupiny do těchto rolí pomocí Správce rolí v sadě Visual Studio s projekty analysis services. Při nasazení na server použijete k přidání nebo odebrání rolí a členů uživatelů rutiny Sql Server Management Studio (SSMS), [rutiny Prostředí PowerShell služby Analysis Services](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo [jazyk tabulkového skriptování modelu](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL).
 
-**Skupiny zabezpečení** musí být [povoleny poštou](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) s vlastností `MailEnabled` nastavenou na hodnotu `True`. Při zadání e-mailové adresy Group by použijte `obj:groupid@tenantid`.
+**Skupiny zabezpečení** musí mít `MailEnabled` [povolenou poštu](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) s vlastností nastavenou na `True`. Při zadávání skupiny podle `obj:groupid@tenantid`e-mailové adresy použijte .
 
 
-## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Přidání nebo Správa rolí a uživatelů v aplikaci Visual Studio  
+## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Přidání nebo správa rolí a uživatelů v sadě Visual Studio  
   
-1.  V **Průzkumníku tabulkových modelů**klikněte pravým tlačítkem na **role**.  
+1.  V **Průzkumníku tabulkových modelů**klepněte pravým tlačítkem myši na **položku Role**.  
   
-2.  Ve **Správci rolí** klikněte na **Nový**.  
+2.  Ve **Správci rolí**klepněte na tlačítko **Nový**.  
   
 3.  Zadejte název role.  
   
-     Ve výchozím nastavení je název výchozí role pro každou novou roli přírůstkově očíslovaný. Doporučuje se zadat název, který jednoznačně identifikuje typ člena, například finanční manažery nebo specialisty na lidské zdroje.  
+     Ve výchozím nastavení je název výchozí role postupně očíslovaný pro každou novou roli. Doporučujeme zadat název, který jasně identifikuje typ člena, například finanční manažeři nebo specialisté na lidské zdroje.  
   
 4.  Vyberte jedno z následujících oprávnění:  
   
     |Oprávnění|Popis|  
     |----------------|-----------------|  
-    |**NTato**|Členové nemohou číst ani upravovat schéma modelu a nemohou zadávat dotazy na data.|  
-    |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
-    |**Čtení a zpracování**|Členové mohou zadávat dotazy na data (na základě filtrů na úrovni řádků) a spouštět proces a zpracovávat všechny operace, ale nemohou upravovat schéma modelu.|  
-    |**Přihlášení**|Členové mohou spustit proces a zpracovat všechny operace. Nelze číst ani upravovat schéma modelu a nelze zadávat dotazy na data.|  
+    |**Žádné**|Členové nemohou číst nebo upravovat schéma modelu a nemohou zadávat dotazy na data.|  
+    |**Čtení**|Členové mohou dotazovat data (na základě filtrů řádků), ale nemohou změnit schéma modelu.|  
+    |**Čtení a zpracování**|Členové mohou dotazovat data (na základě filtrů na úrovni řádků) a spustit operace Proces a Všechny, ale nemohou změnit schéma modelu.|  
+    |**Proces**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze číst ani upravovat a nelze zadávat dotazy na data.|  
     |**Správce**|Členové mohou upravit schéma modelu a dotazovat se na všechna data.|   
   
-5.  Pokud role, kterou vytváříte, má oprávnění ke čtení nebo čtení a zpracování, můžete přidat filtry řádků pomocí vzorce DAX. Klikněte na kartu **filtry řádků** a pak vyberte tabulku, klikněte na pole **filtru DAX** a pak zadejte vzorec DAX.
+5.  Pokud má vytvářená role oprávnění Číst nebo Číst a zpracovat, můžete přidat filtry řádků pomocí vzorce jazyka DAX. Klikněte na kartu **Filtry řádků,** vyberte tabulku, potom klikněte na pole **Filtr jazyka DAX** a zadejte vzorec jazyka DAX.
   
-6.  Klikněte na **členy** > **Přidat externí**.  
+6.  Klikněte na **Členové** > **přidat externí**.  
   
-8.  V rámci **Přidat externí člen**zadejte uživatele nebo skupiny ve vašem TENANTOVI Azure AD podle e-mailové adresy. Po kliknutí na tlačítko OK a zavření správce rolí se role a členové role zobrazí v Průzkumníkovi tabulkových modelů. 
+8.  Do **části Přidat externího člena**zadejte uživatele nebo skupiny do služby Azure AD klienta podle e-mailové adresy. Po klepnutí na tlačítko OK a zavření Správce rolí se role a členové rolí zobrazí v Průzkumníku tabulkových modelů. 
  
      ![Role a uživatelé v Průzkumníku tabulkových modelů](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
 
-9. Nasaďte na server Azure Analysis Services.
+9. Nasaďte na server Služby Azure Analysis Services.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Přidání nebo Správa rolí a uživatelů v SSMS
+## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Přidání nebo správa rolí a uživatelů v SSMS
 
-Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být připojeni k serveru jako správce serveru nebo již v roli databáze s oprávněními správce.
+Chcete-li přidat role a uživatele do nasazené databáze modelu, musíte být připojeni k serveru jako správce serveru nebo již v databázové roli s oprávněními správce.
 
-1. V části Object Exporer klikněte pravým tlačítkem na **role** > **nové role**.
+1. V objektu Exporer klikněte pravým tlačítkem myši na **Role** > **Nová role**.
 
-2. V nástroji **vytvořit roli**zadejte název a popis role.
+2. V **části Vytvořit roli**zadejte název a popis role.
 
 3. Vyberte oprávnění.
 
    |Oprávnění|Popis|  
    |----------------|-----------------|  
-   |**Úplné řízení (správce)**|Členové můžou upravovat schéma modelu, proces a můžou se dotazovat na všechna data.| 
-   |**Zpracovat databázi**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze upravovat a nelze zadávat dotazy na data.|  
-   |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
+   |**Úplné řízení (správce)**|Členové mohou upravit schéma modelu, proces a může dotazovat všechna data.| 
+   |**Process database**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze změnit a nelze zadat dotaz na data.|  
+   |**Čtení**|Členové mohou dotazovat data (na základě filtrů řádků), ale nemohou změnit schéma modelu.|  
   
-4. Klikněte na **členství**a pak zadejte uživatele nebo skupinu do svého TENANTA Azure AD podle e-mailové adresy.
+4. Klikněte na **Členství**a zadejte uživatele nebo skupinu do služby Azure AD klienta podle e-mailové adresy.
 
      ![Přidání uživatele](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. Pokud má role, kterou vytváříte, oprávnění ke čtení, můžete přidat filtry řádků pomocí vzorce DAX. Klikněte na **filtry řádků**, vyberte tabulku a potom do pole **Filtr DAX** zadejte vzorec DAX. 
+5. Pokud má vytvářená role oprávnění ke čtení, můžete přidat filtry řádků pomocí vzorce jazyka DAX. Klikněte na **Filtry řádků**, vyberte tabulku a do pole **Filtr jazyka DAX** zadejte vzorec jazyka DAX. 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Přidání rolí a uživatelů pomocí skriptu TMSL
 
-Skript TMSL můžete spustit v okně XMLA v SSMS nebo pomocí PowerShellu. Použijte příkaz [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) a objekt [role](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) .
+Skript TMSL můžete spustit v okně XMLA v ssms nebo pomocí prostředí PowerShell. Použijte příkaz [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) a objekt [Roles.](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl)
 
 **Ukázkový skript TMSL**
 
-V této ukázce je externí uživatel B2B a skupina přidaný do role analytika s oprávněním ke čtení pro databázi SalesBI. Externí uživatel i skupina musí být ve stejném tenantovi Azure AD.
+V této ukázce b2B externí uživatel a skupina jsou přidány do role Analytik s oprávněními ke čtení pro salesbi databáze. Externí uživatel i skupina musí být ve stejném tenantovi Azure AD.
 
 ```
 {
@@ -117,39 +117,39 @@ V této ukázce je externí uživatel B2B a skupina přidaný do role analytika 
 }
 ```
 
-## <a name="to-add-roles-and-users-by-using-powershell"></a>Přidání rolí a uživatelů pomocí prostředí PowerShell
+## <a name="to-add-roles-and-users-by-using-powershell"></a>Přidání rolí a uživatelů pomocí PowerShellu
 
-Modul [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) poskytuje rutiny pro správu databáze specifické pro úlohu a rutinu Invoke ASCmd pro obecné účely, která přijímá dotaz nebo skript TMSL (Tabular model Scripting Language). Následující rutiny se používají ke správě databázových rolí a uživatelů.
+Modul [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) poskytuje rutiny správy databáze specifické pro úlohy a rutinu pro obecné účely Invoke-ASCmd, která přijímá dotaz nebo skript tabulkového jazyka skriptování modelu (TMSL). Následující rutiny se používají pro správu databázových rolí a uživatelů.
   
 |Rutina|Popis|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Přidejte člena do databázové role.| 
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Odebere člena z databázové role.|   
-|[Invoke – ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Spusťte skript TMSL.|
+|[Člen role doplňku](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Přidejte člena do role databáze.| 
+|[Odebrat člen role](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Odeberte člena z databázové role.|   
+|[Vyvolat-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Spusťte skript TMSL.|
 
 ## <a name="row-filters"></a>Filtry řádků  
 
-Filtry řádků definují, na které řádky v tabulce mohou být dotazováni členové určité role. Filtry řádků jsou definovány pro každou tabulku v modelu pomocí vzorců DAX.  
+Filtry řádků definují, které řádky v tabulce mohou být dotazovány členy určité role. Filtry řádků jsou definovány pro každou tabulku v modelu pomocí vzorců jazyka DAX.  
   
-Filtry řádků lze definovat pouze pro role s oprávněním pro čtení a čtení a zpracování. Ve výchozím nastavení platí, že pokud pro konkrétní tabulku není definován filtr řádků, mohou členové zadat dotaz na všechny řádky v tabulce, pokud není křížové filtrování použito z jiné tabulky.
+Filtry řádků lze definovat pouze pro role s oprávněními Číst a číst a zpracovat. Ve výchozím nastavení, pokud filtr řádků není definován pro určitou tabulku, mohou členové dotazovat všechny řádky v tabulce, pokud křížové filtrování neplatí z jiné tabulky.
   
- Filtry řádků vyžadují vzorec DAX, který se musí vyhodnotit na hodnotu TRUE nebo FALSE, aby bylo možné definovat řádky, na které mohou být dotazováni členové příslušné role. Nelze zadat dotaz na řádky, které nejsou součástí vzorce DAX. Například tabulka Zákazníci s následujícím výrazem filtry řádků, *= zákazníci [Země] = "USA"* , členové prodejní role mohou vidět pouze zákazníky v USA.  
+ Filtry řádků vyžadují vzorec jazyka DAX, který musí být vyhodnocen na hodnotu PRAVDA/NEPRAVDA, aby bylo možné definovat řádky, na které mohou být dotazováni členové dané konkrétní role. Řádky, které nejsou zahrnuty ve vzorci jazyka DAX, nelze dotazovat. Například tabulka Zákazníci s následujícím výrazem filtrů řádků= *Zákazníci [Země] = "USA"*, členové role Prodej mohou zobrazit pouze zákazníky v USA.  
   
-Filtry řádků se použijí na zadané řádky a související řádky. Pokud má tabulka víc relací, aplikují filtry zabezpečení na aktivní relaci. Filtry řádků se protínají s ostatními filers řádků definovanými pro související tabulky, například:  
+Filtry řádků platí pro zadané řádky a související řádky. Pokud má tabulka více relací, filtry aplikují zabezpečení na aktivní relaci. Filtry řádků jsou protnuty s ostatními filery řádků definovanými pro související tabulky, například:  
   
-|Tabulka|Výraz DAX|  
+|Table|Výraz JAZYKA DAX|  
 |-----------|--------------------|  
-|Oblast|= Region [Země] = "USA"|  
-|ProductCategory|= ProductCategory [název] = "jízdní kola"|  
-|Transakce|= Transakcí [rok] = 2016|  
+|Region (Oblast)|=Region[Země]="USA"|  
+|ProductCategory|=ProductCategory[Název]="Jízdní kola"|  
+|Transakce|=Transakce[Rok]=2016|  
   
- Čistý efekt se může dotazovat na řádky dat, kde se zákazník nachází v USA, kategorie produktu je jízdní kola a rok je 2016. Uživatelé nemohou zadávat dotazy na transakce mimo USA, transakce, které nejsou jízdní kola, ani transakce, které nejsou v 2016, pokud nejsou členy jiné role, která uděluje tato oprávnění.
+ Čistým efektem je, že členové mohou dotazovat řádky dat, kde se zákazník nachází v USA, kategorie produktu jsou jízdní kola a rok je 2016. Uživatelé nemohou dotazovat transakce mimo USA, transakce, které nejsou jízdníkola nebo transakce nejsou v roce 2016, pokud nejsou členem jiné role, která uděluje tato oprávnění.
   
- K odepření přístupu ke všem řádkům celé tabulky můžete použít filtr, *= false ()* .
+ Pomocí filtru *=FALSE()* můžete odepřít přístup ke všem řádkům pro celou tabulku.
 
 ## <a name="next-steps"></a>Další kroky
 
   [Správa správců serveru](analysis-services-server-admins.md)   
-  [Správa Azure Analysis Services s využitím PowerShellu](analysis-services-powershell.md)  
-  [Referenční dokumentace jazyka TMSL (Tabular model Scripting Language)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
+  [Správa služby Azure Analysis Services pomocí PowerShellu](analysis-services-powershell.md)  
+  [Referenční příručka pro skriptovací jazyk tabulkového modelu (TMSL)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
 

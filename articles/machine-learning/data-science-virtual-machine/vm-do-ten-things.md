@@ -1,7 +1,7 @@
 ---
-title: Prozkoumat data a model ve Windows
+title: Prozkoumání dat a modelu ve Windows
 titleSuffix: Azure Data Science Virtual Machine
-description: Provádění úloh zkoumání a modelování dat na Data Science Virtual Machine Windows.
+description: Provádějte úlohy průzkumu dat a modelování na virtuálním počítači Windows Data Science.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,86 +9,86 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283625"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294495"
 ---
-# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
+# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které můžete dělat na virtuálním počítači s datovými vědami windows
 
-Windows Data Science Virtual Machine (DSVM) je výkonné vývojové prostředí pro datové vědy, kde můžete provádět úlohy zkoumání a modelování dat. Prostředí je už sestavené a obsahuje několik oblíbených nástrojů pro analýzu dat, které usnadňují práci s analýzou pro místní, cloudová nebo hybridní nasazení. 
+Windows Data Science Virtual Machine (DSVM) je výkonné vývojové prostředí datové vědy, kde můžete provádět úlohy průzkumu dat a modelování. Prostředí je již vytvořeno a dodáváno s několika oblíbenými nástroji pro analýzu dat, které usnadňují zahájení analýzy pro místní, cloudová nebo hybridní nasazení. 
 
-DSVM úzce spolupracuje se službami Azure. Může číst a zpracovávat data, která jsou už uložená v Azure, v Azure SQL Data Warehouse, Azure Data Lake, Azure Storage nebo Azure Cosmos DB. Může také využít jiné analytické nástroje, například Azure Machine Learning a Azure Data Factory.
+DSVM úzce spolupracuje se službami Azure. Umí číst a zpracovávat data, která už jsou uložená v Azure, azure SQL Data Warehouse, Azure Data Lake, Azure Storage nebo Azure Cosmos DB. Může také využívat další analytické nástroje, jako je Azure Machine Learning a Azure Data Factory.
 
-V tomto článku se dozvíte, jak používat DSVM k provádění úkolů s datovou vědy a k interakci s ostatními službami Azure. Tady jsou některé věci, které můžete provést jak na datové VĚDY:
+V tomto článku se dozvíte, jak používat DSVM k provádění úloh datové vědy a interakci s jinými službami Azure. Zde jsou některé z věcí, které můžete dělat na DSVM:
 
-- Prozkoumejte data a vývoj modelů místně na DSVM pomocí Microsoft Machine Learning Server a Pythonu.
-- Pomocí poznámkového bloku Jupyter můžete experimentovat s daty v prohlížeči pomocí Python 2, Python 3 a Microsoft R. (Microsoft R je podniková verze R, která je připravená na výkon.)
-- Nasaďte modely vytvořené prostřednictvím R a Pythonu na Azure Machine Learning, takže klientské aplikace budou mít k vašim modelům přístup pomocí jednoduchého rozhraní webové služby.
-- Prostředky Azure spravujte pomocí Azure Portal nebo PowerShellu.
-- Rozšiřte prostor úložiště a sdílejte velké datové sady/kód v celém týmu tím, že vytvoříte sdílenou složku souborů Azure jako připojenou jednotku na DSVM.
-- Sdílejte kód s týmem pomocí GitHubu. Přístup k úložišti pomocí předem nainstalovaných klientů git: Git bash a git.
-- Přístup ke službám Azure Data and Analytics, jako je Azure Blob Storage, Azure Data Lake, Azure HDInsight (Hadoop), Azure Cosmos DB, Azure SQL Data Warehouse a Azure SQL Database.
-- Sestavování sestav a řídicích panelů pomocí Power BI Desktop instance, která je předem nainstalovaná na DSVM a jejich nasazení v cloudu.
-- Dynamicky Škálujte své DSVM tak, aby vyhovovaly potřebám vašeho projektu.
-- Nainstalujte do svého virtuálního počítače Další nástroje.   
+- Prozkoumejte data a vyvíjejte modely místně na DSVM pomocí Microsoft Machine Learning Server a Python.
+- Pomocí poznámkového bloku Jupyter můžete experimentovat s daty v prohlížeči pomocí Pythonu 2, Pythonu 3 a Microsoftu R. (Microsoft R je verze R připravená pro podniky určená pro výkon.)
+- Nasazujte modely vytvořené prostřednictvím R a Pythonu v Azure Machine Learning, aby klientské aplikace měly přístup k vašim modelům pomocí jednoduchého rozhraní webové služby.
+- Spravujte prostředky Azure pomocí portálu Azure nebo PowerShellu.
+- Rozšiřte svůj úložný prostor a sdílejte rozsáhlé datové sady/kódy v celém týmu vytvořením sdílené složky Azure Files jako připojitelné jednotky na vašem DSVM.
+- Sdílejte kód se svým týmem pomocí GitHubu. Přístup k úložišti pomocí předinstalovaných klientů Git: Git Bash a Git GUI.
+- Získejte přístup k datům a analytickým službám Azure, jako je úložiště objektů blob Azure, Azure Data Lake, Azure HDInsight (Hadoop), Azure Cosmos DB, Azure SQL Data Warehouse a Azure SQL Database.
+- Vytvářejte sestavy a řídicí panel pomocí instance Power BI Desktop, která je předinstalovaná na DSVM, a nasaďte je v cloudu.
+- Dynamicky škálujte svůj DSVM tak, aby vyhovoval potřebám vašeho projektu.
+- Nainstalujte do virtuálního počítače další nástroje.   
 
 > [!NOTE]
-> Další poplatky za využití platí pro spoustu služeb úložiště dat a analýz uvedených v tomto článku. Podrobnosti najdete na stránce s [cenami Azure](https://azure.microsoft.com/pricing/) .
+> Další poplatky za využití platí pro mnoho služeb pro ukládání dat a analýzy uvedených v tomto článku. Podrobnosti najdete na stránce [s cenami Azure.](https://azure.microsoft.com/pricing/)
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Budete potřebovat předplatné Azure. Můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-* Pokyny pro zřízení Data Science Virtual Machine v Azure Portal jsou k dispozici v [tématu Vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
+* Potřebujete předplatné Azure. Můžete [se zaregistrovat k bezplatné zkušební verzi](https://azure.microsoft.com/free/).
+* Pokyny pro zřizování virtuálního počítače pro datové vědy na webu Azure Portal jsou dostupné v [části Vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Prozkoumejte data a vývoj modelů pomocí Microsoft Machine Learning Server
-Jazyky, jako je R a Pythonu můžete provádět datové VĚDY vaší analýzy dat přímo.
+## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Prozkoumejte data a vyvíjejte modely pomocí serveru Microsoft Machine Learning Server
+Můžete použít jazyky jako R a Python, aby vaše analýzy dat přímo na DSVM.
 
-Pro R můžete použít IDE, jako je RStudio, který najdete v nabídce Start nebo na ploše. Nebo můžete použít Nástroje R pro Visual Studio. Společnost Microsoft poskytuje další knihovny nad open source CRAN R, aby bylo možné škálovatelné analýzy a schopnost analyzovat data větší, než je velikost paměti povolenou v paralelním blokovém analýze. 
+Pro R můžete použít ide jako RStudio, které lze nalézt v nabídce Start nebo na ploše. Nebo můžete použít nástroje R pro visual studio. Společnost Microsoft poskytla další knihovny nad open source CRAN R, které umožňují škálovatelné analýzy a schopnost analyzovat data větší než velikost paměti povolenou v paralelní analýze bloků dat. 
 
-Pro Python můžete použít integrované vývojové prostředí jako je Visual Studio Community Edition, který obsahuje nástroje Python Tools pro předem nainstalované rozšíření Visual Studio (PTVS). Ve výchozím nastavení je v PTVS nakonfigurovaná jenom Python 3,6, kořenové prostředí conda. Pokud chcete povolit Anaconda Python 2,7, proveďte následující kroky:
+Pro Python můžete použít ide, jako je Visual Studio Community Edition, který má python tools for Visual Studio (PTVS) rozšíření předinstalovaný. Ve výchozím nastavení je na PTVS nakonfigurován pouze Python 3.6, kořenové prostředí Conda. Chcete-li povolit Anaconda Python 2.7, postupujte takto:
 
-1. Vytvořte vlastní prostředí pro každou verzi tak, že přejdete na **nástroje** > **Python Tools** > **Python Environment**a pak v Visual Studio Community Edition vyberete **+ Custom** .
-1. Zadejte popis a nastavte cestu k předponě prostředí jako **c:\anaconda\envs\python2** pro anaconda Python 2,7.
-1. Pro uložení prostředí vyberte možnost **automaticky zjišťovat** > **použít** .
+1. Vytvořte vlastní prostředí pro každou verzi tak, že přejdete na **Nástroje** > **Python Tools** > **Python prostředí**a pak výběrem + **Vlastní** v Visual Studio Community Edition.
+1. Uveďte popis a nastavte cestu předpony prostředí jako **c:\anaconda\envs\python2** pro Anaconda Python 2.7.
+1. Chcete-li uložit prostředí, vyberte **možnost Automaticky rozpoznat** > **použít.**
 
-Další podrobnosti o tom, jak vytvářet prostředí Pythonu, najdete v [dokumentaci k PTVS](https://aka.ms/ptvsdocs) .
+Další podrobnosti o vytváření prostředí Pythonu najdete v dokumentaci k [PTVS.](https://aka.ms/ptvsdocs)
 
-Teď jste nastavili vytvoření nového projektu v Pythonu. Přejít na **soubor** > **nový** > **projekt** > **Pythonu** a vyberte typ aplikace Python, kterou vytváříte. Prostředí Python pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2,7 nebo 3,6) tak, že kliknete pravým tlačítkem na **prostředí Pythonu** a pak vyberete **Přidat nebo odebrat prostředí Pythonu**. Další informace o práci s PTVS najdete v [dokumentaci k produktu](https://aka.ms/ptvsdocs).
+Nyní jste nastaveni na vytvoření nového projektu Pythonu. Přejděte do **souboru** > **Nový** > **projekt** > **Pythonu** a vyberte typ aplikace Pythonu, kterou vytváříte. Prostředí Pythonu pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2.7 nebo 3.6) tak, že kliknete pravým tlačítkem myši na **prostředí Pythonu** a pak vyberete **Přidat nebo odebrat prostředí Pythonu**. Více informací o práci s PTVS naleznete v [dokumentaci](https://aka.ms/ptvsdocs)k produktu .
 
 ## <a name="use-jupyter-notebooks"></a>Použití poznámkových bloků Jupyter
-Jupyter Notebook poskytuje integrované vývojové prostředí (IDE) založené na prohlížeči pro zkoumání a modelování dat. V Jupyter poznámkovém bloku můžete použít Python 2, Python 3 nebo R (Open Source i Microsoft R Server).
+Jupyter Notebook poskytuje ide založené na prohlížeči pro zkoumání dat a modelování. Python 2, Python 3 nebo R (open source i Microsoft R Server) můžete použít v poznámkovém bloku Jupyter.
 
-Jupyter Notebook spustíte tak, že v nabídce **Start** nebo na ploše vyberete ikonu **Jupyter notebook** . V příkazovém řádku DSVM můžete také spustit příkaz ```jupyter notebook``` z adresáře, ve kterém máte existující poznámkové bloky nebo kde chcete vytvořit nové poznámkové bloky.  
+Chcete-li spustit poznámkový blok Jupyter, vyberte ikonu **Jupyter Notebook** v nabídce **Start** nebo na ploše. V příkazovém řádku DSVM můžete ```jupyter notebook``` příkaz spustit také z adresáře, ve kterém máte existující poznámkové bloky nebo kde chcete vytvořit nové poznámkové bloky.  
 
-Po spuštění Jupyter byste měli vidět adresář, který obsahuje několik ukázkových poznámkových bloků, které jsou předem zabaleny do DSVM. Nyní můžete:
+Po spuštění Jupyter, měli byste vidět adresář, který obsahuje několik příkladů poznámkových bloků, které jsou předem zabaleny do DSVM. Nyní můžete:
 
-* Vyberte Poznámkový blok pro zobrazení kódu.
-* Spusťte každou buňku výběrem SHIFT + ENTER.
-* Spusťte celý Poznámkový blok výběrem **buňky** > **Spustit**.
-* Vytvořte nový Poznámkový blok tak, že vyberete ikonu Jupyter (v levém horním rohu), kliknete na tlačítko **Nový** a pak zvolíte jazyk poznámkového bloku (označovaný také jako jádra).   
+* Vyberte poznámkový blok, abyste viděli kód.
+* Spusťte každou buňku výběrem Shift+Enter.
+* Spusťte celý poznámkový blok výběrem **možnosti** > **Spustit buňku**.
+* Vytvořte nový poznámkový blok výběrem ikony Jupyter (levý horní roh), výběrem tlačítka **Nový** vpravo a výběrem jazyka poznámkového bloku (označovaný také jako jádra).   
 
 > [!NOTE]
-> V současné době jsou podporovány jádra Python 2,7, Python 3,6, R, Helena a PySpark v Jupyter. Jádro R podporuje programování jak v open-source R, tak i v Microsoft R.   
+> V současné době jsou podporována jádra Python2.7, Python 3.6, R, Julia a PySpark v Jupyteru. Jádro R podporuje programování v open source R i Microsoft R.   
 > 
 > 
 
-Když jste v poznámkovém bloku, můžete prozkoumat vaše data, sestavit model a testovat model pomocí zvolených knihoven.
+Když jste v poznámkovém bloku, můžete prozkoumat data, vytvořit model a otestovat model pomocí vybraných knihoven.
 
-## <a name="train-and-deploy-models-by-using-azure-machine-learning"></a>Analýza a nasazení modelů pomocí Azure Machine Learning
-Po sestavení a ověření modelu je dalším krokem obvykle jeho nasazení do produkčního prostředí. Tento krok umožňuje klientským aplikacím vyvolat předpovědi modelu v reálném čase nebo na bázi dávkového režimu. Azure Machine Learning poskytuje mechanismus pro zprovoznění modelu vytvořené v R nebo Python.
+## <a name="train-and-deploy-models-by-using-azure-machine-learning"></a>Trénování a nasazování modelů pomocí Azure Machine Learning
+Po sestrojit a ověřit model, dalším krokem je obvykle nasadit do produkčního prostředí. Tento krok umožňuje klientským aplikacím vyvolat předpovědi modelu v reálném čase nebo na základě dávkového režimu. Azure Machine Learning poskytuje mechanismus pro zprovoznění modelu integrovaného v R nebo Pythonu.
 
-Když zprovoznění svůj model v Azure Machine Learning, Webová služba je vystavená. Umožňuje klientům, aby zadávali volání REST, která předají vstupní parametry a získají předpovědi z modelu jako výstupy.
+Když svůj model zprovozníte v Azure Machine Learning, zobrazí se webová služba. Umožňuje klientům provádět volání REST, které předávají vstupní parametry a přijímají předpovědi z modelu jako výstupy.
 
-### <a name="build-and-operationalize-python-models"></a>Sestavování a zprovoznění modelů Python
-Tady je fragment kódu vyvinutý v Jupyter poznámkovém bloku Pythonu, který vytváří jednoduchý model pomocí knihovny Scikit-učení:
+### <a name="build-and-operationalize-python-models"></a>Vytváření a zprovoznění modelů Pythonu
+Zde je úryvek kódu vyvinutý v poznámkovém bloku Python Jupyter, který vytváří jednoduchý model pomocí knihovny Scikit-learn:
 
 ```python
 # IRIS classification
@@ -100,7 +100,7 @@ X, y = iris.data, iris.target
 clf.fit(X, y)
 ```
 
-Metoda, která se používá k nasazení modelů Pythonu pro Azure Machine Learning zabalí předpověď modelu do funkce a upraví ho pomocí atributů poskytovaných předinstalovanou Azure Machine Learning Python Library. Atributy označují Azure Machine Learning ID pracovního prostoru, klíč rozhraní API a vstupní a návratové parametry.  
+Metoda, která se používá k nasazení modelů Pythonu do Azure Machine Learning zabalí předpověď modelu do funkce a zdobí ji atributy poskytované předinstalovanou knihovnou Azure Machine Learning Python. Atributy označují ID pracovního prostoru Azure Machine Learning, klíč rozhraní API a parametry vstupního a vráceného.  
 
 ```python
 from azureml import services
@@ -114,7 +114,7 @@ def predictIris(sep_l, sep_w, pet_l, pet_w):
 return clf.predict(inputArray)
 ```
 
-Klienta můžete provést volání webové služby. Obálky pro pohodlí tvoří požadavky na REST API. Zde je ukázkový kód pro využívání webové služby:
+Klient nyní může volat do webové služby. Obálky pohodlí vytvořit požadavky rozhraní API REST. Zde je ukázkový kód pro využití webové služby:
 
 ```python
 # Consume through web service URL and keys
@@ -129,24 +129,24 @@ IrisPredictor(3,2,3,4)
 ```
 
 > [!NOTE]
-> V současné době je knihovna Azure Machine Learning podporována pouze v Pythonu 2,7.   
+> V současné době je knihovna Azure Machine Learning podporovaná jenom v Pythonu 2.7.   
 > 
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>Vytváření a zprovoznění modelů R
-Modely R vytvořené na Data Science Virtual Machine nebo jinde můžete nasadit do Azure Machine Learning způsobem, který se podobá tomu, jak se to dělá v Pythonu. Postup je následující:
+Můžete nasadit R modely postavené na virtuálním počítači datové vědy nebo jinde na Azure Machine Learning způsobem, který je podobný, jak se to dělá pro Python. Postup je následující:
 
-1. Vytvořte soubor Settings. JSON, který poskytne ID pracovního prostoru a ověřovací token. 
-2. Napište obálku pro funkci předpovědi modelu.
-3. Chcete-li předat obálku funkce, zavolejte ```publishWebService``` v knihovně Azure Machine Learning.  
+1. Vytvořte soubor settings.json, který poskytne ID pracovního prostoru a ověřovací token. 
+2. Napište obálku pro funkci předpovědět modelu.
+3. Volání ```publishWebService``` v knihovně Azure Machine Learning předat obálku funkce.  
 
-Použijte následující proceduru a fragmenty kódu k nastavení, sestavení, publikování a využívání modelu jako webové služby v Azure Machine Learning.
+Pomocí následujícího postupu a fragmentů kódu můžete nastavit, sestavit, publikovat a využívat model jako webovou službu v Azure Machine Learning.
 
-#### <a name="set-up"></a>Nastavení
+#### <a name="set-up"></a>Nastavit
 
-V adresáři s názvem ```.azureml``` v domovském adresáři vytvořte soubor Settings. JSON. Zadejte parametry z pracovního prostoru Azure Machine Learning.
+Vytvořte soubor settings.json pod ```.azureml``` adresářem volaným v domovském adresáři. Zadejte parametry z pracovního prostoru Azure Machine Learning.
 
-Tady je struktura souborů Settings. JSON:
+Zde je struktura souborů settings.json:
 
 ```json
 {"workspace":{
@@ -155,7 +155,7 @@ Tady je struktura souborů Settings. JSON:
 }}
 ```
 
-#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>Sestavení modelu v jazyce R a publikovat ve službě Azure Machine Learning
+#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>Sestavení modelu v R a jeho publikování v Azure Machine Learning
 
 ```r
 library(AzureML)
@@ -175,10 +175,10 @@ sleepyPredict <- function(newdata){
 ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
 ```
 
-#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Používání modelu nasazené ve službě Azure Machine Learning
-Pokud chcete model využívat z klientské aplikace, pomocí knihovny Azure Machine Learning vyhledejte publikovanou webovou službu podle názvu. K určení koncového bodu použijte volání rozhraní `services` API. Pak stačí zavolat funkci `consume` a předat do něj datový rámec, který chcete předpovědět.
+#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Využití modelu nasazeného v Azure Machine Learning
+Chcete-li využívat model z klientské aplikace, použijte knihovnu Azure Machine Learning k vyhledání publikované webové služby podle názvu. Pomocí `services` volání rozhraní API určit koncový bod. Pak stačí zavolat `consume` funkci a předat v datovém rámci, který má být předpovězen.
 
-Použijte následující kód pro využívání modelu publikovaného jako Azure Machine Learning webové služby:
+Pomocí následujícího kódu využijte model publikovaný jako webová služba Azure Machine Learning:
 
 ```r
 library(AzureML)
@@ -194,23 +194,23 @@ ep <- endpoints(ws, s)
 ans = consume(ep, sleepstudy)$ans
 ```
 
-Další informace o [balíčcích R najdete v tématu Machine Learning Studio](/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning).
+Další informace o [balíčcích R v Machine Learning Studiu](/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning).
 
 ## <a name="manage-azure-resources"></a>Správa prostředků Azure
-DSVM vám neumožňuje vytvářet řešení pro analýzu místně na virtuálním počítači. Také umožňuje přístup ke službám na cloudové platformě Azure. Azure nabízí několik výpočetních, úložných a datových analýz a dalších služeb, které můžete spravovat a přistupovat z DSVM.
+DSVM neumožňuje pouze vytvářet analytické řešení místně na virtuálním počítači. Umožňuje také přístup ke službám na cloudové platformě Azure. Azure poskytuje několik výpočetních, úložných, datových analýz a dalších služeb, které můžete spravovat a přistupovat z vašeho DSVM.
 
-Ke správě předplatného Azure a cloudových prostředků máte dvě možnosti:
-+ Použijte svůj prohlížeč a pokračujte na [Azure Portal](https://portal.azure.com).
+Chcete-li spravovat předplatné Azure a cloudové prostředky, máte dvě možnosti:
++ Použijte prohlížeč a přejděte na [portál Azure](https://portal.azure.com).
 
-+ Použijte skripty prostředí PowerShell. Spusťte Azure PowerShell z zástupce na ploše nebo z nabídky **Start** . Úplné podrobnosti najdete v [dokumentaci k Microsoft Azure PowerShell](../../powershell-azure-resource-manager.md) . 
++ Použijte skripty prostředí PowerShell. Spusťte Azure PowerShell z zástupce na ploše nebo z nabídky **Start.** Podrobné informace najdete v [dokumentaci k Prostředí Microsoft Azure PowerShell.](../../powershell-azure-resource-manager.md) 
 
-## <a name="extend-storage-by-using-shared-file-systems"></a>Rozšiřování úložiště pomocí sdílených systémů souborů
-Odborníci přes data můžou sdílet velké datové sady, kód nebo jiných prostředků v rámci týmu. DSVM má k dispozici přibližně 45 GB volného místa. Pokud chcete úložiště zvětšit, můžete použít soubory Azure a buď je připojit na jednu nebo více instancí DSVM nebo k nim přistupovat pomocí REST API. Můžete také použít [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) nebo pomocí [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) přidat další vyhrazené datové disky. 
+## <a name="extend-storage-by-using-shared-file-systems"></a>Rozšíření úložiště pomocí sdílených systémů souborů
+Datoví vědci mohou sdílet velké datové sady, kód nebo jiné prostředky v rámci týmu. DSVM má k dispozici asi 45 GB místa. Chcete-li rozšířit úložiště, můžete použít soubory Azure a připojit je na jednu nebo více instancí DSVM nebo k němu přistupovat prostřednictvím rozhraní REST API. Můžete taky použít [portál Azure](../../virtual-machines/windows/attach-managed-disk-portal.md) nebo použít Azure [PowerShell](../../virtual-machines/windows/attach-disk-ps.md) k přidání dalších vyhrazených datových disků. 
 
 > [!NOTE]
-> Maximální místo ve sdílené složce služby soubory Azure je 5 TB. Omezení velikosti každého souboru je 1 TB. 
+> Maximální místo ve sdílené složce Soubory Azure je 5 TB. Limit velikosti pro každý soubor je 1 TB. 
 
-Pomocí tohoto skriptu v Azure PowerShell můžete vytvořit sdílenou složku souborů Azure:
+Tento skript můžete použít v Azure PowerShellu k vytvoření sdílené složky Azure Files:
 
 ```powershell
 # Authenticate to Azure.
@@ -232,7 +232,7 @@ New-AzStorageDirectory -Share $s -Path <directory name>
 Get-AzStorageFile -Share $s
 ```
 
-Teď, když jste vytvořili sdílenou složku služby soubory Azure, můžete ji připojit k libovolnému virtuálnímu počítači v Azure. Doporučujeme, abyste virtuální počítač umístili do stejného datacentra Azure jako účet úložiště, abyste se vyhnuli poplatkům za latenci a přenos dat. Tady jsou Azure PowerShell příkazy k připojení jednotky na DSVM:
+Teď, když jste vytvořili sdílenou složku Souborů Azure, můžete ji připojit do libovolného virtuálního počítače v Azure. Doporučujeme umístit virtuální počítač do stejného datového centra Azure jako účet úložiště, abyste se vyhnuli latenci a poplatkům za přenos dat. Tady jsou příkazy Azure PowerShellu pro připojení jednotky na DSVM:
 
 ```powershell
 # Get the storage key of the storage account that has the Azure Files share from the Azure portal. Store it securely on the VM to avoid being prompted in the next command.
@@ -242,49 +242,49 @@ cmdkey /add:<<mydatadisk>>.file.core.windows.net /user:<<mydatadisk>> /pass:<sto
 net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 ```
 
-Teď můžete přistupovat tato jednotka, stejně jako u jakékoli jednotky na virtuálním počítači.
+Nyní můžete přistupovat k této jednotce stejně jako normální disk na virtuálním počítači.
 
 ## <a name="share-code-in-github"></a>Sdílení kódu na GitHubu
-GitHub je úložiště kódu, kde můžete najít ukázky kódu a zdroje pro různé nástroje pomocí technologií sdílených komunitou vývojářů. Git jako technologie používá ke sledování a uložené verze souborů s kódem. GitHub je také platforma, kde můžete vytvořit vlastní úložiště pro ukládání sdíleného kódu a dokumentace vašeho týmu, implementovat správu verzí a řídit, kdo má přístup k zobrazení kódu a přispívání ke kódu. 
+GitHub je úložiště kódu, kde můžete najít ukázky kódu a zdroje pro různé nástroje pomocí technologií sdílených komunitou vývojářů. Používá Git jako technologii pro sledování a ukládání verzí souborů kódu. GitHub je také platforma, kde si můžete vytvořit vlastní úložiště pro ukládání sdíleného kódu a dokumentace vašeho týmu, implementovat správu verzí a řídit, kdo má přístup k zobrazení a contribute kódu. 
 
-Další informace o tom, jak používat Git, najdete na stránkách s informacemi o [GitHubu](https://help.github.com/) . GitHub můžete použít jako jeden ze způsobů, jak spolupracovat se svým týmem, používat kód vyvinutý komunitou a přispívat kód zpátky do komunity.
+Další informace o používání Gitu najdete na [stránkách nápovědy githubu.](https://help.github.com/) GitHub můžete použít jako jeden ze způsobů spolupráce s týmem, použití kódu vyvinutého komunitou a vrácení kódu komunitě.
 
-DSVM se načte pomocí klientských nástrojů na příkazovém řádku a v grafickém uživatelském rozhraní pro přístup k úložišti GitHub. Nástroj příkazového řádku, který funguje s Git a GitHubem, se nazývá Git bash. Visual Studio je nainstalované na DSVM a má rozšíření Git. Ikony těchto nástrojů můžete najít v nabídce **Start** a na ploše.
+DSVM je dodáván s klientskými nástroji na příkazovém řádku a na GUI pro přístup k úložišti GitHub. Nástroj příkazového řádku, který funguje s Gitem a GitHubem, se nazývá Git Bash. Visual Studio je nainstalované na DSVM a má rozšíření Git. Ikony těchto nástrojů najdete v nabídce **Start** a na ploše.
 
-Pokud chcete stáhnout kód z úložiště GitHub, použijte příkaz ```git clone```. Chcete-li například stáhnout úložiště pro datové vědy publikované společností Microsoft do aktuálního adresáře, můžete spustit následující příkaz v Gitu bash:
+Chcete-li stáhnout kód z úložiště GitHub, použijte ```git clone``` příkaz. Chcete-li například stáhnout úložiště datových věd publikované společností Microsoft do aktuálního adresáře, můžete v git bash spustit následující příkaz:
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-V sadě Visual Studio můžete provádět stejné operace klonování. Následující snímek obrazovky ukazuje, jak získat přístup k nástrojům Git a GitHub v aplikaci Visual Studio:
+V sadě Visual Studio můžete provést stejnou operaci klonování. Následující snímek obrazovky ukazuje, jak získat přístup k nástrojům Git a GitHub v Sadě Visual Studio:
 
-![Snímek obrazovky sady Visual Studio se zobrazeným připojením GitHubu](./media/vm-do-ten-things/VSGit.PNG)
+![Snímek obrazovky visual studia se zobrazeným připojením GitHub](./media/vm-do-ten-things/VSGit.PNG)
 
-Další informace o tom, jak pomocí Gitu pracovat s úložištěm GitHubu, najdete v informacích dostupných na github.com. [Tahák list](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) je užitečným odkazem.
+Další informace o používání Gitu pro práci s úložištěm GitHub uvidíte z prostředků dostupných na github.com. [Tahák](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) je užitečný odkaz.
 
-## <a name="access-azure-data-and-analytics-services"></a>Přístup ke službám Azure Data and Analytics
+## <a name="access-azure-data-and-analytics-services"></a>Přístup ke službám Azure pro data a analýzy
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
-Azure Blob Storage je spolehlivá, ekonomická služba pro cloudové úložiště pro velké a malé objemy dat. Tato část popisuje, jak můžete přesouvat data do úložiště objektů BLOB a přistupovat k datům uloženým v objektu blob Azure.
+Úložiště objektů blob Azure je spolehlivá a ekonomická služba cloudového úložiště pro velké i malé objemy dat. Tato část popisuje, jak můžete přesunout data do úložiště objektů Blob a přístup k datům uloženým v objektu blob Azure.
 
 #### <a name="prerequisites"></a>Požadavky
 
-* Vytvořte účet Azure Blob Storage z [Azure Portal](https://portal.azure.com).
+* Vytvořte si účet úložiště objektů blob Azure z [webu Azure Portal](https://portal.azure.com).
 
-   ![Snímek obrazovky procesu vytváření účtu úložiště v Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+   ![Snímek obrazovky s procesem vytváření účtu úložiště na webu Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* Potvrďte, že je nástroj příkazového řádku AzCopy předinstalovaný: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Adresář, který obsahuje AzCopy. exe, již je ve vaší proměnné prostředí PATH, takže se můžete vyhnout psaní úplné cesty k příkazu při spuštění tohoto nástroje. Další informace o nástroji AzCopy najdete v [dokumentaci k AzCopy](../../storage/common/storage-use-azcopy.md).
-* Spusťte nástroj Průzkumník služby Azure Storage. Můžete si ho stáhnout z [webové stránky Průzkumník služby Storage](https://storageexplorer.com/). 
+* Zkontrolujte, zda je nástroj AzCopy příkazového řádku předinstalovaný: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Adresář, který obsahuje nástroj azcopy.exe, je již v proměnné prostředí PATH, takže se při spuštění tohoto nástroje můžete vyhnout zadávání úplné cesty příkazů. Další informace o nástroji AzCopy naleznete v [dokumentaci k AzCopy](../../storage/common/storage-use-azcopy.md).
+* Spusťte nástroj Průzkumník a ukládání dat Azure. Můžete si ji stáhnout z [webové stránky Průzkumníka úložiště](https://storageexplorer.com/). 
 
-   ![Snímek obrazovky Průzkumník služby Azure Storage přístupu k účtu úložiště](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
+   ![Snímek obrazovky s Průzkumníkem úložišť Azure přistupujícík k účtu úložiště](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
 #### <a name="move-data-from-a-vm-to-an-azure-blob-azcopy"></a>Přesunutí dat z virtuálního počítače do objektu blob Azure: AzCopy
 
-Pokud chcete přesunout data mezi místními soubory a úložištěm objektů blob, můžete použít AzCopy v příkazovém řádku nebo v PowerShellu:
+Chcete-li přesouvat data mezi místními soubory a úložištěm objektů Blob, můžete použít AzCopy na příkazovém řádku nebo v Prostředí PowerShell:
 
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
-Nahraďte **C:\MyFolder** cestou, kde je soubor uložený, **mystorageaccount** s názvem vašeho účtu služby Blob Storage, **myContainer** s názvem kontejneru a **klíčem účtu úložiště** pomocí přístupového klíče k úložišti objektů BLOB. Přihlašovací údaje účtu úložiště najdete v [Azure Portal](https://portal.azure.com).
+Nahraďte **C:\myfolder** s cestou, kde je uložen soubor, **mystorageaccount** s názvem účtu úložiště objektů blob, **mycontainer** s názvem kontejneru a **klíč účtu úložiště** s klíčem přístupkového úložiště objektů Blob. Svoje přihlašovací údaje k účtu úložiště najdete na [webu Azure Portal](https://portal.azure.com).
 
-Spusťte příkaz AzCopy v PowerShellu nebo z příkazového řádku. Tady je několik příkladů použití příkazu AzCopy:
+Spusťte příkaz AzCopy v prostředí PowerShell nebo z příkazového řádku. Zde je několik příkladů použití příkazu AzCopy:
 
 ```powershell
 # Copy *.sql from a local machine to an Azure blob
@@ -295,28 +295,28 @@ Spusťte příkaz AzCopy v PowerShellu nebo z příkazového řádku. Tady je n�
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Dest:"c:\Aaqs\Data Science Scripts\temp" /Source:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /SourceKey:[ENTER STORAGE KEY] /S
 ```
 
-Po spuštění příkazu AzCopy ke zkopírování do objektu blob Azure se soubor zobrazí v Průzkumník služby Azure Storage.
+Po spuštění příkazu AzCopy ke kopírování do objektu blob Azure se váš soubor zobrazí v Průzkumníku úložiště Azure.
 
-![Snímek obrazovky s účtem úložiště, který zobrazuje nahraný soubor CSV](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
+![Snímek obrazovky s účtem úložiště zobrazující nahraný soubor CSV](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>Přesunutí dat z virtuálního počítače do objektu blob Azure: Průzkumník služby Azure Storage
+#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>Přesunutí dat z virtuálního počítače do objektu blob Azure: Azure Storage Explorer
 
-Data z místního souboru na VIRTUÁLNÍm počítači můžete také nahrát pomocí Průzkumník služby Azure Storage:
+Data z místního souboru ve virtuálním počítači můžete taky nahrát pomocí Průzkumníka úložiště Azure:
 
-* Pokud chcete nahrát data do kontejneru, vyberte cílový kontejner a vyberte tlačítko **nahrát** .![snímku tlačítka pro odeslání v Průzkumník služby Azure Storage](./media/vm-do-ten-things/storage-accounts.png)
-* Vyberte tři tečky ( **...** ) napravo od pole **soubory** , vyberte jeden nebo více souborů, které se mají nahrát ze systému souborů, a vyberte **nahrát** a začněte nahrávat soubory.![snímku dialogového okna pro nahrání souborů](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Chcete-li odeslat data do kontejneru, vyberte cílový kontejner a vyberte tlačítko **Odeslat.** ![Snímek obrazovky s tlačítkem nahrávání v Průzkumníkovi úložiště Azure](./media/vm-do-ten-things/storage-accounts.png)
+* Vyberte tři tečky (**...**) napravo od pole **Soubory,** vyberte jeden nebo více souborů, které chcete nahrát ze systému souborů, a vyberte **Nahrát,** abyste začali nahrávat soubory. ![Snímek obrazovky s dialogovým oknem Nahrát soubory](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-#### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Čtení dat z objektu blob Azure: modul Machine Learning Reader
+#### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Čtení dat z modulu Azure blob: Machine Learning reader
 
-V Azure Machine Learning Studio můžete použít modul import dat ke čtení dat z objektu BLOB.
+V Azure Machine Learning Studio můžete použít modul Import dat ke čtení dat z vašeho objektu blob.
 
-![Snímek obrazovky modulu Import dat ve službě Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![Snímek obrazovky s modulem Import dat ve Studiu strojového učení](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Čtení dat z objektu blob Azure: Python ODBC
 
-Pomocí knihovny BlobService můžete číst data přímo z objektu BLOB v poznámkovém bloku Jupyter nebo v programu Pythonu.
+Knihovna BlobService můžete použít ke čtení dat přímo z objektu blob v poznámkovém bloku Jupyter nebo v programu Pythonu.
 
-Nejdřív Importujte požadované balíčky:
+Nejprve importujte požadované balíčky:
 
 ```python
 import pandas as pd
@@ -333,7 +333,7 @@ import zipfile
 import random
 ```
 
-Pak připojte přihlašovací údaje účtu služby Blob Storage a načtěte data z objektu BLOB:
+Potom připojte přihlašovací údaje účtu úložiště objektů Blob a přečtěte si data z objektu blob:
 
 ```python
 CONTAINERNAME = 'xxx'
@@ -362,36 +362,36 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 
 Data jsou čtena jako datový rámec:
 
-![Snímek obrazovky prvních 10 řádků dat.](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![Snímek obrazovky s prvními 10 řádky dat](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake Storage je úložiště škálovatelné pro úlohy analýzy velkých objemů dat a je kompatibilní se systémem Hadoop systém souborů DFS (Distributed File System) (HDFS). Funguje s Hadoop, Spark a Azure Data Lake Analytics. V této části se dozvíte, jak můžete přesouvat data do Azure Data Lake Storage a spouštět analýzy pomocí Azure Data Lake Analytics.
+Azure Data Lake Storage je úložiště hyperškálování pro úlohy analýzy velkých objemů dat a je kompatibilní s hadoopským distribuovaným souborovým systémem (HDFS). Spolupracuje s Hadoopem, Sparkem a Azure Data Lake Analytics. V této části se dozvíte, jak můžete přesunout data do Azure Data Lake Storage a spustit analýzy pomocí Azure Data Lake Analytics.
 
 #### <a name="prerequisites"></a>Požadavky
 
-* Vytvořte instanci Azure Data Lake Analytics v [Azure Portal](https://portal.azure.com).
+* Vytvořte si instanci Azure Data Lake Analytics na [webu Azure Portal](https://portal.azure.com).
 
-   ![Snímek obrazovky s vytvořením instance Data Lake Analytics z Azure Portal](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+   ![Snímek obrazovky s vytvořením instance Data Lake Analytics z webu Azure Portal](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
-* [Modul plug-in Azure Data Lake a Stream Analytics nástrojů pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504) je už na virtuálním počítači nainstalovaný v edici Visual Studio Community Edition. Po spuštění sady Visual Studio a přihlášení ke svému předplatnému Azure byste měli vidět svůj účet a úložiště Azure Data Analytics na levém panelu sady Visual Studio.
+* Nástroje [Azure Data Lake a Stream Analytics pro modul plug-in Visual Studia](https://www.microsoft.com/download/details.aspx?id=49504) už jsou nainstalované ve Visual Studiu Community Edition na virtuálním počítači. Po spuštění Sady Visual Studio a přihlášení k předplatnému Azure byste měli vidět svůj účet Azure Data Analytics a úložiště v levém panelu Visual Studia.
 
-   ![Snímek obrazovky s modulem plug-in pro nástroje pro Data Lake v aplikaci Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
+   ![Snímek obrazovky s modulem plug-in pro nástroje Datového jezera v Sadě Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-#### <a name="move-data-from-a-vm-to-data-lake-azure-data-lake-explorer"></a>Přesunout data z virtuálního počítače do Data Lake: Azure Data Lake Explorer
+#### <a name="move-data-from-a-vm-to-data-lake-azure-data-lake-explorer"></a>Přesunutí dat z virtuálního počítače do datového jezera: Azure Data Lake Explorer
 
-Pomocí aplikace Azure Data Lake Explorer můžete [Odeslat data z místních souborů na virtuálním počítači a data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)je.
+Azure Data Lake Explorer můžete použít k [nahrání dat z místních souborů ve virtuálním počítači do úložiště datových jezer](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
-Můžete také vytvořit datový kanál, který zprovoznění přesun dat do Azure Data Lake pomocí [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). [Tento článek](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) vás provede kroky k sestavení datových kanálů.
+Můžete také vytvořit datový kanál pro zprovoznění vašeho přesunu dat do nebo z Azure Data Lake pomocí [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). [Tento článek](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) vás provede kroky k vytvoření datových kanálů.
 
-#### <a name="read-data-from-an-azure-blob-to-data-lake-u-sql"></a>Čtení dat z objektu blob Azure do Data Lake: U-SQL
+#### <a name="read-data-from-an-azure-blob-to-data-lake-u-sql"></a>Čtení dat z objektu blob Azure do datového jezera: U-SQL
 
-Pokud se vaše data nacházejí v úložišti objektů BLOB v Azure, můžete přímo číst data z objektu blob Azure v dotazu U-SQL. Než začnete vytvářet dotaz U-SQL, ujistěte se, že je váš účet Blob Storage propojený s vaší instancí Azure Data Lake. Přejít na Azure Portal, najděte řídicí panel Azure Data Lake Analytics, vyberte **Přidat zdroj dat**, vyberte typ úložiště **Azure Storage**a zapojte svůj název a klíč účtu úložiště Azure. Pak můžete odkazovat na data uložená v účtu úložiště.
+Pokud se vaše data nacházejí v úložišti objektů Blob Azure, můžete přímo číst data z objektu blob Azure v dotazu U-SQL. Než vytvoříte dotaz U-SQL, ujistěte se, že váš účet úložiště objektů Blob je propojený s instancí Azure Data Lake. Přejděte na portál Azure, najděte řídicí panel Azure Data Lake Analytics, vyberte **Přidat zdroj dat**, vyberte typ úložiště Azure **Storage**a připojte název a klíč účtu úložiště Azure. Pak můžete odkazovat na data uložená v účtu úložiště.
 
-![Snímek obrazovky dialogového okna Přidat zdroj dat](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![Snímek obrazovky s dialogovém oknem Přidat zdroj dat](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
-V aplikaci Visual Studio můžete číst data z úložiště objektů blob, manipulovat s daty, inženýrské funkce a odesílat výsledná data buď do Azure Data Lake, nebo do úložiště objektů BLOB v Azure. Když odkazujete na data v úložišti objektů blob, použijte **wasb://** . Když odkazujete na data v Azure Data Lake, použijte **swbhdfs://** .
+V Sadě Visual Studio můžete číst data z úložiště objektů Blob, manipulovat s daty, inženýrovat funkce a odesílat výsledná data do azure datového jezera nebo úložiště objektů blob Azure. Když odkazujete na data v úložišti objektů Blob, použijte **wasb://**. Když odkazujete na data v Azure Data Lake, použijte **swbhdfs://**.
 
-V aplikaci Visual Studio můžete použít následující dotazy U-SQL:
+V sadě Visual Studio můžete použít následující dotazy U-SQL:
 
 ```usql
 @a =
@@ -433,50 +433,50 @@ TO "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.
 USING Outputters.Csv();
 ```
 
-Po odeslání dotazu na server se v diagramu zobrazí stav úlohy.
+Po odeslání dotazu na server diagram zobrazuje stav úlohy.
 
-![Snímek obrazovky diagramu stavu úlohy](./media/vm-do-ten-things/USQL_Job_Status.PNG)
+![Snímek obrazovky se stavovým diagramem úlohy](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-#### <a name="query-data-in-data-lake-u-sql"></a>Dotazování na data v Data Lake: U-SQL
+#### <a name="query-data-in-data-lake-u-sql"></a>Data dotazu v datovém jezeře: U-SQL
 
-Po ingestování datové sady v Azure Data Lake můžete k dotazování a prozkoumávání dat použít [Jazyk U-SQL](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) . Jazyk U-SQL je podobný T-SQL, ale kombinuje některé funkce, C# aby uživatelé mohli zapisovat přizpůsobené moduly a uživatelsky definované funkce. Můžete použít skripty v předchozím kroku.
+Po požití datové sady v Azure Data Lake, můžete použít [jazyk U-SQL](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) k dotazování a prozkoumání dat. Jazyk U-SQL je podobný T-SQL, ale kombinuje některé funkce z Jazyka C#, takže uživatelé mohou psát přizpůsobené moduly a uživatelem definované funkce. Skripty můžete použít v předchozím kroku.
 
-Po odeslání dotazu na server tripdata_summary. Sdílený svazek clusteru se zobrazí v Průzkumníku Azure Data Lake. Náhled dat můžete zobrazit tak, že kliknete pravým tlačítkem na soubor.
+Po odeslání dotazu na server tripdata_summary. CsV se zobrazí v Azure Data Lake Explorer. Data můžete zobrazit kliknutím pravým tlačítkem myši na soubor.
 
-![Snímek obrazovky se souborem CSV v Průzkumníkovi Data Lake](./media/vm-do-ten-things/USQL_create_summary.png)
+![Snímek obrazovky se souborem CSV v Průzkumníku datového jezera](./media/vm-do-ten-things/USQL_create_summary.png)
 
 Zobrazí se informace o souboru:
 
-![Snímek obrazovky souhrnné informace o souboru](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![Snímek obrazovky se souhrnnými informacemi o souboru](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>Clustery HDInsight Hadoop
-Azure HDInsight je spravovaný Apache Hadoop, Spark, HBA a služba v cloudu. Můžete snadno pracovat s clustery Azure HDInsight z Data Science Virtual Machine.
+Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase a Storm v cloudu. S clustery Azure HDInsight můžete snadno pracovat z virtuálního počítače pro datové vědy.
 
 #### <a name="prerequisites"></a>Požadavky
 
-* Vytvořte účet Azure Blob Storage z [Azure Portal](https://portal.azure.com). Tento účet úložiště se používá k ukládání dat pro clustery HDInsight.
+* Vytvořte si účet úložiště objektů blob Azure z [webu Azure Portal](https://portal.azure.com). Tento účet úložiště se používá k ukládání dat pro clustery HDInsight.
 
-   ![Snímek obrazovky s vytvořením účtu úložiště z Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+   ![Snímek obrazovky s vytvořením účtu úložiště z webu Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* Přizpůsobte Azure HDInsight Hadoop clusterů z [Azure Portal](../team-data-science-process/customize-hadoop-cluster.md).
+* Přizpůsobte clustery Azure HDInsight Hadoop z [webu Azure Portal](../team-data-science-process/customize-hadoop-cluster.md).
   
-   Propojte účet úložiště vytvořený s clusterem HDInsight při jeho vytvoření. Tento účet úložiště se používá pro přístup k datům, které mohou být zpracovány v rámci clusteru.
+   Propojte účet úložiště vytvořený s clusterem HDInsight, když je vytvořen. Tento účet úložiště se používá pro přístup k datům, která lze zpracovat v rámci clusteru.
 
-   ![Výběry pro propojení účtu úložiště vytvořeného s clusterem HDInsight](./media/vm-do-ten-things/Create_HDI_v4.PNG)
+   ![Výběrpro propojení účtu úložiště vytvořeného s clusterem HDInsight](./media/vm-do-ten-things/Create_HDI_v4.PNG)
 
-* Po vytvoření pro hlavní uzel clusteru povolte přístup ke vzdálené ploše. Zapamatování přihlašovacích údajů vzdáleného přístupu, které tady zadáte, protože je budete potřebovat v dalším postupu.
+* Po jeho vytvoření povolte přístup ke vzdálené ploše k hlavnímu uzlu clusteru. Zapamatujte si pověření vzdáleného přístupu, které zde zadáte, protože je budete potřebovat v následujícím postupu.
 
    ![Tlačítko Vzdálená plocha pro povolení vzdáleného přístupu ke clusteru HDInsight](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Vytvoření pracovního prostoru Azure Machine Learning. Vaše experimenty Machine Learning jsou uloženy v tomto pracovním prostoru Machine Learning. Na portálu vyberte zvýrazněné možnosti, jak je znázorněno na následujícím snímku obrazovky:
+* Vytvořte pracovní prostor Azure Machine Learning. Vaše experimenty machine learningu jsou uloženy v tomto pracovním prostoru Machine Learning. Vyberte zvýrazněné možnosti na portálu, jak je znázorněno na následujícím snímku obrazovky:
 
-   ![Vytvoření pracovního prostoru Azure Machine Learningu](./media/vm-do-ten-things/Create_ML_Space.PNG)
+   ![Vytvoření pracovního prostoru Azure Machine Learning](./media/vm-do-ten-things/Create_ML_Space.PNG)
 
-* Zadejte parametry pro váš pracovní prostor.
+* Zadejte parametry pracovního prostoru.
 
-   ![Zadejte parametry pracovního prostoru Machine Learning](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
+   ![Zadat parametry pracovního prostoru Strojového učení](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
 
-* Nahrajte data pomocí poznámkového bloku IPython. Importujte požadované balíčky, připojte přihlašovací údaje, vytvořte databázi v účtu úložiště a pak načtěte data do clusterů HDI.
+* Nahrajte data pomocí poznámkového bloku IPython. Importujte požadované balíčky, zapojte přihlašovací údaje, vytvořte databázi v účtu úložiště a pak načtěte data do clusterů HDI.
 
 ```python
 # Import required packages
@@ -571,17 +571,17 @@ for i in range(1, 13):
     cursor.execute(queryString)
 ```
 
-Případně můžete postupovat podle [tohoto návodu](../team-data-science-process/hive-walkthrough.md) k nahrání TAXISLUŽBY dat NYC do clusteru HDI. Hlavní postup je následující:
+Případně můžete podle [tohoto návodu](../team-data-science-process/hive-walkthrough.md) nahrát data NYC Taxi do clusteru HDI. Mezi hlavní kroky patří:
   
-* Pomocí AzCopy si stáhněte z veřejného objektu blob do místní složky CSV zip.
-* Pomocí AzCopy nahrajte CSV z místní složky do clusteru HDI.
-* Přihlaste se k hlavnímu uzlu clusteru Hadoop a připravte se na analýzu dat pro průzkumné testování.
+* Pomocí azcopy ke stažení csv zipů z veřejného objektu blob do místní složky.
+* Pomocí aplikace AzCopy můžete nahrát rozepnuté soubory CSV z místní složky do clusteru HDI.
+* Přihlaste se k hlavnímu uzlu clusteru Hadoop a připravte se na analýzu průzkumných dat.
 
-Po načtení dat do clusteru HDI můžete data kontrolovat v Průzkumník služby Azure Storage. A databáze nyctaxidb se vytvořila v clusteru HDI.
+Po načtení dat do clusteru HDI můžete zkontrolovat data v Průzkumníku azure storage exploreru. A nyctaxidb databáze byla vytvořena v clusteru HDI.
 
-#### <a name="data-exploration-hive-queries-in-python"></a>Zkoumání dat: dotazy na podregistry v Pythonu
+#### <a name="data-exploration-hive-queries-in-python"></a>Zkoumání dat: Hive dotazy v Pythonu
 
-Vzhledem k tomu, že jsou data v clusteru Hadoop, můžete použít balíček pyodbc pro připojení ke clusterům Hadoop a dotazování databází pomocí podregistru pro průzkum a strojírenství funkcí. Můžete zobrazit existující tabulky, které jste vytvořili v kroku požadavků.
+Vzhledem k tomu, že data jsou v clusteru Hadoop, můžete použít balíček pyodbc pro připojení k clusterům Hadoop a databázím dotazů pomocí Hive k průzkumu a inženýrství funkcí. Existující tabulky, které jste vytvořili, můžete zobrazit v kroku předpokladu.
 
 ```python
 queryString = """
@@ -590,9 +590,9 @@ queryString = """
 pd.read_sql(queryString, connection)
 ```
 
-![Zobrazení existujících tabulek](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
+![Zobrazit existující tabulky](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
 
-Podívejme se na počet záznamů, které každý měsíc a frekvence šikmý nebo není v tabulce o jízdách:
+Podívejme se na počet záznamů v každém měsíci a frekvence šikmé nebo ne v tabulce cesty:
 
 ```python
 queryString = """
@@ -608,7 +608,7 @@ df.index = df['month']
 df['trip_count'].plot(kind='bar')
 ```
 
-![Diagram počet záznamů v každém měsíci](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
+![Vykreslení počtu záznamů v každém měsíci](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
 
 ```python
 queryString = """
@@ -628,9 +628,9 @@ df.index = df['tipped']
 df['trip_count'].plot(kind='bar')
 ```
 
-![Diagram frekvencí tip](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
+![Vykreslení frekvencí špiček](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
-Můžete také vypočítat vzdálenost mezi umístěním a umístěním pro vyzvednutí a pak ji porovnat s délkou cesty.
+Můžete také vypočítat vzdálenost mezi místem vyzvednutí a místem předání a poté ji porovnat se vzdáleností cesty.
 
 ```python
 queryString = """
@@ -652,7 +652,7 @@ results = pd.read_sql(queryString, connection)
 results.head(5)
 ```
 
-![Horní řádky vyzvednutí a vyřazení z tabulky](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![Horní řady stolku a drop-off stolu](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
 ```python
 results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
@@ -662,9 +662,9 @@ df = df.loc[df['direct_distance'] <= 100]  # remove outliers
 plt.scatter(df['direct_distance'], df['trip_distance'])
 ```
 
-![Vykreslení vzdálenosti vyzvednutí/vyřazení z polohy na cestu](./media/vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
+![Vykreslení vzdálenosti vyzvednutí/odsávání do vzdálenosti jízdy](./media/vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
 
-Nyní připravujeme downsampled (1%) sadu dat pro modelování. Tato data můžete použít v modulu čtečky Machine Learning.
+Nyní připravíme downsampled (1 procento) sadu dat pro modelování. Tato data můžete použít v modulu čtečky strojového učení.
 
 ```python
 queryString = """
@@ -792,7 +792,7 @@ where t.sample_key<=0.01
 cursor.execute(queryString)
 ```
 
-Po chvíli uvidíte, že se data načetla v clusterech Hadoop:
+Po chvíli uvidíte, že data byla načtena v clusterech Hadoop:
 
 ```python
 queryString = """
@@ -802,48 +802,48 @@ cursor.execute(queryString)
 pd.read_sql(queryString, connection)
 ```
 
-![Horní řádky z tabulky dat](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![Horní řady dat z tabulky](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Čtení dat z HDI pomocí Azure Machine Learning Studio (Classic): modul čtečky
+#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Čtení dat z HDI pomocí Azure Machine Learning Studio (klasické): modul čtečky
 
-K přístupu k databázi v clusteru Hadoop můžete použít také modul čtenář v Azure Machine Learning Studio (Classic). Připojte přihlašovací údaje ke clusterům HDI a účtu úložiště Azure, aby bylo možné vytvářet modely strojového učení pomocí databáze v clusterech HDI.
+Modul čtečky můžete také použít v Azure Machine Learning Studio (klasické) pro přístup k databázi v clusteru Hadoop. Připojte přihlašovací údaje clusterů HDI a účtu úložiště Azure, abyste mohli vytvářet modely strojového učení pomocí databáze v clusterech HDI.
 
-![Vlastnosti modulu Reader](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
+![Vlastnosti modulu čtečky](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
 
-Pak můžete zobrazit vyhodnocenou datovou sadu:
+Potom můžete zobrazit datovou sadu s kinem:
 
-![Zobrazit skóre datovou sadu](./media/vm-do-ten-things/AML_Model_Results.PNG)
+![Zobrazit datovou sadu s konzetí skóre](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse a databáze
-Azure SQL Data Warehouse je Elastický datový sklad jako služba s využitím SQL Server na podnikové úrovni.
+Azure SQL Data Warehouse je elastický datový sklad jako služba se zkušenostmi sql serveru podnikové třídy.
 
-Službu Azure SQL Data Warehouse můžete zřídit podle pokynů v [tomto článku](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md). Po zřízení služby SQL Data Warehouse můžete pomocí [tohoto návodu](../team-data-science-process/sqldw-walkthrough.md) provádět nahrávání, zkoumání a modelování dat pomocí dat v rámci SQL Data Warehouse.
+Datový sklad Azure SQL můžete zřídit podle pokynů v [tomto článku](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md). Po zřízení datového skladu SQL můžete [tento návod](../team-data-science-process/sqldw-walkthrough.md) použít k nahrávání, zkoumání a modelování dat pomocí dat v datovém skladu SQL.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB je databáze NoSQL v cloudu. Můžete ji použít k práci s dokumenty, jako je JSON, a k ukládání a dotazování dokumentů.
 
-Pro přístup k Azure Cosmos DB z DSVM použijte následující požadované kroky:
+Pro přístup k Azure Cosmos DB z DSVM použijte následující nezbytné kroky:
 
-1. Sada SDK Azure Cosmos DB Python je už v DSVM nainstalovaná. Pokud ho chcete aktualizovat, spusťte ```pip install pydocumentdb --upgrade``` z příkazového řádku.
-2. Vytvořte účet Azure Cosmos DB a databázi z [Azure Portal](https://portal.azure.com).
-3. Stáhněte nástroj pro migraci dat Azure Cosmos DB z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595) a rozbalte ho do libovolného adresáře.
-4. Importujte data JSON (Volcano data) uložená ve [veřejném objektu BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) do Azure Cosmos DB s použitím následujících parametrů příkazu pro nástroj pro migraci. (Použijte dtui. exe z adresáře, do kterého jste nainstalovali nástroj pro migraci dat Azure Cosmos DB.) Zadejte zdrojové a cílové umístění s těmito parametry:
+1. Sada Azure Cosmos DB Python SDK je už nainstalovaná v modulu DSVM. Chcete-li jej ```pip install pydocumentdb --upgrade``` aktualizovat, spusťte jej z příkazového řádku.
+2. Vytvořte účet ADb Azure Cosmos a databázi z [webu Azure Portal](https://portal.azure.com).
+3. Stáhněte si nástroj pro migraci dat Azure Cosmos DB ze [služby Stažení softwaru a](https://www.microsoft.com/download/details.aspx?id=53595) extrahujte je do adresáře podle vašeho výběru.
+4. Importujte data JSON (data sopky) uložená ve [veřejném objektu blob](https://cahandson.blob.core.windows.net/samples/volcano.json) do azure cosmos db s následujícími parametry příkazů do nástroje pro migraci. (Použijte dtui.exe z adresáře, do kterého jste nainstalovali Nástroj pro migraci dat Azure Cosmos DB.) Zadejte zdrojové a cílové umístění s těmito parametry:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-Po importu dat můžete přejít na Jupyter a otevřít poznámkový blok s názvem *DocumentDBSample*. Obsahuje kód Pythonu pro přístup k Azure Cosmos DB a provede základní dotazování. Další informace o Azure Cosmos DB najdete na [stránce dokumentace](https://docs.microsoft.com/azure/cosmos-db/)ke službě.
+Po importu dat můžete přejít na Jupyter a otevřít poznámkový blok s názvem *DocumentDBSample*. Obsahuje kód Pythonu pro přístup k Azure Cosmos DB a provést některé základní dotazování. Další informace o Azure Cosmos DB najdete na [stránce dokumentace služby](https://docs.microsoft.com/azure/cosmos-db/).
 
-## <a name="use-power-bi-reports-and-dashboards"></a>Použití sestav Power BI a řídicích panelů 
-Soubor JSON Volcano můžete vizualizovat z předchozího Azure Cosmos DB příkladu v Power BI Desktop a získat tak vizuální přehledy o datech. Podrobné pokyny jsou k dispozici v [článku Power BI](../../cosmos-db/powerbi-visualize.md). Tady jsou hlavní kroky:
+## <a name="use-power-bi-reports-and-dashboards"></a>Použití sestav a řídicích panelů Power BI 
+Soubor Volcano JSON můžete vizualizovat z předchozího příkladu Azure Cosmos DB v Power BI Desktopu a získat vizuální přehled o datech. Podrobné kroky jsou k dispozici v [článku Power BI](../../cosmos-db/powerbi-visualize.md). Zde jsou kroky na vysoké úrovni:
 
-1. Otevřete Power BI Desktop a vyberte **získat data**. Zadejte adresu URL jako: https://cahandson.blob.core.windows.net/samples/volcano.json.
-2. Měly by se zobrazit záznamy JSON importované jako seznam. Převeďte seznam na tabulku, aby Power BI s ní mohl pracovat.
-4. Rozbalte sloupce tak, že vyberete ikonu rozbalit (šipka).
-5. Všimněte si, že umístění je pole **záznamu** . Rozbalte záznam a vyberte pouze souřadnice. **Souřadnice** je sloupec seznamu.
-6. Přidejte nový sloupec, který převede sloupec souřadnic seznamu na sloupec **LatLong** s oddělovači v podobě čárky. Zřetězení dvou prvků v poli se seznamem souřadnic pomocí ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```vzorce.
-7. Převeďte sloupec **zvýšení úrovně** na typ Decimal a vyberte tlačítka pro **zavření** a **použití** .
+1. Otevřete Power BI Desktop a vyberte **Načíst data**. Zadejte adresu `https://cahandson.blob.core.windows.net/samples/volcano.json`URL jako: .
+2. Měli byste vidět záznamy JSON importované jako seznam. Převeďte seznam na tabulku, aby s ním Mohl Pracovat Power BI.
+4. Rozbalte sloupce výběrem ikony rozbalit (šipku).
+5. Všimněte si, že umístění je **pole záznam.** Rozbalte záznam a vyberte pouze souřadnice. **Souřadnice** je sloupec seznamu.
+6. Přidáním nového sloupce převedete sloupec souřadnic seznamu na sloupec **LatLong** oddělený čárkami. Zřetězit dva prvky v poli seznamu souřadnic pomocí vzorce ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```.
+7. Převeďte sloupec **Výška** na desetinné číslo a vyberte tlačítka **Zavřít** a **Aplikovat.**
 
-Místo předchozích kroků můžete vložit následující kód. Skriptuje kroky používané v Rozšířený editor v Power BI k zápisu transformací dat do dotazovacího jazyka.
+Namísto předchozích kroků můžete vložit následující kód. Skripty z kroků použitých v rozšířeném editoru v Power BI k zápisu transformace dat v dotazovacím jazyce.
 
 ```pqfl
 let
@@ -857,42 +857,42 @@ in
     #"Changed Type"
 ```
 
-Teď máte data v datovém modelu Power BI. Vaše Power BI Desktop instance by měla vypadat takto:
+Nyní máte data v datovém modelu Power BI. Instance Power BI Desktop by se měla zobrazit takto:
 
 ![Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
-Pomocí datového modelu můžete začít sestavovat sestavy a vizualizace. Pomocí kroků v [tomto Power BI článku](../../cosmos-db/powerbi-visualize.md#build-the-reports) sestavíte sestavu.
+Můžete začít vytvářet sestavy a vizualizace pomocí datového modelu. Pomocí kroků v [tomto článku power bi](../../cosmos-db/powerbi-visualize.md#build-the-reports) můžete vytvořit sestavu.
 
 ## <a name="scale-the-dsvm-dynamically"></a>Dynamické škálování DSVM 
-DSVM můžete škálovat nahoru a dolů tak, aby vyhovovala potřebám vašeho projektu. Pokud nepotřebujete virtuální počítač používat na večer nebo na víkendech, můžete virtuální počítač vypnout z [Azure Portal](https://portal.azure.com).
+Můžete vertikálně navýšit kapacitu dsvm nahoru a dolů tak, aby vyhovovalpotřebám vašeho projektu. Pokud virtuální počítač nepotřebujete používat ve večerních nebo o víkendech, můžete virtuální počítač vypnout z [portálu Azure](https://portal.azure.com).
 
 > [!NOTE]
-> Poplatky za výpočetní výkon se účtují, pokud použijete jenom tlačítko vypnout pro operační systém na VIRTUÁLNÍm počítači.  
+> Účtuje vám výpočetní poplatky, pokud použijete pouze tlačítko vypnutí operačního systému na virtuálním počítači.  
 > 
 > 
 
-Může se stát, že budete potřebovat zvládnout rozsáhlou analýzu a potřebujete větší kapacitu procesoru, paměti a disku. Pokud ano, můžete najít volbu velikosti virtuálních počítačů z hlediska PROCESORových jader, instancí založených na GPU pro obsáhlý Learning, kapacitu paměti a typy disků (včetně jednotek Solid-State), které splňují vaše výpočetní a rozpočtové požadavky. Úplný seznam virtuálních počítačů a jejich hodinové výpočetní ceny jsou k dispozici na stránce s cenami služby [Azure Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/) .
+Možná budete muset zpracovat některé rozsáhlé analýzy a potřebujete více kapacity procesoru, paměti nebo disku. Pokud ano, můžete najít výběr velikostí virtuálních počítačů z hlediska jader procesoru, instancí založených na GPU pro hloubkové učení, kapacitu paměti a typy disků (včetně jednotek SSD), které splňují vaše výpočetní a rozpočtové potřeby. Úplný seznam virtuálních počítačů spolu s jejich hodinovými cenami za výpočetní výkon je dostupný na [stránce s cenami virtuálních počítačů Azure.](https://azure.microsoft.com/pricing/details/virtual-machines/)
 
-Podobně může být potřeba snížit kapacitu pro zpracování virtuálních počítačů. (Například: přesunuli jsme hlavní zatížení do clusteru Hadoop nebo Spark.) Pak můžete rozšířit cluster od [Azure Portal](https://portal.azure.com) a přejít do nastavení instance virtuálního počítače. 
+Podobně může snížit vaše potřeba kapacity zpracování virtuálních počítačových společností. (Například: přesunuli jste hlavní úlohu do clusteru Hadoop nebo Spark.) Potom můžete vertikálně zmenšit kapacitu clusteru z [portálu Azure](https://portal.azure.com) a přejít na nastavení instance virtuálního počítače. 
 
-## <a name="add-more-tools"></a>Přidat další nástroje
-Nástroje předem připravené do DSVM mohou řešit mnoho běžných potřeb datových analýz. Tím ušetříte čas, protože nemusíte instalovat a konfigurovat prostředí jeden po druhém. Ušetří vám také peníze, protože platíte jenom za prostředky, které využijete.
+## <a name="add-more-tools"></a>Přidání dalších nástrojů
+Nástroje předem zabudované do dsvm může řešit mnoho běžných potřeb analýzy dat. To vám ušetří čas, protože není nutné instalovat a konfigurovat prostředí jeden po druhém. To také šetří peníze, protože budete platit pouze za zdroje, které používáte.
 
-K vylepšení svého analytického prostředí můžete použít další služby Azure Data and Analytics profilované v tomto článku. V některých případech možná budete potřebovat další nástroje, včetně některých vlastních partnerských nástrojů. Máte úplný přístup správce k virtuálnímu počítači, abyste mohli nainstalovat nové nástroje, které potřebujete. Můžete také nainstalovat další balíčky v Pythonu a r. nejsou předem nainstalované. Pro Python můžete použít buď ```conda```, nebo ```pip```. V případě jazyka R můžete použít ```install.packages()``` v konzole R nebo použít rozhraní IDE a vybrat **balíčky** > **instalaci balíčků**.
+Další datové a analytické služby Azure profilované v tomto článku můžete použít k vylepšení analytického prostředí. V některých případech můžete potřebovat další nástroje, včetně některých proprietárních partnerských nástrojů. Máte úplný přístup pro správu na virtuálním počítači k instalaci nových nástrojů, které potřebujete. Můžete také nainstalovat další balíčky v Pythonu a R, které nejsou předinstalované. Pro Python můžete použít ```conda``` ```pip```buď nebo . Pro R můžete ```install.packages()``` použít v konzole R nebo použít ide a vyberte **balíčky** > **instalační balíčky**.
 
 ## <a name="deep-learning"></a>Hloubkové učení
 
-Kromě ukázek založených na rozhraní můžete získat sadu komplexních návodů, které byly ověřeny na DSVM. Tyto návody vám pomůžou přejít na začátek vývoje aplikací s hloubkovým učením v doménách, jako jsou obrázky a porozumění textu nebo jazyka.   
+Kromě ukázky založené na rozhraní, můžete získat sadu komplexní návody, které byly ověřeny na DSVM. Tyto návody vám pomohou nastartovat vývoj aplikací s hloubkovým učením v doménách, jako je porozumění obrázkům a textu a jazykům.   
 
 
-- [Spouštění neuronovéch sítí napříč různými architekturami](https://github.com/ilkarman/DeepLearningFrameworks): Tento návod ukazuje, jak migrovat kód z jednoho rozhraní do jiného. Také ukazuje, jak porovnat modely a běhový výkon napříč platformami. 
+- [Spuštění neuronové sítě v různých architekturách](https://github.com/ilkarman/DeepLearningFrameworks): Tento návod ukazuje, jak migrovat kód z jednoho rozhraní do druhého. Také ukazuje, jak porovnat modely a výkon za běhu napříč rámci. 
 
-- Návod, [jak sestavit ucelené řešení pro detekci produktů v rámci imagí](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detekce obrázku je technika, která dokáže vyhledat a klasifikovat objekty v rámci imagí. Tato technologie umožňuje přinést velké výhody v mnoha obchodních doménách v reálném čase. Například prodejci, můžete použít tuto techniku k určení, který produkt a zákazníka má neexistoval z police. Tyto informace pomáhají zase úložiště spravovat inventář produktů. 
+- [Návod k vytvoření komplexního řešení pro detekci produktů v rámci bitových kopií](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Detekce obrazu je technika, která dokáže najít a klasifikovat objekty v rámci bitových kopií. Tato technologie má potenciál přinést obrovské odměny v mnoha reálných obchodních oblastech. Maloobchodníci mohou například tuto techniku použít k určení produktu, který zákazník vyzvedl z regálu. Tyto informace zase pomáhají ukládají spravovat zásoby produktů. 
 
-- [Obsáhlý Learning pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): v tomto kurzu se dozvíte, jak vytvořit model hloubkového učení pro detekci zvukových událostí v [datové sadě městských zvuků](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Poskytuje také přehled o tom, jak pracovat se zvukovými daty.
+- [Hluboké učení pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): Tento kurz ukazuje, jak trénovat model hlubokého učení pro detekci zvukových událostí v [datové sadě městských zvuků](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Poskytuje také přehled o tom, jak pracovat se zvukovými daty.
 
-- [Klasifikace textových dokumentů](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak vytvořit a vyškolit dvě neuronové síťové architektury: hierarchická síť s upozorněním a dlouhodobě krátkodobá paměť (LSTM). Tyto neuronové sítě pomocí rozhraní Keras API pro obsáhlý learning zařazoval dokumenty do textu. Keras je front-end až tři nejoblíbenější architektury hloubkového učení: Microsoft Cognitive Toolkit, TensorFlow a Theano.
+- [Klasifikace textových dokumentů](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak vytvořit a trénovat dvě architektury neuronové sítě: Hierarchická síť pozornosti a síť lstm (Long Term Memory). Tyto neuronové sítě používají rozhraní KERAS API pro hluboké učení ke klasifikaci textových dokumentů. Keras je front-end ke třem nejoblíbenějším rozhraním pro hluboké učení: Microsoft Cognitive Toolkit, TensorFlow a Theano.
 
 ## <a name="summary"></a>Souhrn
-Tento článek popisuje některé z věcí, které můžete provádět na Data Science Virtual Machine Microsoftu. Existuje mnoho dalších věcí, které můžete využít k tomu, aby DSVM efektivní analytické prostředí.
+Tento článek popisuje některé z věcí, které můžete dělat na Microsoft Data Science Virtual Machine. Existuje mnoho dalších věcí, které můžete udělat, aby se DSVM efektivní analytické prostředí.
 

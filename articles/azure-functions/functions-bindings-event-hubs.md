@@ -1,30 +1,30 @@
 ---
-title: Vazby Azure Event Hubs pro Azure Functions
-description: Naučte se používat aktivační události a vazby Azure Event Hubs v Azure Functions.
+title: Vazby Azure Event Hubs pro funkce Azure
+description: Naučte se používat azure event huby aktivační události a vazby v Azure Functions.
 author: craigshoemaker
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 543b566300ce56bc2d765087f9a9e269c5b0cc99
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586168"
 ---
-# <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Aktivační událost a vazby Azure Event Hubs pro Azure Functions
+# <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Azure Event Hubs aktivační události a vazby pro funkce Azure
 
-Tento článek vysvětluje, jak pracovat s [Event Hubsmi](../event-hubs/event-hubs-what-is-event-hubs.md) vazbami Azure pro Azure Functions. Azure Functions podporuje triggery a výstupní vazby pro Event Hubs.
+Tento článek vysvětluje, jak pracovat s [vazby Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) pro Funkce Azure. Funkce Azure podporuje aktivační a výstupní vazby pro centra událostí.
 
 | Akce | Typ |
 |--------|------|
-| Reakce na události odeslané do datového proudu událostí centra událostí. | [Trigger](./functions-bindings-event-hubs-trigger.md) |
+| Reagujte na události odeslané do datového proudu událostí centra událostí centra událostí. | [Trigger](./functions-bindings-event-hubs-trigger.md) |
 | Zápis událostí do datového proudu událostí | [Výstupní vazba](./functions-bindings-event-hubs-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Reakce na události odeslané do datového proudu událostí centra událostí (aktivační událost)](./functions-bindings-event-hubs-trigger.md)
+- [Reakce na události odeslané do datového proudu událostí centra událostí (Aktivační událost)](./functions-bindings-event-hubs-trigger.md)
 - [Zápis událostí do datového proudu událostí (výstupní vazba)](./functions-bindings-event-hubs-output.md)

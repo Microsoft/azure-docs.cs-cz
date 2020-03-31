@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 27da8c70dc64312506269cd1a15aa5b669842dfd
+  ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "70309291"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80365433"
 landingContent:
 - title: Informace o službě Azure Database for MySQL
   linkLists:
@@ -23,7 +23,7 @@ landingContent:
       url: overview.md
   - linkListType: whats-new
     links:
-    - text: Podívejte se na náš blog.
+    - text: Přechod na náš blog
       url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
 - title: Vytvoření serveru
   linkLists:
@@ -138,8 +138,8 @@ landingContent:
   - linkListType: reference
     links:
     - text: Referenční informace pro vývojáře v Azure CLI
-      url: /rest/api/mysql/
-    - text: Referenční informace pro vývojáře v REST API
       url: /cli/azure/mysql
+    - text: Referenční informace pro vývojáře v REST API
+      url: /rest/api/mysql/
     - text: Šablony Azure Resource Manageru
       url: /azure/templates/microsoft.dbformysql/allversions

@@ -3,7 +3,7 @@ title: Azure SQL Database – monitorování a ladění výkonu
 summary: Azure SQL Database poskytuje nástroje, které pomáhají shromažďovat metriky a diagnostické informace pro monitorování vaší databáze a zlepšení jejího výkonu.
 metadata:
   title: Dokumentace k monitorování a optimalizaci služby Azure SQL Database
-  description: Azure SQL Database poskytuje nástroje, které pomáhají shromažďovat metriky a diagnostické informace pro monitorování vaší databáze a zlepšení jejího výkonu.
+  description: Seznamte se s nástroji pro ladění a optimalizaci výkonu Azure SQL Database, které vám pomohou shromažďovat metriky a diagnostické údaje a zvýšit výkon databáze.
   ms.service: sql-database
   ms.subservice: performance
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: CarlRabeler
   ms.author: carlrab
   ms.date: 03/10/2020
-  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bc2c2a64cfce8bde6f04835bf090b632b8839a6f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79208898"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80373120"
 landingContent:
 - title: Informace o monitorování a optimalizaci výkonu
   linkLists:

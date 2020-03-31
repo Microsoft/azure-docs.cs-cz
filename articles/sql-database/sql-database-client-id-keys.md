@@ -1,6 +1,6 @@
 ---
-title: Získat hodnoty pro ověřování aplikací
-description: Vytvoří instanční objekt pro přístup k SQL Database z kódu.
+title: Získání hodnot pro ověřování aplikací
+description: Vytvořte instanční objekt pro přístup k databázi SQL z kódu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,25 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: d357740d340b248859d6dfadf73f83b6e6bb8014
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5b2c64660f37745f5b13d53559037e84ca20c47b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421321"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476962"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Získání požadovaných hodnot pro ověření aplikace pro přístup k SQL Database z kódu
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Získání požadovaných hodnot pro ověřování aplikace pro přístup k databázi SQL z kódu
 
-Pokud chcete vytvořit a spravovat SQL Database z kódu, musíte aplikaci zaregistrovat v doméně Azure Active Directory (AAD) v předplatném, ve kterém se vytvořily prostředky Azure.
+Chcete-li vytvořit a spravovat databázi SQL z kódu, musíte zaregistrovat aplikaci v doméně Azure Active Directory (AAD) v předplatném, kde byly vytvořeny vaše prostředky Azure.
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Vytvoření instančního objektu pro přístup k prostředkům z aplikace
 
-Následující příklady vytvoří aplikaci služby Active Directory (AD) a instanční objekt, který potřebujeme k ověření naší C# aplikace. Skript vypíše hodnoty potřebné pro předchozí ukázku v jazyce C#. Podrobné informace najdete v tématu [Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Následující příklady vytvořit aplikaci služby Active Directory (AD) a instanční objekt, který potřebujeme k ověření naší aplikace C#. Skript vypíše hodnoty potřebné pro předchozí ukázku v jazyce C#. Podrobné informace najdete v tématu [Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
+> Modul Správce prostředků Azure (RM) prostředí PowerShell je stále podporovaný službou Azure SQL Database, ale veškerý budoucí vývoj je pro modul Az.Sql. Modul AzureRM bude nadále dostávat opravy chyb nejméně do prosince 2020.  Argumenty pro příkazy v modulu Az a v modulech AzureRm jsou v podstatě identické. Další informace o jejich kompatibilitě [najdete v tématu Představení nového modulu Azure PowerShell Az](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 # sign in to Azure
@@ -63,9 +63,9 @@ Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
 Write-Output "_applicationSecret:" $secret
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azure-cli
+```azurecli
 # sign in to Azure
 az login
 
@@ -101,5 +101,5 @@ Write-Output "_applicationSecret:" $secret
 
 ## <a name="see-also"></a>Viz také
 
-[Vytvoření databáze SQL pomocíC#](sql-database-get-started-csharp.md)  
-[Připojení k SQL Database pomocí ověřování Azure Active Directory](sql-database-aad-authentication.md)
+[Vytvoření databáze SQL s C #](sql-database-get-started-csharp.md)  
+[Připojení k databázi SQL pomocí ověřování služby Azure Active Directory](sql-database-aad-authentication.md)

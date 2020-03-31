@@ -1,6 +1,6 @@
 ---
-title: Dotazování Azure Event Grid předplatných
-description: Tento článek popisuje, jak vypsat Event Grid předplatných ve vašem předplatném Azure. Na základě typu předplatného zadáte různé parametry.
+title: Dotaz na předplatná Azure Event Grid
+description: Tento článek popisuje, jak vypsat odběry služby Event Grid ve vašem předplatném Azure. Zadáte různé parametry na základě typu předplatného.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721536"
 ---
-# <a name="query-event-grid-subscriptions"></a>Dotazování Event Grid předplatných 
+# <a name="query-event-grid-subscriptions"></a>Odběry služby Query Event Grid 
 
-Tento článek popisuje, jak zobrazit seznam předplatných Event Grid ve vašem předplatném Azure. Při dotazování stávajících předplatných Event Grid je důležité pochopit různé typy předplatných. Můžete zadat různé parametry založené na typu předplatného, které chcete získat.
+Tento článek popisuje, jak vypsat odběry služby Event Grid ve vašem předplatném Azure. Při dotazování na vaše stávající odběry Event Grid, je důležité pochopit různé typy předplatných. Zadáte různé parametry na základě typu předplatného, které chcete získat.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-groups-and-azure-subscriptions"></a>Skupiny prostředků a předplatná Azure
 
-Předplatná Azure a skupiny prostředků nejsou prostředky Azure. Proto odběry služby Event Grid pro skupiny prostředků nebo předplatná Azure nemají stejné vlastnosti jako odběry služby Event Grid pro prostředky Azure. Odběry služby Event Grid do skupin prostředků nebo předplatných Azure se považují za globální.
+Předplatná Azure a skupiny prostředků nejsou prostředky Azure. Proto odběry mřížky událostí pro skupiny prostředků nebo předplatná Azure nemají stejné vlastnosti jako odběry gridu událostí pro prostředky Azure. Předplatná mřížky událostí pro skupiny prostředků nebo předplatná Azure jsou považovány za globální.
 
-Pokud chcete získat odběry služby Event Grid pro předplatné Azure a skupiny prostředků, nemusíte zadávat žádné parametry. Ujistěte se, že jste vybrali předplatné Azure, které chcete zadat dotaz. Následující příklady nezískají odběry služby Event Grid pro vlastní témata nebo prostředky Azure.
+Chcete-li získat předplatná mřížky událostí pro předplatné Azure a jeho skupiny prostředků, nemusíte zadejte žádné parametry. Ujistěte se, že jste vybrali předplatné Azure, na které se chcete dotazovat. V následujících příkladech nezískáte odběry mřížky událostí pro vlastní témata nebo prostředky Azure.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -40,7 +40,7 @@ Set-AzContext -Subscription "My Azure Subscription"
 Get-AzEventGridSubscription
 ```
 
-Pokud chcete získat odběry služby Event Grid pro předplatné Azure, zadejte typ tématu **Microsoft. Resources. Subscriptions**.
+Chcete-li získat předplatná mřížky událostí pro předplatné Azure, zadejte typ tématu **Microsoft.Resources.Subscriptions**.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -54,7 +54,7 @@ Pokud používáte PowerShell, použijte:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
-Pokud chcete získat odběry služby Event Grid pro všechny skupiny prostředků v rámci předplatného Azure, zadejte typ tématu **Microsoft. Resources. ResourceGroups**.
+Chcete-li získat odběry mřížky událostí pro všechny skupiny prostředků v rámci předplatného Azure, zadejte typ tématu **Microsoft.Resources.ResourcesGroups**.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -68,7 +68,7 @@ Pokud používáte PowerShell, použijte:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 ```
 
-Pokud chcete získat odběry služby Event Grid pro zadanou skupinu prostředků, zadejte jako parametr název skupiny prostředků.
+Chcete-li získat odběry mřížky událostí pro zadanou skupinu prostředků, zadejte jako parametr název skupiny prostředků.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -84,9 +84,9 @@ Get-AzEventGridSubscription -ResourceGroupName myResourceGroup
 
 ## <a name="custom-topics-and-azure-resources"></a>Vlastní témata a prostředky Azure
 
-Vlastní témata služby Event Grid jsou prostředky Azure. Proto se pro vlastní témata a další prostředky, jako je například účet Blob Storage, dotazuje odběry služby Event Grid stejným způsobem. Pokud chcete získat odběry služby Event Grid pro vlastní témata, musíte zadat parametry, které identifikují prostředek, nebo Identifikujte umístění prostředku. Pro prostředky v rámci vašeho předplatného Azure není možné široce dotazovat odběry služby Event Grid.
+Vlastní témata mřížky událostí jsou prostředky Azure. Proto dotaz předplatných mřížky událostí pro vlastní témata a další prostředky, jako je účet úložiště objektů blob, stejným způsobem. Chcete-li získat odběry mřížky událostí pro vlastní témata, musíte zadat parametry, které identifikují prostředek nebo identifikují umístění prostředku. Není možné široce dotaz ovat předplatná mřížky událostí pro prostředky v rámci předplatného Azure.
 
-Chcete-li získat odběry služby Event Grid pro vlastní témata a další prostředky v umístění, zadejte název umístění.
+Chcete-li získat odběry mřížky událostí pro vlastní témata a další prostředky v umístění, zadejte název umístění.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -100,7 +100,7 @@ Pokud používáte PowerShell, použijte:
 Get-AzEventGridSubscription -Location westus2
 ```
 
-Pokud chcete získat odběry pro vlastní témata pro umístění, zadejte umístění a typ tématu **Microsoft. EventGrid. témat**.
+Chcete-li získat odběry vlastních témat pro umístění, zadejte umístění a typ tématu **Microsoft.EventGrid.Topics**.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -114,7 +114,7 @@ Pokud používáte PowerShell, použijte:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
-Chcete-li získat odběry účtů úložiště pro umístění, zadejte umístění a typ tématu **Microsoft. Storage. StorageAccounts**.
+Chcete-li získat předplatná pro účty úložiště pro umístění, zadejte umístění a typ tématu **Microsoft.Storage.StorageAccounts**.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -128,7 +128,7 @@ Pokud používáte PowerShell, použijte:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
 ```
 
-Pokud chcete získat odběry služby Event Grid pro vlastní téma, zadejte název vlastního tématu a název skupiny prostředků.
+Chcete-li získat odběry mřížky událostí pro vlastní téma, zadejte název vlastního tématu a název jeho skupiny prostředků.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -142,7 +142,7 @@ Pokud používáte PowerShell, použijte:
 Get-AzEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
 ```
 
-Pokud chcete získat odběry služby Event Grid pro konkrétní prostředek, zadejte ID prostředku.
+Chcete-li získat odběry mřížky událostí pro konkrétní prostředek, zadejte ID prostředku.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -160,6 +160,6 @@ Get-AzEventGridSubscription -ResourceId $resourceid
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).
-* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
-* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).
+* Informace o doručení události a opakování zpráv [event grid u zpráv a opakování](delivery-and-retry.md).
+* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
+* Pokud chcete rychle začít používat Event Grid, přečtěte [si tématu Vytváření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).

@@ -1,6 +1,6 @@
 ---
-title: Zaznamenání dat z Event Hubs do Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Použití Azure Data Lake Storage Gen1 k zaznamenání dat z Event Hubs
+title: Zachyťte data z centra událostí do Azure Data Lake Storage Gen1 | Dokumenty společnosti Microsoft
+description: Použití Azure Data Lake Storage Gen1 k zachycení dat z event hubů
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,116 +12,116 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265659"
 ---
-# <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Použití Azure Data Lake Storage Gen1 k zaznamenání dat z Event Hubs
+# <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Použití Azure Data Lake Storage Gen1 k zachycení dat z event hubů
 
-Naučte se používat Azure Data Lake Storage Gen1 k zachycení dat přijatých službou Azure Event Hubs.
+Zjistěte, jak pomocí Azure Data Lake Storage Storage Gen1 používat k sběru dat přijatých v Azure Event Hubs.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
+* **Účet Azure Data Lake Storage Gen1**. Pokyny k jeho vytvoření najdete [v tématu Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
 
-*  **Event Hubs obor názvů**. Pokyny najdete v tématu [Vytvoření oboru názvů Event Hubs](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Ujistěte se, že účet Data Lake Storage Gen1 a obor názvů Event Hubs jsou ve stejném předplatném Azure.
+*  **Obor názvů Event Hubs**. Pokyny naleznete [v tématu Vytvoření oboru názvů Centra událostí](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Ujistěte se, že účet Data Lake Storage Gen1 a obor názvů Event Hubs jsou ve stejném předplatném Azure.
 
 
-## <a name="assign-permissions-to-event-hubs"></a>Přiřazení oprávnění k Event Hubs
+## <a name="assign-permissions-to-event-hubs"></a>Přiřazení oprávnění k centru událostí
 
-V této části vytvoříte složku v rámci účtu, ve kterém chcete data zachytit z Event Hubs. Také přiřadíte oprávnění Event Hubs, aby bylo možné zapisovat data do účtu Data Lake Storage Gen1. 
+V této části vytvoříte složku v rámci účtu, kde chcete zachytit data z centra událostí. Také přiřazujete oprávnění k event hubům, aby mohl zapisovat data do účtu Data Lake Storage Gen1. 
 
-1. Otevřete Data Lake Storage Gen1 účet, ze kterého chcete data zachytit Event Hubs a potom klikněte na **Průzkumník dat**.
+1. Otevřete účet Data Lake Storage Gen1, kde chcete zachytit data z centra událostí, a klikněte na **Průzkumník a dat .**
 
-    ![Průzkumník dat Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Průzkumník dat Data Lake Storage Gen1")
+    ![Průzkumník dat Gen1 úložiště datového jezera](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Průzkumník dat Gen1 úložiště datového jezera")
 
-1.  Klikněte na **Nová složka** a pak zadejte název složky, do které chcete zachytit data.
+1.  Klikněte na **Nová složka** a zadejte název složky, do které chcete data zachytit.
 
-    ![Vytvoří novou složku v Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Vytvoří novou složku v Data Lake Storage Gen1")
+    ![Vytvoření nové složky v zařízení Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Vytvoření nové složky v zařízení Data Lake Storage Gen1")
 
-1. Přiřaďte oprávnění v kořenu Data Lake Storage Gen1. 
+1. Přiřaďte oprávnění v kořenovém adresáři Data Lake Storage Gen1. 
 
-    a. Klikněte na **Průzkumník dat**, vyberte kořen účtu Data Lake Storage Gen1 a pak klikněte na **přístup**.
+    a. Klepněte na **Průzkumník dat**, vyberte kořenový adresář účtu Data Lake Storage Gen1 a klepněte na tlačítko **Access**.
 
-    ![Přiřadit oprávnění pro kořen Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Přiřadit oprávnění pro kořen Data Lake Storage Gen1")
+    ![Přiřazení oprávnění pro kořenový adresář Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Přiřazení oprávnění pro kořenový adresář Data Lake Storage Gen1")
 
-    b. V části **přístup**klikněte na **Přidat**, klikněte na **Vybrat uživatele nebo skupinu**a vyhledejte `Microsoft.EventHubs`. 
+    b. V **části Access**klepněte na tlačítko **Přidat**, klepněte na tlačítko Vybrat uživatele **nebo skupinu**a vyhledejte položku `Microsoft.EventHubs`. 
 
-    ![Přiřadit oprávnění pro kořen Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Přiřadit oprávnění pro kořen Data Lake Storage Gen1")
+    ![Přiřazení oprávnění pro kořenový adresář Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Přiřazení oprávnění pro kořenový adresář Data Lake Storage Gen1")
     
-    Klikněte na **Vybrat**.
+    Klepněte na **tlačítko Vybrat**.
 
-    c. V části **přiřadit oprávnění**klikněte na **vybrat oprávnění**. Nastavte **oprávnění** na **spouštění**. Nastavte **Přidat do** **této složky a všech podřízených objektů**. Nastavení **Přidat jako** pro **položku oprávnění k přístupu a výchozí položku oprávnění**.
+    c. V části **Přiřadit oprávnění**klepněte na **položku Vybrat oprávnění**. Nastavte **oprávnění** ke **spuštění**. Nastavit **přidat do** této **složky a všechny podřízené položky**. Nastavte **možnost Přidat jako** **položku přístupových oprávnění a výchozí položku oprávnění**.
 
     > [!IMPORTANT]
-    > Když vytváříte novou hierarchii složek pro zaznamenávání dat přijatých službou Azure Event Hubs, jedná se o snadný způsob, jak zajistit přístup do cílové složky.  Nicméně přidávání oprávnění do všech podřízených složek nejvyšší úrovně s mnoha podřízenými soubory a složkami může trvat dlouhou dobu.  Pokud kořenová složka obsahuje velký počet souborů a složek, může být rychlejší přidat do každé složky v cestě k konečné cílové složce oprávnění **Execute** `Microsoft.EventHubs` jednotlivě. 
+    > Při vytváření nové hierarchie složek pro sběr dat přijatých službou Azure Event Hubs je to snadný způsob, jak zajistit přístup k cílové složce.  Přidání oprávnění pro všechny podřízené složky nejvyšší úrovně s mnoha podřízenými soubory a složkami však může trvat dlouhou dobu.  Pokud kořenová složka obsahuje velký počet souborů a složek, může `Microsoft.EventHubs` být rychlejší přidat oprávnění ke **spuštění** jednotlivě do každé složky v cestě k cílové složce. 
 
-    ![Přiřadit oprávnění pro kořen Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Přiřadit oprávnění pro kořen Data Lake Storage Gen1")
+    ![Přiřazení oprávnění pro kořenový adresář Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Přiřazení oprávnění pro kořenový adresář Data Lake Storage Gen1")
 
     Klikněte na tlačítko **OK**.
 
-1. Přiřaďte oprávnění pro složku pod účtem Data Lake Storage Gen1, kde chcete zachytit data.
+1. Přiřaďte oprávnění pro složku v účtu Data Lake Storage Gen1, kde chcete zachytit data.
 
-    a. Klikněte na **Průzkumník dat**, vyberte složku v účtu Data Lake Storage Gen1 a pak klikněte na **přístup**.
+    a. Klepněte na **Průzkumník dat**, vyberte složku v účtu Data Lake Storage Gen1 a klepněte na tlačítko **Access**.
 
-    ![Přiřadit oprávnění pro složku Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Přiřadit oprávnění pro složku Data Lake Storage Gen1")
+    ![Přiřazení oprávnění pro složku Gen1 úložiště datového jezera](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Přiřazení oprávnění pro složku Gen1 úložiště datového jezera")
 
-    b. V části **přístup**klikněte na **Přidat**, klikněte na **Vybrat uživatele nebo skupinu**a vyhledejte `Microsoft.EventHubs`. 
+    b. V **části Access**klepněte na tlačítko **Přidat**, klepněte na tlačítko Vybrat uživatele **nebo skupinu**a vyhledejte položku `Microsoft.EventHubs`. 
 
-    ![Přiřadit oprávnění pro složku Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Přiřadit oprávnění pro složku Data Lake Storage Gen1")
+    ![Přiřazení oprávnění pro složku Gen1 úložiště datového jezera](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Přiřazení oprávnění pro složku Gen1 úložiště datového jezera")
     
-    Klikněte na **Vybrat**.
+    Klepněte na **tlačítko Vybrat**.
 
-    c. V části **přiřadit oprávnění**klikněte na **vybrat oprávnění**. Nastavte **oprávnění** ke **čtení, zápisu** a **spouštění**. Nastavte **Přidat do** **této složky a všech podřízených objektů**. Nakonec nastavte položku **Přidat jako** do **položky oprávnění k přístupu a výchozí položku oprávnění**.
+    c. V části **Přiřadit oprávnění**klepněte na **položku Vybrat oprávnění**. Nastavte **oprávnění** ke **čtení, zápisu** a **spouštění**. Nastavit **přidat do** této **složky a všechny podřízené položky**. Nakonec nastavte **možnost Přidat jako** **položku přístupového oprávnění a výchozí položku oprávnění**.
 
-    ![Přiřadit oprávnění pro složku Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Přiřadit oprávnění pro složku Data Lake Storage Gen1")
+    ![Přiřazení oprávnění pro složku Gen1 úložiště datového jezera](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Přiřazení oprávnění pro složku Gen1 úložiště datového jezera")
     
     Klikněte na tlačítko **OK**. 
 
-## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>Konfigurace Event Hubs k zaznamenání dat do Data Lake Storage Gen1
+## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>Konfigurace rozbočovačů událostí pro sběr dat do úložiště datového jezera Gen1
 
-V této části vytvoříte centrum událostí v oboru názvů Event Hubs. Také nakonfigurujete centrum událostí, aby zachytával data na účet Azure Data Lake Storage Gen1. V této části se předpokládá, že jste již vytvořili obor názvů Event Hubs.
+V této části vytvoříte centrum událostí v oboru názvů Event Hubs. Centrum událostí také nakonfigurujete tak, aby zaznamenávala data do účtu Azure Data Lake Storage Gen1. Tato část předpokládá, že jste již vytvořili obor názvů Event Hubs.
 
-1. V podokně **přehledu** oboru názvů Event Hubs klikněte na **+ centrum událostí**.
+1. V podokně **Přehled** oboru názvů Event Hubs klikněte na **+ Event Hub**.
 
-    ![Vytvořit centrum událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Vytvořit centrum událostí")
+    ![Vytvoření centra událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Vytvoření centra událostí")
 
-1. Zadejte následující hodnoty pro konfiguraci Event Hubs k zaznamenání dat do Data Lake Storage Gen1.
+1. Zadejte následující hodnoty pro konfiguraci centra událostí pro sběr dat do data Lake Storage Gen1.
 
-    ![Vytvořit centrum událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Vytvořit centrum událostí")
+    ![Vytvoření centra událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Vytvoření centra událostí")
 
     a. Zadejte název centra událostí.
     
-    b. Pro tento kurz nastavte výchozí hodnoty **počet oddílů** a **uchování zpráv** .
+    b. V tomto kurzu nastavte **počet oddílů** a **uchovávání zpráv** na výchozí hodnoty.
     
-    c. Nastavte **Capture** na **zapnuto**. Nastavte **časový interval** (jak často se má zachytit) a **velikost okna** (velikost dat k zachycení). 
+    c. Nastavit **zachycení** **na zapnuto**. Nastavte **časové okno** (jak často se má zachytit) a **velikost ní (velikost** dat pro zachycení). 
     
-    d. V poli **zprostředkovatel zachytávání**vyberte **Azure Data Lake Store** a potom vyberte účet Data Lake Storage Gen1, který jste vytvořili dříve. Do pole **cesta Data Lake**zadejte název složky, kterou jste vytvořili v účtu Data Lake Storage Gen1. Stačí zadat relativní cestu ke složce.
+    d. V **části Zprostředkovatel pro digitalizaci**vyberte Azure Data Lake **Store** a pak vyberte účet Data Lake Storage Gen1, který jste vytvořili dříve. V **části Cesta k datovému jezeru**zadejte název složky, kterou jste vytvořili, do účtu Data Lake Storage Gen1. Stačí zadat relativní cestu ke složce.
 
-    e. Ponechte **vzorové soubory ve formátu zachycení** na výchozí hodnotu. Tato možnost určuje strukturu složek, která je vytvořena v rámci složky Capture.
+    e. Formáty **názvů souborů pro sběr vzorků ponechejte** na výchozí hodnotě. Tato možnost určuje strukturu složek, která je vytvořena ve složce pro digitalizaci.
 
-    f. Klikněte na možnost **Vytvořit**.
+    f. Klikněte na **Vytvořit**.
 
-## <a name="test-the-setup"></a>Otestování instalačního programu
+## <a name="test-the-setup"></a>Otestujte nastavení
 
-Řešení teď můžete testovat odesláním dat do centra událostí Azure. Postupujte podle pokynů v tématu [odeslání událostí do Azure Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Jakmile začnete odesílat data, zobrazí se data odrážející se v Data Lake Storage Gen1 pomocí zadané struktury složek. Například se zobrazí struktura složky, jak je znázorněno na následujícím snímku obrazovky, ve vašem účtu Data Lake Storage Gen1.
+Teď můžete otestovat řešení odesláním dat do Centra událostí Azure. Postupujte podle pokynů na [webu Odeslat události do centra Událostí Azure](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Jakmile začnete odesílat data, uvidíte data, která se projeví v data Lake Storage Gen1 pomocí struktury složek, kterou jste zadali. Například se zobrazí struktura složek, jak je znázorněno na následujícím snímku obrazovky, ve vašem účtu Data Lake Storage Gen1.
 
-![Ukázková data EventHub v Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Ukázková data EventHub v Data Lake Storage Gen1")
+![Ukázková data EventHubu v úložišti datového jezera Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Ukázková data EventHubu v úložišti datového jezera Gen1")
 
 > [!NOTE]
-> I když nepřijdete o zprávy Event Hubs, Event Hubs zapisuje prázdné soubory s pouze hlavičkami do účtu Data Lake Storage Gen1. Soubory jsou zapsány ve stejném časovém intervalu, který jste zadali při vytváření Event Hubs.
+> I v případě, že nemáte zprávy přicházející do event hubů, Event Hubs zapisuje prázdné soubory pouze s hlavičkami do účtu Gen1 úložiště datového jezera. Soubory jsou zapsány ve stejném časovém intervalu, který jste zadali při vytváření centra událostí.
 > 
 >
 
-## <a name="analyze-data-in-data-lake-storage-gen1"></a>Analyzovat data v Data Lake Storage Gen1
+## <a name="analyze-data-in-data-lake-storage-gen1"></a>Analýza dat v úložišti datových jezer Gen1
 
-Jakmile jsou data v Data Lake Storage Gen1, můžete spouštět analytické úlohy pro zpracování a zpracovávejteí dat. Postup k tomu, jak to udělat pomocí Azure Data Lake Analytics, najdete v tématu [USQL Avro](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) .
+Jakmile jsou data v Data Lake Storage Gen1, můžete spustit analytické úlohy pro zpracování a zpracování dat. Podívejte se na [příklad USQL Avro O](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) tom, jak to udělat pomocí Azure Data Lake Analytics.
   
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
-* [Kopírování dat z objektů blob Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [Kopírování dat z objektů BLOB úložiště Azure do data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

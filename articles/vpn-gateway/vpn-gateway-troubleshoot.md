@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN Gateway: řešení potíží s konfiguracemi a připojeními'
-description: Tento článek vám pomůže s odkazy na články, které vám pomůžou vyřešit problémy s konfigurací VPN Gateway, připojením a ověřením propustnosti.
+title: 'Brána Azure VPN: Poradce při potížích s konfiguracemi a připojeními'
+description: Tento článek vám pomůže propojit s články k řešení potíží s konfigurací brány VPN, připojením a ověřením propustnosti.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,26 +8,26 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: cherylmc
 ms.openlocfilehash: d73bc8e9c39c14a254e8f7bae1d7b1a96a6c3225
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780160"
 ---
-# <a name="troubleshoot-vpn-gateway"></a>Řešení potíží s VPN Gateway
+# <a name="troubleshoot-vpn-gateway"></a>Poradce při potížích s bránou VPN
 
-Připojení VPN Gateway mohou selhat z nejrůznějších důvodů. Tento článek obsahuje odkazy, které vám pomohou začít s řešením potíží. Úplný seznam najdete v článcích, které jsou obsaženy v obsahu v části **řešení potíží**, nalevo od této stránky.
+Připojení brány VPN může selhat z různých důvodů. Tento článek obsahuje odkazy, které vám pomohou začít s odstraňováním potíží. Úplný seznam naleznete v článcích obsažených v obsahu v části **Poradce při potížích**nalevo od této stránky.
 
-## <a name="troubleshooting-scenarios-and-solutions"></a>Scénáře řešení potíží a řešení
+## <a name="troubleshooting-scenarios-and-solutions"></a>Řešení potíží se scénáři a řešeními
 
-* [Ověření propustnosti sítě VPN do virtuální sítě](vpn-gateway-validate-throughput-to-vnet.md)<br>Připojení brány VPN umožňuje vytvořit zabezpečené připojení mezi různými místy Virtual Network v rámci Azure a místní IT infrastruktury. Tento článek ukazuje, jak ověřit propustnost sítě z místních prostředků na virtuální počítač Azure (VM). Poskytuje také pokyny k odstraňování potíží.
+* [Ověření propustnosti sítě VPN do virtuální sítě](vpn-gateway-validate-throughput-to-vnet.md)<br>Připojení brány VPN umožňuje navázat zabezpečené a mezimístní připojení mezi virtuální sítí v rámci Azure a místní IT infrastrukturou. Tento článek ukazuje, jak ověřit propustnost sítě z místních prostředků do virtuálního počítače Azure .... Poskytuje také pokyny pro řešení potíží.
 
-* [Nastavení zařízení VPN a brány firewall](vpn-gateway-third-party-settings.md)<br>Tento článek poskytuje několik navrhovaných řešení pro zařízení VPN a brány firewall třetích stran, která se používají s VPN Gateway. Technickou podporu pro zařízení VPN a brány firewall třetích stran zajišťuje dodavatel zařízení.
+* [Nastavení zařízení VPN a Firewall](vpn-gateway-third-party-settings.md)<br>Tento článek obsahuje několik navrhovaných řešení pro zařízení VPN nebo brány firewall jiných výrobců, která se používají s bránou VPN Gateway. Technickou podporu pro zařízení VPN nebo brány firewall jiných výrobců poskytuje dodavatel zařízení.
 
-* [Připojení typu Point-to-Site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)<br>V tomto článku jsou uvedené běžné problémy s připojením Point-to-site, se kterými se můžete setkat. Popisuje také možné příčiny a řešení těchto problémů.
+* [Připojení typu Point-to-Site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)<br>Tento článek uvádí běžné problémy s připojením bodu k webu, ke kterým může dojít. Zabývá se také možnými příčinami a řešeními těchto problémů.
 
-* [Připojení typu Site-to-Site](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>Po nakonfigurování připojení VPN typu Site-to-site mezi místní sítí a virtuální sítí Azure se připojení VPN náhle zastaví a nebude možné ho znovu připojit. Tento článek popisuje kroky pro řešení potíží, které vám pomůžou tento problém vyřešit.
+* [Připojení typu Site-to-Site](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>Po konfiguraci připojení VPN mezi místní sítí a virtuální sítí Azure připojení VPN náhle přestane fungovat a nelze je znovu připojit. Tento článek obsahuje postup řešení potíží, který vám pomůže tento problém vyřešit.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento postup můžete použít také k [ověření připojení virtuální sítě a VPN](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections).
+Pomocí těchto kroků můžete také [ověřit připojení virtuální sítě a VPN](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections).

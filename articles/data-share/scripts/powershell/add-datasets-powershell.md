@@ -1,6 +1,6 @@
 ---
-title: 'Skript prostředí PowerShell: Přidání objektu BLOB data do sdílené složky Azure | Microsoft Docs'
-description: Tento skript PowerShellu přidá datovou sadu objektů blob do existující sdílené složky.
+title: 'Skript PowerShellu: Přidání datové sady objektů blob do sdílené složky dat Azure | Dokumenty společnosti Microsoft'
+description: Tento skript prostředí PowerShell přidá datovou sadu objektů blob do existující sdílené složky.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 95a10b112c9f6448c437f20ee95f808632a31d2d
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70307303"
 ---
-# <a name="use-powershell-to-create-a-data-share-in-azure"></a>Použití PowerShellu k vytvoření sdílené složky dat v Azure
+# <a name="use-powershell-to-create-a-data-share-in-azure"></a>Vytvoření sdílené složky dat v Azure pomocí PowerShellu
 
-Tento skript PowerShellu přidá datovou sadu objektů blob do existující sdílené složky dat.
+Tento skript prostředí PowerShell přidá datovou sadu objektů blob do existující sdílené složky dat.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -44,11 +44,11 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | Přidá datovou sadu do sdílené složky dat. |
+| [Nový-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | Přidá datovou sadu do sdílené složky dat. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázkové skripty PowerShellu pro sdílení dat Azure najdete v [ukázkách Azure Data Share PowerShell](../../samples-powershell.md).
+Další ukázky skriptu Azure Data Share PowerShellu najdete ve [ukázkách Prostředí PowerShell Azure Data Share](../../samples-powershell.md).

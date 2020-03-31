@@ -1,46 +1,46 @@
 ---
-title: Odepřít přístup k veřejné síti – Azure Portal-Azure Database for MySQL
-description: Naučte se konfigurovat přístup k veřejné síti pomocí Azure Portal pro Azure Database for MySQL
+title: Odepřít přístup k veřejné síti – portál Azure – databáze Azure pro MySQL
+description: Přečtěte si, jak nakonfigurovat možnost Odepřít přístup k veřejné síti pomocí portálu Azure pro databázi Azure pro MySQL.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: b5f93f3a3583900810ca75f925c6a88df9102652
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79374950"
 ---
-# <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Odepřít přístup k veřejné síti v Azure Database for MySQL pomocí Azure Portal
+# <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Odepření přístupu k veřejné síti v Azure Database for MySQL pomocí portálu Azure
 
-Tento článek popisuje, jak můžete nakonfigurovat server Azure Database for MySQL tak, aby odepřel všechny veřejné konfigurace a povoloval jenom připojení prostřednictvím privátních koncových bodů, aby se zvýšilo zabezpečení sítě.
+Tento článek popisuje, jak můžete nakonfigurovat Azure Database for MySQL server odepřít všechny veřejné konfigurace a povolit pouze připojení prostřednictvím privátní koncové body k dalšímu zvýšení zabezpečení sítě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení této příručce s postupy, potřebujete:
+Chcete-li dokončit tento návod, potřebujete:
 
-* [Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
+* [Databáze Azure pro MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>Nastavit přístup k veřejné síti odepřít
+## <a name="set-deny-public-network-access"></a>Nastavit odepřít přístup k veřejné síti
 
-Pomocí těchto kroků nastavte přístup k veřejné síti serveru MySQL:
+Chcete-li nastavit přístup k veřejné síti serveru MySQL, postupujte takto:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for MySQL server.
+1. Na [webu Azure Portal](https://portal.azure.com/)vyberte existující Azure Database for MySQL server.
 
-1. Na stránce serveru MySQL v části **Nastavení**klikněte na **zabezpečení připojení** . tím otevřete stránku konfigurace zabezpečení připojení.
+1. Na stránce MySQL server v části **Nastavení**klepnutím na tlačítko **Zabezpečení připojení** otevřete stránku konfigurace zabezpečení připojení.
 
-1. V nástroji **Odepřít přístup k veřejné síti**vyberte **Ano** , pokud chcete povolit přístup odepřít veřejný přístup pro váš server MySQL.
+1. V **příkazu Odepřít přístup k veřejné síti**vyberte Možnost **Ano,** chcete-li povolit odepření veřejného přístupu pro váš server MySQL.
 
-    ![Azure Database for MySQL odepřít přístup k síti](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
+    ![Azure Database for MySQL Odepřít přístup k síti](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
 
 1. Kliknutím na **Uložit** uložte změny.
 
-1. Oznámení ověří, že nastavení zabezpečení připojení bylo úspěšně povoleno.
+1. Oznámení potvrdí, že nastavení zabezpečení připojení bylo úspěšně povoleno.
 
-    ![Azure Database for MySQL odepřít úspěšné přístupy k síti](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
+    ![Azure Database for MySQL Deny , úspěch přístupu k síti](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si informace o [tom, jak vytvářet výstrahy na metrikách](howto-alert-on-metric.md).
+Přečtěte [si, jak vytvářet upozornění na metriky](howto-alert-on-metric.md).

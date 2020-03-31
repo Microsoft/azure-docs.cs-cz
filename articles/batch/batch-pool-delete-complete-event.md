@@ -1,6 +1,6 @@
 ---
-title: Událost dokončení odstranění fondu Azure Batch
-description: Odkaz na událost dokončení odstranění fondu Batch Tato událost je vyvolána, když je dokončena operace odstranění fondu.
+title: Událost dokončení odstranění fondu dávek Azure
+description: Odkaz na batch fond odstranit úplnou událost. Tato událost je vyzařována po dokončení operace odstranění fondu.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -12,17 +12,17 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023612"
 ---
 # <a name="pool-delete-complete-event"></a>Událost dokončení odstranění fondu
 
- Tato událost je vyvolána, když je dokončena operace odstranění fondu.
+ Tato událost je vyzařována po dokončení operace odstranění fondu.
 
- Následující příklad ukazuje tělo události odstranění fondu po dokončení.
+ Následující příklad ukazuje tělo fondu odstranit úplnou událost.
 
 ```
 {
@@ -34,9 +34,9 @@ ms.locfileid: "77023612"
 
 |Element|Typ|Poznámky|
 |-------------|----------|-----------|
-|`id`|Řetězec|ID fondu|
-|`startTime`|Datum a čas|Čas zahájení odstranění fondu|
-|`endTime`|Datum a čas|Čas dokončení odstranění fondu|
+|`id`|Řetězec|ID bazénu.|
+|`startTime`|DateTime|Čas spuštění odstranění fondu.|
+|`endTime`|DateTime|Čas dokončení odstranění fondu.|
 
 ## <a name="remarks"></a>Poznámky
-Další informace o stavech a kódech chyb pro operaci změny velikosti fondu najdete v tématu [odstranění fondu z účtu](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).
+Další informace o stavech a kódech chyb pro operaci změny velikosti fondu naleznete [v tématu Odstranění fondu z účtu](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

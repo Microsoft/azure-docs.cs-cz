@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s nasazením virtuálního počítače kvůli odpojeným diskům | Microsoft Docs
-description: Řešení potíží s nasazením virtuálního počítače kvůli odpojeným diskům
+title: Poradce při potížích s nasazením virtuálního počítače z důvodu odpojených disků | Dokumenty společnosti Microsoft
+description: Poradce při potížích s nasazením virtuálního počítače kvůli odpojené disky
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/31/2019
 ms.author: vaaga
 ms.openlocfilehash: e049a2b914cbf9c4f0ca0f3a1dd0281d58f881b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75486817"
 ---
-# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>Řešení potíží s nasazením virtuálního počítače kvůli odpojeným diskům
+# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>Poradce při potížích s nasazením virtuálního počítače kvůli odpojené disky
 
 ## <a name="symptom"></a>Příznak
 
-Při pokusu o aktualizaci virtuálního počítače, který selhal při odpojení předchozího datového disku, se může vycházet v tomto kódu chyby.
+Při pokusu o aktualizaci virtuálního počítače, jehož předchozí odpojení datového disku se nezdařilo, můžete narazit na tento kód chyby.
 
 ```
 Code=\"AttachDiskWhileBeingDetached\" 
@@ -32,9 +32,9 @@ Message=\"Cannot attach data disk '{disk ID}' to virtual machine '{vmName}' beca
 
 ## <a name="cause"></a>Příčina
 
-K této chybě dochází, když se pokusíte znovu připojit datový disk, jehož poslední operace odpojení selhala. Nejlepším způsobem, jak tento stav získat, je odpojit selhání disku.
+K této chybě dojde, když se pokusíte znovu připojit datový disk, jehož poslední operace odpojení se nezdařila. Nejlepší způsob, jak se dostat z tohoto stavu, je odpojit selhávající disk.
 
-## <a name="solution-1-powershell"></a>Řešení 1: PowerShell
+## <a name="solution-1-powershell"></a>Řešení 1: Powershell
 
 ### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>Krok 1: Získání podrobností o virtuálním počítači a disku
 
@@ -51,23 +51,23 @@ diskSizeGB   : 8
 toBeDetached : False 
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Krok 2: nastavte příznak pro selhání disků na hodnotu "true".
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Krok 2: Nastavte příznak pro selhání disky na "true".
 
-Získejte index pole neúspěšného disku a nastavte příznak **toBeDetached** pro selhání disku (pro který došlo k chybě **AttachDiskWhileBeingDetached** ) na hodnotu "true". Toto nastavení implikuje odpojení disku od virtuálního počítače. Název neúspěšného disku najdete v **ErrorMessage**.
+Získejte index pole selhání disku a nastavte příznak **BeDetached** pro selhání disku (pro které Došlo k chybě **AttachDiskWhileBeingDetached)** na "true". Toto nastavení znamená odpojení disku od virtuálního počítače. Název disku se selháním naleznete v **errorMessage**.
 
-> ! Poznámka: verze rozhraní API zadaná pro volání Get a Put musí být 2019-03-01 nebo vyšší.
+> ! Poznámka: Verze rozhraní API určená pro volání Get and Put musí být 2019-03-01 nebo vyšší.
 
 ```azurepowershell-interactive
 PS D:> $vm.StorageProfile.DataDisks[0].ToBeDetached = $true 
 ```
 
-Alternativně můžete tento disk odpojit také pomocí níže uvedeného příkazu, který bude užitečný pro uživatele, kteří používají verze rozhraní API před Březen 01 2019.
+Alternativně můžete také odpojit tento disk pomocí níže uvedeného příkazu, který bude užitečný pro uživatele, kteří používají verze ROZHRANÍ API před březnem 01, 2019.
 
 ```azurepowershell-interactive
 PS D:> Remove-AzureRmVMDataDisk -VM $vm -Name "<disk ID>" 
 ```
 
-### <a name="step-3-update-the-virtual-machine"></a>Krok 3: aktualizace virtuálního počítače
+### <a name="step-3-update-the-virtual-machine"></a>Krok 3: Aktualizace virtuálního počítače
 
 ```azurepowershell-interactive
 PS D:> Update-AzureRmVM -ResourceGroupName "Example Resource Group" -VM $vm 
@@ -75,17 +75,17 @@ PS D:> Update-AzureRmVM -ResourceGroupName "Example Resource Group" -VM $vm
 
 ## <a name="solution-2-rest"></a>Řešení 2: REST
 
-### <a name="step-1-get-the-virtual-machine-payload"></a>Krok 1: Získejte datovou část virtuálního počítače.
+### <a name="step-1-get-the-virtual-machine-payload"></a>Krok 1: Získejte datové zatížení virtuálního počítače.
 
 ```azurepowershell-interactive
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?$expand=instanceView&api-version=2019-03-01
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Krok 2: nastavte příznak pro selhání disků na hodnotu "true".
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Krok 2: Nastavte příznak pro selhání disky na "true".
 
-Nastavte příznak **toBeDetached** pro selhání disku na hodnotu true v datové části vrácené v kroku 1. Poznámka: verze rozhraní API zadaná pro volání Get a Put musí být `2019-03-01` nebo větší.
+Nastavte příznak **toBeDetached** pro selhání disku na hodnotu true v datové části vrácené v kroku 1. Poznámka: Verze rozhraní API určená pro volání `2019-03-01` Get and Put musí být nebo vyšší.
 
-**Ukázka textu žádosti**
+**Tělo požadavku vzorku**
 
 ```azurepowershell-interactive
 {
@@ -143,17 +143,17 @@ Nastavte příznak **toBeDetached** pro selhání disku na hodnotu true v datov�
 }
 ```
 
-Alternativně můžete odebrat neúspěšný datový disk z výše uvedené datové části, což je užitečné pro uživatele, kteří používají verze rozhraní API před Březen 01 2019.
+Alternativně můžete také odstranit selhávající datový disk z výše uvedené datové části, což je užitečné pro uživatele, kteří používají verze ROZHRANÍ API před březnem 01, 2019.
 
-### <a name="step-3-update-the-virtual-machine"></a>Krok 3: aktualizace virtuálního počítače
+### <a name="step-3-update-the-virtual-machine"></a>Krok 3: Aktualizace virtuálního počítače
 
-V kroku 2 použijte datovou část těla žádosti a aktualizujte virtuální počítač následujícím způsobem:
+Použijte datovou část těla požadavku nastavenou v kroku 2 a aktualizujte virtuální počítač následujícím způsobem:
 
 ```azurepowershell-interactive
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2019-03-01
 ```
 
-**Ukázková odpověď:**
+**Odpověď vzorku:**
 
 ```azurepowershell-interactive
 {
@@ -232,6 +232,6 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením RDP k virtuálnímu počítači Azure](troubleshoot-rdp-connection.md).
+Pokud máte problémy s připojením k virtuálnímu počítači, [přečtěte si článek Poradce při potížích s připojením RDP k virtuálnímu počítači Azure](troubleshoot-rdp-connection.md).
 
-Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálním počítači s Windows](troubleshoot-app-connection.md).
+Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači najdete [v tématu Řešení problémů s připojením aplikací na virtuálním počítači se systémem Windows](troubleshoot-app-connection.md).

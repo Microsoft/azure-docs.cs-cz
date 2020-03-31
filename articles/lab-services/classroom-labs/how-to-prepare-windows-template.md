@@ -1,6 +1,6 @@
 ---
-title: Průvodce nastavením počítače se šablonou Windows | Microsoft Docs
-description: Obecné kroky pro přípravu počítače se šablonou Windows ve službě Lab Services.  Tyto kroky zahrnují nastavení web Windows Update plán, instalaci OneDrivu a instalaci Office.
+title: Průvodce nastavením počítače se šablonami windows | Dokumenty společnosti Microsoft
+description: Obecné kroky k přípravě počítače šablony systému Windows ve službách Lab Services.  Mezi tyto kroky patří nastavení plánu služby Windows Update, instalace OneDrivu a instalace Office.
 services: lab-services
 documentationcenter: na
 author: EMaher
@@ -11,28 +11,28 @@ ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
 ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514999"
 ---
-# <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Průvodce nastavením počítače se šablonou Windows v Azure Lab Services
+# <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Průvodce nastavením počítače se šablonami Windows ve službě Azure Lab Services
 
-Pokud nastavujete počítač šablony Windows 10 pro Azure Lab Services, tady je několik osvědčených postupů a tipů, které byste měli zvážit. Níže uvedené konfigurační kroky jsou volitelné.  Tyto přípravné kroky ale můžou pomoci zajistit vyšší produktivitu studentů, minimalizovat dobu přerušení a zajistit, aby používali nejnovější technologie.
+Pokud nastavujete počítač se šablonami Windows 10 pro Azure Lab Services, tady je několik doporučených postupů a tipů, které je třeba zvážit. Níže uvedené kroky konfigurace jsou volitelné.  Tyto přípravné kroky by však mohly pomoci zvýšit produktivitu studentů, minimalizovat přerušení času ve třídě a zajistit, aby používali nejnovější technologie.
 
 >[!IMPORTANT]
->Tento článek obsahuje fragmenty kódu prostředí PowerShell pro zjednodušení procesu změny šablony počítače.  Pro všechny zobrazené skripty PowerShellu je budete chtít spouštět ve Windows PowerShellu s oprávněními správce. V systému Windows 10 je rychlý způsob, jak to provést, je kliknout pravým tlačítkem myši na nabídku Start a vybrat možnost Windows PowerShell (správce).
+>Tento článek obsahuje fragmenty prostředí PowerShell pro zjednodušení procesu úpravy šablony počítače.  U všech zobrazených skriptů prostředí PowerShell je budete chtít spustit v prostředí Windows PowerShell s oprávněními správce. V systému Windows 10 je rychlý způsob, jak toho dosáhnout, klikněte pravým tlačítkem myši na nabídku Start a zvolte "Windows PowerShell (Admin)".
 
 ## <a name="install-and-configure-onedrive"></a>Instalace a konfigurace OneDrivu
 
-Aby bylo možné chránit data studentů při obnovení virtuálního počítače, doporučujeme sami studentům vrátit data do cloudu.  Microsoft OneDrive může pomáhat studentům chránit svá data.  
+Chcete-li chránit data studentů před ztrátou při resetování virtuálního počítače, doporučujeme studentům zálohovat jejich data do cloudu.  Microsoft OneDrive může studentům pomoci chránit jejich data.  
 
-### <a name="install-onedrive"></a>Nainstalovat OneDrive
+### <a name="install-onedrive"></a>Instalace OneDrivu
 
-Pokud chcete ručně stáhnout a nainstalovat OneDrive, přečtěte si stránky pro stažení na [OneDrivu](https://onedrive.live.com/about/download/) nebo [OneDrivu pro firmy](https://onedrive.live.com/about/business/) .
+Pokud chcete OneDrive stáhnout a nainstalovat ručně, přečtěte si stránky pro stažení [OneDrivu](https://onedrive.live.com/about/download/) nebo [OneDrivu pro firmy.](https://onedrive.live.com/about/business/)
 
-Můžete také použít následující skript prostředí PowerShell.  Bude automaticky stahovat a instalovat nejnovější verzi OneDrivu.  Po instalaci klienta OneDrive spusťte instalační program.  V našem příkladu používáme přepínač `/allUsers` k instalaci OneDrivu pro všechny uživatele na počítači. K tiché instalaci OneDrivu používáme také přepínač `/silent`.
+Můžete také použít následující skript Prostředí PowerShell.  Automaticky stáhne a nainstaluje nejnovější verzi OneDrivu.  Po instalaci klienta OneDrivu spusťte instalační program.  V našem příkladu `/allUsers` používáme přepínač k instalaci OneDrivu pro všechny uživatele na počítači. `/silent` Přepínač používáme také k tiché instalaci OneDrivu.
 
 ```powershell
 Write-Host "Downloading OneDrive Client..."
@@ -50,23 +50,23 @@ Write-Host "Installing OneDrive..."
 & $env:USERPROFILE/Downloads/OneDriveSetup.exe /allUsers /silent
 ```
 
-### <a name="onedrive-customizations"></a>Přizpůsobení OneDrivu
+### <a name="onedrive-customizations"></a>Vlastní nastavení OneDrivu
 
-[Na OneDrivu se dá udělat](https://docs.microsoft.com/onedrive/use-group-policy)spousta úprav. Pojďme se pokrývat s některými častými vlastními úpravami.
+Existuje mnoho [úprav, které lze provést na OneDrive](https://docs.microsoft.com/onedrive/use-group-policy). Podívejme se na některé z běžnějších úprav.
 
-#### <a name="silently-move-windows-known-folders-to-onedrive"></a>Bezobslužné přesunutí známých složek Windows na OneDrive
+#### <a name="silently-move-windows-known-folders-to-onedrive"></a>Tiché přesunutí známých složek Windows na OneDrive
 
-Složky, jako jsou dokumenty, soubory ke stažení a obrázky, se často používají k ukládání souborů studenta. Abyste měli jistotu, že se tyto složky zálohují do OneDrivu, doporučujeme přesunout tyto složky na OneDrive.
+Složky jako Dokumenty, Soubory ke stažení a Obrázky se často používají k ukládání souborů studentů. Pokud zajistíte, že se tyto složky zálohují na OneDrive, doporučujeme přesunout tyto složky na OneDrive.
 
-Pokud jste na počítači, který nepoužívá službu Active Directory, mohou uživatelé ručně přesunout tyto složky na OneDrive, jakmile se ověří na OneDrive.
+Pokud používáte počítač, který nepoužívá službu Active Directory, mohou uživatelé tyto složky po ověření na OneDrive ručně přesunout na OneDrive.
 
-1. Otevřít Průzkumníka souborů
-2. Klikněte pravým tlačítkem myši na složku dokumenty, soubory ke stažení nebo obrázky.
-3. Přejít na vlastnosti > umístění.  Přesuňte složku do nové složky v adresáři OneDrive.
+1. Otevření Průzkumníka souborů
+2. Klikněte pravým tlačítkem myši na složku Dokumenty, Soubory ke stažení nebo Obrázky.
+3. Přejděte na vlastnosti > umístění.  Přesuňte složku do nové složky v adresáři OneDrivu.
 
-Pokud je váš virtuální počítač připojený ke službě Active Directory, můžete nastavit, aby počítač s šablonou automaticky vyzval své studenty a přesunuli známé složky na OneDrive.  
+Pokud je váš virtuální počítač připojený ke službě Active Directory, můžete nastavit, aby se počítač šablony automaticky vyzývavá studenty k přesunutí známých složek na OneDrive.  
 
-Nejdřív budete muset načíst ID tenanta Office.  Další pokyny najdete v tématu [Vyhledání ID tenanta pro Office 365](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  ID klienta Office 365 můžete také získat pomocí následujícího prostředí PowerShell.
+Budete muset nejprve získat ID klienta office.  Další pokyny najdete v [tématu vyhledání ID klienta Office 365](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  ID klienta Office 365 můžete získat také pomocí následujícího Prostředí PowerShell.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -76,7 +76,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Jakmile budete mít ID tenanta Office 365, nastavte OneDrive tak, aby se na OneDrive přesunuly známé složky pomocí následujícího prostředí PowerShell.
+Až budete mít ID klienta Office 365, nastavte OneDrive tak, aby se na OneDrive zobrazoval pomocí následujícího PowerShellu.
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -88,9 +88,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "KFMSilentOptIn" -Value $officeTenantID -PropertyType STRING
 ```
 
-### <a name="use-onedrive-files-on-demand"></a>Použití souborů OneDrive na vyžádání
+### <a name="use-onedrive-files-on-demand"></a>Použití souborů OneDrivu na vyžádání
 
-Studenti můžou mít v rámci svých účtů OneDrive spoustu souborů. Abychom vám pomohli ušetřit místo na počítači a zkrátit dobu stahování, doporučujeme, abyste všechny soubory uložené v účtu OneDrive na vyžádání potlačili.  Soubory na vyžádání se stahují jenom tehdy, když uživatel přistupuje k souboru.
+Studenti mohou mít v rámci svých účtů OneDrive mnoho souborů. Chcete-li ušetřit místo na počítači a zkrátit dobu stahování, doporučujeme, aby všechny soubory uložené v účtu OneDrive studenta byly na vyžádání.  Soubory na vyžádání se stáhnou pouze po připojení uživatele k souboru.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive" -Force
@@ -98,9 +98,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "FilesOnDemandEnabled" -Value "00000001" -PropertyType DWORD
 ```
 
-### <a name="silently-sign-in-users-to-onedrive"></a>Tiché přihlášení uživatelů do OneDrivu
+### <a name="silently-sign-in-users-to-onedrive"></a>Tiché přihlašování uživatelů na OneDrive
 
-OneDrive se dá nastavit tak, aby se automaticky přihlásil s přihlašovacími údaji Windows přihlášeného uživatele.  Automatické přihlašování je užitečné pro třídy, ve kterých se student přihlašuje pomocí přihlašovacích údajů Office 365 School.
+OneDrive se dá nastavit tak, aby se automaticky přihlašoval pomocí přihlašovacích údajů k Systému Windows přihlášeného uživatele.  Automatické přihlášení je užitečné pro třídy, kde se student přihlašuje pomocí svých školních přihlašovacích údajů k Office 365.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -108,9 +108,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "SilentAccountConfig" -Value "00000001" -PropertyType DWORD
 ```
 
-### <a name="disable-the-tutorial-that-appears-at-the-end-of-onedrive-setup"></a>Vypnutí kurzu, který se zobrazí na konci instalace OneDrivu
+### <a name="disable-the-tutorial-that-appears-at-the-end-of-onedrive-setup"></a>Zakázání kurzu, který se zobrazí na konci nastavení OneDrivu
 
-Toto nastavení umožňuje zabránit spuštění tohoto kurzu ve webovém prohlížeči na konci instalace OneDrive.
+Toto nastavení umožňuje zabránit spuštění kurzu ve webovém prohlížeči na konci instalace OneDrivu.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive" -Force
@@ -118,9 +118,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
     -Name "DisableTutorial" -Value "00000001" -PropertyType DWORD -Force
 ```
 
-### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>Nastavte maximální velikost souboru, který se má automaticky stáhnout.
+### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>Nastavení maximální velikosti souboru, který se má stahovat automaticky
 
-Toto nastavení se používá společně s bezobslužným přihlášením uživatelů do synchronizačního klienta OneDrivu s přihlašovacími údaji Windows na zařízeních, která nemají povolený soubor OneDrive na vyžádání. Každý uživatel, který má OneDrive větší, než je zadaná prahová hodnota (v MB), bude vyzván k výběru složek, které chcete synchronizovat, než klient synchronizace OneDrive (OneDrive. exe) stáhne soubory.  V našem příkladu je "1111-2222-3333-4444" ID tenanta sady Office 365 a 0005000 nastaví prahovou hodnotu 5 GB.
+Toto nastavení se používá ve spojení s tichým přihlášením uživatelů ke klientovi synchronizace OneDrivu s jejich přihlašovacími údaji systému Windows na zařízeních, která nemají povolenou funkci Soubory OneDrivu na vyžádání. Každý uživatel, který má OneDrive, který je větší než zadaná prahová hodnota (v MB), bude vyzván k výběru složek, které chce synchronizovat, před tím, než klient synchronizace OneDrivu (OneDrive.exe) stáhne soubory.  V našem příkladu "1111-2222-3333-4444" je ID klienta Office 365 a 0005000 nastaví prahovou hodnotu 5 GB.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -129,20 +129,20 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
     -Name "1111-2222-3333-4444" -Value "0005000" -PropertyType DWORD
 ```
 
-## <a name="install-and-configure-microsoft-office-365"></a>Instalace a konfigurace systém Microsoft Office 365
+## <a name="install-and-configure-microsoft-office-365"></a>Instalace a konfigurace Microsoft Office 365
 
-### <a name="install-microsoft-office-365"></a>Nainstalovat systém Microsoft Office 365
+### <a name="install-microsoft-office-365"></a>Instalace Microsoft Office 365
 
-Pokud Váš počítač šablony potřebuje sadu Office, doporučujeme nainstalovat Office prostřednictvím nástroje pro [nasazení Office (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ). Budete muset vytvořit opakovaně použitelný konfigurační soubor pomocí [služby konfigurace klienta Office 365](https://config.office.com/) , abyste si zvolili, jakou architekturu budete potřebovat v Office, a jak často se aktualizuje.
+Pokud váš počítač se šablonami potřebuje Office, doporučujeme instalaci Office pomocí [Nástroje pro nasazení sady Office (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ). Budete muset vytvořit opakovaně použitelný konfigurační soubor pomocí [služby Konfigurace klienta Office 365,](https://config.office.com/) abyste si mohli vybrat, jakou architekturu, jaké funkce budete potřebovat z Office a jak často se aktualizuje.
 
-1. Spusťte [službu konfigurace klienta Office 365](https://config.office.com/) a Stáhněte si vlastní konfigurační soubor.
-2. Stáhněte si [Nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117).  Stažený soubor bude `setup.exe`.
-3. Spusťte `setup.exe /download configuration.xml` a stáhněte součásti Office.
-4. Pro instalaci součástí Office spusťte `setup.exe /configure configuration.xml`.
+1. Přejděte na [službu Konfigurace klienta Office 365](https://config.office.com/) a stáhněte si vlastní konfigurační soubor.
+2. Stáhnout [Nástroj pro nasazení sady Office](https://www.microsoft.com/download/details.aspx?id=49117).  Stažený soubor `setup.exe`bude .
+3. Spusťte `setup.exe /download configuration.xml` stažení součástí Office.
+4. Spusťte `setup.exe /configure configuration.xml` instalaci součástí Office.
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>Změna kanálu aktualizace systém Microsoft Office 365
+### <a name="change-the-microsoft-office-365-update-channel"></a>Změna kanálu aktualizace Microsoft Office 365
 
-Pomocí nástroje Konfigurace Office můžete nastavit, jak často Office dostávají aktualizace. Pokud ale potřebujete změnit, jak často Office obdrží aktualizace po instalaci, můžete změnit adresu URL kanálu aktualizace. Adresy URL kanálu aktualizace se dají najít při [změně kanálu aktualizací Office 365 ProPlus pro zařízení ve vaší organizaci](https://docs.microsoft.com/deployoffice/change-update-channels). Následující příklad ukazuje, jak nastavit Office 365 pro použití měsíčního kanálu aktualizace.
+Pomocí Nástroje konfigurace Office můžete nastavit, jak často office přijímá aktualizace. Pokud však potřebujete upravit, jak často office po instalaci přijímá aktualizace, můžete změnit adresu URL aktualizačního kanálu. Update channel URL addresses can be found at [Change the Office 365 ProPlus update channel for devices in your organization](https://docs.microsoft.com/deployoffice/change-update-channels). Následující příklad ukazuje, jak nastavit Office 365 tak, aby používal kanál měsíční aktualizace.
 
 ```powershell
 # Update to the Office 365 Monthly Channel
@@ -154,16 +154,16 @@ Set-ItemProperty
 
 ## <a name="install-and-configure-updates"></a>Instalace a konfigurace aktualizací
 
-### <a name="install-the-latest-windows-updates"></a>Nainstalovat nejnovější aktualizace Windows
+### <a name="install-the-latest-windows-updates"></a>Instalace nejnovějších aktualizací systému Windows
 
-Před publikováním virtuálního počítače šablony doporučujeme nainstalovat na počítač s šablonou nejnovější aktualizace od společnosti Microsoft.  Také potenciálně brání v jejich práci v práci, když se aktualizace spouštějí v neočekávaných časech.
+Doporučujeme nainstalovat nejnovější aktualizace společnosti Microsoft na počítači šablony pro účely zabezpečení před publikováním šablony virtuálního počítače.  Také potenciálně zabraňuje studentům, aby byli ve své práci rušně, když jsou aktualizace spuštěny v neočekávaných časech.
 
-1. **Nastavení** spuštění z nabídky Start
-2. Klikněte na **aktualizovat** & zabezpečení.
-3. Klikněte na **Vyhledat aktualizace** .
+1. Spustit **nastavení** z nabídky Start
+2. Klikněte na **Aktualizovat** & zabezpečení
+3. Klikněte na **Vyhledat aktualizace.**
 4. Aktualizace se stáhnou a nainstalují.
 
-K aktualizaci počítače šablony můžete také použít PowerShell.
+PowerShell můžete také použít k aktualizaci počítače šablony.
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -174,28 +174,28 @@ Set-ExecutionPolicy default -Force
 ```
 
 >[!NOTE]
->Některé aktualizace můžou vyžadovat restartování počítače.  Zobrazí se výzva, pokud je potřeba restartovat počítač.
+>Některé aktualizace mohou vyžadovat restartování počítače.  Pokud je vyžadováno restartování, budete vyzváni.
 
-### <a name="install-the-latest-updates-for-microsoft-store-apps"></a>Nainstalovat nejnovější aktualizace pro aplikace Microsoft Store
+### <a name="install-the-latest-updates-for-microsoft-store-apps"></a>Instalace nejnovějších aktualizací pro aplikace pro Microsoft Store
 
-Doporučujeme, aby se všechny Microsoft Store aplikace aktualizovaly na nejnovější verze.  Tady jsou pokyny, jak ručně aktualizovat aplikace z Microsoft Store.  
+Doporučujeme, aby všechny aplikace pro Microsoft Store byly aktualizovány na nejnovější verze.  Tady jsou pokyny k ruční aktualizaci aplikací z Microsoft Storu.  
 
-1. Spusťte aplikaci **Microsoft Store** .
-2. Klikněte na tři tečky (...) vedle uživatelské fotografie v horním rohu aplikace.
+1. Spusťte aplikaci **Microsoft Store.**
+2. Klikněte na elipsu (...) vedle fotografie uživatele v horním rohu aplikace.
 3. V rozevírací nabídce vyberte **Stáhnout** a aktualizace.
-4. Klikněte na tlačítko **získat aktualizaci** .
+4. Klikněte na tlačítko **Získat aktualizaci.**
 
-Pomocí prostředí PowerShell můžete také aktualizovat Microsoft Store aplikace, které jsou již nainstalovány.
+Powershell můžete také použít k aktualizaci již nainstalovaných aplikací microsoft storu.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
 ```
 
-### <a name="stop-automatic-windows-updates"></a>Zastavit automatické aktualizace Windows
+### <a name="stop-automatic-windows-updates"></a>Zastavení automatických aktualizací systému Windows
 
-Po aktualizaci Windows na nejnovější verzi můžete zvážit zastavení aktualizací Windows.  Automatické aktualizace můžou narušit naplánovaný čas třídy.  Pokud je váš kurz delší než jeden, zvažte, jestli studenti budou ručně vyhledávat aktualizace nebo nastavovat automatické aktualizace po dobu mimo plánované hodiny třídy.  Další informace o možnostech přizpůsobení pro web Windows Update najdete v tématu [Správa dalších nastavení web Windows Update](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings).
+Po aktualizaci systému Windows na nejnovější verzi můžete zvážit ukončení aktualizací systému Windows.  Automatické aktualizace mohou potenciálně narušit naplánovaný čas kurzu.  Pokud je kurz delší, zvažte možnost požádat studenty, aby ručně zkontrolovali aktualizace nebo nastavovali automatické aktualizace na dobu mimo plánované hodiny kurzu.  Další informace o možnostech vlastního nastavení pro službu Windows Update naleznete v [části Správa dalších nastavení služby Windows Update](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings).
 
-Automatické aktualizace Windows se můžou zastavit pomocí následujícího skriptu PowerShellu.
+Automatické aktualizace systému Windows mohou být zastaveny pomocí následujícího skriptu prostředí PowerShell.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
@@ -203,34 +203,34 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
     -Name "NoAutoUpdate" -Value "1" -PropertyType DWORD
 ```
 
-## <a name="install-foreign-language-packs"></a>Nainstalovat cizí jazykové sady
+## <a name="install-foreign-language-packs"></a>Instalace cizojazyčných sad
 
-Pokud na virtuálním počítači potřebujete nainstalované další jazyky, můžete je přidat prostřednictvím Microsoft Store.
+Pokud potřebujete na virtuálním počítači nainstalované další jazyky, můžete je přidat přes Microsoft Store.
 
-1. Spustit Microsoft Store
-2. Vyhledejte "jazykovou sadu"
-3. Vyberte jazyk, který chcete nainstalovat.
+1. Spuštění Microsoft Storu
+2. Vyhledat výraz "jazyková sada"
+3. Výběr jazyka, který chcete nainstalovat
 
-Pokud jste už přihlášení k virtuálnímu počítači šablony, použijte [zástupce nainstalovat jazykovou sadu](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) pro přechod přímo na stránku příslušná nastavení.
+Pokud jste již přihlášeni k virtuálnímu počítači šablony, použijte [zástupce "Nainstalovat jazykovou sadu"](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) a přejděte přímo na stránku příslušného nastavení.
 
-## <a name="remove-unneeded-built-in-apps"></a>Odebrání nepotřebných integrovaných aplikací
+## <a name="remove-unneeded-built-in-apps"></a>Odebrání nepotřebných vestavěných aplikací
 
-Windows 10 obsahuje mnoho integrovaných aplikací, které nemusí být potřeba pro konkrétní třídu. Chcete-li zjednodušit image počítače pro studenty, můžete chtít odinstalovat některé aplikace z počítače šablony.  Pokud chcete zobrazit seznam nainstalovaných aplikací, použijte rutinu PowerShellu `Get-AppxPackage`.  Následující příklad zobrazuje všechny nainstalované aplikace, které je možné odebrat.
+Systém Windows 10 je dodáván s mnoha vestavěnými aplikacemi, které nemusí být potřebné pro vaši konkrétní třídu. Chcete-li zjednodušit bitovou kopii počítače pro studenty, můžete odinstalovat některé aplikace z počítače šablony.  Chcete-li zobrazit seznam nainstalovaných aplikací, použijte rutinu prostředí PowerShell. `Get-AppxPackage`  Následující příklad ukazuje všechny nainstalované aplikace, které lze odebrat.
 
 ```powershell
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name
 ```
 
-Pokud chcete odebrat aplikaci, použijte rutinu Remove-appx.  Následující příklad ukazuje, jak odebrat všechny související položky XBox.
+Chcete-li odebrat aplikaci, použijte rutinu Odebrat appx.  Následující příklad ukazuje, jak odstranit vše, co xbox související.
 
 ```powershell
 Get-AppxPackage -Name *xbox* | foreach { if (-not $_.NonRemovable) { Remove-AppxPackage $_} }
 ```
 
-## <a name="install-common-teaching-related-applications"></a>Instalace běžných aplikací souvisejících s výukou
+## <a name="install-common-teaching-related-applications"></a>Instalace běžných výukových aplikací
 
-Nainstalujte další aplikace, které se běžně používají k výuce v aplikaci pro Windows Store. Návrhy zahrnují aplikace, jako je [Microsoft](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)informing, [Microsoft Teams](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)a [Minecraftu školství Edition](https://education.minecraft.net/). Tyto aplikace musí být nainstalovány ručně prostřednictvím Windows Storu nebo prostřednictvím příslušných webů na virtuálním počítači šablony.
+Nainstalujte si další aplikace, které se běžně používají pro výuku prostřednictvím aplikace pro Windows Store. Návrhy zahrnují aplikace, jako je [aplikace Microsoft Whiteboard](https://www.microsoft.com/store/productId/9MSPC6MP8FM4), [Microsoft Teams](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)a Minecraft [Education Edition](https://education.minecraft.net/). Tyto aplikace musí být nainstalovány ručně prostřednictvím Windows Store nebo prostřednictvím příslušných webů na šabloně Virtuální počítač.
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto článku jste si ukázali volitelné kroky pro přípravu virtuálního počítače šablony Windows pro efektivní třídu.  Postup zahrnuje instalaci OneDrivu a instalaci Office 365, instalaci aktualizací pro Windows a instalaci aktualizací pro aplikace Microsoft Store.  Také jsme probrali, jak nastavit aktualizace na plán, který bude pro vaši třídu nejlépe fungovat.  
+Tento článek vám ukázal volitelné kroky k přípravě virtuálního počítače šablony systému Windows pro efektivní třídu.  Mezi kroky patří instalace OneDrivu a instalace Office 365, instalace aktualizací pro Windows a instalace aktualizací pro aplikace pro Microsoft Store.  Také jsme diskutovali o tom, jak nastavit aktualizace plánu, který funguje nejlépe pro vaši třídu.  

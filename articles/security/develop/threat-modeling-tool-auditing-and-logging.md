@@ -1,6 +1,6 @@
 ---
-title: Auditování a protokolování – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: zmírnění rizik pro ohrožené hrozby v Threat Modeling Tool
+title: Auditování a protokolování – Nástroj pro modelování hrozeb společnosti Microsoft – Azure | Dokumenty společnosti Microsoft
+description: zmírnění hrozeb vystavených v nástroji pro modelování hrozeb
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,159 +16,159 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c9d20b3259cf4ea7af263d5e31145ad372db0c77
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728416"
 ---
-# <a name="security-frame-auditing-and-logging--mitigations"></a>Rámec zabezpečení: Auditování a protokolování | Hrozeb 
+# <a name="security-frame-auditing-and-logging--mitigations"></a>Rámec zabezpečení: Auditování a protokolování | Skutečnosti snižující závažnost rizika 
 
-| Produkt nebo službu | Článek |
+| Produkt/služba | Článek |
 | --------------- | ------- |
-| **Dynamics CRM**    | <ul><li>[Identifikujte citlivé entity ve vašem řešení a implementujte auditování změn.](#sensitive-entities)</li></ul> |
-| **Webová aplikace** | <ul><li>[Ujistěte se, že se v aplikaci vynutilo auditování a protokolování.](#auditing)</li><li>[Ujistěte se, že jsou zavedeny rotace protokolu a oddělení.](#log-rotation)</li><li>[Ujistěte se, že aplikace neprotokoluje citlivá uživatelská data.](#log-sensitive-data)</li><li>[Ujistěte se, že soubory auditu a protokolu mají omezený přístup.](#log-restricted-access)</li><li>[Zajistěte, aby byly události správy uživatelů protokolovány](#user-management)</li><li>[Zajistěte, aby systém měl zabudované obrany před zneužitím.](#inbuilt-defenses)</li><li>[Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service](#diagnostics-logging)</li></ul> |
-| **Database** | <ul><li>[Ujistěte se, že auditování přihlášení je povolené v SQL Server](#identify-sensitive-entities)</li><li>[Povolení detekce hrozeb v Azure SQL](#threat-detection)</li></ul> |
-| **Azure Storage** | <ul><li>[Auditování přístupu Azure Storage pomocí Analýza úložiště Azure](#analytics)</li></ul> |
+| **Dynamics CRM**    | <ul><li>[Identifikace citlivých entit ve vašem řešení a implementace auditování změn](#sensitive-entities)</li></ul> |
+| **Webová aplikace** | <ul><li>[Ujistěte se, že auditování a protokolování je vynuceno na aplikaci](#auditing)</li><li>[Ujistěte se, že je na místě otáčení a separace protokolu](#log-rotation)</li><li>[Ujistěte se, že aplikace nezaznamenává citlivá uživatelská data](#log-sensitive-data)</li><li>[Ujistěte se, že soubory auditu a protokolu mají omezený přístup](#log-restricted-access)</li><li>[Ujistěte se, že jsou zaznamenány události správy uživatelů](#user-management)</li><li>[Ujistěte se, že systém má vestavěnou obranu proti zneužití](#inbuilt-defenses)</li><li>[Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service](#diagnostics-logging)</li></ul> |
+| **Databáze** | <ul><li>[Ujistěte se, že je na serveru SQL Server povoleno auditování přihlášení.](#identify-sensitive-entities)</li><li>[Povolení zjišťování hrozeb v Azure SQL](#threat-detection)</li></ul> |
+| **Azure Storage** | <ul><li>[Použití Azure Storage Analytics k auditování přístupu k Azure Storage](#analytics)</li></ul> |
 | **WCF** | <ul><li>[Implementace dostatečného protokolování](#sufficient-logging)</li><li>[Implementace dostatečného zpracování selhání auditu](#audit-failure-handling)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Ujistěte se, že je na webovém rozhraní API vynutilo auditování a protokolování.](#logging-web-api)</li></ul> |
-| **Brána pole IoT** | <ul><li>[Zajistěte, aby se pro bránu pole vynutilo vhodné auditování a protokolování.](#logging-field-gateway)</li></ul> |
-| **IoT Cloud Gateway** | <ul><li>[Zajistěte, aby se v cloudové bráně vynutilo vhodné auditování a protokolování.](#logging-cloud-gateway)</li></ul> |
+| **Web API** | <ul><li>[Zajištění vynucení auditování a protokolování ve webovém rozhraní API](#logging-web-api)</li></ul> |
+| **Brána ioT pole** | <ul><li>[Zajištění vynucení příslušného auditování a protokolování v bráně pole](#logging-field-gateway)</li></ul> |
+| **Cloudová brána IoT** | <ul><li>[Zajistěte, aby se v cloudové bráně vynucoval yvhodný auditování a protokolování.](#logging-cloud-gateway)</li></ul> |
 
-## <a id="sensitive-entities"></a>Identifikujte citlivé entity ve vašem řešení a implementujte auditování změn.
+## <a name="identify-sensitive-entities-in-your-solution-and-implement-change-auditing"></a><a id="sensitive-entities"></a>Identifikace citlivých entit ve vašem řešení a implementace auditování změn
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
 | **Kroky**                   | Identifikujte entity ve vašem řešení obsahující citlivá data a implementujte auditování změn u těchto entit a polí. |
 
-## <a id="auditing"></a>Ujistěte se, že se v aplikaci vynutilo auditování a protokolování.
+## <a name="ensure-that-auditing-and-logging-is-enforced-on-the-application"></a><a id="auditing"></a>Ujistěte se, že auditování a protokolování je vynuceno na aplikaci
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | Povolte auditování a protokolování pro všechny součásti. Protokoly auditu by měly zachytit kontext uživatele. Identifikujte všechny důležité události a protokolujte tyto události. Implementace centralizovaného protokolování |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky**                   | Povolte auditování a protokolování všech součástí. Protokoly auditu by měly zachytit kontext uživatele. Identifikujte všechny důležité události a protokolujte tyto události. Implementace centralizovaného protokolování |
 
-## <a id="log-rotation"></a>Ujistěte se, že jsou zavedeny rotace protokolu a oddělení.
+## <a name="ensure-that-log-rotation-and-separation-are-in-place"></a><a id="log-rotation"></a>Ujistěte se, že je na místě otáčení a separace protokolu
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Rotace protokolu je automatizovaný proces používaný při správě systému, ve kterém jsou archivovány soubory protokolu s datem. Servery, které spouštějí velké aplikace, často protokolují každý požadavek: na tvář hromadných protokolů je rotace protokolu způsob, jak omezit celkovou velikost protokolů, a přitom stále povolit analýzu posledních událostí. </p><p>Oddělení log v podstatě znamená, že budete muset ukládat soubory protokolů na jiný oddíl, ve kterém je spuštěný operační systém/aplikace, aby nemohlo způsobit útok na útok DoS (Denial of Service) nebo downgrade vaší aplikace na výkon.</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky**                   | <p>Střídání protokolů je automatizovaný proces používaný při správě systému, ve kterém jsou archivovány datované soubory protokolu. Servery, které spouštějí velké aplikace často protokolu každý požadavek: tváří v tvář objemné protokoly, log rotace je způsob, jak omezit celkovou velikost protokolů a zároveň umožňuje analýzu nedávných událostí. </p><p>Oddělení protokolu v podstatě znamená, že budete muset uložit soubory protokolu na jiný oddíl, protože kde váš operační systém / aplikace běží na s cílem odvrátit útok odmítnutí služby nebo snížení stupně utajení vaší aplikace jeho výkon</p>|
 
-## <a id="log-sensitive-data"></a>Ujistěte se, že aplikace neprotokoluje citlivá uživatelská data.
+## <a name="ensure-that-the-application-does-not-log-sensitive-user-data"></a><a id="log-sensitive-data"></a>Ujistěte se, že aplikace nezaznamenává citlivá uživatelská data
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Ověřte, že nechcete protokolovat žádná citlivá data, která uživatel odešle do vašeho webu. Kontrolovat úmyslné protokolování a také vedlejší účinky způsobené problémy s návrhem. Mezi příklady citlivých dat patří:</p><ul><li>Přihlašovací údaje uživatele</li><li>Číslo sociálního pojištění nebo jiné identifikační údaje</li><li>Čísla platebních karet nebo jiné finanční informace</li><li>Informace o stavu</li><li>Soukromé klíče nebo jiná data, která lze použít k dešifrování šifrovaných informací</li><li>Informace o systému nebo aplikaci, které lze použít k efektivnějšímu útoku aplikace</li></ul>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky**                   | <p>Zkontrolujte, zda nezaznamenáváte žádná citlivá data, která uživatel odešle na váš web. Zkontrolujte, zda záměrné protokolování, stejně jako vedlejší účinky způsobené problémy s návrhem. Příklady citlivých údajů zahrnují:</p><ul><li>Pověření uživatele</li><li>Číslo sociálního pojištění nebo jiné identifikační údaje</li><li>Čísla kreditních karet nebo jiné finanční informace</li><li>Informace o zdravotním stavu</li><li>Soukromé klíče nebo jiná data, která by mohla být použita k dešifrování šifrovaných informací</li><li>Informace o systému nebo aplikaci, které lze použít k efektivnějšímu útoku na aplikaci</li></ul>|
 
-## <a id="log-restricted-access"></a>Ujistěte se, že soubory auditu a protokolu mají omezený přístup.
+## <a name="ensure-that-audit-and-log-files-have-restricted-access"></a><a id="log-restricted-access"></a>Ujistěte se, že soubory auditu a protokolu mají omezený přístup
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Zkontrolujte, jestli jsou správně nastavená přístupová práva k souborům protokolu. Účty aplikací by měly mít přístup jen pro zápis a operátoři technické podpory by měli mít přístup jen pro čtení podle potřeby.</p><p>Účty správců jsou jediné účty, které by měly mít úplný přístup. Zkontrolujte seznam řízení přístupu systému Windows pro soubory protokolu, abyste měli jistotu, že jsou správně omezené:</p><ul><li>Účty aplikací by měly mít přístup jen pro zápis.</li><li>Operátoři a pracovníci podpory by měli mít přístup jen pro čtení podle potřeby.</li><li>Jedinými účty, které by měly mít úplný přístup, jsou správci.</li></ul>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky**                   | <p>Zkontrolujte, zda jsou správně nastavena přístupová práva k souborům protokolu. Účty aplikací by měly mít přístup jen pro zápis a operátoři a pracovníci podpory by měli mít přístup jen pro čtení podle potřeby.</p><p>Účty správců jsou jedinými účty, které by měly mít plný přístup. Zkontrolujte, zda windows ACL na soubory protokolu, aby se ujistil, že jsou řádně omezeny:</p><ul><li>Účty aplikací by měly mít přístup pouze pro zápis</li><li>Operátoři a pracovníci podpory by měli mít podle potřeby přístup jen pro čtení</li><li>Správci jsou jediné účty, které by měly mít úplný přístup</li></ul>|
 
-## <a id="user-management"></a>Zajistěte, aby byly události správy uživatelů protokolovány
+## <a name="ensure-that-user-management-events-are-logged"></a><a id="user-management"></a>Ujistěte se, že jsou zaznamenány události správy uživatelů
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Ujistěte se, že aplikace monitoruje události správy uživatelů, jako jsou úspěšná a Nezdařená přihlášení uživatelů, resetování hesla, změny hesla, uzamčení účtu, registrace uživatele. To pomáhá detekovat a reagovat na potenciálně podezřelé chování. Umožňuje taky shromažďovat data o operacích. Chcete-li například sledovat, kdo přistupuje k aplikaci</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky**                   | <p>Ujistěte se, že aplikace monitoruje události správy uživatelů, jako jsou úspěšná a neúspěšná přihlášení uživatelů, resetování hesla, změny hesel, uzamčení účtu, registrace uživatelů. To pomáhá odhalit a reagovat na potenciálně podezřelé chování. Umožňuje také shromažďovat provozní data; například sledovat, kdo přistupuje k aplikaci</p>|
 
-## <a id="inbuilt-defenses"></a>Zajistěte, aby systém měl zabudované obrany před zneužitím.
+## <a name="ensure-that-the-system-has-inbuilt-defenses-against-misuse"></a><a id="inbuilt-defenses"></a>Ujistěte se, že systém má vestavěnou obranu proti zneužití
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky**                   | <p>Ovládací prvky by měly být zavedeny, které vyvolávají výjimku zabezpečení v případě zneužití aplikace. Například pokud je vstupní ověřování na místě a útočník se pokusí vložit škodlivý kód, který se neshoduje s regulárním výrazem, může být vyvolána výjimka zabezpečení, která může být orientačním zneužitím systému.</p><p>Doporučuje se například zaprotokolovat výjimky zabezpečení a akce provedené v následujících problémech:</p><ul><li>Ověření vstupu</li><li>CSRF porušení</li><li>Hrubá síla (horní limit počtu požadavků na uživatele na prostředek)</li><li>Narušení nahrávání souborů</li><ul>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky**                   | <p>Měly by být zavedeny ovládací prvky, které v případě zneužití aplikace vyvádí výjimku zabezpečení. Je-li například zavedeno ověření vstupu a útočník se pokusí vložit škodlivý kód, který neodpovídá regulárnímu výrazu, může být vyvolána výjimka zabezpečení, která může svědčit o zneužití systému.</p><p>Například se doporučuje mít protokolované výjimky zabezpečení a akce provedené pro následující problémy:</p><ul><li>Ověření vstupu</li><li>CsRF porušení</li><li>Hrubá síla (horní limit pro počet požadavků na uživatele na prostředek)</li><li>Porušení nahrávání souborů</li><ul>|
 
-## <a id="diagnostics-logging"></a>Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
+## <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a><a id="diagnostics-logging"></a>Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | EnvironmentType – Azure |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Azure nabízí integrovanou diagnostiku, která vám pomůže s laděním webových aplikací App Service. Platí to i pro aplikace API a mobilní aplikace. App Service webové aplikace poskytují diagnostické funkce pro protokolování informací z webového serveru i z webové aplikace.</p><p>Tyto jsou logicky rozděleny na diagnostiku webových serverů a Application Diagnostics</p>|
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Azure poskytuje integrovanou diagnostiku, která vám pomůže s laděním webové aplikace Služby aplikací. Platí také pro aplikace rozhraní API a mobilní aplikace. Webové aplikace Služby App Service poskytují diagnostické funkce pro protokolování informací z webového serveru i webové aplikace.</p><p>Ty jsou logicky rozděleny do diagnostiky webových serverů a diagnostiky aplikací.</p>|
 
-## <a id="identify-sensitive-entities"></a>Ujistěte se, že auditování přihlášení je povolené v SQL Server
+## <a name="ensure-that-login-auditing-is-enabled-on-sql-server"></a><a id="identify-sensitive-entities"></a>Ujistěte se, že je na serveru SQL Server povoleno auditování přihlášení.
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
+| **Atributy**              | Není dostupné.  |
 | **Odkazy**              | [Konfigurace auditování přihlášení](https://msdn.microsoft.com/library/ms175850.aspx) |
-| **Kroky** | <p>Aby bylo možné zjistit nebo potvrdit útoky, které se odhadují, musí být povoleno auditování přihlášení k databázovému serveru. Je důležité zachytit neúspěšné pokusy o přihlášení. Zachycení úspěšných a neúspěšných pokusů o přihlášení přináší další výhody během Forenzní vyšetřování.</p>|
+| **Kroky** | <p>Auditování přihlášení databázového serveru musí být povoleno, aby bylo možné rozpoznat/potvrdit útoky na hádání hesel. Je důležité zachytit neúspěšné pokusy o přihlášení. Zachycení úspěšných i neúspěšných pokusů o přihlášení poskytuje další výhodu během forenzního vyšetřování</p>|
 
-## <a id="threat-detection"></a>Povolení detekce hrozeb v Azure SQL
+## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>Povolení zjišťování hrozeb v Azure SQL
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | SQL Azure |
-| **Atributy**              | SQL verze – V12 |
-| **Odkazy**              | [Začínáme se zjišťováním hrozeb SQL Database](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
-| **Kroky** |<p>Detekce hrozeb detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze. Poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje rozpoznávat a reagovat na potenciální hrozby při jejich výskytu tím, že poskytuje výstrahy zabezpečení pro aktivity neobvyklé.</p><p>Uživatelé můžou prozkoumat podezřelé události pomocí auditování Azure SQL Database, aby zjistili, jestli jsou výsledkem pokusu o přístup, porušení nebo zneužití dat v databázi.</p><p>Detekce hrozeb usnadňuje řešení potenciálních hrozeb pro databázi, aniž by bylo nutné být odborníkem na zabezpečení nebo spravovali pokročilé systémy monitorování zabezpečení.</p>|
+| **Atributy**              | Verze SQL - V12 |
+| **Odkazy**              | [Začínáme s detekcí hrozeb databáze SQL](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **Kroky** |<p>Detekce hrozeb detekuje neobvyklé databázové aktivity označující potenciální ohrožení zabezpečení databáze. Poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje detekovat potenciální hrozby a reagovat na ně tak, jak se vyskytují, a to poskytováním výstrah zabezpečení na neobvyklé aktivity.</p><p>Uživatelé mohou prozkoumat podezřelé události pomocí Azure SQL Database Auditing k určení, pokud jsou výsledkem pokusu o přístup, porušení nebo zneužití dat v databázi.</p><p>Detekce hrozeb usnadňuje řešení potenciálních hrozeb pro databázi bez nutnosti být odborníkem na zabezpečení nebo spravovat pokročilé systémy monitorování zabezpečení</p>|
 
-## <a id="analytics"></a>Auditování přístupu Azure Storage pomocí Analýza úložiště Azure
+## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>Použití Azure Storage Analytics k auditování přístupu k Azure Storage
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **Fáze SDL**               | Nasazení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici |
-| **Odkazy**              | [Monitorování typu autorizace pomocí Analýza úložiště](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
-| **Kroky** | <p>U každého účtu úložiště může jedna povolit Analýza úložiště Azure provádět protokolování a ukládat data metrik. Protokoly služby Storage Analytics poskytují důležité informace, jako například metodu ověřování, kterou používá někdo při přístupu k úložišti.</p><p>To může být opravdu užitečné v případě, že úzce chráníte přístup k úložišti. Například v Blob Storage můžete nastavit všechny kontejnery na soukromé a implementovat používání služby SAS v rámci svých aplikací. Pak můžete protokoly pravidelně kontrolovat a zjistit, jestli k objektům blob přistupovali pomocí klíčů účtu úložiště, což může znamenat porušení zabezpečení, nebo pokud jsou objekty blob veřejné, ale neměly by být.</p>|
+| **Atributy**              | Není dostupné. |
+| **Odkazy**              | [Použití analýzy úložiště ke sledování typu autorizace](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **Kroky** | <p>Pro každý účet úložiště můžete povolit Azure Storage Analytics k provádění dat protokolování a ukládání metrik. Protokoly analýzy úložiště poskytují důležité informace, jako je například metoda ověřování používaná někým při přístupu k úložišti.</p><p>To může být opravdu užitečné, pokud jste pevně střežit přístup k úložišti. Například v úložišti objektů Blob můžete nastavit všechny kontejnery na soukromé a implementovat použití služby SAS v rámci vašich aplikací. Potom můžete pravidelně kontrolovat protokoly a zjistit, jestli jsou k vašim objektům BLOB přístup pomocí klíčů účtu úložiště, což může znamenat porušení zabezpečení, nebo pokud jsou objekty BLOB veřejné, ale neměly by být.</p>|
 
-## <a id="sufficient-logging"></a>Implementace dostatečného protokolování
+## <a name="implement-sufficient-logging"></a><a id="sufficient-logging"></a>Implementace dostatečného protokolování
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | .NET Framework |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
-| **Kroky** | <p>Chybějící správný záznam pro audit po incidentu zabezpečení může zabránit forenzní úsilí. Windows Communication Foundation (WCF) nabízí možnost protokolování úspěšných nebo neúspěšných pokusů o ověření.</p><p>Protokolování neúspěšných pokusů o ověření může varovat správců potenciálních útoků hrubou silou. Podobně protokolování úspěšných událostí ověření může poskytnout užitečný záznam pro audit, když dojde k ohrožení bezpečnosti legitimního účtu. Povolit funkci audit zabezpečení služby WCF |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Opevnitkrálovství](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
+| **Kroky** | <p>Nedostatek řádného auditnístopy po bezpečnostním incidentu může bránit forenznímu úsilí. Windows Communication Foundation (WCF) nabízí možnost protokolovat úspěšné nebo neúspěšné pokusy o ověření.</p><p>Protokolování neúspěšných pokusů o ověření může upozornit správce na potenciální útoky hrubou silou. Podobně protokolování úspěšných událostí ověřování může poskytnout užitečné auditní stopy při ohrožení zabezpečení legitimního účtu. Povolení funkce auditu zabezpečení služby WCF |
 
 ### <a name="example"></a>Příklad
-Následuje příklad konfigurace s povoleným auditováním.
+Následuje ukázková konfigurace s povoleným auditováním.
 ```
 <system.serviceModel>
     <behaviors>
@@ -185,19 +185,19 @@ Následuje příklad konfigurace s povoleným auditováním.
 </system.serviceModel>
 ```
 
-## <a id="audit-failure-handling"></a>Implementace dostatečného zpracování selhání auditu
+## <a name="implement-sufficient-audit-failure-handling"></a><a id="audit-failure-handling"></a>Implementace dostatečného zpracování selhání auditu
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | .NET Framework |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
-| **Kroky** | <p>Vytvořené řešení je nakonfigurované tak, aby negenerovalo výjimku, když se nepovede zapsat do protokolu auditu. Pokud je WCF nakonfigurované tak, aby nevyvolávají výjimku, když nemůže zapisovat do protokolu auditu, program nebude upozorněn na selhání a nemusí dojít k auditování kritických událostí zabezpečení.</p>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Opevnitkrálovství](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
+| **Kroky** | <p>Vyvinuté řešení je nakonfigurováno tak, aby negenerovalo výjimku, pokud se nepodaří zapsat do protokolu auditu. Pokud wcf je nakonfigurován tak, aby vyvolat výjimku, když není schopen zapisovat do protokolu auditu, program nebude upozorněn na selhání a auditování kritických událostí zabezpečení nemusí dojít.</p>|
 
 ### <a name="example"></a>Příklad
-`<behavior/>` Element konfiguračního souboru WCF vydá pokyn, aby WCF neinformovalo aplikaci, když se službě WCF nepovede zapisovat do protokolu auditu.
+Prvek `<behavior/>` konfiguračního souboru WCF níže pokyn WCF neupozorní aplikaci, když WCF nepodaří zapsat do protokolu auditu.
 ```
 <behaviors>
     <serviceBehaviors>
@@ -210,37 +210,37 @@ Následuje příklad konfigurace s povoleným auditováním.
     </serviceBehaviors>
 </behaviors>
 ```
-Nakonfigurujte WCF tak, aby programu oznámil program, kdykoli nebude moct zapisovat do protokolu auditu. Program by měl mít k dispozici alternativní schéma oznámení, aby bylo možné upozornit organizaci na to, že nejsou udržovány záznamy auditu. 
+Nakonfigurujte wcf upozornit program vždy, když není schopen zapisovat do protokolu auditu. Program by měl mít alternativní schéma oznámení na místě upozornit organizaci, že audit stezky nejsou udržovány. 
 
-## <a id="logging-web-api"></a>Ujistěte se, že je na webovém rozhraní API vynutilo auditování a protokolování.
+## <a name="ensure-that-auditing-and-logging-is-enforced-on-web-api"></a><a id="logging-web-api"></a>Zajištění vynucení auditování a protokolování ve webovém rozhraní API
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
+| **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | Povolí auditování a protokolování webových rozhraní API. Protokoly auditu by měly zachytit kontext uživatele. Identifikujte všechny důležité události a protokolujte tyto události. Implementace centralizovaného protokolování |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | Povolte auditování a protokolování webových api. Protokoly auditu by měly zachytit kontext uživatele. Identifikujte všechny důležité události a protokolujte tyto události. Implementace centralizovaného protokolování |
 
-## <a id="logging-field-gateway"></a>Zajistěte, aby se pro bránu pole vynutilo vhodné auditování a protokolování.
+## <a name="ensure-that-appropriate-auditing-and-logging-is-enforced-on-field-gateway"></a><a id="logging-field-gateway"></a>Zajištění vynucení příslušného auditování a protokolování v bráně pole
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Brána pole IoT | 
+| **Komponenta**               | Brána ioT pole | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Když se k bráně pole připojí více zařízení, zajistěte, aby se pokusy o připojení a stav ověřování (úspěch nebo neúspěch) pro jednotlivá zařízení evidovaly a udržovaly v bráně pole.</p><p>V případech, kdy brána Field uchovává IoT Hub přihlašovací údaje pro jednotlivá zařízení, zajistěte, aby se auditování provádělo při načítání těchto přihlašovacích údajů. Vytvořte proces pro pravidelné nahrávání protokolů do Azure IoT Hub/úložiště pro dlouhodobé uchovávání.</p> |
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | Není dostupné.  |
+| **Kroky** | <p>Když se k bráně pole připojí více zařízení, ujistěte se, že pokusy o připojení a stav ověřování (úspěch nebo neúspěch) pro jednotlivá zařízení jsou zaznamenány a udržovány v bráně pole.</p><p>Také v případech, kdy Field Gateway udržuje pověření služby IoT Hub pro jednotlivá zařízení, ujistěte se, že auditování se provádí při načítání těchto pověření. Vytvořte proces, který pravidelně nahrává protokoly do služby Azure IoT Hub/storage pro dlouhodobé uchovávání informací.</p> |
 
-## <a id="logging-cloud-gateway"></a>Zajistěte, aby se v cloudové bráně vynutilo vhodné auditování a protokolování.
+## <a name="ensure-that-appropriate-auditing-and-logging-is-enforced-on-cloud-gateway"></a><a id="logging-cloud-gateway"></a>Zajistěte, aby se v cloudové bráně vynucoval yvhodný auditování a protokolování.
 
-| Název                   | Podrobnosti      |
+| Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | IoT Cloud Gateway | 
+| **Komponenta**               | Cloudová brána IoT | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
-| **Atributy**              | Není k dispozici  |
-| **Odkazy**              | [Seznámení s IoT Hub monitorování provozu](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
-| **Kroky** | <p>Navrhněte shromažďování a ukládání dat auditu shromážděných prostřednictvím monitorování IoT Hubch operací. Povolte následující kategorie monitorování:</p><ul><li>Operace identity zařízení</li><li>Komunikace mezi zařízeními a cloudem</li><li>Komunikace z cloudu na zařízení</li><li>Připojení</li><li>Nahrání souborů</li></ul>|
+| **Atributy**              | Není dostupné.  |
+| **Odkazy**              | [Úvod do monitorování operací ioT hubu](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **Kroky** | <p>Návrh pro shromažďování a ukládání dat auditu shromážděných prostřednictvím monitorování provozu ioT hubu. Povolte následující kategorie monitorování:</p><ul><li>Operace identity zařízení</li><li>Komunikace mezi zařízeními a cloudem</li><li>Komunikace mezi cloudy</li><li>Připojení</li><li>Nahrání souborů</li></ul>|

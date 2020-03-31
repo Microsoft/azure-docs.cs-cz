@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Azure Blockchain
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření člena – portál
@@ -19,8 +19,6 @@
           href: connect-metamask.md
         - name: Využití rozšíření Geth
           href: connect-geth.md
-        - name: Využití rozšíření Truffle
-          href: connect-truffle.md
 - name: Kurzy
   items:
     - name: Vytváření inteligentních kontraktů

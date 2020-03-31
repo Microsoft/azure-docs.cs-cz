@@ -1,26 +1,26 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace v PHP na platformě Linux'
-description: Začněte s aplikacemi pro Linux v Azure App Service nasazením první aplikace v PHP do kontejneru Linux v App Service.
+title: 'Úvodní příručka: Vytvoření aplikace PHP na Linuxu'
+description: Začínáme s linuxovými aplikacemi ve službě Azure App Service nasazením první aplikace PHP do kontejneru Linuxu ve službě App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 7608c10f2d101a3c24209a5e09bccc6dc31401ca
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validatem seodec18
+ms.openlocfilehash: 5a2abaf49071c90ea4fe0d5b5a454ce91f2cb1e4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524100"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046055"
 ---
-# <a name="create-a-php-app-in-app-service-on-linux"></a>Vytvoření aplikace v PHP v App Service v systému Linux
+# <a name="create-a-php-app-in-app-service-on-linux"></a>Vytvoření aplikace PHP ve službě App Service na Linuxu
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v Linuxu. Pokud chcete nasadit nástroj na App Service ve _Windows_, přečtěte si téma [Vytvoření aplikace v php v Azure](../app-service-web-get-started-php.md).
+> Tento článek nasadí aplikaci do služby App Service v Linuxu. Informace o nasazení ve službě App Service ve _Windows_najdete [v tématu Vytvoření aplikace PHP v Azure](../app-service-web-get-started-php.md).
 >
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci PHP, která Azure App Service na Linux pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+[App Service na Linuxu](app-service-linux-intro.md) poskytuje vysoce škálovatelnou webhostingovou službu s vlastní mizákou pomocí operačního systému Linux. Tento úvodní kurz ukazuje, jak nasadit aplikaci PHP do služby Azure App Service na Linuxu pomocí [cloudového prostředí](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-php/hello-world-in-browser.png)
+![Ukázková aplikace spuštěná v Azure](media/quickstart-php/hello-world-in-browser.png)
 
 Postup v tomto článku můžete použít v případě počítačů se systémem Mac, Windows nebo Linux.
 
@@ -31,7 +31,7 @@ Postup v tomto článku můžete použít v případě počítačů se systémem
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
-* <a href="https://php.net" target="_blank">Nainstalovat PHP</a>.
+* <a href="https://php.net" target="_blank">Instalace PHP</a>
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -70,13 +70,13 @@ V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-Přejděte na web a zobrazte nově vytvořenou aplikaci s použitím integrované image. Nahraďte _název aplikace&lt;>_ názvem vaší aplikace.
+Přejděte na web a podívejte se na nově vytvořenou aplikaci s vestavěnou bitovou kopií. Nahraďte _ &lt;název aplikace>_ názvem aplikace.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Vaše nová aplikace by měla vypadat takto:
+Zde je to, co vaše nová aplikace by měla vypadat:
 
 ![Prázdná stránka aplikace](media/quickstart-php/app-service-web-service-created.png)
 
@@ -115,9 +115,9 @@ V prohlížeči zadejte adresu nasazené aplikace.
 http://<app_name>.azurewebsites.net
 ```
 
-Vzorový kód PHP je spuštěný v App Service v systému Linux s integrovanou imagí.
+Ukázkový kód PHP běží v App Service na Linuxu s vestavěnou image.
 
-![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-php/hello-world-in-browser.png)
+![Ukázková aplikace spuštěná v Azure](media/quickstart-php/hello-world-in-browser.png)
 
 **Blahopřejeme!** Nasadili jste svoji první aplikaci v PHP do služby App Service v Linuxu.
 
@@ -142,13 +142,13 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 ## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
-Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https://portal.azure.com" target="_blank">Azure Portal</a> .
+Přejděte na <a href="https://portal.azure.com" target="_blank">portál Azure</a> a spravujte aplikaci, kterou jste vytvořili.
 
-V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
+V levé nabídce klikněte na **App Services**a potom klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
+Zobrazí se stránka Přehled aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
 
 ![Stránka služby App Service na webu Azure Portal](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 
@@ -159,7 +159,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: aplikace PHP s MySQL](tutorial-php-mysql-app.md)
+> [Výuka: PHP aplikace s MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace PHP](configure-language-php.md)

@@ -1,7 +1,7 @@
 ---
-title: Zabezpečení PaaSch mobilních aplikací pro webové &
+title: Zabezpečení webových & mobilní aplikace PaaS
 titleSuffix: Azure App Service
-description: 'Přečtěte si o Azure App Service osvědčených postupech zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. '
+description: 'Přečtěte si o doporučených postupech zabezpečení služby Azure App Service pro zabezpečení webových a mobilních aplikací PaaS. '
 services: security
 documentationcenter: na
 author: techlake
@@ -17,35 +17,35 @@ ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
 ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77500284"
 ---
-# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Service
+# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Doporučené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí služby Azure App Service
 
-V tomto článku se zabýváme kolekcí [Azure App Service](/azure/app-service/overview) osvědčených postupů zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. Tyto osvědčené postupy se odvozují z našich zkušeností s Azure a zkušeností zákazníků, jako je sami.
+V tomto článku se zabýváme kolekcí doporučených postupů zabezpečení [služby Azure App Service](/azure/app-service/overview) pro zabezpečení webových a mobilních aplikací PaaS. Tyto osvědčené postupy jsou odvozeny z našich zkušeností s Azure a zkušeností zákazníků, jako jste vy.
 
-Azure App Service je nabídka typu platforma jako služba (PaaS), která umožňuje vytvářet webové a mobilní aplikace pro jakoukoli platformu nebo zařízení a připojovat se k datům kdekoli, v cloudu i v místním prostředí. App Service zahrnují webové a mobilní funkce, které byly dříve dodávány samostatně jako Azure websites a Azure Mobile Services. Obsahuje také nové možnosti pro automatizaci obchodních procesů a hostování cloudových rozhraní API. Jako jediná integrovaná služba App Service přináší bohatou sadu možností pro webové, mobilní a integrační scénáře.
+Azure App Service je platforma jako služba (PaaS), která vám umožní vytvářet webové a mobilní aplikace pro jakoukoli platformu nebo zařízení a připojit se k datům kdekoli, v cloudu nebo místně. Služba App Service zahrnuje webové a mobilní funkce, které byly dříve doručovány samostatně jako Weby Azure a Mobilní služby Azure. Obsahuje také nové možnosti pro automatizaci obchodních procesů a hostování cloudových rozhraní API. Jako jediná integrovaná služba přináší app service bohatou sadu funkcí pro webové, mobilní a integrační scénáře.
 
-## <a name="authenticate-through-azure-active-directory-ad"></a>Ověřování prostřednictvím Azure Active Directory (AD)
-App Service poskytuje službě OAuth 2,0 pro vašeho poskytovatele identity. OAuth 2,0 se zaměřuje na jednoduchost vývojáře v klientských počítačích a poskytuje konkrétní autorizační toky pro webové aplikace, desktopové aplikace a mobilní telefony. Azure AD používá OAuth 2,0, který vám umožní autorizovat přístup k mobilním a webovým aplikacím. Další informace najdete v tématu [ověřování a autorizace v Azure App Service](../../app-service/overview-authentication-authorization.md).
+## <a name="authenticate-through-azure-active-directory-ad"></a>Ověření prostřednictvím služby Azure Active Directory (AD)
+Služba App Service poskytuje službu OAuth 2.0 pro vašeho poskytovatele identity. OAuth 2.0 se zaměřuje na jednoduchost vývojářů klientů a zároveň poskytuje specifické autorizační toky pro webové aplikace, desktopové aplikace a mobilní telefony. Azure AD používá OAuth 2.0, který vám umožní autorizovat přístup k mobilním a webovým aplikacím. Další informace najdete [v tématu Ověřování a autorizace ve službě Azure App Service](../../app-service/overview-authentication-authorization.md).
 
 ## <a name="restrict-access-based-on-role"></a>Omezení přístupu na základě role
-Omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Řízení přístupu na základě role (RBAC) můžete použít k přiřazení oprávnění uživatelům, skupinám a aplikacím v určitém oboru, jako je třeba znát a nejnižší principy zabezpečení oprávnění. Další informace o udělení přístupu uživatelům k aplikacím najdete v tématu [co je řízení přístupu na základě role](/azure/role-based-access-control/overview).
+Omezení přístupu je nezbytné pro organizace, které chtějí vynutit zásady zabezpečení pro přístup k datům. Pomocí řízení přístupu na základě rolí (RBAC) můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru, jako je například potřeba znát a nejméně oprávnění zásadzabezpečení. Další informace o udělení přístupu uživatelům k aplikacím naleznete v tématu [Co je řízení přístupu založené na rolích](/azure/role-based-access-control/overview).
 
-## <a name="protect-your-keys"></a>Ochrana klíčů
-Nezáleží na tom, jaký je dobrý způsob zabezpečení při ztrátě klíčů předplatného. Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením. Další informace najdete v tématu [co je Azure Key Vault](../../key-vault/key-vault-overview.md) .
+## <a name="protect-your-keys"></a>Chraňte své klíče
+Nezáleží na tom, jak dobré je vaše zabezpečení, pokud ztratíte klíče předplatného. Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí trezoru klíčů můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, . PFX soubory a hesla) pomocí klíčů, které jsou chráněny moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Trezor klíčů můžete také použít ke správě certifikátů TLS s automatickým obnovením. Další informace najdete v [tématu Co je Azure Key Vault.](../../key-vault/key-vault-overview.md)
 
-## <a name="restrict-incoming-source-ip-addresses"></a>Omezit příchozí IP adresy příchozích dat
-[Prostředí App Service](../../app-service/environment/intro.md) mají funkci Integrace virtuální sítě, která vám pomůže omezit příchozí IP adresy příchozích dat prostřednictvím skupin zabezpečení sítě (skupin zabezpečení sítě). Pokud nejste obeznámeni s virtuálními sítěmi Azure (virtuální sítě), jedná se o funkci, která umožňuje umístit spoustu prostředků Azure do sítě, která není Internet, směrovat do sítě, ke které ovládáte přístup. Další informace najdete v tématu [integrace aplikace s Virtual Network Azure](../../app-service/web-sites-integrate-with-vnet.md).
+## <a name="restrict-incoming-source-ip-addresses"></a>Omezení příchozích zdrojových ADRES IP
+[Prostředí služby App Service má](../../app-service/environment/intro.md) funkci integrace virtuální sítě, která vám pomůže omezit příchozí zdrojové IP adresy prostřednictvím skupin zabezpečení sítě (NSGs). Pokud nejste obeznámeni s virtuálními sítěmi Azure (VNET), je to funkce, která vám umožní umístit mnoho prostředků Azure v síti, která není internet, směrovatelná, ke které řídíte přístup. Další informace najdete v [tématu Integrace aplikace s virtuální sítí Azure](../../app-service/web-sites-integrate-with-vnet.md).
 
-Pro App Service ve Windows můžete také dynamicky omezit IP adresy konfigurací souboru Web. config. Další informace najdete v tématu [dynamické zabezpečení protokolu IP](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+V případě služby App Service v systému Windows můžete také dynamicky omezit adresy IP konfigurací souboru web.config. Další informace naleznete [v tématu Dynamic IP Security](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek vás zavedl do kolekce App Service osvědčené postupy zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. Další informace o zabezpečení nasazení PaaS najdete v těchto tématech:
+Tento článek vás seznámil s kolekcí doporučených postupů zabezpečení služby App Service pro zabezpečení webových a mobilních aplikací PaaS. Další informace o zabezpečení nasazení PaaS najdete v tématu:
 
 - [Zabezpečení nasazení PaaS](paas-deployments.md)
 - [Zabezpečení databází PaaS v Azure](paas-applications-using-sql.md)

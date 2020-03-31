@@ -1,6 +1,6 @@
 ---
-title: Zdroje dat Azure Monitor sešity | Dokumentace Microsoftu
-description: Zjednodušení složitých sestav s předem sestavenými a vlastními parametrizovanými Azure Monitor sešity sestavenými z více zdrojů dat
+title: Zdroje dat sešitů Azure Monitor | Dokumenty Microsoftu
+description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů Azure Monitor vytvořených z více zdrojů dat
 services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,77 +11,77 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248577"
 ---
-# <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat Azure Monitor sešity
+# <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat sešitů Azure Monitor
 
-Sešity jsou kompatibilní s velkým počtem zdrojů dat. Tento článek vás provede jednotlivými zdroji dat, které jsou aktuálně k dispozici pro Azure Monitor sešity.
+Sešity jsou kompatibilní s velkým počtem zdrojů dat. Tento článek vás provede zdroje dat, které jsou aktuálně k dispozici pro sešity Azure Monitor.
 
 ## <a name="logs"></a>Protokoly
 
-Pracovní sešity umožňují dotazování protokolů z následujících zdrojů:
+Sešity umožňují dotazování protokolů z následujících zdrojů:
 
-* Protokoly Azure Monitor (Application Insights prostředky a Log Analytics pracovní prostory.)
-* Data orientovaných na prostředky (protokoly aktivit)
+* Protokoly monitorování Azure (prostředky přehledů aplikací a pracovní prostory analýzy protokolů.)
+* Data zaměřená na zdroje (protokoly aktivit)
 
-Autoři sešitu mohou používat dotazy KQL, které transformují podkladová data prostředků k výběru sady výsledků, která se může vizuálně vyznačit jako text, grafy nebo mřížky.
+Autoři sešitu mohou pomocí dotazů KQL, které transformují podkladová data prostředků, vybrat sadu výsledků, která může být vizualizována jako text, grafy nebo mřížky.
 
-![Snímek obrazovky s rozhraním sestav protokolů v sešitech](./media/workbooks-overview/logs.png)
+![Snímek obrazovky s rozhraním sestavy protokolů sešitů](./media/workbooks-overview/logs.png)
 
-Autoři sešitu můžou snadno dotazovat se na více zdrojů a vytvořit skutečně sjednocené prostředí pro vytváření sestav.
+Autoři sešitu se mohou snadno dotazovat na více prostředků a vytvářet tak skutečně jednotné bohaté prostředí pro vytváření sestav.
 
 ## <a name="metrics"></a>Metriky
 
-Prostředky Azure emitují [metriky](data-platform-metrics.md) , ke kterým se dá dostat prostřednictvím sešitů. K metrikám lze v sešitech přicházet prostřednictvím specializovaného ovládacího prvku, který umožňuje určit cílové prostředky, požadované metriky a jejich agregaci. Tato data se pak dají vykreslovat v grafech nebo Gridech.
+Prostředky Azure [vyzařují metriky,](data-platform-metrics.md) ke kterým se dá přistupovat prostřednictvím sešitů. Metriky lze přistupovat v sešitech prostřednictvím specializovaného ovládacího prvku, který umožňuje určit cílové prostředky, požadované metriky a jejich agregace. Tato data pak mohou být vykreslena v grafech nebo mřížkách.
 
-![Snímek obrazovky s metrikami v grafech metriky využití procesoru](./media/workbooks-overview/metrics-graph.png)
+![Snímek obrazovky s grafy metrik sešitu s využitím procesoru](./media/workbooks-overview/metrics-graph.png)
 
-![Snímek obrazovky rozhraní metriky sešitu](./media/workbooks-overview/metrics.png)
+![Snímek obrazovky s rozhraním metrik sešitu](./media/workbooks-overview/metrics.png)
 
 ## <a name="azure-resource-graph"></a>Azure Resource Graph 
 
-Pracovní sešity podporují dotazování na prostředky a jejich metadata pomocí Azure Resource graphu (ARG). Tato funkce se primárně používá k vytváření vlastních oborů dotazů pro sestavy. Rozsah prostředků je vyjádřen prostřednictvím KQL podmnožiny, kterou ARG podporuje – což je často dostačující pro běžné případy použití.
+Sešity podporují dotazování na prostředky a jejich metadata pomocí Azure Resource Graph (ARG). Tato funkce se používá především k vytvoření vlastní obory dotazu pro sestavy. Obor prostředků je vyjádřena prostřednictvím podmnožiny KQL, které podporuje ARG – což je často dostačující pro běžné případy použití.
 
-Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam typ dotazu pro výběr grafu prostředků Azure a vyberte předplatná, která chcete cílit. Pomocí ovládacího prvku pro dotaz přidejte ARG KQL-submnožiny, které vyberou zajímavou podmnožinu prostředků.
+Chcete-li ovládací prvek dotazu použít tento zdroj dat, použijte rozbalovací seznam Typ dotazu k výběru Azure Resource Graph a vyberte předplatná, na které chcete cílit. Pomocí ovládacího prvku Dotaz přidejte podmnožinu ARG KQL, která vybere zajímavou podmnožinu prostředků.
 
 
-![Snímek obrazovky s dotazem na KQL v grafu prostředků Azure](./media/workbooks-overview/azure-resource-graph.png)
+![Snímek obrazovky s dotazem KQL grafu prostředků Azure](./media/workbooks-overview/azure-resource-graph.png)
 
-## <a name="alerts-preview"></a>Výstrahy (Preview)
+## <a name="alerts-preview"></a>Upozornění (náhled)
 
-Pracovní sešity umožňují uživatelům vizualizovat aktivní výstrahy související s jejich prostředky. Tato funkce umožňuje vytváření sestav, které společně přinášejí data oznámení (výstrahy) a diagnostické informace (metriky, protokoly) do jedné sestavy. Tyto informace se dají taky spojit dohromady a vytvářet tak bohatě sestavování, které kombinuje přehledy napříč těmito zdroji dat.
+Sešity umožňují uživatelům vizualizovat aktivní výstrahy související s jejich prostředky. Tato funkce umožňuje vytváření sestav, které sdružují data oznámení (výstraha) a diagnostické informace (metriky, protokoly) do jedné sestavy. Tyto informace lze také spojit a vytvořit tak bohaté sestavy, které kombinují přehledy napříč těmito zdroji dat.
 
-Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam typ dotazu a zvolte možnost výstrahy a vyberte předplatná, skupiny prostředků nebo prostředky, které chcete cílit. Pomocí rozevíracích seznamu filtru výstrah můžete vybrat zajímavou podmnožinu výstrah pro potřeby analýzy.
+Chcete-li, aby ovládací prvek dotazu používal tento zdroj dat, zvolte pomocí rozevíracího přehledu Typ dotazu výstrahy a vyberte předplatná, skupiny prostředků nebo prostředky, na které chcete cílit. Pomocí rozevíracích seznamů filtru výstrah vyberte zajímavou podmnožinu výstrah pro vaše analytické potřeby.
 
-![Snímek obrazovky s dotazem výstrahy](./media/workbooks-overview/alerts.png)
+![Snímek obrazovky s dotazem na výstrahy](./media/workbooks-overview/alerts.png)
 
-## <a name="workload-health-preview"></a>Stav úloh (Preview)
+## <a name="workload-health-preview"></a>Stav pracovního vytížení (náhled)
 
-Azure Monitor mají funkce, které aktivně monitorují dostupnost a výkon hostovaných operačních systémů Windows nebo Linux. Azure Monitor klíčové komponenty modelů a jejich vztahy, kritéria, jak změřit stav těchto komponent a které komponenty vás upozorní, když se zjistí stav není v pořádku. Pracovní sešity umožňují uživatelům používat tyto informace k vytváření propracovaných interaktivních sestav.
+Azure Monitor má funkce, které proaktivně monitorují dostupnost a výkon hostovacích operačních systémů Windows nebo Linux. Azure Monitor modely klíčové součásti a jejich vztahy, kritéria pro měření stavu těchto součástí a které součásti vás upozorní, když je zjištěn a stavu není v pořádku. Sešity umožňují uživatelům používat tyto informace k vytváření rozšířených interaktivních sestav.
 
-Pokud chcete, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam **typ dotazu** k výběru možnosti stav úloh a vyberte předplatné, skupinu prostředků nebo prostředky virtuálního počítače k cíli. Rozevírací seznam filtru stavu použijte k výběru zajímavé podmnožiny stavových incidentů pro potřeby analýzy.
+Chcete-li, aby ovládací prvek dotazu používal tento zdroj dat, zvolte pomocí rozevíracího **přehledu Typ dotazu** stav pracovního vytížení a vyberte předplatné, skupinu prostředků nebo prostředky virtuálních aplikací, na které chcete cílit. Pomocí rozevíracích seznamů filtru stavu vyberte zajímavou podmnožinu zdravotních incidentů pro vaše analytické potřeby.
 
-![Snímek obrazovky s dotazem výstrahy](./media/workbooks-overview/workload-health.png)
+![Snímek obrazovky s dotazem na výstrahy](./media/workbooks-overview/workload-health.png)
 
-## <a name="azure-resource-health"></a>Stav prostředku Azure 
+## <a name="azure-resource-health"></a>Stav prostředků Azure 
 
-Pracovní sešity podporují získání stavu prostředků Azure a jejich kombinaci s jinými zdroji dat a vytvářejí bohatou a interaktivní sestavy o stavu.
+Sešity podporují získání stavu prostředků Azure a jeho kombinaci s jinými zdroji dat za účelem vytváření bohatých interaktivních sestav stavu
 
-Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam **typ dotazu** k výběru možnosti stav služby Azure a vyberte prostředky, které chcete cílit. Pomocí rozevíracího seznamu filtru stavu můžete vybrat zajímavou podmnožinu problémů s prostředky pro potřeby analýzy.
+Chcete-li ovládací prvek dotazu použít tento zdroj dat, použijte rozbalovací nabídka **Typ dotazu** k výběru stavu Azure a vyberte prostředky, na které chcete cílit. Pomocí rozevíracích seznamů filtru stavu vyberte zajímavou podmnožinu problémů se zdroji pro vaše analytické potřeby.
 
-![Snímek obrazovky s dotazem výstrahy](./media/workbooks-overview/resource-health.png)
+![Snímek obrazovky s dotazem na výstrahy](./media/workbooks-overview/resource-health.png)
 
-## <a name="azure-data-explorer-preview"></a>Průzkumník dat Azure (Preview)
+## <a name="azure-data-explorer-preview"></a>Azure Data Explorer (preview)
 
-Sešity teď podporují dotazování z clusterů [Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/) pomocí výkonného dotazovacího jazyka [Kusto](https://docs.microsoft.com/azure/kusto/query/index) .   
+Sešity teď mají podporu pro dotazování z clusterů [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/) s výkonným dotazovacím jazykem [Kusto.](https://docs.microsoft.com/azure/kusto/query/index)   
 
-![Snímek obrazovky s oknem dotazu Kusto](./media/workbooks-overview/data-explorer.png)
+![Snímek obrazovky okna dotazu Kusto](./media/workbooks-overview/data-explorer.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
-* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
+* [Začínáte](workbooks-visualizations.md) se učit další informace o sešitech, mnoho bohatých možností vizualizací.
+* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu

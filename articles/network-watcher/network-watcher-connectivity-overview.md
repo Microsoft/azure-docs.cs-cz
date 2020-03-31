@@ -1,6 +1,6 @@
 ---
-title: Seznámení s řešením potíží s připojením k Azure Network Watcher | Microsoft Docs
-description: Tato stránka poskytuje přehled funkce řešení potíží s připojením Network Watcher.
+title: Úvod k řešení potíží s připojením sledování sítě Azure | Dokumenty společnosti Microsoft
+description: Tato stránka obsahuje přehled funkce řešení potíží s připojením sledování sítě
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,46 +12,46 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283274"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Úvod k řešení potíží s připojením v Azure Network Watcher
 
-Funkce řešení potíží s připojením Network Watcher poskytuje možnost kontrolovat přímé připojení TCP z virtuálního počítače k virtuálnímu počítači (VM), plně kvalifikovanému názvu domény (FQDN), identifikátoru URI nebo adrese IPv4. Scénáře sítě jsou složité, jsou implementované pomocí skupin zabezpečení sítě, bran firewall, tras definovaných uživatelem a prostředků poskytovaných Azure. Složité konfigurace usnadňují řešení potíží s připojením náročné. Network Watcher pomáhá zkrátit dobu, po kterou můžete najít a zjistit problémy s připojením. Vrácené výsledky mohou poskytnout přehled o tom, zda je problém s připojením způsoben platformou nebo problémem s konfigurací uživatele. Připojení se dá zkontrolovat pomocí [PowerShellu](network-watcher-connectivity-powershell.md), rozhraní příkazového [řádku Azure](network-watcher-connectivity-cli.md)a [REST API](network-watcher-connectivity-rest.md).
+Funkce poradce při potížích s připojením sledovacího programu sítě umožňuje zkontrolovat přímé připojení TCP z virtuálního počítače do virtuálního počítače, plně kvalifikovaný název domény (FQDN), identifikátor URI nebo adresu IPv4. Síťové scénáře jsou složité, jsou implementovány pomocí skupin zabezpečení sítě, bran firewall, uživatelem definovaných tras a prostředků poskytovaných Azure. Složité konfigurace ztěžují řešení problémů s připojením. Sledování sítě pomáhá zkrátit dobu hledání a zjišťování problémů s připojením. Vrácené výsledky mohou poskytnout přehled o tom, zda je problém s připojením způsoben problémem s konfigurací platformy nebo uživatele. Připojení lze zkontrolovat pomocí [PowerShellu](network-watcher-connectivity-powershell.md), [rozhraní API Azure](network-watcher-connectivity-cli.md)a rozhraní REST [API](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl nainstalovaný `AzureNetworkWatcherExtension` rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
+> Řešení potíží s připojením vyžaduje, `AzureNetworkWatcherExtension` aby v ym, který řešíte z má rozšíření virtuálního zařízení nainstalován. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, navštivte [rozšíření virtuálního počítače Azure Network Watcher Agent pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro virtuální počítač SIP na stránce Rozšíření [virtuálního počítače Azure Network Watcher Agent pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozšíření není vyžadováno v cílovém koncovém bodě.
 
 ## <a name="response"></a>Odpověď
 
-V následující tabulce jsou uvedeny vlastnosti vrácené při dokončení řešení potíží s připojením.
+V následující tabulce jsou uvedeny vlastnosti vrácené po dokončení potíží s připojením.
 
 |Vlastnost  |Popis  |
 |---------|---------|
-|ConnectionStatus     | Stav kontroly připojení. Možné výsledky jsou **dosažitelné** a **nedosažitelné**.        |
-|AvgLatencyInMs     | Průměrná latence během kontroly připojení v milisekundách (Zobrazí se pouze v případě, že je stav kontroly dosažitelný)        |
-|MinLatencyInMs     | Minimální latence během kontroly připojení v milisekundách (Zobrazí se pouze v případě, že je stav kontroly dosažitelný)        |
-|MaxLatencyInMs     | Maximální latence během kontroly připojení v milisekundách (Zobrazí se pouze v případě, že je stav kontroly dosažitelný)        |
-|ProbesSent     | Počet sond odeslaných během kontroly. Maximální hodnota je 100.        |
-|ProbesFailed     | Počet sond, které během kontroly selhaly. Maximální hodnota je 100.        |
-|Směrování     | Směrování podle cesty směrování ze zdroje do cíle.        |
-|Směrování []. Textový     | Typ prostředku. Možné hodnoty jsou **source**, **VirtualAppliance**, **VnetLocal**a **Internet**.        |
-|Směrování []. Účet | Jedinečný identifikátor směrování|
-|Směrování []. Adresáře | IP adresa směrování.|
-|Směrování []. Prostředku | ResourceID prostředku směrování, pokud je segmentem směrování prostředek Azure. Pokud se jedná o internetový prostředek, ResourceID je **Internet**. |
-|Hops[].NextHopIds | Jedinečný identifikátor pořízeného dalšího segmentu směrování.|
-|Směrování []. Chyba | Kolekce problémů, které byly zjištěny během kontroly tohoto směrování. Pokud nebyly zjištěny žádné problémy, hodnota je prázdná.|
-|Směrování []. Problémy []. Zdroji | U aktuálního směrování, kde došlo k problému. Možné hodnoty jsou:<br/> **Příchozí** – problém je na odkazu z předchozího směrování na aktuální segment směrování.<br/>**Odchozí** – problém je na propojení od aktuálního směrování k dalšímu segmentu směrování.<br/>**Místní** problém je na aktuálním směrování.|
-|Směrování []. Problémy []. Závažnost | Závažnost problému byla zjištěna. Možné hodnoty jsou **Error** a **Warning**. |
-|Směrování []. Problémy []. Textový |Typ problému byl nalezen. Možné hodnoty jsou: <br/>**VČETNĚ**<br/>**Rezident**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
-|Směrování []. Problémy []. Souvislost |Podrobnosti o zjištěném problému.|
-|Směrování []. Problémy []. Context []. klíč |Klíč vrácené dvojice klíč-hodnota|
-|Směrování []. Problémy []. Context []. hodnota |Hodnota dvojice klíč hodnota, která se vrátila|
+|Stav připojení     | Stav kontroly připojení. Možné výsledky jsou **dosažitelné** a **nedostupné**.        |
+|AvgLatencyInMs     | Průměrná latence během kontroly připojení v milisekundách. (Zobrazí se pouze v případě, že je dostupný stav kontroly)        |
+|MinLatencyInMs     | Minimální latence během kontroly připojení v milisekundách. (Zobrazí se pouze v případě, že je dostupný stav kontroly)        |
+|MaxLatencyInMs     | Maximální latence během kontroly připojení v milisekundách. (Zobrazí se pouze v případě, že je dostupný stav kontroly)        |
+|SondaOdesláno     | Počet sond odeslaných během kontroly. Maximální hodnota je 100.        |
+|Sondy selhaly     | Počet sond, které se nezdařily během kontroly. Maximální hodnota je 100.        |
+|Směrování     | Směrování podle směrování z místa původu do cíle.        |
+|Chmel[]. Typ     | Typ zdroje. Možné hodnoty jsou **Source**, **VirtualAppliance**, **VnetLocal**a **Internet**.        |
+|Chmel[]. Id | Jedinečný identifikátor směrování|
+|Chmel[]. Adresu | IP adresa směrování.|
+|Chmel[]. Resourceid | ResourceID směrování, pokud směrování je prostředek Azure. Pokud se jedná o internetový prostředek, ResourceID je **Internet**. |
+|Chmel[]. Další HopIds | Jedinečný identifikátor dalšího pořízeného směrování.|
+|Chmel[]. Problémy | Kolekce problémů, které byly zjištěny při kontrole na tomto směrování. Pokud nebyly žádné problémy, hodnota je prázdná.|
+|Chmel[]. Problémy[]. Původu | Při aktuálním směrování, kde došlo k problému. Možné hodnoty:<br/> **Příchozí** - problém je na propojení z předchozího směrování na aktuální směrování<br/>**Odchozí** - Problém je na propojení z aktuálního směrování na další směrování<br/>**Místní** - Problém je na aktuální směrování.|
+|Chmel[]. Problémy[]. Závažnosti | Závažnost zjištěného problému. Možné hodnoty jsou **Chyba** a **Upozornění**. |
+|Chmel[]. Problémy[]. Typ |Byl nalezen typ nalezeného problému. Možné hodnoty: <br/>**Cpu**<br/>**Paměti**<br/>**Brána firewall pro hostování**<br/>**DnsResolution**<br/>**Pravidlo zabezpečení sítě**<br/>**UserDefinedRoute** |
+|Chmel[]. Problémy[]. Kontextu |Podrobnosti týkající se nalezeného problému.|
+|Chmel[]. Problémy[]. Kontext[].klíč |Klíč dvojice hodnot klíče vrácena.|
+|Chmel[]. Problémy[]. Hodnota kontextu[]. |Vrácená hodnota páru hodnot klíče.|
 
-Následuje příklad problému nalezeného na směrování.
+Následuje příklad problému nalezeného v směrování.
 
 ```json
 "Issues": [
@@ -68,19 +68,19 @@ Následuje příklad problému nalezeného na směrování.
     }
 ]
 ```
-## <a name="fault-types"></a>Typy chyb
+## <a name="fault-types"></a>Typy poruch
 
-Řešení potíží s připojením vrátí typy chyb připojení. Následující tabulka obsahuje seznam aktuálních vrácených typů selhání.
+Řešení potíží s připojením vrátí typy chyb o připojení. V následující tabulce je uveden seznam aktuálních typů chyb, které byly vráceny.
 
 |Typ  |Popis  |
 |---------|---------|
 |Procesor     | Vysoké využití procesoru.       |
 |Memory (Paměť)     | Vysoké využití paměti.       |
-|GuestFirewall     | Provoz je zablokovaný kvůli konfiguraci brány firewall virtuálního počítače.        |
-|DNSResolution     | Překlad DNS pro cílovou adresu se nezdařil.        |
-|NetworkSecurityRule    | Provoz je blokován pravidlem NSG (pravidlo se vrátí).        |
-|UserDefinedRoute|Provoz se zahodil z důvodu uživatelsky definované nebo systémové trasy. |
+|Brána firewall pro hostování     | Provoz je blokován z důvodu konfigurace brány firewall virtuálního počítače.        |
+|Rozlišení DNS     | Překlad DNS se nezdařil pro cílovou adresu.        |
+|Pravidlo zabezpečení sítě    | Provoz je blokován pravidlem sítě sítě (pravidlo je vráceno)        |
+|UserDefinedRoute|Provoz je zrušen z důvodu uživatelem definované nebo systémové trasy. |
 
 ### <a name="next-steps"></a>Další kroky
 
-Naučte se řešit potíže s připojením pomocí [Azure Portal](network-watcher-connectivity-portal.md), [PowerShellu](network-watcher-connectivity-powershell.md), rozhraní příkazového [řádku Azure](network-watcher-connectivity-cli.md)nebo [REST API](network-watcher-connectivity-rest.md).
+Zjistěte, jak řešit potíže s připojeními pomocí [portálu Azure](network-watcher-connectivity-portal.md), [PowerShellu](network-watcher-connectivity-powershell.md), [rozhraní API Azure](network-watcher-connectivity-cli.md)nebo rozhraní REST [API](network-watcher-connectivity-rest.md).

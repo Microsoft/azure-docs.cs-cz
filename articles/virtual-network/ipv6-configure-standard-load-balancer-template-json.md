@@ -1,7 +1,7 @@
 ---
-title: Nasazení aplikace s duálním zásobníkem IPv6 ve službě Azure Virtual Network – Šablona správce prostředků (Preview)
+title: Nasazení aplikace iPv6 se dvěma zásobníky ve virtuální síti Azure – šablona Resource Manger (preview)
 titlesuffix: Azure Virtual Network
-description: V tomto článku se dozvíte, jak nasadit aplikaci s duálním zásobníkem IPv6 pomocí Standard Load Balancer ve službě Azure Virtual Network pomocí Azure Resource Manager šablon virtuálních počítačů.
+description: Tento článek ukazuje, jak nasadit aplikaci IPv6 dual stack se standardním nástrojem pro vyrovnávání zatížení ve virtuální síti Azure pomocí šablon virtuálních zařízení Azure Resource Manager.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70012853"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Nasazení aplikace s duálním zásobníkem IPv6 ve službě Azure Virtual Network – šablona (Preview)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Nasazení aplikace iPv6 se dvěma zásobníky ve virtuální síti Azure – šablona (preview)
 
-Tento článek poskytuje seznam úloh konfigurace protokolu IPv6 s částí Azure Resource Manager šablony virtuálního počítače, která se vztahuje na. Pomocí šablony popsané v tomto článku můžete nasadit aplikaci duálního zásobníku (IPv4 + IPv6) pomocí Standard Load Balancer v Azure, která zahrnuje virtuální síť s duálním zásobníkem s podsítěmi IPv4 a IPv6, Standard Load Balancer s front-end s duálním rozhraním (IPv4 + IPv6). konfigurace, virtuální počítače se síťovými kartami, které mají konfiguraci s duální IP adresou, skupinu zabezpečení sítě a veřejné IP adresy. 
+Tento článek obsahuje seznam úloh konfigurace IPv6 s částí šablony virtuálního počítače Azure Resource Manager, která se vztahuje na. Pomocí šablony popsané v tomto článku nasadit aplikaci duálního zásobníku (IPv4 + IPv6) pomocí standardního nástroje pro vyrovnávání zatížení v Azure, která zahrnuje virtuální síť se dvěma zásobníky s podsítěmi IPv4 a IPv6, standardní nástroj pro vyrovnávání zatížení s duálním front-endem (IPv4 + IPv6), konfigurace, virtuální počítače s síťovými aplikacemi, které mají konfiguraci duální IP adresy, skupinu zabezpečení sítě a veřejné IP adresy. 
 
 ## <a name="required-configurations"></a>Požadované konfigurace
 
-V šabloně vyhledejte části šablon, kde se zobrazí tam, kde by se měly vyskytovat.
+Vyhledejte oddíly šablony v šabloně a zjistěte, kde by k nim mělo dojít.
 
-### <a name="ipv6-addressspace-for-the-virtual-network"></a>AddressSpace IPv6 pro virtuální síť
+### <a name="ipv6-addressspace-for-the-virtual-network"></a>Adresní prostor IPv6 pro virtuální síť
 
-Oddíl šablony, který se má přidat:
+Oddíl Šablony, který chcete přidat:
 
 ```JSON
         "addressSpace": {
@@ -38,9 +38,9 @@ Oddíl šablony, který se má přidat:
             "[variables('vnetv6AddressRange')]"    
 ```
 
-### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>Podsíť IPv6 v rámci virtuální sítě IPv6 addressSpace
+### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>Podsíť IPv6 v adresním prostoru virtuální sítě IPv6
 
-Oddíl šablony, který se má přidat:
+Oddíl Šablony, který chcete přidat:
 ```JSON
           {
             "name": "V6Subnet",
@@ -50,9 +50,9 @@ Oddíl šablony, který se má přidat:
 
 ```
 
-### <a name="ipv6-configuration-for-the-nic"></a>Konfigurace protokolu IPv6 pro síťovou kartu
+### <a name="ipv6-configuration-for-the-nic"></a>Konfigurace Protokolu IPv6 pro nic
 
-Oddíl šablony, který se má přidat:
+Oddíl Šablony, který chcete přidat:
 ```JSON
           {
             "name": "ipconfig-v6",
@@ -88,7 +88,7 @@ Oddíl šablony, který se má přidat:
 
 ## <a name="conditional-configuration"></a>Podmíněná konfigurace
 
-Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do směrovací tabulky. V opačném případě je tato konfigurace volitelná.
+Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do tabulky tras. V opačném případě je tato konfigurace volitelná.
 
 ```JSON
     {
@@ -109,7 +109,7 @@ Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do sm
 
 ## <a name="optional-configuration"></a>Volitelná konfigurace
 
-### <a name="ipv6-internet-access-for-the-virtual-network"></a>Internetový přístup k síti IPv6 pro virtuální síť
+### <a name="ipv6-internet-access-for-the-virtual-network"></a>IPv6 Přístup k internetu pro virtuální síť
 
 ```JSON
 {
@@ -120,7 +120,7 @@ Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do sm
               }
 ```
 
-### <a name="ipv6-public-ip-addresses"></a>Veřejné IP adresy protokolu IPv6
+### <a name="ipv6-public-ip-addresses"></a>Veřejné IP adresy IPv6
 
 ```JSON
     {
@@ -137,7 +137,7 @@ Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do sm
       }
 ```
 
-### <a name="ipv6-front-end-for-load-balancer"></a>Front-end protokolu IPv6 pro Load Balancer
+### <a name="ipv6-front-end-for-load-balancer"></a>IPv6 Front-end pro balancer zatížení
 
 ```JSON
           {
@@ -148,7 +148,7 @@ Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do sm
               }
 ```
 
-### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>Fond back-end adres protokolu IPv6 pro Load Balancer
+### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>Fond adres back-endu IPv6 pro balancer zatížení
 
 ```JSON
               "backendAddressPool": {
@@ -161,7 +161,7 @@ Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do sm
             "name": "lbrule-v6"
 ```
 
-### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>Pravidla nástroje pro vyrovnávání zatížení IPv6 pro přidružení příchozích a odchozích portů
+### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>Pravidla vyrovnávání zatížení IPv6 pro přidružení příchozích a odchozích portů
 
 ```JSON
           {
@@ -178,9 +178,9 @@ Pokud používáte síťové virtuální zařízení, přidejte trasy IPv6 do sm
                 }
 ```
 
-## <a name="sample-vm-template-json"></a>Ukázka JSON šablony virtuálního počítače
-Pokud chcete nasadit aplikaci s duálním zásobníkem IPv6 ve službě Azure Virtual Network pomocí šablony Azure Resource Manager, [tady](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)si můžete zobrazit ukázkovou šablonu.
+## <a name="sample-vm-template-json"></a>Ukázková šablona virtuálního počítače JSON
+Pokud chcete nasadit aplikaci IPv6 dual stack ve virtuální síti Azure pomocí šablony Azure Resource Manager, prohlédněte si ukázkovou [šablonu tady](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Můžete najít podrobnosti o cenách pro [veřejné IP adresy](https://azure.microsoft.com/pricing/details/ip-addresses/), [šířku pásma sítě](https://azure.microsoft.com/pricing/details/bandwidth/)nebo [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).
+Můžete najít podrobnosti o cenách pro [veřejné IP adresy](https://azure.microsoft.com/pricing/details/ip-addresses/), [šířku pásma sítě](https://azure.microsoft.com/pricing/details/bandwidth/)nebo [Balancer zatížení](https://azure.microsoft.com/pricing/details/load-balancer/).

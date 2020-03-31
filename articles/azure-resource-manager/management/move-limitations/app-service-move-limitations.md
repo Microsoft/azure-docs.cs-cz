@@ -1,51 +1,51 @@
 ---
-title: Přesunout Azure App Service prostředky
-description: K přesunutí prostředků App Service do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
+title: Přesunutí prostředků služby Azure App Service
+description: Pomocí Správce prostředků Azure přesuňte prostředky služby App Service do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: 338b0559a5de9468ff60024b88d0f676a9fc3e8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75479797"
 ---
-# <a name="move-guidance-for-app-service-resources"></a>Pokyny pro přesun App Servicech prostředků
+# <a name="move-guidance-for-app-service-resources"></a>Přesunutí pokynů pro prostředky služby App Service
 
-Tento článek popisuje postup přesunutí prostředků App Service. Existují konkrétní požadavky na přesun App Servicech prostředků do nového předplatného.
+Tento článek popisuje kroky k přesunutí prostředků služby App Service. Existují specifické požadavky na přesunutí prostředků služby App Service do nového předplatného.
 
-## <a name="move-across-subscriptions"></a>Pohyb mezi předplatnými
+## <a name="move-across-subscriptions"></a>Přechod mezi předplatnými
 
-Při přesunu webové aplikace v rámci předplatných platí následující pokyny:
+Při přesouvání webové aplikace mezi předplatnými platí následující pokyny:
 
-- Cílová skupina prostředků nesmí mít nějaké stávající prostředky App Service. Prostředky App Service patří:
+- Cílová skupina prostředků nesmí mít žádné existující prostředky služby App Service. Mezi prostředky služby App Service patří:
     - Web Apps
-    - Plány App Service
+    - Plány služby App Service
     - Nahrané nebo importované certifikáty SSL
     - Prostředí App Service
-- Všechny prostředky App Service ve skupině prostředků daly přesunout najednou. Všimněte si, že App Service prostředí nejde přesunout do nové skupiny prostředků ani do nového předplatného.
-- Certifikát vázaný na web můžete přesunout bez odstranění vazeb SSL, pokud se certifikát přesune se všemi ostatními prostředky ve skupině prostředků.
-- Prostředky App Service lze pouze přesunout ze skupiny prostředků, ve kterém byly původně vytvořeny. Pokud prostředek App Service už není v původní skupině prostředků, přesuňte ho zpátky do původní skupiny prostředků. Pak přemístěte prostředek napříč předplatnými.
+- Všechny prostředky služby App Service ve skupině prostředků musí být přesunuty společně. Všimněte si, že prostředí služby App Service nelze přesunout do nové skupiny prostředků ani do nového předplatného.
+- Certifikát vázaný na web můžete přesunout bez odstranění vazeb SSL, pokud je certifikát přesunut se všemi ostatními prostředky ve skupině prostředků.
+- Prostředky služby App Service lze přesunout pouze ze skupiny prostředků, ve kterém byly původně vytvořeny. Pokud prostředek služby App Service již není v původní skupině prostředků, přesuňte jej zpět do původní skupiny prostředků. Potom přesuňte prostředek mezi předplatnými.
 
-Pokud si původní skupinu prostředků nepamatujete, můžete ji najít prostřednictvím diagnostiky. Pro webovou aplikaci vyberte možnost **diagnostikovat a vyřešit problémy**. Pak vyberte **Konfigurace a Správa**.
+Pokud si nepamatujete původní skupinu prostředků, můžete ji najít prostřednictvím diagnostiky. Pro webovou aplikaci vyberte **Diagnostikovat a řešit problémy**. Potom vyberte **Možnost Konfigurace a správa**.
 
 ![Vybrat diagnostiku](./media/app-service-move-limitations/select-diagnostics.png)
 
-Vyberte **Možnosti migrace**.
+Vyberte **možnosti migrace**.
 
-![Výběr možností migrace](./media/app-service-move-limitations/select-migration.png)
+![Vybrat možnosti migrace](./media/app-service-move-limitations/select-migration.png)
 
-Pro přesunutí webové aplikace vyberte možnost Doporučený postup.
+Vyberte možnost doporučených kroků pro přesunutí webové aplikace.
 
-![Vyberte doporučené kroky.](./media/app-service-move-limitations/recommended-steps.png)
+![Výběr doporučených kroků](./media/app-service-move-limitations/recommended-steps.png)
 
-Zobrazí se doporučené akce, které je třeba provést před přesunutím prostředků. Tyto informace zahrnují původní skupinu prostředků pro webovou aplikaci.
+Zobrazí se doporučené akce, které je třeba provést před přesunutím prostředků. Informace zahrnují původní skupinu prostředků pro webovou aplikaci.
 
 ![Doporučení](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>Přesun podpory
 
-Chcete-li zjistit, které prostředky App Service lze přesunout, přečtěte si téma Přesunutí stavu podpory pro:
+Pokud chcete zjistit, které prostředky služby App Service se dá přesunout, přečtěte si, proč chcete přesunout stav podpory:
 
 - [Microsoft.AppService](../move-support-resources.md#microsoftappservice)
 - [Microsoft.CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
@@ -54,4 +54,4 @@ Chcete-li zjistit, které prostředky App Service lze přesunout, přečtěte si
 
 ## <a name="next-steps"></a>Další kroky
 
-Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../move-resource-group-and-subscription.md).
+Příkazy k přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../move-resource-group-and-subscription.md).

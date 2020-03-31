@@ -1,43 +1,43 @@
 ---
 title: Onboarding prostředků
-description: Přečtěte si, jak provést registraci prostředků pomocí vlastních zprostředkovatelů Azure, abyste mohli použít správu nebo konfiguraci na jiné typy prostředků Azure.
+description: Přečtěte si o provádění registrace prostředků pomocí vlastních zprostředkovatelů Azure k použití správy nebo konfigurace pro jiné typy prostředků Azure.
 author: jjbfour
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650406"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Přehled registrace prostředků vlastních zprostředkovatelů Azure
 
-Registrace prostředků vlastních zprostředkovatelů Azure je rozšiřující model pro typy prostředků Azure. Umožňuje aplikovat operace nebo správu napříč stávajícími prostředky Azure ve velkém měřítku. Další informace najdete v tématu [jak vlastní poskytovatelé Azure můžou Azure rozšiřuje](overview.md). Tento článek popisuje:
+Přiřazování prostředků vlastních zprostředkovatelů Azure je model rozšiřitelnosti pro typy prostředků Azure. Umožňuje použít operace nebo správu napříč existujícími prostředky Azure ve velkém měřítku. Další informace najdete v tématu [Jak vlastní zprostředkovatelé Azure můžete rozšířit Azure](overview.md). Tento článek popisuje:
 
-- Co může dělat registrace prostředku.
-- Základy připojování zdrojů a jejich použití.
-- Kde najít příručky a ukázky kódu, které vám pomohou začít.
+- Co může registrace zdrojů dělat.
+- Základy registrace zdrojů a jeho použití.
+- Kde najít průvodce a ukázky kódu, abyste mohli začít.
 
 > [!IMPORTANT]
-> Vlastní zprostředkovatelé jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji pro produkční úlohy. Některé funkce můžou být nepodporované nebo můžou mít omezené možnosti.
+> Vlastní zprostředkovatelé jsou aktuálně ve verzi Public Preview.
+> Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučujeme ji pro produkční úlohy. Některé funkce mohou být nepodporované nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="what-can-resource-onboarding-do"></a>K čemu slouží prostředek pro registraci?
+## <a name="what-can-resource-onboarding-do"></a>Co může registrace zdrojů dělat?
 
-Podobně jako vlastní [poskytovatelé vlastních zprostředkovatelů Azure vlastní prostředky](./custom-providers-resources-endpoint-how-to.md), registraci prostředků definují kontrakt, který bude proxy požadavky na registraci do koncového bodu. Na rozdíl od vlastních prostředků nevytváří připojování prostředků nový typ prostředku. Místo toho umožňuje rozšíření existujících typů prostředků. A připojování prostředků funguje s Azure Policy, takže můžete provádět správu a konfiguraci prostředků ve velkém měřítku. Některé příklady pracovních postupů připojování prostředků:
+Podobně jako [vlastní prostředky Azure ,](./custom-providers-resources-endpoint-how-to.md)připojení prostředků definuje smlouvu, která bude proxy "onboarding" požadavky na koncový bod. Na rozdíl od vlastních prostředků registrace prostředků nevytváří nový typ prostředku. Místo toho umožňuje rozšíření existujících typů prostředků. A registrace prostředků funguje s Azure Policy, takže správu a konfiguraci prostředků lze provádět ve velkém měřítku. Některé příklady pracovních postupů registrace zdrojů:
 
-- Nainstalujte a spravujte do rozšíření virtuálních počítačů.
-- Nahrajte a nakonfigurujte výchozí hodnoty účtů úložiště Azure.
-- Povolit nastavení diagnostiky standardních hodnot na stupnici.
+- Instalace a správa rozšíření virtuálních strojů.
+- Nahrajte a nakonfigurujte výchozí hodnoty na účtech úložiště Azure.
+- Povolte základní nastavení diagnostiky ve velkém měřítku.
 
-## <a name="resource-onboarding-basics"></a>Základy připojování zdrojů
+## <a name="resource-onboarding-basics"></a>Základy registrace zdrojů
 
-Registraci prostředků můžete nakonfigurovat pomocí vlastních zprostředkovatelů Azure pomocí typů prostředků Microsoft. CustomProviders/resourceProviders a Microsoft. CustomProviders/Association. Pokud chcete povolit registraci prostředků pro vlastního zprostředkovatele, vytvořte během procesu konfigurace typ **ResourceType** s názvem Associations a **routingType** , který obsahuje "rozšíření". Microsoft. CustomProviders/Associations a Microsoft. CustomProviders/resourceProviders nemusejí patřit do stejné skupiny prostředků.
+Přikonfiguraci prostředků prostřednictvím vlastních zprostředkovatelů Azure nakonfigurujete pomocí microsoft.customproviders/resourceProviders a typů prostředků Microsoft.CustomProviders/associations. Chcete-li povolit připojení prostředků pro vlastního zprostředkovatele, vytvořte během procesu konfigurace **resourceType** s názvem "přidružení" s **routingType,** který obsahuje "Rozšíření". Microsoft.CustomProviders/associations a Microsoft.CustomProviders/resourceProviders nemusí patřit do stejné skupiny prostředků.
 
-Tady je ukázkový vlastní poskytovatel Azure:
+Tady je ukázka vlastního zprostředkovatele Azure:
 
 ```JSON
 {
@@ -56,16 +56,16 @@ Tady je ukázkový vlastní poskytovatel Azure:
 
 Vlastnost | Povinné? | Popis
 ---|---|---
-jméno | Ano | Název definice koncového bodu. Pro registraci prostředků musí být název "asociace".
-routingType | Ano | Určuje typ kontraktu s koncovým bodem. V případě připojování prostředků jsou platnými **routingTypes** "proxy, cache, Extension" a "Webhook, cache, Extension".
-endpoint | Ano | Koncový bod, do kterého mají být směrovány požadavky. Tím se zpracuje odpověď a jakékoli vedlejší účinky žádosti.
+jméno | Ano | Název definice koncového bodu. Pro připnutí zdroje musí být název "přidružení".
+typ směrování | Ano | Určuje typ smlouvy s koncovým bodem. Pro připojení prostředků jsou platné **směrovací typy** "Proxy,Cache,Extension" a "Webhook,Cache,Extension".
+endpoint | Ano | Koncový bod pro směrování požadavků. To bude zpracovávat odpověď a všechny vedlejší účinky požadavku.
 
-Po vytvoření vlastního poskytovatele s typem prostředku přidružení můžete cílit pomocí Microsoft. CustomProviders/Associations. Microsoft. CustomProviders/Associations je prostředek rozšíření, který může rozšířit jakýkoli jiný prostředek Azure. Když je vytvořena instance Microsoft. CustomProviders/Associations, převezme vlastnost **parametrem targetresourceid**, která by měla být platným ID prostředku Microsoft. CustomProviders/ResourceProviders nebo Microsoft. Solutions/Applications. V těchto případech se požadavek přesměruje na typ prostředku přidružení v instanci Microsoft. CustomProviders/resourceProviders, kterou jste vytvořili.
+Po vytvoření vlastního zprostředkovatele s typem prostředku přidružení můžete cílit pomocí Microsoft.CustomProviders/associations. Microsoft.CustomProviders/associations je prostředek rozšíření, který může rozšířit jakýkoli jiný prostředek Azure. Při vytvoření instance Microsoft.CustomProviders/associations bude trvat vlastnost **targetResourceId**, což by mělo být platné Microsoft.CustomProviders/resourceProviders nebo Microsoft.Solutions/applications ID prostředku. V těchto případech bude požadavek předán typu prostředku přidružení v instanci Microsoft.CustomProviders/resourceProviders, kterou jste vytvořili.
 
 > [!NOTE]
-> Pokud je jako **parametrem targetresourceid**k dispozici ID prostředku Microsoft. Solutions/Applications, musí být ve spravované skupině prostředků nasazená aplikace Microsoft. CustomProviders/resourceProviders s názvem Public.
+> Pokud Microsoft.Solutions/applications ID prostředku je k dispozici jako **targetResourceId**, musí být Microsoft.CustomProviders/resourceProviders nasazenve skupině spravovaných prostředků s názvem "public".
 
-Ukázka přidružení vlastních poskytovatelů Azure:
+Ukázkové přidružení vlastních zprostředkovatelů Azure:
 
 ```JSON
 {
@@ -78,15 +78,15 @@ Ukázka přidružení vlastních poskytovatelů Azure:
 
 Vlastnost | Povinné? | Popis
 ---|---|---
-Parametrem targetresourceid | Ano | ID prostředku Microsoft. CustomProviders/resourceProviders nebo Microsoft. Solutions/Applications.
+targetResourceId | Ano | ID prostředku Microsoft.CustomProviders/resourceProviders nebo Microsoft.Solutions/applications.
 
-## <a name="how-to-use-resource-onboarding"></a>Jak používat připojování zdrojů
+## <a name="how-to-use-resource-onboarding"></a>Jak používat připonování zdrojů
 
-Připojování prostředků funguje tak, že rozšíří další prostředky s prostředkem rozšíření Microsoft. CustomProviders/Associations. V následující ukázce je vytvořen požadavek pro virtuální počítač, ale kterýkoli prostředek lze rozšířit.
+Přizapisování prostředků funguje rozšířením dalších prostředků o prostředek rozšíření Microsoft.CustomProviders/associations. V následující ukázce je požadavek pro virtuální počítač, ale jakýkoli prostředek lze rozšířit.
 
-Nejprve je třeba vytvořit vlastní prostředek poskytovatele s typem prostředku přidružení. Tím se deklaruje adresa URL zpětného volání, která se použije při vytvoření odpovídajícího prostředku Microsoft. CustomProviders/přidružení, který cílí na vlastního zprostředkovatele.
+Nejprve je třeba vytvořit vlastní prostředek zprostředkovatele s typem prostředku přidružení. Tím deklarujete adresu URL zpětného volání, která bude použita při vytvoření odpovídajícího prostředku Microsoft.CustomProviders/associations, který cílí na vlastního zprostředkovatele.
 
-Ukázka žádosti o vytvoření Microsoft. CustomProviders/resourceProviders:
+Ukázkový požadavek na vytvoření microsoft.customproviders/resourceProviders:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}?api-version=2018-09-01-preview
@@ -107,9 +107,9 @@ Content-Type: application/json
 }
 ```
 
-Po vytvoření vlastního poskytovatele můžete cílit na jiné prostředky a použít na ně vedlejší účinky vlastního zprostředkovatele.
+Po vytvoření vlastního zprostředkovatele můžete cílit na jiné prostředky a použít na ně vedlejší účinky vlastního zprostředkovatele.
 
-Ukázka žádosti o vytvoření služby Microsoft. CustomProviders/Associations:
+Ukázkový požadavek na vytvoření microsoft.customproviders/associations:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.CustomProviders/associations/{associationName}?api-version=2018-09-01-preview
@@ -127,7 +127,7 @@ Content-Type: application/json
 }
 ```
 
-Tato žádost se pak přepošle na koncový bod zadaný ve vlastním poskytovateli, který jste vytvořili, na který odkazuje **parametrem targetresourceid** v tomto formátu:
+Tento požadavek pak bude předán koncovému bodu určenému ve vlastním zprostředkovateli, na který jste vytvořili, na který odkazuje **targetResourceId** v tomto formuláři:
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,18 +146,18 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-Koncový bod by měl reagovat s `Content-Type`em Application/JSON a platným textem odpovědi JSON. Pole, která jsou vrácena v objektu **Properties** objektu JSON, budou přidána do odpovědi na vrácení přidružení.
+Koncový bod by měl reagovat s `Content-Type` aplikací/json a platné tělo odezvy JSON. Pole, která jsou vrácena pod **objektvlastnosti** JSON budou přidány do odpovědi na návrat přidružení.
 
 ## <a name="getting-help"></a>Získání nápovědy
 
-Pokud máte dotazy týkající se vývoje vlastních poskytovatelů prostředků Azure, zkuste je zeptatte na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobná otázka již mohla být zodpovězena, před odesláním proto nejprve proveďte kontrolu. Přidejte ```azure-custom-providers``` značek, abyste získali rychlou odezvu.
+Pokud máte dotazy týkající se vývoje vlastních zprostředkovatelů prostředků Azure, zkuste se jich zeptat na [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobná otázka již mohla být zodpovězena, takže nejprve zkontrolujte před odesláním. Přidejte ```azure-custom-providers``` značku, abyste získali rychlou odpověď!
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o vlastních poskytovatelích. Další informace najdete v těchto článcích:
+V tomto článku jste se dozvěděli o vlastní zprostředkovatelé. Další informace najdete v těchto článcích:
 
-- [Kurz: připojování prostředků s vlastními poskytovateli](./tutorial-resource-onboarding.md)
-- [Kurz: vytvoření vlastních akcí a prostředků v Azure](./tutorial-get-started-with-custom-providers.md)
-- [Rychlý Start: Vytvoření vlastního poskytovatele prostředků a nasazení vlastních prostředků](./create-custom-provider.md)
-- [Postupy: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Postupy: Přidání vlastních prostředků do Azure REST API](./custom-providers-resources-endpoint-how-to.md)
+- [Kurz: Připojení zdrojů s vlastními poskytovateli](./tutorial-resource-onboarding.md)
+- [Kurz: Vytváření vlastních akcí a prostředků v Azure](./tutorial-get-started-with-custom-providers.md)
+- [Úvodní příručka: Vytvoření vlastního zprostředkovatele prostředků a nasazení vlastních prostředků](./create-custom-provider.md)
+- [Postup: Přidání vlastních akcí do rozhraní API Azure REST](./custom-providers-action-endpoint-how-to.md)
+- [Postup: Přidání vlastních prostředků do rozhraní API Azure REST](./custom-providers-resources-endpoint-how-to.md)

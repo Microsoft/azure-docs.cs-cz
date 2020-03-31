@@ -9,12 +9,12 @@ ms.date: 04/06/2018
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 7ba4c90811bd8051ed9c307d9f9fa33e08e69dc7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175360"
 ---
-Úloha spuštěná v Azure Batch může při spuštění vytvořit výstupní data. Výstupní data úlohy se často musí ukládat pro načtení jinými úkoly v úloze, v klientské aplikaci, která úlohu provedla, nebo obojí. Úlohy zapisují výstupní data do systému souborů dávkového výpočetního uzlu, ale všechna data v uzlu jsou ztracena při obnovení obrazu nebo když uzel opustí fond. Úlohy mohou mít také dobu uchovávání souborů, po jejímž uplynutí se soubory vytvořené úlohou odstraní. Z těchto důvodů je důležité zachovat výstup úkolu, který budete potřebovat později pro úložiště dat, jako je například [Azure Storage](https://docs.microsoft.com/azure/storage/).
+Úloha spuštěná v Azure Batch může při spuštění vytvářet výstupní data. Výstupní data úlohy často musí být uložena pro načtení jinými úkoly v úloze, klientskou aplikací, která úlohu provedla, nebo obojím. Úlohy zapisují výstupní data do systému souborů výpočetního uzlu Batch, ale všechna data v uzlu budou ztracena, když je znovu zobrazena nebo když uzel opustí fond. Úkoly mohou mít také dobu uchování souborů, po které jsou odstraněny soubory vytvořené úkolem. Z těchto důvodů je důležité zachovat výstup úlohy, který budete později potřebovat do úložiště dat, jako je [Azure Storage](https://docs.microsoft.com/azure/storage/).
 
 Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](../articles/batch/batch-api-basics.md#azure-storage-account).

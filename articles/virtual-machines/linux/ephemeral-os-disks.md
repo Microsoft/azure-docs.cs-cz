@@ -1,6 +1,6 @@
 ---
-title: Dočasné disky s operačním systémem pro Azure Linux Virtual Machines
-description: Přečtěte si další informace o dočasných discích s operačním systémem pro virtuální počítače Azure.
+title: Dočasné disky operačního systému pro virtuální počítače Azure Linux
+description: Další informace o dočasných discích operačního systému pro virtuální počítače Azure.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -9,16 +9,16 @@ ms.date: 07/01/2019
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 971461f33b3a80363ffb0835ddc74f46d1a34fb1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945208"
 ---
-# <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
+# <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky operačního systému pro virtuální počítače Azure
 
 [!INCLUDE [virtual-machines-common-ephemeral](../../../includes/virtual-machines-common-ephemeral.md)]
  
 ## <a name="next-steps"></a>Další kroky
-Virtuální počítač s dočasným diskem s operačním systémem můžete vytvořit pomocí rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/vm#az-vm-create).
+Virtuální počítač můžete vytvořit s dočasným diskem operačního systému pomocí [azure CLI](https://docs.microsoft.com/cli/azure/vm#az-vm-create).
 

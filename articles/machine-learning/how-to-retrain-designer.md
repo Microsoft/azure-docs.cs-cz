@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: 264b169eefde18880f50feae2554aa3ca7037b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368158"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389031"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Přeučování modelů s využitím návrháře služby Azure Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -54,14 +54,14 @@ Chcete-li přeškolit model, potřebujete počáteční model. V této části s
    V tomto příkladu jsou data uložena v [úložišti dat Azure](how-to-access-data.md). Pokud ještě nemáte úložiště dat, můžete ho nyní vytvořit výběrem **nového úložiště dat**.
 
 1. Zadejte cestu k datům. Můžete také vybrat **Procházet cestu** k procházení úložiště dat. 
-1. V horní části plátna vyberte **Spustit.**
+1. V horní části plátna vyberte **Odeslat.**
     
    > [!NOTE]
    > Pokud jste již nastavili výchozí výpočetní prostředky pro tuto pracovní verzi kanálu, kanál se spustí automaticky. V opačném případě můžete podle pokynů v podokně nastavení nastavit jeden nyní.
 
 ### <a name="find-your-trained-model"></a>Najděte svůj trénovaný model
 
-Návrhář uloží všechny výstupy kanálu, včetně trénovaných modelů, do výchozího účtu úložiště. K trénovaného modelu můžete také přistupovat přímo v návrháři:
+Návrhář uloží všechny výstupy kanálu, včetně trénovaných modelů, do výchozího účtu úložiště. Můžete však také přistupovat k trénovaneji modely přímo v návrháři:
 
 1. Počkejte na dokončení spuštění kanálu.
 1. Vyberte modul **Model vlaku.**

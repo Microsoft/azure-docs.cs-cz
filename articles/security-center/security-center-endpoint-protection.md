@@ -1,6 +1,6 @@
 ---
-title: Doporučení pro ochranu koncových bodů v Azure Security Center
-description: Jak jsou zjištěna a označena jako v pořádku řešení ochrany koncových bodů.
+title: Doporučení pro ochranu koncových bodů v Centrech zabezpečení Azure
+description: Jak jsou zjištěna a identifikována jako v pořádku řešení ochrany koncového bodu.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,34 +14,34 @@ ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
 ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208538"
 ---
-# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Posouzení a doporučení služby Endpoint Protection v Azure Security Center
+# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Posouzení ochrany koncových bodů a doporučení v Azure Security Center
 
-Azure Security Center poskytuje posouzení stavu [podporovaných](security-center-services.md#endpoint-supported) verzí řešení ochrany koncových bodů. Tento článek vysvětluje scénáře, které Security Center vedoucím generovat následující dvě doporučení:
+Azure Security Center poskytuje posouzení stavu [podporovaných](security-center-services.md#endpoint-supported) verzí řešení ochrany koncových bodů. Tento článek vysvětluje scénáře, které vedou Centrum zabezpečení ke generování následujících dvou doporučení:
 
-* **Instalace řešení Endpoint Protection na virtuálním počítači**
-* **Řešení problémů se stavem služby Endpoint Protection na vašich počítačích**
+* **Instalace řešení ochrany koncových bodů na virtuální můře**
+* **Řešení problémů se stavem ochrany koncových bodů na počítačích**
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center doporučuje při spuštění [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) **instalovat řešení Endpoint Protection na virtuálním počítači** a výsledek je **AMServiceEnabled: false**
+* Security Center doporučuje **"Nainstalovat řešení ochrany koncového bodu na virtuálním počítači"** při spuštění [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) a výsledkem je **AMServiceEnabled: False**
 
-* Security Center doporučuje, abyste při spuštění [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) **vyřešili problémy se stavem Endpoint Protection na vašich počítačích** a nastaly některé z těchto situací:
+* Security Center doporučuje **"Vyřešit problémy se stavem ochrany koncového bodu na vašich počítačích"** při spuštění [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) a dojde k některé z následujících akcí:
 
-  * Kterákoli z následujících vlastností je false:
+  * Některé z následujících vlastností jsou false:
 
     **AMServiceEnabled**
 
     **AntispywareEnabled**
 
-    **RealTimeProtectionEnabled**
+    **Funkce RealTimeProtectionPovolená**
 
-    **BehaviorMonitorEnabled**
+    **BehaviorMonitorPovoleno**
 
     **IoavProtectionEnabled**
 
@@ -53,11 +53,11 @@ Azure Security Center poskytuje posouzení stavu [podporovaných](security-cente
 
     **AntivirusSignatureAge**
 
-## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
+## <a name="microsoft-system-center-endpoint-protection"></a>Ochrana koncového bodu Microsoft System Center
 
-* Security Center doporučuje při importu **SCEPMpModule ("$env:P Rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1"** **nainstalovat řešení Endpoint Protection na virtuálním počítači** ") a spustit výsledky **Get-MProtComputerStatus** s **AMServiceEnabled = false**
+* Security Center doporučuje **"Instalovat řešení ochrany koncových bodů ve virtuálním počítači"** při importu **modulu SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** a spuštění výsledků **Get-MProtComputerStatus** s **amserviceenabled = false**
 
-* Security Center doporučuje, abyste při spuštění **Get-MprotComputerStatus** **vyřešili problémy se stavem Endpoint Protection na vašich počítačích** a nastaly některé z těchto situací:
+* Security Center doporučuje **"Vyřešit problémy se stavem ochrany koncového bodu na vašich počítačích"** při spuštění **Get-MprotComputerStatus** a dojde k některé z následujících akcí:
 
     * Alespoň jedna z následujících vlastností je false:
 
@@ -73,7 +73,7 @@ Azure Security Center poskytuje posouzení stavu [podporovaných](security-cente
     
             **OnAccessProtectionEnabled**
           
-    * Je-li jedna nebo obě následující signatury aktualizace větší nebo rovny 7. 
+    * Pokud jeden nebo oba z následujících aktualizací podpisu je větší nebo rovna 7. 
 
             **AntispywareSignatureAge**
     
@@ -81,104 +81,104 @@ Azure Security Center poskytuje posouzení stavu [podporovaných](security-cente
 
 ## <a name="trend-micro"></a>Trend Micro
 
-* Security Center doporučuje **nainstalovat řešení Endpoint Protection na virtuálním počítači** , když se nesplní některá z následujících kontrol:
-    * **HKLM: existuje Agent zabezpečení \ SOFTWARE\TrendMicro\Deep**
-    * **HKLM: \ SOFTWARE\TrendMicro\Deep zabezpečení Agent\InstallationFolder existuje.**
-    * Soubor **dsa_query. cmd** se nachází v instalační složce
-    * Spuštění **dsa_query. cmd** výsledků s **komponentou. am. Mode: on-trend microed Security Agent byl zjištěn**
+* Security Center doporučuje **"Instalace řešení ochrany koncových bodů na virtuálním počítači",** pokud nejsou splněny některé z následujících kontrol:
+    * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** existuje
+    * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** existuje
+    * Soubor **dsa_query.cmd** se nachází v instalační složce
+    * Spuštění **výsledků dsa_query.cmd** s **komponentou Component.AM.mode: on - Trend Micro Deep Security Agent detected**
 
-## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
-Security Center doporučuje **nainstalovat řešení Endpoint Protection na virtuálním počítači** , když se nesplní některá z následujících kontrol:
+## <a name="symantec-endpoint-protection"></a>Ochrana koncových bodů společnosti Symantec
+Security Center doporučuje **"Instalace řešení ochrany koncových bodů na virtuálním počítači",** pokud nejsou splněny některé z následujících kontrol:
 
-* **HKLM: \ Software\Symantec\Symantec koncový bod Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM: \ Software\Symantec\Symantec koncový bod Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Nebo
 
-* **HKLM: \ Software\Wow6432Node\Symantec\Symantec koncový bod Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM: \ Software\Wow6432Node\Symantec\Symantec koncový bod Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Security Center doporučuje **vyřešit problémy stavu ochrany koncových bodů na vašich počítačích** , když některá z následujících kontrol nejsou splněné:
+Security Center doporučuje **"Vyřešit problémy se stavem ochrany koncových bodů na vašich počítačích",** pokud nejsou splněny některé z následujících kontrol:
 
-* Podívejte se na verzi Symantec > = 12: umístění registru: **HKLM: \ Software\Symantec\Symantec koncový bod Protection\CurrentVersion "-value" ProductVersion "**
+* Kontrola verze společnosti Symantec >= 12: Umístění registru: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
 
-* Kontrolovat stav ochrany v reálném čase: **HKLM: \ Software\Wow6432Node\Symantec\Symantec koncový bod Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
+* Kontrola stavu ochrany v reálném čase: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
 
-* Ověřte stav aktualizace signatury: **HKLM\Software\Symantec\Symantec koncový bod Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 dní**
+* Zkontrolovat stav aktualizace podpisu: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 dní**
 
-* Zkontrolujte stav úplné kontroly: **HKLM: \ Software\Symantec\Symantec koncový bod Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime < = 7 dní** .
+* Kontrola stavu úplnékontroly: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 dní**
 
-* Vyhledejte číslo verze podpisu cesta k verzi signatury pro Symantec 12: **cesty k registru + "CurrentVersion\SharedDefs"-value "Srtsp"** 
+* Najít číslo verze podpisu Cesta k verzi podpisu pro společnost Symantec 12: **Registry Paths+ "CurrentVersion\SharedDefs" -Hodnota "SRTSP"** 
 
-* Cesta k signatuře verze pro Symantec 14: **cesty k registru + "CurrentVersion\SharedDefs\SDSDefs"-value "Srtsp"**
+* Cesta k podpisové verzi aplikace Symantec 14: **Cesty registru+ "CurrentVersion\SharedDefs\SDSDefs" -Hodnota "SRTSP"**
 
 Cesty registru:
 
-* **"HKLM: \ Software\Symantec\Symantec Endpoint Protection" + $Path;**
-* **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection "+ $Path**
+* **"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;**
+* **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
 
-## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee Endpoint Protection pro Windows
+## <a name="mcafee-endpoint-protection-for-windows"></a>Ochrana koncových bodů mcafee pro Windows
 
-Security Center doporučuje **nainstalovat řešení Endpoint Protection na virtuálním počítači** , když se nesplní některá z následujících kontrol:
+Security Center doporučuje **"Instalace řešení ochrany koncových bodů na virtuálním počítači",** pokud nejsou splněny některé z následujících kontrol:
 
-* **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion** existuje
+* **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** existuje
 
-* **HKLM: \ SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
+* **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
-Security Center doporučuje **vyřešit problémy stavu ochrany koncových bodů na vašich počítačích** , když některá z následujících kontrol nejsou splněné:
+Security Center doporučuje **"Vyřešit problémy se stavem ochrany koncových bodů na vašich počítačích",** pokud nejsou splněny některé z následujících kontrol:
 
-* Verze programu McAfee: **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion > = 10**
+* Verze společnosti McAfee: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
 
-* Najít signaturu verze: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "dwContentMajorVersion"**
+* Verze aplikace Najít podpis: **HKLM:\Software\McAfee\AVSolution\DS\DS -Hodnota "dwContentMajorVersion"**
 
-* Najít datum podpisu: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "szContentCreationDate" > = 7 dní**
+* Datum nalezení podpisu: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "szContentCreationDate" >= 7 dní**
 
-* Najít datum kontroly: **HKLM: \ Software\McAfee\Endpoint\AV\ODS-value "LastFullScanOdsRunTime" > = 7 dní**
+* Datum hledání: **HKLM:\Software\McAfee\Endpoint\AV\ODS -Hodnota "LastFullScanOdsRunTime" >= 7 dní**
 
-## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>Prevence hrozeb zabezpečení služby McAfee Endpoint Security pro Linux 
+## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>McAfee Endpoint Security for Linux Threat Prevention 
 
-Security Center doporučuje **nainstalovat řešení Endpoint Protection na virtuálním počítači** , když se nesplní některá z následujících kontrol:
+Security Center doporučuje **"Instalace řešení ochrany koncových bodů na virtuálním počítači",** pokud nejsou splněny některé z následujících kontrol:
 
-- Výstupy souborů **/opt/iSEC/ENS/threatprevention/bin/isecav** 
+- Soubor **/opt/isec/ens/threatprevention/bin/isecav** ukončí 
 
-- výstup **"/opt/iSEC/ENS/threatprevention/bin/isecav--Version"** je: **název společnosti McAfee = McAfee Endpoint Security pro Linux Threat prevence a verze programu McAfee > = 10**
+- **Výstup "/opt/isec/ens/threatprevention/bin/isecav --version"** je: **Název McAfee Endpoint Security for Linux Threat Prevention a McAfee verze >= 10**
 
-Security Center doporučuje **vyřešit problémy stavu ochrany koncových bodů na vašich počítačích** , když některá z následujících kontrol nejsou splněné:
+Security Center doporučuje **"Vyřešit problémy se stavem ochrany koncových bodů na vašich počítačích",** pokud nejsou splněny některé z následujících kontrol:
 
-- **"/opt/iSEC/ENS/threatprevention/bin/isecav--listtask"** vrátí **rychlou kontrolu, úplnou kontrolu** a obě kontroly < = 7 dní.
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** vrátí **rychlé skenování, úplné skenování** a obě skeny <= 7 dní
 
-- **"/opt/iSEC/ENS/threatprevention/bin/isecav--listtask"** vrací data **a čas aktualizace modulu** a oba < = 7 dní.
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** vrátí **dat a čas aktualizace motoru** a oba <= 7 dní
 
-- **"/opt/iSEC/ENS/threatprevention/bin/isecav--getoasconfig--Summary"** vrátí stav **kontroly přístupu**
+- **"/opt/isec/ens/threatprevention/bin/isecav --getoasconfig --summary"** vrátí stav **Při přístupu ke skenování.**
 
-## <a name="sophos-antivirus-for-linux"></a>Sophos antivirus pro Linux 
+## <a name="sophos-antivirus-for-linux"></a>Sophos Antivirus pro Linux 
 
-Security Center doporučuje **nainstalovat řešení Endpoint Protection na virtuálním počítači** , když se nesplní některá z následujících kontrol:
+Security Center doporučuje **"Instalace řešení ochrany koncových bodů na virtuálním počítači",** pokud nejsou splněny některé z následujících kontrol:
 
-- **/Opt/Sophos-AV/bin/savdstatus** souboru se ukončí nebo vyhledá vlastní umístění **"readlink $ (které savscan)"** .
+- Soubor **/opt/sophos-av/bin/savdstatus** ukončí nebo hledat vlastní umístění **"readlink $(which savscan)"**
 
-- **"/opt/Sophos-AV/bin/savdstatus--Version"** vrací Sophos name = **Sophos Anti-virus a Sophos verze > = 9**
+- **"/opt/sophos-av/bin/savdstatus --version"** vrátí název Sophos = **Sophos Anti-Virus a Sophos verze >= 9**
 
-Security Center doporučuje **vyřešit problémy stavu ochrany koncových bodů na vašich počítačích** , když některá z následujících kontrol nejsou splněné:
+Security Center doporučuje **"Vyřešit problémy se stavem ochrany koncových bodů na vašich počítačích",** pokud nejsou splněny některé z následujících kontrol:
 
-- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep-i "Naplánovaná kontrola.\* dokončeno "| koncová hodnota-1**vrátí hodnotu.
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Plánované skenování . \* dokončena" | ocas -1"**, vrátí hodnotu
 
-- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep "Kontrola dokončena"** | koncová hodnota-1 vrátí hodnotu.
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "skenování dokončeno"** | ocas -1", vrátí hodnotu
 
-- **"/opt/Sophos-AV/bin/savdstatus--LastUpdate"** vrátí LastUpdate, který by měl být < = 7 dní. 
+- **"/opt/sophos-av/bin/savdstatus --lastupdate"** vrátí lastUpdate, který by měl být <= 7 dní 
 
-- **"/opt/Sophos-AV/bin/savdstatus-v"** se rovná **"probíhá kontrola při přístupu"** 
+- **"/opt/sophos-av/bin/savdstatus -v"** se rovná **"Prohledávání při přístupu je spuštěno"** 
 
-- funkce **/opt/Sophos-AV/bin/savconfig Get LiveProtection** se povoluje.
+- **"/opt/sophos-av/bin/savconfig get LiveProtection"** vrátí povoleno
 
-## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
+## <a name="troubleshoot-and-support"></a>Poradce při potížích a podpora
 
-### <a name="troubleshoot"></a>Řešení problémů
+### <a name="troubleshoot"></a>Řešení potíží
 
-Protokoly rozšíření Microsoft Antimalware jsou k dispozici na adrese: **%systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (nebo PaaSAntimalware) \1.5.5.x (verze #) \CommandExecution.log**
+Protokoly rozšíření antimalwarových produktů společnosti Microsoft jsou k dispozici na adrese: **%Systemdrive%\WindowsAzure\Logs\Microsoft.Azure.Security.IaaSAntimalware(Nebo PaaSAntimalware)\1.5.5.x(verze#)\CommandExecution.log**
 
 ### <a name="support"></a>Podpora
 
-Pokud chcete získat další informace, obraťte se na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Nebo zasouborte incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Další pomoc získáte od odborníků na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Nebo soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat podporu. Informace o používání podpory Azure načtete v [nejčastějších dotazech k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).

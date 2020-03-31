@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 578e935ee742ad476aeafb53670f0a92035249e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064083"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388980"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "80064083"
 V tomto článku se dozvíte, jak ladit a řešit [problémy s kanály strojového učení](concept-ml-pipelines.md) v [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a [Azure Machine Learning designer (preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer). Jsou poskytovány informace o tom, jak:
 
 * Ladění pomocí sady Azure Machine Learning SDK
-* Ladění pomocí Návrháře Azure Machine Learning Designer
+* Ladění pomocí návrháře Azure Machine Learning
 * Ladění pomocí přehledů aplikací
 * Interaktivní ladění pomocí kódu Sady Visual Studio (Kód VS) a nástrojů Pythonu pro Visual Studio (PTVSD)
 
@@ -91,7 +91,7 @@ Níže uvedená tabulka obsahuje informace o různých možnostech ladění pro 
 | Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Prostředky                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Azure Machine Learning Portal UI             | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br>[třída azureml.core.Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python tisk/protokolování    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, Azure Machine Learning Designer | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Protokolování v Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| Python tisk/protokolování    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, návrhář Azure Machine Learning | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Protokolování v Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | Protokol    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights – trasování                | [Ladění kanálů ve službě Application Insights](how-to-debug-pipelines-application-insights.md)<br><br>[Nástroje pro export OpenCensus pro Azure Monitor](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python protokolování kuchařka](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>Příklad možností protokolování
@@ -136,8 +136,8 @@ U kanálů vytvořených v návrháři můžete **soubory protokolu** najít na 
 Když odešlete spuštění kanálu a zůstanete na stránce vytváření, můžete najít soubory protokolu generované pro každý modul.
 
 1. Vyberte libovolný modul ve vývojovém plátně.
-1. V pravém podokně modulu přejděte na kartu **Výstupy+ogs.**
-1. Výběr souboru protokolu`70_driver_log.txt`
+1. V pravém podokně modulu přejděte na kartu **Výstupy + protokoly.**
+1. Vyberte soubor `70_driver_log.txt`protokolu .
 
     ![Vytváření protokolů modulů stránky](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
@@ -148,8 +148,8 @@ Soubory protokolu konkrétních spuštění můžete také najít na stránce po
 1. Vyberte spuštění kanálu vytvořené v návrháři.
     ![Stránka spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. V podokně náhledu vyberte libovolný modul.
-1. V pravém podokně modulu přejděte na kartu **Výstupy+ogs.**
-1. Výběr souboru protokolu`70_driver_log.txt`
+1. V pravém podokně modulu přejděte na kartu **Výstupy + protokoly.**
+1. Vyberte soubor `70_driver_log.txt`protokolu .
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Ladění a řešení potíží v přehledech aplikací
 Další informace o použití knihovny OpenCensus Python tímto způsobem najdete v této příručce: [Ladění a řešení potíží s kanály strojového učení v Application Insights](how-to-debug-pipelines-application-insights.md)

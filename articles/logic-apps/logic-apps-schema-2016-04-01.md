@@ -1,5 +1,5 @@
 ---
-title: Aktualizace schématu – Červen 1-2016
+title: Aktualizace schématu červen-1-2016
 description: Aktualizované schéma verze 2016-06-01 pro definice aplikací logiky v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
@@ -9,27 +9,27 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792879"
 ---
-# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizace schématu pro Azure Logic Apps – 1. června 2016
+# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizace schématu pro aplikace Azure Logic Apps – 1.
 
-[Aktualizované schéma](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) a verze rozhraní API pro Azure Logic Apps obsahují klíčová vylepšení, která umožňují spolehlivější a snazší používání Logic Apps:
+[Aktualizované schéma](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) a verze rozhraní API pro Azure Logic Apps obsahuje klíčová vylepšení, která usnadňují a snadněji se používají aplikace logiky:
 
-* [Obory](#scopes) umožňují seskupit nebo vnořovat akce jako kolekci akcí.
-* [Podmínky a smyčky](#conditions-loops) jsou nyní akce první třídy.
-* Přesnější řazení pro spouštění akcí s vlastností `runAfter`, která nahrazuje `dependsOn`
+* [Obory](#scopes) umožňují seskupit nebo vnořit akce jako kolekci akcí.
+* [Podmínky a smyčky](#conditions-loops) jsou nyní prvotřídní akce.
+* Přesnější řazení pro spuštění `runAfter` akcí s vlastností, nahrazení`dependsOn`
 
-Pokud chcete upgradovat aplikace logiky ze schématu verze 1, 2015 Preview na schéma 1. června 2016, [Podívejte se do části Upgrade](#upgrade-your-schema).
+Chcete-li upgradovat aplikace logiky ze schématu náhledu [1.](#upgrade-your-schema)
 
 <a name="scopes"></a>
 
 ## <a name="scopes"></a>Obory
 
-Toto schéma zahrnuje rozsahy, které umožňují seskupit akce společně, nebo vnořené akce mezi sebou. Podmínka může například obsahovat jinou podmínku. Přečtěte si další informace o [syntaxi oboru](../logic-apps/logic-apps-loops-and-scopes.md)nebo Projděte si příklad tohoto základního oboru:
+Toto schéma zahrnuje obory, které umožňují seskupit akce společně nebo vnořovat akce uvnitř sebe. Podmínka může například obsahovat jinou podmínku. Přečtěte si další informace o [syntaxi oboru](../logic-apps/logic-apps-loops-and-scopes.md)nebo si přečtěte tento základní příklad oboru:
 
 ```json
 {
@@ -55,7 +55,7 @@ Toto schéma zahrnuje rozsahy, které umožňují seskupit akce společně, nebo
 
 ## <a name="conditions-and-loops-changes"></a>Změny podmínek a smyček
 
-V předchozích verzích schématu byly podmínky a smyčky parametry přidružené k jedné akci. Toto omezení výtahem toto omezení, takže podmínky a smyčky jsou nyní k dispozici jako typy akcí. Přečtěte si další informace o [cyklech a oborech](../logic-apps/logic-apps-loops-and-scopes.md), [podmínkách](../logic-apps/logic-apps-control-flow-conditional-statement.md)nebo Projděte si tento základní příklad, který ukazuje akci podmínky:
+V předchozích verzích schématu byly podmínky a smyčky parametry přidružené k jedné akci. Toto schéma zruší toto omezení, takže podmínky a smyčky jsou nyní k dispozici jako typy akcí. Další informace o [smyčkách a oborech](../logic-apps/logic-apps-loops-and-scopes.md), [podmínkách](../logic-apps/logic-apps-control-flow-conditional-statement.md)nebo v tomto základním příkladu, který ukazuje akci podmínky:
 
 ```json
 {
@@ -83,9 +83,9 @@ V předchozích verzích schématu byly podmínky a smyčky parametry přidruže
 
 <a name="run-after"></a>
 
-## <a name="runafter-property"></a>vlastnost ' Runafter šablonové '
+## <a name="runafter-property"></a>vlastnost runAfter
 
-Vlastnost `runAfter` nahrazuje `dependsOn`a poskytuje přesnější přesnost při zadání pořadí spouštění pro akce na základě stavu předchozích akcí. Vlastnost `dependsOn` ukázala, zda "akce běžela a byla úspěšná" na základě toho, zda předchozí akce proběhla úspěšně, selhala nebo jako vynechána, nikoli počet pokusů, kolikrát jste chtěli akci spustit. Vlastnost `runAfter` poskytuje flexibilitu jako objekt, který určuje všechny názvy akcí, po kterých se objekt spustí. Tato vlastnost také definuje pole stavů, které jsou přijatelné jako triggery. Například pokud chcete, aby akce běžela po úspěšném provedení akce a i po úspěšném nebo neúspěšném provedení akce B, nastavte tuto vlastnost `runAfter`:
+Vlastnost `runAfter` nahradí `dependsOn`, poskytuje větší přesnost při zadání pořadí spuštění pro akce na základě stavu předchozích akcí. Vlastnost `dependsOn` uvedla, zda "akce proběhla a byla úspěšná", na základě toho, zda předchozí akce proběhla úspěšně, se nezdařila nebo byla přeskočena - nikoli kolikrát jste chtěli akci spustit. Vlastnost `runAfter` poskytuje flexibilitu jako objekt, který určuje všechny názvy akcí, po kterém je objekt spuštěn. Tato vlastnost také definuje pole stavů, které jsou přijatelné jako aktivační události. Pokud například chcete, aby byla akce spuštěna po akci A úspěšné a také `runAfter` po úspěšné akci B nebo neúspěšné akci, nastavte tuto vlastnost:
 
 ```json
 {
@@ -97,63 +97,63 @@ Vlastnost `runAfter` nahrazuje `dependsOn`a poskytuje přesnější přesnost p�
 }
 ```
 
-## <a name="upgrade-your-schema"></a>Upgrade schématu
+## <a name="upgrade-your-schema"></a>Inovujte schéma
 
-Pokud chcete upgradovat na nejnovější [schéma](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json), stačí provést jenom několik kroků. Proces upgradu zahrnuje spuštění skriptu upgradu, uložení jako nové aplikace logiky, a pokud chcete, možná jste přepsali předchozí aplikaci logiky.
+Chcete-li upgradovat na [nejnovější schéma](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json), stačí provést pouze několik kroků. Proces upgradu zahrnuje spuštění skriptu upgradu, uložení jako novou aplikaci logiky a pokud chcete, případně přepsat předchozí aplikaci logiky.
 
-1. V Azure Portal otevřete aplikaci logiky.
+1. Na webu Azure Portal otevřete aplikaci logiky.
 
-2. Přejít na **Přehled** Na panelu nástrojů aplikace logiky vyberte **Aktualizovat schéma**.
+2. Přejděte na **Přehled**. Na panelu nástrojů aplikace logiky zvolte **Aktualizovat schéma**.
    
-   ![Zvolit aktualizaci schématu][1]
+   ![Zvolte Schéma aktualizace.][1]
    
-   Je vrácena upgradovaná definice, kterou můžete v případě potřeby zkopírovat a vložit do definice prostředků. 
+   Je vrácena upgradovaná definice, kterou můžete v případě potřeby zkopírovat a vložit do definice prostředku. 
 
    > [!IMPORTANT]
-   > Ujistěte se, *že* jste zvolili **Uložit jako** , takže všechny odkazy na připojení zůstávají platné v aktualizované aplikaci logiky.
+   > *Ujistěte se, že* zvolíte **Uložit jako,** aby všechny odkazy na připojení zůstaly v upgradované aplikaci logiky platné.
 
-3. Na panelu nástrojů okna pro upgrade vyberte **Uložit jako**.
+3. Na panelu nástrojů okna upgradu zvolte **Uložit jako**.
 
-4. Zadejte název a stav logiky. Pokud chcete nasadit upgradovanou aplikaci logiky, klikněte na **vytvořit**.
+4. Zadejte název a stav logiky. Pokud chcete nasadit upgradovologickou aplikaci, zvolte **Vytvořit**.
 
-5. Ověřte, že vaše upgradovaná aplikace logiky funguje podle očekávání.
+5. Zkontrolujte, zda upgradovaná aplikace logiky funguje podle očekávání.
    
    > [!NOTE]
-   > Pokud používáte Trigger manuální nebo Request, adresa URL zpětného volání se změní v nové aplikaci logiky. Otestujte novou adresu URL, aby se zajistilo, že bude fungovat na konci. Chcete-li zachovat předchozí adresy URL, můžete klonovat stávající aplikaci logiky.
+   > Pokud používáte ruční nebo aktivační událost požadavku, změní se adresa URL zpětného volání v nové aplikaci logiky. Otestujte novou adresu URL a ujistěte se, že prostředí od konce do konce funguje. Chcete-li zachovat předchozí adresy URL, můžete klonovat přes existující aplikaci logiky.
 
-6. *Volitelné* Pokud chcete předchozí aplikaci logiky přepsat novou verzí schématu, klikněte na panelu nástrojů na tlačítko **klonovat**a vedle možnosti **Aktualizovat schéma**. Tento krok je nutný jenom v případě, že chcete zachovat stejné ID prostředku nebo adresu URL triggeru požadavku vaší aplikace logiky.
+6. *Nepovinné* Chcete-li přepsat předchozí aplikaci logiky novou verzí schématu, zvolte na panelu nástrojů **možnost Klonování**vedle **položky Aktualizovat schéma**. Tento krok je nutný pouze v případě, že chcete zachovat stejné ID prostředku nebo adresu URL aktivační adresy pro aktivaci aplikace logiky.
 
 ## <a name="upgrade-tool-notes"></a>Poznámky k nástroji pro upgrade
 
 ### <a name="mapping-conditions"></a>Podmínky mapování
 
-V upgradovaných definicích nástroj provádí nejlepší úsilí při seskupení akcí na true a false větvích dohromady jako obor. Konkrétně se vzor návrháře `@equals(actions('a').status, 'Skipped')` zobrazí jako akce `else`. Pokud ale nástroj zjistí nerozpoznatelný vzor, nástroj může vytvořit samostatné podmínky pro větev true i false. V případě potřeby můžete přemapovat akce po upgradu.
+V upgradované definici nástroj vynakládá maximální úsilí na seskupení skutečné a falešné akce větve společně jako obor. Konkrétně návrhářvzor `@equals(actions('a').status, 'Skipped')` se zobrazí `else` jako akce. Pokud však nástroj detekuje nerozpoznatelné vzory, může nástroj vytvořit samostatné podmínky pro větev true i false. V případě potřeby můžete akce po upgradu přemapovat.
 
-#### <a name="foreach-loop-with-condition"></a>smyčka foreach s podmínkou
+#### <a name="foreach-loop-with-condition"></a>"foreach" smyčka s podmínkou
 
-V novém schématu můžete použít akci filtru k replikaci vzoru, který používá **pro každou** smyčku s jednou podmínkou na položku. Tato změna se ale při upgradu provede automaticky. Podmínka se stala akcí filtru, která se zobrazí před smyčkou **for each** a vrátí pouze pole položek, které se shodují s podmínkou, a předání tohoto pole **pro každou** akci. Příklad naleznete v tématu [smyčky a rozsahy](../logic-apps/logic-apps-loops-and-scopes.md).
+V novém schématu můžete použít akci filtru k replikaci vzoru, který používá **For each** loop s jednou podmínkou pro jednu položku. Změna se však automaticky stane při upgradu. Podmínka se stane akce filtru, který se zobrazí před **Pro každou** smyčku, vrácení pouze pole položek, které odpovídají podmínce a předávání tohoto pole **pro každou** akci. Příklad viz [Smyčky a obory](../logic-apps/logic-apps-loops-and-scopes.md).
 
 ### <a name="resource-tags"></a>Značky prostředků
 
-Po upgradu se značky prostředků odeberou, takže je musíte obnovit pro upgradovaný pracovní postup.
+Po upgradu jsou odebrány značky prostředků, takže je nutné je obnovit pro upgradovaný pracovní postup.
 
 ## <a name="other-changes"></a>Další změny
 
-### <a name="renamed-manual-trigger-to-request-trigger"></a>Aktivační událost Manual se přejmenovala na Trigger Request.
+### <a name="renamed-manual-trigger-to-request-trigger"></a>Přejmenovaný aktivační událost "ruční" na aktivační událost požadavku
 
-Typ triggeru `manual` byl zastaralý a byl přejmenován na `request` typu `http`. Tato změna vytvoří větší konzistenci pro druh vzoru, který je použit k sestavení triggeru.
+Typ `manual` aktivační události byl zastarala `request` a `http`přejmenována na typ . Tato změna vytvoří větší konzistenci pro druh vzoru, který aktivační událost slouží k sestavení.
 
-### <a name="new-filter-action"></a>Nová akce Filter
+### <a name="new-filter-action"></a>Nová akce filtru
 
-Chcete-li filtrovat velké pole dolů na menší sadu položek, nový typ `filter` přijme pole a podmínku, vyhodnotí podmínku pro každou položku a vrátí pole s položkami, které splňují podmínku.
+Chcete-li filtrovat velké pole dolů na `filter` menší sadu položek, nový typ přijme pole a podmínku, vyhodnotí podmínku pro každou položku a vrátí pole s položkami splňujícími podmínku.
 
-### <a name="restrictions-for-foreach-and-until-actions"></a>Omezení pro akce foreach a ne
+### <a name="restrictions-for-foreach-and-until-actions"></a>Omezení pro akce "foreach" a "do"
 
-Smyčka `foreach` a `until` je omezená na jednu akci.
+Smyčka `foreach` `until` a je omezena na jednu akci.
 
-### <a name="new-trackedproperties-for-actions"></a>New ' trackedProperties ' pro akce
+### <a name="new-trackedproperties-for-actions"></a>Nové "trackedProperties" pro akce
 
-Akce teď mohou mít další vlastnost s názvem `trackedProperties`, která je stejná jako u vlastností `runAfter` a `type`. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Například:
+Akce nyní může mít `trackedProperties`další vlastnost s `runAfter` názvem `type` , která je na stejné úrovni vlastnosti a. Tento objekt určuje určité vstupy akce nebo výstupy, které chcete zahrnout do telemetrie Diagnostika Azure, vyzařované jako součást pracovního postupu. Například:
 
 ``` json
 {
@@ -174,7 +174,7 @@ Akce teď mohou mít další vlastnost s názvem `trackedProperties`, která je 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření definic pracovních postupů pro Logic Apps](../logic-apps/logic-apps-author-definitions.md)
+* [Vytváření definic pracovních postupů pro aplikace logiky](../logic-apps/logic-apps-author-definitions.md)
 * [Automatizace nasazení aplikace logiky](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->

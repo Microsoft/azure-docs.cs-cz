@@ -1,7 +1,7 @@
 ---
-title: Použití autoML k vytvoření modelů & nasazení
+title: Použití automatického ml k vytvoření modelů & nasazení
 titleSuffix: Azure Machine Learning
-description: Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning.
+description: Vytvářejte, kontrolujte a nasazujte automatizované modely strojového učení pomocí Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,236 +12,236 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
 ms.openlocfilehash: 9999d74bf6bef3e8351460add7efc8bdbfcd1045
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270027"
 ---
-# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasazujte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto článku se naučíte, jak vytvářet, zkoumat a nasazovat automatizované modely strojového učení bez jediného řádku kódu v rozhraní sady Azure Machine Learning Studio. Automatizované Machine Learning je proces, ve kterém se pro vás vybere nejlepší algoritmus strojového učení, který se má použít pro vaše konkrétní data. Tento proces vám umožní rychle vygenerovat modely strojového učení. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
+V tomto článku se dozvíte, jak vytvořit, prozkoumat a nasadit automatizované modely strojového učení bez jediného řádku kódu ve studiovém rozhraní Azure Machine Learning. Automatizované strojové učení je proces, ve kterém je vybrán nejlepší algoritmus strojového učení, který se má použít pro vaše konkrétní data. Tento proces umožňuje rychle generovat modely strojového učení. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
  
-Příklad koncového na konci najdete v [kurzu Vytvoření modelu klasifikace pomocí automatizovaného rozhraní ML Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
+Pro příklad konce na konec vyzkoušejte [kurz pro vytvoření klasifikačního modelu s automatizovaným rozhraním ML Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 
-V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azure Machine Learning SDK [nakonfigurovat experimenty automatizovaného strojového učení](how-to-configure-auto-train.md) .
+Pro prostředí založené na kódu Pythonu [nakonfigurujte automatizované experimenty strojového učení](how-to-configure-auto-train.md) pomocí sady Azure Machine Learning SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
-* Azure Machine Learning pracovní prostor s typem edice **Enterprise**. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  Pokud chcete upgradovat stávající pracovní prostor na edici Enterprise, přečtěte si téma [upgrade na Enterprise Edition](how-to-manage-workspace.md#upgrade).
+* Pracovní prostor Azure Machine Learning s typem **edice Enterprise**. Viz [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  Informace o upgradu existujícího pracovního prostoru na edici Enterprise najdete v [tématu Upgrade na edici Enterprise](how-to-manage-workspace.md#upgrade).
 
 ## <a name="get-started"></a>Začínáme
 
-1. Přihlaste se k Azure Machine Learning v https://ml.azure.com. 
+1. Přihlaste se k https://ml.azure.comAzure Machine Learning na . 
 
-1. Vyberte své předplatné a pracovní prostor. 
+1. Vyberte předplatné a pracovní prostor. 
 
-1. Přejděte do levého podokna. V části **Autor** vyberte **automatizovaná ml** .
+1. Přejděte do levého podokna. V části **Autor** vyberte **Automatizovaná ml.**
 
-[navigační podokno ![Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
+[![Navigační podokno Studia Azure strojového učení](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
 
- Pokud se jedná o vaše první experimenty, zobrazí se prázdný seznam a odkazy na dokumentaci. 
+ Pokud experimenty provádíte poprvé, zobrazí se prázdný seznam a odkazy na dokumentaci. 
 
-V opačném případě se zobrazí seznam nedávných automatizovaných experimentů strojového učení, včetně těch, které jsou vytvořené pomocí sady SDK. 
+V opačném případě se zobrazí seznam nedávných automatizovaných experimentů strojového učení, včetně těch vytvořených pomocí sady SDK. 
 
-## <a name="create-and-run-experiment"></a>Vytvoření a spuštění experimentu
+## <a name="create-and-run-experiment"></a>Vytvořit a spustit experiment
 
-1. Vyberte **+ Nový Automated ml Run** a naplňte formulář.
+1. Vyberte **+ Nové automatické ml spustit** a naplnit formulář.
 
-1. Vyberte datovou sadu z kontejneru úložiště nebo vytvořte novou datovou sadu. Datové sady je možné vytvořit z místních souborů, adres URL webu, úložiště dat nebo otevřených datových sad Azure. 
+1. Vyberte datovou sadu z kontejneru úložiště nebo vytvořte novou datovou sadu. Datové sady lze vytvářet z místních souborů, webových adres URL, datových úložišť nebo otevřených datových sad Azure. 
 
     >[!Important]
-    > Požadavky na školicí data:
-    >* Data musí být v tabulkovém formátu.
-    >* Hodnota, kterou chcete odhadnout (cílový sloupec), musí být k dispozici v datech.
+    > Požadavky na údaje o školení:
+    >* Data musí být v tabulkové podobě.
+    >* Hodnota, kterou chcete předpovědět (cílový sloupec) musí být přítomna v datech.
 
-    1. Pokud chcete vytvořit novou datovou sadu ze souboru na místním počítači, vyberte **Procházet** a pak vyberte soubor. 
+    1. Chcete-li vytvořit novou datovou sadu ze souboru v místním počítači, vyberte **procházet** a vyberte soubor. 
 
-    1. Poskytněte datovou sadu jedinečný název a zadejte volitelný popis. 
+    1. Pojmenujte datovou sadu jedinečným názvem a poskytněte volitelný popis. 
 
-    1. Výběrem **Další** otevřete **formulář úložiště dat a výběr souboru**. V tomto formuláři vyberte, kam chcete datovou sadu nahrát; výchozí kontejner úložiště, který se automaticky vytvoří s vaším pracovním prostorem, nebo vyberte kontejner úložiště, který chcete pro experiment použít. 
+    1. Výběrem **možnosti Další** otevřete **formulář Datastore a výběr souborů**. V tomto formuláři vyberete, kam chcete nahrát datovou sadu; výchozí kontejner úložiště, který se automaticky vytvoří s vaším pracovním prostorem, nebo zvolte kontejner úložiště, který chcete použít pro experiment. 
 
-    1. Zkontrolujte správnost formuláře **nastavení a náhled** . Formulář se inteligentně vyplní podle typu souboru. 
+    1. Zkontrolujte **nastavení a náhled** formuláře pro přesnost. Formulář je inteligentně naplněn na základě typu souboru. 
 
         Pole| Popis
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
-        Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
-        Kódování| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
-        Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).
-        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.
+        Oddělovač| Jeden nebo více znaků pro určení hranice mezi samostatnými nezávislými oblastmi ve formátu prostého textu nebo jiných datových proudech.
+        Kódování| Určuje, jaký bit do tabulky schématu znaků použít ke čtení datové sady.
+        Záhlaví sloupců| Označuje, jak bude zpracováno záhlaví datové sady, pokud existuje.
+        Přeskočit řádky | Označuje, kolik řádků, pokud existuje, je v datové sadě přeskočeno.
     
-        Vyberte **Další**.
+        Vyberte **další**.
 
-    1. Formulář **schématu** se inteligentně vyplní na základě výběrů ve formuláři **nastavení a náhled** . Tady můžete nakonfigurovat datový typ pro každý sloupec, zkontrolovat názvy sloupců a vybrat, které sloupce nechcete pro svůj experiment **Zahrnout** . 
+    1. Formulář **Schéma** je inteligentně naplněn na základě výběrů ve formuláři **Nastavení a náhledu.** Zde nakonfigurujte datový typ pro každý sloupec, zkontrolujte názvy sloupců a vyberte sloupce, které chcete pro experiment **zahrnout.** 
             
         Vyberte **Další.**
 
-    1. Formulář **potvrdit podrobnosti** je souhrn informací, které byly dříve vyplněny ve formulářích **základní informace** a **nastavení a náhled** . Máte také možnost vytvořit datový profil pro datovou sadu pomocí výpočetní služby s povoleným profilací. Přečtěte si další informace o [profilování dat](#profile).
+    1. Formulář **Potvrdit podrobnosti** je souhrninformací, které byly dříve vyplněny ve formulářích **Základní informace** a Nastavení a **náhled.** Máte také možnost vytvořit datový profil pro datovou sadu pomocí výpočetních prostředků s povoleným profilováním. Další informace o [profilování dat](#profile).
 
-        Vyberte **Další**.
-1. Jakmile se zobrazí, vyberte nově vytvořenou datovou sadu. Můžete si také zobrazit náhled datové sady a vzorových statistik. 
+        Vyberte **další**.
+1. Jakmile se zobrazí, vyberte nově vytvořenou datovou sadu. Můžete také zobrazit náhled datové sady a ukázkové statistiky. 
 
-1. Ve formuláři **Konfigurace spuštění** zadejte jedinečný název experimentu.
+1. Ve formuláři **Konfigurovat spuštění** zadejte jedinečný název experimentu.
 
-1. Vyberte cílový sloupec; Toto je sloupec, na který byste chtěli předpovědi.
+1. Vyberte cílový sloupec; Toto je sloupec, na který chcete provést předpovědi.
 
-1. Pro úlohu profilace a školení pro data vyberte výpočetní prostředky. V rozevíracím seznamu jsou k dispozici seznam vašich stávajících výpočtů. Pokud chcete vytvořit nový výpočetní výkon, postupujte podle pokynů v kroku 7.
+1. Vyberte výpočetní prostředky pro profilování dat a školení úlohy. Seznam existujících výpočtů je k dispozici v rozevíracím seznamu. Chcete-li vytvořit nový výpočetní výkon, postupujte podle pokynů v kroku 7.
 
-1. Vyberte **vytvořit novou výpočetní** prostředky a nakonfigurujte výpočetní kontext pro tento experiment.
+1. Vyberte **Vytvořit nový výpočetní výkon** a nakonfigurujete výpočetní kontext pro tento experiment.
 
     Pole|Popis
     ---|---
-    Název výpočtu| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
-    Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
-    Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů. Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
+    Název výpočetního výkonu| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
+    Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro vaše výpočty.
+    Min / Max uzly (v pokročilých nastaveních)| Chcete-li daty profilu, musíte zadat 1 nebo více uzlů. Zadejte maximální počet uzlů pro vaše výpočty. Výchozí hodnota je 6 uzlů pro výpočetní výkon AML.
     
-    Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
+    Vyberte **Vytvořit**. Vytvoření nového výpočetního výkonu může trvat několik minut.
 
     >[!NOTE]
-    > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](#profile) .)
+    > Název výpočetní ho výpočtu bude označovat, jestli je povoleno vybrané nebo *vytvářené výpočty*. (Další podrobnosti naleznete v [části profilování dat).](#profile)
 
-    Vyberte **Další**.
+    Vyberte **další**.
 
-1. Ve formuláři **typ úlohy a nastavení** vyberte typ úkolu: klasifikace, regrese nebo prognózování. Další informace najdete v tématu [Definování typů úloh](how-to-define-task-type.md) .
+1. Ve formuláři **Typ úkolu a nastavení** vyberte typ úkolu: klasifikace, regrese nebo prognózování. Další informace naleznete [v tématu Definování typů úkolů.](how-to-define-task-type.md)
 
-    1. V případě klasifikace můžete také povolit obsáhlý Learning, který se používá pro text featurizations.
+    1. Pro klasifikaci můžete také povolit hloubkové učení, které se používá pro textové featurizations.
 
     1. Pro prognózování:
-        1. Výběr sloupce pro čas: Tento sloupec obsahuje časová data, která se mají použít.
+        1. Vybrat sloupec času: Tento sloupec obsahuje časová data, která mají být použita.
 
-        1. Vybrat horizont předpovědi: Určete, kolik časových jednotek (minuty/hodiny/dny/týdny/měsíce/roky) bude model moci předpovědět do budoucna. Dalším modelem se vyžaduje předpověď do budoucna, tím méně přesné bude. [Přečtěte si další informace o prognózování a horizontu předpovědi](how-to-auto-train-forecast.md).
+        1. Vyberte horizont prognózy: Uveďte, kolik časových jednotek (minut/hodin/dnů/týdnů/měsíců/let) bude model schopen předpovědět do budoucna. Čím dále je model nutný k předpovídání do budoucna, tím méně přesný se stane. [Další informace o prognózování a horizontu prognóz](how-to-auto-train-forecast.md).
 
-1. Volitelné Zobrazit nastavení konfigurace Přidání: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
+1. (Nepovinné) Zobrazit nastavení konfigurace přidání: další nastavení, které můžete použít k lepšímu řízení úlohy školení. V opačném případě jsou výchozí hodnoty použity na základě výběru experimentu a dat. 
 
     Další konfigurace|Popis
     ------|------
-    Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#explore-model-metrics).
-    Automaticky featurization| Tuto možnost vyberte, pokud chcete povolit nebo zakázat předzpracování prováděné automatizovaným strojovým učením. Předzpracování zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce. Není podporováno pro typ úkolu prognózy časových řad. [Přečtěte si další informace o předzpracování](#featurization). 
-    Vysvětlete nejlepší model | Pokud chcete zobrazit vysvětlení doporučeného nejlepšího modelu, vyberte možnost povolit nebo zakázat.
+    Primární metrika| Hlavní metrika používaná pro vyhodnocování modelu. [Další informace o metrikách modelu](how-to-configure-auto-train.md#explore-model-metrics).
+    Automatická featurizace| Tuto možnost vyberte, chcete-li povolit nebo zakázat předběžné zpracování provedené automatizovaným strojovým učením. Předběžné zpracování zahrnuje automatické čištění dat, přípravu a transformaci za účelem generování syntetických funkcí. Pro typ úkolu prognózy časových řad není podporován. [Další informace o předběžném zpracování](#featurization). 
+    Vysvětlete nejlepší model | Výběrem této možnosti povolíte nebo zakážete, chcete-li zobrazit vysvětlitelnost doporučeného nejlepšího modelu.
     Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení.
-    Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)* : dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky*: minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
-    Ověření| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
-    Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací.
+    Kritérium ukončení| Pokud jsou splněna některá z těchto kritérií, je úloha školení zastavena. <br> *Doba školení (hodiny):* Jak dlouho má být úloha školení spuštěna. <br> *Prahová hodnota metriky:* Minimální metrické skóre pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, kterou chcete dosáhnout, nestrávíte více času na školení, než je nutné.
+    Ověřování| Vyberte jednu z možností křížového ověření, kterou chcete použít v úlohě školení. [Další informace o křížovém ověřování](how-to-configure-auto-train.md).
+    Souběžnost| *Maximální počet souběžných iterací:* Maximální počet kanálů (iterací) k testování v úlohě školení. Úloha nebude spuštěna více než zadaný počet iterací.
 
-1. Volitelné Zobrazit nastavení featurization: Pokud se rozhodnete povolit **Automatické featurization** ve formuláři **Další nastavení konfigurace** , v tomto formuláři budete určovat, které sloupce mají tyto featurizationsy provádět, a vybrat, která statistická hodnota se má použít pro imputace chybějících hodnot.
+1. (Nepovinné) Zobrazení nastavení featurization: Pokud se rozhodnete povolit **automatické featurization** ve formuláři **Další nastavení konfigurace,** tento formulář je místo, kde určíte sloupce, ve kterých chcete provést tyto featurizations na a vyberte, která statistická hodnota má použít pro chybějící imputace hodnoty.
 
 <a name="profile"></a>
 
-## <a name="data-profiling--summary-stats"></a>Statistiky profilace dat & souhrnu
+## <a name="data-profiling--summary-stats"></a>Souhrnné statistiky & profilování dat
 
-V rámci datové sady můžete získat velké množství různých souhrnných statistik, abyste ověřili, jestli je vaše datová sada připravená na ML. Pro nečíselné sloupce obsahují jenom základní statistiky, jako je min, Max a počet chyb. Pro číselné sloupce si můžete prohlédnout i jejich statistické momenty a odhadované quantiles. Konkrétně náš datový profil zahrnuje:
+Můžete získat širokou škálu souhrnných statistik v celé sadě dat a ověřit, zda je vaše datová sada připravená na ml. Pro nečíselné sloupce obsahují pouze základní statistiky, jako je min, max a počet chyb. U číselných sloupců můžete také zkontrolovat jejich statistické momenty a odhadované kvantily. Konkrétně náš datový profil zahrnuje:
 
 >[!NOTE]
-> Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
+> Prázdné položky se zobrazí pro prvky s irelevantní typy.
 
-Údaj|Popis
+Statistika|Popis
 ------|------
 Funkce| Název sloupce, který je sumarizován.
-Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
-Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
-Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
-Min.| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
-Max.| Maximální hodnota sloupce 
-Počet| Celkový počet chybějících a nechybějících položek ve sloupci
-Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
-Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
-střední hodnotu| Aritmetický průměr nebo průměr sloupce
-Směrodatná odchylka| Měření množství rozptýlení nebo variace dat tohoto sloupce.
-Odchylka| Měření, jak daleko rozprostření dat tohoto sloupce z průměrné hodnoty. 
-Zešikmení| Měření, jak se liší data tohoto sloupce od normálního rozdělení.
-Míra fluktuace| Měření, jak často se data tohoto sloupce v porovnání s normální distribucí.
+Profil| In-line vizualizace na základě typu odvodit. Například řetězce, logické hodnoty a data budou mít hodnoty, zatímco desetinná místa (číselníky) mají aproximované histogramy. To vám umožní získat rychlé pochopení distribuce dat.
+Rozložení typu| Počet in-line hodnot typů ve sloupci. Hodnoty Null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro detekci lichých nebo chybějících hodnot.
+Typ|Odvozený typ sloupce. Možné hodnoty zahrnují: řetězce, logické hodnoty, data a desetinná místa.
+Minimum| Minimální hodnota sloupce. Prázdné položky se zobrazí pro funkce, jejichž typ nemá vlastní řazení (např. logické hodnoty).
+Maximum| Maximální hodnota sloupce. 
+Počet| Celkový počet chybějících a nechybějících položek ve sloupci.
+Nechybí počet| Počet položek ve sloupci, které nechybí. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybí počet."
+Kvantily| Přibližné hodnoty v každém kvantitu poskytnout pocit distribuce dat.
+Mean| Aritmetický průměr nebo průměr sloupce.
+Směrodatná odchylka| Měření množství rozptylu nebo změny dat tohoto sloupce.
+Rozptyl| Měření, jak daleko jsou data tohoto sloupce, pochází z jeho průměrné hodnoty. 
+Šikmost| Měření, jak se liší data tohoto sloupce od normální distribuce.
+Špičatost| Měření toho, jak silně sledoval data tohoto sloupce je porovnán s normální rozdělení.
 
 
 <a name="featurization"></a>
 
-## <a name="advanced-featurization-options"></a>Rozšířené možnosti featurization
+## <a name="advanced-featurization-options"></a>Pokročilé možnosti featurization
 
-Automatizované Machine Learning nabízí automatické zpracování a guardrails dat, které vám pomůžou identifikovat a spravovat potenciální problémy s daty. 
+Automatizované strojové učení nabízí automatické předběžné zpracování a svodidla dat, která vám pomohou identifikovat a spravovat potenciální problémy s vašimi daty. 
 
 ### <a name="preprocessing"></a>Předzpracování
 
-|Předzpracování&nbsp;kroků| Popis |
+|Kroky&nbsp;předběžného zpracování| Popis |
 | ------------- | ------------- |
-|Velkou mohutností či žádné funkce odchylka|Odřaďte je ze školicích a ověřovacích sad, včetně funkcí se všemi chybějícími hodnotami, stejné hodnoty ve všech řádcích nebo s extrémně vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
-|Dává chybějící hodnoty|Pro numerické funkce, imputac s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastěji hodnotou.|
-|Generovat další funkce|Pro funkce data a času: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodinu, minutu, sekundu.<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, g-gramech a Tri-Character-gramech.|
-|Transformace a kódování |Číselné funkce s malým počtem jedinečných hodnot jsou transformovány do funkcí kategorií.<br/><br/>Pro nízkou mohutnost se provádí kódování s jedním aktivním kategorií; v případě vysoké mohutnosti je kódování One-Hot-hash.|
-|Vkládání slov|Featurizer textu, který převede vektory textových tokenů na vektory vět pomocí předem připraveného modelu. Vektory vložení každého slova v dokumentu jsou agregovány dohromady, aby se vytvořil vektor funkce dokumentu.|
-|Cílová kódování|V případě funkcí kategorií mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobností třídy pro jednotlivé třídy pro problémy s klasifikací. Pro snížení velikosti mapování a hluku způsobených kategoriemi zhuštěných dat se použije vyvážení na základě frekvencí a k přeložení.|
-|Kódování cílového textu|V případě textového vstupu se pro generování pravděpodobnosti každé třídy používá skládaný lineární model s použitím typu penalta-slova.|
-|Váha důkazů (WoE)|Vypočítá WoE jako míru korelace kategorií sloupců do cílového sloupce. Počítá se jako protokol poměru mezi třídou a pravděpodobnosti mimo třídu. Tento krok provede výstup jednoho sloupce číselné funkce na každou třídu a odstraní nutnost explicitně imputace chybějících hodnot a izolované zpracování.|
-|Vzdálenost clusteru|Vlaky a k – znamenají model clusteringu ve všech číselných sloupcích.  Výstupy k novým funkcím, jedna nová číselná funkce na cluster, která obsahuje vzdálenost jednotlivých vzorků k těžiště každého clusteru.|
+|Pokles vysoké mohutnosti nebo žádné prvky rozptylu|Drop tyto z trénovací a ověřovací sady, včetně funkcí se všemi hodnotami chybí, stejnou hodnotu ve všech řádcích nebo s extrémně vysokou mohutnost (například hodnoty hash, ID nebo GUID).|
+|Impute chybějící hodnoty|Pro číselné funkce, impute s průměrem hodnot ve sloupci.<br/><br/>Pro kategorické funkce, impute s nejčastější hodnotou.|
+|Generovat další funkce|Funkce DateTime: Rok, Měsíc, Den, Den v týdnu, Den v roce, Čtvrtletí, Týden v roce, Hodina, Minuta, Sekunda.<br/><br/>Funkce textu: Frekvence termínů na základě unigramů, dvougramů a triznakových gramů.|
+|Transformace a kódování |Číselné prvky s několika málo jedinečnými hodnotami jsou transformovány do kategorických prvků.<br/><br/>Jednohorké kódování se provádí pro nízkou mohutnost kategorické; pro vysokou mohutnost, jedno-hot-hash kódování.|
+|Vkládání do Wordu|Text featurizer, který převádí vektory textových tokenů na vektory věty pomocí předem trénovaného modelu. Vektor vkládání každého slova v dokumentu je agregován dohromady a vytváří vektor prvku dokumentu.|
+|Cílové kódování|Pro kategorické funkce mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobnost třídy pro každou třídu pro problémy klasifikace. K omezení montáže mapování a šumu způsobeného řídkými datovými kategoriemi se používá vážení na základě frekvence a křížové ověření k-fold.|
+|Kódování cíle textu|Pro zadávání textu se ke generování pravděpodobnosti jednotlivých tříd používá skládaný lineární model s vakem slov.|
+|Průkazová váha (WoE)|Vypočítá woe jako měřítko korelace kategorických sloupců s cílovým sloupcem. Vypočítá se jako protokol poměru pravděpodobností ve třídě vs mimo třídu. Tento krok vyvede jeden sloupec číselných prvků na třídu a odstraní potřebu explicitně přičítat chybějící hodnoty a odlehlé ošetření.|
+|Vzdálenost clusteru|Trénuje model clusteringu k-znamená ve všech číselných sloupcích.  Výstupy k nové funkce, jeden nový číselný prvek na clusteru, obsahující vzdálenost každého vzorku do centraktoid každého clusteru.|
 
-### <a name="data-guardrails"></a>Guardrails dat
+### <a name="data-guardrails"></a>Datová svodidla
 
-Data guardrails se automaticky aplikují, aby vám pomohly identifikovat možné problémy s daty (např. chybějící hodnoty, nerovnováha tříd) a pomáhat s nimi opravitelné akce pro lepší výsledky. K dispozici je celá řada osvědčených postupů, které je možné použít k dosažení spolehlivých výsledků. 
+Svodidla dat se používají automaticky, aby vám pomohla identifikovat potenciální problémy s vašimi daty (např. chybějící hodnoty, nerovnováha tříd) a pomohla přijmout nápravná opatření pro zlepšení výsledků. Existuje mnoho osvědčených postupů, které jsou k dispozici a lze použít k dosažení spolehlivých výsledků. 
 
-V následující tabulce jsou popsány aktuálně podporované datové guardrails a související stavy, které mohou uživatelé pocházet při odesílání jejich experimentů.
+Následující tabulka popisuje aktuálně podporovaná svodidla dat a přidružené stavy, se kterými se uživatelé mohou sejít při odesílání experimentu.
 
-Guardrail|Stav|Podmínka&nbsp;pro aktivační událost&nbsp;
+Svodidla|Status|Podmínka&nbsp;&nbsp;pro aktivační událost
 ---|---|---
-Chybějící hodnoty&nbsp;&nbsp;imputace |**Předaný** <br> <br> **Určí**|    Žádná chybějící hodnota v žádném ze vstupních&nbsp;sloupců <br> <br> U některých sloupců chybí hodnoty.
-Křížové ověření|**Hotovo**|Pokud není zadaná žádná explicitní ověřovací sada
-&nbsp;funkce&nbsp;detekce&nbsp;mohutnosti vysoké úrovně.|    **Předaný** <br> <br>**Hotovo**|    Nezjistily se žádné funkce vysoké mohutnosti. <br><br> Zjistily se vstupní sloupce vysoké mohutnosti.
-Detekce zůstatku třídy    |**Předaný** <br><br><br>**Upozorněni** |Třídy jsou vyvážené do školicích dat; Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrý reprezentace, měřená podle počtu a poměru vzorků. <br> <br> Třídy v školicích datech jsou nevyrovnané
-Konzistence dat časové řady|**Předaný** <br><br><br><br> **Určí** |<br> Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. <br> <br>Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a mohou způsobit nedostatek paměti experimentu. Zpoždění nebo posuvné okno bylo vypnuto.
+Chybějící&nbsp;&nbsp;imputace hodnot |**Předán** <br> <br> **Dlouhodobého**|    Žádná chybějící hodnota v&nbsp;žádném ze vstupních sloupců <br> <br> V některých sloupcích chybí hodnoty
+Křížové ověření|**hotovo**|Pokud není k dispozici žádná explicitní sada ověření.
+Detekce prvků&nbsp;&nbsp;s vysokou&nbsp;mohutností|    **Předán** <br> <br>**hotovo**|    Nebyly zjištěny žádné funkce vysoké mohutnosti. <br><br> Byly zjištěny vstupní sloupce s vysokou mohutností.
+Detekce vyvážení tříd    |**Předán** <br><br><br>**Upozorněni** |Třídy jsou vyvážené v tréninkových datech; Soubor údajů se považuje za vyvážený, pokud má každá třída v datové sadě dobré zastoupení, měřeno počtem a poměrem vzorků <br> <br> Třídy v trénovacích datech jsou nevyvážené
+Konzistence dat časových řad|**Předán** <br><br><br><br> **Dlouhodobého** |<br> Vybraná hodnota {horizont, zpoždění, rolovací okno} byla analyzována a nebyly zjištěny žádné potenciální problémy s nepaměti. <br> <br>Vybrané hodnoty {horizont, zpoždění, postupné okno} byly analyzovány a potenciálně způsobí, že experiment bude mít nedostatek paměti. Zpoždění nebo rolovací okno bylo vypnuto.
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 
-Vyberte **Dokončit** pro spuštění experimentu. Proces přípravy experimentu může trvat až 10 minut. U každého kanálu může další 2 až 3 minuty trvat, než se dokončí úlohy trénování.
+Chcete-li experiment spustit, vyberte **možnost Dokončit.** Proces přípravy experimentu může trvat až 10 minut. U každého kanálu může další 2 až 3 minuty trvat, než se dokončí úlohy trénování.
 
-### <a name="view-experiment-details"></a>Zobrazit podrobnosti experimentu
+### <a name="view-experiment-details"></a>Zobrazení podrobností o experimentu
 
-Otevře se obrazovka s **podrobnostmi o spuštění** na kartě **Podrobnosti** . Na této obrazovce se zobrazí souhrn experimentu, včetně stavového řádku v horní části vedle čísla běhu. 
+Na kartě **Podrobnosti** se otevře obrazovka **Podrobnosti.** Na této obrazovce se zobrazí souhrn experimentu, včetně stavového řádku v horní části vedle čísla spuštění. 
 
 Na kartě **Modely** je seznam vytvořených modelů seřazený podle skóre metriky. Ve výchozím nastavení se na prvním místě seznamu zobrazí model, který na základě zvolené metriky získá nejvyšší skóre. Když trénovací úloha vyzkouší další modely, přidají se do seznamu. Tady můžete rychle porovnat metriky pro zatím vytvořené modely.
 
-[řídicí panel podrobností spuštění ![](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+[![Řídicí panel Podrobnosti spuštění](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
 
-### <a name="view-training-run-details"></a>Zobrazit podrobnosti o školicím běhu
+### <a name="view-training-run-details"></a>Zobrazit podrobnosti o tréninkovém běhu
 
-Projděte si některé z dokončených modelů a podívejte se na podrobnosti o školicím běhu, jako jsou metriky spuštění na kartě **Podrobnosti modelu** nebo grafy výkonu na kartě **vizualizace** . další [informace o grafech](how-to-understand-automated-ml.md).
+Chcete-li zobrazit podrobnosti o spuštění školení, například spustit metriky na kartě **Podrobnosti modelu** nebo grafy výkonu na kartě Vizualizace, přejděte k podrobnostem [o](how-to-understand-automated-ml.md)všech **dokončených modelech.**
 
-[Podrobnosti ![iterace](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+[![Podrobnosti o iteraci](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>Nasazení modelu
 
-Jakmile budete mít nejlepší model na ruce, je čas ho nasadit jako webovou službu pro předpověď na nová data.
+Jakmile budete mít nejlepší model po ruce, je čas nasadit jako webovou službu předpovědět na nová data.
 
 Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 
-1. Máte několik možností nasazení. 
+1. Máte několik možností pro nasazení. 
 
-    + Možnost 1: Pokud chcete nasadit nejlepší model (podle definovaných kritérií metriky), vyberte na kartě **Podrobnosti** tlačítko **nasadit nejlepší model** .
+    + Možnost 1: Chcete-li nasadit nejlepší model (podle kritérií metriky, která jste definovali), vyberte tlačítko **Nasadit nejlepší model** na kartě **Podrobnosti.**
 
-    + Možnost 2: Pokud chcete z tohoto experimentu nasadit konkrétní iteraci modelu, přejděte k podrobnostem v modelu a otevřete kartu **Podrobnosti modelu** a vyberte **nasadit model**.
+    + Možnost 2: Chcete-li nasadit konkrétní iteraci modelu z tohoto experimentu, přejděte k podrobnostem modelu a otevřete kartu **Podrobnosti modelu** a vyberte **Nasadit model**.
 
-1. Naplňte podokno **nasazení modelu** .
+1. Naplňte podokno **nasadit model.**
 
     Pole| Hodnota
     ----|----
-    Název| Zadejte jedinečný název pro vaše nasazení.
-    Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
-    Typ výpočtu| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)* .
-    Název výpočtu| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
-    Povolit ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.
-    Použití vlastních prostředků nasazení| Tuto funkci povolte, pokud chcete nahrát vlastní skript bodování a soubor prostředí. [Přečtěte si další informace o skriptech bodování](how-to-deploy-and-where.md#script).
+    Name (Název)| Zadejte jedinečný název pro nasazení.
+    Popis| Zadejte popis, který lépe určí, k čemu je toto nasazení určen.
+    Typ výpočtu| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container Instance (ACI)*.
+    Název výpočetního výkonu| *Platí pouze pro AKS:* Vyberte název clusteru AKS, do který chcete nasadit.
+    Povolení ověřování | Výběrem vyberte, chcete-li povolit ověřování založené na tokenech nebo klíči.
+    Použití vlastních prostředků nasazení| Tuto funkci povolte, pokud chcete nahrát vlastní bodovací skript a soubor prostředí. [Další informace o vyhodnocování skriptů](how-to-deploy-and-where.md#script).
 
     >[!Important]
-    > Názvy souborů musí být pod 32 znaků a musí začínat a končit alfanumerickými znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Mezery nejsou povoleny.
+    > Názvy souborů musí být pod 32 znaky a musí začínat a končit alfanumerickými znaky. Mezi nimi mohou obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky. Mezery nejsou povoleny.
 
-    Nabídka *Upřesnit* nabízí výchozí funkce pro nasazení, jako je například [shromažďování dat](how-to-enable-app-insights.md) a nastavení využití prostředků. Pokud si přejete přepsat tato výchozí nastavení, udělejte to v této nabídce.
+    Nabídka *Upřesnit* nabízí výchozí funkce nasazení, jako je [shromažďování dat](how-to-enable-app-insights.md) a nastavení využití prostředků. Pokud chcete přepsat tyto výchozí hodnoty, uvažte v této nabídce.
 
-1. Vyberte **Nasadit**. Dokončení nasazení může trvat přibližně 20 minut.
+1. Vyberte **Nasadit**. Nasazení může trvat přibližně 20 minut.
 
-Nyní máte provozní webovou službu, která generuje předpovědi. Předpovědi můžete testovat pomocí dotazování služby z [integrované Azure Machine Learning podpory v Power BI](how-to-consume-web-service.md#consume-the-service-from-power-bi).
+Nyní máte provozní webové služby pro generování předpovědí! Předpovědi můžete otestovat dotazem na službu z [integrované podpory Azure Machine Learning u Power BI](how-to-consume-web-service.md#consume-the-service-from-power-bi).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Naučte se využívat webovou službu](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
-* [Pochopte automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
-* [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.
+* [Přečtěte si, jak využívat webovou službu](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* [Seznamte se s výsledky automatizovaného strojového učení](how-to-understand-automated-ml.md).
+* [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learningu.

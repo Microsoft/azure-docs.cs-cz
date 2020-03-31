@@ -1,6 +1,6 @@
 ---
-title: Přidání příkazu interní podpory do testovacího prostředí v Azure DevTest Labs
-description: Naučte se publikovat interní příkaz podpory do testovacího prostředí v Azure DevTest Labs
+title: Přidání interního prohlášení o podpoře do testovacího prostředí v laboratořích Azure DevTest Labs
+description: Přečtěte si, jak zveřejnit interní prohlášení o podpoře do testovacího prostředí v Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 591dcec36dc62143901d3b49db24196e84d58c29
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170353"
 ---
-# <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Přidání příkazu interní podpory do testovacího prostředí v Azure DevTest Labs
+# <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Přidání interního prohlášení o podpoře do testovacího prostředí v laboratořích Azure DevTest Labs
 
-Azure DevTest Labs vám umožní přizpůsobit testovací prostředí pomocí interního příkazu podpory, který uživatelům poskytuje informace o podpoře pro testovací prostředí. Můžete například poskytnout kontaktní informace, aby uživatel věděl, jak dosáhnout interní podpory, když potřebuje pomoc při řešení potíží nebo přístup k prostředkům v testovacím prostředí. Můžete také poskytnout odkazy na interní weby nebo nejčastější dotazy, ke kterým má váš tým přístup, než se obrátí na podporu.
+Azure DevTest Labs umožňuje přizpůsobit testovací prostředí pomocí interního prohlášení o podpoře, které uživatelům poskytuje informace o podpoře testovacího prostředí. Můžete například poskytnout kontaktní informace, aby uživatel věděl, jak dosáhnout interní podpory, když potřebuje pomoc s řešením potíží nebo přístupem k prostředkům v testovacím prostředí. Před kontaktováním podpory můžete také poskytnout odkazy na interní weby nebo nejčastější dotazy, ke kterým má váš tým přístup.
 
-Interní příkaz podpory je určený k odeslání informací o testovacím prostředí, které se obvykle nemění příliš často. Chcete-li upozornit uživatele na informace o testovacím prostředí, které jsou lépe dočasná, jako jsou například nedávné aktualizace zásad testovacího prostředí – viz [příspěvku po oznámení v testovacím prostředí](devtest-lab-announcements.md).
+Interní prohlášení podpory je určena k zaúčtování informací testovacího prostředí, které se obvykle nemění příliš často. Informace o oznámení o informacích o testovacím prostředí, které jsou dočasnější povahy, například nedávné aktualizace zásad testovacího prostředí, naleznete [v tématu Oznámení o odeslání v testovacím prostředí](devtest-lab-announcements.md).
 
-Příkaz podpory lze snadno zakázat nebo upravit poté, co již není platný.
+Prohlášení o podpoře můžete snadno zakázat nebo upravit poté, co již není použitelné.
 
-## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Postup přidání příkazu support do stávajícího testovacího prostředí
+## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Postup přidání prohlášení o podpoře do existujícího testovacího prostředí
 
-1. Přihlaste se k [Portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. V případě potřeby vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** . (Vaše testovací prostředí se už možná zobrazuje na řídicím panelu v části **všechny prostředky**).
-1. V seznamu cvičení vyberte testovací prostředí, ve kterém chcete přidat příkaz podpory.  
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. V případě potřeby vyberte **všechny služby**a ze seznamu vyberte **DevTest Labs.** (Vaše testovací prostředí se už může zobrazit na řídicím panelu v části **Všechny prostředky**).
+1. Ze seznamu testovacích prostředí vyberte testovací prostředí, ve kterém chcete přidat prohlášení o podpoře.  
 1. V oblasti **Přehled** testovacího prostředí vyberte **Konfigurace a zásady**.  
 
     ![Tlačítko Konfigurace a zásady](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
 
-1. Vlevo vyberte v části **Nastavení**možnost **interní podpora**.
+1. Vlevo v části **NASTAVENÍ**vyberte **Interní podpora**.
 
-    ![Tlačítko interní podpora](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+    ![Tlačítko interní podpory](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 
-1. Chcete-li vytvořit interní zprávu o podpoře pro uživatele v tomto testovacím prostředí, nastavte možnost povoleno na **Ano**.
+1. Chcete-li vytvořit interní zprávu o podpoře pro uživatele v tomto testovacím prostředí, nastavte možnost Povoleno na **ano**.
 
-1. Do pole **zpráva podpory** zadejte interní příkaz podpory, který chcete prezentovat uživatelům testovacího prostředí. Zpráva podpory přijímá Markdownu. Když zadáváte text zprávy, můžete zobrazit oblast **náhledu** v dolní části obrazovky, abyste viděli, jak se tato zpráva zobrazuje uživatelům.
+1. Do pole **Zpráva podpory** zadejte interní prohlášení podpory, které chcete zobrazit uživatelům testovacího prostředí. Zpráva podpory přijímá Markdown. Při zadávání textu zprávy můžete zobrazit oblast **Náhled** v dolní části obrazovky a zobrazit tak, jak se zpráva zobrazí uživatelům.
 
-    ![Obrazovka interní podpory pro vytvoření zprávy.](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
-
-
-1. Pokud je váš příkaz k podpoře připravený k publikování, vyberte **Uložit** .
-
-Pokud již nechcete zobrazovat tuto zprávu o podpoře pro uživatele testovacího prostředí, vraťte se na stránku **interní podpory** a nastavte možnost **povoleno** na **ne**.
-
-## <a name="steps-for-users-to-view-the-support-message"></a>Postup pro uživatele, kteří si můžou zobrazit zprávu o podpoře
-
-1. Z [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)vyberte testovací prostředí.
-
-1. V oblasti **Přehled** testovacího prostředí vyberte **interní podpora**.  
-
-    ![Tlačítko interní podpora](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+    ![Interní obrazovka podpory pro vytvoření zprávy.](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
 
 
-1. Pokud je odeslána zpráva o podpoře, uživatel ji může zobrazit v podokně interní podpory.
+1. Až bude výpis podpory připravený k zaúčtování, vyberte **Uložit.**
 
-    ![Podokno interní podpory zobrazující zveřejněnou zprávu o podpoře](./media/devtest-lab-internal-support-message/devtestlab-view-suport-statement.png)
+Pokud již nechcete zobrazovat tuto zprávu podpory uživatelům testovacího prostředí, vraťte se na stránku **Interní podpora** a nastavte **možnost Povoleno** na **ne**.
+
+## <a name="steps-for-users-to-view-the-support-message"></a>Kroky k zobrazení zprávy o podpoře pro uživatele
+
+1. Na [webu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)vyberte testovací prostředí.
+
+1. V oblasti **Přehled** testovacího prostředí vyberte **Interní podpora**.  
+
+    ![Tlačítko interní podpory](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+
+
+1. Pokud je zpráva podpory zaúčtována, uživatel ji může zobrazit v podokně Interní podpora.
+
+    ![Interní podokno podpory zobrazující zaúčtované zprávy o podpoře](./media/devtest-lab-internal-support-message/devtestlab-view-suport-statement.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* Vnitřní příkazy podpory se obvykle používají k poskytnutí informací o podpoře, které se často nemění. Můžete se také dozvědět, jak [Odeslat oznámení do testovacího prostředí](devtest-lab-announcements.md) a informovat uživatele o dočasných změnách nebo aktualizacích testovacího prostředí.
-* [Nastavení zásad a plánů](devtest-lab-set-lab-policy.md) poskytuje informace o tom, jak můžete používat další omezení a konvence v rámci předplatného pomocí přizpůsobených zásad.
+* Interní příkazy podpory se obvykle používají k poskytování informací o podpoře, které se nemění tak často. Můžete se také dozvědět, jak [odeslat oznámení do testovacího prostředí](devtest-lab-announcements.md) informovat uživatele o dočasné změny nebo aktualizace do testovacího prostředí.
+* [Nastavení zásad a plánů](devtest-lab-set-lab-policy.md) poskytuje informace o tom, jak můžete použít další omezení a konvence v rámci předplatného pomocí přizpůsobených zásad.

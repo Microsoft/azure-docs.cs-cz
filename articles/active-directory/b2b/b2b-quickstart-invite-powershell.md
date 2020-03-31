@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Přidání uživatele typu Host přes PowerShell – Azure AD'
+title: 'Úvodní příručka: Přidání uživatele typu Host pomocí PowerShellu – Azure AD'
 description: V tomto rychlém startu se dozvíte, jak použít PowerShell k odeslání pozvánky externímu uživateli spolupráce B2B služby Azure AD.
 services: active-directory
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240923"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Rychlý Start: Přidání uživatele typu host pomocí PowerShellu
 
 Existuje mnoho způsobů, jak pomocí spolupráce B2B služby Azure Active Directory pozvat externí partnery k vašim aplikacím a službám. V předchozím rychlém startu jste zjistili, jak na portálu pro správu Azure Active Directory přidat uživatele typu host přímo. Uživatele typu host můžete přidat taky pomocí PowerShellu, a to buď po jednom nebo hromadně. V tomto rychlém startu přidáte do tenanta Azure pomocí příkazu New-AzureADMSInvitation jednoho uživatele typu host.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,13 +69,13 @@ Spuštěním následujícího příkazu se připojte k doméně klienta:
 ```powershell
 Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 ```
-například `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
+Například, `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
 
 Po zobrazení výzvy zadejte své přihlašovací údaje.
 
 ## <a name="send-an-invitation"></a>Odeslání pozvánky
 
-1. Pokud chcete poslat pozvánku na testovací e-mailový účet, spusťte následující příkaz PowerShellu (nahraďte **"píseka"** a **písku\@Fabrikam.com** s vaším názvem a e-mailovou adresou vašeho testovacího e-mailového účtu: 
+1. Pokud chcete odeslat pozvánku na testovací e-mailový účet, spusťte následující příkaz PowerShellu (nahraďte **"Sanda"** a **fabrikam.com\@sanda názvem** testovacího e-mailového účtu a e-mailovou adresou): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
@@ -91,7 +91,7 @@ Po zobrazení výzvy zadejte své přihlašovací údaje.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Zkontrolujte výstup, abyste se ujistili, že je uvedený uživatel, který jste pozvali, s hlavním názvem uživatele (UPN) ve formátu *emailaddress*#EXT #\@*domény*. Například *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
+3. Zkontrolujte výstup a ujistěte se, že uživatel, který jste pozvali, je uveden, s hlavním jménem uživatele (UPN) ve formátu *e-mailové adresy*\@*#EXT# domény*. Například *sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste odeslali pozvánky.
 
    ![Výstup PowerShellu zobrazující přidaného uživatele typu host](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

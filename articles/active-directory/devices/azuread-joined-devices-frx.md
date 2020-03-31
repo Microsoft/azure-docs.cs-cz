@@ -1,6 +1,6 @@
 ---
 title: Připojení nového zařízení s Windows 10 k Azure AD při prvním spuštění | Microsoft Docs
-description: Jak uživatelé mohou vytvořit připojení ke službě Azure AD během vzdálené prostředí.
+description: Jak mohou uživatelé nastavit připojení Azure AD během prostředí mimo pole.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67482100"
 ---
-# <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Kurz: Připojte se k nové zařízení s Windows 10 s využitím Azure AD během prvního spuštění
+# <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Kurz: Připojení nového zařízení s Windows 10 k Azure AD při prvním spuštění
 
 Díky správě zařízení v Azure Active Directory (Azure AD) můžete zajistit, aby uživatelé přistupovali k vašim prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Další informace najdete v [úvodu do správy zařízení v Azure Active Directory](overview.md).
 
@@ -39,7 +39,7 @@ V tomto kurzu se dozvíte, jak připojit zařízení k Azure AD při prvním spu
 
 Abyste mohli připojit zařízení s Windows 10, musíte mít v konfiguraci služby registrace zařízení povoleno registrovat zařízení. Kromě oprávnění k připojování zařízení ve vašem tenantovi Azure AD musíte mít zaregistrovaných méně zařízení, než je nakonfigurované maximum. Další informace najdete v tématu popisujícím [konfiguraci nastavení zařízení](device-management-azure-portal.md#configure-device-settings).
 
-Pokud je váš tenant federovaný, váš zprostředkovatel identity navíc MUSÍ podporovat koncový bod pro zadání uživatelského jména a hesla WS-Fed a WS-Trust. Jeho verze může být 1.3 nebo 2005. Tato podpora protokolu je potřeba připojit zařízení k Azure AD i Přihlaste se k zařízení s heslem.
+Pokud je váš tenant federovaný, váš zprostředkovatel identity navíc MUSÍ podporovat koncový bod pro zadání uživatelského jména a hesla WS-Fed a WS-Trust. Jeho verze může být 1.3 nebo 2005. Tato podpora protokolu je vyžadována k připojení zařízení k Azure AD a přihlášení k zařízení pomocí hesla.
 
 ## <a name="joining-a-device"></a>Připojení zařízení
 
@@ -59,7 +59,7 @@ Pokud je váš tenant federovaný, váš zprostředkovatel identity navíc MUSÍ
 
     ![Přihlašovací obrazovka](./media/azuread-joined-devices-frx/03.png)
 
-1. Vaše zařízení vyhledá odpovídající tenanta ve službě Azure AD. Pokud se nacházíte ve federované doméně, budete přesměrování na váš místní server služby tokenů zabezpečení, jako je například služba Active Directory Federation Services (AD FS).
+1. Vaše zařízení vyhledá odpovídajícího klienta ve službě Azure AD. Pokud se nacházíte ve federované doméně, budete přesměrování na váš místní server služby tokenů zabezpečení, jako je například služba Active Directory Federation Services (AD FS).
 1. Pokud jste uživatelem v jiné než federované doméně, zadejte své přihlašovací údaje přímo na stránce hostované v Azure AD. 
 1. Zobrazí se výzva k dokončení vícefaktorového ověřování. 
 1. Azure AD zkontroluje, jestli se vyžaduje registrace ve správě mobilních zařízení.
@@ -74,7 +74,7 @@ Pokud chcete ověřit, jestli je zařízení připojené k vaší službě Azure
 
 ![Přístup do práce nebo do školy](./media/azuread-joined-devices-frx/13.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace najdete v [úvodu do správy zařízení v Azure Active Directory](overview.md).
 - Další informace o správě zařízení na portálu Azure AD najdete v tématu věnovaném [správě zařízení pomocí webu Azure Portal](device-management-azure-portal.md).

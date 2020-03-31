@@ -1,6 +1,6 @@
 ---
-title: Povolit připojení prohlížeče na virtuálních počítačích s Azure DevTest Labs | Microsoft Docs
-description: DevTest Labs se teď integruje s Azure bastionu, jako vlastník testovacího prostředí, můžete povolit přístup ke všem virtuálním počítačům testovacího prostředí prostřednictvím prohlížeče.
+title: Povolení připojení prohlížeče na virtuálních počítačích Azure DevTest Labs | Dokumenty společnosti Microsoft
+description: DevTest Labs se teď integruje s Azure Bastion a jako vlastník testovacího prostředí můžete povolit přístup ke všem testovacím virtuálním počítačům prostřednictvím prohlížeče.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: tanmayeekamath
@@ -14,59 +14,59 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
 ms.openlocfilehash: 2ddc56c60c547bd4ce48d620a83fb79246762bfb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69642484"
 ---
-# <a name="enable-browser-connection-on-lab-virtual-machines"></a>Povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí 
+# <a name="enable-browser-connection-on-lab-virtual-machines"></a>Povolení připojení prohlížeče na virtuálních počítačích testovacího prostředí 
 
-DevTest Labs se integruje s [Azure bastionu](https://docs.microsoft.com/azure/bastion/), což vám umožní připojit se k virtuálním počítačům přes prohlížeč. Nejdřív musíte povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí.
+DevTest Labs se integruje s [Azure Bastion](https://docs.microsoft.com/azure/bastion/), který umožňuje připojení k virtuálním počítačům prostřednictvím prohlížeče. Nejprve je třeba povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí.
 
-Jako vlastník testovacího prostředí můžete povolit přístup ke všem virtuálním počítačům testovacího prostředí prostřednictvím prohlížeče. Nepotřebujete dalšího klienta, agenta ani software. Azure bastionu poskytuje zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům přímo v Azure Portal přes SSL. Když se připojíte přes Azure bastionu, virtuální počítače nepotřebují veřejnou IP adresu. Další informace najdete v tématu [co je Azure bastionu?](../bastion/bastion-overview.md)
+Jako vlastník testovacího prostředí můžete povolit přístup ke všem virtuálním počítačům testovacího prostředí prostřednictvím prohlížeče. Nepotřebujete dalšího klienta, agenta nebo software. Azure Bastion poskytuje zabezpečené a bezproblémové připojení RDP/SSH k vašim virtuálním počítačům přímo na portálu Azure přes SSL. Když se připojíte přes Azure Bastion, vaše virtuální počítače nepotřebují veřejnou IP adresu. Další informace najdete v tématu [Co je Azure Bastion?](../bastion/bastion-overview.md)
 
 > [!NOTE]
 > Povolení připojení prohlížeče na virtuálních počítačích testovacího prostředí je ve verzi Preview.
 
-Tento článek popisuje, jak povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí.
+Tento článek ukazuje, jak povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí.
 
 ## <a name="prerequisites"></a>Požadavky 
-Buď nasaďte hostitele bastionu v existující virtuální síti testovacího prostředí **(nebo)** připojte testovací prostředí s nakonfigurovanou virtuální sítí bastionu. 
+Buď nasaďte hostitele Bastion ve virtuální síti vaší stávající laboratoře **(OR),** připojte vaše testovací prostředí pomocí virtuální sítě nakonfigurované na bastionu. 
 
-Informace o tom, jak nasadit hostitele bastionu ve virtuální síti, najdete v tématu [Vytvoření hostitele Azure bastionu (Preview)](../bastion/bastion-create-host-portal.md). Při vytváření hostitele bastionu vyberte virtuální síť testovacího prostředí. 
+Informace o tom, jak nasadit hostitele bašty ve virtuální síti, najdete v [tématu vytvoření hostitele Bašty Azure (preview).](../bastion/bastion-create-host-portal.md) Při vytváření hostitele Bastion vyberte virtuální síť testovacího prostředí. 
 
-Informace o tom, jak připojit testovací prostředí k virtuální síti s nakonfigurovaným bastionu, najdete v tématu [Konfigurace virtuální sítě v Azure DevTest Labs](devtest-lab-configure-vnet.md). Vyberte virtuální síť, která má nasazeného hostitele bastionu, a **AzureBastionSubnet** . Tady je podrobný postup: 
+Informace o tom, jak propojit testovací prostředí s virtuální sítí nakonfigurovanou baštou, najdete [v tématu Konfigurace virtuální sítě v laboratořích Azure DevTest Labs](devtest-lab-configure-vnet.md). Vyberte virtuální síť, která má nasazeného hostitele Bastion a **AzureBastionSubnet** v něm. Zde jsou podrobné kroky: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. V levé navigační nabídce vyberte **všechny služby** . 
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. V levé navigační nabídce vyberte **Všechny služby.** 
 1. Ze seznamu vyberte **DevTest Labs**. 
-1. V seznamu cvičení vyberte *testovací prostředí*. 
+1. Ze seznamu testovacích prostředí vyberte *testovací prostředí*. 
 
     > [!NOTE]
-    > Služba Azure bastionu je aktuálně ve verzi Preview. Je omezeno na následující oblasti: Západní USA, Východní USA, Západní Evropa, Střed USA – jih, Austrálie – východ a Japonsko – východ. Proto vytvořte testovací prostředí v jedné z těchto oblastí, pokud v testovacím prostředí není jedna z nich. 
-1. V části **Nastavení** v levé nabídce vyberte **Konfigurace a zásady** . 
-1. Vyberte **virtuální sítě**.
-1. Na panelu nástrojů vyberte **Přidat** . 
-1. Vyberte **virtuální síť** , která má nasazeného hostitele bastionu. 
+    > Azure Bastion je momentálně ve verzi preview. Je omezena na následující oblasti: Západní USA, Východní USA, Západní Evropa, Střední usa – jih, Austrálie – východ a Japonsko – východ. Takže vytvořte testovací prostředí v jedné z těchto oblastí, pokud vaše laboratoř není v jedné z nich. 
+1. V **levé** nabídce vyberte Konfigurace **a zásady.** 
+1. Vyberte **Virtuální sítě**.
+1. Na panelu nástrojů vyberte **Přidat.** 
+1. Vyberte **virtuální síť,** která má nasazeného hostitele Bastion. 
 1. Vyberte podsíť: **AzureBastionSubnet**. 
 
-    ![Subnet](./media/enable-browser-connection-lab-virtual-machines/subnet.png)
-1. Vyberte možnost **použít při vytváření virtuálního počítače** . 
+    ![Podsíť](./media/enable-browser-connection-lab-virtual-machines/subnet.png)
+1. Vyberte **Použít při vytváření virtuálních strojů.** 
 1. Na panelu nástrojů vyberte **Uložit**. 
-1. Pokud máte starou virtuální síť pro testovací prostředí, odeberte ji tak, že vyberete * *...*  a **odeberte**. 
+1. Pokud máte starou virtuální síť pro testovací prostředí, odeberte ji výběrem **...*  a **odebrat**. 
 
-## <a name="enable-browser-connection"></a>Povolit připojení prohlížeče 
+## <a name="enable-browser-connection"></a>Povolení připojení prohlížeče 
 
-Jakmile budete mít bastionu nakonfigurovanou virtuální síť v rámci testovacího prostředí, můžete jako vlastníka testovacího prostředí povolit připojení prohlížeče k virtuálním počítačům testovacího prostředí.
+Jakmile máte nakonfigurovanou virtuální síť v rámci testovacího prostředí, jako vlastník testovacího prostředí můžete povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí.
 
-Pokud chcete povolit připojení prohlížeče k virtuálním počítačům testovacího prostředí, postupujte podle těchto kroků:
+Chcete-li povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí, postupujte takto:
 
-1. V Azure Portal přejděte do testovacího *prostředí*.
-1. Vyberte **Konfigurace a zásady**.
-1. V **Nastavení**vyberte **prohlížeč připojit (Preview)** .
+1. Na webu Azure Portal přejděte do *testovacího prostředí*.
+1. Vyberte **možnost Konfigurace a zásady**.
+1. V **nastavení**vyberte **Připojit prohlížeč (Náhled).**
 
-![Povolit připojení prohlížeče](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
+![Povolení připojení prohlížeče](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
 
 ## <a name="next-steps"></a>Další kroky
-V následujícím článku se dozvíte, jak se připojit k virtuálním počítačům pomocí prohlížeče: [Připojení k virtuálním počítačům přes prohlížeč](connect-virtual-machine-through-browser.md)
+V následujícím článku se dozvíte, jak se připojit k virtuálním počítačům pomocí prohlížeče: [Připojení k virtuálním počítačům prostřednictvím prohlížeče](connect-virtual-machine-through-browser.md)

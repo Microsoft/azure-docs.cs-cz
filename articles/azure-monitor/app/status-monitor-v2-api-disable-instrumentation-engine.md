@@ -1,27 +1,27 @@
 ---
-title: Reference k rozhraní API agenta Azure Application Insights
-description: Reference k rozhraní API agenta Application Insights. Disable-InstrumentationEngine. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
+title: Odkaz na rozhraní API agenta Azure Application Insights
+description: Odkaz na rozhraní API agenta Application Insights. Zakázat instrumentaceMotor. Sledujte výkon webových stránek bez opětovného nasazení webu. Funguje s ASP.NET webových aplikací hostovaných místně, ve virtuálních počítačích nebo v Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671371"
 ---
-# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Rozhraní API pro Application Insights agenta: Disable-InstrumentationEngine
+# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Rozhraní API agenta application insights: Disable-InstrumentationEngine
 
-Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+Tento článek popisuje rutinu, která je členem [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Popis
-Zakáže modul instrumentace odebráním některých klíčů registru.
-Restartujte službu IIS, aby se změny projevily.
+Zakáže instrumentační modul odebráním některých klíčů registru.
+Změny se projeví až po restartování služby IIS.
 
 > [!IMPORTANT] 
-> Tato rutina vyžaduje relaci PowerShellu s oprávněními správce.
+> Tato rutina vyžaduje relaci prostředí PowerShell s oprávněními správce.
 
 ## <a name="examples"></a>Příklady
 
@@ -31,13 +31,13 @@ PS C:\> Disable-InstrumentationEngine
 
 ## <a name="parameters"></a>Parametry 
 
-### <a name="-verbose"></a>– Verbose
-**Společný parametr** Pomocí tohoto přepínače můžete vyvýstupovat podrobné protokoly.
+### <a name="-verbose"></a>-Podrobné
+**Společný parametr.** Tento přepínač použijte k výstupu podrobných protokolů.
 
 ## <a name="output"></a>Výstup
 
 
-#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Příklad výstupu z úspěšného zakázání modulu instrumentace
+#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Příklad výstupu z úspěšného vypnutí instrumentačního stroje
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -50,5 +50,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>Další kroky
 
- Další Application Insights agenta:
- - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
+ S agentem Application Insights toho zvládnete víc:
+ - Použijte náš průvodce [k řešení potíží s](status-monitor-v2-troubleshoot.md) agentem Application Insights.

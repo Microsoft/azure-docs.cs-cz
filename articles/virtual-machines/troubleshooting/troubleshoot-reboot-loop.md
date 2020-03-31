@@ -1,6 +1,6 @@
 ---
-title: Smyčka restartování Windows na virtuálním počítači Azure | Microsoft Docs
-description: Přečtěte si, jak řešit potíže s restartováním systému Windows | Microsoft Docs
+title: Smyčka restartování Windows na virtuálním počítači Azure | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak řešit potíže s restartováním systému Windows | Dokumenty společnosti Microsoft
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,105 +13,105 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
 ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443581"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Smyčka restartování Windows na virtuálním počítači Azure
-Tento článek popisuje smyčku restartování, se kterou se můžete setkat na virtuálním počítači s Windows v Microsoft Azure.
+Tento článek popisuje smyčku restartování, ke které může dojít na virtuálním počítači (VM) Windows v Microsoft Azure.
 
 ## <a name="symptom"></a>Příznak
 
-Když použijete [diagnostiku spouštění](./boot-diagnostics.md) k získání snímků obrazovky virtuálního počítače, zjistíte, že se virtuální počítač spouští, ale proces spouštění se přerušil a proces se spouští.
+Když použijete [diagnostiku spuštění](./boot-diagnostics.md) k získání snímků obrazovky virtuálního počítače, zjistíte, že se virtuální počítač spouští, ale proces spouštění se přerušuje a proces začíná znovu.
 
 ![Úvodní obrazovka 1](./media/troubleshoot-reboot-loop/start-screen-1.png)
 
 ## <a name="cause"></a>Příčina
 
-K následujícím příčinám je restartování smyčky.
+K restartování smyčky dochází z důvodu následujících příčin:
 
-### <a name="cause-1"></a>Příčiny 1
+### <a name="cause-1"></a>Příčina 1
 
-Existuje služba třetí strany, která je označena jako kritická a nelze ji spustit. To způsobí, že se operační systém restartuje.
+Existuje služba jiného výrobce, která je označena jako kritická a nelze ji spustit. To způsobí, že operační systém restartovat.
 
-### <a name="cause-2"></a>Příčiny 2
+### <a name="cause-2"></a>Příčina 2
 
-V operačním systému byly provedeny nějaké změny. Obvykle se vztahují k instalaci aktualizací, instalaci aplikací nebo nové zásadě. Možná budete muset vyhledat další podrobnosti v následujících protokolech:
+V operačním systému byly provedeny některé změny. Obvykle se jedná o instalaci aktualizace, instalaci aplikace nebo nové zásady. Další podrobnosti bude pravděpodobně potřeba zkontrolovat v následujících protokolech:
 
 - Protokoly událostí
 - CBS.logWindows
-- Update. log
+- Aktualizovat.log
 
 ### <a name="cause-3"></a>Příčina 3
 
-Může to způsobit poškození systému souborů. Je ale obtížné diagnostikovat a identifikovat změnu, která způsobuje poškození operačního systému.
+Mohlo by to způsobit poškození systému souborů. Je však obtížné diagnostikovat a identifikovat změnu, která způsobuje poškození operačního systému.
 
 ## <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systémem](../windows/snapshot-copy-managed-disk.md)a [Připojte disk s operačním systémem k záchrannému virtuálnímu počítači](../windows/troubleshoot-recovery-disks-portal.md)a podle toho, jaké možnosti řešení chcete použít, nebo zkuste řešení jednu po jedné.
+Chcete-li tento problém vyřešit, [zálohujte disk operačního systému](../windows/snapshot-copy-managed-disk.md)a [připojte disk operačního systému k záchrannému virtuálnímu počítače](../windows/troubleshoot-recovery-disks-portal.md)a podle toho postupujte podle možností řešení nebo vyzkoušejte řešení jeden po druhém.
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
-1. Po připojení disku s operačním systémem k pracovnímu virtuálnímu počítači se ujistěte, že je disk označený jako **online** v konzole pro správu disků, a poznamenejte si písmeno oddílu, který obsahuje složku **\Windows** .
+1. Jakmile je disk operačního systému připojen k funkčnímu virtuálnímu počítače, ujistěte se, že je v konzole pro správu disků označen jako **online,** a poznamenejte si písmeno jednotky oddílu, který obsahuje složku **\Windows.**
 
-2. Pokud je disk nastavený na **offline**, nastavte ho na **online**.
+2. Pokud je disk nastaven na **offline**, nastavte jej na **možnost Online**.
 
-3. Vytvořte kopii složky **\Windows\System32\config** v případě, že je nutné vrátit zpět změny.
+3. Vytvořte kopii složky **\Windows\System32\config** v případě, že je potřeba vrátit změny zpět.
 
-4. Na záchranném virtuálním počítači otevřete Editor registru systému Windows (Regedit).
+4. Na záchranném virtuálním počítači otevřete Editor registru systému Windows (regedit).
 
-5. Vyberte klíč **HKEY_LOCAL_MACHINE** a potom z nabídky vyberte **soubor** > **Načíst podregistr** .
+5. Vyberte klávesu **HKEY_LOCAL_MACHINE** a pak z nabídky vyberte**Podregistr načtení** **souboru.** > 
 
-6. Přejděte k SYSTÉMOVÉmu souboru ve složce **\Windows\System32\config** .
+6. Přejděte do souboru SYSTEM ve složce **\Windows\System32\config.**
 
-7. Vyberte **otevřít**, jako název zadejte **BROKENSYSTEM** , rozbalte klíč **HKEY_LOCAL_MACHINE** a potom se zobrazí další klíč s názvem **BROKENSYSTEM**.
+7. Vyberte **otevřít**, zadejte příkaz **BROKENSYSTEM,** rozbalte **HKEY_LOCAL_MACHINE** klíč a pak se zobrazí další klíč s názvem **BROKENSYSTEM**.
 
-8. Ověřte, ze kterého ControlSet počítač spouští. V následujícím klíči registru se zobrazí jeho číslo klíče.
+8. Zkontrolujte, ze kterého ovládacího prvkuNastavte, ze kterého je počítač spuštěn. Číslo klíče uvidíte v následujícím klíči registru.
 
     `HKEY_LOCAL_MACHINE\BROKENSYSTEM\Select\Current`
 
-9. Pomocí následujícího klíče registru ověřte, která z nich je kritická pro službu agenta virtuálního počítače.
+9. Zkontrolujte, která je kritičnost služby agenta virtuálního soudu prostřednictvím následujícího klíče registru.
 
     `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\RDAgent\ErrorControl`
 
-10. Pokud hodnota klíče registru není nastavená na hodnotu **2**, pokračujte na další zmírnění.
+10. Pokud hodnota klíče registru není nastavena na **hodnotu 2**, přejděte k dalšímu zmírnění.
 
-11. Pokud je hodnota klíče registru nastavená na hodnotu **2**, změňte hodnotu z **2** na **1**.
+11. Pokud je hodnota klíče registru nastavena na **hodnotu 2**, změňte hodnotu z **2** na **1**.
 
-12. Pokud existuje některý z následujících klíčů, které mají hodnotu **2** nebo **3**, a pak tyto hodnoty změňte na **1** odpovídající:
+12. Pokud některý z následujících klíčů existují a mají hodnotu **2** nebo **3**, a potom změňte tyto hodnoty na **1** odpovídajícím způsobem:
 
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupCoordinatorSvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Vyberte klíč **BROKENSYSTEM** a potom z nabídky vyberte **soubor** > **Uvolnit podregistr** .
+13. Vyberte klávesu **BROKENSYSTEM** a v nabídce **vyberte** > **File Unload Hive.**
 
-14. Odpojte disk s operačním systémem od virtuálního počítače pro řešení potíží.
+14. Odpojte disk operačního systému od virtuálního počítače pro řešení potíží.
 
-15. Odeberte disk z virtuálního počítače pro řešení potíží a počkejte 2 minuty, než Azure uvolní tento disk.
+15. Odeberte disk z virtuálního počítače pro řešení potíží a počkejte přibližně 2 minuty, než Azure tento disk uvolní.
 
-16. [Vytvořte nový virtuální počítač z disku s operačním systémem](../windows/create-vm-specialized.md).
+16. [Vytvořte nový virtuální virtuální počítače z disku operačního systému](../windows/create-vm-specialized.md).
 
-17. Pokud je problém vyřešen, bude pravděpodobně nutné přeinstalovat [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent. exe).
+17. Pokud je problém vyřešen, bude pravděpodobně nutné přeinstalovat [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe).
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
-Obnovte virtuální počítač do poslední známé funkční konfigurace, postupujte podle kroků v tématu [Jak spustit virtuální počítač Azure s Windows s poslední známou funkční konfigurací](https://support.microsoft.com/help/4016731/).
+Obnovte virtuální počítač na poslední známou funkční konfiguraci, postupujte podle pokynů v části [Jak spustit virtuální počítač Azure Windows s poslední známou funkční konfigurací](https://support.microsoft.com/help/4016731/).
 
 ### <a name="solution-for-cause-3"></a>Řešení pro příčinu 3
 >[!NOTE]
->Následující postup by se měl použít jenom jako poslední prostředek. I když obnovení z Regback může obnovit přístup k počítači, operační systém není považován za stabilní, protože v registru dojde ke ztrátě dat mezi časovým razítkem podregistru a aktuálním dnem. Musíte vytvořit nový virtuální počítač a vytvořit plány pro migraci dat.
+>Následující postup by měl být použit pouze jako poslední prostředek. Při obnovení z regback může obnovit přístup k počítači, operační systém není považován za stabilní, protože je ztracena data v registru mezi časové razítko podregistru a aktuální den. Musíte vytvořit nový virtuální hod a vytvořit plány pro migraci dat.
 
-1. Jakmile je disk připojený k virtuálnímu počítači pro řešení potíží, ujistěte se, že je disk označený jako **online** v konzole pro správu disků.
+1. Jakmile je disk připojen k virtuálnímu počítače pro řešení potíží, ujistěte se, že je v konzole pro správu disků označen jako **online.**
 
-2. Vytvořte kopii složky **\Windows\System32\config** v případě, že je nutné vrátit zpět změny.
+2. Vytvořte kopii složky **\Windows\System32\config** v případě, že je potřeba vrátit změny zpět.
 
-3. Zkopírujte soubory ve složce **\Windows\System32\config\regback** a nahraďte soubory ve složce **\Windows\System32\config** .
+3. Zkopírujte soubory ve složce **\Windows\System32\config\regback** a nahraďte soubory ve složce **\Windows\System32\config.**
 
-4. Odeberte disk z virtuálního počítače pro řešení potíží a počkejte 2 minuty, než Azure uvolní tento disk.
+4. Odeberte disk z virtuálního počítače pro řešení potíží a počkejte přibližně 2 minuty, než Azure tento disk uvolní.
 
-5. [Vytvořte nový virtuální počítač z disku s operačním systémem](../windows/create-vm-specialized.md).
+5. [Vytvořte nový virtuální virtuální počítače z disku operačního systému](../windows/create-vm-specialized.md).
 
 
