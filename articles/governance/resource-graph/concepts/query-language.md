@@ -1,46 +1,46 @@
 ---
-title: Porozumění dotazovacímu jazyku
-description: Popisuje tabulky grafů prostředků a dostupné Kusto datové typy, operátory a funkce použitelné pro Azure Resource Graph.
+title: Principy dotazovacího jazyka
+description: Popisuje tabulky resource graph a dostupné typy dat Kusto, operátory a funkce použitelné pomocí Azure Resource Graph.
 ms.date: 03/07/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927485"
 ---
-# <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
+# <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka Azure Resource Graph
 
-Dotazovací jazyk pro graf prostředků Azure podporuje řadu operátorů a funkcí. Každá práce a provoz na základě [dotazovacího jazyka Kusto (KQL)](/azure/kusto/query/index). Pokud se chcete dozvědět o dotazovacím jazyku, který používá graf prostředků, začněte s [kurzem pro KQL](/azure/kusto/query/tutorial).
+Dotazovací jazyk pro Azure Resource Graph podporuje řadu operátorů a funkcí. Každá práce a provoz na základě [Kusto dotazovacího jazyka (KQL)](/azure/kusto/query/index). Chcete-li se dozvědět o dotazovacím jazyce používaném resource graph, začněte [kurzem pro KQL](/azure/kusto/query/tutorial).
 
-Tento článek se zabývá jazykovými součástmi, které podporuje graf prostředků:
+Tento článek popisuje jazykové součásti podporované resource graph:
 
-- [Tabulky grafů prostředků](#resource-graph-tables)
+- [Tabulky grafu zdrojů](#resource-graph-tables)
 - [Podporované prvky jazyka KQL](#supported-kql-language-elements)
 - [Řídicí znaky](#escape-characters)
 
-## <a name="resource-graph-tables"></a>Tabulky grafů prostředků
+## <a name="resource-graph-tables"></a>Tabulky grafu zdrojů
 
-Graf prostředků poskytuje několik tabulek pro data, která uchovává o Správce prostředků typech prostředků a jejich vlastnostech. Tyto tabulky lze použít s operátory `join` nebo `union` k získání vlastností ze souvisejících typů prostředků. Tady je seznam tabulek dostupných v grafu prostředků:
+Resource Graph poskytuje několik tabulek pro data, která ukládá o typech prostředků Správce prostředků Resource Manager a jejich vlastnostech. Tyto tabulky lze `join` použít `union` s nebo operátory získat vlastnosti z typů souvisejících prostředků. Zde je seznam tabulek dostupných v grafu zdrojů:
 
-|Tabulky grafů prostředků |Popis |
+|Tabulky grafu zdrojů |Popis |
 |---|---|
-|Zdroje |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
-|ResourceContainers |Zahrnuje předplatné (ve verzi Preview--`Microsoft.Resources/subscriptions`) a typy prostředků a data skupiny prostředků (`Microsoft.Resources/subscriptions/resourcegroups`). |
-|AdvisorResources |Zahrnuje prostředky _související_ s `Microsoft.Advisor`. |
-|AlertsManagementResources |Zahrnuje prostředky _související_ s `Microsoft.AlertsManagement`. |
-|MaintenanceResources |Zahrnuje prostředky _související_ s `Microsoft.Maintenance`. |
-|SecurityResources |Zahrnuje prostředky _související_ s `Microsoft.Security`. |
+|Prostředky |Výchozí tabulka, pokud není definována v dotazu. Většina typů prostředků a vlastností Správce prostředků jsou zde. |
+|Kontejnery prostředků |Zahrnuje typy prostředků `Microsoft.Resources/subscriptions`a data předplatného`Microsoft.Resources/subscriptions/resourcegroups`(ve verzi -- ) a skupiny prostředků ( ). |
+|AdvisorResources |Zahrnuje zdroje `Microsoft.Advisor`související _s_ programem . |
+|AlertsManagementResources |Zahrnuje zdroje `Microsoft.AlertsManagement`související _s_ programem . |
+|Zdroje údržby |Zahrnuje zdroje `Microsoft.Maintenance`související _s_ programem . |
+|Bezpečnostní zdroje |Zahrnuje zdroje `Microsoft.Security`související _s_ programem . |
 
-Úplný seznam včetně typů prostředků najdete v tématu [referenční informace: podporované tabulky a typy prostředků](../reference/supported-tables-resources.md).
+Úplný seznam včetně typů prostředků naleznete v [tématu Reference: Podporované tabulky a typy prostředků](../reference/supported-tables-resources.md).
 
 > [!NOTE]
-> _Prostředky_ jsou výchozí tabulkou. Při dotazování tabulky _Resources_ není nutné zadávat název tabulky, pokud se nepoužívají `join` ani `union`. Doporučený postup je ale vždy zahrnout počáteční tabulku do dotazu.
+> _Zdroje_ jsou výchozí tabulka. Při dotazování tabulky _Prostředky_ není nutné zadat název tabulky, pokud `join` nebo `union` nejsou použity. Doporučeným postupem je však vždy zahrnout počáteční tabulku v dotazu.
 
-Pomocí Průzkumníka grafů prostředků na portálu můžete zjistit, jaké typy prostředků jsou v každé tabulce k dispozici. Jako alternativu můžete použít dotaz, jako je například `<tableName> | distinct type`, a získat tak seznam typů prostředků, které daná tabulka grafu prostředků podporuje, ve vašem prostředí.
+Pomocí Průzkumníka grafů prostředků na portálu můžete zjistit, jaké typy prostředků jsou k dispozici v každé tabulce. Jako alternativu použijte dotaz, `<tableName> | distinct type` například získat seznam typů prostředků dané tabulky grafu prostředků podporuje, které existují ve vašem prostředí.
 
-Následující dotaz ukazuje jednoduchý `join`. Výsledek dotazu smíchá sloupce dohromady a všechny duplicitní názvy sloupců z Spojené tabulky, _ResourceContainers_ v tomto příkladu, jsou připojeny s **1**. Jelikož tabulka _ResourceContainers_ má typy pro předplatné i skupiny prostředků, může být použit buď typ pro připojení k tabulce prostředků z tabulky _prostředků_ .
+Následující dotaz ukazuje `join`jednoduchý . Výsledek dotazu prolne sloupce dohromady a všechny duplicitní názvy sloupců z připojené tabulky _ResourceContainers_ v tomto příkladu jsou připojeny s **1**. Jako _ResourceContainers_ tabulka obsahuje typy pro odběry a skupiny prostředků, může být použit buď typ pro připojení k prostředku z tabulky _prostředků._
 
 ```kusto
 Resources
@@ -48,7 +48,7 @@ Resources
 | limit 1
 ```
 
-Následující dotaz ukazuje složitější použití `join`. Dotaz omezí propojenou tabulku na předplatná a `project` tak, aby zahrnoval pouze původní pole _SubscriptionId_ a pole _název_ bylo přejmenováno na _podnázev_. Při přejmenování pole se vyhnete `join` přidání jako _název1_ , protože pole už v _prostředcích_existuje. Původní tabulka je filtrována pomocí `where` a následující `project` zahrnuje sloupce z obou tabulek. Výsledkem dotazu je jeden Trezor klíčů, který zobrazuje typ, název trezoru klíčů a název předplatného, ve kterém je.
+Následující dotaz ukazuje složitější použití `join`aplikace . Dotaz omezuje připojenou tabulku na prostředky `project` odběrů a zahrnuje pouze původní _pole subscriptionId_ a pole _název_ přejmenované na _SubName_. Přejmenování pole zabrání `join` jeho přidání jako _názvu1,_ protože pole již v _části Zdroje_existuje . Původní tabulka je filtrována `where` `project` a následující obsahuje sloupce z obou tabulek. Výsledkem dotazu je jeden trezor klíčů zobrazující typ, název trezoru klíčů a název předplatného, ve které se nachází.
 
 ```kusto
 Resources
@@ -59,62 +59,62 @@ Resources
 ```
 
 > [!NOTE]
-> Když omezíte `join` výsledky pomocí `project`, musí být v `project`zahrnuta vlastnost, kterou používá `join` k propojení dvou tabulek, _SubscriptionId_ v předchozím příkladu.
+> Při omezení `join` výsledků `project`s , `join` vlastnost používá ke propojení dvě tabulky, _subscriptionId_ ve `project`výše uvedeném příkladu, musí být zahrnuty v .
 
 ## <a name="supported-kql-language-elements"></a>Podporované prvky jazyka KQL
 
-Graf prostředků podporuje všechny KQL [datové typy](/azure/kusto/query/scalar-data-types/), [skalární funkce](/azure/kusto/query/scalarfunctions), [skalární operátory](/azure/kusto/query/binoperators)a [agregační funkce](/azure/kusto/query/any-aggfunction). Graf prostředků podporuje konkrétní [tabulkové operátory](/azure/kusto/query/queries) , některé z nich mají různé chování.
+Resource Graph podporuje všechny [datové typy](/azure/kusto/query/scalar-data-types/)KQL , [skalární funkce](/azure/kusto/query/scalarfunctions), [skalární operátory](/azure/kusto/query/binoperators)a [agregační funkce](/azure/kusto/query/any-aggfunction). Konkrétní [tabulkové operátory](/azure/kusto/query/queries) jsou podporovány Resource Graph, z nichž některé mají různé chování.
 
 ### <a name="supported-tabulartop-level-operators"></a>Podporované operátory tabulkové/nejvyšší úrovně
 
-Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s konkrétními ukázkami:
+Zde je seznam tabulkových operátorů KQL podporovaných resource graphem s konkrétními ukázkami:
 
-|KQL |Ukázkový dotaz grafu prostředků |Poznámky: |
+|KQL |Ukázkový dotaz Grafu prostředků |Poznámky |
 |---|---|---|
 |[count](/azure/kusto/query/countoperator) |[Počet trezorů klíčů](../samples/starter.md#count-keyvaults) | |
-|[znak](/azure/kusto/query/distinctoperator) |[Zobrazit odlišné hodnoty pro konkrétní alias](../samples/starter.md#distinct-alias-values) | |
-|[zvětšení](/azure/kusto/query/extendoperator) |[Počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os) | |
-|[join](/azure/kusto/query/joinoperator) |[Trezor klíčů s názvem předplatného](../samples/advanced.md#join) |Podporované charaktery spojení: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [LeftOuter](/azure/kusto/query/joinoperator#left-outer-join). Omezení 3 `join` v jednom dotazu. Vlastní strategie spojení, jako je připojení všesměrového vysílání, nejsou povolené. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
-|[počtu](/azure/kusto/query/limitoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum `take` |
-|[mvexpand](/azure/kusto/query/mvexpandoperator) | | Starší verze operátora místo toho použijte `mv-expand`. _RowLimit_ max. 400. Výchozí hodnota je 128. |
-|[MV – rozbalit](/azure/kusto/query/mvexpandoperator) |[Seznam Cosmos DB s konkrétními umístěními pro zápis](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max. 400. Výchozí hodnota je 128. |
-|[za](/azure/kusto/query/orderoperator) |[Výpis prostředků seřazených podle názvu](../samples/starter.md#list-resources) |Synonymum `sort` |
-|[projektem](/azure/kusto/query/projectoperator) |[Výpis prostředků seřazených podle názvu](../samples/starter.md#list-resources) | |
-|[projekt – pryč](/azure/kusto/query/projectawayoperator) |[Odebrat sloupce z výsledků](../samples/advanced.md#remove-column) | |
-|[druhu](/azure/kusto/query/sortoperator) |[Výpis prostředků seřazených podle názvu](../samples/starter.md#list-resources) |Synonymum `order` |
-|[Souhrn](/azure/kusto/query/summarizeoperator) |[Počet prostředků Azure](../samples/starter.md#count-resources) |Jenom zjednodušená první stránka |
-|[nezbytná](/azure/kusto/query/takeoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum `limit` |
-|[vrchol](/azure/kusto/query/topoperator) |[Zobrazení prvních pěti virtuálních počítačů podle názvu a jejich typu operačního systému](../samples/starter.md#show-sorted) | |
-|[sjednocovací](/azure/kusto/query/unionoperator) |[Kombinování výsledků ze dvou dotazů do jednoho výsledku](../samples/advanced.md#unionresults) |Povolena jedna tabulka: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. Omezení 3 `union`ch ramen v jednom dotazu. Nepřípustný rozlišení `union` tabulek nohy není povoleno. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
-|[,](/azure/kusto/query/whereoperator) |[Zobrazení prostředků, které obsahují úložiště](../samples/starter.md#show-storage) | |
+|[distinct](/azure/kusto/query/distinctoperator) |[Zobrazit odlišné hodnoty pro určitý alias](../samples/starter.md#distinct-alias-values) | |
+|[Rozšířit](/azure/kusto/query/extendoperator) |[Počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os) | |
+|[Připojit](/azure/kusto/query/joinoperator) |[Trezor klíčů s názvem předplatného](../samples/advanced.md#join) |Připojte se k podporovaným přípěmům: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Limit 3 `join` v jednom dotazu. Vlastní strategie připojení, jako je například připojení k vysílání, nejsou povoleny. Lze použít v rámci jedné tabulky nebo mezi _prostředky_ a _ResourceContainers_ tabulky. |
+|[Limit](/azure/kusto/query/limitoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum`take` |
+|[mvexpand](/azure/kusto/query/mvexpandoperator) | | Starší operátor, `mv-expand` použijte místo. _RowLimit_ max 400. Výchozí hodnota je 128. |
+|[mv-expand](/azure/kusto/query/mvexpandoperator) |[Seznam Cosmos DB s konkrétními umístěními zápisu](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max 400. Výchozí hodnota je 128. |
+|[Objednávky](/azure/kusto/query/orderoperator) |[Seznam zdrojů seřazených podle názvu](../samples/starter.md#list-resources) |Synonymum`sort` |
+|[Projektu](/azure/kusto/query/projectoperator) |[Seznam zdrojů seřazených podle názvu](../samples/starter.md#list-resources) | |
+|[projekt-pryč](/azure/kusto/query/projectawayoperator) |[Odebrání sloupců z výsledků](../samples/advanced.md#remove-column) | |
+|[Řazení](/azure/kusto/query/sortoperator) |[Seznam zdrojů seřazených podle názvu](../samples/starter.md#list-resources) |Synonymum`order` |
+|[Sumarizovat](/azure/kusto/query/summarizeoperator) |[Počet prostředků Azure](../samples/starter.md#count-resources) |Zjednodušená pouze první stránka |
+|[vzít](/azure/kusto/query/takeoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum`limit` |
+|[Top](/azure/kusto/query/topoperator) |[Zobrazení prvních pěti virtuálních počítačů podle názvu a jejich typu operačního režimu](../samples/starter.md#show-sorted) | |
+|[Unie](/azure/kusto/query/unionoperator) |[Sloučení výsledků ze dvou dotazů do jednoho výsledku](../samples/advanced.md#unionresults) |Jedna tabulka povolena: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _Table_. Limit 3 `union` nohy v jednom dotazu. Fuzzy rozlišení `union` stolků nohou není povoleno. Lze použít v rámci jedné tabulky nebo mezi _prostředky_ a _ResourceContainers_ tabulky. |
+|[where](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Řídicí znaky
 
-Některé názvy vlastností, například ty, které zahrnují `.` nebo `$`, musí být zabaleny nebo uvozeny v dotazu, nebo název vlastnosti je interpretován nesprávně a neposkytuje očekávané výsledky.
+Některé názvy vlastností, například ty, které obsahují `.` nebo `$`, musí být zabaleny nebo uvozeny v dotazu nebo název vlastnosti je interpretován nesprávně a neposkytuje očekávané výsledky.
 
-- `.` – název vlastnosti se zabalí jako: `['propertyname.withaperiod']`
+- `.`- Zalomte název vlastnosti jako takový:`['propertyname.withaperiod']`
   
-  Příklad dotazu, který zabalí vlastnost _OData. Type_:
+  Příklad dotazu, který zabalí vlastnost _odata.type_:
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$` – zařídí znak v názvu vlastnosti. Použitý řídicí znak závisí na grafu prostředků prostředí, ze kterého se spouští.
+- `$`- Escape znak v názvu vlastnosti. Použitý řídicí znak závisí na prostředí Resource Graph je spuštěn z.
 
-  - **bash** - `\`
+  - **Bash** - `\`
 
-    Příklad dotazu, který řídí vlastnost _\$typ_ v bash:
+    Příklad dotazu, který unikne _ \$typu_ vlastnosti v bash:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** – neřídí `$` znak.
+  - **cmd** - Neunikejte `$` charakteru.
 
-  - ``` ` ``` - **PowerShellu**
+  - **Powershell** - ``` ` ```
 
-    Příklad dotazu, který řídí vlastnost _\$typ_ v PowerShellu:
+    Příklad dotazu, který v PowerShellu unikne _ \$typu_ vlastnosti:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -122,6 +122,6 @@ Některé názvy vlastností, například ty, které zahrnují `.` nebo `$`, mus
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
-- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).
-- Přečtěte si další informace o tom, jak [prozkoumat prostředky](explore-resources.md).
+- Podívejte se na jazyk, který se používá v [dotazech Starter](../samples/starter.md).
+- Zobrazení pokročilých použití v [rozšířených dotazech](../samples/advanced.md).
+- Přečtěte si další informace o tom, jak [prozkoumat zdroje](explore-resources.md).

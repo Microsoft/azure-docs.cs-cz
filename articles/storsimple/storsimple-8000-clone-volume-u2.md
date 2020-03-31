@@ -1,6 +1,6 @@
 ---
-title: Naklonování svazku v řadě StorSimple 8000 | Microsoft Docs
-description: Popisuje různé typy a využití klonování a vysvětluje, jak můžete pomocí zálohovacího skladu naklonovat jednotlivé svazky na zařízení řady StorSimple 8000.
+title: Klonovat svazek na storSimple 8000 série | Dokumenty společnosti Microsoft
+description: Popisuje různé typy klonů a použití a vysvětluje, jak můžete použít zálohovací sadu klonovat jednotlivé svazky na zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,109 +15,109 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254999"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Naklonování svazku pomocí služby StorSimple Device Manager v Azure Portal
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Použití služby Správce zařízení StorSimple na webu Azure Portal ke klonování svazku
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se dozvíte, jak můžete pomocí zálohovacího skladu naklonovat jednotlivé svazky přes okno **zálohovat katalog** . Vysvětluje také rozdíl mezi *přechodnými* a *trvalými* klony. Pokyny v tomto kurzu se vztahují na všechna zařízení řady StorSimple 8000 s aktualizací Update 3 nebo novější.
+Tento kurz popisuje, jak můžete použít zálohovací sadu klonovat jednotlivé svazky prostřednictvím okna **katalogu zálohování.** Vysvětluje také rozdíl mezi *přechodovými* a *trvalými* klony. Pokyny v tomto kurzu platí pro všechny zařízení řady StorSimple 8000 se spuštěním aktualizace 3 nebo novější.
 
-V okně StorSimple Device Manager Service **Backup Catalog** se zobrazí všechny zálohovací sklady, které se vytvoří při ručním nebo automatizovaném zálohování. Pak můžete vybrat svazek v zálohovacím skladu, který chcete klonovat.
+Okno **záloha** služby StorSimple Device Manager zobrazuje všechny zálohovací sady, které jsou vytvořeny při ručním nebo automatickém zálohování. Potom můžete vybrat svazek v zálohovací sadě ke klonování.
 
- ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+ ![Seznam zálohovacích skladeb](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
-## <a name="considerations-for-cloning-a-volume"></a>Pokyny pro klonování svazku
+## <a name="considerations-for-cloning-a-volume"></a>Důležité informace pro klonování svazku
 
-Při klonování svazku Vezměte v úvahu následující informace.
+Při klonování svazku zvažte následující informace.
 
-- Klon se chová stejným způsobem jako běžný svazek. Všechny operace, které jsou na svazku k dispozici, jsou k dispozici pro klonování.
+- Klon se chová stejným způsobem jako běžný svazek. Pro klonování je k dispozici jakákoli operace, která je možná na svazku.
 
-- Monitorování a výchozí zálohování jsou na klonovaném svazku automaticky zakázané. Je potřeba nakonfigurovat Klonovaný svazek pro všechny zálohy.
+- Monitorování a výchozí zálohování jsou automaticky zakázány na klonovaném svazku. Je třeba nakonfigurovat klonovaný svazek pro všechny zálohy.
 
-- Místně připojený svazek je klonován jako vrstvený svazek. Pokud potřebujete Klonovaný svazek lokálně připnuté, můžete ho po úspěšném dokončení operace klonování převést na místně připojený svazek. Informace o převedení vrstveného svazku na místně připojený svazek získáte, když přejdete na [změnit typ svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
+- Místně vázaný svazek je klonován jako vrstvený svazek. Pokud potřebujete klonovaný svazek místně připnout, můžete převést klon na místně vázaný svazek po úspěšném dokončení operace klonování. Informace o převodu vrstveného svazku na místně vázaný svazek naleznete v části [Změna typu svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
 
-- Pokud se pokusíte převést Klonovaný svazek z vrstveného na místně připnuté hned po klonování (Pokud je stále přechodným klonem), převod se nezdařil s následující chybovou zprávou:
+- Pokud se pokusíte převést klonovaný svazek z vrstveného na místně připnutý ihned po klonování (pokud je stále přechodný klon), převod se nezdaří s následující chybovou zprávou:
 
     `Unable to modify the usage type for volume {0}. This can happen if the volume being modified is a transient clone and hasn’t been made permanent. Take a cloud snapshot of this volume and then retry the modify operation.`
 
-    Tato chyba se obdrží jenom v případě, že klonování probíhá na jiném zařízení. Svazek můžete úspěšně převést na místně připnuté, pokud nejprve převedete přechodný klon na trvalý klon. Pořídit snímek v dočasném klonu, aby byl převeden na trvalý klon.
+    Tato chyba je přijata pouze v případě, že klonujete na jiné zařízení. Pokud nejprve převedete přechodný klon na trvalý klon, můžete úspěšně převést svazek na místně připnutý. Pořiďte snímek cloudu přechodného klonu a převeďte jej na trvalý klon.
 
 ## <a name="create-a-clone-of-a-volume"></a>Vytvoření klonu svazku
 
-Pomocí místního nebo cloudového snímku můžete vytvořit klon na stejném zařízení, na jiném zařízení nebo dokonce na cloudovém zařízení.
+Klon můžete vytvořit na stejném zařízení, jiné zařízení nebo dokonce cloudové zařízení pomocí místní nebo cloud snímek.
 
-Následující postup popisuje, jak vytvořit klon ze zálohy katalogu.  Alternativním způsobem inicializace klonování je přejít na **svazky**, vybrat svazek a potom kliknutím pravým tlačítkem vyvolat kontextovou nabídku a vybrat **klonovat**.
+Následující postup popisuje, jak vytvořit klon z katalogu záloh.  Alternativní metodou pro zahájení klonování je přejít na **Svazky**, vybrat svazek, pak klepnutím pravým tlačítkem myši vyvolat místní nabídku a vybrat **možnost Klonovat**.
 
-Provedením následujících kroků vytvoříte klon svazku ze zálohy katalogu.
+Pomocí následujících kroků vytvořte klon svazku z katalogu záloh.
 
-#### <a name="to-clone-a-volume"></a>Naklonování svazku
+#### <a name="to-clone-a-volume"></a>Klonování svazku
 
-1. Přejděte ke službě StorSimple Device Manager a potom klikněte na **katalog záloh**.
+1. Přejděte na službu Správce zařízení StorSimple a klepněte na tlačítko **Zálohovat katalog**.
 
-2. Vyberte zálohovací sklad následujícím způsobem:
+2. Vyberte zálohovací sadu následujícím způsobem:
    
    1. Vyberte příslušné zařízení.
-   2. V rozevíracím seznamu vyberte svazek nebo zásady zálohování pro zálohu, kterou chcete vybrat.
+   2. V rozevíracím seznamu zvolte zásady svazku nebo zálohování zálohy, které chcete vybrat.
    3. Zadejte časový rozsah.
-   4. Kliknutím na **použít** spusťte tento dotaz.
+   4. Chcete-li spustit tento dotaz, klepněte na **tlačítko Použít.**
 
-      Zálohy přidružené k vybranému svazku nebo zásadám zálohování by se měly zobrazit v seznamu zálohovacích skladů.
+      Zálohy přidružené k vybranému svazku nebo zásady zálohování by se měly objevit v seznamu zálohovacích sad.
    
-      ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![Seznam zálohovacích skladeb](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. Rozbalte zálohovací sklad a zobrazte přidružený svazek a vyberte svazek v zálohovacím skladu. Klikněte pravým tlačítkem a potom v místní nabídce vyberte **klonovat**.
+3. Rozbalte zálohovací sadu, abyste zobrazili přidružený svazek a vyberte svazek v zálohovací sadě. Klepněte pravým tlačítkem myši a potom v místní nabídce vyberte **příkaz Klonovat**.
 
-   ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![Seznam zálohovacích skladeb](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
-3. V okně **klonovat** proveďte následující kroky:
+3. V noži **Klonování** proveďte následující kroky:
    
-   1. Identifikujte cílové zařízení. Toto je umístění, kde se klon vytvoří. Můžete zvolit stejné zařízení nebo zadat jiné zařízení.
+   1. Identifikujte cílové zařízení. Toto je místo, kde bude vytvořen klon. Můžete zvolit stejné zařízení nebo zadat jiné zařízení.
 
       > [!NOTE]
-      > Ujistěte se, že kapacita požadovaná pro klon je nižší než kapacita dostupná na cílovém zařízení.
+      > Ujistěte se, že kapacita potřebná pro klon je nižší než kapacita dostupná na cílovém zařízení.
        
    2. Zadejte jedinečný název svazku pro klon. Název musí obsahovat 3 až 127 znaků.
       
        > [!NOTE]
-       > Pole **Klonovaný svazek jako** bude **vrstveno** i v případě klonování místně připojeného svazku. Toto nastavení nemůžete změnit. Pokud ale potřebujete, aby Klonovaný svazek byl připnuté místně, můžete po úspěšném vytvoření klonu převést klon na místně připojený svazek. Informace o převedení vrstveného svazku na místně připojený svazek získáte, když přejdete na [změnit typ svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
+       > Pole **Klonovat svazek jako** bude **vrstveno** i v případě, že klonujete místně vázaný svazek. Toto nastavení nelze změnit. Pokud však potřebujete, aby byl klonovaný svazek také místně připnutý, můžete po úspěšném vytvoření klonu převést klon na místně vázaný svazek. Informace o převodu vrstveného svazku na místně vázaný svazek naleznete v části [Změna typu svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
           
-   3. V části **připojení hostitelé**zadejte záznam řízení přístupu (ACR) pro klon. Můžete přidat novou ACR nebo vybrat z existujícího seznamu. ACR určí, kteří hostitelé budou mít přístup k tomuto klonu.
+   3. V **části Připojená hostitelé**zadejte záznam řízení přístupu (ACR) pro klonování. Můžete přidat nový ACR nebo vybrat z existujícího seznamu. ACR určí, kteří hostitelé mají přístup k tomuto klonu.
       
-       ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![Seznam zálohovacích skladeb](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
-   4. Operaci dokončete kliknutím na tlačítko **klonovat** .
+   4. Chcete-li operaci dokončit, klepněte na tlačítko **Klonovat.**
 
-4. Úloha klonování se iniciuje a po úspěšném vytvoření klonu se zobrazí oznámení. Kliknutím na okno oznámení úlohy nebo přejít do okna **úlohy** můžete monitorovat úlohu klonování.
+4. Klonování úloha je zahájena a budete upozorněni, když klon je úspěšně vytvořen. Klikněte na oznámení úlohy nebo přejděte do okna **Úlohy** a sledujte úlohu klonování.
 
-    ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![Seznam zálohovacích skladeb](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
-7. Po dokončení úlohy klonování přejděte na zařízení a pak klikněte na **svazky**. V seznamu svazků by se měl zobrazit klon, který byl právě vytvořen ve stejném kontejneru svazků, který má zdrojový svazek.
+7. Po dokončení úlohy klonování přejděte do zařízení a klepněte na **položku Svazky**. V seznamu svazků byste měli vidět klon, který byl právě vytvořen ve stejném kontejneru svazků, který má zdrojový svazek.
 
-    ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![Seznam zálohovacích skladeb](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
-Klon, který je vytvořen tímto způsobem, je přechodným klonem. Další informace o typech klonování naleznete v tématu [přechodné a trvalé klony](#transient-vs-permanent-clones).
+Klon, který je vytvořen tímto způsobem je přechodný klon. Další informace o typech klonování naleznete [v tématu Transient vs. permanentní klony](#transient-vs-permanent-clones).
 
 
 ## <a name="transient-vs-permanent-clones"></a>Přechodné vs. trvalé klony
-Přechodné klony se vytvářejí jenom při klonování na jiné zařízení. Konkrétní svazek můžete klonovat ze zálohovacího skladu na jiné zařízení, které spravuje StorSimple Device Manager. Přechodný klon má odkazy na data v původním svazku a tato data používá ke čtení a zápisu místně na cílovém zařízení.
+Přechodné klony jsou vytvořeny pouze v případě, že klonujete na jiné zařízení. Můžete klonovat určitý svazek ze zálohovací sady do jiného zařízení spravovaného Správcem zařízení StorSimple. Přechodný klon má odkazy na data v původním svazku a používá tato data ke čtení a zápisu místně v cílovém zařízení.
 
-Po převzetí cloudového snímku přechodného klonu je výsledný klon *trvalým* klonem. Během tohoto procesu se v cloudu vytvoří kopie dat a čas pro kopírování těchto dat se určí podle velikosti dat a latencí Azure (Jedná se o kopii z Azure do Azure). Tento proces může trvat několik dní až týdnů. Přechodný klon se stal trvalým klonem a nemá žádné odkazy na původní data svazků, ze kterých byla naklonována.
+Po pořízení snímku cloud přechodný klon, výsledný klon je *trvalý* klon. Během tohoto procesu se vytvoří kopie dat v cloudu a čas na zkopírování těchto dat se určuje podle velikosti dat a latencí Azure (jedná se o kopii Azure-Azure). Tento proces může trvat dny až týdny. Přechodný klon se stane trvalým klonem a nemá žádné odkazy na původní data svazku, ze kterých byl klonován.
 
-## <a name="scenarios-for-transient-and-permanent-clones"></a>Scénáře pro přechodné a trvalé klonování
-Následující části popisují příklady situací, ve kterých lze použít přechodné a trvalé klonování.
+## <a name="scenarios-for-transient-and-permanent-clones"></a>Scénáře pro přechodné a trvalé klony
+Následující části popisují příklady situací, ve kterých lze použít přechodné a trvalé klony.
 
-### <a name="item-level-recovery-with-a-transient-clone"></a>Obnovení na úrovni položek s přechodným klonem
-Musíte obnovit jeden rok v jednom roce starý soubor prezentace aplikace Microsoft PowerPoint. Správce IT identifikuje konkrétní zálohu od tohoto času a následně filtruje svazek. Správce pak svazek naklonuje, vyhledá soubor, který hledáte, a poskytne vám ho. V tomto scénáři se používá přechodný klon.
+### <a name="item-level-recovery-with-a-transient-clone"></a>Obnova na úrovni položky s přechodným klonem
+Je třeba obnovit jeden rok starý soubor prezentace aplikace Microsoft PowerPoint. Správce IT identifikuje konkrétní zálohu z této doby a potom vyfiltruje svazek. Správce potom naklonuje svazek, vyhledá soubor, který hledáte, a poskytne vám jej. V tomto scénáři se používá přechodný klon.
 
 ### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Testování v produkčním prostředí s trvalým klonem
-Je nutné ověřit chybu testování v produkčním prostředí. V produkčním prostředí vytvoříte klon svazku a potom si pořídíte snímek tohoto klonu v cloudu, abyste vytvořili nezávislý Klonovaný svazek. V tomto scénáři se používá trvalý klon.
+Je třeba ověřit testovací chybu v produkčním prostředí. Vytvoříte klon svazku v produkčním prostředí a potom pořídit snímek cloudu tohoto klonu k vytvoření nezávislého klonovaného svazku. V tomto scénáři se používá trvalý klon.
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se [obnovit svazek StorSimple ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).
-* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Zjistěte, jak [obnovit svazek StorSimple ze zálohovací sady](storsimple-8000-restore-from-backup-set-u2.md).
+* Přečtěte si, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

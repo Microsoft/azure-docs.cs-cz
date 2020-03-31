@@ -1,6 +1,6 @@
 ---
-title: E-mailová oznámení pro Azure AD Domain Services | Microsoft Docs
-description: Naučte se konfigurovat e-mailová oznámení, která vás upozorní na problémy ve Azure Active Directory Domain Services spravované doméně.
+title: E-mailová oznámení pro služby Domény Azure AD | Dokumenty společnosti Microsoft
+description: Přečtěte si, jak nakonfigurovat e-mailová oznámení, která vás upozorní na problémy ve spravované doméně služby Azure Active Directory Domain Services.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,77 +12,77 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
 ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613297"
 ---
-# <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Konfigurace e-mailových oznámení pro problémy v Azure Active Directory Domain Services
+# <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Konfigurace e-mailových oznámení pro problémy ve službě Azure Active Directory Domain Services
 
-Platforma Azure monitoruje stav spravované domény Azure Active Directory Domain Services (Azure služba AD DS). Stránka stav v Azure Portal zobrazuje všechny výstrahy pro spravovanou doménu. Aby se zajistilo, že budou problémy reagovat včas, je možné nakonfigurovat e-mailová oznámení, která budou hlásit výstrahy týkající se stavu, jakmile se zjistí ve spravované doméně Azure služba AD DS.
+Stav spravované domény Služby Azure Active Directory Domain Services (Azure AD DS) monitoruje platforma Azure. Stránka stavu na webu Azure Portal zobrazuje všechny výstrahy pro spravovanou doménu. Chcete-li zajistit, aby problémy byly zodpovězeny včas, e-mailová oznámení můžete nakonfigurovat tak, aby sestavy na výstrahy stavu, jakmile jsou zjištěny ve spravované doméně Azure AD DS.
 
-V tomto článku se dozvíte, jak nakonfigurovat příjemce e-mailových oznámení pro spravovanou doménu Azure služba AD DS.
+Tento článek ukazuje, jak nakonfigurovat příjemce e-mailových oznámení pro spravovanou doménu Azure AD DS.
 
-## <a name="email-notification-overview"></a>Přehled e-mailových oznámení
+## <a name="email-notification-overview"></a>Přehled oznámení e-mailem
 
-Pokud chcete upozornit na problémy se spravovanou doménou Azure služba AD DS, můžete nakonfigurovat e-mailová oznámení. Tato e-mailová oznámení určují spravovanou doménu Azure služba AD DS, na které je přítomná výstraha, a taky čas detekce a odkaz na stránku stavu v Azure Portal. Pak můžete tyto problémy vyřešit podle pokynů pro řešení problémů.
+Pokud vás chcete upozornit na problémy se spravovanou doménou Azure AD DS, můžete nakonfigurovat e-mailová oznámení. Tato e-mailová oznámení určují spravovanou doménu Azure AD DS, ve které se výstraha nachází, a také poskytují čas detekce a odkaz na stránku stavu na webu Azure Portal. Problémy pak můžete vyřešit pomocí poskytnutých pokynů pro řešení potíží.
 
-Následující příklad e-mailového oznámení indikuje, že se ve spravované doméně služba AD DS Azure vygenerovalo kritické upozornění, nebo Výstraha:
+Následující příklad e-mailové oznámení označuje kritické upozornění nebo výstraha byla generována na spravované doméně Azure AD DS:
 
-![Příklad e-mailového oznámení](./media/active-directory-domain-services-alerts/email-alert.png)
+![Ukázkové e-mailové oznámení](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> Před kliknutím na odkazy ve zprávě se ujistěte, že e-mail pochází od ověřeného odesilatele Microsoftu. E-mailová oznámení se vždycky podávají z `azure-noreply@microsoft.com` adresy.
+> Před kliknutím na odkazy ve zprávě se vždy ujistěte, že e-mail pochází od ověřeného odesílatele společnosti Microsoft. E-mailová oznámení vždy `azure-noreply@microsoft.com` pocházejí z adresy.
 
-### <a name="why-would-i-receive-email-notifications"></a>Proč dostávat e-mailová oznámení?
+### <a name="why-would-i-receive-email-notifications"></a>Proč bych měl dostávat e-mailová oznámení?
 
-Azure služba AD DS odesílá e-mailová oznámení o důležitých aktualizacích spravované domény. Tato oznámení jsou určena pouze pro naléhavé problémy, které mají dopad na službu a měly by se řešit okamžitě. Každé oznámení o e-mailu se aktivuje výstrahou ve spravované doméně Azure služba AD DS. Výstrahy se také zobrazí v Azure Portal a je možné je zobrazit na [stránce Azure služba AD DS Health][check-health].
+Azure AD DS odesílá e-mailová oznámení pro důležité aktualizace o spravované doméně. Tato oznámení jsou pouze pro naléhavé problémy, které mají vliv na službu a měly by být řešeny okamžitě. Každé e-mailové oznámení se aktivuje výstrahou ve spravované doméně Azure AD DS. Výstrahy se také zobrazí na webu Azure Portal a lze zobrazit na [stránce stavu Služby Azure AD DS][check-health].
 
-Azure služba AD DS neodesílá e-maily pro účely inzerce, aktualizace nebo prodeje.
+Azure AD DS neodesílá e-maily pro reklamní, aktualizace nebo prodejní účely.
 
-### <a name="when-will-i-receive-email-notifications"></a>Kdy získám e-mailová oznámení?
+### <a name="when-will-i-receive-email-notifications"></a>Kdy budu dostávat e-mailová oznámení?
 
-Oznámení se pošle okamžitě, když se ve spravované doméně Azure služba AD DSe najde [nová výstraha][troubleshoot-alerts] . Pokud se výstraha nevyřeší, budou se další e-mailová oznámení odesílat jako připomenutí každé čtyři dny.
+Oznámení se odešle okamžitě, když se na spravovanou doméně Azure AD DS najdou [nová výstraha.][troubleshoot-alerts] Pokud se výstraha nevyřeší, budou každé čtyři dny jako připomínka odeslána další e-mailová oznámení.
 
 ### <a name="who-should-receive-the-email-notifications"></a>Kdo by měl dostávat e-mailová oznámení?
 
-Seznam příjemců e-mailů pro Azure služba AD DS by měl obsahovat lidi, kteří můžou spravovat a provádět změny ve spravované doméně. Tento e-mailový seznam by se měl představit jako "první reakce" na všechny výstrahy a problémy.
+Seznam příjemců e-mailu pro Azure AD DS by se měl skládat z lidí, kteří jsou schopni spravovat a provádět změny ve spravované doméně. Tento e-mailový seznam by měl být považován za vaše "první respondenty" na všechna upozornění a problémy.
 
-Pro e-mailová oznámení můžete přidat až pět dalších příjemců e-mailů. Pokud chcete pro e-mailová oznámení použít více než pět příjemců, vytvořte distribuční seznam a přidejte ho do seznamu oznámení.
+Pro e-mailová oznámení můžete přidat až pět dalších příjemců e-mailů. Pokud chcete více než pět příjemců pro e-mailová oznámení, vytvořte distribuční seznam a místo toho jej přidejte do seznamu oznámení.
 
-Můžete se také rozhodnout, že mají všichni *globální správci* adresáře Azure AD a všichni členové skupiny *Správci řadičů domény AAD* dostávat e-mailová oznámení. Azure služba AD DS odesílá oznámení až 100 e-mailových adres, včetně seznamu globálních správců a správců řadiče domény AAD.
+Můžete také zvolit, aby všichni *globální správci adresáře* Azure AD a všichni členové *skupiny Správci řadiče domény AAD* obdrželi e-mailová oznámení. Azure AD DS odesílá oznámení jenom až na 100 e-mailových adres, včetně seznamu globálních správců a správců řadiče domény AAD.
 
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 
-Chcete-li zkontrolovat existující příjemce e-mailových oznámení nebo přidat další příjemce, proveďte následující kroky:
+Chcete-li zkontrolovat stávající příjemce e-mailových oznámení nebo přidat další příjemce, proveďte následující kroky:
 
-1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**.
-1. Vyberte spravovanou doménu Azure služba AD DS, například *aaddscontoso.com*.
-1. Na levé straně okna prostředků Azure služba AD DS vyberte **Nastavení oznámení**. Zobrazí se stávající příjemci e-mailových oznámení.
-1. Příjemce e-mailu přidáte tak, že do tabulky další příjemci zadáte e-mailovou adresu.
-1. Po dokončení vyberte **Uložit** na horním navigačním panelu.
+1. Na webu Azure Portal vyhledejte a vyberte **služby Domény Azure AD**.
+1. Vyberte spravovanou doménu Azure AD DS, například *aaddscontoso.com*.
+1. Na levé straně okna prostředku Azure AD DS vyberte **Nastavení oznámení**. Zobrazí se stávající příjemci e-mailových oznámení.
+1. Chcete-li přidat příjemce e-mailu, zadejte e-mailovou adresu do tabulky dalších příjemců.
+1. Až bude hotovo, vyberte **Uložit** na navigaci nahoře.
 
 > [!WARNING]
-> Když změníte nastavení oznámení, aktualizují se nastavení oznámení pro celou doménu spravované v Azure služba AD DS, ne jen sami.
+> Když změníte nastavení oznámení, nastavení oznámení pro celou spravovanou doménu Azure AD DS se aktualizují, nejen sami.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Obdržel (a) jsem mi e-mailem upozornění na upozornění, ale když jsem přihlášený k Azure Portal nedošlo k žádné výstraze. Co se stalo?
+### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Obdržel jsem e-mailové oznámení o upozornění, ale když jsem se přihlásil na portál Azure, nebyla žádná výstraha. Co se stalo?
 
-Pokud se výstraha vyřeší, výstraha se z Azure Portal nevymaže. Nejpravděpodobnějším důvodem je to, že někdo jiný, kdo obdrží e-mailová oznámení, vyřešil upozornění ve spravované doméně Azure služba AD DS nebo byl automaticky vyřešen platformou Azure.
+Pokud je výstraha vyřešena, výstraha se vymaže z portálu Azure. Nejpravděpodobnějším důvodem je, že někdo jiný, kdo přijímá e-mailová oznámení, vyřešil výstrahu ve spravované doméně Azure AD DS nebo byl automaticky vyřešen platformou Azure.
 
-### <a name="why-can-i-not-edit-the-notification-settings"></a>Proč není možné upravovat nastavení oznámení?
+### <a name="why-can-i-not-edit-the-notification-settings"></a>Proč nemohu upravit nastavení oznámení?
 
-Pokud nemůžete získat přístup k stránce nastavení oznámení v Azure Portal, nemáte oprávnění k úpravám spravované domény Azure služba AD DS. Abyste mohli získat oprávnění k úpravám prostředku Azure služba AD DS nebo ho odebrat ze seznamu příjemců, musíte se obrátit na globálního správce.
+Pokud se vám na webu Azure Portal nedaří získat přístup k nastavení oznámení, nemáte oprávnění k úpravám spravované domény Azure AD DS. Musíte kontaktovat globálního správce buď získat oprávnění k úpravám prostředku Azure AD DS nebo být odebrány ze seznamu příjemců.
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Zdá se, že nepřijímám e-mailová oznámení, i když mi Mám e-mailovou adresu. Proč?
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Nezdá se, že dostávám e-mailová oznámení, i když jsem za předpokladu, že moje e-mailová adresa. Proč?
 
-Zkontrolujte e-mailovou zprávu nebo složku Nevyžádaná pošta v e-mailu s oznámením a ujistěte se, že odesilateli `azure-noreply@microsoft.com`.
+Zkontrolujte, zda je v e-mailu odesláno upozornění ve `azure-noreply@microsoft.com`složce nevyžádané pošty nebo nevyžádané pošty, a ujistěte se, že jste povolili odesílateli aplikace .
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o řešení potíží s některými problémy, které mohou být hlášeny, najdete v tématu [řešení výstrah ve spravované doméně Azure služba AD DS][troubleshoot-alerts].
+Další informace o řešení některých problémů, které mohou být hlášeny, naleznete [v tématu Řešení výstrah ve spravované doméně Azure AD DS][troubleshoot-alerts].
 
 <!-- INTERNAL LINKS -->
 [check-health]: check-health.md

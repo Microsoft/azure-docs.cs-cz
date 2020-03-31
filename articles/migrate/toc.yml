@@ -8,13 +8,13 @@
       href: whats-new.md
     - name: Časté dotazy
       items:
-        - name: Dotazy ke službě Azure Migrate
+        - name: Obecné
           href: resources-faq.md
-        - name: Dotazy k zařízením Azure Migrate
+        - name: Zařízení Azure Migrate
           href: common-questions-appliance.md
-        - name: Dotazy ke zjišťování a vizualizaci závislostí/hodnocení
+        - name: Nástroj Server Assessment / analýza závislostí
           href: common-questions-discovery-assessment.md
-        - name: Dotazy týkající se migrace serverů
+        - name: Nástroj pro migraci serverů
           href: common-questions-server-migration.md
 - name: Kurzy
   items:
@@ -74,34 +74,40 @@
           href: migrate-appliance.md
         - name: Požadavky zařízení replikace
           href: migrate-replication-appliance.md
+    - name: Architektura zařízení Azure Migrate
+      href: migrate-appliance-architecture.md
     - name: Architektura migrace Hyper-V
       href: hyper-v-migration-architecture.md
-    - name: Architektura migrace založené na agentech
+    - name: Architektura migrace založené na agentech pro VMware
       href: agent-based-migration-architecture.md
-    - name: Osvědčené postupy pro vyhodnocení
-      href: best-practices-assessment.md
     - name: Přehled hodnocení
       href: concepts-assessment-calculation.md
-    - name: Vizualizace závislostí
+    - name: Osvědčené postupy pro vyhodnocení
+      href: best-practices-assessment.md
+    - name: Přehled analýz závislostí
       href: concepts-dependency-visualization.md
 - name: Návody
   items:
-    - name: Práce s předchozí verzí
-      href: migrate-v1.md
     - name: Vytváření a správa projektů Azure Migrate
       href: create-manage-projects.md
-    - name: Nasazení zařízení VMware
-      href: how-to-set-up-appliance-vmware.md
-    - name: Nasazení zařízení Hyper-V
-      href: how-to-set-up-appliance-hyper-v.md
-    - name: Nasazení zařízení fyzického serveru
-      href: how-to-set-up-appliance-physical.md
-    - name: Zjišťování aplikací/rolí/funkcí
-      href: how-to-discover-applications.md
     - name: První přidání nástroje
       href: how-to-add-tool-first-time.md
     - name: Přidání nástrojů pro vyhodnocení
       href: how-to-assess.md
+    - name: Nasazení zařízení Azure Migrate
+      items:
+        - name: Nasazení zařízení pro VMware (OVA)
+          href: how-to-set-up-appliance-vmware.md
+        - name: Nasazení zařízení pro Hyper-V (VHD)
+          href: how-to-set-up-appliance-hyper-v.md
+        - name: Nasazení zařízení pro VMware/Hyper-V (skript)
+          href: deploy-appliance-script.md
+        - name: Nasazení zařízení pro fyzické servery
+          href: how-to-set-up-appliance-physical.md
+    - name: Omezení rozsahu zjišťování pro virtuální počítače VMware
+      href: set-discovery-scope.md
+    - name: Zjišťování aplikací/rolí/funkcí
+      href: how-to-discover-applications.md
     - name: Seskupení počítačů pro vyhodnocení
       href: how-to-create-a-group.md
     - name: Analýza závislostí počítačů (na základě agentů)
@@ -122,6 +128,8 @@
       href: prepare-for-migration.md
     - name: Odstranění projektu Azure Migrate
       href: how-to-delete-project.md
+    - name: Práce s předchozí verzí
+      href: migrate-v1.md
     - name: Vyhodnocení a migrace ve velkém měřítku
       items:
         - name: Přístup k velkému počtu virtuálních počítačů VMware

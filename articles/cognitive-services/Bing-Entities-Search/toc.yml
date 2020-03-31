@@ -7,7 +7,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Rychlá zprovoznění pro REST API
+- name: Rychlé starty
   expanded: true
   items:
     - name: REST API
@@ -32,7 +32,7 @@
   items:
     - name: Sestavení jednostránkové webové aplikace
       href: tutorial-bing-entities-search-single-page-app.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'

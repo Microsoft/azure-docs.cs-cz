@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 'Azure SQL Database: Izolovaná databáze'
+title: Azure SQL Database
 metadata:
-  title: Dokumentace – jednoúčelová databáze
-  meta.description: Learn how to use Azure SQL databases.
+  title: 'Dokumentace – jednoúčelová databáze, databázový server, elastický fond'
+  description: 'Projděte si rychlá zprovoznění, kurzy a ukázky pro jednoúčelové databáze, elastické fondy a databázové servery služby Azure SQL Database.'
   services: sql-database
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: overview
   author: jovanpop-msft
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
   ms.reviewer: carlrab
   manager: craigg
   ms.date: 04/26/2019

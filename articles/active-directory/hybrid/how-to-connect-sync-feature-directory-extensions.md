@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect synchronizace: rozšíření adresáře | Microsoft Docs'
-description: Toto téma popisuje funkci rozšíření adresáře v Azure AD Connect.
+title: 'Synchronizace služby Azure AD Connect: Rozšíření adresáře | Dokumenty společnosti Microsoft'
+description: Toto téma popisuje funkci rozšíření adresáře ve službě Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,83 +17,83 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77917909"
 ---
-# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronizace: přípony adresářů
-K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy lze spotřebovat prostřednictvím [rozšíření](https://docs.microsoft.com/graph/extensibility-overview
-). Dostupné atributy můžete zobrazit pomocí [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer). Tuto funkci můžete také použít k vytvoření dynamických skupin ve službě Azure AD.
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizace služby Azure AD Connect: Rozšíření adresáře
+Pomocí rozšíření adresáře můžete rozšířit schéma ve službě Azure Active Directory (Azure AD) o vlastní atributy z místní služby Active Directory. Tato funkce umožňuje vytvářet obchodní aplikace tím, že spotřebovává atributy, které budete i nadále spravovat místně. Tyto atributy lze spotřebovat prostřednictvím [rozšíření](https://docs.microsoft.com/graph/extensibility-overview
+). Dostupné atributy můžete zobrazit pomocí [aplikace Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Tuto funkci můžete také použít k vytvoření dynamických skupin ve službě Azure AD.
 
-V současné době žádné úlohy Office 365 nevyužívají tyto atributy.
+V současné době žádné úlohy Office 365 spotřebovává tyto atributy.
 
-## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Přizpůsobení atributů, které se mají synchronizovat se službou Azure AD
+## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Přizpůsobení atributů, které chcete synchronizovat s Azure AD
 
-Další atributy, které chcete synchronizovat, můžete nakonfigurovat v cestě k vlastnímu nastavení v Průvodci instalací nástroje.
+Nakonfigurujete další atributy, které chcete synchronizovat v cestě k vlastnímu nastavení v průvodci instalací.
 
 >[!NOTE]
->V poli dostupné atributy se rozlišují malá a velká písmena.
+>Pole Dostupné atributy rozlišuje malá a velká písmena.
 
 ![Průvodce rozšířením schématu](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 
-Instalace zobrazuje následující atributy, které jsou platné kandidáty:
+Instalace zobrazuje následující atributy, které jsou platnými kandidáty:
 
-* Typy objektů uživatelů a skupin
-* Atributy s jednou hodnotou: řetězec, logická hodnota, celé číslo, binární
-* Vícehodnotových atributů: String, binary
+* Typy objektů uživatele a skupiny
+* Atributy s jednou hodnotou: Řetězec, Logická hodnota, Celé číslo, Binární
+* Atributy s více hodnotami: Řetězec, Binární
 
 
 >[!NOTE]
-> I když Azure AD Connect podporuje synchronizaci vícehodnotových atributů služby Active Directory se službou Azure AD jako víceřádková rozšíření adresáře, neexistuje momentálně žádný způsob, jak načíst a využívat data nahraná v atributech rozšíření adresáře s více hodnotami.
+> Přestože Azure AD Connect podporuje synchronizaci atributů služby Active Directory s více hodnotami do služby Azure AD jako rozšíření adresáře s více hodnotami, v současné době neexistuje žádný způsob, jak načíst nebo spotřebovat data odeslaná v atributech rozšíření adresáře s více hodnotami.
 
-Seznam atributů je načten z mezipaměti schématu, která je vytvořena během instalace Azure AD Connect. Pokud jste rozšíření schématu služby Active Directory rozšířili o další atributy, je nutné [schéma aktualizovat](how-to-connect-installation-wizard.md#refresh-directory-schema) předtím, než budou tyto nové atributy viditelné.
+Seznam atributů se čte z mezipaměti schématu, která se vytvoří během instalace Služby Azure AD Connect. Pokud jste rozšířili schéma služby Active Directory o další atributy, je nutné [aktualizovat schéma](how-to-connect-installation-wizard.md#refresh-directory-schema) dříve, než budou tyto nové atributy viditelné.
 
-Objekt ve službě Azure AD může mít až 100 atributů pro rozšíření adresáře. Maximální délka je 250 znaků. Pokud je hodnota atributu delší, synchronizační modul ho zkrátí.
+Objekt ve službě Azure AD může mít až 100 atributů pro rozšíření adresářů. Maximální délka je 250 znaků. Pokud je hodnota atributu delší, synchronizační modul ji zkrátí.
 
-## <a name="configuration-changes-in-azure-ad-made-by-the-wizard"></a>Změny konfigurace ve službě Azure AD provedené Průvodcem
+## <a name="configuration-changes-in-azure-ad-made-by-the-wizard"></a>Změny konfigurace ve službě Azure AD provedené průvodcem
 
-Během instalace Azure AD Connect je aplikace zaregistrovaná tam, kde jsou tyto atributy k dispozici. Tuto aplikaci můžete zobrazit v Azure Portal. Jeho název je vždycky **aplikace rozšíření schématu tenanta**.
+Během instalace Azure AD Connect je registrovaná aplikace, kde jsou k dispozici tyto atributy. Tuto aplikaci najdete na webu Azure Portal. Jeho název je vždy **tenanta schema rozšíření aplikace**.
 
-![Aplikace rozšíření schématu](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
+![Aplikace pro rozšíření schématu](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
 
-Ujistěte se, že jste vybrali možnost **všechny aplikace** , aby se tato aplikace zobrazila.
+Ujistěte se, že vyberete **všechny aplikace** pro zobrazení této aplikace.
 
-Atributy mají předponu **rozšíření \_{ApplicationId}\_** . ApplicationId má stejnou hodnotu pro všechny atributy v tenantovi Azure AD. Tuto hodnotu budete potřebovat pro všechny ostatní scénáře v tomto tématu.
+Atributy jsou předponou s **příponou \_{ApplicationId}\_**. ApplicationId má stejnou hodnotu pro všechny atributy ve vašem tenantovi Azure AD. Tuto hodnotu budete potřebovat pro všechny ostatní scénáře v tomto tématu.
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Zobrazení atributů pomocí rozhraní Microsoft Graph API
 
-Tyto atributy jsou nyní k dispozici prostřednictvím rozhraní Microsoft Graph API pomocí [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer#).
+Tyto atributy jsou nyní k dispozici prostřednictvím rozhraní Microsoft Graph API pomocí [aplikace Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> V rozhraní Microsoft Graph API musíte požádat o vrácení atributů. Explicitně vyberte atributy takto: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
+> V rozhraní MICROSOFT Graph API, musíte požádat o atributy, které mají být vráceny. Explicitně vyberte atributy, jako je tento: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
 >
-> Další informace najdete v tématu [Microsoft Graph: použití parametrů dotazu](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
+> Další informace naleznete v [tématu Microsoft Graph: Use query parameters](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>Použití atributů v dynamických skupinách
 
-Jedním z užitečnějších scénářů je použití těchto atributů v části dynamické zabezpečení nebo skupiny Office 365.
+Jedním z užitečnějších scénářů je použití těchto atributů v dynamických bezpečnostních funkcích nebo skupinách Office 365.
 
-1. Vytvoří novou skupinu ve službě Azure AD. Dejte mu dobrý název a ujistěte se, že je **typ členství** **dynamický uživatel**.
+1. Vytvořte novou skupinu ve službě Azure AD. Pojmenujte jej a ujistěte se, že **typ členství** je **dynamický uživatel**.
 
    ![Snímek obrazovky s novou skupinou](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
 
-2. Tuto možnost vyberte, pokud chcete **Přidat dynamický dotaz**. Pokud se podíváte na vlastnosti, tyto rozšířené atributy se nezobrazí. Musíte je nejdřív přidat. Klikněte na **načíst vlastní vlastnosti rozšíření**, zadejte ID aplikace a klikněte na **aktualizovat vlastnosti**.
+2. Tuto možnost **vyberte, chcete-li přidat dynamický dotaz**. Pokud se podíváte na vlastnosti, pak se nezobrazí tyto rozšířené atributy. Musíte je nejprve přidat. Klepněte na **tlačítko Získat vlastní vlastnosti rozšíření**, zadejte ID aplikace a klepněte na tlačítko Aktualizovat **vlastnosti**.
 
-   ![Snímek obrazovky s přidanými rozšířeními adresářů](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
+   ![Snímek obrazovky, na který byla přidána rozšíření adresáře](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
 
-3. Otevřete rozevírací seznam vlastnosti a Všimněte si, že přidané atributy jsou nyní viditelné.
+3. Otevřete rozbalovací soubor vlastností a všimněte si, že přidané atributy jsou nyní viditelné.
 
-   ![Snímek obrazovky s novými atributy zobrazenými v uživatelském rozhraní](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
+   ![Snímek obrazovky s novými atributy, které se zobrazují v ui](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   Dokončete výraz tak, aby vyhovoval vašim požadavkům. V našem příkladu je pravidlo nastavené na **(User. extension_9d98ed114c4840d298fad781915f27e4_division-EQ "Sales and marketing")** .
+   Vyplňte výraz tak, aby vyhovoval vašim požadavkům. V našem příkladu je pravidlo nastaveno na **(user.extension_9d98ed114c4840d298fad781915f27e4_division -eq "Prodej a marketing")**.
 
-4. Po vytvoření skupiny poskytněte službě Azure AD nějakou dobu k naplnění členů a pak zkontrolujte členy.
+4. Po vytvoření skupiny, dejte Azure AD nějaký čas nanaplnění členů a zkontrolujte členy.
 
-   ![Snímek obrazovky se členy dynamické skupiny](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
+   ![Snímek obrazovky se členy v dynamické skupině](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
+Přečtěte si další informace o konfiguraci [synchronizace Azure AD Connect.](how-to-connect-sync-whatis.md)
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

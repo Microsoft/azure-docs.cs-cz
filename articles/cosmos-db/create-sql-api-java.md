@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – použití jazyka Java k vytvoření databáze dokumentů pomocí Azure Cosmos DB
-description: V tomto rychlém startu se zobrazí ukázka kódu Java, kterou můžete použít k připojení a dotazování Azure Cosmos DB rozhraní SQL API.
+title: Úvodní příručka – vytvoření databáze dokumentů pomocí Azure Cosmos DB pomocí Javy
+description: Tento rychlý start představuje ukázku kódu Jazyka Java, kterou můžete použít k připojení a dotazování na rozhraní SQL API Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,43 +10,43 @@ ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 489f241453436190213b99cb4e7be0688a8b6237
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240174"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Úvodní příručka: Vytvoření aplikace Java pro správu dat sql api Azure Cosmos DB
 
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
-> * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhraní SQL API z Azure Portal a pomocí aplikace Java naklonované z GitHubu. Nejdřív vytvoříte Azure Cosmos DB účet rozhraní SQL API pomocí Azure Portal a pak vytvoříte aplikaci Java pomocí SQL Java SDK a potom do svého účtu Cosmos DB přidáte prostředky pomocí aplikace Java. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
+V tomto rychlém startu vytvoříte a spravujete účet Azure Cosmos DB SQL API z webu Azure Portal a pomocí aplikace Java naklonované z GitHubu. Nejprve vytvoříte účet Azure Cosmos DB SQL API pomocí portálu Azure, pak vytvoříte aplikaci Java pomocí sql java sdk a pak přidáte prostředky do účtu Cosmos DB pomocí aplikace Java. Azure Cosmos DB je vícemodelová databázová služba, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, hodnot klíče a grafů s možností globální distribuce a horizontálního škálování.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčovým `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
-- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte proměnnou prostředí `JAVA_HOME` na složku, ve které je nainstalovaná JDK.
-- [Binární archiv Maven](https://maven.apache.org/download.cgi) V Ubuntu spusťte `apt-get install maven` a nainstalujte Maven.
-- [Git](https://www.git-scm.com/downloads) V Ubuntu spusťte `sudo apt-get install git` pro instalaci Gitu.
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) `https://localhost:8081` s identifikátorem URI a klíč `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
+- [Java Vývojová sada (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte `JAVA_HOME` proměnnou prostředí do složky, do které je nainstalována sada JDK.
+- [Maven binární archiv](https://maven.apache.org/download.cgi). Na Ubuntu, `apt-get install maven` spusťte instalaci Maven.
+- [Git](https://www.git-scm.com/downloads). Na Ubuntu, `sudo apt-get install git` spusťte instalaci Git.
 
 ## <a name="introductory-notes"></a>Úvodní poznámky
 
-*Struktura Cosmos DB účtu* Bez ohledu na rozhraní API nebo programovací jazyk, Cosmos DB *účet* obsahuje nula nebo více *databází*, *databáze* (DB) obsahuje nula nebo více *kontejnerů*a *kontejner* obsahuje nula nebo více položek, jak je znázorněno na následujícím obrázku:
+*Struktura účtu Cosmos DB.* Bez ohledu na rozhraní API nebo programovací jazyk obsahuje *účet* Cosmos DB nulovou nebo více *databází*, *databáze* (DB) obsahuje nulu nebo více *kontejnerů*a *kontejner* obsahuje nulu nebo více položek, jak je znázorněno na obrázku níže:
 
 ![Entity účtu Azure Cosmos](./media/databases-containers-items/cosmos-entities.png)
 
-Další informace o databázích, kontejnerech a položkách si můžete přečíst [tady.](databases-containers-items.md) Na úrovni kontejneru je definováno několik důležitých vlastností, mezi kterými je *zřízena propustnost* a *klíč oddílu*. 
+Můžete si přečíst více o databázích, kontejnerech a položkách [zde.](databases-containers-items.md) Několik důležitých vlastností jsou definovány na úrovni kontejneru, mezi nimi *zřízená propustnost* a *klíč oddílu*. 
 
-Zřízená propustnost se měří v jednotkách žádosti (*ru*), které mají peněžní cenu, a jsou zásadním rozhodujícím faktorem za provozní náklady na účet. Zřízenou propustnost lze vybrat v členitosti podle kontejneru nebo členitosti na databázi, ale obvykle je upřednostňována specifikace propustnosti na úrovni kontejneru. Další informace o zřizování propustnosti si můžete přečíst [tady.](set-throughput.md)
+Zřízená propustnost se měří v jednotkách požadavků (*RU*), které mají peněžní cenu a jsou podstatným určujícím faktorem provozních nákladů účtu. Zřízená propustnost může být vybrána na rozlišovací schopnost na kontejner nebo rozlišovací schopnost podle databáze, ale specifikace propustnosti na úrovni kontejneru je obvykle upřednostňována. Můžete si přečíst další informace o zřizování propustností [zde.](set-throughput.md)
 
-Když jsou položky vloženy do kontejneru Cosmos DB, databáze se poroste vodorovně přidáním dalšího úložiště a výpočetních prostředků pro zpracování požadavků. Kapacita úložiště a výpočetní kapacity se přidávají do diskrétních jednotek označovaných jako *oddíly*a Vy musíte zvolit jedno pole v dokumentu, které bude mít klíč oddílu, který mapuje jednotlivé dokumenty na oddíl. Způsob správy oddílů je, že každý oddíl má přiřazený zhruba stejný řez mimo rozsah hodnot klíče oddílu; Proto doporučujeme zvolit klíč oddílu, který je relativně náhodný nebo rovnoměrně distribuovaný. V opačném případě některé oddíly uvidí podstatně více požadavků (*aktivní oddíl*), zatímco ostatní oddíly jsou v podstatě méně požadavků (*studený oddíl*) a že se to vyhne. [Tady](partitioning-overview.md)se můžete dozvědět víc o vytváření oddílů.
+Jako položky jsou vloženy do kontejneru Cosmos DB, databáze zvětšuje vodorovně přidáním další úložiště a výpočetní pro zpracování požadavků. Úložiště a výpočetní kapacita jsou přidány v diskrétní jednotky známé jako *oddíly*a musíte zvolit jedno pole v dokumentech, které mají být klíč oddílu, který mapuje každý dokument do oddílu. Způsob, jakým jsou oddíly spravovány, je, že každému oddílu je přiřazen a zhruba stejný řez mimo rozsah hodnot klíče oddílu; Proto se doporučuje zvolit klíč oddílu, který je relativně náhodný nebo rovnoměrně rozložený. V opačném případě budou některé oddíly vidět podstatně více požadavků *(hot partition),* zatímco jiné oddíly vidět podstatně méně požadavků *(studený oddíl*), a to je třeba se vyhnout. Můžete se dozvědět více o dělení [zde](partitioning-overview.md).
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -54,7 +54,7 @@ Než budete moci vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Přidat kontejner
+## <a name="add-a-container"></a>Přidání kontejneru
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -79,59 +79,59 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je nepovinný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Spuštění aplikace](#run-the-app). 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Spuštění aplikace](#run-the-app). 
 
-### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Správa databázových prostředků pomocí synchronního (synchronizačního) rozhraní API
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Správa databázových prostředků pomocí synchronního rozhraní API (synchronizace)
 
-* Inicializace klienta `CosmosClient`. `CosmosClient` poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
+* Inicializace klienta `CosmosClient`. Poskytuje `CosmosClient` logické znázornění na straně klienta pro databázovou službu Azure Cosmos. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* vytváření `CosmosDatabase`.
+* `CosmosDatabase`Vytvoření.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* vytváření `CosmosContainer`.
+* `CosmosContainer`Vytvoření.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* Vytvoření položky pomocí metody `createItem`.
+* Vytvoření položky `createItem` pomocí metody.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* Čtení bodů se provádí pomocí metody `readItem`.
+* Čtení bodů se `readItem` provádí metodou.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
-* Dotazy SQL přes JSON se provádějí pomocí metody `queryItems`.
+* Dotazy SQL přes JSON jsou `queryItems` prováděny pomocí metody.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
 
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Správa databázových prostředků pomocí asynchronního (asynchronního) rozhraní API
 
-* Asynchronní volání rozhraní API vrátí okamžitě bez čekání na odpověď serveru. Na základě tohoto příkladu následující fragmenty kódu ukazují správné vzory návrhu pro splnění všech předchozích úloh správy pomocí asynchronního rozhraní API.
+* Asynchronní volání rozhraní API se okamžitě vrátí bez čekání na odpověď ze serveru. S ohledem na to následující fragmenty kódu zobrazit správné návrhové vzory pro provádění všech předchozích úloh správy pomocí asynchronní rozhraní API.
 
-* Inicializace klienta `CosmosAsyncClient`. `CosmosAsyncClient` poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient se používá ke konfiguraci a spouštění asynchronních požadavků na službu.
+* Inicializace klienta `CosmosAsyncClient`. Poskytuje `CosmosAsyncClient` logické znázornění na straně klienta pro databázovou službu Azure Cosmos. Tento klient slouží ke konfiguraci a spouštění asynchronních požadavků proti službě.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
 
-* vytváření `CosmosAsyncDatabase`.
+* `CosmosAsyncDatabase`Vytvoření.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* vytváření `CosmosAsyncContainer`.
+* `CosmosAsyncContainer`Vytvoření.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* Stejně jako u rozhraní API pro synchronizaci je vytvoření položky provedeno pomocí metody `createItem`. Tento příklad ukazuje, jak efektivně vydávat množství asynchronních `createItem` požadavků pomocí přihlášení k odběru reaktivního proudu, který vydává žádosti a tiskne oznámení. Vzhledem k tomu, že tento jednoduchý příklad běží na dokončování a končí, `CountDownLatch` instance slouží k zajištění, že program během vytváření položky nekončí. **Správný postup asynchronního programování není blokován při asynchronním volání – v reálných žádostech o použití jsou generovány z hlavní () smyčky, která se spouští po neomezenou dobu, což eliminuje nutnost západky na asynchronní volání.**
+* Stejně jako u rozhraní API synchronizace, vytváření položek se provádí pomocí `createItem` metody. Tento příklad ukazuje, jak efektivně `createItem` vydávat mnoho asynchronních požadavků přihlášením k odběru reaktivního datového proudu, který vydává požadavky a vytiskne oznámení. Vzhledem k tomu, že tento `CountDownLatch` jednoduchý příklad běží na dokončení a ukončí, instance se používají k zajištění programu nekončí během vytváření položky. **Správné asynchronní programování praxe není blokovat na asynchronní volání - v realistických případech použití požadavky jsou generovány z main() smyčky, která se spustí neomezeně dlouho, což eliminuje potřebu západka na asynchronní volání.**
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
    
-* Stejně jako u rozhraní API pro synchronizaci je čtení bodů prováděno pomocí metody `readItem`.
+* Stejně jako u rozhraní API `readItem` synchronizace se čtení bodů provádí pomocí metody.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
 
-* Stejně jako u rozhraní API pro synchronizaci jsou dotazy SQL přes JSON prováděny pomocí metody `queryItems`.
+* Stejně jako u rozhraní API synchronizace, sql `queryItems` dotazy přes JSON jsou prováděny pomocí metody.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
@@ -151,7 +151,7 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
     mvn package
     ```
 
-3. V okně terminálu Git pomocí následujícího příkazu spusťte aplikaci Java (nahraďte SYNCASYNCMODE hodnotou `sync` nebo `async` v závislosti na tom, který vzorový kód chcete spustit, nahraďte YOUR_COSMOS_DB_HOSTNAME hodnotou identifikátoru URI v uvozovkách z portálu a nahraďte YOUR_COSMOS_DB_MASTER_KEY primárním klíčem z portálu.)
+3. V okně terminálu git použijte následující příkaz ke spuštění aplikace Java `sync` `async` (nahraďte SYNCASYNCMODE nebo v závislosti na tom, který ukázkový kód chcete spustit, nahraďte YOUR_COSMOS_DB_HOSTNAME kótovanou hodnotou URI z portálu a nahraďte YOUR_COSMOS_DB_MASTER_KEY citovaným primárním klíčem z portálu)
 
     ```bash
     mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
@@ -160,14 +160,14 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
 
     V okně terminálu se zobrazí oznámení o vytvoření databáze FamilyDB. 
     
-4. Aplikace vytvoří databázi s názvem `AzureSampleFamilyDB`
-5. Aplikace vytvoří kontejner s názvem `FamilyContainer`
-6. Aplikace provede čtení bodů pomocí ID objektů a hodnoty klíče oddílu (což je lastName v naší ukázce). 
-7. Aplikace se bude dotazovat na položky a načíst všechny rodiny s posledním názvem v (' Andersen ', ' Wakefieldů ', ' Johnsonem ').
+4. Aplikace vytvoří databázi s názvem`AzureSampleFamilyDB`
+5. Aplikace vytvoří kontejner s názvem`FamilyContainer`
+6. Aplikace bude provádět čtení bodů pomocí ID objektu a hodnoty klíče oddílu (což je lastName v naší ukázce). 
+7. Aplikace bude dotazovat položky k načtení všech rodin s příjmením v ('Andersen', 'Wakefield', 'Johnson')
 
 7. Aplikace neodstraňuje vytvořené prostředky. Přepněte zpět na portál a [vyčistěte prostředky](#clean-up-resources)  ze svého účtu, aby se vám za ně neúčtovaly poplatky.
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -177,7 +177,7 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak vytvořit Azure Cosmos DB účet rozhraní SQL API, vytvořit databázi dokumentů a kontejner pomocí Průzkumník dat a spustit aplikaci Java, která provede stejné věci programově. Teď můžete do svého účtu Azure Cosmos DB importovat další data. 
+V tomto rychlém startu jste se naučili, jak vytvořit účet SQL API Azure Cosmos DB, vytvořit databázi dokumentů a kontejner pomocí Průzkumníka dat a spustit aplikaci Java, abyste to udělali programově. Teď můžete importovat další data do účtu Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

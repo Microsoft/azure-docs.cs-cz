@@ -1,78 +1,78 @@
 ---
-title: Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitor for Containers | Microsoft Docs
-description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift.
+title: Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitoru pro kontejnery | Dokumenty společnosti Microsoft
+description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes pomocí Azure Monitor hostovaného na Azure Red Hat OpenShift.
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275513"
 ---
-# <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitor for Containers
+# <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitoru pro kontejnery
 
-Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clustery Azure Kubernetes Service (AKS) a AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných v [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) a dosáhnout tak podobného monitorování.
+Azure Monitor pro kontejnery poskytuje bohaté možnosti monitorování pro azure kubernetes service (AKS) a clustery AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných v [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) k dosažení podobné hojné možnosti monitorování.
 
 >[!NOTE]
->Podpora pro Azure Red Hat OpenShift je v současnosti funkcí ve verzi Public Preview.
+>Podpora Azure Red Hat OpenShift je funkce ve verzi Public Preview v tuto chvíli.
 >
 
-Azure Monitor for Containers je možné povolit pro nové nebo jedno nebo více stávajících nasazení Azure Red Hat OpenShift pomocí následujících podporovaných metod:
+Azure Monitor pro kontejnery můžete povolit pro nové nebo jedno nebo více existujících nasazení Azure Red Hat OpenShift pomocí následujících podporovaných metod:
 
-- Pro existující cluster z Azure Portal nebo pomocí šablony Azure Resource Manager.
-- Pro nový cluster pomocí šablony Azure Resource Manager nebo při vytváření nového clusteru pomocí rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
+- Pro existující cluster z portálu Azure nebo pomocí šablony Azure Resource Manager.
+- Pro nový cluster pomocí šablony Azure Resource Manager nebo při vytváření nového clusteru pomocí [azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
 
 ## <a name="supported-and-unsupported-features"></a>Podporované a nepodporované funkce
 
-Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift, jak je popsáno v článku [Přehled](container-insights-overview.md) s výjimkou následujících funkcí:
+Azure Monitor pro kontejnery podporuje monitorování Azure Red Hat OpenShift, jak je popsáno v článku [Přehled,](container-insights-overview.md) s výjimkou následujících funkcí:
 
-- Živá data (Preview)
-- [Shromážděte metriky](container-insights-update-metrics.md) z uzlů clusteru a lusky a ukládají je do databáze Azure Monitorch metrik.
+- Živá data (náhled)
+- [Shromažďujte metriky](container-insights-update-metrics.md) z uzlů a podů clusteru a ukládají je do databáze metrik Azure Monitoru
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud chcete povolit a přistupovat k funkcím v Azure Monitor pro kontejnery, minimálně musíte být členem role *přispěvatele* Azure v předplatném Azure a členem role [*přispěvatele Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics s nakonfigurovaným Azure monitor for Containers.
+- Chcete-li povolit a získat přístup k funkcím v Azure Monitor u kontejnerů, minimálně musíte být členem role *Přispěvatel* Azure v předplatném Azure a členem role [*přispěvatele analýzy protokolů*](../platform/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics nakonfigurovaném pomocí Azure Monitor u kontejnerů.
 
-- Chcete-li zobrazit data monitorování, jste členem oprávnění role [*čtenář Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) s pracovním prostorem Log Analytics nakonfigurovaným Azure monitor for Containers.
+- Chcete-li zobrazit data monitorování, jste členem oprávnění role [*čtečky Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) s pracovním prostorem Log Analytics nakonfigurované mandatle Azure Monitor pro kontejnery.
 
-## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Povolení pro nový cluster pomocí šablony Azure Resource Manager
+## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Povolení nového clusteru pomocí šablony Azure Resource Manageru
 
-Provedením následujících kroků nasadíte cluster Azure Red Hat OpenShift s povoleným monitorováním. Než budete pokračovat, přečtěte si kurz [Vytvoření clusteru Azure Red Hat OpenShift](../../openshift/tutorial-create-cluster.md#prerequisites) , který vám pomůže pochopit závislosti, které je potřeba nakonfigurovat, aby se vaše prostředí správně nastavilo.
+Proveďte následující kroky k nasazení clusteru Azure Red Hat OpenShift s povoleným monitorováním. Než budete pokračovat, přečtěte si kurz [Vytvoření clusteru Azure Red Hat OpenShift,](../../openshift/tutorial-create-cluster.md#prerequisites) abyste pochopili závislosti, které je třeba nakonfigurovat, aby bylo vaše prostředí správně nastaveno.
 
-Tato metoda obsahuje dvě šablony JSON. Jedna šablona určuje konfiguraci pro nasazení clusteru s povoleným monitorováním a druhý obsahuje hodnoty parametrů, které nakonfigurujete, aby určovaly následující:
+Tato metoda zahrnuje dvě šablony JSON. Jedna šablona určuje konfiguraci pro nasazení clusteru s povoleným monitorováním a druhá obsahuje hodnoty parametrů, které nakonfigurujete pro určení následujících hodnot:
 
-- ID prostředku clusteru Azure Red Hat OpenShift
+- ID prostředku clusteru Azure Red Hat OpenShift.
 
-- Skupina prostředků, ve které je cluster nasazen
+- Skupina prostředků, ve které je cluster nasazen.
 
-- [ID tenanta Azure Active Directory](../../openshift/howto-create-tenant.md#create-a-new-azure-ad-tenant) poznamenali po provedení kroků k vytvoření jednoho nebo již vytvořeného postupu.
+- [ID klienta Azure Active Directory](../../openshift/howto-create-tenant.md#create-a-new-azure-ad-tenant) zaznamenáno po provedení kroků k vytvoření jednoho nebo jednoho již vytvořeného.
 
-- [ID klientské aplikace Azure Active Directory](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-app-registration) poznamenali, když provedete kroky k vytvoření jednoho nebo jednoho již vytvořeného postupu.
+- [ID klientské aplikace Azure Active Directory,](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-app-registration) které bylo zaznamenáno po provedení kroků k vytvoření jednoho nebo jednoho již vytvořeného.
 
-- [Azure Active Directory tajný kód klienta](../../openshift/howto-aad-app-configuration.md#create-a-client-secret) byl zaznamenán po provedení kroků k vytvoření jednoho nebo již vytvořeného postupu.
+- [Tajný klíč klienta služby Azure Active Directory,](../../openshift/howto-aad-app-configuration.md#create-a-client-secret) který byl zaznamenán po provedení kroků k vytvoření jednoho nebo jednoho již vytvořeného.
 
-- [Skupina zabezpečení Azure AD](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-security-group) se poznamenala po provedení kroků k vytvoření jednoho nebo nového vytvořeného postupu.
+- [Skupina zabezpečení Azure AD](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-security-group) poznamenal po provedení kroků k vytvoření jednoho nebo jednoho již vytvořené.
 
-- ID prostředku existujícího pracovního prostoru Log Analytics.
+- ID prostředku existujícího pracovního prostoru Analýzy protokolů.
 
-- Počet hlavních uzlů, které se mají v clusteru vytvořit
+- Počet hlavních uzlů, které chcete vytvořit v clusteru.
 
-- Počet výpočetních uzlů v profilu fondu agentů.
+- Počet výpočetních uzlů v profilu fondu agenta.
 
-- Počet uzlů infrastruktury v profilu fondu agentů.
+- Počet uzlů infrastruktury v profilu fondu agenta.
 
-Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
+Pokud nejste obeznámeni s konceptem nasazování prostředků pomocí šablony, přečtěte si:
 
 - [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
+- [Nasazení prostředků pomocí šablon Správce prostředků a nastavení příkazového uživatelského příkazu Azure](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.65 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete použít azure cli, musíte nejprve nainstalovat a použít příkazového příkazového příkazu místně. Musíte spouštět Azure CLI verze 2.0.65 nebo novější. Chcete-li identifikovat `az --version`verzi, spusťte aplikaci . Pokud potřebujete nainstalovat nebo upgradovat vázačitelné příkazy k Webu Azure, přečtěte si informace [o instalaci příkazového příkazového příkazu k azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní příkazového řádku, je třeba vytvořit pracovní prostor Log Analytics. Pokud chcete vytvořit pracovní prostor, můžete ho nastavit prostřednictvím [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+Pracovní prostor Log Analytics musí být vytvořen před povolením monitorování pomocí Azure PowerShell nebo CLI. Pokud chcete vytvořit pracovní prostor, můžete ho nastavit prostřednictvím [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), přes [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo na [webu Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
 
-1. Stáhněte a uložte do místní složky, Azure Resource Manager šablony a souboru parametrů, a vytvořte tak cluster s doplňkem monitorování pomocí následujících příkazů:
+1. Stáhněte a uložte do místní složky, šablony a souboru parametrů Azure Resource Manageru, a vytvořte cluster s doplňky pro monitorování pomocí následujících příkazů:
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
 
@@ -84,84 +84,84 @@ Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní 
     az login    
     ```
 
-    Pokud máte přístup k několika předplatným, spusťte `az account set -s {subscription ID}` nahrazující `{subscription ID}` s předplatným, které chcete použít.
+    Pokud máte přístup k více `az account set -s {subscription ID}` předplatných, spusťte nahrazení `{subscription ID}` předplatného, které chcete použít.
 
-3. Vytvořte skupinu prostředků pro váš cluster, pokud ji ještě nemáte. Seznam oblastí Azure, které podporují OpenShift v Azure, najdete v tématu [podporované oblasti](../../openshift/supported-resources.md#azure-regions).
+3. Pokud ještě nemáte skupinu prostředků pro cluster, vytvořte skupinu prostředků. Seznam oblastí Azure, které podporují OpenShift v Azure, najdete v [tématu Podporované oblasti](../../openshift/supported-resources.md#azure-regions).
 
     ```azurecli
     az group create -g <clusterResourceGroup> -l <location>
     ```
 
-4. Upravte soubor parametrů JSON **newClusterWithMonitoringParam. JSON** a aktualizujte následující hodnoty:
+4. Upravte soubor parametru JSON **newClusterWithMonitoringParam.json** a aktualizujte následující hodnoty:
 
-    - *location*
-    - *clusterName*
+    - *Umístění*
+    - *název_clusteru*
     - *aadTenantId*
     - *aadClientId*
     - *aadClientSecret*
-    - *aadCustomerAdminGroupId*
+    - *aadCustomerAdminId*
     - *workspaceResourceId*
     - *masterNodeCount*
     - *computeNodeCount*
     - *infraNodeCount*
 
-5. Následující krok nasadí cluster s povoleným monitorováním pomocí Azure CLI.
+5. Následující krok nasazuje cluster s povoleným monitorováním pomocí rozhraní příkazového příkazu Azure.
 
     ```azurecli
     az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json
     ```
 
-    Výstup se podobá následujícímu:
+    Výstup se podobá následující:
 
     ```output
     provisioningState       : Succeeded
     ```
 
-## <a name="enable-for-an-existing-cluster"></a>Povolit pro existující cluster
+## <a name="enable-for-an-existing-cluster"></a>Povolení pro existující cluster
 
-Provedením následujících kroků povolíte monitorování clusteru Azure Red Hat OpenShift nasazeného v Azure. Můžete to provést z Azure Portal nebo pomocí dodaných šablon.
+Pomocí následujících kroků povolte monitorování clusteru Azure Red Hat OpenShift nasazeného v Azure. Můžete to provést z portálu Azure nebo pomocí zadaných šablon.
 
 ### <a name="from-the-azure-portal"></a>Pomocí webu Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-2. V nabídce Azure Portal nebo na domovské stránce vyberte možnost **Azure monitor**. V části **přehledy** vyberte **kontejnery**.
+2. V nabídce Portál Azure nebo na domovské stránce vyberte **Azure Monitor**. V části **Přehledy** vyberte **Kontejnery**.
 
-3. Na stránce **monitor – kontejnery** vyberte **nemonitorované clustery**.
+3. Na stránce **Monitor - kontejnery** vyberte **Nemonitorované clustery**.
 
-4. V seznamu nemonitorovaných clusterů Najděte cluster v seznamu a klikněte na **Povolit**. Výsledky v seznamu můžete zjistit tak, že ve sloupci **typu clusteru**vyhledáte hodnotu **ARO** společnosti.
+4. V seznamu nesledovaných clusterů vyhledejte cluster v seznamu a klepněte na tlačítko **Povolit**. Výsledky v seznamu můžete identifikovat tak, že vyhledáte hodnotu **ARO** ve sloupci **TYP CLUSTERU**.
 
-5. Pokud máte existující pracovní prostor Log Analytics v rámci stejného předplatného jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .  
-    Seznam předchází výchozí pracovní prostor a umístění, do kterého se cluster nasazuje v rámci předplatného.
+5. Na stránce **Onboarding to Azure Monitor for containers,** pokud máte existující pracovní prostor Log Analytics ve stejném předplatném jako cluster, vyberte ho z rozevíracího seznamu.  
+    Seznam předem vybere výchozí pracovní prostor a umístění, do kterého je cluster nasazen v předplatném.
 
-    ![Povolit monitorování pro nemonitorované clustery](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
+    ![Povolit monitorování nesledovaných clusterů](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, ke kterému je nasazený cluster RedHat OpenShift.
+    >Pokud chcete vytvořit nový pracovní prostor Analýzy protokolů pro ukládání dat monitorování z clusteru, postupujte podle pokynů v [části Vytvoření pracovního prostoru Analýzy protokolů](../../azure-monitor/learn/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, do kterého je nasazen cluster RedHat OpenShift.
 
-Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster.
+Po povolení monitorování může trvat přibližně 15 minut, než budete moci zobrazit metriky stavu pro cluster.
 
-### <a name="enable-using-an-azure-resource-manager-template"></a>Povolení použití šablony Azure Resource Manager
+### <a name="enable-using-an-azure-resource-manager-template"></a>Povolení použití šablony Azure Resource Manageru
 
-Tato metoda obsahuje dvě šablony JSON. Jedna šablona určuje konfiguraci povolení monitorování a druhý obsahuje hodnoty parametrů, které nakonfigurujete, zadejte následující informace:
+Tato metoda zahrnuje dvě šablony JSON. Jedna šablona určuje konfiguraci pro povolení monitorování a druhá obsahuje hodnoty parametrů, které nakonfigurujete tak, aby určila následující:
 
 - ID prostředku clusteru Azure RedHat OpenShift.
 
-- Skupina prostředků, ve které je cluster nasazen
+- Skupina prostředků, ve které je cluster nasazen.
 
-- Pracovní prostor Log Analytics.
+- Pracovní prostor služby Log Analytics.
 
-Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
+Pokud nejste obeznámeni s konceptem nasazování prostředků pomocí šablony, přečtěte si:
 
 - [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
+- [Nasazení prostředků pomocí šablon Správce prostředků a nastavení příkazového uživatelského příkazu Azure](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.65 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete použít azure cli, musíte nejprve nainstalovat a použít příkazového příkazového příkazu místně. Musíte spouštět Azure CLI verze 2.0.65 nebo novější. Chcete-li identifikovat `az --version`verzi, spusťte aplikaci . Pokud potřebujete nainstalovat nebo upgradovat vázačitelné příkazy k Webu Azure, přečtěte si informace [o instalaci příkazového příkazového příkazu k azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní příkazového řádku, je třeba vytvořit pracovní prostor Log Analytics. Pokud chcete vytvořit pracovní prostor, můžete ho nastavit prostřednictvím [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+Pracovní prostor Log Analytics musí být vytvořen před povolením monitorování pomocí Azure PowerShell nebo CLI. Pokud chcete vytvořit pracovní prostor, můžete ho nastavit prostřednictvím [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), přes [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo na [webu Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
 
-1. Stáhněte si šablonu a soubor parametrů a aktualizujte svůj cluster pomocí doplňku monitorování pomocí následujících příkazů:
+1. Stáhněte si soubor šablony a parametrů a aktualizujte cluster pomocí monitorovacího doplňku pomocí následujících příkazů:
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
 
@@ -173,7 +173,7 @@ Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní 
     az login    
     ```
 
-    Pokud máte přístup k několika předplatným, spusťte `az account set -s {subscription ID}` nahrazující `{subscription ID}` s předplatným, které chcete použít.
+    Pokud máte přístup k více `az account set -s {subscription ID}` předplatných, spusťte nahrazení `{subscription ID}` předplatného, které chcete použít.
 
 3. Zadejte předplatné clusteru Azure RedHat OpenShift.
 
@@ -181,21 +181,21 @@ Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní 
     az account set --subscription "Subscription Name"  
     ```
 
-4. Pro identifikaci umístění clusteru a ID prostředku spusťte následující příkaz:
+4. K identifikaci umístění a ID prostředku clusteru spusťte následující příkaz:
 
     ```azurecli
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. Upravte soubor parametrů JSON **existingClusterParam. JSON** a aktualizujte hodnoty *araResourceId* a *araResoruceLocation*. Hodnota pro **workspaceResourceId** je úplné ID prostředku pracovního prostoru Log Analytics, který zahrnuje název pracovního prostoru.
+5. Upravte soubor parametru JSON **existingClusterParam.json** a aktualizujte hodnoty *araResourceId* a *araResoruceLocation*. Hodnota pro **pracovní prostorResourceId** je úplné ID prostředku pracovního prostoru Analýzy protokolů, který obsahuje název pracovního prostoru.
 
-6. Pokud ho chcete nasadit pomocí Azure CLI, spusťte následující příkazy:
+6. Chcete-li nasadit pomocí příkazového příkazu k řešení Azure, spusťte následující příkazy:
 
     ```azurecli
     az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json
     ```
 
-    Výstup se podobá následujícímu:
+    Výstup se podobá následující:
 
     ```output
     provisioningState       : Succeeded
@@ -203,6 +203,6 @@ Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru RedHat OpenShift a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+- Díky monitorování, které umožňuje shromažďovat využití stavu a prostředků vašeho clusteru RedHat OpenShift a úloh, které na nich běží, najdete informace o [tom, jak používat](container-insights-analyze.md) Azure Monitor pro kontejnery.
 
-- Informace o tom, jak zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, najdete v tématu [Postup zastavení monitorování clusteru Azure Red Hat OpenShift](container-insights-optout-openshift.md).
+- Informace o tom, jak zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, najdete v [tématu Jak zastavit monitorování clusteru Azure Red Hat OpenShift](container-insights-optout-openshift.md).

@@ -1,6 +1,6 @@
 ---
-title: Instalace rozhraní .NET v Azure Cloud Services rolích | Microsoft Docs
-description: Tento článek popisuje, jak ručně nainstalovat .NET Framework na webové role a role pracovních procesů cloudové služby.
+title: Instalace rozhraní .NET na role Cloudových služeb Azure | Dokumenty společnosti Microsoft
+description: Tento článek popisuje ruční instalaci rozhraní .NET Framework na webové a pracovní role cloudové služby
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -11,49 +11,49 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214720"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>Instalace rozhraní .NET pro Azure Cloud Services rolí
-Tento článek popisuje, jak nainstalovat verze .NET Framework, které nepřichází v hostovaném operačním systému Azure. .NET v hostovaném operačním systému můžete použít ke konfiguraci webových rolí a rolí pracovních procesů cloudové služby.
+# <a name="install-net-on-azure-cloud-services-roles"></a>Instalace rozhraní .NET na role Azure cloudových služeb
+Tento článek popisuje, jak nainstalovat verze rozhraní .NET Framework, které nejsou dodávány s hostama Azure OS. Pomocí rozhraní .NET v hostovaném ošetřovaném zařízení můžete nakonfigurovat webové a pracovní role cloudové služby.
 
-Můžete například nainstalovat .NET Framework 4.6.2 v hostovaném operačním systému řady 4, který nepochází z verze .NET Framework 4,6. (Řada hostovaných operačních systémů 5 se dodává s .NET Framework 4,6.) Nejnovější informace o vydáních hostovaného operačního systému Azure najdete v článku [novinky k vydání hostovaného operačního systému Azure](cloud-services-guestos-update-matrix.md). 
+Například můžete nainstalovat rozhraní .NET Framework 4.6.2 na rodině hostovaného operačního systému 4, který není dodáván s žádnou verzí rozhraní .NET Framework 4.6. (Rodina hostovaného operačního programu 5 přichází s rozhraním .NET Framework 4.6.) Nejnovější informace o verzích hostovaného operačního systému Azure najdete v [tématu verze vydání hosta operačního systému Azure](cloud-services-guestos-update-matrix.md). 
 
 >[!IMPORTANT]
->Sada Azure SDK 2,9 obsahuje omezení na nasazení .NET Framework 4,6 na řadě operačních systémů hostovaného operačního systému 4 nebo starší verze. Oprava omezení je k dispozici na [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) lokalitě.
+>Sada Azure SDK 2.9 obsahuje omezení nasazení rozhraní .NET Framework 4.6 v rodině hostovaného operačního serveru 4 nebo starší. Oprava omezení je k dispozici na webu [Microsoft Docs.](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)
 
-Pokud chcete nainstalovat .NET na webové a pracovní role, přidejte do projektu cloudové služby webový instalační program .NET. Spusťte instalační program jako součást úloh po spuštění role. 
+Chcete-li nainstalovat rozhraní .NET na webové a pracovní role, zahrňte do projektu cloudové služby instalační program .NET. Spusťte instalační program jako součást úloh spuštění role. 
 
 ## <a name="add-the-net-installer-to-your-project"></a>Přidání instalačního programu .NET do projektu
-Chcete-li stáhnout webový instalační program pro .NET Framework, vyberte verzi, kterou chcete nainstalovat:
+Chcete-li stáhnout webovou instalační službu pro rozhraní .NET Framework, zvolte verzi, kterou chcete nainstalovat:
 
-* [Webová instalační služba .NET Framework 4,8](https://dotnet.microsoft.com/download/thank-you/net48)
-* [Webová instalační služba .NET Framework 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [Webová instalační služba .NET Framework 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
+* [Webový instalační program rozhraní .NET Framework 4.8](https://dotnet.microsoft.com/download/thank-you/net48)
+* [Instalační program rozhraní .NET Framework 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [Instalační program rozhraní .NET Framework 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Přidání instalačního programu pro *webovou* roli:
-  1. V **Průzkumník řešení**v části **role** v projektu cloudové služby klikněte pravým tlačítkem na *webovou* roli a vyberte **Přidat** > **Nová složka**. Vytvořte složku s názvem **bin**.
-  2. Klikněte pravým tlačítkem na složku bin a vyberte **přidat** > **existující položku**. Vyberte instalační program .NET a přidejte ho do složky bin.
+  1. V **Průzkumníku řešení** **klikněte** v části Role v projektu cloudové služby pravým tlačítkem myši na *webovou* roli a vyberte **Přidat** > **novou složku**. Vytvořte složku s názvem **bin**.
+  2. Klepněte pravým tlačítkem myši na složku přihrádky a vyberte **přidat** > **existující položku**. Vyberte instalační program .NET a přidejte ho do složky přihrádky.
   
-Postup přidání instalačního programu pro roli *pracovního procesu* :
-* Klikněte pravým tlačítkem na roli *pracovního procesu* a vyberte **Přidat** > **existující položka**. Vyberte instalační program .NET a přidejte ho do role. 
+Přidání instalačního programu pro *roli pracovního procesu:*
+* Klikněte pravým tlačítkem myši na roli *pracovního procesu* a vyberte **přidat** > **existující položku**. Vyberte instalační program .NET a přidejte jej do role. 
 
-Když se soubory přidávají tímto způsobem do složky obsahu role, automaticky se přidají do balíčku cloudové služby. Soubory se pak nasadí do konzistentního umístění na virtuálním počítači. Tento postup opakujte pro každou webovou roli a roli pracovního procesu v cloudové službě, aby všechny role měly kopii instalačního programu.
+Když jsou soubory přidány tímto způsobem do složky obsahu role, automaticky se přidají do balíčku cloudových služeb. Soubory jsou pak nasazeny do konzistentního umístění ve virtuálním počítači. Tento postup opakujte pro každou roli webu a pracovního procesu v cloudové službě, aby všechny role měly kopii instalačního programu.
 
 > [!NOTE]
-> Do role cloudové služby byste měli nainstalovat .NET Framework 4.6.2, i když vaše aplikace cílí .NET Framework 4,6. Hostovaný operační systém zahrnuje aktualizaci znalostní báze [3098779](https://support.microsoft.com/kb/3098779) a [aktualizaci 3097997](https://support.microsoft.com/kb/3097997). Problémy se můžou vyskytnout, když spustíte aplikace .NET, pokud je na aktualizace znalostní báze nainstalovaná .NET Framework 4,6. Chcete-li se těmto problémům vyhnout, nainstalujte .NET Framework 4.6.2 místo verze 4,6. Další informace najdete v [článku znalostní báze Knowledge Base 3118750](https://support.microsoft.com/kb/3118750) a [4340191](https://support.microsoft.com/kb/4340191).
+> Rozhraní .NET Framework 4.6.2 byste měli nainstalovat do role cloudové služby i v případě, že vaše aplikace cílí na rozhraní .NET Framework 4.6. Hostovaný operační systém obsahuje aktualizaci znalostní báze [3098779](https://support.microsoft.com/kb/3098779) a [aktualizaci 3097997](https://support.microsoft.com/kb/3097997). Pokud je rozhraní .NET Framework 4.6 nainstalováno nad aktualizacemi znalostní báze Knowledge Base, může dojít k problémům při spuštění aplikací .NET. Chcete-li se těmto problémům vyhnout, nainstalujte rozhraní .NET Framework 4.6.2 spíše než verzi 4.6. Další informace naleznete v [článku 3118750](https://support.microsoft.com/kb/3118750) a [4340191](https://support.microsoft.com/kb/4340191)znalostní báze Knowledge Base .
 > 
 > 
 
-![Obsah role s instalačními soubory][1]
+![Obsah role se soubory instalačního programu][1]
 
-## <a name="define-startup-tasks-for-your-roles"></a>Definování úloh po spuštění pro vaše role
-Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Instalace .NET Framework jako součást úlohy po spuštění zajistí, že se rozhraní nainstaluje před spuštěním libovolného kódu aplikace. Další informace o úlohách po spuštění najdete v tématu [spuštění úloh po spuštění v Azure](cloud-services-startup-tasks.md). 
+## <a name="define-startup-tasks-for-your-roles"></a>Definování úloh při spuštění pro role
+Úlohy spuštění můžete použít k provádění operací před spuštěním role. Instalace rozhraní .NET Framework jako součást úlohy při spuštění zajišťuje, že je rozhraní nainstalováno před spuštěním kódu aplikace. Další informace o úlohách při spuštění najdete v tématu [Spouštění úloh při spuštění v Azure](cloud-services-startup-tasks.md). 
 
-1. Přidejte následující obsah do souboru ServiceDefinition. csdef pod uzlem **webrole** nebo **role pracovního procesu** pro všechny role:
+1. Přidejte následující obsah do souboru ServiceDefinition.csdef v uzlu **WebRole** nebo **WorkerRole** pro všechny role:
    
     ```xml
     <LocalResources>
@@ -73,19 +73,19 @@ Když se soubory přidávají tímto způsobem do složky obsahu role, automatic
     </Startup>
     ```
    
-    Předchozí konfigurace spustí příkaz konzoly `install.cmd` s oprávněními správce pro instalaci .NET Framework. Konfigurace také vytvoří element **localStorage** s názvem **NETFXInstall**. Spouštěcí skript nastaví dočasnou složku pro použití tohoto místního prostředku úložiště. 
+    Předchozí konfigurace spustí příkaz `install.cmd` konzoly s oprávněními správce k instalaci rozhraní .NET Framework. Konfigurace také vytvoří prvek **LocalStorage** s názvem **NETFXInstall**. Spouštěcí skript nastaví dočasnou složku tak, aby používala tento prostředek místního úložiště. 
     
     > [!IMPORTANT]
-    > Chcete-li zajistit správnou instalaci rozhraní, nastavte velikost tohoto prostředku na alespoň 1 024 MB.
+    > Chcete-li zajistit správnou instalaci rozhraní, nastavte velikost tohoto prostředku alespoň 1 024 MB.
     
-    Další informace o úlohách po spuštění najdete v tématu [běžné úlohy při spuštění služby Azure Cloud Services](cloud-services-startup-tasks-common.md).
+    Další informace o úlohách při spuštění najdete [v tématu Běžné úlohy spuštění cloudových služeb Azure](cloud-services-startup-tasks-common.md).
 
-2. Vytvořte soubor s názvem **install. cmd** a přidejte do souboru následující instalační skript.
+2. Vytvořte soubor s názvem **install.cmd** a přidejte do něj následující instalační skript.
 
-   Skript zkontroluje, zda je v počítači již nainstalována zadaná verze .NET Framework pomocí dotazu do registru. Pokud není nainstalovaná verze .NET Framework, otevře se webová instalační služba .NET Framework. Aby bylo možné řešit případné problémy, skript zaznamená všechny aktivity do souboru startuptasklog-(aktuální datum a čas). txt, který je uložený v **InstallLogs** místním úložišti.
+   Skript zkontroluje, zda je zadaná verze rozhraní .NET Framework již v počítači nainstalována dotazováním na registr. Pokud není nainstalována verze rozhraní .NET Framework, bude otevřena webová instalační služba rozhraní .NET Framework. Chcete-li pomoci vyřešit případné problémy, skript protokoluje veškerou aktivitu do souboru startuptasklog-(aktuální datum a čas).txt, který je uložen v místním úložišti **InstallLogs.**
    
    > [!IMPORTANT]
-   > Pomocí základního textového editoru, jako je Poznámkový blok systému Windows, vytvořte soubor Install. cmd. Pokud používáte sadu Visual Studio k vytvoření textového souboru a změnu rozšíření na. cmd, soubor může stále obsahovat značku pořadí bajtů UTF-8. Tato značka může způsobit chybu při spuštění prvního řádku skriptu. Chcete-li se této chybě vyhnout, udělejte první řádek příkazu Script a příkazu REM, který může být vynechán zpracováním pořadí bajtů. 
+   > K vytvoření souboru install.cmd použijte základní textový editor, jako je Windows Notepad. Pokud použijete Visual Studio k vytvoření textového souboru a změnit příponu na CMD, soubor může stále obsahovat značku pořadí bajtů UTF-8. Tato značka může způsobit chybu při spuštění prvního řádku skriptu. Chcete-li se této chybě vyhnout, vytvořte první řádek skriptu příkazEM REM, který lze přeskočit zpracováním pořadí bajtů. 
    > 
    >
    
@@ -197,17 +197,17 @@ Když se soubory přidávají tímto způsobem do složky obsahu role, automatic
    EXIT /B 0
    ```
 
-3. Pomocí příkazu **přidat** > **existující položku** v **Průzkumník řešení** přidejte do každé role soubor Install. cmd, jak je popsáno výše v tomto tématu. 
+3. Přidejte soubor install.cmd do každé role pomocí **funkce Přidat** > **existující položku** v **Průzkumníku řešení,** jak je popsáno výše v tomto tématu. 
 
-    Po dokončení tohoto kroku musí mít všechny role soubor Instalační služby .NET a soubor Install. cmd.
+    Po dokončení tohoto kroku by všechny role měly mít instalační soubor .NET a soubor install.cmd.
 
    ![Obsah role se všemi soubory][2]
 
-## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Konfigurace diagnostiky pro přenos protokolů spuštění do úložiště objektů BLOB
-Pro zjednodušení potíží s instalací můžete nakonfigurovat Azure Diagnostics pro přenos všech souborů protokolu generovaných spouštěcím skriptem nebo instalačním programem .NET do úložiště objektů BLOB v Azure. Pomocí tohoto přístupu můžete zobrazit protokoly stažením souborů protokolu z úložiště objektů blob, nikoli pomocí vzdálené plochy do role.
+## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Konfigurace diagnostiky pro přenos spouštěcích protokolů do úložiště objektů Blob
+Chcete-li zjednodušit problémy s instalací, můžete nakonfigurovat Diagnostika Azure tak, aby přenášela všechny soubory protokolu generované spouštěcím skriptem nebo instalačním programem .NET do úložiště objektů Blob Azure. Pomocí tohoto přístupu můžete zobrazit protokoly stažením souborů protokolu z úložiště objektů Blob, nikoli nutností vzdálené plochy do role.
 
 
-Chcete-li konfigurovat diagnostiku, otevřete soubor Diagnostics. wadcfgx a přidejte do uzlu **adresáře** následující obsah: 
+Chcete-li nakonfigurovat diagnostiku, otevřete soubor diagnostics.wadcfgx a do uzlu **Adresáře** přidejte následující obsah: 
 
 ```xml 
 <DataSources>
@@ -217,15 +217,15 @@ Chcete-li konfigurovat diagnostiku, otevřete soubor Diagnostics. wadcfgx a při
 </DataSources>
 ```
 
-Tento kód XML provede konfiguraci diagnostiky pro přenos souborů v adresáři protokolu v prostředku **NETFXInstall** do účtu úložiště diagnostiky v kontejneru objektů BLOB **netfx-Install** .
+Tento jazyk XML konfiguruje diagnostiku pro přenos souborů v adresáři protokolu v prostředku **NETFXInstall** do účtu úložiště Diagnostika v kontejneru objektů blob **instalace netfx.**
 
 ## <a name="deploy-your-cloud-service"></a>Nasazení cloudové služby
-Když nasadíte cloudovou službu, úlohy po spuštění nainstalují .NET Framework, pokud ještě není nainstalovaná. Role cloudové služby jsou po instalaci rozhraní v *zaneprázdněném* stavu. Pokud instalace rozhraní vyžaduje restart, můžou se taky restartovat role služby. 
+Při nasazení cloudové služby nainstalují úlohy spuštění rozhraní .NET Framework, pokud ještě není nainstalována. Role cloudové služby jsou v *zaneprázdněném* stavu, zatímco se provádí instalace architektury. Pokud instalace rozhraní vyžaduje restartování, role služby může také restartovat. 
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
-* [Instalace .NET Framework][Installing the .NET Framework]
-* [Určit, které verze .NET Framework jsou nainstalovány][How to: Determine Which .NET Framework Versions Are Installed]
-* [Řešení potíží s .NET Framework instalací][Troubleshooting .NET Framework Installations]
+## <a name="additional-resources"></a>Další zdroje
+* [Instalace rozhraní .NET Framework][Installing the .NET Framework]
+* [Určení nainstalovaných verzí rozhraní .NET Framework][How to: Determine Which .NET Framework Versions Are Installed]
+* [Poradce při potížích s instalacemi rozhraní .NET Framework][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

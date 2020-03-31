@@ -26,6 +26,8 @@
   items:
     - name: Rozhodování o architektuře nasazení
       href: deployment-architecture.md
+    - name: Řešení potíží
+      href: troubleshoot.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

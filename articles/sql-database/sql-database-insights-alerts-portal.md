@@ -1,6 +1,6 @@
 ---
-title: Nastavení výstrah a oznámení (Azure Portal)
-description: Pomocí Azure Portal můžete vytvářet SQL Database výstrahy, které můžou aktivovat oznámení nebo automatizaci při splnění zadaných podmínek.
+title: Nastavení upozornění a oznámení (portál Azure)
+description: Na webu Azure Portal můžete vytvářet výstrahy databáze SQL, které můžou aktivovat oznámení nebo automatizaci, když jsou splněny zadané podmínky.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,63 +12,63 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79209509"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Vytváření upozornění pro Azure SQL Database a databáze Azure synapse Analytics pomocí Azure Portal
+# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Vytváření výstrah pro databáze Azure SQL Database a Azure Synapse Analytics pomocí portálu Azure
 
 ## <a name="overview"></a>Přehled
 
-V tomto článku se dozvíte, jak nastavit výstrahy pro databáze s jedním, sdruženým a datovým skladem v Azure SQL Database a Azure synapse Analytics (dřív Azure SQL Data Warehouse) pomocí Azure Portal. Když některá metrika (například velikost databáze nebo využití procesoru) dosáhne prahové hodnoty, můžou vám výstrahy poslat e-mail nebo zavolat webový Hook. Tento článek také poskytuje osvědčené postupy pro nastavení dob upozornění.
+Tento článek ukazuje, jak nastavit výstrahy pro jedno, sdružené databáze a databáze datového skladu v Azure SQL Database a Azure Synapse Analytics (dříve Azure SQL Data Warehouse) pomocí portálu Azure. Výstrahy vám mohou poslat e-mail nebo zavolat webový háček, když některé metriky (například velikost databáze nebo využití procesoru) dosáhnou prahové hodnoty. Tento článek také obsahuje osvědčené postupy pro nastavení období výstrah.
 
 > [!IMPORTANT]
-> Tato funkce není zatím k dispozici ve spravované instanci. Jako alternativu můžete použít agenta SQL k posílání e-mailových upozornění pro některé metriky na základě [zobrazení dynamické správy](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+> Tato funkce ještě není dostupná ve spravované instanci. Jako alternativu můžete použít SQL Agent k odesílání e-mailových upozornění pro některé metriky založené na [zobrazení dynamické správy](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
-Můžete obdržet upozornění na základě metrik monitorování pro události nebo služby Azure.
+Můžete obdržet upozornění na základě metrik monitorování nebo událostí na vašich službách Azure.
 
-* **Hodnoty metrik** – výstraha se aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu, kterou přiřadíte v obou směrech. To znamená, že se aktivuje při prvním splnění podmínky a následně v případě, že se už podmínka nesplní.
-* **Události protokolu aktivit** – výstraha se může aktivovat *každou* událost, nebo jenom v případě, že dojde k určitému počtu událostí.
+* **Hodnoty metriky** – výstraha se aktivuje, když hodnota zadané metriky překročí prahovou hodnotu, kterou přiřadíte v obou směrech. To znamená, že aktivuje jak při prvním splnění podmínky, tak poté, když tato podmínka již není splněna.
+* **Události protokolu aktivit** – výstraha může aktivovat na *každé* události, nebo pouze v případě, že dojde k určitému počtu událostí.
 
-Můžete nakonfigurovat výstrahu, která při triggeru provede následující akce:
+Výstrahu můžete nakonfigurovat tak, aby při aktivaci spustila následující akce:
 
-* Odesílání e-mailových oznámení správci služeb a spolusprávcům
+* Odeslání e-mailových oznámení správci služby a spolusprávcům
 * Odešlete e-mail na další e-maily, které zadáte.
 * Volání webhooku
 
-Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí
+Můžete konfigurovat a získat informace o pravidlech výstrah pomocí
 
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Portál Azure](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
 * [rozhraní příkazového řádku (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě s Azure Portal
+## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla výstrahy pro metriku pomocí portálu Azure
 
-1. Na [portálu](https://portal.azure.com/)vyhledejte prostředek, který chcete monitorovat, a vyberte ho.
-2. V části monitorování vyberte **výstrahy** . Text a ikona se mohou mírně lišit pro různé prostředky.  
+1. Na [portálu](https://portal.azure.com/)vyhledejte zdroj, který vás zajímá monitorování, a vyberte jej.
+2. V části Monitorování vyberte **Výstrahy.** Text a ikona se mohou u různých zdrojů mírně lišit.  
 
    ![Monitorování](media/sql-database-insights-alerts-portal/Alerts.png)
   
-3. Kliknutím na tlačítko **nové pravidlo výstrahy** otevřete stránku **vytvořit pravidlo** .
-  ![vytvořit pravidlo](media/sql-database-insights-alerts-portal/create-rule.png)
+3. Výběrem tlačítka **Nové pravidlo výstrahy** otevřete stránku **Vytvořit pravidlo.**
+  ![Vytvořit pravidlo](media/sql-database-insights-alerts-portal/create-rule.png)
 
 4. V části **Podmínka** klikněte na **Přidat**.
-  ![definování podmínky](media/sql-database-insights-alerts-portal/create-rule.png)
+  ![Definovat podmínku](media/sql-database-insights-alerts-portal/create-rule.png)
 5. Na stránce **Konfigurovat logiku signálu** vyberte signál.
-  ![vybrat](media/sql-database-insights-alerts-portal/select-signal.png)signálu.
-6. Po výběru signálu, jako je **Procento procesoru**, se zobrazí stránka **Konfigurovat logiku signálu** .
-  ![nakonfigurovat logiku signálu](media/sql-database-insights-alerts-portal/configure-signal-logic.png)
-7. Na této stránce nakonfigurujte tento typ prahové hodnoty, operátor, typ agregace, prahovou hodnotu, členitost agregace a frekvenci vyhodnocení. Potom klikněte na **Done** (Hotovo).
-8. V poli **vytvořit pravidlo**vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Skupina akcí umožňuje definovat akci, která má být provedena při výskytu výstrahy.
-  ![definovat skupinu akcí](media/sql-database-insights-alerts-portal/action-group.png)
+  ![Vyberte](media/sql-database-insights-alerts-portal/select-signal.png)signál .
+6. Po výběru signálu, například **procenta procesoru**, se zobrazí stránka **Logika signálu Konfigurace.**
+  ![Konfigurace logiky signálů](media/sql-database-insights-alerts-portal/configure-signal-logic.png)
+7. Na této stránce nakonfigurujte tento typ prahové hodnoty, operátor, typ agregace, prahovou hodnotu, rozlišovací schopnost agregace a četnost hodnocení. Potom klepněte na tlačítko **Hotovo**.
+8. V **pravidle Vytvořit**vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Skupina akcí umožňuje definovat akci, která má být provedena, když dojde k výstražné podmínce.
+  ![Definovat skupinu akcí](media/sql-database-insights-alerts-portal/action-group.png)
 
-9. Definujte název pravidla, zadejte volitelný popis, zvolte úroveň závažnosti pro pravidlo, zvolte, jestli se má pravidlo Povolit při vytváření pravidla, a pak klikněte na **vytvořit výstrahu pravidla** a vytvořte výstrahu pravidla metriky.
+9. Definujte název pravidla, zadejte volitelný popis, zvolte úroveň závažnosti pravidla, zvolte, zda chcete povolit pravidlo při vytváření pravidla, a pak klikněte na **Vytvořit výstrahu pravidla** a vytvořte výstrahu pravidla metriky.
 
-Během 10 minut je výstraha aktivní a triggery, jak je popsáno výše.
+Během 10 minut je výstraha aktivní a aktivuje se, jak bylo popsáno dříve.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/platform/alerts-webhooks.md).
+* Další informace o [konfiguraci webových háků v výstrahách](../azure-monitor/platform/alerts-webhooks.md).

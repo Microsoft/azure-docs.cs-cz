@@ -8,6 +8,10 @@
   items:
     - name: Vytvoření opevněného hostitelského počítače z nastavení virtuálního počítače
       href: quickstart-host-portal.md
+- name: Koncepty
+  items:
+    - name: Práce na dálku
+      href: work-remotely-support.md
 - name: Návody
   items:
     - name: Vytvoření hostitele typu bašta
@@ -16,6 +20,8 @@
           href: bastion-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md
+        - name: Azure CLI
+          href: create-host-cli.md
     - name: Připojení k virtuálnímu počítači
       items:
         - name: SSH (Linux)
@@ -40,6 +46,14 @@
       href: session-monitoring.md
     - name: Řešení potíží
       href: troubleshoot.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: REST
+      href: /rest/api/virtualnetwork/bastionhosts
+    - name: Azure CLI
+      href: /cli/azure/network/bastion
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy ke službě Bastion

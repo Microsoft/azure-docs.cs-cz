@@ -1,6 +1,6 @@
 ---
-title: Dělení dat v Azure Cosmos DB Gremlin API
-description: Zjistěte, jak můžete graf oddílů ve službě Azure Cosmos DB. Tento článek také popisuje požadavky a osvědčené postupy pro dělené grafu.
+title: Dělení dat v rozhraní AZURE Cosmos DB Gremlin API
+description: Zjistěte, jak můžete použít rozdělený graf v Azure Cosmos DB. Tento článek také popisuje požadavky a osvědčené postupy pro dělený graf.
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -9,56 +9,56 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623370"
 ---
-# <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití dělené grafu ve službě Azure Cosmos DB
+# <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití děleného grafu ve službě Azure Cosmos DB
 
-Jednou z klíčových funkcí rozhraní Gremlin API ve službě Azure Cosmos DB je možnost pro zpracování rozsáhlých grafů prostřednictvím horizontální škálování. Kontejnery můžete nezávisle škálovat z hlediska úložiště a propustnost. Vytvoření kontejnerů ve službě Azure Cosmos DB, který je možné automaticky škálovat pro ukládání dat grafu. Data se automaticky vyrovnávají podle zadaného **klíče oddílu**.
+Jednou z klíčových funkcí rozhraní Gremlin API v Azure Cosmos DB je schopnost zpracovávat rozsáhlé grafy prostřednictvím horizontálníškálování. Kontejnery lze škálovat nezávisle z hlediska úložiště a propustnost. Můžete vytvořit kontejnery v Azure Cosmos DB, které lze automaticky škálovat pro ukládání dat grafu. Data jsou automaticky vyvážena na základě zadaného **klíče oddílu**.
 
-**Dělení je vyžadováno** , pokud se očekává, že velikost kontejneru ukládá více než 20 GB nebo pokud chcete přidělit více než 10 000 jednotek žádostí za sekundu (ru). Stejné obecné principy [mechanismu dělení Azure Cosmos DB](partition-data.md) platí pro několik optimalizací specifických pro graf, které jsou popsané níže.
+**Dělení je vyžadováno,** pokud se očekává, že kontejner uloží více než 20 GB nebo pokud chcete přidělit více než 10 000 jednotek požadavků za sekundu (RU). Stejné obecné zásady z [mechanismu oddílů Azure Cosmos DB](partition-data.md) platí s několika optimalizacemi specifickými pro graf popsaných níže.
 
-![Dělení grafů.](./media/graph-partitioning/graph-partitioning.png)
+![Dělení grafu.](./media/graph-partitioning/graph-partitioning.png)
 
-## <a name="graph-partitioning-mechanism"></a>Mechanizmus dělení grafů
+## <a name="graph-partitioning-mechanism"></a>Mechanismus dělení grafů
 
-Následující pokyny popisují, jak strategie dělení v Azure Cosmos DB funguje:
+Následující pokyny popisují, jak funguje strategie dělení v Azure Cosmos DB:
 
-- **Vrcholy i hrany se ukládají jako dokumenty JSON**.
+- **Oba vrcholy a hrany jsou uloženy jako dokumenty JSON**.
 
-- **Vrcholy vyžadují klíč oddílu**. Tento klíč určí, do kterého oddílu se uloží vrchol pomocí algoritmu hash. Název vlastnosti klíče oddílu je definován při vytváření nového kontejneru a má formát: `/partitioning-key-name`.
+- **Vrcholy vyžadují klíč oddílu**. Tento klíč určí, ve kterém oddílu bude vrchol uložen prostřednictvím algoritmu hash. Název vlastnosti klíče oddílu je definován při vytváření `/partitioning-key-name`nového kontejneru a má formát: .
 
-- **Okraje budou uloženy spolu s jejich zdrojovými vrcholy**. Jinými slovy pro každý vrchol svůj klíč oddílu definuje kde se ukládají společně s jeho odchozí okraje. Tato optimalizace se zabrání v dotazech mezi oddíly při použití `out()` mohutnosti v dotazech grafu.
+- **Hrany budou uloženy s jejich zdrojovým vrcholem**. Jinými slovy, pro každý vrchol jeho klíč oddílu definuje, kde jsou uloženy spolu s jeho odchozí hrany. Tato optimalizace se provádí, aby se `out()` zabránilo dotazy mezi oddíly při použití mohutnost v grafech.
 
-- **Okraje obsahují odkazy na vrcholy, na které odkazují**. Všechny hrany jsou uloženy s klíči oddílu a identifikátory vrcholů, na které odkazují. Tento výpočet zpřístupňuje všechny `out()` směrové dotazy vždy oborový dotaz s vymezeným oborem, nikoli neslepý dotaz na více oddílů. 
+- **Hrany obsahují odkazy na vrcholy, na které odkazují**. Všechny hrany jsou uloženy s klíči oddílu a ID vrcholů, na které směřují. Tento výpočetní provede `out()` všechny směrové dotazy vždy rozdělený dotaz s vymezeným oborem a nikoli slepý dotaz mezi oddíly. 
 
-- **Dotazy grafů musí zadat klíč oddílu**. Pokud chcete využívat všech výhod horizontální dělení ve službě Azure Cosmos DB, musí být zadaný klíč oddílu, když je vybraný jeden vrchol, kdykoli to bude možné. Tady jsou dotazy pro výběr jednoho nebo více vrcholy v dělené grafu:
+- **Dotazy na graf je třeba zadat klíč oddílu**. Chcete-li plně využít horizontální dělení v Azure Cosmos DB, klíč oddílu by měl být určen při výběru jednoho vrcholu, kdykoli je to možné. Následují dotazy pro výběr jednoho nebo více vrcholů v dělený graf:
 
-    - `/id` a `/label` se nepodporují jako klíče oddílů pro kontejner v rozhraní Gremlin API.
+    - `/id`a `/label` nejsou podporovány jako klíče oddílu pro kontejner v rozhraní GREMLIN API.
 
 
-    - Vyberte vrchol podle ID a pak **pomocí `.has()` kroku zadejte vlastnost klíče oddílu**: 
+    - Výběr vrcholu podle ID a **potom `.has()` pomocí kroku určit vlastnost klíče oddílu**: 
     
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
     
-    - Výběr vrcholu **zadáním řazené kolekce členů, včetně hodnoty klíče oddílu a ID**: 
+    - Výběr vrcholu **zadáním řazené kolekce členů včetně hodnoty klíče oddílu a ID**: 
     
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
         
-    - Zadání **pole n-tice hodnot klíčů oddílu a ID**:
+    - Určení **pole řazených kolekcí členů hodnot klíče oddílu a ID**klíče oddílu :
     
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
         
-    - Výběr sady vrcholů s jejich ID a **Určení seznamu hodnot klíčů oddílu**: 
+    - Výběr sady vrcholů s jejich ID a **určení seznamu hodnot klíče oddílu**: 
     
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
@@ -70,22 +70,22 @@ Následující pokyny popisují, jak strategie dělení v Azure Cosmos DB funguj
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
         ```
 
-## <a name="best-practices-when-using-a-partitioned-graph"></a>Osvědčené postupy při používání oddílů grafu
+## <a name="best-practices-when-using-a-partitioned-graph"></a>Doporučené postupy při použití rozděleného grafu
 
-K zajištění výkonu a škálovatelnosti při používání oddílů grafů s neomezené kontejnery pomocí následujících pokynů:
+Pomocí následujících pokynů můžete zajistit výkon a škálovatelnost při použití dělených grafů s neomezeným počtem kontejnerů:
 
-- **Při dotazování vrcholu vždy zadat hodnotu klíče oddílu**. Načítání vrcholu ze známých oddílu je způsob, jak dosáhnout výkonu. Všechny následné operace souseda budou vždy vymezeny na oddíl, protože hrany obsahují ID odkazu a klíč oddílu na své cílové vrcholy.
+- **Při dotazování na vrchol vždy zadejte hodnotu klíče oddílu**. Získání vrcholu ze známého oddílu je způsob, jak dosáhnout výkonu. Všechny následné operace sousedství budou vždy vymezeny na oddíl, protože hrany obsahují ID odkazu a klíč oddílu k cílovým vrcholům.
 
-- **Při dotazování na hrany používejte odchozí směr, kdykoli je to možné**. Jak je uvedeno výše, okraje ukládají s jejich zdroj vrcholy v odchozím směru. Při dat a dotazy jsou navržené v tomto modelu v paměti jsou proto minimalizovány pravděpodobnost nutnosti uchýlit se k dotazy napříč oddíly. V opačném případě bude `in()` dotaz vždy nákladným dotazem na více instancí.
+- **Odchozí směr použijte při dotazování hran, kdykoli je to možné**. Jak bylo uvedeno výše, hrany jsou uloženy s jejich zdrojovými vrcholy v odchozím směru. Takže šance na uchýlení se k dotazům mezi oddíly jsou minimalizovány při data a dotazy jsou navrženy s ohledem na tento vzor. Naopak dotaz `in()` bude vždy nákladný množení dotaz.
 
-- **Vyberte klíč oddílu, který bude rovnoměrně distribuovat data mezi oddíly**. Toto rozhodnutí silně závisí na datovém modelu řešení. Přečtěte si další informace o vytvoření vhodného klíče oddílu v tématu [dělení a škálování v Azure Cosmos DB](partition-data.md).
+- **Zvolte klíč oddílu, který bude rovnoměrně distribuovat data mezi oddíly**. Toto rozhodnutí do značné míry závisí na datovém modelu řešení. Přečtěte si další informace o vytvoření vhodného klíče oddílu v [oddílování a škálování v Azure Cosmos DB](partition-data.md).
 
-- **Optimalizuje dotazy pro získání dat v rámci hranic oddílu**. Optimální strategie dělení by mělo být zarovnáno na dotazování vzory. Dotazy, které získávají data z jednoho oddílu poskytují nejlepší možný výkon.
+- **Optimalizujte dotazy pro získání dat v rámci hranic oddílu**. Optimální dělení strategie by být zarovnány s dotazování vzory. Dotazy, které získávají data z jednoho oddílu poskytují nejlepší možný výkon.
 
 ## <a name="next-steps"></a>Další kroky
 
-Potom můžete pokračovat v následujících článcích:
+Dále můžete pokračovat v čtení následujících článků:
 
-* Přečtěte si o [oddílu a škálování v Azure Cosmos DB](partition-data.md).
-* Přečtěte si o [podpoře Gremlin v rozhraní Gremlin API](gremlin-support.md).
-* Přečtěte si o [úvodu k rozhraní Gremlin API](graph-introduction.md).
+* Další informace o [oddílu a škálování v Azure Cosmos DB](partition-data.md).
+* Další informace o [podpoře Gremlin v Gremlin API](gremlin-support.md).
+* Další informace o [úvodu do gremlin API](graph-introduction.md).

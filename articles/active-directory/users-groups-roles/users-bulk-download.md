@@ -1,6 +1,6 @@
 ---
-title: Stažení seznamu uživatelů (Preview) na portálu Azure Active Directory | Microsoft Docs
-description: Hromadné stažení záznamů uživatelů v centru pro správu Azure v Azure Active Directory.
+title: Stažení seznamu uživatelů (preview) na portálu Azure Active Directory | Dokumenty společnosti Microsoft
+description: V Centru pro správu Azure ve Službě Azure Active Directory si hromadně stahujte záznamy uživatelů.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,52 +14,52 @@ ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063828"
 ---
-# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Stažení seznamu uživatelů (Preview) na portálu Azure Active Directory
+# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Stažení seznamu uživatelů (preview) na portálu Azure Active Directory
 
-Azure Active Directory (Azure AD) podporuje operace hromadného importu uživatelů (Create).
+Azure Active Directory (Azure AD) podporuje operace hromadného importu (vytvoření) uživatelů.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Pokud si chcete stáhnout seznam uživatelů z centra pro správu Azure AD, musíte být přihlášeni pomocí uživatele, který je přiřazený k jedné nebo více rolím Správce na úrovni organizace ve službě Azure AD. Pozvání hostů a vývojář aplikací se nepovažují za role správců.
+Chcete-li stáhnout seznam uživatelů z Centra pro správu Azure AD, musíte být přihlášeni s uživatelem přiřazeným k jedné nebo více rolím správce na úrovni organizace ve službě Azure AD. Pozvaní hosté a vývojářaplikací nejsou považovány za role správce.
 
 ## <a name="to-download-a-list-of-users"></a>Stažení seznamu uživatelů
 
-1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu správce uživatele v organizaci.
-2. Přejděte na Azure Active Directory > uživatelé. Pak vyberte uživatele, které chcete zahrnout do stahování, a to tak, že zaškrtnete políčko v levém sloupci vedle každého uživatele. Poznámka: v současné době neexistuje žádný způsob, jak vybrat všechny uživatele k exportu. Každé z nich musí být vybráno jednotlivě.
-3. V Azure AD vyberte **uživatelé** > **Stáhnout uživatele**.
-4. Na stránce **Stáhnout uživatele** vyberte možnost **Spustit** , pokud chcete zobrazit soubor CSV s výpisem vlastností profilu uživatele. Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s výsledky hromadné operace. Soubor obsahuje důvod každé chyby.
+1. [Přihlaste se ke své organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu správce uživatele v organizaci.
+2. Přejděte do služby Azure Active Directory > uživatelé. Poté vyberte uživatele, které chcete zahrnout do stahování, zaškrtnutím políčka v levém sloupci vedle každého uživatele. Poznámka: V tuto chvíli neexistuje žádný způsob, jak vybrat všechny uživatele pro export. Každý z nich musí být vybrán individuálně.
+3. Ve službě Azure AD vyberte **uživatelé** > **stáhnout uživatele**.
+4. Na stránce **Stáhnout uživatele** vyberte **Možnost Start,** chcete-li získat vlastnosti profilu uživatele se seznamem souborů CSV. Pokud dojde k chybám, můžete soubor výsledků stáhnout a zobrazit na stránce Výsledky hromadné operace. Soubor obsahuje důvod každé chyby.
 
-   ![Vyberte, kde chcete seznam uživatelů, které chcete stáhnout.](./media/users-bulk-download/bulk-download.png)
+   ![Vyberte, kde chcete seznam stáhnout uživatele.](./media/users-bulk-download/bulk-download.png)
 
    Soubor ke stažení bude obsahovat filtrovaný seznam uživatelů.
 
-   Jsou zahrnuty následující atributy uživatele:
+   Jsou zahrnuty následující uživatelské atributy:
 
    - userPrincipalName (Hlavní název uživatele)
    - displayName
-   - Příjmení
-   - e-mailu
+   - surname
+   - pošta
    - givenName
-   - ID objektu
+   - Objectid
    - userType
-   - pracovní funkce
+   - název úlohy
    - Oddělení
-   - accountEnabled
-   - usageLocation
-   - streetAddress
+   - účetPovolený
+   - usageUmístění
+   - Streetaddress
    - state
-   - krajin
+   - country
    - physicalDeliveryOfficeName
    - city
-   - PSČ
-   - telephoneNumber
-   - Mobilní zařízení
+   - Postalcode
+   - phoneČíslo
+   - mobil
    - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber
    - authenticationEmail
@@ -70,13 +70,13 @@ Pokud si chcete stáhnout seznam uživatelů z centra pro správu Azure AD, mus�
 
 ## <a name="check-status"></a>Zkontrolování stavu
 
-Stav vašich nevyřízených hromadných požadavků můžete zobrazit na stránce **výsledky hromadných operací (Preview)** .
+Stav nevyřízených hromadných požadavků můžete zobrazit na stránce **Výsledky hromadné operace (preview).**
 
-   ![Na stránce výsledků hromadných operací ověřte stav nahrávání.](./media/users-bulk-download/bulk-center.png)
+   ![Kontrola stavu nahrávání na stránce Výsledky hromadných operací](./media/users-bulk-download/bulk-center.png)
 
-## <a name="bulk-download-service-limits"></a>Omezení služby hromadného stahování
+## <a name="bulk-download-service-limits"></a>Limity služby hromadného stahování
 
-Každá Hromadná aktivita pro vytvoření seznamu uživatelů může běžet až po dobu jedné hodiny. To umožňuje vytvoření a stažení seznamu minimálně 500 000 uživatelů.
+Každá hromadná aktivita pro vytvoření seznamu uživatelů může běžet až jednu hodinu. To umožňuje vytvoření a stažení seznamu nejméně 500 000 uživatelů.
 
 ## <a name="next-steps"></a>Další kroky
 

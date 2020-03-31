@@ -1,67 +1,67 @@
 ---
-title: Typy funkcí v Azure Durable Functions
-description: Přečtěte si o typech funkcí a rolí, které podporují komunikaci typu Function-to-Function v Durable Functions orchestrace v Azure Functions.
+title: Typy funkcí v azure durable functions
+description: Seznamte se s typy funkcí a rolí, které podporují komunikaci mezi funkcemi v orchestraci trvalých funkcí v Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277879"
 ---
-# <a name="durable-functions-types-and-features"></a>Durable Functions typy a funkce
+# <a name="durable-functions-types-and-features"></a>Odolné typy a funkce funkcí
 
-Durable Functions je rozšíření [Azure Functions](../functions-overview.md). Durable Functions lze použít pro stavovou orchestraci provádění funkce. Trvalá aplikace Function App je řešení, které se skládá z různých Azure Functions. Funkce mohou hrát různé role v rámci trvalé orchestrace funkcí. 
+Trvalé funkce je rozšíření [funkcí Azure](../functions-overview.md). Trvanlivé funkce můžete použít pro stavové orchestraci spuštění funkce. Aplikace s trvalými funkcemi je řešení, které se skládá z různých funkcí Azure. Funkce mohou hrát různé role v orchestraci trvalé funkce. 
 
-V Azure Functions aktuálně existují čtyři typy trvalých funkcí: Activity, Orchestrator, entity a Client. Zbytek této části se zabývá dalšími podrobnostmi o typech funkcí zapojených do orchestrace.
+V azure functions jsou aktuálně čtyři trvalé typy funkcí: aktivita, orchestrátor, entita a klient. Zbývající část této části přejde do další podrobnosti o typech funkcí zapojených do orchestraci.
 
-## <a name="orchestrator-functions"></a>Funkce nástroje Orchestrator
+## <a name="orchestrator-functions"></a>Funkce orchestratoru
 
-Funkce nástroje Orchestrator popisují způsob provádění akcí a pořadí, ve kterém jsou akce provedeny. Funkce nástroje Orchestrator popisují orchestraci v kódu (C# nebo JavaScriptu), jak je znázorněno v [Durable Functionsch vzorcích aplikací](durable-functions-overview.md#application-patterns). Orchestrace může mít mnoho různých typů akcí, včetně [funkcí aktivity](#activity-functions), [dílčích orchestrací](durable-functions-orchestrations.md#sub-orchestrations), [čekání na externí události](durable-functions-orchestrations.md#external-events), [http](durable-functions-http-features.md)a [časovače](durable-functions-orchestrations.md#durable-timers). Funkce nástroje Orchestrator mohou také interagovat s [funkcemi entit](#entity-functions).
+Funkce Orchestrator popisují, jak jsou akce prováděny a pořadí, ve kterém jsou akce provedeny. Funkce Orchestrator popisují orchestraci v kódu (C# nebo JavaScript), jak je znázorněno ve [vzorcích aplikací Durable Functions](durable-functions-overview.md#application-patterns). Orchestrace může mít mnoho různých typů akcí, včetně [funkcí aktivity](#activity-functions), [sub-orchestrations](durable-functions-orchestrations.md#sub-orchestrations), [čekání na externí události](durable-functions-orchestrations.md#external-events), [HTTP](durable-functions-http-features.md)a [časovače](durable-functions-orchestrations.md#durable-timers). Funkce Orchestrator mohou také interagovat s [funkcemi entity](#entity-functions).
 
 > [!NOTE]
-> Funkce nástroje Orchestrator jsou zapisovány pomocí obyčejného kódu, ale existují přísné požadavky na zápis kódu. Konkrétně musí být kód funkce nástroje Orchestrator *deterministický*. Po neúspěšném provedení těchto požadavků determinismem může dojít ke správnému spuštění funkcí nástroje Orchestrator. Podrobné informace o těchto požadavcích a způsobu jejich řešení najdete v tématu [omezení kódu](durable-functions-code-constraints.md) .
+> Funkce Orchestrator jsou zapsány pomocí běžného kódu, ale existují přísné požadavky na to, jak psát kód. Konkrétně orchestrátor funkce kód musí být *deterministický*. Nedodržení těchto požadavků determinismu může způsobit, že funkce orchestrátoru se nezdaří správně spustit. Podrobné informace o těchto požadavcích a o jejich obcházet je naleznete v tématu [omezení kódu.](durable-functions-code-constraints.md)
 
-Podrobnější informace o funkcích nástroje Orchestrator a jejich funkcích naleznete v článku [trvalé orchestrace](durable-functions-orchestrations.md) .
+Podrobnější informace o funkcích orchestratoru a jejich funkcích naleznete v článku [Trvalé orchestrace.](durable-functions-orchestrations.md)
 
 ## <a name="activity-functions"></a>Funkce aktivity
 
-Funkce aktivity představují základní pracovní jednotku v rámci trvalé orchestrace funkcí. Funkce aktivity jsou funkce a úkoly, které jsou v procesu Orchestrované. Například můžete vytvořit funkci Orchestrator pro zpracování objednávky. Úkoly zahrnují kontrolu inventáře a účtování zákazníků a vytváření dodávek. Každý úkol by byl samostatnou funkcí aktivity. Tyto funkce aktivit můžou být spouštěny sériově, paralelně nebo v kombinaci obou.
+Funkce aktivity jsou základní jednotkou práce v orchestraci trvanlivé funkce. Funkce aktivity jsou funkce a úkoly, které jsou orchestrovány v procesu. Můžete například vytvořit funkci orchestrator pro zpracování objednávky. Úkoly zahrnují kontrolu zásob, účtování zákazníka a vytvoření dodávky. Každý úkol by samostatnou funkci aktivity. Tyto funkce aktivity mohou být prováděny sériově, paralelně nebo v některé kombinaci obou.
 
-Na rozdíl od funkcí Orchestrator nejsou funkce aktivity omezeny v typu práce, kterou v nich můžete dělat. Funkce aktivity se často používají k provádění síťových volání nebo provádění operací náročných na procesor. Funkce Activity může také vracet data zpět do funkce Orchestrator. Rozhraní odolné úlohy zaručuje, že každá funkce s názvem funkce se spustí *alespoň jednou* během provádění orchestrace.
-
-> [!NOTE]
-> Vzhledem k tomu, že funkce aktivity zaručují *alespoň jedno* spuštění, doporučujeme, abyste *idempotentní* logiku funkce Activity, kdykoli to bude možné.
-
-K definování funkce aktivity použijte [Trigger aktivity](durable-functions-bindings.md#activity-trigger) . Funkce .NET obdrží jako parametr `DurableActivityContext`. Můžete také navazovat Trigger na jakýkoli jiný objekt, který lze serializovat, a předat do něj vstupní hodnoty funkce. V jazyce JavaScript můžete ke vstupu přistupovat prostřednictvím vlastnosti `<activity trigger binding name>` v [objektu`context.bindings`](../functions-reference-node.md#bindings). Funkcí aktivity může být předána pouze jedna hodnota. Chcete-li předat více hodnot, je nutné použít řazené kolekce členů, pole nebo komplexní typy.
+Na rozdíl od funkcí orchestrátoru nejsou funkce aktivity omezeny v typu práce, kterou v nich můžete provést. Funkce aktivity se často používají k volání v síti nebo ke spuštění operací náročných na procesor. Funkce aktivity může také vrátit data zpět do funkce orchestrator. Rámec trvalé úlohy zaručuje, že každá volaná funkce aktivity bude spuštěna *alespoň jednou* během provádění orchestrace.
 
 > [!NOTE]
-> Funkci aktivity můžete aktivovat jenom z funkce Orchestrator.
+> Vzhledem k tomu, že funkce aktivity *zaručují pouze jednou* za spuštění, doporučujeme, abyste, aby vaše funkce aktivity *logika idempotentní* kdykoli je to možné.
 
-## <a name="entity-functions"></a>Funkce entit
-
-Funkce entit definují operace pro čtení a aktualizaci malých částí stavu. Často odkazujeme na tyto stavové entity jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Mohou být také vyvolány z klientských funkcí nebo z funkcí nástroje Orchestrator. Na rozdíl od funkcí Orchestrator nemají entity Functions žádná konkrétní omezení kódu. Funkce entit také spravují stav explicitně namísto implicitního reprezentace stavu prostřednictvím řízení toku.
+Pomocí [aktivační události aktivity](durable-functions-bindings.md#activity-trigger) definujte funkci aktivity. Funkce .NET `DurableActivityContext` obdrží jako parametr. Aktivační událost můžete také svázat s jakýmkoli jiným objektem JSON serializovatelným a předat jej do funkce vstupy. V JavaScriptu můžete přistupovat `<activity trigger binding name>` ke vstupu prostřednictvím vlastnosti [ `context.bindings` objektu](../functions-reference-node.md#bindings). Funkce aktivity mohou mít pouze jednu hodnotu, která jim byla předána. Chcete-li předat více hodnot, musíte použít řazené kolekce členů, pole nebo složité typy.
 
 > [!NOTE]
-> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších.
+> Funkci aktivity můžete spustit pouze z funkce orchestrator.
 
-Další informace o funkcích entit najdete v článku [trvalé entity](durable-functions-entities.md) .
+## <a name="entity-functions"></a>Funkce entity
 
-## <a name="client-functions"></a>Klientské funkce
-
-Funkce Orchestrator se aktivují [aktivační vazbou orchestrace](durable-functions-bindings.md#orchestration-trigger) a funkce entit se spouštějí [vazbou triggeru entity](durable-functions-bindings.md#entity-trigger). Obě tyto triggery fungují tak, že jednají zprávy zařazené do [centra úloh](durable-functions-task-hubs.md). Hlavním způsobem, jak doručovat tyto zprávy, je použití [vazby klienta nástroje Orchestrator](durable-functions-bindings.md#orchestration-client) nebo [vazby klienta entit](durable-functions-bindings.md#entity-client) z *klientské funkce*. Jakákoli funkce bez nástroje Orchestrator může být *klientská funkce*. Můžete například aktivovat nástroj Orchestrator z funkce aktivované protokolem HTTP, funkcí aktivovaných centrem událostí Azure atd. To znamená, že funkce *klienta* funguje jako jeho použití trvalé výstupní vazby klienta.
+Funkce entity definují operace pro čtení a aktualizaci malých částí stavu. Často označujeme tyto stavové entity jako *trvalé entity*. Podobně jako funkce orchestratoru jsou funkce entity funkce mise se speciálním typem aktivační události, *aktivační událostí entity*. Mohou být také vyvolány z klientských funkcí nebo z funkcí orchestratoru. Na rozdíl od funkcí orchestrator funkce entity nemají žádné konkrétní omezení kódu. Funkce entity také spravovat stav explicitně, nikoli implicitně představující stav prostřednictvím toku řízení.
 
 > [!NOTE]
-> Na rozdíl od jiných typů funkcí se funkce Orchestrator a entity nedají aktivovat přímo pomocí tlačítek na webu Azure Portal. Pokud chcete otestovat funkci Orchestrator nebo entity na webu Azure Portal, musíte místo toho spustit *klientskou funkci* , která jako součást implementace spustí nástroj Orchestrator nebo entity. Pro nejjednodušší prostředí testování je doporučena funkce *Ruční aktivace* .
+> Funkce entity a související funkce jsou k dispozici pouze v režimech Durable Functions 2.0 a vyšší.
 
-Kromě toho, že se aktivují funkce Orchestrator nebo entity, se dá *trvalé vazba klienta* použít k interakci s běžícími orchestrací a entitami. Například orchestrace lze dotazovat, ukončit a mohou mít vyvolané události. Další informace o správě orchestrací a entit najdete v článku věnovaném [správě instancí](durable-functions-instance-management.md) .
+Další informace o funkcích entit naleznete v článku [Trvalé entity.](durable-functions-entities.md)
+
+## <a name="client-functions"></a>Funkce klienta
+
+Funkce Orchestrator jsou spouštěny [vazbou orchestrace aktivační události](durable-functions-bindings.md#orchestration-trigger) a funkce entity jsou spouštěny [vazbou aktivační události entity](durable-functions-bindings.md#entity-trigger). Obě tyto aktivační události fungují tak, že reagují na zprávy, které jsou zařazeny do fronty do [centra úloh](durable-functions-task-hubs.md). Primární způsob doručení těchto zpráv je pomocí [orchestrator klienta vazby](durable-functions-bindings.md#orchestration-client) nebo [entity klienta vazby](durable-functions-bindings.md#entity-client) z v rámci *funkce klienta*. Jakákoli funkce mimo orchestrator může být *klientskou funkcí*. Můžete například aktivovat orchestrator z funkce aktivované HTTP, funkce aktivované službou Azure Event Hub atd. Co dělá funkci *klientskou funkcí* je jeho použití trvalé hojazyka výstupu vazby klienta.
+
+> [!NOTE]
+> Na rozdíl od jiných typů funkcí orchestrátoru a entity funkce nelze aktivovat přímo pomocí tlačítek na webu Azure Portal. Pokud chcete otestovat orchestrator nebo entity funkce na webu Azure Portal, musíte místo toho spustit *funkci klienta,* která spustí orchestrator nebo entity funkce jako součást jeho implementace. Pro nejjednodušší testování je doporučena *funkce ručního spuštění.*
+
+Kromě aktivace funkcí orchestrator nebo entity lze trvalou vazbu *klienta* použít k interakci se spuštěnými orchestracemi a entitami. Orchestrations může být dotazován, ukončena a může mít události, které jsou vyvolány na ně. Další informace o správě orchestrations a entity, najdete v článku [správa instance.](durable-functions-instance-management.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít, vytvořte svou první trvalou [C#](durable-functions-create-first-csharp.md) funkci v nebo [JavaScriptu](quickstart-js-vscode.md).
+Chcete-li začít, vytvořte první trvalou funkci v [jazyce C#](durable-functions-create-first-csharp.md) nebo [JavaScriptu](quickstart-js-vscode.md).
 
 > [!div class="nextstepaction"]
-> [Přečtěte si další informace o orchestraci Durable Functions](durable-functions-orchestrations.md)
+> [Další informace o orchestracích trvalých funkcí](durable-functions-orchestrations.md)

@@ -31,6 +31,11 @@
     - name: Správa dat Azure Automation
       href: automation-managing-data.md
       displayName: backup
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s účtem služby Automation
+          href: troubleshoot/automation-account.md
+          displayName: troubleshoot
 - name: Automatizace procesů
   items:
     - name: Přehled funkce Hybrid Runbook Worker
@@ -44,7 +49,7 @@
           displayName: 'graphical, python, powershell, powershell workflow'
         - name: Informace o pracovním postupu PowerShellu
           href: automation-powershell-workflow.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvoření runbooku
           href: automation-quickstart-create-runbook.md
@@ -243,9 +248,9 @@
       items:
         - name: PowerShell DSC
           href: /powershell/scripting/dsc/overview/overview
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
-        - name: Začínáme
+        - name: začínáme
           href: automation-dsc-getting-started.md
           displayName: DSC
         - name: Správa konfigurace počítače
@@ -358,7 +363,7 @@
       displayName: 'SCORCH, runbooks'
 - name: Referenční informace
   items:
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/azurerm.automation
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation

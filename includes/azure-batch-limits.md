@@ -9,21 +9,21 @@ ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 22bfc3c86605f4c2eed4c022919b3643f394ea95
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67080900"
 ---
-| **Prostředek** | **Výchozí omezení** | **Maximální limit** |
+| **Zdrojů** | **Výchozí omezení** | **Maximální limit** |
 | --- | --- | --- |
-| Účty Azure Batch na oblast na základě předplatného | 1-3 |50 |
-| Vyhrazená jádra na účet Batch | 90-900 | Kontaktujte podporu |
-| Jádra s nízkou prioritou na účet Batch | 10-100 | Kontaktujte podporu |
-| **[Aktivní](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)** úlohy a plány úloh na účet Batch (**dokončené** úlohy nemají žádné omezení) | 100-300 | 1 000<sup>1</sup> |
-| Fondy na účet Batch | 20-100 | 500<sup>1</sup> |
+| Účty Azure Batch na oblast na předplatné | 1-3 |50 |
+| Vyhrazená jádra na dávkový účet | 90-900 | Kontaktování podpory |
+| Jádra s nízkou prioritou na dávkový účet | 10-100 | Kontaktování podpory |
+| **[Aktivní](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)** úlohy a plány úloh na dávkový účet **(dokončené** úlohy nemají žádné omezení) | 100-300 | 1 000<sup>1</sup> |
+| Počet fondů na účet Batch | 20-100 | 500<sup>1.</sup> |
 
 > [!NOTE]
-> Výchozí omezení se liší v závislosti na typu předplatného, které použijete k vytvoření účtu Batch. Zobrazené kvóty jader jsou pro účty Batch v režimu služby Batch. [Zobrazení kvót v účtu Batch](../articles/batch/batch-quota-limit.md#view-batch-quotas).
+> Výchozí limity se liší v závislosti na typu předplatného, které používáte k vytvoření účtu Batch. Zobrazené kvóty jader jsou určeny pro dávkové účty v režimu dávkové služby. [Zobrazení kvót v účtu Batch](../articles/batch/batch-quota-limit.md#view-batch-quotas).
 
-<sup>1</sup> Pokud chcete požádat o zvýšení nad rámec tohoto limitu, obraťte se na podporu Azure.
+<sup>1.</sup> Chcete-li požádat o zvýšení nad tento limit, obraťte se na podporu Azure.

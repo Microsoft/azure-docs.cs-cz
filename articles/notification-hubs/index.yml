@@ -1,59 +1,86 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Notification Hubs
+summary: Využijte možnost odesílat nabízená oznámení z jakéhokoli back-endu na jakékoli mobilní zařízení. Kurzy, reference k rozhraní API a další dokumentace
 metadata:
-  title: 'Dokumentace ke službě Azure Notification Hubs – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  description: 'Naučte se, jak pomocí Notification Hubs odesílat nabízená oznámení z jakéhokoli back-endu na jakékoli mobilní zařízení. Kurzy, reference k rozhraní API a další dokumentace'
-  services: notification-hubs
-  author: sethmanheim
-  manager: femila
+  title: Dokumentace ke službě Azure Notification Hubs
+  description: Využijte možnost odesílat nabízená oznámení z jakéhokoli back-endu na jakékoli mobilní zařízení. Kurzy, reference k rozhraní API a další dokumentace
   ms.service: notification-hubs
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/01/2017
+  author: sethmanheim
   ms.author: sethm
-abstract:
-  description: 'Naučte se využívat Notification Hubs, škálovatelný modul zasílání nabízených oznámení pro více platforem, k rychlému rozesílání milionů zpráv aplikacím spuštěným na různých typech zařízení (Android, iOS, Windows, Windows Phone). <p>Kurzy, reference k rozhraní API a další dokumentace ukazují postupy nastavení a odesílání nabízených oznámení z jakéhokoli back-endu na jakékoli mobilní zařízení.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: Odesílání nabízených oznámení do aplikací pro Android
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application'
-    width: 250
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučte se odesílat nabízená oznámení s využitím Notification Hubs:'
-      - type: list
-        style: ordered
-        items:
-          - html: Odesílání nabízených oznámení do všech registrovaných zařízení – <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>
-          - html: Odesílání nabízených oznámení do konkrétních zařízení – <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>
-          - html: Odesílání nabízených oznámení konkrétním uživatelům – <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>
-          - html: Odesílání nabízených oznámení na základě polohy – <a href="/azure/notification-hubs/notification-hubs-push-bing-spatial-data-geofencing-notification">Windows</a>
-          - html: Odesílání přizpůsobených a lokalizovaných nabízených oznámení – <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Ukázkové aplikace Azure Notification Hubs jsou k dispozici z několika zdrojů. Ukázky pro konkrétní platformy spojujeme s jednotlivými sadami SDK (odkazy jsou uvedené níž). Samostatné úložiště ukázek zahrnuje ukázky pro další platformy.
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-android">Sada SDK pro Android</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-ios">Sada SDK pro iOS</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">Ukázkové úložiště (ostatní platformy)</a>'
-          - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>'
-          - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
-          - html: <a href="/rest/api/notificationhubs">Reference k rozhraní REST API</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bed452fcababb3a712da95e3041bdeec71116773
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80289103"
+landingContent:
+- title: Informace o službě Azure Notification Hubs
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Notification Hubs?
+      url: notification-hubs-push-notification-overview.md
+    - text: Integrace s App Service Mobile Apps
+      url: notification-hubs-app-service.md
+  - linkListType: concept
+    links:
+    - text: Doprovodné materiály k architektuře nabízení v podnicích
+      url: notification-hubs-enterprise-push-notification-architecture.md
+    - text: Správa registrací
+      url: notification-hubs-push-notification-registration-management.md
+  - linkListType: video
+    links:
+    - text: Odesílání nabízených oznámení do aplikací pro Android
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření centra oznámení Azure na webu Azure Portal
+      url: create-notification-hub-portal.md
+    - text: Nastavení nabízených oznámení v centru oznámení na webu Azure Portal
+      url: configure-notification-hub-portal-pns-settings.md
+- title: Odesílání oznámení do všech registrovaných zařízení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Odesílání nabízených oznámení do všech registrovaných zařízení
+      url: notification-hubs-android-push-notification-google-fcm-get-started.md
+    - text: Odesílání nabízených oznámení do aplikací pro Swift iOS
+      url: notification-hubs-ios-push-notifications-swift-apps-get-started.md
+  - linkListType: how-to-guide
+    links:
+    - text: Odesílání oznámení mezi platformami
+      url: notification-hubs-aspnet-cross-platform-notification.md
+    - text: Odesílání plánovaných oznámení
+      url: notification-hubs-send-push-notifications-scheduled.md
+- title: ukázky
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Ukázky pro Azure Notification Hubs
+      url: samples.md
+    - text: Ukázky pro PowerShell
+      url: samples-powershell.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET API
+      url: /dotnet/api/microsoft.azure.notificationhubs?view=azure-dotnet
+    - text: PowerShell
+      url: /powershell/module/az.notificationhubs/?view=azps-3.6.1
+    - text: Rozhraní příkazového řádku
+      url: /cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest
+- title: Zdroje a prostředky
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Nejčastější dotazy
+      url: notification-hubs-push-notification-faq.md
+    - text: Možnosti podpory
+      url: https://azure.microsoft.com/support/options/
+    - text: Fóra MSDN
+      url: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs

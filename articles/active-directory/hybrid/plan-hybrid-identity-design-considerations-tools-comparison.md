@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456913"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hybridní identita: Porovnání nástrojů pro integraci adresáře
@@ -28,7 +28,7 @@ V průběhu let se nástroje pro integraci adresáře rozšířily a vyvinuly.  
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect zahrnuje komponenty a funkce dříve vydávané jako Dirsync a AAD Sync. Tyto nástroje se již nebudou vydávat jednotlivě a všechna budoucí vylepšení budou zahrnuta do aktualizací služby Azure AD Connect, abyste vždycky věděli, kde sehnat ty nejnovější funkce.
+> Azure AD Connect zahrnuje součásti a funkce dříve vydané jako Dirsync a AAD Sync. Tyto nástroje se již neuvolňují jednotlivě a všechna budoucí vylepšení budou zahrnuta do aktualizací služby Azure AD Connect, takže vždy víte, kde získat nejnovější funkce.
 > 
 > DirSync a Azure AD Sync jsou nyní zastaralé. Další informace najdete [tady](reference-connect-dirsync-deprecated.md).
 > 
@@ -100,6 +100,6 @@ PP = Public Preview
 | Povolení odebrání atributů z toku ze služby AD do služby Azure AD |● |● | | | |
 | Povolení upřesňujících úprav pro toky atributů |● |● | |● |● |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
 

@@ -1,130 +1,130 @@
 ---
 title: Začínáme se službou Azure Advisor
-description: Začínáme s Azure Advisor.
+description: Začínáme s Azure Advisorem.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259627"
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
 
-Naučte se, jak získat přístup ke službě Advisor prostřednictvím Azure Portal, získat doporučení a implementovat doporučení.
+Zjistěte, jak získat přístup k Advisorovi prostřednictvím portálu Azure, získat doporučení a implementovat doporučení.
 
 > [!NOTE]
-> Azure Advisor se na pozadí automaticky spustí a najde nově vytvořené prostředky. Poskytnutí doporučení na tyto prostředky může trvat až 24 hodin.
+> Azure Advisor se automaticky spustí na pozadí a vyhledá nově vytvořené prostředky. Poskytnutí doporučení k těmto zdrojům může trvat až 24 hodin.
 
 ## <a name="get-recommendations"></a>Získat doporučení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-1. V levém podokně klikněte na možnost **Poradce**.  Pokud v levém podokně nevidíte poradce, klikněte na **všechny služby**.  V podokně nabídky služby v části **monitorování a Správa**klikněte na možnost **Poradce**. Zobrazí se řídicí panel Advisor.
+1. V levém podokně klepněte na tlačítko **Poradce**.  Pokud poradce v levém podokně nevidíte, klepněte na tlačítko **Všechny služby**.  V podokně nabídky služby klepněte v části **Sledování a správa**na tlačítko **Poradce**. Zobrazí se řídicí panel Poradce.
 
-   ![Přístup k Azure Advisor pomocí Azure Portal](./media/advisor-get-started/advisor-portal-menu.png) 
+   ![Přístup k Azure Advisoru pomocí portálu Azure](./media/advisor-get-started/advisor-portal-menu.png) 
 
 1. Na řídicím panelu služby Advisor se zobrazí souhrn doporučení pro všechna vybraná předplatná.  Předplatná, pro která chcete zobrazit doporučení, můžete zvolit pomocí rozevíracího seznamu filtru předplatných.
 
-1. Pokud chcete získat doporučení pro konkrétní kategorii, klikněte na jednu z karet: **Vysoká dostupnost**, **zabezpečení**, **výkon**nebo **náklady**. 
+1. Chcete-li získat doporučení pro určitou kategorii, klepněte na jednu z karet: **Vysoká dostupnost**, **Zabezpečení**, **Výkon**nebo **Náklady**. 
 
    ![Řídicí panel Azure Advisor](./media/advisor-overview/advisor-dashboard.png)
 
-## <a name="get-recommendation-details-and-implement-a-solution"></a>Získání podrobných informací o doporučeních a implementace řešení
+## <a name="get-recommendation-details-and-implement-a-solution"></a>Získejte podrobnosti doporučení a implementujte řešení
 
-Můžete vybrat doporučení v Advisoru a zobrazit další podrobnosti, například akce doporučení a ovlivněné prostředky – a implementovat řešení do doporučení.  
+V programu Advisor můžete vybrat doporučení, kde můžete zobrazit další podrobnosti – například akce doporučení a ovlivněné zdroje – a implementovat řešení doporučení.  
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)a otevřete [poradce](https://aka.ms/azureadvisordashboard).
 
-1. Vyberte kategorii doporučení, abyste zobrazili seznam doporučení v rámci této kategorie, nebo vyberte kartu **vše** , abyste zobrazili všechna vaše doporučení.
+1. Vyberte kategorii doporučení, chcete-li zobrazit seznam doporučení v rámci této kategorie, nebo vyberte kartu **Vše,** chcete-li zobrazit všechna doporučení.
 
-1. Klikněte na doporučení, které chcete zkontrolovat podrobněji.
+1. Klikněte na doporučení, které chcete podrobně zkontrolovat.
 
-1. Projděte si informace o doporučení a prostředcích, na které se doporučení vztahuje.
+1. Zkontrolujte informace o doporučení a prostředky, které doporučení se vztahuje na.
 
-1. Chcete-li implementovat doporučení, klikněte na **doporučenou akci** .
+1. Chcete-li doporučení implementovat, klepněte na **doporučenou akci.**
 
-## <a name="filter-recommendations"></a>Doporučení pro filtrování
+## <a name="filter-recommendations"></a>Doporučení filtru
 
-Můžete filtrovat doporučení a přejít k podrobnostem o tom, co je pro vás nejdůležitější.  Můžete filtrovat podle předplatného, typu prostředku nebo stavu doporučení.  
+Můžete filtrovat doporučení k přechodu k tomu, co je pro vás nejdůležitější.  Můžete filtrovat podle předplatného, typu prostředku nebo stavu doporučení.  
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)a otevřete [poradce](https://aka.ms/azureadvisordashboard).
 
-1. Pomocí rozevíracích seznamů na řídicím panelu Advisor můžete filtrovat podle předplatného, typu prostředku nebo stavu doporučení.
+1. Pomocí rozevíracích seznamů na řídicím panelu Poradce můžete filtrovat podle předplatného, typu prostředku nebo stavu doporučení.
 
-    ![Kritéria vyhledávacího filtru pro poradce](./media/advisor-get-started/advisor-filters.png)
+    ![Kritéria filtru vyhledávání poradce](./media/advisor-get-started/advisor-filters.png)
 
-## <a name="postpone-or-dismiss-recommendations"></a>Odložit nebo zavřít doporučení
+## <a name="postpone-or-dismiss-recommendations"></a>Odložení nebo zamítnutí doporučení
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)a otevřete [poradce](https://aka.ms/azureadvisordashboard).
 
-1. Přejděte na doporučení, které chcete odložit nebo zrušit.
+1. Přejděte na doporučení, které chcete odložit nebo zavřít.
 
 1. Klikněte na doporučení.
 
-1. Klikněte na tlačítko **odložit**. 
+1. Klepněte na tlačítko **Odložit**. 
 
-1. Zadejte časový interval odložení nebo vyberte možnost **nikdy** nezrušit doporučení.
+1. Zadejte časové období odložení nebo vyberte **možnost Nikdy** nezavřete doporučení.
 
-## <a name="exclude-subscriptions-or-resource-groups"></a>Vyloučení předplatných nebo skupin prostředků
+## <a name="exclude-subscriptions-or-resource-groups"></a>Vyloučit předplatná nebo skupiny prostředků
 
-Můžete mít skupiny prostředků nebo předplatná, pro které nechcete přijímat doporučení služby Advisor, například prostředky test.  Službu Advisor můžete nakonfigurovat tak, aby vygenerovala jenom doporučení pro konkrétní předplatná a skupiny prostředků.
-
-> [!NOTE]
-> Pokud chcete zahrnout nebo vyloučit předplatné nebo skupinu prostředků z Advisoru, musíte být vlastníkem předplatného.  Pokud nemáte požadovaná oprávnění pro předplatné nebo skupinu prostředků, možnost zahrnout nebo vyloučit je v uživatelském rozhraní zakázaná.
-
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
-
-1. Na panelu akcí klikněte na **Konfigurovat** .
-
-1. Zrušte kontrolu předplatných nebo skupin prostředků, pro které nechcete dostávat doporučení služby Advisor.
-
-    ![Příklad konfigurace prostředků Advisoru](./media/advisor-get-started/advisor-configure-resources.png)
-
-1. Klikněte na tlačítko **Použít**.
-
-## <a name="configure-low-usage-vm-recommendation"></a>Konfigurace doporučení pro virtuální počítače s nízkou spotřebou
-
-Tento postup nakonfiguruje průměrné pravidlo využití procesoru pro doporučení pro virtuální počítače s nízkým využitím.
-
-Advisor monitoruje využití virtuálních počítačů po dobu 7 dní a pak identifikuje virtuální počítače s nízkým využitím. Virtuální počítače se považují za nízké využití, pokud jejich využití CPU je 5% nebo méně a jejich využití sítě je méně než 2%, nebo pokud je možné aktuální zatížení přizpůsobit menší velikosti virtuálního počítače.
-
-Pokud chcete mít více agresivní při identifikaci virtuálních počítačů s nízkým využitím, můžete pro každé předplatné upravit průměrné pravidlo využití procesoru.  Pravidlo využití CPU lze nastavit na 5%, 10%, 15% nebo 20%.
+Můžete mít skupiny prostředků nebo odběry, pro které nechcete přijímat doporučení poradce – například "test" prostředky.  Poradce můžete nakonfigurovat tak, aby generoval pouze doporučení pro konkrétní předplatná a skupiny prostředků.
 
 > [!NOTE]
-> Chcete-li upravit průměrné pravidlo využití procesoru pro identifikaci virtuálních počítačů s nízkým využitím, musíte být *vlastníkem*předplatného.  Pokud nemáte požadovaná oprávnění pro předplatné nebo skupinu prostředků, možnost zahrnutí nebo vyloučení se v uživatelském rozhraní zakáže. 
+> Chcete-li zahrnout nebo vyloučit předplatné nebo skupinu prostředků z poradce, musíte být vlastníkem předplatného.  Pokud nemáte požadovaná oprávnění pro odběr nebo skupinu prostředků, možnost zahrnout nebo vyloučit je zakázána v uživatelském rozhraní.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)a otevřete [poradce](https://aka.ms/azureadvisordashboard).
 
-1. Na panelu akcí klikněte na **Konfigurovat** .
+1. Na panelu akcí klikněte na **Konfigurovat.**
 
-1. Klikněte na kartu **pravidla** .
+1. Odškrtejte všechna předplatná nebo skupiny prostředků, pro které nechcete dostávat doporučení poradce.
 
-1. Vyberte předplatné, pro které chcete upravit průměrné pravidlo využití procesoru pro, a pak klikněte na **Upravit**.
+    ![Příklad konfigurace prostředků poradce](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. Vyberte požadovanou průměrnou hodnotu využití procesoru a klikněte na **použít**.
+1. Klikněte na tlačítko **Použít.**
 
-1. Kliknutím na **aktualizovat doporučení** aktualizujete stávající doporučení, aby používala nové průměrné pravidlo využití procesoru. 
+## <a name="configure-low-usage-vm-recommendation"></a>Konfigurace doporučení virtuálního počítače s nízkým využitím
 
-   ![Příklad pravidel doporučení pro konfiguraci poradce](./media/advisor-get-started/advisor-configure-rules.png)
+Tento postup konfiguruje pravidlo využití průměrného procesoru pro doporučení virtuálního počítače s nízkým využitím.
 
-## <a name="download-recommendations"></a>Doporučení ke stažení
+Advisor monitoruje využití virtuálního počítače po dobu 7 dnů a pak identifikuje virtuální počítače s nízkým využitím. Virtuální počítače jsou považovány za nízké využití, pokud jejich využití procesoru je 5 % nebo méně a jejich využití sítě je menší než 2 % nebo pokud aktuální zatížení může být přizpůsobeno menší velikosti virtuálního počítače.
 
-Poradce umožňuje stáhnout souhrn vašich doporučení.  Doporučení si můžete stáhnout jako soubor PDF nebo soubor CSV.  Stažení vašich doporučení vám umožní snadnou sdílení s kolegy nebo provádět vlastní analýzu nad daty doporučení.
+Pokud chcete být agresivnější při identifikaci virtuálních počítačů s nízkým využitím, můžete upravit pravidlo průměrného využití procesoru na základě předplatného.  Pravidlo využití procesoru lze nastavit na 5 %, 10 %, 15 % nebo 20 %.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
+> [!NOTE]
+> Chcete-li upravit pravidlo průměrného využití procesoru pro identifikaci virtuálních počítačů s nízkým využitím, musíte být *vlastníkem*předplatného .  Pokud nemáte požadovaná oprávnění pro předplatné nebo skupinu prostředků, možnost zahrnout nebo vyloučit bude zakázána v uživatelském rozhraní. 
 
-1. Na panelu akcí klikněte na **Stáhnout jako sdílený svazek clusteru** nebo **Stáhnout jako PDF** .
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)a otevřete [poradce](https://aka.ms/azureadvisordashboard).
 
-Možnost stažení respektuje všechny filtry, které jste použili na řídicí panel poradce.  Pokud vyberete možnost stáhnout při prohlížení konkrétní kategorie nebo doporučení doporučení, stažený souhrn obsahuje jenom informace o této kategorii nebo doporučení. 
+1. Na panelu akcí klikněte na **Konfigurovat.**
+
+1. Klikněte na kartu **Pravidla.**
+
+1. Vyberte předplatná, pro která chcete upravit pravidlo průměrného využití procesoru, a klikněte na **Upravit**.
+
+1. Vyberte požadovanou průměrnou hodnotu využití procesoru a klepněte na **tlačítko Použít**.
+
+1. Chcete-li aktualizovat stávající doporučení a použít nové pravidlo průměrného využití procesoru, klepněte na tlačítko **Aktualizovat doporučení.** 
+
+   ![Příklad konfigurace pravidel doporučení poradce](./media/advisor-get-started/advisor-configure-rules.png)
+
+## <a name="download-recommendations"></a>Stáhnout doporučení
+
+Poradce vám umožní stáhnout souhrn vašich doporučení.  Doporučení si můžete stáhnout jako soubor PDF nebo soubor CSV.  Stažení doporučení vám umožní snadno sdílet se svými kolegy nebo provádět vlastní analýzu nad daty doporučení.
+
+1. Přihlaste se k [portálu Azure](https://portal.azure.com)a otevřete [poradce](https://aka.ms/azureadvisordashboard).
+
+1. Na panelu akcí klikněte na **Stáhnout jako CSV** nebo **Stáhnout jako PDF.**
+
+Možnost stahování respektuje všechny filtry, které jste použili na řídicí mase Poradce.  Pokud při zobrazení určité kategorie doporučení nebo doporučení vyberete možnost stažení, stažený souhrn obsahuje pouze informace pro danou kategorii nebo doporučení. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Advisor najdete v těchto tématech:
+Další informace o poradci najdete v tématu:
 
-- [Úvod do Azure Advisor](advisor-overview.md)
-- [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)
-- [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
-- [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
-- [Doporučení pro náklady na poradce](advisor-performance-recommendations.md)
+- [Úvod do Azure Advisoru](advisor-overview.md)
+- [Doporučení poradce pro vysokou dostupnost](advisor-high-availability-recommendations.md)
+- [Doporučení pro zabezpečení poradce](advisor-security-recommendations.md)
+- [Doporučení pro výkon poradce](advisor-performance-recommendations.md)
+- [Doporučení nákladů poradce](advisor-performance-recommendations.md)

@@ -7,14 +7,15 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: f66e7e29763f5854a082490cb234e465260b7744
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c0d0e9f0994f7d4d75a67911a5191d6e4ffecaa8
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067738"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382796"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí webu Azure Portal
+
 Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure Portal umožňuje snadnou správu vašeho serveru a návrh databáze.
 
 V tomto kurzu se naučíte, jak pomocí webu Azure Portal provést následující kroky:
@@ -31,9 +32,11 @@ V tomto kurzu se naučíte, jak pomocí webu Azure Portal provést následujíc�
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+
 Otevřete svůj oblíbený webový prohlížeč a přejděte na [webu Microsoft Azure Portal](https://portal.azure.com/). Zadejte přihlašovací údaje pro přihlášení k portálu. Výchozím zobrazením je váš řídicí panel služby.
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
+
 Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-compute-unit-and-storage.md). Server se vytvoří v rámci [skupiny prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
@@ -46,7 +49,7 @@ Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních
    
    ![Vytvoření formuláře](./media/tutorial-design-database-using-portal/2-create-form.png)
 
-    **Nastavení** | **Navrhovaná hodnota** | **Popis pole** 
+    **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     ---|---|---
     Název serveru | Jedinečný název serveru | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for MySQL. Například mydemoserver. K zadanému názvu serveru se připojí název domény *.mysql.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
     Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
@@ -58,7 +61,7 @@ Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních
     Umístění | *Oblast, která je vašim uživatelům nejblíže*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Version | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující jinou verzi).
     Cenová úroveň | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň**. Dále vyberte kartu Obecné *Gen 5* **účely.** *2 vCores* *5 GB* *7 days* **Compute Generation** **vCore** **Storage** **Backup Retention Period** Můžete ponechat tyto posuvníky tak, jak jsou. Chcete-li povolit zálohování serveru v geograficky redundantním úložišti, vyberte možnost IVMožnostredundance zálohování vyberte **možnostI** **redundance zálohování**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
-    
+
    ![Cenová úroveň](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
@@ -67,10 +70,11 @@ Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních
 4. Klikněte na **Zkontrolovat a vytvořit**. Můžete kliknout na tlačítko **Oznámení** na panelu nástrojů a sledovat proces nasazení. Nasazení může trvat až 20 minut.
 
 ## <a name="configure-firewall"></a>Konfigurace brány firewall
+
 Databáze Azure Database for MySQL jsou chráněné bránou firewall. Ve výchozím nastavení se všechna připojení k serveru a databází uvnitř serveru odmítají. Než se poprvé připojíte k Azure Database for MySQL, nakonfigurujte bránu firewall tak, že do ní přidáte IP adresu veřejné sítě klienta (nebo rozsah IP adres).
 
 1. Klikněte na nově vytvořený server a potom na **Zabezpečení připojení**.
-   
+
    ![Zabezpečení připojení](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. Můžete zde zvolit **Přidat moji IP adresu** nebo nakonfigurovat pravidla brány firewall. Po vytvoření pravidel nezapomeňte kliknout na **Uložit**.
 Teď se můžete připojit k serveru pomocí nástroje příkazového řádku mysql nebo nástroje grafického rozhraní MySQL Workbench.
@@ -79,7 +83,8 @@ Teď se můžete připojit k serveru pomocí nástroje příkazového řádku my
 > Server Azure Database for MySQL komunikuje prostřednictvím portu 3306. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 3306 bránou firewall vaší sítě povolený. V takovém případě se nemůžete k serveru Azure SQL připojit, dokud vaše IT oddělení port 3306 neotevře.
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
-Na webu Azure Portal získejte plně kvalifikovaný **Název serveru** a **Přihlašovací jméno správce serveru** pro váš server Azure Database for MySQL. Plně kvalifikovaný název serveru použijete k připojení k serveru pomocí nástroje příkazového řádku mysql. 
+
+Na webu Azure Portal získejte plně kvalifikovaný **Název serveru** a **Přihlašovací jméno správce serveru** pro váš server Azure Database for MySQL. Plně kvalifikovaný název serveru použijete k připojení k serveru pomocí nástroje příkazového řádku mysql.
 
 1. Na [webu Azure Portal](https://portal.azure.com/) klikněte v levé nabídce na **Všechny prostředky**, zadejte název a vyhledejte svůj server Azure Database for MySQL. Výběrem názvu serveru zobrazte podrobnosti.
 
@@ -89,28 +94,35 @@ Na webu Azure Portal získejte plně kvalifikovaný **Název serveru** a **Přih
 V tomto příkladu je název serveru *mydemoserver.mysql.database.azure.com*a přihlášení správce serveru je *myadmin\@mydemoserver*.
 
 ## <a name="connect-to-the-server-using-mysql"></a>Připojení k serveru pomocí mysql
-Použijte [nástroj pro příkazový řádek mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) k navázání připojení k serveru Azure Database for MySQL. Nástroj pro příkazový řádek mysql můžete spustit v prohlížeči pomocí služby Azure Cloud Shell nebo na vlastním počítači pomocí lokálně nainstalovaných nástrojů mysql. Pokud chcete spustit Azure Cloud Shell, klikněte na tlačítko `Try It` na bloku kódu v tomto článku nebo přejděte na webu Azure Portal a klikněte na ikonu `>_` na panelu nástrojů vpravo nahoře. 
+
+Použijte [nástroj pro příkazový řádek mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) k navázání připojení k serveru Azure Database for MySQL. Nástroj pro příkazový řádek mysql můžete spustit v prohlížeči pomocí služby Azure Cloud Shell nebo na vlastním počítači pomocí lokálně nainstalovaných nástrojů mysql. Pokud chcete spustit Azure Cloud Shell, klikněte na tlačítko `Try It` na bloku kódu v tomto článku nebo přejděte na webu Azure Portal a klikněte na ikonu `>_` na panelu nástrojů vpravo nahoře.
 
 Zadejte příkaz pro připojení:
+
 ```azurecli-interactive
 mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Vytvoření prázdné databáze
+
 Po připojení k serveru vytvořte prázdnou databázi, se kterou můžete pracovat.
+
 ```sql
 CREATE DATABASE mysampledb;
 ```
 
 Na příkazovém řádku spusťte následující příkaz, který přepne připojení na tuto nově vytvořenou databázi:
+
 ```sql
 USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Vytvoření tabulek v databázi
+
 Teď víte, jak se připojit k databázi Azure Database for MySQL, a můžete začít provádět některé základní úlohy:
 
 Nejdřív vytvoříte tabulku a načtete do ní data. Pojďme vytvořit tabulku, ve které jsou uložené informace o inventáři.
+
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -120,31 +132,38 @@ CREATE TABLE inventory (
 ```
 
 ## <a name="load-data-into-the-tables"></a>Načtení dat do tabulek
+
 Teď máte vytvořenou tabulku a můžete do ní vložit data. V otevřeném okně příkazového řádku spusťte následující dotaz, který vloží několik řádků dat.
+
 ```sql
-INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
+INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150);
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
 ```
 
 Tabulka, kterou jste vytvořili dříve, teď obsahuje dva řádky ukázkových dat.
 
 ## <a name="query-and-update-the-data-in-the-tables"></a>Dotazování na data a aktualizace dat v tabulkách
+
 Spuštěním následujícího příkazu načtete informace z databázové tabulky.
+
 ```sql
 SELECT * FROM inventory;
 ```
 
 Data v tabulce můžete také aktualizovat.
+
 ```sql
 UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 ```
 
 Při načtení dat se řádek příslušným způsobem aktualizuje.
+
 ```sql
 SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Obnovení databáze k dřívějšímu bodu v čase
+
 Představte si, že omylem odstraníte důležitou databázovou tabulku a nemůžete data snadno obnovit. Azure Database for MySQL umožňuje obnovení serveru do určitého bodu v čase a vytvoření kopie databází na novém serveru. Tento nový server můžete použít k obnovení odstraněných dat. Následující kroky obnoví ukázkový server do bodu před přidáním tabulky.
 
 1. Na webu Azure Portal vyhledejte svoji databázi Azure Database for MySQL. Na stránce **Přehled** klikněte na panelu nástrojů na **Obnovit**. Otevře se stránka Obnovit.
@@ -152,17 +171,18 @@ Představte si, že omylem odstraníte důležitou databázovou tabulku a nemů�
    ![10-1 Obnovení databáze](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. Vyplňte formulář **Obnovení** s požadovanými informacemi.
-   
+
    ![10-2 Formulář Obnovit](./media/tutorial-design-database-using-portal/2-restore-form.png)
-   
+
    - **Bod obnovení:** Vyberte v zadaném časovém rozmezí okamžik, který chcete obnovit. Nezapomeňte převést své místní časové pásmo na čas UTC.
    - **Obnovit na nový server:** Zadejte nový název serveru, na který chcete provést obnovení.
    - **Umístění:** Oblast se shoduje se zdrojovým serverem a nedá se změnit.
    - **Cenová úroveň:** Cenová úroveň se shoduje se zdrojovým serverem a nedá se změnit.
    
-3. Klepnutím na **tlačítko OK** obnovíte server [a obnovíte tak bod v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Při obnovení serveru se vytvoří nová kopie serveru k zadanému bodu v čase. 
+3. Klepnutím na **tlačítko OK** obnovíte server [a obnovíte tak bod v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Při obnovení serveru se vytvoří nová kopie serveru k zadanému bodu v čase.
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste se naučili, jak na webu Azure Portal provádět následující kroky:
 
 > [!div class="checklist"]

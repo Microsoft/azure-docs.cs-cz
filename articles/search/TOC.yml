@@ -21,6 +21,8 @@
           href: cognitive-search-quickstart-blob.md
         - name: Vytvoření úložiště znalostí
           href: knowledge-store-create-portal.md
+        - name: Dotaz s využitím Průzkumníka služby Hledání
+          href: search-explorer.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -231,10 +233,10 @@
           href: search-query-simple-examples.md
         - name: Použití úplné syntaxe Lucene
           href: search-query-lucene-examples.md
-        - name: Použití Průzkumníka služby Search (portál)
-          href: search-explorer.md
         - name: Speciální znaky a částečné výrazy
           href: search-query-partial-matching.md
+        - name: Dotaz z Power Apps
+          href: search-howto-powerapps.md
         - name: Reference k syntaxi
           items:
             - name: Jednoduchá syntaxe dotazů

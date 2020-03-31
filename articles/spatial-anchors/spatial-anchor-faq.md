@@ -1,6 +1,6 @@
 ---
 title: Nejčastější dotazy
-description: Nejčastější dotazy týkající se služby prostorových kotev Azure
+description: Časté otázky týkající se služby Azure Spatial Anchors.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,120 +9,120 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844883"
 ---
-# <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy k Azure Spatial Anchors
+# <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy týkající se prostorových ukotvení Azure
 
-Prostorové kotvy Azure je spravovaná cloudová platforma a platforma pro vývojáře, která umožňuje využívat hybridní realitu v rámci zařízení s režimem HoloLens, iOS a Androidu s více uživateli.
+Azure Spatial Anchors je spravovaná cloudová služba a vývojářská platforma, která umožňuje prostředí smíšené reality pro více uživatelů, prostorově uvědomit si napříč zařízeními HoloLens, iOS a Android.
 
-Další informace najdete v tématu [Přehled prostorových kotev Azure](overview.md).
+Další informace naleznete v [tématu Přehled prostorových kotev Azure](overview.md).
 
-## <a name="azure-spatial-anchors-product-faqs"></a>Nejčastější dotazy k produktu prostorových kotev Azure
+## <a name="azure-spatial-anchors-product-faqs"></a>Nejčastější dotazy k produktu Azure Spatial Anchors
 
-**Otázka: která zařízení podporují prostorové kotvy Azure?**
+**Otázka: Která zařízení podporují azure prostorové kotvy?**
 
-**A:** Prostorové kotvy Azure umožňují vývojářům vytvářet aplikace na HoloLens, na zařízeních s iOS s podporou ARKit a na zařízeních s Androidem s podporou ARCore; pro iOS a Android to platí jak pro telefony, tak pro tablety.
+**A:** Azure Spatial Anchors umožňuje vývojářům vytvářet aplikace na HoloLens, na zařízeních se systémem iOS s podporou ARKitu a na zařízeních s Androidem s podporou ARCore; pro iOS a Android to zahrnuje telefony i tablety.
 
-**Otázka: musím být připojení ke cloudu, aby bylo možné používat prostorové kotvy Azure?**
+**Otázka: Musím být připojen ke cloudu, abych mohl používat Azure Spatial Anchors?**
 
-**A:** Prostorové kotvy Azure aktuálně vyžadují síťové připojení k Internetu. Vaše komentáře jsme uvítá na našem [webu pro zpětnou vazbu](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
+**A:** Azure Spatial Anchors aktuálně vyžaduje připojení k internetu. Uvítáme vaše připomínky na našich [stránkách zpětné vazby](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
 
-**Otázka: Jaké jsou požadavky na připojení pro prostorové kotvy Azure?**
+**Otázka: Jaké jsou požadavky na připojení pro azure prostorové kotvy?**
 
-**A:** Prostorové kotvy Azure fungují s připojením Wi-Fi a mobilní širokopásmové připojení.
+**A:** Azure Spatial Anchors funguje s Wi-Fi a mobilním širokopásmovým připojením.
 
-**Otázka: jak přesně můžou kotvy prostorů Azure najít kotvy?**
+**Otázka: Jak přesně může Azure Spatial Anchors lokalizovat kotvy?**
 
-**A:** Mnohé faktory ovlivňují přesnost umístění kotev – světelné podmínky, objekty v prostředí a dokonce i plochu, na které je kotva umístěná. Pokud chcete zjistit, jestli přesnost vyhovuje vašim potřebám, zkuste kotvy v prostředích zástupce tam, kde je plánujete použít. Pokud narazíte na prostředí, kde přesnost nevyhovuje vašim potřebám, přečtěte si téma [protokolování a diagnostika v prostorových ukotveních Azure](./concepts/logging-diagnostics.md).
+**A:** Přesnost umístění kotev ovlivňuje mnoho faktorů – světelné podmínky, objekty v prostředí a dokonce i povrch, na kterém je kotva umístěna. Chcete-li zjistit, zda přesnost bude splňovat vaše potřeby, zkuste kotvy v prostředích reprezentativní, kde je chcete použít. Pokud narazíte na prostředí, kde přesnost neodpovídá vašim potřebám, přečtěte si informace [o protokolování a diagnostice v prostorových kotvách Azure](./concepts/logging-diagnostics.md).
 
-**Otázka: jak dlouho trvá vytváření a hledání kotev?**
+**Otázka: Jak dlouho trvá vytvoření a lokalizaci kotev?**
 
-**A:** Čas potřebný k vytvoření a vyhledání kotev závisí na mnoha faktorech – na síťovém připojení, na zpracování a zatížení zařízení a na konkrétním prostředí. Máme zákazníky, kteří sestavují aplikace v mnoha odvětvích, včetně výroby, maloobchodu a her, což znamená, že služba umožňuje skvělé uživatelské prostředí pro své scénáře.
+**A:** Čas potřebný k vytvoření a lokalizaci kotev závisí na mnoha faktorech – síťové připojení, zpracování a načtení zařízení a konkrétní prostředí. Máme zákazníky, kteří budují aplikace v mnoha průmyslových odvětvích, včetně výroby, maloobchodu a her, což naznačuje, že služba umožňuje skvělé uživatelské prostředí pro jejich scénáře.
 
-## <a name="privacy-faq"></a>Nejčastější dotazy týkající se ochrany osobních údajů
+## <a name="privacy-faq"></a>Nejčastější dotazy k ochraně osobních údajů
 
-**Otázka: když aplikace umístí prostorovou kotvu, ke které mají přístup všechny aplikace?**
+**Otázka: Když moje aplikace umístí prostorovou kotvu někam, mají k ní přístup všechny aplikace?**
 
-**A:** Kotvy jsou izolované pomocí účtu Azure. Jenom aplikace, kterým udělíte přístup k vašemu účtu, budou mít přístup k kotvám v rámci účtu.
+**A:** Kotvy jsou izolované podle účtu Azure. Přístup ke kotvám v rámci účtu budou mít pouze aplikace, kterým udělíte přístup ke svému účtu.
 
-**Otázka: Jaké informace o prostředí se přenáší a ukládají do služby při použití prostorových kotev Azure? Jsou obrázky prostředí přenášeny a uloženy?**
+**Otázka: Jaké informace o prostředí se přenášejí a ukládají ve službě při použití azure prostorových kotev? Jsou obrázky prostředí přenášeny a ukládány?**
 
-Odpověď **: při**vytváření nebo hledání kotev jsou obrázky prostředí zpracovávány v zařízení do odvozeného formátu. Tento odvozený formát je přenášen do služby a uložen ve službě.
+**A**: Při vytváření nebo vyhledání kotev jsou obrázky prostředí zpracovány na zařízení do odvozeného formátu. Tento odvozený formát je přenášen a uložen ve službě.
 
-K zajištění transparentnosti níže je obrázek prostředí a odvozeného cloudu řídce používaného bodu. V cloudu Point se zobrazuje geometrická reprezentace prostředí, které se přenáší a ukládá do služby. Pro každý bod v cloudu se zhuštěným bodem odesíláme a ukládáme hodnotu hash vizuálních vlastností tohoto bodu. Hodnota hash je odvozena z, ale neobsahuje data v pixelech.
+Chcete-li zajistit průhlednost, níže je obrázek prostředí a odvozeného řídkého mračna bodů. Mračno bodů zobrazuje geometrické znázornění prostředí, které je přenášeno a uloženo ve službě. Pro každý bod v řídkém mračnu bodů přenášíme a ukládáme hash vizuálních vlastností tohoto bodu. Hash je odvozen z, ale neobsahuje žádná data pixelů.
 
-Prostorové kotvy Azure vyhovují [podmínkám smlouvy o poskytování služeb Azure](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)a [prohlášením o zásadách ochrany osobních údajů společnosti Microsoft](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
+Azure Spatial Anchors dodržuje [podmínky smlouvy o poskytování služeb Azure](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)a Prohlášení o [zásadách ochrany osobních údajů společnosti Microsoft](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
 
-![prostředí a jeho odvozený cloudový bod](./media/sparse-point-cloud.png)
-*Obrázek 1: prostředí a jeho odvozené cloudové body*
+![Prostředí a jeho odvozený řídký mračno](./media/sparse-point-cloud.png)
+bodů*Obrázek 1: Prostředí a jeho odvozený řídký mračno bodů*
 
 
-**Otázka: existuje způsob, jak mohu odeslat diagnostické informace společnosti Microsoft?**
+**Otázka: Existuje způsob, jak můžete odeslat diagnostické informace společnosti Microsoft?**
 
-**Odpověď:** Ano. Prostorové kotvy Azure mají režim diagnostiky, který můžou vývojáři vybrat k výslovným souhlasit prostřednictvím rozhraní API prostorových kotev Azure. To je užitečné, například pokud narazíte na prostředí, ve kterém nemůžete vytvářet a vyhledávat kotvy prediktivním způsobem. Můžeme se zeptat, jestli můžete odeslat diagnostickou zprávu obsahující informace, které nám pomáhají při ladění. Další informace najdete [v tématu protokolování a diagnostika v prostorových ukotveních Azure](./concepts/logging-diagnostics.md).
+**A:** Ano. Azure Spatial Anchors má diagnostický režim, který vývojáři mohou zvolit, aby se přihlásili prostřednictvím rozhraní API Azure Spatial Anchors. To je užitečné, například pokud narazíte na prostředí, kde není možné vytvořit a vyhledat kotvy předvídatelně. Můžeme se zeptat, zda můžete odeslat diagnostickou zprávu obsahující informace, které nám pomáhají ladit. Další informace najdete [v tématu Protokolování a diagnostika v prostorových kotvách Azure](./concepts/logging-diagnostics.md).
 
-## <a name="availability-and-pricing-faqs"></a>Nejčastější dotazy týkající se dostupnosti a cen
+## <a name="availability-and-pricing-faqs"></a>Časté dotazy k dostupnosti a stanovení cen
 
-**Otázka: zadáváte smlouvu SLA?**
+**Otázka: Poskytujete sla?**
 
-**A:** Jako standard pro služby Azure cílíme na dostupnost větší než 99,9%. Všimněte si, že prostorové kotvy Azure jsou momentálně ve verzi Preview a že se používají [Doplňkové podmínky pro verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+**A:** Jako standard pro služby Azure cílíme na dostupnost vyšší než 99,9 %. Všimněte si, že Azure prostorové kotvy je aktuálně ve verzi Preview a jako takové [preview doplňkové podmínky.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-**Otázka: Můžu své aplikace publikovat pomocí prostorových kotev Azure do obchodů s aplikacemi? Můžu použít prostorové kotvy Azure pro kritické provozní scénáře?**
+**Otázka: Můžu publikovat své aplikace pomocí Azure Spatial Anchors do obchodů s aplikacemi? Můžu použít Azure Spatial Anchors pro klíčové produkční scénáře?**
 
-**A:** Prostorové kotvy Azure jsou momentálně ve verzi Preview a během této doby vás zve k vývoji aplikací, [poskytování zpětné vazby](https://feedback.azure.com/forums/919252-azure-spatial-anchors) k produktu a naplánování produkčních nasazení.
+**A:** Azure Spatial Anchors je aktuálně ve verzi Preview a během této doby vás zveme k vývoji aplikací, [poskytnutí zpětné vazby](https://feedback.azure.com/forums/919252-azure-spatial-anchors) k produktu a plánování pro vaše produkční nasazení.
 
-Data obecné dostupnosti (GA) budou brzy oznámena.
+Termíny všeobecné dostupnosti (GA) budou oznámeny brzy.
 
-**Otázka: Existují nějaká omezení omezování?**
+**Otázka: Máte nějaké omezení škrcení na místě?**
 
-Odpověď **: Ano**, máme omezení omezování.  Neočekáváme, že získáte typické vývoj a testování aplikací. U produkčních nasazení jsme připraveni podporovat vysoce škálovatelné požadavky našich zákazníků. [Kontaktujte nás, abychom](mailto:azuremrs@microsoft.com) mohli diskutovat. V této fázi Preview jsme ještě nepublikovali naši vrstvu a cenovou strukturu, ale očekáváme, že to uděláte brzo.
+**A:** Ano, máme omezení omezení.  Neočekáváme, že budete hit je pro typický vývoj aplikací a testování. Pro produkční nasazení jsme připraveni podporovat požadavky našich zákazníků ve velkém měřítku. [Kontaktujte nás](mailto:azuremrs@microsoft.com) a proberte to. Během této fáze náhledu jsme ještě nezveřejnili naši úroveňovací a cenovou strukturu, ale očekáváme, že tak učiníme brzy.
 
-**Otázka: v jakých oblastech jsou k dispozici prostorové kotvy Azure?**
+**Otázka: V jakých oblastech jsou azure prostorové kotvy k dispozici?**
 
-**A:** Účet prostorových kotev Azure můžete v současnosti vytvořit v oblasti Azure Východní USA 2. To znamená, že tato služba je v této oblasti výpočetní i úložná. V takovém případě neexistují žádná omezení, kde se nacházejí vaši klienti. V budoucnu budeme rozšiřovat regionální dostupnost služby do všech primárních oblastí Azure.
+**A:** Účet Azure Spatial Anchors můžete vytvořit ještě dnes v oblasti Azure East US 2. To znamená, že výpočetní prostředky i úložiště pohánějící tuto službu jsou v této oblasti. To znamená, že neexistují žádná omezení, kde se nacházejí vaši klienti. V budoucnu rozšíříme místní dostupnost služby do všech primárních oblastí Azure.
 
-**Otázka: Chcete účtovat za prostorové kotvy Azure? Budete někdy účtovat?**
+**Otázka: Účtujete za prostorové kotvy Azure? Budete někdy účtovat?**
 
-**A:** Podrobnosti o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/spatial-anchors/)ve verzi Preview.
+**A:** Podrobnosti o cenách najdete během náhledu na naší [stránce s cenami](https://azure.microsoft.com/pricing/details/spatial-anchors/).
 
-## <a name="technical-faqs"></a>Technické Nejčastější dotazy
+## <a name="technical-faqs"></a>Nejčastější technické otázky
 
-**Otázka: jak fungují kotvy prostorů Azure?**
+**Otázka: Jak azure prostorové kotvy práce?**
 
-**A:** Prostorové kotvy Azure závisí na smíšených sledováních realit a rozšíření realit. Tyto stopy vnímat prostředí s kamerami a sledují zařízení ve 6 až stupních volná (6DoF) při pohybu přes prostor.
+**A:** Azure Spatial Anchors závisí na sledování smíšené reality / rozšířené reality. Tyto trackery vnímají prostředí s kamerami a sledovat zařízení v 6-stupňů-of-freedom (6DoF), jak se pohybuje v prostoru.
 
-Vzhledem k tomu, že sledování 6DoF jako stavební blok, vám prostorové kotvy Azure umožňuje určit určité body zájmu v reálném prostředí jako "kotvicí" body. Můžete například použít kotvu k vykreslení obsahu na určitém místě reálného světa.
+Vzhledem k tomu, 6DoF tracker jako stavební blok, Azure prostorové kotvy umožňuje určit určité body zájmu ve vašem reálném prostředí jako "kotevní" body. Můžete například použít kotvu k vykreslení obsahu na určitém místě v reálném světě.
 
-Při vytváření kotvy sada SDK klienta zachycuje informace o prostředí kolem daného bodu a přenáší ho do služby. Pokud jiné zařízení vyhledá kotvu ve stejném prostoru, podobná data se přenáší do služby. Tato data se shodují s dříve uloženými daty prostředí. Pozice kotvy relativní vzhledem k zařízení se pak pošle zpátky pro použití v aplikaci.
+Při vytváření kotvy klientská sada SDK zaznamená informace o prostředí kolem tohoto bodu a přenáší je do služby. Pokud jiné zařízení hledá kotvu ve stejném prostoru, podobná data se přenášejí do služby. Tato data jsou porovnána s dříve uloženými daty prostředí. Pozice kotvy vzhledem k zařízení je pak odeslána zpět pro použití v aplikaci.
 
-**Otázka: jak se v systémech iOS a Android integrují prostorové kotvy Azure s ARKit a ARCore?**
+**Otázka: Jak se azure prostorové kotvy integrují s ARKit a ARCore v iOS a Androidu?**
 
-**A:** Prostorové ukotvení Azure využívá nativní možnosti sledování ARKit a ARCore. Kromě toho naše sady SDK pro iOS a Android nabízejí funkce, jako jsou trvalé kotvy ve spravované cloudové službě, a umožňují vašim aplikacím, aby tyto kotvy našli znovu, a to jednoduše připojením ke službě.
+**A:** Azure Spatial Anchors využívá nativní možnosti sledování ARKit a ARCore. Kromě toho naše sady SDK pro iOS a Android nabízejí funkce, jako jsou trvalé kotvy ve spravované cloudové službě a umožňují vašim aplikacím znovu vyhledat tyto kotvy pouhým připojením ke službě.
 
-**Otázka: Jak lze integrovat prostorové kotvy Azure pomocí HoloLens?**
+**Otázka: Jak se azure prostorové kotvy integrují s HoloLens?**
 
-**A:** Prostorové ukotvení Azure využívá nativní možnosti sledování HoloLens. Poskytujeme sadu SDK prostorových kotev pro Azure pro vytváření aplikací na HoloLens. Sada SDK se integruje s nativními možnostmi HoloLens a poskytuje další funkce. Mezi tyto možnosti patří povolení vývojářů aplikací, aby zachovali kotvy ve spravované cloudové službě a aby vaše aplikace dokázaly tyto kotvy vyhledat znovu připojením ke službě.
+**A:** Azure Spatial Anchors využívá nativní možnosti sledování HoloLens. Poskytujeme Azure Spatial Anchors SDK pro vytváření aplikací na HoloLens. Sada SDK se integruje s nativními funkcemi HoloLens a poskytuje další funkce. Mezi tyto funkce patří povolení vývojářům aplikací zachovat kotvy ve spravované cloudové službě a umožnit aplikacím znovu vyhledat tyto kotvy připojením ke službě.
 
-**Otázka: které platformy a jazyky podporují prostorové kotvy Azure?**
+**Otázka: Které platformy a jazyky podporují azure prostorové kotvy?**
 
-**A:** Vývojáři mohou vytvářet aplikace pomocí prostorových kotev Azure pomocí známých nástrojů a architektur pro zařízení:
+**A:** Vývojáři můžou vytvářet aplikace s azure spatial anchors pomocí známých nástrojů a architektur pro své zařízení:
 
-- Unity napříč HoloLens, iOS a Androidem
-- Xamarin v iOS a Androidu
-- SWIFT nebo objektivní – C v iOS
-- Java nebo Android NDK v Androidu
+- Jednota napříč HoloLens, iOS a Androidem
+- Xamarin na iOS a Android
+- Swift nebo Objective-C na iOS
+- Java nebo Android NDK na Androidu
 - C++/WinRT na HoloLens
 
-Začněte s [vývojem tady](index.yml).
+Začínáme s [vývojem zde](index.yml).
 
-**Otázka: funguje s Unreal?**
+**Otázka: Funguje to s Unreal?**
 
-**A:** V budoucnu se bude brát v úvahu podpora pro Unreal.
+**A:** Podpora unreal bude v budoucnu zvážena.
 
-**Otázka: jaké porty a protokoly používá prostorové kotvy Azure?**
+**Otázka: Jaké porty a protokoly azure prostorové kotvy používají?**
 
-**A:** Prostorové kotvy Azure komunikují přes port TCP 443 pomocí šifrovaného protokolu. Pro ověřování používá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), který komunikuje pomocí protokolu HTTPS přes port 443.
+**A:** Azure Spatial Anchors komunikuje přes port TCP 443 pomocí šifrovaného protokolu. Pro ověřování používá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), který komunikuje pomocí protokolu HTTPS přes port 443.

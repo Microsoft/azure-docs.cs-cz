@@ -1,6 +1,6 @@
 ---
-title: Detekovat pohyby pomocí Azure Media Analytics | Microsoft Docs
-description: Procesor Azure Media Motion Detector Media (MP) umožňuje efektivně identifikovat oddíly zájmu v jiném dlouhodobém a nenáročném videu.
+title: Detekce pohybu pomocí Azure Media Analytics | Dokumenty společnosti Microsoft
+description: Mediální procesor Azure Media Motion Detector (MP) umožňuje efektivně identifikovat části zájmu v rámci jinak dlouhého a bezproblémového videa.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,43 +15,43 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77913000"
 ---
-# <a name="detect-motions-with-azure-media-analytics"></a>Detekce pohybů pomocí Azure Media Analytics
+# <a name="detect-motions-with-azure-media-analytics"></a>Detekce pohybu pomocí Azure Media Analytics
 
 > [!NOTE]
-> Procesor **Azure Media Motion Detector** médií bude vyřazen. Informace o datu vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
+> Mediální procesor **Azure Media Motion Detector** bude vyřazen. Datum vyřazení naleznete v tématu [starších součástí.](legacy-components.md)
  
 ## <a name="overview"></a>Přehled
 
-Procesor **Azure Media Motion Detector** Media (MP) umožňuje efektivně identifikovat oddíly zájmu v jiném dlouhodobém a nenáročném videu. Detekce pohybu se dá použít ve statických záběrech fotoaparátu k identifikaci částí videa, kde dochází k pohybu. Vygeneruje soubor JSON obsahující metadata s časovými razítky a ohraničující oblastí, kde došlo k události.
+Mediální procesor **Azure Media Motion Detector** (MP) umožňuje efektivně identifikovat části zájmu v rámci jinak dlouhého a bezproblémového videa. Detekci pohybu lze použít na statických záběrech kamery k identifikaci částí videa, kde dochází k pohybu. Generuje soubor JSON obsahující metadata s časovými razítky a ohraničující oblasti, kde došlo k události.
 
-Tato technologie je zaměřená na kanály videa o zabezpečení, takže je možné kategorizovat pohyb do relevantních událostí a falešně pozitivních změn, jako jsou například stíny a osvětlení. Díky tomu můžete generovat výstrahy zabezpečení z kanálů kamery, aniž byste museli být zasíláni proti nevyžádané práci s nepodstatnými nepodstatnými událostmi, a zároveň je možné extrahovat oznámení z dlouhých videí o kontrole.
+Tato technologie je zaměřena na bezpečnostní videozáznamy a je schopna kategorizovat pohyb do relevantních událostí a falešných poplachů, jako jsou stíny a změny osvětlení. To vám umožní generovat výstrahy zabezpečení z kamerových kanálů, aniž byste byli nevyžádanou poštou s nekonečnými irelevantními událostmi, a zároveň být schopni extrahovat okamžiky zájmu z dlouhých sledovacích videí.
 
-Sada **Azure Media Motion Detector** MP je momentálně ve verzi Preview.
+Azure **Media Motion Detector** MP je aktuálně ve verzi Preview.
 
-Tento článek obsahuje podrobné informace o **Azure Media Motion Detector** a ukazuje, jak ho používat s Media Services SDK pro .NET.
+Tento článek obsahuje podrobnosti o **Azure Media Motion Detector** a ukazuje, jak ji používat s Media Services SDK pro .NET
 
-## <a name="motion-detector-input-files"></a>Vstupní soubory snímače pohybu
-Videosoubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
+## <a name="motion-detector-input-files"></a>Vstupní soubory detektoru pohybu
+Video soubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
 
-## <a name="task-configuration-preset"></a>Konfigurace úlohy (předvolba)
-Při vytváření úlohy s **Azure Media Motion Detector**je nutné zadat předvolby konfigurace. 
+## <a name="task-configuration-preset"></a>Konfigurace úloh (přednastavení)
+Při vytváření úlohy pomocí **Azure Media Motion Detector**je nutné zadat přednastavení konfigurace. 
 
 ### <a name="parameters"></a>Parametry
 Můžete použít následující parametry:
 
-| Název | Možnosti | Popis | Výchozí |
+| Name (Název) | Možnosti | Popis | Výchozí |
 | --- | --- | --- | --- |
-| sensitivityLevel |Řetězec: ' nízká ', ' střední ', ' High ' |Nastaví úroveň citlivosti, na které jsou nahlášeny pohyby. Upravte tuto hodnotu pro úpravu počtu falešně pozitivních hodnot. |úrovně |
-| frameSamplingValue |Kladné celé číslo |Nastaví četnost spuštění algoritmu. 1 se rovná každému snímku, 2 znamená každý druhý rámec atd. |1 |
-| detectLightChange |Boolean: ' true ', ' false ' |Nastaví, zda jsou ve výsledcích hlášeny světlé změny. |Chybné |
-| mergeTimeThreshold |XS-Time: hh: mm: SS<br/>Příklad: 00:00:03 |Určuje časový interval mezi událostmi pohybu, kde jsou dvě události kombinovány a hlášeny jako 1. |00:00:00 |
-| detectionZones |Pole zón detekce:<br/>-Zóna detekce je pole o 3 nebo více bodech.<br/>-Point je souřadnice x a y od 0 do 1. |Popisuje seznam oblastí detekce mnohoúhelníku, které se mají použít.<br/>Výsledky se nahlásí se zónami jako s ID a prvním identifikátorem ID: 0. |Jedna zóna, která pokrývá celý rámec. |
+| citlivostÚroveň |Řetězec:'low', 'medium', 'high' |Nastaví úroveň citlivosti, při které jsou hlášeny pohyby. Upravte to toto nastavení počtu falešných poplachů. |"střední" |
+| frameSamplingValue |Celé celé číslo |Nastaví frekvenci, na které algoritmus běží. 1 se rovná každému snímku, 2 znamená každý druhý snímek a tak dále. |1 |
+| detectLightChange |Logické:'true', 'false' |Nastaví, zda jsou ve výsledcích uvedeny lehké změny |"Nepravdivé" |
+| mergeTimeThreshold |Xs-čas: Hh:mm:ss<br/>Příklad: 00:00:03 |Určuje časové okno mezi událostmi pohybu, kde jsou kombinovány 2 události a vykazovány jako 1. |00:00:00 |
+| detectionZones |Pole detekčních zón:<br/>- Detekční zóna je pole 3 nebo více bodů<br/>- Point je souřadnice x a y od 0 do 1. |Popisuje seznam polygonoldetačních zón, které mají být použity.<br/>Výsledky jsou hlášeny s zónami jako ID, přičemž první z nich je 'id':0 |Jedna zóna, která pokrývá celý rám. |
 
 ### <a name="json-example"></a>Příklad JSON
 
@@ -86,35 +86,35 @@ Můžete použít následující parametry:
 ```
 
 ## <a name="motion-detector-output-files"></a>Výstupní soubory detektoru pohybu
-Úloha detekce pohybu vrátí soubor JSON ve výstupním prostředku, který popisuje výstrahy pohybu a jejich kategorie v rámci videa. Soubor obsahuje informace o čase a době trvání pohybu zjištěného ve videu.
+Úloha detekce pohybu vrátí soubor JSON ve výstupním datovém zdroji, který popisuje upozornění na pohyb a jejich kategorie v rámci videa. Soubor obsahuje informace o době a době trvání pohybu zjištěného ve videu.
 
-Rozhraní API detektoru pohybu poskytuje indikátory, jakmile se v pevném videu na pozadí vyskytnou objekty (například sledovací video). Detektor pohybu je vyškolený k omezení falešných poplachů, jako jsou například změny osvětlení a stín. Současná omezení algoritmů zahrnují videa o nočních a částečně transparentních objektech a malých objektech.
+Rozhraní API detektoru pohybu poskytuje indikátory, jakmile jsou objekty v pohybu v pevném videu na pozadí (například sledovací video). Detektor pohybu je vyškolen ke snížení falešných poplachů, jako jsou změny osvětlení a stínů. Aktuální omezení algoritmů zahrnují videa s nočním viděním, poloprůhledné objekty a malé objekty.
 
-### <a id="output_elements"></a>Prvky výstupního souboru JSON
+### <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>Prvky výstupního souboru JSON
 > [!NOTE]
-> V nejnovější verzi se výstupní formát JSON změnil a může představovat zásadní změnu pro některé zákazníky.
+> V nejnovější verzi se změnil formát Výstup JSON a může představovat narušující změnu pro některé zákazníky.
 > 
 > 
 
 Následující tabulka popisuje prvky výstupního souboru JSON.
 
-| Prvek | Popis |
+| Element | Popis |
 | --- | --- |
-| version |To odkazuje na verzi rozhraní API pro video. Aktuální verze je 2. |
-| timescale |"Takty" za sekundu videa. |
-| offset |Časový posun pro časová razítka v "taktech". Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. V budoucích scénářích, které podporujeme, se tato hodnota může změnit. |
-| framerate |Počet snímků ve videu za sekundu. |
-| width, height |Odkazuje na šířku a výšku videa v pixelech. |
-| zahájení |Počáteční časové razítko v "taktech". |
-| duration |Délka události v "taktech". |
-| interval |Interval každého záznamu v události, v "taktech". |
-| stránka events |Každý fragment události obsahuje pohyb zjištěný během tohoto časového období. |
-| type |V aktuální verzi je to vždycky "2" pro obecný pohyb. Tento popisek poskytuje rozhraní API pro video, které flexibilita rozděluje pohyb v budoucích verzích. |
-| regionId |Jak bylo vysvětleno výše, bude tato verze vždy 0 v této verzi. Tento popisek poskytuje rozhraní API pro video, které nabízí flexibilitu při hledání pohybu v různých oblastech v budoucích verzích. |
-| oblasti |Odkazuje na oblast ve videu, kde se zajímáte o pohybu. <br/><br/>-"ID" představuje oblast oblasti – v této verzi je pouze jeden identifikátor 0. <br/>– "typ" představuje tvar oblasti, o které se zajímáte pro pohyb. V současné době jsou podporovány "obdélníky" a "mnohoúhelník".<br/> Pokud jste zadali "Rectangle", oblast má rozměry v X, Y, šířce a výšce. Souřadnice X a Y reprezentují horní levý horní souřadnici oblasti v normalizovaném rozsahu od 0,0 do 1,0. Šířka a výška představuje velikost oblasti v normalizovaném rozsahu od 0,0 do 1,0. V aktuální verzi jsou hodnoty X, Y, Šířka a výška vždy opraveny na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelník", má oblast rozměry v bodech. <br/> |
-| fragmenty |Metadata jsou rozdělená do různých segmentů s názvem fragmenty. Každý fragment obsahuje začátek, dobu trvání, číslo intervalu a události. Fragment bez událostí znamená, že během tohoto počátečního času a doby trvání nebyl zjištěn žádný pohyb. |
-| brackets [] |Každá závorka představuje jeden interval v události. Prázdné hranaté závorky pro tento interval znamenají, že nebyl zjištěn žádný pohyb. |
-| místa |Tato nová položka v části události uvádí umístění, kde k pohybu došlo. Tato informace je konkrétnější než zóny detekce. |
+| version |To se vztahuje k verzi rozhraní API pro video. Aktuální verze je 2. |
+| Časové osy |"Klíšťata" za sekundu videa. |
+| posun |Časový posun pro časová razítka v "značek." Ve verzi 1.0 video API to bude vždy 0. V budoucích scénářích, které podporujeme, se tato hodnota může změnit. |
+| Framerate |Počet snímků ve videu za sekundu. |
+| šířka, výška |Odkazuje na šířku a výšku videa v pixelech. |
+| start |Časové razítko zahájení v "tiky". |
+| doba trvání |Délka události v "klíšťají". |
+| interval |Interval každé položky v události v "klíšťatách". |
+| stránka events |Každý fragment události obsahuje pohyb zjištěný během této doby trvání. |
+| type |V aktuální verzi je to vždy '2' pro obecný pohyb. Tento popisek poskytuje video API flexibilitu kategorizovat pohyb v budoucích verzích. |
+| regionId |Jak je vysvětleno výše, bude to vždy 0 v této verzi. Tento popisek poskytuje rozhraní API videa flexibilitu při hledání pohybu v různých oblastech v budoucích verzích. |
+| Regiony |Odkazuje na oblast ve videu, kde vám záleží na pohybu. <br/><br/>-"id" představuje oblast regionu – v této verzi je pouze jeden, ID 0. <br/>-"typ" představuje tvar regionu, na které vám záleží. V současné době jsou podporovány "obdélník" a "polygon".<br/> Pokud jste zadali "obdélník", oblast má rozměry v X, Y, Šířka a Výška. Souřadnice X a Y představují levé horní souřadnice XY oblasti v normalizované mašaleo 0,0 až 1,0. Šířka a výška představují velikost oblasti v normalizované škále 0,0 až 1,0. V aktuální verzi X, Y, Šířka a Výška jsou vždy stanoveny na 0, 0 a 1, 1. <br/>Pokud jste zadali "polygon", oblast má rozměry v bodech. <br/> |
+| Fragmenty |Metadata jsou rozdělena do různých segmentů nazývaných fragmenty. Každý fragment obsahuje začátek, dobu trvání, číslo intervalu a události. Fragment bez událostí znamená, že během tohoto počátečního času a doby trvání nebyl zjištěn žádný pohyb. |
+| závorky [] |Každá závorka představuje jeden interval v události. Prázdné závorky pro tento interval znamenají, že nebyl zjištěn žádný pohyb. |
+| Umístění |Tato nová položka v části události uvádí umístění, kde došlo k pohybu. To je konkrétnější než detekční zóny. |
 
 Následující příklad JSON ukazuje výstup:
 
@@ -163,16 +163,16 @@ Následující příklad JSON ukazuje výstup:
 ```
 
 ## <a name="limitations"></a>Omezení
-* Mezi podporované vstupní formáty videa patří MP4, MOV a WMV.
-* Detekce pohybu je optimalizovaná pro stacionární videa na pozadí. Algoritmus se zaměřuje na snížení falešných poplachů, jako jsou například změny osvětlení a stíny.
-* Určitý pohyb nemusí být zjištěn v důsledku technických výzev; například videa o nočních a částečně transparentních objektech a malých objektech.
+* Podporované vstupní video formáty zahrnují MP4, MOV a WMV.
+* Detekce pohybu je optimalizována pro stacionární videa na pozadí. Algoritmus se zaměřuje na snížení falešných poplachů, jako jsou změny osvětlení a stíny.
+* Určitý pohyb nemusí být detekován z důvodu technických problémů; například videa s nočním viděním, poloprůhledné objekty a malé objekty.
 
-## <a name="net-sample-code"></a>Vzorový kód .NET
+## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
 Následující program ukazuje, jak:
 
-1. Vytvořte Asset a nahrajte do něj mediální soubor.
-2. Vytvořte úlohu s úkolem detekce pohybu videa na základě konfiguračního souboru, který obsahuje následující předvolbu JSON: 
+1. Vytvořte datový zdroj a nahrajte do něj mediální soubor.
+2. Vytvořte úlohu s úlohou detekce pohybu videa založenou na konfiguračním souboru, který obsahuje následující přednastavení json: 
    
     ```json
             {
@@ -381,16 +381,16 @@ namespace VideoMotionDetection
 }
 ```
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Blog o Azure Media Services detektoru pohybu](https://azure.microsoft.com/blog/motion-detector-update/)
+[Blog o detektoru pohybu azure media services](https://azure.microsoft.com/blog/motion-detector-update/)
 
-[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
+[Přehled analýzy Mediálních služeb Azure](media-services-analytics-overview.md)
 
 [Ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

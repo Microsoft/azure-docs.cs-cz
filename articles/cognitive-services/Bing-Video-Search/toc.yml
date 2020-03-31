@@ -8,7 +8,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Rychlá zprovoznění pro REST API
+- name: Rychlé starty
   expanded: true
   items:
     - name: REST API
@@ -27,19 +27,13 @@
           href: quickstarts/ruby.md
     - name: Sada SDK
       items:
-        - name: 'Pomocí C#'
-          href: quickstarts/sdk-csharp-quickstart.md
-        - name: Pomocí Node.js
-          href: quickstarts/sdk-node-quickstart.md
-        - name: Pomocí Pythonu
-          href: quickstarts/sdk-python-quickstart.md
-        - name: Pomocí Javy
-          href: quickstarts/sdk-java-quickstart.md
+        - name: Klientské knihovny Vyhledávání videí Bingu
+          href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Sestavení jednostránkové webové aplikace
       href: tutorial-bing-video-search-single-page-app.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'

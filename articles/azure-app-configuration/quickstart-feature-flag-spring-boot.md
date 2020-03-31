@@ -1,63 +1,63 @@
 ---
-title: Rychlý Start pro přidání příznaků funkcí do pružinového spouštění pomocí konfigurace aplikace Azure
-description: Přidání příznaků funkcí do aplikací pro spouštění pružin a jejich správa pomocí konfigurace aplikací Azure
+title: Úvodní příručka pro přidání příznaků funkcí do jarního spuštění pomocí konfigurace aplikace Azure
+description: Přidání příznaků funkcí do aplikací spring boot a jejich správa pomocí konfigurace aplikací Azure
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78944345"
 ---
-# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
+# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Úvodní příručka: Přidání příznaků funkcí do aplikace Spring Boot
 
-V tomto rychlém startu zařadíte konfiguraci aplikací Azure do webové aplikace na jaře Boot, která vytvoří ucelenou implementaci správy funkcí. Službu konfigurace aplikací můžete použít k centrálnímu ukládání všech příznaků funkcí a řízení jejich stavů.
+V tomto rychlém startu začleníte Azure App Configuration do webové aplikace Spring Boot a vytvoříte komplexní implementaci správy funkcí. Službu Konfigurace aplikace můžete použít k centrálnímu ukládání všech příznaků funkcí a řízení jejich stavů.
 
-Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou příznaků funkcí. Tyto **knihovny nemají závislost** na žádné knihovně Azure. Bez problémů se integruje s konfigurací aplikací prostřednictvím poskytovatele konfigurace spouštění pružiny.
+Knihovny Správy funkcí jarního spouštění rozšiřují rámec o komplexní podporu příznaku funkce. Tyto knihovny **nemají** závislost na žádné knihovny Azure. Hladce se integrují s aplikací App Configuration prostřednictvím svého poskytovatele konfigurace spring boot.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Podporovaná [sada Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
-* [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
+* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
+* Podporovaná [java development kit sdk](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
+* [Apache Maven](https://maven.apache.org/download.cgi) verze 3.0 nebo vyšší.
 
 ## <a name="create-an-app-configuration-instance"></a>Vytvoření instance konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce funkcí** >  **+ Přidat** a přidejte příznak funkce s názvem `Beta`.
+6. Vyberte **Správce** > funkcí **+Přidat,** `Beta`chcete-li přidat příznak prvku s názvem .
 
     > [!div class="mx-imgBorder"]
-    > ![povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
+    > ![Povolit příznak funkce s názvem Beta](media/add-beta-feature-flag.png)
 
-    Pro nyní nechejte `label` Nedefinováno.
+    Prozatím `label` nenechte být nedefinovaní.
 
-## <a name="create-a-spring-boot-app"></a>Vytvoření aplikace pro spouštění pružiny
+## <a name="create-a-spring-boot-app"></a>Vytvoření aplikace jarního spuštění
 
-Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt pro spuštění pružiny.
+Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový projekt jarního startu.
 
 1. Přejděte na <https://start.spring.io/>.
 
 1. Zadejte následující možnosti:
 
    * Vygenerujte projekt **Maven** v **Javě**.
-   * Zadejte verzi pro **jarní spuštění** , která je rovna nebo větší než 2,0.
-   * Zadejte názvy skupiny (**Group**) a artefaktu (**Artifact**) pro vaši aplikaci.  Tento článek používá `com.example` a `demo`.
-   * Přidejte **webovou závislost pružiny** .
+   * Zadejte verzi **jarního spuštění,** která je rovna nebo větší než 2.0.
+   * Zadejte názvy skupiny (**Group**) a artefaktu (**Artifact**) pro vaši aplikaci.  Tento článek `com.example` `demo`používá a .
+   * Přidejte závislost **spring web.**
 
-1. Po zadání předchozích možností vyberte **generovat projekt**. Po zobrazení výzvy Stáhněte projekt do svého místního počítače.
+1. Po zadání předchozích možností vyberte **Generovat projekt**. Po zobrazení výzvy stáhněte projekt do místního počítače.
 
-## <a name="add-feature-management"></a>Přidat správu funkcí
+## <a name="add-feature-management"></a>Přidání správy funkcí
 
-1. Po extrahování souborů v místním systému je vaše aplikace pro spouštění pružiny připravená k úpravám. V kořenovém adresáři vaší aplikace vyhledejte *pom. XML* .
+1. Po extrahování souborů v místním systému je aplikace Spring Boot připravena k úpravám. Vyhledejte *pom.xml* v kořenovém adresáři aplikace.
 
-1. V textovém editoru otevřete soubor *pom. XML* a přidejte následující do seznamu `<dependencies>`.:
+1. Otevřete soubor *pom.xml* v textovém editoru `<dependencies>`a do seznamu .:
 
-### <a name="spring-cloud-11x"></a>Jarní Cloud 1.1. x
+### <a name="spring-cloud-11x"></a>Jarní mrak 1.1.x
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     </dependency>
     ```
 
-### <a name="spring-cloud-12x"></a>Jarní Cloud 1.2. x
+### <a name="spring-cloud-12x"></a>Jarní mrak 1.2.x
 
     ```xml
     <dependency>
@@ -96,21 +96,21 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     ```
 
 > [!Note]
-> Je k dispozici knihovna správy neweb Feature, která nemá závislost na jaře-Web. Rozdíly najdete v [dokumentaci](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) k GitHubu.
+> K dispozici je knihovna správy funkcí, která není webová, která nemá závislost na jarním webu. Rozdíly naleznete v [dokumentaci githubu.](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management)
 
-## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
+## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikací
 
-1. Přejděte do adresáře `resources` vaší aplikace a otevřete `bootstrap.properties`.  Pokud soubor neexistuje, vytvořte ho. Do souboru přidejte následující řádek.
+1. Přejděte `resources` do adresáře aplikace `bootstrap.properties`a otevřete .  Pokud soubor neexistuje, vytvořte jej. Přidejte do souboru následující řádek.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Na portálu konfigurace aplikace pro úložiště konfigurace vyberte na postranním panelu `Access keys`. Vyberte kartu klíče jen pro čtení. Zkopírujte hodnotu primárního připojovacího řetězce.
+1. Na portálu Konfigurace aplikace pro vaše `Access keys` úložiště konfigurace vyberte z postranního panelu. Vyberte kartu Klíče jen pro čtení. Zkopírujte hodnotu primárního připojovacího řetězce.
 
-1. Přidejte primární připojovací řetězec jako proměnnou prostředí pomocí názvu proměnné `APP_CONFIGURATION_CONNECTION_STRING`.
+1. Přidejte primární připojovací řetězec jako `APP_CONFIGURATION_CONNECTION_STRING`proměnnou prostředí pomocí názvu proměnné .
 
-1. Otevřete soubor hlavní aplikace v jazyce Java a přidejte `@EnableConfigurationProperties` pro povolení této funkce.
+1. Otevřete hlavní soubor Java `@EnableConfigurationProperties` aplikace a přidejte tuto funkci.
 
     ```java
     package com.example.demo;
@@ -130,7 +130,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     }
     ```
 
-1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *MessageProperties. Java* .
+1. Vytvořte nový soubor Java s názvem *MessageProperties.java* v adresáři balíčků vaší aplikace.
 
     ```java
     package com.example.demo;
@@ -153,7 +153,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     }
     ```
 
-1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *HelloController. Java* .
+1. Vytvořte nový soubor Java s názvem *HelloController.java* v adresáři balíčků vaší aplikace.
 
     ```java
     package com.example.demo;
@@ -184,7 +184,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     }
     ```
 
-1. V adresáři templates vaší aplikace vytvořte nový soubor HTML s názvem *Welcome. html* .
+1. Vytvořte nový soubor HTML s názvem *welcome.html* v adresáři šablon vaší aplikace.
 
     ```html
     <!DOCTYPE html>
@@ -241,7 +241,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
     ```
 
-1. Vytvořte novou složku s názvem CSS pod `static` a uvnitř ní nový soubor CSS s názvem *Main. CSS*.
+1. Vytvořte novou složku s `static` názvem CSS pod a uvnitř něj nový soubor CSS s názvem *main.css*.
 
     ```css
     html {
@@ -274,7 +274,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
+## <a name="build-and-run-the-app-locally"></a>Sestavení a spuštění aplikace místně
 
 1. Sestavte aplikaci Spring Boot pomocí Mavenu a spusťte ji.
 
@@ -283,19 +283,19 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     mvn spring-boot:run
     ```
 
-1. Otevřete okno prohlížeče a použijte výchozí adresu URL pro místně hostovanou webovou aplikaci: `https://localhost:8080`.
+1. Otevřete okno prohlížeče a přejděte na výchozí adresu URL `https://localhost:8080`místně hostované webové aplikace: .
 
-    ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![Spuštění aplikace QuickStart místní](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Na portálu konfigurace aplikace vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
+1. Na portálu Konfigurace aplikace vyberte **Správce funkcí**a změňte stav klíče **Beta** **na Zapnuto**:
 
     | Klíč | Stav |
     |---|---|
     | Beta | Zapnuto |
 
-1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
+1. Aktualizujte stránku prohlížeče, abyste viděli nové nastavení konfigurace.
 
-    ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![Spuštění aplikace QuickStart místní](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -303,8 +303,8 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikací a použili ho ke správě funkcí v rámci webové aplikace ve jarních aplikacích pomocí [knihoven pro správu funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
+V tomto rychlém startu jste vytvořili nový obchod Skonfigurací aplikací a použili jste ho ke správě funkcí ve webové aplikaci Spring Boot prostřednictvím [knihoven správy funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
 
-* Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
-* [Správa příznaků funkcí](./manage-feature-flags.md).
-* [Používejte příznaky funkcí v aplikaci v jádru pro pružinové spouštění](./use-feature-flags-spring-boot.md).
+* Další informace o [správě funkcí](./concept-feature-management.md).
+* [Spravovat příznaky funkcí](./manage-feature-flags.md).
+* [Používejte příznaky funkcí v aplikaci Spring Boot Core](./use-feature-flags-spring-boot.md).

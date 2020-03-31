@@ -9,12 +9,12 @@ metadata:
   author: ronhogue
   ms.author: rohogue
   ms.date: 03/20/2020
-  ms.openlocfilehash: 4196fa541837952a3526bceb41325cce26e9207b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: ab36532f1f3f29fdd4156c2c65f07d761fa76bb4
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80130734"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80276508"
 landingContent:
 - title: Informace o Azure FXT Edge Fileru
   linkLists:
@@ -40,7 +40,7 @@ landingContent:
       url: fxt-add-storage.md
     - text: 7. Konfigurace síťových nastavení clusteru
       url: fxt-configure-network.md
-    - text: Připojení klientů v clusteru
+    - text: 8. Připojení klientů v clusteru
       url: fxt-mount-clients.md
 - title: Spravovat
   linkLists:

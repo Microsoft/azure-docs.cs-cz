@@ -7,27 +7,29 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Rychlá zprovoznění pro REST API
+- name: Rychlé starty
   expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
-- name: Klientská knihovna
-  items:
-    - name: 'C#'
-      href: quickstarts/csharp-sdk.md
-    - name: Přejít
-      href: quickstarts/go-sdk.md
+    - name: REST API
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: Klientská knihovna
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp-sdk.md
+        - name: Přejít
+          href: quickstarts/go-sdk.md
 - name: Kurzy
   items:
     - name: Jednostránková webová aplikace
