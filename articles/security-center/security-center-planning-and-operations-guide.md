@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282689"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435621"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Průvodce plánováním a provozem služby Azure Security Center
 Tato příručka je určen pro odborníky v oblasti informačních technologií (IT), architekty IT, analytiky zabezpečení informací a správce cloudu, kteří plánují používat Azure Security Center.
@@ -131,15 +131,15 @@ Security Center automaticky vytváří výchozí zásady zabezpečení pro každ
 Než začnete konfigurovat zásady zabezpečení, prostudujte si všechna [doporučení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-recommendations) a zkontrolujte, jestli jsou dané zásady vhodné pro vaše předplatné a skupiny prostředků. Je také důležité pochopit, jaká akce by se měla provést pro řešení doporučení zabezpečení a kdo z organizace bude zodpovědný za monitorování nových doporučení a provádění potřebných kroků.
 
 ## <a name="data-collection-and-storage"></a>Shromažďování dat a úložiště
-Azure Security Center používá Microsoft Monitoring Agent – to je stejný agent používaný službou Azure Monitor – ke shromažďování dat zabezpečení z vašich virtuálních počítačů. [Data shromážděná](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) od tohoto agenta budou uložena v pracovním prostoru (pracovních prostorech) služby Log Analytics.
+Azure Security Center používá agenta Analýzy protokolů – to je stejný agent používaný službou Azure Monitor – ke shromažďování dat zabezpečení z vašich virtuálních počítačů. [Data shromážděná](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) od tohoto agenta budou uložena v pracovním prostoru (pracovních prostorech) služby Log Analytics.
 
 ### <a name="agent"></a>Agent
 
-Pokud je v zásadách zabezpečení povolenou automatické zřizování, agent Microsoft Monitoring Agent (pro [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) nebo [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) se nainstaluje na všech podporovaných a nově vytvořených virtuálních počítačích Azure. Pokud je na virtuálním počítači nebo počítači agent Microsoft Monitoring Agent již nainstalovaný, Azure Security Center bude využívat stávajícího nainstalovaného agenta. Proces agenta je navržen tak, aby nenarušoval běžný chod a měl zcela minimální dopad na výkon virtuálního počítače.
+Když je v zásadách zabezpečení povoleno automatické zřizování, agent Log Analytics (pro [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) nebo [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)se nainstaluje na všech podporovaných virtuálních počítačích Azure a na všech nových, které se vytvoří. Pokud virtuální počítač nebo počítač už má nainstalovaného agenta Analýzy protokolů, Azure Security Center bude využívat aktuálního nainstalovaného agenta. Proces agenta je navržen tak, aby nenarušoval běžný chod a měl zcela minimální dopad na výkon virtuálního počítače.
 
-Microsoft Monitoring Agent pro Windows vyžaduje použití portu TCP 443. Další podrobnosti najdete v [článku Řešení problémů](security-center-troubleshooting-guide.md).
+Agent Log Analytics pro Systém Windows vyžaduje použití portu TCP 443. Další podrobnosti najdete v [článku Řešení problémů](security-center-troubleshooting-guide.md).
 
-Pokud někdy budete chtít shromažďování dat vypnout, můžete to udělat v zásadě zabezpečení. Protože však microsoft monitoring agent může být používán jinými službami správy a monitorování Azure, agent nebude odinstalovat automaticky při vypnutí shromažďování dat v Centru zabezpečení. V případě potřeby můžete agenta odinstalovat ručně.
+Pokud někdy budete chtít shromažďování dat vypnout, můžete to udělat v zásadě zabezpečení. Protože však agent a analýzy protokolů může být používán jinými službami správy a monitorování Azure, agent se při vypnutí shromažďování dat v Centru zabezpečení automaticky neodinstaluje. V případě potřeby můžete agenta odinstalovat ručně.
 
 > [!NOTE]
 > Pokud chcete najít seznam podporovaných virtuálních počítačích, přečtěte si [nejčastější dotazy Centra zabezpečení Azure ( FAQ).](faq-vms.md)
@@ -148,7 +148,7 @@ Pokud někdy budete chtít shromažďování dat vypnout, můžete to udělat v 
 
 Pracovní prostor je prostředek Azure, který slouží jako kontejner pro data. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
 
-Data shromážděná z agenta Microsoft Monitoring Agent (jménem služby Azure Security Center) budou uložena v existujících pracovních prostorech služby Log Analytics přidružených k vašemu předplatnému Azure nebo v nových pracovních prostorech s ohledem na zeměpisné umístění virtuálního počítače.
+Data shromážděná od agenta Analýzy protokolů (jménem Centra zabezpečení Azure) se budou ukládat buď v existujícím pracovním prostoru (pracovních prostorech) služby Log Analytics přidruženém k vašemu předplatnému Azure, nebo v novém pracovním prostoru (pracovních prostorech) s přihlédnutím k geografické virtuálnímu počítači.
 
 Na webu Azure Portal můžete procházením zobrazit seznam pracovních prostorů Log Analytics, včetně těch vytvořených službou Azure Security Center. Pro nové pracovní prostory se vytvoří související skupina prostředků. Budou se řídit těmito zásadami vytváření názvů:
 
@@ -197,7 +197,7 @@ Když do prostředí Azure přidáte nové prostředky (virtuální počítače,
 
 Měli byste také pravidelně sledovat existující prostředky pro změny konfigurace, které by mohly způsobit bezpečnostní rizika, posun od doporučených směrných plánů a výstrahy zabezpečení. Začněte na řídicím panelu Security Center. Odtud máte tři hlavní oblasti, které musíte důsledně kontrolovat.
 
-![Provoz](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
+![Operace](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. Část **Prevence** nabízí rychlý přístup ke klíčovým prostředkům. Pomocí této možnosti můžete monitorovat službu Compute, Sítě, Úložiště a data a Aplikace.
 2. Panel **Recommendations** (Doporučení) umožňuje kontrolovat doporučení služby Security Center. Během průběžného monitorování můžete zjistit, že nemáte doporučení na denní bázi, což je normální, protože jste se obrátili na všechna doporučení na počáteční nastavení Centra zabezpečení. Z toho důvodu se vám v této části nemusí každý den zobrazovat nové informace, takže ji musíte otevírat, jenom když je to nutné.

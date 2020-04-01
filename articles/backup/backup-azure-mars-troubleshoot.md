@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit potíže s instalací a r
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673104"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421275"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Poradce při potížích s agentem služby Microsoft Azure Recovery Services (MARS)
 
@@ -132,6 +132,13 @@ Set-ExecutionPolicy Unrestricted
 
 > [!TIP]
 > Chcete-li zajistit, aby byly změny použity konzistentně, restartujte server po provedení předchozích kroků.
+
+## <a name="resource-not-provisioned-in-service-stamp"></a>Zdroj není zřízen v servisním razítku
+
+Chyba | Možné příčiny | Doporučené akce
+--- | --- | ---
+Aktuální operace se nezdařila z důvodu vnitřní chyby služby "Prostředek není zřízen v servisním razítku". Opakujte operaci po určité době. (ID: 230006) | Chráněný server byl přejmenován. | <li> Přejmenujte server zpět na původní název, který byl zaregistrován v úschovně. <br> <li> Znovu zaregistrujte server do trezoru s novým názvem.
+
 
 ## <a name="troubleshoot-restore-problems"></a>Poradce při potížích s obnovením
 

@@ -4,16 +4,15 @@ description: Zjistěte, jak nastavit zotavení po havárii mezi místními lokal
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74132985"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437507"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -45,7 +44,7 @@ Požadavky pro dokončení tohoto scénáře:
 
 - Po převzetí služeb při selhání připojí virtuální počítače k odpovídajícím cílovým sítím virtuálních počítačů. 
 - Optimálně umístí repliky virtuálních počítačů na cílové hostitelské servery Hyper-V. 
-- Pokud mapování sítě nenakonfigurujete, repliky virtuálních počítačů se po převzetí služeb při selhání nepřipojí k žádné síti virtuálních počítačů.
+- Pokud nenakonfigurujete mapování sítě, nebudou virtuální počítače repliky po převzetí služeb při selhání připojeny k síti virtuálních zařízení.
 
 Připravte VMM následujícím způsobem:
 

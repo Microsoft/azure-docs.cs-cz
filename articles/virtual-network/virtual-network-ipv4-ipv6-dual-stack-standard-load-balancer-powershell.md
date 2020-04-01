@@ -11,44 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 04/01/2020
 ms.author: kumud
-ms.openlocfilehash: 96ede56e7b21d2447d238306e00f2c4fbca56f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6b61e27324220fc78ace3e964aed98f9ba114d3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122232"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420937"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Nasazení aplikace iPv6 se dvěma stacky v Azure – PowerShell (preview)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>Nasazení aplikace iPv6 se dvěma stacky v Azure – PowerShell
 
-Tento článek ukazuje, jak nasadit aplikaci s duálním zásobníkem (IPv4 + IPv6) pomocí standardního nástroje pro vyrovnávání zatížení v Azure, která zahrnuje virtuální síť a podsíť se dvěma zásobníky, standardní nástroj pro vyrovnávání zatížení s duálními konfiguracemi front-endu (IPv4 + IPv6), virtuální počítače s síťovými kartami, které mají konfigurace dvou IP adres, skupiny zabezpečení sítě a veřejných IP adres.
-
-> [!Important]
-> Podpora IPv6 pro virtuální síť Azure je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Tento článek ukazuje, jak nasadit aplikaci s duálním zásobníkem (IPv4 + IPv6) pomocí standardního nástroje pro vyrovnávání zatížení v Azure, která zahrnuje virtuální síť a podsíť se dvěma zásobníky, standardní nástroj pro vyrovnávání zatížení s duálními konfiguracemi (IPv4 + IPv6), virtuální počítače s síťovými kartami, které mají konfiguraci duální IP adresy, skupinu zabezpečení sítě a veřejné IP adresy.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento článek vyžaduje modul Azure PowerShell verze 6.9.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
-
-## <a name="prerequisites"></a>Požadavky
-Před nasazením aplikace se dvěma zásobníky v Azure je nutné nakonfigurovat předplatné pro tuto funkci náhledu pomocí následujícího Prostředí Azure PowerShell:
-
-Zaregistrujte se takto:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Dokončení registrace funkce trvá až 30 minut. Stav registrace můžete zkontrolovat spuštěním následujícího příkazu Azure PowerShell: Zkontrolujte registraci takto:
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Po dokončení registrace spusťte následující příkaz:
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -273,7 +251,7 @@ Vytvořte virtuální síťové karty s [rozhraním New-AzNetworkInterface](/pow
     -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_1
-    
+      
   $Ip6Config=New-AzNetworkInterfaceIpConfig `
     -Name dsIp6Config `
     -Subnet $vnet.subnets[0] `
@@ -374,8 +352,6 @@ Virtuální síť IPv6 dual stack můžete zobrazit na webu Azure Portal násled
 
   ![Virtuální síť s duálním zásobníkem IPv6 v Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> Virtuální síť IPv6 pro Azure je dostupná na webu Azure Portal jen pro čtení pro tuto předběžnou verzi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

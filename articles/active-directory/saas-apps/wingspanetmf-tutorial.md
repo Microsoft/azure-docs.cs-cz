@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Wingspan eTMF | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Wingspan eTMF.
+title: 'Kurz: Integrace služby Azure Active Directory s eTMF Rozpětí křídel | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a eTMF rozpětí křídel.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,187 +16,187 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 8943ff45d432768649ace28147c7c14f20f4ad44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087124"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Kurz: Integrace Azure Active Directory s Wingspan eTMF
+# <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Kurz: Integrace Azure Active Directory s Wingpan eTMF
 
 V tomto kurzu se dozvíte, jak integrovat Wingspan eTMF s Azure Active Directory (Azure AD).
-Wingspan eTMF integraci se službou Azure AD poskytuje následující výhody:
+Integrace Rozpětí křídel eTMF s Azure AD vám poskytuje následující výhody:
 
 * Můžete řídit ve službě Azure AD, který má přístup k Wingspan eTMF.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k Wingspan eTMF (Single Sign-On) pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali ke službě Wingspan eTMF (Jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Wingspan eTMF, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s Křídly křídel eTMF, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Wingspan eTMF jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Předplatné s povoleným jedním přihlášením k křídlům
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje wingspan eTMF **SP** jednotné přihlašování zahájené pomocí
+* Rozpětí křídel eTMF podporuje **sp** inicioval SSO
 
-## <a name="adding-wingspan-etmf-from-the-gallery"></a>Přidání Wingspan eTMF z Galerie
+## <a name="adding-wingspan-etmf-from-the-gallery"></a>Přidání Wingpan eTMF z galerie
 
-Konfigurace integrace Wingspan eTMF do služby Azure AD, budete muset přidat Wingspan eTMF z Galerie na váš seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci Wingspan eTMF do Azure AD, musíte přidat Wingspan eTMF z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Wingspan eTMF z galerie, postupujte následovně:**
+**Chcete-li přidat wingpan eTMF z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Wingspan eTMF**vyberte **Wingspan eTMF** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Wingpan eTMF**, z panelu výsledků vyberte **Wingpan eTMF** a pak klepněte na **tlačítko Přidat** a přidejte aplikaci.
 
-     ![Wingspan eTMF v seznamu výsledků](common/search-new-app.png)
+     ![Rozpětí křídel eTMF v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Wingspan eTMF podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Wingspan eTMF.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí wingspan eTMF na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v wingspan eTMF.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Wingspan eTMF, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li konfigurovat a testovat jednotné přihlašování Azure AD pomocí wingspan eTMF, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Wingspan eTMF Single Sign-On](#configure-wingspan-etmf-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele eTMF Wingspan](#create-wingspan-etmf-test-user)**  – Pokud chcete mít protějšek Britta Simon v Wingspan eTMF, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace konfigurace wingspan eTMF jednotného přihlášení](#configure-wingspan-etmf-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte uživatele testu Rozpětí křídel eTMF](#create-wingspan-etmf-test-user)** – chcete-li mít protějšek Britta Simon v Wingspan eTMF, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Wingspan eTMF, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí wingpan eTMF, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Wingspan eTMF** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Wingspan eTMF** vyberte **Jedno přihlášení**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![Wingspan eTMF domény a adresy URL jednotné přihlašování – informace](common/sp-identifier-reply.png)
+    ![Wingspan eTMF Informace o jedné přihlašovací oblasti domény a adresy URL](common/sp-identifier-reply.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<customer name>.<instance name>.mywingspan.com/saml`
+    a. Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<customer name>.<instance name>.mywingspan.com/saml`
 
-    b. V **identifikátor** pole, zadejte adresu URL, pomocí následujícího vzorce: `http://saml.<instance name>.wingspan.com/shibboleth`
+    b. Do pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`http://saml.<instance name>.wingspan.com/shibboleth`
 
-    c. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<customer name>.<instance name>.mywingspan.com/`
+    c. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://<customer name>.<instance name>.mywingspan.com/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory klienta eTMF Wingspan](https://www.wingspan.com/contact-us/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL, identifikátorem a adresou URL pro odpověď. Obraťte se na [tým podpory klienta Wingspan eTMF,](https://www.wingspan.com/contact-us/) abyste získali tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavení Wingspan eTMF** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit rozpětí křídel eTMF** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-wingspan-etmf-single-sign-on"></a>Konfigurace Wingspan eTMF jednotného přihlašování
+### <a name="configure-wingspan-etmf-single-sign-on"></a>Konfigurace jednotného přihlašování Rozpětí křídel eTMF
 
-Ke konfiguraci jednotného přihlašování na **Wingspan eTMF** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory eTMF Wingspan ](https://www.wingspan.com/contact-us/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **Wingspan eTMF,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory [Wingspan eTMF](https://www.wingspan.com/contact-us/). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. V poli **Uživatelské** brittasimon@yourcompanydomain.extensionjméno typ pole . Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k Wingspan eTMF.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Wingspan eTMF.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Wingspan eTMF**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Wingspan eTMF**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Wingspan eTMF**.
+2. V seznamu aplikací vyberte **Wingpan eTMF**.
 
-    ![Odkaz eTMF Wingspan v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Rozpětí křídel eTMF v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-wingspan-etmf-test-user"></a>Vytvoření Wingspan eTMF testovacího uživatele
+### <a name="create-wingspan-etmf-test-user"></a>Vytvořit testovacího uživatele Rozpětí křídel eTMF
 
-V této části vytvoříte uživatele v Wingspan eTMF jako Britta Simon. Práce s [tým podpory eTMF Wingspan](https://www.wingspan.com/contact-us/) přidat uživatele na platformě eTMF Wingspan. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v Wingspan eTMF. Spolupracujte s [týmem podpory Wingspan eTMF](https://www.wingspan.com/contact-us/) a přidejte uživatele na platformě Wingspan eTMF. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici eTMF Wingspan na přístupovém panelu, vám by měl být automaticky přihlášeni ke Wingspan eTMF, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Rozpětí křídel eTMF na přístupovém panelu, měli byste být automaticky přihlášeni k rozpětí křídel eTMF, pro které nastavíte přiřazovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

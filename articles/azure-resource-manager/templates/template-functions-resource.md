@@ -2,13 +2,13 @@
 title: Funkce šablony - zdroje
 description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e9e1d700282652304f0bede5e697ba8625f5a5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156289"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478270"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -170,8 +170,8 @@ Možná použití seznamu* jsou uvedena v následující tabulce.
 | Microsoft.DocumentDB/databaseAccounts | [seznam kláves](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listDohody](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domény | [seznam kláves](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/témata | [seznam kláves](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/domény | [seznam kláves](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/témata | [seznam kláves](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/obory názvů/autorizační pravidla | [seznamové klávesy](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/obory názvů/disasterRecoveryConfigs/authorizationRules | [seznamové klávesy](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft.EventHub/obory názvů/eventhubs/authorizationRules | [seznamové klávesy](/rest/api/eventhub/eventhubs/listkeys) |

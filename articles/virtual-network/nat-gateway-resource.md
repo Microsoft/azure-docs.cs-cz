@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 48fd4b0e6f0351cd46fc4063785d961867637e0c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80060636"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473292"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -39,7 +39,7 @@ Konfigurace a používání brány NAT je záměrně jednoduché:
 Prostředek brány NAT:
 - Vytvořit regionální nebo zónový (zónově izolovaný) prostředek brány NAT,
 - Přiřadit IP adresy,
-- Změnit časový limit nečinnosti protokolu TCP (volitelné).
+- V případě potřeby upravte časový limit nečinnosti protokolu TCP (volitelné).  <ins>Před</ins> změnou výchozího nastavení zkontrolujte [časovače.](#timers)
 
 Virtuální síť:
 - Nakonfigurujte podsíť virtuální sítě tak, aby používala bránu NAT.
@@ -178,27 +178,50 @@ Brány NAT mají přednost před odchozími scénáři podsítě. Základní vyr
 
 ### <a name="availability-zones"></a>Zóny dostupnosti
 
-I bez zón dostupnosti je nat odolný a může přežít selhání více součástí infrastruktury. Pokud jsou zóny dostupnosti součástí vašeho scénáře, měli byste nakonfigurovat NAT pro určitou zónu.  Operace roviny řízení a rovina dat jsou omezeny na zadanou zónu. Očekává se, že selhání v jiné zóně, než kde existuje váš scénář, nebude mít dopad na nat. Odchozí provoz z virtuálních počítačů ve stejné zóně se nezdaří z důvodu izolace zóny.
+#### <a name="zone-isolation-with-zonal-stacks"></a>Zónová izolace se zónovými zásobníky
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtuální síť NAT s zónami dostupnosti">
+  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtuální síť NAT s izolací zóny, vytvoření více "zonal stacks"">
 </p>
 
-*Obrázek: Překlad síťových sítí s zónami dostupnosti*
+*Obrázek: Virtuální síť NAT s izolací zóny, vytvoření více "zónonální zásobníky"*
 
-Zónově izolovaná brána NAT vyžaduje IP adresy, které odpovídají zóně brány NAT. Prostředky brány NAT s IP adresami z jiné zóny nebo bez zóny nejsou podporovány.
+I bez zón dostupnosti je nat odolný a může přežít selhání více součástí infrastruktury.  Zóny dostupnosti se na této odolnosti vytvářejí pomocí scénářů izolace zóny pro nat.
 
-Virtuální sítě a podsítě jsou regionální a nejsou zarovnány zonální. Virtuální počítač musí být ve stejné zóně jako brána NAT pro zonální příslib odchozích připojení. Izolace zóny je vytvořena vytvořením zónové "zásobníku" pro zónu dostupnosti. Zonální slib nebude existovat při překračování zón brány zónového NAT nebo při použití regionální brány NAT se zónovými virtuálními počítači.
+Virtuální sítě a jejich podsítě jsou místní konstrukce.  Podsítě nejsou omezeny na zónu.
 
-Když nasadíte škálovací sady virtuálních strojů pro použití s NAT, nasadíte zónovou škálovací sadu do vlastní podsítě a připojíte k této podsíti odpovídající zónovou bránu NAT. Pokud používáte škálovací sady zahrnující zóny (škálovací sada ve dvou nebo více zónách), NAT neposkytne zonální příslib.  NAT nepodporuje zónovou redundanci.  Podporována je pouze regionální nebo zónová izolace.
+Zónové příslib pro izolaci zóny existuje, když je instance virtuálního počítače používající prostředek brány NAT ve stejné zóně jako prostředek brány NAT a jeho veřejné IP adresy. Vzor, který chcete použít pro izolaci zóny, vytváří "zónový zásobník" pro zónu dostupnosti.  Tento zásobník zón se skládá z instancí virtuálních počítačů, prostředků brány NAT, veřejných IP adres nebo prostředků předpony v podsíti, o které se předpokládá, že obsluhuje pouze stejnou zónu.   Operace roviny řízení a rovina dat jsou pak zarovnány a omezeny na zadanou zónu. 
+
+Očekává se, že selhání v jiné zóně, než kde existuje váš scénář, nebude mít dopad na nat. Odchozí provoz z virtuálních počítačů ve stejné zóně se nezdaří z důvodu izolace zóny.  
+
+#### <a name="integrating-inbound-endpoints"></a>Integrace příchozích koncových bodů
+
+Pokud váš scénář vyžaduje příchozí koncové body, máte dvě možnosti:
+
+| Možnost | Vzor | Příklad | Verze Pro | Con |
+|---|---|---|---|---|
+| (1) | **Zarovnejte** příchozí koncové body s příslušnými **zásobníky zonální, které** vytváříte pro odchozí. | Vytvořte standardní vyvažovač zatížení se zonálním frontendem. | Stejný model stavu a režim selhání pro příchozí a odchozí. Jednodušší ovládání. | Jednotlivé IP adresy pro jednotlivé zóny může být nutné maskovat běžným názvem DNS. |
+| (2) | **Překryvte** zásobníky zón s příchozím koncovým bodem **mezi zónami.** | Vytvořte standardní vyvažovač zatížení s front-endem bez zón. | Jedna ADRESA IP pro příchozí koncový bod. | Různé modely stavu a režimy selhání pro příchozí a odchozí.  Složitější provoz. |
+
+>[!NOTE]
+> Zónově izolovaná brána NAT vyžaduje IP adresy, které odpovídají zóně brány NAT. Prostředky brány NAT s IP adresami z jiné zóny nebo bez zóny nejsou povoleny.
+
+#### <a name="cross-zone-outbound-scenarios-not-supported"></a>Odchozí scénáře mezi zónami nejsou podporovány
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="zóna-kreslicí virtuální síť NAT">
+  <img src="media/nat-overview/az-directions2.svg" width="425" title="Virtuální síť NAT není kompatibilní s podsítí pro zónování">
 </p>
 
-*Obrázek: Zóna-kreslicí virtuální síť NAT*
+*Obrázek: Překlad síťových sítí není kompatibilní s podsítí zahrnující zónu*
 
-Vlastnost zóny není proměnlivá.  Znovu nasaďte prostředek brány NAT s zamýšlenou místní nebo zónovou předvolbou.
+Pokud se instance virtuálních strojů nasazují ve více zónách ve stejné podsíti, nelze dosáhnout zonálního příslibu s prostředky brány NAT.   A i kdyby k podsíti bylo připojeno více zonálních bran NAT, instance virtuálního počítače by nevěděla, který prostředek brány NAT má být vyvolený.
+
+Zonální příslib neexistuje, když a) zóna instance virtuálního počítače a zóny zóny brány nananek zóny nejsou zarovnány nebo b) prostředek brány regionální NAT se používá s instancemi místního virtuálního počítače.
+
+Zatímco scénář se zobrazí pracovat, jeho model stavu a režim selhání není definovánz hlediska zóny dostupnosti. Zvažte jít s zonální zásobníky nebo všechny regionální místo.
+
+>[!NOTE]
+>Vlastnost zóny prostředku brány NAT není proměnlivá.  Znovu nasaďte prostředek brány NAT s zamýšlenou místní nebo zónovou předvolbou.
 
 >[!NOTE] 
 >IP adresy samy o sobě nejsou zónově redundantní, pokud není zadána žádná zóna.  Front-end [standardního vykladače zatížení je zóna redundantní,](../load-balancer/load-balancer-standard-availability-zones.md#frontend) pokud ip adresa není vytvořena v určité zóně.  To se nevztahuje na NAT.  Podporována je pouze regionální nebo zónová izolace.
@@ -255,11 +278,9 @@ Jakmile se port SNAT uvolní, je k dispozici pro použití libovolným virtuáln
 
 ### <a name="scaling"></a>Škálování
 
-NAT potřebuje dostatek inventáře portů SNAT pro kompletní odchozí scénář. Škálování NAT je především funkce správy sdílené, dostupné snat port zásob. K řešení maximálního výstupního toku pro všechny podsítě připojené k prostředku brány NAT musí existovat dostatek zásob.
+Škálování NAT je především funkce správy sdílené, dostupné snat port zásob. Nat potřebuje dostatek zásob portů SNAT pro očekávané maximální odchozí toky pro všechny podsítě připojené k prostředku brány NAT.  K vytvoření inventáře portů SNAT můžete použít prostředky veřejných IP adres, veřejné prostředky předpony IP nebo obojí.
 
-SNAT mapuje více soukromých adres na jednu veřejnou adresu a používá více veřejných IP adres pro škálování.
-
-Prostředek brány NAT bude používat 64 000 portů (portů SNAT) veřejné IP adresy.  Tyto porty SNAT se stanou dostupným inventářem pro mapování soukromého toku do veřejného sektoru. A přidání dalších veřejných IP adres zvyšuje dostupné porty SNAT. Prostředky brány NAT mohou škálovat až na 16 IP adres a 1M Porty SNAT.  TCP a UDP jsou samostatné zásoby portů SNAT a nesouvisející.
+SNAT mapuje soukromé adresy na jednu nebo více veřejných IP adres, přepisuje zdrojovou adresu a zdrojový port v procesech. Prostředek brány NAT použije pro tento překlad 64 000 portů (portů SNAT) na konfigurovanou veřejnou IP adresu. Prostředky brány NAT mohou škálovat až na 16 IP adres a 1M Porty SNAT. Pokud je k dispozici prostředek veřejné předpony IP, každá adresa IP v rámci předpony poskytuje inventář portů SNAT. A přidání dalších veřejných IP adres zvyšuje dostupné porty SNAT. TCP a UDP jsou samostatné zásoby portů SNAT a nesouvisející.
 
 Prostředky brány NAT oportunisticky znovu používají zdrojové porty. Pro účely škálování byste měli předpokládat, že každý tok vyžaduje nový port SNAT a škálovat celkový počet dostupných IP adres pro odchozí provoz.
 
@@ -268,6 +289,9 @@ Prostředky brány NAT oportunisticky znovu používají zdrojové porty. Pro ú
 Prostředky brány NAT interagují s hlavičkami přenosu IP a IP toků UDP a TCP a jsou agnostik k datovým částem aplikační vrstvy.  Jiné protokoly IP nejsou podporovány.
 
 ### <a name="timers"></a>Časovače
+
+>[!IMPORTANT]
+>Dlouhý časovač nečinnosti může zbytečně zvýšit pravděpodobnost vyčerpání SNAT. Čím déle časovač zadáte, delší NAT bude držet na SNAT porty, dokud se nakonec časový limit nečinnosti. Pokud jsou časový limit nečinnosti, nakonec se nezdaří a zbytečně spotřebovávají zásoby portů SNAT.  Toky, které selhávají po 2 hodinách, by selhaly také ve výchozím nastavení 4 minuty. Zvýšení časového limitu nečinnosti je poslední možnost, která by měla být použita střídmě. Pokud tok nikdy nezůstane nečinný, nebude ovlivněn časovačem nečinnosti.
 
 Časový limit nečinnosti protokolu TCP lze upravit ze 4 minut (výchozí) na 120 minut (2 hodiny) pro všechny toky.  Kromě toho můžete obnovit časovač nečinnosti s provozem na toku.  Doporučený vzor pro aktualizaci dlouhých nečinných připojení a detekce živosti koncového bodu je tcp keepalives.  Tcp keepalives se zobrazí jako duplicitní ACK ke koncovým bodům, jsou nízké režii a neviditelné pro aplikační vrstvu.
 
@@ -294,7 +318,7 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou adresu IP 
 
 ## <a name="feedback"></a>Váš názor
 
-Chceme vědět, jak můžeme zlepšit službu. Navrhnout a hlasovat o tom, co bychom měli stavět dál na [UserVoice pro NAT](https://aka.ms/natuservoice).
+Chceme vědět, jak můžeme zlepšit službu. Chybí vám schopnost? Udělej si svůj případ pro to, co bychom měli stavět další na [UserVoice pro NAT](https://aka.ms/natuservoice).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -311,12 +335,12 @@ Chceme vědět, jak můžeme zlepšit službu. Navrhnout a hlasovat o tom, co by
   - [Portál](./quickstart-create-nat-gateway-portal.md)
   - [Šablony](./quickstart-create-nat-gateway-template.md)
 * Informace o rozhraní API pro prostředky brány NAT
-  - [ROZHRANÍ API PRO ODPOČINEK](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
   - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
-
 * Další informace o [zónách dostupnosti](../availability-zones/az-overview.md).
 * Informace o [standardním vyvažovači zatížení](../load-balancer/load-balancer-standard-overview.md).
 * Informace o [zónách dostupnosti a standardním vyvažovači zatížení](../load-balancer/load-balancer-standard-availability-zones.md).
+* [Řekněte nám, co se má stavět pro virtuální síť NAT v UserVoice](https://aka.ms/natuservoice).
 
 

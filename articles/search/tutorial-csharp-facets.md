@@ -1,7 +1,7 @@
 ---
-title: C#kurz použití omezujících vlastností k usnadnění navigace
+title: C# návod na použití omezující chod pro navigaci
 titleSuffix: Azure Cognitive Search
-description: Tento kurz sestaví projekt "stránkování výsledků hledání – Azure Kognitivní hledání" pro přidání navigace omezující vlastnosti. Zjistěte, jak lze pomocí omezující vlastnosti snadno zúžit hledání.
+description: Tento kurz staví na projektu "Stránkování výsledků hledání – Azure Cognitive Search" projektu přidat omezující schopnost navigace. Zjistěte, jak lze omezující aspekty snadno zúžit hledání.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77121568"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#kurz: použití omezujících vlastností k podpoře navigace – Azure Kognitivní hledání
+# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# výuka: Použití omezující chod funkce pro navigaci – Azure Cognitive Search
 
-Omezující vlastnosti se používají k podpoře navigace. poskytuje uživateli sadu odkazů, které se mají použít k zaměření hledání. Omezující vlastnosti jsou atributy dat (například kategorie nebo konkrétní funkce hotelu v našich ukázkových datech).
+Omezující jsou používány k podpoře navigace tím, že uživateli sadu odkazů použít k zaměření jejich vyhledávání. Omezující vlastnosti jsou atributy dat (například kategorie nebo konkrétní funkce hotelu v našich ukázkových datech).
 
-Tento kurz sestaví projekt stránkování vytvořený v [ C# kurzu: stránkování výsledků hledání – kurz k Azure kognitivní hledání](tutorial-csharp-paging.md) .
+Tento kurz navazuje na stránkovací projekt vytvořený v [kurzu C#: Stránkování výsledků hledání – kurz azure kognitivního vyhledávání.](tutorial-csharp-paging.md)
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Nastavení vlastností modelu jako _tváře_
-> * Přidání navigační vlastnosti do aplikace
+> * Nastavit vlastnosti modelu jako _IsFacetable_
+> * Přidání omezující ho satónové navigace do aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-[Kurz: stránkování výsledků hledání – Azure kognitivní hledání Project je spuštěný. C# ](tutorial-csharp-paging.md) Tento projekt může být buď vlastní verze, nebo ho můžete nainstalovat z GitHubu: [vytvořit první aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Mít [c# kurz: stránkování výsledků hledání – projekt Azure Cognitive Search](tutorial-csharp-paging.md) je spuštěn. Tento projekt může být buď vaše vlastní verze, nebo jej nainstalovat z GitHub: [Vytvořit první aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="set-model-properties-as-isfacetable"></a>Nastavení vlastností modelu jako tváře
+## <a name="set-model-properties-as-isfacetable"></a>Nastavit vlastnosti modelu jako IsFacetable
 
-Aby se vlastnost modelu nacházela v hledání omezující vlastnosti, musí být označená pomocí třídy **Face**.
+Aby byla vlastnost modelu umístěna v hledání omezujícívlastnosti, musí být označena **isfacetable**.
 
-1. Prověřte třídu **hotelu** . **Kategorie** a **značky**jsou například označeny jako " **Faced**", ale **hotely** a **Description** nejsou. 
+1. Prohlédněte si **třídu hotelu.** **Kategorie** a **značky**, například jsou označeny jako **IsFacetable**, ale **Název_hotel a** **popis** nejsou. 
 
     ```cs
     public partial class Hotel
@@ -82,40 +82,40 @@ Aby se vlastnost modelu nacházela v hledání omezující vlastnosti, musí bý
     }
     ```
 
-2. V rámci tohoto kurzu nebudeme měnit žádné značky, takže zavřete soubor hotel.cs beze změny.
+2. Nebudeme měnit žádné značky jako součást tohoto kurzu, takže zavřete hotel.cs soubor beze změny.
 
     > [!Note]
-    > Při hledání omezující vlastnosti dojde k chybě, pokud pole požadované ve vyhledávání není správně označeno.
+    > Hledání omezujících vlivů vyvolá chybu, pokud pole požadované při hledání není odpovídajícím způsobem označeno.
 
 
-## <a name="add-facet-navigation-to-your-app"></a>Přidání navigační vlastnosti do aplikace
+## <a name="add-facet-navigation-to-your-app"></a>Přidání omezující ho satónové navigace do aplikace
 
-V tomto příkladu umožníme uživateli vybrat jednu kategorii hotelu nebo jednu Amenity ze seznamu odkazů zobrazených nalevo od výsledků. Uživatel začne zadáním nějakého hledaného textu a pak může zúžit výsledky hledání tak, že vyberete kategorii a výsledky hledání můžete zúžit tak, že vyberete Amenity, nebo si můžou nejdřív vybrat Amenity (pořadí není důležité).
+V tomto příkladu umožníme uživateli vybrat jednu kategorii hotelu nebo jednu vybavenost ze seznamů odkazů zobrazených nalevo od výsledků. Uživatel začíná zadáním nějakého hledaného textu, pak může zúžit výsledky hledání výběrem kategorie a může výsledky dále zúžit výběrem amenity, nebo může nejprve vybrat amenity (pořadí není důležité).
 
-Potřebujeme, aby kontroler předal seznam omezujících vlastností do zobrazení. Musíme při hledání průběžně udržovat výběry uživatelů a znovu použít dočasné úložiště jako mechanismus pro zachování dat.
+Potřebujeme, aby správce předal seznamy omezujících položek do zobrazení. Musíme zachovat výběr uživatelů v průběhu vyhledávání a znovu používáme dočasné úložiště jako mechanismus pro uchovávání dat.
 
-![Použití navigace omezující vlastnosti k zúžení hledání "fondu"](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
+![Použití fazety navigace zúžit hledání "fondu"](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
 
-### <a name="add-filter-strings-to-the-searchdata-model"></a>Přidání řetězců filtru do modelu SearchData
+### <a name="add-filter-strings-to-the-searchdata-model"></a>Přidání řetězců filtrů do modelu SearchData
 
-1. Otevřete soubor SearchData.cs a přidejte do třídy **SearchData** vlastnosti řetězce pro uložení řetězců filtru omezující vlastnosti.
+1. Otevřete soubor SearchData.cs a přidejte vlastnosti řetězce do třídy **SearchData,** abyste podrželi řetězce filtrů omezujících vlastností.
 
     ```cs
         public string categoryFilter { get; set; }
         public string amenityFilter { get; set; }
     ```
 
-### <a name="add-the-facet-action-method"></a>Přidání metody akce omezující vlastnosti
+### <a name="add-the-facet-action-method"></a>Přidání metody akce omezující ho výrazu
 
-Ovladač Home vyžaduje jednu novou akci, **omezující vlastnost**a aktualizace svého existujícího **indexu** a akcí **stránky** a také aktualizace metody **RunQueryAsync** .
+Domácí řadič potřebuje jednu novou akci, **omezující tvář**a aktualizace stávajících akcí **indexu** a **stránky,** stejně jako aktualizace metody **RunQueryAsync.**
 
-1. Otevřete soubor domovského kontroleru a přidejte příkaz **using** , chcete-li povolit **seznam&lt;&gt;mu vytváření řetězců** .
+1. Otevřete soubor domovského řadiče a přidejte příkaz **using,** abyste povolili konstrukci **&lt;&gt; řetězce seznamu.**
 
     ```cs
     using System.Collections.Generic;
     ```
 
-2. Nahraďte metodu akce **index (model SearchData)** .
+2. Nahraďte metodu akce **Index (Model SearchData).**
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -140,7 +140,7 @@ Ovladač Home vyžaduje jednu novou akci, **omezující vlastnost**a aktualizace
         }
     ```
 
-3. Nahraďte metodu akce **Page (model SearchData)** .
+3. Nahraďte metodu akce **Page(Model SearchData).**
 
     ```cs
         public async Task<ActionResult> Page(SearchData model)
@@ -187,7 +187,7 @@ Ovladač Home vyžaduje jednu novou akci, **omezující vlastnost**a aktualizace
         }
     ```
 
-4. Přidejte metodu akce **(model SearchData)** , která se aktivuje, když uživatel klikne na odkaz na omezující vlastnost. Model bude obsahovat buď filtr hledání kategorií, nebo filtr Amenity Search. Možná ji přidáte po akci **stránky** .
+4. Přidejte metodu akce **Omezující stav (model SearchData),** která se aktivuje, když uživatel klikne na odkaz omezující sazby. Model bude obsahovat filtr vyhledávání kategorií nebo filtr vyhledávání podle vlastností. Možná ji přidat po akci **Stránka.**
 
     ```cs
         public async Task<ActionResult> Facet(SearchData model)
@@ -228,11 +228,11 @@ Ovladač Home vyžaduje jednu novou akci, **omezující vlastnost**a aktualizace
         }
     ```
 
-### <a name="set-up-the-search-filter"></a>Nastavení vyhledávacího filtru
+### <a name="set-up-the-search-filter"></a>Nastavení filtru hledání
 
-Když uživatel vybere určitou omezující vlastnost, například klikne na kategorii kategorie **a Spa** , pak se do výsledků vrátí jenom hotely zadané jako tato kategorie. Abychom mohli hledání zúžit tímto způsobem, je potřeba nastavit _Filtr_.
+Když uživatel vybere například určitou omezující položku, klikne na kategorii **Resort and Spa,** ve výsledcích by měly být vráceny pouze hotely, které jsou určeny jako tato kategorie. Chcete-li zúžit hledání tímto způsobem, musíme nastavit _filtr_.
 
-1. Metodu **RunQueryAsync** nahraďte následujícím kódem. Primárně převezme řetězec filtru kategorie a řetězec filtru Amenity a nastaví parametr **filtru** pro **SearchParameters**.
+1. Nahraďte metodu **RunQueryAsync** následujícím kódem. Primárně trvá řetězec filtru kategorie a řetězec filtru amenity filtraci a nastaví **parametr Filter** **SearchParameters**.
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage, string catFilter, string ameFilter)
@@ -316,13 +316,13 @@ Když uživatel vybere určitou omezující vlastnost, například klikne na kat
         }
     ```
 
-    Přidali jsme vlastnosti **Category** a **Tags** do seznamu **vybraných** položek, které se mají vrátit. Tento dodatek není požadavkem na fungování navigace omezujícími vlastnostmi, ale tyto informace používáme k ověření, že je správně filtrované.
+    Do seznamu **Vybrat** **položky,** které chcete vrátit, jsme přidali vlastnosti Kategorie a **tagy.** Toto přidání není požadavek pro fazet navigace do práce, ale používáme tyto informace k ověření, že jsme filtrování správně.
 
-### <a name="add-lists-of-facet-links-to-the-view"></a>Přidání seznamů odkazů omezujících vlastností do zobrazení
+### <a name="add-lists-of-facet-links-to-the-view"></a>Přidání seznamů omezujících položek odkazů do zobrazení
 
-Zobrazení bude vyžadovat některé významné změny. 
+Pohled bude vyžadovat některé významné změny. 
 
-1. Začněte otevřením souboru hotely. CSS (ve složce Wwwroot/CSS) a přidejte následující třídy.
+1. Začněte otevřením souboru hotels.css (ve složce wwwroot/css) a přidejte následující třídy.
 
     ```html
     .facetlist {
@@ -344,7 +344,7 @@ Zobrazení bude vyžadovat některé významné změny.
     }
     ```
 
-2. Pro zobrazení uspořádáme výstup do tabulky, aby se seznam omezujících vlastností na levé straně vyrovnal a výsledky na pravé straně. Otevřete soubor index. cshtml. Celý obsah HTML &lt;tělo&gt; značky nahraďte následujícím kódem.
+2. Pro zobrazení uspořádáme výstup do tabulky, abychom úhledně zarovnali seznamy omezujících položek vlevo a výsledky vpravo. Otevřete soubor index.cshtml. Nahraďte celý obsah &lt;&gt; tagů textu HTML následujícím kódem.
 
     ```cs
     <body>
@@ -524,40 +524,40 @@ Zobrazení bude vyžadovat některé významné změny.
     </body>
     ```
 
-    Všimněte si použití volání **HTML. ActionLink** . Tento hovor komunikuje s platnými řetězci filtru, když uživatel klikne na odkaz na omezující vlastnost. 
+    Všimněte si použití volání **Html.ActionLink.** Toto volání sděluje řadiči platné řetězce filtrů, když uživatel klepne na odkaz omezující vlastnost. 
 
-### <a name="run-and-test-the-app"></a>Spuštění a otestování aplikace
+### <a name="run-and-test-the-app"></a>Spuštění a testování aplikace
 
-Výhodou navigace omezujícími vlastnostmi uživatele je, že může zúžit hledání jediným kliknutím, které můžeme zobrazit v následujícím pořadí.
+Výhodou aspekt navigace k uživateli je, že mohou zúžit vyhledávání s jedním kliknutím, které můžeme zobrazit v následujícím pořadí.
 
-1. Spusťte aplikaci a jako text hledání zadejte "letiště". Ověřte, že se seznam omezujících vlastností zobrazuje na levé straně. Všechny tyto omezující vlastnosti platí pro hotely, které mají v textových datech "letiště", a to s počtem četnosti výskytů.
+1. Spusťte aplikaci, zadejte "letiště" jako hledaný text. Ověřte, zda se seznam omezujících položek zobrazuje úhledně doleva. Tyto aspekty jsou všechny, které se vztahují na hotely, které mají "letiště" v jejich textových dat, s počtem, jak často se vyskytují.
 
-    ![Použití navigace omezující vlastnosti k zúžení hledání "letiště"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
+    ![Použití fazetnavigace zúžit hledání "letiště"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
 
-2. Klikněte na kategorii **středisko a Spa** . Ověřte, že všechny výsledky jsou v této kategorii.
+2. Klikněte na kategorii **Resort and Spa.** Ověřte, zda jsou všechny výsledky v této kategorii.
 
-    ![Zúžení hledání na "možnosti a Spa"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
+    ![Zužující se hledání na "Resort and Spa"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
 
-3. Klikněte na **kontinentální Amenity snídaně** . Ověřte, že všechny výsledky jsou stále v kategorii "kategorie" a "Spa" a vybrané Amenity.
+3. Klikněte na **kontinentální snídani.** Ověřte, zda jsou všechny výsledky stále v kategorii "Resort and Spa" s vybranou vybaveností.
 
-    ![Zúžení hledání na "kontinentální snídaně"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
+    ![Zužující se hledání na "kontinentální snídani"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
 
-4. Zkuste vybrat jinou kategorii, jednu Amenity a zobrazit zúžené výsledky. Pak zkuste jiný způsob, jak o jeden Amenity, tak o jednu kategorii.
+4. Zkuste vybrat jinou kategorii, pak jednu amenity a zobrazit zužující se výsledky. Pak zkuste naopak, jedna amenity, pak jedna kategorie.
 
     >[!Note]
-    > Když se jeden výběr vytvoří v seznamu omezujících vlastností (například kategorie), přepíše jakýkoli předchozí výběr v seznamu kategorií.
+    > Když je jeden výběr proveden v seznamu omezujících položek (například kategorie), přepíše jakýkoli předchozí výběr v seznamu kategorií.
 
 ## <a name="takeaways"></a>Shrnutí
 
-Vezměte v úvahu následující poznatky z tohoto projektu:
+Vezměme si následující stánek s jídlem z tohoto projektu:
 
-* Je nutné označit jednotlivé vlastnosti jako vlastnost- **Face**, pokud mají být zahrnuty v navigaci omezující vlastnosti.
-* Navigace omezující vlastnosti poskytuje uživateli jednoduchý a intuitivní způsob zúžení hledání.
-* Navigace omezující vlastnosti je nejlépe rozdělená na oddíly (kategorie hotelů, rekreačního hotelu, cenové rozsahy, rozsahy hodnocení atd.), každý oddíl s odpovídajícím nadpisem.
+* Je nutné označit každou vlastnost jako **IsFacetable**, pokud mají být zahrnuty do fazetnavigace.
+* Fazet navigace poskytuje uživateli snadný a intuitivní způsob, jak zúžit vyhledávání.
+* Fasetová navigace je nejlépe rozdělena do sekcí (kategorie hotelu, vybavení hotelu, cenové rozpětí, rozsahy hodnocení atd.), každá sekce s příslušným nadpisem.
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším kurzu se podíváme na výsledky řazení. Do tohoto okamžiku jsou výsledky seřazené jednoduše v pořadí, ve kterém se nacházejí v databázi.
+V dalším kurzu se podíváme na objednávání výsledků. Až do tohoto okamžiku jsou výsledky seřazeny jednoduše v pořadí, v jakém jsou umístěny v databázi.
 
 > [!div class="nextstepaction"]
-> [C#kurz: seřazení výsledků – Azure Kognitivní hledání](tutorial-csharp-orders.md)
+> [C# kurz: Pořadí výsledků- Azure Kognitivní vyhledávání](tutorial-csharp-orders.md)

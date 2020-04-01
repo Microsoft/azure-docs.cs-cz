@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75970783a9408df0a8c128fb9540606e4e4a62f3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535438"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478176"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s linuxovými virtuálními počítači
 Rozšíření vlastního skriptu verze 2 stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakoukoli jinou úlohu konfigurace/správy. Skripty si můžete stáhnout z Azure Storage nebo z jiného dostupného internetového umístění, nebo je můžete poskytnout do runtime rozšíření. 
@@ -209,6 +209,8 @@ CustomScript používá následující algoritmus ke spuštění skriptu.
  1. spusťte skript pomocí _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh.
 
 ####  <a name="property-managedidentity"></a>Vlastnost: managedIdentity
+> [!NOTE]
+> Tato vlastnost **musí** být zadána pouze v chráněném nastavení.
 
 CustomScript (verze 2.1 a dále) podporuje [spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pro stahování souborů z adres URL uvedených v nastavení "fileUris". Umožňuje CustomScript přístup k privátním objektům BLOB nebo kontejnerům azure storage, aniž by uživatel musel předávat tajné kódy, jako jsou tokeny SAS nebo klíče účtů úložiště.
 
@@ -466,4 +468,3 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>Další kroky
 Chcete-li zobrazit kód, aktuální problémy a verze, viz [vlastní skript-rozšíření-linux repo](https://github.com/Azure/custom-script-extension-linux).
-

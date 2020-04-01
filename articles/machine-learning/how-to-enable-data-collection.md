@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c481a2e12d83e865025cd90e59e0eba572ad9a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771389"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475439"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat pro modely ve výrobě
 
@@ -129,11 +129,7 @@ Pokud již máte službu se závislostmi nainstalovanými v souboru prostředí 
 
    ![Úprava služby](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. V **části Upřesnit nastavení**vyberte Možnost **Povolit shromažďování dat modelu**.
-
-    [![Vybrat sběr dat](./media/how-to-enable-data-collection/CheckDataCollection.png)](././media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
-
-   Můžete také vybrat **Povolit diagnostiku AppInsights** ke sledování stavu vaší služby.
+1. V **části Upřesnit nastavení**vyberte Možnost **Povolit diagnostiku a shromažďování dat přehledy aplikací**.
 
 1. Chcete-li změny použít, vyberte **aktualizovat.**
 
@@ -151,9 +147,7 @@ Shromažďování dat můžete kdykoli ukončit. Pomocí kódu Pythonu nebo Azur
 
    [![Vybrat volbu Upravit](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. V **rozšířeném nastavení**zrušte **zaškrtnutí políčka Povolit sběr dat modelu**.
-
-    [![Vymazání zaškrtávacího políčka Shromažďování dat](./media/how-to-enable-data-collection/UncheckDataCollection.png)](././media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+1. V **rozšířeném nastavení**zrušte **zaškrtnutí políčka Povolit diagnostiku a shromažďování dat přehledů aplikací**.
 
 1. Chcete-li změnu použít, vyberte **aktualizovat.**
 

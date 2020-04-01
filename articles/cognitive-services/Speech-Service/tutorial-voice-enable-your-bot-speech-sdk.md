@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: 96d2c2e5e3772575e681d2db079ab0122b7014e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80348551"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397886"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: Hlasové povolení robota pomocí sady Speech SDK
 
@@ -336,7 +336,7 @@ Zde je ukázka json aktivity klient obdržel:
     },
     "replyToId":"67c823b4-4c7a-4828-9d6e-0b84fd052869",
     "serviceUrl":"urn:botframework:websocket:directlinespeech",
-    "speak":"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Echo: Hello and welcome.</voice></speak>",
+    "speak":"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)'>Echo: Hello and welcome.</voice></speak>",
     "text":"Echo: Hello and welcome.",
     "timestamp":"2019-07-19T20:03:51.1939097Z",
     "type":"message"
@@ -446,7 +446,7 @@ Pokud nebudete pokračovat v používání echo-bot uplatní v tomto kurzu, mů�
 * Nasazení do [oblasti Azure, která podporuje vysoce kvalitní hlasy TTS neural](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)
 * Ceny spojené s kanálem Přímé řeči linky:
   * [Ceny služby Bot Service](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Služba Speech](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Služba řeči](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Vytváření a nasazování vlastního robota s podporou hlasu:
   * Sestavte [bot-framework bot](https://dev.botframework.com/). Zaregistrujte jej pomocí [kanálu Direct Line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) a [přizpůsobte si robota pro hlasové](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
   * Prozkoumejte stávající [řešení Bot-Framework:](https://microsoft.github.io/botframework-solutions/index)Sestavte [si virtuálního asistenta](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) a [rozšiřte ho na direct line speech](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

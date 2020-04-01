@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 944341b1ef88c7e3d64a74536720eb9fb1d17321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152736"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421420"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního spojení Azure pro účet Azure Cosmos
 
@@ -24,7 +24,7 @@ K účtu Azure Cosmos nakonfigurovanému pomocí private link se můžete připo
 Tento článek popisuje kroky k vytvoření privátní koncový bod. Předpokládá, že používáte metodu automatického schvalování.
 
 > [!NOTE]
-> Podpora privátního koncového bodu je aktuálně obecně dostupná v podporovaných oblastech pouze pro režim připojení brány. V přímém režimu je k dispozici jako funkce náhledu.
+> Podpora privátního koncového bodu je aktuálně obecně dostupná pouze pro režim připojení brány. V přímém režimu je k dispozici jako funkce náhledu.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Vytvoření privátního koncového bodu pomocí portálu Azure
 
@@ -64,7 +64,7 @@ Pomocí následujících kroků vytvořte privátní koncový bod pro existujíc
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    |**Síťové služby**| |
+    |**Sítě**| |
     | Virtuální síť| Vyberte virtuální síť. |
     | Podsíť | Vyberte podsíť. |
     |**Privátní integrace DNS**||
@@ -639,14 +639,9 @@ Stejné kroky můžete použít při odebrání oblasti. Po odebrání oblasti j
 
 Následující omezení platí, když používáte Private Link s účtem Azure Cosmos:
 
-* Privátní linková podpora pro účty Azure Cosmos a virtuální sítě je dostupná jenom v konkrétních oblastech. Seznam podporovaných oblastí najdete v části [Dostupné oblasti](../private-link/private-link-overview.md#availability) v článku Soukromý odkaz. 
-
-  > [!NOTE]
-  > Chcete-li vytvořit soukromý koncový bod, ujistěte se, že virtuální síť a účet Azure Cosmos jsou v podporovaných oblastech.
-
 * Pokud používáte private link s účtem Azure Cosmos pomocí přímého režimu připojení, můžete použít pouze protokol TCP. Protokol HTTP ještě není podporován.
 
-* Podpora privátního koncového bodu je aktuálně obecně dostupná v podporovaných oblastech pouze pro režim připojení brány. V přímém režimu je k dispozici jako funkce náhledu.
+* Podpora privátního koncového bodu je aktuálně obecně dostupná pouze pro režim připojení brány. V přímém režimu je k dispozici jako funkce náhledu.
 
 * Když používáte rozhraní API Azure Cosmos DB pro účty MongoDB, soukromý koncový bod je podporován pro účty pouze na serveru `*.mongo.cosmos.azure.com`verze 3.6 (to znamená účty pomocí koncového bodu ve formátu). Private Link není podporován pro účty na serveru verze 3.2 (to `*.documents.azure.com`znamená účty pomocí koncového bodu ve formátu ). Chcete-li použít private link, měli byste migrovat staré účty na novou verzi.
 

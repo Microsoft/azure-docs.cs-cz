@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2420c98a95eb9e5cdfee36bbd9bec20d22ad24ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8f69096544b0c3b51513d0cb5c4330fcbb1c18c
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460598"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419833"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Ukázky kódu platformy identity Microsoftu (koncový bod v2.0)
 
@@ -48,9 +48,9 @@ Tyto ukázky ukazují, jak napsat jednostránkovou aplikaci zabezpečenou platfo
 | -------- | --------------------- | -------- |
 | ![Tento obrázek znázorňuje logo](media/sample-v2-code/logo_js.png) [JavaScript u Java (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Volání Microsoft Graph |[javascript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Tento obrázek znázorňuje logo](media/sample-v2-code/logo_js.png) [JavaScript u Java (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Volání B2C |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![Tento obrázek znázorňuje](media/sample-v2-code/logo_angular.png) angular JS logo [JavaScript (MSAL AngularJS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs)| Volání Microsoft Graph  | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MsalAngularjsDemoApp)
-| ![Tento obrázek znázorňuje angular logo](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| Volání Microsoft Graph  | [javascript-singlepageapp-úhlové](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
-| ![Tento obrázek znázorňuje angular logo](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Volání B2C |[active-directory-b2c-javascript-angular-spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
+| ![Tento obrázek znázorňuje logo](media/sample-v2-code/logo_js.png) [JavaScript u Java (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Volání vlastního webového rozhraní API |[javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
+| ![Tento obrázek znázorňuje angular logo](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| Volání Microsoft Graph  | [active-directory-javascript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![Tento obrázek znázorňuje angular logo](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | Volání B2C |[active-directory-b2c-javascript-angular-spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 
 ## <a name="web-applications"></a>Webové aplikace
 

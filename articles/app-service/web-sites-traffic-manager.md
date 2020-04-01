@@ -5,12 +5,12 @@ ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
 ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
-ms.openlocfilehash: 200effab70b369d69b4e89b1901578ecfe1a1b87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684107"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437898"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Řízení provozu služby Azure App Service pomocí Azure Traffic Manageru
 > [!NOTE]
@@ -32,7 +32,7 @@ Azure Traffic Manager používá čtyři různé metody směrování. Tyto metod
 Další informace naleznete v [tématu Traffic Manager metody směrování](../traffic-manager/traffic-manager-routing-methods.md).
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>Profily služby App Service a traffic manageru
-Chcete-li nakonfigurovat řízení provozu aplikací služby App Service, vytvořte profil ve Správci provozu Azure, který používá jednu ze čtyř metod vyrovnávání zatížení popsaných dříve, a pak přidejte koncové body (v tomto případě App Service), pro které chcete řídit provoz do Profil. Stav aplikace (spuštěný, zastavený nebo odstraněný) se pravidelně sděluje profilu, aby Azure Traffic Manager mohl podle toho směrovat provoz.
+Chcete-li nakonfigurovat řízení provozu aplikací služby App Service, vytvořte profil ve Správci provozu Azure, který používá jednu ze čtyř metod vyrovnávání zatížení popsaných dříve, a pak přidejte koncové body (v tomto případě App Service), pro které chcete řídit provoz do profilu. Stav aplikace (spuštěný, zastavený nebo odstraněný) se pravidelně sděluje profilu, aby Azure Traffic Manager mohl podle toho směrovat provoz.
 
 Při používání Azure Traffic Manageru s Azure mějte na paměti následující body:
 
@@ -41,8 +41,9 @@ Při používání Azure Traffic Manageru s Azure mějte na paměti následujíc
 * Můžete zadat pouze jeden koncový bod služby App Service na oblast v profilu. Když vyberete aplikaci jako koncový bod pro jednu oblast, zbývající aplikace v této oblasti nebudou k dispozici pro výběr pro tento profil.
 * Koncové body služby App Service, které zadáte v profilu Azure Traffic Manager, se zobrazí v části **Názvy domén** na stránce Konfigurovat aplikaci v profilu, ale nelze je tam konfigurovat.
 * Po přidání aplikace do profilu se na **adrese URL webu** na řídicím panelu portálu aplikace zobrazí adresa URL vlastní domény aplikace, pokud jste ji nastavili. V opačném případě se zobrazí adresa URL `contoso.trafficmanager.net`profilu traffic manageru (například ). Název přímé domény aplikace i adresa URL Traffic Manageru jsou viditelné na stránce Konfigurace aplikace v části **Domain Names** .
-* Vaše vlastní názvy domén fungují podle očekávání, ale kromě jejich přidání do aplikací musíte také nakonfigurovat mapu DNS tak, aby ukazovala na adresu URL Traffic Manageru. Informace o tom, jak nastavit vlastní doménu pro aplikaci App Service, najdete v [tématu Mapování existujícího vlastního názvu DNS na Službu Azure App Service](app-service-web-tutorial-custom-domain.md).
+* Vaše vlastní názvy domén fungují podle očekávání, ale kromě jejich přidání do aplikací musíte také nakonfigurovat mapu DNS tak, aby ukazovala na adresu URL Traffic Manageru. Informace o tom, jak nastavit vlastní doménu pro aplikaci App Service, najdete [v tématu Konfigurace vlastního názvu domény v Azure App Service s integrací Traffic Manageru](configure-domain-traffic-manager.md).
 * Do profilu Azure Traffic Manageru můžete přidávat jenom aplikace, které jsou ve standardním nebo prémiovém režimu.
+* Přidání aplikace do profilu Traffic Manageru způsobí restartování aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 Koncepční a technický přehled Služby Azure Traffic Manager upřena na téma [Přehled Traffic Manageru](../traffic-manager/traffic-manager-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: migrace z Google Maps na Azure Maps | Mapy Microsoft Azure'
-description: Kurz migrace z Google Maps na Microsoft Azure Maps Průvodce vás seznámí s postupem, jak přepnout na Azure Maps rozhraní API a sady SDK.
+title: 'Kurz: Migrace z Map Google do Map Azure | Mapy Microsoft Azure'
+description: Návod, jak migrovat z Map Google do Microsoft Azure Maps. Pokyny vás provede, jak přepnout na Azure Maps API a SDKs.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
@@ -10,97 +10,97 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77913697"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrace z Google Maps na Azure Maps
+# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrace z Map Google do Azure Maps
 
-V tomto kurzu najdete informace o tom, jak migrovat webové a mobilní aplikace a aplikace založené na serveru z Google Maps na platformu Microsoft Azure Maps. Tento kurz obsahuje srovnávací ukázky kódu, návrhy migrace a osvědčené postupy pro migraci na Azure Maps.
+Tento kurz poskytuje přehled o tom, jak migrovat webové, mobilní a serverové aplikace z Map Google na platformu Microsoft Azure Maps. Tento kurz zahrnuje srovnávací ukázky kódu, návrhy migrace a osvědčené postupy pro migraci do Azure Maps.
 
 ## <a name="azure-maps-platform-overview"></a>Přehled platformy Azure Maps
 
-Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové možnosti. Možnosti jsou zabaleny s pravidelnými aktualizovanými daty mapy a poskytují geografickou souvislost pro webové a mobilní aplikace. Azure Maps má sadu rozhraní REST API, která je kompatibilní s rozhraním Azure One API. Rozhraní REST API nabízí mapy pro vykreslování, vyhledávání, směrování, provoz, časová pásma, geografickou polohu, monitorování geografických zón, mapování dat, počasí, mobilitu a prostorové operace. K operacím jsou připojeny webové i sady Android SDK, které usnadňují vývoj, flexibilní a přenosné prostředí napříč různými platformami.
+Azure Maps poskytuje vývojářům ze všech průmyslových odvětví výkonné geoprostorové funkce. Funkce jsou plné pravidelně aktualizovaných mapových dat, která poskytují geografický kontext pro webové a mobilní aplikace. Azure Maps má sadu rest API kompatibilní s rozhraním API Azure One. Rozhraní REST API nabízejí vykreslování map, vyhledávání, směrování, provoz, časová pásma, geolokace, geofencing, mapová data, počasí, mobilitu a prostorové operace. Operace jsou doprovázeny webovými sadami SDK i sadami Android, které usnadňují vývoj, jsou flexibilní a přenosné na různých platformách.
 
-## <a name="high-level-platform-comparison"></a>Porovnání platforem vysoké úrovně
+## <a name="high-level-platform-comparison"></a>Porovnání platformy na vysoké úrovni
 
-Tabulka poskytuje seznam Azure Mapsch funkcí, které odpovídají funkcím služby Google Maps, na nejvyšší úrovni. V tomto seznamu se nezobrazují všechny funkce Azure Maps. Mezi další Azure Maps funkce patří: usnadnění přístupu, monitorování geografických zón, izochronů, prostorové operace, přímý přístup dlaždic map, služby Batch a porovnání pokrytí dat (tj. pokrytí snímků).
+Tabulka obsahuje podrobný seznam funkcí Azure Maps, které odpovídají funkcím Map Google. Tento seznam nezobrazuje všechny funkce Azure Maps. Mezi další funkce Azure Maps patří: usnadnění, geofencing, isochrony, prostorové operace, přímý přístup k dlaždicím mapy, dávkové služby a porovnání pokrytí dat (to znamená pokrytí snímků).
 
-| Funkce mapy Google         | Podpora Azure Maps                     |
+| Funkce Mapy Google         | Podpora Azure Maps                     |
 |-----------------------------|:--------------------------------------:|
 | Sada Web SDK                     | ✓                                      |
 | Android SDK                 | ✓                                      |
 | iOS SDK                     | Plánováno                                |
-| Rozhraní API služby REST           | ✓                                      |
+| API služby REST           | ✓                                      |
 | Směry (směrování)        | ✓                                      |
-| Matice vzdáleností             | ✓                                      |
-| Zvýšení oprávnění                   | Plánováno                                |
-| Geografické kódování (přesměrné/obrácené) | ✓                                      |
-| Zeměpisná poloha                 | neuvedeno                                    |
+| Matice vzdálenosti             | ✓                                      |
+| Zvýšení                   | Plánováno                                |
+| Geokódování (vpřed/vzad) | ✓                                      |
+| Geografická poloha                 | Není dostupné.                                    |
 | Nejbližší silnice               | ✓                                      |
 | Hledání míst               | ✓                                      |
-| Podrobnosti o místech              | Není k dispozici – web & telefonní číslo. |
-| Místo fotek               | neuvedeno                                    |
+| Podrobnosti o místech              | Není k dispozici – webové stránky & telefonní číslo k dispozici |
+| Místa Fotografie               | Není dostupné.                                    |
 | Umístit automatické dokončování          | ✓                                      |
-| Přichycení k cestám                | ✓                                      |
-| Omezení rychlosti                | ✓                                      |
+| Přichytit k silnici                | ✓                                      |
+| Rychlostní limity                | ✓                                      |
 | Statické mapy                 | ✓                                      |
-| Statické zobrazení ulice          | neuvedeno                                    |
+| Statický street view          | Není dostupné.                                    |
 | Časové pásmo                   | ✓                                      |
-| Rozhraní API pro mapování Embedded           | neuvedeno                                    |
-| Mapování adres URL                    | neuvedeno                                    |
+| Vložené rozhraní API map           | Není dostupné.                                    |
+| Adresy URL map                    | Není dostupné.                                    |
 
-Google Maps poskytuje základní ověřování založené na klíčích. Azure Maps poskytuje jak základní ověřování založené na klíčích, tak ověřování Azure Active Directory. Ověřování Azure Active Directory poskytuje více funkcí zabezpečení oproti základnímu ověřování založenému na klíčích.
+Mapy Google poskytují základní ověřování založené na klíčích. Azure Maps poskytuje základní ověřování založené na klíčích i ověřování azure active directory. Ověřování Azure Active Directory poskytuje více funkcí zabezpečení ve srovnání se základním ověřováním na základě klíče.
 
-## <a name="licensing-considerations"></a>Požadavky na licencování
+## <a name="licensing-considerations"></a>Aspekty licencování
 
-Při migraci na Azure Maps z webu Google Maps zvažte následující body týkající se licencování.
+Při migraci do Map Azure z Map Google zvažte následující body týkající se licencování.
 
-- Azure Maps poplatky za použití interaktivních map, které jsou založené na počtu načtených dlaždic mapy. Na druhé straně se za načtení mapového ovládacího prvku účtují služby Google Maps. V interaktivních sadách Azure Maps SDK se dlaždice map automaticky ukládají do mezipaměti, aby se snížily náklady na vývoj. Jedna Azure Mapsová transakce je vygenerována pro každých 15 dlaždic map, které jsou načteny. Interaktivní Azure Maps sady SDK používají dlaždice 512-pixel a v průměru vygenerují jednu nebo méně transakcí na zobrazení stránky.
-- Často platí, že pokud chcete nahradit statické obrázky map z webových služeb Google Maps pomocí Azure Maps webové sady SDK, je jejich cena efektivnější. Sada Azure Maps Web SDK používá dlaždice mapy. Pokud uživatel neposouvá a nezvětšuje mapu, služba často generuje pouze zlomek transakce na jedno načtení mapy. Sada Azure Maps Web SDK obsahuje možnosti pro vypnutí posouvání a přiblížení (v případě potřeby). Sada SDK Azure Maps Web navíc nabízí spoustu dalších možností vizualizace než webová služba statické mapy.
-- Azure Maps umožňuje ukládat data z své platformy do Azure. Data je také možné ukládat do mezipaměti jinde po dobu až šesti měsíců podle [podmínek použití](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46).
+- Azure Maps poplatky za použití interaktivní mapy, která je založena na počtu načtených mapových dlaždic. Na druhou stranu, Mapy Google účtují poplatky za načtení ovládacího prvku mapy. V interaktivních sadách Azure Maps SDK se dlaždice map automaticky ukládají do mezipaměti, aby se snížily náklady na vývoj. Jedna transakce Azure Maps se vygeneruje pro každých 15 mapových dlaždic, které se načtou. Interaktivní sady Azure Maps SDK používají dlaždice o velikosti 512 pixelů a v průměru vygenerují jednu nebo méně transakcí na zobrazení stránky.
+- Často je nákladově efektivnější nahradit statické mapové obrázky z webových služeb Map Google sadou Azure Maps Web SDK. Web Ovásada Azure Maps Web SDK používá dlaždice mapy. Pokud uživatel posouvá a přibližuje mapu, služba často generuje pouze zlomek transakce na zatížení mapy. Webová sada Azure Maps s sadou Azure Maps má v případě potřeby možnosti pro zakázání posouvání a zvětšování. Webová sada Azure Maps navíc poskytuje mnohem více možností vizualizace než webová služba statické mapy.
+- Azure Maps umožňují ukládání dat z jeho platformy v Azure. Také data mohou být uložena v mezipaměti jinde po dobu až šesti měsíců podle [podmínek použití](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46).
 
-Tady je několik souvisejících prostředků pro Azure Maps:
+Tady jsou některé související prostředky pro Azure Maps:
 
-- [Stránka s cenami Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/)
+- [Cenová stránka Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/)
 - [Cenová kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
-- [Azure Maps podmínky použití](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (zahrnuté do podmínek služby Microsoft Online Services)
+- [Podmínky používání Map Azure](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (zahrnuté ve smluvních podmínkách služeb Microsoft Online Services)
 - [Výběr správné cenové úrovně v Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
 
 ## <a name="suggested-migration-plan"></a>Navrhovaný plán migrace
 
 Následuje plán migrace na vysoké úrovni.
 
-1. Využijte inventarizaci sad SDK a služeb Google Maps, které vaše aplikace používá. Ověřte, že Azure Maps poskytuje alternativní sady SDK a služby.
-2. Pokud ho ještě nemáte, vytvořte si na [https://azure.com](https://azure.com)předplatné Azure.
-3. Vytvořte účet Azure Maps ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) a ověřovací klíč nebo Azure Active Directory ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
+1. Udělejte si inventuru sad SDK a služeb Map Google, které vaše aplikace používá. Ověřte, zda Azure Maps poskytuje alternativní sady SDK a služby.
+2. Pokud ještě nemáte, vytvořte předplatné Azure [https://azure.com](https://azure.com)na .
+3. Vytvořte účet Azure Maps ([dokumentaci](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) a ověřovací klíč nebo Azure Active Directory ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
 4. Migrujte kód aplikace.
-5. Otestujte migrovaná aplikace.
-6. Nasaďte migrovaná aplikace do produkčního prostředí.
+5. Otestujte migrose.
+6. Nasaďte migrojedou aplikaci do produkčního prostředí.
 
-## <a name="azure-maps-technical-resources"></a>Azure Maps technické prostředky
+## <a name="azure-maps-technical-resources"></a>Technické prostředky Azure Maps
 
 Tady je seznam užitečných technických prostředků pro Azure Maps.
 
-- Přehled: [https://azure.com/maps](https://azure.com/maps)
-- Dokumentace: [https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
-- Ukázky kódu web SDK: [https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
-- Vývojářské fóra: [https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
-- Videa: [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
-- Blog: [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
-- Technický blog: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
-- Azure Maps Feedback (UserVoice): [https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
-- [Azure Maps Jupyter Notebook] [https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook]
+- Přehled:[https://azure.com/maps](https://azure.com/maps)
+- Dokumentace:[https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
+- Ukázky kódu sady Web SDK:[https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
+- Vývojářfóra:[https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
+- Videa:[https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
+- Blog:[https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
+- Tech Blog:[https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
+- Zpětná vazba map Azure (UserVoice):[https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
+- [Poznámkový blok Azure Maps Jupyter] [https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook]
 
 ## <a name="migration-support"></a>Podpora migrace
 
-Vývojáři můžou vyhledat podporu migrace prostřednictvím [fór](https://aka.ms/AzureMapsForums) nebo pomocí jedné z mnoha možností podpory Azure: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
+Vývojáři mohou hledat podporu migrace prostřednictvím [fór](https://aka.ms/AzureMapsForums) nebo prostřednictvím jedné z mnoha možností podpory Azure:[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si podrobnosti o migraci aplikace Google Maps pomocí těchto článků:
+Přečtěte si podrobnosti o migraci aplikace Mapy Google pomocí těchto článků:
 
 > [!div class="nextstepaction"]
 > [Migrace webové aplikace](migrate-from-google-maps-web-app.md)

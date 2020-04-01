@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 70e8bf95022f88dab54fa13769df4b051cf41c92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247142"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475518"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -401,7 +401,7 @@ Podívejte se [na seznam známých problémů,](resource-known-issues.md) kde se
 
 ### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Azure Machine Learning SDK pro Python v1.0.74
 
-  + **Funkce Preview**
+  + **Funkce náhledu**
     + **azureml-contrib-datová sada**
       + Po importu azureml-contrib-dataset, `Dataset.Labeled.from_json_lines` můžete `._Labeled` volat místo k vytvoření popiskované datové sady.
       + Při `to_pandas_dataframe` volání na značené datové sady s možností stahování můžete nyní určit, zda chcete přepsat existující soubory nebo ne.
@@ -494,7 +494,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
   + Oznámení dvou nových edic (označované také jako skladová položka zaměnitelně) v Azure Machine Learning. V této verzi teď můžete vytvořit pracovní prostor Basic nebo Enterprise Azure Machine Learning. Všechny existující pracovní prostory budou výchozí pro základní edici a můžete přejít na portál Azure nebo do studia a kdykoli upgradovat pracovní prostor. Pracovní prostor Basic nebo Enterprise můžete vytvořit z portálu Azure. Přečtěte si [prosím naši dokumentaci,](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) abyste se dozvěděli více. Z sady SDK lze edici pracovního prostoru určit pomocí vlastnosti "sku" objektu pracovního prostoru.
   + Také jsme provedli vylepšení Azure Machine Learning Compute – teď můžete zobrazit metriky pro vaše clustery (jako jsou celkové uzly, spuštěné uzly, celková kvóta jádra) ve službě Azure Monitor, kromě zobrazení diagnostických protokolů pro ladění. Kromě toho můžete také zobrazit aktuálně spuštěné nebo zařazené spuštěné spuštění v clusteru a podrobnosti, jako jsou IP adresy různých uzlů v clusteru. Můžete zobrazit buď na portálu nebo pomocí odpovídajícífunkce v sdk nebo CLI.
 
-  + **Funkce Preview**
+  + **Funkce náhledu**
     + Vydáváme podporu náhledu pro šifrování disku místního ssd disku v Azure Machine Learning Compute. Požádejte o lístek technické podpory, aby vaše předplatné bylo na seznamu povolených, aby tuto funkci používalo.
     + Veřejná preview dávkové inference Azure Machine Learning. Azure Machine Learning Batch Inference cílí na velké odvozené úlohy, které nejsou citlivé na čas. Dávkové odvození poskytuje nákladově efektivní odvození výpočetní škálování, s bezkonkurenční propustnost pro asynchronní aplikace. Je optimalizován pro odvození s vysokou propustností, fire-and-forget přes velké kolekce dat.
     + [**azureml-contrib-datová sada**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
@@ -624,7 +624,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
     + Opravena chyba v run.get_metrics kde by požadavky selhaly, pokud by spuštění mělo příliš mnoho dětí
     + Opravena chyba v [run.get_metrics](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) kde by požadavky selhaly, pokud by spuštění mělo příliš mnoho dětí
     + Přidána podpora ověřování v clusteru Arcadia.
-    + Vytvoření objektu Experiment získá nebo vytvoří experiment v pracovním prostoru Azure Machine Learning pro sledování historie spuštění. ID experimentu a archivovaný čas jsou naplněny v objektu Experiment při vytváření. Příklad: experiment = Experiment (pracovní prostor, "Nový experiment") experiment_id = experiment.id archive() a reactivate() jsou funkce, které lze volat na experiment skrýt a obnovit experiment z zobrazených v uživatelském jazyku nebo vráceny ve výchozím nastavení v hovoru pro seznam experimentů. Pokud je nový experiment vytvořen se stejným názvem jako archivovaný experiment, můžete archivovaný experiment přejmenovat při opětovné aktivaci předáním nového názvu. Může existovat pouze jeden aktivní experiment s daným názvem. Příklad: experiment1 = Experiment(pracovní prostor, "Aktivní experiment") experiment1.archive() # Vytvořte nový aktivní experiment se stejným názvem jako archivovaný. experiment2. = Experiment (pracovní prostor, "Aktivní experiment") experiment1.reactivate (new_name="Předchozí aktivní experiment") Statický seznam metod () v experimentu může mít filtr názvů a filtr ViewType. Hodnoty ViewType jsou "ACTIVE_ONLY", "ARCHIVED_ONLY" a "ALL"Příklad: archived_experiments = Experiment.list(pracovní prostor, view_type="ARCHIVED_ONLY") all_first_experiments = Experiment.list(pracovní prostor, name="První experiment", view_type="ALL")
+    + Vytvoření objektu Experiment získá nebo vytvoří experiment v pracovním prostoru Azure Machine Learning pro sledování historie spuštění. ID experimentu a archivovaný čas jsou naplněny v objektu Experiment při vytváření. Příklad: experiment = Experiment (pracovní prostor, "Nový experiment") experiment_id = experiment.id archive() a reactivate() jsou funkce, které lze volat na experiment skrýt a obnovit experiment z zobrazeného v uživatelském jazyku nebo vráceny ve výchozím nastavení v experimentech volání do seznamu. Pokud je nový experiment vytvořen se stejným názvem jako archivovaný experiment, můžete archivovaný experiment přejmenovat při opětovné aktivaci předáním nového názvu. Může existovat pouze jeden aktivní experiment s daným názvem. Příklad: experiment1 = Experiment(pracovní prostor, "Aktivní experiment") experiment1.archive() # Vytvořte nový aktivní experiment se stejným názvem jako archivovaný. experiment2. = Experiment (pracovní prostor, "Aktivní experiment") experiment1.reactivate (new_name="Předchozí aktivní experiment") Statický seznam metod () v experimentu může mít filtr názvů a filtr ViewType. Hodnoty ViewType jsou "ACTIVE_ONLY", "ARCHIVED_ONLY" a "ALL"Příklad: archived_experiments = Experiment.list(pracovní prostor, view_type="ARCHIVED_ONLY") all_first_experiments = Experiment.list(pracovní prostor, name="První experiment", view_type="ALL")
     + Podpora pomocí prostředí pro nasazení modelu a aktualizace služby
   + **azureml-datadrift**
     + Atribut show třídy DataDriftDector už nepodporuje volitelný argument "with_details". Atribut show bude prezentovat pouze koeficient posunu dat a příspěvek posunu dat sloupců prvků.
@@ -708,7 +708,7 @@ Karta Experiment na [novém portálu pracovního prostoru](https://ml.azure.com)
   + **[azureml-vlak-automl](/python/api/azureml-train-automl-runtime/)**
     + Přidána podpora konverze ONNX pro ADB a HDI
 
-+ **Funkce Preview**
++ **Funkce náhledu**
   + **azureml-vlak-automl**
   + **[azureml-vlak-automl](/python/api/azureml-train-automl-runtime/)**
     + Podporované BERT a BiLSTM jako text featurizer (pouze náhled)
@@ -798,8 +798,8 @@ Karta Experiment na [novém portálu pracovního prostoru](https://ml.azure.com)
     + Výjimka, že sloupec časového razítka nelze nalézt, bude vyvolána, pokud je čas seriály související rozhraní API volána bez sloupce jemného časového razítka nebo jsou vynechány přiřazené sloupce časového razítka.
     + Sloupce časových seriálů by měly být přiřazeny ke sloupci, jehož typ je Datum, jinak se očekává výjimka.
     + Sloupce časových seriálů přiřazující rozhraní API with_timestamp_columns mohou trvat název sloupce žádné hodnoty fine/coarse, což vymaže dříve přiřazené sloupce časových razítek.
-    + Výjimka bude vyvolána, když je vynechán buď hrubý zrno nebo jemně odstupňovaný sloupec časového razítka s indikací pro uživatele, že uvolnění lze provést buď po vyloučení sloupce časového razítka v seznamu uvolnění nebo volání with_time_stamp s hodnotou None pro uvolnění časového razítka Sloupce
-    + Výjimka bude vyvolána, pokud buď hrubé zrno nebo jemně odstupňované sloupec časového razítka není zahrnuta v seznamu zachovat sloupce s označením pro uživatele, že zachování lze provést buď po zahrnutí sloupce časového razítka do seznamu zachovat sloupec nebo volání with_time_stamp s None hodnotu pro uvolnění sloupců časového razítka.
+    + Výjimka bude vyvolána, když je vynechán buď hrubý zrno nebo jemně odstupňovaný sloupec časového razítka s indikací pro uživatele, že uvolnění lze provést buď po vyloučení sloupce časového razítka v seznamu uvolnění nebo volání with_time_stamp s hodnotou None pro uvolnění sloupců časového razítka
+    + Výjimka bude vyvolána, pokud buď hrubé zrno nebo jemně odstupňované sloupec časového razítka není zahrnuta v seznamu zachovat sloupce s označením pro uživatele, že zachování lze provést buď po zahrnutí sloupce časového razítka v seznamu zachovat sloupec nebo volání with_time_stamp s žádnou hodnotou uvolnit sloupce časového razítka.
     + Přidáno protokolování pro velikost registrovaného modelu.
   + **azureml-explain-model**
     + Opraveno upozornění vytištěné na konzoli, když není nainstalován balíček pythonu "packaging": "Pomocí starší než podporované verze lightgbm upgradujte na verzi větší než 2.2.1"
@@ -925,13 +925,13 @@ V době vydání této verze jsou podporovány následující prohlížeče: Chr
     + Aktualizované rozhraní vytvořit `RawDataContext` pouze vyžadovat data `AutoMLBaseSettings` a objekt.
     +  Povolit uživatelům automatického mlsu přetáhnout tréninkové řady, které nejsou dostatečně dlouhé při prognózování. - Povolit uživatelům Automatické ho mlsu vypustit zrna z testovací sady, která neexistuje v sadě školení při prognózování.
   + **azurové cli-ml**
-    + Nyní můžete aktualizovat certifikát SSL pro koncový bod vyhodnocování nasazený v clusteru AKS pro certifikát generovaný společností Microsoft i pro certifikát zákazníka.
+    + Nyní můžete aktualizovat certifikát TLS/SSL pro koncový bod vyhodnocování nasazený v clusteru AKS pro certifikát generovaný společností Microsoft i pro certifikát zákazníka.
   + **azureml-automl-core**
     + Byl opraven problém v automatické míchané, kde řádky s chybějícími popisky nebyly správně odebrány.
     + Vylepšeno protokolování chyb v automatické mlze; úplné chybové zprávy budou nyní vždy zapsány do souboru protokolu.
     + Aplikace AutoML aktualizovala připnutí `azureml-explain-model`balíčku `azureml-dataprep`tak, aby zahrnovalo `azureml-defaults`, a . AutoML již nebude upozorňováno na `azureml-train-automl` neshody balíčků (s výjimkou balíčku).
     + Byl opraven `timeseries` problém, kdy rozdělení cv mají nestejnou velikost, což způsobuje selhání výpočtu přihrádky.
-    + Při spuštění iterace souboru pro typ školení křížového ověření, pokud jsme skončili se stahováním modelů vyškolených na celé datové sadě, měli jsme nesoulad mezi vahy modelu a modely, které byly přiváděny do hlasování Soubor.
+    + Při spuštění iterace souboru pro typ školení křížového ověření, pokud jsme skončili se stahováním modelů trénovaných na celé datové sadě, měli jsme nesoulad mezi vahy modelu a modely, které byly přiváděny do hlasovacího souboru.
     + Opravena chyba, která byla vyvolána, když jsou k dispozici trénovací a/nebo ověřovací štítky (y a y_valid) ve formě datového rámce pand, ale ne jako numpy array.
     + Opraven problém s úlohami prognózy, když bylo v logických sloupcích vstupních tabulek zjištěno žádné.
     + Povolit uživatelům automatického mlsu přetáhnout tréninkové řady, které nejsou dostatečně dlouhé při prognózování. - Povolit uživatelům Automatické ho mlsu vypustit zrna z testovací sady, která neexistuje v sadě školení při prognózování.
@@ -956,7 +956,7 @@ V době vydání této verze jsou podporovány následující prohlížeče: Chr
     + Podporovaný import souborů HTTP csv/tsv v datové sadě Python SDK.
     + Zastaralá metoda Workspace.setup(). Varovná zpráva zobrazená uživatelům navrhuje místo toho použít create(nebo get()/from_config().
     + Added Environment.add_private_pip_wheel(), který umožňuje nahrávání `whl`soukromých vlastních balíčků pythonu do pracovního prostoru a jejich bezpečné použití k vytváření/zhmotnění prostředí.
-    + Nyní můžete aktualizovat certifikát SSL pro koncový bod vyhodnocování nasazený v clusteru AKS pro certifikát generovaný společností Microsoft i pro certifikát zákazníka.
+    + Nyní můžete aktualizovat certifikát TLS/SSL pro koncový bod vyhodnocování nasazený v clusteru AKS pro certifikát generovaný společností Microsoft i pro certifikát zákazníka.
   + **azureml-explain-model**
     + Přidán parametr pro přidání ID modelu k vysvětlení při nahrávání.
     + Přidáno `is_raw` označování vysvětlení v paměti a nahrávání.
@@ -1156,7 +1156,7 @@ V době vydání této verze jsou podporovány následující prohlížeče: Chr
 ## <a name="2019-07-09"></a>2019-07-09
 
 ### <a name="visual-interface"></a>Vizuální rozhraní
-+ **Funkce Preview**
++ **Funkce náhledu**
   + Přidán modul "Spustit skript R" ve vizuálním rozhraní.
 
 ### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Azure Machine Learning SDK pro Python v1.0.48
@@ -1167,7 +1167,7 @@ V době vydání této verze jsou podporovány následující prohlížeče: Chr
     + Tento nový balíček umožňuje zaregistrovat otevřené datové sady jako datovou sadu v pracovním prostoru Azure Machine Learning a využít jakékoli funkce, které dataset nabízí.
     + Zahrnuje také stávající funkce, jako je využívání otevřených datových sad, jako jsou datové rámce Pandas / SPARK a připojení k umístění pro některé datové sady, jako je počasí.
 
-+ **Funkce Preview**
++ **Funkce náhledu**
     + HyperDriveConfig nyní může přijímat objekt kanálu jako parametr pro podporu hyperparameter tuning pomocí kanálu.
 
 + **Opravy a vylepšení chyb**
@@ -1247,7 +1247,7 @@ Vrátili jsme změnu, která zlepšila výkon, protože způsobovala problémy n
   + Zastaralé hash_paths parametr pro všechny kroky kanálu
   + Model.register nyní podporuje registraci více jednotlivých souborů `child_paths` jako jeden model s použitím parametru.
 
-+ **Funkce Preview**
++ **Funkce náhledu**
     + Vysvětlivky skóre nyní volitelně uložit conda a pip informace pro spolehlivější serializace a deserializace.
     + Oprava chyby pro automatický volič funkcí.
     + Aktualizováno mlflow.azureml.build_image na nové rozhraní API, opravené chyby vystavené nové implementace.
@@ -1288,7 +1288,7 @@ Vrátili jsme změnu, která zlepšila výkon, protože způsobovala problémy n
     + Clustering KMeans je povolen pro zametání funkcí
   + AmlCompute Kvóta schválení právě stal se rychleji! Nyní jsme zautomatizovali proces schvalování vašich žádostí o kvótu v rámci prahové hodnoty. Další informace o tom, jak kvóty fungují, naleznete v informacích o [tom, jak spravovat kvóty](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
 
-+ **Funkce Preview**
++ **Funkce náhledu**
     + Integrace se sledováním [MLflow](https://mlflow.org) 1.0.0 prostřednictvím balíčku azureml-mlflow[(ukázkové poznámkové bloky).](https://aka.ms/azureml-mlflow-examples)
     + Odeslat Jupyter notebook jako běh. [Referenční dokumentace rozhraní API](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
     + Public Preview of [Data Drift Detector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) prostřednictvím balíčku azureml-contrib-datadrift[(ukázkové poznámkové bloky).](https://aka.ms/azureml-datadrift-example) Datový drift je jedním z hlavních důvodů, proč přesnost modelu v průběhu času snižuje. Stává se to, když se data obsluhovaná k modelu v produkčním prostředí liší od dat, na kterých byl model trénován. Detektor driftu AML data pomáhá zákazníkům sledovat posun dat a odesílá výstrahu vždy, když je detekován posun.

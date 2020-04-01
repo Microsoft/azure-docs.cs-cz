@@ -9,10 +9,10 @@ ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68844883"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorování a řešení potíží s aplikací cloudového úložiště
@@ -31,9 +31,9 @@ Ve čtvrté části této série se naučíte:
 
 Protokolování a metriky účtů úložiště se zapínají na kartě **Diagnostika** na webu Azure Portal. Protokolování úložiště umožňuje zaznamenávat podrobnosti o úspěšných i neúspěšných požadavcích v účtu úložiště. V těchto protokolech můžete zobrazit podrobnosti o operacích čtení, zápisu a odstranění provedených s vašimi tabulkami, frontami a objekty blob v Azure. Můžete z nich také zjistit důvody neúspěšných požadavků, jako jsou časové limity, omezování nebo chyby autorizace.
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+Přihlášení na [portál Azure](https://portal.azure.com)
 
 ## <a name="turn-on-logging-and-metrics"></a>Zapnutí protokolování a metrik
 
@@ -41,7 +41,7 @@ V nabídce vlevo vyberte **Skupiny prostředků**, pak **myResourceGroup** a v s
 
 V části **Nastavení diagnostiky (klasické)** u položky **Stav** vyberte **Zapnuto**. Přesvědčte se, že všechny možnosti v části **Vlastnosti objektu blob** jsou povolené.
 
-Jakmile budete hotovi, klikněte na **Uložit**.
+Po dokončení klikněte na **Uložit.**
 
 ![Podokno Diagnostika](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
@@ -51,7 +51,7 @@ Upozornění představují způsob, jak na základě prahové hodnoty nebo poru�
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>Přechod k účtu úložiště na webu Azure Portal
 
-V části **Monitorování** vyberte **Upozornění (klasická)** .
+V části **Monitorování** vyberte **Upozornění (klasická)**.
 
 Vyberte **Přidat upozornění metriky (klasické)** a zadejte požadované údaje do formuláře **Přidat pravidlo**. V rozevíracím seznamu **Metrika** vyberte `SASClientOtherError`. Pokud chcete, aby se upozornění aktivovalo při první chybě, v rozevíracím seznamu **Podmínka** vyberte **Větší než nebo rovno**.
 
@@ -89,7 +89,7 @@ V tomto scénáři použijete k práci se svým účtem úložiště Azure aplik
 
 Stáhněte a nainstalujte aplikaci [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226).
 
-Spusťte aplikaci a zvolte **File** (Soubor) > **Open** (Otevřít) > **From Other File Sources** (Z jiných zdrojů souborů).
+Spusťte aplikaci a zvolte**Otevřít** >  **soubor** > **z jiných zdrojů souborů**.
 
 V dialogovém okně **File Selector** (Selektor souborů) vyberte **+ Add Azure Connection** (+ Přidat připojení k Azure). Zadejte **název účtu úložiště** a **klíč účtu** a pak klikněte na **OK**.
 
@@ -107,7 +107,7 @@ Po otevření protokolu můžete zobrazit události úložiště. Jak je vidět 
 
 Dalším nástrojem, který můžete použít k práci se svým účtem úložiště včetně kontejneru **$logs** a protokolů, které obsahuje, je [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Ve čtvrté a poslední části série jste zjistili, jak monitorovat a řešit potíže se svým účtem úložiště, a naučili jste se například:
 

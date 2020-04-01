@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e348180eb94c1703ceecf2f2b00ab942ba5ff0ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536322"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435347"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -73,9 +73,9 @@ Azure Security Center se integruje se službami Azure a monitoruje a chrání va
 
 Security Center shromažďuje záznamy auditu z počítačů s Linuxem pomocí **auditovaných**, což je jeden z nejběžnějších architektur pro auditování Linuxu. kontrolované hody v hlavním jádru. 
 
-* **Linux auditované výstrahy a Microsoft Monitoring Agent (MMA) integrace** <a name="linux-auditd"></a> - Auditovaný systém se skládá z podsystému na úrovni jádra, který je zodpovědný za sledování volání systému. Filtruje je podle zadané sady pravidel a zapisuje zprávy pro ně do soketu. Security Center integruje funkce z auditovaného balíčku v rámci Microsoft Monitoring Agent (MMA). Tato integrace umožňuje shromažďování auditovaných událostí ve všech podporovaných distribucích Linuxu bez jakýchkoli vyložených.  
+* **Linux auditované výstrahy a integrace** <a name="linux-auditd"></a> agenta Log Analytics - Auditovaný systém se skládá z podsystému na úrovni jádra, který je zodpovědný za sledování volání systému. Filtruje je podle zadané sady pravidel a zapisuje zprávy pro ně do soketu. Security Center integruje funkce z auditovaného balíčku v rámci agenta Log Analytics. Tato integrace umožňuje shromažďování auditovaných událostí ve všech podporovaných distribucích Linuxu bez jakýchkoli vyložených.
 
-    auditované záznamy jsou shromažďovány, obohaceny a agregovány do událostí pomocí agenta Linux MMA. Security Center neustále přidává nové analýzy, které používají signály Linuxu k detekci škodlivého chování na cloudových a místních počítačích s Linuxem. Podobně jako funkce systému Windows se tyto analýzy rozprostírají napříč podezřelými procesy, pochybnými pokusy o přihlášení, načítáním modulu jádra a dalšími aktivitami. Tyto aktivity mohou naznačovat, že stroj je buď napaden, nebo byl porušen.  
+    auditované záznamy jsou shromažďovány, obohaceny a agregovány do událostí pomocí agenta Log Analytics pro agenta Linuxu. Security Center neustále přidává nové analýzy, které používají signály Linuxu k detekci škodlivého chování na cloudových a místních počítačích s Linuxem. Podobně jako funkce systému Windows se tyto analýzy rozprostírají napříč podezřelými procesy, pochybnými pokusy o přihlášení, načítáním modulu jádra a dalšími aktivitami. Tyto aktivity mohou naznačovat, že stroj je buď napaden, nebo byl porušen.  
 
     Seznam výstrah linuxových záznamů naleznete v [referenční tabulce výstrah](alerts-reference.md#alerts-linux).
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9b3af6a6cee4375a110c894b6b72655605ad077d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372239"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398114"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – platforma pro streamování velkých objemů dat a služba pro ingestování událostí
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba ingestování událostí. Dokáže přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
@@ -61,7 +61,7 @@ Pomocí Event Hubs můžete začít se streamy v megabajtech a přejít na gigab
 
 [Event Huby pro ekosystémy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umožňují klientům [apache kafka (1.0 a novější)](https://kafka.apache.org/) a aplikacím mluvit s Event Hubs. Není nutné nastavovat, konfigurovat a spravovat vlastní clustery Kafka.
 
-Díky širokému ekosystému dostupnému v různých [jazycích (.NET, Java, Python, Go, JavaScript)](https://github.com/Azure/azure-event-hubs)můžete snadno začít zpracovávat streamy z Event Hubs. Všechny podporované jazyky klientů poskytují integraci na nízké úrovni. Ekosystém vám také poskytuje bezproblémovou integraci se službami Azure, jako jsou Azure Stream Analytics a Azure Functions, a umožňuje tak vytvářet architektury bez serveru.
+Díky širokému ekosystému dostupnému v různých jazycích [.NET](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [Pythonu](https://github.com/Azure/azure-sdk-for-python/), [JavaScriptu](https://github.com/Azure/azure-sdk-for-js/)můžete snadno začít zpracovávat streamy z Event Hubů. Všechny podporované jazyky klientů poskytují integraci na nízké úrovni. Ekosystém vám také poskytuje bezproblémovou integraci se službami Azure, jako jsou Azure Stream Analytics a Azure Functions, a umožňuje tak vytvářet architektury bez serveru.
 
 ## <a name="key-architecture-components"></a>Klíčové komponenty architektury
 Event Hubs obsahuje následující [klíčové komponenty](event-hubs-features.md):
@@ -76,6 +76,13 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
+## <a name="event-hubs-on-azure-stack-hub"></a>Centra událostí v centru Azure Stack Hub
+Centra událostí v centru Azure Stack Hub umožňují realizovat scénáře hybridního cloudu. Streamovací a eventová řešení jsou podporovaná pro místní i cloudové zpracování Azure. Bez ohledu na to, zda je váš scénář hybridní (připojený) nebo odpojený, vaše řešení může podporovat zpracování událostí a datových proudů ve velkém měřítku. Váš scénář je vázán pouze velikost clusteru Event Hubs, které můžete zřídit podle vašich potřeb. 
+
+Edice Event Hubs (v Azure Stack Hubu a v Azure) nabízejí vysoký stupeň parity funkcí. Tato parita znamená, že sady SDK, ukázky, prostředí PowerShell, CLI a portály nabízejí podobné prostředí s několika rozdíly. 
+
+Centra událostí v zásobníku jsou během náhledu public zdarma. Další informace najdete v [tématu Centra událostí na Azure Stack Hub přehled](https://docs.microsoft.com/azure-stack/user/event-hubs-overview).
+
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -84,7 +91,7 @@ Pokud chcete začít používat Centra událostí, přečtěte si kurzy **pro od
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Přejít](event-hubs-go-get-started-send.md)
 - [C (jenom odesílání)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (jenom příjem)](event-hubs-storm-getstarted-receive.md)

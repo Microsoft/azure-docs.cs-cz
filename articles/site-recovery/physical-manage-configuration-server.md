@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294293"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478962"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -290,8 +290,8 @@ Upgradujte server takto:
 > [!NOTE]
 > Možnost **-Force** v remove-AzSiteRecoveryFabric lze vynutit odebrání nebo odstranění konfiguračního serveru.
 
-## <a name="renew-ssl-certificates"></a>Prodloužení platnosti certifikátů SSL
-Konfigurační server má vestavěný webový server, který orchestruje aktivity služby Mobility, procesních serverů a hlavních cílových serverů, které jsou k němu připojeny. Webový server používá k ověřování klientů certifikát SSL. Platnost certifikátu vyprší po třech letech a lze jej kdykoli obnovit.
+## <a name="renew-tlsssl-certificates"></a>Obnovení certifikátů TLS/SSL
+Konfigurační server má vestavěný webový server, který orchestruje aktivity služby Mobility, procesních serverů a hlavních cílových serverů, které jsou k němu připojeny. Webový server používá k ověřování klientů certifikát TLS/SSL. Platnost certifikátu vyprší po třech letech a lze jej kdykoli obnovit.
 
 ### <a name="check-expiry"></a>Zkontrolovat vypršení platnosti
 

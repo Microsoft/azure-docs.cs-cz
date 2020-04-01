@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244534"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422865"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezzy pomocí Azure Data Factory
 
@@ -158,7 +158,7 @@ Chcete-li kopírovat data z Netezzy, nastavte **typ zdroje** v okně Kopírovat 
 |:--- |:--- |:--- |
 | type | Vlastnost **type** zdroje Aktivity kopírování musí být nastavena na **NetezzaSource**. | Ano |
 | query | Ke čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"` | Ne (pokud je v datové sadě zadán "název_tabulky") |
-| partitionOptions | Určuje možnosti rozdělení dat použité k načtení dat z aplikace Netezza. <br>Povolit hodnoty jsou: **None** (výchozí), **DataSlice**a **DynamicRange**.<br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně [`parallelCopies`](copy-activity-performance.md#parallel-copy) načíst data z databáze Netezza je řízen nastavením na aktivitu kopírování. | Ne |
+| partitionOptions | Určuje možnosti rozdělení dat použité k načtení dat z aplikace Netezza. <br>Povolit hodnoty jsou: **None** (výchozí), **DataSlice**a **DynamicRange**.<br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) načíst data z databáze Netezza je řízen nastavením na aktivitu kopírování. | Ne |
 | partitionSettings | Zadejte skupinu nastavení pro dělení dat. <br>Použít, pokud možnost `None`oddílu není . | Ne |
 | partitionColumnName | Zadejte název zdrojového sloupce **v typu celé číslo,** který bude použit dělením rozsahu pro paralelní kopírování. Pokud není zadán, primární klíč tabulky je automaticky rozpoznán a použit jako sloupec oddílu. <br>Použít, pokud je `DynamicRange`možnost oddílu . Pokud použijete dotaz k načtení `?AdfRangePartitionColumnName` zdrojových dat, zavěste do klauzule WHERE. Viz příklad paralelní [kopie z oddílu Netezza.](#parallel-copy-from-netezza) | Ne |
 | partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použít, pokud `DynamicRange`je možnost oddílu . Pokud použijete dotaz k načtení zdrojových dat, zavěste `?AdfRangePartitionUpbound` do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z netezzy.](#parallel-copy-from-netezza) | Ne |
@@ -202,7 +202,7 @@ Konektor Netezza data Factory poskytuje vestavěné dělení dat pro paralelní 
 
 ![Snímek obrazovky s možnostmi oddílu](./media/connector-netezza/connector-netezza-partition-options.png)
 
-Když povolíte rozdělenou kopii, Data Factory spustí paralelní dotazy proti zdroji Netezza pro načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance.md#parallel-copy) řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Netezza.
+Když povolíte rozdělenou kopii, Data Factory spustí paralelní dotazy proti zdroji Netezza pro načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Netezza.
 
 Doporučujeme povolit paralelní kopírování s dělením dat, zejména při načítání velkého množství dat z databáze Netezza. Níže jsou navrženy konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je připonuto zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
 

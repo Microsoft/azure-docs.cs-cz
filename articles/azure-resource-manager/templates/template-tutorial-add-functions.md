@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6bb95d5a8022c6ac94dd8b7c777c65ff5e20617a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4984b286bf031b66272919a487d09a90f972ce0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369919"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410965"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Kurz: Přidání funkcí šablony do šablony ARM
 
@@ -71,6 +71,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Pokud se nasazení nezdařilo, zobrazte protokoly ladění pomocí **přepínače ladění** s příkazem deployment.  Můžete také použít **podrobný** přepínač k zobrazení úplné protokoly ladění.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 

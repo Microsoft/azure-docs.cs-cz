@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d26dc55cfd0f2ef0bb78e4153fffe3f1cb910b73
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251606"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474867"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty datové vědy
 
@@ -49,7 +49,7 @@ Obsahuje také **nástroje ML a AI** jako xgboost, mxnet a Vowpal Wabbit.
 
 V současné době je DSVM k dispozici v operačních systémech **Windows** a **Linux CentOS.** Zvolte velikost vašeho DSVM (počet jader procesoru a velikost paměti) na základě potřeb projektů datové vědy, které plánujete provést na něm. 
 
-Další informace o edici Windows dsvm najdete v [tématu Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) na Azure Marketplace. Linuxová edice DSVM najdete v tématu [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Další informace o edici Windows dsvm najdete v [tématu Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) na Azure Marketplace. Linuxová edice DSVM najdete v tématu [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu).
 
 Informace o tom, jak efektivně provádět některé běžné úlohy datové vědy na dsvm, najdete v [tématu 10 věcí, které můžete dělat na virtuálním počítači pro datové vědy.](../data-science-virtual-machine/vm-do-ten-things.md)
 

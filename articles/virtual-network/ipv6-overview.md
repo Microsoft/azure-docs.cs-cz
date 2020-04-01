@@ -1,5 +1,5 @@
 ---
-title: Přehled IPv6 pro virtuální síť Azure (preview)
+title: Přehled IPv6 pro virtuální síť Azure
 titlesuffix: Azure Virtual Network
 description: Popis IPv6 koncových bodů IPv6 a datových cest ve virtuální síti Azure.
 services: virtual-network
@@ -10,24 +10,22 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/19/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780075"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420570"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Co je IPv6 pro virtuální síť Azure? (Preview)
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>Co je IPv6 pro virtuální síť Azure?
 
 IPv6 pro virtuální síť Azure (VNet) umožňuje hostovat aplikace v Azure pomocí připojení IPv6 a IPv4 v rámci virtuální sítě i do a z Internetu. Vzhledem k vyčerpání veřejných IPv4 adres jsou nové sítě pro mobilitu a Internet věcí (IoT) často postaveny na IPv6. Dokonce i dlouho zavedené ISP a mobilní sítě jsou transformovány na IPv6. Služby pouze pro IPv4 se mohou ocitnout ve skutečné nevýhodě na stávajících i rozvíjejících se trzích. Připojení IPv4/IPv6 se dvěma zásobníky umožňuje službám hostovaným v Azure procházet tuto technologickou mezeru pomocí globálně dostupných dvouskládaných služeb, které se snadno připojují jak k existujícím IPv4, tak k těmto novým zařízením a sítím IPv6.
 
 Původní připojení IPv6 azure usnadňuje poskytování připojení k internetu s dvěma stacky (IPv4/IPv6) pro aplikace hostované v Azure. Umožňuje jednoduché nasazení virtuálních počítače s připojením IPv6 s vyrovnáváním zatížení pro příchozí i odchozí inicialovaná připojení. Tato funkce je stále k dispozici a další informace jsou k dispozici [zde](../load-balancer/load-balancer-ipv6-overview.md).
 Virtuální síť IPv6 pro Azure je mnohem plnější – umožňuje nasazení úplných architektur řešení IPv6 v Azure.
 
-> [!Important]
-> IPv6 pro virtuální síť Azure je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Následující diagram znázorňuje jednoduché nasazení duálního zásobníku (IPv4/IPv6) v Azure:
 
@@ -74,7 +72,7 @@ IPv6 pro virtuální síť Azure je základní sada funkcí, která zákazníků
 
 ## <a name="limitations"></a>Omezení
 Aktuální verze Virtuální sítě IPv6 pro Azure má následující omezení:
-- IPv6 pro virtuální síť Azure (Preview) je k dispozici ve všech globálních oblastech Azure, ale jenom v globálním Azure– ještě není ve vládních cloudech.
+- IPv6 pro virtuální síť Azure je dostupná ve všech globálních oblastech Azure, ale jenom v globálním Azure, zatím není ve vládních cloudech.
 - Brány ExpressRoute a VPN nelze použít ve virtuální síti s povolenou technologií IPv6, přímo nebo s partnerem s rozhraním "UseRemoteGateway". 
 - Platforma Azure (AKS atd.) nepodporuje komunikaci IPv6 pro kontejnery.  
 

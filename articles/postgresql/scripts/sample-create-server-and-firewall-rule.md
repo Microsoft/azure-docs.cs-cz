@@ -9,10 +9,10 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 14bb46d8917aedb3ea5a625db2489c97a4fd0ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66122067"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Vytvoření serveru Azure Database for PostgreSQL a konfigurace pravidla brány firewall pomocí Azure CLI
@@ -40,6 +40,6 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | [az postgres server firewall create](/cli/azure/postgres/server/firewall-rule) | Vytvoří pravidlo brány firewall umožňující přístup k serveru a jeho databázím ze zadaného rozsahu IP adres. |
 | [az group delete](/cli/azure/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
-- Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure)
-- Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database for PostgreSQL](../sample-scripts-azure-cli.md)
+## <a name="next-steps"></a>Další kroky
+- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure).
+- Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database for PostgreSQL](../sample-scripts-azure-cli.md).

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/13/2020
-ms.openlocfilehash: c813e8a27a7f85eccff2c23d9ffdcfa4a1442f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282830"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437358"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečené úlohy experimentování a odvození Azure ML v rámci virtuální sítě Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Pokud chcete pro pracovní prostor ve virtuální síti použít účet úloži�
     - V části __Virtuální sítě__vyberte Přidat existující propojení __virtuální sítě.__ Tato akce přidá virtuální síť, kde se nachází vaše výpočetní prostředky (viz krok 1).
 
         > [!IMPORTANT]
-        > Účet úložiště musí být ve stejné virtuální síti jako výpočetní instance nebo clustery používané pro školení nebo odvození.
+        > Účet úložiště musí být ve stejné virtuální síti a podsíti jako výpočetní instance nebo clustery používané pro školení nebo odvození.
 
     - Zaškrtněte políčko __Povolit důvěryhodným službám společnosti Microsoft přístup k tomuto účtu úložiště.__
 
@@ -180,8 +180,6 @@ Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí p
    - Azure Storage pomocí __výrobního tagu__ __Storage.RegionName__. Kde `{RegionName}` je název oblasti Azure.
    - Azure Container Registry, pomocí __service tag__ __azurecontainerregistru.název_regionu__. Kde `{RegionName}` je název oblasti Azure.
    - Azure Machine Learning pomocí __servisního tagu__ __AzureMachineLearning__
-   
-- Pro __výpočetní instanci__přidejte také následující položky:
    - Správce prostředků Azure pomocí __výrobního tagu__ __AzureResourceManager__
    - Azure Active Directory pomocí __servisní značky__ __AzureActiveDirectory__
 
@@ -242,19 +240,19 @@ Další informace najdete [v tématu Vytvoření fondu Azure Batch ve virtuáln�
 
 Chcete-li vytvořit výpočetní cluster Machine Learning Compute, použijte následující kroky:
 
-1. Na [webu Azure Portal](https://portal.azure.com)vyberte pracovní prostor Azure Machine Learning.
+1. Přihlaste se do [centra Azure Machine Learning a](https://ml.azure.com/)vyberte předplatné a pracovní prostor.
 
-1. V části __Aplikace__ vyberte __Compute__a pak vyberte __Přidat výpočetní prostředky__.
+1. Vlevo vyberte __Vypočítat.__
 
-1. Chcete-li nakonfigurovat tento výpočetní prostředek tak, aby používal virtuální síť, proveďte následující akce:
+1. Vyberte __tréninkové clustery__ ze středu __+__ a pak vyberte .
 
-    a. V __části Konfigurace sítě__vyberte __upřesnit__.
+1. V dialogovém okně __Nový trénovací cluster__ rozbalte část __Upřesnit nastavení.__
 
-    b. V rozevíracím seznamu __Skupina prostředků__ vyberte skupinu prostředků, která obsahuje virtuální síť.
+1. Chcete-li nakonfigurovat tento výpočetní prostředek tak, aby používal virtuální síť, proveďte v části __Konfigurace virtuální sítě__ následující akce:
 
-    c. V rozevíracím seznamu __Virtuální síť__ vyberte virtuální síť, která podsíť obsahuje.
-
-    d. V rozevíracím seznamu __Podsíť__ vyberte podsíť, kterou chcete použít.
+    1. V rozevíracím seznamu __Skupina prostředků__ vyberte skupinu prostředků, která obsahuje virtuální síť.
+    1. V rozevíracím seznamu __Virtuální síť__ vyberte virtuální síť, která podsíť obsahuje.
+    1. V rozevíracím seznamu __Podsíť__ vyberte podsíť, kterou chcete použít.
 
    ![Nastavení virtuální sítě pro machine learning compute](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
@@ -356,29 +354,25 @@ Pokud chcete přidat AKS ve virtuální síti do pracovního prostoru, použijte
 >
 > Instance AKS a virtuální síť Azure musí být ve stejné oblasti. Pokud zabezpečíte účty úložiště Azure používané pracovníprostor ve virtuální síti, musí být ve stejné virtuální síti jako instance AKS.
 
-1. Na [webu Azure Portal](https://portal.azure.com)zkontrolujte, zda skupina zabezpečení sítě, která řídí virtuální síť, má příchozí pravidlo, které je povolené pro Azure Machine Learning, pomocí __AzureMachineLearning__ jako **zdroje**.
+> [!WARNING]
+> Azure Machine Learning nepodporuje pomocí služby Azure Kubernetes, která má povolenou privátní vazbu.
 
-    [![Podokno Přidání výpočetních prostředků azure machine learningu](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
+1. Přihlaste se do [centra Azure Machine Learning a](https://ml.azure.com/)vyberte předplatné a pracovní prostor.
 
-1. Vyberte pracovní prostor Azure Machine Learning.
+1. Vlevo vyberte __Vypočítat.__
 
-1. V části __Aplikace__ vyberte __Compute__a pak vyberte __Přidat výpočetní prostředky__.
+1. Vyberte __Odvozovat clustery__ ze středu __+__ a pak vyberte .
+
+1. V dialogovém okně __Nový odvozený cluster__ vyberte v části __Konfigurace sítě__možnost __Upřesnit__ .
 
 1. Chcete-li nakonfigurovat tento výpočetní prostředek tak, aby používal virtuální síť, proveďte následující akce:
 
-    - V __části Konfigurace sítě__vyberte __upřesnit__.
-
-    - V rozevíracím seznamu __Skupina prostředků__ vyberte skupinu prostředků, která obsahuje virtuální síť.
-
-    - V rozevíracím seznamu __Virtuální síť__ vyberte virtuální síť, která podsíť obsahuje.
-
-    - V rozevíracím seznamu __Podsíť__ vyberte podsíť.
-
-    - Do pole __Rozsah adres služby Kubernetes__ zadejte rozsah adres služby Kubernetes. Tento rozsah adres používá rozsah IP adres zápisu beztřídní mezidoménami (CIDR) k definování IP adres, které jsou pro cluster k dispozici. Nesmí se překrývat s rozsahy IP podsítě (například 10.0.0.0/16).
-
-    - Do pole __IP adresy služby Kubernetes__ zadejte IP adresu služby Kubernetes DNS. Tato IP adresa je přiřazena službě Kubernetes DNS. Musí být v rozsahu adres služby Kubernetes (například 10.0.0.10).
-
-    - Do pole __Adresa mostu Dockeru__ zadejte adresu mostu Dockeru. Tato IP adresa je přiřazena dockeru Bridge. Nesmí být v žádné rozsahy IP podsítě nebo rozsah adres služby Kubernetes (například 172.17.0.1/16).
+    1. V rozevíracím seznamu __Skupina prostředků__ vyberte skupinu prostředků, která obsahuje virtuální síť.
+    1. V rozevíracím seznamu __Virtuální síť__ vyberte virtuální síť, která podsíť obsahuje.
+    1. V rozevíracím seznamu __Podsíť__ vyberte podsíť.
+    1. Do pole __Rozsah adres služby Kubernetes__ zadejte rozsah adres služby Kubernetes. Tento rozsah adres používá rozsah IP adres zápisu beztřídní mezidoménami (CIDR) k definování IP adres, které jsou pro cluster k dispozici. Nesmí se překrývat s rozsahy IP podsítě (například 10.0.0.0/16).
+    1. Do pole __IP adresy služby Kubernetes__ zadejte IP adresu služby Kubernetes DNS. Tato IP adresa je přiřazena službě Kubernetes DNS. Musí být v rozsahu adres služby Kubernetes (například 10.0.0.10).
+    1. Do pole __Adresa mostu Dockeru__ zadejte adresu mostu Dockeru. Tato IP adresa je přiřazena dockeru Bridge. Nesmí být v žádné rozsahy IP podsítě nebo rozsah adres služby Kubernetes (například 172.17.0.1/16).
 
    ![Azure Machine Learning: Nastavení výpočetní virtuální sítě Machine Learning Compute](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
@@ -445,7 +439,7 @@ except:
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target
-    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
     
@@ -466,7 +460,7 @@ Obsah souboru, `body.json` na který odkazuje příkaz, je podobný následujíc
 
 ```json
 { 
-    "location": “<region>”, 
+    "location": "<region>", 
     "properties": { 
         "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
         "computeType": "AKS", 
@@ -504,7 +498,102 @@ Další informace o konfiguraci síťového pravidla najdete v tématu [Nasazen�
 
 ## <a name="use-azure-container-registry"></a>Použití služby Azure Container Registry
 
-Při použití virtuální sítě s __do not__ Azure Machine Learning, neumisťujte Registr kontejnerů Azure pro pracovní prostor ve virtuální síti. Tato konfigurace není podporovaná.
+> [!IMPORTANT]
+> Azure Container Registry (ACR) lze umístit do virtuální sítě, ale musíte splnit následující požadavky:
+>
+> * Váš pracovní prostor Azure Machine Learning musí být edice Enterprise. Informace o inovaci naleznete v [tématu Upgrade na edici Enterprise .](how-to-manage-workspace.md#upgrade)
+> * Váš registr kontejnerů Azure musí být verze Premium . Další informace o upgradu naleznete v [tématu Změna skum](/azure/container-registry/container-registry-skus#changing-skus).
+> * Váš Registr kontejnerů Azure musí být ve stejné virtuální síti a podsíti jako účet úložiště a výpočetní cíle používané pro školení nebo odvození.
+> * Pracovní prostor Azure Machine Learning musí obsahovat [výpočetní cluster Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute).
+>
+>     Když acr je za virtuální síť, Azure Machine Learning nelze použít k přímému vytváření ibi Dockeru. Místo toho výpočetní cluster se používá k sestavení bitové kopie.
+
+1. Pokud chcete najít název registru kontejnerů Azure pro váš pracovní prostor, použijte jednu z následujících metod:
+
+    __portál Azure__
+
+    V části přehled vašeho pracovního prostoru hodnota __registru__ odkazy na Azure Container Registry.
+
+    ![Azure Container Registry pro pracovní prostor](./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png)
+
+    __Azure CLI__
+
+    Pokud jste [nainstalovali rozšíření Machine Learning pro Azure CLI](reference-azure-machine-learning-cli.md), můžete použít `az ml workspace show` příkaz k zobrazení informací o pracovním prostoru.
+
+    ```azurecli-interactive
+    az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
+    ```
+
+    Tento příkaz vrátí hodnotu podobnou . `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` Poslední část řetězce je název registru kontejnerů Azure pro pracovní prostor.
+
+1. Chcete-li omezit přístup k virtuální síti, použijte postup v části [Konfigurace přístupu k síti pro registr](../container-registry/container-registry-vnet.md#configure-network-access-for-registry). Při přidávání virtuální sítě vyberte virtuální síť a podsíť pro vaše prostředky Azure Machine Learning.
+
+1. Azure Machine Learning Python SDK slouží ke konfiguraci výpočetního clusteru pro vytváření ibi dockerů. Následující fragment kódu ukazuje, jak to provést:
+
+    ```python
+    from azureml.core import Workspace
+    # Load workspace from an existing config file
+    ws = Workspace.from_config()
+    # Update the workspace to use an existing compute cluster
+    ws.update(image_build_compute = 'mycomputecluster')
+    ```
+
+    > [!IMPORTANT]
+    > Váš účet úložiště, výpočetní cluster a Azure Container Registry musí být ve stejné podsíti virtuální sítě.
+    
+    Další informace naleznete v odkazu na metodu [update().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-)
+
+1. Pokud používáte privátní odkaz pro pracovní prostor Azure Machine Learning a umístit registr kontejnerů Azure pro váš pracovní prostor ve virtuální síti, musíte také použít následující šablonu Azure Resource Manager. Tato šablona umožňuje vašemu pracovnímu prostoru komunikovat s ACR přes soukromé propojení.
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "keyVaultArmId": {
+        "type": "string"
+        },
+        "workspaceName": {
+        "type": "string"
+        },
+        "containerRegistryArmId": {
+        "type": "string"
+        },
+        "applicationInsightsArmId": {
+        "type": "string"
+        },
+        "storageAccountArmId": {
+        "type": "string"
+        },
+        "location": {
+        "type": "string"
+        }
+    },
+    "resources": [
+        {
+        "type": "Microsoft.MachineLearningServices/workspaces",
+        "apiVersion": "2019-11-01",
+        "name": "[parameters('workspaceName')]",
+        "location": "[parameters('location')]",
+        "identity": {
+            "type": "SystemAssigned"
+        },
+        "sku": {
+            "tier": "enterprise",
+            "name": "enterprise"
+        },
+        "properties": {
+            "sharedPrivateLinkResources":
+    [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
+            "keyVault": "[parameters('keyVaultArmId')]",
+            "containerRegistry": "[parameters('containerRegistryArmId')]",
+            "applicationInsights": "[parameters('applicationInsightsArmId')]",
+            "storageAccount": "[parameters('storageAccountArmId')]"
+        }
+        }
+    ]
+    }
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 

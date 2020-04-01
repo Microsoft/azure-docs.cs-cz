@@ -3,12 +3,12 @@ title: Plánování nasazení clusteru Azure Service Fabric
 description: Přečtěte si o plánování a přípravě na produkční nasazení clusteru Service Fabric do Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193472"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422280"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava na nasazení clusteru
 
@@ -86,6 +86,16 @@ Dočasné disky operačního systému není konkrétní funkce Service Fabric, a
             }
         }
     ```
+
+> [!NOTE]
+> Uživatelské aplikace by neměly mít na disku s osem žádnou závislost/soubor/artefakt, protože disk operačního systému by byl ztracen v případě upgradu operačního systému.
+> Proto se nedoporučuje používat [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) s dočasnými disky.
+>
+
+> [!NOTE]
+> Existující non-efemorální VMSS nelze upgradovat na místě používat dočasné disky.
+> Chcete-li migrovat, uživatelé budou muset [přidat](./virtual-machine-scale-set-scale-node-type-scale-out.md) nový nodeType s dočasnými disky, přesunout úlohy do nového nodeType & [odebrat](./service-fabric-how-to-remove-node-type.md) existující nodeType.
+>
 
 Další informace a další možnosti konfigurace najdete v tématu [Dočasné disky operačního systému pro virtuální počítače Azure](../virtual-machines/windows/ephemeral-os-disks.md) 
 

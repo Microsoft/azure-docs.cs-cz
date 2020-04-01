@@ -1,22 +1,22 @@
 ---
 title: Konfigurace ověřování na Facebooku
-description: Přečtěte si, jak nakonfigurovat ověřování na Facebooku jako poskytovatele identity pro vaši aplikaci App Service.
+description: Přečtěte si, jak nakonfigurovat ověřování na Facebooku jako poskytovatele identity pro vaši aplikaci App Service nebo Azure Functions.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: cd9c8a1bab3616b9b4eb1fe97ee3a9b2307ba77b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9a2d390a5647ed90284730e9186e981b8e699d10
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671940"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438017"
 ---
-# <a name="configure-your-app-service-app-to-use-facebook-login"></a>Konfigurace aplikace App Service tak, aby používala facebookové přihlašovací údaje
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používala facebookové přihlašovací údaje
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Tento článek ukazuje, jak nakonfigurovat službu Azure App Service tak, aby používala Facebook jako poskytovatele ověřování.
+Tento článek ukazuje, jak nakonfigurovat Azure App Service nebo Azure Functions pro použití Facebooku jako poskytovatele ověřování.
 
 Chcete-li dokončit postup v tomto článku, potřebujete účet Na Facebooku, který má ověřenou e-mailovou adresu a číslo mobilního telefonu. Pokud chcete vytvořit nový Facebook účet, přejděte na [facebook.com].
 
@@ -78,4 +78,4 @@ Teď jste připraveni používat Facebook k ověřování ve své aplikaci.
 [Vývojáři Facebooku]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Portál Azure]: https://portal.azure.com/
+[portál Azure]: https://portal.azure.com/

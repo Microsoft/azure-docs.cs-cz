@@ -3,12 +3,12 @@ title: Sledování výkonu služeb azure aplikací | Dokumenty společnosti Micr
 description: Monitorování výkonu aplikací pro služby aplikací Azure. Doba načítání a odezvy grafu, informace o závislostech a nastavení výstrah na výkon.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2ec503829d3e6edd7b2b6f6b36314db8a205a8cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297608"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437196"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -28,7 +28,7 @@ Monitorování aplikací pro hostované aplikace Azure App Services můžete pov
 
     * Tento přístup je mnohem více přizpůsobitelné, ale vyžaduje [přidání závislosti na balíčcích Application Insights SDK NuGet](https://docs.microsoft.com/azure/azure-monitor/app/asp-net). Tato metoda také znamená, že budete muset spravovat aktualizace nejnovější verze balíčků sami.
 
-    * Pokud potřebujete provést vlastní volání rozhraní API ke sledování událostí nebo závislostí, které nejsou ve výchozím nastavení zachyceny pomocí monitorování založeného na agentovi, budete muset použít tuto metodu. Další informace najdete v [článku api pro vlastní události a metriky.](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)
+    * Pokud potřebujete provést vlastní volání rozhraní API ke sledování událostí nebo závislostí, které nejsou ve výchozím nastavení zachyceny pomocí monitorování založeného na agentovi, budete muset použít tuto metodu. Další informace najdete v [článku api pro vlastní události a metriky.](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) Toto je také v současné době jedinou podporovanou možností pro úlohy založené na Linuxu.
 
 > [!NOTE]
 > Pokud je detekováno monitorování založené na agentech a ruční instrumentace založené na sadě SDK, bude dodrženo pouze ruční nastavení instrumentace. Tím zabráníte odeslání duplicitních dat. Další informace naleznete v [části řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) níže.

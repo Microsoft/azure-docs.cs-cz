@@ -1,151 +1,151 @@
 ---
-title: Ukázka nasazení FedRAMP High details
-description: Nasaďte kroky pro ukázku FedRAMP High Details, včetně podrobností parametrů artefaktu podrobného plánu.
+title: Nasazení ukázky podrobného plánu FedRAMP
+description: Nasazení kroků pro ukázku podrobného podrobného plánu FedRAMP včetně podrobností o parametru artefaktu podrobného plánu.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 91f208105a07770c557b1f273f3420c03b3d6dcb
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77087299"
 ---
-# <a name="deploy-the-fedramp-high-blueprint-sample"></a>Nasazení ukázky FedRAMP High details
+# <a name="deploy-the-fedramp-high-blueprint-sample"></a>Nasazení ukázky podrobného plánu FedRAMP
 
-K nasazení ukázky Azure modrotisky FedRAMP High Details je potřeba provést tyto kroky:
+Chcete-li nasadit Azure Blueprints FedRAMP High podrobný plán ukázka, je třeba podniknout následující kroky:
 
 > [!div class="checklist"]
-> - Vytvořit nový podrobný plán z ukázky
+> - Vytvoření nového podrobného plánu z ukázky
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free) než začnete.
 
-## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
+## <a name="create-blueprint-from-sample"></a>Vytvoření podrobného plánu z ukázky
 
-Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
+Nejprve implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako startéru.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **podrobné plány**.
 
-1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
+1. Na stránce **Začínáme** vlevo vyberte tlačítko **Vytvořit** v části _Vytvořit podrobný plán_.
 
-1. V části _Další ukázky_ Najděte ukázku **FedRAMP High** Details a vyberte **použít tuto ukázku**.
+1. Najděte ukázku podrobného podrobného plánu **FedRAMP** v části _Další ukázky_ a vyberte **Použít tuto ukázku**.
 
-1. Zadejte _základy_ ukázky podrobného plánu:
+1. Zadejte _základy ukázky_ podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky FedRAMP High detailal.
-   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
+   - **Název podrobného plánu**: Zadejte název pro svou kopii ukázky plánu FedRAMP High.
+   - **Umístění definice**: Použijte tři tečky a vyberte skupinu pro správu, do které chcete uložit kopii vzorku.
 
-1. Vyberte kartu _artefakty_ v horní části stránky nebo **Další: artefakty** v dolní části stránky.
+1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** v dolní části stránky.
 
-1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
+1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Po dokončení revize ukázky podrobného plánu vyberte **Uložit koncept.**
 
-## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
+## <a name="publish-the-sample-copy"></a>Publikování ukázkové kopie
 
-Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo zarovnání s FedRAMP vysokými ovládacími prvky.
+Vaše kopie ukázky podrobného plánu byla nyní vytvořena ve vašem prostředí. Je vytvořen v režimu **konceptu** a musí být **publikovánpřed** jeho přiřazením a nasazením. Kopii ukázky podrobného plánu lze přizpůsobit vašemu prostředí a potřebám, ale tato změna ji může přesunout od zarovnání s ovládacími prvky FedRAMP High.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **podrobné plány**.
 
-1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
+1. Vyberte stránku **Definice podrobného plánu** vlevo. Pomocí filtrů vyhledejte kopii ukázky podrobného plánu a vyberte ji.
 
-1. V horní části stránky vyberte **publikovat podrobný plán** . Na stránce Nová na pravé straně zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud uděláte změnu později. Zadejte **poznámky ke změnám** , například "první verze publikovaná z ukázky FedRAMP High details." Potom v dolní části stránky vyberte **publikovat** .
+1. V horní části stránky vyberte **Publikovat podrobný plán.** Na nové stránce vpravo zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změně,** například "První verze publikovaná z ukázky podrobného plánu FedRAMP". Pak vdolní části stránky vyberte **Publikovat.**
 
-## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
+## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
+Jakmile je kopie ukázky podrobného plánu úspěšně **publikována**, lze ji přiřadit k předplatnému v rámci skupiny pro správu, do které byla uložena. Tento krok je, kde jsou k dispozici parametry, aby každé nasazení kopie ukázky podrobného plánu jedinečné.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **podrobné plány**.
 
-1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
+1. Vyberte stránku **Definice podrobného plánu** vlevo. Pomocí filtrů vyhledejte kopii ukázky podrobného plánu a vyberte ji.
 
-1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
+1. V horní části stránky definice podrobného plánu vyberte **Přiřadit podrobný plán.**
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - Základy
 
-     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
-       Změňte podle potřeby nebo ponechte tak, jak je.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Odběry:** Vyberte jedno nebo více předplatných, které jsou ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, bude pro každé z nich vytvořeno přiřazení pomocí zadaných parametrů.
+     - **Název přiřazení**: Název je předem vyplněný na základě názvu podrobného plánu.
+       Změňte podle potřeby nebo odejděte tak, jak je.
+     - **Umístění**: Vyberte oblast pro spravovanou identitu, která má být vytvořena. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice podrobného plánu**: Vyberte **publikovanou** verzi ukázky podrobného plánu.
 
-   - Zamknout přiřazení
+   - Přiřazení zámku
 
      Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Ponechte výchozí _systém přiřazenou_ možnost spravovaná identita.
+     Ponechte výchozí možnost spravované identity _přiřazenou systému._
 
-   - Parametry artefaktu
+   - Parametry artefaktů
 
-     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
+     Parametry definované v této části platí pro artefakt, pod kterým je definován. Tyto parametry jsou [dynamické parametry,](../../concepts/parameters.md#dynamic-parameters) protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popisy naleznete v [tabulce parametrů artefaktu](#artifact-parameters-table).
 
-1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** . Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
+1. Po zadání všech parametrů **vyberte** Přiřadit v dolní části stránky. Přiřazení podrobného plánu je vytvořen a artefakt nasazení začíná. Nasazení trvá zhruba hodinu. Chcete-li zkontrolovat stav nasazení, otevřete přiřazení podrobného plánu.
 
 > [!WARNING]
-> Služba Azure modrotisky a předdefinované ukázky podrobného plánu jsou **zdarma**. Ceny prostředků Azure se účtují [podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
+> Služba Azure Blueprints a integrované ukázky podrobných plánů jsou **zdarma**. Prostředky Azure jsou [oceněny podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na spuštění prostředků nasazených v této ukázce podrobného plánu.
 
-## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
+## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktu
 
-Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
+V následující tabulce je uveden seznam parametrů artefaktu podrobného plánu:
 
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat|Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat.|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam uživatelů, kteří mají být vyloučeni ze skupiny správců virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
-|\[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|\[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače se systémem Linux|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
-|\[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Log Analytics pracovní prostor pro Windows VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|\[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače s Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
-|Nasazení rozšířené ochrany před internetovými útoky na účty úložiště|Přiřazení zásad|Efekt|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|Nasazení auditování na SQL serverech|Přiřazení zásad|Hodnota v dnech doby uchování (0 označuje neomezené uchovávání)|Počet dnů uchování (volitelné, 180 dní, pokud není zadaný)|
-|Nasazení auditování na SQL serverech|Přiřazení zásad|Název skupiny prostředků pro účet úložiště pro auditování SQL serveru|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti). Důležité: kvůli správnému fungování auditu neodstraňujte ani neměňte skupinu prostředků ani účty úložiště.|
-|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě|Přiřazení zásad|Předpona účtu úložiště pro diagnostiku skupiny zabezpečení sítě|Tato předpona bude kombinována s umístěním skupiny zabezpečení sítě, aby vytvořila název vytvořeného účtu úložiště.|
-|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě|Přiřazení zásad|Název skupiny prostředků pro účet úložiště pro diagnostiku skupiny zabezpečení sítě (musí existovat)|Skupina prostředků, ve které se bude účet úložiště vytvořit. Tato skupina prostředků už musí existovat.|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Povolená umístění pro prostředky a skupiny prostředků|Seznam umístění Azure, která může vaše organizace zadat při nasazování prostředků. Tato poskytnutá hodnota se používá taky v rámci zásad "povolené umístění" v rámci této iniciativy.|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Posouzení ohrožení zabezpečení by mělo být povoleno na Virtual Machines|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pro účty úložiště by mělo být povoleno geograficky redundantní úložiště.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pro Azure Database for MariaDB by měla být povolená geograficky redundantní záloha.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pro Azure Database for MySQL by měla být povolená geograficky redundantní záloha.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pro Azure Database for PostgreSQL by měla být povolená geograficky redundantní záloha.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Webová aplikace by měla být přístupná jen přes HTTPS|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Funkce aplikace by měla být přístupná jen přes HTTPS|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Zastaralé účty by se měly odebírat z předplatného.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|CORS by neměl všem prostředkům umožňovat přístup k vaší webové aplikaci|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
-|\[Preview\]: Auditovat vysoké ovládací prvky FedRAMP a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.|Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|ID pracovního prostoru Analýzy protokolů, pro které by měly být virtuální počítače nakonfigurované|Toto je ID (GUID) pracovního prostoru Analýzy protokolů, pro které by měly být virtuální počítače nakonfigurovány.|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Seznam typů prostředků, které by měly mít povoleny diagnostické protokoly|Seznam typů prostředků, které mají být auditovány, pokud není povoleno nastavení diagnostického protokolu. Přijatelné hodnoty najdete na [schémata diagnostických protokolů Azure Monitor](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Seznam uživatelů, kteří by měli být vyloučeni ze skupiny Správci virtuálních počítačů systému Windows|Středník-oddělený seznam členů, které by měly být vyloučeny v místní skupině Administrators. Příklad: Správce; myUser1; myUser2|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Seznam uživatelů, kteří by měli být zahrnuti do skupiny Správci virtuálních počítačů systému Windows|Středník-oddělený seznam členů, které by měly být zahrnuty do místní skupiny Administrators. Příklad: Správce; myUser1; myUser2|
+|\[Náhled:\]Nasazení agenta analýzy protokolů pro škálovací sady virtuálních zařízení v Linuxu (VMSS)|Přiřazení zásad|Pracovní prostor Log Analytics pro škálovací sady virtuálních zařízení v Linuxu (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, musíte ručně udělit oprávnění přispěvatele analýzy protokolů (nebo podobně) k ID hlavního objektu přiřazení zásad.|
+|\[Náhled:\]Nasazení agenta analýzy protokolů pro škálovací sady virtuálních zařízení v Linuxu (VMSS)|Přiřazení zásad|Volitelné: Seznam imitek virtuálních počítačů, které podporují operační systém Linux pro přidání do oboru|Prázdné pole může být použito k označení žádné volitelné parametry:\[\]|
+|\[Náhled:\]Nasazení agenta analýzy protokolů pro virtuální počítače s Linuxem|Přiřazení zásad|Pracovní prostor Log Analytics pro virtuální počítače s Linuxem|Pokud je tento pracovní prostor mimo rozsah přiřazení, musíte ručně udělit oprávnění přispěvatele analýzy protokolů (nebo podobně) k ID hlavního objektu přiřazení zásad.|
+|\[Náhled:\]Nasazení agenta analýzy protokolů pro virtuální počítače s Linuxem|Přiřazení zásad|Volitelné: Seznam imitek virtuálních počítačů, které podporují operační systém Linux pro přidání do oboru|Prázdné pole může být použito k označení žádné volitelné parametry:\[\]|
+|\[Náhled:\]Nasazení agenta analýzy protokolů pro škálovací sady virtuálních zařízení windows (VMSS)|Přiřazení zásad|Pracovní prostor Log Analytics pro škálovací sady virtuálních vod systému Windows (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, musíte ručně udělit oprávnění přispěvatele analýzy protokolů (nebo podobně) k ID hlavního objektu přiřazení zásad.|
+|\[Náhled:\]Nasazení agenta analýzy protokolů pro škálovací sady virtuálních zařízení windows (VMSS)|Přiřazení zásad|Volitelné: Seznam iimages virtuálních aplikací, které podporují operační systém Windows přidat do oboru|Prázdné pole může být použito k označení žádné volitelné parametry:\[\]|
+|\[Náhled\]: Nasazení agenta analýzy protokolů pro virtuální servery Windows|Přiřazení zásad|Pracovní prostor Log Analytics pro virtuální servery Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, musíte ručně udělit oprávnění přispěvatele analýzy protokolů (nebo podobně) k ID hlavního objektu přiřazení zásad.|
+|\[Náhled\]: Nasazení agenta analýzy protokolů pro virtuální servery Windows|Přiřazení zásad|Volitelné: Seznam iimages virtuálních aplikací, které podporují operační systém Windows přidat do oboru|Prázdné pole může být použito k označení žádné volitelné parametry:\[\]|
+|Nasazení rozšířené ochrany před hrozbami na účtech úložiště|Přiřazení zásad|Účinek|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|Nasazení auditování na serverech SQL|Přiřazení zásad|Hodnota ve dnech retenčního období (0 označuje neomezené uchovávání)|Retenční dny (nepovinné, 180 dní, pokud není uvedeno jinak)|
+|Nasazení auditování na serverech SQL|Přiřazení zásad|Název skupiny prostředků pro účet úložiště pro auditování serveru SQL|Auditování zapisuje události databáze do protokolu auditu v účtu služby Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti). Důležité – pro správnou funkci auditování neodstraňujte ani nepřejmenovávejte skupinu prostředků nebo účty úložiště.|
+|Nasazení diagnostických nastavení pro skupiny zabezpečení sítě|Přiřazení zásad|Předpona účtu úložiště pro diagnostiku skupiny zabezpečení sítě|Tato předpona bude kombinována s umístěním skupiny zabezpečení sítě a vytvoří název vytvořeného účtu úložiště.|
+|Nasazení diagnostických nastavení pro skupiny zabezpečení sítě|Přiřazení zásad|Název skupiny prostředků pro účet úložiště pro diagnostiku skupiny zabezpečení sítě (musí existovat)|Skupina prostředků, ve které bude vytvořen účet úložiště. Tato skupina prostředků již musí existovat.|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Povolená umístění pro zdroje a skupiny zdrojů|Seznam umístění Azure, které vaše organizace může zadat při nasazování prostředků. Tato zadaný hodnota je také použita zásadou "Povolená umístění" v rámci iniciativy zásad.|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Posouzení ohrožení zabezpečení by mělo být povoleno ve vašich instancích spravovaných SQL.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Posouzení ohrožení zabezpečení by mělo být povoleno na serverech SQL|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Posouzení ohrožení zabezpečení by mělo být povoleno na virtuálních počítačích|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Geograficky redundantní úložiště by mělo být povoleno pro účty úložiště.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Geograficky redundantní záloha by měla být povolena pro Azure Database pro MariaDB|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Geograficky redundantní záloha by měla být povolena pro Azure Database for MySQL|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Geograficky redundantní záloha by měla být povolena pro Azure Database for PostgreSQL|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Pravidla skupiny zabezpečení sítě pro virtuální počítače s připojením k internetu by měla být posílena|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Webová aplikace by měla být přístupná pouze přes protokol HTTPS.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Aplikace function by měla být přístupná pouze přes protokol HTTPS|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Z předplatného by měly být odebrány externí účty s oprávněními k zápisu.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Z předplatného by měly být odebrány externí účty s oprávněním ke čtení.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Z předplatného by měly být odebrány externí účty s oprávněními vlastníka.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Zastaralé účty s oprávněními vlastníka by měly být odebrány z vašeho předplatného|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Zastaralé účty by měly být odebrány z vašeho předplatného|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|CORS by neměl povolit přístup ke webové aplikaci pro každý prostředek.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Aktualizace systému na škálovacísady virtuálních strojů by měly být nainstalovány|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Vícefaktorové informace by měly být povoleny u účtů s oprávněními ke čtení v rámci vašeho předplatného.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Vícefaktorové informace by měly být povoleny u účtů s oprávněními vlastníka k vašemu předplatnému.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Vícefaktorové informace by měly být povoleny u účtů s oprávněními k zápisu v rámci vašeho předplatného.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
+|\[Preview\]: Auditujte fedrampové vysoké kontroly a nasazujte konkrétní rozšíření virtuálních her pro podporu požadavků na audit|Přiřazení zásad|Pro Azure SQL Databases by měla být povolena dlouhodobá geograficky redundantní záloha.|Informace o účincích zásad najdete na webu [Understand Azure Policy Effects](../../../policy/concepts/effects.md).|
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste si prohlédli postup nasazení ukázky FedRAMP High Details, si přečtěte následující články, kde se dozvíte o mapování podrobného plánu a řízení:
+Teď, když jste zkontrolovali kroky k nasazení ukázky podrobných plánů FedRAMP High, navštivte následující články, kde se dozvíte o podrobném plánu a mapování ovládacích plánů:
 
 > [!div class="nextstepaction"]
-> [FedRAMP High Details-přehled](./index.md)
-> [FedRAMP High Details-Control Mapping](./control-mapping.md)
+> [FedRAMP High blueprint - Přehled](./index.md)
+> [FedRAMP High blueprint - Mapování řízení](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
-- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)
+- Přečtěte si o [životním cyklu podrobného plánu](../../concepts/lifecycle.md).
+- Pochopit, jak používat [statické a dynamické parametry](../../concepts/parameters.md).
+- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](../../concepts/sequencing-order.md).
+- Zjistěte, jak využít [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md).
+- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).

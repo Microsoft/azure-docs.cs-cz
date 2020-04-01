@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067469"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > -   Odebrat hlavičky odpovědi transformováním rozhraní API
 > -   Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
 > -   Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
-> -   Testovat transformace
+> -   Otestovat transformace
 
 ![Zásady](./media/transform-api/api-management-management-console.png)
 
@@ -41,8 +41,8 @@ V tomto kurzu se naučíte:
 
 -   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 -   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
--   Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
--   Také proveďte následující kurz: [Importujte a publikujte své první rozhraní API](import-and-publish.md).
+-   Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
+-   Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -73,14 +73,14 @@ Původní odpověď by měla vypadat takto:
 
 1. Vyberte **Demo Conference API**.
 2. V horní části obrazovky vyberte kartu **Návrh**.
-3. Vyberte **Všechny operace**.
-4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>** .
-5. Umístěte kurzor myši do elementu **&lt;outbound&gt;** .
+3. Vyberte **všechny operace**.
+4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
+5. Umístěte kurzor uvnitř ** &lt;odchozího&gt; ** prvku.
 6. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
 
    ![Zásady](./media/transform-api/transform-api.png)
 
-7. Upravte kód pro  **odchozí>tak,abyvypadaltakto:\<**
+7. Upravte kód ** \<odchozí>** takto:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -109,32 +109,32 @@ Původní odpověď zobrazíte následovně:
 ### <a name="set-the-transformation-policy"></a>Nastavení zásady transformací
 
 1.  Vyberte **Demo Conference API**.
-2.  Vyberte **Všechny operace**.
+2.  Vyberte **všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
-4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>** .
-5.  Umístěte kurzor myši do elementu **&lt;outbound&gt;** .
+4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
+5.  Umístěte kurzor uvnitř ** &lt;odchozího&gt; ** prvku.
 6.  V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
-7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>** ) tak, aby odpovídala bráně služby APIM. Příklad:
+7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Například:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
 
-Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigurováním omezování četnosti. Například byste mohli chtít omezit, kolikrát je možné rozhraní API volat, aby ho vývojáři nadměrně nevyužívali. V tomto příkladu je omezení nastaveno na 3 volání každých 15 sekund pro každé ID předplatného. Po 15 sekundách může vývojář zkusit volat rozhraní API znovu.
+Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigurováním omezování četnosti. Například byste mohli chtít omezit, kolikrát je možné rozhraní API volat, aby ho vývojáři nadměrně nevyužívali. V tomto příkladu je limit nastaven na 3 volání za 15 sekund pro každé ID předplatného. Po 15 sekundách může vývojář opakovat volání rozhraní API.
 
 ![Nastavení příchozí zásady](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
 1.  Vyberte **Demo Conference API**.
-2.  Vyberte **Všechny operace**.
+2.  Vyberte **všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
-4.  V části **příchozí zpracování** klikněte na **</>** ikonu.
-5.  Umístěte kurzor myši do elementu **&lt;inbound&gt;** .
+4.  V části **Zpracování na vstupu** klikněte na ikonu **</>**.
+5.  Umístěte kurzor uvnitř ** &lt;příchozího&gt; ** prvku.
 6.  V pravém okně v části **Zásady omezení přístupu** klikněte na **+ Limit call rate per key** (Omezit četnost volání pro každý klíč).
-7.  Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>** ) následovně:
+7.  Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>**) následovně:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
-## <a name="test-the-transformations"></a>Testovat transformace
+## <a name="test-the-transformations"></a>Otestovat transformace
 
 Když se v tomto okamžiku podíváte na kód v editoru, budou vaše zásady vypadat takto:
 
@@ -193,13 +193,13 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
 5. Počkejte asi 15 sekund a znovu stiskněte **Odeslat**. Tentokrát by se už měla objevit odpověď **200 OK**.
 
-    ![Omezování](./media/transform-api/test-throttling.png)
+    ![Throttling](./media/transform-api/test-throttling.png)
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
@@ -208,7 +208,7 @@ V tomto kurzu jste se naučili:
 > -   Odebrat hlavičky odpovědi transformováním rozhraní API
 > -   Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
 > -   Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
-> -   Testovat transformace
+> -   Otestovat transformace
 
 Přejděte k dalšímu kurzu:
 

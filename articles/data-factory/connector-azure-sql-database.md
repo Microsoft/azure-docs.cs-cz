@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 52928b9a4d77a99f3d8b160713c7b4a7cade2d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238770"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437798"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure SQL Database pomocí Azure Data Factory
 
@@ -143,7 +143,7 @@ Pokud chcete použít ověřování tokenu aplikace Azure AD založené na prim�
 4. Udělte zaregistrovaný objekt služby potřebná oprávnění jako obvykle pro uživatele SQL nebo jiné uživatele. Spusťte následující kód. Další možnosti naleznete v [tomto dokumentu](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your application name];
+    ALTER ROLE [role name] ADD MEMBER [your application name];
     ```
 
 5. Konfigurace propojené služby Azure SQL Database v Azure Data Factory.
@@ -190,7 +190,7 @@ Chcete-li použít ověřování spravované identity, postupujte takto.
 3. Udělte službě Data Factory potřebná oprávnění spravované identity jako obvykle pro uživatele SQL a ostatní uživatele. Spusťte následující kód. Další možnosti naleznete v [tomto dokumentu](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Data Factory name];
+    ALTER ROLE [role name] ADD MEMBER [your Data Factory name];
     ```
 
 4. Konfigurace propojené služby Azure SQL Database v Azure Data Factory.

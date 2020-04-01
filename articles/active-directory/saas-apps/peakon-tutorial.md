@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Peakon | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Peakon.
+title: 'Kurz: Integrace služby Azure Active Directory s Peakonem | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Peakonem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,243 +16,243 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094724"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Kurz: Integrace Azure Active Directory s Peakon
+# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Kurz: Integrace Azure Active Directory s Peakonem
 
 V tomto kurzu se dozvíte, jak integrovat Peakon s Azure Active Directory (Azure AD).
-Peakon integraci se službou Azure AD poskytuje následující výhody:
+Integrace Peakonu s Azure AD vám poskytuje následující výhody:
 
 * Můžete řídit ve službě Azure AD, který má přístup k Peakon.
-* Můžete povolit uživatelům být automaticky přihlášeni k Peakon (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali ke službě Peakon (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Peakon, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s Peakon, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Peakon jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* Předplatné s povoleným jedním přihlášením Peakon
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje Peakon **SP** a **IDP** jednotné přihlašování zahájené pomocí
+* Peakon podporuje **sp** a **IDP** inicioval sso
 
-## <a name="adding-peakon-from-the-gallery"></a>Přidání Peakon z Galerie
+## <a name="adding-peakon-from-the-gallery"></a>Přidání Peakonz galerie
 
-Konfigurace integrace Peakon do služby Azure AD, budete muset přidat Peakon z Galerie na váš seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci Peakonu do Azure AD, musíte přidat Peakon z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Peakon z galerie, postupujte následovně:**
+**Chcete-li přidat Peakon z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Peakon**vyberte **Peakon** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Peakon**, z panelu výsledků vyberte **Peakon** a pak klepněte na **tlačítko Přidat** a přidejte aplikaci.
 
      ![Peakon v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Peakon podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Peakon.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Peakonu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem ve Službě Peakon.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Peakon, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby Peakon, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Peakon Single Sign-On](#configure-peakon-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Peakon](#create-peakon-test-user)**  – Pokud chcete mít protějšek Britta Simon Peakon, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace funkce Peakon Single Sign-On](#configure-peakon-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte test Peakon uživatele](#create-peakon-test-user)** – mít protějšek Britta Simon v Peakon, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Peakon, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služby Peakon, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Peakon** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [webu Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Peakon** vyberte **Jedno přihlášení**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. V části **Základní konfigurace SAML,** pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
 
-    ![Peakon domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Informace o jednotném přihlášení domény Peakon a adres URL](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://app.peakon.com/saml/<companyid>/metadata`
+    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://app.peakon.com/saml/<companyid>/metadata`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://app.peakon.com/saml/<companyid>/assert`
+    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://app.peakon.com/saml/<companyid>/assert`
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
 
-    ![Peakon domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+    ![Informace o jednotném přihlášení domény Peakon a adres URL](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://app.peakon.com/login`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL:`https://app.peakon.com/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi, který je vysvětlen později v tomto kurzu. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou adresou URL identifikátoru a odpovědi, která je vysvětlena dále v kurzu. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Nezpracovaný)** z daných možností a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-7. Na **nastavení Peakon** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit Peakon** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-peakon-single-sign-on"></a>Konfigurace Peakon jednotné přihlašování
+### <a name="configure-peakon-single-sign-on"></a>Konfigurace jednotného přihlašování Peakon
 
-1. V okně jiné webové prohlížeče Přihlaste se k Peakon jako správce.
+1. V jiném okně webového prohlížeče se přihlaste ke službě Peakon jako správce.
 
-2. V panelu nabídky na levé straně stránky klikněte na tlačítko **konfigurace**, přejděte na **integrace**.
+2. Na řádku nabídek na levé straně stránky klepněte na **položku Konfigurace**a potom přejděte na **položku Integrace**.
 
     ![Konfigurace](./media/peakon-tutorial/tutorial_peakon_config.png)
 
-3. Na **integrace** stránky, klikněte na **Single Sign-On**.
+3. Na stránce **Integrace** klikněte na **Jednotné přihlašování**.
 
-    ![Jedné](./media/peakon-tutorial/tutorial_peakon_single.png)
+    ![Jednotný](./media/peakon-tutorial/tutorial_peakon_single.png)
 
-4. V části **Single Sign-On** části, klikněte na **povolit**.
+4. V části **Jednotné přihlašování** klikněte na **Povolit**.
 
-    ![Zapnout](./media/peakon-tutorial/tutorial_peakon_enable.png)
+    ![Povolení](./media/peakon-tutorial/tutorial_peakon_enable.png)
 
-5. Na **jednotného přihlašování pro zaměstnance pomocí SAML** části, proveďte následující kroky:
+5. V části **Jednotné přihlašování pro zaměstnance používající saml** proveďte následující kroky:
 
     ![Saml](./media/peakon-tutorial/tutorial_peakon_saml.png)
 
-    a. V **přihlašovací adresu URL pro jednotné přihlašování** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    a. V textovém poli **adresa URL přihlášení k přihlašovacímu zabezpečení** vložte hodnotu přihlašovací adresy **URL**, kterou jste zkopírovali z portálu Azure.
 
-    b. V **jednotného přihlašování k odhlašovací adresa URL** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    b. V textovém poli **url odhlášení od s vždyznatého zabezpečení** vložte hodnotu **adresy URL odhlášení**, kterou jste zkopírovali z portálu Azure.
 
-    c. Klikněte na tlačítko **zvolte soubor** nahrát certifikát, který jste si stáhli z portálu Azure portal do pole certifikátu.
+    c. Kliknutím **na Vybrat soubor** nahrajete certifikát, který jste stáhli z webu Azure Portal, do pole Certifikát.
 
-    d. Klikněte na tlačítko **ikonu** zkopírovat **Entity ID** a vložte **identifikátor** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+    d. Kliknutím na **ikonu** **zkopírujete ID entity** a vložte do textového pole **Identifikátor** v části **Základní konfigurace SAML** na webu Azure Portal.
 
-    e. Klikněte na tlačítko **ikonu** zkopírovat **adresy URL odpovědi (ACS)** a vložte **adresy URL odpovědi** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+    e. Kliknutím na **ikonu** zkopírujete **adresu URL odpovědi (ACS)** a vložte do textového pole **Adresa URL odpovědi** v části Základní **konfigurace SAML** na webu Azure Portal.
 
-    f. Klikněte na **Uložit**.
+    f. Klikněte na **Uložit.**
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k Peakon použití Azure jednotného přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu peakon.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Peakon**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Peakon**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte **Peakon**.
 
-    ![Odkaz Peakon v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Peakon v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-peakon-test-user"></a>Vytvoření Peakon testovacího uživatele
+### <a name="create-peakon-test-user"></a>Vytvořit uživatele testu Peakon
 
-Pro povolení služby Azure AD uživatelům umožní přihlásit k Peakon, musí být poskytnuty do Peakon.  
-V případě Peakon zřizování se ruční úlohy.
+Pro povolení uživatelů Azure AD k přihlášení ke Peakonu, musí být zřízena do Peakon.  
+V případě Peakon zřizování je ruční úlohy.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se k webu společnosti Peakon jako správce.
+1. Přihlaste se na svůj web společnosti Peakon jako správce.
 
-2. V panelu nabídky na levé straně stránky klikněte na tlačítko **konfigurace**, přejděte na **zaměstnanci**.
+2. Na řádku nabídek na levé straně stránky klepněte na **položku Konfigurace**a potom přejděte na **položku Zaměstnanci**.
 
-    ![Zaměstnance](./media/peakon-tutorial/tutorial_peakon_employee.png)
+    ![Zaměstnanec](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
-3. V horní pravé straně stránky klikněte na **přidat zaměstnance**.
+3. V pravé horní části stránky klikněte na **Přidat zaměstnance**.
 
-      ![Přidat zaměstnance](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+      ![Přidejte zaměstnance](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
-3. Na **nového zaměstnance** dialogového okna stránky, proveďte následující kroky:
+3. Na stránce Dialogové okno **Nový zaměstnanec** proveďte následující kroky:
 
-     ![Nové zaměstnance](./media/peakon-tutorial/tutorial_peakon_create.png)
+     ![Nový zaměstnanec](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. V **název** textové pole, typ křestní jméno jako **Britta** a příjmení jako **simon**.
+    a. Do textového pole **Název** zadejte křestní jméno jako **Britta** a příjmení jako **simon**.
 
-    b. V **e-mailu** textové pole, typ, jako jsou e-mailovou adresu **Brittasimon\@contoso.com**.
+    b. Do textového pole **E-mail** zadejte e-mailovou adresu, jako je **\@Brittasimon contoso.com**.
 
-    c. Klikněte na tlačítko **vytvořit zaměstnance**.
+    c. Klepněte na **tlačítko Vytvořit zaměstnance**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Peakon na přístupovém panelu, můžete by měl být automaticky přihlášeni k Peakon, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Peakon na přístupovém panelu, můžete by měl být automaticky přihlášeni k Peakon, u kterého nastavíte přisuzušující. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

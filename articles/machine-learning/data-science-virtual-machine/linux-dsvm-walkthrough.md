@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d15d53816d916bd28841aae39255685524faa2d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128353"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477867"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datová věda s virtuálním počítačem pro datové vědy o Linuxu v Azure
 
@@ -29,7 +29,7 @@ V tomto návodu analyzujeme datovou sadu [spamové základny.](https://archive.i
 Než budete moci používat Linux DSVM, musíte mít následující předpoklady:
 
 * **Předplatné Azure**. Pokud chcete získat předplatné Azure, [přečtěte si,](https://azure.microsoft.com/free/)že si ještě dnes vytvořte bezplatný účet Azure .
-* [**Linux Data Science Virtuální stroj**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informace o zřizování virtuálního počítače najdete v [tématu Zřízení virtuálního počítače pro datové vědy o Linuxu](linux-dsvm-intro.md).
+* [**Linux Data Science Virtuální stroj**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Informace o zřizování virtuálního počítače najdete v [tématu Zřízení virtuálního počítače pro datové vědy o Linuxu](linux-dsvm-intro.md).
 * [**X2Go**](https://wiki.x2go.org/doku.php) nainstalován o vašem počítači s otevřenou relací XFCE. Další informace naleznete v [tématu Instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#x2go).
 * Pro plynulejší posouvání ve webovém prohlížeči Firefox od DSVM přepněte vlajku `gfx.xrender.enabled` v aplikaci `about:config`. [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte `mousewheel.enable_pixel_scrolling` také `False`nastavení na . [Další informace](https://support.mozilla.org/questions/981140).
 * **Účet Azure Machine Learning**. Pokud ještě nemáte, zaregistrujte si nový účet na [domovské stránce Azure Machine Learning](https://azure.microsoft.com/free/services/machine-learning//).

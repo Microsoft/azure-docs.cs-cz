@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6be15b3fdef94c07e70eba7c4234979b5ac62344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c20fcdf6a725da9d7b053f0ad98efec6aca88f81
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061172"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478208"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Konfigurace klíčů spravovaných zákazníky pomocí služby Azure Key Vault pomocí rozhraní Příkazového příkazu Azure
 
@@ -85,6 +85,8 @@ az keyvault key create
     --name <key> \
     --vault-name <key-vault>
 ```
+
+Šifrováním azure storage jsou podporované jenom 2048bitové klíče RSA a RSA-HSM. Další informace o klíčích najdete v **tématu Klíče trezoru klíčů** v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem
 

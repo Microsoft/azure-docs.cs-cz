@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 79e337b411f9d115d93050ebeee346a526913d39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371738"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411735"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Kurz: Přidání zdroje do šablony ARM
 
@@ -26,7 +26,7 @@ Musíte mít kód Visual Studio s rozšířením Nástroje správce prostředků
 
 Chcete-li přidat definici účtu úložiště do existující šablony, podívejte se na zvýrazněné JSON v následujícím příkladu. Místo pokusu o kopírování částí šablony zkopírujte celý soubor a nahraďte šablonu jejím obsahem.
 
-Nahraďte **{provide-unique-name}** jedinečným názvem účtu úložiště.
+Nahraďte **{provide-unique-name}** (včetně složených závorek) jedinečným názvem účtu úložiště.
 
 > [!IMPORTANT]
 > Název účtu úložiště musí být jedinečný v rámci Azure. Název musí mít pouze malá písmena nebo čísla. Nesmí být delší než 24 znaků. Můžete zkusit vzor pojmenování, jako je použití **store1** jako předponu a přidání iniciály a dnešní datum. Například název, který používáte může vypadat **store1abc09092019**.
@@ -82,6 +82,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Pokud se nasazení nezdařilo, zobrazte protokoly ladění pomocí **přepínače ladění** s příkazem deployment.  Můžete také použít **podrobný** přepínač k zobrazení úplné protokoly ladění.
 
 Dvě možné selhání nasazení, ke kterým může dojít:
 

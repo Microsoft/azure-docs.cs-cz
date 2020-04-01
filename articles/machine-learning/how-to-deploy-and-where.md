@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 96d9a0722ae04dc150b639dced34fa290da93630
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0deace98c5be0b2ce2f29abce4c8a804145afdb1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159404"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475619"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -537,9 +537,9 @@ Třídy pro místní, Azure Container Instances a AKS `azureml.core.webservice`w
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-### <a name="securing-deployments-with-ssl"></a>Zabezpečení nasazení pomocí ssl
+### <a name="securing-deployments-with-tls"></a>Zabezpečení nasazení pomocí TLS
 
-Další informace o zabezpečení nasazení webové služby naleznete v [tématu Zabezpečení webové služby pomocí ssl](how-to-secure-web-service.md#enable).
+Další informace o zabezpečení nasazení webové služby naleznete v tématu [Povolení tls a nasazení](how-to-secure-web-service.md#enable).
 
 ### <a name="local-deployment"></a><a id="local"></a>Místní nasazení
 
@@ -907,6 +907,24 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+Poznámka: Modely, které podporují predict_proba bude používat tuto metodu ve výchozím nastavení. Chcete-li přepsat toto použití předpovědět můžete upravit tělo POST, jak je uvedeno níže:
+```python
+import json
+
+
+input_payload = json.dumps({
+    'data': [
+        [ 0.03807591,  0.05068012,  0.06169621, 0.02187235, -0.0442235,
+         -0.03482076, -0.04340085, -0.00259226, 0.01990842, -0.01764613]
+    ],
+    'method': 'predict'  # If you have a classification model, the default behavior is to run 'predict_proba'.
+})
+
+output = service.run(input_payload)
+
+print(output)
+```
+
 Poznámka: Tyto závislosti jsou zahrnuty v předem sestavené sklearn odvození kontejneru:
 
 ```yaml
@@ -1154,7 +1172,7 @@ def run(request):
 
 * [Jak nasadit model pomocí vlastní image Dockeru](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Zabezpečené webové služby Azure Machine Learning s ssl](how-to-secure-web-service.md)
+* [Použití TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
 * [Využití modelu Azure Machine Learning nasazeného jako webová služba](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning pomocí přehledů aplikací](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely ve výrobě](how-to-enable-data-collection.md)

@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067947"
 ---
 # <a name="mock-api-responses"></a>Napodobení odpovědí API
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
-+ Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
++ Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Vytvoření testovacího rozhraní API 
 
@@ -65,7 +65,7 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
     | Nastavení             | Hodnota                             | Popis                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **Zobrazovaný název**    | *Test call*                       | Název, který se zobrazí na **portálu pro vývojáře**.                                                                                                                                       |
+    | **Zobrazované jméno**    | *Test call*                       | Název, který se zobrazí na **portálu pro vývojáře**.                                                                                                                                       |
     | **Adresa URL** (příkaz HTTP) | GET                               | Můžete zvolit některý z předdefinovaných příkazů HTTP.                                                                                                                                         |
     | **Adresa URL**             | */test*                           | Cesta URL k rozhraní API.                                                                                                                                                                       |
     | **Popis**     |                                   | Zadejte popis operace, který se na **portálu pro vývojáře** použije jako dokumentace pro vývojáře používající toto rozhraní API.                                                    |
@@ -119,7 +119,7 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

@@ -16,10 +16,10 @@ ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238717"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
@@ -50,10 +50,10 @@ V tomto kurzu se naučíte:
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
 
-Kromě toho musíte ke koncovému bodu CDN přidružit vlastní doménu Azure CDN. Další informace najdete v tématu [kurz: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md).
+Kromě toho musíte ke koncovému bodu CDN přidružit vlastní doménu Azure CDN. Další informace najdete [v tématu Výuka: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md).
 
 > [!IMPORTANT]
-> Certifikáty spravované CDN nejsou pro kořenové nebo vrcholové domény k dispozici. Pokud je vaše Azure CDN vlastní doména kořenovou nebo vrcholovou doménou, musíte použít funkci Přineste si vlastní certifikát. 
+> Certifikáty spravované pomocí CDN nejsou k dispozici pro kořenové nebo vrcholové domény. Pokud je vaše vlastní doména Azure CDN kořenovou doménou nebo doménou vrcholu, musíte použít funkci Bring your own certificate. 
 >
 
 ---
@@ -68,9 +68,9 @@ Když použijete certifikát spravovaný CDN, můžete funkci HTTPS zapnout něk
 
 Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 
-1. Pokud chcete najít certifikát, který spravuje vaše Azure CDN, otevřete [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **profily CDN**. 
+1. Přejděte na [portál Azure](https://portal.azure.com) a najděte certifikát spravovaný vaší azure cdn. Vyhledejte a vyberte **profily CDN**. 
 
-2. Vyberte **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Akamai**, **Azure CDN Standard z Verizon**nebo **Azure CDN Premium z profilu Verizon** .
+2. Vyberte si **azure cdn standard z Microsoftu**, **Azure CDN Standard z Akamai**, **Azure CDN Standard od Verizonu**nebo **Azure CDN Premium z** profilu Verizon.
 
 3. V seznamu koncových bodů CDN vyberte koncový bod obsahující vaši vlastní doménu.
 
@@ -96,10 +96,10 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 # <a name="option-2-enable-https-with-your-own-certificate"></a>[2. možnost: Povolení protokolu HTTPS s vlastním certifikátem](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
-> Tato možnost je k dispozici pouze u **Azure CDN od společnosti Microsoft** a **Azure CDN z profilů Verizon** . 
+> Tato možnost je dostupná jenom s **Azure CDN od Microsoftu** a **Azure CDN z** profilů Verizonu. 
 >
  
-K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Azure CDN používá tento zabezpečený mechanismus k získání vašeho certifikátu a vyžaduje několik dalších kroků. Když vytváříte svůj certifikát SSL, musíte ho vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních autorit najdete v části [povolené certifikační autority pro povolení vlastního protokolu HTTPS v Azure CDN](cdn-troubleshoot-allowed-ca.md). Pro **Azure CDN z Verizon**bude přijata jakákoli platná certifikační autorita. 
+K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Azure CDN používá tento zabezpečený mechanismus k získání vašeho certifikátu a vyžaduje několik dalších kroků. Když vytváříte svůj certifikát SSL, musíte ho vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních úřadů najdete [v tématu Povolené certifikační autority, kde najdete povolení vlastního protokolu HTTPS v azure cdn](cdn-troubleshoot-allowed-ca.md). Pro **Azure CDN od společnosti Verizon**bude přijata jakákoli platná certifikační autorita. 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Příprava účtu a certifikátu Azure Key Vault
  
@@ -111,7 +111,7 @@ K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se
 
 Zaregistrujte Azure CDN jako aplikaci v Azure Active Directory pomocí PowerShellu.
 
-1. V případě potřeby nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) na svém místním počítači.
+1. V případě potřeby nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) do místního počítače.
 
 2. V PowerShellu spusťte následující příkaz:
 
@@ -128,13 +128,13 @@ Udělte Azure CDN oprávnění přistupovat k certifikátům (tajným kódům) v
 
     ![Vytvoření nové zásady přístupu](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. V části **Výběr objektu zabezpečení** vyhledejte **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** a zvolte **Microsoft.Azure.Cdn**. Klikněte na **Vybrat**.
+2. V části **Výběr objektu zabezpečení** vyhledejte **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** a zvolte **Microsoft.Azure.Cdn**. Klepněte na **tlačítko Vybrat**.
 
     ![Nastavení zásad přístupu](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. Vyberte **oprávnění certifikátu**a potom zaškrtněte políčka pro možnost **získat** a **seznam** , aby síť CDN mohla provést tato oprávnění k získání a výpisu certifikátů.
+3. Vyberte **oprávnění certifikátu**a pak zaškrtněte políčka **Získat** a **Seznam,** aby cdn mohla tato oprávnění získat a vypsat certifikáty.
 
-4. Vyberte **oprávnění tajného klíče**a potom zaškrtněte políčka pro **získat** a **seznam** , aby tato oprávnění mohla používat CDN k získání a zobrazení seznamu tajných kódů.
+4. Vyberte **tajná oprávnění**a pak zaškrtněte políčka **získat** a **seznam** povolit CDN provádět tato oprávnění získat a seznam tajných kódů.
 
 5. Vyberte **OK**. 
 
@@ -178,7 +178,7 @@ Při použití vlastního certifikátu se ověření domény nevyžaduje.
 
 Váš záznam CNAME by měl mít následující formát, kde *Název* je název vaší vlastní domény a *Hodnota* je název hostitele vašeho koncového bodu CDN:
 
-| Název            | Typ  | Hodnota                 |
+| Name (Název)            | Typ  | Hodnota                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -186,7 +186,7 @@ Další informace o záznamech CNAME najdete v tématu popisujícím [vytvořen�
 
 Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří váš název vlastní domény a vytvoří pro váš název domény vyhrazený certifikát. DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný jeden rok a před vypršením platnosti se automaticky obnoví. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation). 
 
-Automatické ověřování obvykle trvá několik hodin. Pokud se vaše doména neověří za 24 hodin, otevřete lístek podpory.
+Automatické ověřování obvykle trvá několik hodin. Pokud se vaše doména nezobrazí ověřená do 24 hodin, otevřete lístek podpory.
 
 >[!NOTE]
 >Pokud máte záznam CAA (Certificate Authority Authorization) pro vašeho poskytovatele DNS, musí jako platnou certifikační autoritu zahrnovat DigiCert. Záznam CAA umožňuje vlastníkům domén určit u poskytovatelů DNS, které certifikační autority mají oprávnění k vystavování certifikátů pro jejich domény. Pokud certifikační autorita přijme objednávku na certifikát pro doménu se záznamem CAA a tato certifikační autorita není uvedená jako autorizovaný vystavitel certifikátů, nebude moci vystavit certifikát pro danou doménu nebo subdoménu. Informace o správě záznamů CAA najdete v tématu [Správa záznamů CAA](https://support.dnsimple.com/articles/manage-caa-record/). Nástroj pro práci se záznamy CAA najdete tady: [CAA Record Helper](https://sslmate.com/caa/).
@@ -194,11 +194,11 @@ Automatické ověřování obvykle trvá několik hodin. Pokud se vaše doména 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Vlastní doména se nemapuje na koncový bod CDN
 
 >[!NOTE]
->Pokud používáte **Azure CDN z Akamai**, měli byste nastavit tento záznam CNAME tak, aby umožňoval automatizované ověřování domény. "_acme – výzva.&lt;název hostitele vlastní domény&gt;-> CNAME – > &lt;vlastní název domény hostitele&gt;. ak-acme-challenge.azureedge.net "
+>Pokud používáte **Azure CDN z Akamai**, následující CNAME by měla být nastavena tak, aby umožnila automatické ověření domény. "_acme výzvou. &lt;vlastní název_hostitele&gt; domény -> &lt;CNAME&gt;-> vlastní název_hostitele domény .ak-acme-challenge.azureedge.net"
 
 Pokud položka záznamu CNAME obsahuje subdoménu cdnverify, postupujte podle zbývajících pokynů v tomto kroku.
 
-DigiCert odešle e-mail s ověřovacím e-mailem na následující e-mailové adresy. Ověřte, že můžete schvalovat přímo z jedné z následujících adres:
+Společnost DigiCert odešle ověřovací e-mail na následující e-mailové adresy. Ověřte, zda můžete schvalovat přímo z jedné z následujících adres:
 
 admin@&lt;název_vaší_domény.com&gt;  
 administrator@&lt;název_vaší_domény.com&gt;  
@@ -206,7 +206,7 @@ webmaster@&lt;název_vaší_domény.com&gt;
 hostmaster@&lt;název_vaší_domény.com&gt;  
 postmaster@&lt;název_vaší_domény.com&gt;  
 
-Během několika minut byste měli obdržet podobný e-mail jako v následujícím příkladu s výzvou ke schválení žádosti. Pokud používáte filtr spamu, přidejte verification@digicert.com do seznamu povolených. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
+Během několika minut byste měli obdržet podobný e-mail jako v následujícím příkladu s výzvou ke schválení žádosti. Pokud používáte filtr nevyžádané verification@digicert.com pošty, přidejte jej do seznamu povolených položek. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
     
 ![E-mail pro ověření domény](./media/cdn-custom-ssl/domain-validation-email.png)
 
@@ -234,17 +234,17 @@ Následující tabulka ukazuje průběh operace, která proběhne při povolení
 
 | Krok operace | Podrobnosti o dílčím kroku operace | 
 | --- | --- |
-| 1\. Odesílání žádosti | Odesílání žádosti |
+| 1. Odesílání žádosti | Odesílání žádosti |
 | | Vaše žádost o HTTPS se právě odesílá. |
 | | Vaše žádost o HTTPS se úspěšně odeslala. |
-| 2\. Ověření domény | Doména ser ověří automaticky, pokud se pomocí záznamu CNAME mapuje na koncový bod CDN. Jinak se na e-mail uvedený v záznamu o registraci vaší domény (žadatel o registraci v registru WHOIS) odešle žádost o ověření. Ověřte doménu co nejdříve. |
+| 2. Ověření domény | Doména ser ověří automaticky, pokud se pomocí záznamu CNAME mapuje na koncový bod CDN. Jinak se na e-mail uvedený v záznamu o registraci vaší domény (žadatel o registraci v registru WHOIS) odešle žádost o ověření. Ověřte doménu co nejdříve. |
 | | Vaše vlastnictví domény se úspěšně ověřilo. |
 | | Platnost požadavku na ověření vlastnictví domény vypršela (zákazník pravděpodobně neodpověděl ve lhůtě 6 dní). HTTPS se pro vaši doménu nepovolí. * |
 | | Požadavek na ověření vlastnictví domény byl zamítnut zákazníkem. HTTPS se pro vaši doménu nepovolí. * |
-| 3\. Zřizování certifikátu | Certifikační autorita momentálně vystavuje certifikát nutný pro povolení HTTPS pro vaši doménu. |
+| 3. Zřizování certifikátu | Certifikační autorita momentálně vystavuje certifikát nutný pro povolení HTTPS pro vaši doménu. |
 | | Certifikát byl vystaven a momentálně se nasazuje do sítě CDN. Může to trvat až 6 hodin. |
 | | Certifikát se úspěšně nasadil do sítě CDN. |
-| 4\. Hotovo | Protokol HTTPS se ve vaší doméně úspěšně povolil. |
+| 4. Hotovo | Protokol HTTPS se ve vaší doméně úspěšně povolil. |
 
 \* Tato zpráva se zobrazí pouze v případě, že dojde k chybě. 
 
@@ -262,17 +262,17 @@ V předchozích krocích jste pro vlastní doménu povolili protokol HTTPS. Poku
 
 ### <a name="disable-the-https-feature"></a>Zákaz funkce HTTPS 
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **profily CDN**. 
+1. Na [webu Azure Portal](https://portal.azure.com)vyhledejte a vyberte **profily CDN**. 
 
-2. Vyberte **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**nebo **Azure CDN Premium ze profilu Verizon** .
+2. Vyberte si **azure cdn standard z Microsoftu**, **Azure CDN Standard od Verizonu**nebo **Azure CDN Premium z** profilu Verizon.
 
-3. V seznamu koncových bodů vyberte koncový bod obsahující vaši vlastní doménu.
+3. V seznamu koncových bodů vyberte koncový bod obsahující vlastní doménu.
 
-4. Vyberte vlastní doménu, pro kterou chcete zakázat protokol HTTPS.
+4. Zvolte vlastní doménu, pro kterou chcete zakázat protokol HTTPS.
 
     ![Seznam vlastních domén](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-5. Zvolte **vypnuto** , pokud chcete protokol HTTPS zakázat, a pak vyberte **použít**.
+5. Chcete-li zakázat protokol HTTPS, zvolte **Vypnuto** a pak vyberte **Použít**.
 
     ![Dialogové okno HTTPS pro vlastní doménu](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
@@ -286,11 +286,11 @@ Po zákazu funkce HTTPS vlastní domény může trvat 6 až 8 hodin, než se zm�
 
 Následující tabulka ukazuje průběh operace, která proběhne při zákazu HTTPS. Po zákazu HTTPS se v dialogovém okně vlastní domény zobrazí tři kroky operace. Když se jednotlivé kroky aktivují, zobrazí se pod nimi další podrobnosti. Po úspěšném dokončení kroku se vedle něj zobrazí zelená značka zaškrtnutí. 
 
-| Průběh operace | Podrobnosti operace | 
+| Průběh operace | Podrobnosti o operaci | 
 | --- | --- |
-| 1\. Odesílání žádosti | Odesílání vaší žádosti |
-| 2\. Zrušení zřízení certifikátu | Odstraňování certifikátu |
-| 3\. Hotovo | Certifikát odstraněn |
+| 1. Odesílání žádosti | Odesílání vaší žádosti |
+| 2. Zrušení zřízení certifikátu | Odstraňování certifikátu |
+| 3. Hotovo | Certifikát odstraněn |
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -314,13 +314,13 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
     Ne, záznam CAA (Certificate Authority Authorization) se v současné době nevyžaduje. Pokud ho však máte, musí jako platnou certifikační autoritu zahrnovat DigiCert.
 
-6. *20. června 2018 Azure CDN od Verizon zahájil používání vyhrazeného certifikátu s SNI TLS/SSL ve výchozím nastavení. Co se stane se stávajícími vlastními doménami pomocí certifikátu sítě SAN a protokolu TLS/SSL založeného na protokolu IP?*
+6. *20. června 2018 azure CDN od Verizonu začal používat ve výchozím nastavení vyhrazený certifikát s SNI TLS/SSL. Co se stane s mými stávajícími vlastními doménami pomocí certifikátu ALTERNATIVNÍ NÁZVY předmětů (SAN) a protokolu TLS/SSL založeného na protokolu IP?*
 
     Vaše stávající domény se budou v nadcházejících měsících postupně migrovat na jediný certifikát, pokud Microsoft dojde analýzou k tomu, že do vaší aplikace přicházejí jenom žádosti klientů SNI. Pokud Microsoft zjistí, že do vaší aplikace přicházejí žádosti klientů jiných než SNI, zůstanou domény v certifikátu SAN s protokolem TLS/SSL založeném na IP adrese. V žádném případě nedojde k přerušení poskytování vaší služby nebo podpory pro žádosti vašich klientů bez ohledu na to, jestli jsou tyto žádosti SNI nebo ne.
 
-7. *Jak fungují obnovení certifikátů pomocí funkce Přineste si vlastní certifikát?*
+7. *Jak funguje obnovení certifikátu s certifikátem Přineste si vlastní certifikát?*
 
-    Pokud chcete zajistit, aby byl novější certifikát nasazený v infrastruktuře PoP, jednoduše nahrajte nový certifikát do trezoru klíčů Azure a potom v nastavení SSL na Azure CDN zvolte nejnovější verzi certifikátu a pak stiskněte Uložit. Azure CDN pak rozšíří nový aktualizovaný certifikát. 
+    Chcete-li zajistit nasazení novějšího certifikátu do infrastruktury PoP, jednoduše nahrajte nový certifikát do Azure KeyVault a pak v nastavení SSL v Azure CDN zvolte nejnovější verzi certifikátu a stiskněte tlačítko Uložit. Azure CDN pak rozšíří váš nový aktualizovaný certifikát. 
 
 ## <a name="next-steps"></a>Další kroky
 

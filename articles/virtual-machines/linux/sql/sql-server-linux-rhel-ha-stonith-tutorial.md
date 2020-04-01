@@ -1,6 +1,6 @@
 ---
-title: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure – Linux Virtual Machines | Microsoft Docs
-description: Přečtěte si o nastavení vysoké dostupnosti v prostředí clusteru RHEL a nastavení STONITH.
+title: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure – virtuální počítače S IF | Dokumenty společnosti Microsoft
+description: Informace o nastavení vysoké dostupnosti v prostředí clusteru RHEL a nastavení STONITH
 ms.service: virtual-machines-linux
 ms.subservice: ''
 ms.topic: tutorial
@@ -9,52 +9,52 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
 ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79096702"
 ---
-# <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
+# <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure 
 
 > [!NOTE]
-> Uvedený kurz je ve **verzi Public Preview**. 
+> Prezentovaný kurz je ve **verzi Public Preview**. 
 >
-> V tomto kurzu používáme SQL Server 2017 s RHEL 7,6, je ale možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8 ke konfiguraci HA. Příkazy pro konfiguraci prostředků skupiny dostupnosti se v RHEL 8 změnily. Chcete-li získat další informace o správných příkazech, přečtěte si článek o tom, jak [vytvořit prostředek skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a prostředky RHEL 8.
+> V tomto kurzu používáme SQL Server 2017 s RHEL 7.6, ale je možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8 ke konfiguraci HA. Příkazy ke konfiguraci prostředků skupiny dostupnosti se změnily v RHEL 8 a budete chtít podívat na článek, [Vytvořit zdroj skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a zdroje RHEL 8 pro další informace o správné příkazy.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> - Vytvořit novou skupinu prostředků, skupinu dostupnosti a Azure Linux Virtual Machines (virtuální počítač)
+> - Vytvoření nové skupiny prostředků, sady dostupnosti a virtuálních počítačů Azure Linux (VM)
 > - Povolit vysokou dostupnost (HA)
-> - Vytvoření clusteru Pacemaker
-> - Konfigurace agenta pro oplocení vytvořením zařízení STONITH
-> - Instalace SQL Server a MSSQL-Tools na RHEL
-> - Konfigurace skupiny dostupnosti Always On SQL Server
+> - Vytvoření clusteru kardiostimulátoru
+> - Konfigurace agenta oplocení vytvořením zařízení STONITH
+> - Instalace SQL Serveru a nástrojů mssql na RHEL
+> - Konfigurace serveru SQL Server always on Availability Group
 > - Konfigurace prostředků skupiny dostupnosti (AG) v clusteru Pacemaker
-> - Testování převzetí služeb při selhání a agenta pro oplocení
+> - Otestujte převzetí služeb při selhání a agenta oplocení
 
-V tomto kurzu budete k nasazení prostředků v Azure používat rozhraní příkazového řádku (CLI) Azure.
+Tento kurz bude používat rozhraní příkazového řádku Azure (CLI) k nasazení prostředků v Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku v místním prostředí, vyžaduje tento kurz Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud dáváte přednost instalaci a použití příkazového příkazu k místnímu použití, tento kurz vyžaduje Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pokud máte více než jedno předplatné, [nastavte předplatné](/cli/azure/manage-azure-subscriptions-azure-cli) , na které chcete tyto prostředky nasadit.
+Pokud máte více než jedno předplatné, [nastavte předplatné,](/cli/azure/manage-azure-subscriptions-azure-cli) které chcete nasadit tyto prostředky.
 
-Pomocí následujícího příkazu vytvořte skupinu prostředků `<resourceGroupName>` v oblasti. Nahraďte `<resourceGroupName>` názvem svého výběru. Pro tento kurz používáme `East US 2`. Další informace najdete v následujícím [rychlém](../quick-create-cli.md)startu.
+Pomocí následujícího příkazu vytvořte skupinu `<resourceGroupName>` prostředků v oblasti. Nahraďte `<resourceGroupName>` název podle vašeho výběru. Používáme `East US 2` pro tento kurz. Další informace naleznete v následujícím programu [Rychlý start](../quick-create-cli.md).
 
 ```azurecli-interactive
 az group create --name <resourceGroupName> --location eastus2
 ```
 
-## <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
+## <a name="create-an-availability-set"></a>Vytvoření sady dostupnosti
 
-Dalším krokem je vytvoření skupiny dostupnosti. Spusťte v Azure Cloud Shell následující příkaz a nahraďte `<resourceGroupName>` názvem skupiny prostředků. Vyberte název `<availabilitySetName>`.
+Dalším krokem je vytvoření skupiny dostupnosti. Spusťte následující příkaz v prostředí `<resourceGroupName>` Azure Cloud Shell a nahraďte název skupiny prostředků. Zvolte název `<availabilitySetName>`pro .
 
 ```azurecli-interactive
 az vm availability-set create \
@@ -87,14 +87,14 @@ Po dokončení příkazu byste měli získat následující výsledky:
 }
 ```
 
-## <a name="create-rhel-vms-inside-the-availability-set"></a>Vytvoření virtuálních počítačů s RHEL v rámci skupiny dostupnosti
+## <a name="create-rhel-vms-inside-the-availability-set"></a>Vytvoření virtuálních aplikací RHEL uvnitř sady dostupnosti
 
 > [!WARNING]
-> Pokud zvolíte image RHEL s průběžnými platbami (PAYG) a nakonfigurujete vysokou dostupnost (HA), může se stát, že budete muset zaregistrovat své předplatné. To může u předplatného platit dvakrát, protože se vám bude účtovat předplatné Microsoft Azure RHEL pro virtuální počítač a předplatné Red Hat. Další informace naleznete v tématu https://access.redhat.com/solutions/2458541.
+> Pokud zvolíte bitovou kopii RHEL s průběžným platbou (PAYG) a nakonfigurujete vysokou dostupnost (HA), můžete být požádáni o registraci předplatného. To může způsobit, že zaplatíte dvakrát za předplatné, protože se vám bude účtovat předplatné Microsoft Azure RHEL pro virtuální počítač a předplatné Red Hatu. Další informace naleznete v tématu https://access.redhat.com/solutions/2458541.
 >
-> Abyste se vyhnuli "dvojitému fakturaci", při vytváření virtuálního počítače Azure použijte image RHEL HA. Obrázky, které jsou nabízené jako image RHEL-HA, jsou také PAYG image s úložištěm HA předem povolenou.
+> Abyste se vyhnuli "double fakturaci", použijte při vytváření virtuálního počítače Azure bitovou kopii RHEL HA. Obrázky nabízené jako obrázky RHEL-HA jsou také obrázky PAYG s přednastaveným repo ha.
 
-1. Získat seznam imagí virtuálních počítačů, které nabízejí RHEL s HA:
+1. Získejte seznam imitek virtuálního počítače, které nabízejí RHEL s HA:
 
     ```azurecli-interactive
     az vm image list --all --offer "RHEL-HA"
@@ -128,17 +128,17 @@ Po dokončení příkazu byste měli získat následující výsledky:
     ]
     ```
 
-    Pro tento kurz si vybíráme `RedHat:RHEL-HA:7.6:7.6.2019062019`obrázku.
+    Pro tento kurz vybíráme obrázek `RedHat:RHEL-HA:7.6:7.6.2019062019`.
 
     > [!IMPORTANT]
-    > Aby bylo možné nastavit skupinu dostupnosti, musí mít názvy počítačů méně než 15 znaků. Uživatelské jméno nemůže obsahovat velká písmena a hesla musí být delší než 12 znaků.
+    > Chcete-li nastavit skupinu dostupnosti, musí být názvy počítačů menší než 15 znaků. Uživatelské jméno nesmí obsahovat velká písmena a hesla musí mít více než 12 znaků.
 
-1. Chceme vytvořit 3 virtuální počítače ve skupině dostupnosti. V následujícím příkazu nahraďte následující:
+1. Chceme vytvořit 3 virtuální chody v sadě dostupnosti. V následujícím příkazu nahraďte následující:
 
     - `<resourceGroupName>`
     - `<VM-basename>`
     - `<availabilitySetName>`
-    - `<VM-Size>` – příkladem může být "Standard_D16_v3"
+    - `<VM-Size>`- Příkladem by bylo "Standard_D16_v3"
     - `<username>`
     - `<adminPassword>`
 
@@ -157,9 +157,9 @@ Po dokončení příkazu byste měli získat následující výsledky:
     done
     ```
 
-Pomocí výše uvedeného příkazu se vytvoří virtuální počítače a pro tyto virtuální počítače se vytvoří výchozí virtuální síť. Další informace o různých konfiguracích najdete v článku [AZ VM Create](https://docs.microsoft.com/cli/azure/vm) .
+Výše uvedený příkaz vytvoří virtuální chod a vytvoří výchozí virtuální síť pro tyto virtuální aplikace. Další informace o různých konfiguracích najdete v článku [vytvoření az vm.](https://docs.microsoft.com/cli/azure/vm)
 
-Po dokončení příkazu u každého virtuálního počítače byste měli získat výsledky podobné následujícímu:
+Po dokončení příkazu pro každý virtuální virtuální mě byste měli získat podobné výsledky následujícímu:
 
 ```output
 {
@@ -176,50 +176,50 @@ Po dokončení příkazu u každého virtuálního počítače byste měli získ
 ```
 
 > [!IMPORTANT]
-> Výchozí image, která je vytvořena pomocí příkazu výše, vytvoří ve výchozím nastavení disk s operačním systémem 32 GB. Můžete mít pravděpodobně nedostatek místa v této výchozí instalaci. Následující parametr přidaný do výše uvedeného příkazu `az vm create` slouží k vytvoření disku s operačním systémem pomocí 128 GB jako příklad: `--os-disk-size-gb 128`.
+> Výchozí obraz, který je vytvořen pomocí výše uvedeného příkazu, vytvoří ve výchozím nastavení disk s 32 GB operačního systému. S touto výchozí instalací může dojít k nedostatku místa. Následující parametr přidaný do výše `az vm create` uvedeného příkazu můžete použít k vytvoření disku `--os-disk-size-gb 128`operačního systému s kapacitou 128 GB jako příklad: .
 >
-> Pak můžete [nakonfigurovat Správce logických svazků (LVM)](../../../virtual-machines/linux/configure-lvm.md) , pokud potřebujete rozbalit příslušné svazky složek, aby vyhovovaly vaší instalaci.
+> Potom můžete [nakonfigurovat Správce logických svazků (LVM),](../../../virtual-machines/linux/configure-lvm.md) pokud potřebujete rozbalit příslušné svazky složek tak, aby vyhovovaly vaší instalaci.
 
-### <a name="test-connection-to-the-created-vms"></a>Test připojení k vytvořeným virtuálním počítačům
+### <a name="test-connection-to-the-created-vms"></a>Testování připojení k vytvořeným virtuálním sobě
 
-Připojte se k VM1 nebo k ostatním virtuálním počítačům pomocí následujícího příkazu v Azure Cloud Shell. Pokud nemůžete najít IP adresy virtuálních počítačů, postupujte podle tohoto [rychlého startu v Azure Cloud Shell](../../../cloud-shell/quickstart.md#ssh-into-your-linux-vm).
+Připojte se k Virtuálnímu počítači 1 nebo k jiným virtuálním počítačům pomocí následujícího příkazu v Prostředí Azure Cloud Shell. Pokud se vám nedaří najít IP adresy virtuálních připojení, postupujte podle tohoto [úvodního panelu v prostředí Azure Cloud Shell](../../../cloud-shell/quickstart.md#ssh-into-your-linux-vm).
 
 ```azurecli-interactive
 ssh <username>@publicipaddress
 ```
 
-Pokud je připojení úspěšné, měl by se zobrazit následující výstup reprezentující terminál pro Linux:
+Pokud je připojení úspěšné, měli byste vidět následující výstup představující terminál Linuxu:
 
 ```output
 [<username>@<VM1> ~]$
 ```
 
-Zadejte `exit` pro opuštění relace SSH.
+Chcete-li opustit relaci SSH, zadejte. `exit`
 
 ## <a name="enable-high-availability"></a>Povolit vysokou dostupnost
 
 > [!IMPORTANT]
-> Aby bylo možné dokončit tuto část kurzu, musíte mít předplatné pro RHEL a doplněk vysoké dostupnosti. Pokud používáte image doporučenou v předchozí části, nemusíte registrovat jiné předplatné.
+> Chcete-li dokončit tuto část kurzu, musíte mít předplatné pro RHEL a doplněk s vysokou dostupností. Pokud používáte obrázek doporučený v předchozí části, není třeba registrovat jiné předplatné.
  
-Připojte se ke každému uzlu virtuálního počítače a postupujte podle pokynů níže, abyste povolili HA. Další informace najdete v tématu [Povolení předplatného vysoké dostupnosti pro RHEL](/sql/linux/sql-server-linux-availability-group-cluster-rhel#enable-the-high-availability-subscription-for-rhel).
+Připojte se ke každému uzlu virtuálního uživatele a postupujte podle níže uvedeného průvodce a povolte ha. Další informace naleznete v [tématu povolení předplatného s vysokou dostupností pro rhel](/sql/linux/sql-server-linux-availability-group-cluster-rhel#enable-the-high-availability-subscription-for-rhel).
 
 > [!TIP]
-> Bude jednodušší, pokud otevřete relaci SSH ke každému virtuálnímu počítači současně, protože stejné příkazy bude nutné spustit na každém virtuálním počítači v celém článku.
+> Bude to jednodušší, pokud otevřete relaci SSH pro každý z virtuálních počítačů současně jako stejné příkazy bude nutné spustit na každém virtuálním počítači v celém článku.
 >
-> Pokud kopírujete a vkládáte více příkazů `sudo` a zobrazí se výzva k zadání hesla, další příkazy se nespustí. Spouštějte jednotlivé příkazy samostatně.
+> Pokud kopírujete a `sudo` vložujete více příkazů a budete vyzváni k zadání hesla, další příkazy se nespustí. Spusťte každý příkaz samostatně.
 
 
-1. Spuštěním následujících příkazů na každém virtuálním počítači otevřete porty brány firewall Pacemaker:
+1. Spusťte následující příkazy na každém virtuálním počítači a otevřete porty brány firewall Pacemakeru:
 
     ```bash
     sudo firewall-cmd --permanent --add-service=high-availability
     sudo firewall-cmd --reload
     ```
 
-1. Aktualizujte a nainstalujte balíčky Pacemaker na všech uzlech pomocí následujících příkazů:
+1. Aktualizujte a nainstalujte balíčky Pacemakeru do všech uzlů pomocí následujících příkazů:
 
     > [!NOTE]
-    > **nmap** se instaluje jako součást tohoto bloku příkazů jako nástroj k vyhledání dostupných IP adres ve vaší síti. Nemusíte instalovat **nmap**, ale bude to užitečné později v tomto kurzu.
+    > **nmap** je nainstalován jako součást tohoto příkazového bloku jako nástroj pro vyhledání dostupných IP adres v síti. Nemusíte instalovat **nmap**, ale to bude užitečné později v tomto tutoriálu.
 
     ```bash
     sudo yum update -y
@@ -227,19 +227,19 @@ Připojte se ke každému uzlu virtuálního počítače a postupujte podle poky
     sudo reboot
     ```
 
-1. Nastavte heslo pro výchozího uživatele, který se vytvoří při instalaci balíčků Pacemaker. Používejte stejné heslo na všech uzlech.
+1. Nastavte heslo pro výchozího uživatele, který je vytvořen při instalaci balíčků Pacemaker. Použijte stejné heslo ve všech uzlech.
 
     ```bash
     sudo passwd hacluster
     ```
 
-1. Pomocí následujícího příkazu otevřete soubor Hosts a nastavte překlad názvu hostitele. Další informace najdete v tématu [Konfigurace AG](/sql/linux/sql-server-linux-availability-group-configure-ha#prerequisites) pro konfiguraci souboru hostitelů.
+1. Pomocí následujícího příkazu otevřete soubor hosts a nastavte překlad názvů hostitele. Další informace naleznete v [tématu Configure AG](/sql/linux/sql-server-linux-availability-group-configure-ha#prerequisites) on configuring the hosts file.
 
     ```
     sudo vi /etc/hosts
     ```
 
-    V editoru **VI** zadejte `i` pro vložení textu a na prázdném řádku přidejte **privátní IP adresu** odpovídajícího virtuálního počítače. Pak přidejte název virtuálního počítače za mezeru vedle IP adresy. Každý řádek by měl mít samostatnou položku.
+    V editoru **vi** zadejte `i` pro vložení textu a na prázdný řádek přidejte **privátní IP adresu** odpovídajícího virtuálního počítači. Pak přidejte název virtuálního počítačů za mezeru vedle IP adresy. Každý řádek by měl mít samostatnou položku.
 
     ```output
     <IP1> <VM1>
@@ -248,17 +248,17 @@ Připojte se ke každému uzlu virtuálního počítače a postupujte podle poky
     ```
 
     > [!IMPORTANT]
-    > Doporučujeme použít výše uvedenou **privátní IP** adresu. Použití veřejné IP adresy v této konfiguraci způsobí selhání instalace a nedoporučujeme vystavovat váš virtuální počítač pro externí sítě.
+    > Doporučujeme použít vaši **privátní IP** adresu výše. Použití veřejné IP adresy v této konfiguraci způsobí selhání nastavení a nedoporučujeme vystavení virtuálního počítače externím sítím.
 
-    Chcete-li ukončit Editor **VI** , nejprve stiskněte klávesu **ESC** a potom zadejte příkaz `:wq` pro zápis souboru a ukončení.
+    Chcete-li ukončit editor **vi,** nejprve stiskněte klávesu **Esc** a potom zadejte příkaz `:wq` pro zápis souboru a ukončete.
 
 ## <a name="create-the-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
-V této části povolíme a spustíte službu pcsd a potom nakonfigurujete cluster. V případě SQL Server on Linux se prostředky clusteru automaticky nevytvoří. Budeme muset povolit a vytvořit prostředky Pacemaker ručně. Další informace najdete v článku o [konfiguraci instance clusteru s podporou převzetí služeb při selhání pro RHEL](/sql/linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure#install-and-configure-pacemaker-on-each-cluster-node) .
+V této části povolíme a spustíme službu PCSD a pak nakonfigurujeme cluster. Pro SQL Server na Linuxu nejsou prostředky clusteru vytvořeny automaticky. Budeme muset povolit a vytvořit prostředky kardiostimulátoru ručně. Další informace naleznete v článku o [konfiguraci instance clusteru s podporou převzetí služeb při selhání pro RHEL](/sql/linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure#install-and-configure-pacemaker-on-each-cluster-node)
 
-### <a name="enable-and-start-pcsd-service-and-pacemaker"></a>Povolení a spuštění služby pcsd a Pacemaker
+### <a name="enable-and-start-pcsd-service-and-pacemaker"></a>Povolení a spuštění služby PCSD a kardiostimulátoru
 
-1. Spusťte příkazy na všech uzlech. Tyto příkazy umožní, aby se uzly po restartování znovu připojily ke clusteru.
+1. Spusťte příkazy ve všech uzlech. Tyto příkazy umožňují uzlům znovu připojit clusteru po restartování.
 
     ```bash
     sudo systemctl enable pcsd
@@ -273,9 +273,9 @@ V této části povolíme a spustíte službu pcsd a potom nakonfigurujete clust
     sudo systemctl enable pacemaker 
     ```
 
-1. Na primárním uzlu spusťte následující příkazy a nastavte cluster.
+1. Na primárním uzlu nastavte cluster následujícími příkazy.
 
-    - Při spuštění příkazu `pcs cluster auth` k ověření uzlů clusteru se zobrazí výzva k zadání hesla. Zadejte heslo pro uživatele **hacluster** , který jste vytvořili dříve.
+    - Při spuštění `pcs cluster auth` příkazu k ověření uzlů clusteru budete vyzváni k zadání hesla. Zadejte heslo pro uživatele **hacluster** uvytvořeného dříve.
 
     ```bash
     sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
@@ -284,7 +284,7 @@ V této části povolíme a spustíte službu pcsd a potom nakonfigurujete clust
     sudo pcs cluster enable --all
     ```
 
-1. Spusťte následující příkaz a ověřte, zda jsou všechny uzly online.
+1. Spusťte následující příkaz a zkontrolujte, zda jsou všechny uzly online.
 
     ```bash
     sudo pcs status
@@ -317,25 +317,25 @@ V této části povolíme a spustíte službu pcsd a potom nakonfigurujete clust
           pcsd: active/enabled
     ```
 
-1. Nastavte v živém clusteru očekávané hlasy na 3. Tento příkaz ovlivní pouze živý cluster a nemění konfigurační soubory.
+1. Nastavte očekávané hlasy v živém clusteru na 3. Tento příkaz ovlivní pouze živý cluster a nezmění konfigurační soubory.
 
-    Na všech uzlech nastavte pomocí následujícího příkazu očekávané hlasy:
+    Na všech uzlech nastavte očekávané hlasy pomocí následujícího příkazu:
 
     ```bash
     sudo pcs quorum expected-votes 3
     ```
 
-## <a name="configure-the-fencing-agent"></a>Konfigurace agenta pro oplocení
+## <a name="configure-the-fencing-agent"></a>Konfigurace agenta oplocení
 
-Zařízení STONITH poskytuje agenta pro oplocení. Pokyny pro tento kurz jsou upraveny níže. Další informace najdete v tématu [Vytvoření zařízení STONITH](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#create-stonith-device).
+Zařízení STONITH poskytuje šermířské činidlo. Níže uvedené pokyny jsou upraveny pro tento kurz. Další informace naleznete [v tématu vytvoření zařízení STONITH](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#create-stonith-device).
  
-[Zkontrolujte verzi agenta Azure plot, abyste měli jistotu, že je aktualizovaný](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#cluster-installation). Použijte následující příkaz:
+[Zkontrolujte verzi agenta Azure Fence a ujistěte se, že je aktualizován](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#cluster-installation). Použijte následující příkaz:
 
 ```bash
 sudo yum info fence-agents-azure-arm
 ```
 
-Měl by se zobrazit podobný výstup jako v následujícím příkladu.
+Podobný výstup byste měli vidět jako v níže uvedeném příkladu.
 
 ```output
 Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
@@ -353,27 +353,27 @@ License     : GPLv2+ and LGPLv2+
 Description : The fence-agents-azure-arm package contains a fence agent for Azure instances.
 ```
 
-### <a name="register-a-new-application-in-azure-active-directory"></a>Registrace nové aplikace v Azure Active Directory
+### <a name="register-a-new-application-in-azure-active-directory"></a>Registrace nové aplikace ve službě Azure Active Directory
  
  1. Přejděte na https://portal.azure.com.
- 2. Otevřete okno [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Přejděte do vlastností a poznamenejte si ID adresáře. Toto je `tenant ID`
- 3. Klikněte na [ **Registrace aplikací**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
- 4. Klikněte na **Nová registrace** .
- 5. Zadejte **název** , jako `<resourceGroupName>-app`, vyberte **účty pouze v tomto adresáři organizace**
- 6. Vyberte možnost **Web**typu aplikace, zadejte adresu URL pro přihlášení (například http://localhost) a klikněte na Přidat. Přihlašovací adresa URL se nepoužívá a může to být jakákoli platná adresa URL. Po dokončení klikněte na **zaregistrovat** .
- 7. Vyberte **certifikáty a tajné klíče** pro novou registraci aplikace a pak klikněte na **nový tajný klíč klienta** .
- 8. Zadejte popis nového klíče (tajný klíč klienta), vyberte možnost **nikdy nevyprší** a klikněte na **Přidat** .
- 9. Zapište hodnotu tajného kódu. Používá se jako heslo instančního objektu.
-10. Vyberte **Přehled**. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (přihlašovací ID v následujících krocích) instančního objektu.
+ 2. Otevřete [okno Služby Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Přejděte na vlastnosti a poznamenejte si ID adresáře. Jedná se o`tenant ID`
+ 3. Klikněte na [ **Registrace aplikací.**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+ 4. Klikněte na **Nová registrace.**
+ 5. Zadejte **Name** název `<resourceGroupName>-app`jako , vyberte **pouze v tomto adresáři organizace položku Účty.**
+ 6. Vyberte **Web**typu aplikace , zadejte http://localhost) přihlašovací adresu URL (například a klepněte na Přidat. Přihlašovací adresa URL se nepoužívá a může se jedná o libovolnou platnou adresu URL. Po dokončení klikněte na **registr**
+ 7. Vyberte **certifikáty a tajné kódy** pro novou registraci aplikace a klikněte na **Nový tajný klíč klienta.**
+ 8. Zadejte popis nového klíče (tajný klíč klienta), vyberte **Nikdy nevyprší** a klikněte na **Přidat**
+ 9. Zapište si hodnotu tajného klíče. Používá se jako heslo pro instanční objekt
+10. Vyberte **Přehled**. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (login ID v níže uvedených krocích) instančního objektu
  
-### <a name="create-a-custom-role-for-the-fence-agent"></a>Vytvoření vlastní role pro agenta plotu
+### <a name="create-a-custom-role-for-the-fence-agent"></a>Vytvoření vlastní role agenta plotu
 
-Postupujte podle kurzu a [vytvořte vlastní roli pro prostředky Azure pomocí Azure CLI](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role).
+Podle kurzu [vytvořte vlastní roli pro prostředky Azure pomocí Azure CLI](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role).
 
-Váš soubor JSON by měl vypadat nějak takto:
+Soubor json by měl vypadat podobně jako následující:
 
-- Nahraďte `<username>` názvem dle vašeho výběru. Při vytváření této definice role se tak vyhnete jakýmkoli duplicitám.
-- Nahraďte `<subscriptionId>` vaším ID předplatného Azure.
+- Nahraďte `<username>` název podle vašeho výběru. To to je, aby se zabránilo jakékoli duplicitě při vytváření této definice role.
+- Nahraďte `<subscriptionId>` id předplatného Azure.
 
 ```json
 {
@@ -394,10 +394,10 @@ Váš soubor JSON by měl vypadat nějak takto:
 }
 ```
 
-Chcete-li přidat roli, spusťte následující příkaz:
+Chcete-li roli přidat, spusťte následující příkaz:
 
-- Nahraďte `<filename>` názvem souboru.
-- Pokud příkaz spouštíte z jiné než složky, do které je soubor uložen, do příkazu zahrňte cestu ke složce souboru.
+- Nahraďte `<filename>` název souboru.
+- Pokud provádíte příkaz z jiné cesty, než je složka, do které je soubor uložen, zahrňte do příkazu cestu ke složce souboru.
 
 ```bash
 az role definition create --role-definition "<filename>.json"
@@ -431,51 +431,51 @@ Měl by se zobrazit následující výstup:
 }
 ```
 
-### <a name="assign-the-custom-role-to-the-service-principal"></a>Přiřazení vlastní role k instančnímu objektu
+### <a name="assign-the-custom-role-to-the-service-principal"></a>Přiřazení vlastní role instančnímu objektu
 
-Přiřaďte vlastní roli `Linux Fence Agent Role-<username>` vytvořenou v posledním kroku objektu služby. Už nepoužívají role vlastníka!
+Přiřaďte `Linux Fence Agent Role-<username>` vlastní roli, která byla vytvořena v posledním kroku instančního objektu. Už nepoužívejte roli vlastníka!
  
 1. Přejděte na https://portal.azure.com.
-2. Otevřete okno [všechny prostředky](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll) .
-3. Vyberte virtuální počítač na prvním uzlu clusteru
-4. Klikněte na **řízení přístupu (IAM)** .
-5. Klikněte na **Přidat přiřazení role** .
-6. Vyberte `Linux Fence Agent Role-<username>` role ze seznamu **rolí** .
-7. V seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše, `<resourceGroupName>-app`
-8. Klikněte na **Uložit**.
-9. Opakujte výše uvedené kroky pro uzel všechny uzly clusteru.
+2. Otevření [okna Všechny prostředky](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll)
+3. Výběr virtuálního počítače prvního uzlu clusteru
+4. Klikněte na **ovládací prvek přístupu (IAM)**
+5. Klikněte **na Přidat přiřazení role.**
+6. Výběr role `Linux Fence Agent Role-<username>` ze seznamu **rolí**
+7. Do seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše,`<resourceGroupName>-app`
+8. Klikněte na **Uložit.**
+9. Opakujte výše uvedené kroky pro všechny uzla clusteru.
 
 ### <a name="create-the-stonith-devices"></a>Vytvoření zařízení STONITH
 
-V uzlu 1 Spusťte následující příkazy:
+Spusťte následující příkazy na uzlu 1:
 
-- Nahraďte `<ApplicationID>` hodnotou ID z registrace vaší aplikace.
-- Nahraďte `<servicePrincipalPassword>` hodnotou z tajného klíče klienta.
-- Nahraďte `<resourceGroupName>` skupinou prostředků z předplatného, které jste použili pro tento kurz.
-- Nahraďte `<tenantID>` a `<subscriptionId>` z předplatného Azure.
+- Nahraďte hodnotu `<ApplicationID>` ID z registrace aplikace.
+- Nahraďte hodnotu `<servicePrincipalPassword>` z tajného klíče klienta.
+- Nahraďte skupinu `<resourceGroupName>` prostředků z vašeho předplatného použitého pro tento kurz.
+- Nahraďte `<tenantID>` `<subscriptionId>` a z předplatného Azure.
 
 ```bash
 sudo pcs property set stonith-timeout=900
 sudo pcs stonith create rsc_st_azure fence_azure_arm login="<ApplicationID>" passwd="<servicePrincipalPassword>" resourceGroup="<resourceGroupName>" tenantId="<tenantID>" subscriptionId="<subscriptionId>" power_timeout=240 pcmk_reboot_timeout=900
 ```
 
-Vzhledem k tomu, že jsme už přidali pravidlo k naší bráně firewall, aby bylo možné službu HA (`--add-service=high-availability`), nemusíte na všech uzlech otevírat následující porty brány firewall: 2224, 3121, 21064, 5405. Pokud ale máte nějaký typ potíží s připojením s HA, otevřete pomocí následujícího příkazu porty, které jsou spojené s HA.
+Vzhledem k tomu, že jsme již přidali pravidlo do našeho firewallu, aby služba HA (`--add-service=high-availability`), není třeba otevírat následující porty firewallu na všech uzlech: 2224, 3121, 21064, 5405. Pokud však dochází k jakémukoli typu problémů s připojením s HA, otevřete tyto porty, které jsou přidruženy k ha, pomocí následujícího příkazu.
 
 > [!TIP]
-> Volitelně můžete přidat všechny porty v tomto kurzu najednou a ušetřit tak čas. Porty, které je třeba otevřít, jsou vysvětleny v jejich relativních částech níže. Pokud chcete nyní přidat všechny porty, přidejte další porty: 1433 a 5022.
+> Volitelně můžete přidat všechny porty v tomto kurzu najednou ušetřit nějaký čas. Porty, které je třeba otevřít, jsou vysvětleny v jejich relativních částech níže. Pokud chcete nyní přidat všechny porty, přidejte další porty: 1433 a 5022.
 
 ```bash
 sudo firewall-cmd --zone=public --add-port=2224/tcp --add-port=3121/tcp --add-port=21064/tcp --add-port=5405/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
-## <a name="install-sql-server-and-mssql-tools"></a>Instalace SQL Server a MSSQL-Tools
+## <a name="install-sql-server-and-mssql-tools"></a>Instalace sql serveru a nástrojů mssql
  
-Pomocí níže uvedeného oddílu můžete na virtuální počítače nainstalovat SQL Server a nástroje MSSQL. Proveďte každou z těchto akcí na všech uzlech. Další informace najdete v tématu [instalace SQL Server virtuálního počítače Red Hat](/sql/linux/quickstart-install-connect-red-hat).
+Pomocí následující části nainstalujte SQL Server a mssql-tools na virtuálních počítačích. Proveďte každou z těchto akcí na všech uzlech. Další informace naleznete v [tématu instalace SQL Server a Red Hat VM](/sql/linux/quickstart-install-connect-red-hat).
 
-### <a name="installing-sql-server-on-the-vms"></a>Instalace SQL Server na virtuální počítače
+### <a name="installing-sql-server-on-the-vms"></a>Instalace SQL Serveru na virtuální chod
 
-K instalaci SQL Server slouží následující příkazy:
+K instalaci serveru SQL Server se používají následující příkazy:
 
 ```bash
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
@@ -484,18 +484,18 @@ sudo /opt/mssql/bin/mssql-conf setup
 sudo yum install mssql-server-ha
 ```
 
-### <a name="open-firewall-port-1433-for-remote-connections"></a>Otevřete port brány firewall 1433 pro vzdálená připojení.
+### <a name="open-firewall-port-1433-for-remote-connections"></a>Otevření portu brány firewall 1433 pro vzdálená připojení
 
-Aby se bylo možné vzdáleně připojit, budete muset na virtuálním počítači otevřít port 1433. K otevření portu 1433 v bráně firewall každého virtuálního počítače použijte následující příkazy:
+Budete muset otevřít port 1433 na virtuálním počítači, aby se vzdáleně připojit. Pomocí následujících příkazů otevřete port 1433 v bráně firewall každého virtuálního počítače:
 
 ```bash
 sudo firewall-cmd --zone=public --add-port=1433/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
-### <a name="installing-sql-server-command-line-tools"></a>Instalace nástrojů příkazového řádku SQL Server
+### <a name="installing-sql-server-command-line-tools"></a>Instalace nástrojů příkazového řádku serveru SQL Server
 
-Následující příkazy se používají k instalaci SQL Server nástrojů příkazového řádku. Další informace najdete v tématu [Instalace nástrojů příkazového řádku SQL Server](/sql/linux/quickstart-install-connect-red-hat#tools).
+Následující příkazy slouží k instalaci nástrojů příkazového řádku serveru SQL Server. Další informace naleznete [v tématu instalace nástrojů příkazového řádku serveru SQL Server](/sql/linux/quickstart-install-connect-red-hat#tools).
 
 ```bash
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
@@ -503,15 +503,15 @@ sudo yum install -y mssql-tools unixODBC-devel
 ```
  
 > [!NOTE] 
-> Pro usnadnění přidejte/opt/MSSQL-Tools/bin/do proměnné prostředí PATH. To vám umožní spustit nástroje bez zadání úplné cesty. Spusťte následující příkazy, abyste upravili cestu k přihlašovacím relacím i k interaktivním i nepřihlašovacím relacím:</br></br>
+> Pro větší pohodlí přidejte /opt/mssql-tools/bin/ do proměnné prostředí PATH. To umožňuje spustit nástroje bez zadání úplné cesty. Spuštěním následujících příkazů upravte PATH pro relace přihlášení i interaktivní relace a relace bez přihlášení:</br></br>
 `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile`</br>
 `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc`</br>
 `source ~/.bashrc`
 
 
-### <a name="check-the-status-of-the-sql-server"></a>Ověřte stav SQL Server
+### <a name="check-the-status-of-the-sql-server"></a>Kontrola stavu serveru SQL Server
 
-Po dokončení konfigurace můžete zkontrolovat stav SQL Server a ověřit, jestli je spuštěný:
+Po dokončení konfigurace můžete zkontrolovat stav serveru SQL Server a ověřit, zda je spuštěn:
 
 ```bash
 systemctl status mssql-server --no-pager
@@ -530,29 +530,29 @@ Měl by se zobrazit následující výstup:
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>Konfigurace skupiny dostupnosti Always On SQL Server
+## <a name="configure-sql-server-always-on-availability-group"></a>Konfigurace serveru SQL Server always on Availability Group
 
-Následující postup použijte ke konfiguraci skupiny dostupnosti Always On pro vaše virtuální počítače v SQL Server. Další informace najdete v tématu [Konfigurace skupiny dostupnosti Always On SQL Server pro zajištění vysoké dostupnosti v systému Linux](/sql/linux/sql-server-linux-availability-group-configure-ha) .
+Pomocí následujících kroků nakonfigurujte SQL Server always on Availability Group pro vaše virtuální počítače. Další informace naleznete v [tématu konfigurace SQL Server always on Availability Group pro vysokou dostupnost na Linuxu](/sql/linux/sql-server-linux-availability-group-configure-ha)
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>Povolení skupin dostupnosti AlwaysOn a restartování serveru MSSQL
+### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>Povolit skupiny dostupnosti AlwaysOn a restartovat mssql-server
 
-Povolte skupiny dostupnosti AlwaysOn na každém uzlu, který je hostitelem instance SQL Server. Pak restartujte server MSSQL. Spusťte tento skript:
+Povolit skupiny dostupnosti AlwaysOn na každém uzlu, který hostuje instanci serveru SQL Server. Potom restartujte mssql-server. Spusťte tento skript:
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
 sudo systemctl restart mssql-server
 ```
 
-### <a name="create-a-certificate"></a>Vytvořit certifikát
+### <a name="create-a-certificate"></a>Vytvoření certifikátu
 
-V současné době nepodporujeme ověřování AD na koncový bod AG. Proto je nutné použít certifikát pro šifrování koncového bodu AG.
+V současné době nepodporujeme ověřování služby AD pro koncový bod AG. Proto musíme použít certifikát pro šifrování koncového bodu AG.
 
-1. Připojte se ke **všem uzlům** pomocí SQL Server Management Studio (SSMS) nebo SQL cmd. Spuštěním následujících příkazů povolte relaci AlwaysOn_health a vytvořte hlavní klíč:
+1. Připojte se ke **všem uzlům** pomocí sql server management studio (SSMS) nebo SQL CMD. Spusťte následující příkazy, které povolí AlwaysOn_health relaci a vytvoří hlavní klíč:
 
     > [!IMPORTANT]
-    > Pokud se ke své instanci SQL Server vzdáleně připojujete, budete muset na bráně firewall otevřít port 1433. Pro každý virtuální počítač budete taky muset povolit příchozí připojení k portu 1433 ve vaší NSG. Další informace najdete v tématu [Vytvoření pravidla zabezpečení](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) pro vytvoření příchozího pravidla zabezpečení.
+    > Pokud se připojujete vzdáleně k instanci serveru SQL Server, budete muset mít port 1433 otevřený na bráně firewall. Budete také muset povolit příchozí připojení k portu 1433 ve vašem nsg pro každý virtuální počítač. Další informace naleznete [v tématu Vytvoření pravidla zabezpečení](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) pro vytvoření pravidla příchozího zabezpečení.
 
-    - Nahraďte `<Master_Key_Password>` vlastním heslem.
+    - `<Master_Key_Password>` Nahraďte jej vlastním heslem.
 
 
     ```sql
@@ -562,9 +562,9 @@ V současné době nepodporujeme ověřování AD na koncový bod AG. Proto je n
     ```
 
  
-1. Připojte se k primární replice pomocí SSMS nebo SQL CMD. Následující příkazy vytvoří certifikát na `/var/opt/mssql/data/dbm_certificate.cer` a privátní klíč v `var/opt/mssql/data/dbm_certificate.pvk` vaší primární repliky SQL Server:
+1. Připojte se k primární replice pomocí SSMS nebo SQL CMD. Níže uvedené příkazy vytvoří `/var/opt/mssql/data/dbm_certificate.cer` certifikát na a `var/opt/mssql/data/dbm_certificate.pvk` soukromý klíč na primární repliku serveru SQL Server:
 
-    - Nahraďte `<Private_Key_Password>` vlastním heslem.
+    - `<Private_Key_Password>` Nahraďte jej vlastním heslem.
 
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
@@ -579,19 +579,19 @@ BACKUP CERTIFICATE dbm_certificate
 GO
 ```
 
-Ukončete relaci SQL CMD spuštěním příkazu `exit` a vraťte se zpět do relace SSH.
+Ukončete relaci SQL `exit` CMD spuštěním příkazu a vraťte se zpět do relace SSH.
  
-### <a name="copy-the-certificate-to-the-secondary-replicas-and-create-the-certificates-on-the-server"></a>Zkopírujte certifikát do sekundárních replik a vytvořte na serveru certifikáty.
+### <a name="copy-the-certificate-to-the-secondary-replicas-and-create-the-certificates-on-the-server"></a>Zkopírujte certifikát do sekundárních replik a vytvořte certifikáty na serveru
 
-1. Zkopírujte dva soubory, které byly vytvořeny do stejného umístění na všech serverech, které budou hostovat repliky dostupnosti.
+1. Zkopírujte dva soubory, které byly vytvořeny do stejného umístění na všech serverech, které budou hostitelem replik dostupnosti.
  
-    Na primárním serveru spusťte následující příkaz `scp` a zkopírujte certifikát na cílové servery:
+    Na primárním serveru zkopírujte certifikát na cílových serverech následujícím `scp` příkazem:
 
-    - Nahraďte `<username>` a `<VM2>` názvem uživatelského jména a cílového virtuálního počítače, který používáte.
+    - Nahraďte `<username>` a `<VM2>` s uživatelským jménem a cílovým názvem virtuálního uživatele, které používáte.
     - Spusťte tento příkaz pro všechny sekundární repliky.
 
     > [!NOTE]
-    > Nemusíte spouštět `sudo -i`, což vám poskytne kořenové prostředí. Můžete jen spustit příkaz `sudo` před jednotlivými příkazy, jako jsme to předtím v tomto kurzu.
+    > Není třeba spouštět `sudo -i`, což vám dává kořenové prostředí. Můžete jen spustit `sudo` příkaz před každým příkazem, jak jsme to dříve udělali v tomto kurzu.
 
     ```bash
     # The below command allows you to run commands in the root environment
@@ -604,9 +604,9 @@ Ukončete relaci SQL CMD spuštěním příkazu `exit` a vraťte se zpět do rel
 
 1. Na cílovém serveru spusťte následující příkaz:
 
-    - Nahraďte `<username>` vaším uživatelským jménem.
-    - Příkaz `mv` přesune soubory nebo adresáře z jednoho místa do druhého.
-    - Příkaz `chown` slouží ke změně vlastníka a skupiny souborů, adresářů nebo odkazů.
+    - Nahraďte `<username>` svým uživatelským jménem.
+    - Příkaz `mv` přesune soubory nebo adresář e- z jednoho místa na druhé.
+    - Příkaz `chown` se používá ke změně vlastníka a skupiny souborů, adresářů nebo odkazů.
     - Spusťte tyto příkazy pro všechny sekundární repliky.
 
     ```bash
@@ -616,7 +616,7 @@ Ukončete relaci SQL CMD spuštěním příkazu `exit` a vraťte se zpět do rel
     chown mssql:mssql dbm_certificate.*
     ```
 
-1. Následující skript Transact-SQL vytvoří certifikát ze zálohy, kterou jste vytvořili v primární replice SQL Server. Aktualizujte skript pomocí silných hesel. Šifrovací heslo je stejné heslo, které jste použili k vytvoření souboru. PVK v předchozím kroku. Chcete-li vytvořit certifikát, spusťte následující skript pomocí příkazu SQL CMD nebo SSMS na všech sekundárních serverech:
+1. Následující skript Transact-SQL vytvoří certifikát ze zálohy, kterou jste vytvořili na primární replice serveru SQL Server. Aktualizujte skript silnými hesly. Heslo pro dešifrování je stejné heslo, které jste použili k vytvoření souboru PVK v předchozím kroku. Chcete-li vytvořit certifikát, spusťte následující skript pomocí SQL CMD nebo SSMS na všech sekundárních serverech:
 
     ```sql
     CREATE CERTIFICATE dbm_certificate
@@ -628,7 +628,7 @@ Ukončete relaci SQL CMD spuštěním příkazu `exit` a vraťte se zpět do rel
     GO
     ```
 
-### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Vytvoření koncových bodů zrcadlení databáze ve všech replikách
+### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Vytvoření koncových bodů zrcadlení databáze na všech replikách
 
 Spusťte následující skript na všech instancích SQL pomocí SQL CMD nebo SSMS:
 
@@ -648,10 +648,10 @@ GO
 
 ### <a name="create-the-availability-group"></a>Vytvoření skupiny dostupnosti
 
-Připojte se k instanci SQL Server, která hostuje primární repliku, pomocí příkazu SQL CMD nebo SSMS. Spuštěním následujícího příkazu vytvořte skupinu dostupnosti:
+Připojte se k instanci serveru SQL Server, která je hostitelem primární repliky pomocí SQL CMD nebo SSMS. Chcete-li vytvořit skupinu dostupnosti, spusťte následující příkaz:
 
-- Místo `ag1` nahraďte požadovaným názvem skupiny dostupnosti.
-- Hodnoty `<VM1>`, `<VM2>`a `<VM3>` nahraďte názvy instancí SQL Server, které hostují repliky.
+- Nahraďte `ag1` požadovaným názvem skupiny dostupnosti.
+- `<VM1>`Nahraďte `<VM2>`hodnoty `<VM3>` , a názvy instancí serveru SQL Server, které jsou hostiteli replik.
 
 ```sql
 CREATE AVAILABILITY GROUP [ag1]
@@ -684,11 +684,11 @@ ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
 GO
 ```
 
-### <a name="create-a-sql-server-login-for-pacemaker"></a>Vytvoření SQL Server přihlašovacího jména pro Pacemaker
+### <a name="create-a-sql-server-login-for-pacemaker"></a>Vytvoření přihlášení sql serveru pro kardiostimulátor
 
-Na všech serverech SQL Server vytvořte přihlašovací údaje SQL pro Pacemaker. Následující příkaz Transact-SQL vytvoří přihlášení.
+Na všech sql serverech vytvořte sql login pro Pacemaker. Následující Transact-SQL vytvoří přihlášení.
 
-- Nahraďte `<password>` vlastními složitými hesly.
+- Nahraďte `<password>` svým vlastním složitým heslem.
 
 ```sql
 USE [master]
@@ -701,7 +701,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-Na všech serverech SQL Server uložte pověření používaná pro přihlášení SQL Server. 
+Na všech serverech SQL uložte pověření použitá pro přihlášení serveru SQL Server. 
 
 1. Vytvořte soubor:
 
@@ -709,32 +709,32 @@ Na všech serverech SQL Server uložte pověření používaná pro přihlášen
     sudo vi /var/opt/mssql/secrets/passwd
     ```
 
-1. Přidejte následující dva řádky do souboru:
+1. Do souboru přidejte následující 2 řádky:
 
     ```bash
     pacemakerLogin
     <password>
     ```
 
-    Chcete-li ukončit Editor **VI** , nejprve stiskněte klávesu **ESC** a potom zadejte příkaz `:wq` pro zápis souboru a ukončení.
+    Chcete-li ukončit editor **vi,** nejprve stiskněte klávesu **Esc** a potom zadejte příkaz `:wq` pro zápis souboru a ukončete.
 
-1. Nastavit soubor jen jako čitelný v kořenovém adresáři:
+1. Aby byl soubor čitelný pouze podle kořenového adresáře:
 
     ```bash
     sudo chown root:root /var/opt/mssql/secrets/passwd
     sudo chmod 400 /var/opt/mssql/secrets/passwd
     ```
 
-### <a name="join-secondary-replicas-to-the-availability-group"></a>Připojit sekundární repliky do skupiny dostupnosti
+### <a name="join-secondary-replicas-to-the-availability-group"></a>Připojení sekundárních replik ke skupině dostupnosti
 
-1. Aby bylo možné připojit sekundární repliky ke službě AG, budete muset otevřít port 5022 na bráně firewall pro všechny servery. V relaci SSH spusťte následující příkaz:
+1. Chcete-li připojit sekundární repliky k AG, budete muset otevřít port 5022 na firewallu pro všechny servery. V relaci SSH spusťte následující příkaz:
 
     ```bash
     sudo firewall-cmd --zone=public --add-port=5022/tcp --permanent
     sudo firewall-cmd --reload
     ```
 
-1. V případě sekundárních replik spusťte následující příkazy, které je připojte k AG:
+1. Na sekundárních replikách spusťte následující příkazy, abyste je připojili k ag:
 
     ```sql
     ALTER AVAILABILITY GROUP [ag1] JOIN WITH (CLUSTER_TYPE = EXTERNAL);
@@ -744,7 +744,7 @@ Na všech serverech SQL Server uložte pověření používaná pro přihlášen
     GO
     ```
 
-1. Spusťte následující skript Transact-SQL na primární replice a na všech sekundárních replikách:
+1. Spusťte následující skript Transact-SQL na primární replice a každé sekundární repliky:
 
     ```sql
     GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
@@ -754,15 +754,15 @@ Na všech serverech SQL Server uložte pověření používaná pro přihlášen
     GO
     ```
 
-1. Až budou sekundární repliky připojené, můžete je zobrazit v SSMS Průzkumník objektů rozbalením uzlu **vždy na vysokou dostupnost** :
+1. Jakmile jsou sekundární repliky spojeny, můžete je zobrazit v Průzkumníku objektů SSMS rozbalením uzlu **Vždy na vysoké dostupnosti:**
 
-    ![Availability-Group-JOINED. png](media/sql-server-linux-rhel-ha-stonith-tutorial/availability-group-joined.png)
+    ![availability-group-joined.png](media/sql-server-linux-rhel-ha-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>Přidání databáze do skupiny dostupnosti
 
-Budeme postupovat podle [článku Konfigurace skupiny dostupnosti týkající se přidání databáze](/sql/linux/sql-server-linux-availability-group-configure-ha#add-a-database-to-the-availability-group).
+Budeme postupovat [podle článku skupiny dostupnosti konfigurace o přidání databáze](/sql/linux/sql-server-linux-availability-group-configure-ha#add-a-database-to-the-availability-group).
 
-V tomto kroku se používají následující příkazy jazyka Transact-SQL. Spusťte tyto příkazy na primární replice:
+V tomto kroku se používají následující příkazy Transact-SQL. Spusťte tyto příkazy na primární replice:
 
 ```sql
 CREATE DATABASE [db1]; -- creates a database named db1
@@ -779,9 +779,9 @@ ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to t
 GO
 ```
 
-### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Ověření, jestli je databáze vytvořená na sekundárních serverech
+### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Ověření vytvoření databáze na sekundárních serverech
 
-V každé sekundární replice SQL Server spusťte následující dotaz, který zjistí, zda byla databáze DB1 vytvořena a je v SYNCHRONIZOVANÉm stavu:
+Na každé sekundární replice serveru SQL Server spusťte následující dotaz a zjistěte, zda byla databáze DB1 vytvořena a zda je ve stavu SYNCHRONIZED:
 
 ```
 SELECT * FROM sys.databases WHERE name = 'db1';
@@ -789,21 +789,21 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-Pokud je seznam `synchronization_state_desc` synchronizovaný pro `db1`, znamená to, že repliky se synchronizují. Sekundární replika zobrazuje `db1` v primární replice.
+Pokud `synchronization_state_desc` je seznam `db1`synchronizován pro , znamená to, že repliky jsou synchronizovány. Sekundární jsou zobrazeny `db1` v primární replice.
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker
 
-Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)budeme postupovat podle pokynů.
+Budeme se řídit průvodcem pro [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only).
 
 ### <a name="create-the-ag-cluster-resource"></a>Vytvoření prostředku clusteru AG
 
-1. Pomocí následujícího příkazu vytvořte `ag_cluster` prostředků ve skupině dostupnosti `ag1`.
+1. Pomocí následujícího příkazu `ag_cluster` vytvořte prostředek `ag1`ve skupině dostupnosti .
 
     ```bash
     sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
     ```
 
-1. Zkontrolujte svůj prostředek a ujistěte se, že jsou online, než budete pokračovat pomocí následujícího příkazu:
+1. Zkontrolujte zdroj a ujistěte se, že jsou online, než budete pokračovat pomocí následujícího příkazu:
 
     ```bash
     sudo pcs resource
@@ -818,9 +818,9 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     Slaves: [ <VM2> <VM3> ]
     ```
 
-### <a name="create-a-virtual-ip-resource"></a>Vytvoření prostředku virtuální IP adresy
+### <a name="create-a-virtual-ip-resource"></a>Vytvoření virtuálního prostředku IP
 
-1. K vytvoření prostředku virtuální IP adresy použijte dostupnou statickou IP adresu ze sítě. Můžete ji najít pomocí příkazového nástroje `nmap`.
+1. K vytvoření virtuálního prostředku IP použijte dostupnou statickou adresu IP ze sítě. Můžete najít pomocí příkazového `nmap`nástroje .
 
     ```bash
     nmap -sP <IPRange>
@@ -828,15 +828,15 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
     ```
 
-1. Nastavte vlastnost **stonith-Enabled** na hodnotu false.
+1. Nastavte vlastnost **s povolenou stoništem** na hodnotu false.
 
     ```bash
     sudo pcs property set stonith-enabled=false
     ```
 
-1. Vytvořte prostředek virtuální IP adresy pomocí následujícího příkazu:
+1. Vytvořte prostředek virtuální IP pomocí následujícího příkazu:
 
-    - Hodnotu `<availableIP>` níže nahraďte nepoužitou IP adresou.
+    - Nahraďte níže uvedenou `<availableIP>` hodnotu nepoužitou adresou IP.
 
     ```bash
     sudo pcs resource create virtualip ocf:heartbeat:IPaddr2 ip=<availableIP>
@@ -844,13 +844,13 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
 
 ### <a name="add-constraints"></a>Přidat omezení
 
-1. Aby bylo zajištěno, že IP adresa a prostředek AG běží na stejném uzlu, musí být nakonfigurováno omezení pro společné umístění. Spusťte následující příkaz:
+1. Chcete-li zajistit, aby adresa IP a prostředek AG byly spuštěny na stejném uzlu, musí být nakonfigurováno omezení společného umístění. Spusťte následující příkaz:
 
     ```bash
     sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
     ```
 
-1. Vytvořte omezení řazení, aby bylo zajištěno, že prostředek AG bude spuštěn před IP adresou. I když omezení pro společné umístění implikuje omezení řazení, vynutilo ho.
+1. Vytvořte omezení řazení, abyste zajistili, že prostředek AG je spuštěn před adresou IP. Zatímco omezení společného umístění znamená omezení řazení, to to vynucuje.
 
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start virtualip
@@ -873,9 +873,9 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     Ticket Constraints:
     ```
 
-### <a name="re-enable-stonith"></a>Opětovné povolení stonith
+### <a name="re-enable-stonith"></a>Znovu povolit stonith
 
-Jsme připraveni na testování. V clusteru znovu povolte stonith spuštěním následujícího příkazu v uzlu 1:
+Jsme připraveni na testování. Znovu povolte stonitth v clusteru spuštěním následujícího příkazu na uzlu 1:
 
 ```bash
 sudo pcs property set stonith-enabled=true
@@ -883,7 +883,7 @@ sudo pcs property set stonith-enabled=true
 
 ### <a name="check-cluster-status"></a>Kontrola stavu clusteru
 
-Stav prostředků clusteru můžete zjistit pomocí následujícího příkazu:
+Stav prostředků clusteru můžete zkontrolovat pomocí následujícího příkazu:
 
 ```output
 [<username>@VM1 ~]$ sudo pcs status
@@ -914,15 +914,15 @@ Daemon Status:
 
 ## <a name="test-failover"></a>Testovací převzetí služeb při selhání
 
-Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzetí služeb při selhání. Další informace najdete v tématu [převzetí služeb při selhání skupiny dostupnosti Always On v systému Linux](/sql/linux/sql-server-linux-availability-group-failover-ha).
+Abychom zajistili, že konfigurace byla dosud úspěšná, otestujeme převzetí služeb při selhání. Další informace naleznete [v tématu Always On Availability Group převzetí služeb při selhání na Linuxu](/sql/linux/sql-server-linux-availability-group-failover-ha).
 
-1. Spusťte následující příkaz k ručnímu převzetí služeb při selhání primární repliky na `<VM2>`. Nahraďte `<VM2>` hodnotou názvu vašeho serveru.
+1. Spusťte následující příkaz a ručně přepojujte službu převzetí služeb při selhání primární repliky do . `<VM2>` Nahraďte `<VM2>` hodnotou názvu serveru.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Pokud znovu zkontrolujete vaše omezení, uvidíte, že se kvůli ručnímu převzetí služeb při selhání přidalo jiné omezení:
+1. Pokud znovu zkontrolujete omezení, uvidíte, že z důvodu ručního převzetí služeb při selhání bylo přidáno další omezení:
 
     ```output
     [<username>@VM1 ~]$ sudo pcs constraint list --full
@@ -936,13 +936,13 @@ Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzet�
     Ticket Constraints:
     ```
 
-1. Omezení s ID `cli-prefer-ag_cluster-master` odeberte pomocí následujícího příkazu:
+1. Odstraňte omezení s `cli-prefer-ag_cluster-master` ID pomocí následujícího příkazu:
 
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
     ```
 
-1. Zkontrolujte prostředky clusteru pomocí příkazu `sudo pcs resource`a měli byste vidět, že je primární instance teď `<VM2>`.
+1. Zkontrolujte prostředky clusteru `sudo pcs resource`pomocí příkazu a měli byste `<VM2>`vidět, že primární instance je nyní .
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource
@@ -958,18 +958,18 @@ Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzet�
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-## <a name="test-fencing"></a>Oplocení testů
+## <a name="test-fencing"></a>Testovací oplocení
 
-STONITH můžete otestovat spuštěním následujícího příkazu. Zkuste spustit níže uvedený příkaz z `<VM1>` `<VM3>`.
+Stonith můžete otestovat spuštěním následujícího příkazu. Zkuste spustit níže `<VM1>` příkaz `<VM3>`z pro .
 
 ```bash
 sudo pcs stonith fence <VM3> --debug
 ```
 
 > [!NOTE]
-> Ve výchozím nastavení akce plotu přesune uzel a pak na. Pokud chcete pouze převést uzel do režimu offline, použijte možnost `--off` v příkazu.
+> Ve výchozím nastavení akce plotu přináší uzel vypnout a pak na. Pokud chcete uzel pouze převést do funkce, `--off` použijte možnost v příkazu.
 
-By měl získat následující výstup:
+Měli byste získat následující výstup:
 
 ```output
 [<username>@<VM1> ~]$ sudo pcs stonith fence <VM3> --debug
@@ -980,11 +980,11 @@ Return Value: 0
  
 Node: <VM3> fenced
 ```
-Další informace o testování ochranného zařízení najdete v následujícím článku o [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) .
+Další informace o testování plotového zařízení naleznete v následujícím článku [red hat.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar)
 
 ## <a name="next-steps"></a>Další kroky
 
-Aby bylo možné využít naslouchací proces skupiny dostupnosti pro vaše SQL servery, budete muset vytvořit a nakonfigurovat nástroj pro vyrovnávání zatížení.
+Chcete-li využít naslouchací proces skupiny dostupnosti pro servery SQL, budete muset vytvořit a nakonfigurovat nástroje pro vyrovnávání zatížení.
 
 > [!div class="nextstepaction"]
-> [Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure](sql-server-linux-rhel-ha-listener-tutorial.md)
+> [Kurz: Konfigurace naslouchací proces skupiny dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure](sql-server-linux-rhel-ha-listener-tutorial.md)

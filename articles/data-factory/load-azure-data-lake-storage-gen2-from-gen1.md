@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ea0a9de5dde02b45ae34e3e98e24b31fd01fa713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235830"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421262"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 do Gen2 pomocí Azure Data Factory
 
@@ -146,7 +146,7 @@ Pokud chcete vyhodnotit upgrady z Azure Data Lake Storage Gen1 na Azure Data Lak
 
 Použijte ověření konceptu k ověření komplexního řešení a testování propustnosti kopírování ve vašem prostředí. Hlavní kroky proof-of-concept: 
 
-1. Vytvořte jeden kanál data factory s jednou aktivitou kopírování pro kopírování několika objektů TB dat z Data Lake Storage Gen1 do Data Lake Storage Gen2, abyste získali směrný plán výkonu kopírování. Začněte s [jednotkami integrace dat (DIU)](copy-activity-performance.md#data-integration-units) jako 128. 
+1. Vytvořte jeden kanál data factory s jednou aktivitou kopírování pro kopírování několika objektů TB dat z Data Lake Storage Gen1 do Data Lake Storage Gen2, abyste získali směrný plán výkonu kopírování. Začněte s [jednotkami integrace dat (DIU)](copy-activity-performance-features.md#data-integration-units) jako 128. 
 2. Na základě propustnosti kopírování, kterou získáte v kroku 1, vypočítejte odhadovaný čas, který je nutný pro celou migraci dat. 
 3. (Nepovinné) Vytvořte řídicí tabulku a definujte filtr souborů pro rozdělení souborů, které mají být přeneseny. Způsob, jak rozdělit soubory je: 
 

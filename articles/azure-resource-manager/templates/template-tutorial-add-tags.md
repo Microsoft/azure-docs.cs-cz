@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 748a32d0ea8bfb0f23a99ce99d0aaf051118bc19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e0deb53e57cd29cbfce4c37f2d6c6729f15bebd
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369882"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411708"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Kurz: Přidání značek do šablony ARM
 
@@ -69,6 +69,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Pokud se nasazení nezdařilo, zobrazte protokoly ladění pomocí **přepínače ladění** s příkazem deployment.  Můžete také použít **podrobný** přepínač k zobrazení úplné protokoly ladění.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 

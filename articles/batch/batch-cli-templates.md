@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df7db30e987c408ff158acfc468010948c821b8d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020161"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397539"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití šablon Nastavení uživatelského příkazu Azure batch a přenosu souborů
 
@@ -28,7 +28,7 @@ Vytvořte a použijte soubory šablon JSON pomocí azure CLI k vytvoření fond�
 
 Rozšíření azure cli umožňuje batch používat end-to-end uživatelé, kteří nejsou vývojáři. Pomocí pouze příkazů rozhraní příkazového příkazu můžete vytvořit fond, nahrát vstupní data, vytvořit úlohy a přidružené úkoly a stáhnout výsledná výstupní data. Není vyžadován žádný další kód. Spusťte příkazy příkazového příkazu CLI přímo nebo je integrujte do skriptů.
 
-Dávkové šablony se staví na [existující podpoře batch v azure cli](batch-cli-get-started.md#json-files-for-resource-creation) pro soubory JSON k určení hodnot vlastností při vytváření fondů, úloh, úkolů a dalších položek. Dávkové šablony přidávají následující funkce:
+Dávkové šablony se staví na existující podpoře batch v [azure cli](batch-cli-get-started.md#json-files-for-resource-creation) pro soubory JSON k určení hodnot vlastností při vytváření fondů, úloh, úkolů a dalších položek. Dávkové šablony přidávají následující funkce:
 
 -   Parametry mohou být definovány. Při použití šablony jsou určeny pouze hodnoty parametrů pro vytvoření položky s dalšími hodnotami vlastností položky zadanými v textu šablony. Uživatel, který rozumí Batch a aplikacím, které mají být spuštěny společností Batch, může vytvářet šablony, které určují hodnoty vlastností fondu, úlohy a úlohy. Uživatel méně obeznámený s Batch a/nebo aplikace mi musí zadat pouze hodnoty pro definované parametry.
 
@@ -68,7 +68,7 @@ Pokud se chcete přihlásit k dávkovému účtu pomocí azure cli, přečtěte 
 
 -   **Parametry**
 
-    -   Povolit hodnoty vlastností, které mají být zadány v části textu, s pouze hodnoty parametrů, které je třeba zadat při použití šablony. Například úplná definice fondu může být umístěna v těle a pouze jeden parametr definovaný pro ID fondu; pouze řetězec ID fondu proto musí být dodány k vytvoření fondu.
+    -   Povolit hodnoty vlastností, které mají být zadány v části textu, s pouze hodnoty parametrů, které je třeba zadat při použití šablony. Úplná definice fondu může být například umístěna do těla `poolId`a pouze jeden parametr je definován pro ; pouze řetězec ID fondu proto musí být dodány k vytvoření fondu.
         
     -   Tělo šablony může být vytvořen o někoho se znalostí Batch a aplikace, které mají být spuštěny Batch; při použití šablony musí být zadány pouze hodnoty pro parametry definované autorem. Uživatel bez podrobné dávky a/nebo znalosti aplikace proto můžete použít šablony.
 

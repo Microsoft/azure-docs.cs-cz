@@ -7,20 +7,20 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bce92eeed669628fa1b6318abd6b0c13f7e84848
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188189"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411202"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Ingestování dat z Centra událostí do Průzkumníka dat Azure
 
 > [!div class="op_single_selector"]
 > * [Portál](ingest-data-event-hub.md)
-> * [C #](data-connection-event-hub-csharp.md)
+> * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
-> * [Šablona Azure Resource Manageru](data-connection-event-hub-resource-manager.md)
+> * [Šablona Azure Resource Manager](data-connection-event-hub-resource-manager.md)
 
 Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání) dat ze služby Event Hubs, platformy pro streamování velkých objemů dat a služby pro ingestování událostí. [Centra událostí](/azure/event-hubs/event-hubs-about) mohou zpracovávat miliony událostí za sekundu téměř v reálném čase. V tomto článku vytvoříte centrum událostí, připojíte se k němu z Průzkumníka dat Azure a uvidíte tok dat v systému.
 
@@ -92,7 +92,7 @@ Teď v Azure Data Exploreru vytvoříte tabulku, do které bude služba Event Hu
 1. Zkopírujte následující příkaz do okna a vyberte **Spustit,** chcete-li namapovat příchozí data JSON na názvy sloupců a datové typy tabulky (TestTable).
 
     ```Kusto
-    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
+    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
     ```
 
 ## <a name="connect-to-the-event-hub"></a>Připojení k centru událostí

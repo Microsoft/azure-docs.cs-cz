@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70207957"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411275"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: Poznámky k vydání a prostředky
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70207957"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Odpočinku](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Hromadný vykonavatel - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -35,7 +35,7 @@ ms.locfileid: "70207957"
 |Stáhnout sadu SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Dokumentace rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-cosmos-js#installation)
-|Přispívat do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+|Přispívat do sady SDK | [GitHubu](https://github.com/Azure/azure-cosmos-js/tree/master)
 | ukázky | [Ukázky kódu node.js](sql-api-nodejs-samples.md)
 | Výuka Začínáme | [Začínáme se sadou JavaScript SDK](sql-api-nodejs-get-started.md)
 | Kurz webové aplikace | [Vytvoření webové aplikace Node.js pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
@@ -318,7 +318,7 @@ Ne vždy nejviditelnější změny, ale pomáhají našemu týmu doručovat lep�
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
 * Přidána podpora pro agregační dotazy (COUNT, MIN, MAX, SUMA a AVG).
 * Byla přidána možnost pro řízení stupně paralelismu pro dotazy mezi oddíly.
-* Přidána možnost pro zakázání ověření SSL při spuštění proti Emulátoru Azure Cosmos DB.
+* Přidána možnost pro zakázání ověření TLS při spuštění proti Emulátoru Azure Cosmos DB.
 * Snížená minimální propustnost dělených kolekcí z 10 100 RU/s na 2500 RU/s.
 * Opravena chyba tokenu pokračování pro kolekci jednoho oddílu. GitHub problém #107.
 * Opravena chyba executeStoredProcedure při zpracování 0 jako jeden param. GitHub problém #155.
@@ -328,7 +328,7 @@ Ne vždy nejviditelnější změny, ale pomáhají našemu týmu doručovat lep�
 * Menší vyčištění kódu.
 
 ### <a name=""></a><a name="1.10.1"/>1.10.1</a>
-* Zakázání ověření SSL při použití sady SDK k cílení emulátoru(hostname=localhost).
+* Zakázání ověření TLS při použití sady SDK k cílení emulátoru(hostname=localhost).
 * Přidána podpora pro povolení protokolování skriptů během provádění uložené procedury.
 
 ### <a name=""></a><a name="1.10.0"/>1.10.0</a>

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259822"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477684"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité aspekty sítí pro službu App Service Environment #
 
@@ -23,7 +23,7 @@ ms.locfileid: "79259822"
 - **Externí služba ASE**: Zpřístupňuje aplikace hostované službou ASE na ip adrese přístupné z internetu. Další informace naleznete [v tématu Vytvoření externí hospo-][MakeExternalASE]
 - **Služba ASE ILB**: Zpřístupňuje aplikace hostované službou ASE na adrese IP uvnitř virtuální sítě. Interní koncový bod je interní vyrovnávání zatížení (ILB), což je důvod, proč se nazývá ASE ILB. Další informace naleznete v [tématu Vytvoření a použití služby ASE služby ILB][MakeILBASE].
 
-Všechny, Externí a ILB, mají veřejné VIP, který se používá pro příchozí provoz správy a jako adresa při volání ze služby ASE na internet. Volání ze seznamu se spouštění a sek, které přejdou na internet opustit virtuální síť prostřednictvím virtuální sítě přiřazené pro ase. Veřejná IP adresa tohoto VIP je zdrojová IP adresa pro všechny hovory ze seznamu ASE, které přejdou na internet. Pokud aplikace ve službě ASE volání prostředků ve vaší virtuální síti nebo přes VPN, zdrojová IP adresa je jedním z IP adres v podsíti používané službou ASE. Vzhledem k tomu, že služba ASE je v rámci virtuální sítě, může také přistupovat k prostředkům v rámci virtuální sítě bez jakékoli další konfigurace. Pokud je virtuální síť připojená k vaší místní síti, aplikace ve vaší službě ASE mají také přístup k prostředkům bez další konfigurace.
+Všechny ASS, Externí a ILB, mají veřejné VIP, který se používá pro příchozí provoz správy a jako adresa při volání ze služby ASE na internet. Volání ze seznamu se spouštění a sek, které přejdou na internet opustit virtuální síť prostřednictvím virtuální sítě přiřazené pro ase. Veřejná IP adresa tohoto VIP je zdrojová IP adresa pro všechny hovory ze seznamu ASE, které přejdou na internet. Pokud aplikace ve službě ASE volání prostředků ve vaší virtuální síti nebo přes VPN, zdrojová IP adresa je jedním z IP adres v podsíti používané službou ASE. Vzhledem k tomu, že služba ASE je v rámci virtuální sítě, může také přistupovat k prostředkům v rámci virtuální sítě bez jakékoli další konfigurace. Pokud je virtuální síť připojená k vaší místní síti, aplikace ve vaší službě ASE mají také přístup k prostředkům bez další konfigurace.
 
 ![Externí ase][1] 
 
@@ -109,7 +109,7 @@ Pokud změníte nastavení DNS virtuální sítě, ve které se vaše služba Se
 Kromě funkční závislosti služby ASE existuje několik dalších položek souvisejících s prostředí portálu. Některé funkce na webu Azure portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci ve službě Azure App Service existují dvě adresy URL. První adresa URL je pro přístup k vaší aplikaci. Druhá adresa URL je pro přístup k webu SCM, který se také nazývá _konzole Kudu_. Mezi funkce, které používají web SCM, patří:
 
 -   Web Jobs
--   Funkce
+-   Functions
 -   Protokolovat streamování
 -   Kudu
 -   Rozšíření
@@ -138,7 +138,7 @@ Všechny tyto IP adresy jsou viditelné na webu Azure portal z uhlavního počí
 
 ### <a name="app-assigned-ip-addresses"></a>IP adresy přiřazené aplikacím ###
 
-Pomocí externí služby ASE můžete jednotlivým aplikacím přiřadit IP adresy. To nemůžete udělat se službou ASE ILB. Další informace o tom, jak nakonfigurovat aplikaci tak, aby měla vlastní IP adresu, najdete v [tématu Zabezpečení vlastního názvu DNS s vazbou SSL ve službě Azure App Service](../configure-ssl-bindings.md).
+Pomocí externí služby ASE můžete jednotlivým aplikacím přiřadit IP adresy. To nemůžete udělat se službou ASE ILB. Další informace o tom, jak nakonfigurovat aplikaci tak, aby měla vlastní IP adresu, najdete v [tématu Zabezpečení vlastního názvu DNS s vazbou TLS/SSL ve službě Azure App Service](../configure-ssl-bindings.md).
 
 Pokud má aplikace vlastní ssl adresu založenou na protokolu IP, systém ASE si rezervuje dva porty, které se budou mapovat na tuto ADRESU IP. Jeden port je pro přenos protokolu HTTP a druhý port je pro protokol HTTPS. Tyto porty jsou uvedeny v unovém uj.a. ase v části IP adresy. Provoz musí být schopen dosáhnout těchto portů z programu VIP nebo jsou aplikace nepřístupné. Tento požadavek je důležité mít na paměti při konfiguraci skupin zabezpečení sítě (NSGs).
 

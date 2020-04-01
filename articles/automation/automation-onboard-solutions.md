@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75421849"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Začlenění řešení Update Management a Change Tracking do Azure Automation
@@ -33,7 +33,7 @@ K dokončení tohoto kurzu potřebujete následující:
 
 ## <a name="onboard-an-azure-vm"></a>Připojení virtuálního počítače Azure
 
-Existuje několik způsobů, jak připojit počítače, můžete připojit řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), [Procházet více počítačů](automation-onboard-solutions-from-browse.md) [z vašeho účtu Automation](automation-onboard-solutions-from-automation-account.md)nebo sadu Runbook. Tento kurz vás provede povolením řešení Update Management prostřednictvím runbooku. Pokud chcete připojit virtuální počítače Azure ve velkém měřítku, stávající virtuální počítače se musí připojit s řešením Change Tracking nebo Update Management. V tomto kroku připojíte virtuální počítač s řešením Update Management a Change Tracking.
+Počítače můžete připojit několika způsoby – můžete připojit řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), [z procházení více počítačů, ](automation-onboard-solutions-from-browse.md) [ze svého účtu Automation](automation-onboard-solutions-from-automation-account.md) nebo pomocí runbooku. Tento kurz vás provede povolením řešení Update Management prostřednictvím runbooku. Pokud chcete připojit virtuální počítače Azure ve velkém měřítku, stávající virtuální počítače se musí připojit s řešením Change Tracking nebo Update Management. V tomto kroku připojíte virtuální počítač s řešením Update Management a Change Tracking.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
@@ -77,7 +77,7 @@ Když jsou teď řešení povolená, můžete přidat virtuální počítač Azu
    ![Povolení řešení Update Management pro virtuální počítač](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Pokud nečekáte na dokončení dalšího řešení, při povolování dalšího řešení se zobrazí zpráva informující o tom, že *na tomto nebo jiném virtuálním počítači probíhá instalace jiného řešení. Po dokončení této instalace je povoleno tlačítko Povolit a můžete požádat o instalaci řešení na tento virtuální počítač.*
+> Pokud nečekáte na dokončení jiného řešení, při povolení dalšího řešení se zobrazí zpráva s informací: *Instalace jiného řešení probíhá na tomto nebo jiném virtuálním počítači. Po dokončení této instalace je povoleno tlačítko Povolit a můžete požádat o instalaci řešení v tomto virtuálním počítači.*
 
 ## <a name="install-and-update-modules"></a>Instalace a aktualizace modulů
 
@@ -129,10 +129,10 @@ Abyste tento runbook mohli spustit, musíte mít k virtuálnímu počítači Azu
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odebrání virtuálního počítače z Update Management:
+Odebrání virtuálního virtuálního virtuálního montovazy ze správy aktualizací:
 
-* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro `MicrosoftDefaultScopeConfig-Updates`konfigurace oboru. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
-* Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* V pracovním prostoru Log Analytics odeberte virtuální počítač z `MicrosoftDefaultScopeConfig-Updates`uloženého hledání konfigurace oboru . Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
+* Odeberte [agenta Microsoft Monitoring](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Další kroky
 

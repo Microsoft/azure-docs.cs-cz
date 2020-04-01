@@ -3,12 +3,12 @@ title: Rozšířená témata upgradu aplikací
 description: Tento článek popisuje některá pokročilá témata týkající se upgradu aplikace Service Fabric.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845431"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422810"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade aplikace Service Fabric: Pokročilá témata
 
@@ -20,9 +20,9 @@ Podobně typy služeb lze odebrat z aplikace jako součást upgradu. Všechny in
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Vyhněte se výpadkům připojení během plánovaných výpadků služby bez stavů (náhled)
 
-Pro plánované prostojů bezstavové instance, jako je například upgrade aplikace/clusteru nebo deaktivace uzlu, může být připojení zrušena z důvodu odebrání exponovaného koncového bodu po jeho ukončení.
+Pro plánované prostojů bezstavové instance, jako je například upgrade aplikace/clusteru nebo deaktivace uzlu, může být připojení zrušena z důvodu vyřazení exponovaného koncového bodu po přejdeme instance, což má za následek vynucené uzavření připojení.
 
-Chcete-li tomu zabránit, nakonfigurujte funkci *RequestDrain* (preview) přidáním *doby trvání zpoždění instance repliky* v konfiguraci služby. Tím je zajištěno, že koncový bod inzerovaný bezstavovou instancí je odebrán *před* spuštěním časovače zpoždění pro zavření instance. Toto zpoždění umožňuje existující požadavky řádně vyprázdnit před instance skutečně přejde dolů. Klienti jsou upozorněni na změnu koncového bodu pomocí funkce zpětného volání, takže mohou znovu vyřešit koncový bod a vyhnout se odesílání nových požadavků na instanci, která se chystá dolů.
+Chcete-li tomu zabránit, nakonfigurujte funkci *RequestDrain* (preview) přidáním *doby trvání zpoždění zavření instance* v konfiguraci služby, abyste povolili vypouštění při přijímání požadavků z jiných služeb v rámci clusteru a používají reverzní proxy server nebo používají rozhraní API pro řešení s modelem oznámení pro aktualizaci koncových bodů. Tím je zajištěno, že koncový bod inzerovaný bezstavovou instancí je odebrán *před* začátkem zpoždění před zavřením instance. Toto zpoždění umožňuje existující požadavky řádně vyprázdnit před instance skutečně přejde dolů. Klienti jsou upozorněni na změnu koncového bodu funkcí zpětného volání v době spuštění zpoždění, aby mohli znovu vyřešit koncový bod a vyhnout se odesílání nových požadavků do instance, která se chystá dolů.
 
 ### <a name="service-configuration"></a>Konfigurace služby
 
@@ -50,23 +50,7 @@ Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
 
 ### <a name="client-configuration"></a>Konfigurace klienta
 
-Chcete-li dostávat oznámení při změně koncového bodu, klienti mohou zaregistrovat zpětné volání (`ServiceManager_ServiceNotificationFilterMatched`) takto: 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
+Chcete-li dostávat oznámení při změně koncového bodu, klienti by měli zaregistrovat zpětné volání viz [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
 Oznámení o změně je známkou toho, že se změnily koncové body, klient by měl znovu vyřešit koncové body a nepoužívat koncové body, které již nejsou inzerovány, protože brzy přejdou dolů.
 
 ### <a name="optional-upgrade-overrides"></a>Volitelná přepsání upgradu
@@ -80,6 +64,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 Doba trvání zpoždění se vztahuje pouze na instanci vyvoláné upgradu a jinak nezmění jednotlivé konfigurace zpoždění služby. Můžete ji například použít k určení `0` zpoždění, aby bylo možné přeskočit všechna předkonfigurovaná zpoždění upgradu.
+
+> [!NOTE]
+> Nastavení vyprázdnění požadavků není dodrženo pro požadavky z Azure BalanceR. Nastavení není dodrženo, pokud volající služba používá řešení založené na stížnostech.
+>
+>
+
+> [!NOTE]
+> Tuto funkci lze nakonfigurovat v existujících službách pomocí rutiny Update-ServiceFabricService, jak je uvedeno výše, pokud je verze kódu clusteru 7.1.XXX nebo vyšší.
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>Režim ručního upgradu
 
