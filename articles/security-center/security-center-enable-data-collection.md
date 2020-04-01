@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d0a57c541837ab3aebf65e47d757f7ecbe7e40
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245496"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435986"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat v Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů (VM), škálovacísady virtuálních počítačů, kontejnery IaaS a počítačů, které nejsou místní (včetně místních), za účelem monitorování slabých míst zabezpečení a hrozeb. Data se shromažďují pomocí agenta Analýzy protokolů, který čte různé konfigurace související se zabezpečením a protokoly událostí z počítače a zkopíruje data do pracovního prostoru pro analýzu. Příklady takových dat jsou: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent analýzy protokolů také zkopíruje soubory s výpisem stavu systému do vašeho pracovního prostoru.
@@ -306,7 +306,7 @@ Agenta analýzy protokolů můžete nainstalovat ručně, aby centrum zabezpeče
 
 - Identifikace problémů s nemonitorovanými virtuálními počítači a počítači:
 
-    Virtuální počítač nebo počítač není monitorován Security Center, pokud počítač není spuštěna rozšíření Microsoft Monitoring Agent. V počítači může být místní agent již nainstalován, například přímý agent OMS nebo agent nástroje System Center Operations Manager. Počítače s těmito agenty jsou identifikovány jako nemonitorované, protože tito agenti nejsou plně podporováni v Centru zabezpečení. Pokud chcete naplno využívat všechny schopnosti služby Security Center, potřebujete rozšíření Microsoft Monitoring Agent.
+    Virtuální počítač nebo počítač není monitorován Security Center, pokud počítač není spuštěn a rozšíření agenta Log Analytics. V počítači může být místní agent již nainstalován, například přímý agent OMS nebo agent nástroje System Center Operations Manager. Počítače s těmito agenty jsou identifikovány jako nemonitorované, protože tito agenti nejsou plně podporováni v Centru zabezpečení. Chcete-li plně využít všech funkcí Security Center, je vyžadováno rozšíření agenta Log Analytics.
 
     Další informace o důvodech, proč Centrum zabezpečení nemůže úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování, naleznete [v tématu Sledování problémů se stavem agenta](security-center-troubleshooting-guide.md#mon-agent).
 

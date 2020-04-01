@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/09/2020
-ms.openlocfilehash: d945540a769f01c33ca3d3e467fe7c983fb5e286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287352"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437492"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ Při použití cloudové služby je osvědčeným postupem omezit přístup pouz
 > [!NOTE]
 > Informace v tomto článku funguje s Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Vícefaktorové ověřování je podporované, pokud je azure active directory (Azure AD) nakonfigurovaný na jeho použití. Zde je proces ověřování:
 
@@ -107,6 +107,28 @@ Azure Machine Learning závisí na jiných službách Azure pro výpočetní pro
 
 Další informace najdete v tématu [Jak spustit experimenty a odvození ve virtuální síti](how-to-enable-virtual-network.md).
 
+Můžete také povolit Azure Private Link pro váš pracovní prostor. Private Link umožňuje omezit komunikaci do pracovního prostoru z virtuální sítě Azure. Další informace naleznete v tématu [Jak nakonfigurovat soukromé spojení](how-to-configure-private-link.md).
+
+> [!TIP]
+> Můžete kombinovat virtuální síť a privátní propojení dohromady a chránit tak komunikaci mezi pracovním prostorem a dalšími prostředky Azure. Některé kombinace však vyžadují pracovní prostor edice Enterprise. V následující tabulce můžete pochopit, jaké scénáře vyžadují edici Enterprise:
+>
+> | Scénář | Enterprise</br>Edition | Základní</br>Edition |
+> | ----- |:-----:|:-----:| 
+> | Žádná virtuální síť nebo privátní spojení | ✔ | ✔ |
+> | Pracovní prostor bez soukromého odkazu. Další prostředky (kromě Azure Container Registry) ve virtuální síti | ✔ | ✔ |
+> | Pracovní prostor bez soukromého odkazu. Další zdroje s privátním odkazem | ✔ | |
+> | Pracovní prostor s privátním odkazem. Další prostředky (kromě Azure Container Registry) ve virtuální síti | ✔ | ✔ |
+> | Pracovní prostor a jakýkoli jiný zdroj s privátním odkazem | ✔ | |
+> | Pracovní prostor s privátním odkazem. Další prostředky bez privátního spojení nebo virtuální sítě | ✔ | ✔ |
+> | Azure Container Registry ve virtuální síti | ✔ | |
+> | Klientspravované klíče pro pracovní prostor | ✔ | |
+> 
+
+> [!WARNING]
+> Azure Machine Learning výpočetní instance náhled není podporovánv pracovním prostoru, kde je povolena privátní odkaz.
+> 
+> Azure Machine Learning nepodporuje pomocí služby Azure Kubernetes, která má povolenou privátní vazbu. Místo toho můžete použít službu Azure Kubernetes Service ve virtuální síti. Další informace najdete [v tématu Zabezpečené úlohy experimentování azure ml a odvození v rámci virtuální sítě Azure](how-to-enable-virtual-network.md).
+
 ## <a name="data-encryption"></a>Šifrování dat
 
 ### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
@@ -123,6 +145,8 @@ Azure Machine Learning ukládá snímky, výstup y a protokoly v účtu úloži�
 Informace o tom, jak používat vlastní klíče pro data uložená v úložišti objektů Blob Azure, najdete v [tématu šifrování azure storage s klíči spravovanými zákazníky v Azure Key Vault](../storage/common/storage-encryption-keys-portal.md).
 
 Trénovací data se obvykle taky ukládají v úložišti objektů blob Azure, takže jsou přístupná trénovacím výpočetním cílům. Toto úložiště není spravované Azure Machine Learning, ale připojené k výpočetním cílům jako vzdálený souborový systém.
+
+Pokud potřebujete klíč __otočit nebo odvolat,__ můžete tak učinit kdykoli. Při otáčení klíče začne účet úložiště používat nový klíč (nejnovější verze) k šifrování dat v klidovém stavu. Při zrušení (zakázání) klíče se účet úložiště postará o neúspěšné požadavky. Obvykle trvá hodinu, než rotace nebo odvolání budou účinné.
 
 Informace o obnovení přístupových klíčů naleznete v tématu [Regenerate storage access keys](how-to-change-storage-access-key.md).
 
@@ -157,6 +181,8 @@ Tato instance Cosmos DB se vytvoří ve skupině prostředků spravované spole�
 > * Pokud potřebujete odstranit tuto instanci Cosmos DB, musíte odstranit pracovní prostor Azure Machine Learning, který ji používá. 
 > * Výchozí [__jednotky požadavků__](../cosmos-db/request-units.md) pro tento účet Cosmos DB jsou nastaveny na __hodnotu 8000__. Změna této hodnoty není podporována. 
 
+Pokud potřebujete klíč __otočit nebo odvolat,__ můžete tak učinit kdykoli. Při otáčení klíče cosmos DB začne používat nový klíč (nejnovější verze) k šifrování dat v klidovém stavu. Při zrušení (zakázání) klíče cosmos DB se postará o selhání požadavků. Obvykle trvá hodinu, než rotace nebo odvolání budou účinné.
+
 Další informace o klíčích spravovaných zákazníky pomocí služby Cosmos DB najdete v [tématu Konfigurace klíčů spravovaných zákazníky pro váš účet Azure Cosmos DB](../cosmos-db/how-to-setup-cmk.md).
 
 #### <a name="azure-container-registry"></a>Azure Container Registry
@@ -172,7 +198,21 @@ Příklad vytvoření pracovního prostoru pomocí existujícího registru konte
 
 #### <a name="azure-container-instance"></a>Instance kontejneru Azure
 
-Azure Container Instance nepodporuje šifrování disku. Pokud potřebujete šifrování disku, doporučujeme místo toho [nasadit na instanci služby Azure Kubernetes.](how-to-deploy-azure-kubernetes-service.md) V takovém případě můžete také chtít použít podporu Azure Machine Learning pro ovládací prvky přístupu založené na rolích, abyste zabránili nasazení instance kontejneru Azure ve vašem předplatném.
+Nasazený prostředek instance kontejneru Azure (ACI) můžete zašifrovat pomocí klíčů spravovaných zákazníky. Klíč spravovaný zákazníkem použitý pro ACI lze uložit do trezoru klíčů Azure pro váš pracovní prostor. Informace o generování klíče naleznete v tématu [Šifrování dat pomocí klíče spravovaného zákazníkem](../container-instances/container-instances-encrypt-data.md#generate-a-new-key).
+
+Chcete-li použít klíč při nasazování modelu do instance `AciWebservice.deploy_configuration()`kontejneru Azure, vytvořte novou konfiguraci nasazení pomocí . Poskytněte klíčové informace pomocí následujících parametrů:
+
+* `cmk_vault_base_url`: Adresa URL trezoru klíčů, který obsahuje klíč.
+* `cmk_key_name`: Název klíče.
+* `cmk_key_version`: Verze klíče.
+
+Další informace o vytváření a používání konfigurace nasazení naleznete v následujících článcích:
+
+* [Odkaz Na AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
+* [Kde a jak nasadit](how-to-deploy-and-where.md)
+* [Nasazení modelu do instancí kontejnerů Azure](how-to-deploy-azure-container-instance.md)
+
+Další informace o použití klíče spravovaného zákazníkem s ACI naleznete v [tématu Šifrování dat pomocí klíče spravovaného zákazníkem](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key).
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

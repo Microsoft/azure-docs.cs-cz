@@ -8,23 +8,31 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 967fd1fa182b7c8e581fd74cc287c5a6ba0e4038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127823"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422413"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
 
-Pomocí sady Linux SDK pro virtuální plochu windows můžete vytvořit samostatný klient virtuální plochy windows. Můžete ji také použít k povolení podpory virtuální plochy systému Windows v klientské aplikaci. Tento rychlý průvodce vám vysvětlí, co je linuxová sada SDK a jak ji začít používat.
+Partneři mohou pomocí sady Linux SDK pro virtuální plochu Windows vytvořit samostatného klienta virtuální plochy Windows. Můžete ji také použít k povolení podpory virtuální plochy systému Windows v klientské aplikaci. Tento rychlý průvodce vám vysvětlí, co je linuxová sada SDK a jak ji začít používat.
+
+## <a name="connect-with-your-linux-device"></a>Připojení se zařízením Linux
+
+Následující partneři schválili klienty Windows Virtual Desktop pro zařízení s Linuxem.
+
+|Partner|Dokumentace partnerů|Podpora pro partnery|
+|:------|:--------------------|:--------------|
+|![Logo IGEL](./media/partners/igel.png)|[Dokumentace klienta IGEL](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[Podpora pro IGEL](https://www.igel.com/support/)|
 
 ## <a name="what-is-the-linux-sdk"></a>Co je linuxová sada SDK?
 
 Pomocí sad SDK API můžete načítat informační kanály prostředků, připojit se k relacím aplikací plochy nebo vzdálené aplikace a použít mnoho přesměrování, která naši klienti první strany podporují.
 
 > [!NOTE]
-> Sada SDK je v současné době ve vývoji. Tento dokument aktualizujeme s pokyny pro přístup k sdk, jakmile bude k dispozici.
+> Sada SDK je v současné době ve vývoji. Tento dokument aktualizujeme s pokyny pro přístup k sdk, pokud je obecně k dispozici.
 
 ### <a name="supported-linux-distributions"></a>Podporované distribuce Linuxu
 

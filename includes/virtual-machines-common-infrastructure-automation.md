@@ -4,19 +4,19 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77608736"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419218"
 ---
 Chcete-li vytvořit a spravovat virtuální počítače Azure (VMs) konzistentním způsobem ve velkém měřítku, některé formy automatizace je obvykle žádoucí. Existuje mnoho nástrojů a řešení, které vám umožní automatizovat kompletní životní cyklus nasazení a správy infrastruktury Azure. Tento článek představuje některé nástroje pro automatizaci infrastruktury, které můžete použít v Azure. Tyto nástroje se běžně vejdou do jednoho z následujících přístupů:
 
 - Automatizace konfigurace virtuálních počítačů
-    - Mezi nástroje patří [Ansible](#ansible), [Chef](#chef)a [Puppet](#puppet).
+    - Mezi nástroje patří [šablona Ansible](#ansible), [Chef](#chef), [Puppet](#puppet)a [Azure Resource Manager](#azure-resource-manager-template).
     - Mezi nástroje specifické pro přizpůsobení virtuálních počítačů patří [cloud-init](#cloud-init) pro virtuální počítače s [Linuxem, konfigurace požadovaného stavu PowerShellu (DSC)](#powershell-dsc)a [rozšíření vlastního skriptu Azure](#azure-custom-script-extension) pro všechny virtuální počítače Azure.
- 
+
 - Automatizace správy infrastruktury
     - Mezi nástroje patří [Packer](#packer) pro automatizaci vlastních sestavení image virtuálních zařízení a [Terraform](#terraform) pro automatizaci procesu sestavení infrastruktury.
     - [Azure Automation](#azure-automation) můžou provádět akce napříč vaší Azure a místní infrastrukturou.
@@ -56,7 +56,8 @@ Naučte se:
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
-Aktivně spolupracujeme s našimi schválenými partnery pro distribuci Linuxu, abychom měli na webu Azure Marketplace k dispozici image s podporou cloudu. Díky těmto bitovým kopiím budou nasazení a konfigurace v cloudu bezproblémově fungovat s virtuálními počítači a škálovacími sadami virtuálních počítačů. Další informace o cloud-initu v Azure:
+Aktivně spolupracujeme s našimi schválenými partnery pro distribuci Linuxu, abychom měli na webu Azure Marketplace k dispozici image s podporou cloudu. Díky těmto bitovým kopiím budou nasazení a konfigurace v cloudu bezproblémově fungovat s virtuálními počítači a škálovacími sadami virtuálních počítačů.
+Další informace o cloud-initu v Azure:
 
 - [Podpora cloud-init pro virtuální počítače s Linuxem v Azure](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Vyzkoušejte kurz o automatické konfiguraci virtuálních počítačů pomocí cloud-init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
@@ -75,7 +76,7 @@ Naučte se:
 
 
 ## <a name="azure-custom-script-extension"></a>Rozšíření Azure Custom Script
-Azure Custom Script Extension pro [Linux](../articles/virtual-machines/linux/extensions-customscript.md) nebo [Windows](../articles/virtual-machines/windows/extensions-customscript.md) stahuje a spouští skripty na virtuálních počítačích Azure. Rozšíření můžete použít při vytváření virtuálního virtuálního soudu nebo kdykoli po použití virtuálního soudu. 
+Azure Custom Script Extension pro [Linux](../articles/virtual-machines/linux/extensions-customscript.md) nebo [Windows](../articles/virtual-machines/windows/extensions-customscript.md) stahuje a spouští skripty na virtuálních počítačích Azure. Rozšíření můžete použít při vytváření virtuálního virtuálního soudu nebo kdykoli po použití virtuálního soudu.
 
 Skripty se můžou stahovat z úložiště Azure nebo z jakéhokoli veřejného umístění, jako je úložiště GitHub. S rozšířením Vlastní skript můžete psát skripty v libovolném jazyce, který běží na zdrojovém virtuálním počítači. Tyto skripty lze použít k instalaci aplikací nebo nakonfigurovat virtuální počítače podle potřeby. Chcete-li zabezpečit pověření, citlivé informace, jako jsou hesla mohou být uloženy v chráněné konfiguraci. Tato pověření jsou dešifrovány pouze uvnitř virtuálního soudu.
 
@@ -130,6 +131,17 @@ Naučte se:
 
 - [Vytvořte vývojovou infrastrukturu na virtuálním počítači SNI v Azure pomocí Jenkinse, GitHubu a Dockeru](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md).
 
+
+## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
+[Azure Resource Manager](../articles/azure-resource-manager/templates/overview.md) je služba nasazení a správy pro Azure. Poskytuje vrstvu správy, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky ve vašem předplatném Azure. Funkce správy, jako je řízení přístupu, zámky a značky, slouží k zabezpečení a uspořádání prostředků po nasazení.
+
+Naučte se:
+
+- [Nasazení virtuálních počítače Spot pomocí šablony Správce prostředků](../articles/virtual-machines/linux/spot-template.md).
+- [Nasazení virtuálního počítače Azure pomocí Jazyka C# a šablony Správce prostředků](../articles/virtual-machines/windows/csharp-template.md).
+- [Vytvořte virtuální počítač s Windows ze šablony Správce prostředků](../articles/virtual-machines/windows/ps-template.md).
+- [Stáhněte si šablonu pro virtuální počítače](../articles/virtual-machines/windows/download-template.md).
+- [Vytvořte šablonu Azure Image Builder](../articles/virtual-machines/linux/image-builder-json.md).
 
 ## <a name="next-steps"></a>Další kroky
 Existuje mnoho různých možností použití nástrojů pro automatizaci infrastruktury v Azure. Máte svobodu používat řešení, které nejlépe vyhovuje vašim potřebám a prostředí. Pokud chcete začít a vyzkoušet některé z nástrojů integrovaných do Azure, podívejte se, jak automatizovat přizpůsobení [virtuálního počítače s Linuxem](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) nebo [Windows.](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md)

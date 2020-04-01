@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a751fa193c8dd530707f790af0292d536a6f47d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73164988"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420464"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Nasazení škálovacích sad virtuálních strojů pomocí IPv6 v Azure (Preview)
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Nasazení škálovacích sad virtuálních strojů pomocí IPv6 v Azure
 
 Tento článek ukazuje, jak nasadit sadu škálování virtuálních strojů (IPv4 + IPv6) s externím nástrojem pro vyrovnávání zatížení ve virtuální síti Azure. Proces vytvoření škálovací sady virtuálních strojů podporující chod IPv6 je téměř totožný s procesem vytváření jednotlivých virtuálních počítačů popsaných [zde](ipv6-configure-standard-load-balancer-template-json.md). Začnete s kroky, které jsou podobné těm, které jsou popsány pro jednotlivé virtuální chodů:
-1.  Vytvořte veřejné IP adresy IPv4 a IPv6.
-2.  Vytvořte dvouvrstvý systém pro vyrovnávání zatížení.  
-3.  Vytvořte pravidla skupiny zabezpečení sítě (NSG).  
+1.    Vytvořte veřejné IP adresy IPv4 a IPv6.
+2.    Vytvořte dvouvrstvý systém pro vyrovnávání zatížení.  
+3.    Vytvořte pravidla skupiny zabezpečení sítě (NSG).  
 
 Jediným krokem, který se liší od jednotlivých virtuálních počítačů, je vytvoření konfigurace síťového rozhraní (NIC), která používá prostředek škálovací sady virtuálních počítačů: networkProfile/networkInterfaceConfigurations. Struktura JSON je podobná jako u objektu Microsoft.Network/networkInterfaces používaného pro jednotlivé virtuální počítače s přidáním síťové koryty a konfigurace IpConfiguration IPv4 jako primárního rozhraní pomocí **atributu "primary": true,** jak je vidět v následujícím příkladu:
 

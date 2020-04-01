@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit a spravovat fondy více uzlů pro cluster 
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 2045cb9a175bead3abf5b53120b9fe381a17b04b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047731"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422319"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa fondů více uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -33,8 +33,8 @@ Následující omezení platí při vytváření a správě clusterů AKS, kter�
 * Cluster AKS musí používat standardní správce zatížení sku používat více fondů uzlů, funkce není podporována základní mise pro vyrovnávání zatížení skladových položk.
 * Cluster AKS musí používat škálovací sady virtuálních strojů pro uzly.
 * Název fondu uzlů může obsahovat pouze malá alfanumerická písmena a musí začínat s malou písmena. U fondů uzlů Linux musí být délka mezi 1 a 12 znaky, pro fondy uzlů systému Windows musí být délka mezi 1 a 6 znaky.
-* Všechny fondy uzlů musí být umístěny ve stejné virtuální síti a podsíti.
-* Při vytváření více fondů uzlů v době vytváření clusteru musí všechny verze Kubernetes používané fondy uzlů odpovídat verzi nastavené pro rovinu ovládacího prvku. Tuto verzi lze aktualizovat po zřízení clusteru pomocí operací fondu uzlů.
+* Všechny fondy uzlů musí být umístěny ve stejné virtuální síti.
+* Při vytváření více fondů uzlů v době vytváření clusteru musí všechny verze Kubernetes používané fondy uzlů odpovídat verzi nastavené pro rovinu ovládacího prvku. To lze aktualizovat po zřízení clusteru pomocí operací fondu uzlů.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
@@ -120,6 +120,29 @@ Následující příklad výstup ukazuje, že *mynodepool* byl úspěšně vytvo
 
 > [!TIP]
 > Pokud při přidání fondu uzlů není zadán žádný *formát VmSize,* je výchozí velikost *Standard_DS2_v3* pro fondy uzlů systému Windows a *Standard_DS2_v2* pro fondy uzlů Linuxu. Pokud není zadán a) *orchestratorVersion,* výchozí verze jako rovina ovládacího prvku.
+
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Přidání fondu uzlů s jedinečnou podsítí (náhled)
+
+Úloha může vyžadovat rozdělení uzlů clusteru do samostatných fondů pro logickou izolaci. Tato izolace může být podporována samostatnými podsítěmi vyhrazenými pro každý fond uzlů v clusteru. To může řešit požadavky, jako je například nesouvislé virtuální sítě adresní prostor rozdělit mezi fondy uzlů.
+
+#### <a name="limitations"></a>Omezení
+
+* Všechny podsítě přiřazené k utržení musí patřit do stejné virtuální sítě.
+* Systémové pody musí mít přístup ke všem uzlům v clusteru, aby poskytovaly důležité funkce, jako je například rozlišení DNS prostřednictvím služby coreDNS.
+* Přiřazení jedinečné podsítě na fond uzlů je omezené na Azure CNI během náhledu.
+* Použití zásad sítě s jedinečnou podsítí na fond uzlů není během náhledu podporováno.
+
+Chcete-li vytvořit fond uzlů s vyhrazenou podsítí, předajte ID prostředku podsítě jako další parametr při vytváření fondu uzlů.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --kubernetes-version 1.15.5
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
 
 ## <a name="upgrade-a-node-pool"></a>Upgrade fondu uzlů
 
@@ -695,18 +718,22 @@ az group deployment create \
 
 Aktualizace clusteru AKS může trvat několik minut v závislosti na nastavení fondu uzlů a operacích, které definujete v šabloně Správce prostředků.
 
-## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Přiřazení veřejné IP adresy na uzel ve fondu uzlů
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Přiřazení veřejné IP adresy na uzel pro fond uzlů (náhled)
 
 > [!WARNING]
 > Během náhledu přiřazení veřejné IP adresy na uzel ji nelze použít se *standardní skladovou jednotkou pro vyrovnávání zatížení v AKS* z důvodu možného vyrovnání zatížení, která jsou v konfliktu s zřizováním virtuálních počítačů. V důsledku tohoto omezení nejsou fondy agentů systému Windows podporovány s touto funkcí náhledu. Ve verzi Preview musíte použít *skladovou položku základního vykladače zatížení,* pokud potřebujete přiřadit veřejnou IP adresu na uzel.
 
-AKS uzly nevyžadují své vlastní veřejné IP adresy pro komunikaci. Některé scénáře však může vyžadovat uzly ve fondu uzlů mít své vlastní veřejné IP adresy. Příkladem je hraní her, kde konzole potřebuje vytvořit přímé připojení ke cloudovému virtuálnímu počítači, aby se minimalizovalo směrování. Tohoto scénáře lze dosáhnout registrací pro samostatnou funkci náhledu, Uzel Public IP (náhled).
+AKS uzly nevyžadují své vlastní veřejné IP adresy pro komunikaci. Scénáře však může vyžadovat uzly ve fondu uzlů přijímat své vlastní vyhrazené veřejné IP adresy. Běžný scénář je pro herní úlohy, kde konzole potřebuje vytvořit přímé připojení ke cloudovému virtuálnímu počítači, aby se minimalizovalo směrování. Tohoto scénáře lze dosáhnout na AKS registrací funkce náhledu, Uzel Veřejné IP (náhled).
+
+Zaregistrujte se pro funkci veřejné IP uzlu vydáním následujícího příkazu Azure CLI.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po úspěšné registraci nasaďte šablonu Azure [above](#manage-node-pools-using-a-resource-manager-template) Resource Manager podle stejných `enableNodePublicIP` pokynů jako výše a přidejte vlastnost boolean value do agentPoolProfiles. Nastavte hodnotu `true` jako ve výchozím `false` nastavení, je nastavena jako by nebyla zadána. Tato vlastnost je vlastnost pouze pro vytvoření a vyžaduje minimální verzi rozhraní API 2019-06-01. To lze použít pro fondy uzlů Linux u Windows a Windows.
+Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle stejných pokynů jako [výše](#manage-node-pools-using-a-resource-manager-template) a přidejte logickou vlastnost `enableNodePublicIP` do agentPoolProfiles. Nastavte hodnotu `true` jako ve výchozím `false` nastavení, je nastavena jako by nebyla zadána. 
+
+Tato vlastnost je vlastnost pouze pro vytvoření a vyžaduje minimální verzi rozhraní API 2019-06-01. To lze použít pro fondy uzlů Linux u Windows a Windows.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, požadovaná konfigurace stavu, správa aktualizací, sledování změn, inventář, runbooky, python, grafické, hybridní
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 85a6f8dcb9f551d81a607adc9ae482f4025d804f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 5ffe845178fffc252e95794bfb58801c9bff16a7
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366361"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411227"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure Arc pro servery (preview)
 
@@ -147,7 +147,7 @@ Agent azure connected machine pro Windows a Linux lze upgradovat na nejnovějš�
 
 ### <a name="agent-status"></a>Stav agenta
 
-Agent připojeného počítače odesílá do služby každých 5 minut zprávu o pravidelném prezenčním signálu. Pokud jeden není přijat po dobu 15 minut, je počítač považován za offline a stav se automaticky změní na **Odpojeno** na portálu. Po přijetí následné zprávy prezenčního signálu od agenta připojeného počítače se jeho stav automaticky změní na **Připojeno**.
+Agent připojeného počítače odesílá do služby každých 5 minut zprávu o pravidelném prezenčním signálu. Pokud služba přestane přijímat tyto zprávy prezenčního signálu z počítače, tento počítač je považován za offline a stav se automaticky změní na **Odpojeno** na portálu během 15 až 30 minut. Po přijetí následné zprávy prezenčního signálu od agenta připojeného počítače se jeho stav automaticky změní na **Připojeno**.
 
 ## <a name="install-and-configure-agent"></a>Instalace a konfigurace agenta
 

@@ -1,16 +1,14 @@
 ---
 title: Matice podpory pro obnovení voblasti VMware/fyzické havárie v azure site recovery
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačích VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.author: raynew
-ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371388"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478423"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačích VMware a fyzických serverů do Azure
 
@@ -50,10 +48,10 @@ Volné místo na disku | 600 GB místa pro mezipaměť procesního serveru.
 Volné místo na disku | 600 GB místa pro retenční jednotku.
 Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 s desktopovým prostředím <br/><br> Pokud máte v plánu použít vestavěný hlavní cíl tohoto zařízení pro navrácení služeb po selhání, ujistěte se, že verze operačního systému je stejná nebo vyšší než replikované položky.|
 Národní prostředí operačního systému | Angličtina (en-us)
-[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Není potřeba pro konfigurační server verze [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) nebo novější. 
-Role Windows Serveru | Nepovolujte službu Active Directory Domain Services. Internetová informační služba (IIS) nebo technologie Hyper-V. 
+[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Není potřeba pro konfigurační server verze [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) nebo novější.
+Role Windows Serveru | Nepovolujte službu Active Directory Domain Services. Internetová informační služba (IIS) nebo technologie Hyper-V.
 Zásady skupiny| - Zabránit přístupu k příkazovému řádku. <br/> - Zabránit přístupu k nástrojům pro úpravu registru. <br/> - Logika důvěryhodnosti pro přílohy souborů. <br/> - Zapněte spuštění skriptu. <br/> - [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Ujistěte se, že:<br/><br/> - Nemáte již existující výchozí webové stránky <br/> - Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br/> - Nemají již existující webové stránky / app poslech na portu 443<br/>
+IIS | Ujistěte se, že:<br/><br/> - Nemáte již existující výchozí webové stránky <br/> - Povolit [anonymní ověřování](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - Povolit nastavení [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br/> - Nemají již existující webové stránky / app poslech na portu 443<br/>
 Typ nic | VMXNET3 (při nasazení jako virtuální virtuální měna VMware)
 Typ IP adresy | Statická
 Porty | 443 používá pro řízení orchestrace kanálu<br/>9443 pro přenos dat
@@ -68,24 +66,24 @@ Site Recovery podporuje replikaci všech úloh spuštěných na podporovaném po
 **Komponenta** | **Podrobnosti**
 --- | ---
 Nastavení stroje | Počítače, které se replikují do Azure, musí splňovat [požadavky Azure](#azure-vm-requirements).
-Pracovní vytížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných na podporovaném počítači. [Další informace](https://aka.ms/asr_workload).
+Pracovní vytížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných na podporovaném počítači. [Další informace](site-recovery-workload.md).
 Windows Server 2019 | Podporováno z [kumulativní aktualizace 34](https://support.microsoft.com/help/4490016) (verze 9.22 služby Mobility) a dále.
 64bitový Systém Windows Server 2016 | Podporováno pro jádro serveru, server se zkušenostmi s počítačem.
 Windows Server 2012 R2 / Windows Server 2012 | Podporuje se.
 Windows Server 2008 R2 s sp1 a dále. | Podporuje se.<br/><br/> Od verze [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta služby Mobility je třeba nainstalovat [aktualizaci zásobníku (SSU)](https://support.microsoft.com/help/4490628) a [sha-2 nainstalovanou](https://support.microsoft.com/help/4474419) v počítačích se systémem Windows 2008 R2 s aktualizací SP1 nebo novější. SHA-1 není podporována od září 2019 a pokud není povoleno podepisování kódu SHA-2, rozšíření agenta se nenainstaluje nebo neupgraduje podle očekávání. Další informace o [upgradu sha-2 a požadavcích](https://aka.ms/SHA-2KB).
-Windows Server 2008 s sp2 nebo novější (64bitový/32bitový) |  Podporováno pouze pro migraci. [Další informace](migrate-tutorial-windows-server-2008.md).<br/><br/> Od verze [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta služby Mobility je třeba nainstalovat [aktualizaci zásobníku (SSU)](https://support.microsoft.com/help/4493730) a [sha-2 nainstalovanou](hhttps://support.microsoft.com/help/4474419) v počítačích se systémem Windows 2008 SP2. ISHA-1 není podporována od září 2019 a pokud není povoleno podepisování kódu SHA-2, rozšíření agenta se nenainstaluje nebo neupgraduje podle očekávání. Další informace o [upgradu sha-2 a požadavcích](https://aka.ms/SHA-2KB).
+Windows Server 2008 s sp2 nebo novější (64bitový/32bitový) |  Podporováno pouze pro migraci. [Další informace](migrate-tutorial-windows-server-2008.md).<br/><br/> Od verze [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta služby Mobility je třeba nainstalovat [aktualizaci zásobníku (SSU)](https://support.microsoft.com/help/4493730) a [sha-2 nainstalovanou](https://support.microsoft.com/help/4474419) v počítačích se systémem Windows 2008 SP2. ISHA-1 není podporována od září 2019 a pokud není povoleno podepisování kódu SHA-2, rozšíření agenta se nenainstaluje nebo neupgraduje podle očekávání. Další informace o [upgradu sha-2 a požadavcích](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
 Windows 10, Windows 8.1, Windows 8 | Podporuje se.
-Windows 7 s 64bitovou sp1 | Podporováno z [kumulativní aktualizace 36](https://support.microsoft.com/help/4503156) (verze 9.22 služby Mobility) dále. </br></br> Od [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta služby Mobility potřebujete [aktualizaci zásobníku (SSU)](https://support.microsoft.com/help/4490628) a [aktualizaci SHA-2 nainstalovanou](https://support.microsoft.com/help/4474419) v počítačích se systémem Windows 7 SP1.  SHA-1 není podporována od září 2019 a pokud není povoleno podepisování kódu SHA-2, rozšíření agenta se nenainstaluje nebo neupgraduje podle očekávání. Další informace o [upgradu sha-2 a požadavcích](https://aka.ms/SHA-2KB).
+Windows 7 s 64bitovou sp1 | Podporováno z [kumulativní aktualizace 36](https://support.microsoft.com/help/4503156) (verze 9.22 služby Mobility) dále. </br></br> Od [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) agenta služby Mobility potřebujete [aktualizaci zásobníku (SSU)](https://support.microsoft.com/help/4490628) a [aktualizaci SHA-2 nainstalovanou](https://support.microsoft.com/help/4474419) v počítačích se systémem Windows 7 SP1.  SHA-1 není podporována od září 2019 a pokud není povoleno podepisování kódu SHA-2, rozšíření agenta se nenainstaluje nebo neupgraduje podle očekávání. Další informace o [upgradu sha-2 a požadavcích](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
 Linux | Podporován je pouze 64bitový systém. 32bitový systém není podporován.<br/><br/>Každý linuxový server by měl mít [nainstalovány součásti Linux Integration Services (LIS).](https://www.microsoft.com/download/details.aspx?id=55106) Je nutné spustit server v Azure po testování převzetí služeb při selhání nebo převzetí služeb při selhání. Pokud součásti LIS chybí, ujistěte se, že před povolením replikace pro počítače spustit v Azure. [components](https://www.microsoft.com/download/details.aspx?id=55106) <br/><br/> Site Recovery orchestruje převzetí služeb při selhání ke spuštění serverů Linux v Azure. Dodavatelé Linuxu však mohou omezit podporu pouze na distribuční verze, které nedosáhly konce životnosti.<br/><br/> V linuxových distribucích jsou podporována pouze základní jádra, která jsou součástí distribuce menší verze release/update.<br/><br/> Upgrade chráněných počítačů napříč hlavními distribučními verzemi Linuxu není podporován. Chcete-li inovovat, zakázat replikaci, inovovat operační systém a potom znovu povolit replikaci.<br/><br/> [Přečtěte si další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) o podpoře Linuxu a open source technologie v Azure.
 Linux Red Hat Enterprise | 5.2 až 5.11</b><br/> 6,1 až 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1 <br/> Servery se systémem Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 nemají předinstalované [komponenty Linux Integration Services (LIS).](https://www.microsoft.com/download/details.aspx?id=55106) Ujistěte se, že nainstalovat [součásti](https://www.microsoft.com/download/details.aspx?id=55106) před povolením replikace pro počítače nastartuje v Azure.
 Linux: CentOS | 5.2 až 5.11</b><br/> 6,1 až 6,10</b><br/> 7,0 až 7,6<br/> <br/> 8,0 až 8,1<br/><br/> Servery se systémem CentOS 5.2-5.11 & 6.1-6.10 nemají předinstalované [komponenty Linux Integration Services (LIS).](https://www.microsoft.com/download/details.aspx?id=55106) Ujistěte se, že nainstalovat [součásti](https://www.microsoft.com/download/details.aspx?id=55106) před povolením replikace pro počítače nastartuje v Azure.
 Ubuntu | Ubuntu 14.04 LTS server [(recenze podporovaných verzí jádra)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server [(recenze podporovaných verzí jádra)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS server [(recenze podporovaných verzí jádra)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(recenze podporovaných verzí jádra)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(recenze podporovaných verzí jader)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(recenze podporovaných verzí jádra)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Upgrade replikovaných počítačů ze SUSE Linux Enterprise Server 11 SP3 na aktualizaci SP4 není podporován. Chcete-li provést upgrade, zakažte replikaci a po obnovení upgradu znovu povolte.
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Spuštění jádra kompatibilního s Red Hat nebo Unbreakable Enterprise Kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Spuštění jádra kompatibilního s Red Hat nebo Unbreakable Enterprise Kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5)
 
 > [!Note]
-> Pro každou z verzí systému Windows Azure Site Recovery podporuje pouze [sestavení kanálu dlouhodobé údržby (LTSC).](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)  [Pololetní](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) verze kanálu nejsou v současné době podporovány.
+> Pro každou z verzí systému Windows Azure Site Recovery podporuje pouze [sestavení kanálu dlouhodobé údržby (LTSC).](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)  [Pololetní](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) verze kanálu nejsou v současné době podporovány.
 
 ### <a name="ubuntu-kernel-versions"></a>Verze jádra Ubuntu
 
@@ -141,7 +139,7 @@ Paravirtualizovaná úložná zařízení | Zařízení exportovaná paravirtual
 Zařízení iO bloku více front | Není podporováno.
 Fyzické servery s řadičem úložiště HP CCISS | Není podporováno.
 Konvence pojmenování zařízení a přípojného bodu | Název zařízení nebo název přípojného bodu by měl být jedinečný.<br/> Ujistěte se, že žádná dvě zařízení/přípojné body mají názvy rozlišující malá a velká písmena. Například pojmenování zařízení pro stejný virtuální virtuální modul jako *device1* a *Device1* není podporována.
-Adresáře | Pokud používáte verzi služby Mobility starší než verze 9.20 (vydané v [kumulativní aktualizaci 31](https://support.microsoft.com/help/4478871/)), platí tato omezení:<br/><br/> - Tyto adresáře (pokud jsou nastaveny jako samostatné oddíly/souborové systémy) musí být na stejném disku operačního systému na zdrojovém serveru: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - /boot adresář by měl být na disku oddílu a nesmí být svazek LVM.<br/><br/> Od verze 9.20 tato omezení neplatí. 
+Adresáře | Pokud používáte verzi služby Mobility starší než verze 9.20 (vydané v [kumulativní aktualizaci 31](https://support.microsoft.com/help/4478871/)), platí tato omezení:<br/><br/> - Tyto adresáře (pokud jsou nastaveny jako samostatné oddíly/souborové systémy) musí být na stejném disku operačního systému na zdrojovém serveru: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - /boot adresář by měl být na disku oddílu a nesmí být svazek LVM.<br/><br/> Od verze 9.20 tato omezení neplatí.
 Spouštěcí adresář | - Spouštěcí disky nesmí být ve formátu oddílu GPT. Toto je omezení architektury Azure. Disky GPT jsou podporovány jako datové disky.<br/><br/> Více spouštěcích disků na virtuálním počítači není podporované<br/><br/> - /boot na svazku LVM přes více než jeden disk není podporován.<br/> - Počítač bez spouštěcího disku nelze replikovat.
 Požadavky na volné místo| 2 GB na /root oddílu <br/><br/> 250 MB v instalační složce
 XFSv5 | Funkce XFSv5 v systémech souborů XFS, jako je například kontrolní součet metadat, jsou podporovány (verze služby Mobility verze 9.10 dále).<br/> Pomocí nástroje xfs_info zkontrolujte superblok XFS pro oddíl. Pokud `ftype` je nastavena na 1, pak XFSv5 funkce jsou používány.
@@ -154,7 +152,7 @@ BTRFS | BTRFS je podporován od [kumulativní aktualizace 34](https://support.mi
 Změna velikosti disku na replikovaném virtuálním počítači | Podporováno na zdrojovém virtuálním počítači před převzetím služeb při selhání přímo ve vlastnostech virtuálního počítače. Není nutné zakázat nebo znovu povolit replikaci.<br/><br/> Pokud změníte zdrojový virtuální virtuální ms po převzetí služeb při selhání, změny nejsou zachycení.<br/><br/> Pokud změníte velikost disku na virtuálním počítači Azure po převzetí služeb při selhání, když si poobnovení, site recovery vytvoří nový virtuální počítač s aktualizacemi.
 Přidání disku do replikovaného virtuálního počítače | Není podporováno.<br/> Zakažte replikaci virtuálního počítače, přidejte disk a znovu povolte replikaci.
 
-## <a name="network"></a>Network (Síť)
+## <a name="network"></a>Síť
 
 **Komponenta** | **Podporovány**
 --- | ---
@@ -185,7 +183,7 @@ Zachovat zdrojovou ADRESU IP | Ano
 Koncové body virtuální síťové služby Azure<br/> | Ano
 Urychlení sítě | Ne
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 **Komponenta** | **Podporovány**
 --- | ---
 Dynamický disk | Disk operačního systému musí být základní disk. <br/><br/>Datové disky mohou být dynamické disky
@@ -212,7 +210,7 @@ Host/server - vyloučit disk | Ano
 Multicesta hosta/serveru (MPIO) | Ne
 Oddíly GPT hosta/serveru | Pět oddílů je podporováno z [kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) (verze 9.25 služby Mobility) a dále. Dříve byly podporovány čtyři.
 ReFS | Odolný souborový systém je podporován službou Mobility verze 9.23 nebo vyšší
-Spouštění EFI/UEFI pro hosty/server | - Podporováno pro Windows Server 2012 nebo novější, SLES 12 SP4 a RHEL 8.0 s agentem mobility verze 9.30 a dále<br/> - Zabezpečený typ spouštění UEFI není podporován. 
+Spouštění EFI/UEFI pro hosty/server | - Podporováno pro Windows Server 2012 nebo novější, SLES 12 SP4 a RHEL 8.0 s agentem mobility verze 9.30 a dále<br/> - Zabezpečený typ spouštění UEFI není podporován.
 
 ## <a name="replication-channels"></a>Replikační kanály
 
@@ -268,20 +266,20 @@ název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, 
 
 ## <a name="resource-group-limits"></a>Omezení skupiny prostředků
 
-Informace o počtu virtuálních počítačů, které lze chránit v rámci jedné skupiny prostředků, naleznete v článku o [omezení předplatného a kvótách](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)
+Chcete-li porozumět počtu virtuálních počítačů, které lze chránit v rámci jedné skupiny prostředků, naleznete v článku o [omezení předplatného a kvótách](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits).
 
 ## <a name="churn-limits"></a>Omezení konve
 
-Následující tabulka obsahuje omezení služby Azure Site Recovery. 
+Následující tabulka obsahuje omezení služby Azure Site Recovery.
 - Tato omezení jsou založena na našich testech, ale nepokrývají všechny možné kombinace vstupně-va aplikací.
 - Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace.
 - Chcete-li dosáhnout nejlepších výsledků, důrazně doporučujeme spustit [nástroj Plánovač nasazení](site-recovery-deployment-planner.md)a provést rozsáhlé testování aplikací pomocí testovacích převzetí služeb při selhání, abyste získali skutečný obrázek výkonu pro vaši aplikaci.
 
 **Cíl replikace** | **Průměrná velikost vstupně-výstupních operací zdrojového disku** |**Průměrná četnost změn dat zdrojového disku** | **Celkový počet změn dat zdrojového disku za den**
 ---|---|---|---
-Storage úrovně Standard | 8 kB | 2 MB/s | 168 GB na disk
-Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk
-Disk úrovně Premium P10 nebo P15 | 16 kB | 4 MB/s |  336 GB na disk
+Storage úrovně Standard | 8 kB    | 2 MB/s | 168 GB na disk
+Disk úrovně Premium P10 nebo P15 | 8 kB    | 2 MB/s | 168 GB na disk
+Disk úrovně Premium P10 nebo P15 | 16 kB | 4 MB/s |    336 GB na disk
 Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 MB/s | 1684 GB na disk
@@ -310,9 +308,9 @@ Přesuňte úložiště, síť, virtuální počítače Azure v rámci a napří
 
 **Název** | **Popis** | **Podrobnosti**
 --- | --- | ---
-Konfigurační server | Nainstalováno místně.<br/> Koordinuje komunikaci mezi místními servery VMware nebo fyzickými počítači a Azure. | - [Další informace o](vmware-physical-azure-config-process-server-overview.md) konfiguračním serveru.<br/> - [Přečtěte si o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) upgradu na nejnovější verzi.<br/> - [Přečtěte si informace o](vmware-azure-deploy-configuration-server.md) nastavení konfiguračního serveru. 
+Konfigurační server | Nainstalováno místně.<br/> Koordinuje komunikaci mezi místními servery VMware nebo fyzickými počítači a Azure. | - [Další informace o](vmware-physical-azure-config-process-server-overview.md) konfiguračním serveru.<br/> - [Přečtěte si o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) upgradu na nejnovější verzi.<br/> - [Přečtěte si informace o](vmware-azure-deploy-configuration-server.md) nastavení konfiguračního serveru.
 Procesní server | Obvykle se instaluje na konfigurační server.<br/> Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do Azure.<br/> Jak vaše nasazení roste, můžete přidat další procesní servery pro zpracování větších svazků replikačního provozu. | - [Další informace o](vmware-physical-azure-config-process-server-overview.md) procesním serveru.<br/> - [Přečtěte si o](vmware-azure-manage-process-server.md#upgrade-a-process-server) upgradu na nejnovější verzi.<br/> - [Přečtěte si o](vmware-physical-large-deployment.md#set-up-a-process-server) nastavení horizontálních procesních serverů škálování.
-Služba Mobility | Nainstalováno na virtuálním počítači VMware nebo fyzických serverech, které chcete replikovat.<br/> Koordinuje replikaci mezi místními servery VMware a fyzickými servery a Azure.| - [Přečtěte si o](vmware-physical-mobility-service-overview.md) službě Mobility.<br/> - [Přečtěte si o](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) upgradu na nejnovější verzi.<br/> 
+Služba Mobility | Nainstalováno na virtuálním počítači VMware nebo fyzických serverech, které chcete replikovat.<br/> Koordinuje replikaci mezi místními servery VMware a fyzickými servery a Azure.| - [Přečtěte si o](vmware-physical-mobility-service-overview.md) službě Mobility.<br/> - [Přečtěte si o](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) upgradu na nejnovější verzi.<br/>
 
 
 

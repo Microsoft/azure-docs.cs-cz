@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2dc78c25c2cf63a510b9451c8d694795cd8a91eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060941"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411605"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure lze připojit v linuxových distribucích pomocí [klienta jádra SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby připojení sdílené složky `mount` Azure: on-demand s `/etc/fstab`příkazem a na startu vytvořením položky v .
@@ -194,10 +194,57 @@ Po dokončení používání sdílené složky Azure, `sudo umount $mntPath` mů
     > [!Note]  
     > Výše uvedený příkaz mount se připojí s SMB 3.0. Pokud vaše distribuce Linuxu nepodporuje SMB 3.0 s šifrováním nebo pokud podporuje jenom SMB 2.1, můžete připojit pouze z virtuálního počítače Azure ve stejné oblasti jako účet úložiště. Chcete-li připojit sdílenou složku Azure na distribuci Linuxu, která nepodporuje SMB 3.0 s šifrováním, budete muset [zakázat šifrování při přenosu pro účet úložiště](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Automatické připojení sdílené složky Azure pomocí autofů
+
+1. **Ujistěte se, že je nainstalován balíček autofs.**  
+
+    Balíček autofs lze nainstalovat pomocí správce balíčků na linuxové distribuci dle vašeho výběru. 
+
+    Na distribucích založených na `apt` **Ubuntu** a **Debianu** použijte správce balíčků:
+    ```bash
+    sudo apt update
+    sudo apt install autofs
+    ```
+    Na **Fedoři**, **Red Hat Enterprise Linux 8+** a `dnf` **CentOS 8 +** použijte správce balíčků:
+    ```bash
+    sudo dnf install autofs
+    ```
+    Ve starších verzích **Red Hat Enterprise Linux** a **CentOS**použijte správce `yum` balíčků:
+    ```bash
+    sudo yum install autofs 
+    ```
+    Na **openSUSE**použijte `zypper` správce balíčků:
+    ```bash
+    sudo zypper install autofs
+    ```
+2. **Vytvořte přípojný bod pro sdílené složky**:
+   ```bash
+    sudo mkdir /fileshares
+    ```
+3. **Kréta nový vlastní konfigurační soubor autofs**
+    ```bash
+    sudo vi /etc/auto.fileshares
+    ```
+4. **Přidat následující položky do /etc/auto.fileshares**
+   ```bash
+   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
+   ```
+5. **Přidání následující položky do /etc/auto.master**
+   ```bash
+   /fileshares /etc/auto.fileshares --timeout=60
+   ```
+6. **Restartovat autofs**
+    ```bash
+    sudo systemctl restart autofs
+    ```
+7.  **Přístup ke složce určené pro sdílenou složku**
+    ```bash
+    cd /fileshares/$filesharename
+    ```
 ## <a name="securing-linux"></a>Zabezpečení Linuxu
 Aby bylo možné připojit sdílené složky Azure na Linuxu, port 445 musí být přístupné. Řada organizací port 445 blokuje kvůli bezpečnostním rizikům spojeným s protokolem SMB 1. SMB 1, také známý jako CIFS (Common Internet File System), je starší souborový systémový protokol, který je součástí mnoha distribucí Linuxu. Protokol SMB 1 je zastaralý, neefektivní a hlavně nezabezpečený protokol. Dobrou zprávou je, že Soubory Azure nepodporuje SMB 1 a počínaje linuxovým jádrem verze 4.18, Linux umožňuje zakázat SMB 1. Vždy [důrazně doporučujeme](https://aka.ms/stopusingsmb1) zakázat SMB 1 na klienty Linuxu před použitím sdílených složek SMB v produkčním prostředí.
 
-Počínaje linuxovým jádrem 4.18 modul jádra SMB, nazývaný `cifs` ze starších důvodů, vystavuje nový parametr modulu (často označovaný jako *parm* různými externími dokumenty), nazývaný `disable_legacy_dialects`. Ačkoli byl zaveden v linuxovém jádře 4.18, někteří dodavatelé tuto změnu backportovali na starší jádra, která podporují. Pro větší pohodlí následující tabulka podrobně popisuje dostupnost tohoto parametru modulu na běžných distribucích Linuxu.
+Počínaje linuxovým jádrem 4.18 modul jádra SMB, nazývaný `cifs` ze starších důvodů, vystavuje nový parametr modulu (často označovaný jako *parm* různými externími dokumentacemi), nazývaný `disable_legacy_dialects`. Ačkoli byl zaveden v linuxovém jádře 4.18, někteří dodavatelé tuto změnu backportovali na starší jádra, která podporují. Pro větší pohodlí následující tabulka podrobně popisuje dostupnost tohoto parametru modulu na běžných distribucích Linuxu.
 
 | Distribuce | Může zakázat SMB 1 |
 |--------------|-------------------|

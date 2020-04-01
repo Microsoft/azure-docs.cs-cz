@@ -5,19 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 51b800dde140affd222f2bdb341c0fbf3a57d8cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/30/2020
+ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530151"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422475"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace replikace dat v databázi Azure pro MariaDB
 
 Tento článek popisuje, jak nastavit replikaci dat v databázi Azure pro MariaDB konfigurací hlavních a replikových serverů. Tento článek předpokládá, že máte nějaké předchozí zkušenosti se servery MariaDB a databázemi.
 
 Chcete-li vytvořit repliku ve službě Azure Database for MariaDB, data-in replikace synchronizuje data z hlavního serveru MariaDB místně, ve virtuálních počítačích (VM) nebo v cloudových databázových službách.
+
+Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](concepts-data-in-replication.md#limitations-and-considerations) replikace datového systému.
 
 > [!NOTE]
 > Pokud je hlavní server verze 10.2 nebo novější, doporučujeme nastavit replikaci dat pomocí [globálního ID transakce](https://mariadb.com/kb/en/library/gtid/).
@@ -36,11 +38,21 @@ Chcete-li vytvořit repliku ve službě Azure Database for MariaDB, data-in repl
     
     Uživatelské účty nejsou replikovány z hlavního serveru na replikovací server. Chcete-li poskytnout uživatelský přístup k serveru replik, musíte ručně vytvořit všechny účty a odpovídající oprávnění na nově vytvořené databázi Azure pro server MariaDB.
 
+3. Přidejte ip adresu hlavního serveru do pravidel brány firewall repliky. 
+
+   Pomocí webu [Azure Portal](howto-manage-firewall-portal.md) nebo [Azure CLI](howto-manage-firewall-cli.md) aktualizujte pravidla brány firewall.
+
 ## <a name="configure-the-master-server"></a>Konfigurace hlavního serveru
 
 Následující kroky připravit a nakonfigurovat MariaDB server hostovaný místně, ve virtuálním počítači nebo v cloudové databázové službě pro replikaci dat. Server MariaDB je hlavním serverem replikace datového připojení.
 
-1. Zapněte binární protokolování.
+1. Než budete pokračovat, zkontrolujte [požadavky hlavního serveru.](concepts-data-in-replication.md#requirements) 
+
+   Například zajistěte, aby hlavní server povoloval příchozí i odchozí provoz na portu 3306 a aby hlavní server měl **veřejnou IP adresu**, dns je veřejně přístupný nebo má plně kvalifikovaný název domény (Plně kvalifikovaný název domény). 
+   
+   Otestujte připojení k hlavnímu serveru pokusem o připojení z nástroje, jako je příkazový řádek MySQL hostovaný na jiném počítači nebo z [Prostředí Azure Cloud Shell,](https://docs.microsoft.com/azure/cloud-shell/overview) který je k dispozici na webu Azure Portal.
+
+2. Zapněte binární protokolování.
     
     Chcete-li zjistit, zda je v předloze povoleno binární protokolování, zadejte následující příkaz:
 
@@ -52,7 +64,7 @@ Následující kroky připravit a nakonfigurovat MariaDB server hostovaný míst
 
    Pokud `log_bin` vrátí `OFF`hodnotu , upravte soubor `log_bin=ON` **my.cnf** tak, aby se zapínal binární protokolování. Chcete-li změnu změnit, restartujte server.
 
-2. Konfigurace nastavení hlavního serveru.
+3. Konfigurace nastavení hlavního serveru.
 
     Replikace datového `lower_case_table_names` data vyžaduje, aby byl parametr konzistentní mezi hlavním a replikami serverů. Parametr `lower_case_table_names` je ve `1` výchozím nastavení nastavenna v Azure Database pro MariaDB.
 
@@ -60,7 +72,7 @@ Následující kroky připravit a nakonfigurovat MariaDB server hostovaný míst
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Vytvořte novou roli replikace a nastavte oprávnění.
+4. Vytvořte novou roli replikace a nastavte oprávnění.
 
    Vytvořte uživatelský účet na hlavním serveru, který je nakonfigurován s oprávněními replikace. Účet můžete vytvořit pomocí příkazů SQL nebo MySQL Workbench. Pokud plánujete replikovat pomocí ssl, musíte zadat při vytváření uživatelského účtu.
    
@@ -105,7 +117,7 @@ Následující kroky připravit a nakonfigurovat MariaDB server hostovaný míst
    ![Slave replikace](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Nastavte hlavní server do režimu jen pro čtení.
+5. Nastavte hlavní server do režimu jen pro čtení.
 
    Před výpisem databáze musí být server umístěn v režimu jen pro čtení. V režimu jen pro čtení hlavní server nemůže zpracovat žádné transakce zápisu. Chcete-li se vyhnout dopadu na podnikání, naplánujte okno jen pro čtení v době mimo špičku.
 
@@ -114,7 +126,7 @@ Následující kroky připravit a nakonfigurovat MariaDB server hostovaný míst
    SET GLOBAL read_only = ON;
    ```
 
-5. Získejte aktuální název a posun souboru binárního protokolu.
+6. Získejte aktuální název a posun souboru binárního protokolu.
 
    Chcete-li určit aktuální název a posun [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)binárního souboru protokolu, spusťte příkaz .
     
@@ -127,7 +139,7 @@ Následující kroky připravit a nakonfigurovat MariaDB server hostovaný míst
 
    Poznamenejte si název binárního souboru, protože bude použit v pozdějších krocích.
    
-6. Získejte pozici GTID (volitelně, potřebné pro replikaci s GTID).
+7. Získejte pozici GTID (volitelně, potřebné pro replikaci s GTID).
 
    Spuštěním [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) funkce získáte pozici GTID pro odpovídající název souboru binlogu a posun.
   
@@ -196,7 +208,7 @@ Následující kroky připravit a nakonfigurovat MariaDB server hostovaný míst
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE'S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE\'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 

@@ -3,12 +3,12 @@ title: Nejčastější dotazy k zařízení Azure Migrate
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 2ef7de3b31cb11a71ec9379232fc5ff1022cf666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336973"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437601"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Pro migraci Azure: Běžné otázky
 
@@ -94,6 +94,9 @@ Ne. Mezi [zařízením Azure Migrate](migrate-appliance.md) a serverem vCenter j
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Může mít projekt Migrace Azure více zařízení?
 Projekt může mít více zařízení k němu připojen. Zařízení však může být přidruženo pouze k jednomu projektu. 
+
+## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Může se zařízení Azure Migrate/Replication připojit ke stejnému virtuálnímu zařízení?
+Ano. Zařízení Azure Migrate (používané pro vyhodnocení a migraci vmware bez agentů) můžete přidat a zařízení replikace (používané pro migraci virtuálních počítačů VMware na základě agenta) na stejný server vCenter.
 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Kolik virtuálních zařízení nebo serverů můžu zjistit pomocí zařízení?

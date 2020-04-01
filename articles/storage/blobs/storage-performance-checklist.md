@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255428"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473929"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam výkonu a škálovatelnosti pro úložiště objektů Blob
 
@@ -32,9 +32,9 @@ Tento článek uspořádá osvědčené postupy pro výkon do kontrolního sezna
 | &nbsp; |Cíle škálovatelnosti |[Je velký počet klientů přístup k jeden objekt blob současně?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Cíle škálovatelnosti |[Zůstává vaše aplikace v rámci cílů škálovatelnosti pro jeden objekt blob?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Dělení |[Je konvence pojmenování navržena tak, aby umožňovala lepší vyrovnávání zatížení?](#partitioning) |
-| &nbsp; |Síťové služby |[Mají zařízení na straně klienta dostatečně vysokou šířku pásma a nízkou latenci, aby dosáhla potřebného výkonu?](#throughput) |
-| &nbsp; |Síťové služby |[Mají zařízení na straně klienta vysoce kvalitní síťové spojení?](#link-quality) |
-| &nbsp; |Síťové služby |[Je klientská aplikace ve stejné oblasti jako účet úložiště?](#location) |
+| &nbsp; |Sítě |[Mají zařízení na straně klienta dostatečně vysokou šířku pásma a nízkou latenci, aby dosáhla potřebného výkonu?](#throughput) |
+| &nbsp; |Sítě |[Mají zařízení na straně klienta vysoce kvalitní síťové spojení?](#link-quality) |
+| &nbsp; |Sítě |[Je klientská aplikace ve stejné oblasti jako účet úložiště?](#location) |
 | &nbsp; |Přímý přístup klientů |[Používáte sdílené přístupové podpisy (SAS) a sdílení prostředků mezi zdroji (CORS) k povolení přímého přístupu k Azure Storage?](#sas-and-cors) |
 | &nbsp; |Ukládání do mezipaměti |[Jsou data mezipaměti aplikace často přístupná a zřídka se mění?](#reading-data) |
 | &nbsp; |Ukládání do mezipaměti |[Je vaše aplikace dávkování aktualizace jejich ukládání do mezipaměti na klienta a potom jejich nahrání ve větších sadách?](#uploading-data-in-batches) |
@@ -42,7 +42,7 @@ Tento článek uspořádá osvědčené postupy pro výkon do kontrolního sezna
 | &nbsp; |Konfigurace rozhraní .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace rozhraní .NET |[Nakonfigurovali jste rozhraní .NET pro použití dostatečného počtu podprocesů v aplikacích .NET?](#increase-minimum-number-of-threads) |
 | &nbsp; |Paralelnost |[Ujistili jste se, že paralelismus je vhodně ohraničen, abyste nepřetížili schopnosti klienta nebo nepřiblížili se k cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů poskytovaných společností Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů poskytovaných společností Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásadu opakování s exponenciálním zpětným omezením pro omezení chyb a časového nastavení?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyhýbá se vaše aplikace opakování neopakovatelných chyb?](#non-retryable-errors) |
 | &nbsp; |Kopírování objektů BLOB |[Kopírujete objekty BLOB co nejefektivnějším způsobem?](#blob-copy-apis) |
@@ -115,7 +115,7 @@ Můžete postupovat podle některých doporučených postupů ke snížení čet
   
 - Další informace o schématu dělení používaném ve službě Azure Storage najdete v [tématu Azure Storage: Vysoce dostupná služba cloudového úložiště se silnou konzistencí](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 Fyzická síťová omezení aplikace může mít významný dopad na výkon. V následujících částech jsou popsána některá omezení, se kterými se mohou uživatelé setkat.  
 
@@ -125,7 +125,7 @@ Fyzická síťová omezení aplikace může mít významný dopad na výkon. V n
 
 #### <a name="throughput"></a>Propustnost
 
-Pro šířku pásma, problém je často možnosti klienta. Větší instance Azure mají síťové karty s větší kapacitou, takže byste měli zvážit použití větší instance nebo více virtuálních počítačů, pokud potřebujete vyšší limity sítě z jednoho počítače. Pokud přistupujete k Azure Storage z místní aplikace, platí stejné pravidlo: porozumět síťovým možnostem klientského zařízení a síťovému připojení k umístění Azure Storage a buď je podle potřeby vylepšit, nebo navrhnout své aplikace pro práci v rámci svých schopností.
+Pro šířku pásma, problém je často možnosti klienta. Větší instance Azure mají síťové karty s větší kapacitou, takže byste měli zvážit použití větší instance nebo více virtuálních počítačů, pokud potřebujete vyšší limity sítě z jednoho počítače. Pokud přistupujete k Azure Storage z místní aplikace, platí stejné pravidlo: pochopit síťové možnosti klientského zařízení a síťové připojení k umístění Azure Storage a buď je podle potřeby vylepšit, nebo navrhnout aplikaci tak, aby fungovala v rámci svých možností.
 
 #### <a name="link-quality"></a>Kvalita propojení
 
@@ -267,7 +267,7 @@ Chcete-li rychle nahrávat objekty BLOB, nejprve zjistěte, zda budete nahrávat
 Chcete-li rychle nahrát jeden velký objekt blob, klientská aplikace můžete nahrát své bloky nebo stránky paralelně, s ohledem na škálovatelnost cíle pro jednotlivé objekty BLOB a účet úložiště jako celek. Klientské knihovny Azure Storage podporují paralelní nahrávání. Následující vlastnosti můžete například použít k určení počtu souběžných požadavků povolených v rozhraní .NET nebo Java. Klientské knihovny pro jiné podporované jazyky poskytují podobné možnosti.
 
 - Pro rozhraní .NET nastavte vlastnost [BlobRequestOptions.ParallelOperationThreadCount.](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)
-- Pro Jazyk Java/Android volejte metodu [BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount).](/java/api/com.microsoft.azure.storage.blob._blob_request_options.setconcurrentrequestcount)
+- Pro Jazyk Java/Android volejte metodu [BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount).](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount)
 
 ### <a name="upload-many-blobs-quickly"></a>Rychlé nahrání mnoha objektů BLOB
 

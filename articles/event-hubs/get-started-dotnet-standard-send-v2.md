@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: d7d697e3ea4b1b683275d53f6e407396f474b37b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7bb9d3ce4c80761362c1ea564f6a632bc7a7f68a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462016"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398288"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Odesílání událostí do a přijímání událostí z Centra událostí Azure – .NET Core (Azure.Messaging.EventHubs) 
 Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je z centra událostí pomocí **knihovny Azure.Messaging.EventHubs** .NET Core. 
@@ -29,7 +29,7 @@ Tento rychlý start ukazuje, jak odesílat události do centra událostí a při
 
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud s Azure Event Hubs tečujete, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
+Pokud s Azure Event Hubs tenete nováčkem, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
 
 Chcete-li tento rychlý start dokončit, potřebujete následující požadavky:
 
@@ -118,6 +118,9 @@ Tato část ukazuje, jak vytvořit konzolovou aplikaci .NET Core pro odesílán�
 Tato část ukazuje, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí procesoru událostí. Procesor událostí zjednodušuje příjem událostí z centra událostí správou trvalých kontrolních bodů a paralelních příjemů z těchto center událostí. Procesor událostí je přidružen k určitému centru událostí a skupině spotřebitelů. Přijímá události z více oddílů v centru událostí a předává je delegátovi obslužné rutiny pro zpracování pomocí kódu, který zadáte. 
 
 
+> [!NOTE]
+> Pokud používáte azure zásobníku, tato platforma může podporovat jinou verzi sady Storage Blob SDK než ty, které jsou obvykle k dispozici v Azure. Například pokud používáte [ve verzi Azure Stack Hub 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze pro službu Storage je verze 2017-11-09. V takovém případě kromě následujících kroků v této části budete muset také přidat kód pro cílrozhraní API služby úložiště verze 2017-11-09. Příklad, jak cílit na konkrétní verzi rozhraní API úložiště, najdete [v této ukázce na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). Další informace o verzích služeb Azure Storage, které jsou podporované v centru Azure Stack Hub, najdete v centru [Azure Stack Hub: Rozdíly a důležité informace](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Vytvoření úložiště Azure a kontejneru objektů blob
 V tomto rychlém startu použijete Azure Storage jako úložiště kontrolních bodů. Podle těchto kroků vytvořte účet Azure Storage. 
 
@@ -125,7 +128,7 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolních 
 2. [Vytvoření kontejneru objektů blob](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Poznamenejte si připojovací řetězec a název kontejneru. Budete je používat v přijím kódu. 
+    Poznamenejte si připojovací řetězec a název kontejneru. Použijete je v přijídač. 
 
 
 ### <a name="create-a-project-for-the-receiver"></a>Vytvoření projektu pro příjemce
