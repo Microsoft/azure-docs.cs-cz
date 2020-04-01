@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939097"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
 
-Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete například vytvořit webovou aplikaci Azure a k ní budou mít přístup uživatelé pomocí webové\.contoso.com nebo contoso.com jako plně kvalifikovaný název domény (FQDN).
+Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete například vytvořit webovou aplikaci Azure a nechat\.uživatele k ní přistupovat pomocí www contoso.com nebo contoso.com jako plně kvalifikovaného názvu domény (Plně kvalifikovaný název domény).
 
 > [!NOTE]
 > V tomto kurzu se jako příklad používá doména contoso.com. Doménu contoso.com nahraďte vlastním názvem domény.
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 > * Testování vlastních názvů hostitele
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Musíte mít k dispozici název domény pro testování, který můžete hostovat v Azure DNS. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
+* K testování, které můžete hostovat ve službě Azure DNS, musíte mít k dispozici název domény. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 * [Vytvořit plán služby App Service](../app-service/app-service-web-get-started-html.md) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 
 * Vytvořte v Azure DNS zónu DNS a prostřednictvím svého registrátora ji delegujte na Azure DNS.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Služba App Services používá tento záznam jenom při konfiguraci, když potřebuje ověřit, že vám vlastní doména opravdu patří. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
 
 > [!NOTE]
-> Pokud chcete ověřit název domény, ale nechcete směrovat provozní provoz do webové aplikace, stačí zadat záznam TXT pro krok ověření.  Ověření kromě záznamu TXT nevyžaduje i záznam typu A ani CNAME.
+> Pokud chcete ověřit název domény, ale ne směrovat produkční provoz do webové aplikace, stačí zadat záznam TXT pro krok ověření.  Ověření nevyžaduje záznam A nebo CNAME kromě záznamu TXT.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,9 +173,9 @@ set-AzWebApp `
 Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://<you domain name>` .
 
 > [!NOTE]
-> Ujistěte se, že jste zahrnuli předponu `http://`. v opačném případě se může váš prohlížeč pokusit předpovědět adresu URL.
+> Ujistěte se, `http://` že jste zahrnuli předponu, jinak se váš prohlížeč může pokusit předpovědět adresu URL pro vás!
 
-Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Například:
 
 ![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 
@@ -189,4 +189,4 @@ Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, můžete odstran
 Naučte se vytvářet privátní zóny Azure DNS.
 
 > [!div class="nextstepaction"]
-> [Začínáme s privátními zónami Azure DNS v prostředí PowerShell](private-dns-getstarted-powershell.md)
+> [Začínáme s privátními zónami DNS Azure pomocí PowerShellu](private-dns-getstarted-powershell.md)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e0b4bcac8494f136dde21b03422e12b72cecb8f3
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366434"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475224"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Principy výstupů z Azure Stream Analytics
 
@@ -58,7 +58,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popis pro vytv
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Popisný název používaný v dotazech k nasměrování výstupu dotazu do této databáze. |
-| Databáze | Název databáze, do které odesíláte výstup. |
+| databáze | Název databáze, do které odesíláte výstup. |
 | Název serveru | Název serveru SQL Database. Pro azure sql database spravované instance je nutné zadat port 3342. Například *sampleserver.public.database.windows.net,3342* |
 | Uživatelské jméno | Uživatelské jméno, které má přístup pro zápis do databáze. Stream Analytics podporuje pouze ověřování SQL. |
 | Heslo | Heslo pro připojení k databázi. |
@@ -188,7 +188,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Název tabulky |Název tabulky. Tabulka se vytvoří, pokud neexistuje. |
 | Klíč oddílu |Název výstupního sloupce, který obsahuje klíč oddílu. Klíč oddílu je jedinečný identifikátor pro oddíl v tabulce, který tvoří první část primárního klíče entity. Je to hodnota řetězce, která může mít velikost až 1 KB. |
 | Klíč řádku |Název výstupního sloupce, který obsahuje klíč řádku. Klíč řádku je jedinečný identifikátor pro entitu v rámci oddílu. Tvoří druhou část primárního klíče entity. Klíč řádku je hodnota řetězce, která může mít velikost až 1 kb. |
-| Velikost dávky |Počet záznamů pro dávkovou operaci. Výchozí hodnota (100) je dostatečná pro většinu úloh. Další podrobnosti o úpravách tohoto nastavení naleznete ve [specifikaci Operace dávky tabulky.](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) |
+| Velikost dávky |Počet záznamů pro dávkovou operaci. Výchozí hodnota (100) je dostatečná pro většinu úloh. Další podrobnosti o úpravách tohoto nastavení naleznete ve [specifikaci Operace dávky tabulky.](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation) |
 
 ## <a name="service-bus-queues"></a>Fronty služby Service Bus
 
@@ -252,7 +252,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstupu Azure Cosmos
 | Možnost importu | Zvolte vybrat **Cosmos DB z předplatného** nebo **poskytněte nastavení Cosmos DB ručně**.
 | Account ID | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB. |
 | Klíč účtu | Sdílený přístupový klíč pro účet Azure Cosmos DB. |
-| Databáze | Název databáze Azure Cosmos DB. |
+| databáze | Název databáze Azure Cosmos DB. |
 | Název kontejneru | Název kontejneru, který má být použit, který musí existovat v Cosmos DB. Příklad:  <br /><ul><li> _MyContainer_: Kontejner s názvem "MyContainer" musí existovat.</li>|
 | ID dokumentu |Nepovinný parametr. Název pole ve výstupních událostech, který se používá k určení primárního klíče, na kterém jsou založeny operace vložení nebo aktualizace.
 
@@ -342,18 +342,18 @@ Azure Stream Analytics používá dávky proměnné velikosti ke zpracování ud
 
 Následující tabulka vysvětluje některé důležité informace pro dávkování výstupu:
 
-| Typ výstupu | Maximální velikost zprávy | Optimalizace velikosti dávky |
+| Typ výstupu |    Maximální velikost zprávy | Optimalizace velikosti dávky |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Viz [Limity úložiště datových jezer](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). | Použijte až 4 MB na operaci zápisu. |
 | Azure SQL Database | Konfigurovatelné pomocí maximálního počtu dávek. Ve výchozím nastavení je 10 000 a 100 minimálních řádků na jednu hromadnou vložení.<br />Viz [Limity Azure SQL](../sql-database/sql-database-resource-limits.md). |  Každá dávka je zpočátku hromadně vložena s maximálním počtem dávek. Dávka je rozdělena na polovinu (do minimálního počtu dávek) na základě opakovatelných chyb z SQL. |
 | Azure Blob Storage | Viz [Limity úložiště Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Maximální velikost bloku objektů blob je 4 MB.<br />Maximální počet objektů blob je 50 000. |
-| Azure Event Hubs  | 256 KB nebo 1 MB na zprávu. <br />Viz [Omezení centra událostí](../event-hubs/event-hubs-quotas.md). |  Pokud není zarovnáno dělení vstupu a výstupu, každá `EventData` událost je zabalena jednotlivě a odeslána v dávce až do maximální velikosti zprávy. K tomu dochází také v [případě, že jsou použity vlastní vlastnosti metadat.](#custom-metadata-properties-for-output) <br /><br />  Když je zarovnáno dělení vstupu a výstupu, `EventData` je do jedné instance zabaleno více událostí až do maximální velikosti zprávy a odesláno. |
+| Azure Event Hubs    | 256 KB nebo 1 MB na zprávu. <br />Viz [Omezení centra událostí](../event-hubs/event-hubs-quotas.md). |    Pokud není zarovnáno dělení vstupu a výstupu, každá `EventData` událost je zabalena jednotlivě a odeslána v dávce až do maximální velikosti zprávy. K tomu dochází také v [případě, že jsou použity vlastní vlastnosti metadat.](#custom-metadata-properties-for-output) <br /><br />  Když je zarovnáno dělení vstupu a výstupu, `EventData` je do jedné instance zabaleno více událostí až do maximální velikosti zprávy a odesláno.    |
 | Power BI | Viz [Limity rozhraní API pro úložiště Power BI](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Viz [Limity úložiště Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Výchozí hodnota je 100 entit na jednu transakci. Podle potřeby ji můžete nakonfigurovat na menší hodnotu. |
-| Fronta služby Azure Service Bus   | 256 KB za zprávu pro úroveň Standard, 1 MB pro úroveň Premium.<br /> Viz [Omezení sběrnice](../service-bus-messaging/service-bus-quotas.md). | Pro každou zprávu použijte jednu událost. |
+| Fronta služby Azure Service Bus    | 256 KB za zprávu pro úroveň Standard, 1 MB pro úroveň Premium.<br /> Viz [Omezení sběrnice](../service-bus-messaging/service-bus-quotas.md). | Pro každou zprávu použijte jednu událost. |
 | Téma služby Azure Service Bus | 256 KB za zprávu pro úroveň Standard, 1 MB pro úroveň Premium.<br /> Viz [Omezení sběrnice](../service-bus-messaging/service-bus-quotas.md). | Pro každou zprávu použijte jednu událost. |
-| Azure Cosmos DB   | Viz [Limity Db služby Azure Cosmos](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Velikost dávky a četnost zápisu se dynamicky upravují na základě odpovědí Azure Cosmos DB. <br /> Z Stream Analytics neexistují žádná předem stanovená omezení. |
-| Azure Functions   | | Výchozí velikost dávky je 262 144 bajtů (256 kB). <br /> Výchozí počet událostí na dávku je 100. <br /> Velikost dávky je konfigurovatelná a lze ji zvýšit nebo snížit v [možnostech výstupu](#azure-functions)Stream Analytics .
+| Azure Cosmos DB    | Viz [Limity Db služby Azure Cosmos](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Velikost dávky a četnost zápisu se dynamicky upravují na základě odpovědí Azure Cosmos DB. <br /> Z Stream Analytics neexistují žádná předem stanovená omezení. |
+| Azure Functions    | | Výchozí velikost dávky je 262 144 bajtů (256 kB). <br /> Výchozí počet událostí na dávku je 100. <br /> Velikost dávky je konfigurovatelná a lze ji zvýšit nebo snížit v [možnostech výstupu](#azure-functions)Stream Analytics .
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

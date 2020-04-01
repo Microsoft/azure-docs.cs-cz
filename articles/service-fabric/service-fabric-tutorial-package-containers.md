@@ -1,5 +1,5 @@
 ---
-title: Balení a nasazení kontejnerů
+title: Balení a nasazování kontejnerů
 description: V tomto kurzu se dozvíte, jak pomocí Yeomanu vygenerovat definici aplikace Azure Service Fabric a jak aplikaci zabalit.
 author: suhuruli
 ms.topic: tutorial
@@ -7,15 +7,15 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252752"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
 
-Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na generování šablon vygenerována definice aplikace Service Fabricu. Tuto aplikaci je pak možné použít k nasazení kontejnerů do Service Fabricu. V tomto kurzu se naučíte:
+Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na generování šablon vygenerována definice aplikace Service Fabricu. Tuto aplikaci je pak možné použít k nasazení kontejnerů do Service Fabricu. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Nainstalovat Yeoman
@@ -25,7 +25,7 @@ Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na
 > * Nasadit a spustit aplikaci
 > * Vyčistit aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Použijeme image kontejneru odeslané do služby Azure Container Registry, které jsme vytvořili v [části 1](service-fabric-tutorial-create-container-images.md) tohoto kurzu.
 * Musí být [nastavené](service-fabric-tutorial-create-container-images.md) linuxové vývojové prostředí.
@@ -118,7 +118,7 @@ Přihlaste se k instanci ACR. Dokončete operaci pomocí příkazu **az acr logi
 az acr login --name <acrName>
 ```
 
-Příkaz po dokončení vrátí zprávu **Login Succeeded** (Přihlášení proběhlo úspěšně).
+Příkaz vrátí **zprávu Úspěšné přihlášení** po dokončení.
 
 Pak spuštěním následujícího příkazu získejte heslo vašeho registru kontejneru. Pomocí tohoto hesla ověřuje ACR službu Service Fabric při načítání imagí kontejneru.
 
@@ -217,7 +217,7 @@ V tomto bodě tohoto kurzu je šablona pro aplikaci balíčku služby k dispozic
 
 ## <a name="create-a-service-fabric-cluster"></a>Vytvoření clusteru Service Fabric
 
-Pokud chcete nasadit aplikaci do Azure, potřebujete cluster Service Fabric, ve kterém bude aplikace spuštěná. Následující příkazy vytvoří cluster s pěti uzly v Azure.  Příkazy také vytvoří certifikát podepsaný svým držitelem, přidá ho do trezoru klíčů a stáhne certifikát místně jako soubor PEM. Nový certifikát se používá k zabezpečení clusteru při jeho nasazení a slouží k ověřování klientů.
+Pokud chcete nasadit aplikaci do Azure, potřebujete cluster Service Fabric, ve kterém bude aplikace spuštěná. Následující příkazy vytvoří cluster s pěti uzlovými počítači v Azure.  Příkazy také vytvoří certifikát podepsaný svým držitelem, přidá jej do trezoru klíčů a stáhne certifikát místně jako soubor PEM. Nový certifikát se používá k zabezpečení clusteru při nasazení a používá se k ověřování klientů.
 
 ```azurecli
 #!/bin/bash
@@ -251,10 +251,10 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 ```
 
 > [!Note]
-> Webová front-end služba je nakonfigurovaná k naslouchání příchozímu provozu na portu 80. Ve výchozím nastavení je na virtuálních počítačích clusteru a nástroji pro vyrovnávání zatížení Azure otevřený port 80.
+> Webová front-end služba je nakonfigurovaná k naslouchání příchozímu provozu na portu 80. Ve výchozím nastavení port 80 je otevřený na virtuálních počítačích clusteru a v azure balancer.
 >
 
-Další informace o vytvoření vlastního clusteru najdete v tématu [Vytvoření clusteru Service Fabric v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Další informace o vytváření vlastního clusteru najdete [v tématu Vytvoření clusteru Service Fabric v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Vytvoření a nasazení aplikace do clusteru
 
@@ -272,11 +272,11 @@ Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContain
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
+Otevřete prohlížeč a přejděte do\/aplikace Service Fabric Explorer na adrese http: /containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
 
 ![Service Fabric Explorer][sfx]
 
-Pokud se chcete připojit ke spuštěné aplikaci, otevřete webový prohlížeč a pokračujte na adresu URL clusteru – například http:\//containertestcluster.eastus.cloudapp.azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
+Chcete-li se připojit ke spuštěné aplikaci, otevřete webový prohlížeč\/a přejděte na adresu URL clusteru - například http: /containertestcluster.eastus.cloudapp.azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
 
 ![aplikacevoting][votingapp]
 

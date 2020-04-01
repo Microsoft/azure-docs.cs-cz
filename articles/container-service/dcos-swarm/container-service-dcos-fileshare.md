@@ -1,5 +1,5 @@
 ---
-title: (NEPOUŽÍVANÉ) Sdílení souborů pro cluster Azure DC/OS
+title: (ZASTARALÉ) Sdílená složka pro cluster Azure DC/OS
 description: Vytvoření sdílené složky a její připojení ke clusteru DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60480380"
 ---
-# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(NEPOUŽÍVANÉ) Vytvořit a připojit sdílenou složku na clusteru DC/OS
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(ZASTARALÉ) Vytvoření a připojení sdílené složky do clusteru řadiče domény/operačního systému
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -35,7 +35,7 @@ Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spu�
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Vytvoření sdílené složky v Microsoft Azure
 
-Než začnete používat sdílenou složku Azure s clusterem ACS DC/OS, je potřeba vytvořit účet úložiště a sdílenou složku. Spuštěním následujícího skriptu vytvořte úložiště a sdílenou složku. Aktualizujte parametry s těmi, která z vašeho prostředí.
+Než začnete používat sdílenou složku Azure s clusterem ACS DC/OS, je potřeba vytvořit účet úložiště a sdílenou složku. Spuštěním následujícího skriptu vytvořte úložiště a sdílenou složku. Aktualizujte parametry s těmi z vašeho prostředí.
 
 ```azurecli-interactive
 # Change these four parameters
@@ -142,7 +142,7 @@ sh ./getNodesRunScript.sh
 
 Sdílená složka je teď na každém uzlu clusteru dostupná na adrese `/mnt/share/dcosshare`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se pomocí následujících kroků zpřístupnila sdílená složka Azure pro cluster DC/OS:
 

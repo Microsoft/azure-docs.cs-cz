@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Kurz Azure Container Service – škálování aplikace
+title: (ZASTARALÉ) Kurz služby Kontejnerová služba Azure – škálovat aplikace
 description: Kurz Azure Container Service – Škálování aplikace
 author: dlepow
 ms.service: container-service
@@ -8,22 +8,22 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273992"
 ---
-# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>ZASTARALÉ Škálování Kubernetes lusků a Kubernetes infrastruktury
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(ZASTARALÉ) Scale Kubernetes lusky a Kubernetes infrastruktury
 
 > [!TIP]
-> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: škálování aplikací ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
+> Aktualizovanou verzi tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes ve službě Azure Container Service a nasadili jste aplikaci Azure Vote. 
 
-V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci na více instancí a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů agentů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Mezi dokončené úlohy patří:
+V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů agentů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Mezi dokončené úlohy patří:
 
 > [!div class="checklist"]
 > * Ruční škálování podů Kubernetes
@@ -42,7 +42,7 @@ Pokud jste tyto kroky neprovedli a chcete si je projít, vraťte se ke [kurzu 1 
 
 Doposud máme nasazený front-end Azure Vote a instanci Redis, oboje s jedinou replikou. K ověření spusťte příkaz [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get).
 
-Cloud Shell v prohlížeči otevřete tak, že přejdete na [https://shell.azure.com](https://shell.azure.com) .
+Přejděte [https://shell.azure.com](https://shell.azure.com) na otevření cloudového prostředí ve vašem prohlížeči.
 
 ```console
 kubectl get pods

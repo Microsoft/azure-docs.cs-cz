@@ -6,32 +6,32 @@ ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
 ms.openlocfilehash: 7db80e9bf0bd864762a88680132d77a3c5d21f19
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77621098"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
-Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes v AKS a nasadili jste ukázkovou hlasovací aplikaci Azure. V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci na více instancí a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Získáte informace o těchto tématech:
+Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes v AKS a nasadíte ukázkovou aplikaci Azure Voting. V tomto kurzu, který je pátou částí sedmidílné série, budete škálovat pody v této aplikaci a vyzkoušíte si jejich automatické škálování. Naučíte se také, jak škálovat počet uzlů virtuálního počítače Azure, aby se změnila kapacita clusteru pro hostování úloh. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Škálování uzlů Kubernetes
 > * Ruční škálování podů Kubernetes, ve kterých se spouští vaše aplikace
 > * Konfigurace automatického škálování podů, ve kterých se spouští front-end aplikace
 
-V dalších kurzech se hlasová aplikace Azure aktualizuje na novou verzi.
+V dalších kurzech se aplikace Azure Vote aktualizuje na novou verzi.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
+V předchozích kurzech byla aplikace zabalena do bitové kopie kontejneru. Tato bitová kopie byla odeslána do registru kontejnerů Azure a vy jste vytvořili cluster AKS. Aplikace byla poté nasazena do clusteru AKS. Pokud jste tyto kroky neprovedli a chcete je sledovat, začněte s [kurzem 1 – Vytváření obrázků kontejnerů][aks-tutorial-prepare-app].
 
-Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento kurz vyžaduje, abyste spouštěli Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="manually-scale-pods"></a>Ruční škálování podů
 
-Při nasazení front-endu Azure Vote a instance Redis v předchozích kurzech se vytvořila jedna replika. Chcete-li zobrazit počet a stav lusků ve vašem clusteru, použijte příkaz [kubectl Get][kubectl-get] následujícím způsobem:
+Při nasazení front-endu Azure Vote a instance Redis v předchozích kurzech se vytvořila jedna replika. Pokud chcete zobrazit počet a stav podů ve vašem clusteru, použijte příkaz [kubectl get][kubectl-get] následujícím způsobem:
 
 ```console
 kubectl get pods
@@ -45,13 +45,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Pokud chcete ručně změnit počet lusků v nasazení *Azure – hlasování* , použijte příkaz [kubectl Scale][kubectl-scale] . Následující příklad zvýší počet podů front-endu na *5*:
+Pokud chcete ručně změnit počet podů v nasazení *azure-vote-front*, použijte příkaz [kubectl scale][kubectl-scale]. Následující příklad zvýší počet podů front-endu na *5*:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Spusťte [kubectl][kubectl-get] a znovu se zajistěte, aby AKS vytvořil další lusky. Asi za minutu budou další pody dostupné ve vašem clusteru:
+Spusťte [kubectl získat pody][kubectl-get] znovu ověřit, že AKS vytvoří další pody. Asi za minutu budou další pody dostupné ve vašem clusteru:
 
 ```console
 kubectl get pods
@@ -67,21 +67,21 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatické škálování podů
 
-Kubernetes podporuje [horizontální automatické škálování podů][kubernetes-hpa] pro úpravu počtu podů v nasazení v závislosti na využití procesoru nebo jiné vybrané metrice. [Server metriky][metrics-server] slouží k poskytování využití prostředků Kubernetes a je automaticky nasazen v clusterech AKS verze 1,10 a vyšší. Pokud chcete zobrazit verzi clusteru AKS, použijte příkaz [AZ AKS show][az-aks-show] , jak je znázorněno v následujícím příkladu:
+Kubernetes podporuje [horizontální automatické škálování podů][kubernetes-hpa] pro úpravu počtu podů v nasazení v závislosti na využití procesoru nebo jiné vybrané metrice. K poskytování využití prostředků v Kubernetes se používá [server metrik][metrics-server], který je automaticky nasazený v clusterech AKS verze 1.10 nebo novější. Pokud chcete zobrazit verzi clusteru AKS, použijte příkaz [az aks show][az-aks-show], jak je znázorněno v následujícím příkladu:
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
 ```
 
 > [!NOTE]
-> Pokud je váš cluster AKS menší než *1,10*, server metriky se neinstaluje automaticky. Pokud chcete nainstalovat, naklonujte `metrics-server` úložiště GitHub a nainstalujte ukázkové definice prostředků. Pokud si chcete zobrazit obsah těchto definicí YAML, přečtěte si téma [Server metrik pro Kuberenetes 1.8 +][metrics-server-github].
+> Pokud je cluster AKS menší než *1,10*, není server metrik automaticky nainstalován. Chcete-li nainstalovat, `metrics-server` klonovat úložiště GitHub a nainstalovat příklad definice prostředků. Obsah těchto definicí YAML si můžete zobrazit na stránce se [serverem metrik pro Kuberenetes 1.8+][metrics-server-github].
 > 
 > ```console
 > git clone https://github.com/kubernetes-incubator/metrics-server.git
 > kubectl create -f metrics-server/deploy/1.8+/
 > ```
 
-Chcete-li použít automatické škálování, všechny kontejnery v luskech a vaše lusky musí mít definované požadavky na procesor a omezení. V nasazení `azure-vote-front` kontejner front-endu již vyžádal 0,25 procesor, a to s limitem 0,5 CPU. Tyto požadavky na prostředky a omezení jsou definovány tak, jak je znázorněno v následujícím ukázkovém kódu:
+Chcete-li použít autoscaler, všechny kontejnery ve vašich podů a pody musí mít požadavky procesoru a limity definované. V `azure-vote-front` nasazení front-end kontejneru již požaduje procesor 0.25, s limitem 0,5 procesoru. Tyto požadavky na prostředky a omezení jsou definovány tak, jak je znázorněno v následujícím příkladu fragmentu:
 
 ```yaml
 resources:
@@ -91,13 +91,13 @@ resources:
      cpu: 500m
 ```
 
-Následující příklad používá příkaz [kubectl AutoScale][kubectl-autoscale] k automatickému škálování počtu lusků v nasazení v *Azure – hlasování* . Pokud průměrné využití procesoru napříč všemi lusky překročí 50% jejich vyžádaného využití, přizpůsobuje se automatické škálování až do maximálního počtu *10* instancí. Pro nasazení je pak definováno minimálně *3* instance:
+Následující příklad využívá příkaz [kubectl autoscale][kubectl-autoscale] k automatickému škálování počtu podů v nasazení *azure-vote-front*. Pokud průměrné využití procesoru ve všech podech překročí 50 % jejich požadované využití, autoscaler zvýší pody až na maximálně *10* instancí. Pro nasazení je pak definovány minimálně *3* instance:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Případně můžete vytvořit soubor manifestu, který definuje chování automatického škálování a omezení prostředků. Následuje příklad souboru manifestu s názvem `azure-vote-hpa.yaml`.
+Případně můžete vytvořit soubor manifestu k definování chování automatického škálování a omezení prostředků. Následuje příklad souboru manifestu `azure-vote-hpa.yaml`s názvem .
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -128,7 +128,7 @@ spec:
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 ```
 
-Použijte `kubectl apply` pro použití automatického škálování definovaného v souboru manifestu `azure-vote-hpa.yaml`.
+Slouží `kubectl apply` k použití automatického škálovače definovaného v souboru manifestu. `azure-vote-hpa.yaml`
 
 ```
 kubectl apply -f azure-vote-hpa.yaml
@@ -147,7 +147,7 @@ Po několika minutách se díky minimálnímu zatížení aplikace Azure Vote po
 
 ## <a name="manually-scale-aks-nodes"></a>Ruční škálování uzlů AKS
 
-Pokud jste cluster Kubernetes vytvořili pomocí příkazů v předchozím kurzu, má dva uzly. Pokud ve vašem clusteru plánujete více nebo méně úloh kontejneru, můžete počet uzlů upravit ručně.
+Pokud jste vytvořili cluster Kubernetes pomocí příkazů v předchozím kurzu, má dva uzly. Pokud ve vašem clusteru plánujete více nebo méně úloh kontejneru, můžete počet uzlů upravit ručně.
 
 Následující příklad zvýší počet uzlů v clusteru Kubernetes s názvem *myAKSCluster* na tři. Dokončení tohoto příkazu trvá několik minut.
 
@@ -155,7 +155,7 @@ Následující příklad zvýší počet uzlů v clusteru Kubernetes s názvem *
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
 
-Po úspěšném škálování clusteru se výstup podobá následujícímu příkladu:
+Po úspěšném škálování clusteru je výstup podobný následujícímu příkladu:
 
 ```
 "agentPoolProfiles": [

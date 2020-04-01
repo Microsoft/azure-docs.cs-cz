@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytvoření připojení ExpressRoute pomocí Azure Virtual WAN
-description: V tomto kurzu se naučíte používat Azure Virtual WAN k vytváření připojení ExpressRoute k prostředím Azure a místním prostředím.
+title: Kurz – vytvoření připojení ExpressRoute pomocí azure virtuální sítě WAN
+description: V tomto kurzu se dozvíte, jak pomocí azure virtuální sítě WAN vytvořit připojení ExpressRoute k Azure a místním prostředím.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,90 +9,90 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
 ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209422"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: Vytvoření přidružení ExpressRoute pomocí azure virtuální sítě WAN
 
-V tomto kurzu se dozvíte, jak pomocí virtuální sítě WAN se připojit k prostředkům v Azure přes okruh ExpressRoute. Další informace o virtuálních sítích WAN a virtuálních sítích WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
+Tento kurz ukazuje, jak používat virtuální WAN pro připojení k prostředkům v Azure přes okruh ExpressRoute. Další informace o prostředcích virtuální sítě WAN a virtuální sítě WAN naleznete v [tématu Přehled virtuální sítě WAN](virtual-wan-about.md).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě WAN
-> * Vytvoření centra a brány
+> * Vytvoření rozbočovače a brány
 > * Připojení virtuální sítě k rozbočovači
-> * Připojení okruhu k bráně centra
+> * Připojení okruhu k bráně rozbočovače
 > * Test připojení
 > * Změna velikosti brány
-> * Inzerování výchozí trasy
+> * Inzerce výchozí trasy
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
-* Máte virtuální síť, ke které se chcete připojit. Ověřte, že se žádná z podsítí místních sítí nepřekrývá s virtuálními sítěmi, ke kterým se chcete připojit. Pokud chcete vytvořit virtuální síť v Azure Portal, přečtěte si [rychlý Start](../virtual-network/quick-create-portal.md).
+* Máte virtuální síť, ke které se chcete připojit. Ověřte, zda se žádná z podsítí místních sítí nepřekrývá s virtuálními sítěmi, ke kterým se chcete připojit. Pokud chcete vytvořit virtuální síť na webu Azure Portal, přečtěte si [úvodní příručku](../virtual-network/quick-create-portal.md).
 
-* Vaše virtuální síť nemá žádné brány virtuální sítě. Pokud má vaše virtuální síť bránu (buď VPN, nebo ExpressRoute), musíte odebrat všechny brány. Tato konfigurace vyžaduje, aby se virtuální sítě místo toho připojovaly k virtuální bráně WAN hub.
+* Virtuální síť nemá žádné brány virtuální sítě. Pokud vaše virtuální síť má bránu (vpn nebo ExpressRoute), musíte odebrat všechny brány. Tato konfigurace vyžaduje, aby virtuální sítě byly připojeny místo toho k bráně centra Virtuální WAN.
 
-* Zařiďte rozsah IP adres pro oblast vašeho rozbočovače. Centrum je virtuální síť, kterou vytváří a používá virtuální síť WAN. Rozsah adres, který zadáte pro centrum, se nemůže překrývat s žádnou ze stávajících virtuálních sítí, ke kterým se připojujete. Taky se nesmí překrývat s rozsahy adres, ke kterým se připojujete v místním prostředí. Pokud neznáte rozsahy IP adres nacházející se v konfiguraci vaší místní sítě, zajistěte koordinaci s někým, kdo vám poskytne tyto podrobnosti.
+* Zařiďte rozsah IP adres pro oblast vašeho rozbočovače. Rozbočovač je virtuální síť, která je vytvořena a používávirtuální WAN. Rozsah adres, který zadáte pro rozbočovač, se nemůže překrývat s žádnou z existujících virtuálních sítí, ke kterým se připojujete. Taky se nesmí překrývat s rozsahy adres, ke kterým se připojujete v místním prostředí. Pokud nejste obeznámeni s rozsahy IP adres umístěnými v místní konfiguraci sítě, koordinujte je s někým, kdo vám tyto podrobnosti může poskytnout.
 
-* Okruh ExpressRoute musí být okruh Premium, aby se mohl připojit k bráně centra.
+* Okruh ExpressRoute musí být obvod Premium pro připojení k bráně rozbočovače.
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="openvwan"></a>Vytvoření virtuální sítě WAN
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>Vytvoření virtuální sítě WAN
 
 V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 
-1. Přejděte na stránku Virtual WAN. Na portálu klikněte na **+ Vytvořit prostředek**. Do vyhledávacího pole zadejte **virtuální síť WAN** a vyberte Enter.
-2. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN kliknutím na **vytvořit** otevřete stránku vytvořit síť WAN.
-3. Na stránce **vytvořit síť WAN** na kartě **základy** vyplňte následující pole:
+1. Přejděte na stránku Virtuální wan. Na portálu klikněte na **+ Vytvořit prostředek**. Do vyhledávacího pole zadejte **virtuální wan** a vyberte Enter.
+2. Z výsledků vyberte **virtuální wan.** Na stránce Virtuální wan kliknutím na **Vytvořit** otevřete stránku Vytvořit wan.
+3. Na stránce **Vytvořit wan** vyplňte na kartě **Základy** následující pole:
 
    ![Create WAN (Vytvořit síť WAN)](./media/virtual-wan-expressroute-portal/createwan.png)
 
    * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.
    * **Resource Group** (Skupina prostředků) – vytvořte novou nebo použijte existující.
-   * **Umístění skupiny prostředků** – vyberte umístění prostředku z rozevíracího seznamu. Síť WAN je globální prostředek, takže se nenachází v určité oblasti. Přesto je ale potřeba oblast vybrat, abyste mohli snáz spravovat a vyhledávat prostředek sítě WAN, který vytvoříte.
-   * **Název** – zadejte název, který chcete zavolat do sítě WAN.
-   * **Typ** – vyberte **standardní**. Nemůžete vytvořit ExpressRoute bránu pomocí základní SKU.
-4. Po dokončení vyplňování polí vyberte **zkontrolovat + vytvořit**.
-5. Po úspěšném ověření vyberte **vytvořit** a vytvořte virtuální síť WAN.
+   * **Umístění skupiny prostředků** – z rozevíracího souboru zvolte umístění prostředků. Síť WAN je globální prostředek, takže se nenachází v určité oblasti. Přesto je ale potřeba oblast vybrat, abyste mohli snáz spravovat a vyhledávat prostředek sítě WAN, který vytvoříte.
+   * **Název** – Zadejte název, který chcete volat do sítě WAN.
+   * **Typ** - Vyberte **standardní**. Nelze vytvořit bránu ExpressRoute pomocí základní skladové položky.
+4. Po vyplnění polí vyberte **Zkontrolovat +Vytvořit**.
+5. Jakmile ověření projde, vyberte **Vytvořit** a vytvořte virtuální WAN.
 
-## <a name="hub"></a>Vytvoření virtuálního rozbočovače a brány
+## <a name="create-a-virtual-hub-and-gateway"></a><a name="hub"></a>Vytvoření virtuálního rozbočovače a brány
 
-Virtuální rozbočovač je virtuální síť, kterou vytváří a používá virtuální síť WAN. Může obsahovat různé brány, například VPN a ExpressRoute. V této části vytvoříte bránu ExpressRoute pro virtuální rozbočovač. Bránu můžete vytvořit buď při [vytváření nového virtuálního rozbočovače](#newhub), nebo můžete bránu vytvořit v [existujícím centru](#existinghub) úpravou. 
+Virtuální rozbočovač je virtuální síť, která je vytvořena a používávirtuální WAN. Může obsahovat různé brány, například VPN a ExpressRoute. V této části vytvoříte bránu ExpressRoute pro virtuální rozbočovač. Bránu můžete vytvořit buď při [vytváření nového virtuálního rozbočovače](#newhub), nebo ji můžete vytvořit v [existujícím rozbočovači](#existinghub) úpravou. 
 
-Brány ExpressRoute se zřídí v jednotkách 2 GB/s. 1 jednotka škálování = 2 GB/s podporuje až 10 jednotek škálování = 20 GB/s. Vytvoření virtuálního rozbočovače a brány může trvat přibližně 30 minut.
+Brány ExpressRoute jsou zřazeny v jednotkách 2 Gb/s. 1 jednotka škálování = 2 Gb/s s podporou až 10 jednotek v měřítku = 20 Gb/s. Virtuální rozbočovač a brána se mohou plně vytvořit přibližně 30 minut.
 
-### <a name="newhub"></a>Vytvoření nového virtuálního rozbočovače a brány
+### <a name="to-create-a-new-virtual-hub-and-a-gateway"></a><a name="newhub"></a>Vytvoření nového virtuálního rozbočovače a brány
 
-Vytvoří nové virtuální centrum. Po vytvoření centra se vám bude účtovat centrum, i když nepřipojíte žádné weby.
+Vytvořte nové virtuální rozbočovač. Po vytvoření rozbočovače vám bude účtován poplatek za centrum, i když nepřipojíte žádné weby.
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-### <a name="existinghub"></a>Vytvoření brány v existujícím centru
+### <a name="to-create-a-gateway-in-an-existing-hub"></a><a name="existinghub"></a>Vytvoření brány v existujícím rozbočovači
 
-Bránu můžete vytvořit také v existujícím centru úpravou.
+Bránu můžete také vytvořit v existujícím rozbočovači úpravou.
 
-1. Přejděte do virtuálního centra, které chcete upravit, a vyberte ho.
+1. Přejděte do virtuálního rozbočovače, který chcete upravit, a vyberte ho.
 2. Na stránce **Upravit virtuální rozbočovač** zaškrtněte políčko **Zahrnout bránu ExpressRoute**.
-3. Vyberte **Potvrdit** a potvrďte provedené změny. Vytvoření prostředků rozbočovače a centra bude trvat přibližně 30 minut.
+3. Chcete-li potvrdit změny, vyberte **potvrdit.** Trvá přibližně 30 minut, než se prostředky centra a centra plně vytvoří.
 
-   ![existující centrum](./media/virtual-wan-expressroute-portal/edithub.png "Úprava centra")
+   ![stávající rozbočovač](./media/virtual-wan-expressroute-portal/edithub.png "úprava rozbočovače")
 
 ### <a name="to-view-a-gateway"></a>Zobrazení brány
 
-Jakmile vytvoříte bránu ExpressRoute, můžete zobrazit podrobnosti o bráně. Přejděte do centra, vyberte **ExpressRoute**a podívejte se na bránu.
+Po vytvoření brány ExpressRoute můžete zobrazit podrobnosti brány. Přejděte do rozbočovače, vyberte **ExpressRoute**a zobrazte bránu.
 
-![Zobrazit bránu](./media/virtual-wan-expressroute-portal/viewgw.png "Zobrazit bránu")
+![Zobrazit bránu](./media/virtual-wan-expressroute-portal/viewgw.png "zobrazit bránu")
 
-## <a name="connectvnet"></a>Připojení virtuální sítě k centru
+## <a name="connect-your-vnet-to-the-hub"></a><a name="connectvnet"></a>Připojení virtuální sítě k rozbočovači
 
-V této části vytvoříte připojení partnerských vztahů mezi centrem a virtuální sítí. Uvedený postup zopakujte pro všechny virtuální sítě, které chcete připojit.
+V této části vytvoříte připojení partnerského vztahu mezi rozbočovačem a virtuální sítí. Uvedený postup zopakujte pro všechny virtuální sítě, které chcete připojit.
 
 1. Na stránce vaší virtuální sítě WAN klikněte na **Virtual network connection** (Připojení k virtuální síti).
 2. Na stránce připojení k virtuální síti klikněte na **+Add connection** (Přidat připojení).
@@ -101,57 +101,57 @@ V této části vytvoříte připojení partnerských vztahů mezi centrem a vir
     * **Connection name** (Název připojení) – zadejte název připojení.
     * **Hubs** (Rozbočovače) – vyberte rozbočovač, který chcete k tomuto připojení přidružit.
     * **Subscription** (Předplatné) – ověřte předplatné.
-    * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nemůže mít již existující bránu virtuální sítě (ani VPN ani ExpressRoute).
+    * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nemůže mít již existující bránu virtuální sítě (ani VPN, ani ExpressRoute).
 
-## <a name="connectcircuit"></a>Připojení okruhu k bráně centra
+## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Připojení okruhu k bráně rozbočovače
 
-Po vytvoření brány můžete k ní připojit [okruh ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . Okruhy ExpressRoute Premium, které jsou v ExpressRoute Global Reach – podporovaná umístění se můžou připojit k virtuální síti WAN ExpressRoute Gateway.
+Po vytvoření brány k ní můžete připojit [okruh ExpressRoute.](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) Okruhy ExpressRoute Premium, které jsou v místech s podporou globálního dosahu ExpressRoute, se mohou připojit k bráně Virtual WAN ExpressRoute.
 
-### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Připojení okruhu k bráně centra
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Připojení okruhu k bráně rozbočovače
 
-Na portálu otevřete stránku **virtuální rozbočovač – > připojení – > ExpressRoute** . Pokud máte ve svém předplatném přístup k okruhu ExpressRoute, v seznamu okruhů se zobrazí okruh, který chcete použít. Pokud nevidíte žádné okruhy, ale byly k dispozici autorizační klíč a identifikátor URI rovnocenného okruhu, můžete uplatnit a propojit okruh. Další informace najdete v tématu [připojení pomocí autorizačního klíče](#authkey).
+Na portálu přejděte na stránku **Virtual hub -> Connectivity -> ExpressRoute.** Pokud máte přístup v předplatném okruhu ExpressRoute, uvidíte okruh, který chcete použít v seznamu obvodů. Pokud nevidíte žádné obvody, ale byly opatřeny autorizačním klíčem a identifikátorem URI okruhu rovnocenných dat, můžete jej uplatnit a připojit. Viz [Připojení uplatněním autorizačního klíče](#authkey).
 
-1. Vyberte okruh.
-2. Vyberte **připojit okruhy**.
+1. Vyberte obvod.
+2. Vyberte **Připojit obvody .**
 
-   ![připojit okruhy](./media/virtual-wan-expressroute-portal/cktconnect.png "připojit okruhy")
+   ![připojení obvodů](./media/virtual-wan-expressroute-portal/cktconnect.png "připojení obvodů")
 
-### <a name="authkey"></a>Připojení pomocí autorizačního klíče
+### <a name="to-connect-by-redeeming-an-authorization-key"></a><a name="authkey"></a>Připojení uplatněním autorizačního klíče
 
-Použijte autorizační klíč a identifikátor URI okruhu, který jste zadali za účelem připojení.
+Použijte autorizační klíč a identifikátor URI okruhu, který jste zadali k připojení.
 
-1. Na stránce ExpressRoute klikněte na **+ uplatnit autorizační klíč** .
+1. Na stránce ExpressRoute klikněte na **+Uplatnit autorizační klíč.**
 
-   ![uplatnit](./media/virtual-wan-expressroute-portal/redeem.png "uplatnit")
-2. Na stránce autorizační klíč uplatnit zadejte hodnoty.
+   ![Uplatnit](./media/virtual-wan-expressroute-portal/redeem.png "Uplatnit")
+2. Na stránce Uplatnit autorizační klíč vyplňte hodnoty.
 
-   ![hodnoty klíčů pro uplatnění](./media/virtual-wan-expressroute-portal/redeemkey2.png "hodnoty klíčů pro uplatnění")
-3. Vyberte **Přidat** a přidejte klíč.
-4. Zobrazit okruh. Provedený okruh zobrazuje pouze název (bez typu, poskytovatele a další informace), protože je v jiném předplatném než uživatel.
+   ![uplatnit klíčové hodnoty](./media/virtual-wan-expressroute-portal/redeemkey2.png "uplatnit klíčové hodnoty")
+3. Chcete-li přidat klíč, vyberte **Přidat.**
+4. Prohlédněte si obvod. Uplatněný okruh zobrazuje pouze jméno (bez typu, zprostředkovatele a další informace), protože je v jiném předplatném než uživatel.
 
 ## <a name="to-test-connectivity"></a>Testování připojení
 
-Po navázání připojení okruhu bude stav připojení centra označovat "Toto centrum", což znamená, že připojení k bráně ExpressRoute hub je navázáno. Počkejte přibližně 5 minut, než otestujete připojení od klienta za vaším okruhem ExpressRoute, například virtuální počítač ve virtuální síti, kterou jste vytvořili dříve.
+Po navázání připojení okruhu bude stav připojení rozbočovače označovat "tento rozbočovač", což znamená, že připojení je navázáno k bráně expressroute rozbočovače. Počkejte přibližně 5 minut, než otestujete připojení z klienta za okruhem ExpressRoute, například virtuální počítač ve virtuální síti, kterou jste vytvořili dříve.
 
-Pokud máte weby připojené k virtuální síti WAN VPN Gateway ve stejném centru jako bránu ExpressRoute, můžete mít obousměrné připojení mezi koncovými body VPN a ExpressRoute. Dynamické směrování (BGP) je podporováno. ASN bran v centru jsou pevně dané a v tuto chvíli nelze upravovat.
+Pokud máte weby připojené k bráně Virtuální SÍTĚ VPN ve stejném rozbočovači jako brána ExpressRoute, můžete mít obousměrné připojení mezi koncovými body VPN a ExpressRoute. Dynamické směrování (BGP) je podporováno. ASN bran v rozbočovači je pevná a nelze upravovat v tomto okamžiku.
 
 ## <a name="to-change-the-size-of-a-gateway"></a>Změna velikosti brány
 
-Pokud chcete změnit velikost brány ExpressRoute, vyhledejte v centru ExpressRoute bránu a v rozevíracím seznamu vyberte jednotky škálování. Uložte změnu. Aktualizace brány centra bude trvat přibližně 30 minut.
+Pokud chcete změnit velikost brány ExpressRoute, vyhledejte bránu ExpressRoute uvnitř rozbočovače a v rozevíracím souboru vyberte jednotky škálování. Uložte si drobné. Aktualizace brány rozbočovače bude trvat přibližně 30 minut.
 
-![změnit velikost brány](./media/virtual-wan-expressroute-portal/changescale.png "změnit velikost brány")
+![změna velikosti brány](./media/virtual-wan-expressroute-portal/changescale.png "změna velikosti brány")
 
-## <a name="to-advertise-default-route-00000-to-endpoints"></a>Inzerování výchozí trasy 0.0.0.0/0 koncovým bodům
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>Inzerce výchozí trasy 0.0.0.0/0 do koncových bodů
 
-Pokud chcete, aby virtuální rozbočovač Azure inzeroval výchozí trasu 0.0.0.0/0 do ExpressRoute koncových bodů, budete muset povolit možnost "rozšířit výchozí trasu".
+Pokud chcete, aby virtuální centrum Azure inzeroval výchozí trasu 0.0.0.0/0 do koncových bodů ExpressRoute, budete muset povolit "Propagovat výchozí trasu".
 
-1. Vyberte **> okruhu...-> upravit připojení**.
+1. Vyberte **připojení Pro úpravy ->...->**.
 
    ![Upravit připojení](./media/virtual-wan-expressroute-portal/defaultroute1.png "Upravit připojení")
 
-2. Vyberte **Povolit** pro rozšíření výchozí trasy.
+2. Vyberte **Povolit,** chcete-li šířit výchozí trasu.
 
-   ![Rozšířit výchozí trasu](./media/virtual-wan-expressroute-portal/defaultroute2.png "Rozšířit výchozí trasu")
+   ![Šíření výchozí trasy](./media/virtual-wan-expressroute-portal/defaultroute2.png "Šíření výchozí trasy")
 
 ## <a name="next-steps"></a>Další kroky
 

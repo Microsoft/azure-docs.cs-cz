@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: d2115b1dc7e9f3150e44eb5ee9417e88ebeaa279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370832"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474073"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Propojení sítě testovacího prostředí s virtuální virtuální sítí druhé strany ve službě Azure Lab Services 
 Tento článek obsahuje informace o partnerské síti testovacího prostředí s jinou sítí. 
@@ -38,6 +38,8 @@ Některé místní sítě jsou připojené k virtuální síti Azure buď prost�
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurovat v době vytvoření účtu testovacího prostředí
 Během vytváření nového účtu testovacího prostředí můžete vybrat existující virtuální síť, která se zobrazí v rozevíracím seznamu **virtuální sítě Peer** na kartě **Upřesnit.** Vybraná virtuální síť je připojená (partnerský vztah) k testovacím prostředím vytvořeným pod účtem testovacího prostředí. Všechny virtuální počítače v testovacích prostředích, které jsou vytvořeny po provedení této změny bude mít přístup k prostředkům v partnerské virtuální sítě. 
+
+K dispozici je také ustanovení poskytnout **rozsah adres** virtuálních počítačů pro testovací prostředí. Pokud je k dispozici rozsah adres, všechny virtuální počítače v testovacích prostředích v rámci účtu testovacího prostředí budou vytvořeny v tomto rozsahu adres. Rozsah adres by měl být v zápisu CIDR (např. 10.20.0.0/20) a neměl by se překrývat s existujícími rozsahy adres. Při poskytování rozsah adres, je důležité přemýšlet o počtu virtuálních počítačů, které budou vytvořeny v testovacích prostředích a poskytnout rozsah adres, aby se přizpůsobily, že. Pro daný rozsah se zobrazí počet laboratoří, které může pojmout.
 
 ![Výběr virtuální sítě pro druhou položku](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 

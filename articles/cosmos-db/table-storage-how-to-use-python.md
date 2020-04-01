@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Cosmos DB rozhraní API pro tabulky a úložiště tabulek Azure pomocí Pythonu
+title: Použití rozhraní Azure Cosmos DB Table API a úložiště tabulek Azure pomocí Pythonu
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: b3a6f4397ca1b8c56f06f6d967804c94096ee308
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770990"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí Pythonu
@@ -37,7 +37,7 @@ Při procházení scénářů v této ukázce můžete využít [referenční in
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
-- [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5, nebo 3.6
+- [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 nebo 3.6
 - [Sada Table SDK služby Azure Cosmos DB pro Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Tato sada SDK umožňuje připojení ke službě Azure Table Storage i k rozhraní Table API služby Azure Cosmos DB.
 - [Účet služby Azure Storage](../storage/common/storage-account-create.md) nebo [účet služby Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
 
@@ -56,7 +56,7 @@ Po vytvoření účtu služby Storage je dalším krokem instalace [sady Table S
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>Import tříd TableService a Entity
 
-Chcete-li pracovat s entitami v Azure Table service v Pythonu, použijte třídy [TableService][py_TableService] a [entity][py_Entity] . Importujte obě třídy přidáním tohoto kódu na začátek souboru Pythonu:
+Při práci s entitami ve službě Azure Table Storage v Pythonu se používají třídy [TableService][py_TableService] a [Entity][py_Entity]. Importujte obě třídy přidáním tohoto kódu na začátek souboru Pythonu:
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -81,7 +81,7 @@ table_service = TableService(connection_string='DefaultEndpointsProtocol=https;A
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
 
-Chcete-li vytvořit tabulku, zavolejte [CREATE_TABLE][py_create_table] .
+Zavoláním metody [create_table][py_create_table] vytvořte tabulku.
 
 ```python
 table_service.create_table('tasktable')
@@ -89,9 +89,9 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-Chcete-li přidat entitu, nejprve vytvořte objekt, který představuje vaši entitu, a pak objekt předejte [metodě TableService. insert_entity][py_TableService]. Objekt entity může být slovníkem nebo objektem typu [entity][py_Entity]a definuje názvy a hodnoty vlastností vaší entity. Každá entita musí kromě případných dalších vlastností, které pro ni definujete, obsahovat i požadované vlastnosti [PartitionKey a RowKey](#partitionkey-and-rowkey).
+Entitu přidáte tak, že nejprve vytvoříte objekt reprezentující entitu a tento objekt pak předáte do metody [TableService.insert_entity][py_TableService]. Objektem entity, který definuje názvy a hodnoty vlastností entity, může být slovník nebo objekt typu [Entita][py_Entity]. Každá entita musí kromě případných dalších vlastností, které pro ni definujete, obsahovat i požadované vlastnosti [PartitionKey a RowKey](#partitionkey-and-rowkey).
 
-Tento příklad vytvoří objekt Dictionary reprezentující entitu a poté předá tuto metodu [insert_entity][py_insert_entity] pro přidání do tabulky:
+Tento příklad vytvoří objekt slovníku reprezentující entitu a pak ho předá do metody [insert_entity][py_insert_entity], která ho přidá do tabulky:
 
 ```python
 task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
@@ -99,7 +99,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.insert_entity('tasktable', task)
 ```
 
-Tento příklad vytvoří objekt [entity][py_Entity] a potom jej předá metodě [insert_entity][py_insert_entity] , aby jej bylo možné přidat do tabulky:
+Tento příklad vytvoří objekt [Entity][py_Entity] a pak ho předá do metody [insert_entity][py_insert_entity], která ho přidá do tabulky:
 
 ```python
 task = Entity()
@@ -118,7 +118,7 @@ Table Storage používá **PartitionKey** k inteligentní distribuci entit tabul
 
 ## <a name="update-an-entity"></a>Aktualizace entity
 
-Chcete-li aktualizovat všechny hodnoty vlastností entity, zavolejte metodu [update_entity][py_update_entity] . Tento příklad ukazuje nahrazení stávající entity její aktualizovanou verzí:
+Pokud chcete aktualizovat všechny hodnoty vlastností entity, zavolejte metodu [update_entity][py_update_entity]. Tento příklad ukazuje nahrazení stávající entity její aktualizovanou verzí:
 
 ```python
 task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
@@ -126,7 +126,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.update_entity('tasktable', task)
 ```
 
-Pokud aktualizovaná entita ještě neexistuje, operace aktualizace selže. Pokud chcete entitu Uložit, ať už existuje, nebo ne, použijte [insert_or_replace_entity][py_insert_or_replace_entity]. V následujícím příkladu první volání nahradí stávající entitu. Druhé volání vloží novou entitu, protože v tabulce neexistuje žádná entita se zadanými hodnotami PartitionKey a RowKey.
+Pokud aktualizovaná entita ještě neexistuje, operace aktualizace selže. Pokud chcete entitu uložit bez ohledu na to, jestli existuje nebo ne, použijte metodu [insert_or_replace_entity][py_insert_or_replace_entity]. V následujícím příkladu první volání nahradí stávající entitu. Druhé volání vloží novou entitu, protože v tabulce neexistuje žádná entita se zadanými hodnotami PartitionKey a RowKey.
 
 ```python
 # Replace the entity created earlier
@@ -141,11 +141,11 @@ table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> Metoda [update_entity][py_update_entity] nahrazuje všechny vlastnosti a hodnoty existující entity, které můžete použít také k odebrání vlastností z existující entity. Pomocí metody [merge_entity][py_merge_entity] můžete aktualizovat existující entitu s novými nebo upravenými hodnotami vlastností, aniž byste entitu zcela nahradili.
+> Metoda [update_entity][py_update_entity] nahradí všechny vlastnosti a hodnoty stávající entity, což můžete využít i k odebrání vlastností ze stávající entity. Pomocí metody [merge_entity][py_merge_entity] můžete aktualizovat stávající entitu s použitím nových nebo upravených hodnot vlastností, aniž byste entitu museli zcela nahradit.
 
 ## <a name="modify-multiple-entities"></a>Úpravy více entit
 
-Pokud chcete zajistit atomické zpracování požadavku službou Table Storage, můžete odeslat více operací společně v dávce. Nejprve použijte třídu [TableBatch][py_TableBatch] k přidání více operací do jedné dávky. Dále zavolejte [TableService][py_TableService]. [commit_batch][py_commit_batch] odeslat operace v atomické operaci. Všechny entity, které se mají v dávce upravit, musí být ve stejném oddílu.
+Pokud chcete zajistit atomické zpracování požadavku službou Table Storage, můžete odeslat více operací společně v dávce. Nejprve pomocí třídy [TableBatch][py_TableBatch] přidejte několik operací do jedné dávky. Pak zavoláním metody [TableService][py_TableService].[commit_batch][py_commit_batch] odešlete operace v rámci atomické operace. Všechny entity, které se mají v dávce upravit, musí být ve stejném oddílu.
 
 Tento příklad v dávce přidá dvě entity najednou:
 
@@ -176,7 +176,7 @@ with table_service.batch('tasktable') as batch:
 
 ## <a name="query-for-an-entity"></a>Dotaz na entitu
 
-Chcete-li zadat dotaz na entitu v tabulce, předejte jí PartitionKey a RowKey na [TableService][py_TableService]. Metoda [get_entity][py_get_entity] .
+Pokud chcete zadat dotaz na entitu v tabulce, předejte její PartitionKey a RowKey do metody [TableService][py_TableService].[get_entity][py_get_entity].
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')
@@ -214,7 +214,7 @@ for task in tasks:
 
 ## <a name="delete-an-entity"></a>Odstranění entity
 
-Odstraňte entitu předáním svých **PartitionKey** a **RowKey** do metody [delete_entity][py_delete_entity] .
+Entitu odstraníte tak, že předáte její **PartitionKey** a **RowKey** do metody [delete_entity][py_delete_entity].
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
@@ -222,7 +222,7 @@ table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 
 ## <a name="delete-a-table"></a>Odstranění tabulky
 
-Pokud už nepotřebujete tabulku ani žádnou z entit, zavolejte metodu [delete_table][py_delete_table] , aby se tabulka trvale odstranila z Azure Storage.
+Pokud už tabulku nebo jakékoli entity v ní nepotřebujete, zavoláním metody [delete_table][py_delete_table] trvale odstraňte tabulku ze služby Azure Storage.
 
 ```python
 table_service.delete_table('tasktable')

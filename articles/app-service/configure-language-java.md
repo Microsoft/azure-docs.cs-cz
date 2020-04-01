@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b21061e8a939b91c637ef05bbe6375c0b3f82e8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383969"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475215"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace Windows Java pro azure app service
 
@@ -74,7 +74,7 @@ Azure App Service podporuje mimo pole ladění a přizpůsobení prostřednictv�
 
 - [Konfigurace nastavení aplikace](configure-common.md#configure-app-settings)
 - [Nastavení vlastní domény](app-service-web-tutorial-custom-domain.md)
-- [Konfigurace vazeb SSL](configure-ssl-bindings.md)
+- [Konfigurace vazeb TLS](configure-ssl-bindings.md)
 - [Přidání sítě CDN](../cdn/cdn-add-to-web-app.md)
 - [Konfigurace webu Kudu](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
@@ -183,7 +183,7 @@ Chcete-li tuto funkci zakázat, vytvořte nastavení aplikace s názvem `WEBSITE
 
 ### <a name="configure-tlsssl"></a>Konfigurace protokolu TLS/SSL
 
-Postupujte podle pokynů v [secure vlastní název DNS s vazbou SSL ve službě Azure App Service](configure-ssl-bindings.md) nahrát existující certifikát SSL a vázat jej na název domény vaší aplikace. Ve výchozím nastavení aplikace bude stále povolit připojení HTTP postupujte podle konkrétních kroků v kurzu k vynucení SSL a TLS.
+Postupujte podle pokynů v [secure vlastní název DNS s vazbou TLS ve službě Azure App Service](configure-ssl-bindings.md) nahrát existující certifikát TLS/SSL a svázat jej s názvem domény vaší aplikace. Ve výchozím nastavení aplikace bude stále povolit připojení HTTP postupujte podle konkrétních kroků v kurzu k vynucení SSL a TLS.
 
 ### <a name="use-keyvault-references"></a>Použití odkazů KeyVault
 
@@ -228,7 +228,7 @@ Tato část ukazuje, jak připojit java aplikace nasazené ve službě Azure App
 
 Tyto pokyny platí pro všechna připojení databáze. Zástupné symboly budete muset vyplnit názvem třídy ovladače vybrané databáze a souborem JAR. Za předpokladu, je tabulka s názvy tříd a ovladače ke stažení pro běžné databáze.
 
-| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "Nezávislé na platformě") |

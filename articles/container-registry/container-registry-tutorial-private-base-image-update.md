@@ -1,35 +1,35 @@
 ---
-title: Kurz – spuštění image sestavení buildu pomocí soukromé základní image aktualizace
-description: V tomto kurzu nakonfigurujete úlohu Azure Container Registry pro automatické spouštění sestavení imagí kontejneru v cloudu, když se aktualizuje základní image v jiném privátním registru služby Azure Container Registry.
+title: Kurz – aktivace sestavení bitové kopie soukromou aktualizací základního obrazu
+description: V tomto kurzu nakonfigurujete úlohu registru kontejneru Azure tak, aby automaticky aktivovala sestavení image kontejneru v cloudu při aktualizaci základní image v jiném privátním registru kontejnerů Azure.
 ms.topic: tutorial
 ms.date: 01/22/2020
 ms.openlocfilehash: e8aae8a91288d470c801dc4d82cfa6b44369d832
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77617699"
 ---
-# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Kurz: automatizace sestavení imagí kontejneru při aktualizaci základní image v jiném privátním registru kontejneru 
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Kurz: Automatizace image kontejneru se staví při aktualizaci základní bitové kopie v jiném registru privátního kontejneru 
 
-ACR úlohy podporují automatizované sestavení imagí při [aktualizaci základní image](container-registry-tasks-base-images.md)kontejneru, například při opravě operačního systému nebo rozhraní aplikace v jedné z vašich základních imagí. 
+Úlohy ACR podporují sestavení automatické bitové kopie při [aktualizaci základní bitové kopie](container-registry-tasks-base-images.md)kontejneru , například při opravě operačního systému nebo rozhraní aplikace v jedné ze základních bitových kopií. 
 
-V tomto kurzu se naučíte, jak vytvořit úlohu ACR, která aktivuje sestavení v cloudu, když se základní image kontejneru odešle do jiného služby Azure Container Registry. Můžete také vyzkoušet kurz vytvoření úlohy ACR, která spustí sestavení image, když se do [stejného registru kontejnerů Azure](container-registry-tutorial-base-image-update.md)vloží základní image.
+V tomto kurzu se dozvíte, jak vytvořit úlohu ACR, která aktivuje sestavení v cloudu, když je základní bitová kopie kontejneru posunuta do jiného registru kontejnerů Azure. Můžete také zkusit kurz k vytvoření úlohy ACR, která aktivuje sestavení bitové kopie při zasunutí základní bitové kopie do [stejného registru kontejnerů Azure](container-registry-tutorial-base-image-update.md).
 
 V tomto kurzu:
 
 > [!div class="checklist"]
-> * Sestavení základní image v základním registru
-> * Vytvoření úlohy sestavení aplikace v jiném registru pro sledování základní image 
+> * Vytvoření základní bitové kopie v základním registru
+> * Vytvoření úlohy sestavení aplikace v jiném registru pro sledování základní bitové kopie 
 > * Aktualizovat základní image tak, aby aktivovala úlohu image aplikace
 > * Zobrazit aktivovanou úlohu
 > * Ověřit aktualizovanou image aplikace
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete rozhraní příkazového řádku Azure používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.68** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI][azure-cli].
+Pokud chcete používat Azure CLI místně, musíte mít nainstalovaný Azure CLI verze **2.0.68** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="complete-the-previous-tutorials"></a>Dokončení předchozích kurzů
 
@@ -40,17 +40,17 @@ Tento kurz předpokládá, že jste už dokončili kroky v prvních dvou kurzech
 * Klonování ukázkového úložiště
 * Vytvoření tokenu PAT GitHubu
 
-Pokud jste to ještě neudělali, před pokračováním dokončete následující kurzy:
+Pokud jste tak ještě neučinili, vyplňte před pokračováním následující kurzy:
 
 [Sestavení imagí kontejnerů v cloudu pomocí Azure Container Registry Tasks](container-registry-tutorial-quick-task.md)
 
 [Automatizace sestavení imagí kontejnerů pomocí Azure Container Registry Tasks](container-registry-tutorial-build-task.md)
 
-Kromě registru kontejneru vytvořeného pro předchozí kurzy je třeba vytvořit registr pro uložení základních imagí. Pokud chcete, vytvořte druhý registr v jiném umístění než původní registr.
+Kromě registru kontejneru vytvořeného pro předchozí kurzy je třeba vytvořit registr pro uložení základních bitových kopií. Pokud chcete, vytvořte druhý registr v jiném umístění než původní registr.
 
 ### <a name="configure-the-environment"></a>Konfigurace prostředí
 
-Tyto proměnné prostředí naplňte hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud tyto proměnné prostředí neplníte, je nutné ručně nahradit každou hodnotu, pokud se zobrazí v ukázkových příkazech.
+Tyto proměnné prostředí naplňte hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud tyto proměnné prostředí nenaplníte, je nutné ručně nahradit každou hodnotu všude tam, kde se zobrazí v ukázkových příkazech.
 
 ```azurecli-interactive
 BASE_ACR=<base-registry-name>   # The name of your Azure container registry for base images
@@ -61,33 +61,33 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ### <a name="base-image-update-scenario"></a>Scénář aktualizace základní image
 
-Tento kurz vás provede scénářem aktualizace základní image. Tento scénář odráží pracovní postup vývoje pro správu základních imagí v rámci společného soukromého registru kontejnerů při vytváření imagí aplikace v jiných registrech. Základní image mohou určovat běžné operační systémy a architektury používané týmem nebo dokonce i běžné součásti služby.
+Tento kurz vás provede scénářem aktualizace základní image. Tento scénář odráží pracovní postup vývoje pro správu základních bitových kopií ve společném registru privátníkontejner při vytváření bitových kopií aplikace v jiných registrech. Základní bitové kopie mohou určit běžné operační systémy a architektury používané týmem nebo dokonce běžné součásti služby.
 
-Například vývojáři, kteří vyvíjí image aplikace v jejich vlastních registrech, mají přístup k sadě základních imagí udržovaných v rámci společného základního registru. Základní registr může být v jiné oblasti nebo i geograficky replikovaný.
+Například vývojáři, kteří vyvíjejí bitové kopie aplikací ve svých vlastních registrech, mají přístup k sadě základních bitových kopií uchovávaných ve společném základním registru. Základní registr může být v jiné oblasti nebo dokonce geograficky replikován.
 
-[Ukázka kódu][code-sample] zahrnuje dva fázemi: obrázek aplikace a obrázek, který určuje jako základní. V následujících částech vytvoříte úlohu ACR, která automaticky aktivuje sestavení image aplikace, když je nová verze základní image vložena do jiného služby Azure Container Registry.
+[Vzorový kód][code-sample] zahrnuje dva soubory Dockerfile: image aplikace a image, na které je založená. V následujících částech vytvoříte úlohu ACR, která automaticky aktivuje sestavení bitové kopie aplikace, když je nová verze základní bitové kopie posunuta do jiného registru kontejnerů Azure.
 
-* [Souboru Dockerfile-App][dockerfile-app]: malá webová aplikace Node. js, která vykreslí statickou webovou stránku se zobrazením verze Node. js, na které je založena. Řetězec verze je simulovaný: zobrazuje obsah proměnné prostředí `NODE_VERSION`, která je definovaná v základní imagi.
+* [Dockerfile-app][dockerfile-app]: Jedná se o malou webovou aplikaci Node.js, která vykreslí statickou webovou stránku zobrazující verzi Node.js, na které je založena. Řetězec verze je simulovaný: zobrazuje obsah proměnné prostředí `NODE_VERSION`, která je definovaná v základní imagi.
 
-* [Souboru Dockerfile-Base][dockerfile-base]: obrázek, který `Dockerfile-app` určuje jako základní. Je sám o sobě založená na imagi [uzlu][base-node] a obsahuje proměnnou prostředí `NODE_VERSION`.
+* [Dockerfile-base][dockerfile-base]: Image, kterou `Dockerfile-app` specifikuje jako svou základní image. Je založená na imagi [Node][base-node] a zahrnuje proměnnou prostředí `NODE_VERSION`.
 
 V následujících částech vytvoříte úlohu, aktualizujete hodnotu `NODE_VERSION` v souboru Dockerfile základní image a potom použijete ACR Tasks k sestavení základní image. Když úloha ACR odešle do registru novou základní image, automaticky aktivuje sestavení image aplikace. Volitelně můžete spustit image kontejneru aplikace místně, abyste se mohli podívat na různé řetězce verze v sestavených imagích.
 
-V tomto kurzu vaše úloha ACR sestaví a nahraje image kontejneru aplikace zadanou v souboru Dockerfile. ACR úlohy mohou také spouštět [úlohy s více kroky](container-registry-tasks-multi-step.md), pomocí souboru YAML k definování kroků pro sestavení, vložení a volitelně testování více kontejnerů.
+V tomto kurzu úloha ACR vytvoří a odešle image kontejneru aplikace zadané v souboru Dockerfile. Úlohy ACR mohou také spouštět [vícekrokové úlohy](container-registry-tasks-multi-step.md)pomocí souboru YAML k definování kroků pro sestavení, nabízení a volitelné testování více kontejnerů.
 
 ## <a name="build-the-base-image"></a>Sestavit základní image
 
-Začněte vytvořením základní Image pomocí *rychlého úkolu*ACR Tasks pomocí [AZ ACR Build][az-acr-build]. Jak je popsáno v [prvním kurzu](container-registry-tutorial-quick-task.md) série, tímto postupem se nejen sestaví image, ale v případě úspěšného sestavení se odešle do registru kontejneru. V tomto příkladu je obrázek přesunut do registru základní image.
+Začněte vytvořením základní bitové kopie pomocí *rychlého úkolu*Úlohy ACR pomocí [sestavení az acr][az-acr-build]. Jak je popsáno v [prvním kurzu](container-registry-tutorial-quick-task.md) série, tímto postupem se nejen sestaví image, ale v případě úspěšného sestavení se odešle do registru kontejneru. V tomto příkladu je bitová kopie posunuta do registru základní bitové kopie.
 
 ```azurecli-interactive
 az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
 ```
 
-## <a name="create-a-task-to-track-the-private-base-image"></a>Vytvoření úlohy ke sledování privátní základní image
+## <a name="create-a-task-to-track-the-private-base-image"></a>Vytvoření úkolu pro sledování soukromé základní bitové kopie
 
-V dalším kroku vytvořte úlohu v registru imagí aplikace pomocí [AZ ACR Task Create][az-acr-task-create]a povolte [spravovanou identitu](container-registry-tasks-authentication-managed-identity.md). Spravovaná identita se používá v pozdějších krocích, takže se úkol ověřuje pomocí registru základní image. 
+Dále vytvořte úlohu v registru bitových obrázků aplikace s [vytvořením úlohy az acr][az-acr-task-create], která umožňuje [spravovanou identitu](container-registry-tasks-authentication-managed-identity.md). Spravovaná identita se používá v pozdějších krocích, aby se úloha ověřuje pomocí registru základní bitové kopie. 
 
-V tomto příkladu se používá identita přiřazená systémem, ale můžete pro určité scénáře vytvořit a povolit spravovanou identitu přiřazenou uživatelem. Podrobnosti najdete v tématu [ověřování mezi registry v úloze ACR pomocí identity spravované službou Azure](container-registry-tasks-cross-registry-authentication.md).
+Tento příklad používá systémem přiřazenou identitu, ale můžete vytvořit a povolit spravovanou identitu přiřazenou uživatelem pro určité scénáře. Podrobnosti najdete [v tématu ověřování mezi registry v úloze ACR pomocí identity spravované Azure](container-registry-tasks-cross-registry-authentication.md).
 
 ```azurecli-interactive
 az acr task create \
@@ -102,17 +102,17 @@ az acr task create \
 ```
 
 
-Tato úloha se podobá úkolu vytvořenému v [předchozím kurzu](container-registry-tutorial-build-task.md). Dává službě ACR Tasks pokyn aktivovat sestavení image, když se do úložiště určeného parametrem `--context` odešlou potvrzení. Zatímco souboru Dockerfile použitý k sestavení image v předchozím kurzu určuje veřejnou základní Image (`FROM node:9-alpine`), souboru Dockerfile v této úloze [souboru Dockerfile-App][dockerfile-app]určí základní image v registru základní Image:
+Tento úkol je podobný úkolu vytvořenému v [předchozím kurzu](container-registry-tutorial-build-task.md). Dává službě ACR Tasks pokyn aktivovat sestavení image, když se do úložiště určeného parametrem `--context` odešlou potvrzení. Zatímco Dockerfile slouží k vytvoření bitové kopie v předchozím`FROM node:9-alpine`kurzu určuje image veřejné základny ( ), Dockerfile v této úloze, [Dockerfile-app][dockerfile-app], určuje základní image v registru základní image:
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 ```
 
-Tato konfigurace usnadňuje simulaci opravy architektury v základní imagi později v tomto kurzu.
+Tato konfigurace usnadňuje simulaci opravy architektury v základní bitové kopii dále v tomto kurzu.
 
-## <a name="give-identity-pull-permissions-to-base-registry"></a>Udělení oprávnění pro získání identity základnímu registru
+## <a name="give-identity-pull-permissions-to-base-registry"></a>Udělení oprávnění k vyžádat identitu základnímu registru
 
-Pokud chcete, aby spravovaná oprávnění této úlohy vyčetla image z registru základní image, nejdřív spusťte [AZ ACR Task show][az-acr-task-show] a Získejte ID objektu služby identity. Pak spusťte příkaz [AZ ACR show][az-acr-show] , který získá ID prostředku základního registru:
+Chcete-li udělit oprávnění spravované identity úlohy k vyproštění bitových kopií z registru základní bitové kopie, [nejprve spusťte az acr task show,][az-acr-task-show] abyste získali ID instančního objektu identity. Potom spusťte [az acr show,][az-acr-show] abyste získali ID prostředku základního registru:
 
 ```azurecli-interactive
 # Get service principal ID of the task
@@ -122,7 +122,7 @@ principalID=$(az acr task show --name taskhelloworld --registry $ACR_NAME --quer
 baseregID=$(az acr show --name $BASE_ACR --query id --output tsv) 
 ```
  
-Přiřaďte k registru oprávnění vyžádané replikace spravované identity spuštěním funkce [AZ role Assignment Create][az-role-assignment-create]:
+Přiřazení oprávnění k vyžádat spravovanou identitu registru spuštěním [vytvoření přiřazení role az][az-role-assignment-create]:
 
 ```azurecli-interactive
 az role assignment create \
@@ -130,9 +130,9 @@ az role assignment create \
   --scope $baseregID --role acrpull 
 ```
 
-## <a name="add-target-registry-credentials-to-the-task"></a>Přidat do úlohy přihlašovací údaje cílového registru
+## <a name="add-target-registry-credentials-to-the-task"></a>Přidání cílových pověření registru k úkolu
 
-Spuštěním [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte do úlohy přihlašovací údaje. Předáním parametru `--use-identity [system]` označíte, že má spravovaná identita přiřazená systémem úlohy přístup k přihlašovacím údajům.
+Spusťte [az acr úkol pověření přidat][az-acr-task-credential-add] přidat pověření k úloze. Předajte `--use-identity [system]` parametr, který označuje, že systémově přiřazená spravovaná identita úkolu může přistupovat k pověřením.
 
 ```azurecli-interactive
 az acr task credential add \
@@ -142,9 +142,9 @@ az acr task credential add \
   --use-identity [system] 
 ```
 
-## <a name="manually-run-the-task"></a>Ručně spustit úlohu
+## <a name="manually-run-the-task"></a>Ruční spuštění úlohy
 
-K ruční aktivaci úlohy a sestavení image aplikace použijte [příkaz AZ ACR Task Run][az-acr-task-run] . Tento krok je potřeba, aby úkol sledovat závislost image aplikace na základní imagi.
+Pomocí [spuštění úlohy az acr][az-acr-task-run] můžete ručně spustit úlohu a vytvořit bitovou kopii aplikace. Tento krok je potřeba tak, aby úloha sleduje závislost image aplikace na základní bitové kopii.
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -156,13 +156,13 @@ Jakmile se úloha dokončí, poznamenejte si **ID spuštění** (například „
 
 Pokud pracujete místně (nejste v Cloud Shellu) a máte nainstalovaný Docker, spusťte kontejner, abyste zobrazili aplikaci vykreslenou ve webovém prohlížeči dříve, než opětovně sestavíte její základní image. Pokud Cloud Shell používáte, tuto část přeskočte (Cloud Shell nepodporuje `az acr login` ani `docker run`).
 
-Nejprve proveďte ověření ve vašem registru kontejneru pomocí [AZ ACR Login][az-acr-login]:
+Nejprve se ověřte do registru kontejnerů pomocí [přihlášení az acr][az-acr-login]:
 
 ```azurecli
 az acr login --name $ACR_NAME
 ```
 
-Teď pomocí `docker run` spusťte kontejner místně. Nahraďte **\<run-id\>** za ID spuštění z výstupu z předchozího kroku (například „da6“). V tomto příkladu je pojmenován kontejner `myapp` a obsahuje parametr `--rm`, který kontejner při zastavení odebere.
+Teď pomocí `docker run` spusťte kontejner místně. Nahraďte ** \<run-id\> ** s ID běhu, které se nachází ve výstupu z předchozího kroku (například "da6"). Tento příklad pojmenuje `myapp` kontejner `--rm` a obsahuje parametr odebrat kontejner u jeho zastavení.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
@@ -172,7 +172,7 @@ V prohlížeči přejděte na `http://localhost:8080`. Měli byste vidět čísl
 
 ![Snímek obrazovky ukázkové aplikace vykreslené v prohlížeči][base-update-01]
 
-Chcete-li zastavit a odebrat kontejner, spusťte následující příkaz:
+Chcete-li kontejner zastavit a vyjmout, spusťte následující příkaz:
 
 ```bash
 docker stop myapp
@@ -180,7 +180,7 @@ docker stop myapp
 
 ## <a name="list-the-builds"></a>Výpis sestavení
 
-V dalším kroku vypíšete úlohu, kterou ACR úlohy dokončily pro váš registr pomocí příkazu [AZ ACR Task list-běhy][az-acr-task-list-runs] :
+Dále pomocí příkazu [az acr task list-runs][az-acr-task-list-runs] vypište spuštění úloh, která služba ACR Tasks dokončila pro váš registr:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table
@@ -258,7 +258,7 @@ V prohlížeči přejděte na http://localhost:8081. Měli byste vidět aktualiz
 
 Důležité je uvědomit si, že jste aktualizovali **základní** image s novým číslem verze, ale novou verzi zobrazuje poslední sestavená image **aplikace**. Služba ACR Tasks převzala změnu základní image a automaticky znovu sestavila image aplikace.
 
-Chcete-li zastavit a odebrat kontejner, spusťte následující příkaz:
+Chcete-li kontejner zastavit a vyjmout, spusťte následující příkaz:
 
 ```bash
 docker stop updatedapp
@@ -266,7 +266,7 @@ docker stop updatedapp
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak pomocí úlohy automaticky aktivovat sestavení imagí kontejnerů při aktualizaci základní image. Teď přejděte k dalšímu kurzu, kde se dozvíte, jak aktivovat úlohy podle definovaného plánu.
+V tomto kurzu jste zjistili, jak pomocí úlohy automaticky aktivovat sestavení imagí kontejnerů při aktualizaci základní image. Nyní přejděte k dalšímu kurzu a zjistěte, jak aktivovat úlohy podle definovaného plánu.
 
 > [!div class="nextstepaction"]
 > [Spuštění úlohy podle plánu](container-registry-tasks-scheduled.md)

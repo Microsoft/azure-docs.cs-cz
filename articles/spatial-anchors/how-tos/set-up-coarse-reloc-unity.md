@@ -1,6 +1,6 @@
 ---
-title: Hrubá lokální v Unity
-description: Podrobné vysvětlení, jak vytvořit a najít kotvy s využitím hrubých místních nastavení v C#.
+title: Hrubá relokace v Jednotě
+description: Podrobné vysvětlení, jak vytvořit a vyhledat kotvy pomocí hrubé relokalizace v c#.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,13 +9,13 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 5c976bd020d37672c44c89113bf7786e1ccf141b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76548250"
 ---
-# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-c"></a>Jak vytvořit a najít kotvy s využitím hrubého rozmístění vC#
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-c"></a>Jak vytvořit a lokalizovat kotvy pomocí hrubé relocalizace v C #
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
@@ -25,16 +25,16 @@ ms.locfileid: "76548250"
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 
-Prostorové kotvy Azure můžou přidružit zařízení k datům snímače a umístit je na kotvy, které vytvoříte. Tato data je také možné použít k rychlému zjištění, zda jsou v zařízení ukotveny žádné kotvy. Další informace najdete v tématu [hrubá reprostředí](../concepts/coarse-reloc.md).
+Azure Spatial Anchors můžete přidružit data senzorů na zařízení, umístění dat senzoru s kotvy, které vytvoříte. Tato data lze také použít k rychlému určení, zda jsou v blízkosti zařízení nějaké kotvy. Další informace naleznete v tématu [Hrubá relokace](../concepts/coarse-reloc.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto průvodce se ujistěte, že máte následující:
+Chcete-li tuto příručku dokončit, ujistěte se, že máte:
 
-- Základní znalost C#.
-- Přečtěte si [Přehled prostorových kotev Azure](../overview.md).
-- Bylo dokončeno jedno z [5 minut rychlých startů](../index.yml).
-- Přečtěte si [postupy pro vytváření a hledání kotev](../create-locate-anchors-overview.md).
+- Základní znalost jazyka C#.
+- Přečtěte si [přehled prostorových kotev Azure](../overview.md).
+- Dokončenjeden z [5minutových rychlých startů](../index.yml).
+- Přečtěte si [prostřednictvím vytvořit a vyhledejte kotvy how-.](../create-locate-anchors-overview.md)
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

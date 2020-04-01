@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: vytvoření a otestování brány NAT – Azure PowerShell'
+title: 'Kurz: Vytvoření a testování brány NAT – Azure PowerShell'
 titlesuffix: Azure Virtual Network NAT
-description: V tomto kurzu se dozvíte, jak vytvořit bránu NAT pomocí Azure PowerShell a testovat službu NAT.
+description: Tento kurz ukazuje, jak vytvořit bránu NAT pomocí Azure PowerShellu a otestovat službu NAT
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -15,29 +15,29 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: 61cda5e61d14c4eeaf2d88483603707598b1c911
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79202218"
 ---
-# <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure PowerShell a testování služby NAT
+# <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure PowerShellu a testování služby NAT
 
-V tomto kurzu vytvoříte bránu NAT, která poskytuje odchozí připojení k virtuálním počítačům v Azure. Pokud chcete otestovat bránu NAT, nasadíte zdrojový a cílový virtuální počítač. Bránu NAT otestujete tak, že vytvoříte odchozí připojení k veřejné IP adrese. Tato připojení budou pocházet ze zdroje do cílového virtuálního počítače. Tento kurz nasadí zdroj a cíl ve dvou různých virtuálních sítích ve stejné skupině prostředků pro zjednodušení.
+V tomto kurzu vytvoříte bránu NAT, která zajistí odchozí připojení pro virtuální počítače v Azure. Chcete-li otestovat bránu NAT, nasadíte zdrojový a cílový virtuální počítač. Bránu NAT otestujete vytvořením odchozích připojení k veřejné IP adrese. Tato připojení budou pocházet ze zdroje do cílového virtuálního počítače. Tento kurz nasazuje zdroj a cíl ve dvou různých virtuálních sítích ve stejné skupině prostředků pro jednoduchost.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Tento kurz můžete dokončit pomocí Azure Cloud Shell nebo místně spustit příslušné příkazy.  Pokud jste Azure Cloud Shell nikdy nepoužili, měli byste se [Přihlásit nyní](https://shell.azure.com).
+Tento kurz můžete dokončit pomocí Azure Cloud Shell nebo spustit příslušné příkazy místně.  Pokud jste službu Azure Cloud Shell nikdy nepoužívali, měli byste [se přihlásit.](https://shell.azure.com)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 
-## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Následující příklad vytvoří skupinu prostředků s názvem **myResourceGroupNAT** v umístění **eastus2** :
+Následující příklad vytvoří skupinu prostředků s názvem **myResourceGroupNAT** v umístění **eastus2:**
 
 
 ```azurepowershell-interactive
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rsg -Location $loc
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-Pro přístup k Internetu potřebujete pro bránu NAT jednu nebo více veřejných IP adres. Pomocí [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPsource** v **myResourceGroupNAT**. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$publicIPsource** pro pozdější použití.
+Pro přístup k Internetu potřebujete jednu nebo více veřejných IP adres pro bránu NAT. Pomocí [funkce New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPsource** v **myResourceGroupNAT**. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$publicIPsource** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -64,9 +64,9 @@ $publicIPsource =
 New-AzPublicIpAddress -Name $pips -ResourceGroupName $rsg -AllocationMethod $alm -Location $loc -Sku $sku
 ```
 
-### <a name="create-a-public-ip-prefix"></a>Vytvoření předpony veřejné IP adresy
+### <a name="create-a-public-ip-prefix"></a>Vytvoření veřejné předpony IP
 
- Pomocí [New-AzPublicIpPrefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest) vytvořte prostředek předpony veřejné IP adresy s názvem **myPublicIPprefixsource** v **myResourceGroupNAT**.  Výsledek tohoto příkazu bude uložen v proměnné s názvem **$publicIPPrefixsource** pro pozdější použití.
+ Pomocí [funkce New-AzPublicIpPrefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest) vytvořte veřejný prostředek předpony IP s názvem **myPublicIPprefixsource** v **myResourceGroupNAT**.  Výsledek tohoto příkazu bude uložen v proměnné s názvem **$publicIPPrefixsource** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -79,11 +79,11 @@ New-AzPublicIpPrefix -Name $prips -ResourceGroupName $rsg -Location $loc -Prefix
 
 ### <a name="create-a-nat-gateway-resource"></a>Vytvoření prostředku brány NAT
 
-Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následující součásti služby NAT pomocí prostředku brány NAT:
-  - Veřejný fond IP adres a předponu veřejných IP adres, které se mají použít pro odchozí toky přeložené prostředkem brány NAT.
-  - Změňte časový limit nečinnosti z výchozí hodnoty 4 minuty na 10 minut.
+V této části je podrobně uvedeno, jak můžete vytvořit a nakonfigurovat následující součásti služby NAT pomocí prostředku brány NAT:
+  - Veřejný fond IP adres a veřejná předpona IP pro odchozí toky přeložené prostředkem brány NAT.
+  - Změňte časový limit nečinnosti z výchozí hodnoty 4 minut na 10 minut.
 
-Vytvořte globální bránu Azure NAT pomocí [New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway). Výsledkem tohoto příkazu je vytvoření prostředku brány s názvem **myNATgateway** , který používá veřejnou IP adresu **myPublicIPsource** a předponu veřejné IP adresy **myPublicIPprefixsource**. Časový limit nečinnosti je nastavený na 10 minut.  Výsledek tohoto příkazu bude uložen v proměnné s názvem **$natGateway** pro pozdější použití.
+Vytvořte globální bránu Azure NAT s [novou AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway). Výsledek tohoto příkazu vytvoří prostředek brány s názvem **myNATgateway,** který používá veřejnou IP adresu **myPublicIPsource** a veřejnou IP předponu **myPublicIPprefixsource**. Časový limit nečinnosti je nastaven na 10 minut.  Výsledek tohoto příkazu bude uložen v proměnné s názvem **$natGateway** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -95,17 +95,17 @@ $natGateway =
 New-AzNatGateway -Name $nnm -ResourceGroupName $rsg -PublicIpAddress $publicIPsource -PublicIpPrefix $publicIPPrefixsource -Location $loc -Sku $sku -IdleTimeoutInMinutes 10      
   ```
 
-V tomto okamžiku je brána NAT funkční a všechny, které chybí, je konfigurace, které podsítě virtuální sítě by měly používat.
+V tomto okamžiku je brána NAT funkční a jediné, co chybí, je konfigurace podsítí virtuální sítě, které by ji měly používat.
 
-## <a name="prepare-the-source-for-outbound-traffic"></a>Příprava zdroje na odchozí provoz
+## <a name="prepare-the-source-for-outbound-traffic"></a>Příprava zdroje pro odchozí provoz
 
-Provedeme vás instalací kompletního testovacího prostředí. Pomocí Open source nástrojů nastavíte test a ověříte bránu NAT. Začneme se zdrojem, který bude používat bránu NAT, kterou jsme vytvořili dříve.
+Provedeme vás nastavením úplného testovacího prostředí. K ověření brány NAT nastavíte test pomocí nástrojů s otevřeným zdrojovým kódem. Začneme se zdrojem, který bude používat bránu NAT, kterou jsme vytvořili dříve.
 
 ### <a name="configure-virtual-network-for-source"></a>Konfigurace virtuální sítě pro zdroj
 
 Vytvořte virtuální síť a přidružte podsíť k bráně.
 
-Vytvořte virtuální síť s názvem **myVnetsource** s podsítí s názvem **mySubnetsource** pomocí [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) v **myResourceGroupNAT** pomocí [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest). Adresní prostor IP adres pro virtuální síť je **192.168.0.0/16**. Podsíť ve virtuální síti je **192.168.0.0/24**.  Výsledek příkazů bude uložen v proměnných s názvem **$subnetsource** a **$vnetsource** pro pozdější použití.
+Vytvořte virtuální síť s názvem **myVnetsource** s podsítí s názvem **mySubnetsource** pomocí [nástroje New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) v **souboru myResourceGroupNAT** pomocí [programu New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest). Adresní prostor IP pro virtuální síť je **192.168.0.0/16**. Podsíť ve virtuální síti je **192.168.0.0/24**.  Výsledek příkazů bude uložen v proměnných s názvem **$subnetsource** a **$vnetsource** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -122,15 +122,15 @@ $vnetsource =
 New-AzVirtualNetwork -Name $vnm -ResourceGroupName $rsg -Location $loc -AddressPrefix $vpfx -Subnet $subnet
 ```
 
-Veškerý odchozí provoz do internetových cílů teď používá službu překladu adres (NAT).  Není nutné konfigurovat UDR.
+Veškerý odchozí provoz do internetových cílů nyní používá službu NAT.  Není nutné konfigurovat UDR.
 
-Než budeme moct otestovat bránu NAT, musíme vytvořit zdrojový virtuální počítač.  Pro přístup k tomuto virtuálnímu počítači z vnějšku přiřadíme prostředek veřejné IP adresy jako veřejnou IP adresu na úrovni instance. Tato adresa se používá jenom pro přístup k tomuto testu.  Ukážeme, jak má služba NAT přednost před jinými odchozími možnostmi.
+Než budeme moci otestovat bránu NAT, musíme vytvořit zdrojový virtuální počítač.  Přiřadíme prostředek veřejné IP adresy jako veřejnou IP adresu na úrovni instance pro přístup k tomuto virtuálnímu virtuálnímu jevu zvenčí. Tato adresa se používá pouze pro přístup k ní pro test.  Ukážeme, jak má služba NAT přednost před ostatními odchozími možnostmi.
 
-Tento virtuální počítač můžete také vytvořit bez veřejné IP adresy a vytvořit jiný virtuální počítač pro použití jako JumpBox bez veřejné IP adresy jako cvičení.
+Tento virtuální virtuální ms můžete také vytvořit bez veřejné IP adresy a vytvořit jiný virtuální virtuální virtuální< systém, který se použije jako jumpbox bez veřejné IP adresy jako cvičení.
 
-### <a name="create-public-ip-for-source-vm"></a>Vytvoření veřejné IP adresy pro zdrojový virtuální počítač
+### <a name="create-public-ip-for-source-vm"></a>Vytvoření veřejné IP adresy pro zdrojový virtuální virtuální ms
 
-Vytvoříme veřejnou IP adresu, která se použije pro přístup k virtuálnímu počítači.  Pomocí [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPVM** v **myResourceGroupNAT**.  Výsledek tohoto příkazu bude uložen v proměnné s názvem **$publicIpsourceVM** pro pozdější použití.
+Vytvoříme veřejnou IP adresu, která se použije pro přístup k virtuálnímu virtuálnímu mněmu.  Pomocí [funkce New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPVM** v **myResourceGroupNAT**.  Výsledek tohoto příkazu bude uložen v proměnné s názvem **$publicIpsourceVM** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -143,9 +143,9 @@ $publicIpsourceVM =
 New-AzPublicIpAddress -Name $pipvm -ResourceGroupName $rsg -AllocationMethod $alm -Location $loc -sku $sku
 ```
 
-### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>Vytvoření NSG a zpřístupnění koncového bodu SSH pro virtuální počítač
+### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>Vytvoření nsg a vystavit koncový bod SSH pro virtuální ms
 
-Vzhledem k tomu, že standardní veřejné IP adresy jsou ve výchozím nastavení zabezpečené, vytvoříme NSG, který umožní příchozí přístup pro SSH. Služba NAT má na vědomí směr toku. Tato NSG se nebude používat pro odchozí připojení, když je ve stejné podsíti nakonfigurovaná brána NAT. Pomocí [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) vytvořte prostředek NSG s názvem **myNSGsource**. Pomocí [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) vytvořte pravidlo NSG pro přístup SSH s názvem **SSH** v **myResourceGroupNAT**. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$nsgsource** pro pozdější použití.
+Vzhledem k tomu, že standardní veřejné IP adresy jsou ve výchozím nastavení zabezpečené, vytvoříme soubor NSG, který povolí příchozí přístup pro ssh. Služba NAT je informována o směru toku. Tento soubor nsg nebude použit pro odchozí po nakonfigurovánou bránu NAT ve stejné podsíti. Pomocí [skupiny New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) vytvořte prostředek skupiny zabezpečení sítě s názvem **myNSGsource**. Pomocí [funkce New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) vytvořte pravidlo skupiny zabezpečení sítě pro přístup SSH s názvem **ssh** v **aplikaci myResourceGroupNAT**. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$nsgsource** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -164,9 +164,9 @@ $nsgsource =
 New-AzNetworkSecurityGroup -ResourceGroupName $rsg -Name $nsnm -Location $loc -SecurityRules $sshrule 
 ```
 
-### <a name="create-nic-for-source-vm"></a>Vytvořit síťovou kartu pro zdrojový virtuální počítač
+### <a name="create-nic-for-source-vm"></a>Vytvoření nic pro zdrojový virtuální virtuální ms
 
-Vytvořte síťové rozhraní pomocí [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) s názvem **myNicsource**. Tento příkaz přiřadí veřejnou IP adresu a skupinu zabezpečení sítě. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$nicsource** pro pozdější použití.
+Vytvořte síťové rozhraní s [new-aznetworkinterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) s názvem **myNicsource**. Tento příkaz přidružíte veřejnou IP adresu a skupinu zabezpečení sítě. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$nicsource** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -177,26 +177,26 @@ $nicsource =
 New-AzNetworkInterface -ResourceGroupName $rsg -Name $nin -NetworkSecurityGroupID $nsgsource.Id -PublicIPAddressID $publicIPVMsource.Id -SubnetID $vnetsource.Subnets[0].Id -Location $loc
 ```
 
-### <a name="create-a-source-vm"></a>Vytvoření zdrojového virtuálního počítače
+### <a name="create-a-source-vm"></a>Vytvoření zdrojového virtuálního virtuálního montova
 
 #### <a name="create-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 
 K dokončení tohoto rychlého startu potřebujete pár klíčů SSH. Pokud už máte pár klíčů SSH, můžete tento krok přeskočit.
 
-K vytvoření páru klíčů SSH použijte ssh-keygen.
+Pomocí ssh-keygen vytvořte dvojici klíčů SSH.
 
 ```azurepowershell-interactive
 ssh-keygen -t rsa -b 2048
 ```
 Podrobnější informace o vytváření párů klíčů SSH, včetně použití PuTTY, najdete v tématu [Jak používat klíče SSH s Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 
-Pokud vytvoříte pár klíčů SSH pomocí Cloud Shell, dvojice klíčů je uložena v imagi kontejneru. Tento [účet úložiště se automaticky vytvoří](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Neodstraňujte účet úložiště nebo sdílenou složku v rámci, dokud nezískáte klíče.
+Pokud vytvoříte dvojici klíčů SSH pomocí prostředí Cloud Shell, pár klíčů je uložen v image kontejneru. Tento [účet úložiště se vytvoří automaticky](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Neodstraňujte účet úložiště ani sdílenou složku uvnitř, dokud nenačtete klíče.
 
 #### <a name="create-vm-configuration"></a>Vytvořit konfiguraci virtuálního počítače
 
 Pokud chcete vytvořit virtuální počítač v PowerShellu, vytvoříte konfiguraci obsahující nastavení, jako jsou image, která se má použít, velikost a možnosti ověřování. Tato konfigurace se pak použije k vytvoření virtuálního počítače.
 
-Definujte přihlašovací údaje SSH, informace o operačním systému a velikost virtuálního počítače. V tomto příkladu je klíč SSH uložený v ~/.ssh/id_rsa. pub.
+Definujte přihlašovací údaje SSH, informace o operačním systému a velikost virtuálního počítače. V tomto příkladu je klíč SSH uložen v ~/.ssh/id_rsa.pub.
 
 ```azurepowershell-interactive
 # Define a credential object
@@ -230,7 +230,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigsource -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-Zkombinujte definice konfigurace a vytvořte virtuální počítač s názvem **myVMsource** s [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) v **myResourceGroupNAT**.
+Zkombinujte definice konfigurace a vytvořte virtuální hospo- s názvem **myVMsource** s [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) v **myResourceGroupNAT**.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -239,17 +239,17 @@ $loc = 'eastus2'
 New-AzVM -ResourceGroupName $rsg -Location $loc -VM $vmConfigsource
 ```
 
-I když se příkaz vrátí hned, může trvat několik minut, než se virtuální počítač nasadí.
+Zatímco příkaz se vrátí okamžitě, může trvat několik minut pro virtuální ho nasazení.
 
 ## <a name="prepare-destination-for-outbound-traffic"></a>Příprava cíle pro odchozí provoz
 
-Nyní vytvoříme cíl pro odchozí přenosy přeložené službou překladu adres (NAT), abyste je mohli otestovat.
+Nyní vytvoříme cíl pro odchozí provoz přeložený službou NAT, abyste jej mohli otestovat.
 
 ### <a name="configure-virtual-network-for-destination"></a>Konfigurace virtuální sítě pro cíl
 
-Musíme vytvořit virtuální síť, ve které bude cílový virtuální počítač.  Tyto příkazy jsou stejný postup jako u zdrojového virtuálního počítače. Byly přidány malé změny pro zpřístupnění cílového koncového bodu.
+Musíme vytvořit virtuální síť, kde bude cílový virtuální počítač.  Tyto příkazy jsou stejné kroky jako pro zdrojový virtuální hod. Byly přidány malé změny, které zveřejňují cílový koncový bod.
 
-Vytvořte virtuální síť s názvem **myVnetdestination** s podsítí s názvem **mySubnetdestination** pomocí [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) v **myResourceGroupNAT** pomocí [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest). Adresní prostor IP adres pro virtuální síť je **192.168.0.0/16**. Podsíť ve virtuální síti je **192.168.0.0/24**.  Výsledek příkazů bude uložen v proměnných s názvem **$subnetdestination** a **$vnetdestination** pro pozdější použití.
+Vytvořte virtuální síť s názvem **myVnetdestination** s podsítí s názvem **mySubnetdestination** pomocí [nástroje New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) v **souboru myResourceGroupNAT** pomocí [programu New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest). Adresní prostor IP pro virtuální síť je **192.168.0.0/16**. Podsíť ve virtuální síti je **192.168.0.0/24**.  Výsledek příkazů bude uložen v proměnných s názvem **$subnetdestination** a **$vnetdestination** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -266,9 +266,9 @@ $vnetdestination =
 New-AzVirtualNetwork -Name $vdn -ResourceGroupName $rsg -Location $loc -AddressPrefix $vpfx -Subnet $subnetdestination
 ```
 
-### <a name="create-public-ip-for-destination-vm"></a>Vytvoření veřejné IP adresy pro cílový virtuální počítač
+### <a name="create-public-ip-for-destination-vm"></a>Vytvoření veřejné IP adresy pro cílový virtuální virtuální ms
 
-Vytvoříme veřejnou IP adresu, která se použije pro přístup k cílovému virtuálnímu počítači.  Pomocí [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPdestinationVM** v **myResourceGroupNAT**.  Výsledek tohoto příkazu bude uložen v proměnné s názvem **$publicIpdestinationVM** pro pozdější použití.
+Vytvoříme veřejnou IP adresu, která se použije pro přístup k cílovému virtuálnímu virtuálnímu počítačům.  Pomocí [funkce New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) vytvořte prostředek veřejné IP adresy s názvem **myPublicIPdestinationVM** v **myResourceGroupNAT**.  Výsledek tohoto příkazu bude uložen v proměnné s názvem **$publicIpdestinationVM** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -281,9 +281,9 @@ $publicIpdestinationVM =
 New-AzPublicIpAddress -Name $pipd -ResourceGroupName $rsg -AllocationMethod $all -Location $loc -Sku $sku
 ```
 
-### <a name="create-an-nsg-and-expose-ssh-and-http-endpoint-for-vm"></a>Vytvoření NSG a zpřístupnění koncového bodu protokolu SSH a HTTP pro virtuální počítač
+### <a name="create-an-nsg-and-expose-ssh-and-http-endpoint-for-vm"></a>Vytvoření nsg a vystavit Koncový bod SSH a HTTP pro virtuální ms
 
-Standardní veřejné IP adresy jsou ve výchozím nastavení zabezpečené, vytvoříme NSG, který umožní příchozí přístup pro SSH. Pomocí [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) vytvořte prostředek NSG s názvem **myNSGdestination**. Pomocí [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) vytvořte pravidlo NSG pro přístup SSH s názvem **SSH**.  Pomocí [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) vytvořte pravidlo NSG pro přístup HTTP s názvem **http**. Obě pravidla budou vytvořena v **myResourceGroupNAT**. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$nsgdestination** pro pozdější použití.
+Standardní veřejné IP adresy jsou 'bezpečné ve výchozím nastavení', vytvoříme NSG, aby příchozí přístup pro ssh. Pomocí [skupiny New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) vytvořte prostředek skupiny zabezpečení sítě s názvem **myNSGdestination**. Pomocí [funkce New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) vytvořte pravidlo skupiny zabezpečení sítě pro přístup SSH s názvem **ssh**.  Pomocí [funkce New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) vytvořte pravidlo skupiny zabezpečení sítě pro přístup http s názvem **http**. Obě pravidla budou vytvořena v **myResourceGroupNAT**. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$nsgdestination** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -307,9 +307,9 @@ $nsgdestination =
 New-AzNetworkSecurityGroup -ResourceGroupName $rsg -Name $nsnm -Location $loc -SecurityRules $sshrule,$httprule
 ```
 
-### <a name="create-nic-for-destination-vm"></a>Vytvořit síťovou kartu pro cílový virtuální počítač
+### <a name="create-nic-for-destination-vm"></a>Vytvořit nic pro cílový virtuální ms
 
-Vytvořte síťové rozhraní pomocí [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) s názvem **myNicdestination**. Tento příkaz se přidruží k veřejné IP adrese a skupině zabezpečení sítě. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$nicdestination** pro pozdější použití.
+Vytvořte síťové rozhraní s [rozhraním New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) s názvem **myNicdestination**. Tento příkaz bude přidružit k veřejné IP adrese a skupině zabezpečení sítě. Výsledek tohoto příkazu bude uložen v proměnné s názvem **$nicdestination** pro pozdější použití.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -320,13 +320,13 @@ $nicdestination =
 New-AzNetworkInterface -ResourceGroupName $rsg -Name $nnm -NetworkSecurityGroupID $nsgdestination.Id -PublicIPAddressID $publicIPdestinationVM.Id -SubnetID $vnetdestination.Subnets[0].Id -Location $loc
 ```
 
-### <a name="create-a-destination-vm"></a>Vytvoření cílového virtuálního počítače
+### <a name="create-a-destination-vm"></a>Vytvoření cílového virtuálního virtuálního montova
 
 #### <a name="create-vm-configuration"></a>Vytvořit konfiguraci virtuálního počítače
 
 Pokud chcete vytvořit virtuální počítač v PowerShellu, vytvoříte konfiguraci obsahující nastavení, jako jsou image, která se má použít, velikost a možnosti ověřování. Tato konfigurace se pak použije k vytvoření virtuálního počítače.
 
-Definujte přihlašovací údaje SSH, informace o operačním systému a velikost virtuálního počítače. V tomto příkladu je klíč SSH uložený v ~/.ssh/id_rsa. pub.
+Definujte přihlašovací údaje SSH, informace o operačním systému a velikost virtuálního počítače. V tomto příkladu je klíč SSH uložen v ~/.ssh/id_rsa.pub.
 
 ```azurepowershell-interactive
 # Define a credential object
@@ -362,7 +362,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigdestination -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-Zkombinujte definice konfigurace a vytvořte virtuální počítač s názvem **myVMdestination** s [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) v **myResourceGroupNAT**.
+Zkombinujte definice konfigurace a vytvořte virtuální hospo s názvem **myVMdestination** s [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) v **myResourceGroupNAT**.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -371,11 +371,11 @@ $loc = 'eastus2'
 New-AzVM -ResourceGroupName $rsg -Location $loc -VM $vmConfigdestination
 ```
 
-I když se příkaz vrátí hned, může trvat několik minut, než se virtuální počítač nasadí.
+Zatímco příkaz se vrátí okamžitě, může trvat několik minut pro virtuální ho nasazení.
 
-## <a name="prepare-a-web-server-and-test-payload-on-destination-vm"></a>Příprava webového serveru a datové části testu na cílovém virtuálním počítači
+## <a name="prepare-a-web-server-and-test-payload-on-destination-vm"></a>Příprava webového serveru a testování datové části na cílovém virtuálním počítači
 
-Nejdřív musíme zjistit IP adresu cílového virtuálního počítače.  K získání veřejné IP adresy virtuálního počítače použijte [příkaz Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest). 
+Nejprve musíme zjistit IP adresu cílového virtuálního počítačů.  Chcete-li získat veřejnou IP adresu virtuálního počítačů, použijte [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest). 
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -385,11 +385,11 @@ Get-AzPublicIpAddress -ResourceGroupName $rsg -Name $pipn | select IpAddress
 ``` 
 
 >[!IMPORTANT]
->Zkopírujte veřejnou IP adresu a vložte ji do poznámkového bloku, abyste ji mohli použít v následujících krocích. Označuje, že se jedná o cílový virtuální počítač.
+>Zkopírujte veřejnou IP adresu a vložte ji do poznámkového bloku, abyste ji mohli použít v následujících krocích. Označte, že se jedná o cílový virtuální počítač.
 
-### <a name="sign-in-to-destination-vm"></a>Přihlášení k cílovému virtuálnímu počítači
+### <a name="sign-in-to-destination-vm"></a>Přihlášení k cílovému virtuálnímu virtuálnímu mísu
 
-Přihlašovací údaje SSH by měly být uložené v Cloud Shell z předchozí operace.  Otevřete [Azure Cloud Shell](https://shell.azure.com) v prohlížeči. Pro SSH k virtuálnímu počítači použijte IP adresu získanou v předchozím kroku. 
+Pověření SSH by měla být uložena ve vašem prostředí Cloud z předchozí operace.  Otevřete [Azure Cloud Shell](https://shell.azure.com) ve svém prohlížeči. Použijte IP adresu načtenou v předchozím kroku na SSH do virtuálního počítače. 
 
 ```bash
 ssh azureuser@<ip-address-destination>
@@ -410,13 +410,13 @@ sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
 ```
 
-Tyto příkazy aktualizují váš virtuální počítač, nainstaluje Nginx a vytvoří soubor 100-kilobajtů. Tento soubor se načte ze zdrojového virtuálního počítače pomocí služby NAT.
+Tyto příkazy aktualizují váš virtuální počítač, nainstalují nginx a vytvoří soubor 100 KBytes. Tento soubor bude načten ze zdrojového virtuálního virtuálního aplikace pomocí služby NAT.
 
-Zavřete relaci SSH s cílovým virtuálním počítačem.
+Zavřete relaci SSH s cílovým virtuálním virtuálním mem.
 
 ## <a name="prepare-test-on-source-vm"></a>Příprava testu na zdrojovém virtuálním počítači
 
-Nejdřív musíme zjistit IP adresu zdrojového virtuálního počítače.  K získání veřejné IP adresy virtuálního počítače použijte [příkaz Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest). 
+Nejprve musíme zjistit IP adresu zdrojového virtuálního počítačů.  Chcete-li získat veřejnou IP adresu virtuálního počítačů, použijte [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest). 
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -426,17 +426,17 @@ Get-AzPublicIpAddress -ResourceGroupName $rsg -Name $pipn | select IpAddress
 ``` 
 
 >[!IMPORTANT]
->Zkopírujte veřejnou IP adresu a vložte ji do poznámkového bloku, abyste ji mohli použít v následujících krocích. Označuje, že se jedná o zdrojový virtuální počítač.
+>Zkopírujte veřejnou IP adresu a vložte ji do poznámkového bloku, abyste ji mohli použít v následujících krocích. Označte, že se jedná o zdrojový virtuální počítač.
 
-### <a name="log-into-source-vm"></a>Přihlášení ke zdrojovému virtuálnímu počítači
+### <a name="log-into-source-vm"></a>Přihlášení ke zdrojovému virtuálnímu virtuálnímu montovně
 
-Přihlašovací údaje SSH se znovu ukládají v Cloud Shell. Otevře novou kartu pro [Azure Cloud Shell](https://shell.azure.com) v prohlížeči.  Pro SSH k virtuálnímu počítači použijte IP adresu získanou v předchozím kroku. 
+Pověření SSH jsou opět uloženy v prostředí Cloud Shell. Otevřete novou kartu pro [Azure Cloud Shell](https://shell.azure.com) ve vašem prohlížeči.  Použijte IP adresu načtenou v předchozím kroku na SSH do virtuálního počítače. 
 
 ```bash
 ssh azureuser@<ip-address-source>
 ```
 
-Zkopírujte a vložte následující příkazy, které se připraví na testování služby překladu adres (NAT).
+Zkopírujte a vložte následující příkazy a připravte se na testování služby NAT.
 
 ```bash
 sudo apt-get -y update && \
@@ -452,46 +452,46 @@ go get -u github.com/rakyll/hey
 
 ```
 
-Tyto příkazy aktualizují váš virtuální počítač, nainstaluje se, nainstaluje [Hey](https://github.com/rakyll/hey) z GitHubu a aktualizují prostředí prostředí.
+Tyto příkazy aktualizují váš virtuální počítač, nainstalují go, [nainstalují hej](https://github.com/rakyll/hey) z GitHubu a aktualizují prostředí prostředí prostředí.
 
-Teď jste připraveni otestovat službu NAT.
+Nyní jste připraveni k testování služby NAT.
 
 ## <a name="validate-nat-service"></a>Ověřit službu NAT
 
-Během přihlášení ke zdrojovému virtuálnímu počítači můžete k vygenerování požadavků na cílovou IP adresu použít **oblé** a **Hey** .
+Při přihlášení ke zdrojovému virtuálnímu virtuálnímu počítačůmu můžete ke generování požadavků na cílovou IP adresu použít **curl** a **hey.**
 
-Pomocí oblé načtěte soubor 100-kilobajtů.  V následujícím příkladu nahraďte **\<IP-Address-destination >** cílovou IP adresou, kterou jste dříve zkopírovali.  Parametr **--Output** označuje, že načtený soubor bude zahozen.
+Pomocí zvlnění načtěte soubor 100 KBytes.  Nahraďte ** \<cílovou>ip-adres** v níže uvedeném příkladu cílovou adresou IP, kterou jste dříve zkopírovali.  Parametr **--output** označuje, že načtený soubor bude zahozen.
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-Můžete také vygenerovat sérii požadavků pomocí **Hey**. Znovu nahraďte **\<IP-Address-destination >** cílovou IP adresou, kterou jste dříve zkopírovali.
+Můžete také generovat řadu požadavků pomocí **hey**. Opět nahraďte ** \<cílovou>ip-address>** cílovou ADRESOu IP, kterou jste dříve zkopírovali.
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 ```
 
-Tento příkaz vygeneruje 100 požadavků, 10 současně s časovým limitem 30 sekund. Připojení TCP se nebude znovu používat.  Každý požadavek získá 100 kB.  Na konci běhu ohlásí funkce **Hey** informace o tom, jak dobře služba NAT provedla.
+Tento příkaz vygeneruje 100 požadavků, 10 současně, s časovým časem 30 sekund. Připojení TCP nebude znovu použito.  Každý požadavek načte 100 kbajtů.  Na konci běhu, **bude hej** zprávu některé statistiky o tom, jak dobře na vychýlivá služba NAT.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) .
+Pokud již není potřeba, můžete použít [příkaz Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) k odebrání skupiny prostředků a všech prostředků obsažených v rámci.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste vytvořili bránu NAT, vytvořili zdrojový a cílový virtuální počítač a potom jste otestovali bránu NAT.
+V tomto kurzu jste vytvořili bránu NAT, vytvořili zdrojový a cílový virtuální počítač a pak otestovali bránu NAT.
 
-Zkontrolujte metriky v Azure Monitor a podívejte se, jak vaše služba NAT funguje. Diagnostikujte problémy, jako je například vyčerpání prostředků dostupných portů SNAT.  Vyčerpání prostředků na portech SNAT se dá snadno adresovat přidáním dalších prostředků veřejné IP adresy nebo prostředků předpony veřejných IP adres nebo obou.
+Zkontrolujte metriky v Azure Monitoru a podívejte se, jak vaše služba NAT funguje. Diagnostikujte problémy, jako je vyčerpání prostředků z dostupných portů SNAT.  Vyčerpání prostředků portů SNAT lze snadno vyřešit přidáním dalších prostředků veřejné IP adresy nebo veřejných prostředků předpony IP nebo obojího.
 
-- Informace o [Virtual Network NAT](./nat-overview.md)
-- Přečtěte si o [prostředku brány NAT](./nat-gateway-resource.md).
-- Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure CLI](./quickstart-create-nat-gateway-cli.md).
-- Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
-- Rychlý Start pro nasazení [prostředku brány NAT pomocí Azure Portal](./quickstart-create-nat-gateway-portal.md).
+- Další informace o [překladu virtuálních sítí](./nat-overview.md)
+- Informace o [prostředku brány NAT](./nat-gateway-resource.md).
+- Úvodní příručka pro nasazení [prostředků brány NAT pomocí Azure CLI](./quickstart-create-nat-gateway-cli.md).
+- Úvodní příručka pro nasazení [prostředků brány NAT pomocí Azure PowerShellu](./quickstart-create-nat-gateway-powershell.md).
+- Úvodní příručka pro nasazení [prostředků brány NAT pomocí portálu Azure](./quickstart-create-nat-gateway-portal.md).
 
 > [!div class="nextstepaction"]
 

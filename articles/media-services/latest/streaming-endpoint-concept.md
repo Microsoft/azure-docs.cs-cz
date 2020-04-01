@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 1a2a370ac92ea3edf925d97af6f5e721c79d0d2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529692"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478085"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streamování koncových bodů (Origin) ve službě Azure Media Services
 
@@ -68,7 +68,7 @@ CDN|Azure CDN, CDN jiného výrobce nebo žádné CDN.|Azure CDN, CDN jiného v�
 Fakturace je poměrně| denně|denně
 Dynamické šifrování|Ano|Ano
 Dynamické balení|Ano|Ano
-Škálování|Automatické škálování až na cílovou propustnost.|Další sus
+Měřítko|Automatické škálování až na cílovou propustnost.|Další sus
 Filtrování IP/G20/Vlastní hostitel <sup>1</sup>|Ano|Ano
 Postupné stahování|Ano|Ano
 Doporučené použití |Doporučeno pro drtivou většinu scénářů streamování.|Profesionální použití.
@@ -118,7 +118,7 @@ Tato část obsahuje podrobnosti o některých vlastnostech koncového bodu stre
     > [!NOTE]
     > Koncové body streamování umístěné ve stejném datovém centru nemohou sdílet stejný vlastní název hostitele.
 
-    V současné době media services nepodporuje SSL s vlastními doménami.
+    V současné době media services nepodporuje TLS s vlastními doménami.
 
 - `maxCacheAge`- Přepíše výchozí hlavičku ovládacího prvku http cache s maximálním stářím nastavenou koncovým bodem streamování na fragmentech médií a manifestech na vyžádání. Hodnota je nastavena v sekundách.
 - `resourceState` -

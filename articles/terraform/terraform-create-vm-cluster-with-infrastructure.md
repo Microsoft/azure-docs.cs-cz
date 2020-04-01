@@ -1,32 +1,32 @@
 ---
-title: Kurz – vytvoření clusteru virtuálních počítačů Azure s Terraformu a HCL
-description: V tomto kurzu použijete Terraformu a HCL k vytvoření clusteru virtuálních počítačů se systémem Linux s nástrojem pro vyrovnávání zatížení v Azure.
-keywords: cluster virtuálních počítačů s virtuálním počítačem Azure DevOps terraformu
+title: Kurz – vytvoření clusteru virtuálních počítačích Azure s Terraform a HCL
+description: V tomto kurzu použijete Terraform a HCL k vytvoření clusteru virtuálních strojů Linux u nástroje pro vyrovnávání zatížení v Azure
+keywords: cluster virtuálních strojů azure devops terraform vm
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: ae1b8eac15309ff27297d9472e70d32e68acaaac
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945271"
 ---
-# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraformu a HCL
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraform a HCL
 
-V tomto kurzu vidíte, jak vytvořit malý výpočetní cluster pomocí [HCL](https://www.terraform.io/docs/configuration/syntax.html). 
+V tomto kurzu uvidíte, jak vytvořit malý výpočetní cluster pomocí [HCL](https://www.terraform.io/docs/configuration/syntax.html). 
 
-Naučíte se, jak provádět následující úlohy:
+Dozvíte se, jak provést následující úkoly:
 
 > [!div class="checklist"]
 > * Nastavte ověřování Azure.
-> * Vytvořte konfigurační soubor Terraformu.
-> * K vytvoření nástroje pro vyrovnávání zatížení použijte konfigurační soubor Terraformu.
-> * Použijte konfigurační soubor Terraformu k nasazení dvou virtuálních počítačů se systémem Linux ve skupině dostupnosti.
+> * Vytvořte konfigurační soubor Terraform.
+> * K vytvoření nástroje pro vyrovnávání zatížení použijte konfigurační soubor Terraform.
+> * Pomocí konfiguračního souboru Terraform nasadit dva virtuální počítače SIF V množině dostupnosti.
 > * Inicializujte Terraform.
-> * Vytvořte plán spuštění Terraformu.
-> * Použijte plán spuštění Terraformu k vytvoření prostředků Azure.
+> * Vytvořte plán spuštění Terraform.
+> * Použijte plán spuštění Terraform k vytvoření prostředků Azure.
 
-## <a name="1-set-up-azure-authentication"></a>1. nastavení ověřování Azure
+## <a name="1-set-up-azure-authentication"></a>1. Nastavení ověřování Azure
 
 > [!NOTE]
 > Pokud [používáte proměnné prostředí nástroje Terraform](terraform-install-configure.md) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](terraform-cloud-shell.md), tuto část přeskočte.
@@ -59,7 +59,7 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
    }
    ```
 
-6. Vytvořte nový soubor, který bude obsahovat hodnoty proměnných Terraformu. Je běžné pojmenování `terraform.tfvars` souboru proměnných Terraformu, protože Terraformu automaticky načte libovolný soubor s názvem `terraform.tfvars` (nebo je podle vzoru `*.auto.tfvars`), pokud se nachází v aktuálním adresáři. 
+6. Vytvořte nový soubor, který bude obsahovat hodnoty proměnných Terraformu. Je běžné pojmenovat soubor `terraform.tfvars` proměnných Terraform jako Terraform `terraform.tfvars` automaticky načte `*.auto.tfvars`libovolný soubor s názvem (nebo podle vzoru) pokud je přítomen v aktuálním adresáři. 
 
 7. Do souboru proměnných zkopírujte následující kód. Nezapomeňte následovně nahradit zástupné hodnoty: U `subscription_id` použijte ID předplatného Azure, které jste zadali při spuštění `az account set`. U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
 
@@ -70,7 +70,7 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
    client_secret = "<password-returned-from-creating-a-service-principal>"
    ```
 
-## <a name="2-create-a-terraform-configuration-file"></a>2. vytvoření konfiguračního souboru Terraformu
+## <a name="2-create-a-terraform-configuration-file"></a>2. Vytvoření konfiguračního souboru Terraform
 
 V této části vytvoříte soubor obsahující definice prostředků pro vaši infrastrukturu.
 
@@ -216,9 +216,9 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
    }
    ```
 
-## <a name="3-initialize-terraform"></a>3. inicializace Terraformu 
+## <a name="3-initialize-terraform"></a>3. Inicializovat Terraform 
 
-[Příkaz terraform init](https://www.terraform.io/docs/commands/init.html) se používá k inicializaci adresáře, který obsahuje konfigurační soubory Terraformu – soubory vytvořené v předchozích částech. Je dobrým zvykem, abyste při psaní nové konfigurace Terraformu vždy spouštěli příkaz `terraform init`. 
+[Příkaz terraform init](https://www.terraform.io/docs/commands/init.html) se používá k inicializaci adresáře, který obsahuje konfigurační soubory Terraformu – soubory vytvořené v předchozích částech. Je vhodné vždy spustit `terraform init` příkaz po napsání nové konfigurace Terraform. 
 
 > [!TIP]
 > Příkaz `terraform init` je idempotentní, což znamená, že ho můžete opakovaně volat a vždy dojde ke stejnému výsledku. Proto pokud pracujete v prostředí podporujícím spolupráci a myslíte si, že konfigurační soubory mohl někdo změnit, je vždy vhodné před provedením nebo použitím plánu příkaz `terraform init` zavolat.
@@ -231,48 +231,48 @@ Terraform inicializujete spuštěním následujícího příkazu:
 
   ![Inicializace Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-init.png)
 
-## <a name="4-create-a-terraform-execution-plan"></a>4. vytvoření plánu spuštění Terraformu
+## <a name="4-create-a-terraform-execution-plan"></a>4. Vytvoření plánu spuštění Terraform
 
 [Příkaz terraform plan](https://www.terraform.io/docs/commands/plan.html) se používá k vytvoření plánu provádění. Když chcete vygenerovat plán provádění, Terraform agreguje všechny soubory `.tf` do aktuálního adresáře. 
 
-[Parametr-out](https://www.terraform.io/docs/commands/plan.html#out-path) uloží plán spouštění do výstupního souboru. Tato funkce řeší problémy souběžnosti společné ve více vývojových prostředích. Takový problém řešený výstupním souborem je následující scénář:
+[Parametr -out](https://www.terraform.io/docs/commands/plan.html#out-path) uloží plán spuštění do výstupního souboru. Tato funkce řeší souběžnost problémy běžné v prostředích s více dev. Jeden takový problém vyřešen výstupním souborem je následující scénář:
 
-1. Vývoj 1 vytvoří konfigurační soubor.
-1. Vývoj 2 upravuje konfigurační soubor.
-1. Dev 1 aplikuje (spustí) konfigurační soubor.
-1. Vývoj 1 získá neočekávané výsledky, které se neshodují s tím, že vývoj změnil 2.
+1. Dev 1 vytvoří konfigurační soubor.
+1. Dev 2 upraví konfigurační soubor.
+1. Dev 1 použije (spustí) konfigurační soubor.
+1. Dev 1 získá neočekávané výsledky s vědomím, že Dev 2 změnil konfiguraci.
 
-Dev 1 určení výstupního souboru brání dev 2 v tom, že má vliv na dev 1. 
+Dev 1 určující výstupní soubor zabrání Dev 2 ovlivnění Dev 1. 
 
-Pokud nepotřebujete svůj plán spuštění uložit, spusťte následující příkaz:
+Pokud plán spuštění nepotřebujete uložit, spusťte následující příkaz:
 
   ```bash
   terraform plan
   ```
 
-Pokud potřebujete uložit svůj plán spuštění, spusťte následující příkaz. Zástupné symboly nahraďte odpovídajícími hodnotami pro vaše prostředí.
+Pokud potřebujete uložit plán spuštění, spusťte následující příkaz. Nahraďte zástupné symboly odpovídajícími hodnotami pro vaše prostředí.
 
   ```bash
   terraform plan -out=<path>
   ```
 
-Dalším užitečným parametrem je [-var-File](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
+Dalším užitečným parametrem je [-var-file](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
 
-Ve výchozím nastavení se Terraformu pokusil najít soubor proměnných následujícím způsobem:
-- Soubor s názvem `terraform.tfvars`
-- Soubor s názvem s použitím následujícího vzoru: `*.auto.tfvars`
+Ve výchozím nastavení se Terraform pokusil najít soubor proměnných takto:
+- Soubor s názvem`terraform.tfvars`
+- Soubor pojmenovaný pomocí následujícího vzoru:`*.auto.tfvars`
 
-Soubor proměnných ale nemusí následovat po obou předchozích konvencích. V takovém případě zadejte název souboru proměnných s parametrem `-var-file`, kde název souboru proměnné nemá příponu. Následující příklad ilustruje tento bod:
+Soubor proměnných však nemusí dodržovat ani jednu ze dvou předchozích konvencí. V takovém případě zadejte název souboru proměnných s parametrem, `-var-file` kde název souboru proměnné neobsahuje příponu. Následující příklad ilustruje tento bod:
 
 ```hcl
 terraform plan -var-file <my-variables-file>
 ```
 
-Terraformu určuje akce potřebné k dosažení stavu určeného v konfiguračním souboru.
+Terraform určuje akce nezbytné k dosažení stavu určeného v konfiguračním souboru.
 
 ![Vytvoření plánu provádění Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
-## <a name="5-apply-the-terraform-execution-plan"></a>5. použití plánu spuštění Terraformu
+## <a name="5-apply-the-terraform-execution-plan"></a>5. Použít plán provádění Terraform
 
 Posledním krokem tohoto kurzu je spuštění [příkazu terraform apply](https://www.terraform.io/docs/commands/apply.html), který sadu akcí vygenerovanou příkazem `terraform plan` použije.
 
@@ -282,7 +282,7 @@ Pokud chcete nejnovější plán provádění použít, spusťte následující 
   terraform apply
   ```
 
-Pokud chcete použít dříve uložený plán spuštění, spusťte následující příkaz. Zástupné symboly nahraďte odpovídajícími hodnotami pro vaše prostředí:
+Pokud chcete použít dříve uložený plán spuštění, spusťte následující příkaz. Nahraďte zástupné symboly odpovídajícími hodnotami pro vaše prostředí:
 
   ```bash
   terraform apply <path>
@@ -293,4 +293,4 @@ Pokud chcete použít dříve uložený plán spuštění, spusťte následujíc
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Vytvoření sady škálování virtuálních počítačů Azure pomocí Terraformu](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [Vytvoření škálovací sady virtuálních strojů Azure pomocí Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s SpaceIQ | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SpaceIQ.
+title: 'Kurz: Integrace služby Azure Active Directory se službou SpaceIQ | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a SpaceIQ.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,208 +16,208 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: b3358ad473ede9e8d78a835e8c68e690e5340638
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090096"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>Kurz: Integrace Azure Active Directory s SpaceIQ
+# <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>Kurz: Integrace Azure Active Directory se službou SpaceIQ
 
 V tomto kurzu se dozvíte, jak integrovat SpaceIQ s Azure Active Directory (Azure AD).
-SpaceIQ integraci se službou Azure AD poskytuje následující výhody:
+Integrace SpaceIQ s Azure AD vám poskytuje následující výhody:
 
 * Můžete řídit ve službě Azure AD, který má přístup k SpaceIQ.
-* Můžete povolit uživatelům být automaticky přihlášeni k SpaceIQ (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k SpaceIQ (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s SpaceIQ, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s SpaceIQ, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* SpaceIQ jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Předplatné s povoleným jedním přihlášením SpaceIQ
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje SpaceIQ **IDP** jednotné přihlašování zahájené pomocí
+* SpaceIQ podporuje **IDP** inicioval SSO
 
-## <a name="adding-spaceiq-from-the-gallery"></a>Přidání SpaceIQ z Galerie
+## <a name="adding-spaceiq-from-the-gallery"></a>Přidání SpaceIQ z galerie
 
-Konfigurace integrace SpaceIQ do služby Azure AD, budete muset přidat SpaceIQ z Galerie na váš seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci SpaceIQ do Azure AD, musíte přidat SpaceIQ z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat SpaceIQ z galerie, postupujte následovně:**
+**Chcete-li přidat SpaceIQ z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SpaceIQ**vyberte **SpaceIQ** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **SpaceIQ**, z panelu výsledků vyberte **SpaceIQ** a pak klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![SpaceIQ v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí SpaceIQ podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v SpaceIQ.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí technologie SpaceIQ na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v SpaceIQ.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SpaceIQ, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí technologie SpaceIQ, je třeba provést následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace SpaceIQ Single Sign-On](#configure-spaceiq-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele SpaceIQ](#create-spaceiq-test-user)**  – Pokud chcete mít protějšek Britta Simon SpaceIQ, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování SpaceIQ](#configure-spaceiq-single-sign-on)** - konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte testovacího uživatele SpaceIQ](#create-spaceiq-test-user)** – chcete-li mít protějšek Britta Simon v SpaceIQ, který je propojen s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s SpaceIQ, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí technologie SpaceIQ, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **SpaceIQ** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **SpaceIQ** vyberte **Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránce, proveďte následující kroky:
+4. Na stránce **Nastavit jednotné přihlašování pomocí saml** proveďte následující kroky:
 
-    ![SpaceIQ domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Informace o jednotném přihlášení domény A adresy URL SpaceIQ](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL: `https://api.spaceiq.com`
+    a. Do textového pole **Identifikátor** zadejte adresu URL:`https://api.spaceiq.com`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://api.spaceiq.com/saml/<instanceid>/callback`
+    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://api.spaceiq.com/saml/<instanceid>/callback`
 
     > [!NOTE]
-    > Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a identifikátor, který je vysvětlen později v tomto kurzu.
+    > Aktualizujte tyto hodnoty skutečnou adresou URL a identifikátorem odpovědi, která je vysvětlena dále v kurzu.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. Na **nastavení SpaceIQ** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit SpaceIQ** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-spaceiq-single-sign-on"></a>Konfigurace SpaceIQ jednotné přihlašování
+### <a name="configure-spaceiq-single-sign-on"></a>Konfigurace jednotného přihlašování SpaceIQ
 
-1. Otevřete nové okno prohlížeče a přihlaste se k prostředí SpaceIQ jako správce.
+1. Otevřete nové okno prohlížeče a přihlaste se do prostředí SpaceIQ jako správce.
 
-1. Jakmile jste přihlášení, klikněte na znaménko díl stavebnice vpravo nahoře a potom klikněte na **integrace**
+1. Jakmile jste přihlášeni, klikněte na puzzle znamení v pravém horním rohu, pak **klikněte** na integrace
 
     ![Nastavení účtu](./media/spaceiq-tutorial/setting1.png) 
 
-1. V části **všechny zřizování a jednotné přihlašování**, klikněte na **Azure** dlaždici přidat instanci Azure jako zprostředkovatele identity.
+1. V části **Všechny zřizování & přihlašování**klikněte na dlaždici **Azure** a přidejte instanci Azure jako IDP.
 
-    ![Ikona SAML](./media/spaceiq-tutorial/setting2.png)
+    ![Ikona aplikace SAML](./media/spaceiq-tutorial/setting2.png)
 
-1. V **jednotného přihlašování** dialogové okno pole, proveďte následující kroky:
+1. V dialogovém okně **s přistajeno** k následujícím krokům postupujte takto:
 
     ![Nastavení ověřování SAML](./media/spaceiq-tutorial/setting3.png)
 
-    a. V **URL vystavitele SAML** pole, vložte **Azure AD identifikátor** hodnotu zkopírovat v okně Konfigurace aplikací služby Azure AD.
+    a. V poli **ADRESA URL vystavitvystavitesaml** vložte hodnotu **identifikátoru Azure AD** zkopírované z okna konfigurace aplikace Azure AD.
 
-    b. Kopírovat **SAML zpětného volání adresy URL koncového bodu (jen pro čtení)** hodnotu a vložte tuto hodnotu v **adresy URL odpovědi** pole **základní konfiguraci SAML** části webu Azure Portal.
+    b. Zkopírujte hodnotu **ADRESY URL koncového bodu zpětného volání SAML (jen pro čtení)** a vložte hodnotu do pole **Adresa URL odpovědi** v části Základní konfigurace **SAML** na webu Azure Portal.
 
-    c. Kopírovat **identifikátor URI cílové skupiny SAML (jen pro čtení)** hodnotu a vložte tuto hodnotu v **identifikátor** pole **základní konfiguraci SAML** části webu Azure Portal.
+    c. Zkopírujte hodnotu **URI cílové skupiny SAML (jen pro čtení)** a vložte hodnotu do pole **Identifikátor** v části Základní **konfigurace SAML** na webu Azure Portal.
 
-    d. V poznámkovém bloku otevřete soubor stažený certifikát, zkopírujte jeho obsah a vložte jej do **certifikát X.509** pole.
+    d. Otevřete stažený soubor certifikátu v poznámkovém bloku, zkopírujte obsah a vložte jej do pole **Certifikát X.509.**
 
     e. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`  
+    b. V poli **Uživatelské jméno** typ pole`brittasimon@yourcompanydomain.extension`  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k SpaceIQ použití Azure jednotného přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k SpaceIQ.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **SpaceIQ**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **SpaceIQ**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte **SpaceIQ**.
 
-    ![Odkaz SpaceIQ v seznamu aplikací](common/all-applications.png)
+    ![Odkaz SpaceIQ v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-spaceiq-test-user"></a>Vytvoření SpaceIQ testovacího uživatele
+### <a name="create-spaceiq-test-user"></a>Vytvořit testovacího uživatele SpaceIQ
 
-V této části vytvoříte uživatele v SpaceIQ jako Britta Simon. Pracovní [tým podpory SpaceIQ](mailto:eng@spaceiq.com) přidat uživatele na platformě SpaceIQ. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v SpaceIQ. Pracovní [SpaceIQ tým](mailto:eng@spaceiq.com) podpory přidat uživatele v platformě SpaceIQ. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici SpaceIQ na přístupovém panelu, můžete by měl být automaticky přihlášeni k SpaceIQ, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici SpaceIQ na přístupovém panelu, měli byste být automaticky přihlášeni k SpaceIQ, pro které nastavíte sso. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI – přihlášení k odběru skupiny prostředků & filtr podle prostředku
-description: Tento článek obsahuje ukázkový skript rozhraní příkazového řádku Azure CLI, který ukazuje, jak se přihlásit k odběru Event Gridch událostí pro prostředek a filtrovat prostředek.
+title: Azure CLI – přihlášení ke skupině prostředků & filtru podle prostředků
+description: Tento článek obsahuje ukázkový skript Azure CLI, který ukazuje, jak se přihlásit k odběru událostí Event Grid pro prostředek a filtrovat prostředek.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 3dfe31a38d1bc1ba8662246a5dec3f10d0d1c948
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76720822"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>Přihlášení k odběru událostí skupiny prostředků a vyfiltrování prostředku pomocí Azure CLI
@@ -40,7 +40,7 @@ Ukázkový skript ve verzi Preview vyžaduje rozšíření Event Grid. Pokud ho 
 
 Tento skript k vytvoření odběru událostí používá následující příkaz. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Vytvoří odběr Event Gridu. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – verze rozšíření | Vytvoří odběr Event Gridu. |

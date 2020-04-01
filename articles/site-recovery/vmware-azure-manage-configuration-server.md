@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257274"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478466"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware nebo fyzického serveru
 
@@ -270,9 +270,9 @@ Konfigurační server můžete volitelně odstranit pomocí prostředí PowerShe
 3. Chcete-li vygenerovat soubor heslem, spusťte **soubor genpassphrase.exe -v > přístupové heslo MobSvc..**
 4. Heslo bude uloženo v souboru umístěném na adrese **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
 
-## <a name="renew-ssl-certificates"></a>Prodloužení platnosti certifikátů SSL
+## <a name="renew-tlsssl-certificates"></a>Obnovení certifikátů TLS/SSL
 
-Konfigurační server má vestavěný webový server, který organizuje aktivity služby mobility, procesních serverů a hlavních cílových serverů, které jsou k němu připojeny. Webový server používá k ověřování klientů certifikát SSL. Platnost certifikátu vyprší po třech letech a může být kdykoli obnovena.
+Konfigurační server má vestavěný webový server, který organizuje aktivity služby mobility, procesních serverů a hlavních cílových serverů, které jsou k němu připojeny. Webový server používá k ověřování klientů certifikát TLS/SSL. Platnost certifikátu vyprší po třech letech a může být kdykoli obnovena.
 
 ### <a name="check-expiry"></a>Zkontrolovat vypršení platnosti
 

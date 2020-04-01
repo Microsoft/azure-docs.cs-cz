@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238521"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
@@ -25,7 +25,7 @@ V tomto kurzu, který je první částí třídílné série, se naučíte:
 
 V dalších kurzech nasadíte kontejner ze svého privátního registru do webové aplikace spuštěné ve dvou oblastech Azure. Pak aktualizujete kód aplikace a pomocí jediného příkazu `docker push` pro váš registr aktualizujete obě instance webové aplikace.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento kurz vyžaduje místní instalaci Azure CLI (verze 2.0.31 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -37,25 +37,25 @@ Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kr
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure](https://portal.azure.com).
 
-Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry**.
+Vyberte Vytvořit**kontejnery** >  **prostředků** > **Azure Container Registry**.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][tut-portal-01]
 
 Nakonfiguruje nový registr pomocí následujících nastavení:
 
 * **Název registru:** Vytvořte název registru, který je globálně jedinečný v rámci Azure a obsahuje 5 až 50 alfanumerických znaků.
-* **Skupina prostředků:** **Vytvořit novou** > `myResourceGroup`
-* **Umístění:** `West US`
-* **Uživatel s rolí správce:** `Enable` (vyžadováno službou Web App for Containers ke stahování imagí)
-* **Skladová položka:** `Premium` (vyžadováno pro geografickou replikaci)
+* **Skupina zdrojů**: **Vytvořit nové** > `myResourceGroup`
+* **Umístění**:`West US`
+* **Admin**uživatel `Enable` : (vyžadováno pro Web App pro kontejnery vytáhnout obrázky)
+* **Skladová** `Premium` položka : (vyžadováno pro geografickou replikaci)
 
 Vyberte **Vytvořit** a nasaďte instanci služby ACR.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][tut-portal-02]
 
-V celé zbývající části tohoto kurzu používáme `<acrName>` jako zástupný symbol pro **Název registru** kontejnerů, který jste zvolili.
+Ve zbytku tohoto kurzu `<acrName>` používáme jako zástupný symbol pro **název registru** kontejneru, který jste zvolili.
 
 > [!TIP]
 > Vzhledem k tomu, že registry kontejnerů Azure jsou obvykle dlouhodobé prostředky, které se používají na více hostitelích kontejnerů, doporučujeme vytvořit registr ve vlastní skupině prostředků. Když budete konfigurovat geograficky replikované registry a webhooky, umístí se tyto další prostředky do stejné skupiny prostředků.
@@ -106,13 +106,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Pokud nemáte `git` nainstalované, můžete [stáhnout archiv zip][acr-helloworld-zip] přímo z GitHubu.
+Pokud nemáte nainstalovaný `git`, můžete si [stáhnout archiv ZIP][acr-helloworld-zip] přímo z GitHubu.
 
 ## <a name="update-dockerfile"></a>Aktualizace souboru Dockerfile
 
 Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Spustí se z oficiální image [aspnetcore][dockerhub-aspnetcore], zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti, zkompiluje výstup pomocí oficiální image [aspnetcore-build][dockerhub-aspnetcore-build] a nakonec sestaví optimalizovanou image aspnetcore.
 
-[Souboru Dockerfile][dockerfile] se nachází v `./AcrHelloworld/Dockerfile` v naklonovaném zdroji.
+Soubor [Dockerfile][dockerfile] se v naklonovaném zdroji nachází v umístění `./AcrHelloworld/Dockerfile`.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -205,7 +205,7 @@ Potom pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do své
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu *automaticky replikuje do oblasti*USA – západ*i*USA – východ`docker push`.
+Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu `docker push` automaticky replikuje do oblasti *USA – západ* i *USA – východ*.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs'
-description: V tomto kurzu se dozvíte, jak spouštět dotazy Spark na clusteru Azure Databricks pro přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
+title: 'Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Dokumenty společnosti Microsoft'
+description: Tento kurz ukazuje, jak spustit dotazy Spark v clusteru Azure Databricks pro přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,67 +9,67 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78303235"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
-V tomto kurzu se dozvíte, jak připojit cluster Azure Databricks k datům uloženým v účtu úložiště Azure, který má povolený Azure Data Lake Storage Gen2. Toto připojení umožňuje nativně spouštět dotazy a analýzy z vašeho clusteru na vašich datech.
+Tento kurz ukazuje, jak připojit cluster Azure Databricks k datům uloženým v účtu úložiště Azure, který má povolenou Azure Data Lake Storage Gen2. Toto připojení umožňuje nativně spouštět dotazy a analýzy z vašeho clusteru na vašich datech.
 
 V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Vytvoření clusteru Databricks
 > * Ingestace nestrukturovaných dat do účtu úložiště
-> * Spuštění analýzy dat v úložišti objektů BLOB
+> * Spouštění analýz na datech v úložišti objektů Blob
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte účet Azure Data Lake Storage Gen2.
 
   Viz [Vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 
-* Ujistěte se, že váš uživatelský účet má přiřazenou [roli Přispěvatel dat objektů BLOB úložiště](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) .
+* Ujistěte se, že váš uživatelský účet má [roli přispěvatele dat objektů blob úložiště](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) přiřazenou.
 
-* Nainstalujte AzCopy v10 za účelem. Viz [přenos dat pomocí AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* Nainstalujte AzCopy v10. Viz [Přenos dat pomocí AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Vytvořte instanční objekt. Viz [Postup: Pomocí portálu vytvořte instanční objekt azure a služby, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-  K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
+  Existuje několik konkrétních věcí, které budete muset udělat, když provedete kroky v tomto článku.
 
-  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+  :heavy_check_mark: Při provádění kroků v části [Přiřazení aplikace k](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) části role článku nezapomeňte přiřadit roli **přispěvatele dat objektů blob úložiště** k instančnímu objektu.
 
   > [!IMPORTANT]
-  > Ujistěte se, že roli přiřadíte v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
+  > Nezapomeňte přiřadit roli v oboru účtu úložiště Storage Storage Data Lake Storage. Roli můžete přiřadit nadřazené skupině prostředků nebo předplatnému, ale budete dostávat chyby související s oprávněními, dokud se tato přiřazení rolí nerozšíří do účtu úložiště.
 
-  : heavy_check_mark: při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a heslo do textového souboru. Budete je potřebovat brzy.
+  :heavy_check_mark: Při provádění kroků v části [Získat hodnoty pro podepisování v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku vložte ID klienta, ID aplikace a hodnoty hesla do textového souboru. Brzy je budeš potřebovat.
 
 ### <a name="download-the-flight-data"></a>Stažení letových údajů
 
-V tomto kurzu se k předvedení operace ETL používá letová data z statistiky předsednictví. Tato data musíte stáhnout, abyste mohli kurz dokončit.
+Tento kurz používá letová data z Úřadu pro statistiku dopravy k předvedení, jak provést operaci ETL. Chcete-li dokončit kurz, je nutné tato data stáhnout.
 
-1. Přejít na [výzkum a inovativní správu technologií, statistiky dopravy](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. Přejít na [výzkum a inovativní technologie správy, Úřad pro dopravní statistiky](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-2. Pokud chcete vybrat všechna datová pole, zaškrtněte políčko pro **soubor ve formátu ZIP** .
+2. Zaškrtnutím **políčka Prezip File** zaškrtněte všechna datová pole.
 
-3. Klikněte na tlačítko **Stáhnout** a uložte výsledky do svého počítače. 
+3. Vyberte tlačítko **Stáhnout** a uložte výsledky do počítače. 
 
-4. Rozbalte obsah souboru zip a poznamenejte si název souboru a cestu k souboru. Tyto informace budete potřebovat v pozdějším kroku.
+4. Rozbalte obsah zip souboru zip a poznamenejte si název souboru a cestu k souboru. Tyto informace potřebujete v pozdějším kroku.
 
 ## <a name="create-an-azure-databricks-service"></a>Vytvoření služby Azure Databricks
 
-V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
+V této části vytvoříte službu Azure Databricks pomocí portálu Azure.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
+1. Na webu Azure Portal vyberte **Vytvořit zdroj** > **Analytics** > **Azure Databricks**.
 
-    ![Datacihly na Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Datacihly na Azure Portal")
+    ![Datové cihly na webu Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Datové cihly na webu Azure Portal")
 
-2. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření služby datacihly:
+2. V části **Azure Databricks Service**zadejte následující hodnoty pro vytvoření služby Databricks:
 
     |Vlastnost  |Popis  |
     |---------|---------|
@@ -77,25 +77,25 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
     |**Umístění**     | Vyberte **USA – západ 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).       |
-    |**Cenová úroveň**     |  Vyberte **Standard**.     |
+    |**Cenová úroveň**     |  Vyberte **standardní**.     |
 
     ![Vytvoření pracovního prostoru Azure Databricks](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Vytvoření služby Azure Databricks")
 
-3. Vytvoření účtu trvá několik minut. Chcete-li monitorovat stav operace, zobrazte indikátor průběhu v horní části.
+3. Vytvoření účtu trvá několik minut. Chcete-li sledovat stav operace, zobrazte indikátor průběhu nahoře.
 
 4. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Vytvoření clusteru Spark v Azure Databricks
 
-1. V Azure Portal otevřete službu datacihly, kterou jste vytvořili, a vyberte **Spustit pracovní prostor**.
+1. Na webu Azure Portal přejděte na službu Databricks, kterou jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
 2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
 
-    ![Datacihly v Azure](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Datacihly v Azure")
+    ![Datové cihly v Azure](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Datové cihly v Azure")
 
 3. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
 
-    ![Vytvoření clusteru datacihly Spark v Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Vytvoření clusteru datacihly Spark v Azure")
+    ![Vytvoření clusteru Databricks Spark v Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
 
     Zadejte hodnoty následujících polí a potvrďte výchozí hodnoty dalších polí:
 
@@ -103,49 +103,49 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
      
     - Nezapomeňte zaškrtnout políčko **Terminate after 120 minutes of inactivity** (Ukončit po 120 minutách nečinnosti). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
-4. Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
+4. Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete k clusteru připojit poznámkové bloky a spustit úlohy Spark.
 
-## <a name="ingest-data"></a>Příjem dat
+## <a name="ingest-data"></a>Ingestace dat
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Zkopírování zdrojových dat do účtu úložiště
 
-Pomocí AzCopy zkopírujte data ze souboru *. csv* do účtu Data Lake Storage Gen2.
+Pomocí aplikace AzCopy zkopírujte data ze souboru *.csv* do účtu Data Lake Storage Gen2.
 
-1. Otevřete okno příkazového řádku a zadejte následující příkaz, který se přihlásí k účtu úložiště.
+1. Otevřete okno příkazového řádku a zadejte následující příkaz pro přihlášení k účtu úložiště.
 
    ```bash
    azcopy login
    ```
 
-   Postupujte podle pokynů, které se zobrazí v okně příkazového řádku, a ověřte svůj uživatelský účet.
+   Podle pokynů, které se zobrazí v okně příkazového řádku, ověřte svůj uživatelský účet.
 
-2. Pokud chcete kopírovat data z účtu *. csv* , zadejte následující příkaz.
+2. Chcete-li kopírovat data z účtu *.csv,* zadejte následující příkaz.
 
    ```bash
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Nahraďte hodnotu zástupného symbolu `<csv-folder-path>` cestou k souboru *. csv* .
+   * Nahraďte `<csv-folder-path>` zástupnou hodnotu cestou k souboru *.csv.*
 
-   * Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
+   * `<storage-account-name>` Nahraďte zástupnou hodnotu názvem svého účtu úložiště.
 
-   * Zástupný symbol `<container-name>` nahraďte názvem kontejneru v účtu úložiště.
+   * Nahraďte `<container-name>` zástupný symbol názvem kontejneru v účtu úložiště.
 
 ## <a name="create-a-container-and-mount-it"></a>Vytvoření kontejneru a jeho připojení
 
-V této části vytvoříte kontejner a složku ve svém účtu úložiště.
+V této části vytvoříte kontejner a složku ve vašem účtu úložiště.
 
-1. V [Azure Portal](https://portal.azure.com)otevřete službu Azure Databricks, kterou jste vytvořili, a vyberte **Spustit pracovní prostor**.
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte na službu Azure Databricks, kterou jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
-2. Na levé straně vyberte **pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
+2. Vlevo vyberte **Pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
 
-    ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Vytvoření poznámkového bloku v datacihlech")
+    ![Vytvoření poznámkového bloku v datové cihly](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Vytvoření poznámkového bloku v datových cihlách")
 
-3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Jako jazyk vyberte **Python** a pak vyberte cluster Spark, který jste vytvořili dříve.
+3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Vyberte **Python** jako jazyk a pak vyberte cluster Spark, který jste vytvořili dříve.
 
 4. Vyberte **Vytvořit**.
 
-5. Zkopírujte následující blok kódu a vložte ho do první buňky, ale tento kód ještě nespouštějte.
+5. Zkopírujte a vložte následující blok kódu do první buňky, ale tento kód ještě nespouštějte.
 
     ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
@@ -161,15 +161,15 @@ V této části vytvoříte kontejner a složku ve svém účtu úložiště.
     extra_configs = configs)
     ```
 
-18. V tomto bloku kódu nahraďte `appId`, `password`, `tenant`a `storage-account-name` hodnoty zástupných symbolů v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte hodnotu zástupného symbolu `container-name` názvem kontejneru.
+18. V tomto bloku kódu `appId` `password`nahraďte hodnoty , , `tenant`a `storage-account-name` zástupný symbol v tomto bloku kódu hodnotami, které jste shromáždili při vyplňování předpokladů tohoto kurzu. Nahraďte `container-name` zástupnou hodnotu názvem kontejneru.
 
-19. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
+19. Stisknutím kláves **SHIFT + ENTER** spusťte kód v tomto bloku.
 
-   Ponechte tento poznámkový blok otevřený a později do něj přidejte příkazy.
+   Ponechte tento poznámkový blok otevřený, protože k němu později přidáte příkazy.
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Použití poznámkového bloku Databricks k převodu CSV na formát Parquet
 
-V poznámkovém bloku, který jste vytvořili dříve, přidejte novou buňku a vložte do této buňky následující kód. 
+Do dříve vytvořeného poznámkového bloku přidejte novou buňku a do této buňky vložte následující kód. 
 
 ```python
 # Use the previously established DBFS mount point to read the data.
@@ -185,7 +185,7 @@ print("Done")
 
 ## <a name="explore-data"></a>Zkoumání dat
 
-Do nové buňky vložte následující kód, který načte seznam souborů CSV odeslaných prostřednictvím AzCopy.
+Do nové buňky vložte následující kód, abyste získali seznam souborů CSV nahraných přes AzCopy.
 
 ```python
 import os.path
@@ -209,7 +209,7 @@ Teď můžete začít vytvářet dotazy na data, která jste nahráli do svého 
 
 Chcete-li vytvořit datové rámce pro zdroje dat, spusťte následující skript:
 
-* Nahraďte hodnotu zástupného symbolu `<csv-folder-path>` cestou k souboru *. csv* .
+* Nahraďte `<csv-folder-path>` zástupnou hodnotu cestou k souboru *.csv.*
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -238,7 +238,7 @@ flightDF.show(20, False)
 display(flightDF)
 ```
 
-Tento skript zadejte, pokud chcete spustit některé základní dotazy analýzy pro data.
+Zadejte tento skript a spusťte některé základní analytické dotazy proti datům.
 
 ```python
 # Run each of these queries, preferably in a separate cmd cell for separate analysis
@@ -272,7 +272,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků pro účet úložiště a vyberete **Odstranit**.
+Pokud už nejsou potřeba, odstraňte skupinu prostředků a všechny související prostředky. Chcete-li tak učinit, vyberte skupinu prostředků pro účet úložiště a vyberte **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

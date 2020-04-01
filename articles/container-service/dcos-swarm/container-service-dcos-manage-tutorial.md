@@ -1,5 +1,5 @@
 ---
-title: ZASTARALÉ Kurz Azure Container Service – Správa DC/OS
+title: (ZASTARALÉ) Kurz služby Azure Container Service – správa řadiče domény/operačního služby
 description: Kurz Azure Container Service – Správa DC/OS
 author: iainfoulds
 ms.service: container-service
@@ -8,17 +8,17 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402807"
 ---
-# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>ZASTARALÉ Kurz Azure Container Service – Správa DC/OS
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(ZASTARALÉ) Kurz služby Azure Container Service – správa řadiče domény/operačního služby
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý Start podrobně popisuje základní kroky potřebné k nasazení clusteru DC/OS a spuštění základní úlohy.
+DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý start podrobně popisuje základní kroky potřebné k nasazení clusteru DC/OS a spuštění základníúlohy.
 
 > [!div class="checklist"]
 > * Vytvoření clusteru ACS DC/OS
@@ -30,7 +30,7 @@ DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejner
 > * Základní správa DC/OS
 > * Odstranění clusteru DC/OS
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-dcos-cluster"></a>Vytvoření clusteru DC/OS
 

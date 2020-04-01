@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: použití konfigurace aplikací Azure ke správě příznaků funkcí'
+title: 'Kurz: Ke správě příznaků funkcí použijte konfiguraci aplikací Azure'
 titleSuffix: Azure App Configuration
-description: V tomto kurzu se naučíte spravovat příznaky funkcí odděleně od vaší aplikace pomocí Azure App Configuration.
+description: V tomto kurzu se dozvíte, jak spravovat příznaky funkcí odděleně od vaší aplikace pomocí konfigurace aplikace Azure.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -16,65 +16,65 @@ ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76899365"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Kurz: Správa příznaků funkcí v konfiguraci aplikací Azure
 
-V konfiguraci aplikací Azure můžete ukládat všechny příznaky funkcí a spravovat je na jednom místě. Konfigurace aplikace má uživatelské rozhraní portálu nazvané **správce funkcí** navržené speciálně pro příznaky funkcí. Konfigurace aplikace také nativně podporuje schéma dat příznaků funkcí .NET Core.
+Všechny příznaky funkcí můžete uložit do konfigurace aplikací Azure a spravovat je z jednoho místa. Konfigurace aplikace má uživatelské uživatelské nastavení portálu s názvem **Správce funkcí,** který je navržen speciálně pro příznaky funkcí. Konfigurace aplikace také nativně podporuje schéma dat s příznakem funkce .NET Core.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Definování a Správa příznaků funkcí v konfiguraci aplikace.
-> * Přístup k příznakům funkcí z vaší aplikace
+> * Definujte a spravujte příznaky funkcí v konfiguraci aplikace.
+> * Přístup k příznakům funkcí z vaší aplikace.
 
-## <a name="create-feature-flags"></a>Vytváření příznaků funkcí
+## <a name="create-feature-flags"></a>Vytvořit příznaky prvků
 
-Správce funkcí v konfiguraci aplikace Azure Portal for App poskytuje uživatelské rozhraní pro vytváření a správu příznaků funkcí, které používáte ve svých aplikacích.
+Správce funkcí na portálu Azure pro konfiguraci aplikací poskytuje nové nastavení pro vytváření a správu příznaků funkcí, které používáte ve svých aplikacích.
 
 Přidání nového příznaku funkce:
 
-1. Vyberte **správce funkcí** >  **+ Přidat** pro přidání příznaku funkce.
+1. Vyberte **Správce** > funkcí **+Přidat,** chcete-li přidat příznak prvku.
 
     ![Seznam příznaků funkcí](./media/azure-app-configuration-feature-flags.png)
 
-1. Zadejte jedinečný název klíče pro příznak funkce. Tento název budete potřebovat pro odkazování na příznak ve vašem kódu.
+1. Zadejte jedinečný název klíče příznaku prvku. Tento název potřebujete k odkazování na příznak ve vašem kódu.
 
-1. Pokud chcete, zadejte příznak funkce Popis.
+1. Pokud chcete, zadejte popis příznaku prvku.
 
-1. Nastavte počáteční stav příznaku funkce. Tento stav je obvykle *vypnutý* nebo *zapnutý*. Pokud přidáte filtr do příznaku funkce, změní se stav *zapnuto* na *podmíněný* .
+1. Nastavte počáteční stav příznaku prvku. Tento stav je obvykle *vypnuto* nebo *zapnuto*. *Stav Zapnuto* se změní na *Podmíněný,* pokud přidáte filtr do příznaku prvku.
 
-    ![Vytváření příznaků funkcí](./media/azure-app-configuration-feature-flag-create.png)
+    ![Vytvoření příznaku prvku](./media/azure-app-configuration-feature-flag-create.png)
 
-1. Když je stav *zapnutý*, vyberte **+ Přidat filtr** a určete další podmínky, které se mají uvést do stavu. Zadejte vestavěný nebo vlastní klíč filtru a pak vyberte **+ Přidat parametr** pro přidružení jednoho nebo více parametrů k filtru. Mezi předdefinované filtry patří:
+1. Pokud je stav *Zapnuto*, vyberte **+Přidat filtr** a určete další podmínky pro kvalifikaci stavu. Zadejte předdefinovaný nebo vlastní klíč filtru a pak vyberte **+Přidat parametr** pro přidružení jednoho nebo více parametrů k filtru. Mezi vestavěné filtry patří:
 
     | Klíč | Parametry JSON |
     |---|---|
-    | Microsoft.Percentage | {"Value": 0-100%} |
-    | Microsoft.TimeWindow | {"Start": čas UTC, "konec": světový čas UTC} |
+    | Microsoft.Procento | {"Hodnota": 0-100 procent} |
+    | Microsoft.TimeWindow | {"Start": Čas UTC, "Konec": Čas UTC} |
 
-    ![Filtr příznaků funkcí](./media/azure-app-configuration-feature-flag-filter.png)
+    ![Filtr příznaku prvku](./media/azure-app-configuration-feature-flag-filter.png)
 
-## <a name="update-feature-flag-states"></a>Aktualizace stavů příznaků funkcí
+## <a name="update-feature-flag-states"></a>Aktualizovat stavy příznaku funkce
 
-Změna hodnoty stavu příznaku funkce:
+Změna hodnoty stavu příznaku prvku:
 
-1. Vyberte **správce funkcí**.
+1. Vyberte **Správce funkcí**.
 
-1. Napravo od příznaku funkce, který chcete upravit, vyberte tři tečky ( **...** ) a pak vyberte **Upravit**.
+1. Vpravo od příznaku prvku, který chcete upravit, vyberte tři tečky (**...**) a pak vyberte **Upravit**.
 
-1. Nastavte nový stav příznaku funkce.
+1. Nastavte nový stav příznaku prvku.
 
 ## <a name="access-feature-flags"></a>Přístup k příznakům funkcí
 
-Příznaky funkcí vytvořené správcem funkcí se ukládají a načítají jako běžné hodnoty klíčů. Jsou uchovávány v rámci speciální předpony oboru názvů `.appconfig.featureflag`. Chcete-li zobrazit základní hodnoty klíčů, použijte Průzkumníka konfigurace. Vaše aplikace může tyto hodnoty načíst pomocí zprostředkovatelů konfigurace aplikace, sad SDK, rozšíření příkazového řádku a rozhraní REST API.
+Příznaky prvků vytvořené Správcem funkcí jsou uloženy a načteny jako běžné hodnoty klíče. Jsou uchovávány pod předponou `.appconfig.featureflag`zvláštního oboru názvů . Chcete-li zobrazit hodnoty podkladových klíčů, použijte Průzkumník konfigurace. Aplikace můžete načíst tyto hodnoty pomocí zprostředkovatelů konfigurace konfigurace aplikace, sady SDK, rozšíření příkazového řádku a REST API.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak pomocí konfigurace aplikace spravovat příznaky funkcí a jejich stavy. Další informace o podpoře správy funkcí v konfiguraci aplikace a ASP.NET Core najdete v následujícím článku:
+V tomto kurzu jste se naučili spravovat příznaky funkcí a jejich stavy pomocí konfigurace aplikace. Další informace o podpoře správy funkcí v aplikaci Konfigurace a ASP.NET Core najdete v následujícím článku:
 
-* [Používání příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md)
+* [Použití příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md)

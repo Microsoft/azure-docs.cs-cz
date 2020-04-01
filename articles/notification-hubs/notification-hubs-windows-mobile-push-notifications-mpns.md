@@ -154,7 +154,7 @@ V této části vytvoříte aplikaci pro Windows Phone, která k registraci pou�
 V tomto jednoduchém příkladu jste vysílali nabízená oznámení pro všechna vaše zařízení Windows Phone 8. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)
+>[Nabízená oznámení odesílaná konkrétním zařízením](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)
 
 <!-- Images. -->
 [6]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-console-app.png

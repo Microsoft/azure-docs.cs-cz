@@ -1,6 +1,6 @@
 ---
-title: Podepsat uživatele on/out & volání Microsoft Graph (Android) – Microsoft Identity Platform | Azure
-description: Získání přístupového tokenu a volání Microsoft Graph nebo rozhraní API, která vyžadují přístupové tokeny z platformy Microsoft Identity Platform (Android)
+title: Přihlášení uživatelů k & volání microsoft graphu (Android) – platforma identit Microsoftu | Azure
+description: Získejte přístupový token a volejte Microsoft Graph nebo rozhraní API, které vyžadují přístupové tokeny z platformy identit microsoftu (Android)
 services: active-directory
 documentationcenter: dev-center-name
 author: mmacy
@@ -16,91 +16,91 @@ ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: a5333d5a8f0972dac80efe6c641c515102a2d714
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77917930"
 ---
-# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro Android 
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Kurz: Přihlášení uživatelů a volání Microsoft Graphu z aplikace pro Android 
 
 >[!NOTE]
->Tento kurz ukazuje zjednodušené příklady práce s MSAL pro Android. Pro zjednodušení používá tento kurz jenom režim jednoho účtu. Můžete také zobrazit úložiště a klonovat [předem nakonfigurovanou ukázkovou aplikaci](https://github.com/Azure-Samples/ms-identity-android-java/) a prozkoumat tak složitější scénáře. Podívejte se na [rychlý Start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android) , kde najdete další informace o ukázkové aplikaci, konfiguraci a registraci. 
+>Tento kurz ukazuje zjednodušené příklady, jak pracovat s MSAL pro Android. Pro jednoduchost tento kurz používá pouze režim jednoho účtu. Můžete také zobrazit repo a klonovat [předkonfigurované ukázkové aplikace](https://github.com/Azure-Samples/ms-identity-android-java/) prozkoumat složitější scénáře. Další informace o ukázkové aplikaci, konfiguraci a registraci naléháte na úvodní [matné](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android) úvodní obrazovce. 
 
-V tomto kurzu se dozvíte, jak integrovat aplikaci pro Android s platformou Microsoft identity pomocí knihovny ověřování Microsoft pro Android. Naučíte se, jak se přihlásit a odhlásit uživatele, získat přístupový token pro volání rozhraní Microsoft Graph API a vytvořit žádost o Graph API. 
+V tomto kurzu se dozvíte, jak integrovat aplikaci pro Android s platformou identit microsoftu pomocí Knihovny ověřování Microsoft pro Android. Dozvíte se, jak se přihlásit a odhlásit uživatele, získat přístupový token pro volání rozhraní Microsoft Graph API a požádat o rozhraní Graph API. 
 
 > [!div class="checklist"]
-> * Integrujte svou aplikaci pro Android s platformou Microsoft identity 
+> * Integrace aplikace pro Android s platformou Microsoft Identity Platform 
 > * Přihlášení uživatele 
 > * Získání přístupového tokenu pro volání rozhraní Microsoft Graph API 
-> * Volání rozhraní API pro Microsoft Graph 
-> * Odhlásit uživatele 
+> * Volání rozhraní Microsoft Graph API 
+> * Odhlášení uživatele 
 
-Po dokončení tohoto kurzu bude vaše aplikace přijímat přihlašování osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a také pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
+Po dokončení tohoto kurzu bude vaše aplikace přijímat přihlášení k osobním účtům Microsoft (včetně outlook.com, live.com a dalších) a také pracovních nebo školních účtů od jakékoli společnosti nebo organizace, která používá Azure Active Directory.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-## <a name="how-this-tutorial-works"></a>Jak tento kurz funguje
+## <a name="how-this-tutorial-works"></a>Jak tento výukový program funguje
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto kurzem funguje](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-Aplikace v tomto kurzu se bude přihlašovat uživatelům a získat data jménem. Tato data budou k dispozici prostřednictvím chráněného rozhraní API (Microsoft Graph API), které vyžaduje autorizaci a jsou chráněny platformou Microsoft identity.
+Aplikace v tomto kurzu se přihlásí uživatele a získat data jejich jménem. Tato data budou přístupná prostřednictvím chráněného rozhraní API (Microsoft Graph API), které vyžaduje autorizaci a je chráněno platformou identit microsoftu.
 
 A konkrétně:
 
-* Vaše aplikace se přihlásí k uživateli přes prohlížeč nebo Microsoft Authenticator a Portál společnosti Intune.
-* Koncový uživatel bude akceptovat oprávnění, která vaše aplikace požadovala.
-* Vaše aplikace se vydá přístupový token pro rozhraní Microsoft Graph API.
-* Přístupový token bude součástí požadavku HTTP webovému rozhraní API.
-* Zpracujte odpověď Microsoft Graph.
+* Vaše aplikace se přihlásí uživatele buď prostřednictvím prohlížeče nebo Microsoft Authenticator a Intune Portál společnosti.
+* Koncový uživatel přijme oprávnění, která vaše aplikace požadovala.
+* Vaší aplikaci bude vydán přístupový token pro rozhraní Microsoft Graph API.
+* Přístupový token bude součástí požadavku HTTP do webového rozhraní API.
+* Zpracujte odpověď aplikace Microsoft Graph.
 
-Tato ukázka používá knihovnu Microsoft Authentication Library pro Android (MSAL) k implementaci ověřování: [com. Microsoft. identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
+Tato ukázka používá knihovnu Microsoft Authentication pro Android (MSAL) k implementaci ověřování: [com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
 
- MSAL bude automaticky obnovovat tokeny, poskytovat jednotné přihlašování (SSO) mezi ostatními aplikacemi na zařízení a spravovat účty.
+ MSAL automaticky obnoví tokeny, doručuje jednotné přihlašování (SSO) mezi ostatními aplikacemi v zařízení a spravuje účet(y).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-* Tento kurz vyžaduje Android Studio verze 3.5 +.
+* Tento výukový program vyžaduje Android Studio verze 3.5+
 
-## <a name="create-a-project"></a>Vytvořit projekt
-Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a nastavte nový projekt. 
+## <a name="create-a-project"></a>Vytvoření projektu
+Pokud ještě nemáte aplikaci pro Android, postupujte podle následujících kroků k nastavení nového projektu. 
 
-1. Otevřete Android Studio a vyberte **Spustit nový Android Studio projekt**.
-2. Vyberte možnost **základní aktivita** a vyberte možnost **Další**.
+1. Otevřete Android Studio a vyberte **Spustit nový projekt Android Studio**.
+2. Vyberte **Základní aktivita** a vyberte **Další**.
 3. Pojmenujte svoji aplikaci.
-4. Uložte název balíčku. Později ji zadáte do Azure Portal.
+4. Uložte název balíčku. Později ji zadáte na portál Azure.
 5. Změňte jazyk z **Kotlin** na **Java**.
-6. Nastavte **minimální úroveň rozhraní API** na **rozhraní API 19** nebo vyšší a klikněte na **Dokončit**.
-7. V zobrazení projektu vyberte v rozevíracím seznamu **projekt** a zobrazte zdrojové a nezdrojové soubory projektu, otevřete **App/Build. gradle** a nastavte `targetSdkVersion` na `28`.
+6. Nastavte **minimální úroveň rozhraní API** na **rozhraní API 19** nebo vyšší a klepněte na tlačítko **Dokončit**.
+7. V zobrazení projektu zvolte **Project** v rozevírací části, chcete-li zobrazit zdrojové a `28`nezdrojové soubory projektu, otevřít **aplikaci/build.gradle** a nastavit `targetSdkVersion` na .
 
-## <a name="integrate-with-microsoft-authentication-library"></a>Integrace s Microsoft Authentication Library 
+## <a name="integrate-with-microsoft-authentication-library"></a>Integrace s knihovnou ověřování microsoftu 
 
 ### <a name="register-your-application"></a>Registrace vaší aplikace
 
-1. Přejděte na [Azure Portal](https://aka.ms/MobileAppReg).
-2. Otevřete okno [Registrace aplikací](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a klikněte na **+ Nová registrace**.
-3. Zadejte **název** vaší aplikace a pak **bez** nastavení identifikátoru URI přesměrování klikněte na **zaregistrovat**.
-4. V části **Správa** v podokně, které se zobrazí, vyberte **ověřování** >  **+ Přidat platformu** > **Android**. (V horní části okna možná budete muset vybrat možnost "přepnout na nové prostředí", abyste viděli tuto část.)
-5. Zadejte název balíčku vašeho projektu. Pokud jste kód stáhli, je tato hodnota `com.azuresamples.msalandroidapp`.
-6. V části **Signature hash** na stránce **Konfigurace aplikace pro Android** klikněte na **vygenerovat hodnotu hash signatury pro vývoj.** a zkopírujte příkaz nástroje nástroje, který se má použít pro vaši platformu.
+1. Přejděte na [portál Azure](https://aka.ms/MobileAppReg).
+2. Otevřete [okno Registrace aplikací](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a klikněte na **+Nová registrace**.
+3. Zadejte **název** aplikace a **bez** nastavení identifikátoru URI přesměrování klikněte na **Registrovat**.
+4. V části **Spravovat** v podokně, které se zobrazí, vyberte **Authentication** > **+ Add a platform** > **Android**. (Možná budete muset vybrat "Přepnout na nové prostředí" v horní části okna, abyste viděli tuto část)
+5. Zadejte název balíčku projektu. Pokud jste kód stáhli, `com.azuresamples.msalandroidapp`je tato hodnota .
+6. V části **Hodnotit hodnotu hash podpisu** na stránce **Konfigurace aplikace pro Android** klikněte na Generování **hash podpisu vývoje.** a zkopírujte příkaz KeyTool pro vaši platformu.
 
    > [!Note]
-   > Nástroj Tool. exe je nainstalován jako součást sady Java Development Kit (JDK). Je také nutné nainstalovat nástroj OpenSSL pro spuštění příkazu nástroje. Další informace najdete v [dokumentaci k Androidu o generování klíče](https://developer.android.com/studio/publish/app-signing#generate-key) . 
+   > KeyTool.exe je nainstalován jako součást Java Development Kit (JDK). Chcete-li spustit příkaz KeyTool, musíte také nainstalovat nástroj OpenSSL. Další informace naleznete v dokumentaci k [systému Android o generování klíče.](https://developer.android.com/studio/publish/app-signing#generate-key) 
 
-7. Zadejte **hodnotu hash podpisu** generovanou nástrojem.
-8. Klikněte na `Configure` a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace Androidu** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Done** (Hotovo).
+7. Zadejte **hodnotu hash podpisu** vygenerovanou nástrojem KeyTool.
+8. Klikněte `Configure` a uložte **konfiguraci MSAL,** která se zobrazí na **konfigurační** stránce Androidu, abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Done** (Hotovo).
 
 ### <a name="configure-your-application"></a>Konfigurace aplikace 
 
-1. V podokně projektu Android Studio přejděte na **app\src\main\res**.
-2. Klikněte pravým tlačítkem na **res** a vyberte **Nový** > **adresář**. Jako název nového adresáře zadejte `raw` a klikněte na **OK**.
-3. V části **app** > **src** > **Main** > **res** > **raw**vytvořte nový soubor JSON s názvem `auth_configbn_single_account.json` a vložte konfiguraci MSAL, kterou jste předtím uložili. 
+1. V podokně projektů aplikace Android Studio přejděte na **app\src\main\res**.
+2. Klepněte pravým tlačítkem myši na **položku Res** a zvolte **Nový** > **adresář**. Zadejte `raw` jako nový název adresáře a klepněte na tlačítko **OK**.
+3. V **aplikaci** > **src** > **hlavní** > **res** > **raw**, `auth_configbn_single_account.json` vytvořte nový soubor JSON s názvem a vložte konfiguraci MSAL, kterou jste uložili dříve. 
 
-    Pod identifikátorem URI přesměrování vložte: 
+    Pod identifikátor URI přesměrování vložte: 
     ```json
       "account_mode" : "SINGLE",
     ```
-    Konfigurační soubor by měl vypadat podobně jako v tomto příkladu: 
+    Konfigurační soubor by měl vypadat takto: 
     ```json   
     {
       "client_id" : "0984a7b6-bc13-4141-8b0d-8f767e136bb7",
@@ -120,9 +120,9 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
    ```
     
    >[!NOTE]
-   >Tento kurz ukazuje, jak nakonfigurovat aplikaci v režimu jednoho účtu. Podívejte se na dokumentaci, kde najdete další informace o [jednom nebo víc režimech účtů](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account) a [konfiguraci aplikace](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) .
+   >Tento kurz ukazuje pouze, jak nakonfigurovat aplikaci v režimu jednoho účtu. Další informace o [režimu jednoho vs. více účtu](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account) a [konfiguraci aplikace nawebují dokumentaci.](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)
    
-4. Do části **app** > **src** > **Main** > **souboru AndroidManifest. XML**přidejte `BrowserTabActivity` aktivitu do těla aplikace. Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
+4. V **aplikaci** > **src** > **hlavní** > **AndroidManifest.xml**, přidejte aktivitu `BrowserTabActivity` níže do těla aplikace. Tato položka umožňuje společnosti Microsoft volat zpět do vaší aplikace po dokončení ověřování:
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -139,16 +139,16 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
     </activity>
     ```
 
-    Pro `android:host=` hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal.
-    Hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal, nahraďte hodnotou `android:path=`. Hodnota hash **podpisu by neměla být kódovaná** v adrese URL. Zajistěte, aby na začátku hodnoty hash podpisu existovala úvodní `/`. 
+    `android:host=` Nahraďte hodnotu názvem balíčku, který jste zaregistrovali na portálu Azure.
+    Nahraďte hodnotu hodnotou hodnotu `android:path=` hodnotou hodnotu hodnotou hodnotu hodnotou hodnoty pomocí hodnoty hodnoty hash klíče, který jste zaregistrovali na portálu Azure. Algoritmus hash podpisu by **neměl** být kódován adresou URL. Ujistěte se, `/` že je vedoucí na začátku vašeho podpisu hash. 
     >[!NOTE]
-    >Název balíčku nahradíte `android:host` hodnota by měla vypadat nějak takto: "com. azuresamples. msalandroidapp" signatura "hash", nahradíte hodnotu `android:path` by měla vypadat nějak takto: "/1wIqXSqBj7w + h11ZifsnqwgyKrY =" tyto hodnoty bude možné najít v okně ověřování registrace vaší aplikace. Všimněte si, že váš identifikátor URI pro přesměrování bude vypadat nějak takto: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". I když je hodnota hash podpisu na konci této hodnoty zakódovaná, hodnota hash signatury by **neměla být v** hodnotě `android:path` kódovaná. 
+    >"Název balíčku", který `android:host` nahradíte hodnotou, by měl vypadat podobně jako: "com.azuresamples.msalandroidapp" "Signature Hash", který nahradíte, `android:path` by měl vypadat podobně jako: "/1wIqXSqBj7w+h11ZifsnqwgyKrY=" Tyto hodnoty budete moci také najít v okně Ověřování registrace aplikace. Všimněte si, že identifikátor URI přesměrování bude vypadat podobně jako: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Zatímco hodnota hash podpisu je kódována na konci této hodnoty, hodnota hash `android:path` podpisu by **neměla** být kódována ve vaší hodnotě. 
 
-## <a name="use-msal"></a>Použití MSAL 
+## <a name="use-msal"></a>Použití funkce MSAL 
 
-### <a name="add-msal-to-your-project"></a>Přidání MSAL do projektu
+### <a name="add-msal-to-your-project"></a>Přidání msal do projektu
 
-1. V okně Android Studio projektu přejděte do **app** > **Src** > **Build. Gradle** a přidejte následující: 
+1. V okně projektu Android Studio přejděte na **aplikaci** > **src** > **build.gradle** a přidejte následující: 
 
     ```gradle
     repositories{
@@ -166,7 +166,7 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
 
 ### <a name="required-imports"></a>Požadované importy 
 
-Do horní části **aplikace** přidejte následující > **src** > **Main**> **Java** > **com. Příklad (yourapp)**  > **MainActivity. Java** 
+Přidejte následující do horní části **aplikace** > **src** > **hlavní**> **java** > **com.example(yourapp)** > **MainActivity.java** 
 
 ```java
 import android.os.Bundle;
@@ -190,7 +190,7 @@ import com.microsoft.identity.client.*;
 import com.microsoft.identity.client.exception.*;
 ```
 
-## <a name="instantiate-publicclientapplication"></a>Vytvoření instance PublicClientApplication
+## <a name="instantiate-publicclientapplication"></a>Vytvořit instanci aplikace PublicClientApplication
 #### <a name="initialize-variables"></a>Inicializovat proměnné 
 ```java
 private final static String[] SCOPES = {"File.Read"};
@@ -209,8 +209,8 @@ TextView logTextView;
 TextView currentUserTextView;
 ```
 
-### <a name="oncreate"></a>onCreate
-V rámci třídy `MainActivity` použijte následující metodu Create () pro vytvoření instance MSAL pomocí `SingleAccountPublicClientApplication`.
+### <a name="oncreate"></a>přiVytvořit
+Uvnitř `MainActivity` třídy, naleznete následující onCreate() metoda k vytvoření instance `SingleAccountPublicClientApplication`MSAL pomocí .
 
 ```java
 @Override
@@ -267,8 +267,8 @@ private void loadAccount() {
 }
 ```
 
-### <a name="initializeui"></a>initializeUI
-Naslouchat tlačítkům a volat metody nebo protokolovat chyby. 
+### <a name="initializeui"></a>inicializovatUu
+Poslouchejte tlačítka a metody volání nebo protokolovat chyby odpovídajícím způsobem. 
 ```java
 private void initializeUI(){
         signInButton = findViewById(R.id.signIn);
@@ -334,7 +334,7 @@ private void initializeUI(){
 ```
 
 > [!Important]
-> Odhlášení pomocí MSAL odebere všechny známé informace o uživateli z aplikace, ale uživatel bude na svém zařízení mít stále aktivní relaci. Pokud se uživatel pokusí přihlásit znovu, může se jim zobrazit přihlašovací uživatelské rozhraní, ale nemusí znovu zadávat svoje přihlašovací údaje, protože relace zařízení je stále aktivní. 
+> Odhlášení pomocí služby MSAL odebere všechny známé informace o uživateli z aplikace, ale uživatel bude mít stále aktivní relaci na svém zařízení. Pokud se uživatel pokusí znovu přihlásit, může se mu zobrazit uživatelské rozhraní pro přihlášení, ale nemusí být nutné znovu zadat svá pověření, protože relace zařízení je stále aktivní. 
 
 ### <a name="getauthinteractivecallback"></a>getAuthInteractiveCallback
 Zpětné volání používané pro interaktivní požadavky.
@@ -388,7 +388,7 @@ private SilentAuthenticationCallback getAuthSilentCallback() {
 
 ## <a name="call-microsoft-graph-api"></a>Volání rozhraní API Microsoft Graphu 
 
-Následující kód ukazuje, jak volat GraphAPI pomocí sady Graph SDK. 
+Následující kód ukazuje, jak volat GraphAPI pomocí sady SDK grafu. 
 
 ### <a name="callgraphapi"></a>callGraphAPI 
 
@@ -427,12 +427,12 @@ private void callGraphAPI(IAuthenticationResult authenticationResult) {
 }
 ```
 
-## <a name="add-ui"></a>Přidat uživatelské rozhraní
+## <a name="add-ui"></a>Přidat ui
 ### <a name="activity"></a>Aktivita 
-Pokud chcete vytvořit model uživatelského rozhraní mimo tento kurz, následující metody poskytují návod k aktualizaci textu a naslouchání tlačítkům.
+Pokud chcete modelovat vaše ui z tohoto kurzu, následující metody poskytují návod k aktualizaci textu a poslechu tlačítek.
 
-#### <a name="updateui"></a>updateUI
-Povolí nebo zakáže tlačítka na základě stavu přihlášení a nastavení textu.  
+#### <a name="updateui"></a>aktualizaceUI
+Povolte nebo zakažte tlačítka na základě stavu přihlášení a nastavte text.  
 ```java 
 private void updateUI(@Nullable final IAccount account) {
     if (account != null) {
@@ -451,7 +451,7 @@ private void updateUI(@Nullable final IAccount account) {
     }
 }
 ```
-#### <a name="displayerror"></a>displayError
+#### <a name="displayerror"></a>chyba_
 ```java 
 private void displayError(@NonNull final Exception exception) {
        logTextView.setText(exception.toString());
@@ -466,7 +466,7 @@ private void displayGraphResult(@NonNull final JsonObject graphResponse) {
   }
 ```
 #### <a name="performoperationonsignout"></a>performOperationOnSignOut
-Metoda, která aktualizuje text v uživatelském rozhraní, aby odrážel odhlášení 
+Metoda aktualizace textu v ui tak, aby odráželodhlásit. 
 
 ```java
 private void performOperationOnSignOut() {
@@ -478,7 +478,7 @@ private void performOperationOnSignOut() {
 ```
 ### <a name="layout"></a>Rozložení 
 
-Ukázka `activity_main.xml` souboru pro zobrazení tlačítek a textových polí. 
+Ukázkový `activity_main.xml` soubor pro zobrazení tlačítek a textových polí. 
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -571,23 +571,23 @@ Ukázka `activity_main.xml` souboru pro zobrazení tlačítek a textových polí
 
 ### <a name="run-locally"></a>Spuštění v místním prostředí
 
-Sestavte a nasaďte aplikaci do testovacího zařízení nebo emulátoru. Měli byste být schopni se přihlásit a získat tokeny pro účty Azure AD nebo osobní účty Microsoft.
+Vytvořte a nasaďte aplikaci do testovacího zařízení nebo emulátoru. Měli byste být schopni se přihlásit a získat tokeny pro Azure AD nebo osobní účty Microsoft.
 
-Po přihlášení aplikace zobrazí data vrácená z Microsoft Graph koncového bodu `/me`.
+Po přihlášení se v aplikaci zobrazí data vrácená z koncového bodu Microsoft Graphu. `/me`
 
-### <a name="consent"></a>Souhlas
+### <a name="consent"></a>Souhlasu
 
-Když se uživatel poprvé přihlásí do vaší aplikace, zobrazí se mu výzva společnosti Microsoft pro vyjádření souhlasu s požadovanými oprávněními. Někteří klienti Azure AD mají zakázaný souhlas s uživatelem, který vyžaduje, aby správci měli souhlas jménem všech uživatelů. Pro podporu tohoto scénáře musíte buď vytvořit vlastního tenanta, nebo přijmout souhlas správce. 
+Při prvním přihlášení uživatele do vaší aplikace bude identita Microsoftu vyzvána k souhlasu s požadovanými oprávněními. Někteří klienti Azure AD zakázali souhlas uživatelů, což vyžaduje, aby správci souhlasili jménem všech uživatelů. Chcete-li tento scénář podpořit, budete muset buď vytvořit vlastního tenanta nebo získat souhlas správce. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .
+Když už nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace.](#register-your-application)
 
 ## <a name="get-help"></a>Podpora
 
-Pokud máte potíže s tímto kurzem nebo s platformou Microsoft identity, přejděte na [pomoc a podpora](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) .
+Pokud máte potíže s tímto kurzem nebo s platformou identit microsoftu, navštivte [nápovědu a podporu.](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)
 
-Pomůžeme nám vylepšit platformu Microsoft identity. Řekněte nám, co si myslíte, díky krátkému průzkumu dvou dotazů.
+Pomozte nám vylepšit platformu identit Microsoftu. Řekněte nám, co si myslíte, že dokončení krátké hod-průzkum u dvou otázek.
 
 > [!div class="nextstepaction"]
-> [Microsoft Identity Platform Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Průzkum platformy identity Microsoftu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

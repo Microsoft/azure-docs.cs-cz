@@ -1,6 +1,6 @@
 ---
 title: Jak provádět dotazy na tabulková data ve službě Azure Cosmos DB?
-description: Naučte se, jak zadávat dotazy na data uložená v Azure Cosmos DB rozhraní API pro tabulky účtu pomocí filtrů OData a dotazů LINQ.
+description: Zjistěte, jak dotazovat data uložená v účtu Rozhraní API tabulky Azure Cosmos DB pomocí filtrů OData a dotazů LINQ
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770488"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
@@ -48,7 +48,7 @@ Vzhledem k tomu, že vlastnosti PartitionKey (Klíč oddílu) a RowKey (Klíč �
 ```
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
-**Results**
+**Výsledky**
 
 | PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
@@ -74,7 +74,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 Další informace o vytváření výrazů filtru pro různé datové typy najdete v tématu [Dotazování tabulek a entit](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
 
-**Results**
+**Výsledky**
 
 | PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |

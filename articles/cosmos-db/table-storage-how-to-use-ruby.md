@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Cosmos DB rozhraní API pro tabulky a Azure Table Storage s Ruby
+title: Použití rozhraní Azure Cosmos DB Table API a Azure Table Storage s Ruby
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770878"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí Ruby
@@ -71,7 +71,7 @@ table_client = Azure::Storage::Table::TableService.new(client: common_client)
 ```
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
-Objekt **Azure::Storage::Table::TableService** umožňuje pracovat s tabulkami a entitami. Pokud chcete vytvořit tabulku, použijte metodu **create_table()** . Následující příklad vytvoří tabulku nebo vypíše chybu, pokud tabulka již existuje.
+Objekt **Azure::Storage::Table::TableService** umožňuje pracovat s tabulkami a entitami. Pokud chcete vytvořit tabulku, použijte metodu **create_table()**. Následující příklad vytvoří tabulku nebo vypíše chybu, pokud tabulka již existuje.
 
 ```ruby
 azure_table_service = Azure::Storage::Table::TableService.new
@@ -99,7 +99,7 @@ Existující entitu můžete aktualizovat několika metodami:
 * **insert_or_merge_entity():** Aktualizuje existující entitu tím, že ji nahradí. Pokud žádná entita neexistuje, vloží se nová entita:
 * **insert_or_replace_entity():** Aktualizuje existující entitu tím, že s ní sloučí nové hodnoty vlastností. Pokud žádná entita neexistuje, vloží se nová entita.
 
-Následující příklad ukazuje aktualizaci entity pomocí metody **update_entity()** :
+Následující příklad ukazuje aktualizaci entity pomocí metody **update_entity()**:
 
 ```ruby
 entity = { "content" => "test entity with updated content",
@@ -107,7 +107,7 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-V případě metod **update_entity()** a **merge_entity()** platí, že pokud aktualizovaná entita neexistuje, operace aktualizace selže. Proto pokud chcete entitu uložit bez ohledu na to, jestli již existuje, měli byste místo toho použít metodu **insert_or_replace_entity()** nebo **insert_or_merge_entity()** .
+V případě metod **update_entity()** a **merge_entity()** platí, že pokud aktualizovaná entita neexistuje, operace aktualizace selže. Proto pokud chcete entitu uložit bez ohledu na to, jestli již existuje, měli byste místo toho použít metodu **insert_or_replace_entity()** nebo **insert_or_merge_entity()**.
 
 ## <a name="work-with-groups-of-entities"></a>Práce se skupinami entit
 Někdy má smysl odeslat více operací společně v dávce, aby se zajistilo jejich atomické zpracování serverem. Uděláte to tak, že nejprve vytvoříte objekt **Batch** a pak použijete metodu **execute_batch()** pro objekt **TableService**. Následující příklad ukazuje odeslání dvou entit s RowKey 2 a 3 v dávce. Poznámka: Tento přístup funguje pouze pro entity se stejnou hodnotou PartitionKey.
@@ -131,7 +131,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 ```
 
 ## <a name="query-a-set-of-entities"></a>Dotaz na sadu entit
-Pokud chcete zadat dotaz na sadu entit v tabulce, vytvořte objekt hash dotazu a použijte metodu **query_entities()** . Následující příklad ukazuje získání všech entit se stejnou hodnotou **PartitionKey**:
+Pokud chcete zadat dotaz na sadu entit v tabulce, vytvořte objekt hash dotazu a použijte metodu **query_entities()**. Následující příklad ukazuje získání všech entit se stejnou hodnotou **PartitionKey**:
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }
@@ -153,7 +153,7 @@ result, token = azure_table_service.query_entities("testtable", query)
 ```
 
 ## <a name="delete-an-entity"></a>Odstranění entity
-Pokud chcete odstranit entitu, použijte metodu **delete_entity()** . Předejte do ní název tabulky, která entitu obsahuje, a PartitionKey a RowKey entity.
+Pokud chcete odstranit entitu, použijte metodu **delete_entity()**. Předejte do ní název tabulky, která entitu obsahuje, a PartitionKey a RowKey entity.
 
 ```ruby
 azure_table_service.delete_entity("testtable", "test-partition-key", "1")

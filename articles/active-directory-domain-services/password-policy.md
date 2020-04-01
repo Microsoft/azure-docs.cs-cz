@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613193"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475951"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady uzamčení hesel a účtů ve spravovaných doménách
 
@@ -105,20 +105,20 @@ Chcete-li vytvořit vlastní zásady hesel, použijte nástroje pro správu slu�
     * Nastavení, jako je složitost hesla, věk nebo doba vypršení platnosti jenom pro uživatele ručně vytvořené ve spravované doméně Azure AD DS.
     * Nastavení uzamčení účtu platí pro všechny uživatele, ale projeví se jenom v rámci spravované domény a ne v samotné azure ad.
 
-    ![Vytvoření vlastní choujecí zásady hesel](./media/how-to/custom-fgpp.png)
+    ![Vytvoření vlastní choujecí zásady hesel](./media/password-policy/custom-fgpp.png)
 
 1. Zrušit zaškrtnutí **políčka Chránit před náhodným odstraněním**. Pokud je tato volba vybraná, fgpp nelze uložit.
 1. V části **Přímo se vztahuje na** vyberte tlačítko **Přidat.** V dialogovém okně **Vybrat uživatele nebo skupiny** vyberte tlačítko **Umístění.**
 
-    ![Vyberte uživatele a skupiny, na které chcete použít zásady hesel.](./media/how-to/fgpp-applies-to.png)
+    ![Vyberte uživatele a skupiny, na které chcete použít zásady hesel.](./media/password-policy/fgpp-applies-to.png)
 
 1. Zásady hesel lze použít pouze pro skupiny. V dialogovém okně **Umístění** rozbalte název domény, například *aaddscontoso.com*, a vyberte ou akci, například **Uživatele AADDC**. Pokud máte vlastní oupoložku, která obsahuje skupinu uživatelů, které chcete použít, vyberte tuto individuální oovou položku.
 
-    ![Vyberte ou, do které skupina patří.](./media/how-to/fgpp-container.png)
+    ![Vyberte ou, do které skupina patří.](./media/password-policy/fgpp-container.png)
 
 1. Zadejte název skupiny, na kterou chcete zásadu použít, a pak vyberte **Zkontrolovat názvy,** abyste ověřili, zda skupina existuje.
 
-    ![Vyhledejte a vyberte skupinu, která má použít FGPP.](./media/how-to/fgpp-apply-group.png)
+    ![Vyhledejte a vyberte skupinu, která má použít FGPP.](./media/password-policy/fgpp-apply-group.png)
 
 1. S názvem skupiny, kterou jste vybrali, se nyní zobrazí v části **Přímo se vztahuje na,** vyberte **OK,** chcete-li uložit vlastní zásady hesel.
 

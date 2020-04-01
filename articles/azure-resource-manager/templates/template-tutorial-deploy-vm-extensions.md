@@ -2,15 +2,15 @@
 title: Nasazení rozšíření virtuálních počítače pomocí šablony
 description: Zjistěte, jak nasazovat rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru.
 author: mumian
-ms.date: 11/13/2018
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 469948d3d3207dd684d5a9b752e0c448ac7e83a9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239265"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477595"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Kurz: Nasazení rozšíření virtuálních strojů pomocí šablon ARM
 
@@ -76,25 +76,25 @@ Ke stávající šabloně s následujícím obsahem přidejte prostředek rozš�
 
 ```json
 {
-    "type": "Microsoft.Compute/virtualMachines/extensions",
-    "apiVersion": "2018-06-01",
-    "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
-    "location": "[parameters('location')]",
-    "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
-    ],
-    "properties": {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.7",
-        "autoUpgradeMinorVersion":true,
-        "settings": {
-            "fileUris": [
-                "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
-            ],
-            "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
-        }
-    }
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "apiVersion": "2018-06-01",
+  "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+      "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
+  ],
+  "properties": {
+      "publisher": "Microsoft.Compute",
+      "type": "CustomScriptExtension",
+      "typeHandlerVersion": "1.7",
+      "autoUpgradeMinorVersion":true,
+      "settings": {
+        "fileUris": [
+          "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
+        ],
+        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
+      }
+  }
 }
 ```
 
@@ -104,6 +104,27 @@ Další informace o této definici prostředků naleznete v [odkazu na rozšíř
 * **dependsOn**: Vytvořte prostředek rozšíření po vytvoření virtuálního počítače.
 * **fileUris**: Umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete nepoužívat zadaný umístění, je třeba aktualizovat hodnoty.
 * **commandToExecute**: Tento příkaz vyvolá skript.
+
+Je také nutné otevřít port HTTP, abyste měli přístup k webovému serveru.
+
+1. V šabloně najdete **pravidla zabezpečení.**
+1. Přidejte následující pravidlo vedle **default-allow-3389**.
+
+    ```json
+    {
+      "name": "AllowHTTPInBound",
+      "properties": {
+        "priority": 1010,
+        "access": "Allow",
+        "direction": "Inbound",
+        "destinationPortRange": "80",
+        "protocol": "Tcp",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "*"
+      }
+    }
+    ```
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 

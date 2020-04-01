@@ -1,6 +1,6 @@
 ---
 title: Aktualizace firmwaru zařízení přes službu Azure IoT Hub | Microsoft Docs
-description: Naučte se implementovat proces aktualizace firmwaru zařízení, který se dá aktivovat z back-endové aplikace připojené ke službě IoT Hub.
+description: Zjistěte, jak implementovat proces aktualizace firmwaru zařízení, který se dá aktivovat z back-endové aplikace připojené k centru IoT Hub.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.custom: mvc
 ms.openlocfilehash: fdd2eb2ca1a0e6b93cd3f7a75beeb8057a4ea19c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78674370"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementace procesu aktualizace firmwaru zařízení
 
 U zařízení připojených k centru IoT možná budete potřebovat aktualizovat firmware. Například můžete do firmwaru chtít přidat nové funkce nebo implementovat opravy zabezpečení. V řadě scénářů IoT je nepraktické být fyzicky u zařízení a pak na ně ručně instalovat aktualizace firmwaru. Tento kurz ukazuje, jak můžete začít a vzdáleně monitorovat proces aktualizace firmwaru prostřednictvím back-endové aplikace připojené k centru.
 
-Za účelem vytvoření a monitorování procesu aktualizace firmwaru back-endová aplikace v tomto kurzu vytvoří _konfiguraci_ ve vašem centru IoT. [Automatická správa zařízení](iot-hub-auto-device-config.md) ve službě IoT Hub pomocí této konfigurace aktualizuje sadu _požadovaných vlastností dvojčete zařízení_ na všech vašich chladících zařízeních. Požadované vlastnosti určují podrobnosti o nutné aktualizaci firmwaru. Chladící zařízení během procesu aktualizace firmwaru hlásí svůj stav do back-endové aplikace pomocí _ohlášených vlastností dvojčete zařízení_. Back-endová aplikace může pomocí konfigurace monitorovat ohlášené vlastnosti odesílané ze zařízení a sledovat proces aktualizace firmwaru až do konce:
+Za účelem vytvoření a monitorování procesu aktualizace firmwaru back-endová aplikace v tomto kurzu vytvoří _konfiguraci_ ve vašem centru IoT. Automatická správa [zařízení](iot-hub-auto-device-config.md) ioT Hubu používá tuto konfiguraci k aktualizaci sady _požadovaných vlastností dvojčete zařízení_ na všech vašich chladicích zařízeních. Požadované vlastnosti určují podrobnosti o nutné aktualizaci firmwaru. Chladící zařízení během procesu aktualizace firmwaru hlásí svůj stav do back-endové aplikace pomocí _ohlášených vlastností dvojčete zařízení_. Back-endová aplikace může pomocí konfigurace monitorovat ohlášené vlastnosti odesílané ze zařízení a sledovat proces aktualizace firmwaru až do konce:
 
 ![Proces aktualizace firmwaru](media/tutorial-firmware-update/Process.png)
 
@@ -34,11 +34,11 @@ V tomto kurzu provedete následující úlohy:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node. js v10 za účelem. x. x nebo novější.
+Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Potřebujete Node.js v10.x.x nebo novější ve vývojovém počítači.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 
@@ -50,7 +50,7 @@ node --version
 
 Stáhněte si ukázkový projekt Node.js z https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip a extrahujte archiv ZIP.
 
-Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+Zkontrolujte, zda je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="set-up-azure-resources"></a>Nastavení prostředků Azure
 
@@ -98,7 +98,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>Spuštění aktualizace firmwaru
 
-V back-endové aplikaci vytvoříte [konfiguraci automatické správy zařízení](iot-hub-automatic-device-management.md#create-a-configuration), která zahájí proces aktualizace firmwaru na všech zařízeních se značkou **devicetype** s hodnotou chiller (chladič). V této části najdete postup následujících úloh:
+Vytvoření konfigurace [automatické správy zařízení](iot-hub-automatic-device-management.md#create-a-configuration) v back-end ové aplikaci a zahájením procesu aktualizace firmwaru na všech zařízeních označených **typem zařízení** chladiče. V této části najdete postup následujících úloh:
 
 * Vytvoření konfigurace z back-endové aplikace
 * Monitorování úlohy až do konce
@@ -185,7 +185,7 @@ Následující snímek obrazovky ukazuje výstup z back-endové aplikace a je na
 
 ![Back-endová aplikace](./media/tutorial-firmware-update/BackEnd2.png)
 
-Vzhledem k tomu, že automatické konfigurace zařízení běží v době vytváření a pak každých pět minut, se nemusí zobrazit každá aktualizace stavu odesílaná do back-endové aplikace. Metriky můžete zobrazit také na portálu v části **Automatická správa zařízení > Konfigurace zařízení IoT** vašeho centra IoT:
+Vzhledem k tomu, že automatické konfigurace zařízení spustit v době vytvoření a potom každých pět minut, nemusí zobrazit všechny aktualizace stavu odeslané do aplikace back-end. Metriky můžete zobrazit také na portálu v části **Automatická správa zařízení > Konfigurace zařízení IoT** vašeho centra IoT:
 
 ![Zobrazení konfigurace na portálu](./media/tutorial-firmware-update/portalview.png)
 
@@ -204,7 +204,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. Přejděte k dalšímu kurzu, kde se dozvíte, jak pomocí nástrojů portálu Azure IoT Hub a příkazů Azure CLI testovat připojení zařízení.
+V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. Přejdete k dalšímu kurzu, kde se dozvíte, jak používat nástroje portálu Azure IoT Hub a příkazy Rozhraní příkazového příkazu Azure k testování připojení zařízení.
 
 > [!div class="nextstepaction"]
 > [Použití simulovaného zařízení pro otestování připojení k IoT Hubu](tutorial-connectivity.md)

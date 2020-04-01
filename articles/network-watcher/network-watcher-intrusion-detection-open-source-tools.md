@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845019"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474924"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Provádění zjišťování narušení sítě pomocí nástroje Sledování sítě a open source
 
@@ -38,7 +38,7 @@ Oba nástroje s otevřeným zdrojovým kódem lze nastavit na virtuálním poč�
 
 ### <a name="install-suricata"></a>Instalace Suricata
 
-Všechny ostatní způsoby instalace naleznete nahttps://suricata.readthedocs.io/en/latest/install.html
+Všechny ostatní způsoby instalace naleznete nahttps://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. V terminálu příkazového řádku virtuálního počítače spusťte následující příkazy:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření aplikace pro monitorování spotřeby vody pomocí Azure IoT Central'
-description: 'Kurz: Naučte se vytvářet aplikace pro monitorování spotřeby vody pomocí šablon aplikací Azure IoT Central.'
+title: 'Kurz: Vytvoření aplikace pro monitorování spotřeby vody s Azure IoT Central'
+description: 'Kurz: Naučte se vytvořit aplikaci pro monitorování spotřeby vody pomocí šablon aplikací Azure IoT Central.'
 author: miriambrus
 ms.author: miriamb
 ms.date: 11/12/2019
@@ -9,251 +9,251 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77122057"
 ---
-# <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Kurz: Vytvoření aplikace monitorování spotřeby vody pomocí Azure IoT Central
+# <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování spotřeby vody pomocí Azure IoT Central
 
-V tomto kurzu se dozvíte, jak vytvořit aplikaci monitorování spotřeby ve službě Azure IoT Central voda pomocí šablony aplikace monitorování využití vody Azure IoT Central.
+Tento kurz ukazuje, jak vytvořit aplikaci pro monitorování spotřeby vody Azure IoT Central pomocí šablony aplikace monitorování spotřeby vody Azure IoT Central.
 
-V tomto kurzu se naučíte, jak:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * K vytvoření aplikace pro monitorování spotřeby vody použijte šablonu monitorování využití vody Azure IoT Central.
+> * Pomocí šablony monitorování spotřeby vody Azure IoT Central vytvořte aplikaci pro monitorování spotřeby vody.
 > * Prozkoumejte a přizpůsobte řídicí panel operátora.
 > * Prozkoumejte šablony zařízení.
 > * Prozkoumejte simulovaná zařízení.
 > * Prozkoumejte a nakonfigurujte pravidla.
-> * Nakonfigurujte úlohy.
-> * Přizpůsobte branding aplikace pomocí označení bílé.
+> * Konfigurace úloh.
+> * Přizpůsobte si značku aplikace pomocí bílého značení.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Předplatné Azure. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
+- Předplatné Azure. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace Azure](https://aka.ms/createazuresubscription).
 
 ## <a name="create-a-water-consumption-monitoring-app-with-azure-iot-central"></a>Vytvoření aplikace pro monitorování spotřeby vody pomocí Azure IoT Central
 
-V této části použijete šablonu monitorování spotřeby vody Azure IoT Central k vytvoření aplikace pro monitorování spotřeby vody ve službě Azure IoT Central.
+V této části použijete šablonu monitorování spotřeby vody Azure IoT Central k vytvoření aplikace pro monitorování spotřeby vody v Azure IoT Central.
 
-Vytvoření nové aplikace monitorování spotřeby v Azure IoT Centrale:
+Vytvoření nové aplikace pro monitorování spotřeby vody Azure IoT Central:
 
-1. Přejít na web [domovské stránky Azure IoT Central](https://aka.ms/iotcentral) .
+1. Přejděte na web [domovské stránky Azure IoT Central.](https://aka.ms/iotcentral)
 
-    Pokud máte předplatné Azure, přihlaste se pomocí přihlašovacích údajů, které používáte pro přístup k němu. V opačném případě se přihlaste pomocí účet Microsoft.
+    Pokud máte předplatné Azure, přihlaste se pomocí přihlašovacích údajů, které používáte k přístupu. V opačném případě se přihlaste pomocí účtu Microsoft.
 
     ![Zadání účtu organizace](media/tutorial-waterconsumptionmonitoring/sign-in.png)
 
-1. V levém podokně vyberte **sestavení** a vyberte kartu **státní správa** . Stránka pro **státní** správu zobrazuje několik šablon aplikací pro státní správu.
+1. V levém podokně vyberte **Sestavit** a vyberte kartu **Vláda.** Na stránce **Vláda** se zobrazí několik šablon vládních aplikací.
 
    ![Vytváření šablon aplikací pro státní správu](./media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png)
 
-1. Vyberte šablonu aplikace **monitorování spotřeby vody** .
-Tato šablona obsahuje ukázkovou šablonu zařízení pro spotřebu vody, simulované zařízení, řídicí panel operátora a předem nakonfigurovaná pravidla monitorování.
+1. Vyberte šablonu aplikace **monitorování spotřeby vody.**
+Tato šablona obsahuje šablonu ukázkového zařízení pro spotřebu vody, simulované zařízení, řídicí panel operátora a předem nakonfigurovaná pravidla monitorování.
 
-1. Výběrem **vytvořit aplikaci** otevřete formulář pro vytvoření **nové aplikace** s následujícími poli:
-    * **Název aplikace**: ve výchozím nastavení používá aplikace *monitorování spotřeby vody* následovaný jedinečným řetězcem ID, který vygeneruje služba Azure IoT Central. Volitelně můžete zvolit popisný název aplikace. Později můžete změnit název aplikace.
-    * **Adresa URL**: Azure IoT Central automaticky generuje adresu URL na základě názvu aplikace. Můžete zvolit, aby se adresa URL aktualizovala na míru. Adresu URL můžete později změnit.
-    * Pokud máte předplatné Azure, zadejte svůj **adresář**, **předplatné Azure**a informace o **umístění** . Pokud předplatné nemáte, můžete vybrat možnost **bezplatné zkušební verze o 7 dní** a doplnit požadované kontaktní údaje.
+1. Výběrem **možnosti Vytvořit aplikaci** otevřete formulář Pro vytvoření **nové aplikace** s následujícími poli:
+    * **Název aplikace**: Ve výchozím nastavení aplikace používá *monitorování spotřeby vody* následované jedinečným řetězcem ID, který generuje Azure IoT Central. Volitelně zvolte popisný název aplikace. Název aplikace můžete později také změnit.
+    * **Adresa URL**: Azure IoT Central automaticky vygeneruje adresu URL na základě názvu aplikace. Adresu URL můžete aktualizovat podle svých představ. Adresu URL můžete také později změnit.
+    * Pokud máte předplatné Azure, zadejte informace o **adresáři**, **předplatném Azure**a **umístění.** Pokud nemáte předplatné, můžete vybrat možnost **7denní bezplatné zkušební verze** a vyplnit požadované kontaktní informace.
 
-    Další informace o adresářích a předplatných najdete v tématu [Vytvoření rychlého startu aplikace](../core/quick-deploy-iot-central.md).
+    Další informace o adresářích a předplatných naleznete [v tématu Vytvoření rychlého spuštění aplikace](../core/quick-deploy-iot-central.md).
 
-1. V dolní části stránky vyberte **vytvořit** .
+1. V dolní části stránky vyberte **Vytvořit.**
 
-    ![Stránka nové aplikace Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
+    ![Stránka aplikace Azure IoT Central Nová aplikace](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
-    ![Stránka informace o fakturaci Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
+    ![Stránka s informacemi o centrální fakturaci Azure IoT](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 
-Nyní jste vytvořili aplikaci pro monitorování spotřeby vody pomocí šablony monitorování využití služby Azure IoT Central voda.
+Teď jste vytvořili aplikaci pro monitorování spotřeby vody pomocí šablony monitorování spotřeby vody Azure IoT Central.
 
-Aplikace monitorování spotřeby vody je dodávána s předem nakonfigurovanými:
+Aplikace pro monitorování spotřeby vody je dodávána s předkonfigurovanou:
 
-* Řídicí panely s ukázkovým operátorem
-* Ukázka předdefinovaných šablon vodního toku a ventilů zařízení.
-* Simulovaná vodní Flow a zařízení s čipovými ventily.
-* Pravidla a úlohy.
-* Ukázka brandingu pomocí označení bílé.
+* Ukázkové řídicí panely operátorů.
+* Ukázka předdefinovaných šablon průtoku vody a ventilů.
+* Simulovaný průtok vody a inteligentní ventilová zařízení.
+* Pravidla a pracovní místa.
+* Ukázka značky pomocí bílého značení.
 
-Je to vaše aplikace a můžete ji kdykoli upravit. Teď aplikaci prozkoumáme a udělejteme si vlastní nastavení.
+Je to vaše aplikace, a můžete ji kdykoliv upravit. Nyní pojďme prozkoumat aplikaci a provést některé úpravy.
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>Prozkoumejte a přizpůsobte řídicí panel operátora.
+## <a name="explore-and-customize-the-operator-dashboard"></a>Prozkoumání a přizpůsobení řídicího panelu operátora
 
-Po vytvoření aplikace se otevře **řídicí panel ukázka celé světové spotřeby** .
+Po vytvoření aplikace se otevře ukázkový **řídicí panel spotřeby vody Wide World.**
 
-   ![Řídicí panel monitorování spotřeby vody](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboardfull.png)
+   ![Přístrojová deska pro monitorování spotřeby vody](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboardfull.png)
 
-Jako tvůrce můžete na řídicím panelu vytvořit a přizpůsobit zobrazení operátorů. Pojďme řídicí panel prozkoumat předtím, než se pokusíte ho přizpůsobit.
+Jako tvůrce můžete vytvářet a přizpůsobovat zobrazení na řídicím panelu pro operátory. Než se ho pokusíte přizpůsobit, prozkoumáme řídicí panel.
 
 > [!NOTE]
-> Všechna data zobrazená na řídicím panelu jsou založená na simulovaných datech zařízení, která prozkoumáme v další části.
+> Všechna data zobrazená na řídicím panelu jsou založena na simulovaných datech zařízení, která prozkoumáme v další části.
   
-Řídicí panel se skládá z různých druhů dlaždic:
+Přístrojová deska se skládá z různých druhů dlaždic:
 
-* **Dlaždice s obrázkem v celém světě**: první dlaždice na řídicím panelu se nachází na dlaždici obrázku fiktivní vody na celém světě. Dlaždici můžete přizpůsobit vložením vlastního obrázku nebo jeho odebráním.
-* **Průměrná voda – dlaždice KUV**: dlaždice klíčového ukazatele výkonu je nakonfigurovaná tak, aby se zobrazovala jako příklad *průměru za posledních 30 minut*. Můžete přizpůsobit dlaždici klíčového ukazatele výkonu a nastavit ji na jiný typ a časový rozsah.
-* **Dlaždice příkazů zařízení**: tyto dlaždice zahrnují **uzavírací ventil**, **otevřený ventil**a nastaví dlaždice **Pozice ventilu** . Výběrem příkazů přejdete na stránku s příkazem simulovaného zařízení. V Azure IoT Central je *příkaz* typem *schopnosti zařízení* . Tento koncept prozkoumáme později v tomto kurzu v části "Šablona zařízení".
-* **Mapa oblasti distribuce vody**: mapa používá Azure Maps, kterou můžete nakonfigurovat přímo v Azure IoT Central. Na dlaždici mapa se zobrazí umístění zařízení. Najeďte myší na mapu a vyzkoušejte ovládací prvky na mapě, jako je *přiblížení*, *zmenšení*nebo *rozbalení*.
+* **Wide World Water Utility obrázek dlaždice:** První dlaždice v přístrojové desce je obraz dlaždice fiktivní vody utility Wide World Water Water. Dlaždici můžete přizpůsobit vložením vlastního obrázku nebo jeho odebráním.
+* **Dlaždice klíčového ukazatele výkonu průměrného průtoku vody**: Dlaždice klíčového ukazatele výkonu je nakonfigurována tak, aby jako příklad *zobrazovala průměr za posledních 30 minut*. Dlaždici klíčový ukazatel výkonu můžete přizpůsobit a nastavit na jiný typ a časový rozsah.
+* **Dlaždice příkazů zařízení**: Tyto dlaždice zahrnují **dlaždice Zavřít ventil**, Otevřený **ventil**a Nastavit dlaždice **polohy ventilu.** Výběr příkazů vás přenese na stránku příkazů simulovaného zařízení. Ve službě Azure IoT Central je *příkaz* typ *schopnosti zařízení.* Tento koncept prozkoumáme později v části "Šablona zařízení" v tomto kurzu.
+* **Mapa distribuční oblasti vody**: Mapa používá Azure Maps, kterou můžete nakonfigurovat přímo v Azure IoT Central. Na dlaždici mapy se zobrazí umístění zařízení. Najeďte přes mapu a vyzkoušejte ovládací prvky nad mapou, třeba *přiblížení*, *přiblížení*nebo *rozbalení*.
 
-    ![Mapa řídicího panelu monitorování spotřeby vody](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
+    ![Mapa přístrojové desky pro monitorování spotřeby vody](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
 
-* Graf **lineárního toku toků** a **Spojnicový graf stavu prostředí**: můžete vizualizovat jedno nebo několik telemetrií zařízení, které se vykreslí jako spojnicový graf v požadovaném časovém rozsahu.
-* **Průměrný graf tlakového ventilu heatmapu**: můžete zvolit typ vizualizace heatmapu dat telemetrie zařízení, která chcete zobrazit distribuované přes časový rozsah s barevným indexem.
-* **Ikona resetovat obsah prahových hodnot výstrah**: můžete zahrnout dlaždice obsahu volání do akce a vložit odkaz na stránku akce. V takovém případě vám prahová hodnota pro výstrahu resetování převezme **úlohy**aplikace, ve kterých můžete spouštět aktualizace vlastností zařízení. Tuto možnost prozkoumáme později v části konfigurace úloh v tomto kurzu.
-* **Dlaždice vlastností**: řídicí panel zobrazuje **informace o provozním ventilu**, **prahové hodnoty výstrah toků**a **informace o** dlaždicích údržby.
+* **Graf průměrného průtoku vody** a **spojnicový graf Stav prostředí**: Můžete vizualizovat jeden nebo více telemoráží zařízení vykreslené jako spojnicový graf v požadovaném časovém rozsahu.
+* **Graf heatmapy průměrného tlaku ventilu**: Můžete zvolit typ vizualizace heatmapy dat telemetrie zařízení, která chcete zobrazit rozložená v časovém rozsahu s barevným indexem.
+* **Obnovit dlaždice obsahu prahů výstrah**: Můžete zahrnout dlaždice obsahu s výzvou k akci a vložit odkaz na stránku akce. V takovém případě prahová hodnota výstrahy obnovení přejdete do aplikace **Úlohy**, kde můžete spustit aktualizace vlastností zařízení. Tuto možnost prozkoumáme později v části Konfigurace úloh v tomto kurzu.
+* **Dlaždice vlastností**: Na řídicím panelu jsou **zobrazeny provozní informace ventilu**, **prahové hodnoty upozornění na průtok**a dlaždice informací o **údržbě.**
 
-### <a name="customize-the-dashboard"></a>Přizpůsobení řídicího panelu
+### <a name="customize-the-dashboard"></a>Přizpůsobit řídicí panel
 
-Jako tvůrce můžete na řídicím panelu přizpůsobit zobrazení operátorů.
+Jako tvůrce můžete přizpůsobit zobrazení v řídicím panelu pro operátory.
 
-1. Vyberte **Upravit** a přizpůsobte si **řídicí panel celé světové spotřeby**. Řídicí panel můžete přizpůsobit tak, že vyberete nabídku **Upravit** . Jakmile je řídicí panel v režimu **úprav** , můžete přidat nové dlaždice nebo je můžete nakonfigurovat.
+1. Výběrem **možnosti Upravit** přizpůsobíte **řídicí panel spotřeba vody v celém světě**. Řídicí panel můžete přizpůsobit výběrem nabídky **Úpravy.** Po zobrazení řídicího panelu v režimu **úprav** můžete přidat nové dlaždice nebo je můžete nakonfigurovat.
 
      ![Upravit řídicí panel](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-edit-dashboard.png)
 
-1. Vyberte **+ Nová** a vytvořte nový řídicí panel a nakonfigurujte ho od začátku. Můžete mít více řídicích panelů a mezi řídicími panely můžete přesouvat v nabídce řídicího panelu.
+1. Výběrem **možnosti + Nový** vytvořte nový řídicí panel a nakonfigurujte jej od začátku. Můžete mít více řídicích panelů a můžete se pohybovat mezi řídicími panely v nabídce řídicího panelu.
 
-## <a name="explore-the-device-template"></a>Prozkoumat šablonu zařízení
+## <a name="explore-the-device-template"></a>Prozkoumejte šablonu zařízení
 
-Šablona zařízení v Azure IoT Central definuje schopnost zařízení, což může být telemetrie, vlastnost nebo příkaz. Jako tvůrce můžete v Azure IoT Central definovat jednu nebo více šablon zařízení, které reprezentují možnosti zařízení, ke kterým se připojíte.
+Šablona zařízení v Azure IoT Central definuje možnosti zařízení, které může být telemetrie, vlastnost nebo příkaz. Jako tvůrce můžete definovat jednu nebo více šablon zařízení v Azure IoT Central, které představují možnosti zařízení, která se připojíte.
 
-Aplikace monitorování spotřeby vody se dodává se dvěma referenčními šablonami pro zařízení, které reprezentují *měřič toku* a zařízení s *čipovým ventilem* .
+Aplikace pro monitorování spotřeby vody je dodávána se dvěma šablonami referenčních zařízení, které představují *průtokoměr* a *inteligentní ventilové* zařízení.
 
-Postup zobrazení šablony zařízení:
+Zobrazení šablony zařízení:
 
-1. V levém podokně aplikace v Azure IoT Central vyberte **šablony zařízení** . V seznamu **šablony zařízení** uvidíte dvě šablony zařízení, **Inteligentní ventil** a **měřič toků**.
+1. V levém podokně aplikace v Azure IoT Central vyberte **šablony zařízení.** V seznamu **Šablony zařízení** uvidíte dvě šablony zařízení, **inteligentní ventil** a **průtokoměr**.
 
    ![Šablona zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
-1. Vyberte šablonu zařízení **měřiče toku** a seznamte se s možnostmi zařízení.
+1. Vyberte šablonu **zařízení průtokoměru** a seznamte se s možnostmi zařízení.
 
-     ![Měřič toku šablony zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-flowmeter.png)
+     ![Průtokoměr šablony zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-flowmeter.png)
 
 ### <a name="customize-the-device-template"></a>Přizpůsobení šablony zařízení
 
 Přizpůsobení šablony zařízení:
 
-1. V nabídce **šablony zařízení** přejděte na **přizpůsobit** .
+1. V nabídce **Šablony zařízení** přejděte na **Přizpůsobit.**
 1. Najděte `Temperature` typ telemetrie.
-1. Aktualizujte **zobrazované jméno** `Temperature` na `Reported temperature`.
-1. Aktualizujte jednotku měření nebo nastavte **minimální hodnotu** a **maximální hodnotu**.
-1. Výběrem **Uložit** uložte změny.
+1. Aktualizujte **zobrazovaný název** na `Temperature` . `Reported temperature`
+1. Aktualizujte měrnou jednotku nebo nastavte **hodnotu Min** a **Max**.
+1. Vyberte **Uložit,** chcete-li uložit všechny změny.
 
-### <a name="add-a-cloud-property"></a>Přidat vlastnost cloudu
+### <a name="add-a-cloud-property"></a>Přidání vlastnosti cloudu
 
-1. V nabídce **šablony zařízení** přejděte do **vlastnosti Cloud** .
-1. Kliknutím na **+ přidat cloudovou**vlastnost přidejte novou vlastnost cloudu.
-    V Azure IoT Central můžete přidat vlastnost, která je pro zařízení relevantní. Cloudovou vlastností může být například prahová hodnota pro výstrahy specifická pro oblast instalace, informace o aktivech nebo jiné informace o údržbě.
-1. Výběrem **Uložit** uložte změny.
+1. Přejděte do nabídky **Vlastnosti cloudu** v nabídce **Šablony zařízení.**
+1. Přidejte novou vlastnost cloudu výběrem **+ Přidat vlastnost Cloud**.
+    Ve službě Azure IoT Central můžete přidat službu, která je relevantní pro zařízení. Jako příklad může být cloudová vlastnost prahová hodnota upozornění specifická pro oblast instalace, informace o majetku nebo jiné informace o údržbě.
+1. Vyberte **Uložit,** chcete-li uložit všechny změny.
 
 ### <a name="views"></a>Zobrazení
 
-Šablona zařízení monitorování spotřeby vody je dodávána s předdefinovanými zobrazeními. Prozkoumejte zobrazení a můžete provádět aktualizace. Zobrazení definují, jak operátory uvidí data zařízení, ale také vstupní vlastnosti cloudu.
+Šablona zařízení monitoru spotřeby vody je dodávána s předdefinovanými zobrazeními. Prozkoumejte zobrazení a můžete provádět aktualizace. Zobrazení definují, jak operátoři vidí data zařízení, ale také vlastnosti vstupního cloudu.
 
-  ![Zobrazení šablon zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
+  ![Zobrazení předlohy zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikovat
+### <a name="publish"></a>Publikování
 
-Pokud jste provedli nějaké změny, nezapomeňte **publikovat** šablonu zařízení.
+Pokud jste provedli nějaké změny, nezapomeňte šablonu zařízení **publikovat.**
 
 ### <a name="create-a-new-device-template"></a>Vytvoření nové šablony zařízení
 
-Vyberte **+ Nová** a vytvořte novou šablonu zařízení a postupujte podle procesu vytváření.
-Můžete vytvořit vlastní šablonu zařízení od začátku nebo můžete zvolit šablonu zařízení z katalogu zařízení Azure.
+Výběrem **možnosti + Nový** vytvořte novou šablonu zařízení a postupujte podle procesu vytváření.
+Vlastní šablonu zařízení můžete vytvořit od začátku nebo si můžete vybrat šablonu zařízení z katalogu zařízení Azure.
 
-## <a name="explore-simulated-devices"></a>Prozkoumat simulovaná zařízení
+## <a name="explore-simulated-devices"></a>Prozkoumejte simulovaná zařízení
 
-V Azure IoT Central můžete vytvořit simulovaná zařízení, abyste mohli testovat šablonu a aplikaci vašich zařízení. Aplikace monitorování spotřeby vody má dvě simulovaná zařízení, která jsou namapovaná na **měřič toku** a šablony zařízení **čipového ventilu** .
+Ve Službě Azure IoT Central můžete vytvořit simulovaná zařízení pro testování šablony zařízení a aplikace. Aplikace pro monitorování spotřeby vody má dvě simulovaná zařízení mapovaná na šablony **průtokoměru** a **inteligentního ventilu.**
 
 ### <a name="view-the-devices"></a>Zobrazit zařízení
 
-1. V levém podokně vyberte **zařízení** > **všechna zařízení** .
+1. V levém podokně vyberte **Zařízení** > **Všechna zařízení.**
 
-   ![Podokno všechna zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
+   ![Podokno Všechna zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
 
-1. Vyberte **Inteligentní ventil 1**.
+1. Vyberte **inteligentní ventil 1**.
 
     ![Inteligentní ventil 1](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitor-device1.png)
 
-1. Na kartě **příkazy** uvidíte tři příkazy zařízení (**uzavírací ventil**, **otevřený ventil**a **nastavte polohu ventilu**), které jsou funkcemi definovanými v šabloně zařízení **čipového ventilu** .
+1. Na kartě **Příkazy** můžete zobrazit tři příkazy zařízení **(Zavřít ventil**, **Otevřený ventil**a **Nastavit polohu ventilu),** které jsou funkcedefinované v šabloně zařízení **Smart Valve.**
 
-1. Prozkoumejte kartu **vlastnosti zařízení** a kartu **řídicí panel zařízení** .
+1. Prozkoumejte kartu **Vlastnosti zařízení** a kartu **Řídicí panel zařízení.**
 
 > [!NOTE]
-> Všimněte si, že všechny karty jsou nakonfigurované ze zobrazení šablon zařízení.
+> Všimněte si, že všechny karty jsou konfigurovány ze zobrazení šablony zařízení.
 
-### <a name="add-new-devices"></a>Přidat nová zařízení
+### <a name="add-new-devices"></a>Přidání nových zařízení
 
-Přidejte nová zařízení tak, že na kartě **zařízení** vyberete **+ Nová** .
+Přidejte nová zařízení tak, že na kartě **Zařízení** vyberete **+ Nový.**
 
-## <a name="explore-and-configure-rules"></a>Prozkoumat a nakonfigurovat pravidla
+## <a name="explore-and-configure-rules"></a>Prozkoumání a konfigurace pravidel
 
-V Azure IoT Central můžete vytvořit pravidla, která automaticky monitorují telemetrii zařízení a triggery, když se splní jedna nebo víc podmínek. Akce můžou zahrnovat posílání e-mailových oznámení nebo aktivaci akce automatizace Microsoftu nebo akce Webhooku k odesílání dat do jiných služeb.
+Ve službě Azure IoT Central můžete vytvořit pravidla pro automatické sledování telemetrie zařízení a aktivační akce, když je splněna jedna nebo více podmínek. Akce mohou zahrnovat odesílání e-mailových oznámení nebo aktivaci akce Microsoft Power Automate nebo akce webhooku pro odesílání dat do jiných služeb.
 
-Vytvořená aplikace pro monitorování spotřeby vody má tři předem nakonfigurovaná pravidla.
+Vytvořená aplikace pro monitorování spotřeby vody má tři předkonfigurovaná pravidla.
 
 ### <a name="view-rules"></a>Zobrazit pravidla
 
-1. V levém podokně vyberte **pravidla** .
+1. V levém podokně vyberte **Pravidla.**
 
-   ![Podokno pravidla](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
+   ![Podokno Pravidla](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
 
-1. Vyberte **vysoké upozornění pH**, což je jedno z předkonfigurovaných pravidel v aplikaci.
+1. Vyberte **výstrahu vysokého pH**, což je jedno z předkonfigurovaných pravidel v aplikaci.
 
-     ![Výstraha s vysokým pH](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
+     ![Výstraha vysokého pH](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    Pravidlo `High flow alert` je nakonfigurováno pro kontrolu proti této podmínce `Acidity (pH)` `greater than` `Max flow threshold`. Maximální prahová hodnota toku je cloudová vlastnost definovaná v šabloně zařízení **čipového ventilu** . Hodnota `Max flow threshold` je nastavena na instanci zařízení.
+    Pravidlo `High flow alert` je nakonfigurováno pro `Acidity (pH)` `greater than` kontrolu `Max flow threshold`proti stavu je . Maximální prahová hodnota průtoku je vlastnost cloudu definovaná v šabloně zařízení **Smart Valve.** Hodnota `Max flow threshold` je nastavena na instanci zařízení.
 
-Nyní vytvoříme akci e-mailu.
+Nyní vytvoříme e-mailovou akci.
 
-Postup přidání akce k pravidlu:
+Přidání akce do pravidla:
 
-1. Vyberte **+ e-mail**.
-1. Jako popisný **Zobrazovaný název** pro akci zadejte **vysoké výstrahy pH** .
-1. Zadejte e-mailovou adresu přidruženou k vašemu účtu Azure **IoT Central v aplikaci**.
-1. Volitelně můžete zadat poznámku, která se má zahrnout do textu e-mailu.
-1. Akci dokončete výběrem možnosti **Hotovo** .
-1. Kliknutím na **Uložit** uložte a aktivujte nové pravidlo.
+1. Vyberte **+ E-mail**.
+1. Zadejte **výstrahu Vysoké ho uH** jako popisný **zobrazovaný název** akce.
+1. Zadejte e-mailovou adresu přidruženou k účtu Azure IoT Central v **části Do**.
+1. Volitelně zadejte poznámku, která bude zahrnuta do textu e-mailu.
+1. Chcete-li akci dokončit, vyberte **Hotovo.**
+1. Chcete-li uložit a aktivovat nové pravidlo, vyberte **Uložit.**
 
-Během několika minut byste měli obdržet e-mail po splnění nakonfigurované podmínky.
+Během několika minut byste měli po splnění nakonfigurované podmínky obdržet e-mail.
 
 > [!NOTE]
-> Aplikace pošle e-mail pokaždé, když je splněna podmínka. Vyberte **Zakázat** , pokud chcete pravidlo zakázat, aby se zabránilo přijímání e-mailů od automatizovaného pravidla.
+> Aplikace odešle e-mail pokaždé, když je splněna podmínka. Výběrem **možnosti Zakázat** zakážete pravidlo, chcete-li zastavit příjem e-mailů z automatického pravidla.
   
 Vytvoření nového pravidla:
 
-* Na kartě **pravidla** v levém podokně vyberte **+ Nový** .
+* Na kartě **Pravidla** v levém podokně vyberte **možnost + Nový.**
 
 ## <a name="configure-jobs"></a>Konfigurace úloh
 
-V Azure IoT Central úlohy umožňují aktivovat aktualizace zařízení nebo cloudových vlastností na více zařízeních. Kromě vlastností můžete k aktivaci příkazů zařízení na několika zařízeních použít taky úlohy. Azure IoT Central automatizuje pracovní postup za vás.
+Ve službě Azure IoT Central umožňují úlohy spouštět aktualizace zařízení nebo cloudových vlastností na více zařízeních. Kromě vlastností můžete také použít úlohy k aktivaci příkazů zařízení na více zařízeních. Azure IoT Central automatizuje pracovní postup za vás.
 
-1. V levém podokně vyberte **úlohy** .
-1. Vyberte **+ Nový**a nakonfigurujte jednu nebo víc úloh.
+1. V levém podokně vyberte **Úlohy.**
+1. Vyberte **+ Nový**a nakonfigurujte jednu nebo více úloh.
 
 ## <a name="customize-your-application"></a>Přizpůsobení aplikace
 
-Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatelského prostředí aplikace.
+Jako tvůrce můžete změnit několik nastavení přizpůsobit uživatelské prostředí ve vaší aplikaci.
 
-1. Vyberte možnost **správa** > **přizpůsobení aplikace**.
-1. Chcete-li zvolit obrázek, který se má nahrát jako **logo aplikace**, vyberte tlačítko **změnit** .
-1. Chcete-li zvolit obrázek **ikony prohlížeče** , který se zobrazí na kartách prohlížeče, vyberte tlačítko **změnit** .
-1. Můžete také nahradit výchozí barvy v **prohlížeči** přidáním hexadecimálních kódů HTML.
+1. Vyberte **možnost Správa** > **Přizpůsobit aplikaci**.
+1. Chcete-li vybrat obrázek, který chcete nahrát jako **logo aplikace**, vyberte tlačítko **Změnit.**
+1. Chcete-li vybrat obrázek **ikony prohlížeče,** který se zobrazí na kartách prohlížeče, vyberte tlačítko **Změnit.**
+1. Výchozí **barvy prohlížeče** můžete také nahradit přidáním šestnáctkových barevných kódů HTML.
 
-   ![Výběry pro logo aplikace, ikonu prohlížeče a barvy v prohlížeči](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
+   ![Výběry loga aplikace, ikony prohlížeče a barev prohlížeče](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
 
-1. Můžete také změnit image aplikace výběrem možnosti **správa** > **nastavení aplikace**. Chcete-li zvolit obrázek, který se má nahrát jako obrázek aplikace, vyberte tlačítko **Vybrat obrázek** .
-1. Nakonec můžete **motiv** změnit také tak, že vyberete ikonu **Nastavení** v pravém horním rohu aplikace.
+1. Bitové kopie aplikací můžete také změnit výběrem**možnosti Nastavení aplikace**pro **správu** > . Chcete-li vybrat obrázek, který chcete nahrát jako obraz aplikace, vyberte tlačítko **Vybrat obrázek.**
+1. Nakonec můžete také změnit **motiv** výběrem ikony **Nastavení** v pravém horním rohu aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci nadále používat, odstraňte ji.
+Pokud nebudete pokračovat v používání této aplikace, odstraňte ji.
 
-1. V levém podokně aplikace Azure IoT Central vyberte **Správa** .
-1. Vyberte **nastavení aplikace**a potom v dolní části stránky vyberte **Odstranit** .
+1. V levém podokně aplikace Azure IoT Central vyberte **Správa.**
+1. Vyberte **Nastavení aplikace**a v dolní části stránky vyberte **Odstranit.**
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [konceptech monitorování spotřeby vody](./concepts-waterconsumptionmonitoring-architecture.md).
+* Další informace o [konceptech monitorování spotřeby vody](./concepts-waterconsumptionmonitoring-architecture.md).

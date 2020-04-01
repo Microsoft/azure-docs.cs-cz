@@ -1,29 +1,29 @@
 ---
-title: Kurz – konfigurace rolí řízení přístupu na základě role (RBAC) ve službě Azure Kubernetes Service (AKS) s využitím Ansible
-description: Naučte se používat Ansible ke konfiguraci RBAC v clusteru Azure Kubernetes Service (AKS).
-keywords: Ansible, Azure, DevOps, bash, cloudshellu, PlayBook, AKS, Container, AKS, Kubernetes, Azure Active Directory, RBAC
+title: Kurz – konfigurace rolí řízení přístupu na základě rolí (RBAC) ve službě Azure Kubernetes Service (AKS) pomocí ansible
+description: Přečtěte si, jak pomocí ansible nakonfigurovat RBAC v clusteru Služby Azure Kubernetes (AKS).
+keywords: ansible, azurové, devops, bash, cloudshell, playbook, aks, kontejner, aks, kubernetes, azure active directory, rbac
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76836962"
 ---
-# <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: Konfigurace rolí řízení přístupu na základě role (RBAC) ve službě Azure Kubernetes Service (AKS) pomocí Ansible
+# <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: Konfigurace rolí řízení přístupu na základě rolí (RBAC) ve službě Azure Kubernetes Service (AKS) pomocí ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-AKS je možné nakonfigurovat tak, aby pro ověřování uživatelů používala [Azure Active Directory (AD)](/azure/active-directory/) . Po nakonfigurování se pomocí ověřovacího tokenu Azure AD přihlásíte ke clusteru AKS. RBAC může být založen na identitě nebo členství uživatele ve skupině adresáře.
+AKS lze nakonfigurovat tak, aby používal [azure active directory (AD)](/azure/active-directory/) pro ověřování uživatelů. Po konfiguraci použijete ověřovací token Azure AD k přihlášení do clusteru AKS. RBAC může být založen na identitě uživatele nebo členství ve skupině adresářů.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Vytvoření clusteru AKS s povolenou službou Azure AD
+> * Vytvoření clusteru AKS s podporou Azure AD
 > * Konfigurace role RBAC v clusteru
 
 ## <a name="prerequisites"></a>Požadavky
@@ -31,29 +31,29 @@ AKS je možné nakonfigurovat tak, aby pro ověřování uživatelů používala
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Instalace knihovny RedHat OpenShift library** - `pip install openshift`
+- **Instalace knihovny RedHat OpenShift** - `pip install openshift`
 
-## <a name="configure-azure-ad-for-aks-authentication"></a>Konfigurace Azure AD pro ověřování AKS
+## <a name="configure-azure-ad-for-aks-authentication"></a>Konfigurace azure ad pro ověřování AKS
 
-Při konfiguraci služby Azure AD pro ověřování AKS jsou nakonfigurované dvě aplikace Azure AD. Tuto operaci musí dokončit správce tenanta Azure. Další informace najdete v tématu věnovaném [integraci Azure Active Directory s AKS](/azure/aks/aad-integration#create-the-server-application). 
+Při konfiguraci Azure AD pro ověřování AKS jsou nakonfigurované dvě aplikace Azure AD. Tuto operaci musí dokončit správce klienta Azure. Další informace najdete [v tématu Integrace služby Azure Active Directory s AKS](/azure/aks/aad-integration#create-the-server-application). 
 
-Od správce tenanta Azure Získejte následující hodnoty:
+Od správce klienta Azure získáte následující hodnoty:
 
-- Tajný kód serverové aplikace
-- ID aplikace serveru
+- Tajný klíč serverové aplikace
+- ID serverové aplikace
 - ID klientské aplikace 
 - ID tenanta
 
-Tyto hodnoty jsou potřebné ke spuštění ukázkové PlayBook.  
+Tyto hodnoty jsou potřebné ke spuštění ukázkového playbooku.  
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
 V této části vytvoříte AKS s [aplikací Azure AD](#configure-azure-ad-for-aks-authentication).
 
-Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
+Zde jsou některé klíčové poznámky, které je třeba zvážit při práci s ukázkovým playbookem:
 
-- PlayBook načítá `ssh_key` z `~/.ssh/id_rsa.pub`. Pokud ho upravíte, použijte jednořádkový formát začínající na "SSH-RSA" (bez uvozovek).
-- Hodnoty `client_id` a `client_secret` jsou načteny z `~/.azure/credentials`, což je výchozí soubor přihlašovacích údajů. Tyto hodnoty můžete nastavit na instanční objekt nebo načíst tyto hodnoty z proměnných prostředí:
+- Playbook `ssh_key` načte `~/.ssh/id_rsa.pub`z . Pokud jej upravíte, použijte jednořádkový formát - počínaje "ssh-rsa" (bez uvozovek).
+- Hodnoty `client_id` `client_secret` a jsou `~/.azure/credentials`načteny z , což je výchozí soubor pověření. Tyto hodnoty můžete nastavit na instanční objekt nebo načíst tyto hodnoty z proměnných prostředí:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -115,21 +115,21 @@ Uložte následující ukázkový playbook jako `aks-create.yml`:
       dest: "aks-{{ name }}-kubeconfig"
 ```
 
-## <a name="get-the-azure-ad-object-id"></a>Získat ID objektu Azure AD
+## <a name="get-the-azure-ad-object-id"></a>Získání ID objektu Azure AD
 
-Pokud chcete vytvořit vazbu RBAC, musíte nejdřív získat ID objektu Azure AD. 
+Chcete-li vytvořit vazbu RBAC, musíte nejprve získat ID objektu Azure AD. 
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Do vyhledávacího pole v horní části stránky zadejte `Azure Active Directory`. 
+1. Do vyhledávacího pole v horní části `Azure Active Directory`stránky zadejte . 
 
 1. Klikněte na `Enter` (Další).
 
-1. V nabídce **Správa** vyberte **Uživatelé**.
+1. V nabídce **Manage** vyberte **Položku Uživatelé**.
 
-1. Do pole Název vyhledejte svůj účet.
+1. V poli název vyhledejte svůj účet.
 
-1. Ve sloupci **název** vyberte odkaz na svůj účet.
+1. Ve sloupci **Název** vyberte odkaz na svůj účet.
 
 1. V části **Identita** zkopírujte **ID objektu**.
 
@@ -156,9 +156,9 @@ subjects:
   name: <your-aad-account>
 ```
 
-Zástupný text `<your-aad-account>` nahraďte svým [ID objektu](#get-the-azure-ad-object-id)TENANTA Azure AD.
+Nahraďte `<your-aad-account>` zástupný symbol [id objektu klienta](#get-the-azure-ad-object-id)Azure AD .
 
-Uložte následující PlayBook – nasazení nové role do AKS – jako `aks-kube-deploy.yml`:
+Uložte následující playbook - který nasazuje vaši `aks-kube-deploy.yml`novou roli do AKS - jako :
 
 ```yml
 - name: Apply role to AKS
@@ -167,9 +167,9 @@ Uložte následující PlayBook – nasazení nové role do AKS – jako `aks-ku
       kubeconfig: "aks-{{ name }}-kubeconfig"
 ```
 
-## <a name="run-the-sample-playbook"></a>Spuštění ukázkové PlayBook
+## <a name="run-the-sample-playbook"></a>Spuštění ukázkového playbooku
 
-V této části je uveden úplný vzorový PlayBook, který volá úkoly vytvořené v tomto článku. 
+V této části je uveden úplný ukázkový playbook, který volá úkoly, které se vytvářejí v tomto článku. 
 
 Uložte následující ukázkový playbook jako `aks-rbac.yml`:
 
@@ -198,32 +198,32 @@ Uložte následující ukázkový playbook jako `aks-rbac.yml`:
        include_tasks: aks-kube-deploy.yml
 ```
 
-V části `vars` nahraďte následující zástupné symboly informacemi o službě Azure AD:
+V `vars` části nahraďte následující zástupné symboly informacemi o Azure AD:
 
 - `<client id>`
 - `<server id>`
 - `<server secret>`
 - `<tenant id>`
 
-Spusťte úplnou PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte kompletní playbook pomocí příkazu: `ansible-playbook`
 
 ```bash
 ansible-playbook aks-rbac.yml
 ```
 
-## <a name="verify-the-results"></a>Ověřit výsledky
+## <a name="verify-the-results"></a>Ověření výsledků
 
-V této části použijete kubectl k vypsání uzlů, které se vytvářejí v tomto článku.
+V této části použijete kubectl seznam uzlů vytváření v tomto článku.
 
-Do příkazového řádku terminálu zadejte následující příkaz:
+Na terminálovém řádku zadejte následující příkaz:
 
 ```bash
 kubectl --kubeconfig aks-aksansibletest-kubeconfig-user get nodes
 ```
 
-Příkaz vás přesměruje na ověřovací stránku. Přihlaste se pomocí svého účtu Azure.
+Příkaz vás přesměruje na stránku ověřování. Přihlaste se pomocí svého účtu Azure.
 
-Po ověření kubectl seznam uzlů podobným způsobem jako u následujících výsledků:
+Po ověření udá uzly podobným způsobem jako následující výsledky:
 
 ```txt
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXXXX to authenticate.
@@ -235,9 +235,9 @@ aks-nodepool1-33413200-2   Ready    agent   49m   v1.12.6
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
+Pokud již není potřeba, odstraňte prostředky vytvořené v tomto článku. 
 
-Následující kód uložte jako `cleanup.yml`:
+Uložte následující `cleanup.yml`kód jako :
 
 ```yml
 ---
@@ -257,7 +257,7 @@ Následující kód uložte jako `cleanup.yml`:
             path: "aks-{{ name }}-kubeconfig"
 ```
 
-Spusťte PlayBook pomocí příkazu `ansible-playbook`:
+Spusťte playbook `ansible-playbook` pomocí příkazu:
 
 ```bash
 ansible-playbook cleanup.yml

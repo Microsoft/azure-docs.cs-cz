@@ -1,6 +1,6 @@
 ---
-title: Zjišťovat anomálie na hraničních zařízeních v řešení kurz – Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak sledovat zařízení IoT Edge pomocí akcelerátoru řešení vzdáleného monitorování.
+title: Detekce anomálií na hraničních zařízeních v kurzu řešení – Azure | Dokumenty společnosti Microsoft
+description: V tomto kurzu se dozvíte, jak sledovat vaše zařízení IoT Edge pomocí akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -10,109 +10,109 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66117588"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: Detekovat anomálie na hraničních zařízeních s akcelerátor řešení vzdálené monitorování
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: Detekce anomálií na hraničních zařízeních pomocí akcelerátoru řešení vzdáleného monitorování
 
-V tomto kurzu nakonfigurujete řešení vzdáleného monitorování reakce na anomálie zjištěných zařízení IoT Edge. Zařízení IoT Edge umožňuje zpracování telemetrických dat na hraničních zařízeních snížit objem telemetrická data odesílaná do řešení a umožňuje provádět rychlejší reakce na události na zařízeních. Další informace o výhodách zpracování hraničních zařízení najdete v tématu [co je Azure IoT Edge](../iot-edge/about-iot-edge.md).
+V tomto kurzu nakonfigurujete řešení vzdáleného monitorování tak, aby reagovalo na anomálie zjištěné zařízením IoT Edge. Zařízení IoT Edge umožňují zpracovávat telemetrii na hraničních zařízeních, abyste snížili objem telemetrie odeslané do řešení a povolili rychlejší odezvy na události na zařízeních. Další informace o výhodách zpracování hraničních zařízení najdete v tématu [Co je Azure IoT Edge](../iot-edge/about-iot-edge.md).
 
-Zavést edge zpracování pomocí vzdáleného monitorování, tento kurz používá simulované ropy čerpadlo jack zařízení. Tento výstup ropy čerpadlo spravuje organizace názvem Contoso a je připojen k akcelerátoru řešení vzdáleného monitorování. Senzorů v konektoru čerpadlo ropy měření teploty a tlaku. Operátory ve společnosti Contoso vědět, že abnormální nárůst teploty může způsobit konektoru ropy čerpadlo zpomalovat. Operátory ve společnosti Contoso nemusíte sledovat teploty zařízení, když je v dosahu normální.
+Chcete-li zavést zpracování hran se vzdáleným monitorováním, tento kurz používá simulované zařízení konektoru olejového čerpadla. Tento konektor olejového čerpadla je řízen organizací contoso a je připojen k urychlovači řešení vzdáleného monitorování. Senzory na zvedáku olejového čerpadla měří teplotu a tlak. Operátoři společnosti Contoso vědí, že abnormální zvýšení teploty může způsobit zpomalení konektoru olejového čerpadla. Operátoři společnosti Contoso nemusí sledovat teplotu zařízení, když je v normálním rozsahu.
 
-Contoso chce nasadit do konektoru čerpadlo ropy, který detekuje anomálie teploty modul inteligentních hraničních zařízení. Jiný modul edge odesílá výstrahy k řešení vzdáleného monitorování. Po přijetí upozornění operátor společnosti Contoso provést odeslání technika údržby. Contoso také nakonfigurovat automatizovanou akci, jako je odeslání e-mailu, i když toto řešení se zobrazí upozornění.
+Contoso chce nasadit inteligentní hraniční modul do konektoru olejového čerpadla, který detekuje teplotní anomálie. Jiný hraniční modul odesílá výstrahy do řešení vzdáleného monitorování. Po přijetí výstrahy může operátor společnosti Contoso vyslat technika údržby. Společnost Contoso může také nakonfigurovat automatickou akci, například odeslání e-mailu, ke spuštění, když řešení obdrží výstrahu.
 
-Následující diagram ukazuje klíčové součásti v scénář tohoto kurzu:
+Následující diagram znázorňuje klíčové součásti v ukázkovém scénáři:
 
 ![Přehled](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 >[!div class="checklist"]
-> * Do řešení přidat zařízení IoT Edge
-> * Vytvořte Edge manifest
-> * Importovat do manifestu jako balíček, který definuje moduly, které chcete spustit na zařízení
-> * Nasadit balíček do zařízení IoT Edge
-> * Zobrazení výstrah ze zařízení
+> * Přidání zařízení IoT Edge do řešení
+> * Vytvoření manifestu Edge
+> * Import manifestu jako balíčku, který definuje moduly pro spuštění na zařízení
+> * Nasazení balíčku do zařízení IoT Edge
+> * Zobrazení upozornění ze zařízení
 
 Na zařízení IoT Edge:
 
-* Modul runtime, obdrží balíček a nainstaluje moduly.
-* Modul stream analytics detekuje anomálie teploty v čerpadlo a odesílá příkazy vyřešení problému.
-* Modul stream analytics předává filtrovaná data k akcelerátoru řešení.
+* Modul runtime obdrží balíček a nainstaluje moduly.
+* Modul analýzy datového proudu detekuje teplotní anomálie v čerpadle a odesílá příkazy vyřešit problém.
+* Modul analýzy datového proudu předává filtrovaná data do akcelerátoru řešení.
 
-Tento kurz používá virtuální počítač s Linuxem jako zařízení IoT Edge. Je také nainstalovat modul edge simulovat zařízení ropy čerpadlo konektoru.
+Tento kurz používá virtuální počítač Linux jako zařízení IoT Edge. Můžete také nainstalovat okrajový modul pro simulaci zařízení konektoru olejového čerpadla.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-an-iot-edge-device"></a>Přidat zařízení IoT Edge
+## <a name="add-an-iot-edge-device"></a>Přidání zařízení IoT Edge
 
-Existují dva kroky pro přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování. V této části se dozvíte, jak používat:
+Existují dva kroky, jak přidat zařízení IoT Edge do akcelerátoru řešení vzdáleného monitorování. V této části se můžete naučit používat:
 
-* Přidat zařízení IoT Edge na **Device Explorer** stránky ve vzdálené monitorování webového uživatelského rozhraní.
-* Nainstalujte modul runtime IoT Edge v Linuxu virtuálních počítačů (VM).
+* Přidejte zařízení IoT Edge na stránku **Průzkumník zařízení** ve webovém uživatelském rozhraní vzdáleného monitorování.
+* Nainstalujte runtime IoT Edge do virtuálního počítače s Linuxem (VM).
 
-### <a name="add-an-iot-edge-device-to-your-solution"></a>Do řešení přidat zařízení IoT Edge
+### <a name="add-an-iot-edge-device-to-your-solution"></a>Přidání zařízení IoT Edge do vašeho řešení
 
-Přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování, přejděte **Device Explorer** stránku ve webovém uživatelském rozhraní a klikněte na tlačítko **+ nové zařízení**.
+Chcete-li přidat zařízení IoT Edge do akcelerátoru řešení vzdáleného monitorování, přejděte na stránku **Průzkumníkzařízení** ve webovém uživatelském rozhraní a klepněte na tlačítko **+ Nové zařízení**.
 
-V **nové zařízení** panelu, vyberte **zařízení IoT Edge** a zadejte **ropy čerpadlo** jako ID zařízení. Můžete ponechat výchozí hodnoty pro ostatní nastavení. Pak klikněte na **Použít**:
+V panelu **Nové zařízení** zvolte **zařízení IoT Edge** a zadejte **olejové čerpadlo** jako ID zařízení. Výchozí hodnoty pro ostatní nastavení můžete ponechat. Pak klikněte na **Použít**:
 
-[![Přidat zařízení IoT Edge](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
+[![Přidání zařízení IoT Edge](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
 
-Poznamenejte si připojovací řetězec zařízení, budete potřebovat v další části tohoto kurzu.
+Poznamenejte si připojovací řetězec zařízení, potřebujete jej v další části tohoto kurzu.
 
-Když registrujete zařízení prostřednictvím služby IoT hub v akcelerátoru řešení vzdáleného monitorování, nejsou na **Device Explorer** stránku ve webovém uživatelském rozhraní:
+Když zaregistrujete zařízení pomocí služby IoT hub v akcelerátoru řešení vzdáleného monitorování, je uvedeno na stránce **Průzkumníkzařízení** ve webovém uživatelském rozhraní:
 
 [![Nové zařízení IoT Edge](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
-Aby bylo snazší spravovat zařízení IoT Edge v řešení, vytvořte skupinu zařízení a přidání zařízení IoT Edge:
+Chcete-li usnadnit správu zařízení IoT Edge v řešení, vytvořte skupinu zařízení a přidejte zařízení IoT Edge:
 
-1. Vyberte **ropy čerpadlo** zařízení v seznamu na **Device Explorer** stránce a potom klikněte na tlačítko **úlohy**.
+1. V seznamu na stránce **Průzkumník zařízení** vyberte zařízení **olejové čerpadlo** a klepněte na tlačítko **Úlohy**.
 
-1. Vytvoření úlohy pro přidání **IsEdge** značka, které zařízení pomocí následujících nastavení:
+1. Vytvořte úlohu pro přidání značky **IsEdge** do zařízení pomocí následujících nastavení:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Úloha     | Tags  |
-    | Název úlohy | AddEdgeTag |
-    | Klíč     | IsOilPump |
+    | Úloha     | Značky  |
+    | Název úlohy | Značka AddEdgeTag |
+    | Klíč     | IsoilPump |
     | Hodnota   | Ano     |
-    | Type    | Text  |
+    | Typ    | Text  |
 
     [![Přidat značku](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
-1. Klikněte na tlačítko **použít**, pak **Zavřít**.
+1. Klepněte na tlačítko **Použít**a potom **na tlačítko Zavřít**.
 
-1. Na **Device Explorer** klikněte na **Správa skupin zařízení**.
+1. Na stránce **Průzkumník zařízení** klikněte na **Spravovat skupiny zařízení**.
 
-1. Klikněte na tlačítko **vytvořit novou skupinu zařízení**. Vytvořte novou skupinu zařízení s následujícími nastaveními:
+1. Klikněte na **Vytvořit novou skupinu zařízení**. Vytvořte novou skupinu zařízení s následujícím nastavením:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název    | OilPumps |
-    | Pole   | Tags.IsOilPump |
+    | Name (Název)    | Olejová čerpadla |
+    | Pole   | Tagy.IsoilPump |
     | Operátor | = Rovná se |
     | Hodnota    | Ano |
-    | Type     | Text |
+    | Typ     | Text |
 
-    [![Vytvořte skupinu zařízení](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
+    [![Vytvořit skupinu zařízení](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
 1. Klikněte na **Uložit**.
 
-Můžete zařízení IoT Edge je teď v **OilPumps** skupiny.
+Zařízení IoT Edge je nyní ve skupině **OilPumps.**
 
-### <a name="install-the-edge-runtime"></a>Instalace modulu runtime Edge
+### <a name="install-the-edge-runtime"></a>Instalace runtime Edge
 
-Hraniční zařízení vyžaduje modulu runtime Edge k instalaci. V tomto kurzu nainstalujete modulu runtime Edge ve virtuálním počítači Azure s Linuxem k otestování tohoto scénáře. Následujícím postupem použít Azure cloud shell v instalaci a konfiguraci virtuálního počítače:
+Zařízení Edge vyžaduje, aby byl nainstalován runtime Edge. V tomto kurzu nainstalujete edge runtime v virtuálním počítači Azure Linux k testování scénáře. Následující kroky používají cloudové prostředí Azure při instalaci a konfiguraci virtuálního počítače:
 
-1. K vytvoření virtuálního počítače s Linuxem v Azure, spusťte následující příkazy. Můžete použít umístění blízko nacházíte:
+1. Pokud chcete vytvořit virtuální počítač s Linuxem v Azure, spusťte následující příkazy. Můžete použít umístění v blízkosti místa, kde se nacházíte:
 
     ```azurecli-interactive
     az group create \
@@ -127,7 +127,7 @@ Hraniční zařízení vyžaduje modulu runtime Edge k instalaci. V tomto kurzu 
       --size Standard_B1ms
     ```
 
-1. Konfigurace modulu runtime Edge s připojovacím řetězcem zařízení, spusťte následující příkaz pomocí připojovacího řetězce zařízení, které jste si poznamenali dříve:
+1. Chcete-li nakonfigurovat runtime Edge pomocí připojovacího řetězce zařízení, spusťte následující příkaz pomocí připojovacího řetězce zařízení, který jste si dříve poznamenali:
 
     ```azurecli-interactive
     az vm run-command invoke \
@@ -137,43 +137,43 @@ Hraniční zařízení vyžaduje modulu runtime Edge k instalaci. V tomto kurzu 
       --scripts 'sudo /etc/iotedge/configedge.sh "YOUR_DEVICE_CONNECTION_STRING"'
     ```
 
-    Nezapomeňte zahrnout připojovací řetězec do uvozovek.
+    Nezapomeňte zahrnout připojovací řetězec do dvojunabídek.
 
-Právě jste nainstalovat a nakonfigurovat modul runtime IoT Edge na zařízení s Linuxem. Později v tomto kurzu použijete řešení vzdáleného monitorování můžete nasadit moduly IoT Edge tohoto zařízení.
+Teď jste nainstalovali a nakonfigurovali runtime IoT Edge na zařízení s Linuxem. Později v tomto kurzu použijete řešení vzdáleného monitorování k nasazení modulů IoT Edge do tohoto zařízení.
 
-## <a name="create-an-edge-manifest"></a>Vytvořte Edge manifest
+## <a name="create-an-edge-manifest"></a>Vytvoření manifestu Edge
 
-Simulovat zařízení čerpadlo jack ropy, budete muset přidat následující moduly do vlastního hraničního zařízení:
+Chcete-li simulovat zařízení čerpadla olejové zásuvky, musíte do zařízení Edge přidat následující moduly:
 
-* Teplota simulace modulu.
-* Detekce anomálií Azure Stream Analytics.
+* Modul simulace teploty.
+* Azure Stream Analytics detekce anomálií.
 
-Následující kroky ukazují, jak vytvořit manifest nasazení Edge, který zahrnuje tyto moduly. Později v tomto kurzu importu manifestu jako balíček IExpress v akcelerátoru řešení vzdáleného monitorování.
+Následující kroky ukazují, jak vytvořit manifest nasazení Edge, který obsahuje tyto moduly. Později v tomto kurzu importovat tento manifest jako balíček v akcelerátoru řešení vzdáleného monitorování.
 
 ### <a name="create-the-azure-stream-analytics-job"></a>Vytvoření úlohy Azure Stream Analytics
 
-Před zabalení jako modul Edge definujete úlohu Stream Analytics na portálu.
+Úlohu Stream Analytics definujete na portálu před jeho zabalením jako moduledge.
 
-1. Na webu Azure Portal vytvořit účet úložiště Azure pomocí výchozích možností v **IoTEdgeDevices** skupinu prostředků. Poznamenejte si název, který jste zvolili.
+1. Na webu Azure Portal vytvořte účet úložiště Azure pomocí výchozích možností ve skupině prostředků **IoTEdgeDevices.** Poznamenejte si jméno, které jste si vybrali.
 
-1. Na portálu Azure vytvořit **úlohy Stream Analytics** v **IoTEdgeDevices** skupinu prostředků. Použít následující hodnoty konfigurace:
+1. Na webu Azure Portal vytvořte **úlohu Analýzy datových proudů** ve skupině prostředků **IoTEdgeDevices.** Použijte následující hodnoty konfigurace:
 
     | Možnost | Hodnota |
     | ------ | ----- |
     | Název úlohy | EdgeDeviceJob |
     | Předplatné | Vaše předplatné Azure |
-    | Skupina prostředků | IoTEdgeDevices |
-    | Location | USA – východ |
+    | Skupina prostředků | Zařízení IoTEdge |
+    | Umístění | USA – východ |
     | Hostitelské prostředí | Edge |
     | Jednotky streamování | 1 |
 
-1. Otevřít **EdgeDeviceJob** Stream Analytics úlohy na portálu, klikněte na vstupy a přidat **Centrum Edge** vstupu volá datový proud stream **telemetrie**.
+1. Otevřete úlohu **EdgeDeviceJob** Stream Analytics na portálu, klikněte na Vstupy a přidejte vstup datového proudu **Edge Hub** s názvem **telemetrie**.
 
-1. V **EdgeDeviceJob** úlohy Stream Analytics na portálu klikněte na tlačítko **výstupy** a přidat **Centrum Edge** výstup nazvaný **výstup**.
+1. V úloze **EdgeDeviceJob** Stream Analytics na portálu klikněte na **Výstupy** a přidejte výstup **Edge Hub** s názvem **výstup**.
 
-1. V **EdgeDeviceJob** úlohy Stream Analytics na portálu klikněte na tlačítko **výstupy** a přidejte druhý **Centrum Edge** výstup nazvaný **výstraha**.
+1. V úloze **EdgeDeviceJob** Stream Analytics na portálu klikněte na **Výstupy** a přidejte druhý výstup **Edge Hub** s názvem **výstraha**.
 
-1. V **EdgeDeviceJob** úlohy Stream Analytics na portálu klikněte na tlačítko **dotazu** a přidejte následující **vyberte** – příkaz:
+1. V úloze **EdgeDeviceJob** Stream Analytics na portálu klikněte na **Dotaz** a přidejte následující **příkaz select:**
 
     ```sql
     SELECT  
@@ -189,35 +189,35 @@ Před zabalení jako modul Edge definujete úlohu Stream Analytics na portálu.
     HAVING avg(machine.temperature) > 400
     ```
 
-1. V **EdgeDeviceJob** úlohy Stream Analytics na portálu klikněte na tlačítko **nastavení účtu úložiště**. Přidání účtu úložiště, který jste přidali do **IoTEdgeDevices** skupině prostředků jako začátku této části. Vytvořit nový kontejner volá **edgeconfig**.
+1. V úloze **EdgeDeviceJob** Stream Analytics na portálu klikněte na **Nastavení účtu úložiště**. Jako začátek této části přidejte účet úložiště, který jste přidali do skupiny prostředků **IoTEdgeDevices.** Vytvořte nový kontejner s názvem **edgeconfig**.
 
-Následující snímek obrazovky ukazuje uložené úlohy Stream Analytics:
+Následující snímek obrazovky ukazuje uloženou úlohu Stream Analytics:
 
-[![Úlohy Stream Analytics](./media/iot-accelerators-remote-monitoring-edge/streamjob-inline.png)](./media/iot-accelerators-remote-monitoring-edge/streamjob-expanded.png#lightbox)
+[![Úloha Stream Analytics](./media/iot-accelerators-remote-monitoring-edge/streamjob-inline.png)](./media/iot-accelerators-remote-monitoring-edge/streamjob-expanded.png#lightbox)
 
-Nyní jste definovali v hraničním zařízení spuštění úlohy Stream Analytics. Úloha vypočítá průměrná teplota v intervalu 5 sekund. Úloha také odešle výstrahu, pokud průměrná teplota v okně 3 sekundy překročí 400.
+Nyní jste definovali úlohu Stream Analytics, která se má spouštět na hraničním zařízení. Úloha vypočítá průměrnou teplotu v okně 5 sekund. Úloha také odešle výstrahu, pokud průměrná teplota v okně 3 sekund přesahuje 400.
 
 ### <a name="create-the-iot-edge-deployment"></a>Vytvoření nasazení IoT Edge
 
-Dále vytvořte manifest nasazení IoT Edge, který definuje moduly, které chcete spustit na hraniční zařízení. V další části importu manifestu jako balíček IExpress v řešení vzdáleného monitorování.
+Dále vytvoříte manifest nasazení IoT Edge, který definuje moduly, které mají být spuštěny na vašem zařízení Edge. V další části importujete tento manifest jako balíček v řešení vzdáleného monitorování.
 
-1. Na webu Azure Portal přejděte do služby IoT hub v řešení vzdáleného monitorování. IoT hub můžete najít ve skupině prostředků, který má stejný název jako vaše řešení vzdálené monitorování.
+1. Na webu Azure Portal přejděte do služby IoT hub ve vašem řešení vzdáleného monitorování. Centrum IoT najdete ve skupině prostředků, která má stejný název jako řešení vzdáleného monitorování.
 
-1. Ve službě IoT hub, klikněte na tlačítko **IoT Edge** v **Automatická správa zařízení** oddílu. Klikněte na tlačítko **přidat nasazení IoT Edge**.
+1. V centru IoT klikněte v části **Automatická správa zařízení** na **IoT Edge.** Klikněte **na Přidat nasazení IoT Edge**.
 
-1. Na **vytvořit nasazení > název a popisek** stránky, zadejte název **ropy čerpadlo zařízení**. Klikněte na **Další**.
+1. Na stránce **Vytvořit název > nasazení a popisek** zadejte název **olejové čerpadlo- zařízení**. Klikněte na **Další**.
 
-1. Na **vytvořit nasazení > Přidat moduly** klikněte na **+ přidat**. Zvolte **modul IoT Edge**.
+1. Na stránce **Vytvořit nasazení > Přidat moduly** klikněte na + **Přidat**. Zvolte **Modul IoT Edge**.
 
-1. V **moduly IoT Edge vlastní** panelu, zadejte **senzor teploty** jako název, a **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** jako identifikátor URI Image. Klikněte na **Uložit**.
+1. V panelu **Vlastní moduly IoT Edge** zadejte **temperatureSensor** jako název a **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** jako identifikátor URI obrázku. Klikněte na **Uložit**.
 
-1. Na **vytvořit nasazení > Přidat moduly** klikněte na **+ přidat** přidat druhý modul. Zvolte **modul Azure Stream Analytics**.
+1. Na stránce **Vytvořit nasazení > přidat moduly** klikněte na + **Přidat** a přidejte druhý modul. Zvolte **Modul Azure Stream Analytics**.
 
-1. V **hraniční nasazení** panelu, vyberte své předplatné a **EdgeDeviceJob** jste vytvořili v předchozí části. Klikněte na **Uložit**.
+1. V panelu **nasazení Edge** vyberte předplatné a **EdgeDeviceJob,** které jste vytvořili v předchozí části. Klikněte na **Uložit**.
 
-1. Na **vytvořit nasazení > Přidat moduly** klikněte na **Další**.
+1. Na stránce **Vytvořit nasazení > přidat moduly** klikněte na **další**.
 
-1. Na **vytvořit nasazení > Určení tras** stránce, přidejte následující kód:
+1. Na stránce **Vytvořit nasazení > určit trasy** přidejte následující kód:
 
     ```sql
     {
@@ -229,113 +229,113 @@ Dále vytvořte manifest nasazení IoT Edge, který definuje moduly, které chce
     }
     ```
 
-    Tento kód přesměruje výstup z modulu Stream Analytics na správné umístění.
+    Tento kód směruje výstup z modulu Stream Analytics do správných umístění.
 
-    Klikněte na **Další**.
+    Klikněte na **Další**.
 
-1. Na **vytvořit nasazení > zadejte metriky** klikněte na **Další**.
+1. Na stránce **Vytvořit > zadat metriky** klikněte na **Další**.
 
-1. Na **vytvořit nasazení > cílová zařízení** stránky, jako je Priorita zadejte 10. Klikněte na **Další**.
+1. Na stránce **Vytvořit nasazení > cílová zařízení** zadejte jako prioritu hodnotu 10. Klikněte na **Další**.
 
-1. Na **vytvořit nasazení > zkontrolujte nasazení** klikněte na **odeslat**:
+1. Na stránce **Vytvořit nasazení > nasazení recenze** klikněte na **Odeslat**:
 
-    [![Zkontrolujte nasazení](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-expanded.png#lightbox)
+    [![Zkontrolovat nasazení](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-expanded.png#lightbox)
 
-1. V hlavním **IoT Edge** klikněte na **nasazení IoT Edge**. Můžete zobrazit **ropy čerpadlo zařízení** v seznamu nasazení.
+1. Na hlavní stránce **IoT Edge** klikněte na **Nasazení IoT Edge**. V seznamu nasazení můžete vidět **zařízení olejového čerpadla.**
 
-1. Klikněte na tlačítko **ropy čerpadlo zařízení** nasazení a pak klikněte na tlačítko **IoT Edge stáhnout manifest**. Uložte soubor jako **ropy. čerpadlo device.json** do vhodného umístění na místním počítači. Tento soubor v další části tohoto kurzu potřebujete.
+1. Klikněte na nasazení **zařízení olejového čerpadla** a potom klikněte na **stáhnout manifest IoT Edge**. Uložte soubor jako **olej-čerpadlo device.json** na vhodné místo v místním počítači. Tento soubor potřebujete v další části tohoto kurzu.
 
-Právě jste vytvořili manifest IoT Edge pro import do řešení vzdáleného monitorování jako balíček. Vývojáři obvykle vytvoří IoT Edge, moduly a soubor manifestu.
+Nyní jste vytvořili manifest IoT Edge pro import do řešení vzdáleného monitorování jako balíček. Vývojář obvykle vytvoří moduly IoT Edge a soubor manifestu.
 
-## <a name="import-a-package"></a>Importovat balíček
+## <a name="import-a-package"></a>Import balíčku
 
-V této části importu manifestu Edge jako balíček IExpress v řešení vzdáleného monitorování.
+V této části importujete manifest Edge jako balíček v řešení vzdáleného monitorování.
 
-1. Vzdálené monitorování webového uživatelského rozhraní, přejděte na **balíčky** stránky a klikněte na tlačítko **+ nový balíček pro**:
+1. Ve webovém uživatelském uživatelském uživatelském uživatelském tlačítkě Vzdálené monitorování přejděte na stránku **Balíčky** a klikněte na **+ Nový balíček**:
 
     [![Nový balíček](./media/iot-accelerators-remote-monitoring-edge/newpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newpackage-expanded.png#lightbox)
 
-1. Na **nový balíček** panelu, vyberte **Edge Manifest** jako typ balíčku, klikněte na tlačítko **Procházet** najít **ropy. čerpadlo device.json** souborů v váš místní počítač a klikněte na **nahrát**:
+1. Na panelu **Nový balíček** zvolte Jako typ balíčku **manifest hrany,** klikněte na **Procházet** a vyhledejte soubor **olejové pumpy device.json** v místním počítači a klikněte na **Nahrát**:
 
-    [![Nahrání balíčku](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
+    [![Nahrát balíček](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
-    Seznam balíčků teď zahrnuje **ropy. čerpadlo device.json** balíčku.
+    Seznam balíčků nyní obsahuje balíček **olej-čerpadlo device.json.**
 
-V další části můžete vytvořit nasazení, která se použije balíček do vlastního hraničního zařízení.
+V další části vytvoříte nasazení, které použije balíček pro vaše zařízení Edge.
 
 ## <a name="deploy-a-package"></a>Nasazení balíčku
 
 Nyní jste připraveni nasadit balíček do zařízení.
 
-1. Vzdálené monitorování webového uživatelského rozhraní, přejděte na **nasazení** stránky a klikněte na tlačítko **+ nové nasazení**:
+1. Ve webovém uživatelském uživatelském uživatelském tlačítkě Vzdálené monitorování přejděte na stránku **Nasazení** a klikněte na **+ Nové nasazení**:
 
     [![Nové nasazení](./media/iot-accelerators-remote-monitoring-edge/newdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newdeployment-expanded.png#lightbox)
 
-1. V **nové nasazení** panelu, vytvořit nasazení s následujícími nastaveními:
+1. V panelu **Nové nasazení** vytvořte nasazení s následujícím nastavením:
 
     | Možnost | Hodnota |
     | ------ | ----- |
-    | Název   | OilPumpDevices |
-    | Typ balíčku | Edge Manifest |
-    | Balíček | oil-pump-device.json |
-    | Skupiny zařízení | OilPumps |
+    | Name (Název)   | Zařízení OilPumpDevices |
+    | Typ balíčku | Manifest okrajů |
+    | Balíček | olej-čerpadlo-device.json |
+    | Skupina zařízení | Olejová čerpadla |
     | Priorita | 10 |
 
     [![Vytvoření nasazení](./media/iot-accelerators-remote-monitoring-edge/createdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdeployment-expanded.png#lightbox)
 
-    Klikněte na tlačítko **Použít**.
+    Klikněte na **Použít**.
 
-Budete muset počkat několik minut, než pro balíček pro nasazení do zařízení a telemetrických dat odesílaných ze zařízení spustit.
+Musíte počkat několik minut, než se balíček nasadí do vašeho zařízení a telemetrie začne proudit ze zařízení.
 
-[![Aktivní nasazení](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-inline.png)](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-expanded.png#lightbox)
+[![Nasazení je aktivní](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-inline.png)](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-expanded.png#lightbox)
 
-**Nasazení** stránce se zobrazí následující metriky:
+Stránka **Nasazení** zobrazuje následující metriky:
 
-* **Cílem** zobrazuje počet zařízení ve skupině zařízení.
-* **Použít** zobrazuje počet zařízení, která jste využili obsahu nasazení použít.
-* **Úspěšné** zobrazuje počet hraničních zařízení v nasazení generování sestav úspěšnost modul runtime IoT Edge klienta.
-* **Nepovedlo** zobrazuje počet hraničních zařízení v nasazení generování sestav chyby z modulu runtime IoT Edge klienta.
+* **Cílený** zobrazuje počet zařízení ve skupině zařízení.
+* **Použité** zobrazuje počet zařízení, která měla použitý obsah nasazení.
+* **Úspěšný** zobrazuje počet zařízení Edge v nasazení hlášení úspěchu z runtime klienta IoT Edge.
+* **Neúspěšný** zobrazuje počet zařízení Edge v selhání hlášení nasazení z runtime klienta IoT Edge.
 
-## <a name="monitor-the-device"></a>Monitorování zařízení
+## <a name="monitor-the-device"></a>Sledování zařízení
 
-Můžete zobrazit teplotní telemetrie ze zařízení čerpadlo ropy ve vzdálené monitorování webového uživatelského rozhraní:
+Telemetrii teploty můžete zobrazit ze zařízení s olejovým čerpadlem ve webovém uživatelském rozhraní vzdáleného monitorování:
 
-1. Přejděte **Device Explorer** stránky a vyberte své zařízení ropy čerpadla.
-1. V **Telemetrie** část **podrobnosti o zařízení** panelu, klikněte na tlačítko **teploty**:
+1. Přejděte na stránku **Průzkumník zařízení** a vyberte zařízení s olejovým čerpadlem.
+1. V části **Telemetrie** na panelu **Podrobnosti o zařízení** klikněte na **Teplota**:
 
-    [![Zobrazení telemetrie](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)
+    [![Zobrazení telemetrických dat](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)
 
-Uvidíte jak teplota stoupne, dokud nebude dosaženo prahové hodnoty. Modul Stream Analytics Edge zjistí, že teplota dosáhne této prahové hodnoty a odešle příkaz do zařízení a omezit teplota okamžitě. Všechny tohoto zpracování se stane v zařízení bez komunikace se službou cloud.
+Můžete vidět, jak teplota stoupá, dokud nedosáhne prahové hodnoty. Modul Stream Analytics Edge detekuje, kdy teplota dosáhne této prahové hodnoty, a odešle do zařízení příkaz, aby okamžitě snížil teplotu. Veškeré toto zpracování probíhá na zařízení bez komunikace s cloudem.
 
-Pokud chcete zasílat oznámení operátory, pokud bylo dosaženo prahové hodnoty, můžete vytvořit pravidlo v vzdálené monitorování webového uživatelského rozhraní:
+Pokud chcete operátorům upozorňovat, když bylo dosaženo prahové hodnoty, můžete vytvořit pravidlo v uživatelském uživatelském uživatelském zařízení vzdáleného monitorování:
 
-1. Přejděte **pravidla** stránky a klikněte na tlačítko **+ nové pravidlo**.
+1. Přejděte na stránku **Pravidla** a klepněte na tlačítko **+ Nové pravidlo**.
 1. Vytvořte nové pravidlo s následujícím nastavením:
 
     | Možnost | Hodnota |
     | ------ | ----- |
-    | Název pravidla | Ropa čerpadlo teploty |
-    | Popis | Ropy čerpadlo teplota překročila 300 |
-    | Skupina zařízení | OilPumps |
+    | Název pravidla | Teplota olejového čerpadla |
+    | Popis | Teplota olejového čerpadla překročila 300 |
+    | Skupina zařízení | Olejová čerpadla |
     | Výpočet | Okamžitý |
     | Pole | teplota |
     | Operátor | > |
     | Hodnota | 300 |
-    | Úroveň závažnosti | Info |
+    | Úroveň závažnosti | Informace |
 
-    [![Vytvoření pravidla](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
+    [![Vytvořit pravidlo](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
 
-    Klikněte na tlačítko **Použít**.
+    Klikněte na **Použít**.
 
-1. Přejděte **řídicí panel** stránky. Upozornění se zobrazí v **výstrahy** panelu teploty v **ropy čerpadlo** , co zařízení projde více než 300.
+1. Přejděte na stránku **Řídicí panel.** Výstraha se zobrazí v panelu **Upozornění,** když teplota v zařízení **olejového čerpadla** přejde na více než 300.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento kurz ukázal, jak přidat a nakonfigurovat zařízení IoT Edge v akcelerátoru řešení vzdáleného monitorování. Další informace o práci s IoT Edge balíčky v řešení vzdáleného monitorování, najdete v následující průvodce:
+Tento kurz vám ukázal, jak přidat a nakonfigurovat zařízení IoT Edge v akcelerátoru řešení vzdáleného monitorování. Další informace o práci s balíčky IoT Edge v řešení vzdáleného monitorování najdete v následujících návodech:
 
 > [!div class="nextstepaction"]
-> [Importovat balíček IoT Edge do akcelerátor řešení vzdálené monitorování](iot-accelerators-remote-monitoring-import-edge-package.md)
+> [Import balíčku IoT Edge do akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-import-edge-package.md)
 
-Další informace o instalaci modulu runtime IoT Edge najdete v tématu [nainstalovat modul runtime Azure IoT Edge v Linuxu (x64)](../iot-edge/how-to-install-iot-edge-linux.md).
+Další informace o instalaci runtime IoT Edge najdete [v tématu Instalace runtime Azure IoT Edge na Linux (x64)](../iot-edge/how-to-install-iot-edge-linux.md).
 
-Další informace o Azure Stream Analytics na hraničních zařízeních najdete v tématu [nasazení Azure Stream Analytics jako modulu IoT Edge](../iot-edge/tutorial-deploy-stream-analytics.md).
+Další informace o Azure Stream Analytics na zařízeních Edge najdete v tématu [Nasazení Azure Stream Analytics jako modulu IoT Edge](../iot-edge/tutorial-deploy-stream-analytics.md).

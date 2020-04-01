@@ -1,6 +1,6 @@
 ---
-title: Kurz kopírování dat do Azure Data Box Heavy přes systém souborů NFS | Microsoft Docs
-description: Informace o tom, jak kopírovat data do svého Azure Data Box Heavy přes systém souborů NFS
+title: Kurz kopírování dat do Azure Data Box Heavy přes NFS| Dokumenty společnosti Microsoft
+description: Přečtěte si, jak kopírovat data do datové schránky Azure Heavy prostřednictvím služby NFS
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238983"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Kurz: kopírování dat do Azure Data Box Heavy přes systém souborů NFS
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Kurz: Kopírování dat do azure datové schránky těžké přes NFS
 
-V tomto kurzu se dozvíte, jak připojit a zkopírovat data z hostitelského počítače pomocí místního webového uživatelského rozhraní k vašemu Azure Data Box Heavy.
+Tento kurz popisuje, jak se připojit k hostitelskému počítači a zkopírovat je pomocí místního webového uživatelského prostředí do azure datové schránky Heavy.
 
 V tomto kurzu se naučíte:
 
@@ -30,10 +30,10 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: nastavte Azure Data box Heavy](data-box-heavy-deploy-set-up.md).
-2. Dostali jste Data Box Heavy se **doručí**stav objednávky na portálu.
+1. Dokončili jste [kurz: Nastavení Azure Data Box Heavy](data-box-heavy-deploy-set-up.md).
+2. Obdrželi jste datovou schránku Heavy a stav objednávky na portálu je **Doručeno**.
 3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu Heavy. Hostitelský počítač musí splňovat tyto požadavky:
-    - Musí na něm běžet [podporovaný operační systém](data-box-heavy-system-requirements.md).
+    - Spusťte [podporovaný operační systém](data-box-heavy-system-requirements.md).
     - Musí být připojený k vysokorychlostní síti. Největší rychlosti kopírování je možné dosáhnout použitím dvou paralelních připojení 40 GbE (jedno na uzel). Pokud nemáte k dispozici připojení 40 GbE, doporučujeme použít alespoň dvě připojení 10 GbE (jedno na uzel). 
 
 ## <a name="connect-to-data-box-heavy"></a>Připojení k Data Boxu Heavy
@@ -61,7 +61,7 @@ Následující tabulka uvádí cestu UNC ke sdíleným složkám ve vašem Data 
 | Objekty blob stránky Azure  | <li>Cesta UNC ke sdíleným složkám: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
 | Soubory Azure       |<li>Cesta UNC ke sdíleným složkám: `//<DeviceIPAddres>/<StorageAccountName_AzFile>/<ShareName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |
 
-Pokud používáte hostitelský počítač se systémem Linux, proveďte následující kroky, abyste mohli nakonfigurovat zařízení tak, aby umožňovalo přístup k klientům NFS.
+Pokud používáte hostitelský počítač s Linuxem, proveďte následující kroky a nakonfigurujte zařízení tak, aby umožňovalo přístup ke klientům systému automatického připojení k systému zabezpečení sítě.
 
 1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejděte na stránku **Připojit a kopírovat**. V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**. 
 
@@ -77,11 +77,11 @@ Pokud používáte hostitelský počítač se systémem Linux, proveďte násled
 
     `sudo mount <Data Box Heavy device IP>:/<NFS share on Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Následující příklad ukazuje, jak se připojit přes systém souborů NFS ke sdílené Data Box Heavy. Data Box Heavy IP adresa je `10.161.23.130`, `Mystoracct_Blob` sdílené složky je připojená k ubuntuVM, přípojnému bodu, který je `/home/databoxheavyubuntuhost/databoxheavy`.
+    Následující příklad ukazuje, jak se připojit přes NFS ke sdílené schránce Data Box Heavy. Data Box Heavy `10.161.23.130`IP je `Mystoracct_Blob` , podíl je namontován na `/home/databoxheavyubuntuhost/databoxheavy`ubuntuVM, mount point je .
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
     
-    U klientů se systémem Mac budete muset přidat další možnost následujícím způsobem: 
+    Pro klienty Mac budete muset přidat další možnost takto: 
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
 
@@ -89,18 +89,18 @@ Pokud používáte hostitelský počítač se systémem Linux, proveďte násled
 
 ## <a name="copy-data-to-data-box-heavy"></a>Kopírování dat do Data Boxu Heavy
 
-Až budete připojeni ke sdíleným složkám Data Box Heavy, je dalším krokem kopírování dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
+Jakmile jste připojeni ke sdíleným položkám Data Box Heavy, dalším krokem je kopírování dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
 
-- Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Kopírovat virtuální pevné disky do objektů blob stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
--  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v [úložišti Azure a omezeních data box Heavy](data-box-heavy-limits.md). 
+- Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Zkopírujte virtuální depozita do objektů BLOB stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
+-  Při kopírování dat se ujistěte, že velikost dat odpovídá limitům velikosti popsaným v [limitech úložiště Azure a datové schránky .](data-box-heavy-limits.md) 
 - Pokud data nahrávaná Data Boxem Heavy zároveň nahrávají jiné aplikace mimo Data Box Heavy, může to způsobit selhání úlohy nahrávání a poškození dat.
 - Doporučujeme, abyste nepoužívali protokol SMB a systém souborů NFS současně a abyste nekopírovali stejná data do stejného cíle v Azure. V takových případech není možné určit konečný výsledek.
 - **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory nemůžete kopírovat přímo do složky *root* v účtu úložiště.
-- Pokud se potýkají ingestování názvů adresářů a souborů ze sdílené složky NFS do systému souborů NFS v Data Box Heavy: 
-    - V názvu se zachová velká a malá písmena.
-    - V souborech se nerozlišují malá a velká písmena.
+- Pokud ingestujete názvy adresářů a souborů rozlišující malá a velká písmena ze sdílené složky systému souborů NFS do systému souborů NFS v datové schránce Heavy: 
+    - Případ je zachován v názvu.
+    - Soubory nerozlišují malá a velká písmena.
     
-    Například pokud kopírujete `SampleFile.txt` a `Samplefile.Txt`, při zkopírování do zařízení se zachová i případ, ale druhý soubor přepíše první soubor, protože se považuje za stejný soubor.
+    Například pokud kopírování `SampleFile.txt` `Samplefile.Txt`a , případ bude zachován v názvu při kopírování do zařízení, ale druhý soubor přepíše první, protože tyto jsou považovány za stejný soubor.
 
 
 Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
@@ -142,7 +142,7 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
      Doporučujeme začít s 16 paralelními kopiemi a zvyšovat počet vláken v závislosti na dostupnosti prostředků.
 
 > [!IMPORTANT]
-> Následující typy souborů systému Linux nejsou podporovány: symbolické odkazy, soubory znaků, blokovat soubory, sokety a kanály. Tyto typy souborů budou mít za následek chyby během **Příprava k odeslání** kroku.
+> Následující typy souborů Linux nejsou podporovány: symbolické odkazy, soubory znaků, blokové soubory, sokety a potrubí. Tyto typy souborů bude mít za následek selhání během **připravit k odeslání** kroku.
 
 Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu Heavy](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem Heavy](data-box-troubleshoot.md).
 

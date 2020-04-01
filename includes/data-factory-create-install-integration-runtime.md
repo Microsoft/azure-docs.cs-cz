@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76989076"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 
-V této části vytvoříte místní prostředí Integration Runtime a přidružíte ho k místnímu počítači s databází SQL Serveru. Místní prostředí Integration runtime je komponenta, která kopíruje data z SQL Server ve vašem počítači do služby Azure SQL Database. 
+V této části vytvoříte místní prostředí Integration Runtime a přidružíte ho k místnímu počítači s databází SQL Serveru. Modul runtime integrace s vlastním hostitelem je komponenta, která kopíruje data ze serveru SQL Server ve vašem počítači do databáze Azure SQL. 
 
 1. Vytvořte proměnnou pro název prostředí Integration Runtime. Použijte jedinečný název a poznamenejte si ho. Použijete ho později v tomto kurzu. 
 
@@ -26,7 +26,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Set-AzDataFactoryV2IntegrationRuntime -Name $integrationRuntimeName -Type SelfHosted -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName
    ```
 
-   Tady je ukázkový výstup:
+   Zde je ukázkový výstup:
 
    ```json
     Name              : <Integration Runtime name>
@@ -43,7 +43,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
    ```
 
-   Tady je ukázkový výstup:
+   Zde je ukázkový výstup:
 
    ```json  
    State                     : NeedRegistration
@@ -72,7 +72,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
    ```
 
-   Tady je ukázkový výstup:
+   Zde je ukázkový výstup:
 
    ```json
    {
@@ -83,7 +83,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
 5. Pro registraci místního prostředí Integration Runtime, které nainstalujete na počítači v dalších krocích, zkopírujte jeden z klíčů (bez uvozovek).  
 
-## <a name="install-the-integration-runtime-tool"></a>Instalace nástroje Integration runtime
+## <a name="install-the-integration-runtime-tool"></a>Instalace nástroje integračního běhu
 
 1. Pokud již na počítači máte prostředí Integration Runtime, odinstalujte ho pomocí panelu **Přidat nebo odebrat programy**. 
 
@@ -103,7 +103,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     ![Registrace prostředí Integration Runtime](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-9. Na stránce **nový uzel Integration runtime (v místním prostředí)** vyberte **Dokončit**. 
+9. Na stránce **Nový integrační běh ový čas (samoobslužný) uzel** vyberte **Dokončit**. 
 
 10. Po úspěšném dokončení registrace místního prostředí Integration Runtime se zobrazí následující zpráva:
 
@@ -131,7 +131,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     f. Zadejte uživatelské jméno.
 
-    g. Zadejte heslo, které je přidruženo k pro uživatelské jméno.
+    g. Zadejte heslo, ke kterému je uživatelské jméno přidruženo.
 
     h. Pokud chcete potvrdit, že se prostředí Integration Runtime může připojit k SQL Serveru, vyberte **Test**. Pokud je připojení úspěšné, zobrazí se zelená značka zaškrtnutí. Jestliže připojení není úspěšné, zobrazí se chybová zpráva. Opravte všechny problémy a ověřte, že se prostředí Integration Runtime může připojit k SQL Serveru.    
 

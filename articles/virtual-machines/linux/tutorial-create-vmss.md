@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: vytvoření sady škálování virtuálních počítačů se systémem Linux'
-description: Naučte se používat rozhraní příkazového řádku Azure CLI k vytvoření a nasazení vysoce dostupné aplikace na virtuálních počítačích se systémem Linux pomocí sady škálování virtuálních počítačů.
+title: 'Kurz: Vytvoření škálovací sady virtuálních strojů pro Linux'
+description: Zjistěte, jak pomocí rozhraní API Azure vytvořit a nasadit vysoce dostupnou aplikaci na virtuálních počítačích S Linuxem pomocí škálovací sady virtuálních strojů.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -17,10 +17,10 @@ ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7a256fc5268c10dd05a2cf58747107cb26c3ced9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238591"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Kurz: Vytvoření škálovací sady virtuálních počítačů a nasazení vysoce dostupné aplikace v Linuxu pomocí Azure CLI
@@ -35,9 +35,9 @@ ms.locfileid: "79238591"
 > * Zobrazení informací o připojení instancí škálovací sady
 > * Použití datových disků ve škálovací sadě
 
-V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
+Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="scale-set-overview"></a>Přehled škálovací sady
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Virtuální počítače ve škálovací sadě se distribuují napříč logickými doménami selhání a aktualizačními doménami v jedné nebo více *skupinách umístění*. To jsou skupiny podobně nakonfigurovaných virtuálních počítačů, podobně jako [skupiny dostupnosti](tutorial-availability-sets.md).
@@ -117,7 +117,7 @@ az vmss create \
   --generate-ssh-keys
 ```
 
-Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních počítačů trvá několik minut. Jakmile vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Může trvat dalších několik minut, než k aplikaci budete mít přístup.
+Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních počítačů trvá několik minut. Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Než k aplikaci budete mít přístup, může to ještě několik minut trvat.
 
 
 ## <a name="allow-web-traffic"></a>Povolení webového provozu
@@ -212,7 +212,7 @@ az vmss list-instance-connection-info \
 Můžete vytvořit datové disky a použít je se škálovacími sadami. V předchozím kurzu jste zjistili, jak [spravovat disky Azure](tutorial-manage-disks.md), a seznámili jste se s osvědčenými postupy a vylepšeními výkonu pro sestavování aplikací na datových discích místo disku s operačním systémem.
 
 ### <a name="create-scale-set-with-data-disks"></a>Vytvoření škálovací sady s datovými disky
-Pokud chcete vytvořit škálovací sadu a připojit k ní datové disky, přidejte do příkazu `--data-disk-sizes-gb`az vmss create[ parametr ](/cli/azure/vmss#az-vmss-create). Následující příklad vytvoří škálovací sadu s *50GB* datovým diskem připojeným ke každé instanci:
+Pokud chcete vytvořit škálovací sadu a připojit k ní datové disky, přidejte do příkazu [az vmss create](/cli/azure/vmss#az-vmss-create) parametr `--data-disk-sizes-gb`. Následující příklad vytvoří škálovací sadu s *50GB* datovým diskem připojeným ke každé instanci:
 
 ```azurecli-interactive
 az vmss create \

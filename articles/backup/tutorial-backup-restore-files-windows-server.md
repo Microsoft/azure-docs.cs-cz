@@ -1,19 +1,19 @@
 ---
-title: 'Kurz: obnovení položek do Windows serveru'
-description: V tomto kurzu se naučíte používat agenta Microsoft Azure Recovery Services agenta (MARS) k obnovení položek z Azure do Windows serveru.
+title: 'Kurz: Obnovení položek v systému Windows Server'
+description: V tomto kurzu se dozvíte, jak pomocí agenta Microsoft Azure Recovery Services Agent (MARS) obnovit položky z Azure na Windows Server.
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78672947"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Obnovení souborů z Azure do Windows Serveru
 
-Azure Backup umožňuje obnovení jednotlivých položek ze záloh Windows Serveru. Obnovení jednotlivých souborů je užitečné v případě, že musíte rychle obnovit náhodně odstraněné soubory. Tento kurz popisuje použití agenta služby Microsoft Azure Recovery Services (MARS) k obnovení souborů ze záloh, které jste už provedli v Azure. V tomto kurzu se naučíte:
+Azure Backup umožňuje obnovení jednotlivých položek ze záloh Windows Serveru. Obnovení jednotlivých souborů je užitečné v případě, že musíte rychle obnovit náhodně odstraněné soubory. Tento kurz popisuje použití agenta služby Microsoft Azure Recovery Services (MARS) k obnovení souborů ze záloh, které jste už provedli v Azure. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 >

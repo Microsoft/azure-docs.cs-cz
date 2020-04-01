@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s 123ContactForm | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a 123ContactForm.
+title: 'Kurz: Integrace služby Azure Active Directory s 123ContactForm | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a 123ContactForm.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,210 +17,210 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e8328ac4008950d67cf5645c6a48c48d1196085
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73154921"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Kurz: Azure Active Directory integrace s 123ContactForm
+# <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Kurz: Integrace služby Azure Active Directory s 123ContactForm
 
 V tomto kurzu se dozvíte, jak integrovat 123ContactForm s Azure Active Directory (Azure AD).
 Integrace 123ContactForm s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k 123ContactForm.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k 123ContactForm (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Můžete řídit ve službě Azure AD, který má přístup k 123ContactForm.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k 123ContactForm (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s 123ContactForm potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s 123ContactForm, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* předplatné s povoleným 123ContactFormm jednotným přihlašováním
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* 123ContactForm povolení jednotného přihlášení předplatné
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* 123ContactForm podporuje jednotné přihlašování (SSO) **a IDP** .
-* 123ContactForm podporuje zřizování uživatelů **jenom v čase** .
+* 123ContactForm podporuje **sp a IDP** inicioval sso
+* 123ContactForm podporuje zřizování uživatelů **Just In Time**
 
-## <a name="adding-123contactform-from-the-gallery"></a>Přidání 123ContactForm z Galerie
+## <a name="adding-123contactform-from-the-gallery"></a>Přidání 123ContactForm z galerie
 
-Pokud chcete nakonfigurovat integraci 123ContactForm do služby Azure AD, musíte přidat 123ContactForm z Galerie do svého seznamu spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci 123ContactForm do Azure AD, musíte přidat 123ContactForm z galerie do seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat 123ContactForm z Galerie, proveďte následující kroky:**
+**Chcete-li přidat 123ContactForm z galerie, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **123ContactForm**, vyberte **123ContactForm** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **123ContactForm**, vyberte **123ContactForm** z panelu výsledků a pak klepněte na **tlačítko Přidat** a přidejte aplikaci.
 
      ![123ContactForm v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí 123ContactForm na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v 123ContactForm.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v 123ContactForm.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí 123ContactForm, musíte dokončit tyto stavební bloky:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí 123ContactForm, musíte dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování 123ContactForm](#configure-123contactform-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření 123ContactForm Test User](#create-123contactform-test-user)** – pro Britta Simon v 123ContactForm, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace 123ContactForm Jednotné přihlášení](#configure-123contactform-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte 123ContactForm testovací ho uživatele](#create-123contactform-test-user)** – chcete-li mít protějšek Britta Simon v 123ContactForm, který je propojený s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí 123ContactForm, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí 123ContactForm, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **123ContactForm** vyberte **jednotné přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **123ContactForm** vyberte **Jedno přihlášení**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
+4. V části **Základní konfigurace SAML,** Pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
 
-    ![informace o jednotném přihlašování v doméně 123ContactForm a adresách URL](common/idp-intiated.png)
+    ![123ContactForm Informace o doméně a adresách URL jednotného přihlášení](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
+    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
+    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
 
-5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
 
-    ![informace o jednotném přihlašování v doméně 123ContactForm a adresách URL](common/metadata-upload-additional-signon.png)
+    ![123ContactForm Informace o doméně a adresách URL jednotného přihlášení](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Tuto hodnotu budete muset aktualizovat ze skutečných adres URL a identifikátorů, které jsou vysvětleny dále v tomto kurzu.
+    > Tyto hodnoty nejsou skutečné. Budete muset aktualizovat tyto hodnoty ze skutečných adres URL a identifikátor, který je vysvětlen dále v kurzu.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
-    ![Odkaz na stažení certifikátu](common/metadataxml.png)
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-7. V části **Nastavení 123ContactForm** zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit 123ContactForm** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Odhlašovací adresa URL
+    c. Adresa URL odhlášení
 
-### <a name="configure-123contactform-single-sign-on"></a>Konfigurace jednotného přihlašování 123ContactForm
+### <a name="configure-123contactform-single-sign-on"></a>Konfigurace jednotného přihlášení pomocí kontaktního formuláře 123ContactForm
 
-1. Pokud chcete nakonfigurovat jednotné přihlašování na straně **123ContactForm** , klikněte na [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/) a proveďte následující kroky:
+1. Chcete-li nakonfigurovat jednotné přihlašování na [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/) straně **123ContactForm,** přejděte k následujícím krokům:
 
     ![Konfigurace jednotného přihlašování](./media/123contactform-tutorial/submit.png) 
 
-    a. Do textového pole **e-mail** zadejte e-mailové adresy uživatele, jako je **BrittaSimon\@contoso.com**.
+    a. Do textového pole **E-mail** zadejte e-mail uživatele, jako **\@je BrittaSimon Contoso.com**.
 
-    b. Klikněte na **nahrát** a vyhledejte stažený soubor XML s metadaty, který jste stáhli z Azure Portal.
+    b. Klikněte na **Nahrát** a projděte si stažený soubor XML metadat, který jste stáhli z webu Azure Portal.
 
-    c. Klikněte na tlačítko **Odeslat formulář**.
+    c. Klepněte na tlačítko **ODESLAT FORMULÁŘ**.
 
-2. V **Microsoft Azure AD – jednotné přihlašování – konfigurovat nastavení aplikace** proveďte následující kroky:
+2. Ve **službě Microsoft Azure AD – jednotné přihlašování – konfigurace nastavení aplikací** provede následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/123contactform-tutorial/url3.png)
 
-    a. Pokud chcete nakonfigurovat aplikaci v **režimu iniciované IDP**, zkopírujte hodnotu **identifikátoru** instance a vložte ji do textového pole **identifikátoru** v základní části **Konfigurace SAML** na Azure Portal.
+    a. Pokud chcete nakonfigurovat aplikaci v **režimu iniciovaném iditivai Protokolu IDP**, zkopírujte hodnotu **IDENTIFIER** pro vaši instanci a vložte ji do textového pole **Identifikátor** v části **Základní konfigurace SAML** na webu Azure Portal.
 
-    b. Pokud chcete nakonfigurovat aplikaci v **režimu iniciované IDP**, zkopírujte hodnotu **adresy URL odpovědi** pro vaši instanci a vložte ji do textového pole **Adresa URL odpovědi** v **základní části Konfigurace SAML** na Azure Portal.
+    b. Pokud chcete nakonfigurovat aplikaci v **režimu iniciovaném iditivai Protokolu IDP**, zkopírujte hodnotu **adresy URL odpovědi** pro vaši instanci a vložte ji do textového pole URL **odpovědi** v části Základní **konfigurace SAML** na webu Azure Portal.
 
-    c. Pokud chcete nakonfigurovat aplikaci v **režimu SP iniciované**, zkopírujte hodnotu **adresy URL pro přihlášení** do vaší instance a vložte ji do TEXTOVÉHO pole pro **přihlášení URL** v **základní části Konfigurace SAML** na Azure Portal.
+    c. Pokud chcete aplikaci nakonfigurovat v **režimu iniciovaném sp**, zkopírujte hodnotu **adresy URL přiznamovací adresy** pro vaši instanci a vložte ji do textového pole Přihlašovací adresa **URL** v části Základní **konfigurace SAML** na webu Azure Portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Uživatelský dialog](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k 123ContactForm.
+V této části povolíte Britta Simon používat Azure jednotné přihlášení udělením přístupu k 123ContactForm.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **123ContactForm**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **123ContactForm**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **123ContactForm**.
+2. V seznamu aplikací vyberte **123ContactForm**.
 
-    ![Odkaz 123ContactForm v seznamu aplikací](common/all-applications.png)
+    ![Odkaz 123ContactForm v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
 ### <a name="create-123contactform-test-user"></a>Vytvořit testovacího uživatele 123ContactForm
 
-V této části se v 123ContactForm vytvoří uživatel s názvem Britta Simon. 123ContactForm podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v 123ContactForm neexistuje, vytvoří se po ověření nový.
+V této části je uživatel s názvem Britta Simon vytvořen v 123ContactForm. 123ContactForm podporuje zřizování uživatelů just-in-time, které je ve výchozím nastavení povoleno. V této části pro vás není žádná položka akce. Pokud uživatel ještě neexistuje v 123ContactForm, nový je vytvořen po ověření.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici 123ContactForm, měli byste se automaticky přihlásit k 123ContactForm, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici 123ContactForm na přístupovém panelu, můžete by měl být automaticky přihlášeni k 123ContactForm, pro které nastavíte přivytváření připojetí. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

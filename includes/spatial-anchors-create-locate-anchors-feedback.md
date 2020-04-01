@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: 7b9954930c668e338cc289e948a5591c09ec2654
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76694469"
 ---
-## <a name="provide-feedback-to-the-user"></a>Poskytněte uživateli zpětnou vazbu.
+## <a name="provide-feedback-to-the-user"></a>Poskytnutí zpětné vazby uživateli
 
-Můžete napsat kód pro zpracování události aktualizace relace. Tato událost se aktivuje pokaždé, když relace zlepšuje své porozumění vašemu okolí. V takovém případě vám umožní:
+Můžete napsat kód pro zpracování aktualizované události relace. Tato událost se spustí pokaždé, když relace zlepší své chápání vašeho okolí. Přitom vám umožní:
 
-- Použijte třídu `UserFeedback` k poskytnutí zpětné vazby uživateli při přesunu zařízení a relace aktualizuje porozumění prostředí. K tomu je potřeba
-- Určete, v jakém bodě je k dispozici dostatek sledovaných prostorových dat pro vytvoření prostorových ukotvení. Určíte ho buď pomocí `ReadyForCreateProgress`, nebo `RecommendedForCreateProgress`. Jakmile je `ReadyForCreateProgress` větší než 1, máme dostatek dat pro uložení cloudové kotvy, ale doporučujeme počkat na to, až `RecommendedForCreateProgress` nad 1.
+- Pomocí `UserFeedback` třídy můžete poskytnout zpětnou vazbu uživateli při pohybu zařízení a relace aktualizuje své chápání prostředí. Chcete-li to provést,
+- Určete, v jakém okamžiku je dostatek sledovaných prostorových dat k vytvoření prostorových kotev. Toto určení `ReadyForCreateProgress` určíte buď nebo `RecommendedForCreateProgress`. Jakmile `ReadyForCreateProgress` je vyšší než 1, máme dostatek dat pro uložení prostorové kotvy cloudu, i když doporučujeme počkat, dokud `RecommendedForCreateProgress` není vyšší než 1, aby tak učinily.

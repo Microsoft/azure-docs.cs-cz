@@ -10,86 +10,86 @@ ms.topic: include
 ms.date: 02/03/2020
 ms.custom: include file
 ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77029094"
 ---
 >[!NOTE]
->V této části najdete pokyny k [registraci aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+>Tato část obsahuje pokyny pro [registraci aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
-1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v nabídce rozbalitelné vlevo a otevřete podokno **Registrace aplikací** . 
+1. Na [webu Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** z rozbalitelné levé nabídky a potom otevřete podokno Registrace **aplikací.** 
 
-    [![výběr podokna Azure Active Directory](./media/digital-twins-permissions/azure-portal-select-aad-pane.png)](./media/digital-twins-permissions/azure-portal-select-aad-pane.png#lightbox)
+    [![Výběr podokna Služby Azure Active Directory](./media/digital-twins-permissions/azure-portal-select-aad-pane.png)](./media/digital-twins-permissions/azure-portal-select-aad-pane.png#lightbox)
 
-1. Klikněte na tlačítko **+ Nová registrace** .
+1. Vyberte tlačítko **+ Nová registrace.**
 
-    [![klikněte na tlačítko Nová registrace.](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
+    [![Vybrat tlačítko Nová registrace](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
-1. Zadejte popisný název pro registraci této aplikace v poli **název** . 
+1. Do pole **Název** uveďte popisný název pro registraci této aplikace. 
 
-    1. V části **URI přesměrování (volitelné)** zadejte do textového pole `https://microsoft.com`.     
+    1. V části **Přesměrování identifikátoru URI (volitelné)** zadejte `https://microsoft.com` do textového pole.     
 
-    1. Ověřte, které účty a klienti podporuje vaše aplikace Azure Active Directory.
+    1. Ověřte, které účty a klienti jsou podporovány vaší aplikací Azure Active Directory.
 
     1. Vyberte **Zaregistrovat**.
 
-    [![vytvořit podokno](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
+    [![Vytvořit podokno](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. Okno **ověřování** určuje nastavení konfigurace pro ověřování. 
+1. Okno **Ověřování** určuje důležitá nastavení konfigurace ověřování. 
 
-    1. Přidejte **identifikátory URI pro přesměrování** a nakonfigurujte **přístupové tokeny** tak, že vyberete **+ Přidat platformu**.
+    1. Přidejte **identifikátory URI přesměrování** a nakonfigurujte **přístupové tokeny** výběrem **možnosti + Přidat platformu**.
 
-    1. Vyberte **Ano** , pokud chcete určit, že aplikace je **veřejným klientem**.
+    1. Výběrem **možnosti Ano** určete, že aplikace je **veřejným klientem**.
 
-    1. Ověřte, které účty a klienti podporuje vaše aplikace Azure Active Directory.
+    1. Ověřte, které účty a klienti jsou podporovány vaší aplikací Azure Active Directory.
 
-    [![nastavení konfigurace veřejného klienta](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+    [![Nastavení konfigurace veřejného klienta](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1. Po výběru příslušné platformy nakonfigurujte **identifikátory URI přesměrování** a **přístupové tokeny** na bočním panelu napravo od uživatelského rozhraní.
 
-    1. **Identifikátory URI pro přesměrování** se musí shodovat s adresou zadanou požadavkem ověřování:
+    1. **Přesměrování identifikátorů URI** se musí shodovat s adresou zadanou požadavkem na ověření:
 
-        * Pro aplikace hostované v místním vývojovém prostředí vyberte možnost **veřejný klient (mobilní & Desktop)** . Nezapomeňte nastavit **veřejného klienta** na **Ano**.
-        * V případě aplikací s jednou stránkou hostovaných v Azure App Service vyberte **Web**.
+        * U aplikací hostovaných v místním vývojovém prostředí vyberte **možnost Veřejný klient (mobilní & stolní počítače).** Ujistěte se, že nastavit **veřejného klienta** na **Ano**.
+        * Pro jednostránkové aplikace hostované ve službě Azure App Service vyberte **Web**.
 
-    1. Určete, zda je **Adresa URL pro odhlášení** vhodná.
+    1. Určete, zda je vhodná **adresa URL odhlášení.**
 
-    1. Povolte tok implicitního udělení kontrolou **přístupových tokenů** nebo **tokenů ID**.
+    1. Povolte implicitní tok udělení zaškrtnutím **tokenů aplikace Access** nebo **tokenů ID**.
                 
-    [![konfigurace identifikátorů URI pro přesměrování](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+    [![Konfigurace identifikátorů URI přesměrování](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
 
-    Klikněte na **Konfigurovat**a pak na **Uložit**.
+    Klepněte na tlačítko **Konfigurovat**a potom **na tlačítko Uložit**.
 
-1.  Otevřete podokno **Přehled** vaší registrované aplikace a zkopírujte hodnoty následujících entit do dočasného souboru. Tyto hodnoty použijete ke konfiguraci ukázkové aplikace v následujících oddílech.
+1.  Otevřete podokno **Přehled** registrované aplikace a zkopírujte hodnoty následujících entit do dočasného souboru. Tyto hodnoty použijete ke konfiguraci ukázkové aplikace v následujících částech.
 
     - **ID aplikace (klienta)**
-    - **ID adresáře (tenant)**
+    - **ID adresáře (tenanta)**
 
-    [ID aplikace ![Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-app-id.png)](./media/digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+    [![ID aplikace Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-app-id.png)](./media/digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
 
-1. Otevřete podokno **oprávnění rozhraní API** pro registraci vaší aplikace. Klikněte na tlačítko **+ Přidat oprávnění** . V podokně **oprávnění API pro vyžádání** vyberte **rozhraní API moje organizace používá** kartu a pak vyhledejte jednu z následujících možností:
+1. Otevřete podokno **oprávnění rozhraní API** pro registraci aplikace. Vyberte + Přidat tlačítko **oprávnění.** V podokně **Oprávnění rozhraní API vyberte** **kartu Rozhraní API, která moje organizace používá,** a vyhledejte jednu z následujících možností:
     
-    1. `Azure Digital Twins`. Vyberte rozhraní API **digitálních vláken Azure** .
+    1. `Azure Digital Twins`. Vyberte rozhraní **API pro digitální dvojčata Azure.**
 
-        [rozhraní API pro vyhledávání ![nebo digitální vlákna Azure](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
+        [![Rozhraní API pro vyhledávání nebo digitální dvojčata Azure](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    1. Případně vyhledejte `Azure Smart Spaces Service`. Vyberte rozhraní API **služby Azure Smart Spaces** .
+    1. Případně vyhledejte `Azure Smart Spaces Service`. Vyberte rozhraní **API služby Azure Smart Spaces** Service.
 
-        [rozhraní API pro hledání ![pro inteligentní prostory Azure](./media/digital-twins-permissions/aad-app-search-api.png)](./media/digital-twins-permissions/aad-app-search-api.png#lightbox)
+        [![Hledání rozhraní API pro inteligentní prostory Azure](./media/digital-twins-permissions/aad-app-search-api.png)](./media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
     > [!IMPORTANT]
-    > Název a ID rozhraní API služby Azure AD, které se zobrazí, závisí na vašem tenantovi:
-    > * Testovací klient a účty zákazníka by měli hledat `Azure Digital Twins`.
-    > * Jiné účty Microsoft by měly hledat `Azure Smart Spaces Service`.
+    > Název a ID rozhraní API Azure AD, které se zobrazí, závisí na vašem tenantovi:
+    > * Testovací klienta a účty `Azure Digital Twins`zákazníků by měl y hledat .
+    > * Ostatní účty Microsoft `Azure Smart Spaces Service`by měly vyhledat .
 
-1. Po výběru se rozhraní API zobrazí jako **digitální vlákna Azure** ve stejném PODOKNĚ **oprávnění API pro žádosti** . Vyberte možnost **číst** rozevírací seznam a potom zaškrtněte políčko **číst. zapsat** . Klikněte na tlačítko **Přidat oprávnění** .
+1. Buď rozhraní API se po výběru zobrazí jako **digitální dvojčata Azure** ve stejném podokně **oprávnění rozhraní API požadavků.** Vyberte rozevírací políčko **Číst** a zaškrtněte políčko **Číst.Write.** Vyberte tlačítko **Přidat oprávnění.**
 
     [![Přidání oprávnění rozhraní API](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. V závislosti na nastaveních vaší organizace možná budete muset provést další kroky, abyste tomuto rozhraní API udělili přístup správce. Pro další informace se obraťte na správce. Po schválení přístupu správce se v podokně **oprávnění API** zobrazí sloupec **požadováno souhlasu správce** , ve kterém se zobrazí vaše oprávnění. 
+1. V závislosti na nastavení vaší organizace může být nutné podniknout další kroky k udělení přístupu správce k tomuto rozhraní API. Další informace získáte od správce. Po schválení přístupu správce zobrazí váš přístup v podokně oprávnění rozhraní API sloupec **Požadovaný souhlas správce** v podokně oprávnění rozhraní **API.** 
 
-    [schválení souhlasu správce ![](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![Schválení souhlasu správce](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
-    Ověřte, že se zobrazí **digitální vlákna Azure** .
+    Ověřte, že se zobrazí **Azure Digital Twins.**

@@ -1,6 +1,6 @@
 ---
-title: Kurz – připojení Obecné klientské aplikace Node. js do Azure IoT Central | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak jako vývojář zařízení připojit zařízení s klientskou aplikací Node. js k vaší aplikaci Azure IoT Central. Šablonu zařízení vytvoříte tak, že naimportujete model schopností zařízení a přidáte zobrazení, která vám umožní pracovat s připojeným zařízením.
+title: Kurz – připojení obecné klientské aplikace Node.js k Azure IoT Central | Dokumenty společnosti Microsoft
+description: Tento kurz ukazuje, jak jako vývojář zařízení připojit zařízení s klientskou aplikací Node.js k vaší aplikaci Azure IoT Central. Šablonu zařízení vytvoříte importem modelu schopností zařízení a přidáte zobrazení, která vám umožní pracovat s připojeným zařízením.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/26/2020
@@ -8,77 +8,77 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 1bcfc949eff0639dd1b4a063687e2c198f480ea3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77624540"
 ---
-# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Kurz: vytvoření a připojení klientské aplikace Node. js do aplikace Azure IoT Central (Node. js)
+# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Kurz: Vytvoření a připojení klientské aplikace Node.js k aplikaci Azure IoT Central (Node.js)
 
-V tomto kurzu se dozvíte, jak jako vývojář zařízení připojit klientskou aplikaci Node. js k vaší aplikaci Azure IoT Central. Aplikace Node. js simuluje chování reálného zařízení. Pomocí ukázkového _modelu schopností zařízení_ pro zařízení se snímačem životního prostředí vytvoříte _šablonu zařízení_ v IoT Central. Do šablony zařízení přidáte zobrazení, abyste mohli vizualizovat telemetrii zařízení, spravovat vlastnosti zařízení a používat příkazy k řízení zařízení.
+Tento kurz ukazuje, jak jako vývojář zařízení připojit klientskou aplikaci Node.js k vaší aplikaci Azure IoT Central. Aplikace Node.js simuluje chování skutečného zařízení. Vzorové _zařízení funkce modelu_ pro zařízení senzorprostředí k vytvoření šablony _zařízení_ v IoT Central. Do šablony zařízení přidáte zobrazení, která vám umožní vizualizovat telemetrii zařízení, spravovat vlastnosti zařízení a používat příkazy k ovládání zařízení.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Importujte model schopností zařízení a vytvořte šablonu zařízení.
 > * Přidejte do šablony zařízení výchozí a vlastní zobrazení.
-> * Publikujte šablonu zařízení a přidejte do aplikace IoT Central reálné zařízení.
-> * Vytvořte a spusťte kód zařízení Node. js a podívejte se, jak se připojí k vaší IoT Central aplikaci.
-> * Podívejte se na simulovanou telemetrii, kterou zařízení odesílá.
-> * Pomocí zobrazení můžete spravovat vlastnosti zařízení.
-> * Zavolejte příkazy pro řízení zařízení.
+> * Publikujte šablonu zařízení a přidejte skutečné zařízení do aplikace IoT Central.
+> * Vytvořte a spusťte kód zařízení Node.js a podívejte se, jak se připojuje k vaší aplikaci IoT Central.
+> * Zobrazení simulované telemetrie, kterou zařízení odesílá.
+> * Ke správě vlastností zařízení použijte zobrazení.
+> * Volání příkazů pro ovládání zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-* Aplikace Azure IoT Central vytvořená pomocí šablony * * vlastní aplikace * *. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
-* Vývojový počítač s nainstalovanou aplikací [Node. js](https://nodejs.org/) verze 10.0.0 nebo novější. Můžete spustit `node --version` na příkazovém řádku a ověřit svou verzi. Node.js je k dispozici pro širokou škálu operačních systémů. Pokyny v tomto kurzu předpokládají, že jste spustili příkaz **Node** na příkazovém řádku Windows. Node. js můžete použít v různých operačních systémech.
+* Aplikace Azure IoT Central vytvořená pomocí **Vlastní aplikace **šablony. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
+* Vývojový počítač s [nainstalovanou aplikací Node.js](https://nodejs.org/) verze 10.0.0 nebo novější. Můžete spustit `node --version` v příkazovém řádku a zkontrolovat svou verzi. Node.js je k dispozici pro širokou škálu operačních systémů. Pokyny v tomto kurzu předpokládají, že používáte příkaz **uzlu** na příkazovém řádku systému Windows. Soubor Node.js můžete použít v různých operačních systémech.
 
 ## <a name="create-a-device-template"></a>Vytvoření šablony zařízení
 
-Na místním počítači vytvořte složku s názvem `environmental-sensor`.
+Vytvořte složku `environmental-sensor` volanou v místním počítači.
 
-Stáhněte si soubor JSON [modelu schopností environmentálního senzoru](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) a uložte ho do složky `environmental-sensor`.
+Stáhněte si [model schopnosti životního prostředí JSON](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) soubor a uložte jej do `environmental-sensor` složky.
 
-Pomocí textového editoru nahraďte dvě instance `{YOUR_COMPANY_NAME_HERE}` názvem vaší společnosti v souboru `EnvironmentalSensorInline.capabilitymodel.json`, který jste stáhli.
+Pomocí textového `{YOUR_COMPANY_NAME_HERE}` editoru nahraďte dvě instance názvu `EnvironmentalSensorInline.capabilitymodel.json` společnosti v souboru, který jste stáhli.
 
-V aplikaci Azure IoT Central vytvořte šablonu zařízení s názvem *senzor okolního prostředí* importem souboru modelu schopností `EnvironmentalSensorInline.capabilitymodel.json` zařízení:
+V aplikaci Azure IoT Central vytvořte šablonu zařízení `EnvironmentalSensorInline.capabilitymodel.json` nazvanou Senzor *prostředí* importem souboru modelu schopností zařízení:
 
 ![Šablona zařízení s importovaným modelem schopností zařízení](./media/tutorial-connect-device/device-template.png)
 
-Model schopností zařízení zahrnuje dvě rozhraní: standardní **informace o zařízení** a vlastní rozhraní **snímače životního prostředí** . Rozhraní **snímače prostředí** definuje následující možnosti:
+Model schopností zařízení obsahuje dvě rozhraní: standardní informační rozhraní **zařízení** a vlastní rozhraní **senzoru prostředí.** Rozhraní **senzoru prostředí** definuje následující možnosti:
 
 | Typ | Zobrazovaný název | Popis |
 | ---- | ------------ | ----------- |
 | Vlastnost | Stav zařízení     | Stav zařízení. K dispozici jsou dva stavy online/offline. |
-| Vlastnost | Název zákazníka    | Jméno zákazníka, který aktuálně provozuje zařízení. |
-| Vlastnost | Úroveň jasu | Úroveň jasu světla na zařízení. Může být zadáno jako 1 (vysoká), 2 (střední), 3 (nízká). |
-| Telemetrická data | Teplota | Aktuální teplota zařízení. |
-| Telemetrická data | Vlhkost    | Aktuální vlhkost na zařízení. |
-| Příkaz | blikají          | Začátek blikání indikátoru LED pro daný časový interval. |
-| Příkaz | turnon         | Zapněte na zařízení světlo LED. |
-| Příkaz | turnoff        | Vypněte světlo LED na zařízení. |
+| Vlastnost | Jméno zákazníka    | Jméno zákazníka, který zařízení aktuálně provozuje. |
+| Vlastnost | Úroveň jasu | Úroveň jasu světla na zařízení. Může být specifikován jako 1 (vysoká), 2 (střední), 3 (nízká). |
+| Telemetrie | Teplota | Aktuální teplota na zařízení. |
+| Telemetrie | Vlhkost    | Aktuální vlhkost na zařízení. |
+| Příkaz | Blikat          | Začněte blikat LED diodu pro daný časový interval. |
+| Příkaz | odbočka         | Zapněte led diodu na zařízení. |
+| Příkaz | Odbočku        | Vypněte led světlo na zařízení. |
 | Příkaz | rundiagnostics | Tento příkaz spustí spuštění diagnostiky. |
 
-Pokud chcete přizpůsobit, jak se ve vaší aplikaci IoT Central zobrazí vlastnost **stav zařízení** , vyberte **přizpůsobit** v šabloně zařízení. Rozbalte položku **stav zařízení** , zadejte _online_ jako **skutečný název** a _offline_ jako **název false**. Pak změny uložte:
+Pokud chcete přizpůsobit, jak se vlastnost **Stav zařízení** zobrazí ve vaší aplikaci IoT Central, vyberte **Přizpůsobit** v šabloně zařízení. Rozbalte položku **Stav zařízení,** zadejte _online_ jako **true název** a _offline_ jako **false name**. Pak uložte změny:
 
 ![Přizpůsobení šablony zařízení](media/tutorial-connect-device/customize-template.png)
 
-## <a name="create-views"></a>Vytvoření zobrazení
+## <a name="create-views"></a>Vytváření zobrazení
 
-Zobrazení vám umožní pracovat se zařízeními připojenými k vaší IoT Central aplikaci. Můžete mít například zobrazení, která zobrazují telemetrii, zobrazení, která zobrazují vlastnosti, a zobrazení, která umožňují upravit zapisovatelné a cloudové vlastnosti. Zobrazení jsou součástí šablony zařízení.
+Zobrazení umožňují interakci se zařízeními připojenými k aplikaci IoT Central. Můžete mít například zobrazení, která zobrazují telemetrii, zobrazení, která zobrazují vlastnosti, a zobrazení, která umožňují upravovat zapisovatelné a cloudové vlastnosti. Zobrazení jsou součástí šablony zařízení.
 
-Chcete-li přidat některá výchozí zobrazení do šablony zařízení **snímače životního prostředí** , přejděte do šablony zařízení, vyberte možnost **zobrazení**a vyberte dlaždici **Generovat výchozí zobrazení** . Ujistěte se, že je **zapnutá**možnost **Přehled** a **informace o nástroji** , a pak vyberte **Generovat výchozí zobrazení řídicích panelů**. Teď máte ve vaší šabloně definovaná dvě výchozí zobrazení.
+Chcete-li do šablony **zařízení environmentálního senzoru** přidat některá výchozí zobrazení, přejděte do šablony zařízení, vyberte **Zobrazení**a vyberte dlaždici Generovat **výchozí zobrazení.** Zkontrolujte, zda jsou **zapnuty** **položky** **Přehled** a Informace , a pak vyberte **generovat výchozí zobrazení řídicího panelu**. Nyní máte v šabloně definována dvě výchozí zobrazení.
 
-Rozhraní **snímače prostředí** zahrnuje dvě zapisovatelné vlastnosti – **jméno zákazníka** a **úroveň jasu**. Chcete-li vytvořit zobrazení, můžete použít k úpravě těchto vlastností:
+Rozhraní **environmentálního senzoru** obsahuje dvě zapisovatelné vlastnosti - **jméno zákazníka** a **úroveň jasu**. Chcete-li vytvořit zobrazení, můžete použít k úpravám těchto vlastností:
 
-1. Vyberte **zobrazení** a pak vyberte dlaždici pro **úpravu zařízení a dat v cloudu** .
+1. Vyberte **Zobrazení** a pak vyberte **dlaždici Editing device a cloud data.**
 
-1. Jako název formuláře zadejte _vlastnosti_ .
+1. Jako název formuláře zadejte _Vlastnosti._
 
-1. Vyberte vlastnosti **úrovně jasu** a **název zákazníka** . Pak vyberte **přidat oddíl**.
+1. Vyberte vlastnosti **Úroveň jasu** a **Jméno zákazníka.** Pak vyberte **Přidat oddíl**.
 
 1. Uložte provedené změny.
 
@@ -86,44 +86,44 @@ Rozhraní **snímače prostředí** zahrnuje dvě zapisovatelné vlastnosti – 
 
 ## <a name="publish-the-template"></a>Publikování šablony
 
-Před přidáním zařízení do aplikace IoT Central, která používá šablonu zařízení **snímače prostředí** , je nutné šablonu publikovat.
+Před přidáním zařízení do aplikace IoT Central, která používá šablonu **zařízení environmentálního senzoru,** je třeba šablonu publikovat.
 
-V šabloně zařízení vyberte **publikovat**. Na panelu, který zobrazuje změny k publikování, vyberte **publikovat**.
+V šabloně zařízení vyberte **Publikovat**. V panelu, který zobrazuje změny, které mají být publikovány, vyberte **Publikovat**.
 
-Chcete-li ověřit, zda je šablona připravena k použití, přejděte na stránku **zařízení** v aplikaci IoT Central. V části **zařízení** se zobrazuje seznam publikovaných zařízení v aplikaci:
+Chcete-li zkontrolovat, zda je šablona připravená k použití, přejděte na stránku **Zařízení** v aplikaci IoT Central. V části **Zařízení** je uveden seznam publikovaných zařízení v aplikaci:
 
 ![Publikované šablony na stránce zařízení](media/tutorial-connect-device/published-templates.png)
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central přidejte reálné zařízení do šablony zařízení, kterou jste vytvořili v předchozí části:
+V aplikaci Azure IoT Central přidejte skutečné zařízení do šablony zařízení, kterou jste vytvořili v předchozí části:
 
-1. Na stránce **zařízení** vyberte šablonu zařízení **snímače životního prostředí** .
+1. Na stránce **Zařízení** vyberte šablonu **zařízení environmentálního senzoru.**
 
 1. Vyberte **+ Nový**.
 
-1. Ujistěte se, **že je** **simulovaná** . Potom vyberte **Vytvořit**.
+1. Ujistěte se, že **simulované** je **vypnuto**. Pak vyberte **Vytvořit**.
 
-Klikněte na název zařízení a pak vyberte **připojit**. Poznamenejte si informace o připojení zařízení na stránce **připojení zařízení** – **Rozsah ID**, **ID zařízení**a **primární klíč**. Tyto hodnoty budete potřebovat při vytváření kódu zařízení:
+Klikněte na název zařízení a pak vyberte **Připojit**. Poznamenejte si informace o připojení zařízení na stránce **Připojení k zařízení** – obor **ID**, **ID zařízení**a primární **klíč**. Tyto hodnoty potřebujete při vytváření kódu zařízení:
 
 ![Informace o připojení zařízení](./media/tutorial-connect-device/device-connection.png)
 
 ### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
-Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, která implementuje reálné zařízení, které jste přidali do aplikace. Tato aplikace Node. js simuluje chování reálného zařízení.
+Následující kroky ukazují, jak vytvořit klientskou aplikaci Node.js, která implementuje skutečné zařízení, které jste přidali do aplikace. Tato aplikace Node.js simuluje chování skutečného zařízení.
 
-1. V prostředí příkazového řádku přejděte do složky `environmental-sensor`, kterou jste předtím vytvořili.
+1. V prostředí příkazového řádku přejděte do složky, kterou jste vytvořili `environmental-sensor` dříve.
 
-1. Chcete-li inicializovat projekt Node. js a nainstalovat požadované závislosti, spusťte následující příkazy – při spuštění `npm init`přijměte všechny výchozí možnosti:
+1. Chcete-li inicializovat projekt Node.js a nainstalovat požadované závislosti, spusťte následující `npm init`příkazy – při spuštění přijměte všechny výchozí možnosti :
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Ve složce `environmental-sensor` vytvořte soubor s názvem **environmentalSensor. js** .
+1. Vytvořte soubor s názvem **environmentalSensor.js** ve `environmental-sensor` složce.
 
-1. Na začátek souboru **environmentalSensor. js** přidejte následující příkazy `require`:
+1. Na začátek souboru `require` **environmentalSensor.js** přidejte následující příkazy:
 
     ```javascript
     "use strict";
@@ -151,9 +151,9 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, kter�
     var ledOn = true;
     ```
 
-    Aktualizujte zástupné symboly `{your Scope ID}`, `{your Device ID}`a `{your Primary Key}` s hodnotami, které jste si poznamenali dříve. V této ukázce inicializujete `targetTemperature` na nulu, můžete použít aktuální čtení ze zařízení nebo hodnotu z vlákna zařízení.
+    Aktualizujte zástupné symboly `{your Scope ID}` `{your Device ID}`a `{your Primary Key}` hodnoty, které jste si dříve poznamenali. V této ukázce `targetTemperature` inicializovat na nulu, můžete použít aktuální čtení ze zařízení nebo hodnotu z dvojčete zařízení.
 
-1. K odeslání telemetrie do aplikace Azure IoT Central přidejte do souboru následující funkci:
+1. Pokud chcete odeslat telemetrii do aplikace Azure IoT Central, přidejte do souboru následující funkci:
 
     ```javascript
     // Send device measurements.
@@ -171,7 +171,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, kter�
     }
     ```
 
-1. K odeslání vlastností zařízení do aplikace Azure IoT Central přidejte do souboru následující funkci:
+1. Pokud chcete do aplikace Azure IoT Central odeslat vlastnosti zařízení, přidejte do souboru následující funkci:
 
     ```javascript
     // Send device reported properties.
@@ -222,7 +222,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, kter�
     }
     ```
 
-1. Přidejte následující kód, který bude zpracovávat příkazy odesílané z aplikace IoT Central:
+1. Přidejte následující kód pro zpracování příkazů odeslaných z aplikace IoT Central:
 
     ```javascript
     // Handle blink command
@@ -325,43 +325,43 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci Node. js, kter�
     });
     ```
 
-## <a name="run-your-nodejs-application"></a>Spuštění aplikace Node. js
+## <a name="run-your-nodejs-application"></a>Spuštění aplikace Node.js
 
-Pokud chcete spustit klientskou aplikaci pro zařízení, spusťte v prostředí příkazového řádku následující příkaz:
+Chcete-li spustit klientskou aplikaci zařízení, spusťte v prostředí příkazového řádku následující příkaz:
 
 ```cmd/sh
 node environmentalSensor.js
 ```
 
-Můžete vidět, že se zařízení připojí k aplikaci Azure IoT Central a začne odesílat telemetrii:
+Můžete vidět zařízení se připojí k aplikaci Azure IoT Central a začne odesílat telemetrii:
 
 ![Spuštění klientské aplikace](media/tutorial-connect-device/run-application.png)
 
-Jako operátor ve vaší aplikaci Azure IoT Central můžete:
+Jako operátor v aplikaci Azure IoT Central můžete:
 
-* Zobrazení telemetrie odesílané zařízením na stránce **Přehled** :
+* Zobrazení telemetrie odeslané zařízením na stránce **Přehled:**
 
     ![Zobrazení telemetrických dat](media/tutorial-connect-device/view-telemetry.png)
 
-* Aktualizovat hodnoty zapisovatelné vlastnosti na stránce **vlastností** :
+* Aktualizace hodnot zapisovatelných vlastností na stránce **Vlastnosti:**
 
     ![Aktualizovat vlastnosti](media/tutorial-connect-device/update-properties.png)
 
-    ![Aktualizovat vlastnosti zařízení](media/tutorial-connect-device/update-properties-device.png)
+    ![Aktualizovat zařízení vlastností](media/tutorial-connect-device/update-properties-device.png)
 
-* Zavolejte příkazy ze stránky **příkazy** :
+* Volání příkazů ze stránky **Příkazy:**
 
-    ![Příkaz pro blikání volání](media/tutorial-connect-device/call-command.png)
+    ![Příkaz Mrknutí hovoru](media/tutorial-connect-device/call-command.png)
 
-    ![Volat příkazové zařízení pro blikání](media/tutorial-connect-device/call-command-device.png)
+    ![Volání příkazového zařízení pro blikání](media/tutorial-connect-device/call-command-device.png)
 
-* Zobrazení vlastností zařízení na stránce **o produktu** :
+* Zobrazení vlastností zařízení na stránce **Informace:**
 
     ![Zobrazení vlastností](media/tutorial-connect-device/about-properties.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete získat další informace o modelech schopností zařízení a o tom, jak vytvářet vlastní šablony zařízení, přejděte k Průvodci postupy:
+Další informace o modelech funkcí zařízení a o tom, jak vytvořit vlastní šablony zařízení, najdete v návodu:
 
 > [!div class="nextstepaction"]
-> [Definovat nový typ zařízení IoT](./howto-set-up-template.md)
+> [Definování nového typu zařízení IoT](./howto-set-up-template.md)

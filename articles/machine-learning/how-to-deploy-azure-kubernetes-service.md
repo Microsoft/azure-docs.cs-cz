@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722403"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475383"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, pak clu
 > [!WARNING]
 > Nevytvářejte více souběžných příloh ke stejnému clusteru AKS z pracovního prostoru. Například připojení jednoho clusteru AKS k pracovnímu prostoru pomocí dvou různých názvů. Každá nová příloha přeruší předchozí existující přílohy.
 >
-> Chcete-li znovu připojit cluster AKS, například změnit ssl nebo jiné nastavení konfigurace clusteru, musíte nejprve odebrat existující přílohu pomocí [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
+> Chcete-li znovu připojit cluster AKS, například změnit tls nebo jiné nastavení konfigurace clusteru, musíte nejprve odebrat existující přílohu pomocí [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
 
 Další informace o vytvoření clusteru AKS pomocí azure cli nebo portálu najdete v následujících článcích:
 
@@ -348,7 +348,7 @@ print(token)
 * [Bezpečné experimentování a odvození ve virtuální síti](how-to-enable-virtual-network.md)
 * [Jak nasadit model pomocí vlastní image Dockeru](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Zabezpečené webové služby Azure Machine Learning s ssl](how-to-secure-web-service.md)
+* [Použití TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
 * [Využití modelu ML nasazeného jako webová služba](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning pomocí přehledů aplikací](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely ve výrobě](how-to-enable-data-collection.md)

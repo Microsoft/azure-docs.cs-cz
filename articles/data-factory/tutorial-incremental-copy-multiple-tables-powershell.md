@@ -1,6 +1,6 @@
 ---
-title: Přírůstkové kopírování více tabulek pomocí PowerShellu
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v místní databázi SQL Server do Azure SQL Database.
+title: Přírůstková kopírování více tabulek pomocí PowerShellu
+description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z více tabulek v místní databázi SQL Serveru do databáze Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -12,15 +12,15 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
 ms.openlocfilehash: 5654e1f8b8a55c705798368df70ce300241c9dff
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76989075"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načítání dat z více tabulek v SQL Serveru do databáze Azure SQL Database
 
-V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v místním SQL Server do Azure SQL Database.    
+V tomto kurzu vytvoříte továrnu dat Azure s kanálem, který načte rozdílová data z více tabulek v místním SQL Serveru do databáze Azure SQL Database.    
 
 V tomto kurzu provedete následující kroky:
 
@@ -42,7 +42,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
 
 1. **Vyberte sloupec meze**.
 
-    Vyberte jeden sloupec pro každou tabulku ve zdrojovém úložišti dat, ve kterém můžete identifikovat nové nebo aktualizované záznamy pro každé spuštění. Data v tomto vybraném sloupci (například čas_poslední_změny nebo ID) se při vytváření nebo aktualizaci řádků obvykle zvyšují. Maximální hodnota v tomto sloupci se používá jako horní mez.
+    Vyberte jeden sloupec pro každou tabulku ve zdrojovém úložišti dat, který můžete identifikovat nové nebo aktualizované záznamy pro každé spuštění. Data v tomto vybraném sloupci (například čas_poslední_změny nebo ID) se při vytváření nebo aktualizaci řádků obvykle zvyšují. Maximální hodnota v tomto sloupci se používá jako horní mez.
 
 2. **Připravte úložiště dat pro uložení hodnoty meze**.
 
@@ -63,7 +63,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     ![Přírůstkové načtení dat](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -72,9 +72,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Vytvoření zdrojových tabulek v databázi SQL Serveru
 
-1. Otevřete [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)a připojte se k místní SQL Server databázi.
+1. Otevřete [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo Azure Data [Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)a připojte se k místní databázi SQL Serveru.
 
-2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz**.
+2. V **Průzkumníku serveru (SSMS)** nebo v **podokně Připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a zvolte **Nový dotaz**.
 
 3. Spusťte na databázi následující příkaz SQL, aby se vytvořily tabulky s názvem `customer_table` a `project_table`:
 
@@ -109,11 +109,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     ('project3','3/4/2017 5:16:00 AM');
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>Vytvoření cílových tabulek v Azure SQL Database
+### <a name="create-destination-tables-in-your-azure-sql-database"></a>Vytvoření cílových tabulek v azure sql databázi
 
-1. Otevřete [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)a připojte se k místní SQL Server databázi.
+1. Otevřete [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo Azure Data [Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)a připojte se k místní databázi SQL Serveru.
 
-2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz**.
+2. V **Průzkumníku serveru (SSMS)** nebo v **podokně Připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a zvolte **Nový dotaz**.
 
 3. Spusťte na databázi SQL následující příkaz SQL, aby se vytvořily tabulky s názvem `customer_table` a `project_table`:  
 
@@ -132,7 +132,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Vytvoření další tabulky v Azure SQL Database k uložení hodnoty horní meze
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Vytvoření jiné tabulky v Azure SQL Database pro uložení vysoké hodnoty vodoznaku
 
 1. Spuštěním následujícího příkazu SQL na databázi SQL vytvořte tabulku s názvem `watermarktable` pro uložení hodnoty meze: 
     
@@ -155,7 +155,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Vytvořit uloženou proceduru v Azure SQL Database 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Vytvoření uložené procedury v azure sql databázi 
 
 Spuštěním následujícího příkazu vytvořte v databázi SQL uloženou proceduru. Tato uložená procedura aktualizuje hodnotu meze po každém spuštění kanálu. 
 
@@ -173,13 +173,13 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Vytvoření datových typů a dalších uložených procedur v Azure SQL Database
+### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Vytvoření datových typů a dalších uložených procedur v azure sql databázi
 
 Spuštěním následujícího dotazu vytvořte v databázi SQL dvě uložené procedury a dva datové typy. Slouží ke slučování dat ze zdrojových tabulek do cílových tabulek. 
 
-Aby bylo možné cestu snadno začít používat, přímo tyto uložené procedury předají rozdílová data v rámci přes proměnnou tabulky a pak je sloučí do cílového úložiště. Buďte opatrní, neočekává se, že "velký" počet rozdílových řádků (více než 100) se uloží do proměnné tabulky.  
+Aby bylo možné cestu snadno začít, jsme přímo použít tyto uložené procedury předávání delta data v prostřednictvím proměnné tabulky a pak je sloučit do cílového úložiště. Buďte opatrní, že neočekává "velký" počet delta řádků (více než 100), které mají být uloženy v proměnné tabulky.  
 
-Pokud potřebujete sloučit velký počet rozdílových řádků do cílového úložiště, doporučujeme použít aktivitu kopírování ke zkopírování všech rozdílových dat do dočasné tabulky "fázování" v cílovém úložišti a pak vytvořit vlastní uloženou proceduru bez použití tabulky VARI. je možné je sloučit z tabulky "fázování" do "konečné" tabulky. 
+Pokud potřebujete sloučit velký počet řádků delta do cílového úložiště, doporučujeme použít aktivitu kopírování ke zkopírování všech rozdílových dat do dočasné "pracovní" tabulky v cílovém úložišti a potom nejprve vytvořit vlastní uloženou proceduru bez použití proměnné tabulky ke sloučení z "pracovní" tabulky do "konečné" tabulky. 
 
 
 ```sql
@@ -263,7 +263,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
     ```powershell
     $dataFactoryName = "ADFIncMultiCopyTutorialFactory";
     ```
-5. Pokud chcete vytvořit datovou továrnu, spusťte následující rutinu **set-AzDataFactoryV2** : 
+5. Chcete-li vytvořit datovou továrnu, spusťte následující rutinu **Set-AzDataFactoryV2:** 
     
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
@@ -281,19 +281,19 @@ Je třeba počítat s následujícím:
 
 * Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí přispěvatel nebo vlastník nebo správcem předplatného Azure.
 
-* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, databáze SQL atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, databáze SQL atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
-V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro místní SQL Server databázi a Azure SQL Database. 
+V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby s místní databází SERVERU SQL Server a databází Azure SQL Database. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Vytvoření propojené služby SQL Serveru
 
 V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
 
-1. Vytvořte soubor JSON s názvem **SqlServerLinkedService. JSON** ve složce ve c:\adftutorials\inccopymultitabletutorial (vytvořte místní složky, pokud ještě neexistují) s následujícím obsahem. Vyberte správnou část na základě ověřování, které požíváte pro připojení k SQL Serveru.  
+1. Vytvořte soubor JSON s názvem **SqlServerLinkedService.json** ve složce C:\ADFTutorials\IncCopyMultiTableTutorial (vytvořte místní složky, pokud ještě neexistují) s následujícím obsahem. Vyberte správnou část na základě ověřování, které požíváte pro připojení k SQL Serveru.  
 
     > [!IMPORTANT]
     > Vyberte správnou část na základě ověřování, které požíváte pro připojení k SQL Serveru.
@@ -349,19 +349,19 @@ V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
     > - Než soubor uložíte, položky &lt;servername>, &lt;databasename>, &lt;username> a &lt;password> nahraďte odpovídajícími hodnotami pro vaši databázi SQL Serveru.
     > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít znak lomítko (`\`), použijte řídicí znak (`\`). Příklad: `mydomain\\myuser`.
 
-2. V prostředí PowerShell spusťte následující rutinu, která přepne do složky ve c:\adftutorials\inccopymultitabletutorial.
+2. V prostředí PowerShell spusťte následující rutinu a přepněte do složky C:\ADFTutorials\IncCopyMultiTableTutorial.
 
     ```powershell
     Set-Location 'C:\ADFTutorials\IncCopyMultiTableTutorial'
     ```
 
-3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte AzureStorageLinkedService propojené služby. V následujícím příkladu předáte hodnoty pro parametry *ResourceGroupName* a *DataFactoryName*: 
+3. Spusťte rutinu **Set-AzDataFactoryV2LinkedService** a vytvořte propojenou službu AzureStorageLinkedService. V následujícím příkladu předáte hodnoty pro parametry *ResourceGroupName* a *DataFactoryName*: 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : SqlServerLinkedService
@@ -372,7 +372,7 @@ V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
 
 ### <a name="create-the-sql-database-linked-service"></a>Vytvoření propojené služby databáze SQL
 
-1. Ve složce ve c:\adftutorials\inccopymultitabletutorial vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService. JSON** s následujícím obsahem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte &lt;servername&gt;, &lt;název databáze&gt;, &lt;uživatelské jméno&gt;a &lt;hesla&gt; s názvem vaší databáze SQL Server, názvem databáze, uživatelským jménem a heslem. 
+1. Vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.json** ve složce C:\ADFTutorials\IncCopyMultiTableTutorial s následujícím obsahem. (Vytvořte složku ADF, pokud ještě neexistuje.) Před &lt;uložením souboru nahraďte &lt;&gt; název&gt;serveru &lt;, název&gt;databáze , &lt;uživatelské jméno&gt;a heslo názvem databáze serveru SQL Server, názvem databáze, uživatelským jménem a heslem. 
 
     ```json
     {  
@@ -388,13 +388,13 @@ V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
         }
     }
     ```
-2. V PowerShellu spusťte rutinu **set-AzDataFactoryV2LinkedService** , která vytvoří propojenou službu AzureSQLDatabaseLinkedService. 
+2. V prostředí PowerShell spusťte rutinu **Set-AzDataFactoryV2LinkedService** a vytvořte propojenou službu AzureSQLDatabaseLinkedService. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureSQLDatabaseLinkedService
@@ -409,7 +409,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 
 ### <a name="create-a-source-dataset"></a>Vytvoření zdrojové datové sady
 
-1. Ve stejné složce vytvořte soubor JSON s názvem **SourceDataset.json** a s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **SourceDataset.json** ve stejné složce s následujícím obsahem: 
 
     ```json
     {  
@@ -433,7 +433,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 
     Aktivita kopírování v kanálu používá místo načtení celé tabulky dotaz SQL pro načtení dat.
 
-2. Spusťte rutinu **set-AzDataFactoryV2Dataset** , která vytvoří datovou sadu SourceDataset.
+2. Spusťte rutinu **Set-AzDataFactoryV2Dataset** a vytvořte datovou sadu SourceDataset.
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -451,7 +451,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 
 ### <a name="create-a-sink-dataset"></a>Vytvoření datové sady jímky
 
-1. Ve stejné složce vytvořte soubor JSON s názvem **SinkDataset. JSON** s následujícím obsahem. Element tableName je nastaven kanálem dynamicky za běhu. Aktivita ForEach v kanálu prochází seznam názvů tabulek a při každé iteraci předává název tabulky této datové sadě. 
+1. Vytvořte soubor JSON s názvem **SinkDataset.json** ve stejné složce s následujícím obsahem. Element tableName je nastaven kanálem dynamicky za běhu. Aktivita ForEach v kanálu prochází seznam názvů tabulek a při každé iteraci předává název tabulky této datové sadě. 
 
     ```json
     {  
@@ -480,7 +480,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
     }
     ```
 
-2. Spusťte rutinu **set-AzDataFactoryV2Dataset** , která vytvoří datovou sadu SinkDataset.
+2. Spusťte rutinu **Set-AzDataFactoryV2Dataset** a vytvořte sadu Datdatové sady.
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -500,7 +500,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 
 V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze. 
 
-1. Ve stejné složce vytvořte soubor JSON s názvem **WatermarkDataset. JSON** s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **VodoznakDataset.json** ve stejné složce s následujícím obsahem: 
 
     ```json
     {
@@ -517,7 +517,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze.
         }
     }    
     ```
-2. Spusťte rutinu **set-AzDataFactoryV2Dataset** , která vytvoří datovou sadu WatermarkDataset.
+2. Spusťte rutinu **Set-AzDataFactoryV2Dataset** a vytvořte datovou sadu VodoznakDataset.
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -535,19 +535,19 @@ V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze.
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** prochází seznam názvů tabulek a provádí následující operace: 
+Tento kanál dostává jako parametr seznam tabulek. **Aktivita ForEach** iterates prostřednictvím seznamu názvů tabulek a provádí následující operace: 
 
-1. **Aktivitu vyhledávání** použijte k načtení původní hodnoty meze (počáteční hodnota nebo ta, která byla použita v poslední iteraci).
+1. Aktivitu **vyhledávání** použijte k načtení staré hodnoty vodoznaku (počáteční hodnota nebo hodnota, která byla použita v poslední iteraci).
 
-2. **Aktivitu vyhledávání** použijte k načtení nové hodnoty meze (maximální hodnota sloupce meze ve zdrojové tabulce).
+2. Aktivita **vyhledávání** slouží k načtení nové hodnoty vodoznaku (maximální hodnota sloupce vodoznaku ve zdrojové tabulce).
 
-3. **Aktivitu kopírování** použijte ke kopírování dat mezi těmito dvěma hodnotami meze ze zdrojové databáze do cílové databáze.
+3. Aktivitu **Kopírovat** slouží ke kopírování dat mezi těmito dvěma hodnotami vodoznaku ze zdrojové databáze do cílové databáze.
 
-4. **Aktivitu StoredProcedure** použijte k aktualizaci staré hodnoty meze, která se má použít v prvním kroku další iterace. 
+4. Pomocí **aktivity StoredProcedure** aktualizujte starou hodnotu vodoznaku, která má být použita v prvním kroku další iterace. 
 
 ### <a name="create-the-pipeline"></a>Vytvoření kanálu
 
-1. Ve stejné složce vytvořte soubor JSON s názvem **IncrementalCopyPipeline. JSON** s následujícím obsahem: 
+1. Vytvořte soubor JSON s názvem **IncrementalCopyPipeline.json** ve stejné složce s následujícím obsahem: 
 
     ```json
     {  
@@ -763,13 +763,13 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
         }
     }
     ```
-2. Spuštěním rutiny **set-AzDataFactoryV2Pipeline** vytvořte IncrementalCopyPipeline kanálu.
+2. Spusťte rutinu **Set-AzDataFactoryV2Pipeline** a vytvořte kanál IncrementalCopyPipeline.
     
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
-   Tady je ukázkový výstup: 
+   Zde je ukázkový výstup: 
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -781,7 +781,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
  
 ## <a name="run-the-pipeline"></a>Spuštění kanálu
 
-1. Ve stejné složce vytvořte soubor parametrů s názvem **Parameters. JSON** s následujícím obsahem:
+1. Vytvořte soubor parametrů s názvem **Parameters.json** ve stejné složce s následujícím obsahem:
 
     ```json
     {
@@ -802,7 +802,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
         ]
     }
     ```
-2. Spusťte IncrementalCopyPipeline kanálu pomocí rutiny **Invoke-AzDataFactoryV2Pipeline** . Zástupné znaky nahraďte vlastním názvem skupiny prostředků a názvem datové továrny.
+2. Spusťte kanál IncrementalCopyPipeline pomocí rutiny **Invoke-AzDataFactoryV2Pipeline.** Zástupné znaky nahraďte vlastním názvem skupiny prostředků a názvem datové továrny.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
@@ -810,23 +810,23 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
 2. Vyberte **Všechny služby**, spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
 
 3. V seznamu datových továren vyhledejte vaši datovou továrnu a vyberte ji. Otevře se stránka **Datová továrna**. 
 
-4. Na stránce **Datová továrna** vyberte **vytvořit & monitorování** a spusťte Azure Data Factory na samostatné kartě.
+4. Na stránce **Data factory** vyberte Author **& Monitor** a spusťte Azure Data Factory na samostatné kartě.
 
-5. Na stránce **Začínáme** vyberte **monitor** na levé straně. 
-![spuštění kanálu](media/doc-common-process/get-started-page-monitor-button.png)    
+5. Na stránce **Začínáme** vyberte **Sledovat** na levé straně. 
+![Spuštění kanálu](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. Zobrazí se všechna spuštění kanálů a jejich stavy. Všimněte si, že stav spuštění kanálu v následujícím příkladu je **Úspěšně**. Parametry předané kanálu můžete zkontrolovat kliknutím na odkaz ve sloupci **Parametry**. Pokud došlo k chybě, uvidíte odkaz ve sloupci **Chyba**.
 
     ![Spuštění kanálu](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
-7. Když vyberete odkaz ve sloupci **Akce** , zobrazí se všechna spuštění aktivit pro daný kanál. 
+7. Když vyberete odkaz ve sloupci **Akce,** uvidíte všechny aktivity běží pro kanál. 
 
-8. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu**. 
+8. Chcete-li se vrátit zpět do zobrazení **Spuštění kanálu,** vyberte **možnost Všechny spuštění kanálu**. 
 
 ## <a name="review-the-results"></a>Kontrola výsledků
 
@@ -905,7 +905,7 @@ VALUES
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. Monitorujte spuštění kanálu podle pokynů v části [Monitorování kanálu](#monitor-the-pipeline). Když stav kanálu **probíhá, zobrazí se v části** **Akce** další odkaz akce pro zrušení běhu kanálu. 
+2. Monitorujte spuštění kanálu podle pokynů v části [Monitorování kanálu](#monitor-the-pipeline). Když **probíhá**stav kanálu , zobrazí se v části Akce další odkaz akce, **který** zruší spuštění kanálu. 
 
 3. Kliknutím na **Aktualizovat** můžete aktualizovat seznam, dokud nebude spuštění kanálu úspěšné. 
 

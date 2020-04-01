@@ -1,50 +1,50 @@
 ---
-title: 'Kurz: přijetí dat pro příjem & – Azure Data Share'
-description: Kurz – přijetí a příjem dat pomocí Azure Data Share
+title: 'Kurz: Přijímání & přijímat data – Azure Data Share'
+description: Kurz – přijímání a přijímání dat pomocí služby Azure Data Share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77083105"
 ---
-# <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: přijetí a příjem dat pomocí Azure Data Share  
+# <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: Přijímání a přijímání dat pomocí služby Azure Data Share  
 
-V tomto kurzu se dozvíte, jak přijmout pozvánku ke sdílení dat pomocí Azure Data Share. Naučíte se, jak přijímat data, která s vámi sdílíte, a jak povolit pravidelný interval aktualizace, abyste měli jistotu, že budete mít vždycky nejnovější snímek dat, která s vámi někdo sdílí. 
+V tomto kurzu se dozvíte, jak přijmout pozvánku ke sdílení dat pomocí služby Azure Data Share. Dozvíte se, jak přijímat data sdílená s vámi, a také jak povolit interval pravidelné aktualizace, abyste měli vždy k tomu nejnovější snímek dat, která jsou s vámi sdílena. 
 
 > [!div class="checklist"]
-> * Jak přijmout pozvánku ke sdílené složce Azure Data
+> * Jak přijmout pozvánku ke sdílené složce Azure Data Share
 > * Vytvoření účtu Azure Data Share
-> * Zadejte cíl pro vaše data.
-> * Vytvořte předplatné pro vaši sdílenou složku dat pro plánovanou aktualizaci.
+> * Určení cíle pro vaše data
+> * Vytvoření předplatného sdílené datové složky pro plánovanou aktualizaci
 
 ## <a name="prerequisites"></a>Požadavky
-Než budete moct přijmout pozvánku ke sdílení dat, musíte zřídit několik prostředků Azure, které jsou uvedené níže. 
+Než budete moci přijmout pozvánku ke sdílené správě dat, musíte zřídit několik prostředků Azure, které jsou uvedeny níže. 
 
-Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné všechny požadavky. 
+Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou všechny požadavky dokončeny. 
 
-* Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* Pozvánka ke sdílení dat: Pozvánka od Microsoft Azure k předmětu s názvem "pozvání ke sdílené složce Azure z **<yourdataprovider@domain.com>** ".
-* Zaregistrujte [poskytovatele prostředků Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) v předplatném Azure, kde vytvoříte prostředek pro sdílení dat a předplatné Azure, kde se nachází vaše cílové úložiště dat Azure.
+* Předplatné Azure: Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+* Pozvánka ke sdílení dat: Pozvánka z Microsoft Azure s **<yourdataprovider@domain.com>** předmětem s názvem "Pozvánka ke sdílené složce Azure z ".
+* Zaregistrujte [poskytovatele prostředků Microsoft.DataShare](concepts-roles-permissions.md#resource-provider-registration) v předplatném Azure, kde vytvoříte prostředek sdílení dat a předplatné Azure, kde se nacházejí vaše cílové úložiště dat Azure.
 
 ### <a name="receive-data-into-a-storage-account"></a>Příjem dat do účtu úložiště: 
 
-* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
-* Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel. 
-* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli vlastníka.  
+* Účet Azure Storage: Pokud ho ještě nemáte, můžete si vytvořit [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
+* Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft.Storage/storageAccounts/write*. Toto oprávnění existuje v roli přispěvatele. 
+* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft.Authorization/role assignments/write*. Toto oprávnění existuje v roli vlastníka.  
 
-### <a name="receive-data-into-a-sql-based-source"></a>Příjem dat do zdroje založeného na jazyce SQL:
+### <a name="receive-data-into-a-sql-based-source"></a>Příjem dat do zdroje založeného na SQL:
 
-* Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli Přispěvatel. 
+* Oprávnění k zápisu do databází na serveru SQL, který je k dispozici v *microsoft.sql/servers/databases/write*. Toto oprávnění existuje v roli přispěvatele. 
 * Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k Azure SQL Database nebo Azure SQL Data Warehouse. To lze provést pomocí následujících kroků: 
-    1. Nastavte jako správce Azure Active Directory pro SQL Server.
-    1. Připojte se k Azure SQL Database/datový sklad pomocí Azure Active Directory.
-    1. Pomocí Editoru dotazů (Preview) spusťte následující skript, který přidá spravovanou identitu pro sdílení dat jako db_datareader, db_datawriter db_ddladmin. Je nutné se připojit pomocí služby Active Directory a SQL Server ověřování. 
+    1. Nastavte si jako Správce služby Azure Active Directory pro SQL server.
+    1. Připojte se k Azure SQL Database/Data Warehouse pomocí Azure Active Directory.
+    1. Pomocí Editoru dotazů (preview) můžete spustit následující skript a přidat spravovanou identitu sdílení dat jako "db_datareader, db_datawriter db_ddladmin". Musíte se připojit pomocí služby Active Directory a nikoli pomocí ověřování serveru SQL Server. 
 
         ```sql
         create user "<share_acc_name>" from external provider; 
@@ -52,86 +52,86 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
         exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
         exec sp_addrolemember db_ddladmin, "<share_acc_name>";
         ```      
-        Všimněte si, že *< share_acc_name >* je název vašeho prostředku pro sdílení dat. Pokud jste ještě nevytvořili prostředek pro sdílení dat, můžete se k tomuto předběžnému požadavku vrátit později.         
+        Všimněte si, že *<share_acc_name>* je název prostředku sdílení dat. Pokud jste ještě nevytvořili prostředek sdílení dat, můžete se k tomuto požadovanému webu vrátit později.         
 
-* IP adresa klienta SQL Server přístup k bráně firewall. To lze provést pomocí následujících kroků: 
-    1. V systému SQL Server v Azure Portal přejděte na *brány firewall a virtuální sítě* .
-    1. Kliknutím na přepínač **zapnuto** povolíte přístup ke službám Azure.
-    1. Klikněte na **+ Přidat IP adresu klienta** a klikněte na **Uložit**. IP adresa klienta se může změnit. Tento proces může být nutné zopakovat při příštím doručování dat do cíle SQL z Azure Portal. Můžete také přidat rozsah IP adres. 
+* Přístup k bráně IP SQL Server Firewall klienta. To lze provést pomocí následujících kroků: 
+    1. Na SQL serveru na Webu Azure Portal přejděte na *firewally a virtuální sítě.*
+    1. Kliknutím **na** přepínač povolíte přístup ke službám Azure.
+    1. Klepněte na tlačítko **+Přidat IP klienta** a klepněte na tlačítko **Uložit**. IP adresa klienta se může změnit. Tento proces může být nutné opakovat při příštím přijímání dat do cíle SQL z webu Azure Portal. Můžete také přidat rozsah IP adres. 
 
 
-### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Příjem dat do clusteru Azure Průzkumník dat: 
+### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Příjem dat do clusteru Průzkumníka dat Azure: 
 
-* Cluster Azure Průzkumník dat ve stejném datovém centru Azure jako cluster Průzkumník dat poskytovatele dat: Pokud ho ještě nemáte, můžete vytvořit [cluster Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal). Pokud si nejste jisti datovým centrem Azure v clusteru poskytovatele dat, můžete cluster vytvořit později v procesu.
-* Oprávnění k zápisu do clusteru Azure Průzkumník dat, který se nachází v *Microsoft. Kusto/Clusters/Write*. Toto oprávnění existuje v roli Přispěvatel. 
-* Oprávnění k přidání přiřazení role do clusteru Azure Průzkumník dat, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli vlastníka. 
+* Cluster Azure Data Explorer ve stejném datovém centru Azure jako cluster Průzkumník dat poskytovatele dat: Pokud ho ještě nemáte, můžete vytvořit [cluster Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal). Pokud neznáte datové centrum Azure clusteru poskytovatele dat, můžete vytvořit cluster později v procesu.
+* Oprávnění k zápisu do clusteru Azure Data Explorer, který je k dispozici v *Microsoft.Kusto/clusters/write*. Toto oprávnění existuje v roli přispěvatele. 
+* Oprávnění k přidání přiřazení role do clusteru Azure Data Explorer, který se nachází v *Microsoft.Authorization/role assignments/write*. Toto oprávnění existuje v roli vlastníka. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
+Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Otevřít pozvánku
 
-1. Prohlédněte si doručenou poštu pro pozvání od poskytovatele dat. Pozvánka pochází z Microsoft Azure s názvem **pozvání Azure Data Share z <yourdataprovider@domain.com>** . Poznamenejte si název sdílené složky, abyste se ujistili, že přijímáte správnou sdílenou složku v případě, že existuje více pozvání. 
+1. Zkontrolujte, zda v doručené poště není pozvánka od poskytovatele dat. Pozvánka je z Microsoft Azure s názvem **Azure Data Share pozvánka od <yourdataprovider@domain.com> **. Název sdílené položky si poznamenejte a ujistěte se, že přijímáte správnou sdílenou složku, pokud existuje více pozvánek. 
 
-1. Výběrem **Zobrazit Pozvánka** zobrazíte pozvánku v Azure. Tím přejdete do zobrazení přijaté sdílené složky.
+1. Vyberte **v nabídce pozvánku,** abyste viděli pozvánku v Azure. Tím přejdete do zobrazení Přijaté sdílené složky.
 
-   ![Zasílán](./media/invitations.png "Seznam pozvánek") 
+   ![Pozvánky](./media/invitations.png "Seznam pozvánek") 
 
 1. Vyberte sdílenou složku, kterou chcete zobrazit. 
 
 ## <a name="accept-invitation"></a>Přijmout pozvánku
-1. Ujistěte se, že všechna pole jsou přezkoumána, včetně **podmínek použití**. Pokud souhlasíte s podmínkami použití, budete muset zaškrtnout políčko, abyste označili, že souhlasíte. 
+1. Zkontrolujte všechna pole, včetně **Podmínek použití**. Pokud souhlasíte s podmínkami použití, budete muset zaškrtnout políčko, abyste uvedli, že souhlasíte. 
 
    ![Podmínky použití](./media/terms-of-use.png "Podmínky použití") 
 
-1. V části *cílový účet sdílení dat*vyberte předplatné a skupinu prostředků, do které budete nasazovat sdílenou složku. 
+1. V části *Cílový účet sdílení dat*vyberte předplatný a skupinu prostředků, do kterých budete nasazovat sdílenou složku dat. 
 
-   V poli **účet pro sdílení dat** vyberte **vytvořit novou** , pokud nemáte existující účet pro sdílení dat. V opačném případě vyberte existující účet pro sdílení dat, do kterého chcete vaši sdílenou složku přijmout. 
+   V poli **Účet sdílení dat** vyberte Vytvořit **nový,** pokud nemáte existující účet sdílení dat. V opačném případě vyberte existující účet sdílení dat, do kterého chcete přijmout sdílenou složku dat. 
 
-   V poli **přijatý název sdílené složky** můžete ponechat výchozí hodnotu zadanou daty nebo zadat nový název přijaté sdílené složky. 
+   Pro pole **Přijaté jméno sdílené složky** můžete ponechat výchozí nastavení zadané daty nebo zadat nový název přijaté sdílené složky. 
 
-   ![Cílový účet pro sdílení dat](./media/target-data-share.png "Cílový účet pro sdílení dat") 
+   ![Cílový účet sdílení dat](./media/target-data-share.png "Cílový účet sdílení dat") 
 
-1. Až budete souhlasit s podmínkami použití a zadáte umístění pro sdílenou složku, vyberte možnost *přijmout a konfigurovat*. Vytvoří se předplatné sdílení.
+1. Jakmile souhlasíte s podmínkami použití a zadáte umístění sdílené položky, vyberte možnost *Přijmout a nakonfigurovat*. Bude vytvořeno předplatné sdílení.
 
-   U sdílení na základě snímků vás další obrazovka vyzve k výběru cílového účtu úložiště, do kterého se mají data kopírovat. 
+   Pro sdílení na základě snímků, další obrazovka vás vyzve k výběru cílového účtu úložiště pro vaše data, která mají být zkopírovány do. 
 
    ![Přijmout možnosti](./media/accept-options.png "Přijmout možnosti") 
 
-   Pokud chcete pozvánku přijmout teď, ale později nakonfigurovat cílové úložiště dat, vyberte *přijmout a nakonfigurovat později*. Pokud chcete později pokračovat v konfiguraci úložiště, přečtěte si článek [Konfigurace stránky mapování datových sad](how-to-configure-mapping.md) , kde najdete podrobné pokyny pro obnovení konfigurace sdílené složky. 
+   Pokud chcete pozvánku přijmout nyní, ale nakonfigurujte cílové úložiště dat později, vyberte *Přijmout a nakonfigurovat později*. Chcete-li pokračovat v konfiguraci úložiště později, [najdete v tématu konfigurace mapování datových sad](how-to-configure-mapping.md) stránku podrobné kroky, jak obnovit konfiguraci sdílení dat. 
 
-   Informace o tom, jak obnovit konfiguraci sdílení dat, najdete v tématu věnovaném místnímu sdílení na stránce [Konfigurace mapování datových sad](how-to-configure-mapping.md) . 
+   Informace o sdílení na místě najdete v tématu konfigurace stránky [mapování datových sad,](how-to-configure-mapping.md) kde najdete podrobné kroky, jak obnovit konfiguraci sdílené složky dat. 
 
-   Pokud nechcete pozvánku přijmout, vyberte *odmítnout*. 
+   Pokud pozvánku nechcete přijmout, vyberte *možnost Odmítnout*. 
 
 ## <a name="configure-storage"></a>Konfigurace úložiště
-1. V části *nastavení cílového úložiště*vyberte předplatné, skupinu prostředků a účet úložiště, do kterého chcete data přijímat. 
+1. V části *Nastavení cílového úložiště*vyberte účet Předplatných, Prostředků a úložiště, do kterých chcete data dostávat. 
 
    ![Nastavení cílového úložiště](./media/target-storage-settings.png "Cílové úložiště") 
 
-1. Pokud chcete získat pravidelnou aktualizaci vašich dat, ujistěte se, že jste povolili nastavení snímku. Všimněte si, že se zobrazí jenom plán nastavení snímků, pokud ho poskytovatel dat zahrnul do sdílené složky dat. 
+1. Chcete-li dostávat pravidelnou aktualizaci dat, ujistěte se, že jste povolili nastavení snímku. Všimněte si, že plán nastavení snímku se zobrazí pouze v případě, že ho váš poskytovatel dat zahrnul do sdílené složky dat. 
 
    ![Nastavení snímku](./media/snapshot-settings.png "Nastavení snímku") 
 
-1. Vyberte *Save* (Uložit). 
+1. Vyberte *Uložit*. 
 
 > [!IMPORTANT]
-> Pokud přijímáte data založená na jazyce SQL a chcete tato data přijímat do zdroje založeného na jazyce SQL, přejděte na téma [Konfigurace mapování datových sad](how-to-configure-mapping.md) s návodem, jak se naučíte konfigurovat SQL Server jako cíl pro datovou sadu. 
+> Pokud přijímáte data založená na SQL a chcete tato data přijímat do zdroje založeného na SQL, navštivte [stránku konfigurace průvodce mapováním datové sady,](how-to-configure-mapping.md) kde se dozvíte, jak nakonfigurovat SQL Server jako cíl pro vaši datovou sadu. 
 
 ## <a name="trigger-a-snapshot"></a>Aktivace snímku
-Tyto kroky platí pouze pro sdílení na základě snímků.
+Tyto kroky platí pouze pro sdílení na základě snímku.
 
-1. Snímek můžete aktivovat na kartě přijaté sdílené složky – > Podrobnosti výběrem **spouštěcího snímku**. Tady můžete aktivovat úplný nebo přírůstkový snímek dat. Pokud data od poskytovatele dat přijímáte poprvé, vyberte možnost úplné kopírování. 
+1. Snímek můžete spustit na kartě Přijaté sdílené složky -> podrobnosti výběrem **možnosti Aktivační událost**. Zde můžete aktivovat úplný nebo přírůstkový snímek dat. Pokud data od poskytovatele dat přijímáte poprvé, vyberte úplnou kopii. 
 
-   ![Spustit snímek](./media/trigger-snapshot.png "Spustit snímek") 
+   ![Snímek aktivační události](./media/trigger-snapshot.png "Snímek aktivační události") 
 
-1. Po *úspěšném*stavu posledního spuštění přejdete do cílového úložiště dat a zobrazíte přijatá data. Vyberte **datové sady**a klikněte na odkaz v cílové cestě. 
+1. Pokud je stav posledního spuštění *úspěšný*, přejděte do cílového úložiště dat a zobrazte přijatá data. Vyberte **Datové sady**a klikněte na odkaz v cílové cestě. 
 
-   ![Datové sady příjemců](./media/consumer-datasets.png "Mapování datové sady příjemce") 
+   ![Datové sady pro spotřebitele](./media/consumer-datasets.png "Mapování datových sad spotřebitelů") 
 
 ## <a name="view-history"></a>Zobrazení historie
-Pokud chcete zobrazit historii snímků, přejděte k části přijaté sdílené složky – Historie >. Tady najdete historii všech snímků vygenerovaných za posledních 60 dnů. 
+Chcete-li zobrazit historii snímků, přejděte na položku Přijaté sdílené složky -> historie. Zde najdete historii všech snímků, které byly generovány za posledních 60 dní. 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak přijmout a získat sdílenou složku Azure Data. Další informace o konceptech Azure Data Share najdete v článku [Koncepty: terminologie Azure Data Share](terminology.md).
+V tomto kurzu jste se naučili, jak přijmout a přijímat Azure Data Share. Další informace o konceptech Azure Data Share najdete na [Koncepty: Terminologie sdílení dat Azure](terminology.md).

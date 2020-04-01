@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux
+title: Kurz – vytváření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvářet a spravovat virtuální sítě Azure pro virtuální počítače s Linuxem.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d6624b9d5d77a8552584049463b63738bbf17627
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238598"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem pomocí Azure CLI
@@ -33,9 +33,9 @@ Virtuální počítače Azure používají pro interní i externí síťovou kom
 > * Zabezpečení provozu sítě
 > * Vytvoření back-endového virtuálního počítače
 
-V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
+Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="vm-networking-overview"></a>Přehled sítí virtuálních počítačů
 
@@ -59,13 +59,13 @@ V průběhu kurzu vytvoříte následující prostředky virtuální sítě:
 
 V tomto kurzu vytvoříte virtuální síť se dvěma podsítěmi. Front-endovou podsíť k hostování webové aplikace a back-endovou podsíť pro hostování databázového serveru.
 
-Před vytvořením virtuální sítě vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myRGNetwork* v umístění eastus (USA – východ).
+Před vytvořením virtuální sítě vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků s názvem *myRGNetwork* v umístění eastus.
 
 ```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
 ```
 
-### <a name="create-virtual-network"></a>Vytvořit virtuální síť
+### <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
 Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť. V tomto příkladu se síť jmenuje *myVNet* a má předponu adresy *10.0.0.0/16*. Vytvoří se také podsíť s názvem *myFrontendSubnet* a předponou *10.0.1.0/24*. Později v tomto kurzu se k této síti připojí front-endový virtuální počítač. 
 
@@ -304,4 +304,4 @@ V tomto kurzu jste v souvislosti s virtuálními počítači vytvořili a zabezp
 Přejděte na další kurs, abyste se dozvěděli o zabezpečení dat na virtuálních počítačích pomocí služby Azure Backup. 
 
 > [!div class="nextstepaction"]
-> [Záloha virtuálních počítačů s Linuxem v Azure](./tutorial-backup-vms.md)
+> [Zálohování virtuálních počítačů s Linuxem v Azure](./tutorial-backup-vms.md)

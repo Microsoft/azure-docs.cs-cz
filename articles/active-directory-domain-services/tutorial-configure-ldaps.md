@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481530"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475856"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro spravovanou doménu služby Azure Active Directory Domain Services
 
@@ -114,13 +114,13 @@ Tyto dva klíče, *soukromé* a *veřejné* klíče, ujistěte se, že pouze př
 
 Než budete moci použít digitální certifikát vytvořený v předchozím kroku se spravovanou doménou Služby Azure AD DS, exportujte certifikát do *. *Soubor certifikátu PFX, který obsahuje soukromý klíč.
 
-1. Chcete-li otevřít dialogové okno *Spustit,* vyberte klávesy **Windows** a **R.**
+1. Chcete-li otevřít dialogové okno *Spustit,* vyberte klávesy **Windows** + **R.**
 1. Otevřete konzolu MMC (MMC) zadáním **konzoly MMC** v dialogovém okně *Spustit* a vyberte **možnost OK**.
-1. Na výzvu **Řízení uživatelských účtů** klepnutím na tlačítko **Ano** spusťte konzolu MMC jako správce.
-1. V nabídce **Soubor** klikněte na **Přidat nebo odebrat modul snap-in...**
+1. Na výzvu **Řízení uživatelských účtů** vyberte **možnost Ano** a spusťte konzolu MMC jako správce.
+1. V nabídce **Soubor** vyberte **Přidat nebo odebrat modul snap-in...**
 1. V průvodci **modulu snap-in Certifikáty** zvolte **Účet počítače**a pak vyberte **Další**.
 1. Na stránce **Vybrat počítač** zvolte **Místní počítač: (počítač, na který je tato konzola spuštěna)** a pak vyberte **Dokončit**.
-1. V dialogovém okně **Přidat nebo odebrat moduly snap-in** přidejte do konzoly MMC klepnutím na **tlačítko OK.**
+1. V dialogovém okně **Přidat nebo odebrat moduly snap-in** vyberte **OK** a přidejte modul snap-in certifikátů do konzoly MMC.
 1. V okně Konzoly MMC rozbalte **položku Kořenová konzola**. Vyberte **certifikáty (místní počítač)** a rozbalte **osobní** uzel následovaný uzětem **Certifikáty.**
 
     ![Otevření úložiště osobních certifikátů v konzole MMC](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -177,9 +177,6 @@ V *. *Soubor certifikátu CER lze nyní distribuovat do klientských počítač�
 S vytvořeným a exportovaným digitálním certifikátem, který obsahuje soukromý klíč, a klientským počítačem nastaveným na důvěryhodnost připojení teď povolte zabezpečené protokol LDAP ve spravované doméně Azure AD DS. Chcete-li povolit zabezpečené protokol LDAP ve spravované doméně Azure AD DS, proveďte následující kroky konfigurace:
 
 1. Na [webu Azure Portal](https://portal.azure.com)zadejte *služby domény* do pole Hledat **prostředky.** Z výsledku hledání vyberte **služby Azure AD Domain Services.**
-
-    ![Hledání a výběr spravované domény Azure AD DS na webu Azure Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
-
 1. Vyberte spravovanou doménu, například *aaddscontoso.com*.
 1. Na levé straně okna Azure AD DS zvolte **Secure LDAP**.
 1. Ve výchozím nastavení je zabezpečený přístup LDAP ke spravované doméně zakázán. Přepnout **zabezpečené protokol LDAP** na **povolení**.
@@ -235,10 +232,10 @@ Pokud je zabezpečený přístup LDAP povolen přes internet, aktualizujte zónu
 
 Nakonfigurujte externího poskytovatele DNS tak, aby vytvořil záznam hostitele, například *ldaps*, který bude vyřešen na tuto externí adresu IP. Chcete-li nejprve testovat místně v počítači, můžete vytvořit položku v souboru hosts systému Windows. Chcete-li úspěšně upravit soubor hosts v místním počítači, otevřete *poznámkový blok* jako správce a potom otevřete soubor *C:\Windows\System32\drivers\etc*
 
-Následující příklad položky DNS, buď s externím poskytovatelem DNS, nebo v místním souboru hosts, řeší provoz pro *ldaps.aaddscontoso.com* na externí IP adresu *40.121.19.239*:
+Následující příklad položky DNS, buď s externím poskytovatelem DNS, nebo v místním souboru hosts, řeší provoz pro *ldaps.aaddscontoso.com* na externí IP adresu *168.62.205.103*:
 
 ```
-40.121.19.239    ldaps.aaddscontoso.com
+168.62.205.103    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Testování dotazů do spravované domény
@@ -261,7 +258,7 @@ Chcete-li zobrazit objekty uložené ve spravované doméně Azure AD DS:
 1. Vyberte volbu **Zobrazit** nabídku a pak zvolte **Strom**.
 1. Ponechte pole *BaseDN* prázdné a pak vyberte **OK**.
 1. Zvolte kontejner, například *Uživatelé AADDC*, pak vyberte kontejner vpravo a zvolte **Hledat**.
-1. Ponechte předvyplněná pole nastavená a vyberte **Spustit**. Výsledky dotazu jsou zobrazeny v pravém okně.
+1. Ponechte předvyplněná pole nastavená a vyberte **Spustit**. Výsledky dotazu jsou zobrazeny v pravém okně, jak je znázorněno v následujícím příkladu výstupu:
 
     ![Hledání objektů ve spravované doméně Azure AD DS pomocí služby LDP.exe](./media/tutorial-configure-ldaps/ldp-query.png)
 
@@ -273,7 +270,7 @@ Pokud jste do souboru místních hostitelů počítače přidali položku DNS, a
 
 1. V místním počítači otevřete *poznámkový blok* jako správce.
 1. Přejděte a otevřete soubor *C:\Windows\System32\drivers\etc*
-1. Odstraňte řádek přidaného záznamu, například`40.121.19.239    ldaps.aaddscontoso.com`
+1. Odstraňte řádek přidaného záznamu, například`168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Další kroky
 

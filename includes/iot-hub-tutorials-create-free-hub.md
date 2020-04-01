@@ -9,15 +9,15 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68229230"
 ---
 Vytvoření IoT Hubu pomocí webu Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
 1. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 
@@ -25,12 +25,12 @@ Vytvoření IoT Hubu pomocí webu Azure Portal:
 
 1. K vytvoření vlastního centra IoT úrovně Free použijte hodnoty v následující tabulce:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Subscription | Z rozevíracího seznamu vyberte své předplatné Azure. |
-    | Resource group | Vytvořte novou. Tento kurz používá název **tutorials-iot-hub-rg**. |
-    | Oblast | Tento kurz používá **Západní USA**. Vy si můžete vybrat oblast, která je vám nejbližší. |
-    | Name | Následující snímek obrazovky používá název **tutorials-iot-hub**. Když vytváříte své centrum, musíte si zvolit jedinečný název. |
+    | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
+    | Skupina prostředků | Vytvořte novou. Tento kurz používá název **tutorials-iot-hub-rg**. |
+    | Region (Oblast) | Tento kurz používá **USA – západ**. Vy si můžete vybrat oblast, která je vám nejbližší. |
+    | Name (Název) | Následující snímek obrazovky používá název **tutorials-iot-hub**. Když vytváříte své centrum, musíte si zvolit jedinečný název. |
 
     ![Nastavení centra 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 
@@ -41,7 +41,7 @@ Vytvoření IoT Hubu pomocí webu Azure Portal:
 
     ![Nastavení centra 2](media/iot-hub-tutorials-create-free-hub/hubdefinition-2.png)
 
-1. Klikněte na možnost **Vytvořit**. Vytvoření centra může trvat několik minut.
+1. Klikněte na **Vytvořit**. Vytvoření centra může trvat několik minut.
 
     ![Nastavení centra 3](media/iot-hub-tutorials-create-free-hub/hubdefinition-3.png)
 

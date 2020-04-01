@@ -1,7 +1,7 @@
 ---
-title: Kurz – vytvoření vysoce dostupné aplikace s úložištěm BLOB
+title: Kurz – vytvoření vysoce dostupné aplikace s úložištěm objektů blob
 titleSuffix: Azure Storage
-description: K zajištění vysoké dostupnosti dat aplikací použijte geograficky redundantní úložiště s přístupem pro čtení.
+description: Pomocí geograficky redundantního úložiště pro přístup ke čtení můžete data aplikace zpřístupnit.
 services: storage
 author: tamram
 ms.service: storage
@@ -12,53 +12,53 @@ ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
 ms.openlocfilehash: 0eabd918b5f8f52049792ceb28ef8055945d6475
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77162170"
 ---
-# <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
+# <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: Vytvoření vysoce dostupné aplikace s úložištěm objektů blob
 
-Tento kurz je první částí série. V takovém případě se naučíte, jak zajistit vysokou dostupnost dat aplikace v Azure.
+Tento kurz je první částí série. V něm se dozvíte, jak zpřístupnit data aplikace vysoce dostupná v Azure.
 
-Po dokončení tohoto kurzu budete mít konzolovou aplikaci, která nahrává a načte objekt BLOB z účtu úložiště s [geograficky redundantním přístupem pro čtení](../common/storage-redundancy.md) (RA-GRS).
+Po dokončení tohoto kurzu budete mít konzolovou aplikaci, která nahraje a načte objekt blob z [geograficky redundantního](../common/storage-redundancy.md) účtu pro čtení (RA-GRS).
 
-RA-GRS funguje replikací transakcí z primární oblasti do sekundární oblasti. Tento proces replikace zaručuje, že data v sekundární oblasti jsou nakonec konzistentní. Aplikace používá ke zjištění, ke kterému koncovému bodu, ke kterému se má připojit, způsob [přerušení okruhu](/azure/architecture/patterns/circuit-breaker) , automaticky přepínání mezi koncovými body jako se selháním a obnovením se simuluje.
+RA-GRS funguje replikací transakcí z primární oblasti do sekundární oblasti. Tento proces replikace zaručuje, že data v sekundární oblasti jsou nakonec konzistentní. Aplikace používá [vzor jističe](/azure/architecture/patterns/circuit-breaker) k určení, ke kterému koncovému bodu se má připojit, automatické přepínání mezi koncovými body, protože jsou simulovány chyby a obnovení.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
-V první části této série se naučíte:
+V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * vytvořit účet úložiště
 > * Nastavit připojovací řetězec
 > * Spustit konzolovou aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoj pro Azure** .
+* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s **úlohou vývoje Azure.**
 
   ![Azure – vývoj (v části Web a cloud)](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-* Nainstalovat [Python](https://www.python.org/downloads/).
+* Instalace [Pythonu](https://www.python.org/downloads/)
 * Stáhnout a nainstalovat [sadu SDK služby Azure Storage pro Python](https://github.com/Azure/azure-storage-python)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* Nainstalujte [Node. js](https://nodejs.org).
+* Nainstalujte [soubor Node.js](https://nodejs.org).
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
+Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -67,8 +67,8 @@ Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 Podle těchto kroků můžete vytvořit účet geograficky redundantního úložiště jen pro čtení:
 
 1. Vyberte tlačítko **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
-2. Na **nové** stránce vyberte **úložiště** .
-3. Vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta** v rámci **doporučeného**.
+2. Na stránce **Nový** vyberte **Úložiště.**
+3. Vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta** v části **Doporučené**.
 4. Vyplňte formulář účtu úložiště následujícími informacemi, jak ukazuje následující obrázek, a vyberte **Vytvořit**:
 
    | Nastavení       | Navrhovaná hodnota | Popis |
@@ -76,7 +76,7 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
    | **Název** | mystorageaccount | Jedinečná hodnota pro váš účet úložiště |
    | **Model nasazení** | Resource Manager  | Resource Manager obsahuje nejnovější funkce.|
    | **Druh účtu** | StorageV2 | Podrobnosti o typech účtů najdete v tématu [Typy účtů úložiště](../common/storage-introduction.md#types-of-storage-accounts). |
-   | **Výkon** | Standardní | Pro ukázkový scénář stačí Standard. |
+   | **Výkon** | Standard | Pro ukázkový scénář stačí Standard. |
    | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | To je nezbytné, aby ukázka fungovala. |
    |**Předplatné** | Vaše předplatné |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
    |**ResourceGroup** | myResourceGroup |Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
@@ -86,7 +86,7 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip) a extrahujte (rozbalte) soubor storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje konzolovou aplikaci.
 
@@ -94,7 +94,7 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip) a extrahujte (rozbalte) soubor storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje základní aplikaci Pythonu.
 
@@ -102,9 +102,9 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-[Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) a rozbalte soubor. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Vzorový projekt obsahuje základní aplikaci Node. js.
+[Stáhněte ukázkový projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) a rozbalte soubor. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje základní aplikaci Node.js.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
@@ -114,11 +114,11 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 V aplikaci je potřeba zadat připojovací řetězec pro váš účet úložiště. Tento připojovací řetězec můžete uložit do proměnné prostředí v místním počítači, na kterém aplikaci spouštíte. V závislosti na operačním systém vytvořte proměnnou prostředí pomocí jednoho z následujících příkladů.
 
-Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Zkopírujte **připojovací řetězec** z primárního nebo sekundárního klíče. V závislosti na vašem operačním systému spusťte jeden z následujících příkazů a nahraďte \<yourconnectionstring\> skutečným připojovacím řetězcem. Tento příkaz uloží proměnnou prostředí v místním počítači. V systému Windows není k dispozici proměnná prostředí, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
+Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Zkopírujte **připojovací řetězec** z primárního nebo sekundárního klíče. Spusťte jeden z následujících příkazů založených \<na operačním\> systému a nahraďte řetězec připojení skutečným připojovacím řetězcem. Tento příkaz uloží proměnnou prostředí v místním počítači. V systému Windows není proměnná prostředí k dispozici, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
 
 ### <a name="linux"></a>Linux
 
@@ -132,11 +132,11 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-V aplikaci musíte zadat přihlašovací údaje účtu úložiště. Tyto informace můžete uložit do proměnných prostředí v místním počítači, na kterém je aplikace spuštěná. Použijte jeden z následujících příkladů v závislosti na operačním systému a vytvořte proměnné prostředí.
+V aplikaci je nutné zadat pověření účtu úložiště. Tyto informace můžete uložit v proměnných prostředí v místním počítači se spuštěnou aplikací. Postupujte podle jednoho z níže uvedených příkladů v závislosti na operačním systému k vytvoření proměnných prostředí.
 
-Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Vložte **název účtu úložiště** a hodnoty **klíče** do následujících příkazů a nahraďte \<youraccountname\> a \<zástupné symboly\>. Tento příkaz uloží proměnné prostředí do místního počítače. V systému Windows není k dispozici proměnná prostředí, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
+Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Vložte **název účtu úložiště** a hodnoty **klíče** do \<následujících\> příkazů \<a\> nahraďte zástupné symboly vašeho účtu a klíče vašeho účtu. Tento příkaz uloží proměnné prostředí do místního počítače. V systému Windows není proměnná prostředí k dispozici, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
 
 ### <a name="linux"></a>Linux
 
@@ -152,36 +152,36 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Pokud chcete tuto ukázku spustit, musíte do souboru `.env.example` přidat svoje přihlašovací údaje účtu úložiště a pak je přejmenovat na `.env`.
+Chcete-li spustit tuto ukázku, je nutné `.env.example` do souboru přidat `.env`pověření účtu úložiště a potom je přejmenovat na .
 
 ```
 AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
 AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 ```
 
-Tyto informace najdete v Azure Portal tak, že přejdete na svůj účet úložiště a vyberete **přístupové klíče** v části **Nastavení** .
+Tyto informace najdete na webu Azure Portal tak, že přejdete ke svému účtu úložiště a vyberete **přístupové klíče** v části **Nastavení.**
 
-Nainstalujte požadované závislosti. Provedete to tak, že otevřete příkazový řádek, přejdete do ukázkové složky a pak zadáte `npm install`.
+Nainstalujte požadované závislosti. Chcete-li to provést, otevřete příkazový řádek, `npm install`přejděte do ukázkové složky a zadejte .
 
 ---
 
 ## <a name="run-the-console-application"></a>Spustit konzolovou aplikaci
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-V aplikaci Visual Studio stiskněte klávesu **F5** nebo vyberte **začít** a zahajte ladění aplikace. Sada Visual Studio automaticky obnoví chybějící balíčky NuGet, pokud jsou nakonfigurované, a další informace najdete [v instalaci a přeinstalaci balíčků s obnovením balíčků](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) .
+V sadě Visual Studio stiskněte **klávesu F5** nebo vyberte **spustit** a začněte ladit aplikaci. Visual Studio automaticky obnoví chybějící balíčky NuGet, pokud je nakonfigurováno, navštivte [stránku Instalace a přeinstalace balíčků s obnovením balíčků,](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) abyste se dozvěděli další informace.
 
-Spustí se okno konzoly a aplikace začne běžet. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se obrázek replikoval na sekundární koncový bod geograficky redundantního úložiště jen pro čtení (RA-GRS). Potom začne stahovat obrázek až 999x. Každý přečtený je reprezentován hodnotou **P** nebo **s**. Kde **P** představuje primární koncový bod a **y** představuje sekundární koncový bod.
+Spustí se okno konzoly a aplikace začne běžet. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se obrázek replikoval na sekundární koncový bod geograficky redundantního úložiště jen pro čtení (RA-GRS). Potom začne stahovat obrázek až 999x. Každé čtení je reprezentováno **P** nebo **S**. Kde **P** představuje primární koncový bod a **S** představuje sekundární koncový bod.
 
 ![Spuštěná konzolová aplikace](media/storage-create-geo-redundant-storage/figure3.png)
 
-Ve vzorovém kódu slouží úloha `RunCircuitBreakerAsync` v souboru `Program.cs` ke stažení obrázku z účtu úložiště pomocí metody [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync). Před stažením se definuje [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext). Kontext operace definuje obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
+Ve vzorovém kódu slouží úloha `RunCircuitBreakerAsync` v souboru `Program.cs` ke stažení obrázku z účtu úložiště pomocí metody [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync). Před stažením [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) je definován. Kontext operace definuje obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Pokud chcete aplikaci spustit na terminálu nebo v příkazovém řádku, přejděte do adresáře **circuitbreaker.py** a potom zadejte `python circuitbreaker.py`. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se obrázek replikoval na sekundární koncový bod geograficky redundantního úložiště jen pro čtení (RA-GRS). Potom začne stahovat obrázek až 999x. Každý přečtený je reprezentován hodnotou **P** nebo **s**. Kde **P** představuje primární koncový bod a **y** představuje sekundární koncový bod.
+Pokud chcete aplikaci spustit na terminálu nebo v příkazovém řádku, přejděte do adresáře **circuitbreaker.py** a potom zadejte `python circuitbreaker.py`. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se obrázek replikoval na sekundární koncový bod geograficky redundantního úložiště jen pro čtení (RA-GRS). Potom začne stahovat obrázek až 999x. Každé čtení je reprezentováno **P** nebo **S**. Kde **P** představuje primární koncový bod a **S** představuje sekundární koncový bod.
 
 ![Spuštěná konzolová aplikace](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -189,13 +189,13 @@ Ve vzorovém kódu slouží metoda `run_circuit_breaker` v souboru `circuitbreak
 
 Funkce opakování pro objekt Storage je nastavená na zásadu lineárního opakování. Funkce opakování určuje, jestli se má opakovat žádost, a určuje, kolik sekund se má čekat před opakováním žádosti. Nastavte hodnotu **retry\_to\_secondary** na true, pokud by se žádost měla opakovat na sekundární koncový bod v případě, že původní žádost na primární byla neúspěšná. V ukázkové aplikaci je vlastní zásada opakování definovaná ve funkci `retry_callback` objektu úložiště.
 
-Před stažením se definuje objekt služby [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) a funkce [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) . Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
+Před stažením je definován objekt Service [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) a [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) funkce. Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Chcete-li spustit ukázku, otevřete příkazový řádek, přejděte do složky Sample a pak zadejte `node index.js`.
+Chcete-li ukázku spustit, otevřete příkazový řádek, `node index.js`přejděte do ukázkové složky a zadejte .
 
-Ukázka vytvoří kontejner v účtu úložiště objektů blob, nahraje do kontejneru **Hello. png** a pak opakovaně kontroluje, jestli se kontejner a image replikují do sekundární oblasti. Po dokončení replikace se zobrazí výzva k zadání **D** nebo **Q** (následovaný ENTER) ke stažení nebo ukončení. Výstup by měl vypadat podobně jako v následujícím příkladu:
+Ukázka vytvoří kontejner v účtu úložiště objektů Blob, nahraje **HelloWorld.png** do kontejneru a pak opakovaně zkontroluje, zda kontejner a image replikovány do sekundární oblasti. Po replikaci vás vyzve k zadání **D** nebo **Q** (následované enterem) ke stažení nebo ukončení. Výstup by měl vypadat podobně jako v následujícím příkladu:
 
 ```
 Created container successfully: newcontainer1550799840726
@@ -222,7 +222,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>Vysvětlení vzorového kódu
 
-### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="net"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>Obslužná rutina události opakování
 
@@ -273,7 +273,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Obslužná rutina události opakování
 
@@ -316,9 +316,9 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-### <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-V v10 za účelem SDK pro Node. js nejsou potřebné obslužné rutiny zpětného volání. Místo toho ukázka vytvoří kanál nakonfigurovaný s možnostmi opakování a sekundárním koncovým bodem. To umožňuje aplikaci automaticky přepnout na sekundární kanál, pokud se nepovede k vašim datům přes primární kanál.
+S Node.js V10 SDK, obslužné rutiny zpětného volání jsou zbytečné. Místo toho ukázka vytvoří kanál nakonfigurovaný s možnostmi opakování a sekundární koncový bod. To umožňuje aplikaci automaticky přepnout na sekundární kanál, pokud se nezdaří dosáhnout dat prostřednictvím primárního kanálu.
 
 ```javascript
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
@@ -343,9 +343,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>Další kroky
 
-V první části série jste se dozvěděli o tom, že je aplikace vysoce dostupná pomocí účtů úložiště RA-GRS.
+V první části série jste se dozvěděli o tom, že aplikace je vysoce dostupná s účty úložiště RA-GRS.
 
 Přejděte k druhé části série, kde se dozvíte, jak simulovat selhání a přinutit aplikaci použít sekundární koncový bod geograficky redundantního účtu úložiště jen pro čtení.
 
 > [!div class="nextstepaction"]
-> [Simulace selhání při čtení z primární oblasti](storage-simulate-failure-ragrs-account-app.md)
+> [Simulace selhání čtení z primární oblasti](storage-simulate-failure-ragrs-account-app.md)

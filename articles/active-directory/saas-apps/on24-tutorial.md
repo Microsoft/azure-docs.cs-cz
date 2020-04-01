@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s ON24 virtuální prostředí SAML připojení | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a připojení ON24 virtuální prostředí SAML.
+title: 'Kurz: Integrace služby Azure Active Directory s připojením SAML virtuálního prostředí ON24 | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi službou Azure Active Directory a připojením SAML virtuálního prostředí ON24.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,98 +16,98 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 801a631b56a11e68c444ede846ff82195cd7627f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095730"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Kurz: Integrace Azure Active Directory s ON24 virtuální prostředí SAML připojení
+# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Kurz: Integrace služby Azure Active Directory s připojením SAML virtuálního prostředí ON24
 
-V tomto kurzu se dozvíte, jak integrovat ON24 virtuální prostředí SAML připojení s Azure Active Directory (Azure AD).
-Integrace ON24 virtuální prostředí SAML připojení s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat připojení SAML virtuálního prostředí ON24 s Azure Active Directory (Azure AD).
+Integrace připojení SAML virtuálního prostředí ON24 s Azure AD vám poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k ON24 virtuální prostředí SAML připojení.
-* Uživatelům se automaticky přihlášeni k ON24 virtuální prostředí SAML připojení (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k připojení SAML virtuálního prostředí ON24.
+* Můžete povolit uživatelům, aby se automaticky přihlásili k ON24 virtual environment SAML connection (jednotné přihlášení) s jejich účty Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s ON24 virtuální prostředí SAML připojení, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD pomocí připojení SAML virtuálního prostředí ON24, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Připojení ON24 virtuální prostředí SAML jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* ON24 Virtual Environment SAML Připojení jednotné přihlášení povoleno předplatné
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje připojení ON24 virtuální prostředí SAML **SP** a **IDP** jednotné přihlašování zahájené pomocí
+* ON24 Virtual Environment SAML Connection podporuje **sp** a **IDP** inicioval sso
 
-## <a name="adding-on24-virtual-environment-saml-connection-from-the-gallery"></a>Přidání ON24 virtuální prostředí SAML připojení z Galerie
+## <a name="adding-on24-virtual-environment-saml-connection-from-the-gallery"></a>Přidání připojení SAML virtuálního prostředí ON24 z galerie
 
-Konfigurace integrace ON24 virtuální prostředí SAML připojení do služby Azure AD, budete muset přidat ON24 virtuální prostředí SAML připojení z Galerie na váš seznam spravovaných aplikací SaaS.
+Chcete-li nakonfigurovat integraci připojení SAML virtuálního prostředí ON24 do azure ad, musíte přidat ON24 Virtual Environment SAML Connection z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat ON24 virtuální prostředí SAML připojení z galerie, postupujte následovně:**
+**Chcete-li přidat připojení SAML virtuálního prostředí ON24 z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **ON24 virtuální prostředí SAML připojení**vyberte **ON24 virtuální prostředí SAML připojení** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **PŘIPOJENÍ SAML virtuálního prostředí ON24**, z panelu výsledků vyberte **možnost PŘIPOJENÍ SAML virtuální prostředí ON24** a klepnutím na tlačítko **Přidat** aplikaci přidejte.
 
-     ![ON24 virtuální prostředí SAML připojení v seznamu výsledků](common/search-new-app.png)
+     ![Připojení SAML virtuálního prostředí V seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování s ON24 virtuální prostředí SAML připojení na základě testu uživateli **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské ON24 virtuální prostředí SAML připojení.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí připojení SAML virtuálního prostředí ON24 na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Služby Azure AD a souvisejícím uživatelem ve virtuálním prostředí ON24 SAML Connection.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s připojením ON24 virtuální prostředí SAML, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li konfigurovat a testovat jednotné přihlašování Azure AD pomocí připojení SAML virtuálního prostředí ON24, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace ON24 virtuální prostředí připojení jednotné přihlašování SAML](#configure-on24-virtual-environment-saml-connection-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele ON24 virtuální prostředí SAML připojení](#create-on24-virtual-environment-saml-connection-test-user)**  – Pokud chcete mít protějšek Britta Simon ON24 virtuální prostředí SAML připojení, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace připojení SAML pro připojení SAML virtuálního prostředí –](#configure-on24-virtual-environment-saml-connection-single-sign-on)** konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte on24 virtuální prostředí SAML připojení testovacího uživatele](#create-on24-virtual-environment-saml-connection-test-user)** – mít protějšek Britta Simon v ON24 virtuální prostředí SAML připojení, které je propojeno s reprezentaci Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s připojením ON24 virtuální prostředí SAML, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování azure ad pomocí připojení SAML virtuálního prostředí ON24, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **ON24 virtuální prostředí SAML připojení** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikace **PŘIPOJENÍ SAML virtuálního prostředí ON24** vyberte **možnost Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. V části **Základní konfigurace SAML,** Pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
 
-    ![ON24 virtuální prostředí SAML připojení domény a adresy URL jednotného přihlašování – informace](common/idp-relay.png)
+    ![ON24 Virtuální prostředí SAML Připojení domény a adresy URL jednotné přihlašovací informace](common/idp-relay.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL:
+    a. Do textového pole **Identifikátor** zadejte adresu URL:
 
-     **Adresa URL pro produkční prostředí**
+     **Adresa URL produkčního prostředí**
     
     `SAML-VSHOW.on24.com`
 
@@ -115,7 +115,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s připojením ON24 virtuáln
 
     `SAP PROD SAML-EliteAudience.on24.com` 
                 
-     **Adresa URL prostředí QA**
+     **Adresa URL prostředí qa**
     
     `SAMLQA-VSHOW.on24.com` 
 
@@ -123,9 +123,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s připojením ON24 virtuáln
 
     `SAMLQA-EliteAudience.on24.com`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL:
+    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL:
 
-     **Adresa URL pro produkční prostředí**
+     **Adresa URL produkčního prostředí**
     
     `https://federation.on24.com/sp/ACS.saml2`
 
@@ -135,7 +135,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s připojením ON24 virtuáln
 
     `https://federation.on24.com/sp/eyJ2c2lkIjoiU0FNTC1FbGl0ZUF1ZGllbmNlLm9uMjQuY29tIn0/ACS.saml2`
 
-     **Adresa URL prostředí QA**
+     **Adresa URL prostředí qa**
     
     `https://qafederation.on24.com/sp/ACS.saml2`
 
@@ -145,103 +145,103 @@ Ke konfiguraci Azure AD jednotné přihlašování s připojením ON24 virtuáln
      
     `https://qafederation.on24.com/sp/eyJ2c2lkIjoiU0FNTFFBLUVsaXRlQXVkaWVuY2Uub24yNC5jb20ifQ/ACS.saml2` 
 
-    c. Klikněte na tlačítko **nastavit další adresy URL**. 
+    c. Klepněte na **tlačítko Nastavit další adresy URL**. 
 
-    d. V **stav přenosu** textové pole, zadejte adresu URL: `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
+    d. Do textového pole **Stav přenosu** zadejte adresu URL:`https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
 
-5.  Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu, postupujte následovně:
+5.  Chcete-li aplikaci nakonfigurovat v režimu iniciovaném **službou SP,** proveďte následující krok:
 
-    ![ON24 virtuální prostředí SAML připojení domény a adresy URL jednotného přihlašování – informace](common/both-signonurl.png)
+    ![ON24 Virtuální prostředí SAML Připojení domény a adresy URL jednotné přihlašovací informace](common/both-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://vshow.on24.com/vshow/<INSTANCENAME>`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://vshow.on24.com/vshow/<INSTANCENAME>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečný stav přenosu a přihlašovací adresa URL. Kontakt [tým podpory ON24 virtuální prostředí SAML připojení klienta](https://www.on24.com/contact-us/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným stavem přenosu a přihlašovací adresou URL. Obraťte [se na tým podpory klienta připojení SAML virtuálního prostředí ON24](https://www.on24.com/contact-us/) a získejte tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+4. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavit ON24 virtuální prostředí SAML připojení** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit připojení SAML virtuálníprostředí 24** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-on24-virtual-environment-saml-connection-single-sign-on"></a>Konfigurace ON24 virtuální prostředí připojení jednotné přihlašování SAML
+### <a name="configure-on24-virtual-environment-saml-connection-single-sign-on"></a>Konfigurace připojení SAML virtuálního prostředí ON24 jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **ON24 virtuální prostředí SAML připojení** straně, je nutné odeslat na stažený **kód XML metadat federace** a odpovídající zkopírován adresy URL z webu Azure portal [ Tým podpory ON24 virtuální prostředí SAML připojení](https://www.on24.com/about-us/support/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **připojení SAML virtuálního prostředí ON24,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory připojení [SAML virtuálního prostředí ON24](https://www.on24.com/about-us/support/). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
+    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k ON24 virtuální prostředí SAML připojení.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k připojení SAML virtuální prostředí ON24.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **ON24 virtuální prostředí SAML připojení**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **ON24 Virtual Environment SAML Connection**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **ON24 virtuální prostředí SAML připojení**.
+2. V seznamu aplikací vyberte **možnost PŘIPOJENÍ SAML virtuálního prostředí ON24**.
 
-    ![Odkaz ON24 virtuální prostředí SAML připojení v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Připojení SAML virtuálního prostředí ON24 v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-on24-virtual-environment-saml-connection-test-user"></a>Vytvořit testovacího uživatele ON24 virtuální prostředí SAML připojení
+### <a name="create-on24-virtual-environment-saml-connection-test-user"></a>Vytvořit uživatele testu připojení SAML virtuálního prostředí ON24
 
-V této části vytvořte uživatele Britta Simon ON24 virtuální prostředí SAML připojení. Práce s [tým podpory ON24 virtuální prostředí SAML připojení](https://www.on24.com/about-us/support/) přidat uživatele na platformě ON24 virtuální prostředí SAML připojení. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v ON24 virtual environment SAML connection. Spolupracujte s [týmem podpory připojení SAML virtuálního prostředí ON24](https://www.on24.com/about-us/support/) a přidejte uživatele do platformy připojení SAML virtuálního prostředí ON24. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici ON24 virtuální prostředí SAML připojení na přístupovém panelu, vám by měl být automaticky přihlášeni ON24 virtuální prostředí SAML připojení u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici PŘIPOJENÍ SAML virtuální prostředí ON24 na přístupovém panelu, měli byste být automaticky přihlášeni k připojení SAML virtuální prostředí ON24, pro které nastavíte přistoupení připínací. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
-title: Kurz – vývoj C# modulu pro Windows pomocí Azure IoT Edge
-description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge C# s kódem a jak ho nasadit do zařízení se systémem Windows IoT Edge.
+title: Výuka – vývoj modulu C# pro Windows pomocí Azure IoT Edge
+description: Tento kurz ukazuje, jak vytvořit modul IoT Edge s kódem C# a nasadit ho do zařízení Windows IoT Edge.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -10,22 +10,22 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 4fa3fb17f4eace8d389738fb46267a097610f175
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76760415"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C# IoT Edge pro zařízení s Windows
+# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj modulu C# IoT Edge pro zařízení se systémem Windows
 
-Pomocí sady Visual Studio můžete C# vyvíjet kód a nasazovat ho do zařízení s Windows, na kterém běží Azure IoT Edge.
+Pomocí Visual Studia můžete vyvinout kód C# a nasadit ho do zařízení s Windows se systémem Azure IoT Edge.
 
 Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> * Pomocí C# sady Visual Studio vytvořte modul IoT Edge založený na sadě SDK.
-> * Pomocí sady Visual Studio a Docker vytvoříte image Docker a publikujete ji do svého registru.
+> * Visual Studio slouží k vytvoření modulu IoT Edge, který je založen na sadě C# SDK.
+> * Pomocí Visual Studia a Dockeru vytvořte bitovou kopii Dockeru a publikujte ji do registru.
 > * Nasadit modul do zařízení IoT Edge.
 > * Zobrazit vygenerovaná data.
 
@@ -35,43 +35,43 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 ## <a name="solution-scope"></a>Obor řešení
 
-V tomto kurzu se dozvíte, jak vyvíjet **C#** modul pomocí sady **Visual Studio 2019** a jak ho nasadit na **zařízení s Windows**. Pokud vyvíjíte moduly pro zařízení se systémem Linux, přečtěte si místo toho [vývoj C# IoT Edge modul pro zařízení se systémem Linux](tutorial-csharp-module.md) .
+Tento kurz ukazuje, jak vyvinout modul v **jazyce C#** pomocí **Visual Studia 2019** a nasadit ho do **zařízení s Windows**. Pokud vyvíjíte moduly pro linuxová zařízení, přejděte na [vývoj modulu C# IoT Edge pro zařízení s Linuxem.](tutorial-csharp-module.md)
 
-Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení C# modulů do zařízení s Windows:
+V následující tabulce můžete pochopit možnosti vývoje a nasazování modulů Jazyka C# do zařízení s Windows:
 
 | C# | Visual Studio Code | Visual Studio 2017/2019 |
 | -- | ------------------ | ------------------ |
-| **Vývoj pro Windows AMD64** | ![Vývoj C# modulů pro WinAMD64 v vs Code](./media/tutorial-c-module/green-check.png) | ![Vývoj C# modulů pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
-| **Ladění systému Windows AMD64** |   | ![Moduly C# ladění pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
+| **Windows AMD64 rozvíjet** | ![Vývoj modulů Jazyka C# pro WinAMD64 v kódu VS](./media/tutorial-c-module/green-check.png) | ![Vývoj modulů Jazyka C# pro WinAMD64 v sadě Visual Studio](./media/tutorial-c-module/green-check.png) |
+| **Ladění systému Windows AMD64** |   | ![Ladění modulů Jazyka C# pro WinAMD64 v sadě Visual Studio](./media/tutorial-c-module/green-check.png) |
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením tohoto kurzu byste měli projít předchozí kurz pro nastavení vývojového prostředí a [vytvořit modul IoT Edge pro zařízení s Windows](tutorial-develop-for-windows.md). Po dokončení tohoto kurzu už byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste měli projít předchozí kurz nastavení vývojového prostředí, [vývoj modulu IoT Edge pro zařízení se systémem Windows](tutorial-develop-for-windows.md). Po dokončení tohoto kurzu byste již měli mít následující předpoklady:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Windows, na kterém běží Azure IoT Edge](quickstart.md).
-* Registr kontejneru, například [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) nakonfigurovaný s rozšířením [nástrojů Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) .
-* [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) nakonfigurovaný pro spouštění kontejnerů Windows.
+* [Zařízení s Windows se systémem Azure IoT Edge](quickstart.md).
+* Registr kontejnerů, jako je [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) nakonfigurované s rozšířením [Azure IoT Edge Tools.](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)
+* [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) nakonfigurovaný pro spouštění kontejnerů windows.
 
 > [!TIP]
-> Pokud používáte Visual Studio 2017 (verze 15,7 nebo novější), plrease si stáhněte a nainstalujte [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro vs 2017 z webu Visual Studio Marketplace.
+> Pokud používáte Visual Studio 2017 (verze 15.7 nebo vyšší), stáhněte a nainstalujte [nástroje Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro VS 2017 z webu Visual Studio Marketplace
 
-## <a name="create-a-module-project"></a>Vytvořit projekt modulu
+## <a name="create-a-module-project"></a>Vytvoření projektu modulu
 
-Následující postup slouží k vytvoření projektu IoT Edge modulu pomocí sady Visual Studio a rozšíření Azure IoT Edge Tools. Jakmile máte vytvořenou šablonu projektu, přidejte nový kód tak, aby modul vyfiltroval zprávy na základě jejich hlášených vlastností.
+Následující kroky vytvoří projekt modulu IoT Edge pomocí Visual Studia a rozšíření Azure IoT Edge Tools. Po vytvoření šablony projektu přidejte nový kód tak, aby modul odfiltrovat zprávy na základě jejich hlášené vlastnosti.
 
 ### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Nástroje Azure IoT Edge poskytují šablony projektů pro všechny podporované jazyky IoT Edge modulů v aplikaci Visual Studio. Tyto šablony obsahují všechny soubory a kód, které potřebujete k nasazení pracovního modulu k testování IoT Edge, nebo vám poskytne výchozí bod pro přizpůsobení šablony s vlastní obchodní logikou.
+Nástroje Azure IoT Edge poskytují šablony projektů pro všechny podporované jazyky modulu IoT Edge v sadě Visual Studio. Tyto šablony mají všechny soubory a kód, které potřebujete k nasazení pracovní modul pro testování IoT Edge, nebo vám výchozí bod pro přizpůsobení šablony s vlastní obchodní logiku.
 
-1. Spusťte Visual Studio 2019 a vyberte **vytvořit nový projekt**.
+1. Spusťte Visual Studio 2019 a vyberte **Vytvořit nový projekt**.
 
-2. Vyhledejte **IoT Edge** a vyberte projekt **Azure IoT Edge (Windows amd64)** . Klikněte na **Další**.
+2. Vyhledejte **IoT Edge** a zvolte projekt **Azure IoT Edge (Windows amd64).** Klikněte na **Další**.
 
    ![Vytvoření nového projektu Azure IoT Edge](./media/tutorial-csharp-module-windows/new-project.png)
 
-3. Přejmenujte projekt a řešení na něco popisného, jako je **CSharpTutorialApp**. Kliknutím na **vytvořit** vytvořte projekt.
+3. Přejmenujte projekt a řešení na něco popisného, jako je **CSharpTutorialApp**. Chcete-li vytvořit projekt, klepněte na **tlačítko Vytvořit.**
 
    ![Konfigurace nového projektu Azure IoT Edge](./media/tutorial-csharp-module-windows/configure-project.png)
 
@@ -79,21 +79,21 @@ Nástroje Azure IoT Edge poskytují šablony projektů pro všechny podporované
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Vybrat šablonu | Vyberte  **C# modul**. |
+   | Výběr šablony | Vyberte **modul Jazyka C#**. |
    | Název projektu modulu | Dejte modulu název **CSharpModule**. |
-   | Úložiště imagí Docker | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru je předem vyplněná z hodnoty název projektu modulu. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Konečné úložiště imagí vypadá jako \<název registru\>. azurecr.io/csharpmodule. |
+   | Úložiště bitových obrázků dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněna z hodnoty názvu projektu modulu. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Konečné úložiště bitových \<obrázků\>vypadá jako název registru .azurecr.io/csharpmodule. |
 
-   ![Konfigurace projektu pro cílové zařízení, typ modulu a registr kontejnerů](./media/tutorial-csharp-module-windows/add-application-and-module.png)
+   ![Konfigurace projektu pro cílové zařízení, typ modulu a registr kontejneru](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
-5. Vyberte **Přidat** a vytvořte projekt.
+5. Chcete-li vytvořit projekt, vyberte **přidat.**
 
 ### <a name="add-your-registry-credentials"></a>Přidání přihlašovacích údajů registru
 
-Manifest nasazení sdílí přihlašovací údaje pro váš registr kontejneru s modulem runtime IoT Edge. Modul runtime tyto přihlašovací údaje potřebuje k přetažení vašich privátních imagí do zařízení IoT Edge. Použijte přihlašovací údaje z oddílu **přístupové klíče** ve službě Azure Container Registry.
+Manifest nasazení sdílí pověření pro registr kontejnerů s runtime IoT Edge. Modul runtime tyto přihlašovací údaje potřebuje k přetažení vašich privátních imagí do zařízení IoT Edge. Použijte přihlašovací údaje z části **Přístupové klíče** v registru kontejnerů Azure.
 
-1. V Průzkumníku řešení sady Visual Studio otevřete soubor **Deployment. template. JSON** .
+1. V průzkumníku řešení Visual Studio otevřete soubor **deployment.template.json.**
 
-2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Například:
+2. Najděte vlastnost **registryCredentials** v $edgeAgent požadované vlastnosti. Adresa registru by měla být automaticky vyplněna z informací, které jste zadali při vytváření projektu, a pole uživatelského jména a hesla by měla obsahovat názvy proměnných. Například:
 
    ```json
    "registryCredentials": {
@@ -105,17 +105,17 @@ Manifest nasazení sdílí přihlašovací údaje pro váš registr kontejneru s
    }
    ```
 
-3. Otevřete soubor **. env** v řešení modulu. (Ve výchozím nastavení je to ve Průzkumník řešení skryté, takže možná budete muset vybrat tlačítko **Zobrazit všechny soubory** a zobrazit ho.) Soubor. env by měl obsahovat stejné proměnné uživatelského jména a hesla, které jste viděli v souboru Deployment. template. JSON.
+3. Otevřete soubor **ENV** v modulovém řešení. (Ve výchozím nastavení je v Průzkumníku řešení skrytá, takže možná budete muset vybrat tlačítko **Zobrazit všechny soubory,** abyste ho zobrazili.) Soubor .env by měl obsahovat stejné proměnné uživatelského jména a hesla, které jste viděli v souboru deployment.template.json.
 
-4. Přidejte hodnoty **uživatelského jména** a **hesla** z Azure Container Registry.
+4. Přidejte hodnoty **Uživatelské jméno** a **heslo** z registru kontejnerů Azure.
 
-5. Uložte změny do souboru. env.
+5. Uložte změny do souboru ENV.
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spolu s výstupní frontou. Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici před jejich přesměrováním na IoT Hub. Aktualizujte modul tak, aby analyzoval data o teplotě v každé zprávě, a pošle zprávu jenom IoT Hub, pokud teplota překročí určitou prahovou hodnotu.
+Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je prostřednictvím výstupní fronty. Přidáme nějaký další kód, aby modul zpracuje zprávy na hraničním okraji před jejich předáním do ioT hubu. Aktualizujte modul tak, aby analyzoval data o teplotě v každé zprávě a zprávu odešle do služby IoT Hub pouze v případě, že teplota překročí určitou prahovou hodnotu.
 
-1. V aplikaci Visual Studio otevřete **CSharpModule** > **program.cs**.
+1. V sadě Visual Studio otevřete**Program.cs** **CSharpModule** > .
 
 2. Nahoře v oboru názvů **CSharpModule** přidejte tři příkazy **using** pro typy, které se použijí později:
 
@@ -125,13 +125,13 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
     using Newtonsoft.Json;                // For JsonConvert
     ```
 
-3. Přidejte proměnnou **temperatureThreshold** do třídy **program** za proměnnou čítače. Proměnná temperatureThreshold nastaví hodnotu, kterou musí měřená teplota překročit, aby se data odesílala do služby IoT Hub.
+3. Přidejte **proměnnou temperatureThreshold** do třídy **Program** za proměnnou čítače. Proměnná temperatureThreshold nastaví hodnotu, kterou musí naměřená teplota překročit pro data, která mají být odeslána do centra IoT.
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-4. Po deklaracích proměnných přidejte do třídy **program** třídy **MessageBody**, **Machine**a **Ambient** . Tyto třídy definují očekávané schéma textu příchozích zpráv.
+4. Přidejte třídy **MessageBody**, **Machine**a **Ambient** do třídy **Program** za deklarace proměnných. Tyto třídy definují očekávané schéma textu příchozích zpráv.
 
     ```csharp
     class MessageBody
@@ -152,9 +152,9 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
     }
     ```
 
-5. Vyhledejte metodu **init** . Tato metoda vytvoří a nakonfiguruje objekt **ModuleClient** , který umožňuje modulu připojit se k místnímu modulu Azure IoT Edge runtime pro odesílání a příjem zpráv. Kód také zaregistruje zpětné volání pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1** .
+5. Najděte metodu **Init.** Tato metoda vytvoří a nakonfiguruje objekt **ModuleClient,** který umožňuje modulu připojit se k místní modulu Azure IoT Edge runtime pro odesílání a přijímání zpráv. Kód také registruje zpětné volání pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1.**
 
-   Celý inicializační metodu nahraďte následujícím kódem:
+   Nahraďte celou metodu Init následujícím kódem:
 
    ```csharp
    static async Task Init()
@@ -179,11 +179,11 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
    }
    ```
 
-   Tato aktualizovaná metoda init pořád nastaví připojení k modulu runtime IoT Edge pomocí ModuleClient, ale také přidá nové funkce. Načte požadované vlastnosti nevláken modulu, aby získal hodnotu **temperatureThreshold** . Potom vytvoří zpětné volání, které naslouchá jakýmkoli budoucím aktualizacím požadovaných vlastností modulu. V rámci tohoto zpětného volání můžete aktualizovat prahovou hodnotu teploty v modulu, který je na dálku, a změny budou začleněny do modulu.
+   Tato aktualizovaná metoda Init stále nastavuje připojení k modulu Runtime IoT Edge s ModuleClient, ale také přidává nové funkce. Přečte požadované vlastnosti dvojčete modulu pro načtení hodnoty **temperatureThreshold.** Potom vytvoří zpětné volání, které naslouchá jakékoli budoucí aktualizace modulu dvojče požadované vlastnosti. Pomocí tohoto zpětného volání můžete vzdáleně aktualizovat prahovou hodnotu teploty v dvojčeti modulu a změny budou začleněny do modulu.
 
-   Aktualizovaná metoda init také změní existující metodu **SetInputMessageHandlerAsync** . V ukázkovém kódu se příchozí zprávy na *input1* zpracovávají pomocí funkce *PipeMessage* , ale chceme změnit, aby používala funkci *FilterMessages* , kterou vytvoříme v následujících krocích.
+   Aktualizovaná metoda Init také změní existující metodu **SetInputMessageHandlerAsync.** V ukázkovém kódu příchozí zprávy na *input1* jsou zpracovány s *PipeMessage* funkce, ale chceme změnit, že použít *FilterMessages* funkce, které vytvoříme v následujících krocích.
 
-6. Přidejte do třídy **program** novou metodu **onDesiredPropertiesUpdate** . Tato metoda přijímá aktualizace požadovaných vlastností dvojčete modulu a aktualizuje proměnnou **temperatureThreshold** na stejnou hodnotu. Všechny moduly mají vlastní dvojče, abyste mohli kód, který je spuštěný v modulu, konfigurovat přímo z cloudu.
+6. Přidejte novou metodu **onDesiredPropertiesUpdate** do třídy **Program.** Tato metoda přijímá aktualizace požadovaných vlastností dvojčete modulu a aktualizuje proměnnou **temperatureThreshold** na stejnou hodnotu. Všechny moduly mají vlastní dvojče, abyste mohli kód, který je spuštěný v modulu, konfigurovat přímo z cloudu.
 
     ```csharp
     static Task OnDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -214,7 +214,7 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
     }
     ```
 
-7. Odeberte ukázkovou metodu **PipeMessage** a nahraďte ji novou metodou **FilterMessages** . Tato metoda se volá pokaždé, když modul dostane zprávu z IoT Edge Hubu. Odfiltruje zprávy, které hlásí nižší teploty, než je prahová hodnota nastavená ve dvojčeti modulu. Do zprávy také přidá vlastnost **MessageType**, která má nastavenou hodnotu **Alert**.
+7. Odeberte ukázkovou metodu **PipeMessage** a nahraďte ji novou metodou **FilterMessages.** Tato metoda se volá pokaždé, když modul dostane zprávu z IoT Edge Hubu. Odfiltruje zprávy, které hlásí nižší teploty, než je prahová hodnota nastavená ve dvojčeti modulu. Do zprávy také přidá vlastnost **MessageType**, která má nastavenou hodnotu **Alert**.
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -273,7 +273,7 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
 
 8. Uložte soubor Program.cs.
 
-9. V řešení IoT Edge otevřete soubor **Deployment. template. JSON** . Tento soubor informuje agenta IoT Edge, který moduly mají nasadit, v tomto případě **SimulatedTemperatureSensor** a **CSharpModule**a oznamuje IoT Edgemu centru, jak směrovat zprávy mezi nimi.
+9. Otevřete soubor **deployment.template.json** v řešení IoT Edge. Tento soubor informuje agenta IoT Edge, které moduly nasadit, v tomto případě **SimulatedTemperatureSensor** a **CSharpModule**, a řekne centru IoT Edge, jak směrovat zprávy mezi nimi.
 
 10. Přidejte do manifestu nasazení dvojče modulu **CSharpModule**. Vložte následující obsah JSON do dolní části oddílu **modulesContent** za dvojče modulu **$edgeHub**:
 
@@ -285,71 +285,71 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
        }
     ```
 
-    ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-csharp-module-windows/module-twin.png)
+    ![Přidání dvojčete modulu do šablony nasazení](./media/tutorial-csharp-module-windows/module-twin.png)
 
-11. Uložte soubor Deployment. template. JSON.
+11. Uložte soubor deployment.template.json.
 
-## <a name="build-and-push-your-module"></a>Sestavení a vložení modulu
+## <a name="build-and-push-your-module"></a>Sestavte a tlačte svůj modul
 
-V předchozí části jste vytvořili řešení IoT a do modulu **CSharpModule** jste přidali kód k odfiltrování zpráv, ve kterých je hlášená teplota počítače nižší než přípustná mezní hodnota. Teď je potřeba sestavit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
+V předchozí části jste vytvořili řešení IoT a do modulu **CSharpModule** jste přidali kód k odfiltrování zpráv, ve kterých je hlášená teplota počítače nižší než přípustná mezní hodnota. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
-1. Pomocí následujícího příkazu se přihlaste k Docker na svém vývojovém počítači. Použijte uživatelské jméno, heslo a přihlašovací server ze služby Azure Container Registry. Tyto hodnoty můžete načíst z oddílu **přístupové klíče** v registru v Azure Portal.
+1. Pomocí následujícího příkazu se přihlaste k Dockeru ve vývojovém počítači. Použijte uživatelské jméno, heslo a přihlašovací server z registru kontejnerů Azure. Tyto hodnoty můžete načíst z části **Přístupové klíče** v registru na webu Azure Portal.
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Může se zobrazit upozornění zabezpečení, které doporučuje použití `--password-stdin`. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Může se zobrazit upozornění zabezpečení doporučující použití programu `--password-stdin`. Zatímco tento osvědčený postup se doporučuje pro produkční scénáře, je mimo rozsah tohoto kurzu. Další informace naleznete v odkazu na [přihlášení dockeru.](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin)
 
-2. V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem myši na název projektu, který chcete sestavit. Výchozí název je **AzureIotEdgeApp1** a vzhledem k tomu, že vytváříte modul systému Windows, musí být přípona **Windows. amd64**.
+2. V průzkumníku řešení Visual Studio klikněte pravým tlačítkem myši na název projektu, který chcete sestavit. Výchozí název je **AzureIotEdgeApp1** a vzhledem k tomu, že vytváříte modul Windows, rozšíření by mělo být **Windows.Amd64**.
 
-3. Vyberte **sestavení a moduly nabízených IoT Edge**.
+3. Vyberte **sestavení a nabízení modulů IoT Edge**.
 
-   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé spustí `docker build` k sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí `docker push` a nahrajte úložiště imagí do svého registru kontejneru.
+   Příkaz sestavení a nabízení spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config,** která obsahuje úplný manifest nasazení, sestavený z informací v šabloně nasazení a dalších souborech řešení. Za druhé `docker build` spustí k vytvoření image kontejneru na základě příslušné dockerfile pro cílovou architekturu. Potom spustí `docker push` k nabízení úložiště bitové kopie do registru kontejneru.
 
-## <a name="deploy-modules-to-device"></a>Nasadit moduly do zařízení
+## <a name="deploy-modules-to-device"></a>Nasazení modulů do zařízení
 
-K nasazení projektu modulu do zařízení IoT Edge použijte Visual Studio Cloud Explorer a rozšíření Azure IoT Edge Tools. Již máte připravený manifest nasazení pro váš scénář, soubor **Deployment. JSON** ve složce config. Teď stačí jen vybrat zařízení, na které se nasazení provede.
+Pomocí průzkumníka cloudu Visual Studio a rozšíření Azure IoT Edge Tools nasadit projekt modulu do zařízení IoT Edge. Již máte manifest nasazení připravený pro váš scénář, soubor **deployment.json** ve složce config. Teď stačí jen vybrat zařízení, na které se nasazení provede.
 
-Ujistěte se, že je zařízení IoT Edge spuštěné.
+Ujistěte se, že vaše zařízení IoT Edge je v provozu.
 
-1. V Průzkumníkovi cloudu sady Visual Studio rozbalte prostředky, abyste viděli seznam zařízení IoT.
+1. V průzkumníku cloudu Visual Studia rozbalte prostředky a podívejte se na seznam zařízení IoT.
 
-2. Klikněte pravým tlačítkem myši na název zařízení IoT Edge, pro které chcete nasazení přijmout.
+2. Klikněte pravým tlačítkem myši na název zařízení IoT Edge, které chcete přijmout nasazení.
 
-3. Vyberte **vytvořit nasazení**.
+3. Vyberte **možnost Vytvořit nasazení**.
 
-4. V Průzkumníku souborů vyberte soubor **nasazení. Windows-amd64** v konfigurační složce vašeho řešení.
+4. V průzkumníku souborů vyberte soubor **deployment.windows-amd64** v konfigurační složce vašeho řešení.
 
-5. Aktualizujte Průzkumníka cloudu, aby se zobrazily nasazené moduly uvedené v rámci vašeho zařízení.
+5. Aktualizujte průzkumníka cloudu, abyste viděli nasazené moduly uvedené pod vaším zařízením.
 
 ## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
 Po použití manifestu nasazení pro zařízení IoT Edge začne modul runtime IoT Edge na zařízení shromažďovat informace o novém nasazení a jednat podle nich. Všechny moduly spuštěné na zařízení, které nejsou zahrnuté do manifestu nasazení, se zastaví. Všechny moduly, které na zařízení chybí, se spustí.
 
-K zobrazení zpráv při jejich doručování do IoT Hub můžete použít rozšíření IoT Edge Tools.
+Pomocí rozšíření Nástroje pro edge IoT můžete zobrazit zprávy při jejich doručení do centra IoT Hub.
 
-1. V Průzkumníku cloudu sady Visual Studio vyberte název zařízení IoT Edge.
+1. V průzkumníku cloudu Visual Studia vyberte název zařízení IoT Edge.
 
-2. V seznamu **Akce** vyberte možnost **Spustit sledování integrovaného koncového bodu události**.
+2. V seznamu **Akce** vyberte **Spustit sledování předdefinovaného koncového bodu událostí**.
 
-3. Zobrazení zpráv přicházejících do IoT Hub. Doručení zpráv může chvíli trvat, protože změny, které jsme provedli v kódu CSharpModule, čekají, dokud teplota počítače nedosáhne 25 stupňů před odesláním zpráv. Přidá také **výstrahu** typu zpráva pro všechny zprávy, které dosáhnou prahové hodnoty teploty.
+3. Zobrazení zpráv přicházejících do vašeho IoT Hubu. Může chvíli trvat, než zprávy dorazí, protože změny, které jsme provedli v kódu CSharpModule, čekají, dokud teplota počítače nedosáhne 25 stupňů před odesláním zpráv. Přidá také typ zprávy **Výstraha** všechny zprávy, které dosáhnou této prahové hodnoty teploty.
 
-   ![Zobrazení zpráv přicházejících na IoT Hub](./media/tutorial-csharp-module-windows/view-d2c-message.png)
+   ![Zobrazení zpráv přicházejících do ioT hubu](./media/tutorial-csharp-module-windows/view-d2c-message.png)
 
-## <a name="edit-the-module-twin"></a>Upravit nevlákenný modul
+## <a name="edit-the-module-twin"></a>Úprava dvojčete modulu
 
-Pro nastavení prahové hodnoty teploty v 25 stupních jsme použili dvojitou CSharpModule modul. Chcete-li změnit funkčnost, aniž byste museli aktualizovat kód modulu, můžete použít vlákna modulu.
+Použili jsme dvojče modulu CSharpModule k nastavení teplotního prahu na 25 stupňů. Dvojče modulu můžete použít ke změně funkce bez nutnosti aktualizace kódu modulu.
 
-1. V aplikaci Visual Studio otevřete soubor **Deployment. Windows-amd64. JSON** . (Ne soubor Deployment. template. Pokud se v konfiguračním souboru v Průzkumníkovi řešení nezobrazuje manifest nasazení, vyberte na panelu nástrojů Průzkumníka ikonu **Zobrazit všechny soubory** .)
+1. V sadě Visual Studio otevřete soubor **deployment.windows-amd64.json.** (Není soubor deployment.template. Pokud manifest nasazení v konfiguračním souboru v průzkumníku řešení nevidíte, vyberte na panelu nástrojů průzkumníka ikonu **Zobrazit všechny soubory.)**
 
-2. Najděte CSharpModule dvojitou hodnotu a změňte hodnotu parametru **temperatureThreshold** na novou teplotu 5 stupňů na 10 stupňů vyšší než Poslední hlášená teplota.
+2. Najděte dvojče CSharpModule a změňte hodnotu parametru **temperatureThreshold** na novou teplotu o 5 až 10 stupňů vyšší než poslední hlášená teplota.
 
-3. Uložte soubor **Deployment. Windows-amd64. JSON** .
+3. Uložte soubor **deployment.windows-amd64.json.**
 
-4. Podle kroků nasazení znovu použijte aktualizovaný manifest nasazení na vaše zařízení.
+4. Podle pokynů pro nasazení znovu použít aktualizovaný manifest nasazení na vašem zařízení.
 
-5. Umožňuje monitorovat příchozí zprávy ze zařízení do cloudu. Měli byste vidět, že se zprávy zastavily, dokud se nedosáhne nové prahové hodnoty teploty.
+5. Sledujte příchozí zprávy mezi zařízeními a cloudy. Měli byste vidět zprávy zastavit, dokud není dosaženo nového prahu teploty.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -361,12 +361,12 @@ V opačném případě můžete odstranit místní konfigurace a prostředky Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili modul IoT Edge s kódem pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji vlastních modulů IoT Edge](module-development.md) nebo o [vývoji modulů pomocí sady Visual Studio](how-to-visual-studio-develop-module.md). Příklady modulů IoT Edge, včetně modulu simulované teploty, najdete v tématu [ukázky IoT Edge modulů](https://github.com/Azure/iotedge/tree/master/edge-modules).
+V tomto kurzu jste vytvořili modul IoT Edge s kódem pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete se dozvědět více o [vývoji vlastních modulů IoT Edge](module-development.md) nebo o [vývoji modulů v sadě Visual Studio](how-to-visual-studio-develop-module.md). Příklady modulů IoT Edge, včetně modulu simulované teploty, viz [ukázky modulu IoT Edge](https://github.com/Azure/iotedge/tree/master/edge-modules).
 
-V dalších kurzech můžete pokračovat a zjistit, jak vám Azure IoT Edge může pomáhat s nasazením cloudových služeb Azure pro zpracování a analýzu dat na hraničních zařízeních.
+Můžete pokračovat na další kurzy se dozvíte, jak Azure IoT Edge vám může pomoci nasadit cloudové služby Azure pro zpracování a analýzu dat na hraničních zařízeních.
 
 > [!div class="nextstepaction"]
-> [Functions](tutorial-deploy-function.md)
+> [Funkce](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [Vlastní Vision Service](tutorial-deploy-custom-vision.md)

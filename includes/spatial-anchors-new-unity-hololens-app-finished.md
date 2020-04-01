@@ -7,15 +7,15 @@ ms.topic: include
 ms.author: pmorgan
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 96439479ebb007507efdd577e963532d9cdf90d4
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67722941"
 ---
-## <a name="putting-everything-together"></a>Umístění všeho najednou
+## <a name="putting-everything-together"></a>Dát všechno dohromady
 
-Tady je způsob kompletní `AzureSpatialAnchorsScript` soubor třídy by měl vypadat, až různé prvky byly dohromady. Slouží jako odkaz k porovnání svůj vlastní soubor a odhalit, pokud máte případné rozdíly vlevo.
+Zde je, `AzureSpatialAnchorsScript` jak by měl vypadat kompletní soubor třídy, poté, co byly sestaveny všechny různé prvky. Můžete jej použít jako odkaz porovnat s vlastním souborem a na místě, pokud můžete mít nějaké rozdíly vlevo.
 
 ```csharp
 using Microsoft.Azure.SpatialAnchors;
@@ -394,9 +394,9 @@ public class AzureSpatialAnchorsScript : MonoBehaviour
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste další informace o tom, jak používat Azure prostorových kotvy v nové aplikace Unity HoloLens. Další informace o tom, jak používat Azure prostorových kotvy vztahů v nové aplikace pro Android, pokračujte k dalšímu kurzu.
+V tomto kurzu se dozvíte víc o tom, jak používat Azure Spatial Anchors v nové aplikaci Unity HoloLens. Další informace o tom, jak používat Azure Spatial Anchors v nové aplikaci pro Android, pokračujte dalším kurzem.
 
 > [!div class="nextstepaction"]
 > [Spuštění nové aplikace pro Android](/azure/spatial-anchors/tutorials/tutorial-new-android-app)

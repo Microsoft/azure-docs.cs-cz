@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterclu
 ms.date: 03/12/2020
 ms.openlocfilehash: 900eea5b7807b718274690bc34a32213bfe7ea7c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204051"
 ---
 > [!NOTE]
-> Funkce poznámkových bloků (Preview) v nástroji Studio (Classic) se vypne v dubnu nějak změnily 13, 2020. Po nějak změnily 13. dubna se odebere karta poznámkové bloky spolu s případnými uloženými poznámkami. Pokyny, jak si můžete stáhnout své poznámkové bloky, najdete v [tomto článku](../articles/machine-learning/studio/download-notebooks-data.md).
+> Funkce Notebooky (preview) ve Studiu (klasika) bude ukončena 13. dubna bude karta Poznámkové bloky odebrána spolu se všemi uloženými poznámkovými bloky. Pokyny ke stažení poznámkových bloků naleznete v [tomto článku](../articles/machine-learning/studio/download-notebooks-data.md).
       

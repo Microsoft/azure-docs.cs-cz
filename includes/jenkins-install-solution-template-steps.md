@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
 ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79200009"
 ---
 ## <a name="prerequisites"></a>Požadavky
@@ -25,7 +25,7 @@ Jenkins podporuje model, ve kterém server Jenkins deleguje práci do jednoho ne
 
 ## <a name="connect-to-jenkins"></a>Připojení k Jenkinsu
 
-Ve webovém prohlížeči přejděte na virtuální počítač (například `http://jenkins2517454.eastus.cloudapp.azure.com/`). Konzola Jenkinse není přístupná přes nezabezpečený protokol HTTP, proto se na stránce zobrazí pokyny pro zabezpečený přístup ke konzole Jenkinse z vašeho počítače pomocí tunelu SSH.
+Přejděte do virtuálního počítače `http://jenkins2517454.eastus.cloudapp.azure.com/`(například) ve webovém prohlížeči. Konzola Jenkinse není přístupná přes nezabezpečený protokol HTTP, proto se na stránce zobrazí pokyny pro zabezpečený přístup ke konzole Jenkinse z vašeho počítače pomocí tunelu SSH.
 
 ![Odemknutí Jenkinse](./media/jenkins-install-solution-template-steps/jenkins-ssh-instructions.png)
 
@@ -67,7 +67,7 @@ Vyberte kartu **Build** (Sestavení) a pak vyberte **Add build step** (Přidat k
 
 ![Použití obálky Gradle k sestavení](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-config.png) 
 
-Vyberte **Advanced** (Upřesnit) a pak zadejte `complete` do pole **Root Build script** (Kořenový skript sestavení). Vyberte **Save** (Uložit).
+Vyberte **Advanced** (Upřesnit) a pak zadejte `complete` do pole **Root Build script** (Kořenový skript sestavení). Vyberte **Uložit**.
 
 ![Nastavení upřesňujících nastavení v kroku sestavení obálky Gradle](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-advances.png) 
 

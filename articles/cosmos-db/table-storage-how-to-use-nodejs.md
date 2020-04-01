@@ -1,5 +1,5 @@
 ---
-title: Použití služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Node. js
+title: Použití azure table storage nebo rozhraní API tabulky Azure Cosmos DB z node.js
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: d04cf082f5dc7ca3ae07b60dc193c66613fa5c4f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76771082"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
@@ -68,7 +68,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
-Pokud chcete přidat připojení ke službě Azure Cosmos DB, vytvořte objekt **TableService** a zadejte název, primární klíč a koncový bod vašeho účtu. Tyto hodnoty můžete zkopírovat z části **Nastavení** > **Připojovací řetězec** na webu Azure Portal pro váš účet služby Cosmos DB. Příklad:
+Pokud chcete přidat připojení ke službě Azure Cosmos DB, vytvořte objekt **TableService** a zadejte název, primární klíč a koncový bod vašeho účtu. Tyto hodnoty můžete zkopírovat z**připojovacího řetězce** **nastavení** > na portálu Azure pro váš účet Cosmos DB. Například:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -94,7 +94,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 `result.created` má hodnotu `true`, pokud se vytvoří nová tabulka, a hodnotu `false`, pokud tabulka již existuje. `response` obsahuje informace o požadavku.
 
 ### <a name="filters"></a>Filtry
-Na operace provedené pomocí objektu **TableService** můžete použít volitelné filtrování. Operace filtrování můžou zahrnovat protokolování, automatické opakování, atd. Filtry jsou objekty, které implementují metodu s podpisem:
+Na operace provedené pomocí objektu **TableService** můžete použít volitelné filtrování. Filtrování operace mohou zahrnovat protokolování, automatické opakování, atd. Filtry jsou objekty, které implementují metodu s podpisem:
 
 ```javascript
 function handle (requestOptions, next)
@@ -198,7 +198,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Ve výchozím nastavení se při aktualizaci entity nekontroluje, jestli se aktualizovaná data dříve neupravila jiným procesem. Zajištění podpory souběžných aktualizací:
 >
 > 1. Získejte značku entity aktualizovaného objektu. Ta se vrací jako součást `response` pro všechny operace související s entitou a je možné ji načíst prostřednictvím příkazu `response['.metadata'].etag`.
-> 2. Při provádění operace aktualizace entity přidejte do nové entity dříve načtené informace o značce entity. Příklad:
+> 2. Při provádění operace aktualizace entity přidejte do nové entity dříve načtené informace o značce entity. Například:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Proveďte operaci aktualizace. Pokud se od načtení hodnoty značky entity daná entita upravila, například jinou instancí aplikace, vrátí se `error` oznamující, že nebyla splněná podmínka aktualizace zadaná v požadavku.
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 Při zkoumání objektu `continuationToken` si můžete všimnout vlastností, jako jsou `nextPartitionKey`, `nextRowKey` a `targetLocation`, které je možné použít k iteraci výsledky.
 
-K nastavení velikosti stránky můžete použít také `top` společně s `continuationToken`. 
+Můžete také `top` použít `continuationToken` spolu s nastavením velikosti stránky. 
 
 ## <a name="work-with-shared-access-signatures"></a>Práce se sdílenými přístupovými podpisy
 Sdílené přístupové podpisy (SAS) představují bezpečný způsob zajištění podrobného přístupu k tabulkám bez nutnosti zadávat název nebo klíče vašeho účtu služby Storage. SAS se často používá k zajištění omezeného přístupu k datům, jako je například povolení dotazování záznamů pro mobilní aplikaci.
@@ -394,7 +394,7 @@ var host = tableSvc.host;
 
 Všimněte si, že musíte zadat také informace o hostiteli, které se vyžadují při pokusu držitele SAS o přístup k tabulce.
 
-Klientská aplikace pak provádí operace s tabulkou pomocí SAS a metody **TableServiceWithSAS**. Následující příklad se připojí k tabulce a provede dotaz. Informace o formátu tableSAS najdete v článku [udělení omezeného přístupu k prostředkům Azure Storage pomocí článku sdílené přístupové podpisy (SAS)](../storage/common/storage-sas-overview.md) . 
+Klientská aplikace pak provádí operace s tabulkou pomocí SAS a metody **TableServiceWithSAS**. Následující příklad se připojí k tabulce a provede dotaz. Viz [Udělení omezeného přístupu k prostředkům Azure Storage pomocí článku sdílené přístupové podpisy (SAS)](../storage/common/storage-sas-overview.md) pro formát tableSAS. 
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;

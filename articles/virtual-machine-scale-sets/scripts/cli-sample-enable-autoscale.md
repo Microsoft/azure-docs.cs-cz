@@ -1,5 +1,5 @@
 ---
-title: Ukázky Azure CLI – povolení automatického škálování na základě hostitele
+title: Ukázky nastavení příkazového příkazu Azure – povolení automatického škálování založeného na hostiteli
 description: Tento skript vytvoří škálovací sadu virtuálních počítačů s Ubuntu a použije metriky hostitele k automatickému škálování s ohledem na měnící se zatížení procesoru.
 author: cynthn
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 3a0656d64e6f3a2205f184643266ba6b500acc95
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278790"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Automatické škálování škálovací sady virtuálních počítačů pomocí Azure CLI

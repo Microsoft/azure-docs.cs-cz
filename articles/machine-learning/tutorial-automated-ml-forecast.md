@@ -1,7 +1,7 @@
 ---
-title: Předpověď požadavků na sdílení kol pomocí automatizovaného experimentu ML
+title: Prognóza poptávky po sdílení jízdních kol pomocí automatizovaného experimentu ML
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí automatizovaného strojového učení v Azure Machine Learning Studiu naučit a nasazovat model prognózy poptávky.
+description: Zjistěte, jak trénovat a nasazovat model prognózy poptávky pomocí automatizovaného strojového učení ve studiu Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,220 +11,220 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 01/27/2020
 ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77088239"
 ---
-# <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>Kurz: plánování požadavků na sdílení kol pomocí automatizovaného strojového učení
+# <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>Kurz: Prognóza poptávky po sdílení jízdních kol pomocí automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto kurzu pomocí automatizovaného strojového učení nebo automatizovaného ML v Azure Machine Learning Studiu vytvoříte model prognózy časových řad, který předpovídá požadavky na pronájem pro službu sdílení kol.
+V tomto kurzu použijete automatizované strojové učení nebo automatizované ML ve studiu Azure Machine Learning k vytvoření modelu prognózy časových řad k předvídání poptávky po pronájmu pro službu sdílení jízdních kol.
 
-V tomto kurzu se naučíte, jak provádět následující úlohy:
+V tomto kurzu se dozvíte, jak provést následující úkoly:
 
 > [!div class="checklist"]
 > * Vytvořte a načtěte datovou sadu.
-> * Proveďte konfiguraci a spuštění automatizovaného experimentu ML.
-> * Prozkoumejte výsledky experimentů.
+> * Nakonfigurujte a spusťte automatizovaný experiment ML.
+> * Prozkoumejte výsledky experimentu.
 > * Nasaďte nejlepší model.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor Azure Machine Learning edice Enterprise. Pokud nemáte pracovní prostor, [Vytvořte pracovní prostor Enterprise Edition](how-to-manage-workspace.md). 
-    * Automatizované strojové učení v Azure Machine Learning Studiu je dostupné jenom pro pracovní prostory Enterprise Edition. 
-* Stažení datového souboru [Bike-No. csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv)
+* Pracovní prostor Azure Machine Learning pro enterprise edici. Pokud pracovní prostor nemáte, [vytvořte pracovní prostor enterprise edition](how-to-manage-workspace.md). 
+    * Automatizované strojové učení ve studiu Azure Machine Learning je dostupné jenom pro pracovní prostory edice Enterprise. 
+* Stáhněte si datový soubor [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv)
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Začínáme v Azure Machine Learning Studiu
+## <a name="get-started-in-azure-machine-learning-studio"></a>Začínáme ve studiu Azure Machine Learning
 
-Pro účely tohoto kurzu vytvoříte v aplikaci Azure Machine Learning Studio konsolidované rozhraní, které zahrnuje nástroje strojového učení, které slouží k provádění scénářů pro datové vědy u všech úrovní dovedností. Aplikace Studio není podporována v prohlížečích aplikace Internet Explorer.
+V tomto kurzu vytvoříte automatizovaný experiment ML spuštěný ve studiu Azure Machine Learning, což je konsolidované rozhraní, které obsahuje nástroje strojového učení k provádění scénářů datové vědy pro odborníky v oblasti datové vědy všech úrovní dovedností. Studio není v prohlížečích Internet Explorer podporováno.
 
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
+1. Přihlaste se do [studia Azure Machine Learning Studio](https://ml.azure.com).
 
-1. Vyberte své předplatné a pracovní prostor, který jste vytvořili.
+1. Vyberte předplatné a pracovní prostor, který jste vytvořili.
 
-1. Vyberte **Začínáme**.
+1. Vyberte **Možnost Začínáme**.
 
-1. V levém podokně vyberte v části **Autor** možnost **automatizovaná ml** .
+1. V levém podokně vyberte v části **Autor** možnost **Automatizovaná ml.**
 
-1. Vyberte **+ Nový Automated ml Run**. 
+1. Vyberte **možnost +Nový automatizovaný běh ML**. 
 
-## <a name="create-and-load-dataset"></a>Vytvořit a načíst datovou sadu
+## <a name="create-and-load-dataset"></a>Vytvoření a načtení datové sady
 
-Před konfigurací experimentu nahrajte datový soubor do svého pracovního prostoru ve formě Azure Machine Learning datové sady. V takovém případě vám umožní zajistit, aby vaše data byla pro váš experiment vhodně formátována.
+Než experiment nakonfigurujete, nahrajte datový soubor do pracovního prostoru ve formě datové sady Azure Machine Learning. Díky tomu můžete zajistit, že vaše data jsou formátována odpovídajícím způsobem pro váš experiment.
 
-1. Ve formuláři **Vybrat datovou sadu** vyberte z rozevíracího seznamu **+ vytvořit sadu** možnost **z místních souborů** . 
+1. Ve formuláři **Vybrat datovou sadu** vyberte z rozevíracího souboru **+Vytvořit datovou sadu** z **místních souborů.** 
 
-    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Typ datové sady by měl být výchozí pro **tabelární**, protože automatizované ML v Azure Machine Learning Studiu aktuálně podporuje jenom tabelární datové sady.
+    1. Ve formuláři **Základní informace** zadejte název datové sady a poskytněte volitelný popis. Typ datové sady by měl být ve výchozím nastavení **nastaven jako tabulkový**, protože automatizovaná ml ve studiu Azure Machine Learning studio aktuálně podporuje jenom tabulkové datové sady.
     
-    1. V levém dolním rohu vyberte **Další** .
+    1. V levém dolním rohu vyberete **další.**
 
-    1. Na formuláři **úložiště dat a výběr souboru** vyberte výchozí úložiště dat, které se automaticky nastavilo během vytváření pracovního prostoru, **workspaceblobstore (Azure Blob Storage)** . Toto je umístění úložiště, kam nahrajete datový soubor. 
+    1. Ve formuláři **Datastore a výběru souborů** vyberte výchozí úložiště dat, které bylo automaticky nastaveno během vytváření pracovního prostoru, **workspaceblobstore (Azure Blob Storage).** Toto je umístění úložiště, kam nahrajete datový soubor. 
 
     1. Vyberte **Procházet**. 
     
-    1. V místním počítači vyberte soubor **Bike-No. csv** . Jedná se o soubor, který jste stáhli jako [požadavek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv).
+    1. V místním počítači zvolte soubor **bike-no.csv.** Jedná se o soubor, který jste stáhli jako [předpoklad](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv).
 
-    1. Vyberte **Další**.
+    1. Vybrat **další**
 
-       Po dokončení nahrávání se formulář nastavení a náhled předem vyplní podle typu souboru. 
+       Po dokončení nahrávání je formulář Nastavení a náhled předem vyplněn na základě typu souboru. 
        
-    1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
+    1. Ověřte, zda je formulář **Nastavení a náhled** naplněn následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Popis| Hodnota pro kurz
+        Pole|Popis| Hodnota pro výuku
         ---|---|---
-        Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
-        Oddělovač|Jeden nebo více znaků pro určení hranice mezi&nbsp; samostatné, nezávislé oblasti v prostém textu nebo jiných datových proudech. |Tečkou
-        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
-        Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Použít hlavičky z prvního souboru
-        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádný
+        Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělený
+        Oddělovač|Jeden nebo více znaků pro určení&nbsp; hranice mezi samostatnými nezávislými oblastmi ve formátu prostého textu nebo jiných datových proudech. |Čárka
+        Kódování|Určuje, jaký bit do tabulky schématu znaků použít ke čtení datové sady.| UTF-8
+        Záhlaví sloupců| Označuje, jak bude zpracováno záhlaví datové sady, pokud existuje.| Použití záhlaví z prvního souboru
+        Přeskočit řádky | Označuje, kolik řádků, pokud existuje, je v datové sadě přeskočeno.| Žádný
 
-    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. 
+    1. Formulář **Schéma** umožňuje další konfiguraci dat pro tento experiment. 
     
-        1. V tomto příkladu můžete zvolit ignorování **neformálních** a **zaregistrovaných** sloupců. Tyto sloupce jsou rozčleněné do sloupce **CNT** , takže je proto nezahrneme.
+        1. V tomto příkladu zvolte ignorovat **příležitostné** a **registrované** sloupce. Tyto sloupce jsou rozpis sloupec **CNT,** takže je nebudeme obsahovat.
 
-        1. Také v tomto příkladu ponechte výchozí hodnoty **vlastností** a **typu**. 
+        1. Také v tomto příkladu ponechte výchozí hodnoty **vlastnosti** a **typ**. 
         
-        1. Vyberte **Další**.
+        1. Vyberte **další**.
 
-    1. Na formuláři **potvrdit podrobnosti** ověřte, že se informace shodují s dříve vyplněnými **základními informacemi** o formulářích pro informace a **nastavení a ve verzi Preview** .
+    1. Ve formuláři **Potvrdit podrobnosti** ověřte, zda se informace shodují s tím, co bylo dříve vyplněno ve formulářích **Základní informace** a Nastavení **a Náhled.**
 
-    1. Vyberte **vytvořit** a dokončete vytvoření datové sady.
+    1. Vyberte **Vytvořit,** chcete-li dokončit vytvoření datové sady.
 
     1. Jakmile se datová sada zobrazí v seznamu, vyberte ji.
 
-    1. Vyberte **Další**.
+    1. Vyberte **další**.
 
-## <a name="configure-experiment-run"></a>Konfigurace experimentového běhu
+## <a name="configure-experiment-run"></a>Konfigurovat spuštění experimentu
 
-Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, který sloupec ve vašich datech chcete předpovědět.
+Po načtení a konfiguraci dat nastavte vzdálený výpočetní cíl a vyberte sloupec v datech, který chcete předpovědět.
 
-1. Naplňte formulář pro **spuštění konfigurace** následujícím způsobem:
-    1. Zadejte název experimentu: `automl-bikeshare`
+1. Formulář **Konfigurovat spuštění** naplňte následujícím způsobem:
+    1. Zadejte název experimentu:`automl-bikeshare`
 
-    1. Jako cílový sloupec vyberte **CNT** , co chcete předpovědět. V tomto sloupci se zobrazuje celkový počet nájemné za podíl na kolo.
+    1. Vyberte **cnt** jako cílový sloupec, co chcete předpovědět. Tento sloupec udává počet celkových pronájmů podílu na kole.
 
-    1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Automatizovaná ML podporuje jenom Azure Machine Learning výpočetní výkon. 
+    1. Vyberte **Vytvořit nový výpočetní výkon** a nakonfigurujte svůj výpočetní cíl. Automatizované ML podporuje jenom azure machine learning výpočetní prostředky. 
 
-        Pole | Popis | Hodnota pro kurz
+        Pole | Popis | Hodnota pro výuku
         ----|---|---
-        Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|kolo – COMPUTE
-        Velikost&nbsp;virtuálního&nbsp;ového počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
-        Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
+        Název výpočetního výkonu |Jedinečný název, který identifikuje váš výpočetní kontext.|bike-počítat
+        Velikost&nbsp;&nbsp;virtuálního počítače| Vyberte velikost virtuálního počítače pro vaše výpočty.|Standard_DS12_V2
+        Min / Max uzly (v pokročilých nastaveních)| Chcete-li daty profilu, musíte zadat 1 nebo více uzlů.|Min uzly: 1<br>Maximální počet uzlů: 6
   
-        1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
+        1. Vyberte **Vytvořit,** chcete-li získat výpočetní cíl. 
 
-            **Dokončení této akce trvá několik minut.** 
+            **To trvá několik minut na dokončení.** 
 
-        1. Po vytvoření vyberte nový cíl služby COMPUTE z rozevíracího seznamu.
+        1. Po vytvoření vyberte nový výpočetní cíl z rozevíracího seznamu.
 
-    1. Vyberte **Další**.
+    1. Vyberte **další**.
 
-## <a name="select-task-type-and-settings"></a>Vybrat typ a nastavení úlohy
+## <a name="select-task-type-and-settings"></a>Výběr typu a nastavení úkolu
 
-Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machine Learning a nastavení konfigurace.
+Dokončete nastavení automatizovaného experimentu ML zadáním typu úlohy strojového učení a nastavení konfigurace.
 
-1. Ve formuláři **typ úlohy a nastavení** vyberte jako typ úlohy Machine Learning **prognózu časových řad** .
+1. Ve formuláři **Typ úkolu a nastavení** vyberte jako typ úlohy strojového učení **prognózy časových řad.**
 
-1. Vyberte **Datum** ve **sloupci čas** a pole **Seskupit podle sloupce** ponechte prázdné. 
+1. Jako sloupec **Čas** vyberte **datum** a ponechte **možnost Seskupit podle sloupců** prázdné. 
 
-    1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
+    1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lépe řídit úlohu školení. V opačném případě jsou výchozí hodnoty použity na základě výběru experimentu a dat.
 
   
-        Další konfigurace&nbsp;|Popis|&nbsp;hodnoty pro&nbsp;kurz
+        Další&nbsp;konfigurace|Popis|Hodnota&nbsp;&nbsp;pro výuku
         ------|---------|---
-        Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|Normalizovaný průměrný střední znak – chyba
-        Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
-        Vysvětlete nejlepší model (Preview)| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolení
-        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Extrémní náhodné stromy
-        Další nastavení prognózování| Tato nastavení vám pomůžou zlepšit přesnost modelu. <br><br> _**Horizont předpovědi**_ : délka času do budoucna, kterou chcete předpovědět <br> _**Předpověď Target prodlevy:**_ jak daleko dozadu chcete vytvořit prodlevy cílové proměnné <br> _**Cílové posuvné okno**_ : Určuje velikost posuvných oken, na které se budou generovat funkce, například *Max, min* a *Sum*. |Horizont předpovědi: 14 <br> Předpověď&nbsp;cílové&nbsp;prodlevy: none <br> Cílová&nbsp;&nbsp;okna pro průběžné navýšení velikosti&nbsp;: žádné
-        Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;úlohy školení&nbsp;čas (hodiny): 3 <br> &nbsp;prahová hodnota skóre&nbsp;metriky: žádné
-        Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>křížové ověření &nbsp;k-skládání&nbsp; <br> <br> Počet ověření: 5
-        Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální&nbsp;souběžných&nbsp;ch iterací: 6
+        Primární metrika| Metrika vyhodnocení, podle které bude algoritmus strojového učení měřen.|Normalizovaná střední kvadratická chyba kořenového adresáře
+        Automatická featurizace| Povolí předběžné zpracování. To zahrnuje automatické čištění dat, přípravu a transformaci pro generování syntetických funkcí.| Povolení
+        Vysvětlete nejlepší model (náhled)| Automaticky zobrazuje vysvětlitelnost nejlepšího modelu vytvořeného automatizovaným ml.| Povolení
+        Blokované algoritmy | Algoritmy, které chcete vyloučit z tréninkové úlohy| Extrémní náhodné stromy
+        Další nastavení prognózy| Tato nastavení pomáhají zlepšit přesnost modelu <br><br> _**Horizont prognózy:**_ doba do budoucna, kterou chcete předpovědět <br> _**Cíl prognózy zaostává:**_ jak daleko dozadu chcete vytvořit zpoždění cílové proměnné <br> _**Cílové rolovací okno**_: určuje velikost odvalovacího okna, nad kterými budou generovány prvky, jako je *max, min* a *sum*. |Horizont předpovědí: 14 <br> Prodlevy v cílové&nbsp;&nbsp;prognóze: Žádné <br> Velikost&nbsp;&nbsp;cílového klouzavého okna:&nbsp;Žádná
+        Kritérium ukončení| Pokud je splněna kritéria, je úloha školení zastavena. |Doba&nbsp;&nbsp;tréninku (hodiny): 3 <br> Prahová&nbsp;hodnota metriky:&nbsp;Žádná
+        Ověřování | Zvolte typ křížového ověření a počet testů.|Typ ověření:<br>&nbsp;k-fold&nbsp;křížové ověření <br> <br> Počet ověření: 5
+        Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální&nbsp;počet&nbsp;souběžných iterací: 6
         
-        Vyberte **Save** (Uložit).
+        Vyberte **Uložit**.
 
-## <a name="run-experiment"></a>Spusťte experiment
+## <a name="run-experiment"></a>Spustit experiment
 
-Pokud chcete svůj experiment spustit, vyberte **Dokončit**. Otevře se obrazovka s **podrobnostmi o spuštění** se **stavem spuštění** v horní části vedle čísla běhu. Tento stav se aktualizuje v průběhu experimentu.
+Chcete-li experiment spustit, vyberte **možnost Dokončit**. Otevře se obrazovka **Podrobnosti spuštění** se **stavem Spustit** v horní části vedle čísla spuštění. Tento stav se aktualizuje v průběhu experimentu.
 
 >[!IMPORTANT]
-> Příprava na Příprava spuštění experimentu trvá **10-15 minut** .
-> Po spuštění bude **pro každou iteraci trvat více než 2-3 minut**.  <br> <br>
-> V produkčním prostředí pravděpodobně nebudete chtít trochu, protože tento proces trvá čas. Během čekání doporučujeme začít zkoumat testované algoritmy na kartě **modely** , jak jsou dokončeny. 
+> Příprava trvá **10-15 minut,** než se připraví experiment.
+> Po spuštění trvá **2-3 minuty více pro každou iteraci**.  <br> <br>
+> Ve výrobě byste pravděpodobně odejít na chvíli, protože tento proces vyžaduje čas. Zatímco budete čekat, doporučujeme začít zkoumat testované algoritmy na kartě **Modely,** jakmile budou dokončeny. 
 
-##  <a name="explore-models"></a>Prozkoumat modely
+##  <a name="explore-models"></a>Prozkoumejte modely
 
-Přejděte na kartu **modely** a podívejte se na testované algoritmy (modely). Ve výchozím nastavení jsou modely seřazeny podle skóre metriky, jak jsou dokončeny. Pro účely tohoto kurzu se v horní části seznamu zobrazuje model, který vychází z nejvyšší hodnoty na základě zvolené **normalizované "průměrné chybové** metriky".
+Přejděte na kartu **Modely** a podívejte se na testované algoritmy (modely). Ve výchozím nastavení jsou modely seřazeny podle metriky skóre, jak je dokončí. Pro účely tohoto kurzu je model, který skóre nejvyšší na základě zvolené **normalizované kořenové střední kvadratální chyba metrika** je v horní části seznamu.
 
-Až budete čekat na dokončení všech modelů experimentů, vyberte **název algoritmu** dokončeného modelu a prozkoumejte jeho podrobnosti o výkonu. 
+Zatímco čekáte na dokončení všech modelů experimentu, vyberte **název algoritmu** dokončeného modelu a prozkoumejte podrobnosti o jeho výkonu. 
 
-Následující příklad prochází pomocí karet **Podrobnosti modelu** a **vizualizace** a zobrazí vlastnosti vybraného modelu, metriky a grafy výkonu. 
+Následující příklad prochází **podrobnosti modelu** a **vizualizace** karty zobrazit vlastnosti vybraného modelu, metriky a grafy výkonu. 
 
-![Podrobnosti o spuštění](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
+![Spustit podrobnosti](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
-Automatizované strojové učení v Azure Machine Learning Studiu vám umožní nasadit nejlepší model jako webovou službu v několika krocích. Nasazení je integrací modelu, takže může předpovídat nová data a identifikovat potenciální oblasti příležitostí. 
+Automatizované strojové učení ve studiu Azure Machine Learning vám umožní nasadit nejlepší model jako webovou službu v několika krocích. Nasazení je integrace modelu, takže může předpovídat nová data a identifikovat potenciální oblasti příležitostí. 
 
-Pro tento experiment nasazování do webové služby znamená, že společnost Shared na kolo má teď iterativní a škálovatelné webové řešení pro prognózování nároků na pronájem sdílené kol. 
+Pro tento experiment nasazení do webové služby znamená, že společnost pro sdílení jízdních kol má nyní iterativní a škálovatelné webové řešení pro prognózování poptávky po pronájmu sdílení jízdních kol. 
 
-Po dokončení spuštění přejděte zpět na stránku **podrobností o spuštění** a vyberte kartu **modely** .
+Po dokončení běhu přejděte zpět na stránku **Podrobnosti spustit** a vyberte kartu **Modely.**
 
-V tomto kontextu experimentu se **StackEnsemble** považuje za nejlepší model, a to na základě **normalizované střední chybové** metriky chyby.  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
+V tomto kontextu experimentu **StackEnsemble** je považován za nejlepší model, na základě **normalizované kořenové střední kvadratý chyba metriky.**  Tento model nasazujeme, ale upozorňujeme, že dokončení nasazení trvá přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
 
-1. V levém dolním rohu vyberte tlačítko **nasadit nejlepší model** .
+1. V levém dolním rohu vyberte tlačítko **Nasadit nejlepší model.**
 
-1. Nasaďte podokno **nasadit model** následujícím způsobem:
+1. Naplnit **podokno nasazení modelu** takto:
 
     Pole| Hodnota
     ----|----
-    Název nasazení| Bikeshare – nasazení
-    Popis nasazení| nasazení požadavku na sdílení kol
-    Typ výpočtu | Výběr instance služby Azure COMPUTE (ACI)
-    Povolit ověřování| Dezaktivovat. 
-    Použití vlastních prostředků nasazení| Dezaktivovat. Když se zakáže, umožní se automaticky vygenerovat výchozí soubor ovladače a soubor prostředí. 
+    Název nasazení| bikeshare-nasadit
+    Popis nasazení| nasazení poptávky po sdílení jízdních kol
+    Typ výpočtu | Výběr výpočetní instance Azure (ACI)
+    Povolení ověřování| Zakázat. 
+    Použití vlastních prostředků nasazení| Zakázat. Zakázání umožňuje automatické generování výchozího souboru ovladače (bodovacího skriptu) a souboru prostředí. 
     
-    V tomto příkladu používáme výchozí hodnoty uvedené v nabídce *Upřesnit* . 
+    V tomto příkladu použijeme výchozí hodnoty uvedené v nabídce *Upřesnit.* 
 
 1. Vyberte **Nasadit**.  
 
-    V horní části obrazovky **spuštění** se zobrazí zelená zpráva o úspěchu, že nasazení bylo úspěšně spuštěno. Průběh nasazení najdete  
-    v podokně **doporučený model** v části **stav nasazení**.
+    Zelená zpráva o úspěchu se zobrazí v horní části obrazovky **Spustit** uvedeno, že nasazení bylo úspěšně spuštěno. Pokrok v nasazení lze nalézt  
+    v podokně **Doporučený model** v části **Nasazovat stav**.
     
-Po úspěšném nasazení budete mít provozní webovou službu, která vygeneruje předpovědi. 
+Jakmile nasazení proběhne úspěšně, máte provozní webové služby pro generování předpovědi. 
 
-Pokud chcete získat další informace o tom, jak používat novou webovou službu, a testovat předpovědi pomocí integrované Azure Machine Learning podpory Power BI, přejděte k [**dalším krokům**](#next-steps) .
+Přejděte k [**dalším krokům,**](#next-steps) kde se dozvíte víc o tom, jak využít novou webovou službu, a otestujte předpovědi pomocí integrované podpory Azure Machine Learning u Power BI.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Soubory nasazení jsou větší než data a experimenty, takže se o jejich uložení budou mnohem lépe ukládat. Odstraňte pouze soubory nasazení, abyste minimalizovali náklady na váš účet, nebo pokud chcete zachovat pracovní prostor a soubory experimentů. Jinak odstraňte celou skupinu prostředků, pokud neplánujete použít žádný ze souborů.  
+Soubory nasazení jsou větší než soubory dat a experimentů, takže jejich uložení bude stát více. Odstraňte pouze soubory nasazení, abyste minimalizovali náklady na svůj účet, nebo pokud chcete zachovat pracovní prostor a soubory experimentů. V opačném případě odstraňte celou skupinu prostředků, pokud neplánujete použít žádný ze souborů.  
 
-### <a name="delete-the-deployment-instance"></a>Odstraní instanci nasazení.
+### <a name="delete-the-deployment-instance"></a>Odstranění instance nasazení
 
-Pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy a průzkum, odstraňte jenom instanci nasazení z Azure Machine Learning studia. 
+Odstraňte jenom instanci nasazení ze studia Azure Machine Learning, pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy a průzkum. 
 
-1. Přejít na [Azure Machine Learning Studio](https://ml.azure.com/). Přejděte do pracovního prostoru a vlevo pod podoknem **assety** vyberte **koncové body**. 
+1. Přejděte do [studia Azure Machine Learning studio](https://ml.azure.com/). Přejděte do pracovního prostoru a vlevo v podokně **Datové zdroje** vyberte **Koncové body**. 
 
 1. Vyberte nasazení, které chcete odstranit, a vyberte **Odstranit**. 
 
-1. Vyberte **pokračovat**.
+1. Vyberte **Pokračovat**.
 
-### <a name="delete-the-resource-group"></a>Odstranit skupinu prostředků
+### <a name="delete-the-resource-group"></a>Odstranění skupiny prostředků
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste pomocí automatizovaného ML v sadě Azure Machine Learning Studio vytvořili a nasadili model prognózy časových řad, který předpovídá požadavky na pronájem na kolo pro sdílení kol. 
+V tomto kurzu jste použili automatizované ML ve studiu Azure Machine Learning k vytvoření a nasazení modelu prognózy časových řad, který předpovídá poptávku po pronájmu sdílení jízdních kol. 
 
-Postup vytvoření Power BI podporovaného schématu pro usnadnění spotřeby nově nasazené webové služby najdete v tomto článku:
+V tomto článku najdete postup, jak vytvořit schéma podporované Power BI, které usnadní spotřebu nově nasazené webové služby:
 
 > [!div class="nextstepaction"]
-> [Využití webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Využívání webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 
 >[!NOTE]
-> Tato datová sada pro sdílení kol se pro tento kurz změnila. Tato datová sada byla zpřístupněna jako součást [soutěže Kaggle](https://www.kaggle.com/c/bike-sharing-demand/data) a byla původně dostupná prostřednictvím [kapitálového Bikeshareu](https://www.capitalbikeshare.com/system-data). Můžete ji také najít v rámci [databáze UCI Machine Learning](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset).<br><br>
-> Zdroj: Fanaee-T, hadi a gama, Joao, popis události kombinující detektory kompletu a znalosti na pozadí, pokrok v umělých Intelligencech (2013): PP. 1-15, Springer Berlín Heidelberg.
+> Tato datová sada sdílení jízdních kol byla upravena pro tento kurz. Tento datový soubor byl zpřístupněn v rámci [soutěže Vaggle](https://www.kaggle.com/c/bike-sharing-demand/data) a byl původně k dispozici prostřednictvím [Capital Bikeshare](https://www.capitalbikeshare.com/system-data). Lze jej také nalézt v [databázi Strojového učení UCI](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset).<br><br>
+> Zdroj: Fanaee-T, Hadi a Gama, Joao, Event labeling kombinující detektory souborů a znalosti pozadí, Pokrok v umělé inteligenci (2013): pp. 1-15, Springer Berlin Heidelberg.
