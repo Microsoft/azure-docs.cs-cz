@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444620"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421328"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup ke službě Azure Cosmos DB z virtuálních sítí
 
@@ -50,7 +50,7 @@ Autorizace ověří oprávnění pro akci prostředku virtuální sítě i v př
 Přístup mají jenom virtuální síť a jejich podsítě přidané k účtu Azure Cosmos. Jejich partnerské virtuální sítě nemají přístup k účtu, dokud se k účtu nepřidají podsítě v partnerských virtuálních sítích.
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Jaký je maximální počet podsítí povolených pro přístup k jednomu účtu Cosmos? 
-V současné době můžete mít maximálně 64 podsítí povolených pro účet Azure Cosmos.
+V současné době můžete mít maximálně 256 podsítí povolených pro účet Azure Cosmos.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Mohu povolit přístup z VPN a Express Route? 
 Pro přístup k účtu Azure Cosmos přes express trasy z místních, budete muset povolit partnerský vztah Microsoftu. Jakmile vložíte ip bránu firewall nebo pravidla přístupu k virtuální síti, můžete přidat veřejné IP adresy používané pro partnerský vztah Microsoftu na ip firewall účtu Azure Cosmos, abyste místním službám povolili přístup k účtu Azure Cosmos. 

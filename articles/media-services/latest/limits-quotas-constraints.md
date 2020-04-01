@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514c1466bc1a686adfc3e07e1f19bd566e979dc1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888423"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420879"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení ve službě Azure Media Services v3
 
@@ -26,10 +26,10 @@ Tento článek popisuje kvóty a omezení ve službě Azure Media Services v3.
 | --- | --- | 
 | Prostředky na účet Azure Media Services | 1 000 000|
 | Filtry dynamických manifestů|100|
-| JobInputs na úlohu | 50 (pevná)|
-| JobOutputs na úlohu | 20 (pevná) |
-| Transformoutputs v transformaci | 20 (pevná) |
-| Soubory na JobInput|10 (pevná)|
+| Vstupy úloh na úlohu | 50 (pevná)|
+| Výstupy úloh na úlohu | 20 (pevná) |
+| Transformace výstupů v transformaci | 20 (pevná) |
+| Soubory na vstup úlohy|10 (pevná)|
 | Velikost souboru| V některých případech je maximální velikost souboru podporovaná pro zpracování ve službě Media Services omezena. <sup>(1)</sup> |
 | Úlohy na účet mediálních služeb | 500 000 <sup>(2)</sup> (pevná)|
 | Živé události na účet Media Services |5|

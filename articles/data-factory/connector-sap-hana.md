@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265880"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421114"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat ze SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
@@ -188,7 +188,7 @@ Chcete-li kopírovat data ze systému SAP HANA, jsou v části **zdroje** aktivi
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavena na: **SapHanaSource.** | Ano |
 | query | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Ano |
-| partitionOptions | Určuje možnosti dělení dat používané k ingestování dat ze systému SAP HANA. Další informace o [paralelní kopii z SAP HANA](#parallel-copy-from-sap-hana) části.<br>Povolit hodnoty jsou: **None** (výchozí), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Další informace o [paralelní kopii z SAP HANA](#parallel-copy-from-sap-hana) části. `PhysicalPartitionsOfTable`lze použít pouze při kopírování dat z tabulky, ale nikoli při dotazování. <br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně načíst data z SAP HANA je řízen [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavení na aktivitu kopírování. | False |
+| partitionOptions | Určuje možnosti dělení dat používané k ingestování dat ze systému SAP HANA. Další informace o [paralelní kopii z SAP HANA](#parallel-copy-from-sap-hana) části.<br>Povolit hodnoty jsou: **None** (výchozí), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Další informace o [paralelní kopii z SAP HANA](#parallel-copy-from-sap-hana) části. `PhysicalPartitionsOfTable`lze použít pouze při kopírování dat z tabulky, ale nikoli při dotazování. <br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně načíst data z SAP HANA je řízen [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavení na aktivitu kopírování. | False |
 | partitionSettings | Zadejte skupinu nastavení pro dělení dat.<br>Použít, pokud `SapHanaDynamicRange`je možnost oddílu . | False |
 | partitionColumnName | Zadejte název zdrojového sloupce, který bude oddíl používat pro paralelní kopírování. Pokud není zadán, index nebo primární klíč tabulky je automaticky rozpoznán a použit jako sloupec oddílu.<br>Použít, pokud je `SapHanaDynamicRange`možnost oddílu . Pokud použijete dotaz k načtení `?AdfHanaDynamicRangePartitionCondition` zdrojových dat, zavěste do klauzule WHERE. Viz příklad v paralelní kopírování z části [SAP HANA.](#parallel-copy-from-sap-hana) | Ano, `SapHanaDynamicRange` při použití oddílu. |
 | packetSize | Určuje velikost síťového paketu (v kilobajtech), aby se data rozdělila na více bloků. Pokud máte velké množství dat ke kopírování, zvýšení velikosti paketu může zvýšit rychlost čtení z SAP HANA ve většině případů. Při úpravě velikosti paketu se doporučuje testování výkonu. | Ne.<br>Výchozí hodnota je 2048 (2 MB). |
@@ -233,7 +233,7 @@ Konektor SAP HANA data poskytuje vestavěné dělení dat pro paralelní kopíro
 
 ![Snímek obrazovky s možnostmi oddílu](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-Když povolíte rozdělenou kopii, Data Factory spustí paralelní dotazy proti zdroji SAP HANA k načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance.md#parallel-copy) řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z vašeho SAP HANA.
+Když povolíte rozdělenou kopii, Data Factory spustí paralelní dotazy proti zdroji SAP HANA k načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z vašeho SAP HANA.
 
 Doporučujese povolit paralelní kopírování s dělení dat zejména při ingestování velké množství dat z vašeho SAP HANA. Níže jsou navrženy konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech se doporučuje zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
 

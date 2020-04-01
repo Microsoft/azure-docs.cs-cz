@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206261"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435439"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Pokročilá ochrana před hrozbami s Azure Security Center
 
@@ -62,7 +62,7 @@ Pokud chcete přejít na servery do Centra zabezpečení, klikněte na **Přejí
 1. V oblasti **Registrace** vyberte nebo vytvořte pracovní prostor, do kterého chcete data uložit. <br>
 2. Pokud nevidíte všechny pracovní prostory, může to být kvůli nedostatku oprávnění, ujistěte se, že váš pracovní prostor je nastavený na úroveň Azure Security Standard. Další informace naleznete v [tématu Upgrade na úroveň Standard centra zabezpečení, kde najdete rozšířené zabezpečení](security-center-pricing.md).
     
-3. Výběrem **možnosti Přidat servery** zobrazíte pokyny k instalaci agenta sledování společnosti Microsoft. 
+3. Výběrem **možnosti Přidat servery** zobrazíte pokyny k instalaci agenta Analýzy protokolů. 
 
 4. Po zapnutí můžete monitorovat počítače v části **Výpočetní výkon a aplikace**.
 

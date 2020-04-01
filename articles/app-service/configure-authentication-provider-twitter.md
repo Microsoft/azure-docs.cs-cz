@@ -1,22 +1,22 @@
 ---
 title: Konfigurace ověřování na Twitteru
-description: Přečtěte si, jak nakonfigurovat ověřování na Twitteru jako poskytovatele identity pro vaši aplikaci App Service.
+description: Přečtěte si, jak nakonfigurovat ověřování na Twitteru jako poskytovatele identity pro vaši aplikaci App Service nebo Azure Functions.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
 ms.date: 02/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 3f85f30e0a64b6e39b905fc05503a445aa5876ba
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78207131"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438000"
 ---
-# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Konfigurace aplikace App Service tak, aby používala přihlášení na Twitteru
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používala přihlášení na Twitteru
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Tento článek ukazuje, jak nakonfigurovat službu Azure App Service tak, aby používala Twitter jako poskytovatele ověřování.
+Tento článek ukazuje, jak nakonfigurovat Azure App Service nebo Azure Functions pro použití Twitter jako poskytovatele ověřování.
 
 Chcete-li dokončit postup v tomto článku, potřebujete účet Twitter, který má ověřenou e-mailovou adresu a telefonní číslo. Chcete-li vytvořit nový účet twitter, přejděte na [twitter.com].
 
@@ -69,5 +69,5 @@ Nyní jste připraveni používat Twitter pro ověřování ve vaší aplikaci.
 
 [Twitter Vývojáři]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[Portál Azure]: https://portal.azure.com/
+[portál Azure]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

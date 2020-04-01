@@ -3,12 +3,12 @@ title: Zálohování souborů a složek – běžné otázky
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273420"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421307"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné otázky týkající se zálohování souborů a složek
 
@@ -57,6 +57,10 @@ Záložní data jsou odesílána do datového centra úložiště, ve kterém je
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>Podporuje agent MARS odstranění duplicit systému Windows Server 2012?
 
 Ano. Agent MARS převede data deduplikovaných deduplikovaných na normální data při přípravě operace zálohování. Poté optimalizuje data pro zálohování, šifruje data a poté odešle šifrovaná data do úložiště.
+
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>Potřebuji oprávnění správce k instalaci a konfiguraci agenta MARS?
+
+Ano, instalace agenta MARS a konfigurace záloh pomocí konzoly MARS vyžadují, aby byl uživatel místním správcem chráněného serveru.
 
 ## <a name="manage-backups"></a>Správa záloh
 
@@ -153,7 +157,7 @@ Ano, možnost **Změnit vlastnosti** v agentovi MARS můžete upravit šířku p
 
 ## <a name="restore"></a>Obnovení
 
-### <a name="manage"></a>Správa
+### <a name="manage"></a>Spravovat
 
 **Mohu se zotavit, když zapomenu přístupové heslo?**
 Agent Azure Backup vyžaduje přístupové heslo (které jste zadali při registraci) k dešifrování zálohovaných dat během obnovení. Projděte si níže uvedené scénáře, abyste pochopili možnosti zpracování ztracené přístupové fráze:

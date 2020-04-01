@@ -5,31 +5,49 @@ author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/27/2018
+ms.custom: mvc,subject-armqs
+ms.date: 03/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 4430a73f7b46a31847322e65c0aa3c95ebd385ca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 89d82a140a55c9409ff0cc2dbf30e884a7431ca6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76270159"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411421"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů s Windows pomocí šablony Azure
 
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí šablony Azure Resource Manageru.
 
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Požadavky
 
+Žádné.
 
-## <a name="define-a-scale-set-in-a-template"></a>Definice škálovací sady v šabloně
-Šablony Azure Resource Manageru umožňují nasazení skupin souvisejících prostředků. Šablony se píší ve formátu JavaScript Object Notation (JSON) a definují celé prostředí infrastruktury Azure pro vaši aplikaci. V jediné šabloně můžete vytvořit škálovací sadu virtuálních počítačů, nainstalovat aplikace a nakonfigurovat pravidla automatického škálování. Díky použití proměnných a parametrů se může tato šablona použít opakovaně k aktualizaci stávajících nebo vytvoření dalších škálovacích sad. Šablony můžete nasadit prostřednictvím webu Azure Portal, Azure CLI nebo Azure PowerShellu nebo z kanálů kontinuální integrace / průběžného doručování (CI/CD).
+## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
-Další informace o šablonách najdete v [tématu Přehled Správce prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process). Syntaxe a vlastnosti JSON najdete v tématu [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) odkaz na šablonu.
+Šablony Azure Resource Manageru umožňují nasazení skupin souvisejících prostředků. V jediné šabloně můžete vytvořit škálovací sadu virtuálních počítačů, nainstalovat aplikace a nakonfigurovat pravidla automatického škálování. Díky použití proměnných a parametrů se může tato šablona použít opakovaně k aktualizaci stávajících nebo vytvoření dalších škálovacích sad. Šablony můžete nasadit prostřednictvím portálu Azure, Azure CLI, Azure PowerShellu nebo z kanálů průběžné integrace / průběžného doručování (CI/CD).
 
-Šablona definuje konfiguraci pro každý typ prostředků. Typ prostředku škálovací sady virtuálních počítačů je podobný samostatnému virtuálnímu počítači. Hlavní části typu prostředku škálovací sady virtuálních počítačů jsou následující:
+### <a name="review-the-template"></a>Kontrola šablony
+
+Šablona použitá v tomto rychlém startu je ze [šablon Azure QuickStart](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/).
+
+:::code language="json" source="~/quickstart-templates/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json" range="1-397" highlight="236-325":::
+
+Tyto prostředky jsou definovány v těchto šablonách:
+
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/publicIPAdresy**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
+- [**Microsoft.Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
+
+#### <a name="define-a-scale-set"></a>Definice škálovací sady
+
+Zvýrazněná část je definice prostředku škálovací sady. Pokud chcete vytvořit škálovací sadu pomocí šablony, nadefinujete odpovídající prostředky. Hlavní části typu prostředku škálovací sady virtuálních počítačů jsou následující:
 
 | Vlastnost                     | Popis vlastnosti                                  | Příklad hodnoty v šabloně                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -44,49 +62,10 @@ Další informace o šablonách najdete v [tématu Přehled Správce prostředk�
 | osProfile.adminUsername      | Uživatelské jméno pro všechny instance virtuálních počítačů                        | azureuser                                 |
 | osProfile.adminPassword      | Heslo pro všechny instance virtuálních počítačů                        | P@ssw0rd!                                 |
 
- Následující příklad ukazuje jádro definice prostředku škálovací sady. Pokud chcete šablonu škálovací sady upravit, můžete změnit velikost virtuálního počítače nebo počáteční kapacitu nebo použít jinou platformu nebo vlastní image.
+Chcete-li přizpůsobit šablonu škálovací sady, můžete změnit velikost virtuálního počítače nebo počáteční kapacitu. Další možností je použít jinou platformu nebo vlastní bitovou kopii.
 
-```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US",
-  "apiVersion": "2017-12-01",
-  "sku": {
-    "name": "Standard_A1",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-      "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "MicrosoftWindowsServer",
-          "offer": "WindowsServer",
-          "sku": "2016-Datacenter",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
-```
+#### <a name="add-a-sample-application"></a>Přidání ukázkové aplikace
 
- Pro zkrácení ukázky není zobrazená konfigurace virtuální síťové karty. Další komponenty, například nástroj pro vyrovnávání zatížení, se také nezobrazují. Kompletní šablonu škálovací sady najdete [na konci tohoto článku](#deploy-the-template).
-
-
-## <a name="add-a-sample-application"></a>Přidání ukázkové aplikace
 Pokud chcete svou škálovací sadu otestovat, nainstalujte základní webovou aplikaci. Po nasazení škálovací sady můžou rozšíření virtuálního počítače zajistit konfiguraci po nasazení a úlohy automatizace, jako je instalace aplikace. Skripty si můžete stáhnout z úložiště Azure nebo z GitHubu, případně je za běhu rozšíření najdete na webu Azure Portal. Pokud chcete pro svou škálovací sadu použít rozšíření, do předchozího příkladu prostředku přidáte část *extensionProfile*. Profil rozšíření obvykle definuje následující vlastnosti:
 
 - Typ rozšíření
@@ -95,44 +74,17 @@ Pokud chcete svou škálovací sadu otestovat, nainstalujte základní webovou a
 - Umístění konfiguračních nebo instalačních skriptů
 - Příkazy, které se mají spustit na instancích virtuálních počítačů
 
-Ukázková šablona [Aplikace ASP.NET ve Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) používá rozšíření PowerShell DSC k instalaci aplikace ASP.NET MVC, která spouští službu IIS. 
+Šablona používá rozšíření PowerShell DSC k instalaci aplikace ASP.NET MVC, která běží ve službě IIS.
 
 Instalační skript se stáhne z GitHubu, jak je definováno ve vlastnosti *url*. Rozšíření pak spustí funkci *InstallIIS* ze skriptu *IISInstall.ps1*, jak je definováno ve vlastnostech *function* a *script*. Samotná aplikace ASP.NET je zadána jako balíček Nasazení webu, který se také stáhne z GitHubu, jak je definováno ve vlastnosti *WebDeployPackagePath*:
 
-```json
-"extensionProfile": {
-  "extensions": [
-    {
-      "name": "Microsoft.Powershell.DSC",
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.9",
-        "autoUpgradeMinorVersion": true,
-        "forceUpdateTag": "1.0",
-        "settings": {
-          "configuration": {
-            "url": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/DSC/IISInstall.ps1.zip",
-            "script": "IISInstall.ps1",
-            "function": "InstallIIS"
-          },
-          "configurationArguments": {
-            "nodeName": "localhost",
-            "WebDeployPackagePath": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/WebDeploy/DefaultASPWebApp.v1.0.zip"
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
 ## <a name="deploy-the-template"></a>Nasazení šablony
-Šablonu [Aplikace ASP.NET MVC ve Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) můžete nasadit pomocí následujícího tlačítka **Nasadit do Azure**. Toto tlačítko otevře Azure Portal, načte kompletní šablonu a zobrazí výzvu k zadání několika parametrů, jako jsou název škálovací sady, počet instancí a přihlašovací údaje správce.
+
+Šablonu můžete nasadit tak, že vyberete tlačítko **Nasadit do Azure.** Toto tlačítko otevře Azure Portal, načte kompletní šablonu a zobrazí výzvu k zadání několika parametrů, jako jsou název škálovací sady, počet instancí a přihlašovací údaje správce.
 
 [![Nasazení šablony do Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
-Azure PowerShell můžete taky použít k instalaci ASP.NET aplikace v systému Windows s [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) takto:
+Šablonu Správce prostředků můžete nasadit taky pomocí Azure PowerShellu:
 
 ```azurepowershell-interactive
 # Create a resource group
@@ -152,8 +104,8 @@ Update-AzVmss `
 
 Do zobrazených výzev zadejte název škálovací sady a přihlašovací údaje správce pro instance virtuálních počítačů. Vytvoření škálovací sady a použití rozšíření ke konfiguraci aplikace může trvat 10 až 15 minut.
 
+## <a name="test-the-deployment"></a>Otestování nasazení
 
-## <a name="test-your-scale-set"></a>Test škálovací sady
 Pokud chcete vidět svou škálovací sadu v akci, přejděte ve webovém prohlížeči na ukázkovou webovou aplikaci. Získejte veřejnou IP adresu vašeho vykladače zatížení pomocí [aplikace Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) následujícím způsobem:
 
 ```azurepowershell-interactive
@@ -164,16 +116,16 @@ Zadejte veřejnou IP adresu nástrojpro vyrovnávání zatížení do webového 
 
 ![Spuštění webu služby IIS](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Pokud již není potřeba, můžete použít [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) odebrat skupinu prostředků, škálovat sadu. Parametr `-Force` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz. Parametr `-AsJob` vrátí řízení na příkazový řádek bez čekání na dokončení operace.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
-
 ## <a name="next-steps"></a>Další kroky
+
 V tomto rychlém startu jste pomocí šablony Azure vytvořili škálovací sadu s Windows a pomocí rozšíření PowerShell DSC jste na instance virtuálních počítačů nainstalovali základní aplikaci ASP.NET. Další informace najdete v kurzu věnovaném vytváření a správě škálovacích sad virtuálních počítačů Azure.
 
 > [!div class="nextstepaction"]

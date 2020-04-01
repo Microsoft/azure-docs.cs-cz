@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275045"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397310"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Zobrazení a načtení událostí protokolu aktivit Azure
 
@@ -168,35 +168,6 @@ Získejte protokoly aktivit bez filtru nebo vyberte:
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
-
-
-## <a name="activity-logs-analytics-monitoring-solution"></a>Řešení monitorování protokolů aktivit Analytics
-Řešení monitorování Azure Log Analytics obsahuje více dotazů protokolu a zobrazení pro analýzu záznamů protokolu aktivit v pracovním prostoru Log Analytics.
-
-### <a name="prerequisites"></a>Požadavky
-Je nutné vytvořit diagnostické nastavení pro odeslání protokolu aktivit pro vaše předplatné do pracovního prostoru Analýzy protokolů. Viz [Shromažďování protokolů platformy Azure v pracovním prostoru Log Analytics v Azure Monitoru](resource-logs-collect-workspace.md).
-
-### <a name="install-the-solution"></a>Instalace řešení
-Postup použijte v [části Instalace monitorovacího řešení](../insights/solutions.md#install-a-monitoring-solution) k instalaci řešení Activity Log **Analytics.** Není vyžadována žádná další konfigurace.
-
-### <a name="use-the-solution"></a>Použijte řešení
-Kliknutím na **Protokoly** v horní části stránky **Protokol aktivit** otevřete řešení [monitorování analýzy protokolů aktivit](activity-log-collect.md) pro předplatné. Nebo získejte přístup ke všem řešením monitorování v nabídce **Monitorování** předplatného na webu Azure Portal. V části **Přehledy** vyberte **Další** a otevřete stránku **Přehled** s dlaždicemi řešení. Dlaždice **Protokoly aktivit Azure** zobrazuje počet záznamů **AzureActivity** ve vašem pracovním prostoru.
-
-![Dlaždice Protokoly aktivit Azure](media/collect-activity-logs/azure-activity-logs-tile.png)
-
-
-Kliknutím na dlaždici **Protokoly aktivit Azure** otevřete zobrazení **protokolů aktivit Azure.** Zobrazení obsahuje vizualizační části v následující tabulce. Každá část obsahuje až 10 položek odpovídajících kritériím těchto dílů pro zadaný časový rozsah. Dotaz protokolu, který vrátí všechny odpovídající záznamy, můžete spustit kliknutím na **zobrazit vše** v dolní části dílu.
-
-![Řídicí panel Protokoly aktivit Azure](media/collect-activity-logs/activity-log-dash.png)
-
-| Vizualizační část | Popis |
-| --- | --- |
-| Položky protokolu aktivit Azure | Zobrazuje pruhový graf celkových součtů záznamů nejvyšších záznamů protokolu aktivit Azure pro vybrané období a seznam 10 hlavních volajících aktivit. Klepnutím na pruhový graf spusťte hledání protokolu pro aplikaci `AzureActivity`. Klepnutím na položku volajícího spustíte hledání protokolu vracející všechny položky protokolu aktivit pro tuto položku. |
-| Protokoly aktivit podle stavu | Zobrazuje prstencový graf pro stav protokolu aktivit Azure pro vybrané období a seznam deseti nejvyšších záznamů o stavu. Klepnutím na graf spusťte `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`dotaz protokolu pro aplikaci . Klepnutím na položku stavu spustíte hledání protokolu vracející všechny položky protokolu aktivit pro tento záznam stavu. |
-| Protokoly aktivit podle zdroje | Zobrazuje celkový počet zdrojů pomocí protokolů aktivit a uvádí prvních deset zdrojů s počtem záznamů pro každý zdroj. Kliknutím na celkovou oblast spusťte hledání protokolu `AzureActivity | summarize AggregatedValue = count() by Resource`, které zobrazuje všechny prostředky Azure, které jsou k dispozici pro řešení. Klepnutím na prostředek spustíte dotaz protokolu, který vrátí všechny záznamy aktivit pro tento prostředek. |
-| Protokoly aktivit podle zprostředkovatele prostředků | Zobrazuje celkový počet poskytovatelů prostředků, kteří vytvářejí protokoly aktivit, a uvádí prvních deset. Kliknutím na celkovou oblast spusťte dotaz protokolu pro `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`aplikaci , která zobrazuje všechny poskytovatele prostředků Azure. Klepnutím na zprostředkovatele prostředků spusťte dotaz protokolu vracející všechny záznamy aktivit zprostředkovatele. |
-
-
 
 
 ## <a name="next-steps"></a>Další kroky

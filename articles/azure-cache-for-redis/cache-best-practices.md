@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 71056fd04069b861b37a595b1a4f2a8bba4a01ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75689979"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478604"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Osvědčené postupy pro Azure Cache for Redis 
 Dodržováním těchto doporučených postupů můžete maximalizovat výkon a nákladově efektivní využití instance Azure Cache for Redis.
@@ -67,7 +67,7 @@ Bohužel, neexistuje snadná odpověď.  Každá aplikace se musí rozhodnout, j
 Pokud chcete otestovat, jak váš kód funguje v chybových podmínkách, zvažte použití [funkce Restartovat](cache-administration.md#reboot). Restartování umožňuje zjistit, jak spojení blips vliv na vaši aplikaci.
 
 ## <a name="performance-testing"></a>Testování výkonu
- * **Začněte `redis-benchmark.exe` pomocí** získat pocit pro možné propustnost/latence před psaním vlastní perf testy.  Redis-benchmark dokumentace lze [nalézt zde](https://redis.io/topics/benchmarks).  Všimněte si, že redis-benchmark nepodporuje SSL, takže budete muset [povolit port non-SSL prostřednictvím portálu](cache-configure.md#access-ports) před spuštěním testu.  [Windows kompatibilní verze redis-benchmark.exe lze nalézt zde](https://github.com/MSOpenTech/redis/releases)
+ * **Začněte `redis-benchmark.exe` pomocí** získat pocit pro možné propustnost/latence před psaním vlastní perf testy.  Redis-benchmark dokumentace lze [nalézt zde](https://redis.io/topics/benchmarks).  Všimněte si, že redis-benchmark nepodporuje TLS, takže budete muset [povolit port non-TLS prostřednictvím portálu](cache-configure.md#access-ports) před spuštěním testu.  [Windows kompatibilní verze redis-benchmark.exe lze nalézt zde](https://github.com/MSOpenTech/redis/releases)
  * Virtuální počítač klienta používaný pro testování by měl být **ve stejné oblasti** jako instance mezipaměti Redis.
  * **Doporučujeme používat dv2 VM Series** pro vašeho klienta, protože mají lepší hardware a poskytne nejlepší výsledky.
  * Ujistěte se, že klientský virtuální počítač, který používáte, má **alespoň tolik výpočetních prostředků a šířky pásma* jako testovaná mezipaměť. 

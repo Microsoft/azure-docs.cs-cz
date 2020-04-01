@@ -1,31 +1,31 @@
 ---
-title: Škálování Service Fabric clusteru v Azure
-description: V tomto kurzu se dozvíte, jak škálovat Cluster Service Fabric v Azure na úrovni a jak vyčistit prostředky zbylé.
+title: Škálování clusteru Service Fabric v Azure
+description: V tomto kurzu se dozvíte, jak škálovat cluster Service Fabric v Azure ven a dovnitř a jak vyčistit zbývající prostředky.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251801"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
-Tento kurz je třetí částí série, kde se dozvíte, jak škálovat stávající cluster na úrovni a v nástroji. Po dokončení budete vědět, jak škálovat cluster a jak vyčistit všechny zbylé prostředky.  Další informace o škálování clusteru běžícího v Azure najdete v tématu [škálování Service Fabric clusterů](service-fabric-cluster-scaling.md).
+Tento kurz je třetí část řady a ukazuje, jak škálovat stávající cluster ven a dovnitř. Po dokončení budete vědět, jak škálovat cluster a jak vyčistit všechny zbylé prostředky.  Další informace o škálování clusteru spuštěného v Azure najdou [nawebu, který načte škálování service fabric clusterů](service-fabric-cluster-scaling.md).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidávání a odebírání uzlů (horizontální navýšení kapacity a horizontální navýšení kapacity)
-> * Přidávání a odebírání typů uzlů (horizontální navýšení kapacity a horizontální navýšení kapacity)
-> * Zvýšení prostředků uzlu (horizontální navýšení kapacity)
+> * Přidání a odebrání uzlů (horizontální navýšení kapacity a škálování v)
+> * Přidání a odebrání typů uzlů (horizontální navýšení kapacity a škálování v)
+> * Zvýšení prostředků uzlu (škálování nahoru)
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
-> * [Monitorování clusteru](service-fabric-tutorial-monitor-cluster.md)
+> * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
+> * [Sledování clusteru](service-fabric-tutorial-monitor-cluster.md)
 > * Horizontální snížení nebo navýšení kapacity clusteru
 > * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
 > * [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md)
@@ -33,81 +33,81 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli).
-* Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo [Azure CLI](/cli/azure/install-azure-cli).
+* Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
 
-## <a name="important-considerations-and-guidelines"></a>Důležité informace a pokyny
+## <a name="important-considerations-and-guidelines"></a>Důležité aspekty a pokyny
 
-Úlohy aplikací se v průběhu času mění, takže stávající služby vyžadují více (nebo méně) prostředků?  [Přidáním nebo odebráním uzlů](#add-nodes-to-or-remove-nodes-from-a-node-type) z typu uzlu můžete zvýšit nebo snížit prostředky clusteru.
+Úlohy aplikací se v průběhu času mění, potřebují vaše stávající služby více (nebo méně) prostředků?  [Přidáním nebo odebráním uzlů](#add-nodes-to-or-remove-nodes-from-a-node-type) z typu uzlu zvýšíte nebo snížíte prostředky clusteru.
 
-Potřebujete do clusteru přidat víc než 100 uzlů?  Jeden nebo více než jedna sada uzlů typu Service Fabric nebo škálování nemůže obsahovat více než 100 uzlů/virtuálních počítačů.  Chcete-li škálovat cluster nad rámec 100 uzlů, [přidejte další typy uzlů](#add-nodes-to-or-remove-nodes-from-a-node-type).
+Potřebujete do clusteru přidat více než 100 uzlů?  Jeden typ nebo škálovací sada uzlu Service Fabric nesmí obsahovat více než 100 uzlů/virtuálních mích.  Chcete-li škálovat cluster nad 100 uzlů, [přidejte další typy uzlů](#add-nodes-to-or-remove-nodes-from-a-node-type).
 
-Má vaše aplikace více služeb a některé z nich musí být veřejné nebo internetové?  Typické aplikace obsahují front-endové službu brány, která přijímá vstup od klienta a jednu nebo více back-endové služby, které komunikují s front-end službami. V takovém případě doporučujeme přidat do clusteru [alespoň dva typy uzlů](#add-nodes-to-or-remove-nodes-from-a-node-type) .  
+Má vaše aplikace více služeb a musí být kterákoli z nich veřejná nebo internetová?  Typické aplikace obsahují službu front-endbrány, která přijímá vstup y od klienta a jednu nebo více back-endových služeb, které komunikují s front-endovými službami. V takovém případě doporučujeme přidat do clusteru [alespoň dva typy uzlů.](#add-nodes-to-or-remove-nodes-from-a-node-type)  
 
-Mají vaše služby různé požadavky na infrastrukturu, jako je například větší paměť RAM nebo vyšší cykly procesoru? Například vaše aplikace obsahuje front-end službu a back-endové služby. Front-end služba může běžet na menších virtuálních počítačích (velikosti virtuálních počítačů jako D2), které mají porty otevřené na internetu. Back-end služba je však náročné na výpočetní výkon a musí běžet na větších virtuálních počítačích (s velikostí virtuálních počítačů, jako je D4, D6, D15), které nejsou na internetu. V takovém případě doporučujeme přidat do clusteru [dva nebo více typů uzlů](#add-nodes-to-or-remove-nodes-from-a-node-type) . To umožňuje, aby každý typ uzlu měl různé vlastnosti, jako je například připojení k Internetu nebo velikost virtuálního počítače. Počet virtuálních počítačů je možné škálovat nezávisle.
+Mají vaše služby různé potřeby infrastruktury, jako je větší paměť RAM nebo vyšší cykly procesoru? Například aplikace obsahuje službu front-end a back-end služby. Front-endová služba může běžet na menších virtuálních počítačích (velikosti virtuálních počítačů, jako je D2), které mají porty otevřené pro internet. Back-endová služba je však náročná na výpočty a potřebuje běžet na větších virtuálních počítačích (s velikostmi virtuálních zařízení, jako jsou D4, D6, D15), které nejsou orientované na internet. V takovém případě doporučujeme přidat do clusteru [dva nebo více typů uzlů.](#add-nodes-to-or-remove-nodes-from-a-node-type) To umožňuje každému typu uzlu mít odlišné vlastnosti, jako je připojení k internetu nebo velikost virtuálního počítače. Počet virtuálních mkénců lze škálovat nezávisle, také.
 
 Při škálování clusteru Azure mějte na paměti následující pokyny:
 
-* Jeden nebo více než jedna sada uzlů typu Service Fabric nebo škálování nemůže obsahovat více než 100 uzlů/virtuálních počítačů.  Chcete-li škálovat cluster nad rámec 100 uzlů, přidejte další typy uzlů.
-* Typy primárních uzlů, které spouštějí provozní úlohy, by měly mít [úroveň životnosti][durability] Gold nebo stříbrné a mají vždy pět nebo více uzlů.
-* Neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů.
-* Neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
-* Každý typ uzlu [úrovně trvanlivosti][durability] Gold nebo stříbrného by měl mít vždy pět nebo více uzlů.
-* Pokud při škálování (odebírání uzlů z) primární typ uzlu, neměli byste nikdy snížit počet instancí na méně, než jakou vyžaduje [úroveň spolehlivosti][reliability] .
+* Jeden typ nebo škálovací sada uzlu Service Fabric nesmí obsahovat více než 100 uzlů/virtuálních mích.  Chcete-li škálovat cluster nad 100 uzlů, přidejte další typy uzlů.
+* Primární typy uzlů, které spouštějí produkční úlohy, by měly mít [úroveň odolnosti][durability] zlaťáků nebo stříbra a vždy mít pět nebo více uzlů.
+* Jiné než primární typy uzlů se spuštěnou stavovou produkční úlohou by měly mít vždy pět nebo více uzlů.
+* Jiné než primární typy uzlů, ve kterých běží bezstavové produkční úlohy, by měly mít vždy dva nebo více uzlů.
+* Jakýkoli typ uzlu [úrovně odolnosti][durability] zlata nebo stříbra by měl mít vždy pět nebo více uzlů.
+* Pokud škálování v (odebrání uzlů z) primární typ uzlu, nikdy byste neměli snížit počet instancí na méně, než vyžaduje [úroveň spolehlivosti.][reliability]
 
-Další informace najdete v tématu [doprovodné materiály ke kapacitě clusteru](service-fabric-cluster-capacity.md).
+Další informace naleznete v [pokynech k kapacitě clusteru](service-fabric-cluster-capacity.md).
 
 ## <a name="export-the-template-for-the-resource-group"></a>Vyexportování šablony pro skupinu prostředků
 
-Po vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) a úspěšném nastavení skupiny prostředků exportujte šablonu správce prostředků pro skupinu prostředků. Export šablony vám umožní automatizovat budoucí nasazení clusteru a jeho prostředků, protože šablona obsahuje veškerou kompletní infrastrukturu.  Další informace o exportu šablon najdete v tématu [správa Azure Resource Manager skupin prostředků pomocí Azure Portal](/azure/azure-resource-manager/manage-resource-groups-portal).
+Po úspěšném vytvoření zabezpečeného [clusteru windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) a úspěšném nastavení skupiny prostředků exportujte šablonu Správce prostředků pro skupinu prostředků. Export šablony umožňuje automatizovat budoucí nasazení clusteru a jeho prostředků, protože šablona obsahuje veškerou úplnou infrastrukturu.  Další informace o exportu šablon najdete v části [Správa skupin prostředků Azure Resource Manageru pomocí portálu Azure .](/azure/azure-resource-manager/manage-resource-groups-portal)
 
-1. V [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků obsahující cluster (**sfclustertutorialgroup**, pokud budete postupovat podle tohoto kurzu). 
+1. Na [webu Azure Portal](https://portal.azure.com)přejděte na skupinu prostředků obsahující cluster **(sfclustertutorialgroup**, pokud se řídíte tímto kurzem). 
 
-2. V levém podokně vyberte **nasazení**nebo vyberte odkaz v části **nasazení**. 
+2. V levém podokně vyberte **Nasazení**nebo vyberte odkaz v části **Nasazení**. 
 
-3. Vyberte ze seznamu poslední úspěšné nasazení.
+3. Vyberte poslední úspěšné nasazení ze seznamu.
 
-4. V levém podokně vyberte **šablonu** a pak vyberte **Stáhnout** a EXPORTUJTE šablonu jako soubor zip.  Uložte šablonu a parametry do svého místního počítače.
+4. V levém podokně vyberte **Šablona** a pak vyberte **Stáhnout,** chcete-li šablonu exportovat jako soubor ZIP.  Uložte šablonu a parametry do místního počítače.
 
-## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Přidání uzlů do nebo odebírání uzlů z typu uzlu
+## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Přidání uzlů do uzlů nebo odebrání uzlů z typu uzlu
 
-Změna velikosti a zmenšení nebo horizontální škálování mění počet uzlů v clusteru. Při horizontálním navýšení kapacity můžete do sady škálování přidat další instance virtuálních počítačů. Tyto instance se stanou uzly, které bude Service Fabric používat. Service Fabric to pozná, když se do škálovací sady přidají další instance (díky horizontálnímu navýšení kapacity), a automaticky zareaguje. Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.
+Změna měřítka dovnitř a ven nebo vodorovné škálování změní počet uzlů v clusteru. Při škálování v nebo mimo, přidáte další instance virtuálního počítače do škálovací sady. Tyto instance se stanou uzly, které bude Service Fabric používat. Service Fabric to pozná, když se do škálovací sady přidají další instance (díky horizontálnímu navýšení kapacity), a automaticky zareaguje. Cluster můžete kdykoli škálovat, i když jsou v clusteru spuštěny úlohy.
 
 ### <a name="update-the-template"></a>Aktualizace šablony
 
-[Exportujte šablonu a soubor parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro nejnovější nasazení.  Otevřete soubor *Parameters. JSON* .  Pokud jste nasadili cluster pomocí [ukázkové šablony][template] v tomto kurzu, existují tři typy uzlů v clusteru a tři parametry, které nastaví počet uzlů pro každý typ uzlu: *nt0InstanceCount*, *nt1InstanceCount*a *nt2InstanceCount*.  Parametr *nt1InstanceCount* například nastaví počet instancí pro druhý typ uzlu a nastaví počet virtuálních počítačů v přidružené sadě škálování virtuálního počítače.
+[Exportujte soubor šablony a parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro poslední nasazení.  Otevřete soubor *parameters.json.*  Pokud jste v tomto kurzu nasadili cluster pomocí [ukázkové šablony,][template] jsou v clusteru tři typy uzlů a tři parametry, které nastavují počet uzlů pro každý typ uzlu: *nt0InstanceCount*, *nt1InstanceCount*a *nt2InstanceCount*.  Parametr *nt1InstanceCount* například nastaví počet instancí pro druhý typ uzlu a nastaví počet virtuálních počítačů v přidružené škálovací sadě virtuálních strojů.
 
-Pokud tedy aktualizujete hodnotu *nt1InstanceCount* , změníte počet uzlů v druhém typu uzlu.  Nezapomeňte, že nemůžete škálovat typ uzlu na více než 100 uzlů.  Neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů. Neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
+Takže aktualizací hodnoty *nt1InstanceCount* změníte počet uzlů v druhém typu uzlu.  Nezapomeňte, že nelze škálovat typ uzlu na více než 100 uzlů.  Jiné než primární typy uzlů se spuštěnou stavovou produkční úlohou by měly mít vždy pět nebo více uzlů. Jiné než primární typy uzlů, ve kterých běží bezstavové produkční úlohy, by měly mít vždy dva nebo více uzlů.
 
-Pokud provádíte horizontální [navýšení][durability] kapacity, při odebírání uzlů z, typu na bronzové úrovni trvanlivosti musíte [ručně odebrat stav těchto uzlů](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Pro stříbro a zlatou úroveň odolnosti se tyto kroky provádí automaticky na platformě.
+Pokud měníte měřítko, odeberete uzly z, typ uzlu [bronzová úroveň trvanlivosti,][durability] musíte [ručně odebrat stav těchto uzlů](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  U úrovně odolnosti stříbra a zlaťáků jsou tyto kroky prováděny automaticky platformou.
 
 ### <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
-Uložte všechny změny v souborech *template. JSON* a *Parameters. JSON* .  Aktualizovanou šablonu nasadíte spuštěním následujícího příkazu:
+Uložte všechny změny do souborů *template.json* a *parameters.json.*  Chcete-li nasadit aktualizovanou šablonu, spusťte následující příkaz:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
-Nebo následující příkaz Azure CLI:
+Nebo následující příkaz k příkazu Azure CLI:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="add-a-node-type-to-the-cluster"></a>Přidání typu uzlu do clusteru
 
-Každý typ uzlu, který je definovaný v clusteru Service Fabric spuštěném v Azure, je nastavený jako [samostatná sada škálování virtuálního počítače](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně. Jednotlivé typy uzlů je možné nezávisle škálovat, můžou mít různé sady portů otevřené a používají různé metriky kapacity. Můžete také nezávisle změnit SKLADOVOU položku operačního systému spuštěnou na každém uzlu clusteru, ale nemůžete mít v ukázkovém clusteru spuštěnou kombinaci systémů Windows a Linux. Jedna sada typů nebo škálování s jedním uzlem nemůže obsahovat více než 100 uzlů.  Cluster můžete škálovat vodorovně na více než 100 uzlů přidáním dalších typů uzlů/sad škálování. Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.
+Každý typ uzlu, který je definován v clusteru Service Fabric spuštěném v Azure, se nastavuje jako [samostatná škálovací sada virtuálních strojů](service-fabric-cluster-nodetypes.md). Každý typ uzlu lze pak spravovat samostatně. Můžete nezávisle škálovat každý typ uzlu nahoru nebo dolů, mít různé sady portů otevřené a používat různé metriky kapacity. Můžete také nezávisle změnit sku operačního systému spuštěnou na každém uzlu clusteru, ale všimněte si, že v ukázkovém clusteru nelze mít spuštěnou kombinaci Windows a Linuxu. Jeden typ uzlu/škálovací sada nemůže obsahovat více než 100 uzlů.  Můžete škálovat cluster vodorovně na více než 100 uzlů přidáním dalších typů uzlů nebo škálovacích sad. Cluster můžete kdykoli škálovat, i když jsou v clusteru spuštěny úlohy.
 
 ### <a name="update-the-template"></a>Aktualizace šablony
 
-[Exportujte šablonu a soubor parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro nejnovější nasazení.  Otevřete soubor *Parameters. JSON* .  Pokud jste cluster nasadili pomocí [ukázkové šablony][template] v tomto kurzu, existují v clusteru tři typy uzlů.  V této části přidáte čtvrtý typ uzlu aktualizací a nasazením šablony Správce prostředků. 
+[Exportujte soubor šablony a parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro poslední nasazení.  Otevřete soubor *parameters.json.*  Pokud jste nasadili cluster pomocí [ukázkové šablony][template] v tomto kurzu, existují tři typy uzlů v clusteru.  V této části přidáte čtvrtý typ uzlu aktualizací a nasazením šablony Správce prostředků. 
 
-Kromě nového typu uzlu přidáte také přidruženou sadu škálování virtuálního počítače (která běží v samostatné podsíti virtuální sítě) a skupině zabezpečení sítě.  Pro novou sadu škálování se můžete rozhodnout pro přidání nové nebo existující veřejné IP adresy a prostředků nástroje pro vyrovnávání zatížení Azure.  Nový typ uzlu má [úroveň odolnosti][durability] stříbrné a velikost "Standard_D2_V2".
+Kromě nového typu uzlu přidáte také přidruženou škálovací sadu virtuálních strojů (která běží v samostatné podsíti virtuální sítě) a skupinu zabezpečení sítě.  Můžete přidat nové nebo existující veřejné IP adresy a azure vyrovnávání zatížení prostředky pro nové škálovací sady.  Nový typ uzlu má [úroveň odolnosti][durability] stříbra a velikost "Standard_D2_V2".
 
-V souboru *template. JSON* přidejte následující nové parametry:
+Do souboru *template.json* přidejte následující nové parametry:
 ```json
 "nt3InstanceCount": {
     "defaultValue": 5,
@@ -122,7 +122,7 @@ V souboru *template. JSON* přidejte následující nové parametry:
 },
 ```
 
-V souboru *template. JSON* přidejte následující nové proměnné:
+Do souboru *template.json* přidejte následující nové proměnné:
 ```json
 "lbID3": "[resourceId('Microsoft.Network/loadBalancers',concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
 "lbIPConfig3": "[concat(variables('lbID3'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -144,7 +144,7 @@ V souboru *template. JSON* přidejte následující nové proměnné:
 "subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
 ```
 
-V souboru *template. JSON* přidejte novou podsíť do prostředku virtuální sítě:
+V souboru *template.json* přidejte novou podsíť do prostředku virtuální sítě:
 ```json
 {
     "type": "Microsoft.Network/virtualNetworks",
@@ -181,7 +181,7 @@ V souboru *template. JSON* přidejte novou podsíť do prostředku virtuální s
 },
 ```
 
-V souboru *template. JSON* přidejte novou veřejnou IP adresu a prostředky nástroje pro vyrovnávání zatížení:
+Do souboru *template.json* přidejte nové veřejné IP adresy a prostředky pro vyrovnávání zatížení:
 ```json
 {
     "type": "Microsoft.Network/publicIPAddresses",
@@ -362,7 +362,7 @@ V souboru *template. JSON* přidejte novou veřejnou IP adresu a prostředky ná
 },
 ```
 
-V souboru *template. JSON* přidejte novou skupinu zabezpečení sítě a prostředky sady škálování virtuálních počítačů.  Vlastnost NodeTypeRef v rámci vlastností rozšíření Service Fabric v sadě škálování virtuálního počítače mapuje zadaný typ uzlu na sadu škálování.
+Do souboru *template.json* přidejte nové prostředky skupiny zabezpečení sítě a škálovací sady virtuálních strojů.  Vlastnost NodeTypeRef v rámci vlastností rozšíření Service Fabric škálovací sady virtuálního počítače mapuje zadaný typ uzlu na škálovací sadu.
 
 ```json
 {
@@ -746,7 +746,7 @@ V souboru *template. JSON* přidejte novou skupinu zabezpečení sítě a prost�
 },
 ```
 
-V souboru *template. JSON* aktualizujte prostředek clusteru a přidejte nový typ uzlu:
+V souboru *template.json* aktualizujte prostředek clusteru a přidejte nový typ uzlu:
 ```json
 {
     "type": "Microsoft.ServiceFabric/clusters",
@@ -782,7 +782,7 @@ V souboru *template. JSON* aktualizujte prostředek clusteru a přidejte nový t
 }                
 ```
 
-Do souboru *Parameters. JSON* přidejte následující nové parametry a hodnoty:
+Do souboru *parameters.json* přidejte následující nové parametry a hodnoty:
 ```json
 "nt3InstanceCount": {
     "Value": 5    
@@ -793,23 +793,23 @@ Do souboru *Parameters. JSON* přidejte následující nové parametry a hodnoty
 ```
 
 ### <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
-Uložte všechny změny v souborech *template. JSON* a *Parameters. JSON* .  Aktualizovanou šablonu nasadíte spuštěním následujícího příkazu:
+Uložte všechny změny do souborů *template.json* a *parameters.json.*  Chcete-li nasadit aktualizovanou šablonu, spusťte následující příkaz:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
-Nebo následující příkaz Azure CLI:
+Nebo následující příkaz k příkazu Azure CLI:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>Odebrání typu uzlu z clusteru
-Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně odebráním typu uzlu (sada škálování virtuálního počítače) a všech jeho uzlů. Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru. I když se cluster škáluje, vaše aplikace se automaticky škálují.
+Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně odebráním typu uzlu (škálovací sada virtuálního počítače) a všech jeho uzlů. Cluster můžete kdykoli škálovat, i když jsou v clusteru spuštěny úlohy. Při škálování clusteru se automaticky škálují také vaše aplikace.
 
 > [!WARNING]
-> Použití funkce Remove-AzServiceFabricNodeType k odebrání typu uzlu z produkčního clusteru se nedoporučuje používat na častém základě. Jedná se o nebezpečný příkaz, protože odstraňuje prostředek sady škálování virtuálního počítače za typem uzlu. 
+> Použití Remove-AzServiceFabricNodeType odebrat typ uzlu z produkčního clusteru se nedoporučuje používat často. Jedná se o nebezpečný příkaz, protože odstraní prostředek škálovací sady virtuálních strojů za typem uzlu. 
 
-Chcete-li odebrat typ uzlu, spusťte rutinu [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) .  Typ uzlu musí být stříbrná nebo zlatá [úroveň odolnosti][durability] . rutina odstraní sadu škálování přidruženou k typu uzlu a její dokončení nějakou dobu trvá.  Pak na všech uzlech spusťte rutinu [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) , která se má odebrat. tím se odstraní stav uzlu a z clusteru se odeberou uzly. Pokud na uzlech existují služby, pak se služby nejprve přesunou na jiný uzel. Pokud Správce clusteru nenašel uzel pro repliku nebo službu, operace je zpožděná nebo blokovaná.
+Chcete-li odebrat typ uzlu, spusťte rutinu [Remove-AzServiceFabricNodeType.](/powershell/module/az.servicefabric/remove-azservicefabricnodetype)  Typ uzlu musí být stříbrná nebo zlatá [úroveň trvanlivosti][durability] Rutina odstraní škálovací sadu přidruženou k typu uzlu a trvá nějakou dobu.  Potom spusťte rutinu [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) na každém z uzlů, které chcete odebrat, který odstraní stav uzlu a odebere uzly z clusteru. Pokud jsou služby na uzly, pak služby jsou nejprve přesunuty do jiného uzlu. Pokud správce clusteru nemůže najít uzel pro repliku nebo službu, je operace zpožděna nebo blokována.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -833,29 +833,29 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Zvýšení prostředků uzlu 
-Po vytvoření clusteru Service Fabric můžete škálovat typ uzlu clusteru vertikálně (změnit prostředky uzlů) nebo upgradovat operační systém typu virtuálních počítačů typu uzel.  
+Po vytvoření clusteru Service Fabric můžete škálovat typ uzlu clusteru svisle (změnit prostředky uzlů) nebo upgradovat operační systém virtuálních zařízení typu uzlu.  
 
 > [!WARNING]
-> Nedoporučujeme měnit SKU virtuálního počítače pro typ nebo uzel škály, pokud není spuštěný při použití odolnosti proti stříbru nebo většímu. Změna velikosti SKU virtuálního počítače je místní operace infrastruktury, která je destruktivní dat. Bez možnosti zpozdit nebo sledovat tuto změnu je možné, že operace může způsobit ztrátu dat pro stavové služby nebo způsobovat jiné nepředvídatelné provozní problémy, a to i u bezstavových úloh.
+> Doporučujeme neměnit skladovou položku virtuálního měn typu škálovací sady nebo uzlu, pokud není spuštěna s odolností stříbra nebo větší. Změna velikosti skladové položky virtuálního počítače je operace infrastruktury na místě destruktivní pro data. Bez určité schopnosti zpoždění nebo sledování této změny je možné, že operace může způsobit ztrátu dat pro stavové služby nebo způsobit jiné nepředvídané provozní problémy, a to i pro bezstavové úlohy.
 
 > [!WARNING]
-> Doporučujeme, abyste nezměnili SKU virtuálního počítače typu primárního uzlu, což je nebezpečná operace a není podporováno.  Pokud potřebujete více kapacity clusteru, můžete přidat další instance virtuálních počítačů nebo další typy uzlů.  Pokud to není možné, můžete vytvořit nový cluster a [Obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (Pokud je k dispozici) z původního clusteru.  Pokud to není možné, můžete [změnit SKU virtuálního počítače typu primární uzel](service-fabric-scale-up-node-type.md).
+> Doporučujeme neměnit skladovou položku virtuálního řezu typu primárního uzlu, což je nebezpečná operace a nepodporovaná.  Pokud potřebujete větší kapacitu clusteru, můžete přidat další instance virtuálních počítačů nebo další typy uzlů.  Pokud to není možné, můžete vytvořit nový cluster a [obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (pokud je to možné) ze starého clusteru.  Pokud to není možné, můžete [změnit skladovou položku virtuálního řezu primárního typu uzlu](service-fabric-scale-up-node-type.md).
 
 ### <a name="update-the-template"></a>Aktualizace šablony
 
-[Exportujte šablonu a soubor parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro nejnovější nasazení.  Otevřete soubor *Parameters. JSON* .  Pokud jste cluster nasadili pomocí [ukázkové šablony][template] v tomto kurzu, existují v clusteru tři typy uzlů.  
+[Exportujte soubor šablony a parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro poslední nasazení.  Otevřete soubor *parameters.json.*  Pokud jste nasadili cluster pomocí [ukázkové šablony][template] v tomto kurzu, existují tři typy uzlů v clusteru.  
 
-Velikost virtuálních počítačů v druhém typu uzlu je nastavena v parametru *vmNodeType1Size* .  Změňte hodnotu parametru *vmNodeType1Size* z Standard_D2_V2 na [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), což zdvojnásobuje prostředky každé instance virtuálního počítače.
+Velikost virtuálních počítače v druhém typu uzlu je nastavena v parametru *vmNodeType1Size.*  Změňte hodnotu parametru *vmNodeType1Size* z Standard_D2_V2 na [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), která zdvojnásobí prostředky každé instance virtuálního počítače.
 
-SKU virtuálního počítače pro všechny tři typy uzlů je nastaveno v parametru *vmImageSku* .  Změnou SKU virtuálního počítače typu uzel by se měla přecházet s opatrností a nedoporučuje se pro primární typ uzlu.
+Skladová položka virtuálního počítače pro všechny tři typy uzlů je nastavena v parametru *vmImageSku.*  Znovu změna skladové položky virtuálního uživatele typu uzlu by měla být přístupná s opatrností a nedoporučuje se pro typ primárního uzlu.
 
 ### <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
-Uložte všechny změny v souborech *template. JSON* a *Parameters. JSON* .  Aktualizovanou šablonu nasadíte spuštěním následujícího příkazu:
+Uložte všechny změny do souborů *template.json* a *parameters.json.*  Chcete-li nasadit aktualizovanou šablonu, spusťte následující příkaz:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
-Nebo následující příkaz Azure CLI:
+Nebo následující příkaz k příkazu Azure CLI:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
@@ -865,9 +865,9 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Přidávání a odebírání uzlů (horizontální navýšení kapacity a horizontální navýšení kapacity)
-> * Přidávání a odebírání typů uzlů (horizontální navýšení kapacity a horizontální navýšení kapacity)
-> * Zvýšení prostředků uzlu (horizontální navýšení kapacity)
+> * Přidání a odebrání uzlů (horizontální navýšení kapacity a škálování v)
+> * Přidání a odebrání typů uzlů (horizontální navýšení kapacity a škálování v)
+> * Zvýšení prostředků uzlu (škálování nahoru)
 
 Dále se v následujícím kurzu dozvíte, jak upgradovat modul runtime clusteru.
 > [!div class="nextstepaction"]
@@ -878,8 +878,8 @@ Dále se v následujícím kurzu dozvíte, jak upgradovat modul runtime clusteru
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
 
-> * Přidávání a odebírání typů uzlů (horizontální navýšení kapacity a horizontální navýšení kapacity)
-> * Zvýšení prostředků uzlu (horizontální navýšení kapacity)
+> * Přidání a odebrání typů uzlů (horizontální navýšení kapacity a škálování v)
+> * Zvýšení prostředků uzlu (škálování nahoru)
 
 Dále se v následujícím kurzu dozvíte, jak upgradovat modul runtime clusteru.
 > [!div class="nextstepaction"]

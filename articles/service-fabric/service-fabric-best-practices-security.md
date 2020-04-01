@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258925"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478751"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpečení služby Azure Service Fabric 
 
@@ -208,7 +208,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Doporučujeme implementovat standardní konfiguraci, která je obecně známá a dobře otestovaná, například směrné plány zabezpečení společnosti Microsoft, na rozdíl od vytvoření směrného plánu sami](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); možnost pro zřizování těchto na škálovací sady virtuálních počítačů je použití Azure konfigurace požadovaného stavu (DSC) obslužná rutina rozšíření, ke konfiguraci virtuálních počítačů, jakmile se stanou online, takže jsou spuštěny produkční software.
 
 ## <a name="azure-firewall"></a>Brána Azure Firewall
-[Azure Firewall je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky virtuální sítě Azure. Jedná se o plně stavovou bránu firewall jako službu s vestavěnou vysokou dostupností a neomezenou škálovatelností cloudu.](https://docs.microsoft.com/azure/firewall/overview) To umožňuje omezit odchozí provoz HTTP/S na zadaný seznam plně kvalifikovaných názvů domén (FQDN) včetně zástupných znaků. Tato funkce nevyžaduje ukončení protokolu SSL. Doporučuje se, abyste využili [značky Azure Firewall Pro Condn](https://docs.microsoft.com/azure/firewall/fqdn-tags) pro aktualizace systému Windows a aby byl povolen síťový provoz koncovým bodům služby Microsoft Windows Update, které mohou protékat bránou firewall. [Nasazení brány Azure Firewall pomocí šablony](https://docs.microsoft.com/azure/firewall/deploy-template) poskytuje ukázku pro definici šablony prostředků Microsoft.Network/azureFirewalls. Pravidla brány firewall společná pro aplikace Service Fabric je povolit následující pro vaše clustery virtuální sítě:
+[Azure Firewall je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky virtuální sítě Azure. Jedná se o plně stavovou bránu firewall jako službu s vestavěnou vysokou dostupností a neomezenou škálovatelností cloudu.](https://docs.microsoft.com/azure/firewall/overview) To umožňuje omezit odchozí provoz HTTP/S na zadaný seznam plně kvalifikovaných názvů domén (FQDN) včetně zástupných znaků. Tato funkce nevyžaduje ukončení TLS/SSL. Doporučuje se, abyste využili [značky Azure Firewall Pro Condn](https://docs.microsoft.com/azure/firewall/fqdn-tags) pro aktualizace systému Windows a aby byl povolen síťový provoz koncovým bodům služby Microsoft Windows Update, které mohou protékat bránou firewall. [Nasazení brány Azure Firewall pomocí šablony](https://docs.microsoft.com/azure/firewall/deploy-template) poskytuje ukázku pro definici šablony prostředků Microsoft.Network/azureFirewalls. Pravidla brány firewall společná pro aplikace Service Fabric je povolit následující pro vaše clustery virtuální sítě:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -221,7 +221,7 @@ Tato pravidla brány firewall doplňují povolené odchozí skupiny zabezpečen�
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-Ve výchozím nastavení je antivirový program Windows Defender nainstalován v systému Windows Server 2016. Podrobnosti naleznete v tématu [Windows Defender Antivirus na windows server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). Uživatelské rozhraní je ve výchozím nastavení nainstalováno na některých sku, ale není vyžadováno. Chcete-li snížit dopad na výkon a režii na spotřeba prostředků, které systém Windows Defender vynaloží, a pokud zásady zabezpečení umožňují vyloučit procesy a cesty pro software s otevřeným zdrojovým kódem, deklarujte následující prostředek rozšíření škálování virtuálních strojů Vlastnosti šablony správce pro vyloučení clusteru Service Fabric z prohledávačů:
+Ve výchozím nastavení je antivirový program Windows Defender nainstalován v systému Windows Server 2016. Podrobnosti naleznete v tématu [Windows Defender Antivirus na windows server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). Uživatelské rozhraní je ve výchozím nastavení nainstalováno na některých sku, ale není vyžadováno. Chcete-li snížit dopad na výkon a režii spotřeby prostředků, které systém Windows Defender vynaloží, a pokud vaše zásady zabezpečení umožňují vyloučit procesy a cesty pro software s otevřeným zdrojovým kódem, deklarujte následující vlastnosti šablony Správce prostředků nástroje Virtual Machine Scale Set, které vyloučí cluster Service Fabric z prohledává:
 
 
 ```json

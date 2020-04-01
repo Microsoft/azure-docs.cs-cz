@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664499"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435982"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
-Po napalubí předplatného Azure můžete povolit security center pro linuxové prostředky spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta. Agent se nazývá Microsoft Monitoring Agent (MMA), ale je také známý jako agent OMS.
+Po napalubí předplatného Azure můžete povolit security center pro linuxové prostředky spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta. Agent se nazývá agent analýzy protokolů, ale je také známý jako agent OMS.
 
 Tento rychlý start ukazuje, jak nainstalovat agenta do počítače s Linuxem.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Standard centra zabezpečení můžete vyzkoušet zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Před zahájením tohoto rychlého startu musíte být na cenové úrovni Standard centra zabezpečení. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Standard centra zabezpečení můžete vyzkoušet zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Přidání nového počítače s Linuxem
 

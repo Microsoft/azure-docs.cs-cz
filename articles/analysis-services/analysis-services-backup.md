@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak zálohovat a obnovovat metadata modelu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83da2024ab74b705b45a5891f6b40251020dad31
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73573453"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408657"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -49,7 +49,7 @@ Před zálohováním je třeba nakonfigurovat nastavení úložiště pro server
 
     ![Uložení nastavení zálohování](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Zálohování pomocí SSMS
 

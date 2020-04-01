@@ -1,6 +1,6 @@
 ---
-title: Šifrování Apache Kafka SSL & ověřování - Azure HDInsight
-description: Nastavte šifrování SSL pro komunikaci mezi klienty Kafka a makléři Kafka, stejně jako mezi makléři Kafka. Nastavte ověřování SSL klientů.
+title: Šifrování Apache Kafka TLS & ověřování - Azure HDInsight
+description: Nastavte šifrování TLS pro komunikaci mezi klienty Kafka a makléři Kafka, stejně jako mezi makléři Kafka. Nastavte ověřování SSL klientů.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,25 +8,25 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4a363caf61046cf39c31ae2d5f35622b7b9109f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 027a66f4b83225f3c776e1bff1d706f6f4dba976
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130003"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436996"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování a ověřování s vrstvou ssecurenoštých soketů (SSL) pro Apache Kafka v Azure HDInsight
+# <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování a ověřování TLS pro Apache Kafka v Azure HDInsight
 
-Tento článek ukazuje, jak nastavit šifrování SSL mezi klienty Apache Kafka a zprostředkovateli Apache Kafka. Také ukazuje, jak nastavit ověřování klientů (někdy označované jako obousměrný SSL).
+Tento článek ukazuje, jak nastavit šifrování TLS (Transport Layer Security), dříve známé jako šifrování SSL (Secure Sockets Layer), mezi klienty Apache Kafka a zprostředkovateli Apache Kafka. Také ukazuje, jak nastavit ověřování klientů (někdy označované jako obousměrný TLS).
 
 > [!Important]
-> Existují dva klienti, které můžete použít pro aplikace Kafka: Java klient a konzolový klient. Pouze klient `ProducerConsumer.java` Java může použít SSL pro výrobu i spotřebu. Klient `console-producer.sh` výrobce konzoly nepracuje s ssl.
+> Existují dva klienti, které můžete použít pro aplikace Kafka: Java klient a konzolový klient. Pouze klient `ProducerConsumer.java` Java může používat TLS pro výrobu i spotřebu. Klient `console-producer.sh` výrobce konzoly nepracuje s tls.
 
 > [!Note] 
 > Výrobce konzoly HDInsight Kafka s verzí 1.1 nepodporuje SSL.
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka broker nastavení
 
-Nastavení zprostředkovatele Kafka SSL použije čtyři virtuální počítače clusteru HDInsight následujícím způsobem:
+Nastavení zprostředkovatele Kafka TLS bude používat čtyři virtuální počítače clusteru HDInsight následujícím způsobem:
 
 * headnode 0 - Certifikační autorita (CA)
 * uzel pracovníka 0, 1 a 2 - zprostředkovatelé
@@ -119,7 +119,7 @@ K dokončení nastavení zprostředkovatele použijte následující podrobné p
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Aktualizace konfigurace Kafka pro použití protokolu SSL a restartování zprostředkovatelů
+## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>Aktualizace konfigurace Kafka pro použití TLS a restartování zprostředkovatelů
 
 Nyní jste nastavili každý zprostředkovatel Kafka s keystore a truststore a importované správné certifikáty. Dále upravte související vlastnosti konfigurace Kafka pomocí Ambari a restartujte zprostředkovatele Kafka.
 
@@ -166,7 +166,7 @@ Chcete-li dokončit změnu konfigurace, postupujte takto:
 
 ## <a name="client-setup-without-authentication"></a>Nastavení klienta (bez ověřování)
 
-Pokud ověřování nepotřebujete, souhrn kroků k nastavení pouze šifrování SSL je následující:
+Pokud ověřování nepotřebujete, souhrn kroků k nastavení pouze šifrování TLS je následující:
 
 1. Přihlaste se k certifikační autoritě (aktivní hlavní uzel).
 1. Zkopírujte certifikát certifikační autority do klientského počítače z počítače certifikační autority (wn0).
@@ -219,7 +219,7 @@ Tyto kroky jsou podrobně popsány v následujících fragmentech kódu.
 ## <a name="client-setup-with-authentication"></a>Nastavení klienta (s ověřováním)
 
 > [!Note]
-> Následující kroky jsou vyžadovány pouze v případě, že nastavujete šifrování **a** ověřování SSL. Pokud pouze nastavujete šifrování, přečtěte si informace [o nastavení klienta bez ověřování](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication).
+> Následující kroky jsou vyžadovány pouze v případě, že nastavujete šifrování **a** ověřování TLS. Pokud pouze nastavujete šifrování, přečtěte si informace [o nastavení klienta bez ověřování](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication).
 
 Následující čtyři kroky shrnují úkoly potřebné k dokončení instalace klienta:
 
@@ -302,7 +302,7 @@ Podrobnosti o každém kroku jsou uvedeny níže.
 ## <a name="verification"></a>Ověření
 
 > [!Note]
-> Pokud je nainstalován hdinsight 4.0 a Kafka 2.1, můžete použít výrobce konzole/spotřebitele k ověření nastavení. Pokud ne, spusťte výrobce Kafka na portu 9092 a odesílejte zprávy na téma a potom použijte spotřebitele Kafka na portu 9093, který používá SSL.
+> Pokud je nainstalován hdinsight 4.0 a Kafka 2.1, můžete použít výrobce konzole/spotřebitele k ověření nastavení. Pokud ne, spusťte výrobce Kafka na portu 9092 a odesílejte zprávy na téma a potom použijte spotřebitele Kafka na portu 9093, který používá TLS.
 
 ### <a name="kafka-21-or-above"></a>Kafka 2.1 nebo vyšší
 

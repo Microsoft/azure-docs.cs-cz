@@ -3,21 +3,24 @@ title: Nastavení Micro Focus CICS BankDemo pro vývojáře Micro Focus Enterpri
 description: Spusťte aplikaci Micro Focus BankDemo na virtuálních počítačích Azure(VM), abyste se naučili používat Micro Focus Enterprise Server a Enterprise Developer.
 author: sread
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67621340"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411076"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavení micro focus CICS BankDemo pro micro focus enterprise developer 4.0 v Azure
 
 Když v Azure nastavíte Micro Focus Enterprise Server 4.0 a Enterprise Developer 4.0, můžete otestovat nasazení úloh IBM z/OS. Tento článek ukazuje, jak nastavit CICS BankDemo, ukázkovou aplikaci, která je dodávána s enterprise developerem.
 
 CS je zkratka pro Customer Information Control System, transakční platformu používanou mnoha online sálovými aplikacemi. Aplikace BankDemo je skvělá pro učení, jak fungují Enterprise Server a Enterprise Developer a jak spravovat a nasazovat skutečnou aplikaci kompletní s terminály zelené obrazovky.
+
+> [!NOTE]
+> Již brzy: Pokyny pro nastavení [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) na virtuálních počítačích Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 

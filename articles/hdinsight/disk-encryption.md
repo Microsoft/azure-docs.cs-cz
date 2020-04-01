@@ -7,16 +7,16 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: fd5308574e84ab6d2e30b9352254683b2d1d6fdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0521f384a333c3054397fb0ec7c2ab907e54f67
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403560"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411755"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Šifrování disků s využitím klíčů spravovaných zákazníky
 
-Azure HDInsight podporuje šifrování klíčů spravovaných zákazníky pro data na spravovaných discích a disky prostředků připojené k virtuálním počítačům clusteru HDInsight. Tato funkce umožňuje používat Azure Key Vault ke správě šifrovacích klíčů, které zabezpečují data v klidovém stavu ve vašich clusterech HDInsight. 
+Azure HDInsight podporuje šifrování klíčů spravovaných zákazníky pro data na spravovaných discích a disky prostředků připojené k virtuálním počítačům clusteru HDInsight. Tato funkce umožňuje používat Azure Key Vault ke správě šifrovacích klíčů, které zabezpečují data v klidovém stavu ve vašich clusterech HDInsight.
 
 Všechny spravované disky ve službě HDInsight jsou chráněné šifrováním služby Azure Storage Service (SSE). Ve výchozím nastavení jsou data na těchto discích šifrována pomocí klíčů spravovaných společností Microsoft. Pokud povolíte klíče spravované zákazníkem pro HDInsight, poskytnete šifrovací klíče pro HDInsight k použití a správě těchto klíčů pomocí služby Azure Key Vault.
 
@@ -146,6 +146,42 @@ az hdinsight rotate-disk-encryption-key \
 --name MyCluster \
 --resource-group MyResourceGroup
 ```
+
+## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
+
+Chcete-li používat klíče spravované zákazníky pomocí šablony Správce prostředků, aktualizujte šablonu následujícími změnami:
+
+1. V souboru **azuredeploy.json** přidejte do objektu prostředků následující vlastnost:
+
+    ```json
+       "diskEncryptionProperties":
+         {
+                 "vaultUri": "[parameters('diskEncryptionVaultUri')]",
+                  "keyName": "[parameters('diskEncryptionKeyName')]",
+                  "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
+                   "msiResourceId": "[parameters('diskEncryptionMsiResourceId')]"
+         }
+
+1. In the **azuredeploy.parameters.json** file, add the following parameters. You can get the values of these parameters from the Key Vault URI and the managed Identity. For example, if you have the following URI and identity values,
+    * Sample key vault URI: https://<KeyVault_Name>.vault.azure.net/keys/clusterkey/<Cluster_Key_Value>
+    * Sample user-assigned managed identity: "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>
+
+    The parameters in the **azuredeploy.parameters.json** file are:
+
+    ```json
+   "diskEncryptionVaultUri": {
+            "value": "https://<KeyVault_Name>.vault.azure.net"
+        },
+        "diskEncryptionKeyName": {
+            "value": "clusterkey"
+        },
+        "diskEncryptionKeyVersion": {
+            "value": "<Cluster_Key_Value>"
+        },
+        "diskEncryptionMsiResourceId": {
+            "value": "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>"
+        }
+    ```
 
 ## <a name="faq-for-customer-managed-key-encryption"></a>Nejčastější dotazy k šifrování klíčů spravovaným zákazníkem
 

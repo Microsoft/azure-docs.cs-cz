@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270417"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398186"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -48,12 +48,14 @@ Následující výpočetní prostředky lze použít k hostování nasazení mod
 
 Spravovaný výpočetní prostředek je vytvořený a spravovaný Azure Machine Learning. Tento výpočetní výkon je optimalizovaný pro úlohy strojového učení. Výpočetní clustery Azure Machine Learning a [výpočetní instance](concept-compute-instance.md) jsou jediné spravované výpočetní prostředky. Další spravované výpočetní prostředky mohou být přidány v budoucnu.
 
-Výpočetní instance Azure Machine Learning (preview) nebo výpočetní clustery můžete vytvářet v:
+Výpočetní instance Azure Machine Learning (preview) nebo výpočetní clustery můžete vytvářet z:
+* Azure Machine Learning Studio
+* portál Azure
+* Třídy [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) sady Python SDK a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* Šablona Resource Manageru
 
-| | Azure Machine Learning Studio | portál Azure | Sada SDK | Šablona Resource Manageru | Rozhraní příkazového řádku |
-|---| ----- | ----- | ----- | ----- | ----- |
-| Instance služby Compute | ano | ano | ano | ano |  |
-| Výpočtový cluster | ano | ano | ano | ano | ano |
+Výpočetní clustery můžete také vytvořit pomocí [rozšíření strojového učení pro azure cli](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training).
 
 Při vytvoření těchto výpočetních prostředků jsou automaticky součástí pracovního prostoru na rozdíl od jiných druhů výpočetních cílů.
 

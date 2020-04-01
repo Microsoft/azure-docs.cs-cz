@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882352"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411675"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Práce s daty s využitím Průzkumníka služby Azure Storage
 
@@ -215,14 +215,14 @@ Tato chyba se může zobrazit z několika důvodů, z nichž dva nejčastější
 
 + Jste za *transparentním proxy serverem*, což znamená, že někdo (například vaše IT oddělení) zachycuje provoz HTTPS, dešifruje ho a pak ho šifruje pomocí certifikátu podepsaného svým držitelem.
 
-+ Používáte software, jako je například antivirový software, který do přijímaných zpráv protokolu HTTPS vkládá certifikát SSL podepsaný svým držitelem.
++ Používáte software, například antivirový software, který do přijatých zpráv HTTPS vstřikuje certifikáty TLS/SSL podepsané svým držitelem.
 
 Pokud Průzkumník služby Storage narazí na některý z těchto certifikátů podepsaných svým držitelem, už nemůže mít jistotu, že se s přijímanými zprávami protokolu HTTPS nemanipulovalo. Pokud však máte kopii příslušného certifikátu podepsaného svým držitelem, můžete Průzkumníku služby Storage sdělit, aby mu důvěřoval. Pokud si nejste jisti, kdo certifikát vkládá, můžete to sami zkusit zjistit provedením následujících kroků:
 
-1. Nainstalujte OpenSSL.
+1. Instalace OpenSSL
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (stačí jakákoli z odlehčených verzí)
      - Mac a Linux: Mělo by být součástí operačního systému.
-2. Spusťte OpenSSL.
+2. Spustit OpenSSL
     - Windows: Přejděte do adresáře instalace, pak do složky **/bin/** a dvakrát klikněte na soubor **openssl.exe**.
     - Mac a Linux: V terminálu spusťte příkaz **openssl**.
 3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.

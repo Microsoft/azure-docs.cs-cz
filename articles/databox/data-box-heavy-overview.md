@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70142919"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437772"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Co je Azure Data Box Heavy?
 
@@ -116,7 +116,7 @@ Nejaktuálnější informace o dostupnosti oblasti pro data box heavy najdete v 
 
 Při registraci do data boxu Heavy postupujte takto:
 
-1. Přihlaste se k webu Azure Portal na adrese: https://portal.azure.com.
+1. [Přihlaste se k portálu Azure](https://portal.azure.com).
 2. Chcete-li vytvořit nový zdroj, klepněte na tlačítko **+ Vytvořit zdroj.** Vyhledejte **Azure Data Box**. Službu **Azure Data Box** vyberte.
 3. Klikněte na **Vytvořit**.
 4. Vyberte předplatné, které chcete použít pro data box heavy. Vyberte oblast, ve které chcete prostředek Data Box Heavy nasadit. U možnosti **Data Box Heavy** klikněte na **Zaregistrovat se**.

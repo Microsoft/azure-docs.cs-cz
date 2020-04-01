@@ -3,14 +3,14 @@ title: Dotaz na protokoly správy aktualizací Azure
 description: Tento článek popisuje, jak se dotazovat protokoly pro správu aktualizací v pracovním prostoru Analýzy protokolů.
 services: automation
 ms.subservice: update-management
-ms.date: 03/11/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216849"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437846"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Záznamy aktualizací dotazů pro správu aktualizací v protokolech monitorování Azure
 
@@ -39,7 +39,7 @@ Je vytvořen záznam `RequiredUpdate` s typem, který představuje aktualizace v
 | TenantId | Jedinečný identifikátor představující instanci služby Azure Active Directory vaší organizacemi | 
 | TimeGenerated | Datum a čas vytvoření záznamu. | 
 | Typ | *Aktualizace* | 
-| AktualizovatKlasifikace | Označuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Další* |
+| AktualizovatKlasifikace | Označuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *nástroje*<br> *Aktualizace*. Pro Linux:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Další* |
 | Závažnost aktualizace | Hodnocení závažnosti chyby zabezpečení. Hodnoty jsou:<br> *Kritická*<br> *Důležité*<br> *Střední*<br> *Nízká* |
 | Název aktualizace | Název aktualizace.|
 
@@ -144,7 +144,7 @@ Je vytvořen záznam `UpdateSummary` s typem, který poskytuje souhrn aktualizac
 | CriticalUpdatesMissing | Počet chybějících důležitých aktualizací, které jsou použitelné. | 
 | ManagementGroupName | Název skupiny pro správu nástroje Operations Manager nebo pracovního prostoru Log Analytics. |
 | NETRuntimeVersion | V počítači se systémem Windows byla nainstalována verze rozhraní .NET Framework. |
-| OldestMissingSecurityUpdateBucket | Hodnoty jsou:<br> *Nedávné*<br> *před 30 dny*<br> *před 60 dny*<br> *Starší* | 
+| OldestMissingSecurityUpdateBucket | Hodnoty jsou:<br> *Poslední,* pokud je hodnota kratší než 30 dní<br> *před 30 dny*<br> *před 60 dny*<br> *před 90 dny*<br> *před 120 dny*<br> *před 150 dny*<br> *před 180 dny*<br> *Starší,* pokud je hodnota větší než 180 dní | 
 | OldestMissingSecurityUpdateInDays | Celkový počet dní pro nejstarší aktualizaci zjištěnou jako použitelná, která nebyla nainstalována. |
 | OsVersion | Verze operačního systému. |
 | OtherUpdatesMissing | Počet zjištěných aktualizací chybí. |

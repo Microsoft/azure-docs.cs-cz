@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4df2ec0439e659fd8dc1448c6209c9718114791
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecae47f6aa0ab3f179632467b7da7805f06162d6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479786"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397268"
 ---
 # <a name="manage-your-batch-account"></a>Správa dávkového účtu
 
@@ -33,13 +33,13 @@ Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch 
 
 Účet Batch umožňuje efektivně spouštět rozsáhlé paralelní a vysoce výkonné výpočetní úlohy (HPC) v Azure. V rámci účtu, který spravujete:
 
-- aplikace, které používáte
+- Aplikace, které používáte
 
-- přidělení fondů a uzlů v rámci poolů
+- Přidělení fondů a uzlů v rámci fondů
 
-- počet a typy úkolů 
+- Počet a typy úkolů 
 
-- zadávání a výstup dat. Ke správě úkolů není nutné instalovat další software.
+- Vstup a výstup dat. Ke správě úkolů není nutné instalovat další software.
 
 - Při vytváření účtu Dávka budete vyzváni k přiřazení názvu. Tento název je jeho ID a po přiřazení nelze změnit.
 

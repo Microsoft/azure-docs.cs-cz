@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: rogarana
-ms.openlocfilehash: deead728812a34c6f432f59666cd22ba79f5409e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: b7820bc3d1b14e87064e4120edcffb6762041db9
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281285"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411487"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Povolení ověřování služby Active Directory přes SMB pro sdílené složky Azure
 
@@ -67,11 +67,7 @@ Ověřování Azure Files AD (preview) je dostupné ve [většině veřejných o
 
 Ověřování Azure Files AD není k dispozici v:
 - USA – západ
-- USA – západ 2
-- USA – východ
-- USA – východ 2
-- Západní Evropa
-- Severní Evropa
+
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 

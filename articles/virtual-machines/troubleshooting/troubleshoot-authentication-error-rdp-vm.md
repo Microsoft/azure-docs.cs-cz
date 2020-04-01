@@ -1,6 +1,6 @@
 ---
 title: Poradce při potížích s chybami ověřování při připojení k virtuálnímu počítači Azure pomocí protokolu RDP | Dokumenty společnosti Microsoft
-description: ''
+description: Zjistěte, jak řešit chyby ověřování, ke kterým dochází při připojení k virtuálnímu počítači (VM) pomocí protokolu RDP (Remote Desktop Protocol).
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266972"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420820"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Řešení chyb ověřování při připojování k virtuálnímu počítači Azure pomocí protokolu RDP
 

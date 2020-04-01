@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929458"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422092"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí Azure Data Factory
 
@@ -324,7 +324,7 @@ Chcete-li kopírovat data do dynamics, jsou podporovány následující vlastnos
 | ignoreNullValues | Označuje, zda se mají během operace zápisu ignorovat hodnoty null ze vstupních dat (kromě klíčových polí).<br/>Povolené hodnoty jsou **pravdivé** a **nepravdivé**.<br>- **Pravda**: Ponechte data v cílovém objektu beze změny, když proveďte operaci upsert/update. Při operaci vložení vložte definovanou výchozí hodnotu.<br/>- **False**: Aktualizace dat v cílovém objektu na hodnotu NULL při operaci upsert/update. Při operaci vložení vložte hodnotu NULL. | Ne (výchozí hodnota je nepravdivá) |
 
 >[!NOTE]
->Výchozí hodnota jímky "**writeBatchSize**" a aktivity kopírování "**[parallelCopies](copy-activity-performance.md#parallel-copy)**" pro jímku Dynamics jsou obě 10. Proto 100 záznamů jsou odeslány dynamics současně.
+>Výchozí hodnota jímky "**writeBatchSize**" a aktivity kopírování "**[parallelCopies](copy-activity-performance-features.md#parallel-copy)**" pro jímku Dynamics jsou obě 10. Proto 100 záznamů jsou odeslány dynamics současně.
 
 Pro dynamics 365 online je limit [2 souběžných dávkových volání na organizaci](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Pokud je tento limit překročen, je vyvolána chyba "Server Busy" před provedením prvního požadavku. Udržování "writeBatchSize" menší nebo rovno 10 by se zabránilo takové omezení souběžných volání.
 

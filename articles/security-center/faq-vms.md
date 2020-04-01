@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d84085115816a8fe1cba65e191ea391dd91a4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599363"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436014"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>Časté otázky – otázky týkající se virtuálních počítačů
 
@@ -51,7 +51,7 @@ Níže jsou uvedeny časy latence pro centrum zabezpečení prohledává slabá 
 Security Center obvykle prohledá nová data každou hodinu a odpovídajícím způsobem aktualizuje doporučení. 
 
 > [!NOTE]
-> Security Center používá Microsoft Monitoring Agent ke shromažďování a ukládání dat. Další informace najdete v [tématu Migrace platformy Azure Security Center](security-center-platform-migration.md).
+> Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Další informace najdete v [tématu Migrace platformy Azure Security Center](security-center-platform-migration.md).
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Proč se zobrazuje zpráva "Agent virtuálního soudu chybí?"

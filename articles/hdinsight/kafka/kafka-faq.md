@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206975"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436884"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Nejčastější dotazy k Apache Kafka ve službě Azure HDInsight
 
@@ -50,7 +50,7 @@ Pomocí [balíčku zabezpečení rozlehlé sítě (ESP)](../domain-joined/apache
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Jsou moje data šifrována? Mohu použít vlastní klíče?
 
-Všechny zprávy Kafka na spravovaných discích jsou šifrované pomocí [Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md). Data v tranzitu (například data přenášená z klientů do zprostředkovatelů a naopak) není ve výchozím nastavení šifrována. Je možné šifrovat takový provoz [nastavením SSL na vlastní pěst](./apache-kafka-ssl-encryption-authentication.md). Kromě toho HDInsight umožňuje spravovat své vlastní klíče k šifrování dat v klidovém stavu. Další informace naleznete v [tématu Šifrování disku klíče spravované zákazníkem](../disk-encryption.md).
+Všechny zprávy Kafka na spravovaných discích jsou šifrované pomocí [Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md). Data v tranzitu (například data přenášená z klientů do zprostředkovatelů a naopak) není ve výchozím nastavení šifrována. Je možné šifrovat takový provoz [nastavením TLS na vlastní pěst](./apache-kafka-ssl-encryption-authentication.md). Kromě toho HDInsight umožňuje spravovat své vlastní klíče k šifrování dat v klidovém stavu. Další informace naleznete v [tématu Šifrování disku klíče spravované zákazníkem](../disk-encryption.md).
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Jak lze připojit klienty ke svému clusteru?
 
@@ -96,5 +96,5 @@ Pomocí azure monitoru můžete analyzovat [protokoly Kafka](./apache-kafka-log-
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení šifrování a ověřování s vrstvou ssecurenoštých soketů (SSL) pro Apache Kafka v Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
+* [Nastavení šifrování a ověřování TLS pro Apache Kafka v Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
 * [Použití nástroje MirrorMaker k replikaci témat Apache Kafka s využitím platformy Kafka ve službě HDInsight](./apache-kafka-mirroring.md)

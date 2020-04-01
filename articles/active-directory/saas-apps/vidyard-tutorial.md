@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Vidyard | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Vidyard.
+title: 'Kurz: Integrace služby Azure Active Directory se službou Vidyard | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Vidyardem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,240 +16,240 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: a55ec7afc94440ea8b6a48ed1507476d362df6c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087422"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Kurz: Integrace Azure Active Directory s Vidyard
+# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Kurz: Integrace služby Azure Active Directory se službou Vidyard
 
 V tomto kurzu se dozvíte, jak integrovat Vidyard s Azure Active Directory (Azure AD).
-Vidyard integraci se službou Azure AD poskytuje následující výhody:
+Integrace Vidyardu s Azure AD vám přináší následující výhody:
 
 * Můžete řídit ve službě Azure AD, který má přístup k Vidyard.
-* Můžete povolit uživatelům být automaticky přihlášeni k Vidyard (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete povolit, aby se uživatelé automaticky přihlašovali k Vidyardu (jednotné přihlášení) pomocí svých účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Vidyard, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD s Vidyard, budete potřebovat následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Vidyard jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
+* Předplatné s povoleným jedním přihlášením Vidyard
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje Vidyard **SP** a **IDP** jednotné přihlašování zahájené pomocí
+* Vidyard podporuje **SP** a **IDP** inicioval SSO
 
-* Podporuje Vidyard **JIT** zřizování uživatelů
+* Vidyard podporuje zřizování uživatelů **Just In Time**
 
-## <a name="adding-vidyard-from-the-gallery"></a>Přidání Vidyard z Galerie
+## <a name="adding-vidyard-from-the-gallery"></a>Přidání Vidyard z galerie
 
-Konfigurace integrace Vidyard do služby Azure AD, budete muset přidat Vidyard z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Vidyardu do Azure AD, musíte přidat Vidyard z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Vidyard z galerie, postupujte následovně:**
+**Chcete-li přidat Vidyard z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Vidyard**vyberte **Vidyard** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Vidyard**, z panelu výsledků vyberte **Vidyard** a klepnutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Vidyard v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Vidyard podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Vidyard.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Vidyardu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem ve Vidyardu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Vidyard, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby Vidyard, je třeba provést následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Vidyard Single Sign-On](#configure-vidyard-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Vidyard](#create-vidyard-test-user)**  – Pokud chcete mít protějšek Britta Simon Vidyard, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednorázového přihlašování Vidyard](#configure-vidyard-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte vidyard test uživatele](#create-vidyard-test-user)** – mít protějšek Britta Simon ve Vidyard, který je propojen s reprezentací Azure AD uživatele.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Vidyard, proveďte následující kroky:
+Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služby Vidyard, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Vidyard** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Vidyard** vyberte **Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. V části **Základní konfigurace SAML,** pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
 
-    ![Vidyard domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Vidyard Doména a adresy URL jednotné přihlašovací informace](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://secure.vidyard.com/sso/saml/<unique id>/metadata`
+    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://secure.vidyard.com/sso/saml/<unique id>/metadata`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://secure.vidyard.com/sso/saml/<unique id>/consume`
+    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://secure.vidyard.com/sso/saml/<unique id>/consume`
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
 
-    ![Vidyard domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+    ![Vidyard Doména a adresy URL jednotné přihlašovací informace](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://secure.vidyard.com/sso/saml/<unique id>/login`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://secure.vidyard.com/sso/saml/<unique id>/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizuje o skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL, který je vysvětlen později v tomto kurzu. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujete pomocí skutečného identifikátoru, adresy URL odpovědi a adresy URL přihlášení, což je vysvětleno dále v kurzu. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-7. Na **nastavení Vidyard** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavit Vidyard** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-vidyard-single-sign-on"></a>Konfigurace Vidyard jednotné přihlašování
+### <a name="configure-vidyard-single-sign-on"></a>Konfigurace jednotného přihlašování Vidyard
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Vidyard softwaru jako správce.
+1. V jiném okně webového prohlížeče se přihlaste na web společnosti Vidyard Software jako správce.
 
-2. Na řídicím panelu Vidyard vyberte **skupiny** > **zabezpečení**
+2. Na řídicím panelu Vidyard vyberte**Zabezpečení** **skupiny** > 
 
     ![Konfigurace Vidyard](./media/vidyard-tutorial/configure1.png)
 
-3. Klikněte na tlačítko **nový profil** kartu.
+3. Klikněte na kartu **Nový profil.**
 
     ![Konfigurace Vidyard](./media/vidyard-tutorial/configure2.png)
 
-4. V **konfigurace SAML** části, proveďte následující kroky:
+4. V části **Konfigurace SAML** proveďte následující kroky:
 
     ![Konfigurace Vidyard](./media/vidyard-tutorial/configure3.png)
 
-    a. Zadejte název profilu Obecné v **název profilu** textového pole.
+    a. Do textového pole **Název profilu** zadejte obecný název profilu.
 
-    b. Kopírování **jednotného přihlašování uživatele přihlašovací stránku** hodnotu a vložte ho do **přihlašovací adresa URL** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+    b. Zkopírujte hodnotu **přihlašovací stránky uživatele při přihlašování k přihlašování** a vložte ji do textového pole **Přihlásit se na adresu URL** v části Základní konfigurace **SAML** na webu Azure Portal.
 
-    c. Kopírování **ACS URL** hodnotu a vložte ho do **adresy URL odpovědi** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+    c. Zkopírujte hodnotu **adresy URL služby ACS** a vložte ji do textového pole **pro odpověď** v části Základní **konfigurace SAML** na webu Azure Portal.
 
-    d. Kopírování **URL vystavitele nebo Metadata** hodnotu a vložte ho do **identifikátor** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+    d. Zkopírujte hodnotu **adresy URL vystavitele/metadat** a vložte ji do textového pole **Identifikátor** v části Základní **konfigurace SAML** na webu Azure Portal.
 
-    e. Otevřete soubor stažený certifikát z webu Azure portal v programu Poznámkový blok a vložte jej do **certifikát X.509** textového pole.
+    e. Otevřete stažený soubor certifikátu z portálu Azure v poznámkovém bloku a vložte ho do textového pole **Certifikát X.509.**
 
-    f. V **adresu URL koncového bodu SAML** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanými z webu Azure portal.
+    f. V textovém poli **adresy URL koncového bodu SAML** vložte hodnotu **přihlašovací adresy URL** zkopírované z webu Azure Portal.
 
     g. Klikněte na **Confirm** (Potvrdit).
 
-5. Na kartě Single Sign On, vyberte **přiřadit** vedle existujícího profilu
+5. Na kartě Jednotné přihlášení vyberte **Přiřadit** vedle existujícího profilu.
 
     ![Konfigurace Vidyard](./media/vidyard-tutorial/configure4.png)
 
     > [!NOTE]
-    > Jakmile vytvoříte profil jednotného přihlašování, ji přiřadíte do žádné skupiny, pro kterou budou uživatelé vyžadují přístup prostřednictvím Azure. Pokud uživatel neexistuje v rámci skupiny, ke kterému byla přiřazena, Vidyard automaticky vytvořit účet uživatele a přiřadit jejich role v reálném čase.
+    > Jakmile vytvoříte profil přistupujícího objektu, přiřaďte ho všem skupinám, pro které budou uživatelé vyžadovat přístup prostřednictvím Azure. Pokud uživatel ve skupině, ke které byl přiřazen, neexistuje, Vidyard automaticky vytvoří uživatelský účet a přiřadí svou roli v reálném čase.
 
-6. Vyberte skupiny organizace, který se zobrazí v **skupiny k dispozici k přiřazení**.
+6. Vyberte skupinu organizace, která je viditelná ve **skupinách, které jsou k dispozici pro přiřazení**.
 
     ![Konfigurace Vidyard](./media/vidyard-tutorial/configure5.png)
 
-7. Přiřazené skupiny v části můžete zobrazit **aktuálně přiřazené skupiny**. Vyberte roli pro skupinu podle vaší organizace a klikněte na **potvrdit**.
+7. Přiřazené skupiny můžete zobrazit v části **Aktuálně přiřazené skupiny**. Vyberte roli pro skupinu podle vaší organizace a klepněte na **tlačítko Potvrdit**.
 
     ![Konfigurace Vidyard](./media/vidyard-tutorial/configure6.png)
 
     > [!NOTE]
-    > Další informace najdete v [tohoto dokumentu](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard).
+    > Další informace naleznete v [tomto dokumentu](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard).
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. V poli **Uživatelské** brittasimon@yourcompanydomain.extensionjméno typ pole . Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k Vidyard použití Azure jednotného přihlašování.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Vidyard.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Vidyard**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Vidyard**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte **Vidyard**.
 
-    ![Odkaz Vidyard v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Vidyard v seznamu Aplikace](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-vidyard-test-user"></a>Vytvoření Vidyard testovacího uživatele
+### <a name="create-vidyard-test-user"></a>Vytvořit testovacího uživatele Vidyard
 
-V této části se vytvoří uživateli Britta Simon v Vidyard. Vidyard podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Vidyard, vytvoří se nový po ověření.
+V této části je uživatel s názvem Britta Simon vytvořen ve Vidyardu. Vidyard podporuje zřizování uživatelů just-in-time, které je ve výchozím nastavení povoleno. V této části pro vás není žádná položka akce. Pokud uživatel ve Vidyardu ještě neexistuje, vytvoří se po ověření nový uživatel.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Vidyard](mailto:support@vidyard.com).
+>Pokud potřebujete vytvořit uživatele ručně, obraťte se na [tým podpory společnosti Vidyard](mailto:support@vidyard.com).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Vidyard na přístupovém panelu, můžete by měl být automaticky přihlášeni k Vidyard, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Vidyard na přístupovém panelu, měli byste být automaticky přihlášeni k Vidyard, pro které nastavíte přiřazovací příkaz. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

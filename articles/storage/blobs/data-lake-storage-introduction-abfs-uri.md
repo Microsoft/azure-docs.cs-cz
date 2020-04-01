@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855556"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437132"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage Gen2 URI
 
@@ -27,7 +27,7 @@ Pokud účet s podporou úložiště datového jezera Gen2, který chcete adreso
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Identifikátor schématu**: Protokol se `abfs` používá jako identifikátor schématu. Máte možnost připojit se k připojení s nebo bez připojení vrstvy ssl (Secure Socket). Slouží `abfss` k připojení pomocí připojení vrstvy zabezpečené sokety.
+1. **Identifikátor schématu**: Protokol se `abfs` používá jako identifikátor schématu. Máte možnost připojit se k nebo bez zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer). Slouží `abfss` k připojení pomocí připojení TLS.
 
 2. **Systém souborů**: Nadřazené umístění, ve které jsou soubory a složky. To je stejné jako kontejnery ve službě objektů blobs úložiště Azure.
 

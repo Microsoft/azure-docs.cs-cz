@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445165"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410000"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Jak globálně distribuovat čtení pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -86,7 +86,7 @@ Podrobnosti o chování každého z těchto režimů předvoleb čtení naleznet
 Na základě běžných scénářů doporučujeme použít následující nastavení:
 
 1. Pokud je **vyžadováno čtení s nízkou latencí,** použijte režim předvoleb čtení **NEAREST.** Toto nastavení přesměruje operace čtení do nejbližší dostupné oblasti. Všimněte si, že pokud nejbližší oblast je oblast WRITE, pak tyto operace jsou směrovány do této oblasti.
-2. Pokud je požadována **vysoká dostupnost a geografická distribuce čtení** (latence není omezení), použijte režim **sekundární upřednostňované** čtení. Toto nastavení směruje operace čtení do oblasti čtení k dispozici. Pokud není k dispozici žádná oblast čtení, pak požadavky jsou směrovány do oblasti WRITE.
+2. Pokud je požadována **vysoká dostupnost a geografická distribuce čtení** (latence není omezení), použijte režim předvoleb **primární upřednostňované** nebo **sekundární upřednostňované** čtení. Toto nastavení směruje operace čtení do oblasti zápisu nebo čtení v uvedeném pořadí. Pokud oblast není k dispozici, pak požadavky jsou směrovány do další dostupné oblasti podle chování předvoleb pro čtení.
 
 Následující úryvek z ukázkové aplikace ukazuje, jak nakonfigurovat předvolbu čtení NEAREST v NodeJS:
 

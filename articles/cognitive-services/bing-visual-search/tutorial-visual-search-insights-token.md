@@ -1,25 +1,25 @@
 ---
-title: Najít podobné obrázky z předchozích vyhledávání pomocí ImageInsightsToken - Vizuální vyhledávání Bing
+title: Vyhledání podobných obrázků z předchozích vyhledávání pomocí tokenů přehledů obrázků a rozhraní API pro vizuální vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Pomocí sady SDK vizuálního vyhledávání Bingu můžete získat adresy URL obrázků určených tokenem ImageInsightsToken.
+description: Pomocí klientské knihovny vizuálního vyhledávání Bingzískáte adresy URL obrázků z předchozích hledání.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 03/27/2020
+ms.date: 03/31/2020
 ms.author: aahi
-ms.openlocfilehash: d005800ed317ff21389f18e4440858ea11042e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad24a8a194a11c3fd5f7f77ea8c52197d5438edc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370078"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477919"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Kurz: Vyhledání podobných obrázků z předchozích vyhledávání pomocí tokenu přehledů obrázků
 
-Sada Visual Search SDK umožňuje vyhledat obrázky online `ImageInsightsToken`z předchozích hledání, která vracejí soubor . Tato aplikace `ImageInsightsToken` získá a používá token v následném hledání. Potom odešle `ImageInsightsToken` bing a vrátí výsledky, které zahrnují adresy URL vyhledávání Bing a adresy URL podobných obrázků nalezených online.
+Klientská knihovna Vizuální vyhledávání umožňuje vyhledat obrázky online `ImageInsightsToken`z předchozích hledání, která vracejí soubor . Tato aplikace `ImageInsightsToken` získá a používá token v následném hledání. Potom odešle `ImageInsightsToken` bing a vrátí výsledky, které zahrnují adresy URL vyhledávání Bing a adresy URL podobných obrázků nalezených online.
 
 Úplný zdrojový kód pro tento kurz lze nalézt s další zpracování chyb a poznámky na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs).
 
@@ -36,9 +36,9 @@ Sada Visual Search SDK umožňuje vyhledat obrázky online `ImageInsightsToken`z
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Získání imageInsightsToken z bing image search SDK
+## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>Získání tokenu ImageInsightsToken z klientské knihovny hledání obrázků Bingu
 
-Tato aplikace `ImageInsightsToken` používá získané prostřednictvím [Bing Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). V nové aplikaci konzoly C# vytvořte `ImageSearchClient()`klienta pro volání rozhraní API pomocí . Potom `SearchAsync()` použijte s dotazem:
+Tato aplikace `ImageInsightsToken` používá získané prostřednictvím [knihovny klienta Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). V nové aplikaci konzoly C# vytvořte `ImageSearchClient()`klienta pro volání rozhraní API pomocí . Potom `SearchAsync()` použijte s dotazem:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));

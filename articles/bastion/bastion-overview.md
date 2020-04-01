@@ -7,16 +7,16 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: e995cba1c2ba06333d7bee507182693002cf4bbf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76989483"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411105"
 ---
 # <a name="what-is-azure-bastion"></a>Co je Azure Bastion?
 
-Služba Azure Bastion je nová plně platformně spravovaná služba PaaS, kterou zřídíte ve virtuální síti. Poskytuje bezpečné a bezproblémové připojení RDP/SSH k vašim virtuálním počítačům přímo na portálu Azure přes SSL. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu.
+Služba Azure Bastion je nová plně platformně spravovaná služba PaaS, kterou zřídíte ve virtuální síti. Poskytuje bezpečné a bezproblémové připojení RDP/SSH k vašim virtuálním počítačům přímo na portálu Azure přes TLS. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu.
 
 Bašta poskytuje zabezpečené připojení RDP a SSH ke všem virtuálním počítačům ve virtuální síti, ve které je zřízena. Použití Azure Bastion chrání vaše virtuální počítače před vystavením portů RDP/SSH vnějšímu světu a zároveň poskytuje tezi zabezpečený přístup pomocí RDP/SSH. S Azure Bastion se k virtuálnímu počítači připojíte přímo z portálu Azure. Nepotřebujete dalšího klienta, agenta nebo software.
 
@@ -41,7 +41,7 @@ Tento obrázek znázorňuje architekturu nasazení Azure Bastion. V tomto diagra
 K dispozici jsou následující funkce:
 
 * **RDP a SSH přímo na webu Azure Portal:** Přímo se můžete dostat k relaci RDP a SSH přímo na webu Azure Portal pomocí bezproblémového prostředí pro jedno kliknutí.
-* **Vzdálená relace přes Protokol SSL a průchod brány firewall pro protokol RDP/SSH:** Azure Bastion používá webového klienta založeného na HTML5, který se automaticky streamuje do místního zařízení, takže se vaše relace RDP/SSH dostane přes SSL na portu 443, což umožňuje bezpečně procházet podnikové brány firewall.
+* **Vzdálená relace přes TLS a průchod brány firewall pro PROTOKOL RDP/SSH:** Azure Bastion používá webového klienta založeného na HTML5, který se automaticky streamuje do místního zařízení, takže se vaše relace RDP/SSH přes TLS dostanete přes TLS na portu 443, který umožňuje bezpečně procházet podnikové brány firewall.
 * **Na virtuálním počítači Azure není vyžadována žádná veřejná IP adresa:** Azure Bastion otevře připojení RDP/SSH k virtuálnímu počítači Azure pomocí privátní IP adresy na vašem virtuálním počítači. Nepotřebujete veřejnou IP adresu ve virtuálním počítači.
 * **Žádné potíže se správou nevládních tahů:** Azure Bastion je plně spravovaná služba PaaS z Azure, která je interně posílená, aby vám zajistila zabezpečené připojení RDP/SSH. V podsíti Azure Bastion není nutné použít žádné skupiny zabezpečení sítě. Vzhledem k tomu, že Azure Bastion se připojuje k vašim virtuálním počítačům přes privátní IP adresy, můžete nakonfigurovat nsgs povolit RDP/SSH z Azure Bastion jenom. Tím se odstraní potíže se správou nevládních společností pokaždé, když potřebujete bezpečně připojit k virtuálním počítačům.
 * **Ochrana proti skenování portů:** Vzhledem k tomu, že není nutné vystavit virtuální počítače na veřejný Internet, vaše virtuální počítače jsou chráněny proti prohledávání portů neautorizovanými a škodlivými uživateli umístěnými mimo vaši virtuální síť.

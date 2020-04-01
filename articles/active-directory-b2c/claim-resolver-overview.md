@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cba97b84f77bd4e2d4cfd97601fa4f8637105eb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051406"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396069"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací ve vlastních zásadách služby Azure Active Directory B2C
 
@@ -76,7 +76,7 @@ V následujících částech jsou k dispozici překladače deklarací.
 | {OIDC:Výzva} | Parametr `prompt` řetězce dotazu. | přihlášení |
 | {OIDC:PřesměrovatUri} |Parametr `redirect_uri` řetězce dotazu. | https://jwt.ms |
 | {OIDC:Zdroj} |Parametr `resource` řetězce dotazu. | Není dostupné. |
-| {OIDC:obor} |Parametr `scope` řetězce dotazu. | Openid |
+| {OIDC:Obor} |Parametr `scope` řetězce dotazu. | Openid |
 | {OIDC:Uživatelské jméno}| Přihlašovací [údaje vlastníka prostředku tok](ropc-custom.md) uživatelské jméno uživatele.| emily@contoso.com| 
 
 ### <a name="context"></a>Kontext
@@ -162,7 +162,7 @@ Následující příklad ukazuje technický profil RESTful s tímto scénářem:
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -175,7 +175,7 @@ Pomocí překládání deklarací identity můžete předem vyplnit přihlašova
 
 ### <a name="dynamic-ui-customization"></a>Dynamické přizpůsobení uživatelského rozhraní
 
-Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML dynamicky vykreslovat obsah stránky. To například umožňuje upravit image pozadí na stránce registrace nebo přihlášení Azure AD B2C na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete [v tématu Dynamicky konfigurace ui pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization.md). Stránku HTML můžete také lokalizovat na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
+Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML dynamicky vykreslovat obsah stránky. Tato funkce například umožňuje upravit image pozadí na stránce registrace nebo přihlášení Azure AD B2C na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete [v tématu Dynamicky konfigurace ui pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri). Stránku HTML můžete také lokalizovat na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
 
 Následující příklad předá v parametru řetězce dotazu `Hawaii`s názvem **campaignId** s hodnotou , kód **jazyka** `en-US`a **aplikace** představující ID klienta:
 

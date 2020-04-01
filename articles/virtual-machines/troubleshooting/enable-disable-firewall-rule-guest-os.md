@@ -1,6 +1,6 @@
 ---
 title: Povolení nebo zakázání pravidla brány firewall u hostovaného operačního systému ve virtuálním počítači Azure | Dokumenty společnosti Microsoft
-description: ''
+description: Zjistěte, jak pomocí vzdálených nástrojů online nebo offline nebo nastavení registru povolit nebo zakázat pravidla brány firewall hostovaného operačního systému na vzdáleném virtuálním počítači Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71086448"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422893"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Povolení nebo zakázání pravidla brány firewall na hostovaném operačním systému virtuálního počítače Azure
 

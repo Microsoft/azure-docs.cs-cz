@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Hyper-V pomocí MABS
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255065"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420405"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů Hyper-V pomocí Azure Backup Server
 
@@ -99,83 +99,6 @@ Toto jsou předpoklady pro zálohování virtuálních počítačů Hyper-V pomo
 9. Na stránce **Možnosti kontroly konzistence** vyberte, jak chcete automatizovat kontroly konzistence. Spuštění kontroly můžete povolit jenom pro případ, že začnou být nekonzistentní data repliky, nebo podle plánu. Pokud automatickou kontrolu konzistence nechcete konfigurovat, můžete kdykoliv spustit ruční kontrolu tak, že pravým tlačítkem kliknete na skupinu ochrany a vyberete **Provést kontrolu konzistence**.
 
     Po vytvoření skupiny ochrany dojde k počáteční replikaci dat v souladu s vámi zvoleným způsobem. Všechna zálohování po počáteční replikaci probíhají podle nastavení skupiny ochrany. Pokud potřebujete obnovit zálohovaná data, poznamenejte si následující:
-
-## <a name="back-up-virtual-machines-configured-for-live-migration"></a>Zálohování virtuálních počítačů konfigurovaných na migraci za provozu
-
-Pokud jsou virtuální počítače zapojeny do migrace za provozu, MABS nadále chrání virtuální počítače tak dlouho, dokud je agent ochrany MABS nainstalován na hostiteli Hyper-V. Způsob, jakým MABS chrání virtuální počítače, závisí na typu migrace za provozu.
-
-**Migrace za provozu v rámci clusteru** – při migraci virtuálního počítače v rámci clusteru MABS zjistí migraci a zálohuje virtuální počítač z nového uzlu clusteru bez nutnosti zásahu uživatele. Vzhledem k tomu, že umístění úložiště se nezměnilo, MABS pokračuje s expresní úplné zálohy.
-
-**Migrace za provozu mimo cluster** – Při migraci virtuálního počítače mezi samostatnými servery, různými clustery nebo mezi samostatným serverem a clusterem mabs zjistí migraci a může zálohovat virtuální počítač bez zásahu uživatele.
-
-### <a name="requirements-for-maintaining-protection"></a>Podmínky zachování ochrany
-
-Aby se během migrace zachovala ochrana, je nutné splnit následující podmínky:
-
-- Hostitelé technologie Hyper-V pro virtuální počítače musí být umístěni v cloudu System Center VMM na serveru VMM a se serverem System Center 2012 s sp1.
-
-- Agent ochrany MABS musí být nainstalován na všech hostitelích technologie Hyper-V.
-
-- Servery MABS musí být připojeny k serveru VMM. Všechny hostitelské servery Hyper-V v cloudu VMM musí být také připojeny k serverům MABS. To umožňuje MABS komunikovat se serverem VMM, takže MABS může zjistit, na kterém hostitelském serveru Hyper-V je virtuální počítač aktuálně spuštěn, a vytvořit novou zálohu z tohoto serveru Hyper-V. Pokud nelze navázat připojení k serveru Hyper-V, zálohování se nezdaří se zprávou, že agent ochrany MABS je nedostupný.
-
-- Všechny servery MABS, servery VMM a hostitelské servery Hyper-V musí být ve stejné doméně.
-
-### <a name="details-about-live-migration"></a>Podrobnosti o migraci za provozu
-
-Při zálohování během migrace za provozu pamatujte na toto:
-
-- Pokud migrace za provozu přenáší úložiště, MABS provede úplnou kontrolu konzistence virtuálního počítače a pak pokračuje s expresní úplné zálohy. Dojde-li k migraci úložiště za provozu, technologie Hyper-V reorganizuje virtuální pevný disk (VHD) nebo VHDX, což způsobí jednorázový nárůst velikosti záložních dat MABS.
-
-- Na hostiteli virtuálního počítače zapněte automatické připojení. Tím zapnete virtuální ochranu a vypnete funkci TCP Chimney Offload.
-
-- MABS používá port 6070 jako výchozí port pro hostování pomocné služby DPM-VMM. Registr změníte takto:
-
-    1. Přejděte k **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Configuration**.
-    2. Vytvořte 32bitovou hodnotu typu DWORD nazvanou DpmVmmHelperServicePort a nové číslo portu zapište jako součást klíče registru.
-    3. Otevřete ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` a změňte číslo portu 6070 na číslo nového portu. Příklad: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. Restartujte službu pomoci DPM VMM a restartujte službu DPM.
-
-### <a name="set-up-protection-for-live-migration"></a>Nastavení ochrany pro migraci za provozu
-
-Ochranu pro migraci za provozu nastavíte takto:
-
-1. Nastavte server MABS a jeho úložiště a nainstalujte agenta ochrany MABS na každý hostitelský server nebo uzel clusteru Hyper-V v cloudu VMM. Pokud používáte úložiště SMB v clusteru, nainstalujte agenta ochrany MABS do všech uzlů clusteru.
-
-2. Nainstalujte konzolu VMM jako klientskou součást na server MABS, aby mabs mohl komunikovat se serverem VMM. Konzola by měla mít stejnou verzi, jaká běží na serveru VMM.
-
-3. Přiřaďte účet MABSMachineName$ jako účet správce jen pro čtení na serveru pro správu VMM.
-
-4. Připojte všechny hostitelské servery Hyper-V ke `Set-DPMGlobalProperty` všem serverům MABS pomocí rutiny prostředí PowerShell. Rutina přijímá více názvů serverů MABS. Použijte formát: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Další informace naleznete v tématu [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
-
-5. Jakmile se všechny virtuální počítače spuštěné na hostitelích Hyper-V v cloudech VMM objeví ve službě VMM, nastavte skupinu ochrany a přidejte virtuální počítače, které chcete chránit. Automatické kontroly konzistence by měly být povoleny na úrovni skupiny ochrany pro ochranu ve scénářích mobility virtuálních strojů.
-
-6. Po konfiguraci nastavení, když virtuální počítač migruje z jednoho clusteru do druhého všechny zálohy pokračovat podle očekávání. Ověřit, zda se povolila migrace za provozu dle očekávání, můžete ověřit takto:
-
-   1. Zkontrolujte, zda je spuštěna pomocná služba DPM-VMM. Pokud ne, začněte.
-
-   2. Otevřete Microsoft SQL Server Management Studio a připojte se k instanci, která je hostitelem databáze MABS (DPMDB). V databázi aplikace DPMDB spusťte následující dotaz: `SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`.
-
-      Tento dotaz obsahuje `KnownVMMServer`vlastnost s názvem . Tato hodnota by měla být stejná jako hodnota zadaná v rutině `Set-DPMGlobalProperty`.
-
-   3. Spuštěním následujícího dotazu ověřte parametr *VMMIdentifier* v řetězci `PhysicalPathXML` u konkrétního virtuálního počítače. Nahraďte položku `VMName` názvem virtuálního počítače.
-
-      ```sql
-      select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
-      ```
-
-   4. Otevřete soubor .xml vrácený tímto dotazem a ověřte, jestli má pole *VMMIdentifier* nějakou hodnotu.
-
-### <a name="run-manual-migration"></a>Ruční spuštění migrace
-
-Po dokončení kroků v předchozích částech a dokončení úlohy MABS Summary Manager je migrace povolena. Ve výchozím nastavení se tato úloha spustí o půlnoci a proběhne každé ráno. Pokud chcete spustit ruční migraci a zkontrolovat, jestli všechno funguje podle očekávání, postupujte takto:
-
-1. Otevřete SQL Server Management Studio a připojte se k instanci, která je hostitelem databáze MABS.
-
-2. Spusťte následující dotaz: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. Tento dotaz vrátí hodnotu **ScheduleID**. Poznamenejte si ji, protože ji budete potřebovat v následujícím kroku.
-
-3. V nástroji SQL Server Management Studio rozbalte položku **Agent systému SQL Server** a potom rozbalte **Úlohy**. Klikněte pravým tlačítkem na hodnotu **ScheduleID**, kterou jste si poznamenali, a vyberte **Spustit úlohu v kroku**.
-
-Výkon zálohování je ovlivněna při spuštění úlohy. Velikost a rozsah nasazení určuje, jak dlouho trvá dokončení úlohy.
 
 ## <a name="back-up-replica-virtual-machines"></a>Zálohování virtuálních počítačů repliky
 

@@ -1,6 +1,6 @@
 ---
 title: Připojení počítačů s Windows ke službě Azure Security Center
-description: V tomto rychlém startu se dozvíte, jak zřídit agenta Microsoft Monitoring Agent na počítači s Windows.
+description: Tento rychlý start ukazuje, jak zřídit agenta Analýzy protokolů v počítači se systémem Windows.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73686497"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435926"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Windows ke službě Azure Security Center
-Po připojení předplatných Azure můžete zřízením agenta Microsoft Monitoring Agent povolit službu Security Center pro prostředky spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.
+Po napalubí předplatného Azure můžete povolit Security Center pro prostředky spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta Log Analytics.
 
-V tomto rychlém startu se dozvíte, jak nainstalovat agenta Microsoft Monitoring Agent na počítač s Windows.
+Tento rychlý start ukazuje, jak nainstalovat agenta Log Analytics do počítače se systémem Windows.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
@@ -72,7 +72,7 @@ Teď je potřeba stažený soubor nainstalovat na cílový počítač.
 9. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak vyberte **Nainstalovat**.
 10. Na stránce **Konfigurace byla úspěšně dokončena** vyberte **Dokončit**.
 
-Po dokončení se **Microsoft Monitoring Agent** zobrazí v **Ovládacích panelech**. Tam můžete zkontrolovat svou konfiguraci a ověřit připojení agenta.
+Po dokončení se v **Ovládacích panelech**zobrazí **agent Analýzy protokolů** . Tam můžete zkontrolovat svou konfiguraci a ověřit připojení agenta.
 
 Další informace o instalaci a konfiguraci agenta najdete v tématu popisujícím [připojení počítačů s Windows](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
@@ -93,10 +93,10 @@ Odebrání agenta:
 
 1. Otevřete **Ovládací panely**.
 2. Otevřete **Programy a funkce**.
-3. V části **Programy a funkce** vyberte **Microsoft Monitoring Agent** a klikněte na **Odinstalovat**.
+3. V **části Programy a funkce**vyberte možnost Agent log **Analytics** a klepněte na tlačítko **Odinstalovat**.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste zřídili agenta Microsoft Monitoring Agent na počítači s Windows. Další informace o tom, jak používat Security Center, najdete v následném kurzu o konfiguraci zásad zabezpečení a o vyhodnocení zabezpečení vašich prostředků.
+V tomto rychlém startu jste zřídit agenta Analýzy protokolů v počítači se systémem Windows. Další informace o tom, jak používat Security Center, najdete v následném kurzu o konfiguraci zásad zabezpečení a o vyhodnocení zabezpečení vašich prostředků.
 
 > [!div class="nextstepaction"]
 > [Kurz: Definování a vyhodnocení zásad zabezpečení](tutorial-security-policy.md)

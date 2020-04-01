@@ -3,12 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled a porovnání mezi trezory služby Recovery Services a trezory Zálohování Azure.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673242"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436959"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -18,7 +18,7 @@ V rámci předplatného Azure můžete vytvořit až 500 trezorů služby Recove
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Porovnání trezorů služby Recovery Services a trezorů zálohování
 
-Pokud stále máte trezory zálohování, jsou automaticky upgradovány na trezory služby Recovery Services. Do listopadu 2017 byly všechny trezory zálohování upgradovány na trezory služby Recovery Services.
+Pokud máte stále trezory zálohování, jsou automaticky upgradovány na trezory služby Recovery Services. Do listopadu 2017 byly všechny trezory zálohování upgradovány na trezory služby Recovery Services.
 
 Trezory služby Recovery Services jsou založené na modelu Azure Resource Manageru, zatímco trezory zálohování byly založené na modelu Azure Service Manager. Při upgradu trezoru zálohování do trezoru služby Recovery Services zůstanou záložní data během procesu upgradu a po něm neporušená. Trezory služby Recovery Services poskytují funkce, které nejsou k dispozici pro trezory zálohování, například:
 
@@ -32,11 +32,19 @@ Trezory služby Recovery Services jsou založené na modelu Azure Resource Manag
 
 - **Okamžité obnovení pro virtuální aplikace IaaS:** Pomocí trezorů služby Recovery Services můžete obnovit soubory a složky z virtuálního zařízení IaaS bez obnovení celého virtuálního zařízení, což umožňuje rychlejší obnovení. Okamžité obnovení pro virtuální počítače IaaS je k dispozici pro virtuální počítače s Windows i Linux. [Další informace](backup-instant-restore-capability.md)
 
+## <a name="storage-settings-in-the-recovery-services-vault"></a>Nastavení úložiště v trezoru služby Recovery Services
+
+Trezor služby Recovery Services je entita, která ukládá zálohy a body obnovení vytvořené v průběhu času. Trezor služby Recovery Services také obsahuje zásady zálohování, které jsou přidruženy k chráněným virtuálním počítačům.
+
+Azure Backup automaticky zpracovává úložiště pro trezor. Podívejte se, jak [lze změnit nastavení úložiště](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
+
+Další informace o redundanci úložiště najdete v těchto článcích o [geografické](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) a [místní](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) redundanci.
+
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Správa trezorů služby Recovery Services na portálu
 
 Vytvoření a správa trezorů služby Recovery Services na webu Azure Portal je snadné, protože služba Backup se integruje do jiných služeb Azure. Tato integrace znamená, že můžete vytvořit nebo spravovat trezor služby Recovery Services *v kontextu cílové služby*. Chcete-li například zobrazit body obnovení pro virtuální počítač, vyberte virtuální počítač a v nabídce Operace klikněte na **Zálohování.**
 
-![Podrobnosti trezoru služby obnovení VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
+![Podrobnosti trezoru služby Recovery Services VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
 Pokud virtuální počítače nemá nakonfigurované zálohy, zobrazí se výzva ke konfiguraci zálohování. Pokud byla nakonfigurovaná záloha, zobrazí se informace o zálohování virtuálního počítače, včetně seznamu bodů obnovení.  
 

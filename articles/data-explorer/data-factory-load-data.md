@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e17a004ff866f3915000fb72b6770757062cf83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71300600"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422918"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Kopírování dat do Azure Data Exploreru pomocí Azure Data Factory 
 
@@ -29,7 +29,7 @@ Při načítání dat do Průzkumníka dat Azure, Data Factory poskytuje násled
 * **Vysoký výkon**: Rychlost načítání dat je až 1 gigabajt za sekundu (BPS) do Průzkumníka dat Azure. Další informace naleznete v [tématu Kopírování výkonu aktivity](/azure/data-factory/copy-activity-performance).
 
 V tomto článku použijete nástroj Data Factory Copy Data k načtení dat ze služby Amazon Simple Storage Service (S3) do Průzkumníka dat Azure. Můžete sledovat podobný proces kopírovat data z jiných úložišť dat, například:
-* [Úložiště objektů blob Azure](/azure/data-factory/connector-azure-blob-storage)
+* [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage)
 * [Azure SQL Database](/azure/data-factory/connector-azure-sql-database)
 * [Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse)
 * [Google BigQuery](/azure/data-factory/connector-google-bigquery)
@@ -59,7 +59,7 @@ V tomto článku použijete nástroj Data Factory Copy Data k načtení dat ze s
    | **Název** | Do pole zadejte globálně jedinečný název datové továrny. Pokud se zobrazí chyba, *název \"datové továrny LoadADXDemo\" není k dispozici*, zadejte jiný název pro datové továrny. Pravidla týkající se pojmenování artefaktů datové továrny naleznete v tématu [Pravidla pojmenování datové továrny](/azure/data-factory/naming-rules).|
    | **Předplatné** | V rozevíracím seznamu vyberte předplatné Azure, ve kterém chcete vytvořit datové továrny. |
    | **Skupina prostředků** | Vyberte **Vytvořit nový**a zadejte název nové skupiny prostředků. Pokud již skupinu prostředků máte, vyberte **Použít existující**. |
-   | **Verze** | V rozevíracím seznamu vyberte **V2**. |  
+   | **Verze** | V rozevíracím seznamu vyberte **V2**. |    
    | **Umístění** | V rozevíracím seznamu vyberte umístění pro datovou továrnu. V seznamu jsou zobrazena pouze podporovaná umístění. Úložiště dat, která používá továrna na data, mohou existovat v jiných umístěních nebo oblastech. |
 
 1. Vyberte **Vytvořit**.
@@ -78,7 +78,7 @@ Do Průzkumníka dat Azure můžete načíst data z mnoha typů [úložišť dat
 
 Data můžete načíst jedním z následujících způsobů:
 
-* V uživatelském rozhraní Azure Data Factory v levém podokně vyberte ikonu **Autor,** jak je znázorněno v části Vytvořit datovou továrnu v části [Vytvořit datovou továrnu pomocí uživatelského rozhraní Azure Data Factory](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory).
+* V uživatelském rozhraní Azure Data Factory v levém podokně vyberte ikonu **Autor.** To se zobrazí v části "Vytvořit tovární data" [v části Vytvořit datovou továrnu pomocí uhlavního nastavení Azure Data Factory](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory).
 * V nástroji Azure Data Factory Copy Data, jak je znázorněno v [nástroji Kopírovat data pomocí nástroje Kopírovat data ke kopírování dat](/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
 ### <a name="copy-data-from-amazon-s3-source"></a>Kopírování dat z Amazon S3 (zdroj)
@@ -142,9 +142,12 @@ Data můžete načíst jedním z následujících způsobů:
 
 Nová propojená služba Azure Data Explorer se vytvoří pro kopírování dat do cílové tabulky (jímky) aplikace Azure Data Explorer, která je určena v této části.
 
+> [!NOTE]
+> Pomocí [aktivity příkazů Azure Data Factory můžete spouštět příkazy řízení Průzkumníka dat](data-factory-command-activity.md) `.set-or-replace`Azure a používat některý z [ingestů z příkazů dotazu](/azure/kusto/management/data-ingestion/ingest-from-query), jako je například .
+
 #### <a name="create-the-azure-data-explorer-linked-service"></a>Vytvoření propojené služby Azure Data Explorer
 
-Chcete-li vytvořit propojenou službu Azure Data Explorer, postupujte takto.
+Pokud chcete vytvořit propojenou službu Azure Data Explorer, postupujte takto:
 
 1. Chcete-li použít existující připojení k úložišti dat nebo zadat nové úložiště dat, vyberte v podokně **Cílové úložiště dat** možnost Vytvořit nové **připojení**.
 
@@ -154,13 +157,13 @@ Chcete-li vytvořit propojenou službu Azure Data Explorer, postupujte takto.
 
     ![Podokno Nové propojené služby](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-1. V podokně **Nová propojená služba (Průzkumník dat Azure)** postupujte takto:
+1. V podokně **Nová propojená služba (Průzkumník dat Azure)** proveďte následující kroky:
 
     ![Podokno Nové propojené služby Průzkumníka dat Azure](media/data-factory-load-data/adx-new-linked-service.png)
 
    a. Do pole **Název** zadejte název propojené služby Azure Data Explorer.
 
-   b. V části **Metoda výběru účtu**proveďte jednu z následujících akcí: 
+   b. V části **Metoda výběru účtu**zvolte jednu z následujících možností: 
 
     * Vyberte **Z předplatného Azure** a pak v rozevíracích seznamech vyberte předplatné **Azure** a **cluster**. 
 

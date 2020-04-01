@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b28de7af16053093cd0108224188cdd615fce55
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73686330"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435507"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
 Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálnímu počítači (VM) just-in-time (VM) snižuje vaši expozici útokům tím, že vám umožňuje odepřít trvalý přístup k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
@@ -110,7 +110,7 @@ Pokud chcete vypnout automatické zřizování:
 4. Vyberte **Uložit**.
 
 >[!NOTE]
-> Vypnutím automatického zřizování neodeberete agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, na kterých byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
+> Zakázání automatické zřizování neodebere agenta Analýzy protokolů z virtuálních stránek Azure, kde byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
 >
 
 ## <a name="next-steps"></a>Další kroky

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603689"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435483"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace registrace Azure Security Center pomocí PowerShellu
 
@@ -29,13 +29,13 @@ Registrace Azure Security Center pomocí PowerShellu umožňuje programově auto
 
 Tento článek obsahuje ukázkový skript prostředí PowerShell, který lze upravit a použít ve vašem prostředí k zavedení Centra zabezpečení v rámci vašich předplatných. 
 
-V tomto příkladu povolíme Security Center na předplatné s ID: d07c0080-170c-4c24-861d-9c817742786c a použít doporučená nastavení, které poskytují vysokou úroveň ochrany, implementací standardní úrovně Security Center, která poskytuje pokročilé možnosti ochrany před hrozbami a detekce:
+V tomto příkladu povolíme Security Center na předplatné s ID: d07c0080-170c-4c24-861d-9c817742786c a použít doporučená nastavení, které poskytují vysokou úroveň ochrany, implementací úrovně Standard Security Center, která poskytuje pokročilé možnosti ochrany před hrozbami a detekce:
 
 1. Nastavte [standardní úroveň ochrany centra zabezpečení](https://azure.microsoft.com/pricing/details/security-center/). 
  
-2. Nastavte pracovní prostor Log Analytics, do kterého bude agent monitorování Microsoftu odesílat data, která shromažďuje na virtuálních počítačích přidružených k předplatnému – v tomto příkladu existující pracovní prostor definovaný uživatelem (myWorkspace).
+2. Nastavte pracovní prostor Log Analytics, do kterého agent Analýzy protokolů odešle data, která shromažďuje na virtuálních počítačích přidružených k předplatnému – v tomto příkladu existující pracovní prostor definovaný uživatelem (myWorkspace).
 
-3. Aktivujte automatické zřizování agentů centra zabezpečení, které [nasazuje agenta Microsoft Monitoring Agent](security-center-enable-data-collection.md#auto-provision-mma).
+3. Aktivujte automatické zřizování agenta Centra zabezpečení, které [nasazuje agenta Analýzy protokolů](security-center-enable-data-collection.md#auto-provision-mma).
 
 5. Nastavte ciso organizace [jako bezpečnostní kontakt pro výstrahy Centra zabezpečení a významné události](security-center-provide-security-contact-details.md).
 
@@ -68,7 +68,7 @@ Před spuštěním rutin Centra zabezpečení je třeba provést tyto kroky:
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  Instalace automatického zřizování agenta monitorování Microsoftu na virtuálních počítačích Azure:
+4.  Instalace automatického zřizování agenta Analýzy protokolů na virtuálních počítačích Azure:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     

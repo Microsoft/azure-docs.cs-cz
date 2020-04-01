@@ -1,36 +1,53 @@
 ---
-title: Úvodní příručka – vytvoření škálovací sady virtuálních strojů pro Linux pomocí šablony Azure
+title: Úvodní příručka – vytvoření škálovací sady virtuálních strojů pro Linux pomocí šablony Azure Resource Manageru
 description: Zjistěte, jak rychle vytvořit škálovací sadu virtuálních počítačů s Linuxem pomocí šablony Azure Resource Manageru, která nasadí ukázkovou aplikaci a nakonfiguruje pravidla automatického škálování.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/27/2018
+ms.custom: mvc,subject-armqs
+ms.date: 03/27/2020
 ms.author: cynthn
-ms.openlocfilehash: a2712bc4a758a0cac6fe8357a0d4c14c594978c3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f3bdaa70650f82172707674a225d5a5b7750dfea
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76279172"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411452"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů s Linuxem pomocí šablony Azure
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Úvodní příručka: Vytvoření škálovací sady virtuálních strojů pro Linux pomocí šablony Azure Resource Manageru
+
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí šablony Azure Resource Manageru.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Požadavky
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Žádné.
 
+## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
-## <a name="define-a-scale-set-in-a-template"></a>Definice škálovací sady v šabloně
-Šablony Azure Resource Manageru umožňují nasazení skupin souvisejících prostředků. Šablony se píší ve formátu JavaScript Object Notation (JSON) a definují celé prostředí infrastruktury Azure pro vaši aplikaci. V jediné šabloně můžete vytvořit škálovací sadu virtuálních počítačů, nainstalovat aplikace a nakonfigurovat pravidla automatického škálování. Díky použití proměnných a parametrů se může tato šablona použít opakovaně k aktualizaci stávajících nebo vytvoření dalších škálovacích sad. Šablony můžete nasadit prostřednictvím webu Azure Portal, Azure CLI nebo Azure PowerShellu nebo z kanálů kontinuální integrace / průběžného doručování (CI/CD).
+Šablony Azure Resource Manageru umožňují nasazení skupin souvisejících prostředků. V jediné šabloně můžete vytvořit škálovací sadu virtuálních počítačů, nainstalovat aplikace a nakonfigurovat pravidla automatického škálování. Díky použití proměnných a parametrů se může tato šablona použít opakovaně k aktualizaci stávajících nebo vytvoření dalších škálovacích sad. Šablony můžete nasadit prostřednictvím webu Azure Portal, Azure CLI nebo Azure PowerShellu nebo z kanálů kontinuální integrace / průběžného doručování (CI/CD).
 
-Další informace o šablonách najdete v [tématu Přehled Správce prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process). Syntaxe a vlastnosti JSON najdete v tématu [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) odkaz na šablonu.
+### <a name="review-the-template"></a>Kontrola šablony
 
-Pokud chcete vytvořit škálovací sadu pomocí šablony, nadefinujete odpovídající prostředky. Hlavní části typu prostředku škálovací sady virtuálních počítačů jsou následující:
+Šablona použitá v tomto rychlém startu je ze [šablon Azure QuickStart](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/).
+
+:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
+
+Tyto prostředky jsou definovány v šabloně:
+
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/publicIPAdresy**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
+- [**Microsoft.Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
+
+#### <a name="define-a-scale-set"></a>Definice škálovací sady
+
+Zvýrazněná část je definice prostředku škálovací sady. Pokud chcete vytvořit škálovací sadu pomocí šablony, nadefinujete odpovídající prostředky. Hlavní části typu prostředku škálovací sady virtuálních počítačů jsou následující:
 
 | Vlastnost                     | Popis vlastnosti                                  | Příklad hodnoty v šabloně                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -45,49 +62,10 @@ Pokud chcete vytvořit škálovací sadu pomocí šablony, nadefinujete odpovíd
 | osProfile.adminUsername      | Uživatelské jméno pro všechny instance virtuálních počítačů                        | azureuser                                 |
 | osProfile.adminPassword      | Heslo pro všechny instance virtuálních počítačů                        | P@ssw0rd!                                 |
 
- Následující příklad ukazuje jádro definice prostředku škálovací sady. Pokud chcete šablonu škálovací sady upravit, můžete změnit velikost virtuálního počítače nebo počáteční kapacitu nebo použít jinou platformu nebo vlastní image.
+Chcete-li přizpůsobit šablonu škálovací sady, můžete změnit velikost virtuálního počítače nebo počáteční kapacitu. Další možností je použít jinou platformu nebo vlastní bitovou kopii.
 
-```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US",
-  "apiVersion": "2017-12-01",
-  "sku": {
-    "name": "Standard_A1",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-      "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "16.04-LTS",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
-```
+#### <a name="add-a-sample-application"></a>Přidání ukázkové aplikace
 
- Pro zkrácení ukázky není zobrazená konfigurace virtuální síťové karty. Další komponenty, například nástroj pro vyrovnávání zatížení, se také nezobrazují. Kompletní šablonu škálovací sady najdete [na konci tohoto článku](#deploy-the-template).
-
-
-## <a name="add-a-sample-application"></a>Přidání ukázkové aplikace
 Pokud chcete svou škálovací sadu otestovat, nainstalujte základní webovou aplikaci. Po nasazení škálovací sady můžou rozšíření virtuálního počítače zajistit konfiguraci po nasazení a úlohy automatizace, jako je instalace aplikace. Skripty si můžete stáhnout z úložiště Azure nebo z GitHubu, případně je za běhu rozšíření najdete na webu Azure Portal. Pokud chcete pro svou škálovací sadu použít rozšíření, do předchozího příkladu prostředku přidáte část *extensionProfile*. Profil rozšíření obvykle definuje následující vlastnosti:
 
 - Typ rozšíření
@@ -96,40 +74,17 @@ Pokud chcete svou škálovací sadu otestovat, nainstalujte základní webovou a
 - Umístění konfiguračních nebo instalačních skriptů
 - Příkazy, které se mají spustit na instancích virtuálních počítačů
 
-Šablona [HTTP server s Pythonem v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) používá rozšíření vlastních skriptů k instalaci [Bottle](https://bottlepy.org/docs/dev/), webového rozhraní založeného na jazyce Python, a jednoduchého HTTP serveru. 
+Šablona používá rozšíření vlastní skript k instalaci [Bottle](https://bottlepy.org/docs/dev/), python webového rámce a jednoduchý http server.
 
-Dva skripty jsou definovány v **fileUris** - *installserver.sh*a *workserver.py*. Tyto soubory se stáhnou z GitHubu a pak se spustí příkaz *commandToExecute* ve vlastnosti `bash installserver.sh`, který nainstaluje a nakonfiguruje aplikaci:
+Dva skripty jsou definovány v **fileUris** - *installserver.sh*a *workserver.py*. Tyto soubory jsou staženy z GitHubu, pak *příkazToExecute* spustí `bash installserver.sh` instalaci a konfiguraci aplikace.
 
-```json
-"extensionProfile": {
-  "extensions": [
-    {
-      "name": "AppInstall",
-      "properties": {
-        "publisher": "Microsoft.Azure.Extensions",
-        "type": "CustomScript",
-        "typeHandlerVersion": "2.0",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "fileUris": [
-            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/installserver.sh",
-            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/workserver.py"
-          ],
-          "commandToExecute": "bash installserver.sh"
-        }
-      }
-    }
-  ]
-}
-```
+### <a name="deploy-the-template"></a>Nasazení šablony
 
-
-## <a name="deploy-the-template"></a>Nasazení šablony
-Šablonu [HTTP server s Pythonem v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) můžete nasadit pomocí následujícího tlačítka **Nasadit do Azure**. Toto tlačítko otevře Azure Portal, načte kompletní šablonu a zobrazí výzvu k zadání několika parametrů, jako jsou název škálovací sady, počet instancí a přihlašovací údaje správce.
+Šablonu můžete nasadit tak, že vyberete následující tlačítko **Nasazení do Azure.** Toto tlačítko otevře Azure Portal, načte kompletní šablonu a zobrazí výzvu k zadání několika parametrů, jako jsou název škálovací sady, počet instancí a přihlašovací údaje správce.
 
 [![Nasazení šablony do Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
-K instalaci HTTP serveru s Pythonem v Linuxu můžete použít také Azure CLI s příkazem [az group deployment create](/cli/azure/group/deployment), jak je vidět tady:
+Šablonu Správce prostředků můžete nasadit také pomocí azure cli:
 
 ```azurecli-interactive
 # Create a resource group
@@ -143,8 +98,8 @@ az group deployment create \
 
 Do zobrazených výzev zadejte název škálovací sady, počet instancí a přihlašovací údaje správce pro instance virtuálních počítačů. Vytvoření škálovací sady a podpůrných prostředků trvá několik minut.
 
+## <a name="test-the-deployment"></a>Otestování nasazení
 
-## <a name="test-your-scale-set"></a>Test škálovací sady
 Pokud chcete vidět svou škálovací sadu v akci, přejděte ve webovém prohlížeči na ukázkovou webovou aplikaci. Následujícím způsobem získejte veřejnou IP adresu nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip list](/cli/azure/network/public-ip):
 
 ```azurecli-interactive
@@ -157,16 +112,16 @@ Zadejte veřejnou IP adresu nástrojpro vyrovnávání zatížení do webového 
 
 ![Výchozí webová stránka na serveru NGINX](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, škálovací sady a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group), jak je znázorněno níže. Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-
 ## <a name="next-steps"></a>Další kroky
+
 V tomto rychlém startu jste pomocí šablony Azure vytvořili škálovací sadu s Linuxem a pomocí rozšíření vlastních skriptů jste na instance virtuálních počítačů nainstalovali základní webový server Python. Další informace najdete v kurzu věnovaném vytváření a správě škálovacích sad virtuálních počítačů Azure.
 
 > [!div class="nextstepaction"]

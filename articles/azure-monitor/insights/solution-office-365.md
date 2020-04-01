@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/08/2019
-ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663246"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437045"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -20,7 +20,7 @@ ms.locfileid: "77663246"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Aktualizace řešení
-> Toto řešení bylo nahrazeno řešením obecné dostupnosti [Office 365](../../sentinel/connect-office-365.md) v [Azure Sentinelu](../../sentinel/overview.md) a [řešením azure ad pro vytváření sestav a monitorování](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Společně poskytují aktualizovanou verzi předchozího řešení Azure Monitor Office 365 s vylepšenou konfigurací. Stávající řešení můžete používat až do 30. dubna 2020.
+> Toto řešení bylo nahrazeno řešením obecné dostupnosti [Office 365](../../sentinel/connect-office-365.md) v [Azure Sentinelu](../../sentinel/overview.md) a [řešením azure ad pro vytváření sestav a monitorování](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Společně poskytují aktualizovanou verzi předchozího řešení Azure Monitor Office 365 s vylepšenou konfigurací. Stávající řešení můžete používat až do 30.
 > 
 > Azure Sentinel je cloudové nativní řešení pro správu informací o zabezpečení a událostí, které přijímá protokoly a poskytuje další funkce SIEM, včetně detekce, vyšetřování, vyhledávání a přehledů založených na strojovém učení. Použití Azure Sentinelu vám teď poskytne ingestování sharepointových aktivit Office 365 a protokolů pro správu Exchange.
 > 
@@ -53,7 +53,7 @@ ms.locfileid: "77663246"
 > | where TimeGenerated >= ago(1d) 
 > | where OfficeWorkload == "AzureActiveDirectory"                      
 > | where Operation == 'UserLoginFailed'
-> | summarize count() by UserId 
+> | summarize count() by UserId    
 > ```
 > 
 > ```Kusto
@@ -82,10 +82,10 @@ ms.locfileid: "77663246"
 > ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>Otázka: Potřebuji Azure Sentinel k připojení protokolů Azure AD?
 > Můžete nakonfigurovat [integraci protokolů Azure AD pomocí Azure Monitoru](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), který nesouvisí s řešením Azure Sentinel. Azure Sentinel poskytuje nativní konektor a out-of-the box obsah pro protokoly Azure AD. Další informace naleznete v následující otázce o obsahu izolovaném zabezpečení.
 >
-> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>Otázka: Jaké jsou rozdíly při připojování protokolů Azure AD z Azure Sentinelu a Azure Monitoru?
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>Otázka: Jaké jsou rozdíly při připojování protokolů Azure AD z Azure Sentinelu a Azure Monitoru?
 > Azure Sentinel a Azure Monitor se připojují k protokolům Azure AD na základě stejného [řešení pro vytváření sestav a monitorování Azure AD.](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) Azure Sentinel poskytuje nativní konektor na jedno kliknutí, který propojuje stejná data a poskytuje informace o monitorování.
 >
-> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>Otázka: Co je potřeba změnit při přechodu na nové tabulky sestav a monitorování Azure AD?
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>Otázka: Co je potřeba změnit při přechodu na nové tabulky sestav a monitorování Azure AD?
 > Všechny dotazy využívající data Azure AD, včetně dotazů ve výstrahách, řídicích panelech a veškerém obsahu, který jste vytvořili pomocí dat Office 365 Azure AD, je nutné znovu vytvořit pomocí nových tabulek.
 >
 > Azure Sentinel a Azure AD poskytují integrovaný obsah, který můžete použít při přechodu na řešení azure ad sestav a monitorování. Další informace najdete v další otázce týkající se obsahu izolovaného zabezpečení a [použití sešitů Azure Monitor pro sestavy Služby Azure Active Directory](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md). 
@@ -103,7 +103,7 @@ ms.locfileid: "77663246"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Otázka: Poskytuje Azure Sentinel další konektory jako součást řešení?
 > Ano, viz [Azure Sentinel připojit zdroje dat](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>Otázka: Co se stane 30. Musím se předem vylodit?
+> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>Otázka: Co se stane 30. Musím se předem vylodit?
 > 
 > - Nebudete moct přijímat data z řešení **Office365.** Řešení již nebude k dispozici na webu Marketplace.
 > - Pro zákazníky Azure Sentinelu bude řešení pracovního prostoru Log Analytics **Office365** zahrnuto do řešení Azure Sentinel **SecurityInsights.**
@@ -246,7 +246,7 @@ Kliknutím na dlaždici **Office 365** otevřete řídicí panel **Office 365.**
 
 | Sloupec | Popis |
 |:--|:--|
-| Provoz | Obsahuje informace o aktivních uživatelích ze všech sledovaných předplatných Office 365. Budete také moci zobrazit počet aktivit, které se dějí v průběhu času.
+| Operace | Obsahuje informace o aktivních uživatelích ze všech sledovaných předplatných Office 365. Budete také moci zobrazit počet aktivit, které se dějí v průběhu času.
 | Výměna | Zobrazuje rozdělení aktivit serveru Exchange Server, jako je oprávnění k přidávací schránce nebo set-mailová schránka. |
 | SharePoint | Zobrazuje hlavní aktivity, které uživatelé provádějí v sharepointových dokumentech. Při přechodu na tuto dlaždici se na stránce hledání zobrazí podrobnosti o těchto aktivitách, například cílový dokument a umístění této aktivity. Například pro událost přístup k souboru budete moci zobrazit dokument, ke kterému se přistupuje, jeho přidružený název účtu a adresu IP. |
 | Azure Active Directory | Zahrnuje hlavní aktivity uživatelů, jako je například obnovení uživatelského hesla a pokusy o přihlášení. Při přechodu k podrobnostem budete moci zobrazit podrobnosti o těchto aktivitách, jako je stav výsledku. To je většinou užitečné, pokud chcete sledovat podezřelé aktivity ve službě Azure Active Directory. |
@@ -315,7 +315,7 @@ Tyto záznamy se vytvoří při změně nebo přidání objektů služby Azure A
 | ActorContextId | Identifikátor GUID organizace, do které objekt actor patří. |
 | ActorIpAddress | IP adresa objektu actor ve formátu IPV4 nebo IPV6. |
 | InterSystemsId | Identifikátor GUID, který sleduje akce napříč součástmi v rámci služby Office 365. |
-| Id intrasystemid |   Identifikátor GUID generovaný službou Azure Active Directory ke sledování akce. |
+| Id intrasystemid |     Identifikátor GUID generovaný službou Azure Active Directory ke sledování akce. |
 | SupportTicketId | ID lístku podpory zákazníků pro akci v situacích "jednat jménem". |
 | Parametr TargetContextId | Identifikátor GUID organizace, do které cílový uživatel patří. |
 
@@ -330,7 +330,7 @@ Tyto záznamy jsou vytvořeny z dat auditu zabezpečení datového centra.
 | ElevationApprovedTime | Časové razítko pro schválení elevace. |
 | Oprávnění Proschválení výšku | Jméno správce společnosti Microsoft. |
 | Doba trvání výšky | Doba, po kterou byla výška aktivní. |
-| Oprávnění ke zvýšení požadavků na výšku |  Jedinečný identifikátor pro požadavek na zvýšení oprávnění. |
+| Oprávnění ke zvýšení požadavků na výšku |     Jedinečný identifikátor pro požadavek na zvýšení oprávnění. |
 | Funkce zvýšení | Role, pro kterou bylo zvýšení požadováno. |
 | Doba převýšení | Počáteční čas nadmořské výšky. |
 | Start_Time | Čas zahájení provádění rutiny. |
@@ -344,8 +344,8 @@ Tyto záznamy jsou vytvořeny při provádění změn v konfiguraci serveru Exch
 |:--- |:--- |
 | Pracovní vytížení office | Výměna |
 | RecordType     | Správce Exchange |
-| Externí přístup |  Určuje, zda byla rutina spuštěna uživatelem ve vaší organizaci, pracovníky datového centra společnosti Microsoft nebo účtem služby datového centra nebo delegovaným správcem. Hodnota False označuje, že rutina byla spuštěna někým ve vaší organizaci. Hodnota True označuje, že rutina byla spuštěna pracovníky datového centra, účtem služby datového centra nebo delegovaným správcem. |
-| ModifiedObjectResolvedName |  Toto je uživatelsky přívětivý název objektu, který byl změněn rutinou. To je zaznamenána pouze v případě, že rutina upraví objekt. |
+| Externí přístup |     Určuje, zda byla rutina spuštěna uživatelem ve vaší organizaci, pracovníky datového centra společnosti Microsoft nebo účtem služby datového centra nebo delegovaným správcem. Hodnota False označuje, že rutina byla spuštěna někým ve vaší organizaci. Hodnota True označuje, že rutina byla spuštěna pracovníky datového centra, účtem služby datového centra nebo delegovaným správcem. |
+| ModifiedObjectResolvedName |     Toto je uživatelsky přívětivý název objektu, který byl změněn rutinou. To je zaznamenána pouze v případě, že rutina upraví objekt. |
 | OrganizationName | Jméno nájemce. |
 | Původní server | Název serveru, ze kterého byla rutina spuštěna. |
 | Parametry | Název a hodnota pro všechny parametry, které byly použity s rutinou, která je identifikována v Operations vlastnost. |
@@ -366,7 +366,7 @@ Tyto záznamy jsou vytvořeny při změny nebo dodatky jsou provedeny poštovní
 | ClientVersion | Verze e-mailového klienta . |
 | InternalLogonType | Vyhrazeno pro vnitřní použití. |
 | Logon_Type | Označuje typ uživatele, který přistupoval k poštovní schránce a provedl operaci, která byla zaznamenána. |
-| LogonUserDisplayName |    Uživatelsky přívětivý název uživatele, který operaci provedl. |
+| LogonUserDisplayName |     Uživatelsky přívětivý název uživatele, který operaci provedl. |
 | LogonUserSid | SID uživatele, který operaci provedl. |
 | Poštovní schránkaGuid | Identifikátor GUID serveru Exchange poštovní schránky, ke které byl přístup. |
 | Poštovní schránkaOwnerMasterAccountSid | SID hlavního účtu účtu vlastníka poštovní schránky. |
@@ -419,7 +419,7 @@ Tyto vlastnosti jsou společné pro všechny záznamy služby SharePoint.
 | EventSource | Identifikuje, že došlo k události v SharePointu. Možné hodnoty jsou SharePoint nebo ObjectModel. |
 | ItemType | Typ objektu, ke kterému byl přistupován nebo byl změněn. Podrobnosti o typech objektů naleznete v tabulce ItemType. |
 | Informace o machinedomaininfo | Informace o operacích synchronizace zařízení. Tyto informace jsou hlášeny pouze v případě, že je k dispozici v požadavku. |
-| MachineId |   Informace o operacích synchronizace zařízení. Tyto informace jsou hlášeny pouze v případě, že je k dispozici v požadavku. |
+| MachineId |     Informace o operacích synchronizace zařízení. Tyto informace jsou hlášeny pouze v případě, že je k dispozici v požadavku. |
 | Site_ | Identifikátor GUID webu, na kterém je umístěn soubor nebo složka, ke které uživatel přistupuje. |
 | Source_Name | Entita, která spustila auditovnou operaci. Možné hodnoty jsou SharePoint nebo ObjectModel. |
 | Useragent | Informace o klientovi nebo prohlížeči uživatele. Tyto informace jsou poskytovány klientem nebo prohlížečem. |
@@ -434,7 +434,7 @@ Tyto záznamy jsou vytvořeny při provádění změn konfigurace služby ShareP
 | Pracovní vytížení office | SharePoint |
 | Pracovní vytížení office | SharePoint |
 | Vlastní událost | Volitelný řetězec pro vlastní události. |
-| Event_Data |  Volitelná datová část pro vlastní události. |
+| Event_Data |     Volitelná datová část pro vlastní události. |
 | Upravené vlastnosti | Tato vlastnost je zahrnuta pro události správce, jako je například přidání uživatele jako člena webu nebo skupiny správců kolekce webů. Vlastnost obsahuje název vlastnosti, která byla změněna (například skupina Správce webu), novou hodnotu změněné vlastnosti (například uživatele, který byl přidán jako správce webu) a předchozí hodnotu upraveného objektu. |
 
 
@@ -452,9 +452,9 @@ Tyto záznamy jsou vytvořeny jako odpověď na operace se soubory v sharepointu
 | SharingType | Typ oprávnění ke sdílení, která byla přiřazena uživateli, se kterým byl prostředek sdílen. Tento uživatel je identifikován parametrem UserSharedWith. |
 | Site_Url | Adresa URL webu, na kterém je umístěn soubor nebo složka, ke které uživatel přistupuje. |
 | Rozšíření SourceFileExtension | Přípona souboru, ke kterému uživatel přistupoval. Tato vlastnost je prázdná, pokud je objekt, ke kterému byl přístup přístupná, složka. |
-| Sourcefilename |  Název souboru nebo složky, ke kterým má uživatel přístup. |
+| Sourcefilename |     Název souboru nebo složky, ke kterým má uživatel přístup. |
 | Url sourcerelativeurl | Adresa URL složky obsahující soubor, ke kterému uživatel přistupuje. Kombinace hodnot pro parametry SiteURL, SourceRelativeURL a SourceFileName je stejná jako hodnota vlastnosti ObjectID, což je úplný název cesty pro soubor, ke kterému uživatel přistupuje. |
-| Sdílené s uživatelem |  Uživatel, se kterým byl prostředek sdílen. |
+| Sdílené s uživatelem |     Uživatel, se kterým byl prostředek sdílen. |
 
 
 

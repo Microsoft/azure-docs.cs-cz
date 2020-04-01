@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187464"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398344"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Odesílání událostí do nebo přijímání událostí z Centra událostí Azure pomocí .NET Core (Microsoft.Azure.EventHubs)
 Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je z centra událostí pomocí **knihovny Microsoft.Azure.EventHubs** .NET Core.
 
 > [!WARNING]
-> Tento rychlý start používá starý balíček **Microsoft.Azure.EventHubs.** Pro rychlý start, který používá nejnovější knihovnu **Azure.Messaging.EventHubs,** najdete v tématu [Odesílání a přijímání událostí pomocí knihovny Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md). Pokud chcete přesunout aplikaci z používání staré knihovny na novou, přečtěte si [příručku pro migraci z Microsoft.Azure.EventHubs na Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
+> Tento rychlý start používá starý balíček **Microsoft.Azure.EventHubs.** Pro rychlý start, který používá nejnovější knihovnu **Azure.Messaging.EventHubs,** najdete v tématu [Odesílání a přijímání událostí pomocí knihovny Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md). Pokud chcete přesunout aplikaci z používání staré knihovny na novou, přečtěte si [příručku pro migraci z Microsoft.Azure.EventHubs na Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud s Azure Event Hubs tečujete, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d1cd4691586b27282d221a19c5fb7a1af034ed6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125160"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436183"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Integrace služeb Azure Kubernetes s Centrem zabezpečení
 
@@ -35,7 +35,7 @@ Tyto dva nástroje společně tvoří nejlepší cloudově nativní nabídku zab
 
 Použití obou služeb společně poskytuje:
 
-* **Doporučení zabezpečení** – Security Center identifikuje vaše prostředky AKS a kategorizuje je: od clusterů k jednotlivým virtuálním počítačům. Poté můžete zobrazit doporučení zabezpečení pro jednotlivé zdroje. Další informace naleznete v doporučení kontejnerů v [referenčníseznam doporučení](recommendations-reference.md#recs-computeapp). 
+* **Doporučení zabezpečení** – Security Center identifikuje vaše prostředky AKS a kategorizuje je: od clusterů k jednotlivým virtuálním počítačům. Poté můžete zobrazit doporučení zabezpečení pro jednotlivé zdroje. Další informace naleznete v doporučení kontejnerů v [referenčníseznam doporučení](recommendations-reference.md#recs-containers). 
 
 * **Posílení prostředí** – Security Center neustále monitoruje konfiguraci clusterů Kubernetes a konfigurací Dockeru. Poté generuje doporučení zabezpečení, která odrážejí oborové standardy.
 

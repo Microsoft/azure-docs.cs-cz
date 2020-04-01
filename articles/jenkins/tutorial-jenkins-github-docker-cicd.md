@@ -1,14 +1,14 @@
 ---
-title: Kurz – vytvoření vývojového kanálu v Azure pomocí Jenkinse
+title: Kurz – vytvoření vývojového kanálu v Azure s Jenkinsem
 description: Kurz – V tomto kurzu se naučíte vytvořit v Azure virtuální počítač Jenkinsu, který při každém potvrzení kódu z GitHubu převezme data a sestaví nový kontejner Dockeru pro spuštění vaší aplikace.
-keywords: Jenkinse, Azure, DevOps, Pipeline, cicd, Docker
+keywords: jenkins, azurové, devops, potrubí, cicd, docker
 ms.topic: tutorial
 ms.date: 03/27/2017
 ms.openlocfilehash: 2560d03282b2b3c8193a0b8c2a7a9f7c4036e75a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77606444"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Kurz: Vytvoření vývojové infrastruktury ve virtuálním počítači s Linuxem v Azure pomocí Jenkinsu, GitHubu a Dockeru
@@ -23,9 +23,9 @@ K automatizaci fázi sestavení a testování v rámci vývoje aplikace můžete
 > * Vytvořit pro svou aplikaci image Dockeru
 > * Ověřit, že po potvrzení GitHubu se sestaví nová image Dockeru a aktualizuje se spuštěná aplikace
 
-V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
+Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-jenkins-instance"></a>Vytvoření instance Jenkinse
 V předchozím kurzu týkajícím se [postupu přizpůsobení virtuálního počítače s Linuxem při prvním spuštění](../virtual-machines/linux/tutorial-automate-vm-deployment.md), jste se dozvěděli, jak automatizovat přizpůsobení virtuálního počítače s prostředím cloud-init. Tento kurz používá soubor cloud-init k instalaci Jenkinse a Dockeru na virtuální počítač. Jenkins je oblíbený open source automatizační server, který se bez problémů integruje s Azure a umožňuje průběžnou integraci (CI) a průběžné doručování (CD). Další kurzy týkající se používání Jenkinse najdete v článku [Jenkins v centru Azure](https://docs.microsoft.com/azure/jenkins/).
@@ -63,7 +63,7 @@ Než budete moct vytvořit virtuální počítač, vytvořte skupinu prostředk�
 az group create --name myResourceGroupJenkins --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Pomocí parametru `--custom-data` předejte svůj konfigurační soubor cloud-init. Zadejte úplnou cestu k souboru *cloud-init-jenkins.txt*, pokud jste ho uložili mimo aktuální pracovní adresář.
+Teď pomocí příkazu [az vm create](/cli/azure/vm) vytvořte virtuální počítač. Pomocí parametru `--custom-data` předejte svůj konfigurační soubor cloud-init. Zadejte úplnou cestu k souboru *cloud-init-jenkins.txt*, pokud jste ho uložili mimo aktuální pracovní adresář.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupJenkins \
@@ -97,7 +97,7 @@ Z bezpečnostních důvodů musíte zadat počáteční heslo správce, které j
 ssh azureuser@<publicIps>
 ```
 
-Ověřte, že je Jenkinse spuštěný pomocí příkazu `service`:
+Ověřte, zda `service` jenkins běží pomocí příkazu:
 
 ```bash
 $ service jenkins status
@@ -128,7 +128,7 @@ Pak otevřete webový prohlížeč a přejděte na adresu `http://<publicIps>:80
 - Vyberte **Save and Finish** (Uložit a dokončit).
 - Jakmile bude Jenkins připravený, vyberte **Start using Jenkins** (Začít používat Jenkinse).
   - Pokud se po začátku používání Jenkinse ve webovém prohlížeči zobrazí prázdná stránka, restartujte službu Jenkins. V relaci SSH zadejte `sudo service jenkins restart` a aktualizujte webový prohlížeč.
-- V případě potřeby se přihlaste k Jenkinse pomocí uživatelského jména a hesla, které jste vytvořili.
+- V případě potřeby se přihlaste k Jenkinsovi pomocí uživatelského jména a hesla, které jste vytvořili.
 
 
 ## <a name="create-github-webhook"></a>Vytvoření webhooku GitHubu
@@ -136,13 +136,13 @@ Pokud chcete nakonfigurovat integraci s GitHubem, otevřete [ukázkovou aplikaci
 
 Ve forku, který jste vytvořili, vytvořte webhook:
 
-- Vyberte **Nastavení**a pak na levé straně vyberte **Webhooky** .
-- Zvolte **Přidat Webhook**a potom do pole Filtr zadejte *Jenkinse* .
-- Jako **adresu URL datové části**zadejte `http://<publicIps>:8080/github-webhook/`. Nezapomeňte zadat i koncový znak /.
-- Jako **typ obsahu**vyberte *Application/x-www-form-urlencoded*.
-- Pro **které události chcete aktivovat tento Webhook?** vyberte *jenom událost push.*
-- Nastavení **aktivní** na zaškrtnuto.
-- Klikněte na **Přidat Webhook**.
+- Vyberte **Nastavení**a potom na levé straně vyberte **Webhooky.**
+- Zvolte **Přidat webhooka**a zadejte *Jenkins* e.linek filtru.
+- Pro **adresu URL**datové `http://<publicIps>:8080/github-webhook/`části zadejte . Nezapomeňte zadat i koncový znak /.
+- V **části Typ obsahu**vyberte *položku application/x-www-form-urlencoded*.
+- Pro **které události chcete spustit tento webhook?**, vyberte Pouze push *událost.*
+- Nastavte **aktivní** na zaškrtnuté.
+- Klepněte na **tlačítko Přidat webhook**.
 
 ![Přidání webhooku GitHubu do vašeho rozvětveného úložiště](media/tutorial-jenkins-github-docker-cicd/github-webhook.png)
 
@@ -153,8 +153,8 @@ Pokud chcete, aby Jenkins reagoval na událost v GitHubu, například na potvrze
 Na domovské stránce na webu Jenkinse vyberte **Create new jobs** (Vytvořit nové úlohy):
 
 - Jako název úlohy zadejte *HelloWorld*. Zvolte **Freestyle project** (Volný projekt) a pak vyberte **OK**.
-- V části **General** (Obecné) vyberte **GitHub project** (Projekt GitHub) a zadejte URL rozvětveného úložiště, například *https://github.com/cynthn/nodejs-docs-hello-world* .
-- V části **Source code management** (Správa zdrojového kódu) vyberte **Git** a zadejte adresu URL rozvětveného úložiště *.git*, například *https://github.com/cynthn/nodejs-docs-hello-world.git* .
+- V části **General** (Obecné) vyberte **GitHub project** (Projekt GitHub) a zadejte URL rozvětveného úložiště, například *https://github.com/cynthn/nodejs-docs-hello-world*.
+- V části **Source code management** (Správa zdrojového kódu) vyberte **Git** a zadejte adresu URL rozvětveného úložiště *.git*, například *https://github.com/cynthn/nodejs-docs-hello-world.git*.
 - V části **Build Triggers** (Triggery sestavení) vyberte **GitHub hook trigger for GITscm polling** (Trigger webhooku GitHubu pro dotazování GITscm).
 - V části **Build** (Sestavení) zvolte **Add build step** (Přidat krok sestavení). Vyberte **Execute shell** (Spustit shell) a pak v příkazovém okně zadejte `echo "Test"`.
 - V dolní části okna úloh vyberte **Save** (Uložit).

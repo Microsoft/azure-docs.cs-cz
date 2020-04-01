@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: e98ff7fd914bb86cae256bb1bf6c19086758d463
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65e51258b3a24b14b5171968645e88420e92dd5a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371551"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421078"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -230,7 +230,7 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 <br/>
 >`partitionOnInt` Jako `partitionOption` příklad se počet řádků v každém oddílu vypočítá pomocí tohoto vzorce: `partitionLowerBound`(celkové řádky mezi`maxPartitionsNumber` `partitionUpperBound` a )/ .<br/>
 <br/>
->Chcete-li načíst datové oddíly paralelně s urychlením [`parallelCopies`](copy-activity-performance.md#parallel-copy) kopírování, paralelní stupeň je řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z tabulky SAP. Důrazně doporučujeme `maxPartitionsNumber` vytvořit násobek hodnoty `parallelCopies` nemovitosti. Při kopírování dat do úložiště dat založeného na souborech je také přikázáno zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
+>Chcete-li načíst datové oddíly paralelně s urychlením [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopírování, paralelní stupeň je řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z tabulky SAP. Důrazně doporučujeme `maxPartitionsNumber` vytvořit násobek hodnoty `parallelCopies` nemovitosti. Při kopírování dat do úložiště dat založeného na souborech je také přikázáno zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
 
 V `rfcTableOptions`aplikaci můžete k filtrování řádků použít následující běžné operátory dotazů SAP:
 

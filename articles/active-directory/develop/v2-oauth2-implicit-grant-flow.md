@@ -17,12 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e3f021fd888bbb408fa66964c54d22f0d68e84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53d498f4aed8ec86cc57c35824a9fb8aa471dc1d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297702"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419680"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Platforma identit Microsoftu a implicitní tok grantů
 
@@ -32,7 +32,7 @@ S koncovým bodem platformy identit Microsoftu můžete uživatele přihlásit k
 * Mnoho autorizačních serverů a zprostředkovatelů identit nepodporuje požadavky CORS.
 * Celostránkový prohlížeč přesměrování z aplikace se stává obzvláště invazivní pro uživatelské prostředí.
 
-Pro tyto aplikace (AngularJS, Ember.js, React.js a tak dále), platforma identit y Microsoft podporuje tok implicitní hodu OAuth 2.0. Implicitní tok je popsán ve [specifikaci OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.2). Jeho hlavní výhodou je, že umožňuje aplikaci získat tokeny z platformy identit microsoftu bez provedení výměny pověření back-endového serveru. To umožňuje aplikaci přihlásit se k uživateli, udržovat relaci a získat tokeny do jiných webových rozhraní API v rámci klientského kódu JavaScriptu. Existuje několik důležitých aspektů zabezpečení, které je třeba vzít v úvahu při použití implicitního toku konkrétně kolem [zosobnění](https://tools.ietf.org/html/rfc6749#section-10.3) [klienta](https://tools.ietf.org/html/rfc6749#section-10.3) a uživatele .
+Pro tyto aplikace (Angular, Ember.js, React.js a tak dále), platforma identit y Microsoft podporuje tok implicitní hodovny OAuth 2.0. Implicitní tok je popsán ve [specifikaci OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.2). Jeho hlavní výhodou je, že umožňuje aplikaci získat tokeny z platformy identit microsoftu bez provedení výměny pověření back-endového serveru. To umožňuje aplikaci přihlásit se k uživateli, udržovat relaci a získat tokeny do jiných webových rozhraní API v rámci klientského kódu JavaScriptu. Existuje několik důležitých aspektů zabezpečení, které je třeba vzít v úvahu při použití implicitního toku konkrétně kolem [zosobnění](https://tools.ietf.org/html/rfc6749#section-10.3) [klienta](https://tools.ietf.org/html/rfc6749#section-10.3) a uživatele .
 
 Tento článek popisuje, jak programovat přímo proti protokolu ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny ověřování společnosti Microsoft (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Také se podívejte na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
@@ -58,7 +58,7 @@ V současné době upřednostňovanou metodou ochrany volání webového rozhran
 
 Implicitní grantový tok nevydává tokeny aktualizace, většinou z bezpečnostních důvodů. Obnovovací token není tak úzce vymezenjako přístupové tokeny, což poskytuje mnohem větší moc, a tím způsobuje mnohem větší škody v případě, že je unikly. V implicitním toku jsou tokeny doručovány v adrese URL, proto je riziko zachycení vyšší než v udělení autorizačního kódu.
 
-Aplikace JavaScript má však jiný mechanismus k dispozici pro obnovení přístupových tokenů bez opakovaného dotazování uživatele na pověření. Aplikace můžete použít skrytý iframe k provádění nových požadavků na tokeny proti koncovému bodu autorizace Azure AD: pokud prohlížeč má stále aktivní relaci (čti: má soubor cookie relace) proti doméně Azure AD, požadavek na ověření může úspěšně dojít bez nutnosti interakce s uživatelem.
+Aplikace JavaScript má však jiný mechanismus k dispozici pro obnovení přístupových tokenů bez opakovaného dotazování uživatele na pověření. Aplikace můžete použít skrytý iframe k provádění nových požadavků na tokeny proti koncový bod autorizace Azure AD: tak dlouho, dokud prohlížeč má stále aktivní relace (čti: má soubor cookie relace) proti doméně Azure AD, může úspěšně dojít k požadavku na ověření bez nutnosti interakce s uživatelem.
 
 Tento model uděluje aplikaci JavaScript možnost nezávisle obnovovat přístupové tokeny a dokonce získat nové pro nové rozhraní API (za předpokladu, že uživatel s nimi dříve souhlasil). Tím se zabrání další zátěž získání, údržbu a ochranu artefakt vysoké hodnoty, jako je například token aktualizace. Artefakt, který umožňuje tiché obnovení, soubor cookie relace Azure AD, se spravuje mimo aplikaci. Další výhodou tohoto přístupu je, že se uživatel může odhlásit z Azure AD pomocí libovolné aplikace přihlašované do Služby Azure AD, které běží na kterékoli záložce prohlížeče. To má za následek odstranění souboru cookie relace Azure AD a aplikace JavaScript automaticky ztratí možnost obnovit tokeny pro odpojiného uživatele.
 
@@ -161,7 +161,7 @@ error=access_denied
 
 Teď, když jste uživatele přihlásili do jednostránkové aplikace, můžete tiše získat přístupové tokeny pro volání webových rozhraní API zabezpečených platformou identit microsoftu, jako je například [Microsoft Graph](https://developer.microsoft.com/graph). I v případě, že `token` jste již obdrželi token pomocí response_type, můžete tuto metodu získat tokeny pro další prostředky bez nutnosti přesměrovat uživatele znovu přihlásit.
 
-V normálním toku OpenID Connect/OAuth byste to udělali tak, `/token` že byste požádali koncový bod platformy identit y Microsoft. Koncový bod platformy identit y Microsoft však nepodporuje požadavky CORS, takže volání AJAX získat a aktualizovat tokeny je však vyloučeno. Místo toho můžete použít implicitní tok ve skrytém prvku iframe k získání nových tokenů pro jiná webová api: 
+V normálním toku OpenID Connect/OAuth byste to udělali tak, `/token` že byste požádali koncový bod platformy identit y Microsoft. Koncový bod platformy identit y Microsoft však nepodporuje požadavky CORS, takže volání AJAX získat a aktualizovat tokeny je však vyloučeno. Místo toho můžete použít implicitní tok ve skrytém prvku iframe k získání nových tokenů pro jiná webová api:
 
 ```
 // Line breaks for legibility only
@@ -170,7 +170,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read 
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &response_mode=fragment
 &state=12345
 &nonce=678910

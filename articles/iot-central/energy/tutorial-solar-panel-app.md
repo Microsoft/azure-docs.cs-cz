@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření aplikace pro monitorování od antitrestných aplikací pomocí IoT Central'
-description: 'Kurz: Naučte se, jak vytvořit aplikaci v programu slunečního panelu pomocí šablon aplikací Azure IoT Central.'
+title: 'Kurz: Vytvoření aplikace pro monitorování solárních trestů pomocí IoT Central'
+description: 'Kurz: Naučte se, jak vytvořit aplikaci solárního panelu pomocí šablon aplikací Azure IoT Central.'
 author: op-ravi
 ms.author: omravi
 ms.date: 11/12/2019
@@ -9,105 +9,105 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: d5ea3d3420cb598693ccaede7ee10d2f8c4fd839
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025771"
 ---
-# <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Kurz: vytvoření a Projděte si šablonu aplikace pro monitorování panelu slunečního příběhu 
+# <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Kurz: Vytvoření a procházení šablony aplikace pro monitorování solárního panelu 
 
 
 
-V tomto kurzu Vás provedeme procesem vytvoření aplikace pro monitorování na panelu slunečního prostředí, která zahrnuje Vzorový model zařízení se simulovanými daty. V tomto kurzu se naučíte:
+Tento kurz vás provede procesem vytváření aplikace pro monitorování solárních panelů, která obsahuje ukázkový model zařízení se simulovanými daty. V tomto kurzu se naučíte:
 
 
 > [!div class="checklist"]
-> * Vytvoření aplikace v panelu slunečního příplatku zdarma
-> * Procházení aplikací – přes
+> * Vytvořte aplikaci solárních panelů zdarma
+> * Ochození aplikace
 > * Vyčištění prostředků
 
 
-Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free)
+Pokud nemáte předplatné, [vytvořte si bezplatný zkušební účet.](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Požadavky
-- Žádné
-- Doporučuje se předplatné Azure, ale není to nutné.
+- Žádný
+- Předplatné Azure se doporučuje, ale není nutné vyzkoušet
 
 
 ## <a name="create-a-solar-panel-monitoring-app"></a>Vytvoření aplikace pro monitorování solárních panelů 
 
 Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
 
-1. Otevřete [Azure IoT Central domovskou stránku](https://apps.azureiotcentral.com) a kliknutím na **sestavit** vytvořte novou aplikaci. 
+1. Otevřete [domovskou stránku Azure IoT Central](https://apps.azureiotcentral.com) a kliknutím na **Build** vytvořte novou aplikaci. 
 
-2. Vyberte kartu **energie** a klikněte na **vytvořit aplikaci** na dlaždici monitorování aplikace na **panelu inflace** . 
+2. Vyberte **karta Energie** a v části Dlaždice **aplikace pro monitorování solárního panelu** klikněte na **Vytvořit aplikaci.** 
 
     > [!div class="mx-imgBorder"]
-    > ![Build App](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
+    > ![Vytvořit aplikaci](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
-3. Při **Vytvoření aplikace** se otevře formulář **nové aplikace** . Vyplňte požadované podrobnosti, jak je znázorněno na následujícím obrázku:
-    * **Název aplikace**: vyberte název aplikace IoT Central. 
-    * **Adresa URL**: vyberte adresu URL IoT Central, platforma ověří její jedinečnost.
-    * **7. den bezplatné zkušební verze**: Pokud už máte předplatné Azure, doporučuje se výchozí nastavení. Pokud nemáte předplatné Azure, začněte s bezplatnou zkušební verzí.
-    * **Informace o fakturaci**: aplikace je zadarmo. K zřizování prostředků vaší aplikace se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
-    * V dolní části stránky klikněte na tlačítko **vytvořit** a vaše aplikace se vytvoří za minutu.
-        ![formulář nové aplikace](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+3. **Vytvořit aplikaci** se otevře Nový formulář **žádosti.** Vyplňte požadované údaje, jak je znázorněno na obrázku níže:
+    * **Název aplikace**: Vyberte název aplikace IoT Central. 
+    * **URL**: Vyberte adresu URL IoT Central, platforma ověří svou jedinečnost.
+    * **7denní bezplatná zkušební verze**: Pokud už máte předplatné Azure, doporučujeme výchozí nastavení. Pokud nemáte předplatné Azure, začněte s bezplatnou zkušební verzí.
+    * **Fakturační informace**: Samotná aplikace je zdarma. Podrobnosti o adresáři, předplatnéazure a oblasti jsou nutné k zajištění prostředků pro vaši aplikaci.
+    * V dolní části stránky klikněte na **tlačítko Vytvořit** a aplikace se vytvoří za minutu.
+        ![Nový formulář žádosti](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
         
-        ![Informace o fakturaci formuláře nové aplikace](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
+        ![Informace o fakturaci nového formuláře žádosti](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Ověření aplikace a simulovaných dat
 
-Nově vytvořená aplikace s přípanelem slunečníku je vaše aplikace a můžete ji kdykoli upravit. Pojďme se ujistit, že je aplikace nasazená a funguje podle očekávání, než ji upravíte.
+Nově vytvořená aplikace pro solární panely je vaše aplikace a můžete ji kdykoli upravit. Před úpravou zajistíme, že je aplikace nasazená a funguje podle očekávání.
 
-Pokud chcete ověřit simulaci vytváření a dat aplikace, navštivte **řídicí panel**. Pokud vidíte dlaždice s některými daty, bylo nasazení aplikace úspěšné. Simulace dat může trvat několik minut, než se data vygenerují, takže dejte 1-2 minut. 
+Chcete-li ověřit vytváření aplikací a simulaci dat, přejděte na **řídicí panel**. Pokud vidíte dlaždice s některými daty, nasazení aplikace bylo úspěšné. Simulace dat může trvat několik minut, než se data vygenerují, takže jí dejte 1-2 minuty. 
 
-## <a name="application-walk-through"></a>Procházení aplikací – přes
-Po úspěšném nasazení šablony aplikace se zobrazí ukázka zařízení inteligentního měřiče, modelu zařízení a řídicího panelu.
+## <a name="application-walk-through"></a>Ochození aplikace
+Po úspěšném nasazení šablony aplikace je dodávána s ukázkovým zařízením inteligentního měřiče, modelem zařízení a řídicím panelem.
 
-Adatum je fiktivní energetická společnost, která monitoruje a spravuje sluneční panely. Na řídicím panelu monitorování na panelu slunečního zobrazení uvidíte vlastnosti, data a ukázkové příkazy pro sluneční panel. Umožňuje operátorům a pracovníkům podpory proaktivně provádět následující aktivity před tím, než se povede na incidenty podpory:
-* Přečtěte si nejnovější informace o panelu a jeho umístění nainstalované na mapě.
-* Proaktivně kontrolovat stav panelů a stav připojení
-* Přečtěte si trendy v oblasti energetiky a teploty, abyste mohli zachytit všechny neobvyklé vzory.
-* Sledovat celkové energetické generace pro účely plánování a fakturace
-* Operace s příkazy a ovládacími prvky, jako je například panel aktivace a verze aktualizovaného firmwaru. V šabloně se na příkazových tlačítkách zobrazují možné funkce a neodesílají skutečné příkazy.
+Adatum je fiktivní energetická společnost, která monitoruje a spravuje solární panely. Na řídicí misondě pro monitorování solárního panelu se zobrazí vlastnosti solárního panelu, data a ukázkové příkazy. Umožňuje operátorům a podpůrným týmům proaktivně provádět následující činnosti, než se změní na incidenty podpory:
+* Prohlédněte si nejnovější informace o panelu a jeho nainstalované umístění na mapě
+* Proaktivní kontrola stavu panelu a stavu připojení
+* Projděte si trendy výroby energie a teploty, abyste zachytili všechny neobvyklé vzorce
+* Sledování celkové výroby energie pro účely plánování a fakturace
+* Příkazové a řídicí operace, jako je aktivace panelu a aktualizace verze firmwaru. V šabloně příkazová tlačítka zobrazují možné funkce a neposílají skutečné příkazy.
 
 > [!div class="mx-imgBorder"]
-> řídicí panel monitorování ![ho slunečního panelu](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+> ![Přístrojová deska pro monitorování solárních panelů](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
 
 ### <a name="devices"></a>Zařízení
-Aplikace přichází s ukázkovým zařízením slunečního zařízení. Podrobnosti o zařízení uvidíte kliknutím na kartu **zařízení** .
+Aplikace je dodávána se vzorkem solárního panelu. Podrobnosti o zařízení můžete zobrazit kliknutím na kartu **Zařízení.**
 
 > [!div class="mx-imgBorder"]
-> zařízení ![slunečního panelu](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+> ![Solární panelzařízení](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
 
 
-Kliknutím na odkaz ukázkový **SP0123456789** zařízení zobrazíte podrobnosti o zařízení. Na stránce **aktualizovat vlastnosti** můžete aktualizovat vlastnosti zařízení s možností zápisu a vizualizovat aktualizované hodnoty na řídicím panelu. 
+Kliknutím na ukázkový odkaz **SP0123456789** zobrazíte podrobnosti o zařízení. Na stránce **Aktualizovat vlastnosti** můžete aktualizovat zapisovatelné vlastnosti zařízení a vizualizovat aktualizované hodnoty na řídicím panelu. 
 
 > [!div class="mx-imgBorder"]
-> Vlastnosti panelu ![ho slunečníku](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+> ![Vlastnosti solárních panelů](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
 
 
 ### <a name="device-template"></a>Šablona zařízení
-Kliknutím na kartu **šablony zařízení** zobrazíte model zařízení slunečního panelu. Model má předem definované rozhraní pro data, vlastnosti, příkazy a zobrazení.
+Kliknutím na kartu **Šablony zařízení** zobrazíte model zařízení na solárních panelech. Model má předem definovat rozhraní pro data, vlastnost, příkazy a zobrazení.
 
 > [!div class="mx-imgBorder"]
-> Šablona zařízení panelu ![slunečního pří](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
+> ![Šablona zařízení solárních panelů](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud se rozhodnete, že tuto aplikaci nebudete používat, odstraňte aplikaci pomocí následujících kroků:
+Pokud se rozhodnete tuto aplikaci nadále používat, odstraňte aplikaci pomocí následujících kroků:
 
 1. V levém podokně otevřete kartu Správa.
-2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
+2. Vyberte Nastavení aplikace a v dolní části stránky klikněte na Tlačítko Odstranit. 
 
     > [!div class="mx-imgBorder"]
-    > ![odstranit](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png) aplikace
+    > ![Odstranit aplikaci](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o architektuře aplikací na panelu slunečního příčtěte si [článek o konceptu](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
-* Vytváření šablon aplikací pro sluneční použití, zdarma: [aplikace v panelu slunečního](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) programu
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/) .
+* Další informace o architektuře aplikací pro solární panely naleznete [v článku o konceptu](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
+* Vytvořte šablony aplikací solárních panelů zdarma: [aplikace pro solární panely](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
+* Další informace o IoT Central, viz [Přehled IoT Central](https://docs.microsoft.com/azure/iot-central/)
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 393c3a06a2366a7d6947faf8bbfe038d6c5982fc
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160062"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419666"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Jednostránková aplikace: Získání tokenu pro volání rozhraní API
 
@@ -42,7 +42,7 @@ Můžete nastavit obory rozhraní API, které chcete, aby přístupový token za
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Získání tokenu s automaticky otevíraným oknem
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující kód kombinuje dříve popsaný vzor s metodami pro vyskakovací prostředí:
 
@@ -76,20 +76,40 @@ Obálka MSAL Angular poskytuje zachycovač HTTP, který automaticky získá př�
 Obory pro api můžete zadat `protectedResourceMap` v možnosti konfigurace. `MsalInterceptor`bude požadovat tyto obory při automatickém získávání tokenů.
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 Pro úspěch a neúspěch silent token akvizice MSAL Angular poskytuje zpětná volání, které můžete přihlásit k odběru. Je také důležité mít na paměti, odhlásit.
@@ -103,7 +123,7 @@ Pro úspěch a neúspěch silent token akvizice MSAL Angular poskytuje zpětná 
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -115,7 +135,7 @@ Alternativně můžete explicitně získat tokeny pomocí metody získat tokeny,
 
 ## <a name="acquire-a-token-with-a-redirect"></a>Získání tokenu s přesměrováním
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující vzor je popsáno dříve, ale zobrazí se s metodou přesměrování získat tokeny interaktivně. Budete muset zaregistrovat zpětné volání přesměrování, jak bylo uvedeno výše.
 
@@ -149,16 +169,16 @@ Volitelné deklarace identity můžete použít pro následující účely:
 
 - Zahrnout další deklarace identity v tokenech pro vaši aplikaci.
 - Změňte chování určitých deklarací, které Azure AD vrátí v tokenech.
-- Přidejte a získejte přístup k vlastním deklaracím identity pro vaši aplikaci. 
+- Přidejte a získejte přístup k vlastním deklaracím identity pro vaši aplikaci.
 
 Chcete-li požádat o volitelné deklarace identity v aplikace `IdToken`, můžete odeslat objekt stringified claims do `claimsRequest` pole `AuthenticationParameters.ts` třídy.
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],

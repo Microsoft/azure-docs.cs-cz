@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127507"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473849"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Poradce při potížích s klientem vzdálené plochy
 
@@ -21,21 +21,15 @@ Tento článek popisuje běžné problémy s klientem vzdálené plochy a jejich
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient vzdálené plochy pro Windows 7 nebo Windows 10 přestane reagovat nebo jej nelze otevřít
 
-Pomocí následujících rutin prostředí PowerShell vyčistěte neintegrované registry klientů (OOB).
+Počínaje verzí 1.2.790 můžete obnovit uživatelská data ze stránky Informace nebo pomocí příkazu.
 
-```PowerShell
-Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
+Pomocí následujícího příkazu odeberte uživatelská data, obnovíte výchozí nastavení a odhlaste se ze všech pracovních prostorů.
 
-#Remove RdClientRadc registry key
-Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
-
-#Remove all files under %appdata%\RdClientRadc
-Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
+```cmd
+msrdcw.exe /reset [/f]
 ```
 
-Přejděte na **%AppData%\RdClientRadc** a odstraňte veškerý obsah.
-
-Odinstalujte a přeinstalujte klienta Vzdálené plochy pro Windows 7 a Windows 10.
+Pokud používáte starší verzi klienta Vzdálené plochy, doporučujeme klienta odinstalovat a znovu nainstalovat.
 
 ## <a name="web-client-wont-open"></a>Webový klient se neotevře
 

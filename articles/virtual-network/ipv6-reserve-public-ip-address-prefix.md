@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 76d1ba2717ac3c8ac8e86687ef1754a8790f3e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72595075"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420547"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Rezervovat veřejnou předponu adresy IPv6
 IPv6 pro virtuální síť Azure (VNet) umožňuje hostovat aplikace v Azure pomocí připojení IPv6 a IPv4 v rámci virtuální sítě i do a z Internetu. Kromě rezervace jednotlivých adres IPv6 můžete pro své použití rezervovat souvislé rozsahy adres Azure IPv6 (označované jako IP prefix). Tento článek popisuje, jak vytvořit IPv6 veřejné IP adresy a rozsahy adres pomocí Azure PowerShell a CLI.
 
-> [!Important]
-> IPv6 pro virtuální síť Azure je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-single-reserved-ipv6-public-ip"></a>Vytvoření jedné vyhrazené veřejné IP adresy IPv6
 

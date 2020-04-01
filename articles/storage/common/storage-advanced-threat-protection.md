@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 27860b8761c565c45a604253efdff5f77606606e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 195f4b5057c0e2d644ab44cc4c32e97c8662d36d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061298"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422786"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace pokročilé ochrany před hrozbami pro Azure Storage
 
@@ -24,7 +24,7 @@ Pokročilá ochrana před hrozbami pro Azure Storage poskytuje další vrstvu in
 Výstrahy zabezpečení se aktivují, když dojde k anomáliím v aktivitě. Tyto výstrahy zabezpečení jsou integrované s [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány e-mailem správcům předplatného, s podrobnostmi o podezřelé aktivity a doporučení, jak vyšetřovat a napravit hrozby.
 
 > [!NOTE]
-> Pokročilá ochrana před hrozbami pro Azure Storage je momentálně dostupná jenom pro úložiště objektů Blob. Není k dispozici ve vládních a suverénních cloudových oblastech Azure. Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Centra zabezpečení Azure]( https://azure.microsoft.com/pricing/details/security-center/).
+> Pokročilá ochrana před hrozbami pro Azure Storage je momentálně dostupná jenom pro úložiště objektů Blob. Tato služba je dostupná v amerických vládních cloudech, ale žádné jiné suverénní nebo azure vládní cloudové oblasti. Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Centra zabezpečení Azure](https://azure.microsoft.com/pricing/details/security-center/).
 
 Pokročilá ochrana před hrozbami pro Azure Storage ingestuje diagnostické protokoly požadavků na čtení, zápis a odstranění do úložiště objektů Blob pro detekci hrozeb. Chcete-li prozkoumat výstrahy z pokročilé ochrany před hrozbami, můžete zobrazit související aktivitu úložiště pomocí protokolování Služby Storage Analytics. Další informace najdete v **tématu Konfigurace protokolování** v [monitoru účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md#configure-logging).
 
@@ -62,7 +62,7 @@ Když se přihlásíte k odběru úrovně Standard v Azure Security Center, pokr
 
 Pomocí šablony Azure Resource Manager nasadit účet Azure Storage s rozšířenou ochranu před hrozbami povoleno. Další informace naleznete v [tématu Účet úložiště s pokročilou ochranou před hrozbami](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="azure-policy"></a>[Zásady Azure](#tab/azure-policy)
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Pomocí zásad Azure můžete povolit pokročilou ochranu před hrozbami napříč účty úložiště v rámci konkrétního předplatného nebo skupiny prostředků.
 
@@ -80,7 +80,7 @@ Pomocí zásad Azure můžete povolit pokročilou ochranu před hrozbami napří
 
     ![Stránka Definice zásad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-api"></a>[ROZHRANÍ API PRO ODPOČINEK](#tab/rest-api)
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 Pomocí příkazů rest API můžete vytvořit, aktualizovat nebo získat pokročilé nastavení ochrany před hrozbami pro konkrétní účet úložiště.
 

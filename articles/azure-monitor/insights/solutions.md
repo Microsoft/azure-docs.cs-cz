@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275201"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437540"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Řešení monitorování ve službě Azure Monitor
 Monitorování řešení využívají služby v Azure k poskytnutí dalších informací o provozu konkrétní aplikace nebo služby. Tento článek obsahuje stručný přehled řešení monitorování v Azure a podrobnosti o jejich použití a instalaci.
@@ -83,11 +83,7 @@ Všechna řešení monitorování vyžadují [pracovní prostor Log Analytics](.
 * Pokud řešení vyžaduje účet Automatizace, musí být pracovní prostor Analýzy protokolů a účet automatizace vzájemně propojeny. Pracovní prostor Log Analytics může být propojen pouze s jedním účtem Automation a účet Automation může být propojen pouze s jedním pracovním prostorem Log Analytics.
 * Chcete-li být propojeny, pracovní prostor Log Analytics a automatizační účet musí být ve stejné skupině prostředků a oblasti. Výjimkou je pracovní prostor v oblasti USA – východ a účet Automatizace v usa – východ 2.
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Vytvoření propojení mezi pracovním prostorem Analýzy protokolů a účtem Automation
-Způsob zadání pracovního prostoru Analýzy protokolů a účtu automatizace závisí na způsobu instalace vašeho řešení.
-
-* Když nainstalujete řešení přes Azure Marketplace, budete vyzváni k zadání účtu pracovního prostoru a automatizace. Propojení mezi nimi je vytvořeno, pokud ještě nejsou propojeny.
-* Pro řešení mimo Azure Marketplace, musíte propojit pracovní prostor Log Analytics a účet Automatizace před instalací řešení. To můžete provést výběrem libovolného řešení na Azure Marketplace a výběrem pracovního prostoru Log Analytics a účtu Automation. Není nutné skutečně nainstalovat řešení, protože odkaz je vytvořen, jakmile je vybrán pracovní prostor Log Analytics a účet automatizace. Po vytvoření propojení můžete použít tento pracovní prostor Log Analytics a účet automatizace pro libovolné řešení.
+Když nainstalujete řešení přes Azure Marketplace, budete vyzváni k zadání účtu pracovního prostoru a automatizace. Propojení mezi nimi je vytvořeno, pokud ještě nejsou propojeny.
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Ověření propojení mezi pracovním prostorem Log Analytics a účtem Automation
 Propojení mezi pracovním prostorem Log Analytics a účtem Automation můžete ověřit pomocí následujícího postupu.

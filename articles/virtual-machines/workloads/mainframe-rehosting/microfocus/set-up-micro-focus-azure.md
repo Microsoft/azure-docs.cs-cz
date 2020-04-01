@@ -8,22 +8,25 @@ ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 03/30/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68834567"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411195"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Instalace Micro Focus Enterprise Server 4.0 a Enterprise Developer 4.0 do Azure
 
 Tento článek ukazuje, jak nastavit [Micro Focus Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) a Micro Focus Enterprise Developer [4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) v Azure.
 
 Běžné zatížení v Azure je vývojové a testovací prostředí. Tento scénář je běžné, protože je to tak nákladově efektivní a snadno nasadit a strhnout. S Enterprise Server, Micro Focus vytvořil jeden z největších mainframe rehosting platformy k dispozici. Úlohy z/OS můžete spouštět na levnější platformě x86 v Azure pomocí virtuálních počítačů s Windows nebo Linuxem.
+
+> [!NOTE]
+> Již brzy: Pokyny pro nastavení [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) na virtuálních počítačích Azure.
 
 Toto nastavení používá virtuální počítače Azure s bitovou kopií Windows Serveru 2016 z Azure Marketplace s už nainstalovaným Microsoft SQL Serverem 2017. Toto nastavení platí také pro Azure Stack.
 

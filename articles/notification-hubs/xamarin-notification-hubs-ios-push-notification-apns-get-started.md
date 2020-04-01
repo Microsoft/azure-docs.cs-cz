@@ -217,7 +217,7 @@ Nabízená oznámení se většinou posílají ve službě back-end, jako je slu
 V tomto kurzu jste rozeslali oznámení do všech zařízení s iOS zaregistrovaných v back-endu. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s iOSem, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
+>[Nabízená oznámení odesílaná konkrétním zařízením](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
 
 <!-- Images. -->
 [6]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png
@@ -238,4 +238,4 @@ V tomto kurzu jste rozeslali oznámení do všech zařízení s iOS zaregistrova
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Portál Azure]: https://portal.azure.com
+[portál Azure]: https://portal.azure.com

@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1c751fc31ba9066cf49eabbb86d37eda230c9c98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062883"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435534"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 
 Tento průvodce je určený odborníkům na informační technologie (IT), analytikům zabezpečení informací a správcům cloudů, jejichž společnosti používají službu Azure Security Center a potřebují odstraňovat potíže týkající se služby Security Center.
 
-Security Center používá Microsoft Monitoring Agent ke shromažďování a ukládání dat. Další informace najdete v článku o [migraci platformy pro Azure Security Center](security-center-platform-migration.md). Informace v tomto článku představují funkce služby Security Center po přechodu na agenta Microsoft Monitoring Agent.
+Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Další informace najdete v článku o [migraci platformy pro Azure Security Center](security-center-platform-migration.md). Informace v tomto článku představují funkce Centra zabezpečení po přechodu na agenta Analýzy protokolů.
 
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -52,23 +52,23 @@ U většiny postupů odstraňování potíží prováděných v rámci služby S
 
 Protokol auditu obsahuje všechny operace zápisu (PUT, POST, DELETE) prováděné s vašimi prostředky, ale neobsahuje operace čtení (GET).
 
-## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
+## <a name="log-analytics-agent"></a>Agent Log Analytics
 
-Security Center používá Microsoft Monitoring Agent – to je stejný agent používaný službou Azure Monitor – ke shromažďování dat zabezpečení z vašich virtuálních počítačů Azure. Po povolení shromažďování dat a řádné instalaci agenta v cílovém počítači by se měl provádět tento proces:
+Security Center používá agenta Log Analytics – to je stejný agent používaný službou Azure Monitor – ke shromažďování dat zabezpečení z vašich virtuálních počítačů Azure. Po povolení shromažďování dat a řádné instalaci agenta v cílovém počítači by se měl provádět tento proces:
 
 * HealthService.exe
 
-Pokud otevřete konzolu pro správu služeb (services.msc), uvidíte také spuštěnou službu Microsoft Monitoring Agent, jak je znázorněno na následujícím obrázku:
+Pokud otevřete konzolu pro správu služeb (services.msc), zobrazí se také služba agenta Log Analytics spuštěná, jak je znázorněno níže:
 
 ![Služby](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Pokud chcete zjistit, kterou verzi agenta máte, otevřete **Správce úloh**, na kartě **Procesy** vyhledejte **Služba Microsoft Monitoring Agent**, klikněte na ni pravým tlačítkem myši a klikněte na **Vlastnosti**. Na kartě **Podrobnosti** vyhledejte verzi souboru, jak je znázorněno níže:
+Chcete-li zjistit, kterou verzi agenta máte, **otevřete**na kartě **Procesy** službu **agenta Log Analytics vyhledejte službu agenta Log Analytics**, klepněte na ni pravým tlačítkem myši a klepněte na příkaz **Vlastnosti**. Na kartě **Podrobnosti** vyhledejte verzi souboru, jak je znázorněno níže:
 
 ![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Scénáře instalace služby Microsoft Monitoring Agent
+## <a name="log-analytics-agent-installation-scenarios"></a>Scénáře instalace agenta analýzy protokolů
 
-Existují dva scénáře instalace služby Microsoft Monitoring Agent na počítač, které mohou přinést různé výsledky. Podporované scénáře:
+Existují dva scénáře instalace, které mohou při instalaci agenta Analýzy protokolů do počítače vést k různým výsledkům. Podporované scénáře:
 
 * **Agent nainstalovaný automaticky službou Security Center**: V tomto scénáři se budete moci podívat na výstrahy v obou umístěních – ve službě Security Center i v Hledání v protokolu. Obdržíte e-mailová oznámení na e-mailovou adresu, která byla nakonfigurována v zásadách zabezpečení pro předplatné, ke kterému prostředek patří.
 
@@ -83,16 +83,16 @@ Existují dva scénáře instalace služby Microsoft Monitoring Agent na počít
 
 | Stav monitorování | Popis | Postup řešení |
 |---|---|---|
-| Čeká se na instalaci agenta | Stále probíhá instalace agenta Microsoft Monitoring Agent.  Instalace může trvat i několik hodin. | Počkejte na dokončení automatické instalace. |
-| Stav napájení je vypnuto | Virtuální počítač je zastavený.  Agenta Microsoft Monitoring Agent je možné nainstalovat jen na spuštěný virtuální počítač. | Restartujte virtuální počítač. |
-| Agent virtuálního počítače Azure chybí nebo není platný | Microsoft Monitoring Agent ještě není nainstalovaný.  Aby služba Security Center mohla nainstalovat rozšíření, potřebuje platného agenta virtuálního počítače Azure. | Nainstalujte, přeinstalujte nebo upgradujte na virtuálním počítači agenta virtuálního počítače Azure. |
-| Stav virtuálního počítače není připravený k instalaci  | Microsoft Monitoring Agent ještě není nainstalovaný, protože stav virtuálního počítače brání v jeho instalaci. Virtuální počítač není připraven pro instalaci z důvodu problému s agentem nebo zřizováním virtuálního počítače. | Zkontrolujte stav virtuálního počítače. Vraťte se na portálu na obrazovku **Virtual Machines** a výběrem virtuálního počítače zobrazte jeho stav. |
-|Instalace selhala – obecná chyba | Microsoft Monitoring Agent je nainstalovaný, ale selhal kvůli chybě. | [Ručně rozšíření nainstalujte](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) nebo odinstalujte, aby se ho služba Security Center mohla pokusit znovu nainstalovat. |
-| Instalace selhala – místní agent je už nainstalovaný | Instalace nástroje Microsoft Monitoring Agent selhala. Security Center identifikovalo místního agenta (Log Analytics nebo System Center Operations Manager), který je už na virtuálním počítači nainstalovaný. Aby se zabránilo vícenásobné konfiguraci, kdy se virtuální počítač hlásí dvěma samostatným pracovním prostorům, instalace agenta Microsoft Monitoring Agent byla zastavena. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
-| Agent se nemůže připojit k pracovnímu prostoru | Microsoft Monitoring Agent je nainstalovaný, ale selhal kvůli chybě připojení k síti.  Zkontrolujte připojení k internetu a jestli je pro agenta nakonfigurovaný správný proxy server HTTP. | Viz požadavky agenta monitorování na síť. |
-| Agent je připojený do chybějícího nebo neznámého pracovního prostoru | Security Center zjistil, že Microsoft Monitoring Agent nainstalovaný na virtuálním počítači je připojen k pracovnímu prostoru, který nemá přístup k. | K tomu může dojít ve dvou případech. Pracovní prostor byl odstraněn a už neexistuje. Znovu nainstalujte agenta s použitím správného pracovního prostoru nebo agenta odinstalujte a povolte službě Security Center provést jeho instalaci pomocí automatického zřizování. Druhou možností je, že pracovní prostor patří do předplatného, pro které nemá Security Center oprávnění. Security Center vyžaduje, aby předplatné povolovalo přístup zprostředkovateli služby Microsoft Security Resource Provider. Napravíte to tak, že dané předplatné zaregistrujete do služby Microsoft Security Resource Provider. Můžete to udělat přes rozhraní API, v prostředí PowerShell, na portálu nebo jednoduše pomocí filtrování podle předplatného na řídicím panelu **Přehled** služby Security Center. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
+| Čeká se na instalaci agenta | Instalace agenta Log Analytics je stále spuštěna.  Instalace může trvat i několik hodin. | Počkejte na dokončení automatické instalace. |
+| Stav napájení je vypnuto | Virtuální počítač je zastavený.  Agent analýzy protokolů lze nainstalovat pouze na virtuální počítač, který je spuštěn. | Restartujte virtuální počítač. |
+| Agent virtuálního počítače Azure chybí nebo není platný | Agent Analýzy protokolů ještě není nainstalován.  Aby služba Security Center mohla nainstalovat rozšíření, potřebuje platného agenta virtuálního počítače Azure. | Nainstalujte, přeinstalujte nebo upgradujte na virtuálním počítači agenta virtuálního počítače Azure. |
+| Stav virtuálního počítače není připravený k instalaci  | Agent Analýzy protokolů ještě není nainstalován, protože virtuální virtuální realitu není připraven k instalaci. Virtuální počítač není připraven pro instalaci z důvodu problému s agentem nebo zřizováním virtuálního počítače. | Zkontrolujte stav virtuálního počítače. Vraťte se na portálu na obrazovku **Virtual Machines** a výběrem virtuálního počítače zobrazte jeho stav. |
+|Instalace selhala – obecná chyba | Agent analýzy protokolů byl nainstalován, ale z důvodu chyby se nezdařil. | [Ručně rozšíření nainstalujte](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) nebo odinstalujte, aby se ho služba Security Center mohla pokusit znovu nainstalovat. |
+| Instalace selhala – místní agent je už nainstalovaný | Instalace agenta služby Log Analytics se nezdařila. Security Center identifikovalo místního agenta (Log Analytics nebo System Center Operations Manager), který je už na virtuálním počítači nainstalovaný. Chcete-li se vyhnout konfiguraci s více naváděcími, kde virtuální počítače hlásí do dvou samostatných pracovních prostorů, instalace agenta Log Analytics se zastavila. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
+| Agent se nemůže připojit k pracovnímu prostoru | Agent log Analytics nainstalován, ale selhal z důvodu připojení k síti.  Zkontrolujte připojení k internetu a jestli je pro agenta nakonfigurovaný správný proxy server HTTP. | Viz požadavky agenta monitorování na síť. |
+| Agent je připojený do chybějícího nebo neznámého pracovního prostoru | Security Center zjistil, že agent Analýzy protokolů nainstalovaný na virtuálním počítači je připojený k pracovnímu prostoru, ke kterému nemá přístup. | K tomu může dojít ve dvou případech. Pracovní prostor byl odstraněn a už neexistuje. Znovu nainstalujte agenta s použitím správného pracovního prostoru nebo agenta odinstalujte a povolte službě Security Center provést jeho instalaci pomocí automatického zřizování. Druhou možností je, že pracovní prostor patří do předplatného, pro které nemá Security Center oprávnění. Security Center vyžaduje, aby předplatné povolovalo přístup zprostředkovateli služby Microsoft Security Resource Provider. Napravíte to tak, že dané předplatné zaregistrujete do služby Microsoft Security Resource Provider. Můžete to udělat přes rozhraní API, v prostředí PowerShell, na portálu nebo jednoduše pomocí filtrování podle předplatného na řídicím panelu **Přehled** služby Security Center. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
 | Agent neodpovídá nebo chybí ID | Security Center nemůže z virtuálního počítače načíst shromážděná data zabezpečení, přestože je agent nainstalovaný. | Agent nevrací žádná data, a to ani prezenční signál. Agent může být poškozený nebo něco blokuje provoz. Nebo agent hlásí data, ale chybí ID prostředku Azure, takže není možné spárovat data s virtuálním počítačem Azure. Informace o řešení potíží s Linuxem naleznete [v příručce poradce při potížích s agentem analýzy protokolů pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Informace o řešení problémů ve Windows najdete v tématu [Odstraňování problémů virtuálních počítačů Windows](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
-| Agent nenainstalován | Shromažďování dat je vypnuté. | Zapněte shromažďování dat v zásadách zabezpečení nebo nainstalujte agenta Microsoft Monitoring Agent ručně. |
+| Agent nenainstalován | Shromažďování dat je vypnuté. | Zapněte shromažďování dat v zásadách zabezpečení nebo ručně nainstalujte agenta Log Analytics. |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Řešení potíží se síťovými požadavky na agenta monitorování <a name="mon-network-req"></a>
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 84e747d4317347b585600f97bde0d140187ada65
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74559188"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435315"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Kurz: Reakce na incidenty zabezpečení
 Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte:
@@ -114,7 +114,7 @@ Pokud chcete vypnout automatické zřizování:
 4. Vyberte **Uložit**.
 
 >[!NOTE]
-> Vypnutím automatického zřizování neodeberete agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, na kterých byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
+> Zakázání automatické zřizování neodebere agenta Analýzy protokolů z virtuálních stránek Azure, kde byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
 >
 
 ## <a name="next-steps"></a>Další kroky

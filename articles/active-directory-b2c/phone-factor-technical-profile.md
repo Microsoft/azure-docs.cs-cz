@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a0511a19477f3d76baf9c453316c5348cc31397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2b30e8f6bcbe7c0e739455f4942712f68ff8404
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332656"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437452"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu faktoru telefonu ve vlastních zásadách služby Azure Active Directory B2C
 
@@ -24,12 +24,11 @@ ms.locfileid: "80332656"
 
 Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro registraci a ověřování telefonních čísel. Tento technický profil:
 
-- Poskytuje uživatelské rozhraní pro interakci s uživatelem.
-- Používá definici obsahu k řízení vzhledu a chování.
-- Podporuje telefonní hovory i textové zprávy pro ověření telefonního čísla.
+- Poskytuje uživatelské rozhraní pro interakci s uživatelem k ověření nebo registraci telefonního čísla.
+- Podporuje telefonní hovory a textové zprávy k ověření telefonního čísla.
 - Podporuje více telefonních čísel. Uživatel může vybrat jedno z telefonních čísel, které má být ověřováno.  
-- Pokud je k dispozici telefonní číslo, uživatelské rozhraní faktoru telefonu požádá uživatele o ověření telefonního čísla. Pokud není k dispozici, požádá uživatele o registraci nového telefonního čísla.
-- Vrátí deklaraci označující, zda uživatel zadali nové telefonní číslo. Toto tvrzení můžete použít k rozhodnutí, zda má být telefonní číslo trvalé do uživatelského profilu Azure AD.  
+- Vrátí deklaraci označující, zda uživatel zadali nové telefonní číslo. Toto tvrzení můžete použít k rozhodnutí, zda má být telefonní číslo trvalé do uživatelského profilu Azure AD B2C.  
+- Používá [definici obsahu](contentdefinitions.md) k ovládání vzhledu a chování.
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
@@ -44,18 +43,24 @@ Následující příklad ukazuje technický profil faktoru telefonu pro registra
 </TechnicalProfile>
 ```
 
+## <a name="input-claims-transformations"></a>Vstupní deklarace identity transformace
+
+InputClaimsTransformations Element může obsahovat kolekci vstupní deklarace transformace, které se používají k úpravě vstupní deklarace nebo generovat nové. Následující vstupní deklarace transformace `UserId` generuje deklarace, která se používá později v kolekci vstupních deklarací.
+
+```xml
+<InputClaimsTransformations>
+  <InputClaimsTransformation ReferenceId="CreateUserIdForMFA" />
+</InputClaimsTransformations>
+```
+
 ## <a name="input-claims"></a>Vstupní deklarace
 
 InputClaims Element musí obsahovat následující deklarace identity. Název nároku můžete také namapovat na název definovaný v technickém profilu faktoru telefonu. 
 
-```XML
-<InputClaims>
-  <!--A unique identifier of the user. The partner claim type must be set to `UserId`. -->
-  <InputClaim ClaimTypeReferenceId="userIdForMFA" PartnerClaimType="UserId" />
-  <!--A claim that contains the phone number. If the claim is empty, Azure AD B2C asks the user to enroll a new phone number. Otherwise, it asks the user to verify the phone number. -->
-  <InputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />
-</InputClaims>
-```
+|  Datový typ| Požaduje se | Popis |
+| --------- | -------- | ----------- | 
+| řetězec| Ano | Jedinečný identifikátor uživatele. Název deklarace nebo PartnerClaimType musí `UserId`být nastavena na . Toto tvrzení by nemělo obsahovat osobní identifikovatelné informace.|
+| řetězec| Ano | Seznam typů deklarací. Každá deklarace obsahuje jedno telefonní číslo. Pokud některý ze vstupních deklarací neobsahuje telefonní číslo, bude uživatel požádán o registraci a ověření nového telefonního čísla. Ověřené telefonní číslo je vráceno jako výstupní deklarace. Pokud jeden ze vstupních deklarací obsahuje telefonní číslo, je uživatel požádán o jeho ověření. Pokud více vstupních deklarací obsahuje telefonní číslo, je uživatel vyzván k výběru a ověření jednoho z telefonních čísel. |
 
 Následující příklad ukazuje použití více telefonních čísel. Další informace naleznete v [tématu ukázkové zásady](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa).
 
@@ -67,20 +72,14 @@ Následující příklad ukazuje použití více telefonních čísel. Další i
 </InputClaims>
 ```
 
-InputClaimsTransformations Element může obsahovat kolekci InputClaimsTransformation prvky, které se používají k úpravě vstupní deklarace nebo generovat nové před jejich předložením na stránku faktor telefonu.
-
 ## <a name="output-claims"></a>Výstupní pohledávky
 
 OutputClaims Prvek obsahuje seznam deklarací vrácených technický profil faktor u telefonu.
 
-```xml
-<OutputClaims>
-  <!-- The verified phone number. The partner claim type must be set to `Verified.OfficePhone`. -->
-  <OutputClaim ClaimTypeReferenceId="Verified.strongAuthenticationPhoneNumber" PartnerClaimType="Verified.OfficePhone" />
-  <!-- Indicates whether the new phone number has been entered by the user. The partner claim type must be set to `newPhoneNumberEntered`. -->
-  <OutputClaim ClaimTypeReferenceId="newPhoneNumberEntered" PartnerClaimType="newPhoneNumberEntered" />
-</OutputClaims>
-```
+|  Datový typ| Požaduje se | Popis |
+|  -------- | ----------- |----------- |
+| Boolean | Ano | Označuje, zda byl uživatel zadán nové telefonní číslo. Název deklarace nebo PartnerClaimType musí být nastaven na`newPhoneNumberEntered`|
+| řetězec| Ano | Ověřené telefonní číslo. Název deklarace nebo PartnerClaimType musí `Verified.OfficePhone`být nastavena na .|
 
 OutputClaimsTransformations Element může obsahovat kolekci OutputClaimsTransformation prvky, které se používají k úpravě výstupní deklarace nebo generovat nové.
 
@@ -94,7 +93,9 @@ Prvek **CryptographicKeys** se nepoužívá.
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | ContentDefinitionReferenceId | Ano | Identifikátor definice [obsahu](contentdefinitions.md) přidružené k tomuto technickému profilu. |
-| ManualPhoneNumberEntryAllowed| Ne | Určete, zda má uživatel povoleno ručně zadat telefonní číslo. Možné `true` hodnoty: `false` nebo (výchozí).|
+| ManualPhoneNumberEntryAllowed| Ne | Určete, zda má uživatel povoleno ručně zadat telefonní číslo. Možné hodnoty: `true` `false` , nebo (výchozí).|
+| setting.authenticationMode | Ne | Metoda ověření telefonního čísla. Možné `sms`hodnoty: `phone`, `mixed` , nebo (výchozí).|
+| nastavení.automatické vytáčení| Ne| Určete, zda má technický profil automaticky vytočit nebo automaticky odeslat SMS. Možné hodnoty: `true` `false` , nebo (výchozí). Automatické vytáčení vyžaduje, `setting.authenticationMode` aby metadata byla nastavena na `sms`. nebo `phone`. Vstupní deklarace kolekce musí mít jedno telefonní číslo. |
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 
@@ -103,4 +104,3 @@ Prvky uživatelského rozhraní stránky ověřování faktoru telefonu lze [lok
 ## <a name="next-steps"></a>Další kroky
 
 - Zkontrolujte [sociální a místní účty se startovacím balíčkem Vícefaktorové](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa) osnovy.
-

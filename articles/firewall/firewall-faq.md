@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 60beccc2f2679a18903b74b84f48afebfb3b69da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257747"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437729"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -133,7 +133,7 @@ Vynucené tunelové propojení je podporováno. Další informace naleznete v t�
 
 Azure Firewall musí mít přímé připojení k Internetu. Pokud se vaše síť AzureFirewallSubnet učí výchozí trasu do místní sítě prostřednictvím protokolu BGP, musíte to přepsat udr 0.0.0.0/0 s hodnotou **NextHopType** nastavenou jako **Internet,** aby bylo zachováno přímé připojení k Internetu.
 
-Pokud vaše konfigurace vyžaduje vynucené tunelování do místní sítě a můžete určit cílové ip předpony pro vaše cíle v Internetu, můžete tyto rozsahy nakonfigurovat s místní sítí jako další směrování prostřednictvím uživatelem definované trasy na Síť AzureFirewallSubnet. Nebo můžete použít Protokol BGP k definování těchto tras.
+Pokud vaše konfigurace vyžaduje vynucené tunelové propojení do místní sítě a můžete určit cílové IP předpony pro vaše cíle internetu, můžete nakonfigurovat tyto rozsahy s místní sítí jako další směrování prostřednictvím uživatelem definované trasy na AzureFirewallSubnet. Nebo můžete použít Protokol BGP k definování těchto tras.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Existují nějaká omezení skupiny prostředků brány firewall?
 
@@ -209,3 +209,7 @@ $fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
 
 Set-AzFirewall -AzureFirewall $fw
 ```
+
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Proč se příkaz ping tcp a podobné nástroje mohou úspěšně připojit k cílovému virtuálnímu síti, i když žádné pravidlo na Azure Firewall tento provoz neumožňuje?
+
+Příkaz ping protokolu TCP se ve skutečnosti nepřipojuje k cílovému fqdn. K tomu dochází, protože transparentní proxy server Azure Firewall naslouchá na portu 80/443 pro odchozí provoz. Příkaz ping protokolu TCP naváže připojení k bráně firewall, která poté paket zahodí a zaznamená připojení. Toto chování nemá žádný dopad na zabezpečení. Abychom se však vyhnuli nejasnostem, zkoumáme potenciální změny tohoto chování. 

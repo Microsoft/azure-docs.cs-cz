@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a429a1e454e73a1a9d544e308e5b2d60052d91a9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7a31eece6629558b14b614853addce59642e698b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349779"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422724"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -38,7 +38,9 @@ Chcete-li stáhnout soubor **deployer.log,** postupujte takto:
 **Nápravná opatření**:
 
 1. Přejděte do skupiny prostředků FarmBeats Datahub.   
+
 2. Vyberte **centrum událostí** (DatafeedEventHubNamespace) a zkontrolujte počet příchozích zpráv.
+
 3. Proveďte jednu z následujících akcí:   
    - Pokud nejsou *k dispozici žádné příchozí zprávy*, obraťte se na partnera zařízení.  
    - Pokud se jedná o farmbeatssupport@microsoft.compříchozí *zprávy*, kontaktujte . Připojte protokoly Datahub a Akcelerátor a zachycenou telemetrii.
@@ -52,6 +54,7 @@ Chcete-li pochopit, jak stahovat protokoly, přejděte do části [Shromáždit 
 **Nápravná opatření**:
 
 1. Ujistěte se, že jste provedli registraci partnera správně - můžete to zkontrolovat tak, že přejdete na vaše datahub swagger, přejděte na /Partner API, Do get a zkontrolujte, zda je partner registrován. Pokud ne, postupujte [podle pokynů zde](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) přidat partnera.
+
 2. Ujistěte se, že jste použili správný formát zprávy telemetrie:
 
 ```json
@@ -83,9 +86,12 @@ Chcete-li pochopit, jak stahovat protokoly, přejděte do části [Shromáždit 
 
 1. V Datahub Swagger přejděte do rozhraní API pro partnery.
 2. Vyberte **Možnost Získat** > **Vyzkoušet** > **spustit**.
-3. Poznamenejte si ID partnera senzoru, který vás zajímá.
-4. Vraťte se do rozhraní API partnera a vyberte **získat/\<id>**.
-5. Zadejte ID partnera z kroku 3 a pak vyberte **Spustit**.
+
+> [!NOTE]
+> ID partnera senzorového partnera, který vás zajímá.
+
+3. Vraťte se do rozhraní API partnera a vyberte **získat/\<id>**.
+4. Zadejte ID partnera z kroku 3 a pak vyberte **Spustit**.
 
    Odpověď rozhraní API by měla mít připojovací řetězec Centra událostí.
 

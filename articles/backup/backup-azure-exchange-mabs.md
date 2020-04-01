@@ -4,12 +4,12 @@ description: Zjistěte, jak zálohovat exchange server do Azure Backup pomocí A
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295840"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421335"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
 
@@ -34,7 +34,7 @@ Chcete-li nainstalovat agenta ochrany MABS na server Exchange, postupujte takto:
 4. Vyberte databázi serveru Exchange, kterou chcete chránit, a klepněte na tlačítko **Další**.
 
    > [!NOTE]
-   > Pokud chráníte Exchange 2013, zkontrolujte [požadavky Exchange 2013](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12)).
+   > Pokud chráníte Exchange 2013, zkontrolujte [požadavky Exchange 2013](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016).
    >
    >
 
@@ -53,7 +53,7 @@ Chcete-li nainstalovat agenta ochrany MABS na server Exchange, postupujte takto:
     Po výběru této možnosti bude kontrola konzistence zálohování spuštěna na MABS, aby se zabránilo vstupně-vaním provozu, který je generován spuštěním příkazu **eseutil** na serveru Exchange.
 
    > [!NOTE]
-   > Chcete-li použít tuto možnost, musíte zkopírovat soubory Ese.dll a Eseutil.exe do adresáře C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin na serveru MAB. V opačném případě se spustí následující chyba:  
+   > Chcete-li použít tuto možnost, musíte zkopírovat soubory Ese.dll a Eseutil.exe do adresáře C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin na serveru MABS. V opačném případě se spustí následující chyba:  
    > ![chyba eseutil](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
@@ -66,7 +66,7 @@ Chcete-li nainstalovat agenta ochrany MABS na server Exchange, postupujte takto:
    >
 10. Nakonfigurujte cíle pro **krátkodobé zálohování**a klepněte na tlačítko **Další**.
 11. Zkontrolujte dostupné místo na disku a klepněte na tlačítko **Další**.
-12. Vyberte čas, kdy server MAB vytvoří počáteční replikaci, a klepněte na tlačítko **Další**.
+12. Vyberte čas, kdy server MABS vytvoří počáteční replikaci, a klepněte na tlačítko **Další**.
 13. Vyberte možnosti kontroly konzistence a klepněte na tlačítko **Další**.
 14. Vyberte databázi, kterou chcete zálohovat do Azure, a klikněte na **Další**. Například:
 

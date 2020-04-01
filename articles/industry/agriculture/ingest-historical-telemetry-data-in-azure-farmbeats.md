@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b0b9d62e8761cfb67d0642d8e5a97e7d1f05af12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a5e89f256b562ce5f702e9ff1388cb4d021bf5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064452"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437694"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -37,37 +37,48 @@ Postupujte následovně:
 > [!NOTE]
 > Chcete-li provést následující kroky, musíte být správcem.
 
-1. Stáhněte soubor [zip](https://aka.ms/farmbeatspartnerscriptv2)a extrahujte jej na místní jednotku. Uvnitř souboru zip bude jeden soubor.
+1. Přihlaste se k webu https://portal.azure.com/.
 
-2. Přihlaste https://portal.azure.com/ se a přejděte na**registraci aplikací Služby** **Azure Active Directory** > .
+2. **Pokud jste na FarmBeats verze 1.2.7 nebo novější, přeskočte kroky a, b a c a přejděte ke kroku 3.** Můžete zkontrolovat Verzi FarmBeats výběrem ikony **Nastavení** v pravém horním rohu ui FarmBeats.
 
-3. Vyberte **registraci aplikace,** která byla vytvořena jako součást vašeho nasazení FarmBeats. Bude mít stejný název jako váš FarmBeats Datahub.
+      a.  Přejděte na**Registrace aplikací služby** **Azure Active Directory** > 
 
-4. Vyberte **vystavit rozhraní API** > Vyberte Přidat **klientskou aplikaci** a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zkontrolujte **autorizovat obor**. Tím umožníte přístup k azure cli (Cloud Shell) k provedení následujících kroků:
+      b. Vyberte **registraci aplikace,** která byla vytvořena jako součást vašeho nasazení FarmBeats. Bude mít stejný název jako váš Datahub FarmBeats.
 
-5. Otevřete Cloud Shell. Tato možnost je dostupná na panelu nástrojů v pravém horním rohu portálu Azure.
+      c. Vyberte **vystavit rozhraní API** > vyberte Přidat **klientskou aplikaci** a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zkontrolujte **autorizovat obor**. Tím se umožní přístup k Azure CLI (Cloud Shell) k provedení níže uvedených kroků:
+
+3. Otevřete Cloud Shell. Tato možnost je dostupná na panelu nástrojů v pravém horním rohu portálu Azure.
 
     ![Panel nástrojů portálu Azure](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. Ujistěte se, že je prostředí nastaveno na **PowerShell**. Ve výchozím nastavení je nastavena na Bash.
+4. Ujistěte se, že je prostředí nastaveno na **PowerShell**. Ve výchozím nastavení je nastavena na Bash.
 
     ![Nastavení panelu nástrojů prostředí PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. Nahrajte soubor z kroku 1 v instanci Cloud Shell.
+5. Přejděte do domovského adresáře.
 
-    ![Tlačítko Nahrát panel nástrojů](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ```azurepowershell-interactive 
+    cd  
+    ```
 
-8. Přejděte do adresáře, do kterého byl soubor nahrán. Ve výchozím nastavení se soubory nahrávají do domovského adresáře pod uživatelským jménem.
+6. Spusťte následující příkaz. Tím se stáhne skript do domovského adresáře.
 
-9. Spusťte následující skript. Skript požádá o ID klienta, které lze získat ze**stránky Přehled** **služby Azure Active Directory** > .
+    ```azurepowershell-interactive 
 
-    ```azurepowershell-interactive
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
+
+    ```
+
+7. Spusťte následující skript. Skript požádá o ID klienta, které lze získat ze stránky**Přehled** **služby Azure Active Directory.** > 
+
+    ```azurepowershell-interactive 
 
     ./generatePartnerCredentials.ps1   
 
     ```
 
-10. Podle pokynů na obrazovce zachyťte hodnoty pro **koncový bod rozhraní API**, **ID klienta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
+8. Podle pokynů na obrazovce zachyťte hodnoty pro **koncový bod rozhraní API**, **ID klienta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
+
 
 ## <a name="create-device-or-sensor-metadata"></a>Vytvoření metadat zařízení nebo senzoru
 
@@ -109,7 +120,7 @@ Postupujte následovně:
 |       Název > sensormeasures       | Název měry snímače. Podporována jsou pouze malá písmena. Pro měření z různých hloubek určete hloubku. Například soil_moisture_15cm. Tento název musí být konzistentní s telemetrická data.  |
 |          SensorMeasures > datový typ       |Datový typ telemetrie. V současné době double je podporována.|
 |    Typ > senzorůměří    |Typ měření telemetrických dat senzoru. Systémem definované typy jsou AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Dusičnan, O2, PH, Fosfát, PointInTime, Draslík, Tlak, RainGauge, RelativníVlhkost, Slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiracation, PAR. Chcete-li přidat další, naleznete rozhraní /ExtendedType API.|
-|        SenzorOpatření > jednotka              | Jednotka telemetrických dat senzoru. Systémem definované jednotky jsou NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milimetr, centimetr, metr, palec, nohy, míle, kilometr, milesperhour, milespersecond, KMPerhour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMeter, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour Chcete-li přidat další, naleznete v rozhraní /ExtendedType API.|
+|        SenzorOpatření > jednotka              | Jednotka telemetrických dat senzoru. Systémem definované jednotky jsou NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, Meter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Procento, PartsPerMillion, MicroMol, MicroMolesPerLitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroPerMeterSquaredPerSecond, InchesPerHour Chcete-li přidat další, viz /ExtendedType API.|
 |    SensorMeasures > AggregationType    |  Hodnoty mohou být žádné, průměrné, maximální, minimální nebo Odchylka podle směrovek.  |
 |          Name (Název)            | Název k identifikaci prostředku. Například název modelu nebo název produktu.  |
 |    Popis        | Zadejte smysluplný popis modelu.|
@@ -130,7 +141,7 @@ Další informace o objektech naleznete v tématu [Swagger](https://aka.ms/FarmB
 
 Chcete-li vytvořit požadavek rozhraní API, zkombinujte metodu HTTP (POST), adresu URL služby rozhraní API a identifikátor URI s prostředkem, který má dotazovat, odesílat data, vytvářet nebo odstraňovat požadavek. Potom přidáte jednu nebo více hlaviček požadavků HTTP. Adresa URL služby rozhraní API je koncový bod rozhraní API,\<to znamená, že adresa URL Datahub (https:// yourdatahub>.azurewebsites.net).  
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 FarmBeats Datahub používá ověřování nosiče, které potřebuje následující pověření, které byly generovány v předchozí části:
 
@@ -351,11 +362,11 @@ Převeďte formát dat historických senzorů na kanonický formát, kterému Az
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -429,11 +440,11 @@ Tady je příklad telemetrické zprávy:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

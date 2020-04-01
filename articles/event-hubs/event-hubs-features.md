@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281480"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398320"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -109,6 +109,13 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 
 Pokud se čtenář z oddílu odpojí, začne při opětovném připojení číst od kontrolního bodu, který dříve zaslal poslední čtenář daného oddílu z této skupiny příjemců. Když se čtečka připojí, předá posun do centra událostí a určí umístění, ve kterém má být možné začít číst. Takto můžete vytváření kontrolních bodů použít jak k označování událostí jako „dokončených“, tak k zajištění ochrany pro případ, že nastane selhání u čtenářů spuštěných na různých strojích. Ke starším datům se je možné vrátit tak, že určíte nižší posun od tohoto kontrolního bodu. Díky tomuto mechanismu umožňuje vytváření kontrolních bodů nejen obnovu při selhání, ale i opakované přehrání datového proudu.
 
+> [!NOTE]
+> Pokud používáte Azure Blob Storage jako úložiště kontrolních bodů v prostředí, které podporuje jinou verzi sady Storage Blob SDK než ty, které jsou obvykle dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Například pokud používáte [Centra událostí na Azure Stack Hub verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze pro službu Storage je verze 2017-11-09. V takovém případě musíte použít kód k cílení verze rozhraní API služby úložiště na 2017-11-09. Příklad, jak cílit na konkrétní verzi rozhraní API úložiště, najdete v těchto ukázkách na GitHubu: 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) nebo [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
+
 ### <a name="common-consumer-tasks"></a>Běžné úlohy příjemce
 
 Všichni spotřebitelé event hubů se připojují prostřednictvím relace AMQP 1.0, což je obousměrný komunikační kanál podporující stav. Každý oddíl má relaci AMQP 1.0, která usnadňuje transport událostí rozdělených do oddílů.
@@ -138,7 +145,7 @@ Další informace o službě Event Hubs naleznete pod těmito odkazy:
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

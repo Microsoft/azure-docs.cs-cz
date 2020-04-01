@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s e-mailem SkyDesk | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SkyDesk e-mailu.
+title: 'Kurz: Integrace Azure Active Directory s e-mailem skydesk | Dokumenty společnosti Microsoft'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a e-mailem SkyDesk.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,232 +16,232 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: faaa5dcc435452d6ed9e0f2c5b481df1e352dfd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090430"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Kurz: Integrace Azure Active Directory s SkyDesk e-mailu
+# <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Kurz: Integrace Azure Active Directory s e-mailem skydesk
 
-V tomto kurzu se dozvíte, jak integrovat SkyDesk e-mailu s Azure Active Directory (Azure AD).
-Integrace SkyDesk e-mailu s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat SkyDesk Email s Azure Active Directory (Azure AD).
+Integrace e-mailu SkyDesk s Azure AD vám přináší následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k e-mailu SkyDesk.
-* Uživatelům se automaticky přihlášeni k e-mailu SkyDesk (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, kdo má přístup k e-mailu SkyDesk.
+* Uživatelům můžete povolit automatické přihlášení k e-mailu SkyDesk (jednotné přihlašování) pomocí jejich účtů Azure AD.
+* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s SkyDesk e-mailu, potřebujete následující položky:
+Chcete-li nakonfigurovat integraci Azure AD pomocí e-mailu SkyDesk, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* E-mailu SkyDesk jednotného přihlašování povolená předplatného
+* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
+* SkyDesk E-mail s povoleným předplatným pro jednotné přihlášení
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje e-mailu SkyDesk **SP** jednotné přihlašování zahájené pomocí
+* SkyDesk Email podporuje **sp** inicioval SSO
 
-## <a name="adding-skydesk-email-from-the-gallery"></a>Přidání e-mailu SkyDesk z Galerie
+## <a name="adding-skydesk-email-from-the-gallery"></a>Přidání e-mailu SkyDesk z galerie
 
-Konfigurace integrace SkyDesk e-mailu do služby Azure AD, budete muset přidat SkyDesk e-mailu z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci e-mailu SkyDesk do Azure AD, musíte přidat e-mail SkyDesk z galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat SkyDesk e-mailu z galerie, postupujte následovně:**
+**Chcete-li přidat e-mail skydesku z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **e-mailu SkyDesk**vyberte **SkyDesk e-mailu** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **SkyDesk Email**, z panelu výsledků vyberte **SkyDesk Email** a pak klikněte na **tlačítko Přidat** a přidejte aplikaci.
 
-     ![E-mailu SkyDesk v seznamu výsledků](common/search-new-app.png)
+     ![SkyDesk Email v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a testovací služby Azure AD jednotné přihlašování s e-mailem SkyDesk podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské SkyDesk e-mailem.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí e-mailu SkyDesk na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v e-mailu SkyDesk.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí SkyDesk e-mailu, které potřebujete k dokončení následujících stavebních bloků:
+Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí e-mailu SkyDesk, musíte dokončit následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace SkyDesk e-mailu Single Sign-On](#configure-skydesk-email-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele e-mailu SkyDesk](#create-skydesk-email-test-user)**  – Pokud chcete mít protějšek Britta Simon v e-mailu SkyDesk, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace jednotného přihlášení e-mailu SkyDesk](#configure-skydesk-email-single-sign-on)** – pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
+3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
+5. **[Vytvořte uživatele e-mailového testu SkyDesk](#create-skydesk-email-test-user)** – chcete-li mít v e-mailu SkyDesk protějšek Britty Simonové, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s SkyDesk e-mailem, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí e-mailu SkyDesk, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **e-mailu SkyDesk** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace **e-mailových** aplikací SkyDesk vyberte **Jednotné přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V části **Základní konfigurace SAML** proveďte následující kroky:
 
-    ![SkyDesk e-mailová doména a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
+    ![SkyDesk E-mailová doména a adresy URL jednotné přihlašovací informace](common/sp-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://mail.skydesk.jp/portal/<companyname>`
+    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://mail.skydesk.jp/portal/<companyname>`
 
     > [!NOTE]
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory SkyDesk e-mailovém klientovi](https://www.skydesk.jp/apps/support/) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Chcete-li získat hodnotu, obraťte se na [tým podpory e-mailového klienta SkyDesk.](https://www.skydesk.jp/apps/support/) Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. Na **nastavení e-mailu SkyDesk** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **Nastavit e-mail skydesk** zkopírujte příslušnou adresu URL podle vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor azure reklamy
 
-    c. Adresa URL – odhlášení
+    c. Adresa URL odhlášení
 
-### <a name="configure-skydesk-email-single-sign-on"></a>Konfigurace e-mailu SkyDesk jednotného přihlašování
+### <a name="configure-skydesk-email-single-sign-on"></a>Konfigurace jednotného přihlášení e-mailu skydesk
 
-1. V různých webový prohlížeč přihlašování k vašemu účtu e-mailu SkyDesk jako správce.
+1. V jiném webovém prohlížeči se přihlaste ke svému e-mailovému účtu SkyDesk jako správce.
 
-1. V nabídce v horní části klikněte na tlačítko **nastavení**a vyberte **organizace**.
+1. V horní nabídce klepněte na **tlačítko Nastavení**a vyberte **možnost Organizace**.
 
     ![Konfigurace jednotného přihlašování](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
-1. Klikněte na **domén** na levém panelu.
+1. Klikněte na **Domény** z levého panelu.
 
     ![Konfigurace jednotného přihlašování](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
-1. Klikněte na **přidání domény**.
+1. Klikněte na **Přidat doménu**.
 
     ![Konfigurace jednotného přihlašování](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
-1. Zadejte název domény a pak ověřte doménu.
+1. Zadejte název domény a ověřte doménu.
 
     ![Konfigurace jednotného přihlašování](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
-1. Klikněte na **ověřování SAML** na levém panelu.
+1. Klikněte na **SAML Authentication** z levého panelu.
 
     ![Konfigurace jednotného přihlašování](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
-1. Na **ověřování SAML** dialogového okna stránky, proveďte následující kroky:
+1. Na stránce dialogového okna **Ověřování SAML** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
-    > Použití ověřování na základě SAML, měli byste buď mít **ověřené domény** nebo **portál URL** instalační program. Na portálu můžete nastavit adresu URL s jedinečným názvem.
+    > Chcete-li použít ověřování založené na saml, měli byste mít **ověřené** nastavení adresy URL domény nebo **portálu.** Adresu URL portálu můžete nastavit s jedinečným názvem.
 
     ![Konfigurace jednotného přihlašování](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a. V **přihlašovací adresa URL** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    a. Do textového pole **Přihlašovací adresa URL** vložte hodnotu přihlašovací adresy **URL**, kterou jste zkopírovali z webu Azure Portal.
 
-    b. V **odhlášení** textového pole URL vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    b. Do textového pole Adresa URL **odhlášení** vložte hodnotu **adresy URL odhlášení**, kterou jste zkopírovali z webu Azure Portal.
 
-    c. **Změňte heslo URL** je volitelný takže políčko nechte prázdné.
+    c. **Změnit adresu URL hesla** je volitelná, proto ji ponechejte prázdnou.
 
-    d. Klikněte na **získáte klíč ze souboru** vyberte svůj certifikát stažený z webu Azure portal a potom klikněte na tlačítko **otevřít** na kterou certifikát nahrajete.
+    d. Kliknutím na **Získat klíč ze souboru** vyberte stažený certifikát z webu Azure Portal a kliknutím na **Otevřít** certifikát nahrajte.
 
-    e. Jako **algoritmus**vyberte **RSA**.
+    e. Jako **algoritmus**vyberte **rsa**.
 
-    f. Klikněte na tlačítko **Ok** a uložte změny.
+    f. Klepnutím na **tlačítko Ok** změny uložte.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel.**
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. Ve vlastnostech User proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno Uživatel](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **Název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k e-mailu SkyDesk.
+V této části povolíte Britta Simon používat Azure jednotné přihlášení udělením přístupu k SkyDesk email.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **e-mailu SkyDesk**.
+1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **SkyDesk Email**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **e-mailu SkyDesk**.
+2. V seznamu aplikací vyberte **SkyDesk Email**.
 
-    ![Odkaz e-mailem SkyDesk v seznamu aplikací](common/all-applications.png)
+    ![Odkaz E-mail skydesk v seznamu Aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
 
-### <a name="create-skydesk-email-test-user"></a>Vytvořit e-mailu SkyDesk testovacího uživatele
+### <a name="create-skydesk-email-test-user"></a>Vytvoření uživatele e-mailového testu SkyDesk
 
-V této části vytvořte uživatele Britta Simon SkyDesk e-mailem.
+V této části vytvoříte uživatele s názvem Britta Simon v e-mailu SkyDesk.
 
-Klikněte na **přístup uživatelů** z levé strany panelu SkyDesk e-mailem a pak zadejte svoje uživatelské jméno.
+Klikněte na **Přístup uživatelů** z levého panelu v e-mailu SkyDesk a zadejte své uživatelské jméno.
 
 ![Konfigurace jednotného přihlašování](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
-> Pokud je potřeba vytvořit uživatele hromadné, budete muset požádat [tým podpory SkyDesk e-mailovém klientovi](https://www.skydesk.jp/apps/support/).
+> Pokud potřebujete vytvořit hromadné uživatele, musíte kontaktovat [tým podpory e-mailového klienta SkyDesk](https://www.skydesk.jp/apps/support/).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici SkyDesk e-mailu na přístupovém panelu, vám by měl být automaticky přihlášeni k SkyDesk e-mailu, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici E-mail skydesk na přístupovém panelu, měli byste být automaticky přihlášeni k e-mailu SkyDesk, pro který nastavíte službu Zabezpečení. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

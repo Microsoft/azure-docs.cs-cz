@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 5146675b6eefd11fc1e6875ed9009ece92753ffb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 704f08bc4a41eb52789f8f28675332892d72a500
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72028104"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475136"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Nasazení modulu plug-in rozhraní CNI sítě Azure Virtual Network
 

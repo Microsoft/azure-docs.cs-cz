@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2fce8a7a6f6d345b83c639bd69ecd70271621e9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b344886e89a10a027cba169e92056a6dda443d8d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283153"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421942"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace zprostředkovatele prostředků Azure Resource Manager
 
@@ -65,7 +65,7 @@ Přehledy monitorování společnosti Microsoft
 > | Akce | Microsoft.aadiam/diagnosticsettingscategories/read | Čtení kategorií diagnostických nastavení |
 > |  | **metrické definice** |  |
 > | Akce | Microsoft.aadiam/metricDefinitions/read | Čtení definic metrik na úrovni klienta |
-> |  | **metriky** |  |
+> |  | **Metriky** |  |
 > | Akce | microsoft.aadiam/metriky/čtení | Čtení metrik na úrovni klienta |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
@@ -1776,7 +1776,7 @@ Služba Azure: [Kognitivní služby](../cognitive-services/index.yml)
 > | Akce | Microsoft.CognitiveServices/registr/akce | Registruje předplatné služeb Cognitive Services |
 > | Akce | Microsoft.CognitiveServices/checkDomainAvailability/action | Čte dostupné sou pro odběr. |
 > | Akce | Microsoft.CognitiveServices/registr/akce | Registruje předplatné služeb Cognitive Services |
-> |  | **accounts** |  |
+> |  | **Účty** |  |
 > | Akce | Microsoft.CognitiveServices/účty/čtení | Čte účty rozhraní API. |
 > | Akce | Microsoft.CognitiveServices/účty/zápis | Zapisuje účty rozhraní API. |
 > | Akce | Microsoft.CognitiveServices/účty/odstranit | Odstraní účty rozhraní API. |
@@ -2674,7 +2674,7 @@ Služba Azure: [Správa nákladů](../cost-management-billing/index.yml)
 > | Akce | Microsoft.CostManagement/prognóza/čtení | Prognóza dat o využití podle oboru. |
 > |  | **Operace** |  |
 > | Akce | Microsoft.CostManagement/operations/read | Seznam všech podporovaných operací poskytovatelem prostředků Microsoft.CostManagement. |
-> |  | **query** |  |
+> |  | **Dotazu** |  |
 > | Akce | Microsoft.CostManagement/dotaz/čtení | Dotaz na data o využití podle oboru. |
 > |  | **sestavy** |  |
 > | Akce | Microsoft.CostManagement/reports/read | Naplánujte sestavy dat o využití podle oboru. |
@@ -3060,7 +3060,7 @@ Služba Azure: [Analýza datového jezera](../data-lake-analytics/index.yml)
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.DataLakeAnalytics/registr/akce | Zaregistrujte předplatné DataLakeAnalytics. |
-> |  | **accounts** |  |
+> |  | **Účty** |  |
 > | Akce | Microsoft.DataLakeAnalytics/účty/čtení | Získejte informace o existujícím účtu DataLakeAnalytics. |
 > | Akce | Microsoft.DataLakeAnalytics/účty/zápis | Vytvořte nebo aktualizujte účet DataLakeAnalytics. |
 > | Akce | Microsoft.DataLakeAnalytics/účty/odstranit | Odstraňte účet DataLakeAnalytics. |
@@ -3110,7 +3110,7 @@ Služba Azure: [Azure Data Lake Store](../storage/blobs/data-lake-storage-introd
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.DataLakeStore/register/action | Zaregistrujte předplatné DataLakeStore. |
-> |  | **accounts** |  |
+> |  | **Účty** |  |
 > | Akce | Microsoft.DataLakeStore/účty/čtení | Získejte informace o existujícím účtu DataLakeStore. |
 > | Akce | Microsoft.DataLakeStore/účty/zápis | Vytvořte nebo aktualizujte účet DataLakeStore. |
 > | Akce | Microsoft.DataLakeStore/účty/odstranit | Odstraňte účet DataLakeStore. |
@@ -5730,7 +5730,7 @@ Služba Azure: [Mapy Azure](../azure-maps/index.yml)
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.Maps/register/action | Registrace poskytovatele |
-> |  | **accounts** |  |
+> |  | **Účty** |  |
 > | Akce | Microsoft.Maps/účty/zápis | Vytvořte nebo aktualizujte účet Mapy. |
 > | Akce | Microsoft.Maps/účty/čtení | Získejte účet Mapy. |
 > | Akce | Microsoft.Maps/účty/odstranit | Odstraňte účet Mapy. |
@@ -8333,7 +8333,7 @@ Služba Azure: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-Služba Azure: [Plánovač](../scheduler/index.md)
+Služba Azure: [Plánovač](../scheduler/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
@@ -10044,7 +10044,7 @@ Služba Azure: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Akce | Microsoft.VisualStudio/Rozšíření/Zápis | Nastavit rozšíření |
 > | Akce | Microsoft.VisualStudio/Rozšíření/Odstranit | Odstranit rozšíření |
 > | Akce | Microsoft.VisualStudio/Rozšíření/Čtení | Rozšíření pro čtení |
-> |  | **Projektu** |  |
+> |  | **Project** |  |
 > | Akce | Microsoft.VisualStudio/Projekt/Zápis | Nastavit projekt |
 > | Akce | Microsoft.VisualStudio/Project/Delete | Odstranit projekt |
 > | Akce | Microsoft.VisualStudio/Project/Read | Přečtěte si projekt |

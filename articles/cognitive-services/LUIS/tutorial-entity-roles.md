@@ -1,22 +1,14 @@
 ---
 title: 'Kurz: Kontextová data s rolemi – LUIS'
-titleSuffix: Azure Cognitive Services
 description: Vyhledejte související data na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 03/30/2020
+ms.openlocfilehash: fdb463896e531619ea7ebe7c384729763dc84138
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75447887"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475818"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: Extrahujte kontextově související data z utterance
 
@@ -49,24 +41,26 @@ Role by měla být použita při data entity extrahovat:
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
-1. Přihlaste se k portálu [https://preview.luis.ai](https://preview.luis.ai)služby PREVIEW LUIS pomocí adresy URL aplikace .
+1. Přihlaste se k [portálu **náhledu** služby LUIS](https://preview.luis.ai).
 
-1. Vyberte **Vytvořit novou aplikaci**, zadejte název `HumanResources` a zachovat výchozí jazykovou verzi, **angličtina**. Popis nechejte prázdný.
-
-1. Vyberte **Done** (Hotovo).
+1. Vyberte + Nová aplikace pro `HumanResources` **konverzaci**, zadejte název a zachovat výchozí jazykovou verzi, **angličtina**. Ponechte prostředek popisu a předpovědi prázdný. Vyberte **Done** (Hotovo).
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Vytvoření záměru přesunout zaměstnance mezi městy
 
+Záměr se používá ke klasifikaci projevy uživatele na základě záměru uživatele, určené z textu přirozeného jazyka.
+
+Chcete-li klasifikovat utterance, záměr potřebuje příklady projevy uživatele, které by měly být klasifikovány s tímto záměrem.
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Vyberte **Create new intent** (Vytvořit nový záměr).
+1. Vyberte **+ Vytvořit**.
 
 1. V automaticky otevíraném dialogovém okně zadejte `MoveEmployeeToCity` a pak vyberte **Done** (Hotovo).
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s dialogovým oknem pro vytvoření nového záměru](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
-1. Přidejte do záměru ukázkové promluvy.
+1. Přidejte několik příklad projevy k tomuto záměru, který očekáváte, že uživatel požádat.
 
     |Ukázkové promluvy|
     |--|
@@ -85,24 +79,29 @@ Role by měla být použita při data entity extrahovat:
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Přidání předem sestavené entity geographyV2
 
-Předem vytvořená entita, geographyV2, extrahuje informace o poloze, včetně názvů měst. Vzhledem k tomu, že projevy mají dva názvy měst, vztahující se k sobě navzájem v kontextu, použijte role k extrahování tohoto kontextu.
+Předem vytvořená **entita, geographyV2**, extrahuje informace o poloze, včetně názvů měst. Vzhledem k tomu, že projevy mají dva názvy měst, vztahující se k sobě navzájem v kontextu, použijte role k extrahování tohoto kontextu.
 
 1. Z navigace na levé straně vyberte **entity.**
 
-1. Vyberte **Přidat předem vytvořenou entitu**a pak vyberte `geo` na panelu hledání, chcete-li předem sestavené entity filtrovat.
+1. Vyberte + Přidat předem `geo` **vytvořenou entitu**, pak zadejte do vyhledávacího řádku a filtrujte předem vytvořené entity.
 
     > [!div class="mx-imgBorder"]
     > ![Přidání předem sestavené entity geographyV2 do aplikace](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 
 1. Zaškrtněte políčko a vyberte **Hotovo**.
+
+## <a name="add-roles-to-prebuilt-entity"></a>Přidání rolí do předem sestavené entity
+
 1. V seznamu **Entity** vyberte **geographyV2** otevřít novou entitu.
-1. Přidejte dvě `Origin`role `Destination`, a .
+1. Chcete-li přidat **+** roli, vyberte a `Origin`přidejte následující dvě role: a `Destination`.
 
     > [!div class="mx-imgBorder"]
     > ![Přidání rolí do předem sestavené entity](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+## <a name="label-entity-roles-in-example-utterances"></a>Role entity popisků v ukázkových projevech
+
 1. Z navigace na levé straně vyberte **Záměry** **záměru MoveEmployeeToCity.** Všimněte si, že názvy měst jsou označeny předem sestavenou **entitou geographyV2**.
-1. V pruhu nástrojů kontextu vyberte **paletu entit**.
+1. V pruhu nástrojů kontextu vyberte **paletu entit** s _ikonou tužky_.
 
     > [!div class="mx-imgBorder"]
     > ![Vybrat paletu entit z panelu nástrojů Obsah](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
@@ -122,18 +121,21 @@ Předem vytvořená entita, geographyV2, extrahuje informace o poloze, včetně 
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trénování aplikace tak, aby změny záměru mohly být testovány
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+Chcete-li aplikaci trénovat, vyberte **možnost Vlak**. Školení platí změny, jako jsou nové entity a popisované projevy, aktivní model.
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikování aplikace tak, aby trénovaný model byl dotazovatelný z koncového bodu
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Publikování aplikace pro přístup z koncového bodu HTTP
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+
 
 ## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a predikce entit z koncového bodu
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
 
-1. Přejděte na konec adresy URL v panelu adresy a zadejte `Please move Carl Chamerlin from Tampa to Portland`. Poslední parametr querystring `q`je , **utterance dotazu**. Tento utterance není stejný jako kterýkoli z popisek projevy, takže je `MoveEmployee` dobrý test a by měl vrátit záměr s entita extrahované.
+1. Přejděte na konec adresy URL v _YOUR_QUERY_HERE_ adresním `Please move Carl Chamerlin from Tampa to Portland`řádku a nahraďte YOUR_QUERY_HERE .
+
+Tento utterance není stejný jako kterýkoli z popisek projevy, takže je `MoveEmployee` dobrý test a by měl vrátit záměr s entita extrahované.
 
     ```json
     {
@@ -171,11 +173,9 @@ Předem vytvořená entita, geographyV2, extrahuje informace o poloze, včetně 
     }
     ```
 
-    Správný záměr je předpovězen a pole entit má původní i cílové role v odpovídající **entitě** vlastnost.
+    The correct intent is predicted and the entities array has both the origin and destination roles in the corresponding **entities** property.
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Související informace
 

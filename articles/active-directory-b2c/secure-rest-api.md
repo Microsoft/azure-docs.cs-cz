@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa2e2fb4eb6e269f45494db6d87eef40182971a2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 37d1c181c18f69c040040da2be138eaad3a61693
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346931"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396861"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečte své služby RESTful 
 
@@ -186,6 +186,8 @@ Následuje příklad technického profilu RESTful nakonfigurovaného pomocí kli
 
 ## <a name="oauth2-bearer-authentication"></a>Ověřování nosiče OAuth2 
 
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
+
 Ověřování nosné tokenu je definováno v [autorizačním rámci OAuth2.0: Použití žetonu nosné žetony (RFC 6750).](https://www.rfc-editor.org/rfc/rfc6750.txt) Při ověřování nože tokenazure AD B2C odešle požadavek HTTP s tokenem v záhlaví autorizace.
 
 ```http
@@ -196,6 +198,7 @@ Nosný token je neprůhledný řetězec. Může se jedná o přístupový token 
 
 - **Nosné znamení**. Aby bylo možné odeslat žeton nosiče v klidném technickém profilu, vaše zásady musí nejprve získat žeton nosiče a pak jej použít v technickém profilu RESTful.  
 - **Statický nosný token**. Tento přístup použijte, když vaše rozhraní REST API vydává token dlouhodobého přístupu. Chcete-li použít statický nosný token, vytvořte klíč zásad y a vytvořte odkaz z technického profilu RESTful na klíč zásad. 
+
 
 ## <a name="using-oauth2-bearer"></a>Použití Nosiče OAuth2  
 

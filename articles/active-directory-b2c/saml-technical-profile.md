@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 83a13e0b1bb4d55b889d96e42c8f3f18ce0f2b73
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183835"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408924"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu SAML ve vlastních zásadách služby Azure Active Directory B2C
 
@@ -90,11 +90,32 @@ Následující příklad ukazuje část šifrování technického profilu Azure 
 
 **OutputClaims** Element obsahuje seznam deklarací vrácených poskytovatelem identity SAML v části. `AttributeStatement` Možná budete muset namapovat název deklarace identity definované v zásadách na název definovaný v poskytovateli identity. Můžete také zahrnout deklarace identity, které nejsou vráceny zprostředkovatelem identity tak dlouho, dokud nastavíte `DefaultValue` atribut.
 
-Chcete-li číst kontrolní výraz SAML **NamedId** v **předmětu** jako `assertionSubjectName`normalizovanou deklaraci, nastavte **deklaraci PartnerClaimType** na . Ujistěte se, **že NameId** je první hodnota v kontrolním výrazu XML. Když definujete více než jeden kontrolní výraz, Azure AD B2C vybere hodnotu předmětu z poslední kontrolní výraz.
+### <a name="subject-name-output-claim"></a>Deklarace výstupu názvu subjektu
 
-**OutputClaimsTransformations** Element může obsahovat kolekci **OutputClaimsTransformation** prvky, které se používají k úpravě výstupní deklarace nebo generovat nové.
+Chcete-li číst výraz SAML **NameId** v **Předmět** jako normalizované deklarace, `SPNameQualifier` nastavte deklaraci **PartnerClaimType** na hodnotu atributu. Pokud `SPNameQualifier`atribut není uveden, nastavte deklaraci **PartnerClaimType** na hodnotu atributu. `NameQualifier` 
 
-Následující příklad ukazuje deklarace identity vrácené poskytovatelem identity na Facebooku:
+
+Kontrolní výraz SAML: 
+
+```XML
+<saml:Subject>
+  <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
+    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+    </SubjectConfirmation>
+  </saml:SubjectConfirmation>
+</saml:Subject>
+```
+
+Výstupní nárok:
+
+```XML
+<OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
+```
+
+Pokud `SPNameQualifier` oba `NameQualifier` nebo atributy nejsou uvedeny v kontrolním výrazu `assertionSubjectName`SAML, nastavte deklaraci **Programu PartnerClaimType** na . Ujistěte se, **že NameId** je první hodnota v kontrolním výrazu XML. Když definujete více než jeden kontrolní výraz, Azure AD B2C vybere hodnotu předmětu z poslední kontrolní výraz.
+
+Následující příklad ukazuje deklarace identity vrácené poskytovatelem identity SAML:
 
 - Deklarace **issuerUserId** je mapována na deklaraci **assertionSubjectName.**
 - Deklarace **first_name** je mapována na deklaraci **givenName.**
@@ -118,6 +139,8 @@ Technický profil také vrátí deklarace identity, které nejsou vráceny zpros
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
 </OutputClaims>
 ```
+
+**OutputClaimsTransformations** Element může obsahovat kolekci **OutputClaimsTransformation** prvky, které se používají k úpravě výstupní deklarace nebo generovat nové.
 
 ## <a name="metadata"></a>Metadata
 

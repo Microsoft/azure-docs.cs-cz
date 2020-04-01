@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/27/2020
-ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77925797"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411457"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Řešení pro správu aktualizací pomocí šablony Azure Resource Manager
 
@@ -25,7 +25,7 @@ Pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/tem
 
 Šablona neautomatizuje připojení jednoho nebo více virtuálních počítačů Azure nebo než Azure.
 
-Pokud už máte v předplatném nasazený pracovní prostor Analýzy protokolů a automatizační účet v podporované oblasti, nejsou propojené a v pracovním prostoru ještě není nasazené řešení správy aktualizací, pomocí této šablony se úspěšně vytvoří propojení a nasadí řešení správy aktualizací. 
+Pokud už máte pracovní prostor Analýzy protokolů a účet automatizace nasazené v podporované oblasti ve vašem předplatném, nejsou propojeny a pracovní prostor ještě nemá nasazené řešení správy aktualizací, pomocí této šablony úspěšně vytvoří propojení a nasadí řešení správy aktualizací. 
 
 ## <a name="api-versions"></a>Verze rozhraní API
 
@@ -56,6 +56,7 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro pra
 
 * sku – výchozí hodnota nové cenové úrovně Per-GB vydané v cenovém modelu z dubna 2018
 * uchovávání dat - výchozí hodnota na třicet dní
+* rezervace kapacity - výchozí hodnota 100 GB
 
 >[!WARNING]
 >Pokud vytváříte nebo konfigurujete pracovní prostor Log Analytics v předplatném, které se přihlásilo k novému cenovému modelu z dubna 2018, je jedinou platnou cenovou úrovní Log Analytics **PerGB2018**.
@@ -79,7 +80,7 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro pra
                 "description": "Workspace name"
             }
         },
-        "pricingTier": {
+        "sku": {
             "type": "string",
             "allowedValues": [
                 "pergb2018",
@@ -168,7 +169,8 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro pra
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
+                "sku": {
+                    "Name": "[parameters('sku')]",
                     "name": "CapacityReservation",
                     "capacityReservationLevel": 100
                 },
@@ -231,7 +233,7 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro pra
     }
     ```
 
-2. Upravte šablonu tak, aby vyhovovala vašim požadavkům.
+2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Zvažte vytvoření [souboru parametrů Správce prostředků](../azure-resource-manager/templates/parameter-files.md) namísto předávání parametrů jako vsazených hodnot.
 
 3. Uložte tento soubor jako deployUMSolutiontemplate.json do místní složky.
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5467794bf246fab4ff7ded9c445dbeee0c4093b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139619"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435265"
 ---
 # <a name="integrate-azure-security-center-with-windows-admin-center"></a>Integrace Centra zabezpečení Azure s Centrem pro správu Windows
 
@@ -48,7 +48,7 @@ Kombinací těchto dvou nástrojů se Centrum zabezpečení stane vaším jedin�
     * Server má pracovní prostor, který má být vykazován, a přidružené předplatné.
     * Centrum zabezpečení je standardní úroveň Log Analytics řešení je povoleno v pracovním prostoru. Toto řešení poskytuje funkce úrovně Standard centra zabezpečení pro *všechny* servery a virtuální počítače, které se hlásí do tohoto pracovního prostoru.
     * Standard security center je úroveň ceny pro virtuální počítač je povolena na předplatné.
-    * Agent monitorování společnosti Microsoft (MMA) je nainstalován na serveru a nakonfigurován tak, aby se hlásil do vybraného pracovního prostoru. Pokud server již hlásí do jiného pracovního prostoru, je nakonfigurován tak, aby sestavy do nově vybraného pracovního prostoru také.
+    * Agent Analýzy protokolů je nainstalován na serveru a nakonfigurován tak, aby se hlásil do vybraného pracovního prostoru. Pokud server již hlásí do jiného pracovního prostoru, je nakonfigurován tak, aby sestavy do nově vybraného pracovního prostoru také.
 
     > [!NOTE]
     > Může chvíli trvat, než se doporučení zobrazí. Ve skutečnosti, v závislosti na vaší činnosti serveru nemusí přijímat *žádná* upozornění. Chcete-li generovat testovací výstrahy pro testování výstrah, které fungují správně, postupujte podle pokynů v [postupu ověření výstrahy](security-center-alert-validation.md).

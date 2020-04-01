@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245379"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435754"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -36,7 +36,7 @@ Security Center umožňuje snadné povolení integrovaných řešení zabezpeče
 V současné době integrovaná řešení zabezpečení zahrnují posouzení zranitelnosti společností [Qualys](https://www.qualys.com/public-cloud/#azure) a [Rapid7](https://www.rapid7.com/products/insightvm/) a brána firewall webových aplikací Microsoft Application Gateway.
 
 > [!NOTE]
-> Centrum zabezpečení neinstaluje agenta monitorování společnosti Microsoft do partnerských virtuálních zařízení, protože většina dodavatelů zabezpečení zakazuje externí agenty spuštěné v jejich zařízeních.
+> Centrum zabezpečení nenainstaluje agenta Log Analytics do partnerských virtuálních zařízení, protože většina dodavatelů zabezpečení zakazuje externí agenty spuštěné na svých zařízeních.
 >
 >
 
@@ -141,7 +141,7 @@ Seznam [podporovaných siem naleznete](../azure-monitor/platform/stream-monitori
 
 Zde jsou některé dotazy Splunk, které můžete použít k vytažení dat výstrah:
 
-| **Popis dotazu** | **Dotazu** |
+| **Popis dotazu** | **Dotaz** |
 |----|----|
 | All Alerts| index=hlavní Microsoft.Security/locations/alerts|
 | Shrnout počet operací podle jejich názvu| index=main sourcetype="amal:security" \| operace \| tabulkyPočet statistik podle operationName|

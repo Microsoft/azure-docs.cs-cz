@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7b049c04913d3415074f46b9d90ec34be874a2da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136702"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410616"
 ---
 # <a name="connection-strings"></a>Připojovací řetězce
 
@@ -148,7 +148,7 @@ V tomto příkladu tento připojovací řetězec určuje explicitní lokální z
 
 Připojovací řetězce jsou podporovány v následujících verzích sady SDK:
 - .NET a .NET Core v2.12.0
-- Java v2.5.1
+- Java v2.5.1 a Java 3.0
 - Javascript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
@@ -161,7 +161,7 @@ Připojovací řetězec lze nastavit buď v kódu, proměnné prostředí nebo k
 
 - Připojovací řetězec:`APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-### <a name="net-sdk-example"></a>Příklad sady .Net SDK
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 TelemetryConfiguration.ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
@@ -194,10 +194,10 @@ NetCore config.json:
 ```
 
 
-### <a name="java-sdk-example"></a>Příklad sady Java SDK
+# <a name="java"></a>[Java](#tab/java)
 
 
-Java explicitně nastavit:
+Java (v2.5.x) Explicitně nastavit:
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
@@ -210,7 +210,7 @@ ApplicationInsights.xml
 </ApplicationInsights>
 ```
 
-### <a name="javascript-sdk-example"></a>Příklad sady Javascript SDK
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 Důležité: Javascript nepodporuje použití proměnných prostředí.
 
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-### <a name="node-sdk-example"></a>Příklad sady SDK uzlu
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -247,7 +247,7 @@ appInsights.setup("InstrumentationKey=00000000-0000-0000-0000-000000000000;");
 appInsights.start();
 ```
 
-### <a name="python-sdk-example"></a>Příklad sady Python SDK
+# <a name="python"></a>[Python](#tab/python)
 
 Doporučujeme uživatelům nastavit proměnnou prostředí.
 

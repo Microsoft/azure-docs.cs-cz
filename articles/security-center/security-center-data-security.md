@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604179"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435847"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
 Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
@@ -71,8 +71,8 @@ Artefakty počítačů se ukládají centrálně ve stejné oblasti jako virtuá
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Správa shromažďování dat z virtuálních počítačů
 
-Když povolíte službu Security Center v Azure, u každého vašeho předplatného Azure se zapne funkce shromažďování dat. Shromažďování dat pro předplatná můžete zapnout také v části Zásady zabezpečení služby Azure Security Center. Když je funkce shromažďování dat zapnutá, služba Azure Security Center zřídí ve všech stávajících i nově vytvořených podporovaných virtuálních počítačích agenta Microsoft Monitoring Agent.
-Microsoft Monitoring Agent prohledává různé konfigurace týkající se zabezpečení a zapisuje události do složek [Trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW). Operační systém bude kromě toho během chodu počítače shromažďovat události protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent načte položky protokolu událostí a trasování ETW a zkopíruje je do vašich pracovní prostorů za účelem analýzy. Microsoft Monitoring Agent do vašich pracovních prostorů zkopíruje také soubory se stavem systému, povolí události vytváření procesů a povolí auditování příkazového řádku.
+Když povolíte službu Security Center v Azure, u každého vašeho předplatného Azure se zapne funkce shromažďování dat. Shromažďování dat pro předplatná můžete zapnout také v části Zásady zabezpečení služby Azure Security Center. Když je shromažďování dat zapnuté, Azure Security Center zřídí agenta Log Analytics na všech existujících podporovaných virtuálních počítačích Azure a všech nových, které se vytvoří.
+Agent Log Analytics prohledá různé konfigurace související se zabezpečením a události do [trasování trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW). Operační systém bude kromě toho během chodu počítače shromažďovat události protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Agent Log Analytics čte položky protokolu událostí a ETW trasování a zkopíruje je do pracovního prostoru (y) pro analýzu. Agent Log Analytics také zkopíruje soubory s výpisem stavu paměti do pracovního prostoru, povolí události vytváření procesů a povolí auditování příkazového řádku.
 
 Pokud používáte Azure Security Center úrovně Free, můžete pomocí zásad zabezpečení také zakázat shromažďování dat z virtuálních počítačů. Pro předplatná na úrovni Standard se shromažďování dat požaduje. Shromažďování artefaktů a snímků disku virtuálního počítače bude nadále povolené i v případě, že shromažďování dat je zakázané.
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 972b5415b85e82a5afdaf7d85d3a3bcb9e144d4d
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384938"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397914"
 ---
 # <a name="workflow-automation"></a>Automatizace pracovních postupů
 
@@ -96,10 +96,11 @@ Chcete-li zobrazit nezpracovaná schémata událostí výstrah zabezpečení neb
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o vytváření aplikací logiky, jejich ručním spuštění v Centru zabezpečení a automatizaci jejich spuštění. 
+V tomto článku jste se dozvěděli o vytváření aplikací logiky, automatizaci jejich spuštění v Centru zabezpečení a jejich ručním spuštěním. 
 
-Další související materiály naleznete v následujících článcích: 
+Další související materiály jsou: 
 
+- [Modul Microsoft Learn o použití automatizace pracovních postupů k automatizaci odezvy zabezpečení](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Doporučení zabezpečení v Azure Security Center](security-center-recommendations.md)
 - [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
 - [Informace o Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee3b5bd3278412949074b77f9d1c53d63a467280
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189391"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408712"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky vývojářů pro vlastní zásady ve službě Azure Active Directory B2C
 
@@ -59,68 +59,82 @@ Vývojáři, kteří spotřebovávají sadu vlastních funkcí zásad, by měli 
 
 Možnosti rozhraní Custom Policy/Identity Experience Framework jsou pod neustálým a rychlým vývojem. V následující tabulce je index dostupnosti funkcí a součástí.
 
-### <a name="identity-providers-tokens-protocols"></a>Poskytovatelé identit, tokeny, protokoly
+
+### <a name="protocols-and-authorization-flows"></a>Protokoly a toky autorizace
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| IDP-OpenIDConnect |  |  | × | Například Google+.  |
-| IDP-OAUTH2 |  |  | × | Například Facebook.  |
-| IDP-OAUTH1 (twitter) |  | × |  | Například Twitter. |
-| IDP-OAUTH1 (ex-twitter) |  |  |  | Nepodporuje se |
-| IDP-SAML |  |   | × | Například Salesforce, ADFS. |
-| IDP-WSFED | × |  |  |  |
-| Předávající strana OAUTH1 |  |  |  | Není podporováno. |
-| Předávající strana OAUTH2 |  |  | × |  |
-| Předávající strana OIDC |  |  | × |  |
-| Předávající strana SAML |  |×  |  |  |
-| Předávající strana WSFED | × |  |  |  |
-| REST API se základním a certifikačním utvářením |  |  | × | Například Azure Logic Apps. |
+| [Autorizační kód OAuth2](authorization-code-flow.md) |  |  | × |  |
+| Autorizační kód OAuth2 s PKCE |  |  | × | Pouze mobilní aplikace  |
+| [Implicitní tok OAuth2](implicit-flow-single-page-application.md) |  |  | × |  |
+| [Přihlašovací údaje vlastníka prostředku OAuth2](ropc-custom.md) |  | × |  |  |
+| [OIDC připojení](openid-connect.md) |  |  | × |  |
+| [SAML2](connect-with-saml-service-providers.md)  |  |×  |  | Vazby POST a Redirect. |
+| OAuth1 |  |  |  | Není podporováno. |
+| WSFED | × |  |  |  |
+
+### <a name="identify-providers-federation"></a>Identifikace federace poskytovatelů 
+
+| Funkce | Vývoj | Preview | GA | Poznámky |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [OpenID Connect](openid-connect-technical-profile.md) |  |  | × | Například Google+.  |
+| [OAuth2](oauth2-technical-profile.md) |  |  | × | Například Facebook.  |
+| [OAuth1](oauth1-technical-profile.md) |  | × |  | Například Twitter. |
+| [SAML2](saml-technical-profile.md) |  |   | × | Například Salesforce, ADFS. |
+| WSFED| × |  |  |  |
+
+
+### <a name="rest-api-integration"></a>Integrace rozhraní REST API
+
+| Funkce | Vývoj | Preview | GA | Poznámky |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [REST API se základním authem](secure-rest-api.md#http-basic-authentication) |  |  | × |  |
+| [REST API s auth klientského certifikátu](secure-rest-api.md#https-client-certificate-authentication) |  |  | × |  |
+| [REST API s ošetřovnou OAuth2](secure-rest-api.md#oauth2-bearer-authentication) |  | × |  |  |
 
 ### <a name="component-support"></a>Podpora komponent
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure vícefaktorové ověřování |  |  | × |  |
-| Služba Azure Active Directory jako místní adresář |  |  | × |  |
-| Podsystém Azure Email pro ověření e-mailu |  |  | × |  |
-| Podpora ve více jazycích|  |  | × |  |
-| Predikátová ověření |  |  | × | Například složitost hesla. |
-| Používání poskytovatelů e-mailových služeb třetích stran |  |×  |  |  |
+| [Ověření faktoru telefonu](phone-factor-technical-profile.md) |  |  | × |  |
+| [Azure MFA ověřování](multi-factor-auth-technical-profile.md) |  | × |  |  |
+| [Jednorázové heslo](one-time-password-technical-profile.md) |  | × |  |  |
+| [Služba Azure Active Directory](active-directory-technical-profile.md) jako místní adresář |  |  | × |  |
+| Podsystém e-mailu Azure pro ověření e-mailu |  |  | × |  |
+| [Poskytovatelé e-mailových služeb třetích stran](custom-email.md) |  |×  |  |  |
+| [Podpora ve více jazycích](localization.md)|  |  | × |  |
+| [Predikátová ověření](predicates.md) |  |  | × | Například složitost hesla. |
+| [Zobrazit ovládací prvky](display-controls.md) |  |×  |  |  |
 
-### <a name="content-definition"></a>Definice obsahu
+
+### <a name="page-layout-versions"></a>Verze rozložení stránky
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Chybová stránka api.error |  |  | × |  |
-| Stránka výběru IDP, api.idpselections |  |  | × |  |
-| Výběr IDP pro registraci, api.idpselections.signup |  |  | × |  |
-| Zapomenuté heslo, api.localaccountpasswordreset |  |  | × |  |
-| Místní přihlášení k účtu, api.localaccountsignin |  |  | × |  |
-| Registrace místního účtu, api.localaccountsignup |  |  | × |  |
-| Stránka MFA, api.phonefactor |  |  | × |  |
-| Self-tvrdil, sociální účet sign-up, api.selfasserted |  |  | × |  |
-| Aktualizace profilu s vlastním uplatněním, api.selfasserted.profileupdate |  |  | × |  |
-| Sjednocená registrační nebo přihlašovací stránka, api.signuporsignin, s parametrem "disableSignup" |  |  | × |  |
-| Rozložení JavaScript / Stránka |  | × |  |  |
+| [2.0.0](page-layout.md#200) |  | × |  |  |
+| [1.2.0](page-layout.md#120) |  | × |  |  |
+| [1.1.0](page-layout.md#110) |  |  | × |  |
+| [1.0.0](page-layout.md#100) |  |  | × |  |
+| [Podpora pro JavaScript](javascript-samples.md) |  | × |  |  |
 
 ### <a name="app-ief-integration"></a>Integrace App-IEF
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| domain_hint parametru řetězce dotazu |  |  | × | K dispozici jako deklarace, může být předána IDP. |
-| login_hint parametru řetězce dotazu |  |  | × | K dispozici jako deklarace, může být předána IDP. |
-| Vložit JSON do UserJourney přes client_assertion | × |  |  | Bude zastaralé. |
-| Vložit JSON do UserJourney jako id_token_hint |  | × |  | Go-vpřed přístup projít JSON. |
-| Předat IDP TOKEN do aplikace |  | × |  | Například z Facebooku do aplikace. |
+| Parametr řetězce dotazu`domain_hint` |  |  | × | K dispozici jako deklarace, může být předána IDP. |
+| Parametr řetězce dotazu`login_hint` |  |  | × | K dispozici jako deklarace, může být předána IDP. |
+| Vložit JSON do cesty uživatele přes`client_assertion` | × |  |  | Bude zastaralé. |
+| Vložit JSON do cesty uživatele jako`id_token_hint` |  | × |  | Go-vpřed přístup projít JSON. |
+| [Předání tokenu zprostředkovatele identity do aplikace](idp-pass-through-custom.md) |  | × |  | Například z Facebooku do aplikace. |
 
 ### <a name="session-management"></a>Správa relací
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Zprostředkovatel relace přisážaní k zapisování dat |  |  | × |  |
-| Externí zprostředkovatel elaze přihlášení |  |  | × |  |
-| Zprostředkovatel relace přisychadla služby SAML |  |  | × |  |
-| Výchozí zprostředkovatel relace připřijím a so |  |  | × |  |
+| [Výchozí zprostředkovatel relace připřipomene k sazí](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | × |  |
+| [Externí zprostředkovatel elaze přihlášení](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | × |  |
+| [Zprostředkovatel relace přisymit služby SAML](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | × |  |
+
 
 ### <a name="security"></a>Zabezpečení
 
@@ -128,16 +142,19 @@ Možnosti rozhraní Custom Policy/Identity Experience Framework jsou pod neustá
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Klíče zásad - generovat, ručně, nahrávat |  |  | × |  |
 | Klíče zásad - RSA/Cert, tajné klíče |  |  | × |  |
-| Nahrání zásad |  |  | × |  |
+
 
 ### <a name="developer-interface"></a>Vývojářské rozhraní
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Portál Azure-IEF UX |  |  | × |  |
-| Protokoly informací o informacích o aplikacích |  | × |  | Používá se pro řešení potíží během vývoje.  |
-| Protokoly událostí Application Insights (pomocí kroků orchestrace) |  | × |  | Slouží ke sledování toků uživatelů v produkčním prostředí. |
+| Nahrání zásad |  |  | × |  |
+| [Protokoly cest uživatelů Application Insights](troubleshoot-with-application-insights.md) |  | × |  | Používá se pro řešení potíží během vývoje.  |
+| [Protokoly událostí Application Insights](application-insights-technical-profile.md) |  | × |  | Slouží ke sledování toků uživatelů v produkčním prostředí. |
+
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [vlastních zásadách a rozdílech s toky uživatelů](custom-policy-overview.md).
+- Kontrola [operací Microsoft Graphu dostupných pro Azure AD B2C](microsoft-graph-operations.md)
+- Přečtěte si další informace o [vlastních zásadách a rozdílech s toky uživatelů](custom-policy-overview.md).

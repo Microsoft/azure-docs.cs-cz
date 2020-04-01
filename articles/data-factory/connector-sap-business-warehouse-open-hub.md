@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: ad7d171cb115729e174090c1c80915abbde5999f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b905c75e920577e46017caeb456f8237421086b2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238734"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421207"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z obchodního skladu SAP přes Open Hub pomocí Azure Data Factory
 
@@ -187,9 +187,9 @@ Chcete-li zkopírovat data z otevřeného rozbočovače SAP BW, jsou v části *
 | baseRequestId | ID požadavku na načtení delta. Jakmile je nastavena, budou načtena pouze data s requestId **větší než** hodnota této vlastnosti.  | Ne |
 
 >[!TIP]
->Pokud vaše tabulka Open Hub obsahuje pouze data vygenerovaná jedním ID požadavku, například vždy načtete celé načtení a přepíšete existující data v tabulce, nebo dtp spustíte pouze jednou pro test, nezapomeňte zrušit zaškrtnutí možnosti "excludeLastRequest", abyste zkopírovali data ven.
+>Pokud vaše tabulka Open Hub obsahuje pouze data vygenerovaná jedním ID požadavku, například vždy provádíte úplné načtení a přepisování existujících dat v tabulce, nebo dtp spustíte pouze jednou pro test, nezapomeňte zrušit zaškrtnutí možnosti "excludeLastRequest", abyste data zkopírovali.
 
-Chcete-li urychlit načítání dat, [`parallelCopies`](copy-activity-performance.md#parallel-copy) můžete nastavit na aktivitu kopírování načíst data z SAP BW Open Hub paralelně. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně provede čtyři volání RFC a každé volání RFC načte část dat z tabulky SAP BW Open Hub rozdělené na ID požadavku DTP a ID balíčku. To platí v případě, že počet jedinečných ID požadavku DTP `parallelCopies`+ ID balíčku je větší než hodnota . Při kopírování dat do úložiště dat založeného na souborech je také přikázáno zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
+Chcete-li urychlit načítání dat, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) můžete nastavit na aktivitu kopírování načíst data z SAP BW Open Hub paralelně. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně provede čtyři volání RFC a každé volání RFC načte část dat z tabulky SAP BW Open Hub rozdělené na ID požadavku DTP a ID balíčku. To platí v případě, že počet jedinečných ID požadavku DTP `parallelCopies`+ ID balíčku je větší než hodnota . Při kopírování dat do úložiště dat založeného na souborech je také přikázáno zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
 
 **Příklad:**
 

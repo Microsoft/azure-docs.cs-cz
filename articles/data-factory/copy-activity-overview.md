@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 39885782b55dca9c73f10990269d912f9b5727fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257967"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421417"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopírování aktivity ve Službě Azure Data Factory
 
@@ -134,10 +134,10 @@ Následující šablona aktivity kopírování obsahuje úplný seznam podporova
 | source | Zadejte typ zdroje kopírování a odpovídající vlastnosti pro načítání dat.<br/>Další informace naleznete v části Kopírovat vlastnosti aktivity v článku spojnice uvedeném v [části Podporovaná úložiště dat a formáty](#supported-data-stores-and-formats). | Ano |
 | Dřez | Zadejte typ jímky kopie a odpovídající vlastnosti pro zápis dat.<br/>Další informace naleznete v části Kopírovat vlastnosti aktivity v článku spojnice uvedeném v [části Podporovaná úložiště dat a formáty](#supported-data-stores-and-formats). | Ano |
 | Překladatel | Zadejte explicitní mapování sloupců ze zdroje do jímky. Tato vlastnost platí, když výchozí chování kopírování nevyhovuje vašim potřebám.<br/>Další informace naleznete [v tématu Mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md). | Ne |
-| dataIntegrationUnits | Zadejte míru, která představuje množství energie, které [prostředí integrace Azure](concepts-integration-runtime.md) používá pro kopírování dat. Tyto jednotky byly dříve známé jako cloudové jednotky pohybu dat (DMU). <br/>Další informace naleznete v [tématu Jednotky integrace dat](copy-activity-performance.md#data-integration-units). | Ne |
-| parallelCopies | Zadejte paralelismus, který má aktivita Kopírovat použít při čtení dat ze zdroje a zápisu dat do jímky.<br/>Další informace naleznete v [tématu Paralelní kopírování](copy-activity-performance.md#parallel-copy). | Ne |
+| dataIntegrationUnits | Zadejte míru, která představuje množství energie, které [prostředí integrace Azure](concepts-integration-runtime.md) používá pro kopírování dat. Tyto jednotky byly dříve známé jako cloudové jednotky pohybu dat (DMU). <br/>Další informace naleznete v [tématu Jednotky integrace dat](copy-activity-performance-features.md#data-integration-units). | Ne |
+| parallelCopies | Zadejte paralelismus, který má aktivita Kopírovat použít při čtení dat ze zdroje a zápisu dat do jímky.<br/>Další informace naleznete v [tématu Paralelní kopírování](copy-activity-performance-features.md#parallel-copy). | Ne |
 | Zachovat | Určete, zda se mají během kopírování dat zachovat metadata/akl. <br/>Další informace naleznete v tématu [Preserve metadata](copy-activity-preserve-metadata.md). |Ne |
-| enableStaging<br/>pracovní nastavení | Určete, zda chcete zinscenovat průběžná data v úložišti objektů Blob namísto přímého kopírování dat ze zdroje do jímky.<br/>Informace o užitečných scénářích a podrobnostech konfigurace naleznete v [tématu Fázovaná kopie](copy-activity-performance.md#staged-copy). | Ne |
+| enableStaging<br/>pracovní nastavení | Určete, zda chcete zinscenovat průběžná data v úložišti objektů Blob namísto přímého kopírování dat ze zdroje do jímky.<br/>Informace o užitečných scénářích a podrobnostech konfigurace naleznete v [tématu Fázovaná kopie](copy-activity-performance-features.md#staged-copy). | Ne |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Zvolte způsob zpracování nekompatibilních řádků při kopírování dat ze zdroje do jímky.<br/>Další informace naleznete v tématu [Tolerance poruchy](copy-activity-fault-tolerance.md). | Ne |
 
 ## <a name="monitoring"></a>Monitorování

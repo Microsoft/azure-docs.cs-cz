@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: jgao
-ms.openlocfilehash: 7ff91545b1b7ab1920f437e0c3a5410270efaac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153246"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437884"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Náhled)
 
@@ -42,7 +42,7 @@ Výhody skriptu nasazení:
 - **Uživatelem přiřazená spravovaná identita s rolí přispěvatele cílové skupině prostředků**. Tato identita se používá ke spuštění skriptů nasazení. Chcete-li provádět operace mimo skupinu prostředků, je třeba udělit další oprávnění. Pokud například chcete vytvořit novou skupinu prostředků, přiřaďte identitu na úroveň předplatného.
 
   > [!NOTE]
-  > Modul skriptů nasazení vytvoří účet úložiště a instanci kontejneru na pozadí.  Uživatelem přiřazená spravovaná identita s rolí přispěvatele na úrovni předplatného je vyžadována, pokud předplatné nezaregistrovalo prostředek úložiště Azure (Microsoft.Storage) a instance kontejneru Azure (Microsoft.ContainerInstance) Poskytovatelů.
+  > Modul skriptů nasazení vytvoří účet úložiště a instanci kontejneru na pozadí.  Uživatelem přiřazená spravovaná identita s rolí přispěvatele na úrovni předplatného je vyžadována, pokud předplatné nezaregistrovalo poskytovatele prostředků azure storage account (Microsoft.Storage) a Azure container instance (Microsoft.ContainerInstance).
 
   Pokud chcete vytvořit identitu, [přečtěte si tématu Vytvoření spravované identity přiřazené uživateli pomocí portálu Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)nebo [pomocí rozhraní příkazového příkazu Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)nebo pomocí Azure [PowerShellu](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). Při nasazování šablony potřebujete ID identity. Formát identity je:
 
@@ -52,7 +52,7 @@ Výhody skriptu nasazení:
 
   Pomocí následujícího příkazového příkazu k příkazovém příkazu nebo skriptu prostředí PowerShell získáte ID zadáním názvu skupiny prostředků a názvu identity.
 
-  # <a name="cli"></a>[Cli](#tab/CLI)
+  # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
   ```azurecli-interactive
   echo "Enter the Resource Group name:" &&
@@ -101,6 +101,12 @@ Následující json je příkladem.  Nejnovější schéma šablony naleznete [z
     "forceUpdateTag": 1,
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
+    "environmentVariables": [
+      {
+        "name": "someSecret",
+        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+      }
+    ],
     "scriptContent": "
       param([string] $name)
       $output = 'Hello {0}' -f $name
@@ -126,6 +132,7 @@ Podrobnosti o hodnotě nemovitosti:
 - **forceUpdateTag**: Změna této hodnoty mezi nasazeními šablony vynutí opětovné spuštění skriptu nasazení. Použijte funkci newGuid() nebo utcNow(), která musí být nastavena jako výchozí Hodnota parametru. Další informace naleznete v [tématu Spuštění skriptu více než jednou](#run-script-more-than-once).
 - **azPowerShellVersion**/**azCliVersion**: Zadejte verzi modulu, která má být použita. Seznam podporovaných verzí prostředí PowerShell a CLI naleznete [v tématu Požadavky](#prerequisites).
 - **argumenty**: Zadejte hodnoty parametrů. Hodnoty jsou odděleny mezerami.
+- **environmentVariables**: Zadejte proměnné prostředí, které mají být předány skriptu. Další informace naleznete v [tématu Vývoj skriptů nasazení](#develop-deployment-scripts).
 - **scriptContent**: Zadejte obsah skriptu. Chcete-li spustit externí `primaryScriptUri` skript, použijte místo toho. Příklady najdete v tématech [Použití vřádkového skriptu](#use-inline-scripts) a [Použití externího skriptu](#use-external-scripts).
 - **primaryScriptUri**: Zadejte veřejně přístupnou adresu URL pro primární skript nasazení s podporovanými příponami souborů.
 - **supportingScriptUris**: Zadejte pole veřejně přístupných adres URL pro `ScriptContent` podpůrné `PrimaryScriptUri`soubory, které jsou volány v jednom nebo .
@@ -234,7 +241,7 @@ Pomocí proměnné [**$ErrorActionPreference**](/powershell/module/microsoft.pow
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Předání zabezpečených řetězců do skriptu nasazení
 
-Když v instancích kontejnerů nastavíte proměnné prostředí, můžete dynamicky konfigurovat aplikaci nebo skript, které kontejner spustí. Skript nasazení zpracovává nezabezpečené a zabezpečené proměnné prostředí stejným způsobem jako instance kontejneru Azure. Další informace naleznete v tématu [Nastavení proměnných prostředí v instancích kontejneru](../../container-instances/container-instances-environment-variables.md#secure-values).
+Nastavení proměnných prostředí (EnvironmentVariable) v instancích kontejneru umožňuje poskytovat dynamickou konfiguraci aplikace nebo skriptu spuštěného kontejnerem. Skript nasazení zpracovává nezabezpečené a zabezpečené proměnné prostředí stejným způsobem jako instance kontejneru Azure. Další informace naleznete v tématu [Nastavení proměnných prostředí v instancích kontejneru](../../container-instances/container-instances-environment-variables.md#secure-values).
 
 ## <a name="debug-deployment-scripts"></a>Ladění skriptů nasazení
 

@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: labrenne
-ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f27d913cd288c186bae1a6375212b072f50bb4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022932"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422438"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Vytvoření vlastního fondu pomocí Galerie sdílených obrázků
 
@@ -38,6 +38,9 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může po
 * **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení obrázků obsahuje informace o tom, proč byl obrázek vytvořen, k jakému osu je určen, a informace o používání obrázku. Seskupování obrázků umožňuje snadnější správu obrázků. Další informace naleznete v [tématu Definice obrázků](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Požadavky
+
+> [!NOTE]
+> Je třeba ověřit pomocí Azure AD. Pokud používáte sdílené-key-auth, zobrazí se chyba ověřování.  
 
 * **Účet Azure Batch.** Pokud chcete vytvořit dávkový účet, přečtěte si rychlé spuštění dávky pomocí [portálu Azure nebo](quick-create-portal.md) [azure cli](quick-create-cli.md).
 
@@ -86,6 +89,9 @@ Po úspěšném vytvoření spravované bitové kopie je třeba vytvořit galeri
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Vytvoření fondu ze sdílené bitové kopie pomocí příkazového příkazového příkazu Azure
 
 Chcete-li vytvořit fond ze sdílené image pomocí `az batch pool create` příkazu Azure CLI, použijte příkaz. V poli zadejte ID sdíleného obrázku. `--image` Ujistěte se, že typ operačního systému a skladová položka odpovídají verzím určeným`--node-agent-sku-id`
+
+> [!NOTE]
+> Je třeba ověřit pomocí Azure AD. Pokud používáte sdílené-key-auth, zobrazí se chyba ověřování.  
 
 ```azurecli
 az batch pool create \

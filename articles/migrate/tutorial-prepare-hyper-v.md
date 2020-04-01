@@ -2,14 +2,14 @@
 title: Příprava virtuálních počítačů Hyper-V na vyhodnocení a migraci pomocí migrace Azure
 description: Zjistěte, jak se připravit na vyhodnocení/migraci virtuálních počítačích Hyper-V pomocí Migrace Azure.
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 5760cf667a02384b8f68cc85540264a1b5702747
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336703"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436231"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na vyhodnocení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -95,8 +95,9 @@ Můžete připravit Hyper-V pro vyhodnocení virtuálního počítače ručně n
 - Nastavte vzdálené hlasování prostředí PowerShell u každého hostitele, aby zařízení Azure Migrate mohlo na hostiteli spouštět příkazy Prostředí PowerShell přes připojení WinRM.
 - Delegujte pověření, pokud jsou disky virtuálních počítačů umístěné ve vzdálených sdílených složek SMB.
 - Nastavte účet, který zařízení použije ke zjišťování virtuálních počítačů na hostitelích Hyper-V.
-- Nastavte služby integrace Technologie Hyper-V na každém virtuálním počítači, který chcete zjistit a vyhodnotit.
+- Nastavte služby integrace Technologie Hyper-V na každém virtuálním počítači, který chcete zjistit a vyhodnotit. Výchozí nastavení při povolení integračních služeb jsou dostatečné pro Azure Migrate.
 
+    ![Povolit integrační služby](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>Příprava pomocí skriptu
@@ -112,7 +113,7 @@ Skript provádí následující akce:
 - Zkontroluje, zda hostitel používá podporovanou verzi technologie Hyper-V a roli Hyper-V.
 - Povolí službu WinRM a otevře porty 5985 (HTTP) a 5986 (HTTPS) na hostiteli (potřebné pro shromažďování metadat).
 - Povolí vzdálené hlasování prostředí PowerShell na hostiteli.
-- Zkontroluje, zda je integrační služba Hyper-V povolena na všech virtuálních počítačích spravovaných hostitelem.
+- Zkontroluje, zda je služba Integrace Hyper-V povolena na všech virtuálních počítačích spravovaných hostitelem.
 - V případě potřeby povolí credssp na hostiteli.
 
 Spusťte skript takto:

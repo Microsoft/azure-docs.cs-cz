@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Zscaler tří pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
-description: V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů, které Zscaler tři.
+title: 'Kurz: Konfigurace zscaleru tři pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
+description: V tomto kurzu se dozvíte, jak nakonfigurovat Službu Azure Active Directory tak, aby automaticky zřašla a zřaštila uživatelské účty do Zscaleru tři.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,149 +16,149 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77064100"
 ---
-# <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler tří pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Kurz: Konfigurace zscaleru tři pro automatické zřizování uživatelů
 
-V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) k automatickému zřízení a zrušení zřízení uživatelů nebo skupin, které Zscaler tři.
+V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) automaticky zřídit a deprovision uživatelů a/nebo skupin z Zscaler tři.
 
 > [!NOTE]
-> Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Tento kurz popisuje konektor, který je postaven na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete [v tématu Automatizace zřizování uživatelů a deprovisioning u aplikací SaaS pomocí služby Azure Active Directory](../active-directory-saas-app-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků popsaných v tomto kurzu budete potřebovat následující:
+Chcete-li dokončit kroky popsané v tomto kurzu, potřebujete následující:
 
 * Tenanta Azure AD.
-* Zscaler třetí tenant.
-* Uživatelský účet v Zscaler tři s oprávněními správce.
+* Nájemník Zscaler Tři.
+* Uživatelský účet ve Zscaler Tři s oprávněními správce.
 
 > [!NOTE]
-> Integrace zřizování Azure AD spoléhá na rozhraní Zscaler ZSCloud SCIM API, které je k dispozici pro podnikové účty.
+> Integrace zřizování Azure AD závisí na rozhraní API Zscaler ZSCloud SCIM, které je dostupné pro podnikové účty.
 
-## <a name="adding-zscaler-three-from-the-gallery"></a>Přidání Zscaler tři z Galerie
+## <a name="adding-zscaler-three-from-the-gallery"></a>Přidání Zscaler tři z galerie
 
-Před konfigurací Zscaler tři pro Automatické zřizování uživatelů pomocí Azure AD je nutné přidat Zscaler tři z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Než nakonfigurujete Zscaler 3 pro automatické zřizování uživatelů pomocí Azure AD, je potřeba přidat Zscaler Tři z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-V [Azure Portal](https://portal.azure.com)v levém podokně vyberte **Azure Active Directory**:
+Na [webu Azure Portal](https://portal.azure.com)v levém podokně vyberte **Službu Azure Active Directory**:
 
 ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-Přejít na **podnikové aplikace** a pak vyberte **všechny aplikace**:
+Přejděte do **podnikové aplikace** a vyberte **všechny aplikace**:
 
 ![Podnikové aplikace](common/enterprise-applications.png)
 
-Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace** :
+Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace:**
 
 ![Vybrat novou aplikaci](common/add-new-app.png)
 
-Do vyhledávacího pole zadejte **Zscaler tři**. Ve výsledcích vyberte **Zscaler tři** a pak vyberte **Přidat**.
+Do vyhledávacího pole zadejte **Zscaler Three**. Ve výsledcích vyberte **Zscaler 3** a pak vyberte **Přidat**.
 
 ![Seznam výsledků](common/search-new-app.png)
 
-## <a name="assign-users-to-zscaler-three"></a>Přiřadit uživatele k Zscaler třem
+## <a name="assign-users-to-zscaler-three"></a>Přiřazení uživatelů k Zscaleru 3
 
-Uživatelé Azure AD musí mít přiřazený přístup k vybraným aplikacím, aby je mohli používat. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé nebo skupiny, kteří jsou přiřazeni k aplikaci v Azure AD.
+Uživatelům Azure AD je potřeba před použitím přiřadit přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů jsou synchronizováni pouze uživatelé nebo skupiny, které jsou přiřazeny k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, měli byste se rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Zscaler třem. Až se rozhodnete, že tyto uživatele a skupiny můžete přiřadit k Zscaler třem podle pokynů v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+Než nakonfigurujete a povolíte automatické zřizování uživatelů, měli byste se rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Zscaler Three. Poté, co se rozhodnete, že můžete přiřadit tyto uživatele a skupiny Zscaler tři podle pokynů v [Přiřadit uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
-### <a name="important-tips-for-assigning-users-to-zscaler-three"></a>Důležité tipy pro přiřazení uživatelů k Zscaler třem
+### <a name="important-tips-for-assigning-users-to-zscaler-three"></a>Důležité tipy pro přiřazení uživatelů k Zscaler Tři
 
-* Doporučujeme, abyste nejdřív přiřadili jediného uživatele Azure AD, který Zscaler tři, aby bylo možné otestovat automatickou konfiguraci zřizování uživatelů. Později můžete přiřadit více uživatelů a skupin.
+* Doporučujeme nejprve přiřadit jednoho uživatele Azure AD zscaler tři otestovat konfiguraci automatického zřizování uživatelů. Později můžete přiřadit více uživatelů a skupin.
 
-* Když přiřadíte uživatele Zscaler tři, musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Když přiřadíte uživatele ke zscaleru 3, musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
 
 ## <a name="set-up-automatic-user-provisioning"></a>Nastavení automatického zřizování uživatelů
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů a skupin v Zscaler třech na základě přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede kroky pro konfiguraci služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů a skupin v Zscaler tři na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Pro Zscaler tři možná budete chtít povolit jednotné přihlašování založené na SAML. Pokud to uděláte, postupujte podle pokynů v tématu [Zscaler tři jednotné přihlašování](zscaler-three-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, ale tyto dvě funkce spolu doplňují.
+> Můžete také povolit jednotné přihlašování na základě SAML pro Zscaler Tři. Pokud tak učiníte, postupujte podle pokynů v [Zscaler tři jednotné přihlášení-na tutorial](zscaler-three-tutorial.md). Jednotné přihlašování lze konfigurovat nezávisle na automatické zřizování uživatelů, ale obě funkce se vzájemně doplňují.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace** > **všechny aplikace** > **Zscaler tři**:
+1. Přihlaste se k [portálu Azure](https://portal.azure.com) a vyberte **podnikové aplikace** > **Všechny aplikace** > **Zscaler Three**:
 
     ![Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Zscaler tři**:
+2. V seznamu aplikací vyberte **Zscaler Tři**:
 
     ![Seznam aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** :
+3. Vyberte kartu **Zřizování:**
 
     ![Zscaler tři zřizování](./media/zscaler-three-provisioning-tutorial/provisioning-tab.png)
 
-4. Nastavte **režim zřizování** na **automaticky**:
+4. Nastavte **režim zřizování** na **automatický**:
 
     ![Nastavení režimu zřizování](./media/zscaler-three-provisioning-tutorial/provisioning-credentials.png)
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** vašeho Zscaler tři účtu, jak je popsáno v dalším kroku.
+5. V části **Přihlašovací údaje správce** zadejte adresu URL **klienta** a **tajný token** vašeho účtu Zscaler Three, jak je popsáno v dalším kroku.
 
-6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte na **Správa** > **nastavení ověřování** na portálu Zscaler tři a v části **typ ověřování**vyberte **SAML** :
+6. Chcete-li získat **adresu URL klienta** a **tajný token**, přejděte na**nastavení ověřování** **správy** > na portálu Zscaler Three a v části **Typ ověřování**vyberte **možnost SAML** :
 
     ![Zscaler tři nastavení ověřování](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 
-    Vyberte **Konfigurovat SAML** pro otevření okna **Konfigurovat okno SAML** :
+    Chcete-li otevřít okno **Konfigurovat saml,** vyberte **Konfigurovat saml:**
 
-    ![Konfigurovat okno SAML](./media/zscaler-three-provisioning-tutorial/secret-token-2.png)
+    ![Konfigurace okna SAML](./media/zscaler-three-provisioning-tutorial/secret-token-2.png)
 
-    Vyberte **Povolit zřizování na základě SCIM** a zkopírujte **základní adresu URL** a **nosný token**a pak nastavení uložte. V Azure Portal vložte **základní adresu URL** do pole **Adresa URL tenanta** a **token nosiče** do pole **tajný token** .
+    Vyberte **Povolit zřizování založené na SCIM** a zkopírujte **základní adresu URL** a token **nosiče**a pak uložte nastavení. Na webu Azure portal vložte **základní adresu URL** do pole URL **klienta** a **token nosiče** do pole **tajný token.**
 
-7. Až zadáte hodnoty do polí **Adresa URL tenanta** a **tajný token** , vyberte **Test připojení** a ujistěte se, že se Azure AD může připojit k Zscaler třem. Pokud se připojení nepovede, zajistěte, aby měl účet Zscaler tři oprávnění správce, a zkuste to znovu.
+7. Po zadání hodnot do polí **adresa URL klienta** a **tajný token,** vyberte **Test připojení** a ujistěte se, že Azure AD můžete připojit k Zscaler tři. Pokud se připojení nezdaří, ujistěte se, že váš účet Zscaler Three má oprávnění správce, a zkuste to znovu.
 
     ![Otestování připojení](./media/zscaler-three-provisioning-tutorial/test-connection.png)
 
-8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování. Vyberte **Odeslat e-mailové oznámení, když dojde k selhání**:
+8. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování. Vyberte **Odeslat e-mailové oznámení, když dojde k chybě**:
 
     ![Nastavení e-mailu s oznámením](./media/zscaler-three-provisioning-tutorial/notification.png)
 
-9. Vyberte **Save** (Uložit).
+9. Vyberte **Uložit**.
 
-10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé ZscalerThree**:
+10. V části Mapování vyberte **Synchronizovat uživatele služby Azure Active Directory se zscalerem Tři**: **Mappings**
 
     ![Synchronizace uživatelů Azure AD](./media/zscaler-three-provisioning-tutorial/user-mappings.png)
 
-11. Zkontrolujte atributy uživatele synchronizované z Azure AD až Zscaler tři v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Zscaler tři pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
+11. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na Zscaler tři v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Zscaler Tři pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte **uložit.**
 
     ![Mapování atributů](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
 
-12. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do ZscalerThree**:
+12. V části **Mapování** vyberte **Synchronizovat skupiny služby Azure Active Directory se zscalerem Tři**:
 
     ![Synchronizace skupin Azure AD](./media/zscaler-three-provisioning-tutorial/group-mappings.png)
 
-13. Zkontrolujte atributy skupiny synchronizované z Azure AD až Zscaler tři v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Zscaler třech pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
+13. Zkontrolujte atributy skupiny, které jsou synchronizovány z Azure AD na Zscaler tři v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly skupinám v Zscaler Tři pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte **uložit.**
 
     ![Mapování atributů](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si pokyny v [kurzu filtr oboru](./../active-directory-saas-scoping-filters.md).
+14. Chcete-li konfigurovat filtry oborů, naleznete v pokynech v [kurzu filtru oborů](./../active-directory-saas-scoping-filters.md).
 
-15. Pokud chcete povolit službu Azure AD Provisioning pro Zscaler tři, změňte **stav zřizování** na **zapnuto** v části **Nastavení** :
+15. Chcete-li povolit službu zřizování Azure AD pro Zscaler tři, změňte **stav zřizování** **na Zapnuto** v části **Nastavení:**
 
     ![Stav zřizování](./media/zscaler-three-provisioning-tutorial/provisioning-status.png)
 
-16. Definujte uživatele nebo skupiny, které chcete zřídit pro Zscaler, výběrem požadovaných hodnot v části **Rozsah** **Nastavení** :
+16. V části **Nastavení** definujte uživatele a/nebo skupiny, které chcete zřídit změřítko MA Tři: **Scope**
 
     ![Hodnoty oboru](./media/zscaler-three-provisioning-tutorial/scoping.png)
 
-17. Až budete připraveni zřídit, vyberte **Uložit**:
+17. Až budete připraveni k zřízení, vyberte **Uložit**:
 
-    ![Vybrat Uložit](./media/zscaler-three-provisioning-tutorial/save-provisioning.png)
+    ![Vyberte možnost Uložit.](./media/zscaler-three-provisioning-tutorial/save-provisioning.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a skupin definovaných v části **obor** v části **Nastavení** . Počáteční synchronizace trvá déle než následující synchronizace, ke kterým dochází každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Průběh můžete sledovat v části **Podrobnosti o synchronizaci** . Můžete také sledovat odkazy na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Zscaler třech.
+Tato operace spustí počáteční synchronizaci všech uživatelů a skupin definovaných v části **Obor** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut, tak dlouho, dokud je spuštěna služba zřizování Azure AD. Průběh můžete sledovat v části **Podrobnosti synchronizace.** Můžete také sledovat odkazy na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Zscaler Tři.
 
-Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Informace o tom, jak číst protokoly zřizování Azure AD, naleznete v [tématu Vytváření sestav na automatické zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-three-provisioning-tutorial/tutorial-general-01.png

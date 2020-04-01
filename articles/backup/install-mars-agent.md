@@ -3,12 +3,12 @@ title: Instalace agenta služby Microsoft Azure Recovery Services (MARS)
 description: Zjistěte, jak nainstalovat agenta služby Microsoft Azure Recovery Services (MARS) pro zálohování počítačů s Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247758"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422930"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalace agenta Azure Backup MARS
 
@@ -36,6 +36,7 @@ Data, která jsou k dispozici pro zálohování závisí na tom, kde je agent na
 * [Zkontrolujte, co je podporováno a co můžete zálohovat](backup-support-matrix-mars-agent.md) agentem MARS.
 * Ujistěte se, že máte účet Azure, pokud potřebujete zálohovat server nebo klienta do Azure. Pokud nemáte účet, můžete si vytvořit [bezplatný](https://azure.microsoft.com/free/) během několika minut.
 * Ověřte přístup k internetu na počítačích, které chcete zálohovat.
+* Ujistěte se, že uživatel provádějící instalaci a konfiguraci agenta MARS má oprávnění místního správce na serveru, který má být chráněn.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

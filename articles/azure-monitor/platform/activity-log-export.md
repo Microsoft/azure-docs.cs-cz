@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12c750f96b8852cdd6a6039ebfa750c2ee792a6b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096284"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396719"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo Centra událostí Azure
 
 > [!IMPORTANT]
-> Metoda odesílání protokolu aktivit Azure do Azure Storage a Azure Event Hubs se změnila na [diagnostická nastavení](diagnostic-settings.md). Tento článek popisuje starší metodu, která je v procesu zastaralá. Viz Aktualizace [kolekce protokolu aktivit Azure a export](diagnostic-settings-legacy.md) pro porovnání.
+> Metoda odesílání protokolu aktivit Azure do Azure Storage a Azure Event Hubs se změnila na [diagnostická nastavení](diagnostic-settings.md). Tento článek popisuje starší metodu, která je v procesu zastaralá. Na webu Update to [Collect and analyze Azure Activity log in Azure Monitor](activity-log-collect.md) for a comparison.
 
 
-[Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. In addition to viewing the Activity log in the Azure portal or copying it to a Log Analytics workspace where it can be analyzed with other data collected by Azure Monitor, you can create a log profile to archive the Activity log to an Azure storage account or stream it to an Centrum událostí.
+[Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. In addition to viewing the Activity log in the Azure portal or copying it to a Log Analytics workspace where it can be analyzed with other data collected by Azure Monitor, you can create a log profile to archive the Activity log to an Azure storage account or stream it to an Event Hub.
 
 ## <a name="archive-activity-log"></a>Protokol aktivit archivu
 Archivace protokolu aktivit na účet úložiště je užitečná, pokud chcete uchovávat data protokolu déle než 90 dní (s plnou kontrolou nad zásadami uchovávání informací) pro audit, statickou analýzu nebo zálohování. Pokud potřebujete zachovat události po dobu 90 dnů nebo méně, nemusíte nastavit archivaci na účet úložiště, protože události protokolu aktivit jsou zachovány v platformě Azure po dobu 90 dnů.

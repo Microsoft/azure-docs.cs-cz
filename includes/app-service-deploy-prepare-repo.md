@@ -29,7 +29,7 @@ Chcete-li získat automatické sestavení ze serveru sestavení Služby Azure Ap
 | Python | .py , _requirements.txt_nebo _runtime.txt_ _ \*_ |
 | HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_nebo _iisstart.htm_ |
 | Webové úlohy | _\<job_name>/běh. rozšíření \<>_ v části _\_Data/úlohy/souvislé_ pro nepřetržité webové úlohy nebo _Data/úlohy aplikací/aktivované\__ pro aktivované webové úlohy. Další informace naleznete v [dokumentaci k kudu webjobs](https://github.com/projectkudu/kudu/wiki/WebJobs). |
-| Funkce | Viz [Průběžné nasazení pro funkce Azure](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment). |
+| Functions | Viz [Průběžné nasazení pro funkce Azure](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment). |
 
 Chcete-li nasazení přizpůsobit, zahrňte soubor *.deployment* do kořenového adresáře úložiště. Další informace naleznete v [tématu Customize deployments](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) and [Custom deployment script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 

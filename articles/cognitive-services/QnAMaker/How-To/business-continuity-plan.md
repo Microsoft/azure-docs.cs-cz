@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2100426923418104c31933bf9d1406a6441d3841
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650465"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410917"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Vytvoření plánu kontinuity provozu pro službu QnA Maker
 
@@ -33,7 +33,7 @@ Myšlenka na vysoké úrovni, jak je znázorněna výše, je následující:
 
 4. Po nastavení primárnía sekundární zásobníky, použijte [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) nakonfigurovat dva koncové body a nastavit metodu směrování.
 
-5. Budete muset vytvořit certifikát SSL (Secure Sockets L) pro koncový bod správce provozu. [Svázat certifikát SSL](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) ve službách aplikace.
+5. Budete muset vytvořit zabezpečení transportní vrstvy (TLS), dříve známý jako SSL (Secure Sockets Layer), certifikát pro koncový bod správce provozu. [Svažte certifikát TLS/SSL](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) ve svých službách aplikací.
 
 6. Nakonec použijte koncový bod správce provozu ve vašem botu nebo aplikaci.
 

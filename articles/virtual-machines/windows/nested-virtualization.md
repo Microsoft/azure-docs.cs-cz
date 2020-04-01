@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033126"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437292"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak povolit vnořenou virtualizaci ve virtuálním počítači Azure
 
@@ -26,7 +26,7 @@ Tento článek vás provede povolením technologie Hyper-V na virtuálním poč�
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Vytvoření virtuálního počítače Azure s podporou vnoření
 
-Vytvořte nový virtuální počítač Azure pro Windows Server 2016.  Pro rychlou orientaci podporují všechny virtuální počítače v3 vnořenou virtualizaci. Úplný seznam velikostí virtuálních strojů, které podporují vnoření, podívejte se na [článek Azure Compute Unit](acu.md).
+Vytvořte nový virtuální počítač Azure pro Windows Server 2016. Úplný seznam velikostí virtuálních strojů, které podporují vnoření, podívejte se na [článek Azure Compute Unit](acu.md).
 
 Nezapomeňte zvolit velikost virtuálního počítače dostatečně velký, aby podporovalpožadavky hostvirtuálního počítače. V tomto příkladu používáme virtuální počítač Azure velikosti D3_v3. 
 

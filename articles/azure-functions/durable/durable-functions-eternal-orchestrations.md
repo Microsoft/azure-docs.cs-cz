@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 572fec4d6e47efd734bc84a40dc974c79bd619fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262975"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478817"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Věčné orchestrace v trvalých funkcích (funkce Azure)
 
@@ -33,7 +33,7 @@ Při `ContinueAsNew` volání instance zařadí zprávu do samo před ukončení
 
 Jeden případ použití pro věčné orchestrace je kód, který musí provádět periodické práce neomezeně dlouho.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -53,7 +53,7 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí příklad Jazyka C# je pro trvalé funkce 2.x. Pro trvalé funkce 1.x, `DurableOrchestrationContext` musíte `IDurableOrchestrationContext`použít místo . Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -81,7 +81,7 @@ Pomocí `StartNewAsync` metody (.NET) `startNew` nebo (JavaScript) můžete spus
 > [!NOTE]
 > Pokud potřebujete zajistit, že je spuštěna trvalá orchestrace singletonu, `id` je důležité zachovat stejnou instanci při spuštění orchestrace. Další informace naleznete [v tématu Správa instancí](durable-functions-instance-management.md).
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -90,8 +90,8 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
     [DurableClient] IDurableOrchestrationClient client)
 {
     string instanceId = "StaticId";
-    // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
-    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId, null); 
+
+    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId); 
     return client.CreateCheckStatusResponse(request, instanceId);
 }
 ```
@@ -99,7 +99,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 > [!NOTE]
 > Předchozí kód je pro trvalé funkce 2.x. Pro trvalé funkce 1.x `OrchestrationClient` je nutné `DurableClient` použít atribut namísto `DurableOrchestrationClient` atributu a `IDurableOrchestrationClient`místo . Další informace o rozdílech mezi verzemi naleznete v článku [verze durable functions.](durable-functions-versions.md)
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

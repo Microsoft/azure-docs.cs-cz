@@ -1,6 +1,6 @@
 ---
 title: Poradce při potížích s připojením RDP virtuálního počítače Azure podle ID události | Dokumenty společnosti Microsoft
-description: ''
+description: Pomocí ID událostí můžete řešit různé problémy, které brání připojení protokolu RDP (RdP) k virtuálnímu počítači (VM) azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154194"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437059"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události 
 
@@ -63,7 +63,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Klíčová slova:**      Klasické <br />
 **Uživatel:**          N/a <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Hostitelský server relací VP nenahradil certifikát podepsaný vlastními podpisy, jehož platnost vypršela a který byl použit pro ověřování hostitelského serveru relací VP u připojení SSL. Příslušný stavový kód byl Přístup byl odepřen.
+**Popis:** Hostitelský server relací VP nenahradil certifikát podepsaný vlastními podpisy, jehož platnost vypršela a který byl použit pro ověřování hostitelského serveru relací VP u připojení TLS. Příslušný stavový kód byl Přístup byl odepřen.
 
 **Název protokolu:**      Systému <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -74,7 +74,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Klíčová slova:**      Klasické <br />
 **Uživatel:**          N/a <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Hostitelskému serveru relací VP se nepodařilo vytvořit nový certifikát podepsaný svým držitelem, který bude použit pro ověřování hostitelského serveru relací VP u připojení SSL, příslušný stavový kód již existuje.
+**Popis:** Hostitelskému serveru relací VP se nepodařilo vytvořit nový certifikát podepsaný svým držitelem, který bude použit pro ověřování hostitelského serveru relací VP u připojení TLS, příslušný stavový kód již existuje.
 
 **Název protokolu:**      Systému <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -85,7 +85,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Klíčová slova:**      Klasické <br />
 **Uživatel:**          N/a <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Hostitelskému serveru relací VP se nepodařilo vytvořit nový certifikát podepsaný vlastním podpisem, který bude použit pro ověřování hostitelského serveru relací VP u připojení SSL. Příslušný stavový kód byl Keyset neexistuje
+**Popis:** Hostitelskému serveru relací VP se nepodařilo vytvořit nový certifikát podepsaný vlastním podpisem, který bude použit pro ověřování hostitelského serveru relací VP u připojení TLS. Příslušný stavový kód byl Keyset neexistuje
 
 Můžete také zkontrolovat chybové události SCHANNEL 36872 a 36870 spuštěním následujících příkazů:
 
@@ -103,7 +103,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Klíčová slova:**       <br />
 **Uživatel:**          Systému <br />
 **Počítač:**      *počítač* <br />
-**Popis:** Při pokusu o přístup k soukromému klíči pověření serveru SSL došlo k závažné chybě. Kód chyby vrácený z kryptografického modulu je 0x8009030D.  <br />
+**Popis:** Při pokusu o přístup k soukromému klíči pověření serveru TLS došlo k závažné chybě. Kód chyby vrácený z kryptografického modulu je 0x8009030D.  <br />
 Stav vnitřní chyby je 10001.
 
 ### <a name="cause"></a>Příčina
@@ -186,9 +186,9 @@ Pokud certifikát nemůžete obnovit, pokuste se certifikát odstranit následuj
 
 Zkuste znovu získat přístup k virtuálnímu virtuálnímu virtuálnímu bodu pomocí funkce RDP.
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>Aktualizovat certifikát SSL (Secure Sockets L)
+#### <a name="update-tlsssl-certificate"></a>Aktualizace certifikátu TLS/SSL
 
-Pokud nastavíte virtuální ho virtuálního soudu používat certifikát SSL, spusťte následující příkaz získat kryptografický otisk. Pak zkontrolujte, zda je stejný jako kryptografický otisk certifikátu:
+Pokud nastavíte virtuální ho virtuálního virtuálního provozu používat certifikát TLS/SSL, spusťte následující příkaz pro získání kryptografického otisku. Pak zkontrolujte, zda je stejný jako kryptografický otisk certifikátu:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash

@@ -1,22 +1,26 @@
 ---
 title: Konfigurace ověřování Azure AD
-description: Přečtěte si, jak nakonfigurovat ověřování Azure Active Directory jako poskytovatele identity pro vaši aplikaci App Service.
+description: Přečtěte si, jak nakonfigurovat ověřování Azure Active Directory jako poskytovatele identity pro vaši aplikaci App Service nebo Azure Functions.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: fdad1f820d006c39fa135a29a5ec7377c47591f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80046447"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438039"
 ---
-# <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurace aplikace App Service tak, aby používala přihlášení Azure AD
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používaly přihlášení Azure AD
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Tento článek ukazuje, jak nakonfigurovat službu Azure App Service tak, aby používala Azure Active Directory (Azure AD) jako poskytovatele ověřování.
+Tento článek ukazuje, jak nakonfigurovat Azure App Service nebo Azure Functions používat Azure Active Directory (Azure AD) jako zprostředkovatele ověřování.
+
+> [!NOTE]
+> V současné době [azure active directory v2.0](../active-directory/develop/v2-overview.md) (včetně [MSAL)](../active-directory/develop/msal-overview.md)není podporována pro Azure App Service a Azure functions. Zkontrolujte, zda neobsahuje aktualizace.
+>
 
 Při nastavování aplikace a ověřování postupujte podle těchto doporučených postupů:
 
@@ -72,7 +76,8 @@ Proveďte následující kroky:
 1. V **identifikátoru URI přesměrování**vyberte možnost **Web** a typ `<app-url>/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
 1. Vyberte **Vytvořit**.
 1. Po vytvoření registrace aplikace zkopírujte **ID aplikace (klienta)** a **ID adresáře (klienta)** na později.
-1. Vyberte **branding**. V **adrese URL domovské stránky**zadejte adresu URL aplikace App Service a vyberte **Uložit**.
+1. Vyberte **Ověřování**. V **části Implicitní udělení**povolte **tokeny ID,** aby bylo možné povolit přihlášení uživatelů OpenID Connect ze služby App Service.
+1. (Nepovinné) Vyberte **branding**. V **adrese URL domovské stránky**zadejte adresu URL aplikace App Service a vyberte **Uložit**.
 1. Vyberte vystavit**sadu** **rozhraní API** > . Vložte do adresy URL aplikace App Service a vyberte **Uložit**.
 
    > [!NOTE]
@@ -96,7 +101,7 @@ Proveďte následující kroky:
     |Pole|Popis|
     |-|-|
     |ID klienta| Použijte **ID aplikace (klienta)** registrace aplikace. |
-    |ID vystavittele| Použijte `https://login.microsoftonline.com/<tenant-id>`a * \<nahraďte>id klienta* **ID adresáře (tenanta)** registrace aplikace. |
+    |Adresa URL vystavittele| Použijte `https://login.microsoftonline.com/<tenant-id>`a * \<nahraďte>id klienta* **ID adresáře (tenanta)** registrace aplikace. Tato hodnota se používá k přesměrování uživatelů na správného klienta Azure AD, stejně jako ke stažení příslušných metadat k určení příslušné klíče podpisu tokenu a hodnotu deklarace vystavitele tokenu například. |
     |Tajný klíč klienta (volitelné)| Použijte tajný klíč klienta, který jste vygenerovali při registraci aplikace.|
     |Povolené cílové skupiny tokenů| Pokud se jedná o cloudovou nebo serverovou aplikaci a chcete povolit ověřovací tokeny z webové aplikace, přidejte identifikátor **URI ID aplikace** webové aplikace sem. Nakonfigurované **ID klienta** je *vždy* implicitně považováno za povolenou cílovou skupinu. |
 
@@ -106,21 +111,21 @@ Teď jste připraveni používat Azure Active Directory pro ověřování v apli
 
 ## <a name="configure-a-native-client-application"></a>Konfigurace nativní klientské aplikace
 
-Můžete zaregistrovat nativní klienty a povolit ověřování pomocí klientské knihovny, například **knihovny ověřování služby Active Directory**.
+Můžete zaregistrovat nativní klienty a povolit tak ověřování na webová rozhraní API hostovaná ve vaší aplikaci pomocí klientské knihovny, jako je **například Knihovna ověřování služby Active Directory**.
 
 1. Na [webu Azure Portal]vyberte**Registrace aplikací Služby** >  **Active Directory** > **Nová registrace**.
 1. Na stránce **Registrace aplikace** zadejte **název** registrace aplikace.
 1. V **identifikátoru URI přesměrování**vyberte možnost Veřejný klient **(mobilní & plochy)** a zadejte adresu URL `<app-url>/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
-    > Pro aplikaci systému Windows použijte [balíček SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) jako identifikátor URI.
+    > Pro aplikaci Microsoft Store použijte [balíček SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) jako identifikátor URI.
 1. Vyberte **Vytvořit**.
 1. Po vytvoření registrace aplikace zkopírujte hodnotu **ID aplikace (klienta).**
 1. Vyberte **oprávnění** > rozhraní**API: Přidání oprávnění** > **Moje rozhraní API**.
 1. Vyberte registraci aplikace, kterou jste pro aplikaci App Service vytvořili dříve. Pokud registraci aplikace nevidíte, ujistěte se, že jste přidali **user_impersonation** oboru v [tématu Vytvoření registrace aplikace ve službě Azure AD pro aplikaci App Service](#register).
 1. Vyberte **user_impersonation**a pak **vyberte Přidat oprávnění**.
 
-Nyní jste nakonfigurovali nativní klientskou aplikaci, která má přístup k vaší aplikaci App Service.
+Nyní jste nakonfigurovali nativní klientskou aplikaci, která může přistupovat k vaší aplikaci App Service jménem uživatele.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Další kroky
 
@@ -128,4 +133,4 @@ Nyní jste nakonfigurovali nativní klientskou aplikaci, která má přístup k 
 
 <!-- URLs. -->
 
-[Portál Azure]: https://portal.azure.com/
+[portál Azure]: https://portal.azure.com/

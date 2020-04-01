@@ -1,14 +1,14 @@
 ---
-title: Nasazení do služby Azure Kubernetes pomocí Jenkinse a vzoru nasazení Blue/zelený
+title: Nasazení do služby Azure Kubernetes pomocí Jenkinse a modrozeleného vzoru nasazení
 description: Zjistěte, jak provést nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení.
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, blue green deployment, continuous delivery, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251482"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení
@@ -26,7 +26,7 @@ V tomto kurzu zjistíte, jak provést následující úlohy:
 > * Ruční konfigurace clusteru Kubernetes
 > * Vytvoření a spuštění úlohy Jenkinse
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - [Účet GitHub:](https://github.com) Účet GitHub potřebujete k naklonování ukázkového úložiště.
 - [Azure CLI 2.0:](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Pomocí Azure CLI 2.0 vytvoříte cluster Kubernetes.
 - [Chocolatey:](https://chocolatey.org) Správce balíčků, pomocí kterého nainstalujete kubectl.
@@ -113,10 +113,10 @@ Modré/zelené nasazení můžete v AKS nastavit ručně nebo pomocí instalačn
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>Nastavení clusteru Kubernetes přes ukázkový instalační skript
 1. Upravte soubor **deploy/aks/setup/setup.sh** a nahraďte následující zástupné texty odpovídajícími hodnotami pro vaše prostředí: 
 
-   - **&lt;your-resource-group-name>** – Název vaší skupiny prostředků
-   - **&lt;your-kubernetes-cluster-name>** – Název vašeho clusteru Kubernetes
-   - **&lt;your-location>** – Vaše umístění
-   - **&lt;your-dns-name-suffix>** – Vaše předpona názvu DNS
+   - **&lt;>názvu skupiny prostředků**
+   - **&lt;>název kubernetes-cluster**
+   - **&lt;>polohy**
+   - **&lt;>přípony názvu dns**
 
      ![Snímek obrazovky prostředí Bash se skriptem s několika zvýrazněnými zástupnými texty](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
@@ -143,7 +143,7 @@ Modré/zelené nasazení můžete v AKS nastavit ručně nebo pomocí instalačn
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Aktualizujte název DNS pro veřejný a testovací koncové body. Při vytváření clusteru Kubernetes můžete vytvořit také [další skupinu prostředků](https://github.com/Azure/AKS/issues/3) s názvem podle následujícího vzoru: **MC_&lt;název_vaší_skupiny_prostředků> _&lt;název_vašeho_clusteru_Kubernetes>_ &lt;vaše_umístění>** .
+1. Aktualizujte název DNS pro veřejný a testovací koncové body. Při vytváření clusteru Kubernetes můžete vytvořit také [další skupinu prostředků](https://github.com/Azure/AKS/issues/3) s názvem podle následujícího vzoru: **MC_&lt;název_vaší_skupiny_prostředků>_&lt;název_vašeho_clusteru_Kubernetes>_&lt;vaše_umístění>**.
 
     Vyhledejte veřejné IP adresy ve skupině prostředků.
 
@@ -214,7 +214,7 @@ V této části se dozvíte, jak připravit server Jenkinse na spuštění sesta
     1. Vyberte **Manage Jenkins -> Manage Plugins -> Available** (Správa Jenkinse -> Správa modulů plug-in -> K dispozici).
     1. Vyhledejte a nainstalujte modul plug-in služby Azure Container Service.
 
-1. Přidejte přihlašovací údaje pro správu prostředků v Azure. Pokud ještě nemáte modul plug-in, nainstalujte modul plug-in **Azure Credential** .
+1. Přidejte přihlašovací údaje pro správu prostředků v Azure. Pokud ještě nemáte modul plug-in, nainstalujte modul plug-in **pověření Azure.**
 
 1. Přidejte své přihlašovací údaje instančního objektu Azure jako typ **Microsoft Azure Service Principal** (Instanční objekt Microsoft Azure).
 
@@ -247,7 +247,7 @@ V této části se dozvíte, jak připravit server Jenkinse na spuštění sesta
 ## <a name="create-the-job"></a>Vytvoření úlohy
 1. Přidejte novou úlohu typu **Pipeline** (Kanál).
 
-1. Vyberte **Pipeline** > **Definition** > **Pipeline script from SCM** (Kanál -> Definice -> Skript kanálu z SCM).
+1.  >  **Vyberte**skript**Pipeline Definition** > **Pipeline z programu SCM**.
 
 1. Místo &lt;your-forked-repo> zadejte adresu URL úložiště SCM.
 

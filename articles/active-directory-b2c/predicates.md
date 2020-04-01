@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187232"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396888"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a predikátyvalidace
 
@@ -45,7 +45,7 @@ Prvek **Predikáty** obsahuje následující prvek:
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro predikát. Ostatní prvky můžete použít tento identifikátor v zásadě. |
-| Metoda | Ano | Typ metody, který se má použít pro ověření. Možné hodnoty: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**nebo **IsDateRange**. Hodnota **IsLengthRange** kontroluje, zda je délka hodnoty deklarace řetězce v rozsahu minimálních a maximálních zadaných parametrů. Hodnota **MatchesRegex** kontroluje, zda hodnota deklarace řetězce odpovídá regulárnímu výrazu. Hodnota **IncludesCharacters** kontroluje, zda hodnota deklarace řetězce obsahuje znakovou sadu. Hodnota **IsDateRange** kontroluje, zda je hodnota deklarace data mezi rozsahem minimálních a maximálních zadaných parametrů. |
+| Metoda | Ano | Typ metody, který se má použít pro ověření. Možné hodnoty: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)nebo [IsDateRange](#isdaterange).  |
 | Helptext | Ne | Chybová zpráva pro uživatele, pokud se kontrola nezdaří. Tento řetězec lze lokalizovat pomocí [přizpůsobení jazyka.](localization.md) |
 
 **Predikát** prvek obsahuje následující prvky:
@@ -67,7 +67,19 @@ Parametr **Element** obsahuje následující atributy:
 | ------- | ----------- | ----------- |
 | ID | 1:1 | Identifikátor parametru. |
 
-Následující příklad ukazuje `IsLengthRange` metodu s `Minimum` `Maximum` parametry a které určují rozsah délky řetězce:
+### <a name="predicate-methods"></a>Predikátové metody
+
+#### <a name="islengthrange"></a>Rozsah islength
+
+Metoda IsLengthRange kontroluje, zda je délka hodnoty deklarace řetězce v rozsahu minimálních a maximálních zadaných parametrů. Predikátový prvek podporuje následující parametry:
+
+| Parametr | Požaduje se | Popis |
+| ------- | ----------- | ----------- |
+| Maximum | Ano | Maximální počet znaků, které lze zadat. |
+| Minimální | Ano | Minimální počet znaků, které musí být zadány. |
+
+
+Následující příklad ukazuje metodu IsLengthRange `Minimum` s `Maximum` parametry a které určují rozsah délky řetězce:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -77,6 +89,14 @@ Následující příklad ukazuje `IsLengthRange` metodu s `Minimum` `Maximum` pa
   </Parameters>
 </Predicate>
 ```
+
+#### <a name="matchesregex"></a>MatchesRegex
+
+Metoda MatchesRegex kontroluje, zda hodnota deklarace řetězce odpovídá regulárnímu výrazu. Predikátový prvek podporuje následující parametry:
+
+| Parametr | Požaduje se | Popis |
+| ------- | ----------- | ----------- |
+| Regulární výraz | Ano | Vzor regulárního výrazu, který se má shodovat. |
 
 Následující příklad ukazuje `MatchesRegex` metodu `RegularExpression` s parametrem, který určuje regulární výraz:
 
@@ -88,6 +108,14 @@ Následující příklad ukazuje `MatchesRegex` metodu `RegularExpression` s par
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>Zahrnuje znaky
+
+Metoda IncludesCharacters kontroluje, zda hodnota deklarace řetězce obsahuje znakovou sadu. Predikátový prvek podporuje následující parametry:
+
+| Parametr | Požaduje se | Popis |
+| ------- | ----------- | ----------- |
+| Znaková sada | Ano | Sada znaků, které lze zadat. `a-z`Například malá písmena , `A-Z`velká písmena , číslice `0-9`nebo `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`seznam symbolů, například . |
+
 Následující příklad ukazuje `IncludesCharacters` metodu `CharacterSet` s parametrem, který určuje sadu znaků:
 
 ```XML
@@ -98,7 +126,16 @@ Následující příklad ukazuje `IncludesCharacters` metodu `CharacterSet` s pa
 </Predicate>
 ```
 
-Následující příklad ukazuje `IsDateRange` metodu s `Minimum` `Maximum` parametry a které určují `yyyy-MM-dd` rozsah `Today`dat s formátem a .
+#### <a name="isdaterange"></a>Rozsah datech
+
+Metoda IsDateRange kontroluje, zda je hodnota deklarace data mezi rozsahem minimálních a maximálních zadaných parametrů. Predikátový prvek podporuje následující parametry:
+
+| Parametr | Požaduje se | Popis |
+| ------- | ----------- | ----------- |
+| Maximum | Ano | Největší možné datum, které lze zadat. Formát data se řídí `yyyy-mm-dd` konvencí nebo `Today`. |
+| Minimální | Ano | Nejmenší možné datum, které lze zadat. Formát data se řídí `yyyy-mm-dd` konvencí nebo `Today`.|
+
+Následující příklad ukazuje `IsDateRange` metodu s `Minimum` `Maximum` parametry a které určují `yyyy-mm-dd` rozsah `Today`dat s formátem a .
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -388,3 +425,7 @@ Do typu deklarace aplikace přidejte prvek **PredicateValidationReference** a za
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>Další kroky
+
+- Zjistěte, jak [nakonfigurovat složitost hesla pomocí vlastních zásad ve službě Azure Active Directory B2C](custom-policy-password-complexity.md) pomocí ověření predikátu.

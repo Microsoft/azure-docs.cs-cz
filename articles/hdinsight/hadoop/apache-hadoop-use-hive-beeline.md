@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f2b192765aab4c7cf18c62988ae2f6080b4b17c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037544"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436926"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hivem
 
@@ -65,7 +65,7 @@ Jak najít adresu URL JDBC z Ambari:
 
 ### <a name="over-public-or-private-endpoints"></a>Přes veřejné nebo soukromé koncové body
 
-Při připojování ke clusteru pomocí veřejných nebo privátní `admin`koncové body, musíte zadat název přihlašovacího účtu clusteru (výchozí) a heslo. Například pomocí Beeline z klientského systému pro připojení k `clustername.azurehdinsight.net` adrese. Toto připojení je `443`provedeno přes port a je šifrováno pomocí ssl.
+Při připojování ke clusteru pomocí veřejných nebo privátní `admin`koncové body, musíte zadat název přihlašovacího účtu clusteru (výchozí) a heslo. Například pomocí Beeline z klientského systému pro připojení k `clustername.azurehdinsight.net` adrese. Toto připojení je `443`provedeno přes port a je šifrováno pomocí TLS/SSL.
 
 Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro váš cluster. Pro clustery ESP použijte úplný hlavní název user@domain.comjednotky (například). Nahraďte `password` heslem přihlašovacího účtu clusteru.
 

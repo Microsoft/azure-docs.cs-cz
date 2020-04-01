@@ -1,7 +1,7 @@
 ---
-title: Ukázkový skript Azure CLI – vytvoření úložiště konfigurace aplikace Azure
+title: Ukázka skriptu příkazového příkazu Azure – vytvoření azure app configuration store
 titleSuffix: Azure App Configuration
-description: Vytvoření úložiště konfigurace aplikace Azure pomocí skriptu Azure CLI
+description: Vytvoření úložiště Azure App Configuration Store pomocí skriptu Nastavení příkazu Azure
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,21 +9,21 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
 ms.openlocfilehash: 667cf9545d87bd9277c59d066933710339b6c079
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77623088"
 ---
-# <a name="create-an-azure-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace Azure
+# <a name="create-an-azure-app-configuration-store"></a>Vytvoření Azure App Configuration Store
 
-Tento ukázkový skript vytvoří novou instanci konfigurace aplikace Azure v nové skupině prostředků.
+Tento ukázkový skript vytvoří novou instanci Konfigurace aplikace Azure v nové skupině prostředků.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -64,16 +64,16 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Tento náze
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření nové skupiny prostředků a úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy k vytvoření nové skupiny prostředků a úložiště konfigurace aplikací. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [AZ appconfig Create](/cli/azure/appconfig#az-appconfig-create) | Vytvoří prostředek úložiště konfigurace aplikace. |
-| [AZ appconfig Credential list](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Vypíše přístupové klíče pro úložiště konfigurace aplikace. |
+| [az appconfig vytvořit](/cli/azure/appconfig#az-appconfig-create) | Vytvoří prostředek úložiště konfigurace aplikace. |
+| [seznam přihlašovacích údajů aplikace az appconfig](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Seznam přístupových klíčů pro úložiště konfigurace aplikací. |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku pro konfiguraci aplikace najdete v ukázkách rozhraní příkazového [řádku konfigurace Azure](../cli-samples.md).
+Další ukázky skriptu příkazového příkazu konfigurace aplikace najdete v [ukázkách příkazového příkazu konfigurace aplikace Azure](../cli-samples.md).

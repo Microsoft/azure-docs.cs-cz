@@ -3,12 +3,12 @@ title: Pochopte, jak efekty fungují
 description: Definice zásad Azure mají různé efekty, které určují, jak se řídí dodržování předpisů a jak se oznamuje.
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c941173a500a4159a37c7c31107b9a6eab872
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239971"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422455"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy efektů zásad Azure
 
@@ -432,15 +432,15 @@ Příklad: Vyhodnocuje databáze serveru SQL Server k určení, zda je povoleno 
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAconstraint
 
-Tento efekt se používá s `Microsoft.Kubernetes.Data` *režimem* definice zásad . Používá se k předání gatekeeper v3 pravidla kontroly přijetí definované s [OPA omezení rámce](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) [otevřít agenta zásad](https://www.openpolicyagent.org/) (OPA) do clusterů Kubernetes v Azure.
+Tento efekt se používá s `Microsoft.Kubernetes.Data` *režimem* definice zásad . Používá se k předání gatekeeper v3 pravidla kontroly přístupu definované s [OPA omezení rámce](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) [otevřít agenta zásad](https://www.openpolicyagent.org/) (OPA) na samořízené Clustery Kubernetes v Azure.
 
 > [!NOTE]
-> [Azure Policy for Kubernetes](aks-engine.md) je ve verzi Preview a podporuje jenom integrované definice zásad.
+> [Azure Policy for AKS Engine](aks-engine.md) je ve verzi Public Preview a podporuje jenom předdefinované definice zásad.
 
 ### <a name="enforceopaconstraint-evaluation"></a>Vyhodnocení enforceOPAConstraint
 
 Řadič přijetí agenta otevřené politiky vyhodnotí všechny nové požadavky v clusteru v reálném čase.
-Každých 15 minut se dokončí úplná prohledávací služba clusteru a výsledky budou hlášeny do zásad Azure.
+Každých 5 minut je dokončena úplná prohledávací služba clusteru a výsledky nahlášené zásadám Azure.
 
 ### <a name="enforceopaconstraint-properties"></a>Vlastnosti EnforceOPAConstraint
 
@@ -455,7 +455,7 @@ Každých 15 minut se dokončí úplná prohledávací služba clusteru a výsle
 
 ### <a name="enforceopaconstraint-example"></a>Příklad EnforceOPAConstraint
 
-Příklad: Gatekeeper v3 pravidlo kontroly přijetí nastavit omezení procesoru kontejneru a paměti v Kubernetes.
+Příklad: Gatekeeper v3 pravidlo kontroly přijetí nastavit omezení procesoru kontejneru a paměti v AKS Engine.
 
 ```json
 "if": {
@@ -490,8 +490,8 @@ Příklad: Gatekeeper v3 pravidlo kontroly přijetí nastavit omezení procesoru
 
 Tento efekt se používá s `Microsoft.ContainerService.Data` *režimem* definice zásad . Používá se k předání pravidel kontroly přístupu Gatekeeper v2 definovaných pomocí [agenta zásad Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) to [Open (OPA)](https://www.openpolicyagent.org/) ve službě Azure [Kubernetes Service](../../../aks/intro-kubernetes.md).
 
-> [!IMPORTANT]
-> [Azure Policy for Kubernetes](rego-for-aks.md) je ve verzi Preview a podporuje jenom integrované definice zásad. Integrované zásady jsou v kategorii **Kubernetes.** _Zastaralá_zásady **effectu EnforceRegoPolicy** a související **chodkařské služby** Jsou zastaralé . Místo toho použijte aktualizovaný efekt [EnforceOPAConstraint.](#enforceopaconstraint)
+> [!NOTE]
+> [Zásady Azure pro AKS](rego-for-aks.md) jsou v omezenéverzi Preview a podporují jenom integrované definice zásad.
 
 ### <a name="enforceregopolicy-evaluation"></a>VyhodnoceníRegoPolicy hodnocení
 

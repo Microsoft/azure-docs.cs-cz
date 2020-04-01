@@ -1,5 +1,5 @@
 ---
-title: Nasazení aplikace iPv6 se dvěma zásobníky se základním nástrojem pro vyrovnávání zatížení ve virtuální síti Azure – šablona Resource Manger (preview)
+title: Nasazení aplikace iPv6 se dvěma zásobníky se základním nástrojem pro vyrovnávání zatížení ve virtuální síti Azure – šablona Resource Manger
 titlesuffix: Azure Virtual Network
 description: Tento článek ukazuje, jak nasadit aplikaci IPv6 dual stack ve virtuální síti Azure pomocí šablon virtuálních zařízení Azure Resource Manager.
 services: virtual-network
@@ -10,18 +10,18 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 06/26/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c2f66d92597801aa7c6b0b32f86f594d3effb05
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012839"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420605"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Nasazení aplikace iPv6 se dvěma zásobníky se základním vyrovnáváním zatížení v Azure – šablona (preview)
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>Nasazení aplikace iPv6 se dvěma zásobníky se základním vyrovnáváním zatížení v Azure – šablona
 
-Tento článek obsahuje seznam úloh konfigurace IPv6 s částí šablony virtuálního počítače Azure Resource Manager, která se vztahuje na. Pomocí šablony popsané v tomto článku nasadit aplikaci duálního zásobníku (IPv4 + IPv6) se základním nástrojem pro vyrovnávání zatížení, která obsahuje virtuální síť se dvěma zásobníky s podsítěmi IPv4 a IPv6, základní nástroj pro vyrovnávání zatížení s duálními konfiguracemi front-endu (IPv4 + IPv6), virtuální počítače s virtuálními počítači s Síťové karty, které mají konfiguraci duální IP adresy, skupinu zabezpečení sítě a veřejné IP adresy.
+Tento článek obsahuje seznam úloh konfigurace IPv6 s částí šablony virtuálního počítače Azure Resource Manager, která se vztahuje na. Pomocí šablony popsané v tomto článku nasadit aplikaci front-end u duálního zásobníku (IPv4 + IPv6) se základním nástrojem pro vyrovnávání zatížení, která obsahuje virtuální síť s dvěma zásobníky s podsítěmi IPv4 a IPv6, základní nástroj pro vyrovnávání zatížení s duálními konfiguracemi front-endu (IPv4 + IPv6), virtuální počítače s síťovými kartami, které mají duální IP adresu, skupinu zabezpečení sítě a veřejné IP adresy.
 
 Pokud chcete nasadit aplikaci s duálním zásobníkem (IPV4 + IPv6) pomocí standardního vykladače zatížení, přečtěte [si část Nasazení aplikace iPv6 se standardním vyvažovačem zatížení – šablonou](ipv6-configure-standard-load-balancer-template-json.md).
 

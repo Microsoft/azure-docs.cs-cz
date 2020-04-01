@@ -12,16 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 209b4136678e6f04666b4a2b6180f4768bf6afc4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500825"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411156"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
-Azure SQL Database je relační databáze pro obecné účely, která je poskytována jako spravovaná služba. S ním můžete vytvořit vysoce dostupnou a vysoce výkonnou vrstvu úložiště dat pro aplikace a řešení v Azure. SQL Database může být tou správnou volbou pro celou řadu moderních cloudových aplikací, protože umožňuje zpracovávat relační data i [nerelační struktury](sql-database-multi-model-features.md), jako jsou grafy, JSON, prostorové a XML.
+Azure SQL Database je plně spravovaný databázový stroj PaaS (Platform as a Service, platforma jako služba), který zpracovává většinu funkcí správy databáze, jako jsou upgrady, opravy, zálohování a monitorování bez zásahu uživatele. Azure SQL Database vždycky běží na nejnovější stabilní verzi databázového stroje SQL Serveru a opraveném operačním systému s 99,99% dostupností. PaaS funkce, které jsou integrované do databáze Azure SQL umožňuje zaměřit se na správu databáze specifické pro doménu a optimalizace činnosti, které jsou důležité pro vaše podnikání.
+
+S Azure SQL Database můžete vytvořit vysoce dostupnou a vysoce výkonnou vrstvu úložiště dat pro aplikace a řešení v Azure. SQL Database může být tou správnou volbou pro celou řadu moderních cloudových aplikací, protože umožňuje zpracovávat relační data i [nerelační struktury](sql-database-multi-model-features.md), jako jsou grafy, JSON, prostorové a XML.
 
 Je založen na nejnovější stabilní verzi [databázového stroje Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). Můžete použít pokročilé funkce zpracování dotazů, jako jsou [vysoce výkonné technologie v paměti](sql-database-in-memory.md) a inteligentní zpracování [dotazů](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Ve skutečnosti nejnovější možnosti SQL Server jsou vydány nejprve sql database a pak sql server sám. Získáte nejnovější funkce SQL Serveru bez režie pro opravy nebo upgrade, testovány napříč miliony databází. 
 
@@ -68,7 +70,7 @@ SQL Database nabízí následující nákupní modely:
 Azure SQL Database nabízí tři úrovně služeb, které jsou navržené pro různé typy aplikací:
 - Úroveň služby [pro obecné účely a standardy](sql-database-service-tier-general-purpose.md) určená pro běžné úlohy. Nabízí nízkopřehledně orientované vyvážené výpočetní a úložné možnosti.
 - Úroveň služeb [Business Critical/Premium](sql-database-service-tier-business-critical.md) určená pro aplikace OLTP s vysokou transakční sazbou a nejnižší latencí vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání pomocí několika izolovaných replik.
-- Vrstva služby [hyperškálování](sql-database-service-tier-hyperscale.md) určená pro velmi rozsáhlou databázi OLTP a možnost automatického škálování úložiště a škálování výpočetních prostředků plynule.    
+- [Vrstva](sql-database-service-tier-hyperscale.md) služby Hyperscale určená pro velmi rozsáhlou databázi OLTP a možnost automatického škálování úložiště a škálování výpočetních prostředků plynule.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 
@@ -107,11 +109,11 @@ Azure poskytuje integrované nástroje [pro monitorování výkonu](sql-database
 
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 
-V tradičním prostředí SQL Server obecně máte alespoň dva počítače místně nastavit. Tyto stroje mají přesné, synchronně udržované kopie dat, které chrání před selháním jednoho stroje nebo součásti. Toto prostředí poskytuje vysokou dostupnost, ale nechrání před přírodní katastrofou ničí vaše datové centrum.
+Azure SQL Database umožňuje vaší firmě pokračovat v provozu během přerušení. V tradičním prostředí SQL Server obecně máte alespoň dva počítače místně nastavit. Tyto stroje mají přesné, synchronně udržované kopie dat, které chrání před selháním jednoho stroje nebo součásti. Toto prostředí poskytuje vysokou dostupnost, ale nechrání před přírodní katastrofou ničí vaše datové centrum.
 
 Zotavení po havárii předpokládá, že katastrofická událost je geograficky lokalizována natolik, aby měla jiný počítač nebo sadu počítačů s kopií dat daleko. Na serveru SQL Server můžete tuto funkci získat pomocí skupin y dostupnosti always on spuštěné v asynchronním režimu. Lidé často nechtějí čekat na replikaci tak daleko před potvrzením transakce, takže existuje potenciál pro ztrátu dat, když provedete neplánované převzetí služeb při selhání.
 
-Databáze v úrovních premium a business kritické služby již [provést něco velmi podobné](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) synchronizace skupiny dostupnosti. Databáze v nižších úrovních služeb poskytují redundanci prostřednictvím úložiště pomocí [jiného, ale ekvivalentnímechanismu .](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) Vestavěná logika pomáhá chránit před selháním jednoho počítače. Aktivní funkce geografické replikace umožňuje chránit před havárií, kdy je zničena celá oblast.
+Databáze v úrovních premium a business kritické služby již [provést něco podobného](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) synchronizace skupiny dostupnosti. Databáze v nižších úrovních služeb poskytují redundanci prostřednictvím úložiště pomocí [jiného, ale ekvivalentnímechanismu .](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) Vestavěná logika pomáhá chránit před selháním jednoho počítače. Aktivní funkce geografické replikace umožňuje chránit před havárií, kdy je zničena celá oblast.
 
 Zóny dostupnosti Azure se pokusí chránit před výpadkem jednoho sestavení datového centra v rámci jedné oblasti. Pomáhá chránit před ztrátou energie nebo sítě do budovy. V databázi SQL umístíte různé repliky v různých zónách dostupnosti (různé budovy, efektivně).
 

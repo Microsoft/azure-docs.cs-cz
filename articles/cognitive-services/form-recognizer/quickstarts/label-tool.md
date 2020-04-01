@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ad074ca2cc9cd335d6697a2383998246468907ad
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052451"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397998"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trénování modelu rozpoznávání formulářů pomocí popisků pomocí nástroje pro označování vzorků
 
@@ -50,7 +50,7 @@ Budete používat modul Docker ke spuštění ukázkového štítku. Podle těch
    Nainstalujte Docker do počítače podle příslušných pokynů pro váš operační systém: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
    * [Macos](https://docs.docker.com/docker-for-mac/)
-   * [Linux](https://docs.docker.com/install/).
+   * [Linux](https://docs.docker.com/install/)
 
 1. Získejte kontejner nástrojů pro `docker pull` označování vzorků pomocí příkazu.
     ```

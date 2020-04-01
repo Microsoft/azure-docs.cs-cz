@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8767a6ee6218223280ea6219e22540c53d1e89be
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066608"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409120"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Běžné předpoklady pro nasazení platformy OpenShift Container Platform 3.11 v Azure
 
@@ -143,15 +143,15 @@ Další informace o instančních objektech najdete [v tématu Vytvoření insta
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Požadavky použitelné pouze pro šablonu Správce prostředků
 
-Tajné klíče bude nutné vytvořit pro soukromý klíč SSH (**sshPrivateKey**), tajný klíč klienta Azure AD (**aadClientSecret),** OpenShift admin heslo **(openshiftPassword)** a Red Hat Subscription Manager heslo nebo aktivační klíč (**rhsmPasswordOrActivationKey**).  Navíc pokud jsou použity vlastní SSL certifikáty, pak šest další chutní kódy budou muset být vytvořeny - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**a **masterkeyfile**.  Tyto parametry budou podrobněji vysvětleny.
+Tajné klíče bude nutné vytvořit pro soukromý klíč SSH (**sshPrivateKey**), tajný klíč klienta Azure AD (**aadClientSecret),** OpenShift admin heslo **(openshiftPassword)** a Red Hat Subscription Manager heslo nebo aktivační klíč (**rhsmPasswordOrActivationKey**).  Navíc pokud jsou použity vlastní certifikáty TLS/SSL, bude nutné vytvořit šest dalších tajných kódů – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**a **masterkeyfile**.  Tyto parametry budou podrobněji vysvětleny.
 
 Šablona odkazuje na konkrétní tajné názvy, takže **je nutné** použít výše uvedené tučné názvy (malá a velká písmena).
 
 ### <a name="custom-certificates"></a>Vlastní certifikáty
 
-Ve výchozím nastavení bude šablona nasazovat cluster OpenShift pomocí certifikátů podepsaných svým držitelem pro webovou konzolu OpenShift a směrovací doménu. Pokud chcete použít vlastní certifikáty SSL, nastavte "routingCertType" na 'custom' a 'masterCertType' na 'custom'.  Pro certifikáty budete potřebovat soubory certifikačníautority, certifikátu a klíče ve formátu .pem.  Je možné použít vlastní certifikáty pro jeden, ale ne druhý.
+Ve výchozím nastavení bude šablona nasazovat cluster OpenShift pomocí certifikátů podepsaných svým držitelem pro webovou konzolu OpenShift a směrovací doménu. Pokud chcete použít vlastní certifikáty TLS/SSL, nastavte "routingCertType" na "custom" a "masterCertType" na "custom".  Pro certifikáty budete potřebovat soubory certifikačníautority, certifikátu a klíče ve formátu .pem.  Je možné použít vlastní certifikáty pro jeden, ale ne druhý.
 
-Tyto soubory budete muset uložit do tajných kódů trezoru klíčů.  Použijte stejný trezor klíčů, jako je ten, který se používá pro soukromý klíč.  Místo toho, aby vyžadovala 6 dalších vstupů pro tajné názvy, je šablona pevně zakódována tak, aby používala konkrétní tajné názvy pro každý soubor certifikátů SSL.  Data certifikátu uložte pomocí informací z následující tabulky.
+Tyto soubory budete muset uložit do tajných kódů trezoru klíčů.  Použijte stejný trezor klíčů, jako je ten, který se používá pro soukromý klíč.  Místo toho, aby vyžadovala 6 dalších vstupů pro tajné názvy, je šablona pevně zakódována tak, aby používala konkrétní tajné názvy pro každý soubor certifikátu TLS/SSL.  Data certifikátu uložte pomocí informací z následující tabulky.
 
 | Tajný název      | Soubor certifikátu   |
 |------------------|--------------------|

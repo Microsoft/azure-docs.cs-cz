@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 950bbc17af920f104f31af4d324f5546ff29217e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257950"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422187"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Synapse Analytics (dříve Azure SQL Data Warehouse) pomocí Azure Data Factory 
 
@@ -485,7 +485,7 @@ Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a au
 
 ### <a name="staged-copy-by-using-polybase"></a>Fázovaná kopie pomocí PolyBase
 
-Pokud vaše zdrojová data nejsou nativně kompatibilní s PolyBase, povolte kopírování dat prostřednictvím dočasné pracovní instance úložiště objektů blob Azure (nemůže to být Azure Premium Storage). V takovém případě Azure Data Factory automaticky převede data tak, aby splňovaly požadavky na formát dat PolyBase. Pak vyvolá PolyBase načíst data do datového skladu SQL. Nakonec vyčistí vaše dočasná data z úložiště objektů blob. Podrobnosti o kopírování dat prostřednictvím instancí instancí úložiště objektů Blob Azure najdete v tématu [Staged copy.](copy-activity-performance.md#staged-copy)
+Pokud vaše zdrojová data nejsou nativně kompatibilní s PolyBase, povolte kopírování dat prostřednictvím dočasné pracovní instance úložiště objektů blob Azure (nemůže to být Azure Premium Storage). V takovém případě Azure Data Factory automaticky převede data tak, aby splňovaly požadavky na formát dat PolyBase. Pak vyvolá PolyBase načíst data do datového skladu SQL. Nakonec vyčistí vaše dočasná data z úložiště objektů blob. Podrobnosti o kopírování dat prostřednictvím instancí instancí úložiště objektů Blob Azure najdete v tématu [Staged copy.](copy-activity-performance-features.md#staged-copy)
 
 Chcete-li tuto funkci použít, vytvořte [propojenou službu Azure Blob Storage,](connector-azure-blob-storage.md#linked-service-properties) která odkazuje na účet úložiště Azure s dočasným úložištěm objektů blob. Pak `enableStaging` zadejte `stagingSettings` vlastnosti a aktivity kopírování, jak je znázorněno v následujícím kódu.
 
@@ -613,7 +613,7 @@ Příkaz Using COPY podporuje následující konfiguraci:
 2. Nastavení formátu jsou následující:
 
    1. Pro **parkety** `compression` : nemůže být **komprese**, **Snappy**, nebo **GZip**.
-   2. Pro **ORC**: `compression` nemůže být žádná **komprese**, **zlib**nebo **Snappy**.
+   2. Pro **ORC** `compression` : může být žádná **komprese**, **```zlib```** nebo **Snappy**.
    3. Pro **oddělované znění**:
       1. `rowDelimiter`je explicitně nastavena jako **jeden znak** nebo **"\r\n**", výchozí hodnota není podporována.
       2. `nullValue`je ponecháno jako výchozí nebo nastaveno na **prázdný řetězec** ("").
@@ -705,7 +705,7 @@ Nastavení specifická pro Azure Synapse Analytics jsou k dispozici na kartě **
 
 * Příklad SQL:```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Velikost dávky**: Zadejte velikost dávky pro velké datové bloky do čtení.
+**Velikost dávky**: Zadejte velikost dávky pro velké datové bloky do čtení. V datových tocích použije ADF toto nastavení k nastavení sloupcového ukládání do mezipaměti spark. Toto je pole možností, které bude používat výchozí hodnoty Spark, pokud zůstane prázdné.
 
 **Úroveň izolace**: Výchozí hodnota pro zdroje SQL v toku dat mapování je přečtena nezávazně. Zde můžete změnit úroveň izolace na jednu z těchto hodnot:
 * Přečtěte si potvrzené

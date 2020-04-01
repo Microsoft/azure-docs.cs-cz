@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2019
+ms.date: 03/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 8605dae05b7f5270513b645367248090006c04a8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384904"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422633"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Úvodní příručka: Vytvoření oboru názvů service bus a fronty pomocí šablony Správce prostředků Azure
 
@@ -63,9 +63,27 @@ Pomocí této šablony nasadíte obor názvů Service Bus s frontou.
 
 [Fronty služby Service Bus](service-bus-queues-topics-subscriptions.md#queues) nabízejí doručení zpráv FIFO prvním u v prvním zobrazení, první ven (FIFO) jednomu nebo více konkurenčním spotřebitelům.
 
-Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
+Chcete-li nasazení spustit automaticky, klepněte na následující tlačítko: Vytvořte novou skupinu prostředků pro nasazení, abyste ji mohli později snadno vyčistit.
 
 [![Nasazení do Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+
+## <a name="verify-the-deployment"></a>Ověření nasazení
+
+1. **Chcete-li** zobrazit stav nasazení, vyberte nahoře oznámení. Počkejte, až bude nasazení úspěšné. Potom vyberte **Přejít na skupinu prostředků** v oznámení a přejděte na stránku skupiny prostředků, která obsahuje obor názvů Service Bus. 
+
+    ![Oznámení z nasazení](./media/service-bus-resource-manager-namespace-queue/notification.png)
+2. Potvrďte, že se v seznamu prostředků zobrazuje obor názvů služby Service Bus. 
+
+    ![Skupina prostředků – obor názvů](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
+3. Vyberte obor názvů ze seznamu a zobcemte stránku **Obor názvů sběrnice služby.** 
+
+## <a name="cleanup-resources"></a>Vyčištění prostředků
+
+1. Na webu Azure Portal přejděte na stránku **Skupiny prostředků** pro vaši skupinu prostředků.
+2. Na panelu nástrojů vyberte **Odstranit skupinu prostředků**. 
+3. Zadejte název skupiny prostředků a vyberte **Odstranit**. 
+
+    ![Skupina prostředků - odstranit](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
 ## <a name="next-steps"></a>Další kroky
 

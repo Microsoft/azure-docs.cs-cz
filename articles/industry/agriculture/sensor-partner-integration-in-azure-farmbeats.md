@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298729"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437468"
 ---
 # <a name="sensor-partner-integration"></a>Integrace partnerských řešení pro senzory
 
@@ -42,9 +42,9 @@ Telemetrická data se namapují na kanonickou zprávu, která se publikuje v Azu
 
 **Vývoj rozhraní API**
 
-Api obsahují swagger technickou dokumentaci. Další informace o api a jejich odpovídající požadavky nebo odpovědi, naleznete v tématu [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+Api obsahují swagger technickou dokumentaci. Další informace o api a jejich odpovídající požadavky nebo odpovědi, naleznete v tématu [Swagger](https://aka.ms/FarmBeatsSwagger).
 
-**Ověřování**
+**Authentication**
 
 FarmBeats používá ověřování služby Microsoft Azure Active Directory.Služba Azure App Service poskytuje integrovanou podporu ověřování a autorizace.
 
@@ -150,8 +150,8 @@ FarmBeats Datahub má následující rozhraní API, která umožňují partnerů
   Productcode  | Kód produktu nebo název nebo číslo modelu. Například RS-CO2-N01.  |
   Název > sensormeasures  | Název měry snímače. Podporována jsou pouze malá písmena. Pro měření z různých hloubek určete hloubku. Například soil_moisture_15cm. Tento název musí být konzistentní s telemetrická data. |
   SensorMeasures > datový typ  | Datový typ telemetrie. V současné době double je podporována. |
-  Typ > senzorůměří  | Typ měření telemetrických dat senzoru. Jsou definovány systémy typy: AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Dusičnan, O2, PH, Fosfát, PointInTime, Draslík, Tlak, RainGauge, RelativníVlhkost, Slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiracation, PAR. Chcete-li přidat další, naleznete rozhraní /ExtendedType API.
-  SenzorOpatření > jednotka | Jednotka telemetrických dat senzoru. Níže jsou definovány systémem jednotky: NoUnit, Celsia, Fahrenheita, Kelvin, Rankine, Pascal, Merkur, PSI, Milimetr, Centimetr, Metr, Palec, Nohy, Mile, Kilometr, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerHour, MetersPerSecond, Stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Procento, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, Mililitr, Sekundy, UnixTimestamp, MicroMolPerMeterSquaredPerSecond a InchesPerHour. Chcete-li přidat další, naleznete rozhraní /ExtendedType API.
+  Typ > senzorůměří  | Typ měření telemetrických dat senzoru. Níže jsou definovány typy systému: AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Dusičnan, O2, PH, Fosfát, PointInTime, Draslík, Tlak, RainGauge, RelativníVlhkost, Slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapopirtransation, PAR. Chcete-li přidat další, naleznete rozhraní /ExtendedType API.
+  SenzorOpatření > jednotka | Jednotka telemetrických dat senzoru. Níže jsou systémy definované jednotky: NoUnit, Celsia, Fahrenheita, Kelvin, Rankine, Pascal, Merkur, PSI, Milimetr, Centimetr, Metr, Palec, Nohy, Mile, Kilometr, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMoleSPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterDPerSecond, aPerHour. Chcete-li přidat další, naleznete rozhraní /ExtendedType API.
   SensorMeasures > AggregationType  | Buď žádný, průměr, maximum, minimum nebo Odchylka podle směrovek.
   SensorMeasures > hloubka  | Hloubka senzoru v centimetrech. Například měření vlhkosti 10 cm pod zemí.
   Popis > senzorů  | Uveďte smysluplný popis měření.
@@ -188,7 +188,7 @@ Překladatel by měl mít možnost přidávat nová zařízení nebo senzory, kt
 
 ### <a name="add-new-types-and-units"></a>Přidání nových typů a jednotek
 
-FarmBeats podporuje přidávání nových typů a jednotek senzorových měr. Další informace o rozhraní /ExtendedType API naleznete v tématu [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+FarmBeats podporuje přidávání nových typů a jednotek senzorových měr. Další informace o rozhraní /ExtendedType API naleznete v tématu [Swagger](https://aka.ms/FarmBeatsSwagger).
 
 ## <a name="telemetry-specifications"></a>Specifikace telemetrie
 
@@ -230,11 +230,11 @@ Formát kanonické zprávy je následující:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

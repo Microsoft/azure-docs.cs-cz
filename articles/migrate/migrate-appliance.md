@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Obsahuje přehled zařízení Azure Migrate používaného při hodnocení serveru a migraci.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 1bb3372467919f1471fa9577cd60e9cecaf1750d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336949"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437590"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -79,14 +79,14 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro vmwar
 Zařízení Azure Migrate potřebuje připojení k internetu.
 
 - Když zařízení nasadíte, Azure Migrate probere kontrolu připojení k adresám URL shrnutým v následující tabulce.
-- Pokud pro připojení k Internetu používáte proxy server založený na adrese URL, povolte přístup k těmto adresám URL a ujistěte se, že proxy server vyřeší všechny záznamy CNAME přijaté při vyhlížení adres URL.
+- Pokud používáte proxy server založený na adrese URL pro připojení k internetu, musíte povolit přístup k těmto adresám URL a ujistěte se, že proxy server vyřeší všechny záznamy CNAME přijaté při vyhlížení adres URL.
 
 **Adresa URL** | **Podrobnosti**  
 --- | --- |
 *.portal.azure.com  | Přejděte na Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Přihlaste se ke svému předplatnému Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte aplikace služby Active Directory pro komunikaci se zařízením Azure Migrate.
-management.azure.com | Vytvořte aplikace služby Active Directory pro zařízení pro komunikaci se službou Azure Migrate.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte aplikace Azure Active Directory (AD), aby zařízení mohlo komunikovat s Azure Migrate.
+management.azure.com | Vytvořte aplikace Azure AD pro zařízení pro komunikaci se službou Azure Migrate.
 dc.services.visualstudio.com | Nahrajte protokoly aplikací používané pro interní monitorování.
 *.vault.azure.net | Správa tajných kódů v trezoru klíčů Azure.
 aka.ms/* | Povolit přístup k aka odkazy. Používá se pro aktualizace zařízení Azure Migrate.

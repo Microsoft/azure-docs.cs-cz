@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77918753"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435816"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
-Azure Security Center je jednotný systém správy zabezpečení infrastruktury, který posiluje stav zabezpečení vašich datových center a poskytuje pokročilou ochranu před hrozbami napříč hybridními úlohami v cloudu – ať už jsou v Azure nebo ne – stejně jako v prostorách.
+Azure Security Center je jednotný systém správy zabezpečení infrastruktury, který posiluje stav zabezpečení vašich datových center a poskytuje pokročilou ochranu před hrozbami napříč hybridními úlohami v cloudu – ať už jsou v Azure nebo ne – i v místním prostředí.
 
 Zajištění bezpečnosti vašich prostředků je společné úsilí mezi vaším poskytovatelem cloudu, Azure a vámi, zákazníkem. Musíte se ujistit, že vaše úlohy jsou zabezpečené při přechodu do cloudu a současně, když se přesunete do IaaS (infrastruktura jako služba), je větší odpovědnost zákazníků než v PaaS (platforma jako služba) a SaaS (software jako služba). Azure Security Center vám poskytuje nástroje potřebné k posílení vaší sítě, zabezpečení služeb a ujistěte se, že jste na vrcholu svého stavu zabezpečení.
 
@@ -49,7 +49,7 @@ Kvůli ochraně před těmito hrozbami poskytuje Security Center nástroje, kter
 
 Vzhledem k tomu, že Security Center je nativně součástí Azure, služby PaaS v Azure – včetně Service Fabric, SQL databases a účty úložiště – jsou monitorovány a chráněny Security Center bez nutnosti nasazení.
 
-Centrum zabezpečení navíc chrání servery a virtuální počítače jiného než Azure v cloudu nebo v místním prostředí pro servery windows i linux, a to instalací agenta monitorování Microsoftu. Virtuální počítače Azure se automaticky zřaží v Centru zabezpečení.
+Centrum zabezpečení navíc chrání servery a virtuální počítače jiného než Azure v cloudu nebo místně, pro servery Windows i Linux, a to instalací agenta Log Analytics. Virtuální počítače Azure se automaticky zřaží v Centru zabezpečení.
 
 Události shromážděné od agentů a z Azure jsou korelovány v modulu analýzy zabezpečení, aby vám poskytovaly přizpůsobená doporučení (úlohy posílení zabezpečení), které byste měli dodržovat, abyste se ujistili, že vaše úlohy jsou zabezpečené a výstrahy zabezpečení. Tyto výstrahy byste měli prozkoumat co nejdříve, abyste se ujistili, že ve vašich úlohách nedochází ke škodlivým útokům.
 
@@ -75,7 +75,7 @@ Pokročilé funkce monitorování v Centru zabezpečení také umožňují **sle
 
 ### <a name="continuous-assessments"></a>Průběžné hodnocení
 
-Security Center průběžně zjišťuje nové prostředky, které jsou nasazovány v rámci vašich úloh, a vyhodnocuje, zda jsou nakonfigurovány podle doporučených postupů zabezpečení, pokud ne, jsou označeny příznakem a získáte seznam doporučení s prioritou pro to, co musíte opravit, abyste ochránili své stroje.
+Security Center průběžně zjišťuje nové prostředky, které jsou nasazovány v rámci vašich úloh, a vyhodnocuje, zda jsou nakonfigurovány podle osvědčených postupů zabezpečení, pokud ne, jsou označeny příznakem a získáte seznam doporučení s prioritou pro to, co potřebujete opravit, abyste ochránili vaše počítače.
 
 Jedním z nejvýkonnějších nástrojů Security Center poskytuje pro průběžné sledování stavu zabezpečení vaší sítě je **mapa sítě**. Mapa umožňuje zobrazit topologii úloh, takže můžete zjistit, zda je každý uzel správně nakonfigurován. Můžete vidět, jak jsou vaše uzly připojeny, což vám pomůže blokovat nežádoucí připojení, která by mohla útočníkovi usnadnit přichůzka v síti.
 
@@ -101,7 +101,7 @@ Doporučení vám pomohou snížit prostor pro útok napříč jednotlivými pro
 
 Ochrana zabezpečení Center umožňuje detekovat a předcházet hrozbám na vrstvě Infrastruktura jako služba (IaaS), serverů chod ů Azure i pro platformy jako služba (PaaS) v Azure.
 
-Ochrana před hrozbami centra zabezpečení zahrnuje analýzu fúzního řetězce, která automaticky koreluje výstrahy ve vašem prostředí na základě analýzy kybernetického řetězce, která vám pomůže lépe pochopit celý příběh útočné kampaně, kde začala a co měl na vaše zdroje takový dopad.
+Ochrana před hrozbami centra zabezpečení zahrnuje analýzu úhubek fusion, která automaticky koreluje výstrahy ve vašem prostředí na základě analýzy kybernetického řetězce, která vám pomůže lépe pochopit celý příběh útočné kampaně, kde začala a jaký dopad to mělo na vaše zdroje.
 
 
 
@@ -129,17 +129,17 @@ Security Center obsahuje funkce, které vám pomohou provádět automatickou kla
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>Ochrana úloh IoT a hybridního cloudu
 
-Azure Security Center for IoT (Internet of Things) zjednodušuje ochranu hybridníúlohy tím, že poskytuje jednotnou viditelnost a řízení, adaptivní prevenci hrozeb a inteligentní ochranu před hrozbami a odezvu napříč úlohami spuštěnými na hraničních zařízeních. v Azure a v jiných cloudech. Další informace najdete v [tématu Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/).
+Azure Security Center pro IoT (Internet věcí) zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a řízení, adaptivní prevenci hrozeb a inteligentní ochranu před hrozbami a odezvu napříč úlohami běžícími na hraničních, místních, v Azure a v jiných cloudech. Další informace najdete v [tématu Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Rychlejší zabezpečení
 
-Nativní integrace Azure (včetně protokolů Azure Policy a Azure Monitor) v kombinaci s bezproblémovou integrací s dalšími řešeními zabezpečení Microsoftu, jako je Microsoft Cloud App Security a Windows Defender Advanced Threat Protection bezpečnostní řešení je komplexní, stejně jako jednoduché na palubě a zavádění.
+Nativní integrace Azure (včetně protokolů Azure Policy a Azure Monitor) v kombinaci s bezproblémovou integrací s dalšími řešeními zabezpečení Microsoftu, jako je Microsoft Cloud App Security a Windows Defender Advanced Threat Protection, pomáhají zajistit, aby vaše řešení zabezpečení bylo komplexní a jednoduché na připojení a zavedení.
 
 Kromě toho můžete rozšířit úplné řešení mimo Azure na úlohy spuštěné v jiných cloudech a v místních datových centrech.
 
 ### <a name="automatically-discover-and-onboard-azure-resources"></a>Automatické zjišťování a navšlápáme prostředky Azure
 
-Security Center poskytuje bezproblémovou nativní integraci s prostředky Azure a Azure. To znamená, že můžete sestavit kompletní příběh zabezpečení zahrnující zásady Azure a integrované zásady Centra zabezpečení napříč všemi vašimi prostředky Azure a ujistit se, že se celá věc automaticky použije na nově objevené prostředky při jejich vytváření. v Azure.
+Security Center poskytuje bezproblémovou nativní integraci s prostředky Azure a Azure. To znamená, že můžete sestavit kompletní příběh zabezpečení zahrnující zásady Azure a integrované zásady Centra zabezpečení napříč všemi prostředky Azure a ujistěte se, že se celá věc automaticky použije na nově zjištěné prostředky při jejich vytváření v Azure.
 
 Rozsáhlá kolekce protokolů – protokoly z Windows a Linuxu jsou všechny využívány v modulu analýzy zabezpečení a slouží k vytváření doporučení a výstrah.
 

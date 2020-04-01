@@ -3,14 +3,14 @@ title: Metriky platformy Azure Monitor exportovatelné pomocí nastavení diagno
 description: Seznam metrik, které jsou k dispozici pro každý typ prostředku pomocí Azure Monitoru.
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661358"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422110"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Metriky platformy Azure Monitor exportovatelné pomocí nastavení diagnostiky
 
@@ -24,7 +24,9 @@ Kvůli složitosti v back-endu Azure Monitor, ne všechny metriky jsou exportova
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Změna chování pro hodnoty NULL a Nula 
  
-Pro metriky platformy, které lze exportovat prostřednictvím nastavení diagnostiky, existuje několik metrik, pro které Azure Monitor interpretuje '0s' jako "Nulls". To způsobilo určité nejasnosti mezi skutečné '0s' (vyzařované zdrojem) a interpretovány '0s' (Nulls). **dubna 2020** metriky platformy exportované prostřednictvím nastavení diagnostiky již nebudou exportovat "0", pokud nebyly skutečně emitovány podkladovým zdrojem. Poznámka:
+Pro metriky platformy, které lze exportovat prostřednictvím nastavení diagnostiky, existuje několik metrik, pro které Azure Monitor interpretuje '0s' jako "Nulls". To způsobilo určité nejasnosti mezi skutečné '0s' (vyzařované zdrojem) a interpretovány '0s' (Nulls). Brzy dojde ke změně a metriky platformy exportované prostřednictvím diagnostických nastavení již nebudou exportovat "0", pokud nebyly skutečně emitovány podkladovým zdrojem. Změna byla naplánována na 1. 
+
+Poznámka:
 
 1.  Pokud odstraníte skupinu prostředků nebo konkrétní prostředek, metrická data z inkasovaných prostředků již nebudou odeslána do diagnostických cílů exportu. To znamená, že se již nebude zobrazovat v centrech událostí, účtech úložiště a pracovních prostorech analýzy protokolů.
 2.  Toto zlepšení bude k dispozici ve všech veřejných a soukromých cloudech.
@@ -49,7 +51,7 @@ Tabulka obsahuje následující sloupce.
 > Níže uvedená tabulka může mít v dolní části vodorovný posuvník. Pokud se domníváte, že vám chybí informace, zkontrolujte, zda je posuvník úplně vlevo.  
 
 
-| Exportovatelné pomocí diagnostických nastavení?  | Vyzařuje nulls |  ResourceType  |  Metrika  |  Název metrického zobrazení  |  Jednotka  |  AgregaceTyp | 
+| Exportovatelné pomocí diagnostických nastavení?  | Již vyzařují nulls |  ResourceType  |  Metrika  |  Název metrického zobrazení  |  Jednotka  |  AgregaceTyp | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Ano****  | Ne |  Microsoft.AnalysisServices/servery  |  CleanerCurrentCena  |  Paměť: Čistší aktuální cena  |  Počet  |  Průměr | 
 | Ano****  | Ne |  Microsoft.AnalysisServices/servery  |  CleanerMemoryNeshrinkable  |  Paměť: Čistší paměť nesmrštná  |  Bajty  |  Průměr | 

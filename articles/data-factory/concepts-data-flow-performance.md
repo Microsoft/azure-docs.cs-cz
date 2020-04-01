@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 95a60abef283984d66736358d2d02048f08d700d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246989"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409843"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce mapováním toků dat a laděním
 
@@ -69,7 +69,7 @@ Ve výchozím nastavení zapnutí ladění bude používat výchozí runtime int
 
 V části **Možnosti zdroje** ve zdrojové transformaci mohou ovlivnit výkon následující nastavení:
 
-* Velikost dávky instruuje adf k ukládání dat v sadách v paměti namísto řádek po řádku. Velikost dávky je volitelné nastavení a může dojít k vyčerpání prostředků na výpočetních uzlech, pokud nejsou správně dimenzovány.
+* Velikost dávky instruuje ADF k ukládání dat v sadách v paměti Spark namísto řádek po řádku. Velikost dávky je volitelné nastavení a může dojít k vyčerpání prostředků na výpočetních uzlech, pokud nejsou správně dimenzovány. Není nastavení této vlastnosti bude využívat výchozí dávky ukládání do mezipaměti Spark.
 * Nastavení dotazu vám umožní filtrovat řádky u zdroje před jejich doručením do toku dat ke zpracování. To může urychlit počáteční sběr dat. Pokud použijete dotaz, můžete přidat volitelné rady při hledání dotazu pro azure SQL DB, jako je read uncommitted.
 * Čtení nepotvrzené poskytne rychlejší výsledky dotazu na transformaci zdroje
 
@@ -77,7 +77,7 @@ V části **Možnosti zdroje** ve zdrojové transformaci mohou ovlivnit výkon n
 
 ### <a name="sink-batch-size"></a>Velikost dřezové dávky
 
-Chcete-li se vyhnout zpracování datových toků po řádcích, nastavte **velikost dávky** na kartě Nastavení pro azure SQL DB a azure SQL DW propadů. Pokud je nastavena velikost dávky, adf zpracovává zápisy databáze v dávkách na základě poskytnuté velikosti.
+Chcete-li se vyhnout zpracování datových toků po řádcích, nastavte **velikost dávky** na kartě Nastavení pro azure SQL DB a azure SQL DW propadů. Pokud je nastavena velikost dávky, adf zpracovává zápisy databáze v dávkách na základě poskytnuté velikosti. Není nastavení této vlastnosti bude využívat výchozí dávky ukládání do mezipaměti Spark.
 
 ![Jímka](media/data-flow/sink4.png "Jímka")
 

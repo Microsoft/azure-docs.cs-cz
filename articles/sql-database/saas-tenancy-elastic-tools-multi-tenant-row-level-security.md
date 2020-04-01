@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822021"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398330"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikace s více klienty s elastickými databázovými nástroji a zabezpečením na úrovni řádků
 
@@ -253,7 +253,7 @@ GO
 ```
 
 > [!TIP]
-> Ve složitém projektu možná budete muset přidat predikát na stovky tabulek, které by mohly být únavné. Existuje pomocná procedura, která automaticky generuje zásady zabezpečení a přidá predikát ve všech tabulkách ve schématu. Další informace naleznete v příspěvku blogu [na adrese Apply Row-Level Security pro všechny tabulky – pomocný skript (blog).](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-to-all-tables-helper-script)
+> Ve složitém projektu možná budete muset přidat predikát na stovky tabulek, které by mohly být únavné. Existuje pomocná procedura, která automaticky generuje zásady zabezpečení a přidá predikát ve všech tabulkách ve schématu. Další informace naleznete v příspěvku blogu [na adrese Apply Row-Level Security pro všechny tabulky – pomocný skript (blog).](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360)
 
 Nyní pokud spustíte ukázkovou aplikaci znovu, klienti zobrazit pouze řádky, které patří k nim. Kromě toho aplikace nemůže vložit řádky, které patří do klientů než ten, který je aktuálně připojen k databázi střepů. Aplikace také nelze aktualizovat TenantId v libovolné řádky, které můžete vidět. Pokud se aplikace pokusí provést buď DbUpdateException je aktivována.
 

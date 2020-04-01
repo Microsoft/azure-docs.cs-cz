@@ -1,6 +1,6 @@
 ---
-title: Co dělat v případě výpadku služby Azure, který má vliv na Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Seznamte se s tím, co dělat v případě výpadku služby Azure, který má vliv na Azure Key Vault.
+title: Co dělat v případě přerušení služby Azure, které má vliv na Azure Key Vault – Azure Key Vault | Dokumenty společnosti Microsoft
+description: Zjistěte, co dělat v případě přerušení služby Azure, které má vliv na Azure Key Vault.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,40 +10,40 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 530ae2b795b4d94802e9f0d3420f7b3af86936ad
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78184634"
 ---
-# <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault dostupnost a redundance
+# <a name="azure-key-vault-availability-and-redundancy"></a>Dostupnost a redundance azure key vaultu
 
-Azure Key Vault funkce více vrstev redundance, aby se zajistilo, že vaše klíče a tajné kódy zůstanou k dispozici pro vaši aplikaci, i když jednotlivé komponenty služby selžou.
+Azure Key Vault obsahuje několik vrstev redundance a ujistěte se, že vaše klíče a tajné klíče zůstanou dostupné pro vaši aplikaci i v případě, že jednotlivé součásti služby se nezdaří.
 
-Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti minimálně 150 kilometrů, ale ve stejné geografické oblasti. Tím se zachovává vysoká odolnost klíčů a tajných kódů. Podrobnosti o dvojicích konkrétních oblastí najdete v dokumentu s [spárovanými](../best-practices-availability-paired-regions.md) oblastmi Azure.
+Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti vzdálené alespoň 150 mil, ale ve stejné zeměpisné oblasti. To udržuje vysokou odolnost vašich klíčů a tajemství. Podrobnosti o konkrétních párech oblastí najdete v dokumentu [spárovaných oblastí Azure.](../best-practices-availability-paired-regions.md)
 
-Pokud jednotlivé komponenty v rámci služby trezoru klíčů selžou, alternativní komponenty v rámci této oblasti v rámci vaší žádosti budou sloužit k tomu, aby se zajistilo, že nedojde k žádnému zhoršení funkčnosti. K aktivaci této akce není nutné provádět žádnou akci. K tomu dochází automaticky a pro vás bude transparentní.
+Pokud se nezdaří jednotlivé součásti v rámci služby trezoru klíčů, alternativní součásti v rámci oblasti krok slouží váš požadavek a ujistěte se, že nedochází ke snížení funkčnosti. Není nutné provádět žádné akce k aktivaci tohoto. Stane se to automaticky a bude to pro vás transparentní.
 
-V vzácných událostech, že celá oblast Azure není k dispozici, jsou požadavky, které provedete Azure Key Vault v této oblasti, automaticky směrovány (*převzetí*služeb při selhání) do sekundární oblasti. Pokud je primární oblast opět k dispozici, požadavky se přesměrují zpět (po*obnovení*) do primární oblasti. Znovu nemusíte provádět žádnou akci, protože k tomu dochází automaticky.
+Ve výjimečných případech, že není k dispozici celá oblast Azure, požadavky, které provedete z Azure Key Vault v této oblasti jsou automaticky směrovány *(převzetí služby při selhání)* do sekundární oblasti. Pokud je primární oblast opět k dispozici, požadavky jsou směrovány zpět *(se nezdařilo zpět)* do primární oblasti. Opět platí, že není nutné provádět žádnou akci, protože k tomu dochází automaticky.
 
-Tento návrh vysoké dostupnosti Azure Key Vault nevyžaduje pro aktivity údržby žádné výpadky.
+Díky tomuto návrhu s vysokou dostupností azure key vault nevyžaduje žádné prostoje pro aktivity údržby.
 
-Je potřeba mít na paměti několik upozornění:
+Existuje několik upozornění, které je třeba si uvědomit:
 
-* V případě převzetí služeb při selhání v oblasti může trvat několik minut, než služba převezme služby při selhání. Žádosti, které se provedou během této doby, můžou selhat, dokud se převzetí služeb při selhání nedokončí.
-* Po dokončení převzetí služeb při selhání je váš Trezor klíčů v režimu jen pro čtení. Požadavky, které jsou podporovány v tomto režimu:
-  * Vypsat trezory klíčů
-  * Získat vlastnosti trezorů klíčů
-  * Výpis tajných kódů
-  * Získání tajných kódů
-  * Zobrazit seznam klíčů
-  * Získat klíče (vlastnosti)
+* V případě převzetí služeb při selhání oblasti může trvat několik minut pro službu převzetí služeb převzetí služeb. Požadavky, které jsou provedeny během této doby může selhat, dokud převzetí služeb při selhání dokončí.
+* Po dokončení převzetí služeb při selhání je trezor klíčů v režimu jen pro čtení. Požadavky, které jsou podporovány v tomto režimu jsou:
+  * Seznam trezorů klíčů
+  * Získání vlastností trezorů klíčů
+  * Seznam tajemství
+  * Získejte tajemství
+  * Klíče seznamu
+  * Získat (vlastnosti) klíčů
   * Šifrování
   * Dešifrování
-  * Balí
-  * Rozbalení
+  * Zábal
+  * Rozbalit
   * Ověřit
-  * Osobě
+  * Znaménko
   * Backup
-* Po převzetí služeb při selhání se vrátí všechny typy požadavků (včetně požadavků *na čtení a* zápis).
+* Po selhání převzetí služeb při selhání jsou k dispozici všechny typy požadavků (včetně požadavků na čtení *a* zápis).
 

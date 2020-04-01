@@ -1,5 +1,5 @@
 ---
-title: Kurz k MongoDB, reakci a Node. js pro Azure
+title: Kurz MongoDB, React a Node.js pro Azure
 description: V této sérii kurzů založených na videích zjistíte, jak vytvořit aplikaci MongoDB s React a Node.js postavenou na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -10,17 +10,17 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "69614116"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s React a službou Azure Cosmos DB  
 
-Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace použila pro server uzel a expresní verzi, připojí se k databázi Cosmos s nakonfigurovaným [rozhraním API Azure Cosmos DB pro MongoDB](mongodb-introduction.md)a pak připojí reakce front-end k serverové části aplikace. V tomto kurzu také ukážeme, Cosmos DB jak v Azure Portal a v případě, že nasadíte aplikaci na Internet a jak nasazovat aplikaci na Internet, aby všichni mohli sledovat své oblíbené Heroes. 
+Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace používá Uzel a Express pro server, připojí se k databázi Cosmos nakonfigurované s [rozhraním API Azure Cosmos DB pro MongoDB](mongodb-introduction.md)a pak připojí front-end React k serverové části aplikace. Kurz také ukazuje, jak provést škálování cosmos db na webu Azure portal a jak nasadit aplikaci na internet, aby každý mohl sledovat své oblíbené hrdiny. 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) podporuje kompatibilitu s protokolem MongoDB a umožňuje klientům používat Azure Cosmos DB místo MongoDB.  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) podporuje kompatibilitu drátového protokolu s MongoDB, což klientům umožňuje používat Azure Cosmos DB místo MongoDB.  
 
 Tento vícedílný kurz se zabývá následujícími úlohami:
 
@@ -69,7 +69,7 @@ Toto video ukazuje, jak vytvořit účet služby Azure Cosmos DB na webu Azure P
 
 ## <a name="read-and-create-heroes-in-the-app"></a>Načítání a vytváření hrdinů v aplikaci
 
-Toto video ukazuje, jak číst Heroes a vytvářet Heroes v databázi Cosmos a jak testovat tyto metody pomocí funkce post a uživatelského rozhraní s reakce. 
+Toto video ukazuje, jak číst hrdiny a vytvářet hrdiny v databázi Cosmos, stejně jako jak testovat tyto metody pomocí Postman a React UI. 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 
@@ -106,5 +106,5 @@ V tomto kurzu jste se naučili:
 Můžete pokračovat k dalšímu kurzu, kde zjistíte, jak importovat data MongoDB do služby Azure Cosmos DB.  
 
 > [!div class="nextstepaction"]
-> [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)
+> [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)
  

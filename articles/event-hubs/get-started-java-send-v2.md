@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 44f57f52be512924e228d6488a786d117c6444e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 29101d0277ff0fb392917f722bcaec3b7e5983b5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370589"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478247"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Použití jazyka Java k odesílání událostí nebo přijímání událostí z Azure Event Hubs (azure-messaging eventhubs)
 Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je z centra událostí pomocí balíčku **Java azure-messaging eventhubs.**
@@ -23,7 +23,7 @@ Tento rychlý start ukazuje, jak odesílat události do centra událostí a při
 
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud s Azure Event Hubs tečujete, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
+Pokud s Azure Event Hubs tenete nováčkem, přečtěte si [téma Přehled centra událostí,](event-hubs-about.md) než začnete tento rychlý start. 
 
 Chcete-li tento rychlý start dokončit, potřebujete následující požadavky:
 
@@ -36,7 +36,7 @@ V této části se zobrazí, jak vytvořit java aplikaci pro odesílání událo
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>Přidání odkazu na knihovnu Azure Event Hubs
 
-Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [Centrálního úložiště Maven](https://search.maven.org/search?q=a:azure-messaging-eventhubs). Na tuto knihovnu můžete odkazovat pomocí následující deklarace závislostí uvnitř souboru projektu Maven:
+Knihovna klientů Java pro centra událostí je k dispozici v [centrálním úložišti Maven](https://search.maven.org/search?q=a:azure-messaging-eventhubs). Na tuto knihovnu můžete odkazovat pomocí následující deklarace závislostí uvnitř souboru projektu Maven:
 
 ```xml
 <dependency>
@@ -135,10 +135,13 @@ public class Sender {
 }
 ```
 
-Sestavení programu a ujistěte se, že neexistují žádné chyby. Tento program spustíte po spuštění programu příjemce. 
+Sestavení programu a ujistěte se, že neexistují žádné chyby. Tento program spustíte po spuštění programu přijímače. 
 
 ## <a name="receive-events"></a>Příjem událostí
 Kód v tomto kurzu je založen na [ukázku EventProcessorClient na GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java), který můžete prozkoumat zobrazit úplné pracovní aplikace.
+
+> [!NOTE]
+> Pokud používáte azure zásobníku, tato platforma může podporovat jinou verzi sady Storage Blob SDK než ty, které jsou obvykle k dispozici v Azure. Například pokud používáte [ve verzi Azure Stack Hub 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze pro službu Storage je verze 2017-11-09. V takovém případě kromě následujících kroků v této části budete muset také přidat kód pro cílrozhraní API služby úložiště verze 2017-11-09. Příklad, jak cílit na konkrétní verzi rozhraní API úložiště, najdete [v této ukázce na GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). Další informace o verzích služeb Azure Storage, které jsou podporované v centru Azure Stack Hub, najdete v centru [Azure Stack Hub: Rozdíly a důležité informace](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
 
 ### <a name="create-a-java-project"></a>Vytvoření projektu Java
 

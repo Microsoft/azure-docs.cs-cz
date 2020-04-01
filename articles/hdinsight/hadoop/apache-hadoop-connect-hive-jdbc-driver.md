@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616648"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437035"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hivu prostřednictvím ovladače JDBC v HDInsightu
 
@@ -31,7 +31,7 @@ Další informace o rozhraní JDBC hive naleznete v [tématu HiveJDBCInterface](
 
 ## <a name="jdbc-connection-string"></a>Připojovací řetězec JDBC
 
-Připojení JDBC k clusteru HDInsight v Azure se provádí přes port 443 a provoz je zabezpečen pomocí ssl. Veřejná brána, za kterou clustery sedí, přesměruje přenos na port, na který HiveServer2 ve skutečnosti naslouchá. Následující připojovací řetězec zobrazuje formát, který se má použít pro HDInsight:
+Připojení JDBC ke clusteru HDInsight v Azure se provádí přes port 443 a provoz je zabezpečen pomocí TLS/SSL. Veřejná brána, za kterou clustery sedí, přesměruje přenos na port, na který HiveServer2 ve skutečnosti naslouchá. Následující připojovací řetězec zobrazuje formát, který se má použít pro HDInsight:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -49,7 +49,7 @@ Název hostitele "CLUSTERNAME.azurehdinsight.net" v připojovacím řetězci je 
 
 **Port 443** můžete použít jenom k připojení ke clusteru z některých míst mimo virtuální síť Azure. HDInsight je spravovaná služba, což znamená, že všechna připojení ke clusteru jsou spravována prostřednictvím zabezpečené brány. Nelze připojit k HiveServer 2 přímo na portech 10001 nebo 10000, protože tyto porty nejsou vystaveny vnější. 
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Při navazování připojení je nutné k ověření brány clusteru použít název a heslo správce clusteru HDInsight. Při připojování z klientů JDBC, jako je SQuirreL SQL, musíte zadat název správce a heslo v nastavení klienta.
 

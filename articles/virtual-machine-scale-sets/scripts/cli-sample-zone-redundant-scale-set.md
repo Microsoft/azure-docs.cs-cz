@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure CLI – zóna – redundantní sada škálování
-description: Tento skript vytvoří v rámci více Zóny dostupnosti sadu škálování virtuálního počítače Azure s Ubuntu.
+title: Ukázky nastavení příkazového příkazu Azure – redundantní škálovací sada
+description: Tento skript vytvoří škálovací sadu virtuálních strojů Azure, která běží ubuntu napříč několika zónami dostupnosti.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,13 +10,13 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d03eb9ca86472670caf89f8a9f9c4cf861b2eb62
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278722"
 ---
-# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Vytvoření sady škálování virtuálních počítačů redundantních v zóně pomocí Azure CLI
+# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Vytvoření zónově redundantní škálovací sady virtuálních strojů pomocí azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Ubuntu napříč několika zónami dostupnosti. Po spuštění skriptu můžete k virtuálnímu počítači přistupovat přes protokol RDP.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

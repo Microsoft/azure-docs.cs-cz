@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561676"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437108"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem úložišť Azure
 
@@ -76,7 +76,7 @@ Existuje několik předdefinovaných rolí RBAC, které mohou poskytnout oprávn
 K chybám certifikátu obvykle dochází v jedné z následujících situací:
 
 - Aplikace je připojena prostřednictvím _transparentního proxy serveru_, což znamená, že server (například firemní server) zachycuje přenosy HTTPS, dešifruje je a poté jej šifruje pomocí certifikátu podepsaného svým držitelem.
-- Používáte aplikaci, která vstřikuje certifikát SSL podepsaný svým držitelem do zpráv HTTPS, které obdržíte. Příklady aplikací, které vkládají certifikáty patří antivirový a software pro kontrolu provozu v síti.
+- Používáte aplikaci, která vstřikuje certifikát TLS/SSL podepsaný svým držitelem do zpráv HTTPS, které obdržíte. Příklady aplikací, které vkládají certifikáty patří antivirový a software pro kontrolu provozu v síti.
 
 Když Průzkumník úložiště vidí certifikát podepsaný svým držitelem nebo nedůvěryhodný certifikát, už neví, zda byla přijatá zpráva HTTPS změněna. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete průzkumníkovi úložiště dát pokyn, aby mu důvěřoval, a to takto:
 

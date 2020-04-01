@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 25bc25d9ec12804cc20baa558dce67fb3f8269a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77149138"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411776"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení bodu k síti k virtuální síti pomocí ověřování RADIUS: PowerShell
 
@@ -31,9 +31,9 @@ Tento článek vám pomůže nakonfigurovat konfiguraci P2S s ověřováním pom
 
 Připojení typu Point-to-Site nevyžadují zařízení VPN ani veřejnou IP adresu. P2S vytvoří připojení VPN přes SSTP (Secure Socket Tunneling Protocol), OpenVPN nebo IKEv2.
 
-* SSTP je tunel VPN založený na SSL, který se podporuje jenom na klientských platformách Windows. Může proniknout branami firewall a díky tomu je ideální možností pro připojení k Azure odkudkoli. Na straně serveru podporujeme SSTP verze 1.0, 1.1 a 1.2. Klient rozhodne, která verze se má použít. Pro Windows 8.1 a novější se standardně používá SSTP verze 1.2.
+* SSTP je tunel VPN založený na protokolu TLS, který je podporován pouze na klientských platformách systému Windows. Může proniknout branami firewall a díky tomu je ideální možností pro připojení k Azure odkudkoli. Na straně serveru podporujeme SSTP verze 1.0, 1.1 a 1.2. Klient rozhodne, která verze se má použít. Pro Windows 8.1 a novější se standardně používá SSTP verze 1.2.
 
-* OpenVPN® protokol, protokol VPN založený na SSL / TLS. Řešení SSL VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443 odchozí, který Používá SSL. OpenVPN lze použít pro připojení z Android, iOS (verze 11.0 a vyšší), Windows, Linux a Mac zařízení (OSX verze 10.13 a vyšší).
+* OpenVPN® protokol, protokol VPN založený na SSL / TLS. Řešení TLS VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443 odchozí, který TLS používá. OpenVPN lze použít pro připojení z Android, iOS (verze 11.0 a vyšší), Windows, Linux a Mac zařízení (OSX verze 10.13 a vyšší).
 
 * IKEv2 VPN, řešení IPsec VPN založené na standardech. IKEv2 VPN je možné použít k připojení ze zařízení se systémem Mac (OSX verze 10.11 a vyšší).
 

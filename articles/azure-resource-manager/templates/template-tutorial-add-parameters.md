@@ -2,15 +2,15 @@
 title: Výuka - přidání parametrů do šablony
 description: Přidejte parametry do šablony Azure Resource Manager, aby byla opakovaně použitelná.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b4f8d5098fc9cf2f91139979cae430594edac5af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369871"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437833"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Kurz: Přidání parametrů do šablony ARM
 
@@ -112,13 +112,16 @@ az deployment group create \
 
 ---
 
+> [!NOTE]
+> Pokud se nasazení nezdařilo, zobrazte protokoly ladění pomocí **přepínače ladění** s příkazem deployment.  Můžete také použít **podrobný** přepínač k zobrazení úplné protokoly ladění.
+
 Chcete-li zobrazit flexibilitu šablony, pojďme nasadit znovu. Tento čas nastavit skladovou položku parametr **Standard_GRS**. Můžete buď předat nový název a vytvořit jiný účet úložiště, nebo použít stejný název k aktualizaci stávajícího účtu úložiště. Obě možnosti fungují.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Name usedefaultsku `
+  -Name usenondefaultsku `
   -ResourceGroupName myResourceGroup `
   -TemplateFile $templateFile `
   -storageName "{your-unique-name}" `
@@ -129,7 +132,7 @@ New-AzResourceGroupDeployment `
 
 ```azurecli
 az deployment group create \
-  --name usedefaultsku \
+  --name usenondefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
   --parameters storageSKU=Standard_GRS storageName={your-unique-name}

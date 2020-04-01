@@ -1,29 +1,29 @@
 ---
 title: Export certifikátů emulátoru služby Azure Cosmos DB
-description: Při vývoji v jazycích a modulech runtime, které nevyužívají úložiště certifikátů systému Windows, budete muset exportovat a spravovat certifikáty SSL. Tento příspěvek obsahuje podrobné pokyny.
+description: Při vývoji v jazycích a runčasech, které nepoužívají úložiště certifikátů windows, budete muset exportovat a spravovat certifikáty TLS/SSL. Tento příspěvek obsahuje podrobné pokyny.
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 623837b30038ef8524aef1e87aeb5933204925a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4283ea7d500ca038d9f1cade89c772880ece199
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156017"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409066"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Export certifikátů emulátoru služby Azure Cosmos DB pro použití s Javou, Pythonem a Node.js
 
 [**Stáhnout emulátor**](https://aka.ms/cosmosdb-emulator)
 
-Emulátor služby Azure Cosmos DB zajišťuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje a využívá přitom její připojení SSL. Tento příspěvek ukazuje, jak exportovat certifikáty SSL pro použití v jazycích a modulech runtime, které se neintegrují s úložištěm certifikátů systému Windows, jako je například Java, která používá vlastní [úložiště certifikátů](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html), Python, který používá [obálky soketů](https://docs.python.org/2/library/ssl.html), a Node.js, které používá [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Další informace o emulátoru najdete v tématu [Použití emulátoru služby Azure Cosmos DB pro účely vývoje a testování](./local-emulator.md).
+Emulátor Azure Cosmos DB poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje, včetně použití připojení TLS. Tento příspěvek ukazuje, jak exportovat certifikáty TLS/SSL pro použití v jazycích a runčasech, které se neintegrují s úložištěm certifikátů Windows, jako je Java, který používá vlastní [úložiště certifikátů](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) a Python, který používá [socket wrappers](https://docs.python.org/2/library/ssl.html) a Node.js, který používá [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Další informace o emulátoru najdete v tématu [Použití emulátoru služby Azure Cosmos DB pro účely vývoje a testování](./local-emulator.md).
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Obměna certifikátů
-> * Export certifikátu SSL
+> * Export certifikátu TLS/SSL
 > * Seznámení s používáním certifikátů v Javě, Pythonu a Node.js
 
 ## <a name="certification-rotation"></a>Obměna certifikátů
@@ -34,7 +34,7 @@ Oba certifikáty je možné znovu vygenerovat kliknutím na **Resetovat data** v
 
 ![Resetování dat místního emulátoru služby Azure Cosmos DB](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
 
-## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>Export certifikátu SSL služby Azure Cosmos DB
+## <a name="how-to-export-the-azure-cosmos-db-tlsssl-certificate"></a>Export certifikátu TLS/SSL Azure Cosmos DB
 
 1. Spuštěním certlm.msc spusťte Správce certifikátů systému Windows, přejděte do složky Osobní > Certifikáty a otevřete certifikát s popisným názvem **DocumentDbEmulatorCertificate**.
 
@@ -74,15 +74,15 @@ Při spouštění aplikací java nebo aplikací MongoDB, které používají kli
 
 Podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store) importujte certifikát X.509 do výchozího úložiště certifikátů Javy. Mějte na paměti, že při používání nástroje keytool budete pracovat v adresáři %JAVA_HOME%.
 
-Po nainstalování certifikátu SSL CosmosDBEmulatorCertificate by vaše aplikace měla být schopná připojit se k místnímu emulátoru služby Azure Cosmos DB a používat ho. Pokud se budou i nadále objevovat potíže, měli byste si přečíst článek o [ladění připojení SSL a TLS](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html). Je velmi pravděpodobné, že certifikát není nainstalovaný v úložišti %JAVA_HOME%/jre/lib/security/cacerts. Například pokud máte více nainstalovaných verzí Javy, vaše aplikace může používat jiné úložiště cacerts, než které jste aktualizovali.
+Po instalaci certifikátu TLS/SSL "CosmosDBEmulatorCertificate" by vaše aplikace měla být schopna připojit a používat místní emulátor Azure Cosmos DB. Pokud se budou i nadále objevovat potíže, měli byste si přečíst článek o [ladění připojení SSL a TLS](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html). Je velmi pravděpodobné, že certifikát není nainstalovaný v úložišti %JAVA_HOME%/jre/lib/security/cacerts. Například pokud máte více nainstalovaných verzí Javy, vaše aplikace může používat jiné úložiště cacerts, než které jste aktualizovali.
 
 ## <a name="how-to-use-the-certificate-in-python"></a>Použití certifikátu v Pythonu
 
-Ve výchozím nastavení se sada [Python SDK (verze 2.0.0 nebo novější)](sql-api-sdk-python.md) pro rozhraní SQL API nepokusí při připojování k místnímu emulátoru použít certifikát SSL. Pokud však chcete použít ověřování SSL, můžete postupovat podle příkladů v dokumentaci k [obálkám soketů Pythonu](https://docs.python.org/2/library/ssl.html).
+Ve výchozím nastavení [python SDK (verze 2.0.0 nebo vyšší)](sql-api-sdk-python.md) pro SQL API se nepokusí použít certifikát TLS/SSL při připojování k místnímu emulátoru. Pokud však chcete použít ověření TLS, můžete postupovat podle příkladů v dokumentaci [obálky socketu Pythonu.](https://docs.python.org/2/library/ssl.html)
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>Použití certifikátu v Node.js
 
-Ve výchozím nastavení se sada [Node.js SDK (verze 1.10.1 nebo novější)](sql-api-sdk-node.md) pro rozhraní SQL API nepokusí při připojování k místnímu emulátoru použít certifikát SSL. Pokud však chcete použít ověřování SSL, můžete postupovat podle příkladů v [dokumentaci k Node.js](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
+Ve výchozím nastavení [node.js SDK (verze 1.10.1 nebo vyšší)](sql-api-sdk-node.md) pro sql api se nepokusí použít certifikát TLS/SSL při připojování k místnímu emulátoru. Pokud však chcete použít ověření TLS, můžete postupovat podle příkladů v [dokumentaci Node.js](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -90,7 +90,7 @@ V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
 > * Obměna certifikátů
-> * Export certifikátu SSL
+> * Export certifikátu TLS/SSL
 > * Seznámili jste se s používáním certifikátů v Javě, Pythonu a Node.js.
 
 Teď můžete přejít k části Koncepty, která obsahuje další informace o službě Azure Cosmos DB. 

@@ -1,22 +1,22 @@
 ---
 title: Konfigurace ověřování Google
-description: Přečtěte si, jak nakonfigurovat ověřování Google jako poskytovatele identity pro aplikaci App Service.
+description: Přečtěte si, jak nakonfigurovat ověřování Google jako poskytovatele identity pro vaši aplikaci App Service nebo Azure Functions.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
 ms.date: 09/02/2019
-ms.custom: seodec18
-ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: bb6b8eebef3247cf2c39ed4b111296e1e0521a74
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74670816"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437980"
 ---
-# <a name="configure-your-app-service-app-to-use-google-login"></a>Konfigurace aplikace App Service tak, aby používala přihlášení Google
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používala přihlašovací údaje Google
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Toto téma ukazuje, jak nakonfigurovat službu Azure App Service tak, aby používala Google jako poskytovatele ověřování.
+Toto téma ukazuje, jak nakonfigurovat Azure App Service nebo Azure Functions tak, aby používaly Google jako poskytovatele ověřování.
 
 Chcete-li dokončit postup v tomto tématu, musíte mít účet Google s ověřenou e-mailovou adresou. Nový účet Google si můžete vytvořit na stránce [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
 
@@ -63,5 +63,5 @@ Nyní jste připraveni používat Google pro ověřování ve vaší aplikaci.
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Portál Azure]: https://portal.azure.com/
+[portál Azure]: https://portal.azure.com/
 

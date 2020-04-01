@@ -16,13 +16,13 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67594224"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidat Azure CDN do webové aplikace Azure App Service
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidání Azure CDN do webové aplikace služby Azure App Service
 
 V tomto kurzu se naučíte přidat službu [Azure Content Delivery Network (CDN)](cdn-overview.md) do [webové aplikace Azure App Service](../app-service/overview.md). Web Apps je služba pro hostování webových aplikací, rozhraní REST API a mobilních back-endů. 
 
@@ -43,7 +43,7 @@ Naučíte se:
 Pro absolvování tohoto kurzu potřebujete:
 
 - [Nainstalovat Git](https://git-scm.com/).
-- [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Instalace příkazového příkazového příkazu Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,7 +51,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Při vytváření webové aplikace, se kterou budete pracovat, postupujte podle [rychlého úvodu ke statickému HTML](../app-service/app-service-web-get-started-html.md) až do kroku **Přechod do aplikace**.
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Otevřete prohlížeč a přejděte na web [Azure Portal](https://portal.azure.com).
 
@@ -76,7 +76,7 @@ Na stránce **Azure Content Delivery Network** zadejte pro **Nový koncový bod*
 | ------- | --------------- | ----------- |
 | **Profil CDN** | myCDNProfile | Profil CDN je kolekce koncových bodů CDN se stejnou cenovou úrovní. |
 | **Cenová úroveň** | Akamai Standard | [Cenová úroveň](cdn-features.md) určuje poskytovatele a dostupné funkce. Tento kurz používá *Akamai úrovně Standard*. |
-| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | Prostředky uložené v mezipaměti jsou přístupné v doméně *&lt;název_koncového_bodu&gt;* .azureedge.net.
+| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | Přístup k prostředkům uložených v mezipaměti na * &lt;koncovém_bodu&gt;* domény .azureedge.net.
 
 Vyberte **Vytvořit** a vytvořte profil CDN.
 
@@ -87,7 +87,7 @@ Azure vytvoří profil a koncový bod. Nový koncový bod se zobrazí v seznamu 
 ### <a name="test-the-cdn-endpoint"></a>Testování koncového bodu CDN
 
  Vzhledem k tomu, že rozšíření registrace nějakou dobu trvá, koncový bod není okamžitě dostupný pro použití: 
-   - Šíření profilů **Azure CDN Standard od Microsoftu** trvá většinou 10 minut. 
+   - U profilů **Azure CDN Standard od Microsoftu** trvá šíření většinou 10 minut. 
    - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
    - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 90 minut. 
 
@@ -256,7 +256,7 @@ Další informace najdete v tématu [Řízení chování Azure CDN při ukládá
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučili jste se:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244508"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422505"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do společnosti Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
@@ -213,7 +213,7 @@ Chcete-li zkopírovat data z oracle, nastavte `OracleSource`typ zdroje v aktivit
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí `OracleSource`být nastavena na . | Ano |
 | oracleReaderQuery | Ke čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`.<br>Když povolíte rozdělené zatížení, je třeba připojit všechny odpovídající vestavěné parametry oddílu v dotazu. Příklady naleznete [paralelní kopie z Oracle](#parallel-copy-from-oracle) části. | Ne |
-| partitionOptions | Určuje možnosti dělení dat použité k načtení dat z oracle. <br>Povolené hodnoty jsou: **None** (výchozí), **PhysicalPartitionsOfTable** , a **DynamicRange**.<br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně načítat data z databáze Oracle je řízen [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavení na aktivitu kopírování. | Ne |
+| partitionOptions | Určuje možnosti dělení dat použité k načtení dat z oracle. <br>Povolené hodnoty jsou: **None** (výchozí), **PhysicalPartitionsOfTable** , a **DynamicRange**.<br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně načítat data z databáze Oracle je řízen [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavení na aktivitu kopírování. | Ne |
 | partitionSettings | Zadejte skupinu nastavení pro dělení dat. <br>Použít, pokud možnost oddílu není `None`. | Ne |
 | partitionNames | Seznam fyzických oddílů, které je třeba zkopírovat. <br>Použít, pokud je `PhysicalPartitionsOfTable`možnost oddílu . Pokud použijete dotaz k načtení `?AdfTabularPartitionName` zdrojových dat, zavěste do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z oracle.](#parallel-copy-from-oracle) | Ne |
 | partitionColumnName | Zadejte název zdrojového sloupce **v typu celé číslo,** který bude použit dělením rozsahu pro paralelní kopírování. Pokud není zadán, primární klíč tabulky je automaticky rozpoznán a použit jako sloupec oddílu. <br>Použít, pokud je `DynamicRange`možnost oddílu . Pokud použijete dotaz k načtení `?AdfRangePartitionColumnName` zdrojových dat, zavěste do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z oracle.](#parallel-copy-from-oracle) | Ne |
@@ -300,7 +300,7 @@ Konektor Oracle data factory poskytuje integrované dělení dat pro paralelní 
 
 ![Snímek obrazovky s možnostmi oddílu](./media/connector-oracle/connector-oracle-partition-options.png)
 
-Když povolíte dělenou kopii, Data Factory spustí paralelní dotazy proti zdroji Oracle pro načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance.md#parallel-copy) řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, data factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Oracle.
+Když povolíte dělenou kopii, Data Factory spustí paralelní dotazy proti zdroji Oracle pro načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, data factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Oracle.
 
 Doporučujeme povolit paralelní kopírování s dělením dat, zejména při načítání velkého množství dat z databáze Oracle. Níže jsou navrženy konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je připonuto zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
 

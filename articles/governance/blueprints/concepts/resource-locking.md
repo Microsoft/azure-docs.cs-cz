@@ -1,18 +1,21 @@
 ---
 title: Principy zamykání prostředků
 description: Další informace o možnostech uzamčení v Azure Blueprints k ochraně prostředků při přiřazování podrobného plánu.
-ms.date: 02/27/2020
+ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199695"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437738"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Principy zamykání prostředků v azure blueprints
 
 Vytvoření konzistentní prostředí ve velkém měřítku je skutečně cenné pouze v případě, že existuje mechanismus pro zachování této konzistence. Tento článek vysvětluje, jak funguje uzamčení prostředků v Azure Blueprints. Příklad uzamčení prostředků a použití _přiřazení odepření_naleznete v kurzu [ochrany nových prostředků.](../tutorials/protect-new-resources.md)
+
+> [!NOTE]
+> Uzamčení prostředků nasazené pomocí Azure Blueprints se používají jenom pro prostředky nasazené přiřazení podrobného plánu. Existující prostředky, například ve skupinách prostředků, které již existují, nemají zámky přidány do nich.
 
 ## <a name="locking-modes-and-states"></a>Režimy a stavy zamykání
 

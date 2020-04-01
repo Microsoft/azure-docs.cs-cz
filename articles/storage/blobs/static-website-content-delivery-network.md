@@ -7,16 +7,16 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 01/22/2020
-ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8eeff5187d27cb75b9e55eba8311dede8970bc4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908550"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435221"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Integrace statického webu s Azure CDN
 
-Síť [pro doručování obsahu Azure (CDN)](../../cdn/cdn-overview.md) můžete povolit ukládání obsahu ze [statického webu,](storage-blob-static-website.md) který je hostovaný v účtu úložiště Azure. Azure CDN můžete použít ke konfiguraci koncového bodu vlastní domény pro statický web, zřizování vlastních certifikátů SSL a konfiguraci vlastních pravidel přepisování. Konfigurace Azure CDN má za následek další poplatky, ale poskytuje konzistentní nízké latence na vašem webu z libovolného místa na světě. Azure CDN také poskytuje šifrování SSL s vlastním certifikátem. 
+Síť [pro doručování obsahu Azure (CDN)](../../cdn/cdn-overview.md) můžete povolit ukládání obsahu ze [statického webu,](storage-blob-static-website.md) který je hostovaný v účtu úložiště Azure. Azure CDN můžete použít ke konfiguraci vlastního koncového bodu domény pro statický web, zřízení vlastních certifikátů TLS/SSL a konfiguraci vlastních pravidel přepisování. Konfigurace Azure CDN má za následek další poplatky, ale poskytuje konzistentní nízké latence na vašem webu z libovolného místa na světě. Azure CDN také poskytuje šifrování TLS s vlastním certifikátem. 
 
 Informace o cenách Azure CDN najdete v tématu [Azure CDN pricing](https://azure.microsoft.com/pricing/details/cdn/).
 

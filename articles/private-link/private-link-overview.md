@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3218a2de890124915d62afa86fd5f3dca1e72b2e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063084"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421196"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Azure Private Link umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám Azure hostovaným zákazníkům nebo partnerským službám prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -47,7 +47,7 @@ Azure Private Link poskytuje následující výhody:
 |  | Azure Data Lake Storage Gen2        |  Všechny veřejné regiony      | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
 |  |  Azure SQL Database         | Všechny veřejné regiony      |   GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |  |Azure Synapse Analytics (DATOVÝ SKLAD SQL)| Všechny veřejné regiony |GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|  |Azure Cosmos DB|  VÝCHODNÍ USA, VÝCHODNÍ US2, ZÁPADNÍ USA, ZÁPADNÍ US2, CENTRÁLNÍ US, JIŽNÍ STŘED USA, ZÁPADNÍ STŘED USA, SEVERNÍ STŘED USA, SEVERNÍ EVROPA, ZÁPADNÍ EVROPA  |GA <br/> [Další informace](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |Azure Cosmos DB|  Všechny veřejné regiony |GA <br/> [Další informace](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
 |  |  Databáze Azure pro PostgreSQL – jeden server         | Všechny veřejné regiony      |   GA <br/> [Další informace](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  |  Azure Database for MySQL         | Všechny veřejné regiony      |   GA <br/> [Další informace](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  |  Azure Database for MariaDB         | Všechny veřejné regiony      |   GA <br/> [Další informace](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |

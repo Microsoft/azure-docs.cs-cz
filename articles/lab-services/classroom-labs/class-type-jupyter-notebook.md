@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444107"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478222"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro výuku datové vědy pomocí pythonových a jupyterových poznámkových bloků
 
@@ -34,10 +34,10 @@ Povolte nastavení popsaná v následující tabulce pro účet testovacího pro
 
 | Nastavení účtu laboratoře | Pokyny |
 | ------------------- | ------------ |
-| Obrázek tržiště | Povolte virtuální počítač pro datové vědy – bitovou kopii [Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) pro použití v rámci vašeho účtu testovacího prostředí. |
+| Obrázek tržiště | Povolte virtuální počítač pro datové vědy – bitovou kopii [Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) pro použití v rámci vašeho účtu testovacího prostředí. |
 
 >[!TIP]
->Tento článek se zaměří na konfiguraci počítače se šablonami, který používá operační systém Windows Server.  Je také možné nastavit třídu datové vědy s pythonovými a jupyterovými notebooky pomocí [virtuálního počítače Datové vědy pro Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) nebo [virtuálního počítače pro datové vědy pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) z Azure Marketplace.
+>Tento článek se zaměří na konfiguraci počítače se šablonami, který používá operační systém Windows Server.  Je také možné nastavit třídu datové vědy s pythonovými a jupyterovými notebooky pomocí iniciací [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) z Azure Marketplace.
 
 ### <a name="lab-settings"></a>Nastavení laboratoře
 
@@ -50,7 +50,7 @@ Při nastavování učební laboratoře použijte nastavení v následující ta
 
 ## <a name="template-machine"></a>Šablona stroj
 
-Image [Virtuální počítač pro datové vědy – Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) poskytuje nezbytné architektury a nástroje pro hluboké učení potřebné pro tento typ třídy.  Obrázek obsahuje Poznámkové bloky Jupyter a kód sady Visual Studio.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) je webová aplikace, která umožňuje datovým vědcům přijímat nezpracovaná data, spouštět výpočty a vidět výsledky ve stejném prostředí.  Pro náš šablonový stroj bude webová aplikace spuštěna místně.  [Visual Studio Code](https://code.visualstudio.com/) je ide, které poskytuje bohaté interaktivní prostředí při psaní a testování poznámkového bloku.  Další informace naleznete v [tématu Práce s poznámkovými bloky Jupyter v kódu sady Visual Studio](https://code.visualstudio.com/docs/python/jupyter-support).
+Image [Virtuální počítač pro datové vědy – Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) poskytuje nezbytné architektury a nástroje pro hluboké učení potřebné pro tento typ třídy.  Obrázek obsahuje Poznámkové bloky Jupyter a kód sady Visual Studio.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) je webová aplikace, která umožňuje datovým vědcům přijímat nezpracovaná data, spouštět výpočty a vidět výsledky ve stejném prostředí.  Pro náš šablonový stroj bude webová aplikace spuštěna místně.  [Visual Studio Code](https://code.visualstudio.com/) je ide, které poskytuje bohaté interaktivní prostředí při psaní a testování poznámkového bloku.  Další informace naleznete v [tématu Práce s poznámkovými bloky Jupyter v kódu sady Visual Studio](https://code.visualstudio.com/docs/python/jupyter-support).
 
 Zbývající úkol nastavit třídu je poskytnout místní poznámkové bloky.  Pokyny, jak používat ukázky Azure Machine Learning, najdete v [tématu jak nakonfigurovat prostředí s Jupyter notebooky](../../machine-learning/how-to-configure-environment.md#jupyter).  Můžete také zadat vlastní poznámkové bloky na šabloně počítače.  Poznámkové bloky budou při publikování šablony zkopírovány do všech studentských počítačů.
 

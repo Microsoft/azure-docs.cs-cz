@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2019
 ms.author: memildin
-ms.openlocfilehash: 60a88e667918533f2c507846fa75b0e036ba5262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd84058c8421d144678c91fac3e5671511d0fd4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921279"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435505"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgrade na úroveň Standard pro lepší zabezpečení
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje viditelnost a kontrolu nad hybridními cloudovými úlohami, aktivní obranu, která snižuje vaši expozici hrozebm, a inteligentní detekci, která vám pomůže udržet krok s rychle se vyvíjejícími kybernetickými útoky.
@@ -29,7 +29,7 @@ Security Center se nabízí ve dvou úrovních:
 - Úroveň **Free** je povolená ve všech vašich předplatných Azure, jakmile poprvé navštívíte řídicí panel Azure Security Center na webu Azure Portal nebo pokud je programově povolena prostřednictvím rozhraní API. Bezplatná vrstva poskytuje zásady zabezpečení, průběžné hodnocení zabezpečení a doporučení k zabezpečení, která vám pomohou chránit vaše prostředky Azure.
 - Úroveň **Standard** rozšiřuje možnosti úrovně Free na úlohy spuštěné v privátních a jiných veřejných cloudech a poskytuje jednotnou správu zabezpečení a ochranu před hrozbami napříč hybridními cloudovými úlohami. Standardní úroveň také přidává funkce ochrany před hrozbami, které používají vestavěnou analýzu chování a strojové učení k identifikaci útoků a zero-day exploitů, řízení přístupu a aplikací, aby se snížila expozice síťovým útokům a malwaru a další. Kromě toho standardní úroveň přidává prohledávání zranitelnosti pro vaše virtuální počítače. Můžete vyzkoušet standardní úroveň zdarma. Standard Security Center podporuje prostředky Azure, včetně virtuálních počítačů, škálovacích sad virtuálních počítačů, služby App Service, serverů SQL a účtů úložiště. Pokud máte standard Azure Security Center, můžete se odhlásit z podpory na základě typu prostředků. 
 
-Většina bezplatných hodnocení zabezpečení úrovně pro virtuální počítače a také mnoho výstrah zabezpečení standardní vrstvy vyžaduje instalaci funkce Microsoft Monitoring Agent (MMA). Můžete povolit automatické zřizování v Centru zabezpečení k automatickému nasazení agenta pro vaše virtuální počítače Azure.
+Většina bezplatných hodnocení zabezpečení úrovně pro virtuální počítače a také mnoho výstrah zabezpečení standardní úrovně vyžaduje instalaci funkce agenta Log Analytics. Můžete povolit automatické zřizování v Centru zabezpečení k automatickému nasazení agenta pro vaše virtuální počítače Azure.
 
 ## <a name="try-standard-tier-free-for-30-days"></a>Vyzkoušejte standardní úroveň zdarma po dobu 30 dnů
 Standardní úroveň je zdarma po dobu prvních 30 dnů. Na konci 30 dnů, pokud se rozhodnete pokračovat v používání služby, automaticky začneme účtovat za použití.

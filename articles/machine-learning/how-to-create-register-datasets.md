@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: c78c1d3ce6dae874ace2abfa8b2bbec6d489538a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536475"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474528"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytvoření datových sad Azure Machine Learning
 
@@ -52,7 +52,7 @@ Hlavním faktorem je, jak velká je datová sada v paměti, tj. Doporučujeme, a
  
 Pokud používáte Pandy, není důvod mít více než 1 virtuální procesor, protože to je vše, co bude používat. Můžete snadno paralelizovat s mnoha virtuálními procesory na jedné výpočetní instanci/uzlu Azure Machine Learning pomocí Modin a Dask/Ray a v případě potřeby horizontálním navýšení kapacity do velkého clusteru jednoduše přejdete `import pandas as pd` na `import modin.pandas as pd`. 
  
-Pokud nemůžete získat dostatečně velký virtuální pro data, máte dvě možnosti: použijte rámec jako Spark nebo Dask k provedení zpracování dat "mimo paměť", tj. shromáždili na konci. Pokud je to příliš pomalé, Spark nebo Dask umožňují horizontální navýšení kapacity do clusteru, který lze stále používat interaktivně. 
+Pokud nemůžete získat dostatečně velký virtuální pro data, máte dvě možnosti: použijte rámec jako Spark nebo Dask k provedení zpracování dat na data 'nedostatek paměti', tj. Pokud je to příliš pomalé, Spark nebo Dask umožňují horizontální navýšení kapacity do clusteru, který lze stále používat interaktivně. 
 
 ## <a name="dataset-types"></a>Typy datových sad
 
@@ -108,6 +108,7 @@ Ve výchozím nastavení se při vytváření tabulární datové sady automatic
 > Pokud je vaše úložiště za virtuální sítí nebo bránou firewall, je podporováno pouze vytvoření datové sady prostřednictvím sady SDK. Chcete-li vytvořit datovou sadu, nezapomeňte `validate=False` `infer_column_types=False` zahrnout `from_delimited_files()` parametry a metodu. Tím se obchází počáteční kontrola ověření a zajišťuje, že můžete vytvořit datovou sadu z těchto zabezpečených souborů. 
 
 ```Python
+from azureml.core import Dataset
 from azureml.data.dataset_factory import DataType
 
 # create a TabularDataset from a delimited file behind a public web url and convert column "Survived" to boolean

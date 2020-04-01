@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 8bb77a217546f1abe2c28925e32464b8d61702b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481275"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410721"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy serveru Proxy aplikace služby Active Directory (Azure AD)
 
@@ -113,7 +113,7 @@ Ne, tento scénář není podporován, protože proxy aplikace ukončí přenosy
 
 Odkazovat na [publikovat vzdálenou plochu pomocí proxy aplikace Azure AD](application-proxy-integrate-with-remote-desktop-services.md).
 
-### <a name="can-i-use-kerberos-constrained-delegation-in-the-remote-desktop-gateway-publishing-scenario"></a>Je možné použít delegování omezeného protokolu Kerberos ve scénáři publikování služby Brána vzdálené plochy?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Je možné použít delegování omezeného protokolu Kerberos (jednotné přihlašování – integrované ověřování systému Windows) ve scénáři publikování služby Brána vzdálené plochy?
 
 Ne, tento scénář není podporován.  
 
@@ -121,7 +121,7 @@ Ne, tento scénář není podporován.
 
 Ano, očekává se to. Scénář předběžného ověření vyžaduje ovládací prvek ActiveX, který není podporován v prohlížečích třetích stran.
 
-### <a name="is-the-remote-desktop-web-client-supported"></a>Je webový klient vzdálené plochy podporován?
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Je webový klient vzdálené plochy (HTML5) podporován?
 
 Ne, tento scénář není aktuálně podporován. Sledujte naše fórum pro zpětnou vazbu [UserVoice,](https://aka.ms/aadapuservoice) kde najdete aktuální informace o této funkci.
 
@@ -135,6 +135,10 @@ Ano, očekává se to. Pokud je počítač uživatele Azure AD připojen, uživa
 
 Odkazovat na [Povolení vzdáleného přístupu k SharePointu pomocí proxy aplikací Azure AD](application-proxy-integrate-with-sharepoint-server.md).
 
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Můžu použít mobilní aplikaci SharePoint (iOS/ Android) pro přístup k publikovanému sharepointovému serveru?
+
+[Mobilní aplikace SharePoint](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) momentálně nepodporuje předběžné ověřování služby Azure Active Directory.
+
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Publikování služby AD FS (Active Directory Federation Services) 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Můžu použít proxy aplikace Azure AD jako proxy server služby AD FS (například proxy webové aplikace)?
@@ -147,7 +151,7 @@ Ne. Azure AD Proxy aplikace je navržen pro práci s Azure AD a nesplňuje poža
 
 V současné době je podpora protokolu WebSocket stále ve verzi Public Preview a nemusí fungovat pro jiné aplikace. Někteří zákazníci měli smíšený úspěch pomocí protokolu WebSocket s jinými aplikacemi. Pokud otestujete takové scénáře, rádi bychom slyšeli vaše výsledky. Prosím, pošlete aadapfeedback@microsoft.comnám svůj názor na .
 
-Funkce (Eventlogs, PowerShell a Vzdálená plocha) v Centru pro správu Windows (WAC) nebo webovém klientovi vzdálené plochy v současné době nefungují prostřednictvím proxy aplikací Azure AD.
+Funkce (Eventlogs, PowerShell a Vzdálená plocha) v Centru pro správu Windows (WAC) nebo webovém klientovi vzdálené plochy (HTML5) v současné době nefungují prostřednictvím proxy aplikací Azure AD.
 
 ## <a name="link-translation"></a>Překlad odkazů
 
