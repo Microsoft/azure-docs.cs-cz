@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76dd07a59a9fa7c0d6231a766ff4090c11f9f5bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331915"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476651"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
@@ -92,13 +92,13 @@ Tyto protokoly budou označovat, kteří uživatelé jsou stále závislé na st
 
 ### <a name="block-legacy-authentication"></a>Blokování starší verze ověřování 
 
-V zásadách podmíněného přístupu můžete nastavit podmínku, která je vázána na klientské aplikace, které se používají pro přístup k prostředkům. Podmínka klientských aplikací umožňuje zúžit rozsah na aplikace pomocí staršíverze ověřování výběrem **jiných klientů** pro mobilní aplikace **a klienty pro stolní počítače**.
+V zásadách podmíněného přístupu můžete nastavit podmínku, která je vázána na klientské aplikace, které se používají pro přístup k prostředkům. Podmínka klientských aplikací umožňuje zúžit rozsah na aplikace pomocí staršího ověřování výběrem **klientů Exchange ActiveSync** a **ostatních klientů** v části Mobilní aplikace a **desktopové klienty**.
 
 ![Ostatní klienti](./media/block-legacy-authentication/01.png)
 
 Chcete-li blokovat přístup k těmto aplikacím, musíte vybrat **možnost Blokovat přístup**.
 
-![Blokovat přístup](./media/block-legacy-authentication/02.png)
+![Blokování přístupu](./media/block-legacy-authentication/02.png)
 
 ### <a name="select-users-and-cloud-apps"></a>Výběr uživatelů a cloudových aplikací
 
@@ -106,7 +106,7 @@ Pokud chcete blokovat starší verze ověřování pro vaši organizaci, pravdě
 
 - Všichni uživatelé
 - Všechny cloudové aplikace
-- Blokovat přístup
+- Blokování přístupu
 
 ![Přiřazení](./media/block-legacy-authentication/03.png)
 
@@ -145,7 +145,7 @@ Pokud zablokujete starší verze ověřování pomocí podmínky **Ostatní klie
 
 - Android
 - iOS
-- Windows Phone
+- telefon se systémem Windows
 
 ![Konfigurace zásad není podporována.](./media/block-legacy-authentication/06.png)
 

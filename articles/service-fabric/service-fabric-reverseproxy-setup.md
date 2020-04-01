@@ -4,12 +4,12 @@ description: Zjistěte, jak nastavit a nakonfigurovat službu reverzní proxy pr
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645442"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476667"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru ve službě Azure Service Fabric
 Reverzní proxy server je volitelná služba Azure Service Fabric, která pomáhá mikroslužbám spuštěným v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http. Další informace najdete [v tématu Reverzní proxy server ve službě Azure Fabric](service-fabric-reverseproxy.md). Tento článek ukazuje, jak nastavit a nakonfigurovat reverzní proxy server v clusteru. 
@@ -23,7 +23,7 @@ Chcete-li při [vytváření clusteru pomocí portálu Azure](./service-fabric-c
 1. V **kroku 2: Konfigurace clusteru**včásti **Konfigurace typu uzlu**vyberte **povolit reverzní proxy server**.
 
    ![Povolení reverzního proxy serveru na portálu](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Nepovinné) Chcete-li nakonfigurovat zabezpečený reverzní proxy server, je třeba nakonfigurovat certifikát SSL. V **kroku 3: Zabezpečení**v části Configure cluster security **settings**vyberte v části **Configuration type**vyberte **Custom**. Potom v části **Reverse Proxy SSL certificate**vyberte Zahrnout certifikát **SSL pro reverzní proxy server** a zadejte podrobnosti o certifikátu.
+2. (Nepovinné) Chcete-li nakonfigurovat zabezpečený reverzní proxy server, je třeba nakonfigurovat certifikát TLS/SSL. V **kroku 3: Zabezpečení**v části Configure cluster security **settings**vyberte v části **Configuration type**vyberte **Custom**. Potom v části **Reverse Proxy SSL certificate**vyberte Zahrnout certifikát **SSL pro reverzní proxy server** a zadejte podrobnosti o certifikátu.
 
    ![Konfigurace zabezpečeného reverzního proxy serveru na portálu](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy s
         ...
     }
     ```
-3. Chcete-li nakonfigurovat certifikáty SSL na portu pro reverzní proxy server, přidejte certifikát do vlastnosti ***reverseProxyCertificate*** v části **Microsoft.ServiceFabric/clusters** [Resource Type](../resource-group-authoring-templates.md).
+3. Chcete-li nakonfigurovat certifikáty TLS/SSL na portu pro reverzní proxy server, přidejte certifikát do vlastnosti ***reverseProxyCertificate*** v části **Microsoft.ServiceFabric/clusters** [Resource Type](../resource-group-authoring-templates.md).
 
     ```json
     {

@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
-ms.openlocfilehash: 3b0b38b767495b1a06405f0d41222b73baee8d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277069"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475162"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Možnost spoluprodeje v Partnerském centru
 
@@ -22,11 +22,11 @@ Možnost spoluprodeje v Partnerském centru je v současné době k dispozici pr
 
 | **Typ nabídky** | **Stránka pro spoluprodej je k dispozici v Partnerském centru** |
 |    -----------------------    |    -----------------------------  |
-| Software jako služba (SaaS) |     Obecná dostupnost kolem února 2020      |
+| Software jako služba (SaaS) |     Obecná dostupnost kolem dubna 2020     |
 | Dynamics 365 pro zapojení zákazníků & PowerApps      |     Nově dostupné      |
 | Dynamics 365 for Operations     |     Nově dostupné       |
-| Dynamics 365 Business Central      |  Obecná dostupnost kolem února 2020     |
-| Azure Application     |     Obecná dostupnost kolem února 2020     |
+| Dynamics 365 Business Central      |  Obecná dostupnost kolem dubna 2020    |
+| Azure Application     |     Obecná dostupnost kolem dubna 2020     |
 | Virtuální počítač Azure      |     Bude oznámeno       |
 | Kontejner Azure     |     Bude oznámeno       |
 | Konzultační služba      |     Bude oznámeno       |

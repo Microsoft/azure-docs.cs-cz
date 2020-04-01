@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/27/2020
 ms.author: shvija
-ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76904482"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397334"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 
@@ -36,12 +36,63 @@ Brewerova teorém definuje konzistenci a dostupnost takto:
 Centra událostí je postavena na nad oddíly datového modelu. Počet oddílů v centru událostí můžete během instalace nakonfigurovat, ale tuto hodnotu nelze později změnit. Vzhledem k tomu, že je nutné použít oddíly s Event Hubs, musíte se rozhodnout o dostupnosti a konzistenci pro vaši aplikaci.
 
 ## <a name="availability"></a>Dostupnost
-Nejjednodušší způsob, jak začít s Event Hubs je použít výchozí chování. Pokud vytvoříte nový objekt **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** a použijete metodu **[Send,](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** vaše události se automaticky distribuují mezi oddíly v centru událostí. Toto chování umožňuje největší množství času nahoru.
+Nejjednodušší způsob, jak začít s Event Hubs je použít výchozí chování. 
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 nebo novější)](#tab/latest)
+Pokud vytvoříte nový objekt **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** a použijete metodu **[SendAsync,](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** vaše události se automaticky distribuují mezi oddíly v centru událostí. Toto chování umožňuje největší množství času nahoru.
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 nebo starší)](#tab/old)
+Pokud vytvoříte nový objekt **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** a použijete metodu **[Send,](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** vaše události se automaticky distribuují mezi oddíly v centru událostí. Toto chování umožňuje největší množství času nahoru.
+
+---
 
 Pro případy použití, které vyžadují maximální dobu provozu, je tento model upřednostňován.
 
 ## <a name="consistency"></a>Konzistence
-V některých scénářích může být důležité pořadí událostí. Můžete například chtít, aby systém back-end zpracoval příkaz aktualizace před příkazem delete. V tomto případě můžete buď nastavit klíč oddílu na `PartitionSender` událost, nebo použít objekt pouze k odeslání událostí do určitého oddílu. Tím zajistíte, že při čtení těchto událostí z oddílu jsou čteny v pořadí.
+V některých scénářích může být důležité pořadí událostí. Můžete například chtít, aby systém back-end zpracoval příkaz aktualizace před příkazem delete. V tomto případě můžete buď nastavit klíč oddílu na `PartitionSender` událost, nebo použít objekt (pokud používáte starou knihovnu Microsoft.Azure.Messaging) pouze k odesílání událostí do určitého oddílu. Tím zajistíte, že při čtení těchto událostí z oddílu jsou čteny v pořadí. Pokud používáte knihovnu **Azure.Messaging.EventHubs** a další informace, přečtěte si další informace, přečtěte si další informace o [migraci kódu z PartitionSender na EventHubProducerClient pro publikování událostí do oddílu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 nebo novější)](#tab/latest)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    var batchOptions = new CreateBatchOptions() { PartitionId = "my-partition-id" };
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync(batchOptions);
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+    
+    await producerClient.SendAsync(eventBatch);
+}
+```
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 nebo starší)](#tab/old)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+var connectionStringBuilder = new EventHubsConnectionStringBuilder(connectionString){ EntityPath = eventHubName }; 
+var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
+PartitionSender partitionSender = eventHubClient.CreatePartitionSender("my-partition-id");
+try
+{
+    EventDataBatch eventBatch = partitionSender.CreateBatch();
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+
+    await partitionSender.SendAsync(eventBatch);
+}
+finally
+{
+    await partitionSender.CloseAsync();
+    await eventHubClient.CloseAsync();
+}
+```
+
+---
 
 Při této konfiguraci mějte na paměti, že pokud konkrétní oddíl, do kterého odesíláte, není k dispozici, obdržíte odpověď na chybu. Pro srovnání, pokud nemáte spřažení s jedním oddílem, služba Event Hubs odešle událost do dalšího dostupného oddílu.
 

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cf961b00c4823d0c9efcf44b0db7bb75a80d3dfa
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544100"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474335"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Co je služba Azure Active Directory Domain Services?
 
@@ -51,7 +51,7 @@ Azure AD DS nabízí alternativy k potřebě vytvořit připojení VPN zpět do 
 
 ## <a name="azure-ad-ds-features-and-benefits"></a>Funkce a výhody Azure AD DS
 
-Chcete-li poskytovat služby identit aplikací a virtuálních počítačů v cloudu, Azure AD DS je plně kompatibilní s tradiční prostředí služby AD DS pro operace, jako je připojení k doméně, zabezpečené LDAP (LDAPS), zásady skupiny a správa DNS a podpora vazby a čtení LDAP. Podpora zápisu LDAP je dostupná pro objekty vytvořené ve spravované doméně Azure AD DS, ale ne prostředky synchronizované ze služby Azure AD. Následující funkce služby Azure AD DS zjednodušují operace nasazení a správy:
+Chcete-li poskytovat služby identit aplikací a virtuálních počítačů v cloudu, Azure AD DS je plně kompatibilní s tradiční prostředí služby AD DS pro operace, jako je připojení k doméně, zabezpečené LDAP (LDAPS), zásady skupiny, správa DNS a ldap vazba a podpora čtení. Podpora zápisu LDAP je dostupná pro objekty vytvořené ve spravované doméně Azure AD DS, ale ne prostředky synchronizované ze služby Azure AD. Následující funkce služby Azure AD DS zjednodušují operace nasazení a správy:
 
 * **Zjednodušené prostředí nasazení:** Azure AD DS je povolené pro vašeho klienta Azure AD pomocí jediného průvodce na webu Azure Portal.
 * **Integrovaná s Azure AD:** Uživatelské účty, členství ve skupinách a přihlašovací údaje jsou automaticky dostupné z vašeho klienta Azure AD. Noví uživatelé, skupiny nebo změny atributů z vašeho klienta Azure AD nebo místního prostředí služby AD DS se automaticky synchronizují s Azure AD DS.

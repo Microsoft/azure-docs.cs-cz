@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/01/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7ca6882aea7225dcb97c9f913267b2543de07fef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133122"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477631"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
@@ -88,7 +88,7 @@ Ve službě ASE můžete škálovat plán služby App Service až na 100 instanc
 
 ## <a name="ip-addresses"></a>IP adresy
 
-Služba App Service může aplikaci přidělit vyhrazenou IP adresu. Tato funkce je k dispozici po konfiguraci protokolu SSL založeného na protokolu IP, jak je popsáno v [části Vazba na existující vlastní certifikát SSL se službou Azure App Service][ConfigureSSL]. Ve službách ASE ILB nelze přidat další IP adresy, které se použijí pro protokol SSL založený na protokolu IP.
+Služba App Service může aplikaci přidělit vyhrazenou IP adresu. Tato funkce je k dispozici po konfiguraci protokolu SSL založeného na protokolu IP, jak je popsáno v [části Vazba na existující vlastní certifikát TLS/SSL na službu Azure App Service][ConfigureSSL]. Ve službách ASE ILB nelze přidat další IP adresy, které se použijí pro protokol SSL založený na protokolu IP.
 
 S externí službou ASE můžete pro vaši aplikaci nakonfigurovat protokol SSL založený na protokolu IP stejným způsobem jako ve víceklientské službě App Service. Ve snaze ase je vždy jedna náhradní adresa, až 30 IP adres. Pokaždé, když použijete jeden, další je přidán tak, aby adresa je vždy snadno dostupné. K přidělení jiné adresy IP je nutné časové zpoždění. Toto zpoždění zabraňuje přidávání IP adres v rychlém sledu.
 
@@ -138,7 +138,7 @@ Bez dalších změn nefungují internetové systémy CI, jako je GitHub a Azure 
 
 Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Můžete ji vidět v profilu publikování aplikace a v podokně portálu aplikace (v **přehledu** > **Essentials** a také ve **vlastnostech).**
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Služba ASE má úložiště o velikosti 1 TB pro všechny aplikace v systému ASE. Plán služby App Service v izolované cenové skladové položky má limit 250 GB ve výchozím nastavení. Pokud máte pět nebo více plánů služby App Service, dávejte pozor, abyste nepřekročili limit 1 TB služby ASE. Pokud potřebujete více než limit 250 GB v jednom plánu služby App Service, obraťte se na podporu a upravte limit plánu služby App Service na maximálně 1 TB. Když je limit plánu upraven, stále existuje limit 1 TB ve všech plánech služby App Service v systému ASE.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Hledání obrázků REST API a PHP - Vyhledávání obrázků Bing'
+title: 'Úvodní příručka: Hledání obrázků pomocí rozhraní REST API a PHP pro vyhledávání obrázků bingu'
 titleSuffix: Azure Cognitive Services
 description: Tento rychlý start slouží k odesílání požadavků na vyhledávání obrázků do rozhraní REST API pro vyhledávání obrázků Bingu pomocí PHP a přijíměte odpovědi JSON.
 services: cognitive-services
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 3778ec9bb44c1e78da152d4bde525884098fd445
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: fffe56986a3b3a64910678d19321e2d04b8fcc55
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930749"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478560"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Úvodní příručka: Hledání obrázků pomocí rozhraní REST API a PHP pro vyhledávání obrázků bingu
 

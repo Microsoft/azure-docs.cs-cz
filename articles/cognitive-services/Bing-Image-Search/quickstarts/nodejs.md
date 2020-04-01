@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Hledání obrázků REST API a Node.js - Hledání obrázků Bingem'
+title: 'Úvodní příručka: Hledání obrázků pomocí rozhraní REST API pro vyhledávání obrázků Bingu a souboru Node.js'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start slouží k odesílání požadavků na vyhledávání obrázků do rozhraní API REST pro vyhledávání obrázků bingu pomocí JavaScriptu a přijíměj odpovědi JSON.
+description: Tento rychlý start slouží k odesílání požadavků na vyhledávání obrázků do rozhraní API REST pro vyhledávání obrázků bingu pomocí javascriptu a k přijetí odpovědi JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2aaed57c7e1d817cd892f45c441ab59d4ffba3d3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 15757d606a846a2951bc5c15d8d5ef0dbfd7a2a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930768"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478594"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Úvodní příručka: Hledání obrázků pomocí rozhraní REST API pro vyhledávání obrázků Bingu a souboru Node.js
 

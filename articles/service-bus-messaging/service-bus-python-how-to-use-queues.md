@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76773494"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478654"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Úvodní příručka: Použití front Azure Service Bus v Pythonu
 
@@ -32,7 +32,7 @@ Další informace o knihovnách service bus Pythonu Azure najdete v [tématu Kni
 ## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure. Můžete aktivovat [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Obor názvů Service Bus vytvořený podle kroků na [úvodním panelu: Pomocí portálu Azure vytvořte téma služby Service Bus a předplatná](service-bus-quickstart-topics-subscriptions-portal.md). Zkopírujte primární připojovací řetězec z obrazovky **Zásady sdíleného přístupu,** který se použije později v tomto článku. 
-- Python 3.4x nebo vyšší s nainstalovaným balíčkem [service bus Pythonu Azure.][Python Azure Service Bus package] Další informace naleznete v [Průvodci instalací pythonu](/azure/python/python-sdk-azure-install). 
+- Python 3.4x nebo vyšší s nainstalovaným balíčkem [service bus Pythonu Azure.][Python Azure Service Bus package] Další informace naleznete v [Průvodci instalací pythonu](/azure/developer/python/azure-sdk-install). 
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 

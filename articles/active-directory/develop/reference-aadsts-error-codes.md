@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89240102837b65ed2a09d9f4865ad47ee5d5afa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154555"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473167"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Chybové kódy ověřování azure a autorizace
 
@@ -148,7 +148,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Například pokud jste ob
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - Uživatel nebo správce nesouhlasil s použitím aplikace s ID X. Odešle tes a odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. |
 | AADSTS65004 | UserDeclinedConsent – Uživatel odmítl souhlas s přístupem k aplikaci. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|
-| AADSTS65005 | MisconfiguredApplication - Seznam požadovaných prostředků aplikace neobsahuje aplikace zjistitelné prostředkem nebo klientská aplikace požádala o přístup k prostředku, který nebyl zadán v seznamu požadovaných přístupů k prostředkům nebo služba Graph vrácena chybně požadavek nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, je možné, že jste nakonfigurovali aplikaci s nesprávným identifikátorem (entitou). Vyzkoušejte rozlišení uvedené pro SAML pomocí následujícího odkazu:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication – seznam požadovaných prostředků aplikace neobsahuje aplikace zjistitelné prostředek nebo klientská aplikace požádala o přístup k prostředku, který nebyl zadán v seznamu požadovaný přístup k prostředkům nebo graph služba vrácena chybný požadavek nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, je možné, že jste nakonfigurovali aplikaci s nesprávným identifikátorem (entitou). Vyzkoušejte rozlišení uvedené pro SAML pomocí následujícího odkazu:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - Ověřování se nezdařilo. Obnovovací token není platný. Chyba může být způsobena následujícími důvody:<ul><li>Hlavička vazby tokenu je prázdná.</li><li>Token vazby hash neodpovídá</li></ul> |
 | AADSTS70001 | UnauthorizedClient - Aplikace je zakázána. |
@@ -271,6 +271,8 @@ Vyhledejte číselnou část vráceného kódu chyby.  Například pokud jste ob
 | AADSTS700020 | InteractionRequired - Udělení přístupu vyžaduje interakci. |
 | AADSTS700022 | InvalidMultipleResourcesScope - zadaný hodnota pro obor vstupního parametru není platná, protože obsahuje více než jeden prostředek. |
 | AADSTS700023 | InvalidResourcelessScope - zadaný hodnota pro obor vstupního parametru není platná při požadavku na přístupový token. |
+| AADSTS7000222| NeplatnýklientSecretSecretExpiredKeysProvided - platnost tajných klíčů zapředpokladu klienta vypršela. Navštivte Portál Azure a vytvořte nové klíče pro svou aplikaci nebo zvažte použití přihlašovacích údajů certifikátu pro zvýšení zabezpečení:https://aka.ms/certCreds |
+| AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - Zadaný autorizační kód je určen k použití proti jinému tenantovi, proto byl odmítnut. Autorizační kód OAuth2 musí být uplatněn vůči stejnému tenantovi, pro kterého byl získán (/common nebo /{tenant-ID}) |
 | AADSTS100000 | UserNotBoundError - Rozhraní API vazby vyžaduje, aby uživatel Azure AD také ověřit pomocí externí ho DIsP, které se ještě nestalo. |
 | AADSTS1000002 | BindCompleteInterruptError - Vazba byla úspěšně dokončena, ale uživatel musí být informován. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled - Aplikace je zakázána. |

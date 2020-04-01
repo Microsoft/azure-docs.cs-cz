@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688695"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477791"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Jak vytvořit prostředí služby App Service v1 
 
@@ -45,7 +45,7 @@ Pokud chcete vytvořit prostředí služby App Service v1, můžete prohledat pr
 3. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků používaná pro vaši sestavu se musí stejnou, která se používá pro virtuální síť. Pokud vyberete již existující virtuální síť, výběr skupiny prostředků pro vaši ase se aktualizuje tak, aby odrážela výběr vaší virtuální sítě.
    
     ![][2]
-4. Proveďte virtuální síť a umístění výběry. Můžete vytvořit novou virtuální síť nebo vybrat již existující virtuální síť. Pokud vyberete novou virtuální síť, můžete zadat název a umístění. Nová virtuální síť bude mít rozsah adres 192.168.250.0/23 a podsíť s názvem **default,** která je definována jako 192.168.250.0/24. Můžete také jednoduše vybrat již existující virtuální síť Classic nebo Resource Manager. Výběr typu VIP určuje, zda je vaše ase přímo přístupná z internetu (externí) nebo zda používá interní nástroj pro vyrovnávání zatížení (ILB). Další informace o nich najdete [v tématu Použití interního vytápěče zatížení v prostředí služby App Service][ILBASE]. Pokud vyberete typ VIP externí pak můžete vybrat, kolik externích IP adres systém je vytvořen s pro účely IPSSL. Pokud vyberete interní, budete muset zadat subdoménu, kterou bude vaše služba ASE používat. Ases lze nasadit do virtuálních sítí, které používají *rozsahy* veřejných adres *nebo* adresní prostory RFC1918 (tj. soukromé adresy). Chcete-li používat virtuální síť s rozsahem veřejných adres, budete muset vytvořit virtuální síť předem. Když vyberete již existující virtuální síť, budete muset vytvořit novou podsíť během vytváření ase. **Na portálu nelze použít předem vytvořenou podsíť. Pokud službu ASE vytvoříte pomocí šablony správce prostředků, můžete vytvořit službu ASE s již existující podsítí.** Chcete-li vytvořit službu ASE ze šablony, použijte informace zde, [vytvoření prostředí služby App Service ze šablony][ILBAseTemplate] a zde vytvoření prostředí [služby ILB App Service ze šablony][ASEfromTemplate].
+4. Proveďte virtuální síť a umístění výběry. Můžete vytvořit novou virtuální síť nebo vybrat již existující virtuální síť. Pokud vyberete novou virtuální síť, můžete zadat název a umístění. Nová virtuální síť bude mít rozsah adres 192.168.250.0/23 a podsíť s názvem **default,** která je definována jako 192.168.250.0/24. Můžete také jednoduše vybrat již existující virtuální síť Classic nebo Resource Manager. Výběr typu VIP určuje, zda je vaše ase přímo přístupná z internetu (externí) nebo zda používá interní nástroj pro vyrovnávání zatížení (ILB). Další informace o nich najdete [v tématu Použití interního vytápěče zatížení v prostředí služby App Service][ILBASE]. Pokud vyberete typ VIP externí pak můžete vybrat, kolik externích IP adres systém je vytvořen s pro účely IP SSL. Pokud vyberete interní, budete muset zadat subdoménu, kterou bude vaše služba ASE používat. Ases lze nasadit do virtuálních sítí, které používají *rozsahy* veřejných adres *nebo* adresní prostory RFC1918 (tj. soukromé adresy). Chcete-li používat virtuální síť s rozsahem veřejných adres, budete muset vytvořit virtuální síť předem. Když vyberete již existující virtuální síť, budete muset vytvořit novou podsíť během vytváření ase. **Na portálu nelze použít předem vytvořenou podsíť. Pokud službu ASE vytvoříte pomocí šablony správce prostředků, můžete vytvořit službu ASE s již existující podsítí.** Chcete-li vytvořit službu ASE ze šablony, použijte informace zde, [vytvoření prostředí služby App Service ze šablony][ILBAseTemplate] a zde vytvoření prostředí [služby ILB App Service ze šablony][ASEfromTemplate].
 
 ### <a name="details"></a>Podrobnosti
 ASE je vytvořen s 2 front-endy a 2 pracovníky. Front-endy fungují jako koncové body HTTP/HTTPS a odesílají provoz pracovníkům, což jsou role, které hostují vaše aplikace. Můžete upravit množství po vytvoření ase a dokonce můžete nastavit pravidla automatického škálování na těchto fondech prostředků. Další podrobnosti o ručníškálování, správu a monitorování prostředí služby App Service naleznete zde: [Jak nakonfigurovat prostředí služby App Service][ASEConfig] 

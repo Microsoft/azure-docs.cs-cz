@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 62826b209b37e5abe5d33455809ba1b894ddb85f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544272"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476460"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samospravovaných služeb Active Directory Domain Services, Služby Azure Active Directory a spravované služby Azure Active Directory Domain Services
 
@@ -102,9 +102,9 @@ Se zařízeními připojenými k Azure AD DS můžou aplikace používat protoko
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Zařízení ovládané            | Azure AD                                            | Spravovaná doména Azure AD DS                                                |
 | Reprezentace v adresáři | Objekty zařízení v adresáři Azure AD            | Objekty počítačů ve spravované doméně Azure AD DS                        |
-| Ověřování                  | Protokoly založené na OAuth / OpenID Connect              | Protokoly Protokolu Kerberos a NTLM                                               |
+| Authentication                  | Protokoly založené na OAuth / OpenID Connect              | Protokoly Protokolu Kerberos a NTLM                                               |
 | Správa                      | Software pro správu mobilních zařízení (MDM), jako je Intune | Zásady skupiny                                                              |
-| Síťové služby                      | Pracuje přes internet                             | Musí být připojen nebo peered s virtuální sítí, kde je nasazená spravovaná doména |
+| Sítě                      | Pracuje přes internet                             | Musí být připojen nebo peered s virtuální sítí, kde je nasazená spravovaná doména |
 | Skvělé pro...                    | Mobilní nebo stolní zařízení koncových uživatelů                  | Serverové virtuální počítače nasazené v Azure                                              |
 
 ## <a name="next-steps"></a>Další kroky

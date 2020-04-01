@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5a0d373fdf75f19c8fc1082593c15c14770f79c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369902"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408550"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: Použití exportované šablony z webu Azure Portal
 
@@ -108,6 +108,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Pokud se nasazení nezdařilo, zobrazte protokoly ladění pomocí **přepínače ladění** s příkazem deployment.  Můžete také použít **podrobný** přepínač k zobrazení úplné protokoly ladění.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 

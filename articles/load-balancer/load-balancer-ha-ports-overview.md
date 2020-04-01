@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5ada709350802344bfa65cce269735baa416edf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234453"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476977"
 ---
 # <a name="high-availability-ports-overview"></a>Přehled portů s vysokou dostupností
 
@@ -95,7 +95,7 @@ Můžete nakonfigurovat *jeden* veřejný prostředek standardního vyrovnáván
 ## <a name="limitations"></a>Omezení
 
 - Pravidla vyrovnávání zatížení portů HA jsou k dispozici pouze pro interní standardní vytápěč zatížení.
-- Kombinace pravidla vyrovnávání zatížení portů HA a pravidla vyrovnávání zatížení portů NEŽ HA není podporována.
+- Kombinace pravidla vyrovnávání zatížení portů HA a pravidla vyrovnávání zatížení portů než HA, které odkazují na stejné konfigurace ipkonfigurace back-endu, není podporováno.
 - Existující fragmenty PROTOKOLU IP budou předány pravidly vyrovnávání zatížení portů HA do stejného cíle jako první paket.  Fragmentace protokolu IP paketu UDP nebo TCP není podporována.
 - Symetrie toku (především pro scénáře nva) je podporována s back-endovou instancí a jednu nic (a jednu konfiguraci IP) pouze při použití, jak je znázorněno na obrázku výše a pomocí pravidel vyrovnávání zatížení portů HA. Není k dispozici v žádném jiném scénáři. To znamená, že dva nebo více prostředků vyrovnávání zatížení a jejich příslušná pravidla činí nezávislá rozhodnutí a nikdy nejsou koordinována. Viz popis a diagram [síťových virtuálních zařízení](#nva). Pokud používáte více nic nebo sendvičování síťového virtuálního počítače mezi veřejné a interní vyrovnávání zatížení, symetrie toku není k dispozici.  Je možné, že tento problém obejdete podle zdroje NAT'ing toku příchozího přenosu dat do IP adresy zařízení, aby odpovědi dorazí na stejné síťové virtuální zařízení.  Důrazně však doporučujeme použít jednu nic a pomocí referenční architektury uvedené v diagramu výše.
 

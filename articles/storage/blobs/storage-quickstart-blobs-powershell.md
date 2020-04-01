@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 479145f4d42c0708c109ab582e76e3691971c6ad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b005bc359b3c1b0cafe663b7ce2b599b10973a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061410"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474001"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Úvodní příručka: Nahrávání, stahování a seznam objektů BLOB pomocí PowerShellu
 
@@ -28,7 +28,7 @@ Pro přístup k Azure Storage budete potřebovat předplatné Azure. Pokud ješt
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tento rychlý start vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-InstalledModule -Name Az -AllVersions | select Name,Version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Tento rychlý start vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-InstalledModule -Name Az -AllVersions | select Name,Version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -36,7 +36,7 @@ Tento rychlý start vyžaduje modul Azure PowerShell Az verze 0.7 nebo novějš�
 
 Objekty blob se vždy nahrávají do kontejneru. Skupiny objektů blob můžete organizovat podobně, jako organizujete soubory do složek na svém počítači.
 
-Nastavte název kontejneru a vytvořte kontejner pomocí [new-azstoragecontainer](/powershell/module/az.storage/new-AzStoragecontainer). Nastavte oprávnění na `blob`, abyste umožnili veřejný přístup k souborům. Název kontejneru v tomto příkladu je *quickstartblobs*.
+Nastavte název kontejneru a vytvořte kontejner pomocí [new-azstoragecontainer](/powershell/module/az.storage/new-azstoragecontainer). Nastavte oprávnění na `blob`, abyste umožnili veřejný přístup k souborům. Název kontejneru v tomto příkladu je *quickstartblobs*.
 
 ```powershell
 $containerName = "quickstartblobs"
@@ -47,7 +47,7 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Soubory VHD využívané virtuálními počítači IaaS jsou objekty blob stránky. Doplňovací objekty blob můžete použít k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Většina souborů uložených v úložišti objektů blob je objekty blob bloku. 
 
-Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a pak získejte odkaz na objekt blob bloku v tomto kontejneru. Jakmile budete mít odkaz na objekt blob, můžete do něj nahrát data pomocí [Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
+Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a pak získejte odkaz na objekt blob bloku v tomto kontejneru. Jakmile budete mít odkaz na objekt blob, můžete do něj nahrát data pomocí [Set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
 
 Následující příklady nahrají soubory *Image001.jpg* a *Image002.png* ze složky *D:\\_TestImages* na místním disku do kontejneru, který jste vytvořili.
 
@@ -69,7 +69,7 @@ Než budete pokračovat, můžete nahrát libovolné množství souborů.
 
 ## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Získejte seznam objektů BLOB v kontejneru pomocí [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob). Tento příklad zobrazí pouze názvy nahraných objektů blob.
+Získejte seznam objektů BLOB v kontejneru pomocí [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob). Tento příklad zobrazí pouze názvy nahraných objektů blob.
 
 ```powershell
 Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
@@ -77,7 +77,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>Stáhnout objekty blob
 
-Stáhněte objekty blob na svůj místní disk. Pro každý objekt blob, který chcete stáhnout, nastavte název a zavolejte [Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) ke stažení objektu blob.
+Stáhněte objekty blob na svůj místní disk. Pro každý objekt blob, který chcete stáhnout, nastavte název a zavolejte [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) ke stažení objektu blob.
 
 Tento příklad stáhne objekty blob do složky D:*D:\\_TestImages\Downloads* na místním disku. 
 

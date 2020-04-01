@@ -3,12 +3,12 @@ title: Změna nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a4e64a4db70d419a3ef6441545d53abd298c85bb
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346790"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477891"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro cluster Service Fabric, které můžete přizpůsobit. U clusterů hostovaných v Azure můžete nastavení přizpůsobit na [webu Azure Portal](https://portal.azure.com) nebo pomocí šablony Azure Resource Manager. Další informace najdete [v tématu Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete přizpůsobit nastavení aktualizací souboru *ClusterConfig.json* a provedením upgradu konfigurace v clusteru. Další informace naleznete [v tématu Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -55,9 +55,9 @@ Následuje seznam nastavení prostředků fabric, které můžete přizpůsobit,
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Pokyny nebo krátký popis** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int, výchozí hodnota je 0|Statická|MinReplicaSetSize pro Službu BackupRestoreService |
-|Omezení umístění|řetězec, výchozí hodnota je ""|Statická|  Služba PlacementConstraints for BackupRestore |
+|Omezení umístění|řetězec, výchozí hodnota je ""|Statická|    Služba PlacementConstraints for BackupRestore |
 |Tajný encryptioncertthumbprint|řetězec, výchozí hodnota je ""|Dynamická|Kryptografický šifrovací certifikát X509 |
-|SecretEncryptionCertX509Název úložiště|řetězec, výchozí hodnota je "My"|   Dynamická|    Označuje certifikát, který má být použit pro šifrování a dešifrování creds Název úložiště certifikátů X.509, který se používá k šifrování přihlašovacích údajů úložiště dešifrování používaných službou Obnovení zálohování |
+|SecretEncryptionCertX509Název úložiště|řetězec, výchozí hodnota je "My"|    Dynamická|    Označuje certifikát, který má být použit pro šifrování a dešifrování creds Název úložiště certifikátů X.509, který se používá k šifrování přihlašovacích údajů úložiště dešifrování používaných službou Obnovení zálohování |
 |Cílová replikaSetSize|int, výchozí hodnota je 0|Statická| TargetReplicaSetSize pro Službu BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
@@ -147,7 +147,7 @@ Následuje seznam nastavení prostředků fabric, které můžete přizpůsobit,
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Pokyny nebo krátký popis** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int, výchozí hodnota je 0|Statická|Služba MinReplicaSetSize pro eventstore |
-|Omezení umístění|řetězec, výchozí hodnota je ""|Statická|  Služba PlacementConstraints pro EventStore |
+|Omezení umístění|řetězec, výchozí hodnota je ""|Statická|    Služba PlacementConstraints pro EventStore |
 |Cílová replikaSetSize|int, výchozí hodnota je 0|Statická| Služba TargetReplicaSetSize pro eventstore |
 
 ## <a name="fabricclient"></a>FabricClient
@@ -270,7 +270,7 @@ Následuje seznam nastavení prostředků fabric, které můžete přizpůsobit,
 |CommonNameNtlmPasswordSecret|SecureString, default is Common::SecureString("")| Statická|Tajný klíč hesla, který se používal jako osivo pro generování stejného hesla při použití ověřování NTLM |
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan, výchozí hodnota je Common::TimeSpan::FromMinutes(5)|Dynamická|Určete časový rozsah v sekundách. Časový interval mezi kontrolou místa na disku pro hlášení události stavu, když je disk blízko místa. |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan, výchozí hodnota je Common::TimeSpan::FromMinutes(15)|Dynamická|Určete časový rozsah v sekundách. Časový interval mezi kontrolou místa na disku pro hlášení události stavu, pokud je na disku dostatek místa. |
-|EnableImageStoreHealthReporting |bool, výchozí hodnota je TRUE |Statická|Konfigurujte, chcete-li zjistit, zda má služba úložiště souborů vykazovat svůj stav. |
+|EnableImageStoreHealthReporting |bool, výchozí hodnota je TRUE    |Statická|Konfigurujte, chcete-li zjistit, zda má služba úložiště souborů vykazovat svůj stav. |
 |FreeDiskSpaceNotificationInKB|int64, výchozí hodnota\*je 25 1024 |Dynamická|Velikost volného místa na disku, pod kterým může dojít k upozornění na stav. Minimální hodnota této konfigurace a freediskspacenotificationthresholdpercentage konfigurace se používají k určení odeslání upozornění stavu. |
 |FreeDiskSpaceNotificationThresholdPercentage|double, výchozí hodnota je 0,02 |Dynamická|Procento volného místa na disku, pod kterým může dojít k upozornění na stav. Minimální hodnota této konfigurace a konfigurace FreeDiskSpaceNotificationInMB se používá k určení odesílání upozornění na stav. |
 |GenerateV1CommonNameAccount| bool, výchozí hodnota je TRUE|Statická|Určuje, zda má být generován účet s algoritmem generování uživatelského jména V1. Počínaje Service Fabric verze 6.1; účet s generováním v2 je vždy vytvořen. Účet V1 je nezbytný pro upgrady z/na verze, které nepodporují generování V2 (před verzí 6.1).|
@@ -547,7 +547,7 @@ Následuje seznam nastavení prostředků fabric, které můžete přizpůsobit,
 |Interval minplacementu | Čas v sekundách, výchozí hodnota je 1 |Dynamická| Určete časový rozsah v sekundách. Definuje minimální dobu, která musí uplynout před dvěma po sobě jdoucími zaokrouch umístění. |
 |MoveExistingReplicaForPlacement | Bool, výchozí hodnota je pravda |Dynamická|Nastavení, které určuje, zda má být během umístění přesunutí existující repliky. |
 |Interval intervalu s počítace škrtů v oddílech | Čas v sekundách, výchozí hodnota je 600 |Statická| Určete časový rozsah v sekundách. Uveďte délku minulého intervalu, pro který chcete sledovat pohyby repliky pro každý oddíl (používá se spolu s MovementPerPartitionThrottleThreshold). |
-|Hodnota omezení oddílu MovementPerPartitionThrottleThreshold | Uint, výchozí hodnota je 50 |Dynamická| Pro oddíl nedojde k žádnému přesunu souvisejícímu s vyrovnáváním, pokud počet vyrovnávacích souvisejících přesunů pro repliky tohoto oddílu dosáhl nebo překročil Hodnotu MovementPerFailoverUnitThrottleThreshold v minulém intervalu, který byl označen MovementPerPartitionThrottleCountingInterval. |
+|Hodnota omezení oddílu MovementPerPartitionThrottleThreshold | Uint, výchozí hodnota je 50 |Dynamická| Žádné vyvažování související pohyb dojde pro oddíl, pokud počet vyrovnávací související pohyby pro repliky tohoto oddílu dosáhl nebo překročil MovementPerFailoverUnitThrottleThreshold v minulém intervalu označené MovementPerPartitionThrottleCountingInterval. |
 |MoveParentToFixAffinityViolation | Bool, výchozí hodnota je false |Dynamická| Nastavení, které určuje, zda nadřazené repliky lze přesunout opravit omezení spřažení.|
 |Služby Částečné umístění | Bool, výchozí hodnota je pravda |Dynamická| Určuje, zda všechny repliky služby v clusteru budou umístěny "všechny nebo nic" vzhledem k omezené vhodné uzly pro ně.|
 |PlaceChildWithoutParent | Bool, výchozí hodnota je pravda | Dynamická|Nastavení, které určuje, zda může být umístěna replika podřízené služby, pokud není žádná nadřazená replika. |
@@ -568,8 +568,8 @@ Následuje seznam nastavení prostředků fabric, které můžete přizpůsobit,
 |TraceCRMReasons |Bool, výchozí hodnota je pravda |Dynamická|Určuje, zda mají být sledovány důvody přesunů vydaných protokolem CRM do kanálu provozních událostí. |
 |Priorita omezení domény upgradu | Int, výchozí hodnota je 1| Dynamická|Určuje prioritu omezení domény upgradu: 0: Pevný; 1: měkké; negativní: Ignorovat. |
 |UseMoveCostReports | Bool, výchozí hodnota je false | Dynamická|Instruuje LB ignorovat prvek nákladů funkce bodování; což vede k potenciálně velkému počtu pohybů pro vyváženější umístění. |
-|Použít samostatný sekundární náklad | Bool, výchozí hodnota je pravda | Dynamická|Nastavení, které určuje, zda použít různé sekundární zatížení. |
-|Použít separateSecondaryMoveCost|Bool, výchozí hodnota je FALSE | Dynamická|Nastavení, které určuje, zda by plb měl použít různé náklady na přesun pro sekundární na každém uzlu Pokud je vypnuto použitíSeparateSecondaryMoveCost: - Hlášené náklady na přesun pro sekundární na jednom uzlu budou mít za následek nadměrné náklady na přesun pro každý sekundární (na všech ostatních uzlech) Pokud je vypnuto použití UseSeparateSecondarSecondaryMoveCost je zapnuto: - Hlášené náklady na přesun pro sekundární na jednom uzlu se projeví pouze na tomto sekundárním (žádný vliv na sekundární oddělení v jiných uzlech) - Pokud dojde k selhání repliky - nová replika je vytvořena s výchozími náklady na přesunutí zadané u služby level - Pokud PLB přesune existující repliku - náklady na přesun jdou s ní |
+|Použít samostatný sekundární náklad | Bool, výchozí hodnota je pravda | Dynamická|Nastavení, které určuje, zda by mělo být pro sekundární repliky použito samostatné zatížení. |
+|Použít separateSecondaryMoveCost | Bool, výchozí hodnota je false | Dynamická|Nastavení, které určuje, zda mají být pro sekundární repliky použity samostatné náklady na přesun. |
 |ValidatePlacementConstraint | Bool, výchozí hodnota je pravda |Dynamická| Určuje, zda je výraz PlacementConstraint pro službu ověřen při aktualizaci servicedescription služby. |
 |Ověřit PrimaryPlacementConstraintOnPromote| Bool, výchozí hodnota je PRAVDA |Dynamická|Určuje, zda je výraz PlacementConstraint pro službu vyhodnocen pro primární předvolbu při převzetí služeb při selhání. |
 |VerboseHealthReportLimit | Int, výchozí hodnota je 20 | Dynamická|Definuje, kolikrát replika musí přejít neumístěný před upozornění stavu je hlášena pro něj (pokud podrobné sestavy stavu je povolena). |
@@ -685,7 +685,7 @@ Následuje seznam nastavení prostředků fabric, které můžete přizpůsobit,
 |SettingsX509Název_obchodu| řetězec, výchozí hodnota je "MY"| Dynamická|Úložiště certifikátů X509 používané látkou pro ochranu konfigurace |
 |UseClusterCertForIpcServerTlsSecurity|bool, výchozí hodnota je NEPRAVDA|Statická|Zda použít certifikát clusteru k zabezpečení přenosové jednotky TLS serveru IPC Server |
 |Složka X509|řetězec, výchozí hodnota je /var/lib/waagent|Statická|Složka, ve které jsou umístěny certifikáty X509 a soukromé klíče |
-|TLS1_2_CipherList| řetězec| Statická|Pokud je nastavena na neprázdný řetězec; přepíše podporovaný seznam šifraů pro TLS1.2 a níže. Viz dokumentace "openssl-ciphers" pro načtení podporovaného seznamu šifraů a formát seznamu Příklad seznamu silných šifrpro TLS1.2: "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384: ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES12 8-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Platí pouze pro Linux. |
+|TLS1_2_CipherList| řetězec| Statická|Pokud je nastavena na neprázdný řetězec; přepíše podporovaný seznam šifraů pro TLS1.2 a níže. Viz dokumentace "openssl-ciphers" pro načtení podporovaného seznamu šifrovacích a formát seznamu Příklad silného šifrovacího seznamu pro TLS1.2: "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Platí pouze pro Linux. |
 
 ## <a name="securityadminclientx509names"></a>Bezpečnostní/adminClientX509Názvy
 

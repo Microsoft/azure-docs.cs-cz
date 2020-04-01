@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066875"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478150"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
 
@@ -106,7 +106,7 @@ Tyto položky by měly být považovány za citlivá data a zadali v konfiguraci
 > Jenom jedna verze rozšíření může být nainstalována na virtuální ms v určitém okamžiku, zadání vlastního skriptu dvakrát ve stejné šabloně Správce prostředků pro stejný virtuální počítač se nezdaří.
 
 > [!NOTE]
-> Můžeme použít toto schéma uvnitř prostředku VirtualMachine nebo jako samostatný prostředek. Název prostředku musí být v tomto formátu "virtualMachineName/extensionName", pokud toto rozšíření se používá jako samostatný prostředek v šabloně ARM. 
+> Můžeme použít toto schéma uvnitř prostředku VirtualMachine nebo jako samostatný prostředek. Název prostředku musí být v tomto formátu "virtualMachineName/extensionName", pokud toto rozšíření se používá jako samostatný prostředek v šabloně ARM.
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
@@ -146,6 +146,8 @@ Použití veřejné nastavení může být užitečné pro ladění, ale doporu�
 Veřejná nastavení se odesílají ve prostém textu do virtuálního počítače, kde bude skript spuštěn.  Chráněná nastavení se šifrují pomocí klíče známého jenom pro Azure a virtuální počítač. Nastavení se uloží do virtuálního počítače při jejich odeslání, to znamená, že pokud byla nastavení zašifrována, jsou uložena zašifrovaná na virtuálním počítači. Certifikát použitý k dešifrování šifrovaných hodnot je uložen na virtuálním počítači a používá se k dešifrování nastavení (v případě potřeby) za běhu.
 
 ####  <a name="property-managedidentity"></a>Vlastnost: managedIdentity
+> [!NOTE]
+> Tato vlastnost **musí** být zadána pouze v chráněném nastavení.
 
 CustomScript (verze 1.10 a dále) podporuje [spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pro stahování souborů z adres URL uvedených v nastavení "fileUris". Umožňuje CustomScript přístup k privátním objektům BLOB nebo kontejnerům azure storage, aniž by uživatel musel předávat tajné kódy, jako jsou tokeny SAS nebo klíče účtů úložiště.
 
@@ -268,7 +270,7 @@ Pokud ve skriptu používáte [invoke-webrequest,](/powershell/module/microsoft.
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
-## <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
+## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 Informace o nasazení rozšíření vlastního skriptu ve škálovací sadě naleznete v [tématu Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 

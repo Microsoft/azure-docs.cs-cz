@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: dee7d778c4a1c1f37ddab7b9d072f83a22acbc60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a4fbb3803f2eed4f961792a29a6bf8a327ea208
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056630"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80501949"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
@@ -44,6 +44,6 @@ ms.locfileid: "80056630"
 
 5. Vyberte **Vytvořit,** chcete-li vytvořit aplikaci funkcí a související prostředky v Azure s těmito nastaveními a nasadit kód projektu funkce. 
 
-6. Po dokončení nasazení si poznamenejte hodnotu **adresy URL webu,** což je adresa vaší aplikace pro funkce v Azure.
+6. Vyberte Publikovat a po dokončení nasazení si poznamenejte hodnotu **adresy URL webu,** což je adresa vaší funkční aplikace v Azure.
 
     ![Zpráva o úspěšném publikování](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)

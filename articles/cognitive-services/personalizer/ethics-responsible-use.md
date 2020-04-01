@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71720235"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478105"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Pokyny pro odpovědnou implementaci personalisty
 
@@ -25,7 +25,7 @@ Tyto pokyny nejsou určeny jako právní poradenství a měli byste se samostatn
 
 Při navrhování aplikace pomocí personalizátoru byste také měli zvážit širokou škálu povinností, které máte při vývoji jakéhokoli systému AI zaměřeného na data, včetně etiky, ochrany osobních údajů, zabezpečení, bezpečnosti, začlenění, transparentnosti a odpovědnosti. Další informace si o nich můžete přečíst v části [Doporučené čtení.](#recommended-reading)
 
-Následující obsah můžete použít jako počáteční kontrolní seznam a přizpůsobit a upřesnit podle vašeho scénáře. Tento dokument má dvě hlavní části: První je věnována zvýraznění aspekty zodpovědného použití při výběru scénářů, funkcí a odměn pro personalistu. Druhý vzít sadu hodnot Microsoft věří, že by měly být považovány za při vytváření systémů AI a poskytuje žalovatelné návrhy a rizika o tom, jak vaše použití Personalizace ovlivňuje je. 
+Následující obsah můžete použít jako počáteční kontrolní seznam a přizpůsobit a upřesnit podle vašeho scénáře. Tento dokument má dvě hlavní části: První je věnována zvýraznění aspekty zodpovědného použití při výběru scénářů, funkcí a odměn pro personalistu. Druhý vzít sadu hodnot Microsoft věří, že by měly být považovány za při vytváření systémů AI a poskytuje žalovatelné návrhy a rizika o tom, jak vaše použití Personalizace ovlivňuje je.
 
 
 ## <a name="your-responsibility"></a>Vaše odpovědnost
@@ -42,18 +42,18 @@ Společnost Microsoft neustále vkládá úsilí do svých nástrojů a dokument
 Implementace personalisty může mít pro vaše uživatele a vaši firmu velkou hodnotu. Chcete-li implementovat Personalizátor zodpovědně, začněte tím, že zvažuje následující pokyny, když:
 
 * Výběr emisi případů použití individuálního nastavení.
-* Budování [funkcí odměny](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-rewards.md).
-* Výběr [funkcí](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-features.md) týkající se kontextu a možných akcí, které budete používat pro přizpůsobení.
+* Budování [funkcí odměny](concept-rewards.md).
+* Výběr [funkcí](concepts-features.md) týkající se kontextu a možných akcí, které budete používat pro přizpůsobení.
 
 
 ## <a name="choosing-use-cases-for-personalizer"></a>Volba případů použití pro personalizátor
 
-Použití služby, která se učí přizpůsobit obsah a uživatelská rozhraní, je užitečné. To může být také nesprávně, pokud způsob, jakým personalizace vytváří negativní vedlejší účinky v reálném světě, včetně v případě, že uživatelé nejsou vědomi obsahu personalizace. 
+Použití služby, která se učí přizpůsobit obsah a uživatelská rozhraní, je užitečné. To může být také nesprávně, pokud způsob, jakým personalizace vytváří negativní vedlejší účinky v reálném světě, včetně v případě, že uživatelé nejsou vědomi obsahu personalizace.
 
-Příklady použití personalistu se zvýšeným potenciálem pro negativní vedlejší účinky nebo nedostatek transparentnosti zahrnují scénáře, kde "odměna" závisí na mnoha dlouhodobých složitých faktorech, které při nadměrném zjednodušeném do okamžité odměny mohou mít nepříznivé výsledky pro jednotlivce. Ty mají tendenci být považovány za "následné" volby, nebo volby, které zahrnují riziko újmy. Například: 
+Příklady použití Personalista se zvýšeným potenciálem pro negativní vedlejší účinky nebo nedostatek transparentnosti zahrnují scénáře, kde "odměna" závisí na mnoha dlouhodobých složitých faktorech, které při nadměrném zjednodušeném do okamžité odměny mohou mít nepříznivé výsledky pro jednotlivce. Ty mají tendenci být považovány za "následné" volby, nebo volby, které zahrnují riziko újmy. Například:
 
 
-* **Finance**: Personalizace nabídek na půjčky, finanční a pojistné produkty, kde jsou rizikové faktory založeny na údajích, o kterých jednotlivci nevědí, nemohou získat nebo nemohou zpochybnit. 
+* **Finance**: Personalizace nabídek na půjčky, finanční a pojistné produkty, kde jsou rizikové faktory založeny na údajích, o kterých jednotlivci nevědí, nemohou získat nebo nemohou zpochybnit.
 * **Vzdělávání**: Personalizace hodností pro školní kurzy a vzdělávací instituce, kde doporučení mohou šířit předsudky a snižovat povědomí uživatelů o dalších možnostech.
 * **Demokracie a občanská participace**: Personalizace obsahu pro uživatele s cílem ovlivňovat názory je následná a manipulativní.
 * **Hodnocení odměn třetí strany**: Personalizace položek, kde je odměna založena na hodnocení uživatele třetí strany, namísto odměny generované vlastním chováním uživatele.
@@ -85,8 +85,8 @@ Při výběru funkcí, které se mají odesílat v kontextech a akcích personal
 * Zvažte legálnost a etiku používání určitých funkcí pro některé aplikace a zda mohou být nevinně vypadající funkce proxy pro ostatní, kterým chcete nebo byste se měli vyhnout,
 * Buďte transparentní pro uživatele, že algoritmy a analýza dat se používají k přizpůsobení možností, které vidí.
 * Zeptejte se sami sebe: Zajímalo by se to mým uživatelům a byli byste rádi, kdybych tyto informace použil k přizpůsobení obsahu pro ně? Cítil bych se pohodlně ukazovat jim, jak bylo rozhodnuto zvýraznit nebo skrýt některé položky?
-* Používejte spíše údaje o chování než klasifikaci nebo segmentaci na základě jiných charakteristik. Demografické informace byly tradičně používány maloobchodníky z historických důvodů - demografické atributy se zdály být jednoduché shromažďovat a jednat před digitální érou, - ale otázka, jak relevantní demografické informace jsou, když máte skutečnou interakci, kontextová a historická data, která se více vztahují k preferencím a identitě uživatelů.
-* Zvažte, jak zabránit tomu, aby funkce byly "zfalšovány" uživateli se zlými úmysly, což může vést k výcviku personalisty zavádějícími způsoby, jak záměrně narušit, ztrapnit a obtěžovat určité třídy uživatelů. 
+* Používejte spíše údaje o chování než klasifikaci nebo segmentaci na základě jiných charakteristik. Demografické informace byly tradičně používány maloobchodníky z historických důvodů - demografické atributy se zdály být jednoduché shromažďovat a jednat před digitální érou - ale otázka, jak relevantní demografické informace jsou, když máte skutečnou interakci, kontextové a historické údaje, které se více vztahují k preferencím a identitě uživatelů.
+* Zvažte, jak zabránit tomu, aby funkce byly "zfalšovány" uživateli se zlými úmysly, což může vést k výcviku personalisty zavádějícími způsoby, jak záměrně narušit, ztrapnit a obtěžovat určité třídy uživatelů.
 * Pokud je to vhodné a proveditelné, navrhněte aplikaci tak, aby se uživatelé mohli přihlásit nebo se odhlásit z používání určitých osobních funkcí. Ty mohou být seskupeny, například "Informace o poloze", "Informace o zařízení", "Historie minulých nákupů" atd.
 
 
@@ -101,13 +101,13 @@ Například odměňování za kliknutí způsobí, že služba personalisty vyhl
 Jako kontrastní příklad může zpravodajský web chtít nastavit odměny vázané na něco smysluplnějšího než kliknutí, například "Strávil uživatel dostatek času číst obsah?" "Klikli na příslušné články nebo reference?". S personalizátem je snadné úzce spojit metriky s odměnami. Ale dávejte pozor, abyste nezahanbili krátkodobé zapojení uživatelů s dobrými výsledky.
 
 ### <a name="unintended-consequences-from-reward-scores"></a>Nezamýšlené důsledky z bodů odměny
-Skóre odměn může být vytvořeno s nejlepšími úmysly, ale stále může vést k neočekávaným důsledkům nebo nezamýšleným výsledkům ohledně toho, jak personalizátor hodnotí obsah. 
+Skóre odměn může být vytvořeno s nejlepšími úmysly, ale stále může vést k neočekávaným důsledkům nebo nezamýšleným výsledkům ohledně toho, jak personalizátor hodnotí obsah.
 
 Představte si následující příklady:
 
 * Odměňování personalizace videoobsahu na procento sledované délky videa bude mít pravděpodobně tendenci řadit kratší videa.
 * Odměňování akcií sociálních médií, bez analýzy sentimentu o tom, jak je sdíleno nebo samotný obsah, může vést k hodnocení urážlivého, nemoderovaného nebo pobuřujícího obsahu, který má tendenci podněcovat hodně "angažovanosti", ale přidává malou hodnotu.
-* Odměňování akce na prvky uživatelského rozhraní, které uživatelé neočekávají, že změní, může narušit použitelnost a předvídatelnost uživatelského rozhraní, kde tlačítka překvapivě mění polohu nebo účel bez varování, což ztěžuje některé skupiny uživatelů, aby zůstali produktivní.
+* Odměňování akce na prvky uživatelského rozhraní, které uživatelé neočekávají ke změně, může narušit použitelnost a předvídatelnost uživatelského rozhraní, kde tlačítka překvapivě mění polohu nebo účel bez varování, což ztěžuje určitým skupinám uživatelů zůstat produktivní.
 
 Implementujte tyto osvědčené postupy:
 
@@ -122,7 +122,7 @@ Níže jsou uvedeny oblasti návrhu pro odpovědné implementace AI. Další inf
 ![Hodnoty AI z budoucích výpočtů](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
 ### <a name="accountability"></a>Odpovědnost
-*Lidé, kteří navrhují a nasazují systémy ai, musí být zodpovědní za to, jak jejich systémy fungují*. 
+*Lidé, kteří navrhují a nasazují systémy ai, musí být zodpovědní za to, jak jejich systémy fungují*.
 
 * Vytvořte interní pokyny, jak implementovat personalizátor, dokumentovat je a sdělit je svému týmu, vedoucím pracovníkům a dodavatelům.
 * Provádět pravidelné kontroly toho, jak se vypočítávají skóre odměn, provádět offline hodnocení, abyste zjistili, jaké funkce ovlivňují personalistu, a použijte výsledky k odstranění nepotřebných a zbytečných funkcí.
@@ -155,9 +155,9 @@ Níže jsou uvedeny oblasti návrhu pro odpovědné implementace AI. Další inf
 *Systémy ai by měly být bezpečné a respektovat soukromí*. Při použití personalizace:
 
 * *Informujte uživatele předem o shromažďovaných datech a způsobu jejich použití a předem získejte jejich souhlas*v návaznosti na místní a oborové předpisy.
-* *Poskytněte uživatelské ovládací prvky chránící ochranu osobních údajů.* U aplikací, které ukládají osobní údaje, zvažte poskytnutí snadno dostupného tlačítka pro funkce, jako jsou: 
-   * `Show me all you know about me`    
-   * `Forget my last interaction` 
+* *Poskytněte uživatelské ovládací prvky chránící ochranu osobních údajů.* U aplikací, které ukládají osobní údaje, zvažte poskytnutí snadno dostupného tlačítka pro funkce, jako jsou:
+   * `Show me all you know about me`
+   * `Forget my last interaction`
    * `Delete all you know about me`
 
 V některých případech mohou být tyto zákonem vyžadovány. Zvažte kompromisy v rekvalifikačních modelech pravidelně, aby neobsahovaly stopy odstraněných dat.
@@ -165,7 +165,7 @@ V některých případech mohou být tyto zákonem vyžadovány. Zvažte komprom
 ### <a name="inclusiveness"></a>Inkluzivita
 *Řešit širokou škálu lidských potřeb a zkušeností*.
 * *Poskytněte přizpůsobené prostředí pro rozhraní s podporou přístupnosti.* Účinnost, která pochází z dobré personalizace - použít ke snížení množství úsilí, pohybu a zbytečné opakování v interakcích- může být zvláště prospěšné pro osoby se zdravotním postižením.
-* *Upravte chování aplikace na kontext*. Personalizace můžete použít k rozmísťování mezi záměry v chatu bot, například jako správný výklad může být kontextové a jedna velikost nemusí vyhovovat všem. 
+* *Upravte chování aplikace na kontext*. Personalizace můžete použít k rozmísťování mezi záměry v chatu bot, například jako správný výklad může být kontextové a jedna velikost nemusí vyhovovat všem.
 
 
 ## <a name="proactive-readiness-for-increased-data-protection-and-governance"></a>Proaktivní připravenost na zvýšenou ochranu a správu údajů
@@ -185,7 +185,7 @@ Zvažte vytvoření metod pro členy týmu, uživatele a vlastníky firem, kter�
 Každá osoba, přemýšlet o vedlejší účinky použití jakékoli technologie je omezena jejich perspektivy a životní zkušenosti. Rozšiřte rozsah dostupných názorů tím, že do svých týmů, uživatelů nebo poradních sborů zavedete rozmanitější hlasy; tak, aby bylo možné a povzbuzováno k tomu, aby se ozývají. Zvažte školicí a výukové materiály k dalšímu rozšíření znalostí týmu v této doméně a k přidání možností diskutovat o složitých a citlivých tématech.
 
 Zvažte použití úkolů týkajících se zodpovědného použití stejně jako jiné úlohy příčně se stavby v životním cyklu aplikace, jako jsou úkoly související s uživatelským prostředím, zabezpečením nebo devops. Tyto úkoly a jejich požadavky nemohou být nápad. Zodpovědné používání by mělo být diskutováno a ověřováno po celou dobu životního cyklu aplikace.
- 
+
 ## <a name="questions-and-feedback"></a>Otázky a zpětná vazba
 
 Společnost Microsoft neustále vkládá úsilí do nástrojů a dokumentů, které vám pomohou tyto povinnosti plnit. Náš tým vás zve k [poskytnutí zpětné vazby společnosti Microsoft,](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) pokud se domníváte, že další nástroje, funkce produktu a dokumenty vám pomohou implementovat tyto pokyny pro používání personalistu.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c4d34a6db774712e13ea86d38ae48a543a07a8bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e60d3f0221bce836f49e87a96c762e68cf8a60ad
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79529760"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473680"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Úvodní příručka: Přidání přihlášení s Microsoftem do webové aplikace ASP.NET Core
 V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak ASP.NET webová aplikace Core může přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z libovolné instance Služby Azure Active Directory (Azure AD). (Viz [jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -75,7 +75,7 @@ V tomto rychlém startu se pomocí ukázky kódu dozvíte, jak ASP.NET webová a
 > Nakonfigurovali jsme váš projekt s hodnotami vlastností vaší aplikace a je připravený ke spuštění. 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3: Spuštění projektu sady Visual Studio
 > 1. Extrahovat soubor ZIP do místní složky v kořenové složce – například **C:\Azure-Samples**
@@ -165,7 +165,7 @@ Pomocí atributu můžete chránit metody `[Authorize]` řadiče nebo řadiče. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na úložiště GitHub pro tento kurz ASP.NET Core pro další informace, včetně pokynů, jak přidat ověřování do zbrusu nové webové aplikace ASP.NET, jak volat Microsoft Graph a další rozhraní API Microsoft, jak volat vlastní rozhraní API, jak přidat jak se přihlásit k uživatelům v národních cloudech nebo pomocí sociálníidentity a další:
+Podívejte se na úložiště GitHub pro tento kurz ASP.NET Core pro další informace, včetně pokynů, jak přidat ověřování do zbrusu nové webové aplikace ASP.NET, jak volat Microsoft Graph a další rozhraní API Microsoft, jak volat vlastní rozhraní API, jak přidat autorizaci, jak přihlásit uživatele v národních cloudech nebo se sociálními identitami a dalšími :
 
 > [!div class="nextstepaction"]
 > [kurz ASP.NET Základní webová aplikace](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

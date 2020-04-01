@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: e296ae36eeeb816d8704ab03824f8cbb80082ea6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77163003"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478478"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Odesílání událostí do event hubů nebo příjem z nich pomocí JavaScriptu (azure/event-hubs verze 5)
 Tento rychlý start ukazuje, jak odesílat události do centra událostí a přijímat je pomocí balíčku JavaScript **azure/event-hubs verze 5.** 
@@ -109,6 +109,10 @@ Blahopřejeme! Nyní jste odeslali události do centra událostí.
 
 ## <a name="receive-events"></a>Příjem událostí
 V této části přijímáte události z centra událostí pomocí úložiště úložiště objektů Blob Azure v aplikaci JavaScript. Provádí kontrolní body metadat na přijaté zprávy v pravidelných intervalech v objektu blob úložiště Azure. Tento přístup usnadňuje další příjem zpráv později z místa, kde jste skončili.
+
+> [!NOTE]
+> Pokud používáte azure zásobníku, tato platforma může podporovat jinou verzi sady Storage Blob SDK než ty, které jsou obvykle k dispozici v Azure. Například pokud používáte [ve verzi Azure Stack Hub 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze pro službu Storage je verze 2017-11-09. V takovém případě kromě následujících kroků v této části budete muset také přidat kód pro cílrozhraní API služby úložiště verze 2017-11-09. Příklad, jak cílit na konkrétní verzi rozhraní API úložiště, najdete [v tématu JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) a ukázky [jazyka Na](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) GitHubu. Další informace o verzích služeb Azure Storage, které jsou podporované v centru Azure Stack Hub, najdete v centru [Azure Stack Hub: Rozdíly a důležité informace](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu úložiště Azure a kontejneru objektů blob
 Pokud chcete vytvořit účet úložiště Azure a kontejner objektů blob v něm, proveďte následující akce:

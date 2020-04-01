@@ -13,17 +13,17 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ef042b9eb625a0d0de5d5dcb883b823c3a499aa9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9515238449b3ece79815c9b3c616bd715b3b3400
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76698913"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476545"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
 > [!IMPORTANT]
-> Důrazně doporučujeme používat [Microsoft Graph](https://developer.microsoft.com/graph) místo rozhraní Azure AD Graph API pro přístup k prostředkům Azure Active Directory (Azure AD). Náš vývojový program se nyní soustředí na Microsoft Graph a pro Azure AD Graph API nejsou plánovaná žádná další vylepšení. Existuje velmi omezený počet scénářů, pro které rozhraní API Azure AD Graph může být stále vhodné; Další informace najdete v [tématu Microsoft Graph nebo Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogu a [migrace aplikací Azure AD Graph do Microsoft Graphu](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+> Důrazně doporučujeme používat [Microsoft Graph](https://developer.microsoft.com/graph) místo rozhraní Azure AD Graph API pro přístup k prostředkům Azure Active Directory (Azure AD). Náš vývojový program se nyní soustředí na Microsoft Graph a pro Azure AD Graph API nejsou plánovaná žádná další vylepšení. Existuje velmi omezený počet scénářů, pro které rozhraní API Azure AD Graph může být stále vhodné; Další informace najdete v [tématu Microsoft Graph nebo Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blogu a [migrace aplikací Azure AD Graph do Microsoft Graphu](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
 
 Tento článek se vztahuje na rozhraní API Azure AD Graph. Podobné informace související s rozhraním Microsoft Graph API najdete [v tématu Použití rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api).
 

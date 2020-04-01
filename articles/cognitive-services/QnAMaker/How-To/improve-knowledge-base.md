@@ -2,13 +2,13 @@
 title: Zlepšete znalostní bázi - QnA Maker
 description: Zlepšete kvalitu své znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo zamítněte, přidejte bez odebrání nebo změny stávajících otázek.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 8b2176731ce456b70521cc9208435d0b19943ab8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053073"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474886"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí aktivních otázek navržených učením ve znalostní bázi
 
@@ -203,7 +203,7 @@ V [ukázce Azure Botu](https://aka.ms/activelearningsamplebot)byly naprogramová
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Příklad kódu Jazyka C# pro rozhraní TRAIN API s rozhraním Bot Framework 4.x
 
-Následující kód ukazuje, jak odesílat informace zpět do QnA Maker s train API. Tato [ukázka úplného kódu](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) je k dispozici na GitHubu.
+Následující kód ukazuje, jak odesílat informace zpět do QnA Maker s train API.
 
 ```csharp
 public class FeedbackRecords
@@ -266,7 +266,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 
 ### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Příklad kódu Node.js pro rozhraní TRAIN API s rozhraním Bot Framework 4.x
 
-Následující kód ukazuje, jak odesílat informace zpět do QnA Maker s train API. Tato [ukázka úplného kódu](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) je k dispozici na GitHubu.
+Následující kód ukazuje, jak odesílat informace zpět do QnA Maker s train API.
 
 ```javascript
 async callTrain(stepContext){
@@ -331,8 +331,8 @@ Sloupec `SuggestedQuestions` je objekt JSON informací implicitní, `autosuggest
 ```
 
 Pomocí rozhraní API pro změny stahování můžete také zkontrolovat tyto změny pomocí sady REST nebo libovolné sady SDK založené na jazyce:
-* [ROZHRANÍ API PRO ODPOČINEK](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [Sada SDK rozhraní .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
 Při opětovném importu této aplikace aktivní učení pokračuje ve shromažďování informací a doporučujeme návrhy pro vaši znalostní bázi.

@@ -1,21 +1,21 @@
 ---
-title: 'Kurz: Jak nahrát obrázek – Vizuální vyhledávání Bingu'
+title: 'Kurz: Jak nahrát obrázek pomocí rozhraní API pro vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Rozděluje proces nahrávání obrázku do Bingu, aby o něm získal přehledy, a potom parsuje a zobrazí odpověď.
+description: Přečtěte si, jak nahrát obrázek do Bingu, získat přehledy o něm, zobrazit odpověď.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74689178"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477930"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Kurz: Nahrávání obrázků do rozhraní API pro vizuální vyhledávání Bingu
 

@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218026"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473469"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio (klasické) pomocí správy rozhraní API
 
@@ -217,7 +217,7 @@ Chcete-li experiment publikovat, klepněte na tlačítko **Ano.**
 ![ano-publikovat](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Otestování webové služby
-Webová služba AzureML se skládá z koncových bodů RSS (služba požadavku a odpovědi) a bes (služba dávkového spuštění). RSS je pro synchronní provádění. BES je pro asynchronní provádění úloh. Chcete-li otestovat webovou službu s ukázkovým zdrojem Pythonu níže, možná budete muset stáhnout a nainstalovat Azure SDK pro Python (viz: [Jak nainstalovat Python](/azure/python/python-sdk-azure-install)).
+Webová služba AzureML se skládá z koncových bodů RSS (služba požadavku a odpovědi) a bes (služba dávkového spuštění). RSS je pro synchronní provádění. BES je pro asynchronní provádění úloh. Chcete-li otestovat webovou službu s ukázkovým zdrojem Pythonu níže, možná budete muset stáhnout a nainstalovat Azure SDK pro Python (viz: [Jak nainstalovat Python](/azure/developer/python/azure-sdk-install)).
 
 Budete také potřebovat **pracovní prostor**, **službu**a **api_key** experimentu pro níže uvedený ukázkový zdroj. Pracovní prostor a službu můžete najít kliknutím na **požadavek/odpověď** nebo **dávkové spuštění** experimentu na řídicím panelu webové služby.
 

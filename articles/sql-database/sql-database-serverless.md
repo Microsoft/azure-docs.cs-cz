@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
-ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a72d3dc7f7b3fddf66df8111b1e92116a62883a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268701"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474022"
 ---
 # <a name="azure-sql-database-serverless"></a>Bez serveru Azure SQL Database
 
@@ -151,7 +151,7 @@ Latence automatického obnovení a automatického pozastavení databáze bez ser
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Transparentní šifrování dat spravované zákazníkem (BYOK)
 
-Pokud je při odstranění nebo odvolání klíče automaticky pozastaveno šifrování [transparentních dat](transparent-data-encryption-byok-azure-sql.md) spravované zákazníkem (BYOK) a databáze bez serveru je automaticky pozastavena, zůstane databáze ve stavu automatického pozastaveného.  V tomto případě při dalším pokusu o obnovení databáze zůstane pozastavena, dokud jeho stav přechody na nepřístupné po přibližně 10 minut nebo méně.  Jakmile databáze stane nepřístupné, proces obnovení je stejný jako pro zřízené výpočetní databáze.  Pokud je databáze bez serveru online, když dojde k odstranění nebo odvolání klíče, pak databáze také stane nepřístupné po přibližně 10 minut nebo méně stejným způsobem jako u zřízených výpočetních databází.
+Pokud je při odstranění nebo odvolání klíče automaticky pozastaveno šifrování [transparentních dat](transparent-data-encryption-byok-azure-sql.md) spravované zákazníkem (BYOK) a databáze bez serveru je automaticky pozastavena, zůstane databáze ve stavu automatického pozastaveného.  V tomto případě při další obnovení databáze databáze zůstane online, dokud jeho stav přechody na nepřístupné po přibližně 10 minut nebo méně.  Jakmile databáze stane nepřístupné, proces obnovení je stejný jako pro zřízené výpočetní databáze.  Pokud je databáze bez serveru online, když dojde k odstranění nebo odvolání klíče, pak databáze také stane nepřístupné po přibližně 10 minut nebo méně stejným způsobem jako u zřízených výpočetních databází.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Registrace do výpočetní úrovně bez serveru
 

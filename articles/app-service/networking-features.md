@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bc3d35830d833c0223a400140c53e583d2f6ed37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475421"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474903"
 ---
 # <a name="app-service-networking-features"></a>Síťové funkce služby App Service
 
@@ -81,7 +81,7 @@ Když použijete adresu přiřazenou aplikaci, váš provoz stále prochází st
 * Podpora ip-založené SSL potřeby pro vaši aplikaci
 * Nastavení vyhrazené adresy pro vaši aplikaci, která není sdílena s ničím jiným
 
-Můžete se dozvědět, jak nastavit adresu v aplikaci s kurzem konfigurace [IP založené SSL][appassignedaddress]. 
+Můžete se dozvědět, jak nastavit adresu ve vaší aplikaci pomocí kurzu [na Přidat certifikát TLS/SSL ve službě Azure App Service][appassignedaddress]. 
 
 ### <a name="access-restrictions"></a>Omezení přístupu 
 

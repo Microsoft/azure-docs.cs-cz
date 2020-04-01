@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5655a58c3538ac47e8649619b079dc46ee01242
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244963"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473219"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
 
@@ -78,7 +78,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 6. Vyberte **Uložit**.
 
 >[!NOTE]
->Pokud má primární síťové rozhraní více konfigurací IP adres a změníte privátní IP adresu primární konfigurace IP, je nutné ručně znovu přiřadit primární a sekundární IP adresy k síťovému rozhraní v systému Windows (není vyžadováno pro Linux) . Informace o ručním přiřazení adres IP k síťovému rozhraní v operačním systému naleznete v tématu [Přiřazení více adres IP virtuálním počítačům](virtual-network-multiple-ip-addresses-portal.md#os-config). Před ručním přidáním IP adres do operačního systému virtuálního počítače najdete v tématu [Privátní](#private) IP adresy. Do operačního systému virtuálního počítače nepřidávejte žádné veřejné IP adresy.
+>Pokud má primární síťové rozhraní více konfigurací IP adres a změníte privátní IP adresu primární konfigurace IP, je nutné ručně znovu přiřadit primární a sekundární IP adresy k síťovému rozhraní v systému Windows (není vyžadováno pro Linux). Informace o ručním přiřazení adres IP k síťovému rozhraní v operačním systému naleznete v tématu [Přiřazení více adres IP virtuálním počítačům](virtual-network-multiple-ip-addresses-portal.md#os-config). Před ručním přidáním IP adres do operačního systému virtuálního počítače najdete v tématu [Privátní](#private) IP adresy. Do operačního systému virtuálního počítače nepřidávejte žádné veřejné IP adresy.
 
 **Příkazy**
 
@@ -120,7 +120,7 @@ Kromě primární konfigurace PROTOKOLU IP může být v síťovém rozhraní p�
 
 - Musí mít přiřazenou soukromou adresu IPv4 nebo IPv6. Pokud je adresa IPv6, síťové rozhraní může mít pouze jednu sekundární konfiguraci IP. Pokud je adresa IPv4, síťové rozhraní může mít přiřazeno více sekundárních konfigurací IP adres. Další informace o tom, kolik privátní ch a veřejných adres IPv4 lze přiřadit k síťovému rozhraní, najdete v článku [omezení Azure.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)
 - Může mít také přiřazenu veřejnou adresu IPv4 nebo IPv6. Přiřazení více adres IPv4 k síťovému rozhraní je užitečné ve scénářích, jako jsou:
-  - Hostovat několik webů nebo služeb s různými IP adresami a certifikáty SSL na jednom serveru.
+  - Hostování více webů nebo služeb s různými IP adresami a certifikáty TLS/SSL na jednom serveru.
   - Virtuální počítač sloužící jako síťové virtuální zařízení, jako je brána firewall nebo nástroj pro vyrovnávání zatížení.
   - Možnost přidat libovolnou privátní adresy IPv4 pro libovolné síťové rozhraní do back-endového fondu Azure Load Balancer. V minulosti bylo možné do back-endového fondu přidat pouze primární adresu IPv4 pro primární síťové rozhraní. Další informace o tom, jak vyvážit zatížení více konfigurací IPv4, najdete v článku [Vyrovnávání zatížení více konfigurací IP.](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
   - Možnost vyrovnávání zatížení jednu adresu IPv6 přiřazenou síťovému rozhraní. Další informace o tom, jak vyvážit zatížení na soukromou adresu IPv6, najdete v článku [Adresa IPv6 vyrovnávání zatížení.](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -136,7 +136,7 @@ Kromě primární konfigurace PROTOKOLU IP může být v síťovém rozhraní p�
 Ve výchozím nastavení přiřazují servery DHCP Azure privátní adresu IPv4 pro [primární konfiguraci IP sítě](#primary) Azure síťovému rozhraní Azure síťovému rozhraní v rámci operačního systému virtuálního počítače. Pokud to není nutné, nikdy byste neměli ručně nastavit IP adresu síťového rozhraní v operačním systému virtuálního počítače.
 
 > [!WARNING]
-> Pokud se adresa IPv4 nastavená jako primární adresa IP síťového rozhraní v operačním systému virtuálního počítače někdy liší od privátní adresy IPv4 přiřazené k primární konfiguraci IP primárního síťového rozhraní připojeného k virtuálnímu počítači v rámci Azure ztratíte připojení k virtuálnímu počítači.
+> Pokud se adresa IPv4 nastavená jako primární IP adresa síťového rozhraní v rámci operačního systému virtuálního počítače někdy liší od privátní adresy IPv4 přiřazené k primární konfiguraci IP primárního síťového rozhraní připojeného k virtuálnímu počítači v rámci Azure, ztratíte připojení k virtuálnímu počítači.
 
 Existují scénáře, kde je nutné ručně nastavit IP adresu síťového rozhraní v rámci operačního systému virtuálního počítače. Například je nutné ručně nastavit primární a sekundární IP adresy operačního systému Windows při přidávání více IP adres do virtuálního počítače Azure. U virtuálního počítače s Linuxem může být nutné ručně nastavit sekundární ADRESY IP. Podrobnosti najdete [v tématu Přidání IP adres do operačního systému virtuálního počítačů.](virtual-network-multiple-ip-addresses-portal.md#os-config) Pokud budete někdy potřebovat změnit adresu přiřazenou konfiguraci IP adresy, doporučujeme:
 

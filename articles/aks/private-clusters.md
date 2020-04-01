@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: cdefcfe460a97f647afa05947e92fae0c4d07001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499299"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398054"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -80,6 +80,18 @@ Jak již bylo zmíněno, partnerský vztah virtuální sítě je jedním ze způ
 7. V levém podokně vyberte **Partnerské partnerské partnerské strany**.  
 8. Vyberte **Přidat**, přidejte virtuální síť virtuálního počítače a vytvořte partnerský vztah.  
 9. Přejděte do virtuální sítě, kde máte virtuální počítač, vyberte **partnerské partnerské partnery**, vyberte virtuální síť AKS a pak vytvořte partnerský vztah. Pokud se adresa vychýlivek ve virtuální síti AKS a kolizi virtuální sítě virtuálního počítače, partnerský vztah se nezdaří. Další informace naleznete v [tématu Partnerský vztah virtuální sítě][virtual-network-peering].
+
+## <a name="hub-and-spoke-with-custom-dns"></a>Rozbočovač a paprsek s vlastním DNS
+
+[Architektury rozbočovače a paprsků](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se běžně používají k nasazení sítí v Azure. V mnoha z těchto nasazení nastavení DNS ve virtuálních sítích paprsku jsou nakonfigurovány tak, aby odkazovaly na centrální předávání DNS, aby bylo možné místní a azure-založené rozlišení DNS. Při nasazování clusteru AKS do takového síťového prostředí, existují některé zvláštní aspekty, které je třeba vzít v úvahu.
+
+![Centrum privátního clusteru a paprskový](media/private-clusters/aks-private-hub-spoke.png)
+
+1. Ve výchozím nastavení se při zřízení privátního clusteru vytvoří soukromý koncový bod (1) a soukromá zóna DNS (2) ve skupině spravovaných prostředků clusteru. Cluster používá záznam A v privátní zóně k vyřešení IP adresy privátního koncového bodu pro komunikaci se serverem rozhraní API.
+
+2. Privátní zóna DNS je propojena jenom s virtuální sítí, ke které jsou uzly clusteru připojeny (3). To znamená, že soukromý koncový bod lze vyřešit pouze hostitelé v této propojené virtuální síti. Ve scénářích, kde není na virtuální síti (výchozí) nakonfigurován žádný vlastní DNS, to funguje bez problémů jako hostitelé na čísle 168.63.129.16 pro DNS, který může vyřešit záznamy v privátní zóně DNS kvůli propojení.
+
+3. Ve scénářích, kde virtuální síť obsahující váš cluster má vlastní nastavení DNS (4), nasazení clusteru se nezdaří, pokud privátní zóna DNS je propojena s virtuální sítí, která obsahuje vlastní překladače DNS (5). Tento odkaz lze vytvořit ručně po vytvoření privátní zóny během zřizování clusteru nebo prostřednictvím automatizace při zjišťování vytvoření zóny pomocí zásad Azure nebo jiných mechanismů nasazení založených na událostech (například Azure Event Grid a Azure Functions).
 
 ## <a name="dependencies"></a>Závislosti  
 

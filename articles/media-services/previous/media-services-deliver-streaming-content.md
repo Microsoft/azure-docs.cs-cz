@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67051748"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476705"
 ---
 # <a name="publish-media-services-content-using-net"></a>Publikování obsahu mediálních služeb pomocí rozhraní .NET  
 > [!div class="op_single_selector"]
-> * [Odpočinku](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [Portál](media-services-portal-publish.md)
 > 
@@ -108,7 +108,7 @@ Výstupy:
 
 
 > [!NOTE]
-> Můžete také streamovat obsah přes připojení SSL. Chcete-li tento přístup provést, ujistěte se, že vaše streamované adresy URL začínají protokolem HTTPS. V současné době AMS nepodporuje SSL s vlastními doménami.
+> Můžete také streamovat obsah přes připojení TLS. Chcete-li tento přístup provést, ujistěte se, že vaše streamované adresy URL začínají protokolem HTTPS. V současné době AMS nepodporuje TLS s vlastními doménami.
 > 
 > 
 

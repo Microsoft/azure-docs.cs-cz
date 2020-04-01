@@ -3,12 +3,12 @@ title: Zálohování sdílené složky Azure
 description: Přečtěte si, jak zálohovat sdílené složky Azure v trezoru služby Recovery Services
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78386717"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396285"
 ---
 # <a name="about-azure-file-share-backup"></a>Zálohování sdílené složky Azure
 
@@ -43,6 +43,15 @@ Zálohování sdílení souborů Azure je nativní cloudové řešení zálohov�
 6. Obsah sdílené složky Azure (jednotlivé soubory nebo úplnou sdílenou složku) můžete obnovit ze snímků dostupných ve zdrojové sdílené složce. Jakmile je operace spuštěna, adresa URL snímku se načte z úložiště metadat a data jsou uvedena a přenesena ze zdrojového snímku do cílovésdílené složky podle vašeho výběru.
 
 7. Data monitorování úloh zálohování a obnovení se zasouvá do služby Azure Backup Monitoring. To vám umožní sledovat cloudové zálohy pro sdílené složky souborů na jednom řídicím panelu. Kromě toho můžete také nakonfigurovat výstrahy nebo e-mailová oznámení, pokud je ovlivněn stav zálohy. E-maily se posílají prostřednictvím e-mailové služby Azure.
+
+## <a name="backup-costs"></a>Náklady na zálohování
+
+Zálohování sdílené složky Azure je řešení založené na snímku a poplatky za úložiště, které se účtují za snímky, se účtují spolu s využitím souborů Azure podle podrobností o cenách uvedených [zde](https://azure.microsoft.com/pricing/details/storage/files/).
+
+Poplatek za chráněnou instanci za využití řešení zálohování je však podle cenového modelu popsaného v části [Zálohování pro soubory Azure.](https://azure.microsoft.com/pricing/details/backup/) V současné době byla skutečná cena aktualizována pouze pro západní střední USA. V jiných regionech budou přesné ceny brzy aktualizovány s některými regionálními variantami, ale za použití stejného cenového modelu.
+
+>[!NOTE]
+>Během náhledu neexistuje žádný "poplatek za chráněnou instanci" a bude vám účtován pouze za snímky podle [zde](https://azure.microsoft.com/pricing/details/storage/files/)uvedených cen .
 
 ## <a name="next-steps"></a>Další kroky
 

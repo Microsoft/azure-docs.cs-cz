@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 0c2190c29054301a8e21a9a27eb078802fbc9612
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350859"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474479"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím ukládání sad výsledků do mezipaměti  
 Je-li povoleno ukládání do mezipaměti sady výsledků, sql analytics automaticky ukládá výsledky dotazu do mezipaměti v databázi uživatelů pro opakované použití.  To umožňuje následné spuštění dotazu získat výsledky přímo z trvalé mezipaměti, takže recomputation není potřeba.   Ukládání do mezipaměti sady výsledků zlepšuje výkon dotazu a snižuje využití výpočetních prostředků.  Kromě toho dotazy pomocí sady výsledků uložených v mezipaměti nepoužívají žádné sloty souběžnosti a proto se nezapočítávají do existujících limitů souběžnosti. Z bezpečnostních důvodů mají uživatelé přístup k výsledkům uložený v mezipaměti pouze v případě, že mají stejná oprávnění k přístupu k datům jako uživatelé, kteří vytvářejí výsledky uložené v mezipaměti.  
@@ -65,10 +65,10 @@ Sada výsledků v mezipaměti je znovu použita pro dotaz, pokud jsou splněny v
 - Existuje přesná shoda mezi novým dotazem a předchozím dotazem, který vygeneroval mezipaměť sady výsledků.
 - V tabulkách, ze kterých byla generována sada výsledků uložené v mezipaměti, nejsou žádná data ani změny schématu.
 
-Spuštěním tohoto příkazu zkontrolujte, zda byl dotaz proveden s výsledky mezipaměti přístupů nebo chybět. Pokud dojde k přístupu do mezipaměti, result_cache_hit vrátí 1.
+Spuštěním tohoto příkazu zkontrolujte, zda byl dotaz proveden s výsledky mezipaměti přístupů nebo chybět. Sloupec result_set_cache vrátí hodnotu 1 pro přístup do mezipaměti, 0 pro nedoletovou volbu a záporné hodnoty z důvodů, proč nebylo použito ukládání do mezipaměti sady výsledků. Podrobnosti najdete [na sys.dm_pdw_exec_requests.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 
 ```sql
-SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
+SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

@@ -6,17 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246874"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478852"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Použití knihovny hromadného prováděcího modulu .NET k provádění hromadných operací v Azure Cosmos DB
+
+> [!NOTE]
+> Tato hromadná knihovna prováděcích modulů popsaná v tomto článku je udržována pro aplikace používající verzi sady .NET SDK 2.x. Pro nové aplikace můžete použít **hromadnou podporu,** která je přímo k dispozici s [.NET SDK verze 3.x](tutorial-sql-api-dotnet-bulk-import.md) a nevyžaduje žádnou externí knihovnu. 
+
+> Pokud aktuálně používáte knihovnu hromadného prováděcího modulu a plánujete migraci na hromadnou podporu v novější sadě SDK, migrujte aplikaci pomocí pokynů pro [migraci.](how-to-migrate-from-bulk-executor-library.md)
 
 Tento kurz obsahuje pokyny k použití hromadné hodovacího modulu .NET knihovny k importu a aktualizaci dokumentů do kontejneru Azure Cosmos. Další informace o knihovně hromadného prováděcího modulu a o tom, jak vám pomáhá využít masivní propustnost a úložiště, najdete v článku [přehled knihovny hromadného prováděcího modulu.](bulk-executor-overview.md) V tomto kurzu uvidíte ukázkovou aplikaci .NET, která hromadně importuje náhodně generované dokumenty do kontejneru Azure Cosmos. Po importu se zobrazí způsob hromadné aktualizace importovaných dat zadáním oprav jako operací, které se mají provádět v určitých polích dokumentu.
 

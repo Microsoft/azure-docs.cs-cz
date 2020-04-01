@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1212e77db5e0ec83f8dd966a14872a682b3e0202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295534"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478318"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření služby ASE pomocí šablony Azure Resource Manager
 
@@ -36,9 +36,9 @@ Automatizace vytváření ase:
 
 1. Vytvořte ase ze šablony. Pokud vytvoříte externí sek, jste hotovi po tomto kroku. Pokud vytvoříte službu ASE ilb, je třeba provést několik dalších věcí.
 
-2. Po vytvoření služby ASE ilb se nahraje certifikát SSL, který odpovídá vaší doméně služby ASE iLB.
+2. Po vytvoření služby ASE ilb se nahraje certifikát TLS/SSL, který odpovídá vaší doméně služby ASE ILB.
 
-3. Nahraný certifikát SSL je přiřazen k ase Služby ILB jako jeho "výchozí" certifikát SSL.  Tento certifikát se používá pro přenos ssl do aplikací ve službě ILB ASE při použití společné `https://someapp.mycustomrootdomain.com`kořenové domény, která je přiřazena službě ASE (například ).
+3. Nahraný certifikát TLS/SSL je přiřazen ase ILB Jako jeho "výchozí" certifikát TLS/SSL.  Tento certifikát se používá pro přenos tls/ssl do aplikací ve službě ILB ASE při použití společné `https://someapp.mycustomrootdomain.com`kořenové domény, která je přiřazena službě ASE (například).
 
 
 ## <a name="create-the-ase"></a>Vytvoření ase
@@ -61,17 +61,17 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 To trvá asi hodinu pro vytvoření ase. Potom se služba ASE zobrazí na portálu v seznamu ases pro předplatné, které spustilo nasazení.
 
-## <a name="upload-and-configure-the-default-ssl-certificate"></a>Nahrání a konfigurace "výchozího" certifikátu SSL
-Certifikát SSL musí být přidružen ke službě ASE jako "výchozí" certifikát SSL, který se používá k navázání připojení SSL k aplikacím. Pokud je *výchozí*přípona DNS služby ASE `https://some-random-app.internal-contoso.com` internal-contoso.com , vyžaduje připojení k certifikátu SSL platný pro **.internal-contoso.com*. 
+## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>Nahrání a konfigurace "výchozího" certifikátu TLS/SSL
+Certifikát TLS/SSL musí být přidružen ke službě ASE jako "výchozí" certifikát TLS/SSL, který se používá k navázání připojení TLS k aplikacím. Pokud je *internal-contoso.com*výchozí přípona DNS služby `https://some-random-app.internal-contoso.com` ASE , vyžaduje připojení k certifikátu TLS/SSL platný pro **.internal-contoso.com*. 
 
-Získejte platný certifikát SSL pomocí interních certifikačních úřadů, zakoupením certifikátu od externího vystavittele nebo pomocí certifikátu podepsaného svým držitelem. Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurovány následující atributy certifikátu:
+Získejte platný certifikát TLS/SSL pomocí interních certifikačních úřadů, zakoupením certifikátu od externího vystavittele nebo pomocí certifikátu podepsaného svým držitelem. Bez ohledu na zdroj certifikátu TLS/SSL musí být správně nakonfigurovány následující atributy certifikátu:
 
 * **Předmět**: Tento atribut musí být nastaven na **.your-root-domain-here.com*.
-* **Alternativní název předmětu**: Tento atribut musí obsahovat **.your-root-domain-here.com* a *.scm.your-root-domain-here.com*. Připojení SSL k webu SCM/Kudu přidruženému ke každé aplikaci používají adresu formuláře *your-app-name.scm.your-root-domain-here.com*.
+* **Alternativní název předmětu**: Tento atribut musí obsahovat **.your-root-domain-here.com* a *.scm.your-root-domain-here.com*. Připojení TLS k webu SCM/Kudu přidruženému ke každé aplikaci používají adresu formuláře *your-app-name.scm.your-root-domain-here.com*.
 
-S platným certifikátem SSL v ruce jsou zapotřebí dva další přípravné kroky. Převeďte/uložte certifikát SSL jako soubor .pfx. Nezapomeňte, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
+S platným certifikátem TLS/SSL v ruce jsou zapotřebí další dva přípravné kroky. Převod/uložení certifikátu TLS/SSL jako souboru .pfx. Nezapomeňte, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
 
-Soubor .pfx je třeba převést na řetězec base64, protože certifikát SSL je odeslán pomocí šablony Správce prostředků. Vzhledem k tomu, že šablony Správce prostředků jsou textové soubory, musí být soubor .pfx převeden na řetězec base64. Tímto způsobem může být zahrnuta jako parametr šablony.
+Soubor .pfx musí být převeden na řetězec base64, protože certifikát TLS/SSL je odeslán pomocí šablony Správce prostředků. Vzhledem k tomu, že šablony Správce prostředků jsou textové soubory, musí být soubor .pfx převeden na řetězec base64. Tímto způsobem může být zahrnuta jako parametr šablony.
 
 Pomocí následujícího fragmentu kódu Prostředí PowerShellu:
 
@@ -96,7 +96,7 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-Po úspěšném vygenerování certifikátu SSL a jeho převedení na řetězec kódovaný base64 použijte ukázkovou šablonu Správce prostředků [Nakonfigurujte výchozí certifikát SSL][quickstartconfiguressl] na GitHubu. 
+Po úspěšném vygenerování a převodu certifikátu TLS/SSL na řetězec kódovaný base64 použijte ukázkovou šablonu Správce prostředků [Nakonfigurujte výchozí certifikát SSL][quickstartconfiguressl] na GitHubu. 
 
 Parametry v souboru *azuredeploy.parameters.json* jsou uvedeny zde:
 
@@ -105,7 +105,7 @@ Parametry v souboru *azuredeploy.parameters.json* jsou uvedeny zde:
 * *pfxBlobString*: Reprezentace řetězce kódu 64 na základě .pfx. Použijte dříve zobrazený fragment kódu a zkopírujte řetězec obsažený v souboru "exportedcert.pfx.b64". Vložte jej jako hodnotu atributu *pfxBlobString.*
 * *heslo*: Heslo používané k zabezpečení souboru .pfx.
 * *certificateThumbprint*: Kryptografický otisk certifikátu. Pokud tuto hodnotu načtete z prostředí PowerShell (například *$certificate. Kryptografický otisk* z předchozího fragmentu kódu) můžete použít hodnotu tak, jak je. Pokud zkopírujete hodnotu z dialogového okna Certifikát systému Windows, nezapomeňte odstranit cizí mezery. *CertifikátOtisk palce* by měl vypadat podobně jako AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *název certifikátu*: Popisný identifikátor řetězce, který si vlastní zvolíte k identifikaci certifikátu. Název se používá jako součást jedinečného identifikátoru Správce prostředků entity *Microsoft.Web/certificates,* která představuje certifikát SSL. Název *musí* končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE. Portál Azure používá tuto příponu jako indikátor, že certifikát se používá k zabezpečení služby ASE s povolenou službou ILB.
+* *název certifikátu*: Popisný identifikátor řetězce, který si vlastní zvolíte k identifikaci certifikátu. Název se používá jako součást jedinečného identifikátoru Správce prostředků entity *Microsoft.Web/certificates,* která představuje certifikát TLS/SSL. Název *musí* končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE. Portál Azure používá tuto příponu jako indikátor, že certifikát se používá k zabezpečení služby ASE s povolenou službou ILB.
 
 Zkrácený příklad *azuredeploy.parameters.json* je uveden zde:
 
@@ -136,7 +136,7 @@ Zkrácený příklad *azuredeploy.parameters.json* je uveden zde:
 }
 ```
 
-Po vyplnění souboru *azuredeploy.parameters.json* nakonfigurujte výchozí certifikát SSL pomocí fragmentu kódu Prostředí PowerShell. Změňte cesty k souborům tak, aby odpovídaly místu, kde jsou v počítači umístěny soubory šablon Správce prostředků. Nezapomeňte zadat vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
+Po vyplnění souboru *azuredeploy.parameters.json* nakonfigurujte výchozí certifikát TLS/SSL pomocí fragmentu kódu Prostředí PowerShell. Změňte cesty k souborům tak, aby odpovídaly místu, kde jsou v počítači umístěny soubory šablon Správce prostředků. Nezapomeňte zadat vlastní hodnoty pro název nasazení Správce prostředků a název skupiny prostředků:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,9 +147,9 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Trvá zhruba 40 minut na front-end ase použít změnu. Například pro výchozí velikosti ase, který používá dva front-endy, šablona trvá přibližně jednu hodinu a 20 minut na dokončení. V době, kdy je šablona spuštěna, nelze škálovat.  
 
-Po dokončení šablony aplikace na ASE ILB lze přistupovat přes HTTPS. Připojení jsou zabezpečena pomocí výchozího certifikátu SSL. Výchozí certifikát SSL se používá, když jsou aplikace ve službě ASE ILB adresovány pomocí kombinace názvu aplikace a výchozího názvu hostitele. Používá například `https://mycustomapp.internal-contoso.com` výchozí certifikát SSL pro **.internal-contoso.com*.
+Po dokončení šablony aplikace na ASE ILB lze přistupovat přes HTTPS. Připojení jsou zabezpečena pomocí výchozího certifikátu TLS/SSL. Výchozí certifikát TLS/SSL se používá, když jsou aplikace ve službě ILB ASE adresovány pomocí kombinace názvu aplikace a výchozího názvu hostitele. Používá například `https://mycustomapp.internal-contoso.com` výchozí certifikát TLS/SSL pro **.internal-contoso.com*.
 
-Stejně jako aplikace, které běží ve veřejné víceklientské službě, však vývojáři mohou konfigurovat vlastní názvy hostitelů pro jednotlivé aplikace. Mohou také nakonfigurovat jedinečné vazby certifikátů SNI SSL pro jednotlivé aplikace.
+Stejně jako aplikace, které běží ve veřejné víceklientské službě, však vývojáři mohou konfigurovat vlastní názvy hostitelů pro jednotlivé aplikace. Mohou také nakonfigurovat jedinečné vazby certifikátů SNI TLS/SSL pro jednotlivé aplikace.
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
 Služba App Service Environment má dvě verze: ASEv1 a ASEv2. Předchozí informace se týkaly verze ASEv2. V této části jsou uvedené rozdíly mezi verzemi ASEv1 a ASEv2.

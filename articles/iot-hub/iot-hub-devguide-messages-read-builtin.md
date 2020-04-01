@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2674ca0f4808cb6f01781565e57369ca5d3ac37
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284600"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478785"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
@@ -24,7 +24,7 @@ Ve výchozím nastavení jsou zprávy směrovány do integrovaného koncového b
 | **Počet oddílů** | Nastavte tuto vlastnost při vytváření definovat počet [oddílů](../event-hubs/event-hubs-features.md#partitions) pro zařízení-cloud události ingestování. |
 | **Retenční čas**  | Tato vlastnost určuje, jak dlouho ve dnech zprávy jsou zachovány pomocí ioT Hub. Výchozí hodnota je jeden den, ale může být zvýšena na sedm dní. |
 
-IoT Hub umožňuje uchovávání dat ve vestavěných event hubů po dobu maximálně 7 dnů. Můžete nastavit čas uchování při vytváření centra IoT Hub. Doba uchovávání dat v centru IoT Hub závisí na vaší úrovni centra IoT a typu jednotky. Pokud jde o velikost, integrované centra událostí můžete zachovat zprávy maximální velikost zprávy až do alespoň 24 hodin kvóty. Například pro 1 Jednotky S1 IoT Hub poskytuje dostatek úložiště zachovat alespoň 400 kB zprávy velikosti 4 kB každý. Pokud vaše zařízení posílají menší zprávy, mohou být uchovávány déle (až 7 dní) v závislosti na tom, kolik úložiště je spotřebováno. Garantujeme, že údaje budou uchovávány minimálně po stanovenou dobu uchovávání.
+IoT Hub umožňuje uchovávání dat ve vestavěných event hubů po dobu maximálně 7 dnů. Můžete nastavit čas uchování při vytváření centra IoT Hub. Doba uchovávání dat v centru IoT Hub závisí na vaší úrovni centra IoT a typu jednotky. Pokud jde o velikost, integrované centra událostí můžete zachovat zprávy maximální velikost zprávy až do alespoň 24 hodin kvóty. Například pro 1 Jednotky S1 IoT Hub poskytuje dostatek úložiště zachovat alespoň 400 kB zprávy velikosti 4 kB každý. Pokud vaše zařízení posílají menší zprávy, mohou být uchovávány déle (až 7 dní) v závislosti na tom, kolik úložiště je spotřebováno. Garantujeme, že údaje budou uchovávány minimálně po stanovenou dobu uchovávání. Platnost zpráv vyprší a po uplynutí doby uchovávání nebude přístupná. 
 
 Služba IoT Hub také umožňuje spravovat skupiny spotřebitelů na integrovaném koncovém bodu příjmu zařízení do cloudu. Pro každý IoT Hub můžete mít až 20 skupin spotřebitelů.
 
@@ -62,9 +62,9 @@ Sady SDK, které můžete použít k připojení k integrovanému koncovému bod
 
 | Jazyk | Sada SDK | Příklad | Poznámky |
 | -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Quickstart](quickstart-send-telemetry-dotnet.md) | Používá informace kompatibilní s event huby. |
- Java | https://github.com/Azure/azure-event-hubs-java | [Quickstart](quickstart-send-telemetry-java.md) | Používá informace kompatibilní s event huby. |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Quickstart](quickstart-send-telemetry-node.md) | Používá připojovací řetězec centra IoT Hub. |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Rychlý start](quickstart-send-telemetry-dotnet.md) | Používá informace kompatibilní s event huby. |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Rychlý start](quickstart-send-telemetry-java.md) | Používá informace kompatibilní s event huby. |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [Rychlý start](quickstart-send-telemetry-node.md) | Používá připojovací řetězec centra IoT Hub. |
 | Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Používá připojovací řetězec centra IoT Hub. |
 
 Integrace produktů, které můžete použít s integrovaným koncovým bodem kompatibilním s centrem událostí, který služby IoT Hub zveřejňuje, zahrnují:

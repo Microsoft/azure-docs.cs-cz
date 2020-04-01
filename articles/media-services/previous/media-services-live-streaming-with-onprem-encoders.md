@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251034"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476551"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Práce s kanály, které přijímají vícepřenosový živý přenos z místních kodérů
 
@@ -112,7 +112,7 @@ Kanál poskytuje vstupní koncový bod (ingestovat URL), který zadáte v živé
 
 Při vytváření kanálu můžete získat ingestující adresy URL. Chcete-li získat tyto adresy URL, kanál nemusí být ve **stavu Spuštěno.** Až budete připraveni začít s odesíláním dat do kanálu, kanál musí být ve **stavu Spuštěno.** Po zahájení příjem dat kanálu můžete zobrazit náhled datového proudu prostřednictvím adresy URL náhledu.
 
-Máte možnost ingestování fragmentovaného živého datového proudu MP4 (Smooth Streaming) přes připojení SSL. Chcete-li ingestovat přes SSL, nezapomeňte aktualizovat ingestující adresu URL na HTTPS. V současné době nelze ingestovat RTMP přes SSL.
+Máte možnost ingestování fragmentovaného živého datového proudu MP4 (Smooth Streaming) přes připojení TLS. Chcete-li ingestovat přes TLS, nezapomeňte aktualizovat ingestující adresu URL na HTTPS. V současné době nelze ingestovat RTMP přes TLS.
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Interval klíčových snímků
 Pokud používáte místní živý kodér ke generování datového proudu s více přenosovými rychlostmi, interval klíčových snímků určuje dobu trvání skupiny obrázků (GOP), jak ji používá tento externí kodér. Poté, co kanál obdrží tento příchozí datový proud, můžete dodávat živý přenos do aplikací pro přehrávání klientů v některém z následujících formátů: Plynulé streamování, dynamické adaptivní streamování přes HTTP (DASH) a živé streamování HTTP (HLS). Když provádíte živé vysílání, HLS je vždy dynamicky zabaleno. Ve výchozím nastavení media services automaticky vypočítá poměr balení segmentu HLS (fragmenty na segment) na základě intervalu klíčových snímků, který je přijat z živého kodéru.

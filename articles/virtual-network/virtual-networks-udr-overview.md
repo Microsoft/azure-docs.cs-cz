@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280063"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477874"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -122,7 +122,7 @@ Místní síťová brána si může vyměňovat trasy s bránou virtuální sít
 
 Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí ve virtuální síti se přidá samostatná trasa pro každou inzerovanou předponu. Trasa se přidá s uvedeným zdrojem a typem dalšího segmentu směrování *Brána virtuální sítě*. 
 
-Šíření tras ER a brány VPN lze zakázat v podsíti pomocí vlastnosti ve směrovací tabulce. Při výměně tras s Azure pomocí protokolu BGP se trasy nepřidají do směrovací tabulky všech podsítí se zakázaným šířením trasy brány virtuální sítě. Možnosti připojení u připojení VPN zajišťují [vlastní trasy](#custom-routes) s typem dalšího segmentu směrování *Brána virtuální sítě*. Podrobnosti naleznete v tématu [Jak zakázat šíření trasy brány virtuální sítě](manage-route-table.md#create-a-route-table).
+Šíření tras ER a brány VPN lze zakázat v podsíti pomocí vlastnosti ve směrovací tabulce. Při výměně tras s Azure pomocí protokolu BGP se trasy nepřidají do směrovací tabulky všech podsítí se zakázaným šířením trasy brány virtuální sítě. Možnosti připojení u připojení VPN zajišťují [vlastní trasy](#custom-routes) s typem dalšího segmentu směrování *Brána virtuální sítě*. **Šíření trasy by nemělo být zakázáno v síti GatewaySubnet. Brána nebude fungovat s tímto nastavením zakázáno.** Podrobnosti naleznete v tématu [Jak zakázat šíření trasy brány virtuální sítě](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Jak Azure vybírá trasu
 

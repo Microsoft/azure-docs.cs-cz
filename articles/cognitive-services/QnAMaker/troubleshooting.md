@@ -4,12 +4,12 @@ description: Sestavený seznam nejčastěji kladených otázek týkajících se 
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: e002efe74bf7bcd3d944b01b0a25a731a2db3f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284258"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474959"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -30,7 +30,7 @@ Přečtěte si další informace o [cenových úrovních](Concepts/azure-resourc
 <details>
 <summary><b>Jak získat koncový bod služby QnAMaker</b></summary>
 
-**Odpověď**: Koncový bod služby QnAMaker je užitečný pro účely ladění, když kontaktujete podporu QnAMaker nebo UserVoice. Koncový bod je adresa URL https://your-resource-name.azurewebsites.netv tomto formuláři: .
+**Odpověď**: Koncový bod služby QnAMaker je užitečný pro účely ladění, když kontaktujete podporu QnAMaker nebo UserVoice. Koncový bod je adresa URL `https://your-resource-name.azurewebsites.net`v tomto formuláři: .
 
 1. Přejděte na službu QnAMaker (skupinu prostředků) na [webu Azure Portal.](https://portal.azure.com)
 

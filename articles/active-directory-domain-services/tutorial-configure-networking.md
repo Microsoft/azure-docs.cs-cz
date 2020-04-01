@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73172642"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474350"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Kurz: Konfigurace virtuální sítě pro instanci služby Azure Active Directory Domain Services
 
@@ -72,18 +72,18 @@ Ve výchozím nastavení virtuální síť Azure vytvořená se spravovanou dom�
 Pokud chcete vytvořit podsíť virtuální sítě pro virtuální počítače a úlohy aplikací, proveďte následující kroky:
 
 1. Na webu Azure Portal vyberte skupinu prostředků spravované domény Azure AD DS, jako je *například myResourceGroup*. Ze seznamu prostředků zvolte výchozí virtuální síť, *například aadds-vnet*.
-1. V levé nabídce okna virtuální sítě vyberte **Možnost Adresní prostor**. Virtuální síť je vytvořena s jedním adresním prostorem *10.0.1.0/24*, který používá výchozí podsíť.
+1. V levé nabídce okna virtuální sítě vyberte **Možnost Adresní prostor**. Virtuální síť je vytvořena s jedním adresním prostorem *10.0.2.0/24*, který používá výchozí podsíť.
 
     Přidejte do virtuální sítě další rozsah IP adres. Velikost tohoto rozsahu adres a skutečný rozsah IP adres, který chcete použít, závisí na jiných síťových prostředcích, které jsou již nasazeny. Rozsah IP adres by se neměl překrývat s existujícími rozsahy adres ve vašem prostředí Azure nebo v místním prostředí. Ujistěte se, že velikost rozsahu IP adres dostatečně velký pro počet virtuálních počítačů, které očekáváte nasazení do podsítě.
 
-    V následujícím příkladu je přidán další rozsah IP adres *10.0.2.0/24.* Až budete připraveni, vyberte **Uložit**.
+    V následujícím příkladu je přidán další rozsah IP adres *10.0.3.0/24.* Až budete připraveni, vyberte **Uložit**.
 
     ![Přidání dalšího rozsahu IP adres virtuální sítě na webu Azure Portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. Dále v levé nabídce okna virtuální sítě vyberte **Podsítě**a pak zvolte **+ Podsíť** a přidejte podsíť.
 1. Zadejte název podsítě, například *pracovní vytížení*. V případě potřeby aktualizujte **rozsah adres,** pokud chcete v předchozích krocích použít podmnožinu rozsahu IP adres nakonfigurovaného pro virtuální síť. Prozatím ponechte výchozí nastavení pro možnosti, jako je skupina zabezpečení sítě, směrovací tabulka, koncové body služby.
 
-    V následujícím příkladu je vytvořena podsíť s názvem *úlohy,* která používá rozsah adres *IP 10.0.2.0/24:*
+    V následujícím příkladu je vytvořena podsíť s názvem *úlohy,* která používá rozsah adres *IP 10.0.3.0/24:*
 
     ![Přidání další podsítě virtuální sítě na webu Azure Portal](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
@@ -130,7 +130,7 @@ V tomto kurzu nakonfigurujeme servery DNS virtuální sítě Azure tak, aby smě
 
 1. Na webu Azure Portal vyberte skupinu prostředků partnerské virtuální sítě, jako je *například myResourceGroup*. Ze seznamu prostředků zvolte partnerovou virtuální síť, například *myVnet*.
 1. V levé nabídce okna virtuální sítě vyberte **servery DNS**.
-1. Ve výchozím nastavení virtuální síť používá integrované servery DNS poskytované Azure. Zvolte, zda chcete použít **vlastní** servery DNS. Zadejte IP adresy pro řadiče domény Azure AD DS, které jsou obvykle *10.0.1.4* a *10.0.1.5*. Potvrďte tyto IP adresy v okně **Přehled** spravované domény Azure AD DS na portálu.
+1. Ve výchozím nastavení virtuální síť používá integrované servery DNS poskytované Azure. Zvolte, zda chcete použít **vlastní** servery DNS. Zadejte IP adresy pro řadiče domény Azure AD DS, které jsou obvykle *10.0.2.4* a *10.0.2.5*. Potvrďte tyto IP adresy v okně **Přehled** spravované domény Azure AD DS na portálu.
 
     ![Konfigurace serverů DNS virtuální sítě tak, aby používaly řadiče domény Azure AD DS](./media/tutorial-configure-networking/custom-dns.png)
 

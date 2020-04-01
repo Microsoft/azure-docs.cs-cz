@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ec1507e09a183f8d466a456b70151861f5f0e82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159434"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477017"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 
@@ -66,7 +66,7 @@ Zadané hodnoty časového času a intervalu určují, zda bude instance označe
 
 Můžeme ilustrovat chování dále s příkladem. Pokud jste nastavili počet odpovědí sondy na 2 a interval na 5 sekund, znamená to, že 2 poruchy časového intervalu sondy musí být dodrženy v intervalu 10 sekund.  Vzhledem k tomu, že čas, kdy je odeslána sonda není synchronizována, když aplikace může změnit stav, můžeme vázaný čas pro detekci dvěma scénáři:
 
-1. Pokud vaše aplikace začne produkovat odezvu časového intervalu sondy těsně před příchodem první sondy, detekce těchto událostí bude trvat 10 sekund (intervaly 2 x 5 sekund) plus doba trvání aplikace, která začíná signalizovat časový interval, kdy první sonda dorazila.  Můžete předpokládat, že tato detekce trvat mírně přes 10 sekund.
+1. Pokud vaše aplikace začne produkovat odpověď časového omezení sondy těsně před příchodem první sondy, detekce těchto událostí bude trvat 10 sekund (2 x 5 sekund intervaly) plus doba trvání aplikace začíná signalizovat časový čas, kdy dorazí první sonda.  Můžete předpokládat, že tato detekce trvat mírně přes 10 sekund.
 2. Pokud vaše aplikace začne produkovat odpověď časového intervalu sondy těsně po příchodu první sondy, detekce těchto událostí nezačne, dokud nedorazí další sonda (a časový interval) plus dalších 10 sekund (intervaly 2 x 5 sekund).  Můžete předpokládat, že tato detekce trvá necelých 15 sekund.
 
 V tomto příkladu po detekci bude platforma trvat malé množství času reagovat na tuto změnu.  To znamená, že v závislosti na 
@@ -76,7 +76,10 @@ V tomto příkladu po detekci bude platforma trvat malé množství času reagov
 3. pokud byla detekce sdělena napříč platformou 
 
 můžete předpokládat, že reakce na odezvu časové sondy bude trvat minimálně něco málo přes 10 sekund a maximálně mírně přes 15 sekund, aby reagovala na změnu signálu z aplikace.  Tento příklad je uveden pro ilustraci toho, co se děje, ale není možné předpovědět přesnou dobu trvání nad rámec výše uvedených hrubých pokynů uvedených v tomto příkladu.
- 
+
+>[!NOTE]
+>Sonda stavu bude sondy všechny spuštěné instance v back-endového fondu. Pokud je instance zastavena, nebude sondována, dokud nebude znovu spuštěna.
+
 ## <a name="probe-types"></a><a name="types"></a>Typy sond
 
 Protokol používaný sondou stavu lze nakonfigurovat na jednu z následujících možností:

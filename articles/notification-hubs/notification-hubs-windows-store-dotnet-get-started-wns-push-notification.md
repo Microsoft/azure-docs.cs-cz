@@ -179,7 +179,7 @@ Příjem oznámení ve vaší aplikaci můžete rychle otestovat odesláním ozn
 Odeslali jste oznámení vysílání do všech zařízení s Windows pomocí portálu nebo konzolové aplikace. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení do konkrétních zařízení](
+>[Nabízená oznámení odesílaná konkrétním zařízením](
 notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 
 <!-- Images. -->

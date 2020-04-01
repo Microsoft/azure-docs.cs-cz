@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748548"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478302"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfiguračním serverem
 
@@ -42,7 +42,7 @@ Zdrojový počítač se zaregistruje u konfiguračního serveru při instalaci a
     3. Ujistěte se, že složky uvedené v [seznamu Vyloučení složky Site Recovery z antivirových programů](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučeny z antivirového softwaru.
     4. Po vyřešení problémů se sítí opakujte registraci podle pokynů v [seznamu Registrovat zdrojový počítač s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-6. Pokud požadavek na řetězec **příspěvku: (7) - Nelze se připojit k serveru** nebyl nalezen, vyhledejte ve stejném souboru protokolu požadavek na **řetězec: (60) - Peer certifikát nelze ověřit pomocí daných certifikátů certifikační autority**. K této chybě může dojít, protože vypršela platnost certifikátu konfiguračního serveru nebo zdrojový počítač nepodporuje protokoly SSL 1.0 nebo novější. Může také dojít, pokud brána firewall blokuje ssl komunikaci mezi zdrojovým počítačem a konfiguračním serverem. Pokud je řetězec nalezen: 
+6. Pokud požadavek na řetězec **příspěvku: (7) - Nelze se připojit k serveru** nebyl nalezen, vyhledejte ve stejném souboru protokolu požadavek na **řetězec: (60) - Peer certifikát nelze ověřit pomocí daných certifikátů certifikační autority**. K této chybě může dojít, protože vypršela platnost certifikátu konfiguračního serveru nebo zdrojový počítač nepodporuje protokoly TLS 1.0 nebo novější. Může také dojít, pokud brána firewall blokuje komunikaci TLS mezi zdrojovým počítačem a konfiguračním serverem. Pokud je řetězec nalezen: 
     1. Chcete-li to vyřešit, připojte se k adrese IP konfiguračního serveru pomocí webového prohlížeče ve zdrojovém počítači. Použijte identifikátor URI\/ \/ https:<\>IP adresu konfiguračního serveru :443/. Ujistěte se, že zdrojový počítač může dosáhnout konfiguračního serveru prostřednictvím portu 443.
     2. Zkontrolujte, zda je třeba přidat nebo odebrat všechna pravidla brány firewall ve zdrojovém počítači, aby zdrojový počítač mohl hovořit s konfiguračním serverem. Vzhledem k rozmanitosti softwaru brány firewall, který může být používán, nemůžeme uvést všechny požadované konfigurace brány firewall. Spolupracujte se správci sítě a odblokujte případné problémy s připojením.
     3. Ujistěte se, že složky uvedené v [seznamu Vyloučení složky Site Recovery z antivirových programů](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučeny z antivirového softwaru.  

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162901"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475241"
 ---
 # <a name="azure-media-services-concepts"></a>Koncepty Mediálních služeb Azure 
 
@@ -97,7 +97,7 @@ Azure Media Services poskytuje několik možností pro kódování médií v clo
 Při spuštění s Media Services, je důležité pochopit rozdíl mezi kodeky a formáty souborů.
 Kodeky jsou software, který implementuje kompresní/dekompresní algoritmy, zatímco formáty souborů jsou kontejnery, které drží komprimované video.
 
-Media Services poskytuje dynamické balení, které vám umožní poskytovat váš adaptivní datový tok MP4 nebo smooth streaming kódovaný obsah ve formátech streamování podporovaných Media Services (MPEG DASH, HLS, Smooth Streaming), aniž byste museli znovu zabalit do těchto formáty datových proudů.
+Media Services poskytuje dynamické balení, které vám umožní dodat adaptivní datový tok MP4 nebo smooth streaming kódovaný obsah ve formátech streamování podporovaných Media Services (MPEG DASH, HLS, Smooth Streaming), aniž byste museli znovu zabalit do těchto formátů streamování.
 
 Chcete-li využít [výhod dynamického balení](media-services-dynamic-packaging-overview.md), musíte kódovat mezipatro (zdrojový) soubor do sady souborů MP4 s adaptivní množení nebo adaptivního datového toku Smooth Streaming a mít alespoň jeden standardní nebo prémiový koncový bod streamování v spuštěném stavu.
 
@@ -166,7 +166,7 @@ Při práci se službou Media Services se doporučuje zakódovat soubory mezanin
 ### <a name="streaming-endpoint"></a>Koncový bod streamování
 StreamingEndpoint představuje službu streamování, která může doručovat obsah přímo do aplikace přehrávače klienta nebo do sítě pro doručování obsahu (CDN) pro další distribuci (Azure Media Services nyní poskytuje integraci Azure CDN.) Odchozí datový proud ze služby koncového bodu streamování může být živý datový proud nebo datový zdroj na vyžádání ve vašem účtu Mediálních služeb. Zákazníci Media Services si podle svých potřeb zvolí buď koncový bod **Standard**, nebo jeden nebo několik koncových bodů streamování **Premium**. Standardní koncový bod streamování je vhodný pro většinu úloh streamování. 
 
-Koncový bod streamování Standard je vhodný pro většinu streamovacích úloh. Standardní koncové body pro streamování nabízejí flexibilitu pro doručování obsahu prakticky do každého zařízení prostřednictvím dynamického balení do hls, MPEG-DASH a plynulého streamování, stejně jako dynamické šifrování pro Microsoft PlayReady, Google Widevine, Apple Fairplay a AES128.  Také škálovat z velmi malé až velmi velké publikum s tisíci souběžných diváků prostřednictvím integrace Azure CDN. Pokud máte rozšířené zatížení nebo požadavky na kapacitu streamování neodpovídají standardním cílům propustnosti koncového bodu streamování nebo chcete řídit kapacitu služby StreamingEndpoint pro zpracování rostoucích potřeb šířky pásma, doporučujeme jednotky stupnice (označované také jako prémiové jednotky streamování).
+Koncový bod streamování Standard je vhodný pro většinu streamovacích úloh. Standardní koncové body pro streamování nabízejí flexibilitu pro doručování obsahu prakticky do každého zařízení prostřednictvím dynamického balení do hls, MPEG-DASH a plynulého streamování, stejně jako dynamické šifrování pro Microsoft PlayReady, Google Widevine, Apple Fairplay a AES128.  Také škálovat z velmi malé až velmi velké publikum s tisíci souběžných diváků prostřednictvím integrace Azure CDN. Pokud máte rozšířené zatížení nebo vaše požadavky na kapacitu streamování neodpovídají standardnícíle propustnosti koncového bodu streamování nebo chcete řídit kapacitu služby StreamingEndpoint pro zpracování rostoucích potřeb šířky pásma, doporučujeme přidělit jednotky škálování (označované také jako jednotky streamování premium).
 
 Doporučujese používat dynamické balení a/nebo dynamické šifrování.
 
@@ -180,7 +180,7 @@ Ve výchozím nastavení můžete mít v účtu Media Services až 2 koncové bo
 Bude se vám účtovat pouze v případě, že je váš StreamingEndpoint ve spuštěném stavu.
 
 ### <a name="asset-delivery-policy"></a>Zásady poskytování majetku
-Jedním z kroků v pracovním postupu doručování obsahu služby Media Services je konfigurace [zásad doručování pro datové zdroje,](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)které chcete streamovat. Zásady doručování datových zdrojů sdělují službě Media Services, jak chcete, aby byl váš datový zdroj dodán: do kterého streamovacího protokolu by měl být dynamicky zabalen (například MPEG DASH, HLS, Smooth Streaming nebo všechny), bez ohledu na to, zda chcete dynamicky šifrovat vašeho majetku a jak (obálka nebo společné šifrování).
+Jedním z kroků v pracovním postupu doručování obsahu služby Media Services je konfigurace [zásad doručování pro datové zdroje,](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)které chcete streamovat. Zásady doručování datových zdrojů sdělují službě Media Services, jak chcete, aby byl váš datový zdroj dodán: do kterého streamovacího protokolu by měl být váš datový zdroj dynamicky zabalen (například MPEG DASH, HLS, Plynulé streamování nebo všechny), zda chcete dynamicky šifrovat váš datový zdroj a jak (obálka nebo běžné šifrování).
 
 Pokud máte úložiště šifrovaný datový zdroj, před datovým proudem, server streamování odebere šifrování úložiště a streamuje obsah pomocí zadaných zásad doručení. Chcete-li například doručit datový prostředek šifrovaný pomocí šifrovacího klíče Advanced Encryption Standard (AES), nastavte typ zásady na DynamicEnvelopeEncryption. Chcete-li odebrat šifrování úložiště a streamovat datový zdroj v přehledné, nastavte typ zásady na NoDynamicEncryption.
 
@@ -197,10 +197,10 @@ http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba01
 ### <a name="streaming-urls"></a>Datové adresy URL pro streamování
 Streamování obsahu klientům. Chcete-li uživatelům poskytnout streamované adresy URL, musíte nejprve vytvořit lokátor OnDemandOrigin. Vytvořenílokátoru, poskytuje základní cestu k datovému zdroji, který obsahuje obsah, který chcete streamovat. Chcete-li však tento obsah streamovat, je třeba tuto cestu dále upravit. Chcete-li vytvořit úplnou adresu URL souboru manifestu streamování, musíte zřetězit hodnotu Path lokátoru a název souboru manifestu (filename.ism). Potom připojit /Manifest a vhodný formát (v případě potřeby) na cestu lokátoru.
 
-Můžete také streamovat obsah přes připojení SSL. Chcete-li to provést, ujistěte se, že vaše streamované adresy URL začínají protokolem HTTPS. V současné době AMS nepodporuje SSL s vlastními doménami.  
+Můžete také streamovat obsah přes připojení TLS. Chcete-li to provést, ujistěte se, že vaše streamované adresy URL začínají protokolem HTTPS. V současné době AMS nepodporuje TLS s vlastními doménami.  
 
 >[!NOTE]
->Datový proud přes SSL můžete streamovat pouze v případě, že koncový bod streamování, ze kterého doručujete obsah, byl vytvořen po 10. Pokud jsou vaše adresy URL datových proudů založeny na koncových bodech streamování vytvořených po 1 streaming.mediaservices.windows.net0. Datové adresy URL datových proudů, které obsahují "origin.mediaservices.windows.net" (starý formát) nepodporují ssl. Pokud je vaše adresa URL ve starém formátu a chcete mít možnost datového proudu přes SSL, vytvořte nový koncový bod streamování. Pomocí adres URL vytvořených na základě nového koncového bodu streamování můžete streamovat obsah přes SSL.
+>Streamovat přes TLS lze pouze v případě, že koncový bod streamování, ze kterého doručujete obsah byl vytvořen po 10 září 2014. Pokud jsou vaše adresy URL datových proudů založeny na koncových bodech streamování vytvořených po 1 streaming.mediaservices.windows.net0. Datové adresy URL datových proudů, které obsahují "origin.mediaservices.windows.net" (starý formát), nepodporují tls. Pokud je vaše adresa URL ve starém formátu a chcete mít možnost datového proudu přes TLS, vytvořte nový koncový bod streamování. Pomocí adres URL vytvořených na základě nového koncového bodu streamování můžete streamovat obsah přes TLS.
 
 Následující seznam popisuje různé formáty datových proudů a uvádí příklady:
 

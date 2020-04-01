@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Použití R v výpočetním kontextu Sparku ve službě Azure HDInsight'
-description: Kurz – Začínáme s R a Sparkem v clusteru Azure HDInsight Machine Learning Services.
+title: 'Kurz: Použití R v výpočetním kontextu Spark v Azure HDInsight'
+description: Kurz – Začínáme s R a Spark em v clusteru služeb Azure HDInsight Machine Learning Services.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,47 +9,47 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121941"
 ---
-# <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Kurz: Použití R v výpočetním kontextu Sparku ve službě Azure HDInsight
+# <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Kurz: Použití R v výpočetním kontextu Spark v Azure HDInsight
 
-V tomto kurzu najdete podrobný Úvod k použití funkcí R v Apache Spark, které běží na clusteru Azure HDInsight Machine Learning Services.
+Tento kurz poskytuje podrobný úvod k používání funkcí R v Apache Spark, které běží v clusteru služeb Azure HDInsight Machine Learning.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Stažení ukázkových dat do místního úložiště
-> * Kopírovat data do výchozího úložiště
+> * Kopírování dat do výchozího úložiště
 > * Nastavení datové sady
 > * Vytváření zdrojů dat
 > * Vytvoření výpočetního kontextu pro Spark
-> * Přizpůsobení lineárního modelu
+> * Přizpůsobit lineární model
 > * Použití složených souborů XDF
 > * Převést XDF na CSV
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster služby Azure HDInsight Machine Learning Services. V [části vytvořit Apache Hadoop clustery pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a pro **typ clusteru**vyberte **služby ml**.
+* Cluster služeb Azure HDInsight Machine Learning. Přejděte na [Vytvoření clusterů Apache Hadoop pomocí portálu Azure](../hdinsight-hadoop-create-linux-clusters-portal.md) a v případě **typu clusteru**vyberte **služby ML Services**.
 
 ## <a name="connect-to-rstudio-server"></a>Připojení k RStudio Serveru
 
-RStudio server běží na hraničním uzlu clusteru. V následujícím webu (kde *název_clusteru* v adrese URL je název clusteru HDInsight Machine Learning Services, který jste vytvořili):
+Server RStudio je spuštěn na hraničním uzlu clusteru. Přejděte na následující web (kde *cluster CLUSTERNAME* v adrese URL je název clusteru služeb HDInsight Machine Learning, který jste vytvořili):
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Při prvním přihlášení se dvakrát ověří. Na výzvu k prvnímu ověření zadejte uživatelské jméno a heslo správce clusteru (výchozí nastavení je *admin*). Na druhé výzvě pro ověření zadejte uživatelské jméno a heslo SSH (výchozí hodnota je *sshuser*). Další přihlášení vyžadují jenom přihlašovací údaje SSH.
+Při prvním přihlášení se dvakrát ověřujete. Při první výzvě k ověření zadejte uživatelské jméno a heslo správce clusteru (výchozí je *správce*). Na druhé výzvy k ověření zadejte uživatelské jméno A heslo SSH (výchozí je *sshuser*). Následné přihlášení vyžadují pouze pověření SSH.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>Stažení ukázkových dat do místního úložiště
 
-*Datová sada na leteckých 2012 v čase* se skládá ze 12 souborů oddělených čárkami, které obsahují podrobnosti o příjezdu a odchodu letu pro všechny komerční lety v USA po dobu roku 2012. Tato datová sada je velká, s více než 6 000 000 pozorováními.
+*Soubor dat společnosti On-Time 2012* se skládá z 12 souborů oddělených čárkami, které obsahují údaje o příletu a odletu pro všechny komerční lety v USA za rok 2012. Tato datová sada je velká s více než 6 miliony pozorování.
 
-1. Inicializujte několik proměnných prostředí. V konzole serveru RStudio zadejte následující kód:
+1. Inicializovat několik proměnných prostředí. V konzole RStudio Server zadejte následující kód:
 
     ```R
     bigDataDirRoot <- "/tutorial/data" # root directory on cluster default storage
@@ -57,11 +57,11 @@ Při prvním přihlášení se dvakrát ověří. Na výzvu k prvnímu ověřen�
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-1. V pravém podokně vyberte kartu **prostředí** . Proměnné se zobrazí v části **hodnoty**.
+1. V pravém podokně vyberte kartu **Životní prostředí.** Proměnné jsou zobrazeny v části **Hodnoty**.
 
-    ![Webová konzola HDInsight R Studio](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
+    ![HdInsight R studio webová konzole](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
 
-1. Vytvořte místní adresář a Stáhněte si ukázková data. Do RStudio zadejte následující kód:
+1. Vytvořte místní adresář a stáhněte ukázková data. V RStudiu zadejte následující kód:
 
     ```R
     # Create local directory
@@ -82,11 +82,11 @@ Při prvním přihlášení se dvakrát ověří. Na výzvu k prvnímu ověřen�
     download.file(file.path(remoteDir, "airOT201212.csv"), file.path(localDir, "airOT201212.csv"))
     ```
 
-    Stahování se musí dokončit přibližně po 9,5 minutách.
+    Stahování by mělo být dokončeno asi za 9,5 minuty.
 
-## <a name="copy-the-data-to-default-storage"></a>Kopírovat data do výchozího úložiště
+## <a name="copy-the-data-to-default-storage"></a>Kopírování dat do výchozího úložiště
 
-Umístění Hadoop systém souborů DFS (Distributed File System) (HDFS) je určeno `airDataDir` proměnnou. Do RStudio zadejte následující kód:
+Umístění Hadoop Distributed File System (HDFS) `airDataDir` je určeno s proměnnou. V RStudiu zadejte následující kód:
 
 ```R
 # Set directory in bigDataDirRoot to load the data into
@@ -102,18 +102,18 @@ rxHadoopCopyFromLocal(localDir, bigDataDirRoot)
 rxHadoopListFiles(airDataDir)
 ```
 
-Krok by měl být dokončen přibližně po dobu 10 sekund.
+Krok by měl být dokončen asi za 10 sekund.
 
 ## <a name="set-up-a-dataset"></a>Nastavení datové sady
 
-1. Vytvořte objekt systému souborů, který používá výchozí hodnoty. Do RStudio zadejte následující kód:
+1. Vytvořte objekt systému souborů, který používá výchozí hodnoty. V RStudiu zadejte následující kód:
 
     ```R
     # Define the HDFS (WASB) file system
     hdfsFS <- RxHdfsFileSystem()
     ```
 
-1. Vzhledem k tomu, že původní soubory CSV místo toho nepraktický názvy proměnných, zadáte seznam *colInfo* , aby byly lépe spravovatelné. Do RStudio zadejte následující kód:
+1. Vzhledem k tomu, že původní soubory CSV mají spíše nepraktický název proměnných, zadáte seznam *colInfo,* aby byly lépe spravovatelné. V RStudiu zadejte následující kód:
 
     ```R
     airlineColInfo <- list(
@@ -158,17 +158,17 @@ Krok by měl být dokončen přibližně po dobu 10 sekund.
 
 ## <a name="create-data-sources"></a>Vytváření zdrojů dat
 
-Ve výpočetním kontextu Spark můžete vytvořit zdroje dat pomocí následujících funkcí:
+V kontextu výpočetních zařízení Spark můžete vytvářet zdroje dat pomocí následujících funkcí:
 
 |Funkce | Popis |
 |---------|-------------|
 |`RxTextData` | Textový zdroj dat oddělený čárkami. |
-|`RxXdfData` | Data ve formátu datových souborů XDF Ve RevoScaleR je formát souboru XDF změněn pro Hadoop pro ukládání dat do složené sady souborů, nikoli do jediného souboru. |
-|`RxHiveData` | Vygeneruje objekt zdroje dat podregistru.|
-|`RxParquetData` | Generuje objekt zdroje dat Parquet.|
-|`RxOrcData` | Generuje objekt zdroje dat ORC.|
+|`RxXdfData` | Data ve formátu datového souboru XDF. V revoscaler, formát souboru XDF je upraven pro Hadoop ukládat data ve složené sadě souborů, nikoli jeden soubor. |
+|`RxHiveData` | Generuje objekt zdroje dat Hive.|
+|`RxParquetData` | Generuje objekt zdroje dat parket.|
+|`RxOrcData` | Generuje objekt zdroje dat orků.|
 
-Vytvořte objekt [RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) pomocí souborů, které jste zkopírovali do HDFS. Do RStudio zadejte následující kód:
+Vytvořte objekt [RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) pomocí souborů, které jste zkopírovali do HDFS. V RStudiu zadejte následující kód:
 
 ```R
 airDS <- RxTextData( airDataDir,
@@ -179,7 +179,7 @@ airDS <- RxTextData( airDataDir,
 
 ## <a name="create-a-compute-context-for-spark"></a>Vytvoření výpočetního kontextu pro Spark
 
-Chcete-li načíst data a spustit analýzy na pracovních uzlech, nastavte výpočetní kontext ve skriptu na [výpočetního rxspark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark). V tomto kontextu funkce R automaticky distribuují úlohy napříč všemi pracovními uzly bez integrovaného požadavku pro správu úloh nebo frontu. Výpočetní kontext Spark je vytvořen prostřednictvím `RxSpark` nebo `rxSparkConnect()` k vytvoření výpočetního kontextu Spark a používá `rxSparkDisconnect()` se k návratu do místního výpočetního kontextu. Do RStudio zadejte následující kód:
+Chcete-li načíst data a spustit analýzy na pracovních uzlech, nastavte výpočetní kontext ve skriptu na [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark). V tomto kontextu r funkce automaticky distribuovat zatížení mezi všechny pracovní uzly, bez předdefinované požadavky pro správu úloh nebo fronty. Výpočetní kontext Spark se `RxSpark` `rxSparkConnect()` nastavuje prostřednictvím nebo `rxSparkDisconnect()` k vytvoření výpočetního kontextu Spark a používá se k návratu do místního výpočetního kontextu. V RStudiu zadejte následující kód:
 
 ```R
 # Define the Spark compute context
@@ -189,9 +189,9 @@ mySparkCluster <- RxSpark()
 rxSetComputeContext(mySparkCluster)
 ```
 
-## <a name="fit-a-linear-model"></a>Přizpůsobení lineárního modelu
+## <a name="fit-a-linear-model"></a>Přizpůsobit lineární model
 
-1. Použijte funkci [rxLinMod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) pro přizpůsobení lineárního modelu pomocí `airDS` zdroje dat. Do RStudio zadejte následující kód:
+1. Použijte funkci [rxLinMod,](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) aby se `airDS` vešla do lineárního modelu pomocí zdroje dat. V RStudiu zadejte následující kód:
 
     ```R
     system.time(
@@ -200,9 +200,9 @@ rxSetComputeContext(mySparkCluster)
     )
     ```
     
-    Tento krok je potřeba dokončit 2 až 3 minuty.
+    Tento krok by měl být dokončen za 2 až 3 minuty.
 
-1. Zkontrolujte výsledky. Do RStudio zadejte následující kód:
+1. Zkontrolujte výsledky. V RStudiu zadejte následující kód:
 
     ```R
     summary(delayArr)
@@ -241,15 +241,15 @@ rxSetComputeContext(mySparkCluster)
     Condition number: 1 
     ```
 
-    Výsledky ukazují, že jste zpracovali všechna data, 6 000 000 pozorování, pomocí všech souborů CSV v zadaném adresáři. Vzhledem k tomu `cube = TRUE`, že jste zadali, máte odhadovaný koeficient pro každý den v týdnu (a ne průsečík).
+    Výsledky ukazují, že jste zpracovali všechna data, 6 milionů pozorování, pomocí všech souborů CSV v zadaném adresáři. Protože jste `cube = TRUE`zadali , máte odhadovaný koeficient pro každý den v týdnu (a ne zachytit).
 
 ## <a name="use-composite-xdf-files"></a>Použití složených souborů XDF
 
-Jak jste viděli, můžete analyzovat soubory CSV přímo pomocí R v systému Hadoop. Analýzu můžete provádět rychleji, pokud data ukládáte do efektivnějšího formátu. Formát souboru R XDF je efektivní, ale u HDFS se pro HDFS změnil, aby jednotlivé soubory zůstaly v rámci jednoho bloku HDFS. (Velikost bloku HDFS se liší od instalace k instalaci, ale je to obvykle 64 MB nebo 128 MB.) 
+Jak jste viděli, můžete analyzovat soubory CSV přímo s R na Hadoop. Analýzu však můžete provést rychleji, pokud data uložíte v efektivnějším formátu. Formát souboru R XDF je efektivní, ale je poněkud upraven pro HDFS tak, aby jednotlivé soubory zůstaly v rámci jednoho bloku HDFS. (Velikost bloku HDFS se liší od instalace k instalaci, ale je obvykle buď 64 MB nebo 128 MB.) 
 
-Při použití [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) v systému Hadoop k vytvoření sady složených souborů XDF zadáte `RxTextData` zdroj `AirDS` dat, jako je například inData a `RxXdfData` zdroj dat se systémem souborů v systému souborů HDFS jako argumentu pro soubory. Pak můžete `RxXdfData` objekt použít jako argument data v následných analýzách R.
+Při použití [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) na Hadoop vytvořit sadu složených souborů `RxTextData` XDF, `AirDS` zadáte zdroj dat, `RxXdfData` jako je například inData a zdroj dat se fileSystem nastavena na systém souborů HDFS jako outFile argument. Potom můžete použít `RxXdfData` objekt jako argument data v následných R analýzách.
 
-1. `RxXdfData` Definujte objekt. Do RStudio zadejte následující kód:
+1. Definujte `RxXdfData` objekt. V RStudiu zadejte následující kód:
 
     ```R
     airDataXdfDir <- file.path(bigDataDirRoot,"AirOnTimeXDF2012")
@@ -258,14 +258,14 @@ Při použití [rxImport](https://docs.microsoft.com/machine-learning-server/r-r
                             fileSystem = hdfsFS )
     ```
 
-1. Nastavte blokovou velikost 250000 řádků a určete, že se všechna data čtou. Do RStudio zadejte následující kód:
+1. Nastavte velikost bloku 250000 řádků a určete, že čteme všechna data. V RStudiu zadejte následující kód:
 
     ```R
     blockSize <- 250000
     numRowsToRead = -1
     ```
 
-1. Importujte data pomocí `rxImport`. Do RStudio zadejte následující kód:
+1. Importujte data `rxImport`pomocí aplikace . V RStudiu zadejte následující kód:
 
     ```R
     rxImport(inData = airDS,
@@ -275,9 +275,9 @@ Při použití [rxImport](https://docs.microsoft.com/machine-learning-server/r-r
              numRows = numRowsToRead )
     ```
     
-    Tento krok je potřeba provést během několika minut.
+    Tento krok by měl být dokončen během několika minut.
 
-1. Opakovaný odhad stejného lineárního modelu pomocí nového a rychlejšího zdroje dat. Do RStudio zadejte následující kód:
+1. Přeceňte stejný lineární model pomocí nového, rychlejšího zdroje dat. V RStudiu zadejte následující kód:
 
     ```R
     system.time(
@@ -288,7 +288,7 @@ Při použití [rxImport](https://docs.microsoft.com/machine-learning-server/r-r
     
     Krok by měl být dokončen za méně než minutu.
 
-1. Zkontrolujte výsledky. Výsledky by měly být stejné jako ze souborů CSV. Do RStudio zadejte následující kód:
+1. Zkontrolujte výsledky. Výsledky by měly být stejné jako ze souborů CSV. V RStudiu zadejte následující kód:
 
     ```R
     summary(delayArr)
@@ -296,13 +296,13 @@ Při použití [rxImport](https://docs.microsoft.com/machine-learning-server/r-r
 
 ## <a name="convert-xdf-to-csv"></a>Převést XDF na CSV
 
-### <a name="in-a-spark-context"></a>V kontextu Sparku
+### <a name="in-a-spark-context"></a>V kontextu Spark
 
-Pokud jste soubory CSV převedli na formát souboru XDF, aby se při spouštění analýz zvětšila efektivita, ale teď chcete data převést zpátky na CSV, můžete to udělat pomocí [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep).
+Pokud jste převedli soubory CSV do formátu souboru XDF pro větší efektivitu při spouštění analýz, ale nyní chcete převést data zpět na CSV, můžete tak učinit pomocí [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep).
 
-Chcete-li vytvořit složku souborů CSV, nejprve vytvořte `RxTextData` objekt pomocí názvu adresáře jako argumentu souboru. Tento objekt představuje složku, ve které se mají vytvořit soubory CSV. Tento adresář se vytvoří při spuštění `rxDataStep`. Pak přejděte na tento `RxTextData` objekt `outFile` v argumentu `rxDataStep`. Každý vytvořený sdílený svazek clusteru má název založený na názvu adresáře a následuje číslo.
+Chcete-li vytvořit složku souborů CSV, nejprve vytvořte `RxTextData` objekt pomocí názvu adresáře jako argumentu souboru. Tento objekt představuje složku, ve které chcete vytvořit soubory CSV. Tento adresář je vytvořen `rxDataStep`při spuštění rozhraní . Potom přejděte `RxTextData` na tento `outFile` objekt `rxDataStep`v argumentu . Každý soubor CSV, který je vytvořen, je pojmenován na základě názvu adresáře a následuje číslo.
 
-Předpokládejme, že chcete po provedení logistické regrese a předpovědi napsat do HDFS ze `airDataXdf` složené XDF složku souborů CSV. to znamená, že nové soubory CSV obsahují předpovězené hodnoty a zbytky. Do RStudio zadejte následující kód:
+Předpokládejme, že chcete zapisovat složku souborů CSV `airDataXdf` v HDFS z složeného XDF po provedení logistické regrese a předpovědi, aby nové soubory CSV obsahovaly předpokládané hodnoty a zbytky. V RStudiu zadejte následující kód:
 
 ```R
 airDataCsvDir <- file.path(bigDataDirRoot,"AirDataCSV2012")
@@ -310,15 +310,15 @@ airDataCsvDS <- RxTextData(airDataCsvDir,fileSystem=hdfsFS)
 rxDataStep(inData=airDataXdf, outFile=airDataCsvDS)
 ```
 
-Tento krok by měl být dokončen přibližně po 2,5 minutách.
+Tento krok by měl být dokončen asi za 2,5 minuty.
 
-`rxDataStep` Vypsali jsme jeden soubor CSV pro každý soubor XDFD ve vstupním složeném souboru XDF. Toto je výchozí chování při psaní souborů CSV ze složených souborů XDF do HDFS, pokud je kontext výpočtu nastavený na `RxSpark`.
+Vypsal `rxDataStep` jeden soubor CSV pro každý soubor XDFD ve vstupním složeném souboru XDF. Toto je výchozí chování pro zápis souborů CSV ze složených souborů XDF do HDFS, pokud je výpočetní kontext nastaven na `RxSpark`hodnotu .
 
 ### <a name="in-a-local-context"></a>V místním kontextu
 
-Případně, pokud jste dokončili své analýzy, můžete přepnout výpočetní kontext zpátky na `local` , abyste mohli využít výhod dvou argumentů v rámci `RxTextData` , což vám při zápisu souborů CSV do HDFS pomůžete trochu lépe ovlivnit: `createFileSet` a `rowsPerOutFile`. Když nastavíte `createFileSet` na `TRUE`, do zadaného adresáře se zapíše složka souborů CSV. Při nastavení `createFileSet` na `FALSE`se zapíše jeden soubor CSV. Můžete nastavit druhý argument, `rowsPerOutFile`na celé číslo, chcete-li určit, kolik řádků se má zapsat do jednotlivých souborů CSV, pokud `createFileSet` je `TRUE`.
+Případně, když jste hotovi provádění analýz, můžete přepnout výpočetní `local` kontext zpět, aby využili `RxTextData` dva argumenty v rámci které vám o něco větší `createFileSet` `rowsPerOutFile`kontrolu, když píšete soubory CSV hdfs: a . Pokud nastavíte hodnotu `createFileSet` `TRUE`, je do zadaného adresáře zapsána složka souborů CSV. Pokud nastavíte na `createFileSet` `FALSE`, je zapsán jeden soubor CSV. Druhý argument můžete nastavit `rowsPerOutFile`na celé číslo, které označuje, kolik řádků má `createFileSet` být `TRUE`zapsáno do každého souboru CSV, když je .
 
-Do RStudio zadejte následující kód:
+V RStudiu zadejte následující kód:
 
 ```R
 rxSetComputeContext("local")
@@ -327,13 +327,13 @@ airDataCsvRowsDS <- RxTextData(airDataCsvRowsDir, fileSystem=hdfsFS, createFileS
 rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 ```
 
-Tento krok je třeba dokončit přibližně po dobu 10 minut.
+Tento krok by měl být dokončen asi za 10 minut.
 
-Když použijete `RxSpark` výpočetní kontext, `createFileSet` výchozí hodnota `TRUE` je a `rowsPerOutFile` nemá žádný vliv. Proto pokud chcete vytvořit jeden sdílený svazek clusteru nebo přizpůsobit počet řádků na soubor, proveďte `rxDataStep` `local` ve výpočetním kontextu (data mohou být stále v HDFS).
+Při použití `RxSpark` výpočetní `createFileSet` kontext, výchozí `TRUE` `rowsPerOutFile` a nemá žádný vliv. Proto pokud chcete vytvořit jeden CSV nebo přizpůsobit počet řádků `rxDataStep` na `local` soubor, proveďte v kontextu výpočetní (data mohou být stále v HDFS).
 
-## <a name="final-steps"></a>Poslední kroky
+## <a name="final-steps"></a>Závěrečné kroky
 
-1. Vyčistěte data. Do RStudio zadejte následující kód:
+1. Vyčistěte data. V RStudiu zadejte následující kód:
 
     ```R
     rxHadoopRemoveDir(airDataDir)
@@ -343,13 +343,13 @@ Když použijete `RxSpark` výpočetní kontext, `createFileSet` výchozí hodno
     rxHadoopRemoveDir(bigDataDirRoot)
     ```
 
-1. Zastavte vzdálenou aplikaci Spark. Do RStudio zadejte následující kód:
+1. Zastavte vzdálenou aplikaci Spark. V RStudiu zadejte následující kód:
 
     ```R
     rxStopEngine(mySparkCluster)
     ```
 
-1. Ukončete relaci jazyka R. Do RStudio zadejte následující kód:
+1. Ukončete relaci R. V RStudiu zadejte následující kód:
 
     ```R
     quit()
@@ -357,13 +357,13 @@ Když použijete `RxSpark` výpočetní kontext, `createFileSet` výchozí hodno
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto kurzu možná budete chtít cluster odstranit. Ve službě HDInsight jsou vaše data uložená v Azure Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají.
+Po dokončení kurzu můžete chtít odstranit cluster. S HDInsight, vaše data jsou uloženy ve službě Azure Storage, takže můžete bezpečně odstranit clusteru, když není používán. Účtuje se vám také cluster HDInsight, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster jsou mnohonásobně vyšší než poplatky za úložiště, má ekonomické smysl odstranit clustery, když se nepoužívají.
 
-Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
+Pokud chcete odstranit cluster, přečtěte si informace [o odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového příkazu k Azure](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak používat funkce R v Apache Spark, které běží na clusteru HDInsight Machine Learning Services. Další informace najdete v následujících článcích:
+V tomto kurzu jste se naučili používat funkce R v Apache Spark, které běží v clusteru služeb HDInsight Machine Learning. Další informace najdete v těchto článcích:
 
-* [Možnosti výpočetního kontextu pro cluster Azure HDInsight Machine Learning Services](r-server-compute-contexts.md)
-* [Funkce R pro Spark v Hadoop](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)
+* [Možnosti výpočetního kontextu pro cluster služeb Azure HDInsight Machine Learning](r-server-compute-contexts.md)
+* [R Funkce pro Spark na Hadoop](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

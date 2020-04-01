@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6a3447a88aea1087c7ec327a956044ea94e793e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b5712094b9821dfa041cd5ba8617e86f7231bde
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79410035"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478025"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Správa šifrování Azure Storage pomocí azure key vaultu pomocí klíčů Azure Key Vault
 
@@ -51,7 +51,7 @@ Klíče spravované zákazníkem lze povolit pouze u existujících účtů úlo
 
 Když nakonfigurujete klíč spravovaný zákazníkem, Azure Storage zabalí kořenový klíč šifrování dat pro účet s klíčem spravovaným zákazníkem v přidruženém trezoru klíčů. Povolení klíčů spravovaných zákazníkem nemá vliv na výkon a projeví se okamžitě.
 
-Když upravíte klíč používaný pro šifrování Azure Storage povolením nebo zakázáním klíčů spravovaných zákazníkem, aktualizací verze klíče nebo určením jiného klíče, pak se změní šifrování kořenového klíče, ale data ve vašem účtu Azure Storage nechybě je třeba znovu zašifrovat.
+Když upravíte klíč používaný pro šifrování Azure Storage povolením nebo zakázáním klíčů spravovaných zákazníkem, aktualizací verze klíče nebo určením jiného klíče, pak se změní šifrování kořenového klíče, ale data v účtu azure storage nemusí být znovu šifrována.
 
 Když povolíte nebo zakážete klíče spravované zákazníkem nebo když upravíte klíč nebo verzi klíče, změní se ochrana kořenového šifrovacího klíče, ale data ve vašem účtu Služby Azure Storage nemusí být znovu šifrována.
 
@@ -68,7 +68,7 @@ Informace o tom, jak používat klíče spravované zákazníky s šifrováním 
 
 Chcete-li povolit klíče spravované zákazníkem na účtu úložiště, musíte použít Trezor klíčů Azure k uložení klíčů. Je nutné povolit vlastnosti **Obnovitelné odstranění** a **Nevyčistit** v trezoru klíčů.
 
-Šifrováním úložiště Azure jsou podporované jenom klíče RSA velikosti 2048. Další informace o klíčích najdete v **tématu Klíče trezoru klíčů** v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Šifrováním azure storage jsou podporované jenom 2048bitové klíče RSA a RSA-HSM. Další informace o klíčích najdete v **tématu Klíče trezoru klíčů** v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="rotate-customer-managed-keys"></a>Otočení klíčů spravovaných zákazníkem
 

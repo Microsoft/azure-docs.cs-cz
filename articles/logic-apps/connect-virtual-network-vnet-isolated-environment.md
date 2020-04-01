@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: fedc1f6ce8fbaeaf0d2cae3a1b04169192868e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6683c1b78b0e7ecba162026708c83843e2c08180
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270690"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478883"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -32,7 +32,7 @@ Tento článek ukazuje, jak tyto úkoly dokončit pomocí portálu Azure:
 * Vytvořte si ISE.
 * Přidejte další kapacitu do vašeho ISE.
 
-Službu ISE můžete také vytvořit pomocí rozhraní API REST logic Apps, včetně nastavení klíčů spravovaných zákazníkem:
+ISE můžete také vytvořit pomocí [ukázkové šablony rychlého startu Nástroje pro prostředky Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) nebo pomocí rozhraní API REST logic apps, včetně nastavení klíčů spravovaných zákazníkem:
 
 * [Vytvoření prostředí integrační služby (ISE) pomocí rozhraní API REST logic apps](../logic-apps/create-integration-service-environment-rest-api.md)
 * [Nastavení klíčů spravovaných zákazníkem pro šifrování dat v klidovém stavu pro společnosti ISE](../logic-apps/customer-managed-keys-integration-service-environment.md)
@@ -110,7 +110,7 @@ Tato tabulka popisuje porty ve vaší virtuální síti Azure, které vaše ISE 
 | Azure Active Directory | Odchozí | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
 | Správa připojení | Odchozí | 443 | VirtualNetwork  | AppService | |
 | Publikovat diagnostické protokoly & metriky | Odchozí | 443 | VirtualNetwork  | AzureMonitor | |
-| Závislost azure úložiště | Odchozí | 80, 443, 445 | VirtualNetwork | Úložiště | |
+| Závislost azure úložiště | Odchozí | 80, 443, 445 | VirtualNetwork | Storage | |
 | Závislost Azure SQL | Odchozí | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | Odchozí | 1886 | VirtualNetwork | AzureMonitor | Požadováno pro publikování stavu do stavu zdroje |
 | Závislost z protokolu na agenta centra událostí a monitorování | Odchozí | 5672 | VirtualNetwork | Centrum událostí | |

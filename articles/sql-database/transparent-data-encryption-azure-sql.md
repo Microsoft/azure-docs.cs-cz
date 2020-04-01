@@ -1,6 +1,6 @@
 ---
 title: Transparentní šifrování dat
-description: Přehled transparentního šifrování dat pro SQL Database a SQL Analytics v Azure Synapse. Dokument pokrývá jeho výhody a možnosti konfigurace, která zahrnuje transparentní šifrování dat spravovaná službou a přineste si vlastní klíč.
+description: Přehled transparentního šifrování dat pro SQL Database a Synapse SQL v Azure Synapse Analytics. Dokument pokrývá jeho výhody a možnosti konfigurace, která zahrnuje transparentní šifrování dat spravovaná službou a přineste si vlastní klíč.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/06/2020
-ms.openlocfilehash: 5bbb537ef6545852423bf5315b7636671c598fdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 982a59f1eb8717e2fe2d86728cdae731c919aaf0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255636"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476970"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-azure-synapse"></a>Transparentní šifrování dat pro SQL Database a Azure Synapse
 
-Transparentní šifrování dat (TDE) pomáhá chránit Azure SQL Database, Azure SQL Managed Instance a Azure Synapse před hrozbou škodlivé offline aktivity šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. Ve výchozím nastavení je transparentní šifrování dat povolené pro všechny nově nasazené databáze Azure SQL. TDE nelze použít k šifrování **hlavní** logické databáze v databázi SQL.  **Hlavní** databáze obsahuje objekty, které jsou potřebné k provádění operací TDE v uživatelských databázích.
+Transparentní šifrování dat (TDE) pomáhá chránit Azure SQL Database, Azure SQL Managed Instance a Synapse SQL v Azure Synapse Analytics před hrozbou škodlivé offline aktivity šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. Ve výchozím nastavení je transparentní šifrování dat povolené pro všechny nově nasazené databáze Azure SQL. TDE nelze použít k šifrování **hlavní** logické databáze v databázi SQL.  **Hlavní** databáze obsahuje objekty, které jsou potřebné k provádění operací TDE v uživatelských databázích.
 
-TDE musí být ručně povolené pro starší databáze Azure SQL Database, Azure SQL Managed Instance nebo Azure Azure Synapse.
+TDE musí být ručně povolené pro starší databáze Azure SQL Database, Azure SQL Managed Instance nebo Azure Synapse.
 Databáze spravovaných instancí vytvořené pomocí obnovení dědí stav šifrování ze zdrojové databáze.
 
 Transparentní šifrování dat šifruje úložiště celé databáze pomocí symetrického klíče nazývaného šifrovací klíč databáze. Tento šifrovací klíč databáze je chráněn transparentní mašle šifrování dat. Ochrana je certifikát spravovaný službou (transparentní šifrování dat spravovaná službou) nebo asymetrický klíč uložený v trezoru klíčů Azure (Bring Your Own Key). Nastavíte ochranu transparentního šifrování dat na úrovni serveru pro Azure SQL Database a Azure Synapse a úroveň instance pro Azure SQL Managed Instance. Termín *server* odkazuje na server i instanci v celém dokumentu, pokud není uvedeno jinak.
@@ -127,7 +127,7 @@ Připojte se k databázi pomocí přihlášení, které je správcem nebo člene
 
 Pomocí aplikace Transact-SQL nelze přepnout ochranu transparentního šifrování dat na klíč z trezoru klíčů. Použijte PowerShell nebo portál Azure.
 
-# <a name="rest-api"></a>[ROZHRANÍ API PRO ODPOČINEK](#tab/azure-RESTAPI)
+# <a name="rest-api"></a>[REST API](#tab/azure-RESTAPI)
 Spravujte transparentní šifrování dat pomocí rozhraní REST API.
 
 Chcete-li nakonfigurovat transparentní šifrování dat prostřednictvím rozhraní REST API, musíte být připojeni jako vlastník Azure, přispěvatel nebo Správce zabezpečení SQL.

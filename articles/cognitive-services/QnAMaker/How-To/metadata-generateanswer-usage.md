@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 6a8cbabfd4e47c50d2c2e6f4a23c50a931e645a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220641"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474849"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získání odpovědi pomocí rozhraní API generateanswer a metadat
 
@@ -146,8 +146,6 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 Předchozí JSON požadoval pouze odpovědi, které jsou na 30 % nebo nad prahovým skóre.
 
-Robot podpory má příklad s tímto [kódem.](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418)
-
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Použití QnA Makeru s robotem v souboru Node.js
 
 Rozhraní bot poskytuje přístup k vlastnostem QnA Maker s [rozhraním getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-):
@@ -165,8 +163,6 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 ```
 
 Předchozí JSON požadoval pouze odpovědi, které jsou na 30 % nebo nad prahovým skóre.
-
-Robot podpory má příklad s tímto [kódem.](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36)
 
 <a name="metadata-example"></a>
 

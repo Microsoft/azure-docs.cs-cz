@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/26/2020
+ms.author: osamaz
+ms.openlocfilehash: 5304aefaf3ad70bb552b4b0d1b26fcce9867c9c0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076663"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397736"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače pro nastavení a správu směrování
 Tato stránka poskytuje ukázky konfigurace rozhraní a směrování pro směrovače řady Cisco IOS-XE a Juniper MX při práci s ExpressRoute. Jsou určeny pouze jako vzorky, které jsou orientační, a nesmějí být používány tak, jak jsou. Můžete spolupracovat s dodavatelem a přijít s vhodnými konfiguracemi pro vaši síť. 
@@ -91,6 +91,25 @@ Mapy tras a seznamy předponek můžete použít k filtrování předpon šíře
     !
     route-map <MS_Prefixes_Inbound> permit 10
      match ip address prefix-list <MS_Prefixes>
+    !
+
+### <a name="5-configuring-bfd"></a>5. Konfigurace BFD
+
+BfD nakonfigurujete na dvou místech. Jeden na úrovni rozhraní a druhý na úrovni Protokolu BGP. Níže uvedený příklad je pro rozhraní QinQ. 
+
+    interface GigabitEthernet<Interface_Number>.<Number>
+     bfd interval 300 min_rx 300 multiplier 3
+     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+     ip address <IPv4_Address><Subnet_Mask>
+    
+    router bgp <Customer_ASN>
+     bgp log-neighbor-changes
+     neighbor <IP#2_used_by_Azure> remote-as 12076
+     !        
+     address-family ipv4
+      neighbor <IP#2_used_by_Azure> activate
+      neighbor <IP#2_used_by_Azure> fall-over bfd
+     exit-address-family
     !
 
 
@@ -173,7 +192,7 @@ Směrovač můžete nakonfigurovat tak, aby inzeroval vybrané předpony společ
     }
 
 
-### <a name="4-route-maps"></a>4. Mapy tras
+### <a name="4-route-policies"></a>4. Zásady trasy
 Mapy tras a seznamy předponek můžete použít k filtrování předpon šířených do sítě. K provedení úkolu můžete použít následující ukázku. Ujistěte se, že máte příslušnou instalaci předpon.
 
     policy-options {
@@ -203,6 +222,24 @@ Mapy tras a seznamy předponek můžete použít k filtrování předpon šíře
         }                                   
     }
 
+### <a name="4-configuring-bfd"></a>4. Konfigurace BFD
+BfD nakonfigurujete pouze v části protokolu BGP.
+
+    protocols {
+        bgp { 
+            group <Group_Name> { 
+                peer-as 12076;              
+                neighbor <IP#2_used_by_Azure>;
+                bfd-liveness-detection {
+                       minimum-interval 3000;
+                       multiplier 3;
+                }
+            }                               
+        }                                   
+    }
+
 ## <a name="next-steps"></a>Další kroky
 Další podrobnosti najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+
+
 

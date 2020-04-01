@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím stavu prostředků Azure
 description: Podporované typy prostředků prostřednictvím stavu prostředků Azure
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258301"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478898"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu ve stavu prostředků Azure
 Níže je uveden úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -47,6 +47,11 @@ Níže je uveden úplný seznam všech kontrol provedených prostřednictvím st
 |Provedené kontroly|
 |---|
 |<ul><li>Může být účet dostupný z datového centra?</li><li>Je poskytovatel prostředků služeb cognitive services k dispozici?</li><li>Je služba Cognitive Service dostupná v příslušné oblasti?</li><li>Lze číst operace na účtu úložiště, který má metadata prostředku?</li><li>Bylo dosaženo kvóty volání rozhraní API?</li><li>Bylo dosaženo limitu čtení a volání rozhraní API?</li></ul>|
+
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|Provedené kontroly|
+|---|
+|<ul><li>Je hostitel v provozu</li><li>Je hostitelský hardware poškozen?</li><li>Je hostitel deallocated?</li><li>Uzdravila se hostitelská hardwarová služba na jiný hardware?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Provedené kontroly|

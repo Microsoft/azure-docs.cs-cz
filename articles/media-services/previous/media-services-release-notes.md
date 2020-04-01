@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183291"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474846"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -344,9 +344,9 @@ Sada [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.media
 * Byly přidány relativní posuny pro BeginDate a ExpirationDate v šabloně licence PlayReady.
 
 ## <a name="november-2014-release"></a><a id="november_changes_14"></a>Vydání z listopadu 2014
-* Nyní můžete pomocí služby Media Services ingestovat živý obsah plynulého streamování (fMP4) prostředněk připojení SSL. Chcete-li ingestovat přes SSL, nezapomeňte aktualizovat ingestující adresu URL na HTTPS. V současné době media services nepodporuje SSL s vlastními doménami. Další informace o živém streamování najdete v [tématu Práce s Azure Media Services Live Streaming](https://msdn.microsoft.com/library/azure/dn783466.aspx).
-* V současné době nelze ingestovat rtmp živého datového proudu přes připojení SSL.
-* Streamovat přes SSL můžete pouze v případě, že koncový bod streamování, ze kterého doručujete obsah byl vytvořen po 10 září 2014. Pokud jsou vaše adresy URL streamování založeny na koncových bodech streamování vytvořených po 1 streaming.mediaservices.windows.net0. Datové adresy URL datových proudů, které obsahují "origin.mediaservices.windows.net" (starý formát), nepodporují ssl. Pokud je vaše adresa URL ve starém formátu a chcete streamovat přes SSL, [vytvořte nový koncový bod streamování](media-services-portal-manage-streaming-endpoints.md). Chcete-li streamovat obsah přes SSL, použijte adresy URL založené na novém koncovém bodu streamování.
+* Nyní můžete pomocí služby Media Services ingestovat živý obsah plynulého streamování (fMP4) prostředněk připojení TLS. Chcete-li ingestovat přes TLS, nezapomeňte aktualizovat ingestující adresu URL na HTTPS. V současné době media services nepodporuje TLS s vlastními doménami. Další informace o živém streamování najdete v [tématu Práce s Azure Media Services Live Streaming](https://msdn.microsoft.com/library/azure/dn783466.aspx).
+* V současné době nelze ingestovat rtmp živého datového proudu přes připojení TLS.
+* Streamovat přes TLS můžete pouze v případě, že koncový bod streamování, ze kterého doručujete obsah byl vytvořen po 10 září 2014. Pokud jsou vaše adresy URL streamování založeny na koncových bodech streamování vytvořených po 1 streaming.mediaservices.windows.net0. Streamované adresy URL, které obsahují "origin.mediaservices.windows.net" (starý formát), nepodporují TLS. Pokud je vaše adresa URL ve starém formátu a chcete streamovat přes TLS, [vytvořte nový koncový bod streamování](media-services-portal-manage-streaming-endpoints.md). Chcete-li streamovat obsah přes TLS, použijte adresy URL založené na novém koncovém bodu streamování.
 
 ### <a name="media-services-net-sdk"></a><a id="oct_sdk"></a>Sada Media Services .NET SDK
 Sada Media Services SDK pro rozšíření .NET je nyní verze 2.0.0.3.
@@ -601,7 +601,7 @@ Následující funkce byla novinkou v listopadové verzi sady SDK:
 [Connect to Media Services with the Media Services SDK for .NET]: https://msdn.microsoft.com/library/azure/jj129571.aspx
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
-[GitHub]: https://github.com/Azure/azure-sdk-for-media-services
+[GitHubu]: https://github.com/Azure/azure-sdk-for-media-services
 [Manage Media Services assets across multiple Storage accounts]: https://msdn.microsoft.com/library/azure/dn271889.aspx
 [Handle Media Services job notifications]: https://msdn.microsoft.com/library/azure/dn261241.aspx
 
