@@ -736,7 +736,7 @@ Teď máte základní aplikaci pro iOS Swift připojenou k centru oznámení pro
 - [Sada SDK centra oznámení pro operace back-end](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
 - [Centra oznámení SDK na GitHubu](https://github.com/Azure/azure-notificationhubs)
 - [Registrace s back-endem aplikace](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
-- [Správa registrace](notification-hubs-push-notification-registration-management.md)
+- [Správa registrací](notification-hubs-push-notification-registration-management.md)
 - [Práce se značkami](notification-hubs-tags-segment-push-message.md) 
 - [Práce s vlastními šablonami](notification-hubs-templates-cross-platform-push-messages.md)
 - [Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy](../service-bus-messaging/service-bus-sas.md)

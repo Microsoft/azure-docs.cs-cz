@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 60c3a7f4f12993f475b3d03fd0915971d7673a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80143102"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398364"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Přechod na protokol OpenVPN nebo IKEv2 z SSTP
 
@@ -33,7 +33,7 @@ Point-to-site VPN můžete použít jeden z následujících protokolů:
 >IKEv2 a OpenVPN pro P2S jsou k dispozici pouze pro model nasazení Resource Manager. Nejsou k dispozici pro model klasického nasazení. Základní brána SKU nepodporuje protokoly IKEv2 nebo OpenVPN. Pokud používáte základní skladovou položku, budete muset odstranit a znovu vytvořit produkční bránu virtuální sítě sku.
 >
 
-## <a name="migrating-from-sspt-to-ikev2-or-openvpn"></a>Migrace z SSPT na IKEv2 nebo OpenVPN
+## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>Migrace z SSTP na IKEv2 nebo OpenVPN
 
 Mohou nastat případy, kdy chcete podporovat více než 128 souběžné připojení P2S k bráně VPN, ale používáte SSTP. V takovém případě musíte přejít na protokol IKEv2 nebo OpenVPN.
 

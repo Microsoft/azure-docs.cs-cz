@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687358"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478728"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Úvod do prostředí služby App Service v1
 
@@ -48,7 +48,7 @@ Všechny výpočetní prostředky v prostředí služby App Service jsou vyhraze
 
 Prostředí služby App Service se skládá z fondu výpočetních prostředků front-endu a také z jednoho až tří fondů výpočetních prostředků pracovního procesu.
 
-Front-endový fond obsahuje výpočetní prostředky odpovědné za ukončení SSL a také automatické vyrovnávání zatížení požadavků aplikací v prostředí služby App Service.
+Front-endový fond obsahuje výpočetní prostředky odpovědné za ukončení TLS a také automatické vyrovnávání zatížení požadavků aplikací v prostředí služby App Service.
 
 Každý fond pracovních prostředků obsahuje výpočetní prostředky přidělené [na plány služby App Service][AppServicePlan], které zase obsahují jednu nebo více aplikací Azure App Service.  Vzhledem k tomu, že může být až tři různé fondy pracovních procesů v prostředí služby App Service, máte možnost zvolit různé výpočetní prostředky pro každý fond pracovních procesů.  
 

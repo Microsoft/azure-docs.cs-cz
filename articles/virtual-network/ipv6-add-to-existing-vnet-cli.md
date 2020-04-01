@@ -11,21 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5dc231febc2e9b605b9e7f603f5d036b8a2c62eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3f9b32ea55f0ceebf08b22ccc7e2ceec0b6227e
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240765"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420794"
 ---
-# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>Přidání IPv6 do aplikace IPv4 ve virtuální síti Azure – Azure CLI (Preview)
+# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Přidání IPv6 do aplikace IPv4 ve virtuální síti Azure – Azure CLI
 
 Tento článek ukazuje, jak přidat adresy IPv6 do aplikace, která používá veřejnou IP adresu IPv4 ve virtuální síti Azure pro standardní nástroj pro vyrovnávání zatížení pomocí azure cli. Upgrade na místě zahrnuje virtuální síť a podsíť, standardní nástroj pro vyrovnávání zatížení s front-endovými konfiguracemi IPv4 + IPV6, virtuální počítače s síťovými kartami, které mají konfigurace IPv4 + IPv6, skupinu zabezpečení sítě a veřejné IP adresy.
 
-> [!Important]
-> Podpora IPv6 pro virtuální síť Azure je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,29 +31,6 @@ Pokud se rozhodnete nainstalovat a použít Azure CLI místně místo, tento ryc
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="register-the-service"></a>Registrace služby
-
-Před nasazením aplikace se dvěma zásobníky v Azure je nutné nakonfigurovat předplatné pro tuto funkci náhledu pomocí následujícího rozhraní příkazového příkazového příkazu Azure:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Dokončení registrace funkce trvá až 30 minut. Stav registrace můžete zkontrolovat spuštěním následujícího příkazu Azure CLI:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Po dokončení registrace spusťte následující příkaz:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Vytvoření Load Balanceru úrovně Standard
 Tento článek předpokládá, že jste nasadili standardní vyrovnávání zatížení, jak je popsáno v [úvodním panelu: Vytvoření standardního vyrovnávání zatížení – Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md).
 
 ## <a name="create-ipv6-addresses"></a>Vytvoření adres IPv6
@@ -173,8 +148,6 @@ Virtuální síť IPv6 dual stack můžete zobrazit na webu Azure Portal násled
 
   ![Virtuální síť s duálním zásobníkem IPv6 v Azure](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Virtuální síť IPv6 pro Azure je dostupná na webu Azure Portal jen pro čtení pro tuto předběžnou verzi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

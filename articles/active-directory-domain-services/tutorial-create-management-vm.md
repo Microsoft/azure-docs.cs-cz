@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 63c5f068adab58c901acf5fd26261d57e1183f0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09fcf88c6dfe90380f387c6d72c751634f5b1606
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481513"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475743"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Vytvoření virtuálního počítače pro správu pro konfiguraci a správu spravované domény služby Azure Active Directory Domain Services
 
@@ -89,7 +89,6 @@ Chcete-li začít, připojte se k virtuálnímu virtuálnímu zařízení se sys
 
     ![Připojení k virtuálnímu počítači s Windows pomocí bastionu na webu Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
-    Můžete také [vytvořit a použít hostitele Azure Bastion (aktuálně ve verzi)][azure-bastion] povolit přístup jenom prostřednictvím portálu Azure přes TLS.
 1. Zadejte přihlašovací údaje pro virtuální počítač a pak vyberte **Připojit**.
 
    ![Připojení prostřednictvím hostitele Bastion na webu Azure Portal](./media/join-windows-vm/connect-to-bastion.png)

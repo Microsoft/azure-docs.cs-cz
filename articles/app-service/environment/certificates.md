@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688643"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477499"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certifikáty a prostředí služby App Service 
 
@@ -22,7 +22,7 @@ ASE je jeden klientský systém. Vzhledem k tomu, že je jeden tenant, existují
 
 ## <a name="ilb-ase-certificates"></a>Certifikáty Služby ASE ILB 
 
-Pokud používáte externí službu ASE, vaše aplikace jsou zastižené na [appname]. [asename].p.azurewebsites.net. Ve výchozím nastavení jsou všechny ases, dokonce i ILB ASEs, vytvořeny s certifikáty, které následují tento formát. Pokud máte službu ASE ILB, aplikace jsou dostupné na základě názvu domény, který zadáte při vytváření služby ASE ILB. Aby aplikace podporovaly SSL, musíte nahrát certifikáty. Získejte platný certifikát SSL pomocí interních certifikačních úřadů, zakoupením certifikátu od externího vystavittele nebo pomocí certifikátu podepsaného svým držitelem. 
+Pokud používáte externí službu ASE, vaše aplikace jsou zastižené na [appname]. [asename].p.azurewebsites.net. Ve výchozím nastavení jsou všechny ases, dokonce i ILB ASEs, vytvořeny s certifikáty, které následují tento formát. Pokud máte službu ASE ILB, aplikace jsou dostupné na základě názvu domény, který zadáte při vytváření služby ASE ILB. Aby aplikace podporovaly TLS, musíte nahrát certifikáty. Získejte platný certifikát TLS/SSL pomocí interních certifikačních úřadů, zakoupením certifikátu od externího vystavittele nebo pomocí certifikátu podepsaného svým držitelem. 
 
 Existují dvě možnosti konfigurace certifikátů pomocí služby ILB ASE.  Můžete nastavit výchozí certifikát se zástupnými symboly pro službu ASE ILB nebo certifikáty pro jednotlivé webové aplikace v ase.  Bez ohledu na volbu, kterou provedete, musí být správně nakonfigurovány následující atributy certifikátu:
 
@@ -58,7 +58,7 @@ Aplikace, které jsou hostované ve službě ASE, můžou používat funkce cert
 - Protokol SSL založený na protokolu IP, který je podporován pouze externí službou ASE.  ASE Služby ILB nepodporuje protokol SSL založený na protokolu IP.
 - Hostované certifikáty KeyVault 
 
-Pokyny pro nahrávání a správu těchto certifikátů jsou k dispozici v [části Přidání certifikátu SSL ve službě Azure App Service](../configure-ssl-certificate.md).  Pokud jednoduše konfigurujete certifikáty tak, aby odpovídaly vlastnímu názvu domény, který jste přiřadili webové aplikaci, budou tyto pokyny stačit. Pokud nahráváte certifikát pro webovou aplikaci Služby ASE ILB s výchozím názvem domény, zadejte web scm v síti SAN certifikátu, jak bylo uvedeno výše. 
+Pokyny pro nahrávání a správu těchto certifikátů jsou k dispozici v [části Přidat certifikát TLS/SSL ve službě Azure App Service](../configure-ssl-certificate.md).  Pokud jednoduše konfigurujete certifikáty tak, aby odpovídaly vlastnímu názvu domény, který jste přiřadili webové aplikaci, budou tyto pokyny stačit. Pokud nahráváte certifikát pro webovou aplikaci Služby ASE ILB s výchozím názvem domény, zadejte web scm v síti SAN certifikátu, jak bylo uvedeno výše. 
 
 ## <a name="tls-settings"></a>Nastavení TLS 
 

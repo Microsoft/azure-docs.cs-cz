@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/15/2020
-ms.openlocfilehash: 7745888dcaa1324d4a9d956e93d0504c8da8c026
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/25/2020
+ms.openlocfilehash: 198b78d5bab15057fdb6c7f6d4e8fff9f77d496e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501768"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397102"
 ---
 # <a name="microsoft-flow-connector-preview"></a>Konektor Microsoft Flow (náhled)
 
@@ -37,7 +37,7 @@ Další informace naleznete v [příkladech použití konektoru Microsoft Flow](
 
 ![Dialogové okno Přihlásit se](./media/flow/flow-signin.png)
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Můžete se ověřit pomocí pověření uživatele nebo aplikace AAD.
 
@@ -116,7 +116,7 @@ Pomocí příkazu Spustit ovládací prvek a vizualizaci výsledků spusťte [p�
 ### <a name="run-query-and-list-results"></a>Spuštění výsledků dotazu a seznamu
 
 > [!Note]
-> Pokud dotaz začíná tečkou (což znamená, že se jedná o [řídicí příkaz),](https://docs.microsoft.com/azure/kusto/management/index)použijte [příkaz Spustit ovládací prvek a vizualizovat výsledky](#run-control-command-and-visualize-results)
+> Pokud dotaz začíná tečkou (což znamená, že se jedná o [řídicí příkaz](https://docs.microsoft.com/azure/kusto/management/index)), použijte příkaz Spustit ovládací prvek [a vizualizovat výsledky](#run-control-command-and-visualize-results).
 
 Tato akce odešle dotaz do clusteru Kusto. Akce, které jsou přidány později iterate přes každý řádek výsledků dotazu.
 
@@ -130,7 +130,7 @@ Následující příklad spustí dotaz každou minutu a odešle e-mail na zákla
 ### <a name="run-query-and-visualize-results"></a>Spuštění dotazu a vizualizace výsledků
         
 > [!Note]
-> Pokud dotaz začíná tečkou (což znamená, že se jedná o [řídicí příkaz),](https://docs.microsoft.com/azure/kusto/management/index)použijte [příkaz Spustit ovládací prvek a vizualizovat výsledky](#run-control-command-and-visualize-results)
+> Pokud dotaz začíná tečkou (což znamená, že se jedná o [řídicí příkaz](https://docs.microsoft.com/azure/kusto/management/index)), použijte příkaz Spustit ovládací prvek [a vizualizovat výsledky](#run-control-command-and-visualize-results).
         
 Pomocí akce Spustit dotaz a vizualizaci výsledků vizualizujte výsledek kusto dotazu jako tabulku nebo graf. Tento tok můžete například použít k přijímání denních sestav ICM e-mailem. 
     
@@ -147,17 +147,21 @@ Můžete zahrnout krok do libovolného toku pro odesílání zpráv e-mailem na 
 
 1. Výběrem **možnosti + Nový krok** přidáte do toku nový krok.
 1. Do vyhledávacího pole zadejte Office 365 a vyberte **Office 365 Outlook**.
-1. Vyberte **Odeslat e-mail**.
+1. Vyberte **Odeslat e-mail (V2)**.
 1. Zadejte e-mailovou adresu, na kterou chcete e-mailovou sestavu odeslat.
 1. Zadejte předmět e-mailu.
-1. V poli *Tělo* vyberte z pole Dynamický obsah **položku Tělo**.
+1. Vyberte **zobrazení kódu**.
+1. Umístěte kurzor do pole *Tělo* a vyberte **Přidat dynamický obsah**.
+1. Vyberte **BodyHtml**.
+    ![Odeslání e-mailu](./media/flow/flow-send-email.png)
 1. Vyberte **Zobrazit pokročilé možnosti**.
 1. V poli *Název přílohy -1* vyberte **Název přílohy**.
 1. V poli *Obsah příloh* vyberte **Obsah přílohy**.
+1. V případě potřeby přidejte další přílohy. 
 1. V případě potřeby nastavte úroveň důležitosti.
 1. Vyberte **Uložit**.
 
-![Odeslat e-mail](./media/flow/flow-sendemail.png)
+![Odeslat e-mail](./media/flow/flow-add-attachments.png)
 
 ## <a name="check-if-your-flow-succeeded"></a>Zkontrolujte, zda byl váš tok úspěšný
 

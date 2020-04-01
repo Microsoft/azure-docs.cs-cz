@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279153"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411063"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Protokoly stavu a diagnostiky back-endu pro aplikační bránu
 
@@ -96,9 +96,9 @@ Následující úryvek ukazuje příklad odpovědi:
 Ke správě a odstraňování problémů s aplikačními bránami můžete v Azure použít různé typy protokolů. Některé z těchto protokolů jsou přístupné z webu Azure Portal. Všechny protokoly lze extrahovat z úložiště objektů Blob Azure a zobrazit v různých nástrojích, jako jsou [protokoly Azure Monitor ,](../azure-monitor/insights/azure-networking-analytics.md)Excel a Power BI. Další informace o různých typech protokolů naleznete v následujícím seznamu:
 
 * **Protokol aktivit**: [Protokoly aktivit Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dříve označované jako provozní protokoly a protokoly auditu) můžete zobrazit všechny operace, které jsou odeslány do předplatného Azure a jejich stav. Položky protokolu aktivit se ve výchozím nastavení shromažďují a můžete si je zobrazit na webu Azure Portal.
-* **Protokol přístupu**: Tento protokol můžete použít k zobrazení vzorů přístupu brány aplikace a k analýze důležitých informací. To zahrnuje IP volajícího, požadovanou adresu URL, latenci odezvy, návratový kód a bajty dovnitř a ven. Protokol přístupu se shromažďuje každých 300 sekund. Tento protokol obsahuje jeden záznam na instanci aplikační brány. Instance Application Gateway je identifikována vlastností instanceId.
+* **Protokol přístupu**: Tento protokol můžete použít k zobrazení vzorů přístupu brány aplikace a k analýze důležitých informací. To zahrnuje IP volajícího, požadovanou adresu URL, latenci odezvy, návratový kód a bajty dovnitř a ven. Protokol přístupu se shromažďuje každých 60 sekund. Tento protokol obsahuje jeden záznam na instanci aplikační brány. Instance Application Gateway je identifikována vlastností instanceId.
 * **Protokol výkonu**: Tento protokol můžete použít k zobrazení výkonu instancí brány aplikace. Tento protokol zachycuje informace o výkonu pro každou instanci, včetně celkového počtu obsluhovaných požadavků, propustnost v bajtů, celkový počet obsluhovaných požadavků, počet neúspěšných požadavků a počet instancí v pořádku a není v pořádku. Protokol výkonu se shromažďuje každých 60 sekund. Protokol výkonu je k dispozici pouze pro skladovou položku v1. Pro skladovou položku v2 použijte [metriky](application-gateway-metrics.md) pro data o výkonu.
-* **Protokol brány firewall**: Tento protokol můžete použít k zobrazení požadavků protokolovaných prostřednictvím režimu zjišťování nebo prevence aplikační brány, která je nakonfigurována pomocí brány firewall webové aplikace.
+* **Protokol brány firewall**: Tento protokol můžete použít k zobrazení požadavků protokolovaných prostřednictvím režimu zjišťování nebo prevence aplikační brány, která je nakonfigurována pomocí brány firewall webové aplikace. Protokoly brány firewall jsou shromažďovány každých 60 sekund. 
 
 > [!NOTE]
 > Protokoly jsou k dispozici jenom pro prostředky nasazené v modelu nasazení Azure Resource Manager. Protokoly nelze použít pro prostředky v modelu klasického nasazení. Pro lepší pochopení těchto dvou modelů, [najdete v článku Principy nasazení Resource Manager a klasické nasazení.](../azure-resource-manager/management/deployment-models.md)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: dapine
-ms.openlocfilehash: 8392e03f272c6db2bb384c8031cb975bca53d530
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0c0fa3e07e0cdae6ce28fcd1521b63cb2575767f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372799"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501685"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https:/
 * S hostitelem: předat adresu hostitele. Klíč nebo autorizační token je volitelný.
 * S tokenem autorizace: předavte autorizační token a přidruženou oblast.
 
-Podívejme se na to, [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) jak se vytvoří pomocí klíče a oblasti.
+Podívejme se na to, [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) jak se vytvoří pomocí klíče a oblasti. Na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) najdete identifikátor oblasti.
 
 ```cpp
 auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");

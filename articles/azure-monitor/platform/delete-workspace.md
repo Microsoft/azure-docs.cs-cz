@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: ead0ac04fbd2244fce97dd043ebd44f24fb0f67f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054922"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80395787"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
@@ -56,6 +56,17 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsof
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+### <a name="troubleshooting"></a>Řešení potíží
+
+Chcete-li odstranit pracovní prostor Log Analytics, musíte mít oprávnění přispěvatele analýzy protokolů.<br>
+Pokud se zobrazí chybová zpráva '*Tento název pracovního prostoru je již používán*při vytváření pracovního prostoru, může to být od:
+* Název pracovního prostoru není k dispozici a používá ho někdo ve vaší organizaci nebo jiný zákazník.
+* Pracovní prostor byl odstraněn v posledních 14 dnech a jeho název byl vyhrazen pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a okamžité odstranění pracovního prostoru a vytvořit nový pracovní prostor se stejným názvem, nejprve obnovte pracovní prostor a proveďte trvalé odstranění:<br>
+   1. [Obnovte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) pracovní prostor.
+   2. [Trvale odstraňte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) pracovní prostor.
+   3. Vytvořte nový pracovní prostor se stejným názvem pracovního prostoru.
+
 
 ## <a name="permanent-workspace-delete"></a>Trvalé odstranění pracovního prostoru
 Metoda obnovitelného odstranění se nemusí vejít do některých scénářů, jako je vývoj a testování, kde je třeba opakovat nasazení se stejným nastavením a názvem pracovního prostoru. V takových případech můžete trvale odstranit pracovní prostor a "přepsat" období obnovitelného odstranění. Trvalá operace odstranění pracovního prostoru uvolní název pracovního prostoru a můžete vytvořit nový pracovní prostor se stejným názvem.

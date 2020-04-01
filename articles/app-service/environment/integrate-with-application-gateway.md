@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687137"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476889"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrace služby App Service Environment s interním nástrojem pro vyrovnávání zatížení se službou Azure Application Gateway #
 
@@ -20,7 +20,7 @@ ms.locfileid: "74687137"
 
 Brány firewall webových aplikací pomáhají zabezpečit webové aplikace kontrolou příchozího webového provozu, aby zablokovaly injektáže SQL, skriptování mezi weby, nahrávání malwaru & aplikace DDoS a další útoky. Také kontroluje odpovědi z back-endových webových serverů pro prevenci ztráty dat (DLP). Zařízení WAF můžete získat z webu Azure Marketplace nebo můžete použít [Azure Application Gateway][appgw].
 
-Aplikační brána Azure je virtuální zařízení, které poskytuje vyrovnávání zatížení vrstvy 7, snižování zátěže SSL a ochranu brány firewall webových aplikací (WAF). Může naslouchat na veřejné IP adrese a směrovat provoz do koncového bodu aplikace. Následující informace popisují, jak integrovat aplikační bránu konfigurovanou WAF s aplikací v prostředí služby ILB App Service.  
+Aplikační brána Azure je virtuální zařízení, které poskytuje vyrovnávání zatížení vrstvy 7, snižování zátěže TLS/SSL a ochranu brány firewall webových aplikací (WAF). Může naslouchat na veřejné IP adrese a směrovat provoz do koncového bodu aplikace. Následující informace popisují, jak integrovat aplikační bránu konfigurovanou WAF s aplikací v prostředí služby ILB App Service.  
 
 Integrace aplikační brány s prostředím služby ILB App Service Environment je na úrovni aplikace. Když nakonfigurujete aplikační bránu s prostředím služby ILB App Service, děláte to pro konkrétní aplikace v prostředí služby ILB App Service. Tato technika umožňuje hostování zabezpečených víceklientských aplikací v jednom prostředí služby ILB App Service.  
 

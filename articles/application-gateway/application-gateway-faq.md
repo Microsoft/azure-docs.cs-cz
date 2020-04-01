@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 242fc115c5b2324c770de480fb19985e8b874893
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371265"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411016"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se brány aplikace
 
@@ -353,11 +353,11 @@ V současné době jedna instance ingress řadič lze přidružit pouze k jedné
 
 Aplikační brána poskytuje tři protokoly: 
 
-* **ApplicationGatewayAccessLog**: Protokol přístupu obsahuje každý požadavek odeslaný do front-endu aplikační brány. Data zahrnují IP adresu volajícího, požadovanou adresu URL, latenci odezvy, návratový kód a bajty dovnitř a ven. Protokol přístupu se shromažďuje každých 300 sekund. Obsahuje jeden záznam na aplikační bránu.
+* **ApplicationGatewayAccessLog**: Protokol přístupu obsahuje každý požadavek odeslaný do front-endu aplikační brány. Data zahrnují IP adresu volajícího, požadovanou adresu URL, latenci odezvy, návratový kód a bajty dovnitř a ven. Obsahuje jeden záznam na aplikační bránu.
 * **ApplicationGatewayPerformanceLog**: Protokol výkonu zachycuje informace o výkonu pro každou aplikační bránu. Informace zahrnují propustnost v bajtů, celkový počet doručených požadavků, počet neúspěšných požadavků a počet back-endových instancí v pořádku a není v pořádku.
 * **ApplicationGatewayFirewallLog**: Pro aplikační brány, které nakonfigurujete pomocí WAF, obsahuje protokol brány firewall požadavky, které jsou protokolovány buď prostřednictvím režimu zjišťování, nebo režimu prevence.
 
-Další informace naleznete [v tématu Back-endstavu, protokoly diagnostiky a metriky pro aplikační bránu](application-gateway-diagnostics.md).
+Všechny protokoly jsou shromažďovány každých 60 sekund. Další informace naleznete [v tématu Back-endstavu, protokoly diagnostiky a metriky pro aplikační bránu](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Jak poznám, že jsou členové back-endu v pořádku?
 

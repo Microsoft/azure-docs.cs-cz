@@ -4,12 +4,12 @@ description: Získejte přehled o tom, co můžete dělat s upozorněními na me
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: b6d8bc69a407838025c5e78e0a1c773ab457c409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480228"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397980"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -51,7 +51,7 @@ Pokud používáte více podmínek v jednom pravidle, pravidlo "ands" podmínky 
 - Ohlédnutí období: 4
 - Počet porušení: 4
 
-Po vytvoření pravidla výstrahy získá algoritmus strojového učení dynamických prahových hodnot historická data, která jsou k dispozici, vypočítá prahovou hodnotu, která nejlépe vyhovuje vzoru chování metrikových řad, a bude se průběžně učit na základě nových dat, aby prahovou hodnotu.
+Po vytvoření pravidla výstrahy získá algoritmus strojového učení dynamických prahových hodnot historická data, která jsou k dispozici, vypočítá prahovou hodnotu, která nejlépe vyhovuje vzoru chování metrikových řad, a bude se průběžně učit na základě nových dat, aby byla prahová hodnota přesnější.
 
 Od okamžiku vytvoření pravidla výstrahy se monitorování spouští každých 1 min a vyhledá hodnoty metrik y za posledních 20 minut seskupených do 5 minut a zkontroluje, zda průměr hodnot období v každém ze 4 období překračuje očekávanou prahovou hodnotu. Pokud je splněna podmínka, která je, že průměrné procento procesoru za posledních 20 minut (čtyři 5 minut období) odchýlil od očekávané chování čtyřikrát, pravidlo výstrahy vyvolá aktivované oznámení. Pokud jste nakonfigurovali e-mail nebo akci webového háčku ve skupině akcí přidružené k pravidlu výstrahy, obdržíte aktivované oznámení o obou.
 
@@ -128,7 +128,7 @@ Tato funkce je v současné době podporovaná pro metriky platformy (ne vlastn�
 
 | Služba | Veřejný Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtual Machines  | **Ano** | Ne | Ne |
+| Virtuální počítače  | **Ano** | Ne | Ne |
 | Databáze sql serverů | **Ano** | **Ano** | Ne |
 | Elastické fondy serveru SQL | **Ano** | **Ano** | Ne |
 | Hraniční zařízení datové schránky | **Ano** | **Ano** | Ne |
@@ -140,6 +140,10 @@ Rozsah monitorování můžete zadat jedním ze tří způsobů. Například u v
 - všechny virtuální počítače (v jedné oblasti Azure) v jednom předplatném
 
 Vytváření pravidel upozornění metriky, která monitorují více prostředků, je jako [vytváření jakékoli jiné metriky,](alerts-metric.md) která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete sledovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). Obdržíte jednotlivá oznámení pro každý sledovaný prostředek.
+
+> [!NOTE]
+>
+> V pravidle upozornění metriky, které monitoruje více prostředků, je povolena pouze jedna podmínka.
 
 ## <a name="typical-latency"></a>Typická latence
 

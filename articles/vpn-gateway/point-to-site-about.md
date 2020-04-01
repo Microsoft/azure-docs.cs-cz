@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500604"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410489"
 ---
 # <a name="about-point-to-site-vpn"></a>O síti VPN z bodu na web
 
@@ -22,9 +22,9 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 Point-to-site VPN můžete použít jeden z následujících protokolů:
 
-* **OpenVPN® Protocol**, protokol VPN založený na Protokolu SSL/TLS. Řešení SSL VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443 odchozí, který Používá SSL. OpenVPN lze použít pro připojení z Android, iOS (verze 11.0 a vyšší), Windows, Linux a Mac zařízení (OSX verze 10.13 a vyšší).
+* **OpenVPN® Protocol**, protokol VPN založený na Protokolu SSL/TLS. Řešení TLS VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443 odchozí, který TLS používá. OpenVPN lze použít pro připojení z Android, iOS (verze 11.0 a vyšší), Windows, Linux a Mac zařízení (OSX verze 10.13 a vyšší).
 
-* Protokol SSTP (Secure Socket Tunneling Protocol) – proprietární protokol VPN založený na protokolu SSL. Řešení SSL VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443 odchozí, který Používá SSL. SSTP je podporována pouze na zařízeních se systémem Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
+* Protokol SSTP (Secure Socket Tunneling Protocol), proprietární protokol VPN založený na protokolu TLS. Řešení TLS VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443 odchozí, který TLS používá. SSTP je podporována pouze na zařízeních se systémem Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
 
 * IKEv2 VPN, řešení IPsec VPN založené na standardech. IKEv2 VPN je možné použít k připojení ze zařízení se systémem Mac (OSX verze 10.11 a vyšší).
 

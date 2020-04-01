@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264674"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476737"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 Když zákazníkům dodáváte obsah streamování nebo videa na vyžádání, vaším cílem je dodávat vysoce kvalitní video do různých zařízení za různých síťových podmínek.
@@ -40,7 +40,7 @@ Tento článek poskytuje přehled důležitých konceptů doručování obsahu.
 Chcete-li zkontrolovat známé problémy, naleznete [v tématu Známé problémy](media-services-deliver-content-overview.md#known-issues).
 
 ## <a name="dynamic-packaging"></a>Dynamické balení
-Díky dynamickému balení, které poskytuje mediální služby, můžete dodávat obsah s adaptivním datovým tokem MP4 nebo plynulým streamováním ve formátech streamování podporovaných mediálními službami (MPEG-DASH, HLS, Smooth Streaming), aniž byste museli znovu zabalit do těchto formáty datových proudů. Doporučujeme dodávat váš obsah s dynamickým balením.
+Díky dynamickému balení, které poskytuje mediální služby, můžete poskytovat obsah kódovaný pro funkce MP4 nebo plynulé streamování s adaptivním datovým tokem ve formátech datových proudů podporovaných službou Media Services (MPEG-DASH, HLS, Smooth Streaming), aniž byste museli znovu zabalit do těchto formátů streamování. Doporučujeme dodávat váš obsah s dynamickým balením.
 
 Chcete-li využít výhod dynamického balení, musíte kódovat mezipatro (zdrojový) soubor do sady souborů MP4 s adaptivní matourychlostí nebo adaptivního datového toku Smooth Streaming.
 
@@ -82,10 +82,10 @@ Technologie adaptivního přenosového toku umožňují aplikacím přehrávače
 Chcete-li uživatelům poskytnout streamované adresy URL, musíte nejprve vytvořit lokátor OnDemandOrigin. Vytvoření lokátoru vám poskytne základní cestu k datovému zdroji, který obsahuje obsah, který chcete streamovat. Chcete-li však tento obsah streamovat, je třeba tuto cestu dále upravit. Chcete-li vytvořit úplnou adresu URL souboru manifestu streamování, musíte zřetězit hodnotu cesty lokátoru a název souboru manifestu (filename.ism). Potom přidejte **/Manifest** a vhodný formát (v případě potřeby) k cestě lokátoru.
 
 > [!NOTE]
-> Můžete také streamovat obsah přes připojení SSL. Chcete-li to provést, ujistěte se, že vaše streamované adresy URL začínají protokolem HTTPS. Všimněte si, že v současné době AMS nepodporuje SSL s vlastními doménami.  
+> Můžete také streamovat obsah přes připojení TLS. Chcete-li to provést, ujistěte se, že vaše streamované adresy URL začínají protokolem HTTPS. Všimněte si, že v současné době AMS nepodporuje TLS s vlastními doménami.  
 > 
 
-Datový proud přes SSL můžete streamovat pouze v případě, že koncový bod streamování, ze kterého doručujete obsah, byl vytvořen po 10. Pokud jsou vaše adresy URL streamování založeny na koncových bodech streamování vytvořených po 10 streaming.mediaservices.windows.net. Datové adresy URL datových proudů, které obsahují "origin.mediaservices.windows.net" (starý formát) nepodporují ssl. Pokud je vaše adresa URL ve starém formátu a chcete mít možnost datového proudu přes SSL, vytvořte nový koncový bod streamování. Pomocí adres URL založených na novém koncovém bodu streamování můžete streamovat obsah přes SSL.
+Streamovat přes TLS lze pouze v případě, že koncový bod streamování, ze kterého doručujete obsah byl vytvořen po 10 září 2014. Pokud jsou vaše adresy URL streamování založeny na koncových bodech streamování vytvořených po 10 streaming.mediaservices.windows.net. Datové adresy URL datových proudů, které obsahují "origin.mediaservices.windows.net" (starý formát), nepodporují tls. Pokud je vaše adresa URL ve starém formátu a chcete mít možnost datového proudu přes TLS, vytvořte nový koncový bod streamování. Pomocí adres URL založených na novém koncovém bodu streamování můžete streamovat obsah přes TLS.
 
 ## <a name="streaming-url-formats"></a><a id="URLs"/>Formáty adres URL pro streamování
 
@@ -155,7 +155,7 @@ Koncový bod streamování představuje službu streamování, která může dor
 
 ## <a name="known-issues"></a>Známé problémy
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Změny verze manifestu Plynulé hodovací hod
-Před vydáním služby v červenci 2016 – když byly datové zdroje vytvořené standardem Media Encoder Standard, Media Encoder Premium Workflow nebo starším kodéru médií Azure streamovány datovým proudem pomocí dynamického balení – byl vrácen manifest Hladký datový proud v souladu s verzí. 2.0. Ve verzi 2.0 nepoužívají doby trvání fragmentu tzv. Například:
+Před vydáním služby v červenci 2016 – když byly datové zdroje vytvořené standardem Media Encoder Standard, Media Encoder Premium Workflow nebo starším kodéru médií Azure Encoder streamovány pomocí dynamického balení – manifest Hladký streamování, který by byl vrácen, by odpovídal verzi 2.0. Ve verzi 2.0 nepoužívají doby trvání fragmentu tzv. Například:
 
 
     <?xml version="1.0" encoding="UTF-8"?>

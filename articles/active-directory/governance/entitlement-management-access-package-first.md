@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 10/22/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75422660"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410596"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: Vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
@@ -84,79 +84,83 @@ Přístupový *balíček* je sada prostředků, které tým nebo projekt potřeb
 
 1. Na webu Azure Portal klikněte v levém navigačním panelu na **Položku Azure Active Directory**.
 
-1. V levé nabídce klikněte na **Zásady správného řízení identity.**
+2. V levé nabídce klikněte na **Zásady správného řízení identity.**
 
-1. V levé nabídce klepněte na **položku Přístup k balíčkům**.  Pokud se vám **přístup odepřen**, ujistěte se, že licence Azure AD Premium P2 je k dispozici ve vašem adresáři.
+3. V levé nabídce klepněte na **položku Přístup k balíčkům**.  Pokud se vám **přístup odepřen**, ujistěte se, že licence Azure AD Premium P2 je k dispozici ve vašem adresáři.
 
-1. Klepněte na **položku Nový přístupový balíček**.
+4. Klepněte na **položku Nový přístupový balíček**.
 
     ![Správa nároků na webu Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-1. Na kartě **Základy** zadejte název Balíček přístupu k **marketingové kampani** a popis **Přístup k prostředkům kampaně**.
+5. Na kartě **Základy** zadejte název Balíček přístupu k **marketingové kampani** a popis **Přístup k prostředkům kampaně**.
 
-1. Rozevírací seznam **Katalog** ponechejte nastavený na **obecné**.
+6. Rozevírací seznam **Katalog** ponechejte nastavený na **obecné**.
 
     ![Nový přístupový balíček – karta Základy](./media/entitlement-management-access-package-first/basics.png)
 
-1. Kliknutím na **Další** otevřete kartu **Role prostředků.**
+7. Kliknutím na **Další** otevřete kartu **Role prostředků.**
 
     Na této kartě vyberete prostředky a roli prostředku, které chcete zahrnout do balíčku přístupu.
 
-1. Klikněte na **Skupiny a týmy**.
+8. Klikněte na **Skupiny a týmy**.
 
-1. V podokně Vybrat skupiny vyhledejte a vyberte skupinu **marketingových zdrojů,** kterou jste vytvořili dříve.
+9. V podokně Vybrat skupiny vyhledejte a vyberte skupinu **marketingových zdrojů,** kterou jste vytvořili dříve.
 
     Ve výchozím nastavení se zobrazí skupiny uvnitř a vně **obecného** katalogu. Vyberete-li skupinu mimo **obecný** katalog, bude přidána do **obecného** katalogu.
 
     ![Nový přístupový balíček – karta Role prostředků](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. Kliknutím na **Vybrat** přidáte skupinu do seznamu.
+10. Kliknutím na **Vybrat** přidáte skupinu do seznamu.
 
-1. V rozevíracím seznamu **Role** vyberte **Člen**.
+11. V rozevíracím seznamu **Role** vyberte **Člen**.
 
     ![Nový přístupový balíček – karta Role prostředků](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. Kliknutím na **Další** otevřete kartu **Požadavky.**
+    >[!NOTE]
+    > Při použití [dynamických skupin](../users-groups-roles/groups-create-rule.md) neuvidíte žádné jiné role, které jsou k dispozici kromě vlastníka. Toto chování je úmyslné.
+    > ![Přehled scénáře](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+
+12. Kliknutím na **Další** otevřete kartu **Požadavky.**
 
     Na této kartě vytvoříte zásadu požadavku. *Zásada* definuje pravidla nebo svodidla pro přístup k balíčku přístupu. Vytvoření zásady, která umožňuje určitému uživateli v adresáři prostředků požadovat tento přístupový balíček.
 
-1. V části **Uživatelé, kteří mohou požádat o přístup,** klikněte **v adresáři** na možnost Pro uživatele a potom klikněte na **položku Konkrétní uživatelé a skupiny**.
+13. V části **Uživatelé, kteří mohou požádat o přístup,** klikněte **v adresáři** na možnost Pro uživatele a potom klikněte na **položku Konkrétní uživatelé a skupiny**.
 
     ![Nový přístupový balíček – karta Požadavky](./media/entitlement-management-access-package-first/requests.png)
 
-1. Klikněte na **Přidat uživatele a skupiny**.
+14. Klikněte na **Přidat uživatele a skupiny**.
 
-1. V podokně Vybrat uživatele a skupiny vyberte dříve vytvořeného uživatele **Requestor1.**
+15. V podokně Vybrat uživatele a skupiny vyberte dříve vytvořeného uživatele **Requestor1.**
 
     ![Nový přístupový balíček – karta Požadavky – výběr uživatelů a skupin](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. Klepněte na **tlačítko Vybrat**.
+16. Klepněte na **tlačítko Vybrat**.
 
-1. Posuňte se dolů do oddílů **Schválení** a **Povolit požadavky.**
+17. Posuňte se dolů do oddílů **Schválení** a **Povolit požadavky.**
 
-1. Ponechat **ponechat Po schválení ponechat** nastaveno na **ne**.
+18. Ponechat **ponechat Po schválení ponechat** nastaveno na **ne**.
 
-1. V **případě povolení požadavků**povolte klepnutím na tlačítko **Ano,** chcete-li povolit požadavek na tento přístupový balíček ihned po jeho vytvoření.
+19. V **případě povolení požadavků**povolte klepnutím na tlačítko **Ano,** chcete-li povolit požadavek na tento přístupový balíček ihned po jeho vytvoření.
 
     ![Nový přístupový balíček – karta Požadavky – schválení a povolení požadavků](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. Kliknutím na **Další** otevřete kartu **Životní cyklus.**
+20. Kliknutím na **Další** otevřete kartu **Životní cyklus.**
 
-1. V části **Vypršení platnosti** nastavte **počet přiřazení balíčků aplikace Access** na Počet **dní**.
+21. V části **Vypršení platnosti** nastavte **počet přiřazení balíčků aplikace Access** na Počet **dní**.
 
-1. Nastavit **Přiřazení vyprší po** **30** dnech.
+22. Nastavit **Přiřazení vyprší po** **30** dnech.
 
     ![Nový přístupový balíček – karta Životní cyklus](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. Kliknutím na **Další** otevřete kartu **Revize + Vytvořit.**
+23. Kliknutím na **Další** otevřete kartu **Revize + Vytvořit.**
 
     ![Nový přístupový balíček – karta Revize + Vytvoření](./media/entitlement-management-access-package-first/review-create.png)
 
     Po několika okamžicích byste měli vidět oznámení, že balíček přístupu byl úspěšně vytvořen.
 
-1. V levé nabídce balíčku Přístup k marketingové kampani klepněte na tlačítko **Přehled**.
+24. V levé nabídce balíčku Přístup k marketingové kampani klepněte na tlačítko **Přehled**.
 
-1. Zkopírujte **odkaz Na portál u aplikace Můj Přístup**.
+25. Zkopírujte **odkaz Na portál u aplikace Můj Přístup**.
 
     Tento odkaz použijete k dalšímu kroku.
 

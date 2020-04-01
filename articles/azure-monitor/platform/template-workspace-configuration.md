@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054686"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477984"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -40,13 +40,16 @@ V následující tabulce je uvedena verze rozhraní API pro prostředky použit�
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
 | Pracovní prostor   | pracovní prostory    | 2017-03-15-náhled |
-| Search      | uloženoVyhledávání | 2015-03-20 |
+| Hledat      | uloženoVyhledávání | 2015-03-20 |
 | Zdroj dat | Datasources   | 2015-11-01-náhled |
 | Řešení    | Řešení     | 2015-11-01-náhled |
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
 Následující příklad vytvoří pracovní prostor pomocí šablony z místního počítače. Šablona JSON je nakonfigurována tak, aby vyžadovala pouze název a umístění nového pracovního prostoru. Používá hodnoty zadané pro jiné parametry pracovního prostoru, jako je [například režim řízení přístupu](design-logs-deployment.md#access-control-mode), cenová úroveň, uchovávání informací a úroveň rezervace kapacity.
+
+> [!WARNING]
+> Následující šablona vytvoří pracovní prostor Analýzy protokolů a konfiguruje shromažďování dat. To může změnit nastavení fakturace. Zkontrolujte [Správa využití a nákladů pomocí protokolů monitorování Azure,](manage-cost-storage.md) abyste porozuměli fakturaci dat shromážděných v pracovním prostoru Log Analytics před jejich použitím ve vašem prostředí Azure.
 
 Pro rezervaci kapacity definujete vybranou rezervaci kapacity pro `CapacityReservation` ingestování dat zadáním skladové položky a hodnoty v GB pro vlastnost `capacityReservationLevel`. Následující seznam podrobně popisuje podporované hodnoty a chování při konfiguraci.
 
@@ -75,7 +78,7 @@ Pro rezervaci kapacity definujete vybranou rezervaci kapacity pro `CapacityReser
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ Pro rezervaci kapacity definujete vybranou rezervaci kapacity pro `CapacityReser
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,15 +148,15 @@ Pro rezervaci kapacity definujete vybranou rezervaci kapacity pro `CapacityReser
     }
     ```
 
-> [Informace] pro nastavení rezervace kapacity, použijte tyto vlastnosti v části "sku":
+   >[!NOTE]
+   >Pro nastavení rezervace kapacity použijte tyto vlastnosti v části "sku":
+   >* "jméno": "CapacityReservation",
+   >* "capacityReservationLevel": 100
 
->   "jméno": "CapacityReservation",
+2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Zvažte vytvoření [souboru parametrů Správce prostředků](../../azure-resource-manager/templates/parameter-files.md) namísto předávání parametrů jako vsazených hodnot. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány. 
 
->   "capacityReservationLevel": 100
-
-
-2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány. 
 3. Uložte tento soubor jako **deploylaworkspacetemplate.json** do místní složky.
+
 4. Jste připraveni k nasazení této šablony. K vytvoření pracovního prostoru se používá prostředí PowerShell nebo příkazový řádek a jako součást příkazu zadáte název a umístění pracovního prostoru. Název pracovního prostoru musí být globálně jedinečný ve všech předplatných Azure.
 
    * Pro Prostředí PowerShell použijte následující příkazy ze složky obsahující šablonu:
@@ -176,7 +179,7 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 Následující ukázka šablony ukazuje, jak:
 
 1. Přidání řešení do pracovního prostoru
-2. Vytvořte uložená hledání. Chcete-li zajistit, aby nasazení nepřepsala uložená hledání náhodou, měla by být do prostředku "savedSearches" přidána vlastnost eTag, která by přepsala a udržovala idempotenci uložených vyhledávání.
+2. Vytvořte uložená hledání. Chcete-li zajistit, aby nasazení nepřepsala uložená hledání náhodně, měla by být do prostředku "savedSearches" přidána vlastnost eTag, která by přepsala a zachovala idempotenci uložených vyhledávání.
 3. Vytvoření skupiny počítačů
 4. Povolení shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
 5. Sbírat čítače perf logického disku z počítačů se systémem Linux (% použité inody; Megabajty zdarma; % využitémísto; Přenosy disků/s; Čtení disku/s; Zápisy na disk/s)
@@ -197,7 +200,7 @@ Následující ukázka šablony ukazuje, jak:
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ Následující ukázka šablony ukazuje, jak:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -605,7 +608,7 @@ Následující ukázka šablony ukazuje, jak:
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

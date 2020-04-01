@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05da812023e7525b87a3d7ef1ce1940339f99791
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525834"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475482"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Reference: Centos (Linux) Data Science Virtuální stroj
 
@@ -49,7 +49,7 @@ K dokončení těchto úkolů používají datoví vědci různé nástroje. Mů
 
 Linux DSVM může tuto zátěž podstatně zmírnit. Pomocí linuxového DSVM můžete nastartovat svůj analytický projekt. Linux DSVM vám pomůže pracovat na úkolech v různých jazycích, včetně R, Python, SQL, Java a C++. Eclipse poskytuje snadno použitelné ide pro vývoj a testování kódu. Sada Azure SDK, která je součástí dsvm, vám pomůže vytvářet aplikace pomocí různých služeb v Linuxu pro cloudovou platformu Microsoftu. Další jazyky jsou předinstalovány, včetně Ruby, Perl, PHP a Node.js.
 
-U image DSVM se neúčtují žádné poplatky za software. Platíte jenom poplatky za využití hardwaru Azure, které se vyhodnocují na základě velikosti virtuálního počítače, který zřídíte pomocí bitové kopie DSVM. Další informace o výpočetních poplatcích najdete v [seznamu virtuálního počítače pro virtuální počítače pro linuxovou (CentOS) datové vědy na](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) Azure Marketplace.
+U image DSVM se neúčtují žádné poplatky za software. Platíte jenom poplatky za využití hardwaru Azure, které se vyhodnocují na základě velikosti virtuálního počítače, který zřídíte pomocí bitové kopie DSVM. Další informace o výpočetních poplatcích najdete v tématu [Data Science Virtual Machine for Linux výpis](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) na Azure Marketplace.
 
 
 ## <a name="machine-learning-server"></a>Server strojového učení
@@ -176,7 +176,7 @@ Open source databáze PostgresSQL je k dispozici na DSVM, se službami spuštěn
 SQuirreL SQL je grafický SQL klient, který se může připojit k různým databázím (včetně SQL Serveru, PostgresSQL a MySQL) a spouštět SQL dotazy. SquirreL SQL můžete spustit z grafické relace plochy (například prostřednictvím klienta X2Go) pomocí ikony na ploše. Nebo můžete spustit klienta pomocí následujícího příkazu v prostředí:
 
 ```bash
-/usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+/usr/local/squirrel-sql-3.7/squirrel-sql.sh    /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
 Před prvním použitím nastavte ovladače a aliasy databáze. Ovladače JDBC jsou umístěny na adrese /usr/share/java/jdbcdrivers.

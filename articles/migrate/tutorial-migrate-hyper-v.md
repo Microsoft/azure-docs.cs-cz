@@ -3,13 +3,15 @@ title: Migrace hypervirtuálních virtuálních počítačů do Azure pomocí mi
 description: Zjistěte, jak migrovat místní virtuální počítače Hyper-V do Azure pomocí migrace serveru Azure
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2b9ed56186649b7644adbd1237ad74af50474cc5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- MVC
+- fasttrack-edit
+ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80279704"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422685"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
 
@@ -62,7 +64,7 @@ Pokud jste postupovali podle druhého kurzu a už máte projekt Migrace Azure, p
 
 4. V seznamu nástrojů vyberte **Nástroj pro migraci: Přidat migraci** > **serveru.**
 
-    ![Nástroj pro migraci serveru](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
+    ![Nástroj pro migraci serverů](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Nastavení zařízení Azure Migrate

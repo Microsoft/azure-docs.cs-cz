@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 2148ce41267627d9d6e0437897a99a8dbdbe0746
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382762"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474038"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Jak nakonfigurovat Azure Database for MySQL Data-in Replication
 
-V tomto článku se dozvíte, jak nastavit replikaci dat ve službě Azure Database for MySQL konfigurací hlavních a replikových serverů. Replikace dat umožňuje synchronizovat data z hlavního serveru MySQL spuštěného místně, ve virtuálních počítačích nebo databázových službách hostovaných jinými poskytovateli cloudu do repliky ve službě Azure Database for MySQL. 
+Tento článek popisuje, jak nastavit replikaci dat v databázi Azure pro MySQL konfigurací hlavních a replikových serverů. Tento článek předpokládá, že máte nějaké předchozí zkušenosti se servery MySQL a databázemi.
 
-Tento článek předpokládá, že máte alespoň některé předchozí zkušenosti se servery MySQL a databáze.
+Chcete-li vytvořit repliku ve službě Azure Database for MySQL, data-in replikace synchronizuje data z hlavního serveru MySQL místně, ve virtuálních počítačích (VM) nebo v cloudových databázových službách.
 
 Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](concepts-data-in-replication.md#limitations-and-considerations) replikace datového systému.
 
@@ -47,7 +47,7 @@ Následující kroky připraví a nakonfigurují server MySQL hostovaný místn�
 
    Například zajistěte, aby hlavní server povoloval příchozí i odchozí provoz na portu 3306 a aby hlavní server měl **veřejnou IP adresu**, dns je veřejně přístupný nebo má plně kvalifikovaný název domény (Plně kvalifikovaný název domény). 
    
-   Otestujte připojení k hlavnímu serveru pokusem o připojení z nástroje, jako je příkazový řádek MySQL hostovaný na jiném počítači nebo z [prostředí Azure Cloud Shell,](https://docs.microsoft.com/azure/cloud-shell/overview) který je k dispozici na webu Azure Portal. 
+   Otestujte připojení k hlavnímu serveru pokusem o připojení z nástroje, jako je příkazový řádek MySQL hostovaný na jiném počítači nebo z [Prostředí Azure Cloud Shell,](https://docs.microsoft.com/azure/cloud-shell/overview) který je k dispozici na webu Azure Portal.
 
 2. Zapnutí binárního protokolování
 
@@ -71,7 +71,7 @@ Následující kroky připraví a nakonfigurují server MySQL hostovaný místn�
 
 4. Vytvoření nové role replikace a nastavení oprávnění
 
-   Vytvořte uživatelský účet na hlavním serveru, který je nakonfigurován s oprávněními replikace. To lze provést pomocí příkazů SQL nebo nástroje, jako je MySQL Workbench. Zvažte, zda plánujete replikovat s SSL, protože to bude nutné zadat při vytváření uživatele. Informace o tom, jak [přidat uživatelské účty](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) na hlavní server, naleznete v dokumentaci k MySQL. 
+   Vytvořte uživatelský účet na hlavním serveru, který je nakonfigurován s oprávněními replikace. To lze provést pomocí příkazů SQL nebo nástroje, jako je MySQL Workbench. Zvažte, zda plánujete replikovat s SSL, protože to bude nutné zadat při vytváření uživatele. Informace o tom, jak [přidat uživatelské účty](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) na hlavní server, naleznete v dokumentaci k MySQL. 
 
    V následujících příkazech má nová vytvořená role replikace přístup k hlavnímu serveru z libovolného počítače, nikoli pouze z počítače, který hostuje samotný hlavní server. To se provádí zadáním "syncuser@'%'" v příkazu vytvořit uživatele. Další informace o [určení názvů účtů](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)naleznete v dokumentaci k MySQL .
 

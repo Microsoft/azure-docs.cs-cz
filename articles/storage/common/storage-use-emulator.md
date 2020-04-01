@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 997aa9d96f2f52331865fd15d97443d74bb8bc1f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72428312"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398015"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -325,6 +325,6 @@ Neexistují žádné rozdíly specifické pro úložiště fronty v emulátoru.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vyhodnoťte multiplatformní, komunitně udržovaný emulátor úložiště [azurit s](https://github.com/arafato/azurite)otevřeným zdrojovým kódem . 
+* Vyhodnoťte multiplatformní, komunitně udržovaný emulátor úložiště [azurit s](https://github.com/azure/azurite)otevřeným zdrojovým kódem . 
 * [Ukázky služby Azure Storage pomocí rozhraní .NET](../storage-samples-dotnet.md) obsahují odkazy na několik ukázek kódu, které můžete použít při vývoji aplikace.
 * [Průzkumníka úložiště Microsoft Azure](https://storageexplorer.com) můžete použít ke práci s prostředky ve vašem účtu cloudového úložiště a v emulátoru úložiště.

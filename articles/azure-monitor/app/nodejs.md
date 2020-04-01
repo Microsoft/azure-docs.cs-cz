@@ -3,12 +3,12 @@ title: Monitorování služeb Node.js pomocí Azure Application Insights | Dokum
 description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670011"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411582"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
@@ -16,7 +16,7 @@ ms.locfileid: "77670011"
 
 Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte do svého kódu sadu SDK a pak v Azure nastavte odpovídající prostředek Application Insights. Sada SDK do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
 
-Sada Node.js SDK dokáže automaticky monitorovat příchozí a odchozí požadavky HTTP, výjimky a některé systémové metriky. Od verze 0.20 dokáže sada SDK monitorovat také některé běžné balíčky třetích stran, například MongoDB, MySQL nebo Redis. Všechny události související s příchozím požadavkem HTTP se korelují za účelem rychlejšího řešení potíží.
+Sada Node.js SDK dokáže automaticky monitorovat příchozí a odchozí požadavky HTTP, výjimky a některé systémové metriky. Počínaje verzí 0.20 může sada SDK také sledovat některé běžné [balíčky třetích stran](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules), jako jsou MongoDB, MySQL a Redis. Všechny události související s příchozím požadavkem HTTP se korelují za účelem rychlejšího řešení potíží.
 
 Pomocí rozhraní TelemetryClient API můžete ručně instrumentovat a monitorovat další aspekty aplikace a systému. Rozhraní TelemetryClient API popisujeme podrobněji dále v tomto článku.
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/28/2019
-ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2019
+ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480262"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411436"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolů v Azure Monitoru
 Protokoly monitorování Azure používá [Azure Data Explorer (ADX)](/azure/data-explorer/) k ukládání dat protokolu a spouštění dotazů pro analýzu dat. Vytváří, spravuje a udržuje clustery ADX pro vás a optimalizuje je pro úlohy analýzy protokolu. Když spustíte dotaz, je optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly monitorování Azure i Azure Data Explorer používá mnoho mechanismů automatické optimalizace dotazů. Zatímco automatické optimalizace poskytují významné zvýšení, jsou v některých případech, kdy můžete výrazně zlepšit výkon dotazu. Tento článek vysvětluje aspekty výkonu a několik technik k jejich opravě.
@@ -57,7 +57,7 @@ Doba zpracování dotazu je vynaložena na:
 - Načítání dat – načítání starých dat bude spotřebovávat více času než načítání posledních dat.
 - Zpracování dat – logika a vyhodnocení dat. 
 
-Jiné než čas strávený v uzlech zpracování dotazů, je další čas, který je vynakládána protokoly Azure Monitor: ověření uživatele a ověření, že mají povoleno přístup k těmto datům, vyhledejte úložiště dat, analyzovat dotaz a přidělit zpracování dotazu Uzly. Tato doba není zahrnuta v celkovém čase procesoru dotazu.
+Jiné než čas strávený v uzlech zpracování dotazu je další čas, který je vynakládána protokoly Azure Monitor: ověření uživatele a ověření, že mají povoleno přístup k těmto datům, vyhledejte úložiště dat, analyzovat dotaz a přidělit uzly zpracování dotazu. Tato doba není zahrnuta v celkovém čase procesoru dotazu.
 
 ### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Včasné filtrování záznamů před použitím vysokých funkcí procesoru
 
@@ -155,6 +155,21 @@ Heartbeat
 
 > [!NOTE]
 > Tento indikátor představuje pouze procesor z okamžitého clusteru. V dotazu s více oblastmi by představoval pouze jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
+
+### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Vyhněte se úplné analýzě XML a JSON při provádění analýzy řetězců
+Úplná analýza objektu XML nebo JSON může spotřebovat vysoké prostředky procesoru a paměti. V mnoha případech, kdy jsou potřeba pouze jeden nebo dva parametry a xml nebo JSON objekty jsou jednoduché, je jednodušší analyzovat je jako řetězce pomocí [operátoru analýzy](/azure/kusto/query/parseoperator) nebo jiné [techniky analýzy textu](/azure/azure-monitor/log-query/parse-text). Zvýšení výkonu bude významnější jako počet záznamů v objektu XML nebo JSON zvyšuje. Je nezbytné, když počet záznamů dosáhne desítek milionů.
+
+Například následující dotaz vrátí přesně stejné výsledky jako výše uvedené dotazy bez provedení úplné analýzy XML. Všimněte si, že některé předpoklady na struktuře souboru XML, jako je například tento element FilePath přichází po FileHash a žádný z nich nemá atributy. 
+
+```Kusto
+//even more efficient
+SecurityEvent
+| where EventID == 8002 //Only this event have FileHash
+| where EventData !has "%SYSTEM32" //Early removal of unwanted records
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
+```
 
 
 ## <a name="data-used-for-processed-query"></a>Data použitá pro zpracovaný dotaz

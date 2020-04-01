@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954665"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478287"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro vícevrstvou webovou aplikaci založenou na službě IIS
 
 Aplikační software je motorem produktivity podnikání v organizaci. Různé webové aplikace mohou sloužit různým účelům v organizaci. Některé aplikace, například aplikace používané pro zpracování mezd, finanční aplikace a weby orientované na zákazníky, mohou být pro organizaci kritické. Aby se zabránilo ztrátě produktivity, je důležité, aby organizace měla tyto aplikace neustále v provozu. Ještě důležitější je, že tyto aplikace jsou konzistentně dostupné, může pomoci zabránit poškození značky nebo image organizace.
 
-Kritické webové aplikace jsou obvykle nastaveny jako vícevrstvé aplikace: web, databáze a aplikace jsou na různých úrovních. Kromě toho, že jsou rozloženy na různé úrovně, aplikace mohou také používat více serverů v každé vrstvě k vyrovnávání zatížení provozu. Mapování mezi různými vrstvami a na webovém serveru může být navíc založeno na statických adresách IP. Při převzetí služeb při selhání je třeba aktualizovat některá z těchto mapování, zejména pokud je na webovém serveru nakonfigurováno více webů. Pokud webové aplikace používají protokol SSL, je nutné aktualizovat vazby certifikátů.
+Kritické webové aplikace jsou obvykle nastaveny jako vícevrstvé aplikace: web, databáze a aplikace jsou na různých úrovních. Kromě toho, že jsou rozloženy na různé úrovně, aplikace mohou také používat více serverů v každé vrstvě k vyrovnávání zatížení provozu. Mapování mezi různými vrstvami a na webovém serveru může být navíc založeno na statických adresách IP. Při převzetí služeb při selhání je třeba aktualizovat některá z těchto mapování, zejména pokud je na webovém serveru nakonfigurováno více webů. Pokud webové aplikace používají protokol TLS, je nutné aktualizovat vazby certifikátů.
 
 Tradiční metody obnovení, které nejsou založeny na replikaci, zahrnují zálohování různých konfiguračních souborů, nastavení registru, vazeb, vlastních součástí (COM nebo .NET), obsahu a certifikátů. Soubory jsou obnoveny pomocí sady ručních kroků. Tradiční metody obnovení zálohování a ruční obnovení souborů jsou těžkopádné, náchylné k chybám a nelze škálovat. Můžete například snadno zapomenout zálohovat certifikáty. Po převzetí služeb při selhání vám nezbývá nic jiného než koupit nové certifikáty pro server.
 
@@ -118,22 +118,22 @@ Každá stránka se skládá z závazných informací. Informace o vazbě zahrnu
 >
 > Pokud nastavíte vazbu webu na **všechny nepřiřazené**, není nutné aktualizovat tuto vazbu po převzetí služeb při selhání. Pokud se ip adresa přidružená k webu nezmění po převzetí služeb při selhání, není nutné vazbu webu aktualizovat. (Uchovávání ip adresy závisí na architektuře sítě a podsítích přiřazených primárním lokalitám a lokalitám pro obnovení. Jejich aktualizace nemusí být pro vaši organizaci proveditelná.)
 
-![Snímek obrazovky, který zobrazuje nastavení vazby SSL](./media/site-recovery-iis/sslbinding.png)
+![Snímek obrazovky, který zobrazuje nastavení vazby TLS/SSL](./media/site-recovery-iis/sslbinding.png)
 
 Pokud jste přidružili IP adresu k webu, aktualizujte všechny vazby webu s novou IP adresou. Chcete-li změnit vazby webu, přidejte [skript aktualizace webové vrstvy služby IIS](https://aka.ms/asr-web-tier-update-runbook-classic) za skupinu 3 v plánu obnovení.
 
 #### <a name="update-the-load-balancer-ip-address"></a>Aktualizace IP adresy pro vyrovnávání zatížení
 Pokud máte virtuální počítač ARR, chcete-li aktualizovat adresu IP, přidejte [skript pro převzetí služeb při selhání Služby IIS ARR](https://aka.ms/asr-iis-arrtier-failover-script-classic) za skupinu 4.
 
-#### <a name="ssl-certificate-binding-for-an-https-connection"></a>Vazba certifikátu SSL pro připojení HTTPS
-Web může mít přidružený certifikát SSL, který pomáhá zajistit zabezpečenou komunikaci mezi webovým serverem a prohlížečem uživatele. Pokud má web připojení HTTPS a má také přidruženou vazbu na web HTTPS na IP adresu serveru IIS se vazbou certifikátu SSL, je nutné přidat novou vazbu sítě pro certifikát s IP adresou virtuálního počítače služby IIS po převzetí služeb při selhání.
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>Vazba certifikátu TLS/SSL pro připojení HTTPS
+Web může mít přidružený certifikát TLS/SSL, který pomáhá zajistit zabezpečenou komunikaci mezi webovým serverem a prohlížečem uživatele. Pokud má web připojení HTTPS a má také přidruženou vazbu na web HTTPS na IP adresu serveru IIS se vazbou certifikátu TLS/SSL, je nutné přidat novou vazbu na web pro certifikát s IP adresou virtuálního počítače služby IIS po převzetí služeb při selhání.
 
-Certifikát SSL lze vystavit proti těmto součástem:
+Certifikát TLS/SSL lze vystavit proti těmto součástem:
 
 * Plně kvalifikovaný název domény webu.
 * Název serveru.
 * Zástupný certifikát pro název domény.  
-* IP adresa. Pokud je certifikát SSL vydán proti adrese IP serveru Služby IIS, je třeba vystavit jiný certifikát SSL proti IP adrese serveru IIS na webu Azure. Je třeba vytvořit další vazbu SSL pro tento certifikát. Z tohoto důvodu doporučujeme nepoužívat certifikát SSL vydaný proti adrese IP. Tato možnost je méně široce používána a brzy bude zastaralá v souladu s novými změnami certifikační autority / fóra prohlížeče.
+* IP adresa. Pokud je certifikát TLS/SSL vydán proti IP adrese serveru IIS, je třeba vystavit jiný certifikát TLS/SSL proti IP adrese serveru IIS na webu Azure. Je třeba vytvořit další vazbu TLS pro tento certifikát. Z tohoto důvodu doporučujeme nepoužívat certifikát TLS/SSL vydaný proti adrese IP. Tato možnost je méně široce používána a brzy bude zastaralá v souladu s novými změnami certifikační autority / fóra prohlížeče.
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>Aktualizace závislosti mezi webovou vrstvou a aplikační vrstvou
 Pokud máte závislost specifickou pro aplikaci, která je založena na IP adrese virtuálních počítačů, musíte tuto závislost po převzetí služeb při selhání aktualizovat.

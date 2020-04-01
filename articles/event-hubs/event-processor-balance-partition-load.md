@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907653"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398300"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Vyvážení zatížení oddílu mezi více instancemi aplikace
 Chcete-li škálovat aplikaci pro zpracování událostí, můžete spustit více instancí aplikace a nechat ji vyvážit zatížení mezi sebou. Ve starších verzích [EventProcessorHost](event-hubs-event-processor-host.md) vám umožnilo vyvážit zatížení mezi více instancemi programu a událostmi kontrolního bodu při příjmu. V novějších verzích (5.0 a dále), **EventProcessorClient** (.NET a Java) nebo **EventHubConsumerClient** (Python a JavaScript) umožňuje provést totéž. Vývojový model je jednodušší pomocí událostí. Události, které vás zajímají, se přihlásíte registrací obslužné rutiny události.
@@ -83,6 +83,13 @@ Pokud se procesor událostí odpojí od oddílu, jiná instance může pokračov
 
 Při provádění kontrolního bodu k označení události jako zpracované, je přidána nebo aktualizována položka v úložišti kontrolního bodu s posunem události a pořadovým číslem události. Uživatelé by měli rozhodnout o četnosti aktualizace kontrolního bodu. Aktualizace po každé úspěšně zpracované události může mít vliv na výkon a náklady, protože aktivuje operaci zápisu do základního úložiště kontrolních bodů. Také kontrolní body každou jednotlivou událost svědčí o vzorky zasílání zpráv ve frontě, pro které fronta service bus může být lepší volbou než centrum událostí. Myšlenka event hubů spoáčita je, že dostanete doručení "alespoň jednou" ve velkém měřítku. Tím, že vaše navazující systémy idempotentní, je snadné obnovit z chyb nebo restartování, které mají za následek stejné události přijaté vícekrát.
 
+> [!NOTE]
+> Pokud používáte Azure Blob Storage jako úložiště kontrolních bodů v prostředí, které podporuje jinou verzi sady Storage Blob SDK než ty, které jsou obvykle dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Například pokud používáte [Centra událostí na Azure Stack Hub verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze pro službu Storage je verze 2017-11-09. V takovém případě musíte použít kód k cílení verze rozhraní API služby úložiště na 2017-11-09. Příklad, jak cílit na konkrétní verzi rozhraní API úložiště, najdete v těchto ukázkách na GitHubu: 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) nebo [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
+
 ## <a name="thread-safety-and-processor-instances"></a>Instance bezpečnosti vláken a procesoru
 
 Ve výchozím nastavení je procesor událostí nebo příjemce bezpečný pro přístup z více vláken a chová se synchronně. Když události dorazí pro oddíl, je volána funkce, která zpracovává události. Následné zprávy a volání této funkce fronty na pozadí jako čerpadlo zprávy nadále běžet na pozadí na jiných vláknech. Tato bezpečnost podprocesu odstraňuje potřebu kolekce bezpečné pro přístup z více vláken a výrazně zvyšuje výkon.
@@ -93,4 +100,4 @@ Podívejte se na následující rychlé spuštění:
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)

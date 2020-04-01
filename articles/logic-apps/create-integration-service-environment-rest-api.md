@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 2c6e35b1e7d160064998004f87c5b14d0eaeac5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127657"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478828"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí integrační služby (ISE) pomocí rozhraní API REST logic apps
 
 Tento článek ukazuje, jak vytvořit [ *prostředí služby integrace* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) prostřednictvím rozhraní API služby Logic Apps REST pro scénáře, kde vaše aplikace logiky a účty integrace potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). ISE je izolované prostředí, které používá vyhrazené úložiště a další prostředky, které jsou udržovány odděleně od "globální" služby Logic Apps pro více klientů. Toto oddělení také snižuje jakýkoli dopad, který ostatní tenantové Azure může mít na výkon vašich aplikací. ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdíleny aplikacemi logiky ve veřejné službě s více klienty.
 
-Pokud chcete vytvořit ise pomocí portálu Azure, přečtěte si, že místo toho [najdete informace o připojení k virtuálním sítím Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+ISE můžete také vytvořit pomocí [ukázkové šablony rychlého startu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) nebo pomocí [portálu Azure](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
 > [!IMPORTANT]
 > Aplikace logiky, integrované aktivační události, předdefinované akce a konektory, které běží ve vaší službě ISE, používají cenový plán odlišný od cenového plánu založeného na spotřebě. Informace o tom, jak fungují ceny a fakturace pro ises, najdete v tématu [Cenové homodelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps pricing](../logic-apps/logic-apps-pricing.md).

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531448"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421039"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Poradce při potížích s výkonem aktivity kopírování
 
@@ -88,7 +88,7 @@ Pokud výkon aktivity kopírování nesplňuje vaše očekávání, chcete-li vy
 
   - Zkontrolujte zdroj kopie a vzorek jímky: 
 
-    - Pokud váš vzor kopírování podporuje větší než 4 jednotky integrace dat (DIU) - viz [tato část](copy-activity-performance.md#data-integration-units) na podrobnosti, obecně můžete zkusit zvýšení DIU získat lepší výkon. 
+    - Pokud váš vzor kopírování podporuje větší než 4 jednotky integrace dat (DIU) - viz [tato část](copy-activity-performance-features.md#data-integration-units) na podrobnosti, obecně můžete zkusit zvýšení DIU získat lepší výkon. 
 
     - V opačném případě zvažte rozdělení jedné velké datové sady do několika menších datových sad a nechte tyto úlohy kopírování běžet souběžně, každá část dat řeší. Můžete to provést s Vyhledávání/GetMetadata + ForEach + Kopie. Viz [Kopírovat soubory z více kontejnerů](solution-template-copy-files-multiple-containers.md), [migrovat data z Amazon S3 na ADLS Gen2](solution-template-migration-s3-azure.md)nebo [hromadné kopírování se šablonami](solution-template-bulk-copy-with-control-table.md) řešení ovládací tabulky jako obecný příklad.
 
@@ -102,7 +102,7 @@ Pokud výkon aktivity kopírování nesplňuje vaše očekávání, chcete-li vy
 
   - Zkontrolujte zdroj kopie a vzorek jímky: 
 
-    - Pokud váš vzor kopírování podporuje větší než 4 jednotky integrace dat (DIU) - viz [tato část](copy-activity-performance.md#data-integration-units) na podrobnosti, obecně můžete zkusit zvýšení DIU získat lepší výkon. 
+    - Pokud váš vzor kopírování podporuje větší než 4 jednotky integrace dat (DIU) - viz [tato část](copy-activity-performance-features.md#data-integration-units) na podrobnosti, obecně můžete zkusit zvýšení DIU získat lepší výkon. 
 
     - V opačném případě postupně naladit [paralelní kopie](copy-activity-performance-features.md), všimněte si, že příliš mnoho paralelních kopií může dokonce poškodit výkon.
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/30/2020
 ms.author: juliako
-ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77619883"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421388"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Nejčastější dotazy videoindexeru
 
@@ -175,6 +175,12 @@ Přístupové tokeny jsou potřebné k použití api video indexeru pro účely 
 ### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Jak často potřebuji získat nový přístupový token? Kdy vyprší platnost přístupových tokenů?
 
 Platnost přístupových tokenů vyprší každou hodinu, takže každou hodinu je třeba vygenerovat nový přístupový token. 
+
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Jaké jsou možnosti přihlášení k portálu pro vývojáře Video Indexer?
+
+Přihlásit se můžete pomocí Azure AD, účtu Microsoft, účtu Google nebo facebookového účtu. 
+
+Jakmile zaregistrujete svůj e-mailový účet pomocí poskytovatele identity, nemůžete tento e-mailový účet použít u jiného poskytovatele identity.
 
 ## <a name="billing-questions"></a>Dotazy k fakturaci
 

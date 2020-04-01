@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0f7b966d4241716d71779e966de5d408711e4543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371778"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411508"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Kurz: Nasazení šablony ARM pomocí souborů parametrů
 
@@ -119,6 +119,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Pokud se nasazení nezdařilo, zobrazte protokoly ladění pomocí **přepínače ladění** s příkazem deployment.  Můžete také použít **podrobný** přepínač k zobrazení úplné protokoly ladění.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 

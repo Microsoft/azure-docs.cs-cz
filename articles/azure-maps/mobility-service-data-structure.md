@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30696c5dcb3353ea468aa78dbc107dae4d292edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334444"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478701"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Datové struktury ve službě Mobility Azure Maps
 
@@ -31,13 +31,13 @@ Jedná `metroID` se o ID oblasti metra, které lze použít k volání [Get Metr
 
 ## <a name="stop-ids"></a>Zastavit ID
 
-Tranzitní zastávky mohou odkazovat podle dvou typů ID, [ID specifikace general transit feed (GFTS)](https://gtfs.org/) a ID zastavení Map Azure. ID GFTS se označuje jako stopKey a ID zastavení map Azure se označuje jako stopID. Když často odkazujete na tranzitní zastávky, doporučujeme použít ID zastavení Azure Maps. stopID je stabilnější a pravděpodobně zůstane stejná, dokud existuje fyzická zastávka. ID zastavení GTFS se aktualizuje častěji. Například GTFS stop ID lze aktualizovat na požadavek poskytovatele GTFS nebo při vydání nové verze GTFS. Přestože fyzická zastávka neměla žádnou změnu, ID zastavení GTFS se může změnit.
+Tranzitní zastávky mohou odkazovat podle dvou typů ID, [ID specifikace general transit feed (GFTS)](http://gtfs.org/) a ID zastavení Map Azure. ID GFTS se označuje jako stopKey a ID zastavení map Azure se označuje jako stopID. Když často odkazujete na tranzitní zastávky, doporučujeme použít ID zastavení Azure Maps. stopID je stabilnější a pravděpodobně zůstane stejná, dokud existuje fyzická zastávka. ID zastavení GTFS se aktualizuje častěji. Například GTFS stop ID lze aktualizovat na požadavek poskytovatele GTFS nebo při vydání nové verze GTFS. Přestože fyzická zastávka neměla žádnou změnu, ID zastavení GTFS se může změnit.
 
 Chcete-li začít, můžete požádat o zastavení dopravy v okolí pomocí [rozhraní Get Near Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit).
 
 ## <a name="line-groups-and-lines"></a>Skupiny řádků a čáry
 
-Služba mobility používá paralelní datový model pro čáry a skupiny linek. Tento model se používá k lepšímu řešení změn zděděných ze tras [GTFS](https://gtfs.org/) a dat o cestách.
+Služba mobility používá paralelní datový model pro čáry a skupiny linek. Tento model se používá k lepšímu řešení změn zděděných ze tras [GTFS](http://gtfs.org/) a dat o cestách.
 
 
 ### <a name="line-groups"></a>Skupiny řádků

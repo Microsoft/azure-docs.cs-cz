@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255831"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409043"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -25,7 +25,7 @@ Azure SQL Database je založen na architektuře SQL Server Database Engine, kter
 -  Hyperškálování
 -  Kritické pro podnikání/prémiové
 
-Úroveň služby Hyperscale v Azure SQL Database je nejnovější úroveň služeb v nákupním modelu založeném na virtuálních jádrech. Tato úroveň služeb je vysoce škálovatelná úroveň výkonu úložiště a výpočetního výkonu, která využívá architekturu Azure k škálování prostředků úložiště a výpočetních prostředků pro Azure SQL Database podstatně nad rámec limitů dostupných pro obecné účely a podnikání. Kritické úrovně služeb.
+Úroveň služby Hyperscale v Azure SQL Database je nejnovější úroveň služeb v nákupním modelu založeném na virtuálních jádrech. Tato úroveň služeb je vysoce škálovatelná úroveň výkonu úložiště a výpočetního výkonu, která využívá architekturu Azure k škálování prostředků úložiště a výpočetních prostředků pro Azure SQL Database podstatně nad rámec limitů dostupných pro úrovně služeb Obecné účely a Důležité pro podnikání.
 
 > 
 > [!NOTE]
@@ -96,7 +96,7 @@ Stránkovací servery jsou systémy představující modul úložiště s horizo
 
 ### <a name="log-service"></a>Služba protokolu
 
-Služba protokolu přijímá záznamy protokolu z primární výpočetní repliky, zachová je v trvalé mezipaměti a předá záznamy protokolu ostatním výpočetním replikám (aby mohli aktualizovat své mezipaměti) a také příslušné stránkové servery, aby bylo možné data aktualizovat Tam. Tímto způsobem jsou všechny změny dat z primární výpočetní repliky šířeny prostřednictvím služby protokolu do všech sekundárních výpočetních replik a stránkových serverů. Nakonec záznamy protokolu jsou vytlačeny do dlouhodobého úložiště ve službě Azure Storage, což je prakticky nekonečné úložiště úložiště. Tento mechanismus odstraňuje potřebu časté zkrácení protokolu. Služba protokolu má také místní mezipaměť pro urychlení přístupu k záznamům protokolu.
+Služba protokolu přijímá záznamy protokolu z primární výpočetní repliky, zachová je v trvalé mezipaměti a předá záznamy protokolu ostatním výpočetním replikám (aby mohly aktualizovat své mezipaměti) a také příslušné stránkové servery, aby tam mohla být data aktualizována. Tímto způsobem jsou všechny změny dat z primární výpočetní repliky šířeny prostřednictvím služby protokolu do všech sekundárních výpočetních replik a stránkových serverů. Nakonec záznamy protokolu jsou vytlačeny do dlouhodobého úložiště ve službě Azure Storage, což je prakticky nekonečné úložiště úložiště. Tento mechanismus odstraňuje potřebu časté zkrácení protokolu. Služba protokolu má také místní mezipaměť pro urychlení přístupu k záznamům protokolu.
 
 ### <a name="azure-storage"></a>Úložiště Azure
 
@@ -205,8 +205,7 @@ Jedná se o aktuální omezení úrovně služby Hyperscale od GA.  Aktivně pra
 | Problém | Popis |
 | :---- | :--------- |
 | Podokno Spravovat zálohy pro logický server nezobrazuje databáze Hyperscale, které budou filtrovány ze serveru SQL.  | Hyperscale má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání a bod v nastavení uchovávání záloh času neplatí / jsou zneplatněny. V souladu s tím hyperškálování databáze nezobrazí v podokně Spravovat zálohování. |
-| Obnovení k určitému bodu v čase | Po migraci databáze do úrovně služby Hyperscale není podporováno obnovení bodu v čase před migrací.|
-| Obnovení databáze DB bez hyperškálování do hyperškálování a naopak | Databázi Hyperscale nelze obnovit do databáze, která není hyperškálovat, ani databázi, která není hyperškálovat, nelze obnovit do databáze Hyperscale.|
+| Obnovení k určitému bodu v čase | Databázi Hyperscale můžete obnovit do databáze, která není hyperškálovat, v rámci období uchování databáze bez stupně hyperškálování. Databázi, která není hyperškálovat, nelze obnovit do databáze Hyperscale.|
 | Pokud databáze obsahuje jeden nebo více datových souborů větších než 1 TB, migrace se nezdaří | V některých případech může být možné tento problém vyřešit zmenšením velké soubory být menší než 1 TB. Pokud migrace databáze používá během procesu migrace, ujistěte se, že žádný soubor dostane větší než 1 TB. Velikost databázových souborů můžete určit pomocí následujícího dotazu. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | MI | Spravovanou instanci Azure SQL Database není aktuálně podporovaná s databázemi Hyperscale. |
 | Elastické fondy |  Elastické fondy nejsou aktuálně podporovány pomocí hyperškálování databáze SQL.|

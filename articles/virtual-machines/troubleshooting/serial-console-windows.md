@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266998"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410123"
 ---
 # <a name="azure-serial-console-for-windows"></a>Konzola Azure Serial Console pro Windows
 
@@ -60,7 +60,7 @@ Chcete-li ručně povolit sériovou konzolu pro škálovací sadu virtuálních 
 
 1. Připojení k virtuálnímu počítači s Windows pomocí vzdálené plochy
 1. Z příkazového řádku pro správu spusťte následující příkazy:
-    - `bcdedit /ems {current} on`
+    - `bcdedit /ems {current} on`nebo `bcdedit /ems '{current}' on` pokud používáte Prostředí PowerShell
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. Restartujte systém pro konzolu SAC, která má být povolena.
 
@@ -102,15 +102,15 @@ Pokud potřebujete povolit zobrazení výzev zavaděče systému Windows v konzo
 
     ![Připojit ke sac](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  Zadejte, `cmd` chcete-li vytvořit kanál, který má instanci CMD.
+1.    Zadejte, `cmd` chcete-li vytvořit kanál, který má instanci CMD.
 
-1.  Zadáním `ch -si 1` `<esc>+<tab>` klávesových zkratek nebo stisknutím klávesových zkratek přepněte na kanál, na jehož instanci je spuštěna, nebo stisknutím klávesových zkratek.
+1.    Zadáním `ch -si 1` `<esc>+<tab>` klávesových zkratek nebo stisknutím klávesových zkratek přepněte na kanál, na jehož instanci je spuštěna, nebo stisknutím klávesových zkratek.
 
-1.  Stiskněte **Enter**a zadejte přihlašovací pověření s oprávněními správce.
+1.    Stiskněte **Enter**a zadejte přihlašovací pověření s oprávněními správce.
 
-1.  Po zadání platných pověření se otevře instance CMD.
+1.    Po zadání platných pověření se otevře instance CMD.
 
-1.  Pokud chcete spustit instanci Prostředí PowerShell, zadejte instanci `PowerShell` CMD a stiskněte **Enter**.
+1.    Pokud chcete spustit instanci Prostředí PowerShell, zadejte instanci `PowerShell` CMD a stiskněte **Enter**.
 
     ![Otevřít instanci Prostředí PowerShell](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

@@ -4,19 +4,19 @@ description: Zjistěte, jak se připojit k serveru Analysis Services v Azure a z
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73147314"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411319"
 ---
 # <a name="connecting-to-servers"></a>Připojení k serverům
 
-Tento článek popisuje připojení k serveru pomocí aplikací pro modelování a správu dat, jako je SQL Server Management Studio (SSMS) nebo Visual Studio s projekty Analysis Services, nebo s klientskými aplikacemi pro vytváření sestav, jako je Microsoft Excel, Power BI Desktop, nebo vlastní aplikace. Připojení ke službě Azure Analysis Services používají protokol HTTPS.
+Tento článek popisuje připojení k serveru pomocí aplikací pro modelování a správu dat, jako je SQL Server Management Studio (SSMS) nebo Visual Studio s projekty Analysis Services, nebo s klientskými aplikacemi pro vytváření sestav, jako je Microsoft Excel, Power BI Desktop nebo vlastní aplikace. Připojení ke službě Azure Analysis Services používají protokol HTTPS.
 
 ## <a name="client-libraries"></a>Klientské knihovny
 

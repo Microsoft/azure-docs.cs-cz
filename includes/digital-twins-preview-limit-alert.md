@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 3/11/2020
 ms.custom: include file
-ms.openlocfilehash: 6ec72dfa227d62804e5cbafef0e2d1acf483e84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb36863f0072b031a8c40dd3dc8efcf26a29fb58
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370372"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80408101"
 ---
 > [!NOTE]
-> Program Azure Digital Twins preview je momentálně na kapacitě. V důsledku toho se už nepřidávají noví zákazníci a **v tuto chvíli nelze vytvořit žádné další prostředky Azure Digital Twins**. Pokud je instance někde odstraněna, je možné, že vytvoření prostředku bude úspěšné a můžete pokračovat normálně, ale to není zaručeno. Pokračujte v kontrole jakékoli aktualizace tohoto stavu.
+> Děkujeme vám za váš zájem o program Azure Digital Twins preview. Vzhledem k obrovské poptávce je program náhledu dočasně uzavřen, protože se připravujeme na nadcházející vydání nových funkcí. V důsledku toho nemusí být možné vytvořit nové prostředky Azure Digital Twins právě teď. Pokračujte v kontrole nových informací.

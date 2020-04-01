@@ -11,48 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: fa895a294e26b6c74ab72afa3136feac2b2ec986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb90858f7e87e31b8b6028a30a6000bbed4d3e4b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240247"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421081"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Nasazení aplikace iPv6 se dvěma zásobníky ve virtuální síti Azure – rozhraní PŘÍKAZOVÉHO KONt (preview)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>Nasazení aplikace iPv6 dual stack ve virtuální síti Azure – rozhraní příkazového příkazu
 
-Tento článek ukazuje, jak nasadit aplikaci s duálním zásobníkem (IPv4 + IPv6) pomocí standardního nástroje pro vyrovnávání zatížení v Azure, která zahrnuje virtuální síť se dvěma zásobníky s podsítí s duálním zásobníkem, standardní nástroj pro vyrovnávání zatížení s duálními konfiguracemi front-endu (IPv4 + IPv6), virtuální počítače s Síťové karty, které mají konfiguraci duální IP adresy, pravidla skupiny zabezpečení dvou sítí a duální veřejné IP adresy.
-
-> [!Important]
-> Duální zásobník IPv6 pro virtuální síť Azure je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Tento článek ukazuje, jak nasadit aplikaci s dvěma zásobníky (IPv4 + IPv6) pomocí standardního nástroje pro vyrovnávání zatížení v Azure, která zahrnuje virtuální síť se dvěma zásobníky s podsítí s dvěma zásobníky, standardní nástroj pro vyrovnávání zatížení s duálními konfiguracemi (IPv4 + IPv6), virtuální počítače s síťovými kartami, které mají konfiguraci duální IP adresy, pravidla skupiny zabezpečení dvou sítí a duální veřejné IP adresy.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a použít Azure CLI místně místo, tento rychlý start vyžaduje použití Azure CLI verze 2.0.49 nebo novější. Chcete-li najít nainstalovanou verzi, spusťte program `az --version`. Informace o instalaci nebo upgradu [najdete v tématu Instalace příkazového příkazového](/cli/azure/install-azure-cli) příkazu Konzumu Azure.
-
-## <a name="prerequisites"></a>Požadavky
-Chcete-li použít funkci virtuální sítě IPv6 pro Azure, musíte předplatné nakonfigurovat pomocí rozhraní příkazového příkazového příkazu Azure následujícím způsobem:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Dokončení registrace funkce trvá až 30 minut. Stav registrace můžete zkontrolovat spuštěním následujícího příkazu Azure CLI:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Po dokončení registrace spusťte následující příkaz:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -385,10 +361,6 @@ Virtuální síť IPv6 dual stack můžete zobrazit na webu Azure Portal násled
 2. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji. Tím se spustí stránka **Přehled** virtuální sítě s názvem dsVnet s názvem *dsVnet*. Virtuální síť se dvěma zásobníky zobrazuje dvě síťové karty s konfiguracemi IPv4 i IPv6 umístěnými v podsíti s duálním zásobníkem s názvem *dsSubnet*.
 
   ![Virtuální síť s duálním zásobníkem IPv6 v Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
-
-> [!NOTE]
-> Virtuální síť IPv6 pro Azure je dostupná na webu Azure Portal jen pro čtení pro tuto předběžnou verzi.
-
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

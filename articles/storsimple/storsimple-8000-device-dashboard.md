@@ -1,5 +1,5 @@
 ---
-title: Použití souhrnu zařízení řady StorSimple 8000 | Dokumenty společnosti Microsoft
+title: Použití souhrnu zařízení ve službě Správce zařízení StorSimple
 description: Popisuje souhrn servisního zařízení Správce zařízení StorSimple a způsob jeho použití k zobrazení metrik úložiště a připojených iniciátorů a k nalezení sériového čísla a čísla IQN.
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d88af2c0739c30b2562bad7660015b890e8159c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7801cdc6573799330e5173db82dead8d4f2cd83f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60578224"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398246"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Použití souhrnu zařízení ve službě Správce zařízení StorSimple
 

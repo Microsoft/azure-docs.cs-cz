@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77046199"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475171"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace brány aplikace Azure a brány firewall webových aplikací z v1 na 2
 
@@ -40,6 +40,7 @@ K dispozici je skript Azure PowerShell, který provádí následující akce:
 * Pokud máte pro bránu V1 zapnutý režim FIPS, nebude migrována do nové brány v2. Režim FIPS není podporován ve v2.
 * v2 nepodporuje Protokol IPv6, takže brány s povoleným protokolem IPv6 v1 se nemigrují. Pokud spustíte skript, nemusí být dokončen.
 * Pokud brána v1 má pouze privátní IP adresu, skript vytvoří veřejnou IP adresu a privátní IP adresu pro novou bránu v2. v2 brány v současné době nepodporují pouze soukromé IP adresy.
+* Záhlaví s názvy obsahujícími cokoli jiného než písmena, číslice, pomlčky a podtržítka nejsou do aplikace předána. To platí pouze pro názvy záhlaví, nikoli pro hodnoty záhlaví. Jedná se o zlomovou změnu oproti v1.
 
 ## <a name="download-the-script"></a>Stáhněte si skript
 

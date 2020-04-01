@@ -1,5 +1,5 @@
 ---
-title: Převzetí služeb při selhání a zotavení po havárii na stejné zařízení StorSimple 8000
+title: Kurz – selhání fyzického zařízení StorSimple na stejné zařízení
 description: Přečtěte si, jak přepojit zařízení StorSimple na stejné zařízení.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: c8fe2d7ec7649f47f6cb9c8ae2c83f19c15691b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dde01f9b91ff5a04ddb3fcc8d5f0c535278b0539
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471801"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398075"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Převzetí služeb při selhání fyzického zařízení StorSimple na stejné zařízení
 

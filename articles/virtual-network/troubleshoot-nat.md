@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/30/2020
 ms.author: allensu
-ms.openlocfilehash: 4a273801290a0a5833ebd83983a8b6b0ad856b45
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408480"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396094"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Poradce při potížích s připojením virtuální sítě Azure
 
@@ -40,14 +40,15 @@ Chcete-li tyto problémy vyřešit, postupujte podle pokynů v následující č
 
 Jeden [prostředek brány NAT](nat-gateway-resource.md) podporuje od 64 000 do 1 milionu souběžných toků.  Každá IP adresa poskytuje 64 000 portů SNAT do dostupných zásob. Na prostředek brány NAT můžete použít až 16 IP adres.  Mechanismus SNAT je [zde](nat-gateway-resource.md#source-network-address-translation) popsán podrobněji.
 
-Často hlavní příčinou vyčerpání SNAT je anti-vzor pro způsob, jakým je odchozí připojení navázáno a spravováno.  Pečlivě si prostudujte tuto část.
+Často hlavní příčinou vyčerpání SNAT je anti-vzor pro způsob, jakým je odchozí připojení navázáno, spravováno nebo konfigurovatelné časovače změněny z jejich výchozí hodnoty.  Pečlivě si prostudujte tuto část.
 
 #### <a name="steps"></a>Kroky
 
-1. Zjistěte, jak vaše aplikace vytváří odchozí připojení (například revize kódu nebo zachycení paketů). 
-2. Zjistěte, zda je tato aktivita očekávané chování nebo zda se aplikace chová nesprávně.  Pomocí [metrik](nat-metrics.md) v Azure Monitoru doložit vaše zjištění. Pro metriku Připojení SNAT použijte kategorii "Nezdařilo se".
-3. Vyhodnoťte, zda jsou dodrženy příslušné vzory.
-4. Vyhodnoťte, zda by mělo být vyčerpání portu SNAT zmírněno dalšími IP adresami přiřazenými prostředku brány NAT.
+1. Zkontrolujte, zda jste změnili výchozí časový limit nečinnosti na hodnotu vyšší než 4 minuty.
+2. Zjistěte, jak vaše aplikace vytváří odchozí připojení (například revize kódu nebo zachycení paketů). 
+3. Zjistěte, zda je tato aktivita očekávané chování nebo zda se aplikace chová nesprávně.  Pomocí [metrik](nat-metrics.md) v Azure Monitoru doložit vaše zjištění. Pro metriku Připojení SNAT použijte kategorii "Nezdařilo se".
+4. Vyhodnoťte, zda jsou dodrženy příslušné vzory.
+5. Vyhodnoťte, zda by mělo být vyčerpání portu SNAT zmírněno dalšími IP adresami přiřazenými prostředku brány NAT.
 
 #### <a name="design-patterns"></a>Způsoby návrhu
 
@@ -55,15 +56,17 @@ Vždy využijte opětovné použití připojení a sdružování připojení, kd
 
 _**Řešení:**_ Používejte vhodné vzory a osvědčené postupy
 
+- Prostředky brány NAT mají výchozí časový limit nečinnosti protokolu TCP 4 minuty.  Pokud se toto nastavení změní na vyšší hodnotu, nat bude držet toky déle a může způsobit [zbytečný tlak na zásoby portů SNAT](nat-gateway-resource.md#timers).
 - Atomické požadavky (jeden požadavek na připojení) jsou špatná volba návrhu. Takové anti-vzor omezuje měřítko, snižuje výkon a snižuje spolehlivost. Místo toho znovu použijte připojení HTTP/S ke snížení počtu připojení a přidružených portů SNAT. Škálování aplikace se zvýší a výkon se zlepší díky snížení nákladů na handshake, režii a kryptografické operace při použití TLS.
 - Služba DNS může zavést mnoho jednotlivých toků na svazku, pokud klient neprovádí ukládání výsledků překladačů DNS do mezipaměti. Použijte ukládání do mezipaměti.
 - Toky UDP (například vyhledávání DNS) přidělují porty SNAT po dobu trvání časového limitu nečinnosti. Čím delší časový limit nečinnosti, tím vyšší je tlak na porty SNAT. Použijte krátký časový limit nečinnosti (například 4 minuty).
 - Pomocí fondů připojení můžete utvářet svazek připojení.
-- Nikdy tiše opustit tok TCP a spoléhat se na časovače TCP vyčistit tok. To ponechá stav přidělený v zprostředkujících systémech a koncových bodech a znepřístupní porty pro jiná připojení. To může vyvolat selhání aplikace a vyčerpání SNAT. 
-- Hodnoty časovače související s ukončením protokolu TCP by se neměly měnit bez odborných znalostí o dopadu. Zatímco TCP se obnoví, výkon aplikace může být negativně ovlivněn, když koncové body připojení mají neshodná očekávání. Touha změnit časovače je obvykle známkou základního problému návrhu. Projděte si následující doporučení.
+- Nikdy tiše opustit tok TCP a spoléhat se na časovače TCP vyčistit tok. Pokud nechcete nechat TCP explicitně zavřít připojení, stav zůstane přidělena na zprostředkující systémy a koncové body a znepřístupní porty SNAT pro jiná připojení. To může vyvolat selhání aplikace a vyčerpání SNAT. 
+- Neměňte hodnoty časovače na úrovni operačního serveru TCP, aniž byste znali dopad. Zatímco zásobník TCP se obnoví, výkon aplikace může být negativně ovlivněn, když koncové body připojení mají neodpovídající očekávání. Touha změnit časovače je obvykle známkou základního problému návrhu. Projděte si následující doporučení.
 
 Často krát SNAT vyčerpání může být také zesílen s jinými anti-vzory v základní aplikaci. Projděte si tyto další vzory a doporučené postupy, abyste zlepšili rozsah a spolehlivost vaší služby.
 
+- Prozkoumejte dopad snížení [časového limitu nečinnosti protokolu TCP](nat-gateway-resource.md#timers) na nižší hodnoty, včetně výchozího časového limitu nečinnosti 4 minuty, abyste dříve uvolnili zásoby portů SNAT.
 - Zvažte [asynchronní dotazování vzory](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) pro dlouhotrvající operace uvolnit prostředky připojení pro jiné operace.
 - Toky s dlouhou životností (například znovu použitá připojení TCP) by měly používat tcp keepalives nebo udržovaty vrstvy aplikace, aby se zabránilo vypršení časového limitu zprostředkujících systémů. Zvýšení časového limitu nečinnosti je poslední možnost a nemusí vyřešit hlavní příčinu. Dlouhý časový limit může způsobit selhání nízké sazby při vypršení časového limitu a zavést zpoždění a zbytečné selhání.
 - Řádné opakování vzorky by měly být [použity,](https://docs.microsoft.com/azure/architecture/patterns/retry) aby se zabránilo agresivní opakování/shluky během přechodné selhání nebo zotavení po selhání.
@@ -175,7 +178,7 @@ Zájem o další funkce můžete uvést prostřednictvím [nástroje Virtual Net
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [překladu virtuálních sítí](nat-overview.md)
-* Naučte se ab Fry z [NAT brány zdroje](nat-gateway-resource.md)
+* Informace o [prostředku brány NAT](nat-gateway-resource.md)
 * Přečtěte si [o metrikách a výstrahách pro prostředky brány NAT](nat-metrics.md).
 * [Řekněte nám, co se má stavět pro virtuální síť NAT v UserVoice](https://aka.ms/natuservoice).
 

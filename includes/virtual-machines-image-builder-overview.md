@@ -5,12 +5,12 @@ ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 00fc3a01e6f42c2704af9dbc807dce193ff2971c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117046"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419077"
 ---
 Image standardizovaných virtuálních strojů umožňují organizacím migrovat do cloudu a zajistit konzistenci v nasazeních. Obrázky obvykle obsahují předdefinované nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření bitových kopií vyžaduje čas, infrastrukturu a nastavení, ale s Azure VM Image Builder, stačí poskytnout jednoduchou konfiguraci popisující vaši bitovou kopii, odeslat do služby a image je sestavena a distribuována.
  
@@ -51,7 +51,7 @@ AIB bude podporovat základní image operačního operačního operačního slu�
 - Centos 7,6, 7,7
 - SLES 12 SP4
 - SLES 15, SLES 15 SP1
-- Windows 10 RS5 Enterprise/Professional/Enterprise pro virtuální plochu (EVD) 
+- Windows 10 RS5 Enterprise/Enterprise multi-session/Professional
 - Windows 2016
 - Windows 2019
 
@@ -78,7 +78,7 @@ Azure Image Builder je plně spravovaná služba Azure, která je přístupná p
 
 ## <a name="permissions"></a>Oprávnění
 
-Chcete-li povolit Azure VM Image Builder distribuovat image buď spravované bitové kopie nebo sdílené galerie obrázků, budete muset poskytnout oprávnění přispěvatele pro službu "Azure Virtual Machine Image Builder" (ID aplikace: cf32a0cc-373c-47c9-9156-0db11f6a6dfc ) ve skupinách zdrojů. 
+Chcete-li povolit Azure VM Image Builder distribuovat image do spravované image nebo do galerie sdílených bitových kopií, budete muset poskytnout oprávnění přispěvatele pro službu "Azure Virtual Machine Image Builder" (ID aplikace: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) na skupiny prostředků. 
 
 Pokud používáte existující vlastní spravovanou image nebo verzi image, bude Azure Image Builder potřebovat minimální přístup "Reader" k těmto skupinám prostředků.
 

@@ -4,19 +4,18 @@ description: Přečtěte si o některých aspektech návrhu virtuální sítě a
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
-ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264190"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408837"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Důležité informace o návrhu virtuální sítě a možnosti konfigurace pro služby Azure AD Domain Services
 
@@ -76,7 +75,7 @@ Virtuální síť můžete připojit k jiné virtuální síti (Virtuální sí�
 
 ![Připojení k virtuální síti pomocí brány VPN](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
-Další informace o používání virtuálníprivutánní sítě [načta načlánekl konfigurace připojení brány VPN virtuální sítě k virtuální síti pomocí portálu Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal).
+Další informace o používání virtuálníprivutánní sítě [načta načlánekl konfigurace připojení brány VPN virtuální sítě k virtuální síti pomocí portálu Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 
 ## <a name="name-resolution-when-connecting-virtual-networks"></a>Překlad názvů při připojování virtuálních sítí
 
@@ -97,11 +96,11 @@ Spravovaná doména Azure AD DS vytvoří během nasazení některé síťové p
 | Pravidla nástroje pro vyrovnávání zatížení                     | Když je spravovaná doména Azure AD DS nakonfigurovaná pro zabezpečené LDAP na portu TCP 636, vytvoří se tři pravidla a použijí se na vyrovnávání zatížení k distribuci provozu. |
 
 > [!WARNING]
-> Neodstraňujte žádný síťový prostředek vytvořený službou Azure AD DS. Pokud odstraníte některý ze síťových prostředků, dojde k výpadku služby Azure AD DS.
+> Neodstraňujte ani neupravujte žádný síťový prostředek vytvořený službou Azure AD DS, jako je například ruční konfigurace zařízení pro vyrovnávání zatížení nebo pravidel. Pokud odstraníte nebo změníte některý ze síťových prostředků, může dojít k výpadku služby Azure AD DS.
 
 ## <a name="network-security-groups-and-required-ports"></a>Skupiny zabezpečení sítě a požadované porty
 
-[Skupina zabezpečení sítě (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) obsahuje seznam pravidel, která povolují nebo zapírají síťový provoz na provoz ve virtuální síti Azure. Skupina zabezpečení sítě se vytvoří při nasazení služby Azure AD DS, která obsahuje sadu pravidel, která umožňují službě poskytovat funkce ověřování a správy. Tato výchozí skupina zabezpečení sítě je přidružená k podsíti virtuální sítě, do které se nasadí vaše spravovaná doména Azure AD DS.
+[Skupina zabezpečení sítě (NSG)](../virtual-network/virtual-networks-nsg.md) obsahuje seznam pravidel, která povolují nebo zapírají síťový provoz na provoz ve virtuální síti Azure. Skupina zabezpečení sítě se vytvoří při nasazení služby Azure AD DS, která obsahuje sadu pravidel, která umožňují službě poskytovat funkce ověřování a správy. Tato výchozí skupina zabezpečení sítě je přidružená k podsíti virtuální sítě, do které se nasadí vaše spravovaná doména Azure AD DS.
 
 Následující pravidla skupiny zabezpečení sítě jsou vyžadovány pro Azure AD DS poskytovat služby ověřování a správy. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, do které se nasadí vaše spravovaná doména Služby Azure AD DS.
 

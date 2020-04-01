@@ -4,12 +4,12 @@ description: Poradce při potížích s instalací, registrací serveru Azure Ba
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673117"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421300"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -26,7 +26,7 @@ Doporučujeme provést níže uvedené ověření, než začnete řešit potíž
 - Pokud registrace selhává, ujistěte se, že server, na který se pokoušíte nainstalovat Server Zálohování Azure, ještě není zaregistrován v jiném úložišti.
 - Pokud nabízená instalace selže, zkontrolujte, jestli už agent DPM neexistuje. Pokud agent existuje, odinstalujte ho a pak instalaci opakujte.
 - [Zajištění, aby službě Azure Backup nepřekáží jiný proces nebo antivirový software](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
-- Ujistěte se, že je na serveru MAB spuštěná služba agenta SQL a že je nastavená na automatický režim.<br>
+- Ujistěte se, že je spuštěna služba SQL Agent a nastavena na automatickou na serveru MABS<br>
 
 ## <a name="invalid-vault-credentials-provided"></a>Byla poskytnuta neplatná pověření trezoru.
 
@@ -38,13 +38,13 @@ Doporučujeme provést níže uvedené ověření, než začnete řešit potíž
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Zálohování | Replika je nekonzistentní | Ověřte, zda je zapnuta možnost automatické kontroly konzistence v Průvodci skupinou ochrany. Další informace o příčinách nekonzistence replik y a relevantní návrhy naleznete v článku [Replika je nekonzistentní](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2006/cc161593(v=technet.10)).<br> <ol><li> V případě zálohování stavu systému nebo bmr ověřte, zda je na chráněném serveru nainstalovánprogram Zálohování serveru.</li><li> Zkontrolujte problémy související s prostorem ve fondu úložiště DPM na zálohovacím serveru DPM/Microsoft Azure a přidělte úložiště podle potřeby.</li><li> Zkontrolujte stav služby Stínová kopie svazku na chráněném serveru. Pokud je v zakázaném stavu, nastavte jej spustit ručně. Spusťte službu na serveru. Potom se vraťte ke konzoli DPM/Microsoft Azure Backup Server a spusťte synchronizaci s úlohou kontroly konzistence.</li></ol>|
+| Backup | Replika je nekonzistentní | Ověřte, zda je zapnuta možnost automatické kontroly konzistence v Průvodci skupinou ochrany. Další informace o příčinách nekonzistence replik y a relevantní návrhy naleznete v článku [Replika je nekonzistentní](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2006/cc161593(v=technet.10)).<br> <ol><li> V případě zálohování stavu systému nebo bmr ověřte, zda je na chráněném serveru nainstalovánprogram Zálohování serveru.</li><li> Zkontrolujte problémy související s prostorem ve fondu úložiště DPM na zálohovacím serveru DPM/Microsoft Azure a přidělte úložiště podle potřeby.</li><li> Zkontrolujte stav služby Stínová kopie svazku na chráněném serveru. Pokud je v zakázaném stavu, nastavte jej spustit ručně. Spusťte službu na serveru. Potom se vraťte ke konzoli DPM/Microsoft Azure Backup Server a spusťte synchronizaci s úlohou kontroly konzistence.</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>Vytvoření bodu obnovení online se nezdařilo
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Zálohování | Vytvoření bodu obnovení online se nezdařilo | **Chybová zpráva**: Agent zálohování Windows Azure nemohl vytvořit snímek vybraného svazku. <br> **Řešení:** Zkuste zvětšit místo v repliky a svazku bodu obnovení.<br> <br> **Chybová zpráva:** Agent zálohování Windows Azure se nemůže připojit ke službě OBEngine. <br> **Řešení**: ověřte, zda modul OBEngine existuje v seznamu spuštěných služeb v počítači. Pokud služba OBEngine není spuštěna, použijte příkaz "net start OBEngine" ke spuštění služby OBEngine. <br> <br> **Chybová zpráva**: Šifrovací heslo pro tento server není nastaveno. Nakonfigurujte heslo pro šifrování. <br> **Řešení:** Zkuste nakonfigurovat heslo pro šifrování. Pokud se nezdaří, postupujte takto: <br> <ol><li>Ověřte, zda je odkládací místo. Toto je umístění, které je uvedeno v registru **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, s názvem **ScratchLocation** by měl existovat.</li><li> Pokud odkládací umístění existuje, zkuste znovu zaregistrovat pomocí staré přístupové fráze. *Kdykoli nakonfigurujete šifrovací přístupové heslo, uložte je na bezpečném místě.*</li><ol>|
+| Backup | Vytvoření bodu obnovení online se nezdařilo | **Chybová zpráva**: Agent zálohování Windows Azure nemohl vytvořit snímek vybraného svazku. <br> **Řešení:** Zkuste zvětšit místo v repliky a svazku bodu obnovení.<br> <br> **Chybová zpráva:** Agent zálohování Windows Azure se nemůže připojit ke službě OBEngine. <br> **Řešení**: ověřte, zda modul OBEngine existuje v seznamu spuštěných služeb v počítači. Pokud služba OBEngine není spuštěna, použijte příkaz "net start OBEngine" ke spuštění služby OBEngine. <br> <br> **Chybová zpráva**: Šifrovací heslo pro tento server není nastaveno. Nakonfigurujte heslo pro šifrování. <br> **Řešení:** Zkuste nakonfigurovat heslo pro šifrování. Pokud se nezdaří, postupujte takto: <br> <ol><li>Ověřte, zda je odkládací místo. Toto je umístění, které je uvedeno v registru **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, s názvem **ScratchLocation** by měl existovat.</li><li> Pokud odkládací umístění existuje, zkuste znovu zaregistrovat pomocí staré přístupové fráze. *Kdykoli nakonfigurujete šifrovací přístupové heslo, uložte je na bezpečném místě.*</li><ol>|
 
 ## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>Původní a externí servery DPM musí být zaregistrovány do stejného trezoru.
 
@@ -56,7 +56,7 @@ Doporučujeme provést níže uvedené ověření, než začnete řešit potíž
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Zálohování | Úlohy vytváření bodů obnovení online pro virtuální vm v systému VMware se nezdaří. Aplikace DPM zjistila chybu ze společnosti VMware při pokusu o získání informací changetracking. ErrorCode - FileFaultFault (ID 33621) |  <ol><li> Resetujte CTK na VMware pro ovlivněné virtuální počítač.</li> <li>Zkontrolujte, zda není ve společnosti VMware konto nezávislý disk.</li> <li>Zastavte ochranu postižených virtuálních počítače a znovu chraňte tlačítkem **Aktualizovat.** </li><li>Spusťte CC pro ovlivněné virtuální chod.</li></ol>|
+| Backup | Úlohy vytváření bodů obnovení online pro virtuální vm v systému VMware se nezdaří. Aplikace DPM zjistila chybu ze společnosti VMware při pokusu o získání informací changetracking. ErrorCode - FileFaultFault (ID 33621) |  <ol><li> Resetujte CTK na VMware pro ovlivněné virtuální počítač.</li> <li>Zkontrolujte, zda není ve společnosti VMware konto nezávislý disk.</li> <li>Zastavte ochranu postižených virtuálních počítače a znovu chraňte tlačítkem **Aktualizovat.** </li><li>Spusťte CC pro ovlivněné virtuální chod.</li></ol>|
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operace agenta se nezdařila z důvodu chyby komunikace se službou koordinátora agenta DPM na serveru.
 
@@ -88,15 +88,15 @@ Doporučujeme provést níže uvedené ověření, než začnete řešit potíž
 | Konfigurace skupin ochrany | Pro tuto skupinu ochrany není ve fondu úložiště dostatek volného místa. | Disky, které jsou přidány do fondu úložiště [by neměl obsahovat oddíl](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)). Odstraňte všechny existující svazky na discích. Pak je přidejte do fondu úložiště.|
 | Změna zásad |Zásady zálohování nelze změnit. Chyba: Aktuální operace se nezdařila z důvodu vnitřní chyby služby [0x29834]. Opakujte operaci po uplynutí určité doby. Pokud potíže trvají, obraťte se na podporu Microsoftu. | **Způsobit:**<br/>K této chybě dochází za tří podmínek: pokud jsou povolena nastavení zabezpečení, při pokusu o snížení rozsahu uchování pod minimální hodnoty zadané dříve a pokud jste na nepodporovanou verzi. (Nepodporované verze jsou verze pod Microsoft Azure Backup Server verze 2.0.9052 a Azure Backup Server update 1.) <br/>**Doporučená akce:**<br/> Chcete-li pokračovat v aktualizacích souvisejících se zásadami, nastavte dobu uchování nad minimální dobu uchovávání zadanou. (Minimální retenční doba je sedm dní pro denní, čtyři týdny pro týdenní, tři týdny pro měsíční nebo jeden rok pro rok.) <br><br>Volitelně je dalším upřednostňovaným přístupem aktualizace agenta zálohování a serveru Azure Backup Server, aby byly využity všechny aktualizace zabezpečení. |
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Zálohování | Při spuštění úlohy došlo k neočekávané chybě. Zařízení není připraveno. | **Pokud doporučená akce zobrazená v produktu nefunguje, postupujte takto:** <br> <ul><li>Nastavte prostor úložiště stínové kopie na neomezené položky ve skupině ochrany a spusťte kontrolu konzistence.<br></li> (NEBO) <li>Zkuste snímat existující skupinu ochrany a vytvořit více nových skupin. Každá nová skupina ochrany by měla mít v sobě samostatnou položku.</li></ul> |
-| Zálohování | Pokud zálohujete pouze stav systému, ověřte, zda je v chráněném počítači dostatek volného místa pro uložení zálohy stavu systému. | <ol><li>Ověřte, zda je v chráněném počítači nainstalována aplikace Zálohování serveru.</li><li>Ověřte, zda je v chráněném počítači dostatek místa pro stav systému. Nejjednodušší způsob, jak to ověřit, je přejít do chráněného počítače, otevřít program Zálohování serveru, proklikat výběry a vybrat bmr. UI pak řekne, kolik místa je potřeba. Otevřete > plán**místního** > **zálohování** **WSB** > **Vyberte možnost Konfigurace konfigurace** > **full serveru** (zobrazí se velikost). Tuto velikost použijte pro ověření.</li></ol>
-| Zálohování | Selhání zálohování pro BMR | Pokud je velikost BMR velká, přesuňte některé soubory aplikace na jednotku operačního systému a opakujte akci. |
-| Zálohování | Možnost znovu chránit virtuální počítač VMware na novém microsoft azure zálohovacím serveru se nezobrazuje jako dostupná k přidání. | Vlastnosti vmware jsou zaměřeny na starou, vyřazenou instanci microsoft azure backup serveru. Řešení tohoto problému:<br><ol><li>V programu VCenter (ekvivalent SC-VMM) přejděte na kartu **Souhrn** a potom na **vlastní atributy**.</li>  <li>Odstraňte starý název serveru Microsoft Azure Backup Server z hodnoty **DPMServer.**</li>  <li>Vraťte se na nový microsoft azure backup server a upravte PG.  Po zaškrtnutí tlačítka **Aktualizovat** se virtuální ho dohledu zobrazí se zaškrtávacím políčkem, které je k dispozici pro přidání do ochrany.</li></ol> |
-| Zálohování | Při přístupu k souborům/sdíleným složkám došlo k chybě | Zkuste upravit nastavení antivirového programu, jak je navrženo v tomto článku [Spusťte antivirový software na serveru DPM](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).|
+| Backup | Při spuštění úlohy došlo k neočekávané chybě. Zařízení není připraveno. | **Pokud doporučená akce zobrazená v produktu nefunguje, postupujte takto:** <br> <ul><li>Nastavte prostor úložiště stínové kopie na neomezené položky ve skupině ochrany a spusťte kontrolu konzistence.<br></li> (NEBO) <li>Zkuste snímat existující skupinu ochrany a vytvořit více nových skupin. Každá nová skupina ochrany by měla mít v sobě samostatnou položku.</li></ul> |
+| Backup | Pokud zálohujete pouze stav systému, ověřte, zda je v chráněném počítači dostatek volného místa pro uložení zálohy stavu systému. | <ol><li>Ověřte, zda je v chráněném počítači nainstalována aplikace Zálohování serveru.</li><li>Ověřte, zda je v chráněném počítači dostatek místa pro stav systému. Nejjednodušší způsob, jak to ověřit, je přejít do chráněného počítače, otevřít program Zálohování serveru, proklikat výběry a vybrat bmr. UI pak řekne, kolik místa je potřeba. Otevřete > plán**místního** > **zálohování** **WSB** > **Vyberte možnost Konfigurace konfigurace** > **full serveru** (zobrazí se velikost). Tuto velikost použijte pro ověření.</li></ol>
+| Backup | Selhání zálohování pro BMR | Pokud je velikost BMR velká, přesuňte některé soubory aplikace na jednotku operačního systému a opakujte akci. |
+| Backup | Možnost znovu chránit virtuální počítač VMware na novém microsoft azure zálohovacím serveru se nezobrazuje jako dostupná k přidání. | Vlastnosti vmware jsou zaměřeny na starou, vyřazenou instanci microsoft azure backup serveru. Řešení tohoto problému:<br><ol><li>V programu VCenter (ekvivalent SC-VMM) přejděte na kartu **Souhrn** a potom na **vlastní atributy**.</li>  <li>Odstraňte starý název serveru Microsoft Azure Backup Server z hodnoty **DPMServer.**</li>  <li>Vraťte se na nový microsoft azure backup server a upravte PG.  Po zaškrtnutí tlačítka **Aktualizovat** se virtuální ho dohledu zobrazí se zaškrtávacím políčkem, které je k dispozici pro přidání do ochrany.</li></ol> |
+| Backup | Při přístupu k souborům/sdíleným složkám došlo k chybě | Zkuste upravit nastavení antivirového programu, jak je navrženo v tomto článku [Spusťte antivirový software na serveru DPM](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).|
 
 ## <a name="change-passphrase"></a>Změna přístupové fráze
 

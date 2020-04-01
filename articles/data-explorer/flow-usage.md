@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 759ea9800a0ed051fed887adfb10b06f7a53b72f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529199"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397188"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>Příklady použití konektoru Microsoft Flow (Preview)
 
@@ -119,7 +119,9 @@ Vizualizujte tyto informace jako výsečový graf a pošlete je e-mailem týmu.
     * Do pole *Tělo* vložte požadované tělo tak, aby vizualizovaný výsledek dotazu byl zahrnut do těla e-mailu.
     * Pokud chcete k e-mailu přidat přílohu, přidejte název přílohy a obsah přílohy.
     
-    ![Odeslání více příloh e-mailem](./media/flow-usage/flow-emailmultipleattachments.png)
+    ![Odeslání více příloh e-mailem](./media/flow-usage/flow-email-multiple-attachments.png)
+
+    Úplné pokyny k vytvoření akce e-mailu najdete v [tématu E-mail s výsledky dotazu aplikace Kusto](flow.md#email-kusto-query-results). 
 
 Výsledky:
 

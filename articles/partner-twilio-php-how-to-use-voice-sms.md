@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 34057f1962338927a252011dccc56ed6a77bec47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9fb250109a1c9000eae8da0d6337c96f19f0f89
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636025"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410543"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Jak používat Twilio pro hlasové a SMS schopnosti v PHP
 Tato příručka ukazuje, jak provádět běžné úlohy programování se službou Twilio API v Azure. Zahrnuté scénáře zahrnují telefonování a odeslání zprávy SMS (Short Message Service). Další informace o Twilio a používání hlasu a SMS ve vašich aplikacích naleznete v části [Další kroky.](#NextSteps)
@@ -138,7 +138,7 @@ Následující ukazuje, jak provést odchozí volání pomocí **Services_Twilio
 
 Jak již bylo zmíněno, tento kód používá web poskytnutý Twilio k vrácení odpovědi TwiML. Místo toho můžete použít vlastní web k poskytnutí odpovědi TwiML; Další informace naleznete [v tématu Jak poskytnout odpovědi TwiML z vlastního webu](#howto_provide_twiml_responses).
 
-* **Poznámka:** Řešení potíží s chybami ověření certifikátu SSL naleznete v tématu[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **Poznámka:** Řešení potíží s chybami ověření certifikátu TLS/SSL naleznete v tématu[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Postup: Odeslání SMS zprávy
 Následující ukazuje, jak odeslat zprávu SMS pomocí **Services_Twilio** třídy. Číslo **Od** je poskytováno Twilio pro zkušební účty pro odesílání SMS zpráv. Před **spuštěním** kódu musí být pro váš účet Twilio ověřeno číslo To.

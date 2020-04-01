@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282637"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435634"
 ---
 # <a name="protect-your-machines-and-applications"></a>Chraňte své stroje a aplikace
 Když Azure Security Center identifikuje potenciální slabá místa zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků pro posílení a ochranu vašich prostředků.
@@ -84,10 +84,10 @@ Tady se zobrazí podrobnosti o zabezpečení virtuálního počítače nebo poč
 
 
 
-### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Škálovací sady virtuálních strojů
-Security Center automaticky zjistí, zda máte škálovací sady a doporučuje nainstalovat Microsoft Monitoring Agent na ně.
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Škálovací sady virtuálních počítačů
+Security Center automaticky zjistí, zda máte škálovací sady a doporučuje nainstalovat agenta Log Analytics na ně.
 
-Instalace agenta sledování společnosti Microsoft: 
+Instalace agenta Analýzy protokolů: 
 
 1. Vyberte doporučení **Instalace agenta monitorování ve škálovací sadě virtuálních strojů**. Získáte seznam nesledovaných škálovacích sad.
 
@@ -95,7 +95,7 @@ Instalace agenta sledování společnosti Microsoft:
 
    ![Instalace MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Nastavení nových škálovacích sad pro automatickou instalaci agenta sledování společnosti Microsoft:
+Nastavení nových škálovacích sad pro automatickou instalaci agenta Analýzy protokolů:
 1. Přejděte na **Zásady**Azure a klikněte na Definice .
 
 1. Vyhledejte zásadu **Nasazení agenta Analýzy protokolů pro škálovací sady virtuálních strojů windows** a klikněte na něj.
@@ -104,7 +104,7 @@ Nastavení nových škálovacích sad pro automatickou instalaci agenta sledová
 
 1. Nastavte pracovní prostor **Obor** a **Analýza protokolů** a klepněte na **tlačítko Přiřadit**.
 
-Pokud chcete nastavit všechny existující škálovací sady pro instalaci Microsoft Monitoring Agent, v zásadách Azure, přejděte na **nápravu** a použít existující zásady pro stávající škálovací sady.
+Pokud chcete nastavit všechny existující škálovací sady pro instalaci agenta Log Analytics, v zásadách Azure přejděte na **nápravu** a použijte existující zásady pro existující škálovací sady.
 
 
 
@@ -195,7 +195,7 @@ Když kliknete na jeden z virtuálních počítačů spuštěných v dockeru, zo
 
 Security Center kontroluje konfigurace Dockeru a poskytuje vám vhled do nesprávných konfigurací tím, že poskytuje seznam všech neúspěšných pravidel, která byla posouzena. Centrum zabezpečení obsahuje pokyny, které vám pomohou tyto problémy rychle vyřešit a ušetřit čas. Security Center nepřetržitě posuzuje konfigurace Dockeru a poskytuje vám jejich nejnovější stav.
 
-![karta kontejner](./media/security-center-container-recommendations/container-cis-benchmark.png)
+![karta kontejner](./media/security-center-virtual-machine-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>Další kroky

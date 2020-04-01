@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: c7c6cebf0a5c6371893dff52b2e8d7c064a40084
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257933"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421224"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
@@ -202,7 +202,7 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí `TeradataSource`být nastavena na . | Ano |
 | query | Ke čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`.<br>Když povolíte rozdělené zatížení, je třeba připojit všechny odpovídající vestavěné parametry oddílu v dotazu. Příklady naleznete [paralelní kopie z Teradata](#parallel-copy-from-teradata) části. | Ne (pokud je zadána tabulka v datové sadě) |
-| partitionOptions | Určuje možnosti dělení dat použité k načtení dat z Teradata. <br>Povolit hodnoty jsou: **Žádné** (výchozí), **Hash** a **DynamicRange**.<br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně načíst data z Teradata je řízen [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavení na aktivitu kopírování. | Ne |
+| partitionOptions | Určuje možnosti dělení dat použité k načtení dat z Teradata. <br>Povolit hodnoty jsou: **Žádné** (výchozí), **Hash** a **DynamicRange**.<br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně načíst data z Teradata je řízen [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavení na aktivitu kopírování. | Ne |
 | partitionSettings | Zadejte skupinu nastavení pro dělení dat. <br>Použít, pokud možnost `None`oddílu není . | Ne |
 | partitionColumnName | Zadejte název zdrojového sloupce, který bude použit oddílem rozsahu nebo oddílem hash pro paralelní kopírování. Pokud není zadán, primární index tabulky je automaticky rozpoznán a použit jako sloupec oddílu. <br>Použít, pokud je `Hash` `DynamicRange`možnost oddílu nebo . Pokud použijete dotaz k načtení `?AdfHashPartitionCondition` zdrojových dat, háček nebo `?AdfRangePartitionColumnName` v klauzuli WHERE. Viz příklad v paralelní kopírování z části [Teradata.](#parallel-copy-from-teradata) | Ne |
 | partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použít, pokud `DynamicRange`je možnost oddílu . Pokud použijete dotaz k načtení zdrojových dat, zavěste `?AdfRangePartitionUpbound` do klauzule WHERE. Příklad naleznete paralelní [kopie z Teradata](#parallel-copy-from-teradata) části. | Ne |
@@ -250,7 +250,7 @@ Data Factory Teradata konektor poskytuje vestavěné dělení dat pro paralelní
 
 ![Snímek obrazovky s možnostmi oddílu](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Když povolíte rozdělenou kopii, Data Factory spustí paralelní dotazy proti zdroji Teradata pro načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance.md#parallel-copy) řízen nastavením aktivity kopírování. Například pokud nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z teradata.
+Když povolíte rozdělenou kopii, Data Factory spustí paralelní dotazy proti zdroji Teradata pro načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) řízen nastavením aktivity kopírování. Například pokud nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z teradata.
 
 Doporučujese povolit paralelní kopírování s dělení dat zejména při načítání velkého množství dat z Teradata. Níže jsou navrženy konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je připonuto zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
-ms.translationtype: HT
+ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389371"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411611"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení widgetů Video Indexer u svých aplikací
 
@@ -66,16 +66,12 @@ Pomocí widgetu Editor můžete vytvářet nové projekty a spravovat přehledy 
 
 1. Přihlaste se na web [Video Indexer.](https://www.videoindexer.ai/)
 2. Vyberte video, se kterým chcete pracovat.
-3. Vyberte tlačítko **Vložit,** které se zobrazí pod videem.
-
-    ![Tlačítko Vložit do video indexeru](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
+3. Vyberte tlačítko pro**</>** vložení ( ), které se zobrazí pod videem.
 
     Po výběru tlačítka **Vložit** můžete vybrat widget, který chcete vložit do aplikace.
 4. Vyberte požadovaný typ widgetu **(Cognitive Insights**, **Player**nebo **Editor).**
- 
-5. Zkopírujte kód pro vložení a přidejte ho do aplikace.
-
-    ![Kód pro vložení aplikace – Video Indexer](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+5. Zkopírujte kód pro vložení (zobrazí se v části **Kopírovat vložený kód** v dialogovém okně **Vložit & sdílet).**
+6. Přidejte kód do aplikace.
 
 > [!NOTE]
 > Pokud máte problémy se sdílením adres `location` URL videa, přidejte parametr k odkazu. Parametr by měl být nastaven na [oblasti Azure, ve kterých existuje Video Indexer](regions.md). Například: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
@@ -239,7 +235,7 @@ Pokud například chcete vložit widget, který obsahuje pouze přehledy lidí a
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-Název okna iframe lze také přizpůsobit poskytnutím `&title=<YourTitle>` adresy URL prvku iframe. (Přizpůsobuje hodnotu <title> HTML).
+Název okna iframe lze také přizpůsobit poskytnutím `&title=<YourTitle>` adresy URL prvku iframe. (Přizpůsobuje hodnotu `<title>` HTML).
    
 Chcete-li například dát oknu iframe název "MyInsights", bude adresa URL vypadat takto:
 
@@ -257,7 +253,7 @@ Například:
 
 Ve výchozím nastavení přehrávač Video Indexer automaticky vygeneroval skryté titulky, které jsou založeny na přepisu videa. Přepis je extrahován z videa se zdrojovým jazykem, který byl vybrán při nahrávání videa.
 
-Pokud chcete vložit s jiným jazykem, můžete přidat &titulky =< kód jazyka > na adresu URL přehrávače pro vložení. Pokud chcete, aby se titulky zobrazovaly ve výchozím nastavení, můžete předat &showCaptions=true.
+Pokud chcete vložit s jiným jazykem, `&captions=<Language Code>` můžete přidat do adresy URL pro vložení přehrávače. Pokud chcete, aby se titulky zobrazovaly ve výchozím nastavení, můžete předat &showCaptions=true.
 
 Adresa URL pro vložení pak bude vypadat takto:
 

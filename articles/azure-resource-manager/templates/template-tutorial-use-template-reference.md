@@ -114,4 +114,4 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 V tomto kurzu jste se dozvěděli, jak přizpůsobit existující šablonu pomocí odkazu na šablonu. Naučte se, jak vytvořit několik instancí účtu úložiště, viz:
 
 > [!div class="nextstepaction"]
-> [Vytvoření víc instancí](./template-tutorial-create-multiple-instances.md)
+> [Vytvoření několika instancí](./template-tutorial-create-multiple-instances.md)

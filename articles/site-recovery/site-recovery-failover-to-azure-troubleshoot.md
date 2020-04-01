@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257742"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478951"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Poradce při potížích s chybami při selhání virtuálního počítače VMware nebo fyzického počítače do Azure
 
@@ -128,7 +128,7 @@ To obvykle není důvodem k obavám a může být obvykle ignorována pro neplá
 
 Tento problém je určen, když se vám nedaří zobrazit úložiště dat v Azure portálu při pokusu o opětovné nahrazení virtuálního počítače, u kterého došlo k převzetí služeb při selhání. Důvodem je, že hlavní cíl není rozpoznán jako virtuální počítač v rámci vCenters přidané do Azure Site Recovery.
 
-Další informace o opětovné ochraně vituálního počítače najdete v tématu [Reprotect a fail back počítače na místní web po převzetí služeb při selhání do Azure](vmware-azure-reprotect.md).
+Další informace o opětovné ochraně virtuálního počítače najdete v tématu [Opětovné zabezpečení a obnovení počítače na místní web po převzetí služeb při selhání do Azure](vmware-azure-reprotect.md).
 
 Chcete-li tento problém vyřešit:
 
@@ -138,7 +138,7 @@ Ručně vytvořte hlavní cíl v centru, který spravuje zdrojový počítač. �
 > 
 > Operace zjišťování a aktualizace prostředků infrastruktury může trvat až 30 minut. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Registrace hlavního cíle Linuxu s CS se nezdaří s chybou SSL 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>Registrace linuxového hlavního cíle s CS se nezdaří s chybou TLS 35 
 
 Registrace cíle hlavního webu Azure site recovery s konfiguračním serverem se nezdaří z důvodu povolení ověřeného proxy serveru v hlavním cíli. 
  
