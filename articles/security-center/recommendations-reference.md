@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: f0e74a366e8dbb515f2f50748eb4a5c76088a723
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 8f4703330190d3907e9a6e3aead8892fe69e7c13
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398032"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521219"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Bezpečnostní doporučení – referenční příručka
 
@@ -105,7 +105,7 @@ Vaše skóre zabezpečení je založeno na počtu doporučení Centra zabezpeče
 |**Proměnné účtu automatizace by měly být šifrovány**|Povolte šifrování proměnných prostředků účtu Automation při ukládání citlivých dat.<br>(Související zásady: Šifrování by mělo být povoleno u proměnných účtu automatizace)|Vysoká|Ne|Výpočetní prostředky (účet automatizace)|
 |**Šifrování disku by mělo být použito na virtuálních počítačích.**|Šifrujte disky virtuálních počítačů pomocí Azure Disk Encryption pro virtuální počítače s Windows i Linuxem. Azure Disk Encryption (ADE) využívá standardní funkci Nástroje bitlockeru systému Windows a funkce DM-Crypt v Linuxu k poskytování šifrování operačního systému a datového disku, které pomáhá chránit a chránit vaše data a pomáhá plnit závazky organizace v oblasti zabezpečení a dodržování předpisů v trezoru klíčů Azure pro zákazníky. Pokud váš požadavek na dodržování předpisů a zabezpečení vyžaduje šifrování dat, které končí pomocí šifrovacích klíčů, včetně šifrování dočasného (místně připojeného dočasného) disku, použijte šifrování disku Azure. Případně se ve výchozím nastavení spravované disky ve výchozím nastavení šifrují pomocí šifrování služby Azure Storage Service, kde šifrovací klíče jsou klíče spravované Microsoftem v Azure. Pokud to splňuje vaše požadavky na dodržování předpisů a zabezpečení, můžete využít výchozí šifrování spravovaného disku ke splnění vašich požadavků.<br>(Související zásady: Šifrování disku by mělo být použito na virtuálních počítačích)|Vysoká|Ne|Počítač|
 |**Virtuální počítače by se měly migrovat do nových prostředků Azure Resource Manageru.**|Pomocí Azure Resource Manager pro vaše virtuální počítače můžete poskytovat vylepšení zabezpečení, jako jsou: silnější řízení přístupu (RBAC), lepší auditování, nasazení a zásady správného řízení na základě Správce prostředků, přístup ke spravovaným identitám, přístup k trezoru klíčů pro tajné klíče, ověřování na základě Azure AD a podpora značek a skupin prostředků pro snadnější správu zabezpečení.<br>(Související zásady: Virtuální počítače by se měly migrovat do nových prostředků Azure Resource Manageru)|Nízká|Ne|Počítač|
-|**Řešení pro posouzení ohrožení zabezpečení by mělo být nainstalováno na virtuálních počítačích.**|Instalace řešení pro posouzení ohrožení zabezpečení na virtuálních počítačích<br>(Související zásady: Posouzení ohrožení zabezpečení by mělo být nainstalováno na virtuálních počítačích)|Střednědobé používání|Ne|Počítač|
+|**Řešení pro posouzení ohrožení zabezpečení by mělo být nainstalováno na virtuálních počítačích.**|Instalace řešení pro posouzení ohrožení zabezpečení na virtuálních počítačích<br>(Související zásady: Chyby zabezpečení by měly být opraveny řešením pro posouzení zranitelnosti)|Střednědobé používání|Ne|Počítač|
 |**Chyby zabezpečení by měly být opraveny řešením pro posouzení zranitelnosti**|Virtuální počítače, pro které je nasazeno řešení pro posouzení ohrožení zabezpečení třetích stran, jsou průběžně posuzovány proti chybám zabezpečení aplikací a operačního systému. Kdykoli jsou tyto chyby zabezpečení nalezeny, jsou k dispozici další informace jako součást doporučení.<br>(Související zásady: Chyby zabezpečení by měly být opraveny řešením pro posouzení zranitelnosti)|Vysoká|Ne|Počítač|
 |**Chyby zabezpečení v konfiguraci zabezpečení na vašich počítačích by měly být opraveny**|Spravit chyby zabezpečení v konfiguraci zabezpečení na počítačích chránit před útoky.<br>(Související zásady: Chyby zabezpečení v konfiguraci zabezpečení na počítačích by měly být opraveny)|Nízká|Ne|Počítač|
 |**Chyby zabezpečení v konfiguracích zabezpečení kontejnerů by měly být opraveny**|Ospravedlňujte chyby zabezpečení v konfiguraci zabezpečení na počítačích s nainstalovaným Dockerem, abyste je ochránili před útoky.<br>(Související zásady: Chyby zabezpečení v konfiguracích zabezpečení kontejnerů by měly být opraveny)|Vysoká|Ne|Počítač|

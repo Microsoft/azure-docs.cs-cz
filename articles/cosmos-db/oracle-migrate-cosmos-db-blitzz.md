@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: fe132ee6ab90fdae99463f11ecf46f352690b810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69984352"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546274"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrace dat z Oracle do účtu API Azure Cosmos DB Cassandra pomocí blitzzu
 
@@ -36,7 +36,7 @@ Existují různé způsoby migrace databázových úloh z jedné platformy na dr
 
 * Je odolný proti chybám a zaručuje přesně jednou dodání dat i při selhání hardwaru nebo softwaru v systému.
 
-* Zabezpečuje data během přenosu pomocí různých metodik zabezpečení, jako je SSL, šifrování.
+* Zabezpečuje data během přenosu pomocí různých metodik zabezpečení, jako je TLS / SSL, šifrování.
 
 * Nabízí služby pro převod komplexní obchodní logiky napsané v PL/SQL na ekvivalentní obchodní logiku v Azure Cosmos DB.
 
@@ -44,7 +44,7 @@ Existují různé způsoby migrace databázových úloh z jedné platformy na dr
 
 Tato část popisuje kroky potřebné k nastavení Blitzz a migruje data z databáze Oracle do Azure Cosmos DB.
 
-1. Z počítače, kde plánujete nainstalovat replikant Blitzz, přidejte bezpečnostní certifikát. Tento certifikát je vyžadován replikantblitzz navázat připojení SSL se zadaným účtem Azure Cosmos DB. Certifikát můžete přidat pomocí následujících kroků:
+1. Z počítače, kde plánujete nainstalovat replikant Blitzz, přidejte bezpečnostní certifikát. Tento certifikát je vyžadován replikantblitzz navázat připojení TLS se zadaným účtem Azure Cosmos DB. Certifikát můžete přidat pomocí následujících kroků:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt

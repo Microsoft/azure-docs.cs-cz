@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594735"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528660"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Doporučené postupy pro kontinuitu podnikání a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 
@@ -59,7 +59,7 @@ Informace o nastavení koncových bodů a směrování naleznete v [tématu Konf
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Směrování aplikací vrstvy 7 pomocí služby Azure Front Door Service
 
-Traffic Manager používá DNS (vrstva 3) k tvarování provozu. [Služba Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) poskytuje možnost směrování HTTP/HTTPS (vrstva 7). Mezi další funkce služby Azure Front Door Service patří ukončení SSL, vlastní doména, brána firewall webové aplikace, přepis adres URL a spřažení relací. Zkontrolujte potřeby provozu aplikace a zjistěte, které řešení je nejvhodnější.
+Traffic Manager používá DNS (vrstva 3) k tvarování provozu. [Služba Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) poskytuje možnost směrování HTTP/HTTPS (vrstva 7). Mezi další funkce služby Azure Front Door Service patří ukončení TLS, vlastní doména, brána firewall webové aplikace, přepsání adresy URL a spřažení relací. Zkontrolujte potřeby provozu aplikace a zjistěte, které řešení je nejvhodnější.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Propojení oblastí s partnerským vztahem globální virtuální sítě
 
@@ -122,7 +122,7 @@ Typickou strategií je poskytnout společný bod úložiště, kde aplikace moho
 Pokud používáte spravované disky Azure, můžete zvolit řešení replikace a zotavení po havárii, jako jsou tato:
 
 * [Velero v Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Obnovení webu Azure](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
+* [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>Asynchronní replikace založená na aplikaci
 

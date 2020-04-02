@@ -2,13 +2,13 @@
 title: Označení prostředků, skupin prostředků a předplatných pro logickou organizaci
 description: Ukazuje, jak použít značky pro uspořádání prostředků Azure pro fakturaci a správu.
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: ffc97df0923e26c3abf0eed8e7810f3b1dc61ed2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132271"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548483"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -20,7 +20,7 @@ Doporučení, jak implementovat strategii označování, naleznete v [tématu Re
 
 ## <a name="required-access"></a>Požadovaný přístup
 
-Chcete-li použít značky na prostředek, musíte mít přístup pro zápis k typu prostředku **Microsoft.Resources/tags.** Role **Přispěvatel značek** umožňuje použít značky na entitu bez přístupu k samotné entitě.
+Chcete-li použít značky na prostředek, musíte mít přístup pro zápis k typu prostředku **Microsoft.Resources/tags.** Role [Přispěvatel značek](../../role-based-access-control/built-in-roles.md#tag-contributor) umožňuje použít značky na entitu bez přístupu k samotné entitě. V současné době role přispěvatele značky nemůže použít značky pro prostředky nebo skupiny prostředků prostřednictvím portálu. Můžete použít značky na odběry prostřednictvím portálu. Podporuje všechny operace značek prostřednictvím powershellu a rozhraní REST API.  
 
 Role [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) také uděluje požadovaný přístup k použití značek pro libovolnou entitu. Chcete-li použít značky pouze na jeden typ prostředku, použijte roli přispěvatele pro daný prostředek. Chcete-li například použít značky pro virtuální počítače, použijte [přispěvatele virtuálního počítače](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
@@ -28,7 +28,7 @@ Role [přispěvatele](../../role-based-access-control/built-in-roles.md#contribu
 
 ### <a name="apply-tags"></a>Použití značek
 
-Azure PowerShell nabízí dva příkazy pro použití značek – [New-AzTag](/powershell/module/az.resources/new-aztag) a [Update-AzTag](/powershell/module/az.resources/update-aztag). Abyste mohli používat tyto příkazy, musíte mít Azure PowerShell 3.6.1 nebo novější.
+Azure PowerShell nabízí dva příkazy pro použití značek – [New-AzTag](/powershell/module/az.resources/new-aztag) a [Update-AzTag](/powershell/module/az.resources/update-aztag). Musíte mít modul Az.Resources 1.12.0 nebo novější. Verzi můžete zkontrolovat `Get-Module Az.Resources`pomocí aplikace . Můžete nainstalovat tento modul nebo [nainstalovat Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 nebo novější.
 
 **New-AzTag** nahradí všechny značky na prostředek, skupinu prostředků nebo předplatné. Při volání příkazu předavte ID prostředku entity, kterou chcete označit.
 

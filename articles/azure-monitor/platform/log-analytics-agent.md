@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 1ca03cde57a9496054d0860fbb70bd286caabe46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533245"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520724"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Analýzy protokolů
 Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v libovolném cloudu, místních počítačích a v počítačích monitorovaných [system center operations managerem](https://docs.microsoft.com/system-center/scom/). Agenti Windows a Linuxu odesílají shromážděná data z různých zdrojů do pracovního prostoru Log Analytics ve službě Azure Monitor, stejně jako všechny jedinečné protokoly nebo metriky definované v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitoru, jako je [Azure Monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), Azure Security [Center](/azure/security-center/)a [Azure Automation](../../automation/automation-intro.md).
@@ -156,23 +156,27 @@ Agent systému Windows začne používat výhradně sha-2 podepisování května
 
 
 ## <a name="network-requirements"></a>Síťové požadavky
-Agent pro Linux a Windows komunikuje odchozí služby Azure Monitor přes port TCP 443 a pokud se počítač připojí přes bránu firewall nebo proxy server ke komunikaci přes Internet, zkontrolujte níže uvedené požadavky, abyste pochopili konfiguraci sítě Požadované. Pokud vaše zásady zabezpečení IT neumožňují počítačům v síti připojení k Internetu, můžete nastavit [bránu Log Analytics](gateway.md) a potom nakonfigurovat agenta pro připojení přes bránu k protokolům Azure Monitor. Agent pak může přijímat informace o konfiguraci a odesílat shromažďovaná data v závislosti na pravidlech shromažďování dat a řešeních monitorování, která jste povolili v pracovním prostoru.
+Agent pro Linux a Windows komunikuje odchozí služby Azure Monitor přes port TCP 443 a pokud se počítač připojí přes bránu firewall nebo proxy server ke komunikaci přes Internet, zkontrolujte požadavky níže pochopit požadovanou konfiguraci sítě. Pokud vaše zásady zabezpečení IT neumožňují počítačům v síti připojení k Internetu, můžete nastavit [bránu Log Analytics](gateway.md) a potom nakonfigurovat agenta pro připojení přes bránu k protokolům Azure Monitor. Agent pak může přijímat informace o konfiguraci a odesílat shromažďovaná data v závislosti na pravidlech shromažďování dat a řešeních monitorování, která jste povolili v pracovním prostoru.
 
 ![Diagram komunikace agenta analýzy protokolů](./media/log-analytics-agent/log-analytics-agent-01.png)
 
+V následující tabulce jsou uvedeny informace o konfiguraci serveru proxy a brány firewall, které jsou vyžadovány pro agenty Linuxu a Windows ke komunikaci s protokoly Azure Monitor.
 
-## <a name="network-firewall-requirements"></a>Požadavky na síťovou bránu firewall
-Níže uvedené informace uvádějí informace o konfiguraci serveru proxy a brány firewall, které jsou vyžadovány pro komunikaci s protokoly Azure Monitoru pro agenta Linuxu a Windows.  
+### <a name="firewall-requirements"></a>Požadavky brány firewall
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Přístav 443 |Odchozí|Ano |  
-|*.oms.opinsights.azure.com |Přístav 443 |Odchozí|Ano |  
-|*.blob.core.windows.net |Přístav 443 |Odchozí|Ano |  
+|*.ods.opinsights.azure.com |Přístav 443 |Příchozí a odchozí|Ano |  
+|*.oms.opinsights.azure.com |Přístav 443 |Příchozí a odchozí|Ano |  
+|*.blob.core.windows.net |Přístav 443 |Příchozí a odchozí|Ano |
+|*.azure-automation.net |Přístav 443 |Příchozí a odchozí|Ano |
+|*.azure.com |Přístav 443|Příchozí a odchozí|Ano |
 
 Informace o bráně firewall požadované pro Azure Government najdete v [tématu Správa Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
 Pokud plánujete použít pracovník hybridní sady Runbook Azure Automation pro připojení a registraci ke službě Automation a k použití runbooků nebo řešení pro správu ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v [části Konfigurace sítě pro pracovníka hybridní sady Runbook](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
+
+### <a name="proxy-configuration"></a>Konfigurace proxy serveru
 
 Agent Windows a Linux podporuje komunikaci prostřednictvím proxy serveru nebo brány Log Analytics do Azure Monitoru pomocí protokolu HTTPS.  Anonymní i základní ověřování (uživatelské jméno/heslo) jsou podporovány.  U agenta systému Windows připojeného přímo ke službě je konfigurace serveru proxy určena během instalace nebo [po nasazení](agent-manage.md#update-proxy-settings) z Ovládacích panelů nebo pomocí prostředí PowerShell.  
 

@@ -13,17 +13,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 054b5c7d13df39de4fa57167e0363c0b4acf9b08
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80280741"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521761"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: Zpracování událostí Apache Kafka pro event huby pomocí analýzy Stream 
 Tento článek ukazuje, jak streamovat data do centra událostí a zpracovat je pomocí Azure Stream Analytics. Provede vás následujícími kroky: 
 
-1. Vytvořte obor názvů Event Hubs s povoleným kafkem.
+1. Vytvořte obor názvů služby Event Hubs.
 2. Vytvořte klienta Kafka, který odesílá zprávy do centra událostí.
 3. Vytvořte úlohu Stream Analytics, která kopíruje data z centra událostí do úložiště objektů blob Azure. 
 
@@ -41,7 +41,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 * **Účet azure úložiště**. Pokud ho nemáte, [vytvořte si ho,](../storage/common/storage-account-create.md) než budete pokračovat dále. Úloha Stream Analytics v tomto návodu ukládá výstupní data v úložišti objektů blob Azure. 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs s podporou Kafka
+## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 Když vytvoříte obor názvů Centra událostí **standardní** vrstvy, koncový bod Kafka pro obor názvů je automaticky povolen. Můžete streamovat události z vašich aplikací, které používají protokol Kafka do centra událostí standardní úrovně. Postupujte podle podrobných pokynů v [centru vytváření událostí pomocí portálu Azure portal](event-hubs-create.md) k vytvoření oboru názvů Centra událostí na úrovni **úrovně.** 
 
 > [!NOTE]
@@ -185,7 +185,7 @@ V tomto článku jste se dozvěděli, jak streamovat do centra událostí bez zm
 
 - [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Vytvoření služby Event Hubs s podporou Kafka](event-hubs-create.md)
+- [Vytvoření centra událostí](event-hubs-create.md)
 - [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)

@@ -4,13 +4,15 @@ description: Přečtěte si, jak nakonfigurovat ověřování účtu Microsoft j
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: ea745aa00f8990a2d1232a19780fdc70e2f78996
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: a78208ba592f86400e9b06b15d8a76923dda736f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437967"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519883"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používala přihlášení k účtu Microsoft
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 04/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 79c23c49cbf3c869b41e5a2dbfc6ec0aaa93e4ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59453dbb9617f5a2ddbdca08709747b11a688560
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258171"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547090"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy k souborům Azure NetApp
 
@@ -144,6 +144,11 @@ Soubory Azure NetApp podporují verze služby Active Directory Domain Services p
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Proč dostupné místo v klientovi SMB nezobrazuje zřízenou velikost?
 
 Velikost svazku vykázaná klientem SMB je maximální velikost svazku souborů Azure NetApp, na kterou se může zvětšit. Velikost svazku Souborů Azure NetApp, jak je znázorněno na klientovi SMB, neodráží kvótu nebo velikost svazku. Velikost svazku nebo kvóty souborů Azure NetApp můžete získat prostřednictvím portálu Azure nebo rozhraní API.
+
+### <a name="does-azure-netapp-files-support-kerberos-encryption"></a>Podporuje soubory Azure NetApp šifrování protokolu Kerberos?
+
+Ano, ve výchozím nastavení podporují soubory Azure NetApp šifrování AES-128 i AES-256 pro přenos mezi službou a cílovými řadiči domény služby Active Directory. Požadavky [najdete v tématu Vytvoření svazku SMB pro soubory Azure NetApp.](azure-netapp-files-create-volumes-smb.md) 
+
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 

@@ -1,28 +1,23 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77179068"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547408"
 ---
 Použití spotových virtuálních měn vám umožní využít naši nevyužitou kapacitu s výraznými úsporami nákladů. Kdykoli v okamžiku, kdy Azure potřebuje kapacitu zpět, infrastruktura Azure vystěhovává virtuální počítače Spot. Virtuální počítače Spot jsou proto skvělé pro úlohy, které zvládnou přerušení, jako jsou úlohy dávkového zpracování, vývojová a testovací prostředí, velké výpočetní úlohy a další.
 
 Množství dostupné kapacity se může lišit v závislosti na velikosti, oblasti, denní době a dalších. Při nasazování virtuálních počítačů Spot Azure přidělí virtuální počítače, pokud je k dispozici kapacita, ale pro tyto virtuální počítače neexistuje žádná sla. Virtuální virtuální ms spot nenabízí žádné záruky vysoké dostupnosti. Kdykoli v okamžiku, kdy Azure potřebuje kapacitu zpět, infrastruktura Azure vystěhovává virtuální počítače Spot s oznámením 30 sekund. 
 
-> [!IMPORTANT]
-> Instance spotů jsou aktuálně ve verzi Public Preview.
-> Tato verze preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="eviction-policy"></a>Politika vystěhovaní
 

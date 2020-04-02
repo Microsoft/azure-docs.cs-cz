@@ -15,12 +15,12 @@ ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ba07a0b0d3be0366179bba14c786fafad8753dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280690"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545639"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -46,7 +46,7 @@ Následující tabulka obsahuje stručný popis a jedinečné ID každé předde
 > | [Přihlášení správce virtuálního počítače](#virtual-machine-administrator-login) | Zobrazit virtuální počítače na portálu a přihlásit se jako správce | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) | Umožňuje spravovat virtuální počítače, ale ne přístup k nim, a ne virtuální síť nebo účet úložiště, ke kterým jsou připojeni. | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [Přihlášení uživatele virtuálního počítače](#virtual-machine-user-login) | Zobrazit virtuální počítače na portálu a přihlásit se jako běžný uživatel. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **Síťové služby** |  |  |
+> | **Sítě** |  |  |
 > | [Přispěvatel koncového bodu CDN](#cdn-endpoint-contributor) | Může spravovat koncové body CDN, ale nemůže udělit přístup ostatním uživatelům. | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [Čtečka koncových bodů CDN](#cdn-endpoint-reader) | Můžete zobrazit koncové body CDN, ale nelze provést změny. | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [Přispěvatel profilu CDN](#cdn-profile-contributor) | Můžete spravovat profily CDN a jejich koncové body, ale nemůže udělit přístup ostatním uživatelům. | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -666,7 +666,7 @@ Zobrazit virtuální počítače na portálu a přihlásit se jako běžný uži
 }
 ```
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 
 ### <a name="cdn-endpoint-contributor"></a>Přispěvatel koncového bodu CDN
@@ -1093,7 +1093,7 @@ Umožňuje spravovat profily traffic manageru, ale neumožňuje řídit, kdo k n
 }
 ```
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 
 ### <a name="avere-contributor"></a>Přispěvatel Avere
@@ -4644,7 +4644,7 @@ Může spravovat služby, ale ne api
 > | Microsoft.ApiManagement/service/managedeployments/action | Změna skladové položky/jednotek, přidání nebo odebrání regionálních nasazení služby API Management Service |
 > | Microsoft.ApiManagement/service/read | Čtení metadat pro instanci služby api Management Service |
 > | Microsoft.ApiManagement/service/restore/action | Obnovení služby api management u zadaného kontejneru v účtu úložiště za předpokladu uživatele |
-> | Microsoft.ApiManagement/service/updatecertificate/action | Nahrání certifikátu SSL pro službu správy rozhraní API |
+> | Microsoft.ApiManagement/service/updatecertificate/action | Nahrání certifikátu TLS/SSL pro službu api Management Service |
 > | Microsoft.ApiManagement/service/updatehostname/action | Nastavení, aktualizace nebo odebrání vlastních názvů domén pro službu API Management Service |
 > | Microsoft.ApiManagement/service/write | Vytvořit nebo aktualizovat instanci služby api pro správu |
 > | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |

@@ -7,19 +7,19 @@ ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: c014ed2c25711677617d3bf8ff5d2f0f968a3b14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 180196f2c368207b76811700fd845406098600df
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80301041"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529440"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pomocí portálu Azure
 
 > [!div class="op_single_selector"]
 > * [Portál](customer-managed-keys-portal.md)
-> * [C #](customer-managed-keys-csharp.md)
-> * [Šablona Azure Resource Manageru](customer-managed-keys-resource-manager.md)
+> * [C#](customer-managed-keys-csharp.md)
+> * [Šablona Azure Resource Manager](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
@@ -46,7 +46,7 @@ Tento článek ukazuje, jak povolit šifrování klíčů spravovaných zákazn�
 
     ![Uložení klíče spravovaného zákazníkem](media/customer-managed-keys-portal/cmk-encryption-setting.png)
 
-Povolením klíčů spravovaných zákazníky pro cluster Azure Data Explorer vytvoříte systém přiřazenou identitu pro cluster, pokud neexistuje. Kromě toho budete poskytovat požadovaná oprávnění zobrazení clusteru Průzkumníka dat Azure ve vybraném trezoru klíčů a získáte vlastnosti trezoru klíčů. 
+Povolením klíčů spravovaných zákazníky pro cluster Azure Data Explorer vytvoříte systém přiřazenou identitu pro cluster, pokud neexistuje. Kromě toho budete poskytovat požadovaná oprávnění get, wrapKey a unwarpKey pro váš cluster Průzkumník dat Azure ve vybraném trezoru klíčů a získat vlastnosti trezoru klíčů. 
 
 > [!NOTE]
 > Chcete-li po vytvoření vybrat **možnost Vypnuto,** odeberte klíč spravovaný zákazníkem.

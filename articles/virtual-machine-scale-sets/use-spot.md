@@ -1,30 +1,25 @@
 ---
-title: Vytvoření škálovací sady, která používá virtuální počítače Azure Spot (Preview)
+title: Vytvoření škálovací sady, která používá virtuální počítače Azure Spot
 description: Zjistěte, jak vytvořit škálovací sady virtuálních strojů Azure, které používají virtuální počítače Spot k úspoře nákladů.
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 02/11/2020
+ms.topic: article
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162680"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545933"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Předběžná verze: Virtuální počítače Azure Spot pro škálovací sady virtuálních strojů 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure Spot pro škálovací sady virtuálních strojů 
 
 Použití Azure Spot na škálovacích sadách vám umožní využít naši nevyužitou kapacitu s výraznými úsporami nákladů. Kdykoli v okamžiku, kdy Azure potřebuje kapacitu zpět, infrastruktura Azure vystěhovává instance Spot. Instance Spot jsou proto skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojová a testovací prostředí, velké výpočetní úlohy a další.
 
 Množství dostupné kapacity se může lišit v závislosti na velikosti, oblasti, denní době a dalších. Při nasazování instancí Spot na škálovacísady Azure přidělí instanci pouze v případě, že je k dispozici kapacita, ale pro tyto instance neexistuje žádná sla. Škálovací sada Spot se nasadí v jedné doméně selhání a nenabízí žádné záruky vysoké dostupnosti.
 
-> [!IMPORTANT]
-> Instance spotů jsou aktuálně ve verzi Public Preview.
-> Tato verze preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="pricing"></a>Ceny
 
@@ -47,7 +42,7 @@ Uživatelé se můžou přihlásit k odběru oznámení ve virtuálním počíta
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Nasazení virtuálních virtuálních jevů ve škálovacích sadách
 
 Chcete-li nasadit virtuální virtuální počítači Spot ve škálovacích sadách, můžete nastavit nový příznak *Priority* na *bod .* Všechny virtuální počítače ve vaší škálovací sadě se nastaví na spot. Chcete-li vytvořit škálovací sadu pomocí virtuálních virtuálních měn Spot, použijte jednu z následujících metod:
-- [Portál Azure](#portal)
+- [portál Azure](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Šablony Azure Resource Manageru](#resource-manager-templates)
@@ -172,6 +167,5 @@ Chcete-li instanci odstranit po vyřazení, změňte `evictionPolicy` parametr n
 **A:** Svůj dotaz můžete zveřejnit `azure-spot` a označit na [q&A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste vytvořili škálovací sadu s virtuálními virtuálními aplikacemi Spot, zkuste nasadit naši [šablonu automatického škálování pomocí spotu](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri).
 
 Podívejte se na [stránku s cenami škálovací sady virtuálních strojů, kde](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) najdete podrobnosti o cenách.

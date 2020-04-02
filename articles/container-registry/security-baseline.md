@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2970ebf42acb87e93f8b827b3687b219da5867c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9225cfd9793a84f371387d6450a3dfa80ba74de3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244286"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547529"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Směrný plán zabezpečení Azure pro registr kontejnerů Azure
 
@@ -68,7 +68,6 @@ Chraňte své síťové prostředky:https://docs.microsoft.com/azure/security-ce
 Azure Security Center Just In Time Network přístup ke konfiguraci skupin y nsg omezit vystavení koncových bodů na schválené IP adresy po omezenou dobu. Pomocí azure security center adaptivní sítě k posílení zabezpečení můžete také doporučit konfigurace skupiny zabezpečení sítě, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb.
 
 Jak nakonfigurovat ochranu Před sdos:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Jak nasadit Bránu Azure Firewall:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 

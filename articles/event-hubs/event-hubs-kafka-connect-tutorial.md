@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 94b7ff7d240716b513ebb124de84b622866623d3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4d48e284abf61e0209c2fc8b80a2db97620edfcf
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80283612"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521817"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Podpora integrace připojení Apache Kafka ve službě Azure Event Hubs (Preview)
 Se zvyšujícími se obchodními požadavky na příjem dat se zvyšuje i potřeba příjmu dat z nejrůznějších externích zdrojů a jímek. [Připojení Apache Kafka](https://kafka.apache.org/documentation/#connect) poskytuje takovou architekturu pro připojení a import nebo export dat do nebo z jakéhokoli externího systému, jako je MySQL, HDFS a systém souborů, prostřednictvím clusteru Kafka. Tento kurz vás provede pomocí frameworku Kafka Connect s event huby.
@@ -44,7 +44,7 @@ Abyste mohli dokončit tento návod, ujistěte se, že máte následující:
 - Přečtěte si úvodní článek [Event Hubs pro Apache Kafka](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview).
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
-K odesílání do jakékoli služby Event Hubs a příjmu z ní se vyžaduje obor názvů služby Event Hubs. Pokyny k získání koncového bodu Event Hubs Kafka najdete v tématu [Vytvoření centra událostí s podporou Kafka](event-hubs-create.md). Získejte plně kvalifikovaný název domény a připojovací řetězec služby Event Hubs pro pozdější použití. Pokyny najdete v tématu [Získání připojovacího řetězce služby Event Hubs](event-hubs-get-connection-string.md). 
+K odesílání do jakékoli služby Event Hubs a příjmu z ní se vyžaduje obor názvů služby Event Hubs. Pokyny k vytvoření oboru názvů a centra událostí najdete v [tématu Vytvoření centra událostí.](event-hubs-create.md) Získejte plně kvalifikovaný název domény a připojovací řetězec služby Event Hubs pro pozdější použití. Pokyny najdete v tématu [Získání připojovacího řetězce služby Event Hubs](event-hubs-get-connection-string.md). 
 
 ## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 Naklonujte úložiště Azure Event Hubs a přejděte do podsložky tutorials/connect: 

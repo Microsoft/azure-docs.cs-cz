@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 99517e45892cd7a6167ae83ff3058edae1377b10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 95d943685cf511acb88f9e48d36a9dd43b0a27d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109560"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548006"
 ---
 # <a name="install-and-use-lightingest"></a>Instalace a použití LightIngest
 
@@ -22,6 +22,9 @@ Nástroj můžete vyžádat zdrojová data z místní složky nebo z kontejneru 
 ## <a name="prerequisites"></a>Požadavky
 
 * LightIngest – stáhněte si ji jako součást [balíčku Microsoft.Azure.Kusto.Tools NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)
+
+    ![Nejsvítivější stažení](media/lightingest/lightingest-download-area.png)
+
 * WinRAR - stáhnout z [www.win-rar.com/download.html](http://www.win-rar.com/download.html)
 
 ## <a name="install-lightingest"></a>Instalace LightIngest
@@ -44,16 +47,20 @@ Nástroj můžete vyžádat zdrojová data z místní složky nebo z kontejneru 
     >
     >![Nápověda k příkazovému řádku](media/lightingest/lightingest-cmd-line-help.png)
 
-1. Zadejte `LightIngest` následovaný připojovací řetězec do clusteru Azure Data Explorer, který bude spravovat ingestování.
+1. Zadejte `ingest-` následovaný připojovací řetězec do clusteru Azure Data Explorer, který bude spravovat ingestování.
     Připojovací řetězec uzavřete do dvojitých uvozovek a postupujte podle [specifikace připojovacích řetězců Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto).
 
     Například:
     ```
-    LightIngest "Data Source=https://{Cluster name and region}.kusto.windows.net;AAD Federated Security=True"  -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-* Doporučená metoda `LightIngest` je pro práci s cílovým `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`parametrem pro požití na adrese . Tímto způsobem služba Azure Data Explorer můžete spravovat zatížení přijím a můžete snadno obnovit z přechodných chyb. Můžete však také `LightIngest` nakonfigurovat pro přímou`https://{yourClusterNameAndRegion}.kusto.windows.net`práci s koncovým bodem motoru ( ).
-* Pro optimální výkon při ingestování je důležité, aby LightIngest `LightIngest` znal nezpracovaná data a odhadl tak nekomprimovanou velikost místních souborů. Však `LightIngest` nemusí být schopen správně odhadnout hrubou velikost komprimované objekty BLOB bez jejich první stažení. Proto při ingestování komprimovaných objektů `rawSizeBytes` BLOB nastavte vlastnost metadat objektů blob na nekomprimovanou velikost dat v bajtech.
+* Doporučená metoda je pro LightIngest pracovat s cílovým `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`parametrem požití na . Tímto způsobem služba Azure Data Explorer můžete spravovat zatížení přijím a můžete snadno obnovit z přechodných chyb. Můžete však také nakonfigurovat LightIngest pro práci`https://{yourClusterNameAndRegion}.kusto.windows.net`přímo s koncovým bodem motoru ( ).
+
+> [!Note]
+> Pokud ingestujete přímo s koncovým bodem motoru, nemusíte zahrnout `ingest-`, ale nebude existovat funkce DM k ochraně motoru a zlepšení úspěšnosti při ingestování.
+
+* Pro optimální výkon při ingestování je důležité, aby LightIngest znal nezpracovaná velikost dat, a tak LightIngest odhadne nekomprimovanou velikost místních souborů. LightIngest však nemusí být schopen správně odhadnout hrubou velikost komprimovaných objektů BLOB bez jejich prvního stažení. Proto při ingestování komprimovaných objektů `rawSizeBytes` BLOB nastavte vlastnost metadat objektů blob na nekomprimovanou velikost dat v bajtech.
 
 ## <a name="general-command-line-arguments"></a>Obecné argumenty příkazového řádku
 
@@ -66,7 +73,7 @@ Nástroj můžete vyžádat zdrojová data z místní složky nebo z kontejneru 
 |-prefix               |             |řetězec  |Nepovinné  |Když se zdrojová data ingestuje v úložišti objektů blob, tato předpona adresy URL je sdílena všemi objekty BLOB, s výjimkou názvu kontejneru. <br>Pokud jsou například data `MyContainer/Dir1/Dir2`v , měla `Dir1/Dir2`by být předpona . Doporučujese ohraničující v uvozovkách |
 |-vzor              |             |řetězec  |Nepovinné  |Vzorek, podle kterého jsou vyskladněny zdrojové soubory/objekty BLOB. Podporuje zástupné znaky. Například, `"*.csv"`. Doporučujeme uzavřete do dvojitých uvozovek |
 |-zipPattern           |             |řetězec  |Nepovinné  |Regulární výraz, který se má použít při výběru souborů v archivu ZIP k ingestování.<br>Všechny ostatní soubory v archivu budou ignorovány. Například `"*.csv"`. Doporučuje se ji obklopit v uvozovkách |
-|-formát               |-f           |řetězec  |Nepovinné  |Formát zdrojových dat. Musí být jeden z [podporovaných formátů.](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#supported-data-formats) |
+|-formát               |-f           |řetězec  |Nepovinné  |Formát zdrojových dat. Musí být jeden z [podporovaných formátů.](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) |
 |-ingestionMappingPath |-mappingPath |řetězec  |Nepovinné  |Cesta k souboru mapování sloupců ingestování (povinné pro formáty Json a Avro). Zobrazit [mapování dat](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-ingestionMappingRef  |-mappingRef  |řetězec  |Nepovinné  |Název předem vytvořeného mapování sloupců ingestování (povinné pro formáty Json a Avro). Zobrazit [mapování dat](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-creationTimePattern  |             |řetězec  |Nepovinné  |Když je nastavena, slouží k extrahování CreationTime vlastnost ze souboru nebo cesty objektu blob. Viz [Using CreationTimePattern argument](#using-creationtimepattern-argument) |
@@ -76,11 +83,17 @@ Nástroj můžete vyžádat zdrojová data z místní složky nebo z kontejneru 
 
 ### <a name="using-creationtimepattern-argument"></a>Použití argumentu CreationTimePattern
 
-Argument `-creationTimePattern` extrahuje Vlastnost CreationTime ze souboru nebo cesty k blob. Vzorek nemusí odrážet celou cestu položky, pouze oddíl, který obklopuje časové razítko, které chcete použít.
-Hodnota argumentu musí obsahovat tři části:
+Argument `-creationTimePattern` extrahuje Vlastnost CreationTime ze souboru nebo cesty k blob. Vzorek nemusí odrážet celou cestu k položce, pouze oddíl, který obklopuje časové razítko, které chcete použít.
+
+Hodnoty argumentů musí obsahovat:
 * Konstantní test bezprostředně předcházející časovému razítku, uzavřený v jednoduchých uvozovkách
 * Formát časového razítka ve [standardním zápisu DateTime .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
-* Konstantní text bezprostředně za časovým razítkem: Pokud například názvy objektů blob končí "historicalvalues19840101.parquet" (časové razítko je čtyři číslice pro rok, `-creationTimePattern` dvě číslice pro měsíc a dvě číslice pro den v měsíci), odpovídající hodnota argumentu je "historicalvalues'yyyyMmdd'.parquet".
+* Konstantní text bezprostředně za časovým razítkem. Pokud například názvy objektů `historicalvalues19840101.parquet` blob končí (časové razítko je čtyři číslice pro rok, dvě číslice pro měsíc a `-creationTimePattern` dvě číslice pro den v měsíci), odpovídající hodnota argumentu je:
+
+```
+ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+ -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+```
 
 ### <a name="command-line-arguments-for-advanced-scenarios"></a>Argumenty příkazového řádku pro pokročilé scénáře
 
@@ -96,7 +109,7 @@ Hodnota argumentu musí obsahovat tři části:
 |-devTrasování           |-stopa       |řetězec  |Nepovinné  |Pokud je nastaveno, diagnostické protokoly jsou zapsány do místního adresáře (ve výchozím nastavení, `RollingLogs` v aktuálním adresáři nebo mohou být změněny nastavením hodnoty přepínače) |
 
 ## <a name="blob-metadata-properties"></a>Vlastnosti metadat objektu Blob
-Při použití s objekty `LightIngest` BLOB Azure, použije určité vlastnosti metadat objektu blob rozšířit proces ingestování.
+Při použití s objekty BLOB Azure lightingest použije určité vlastnosti metadat objektu blob k rozšíření procesu ingestování.
 
 |Metadata, vlastnost                            | Využití                                                                           |
 |---------------------------------------------|---------------------------------------------------------------------------------|

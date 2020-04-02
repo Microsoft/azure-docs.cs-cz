@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a7ab79fe7ccfbf6d292b6ba7be58026955a06516
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239144"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519254"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Kurz: Vytvoření a konfigurace instance služby Azure Active Directory Domain Services s rozšířenými možnostmi konfigurace
 
 Služba Azure Active Directory Domain Services (Azure AD DS) poskytuje služby spravované domény, jako je připojení k doméně, zásady skupiny, ověřování LDAP, Kerberos/NTLM, které je plně kompatibilní se službou Active Directory systému Windows Server. Tyto služby domény spotřebováváte bez nutnosti nasazovat, spravovat a opravovat řadiče domény sami. Azure AD DS integruje s vaším stávajícím tenantem Azure AD. Tato integrace umožňuje uživatelům přihlásit pomocí jejich podnikových přihlašovacích údajů a můžete použít existující skupiny a uživatelské účty k zabezpečení přístupu k prostředkům.
 
-[Spravovanou doménu][tutorial-create-instance] můžete vytvořit pomocí výchozích možností konfigurace pro síť a synchronizaci nebo tato nastavení definovat ručně. Tento kurz ukazuje, jak definovat tyto pokročilé možnosti konfigurace k vytvoření a konfiguraci instance Azure AD DS pomocí portálu Azure.
+[Spravovanou doménu][tutorial-create-instance] můžete vytvořit pomocí výchozích možností konfigurace pro síť a synchronizaci nebo tato nastavení definovat ručně. Tento kurz ukazuje, jak definovat tyto rozšířené možnosti konfigurace k vytvoření a konfiguraci instance Azure AD DS pomocí portálu Azure.
 
 V tomto kurzu se naučíte:
 
@@ -90,7 +90,7 @@ Dokončete pole v okně *Základy* na webu Azure Portal a vytvořte instanci Slu
 1. Zadejte **název domény DNS** pro spravovanou doménu s přihlédnutím k předchozím bodům.
 1. Zvolte **umístění Azure,** ve kterém má být vytvořena spravovaná doména. Pokud zvolíte oblast, která podporuje zóny dostupnosti, prostředky Azure AD DS jsou distribuovány napříč zónami pro další redundanci.
 
-    Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby byla zajištěna odolnost proti chybám, jsou ve všech povolených oblastech minimálně tři samostatné zóny.
+    Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Kvůli odolnosti ve všech aktivovaných oblastech existují minimálně tři samostatné zóny.
 
     Není nic pro vás nakonfigurovat pro Azure AD DS distribuovat napříč zónami. Platforma Azure automaticky zpracovává zónovou distribuci prostředků. Další informace a dostupnost oblasti najdete v tématu [Co jsou zóny dostupnosti v Azure?][availability-zones]
 

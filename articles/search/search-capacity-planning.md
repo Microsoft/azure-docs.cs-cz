@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462560"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546268"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Úprava kapacity v Azure Cognitive Search
 
@@ -38,7 +38,8 @@ Jedna služba musí mít dostatek prostředků pro zpracování všech úloh (in
 
 Obecně platí, že vyhledávací aplikace mají tendenci potřebovat více replik než oddíly, zejména pokud jsou operace služby zkreslené směrem k úlohám dotazů. Část o [vysoké dostupnosti](#HA) vysvětluje proč.
 
-Přidání dalších replik nebo oddílů zvyšuje náklady na spuštění služby. Nezapomeňte zkontrolovat [cenovou kalkulačku,](https://azure.microsoft.com/pricing/calculator/) abyste pochopili důsledky pro fakturaci přidání dalších uzlů. [Níže uvedená tabulka](#chart) vám pomůže křížově odkazovat na počet vyhledávacích jednotek požadovaných pro určitou konfiguraci.
+> [!NOTE]
+> Přidání dalšírepliky nebo oddíly zvyšuje náklady na spuštění služby a může zavést mírné odchylky v pořadí výsledků. Nezapomeňte zkontrolovat [cenovou kalkulačku,](https://azure.microsoft.com/pricing/calculator/) abyste pochopili důsledky pro fakturaci přidání dalších uzlů. [Níže uvedená tabulka](#chart) vám pomůže křížově odkazovat na počet vyhledávacích jednotek požadovaných pro určitou konfiguraci. Další informace o tom, jak další repliky ovlivňují zpracování dotazů, naleznete [v tématu Řazení výsledků](search-pagination-page-layout.md#ordering-results).
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Jak přidělit repliky a oddíly
 

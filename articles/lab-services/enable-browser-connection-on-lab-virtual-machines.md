@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
-ms.openlocfilehash: 2ddc56c60c547bd4ce48d620a83fb79246762bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86304fc7776f49c999924b8609f2d26120cee372
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69642484"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549082"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Povolení připojení prohlížeče na virtuálních počítačích testovacího prostředí 
 
 DevTest Labs se integruje s [Azure Bastion](https://docs.microsoft.com/azure/bastion/), který umožňuje připojení k virtuálním počítačům prostřednictvím prohlížeče. Nejprve je třeba povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí.
 
-Jako vlastník testovacího prostředí můžete povolit přístup ke všem virtuálním počítačům testovacího prostředí prostřednictvím prohlížeče. Nepotřebujete dalšího klienta, agenta nebo software. Azure Bastion poskytuje zabezpečené a bezproblémové připojení RDP/SSH k vašim virtuálním počítačům přímo na portálu Azure přes SSL. Když se připojíte přes Azure Bastion, vaše virtuální počítače nepotřebují veřejnou IP adresu. Další informace najdete v tématu [Co je Azure Bastion?](../bastion/bastion-overview.md)
+Jako vlastník testovacího prostředí můžete povolit přístup ke všem virtuálním počítačům testovacího prostředí prostřednictvím prohlížeče. Nepotřebujete dalšího klienta, agenta nebo software. Azure Bastion poskytuje zabezpečené a bezproblémové připojení RDP/SSH k vašim virtuálním počítačům přímo na portálu Azure přes TLS. Když se připojíte přes Azure Bastion, vaše virtuální počítače nepotřebují veřejnou IP adresu. Další informace najdete v tématu [Co je Azure Bastion?](../bastion/bastion-overview.md)
 
 > [!NOTE]
 > Povolení připojení prohlížeče na virtuálních počítačích testovacího prostředí je ve verzi Preview.

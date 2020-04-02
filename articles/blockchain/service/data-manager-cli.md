@@ -1,15 +1,15 @@
 ---
 title: Konfigurace Správce dat blockchainu pomocí rozhraní Příkazového příkazového příkazu Azure – služba Azure Blockchain Service
 description: Vytvoření a správa správce blockchainových dat pro službu Azure Blockchain pomocí azure cli
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455936"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529593"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurace Blockchain Data Manageru s využitím Azure CLI
 
@@ -26,7 +26,7 @@ Chcete-li nakonfigurovat instanci Správce dat blockchainu, můžete:
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte nejnovější [azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) `az login`a přihlášení pomocí .
-* Kompletní [úvodní příručka: Připojení k síti konsorcia Azure Blockchain Service pomocí kódu Visual Studia](connect-vscode.md)
+* Kompletní [úvodní příručka: Pomocí kódu Visual Studia se můžete připojit k síti konsorcia Azure Blockchain Service](connect-vscode.md). Úroveň Azure Blockchain Service *Standard* se doporučuje při použití Správce dat blockchainu.
 * Vytvoření [tématu mřížky událostí](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Informace o [obslužných rutinách událostí v Azure Event Grid](../../event-grid/event-handlers.md)
 

@@ -5,18 +5,23 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: fasttrack-edit
-ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437944"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520683"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace ve službě Azure App Service a funkcích Azure
 
 > [!NOTE]
 > V současné době [azure active directory v2.0](../active-directory/develop/v2-overview.md) (včetně [MSAL)](../active-directory/develop/msal-overview.md)není podporována pro Azure App Service a Azure functions. Zkontrolujte, zda neobsahuje aktualizace.
+>
+> [!NOTE]
+> V současné době ASP.NET Core aktuálně nepodporuje vyplnění aktuálního uživatele funkcí Ověřování/autorizace.
 >
 
 Služba Azure App Service poskytuje integrovanou podporu ověřování a autorizace, takže můžete přihlašovat uživatele a přistupovat k datům zápisem minimálního nebo žádného kódu ve webové aplikaci, rozhraní RESTful API a mobilní back-endu a také [funkce Azure](../azure-functions/functions-overview.md). Tento článek popisuje, jak služba App Service pomáhá zjednodušit ověřování a autorizaci pro vaši aplikaci.
@@ -132,11 +137,17 @@ S touto možností nemusíte do aplikace psát žádný ověřovací kód. Jemn�
 > [!CAUTION]
 > Omezení přístupu tímto způsobem platí pro všechna volání do vaší aplikace, což nemusí být žádoucí pro aplikace, které chtějí veřejně dostupnou domovskou stránku, jako v mnoha jednostránkových aplikacích.
 
+> [!NOTE]
+> Ověřování/autorizace byla dříve označována jako Snadné ověření.
+>
+
 ## <a name="more-resources"></a>Další zdroje informací
 
 [Kurz: Ověření a autorizace uživatelů od konce ve službě Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Kurz: Ověření a autorizace uživatelů od konce ve službě Azure App Service pro Linux](containers/tutorial-auth-aad.md)  
 [Přizpůsobení ověřování a autorizace ve službě App Service](app-service-authentication-how-to.md)
+[.NET Core integrace Azure AppService EasyAuth (třetí strana)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+[Získání ověřování služby Azure App Service ve spolupráci s .NET Core (třetí strana)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Návody pro konkrétního poskytovatele:
 

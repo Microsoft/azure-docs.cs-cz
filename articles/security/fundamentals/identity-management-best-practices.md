@@ -3,7 +3,7 @@ title: Azure identity & doporučených postupů zabezpečení | Dokumenty spole�
 description: Tento článek obsahuje sadu osvědčených postupů pro správu identit a řízení přístupu pomocí integrovaných funkcí Azure.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: RKarlin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
-ms.author: barclayn
-ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73053344"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548462"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy správy identit a zabezpečení řízení přístupu v Azure
 
@@ -269,7 +269,7 @@ Vyhodnoťte účty, které jsou přiřazeny nebo způsobilé pro roli globální
 **Osvědčený postup**: Vyžadovat, aby všechny důležité účty správce byly bez hesla (upřednostňované) nebo vyžadovaly vícefaktorové ověřování.
 **Podrobnosti**: Pomocí [aplikace Microsoft Authenticator](/azure/active-directory/authentication/howto-authentication-phone-sign-in) se přihlaste k libovolnému účtu Azure AD bez použití hesla. Podobně jako [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification)používá Microsoft Authenticator ověřování založené na klíči k povolení pověření uživatele, které je svázané se zařízením a používá biometrické ověřování nebo PIN kód.
 
-Vyžadovat vícefaktorové ověřování Azure při přihlášení pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, správce privilegovaných rolí, správce Exchange Online a SharePoint Online Správce. Povolte [vícefaktorové ověřování pro své účty správců](/azure/active-directory/authentication/howto-mfa-userstates) a zajistěte, aby se uživatelé účtu správce zaregistrovali.
+Vyžadovat vícefaktorové ověřování Azure při přihlášení pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Povolte [vícefaktorové ověřování pro své účty správců](/azure/active-directory/authentication/howto-mfa-userstates) a zajistěte, aby se uživatelé účtu správce zaregistrovali.
 
 **Osvědčený postup**: Pro kritické účty správce, mít admin pracovní stanice, kde nejsou povoleny produkční úkoly (například procházení a e-mail). Tím ochráníte vaše účty správců před vektory útoku, které používají procházení a e-mail, a výrazně snížíte riziko závažného incidentu.
 **Detail**: Použijte pracovní stanici správce. Zvolte úroveň zabezpečení pracovní stanice:

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed8e5eaa0ff9b58f80473b052aacfb9f01d45055
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73690700"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529224"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k databázi SQL pomocí c a c++
 
@@ -28,7 +28,7 @@ Ujistěte se, že máte následující položky:
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). Chcete-li vytvořit a spustit tuto ukázku, je nutné nainstalovat součásti jazyka C++.
-* [Visual Studio Linux Vývoj](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e). Pokud vyvíjíte na Linuxu, musíte také nainstalovat rozšíření Visual Studio Linux.
+* [Visual Studio Linux Vývoj](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Pokud vyvíjíte na Linuxu, musíte také nainstalovat rozšíření Visual Studio Linux.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database a SQL Server na virtuálních počítačích
 Azure SQL je integrovaný na Microsoft SQL Serveru a je navržený tak, aby poskytoval vysoce dostupnost, výkonnou a škálovatelnou službu. Existuje mnoho výhod pro použití SQL Azure přes proprietární databáze spuštěné v místním prostředí. S SQL Azure nemusíte instalovat, nastavovat, udržovat nebo spravovat databázi, ale pouze obsah a strukturu databáze. Typické věci, které se obáváme s databázemi, jako je odolnost proti chybám a redundance, jsou zabudovány.

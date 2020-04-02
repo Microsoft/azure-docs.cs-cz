@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6dc902b6a26c175713381b4fce88934dca3f409e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e0339cf4431d3ed36f50b43134803079e30b101
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283578"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521740"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Použití Kafka MirrorMaker s Event Hubs pro Apache Kafka
 
-Tento kurz ukazuje, jak zrcadlit zprostředkovatele Kafka v centru událostí s povolenou Kafka pomocí Kafka MirrorMaker.
+Tento kurz ukazuje, jak zrcadlit zprostředkovatele Kafka v centru událostí pomocí Kafka MirrorMaker.
 
    ![Kafka MirrorMaker s rozbočovači událostí](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 ## <a name="introduction"></a>Úvod
 Jedním z hlavních aspektů moderních cloudových aplikací je možnost aktualizovat, vylepšovat a měnit infrastrukturu bez přerušení služby. Tento kurz ukazuje, jak centrum událostí a Kafka MirrorMaker můžete integrovat existující kanál Kafka do Azure "zrcadlení" vstupní datový proud Kafka ve službě Event Hubs. 
 
-Koncový bod Kafka centra událostí Azure umožňuje připojení k Azure Event Hubs pomocí protokolu Kafka (to znamená klientů Kafka). Provedením minimálních změn v aplikaci Kafka se můžete připojit k Azure Event Hubs a využívat výhod ekosystému Azure. Centra událostí s povolenou kafkou v současné době podporuje kafka verze 1.0 a novější.
+Koncový bod Kafka centra událostí Azure umožňuje připojení k Azure Event Hubs pomocí protokolu Kafka (to znamená klientů Kafka). Provedením minimálních změn v aplikaci Kafka se můžete připojit k Azure Event Hubs a využívat výhod ekosystému Azure. Event Hubs aktuálně podporuje Kafka verze 1.0 a novější.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,11 +56,11 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-K odesílání do jakékoli služby Event Hubs a příjmu z ní se vyžaduje obor názvů služby Event Hubs. Pokyny k získání koncového bodu Event Hubs Kafka najdete v tématu [Vytvoření centra událostí s podporou Kafka](event-hubs-create.md). Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
+K odesílání do jakékoli služby Event Hubs a příjmu z ní se vyžaduje obor názvů služby Event Hubs. Pokyny k vytvoření oboru názvů a centra událostí najdete v [tématu Vytvoření centra událostí.](event-hubs-create.md) Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
 
 ## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 
-Teď, když máte připojovací řetězec Event Hubs s povolenou Kafka, naklonujte `mirror-maker` centra událostí Azure pro úložiště Kafka a přejděte do podsložky:
+Teď, když máte připojovací řetězec Event Hubs, klonujte Azure Event Hubs `mirror-maker` pro úložiště Kafka a přejděte do podsložky:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -118,7 +118,7 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 
 Pokud chcete ověřit, že se události dostanou do centra událostí, přečtěte si statistiku příchozího přenosu dat na [webu Azure Portal](https://azure.microsoft.com/features/azure-portal/)nebo spusťte příjemce proti centru událostí.
 
-Při spuštění mirrormakeru jsou všechny události odeslané do zdrojového clusteru Kafka přijímány clusterem Kafka i zrcadlenou službou event hub uzly kafka. Pomocí MirrorMaker a event hubs Kafka koncový bod, můžete migrovat existující kanál Kafka do spravované služby Azure Event Hubs bez změny existujícího clusteru nebo přerušení probíhající tok dat.
+Při spuštění mirrormakeru jsou všechny události odeslané do zdrojového clusteru Kafka přijímány clusterem Kafka i zrcadleným centrem událostí. Pomocí MirrorMaker a event hubs Kafka koncový bod, můžete migrovat existující kanál Kafka do spravované služby Azure Event Hubs bez změny existujícího clusteru nebo přerušení probíhající tok dat.
 
 ## <a name="samples"></a>ukázky
 Podívejte se na následující ukázky na GitHubu:

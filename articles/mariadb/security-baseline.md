@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9cff47c61fc08305427b25f949884b1ef089fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca3a79b0d31cc18b8ff77f02ce4ce3d517d7a638
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289664"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548700"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Směrný plán zabezpečení Azure pro databázi Azure pro MariaDB
 
@@ -894,9 +894,9 @@ Jak zajistit ověřování trezoru klíčů se spravovanou identitou:https://doc
 
 **Pokyny:** Azure Database for MariaDB server aktuálně nepodporuje ověřování Azure Active Directory pro přístup k databázím.  Při vytváření databáze Azure pro server MariaDB zadáte pověření pro uživatele správce. Tento správce lze použít k vytvoření dalších uživatelů MariaDB.  
 
-Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají k přístupu k vašemu serveru Azure Database for MariaDB, použijte identitu spravované služby ve spojení s Azure Key Vault k ukládání a načítání přihlašovacích údajů pro Azure Database for MariaDB Server.  Ujistěte se, že je povoleno měkké odstranění trezoru klíčů.
+Pro virtuální počítače Azure nebo webové aplikace spuštěné ve službě Azure App Service, které se používají k přístupu k serveru Azure Database for MariaDB, použijte identitu spravované služby ve spojení s Azure Key Vault k ukládání a načítání přihlašovacích údajů pro azure databázi pro server MariaDB.  Ujistěte se, že je povoleno měkké odstranění trezoru klíčů.
 
-Pomocí spravovaných identit můžete poskytovat služby Azure s automaticky spravovanou identitou ve službě Azure Active Directory (AD). Spravované identity umožňuje ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně trezoru klíčů, bez pověření ve vašem kódu. Jak nakonfigurovat spravované https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmHow identity: integrace se spravovanými identitami Azure:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Pomocí spravovaných identit můžete poskytovat služby Azure s automaticky spravovanou identitou ve službě Azure Active Directory (AD). Spravované identity umožňuje ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně trezoru klíčů, bez pověření ve vašem kódu. Konfigurace spravovaných https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmidentit: . Jak integrovat s Azure Spravované https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identityidentity: .
 
 
 

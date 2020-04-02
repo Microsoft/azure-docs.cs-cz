@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71104970"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548986"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložení a konfigurace nastavení služby API Management pomocí Gitu
 
@@ -223,7 +223,7 @@ Konečné nastavení `$ref-policy`, mapuje na soubor globálních příkazů zá
 Složka `apis` obsahuje složku pro každé rozhraní API v instanci služby, která obsahuje následující položky.
 
 * `apis\<api name>\configuration.json`- toto je konfigurace rozhraní API a obsahuje informace o adrese URL back-endové služby a operacích. Jedná se o stejné informace, které by byly vráceny, `application/json` pokud byste měli volat Získat konkrétní rozhraní [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) s `export=true` ve formátu.
-* `apis\<api name>\api.description.html`- toto je popis ROZHRANÍ API `description` a odpovídá vlastnosti [entity API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\api.description.html`- toto je popis ROZHRANÍ API `description` a odpovídá vlastnosti [entity API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
 * `apis\<api name>\operations\`- tato `<operation name>.description.html` složka obsahuje soubory, které mapují na operace v API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost entity [operace](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) v rozhraní REST API.
 
 ### <a name="groups-folder"></a>složka skupiny

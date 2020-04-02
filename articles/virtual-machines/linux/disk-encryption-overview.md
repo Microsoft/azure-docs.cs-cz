@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250423"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548440"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Šifrování disku Azure pro virtuální počítače s Linuxem 
 
@@ -32,7 +32,7 @@ Základy Azure Disk Encryption for Linux se dozvíte během několika minut pomo
 
 ## <a name="supported-vms-and-operating-systems"></a>Podporované virtuální počítače a operační systémy
 
-### <a name="supported-vm-sizes"></a>Podporované velikosti virtuálních počítačů
+### <a name="supported-vms"></a>Podporované virtuální hody
 
 Virtuální počítače s Linuxem jsou dostupné v [řadě velikostí](sizes.md). Azure Disk Encryption není k dispozici na [základních virtuálních počítačích řady A](https://azure.microsoft.com/pricing/details/virtual-machines/series/)nebo na virtuálních počítačích, které nesplňují tyto minimální požadavky na paměť:
 
@@ -44,7 +44,9 @@ Virtuální počítače s Linuxem jsou dostupné v [řadě velikostí](sizes.md)
 
 Po dokončení procesu šifrování disku operačního systému na virtuálních počítačích s Linuxem lze virtuální počítač nakonfigurovat tak, aby běžel s menší pamětí. 
 
-Azure Disk Encryption je taky k dispozici pro virtuální počítače s úložištěm premium. 
+Azure Disk Encryption je taky k dispozici pro virtuální počítače s úložištěm premium.
+
+Azure Disk Encryption není k dispozici na [virtuálních počítačích generace 2](generation-2.md#generation-1-vs-generation-2-capabilities)a [Lsv2 řady](../lsv2-series.md)). Další výjimky najdete [v tématu Šifrování disku Azure: Nepodporované scénáře](disk-encryption-linux.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 

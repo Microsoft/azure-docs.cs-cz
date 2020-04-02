@@ -5,20 +5,20 @@ services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: lahugh
-ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.author: jushiman
+ms.openlocfilehash: 3e0552570d5bdb7f812852cd058710b833b7fdd4
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164045"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521338"
 ---
 # <a name="m-series"></a>Řada M
 
-Řada M nabízí vysoký počet virtuálních procesorů (až 128 virtuálních procesorů) a velké množství paměti (až 3,8 TiB). Je také ideální pro extrémně velké databáze nebo jiné aplikace, které těží z vysokého počtu virtuálních procesorů a velkého množství paměti. Velikosti řady M jsou založeny na procesoru Intel® Xeon® Procesor E7-8890 v3 při 2,50 GHz
+Řada M nabízí vysoký počet virtuálních procesorů (až 128 virtuálních procesorů) a velké množství paměti (až 3,8 TiB). Je také ideální pro extrémně velké databáze nebo jiné aplikace, které těží z vysokého počtu virtuálních procesorů a velkého množství paměti. Velikosti řady M jsou podporovány&reg; jak&reg; na procesoru Intel Xeon E7-8890 v3&reg; @&reg; 2.50GHz, tak na Intel Xeon Platinum 8280M 2.7GHz (Cascade Lake).
 
-Funkce virtuálního rozhraní M-series Intel® Technologie hyperthreadingu
+M-series VM funkce&reg; Intel Hyper-Threading technologie.
 
 ACU: 160–180
 

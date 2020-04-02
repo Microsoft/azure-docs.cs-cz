@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 4b10955a1d3b85acbcae109836bebc03ec04c72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d73bab76860abf3e9fa442dad44e1ddb66d147a3
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76279317"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519544"
 ---
 Azure poskytuje následující integrované role RBAC pro autorizaci přístupu k datům objektů blob a fronty pomocí Azure AD a OAuth:
 
@@ -24,6 +24,8 @@ Azure poskytuje následující integrované role RBAC pro autorizaci přístupu 
 - [Čtečka dat fronty úložiště:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader)Slouží k udělení oprávnění jen pro čtení frontám Azure.
 - [Procesor zpráv o datových zprávách fronty úložiště:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)Slouží k udělení oprávnění k náhledu, načtení a odstranění zpráv ve frontách úložiště Azure.
 - [Odesílatel datových zpráv fronty úložiště](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Slouží k udělení oprávnění k přidání zpráv ve frontách úložiště Azure.
+
+Podrobné informace o předdefinovaných rolích RBAC pro Azure Storage pro datové i prodministrované služby najdete v části **Úložiště** ve [integrovaných rolích Azure pro Azure RBAC](../articles/role-based-access-control/built-in-roles.md#storage). Další informace o různých typech rolí, které poskytují oprávnění v Azure, najdete v článku [Klasické role správce předplatného, role Azure RBAC a role Azure AD](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
 
 > [!NOTE]
 > Šíření rolí RBAC může trvat až pět minut.

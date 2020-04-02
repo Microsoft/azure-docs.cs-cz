@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů VMware pomocí serveru Azure Bac
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálohovat virtuální počítače VMware spuštěné na serveru VMware vCenter/ESXi.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273472"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529502"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí serveru Azure Backup Server
 
@@ -130,41 +130,52 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 
 ### <a name="role-permissions"></a>Oprávnění role
 
-| **Oprávnění pro uživatelský účet vCenter 6.5 a vyšší**        | **Oprávnění pro uživatelský účet vCenter 6.0**               | **Oprávnění pro uživatelský účet vCenter 5.5** |
-| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
-| Úložiště dat.Přidělit prostor                                      |                                                           |                                             |
-| Datastore.Procházet úložiště dat                                   | Úložiště dat.Přidělit prostor                                   | Síť.Přiřadit                              |
-| Datastore.Low-level operace se soubory                          | Globální.Správa vlastních atributů                           | Úložiště dat.Přidělit prostor                     |
-| Cluster úložiště dat. Konfigurace clusteru úložiště dat             | Global.Set vlastní atribut                               | VirtualMachine.Config.ChangeTracking        |
-| Metody Global.Disable                                       | Host.Local operace. Vytvoření virtuálního počítače              | VirtualMachine.State.RemoveSnapshot         |
-| Global.Enable metody                                        | Síťové. Přiřadit síť                                   | VirtualMachine.State.CreateSnapshot         |
-| Globální licence                                              | Zdrojů. Přiřazení virtuálního počítače do fondu prostředků         | VirtualMachine.Provisioning.DiskRandomRead  |
-| Událost Global.Log                                             | Virtuální počítač. Configuration.Add nový disk                | VirtualMachine.Interact.PowerOff            |
-| Globální.Správa vlastních atributů                              | Virtuální počítač. Konfigurace.Upřesnit                    | VirtualMachine.Inventory.Create             |
-| Global.Set vlastní atribut                                  | Virtuální počítač. Sledování změn na konfigurace.Disk        | VirtualMachine.Config.PřidatNewDisk            |
-| Síť.Přiřadit síť                                       | Virtuální počítač. Configuration.Host USB zařízení             | VirtualMachine.Config.HostUSBDevice         |
-| Zdrojů. Přiřazení virtuálního počítače do fondu prostředků            | Virtuální počítač. Konfigurační.Dotaz nevlastněných souborů         | VirtualMachine.Config.AdvancedConfig        |
-| Virtuální počítač. Configuration.Add nový disk                   | Virtuální počítač. Umístění configuration.Swapfile          | VirtualMachine.Config.SwapPlacement         |
-| Virtuální počítač. Konfigurace.Upřesnit                       | Virtuální počítač. Interaction.Power Off                     | Global.ManageCustomFields                   |
-| Virtuální počítač. Sledování změn na konfigurace.Disk           | Virtuální počítač. Zásob. Vytvořit nový                     |                                             |
-| Virtuální počítač. Konfigurační zapůjčení disku                     | Virtuální počítač. Zřizování.Povolit přístup k disku            |                                             |
-| Virtuální počítač. Konfigurace.Rozšíření virtuálního disku            | Virtuální počítač. Zajišťování. Povolit přístup k disku jen pro čtení |                                             |
-| Virtuální počítač. Úpravy operací hosta.Operace hosta | Virtuální počítač. Správa snímků. Vytvořit snímek       |                                             |
-| Virtuální počítač. Provádění operačního programu hosta.Host | Virtuální počítač. Správa snímků. Odebrat snímek       |                                             |
-| Virtuální počítač. Dotazy na operace hosta.Dotazy na operace hosta     |                                                           |                                             |
-| Virtuální počítač . Interakce. Připojení zařízení              |                                                           |                                             |
-| Virtuální počítač . Interakce. Správa hostovaného operačního systému podle Rozhraní VIX API |                                                           |                                             |
-| Virtuální počítač . Inventory.Register                          |                                                           |                                             |
-| Virtuální počítač . Zásoby.Odebrat                            |                                                           |                                             |
-| Virtuální počítač . Zřizování.Povolit přístup k disku              |                                                           |                                             |
-| Virtuální počítač . Zřizování.Povolit přístup k disku jen pro čtení    |                                                           |                                             |
-| Virtuální počítač . Zřizování.Povolit stahování virtuálních strojů |                                                           |                                             |
-| Virtuální počítač . Správa snímků. Vytvoření snímku        |                                                           |                                             |
-| Virtuální počítač . Správa snímků. Odebrat snímek         |                                                           |                                             |
-| Virtuální počítač . Správa snímků. Vrátit se ke snímku      |                                                           |                                             |
-| vApp.Add virtuální stroj                                     |                                                           |                                             |
-| vApp.Assign fond zdrojů                                    |                                                           |                                             |
-| vApp.Unregister                                              |                                                           |                                             |
+| **Oprávnění pro uživatelský účet vCenter 6.7**              | **Oprávnění pro uživatelský účet vCenter 6.5**             |
+| --------------------------------------------------------- | -------------------------------------------------------- |
+| Datastore.Přidělit místo                                  | Datastore.Přidělit místo                                 |
+| Událost Global.Log                                          | Událost Global.Log                                         |
+| Global.Manage vlastní atributy                           | Global.Manage vlastní atributy                          |
+| Síť.Přiřadit                                            | Síť.Přiřadit                                           |
+| Zdrojů. Přiřazení virtuálního počítače do fondu prostředků        | Zdrojů. Přiřazení virtuálního počítače do fondu prostředků       |
+| VirtualMachine.Configuration.AddNewDisk                   | VirtualMachine.Configuration.AddNewDisk                  |
+| VirtualMachine.Configuration. Přidání nebo odebrání zařízení       | VirtualMachine.Configuration. Přidání nebo odebrání zařízení      |
+| VirtualMachine.Configuration.Upřesnit                     | VirtualMachine.Configuration.Upřesnit                    |
+| VirtualMachine.Configuration.Přepnout sledování změn disku | VirtualMachine.Configuration.Disk Sledování změn       |
+| VirtualMachine.Configuration.Konfigurovat hostitelské zařízení USB   | VirtualMachine.Configuration.Host ZAŘÍZENÍ USB            |
+| VirtualMachine.Configuration.Query Unowned Files         | VirtualMachine.Configuration.Query Unowned Files        |
+| VirtualMachine.Configuration.Change Umístění odkládacího souboru   | Umístění virtualmachine.configuration.swapového souboru         |
+| VirtualMachine.Interaction.Power Off                      | VirtualMachine.Interaction.Power Off                     |
+| VirtualMachine.Inventory.Vytvořit nový                       | VirtualMachine.Inventory.Vytvořit nový                      |
+| VirtualMachine.Provisioning.Povolit přístup k disku            | VirtualMachine.Provisioning.Povolit přístup k disku           |
+| VirtualMachine.Provisioning.Povolit přístup k souborům            | VirtualMachine.Provisioning.Povolit přístup k souborům           |
+| VirtualMachine.Provisioning.Povolit přístup k disku jen pro čtení  | VirtualMachine.Provisioning.Povolit přístup k disku jen pro čtení |
+| VirtualMachine.Snapshot Management.Create Snímek       | VirtualMachine.Snapshot Management.Create Snímek      |
+| VirtualMachine.Snapshot Management.Remove Snímek       | VirtualMachine.Snapshot Management.Remove Snímek      |
+
+<br>
+
+| **Oprávnění pro uživatelský účet vCenter 6.0**                | **Oprávnění pro uživatelský účet vCenter 5.5** |
+| ---------------------------------------------------------- | ------------------------------------------- |
+| Úložiště dat.Přidělit prostor                                    | Síť.Přiřadit                              |
+| Globální.Správa vlastních atributů                           | Úložiště dat.Přidělit prostor                     |
+| Global.Set vlastní atribut                               | VirtualMachine.Config.ChangeTracking        |
+| Host.Local operace. Vytvoření virtuálního počítače              | VirtualMachine.State.RemoveSnapshot         |
+| Síťové.  Přiřadit síť                                   | VirtualMachine.State.CreateSnapshot         |
+| Zdrojů.  Přiřazení virtuálního počítače do fondu prostředků         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Virtuální počítač. Configuration.Add nový disk                | VirtualMachine.Interact.PowerOff            |
+| Virtuální počítač. Konfigurace.Upřesnit                    | VirtualMachine.Inventory.Create             |
+| Virtuální počítač. Sledování změn na konfigurace.Disk        | VirtualMachine.Config.PřidatNewDisk            |
+| Virtuální počítač. Configuration.Host USB zařízení             | VirtualMachine.Config.HostUSBDevice         |
+| Virtuální počítač. Konfigurační.Dotaz nevlastněných souborů         | VirtualMachine.Config.AdvancedConfig        |
+| Virtuální počítač. Umístění configuration.Swapfile          | VirtualMachine.Config.SwapPlacement         |
+| Virtuální počítač. Interaction.Power Off                     | Global.ManageCustomFields                   |
+| Virtuální počítač. Zásob. Vytvořit nový                     |                                             |
+| Virtuální počítač. Zřizování.Povolit přístup k disku            |                                             |
+| Virtuální počítač. Zajišťování. Povolit přístup k disku jen pro čtení |                                             |
+| Virtuální počítač. Správa snímků. Vytvořit snímek       |                                             |
+| Virtuální počítač. Správa snímků. Odebrat snímek       |                                             |
+
+
 
 ## <a name="create-a-vmware-account"></a>Vytvoření účtu VMware
 

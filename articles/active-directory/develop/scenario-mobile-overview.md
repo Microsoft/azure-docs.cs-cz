@@ -1,6 +1,6 @@
 ---
 title: Vytvoření mobilní aplikace, která volá webová api | Azure
-titleSuffix: Microsoft identity platform
+titleSuffix: Microsoft identity platform | Azure
 description: Přečtěte si, jak vytvořit mobilní aplikaci, která volá webová API (přehled)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6675d67299091325fcc3e12572a906716bf5b88d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acd44298e401aabaef03f5ddd84f37f32a3d8bcd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77132423"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546092"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: Mobilní aplikace, která volá webová api
 
@@ -53,13 +53,14 @@ Důležité informace o mobilních aplikacích:
 - **Uživatelské prostředí je klíčové**: Umožněte uživatelům zobrazit hodnotu vaší aplikace, než požádáte o přihlášení. Požádejte pouze o požadovaná oprávnění.
 - **Podpora všech konfigurací uživatelů**: Mnoho mobilních podnikových uživatelů musí dodržovat zásady podmíněného přístupu a zásady dodržování předpisů zařízení. Ujistěte se, že podporujete tyto klíčové scénáře.
 - **Implementujte jednotné přihlašování (SSO):** Pomocí platformy MSAL a Microsoft identitmůžete povolit jednotné přihlašování prostřednictvím prohlížeče zařízení nebo Microsoft Authenticator (a Portál společnosti Intune v systému Android).
+- **Implementovat režim sdíleného zařízení**: Povolte použití aplikace ve scénářích se sdílenými zařízeními, například v nemocnicích, výrobě, maloobchodu a financích. [Přečtěte si další informace o podpoře režimu sdíleného zařízení](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Specifika
 
 Při vytváření mobilní aplikace na platformě identit Microsoftu mějte na paměti následující důležité informace:
 
 - V závislosti na platformě může být při prvním přihlášení uživatelů vyžadována určitá interakce s uživatelem. Například iOS vyžaduje, aby aplikace zobrazovat interakci uživatele při jejich prvním použití přiřazovat služby zabezpečení poprvé prostřednictvím Microsoft Authenticator (a Intune portál společnosti v systému Android).
-- V systémech iOS a Android může služba MSAL k přihlášení uživatelů používat externí prohlížeč. Externí prohlížeč se může zobrazit v horní části aplikace. Místo toho můžete přizpůsobit konfiguraci tak, aby používala webová zobrazení v aplikaci.
+- V systémech iOS a Android může služba MSAL k přihlášení uživatelů používat externí prohlížeč. Externí prohlížeč se může zobrazit v horní části aplikace.
 - Nikdy nepoužívejte tajný klíč v mobilní aplikaci. V těchto aplikacích jsou tajné klíče přístupné všem uživatelům.
 
 ## <a name="next-steps"></a>Další kroky

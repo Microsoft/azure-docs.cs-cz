@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b344886e89a10a027cba169e92056a6dda443d8d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421942"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548321"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace zprostředkovatele prostředků Azure Resource Manager
 
@@ -332,7 +332,7 @@ Služba Azure: [Správa rozhraní API](../api-management/index.yml)
 > | Akce | Microsoft.ApiManagement/service/read | Čtení metadat pro instanci služby api Management Service |
 > | Akce | Microsoft.ApiManagement/service/delete | Odstranit instanci služby správy rozhraní API |
 > | Akce | Microsoft.ApiManagement/service/updatehostname/action | Nastavení, aktualizace nebo odebrání vlastních názvů domén pro službu API Management Service |
-> | Akce | Microsoft.ApiManagement/service/updatecertificate/action | Nahrání certifikátu SSL pro službu správy rozhraní API |
+> | Akce | Microsoft.ApiManagement/service/updatecertificate/action | Nahrání certifikátu TLS/SSL pro službu api Management Service |
 > | Akce | Microsoft.ApiManagement/service/backup/action | Služba zálohování rozhraní API pro správu určeného kontejneru v uživatelském účtu úložiště |
 > | Akce | Microsoft.ApiManagement/service/restore/action | Obnovení služby api management u zadaného kontejneru v účtu úložiště za předpokladu uživatele |
 > | Akce | Microsoft.ApiManagement/service/managedeployments/action | Změna skladové položky/jednotek, přidání nebo odebrání regionálních nasazení služby API Management Service |

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435910"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521422"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Funkce Centra zabezpečení (Červenec 2019)
 
@@ -169,7 +169,7 @@ Pokud máte existující připojená řešení, doporučujeme přejít na Azure 
 
 Azure Security Center monitoruje konfiguraci zabezpečení tím, že pro posílení operačního systému uplatní sadu [více než 150 doporučených pravidel](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Tato pravidla se týkající se brány firewall, auditování, zásad hesel a další. Pokud se na počítači zjistí zranitelná konfigurace, Security Center vygeneruje doporučení k zabezpečení. [Obrazovka Upravit konfiguraci zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umožňuje zákazníkům přizpůsobit výchozí konfiguraci zabezpečení operačního systému v Centru zabezpečení.
 
-Tuto funkci náhledu jsme vyřazeni. Chcete-li obnovit konfigurace zabezpečení zpět na výchozí hodnoty po datu vyřazení, učiňte tak prostřednictvím rozhraní API nebo prostředí Powershell [podle následujících pokynů](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization).
+Tuto funkci náhledu jsme vyřazeni. Chcete-li obnovit konfigurace zabezpečení zpět na výchozí hodnoty po datu vyřazení, učiňte tak prostřednictvím rozhraní API nebo prostředí Powershell [podle následujících pokynů](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization).
 
 ![Úpravy konfigurací zabezpečení][17]
 

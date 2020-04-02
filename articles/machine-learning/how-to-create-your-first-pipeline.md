@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283599"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549299"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytváření a spouštění kanálů strojového učení pomocí Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Kanály ML, které vytvoříte, jsou viditelné pro členy [pracovního prostoru
 
 Ml kanály používají vzdálené výpočetní cíle pro výpočet a ukládání zprostředkující a konečná data spojená s tímto kanálem. Můžou číst a zapisovat data do a z podporovaných umístění [Azure Storage.](https://docs.microsoft.com/azure/storage/)
 
-Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree).
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -118,7 +118,7 @@ output_data1 = PipelineData(
 
 Pokud máte tabulková data uložená v souboru nebo sadě souborů, `DataReference` [tabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) je efektivní alternativou k . `TabularDataset`objekty podporují správu verzí, rozdíly a souhrnné statistiky. `TabularDataset`s jsou líně vyhodnocovány (jako Python generátory) a je efektivní je podmnožinou rozdělením nebo filtrováním. Třída `FileDataset` poskytuje podobná líně vyhodnocovaná data představující jeden nebo více souborů. 
 
-Můžete vytvořit `TabularDataset` pomocí metody, jako [je from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-).
+Můžete vytvořit `TabularDataset` pomocí metody, jako [je from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
 
 ```python
 from azureml.data import TabularDataset

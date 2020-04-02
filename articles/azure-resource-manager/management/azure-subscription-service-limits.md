@@ -3,12 +3,12 @@ title: Limity a kvóty předplatného Azure
 description: Obsahuje seznam běžných omezení předplatného a služeb Azure, kvót a omezení. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximální hodnoty.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 325f7b3d03435945779c1f42e13681dcfd9604b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 397d6a719f64a49208e651469fab9cf841ccd4ad
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334659"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521355"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Omezení předplatného a služeb Azure, kvóty a omezení
 
@@ -244,7 +244,11 @@ V následující tabulce jsou uvedeny funkce a omezení [úrovní služeb](../..
 
 ## <a name="media-services-limits"></a>Omezení mediálních služeb
 
-[!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
+[!INCLUDE [azure-mediaservices-limits](../../../includes/media-servieces-limits-quotas-constraints.md)]
+
+### <a name="media-services-v2-legacy"></a>Media Services v2 (starší verze)
+
+Omezení specifická pro media services v2 (starší verze) viz [Media Services v2 (starší verze)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
 
 ## <a name="mobile-services-limits"></a>Limity pro mobilní služby
 

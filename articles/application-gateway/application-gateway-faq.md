@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411016"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544510"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se brány aplikace
 
@@ -112,7 +112,15 @@ Většina nasazení, které používají v2 Skladové položky trvat přibližn�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Můžu použít Exchange Server jako back-end s aplikační bránou?
 
-Ne. Aplikační brána nepodporuje e-mailové protokoly, jako je SMTP, IMAP a POP3. 
+Ne. Aplikační brána nepodporuje e-mailové protokoly, jako je SMTP, IMAP a POP3.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici pokyny pro migraci z skladové položky v1 do sku v2?
+
+Ano. Podrobnosti najdete v [tématu Migrace brány aplikací Azure a brány firewall webových aplikací z v1 na 2](migrate-v1-v2.md).
+
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Bude aplikační brána v1 skladová položka nadále podporována?
+
+Ano. Skladová položka brány aplikace v1 bude nadále podporována. Důrazně se však doporučuje přejít na v2, abyste využili výhod aktualizací funkcí v této skladové jednotce. Další informace naleznete [v tématu Automatické škálování a zónově redundantní aplikační brána v2](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="performance"></a>Výkon
 
@@ -203,10 +211,6 @@ Ano. Viz [omezení přístupu k určitým zdrojovým IP adresy](https://docs.mic
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Mohu použít stejný port pro veřejné i soukromé posluchače?
 
 Ne.
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici pokyny pro migraci z skladové položky v1 do sku v2?
-
-Ano. Podrobnosti najdete v [tématu Migrace brány aplikací Azure a brány firewall webových aplikací z v1 na 2](migrate-v1-v2.md).
 
 ### <a name="does-application-gateway-support-ipv6"></a>Podporuje aplikační brána iPv6?
 
@@ -329,10 +333,6 @@ Další informace naleznete v tématu [OWASP top-10 chyb zabezpečení](https://
 ### <a name="does-waf-support-ddos-protection"></a>Podporuje WAF ochranu DDoS?
 
 Ano. Můžete povolit ochranu DDoS ve virtuální síti, kde se nasadí aplikační brána. Toto nastavení zajišťuje, že služba Azure DDoS Protection také chrání virtuální IP (VIP) brány aplikace.
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici pokyny pro migraci z skladové položky v1 do sku v2?
-
-Ano. Podrobnosti najdete v [tématu Migrace brány aplikací Azure a brány firewall webových aplikací z v1 na 2](migrate-v1-v2.md).
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfigurace - řadič příchozího přenosu dat pro AKS
 

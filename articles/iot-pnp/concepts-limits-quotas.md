@@ -3,16 +3,16 @@ title: Omezení a kvóty IoT Plug and Play Preview | Dokumenty společnosti Micr
 description: Seznamte se s omezeními, kvótami a omezeními, které platí při použití náhledu IoT Plug and Play.
 author: miagdp
 ms.author: miag
-ms.date: 12/26/2019
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531373"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518173"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Limity, kvóty a omezení náhledu ioT Plug and Play
 
@@ -27,7 +27,7 @@ Pro verzi Public Preview platí pro centrum IoT následující omezení a kvóty
 | Počet modelů schopností zařízení (DCM) nebo rozhraní, která lze zaregistrovat na rozbočovač | 1 500 ||
 | Maximální počet rozhraní, která lze zaregistrovat na zařízení | 40 ||
 | Maximální počet DCM, které lze zaregistrovat na zařízení | 1 ||
-| Maximální velikost souboru rozhraní/DCM | 512 znaků ||
+| Maximální velikost souboru rozhraní/DCM | 512 kB ||
 | Maximální velikost názvu rozhraní | 256 znaků ||
 | Maximální velikost názvu vlastnosti  | 64 bajtů, 7 úrovní do hloubky (a první úroveň je vyhrazena pro) `$iotin` | Povolené znaky: a-z, A-Z, 0-9 (ne jako první znak) a podtržítko. |
 | Maximální velikost hodnoty vlastnosti | 512 bajtů ||
@@ -39,7 +39,7 @@ Pro verzi Public Preview platí pro centrum IoT následující omezení a kvóty
 
 Pro verzi Public Preview platí pro úložiště modelu následující omezení a kvóty:
 
-| Limity, omezení a omezení| Hodnota |
+| Limity, omezení a omezení | Hodnota |
 |-----|-----|
 | Počet úložišť firemních modelů na klienta Služby Azure Active Directory | 1 |
 | Počet autorizačních klíčů na úložiště modelu | 10  |

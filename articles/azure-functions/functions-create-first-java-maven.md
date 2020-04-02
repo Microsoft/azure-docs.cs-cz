@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d0f30272a4e605449c946ca402db4f3ba00735bc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136863"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520540"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Úvodní příručka: Vytvoření a publikování funkce do Azure pomocí Javy a Maven/Gradle
 
@@ -67,13 +67,10 @@ Maven vás požádá o hodnoty potřebné k dokončení generování projektu p�
 | **artefaktId** | Hodnota, která je názvem nádoby bez čísla verze. Příklady v tomto rychlém `fabrikam-functions`startu použití . |
 | **Verze** | Zvolte výchozí `1.0-SNAPSHOT`hodnotu aplikace . |
 | **Balíček** | Hodnota, která je balíček Java pro kód generované funkce. Použijte výchozí hodnotu. Příklady v tomto rychlém `com.fabrikam.functions`startu použití . |
-| **Appname** | Globálně jedinečný název, který identifikuje vaši novou aplikaci funkcí v Azure. Použijte výchozí, což je _artefaktId_ připojený s náhodným číslem. Poznamenejte si tuto hodnotu, budete ji potřebovat později. |
-| **appRegion** | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. Výchozí formát je `westus`. Spusťte tento příkaz [k příkazu KONS Azure] a získejte seznam všech oblastí:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **skupina prostředků** | Název pro novou [skupinu prostředků,](../azure-resource-manager/management/overview.md) ve které chcete vytvořit aplikaci funkce. Použití `myResourceGroup`, který se používá příklady v tomto rychlém startu. Skupina prostředků musí být jedinečná pro vaše předplatné Azure.|
 
 Potvrďte to toto `Y` příkazem nebo stisknutím klávesy Enter.
 
-Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, což v tomto příkladu je `fabrikam-functions`. Chcete-li změnit adresář na vytvořenou složku projektu, spusťte následující příkaz.
+Maven vytvoří soubory projektu v nové složce s názvem **artifactId**, což v tomto příkladu je `fabrikam-functions`. Chcete-li změnit adresář na vytvořenou složku projektu, spusťte následující příkaz.
 ```bash
 cd fabrikam-function
 ```
@@ -236,4 +233,4 @@ Vytvořili jste projekt funkcí jazyka Java s funkcí spouštěnou protokolem HT
 
 
 [Azure CLI]: /cli/azure
-[Portál Azure]: https://portal.azure.com
+[portál Azure]: https://portal.azure.com

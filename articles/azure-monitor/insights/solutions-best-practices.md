@@ -1,17 +1,17 @@
 ---
-title: Řešení pro správu v doporučených postupech Azure | Dokumenty společnosti Microsoft
-description: ''
+title: Řešení pro správu v doporučených postupech Azure
+description: V tomto článku se dozvíte tipy pro vytvoření souboru řešení pro správu. Přečtěte si, jak pracovat se zdroji dat, runbooky, zobrazeními a výstrahami.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663194"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548166"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Doporučené postupy pro vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]

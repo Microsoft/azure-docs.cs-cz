@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: 7b9ef32f16369bbb6c5bb69ef500ec8bb90fde20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88b37ea4ff717689f05afbb41d33a56a8cbb2c22
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370844"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547623"
 ---
 # <a name="lab-account-setup-guide"></a>Průvodce nastavením účtu lab
 
@@ -90,7 +90,7 @@ Jakmile porozumíte požadavkům na účet testovacího prostředí, jste připr
    - [Skupina prostředků](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
    - [Laboratorní účet](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
    - [Učebna Lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
-   - [Výběr oblasti\Umístění](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regions-or-locations)
+   - [Výběr oblasti\Umístění](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
    - [Pokyny pro pojmenování pro zdroje](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
 2. **Přidání uživatelů do role Tvůrce testovacího prostředí**

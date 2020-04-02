@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit trezory služby Recover
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: e722996f516d21445d8e0028df925ca44eb02bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38f23ee458845b92c04af47307a2411b26c8ac81
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295014"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529387"
 ---
 # <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -90,6 +90,7 @@ Pro tento proces existují cenové důsledky, jak je na úrovni úložiště.
 >- Zkontrolujte [matici podpory](backup-support-matrix.md#cross-region-restore) pro seznam podporovaných spravovaných typů a oblastí.
 >- Funkce Obnovení mezi oblastmi (CRR) je v současné době k dispozici pouze v následujících oblastech: 
 >    - USA – středozápad
+>    - USA – západ
 >    - USA – západ 2
 >    - USA – středojih
 >    - USA – východ
@@ -101,11 +102,14 @@ Pro tento proces existují cenové důsledky, jak je na úrovni úložiště.
 >    - Austrálie – jihovýchod
 >    - Indie – střed
 >    - Indie – jih
+>    - Indie – západ
 >    - Japonsko – východ
 >    - Japonsko – západ
 >    - Jihovýchodní Asie
 >    - Spojené království – jih
 >    - Spojené království – západ
+>    - Západní Evropa
+>    - Severní Evropa
 >    - Francie – střed
 >    - Jižní Korea – střed
 >    - Jižní Korea – jih

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368058"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546239"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka pro operace správy ověřování Azure a služby Active Directory
 
@@ -101,7 +101,7 @@ Pokud vaše místní organizace chybí strategie odolnosti proti výpadku nebo m
 
 ![tok synchronizace hash hesel](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Informace o možnostech ověřování najdete v [tématu Výběr správné metody ověřování pro řešení hybridní identity služby Azure Active Directory](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+Informace o možnostech ověřování najdete v [tématu Výběr správné metody ověřování pro řešení hybridní identity služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn).
 
 ### <a name="programmatic-usage-of-credentials"></a>Programové použití pověření
 
@@ -115,7 +115,7 @@ Společnost Microsoft také doporučuje kontaktovat vlastníky aplikací, abyste
 
 ### <a name="on-premises-authentication"></a>Místní ověřování
 
-Federované ověřování s integrovaným ověřováním systému Windows (IWA) nebo bezproblémovým ověřováním jednotného přihlašování (SSO) spravovaným ověřováním pomocí synchronizace hash nebo předávacího ověřování hesla je nejlepší uživatelské prostředí, když je v podnikové síti zorného pole místním řadičům domény. Minimalizuje únavu z výzvy k zadání pověření a snižuje riziko, že se uživatelé stanou kořistí phishingových útoků. Pokud již používáte cloudové ověřování s PHS nebo PTA, ale uživatelé stále potřebují zadat své heslo při ověřování v místním prostředí, měli byste okamžitě [nasadit bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso). Na druhou stranu pokud jste aktuálně federovány s plány nakonec migrovat na ověřování spravované cloudem, pak byste měli implementovat bezproblémové jednotné přihlašování jako součást projektu migrace.
+Federované ověřování s integrovaným ověřováním systému Windows (IWA) nebo bezproblémovým ověřováním jednotného přihlašování (SSO) se spravovaným ověřováním pomocí synchronizace hash nebo předávacího ověřování hesla je nejlepší uživatelské prostředí v podnikové síti s místními řadiči domény. Minimalizuje únavu z výzvy k zadání pověření a snižuje riziko, že se uživatelé stanou kořistí phishingových útoků. Pokud již používáte cloudové ověřování s PHS nebo PTA, ale uživatelé stále potřebují zadat své heslo při ověřování v místním prostředí, měli byste okamžitě [nasadit bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso). Na druhou stranu pokud jste aktuálně federovány s plány nakonec migrovat na ověřování spravované cloudem, pak byste měli implementovat bezproblémové jednotné přihlašování jako součást projektu migrace.
 
 ### <a name="device-trust-access-policies"></a>Zásady přístupu k důvěryhodnosti zařízení
 
@@ -230,11 +230,11 @@ Pokud už vlastníte licence Azure AD Premium P2, které podporují použití ri
 
 Microsoft Intune Application Management (MAM) poskytuje možnost nabízení ovládacích prvků ochrany dat, jako je šifrování úložiště, PIN, vyčištění vzdáleného úložiště atd., do kompatibilních klientských mobilních aplikací, jako je Outlook Mobile. Kromě toho lze vytvořit zásady podmíněného přístupu, které [omezí přístup ke](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) cloudovým službám, jako je Exchange Online, ze schválených nebo kompatibilních aplikací.
 
-Pokud vaši zaměstnanci nainstalují aplikace podporující MAM, jako jsou mobilní aplikace Office, pro přístup k podnikovým prostředkům, jako je Exchange Online nebo SharePoint Online, a vy také podporujete BYOD (přineste si vlastní zařízení), doporučujeme nasadit zásady aplikace MAM pro správu konfigurace aplikace v osobně vlastněných zařízeních bez registrace MDM a potom aktualizujte zásady podmíněného přístupu tak, aby umožňovaly přístup pouze od klientů podporujících mam.
+Pokud vaši zaměstnanci instalují aplikace podporující MAM, jako jsou mobilní aplikace Office, pro přístup k podnikovým prostředkům, jako je Exchange Online nebo SharePoint Online, a vy také podporujete BYOD (přineste si vlastní zařízení), doporučujeme nasadit zásady aplikace MAM pro správu konfigurace aplikace v osobně vlastněných zařízeních bez registrace MDM a pak aktualizovat zásady podmíněného přístupu tak, aby umožňovaly přístup pouze od klientů podporujících MAM.
 
 ![Řízení udělení podmíněného přístupu](./media/active-directory-ops-guide/active-directory-ops-img12.png)
 
-Pokud zaměstnanci instalují aplikace podporující MAM proti podnikovým prostředkům a přístup je omezen na spravovaných zařízeních Intune, měli byste zvážit nasazení zásad MAM aplikací pro správu konfigurace aplikace pro osobní zařízení a aktualizujte zásady podmíněného přístupu, aby byl povolen pouze přístup od klientů podporujících mam.
+Pokud zaměstnanci instalují aplikace podporující MAM proti podnikovým prostředkům a přístup je omezen na zařízeních Spravovaných Intune, měli byste zvážit nasazení zásad MAM aplikací pro správu konfigurace aplikace pro osobní zařízení a aktualizovat zásady podmíněného přístupu, aby byl povolen pouze přístup od klientů podporujících MAM.
 
 ### <a name="conditional-access-implementation"></a>Implementace podmíněného přístupu
 
@@ -329,7 +329,7 @@ Níže jsou uvedeny nastavení uživatelů a skupin, které lze uzamknout, pokud
 #### <a name="user-settings"></a>Uživatelská nastavení
 
 - **Externí uživatelé** – externí spolupráce může probíhat organicky v podniku se službami, jako jsou Teams, Power BI, Sharepoint Online a Azure Information Protection. Pokud máte explicitní omezení pro řízení externí spolupráce iniciované uživatelem, doporučujeme povolit externím uživatelům pomocí [správy nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) nebo řízené operace, například prostřednictvím help desku. Pokud nechcete povolit ekologickou externí spolupráci pro služby, můžete [členům zcela zablokovat pozvání externích uživatelů](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations). Případně můžete také [povolit nebo blokovat určité domény](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) v externích uživatelských pozvánkách.
-- **Registrace aplikací** – pokud jsou povoleny registrace aplikací, koncoví uživatelé mohou připojit aplikace sami a udělit přístup ke svým datům. Typickým příkladem registrace aplikací jsou uživatelé, kteří umožňují moduly plug-in aplikace Outlook nebo hlasové asistenty, jako jsou Alexa a Siri, číst jejich e-maily a kalendář nebo odesílat e-maily jejich jménem. Pokud se zákazník rozhodne registraci aplikací vypnout, musí se týmy InfoSec a IAM podílet na správě výjimek (registrace aplikací, které jsou potřebné na základě obchodních požadavků), protože by musely zaregistrovat aplikace u účtu správce, a s největší pravděpodobností vyžadují návrh procesu zprovoznit proces.
+- **Registrace aplikací** – pokud jsou povoleny registrace aplikací, koncoví uživatelé mohou připojit aplikace sami a udělit přístup ke svým datům. Typickým příkladem registrace aplikací jsou uživatelé, kteří umožňují moduly plug-in aplikace Outlook nebo hlasové asistenty, jako jsou Alexa a Siri, číst jejich e-maily a kalendář nebo odesílat e-maily jejich jménem. Pokud se zákazník rozhodne registraci aplikací vypnout, musí se týmy InfoSec a IAM podílet na správě výjimek (registrace aplikací, které jsou potřeba na základě obchodních požadavků), protože by potřebovaly zaregistrovat aplikace s účtem správce a s největší pravděpodobností vyžadují návrh procesu pro zprovoznění procesu.
 - **Portál pro správu** – organizace můžou uzamknout okno Azure AD na webu Azure Portal, aby uživatelé, kteří nejsou správci, neměli přístup ke správě Azure AD na webu Azure Portal a zmátli se. Chcete-li omezit přístup, přejděte na uživatelské nastavení na portálu pro správu Azure AD:
 
 ![Omezený přístup portálu pro správu](./media/active-directory-ops-guide/active-directory-ops-img13.png)

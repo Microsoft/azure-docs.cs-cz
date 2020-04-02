@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f16f6ef38b221e525340858fc7ba131f8a1bdf5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289573"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549028"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Směrný plán zabezpečení Azure pro centra událostí
 
@@ -72,7 +72,7 @@ Principy zabezpečení sítě poskytované službou Azure Security Center:https:
 
 **Pokyny:** Povolte standard ochrany DDoS ve virtuálních sítích přidružených k rozbočovačům událostí, abyste se ochránili před distribuovanými útoky dohledu (DDoS). Pomocí integrované analýzy hrozeb Centra zabezpečení Azure můžete odepřít komunikaci se známými škodlivými nebo nepoužívanými internetovými IP adresami.
 
-Jak nakonfigurovat ochranu Před sdos:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Jak nakonfigurovat ochranu Před sdos:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
 
 Další informace o integrované hrozbové inteligenci Centra zabezpečení Azure:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
@@ -106,7 +106,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 Jak přidat pravidlo brány firewall do event hubů pro zadanou adresu IP:
 
- https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls#add-firewall-for-specified-ip
+ https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 **Monitorování Centra zabezpečení Azure:** Ještě není k dispozici
 
@@ -140,7 +140,7 @@ Integrované zásady Azure pro obor názvů Event Hubs:https://docs.microsoft.co
 
 
 
-Ukázky zásad Azure pro sítě:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Ukázky zásad Azure pro sítě:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 
 
@@ -373,10 +373,7 @@ Jak povolit vícefaktorové povolení v Azure:https://docs.microsoft.com/azure/a
 
 **Pokyny:** Použití Azure Active Directory (AD) Privileged Identity Management (PIM) pro generování protokolů a výstrah, když dojde k podezřelé nebo nebezpečné aktivity v prostředí. Pomocí zjišťování rizik Azure AD můžete zobrazit výstrahy a sestavy o rizikovém chování uživatelů. Další protokolování můžete zasílat výstrahy Azure Security Center pro zjišťování rizik do Azure Monitoru a konfigurovat vlastní výstrahy/oznámení pomocí skupin akcí.
 
-
-
 Jak nasadit správu privilegovaných identit (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
-
 
 Seznamte se s detekcí rizik Azure AD:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
@@ -780,7 +777,7 @@ Jak nakonfigurovat podmíněný přístup pro blokování přístupu ke Správci
 
 - Centrum událostí by mělo používat koncový bod služby virtuální sítě.
 
-Integrované zásady Azure pro obor názvů https://docs.microsoft.com/en-\ Event Hubs: nás/azure/zásady/zásady/ukázky/integrované centrum událostí
+Integrované zásady Azure pro obor názvů Event Hubs:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 Jak zobrazit dostupné aliasy zásad Azure:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -961,7 +958,7 @@ Microsoft anti-malware je povolena na podkladovém hostiteli, který podporuje s
 
 **Pokyny:** Konfigurace geografické zotavení po havárii pro Azure Event Hubs. Když se v ypracují prostoje celé oblasti Azure nebo datových center (pokud se nepoužívají žádné zóny dostupnosti), je důležité, aby zpracování dat dál fungovalo v jiné oblasti nebo datovém centru. Jako takové geografické zotavení po havárii a geografická replikace jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje geografické zotavení po havárii i geografickou replikaci na úrovni oboru názvů. 
 
-Principy geograficky zotavení po havárii pro Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones-preview
+Principy geograficky zotavení po havárii pro Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
 **Monitorování Centra zabezpečení Azure**: Momentálně není k dispozici
 

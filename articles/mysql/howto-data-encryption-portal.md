@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 78a290b1e2984719645fb4d4ff253ab021a0826e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acf3e6273f98d98d5da55cfb5b044677116c44dc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299035"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520814"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for MySQL pomocí portálu Azure
 
@@ -65,7 +65,7 @@ Přečtěte si, jak pomocí portálu Azure nastavit a spravovat šifrování dat
 
 4. Chcete-li zajistit, aby všechny soubory (včetně dočasných souborů) byly plně zašifrovány, restartujte server.
 
-## <a name="restore-or-create-a-replica-of-the-server"></a>Obnovení nebo vytvoření repliky serveru
+## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Použití šifrování dat pro servery pro obnovení nebo repliky
 
 Po Azure Database for MySQL je šifrována s klientem spravovaný klíč uložený v trezoru klíčů, všechny nově vytvořené kopie serveru je také šifrována. Tuto novou kopii můžete vytvořit buď prostřednictvím místní operace nebo operace geografického obnovení, nebo prostřednictvím operace repliky (místní/mezi oblastmi). Takže pro šifrovaný server MySQL můžete použít následující kroky k vytvoření šifrovaného obnoveného serveru.
 
@@ -93,132 +93,6 @@ Po Azure Database for MySQL je šifrována s klientem spravovaný klíč uložen
 4. Po registraci instančního objektu znovu obnovte klíč a server obnoví normální funkčnost.
 
    ![Snímek obrazovky s databází Azure pro MySQL s obnovenou funkcí](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
-
-
-## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Povolení šifrování dat pomocí šablony Azure Resource Manageru
-
-Kromě portálu Azure můžete taky povolit šifrování dat na serveru Azure Database for MySQL pomocí šablon Azure Resource Manager pro nové i stávající servery.
-
-### <a name="for-a-new-server"></a>Pro nový server
-
-Použití jedné z předem vytvořených šablon Azure Resource Manageru k zřízení serveru s povoleným šifrováním dat: [Příklad s šifrováním dat](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
-
-Tato šablona Azure Resource Manager vytvoří Azure Database for MySQL server a používá **KeyVault** a **Key** předaný jako parametry pro povolení šifrování dat na serveru.
-
-### <a name="for-an-existing-server"></a>Pro existující server
-Kromě toho můžete použít šablony Azure Resource Manager uvolit šifrování dat na stávajících azure databáze pro servery MySQL.
-
-* Předajurien identifikátor URI klíče Azure Key `keyVaultKeyUri` Vault, který jste zkopírovali dříve pod vlastností v objektu vlastností.
-
-* Jako verzi rozhraní API použijte *náhled 2020-01-01.*
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "location": {
-      "type": "string"
-    },
-    "serverName": {
-      "type": "string"
-    },
-    "keyVaultName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key vault name where the key to use is stored"
-      }
-    },
-    "keyVaultResourceGroupName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key vault resource group name where it is stored"
-      }
-    },
-    "keyName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key name in the key vault to use as encryption protector"
-      }
-    },
-    "keyVersion": {
-      "type": "string",
-      "metadata": {
-        "description": "Version of the key in the key vault to use as encryption protector"
-      }
-    }
-  },
-  "variables": {
-    "serverKeyName": "[concat(parameters('keyVaultName'), '_', parameters('keyName'), '_', parameters('keyVersion'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.DBforMySQL/servers",
-      "apiVersion": "2017-12-01",
-      "kind": "",
-      "location": "[parameters('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "name": "[parameters('serverName')]",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-05-01",
-      "name": "addAccessPolicy",
-      "resourceGroup": "[parameters('keyVaultResourceGroupName')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DBforMySQL/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.KeyVault/vaults/accessPolicies",
-              "name": "[concat(parameters('keyVaultName'), '/add')]",
-              "apiVersion": "2018-02-14-preview",
-              "properties": {
-                "accessPolicies": [
-                  {
-                    "tenantId": "[subscription().tenantId]",
-                    "objectId": "[reference(resourceId('Microsoft.DBforMySQL/servers/', parameters('serverName')), '2017-12-01', 'Full').identity.principalId]",
-                    "permissions": {
-                      "keys": [
-                        "get",
-                        "wrapKey",
-                        "unwrapKey"
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "[concat(parameters('serverName'), '/', variables('serverKeyName'))]",
-      "type": "Microsoft.DBforMySQL/servers/keys",
-      "apiVersion": "2020-01-01-preview",
-      "dependsOn": [
-        "addAccessPolicy",
-        "[resourceId('Microsoft.DBforMySQL/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "serverKeyType": "AzureKeyVault",
-        "uri": "[concat(reference(resourceId(parameters('keyVaultResourceGroupName'), 'Microsoft.KeyVault/vaults/', parameters('keyVaultName')), '2018-02-14-preview', 'Full').properties.vaultUri, 'keys/', parameters('keyName'), '/', parameters('keyVersion'))]"
-      }
-    }
-  ]
-}
-
-```
 
 ## <a name="next-steps"></a>Další kroky
 

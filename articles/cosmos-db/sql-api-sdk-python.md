@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137345"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547703"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro ROZHRANÍ SQL API: Poznámky k vydání a prostředky
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70137345"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Odpočinku](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Hromadný vykonavatel - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -35,7 +35,7 @@ ms.locfileid: "70137345"
 |**Stáhnout sadu SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní API pythonu](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-cosmos-python)|
-|**Přispívat do sady SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
+|**Přispívat do sady SDK**|[GitHubu](https://github.com/Azure/azure-cosmos-python)|
 |**Začínáme**|[Začínáme s sadou Python SDK](sql-api-python-application.md)|
 |**Aktuální podporovaná platforma**|[Python 2.7](https://www.python.org/downloads/) a [Python 3.5](https://www.python.org/downloads/)|
 
@@ -84,7 +84,7 @@ ms.locfileid: "70137345"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * Přidána podpora pro agregační dotazy (COUNT, MIN, MAX, SUMA a AVG).
-* Přidána možnost pro zakázání ověření SSL při spuštění proti cosmos DB emulátoru.
+* Přidána možnost pro zakázání ověření TLS při spuštění proti emulátoru Cosmos DB.
 * Bylo odstraněno omezení závislé požadavky modul být přesně 2.10.0.
 * Snížená minimální propustnost dělených kolekcí z 10 100 RU/s na 2500 RU/s.
 * Přidána podpora pro povolení protokolování skriptů během provádění uložené procedury.

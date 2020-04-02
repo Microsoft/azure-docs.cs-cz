@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310828"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546337"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -131,8 +131,8 @@ Aktualizujte na [verzi 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.
 
 Aktualizujte na [verzi 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) nebo novější sady HDInsight SDK pro Jazyk Java. Minimální změny kódu může být vyžadováno, pokud používáte metodu ovlivněnou těmito změnami:
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)**již vrátí citlivé parametry,** jako jsou klíče úložiště (core-site) nebo http pověření (brána).
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update)nyní zastaralá.
+- `ConfigurationsInner.get`**již vrátí citlivé parametry,** jako jsou klíče úložiště (core-site) nebo http pověření (brána).
+- `ConfigurationsInner.update`nyní zastaralá.
 
 ### <a name="sdk-for-go"></a>Sada SDK pro
 
@@ -193,9 +193,9 @@ Konfigurace clusteru jsou nyní za podrobným řízením `Microsoft.HDInsight/cl
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Proč se při spuštění příkazu Azure CLI ke přiřazení role operátora clusteru HDInsight jinému uživateli nebo instančnímu objektu zobrazí "Nedostatečná oprávnění k dokončení operace"?
 
-Kromě role vlastníka musí mít uživatel nebo instanční objekt provádějící příkaz dostatečná oprávnění AAD, aby mohl vyhledat ID objektu postupníka. Tato zpráva označuje nedostatečná oprávnění add. Zkuste nahradit `-–assignee` argument `–assignee-object-id` a zadejte ID objektu postupníka jako parametr namísto názvu (nebo ID jistiny v případě spravované identity). Další informace naleznete v části volitelné parametry [přiřazení role az vytvořit dokumentaci.](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)
+Kromě toho, že role vlastníka, uživatel nebo instanční objekt provádění příkazu musí mít dostatečná oprávnění Azure AD pro vyhledávání ID objektu postupníka. Tato zpráva označuje nedostatečná oprávnění Azure AD. Zkuste nahradit `-–assignee` argument `–assignee-object-id` a zadejte ID objektu postupníka jako parametr namísto názvu (nebo ID jistiny v případě spravované identity). Další informace naleznete v části volitelné parametry [přiřazení role az vytvořit dokumentaci.](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)
 
-Pokud to stále nefunguje, obraťte se na správce AAD získat správná oprávnění.
+Pokud to stále nefunguje, obraťte se na správce Azure AD získat správná oprávnění.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Co se stane, když nepodniknu žádnou akci?
 

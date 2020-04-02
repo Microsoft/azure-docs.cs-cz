@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 777e4e1f8fdd05345d949fe8c78b4a5b1953b8b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298248"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528505"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Nejčastější dotazy k Azure Monitoru
 
@@ -177,7 +177,7 @@ Zadejte existující nebo novou [skupinu akcí,](platform/action-groups.md) aby 
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Jaké jsou požadavky brány firewall pro agenty Azure Monitoru?
-Podrobnosti o požadavcích na bránu firewall naleznete v tématu Požadavky na [síťovou bránu](platform/log-analytics-agent.md#network-firewall-requirements)firewall.
+Podrobnosti o požadavcích na bránu firewall naleznete v tématu Požadavky na [síťovou bránu](platform/log-analytics-agent.md#firewall-requirements)firewall.
 
 
 ## <a name="visualizations"></a>Vizualizace
@@ -284,7 +284,7 @@ Z jiných zdrojů, pokud je nakonfigurujete:
 
 * [Diagnostika Azure](platform/diagnostics-extension-to-application-insights.md)
 * [Import do služby Analytics](platform/data-collector-api.md)
-* [Log Analytics](platform/data-collector-api.md)
+* [Analýza protokolů](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Můžu odfiltrovat nebo upravit nějakou telemetrii?
@@ -381,7 +381,7 @@ Každá položka, která `itemCount` je přenášena nese vlastnost, která ukaz
 ```
 
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 #### <a name="configuring-application-insights"></a>Konfigurace přehledů aplikací
 
@@ -718,7 +718,7 @@ Za této podmínky budete vyzváni pomocí **možnosti Try Now** při otevření
 ## <a name="next-steps"></a>Další kroky
 Pokud zde vaše otázka není zodpovězena, můžete se obrátit na následující fóra s dalšími otázkami a odpověďmi.
 
-- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Analýza protokolů](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 Obecnou zpětnou vazbu na Azure Monitoru najdete na [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/34192--general-feedback).

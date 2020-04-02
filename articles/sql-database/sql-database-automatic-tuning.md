@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: d4762c86268353ff0464ff3919250cd86f0038d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 7488fd5f8a572788933856f03bb0ad4351885704
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214103"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518231"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění v Azure SQL Database
 
@@ -69,7 +69,7 @@ Možnosti automatického ladění dostupné v Azure SQL Database jsou:
 
 Automatické ladění pro jednu a sdružené databáze používá **CREATE INDEX**, **DROP INDEX**a FORCE LAST **GOOD PLAN** databáze poradce doporučení pro optimalizaci výkonu databáze. Další informace najdete [v tématu doporučení poradce pro databázi na webu Azure Portal](sql-database-advisor-portal.md), v [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)a v [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
 
-Můžete buď ručně použít doporučení pro optimalizaci pomocí portálu Azure, nebo můžete nechat automatické ladění samostatně použít doporučení pro ladění pro vás. Výhody nechat systém samostatně použít tuning doporučení pro vás je, že automaticky ověří, že existuje pozitivní zisk na zatížení výkonu, a pokud není zjištěna žádná významná zlepšení výkonu, bude automaticky vrátit doporučení pro ladění. Vezměte prosím na vědomí, že v případě dotazů ovlivněných doporučeními pro ladění, které nejsou prováděny často, může fáze ověření trvat až 72 hodin podle návrhu.
+Můžete buď ručně použít doporučení pro optimalizaci pomocí portálu Azure, nebo můžete nechat automatické ladění samostatně použít doporučení pro ladění pro vás. Výhody nechat systém samostatně použít optimalizace doporučení pro vás je, že automaticky ověří, že existuje pozitivní zisk výkonu pracovního vytížení a pokud není zjištěno žádné významné zlepšení výkonu, automaticky vrátí doporučení ladění. Vezměte prosím na vědomí, že v případě dotazů ovlivněných doporučeními pro ladění, které nejsou prováděny často, může fáze ověření trvat až 72 hodin podle návrhu.
 
 V případě, že používáte optimalizace doporučení prostřednictvím T-SQL, automatické ověření výkonu a storno mechanismy nejsou k dispozici. Doporučení použitá tímto způsobem zůstanou aktivní a zobrazí se v seznamu doporučení pro ladění po dobu 24-48 hodin. před tím, než je systém automaticky stáhne. Pokud chcete odebrat doporučení dříve, můžete ho zahodit z webu Azure Portal.
 
@@ -93,3 +93,4 @@ Automatické ladění pro databáze instancí v nasazení spravované instance p
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o integrované inteligenci používané při automatickém ladění najdete v [tématu Umělé inteligence vyladování databází Azure SQL](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/).
+- Informace o tom, jak funguje automatické ladění pod kapotou, najdete [v tématu Automatické indexování milionů databází v databázi Microsoft Azure SQL Database](https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf).

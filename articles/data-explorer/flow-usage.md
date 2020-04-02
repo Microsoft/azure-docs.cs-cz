@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 1b9d593b0f0895e2ba75fae7ab7e78ea883c8907
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397188"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521686"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>Příklady použití konektoru Microsoft Flow (Preview)
 
@@ -24,8 +24,6 @@ Další informace naleznete v [tématu Microsoft Flow konektor (Preview)](flow.m
 * [Nabízená data do datové sady Power BI](#push-data-to-power-bi-dataset)
 * [Podmíněné dotazy](#conditional-queries)
 * [Odeslání e-mailu s více grafy toku Průzkumníka dat Azure](#email-multiple-azure-data-explorer-flow-charts)
-* [Odeslání jiného e-mailu různým kontaktům](#send-a-different-email-to-different-contacts)
-* [Vytvoření vlastní tabulky HTML](#create-a-custom-html-table)
 
 ## <a name="microsoft-flow-connector-and-sql"></a>Konektor Microsoft Flow a SQL
 
@@ -101,23 +99,21 @@ Vizualizujte tyto informace jako výsečový graf a pošlete je e-mailem týmu.
 
 ## <a name="email-multiple-azure-data-explorer-flow-charts"></a>Odeslání e-mailu s více grafy toku Průzkumníka dat Azure
 
-1. Vytvořte nový tok s aktivační událostí "Opakování" a definujte interval toku a frekvenci. 
+1. Vytvořte nový tok s aktivační událostí opakování a definujte interval toku a frekvenci. 
 1. Přidejte nový krok s jednou nebo více akcemi Kusto - Run query a vizualizovat výsledky. 
 
     ![Spuštění několika dotazů v toku](./media/flow-usage/flow-severalqueries.png)
 1. Pro každý Kusto - Spustit dotaz a vizualizovat výsledek definujte následující pole:
-    * Adresa URL clusteru (v poli *Název clusteru)*
+    * Adresa URL clusteru
     * Název databáze
-    * Typ dotazu a grafu (tabulka HTML/ výsečový graf/ časový graf/ pruhový graf/ Zadat vlastní hodnotu).
+    * Typ dotazu a grafu (tabulka HTML, výsečový graf, časový graf, pruhový graf nebo zadání vlastní hodnoty).
 
     ![Vizualizace výsledků s více přílohami](./media/flow-usage/flow-visualizeresultsmultipleattachments.png)
 
-    > [!IMPORTANT]
-    > Do polí *Název clusteru* zadejte adresu URL clusteru.
-
-1. Přidejte akci Odeslat e-mail. 
-    * Do pole *Tělo* vložte požadované tělo tak, aby vizualizovaný výsledek dotazu byl zahrnut do těla e-mailu.
-    * Pokud chcete k e-mailu přidat přílohu, přidejte název přílohy a obsah přílohy.
+1. Přidat akci Odeslat e-mail (v2): 
+    1. V části tělo vyberte ikonu zobrazení kódu.
+    1. Do pole **Body** vložte požadovaný bodyhtml tak, aby vizualizovaný výsledek dotazu byl zahrnut do těla e-mailu.
+    1. Pokud chcete k e-mailu přidat přílohu, přidejte název přílohy a obsah přílohy.
     
     ![Odeslání více příloh e-mailem](./media/flow-usage/flow-email-multiple-attachments.png)
 
@@ -128,68 +124,6 @@ Výsledky:
 [![](./media/flow-usage/flow-resultsmultipleattachments.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments.png#lightbox)
 
 [![](./media/flow-usage/flow-resultsmultipleattachments2.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox)
-
-## <a name="send-a-different-email-to-different-contacts"></a>Odeslání jiného e-mailu různým kontaktům
-
-Microsoft Flow můžete využít k odesílání různých přizpůsobených e-mailů různým kontaktům. E-mailové adresy a obsah e-mailu jsou výsledkem dotazu Kusto.
-
-Příklad:
-
-![Dynamický e-mail pomocí dotazu Kusto](./media/flow-usage/flow-dynamicemailkusto.png)
-
-> [!IMPORTANT]
-> Do pole *Název clusteru* zadejte adresu URL clusteru.
-
-![Dynamický e-mail v akci toku](./media/flow-usage/flow-dynamicemail.png)
-
-## <a name="create-a-custom-html-table"></a>Vytvoření vlastní tabulky HTML
-
-Microsoft Flow můžete využít k vytváření a používání vlastních prvků HTML, jako je například vlastní tabulka HTML.
-
-Následující příklad ukazuje, jak vytvořit vlastní tabulku HTML. Tabulka HTML bude mít své řádky barevné podle úrovně protokolu (stejně jako v Průzkumníku dat Azure).
-
-Podle těchto pokynů vytvořte podobný tok:
-
-1. Vytvořte novou akci Kusto - Spustit dotaz a seznam výsledků.
-
-    ![Seznam výsledků pro tabulku HTML](./media/flow-usage/flow-listresultforhtmltable.png)
-
-> [!IMPORTANT]
-> Do pole *Název clusteru* zadejte adresu URL clusteru.
-
-1. Smyčku přes výsledky dotazu a vytvořit html tabulkový text: 
-    1. Chcete-li vytvořit proměnnou pro uložení řetězce HTML, vyberte **Nový krok**
-    1. Vyberte **Přidat akci** a vyhledejte proměnné. 
-    1. Vybrat **proměnné – inicializovat proměnnou**. 
-    1. Inicializovat proměnnou řetězce takto:
-
-    ![Inicializovat proměnnou](./media/flow-usage/flow-initializevariable.png)
-
-1. Smyčka přes výsledky:
-    1. Vyberte **Nový krok**.
-    1. Vyberte **Přidat akci**.
-    1. Vyhledejte proměnné. 
-    1. Vyberte **proměnné - připojit k řetězci proměnné**. 
-    1. Vyberte název proměnné, který jste inicializovali dříve, a vytvořte řádky tabulky HTML pomocí výsledků dotazu. 
-    Při výběru výsledků dotazu se automaticky přidá použít pro každý z nich.
-
-    V níže uvedeném `if` příkladu se výraz používá k definování stylu každého řádku:
-
-    ```if(equals(items('Apply_to_each')?['Level'], 'Warning'), 'Yellow', if(equals(items('Apply_to_each')?['Level'], 'Error'), 'red', 'white'))```
-
-    [![](./media/flow-usage/flow-createhtmltableloopcontent.png "Create HTML table loop content")](./media/flow-usage/flow-createhtmltableloopcontent.png#lightbox)
-
-1. Vytvořte úplný obsah HTML: 
-    1. Přidat novou akci mimo Použít pro každou z nich. 
-    V následujícím příkladu je použitá akce Odeslat e-mail.
-    1. Definujte tabulku HTML pomocí proměnné z předchozích kroků. 
-    1. Pokud posíláte e-mail, vyberte **Zobrazit upřesňující možnosti** a v části Je HTML vyberte **Ano**.
-
-    ![E-mail s vlastní tabulkou HTML](./media/flow-usage/flow-customhtmltablemail.png)
-
-Result:
-
-![Výsledek e-mailu vlastní tabulky HTML](./media/flow-usage/flow-customhtmltableresult.png)
 
 ## <a name="next-steps"></a>Další kroky
 

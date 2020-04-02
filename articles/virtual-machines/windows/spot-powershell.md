@@ -1,22 +1,20 @@
 ---
 title: Nasazení virtuálních virtuálních počítačů Azure Spot pomocí PowerShellu
 description: Zjistěte, jak pomocí Azure PowerShellu nasadit virtuální počítače Spot, abyste ušetřili náklady.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 234cf3f51173c53ef8ca15af4ca6f24881be3109
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77158940"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547288"
 ---
-# <a name="preview-deploy-spot-vms-using-azure-powershell"></a>Předběžná verze: Nasazení virtuálních počítačích spotpomocí Azure PowerShellu
+# <a name="deploy-spot-vms-using-azure-powershell"></a>Nasazení virtuálních počítačů s bodem pomocí Azure PowerShellu
 
 
 Použití [spotových virtuálních měn](spot-vms.md) vám umožní využít naši nevyužitou kapacitu s výraznými úsporami nákladů. Kdykoli v okamžiku, kdy Azure potřebuje kapacitu zpět, infrastruktura Azure vystěhovává virtuální počítače Spot. Virtuální počítače Spot jsou proto skvělé pro úlohy, které zvládnou přerušení, jako jsou úlohy dávkového zpracování, vývojová a testovací prostředí, velké výpočetní úlohy a další.
@@ -24,12 +22,6 @@ Použití [spotových virtuálních měn](spot-vms.md) vám umožní využít na
 Ceny pro spotové virtuální počítače jsou variabilní na základě oblasti a skladové položky. Další informace najdete v tématu Ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Další informace o nastavení maximální ceny najdete v tématu [Spot Virtuální virtuální chod – ceny](spot-vms.md#pricing).
 
 Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu za virtuální hod. Maximální cenu pro spotový virtuální virtuální mísu lze nastavit v amerických dolarech (USD) s použitím až 5 desetinných míst. Například hodnota `0.98765`by byla maximální cena $0.98765 USD za hodinu. Pokud nastavíte maximální `-1`cenu , virtuální počítač nebude vystěhován na základě ceny. Cena za virtuální ho virtuálního mítna bude aktuální cena za spot nebo cena za standardní virtuální ms, který je vždy menší, pokud je k dispozici kapacita a kvóta.
-
-> [!IMPORTANT]
-> Instance spotů jsou aktuálně ve verzi Public Preview.
-> Tato verze preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 856410f2166ae442e8beadf36eac312748407b13
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77526806"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529737"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure Time Series Insights Preview
 
@@ -30,7 +30,6 @@ V tomto kurzu se naučíte:
 > * Spusťte ukázku akcelerátoru řešení pro streamování dat do prostředí Azure Time Series Insights Preview.
 > * Proveďte základní analýzu dat.
 > * Definujte typ a hierarchii modelu časové řady a přidružte je k instancím.
-> * Použijte konektor Power BI a vizualizujte data v Power BI.
 
 >[!TIP]
 > [Akcelerátory řešení IoT](https://www.azureiotsolutions.com/Accelerators) poskytují předkonfigurovaná řešení na podnikové úrovni, která můžete použít k urychlení vývoje vlastních řešení IoT.
@@ -359,3 +358,8 @@ Další informace o modelech časových řad:
 
 > [!div class="nextstepaction"]
 > [Modelování dat Azure Time Series Insights Preview](./time-series-insights-update-tsm.md)
+
+Další informace o připojení prostředí k Power BI
+
+> [!div class="nextstepaction"]
+> [Vizualizace dat z přehledů časových řad v Power BI](./how-to-connect-power-bi.md)

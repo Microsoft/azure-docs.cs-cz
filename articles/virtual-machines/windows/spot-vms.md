@@ -1,22 +1,20 @@
 ---
 title: Použití virtuálních virtuálních počítačů Azure Spot
 description: Přečtěte si, jak pomocí virtuálních virtuálních počítačů spotů ušetřit náklady.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4acbab324c63cf0184f5384e6af5e9418ca06677
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd59ccba74b2813b2d38073cac35ba80d97cf4d1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74782096"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548148"
 ---
-# <a name="preview-use-spot-vms-in-azure"></a>Předběžná verze: Použití virtuálních počítačích spot v Azure
+# <a name="use-spot-vms-in-azure"></a>Použití virtuálních počítačů spotv Azure
 
 [!INCLUDE [common-spot-vms](../../../includes/virtual-machines-common-spot-vms.md)]  
 

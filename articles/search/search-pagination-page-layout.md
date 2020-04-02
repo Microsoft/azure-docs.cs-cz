@@ -7,103 +7,100 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 124f1ce3d30ce87d5e9d8fa027e5a7d6c0b3cb17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8543894f3f518df6b9b0054973ca1683b82e38f1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481598"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548995"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Cognitive Search
-Tento článek obsahuje pokyny k implementaci standardních prvků stránky s výsledky hledání, jako je například celkový počet, načítání dokumentů, pořadí řazení a navigace. Možnosti související se stránkou, které přispívají data nebo informace k výsledkům hledání jsou určeny prostřednictvím požadavků [vyhledávacího dokumentu](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) odeslaných do služby Azure Cognitive Search. 
 
-V rozhraní REST API požadavky zahrnují příkaz GET, cestu a parametry dotazu, které informují službu o tom, co je požadováno, a jak formulovat odpověď. V sdk .NET SDK ekvivalentní rozhraní API je [DocumentSearchResult Class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
+Tento článek vysvětluje, jak získat odpověď na dotaz, který se vrátí s celkovým počtem odpovídajících dokumentů, stránkovanými výsledky, seřazenými výsledky a zvýrazněnými výrazy přístupů.
 
-Chcete-li rychle vygenerovat vyhledávací stránku pro svého klienta, prozkoumejte tyto možnosti:
+Struktura odpovědi je určena parametry v dotazu: [Hledat dokument](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) v rozhraní REST API nebo [DocumentSearchResult Class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) v .NET SDK.
 
-+ Pomocí [generátoru aplikací](search-create-app-portal.md) na portálu vytvořte stránku HTML s vyhledávacím panelem, famitovou navigací a oblastí výsledků.
-+ Chcete-li vytvořit funkčního klienta, vytvořte tak první aplikaci v kurzu [C#.](tutorial-csharp-create-first-app.md)
+## <a name="result-composition"></a>Složení výsledků
 
-Několik ukázek kódu obsahuje webové front-end rozhraní, které najdete zde: [Demo aplikace New York City Jobs](https://aka.ms/azjobsdemo), [ukázkový kód JavaScriptu s živým demo webem](https://github.com/liamca/azure-search-javascript-samples)a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Zatímco vyhledávací dokument se může skládat z velkého počtu polí, obvykle je k reprezentaci každého dokumentu v sadě výsledků zapotřebí pouze několik. V žádosti o dotaz `$select=<field list>` přidejte k určení, která pole se zobrazí v odpovědi. Pole musí být přiřazeno jako **Retrievable** v indexu, které má být zahrnuto do výsledku. 
 
-> [!NOTE]
-> Platný požadavek obsahuje řadu prvků, jako je například adresa `api-version`URL služby a cesta, sloveso HTTP a tak dále. Pro stručnost jsme zkrátili příklady, abychom zvýraznili pouze syntaxi, která je relevantní pro stránkování. Další informace o syntaxi požadavku najdete [v tématu Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice).
->
+Nejlépe funkční pole zahrnují pole, která kontrastují a rozlišují mezi dokumenty a poskytují dostatečné informace pro pozvání odpovědi po prokliku ze strany uživatele. Na webu elektronického obchodování se může jednat o název produktu, popis, značku, barvu, velikost, cenu a hodnocení. Pro vestavěnou ukázku inkasazního indexu hotels-sample může být pole v následujícím příkladu:
 
-## <a name="total-hits-and-page-counts"></a>Celkový počet přístupů a počty stránek
-
-Zobrazení celkového počtu výsledků vrácených z dotazu a vrácení těchto výsledků v menších blocích je zásadní pro prakticky všechny vyhledávací stránky.
-
-![][1]
-
-V Azure Cognitive Search, `$count` `$top`můžete `$skip` použít , a parametry vrátit tyto hodnoty. Následující příklad ukazuje ukázkový požadavek na celkový počet přístupů v `@odata.count`indexu s názvem "online katalog", vrácený jako :
-
-    GET /indexes/online-catalog/docs?$count=true
-
-Načtení dokumentů ve skupinách po 15 a také zobrazení celkového počtu přístupů počínaje první stránkou:
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
-
-Stránkování výsledky vyžaduje `$top` jak `$skip`a `$top` , kde určuje, kolik položek `$skip` vrátit v dávce a určuje, kolik položek přeskočit. V následujícím příkladu každá stránka zobrazuje dalších 15 položek, které `$skip` jsou označeny přírůstkovými skoky v parametru.
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=15&$count=true
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
-
-## <a name="layout"></a>Rozložení
-
-Na stránce s výsledky hledání můžete chtít zobrazit miniaturu, podmnožinu polí a odkaz na celou stránku produktu.
-
- ![][2]
-
-V Azure Cognitive Search `$select` byste použít a [požadavek rozhraní API vyhledávání](https://docs.microsoft.com/rest/api/searchservice/search-documents) k implementaci tohoto prostředí.
-
-Vrácení podmnožinu polí pro rozložení vedle tlačítek:
-
-    GET /indexes/online-catalog/docs?search=*&$select=productName,imageFile,description,price,rating
-
-Obrázky a mediální soubory nejsou přímo prohledávatelné a měly by být uloženy v jiné platformě úložiště, jako je například úložiště objektů blob Azure, aby se snížily náklady. V rejstříku a dokumentech definujte pole, ve které je uložena adresa URL externího obsahu. Pole pak můžete použít jako odkaz na obrázek. Adresa URL obrázku by měla být v dokumentu.
-
-Chcete-li načíst stránku s popisem produktu pro událost **onClick,** použijte [vyhledávací dokument](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) k předání klíče dokumentu k načtení. Datový typ klíče je `Edm.String`. V tomto příkladu je *246810*.
-
-    GET /indexes/online-catalog/docs/246810
-
-## <a name="sort-by-relevance-rating-or-price"></a>Řazení podle relevance, hodnocení nebo ceny
-
-Řazení objednávek je často ve výchozím nastavení ve výchozím nastavení relevance, ale je běžné, že alternativní objednávky řazení jsou snadno dostupné, aby zákazníci mohli rychle přeřadit stávající výsledky do jiného pořadí.
-
- ![][3]
-
-V Azure Cognitive Search řazení je `$orderby` založena na výrazu, pro `"Sortable": true.` `$orderby` všechna pole, která jsou indexována jako Klauzule Je OData výraz. Informace o syntaxi naleznete v [tématu Syntaxe výrazu OData pro filtry a klauzule podle pořadí](query-odata-filter-orderby-syntax.md).
-
-Relevance je silně spojena s profily hodnocení. Můžete použít výchozí bodování, které se spoléhá na analýzu textu a statistiky pro pořadí pořadí všech výsledků, s vyšším skóre jít do dokumentů s více nebo silnější zápasy na hledaný výraz.
-
-Alternativní řazení objednávky jsou obvykle spojeny s **událostmi onClick,** které volají zpět na metodu, která vytváří pořadí řazení. Například vzhledem k tomuto prvku stránky:
-
- ![][4]
-
-Vytvořili byste metodu, která přijme vybranou možnost řazení jako vstup a vrátí seřazený seznam pro kritéria přidružená k této možnosti.
-
- ![][5]
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+    {  
+      "search": "sandy beaches",
+      "select": "HotelId, HotelName, Description, Rating, Address/City"
+      "count": true
+    }
+```
 
 > [!NOTE]
-> Zatímco výchozí bodování je dostatečná pro mnoho scénářů, doporučujeme místo toho založit relevanci na vlastním profilu hodnocení. Vlastní profil hodnocení vám dává způsob, jak zvýšit položky, které jsou výhodnější pro vaši firmu. Další informace najdete [v tématu Přidání profilů hodnocení.](index-add-scoring-profiles.md)
->
+> Pokud chcete zahrnout obrazové soubory ve výsledku, jako je například fotografie produktu nebo logo, uložte je mimo Azure Cognitive Search, ale zahrnout pole v indexu odkazovat na adresu URL obrázku ve vyhledávacím dokumentu. Ukázkové indexy, které podporují obrázky ve výsledcích patří **realestate-sample-us** demo, vystupoval v tomto [rychlém startu](search-create-app-portal.md)a [New York City Jobs demo aplikace](https://aka.ms/azjobsdemo).
+
+## <a name="results-returned"></a>Vrácené výsledky
+
+Ve výchozím nastavení vyhledávač vrátí až prvních 50 shod, jak je určeno skóre vyhledávání, pokud je dotaz fulltextové vyhledávání nebo v libovolném pořadí pro přesné shody dotazy.
+
+Chcete-li vrátit jiný počet `$top` odpovídajících dokumentů, přidejte a `$skip` parametry do požadavku na dotaz. Následující seznam vysvětluje logiku.
+
++ Chcete-li `$count=true` získat celkový počet odpovídajících dokumentů v rámci indexu, chcete-li získat celkový počet odpovídajících dokumentů.
+
++ Vrátí první sadu 15 odpovídajících dokumentů plus počet celkových shod:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
+
++ Vrátit druhý set, přeskočení prvních 15 získat `$top=15&$skip=15`další 15: . Proveďte totéž pro třetí sadu 15:`$top=15&$skip=30`
+
+Výsledky stránkovaných dotazů není zaručeno, že bude stabilní, pokud se mění základní index. Stránkování změní hodnotu `$skip` pro každou stránku, ale každý dotaz je nezávislý a pracuje na aktuální zobrazení dat, jak existuje v indexu v době dotazu (jinými slovy, neexistuje žádné ukládání do mezipaměti nebo snímek výsledků, jako jsou ty, které se nacházejí v databázi pro obecné účely).
+ 
+Následuje příklad, jak můžete získat duplikáty. Předpokládejme index se čtyřmi dokumenty:
+
+    { "id": "1", "rating": 5 }
+    { "id": "2", "rating": 3 }
+    { "id": "3", "rating": 2 }
+    { "id": "4", "rating": 1 }
+ 
+Nyní předpokládejme, že chcete výsledky vráceny dva najednou, seřazené podle hodnocení. Tento dotaz byste provedli, abyste získali první stránku s výsledky: `$top=2&$skip=0&$orderby=rating desc`, což vytváří následující výsledky:
+
+    { "id": "1", "rating": 5 }
+    { "id": "2", "rating": 3 }
+ 
+Ve službě předpokládejme, že pátý dokument je přidán `{ "id": "5", "rating": 4 }`do indexu mezi volání dotazu: .  Krátce poté spustíte dotaz pro načtení `$top=2&$skip=2&$orderby=rating desc`druhé stránky: a získáte tyto výsledky:
+
+    { "id": "2", "rating": 3 }
+    { "id": "3", "rating": 2 }
+ 
+Všimněte si, že dokument 2 je načten dvakrát. Je to proto, že nový dokument 5 má větší hodnotu pro hodnocení, takže seřadí před dokumentem 2 a přistane na první stránce. I když toto chování může být neočekávané, je typické pro chování vyhledávače.
+
+## <a name="ordering-results"></a>Řazení výsledků
+
+U fulltextových vyhledávacích dotazů jsou výsledky automaticky seřazeny podle skóre vyhledávání, které se počítá na základě četnosti termínů a blízkosti v dokumentu, přičemž vyšší skóre bude v dokumentech, které mají více nebo silnější shody s vyhledávacím dotazem. Skóre hledání zprostředkovávají obecný pocit relevance vzhledem k ostatním dokumentům ve stejné sadě výsledků a není zaručeno, že budou konzistentní z jednoho dotazu na další.
+
+Při práci s dotazy můžete zaznamenat malé nesrovnalosti v objednaných výsledcích. Existuje několik vysvětlení, proč k tomu může dojít.
+
+| Podmínka | Popis |
+|-----------|-------------|
+| Volatilita dat | Obsah indexu se liší při přidávání, úpravách nebo odstraňování dokumentů. Frekvence termínů se budou měnit při zpracování aktualizací indexu v průběhu času, což ovlivní skóre vyhledávání odpovídajících dokumentů. |
+| Umístění spuštění dotazu | Pro služby, které používají více replik, dotazy jsou vydávány proti každé replice paralelně. Statistiky indexu použité k výpočtu skóre vyhledávání se počítají na základě repliky, přičemž výsledky jsou sloučeny a seřazeny v odpovědi na dotaz. Repliky jsou většinou zrcadla navzájem, ale statistiky se mohou lišit v důsledku malých rozdílů ve stavu. Jedna replika může mít například odstraněné dokumenty přispívající k jejich statistikám, které byly sloučeny z jiných replik. Obecně platí rozdíly v statistiky na repliku jsou výraznější v menších indexů. |
+| Prolomení remízy mezi identickými výsledky hledání | Nesrovnalosti v seřazených výsledcích mohou také nastat, pokud mají vyhledávací dokumenty stejné skóre. V tomto případě při opětovném spuštění stejného dotazu neexistuje žádná záruka, který dokument se zobrazí jako první. |
+
+### <a name="consistent-ordering"></a>Konzistentní řazení
+
+Vzhledem k pružnosti ve vyhledávacím hodnocení můžete chtít prozkoumat další možnosti, pokud konzistence ve výsledkových objednávkách je požadavek aplikace. Nejjednodušším přístupem je řazení podle hodnoty pole, například hodnocení nebo data. Pro scénáře, ve kterých chcete řadit podle určitého pole, například podle hodnocení nebo data, můžete explicitně definovat [ `$orderby` výraz](query-odata-filter-orderby-syntax.md), který lze použít pro libovolné pole, které je indexováno jako **seřaditelné**.
+
+Další možností je použití [vlastního profilu hodnocení](index-add-scoring-profiles.md). Profily hodnocení poskytují větší kontrolu nad pořadím položek ve výsledcích vyhledávání, přičemž je schopna propagovat shody nalezené v konkrétních polích. Další logika hodnocení může pomoci přepsat drobné rozdíly mezi replikami, protože skóre hledání pro každý dokument jsou dále od sebe. Doporučujeme [algoritmus řazení](index-ranking-similarity.md) pro tento přístup.
 
 ## <a name="hit-highlighting"></a>Zvýrazňování položek
 
-Ve výsledcích vyhledávání můžete použít formátování odpovídajících výrazů, což usnadňuje zobrazení shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Zvýraznění zásahu označuje formátování textu (například tučné nebo žluté zvýraznění) použité na odpovídající termín ve výsledku, což usnadňuje zobrazení shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents). Vyhledávač uzavře odpovídající termín ve `highlightPreTag` značkách `highlightPostTag`a , a váš kód zpracovává odpověď (například použití tučnépísmo).
 
-Formátování se použije na dotazy na celý termín. Dotazy na částečné termíny, jako je například přibližné vyhledávání nebo hledání se zástupnými kódy, které vedou k rozšíření dotazu v modulu, nelze použít zvýraznění přístupů.
+Formátování se použije na dotazy na celý termín. V následujícím příkladu jsou pro zvýraznění označeny výrazy "písčité", "písek", "pláže", "pláž" v poli Popis. Dotazy na částečné termíny, jako je například přibližné vyhledávání nebo hledání se zástupnými kódy, které vedou k rozšíření dotazu v modulu, nelze použít zvýraznění přístupů.
 
 ```http
-POST /indexes/hotels/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
     {  
-      "search": "something",  
-      "highlight": "Description"  
+      "search": "sandy beaches",  
+      "highlight": "Description"
     }
 ```
 
@@ -112,30 +109,11 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 >
 > Při psaní klientského kódu, který implementuje zvýraznění přístupů, uvědomte si tuto změnu. Všimněte si, že to nebude mít vliv na vás, pokud nevytvoříte zcela novou vyhledávací službu.
 
-## <a name="faceted-navigation"></a>Fasetová navigace
+## <a name="next-steps"></a>Další kroky
 
-Navigace při hledání je běžná na stránce s výsledky, která se často nachází na boku nebo v horní části stránky. V Azure Cognitive Search, famitové navigace poskytuje samořízené vyhledávání na základě předdefinovaných filtrů. Podrobnosti najdete [v tématu Famface navigace v Azure Cognitive Search](search-faceted-navigation.md) podrobnosti.
+Chcete-li rychle vygenerovat vyhledávací stránku pro klienta, zvažte tyto možnosti:
 
-## <a name="filters-at-the-page-level"></a>Filtry na úrovni stránky
++ [Generátor aplikací](search-create-app-portal.md)na portálu vytvoří stránku HTML s vyhledávacím panelem, fazetovou navigací a oblastí výsledků, která obsahuje obrázky.
++ [Vytvořte si první aplikaci v C#](tutorial-csharp-create-first-app.md) je kurz, který vytváří funkční klienta. Ukázkový kód ukazuje stránkované dotazy, zvýraznění přístupů a řazení.
 
-Pokud návrh řešení zahrnoval vyhrazené vyhledávací stránky pro určité typy obsahu (například online maloobchodní aplikace, která má oddělení uvedená v horní části stránky), můžete vložit [výraz filtru](search-filters.md) vedle události **onClick** a otevřít stránku v předem filtrovaném stavu.
-
-Filtr můžete odeslat s hledaným výrazem nebo bez něj. Následující požadavek bude například filtrovat podle názvu značky a vrátí pouze ty dokumenty, které se s ním shodují.
-
-    GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
-
-Další informace o `$filter` výrazech najdete v tématu Search Documents [(Azure Cognitive Search API).](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
-
-## <a name="see-also"></a>Viz také
-
-- [Rozhraní REST API služby Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice)
-- [Index operace](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-- [Operace s dokumenty](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Fazetovaná navigace v Azure Cognitive Search](search-faceted-navigation.md)
-
-<!--Image references-->
-[1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG
-[2]: ./media/search-pagination-page-layout/Pages-2-Tiled.PNG
-[3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
-[4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
-[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png
+Několik ukázek kódu obsahuje webové front-end rozhraní, které najdete zde: [Demo aplikace New York City Jobs](https://aka.ms/azjobsdemo), [ukázkový kód JavaScriptu s živým demo webem](https://github.com/liamca/azure-search-javascript-samples)a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).

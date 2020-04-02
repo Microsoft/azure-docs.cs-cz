@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 3b7d221c2afc952f40da035c6e2c282b3b932aa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a20b7d91a927d48a14812110ca714491cd726071
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69616760"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548781"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a Javu
 
@@ -26,7 +26,7 @@ Azure Cosmos DB je rychlá a flexibilní distribuovaná databáze, která se bez
 
 Pokud se tedy ptáte: "Jak mohu zlepšit výkon databáze?" zvážit následující možnosti:
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 <a id="direct-connection"></a>
 
 1. **Režim připojení: Použití directhttps**
@@ -38,7 +38,7 @@ Pokud se tedy ptáte: "Jak mohu zlepšit výkon databáze?" zvážit následují
 
       Režim brány je podporován na všech platformách sady SDK a je nakonfigurovaným výchozím nastavením.  Pokud vaše aplikace běží v rámci podnikové sítě s přísnými omezeními brány firewall, gateway je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Kompromis výkonu je však, že režim brány zahrnuje další síťový směrování pokaždé, když se data číst nebo zapisovat do Azure Cosmos DB. Z tohoto důvodu režim DirectHttps nabízí lepší výkon z důvodu menšího počtu síťových směrování. 
 
-      Sada Java SDK používá protokol HTTPS jako přenosový protokol. Protokol HTTPS používá protokol SSL pro počáteční ověřování a šifrování přenosů. Při použití sady Java SDK musí být otevřený pouze port HTTPS 443. 
+      Sada Java SDK používá protokol HTTPS jako přenosový protokol. Protokol HTTPS používá protokol TLS pro počáteční ověřování a šifrování přenosů. Při použití sady Java SDK musí být otevřený pouze port HTTPS 443. 
 
       Režim connectionmode je konfigurován během výstavby instance DocumentClient s parametrem ConnectionPolicy. 
 

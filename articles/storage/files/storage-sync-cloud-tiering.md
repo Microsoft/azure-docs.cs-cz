@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454614"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549173"
 ---
 # <a name="cloud-tiering-overview"></a>Cloudvrstving – přehled
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které se často přistupují k souborům místně na serveru, zatímco všechny ostatní soubory jsou vrstvené na soubory Azure na základě nastavení zásad. Když je soubor vrstvený, filtr systému souborů Azure File Sync (StorageSync.sys) nahradí soubor místně ukazatelem nebo změní analýzu bodu. Bod závažnosti představuje adresu URL souboru v Azure Files. Vrstvený soubor má atribut "offline" i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, takže aplikace třetích stran mohou bezpečně identifikovat vrstvené soubory.
@@ -51,7 +51,22 @@ Pokud je na svazku více než jeden koncový bod serveru, efektivní prahová ho
 
 <a id="date-tiering-policy"></a>
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Jak fungují zásady vrstvení podle data ve spojení se zásadami vrstvení volného místa svazku? 
-Při povolení vrstvení cloudu na koncovém bodu serveru nastavíte zásady volného místa svazku. Vždy má přednost před všemi ostatními zásadami, včetně zásad data. Volitelně můžete povolit zásady data pro každý koncový bod serveru na tomto svazku, což znamená, že pouze soubory přístupné (to znamená, čtení nebo zápis) v rozsahu dnů, které tato zásada popisuje, budou zachovány místní, přičemž všechny soubory staler budou vrstvené. Mějte na paměti, že zásady volného místa na svazku mají vždy přednost, a když na svazku není dostatek volného místa, aby bylo zachováno tolik dní souborů, jak je popsáno v zásadách data, Azure File Sync bude pokračovat v vrstvení nejchladnějších souborů, dokud nebude svazek volný. je splněno procento prostoru.
+Při povolení vrstvení cloudu na koncovém bodu serveru nastavíte zásady volného místa svazku. Vždy má přednost před všemi ostatními zásadami, včetně zásad data. Volitelně můžete povolit zásady data pro každý koncový bod serveru na tomto svazku. Tato zásada spravuje, že pouze soubory přístupné (to znamená, číst nebo zapisovat) v rozsahu dnů, které tato zásada popisuje, budou zachovány místní. Soubory, ke kterým není přistupováno s určeným počtem dní, budou vrstvené. 
+
+Vrstvení cloudu používá čas posledního přístupu k určení, které soubory by měly být vrstvené. Ovladač filtru vrstvení cloudu (storagesync.sys) sleduje čas posledního přístupu a zaznamenává informace v cloudovém vrstvení úložiště tepla. Můžete vidět úložiště tepla pomocí místní rutiny Prostředí PowerShell.
+
+```powershell
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
+Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+```
+
+> [!IMPORTANT]
+> Poslední kupované časové razítko není vlastnost ís sledována systémem souborů NTFS a proto není ve výchozím nastavení v Průzkumníku souborů viditelná. Nepoužívejte poslední upravené časové razítko v souboru ke kontrole, zda zásada data funguje podle očekávání. Toto časové razítko pouze sleduje zápisy, nikoli čtení. Pomocí zobrazené rutiny získat poslední kupované časové razítko pro toto hodnocení.
+
+> [!WARNING]
+> Nezapínejte funkci NTFS sledování naposledy přistupujícího časového razítka pro soubory a složky. Tato funkce je ve výchozím nastavení vypnutá, protože má velký dopad na výkon. Azure File Sync bude sledovat časy posledního přístupu automaticky a velmi efektivně a nevyužívá tuto funkci NTFS.
+
+Mějte na paměti, že zásady volného místa na svazku mají vždy přednost, a když na svazku není dostatek volného místa, aby bylo zachováno tolik dní souborů, jak je popsáno v zásadách data, Azure File Sync bude pokračovat v vrstvení nejchladnějších souborů, dokud nebude splněno procento volného místa na svazku.
 
 Řekněme například, že máte zásady vrstvení založené na datu 60 dní a zásady volného místa svazku 20 %. Pokud po použití zásady data je na svazku méně než 20 % volného místa, spustí se zásada volného místa svazku a přepíše zásady data. To bude mít za následek další soubory jsou vrstvené, tak, že množství dat uchovávaných na serveru může být snížena z 60 dnů dat na 45 dnů. Naopak tato zásada vynutí vrstvení souborů, které spadají mimo časový rozsah, i když jste nedosáhli prahové hodnoty volného místa – takže soubor, který je starý 61 dní, bude vrstvený i v případě, že je váš svazek prázdný.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f50115732940eab14db30842be85b47cb4a552e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299489"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520779"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování spravovaných disků Azure na straně serveru
 
@@ -68,7 +68,7 @@ Prozatím mají klíče spravované zákazníkem následující omezení:
 
 - Pokud je tato funkce pro disk povolena, nelze ji zakázat.
     Pokud to potřebujete obejít, musíte [zkopírovat všechna data](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) na zcela jiný spravovaný disk, který nepoužívá klíče spravované zákazníkem.
-- Podporovány jsou pouze ["měkké" a "tvrdé" RSA klíče](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) velikosti 2080, žádné jiné klíče nebo velikosti.
+- Podporovány jsou pouze ["měkké" a "tvrdé" RSA klíče](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) velikosti 2048, žádné jiné klíče nebo velikosti.
 - Disky vytvořené z vlastních bitových kopií, které jsou šifrovány pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem, musí být šifrovány pomocí stejných klíčů spravovaných zákazníkem a musí být ve stejném předplatném.
 - Snímky vytvořené z disků, které jsou šifrovány pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem, musí být šifrovány stejnými klíči spravovanými zákazníky.
 - Vlastní bitové kopie šifrované pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem nelze použít ve sdílené galerii obrázků.

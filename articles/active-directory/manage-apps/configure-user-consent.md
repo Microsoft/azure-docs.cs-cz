@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443389"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519612"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu, jakým koncoví uživatelé uzaměňují souhlas s aplikacemi
 
@@ -143,9 +143,53 @@ Pomocí modulu Azure AD PowerShell Preview[(AzureADPreview)](https://docs.micros
     }
     ```
 
+## <a name="configure-risk-based-step-up-consent"></a>Konfigurace souhlasu s posílením na základě rizika
+
+Zpřísňování souhlasu založeného na rizicích pomáhá snížit vystavení uživatelů škodlivým aplikacím, které žádají [o nezákonný souhlas](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants). Pokud společnost Microsoft zjistí riskantní žádost o souhlas koncového uživatele, bude žádost vyžadovat "step-up" na souhlas správce místo. Tato funkce je ve výchozím nastavení povolena, ale bude mít za následek změnu chování pouze v případě, že je povolen souhlas koncového uživatele.
+
+Pokud je zjištěna neriziková žádost o souhlas, zobrazí se v výzvě k udělení souhlasu zpráva s oznámením, že je potřeba schválení správcem. Pokud je [pracovní postup žádosti o souhlas správce](configure-admin-consent-workflow.md) povolen, může uživatel odeslat žádost správci k dalšímu přezkoumání přímo z výzvy k souhlasu. Pokud není povolena, zobrazí se následující zpráva:
+
+* **AADSTS90094:** &lt;clientAppDisplayName&gt; potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit pouze správce. Please ask an admin to grant permission to this app before you can use it. (Test udělení souhlasu vyžaduje ve vaší organizaci pro přístup k prostředkům oprávnění, které může udělit pouze správce. Než budete moct tuto aplikaci použít, požádejte správce o udělení oprávnění.)
+
+V takovém případě bude auditová událost také zaznamenána s kategorií "ApplicationManagement", Typem aktivity "Souhlas s aplikací" a důvodem stavu "Zjištěna riziková aplikace".
+
+> [!IMPORTANT]
+> Správci by měli před schválením pečlivě [vyhodnotit všechny žádosti o souhlas,](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) zejména pokud společnost Microsoft zjistila riziko.
+
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Zakázání nebo opětovné povolení stupňovacího souhlasu založeného na rizicích pomocí prostředí PowerShell
+
+Pomocí modulu Azure AD PowerShell Preview[(AzureADPreview)](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)můžete zakázat souhlas správce požadovaný v případech, kdy Microsoft zjistí riziko, nebo ho znovu povolit, pokud byl dříve zakázán.
+
+To lze provést pomocí stejných kroků, jak je uvedeno výše pro [konfiguraci souhlasu vlastníka skupiny pomocí prostředí PowerShell](#configure-group-owner-consent-using-powershell), ale nahrazení jinou hodnotu nastavení. Existují tři rozdíly v krocích: 
+
+1. Seznamte se s hodnotami nastavení pro souhlas s posílením na základě rizik:
+
+    | Nastavení       | Typ         | Popis  |
+    | ------------- | ------------ | ------------ |
+    | _Aplikace BlockUserConsentForRiskyApps_   | Logická hodnota |  Příznak označující, zda bude souhlas uživatele blokován, když je zjištěn a riskantní požadavek. |
+
+2. V kroku 3 nahraďte následující hodnotu:
+
+    ```powershell
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
+    ```
+3. V kroku 5 nahraďte jednu z následujících možností:
+
+    ```powershell
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
+    ```
+
+    ```powershell
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
+    ```
+
 ## <a name="next-steps"></a>Další kroky
 
 [Konfigurace pracovního postupu souhlasu správce](configure-admin-consent-workflow.md)
+
+[Přečtěte si, jak spravovat souhlas s žádostmi a vyhodnocovat žádosti o souhlas](manage-consent-requests.md)
 
 [Udělení souhlasu správce pro celý klient s aplikací](grant-admin-consent.md)
 

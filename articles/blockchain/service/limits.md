@@ -1,15 +1,15 @@
 ---
 title: Limity služby Azure Blockchain
 description: Přehled limitů služeb a funkcí ve službě Azure Blockchain Service
-ms.date: 11/22/2019
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.reviewer: janders
-ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455657"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529578"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Limity ve službě Azure Blockchain
 
@@ -17,14 +17,18 @@ Služba Azure Blockchain Service má omezení služeb a funkcí, jako je počet 
 
 ## <a name="pricing-tier"></a>Cenová úroveň
 
-Maximální limity pro transakce a uzly validátoru závisí na tom, jestli zřídíte službu Azure Blockchain na základních nebo standardních cenových úrovních.
+Maximální limity pro transakce a uzly validátoru závisí na tom, jestli zřazujete službu Azure Blockchain na základních nebo standardních cenových úrovních.
 
 | Cenová úroveň | Maximální počet uzly transakcí | Maximální validátoru uzly |
 |:---|:---:|:---:|
-| Basic | 10 | 1 |
+| Základní | 10 | 1 |
 | Standard | 10 | 2 |
 
-Změna cenové úrovně mezi Basic a Standard po vytvoření člena není podporována.
+Vaše síť konsorcia by měla mít alespoň dva uzly standardní úrovně služby Azure Blockchain Service. Standardní uzly úrovně zahrnují dva validátoru uzly. Čtyři validátoru uzly jsou povinny splnit [Istanbul byzantské odolnosti proti chybám konsensu](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus).
+
+Základní úroveň je určenpro vývoj, testování a testování konceptů. Použijte standardní úroveň pro nasazení produkční třídy. Úroveň *Standard* byste měli použít také v případě, že používáte Správce dat Blockchain nebo odesíláte velký objem soukromých transakcí.
+
+Změna cenové úrovně mezi základní a standardní po vytvoření člena není podporována.
 
 ## <a name="storage-capacity"></a>Kapacita úložiště
 
@@ -50,7 +54,7 @@ Snížení velikosti úložiště hlavní knihy a protokolu není podporováno.
 
 * **Členy odebrané z konsorcia nelze znovu přidat.**
 
-    Spíše musí být znovu vyzváni, aby se připojili ke konsorciu a vytvořili nového člena. Jejich existující členský prostředek nejsou odstraněny zachovat historické transakce.
+    Spíše musí být znovu vyzváni, aby se připojili ke konsorciu a vytvořili nového člena. Jejich existující členské prostředky nejsou odstraněny zachovat historické transakce.
 
 * **Všichni členové v konsorciu musí používat stejnou verzi hlavní knihy.**
 

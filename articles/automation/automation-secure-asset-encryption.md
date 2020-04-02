@@ -1,6 +1,6 @@
 ---
-title: Šifrování zabezpečených prostředků v automatizaci
-description: Azure automation chrání zabezpečené prostředky pomocí několika úrovní šifrování. Ve výchozím nastavení se šifrování provádí pomocí klíčů spravovaných společností Microsoft. Zákazníci mohou nakonfigurovat své účty automatizace tak, aby k šifrování používaly klíče spravované zákazníkem. Tento článek popisuje podrobnosti o obou režimech šifrování a jak můžete přepínat mezi těmito dvěma.
+title: Šifrování zabezpečených prostředků v Azure Automation
+description: Azure Automation chrání zabezpečené prostředky pomocí několika úrovní šifrování. Ve výchozím nastavení se šifrování provádí pomocí klíčů spravovaných společností Microsoft. Zákazníci mohou nakonfigurovat své účty automatizace tak, aby k šifrování používaly klíče spravované zákazníkem. Tento článek popisuje podrobnosti o obou režimech šifrování a jak můžete přepínat mezi těmito dvěma.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,18 +9,18 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246236"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547759"
 ---
-# <a name="secure-assets-in-azure-automation"></a>Zabezpečení datových zdrojů v Azure Automation
+# <a name="encrypt-secure-assets-in-azure-automation"></a>Šifrování zabezpečených prostředků v Azure Automation
 
 Zabezpečené datové zdroje v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou chráněné v Azure Automation pomocí několika úrovní šifrování. Na základě klíče nejvyšší úrovně použitého pro šifrování existují dva modely pro šifrování:
--   Použití klíčů spravovaných společností Microsoft
--   Použití klíčů spravovaných zákazníkem
+-    Použití klíčů spravovaných společností Microsoft
+-    Použití klíčů spravovaných zákazníkem
 
 ## <a name="microsoft-managed-keys"></a>Klíče spravované společností Microsoft
 
@@ -40,7 +40,7 @@ Když povolíte šifrování pomocí klíčů spravovaných zákazníkem pro ú�
 
 Nový účet Automation je vždy šifrován pomocí klíčů spravovaných společností Microsoft. V době vytvoření účtu není možné povolit klíče spravované zákazníkem. Klíče spravované zákazníkem jsou uloženy v trezoru klíčů Azure a trezor klíčů musí být zřízen zásadami přístupu, které udělují oprávnění klíče ke spravované identitě přidružené k účtu Automation. Spravovaná identita je k dispozici pouze po vytvoření účtu úložiště.
 
-Když upravíte klíč používaný pro zabezpečené šifrování prostředků Azure Automation, povolíte nebo zakážete klíče spravované zákazníkem, aktualizujete verzi klíče nebo zadáte jiný klíč, změní se šifrování šifrovacího klíče účtu, ale zabezpečené prostředky v aplikaci váš účet Azure Automation není nutné znovu zašifrovat.
+Když upravíte klíč používaný pro zabezpečené šifrování prostředků Azure Automation, povolením nebo zakázáním klíčů spravovaných zákazníkem, aktualizací verze klíče nebo určením jiného klíče se změní šifrování šifrovacího klíče účtu, ale zabezpečené prostředky ve vašem účtu Azure Automation nemusí být znovu šifrovány.
 
 Následující tři části popisují mechanismy povolení klíčů spravovaných zákazníkem pro účet automatizace. 
 

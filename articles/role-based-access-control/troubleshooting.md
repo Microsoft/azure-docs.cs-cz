@@ -15,12 +15,12 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8aedc78772858815a18425fb1e6cb36a4600f647
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385091"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548286"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Poradce při potížích s Azure RBAC
 
@@ -80,7 +80,7 @@ $ras.Count
 
 ## <a name="access-denied-or-permission-errors"></a>Odepření přístupu nebo chyby oprávnění
 
-- Pokud se při pokusu o vytvoření prostředku zobrazí chyba oprávnění "Klient s ID objektu nemá oprávnění k provádění akce nad oborem (kód: AuthorizationFailed)", zkontrolujte, zda jste aktuálně přihlášeni k uživateli, kterému je přiřazena role, která má zápis oprávnění k prostředku ve vybraném oboru. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění jednotlivých předdefinovaných rolí najdete v tématu [Předdefinované role pro prostředky Azure](built-in-roles.md).
+- Pokud se při pokusu o vytvoření prostředku zobrazí chyba oprávnění "Klient s ID objektu nemá oprávnění k provádění akce nad oborem (kód: AuthorizationFailed)", zkontrolujte, zda jste aktuálně přihlášeni k uživateli, kterému je přiřazena role, která má oprávnění k zápisu k prostředku ve vybraném oboru. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění jednotlivých předdefinovaných rolí najdete v tématu [Předdefinované role pro prostředky Azure](built-in-roles.md).
 - Pokud se při pokusu o vytvoření nebo aktualizaci lístku podpory zobrazí chyba oprávnění "Nemáte oprávnění k vytvoření žádosti o podporu", zkontrolujte, `Microsoft.Support/supportTickets/write` zda jste aktuálně přihlášeni k uživateli, kterému je přiřazena role, která má oprávnění, například [Přispěvatel žádosti o podporu](built-in-roles.md#support-request-contributor).
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Přiřazení rolí s neznámým objektem zabezpečení
@@ -179,7 +179,7 @@ Tyto položky vyžadují přístup **pro zápis** do **plánu služby App Servic
 
 Tyto položky vyžadují přístup **pro zápis** do celé **skupiny prostředků,** která obsahuje váš web:  
 
-* Certifikáty a vazby SSL (certifikáty SSL lze sdílet mezi sítěmi ve stejné skupině prostředků a geografickém umístění)  
+* Certifikáty a vazby TLS/SSL (certifikáty TLS/SSL lze sdílet mezi sítěmi ve stejné skupině prostředků a geografickém umístění)  
 * Pravidla výstrah  
 * Nastavení automatického škálování  
 * Součásti přehledů aplikací  

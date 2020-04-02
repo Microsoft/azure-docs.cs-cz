@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/6/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fb731736941293a82baba86165a1205bd8a05c5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613981"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519037"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Nasazení proxy aplikací Azure AD pro zabezpečený přístup k interním aplikacím ve spravované doméně služby Azure AD Domain Services
 
@@ -25,8 +25,6 @@ Se službou Azure AD Domain Services (Azure AD DS) můžete zvedat a přesouvat 
 Pokud tečujete s proxy aplikací Azure AD a chcete se dozvědět víc, přečtěte si další informace najdete v [tématu Jak zajistit zabezpečený vzdálený přístup k interním aplikacím](../active-directory/manage-apps/application-proxy.md).
 
 Tento článek ukazuje, jak vytvořit a nakonfigurovat konektor proxy aplikací Azure AD, který poskytuje zabezpečený přístup k aplikacím ve spravované doméně Azure AD DS.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 

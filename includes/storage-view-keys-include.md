@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 9333bb36971fc28a23a443e50d191abeef05b758
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57368331e83111836e13b6c3796cacad9816e318
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78208256"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521284"
 ---
 Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo připojovacího řetězce z webu Azure Portal:
 
@@ -26,3 +26,5 @@ Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo p�
     ![Snímek obrazovky znázorňující zobrazení přístupových klíčů na webu Azure Portal](media/storage-view-keys-include/portal-connection-string.png)
 
 Můžete použít buď klíč pro přístup k Azure Storage, ale obecně je vhodné použít první klíč a rezervovat použití druhého klíče při otáčení klíčů.
+
+Chcete-li zobrazit nebo číst přístupové klíče účtu, musí být uživatel správcem služeb nebo musí být přiřazena role RBAC, která zahrnuje **microsoft.storage/storageaccounts/listkeys/action**. Some built-in RBAC roles that include this action are the **Owner**, **Contributor**, and **Storage Account Key Operator Service Role** roles. Další informace o roli správce služby najdete [v tématu Klasické role správce předplatného, role Azure RBAC a role Azure AD](../articles/role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích pro Azure Storage najdete v části **Úložiště** [ve integrovaných rolích Azure pro Azure RBAC](../articles/role-based-access-control/built-in-roles.md#storage).

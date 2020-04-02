@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bc4694928eceed57692a0d4b0469543c1a8f9678
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 6ca09ab0578fb88e443d6e9e1f920c22457eb042
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532752"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548471"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení v azure databázi pro MySQL
 Následující části popisují kapacitu, podporu modulu úložiště, podporu oprávnění, podporu příkazu pro manipulaci s daty a funkční limity v databázové službě. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) vztahující se na databázový stroj MySQL.
@@ -24,8 +24,8 @@ Minimální a maximální hodnoty několika populárních parametrů serveru jso
 
 |**Cenová úroveň**|**virtuální jádra (hlavní)**|**Výchozí hodnota**|**Hodnota min**|**Maximální hodnota**|
 |---|---|---|---|---|
-|Basic|1|50|10|50|
-|Basic|2|100|10|100|
+|Základní|1|50|10|50|
+|Základní|2|100|10|100|
 |Pro obecné účely|2|300|10|600|
 |Pro obecné účely|4|625|10|1250|
 |Pro obecné účely|8|1250|10|2500|
@@ -57,8 +57,8 @@ Další informace o tomto parametru naleznete v dokumentaci k [MySQL.](https://d
 
 |**Cenová úroveň**|**virtuální jádra (hlavní)**|**Výchozí hodnota**|**Hodnota min**|**Maximální hodnota**|
 |---|---|---|---|---|
-|Basic|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
-|Basic|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -77,8 +77,8 @@ Další informace o tomto parametru naleznete v dokumentaci k [MySQL.](https://d
 
 |**Cenová úroveň**|**virtuální jádra (hlavní)**|**Výchozí hodnota**|**Hodnota min**|**Maximální hodnota**|
 |---|---|---|---|---|
-|Basic|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
-|Basic|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -97,8 +97,8 @@ Další informace o tomto parametru naleznete v dokumentaci k [MySQL.](https://d
 
 |**Cenová úroveň**|**virtuální jádra (hlavní)**|**Výchozí hodnota**|**Hodnota min**|**Maximální hodnota**|
 |---|---|---|---|---|
-|Basic|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
-|Basic|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -117,8 +117,8 @@ Další informace o tomto parametru naleznete v dokumentaci k [MySQL.](https://d
 
 |**Cenová úroveň**|**virtuální jádra (hlavní)**|**Výchozí hodnota**|**Hodnota min**|**Maximální hodnota**|
 |---|---|---|---|---|
-|Basic|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
-|Basic|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -137,8 +137,8 @@ Další informace o tomto parametru naleznete v dokumentaci k [MySQL.](https://d
 
 |**Cenová úroveň**|**virtuální jádra (hlavní)**|**Výchozí hodnota**|**Hodnota min**|**Maximální hodnota**|
 |---|---|---|---|---|
-|Basic|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
-|Basic|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|1|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
+|Základní|2|Nelze konfigurovat v základní vrstvě|Není dostupné.|Není dostupné.|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|
@@ -150,6 +150,10 @@ Další informace o tomto parametru naleznete v dokumentaci k [MySQL.](https://d
 |Optimalizováno pro paměť|8|16777216|1024|536870912|
 |Optimalizováno pro paměť|16|16777216|1024|1073741824|
 |Optimalizováno pro paměť|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+Tabulky časových pásem mohou být `mysql.az_load_timezone` naplněny voláním uložené procedury z nástroje, jako je příkazový řádek MySQL nebo MySQL Workbench. Nawebu na [portál Azure nebo](howto-server-parameters.md#working-with-the-time-zone-parameter) články azure [cli,](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) jak volat uloženou proceduru a nastavit globální nebo relace na úrovni časových pásem.
 
 ## <a name="storage-engine-support"></a>Podpora paměťového motoru
 

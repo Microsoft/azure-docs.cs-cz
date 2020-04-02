@@ -7,25 +7,25 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900bf815917a4b7c9841860d663a2183b1ab71b3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065571"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529671"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Konfigurace spravovaných identit pro cluster Azure Data Explorer
 
 [Spravovaná identita ze služby Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) umožňuje vašemu clusteru snadný přístup k dalším prostředkům chráněným aad, jako je azure key vault. Identita je spravovaná platformou Azure a nevyžaduje, abyste zmiřování nebo střídání žádné tajné klíče. Tento článek ukazuje, jak vytvořit spravovanou identitu pro clustery Azure Data Explorer. Konfigurace spravované identity je aktuálně podporována pouze pro [povolení klíčů spravovaných zákazníky pro váš cluster](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault).
 
 > [!Note]
-> Spravované identity pro Azure Data Explorer se nebudou chovat podle očekávání, pokud se vaše aplikace migruje mezi předplatnými nebo tenanty. Aplikace bude muset získat novou identitu, kterou lze provést [zakázáním](#remove-a-system-assigned-identity) a [opětovným povolením](#add-a-system-assigned-identity) funkce. Přístup zásady navazujících prostředků bude také muset být aktualizovány používat novou identitu.
+> Spravované identity pro Azure Data Explorer se nebudou chovat podle očekávání, pokud se váš cluster Azure Data Explorer migruje mezi předplatnými nebo tenanty. Aplikace bude muset získat novou identitu, kterou lze provést [zakázáním](#disable-a-system-assigned-identity) a [opětovným povolením](#add-a-system-assigned-identity) funkce. Přístup zásady navazujících prostředků bude také muset být aktualizovány používat novou identitu.
 
 ## <a name="add-a-system-assigned-identity"></a>Přidání systémově přiřazené identity
                                                                                                     
 Přiřaďte systémem přiřazenou identitu, která je svázána s vaším clusterem a je odstraněna, pokud je váš cluster odstraněn. Cluster může mít pouze jednu identitu přiřazenou systému. Vytvoření clusteru se systémem přiřazenou identitou vyžaduje nastavení další vlastnosti v clusteru. Systémem přiřazená identita se přidává pomocí c#, arm šablon nebo portálu Azure, jak je podrobně popsáno níže.
 
-# <a name="azure-portal"></a>[Portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[portál Azure](#tab/portal)
 
 ### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>Přidání systémově přiřazené identity pomocí portálu Azure
 
@@ -56,7 +56,7 @@ Přiřaďte systémem přiřazenou identitu, která je svázána s vaším clust
 
     ![Systém přiřazenou identitu na](media/managed-identities/system-assigned-identity-on.png)
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 ### <a name="add-a-system-assigned-identity-using-c"></a>Přidání systémově přiřazené identity pomocí c #
 
@@ -164,13 +164,13 @@ Po vytvoření clusteru má následující další vlastnosti:
 
 ---
 
-## <a name="remove-a-system-assigned-identity"></a>Odebrání systémově přiřazené identity
+## <a name="disable-a-system-assigned-identity"></a>Zakázání systémově přiřazené identity
 
 Odebráním identity přiřazené systému ji také odstraníte z aad. Systémem přiřazené identity jsou také automaticky odebrány z aad při odstranění prostředku clusteru. Systémově přiřazená identita může být odebrána zakázáním funkce.  Systémem přiřazená identita se odebere pomocí c#, arm šablony nebo portál Azure, jak je podrobně popsáno níže.
 
-# <a name="azure-portal"></a>[Portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[portál Azure](#tab/portal)
 
-### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>Odebrání systémově přiřazené identity pomocí portálu Azure
+### <a name="disable-a-system-assigned-identity-using-the-azure-portal"></a>Zakázání systémově přiřazené identity pomocí portálu Azure
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 1. V levém podokně portálu vyberte**Identita** **nastavení.** > 
@@ -181,7 +181,7 @@ Odebráním identity přiřazené systému ji také odstraníte z aad. Systémem
 
     ![Systém přiřazená identita vypnuta](media/managed-identities/system-assigned-identity.png)
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 ### <a name="remove-a-system-assigned-identity-using-c"></a>Odebrání systémově přiřazené identity pomocí c #
 

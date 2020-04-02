@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: dcc2c38238f707a5d43cde03502c589add9461b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335927"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547362"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě pak můžete připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure nazačátku s informacemi zde: [Azure Virtual Network Overview](../virtual-network/virtual-networks-overview.md).
@@ -102,7 +102,7 @@ Následuje seznam běžných problémů s chybnou konfigurací, ke kterým můž
 * **Vlastní nastavení serveru DNS**: Služba api management závisí na několika službách Azure. Když je správa rozhraní API hostovaná ve virtuální síti s vlastním serverem DNS, musí vyřešit názvy hostitelů těchto služeb Azure. Postupujte podle [těchto](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) pokynů k vlastnímu nastavení DNS. Podívejte se na níže uvedenou tabulku portů a další požadavky na síť.
 
 > [!IMPORTANT]
-> Pokud plánujete použít vlastní DNS server (y) pro virtuální síť, měli byste ji nastavit **před** nasazením služby api management do něj. V opačném případě je třeba aktualizovat službu API Management při každé změně serveru DNS spuštěním [operace Použít konfiguraci sítě](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates)
+> Pokud plánujete použít vlastní DNS server (y) pro virtuální síť, měli byste ji nastavit **před** nasazením služby api management do něj. V opačném případě je třeba aktualizovat službu API Management při každé změně serveru DNS spuštěním [operace Použít konfiguraci sítě](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
 * **Porty potřebné pro správu rozhraní API**: Příchozí a odchozí provoz do podsítě, ve které je nasazena správa rozhraní API, lze řídit pomocí [skupiny zabezpečení sítě][Network Security Group]. Pokud některý z těchto portů nejsou k dispozici, správa rozhraní API nemusí fungovat správně a může být nepřístupný. S jeden nebo více z těchto portů blokovánje je další běžný problém s chybnou konfigurací při použití správy rozhraní API s virtuální sítí.
 
@@ -133,6 +133,8 @@ Následuje seznam běžných problémů s chybnou konfigurací, ke kterým můž
 + **Přístup k DNS**: Pro komunikaci se servery DNS je vyžadován odchozí přístup na portu 53. Pokud na druhém konci brány VPN existuje vlastní server DNS, musí být server DNS dostupný ze správy rozhraní API pro hostování podsítě.
 
 + **Metriky a monitorování stavu:** Odchozí síťové připojení ke koncovým bodům Azure Monitoring, které řeší v následujících doménách:
+
++ **Místní značky služeb**": Pravidla nsg umožňující odchozí připojení ke značkám služby Storage, SQL a EventHubs mohou používat místní verze těchto značek odpovídající oblasti obsahující instanci správy rozhraní API (například Storage.WestUS pro instanci správy rozhraní API v oblasti Západní USA). V nasazení s více oblastmi by skupina nsg v každé oblasti měla povolit provoz na značky služeb pro tuto oblast.
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -170,7 +172,7 @@ Následuje seznam běžných problémů s chybnou konfigurací, ke kterým můž
   > [!IMPORTANT]
   > Po ověření připojení nezapomeňte před nasazením správy rozhraní API do podsítě odebrat všechny prostředky nasazené v podsíti.
 
-* **Přírůstkové aktualizace**: Při provádění změn v síti, odkazovat na [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus), chcete-li ověřit, že služba api management neztratil přístup k žádné z kritických prostředků, které závisí na. Stav připojení by měl být aktualizován každých 15 minut.
+* **Přírůstkové aktualizace**: Při provádění změn v síti, odkazovat na [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus), chcete-li ověřit, že služba api management neztratil přístup k žádné z kritických prostředků, které závisí na. Stav připojení by měl být aktualizován každých 15 minut.
 
 * **Odkazy na navigaci prostředků**: Při nasazování do podsítě stylu Správce prostředků správa rozhraní API rezervuje podsíť vytvořením odkazu navigace prostředků. Pokud podsíť již obsahuje prostředek od jiného zprostředkovatele, nasazení **se nezdaří**. Podobně když přesunete službu správy rozhraní API do jiné podsítě nebo ji odstraníte, odebereme toto navigační propojení prostředků.
 

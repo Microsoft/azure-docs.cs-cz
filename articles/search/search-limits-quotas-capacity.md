@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54905e201ee7a6dbf4c6837960a6e0b63057ea9
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282975"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549054"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Maximální limity pro úložiště, úlohy a množství indexů a dalších obj
 > [!NOTE]
 > července jsou všechny úrovně obecně dostupné, včetně úrovně Optimalizované pro úložiště. Všechny ceny naleznete na stránce [Podrobnosti o cenách.](https://azure.microsoft.com/pricing/details/search/)
 
-  S3 S3 S3 High Density (S3 HD) je navržen pro konkrétní úlohy: [víceklientské](search-modeling-multitenant-saas-applications.md) a velké množství malých indexů (jeden milion dokumentů na index, tři tisíce indexů na službu). Tato úroveň neposkytuje [funkci indexeru](search-indexer-overview.md). Na S3 HD, ingestování dat musí využít přístup push pomocí volání rozhraní API pro nabízení dat ze zdroje do indexu. 
+  S3 S3 S3 High Density (S3 HD) je navržen pro konkrétní úlohy: [víceklientské](search-modeling-multitenant-saas-applications.md) a velké množství malých indexů (tři tisíce indexů na službu). Tato úroveň neposkytuje [funkci indexeru](search-indexer-overview.md). Na S3 HD, ingestování dat musí využít přístup push pomocí volání rozhraní API pro nabízení dat ze zdroje do indexu. 
 
 > [!NOTE]
 > Služba je zřízena na určité úrovni. Přechodové úrovně pro získání kapacity zahrnuje zřizování nové služby (neexistuje žádný upgrade na místě). Další informace naleznete [v tématu Volba skladové položky nebo úrovně](search-sku-tier.md). Další informace o úpravě kapacity v rámci služby, kterou jste už zřízené, najdete v [tématu Škálování úrovní prostředků pro dotaz a indexování úloh](search-capacity-planning.md).
@@ -61,38 +61,16 @@ Maximální limity pro úložiště, úlohy a množství indexů a dalších obj
 
 <sup>2</sup> S velmi velký počet prvků ve složitých kolekcí na dokument aktuálně způsobuje vysoké využití úložiště. Jedná se o známý problém. Do té doby je limit 3000 bezpečnou horní mez pro všechny úrovně služeb. Toto omezení je vynuceno pouze pro operace indexování, které využívají nejstarší obecně`2019-05-06`dostupnou verzi rozhraní API (GA), která podporuje pole komplexního typu ( ) a dále. Chcete-li nepřerušit klienty, kteří mohou používat starší verze rozhraní PREVIEW API (které podporují pole s komplexním typem), nebudeme vynucovat tento limit pro operace indexování, které používají tyto verze rozhraní API preview. Všimněte si, že verze rozhraní PREVIEW rozhraní API nejsou určeny pro produkční scénáře a důrazně doporučujeme zákazníkům přejít na nejnovější verzi rozhraní GA API.
 
+> [!NOTE]
+> Zatímco maximální kapacita jednoho indexu je obvykle omezena dostupným úložištěm, existují maximální horní hranice celkového počtu dokumentů, které mohou být uloženy v jednom indexu. Tento limit je přibližně 24 miliard dokumentů na index pro služby basic, S1, S2 a S3 vyhledávání a 2 miliardy dokumentů na index pro vyhledávací služby S3HD. Každý prvek komplexní kolekce počítat jako samostatné dokumenty pro účely těchto limitů.
+
 <a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Omezení dokumentů 
 
-Od října 2018 již neexistují žádné limity dokumentů pro žádnou novou službu vytvořenou na libovolné fakturovatelné úrovni (Basic, S1, S2, S3, S3 HD) v libovolné oblasti. Zatímco většina regionů má od listopadu/prosince 2017 neomezený počet dokumentů, několik regionů po tomto datu nadále ukládala limity pro dokumenty. V závislosti na tom, kdy a kde jste vyhledávací službu vytvořili, je možné, že používáte službu, která stále podléhá omezením dokumentů.
+Od října 2018 již neexistují žádné limity počtu dokumentů pro žádnou novou službu vytvořenou na libovolné fakturovatelné úrovni (Basic, S1, S2, S3, S3 HD) v libovolné oblasti. Starší služby vytvořené před říjnem 2018 mohou stále podléhat limitům počtu dokumentů.
 
 Chcete-li zjistit, zda má vaše služba omezení dokumentů, použijte [rozhraní REST API statistiky služby GET](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). Limity dokumentu se projeví v `null` odpovědi, s označující žádné limity.
-
-> [!NOTE]
-> I když neexistují žádné omezení dokumentů specifické pro skladovou položku, každý index je stále předmětem maximální hospodařilo maximální bezpečný limit pro zajištění stability služby. Tento limit pochází od Lucene. Každý dokument Azure Cognitive Search je interně indexován jako jeden nebo více dokumentů Lucene. Počet dokumentů Lucene na vyhledávací dokument závisí na celkovém počtu prvků ve složitých sběrných polích. Každý prvek je indexován jako samostatný dokument Lucene. Například dokument se 3 prvky ve složitém poli kolekce bude indexován jako 4 dokumenty Lucene - 1 pro samotný dokument a 3 pro prvky. Maximální počet dokumentů Lucene je zhruba 25 miliard na index.
-
-### <a name="regions-previously-having-document-limits"></a>Oblasti, které dříve měly limity dokumentů
-
-Pokud portál označuje limit dokumentu, vaše služba byla vytvořena před koncem roku 2017 nebo byla vytvořena v datovém centru s využitím clusterů s nižší kapacitou pro hostování služeb Azure Cognitive Search:
-
-+ Austrálie – východ
-+ Východní Asie
-+ Indie – střed
-+ Japonsko – západ
-+ USA – středozápad
-
-Pro služby podléhající limitům pro doklady platí tato maximální omezení:
-
-|  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
-|-------|-------|----|----|----|-------|
-|  10 000 |1&nbsp;milion |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
-
-Pokud má vaše služba omezení, která vás blokují, vytvořte novou službu a pak znovu publikujte veškerý obsah do této služby. Neexistuje žádný mechanismus pro bezproblémové opětovné zřízení služby na nový hardware na pozadí.
-
-> [!Note] 
-> Pro služby S3 s vysokou hustotou vytvořené po konci roku 2017 byl dokument 200 milionů na oddíl odebrán, ale limit 1 milion dokumentů na index zůstává.
-
 
 ### <a name="document-size-limits-per-api-call"></a>Omezení velikosti dokumentu na volání rozhraní API
 
@@ -136,7 +114,7 @@ Maximální provozní doby existují poskytnout rovnováhu a stabilitu služby j
 
 Maximální počet povolených map synonym se liší podle cenové úrovně. Každé pravidlo může mít až 20 rozšíření, kde rozšíření je ekvivalentní termín. Například vzhledem k tomu, "kočka", sdružení s "kitty", "kočičí", a "felis" (rod pro kočky) by se počítají jako 3 expanze.
 
-| Prostředek | Free | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| Prostředek | Free | Základní | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximální mapy synonym |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximální počet pravidel na mapě |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |

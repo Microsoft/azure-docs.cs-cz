@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052075"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520981"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -59,7 +59,7 @@ Personalista použil výztuže učení vybrat jednu nejlepší akci, známý jak
 
 [Rozhraní](https://go.microsoft.com/fwlink/?linkid=2092082) API **ranku** personalisty se nazývá _pokaždé, když_ prezentujete obsah v reálném čase. Tento událost se označuje jako **událost**, označená _ID události_.
 
-Rozhraní [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) **pro odměňování** personalisty lze volat v reálném čase nebo zpožděno tak, aby lépe vyhovovalo vaší infrastruktuře. Skóre odměny určujete na základě vašich obchodních potřeb. To může být jedna hodnota, například 1 pro dobro a 0 pro špatné, nebo číslo vyrobené algoritmem, který vytvoříte s ohledem na vaše obchodní cíle a metriky.
+Rozhraní [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) **pro odměňování** personalisty lze volat v reálném čase nebo zpožděno tak, aby lépe vyhovovalo vaší infrastruktuře. Skóre odměny určujete na základě vašich obchodních potřeb. Skóre odměny se pohybuje mezi 0 a 1. To může být jedna hodnota, například 1 pro dobro a 0 pro špatné, nebo číslo vyrobené algoritmem, který vytvoříte s ohledem na vaše obchodní cíle a metriky.
 
 ## <a name="personalizer-content-requirements"></a>Požadavky na personalizaci obsahu
 
@@ -101,6 +101,6 @@ Vzhledem k tomu, že personalista používá kolektivní informace téměř v re
 * [Co je posilování učení?](concepts-reinforcement-learning.md)
 * [Informace o funkcích a akcích pro žádost o hodnost](concepts-features.md)
 * [Informace o určení skóre žádosti o odměnu](concept-rewards.md)
-* [Rychlé starty](sdk-learning-loop.md)
+* [Rychlý start](sdk-learning-loop.md)
 * [Tutorial](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Použití interaktivní ukázky](https://personalizationdemo.azurewebsites.net/)

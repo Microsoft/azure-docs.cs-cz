@@ -18,12 +18,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127539"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521557"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Kurz: Odesílání nabízených oznámení do zařízení Android pomocí Firebase
 
@@ -31,7 +31,7 @@ ms.locfileid: "80127539"
 
 Tento kurz ukazuje, jak používat Azure Notification Hubs a Firebase Cloud Messaging (FCM) k nabízení oznámení do aplikace pro Android. V tomto kurzu vytvoříte prázdnou aplikaci pro Android, která bude přijímat nabízená oznámení pomocí služby Firebase Cloud Messaging (FCM).
 
-Vyplněný kód pro tento kurz lze stáhnout [z GitHubu](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples/FCMTutorialApp).
+Vyplněný kód pro tento kurz lze stáhnout [z GitHubu](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp).
 
 V tomto kurzu provedete následující kroky:
 

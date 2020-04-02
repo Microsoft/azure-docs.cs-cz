@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c50e82647b22a18edee92f47abc1d136670cacc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441263"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519672"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Node.js pomocí sady JavaScript SDK ke správě účtu ROZHRANÍ SQL API v Db Služby Azure Cosmos 
 
@@ -83,7 +83,7 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
    npm start
    ```
 
-1. Novou aplikaci můžete zobrazit tak, [http://localhost:3000](http://localhost:3000)že přejdete v prohlížeči do aplikace .
+1. Pokud si chcete zobrazit novou aplikaci, přejděte v prohlížeči na adresu `http://localhost:3000`.
    
    ![Výuka Node.js – snímek obrazovky aplikace Hello World v okně prohlížeče](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -359,7 +359,7 @@ Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, k
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Vytvoření uživatelského rozhraní
 
-Teď vytvoříme uživatelské rozhraní, aby uživatelé mohli s aplikací pracovat. Aplikace Express, kterou jsme vytvořili v předchozích částech, používá jako zobrazovací modul **Jade**.
+Nyní pojďme vytvořit uživatelské rozhraní tak, aby uživatel může pracovat s aplikací. Aplikace Express, kterou jsme vytvořili v předchozích částech, používá jako zobrazovací modul **Jade**.
 
 1. Soubor **layout.jade** v adresáři **views** slouží jako globální šablona pro ostatní soubory **.jade**. V tomto kroku ho upravíte tak, aby používal sadu nástrojů pro návrh webu Twitter Bootstrap.  
 

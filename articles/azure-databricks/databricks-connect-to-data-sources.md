@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79a821a4c8fe4cb2d048f0dcb0a6e091462a1779
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74129381"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548788"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Připojení ke zdrojům dat z Azure Databricks
 
@@ -43,11 +43,11 @@ Následující seznam obsahuje zdroje dat v Azure, které můžete použít s Az
 
     Tento odkaz obsahuje pokyny, jak používat [konektor Azure Cosmos DB Spark](https://github.com/Azure/azure-cosmosdb-spark) z Azure Databricks pro přístup k datům v Azure Cosmos DB.
 
-- [Centra událostí Azure](/azure/event-hubs/event-hubs-spark-connector)
+- [Azure Event Hubs](/azure/event-hubs/event-hubs-spark-connector)
 
     Tento odkaz obsahuje pokyny, jak používat [konektor Azure Event Hubs Spark](https://github.com/Azure/azure-event-hubs-spark) z Azure Databricks pro přístup k datům v Azure Event Hubs.
 
-- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
+- [Azure SQL Data Warehouse](/azure/synapse-analytics/sql-data-warehouse/)
 
     Tento odkaz obsahuje pokyny, jak používat konektor Azure SQL Data Warehouse pro připojení z Azure Databricks.
     

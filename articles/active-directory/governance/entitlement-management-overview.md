@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128551"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546166"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -101,7 +101,7 @@ Následující diagram znázorňuje příklad různých prvků správy nároků.
 
 Balíčky přístupu nenahrazují jiné mechanismy pro přiřazení přístupu.  Jsou nejvhodnější v situacích, jako jsou následující:
 
-- Zaměstnanci potřebují časově omezený přístup pro konkrétní úkol.  Můžete například použít skupinové licencování a dynamickou skupinu, abyste zajistili, že všichni zaměstnanci mají poštovní schránku Exchange Online, a pak použít přístupové balíčky pro situace, ve kterých zaměstnanci potřebují další přístup, například ke čtení prostředků oddělení z jiného Oddělení.
+- Zaměstnanci potřebují časově omezený přístup pro konkrétní úkol.  Můžete například použít skupinové licencování a dynamickou skupinu, abyste zajistili, že všichni zaměstnanci mají poštovní schránku Exchange Online, a pak použít přístupové balíčky pro situace, ve kterých zaměstnanci potřebují další přístup, například ke čtení prostředků oddělení z jiného oddělení.
 - Přístup musí být schválen manažerem zaměstnance nebo jinými určenými osobami.
 - Oddělení chtějí spravovat své vlastní přístupové politiky pro své zdroje bez zapojení IT.  
 - Dvě nebo více organizací spolupracují na projektu a v důsledku toho bude potřeba přinést více uživatelů z jedné organizace prostřednictvím Azure AD B2B, aby měli přístup k prostředkům jiné organizace.
@@ -132,15 +132,16 @@ Chcete-li lépe porozumět správě nároků a jeho dokumentaci, můžete se vr�
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Specializované cloudy, jako je Azure Government, Azure Germany a Azure China 21Vianet, nejsou momentálně dostupné pro použití.
+Specializované cloudy, jako je Azure Germany a Azure China 21Vianet, nejsou momentálně dostupné pro použití.
 
 ### <a name="how-many-licenses-must-you-have"></a>Kolik licencí musíte mít?
 
-Ujistěte se, že váš adresář má alespoň tolik licencí Azure AD Premium P2, jako máte zaměstnance, kteří budou provádět následující úkoly:
+Ujistěte se, že váš adresář má alespoň tolik licencí Azure AD Premium P2 jako vy:
 
 - Uživatelé, kteří **mohou** požádat o přístupový balíček.
 - Uživatelé a uživatelé typu Host, kteří požadují přístupový balíček.
 - Uživatelé a uživatelé typu Host, kteří schvalují žádosti o přístupový balíček.
+- Uživatelé a uživatelé typu Host, kteří mají přímé přiřazení k přístupovému balíčku.
 
 Licence Azure AD Premium P2 **nejsou** vyžadovány pro následující úkoly:
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266777"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546320"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Šifrování disku Azure pro virtuální počítače s Windows 
 
@@ -30,11 +30,13 @@ Základy Azure Disk Encryption pro Windows se můžete naučit během několika 
 
 ## <a name="supported-vms-and-operating-systems"></a>Podporované virtuální počítače a operační systémy
 
-### <a name="supported-vm-sizes"></a>Podporované velikosti virtuálních počítačů
+### <a name="supported-vms"></a>Podporované virtuální hody
 
 Virtuální počítače se systémem Windows jsou k dispozici v [řadě velikostí](sizes-general.md). Azure Disk Encryption není k dispozici na [základních virtuálních počítačích řady A](https://azure.microsoft.com/pricing/details/virtual-machines/series/)nebo na virtuálních počítačích s méně než 2 GB paměti.
 
 Azure Disk Encryption je taky k dispozici pro virtuální počítače s úložištěm premium.
+
+Azure Disk Encryption není k dispozici na [virtuálních počítačích generace 2](generation-2.md#generation-1-vs-generation-2-capabilities)a [Lsv2 řady](../lsv2-series.md)). Další výjimky najdete [v tématu Šifrování disku Azure: Nepodporované scénáře](disk-encryption-windows.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 

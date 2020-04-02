@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5a21f36136c6f1d77a2e9cb9108f539c9fb39334
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4c93ffa7828710c26200408666c03a28fd7f3d3c
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77134908"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549297"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Úvodní příručka: Vytvoření aplikace Java pro správu dat rozhraní API Azure Cosmos DB Cassandra
 
@@ -66,7 +66,7 @@ Teď přejděme k práci s kódem. Teď naklonujeme aplikaci Cassandra z GitHub
 
 Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). Tyto úryvky jsou převzaty ze souboru *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java.*  
 
-* Jsou nastavené hostitel Cassandra, port, uživatelské jméno, heslo a možnosti SSL. Informace o připojovacím řetězci pocházejí ze stránky připojovacího řetězce na webu Azure Portal.
+* Jsou nastaveny možnosti hostitele Cassandra, portu, uživatelského jména, hesla a tls/ssl. Informace o připojovacím řetězci pocházejí ze stránky připojovacího řetězce na webu Azure Portal.
 
    ```java
    cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
@@ -168,9 +168,9 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
-5. Pokud chcete použít konkrétní certifikát SSL, na řádku 6 nahraďte `<SSL key store file location>` umístěním certifikátu SSL. Pokud není uvedená hodnota, použije se certifikát JDK nainstalovaný v <JAVA_HOME>/jre/lib/security/cacerts. 
+5. Na řádku 6, pokud chcete použít konkrétní certifikát TLS/SSL, nahraďte `<SSL key store file location>` umístěním certifikátu TLS/SSL. Pokud není uvedená hodnota, použije se certifikát JDK nainstalovaný v <JAVA_HOME>/jre/lib/security/cacerts. 
 
-6. Pokud změníte řádek 6 pro použití konkrétního certifikátu SSL, aktualizujte řádek 7, aby používal heslo pro tento certifikát. 
+6. Pokud jste změnili řádek 6 na použití konkrétního certifikátu TLS/SSL, aktualizujte řádek 7, abyste použili heslo pro tento certifikát. 
 
 7. Uložte soubor *config.properties.*
 

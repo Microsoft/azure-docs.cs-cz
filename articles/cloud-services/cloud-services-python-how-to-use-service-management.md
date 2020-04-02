@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70141472"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547582"
 ---
 # <a name="use-service-management-from-python"></a>Použití správy služeb z Pythonu
 Tato příručka ukazuje, jak programově provádět běžné úlohy správy služeb z Pythonu. Třída **ServiceManagementService** v [azure sdk pro Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k velké části funkcí souvisejících se správou služeb, která je dostupná na webu Azure [Portal][management-portal]. Pomocí této funkce můžete vytvářet, aktualizovat a odstraňovat cloudové služby, nasazení, služby správy dat a virtuální počítače. Tato funkce může být užitečná při vytváření aplikací, které potřebují programový přístup ke správě služeb.
@@ -30,10 +30,10 @@ Rozhraní AZURE Service Management API poskytuje programový přístup k velké 
 Chcete-li používat rozhraní API pro správu služeb, musíte [vytvořit účet Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="concepts"></a><a name="Concepts"> </a>Koncepty
-Sada Azure SDK pro Python zabalí [rozhraní API pro správu služeb][svc-mgmt-rest-api], což je rozhraní REST API. Všechny operace rozhraní API jsou prováděny přes SSL a vzájemně ověřeny pomocí certifikátů X.509 v3. Ke službě pro správu se dá přistupovat v rámci služby spuštěné v Azure. Lze také přistupovat přímo přes Internet z libovolné aplikace, která může odeslat požadavek HTTPS a přijímat odpověď HTTPS.
+Sada Azure SDK pro Python zabalí [rozhraní API pro správu služeb][svc-mgmt-rest-api], což je rozhraní REST API. Všechny operace rozhraní API jsou prováděny přes TLS a vzájemně ověřeny pomocí certifikátů X.509 v3. Ke službě pro správu se dá přistupovat v rámci služby spuštěné v Azure. Lze také přistupovat přímo přes Internet z libovolné aplikace, která může odeslat požadavek HTTPS a přijímat odpověď HTTPS.
 
 ## <a name="installation"></a><a name="Installation"> </a>Instalace
-Všechny funkce popsané v tomto článku `azure-servicemanagement-legacy` jsou k dispozici v balíčku, který můžete nainstalovat pomocí pip. Další informace o instalaci (například pokud jste v Pythonu noví), najdete [v tématu Instalace Pythonu a sady Azure SDK](/azure/python/python-sdk-azure-install).
+Všechny funkce popsané v tomto článku `azure-servicemanagement-legacy` jsou k dispozici v balíčku, který můžete nainstalovat pomocí pip. Další informace o instalaci (například pokud jste v Pythonu noví), najdete [v tématu Instalace Pythonu a sady Azure SDK](/azure/developer/python/azure-sdk-install).
 
 ## <a name="connect-to-service-management"></a><a name="Connect"> </a>Připojení ke správě služeb
 Chcete-li se připojit ke koncovému bodu správy služeb, potřebujete ID předplatného Azure a platný certifikát správy. ID předplatného můžete získat prostřednictvím [portálu Azure][management-portal].

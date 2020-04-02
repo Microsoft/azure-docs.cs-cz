@@ -1,6 +1,6 @@
 ---
 title: Použití Akka Streams pro Apache Kafka - Azure Event Hubs| Dokumenty společnosti Microsoft
-description: Tento článek obsahuje informace o tom, jak připojit Akka Streams k centru událostí Azure s povoleným Apache Kafka.
+description: Tento článek obsahuje informace o tom, jak připojit Akka Streams do centra událostí Azure.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 729e78959f93b1aa1563a049a64c553929c4f97e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283629"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521821"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Použití Akka Streams se službou Event Hubs pro Apache Kafka
 Tento kurz ukazuje, jak připojit Akka Streams k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs pro Kafka podporuje [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -49,7 +49,7 @@ Chcete-li dokončit tento kurz, ujistěte se, že máte následující předpokl
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Obor názvů Event Hubs je vyžadován k odesílání nebo přijímání z libovolné služby Event Hubs. Informace o získání koncového bodu Kafka Centers centra událostí najdete v tématu [Vytvoření centra událostí S Povoleno kafka.](event-hubs-create.md) Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
+Obor názvů Event Hubs je vyžadován k odesílání nebo přijímání z libovolné služby Event Hubs. Podrobné informace najdete [v tématu Vytvoření centra událostí.](event-hubs-create.md) Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
 
 ## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 

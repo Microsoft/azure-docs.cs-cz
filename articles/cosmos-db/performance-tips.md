@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 68a9a7d5f90831bb2e0c9284cb71ae4b92edffad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2743af2f8499aec04d8b6b733e1ba4c2a82083
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131407"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546077"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -54,7 +54,7 @@ Pokud testujete na vysokých úrovních propustnost (více než 50 000 RU/s), m�
 > [!NOTE] 
 > Vysoké využití procesoru může způsobit zvýšenou latenci a výjimky časového limitu požadavku.
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 <a id="direct-connection"></a>
 
 **Zásady připojení: Použití režimu přímého připojení**
@@ -80,7 +80,7 @@ Při použití protokolu TCP v přímém režimu, kromě portů brány, je třeb
 |brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), MongoDB (10250, 10255, 10256), Tabulka (443), Cassandra (10350), Graf (443)    |
 |Direct    |     TCP    |  .NET SDK    | Přístavy v rozsahu 10000 až 20000 |
 
-Azure Cosmos DB nabízí jednoduchý, otevřený programovací model RESTful přes protokol HTTPS. Kromě toho nabízí efektivní protokol TCP, který je také RESTful ve svém komunikačním modelu a je k dispozici prostřednictvím sady .NET client SDK. Protokol TCP používá protokol SSL pro počáteční ověřování a šifrování přenosů. Pro dosažení nejlepšího výkonu použijte protokol TCP, pokud je to možné.
+Azure Cosmos DB nabízí jednoduchý, otevřený programovací model RESTful přes protokol HTTPS. Kromě toho nabízí efektivní protokol TCP, který je také RESTful ve svém komunikačním modelu a je k dispozici prostřednictvím sady .NET client SDK. Protokol TCP používá protokol TLS pro počáteční ověřování a šifrování přenosů. Pro dosažení nejlepšího výkonu použijte protokol TCP, pokud je to možné.
 
 Pro sdk V3 nakonfigurujete `CosmosClient` režim `CosmosClientOptions`připojení při vytváření instance v aplikaci . Nezapomeňte, že přímý režim je výchozí.
 

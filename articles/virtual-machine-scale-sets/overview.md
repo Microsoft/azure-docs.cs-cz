@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1e0f7c65504637cd79a3183ce9785c73b55f6a51
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76273695"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548563"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co jsou škálovací sady virtuálních počítačů?
 Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat s ohledem na požadavky nebo definovaný plán. Škálovací sady zajišťují vysokou dostupnost aplikací a umožňují centrálně spravovat, konfigurovat a aktualizovat velký počet virtuálních počítačů. S využitím škálovacích sad virtuálních počítačů můžete sestavovat rozsáhlé služby pro oblasti, jako jsou výpočty, velké objemy dat a úlohy kontejneru.
@@ -27,7 +27,7 @@ Za účelem zajištění redundance a vyššího výkonu se aplikace obvykle dis
 - **Snadné vytváření a správa několika virtuálních počítačů**
     - Pokud máte mnoho virtuálních počítačů, na kterých se vaše aplikace spouští, je důležité v celém prostředí udržovat konzistentní konfiguraci. Pro zajištění spolehlivého výkonu aplikace by všechny virtuální počítače měly mít stejnou velikost, konfiguraci disků a instalace aplikace.
     - V případě škálovacích sad se všechny instance virtuálních počítačů vytvářejí s využitím stejné základní image operačního systému a konfigurace. Tento přístup umožňuje snadnou správu stovek virtuálních počítačů bez dalších úloh konfigurace nebo správy sítě.
-    - Škálovací sady podporují použití [nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md) pro účely základní distribuce provozu úrovně 4 a službu [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) pro pokročilejší distribuci provozu úrovně 7 a ukončování protokolu SSL.
+    - Škálovací sady podporují použití [Azure balancer](../load-balancer/load-balancer-overview.md) pro základní distribuci provozu vrstvy 4 a [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) pro pokročilejší distribuci provozu vrstvy 7 a ukončení TLS.
 
 - **Zajištění vysoké dostupnosti a odolnosti aplikací**
     - Škálovací sady slouží ke spouštění více instancí vaší aplikace. Pokud u jedné z těchto instancí virtuálních počítačů dojde k problému, zákazníci můžou pokračovat v přístupu k aplikaci přes některou z dalších instancí virtuálních počítačů, a to s minimálním přerušením.

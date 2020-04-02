@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/01/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ee8e90d1d690315b2727a050e0383d7d28dc03
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264112"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546142"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Použití portálu k vytvoření aplikace azure a instančního objektu Azure AD, který má přístup k prostředkům
 
@@ -99,7 +99,7 @@ Exportujte tento certifikát do souboru pomocí modulu snap-in [Spravovat uživa
 
 1. Chcete-li zobrazit certifikáty, rozbalte v části **Certifikáty – aktuální uživatel** v levém podokně **osobní** adresář.
 1. Klikněte pravým tlačítkem myši na certifikát, který jste vytvořili, a vyberte **všechny úkoly >export .**
-1. Postupujte podle průvodce exportem certifikátu.  Exportujte soukromý klíč, zadejte heslo pro soubor certifikátu a exportujte do souboru.
+1. Postupujte podle průvodce exportem certifikátu.  Neexportujte soukromý klíč a exportujte do . CER.
 
 Chcete-li certifikát nahrát,
 
@@ -148,7 +148,7 @@ Musíte mít dostatečná oprávnění k registraci aplikace s tenantem Azure AD
 1. V levém podokně vyberte **Uživatelská nastavení**.
 1. Zkontrolujte nastavení **registrace aplikací.** Tuto hodnotu může nastavit pouze správce. Pokud je nastavena na **Ano**, může aplikaci zaregistrovat každý uživatel v tenantovi Azure AD.
 
-Pokud je nastavení registrace aplikací nastaveno na **hodnotu Ne**, mohou tyto typy aplikací zaregistrovat pouze uživatelé s rolí správce. Informace o dostupných rolích a rolích najdete [v](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) [tématu Dostupné role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) a oprávnění, která jsou udělena každé roli. Pokud je vašemu účtu přiřazena role Uživatel, ale nastavení registrace aplikace je omezeno na uživatele správce, požádejte správce, aby vám buď přiřadil jednu z rolí správce, která může vytvářet a spravovat všechny aspekty registrací aplikací, nebo aby uživatelům umožnil zaregistrovat se. Apps.
+Pokud je nastavení registrace aplikací nastaveno na **hodnotu Ne**, mohou tyto typy aplikací zaregistrovat pouze uživatelé s rolí správce. Informace o dostupných rolích a rolích najdete [v](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) [tématu Dostupné role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) a oprávnění, která jsou udělena každé roli. Pokud je vašemu účtu přiřazena role Uživatel, ale nastavení registrace aplikace je omezeno na uživatele správce, požádejte správce, aby vám buď přiřadil jednu z rolí správce, která může vytvářet a spravovat všechny aspekty registrací aplikací, nebo aby uživatelům umožnil zaregistrovat aplikace.
 
 ### <a name="check-azure-subscription-permissions"></a>Kontrola oprávnění předplatného Azure
 
@@ -158,7 +158,7 @@ Kontrola oprávnění k předplatnému:
 
 1. Vyhledejte a vyberte **Předplatná**nebo na **domovské** stránce vyberte **Předplatná.**
 
-   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Hledat](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.
 

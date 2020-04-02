@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/06/2020
+ms.date: 03/31/2020
 ms.author: radeltch
-ms.openlocfilehash: 69dcf91957263cea36f8ff6db6a7af14588998ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 215cfd033a3fe8eb0ad9896c1f45f1e0f788823f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927215"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521365"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -277,16 +277,20 @@ Kroky v této části používají následující předpony:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Vytvořte logické svazky. Lineární svazek se vytvoří `lvcreate` při `-i` použití bez přepínače. Doporučujeme vytvořit pruhovaný svazek pro lepší výkon vstupně-va, kde `-i` argumentby měl být číslo základního fyzického svazku. V tomto dokumentu se pro objem dat používají dva `-i` fyzické svazky, takže argument přepínače je nastaven na **2**. Pro svazek protokolu se používá jeden `-i` fyzický svazek, takže se explicitně nepoužívá žádný přepínač. Použijte `-i` přepínač a nastavte jej na číslo základního fyzického svazku, pokud pro každé datové svazek, protokol nebo sdílené svazky použijete více než jeden fyzický svazek.
+   Vytvořte logické svazky. Lineární svazek se vytvoří `lvcreate` při `-i` použití bez přepínače. Doporučujeme vytvořit prokládaný svazek pro lepší výkon vstupně-va a zarovnat velikosti prokládaných s hodnotami zdokumentovaným v [konfiguracích úložiště virtuálních počítačů SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Argument `-i` by měl být číslo základní fyzické `-I` svazky a argument je velikost prokládání. V tomto dokumentu se pro objem dat používají dva `-i` fyzické svazky, takže argument přepínače je nastaven na **2**. Velikost prokládání datového svazku je **256 KiB**. Pro svazek protokolu se používá jeden `-i` `-I` fyzický svazek, takže pro příkazy svazku protokolu se explicitně nepoužívají žádné nebo přepínače.  
 
-   <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+   > [!IMPORTANT]
+   > Použijte `-i` přepínač a nastavte jej na číslo základního fyzického svazku, pokud pro každé datové svazek, protokol nebo sdílené svazky použijete více než jeden fyzický svazek. `-I` Přepínač slouží k určení velikosti proklápěcího pruhu při vytváření proklápěcího svazku.  
+   > Najdete [v tématu konfigurace úložiště virtuálních počítačů SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) pro doporučené konfigurace úložiště, včetně velikosti prokládaných a počtu disků.  
+
+   <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
    sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data
    sudo mkfs.xfs /dev/vg_hana_log_<b>HN1</b>/hana_log
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
-
+  
    Vytvořte adresáře připojení a zkopírujte UUID všech logických svazků:
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>

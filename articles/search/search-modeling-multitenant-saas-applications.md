@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113268"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549014"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Návrhové vzory pro víceklientské aplikace SaaS a Azure Cognitive Search
 Víceklientská aplikace je aplikace, která poskytuje stejné služby a možnosti libovolnému počtu klientů, kteří nemohou zobrazit nebo sdílet data jiného klienta. Tento dokument popisuje strategie izolace tenanta pro víceklientské aplikace vytvořené pomocí Azure Cognitive Search.
@@ -37,7 +37,7 @@ Přidání a odebrání oddílů a replik na umožní kapacitu vyhledávací slu
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Limity služeb a indexů v Azure Cognitive Search
 Existuje několik různých [cenových úrovní](https://azure.microsoft.com/pricing/details/search/) v Azure Cognitive Search, každá z vrstev má různá [omezení a kvóty](search-limits-quotas-capacity.md). Některé z těchto omezení jsou na úrovni služby, některé jsou na úrovni indexu a některé jsou na úrovni oddílu.
 
-|  | Basic | Standard1 | Standardní2 | Standardní3 | Standard3 HD |
+|  | Základní | Standard1 | Standardní2 | Standardní3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximální počet replik na službu |3 |12 |12 |12 |12 |
 | Maximální počet oddílů na službu |1 |12 |12 |12 |3 |
@@ -51,7 +51,7 @@ V cenové úrovni Azure Cognitive Search S3 je možnost pro režim vysoké husto
 
 S3 HD umožňuje mnoho malých indexů, které mají být zabaleny pod správou jedné vyhledávací služby obchodováním schopnost škálovat indexy pomocí oddílů pro schopnost hostit více indexů v jedné službě.
 
-Konkrétně by služba S3 mohla mít mezi 1 a 200 indexy, které by dohromady mohly hostit až 1,4 miliardy dokumentů. S3 HD na druhé straně by umožnilo jednotlivé indexy jít pouze 1 milion dokumentů, ale může zpracovat až 1000 indexů na oddíl (až 3000 na službu) s celkovým počtem dokumentů 200 milionů na oddíl (až 600 milionů na službu).
+Služba S3 je určena k hostování pevného počtu indexů (maximálně 200) a umožňuje každému indexu škálovat velikost vodorovně, protože do služby jsou přidány nové oddíly. Přidání oddílů do služeb S3 HD zvyšuje maximální počet indexů, které může služba hostovat. Ideální maximální velikost pro individuální index S3HD je kolem 50 - 80 GB, ačkoli neexistuje žádný pevný limit velikosti pro každý index uložený systémem.
 
 ## <a name="considerations-for-multitenant-applications"></a>Důležité informace pro víceklientské aplikace
 Víceklientské aplikace musí efektivně distribuovat prostředky mezi klienty při zachování určité úrovně ochrany osobních údajů mezi různými tenanty. Existuje několik aspektů při navrhování architektury pro takovou aplikaci:
@@ -78,7 +78,7 @@ V modelu indexu na tenanta více klientů zabírají jednu službu Azure Cogniti
 
 Klienti dosáhnout izolace dat, protože všechny požadavky na vyhledávání a operace dokumentu jsou vydávány na úrovni indexu v Azure Cognitive Search. Ve vrstvě aplikace je potřeba povědomí nasměrovat provoz různých klientů na správné indexy a zároveň spravovat prostředky na úrovni služeb napříč všemi tenanty.
 
-Klíčovým atributem modelu indexu na tenanta je možnost pro vývojáře aplikace přeplnit kapacitu vyhledávací služby mezi klienty aplikace. Pokud mají klienti nerovnoměrné rozložení úlohy, optimální kombinace klientů může být distribuována mezi indexy vyhledávací služby tak, aby vyhovovala řadě vysoce aktivních klientů náročných na prostředky a současně obsluhovala dlouhý ocas s méně aktivních nájemců. Kompromis je neschopnost modelu zpracovat situace, kdy je každý klient současně vysoce aktivní.
+Klíčovým atributem modelu indexu na tenanta je možnost pro vývojáře aplikace přeplnit kapacitu vyhledávací služby mezi klienty aplikace. Pokud mají klienti nerovnoměrné rozložení úlohy, optimální kombinace klientů může být distribuována mezi indexy vyhledávací služby tak, aby vyhovovala řadě vysoce aktivních klientů náročných na prostředky a současně obsluhovala dlouhý ocas méně aktivních klientů. Kompromis je neschopnost modelu zpracovat situace, kdy je každý klient současně vysoce aktivní.
 
 Model indexu na tenanta poskytuje základ pro model s proměnnými náklady, kde se předem nakupuje celá služba Azure Cognitive Search a následně je naplněna tenanty. To umožňuje, aby nevyužitá kapacita byla určena pro zkušební verze a bezplatné účty.
 

@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65824944"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519711"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
@@ -33,8 +33,11 @@ Pro uživatele musí být splněny určité podmínky, aby mohl souhlasit s opr�
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Požadavek na chybu neautorizovaných oprávnění
 * **AADSTS90093:** &lt;clientAppDisplayName&gt; požaduje jedno nebo více oprávnění, která nejste oprávněni udělit. Obraťte se na správce, který může souhlasit s touto aplikací vaším jménem.
+* **AADSTS90094:** &lt;clientAppDisplayName&gt; potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit pouze správce. Please ask an admin to grant permission to this app before you can use it. (Test udělení souhlasu vyžaduje ve vaší organizaci pro přístup k prostředkům oprávnění, které může udělit pouze správce. Než budete moct tuto aplikaci použít, požádejte správce o udělení oprávnění.)
 
 K této chybě dochází, když se uživatel, který není správcem společnosti, pokusí použít aplikaci, která požaduje oprávnění, která může udělit pouze správce. Tuto chybu lze vyřešit správcem, který uděluje přístup k aplikaci jménem své organizace.
+
+K této chybě může dojít také v případě, že uživatel nemůže souhlasit s aplikací z důvodu, že společnost Microsoft zjistí, že žádost o oprávnění je riskantní. V takovém případě bude auditová událost také zaznamenána s kategorií "ApplicationManagement", Typem aktivity "Souhlas s aplikací" a důvodem stavu "Zjištěna riziková aplikace".
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Zásada zabraňuje chybě udělení oprávnění.
 * **AADSTS90093:** Správce &lt;tenantDisplayName&gt; nastavil zásadu, která zabraňuje udělení &lt;názvu&gt; aplikace oprávnění, která požaduje. Obraťte se &lt;na&gt;správce tenantdisplayname , který může udělit oprávnění k této aplikaci vaším jménem.

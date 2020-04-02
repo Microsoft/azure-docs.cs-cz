@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238675"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546018"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Výuka: Trénujte svůj první model ML
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte provádět následující úlohy:
 > [!div class="checklist"]
 > * Připojení pracovního prostoru a vytvoření experimentu
 > * Načtení dat a trénování modelů scikit-learn
-> * Zobrazit výsledky školení na portálu
+> * Zobrazit výsledky školení ve studiu
 > * Načtení nejlepšího modelu
 
 ## <a name="prerequisites"></a>Požadavky
@@ -89,7 +89,7 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>Učení modelu
 
-Školení jednoduchý scikit-learn model lze snadno provést lokálně pro malé-měřítku školení, ale při tréninku mnoho iterací s desítkami různých funkcí permutace a hyperparameter nastavení, je snadné ztratit přehled o tom, jaké modely jste trénovali a jak jste vyškolit. Následující návrhový vzor ukazuje, jak využít sdk snadno sledovat vaše školení v cloudu.
+Školení jednoduchý scikit-learn model lze snadno provést místně pro malé-měřítku školení, ale při trénování mnoho iterací s desítkami různých funkcí permutace a nastavení hyperparametrů, je snadné ztratit přehled o tom, jaké modely jste trénovali a jak jste je trénoval. Následující návrhový vzor ukazuje, jak využít sdk snadno sledovat vaše školení v cloudu.
 
 Vytvořte skript, který trénuje modely hřebenů ve smyčce prostřednictvím různých hodnot alfa hyperparametrů.
 
@@ -124,32 +124,33 @@ Výše uvedený kód provádí následující:
 
 1. Pro každou hodnotu alfa `alphas` hyperparametrv poli je v rámci experimentu vytvořen nový běh. Hodnota alfa je zaznamenána rozlišovat mezi každým spuštěním.
 1. V každém spuštění ridge model je vytvořena instance, trénované a slouží ke spuštění předpovědi. Kořenová střední kvadratická chyba se vypočítá pro skutečné versus předpokládané hodnoty a pak se zaznamená do spuštění. V tomto okamžiku má spuštění připojená metadata pro hodnotu alfa i přesnost rmse.
-1. Dále je model pro každý běh serializován a odeslán do spuštění. To umožňuje stáhnout soubor modelu z běhu na portálu.
+1. Dále je model pro každý běh serializován a odeslán do spuštění. To vám umožní stáhnout soubor modelu ze spuštění ve studiu.
 1. Na konci každé iterace je `run.complete()`spuštění dokončeno voláním .
 
-Po dokončení školení zavolejte `experiment` proměnnou načíst odkaz na experiment na portálu.
+Po dokončení školení zavolejte `experiment` proměnnou načíst odkaz na experiment ve studiu.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Název)</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka Dokumenty</th></tr><tr><td>diabetes-experiment</td><td>název pracovního prostoru</td><td>Odkaz na portál Azure</td><td>Odkaz na dokumentaci</td></tr></table>
+<table style="width:100%"><tr><th>Name (Název)</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka Dokumenty</th></tr><tr><td>diabetes-experiment</td><td>název pracovního prostoru</td><td>Propojení se studiem Azure Machine Learning</td><td>Odkaz na dokumentaci</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>Zobrazit výsledky školení na portálu
+## <a name="view-training-results-in-studio"></a>Zobrazit výsledky školení ve studiu
 
-Po **propojení na portál Azure** se dostanete na hlavní stránku experimentu. Zde vidíte všechny jednotlivé běží v experimentu. Všechny vlastní protokolované`alpha_value` hodnoty `rmse`( a , v tomto případě) se stanou poli pro každé spuštění a také budou k dispozici pro grafy a dlaždice v horní části stránky experimentu. Pokud chcete do grafu nebo dlaždice přidat protokolovnou metriku, najeďte na ni tak, klikněte na tlačítko pro úpravy a najděte vlastní metriku.
+Po **propojení s Azure Machine Learning studio** přejdete na hlavní stránku experimentu. Zde vidíte všechny jednotlivé běží v experimentu. Všechny vlastní protokolované`alpha_value` hodnoty `rmse`( a , v tomto případě) se stanou poli pro každé spuštění a také budou k dispozici pro grafy a dlaždice v horní části stránky experimentu. Pokud chcete do grafu nebo dlaždice přidat protokolovnou metriku, najeďte na ni tak, klikněte na tlačítko pro úpravy a najděte vlastní metriku.
 
 Při trénování modelů ve velkém měřítku přes stovky a tisíce samostatných spuštění, tato stránka usnadňuje zobrazení každého modelu, který jste trénovali, konkrétně jak byly vyškoleny a jak se vaše jedinečné metriky v průběhu času změnily.
 
-![Stránka hlavního experimentu na portálu](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Hlavní experiment ve studiu.":::
 
-Kliknutím na odkaz číslo `RUN NUMBER` spuštění ve sloupci se dostanete na stránku pro každý jednotlivý běh. Výchozí karta **Podrobnosti** zobrazují podrobnější informace o každém spuštění. Přejděte na kartu **Výstupy** a `.pkl` zobrazí se soubor pro model, který byl odeslán do spuštění během každé iterace školení. Zde si můžete stáhnout soubor modelu, spíše než muset přeškolit ručně.
 
-![Spustit stránku podrobností na portálu](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+Vyberte odkaz na `RUN NUMBER` číslo spuštění ve sloupci, chcete-li zobrazit stránku pro jednotlivé spuštění. Výchozí karta **Podrobnosti** zobrazují podrobnější informace o každém spuštění. Přejděte na kartu **Výstupy + protokoly** a zobrazí se `.pkl` soubor pro model, který byl odeslán do spuštění během každé iterace školení. Zde si můžete stáhnout soubor modelu, spíše než muset přeškolit ručně.
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Spusťte stránku podrobností ve studiu.":::
 
 ## <a name="get-the-best-model"></a>Získejte nejlepší model
 
-Kromě toho, že budete moci stahovat soubory modelů z experimentu na portálu, můžete je také stáhnout programově. Následující kód iterates prostřednictvím každého spuštění v experimentu a přistupuje protokolované spuštění metriky a podrobnosti spuštění (který obsahuje run_id). To udržuje přehled o nejlepší spuštění, v tomto případě spustit s nejnižší kořen-střední kvadratická chyba.
+Kromě toho, že budete moci stahovat soubory modelů z experimentu ve studiu, můžete je také stáhnout programově. Následující kód iterates prostřednictvím každého spuštění v experimentu a přistupuje protokolované spuštění metriky a podrobnosti spuštění (který obsahuje run_id). To udržuje přehled o nejlepší spuštění, v tomto případě spustit s nejnižší kořen-střední kvadratická chyba.
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ V tomto kurzu jste provedli následující úkoly:
 > [!div class="checklist"]
 > * Propojení pracovního prostoru a vytvoření experimentu
 > * Načtená data a trénované modely scikit-learn
-> * Zobrazeny výsledky školení na portálu a natržené modely
+> * Zobrazeny výsledky školení ve studiu a natržené modely
 
 [Nasaďte svůj model](tutorial-deploy-models-with-aml.md) pomocí Azure Machine Learning.
 Přečtěte si, jak vyvíjet automatizované experimenty [strojového učení.](tutorial-auto-train-models.md)

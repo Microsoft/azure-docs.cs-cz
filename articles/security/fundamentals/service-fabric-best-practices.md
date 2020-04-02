@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548815"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549233"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Osvědčené postupy zabezpečení Azure Service Fabric
 Nasazení aplikace v Azure je rychlé, snadné a nákladově efektivní. Než nasadíte cloudovou aplikaci do produkčního prostředí, projděte si náš seznam základních a doporučených doporučených postupů pro implementaci zabezpečených clusterů ve vaší aplikaci.
@@ -32,7 +32,7 @@ Doporučujeme následující doporučené postupy zabezpečení Azure Service Fa
 -   Používejte certifikáty X.509.
 -   Nakonfigurujte zásady zabezpečení.
 -   Implementujte konfiguraci zabezpečení Reliable Actors.
--   Konfigurace protokolu SSL pro azure service fabric.
+-   Konfigurace TLS pro Azure Service Fabric.
 -   Pomocí azure service fabric utíhej izolaci a zabezpečení sítě.
 -   Konfigurace trezoru klíčů Azure pro zabezpečení.
 -   Přiřaďte uživatele k rolím.
@@ -118,13 +118,13 @@ Každý objekt actor je definován jako instance typu objektu actor, shodný se 
 [Konfigurace zabezpečení replikátoru](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) se používají k zabezpečení komunikačního kanálu, který se používá během replikace. Tato konfigurace zabraňuje službám v tom, aby se vzájemně zobcházely přenosy replikace, a zajišťuje, že jsou zabezpečena vysoce dostupná data. Ve výchozím nastavení brání prázdný oddíl konfigurace zabezpečení zabezpečení zabezpečení zabezpečení.
 Konfigurace replikátoru nakonfigurují replikátor, který je zodpovědný za to, že stav zprostředkovatele stavu actor je vysoce spolehlivý.
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>Konfigurace protokolu SSL pro azure service fabric
-Proces ověřování serveru [ověřuje](../../service-fabric/service-fabric-cluster-creation-via-arm.md) koncové body správy clusteru klientovi pro správu. Klient pro správu pak rozpozná, že mluví se skutečným clusterem. Tento certifikát také poskytuje [protokol SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md) pro rozhraní API pro správu protokolu HTTPS a pro průzkumníka prostředků infrastruktury služeb přes protokol HTTPS.
+## <a name="configure-tls-for-azure-service-fabric"></a>Konfigurace protokolu TLS pro azure service fabric
+Proces ověřování serveru [ověřuje](../../service-fabric/service-fabric-cluster-creation-via-arm.md) koncové body správy clusteru klientovi pro správu. Klient pro správu pak rozpozná, že mluví se skutečným clusterem. Tento certifikát také poskytuje [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) pro rozhraní API pro správu PROTOKOLU HTTPS a pro průzkumníka prostředků infrastruktury služeb přes protokol HTTPS.
 Pro svůj cluster musíte získat název vlastní domény. Pokud požadujete certifikát od certifikační autority, musí se název subjektu certifikátu shodovat s vlastním názvem domény, který používáte pro cluster.
 
-Chcete-li nakonfigurovat protokol SSL pro aplikaci, musíte nejprve získat certifikát SSL, který byl podepsán certifikační autoritou. Certifikační autorita je důvěryhodná třetí strana, která vydává certifikáty pro účely zabezpečení SSL. Pokud ještě nemáte certifikát SSL, musíte jej získat od společnosti, která certifikáty SSL prodává.
+Chcete-li nakonfigurovat protokol TLS pro aplikaci, musíte nejprve získat certifikát SSL/TLS podepsaný certifikační autoritou. Certifikační autorita je důvěryhodná třetí strana, která vydává certifikáty pro účely zabezpečení TLS. Pokud ještě nemáte certifikát SSL/TLS, musíte ho získat od společnosti, která certifikáty SSL/TLS prodává.
 
-Certifikát musí splňovat následující požadavky na certifikáty SSL v Azure:
+Certifikát musí splňovat následující požadavky na certifikáty SSL/TLS v Azure:
 -   Certifikát musí obsahovat soukromý klíč.
 
 -   Certifikát musí být vytvořen pro výměnu klíčů a musí být exportovatelný do souboru výměny osobních informací (.pfx).
@@ -135,13 +135,13 @@ Certifikát musí splňovat následující požadavky na certifikáty SSL v Azur
     - Požádejte certifikační autoritu o certifikát s názvem subjektu, který odpovídá vlastnímu názvu domény vaší služby. Pokud je například název vaší vlastní domény __contoso__**.com**, měl by mít certifikát certifikační autority název subjektu **.contoso.com** nebo __www__**.contoso.com**.
 
     >[!NOTE]
-    >Certifikát SSL nelze získat od certifikační autority pro doménu __cloudapp__**.net.**
+    >Certifikát SSL/TLS nelze získat od certifikační autority pro doménu __cloudapp__**.net.**
 
 -   Certifikát musí používat minimálně 2 048bitové šifrování.
 
 Protokol HTTP je nezabezpečený a podléhá odposlouchávání útoků. Data přenášená přes protokol HTTP jsou odesílána jako prostý text z webového prohlížeče na webový server nebo mezi jinými koncovými body. Útočníci mohou zachytit a zobrazit citlivá data odeslaná prostřednictvím protokolu HTTP, například údaje o platební kartě a přihlášení k účtu. Když jsou data odesílána nebo odesílána prostřednictvím prohlížeče prostřednictvím protokolu HTTPS, protokol SSL zajišťuje, že citlivé informace jsou šifrovány a zabezpečeny před zachycením.
 
-Další informace o používání certifikátů SSL najdete [v tématu Konfigurace protokolu SSL pro aplikace Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
+Další informace o používání certifikátů SSL/TLS najdete [v tématu Konfigurace TLS pro aplikaci v Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Použití izolace a zabezpečení sítě pomocí Azure Service Fabric
 Nastavte cluster zabezpečeného typu 3 uzlu pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) jako ukázky. Řízení příchozího a odchozího síťového provozu pomocí šablony a skupin zabezpečení sítě.

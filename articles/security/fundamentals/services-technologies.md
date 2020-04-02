@@ -3,7 +3,7 @@ title: Služby a technologie Azure security services | Dokumenty společnosti Mi
 description: Tento článek obsahuje sestavený seznam služeb a technologií azure security.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
-ms.author: barclayn
-ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726560"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549204"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bezpečnostní služby a technologie dostupné v Azure
 
@@ -35,7 +35,7 @@ V průběhu času se tento seznam bude měnit a růst, stejně jako Azure. Ujist
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](/azure/security-center/security-center-intro)| Řešení ochrany cloudových úloh, které poskytuje správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami.|
 |[Azure Key Vault](/azure/key-vault/key-vault-overview)| Zabezpečené úložiště tajných klíčů pro hesla, připojovací řetězce a další informace, které potřebujete k tomu, aby vaše aplikace fungovaly. |
-|[Protokoly azure monitoru](/azure/log-analytics/log-analytics-overview)|Služba monitorování, která shromažďuje telemetrická a další data a poskytuje modul dotazovacích jazyků a analýz, který poskytuje provozní přehledy pro vaše aplikace a prostředky. Lze použít samostatně nebo s jinými službami, jako je Security Center. |
+|[Protokoly služby Azure Monitor](/azure/log-analytics/log-analytics-overview)|Služba monitorování, která shromažďuje telemetrická a další data a poskytuje modul dotazovacích jazyků a analýz, který poskytuje provozní přehledy pro vaše aplikace a prostředky. Lze použít samostatně nebo s jinými službami, jako je Security Center. |
 |[Azure Vývoj/testovací laboratoře](/azure/lab-services/devtest-lab-overview)|Služba, která vývojářům a testerům pomáhá rychle vytvářet prostředí v Azure a současně minimalizovat plýtvání a řídit náklady.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -79,7 +79,7 @@ V průběhu času se tento seznam bude měnit a růst, stejně jako Azure. Ujist
 | [Azure&nbsp;Backup](/azure/backup/backup-introduction-to-azure-backup)| Služba založená na Azure slouží k zálohování a obnovení dat v cloudu Azure. |
 | [Obnovení&nbsp;&nbsp;webu Azure](/azure/site-recovery/site-recovery-overview)|Online služba, která replikuje úlohy spuštěné na fyzických a virtuálních počítačích (VM) z primární lokality do sekundárního umístění, aby po selhání povolila obnovení služeb. |
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 |Služba|Popis|
 |------|--------|
 | [Skupiny&nbsp;zabezpečení sítě&nbsp;](/azure/virtual-network/virtual-networks-nsg)| Funkce řízení přístupu založená na síti pomocí 5 řazených členů řadění sítě k povolování nebo zamítnutí rozhodnutí.  |
@@ -90,6 +90,6 @@ V průběhu času se tento seznam bude měnit a růst, stejně jako Azure. Ujist
 | [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)| Vyhrazené propojení WAN mezi místními sítěmi a virtuálními sítěmi Azure. |
 | [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview)| Globální vyrovnávání zatížení DNS.|
 | [Proxy aplikace Azure](/azure/active-directory/active-directory-application-proxy-get-started)| Ověřovací front-end používaný k zabezpečení vzdáleného přístupu pro místní webové aplikace. |
-|[Azure Firewall](/azure/firewall/overview)|Spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky virtuální sítě Azure.|
-|[Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)|V kombinaci s osvědčenými postupy návrhu aplikace poskytuje ochranu proti útokům DDoS.|
+|[Brána Azure Firewall](/azure/firewall/overview)|Spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky virtuální sítě Azure.|
+|[Ochrana Azure DDoS](/azure/virtual-network/ddos-protection-overview)|V kombinaci s osvědčenými postupy návrhu aplikace poskytuje ochranu proti útokům DDoS.|
 |[Koncové body služby Virtuální síť](/azure/virtual-network/virtual-network-service-endpoints-overview)|Rozšiřuje privátní adresní prostor virtuální sítě a identitu vaší virtuální sítě na služby Azure prostředně prostředně přímého připojení.|

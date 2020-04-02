@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 5b4347cb5032b7f3651d0d3fcb20dc5d416f9bee
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421196"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546573"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Azure Private Link umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám Azure hostovaným zákazníkům nebo partnerským službám prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -53,15 +53,15 @@ Azure Private Link poskytuje následující výhody:
 |  |  Azure Database for MariaDB         | Všechny veřejné regiony      |   GA <br/> [Další informace](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  |  Azure Key Vault         | Všechny veřejné regiony      |   GA   <br/> [Další informace](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 |  |Služba Azure Kubernetes – rozhraní API Kubernetes | Všechny veřejné regiony      |   GA   <br/> [Další informace](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|  |Azure Search | VÝCHODNÍ USA, ZÁPADNÍ US2, JIŽNÍ STŘED USA |   Preview    |
+|  |Azure Search | VÝCHODNÍ USA, ZÁPADNÍ USA 2, JIŽNÍ STŘED USA |   Preview    |
 |  |Azure Container Registry | Všechny veřejné regiony      |   Preview   |
 |  |Azure App Configuration | Všechny veřejné regiony      |   Preview   |
-|  |Azure Backup | VÝCHODNÍ USA, ZÁPADNÍ US2, JIŽNÍ STŘED USA     |   Preview   |
+|  |Azure Backup | VÝCHODNÍ USA, ZÁPADNÍ USA 2, JIŽNÍ STŘED USA     |   Preview   |
 |  |Azure Event Hub | Všechny veřejné regiony      |   Preview    |
 |  |Azure Service Bus | Všechny veřejné regiony      |   Preview   |
 |  |Azure Relay | Všechny veřejné regiony      |   Preview   |
-|  |Azure Event Grid| Všechny veřejné regiony      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/event-grid/network-security)   |
-|  |Azure Web Apps | VÝCHODNÍ USA, ZÁPADNÍ US2, JIŽNÍ STŘED USA      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Event Grid| VÝCHODNÍ USA, ZÁPADNÍ USA 2, JIŽNÍ STŘED USA      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/event-grid/network-security)   |
+|  |Azure Web Apps | VÝCHODNÍ USA, ZÁPADNÍ USA 2, JIŽNÍ STŘED USA      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 
 Nejaktuálnější oznámení najdete na stránce [aktualizace virtuální sítě Azure](https://azure.microsoft.com/updates/?product=virtual-network).
 

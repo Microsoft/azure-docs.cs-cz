@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5da0297dd97c8263bdc47f1d5a3d7d2d1f835e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298838"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544329"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pro StorSimple Virtual Array
 
@@ -121,7 +121,7 @@ Proto doporučujeme:
 * Ujistěte se, že vaše virtuální pole je ve vlastní organizační jednotce (OU) pro službu Active Directory.
 * Ujistěte se, že žádné objekty zásad skupiny (GPO) jsou použity na virtuální pole. Můžete blokovat dědičnost a zajistit tak, aby virtuální pole (podřízený uzel) automaticky nedědí žádné objekty zásad skupiny z nadřazeného objektu. Další informace naleznete v [blokování dědičnosti](https://technet.microsoft.com/library/cc731076.aspx).
 
-### <a name="networking"></a>Síťové služby
+### <a name="networking"></a>Sítě
 Konfigurace sítě pro virtuální pole se provádí prostřednictvím místního webového uživatelského prostředí. Rozhraní virtuální sítě je povoleno prostřednictvím hypervisoru, ve kterém je zřízeno virtuální pole. Stránka [Nastavení sítě](storsimple-virtual-array-deploy3-fs-setup.md) slouží ke konfiguraci adresy IP, podsítě a brány virtuálního síťového rozhraní.  Můžete také nakonfigurovat primární a sekundární server DNS, nastavení času a volitelná nastavení proxy serveru pro vaše zařízení. Většina konfigurace sítě je jednorázové nastavení. Před nasazením virtuálního pole zkontrolujte [požadavky na síť StorSimple.](storsimple-ova-system-requirements.md#networking-requirements)
 
 Při nasazování virtuálního pole doporučujeme dodržovat tyto doporučené postupy:
@@ -161,8 +161,8 @@ Mějte na paměti následující osvědčené postupy při zřizování sdílen�
 
 * Velikostsouboru vzhledem k zřízené velikosti vrstvené sdílené složky může mít vliv na výkon vrstvení. Práce s velkými soubory může mít za následek pomalé vrstvy ven. Při práci s velkými soubory doporučujeme, aby největší soubor byl menší než 3 % velikosti sdílené složky.
 * Ve virtuálním poli lze vytvořit maximálně 16 svazků nebo sdílených složek. Omezení velikosti místně vázaných a vrstvených svazků/sdílených složek vždy nastupte v [limitech virtuálního pole StorSimple](storsimple-ova-limits.md).
-* Při vytváření objemu faktor v očekávané spotřebě dat, jakož i budoucí růst. Svazek nelze později rozbalit.
-* Po vytvoření svazku nelze zmenšit velikost svazku na StorSimple.
+* Při vytváření objemu faktor v očekávané spotřebě dat, jakož i budoucí růst. Svazek nebo sdílenou složku nelze později rozbalit.
+* Po vytvoření svazku nebo sdílené složky nelze zmenšit velikost svazku nebo sdílené složky na StorSimple.
 * Při zápisu na vrstvený svazek na StorSimple, když data svazku dosáhne určité prahové hodnoty (vzhledem k místnímu prostoru vyhrazenému pro svazek), je vstupně-tank omezen. Pokračování zápisu do tohoto svazku výrazně zpomaluje iO. I když můžete zapisovat vrstvený svazek nad rámec jeho zřízená kapacita (nemáme aktivně zastavit uživatele z psaní nad rámec zřízená kapacita), zobrazí upozornění v tom smyslu, že jste oversubscribed. Jakmile se výstraha zobrazí, je nezbytné provést nápravná opatření, jako je odstranění dat svazku (rozšíření svazku není aktuálně podporováno).
 * V případech použití zotavení po havárii, protože počet povolených sdílených složek/svazků je 16 a maximální počet sdílených složek/svazků, které mohou být zpracovány paralelně, je také 16, počet sdílených složek/svazků nemá vliv na vaše RPO a RTO.
 

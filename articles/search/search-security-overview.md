@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 713a9762206b5083268fd48136cd8077c296c690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6de6f23fe9564b28a5d436ac00999dbb3e9183e1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289290"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548964"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Zabezpečení a ochrana osobních údajů v Azure Cognitive Search
 
@@ -75,7 +75,7 @@ Ověřování je vyžadováno u každého požadavku, kde každý požadavek se 
 
 ### <a name="restricted-access"></a>Omezený přístup
 
-Pokud máte veřejnou službu a chcete omezit používání služby, můžete použít pravidlo omezení IP ve verzi rozhraní REST API pro správu: 2020-03-13, [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2020-03-13/createorupdate-service#iprule-). IpRule umožňuje omezit přístup k vaší službě tím, že identifikuje IP adresy, jednotlivě nebo v rozsahu, který chcete udělit přístup k vaší vyhledávací služby. 
+Pokud máte veřejnou službu a chcete omezit používání služby, můžete použít pravidlo omezení IP ve verzi rozhraní REST API pro správu: 2020-03-13, [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule). IpRule umožňuje omezit přístup k vaší službě tím, že identifikuje IP adresy, jednotlivě nebo v rozsahu, který chcete udělit přístup k vaší vyhledávací služby. 
 
 ### <a name="private-access"></a>Soukromý přístup
 
@@ -93,7 +93,7 @@ Přístup správce a vývojáře k indexům je nediferencovaný: oba potřebují
 
 U víceklientské řešení, která vyžadují hranice zabezpečení na úrovni indexu, tato řešení obvykle zahrnují střední vrstvu, kterou zákazníci používají ke zpracování izolace indexu. Další informace o případu použití více klientů naleznete v [tématu Návrhové vzory pro víceklientské aplikace SaaS a Azure Cognitive Search](search-modeling-multitenant-saas-applications.md).
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 ### <a name="admin-access"></a>Přístup správce
 

@@ -9,26 +9,29 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b95a3e32bc2b8df3d02453e42fa9bbc3719134b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614065"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519145"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Vytvoření organizační jednotky (OU) ve spravované doméně služby Azure AD Domain Services
 
 Organizační jednotky (OU) ve službě AD Domain Services (AD DS) umožňují logicky seskupit objekty, jako jsou uživatelské účty, účty služeb nebo účty počítačů. Potom můžete přiřadit správce ke konkrétním runám a použít zásady skupiny k vynucení cíleného nastavení konfigurace.
 
-Spravované domény Azure AD DS zahrnují dvě integrované místní operační služby – *počítače AADDC* a *uživatele AADDC*. Ou aplikace *AADDC Computers* obsahuje objekty počítače pro všechny počítače, které jsou připojeny ke spravované doméně. Ou *uživatelé AADDC* ZAHRNUJE uživatele a skupiny synchronizované v z klienta Azure AD. Při vytváření a spouštění úloh, které používají Azure AD DS, budete muset vytvořit účty služeb pro aplikace k ověření sami. Chcete-li uspořádat tyto účty služeb, často vytvořit vlastní ou ve spravované doméně Azure AD DS a potom vytvořit účty služeb v rámci této ou.
+Spravované domény Azure AD DS zahrnují následující dvě integrované hlavní sady:
+
+* *AADDC Computers* - obsahuje počítačové objekty pro všechny počítače, které jsou připojeny ke spravované doméně.
+* *Uživatelé AADDC* – zahrnuje uživatele a skupiny synchronizované z klienta Azure AD.
+
+Při vytváření a spouštění úloh, které používají Azure AD DS, budete muset vytvořit účty služeb pro aplikace k ověření sami. Chcete-li uspořádat tyto účty služeb, často vytvořit vlastní ou ve spravované doméně Azure AD DS a potom vytvořit účty služeb v rámci této ou.
 
 V hybridním prostředí nejsou vynaly-prodejny vytvořené v místním prostředí služby AD DS synchronizovány s Azure AD DS. Spravované domény Azure AD DS používají strukturu ploché ou. Všechny uživatelské účty a skupiny jsou uloženy v kontejneru *AADDC Users,* přestože jsou synchronizovány z různých místních domén nebo doménových struktur, i když jste tam nakonfigurovali hierarchickou strukturu ou.
 
 Tento článek ukazuje, jak vytvořit ou ve spravované doméně Azure AD DS.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -68,19 +71,19 @@ Chcete-li vytvořit vlastní individuální oovou velikou, použijte nástroje p
 1. Chcete-li vytvořit a spravovat hlavní sady, vyberte ze seznamu nástrojů pro správu **Centrum správy služby Active Directory.**
 1. V levém podokně zvolte spravovanou doménu Azure AD DS, například *aaddscontoso.com*. Zobrazí se seznam existujících vou s a prostředků:
 
-    ![Vyberte spravovanou doménu Služby Azure AD DS v Centru správy služby Active Directory.](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
+    ![Vyberte spravovanou doménu Služby Azure AD DS v Centru správy služby Active Directory.](./media/create-ou/create-ou-adac-overview.png)
 
 1. Podokno **Úkoly** se zobrazí na pravé straně Centra správy služby Active Directory. V doméně, například *aaddscontoso.com*, vyberte **Nový > organizační jednotka**.
 
-    ![Vyberte možnost vytvoření nové hlavní výužky v Centru správy služby Active Directory.](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
+    ![Vyberte možnost vytvoření nové hlavní výužky v Centru správy služby Active Directory.](./media/create-ou/create-ou-adac-new-ou.png)
 
 1. V dialogovém okně **Vytvořit organizační jednotku** zadejte **název** nové organizační jednotky, například *MyCustomOu*. Zadejte krátký popis hlavní výužky, například *Vlastní ou pro účty služeb*. V případě potřeby můžete také nastavit pole **Spravovat** podle pro ou. Chcete-li vytvořit vlastní ou, vyberte **ok**.
 
-    ![Vytvoření vlastní individuální oužiny z Centra správy služby Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
+    ![Vytvoření vlastní individuální oužiny z Centra správy služby Active Directory](./media/create-ou/create-ou-dialog.png)
 
 1. V Centru správy služby Active Directory je nyní uvedena vlastní hlavní výužka, která je k dispozici pro použití:
 
-    ![Vlastní individuální oužina dostupná pro použití v Centru správy služby Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
+    ![Vlastní individuální oužina dostupná pro použití v Centru správy služby Active Directory](./media/create-ou/create-ou-done.png)
 
 ## <a name="next-steps"></a>Další kroky
 

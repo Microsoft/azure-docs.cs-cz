@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 89df941eb6ebaad6e078c278f1ed883db5528c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152549"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549189"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a asynchronní Javu
 
@@ -26,7 +26,7 @@ Azure Cosmos DB je rychlá a flexibilní distribuovaná databáze, která se bez
 
 Pokud se tedy ptáte: "Jak mohu zlepšit výkon databáze?" zvážit následující možnosti:
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 * **Režim připojení: Použití přímého režimu**
 <a id="direct-connection"></a>
@@ -112,7 +112,7 @@ Pokud se tedy ptáte: "Jak mohu zlepšit výkon databáze?" zvážit následují
 
         + **Použijte multithreading ve vaší aplikaci pro efektivní přenos dat TCP** - Po podání požadavku, aplikace by se měla přihlásit k odběru dat v jiném vlákně. Pokud tak neučiníte vynutí neúmyslné "half-duplex" operace a následné požadavky jsou blokovány čekání na odpověď předchozí požadavek.
 
-        + **Proveďte úlohy náročné na výpočetní výkon ve vyhrazeném vlákně** – z podobných důvodů jako předchozí tip jsou operace, jako je komplexní zpracování dat, nejlépe umístěny v samostatném vlákně. Požadavek, který získává data z jiného úložiště dat (například pokud vlákno využívá úložiště dat Azure Cosmos DB a Spark současně) může dojít ke zvýšení latence a doporučuje se vytvořit další vlákno, které čeká na odpověď od ostatních ukládání dat.
+        + **Proveďte úlohy náročné na výpočetní výkon ve vyhrazeném vlákně** – z podobných důvodů jako předchozí tip jsou operace, jako je komplexní zpracování dat, nejlépe umístěny v samostatném vlákně. Požadavek, který získává data z jiného úložiště dat (například pokud vlákno využívá úložiště dat Azure Cosmos DB a Spark současně) může dojít ke zvýšení latence a doporučuje se vytvořit další vlákno, které čeká na odpověď z jiného úložiště dat.
 
             + Základní síťové vi videa v asynchronní java sdk je spravovánnetty, viz tyto [tipy pro zamezení kódování vzory, které blokují Netty IO vlákna](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread).
 
@@ -230,9 +230,9 @@ Pokud se tedy ptáte: "Jak mohu zlepšit výkon databáze?" zvážit následují
     * - nofile 100000
     ```
 
-* **Použití nativní implementace SSL pro netty**
+* **Použití nativní implementace TLS/SSL pro netty**
 
-    Netty můžete použít OpenSSL přímo pro implementaci SSL zásobníku k dosažení lepšího výkonu. V případě, že tato konfigurace netty se vrátí k výchozí implementaci SSL Java.
+    Netty můžete použít OpenSSL přímo pro implementaci TLS zásobníku k dosažení lepšího výkonu. V případě, že tato konfigurace netty se vrátí k výchozí implementaci TLS Java.
 
     na Ubuntu:
     ```bash

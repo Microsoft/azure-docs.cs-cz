@@ -4,16 +4,18 @@ description: Pochopení toho, co jsou pravidla akcí ve Službě Azure Monitor a
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0498325984641641d6dfc9ee6b89f66800b5c7d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668464"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546486"
 ---
 # <a name="action-rules-preview"></a>Pravidla akce (preview)
 
 Pravidla akcí vám pomohou definovat nebo potlačit akce v libovolném oboru Azure Resource Manager (předplatné Azure, skupina prostředků nebo cílový prostředek). Mají různé filtry, které vám pomohou zúžit konkrétní podmnožinu instancí výstrah, na které chcete zajít.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
 
 ## <a name="why-and-when-should-you-use-action-rules"></a>Proč a kdy byste měli používat pravidla akce?
 

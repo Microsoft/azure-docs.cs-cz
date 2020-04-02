@@ -2,13 +2,13 @@
 title: 'Kurz: Extrahujte strukturovaná data pomocí entity naučené strojem – LUIS'
 description: Extrahujte strukturovaná data z utterance pomocí entity učení počítače. Chcete-li zvýšit přesnost extrakce, přidejte dílčí součásti s popisovači a vazbami.
 ms.topic: tutorial
-ms.date: 03/31/2020
-ms.openlocfilehash: f521e634c129aaf03ee341328721bd89723e8264
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/01/2020
+ms.openlocfilehash: 52bf2fb0b9f37e0c731a46c0aaf8b6c5e7f0e911
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478343"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545855"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Kurz: Extrahujte strukturovaná data z promluvy uživatele pomocí strojově získaných entit v jazyce Language Understanding (LUIS)
 
@@ -215,7 +215,7 @@ Otestujte aplikaci pomocí interaktivního **testovacího** panelu. Tento proces
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Přejděte na konec adresy URL v adrese a nahraďte _YOUR_QUERY_HERE_ stejným dotazem, jako jste zadali do interaktivního testovacího panelu.
+1. Přejděte na konec adresy URL v adresním řádku a nahraďte _YOUR_QUERY_HERE_ stejným dotazem, jako jste zadali do interaktivního testovacího panelu.
 
     `deliver a medium veggie pizza`
 

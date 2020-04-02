@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: d58e11551c2857c269e8985e81f84138f6d389ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b87107545761e10c6fb648e54064fbafbdbacd52
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370814"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546012"
 ---
 # <a name="classroom-lab-setup-guide"></a>Průvodce nastavením učebny v laboratoři
 
@@ -79,7 +79,7 @@ Lab Services používá průběžný cenový model, což znamená, že platíte 
 Studentům je přiřazen vlastní virtuální virtuální mkv, který je jim přiřazen po dobu životnosti testovacího prostředí.  Mohou si vybrat, zda:
 
 - Uložte přímo do virtuálního virtuálního mísu.
-- Ukládat do externího úložiště, jako je OneDrive, GitHub atd.
+- Uložte je do externího umístění, jako je OneDrive, GitHub atd.
 
 Pokud chcete používat OneDrive, můžete to nakonfigurovat automaticky pro studenty na jejich testovacích virtuálních počítačích.  Další informace o tom jsou uvedeny níže.
 
@@ -133,7 +133,7 @@ Jakmile porozumíte požadavkům na laboratoř vaší třídy, jste připraveni 
         > [!NOTE]
         > V závislosti na typu nainstalovaného operačního systému může spuštění virtuálního počítače trvat několik minut.  Chcete-li zajistit, že testovací virtuální počítač je připravený k použití během naplánovaných hodin, doporučujeme spustit virtuální počítače 30 minut předem, abyste zajistili, že virtuální počítače jsou spuštěné a připravené k použití.
 
-   - [Nastavení kvót pro uživatele](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) a [nastavení další kvóty pro konkrétního uživatele](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quota-for-a-specific-user)
+   - [Nastavení kvót pro uživatele](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) a [nastavení další kvóty pro konkrétního uživatele](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [Povolení automatického vypnutí při odpojení](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 

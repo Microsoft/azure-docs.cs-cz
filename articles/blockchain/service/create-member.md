@@ -1,15 +1,15 @@
 ---
 title: Vytvoření člena služby Azure Blockchain – portál Azure
 description: Vytvořte člena služby Azure Blockchain Service pro konsorcium blockchainu pomocí portálu Azure.
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 3c468633a193d78fb1c017a756ee372c6feefb12
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4c3dabc6abdffd2fb08ece617545d8471955d130
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79203657"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529648"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Úvodní příručka: Vytvoření člena blockchainové služby Azure Blockchain pomocí portálu Azure
 
@@ -36,7 +36,7 @@ V tomto rychlém startu nasadíte nového člena blockchainu a konsorcia ve slu�
     Konsorcium | Pro nové konsorcium zadejte jedinečný název. Pokud se připojíte ke konsorciu prostřednictvím pozvánky, zvolte konsorcium, ke sdružení, ke sdružení, ke sdružení, ke sdružení. Další informace o konsorciích najdete v [tématu Konsorcium služby Azure Blockchain Service](consortium.md).
     Name (Název) | Zvolte jedinečný název pro člena služby Azure Blockchain Service. Název člena blockchainu může obsahovat pouze malá písmena a čísla. Prvním znakem musí být písmeno. Hodnota musí být dlouhá 2 až 20 znaků.
     Heslo členského účtu | Heslo členského účtu se používá k šifrování soukromého klíče pro účet Ethereum, který je vytvořen pro vašeho člena. Pro správu konsorcia se používá heslo členského účtu a členského účtu.
-    Ceny | Konfigurace uzlu a náklady na novou službu. Vyberte odkaz **Změnit,** chcete-li zvolit mezi **standardní** a **základní** úrovní. Úroveň *Basic* je určená pro vývoj, testování a testování konceptů. Použijte *úroveň Standard* pro nasazení výrobní třídy.
+    Ceny | Konfigurace uzlu a náklady na novou službu. Vyberte odkaz **Změnit,** chcete-li zvolit mezi **standardní** a **základní** úrovní. Úroveň *Basic* je určená pro vývoj, testování a testování konceptů. Použijte *úroveň Standard* pro nasazení výrobní třídy. Úroveň *Standard* byste měli použít také v případě, že používáte Správce dat Blockchain nebo odesíláte velký objem soukromých transakcí. Změna cenové úrovně mezi základní a standardní po vytvoření člena není podporována.
     Heslo uzlu | Heslo pro výchozí uzel transakce člena. Heslo použijte pro základní ověřování při připojování k výchozímu koncovému bodu koncového uzlu výchozího transakčního uzlu člena blockchainu.
 
 1. Chcete-li ověřit nastavení, vyberte **Zkontrolovat + vytvořit.** Chcete-li službu zřídit, vyberte **možnost Vytvořit.** Zřizování trvá přibližně 10 minut.

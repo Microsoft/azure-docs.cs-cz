@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 04/01/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 0df38533afe97f010d1050c3ee2a4a69a54d4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e8a5960da394b1eac1578d7f757b25995ff8faa
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335101"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80573146"
 ---
 | Prostředek | Omezení |
 | --- | --- |
 | Datová propustnost |30 Gb/s<sup>1</sup> |
 |Pravidla|10,000. Všechny typy pravidel v kombinaci.|
-|Maximální pravidla DNAT|299|
+|Maximální pravidla DNAT|298<br>Pokud je protokol pravidla nakonfigurován pro protokol TCP i UDP, počítá se jako dvě pravidla.|
 |Minimální velikost azurefirewallsubnetu |/26|
 |Rozsah portů v pravidlech sítě a aplikací|0-64,000. Probíhá práce na uvolnění tohoto omezení.|
 |Veřejné IP adresy|Maximálně 100 (V současné době jsou porty SNAT přidány pouze pro prvních pět veřejných IP adres.)|

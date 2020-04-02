@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 0cf171da5f473a0d78fc5f37139c94b0e519bcfb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b83592aa069b5262961f5e41a909821786a178b6
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241259"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528556"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Úvodní příručka: Shromažďování dat z počítače s Linuxem v hybridním prostředí pomocí Azure Monitoru
 
 [Azure Monitor](../overview.md) může shromažďovat data přímo z vašich fyzických nebo virtuálních počítačů s Linuxem ve vašem prostředí do pracovního prostoru Log Analytics pro podrobnou analýzu a korelaci. Instalace [agenta Log Analytics](../platform/log-analytics-agent.md) umožňuje Azure Monitoru shromažďovat data z datového centra nebo jiného cloudového prostředí. Tento rychlý start vám ukáže, jak nakonfigurovat a shromažďovat data ze serveru Linux pomocí několika jednoduchých kroků. Informace o virtuálních počítačích Azure Linux najdete v [tématu Shromažďování dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-Informace o podporované konfiguraci naleznete v [tématu Podporované operační systémy Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) a konfigurace síťové brány [firewall](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
+Informace o podporované konfiguraci naleznete v [tématu Podporované operační systémy Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) a konfigurace síťové brány [firewall](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements).
  
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 

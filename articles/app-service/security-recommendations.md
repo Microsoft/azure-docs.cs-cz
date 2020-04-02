@@ -1,18 +1,18 @@
 ---
 title: Doporučení zabezpečení
 description: Implementujte bezpečnostní doporučení, která vám pomohou splnit vaše bezpečnostní povinnosti, jak je uvedeno v našem modelu sdílené odpovědnosti. Zlepšete zabezpečení aplikace.
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684113"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546706"
 ---
 # <a name="security-recommendations-for-app-service"></a>Doporučení zabezpečení pro službu App Service
 
@@ -43,7 +43,7 @@ Tento článek obsahuje doporučení zabezpečení pro Azure App Service. Implem
 | Použití FTPS | Služba App Service podporuje ftp i FTPS pro nasazení souborů. Pokud je to možné, použijte místo FTP místo FTP. Pokud jeden nebo oba tyto protokoly nejsou používány, měli byste [je zakázat](deploy-ftp.md#enforce-ftps). |
 | Zabezpečení dat aplikací | Neukládejte tajné klíče aplikací, jako jsou přihlašovací údaje databáze, tokeny rozhraní API nebo soukromé klíče ve vašem kódu nebo konfiguračních souborech. Běžně přijímaný přístup je přístup k nim jako [proměnné prostředí](https://wikipedia.org/wiki/Environment_variable) pomocí standardní vzor ve vašem jazyce volby. Ve službě Azure App Service můžete definovat proměnné prostředí prostřednictvím [nastavení aplikací](web-sites-configure.md) a [připojovacích řetězců](web-sites-configure.md). Nastavení aplikací a připojovací řetězce se ukládají šifrované v Azure. Nastavení aplikace se dešifruje pouze před vložením do procesní paměti aplikace při spuštění aplikace. Šifrovací klíče se pravidelně otáčejí. Případně můžete integrovat aplikaci Azure App Service s [Azure Key Vault](/azure/key-vault/) pro pokročilou správu tajných klíčů. [Přístup k trezoru klíčů se spravovanou identitou](../key-vault/tutorial-web-application-keyvault.md)může vaše aplikace App Service bezpečně přistupovat k tajným klíčům, které potřebujete. |
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 | Doporučení | Komentáře |
 |-|-|

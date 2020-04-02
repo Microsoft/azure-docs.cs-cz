@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: 4dff471fa0f2194756409e01512ed223a1d46024
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99c32122fc48aaea7428fa559d7289713849f34e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241436"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548898"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>Vytvoření clusteru Průzkumníka dat Azure ve virtuální síti
 
@@ -68,7 +68,7 @@ Vytvoření skupiny zabezpečení sítě:
     | Name (Název) | Povolit AzureDataExplorerManagement
     | | |
     
-1. Opakujte předchozí dva kroky pro všechny příchozí a odchozí závislosti podle [závislostí pro nasazení virtuální sítě](/azure/data-explorer/vnet-deloyment#dependencies-for-vnet-deployment). Odchozí pravidla mohou být případně nahrazena jediným pravidlem, které umožňuje *Internet* pro porty 443 a 80.
+1. Opakujte předchozí dva kroky pro všechny příchozí a odchozí závislosti podle [závislostí pro nasazení virtuální sítě](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment). Odchozí pravidla mohou být případně nahrazena jediným pravidlem, které umožňuje *Internet* pro porty 443 a 80.
     
     Pravidla souboru nsg pro příchozí a odchozí závislosti by měla vypadat takto:
 
@@ -121,7 +121,7 @@ Vytvoření virtuální sítě a podsítě:
     | | | |
 
     > [!NOTE]
-    > Pro produkční úlohy naplánujte velikost podsítě podle [velikosti podsítě plánu ve virtuální síti.](/azure/data-explorer/vnet-deloyment#plan-subnet-size-in-your-vnet)
+    > Pro produkční úlohy naplánujte velikost podsítě podle [velikosti podsítě plánu ve virtuální síti.](/azure/data-explorer/vnet-deployment#plan-subnet-size-in-your-vnet)
 
 1. Vyberte **Zkontrolovat + vytvořit,** chcete-li zkontrolovat podrobnosti clusteru, a **vytvořit** pro zřízení clusteru.
 

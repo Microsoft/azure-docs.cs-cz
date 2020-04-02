@@ -2,13 +2,14 @@
 title: Podpora migrace fyzického serveru v Migraci Azure
 description: Přečtěte si o podpoře migrace fyzického serveru v Azure Migrate.
 ms.topic: conceptual
+ms.custom: fasttrack-edit
 ms.date: 01/07/2020
-ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269546"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520287"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Matice podpory pro migraci fyzického serveru
 
@@ -43,7 +44,7 @@ Tabulka shrnuje podporu fyzických serverů, které chcete migrovat pomocí migr
 **Síť/úložiště** | Nejnovější informace naleznete v požadavcích [sítě](../site-recovery/vmware-physical-azure-support-matrix.md#network) a [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#storage) pro site recovery. Azure Migrate poskytuje stejné požadavky na síť/úložiště.
 **Požadavky na Azure** | Nejnovější informace najděte požadavky na [síť Azure](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)a [výpočetní prostředky](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) pro site recovery. Azure Migrate má stejné požadavky na migraci fyzického serveru.
 **Služba Mobility** | Agent služby Mobility musí být nainstalován v každém počítači, který chcete migrovat.
-**UEFI bota** | Migrovaný počítač v Azure se automaticky převede na spouštěcí virtuální počítač Azure systému BIOS.<br/><br/> Disk operačního systému by měl mít až čtyři oddíly a svazky by měly být formátovány pomocí systému souborů NTFS.
+**UEFI bota** | Migrovaný počítač v Azure se automaticky převede na spouštěcí virtuální počítač Azure systému BIOS. Podporován je pouze server se systémem Windows Server 2012 a novějším.<br/><br/> Disk operačního systému by měl mít až čtyři oddíly a svazky by měly být formátovány pomocí systému souborů NTFS.
 **Cílový disk** | Počítače lze migrovat jenom na spravované disky (standardní hdd, premium SSD) v Azure.
 **Velikost disku** | 2 TB OS disk; 8 TB pro datové disky.
 **Omezení disku** |  Až 63 disků na počítač.

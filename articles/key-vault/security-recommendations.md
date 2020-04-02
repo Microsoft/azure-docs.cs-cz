@@ -2,20 +2,20 @@
 title: Doporučení zabezpečení pro azure key vault
 description: Doporučení zabezpečení pro Azure Key Vault. Provádění těchto pokynů vám pomůže splnit vaše bezpečnostní povinnosti, jak je popsáno v našem modelu sdílené odpovědnosti
 services: key-vault
-author: barclayn
+author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d18dca2d7c44ac9db5ebabc5cc10f2f0b3f2c069
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78192366"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546365"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Doporučení zabezpečení pro azure key vault
 
@@ -46,7 +46,7 @@ Některá doporučení zahrnutá v tomto článku můžete automaticky sledovat 
  Měly by být povolené diagnostické protokoly v trezoru klíčů | Povolte protokoly a uchovávejte je až jeden rok. To umožňuje znovu vytvořit stopy aktivit pro účely vyšetřování, když dojde k incidentu zabezpečení nebo dojde k ohrožení sítě. | [Ano](../security-center/security-center-identity-access.md) |
 | Omezení přístupu k protokolům trezoru azure key vault | [Protokoly trezoru klíčů](key-vault-logging.md) ukládají informace o činnostech prováděných v trezoru, jako je vytvoření nebo odstranění trezorů, klíčů, tajných kódů a mohou být použity během šetření. |  - |
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74545589"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521324"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověření přístupu k prostředkům Centra událostí pomocí sdílených přístupových podpisů (SAS)
 Sdílený přístupový podpis (SAS) umožňuje podrobnou kontrolu nad typem přístupu, který udělíte klientům, kteří mají sdílený přístupový podpis. Zde jsou některé ovládací prvky, které můžete nastavit v SAS: 
@@ -33,7 +33,7 @@ Tento článek popisuje ověřování přístupu k prostředkům Centra událost
 
 
 ## <a name="configuring-for-sas-authentication"></a>Konfigurace ověřování SAS
-Pravidlo autorizace sdíleného přístupu EventHubs můžete nakonfigurovat v oboru názvů Event Hubs nebo entity (instance centra událostí nebo téma Kafka v centru událostí pro obor názvů s povoleným Kafka). Konfigurace pravidla autorizace sdíleného přístupu pro skupinu spotřebitelů není aktuálně podporována, ale můžete použít pravidla nakonfigurovaná v oboru názvů nebo entitě k zabezpečení přístupu ke skupině spotřebitelů. 
+Pravidlo autorizace sdíleného přístupu EventHubs můžete nakonfigurovat v oboru názvů Event Hubs nebo v entitě (instance centra událostí nebo téma Kafka v centru událostí). Konfigurace pravidla autorizace sdíleného přístupu pro skupinu spotřebitelů není aktuálně podporována, ale můžete použít pravidla nakonfigurovaná v oboru názvů nebo entitě k zabezpečení přístupu ke skupině spotřebitelů. 
 
 Následující obrázek znázorňuje, jak platí pravidla autorizace na ukázkové entity. 
 

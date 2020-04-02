@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76899846"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547023"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Cognitive Search
 
@@ -41,7 +41,9 @@ Následující tabulka popisuje omezení funkcí souvisejících s vrstvou.
 
 Vybraná úroveň určuje fakturovatelnou sazbu. Následující snímek obrazovky z portálu Azure zobrazuje dostupné úrovně minus ceny (které najdete na portálu a na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/). **Nejběžnější**úrovně jsou free , **Basic**a **Standard.**
 
-**Free** vytvoří omezenou vyhledávací službu v clusteru sdílenou s ostatními odběrateli. Můžete dokončit malé projekty, včetně rychlých startů a kurzů, ale nelze škálovat službu nebo spustit významné úlohy. **Základní** a **standardní** jsou nejčastěji používané fakturovatelné úrovně, přičemž výchozí je **standard.**
+**Free** vytvoří omezenou vyhledávací službu pro menší projekty, včetně rychlých startů a kurzů. Interně repliky a oddíly sdílené mezi více předplatitelů. Nelze škálovat bezplatnou službu nebo spustit významné úlohy.
+
+**Základní** a **standardní** jsou nejčastěji používané fakturovatelné úrovně, přičemž výchozí je **standard.** S vyhrazenými prostředky pod vaší kontrolou můžete nasadit větší projekty, optimalizovat výkon a nastavit kapacitu.
 
 ![Cenové úrovně Azure Cognitive Search](media/search-sku-tier/tiers.png "Cenové úrovně Azure Cognitive Search")
 
@@ -55,10 +57,10 @@ Další informace o různých úrovních najdete na [stránce s cenami](https://
 
 Řešení postavené na Azure Cognitive Search může vzniknout náklady následujícími způsoby:
 
-+ Základní náklady na službu při minimální konfiguraci (vytvoření služby)
++ Pevné náklady na samotnou službu, spuštěné 24hodinová, při minimální konfiguraci (jeden oddíl a replika)
 + Přírůstkové náklady při škálování (přidání replik nebo oddílů)
 + Poplatky za šířku pásma (odchozí přenos dat) 
-+ Kognitivní vyhledávání (připojte kognitivní služby pro obohacení umělou iniciála, úložiště Azure pro úložiště znalostí)
++ Kognitivní vyhledávání (připojení služeb Cognitive Services pro obohacení umělou iniciátoru nebo použití úložiště Azure pro úložiště znalostí)
 
 ### <a name="service-costs"></a>Servisní náklady
 
@@ -106,13 +108,13 @@ Většina zákazníků přináší jen část celkové kapacity online a zbytek 
 
 Následující návrhy vám mohou pomoci udržet náklady na minimu:
 
-- Vytvořte všechny prostředky ve stejné oblasti nebo v co nejmenším počtem oblastí, abyste minimalizovali nebo eliminovali poplatky za šířku pásma.
++ Vytvořte všechny prostředky ve stejné oblasti nebo v co nejmenším počtem oblastí, abyste minimalizovali nebo eliminovali poplatky za šířku pásma.
 
-- Konsolidujte všechny služby do jedné skupiny prostředků, jako je Azure Cognitive Search, Cognitive Services a všechny ostatní služby Azure používané ve vašem řešení. Na webu Azure Portal najděte skupinu prostředků a pomocí příkazů **řízení nákladů** najdete pro přehled o skutečných a plánovaných výdajích.
++ Konsolidujte všechny služby do jedné skupiny prostředků, jako je Azure Cognitive Search, Cognitive Services a všechny ostatní služby Azure používané ve vašem řešení. Na webu Azure Portal najděte skupinu prostředků a pomocí příkazů **řízení nákladů** najdete pro přehled o skutečných a plánovaných výdajích.
 
-- Zvažte Azure Web App pro vaši front-endovou aplikaci tak, aby požadavky a odpovědi zůstaly v rámci hranice datového centra.
++ Zvažte Azure Web App pro vaši front-endovou aplikaci tak, aby požadavky a odpovědi zůstaly v rámci hranice datového centra.
 
-- Škálovat pro operace náročné na prostředky, jako je indexování a potom se seřazuje směrem dolů pro úlohy pravidelných dotazů. Začněte s minimální konfigurací pro Azure Cognitive Search (jeden SU složený z jednoho oddílu a jedné repliky) a pak sledujte aktivitu uživatelů k identifikaci vzorců využití, které by naznačovaly potřebu větší kapacity. Pokud existuje předvídatelný vzor, můžete být schopni synchronizovat škálování s aktivitou (budete muset napsat kód pro automatizaci tohoto).
++ Škálovat pro operace náročné na prostředky, jako je indexování a potom se seřazuje směrem dolů pro úlohy pravidelných dotazů. Začněte s minimální konfigurací pro Azure Cognitive Search (jeden SU složený z jednoho oddílu a jedné repliky) a pak sledujte aktivitu uživatelů k identifikaci vzorců využití, které by naznačovaly potřebu větší kapacity. Pokud existuje předvídatelný vzor, můžete být schopni synchronizovat škálování s aktivitou (budete muset napsat kód pro automatizaci tohoto).
 
 Navštivte stránku [Fakturace a správa nákladů,](https://docs.microsoft.com/azure/billing/billing-getting-started) kde najdete integrované nástroje a funkce související s výdaji.
 
@@ -130,7 +132,6 @@ V Azure Cognitive Search kapacita je strukturována jako *repliky* a *oddíly*.
 
 > [!NOTE]
 > Všechny úrovně standard a storage Optimized podporují [flexibilní kombinace replik a oddílů,](search-capacity-planning.md#chart) takže můžete optimalizovat systém pro rychlost nebo [úložiště](search-performance-optimization.md) změnou váhy. Úroveň Basic nabízí až tři repliky pro vysokou dostupnost, ale má pouze jeden oddíl. Volné úrovně neposkytují vyhrazené prostředky: výpočetní prostředky jsou sdíleny více předplatiteli.
-
 
 ### <a name="evaluating-capacity"></a>Vyhodnocení kapacity
 
@@ -152,7 +153,7 @@ Jedním z přístupů pro odhad kapacity je začít s free vrstvou. Nezapomeňte
 
 + [Vytvořte bezplatnou službu](search-create-service-portal.md).
 + Připravte malou reprezentativní datovou sadu.
-+ [Vytvořte počáteční index na portálu](search-create-index-portal.md) a poznamenejte si jeho velikost. Funkce a atributy mají vliv na úložiště. Například přidání množcích (dopředného typu) zvýší požadavky na úložiště. Pomocí stejné sady dat můžete zkusit vytvořit více verzí indexu s různými atributy v každém poli, abyste zjistili, jak se liší požadavky na úložiště. Další informace naleznete [v tématu "Důsledky úložiště" v tématu Vytvoření základního indexu](search-what-is-an-index.md#index-size).
++ [Vytvořte počáteční index na portálu](search-create-index-portal.md) a poznamenejte si jeho velikost. Funkce a atributy mají vliv na úložiště. Například přidání sugestium (dotazy typu vyhledávání) zvýší požadavky na úložiště. Pomocí stejné sady dat můžete zkusit vytvořit více verzí indexu s různými atributy v každém poli, abyste zjistili, jak se liší požadavky na úložiště. Další informace naleznete [v tématu "Důsledky úložiště" v tématu Vytvoření základního indexu](search-what-is-an-index.md#index-size).
 
 S hrubým odhadem v ruce můžete tuto částku zdvojnásobit do rozpočtu pro dva indexy (vývoj a výroba) a podle toho zvolit úroveň.
 
@@ -196,7 +197,7 @@ Funkce úrovně Free a náhledne poskytují [smlouvy o úrovni služeb (SLA).](h
 
 + Povolit metriky vytvářet kolem dotazů a shromažďovat data o vzorcích využití (dotazy během pracovní doby, indexování mimo špičku). Tyto údaje slouží k informování rozhodnutí o zřizování služeb. I když to není praktické na hodinové nebo denní kadence, můžete dynamicky upravit oddíly a prostředky tak, aby vyhovovaly plánované změny ve svazcích dotazů. Můžete také vyhovět neplánovaným, ale trvalým změnám, pokud úrovně vydrží dostatečně dlouho, aby ospravedlnily přijetí opatření.
 
-+ Nezapomeňte, že jedinou nevýhodou underprovisioning je, že budete muset strhnout službu, pokud jsou větší skutečné požadavky než vaše předpovědi. Chcete-li se vyhnout přerušení služby, vytvoříte novou službu na vyšší úrovni a spusťte ji vedle sebe, dokud všechny aplikace a požadavky nezacílí na nový koncový bod.
++ Pamatujte si, že jedinou nevýhodou podle zřizování je, že budete muset strhnout službu, pokud jsou větší skutečné požadavky než vaše předpovědi. Chcete-li se vyhnout přerušení služby, vytvoříte novou službu na vyšší úrovni a spusťte ji vedle sebe, dokud všechny aplikace a požadavky nezacílí na nový koncový bod.
 
 ## <a name="next-steps"></a>Další kroky
 

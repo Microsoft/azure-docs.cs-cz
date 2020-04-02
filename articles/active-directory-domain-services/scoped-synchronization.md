@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 11/26/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 160873fe889d7eccc7efd08b4767854a5b24c484
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613041"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518974"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurace synchronizace s vymezeným oborem z Azure AD na Azure Active Directory Domain Services
 
@@ -42,18 +42,20 @@ K konfiguraci nastavení synchronizace s vymezenou matou používáte portál Az
 
 | Akce | | |
 |--|--|--|
-| Vytvoření spravované domény Azure AD DS a konfigurace synchronizace s oborem | [Portál Azure](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Změna synchronizace s oborem | [Portál Azure](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Zakázat synchronizaci s vymezením | [Portál Azure](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Vytvoření spravované domény Azure AD DS a konfigurace synchronizace s oborem | [portál Azure](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Změna synchronizace s oborem | [portál Azure](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Zakázat synchronizaci s vymezením | [portál Azure](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> Změna rozsahu synchronizace způsobí, že spravovaná doména Azure AD DS znovu synchronizuje všechna data.
+> Změna rozsahu synchronizace způsobí, že spravovaná doména Azure AD DS znovu synchronizuje všechna data. Platí následující důležité informace:
 > 
 >  * Když změníte obor synchronizace pro spravovanou doménu Azure AD DS, dojde k úplné synchronizaci.
 >  * Objekty, které už nejsou potřeba ve spravované doméně Azure AD DS, se odstraní. Ve spravované doméně jsou vytvořeny nové objekty.
 >  * Resynchronizace může trvat dlouhou dobu k dokončení. Doba synchronizace závisí na počtu objektů, jako jsou uživatelé, skupiny a členství ve spravované doméně Azure AD DS a adresáři Azure AD. U velkých adresářů s mnoha stovkami tisíc objektů může synchronizace trvat několik dní.
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Povolení synchronizace s vymezením pomocí portálu Azure
+
+Chcete-li povolit synchronizaci s vymezením oborů na webu Azure Portal, proveďte následující kroky:
 
 1. Podle [kurzu vytvořte a nakonfigurujte instanci Azure AD DS](tutorial-create-instance-advanced.md). Dokončete všechny požadavky a kroky nasazení kromě oboru synchronizace.
 1. V kroku synchronizace zvolte **Obor** a vyberte skupiny Azure AD, které chcete synchronizovat s instancí Azure AD DS.
@@ -173,7 +175,7 @@ Write-Output "******************************************************************
 
 ## <a name="enable-scoped-synchronization-using-powershell"></a>Povolení synchronizace s vymezením pomocí Prostředí PowerShell
 
-K dokončení této sady kroků použijte Prostředí PowerShell. V pokynech k [povolení služby Azure Active Directory Domain Services pomocí prostředí PowerShell](powershell-create-instance.md). Několik kroků v tomto článku jsou mírně upraveny ke konfiguraci synchronizace s vymezeným oborem.
+Pomocí prostředí PowerShell proveďte následující sadu kroků. V pokynech k [povolení služby Azure Active Directory Domain Services pomocí prostředí PowerShell](powershell-create-instance.md). Několik kroků v tomto článku jsou mírně upraveny ke konfiguraci synchronizace s vymezeným oborem.
 
 1. Dokončete následující úkoly z článku a povolte Azure AD DS pomocí PowerShellu. Zastavte se u kroku a skutečně vytvořte spravovanou doménu. Nakonfigurujete synchronizaci s vymezeným oborem, kterou vytvoříte spravovanou doménu Azure AD DS.
 

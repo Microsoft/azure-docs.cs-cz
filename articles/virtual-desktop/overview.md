@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 01767e88714bfb4e134957298505edd218d462d3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294826"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546925"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -43,7 +43,7 @@ S Windows Virtual Desktop můžete nastavit škálovatelné a flexibilní prost�
 * Vytvořte si úplné prostředí virtualizace plochy ve svém předplatném Azure, aniž byste museli spouštět další servery brány.
 * Publikujte tolik hostitelských fondů, kolik potřebujete, abyste vyhověli různým úlohám.
 * Přineste si vlastní image pro produkční úlohy nebo test z Galerie Azure.
-* Snižte náklady pomocí sdružených prostředků s více relacemi. Díky nové funkci více relací systému Windows 10 Enterprise exkluzivně pro roli Windows Virtual Desktop a Rd Desktop Session Host (RDSH) v systému Windows Server můžete výrazně snížit počet virtuálních počítačů a operačního systému (OS) a přitom ještě poskytuje stejné prostředky uživatelům.
+* Snižte náklady pomocí sdružených prostředků s více relacemi. Díky nové funkci více relací systému Windows 10 Enterprise, která je v systému Windows Server určena výhradně pro roli Windows Virtual Desktop a Rd Desktop Host (RDSH), můžete výrazně snížit počet virtuálních počítačů a operačního systému (OS) a přitom uživatelům poskytnout stejné prostředky.
 * Poskytněte individuální vlastnictví prostřednictvím osobních (trvalých) ploch.
 
 Virtuální plochy můžete nasadit a spravovat:
@@ -89,21 +89,38 @@ Virtuální počítače Azure, které vytvoříte pro Virtuální plochu Windows
 
 Virtuální počítače Azure, které vytvoříte pro Virtuální plochu Windows, musí mít přístup k následujícím adresám URL:
 
-|Adresa|Odchozí port|Účel|
-|---|---|---|
-|*.wvd.microsoft.com|Port 443 protokolu TCP|Provoz služeb|
-|*.blob.core.windows.net|Port 443 protokolu TCP|Aktualizace zásobníku Agent, SXS a provoz agenta|
-|*.core.windows.net|Port 443 protokolu TCP|Provoz agentů|
-|*.servicebus.windows.net|Port 443 protokolu TCP|Provoz agentů|
-|prod.warmpath.msftcloudes.com|Port 443 protokolu TCP|Provoz agentů|
-|catalogartifact.azureedge.net|Port 443 protokolu TCP|Azure Marketplace|
-|kms.core.windows.net|Port TCP 1688|Aktivace Windows 10|
+|Adresa|Odchozí port TCP|Účel|Výrobní číslo|
+|---|---|---|---|
+|*.wvd.microsoft.com|443|Provoz služeb|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|
+|*.core.windows.net|443|Provoz agentů|AzureCloud|
+|*.servicebus.windows.net|443|Provoz agentů|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|Provoz agentů|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
+|kms.core.windows.net|1688|Aktivace Windows|Internet|
+
+
 
 >[!IMPORTANT]
 >Otevření těchto adres URL je nezbytné pro spolehlivé nasazení virtuální plochy systému Windows. Blokování přístupu k těmto adresám URL není podporováno a ovlivní funkčnost služby. Tyto adresy URL odpovídají jenom webům a prostředkům virtuální plochy Windows a nezahrnují adresy URL pro jiné služby, jako je Azure Active Directory.
 
+V následující tabulce jsou uvedeny volitelné adresy URL, ke kterým můžou mít vaše virtuální počítače Azure přístup:
+
+|Adresa|Odchozí port TCP|Účel|Výrobní číslo|
+|---|---|---|---|
+|*.microsoftonline.com|443|Ověřování pro služby MS Online Services|Žádný|
+|*.events.data.microsoft.com|443|Telemetrická služba|Žádný|
+|www.msftconnecttest.com|443|Detekuje, zda je operační operační spoje připojen k internetu|Žádný|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|Žádný|
+|login.windows.net|443|Přihlášení ke službám MS Online Services, Office 365|Žádný|
+|*.sfx.ms|443|Aktualizace klientského softwaru OneDrivu|Žádný|
+|*.digicert.com|443|Kontrola odvolání certifikátu|Žádný|
+
+
 >[!NOTE]
 >Program Windows Virtual Desktop v současné době neobsahuje seznam rozsahů adres IP, které lze zařadit na seznam povolených adres, které by umožnily síťový provoz. V tuto chvíli podporujeme pouze konkrétní adresy URL pro výběr z bílého seznamu.
+>
+>Seznam adres URL souvisejících s Office, včetně požadovaných adres URL souvisejících se službou Azure Active Directory, najdete v [tématu Adresy URL office 365 a rozsahy IP adres](/office365/enterprise/urls-and-ip-address-ranges).
 >
 >Znak se zástupnými znaky (*) je nutné použít pro adresy URL zahrnující provoz služeb. Pokud nechcete používat * pro provoz související s agentem, zde je návod, jak najít adresy URL bez zástupných znaků:
 >
@@ -137,16 +154,16 @@ Následující klienti vzdálené plochy podporují virtuální plochu systému 
 
 Klienti vzdálené plochy musí mít přístup k následujícím adresám URL:
 
-|Adresa|Odchozí port|Účel|Klient (klienty)|
+|Adresa|Odchozí port TCP|Účel|Klient (klienty)|
 |---|---|---|---|
-|*.wvd.microsoft.com|Port 443 protokolu TCP|Provoz služeb|Všechny|
-|*.servicebus.windows.net|Port 443 protokolu TCP|Poradce při potížích s daty|Všechny|
-|go.microsoft.com|Port 443 protokolu TCP|Microsoft FWLinks|Všechny|
-|aka.ms|Port 443 protokolu TCP|Zkracovač adres URL společnosti Microsoft|Všechny|
-|docs.microsoft.com|Port 443 protokolu TCP|Dokumentace|Všechny|
-|privacy.microsoft.com|Port 443 protokolu TCP|Prohlášení o ochraně osobních údajů
+|*.wvd.microsoft.com|443|Provoz služeb|Všechny|
+|*.servicebus.windows.net|443|Poradce při potížích s daty|Všechny|
+|go.microsoft.com|443|Microsoft FWLinks|Všechny|
+|aka.ms|443|Zkracovač adres URL společnosti Microsoft|Všechny|
+|docs.microsoft.com|443|Dokumentace|Všechny|
+|privacy.microsoft.com|443|Prohlášení o ochraně osobních údajů
 |Všechny|
-|query.prod.cms.rt.microsoft.com|Port 443 protokolu TCP|Aktualizace klienta|Windows Desktop|
+|query.prod.cms.rt.microsoft.com|443|Aktualizace klienta|Windows Desktop|
 
 >[!IMPORTANT]
 >Otevření těchto adres URL je nezbytné pro spolehlivé prostředí klienta. Blokování přístupu k těmto adresám URL není podporováno a ovlivní funkčnost služby. Tyto adresy URL odpovídají jenom klientským webům a prostředkům a nezahrnují adresy URL pro jiné služby, jako je Azure Active Directory.

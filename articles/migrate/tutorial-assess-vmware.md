@@ -3,12 +3,12 @@ title: Posouzení virtuálních počítačů VMware pro migraci do Azure
 description: Popisuje, jak posoudit místní virtuální počítače VMware pro migraci do Azure pomocí Azure Migrate Server Assessment.
 ms.topic: tutorial
 ms.date: 03/23/2019
-ms.openlocfilehash: f33e56f7e0af920363475edfa7e86977c2efd1d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336735"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548750"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů VMware pomocí azure migrate server assessment
 
@@ -163,7 +163,7 @@ Zařízení se musí připojit k serveru vCenter, aby zjistilo údaje o konfigur
 1. V **části Zadejte podrobnosti o serveru vCenter**zadejte název (FQDN) nebo ADRESU IP instance serveru vCenter. Můžete ponechat výchozí port nebo zadat vlastní port, na kterém server vCenter naslouchá.
 2. V **poli Uživatelské jméno** a **Heslo**zadejte přihlašovací údaje účtu serveru vCenter, které bude zařízení používat ke zjišťování virtuálních počítačů v instanci serveru vCenter. 
 
-    - Měli jste nastavit účet s požadovanými oprávněními v [předchozím kurzu](/tutorial-prepare-vmware.md#set-up-an-account-for-assessment).
+    - Měli jste nastavit účet s požadovanými oprávněními v [předchozím kurzu](tutorial-prepare-vmware.md#set-up-an-account-for-assessment).
     - Pokud chcete obor zjišťování na konkrétní objekty VMware (vCenter Server datových center, clustery, složky clusterů, hostitelé, složka hostitelů nebo jednotlivé virtuální počítače.), přečtěte si pokyny v [tomto článku](set-discovery-scope.md) omezit účet používaný Azure Migrate.
 
 3. Vyberte **Ověřit připojení,** abyste se ujistili, že se zařízení může připojit k serveru vCenter.

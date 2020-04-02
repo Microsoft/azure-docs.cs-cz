@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: e4dfc33756a287b6d2f6e41edded3332ca85241d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62c1e29b668c3ef58b0e26e2749c55b913279425
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274928"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545681"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované prostředky pro upozornění na metriky v Azure Monitoru
 
@@ -42,7 +42,7 @@ Tady je úplný seznam zdrojů metrik monitorování Azure podporovaných nověj
 |Microsoft.ClassicStorage/storageAccounts/mmxclassic/tableServices|Ne|Ano| |
 |Microsoft.CognitiveServices/účty| Není dostupné. | Ne | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines |Ano | Ano | [Virtuální počítače](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets |Není dostupné. | Ano |[Škálovací sady virtuálních strojů](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.Compute/virtualMachineScaleSets |Není dostupné. | Ano |[Škálovací sady virtuálních počítačů](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
 |Microsoft.ContainerInstance/containerGroups | Ano| Ne | [Skupiny kontejnerů](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
 |Microsoft.ContainerService/spravované clustery | Ano | Ne | [Spravované clustery](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
 |Microsoft.DataBoxEdge/dataBoxEdgeDevices | Ano | Ano | |
@@ -56,7 +56,7 @@ Tady je úplný seznam zdrojů metrik monitorování Azure podporovaných nověj
 |Microsoft.EventGrid/domény|Ne|Ano| |
 |Microsoft.EventGrid/témata |Ano | Ne |[Témata mřížky událostí](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
 |Microsoft.EventHub/clustery |Ano| Ne |[Clustery rozbočovačů událostí](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
-|Obory názvů Microsoft.EventHub/Namespaces |Ano| Ne |[Centra událostí](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
+|Obory názvů Microsoft.EventHub/Namespaces |Ano| Ne |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
 |Úložiště Microsoft.KeyVault/trezory| Ne |Ne |[Trezory](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/pracovní postupy |Není dostupné. | Ne |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/pracovní prostory|Ano| Ne | [Strojové učení](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
@@ -77,16 +77,16 @@ Tady je úplný seznam zdrojů metrik monitorování Azure podporovaných nověj
 |Microsoft.PowerBIDedicated/kapacity | Není dostupné. | Ne | [Kapacity](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices |Není dostupné.|Ne | [Vyhledávací služby](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
 |Obory názvů Microsoft.ServiceBus |Ano| Ne |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
-|Microsoft.Sql/servery/elastické bazény |   Ne | Ano |
+|Microsoft.Sql/servery/elastické bazény |    Ne | Ano |
 |Microsoft.Sql/servery/databáze    | Ne | Ano |
 |Microsoft.Storage/storageAccounts |Ano | Ne | [Účty úložiště](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services | Ano| Ne | [Služby blob](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Souborové služby](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [Služby front](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) a [Tabulkové služby](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
-|Microsoft.StreamAnalytics/streamingjobs |Není dostupné.| Ne | [Analýza streamu](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft.StreamAnalytics/streamingjobs |Není dostupné.| Ne | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 |Microsoft.Microsoft.VMWareCloudSimple/virtualMachines |Ano|Ne |[Virtuální počítače CloudSimple](../../azure-monitor/platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines)|
 |Microsoft.Web/hostingEnvironments/multiRolePools | Ano | Ne | [Víceúčelové fondy prostředí aplikačních služeb](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | Ano | Ne | [Fondy pracovních procesů prostředí služby App Service](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
-|Farmy Microsoft.Web/server | Ano | Ne | [Plány služby App Service](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
-|Web/weby společnosti Microsoft | Ano | Ne | [Služby](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) a [funkce](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions) aplikací|
+|Farmy Microsoft.Web/server | Ano | Ne | [Plány služeb aplikace](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
+|Web/weby společnosti Microsoft | Ano | Ne | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites)|
 |Microsoft.Web/weby/sloty | Ano | Ne | [Sloty služby App Service](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|
 
 ## <a name="payload-schema"></a>Schéma datové části

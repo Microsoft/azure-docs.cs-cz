@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/13/2019
+ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 53bbee6dd75e045c2a7e95c88a0138c9859d12db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad36547b0cf9457d7ff4fdd919a0bb1362539eb5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80374052"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522727"
 ---
 Tento článek odpovídá na některé nejčastější dotazy týkající se spravovaných disků Azure a disků Azure Premium SSD.
 
@@ -409,11 +409,11 @@ Použití trimu na discích Azure na prémiových nebo standardních discích ne
 
 **Které oblasti podporují možnost roztržení pro příslušnou velikost disku SSD s prémií?**
 
-Funkce roztržení je aktuálně podporována v Azure – –střed USA.
+Funkce prasknutí je v současné době podporovaná ve všech oblastech ve veřejném cloudu Azure, s podporou pro suverénní cloudy brzy. 
 
 **V jakých oblastech jsou podporovány 4/8/16 GiB Managed Disk velikosti (P1/P2/P3, E1/E2/E3) v roce?**
 
-Tyto nové velikosti disků jsou aktuálně podporované v Azure – –střed USA.
+Tyto nové velikosti disků jsou aktuálně podporované ve všech oblastech ve službě Azure Public Cloud, s podporou pro suverénní cloudy již brzy. 
 
 **Jsou velikosti disků P1/P2/P3 podporované pro nespravované disky nebo objekty BLOB stránky?**
 

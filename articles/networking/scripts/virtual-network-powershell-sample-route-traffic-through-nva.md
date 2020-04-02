@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Směrování provozu přes síťové virtuální zařízení | Microsoft Docs
+title: Ukázka skriptu Azure PowerShell – směrování provozu prostřednictvím síťového virtuálního zařízení
 description: Ukázkový skript Azure PowerShellu – Směrování provozu přes síťové virtuální zařízení brány firewall
 services: virtual-network
 documentationcenter: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
-ms.openlocfilehash: b31714e62ba0e7a0e4882d9b9fa830b3a14fe855
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98509399c1f4bd66640152e8a9cb02cf396a1b62
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73888511"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521473"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Směrování provozu přes síťové virtuální zařízení
 

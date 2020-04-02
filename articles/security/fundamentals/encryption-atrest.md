@@ -3,7 +3,7 @@ title: Šifrování dat Microsoft Azure v klidovém stavu | Dokumenty společnos
 description: Tento článek obsahuje přehled šifrování dat Microsoft Azure v klidovém stavu, celkové možnosti a obecné aspekty.
 services: security
 documentationcenter: na
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
-ms.author: barclayn
-ms.openlocfilehash: d8aa643dcf9734ac983c9c4c0d53bda24ce4688d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbaldwin
+ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125071"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548631"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure v klidovém stavu
 
@@ -125,13 +125,13 @@ Každý z modelů šifrování na straně serveru v klidovém stavu znamená cha
 
 #### <a name="server-side-encryption-using-service-managed-keys"></a>Šifrování na straně serveru pomocí klíčů spravovaných službou
 
-Pro mnoho zákazníků je základním požadavkem zajistit, aby data byla šifrována vždy, když jsou v klidovém stavu. Šifrování na straně serveru pomocí klíčů spravovaných službou umožňuje tento model tím, že umožňuje zákazníkům označit konkrétní prostředek (účet úložiště, SQL DB atd.) pro šifrování a ponechat všechny aspekty správy klíčů, jako je vydávání klíčů, otočení a zálohování společnosti Microsoft . Většina služeb Azure, které podporují šifrování v klidovém stavu, obvykle podporuje tento model snižování zátěže správy šifrovacích klíčů do Azure. Poskytovatel prostředků Azure vytvoří klíče, umístí je do zabezpečeného úložiště a v případě potřeby je načte. To znamená, že služba má úplný přístup ke klíčům a služba má plnou kontrolu nad správou životního cyklu pověření.
+Pro mnoho zákazníků je základním požadavkem zajistit, aby data byla šifrována vždy, když jsou v klidovém stavu. Šifrování na straně serveru pomocí klíčů spravovaných službou umožňuje tento model tím, že umožňuje zákazníkům označit konkrétní prostředek (účet úložiště, SQL DB atd.) pro šifrování a ponechat všechny aspekty správy klíčů, jako je vydávání klíčů, otočení a zálohování společnosti Microsoft. Většina služeb Azure, které podporují šifrování v klidovém stavu, obvykle podporuje tento model snižování zátěže správy šifrovacích klíčů do Azure. Poskytovatel prostředků Azure vytvoří klíče, umístí je do zabezpečeného úložiště a v případě potřeby je načte. To znamená, že služba má úplný přístup ke klíčům a služba má plnou kontrolu nad správou životního cyklu pověření.
 
 ![Spravované](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Šifrování na straně serveru pomocí klíčů spravovaných službou proto rychle řeší potřebu mít šifrování v klidovém stavu s nízkou režií vůči zákazníkovi. Když je zákazník k dispozici, obvykle otevře portál Azure pro cílové předplatné a poskytovatele prostředků a zakontroluje políčko s uvedením, že by chtěl, aby byla data zašifrována. V některých správci prostředků je ve výchozím nastavení zapnuto šifrování na straně serveru pomocí klíčů spravovaných službou.
 
-Šifrování na straně serveru pomocí klíčů spravovaných společností Microsoft znamená, že služba má plný přístup k ukládání a správě klíčů. Zatímco někteří zákazníci mohou chtít spravovat klíče, protože mají pocit, že získají větší zabezpečení, náklady a rizika spojená s vlastním řešením úložiště klíčů by měly být vzaty v úvahu při hodnocení tohoto modelu. V mnoha případech může organizace určit, že omezení prostředků nebo rizika místního řešení může být větší než riziko správy cloudu šifrování v klidovéklíče.  Tento model však nemusí být dostačující pro organizace, které mají požadavky na řízení vytváření nebo životního cyklu šifrovacích klíčů nebo na to, aby šifrovací klíče služby spravovali různí pracovníci než ti, kteří službu spravují (to znamená oddělení z celkového modelu řízení služby).
+Šifrování na straně serveru pomocí klíčů spravovaných společností Microsoft znamená, že služba má plný přístup k ukládání a správě klíčů. Zatímco někteří zákazníci mohou chtít spravovat klíče, protože mají pocit, že získají větší zabezpečení, náklady a rizika spojená s vlastním řešením úložiště klíčů by měly být vzaty v úvahu při hodnocení tohoto modelu. V mnoha případech může organizace určit, že omezení prostředků nebo rizika místního řešení může být větší než riziko správy cloudu šifrování v klidovéklíče.  Tento model však nemusí být dostatečná pro organizace, které mají požadavky na řízení vytvoření nebo životní cyklus šifrovacích klíčů nebo mít jiný personál spravovat služby šifrovací klíče než ty, které spravují službu (to znamená oddělení správy klíčů z celkového modelu správy pro službu).
 
 ##### <a name="key-access"></a>Přístup ke klíči
 
@@ -269,7 +269,7 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | **Analýza**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
 | Event Hubs                       | Ano                | Ano, všechny délky RSA. | -                  |
-| Funkce                        | Ano                | Ano, všechny délky RSA. | -                  |
+| Functions                        | Ano                | Ano, všechny délky RSA. | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Azure Data Catalog               | Ano                | -                  | -                  |
 | Apache Kafka ve službě Azure HDInsight  | Ano                | Všechny délky RSA.   | -                  |
@@ -287,7 +287,7 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | Škálovací sada virtuálních strojů        | Ano                | Ano, RSA 2048-bit  | -                  |
 | SAP HANA                         | Ano                | Ano, RSA 2048-bit  | -                  |
 | App Service                      | Ano                | Ano                | -                  |
-| Automatizace                       | Ano                | Ano                | -                  |
+| Automation                       | Ano                | Ano                | -                  |
 | Azure Portal                     | Ano                | Ano                | -                  |
 | Logic Apps                       | Ano                | Ano                | -                  |
 | Azure Managed Applications       | Ano                | Ano                | -                  |
@@ -322,7 +322,7 @@ Podpora šifrování serveru je aktuálně poskytována prostřednictvím funkce
 | Media Services                   | Ano                | -                  | Ano                |
 | **Úložiště**                      |                    |                    |                    |
 | Blob Storage                     | Ano                | Ano, RSA 2048-bit  | Ano                |
-| Diskové úložiště                     | Ano                | Ano                | -                  |
+| Disk Storage                     | Ano                | Ano                | -                  |
 | Spravované diskové úložiště             | Ano                | Ano                | -                  |
 | File Storage                     | Ano                | Ano, RSA 2048-bit  | -                  |
 | Queue Storage                    | Ano                | Ano                | Ano                |

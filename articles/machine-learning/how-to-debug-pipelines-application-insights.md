@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Přidejte protokolování do svých kanálů školení a dávkového vyhodnocování a zobrazte zaznamenané výsledky v Application Insights.
 services: machine-learning
 author: aburek
-ms.author: anrode
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85dcd9ef98deb2ea0117f2db280e49c4a57bf00f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 217a89f6ede4e4b1d2182eed79b088808432044f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76776297"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529361"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Ladění a řešení potíží s kanály strojového učení v Application Insights
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ S vaše protokoly v jednou místo bude poskytovat historii výjimek a chybových
   ```
 * Vytvoření [instance Application Insights](../azure-monitor/app/opencensus-python.md) (tento dokument také obsahuje informace o získání připojovacího řetězce pro prostředek)
 
-## <a name="getting-started"></a>Začínáme
+## <a name="getting-started"></a>začínáme
 
 Tato část je úvod emituje specifické pro použití OpenCensus z kanálu Azure Machine Learning. Podrobný kurz najdete [v tématu OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 

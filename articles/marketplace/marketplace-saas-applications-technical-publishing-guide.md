@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 2c1cb755b62812336a306994f6820573130815e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288355"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544285"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídek aplikací SaaS
 
@@ -25,8 +25,8 @@ Aplikace SaaS jsou dostupné v obou azure storech Následující tabulka popisuj
 
 | Možnost výkladní skříně | Výpis | Zkušební verze/transakt |  
 | --- | --- | --- |  
-| AppSource | Ano (Kontaktujte mě) | Ano (PowerBI/Dynamics) |
-| Azure marketplace | Ne | Ano (Aplikace SaaS) |   
+| AppSource | Ano | Ano |
+| Azure marketplace | Ne | Ano |   
 
 **Seznam:**  Možnost výpisu publikování se skládá z typu nabídky Kontaktujte mě a používá se, když účast na zkušební verzi nebo na úrovni transakce není proveditelná. Výhodou tohoto přístupu je, že umožňuje vydavatelům s řešením na trhu okamžitě začít přijímat potenciální zákazníky, které lze přeměnit na nabídky pro zvýšení vašeho podnikání.  
 **Zkušební verze/transakce:**  Zákazník má možnost přímo zakoupit nebo požádat o zkušební verzi vašeho řešení. Poskytování zkušební verze zvyšuje úroveň zapojení nabízených zákazníkům a umožňuje zákazníkům prozkoumat vaše řešení před nákupem. Díky zkušebnímu prostředí budete mít větší šanci na propagaci ve výkladních skříních a měli byste očekávat stále bohatší zájemce ze zapojení zákazníků. Zkoušky musí zahrnovat bezplatnou podporu alespoň po dobu zkušební doby.  
@@ -95,7 +95,7 @@ Služba Azure Active Directory navíc poskytuje web pro kontrolu aktualizací sl
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Povolení zkušebních verzí pomocí služby Azure Active Directory  
 
-Microsoft ověřuje všechny uživatele Marketplace pomocí Azure AD, takže když ověřený uživatel klikne na zkušební verzi na Marketplace a bude přesměrován do vašeho zkušebního prostředí, můžete uživatele zřídit přímo do zkušební verze, aniž byste museli další krok přihlášení. Token, který vaše aplikace obdrží z Azure AD během ověřování obsahuje cenné informace o uživateli, které můžete použít k vytvoření uživatelského účtu ve vaší aplikaci, což vám umožní automatizovat zřizování a zvýšit pravděpodobnost konverze. Další informace o tokenu naleznete v [tématu Ukázkové tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+Microsoft ověřuje všechny uživatele Marketplace pomocí Azure AD, takže když ověřený uživatel klikne na zkušební verzi na Marketplace a přejde na zkušební prostředí, můžete uživatele zřídit přímo do zkušební verze, aniž byste museli vyžadovat další krok přihlášení. Token, který vaše aplikace obdrží z Azure AD během ověřování obsahuje cenné informace o uživateli, které můžete použít k vytvoření uživatelského účtu ve vaší aplikaci, což vám umožní automatizovat zřizování a zvýšit pravděpodobnost konverze. Další informace o tokenu naleznete v [tématu Ukázkové tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
 Použití Azure AD k povolení ověřování jedním kliknutím do vaší aplikace nebo zkušební verze dělá následující akce:  
 * Zjednodušuje zákaznickou zkušenost od Marketplace po zkušební verzi.  

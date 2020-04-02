@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514999"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521186"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Průvodce nastavením počítače se šablonami Windows ve službě Azure Lab Services
 
@@ -185,7 +185,7 @@ Doporučujeme, aby všechny aplikace pro Microsoft Store byly aktualizovány na 
 3. V rozevírací nabídce vyberte **Stáhnout** a aktualizace.
 4. Klikněte na tlačítko **Získat aktualizaci.**
 
-Powershell můžete také použít k aktualizaci již nainstalovaných aplikací microsoft storu.
+Pomocí prostředí PowerShell můžete také aktualizovat aplikace microsoft store, které jsou již nainstalovány.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
@@ -234,3 +234,6 @@ Nainstalujte si další aplikace, které se běžně používají pro výuku pro
 ## <a name="conclusion"></a>Závěr
 
 Tento článek vám ukázal volitelné kroky k přípravě virtuálního počítače šablony systému Windows pro efektivní třídu.  Mezi kroky patří instalace OneDrivu a instalace Office 365, instalace aktualizací pro Windows a instalace aktualizací pro aplikace pro Microsoft Store.  Také jsme diskutovali o tom, jak nastavit aktualizace plánu, který funguje nejlépe pro vaši třídu.  
+
+## <a name="next-steps"></a>Další kroky
+Přečtěte si článek o řízení chování při správě systému Windows, který vám pomůže se správou nákladů: [Průvodce řízením chování při vypínání systému Windows](how-to-windows-shutdown.md)

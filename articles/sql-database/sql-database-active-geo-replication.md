@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/17/2020
-ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80b58d64ea27df95c2704243d8a89fa6ca12e2a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77426269"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548514"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -36,7 +36,7 @@ Pokud z nějakého důvodu primární databáze selže nebo jednoduše je třeba
 
 Replikaci a převzetí služeb při selhání jednotlivých databází nebo sady databází na serveru nebo v elastickém fondu můžete spravovat pomocí aktivní geografické replikace. Můžete to udělat pomocí:
 
-- [Azure Portal](sql-database-geo-replication-portal.md)
+- [Portál Azure](sql-database-geo-replication-portal.md)
 - [PowerShell: Jedna databáze](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
 - [PowerShell: Elastický fond](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 - [Transact-SQL: Jedna databáze nebo elastický fond](/sql/t-sql/statements/alter-database-azure-sql-database)
@@ -146,7 +146,7 @@ Klient provádějící změny potřebuje přístup k síti k primárnímu server
 
    ```sql
    create user geodrsetup for login geodrsetup
-   alter role geodrsetup dbmanager add member geodrsetup
+   alter role dbmanager add member geodrsetup
    ```
 
 1. Poznamenejte si SID nového přihlášení pomocí tohoto dotazu: 

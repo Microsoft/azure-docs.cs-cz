@@ -8,15 +8,15 @@ ms.service: virtual-machines-linux
 ms.subservice: monitoring
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 3281b4dafa5436c9df760ac8aa3fc82f535b4286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0971b542065972a8f150083245e4ed31e42e2c67
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944873"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521624"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -38,7 +38,7 @@ Oblasti                                        | Dostupnost?                    
 [Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure China 21Vianet](https://www.azure.cn/)                                            | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 
 Verze 2019-11-01 je aktuálně nasazena a nemusí být k dispozici ve všech oblastech.
 
@@ -561,7 +561,7 @@ Cloud a hodnoty prostředí Azure jsou uvedeny níže.
 [Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
-[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>Získání značek pro virtuální hod
 
@@ -675,7 +675,7 @@ Jakmile získáte výše uvedený podpis, můžete ověřit, zda je podpis od sp
 [Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
 [Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
-[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
 
 Existuje známý problém kolem certifikátu používaného k podepisování. Certifikáty nemusí mít přesnou `metadata.azure.com` shodu pro veřejný cloud. Proto by ověření certifikace mělo `.metadata.azure.com` umožnit běžný název z libovolné subdomény.
 
@@ -689,11 +689,15 @@ openssl x509 -noout -issuer -in signer.pem
 openssl x509 -noout -subject -in intermediate.pem
 # Verify the issuer for the intermediate certificate
 openssl x509 -noout -issuer -in intermediate.pem
-# Verify the certificate chain
+# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-V případech, kdy zprostředkující certifikát nelze stáhnout z důvodu síťových omezení během ověřování, lze zprostředkující certifikát připnout. Azure však převede certifikáty podle standardního výkonu pki praxe. Připnuté certifikáty by musely být aktualizovány při přechodu dojde. Kdykoli se plánuje změna aktualizace zprostředkujícího certifikátu, blog Azure se aktualizuje a zákazníci Azure budou upozorněni. Zprostředkující certifikáty naleznete [zde](https://www.microsoft.com/pki/mscorp/cps/default.htm). Zprostředkující certifikáty pro každou oblast se mohou lišit.
+V případech, kdy zprostředkující certifikát nelze stáhnout z důvodu síťových omezení během ověřování, lze zprostředkující certifikát připnout. Azure však převede certifikáty podle standardního výkonu pki praxe. Připnuté certifikáty by musely být aktualizovány, když dojde k přechodu. Kdykoli se plánuje změna aktualizace zprostředkujícího certifikátu, blog Azure se aktualizuje a zákazníci Azure budou upozorněni. Zprostředkující certifikáty naleznete [zde](https://www.microsoft.com/pki/mscorp/cps/default.htm). Zprostředkující certifikáty pro každou oblast se mohou lišit.
+
+> [!NOTE]
+>Zprostředkující certifikát pro Azure China 21Vianet bude od společnosti DigiCert Global Root CA místo z Baltimoru.
+Také pokud jste připnulzí certifikáty pro Azure China jako součást změny kořenového řetězce, zprostředkující certifikáty bude muset být aktualizován.
 
 ### <a name="storage-profile"></a>Profil úložiště
 

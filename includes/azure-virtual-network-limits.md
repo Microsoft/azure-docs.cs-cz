@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8752585e731f905636f57d31741e2be67f7140b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95cb29e871cce2ba600ab654d48c685b90ed027e
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334708"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80573270"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení pro sítě – Správce prostředků Azure
 Následující omezení platí jenom pro síťové prostředky spravované prostřednictvím **Azure Resource Manager** u na oblast na předplatné. Přečtěte si, jak [zobrazit aktuální využití prostředků oproti limitům předplatného](../articles/networking/check-usage-against-limits.md).
@@ -72,10 +72,12 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Pravidla na nic (napříč všemi IP adresy na nic) | 300                           |
 | Konfigurace IP adres front-endu              | 600                           |
 | Velikost back-endu fondu                       | 1 000 konfigurací IP adres, jedna virtuální síť |
+| Back-endové prostředky <sup>na vyvažovač zatížení 1<sup> | 150                   |
 | Porty s vysokou dostupností                 | 1 na vnitřní front-end       |
 | Odchozí pravidla na vyrovnávání zatížení        | 20                            |
 | [Časový limit nečinnosti protokolu TCP](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 minuty/30 minut          |
 
+<sup>1.</sup> Limit je až 150 prostředků v libovolné kombinaci prostředků samostatného virtuálního počítače, prostředků sady dostupnosti a prostředků škálování virtuálních strojů.
 
 **Základní systém vyrovnávání zatížení**
 

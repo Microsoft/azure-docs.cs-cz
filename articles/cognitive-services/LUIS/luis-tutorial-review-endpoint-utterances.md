@@ -1,22 +1,15 @@
 ---
 title: 'Kurz: Kontrola promluv koncového bodu – LUIS'
-titleSuffix: Azure Cognitive Services
 description: V tomto kurzu zlepšit předpovědi aplikací ověřením nebo opravou projevy přijaté prostřednictvím koncového bodu LUIS HTTP, který LUIS není jistý. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
 services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843969"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548724"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Oprava nejistých předpovědí kontrolou promluv koncového bodu
 V tomto kurzu zlepšit předpovědi aplikací ověřením nebo opravou projevy, přijaté prostřednictvím koncového bodu LUIS HTTPS, že LUIS není jistý. Měli byste zkontrolovat projevy koncového bodu jako pravidelnou součást naplánované údržby LUIS.
@@ -46,15 +39,11 @@ K importu aplikace použijte následující kroky.
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) a uložte si ho.
 
-1. Na [portálu LUIS preview](https://preview.luis.ai)importujte soubor JSON do nové aplikace.
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`.
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Trénování aplikace k použití změn entity v aplikaci
 
-    > [!TIP]
-    > Klonování do nové verze je osvědčeným postupem před úpravou aplikace. Po dokončení verze exportujte verzi (jako soubor JSON nebo .lu) a zaškrtněte soubor do systému správy zdrojového kódu.
-
-
-1. Chcete-li aplikaci trénovat, vyberte **možnost Vlak**.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Publikování aplikace pro přístup z koncového bodu HTTP
 
@@ -66,7 +55,7 @@ V této aplikaci máte záměry a entity, ale nemáte žádné využití koncov�
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Pomocí koncového bodu přidejte následující projevy.
+1. Přejděte na konec adresy URL v adresním řádku a nahraďte _YOUR_QUERY_HERE_ projevy v následující tabulce. Pro každý utterance, odešle projev a získat výsledek. Pak nahradit utterance na konci další utterance.
 
     |Utterance koncového bodu|Zarovnaný záměr|
     |--|--|
@@ -110,9 +99,9 @@ Zkontrolujte projevy koncového bodu pro správně zarovnaný záměr. Zatímco 
 
 Chcete-li ověřit správně zarovnané příklad projevy lepší předpověď aplikace, zkuste utterance v blízkosti opravené utterance.
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Na konec adresy URL zadejte `Are there any natural language processing jobs in my department right now?`. Poslední parametr querystring `q`je , **utterance dotazu**.
+1. Přejděte na konec adresy URL v _YOUR_QUERY_HERE_ adresním `Are there any natural language processing jobs in my department right now?`řádku a nahraďte YOUR_QUERY_HERE .
 
    ```json
     {

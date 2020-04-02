@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d99a3b803b80dc41990a63e647d3ba928deb31af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8997b385960c58b17747dfcfced74010af80550b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198901"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548212"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakce s clustery Apache Kafka v Azure HDInsight pomocí proxy REST
 
@@ -34,9 +34,9 @@ Vytvoření clusteru HDInsight Kafka s proxy serverem REST vytvoří nový veře
 
 ### <a name="security"></a>Zabezpečení
 
-Přístup k proxy serveru Kafka REST se spravuje pomocí skupin zabezpečení služby Azure Active Directory. Při vytváření clusteru Kafka s povoleným proxy serverem REST poskytnete skupinu zabezpečení Azure Active Directory, která by měla mít přístup ke koncovému bodu REST. Klienti Kafka (aplikace), které potřebují přístup k proxy serveru REST, by měli být do této skupiny zaregistrováni vlastníkem skupiny. Vlastník skupiny to může udělat prostřednictvím portálu nebo přes Powershell.
+Přístup k proxy serveru Kafka REST se spravuje pomocí skupin zabezpečení služby Azure Active Directory. Při vytváření clusteru Kafka s povoleným proxy serverem REST poskytnete skupinu zabezpečení Azure Active Directory, která by měla mít přístup ke koncovému bodu REST. Klienti Kafka (aplikace), které potřebují přístup k proxy serveru REST, by měli být do této skupiny zaregistrováni vlastníkem skupiny. Vlastník skupiny to může udělat prostřednictvím portálu nebo přes Prostředí PowerShell.
 
-Před provedením požadavků na koncový bod proxy REST by měla klientská aplikace získat token OAuth k ověření členství v pravé skupině zabezpečení. Níže naleznete [ukázku klientské aplikace,](#client-application-sample) která ukazuje, jak získat token OAuth. Jakmile má klientská aplikace token OAuth, musí předat tento token v požadavku HTTP na proxy server REST.
+Před provedením požadavků na koncový bod proxy REST by měla klientská aplikace získat token OAuth k ověření členství v pravé skupině zabezpečení. Najděte [ukázku klientské aplikace](#client-application-sample) níže, která ukazuje, jak získat token OAuth. Jakmile má klientská aplikace token OAuth, musí předat tento token v požadavku HTTP na proxy server REST.
 
 > [!NOTE]  
 > Další informace o skupinách zabezpečení AAD najdete v tématu [Správa přístupu k aplikacím a prostředkům pomocí skupin Služby Azure Active Directory](../../active-directory/fundamentals/active-directory-manage-groups.md). Další informace o tom, jak tokeny OAuth fungují, najdete [v tématu Autorizace přístupu k webovým aplikacím Azure Active Directory pomocí toku udělení kódu OAuth 2.0](../../active-directory/develop/v1-protocols-oauth-code.md).
@@ -44,7 +44,12 @@ Před provedením požadavků na koncový bod proxy REST by měla klientská apl
 ## <a name="prerequisites"></a>Požadavky
 
 1. Zaregistrovat aplikaci s Azure AD. Klientské aplikace, které zapisujete pro interakci s proxy kafka REST bude používat id této aplikace a tajný klíč k ověření azure.
-1. Vytvořte skupinu zabezpečení Azure AD a přidejte aplikaci, kterou jste zaregistrovali ve službě Azure AD, do skupiny zabezpečení. Tato skupina zabezpečení bude použita k řízení, které aplikace mohou pracovat s proxy serverem REST. Další informace o vytváření skupin Azure AD najdete [v tématu Vytvoření základní skupiny a přidání členů pomocí služby Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+
+1. Vytvořte skupinu zabezpečení Azure AD a přidejte aplikaci, kterou jste zaregistrovali ve službě Azure AD, do skupiny zabezpečení jako "člena" skupiny. Tato skupina zabezpečení bude použita k řízení, které aplikace mohou pracovat s proxy serverem REST. Další informace o vytváření skupin Azure AD najdete [v tématu Vytvoření základní skupiny a přidání členů pomocí služby Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+
+    Ověření skupiny je typu !["Bezpečnostní" skupina zabezpečení](./media/rest-proxy/rest-proxy-group.png)
+
+    Ověření, že aplikace ![je členem členství ověření skupiny](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Vytvoření clusteru Kafka s povoleným proxy serverem REST
 
@@ -69,11 +74,11 @@ Níže uvedený kód pythonu můžete použít k interakci s proxy rest v cluste
 1. Uložte ukázkový kód do počítače s nainstalovaným Pythonem.
 1. Nainstalujte požadované závislosti pythonu spuštěním `pip3 install adal` a `pip install msrestazure`.
 1. Upravte část kódu *Konfigurace těchto vlastností* a aktualizace následujících vlastností pro vaše prostředí:
-    1.  *ID klienta* – tenant Azure, kde je vaše předplatné.
-    1.  *ID klienta* – ID aplikace, kterou jste zaregistrovali ve skupině zabezpečení.
-    1.  *Tajný klíč klienta* – tajný klíč pro aplikaci, kterou jste zaregistrovali ve skupině zabezpečení
-    1.  *Kafkarest_endpoint* – tuto hodnotu získáte z karty "vlastnosti" v přehledu clusteru, jak je popsáno v [části nasazení](#create-a-kafka-cluster-with-rest-proxy-enabled). Mělo by být v následujícím formátu –`https://<clustername>-kafkarest.azurehdinsight.net`
-3. Z příkazového řádku spusťte soubor pythonu spuštěním`python <filename.py>`
+    1.    *ID klienta* – tenant Azure, kde je vaše předplatné.
+    1.    *ID klienta* – ID aplikace, kterou jste zaregistrovali ve skupině zabezpečení.
+    1.    *Tajný klíč klienta* – tajný klíč pro aplikaci, kterou jste zaregistrovali ve skupině zabezpečení
+    1.    *Kafkarest_endpoint* – tuto hodnotu získáte z karty "vlastnosti" v přehledu clusteru, jak je popsáno v [části nasazení](#create-a-kafka-cluster-with-rest-proxy-enabled). Mělo by být v následujícím formátu –`https://<clustername>-kafkarest.azurehdinsight.net`
+1. Z příkazového řádku spusťte soubor pythonu spuštěním`python <filename.py>`
 
 Tento kód provádí následující akce:
 
@@ -124,6 +129,12 @@ request_url = kafkarest_endpoint + getstatus
 # sending get request and saving the response as response object
 response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
+```
+
+Níže najdete další ukázku, jak získat token z proxy serveru Azure for REST pomocí příkazu curl. Všimněte si, `resource=https://hib.azurehdinsight.net` že potřebujeme zadaný při získávání tokenu.
+
+```cmd
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
 ```
 
 ## <a name="next-steps"></a>Další kroky

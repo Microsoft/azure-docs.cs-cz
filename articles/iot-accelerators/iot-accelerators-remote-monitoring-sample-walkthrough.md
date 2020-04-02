@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824833"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546315"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení pro vzdálené monitorování
 
@@ -125,9 +125,6 @@ Referenční data skupin zařízení se používají k identifikaci skupiny prav
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 [Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) ukládá telemetrii ze zařízení připojených k akcelerátoru řešení. Umožňuje také vizualizaci a dotazování telemetrie zařízení v uživatelském rozhraní řešení webu.
-
-> [!NOTE]
-> Time Series Insights není momentálně dostupná v cloudu Azure China. Nová nasazení akcelerátoru řešení vzdáleného monitorování v cloudu Azure China používají Cosmos DB pro všechna úložiště.
 
 ### <a name="configuration-microservice"></a>Konfigurační mikroslužba
 

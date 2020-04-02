@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366832"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547923"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -128,6 +128,19 @@ $RGName = "ResourceGroup"
 Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
+
+### <a name="schedule-a-runbook-in-the-azure-portal"></a>Plánování sady Runbook na webu Azure Portal
+
+Po publikování runbooku můžete naplánovat její provoz.
+
+1. Otevřete runbook na webu Azure Portal.
+2. V části **Zdroje** **vyberte Možnost Plány** .
+3. Vyberte **přidat plán**.
+4. V podokně Spustit seznam plán vyberte **Propojit plán se souborem Runbook**.
+5. V podokně Plán **zvolte Vytvořit nový plán.**
+6. Do podokna Nový plán zadejte název, popis a další parametry. 
+7. Po vytvoření plánu jej zvýrazněte a klepněte na tlačítko **OK**. Nyní by měl být propojen s vaší runbook.
+8. Vyhledejte e-mail ve své poštovní schránce, který vás upozorní na stav runbooku.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,26 +7,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475162"
+ms.locfileid: "80517922"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Možnost spoluprodeje v Partnerském centru
 
-Poskytnutí informací na kartě Co-sell je zcela volitelné. Je nutné dosáhnout Co-sell Ready a IP Co-sell Ready status. Informace, které poskytnete, budou prodejními týmy společnosti Microsoft použity k tomu, aby se dozvěděly další informace o vašem řešení při vyhodnocování jeho vybavení potřebám zákazníků. Není k dispozici přímo zákazníkům. Další informace naleznete v tématu [sell through Microsoft](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft).
+Poskytnutí informací na kartě Co-sell je zcela volitelné. Je nutné dosáhnout Co-sell Ready a IP Co-sell Ready status. Informace, které poskytnete, budou prodejními týmy společnosti Microsoft použity k tomu, aby se dozvěděly další informace o vašem řešení při vyhodnocování jeho vybavení potřebám zákazníků. Není k dispozici přímo zákazníkům. Další informace naleznete v tématu [sell through Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
 
 Možnost spoluprodeje v Partnerském centru je v současné době k dispozici pro některé typy nabídek. Podpora pro další typy nabídek bude k dispozici v průběhu času.
 
 | **Typ nabídky** | **Stránka pro spoluprodej je k dispozici v Partnerském centru** |
 |    -----------------------    |    -----------------------------  |
-| Software jako služba (SaaS) |     Obecná dostupnost kolem dubna 2020     |
+| Software jako služba (SaaS) |     Všeobecná dostupnost duben 2020      |
 | Dynamics 365 pro zapojení zákazníků & PowerApps      |     Nově dostupné      |
 | Dynamics 365 for Operations     |     Nově dostupné       |
-| Dynamics 365 Business Central      |  Obecná dostupnost kolem dubna 2020    |
-| Azure Application     |     Obecná dostupnost kolem dubna 2020     |
+| Dynamics 365 Business Central      |  Všeobecná dostupnost duben 2020     |
+| Azure Application     |     Všeobecná dostupnost duben 2020     |
 | Virtuální počítač Azure      |     Bude oznámeno       |
 | Kontejner Azure     |     Bude oznámeno       |
 | Konzultační služba      |     Bude oznámeno       |
@@ -66,8 +66,7 @@ Můžete poskytnout záruku, kterou může společnost Microsoft použít k vyho
 
 | **Dokumenty**    | **Popis**  |
 | :------------------- | :-------------------|
-| *Jednostránkový operátor zákazníka* | Popis vaší nabídky připravený pro zákazníka. Prodejní týmy společnosti Microsoft mohou tyto informace sdílet se zákazníky, aby vám pomohly určit, zda vaše nabídka vyhovuje, a zajistit, aby byla připravena na zákazníka. <br> <br> Použijte jednu z relevantních šablon dostupných v Partnerském centru: <br> <ul> <li> Jednostránková šablona Microsoft Azure </li> <li> Jednostránková šablona aplikace Microsoft Dynamics 365 </li> <li> Jednostránková šablona Office 365 </li> <li> Jednostránková šablona Windows 10 </li> </ul>
- |
+| *Jednostránkový operátor zákazníka* | Popis vaší nabídky připravený pro zákazníka. Prodejní týmy společnosti Microsoft mohou tyto informace sdílet se zákazníky, aby vám pomohly určit, zda vaše nabídka vyhovuje, a zajistit, aby byla připravena na zákazníka. <br> <br> Použijte jednu z relevantních šablon dostupných v Partnerském centru: <br> <ul> <li> Jednostránková šablona Microsoft Azure </li> <li> Jednostránková šablona aplikace Microsoft Dynamics 365 </li> <li> Jednostránková šablona Office 365 </li> <li> Jednostránková šablona Windows 10 </li> </ul> |
 | *Prezentace zákazníka* | Slide deck na hřišti řešení a jeho hodnotu návrh. Po zajištění, že vaše nabídka je připravena pro zákazníky, mohou prodejní týmy společnosti Microsoft sdílet prezentaci se zákazníky, aby formulovali hodnotu, kterou obě společnosti přinášejí při nasazování společného řešení. Prezentace by měla zahrnovat, co vaše řešení dělá, jak může pomoci zákazníkům, jaká odvětví řešení je pro a jak se srovnává s konkurenčními řešeními. <br> <br> Použijte šablonu, která je k dispozici v Centru partnerů.|
 | *Případová studie zákazníka* | Tyto informace ukazují potenciálnímu zákazníkovi, jak jste vy a společnost Microsoft úspěšně nasadili toto řešení v předchozích případech. <br> <br> Použijte šablonu, která je k dispozici v Centru partnerů. |
 | *Ověřitelné výhry zákazníků (volitelné)* | Konkrétní příklady úspěchů zákazníků po nasazení vašeho řešení. |

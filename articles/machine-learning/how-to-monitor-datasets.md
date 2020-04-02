@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617638"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546376"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjišťování posunu dat (náhled) v datových sadách
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Metriky a přehledy jsou dostupné prostřednictvím prostředků [Azure Applica
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li vytvářet monitory datových sad a pracovat s ním, potřebujete:
-* Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placenou verzi Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 * Pracovní [prostor Azure Machine Learning](how-to-manage-workspace.md).
 * Nainstalovaná [sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), která obsahuje balíček azureml-datasets.
 * Strukturovaná (tabulková) data s časovým razítkem určeným v cestě k souboru, názvu souboru nebo sloupci v datech.
@@ -77,7 +77,7 @@ Cílová datová sada `timeseries` musí mít vlastnost nastavenou na něm zadá
 
 #### <a name="python-sdk"></a>Python SDK
 
-[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) Metoda [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) třídy definuje sloupec časového razítka pro datovou sadu. 
+[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) Metoda [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) třídy definuje sloupec časového razítka pro datovou sadu. 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Úplný příklad použití vlastnosti `timeseries` datových sad naleznete v [ukázkovém poznámkovém bloku](https://aka.ms/azureml-tsd-notebook) nebo v [dokumentaci k sadami SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-).
+Úplný příklad použití vlastnosti `timeseries` datových sad naleznete v [ukázkovém poznámkovém bloku](https://aka.ms/azureml-tsd-notebook) nebo v [dokumentaci k sadami SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 #### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]

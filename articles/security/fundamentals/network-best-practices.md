@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299341"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548306"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Doporučené postupy Azure pro zabezpečení sítě
 Tento článek popisuje kolekci doporučených postupů Azure pro zvýšení zabezpečení sítě. Tyto osvědčené postupy jsou odvozeny z našich zkušeností se sítí Azure a zkušeností zákazníků, jako jste vy.
@@ -153,12 +153,12 @@ Doporučujeme, abyste kdykoli používali vyrovnávání zatížení, kdykoli je
 - Přijímá pouze zabezpečené připojení, takže nešifrovaná komunikace se serverem není přijatelnou možností.
 - Vyžaduje více požadavků HTTP na stejné dlouhotrvající připojení TCP, které mají být směrovány nebo vyrovnávání zatížení na různé servery back-end.
 
-**Možnost vyrovnávání zatížení:** Použijte [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), nástroj pro vyrovnávání zatížení webového provozu HTTP. Aplikační brána podporuje end-to-end Šifrování SSL a [ssl ukončení](/azure/application-gateway/application-gateway-introduction) na bráně. Webové servery pak mohou být unburdened z šifrování a dešifrování režie a provoz tekoucí nešifrované na back-end servery.
+**Možnost vyrovnávání zatížení:** Použijte [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), nástroj pro vyrovnávání zatížení webového provozu HTTP. Aplikační brána podporuje komplexní šifrování TLS a [ukončení TLS](/azure/application-gateway/application-gateway-introduction) v bráně. Webové servery pak mohou být unburdened z šifrování a dešifrování režie a provoz tekoucí nešifrované na back-end servery.
 
 **Scénář**: Je třeba vyvážit příchozí připojení z internetu mezi servery umístěnými ve virtuální síti Azure. Scénáře jsou, když:
 
 - Mají bezstavové aplikace, které přijímají příchozí požadavky z internetu.
-- Nevyžadují rychlé relace nebo ssl vyložení. Rychlé relace je metoda používaná s vyrovnáváním zatížení aplikace k dosažení spřažení serveru.
+- Nevyžadují rychlé relace nebo tls vyložení. Rychlé relace je metoda používaná s vyrovnáváním zatížení aplikace k dosažení spřažení serveru.
 
 **Možnost vyrovnávání zatížení**: Pomocí portálu Azure [vytvořte externí vyrovnávání zatížení,](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) které rozprostře příchozí požadavky na více virtuálních počítačích, aby zajistilo vyšší úroveň dostupnosti.
 

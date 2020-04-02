@@ -1,25 +1,18 @@
 ---
-title: Nasazení virtuálních virtuálních počítačů Azure Spot (preview) pomocí šablony
+title: Nasazení virtuálních virtuálních počítačů Azure Spot pomocí šablony
 description: Přečtěte si, jak pomocí šablony nasadit virtuální počítače Spot, abyste ušetřili náklady.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1352761e308aa2e26864654dae65c290df47102b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082791"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548254"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Nasazení virtuálních virtuálních počítače pomocí šablony Správce prostředků
 
@@ -29,11 +22,6 @@ Ceny pro spotové virtuální počítače jsou variabilní na základě oblasti 
 
 Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu za virtuální hod. Maximální cenu pro spotový virtuální virtuální mísu lze nastavit v amerických dolarech (USD) s použitím až 5 desetinných míst. Například hodnota `0.98765`by byla maximální cena $0.98765 USD za hodinu. Pokud nastavíte maximální `-1`cenu , virtuální počítač nebude vystěhován na základě ceny. Cena za virtuální ho virtuálního času bude aktuální cena spotu nebo cena za standardní virtuální ms, která je vždy nižší, pokud je k dispozici kapacita a kvóta. Další informace o nastavení maximální ceny najdete v tématu [Spot Virtuální virtuální chod – ceny](spot-vms.md#pricing).
 
-> [!IMPORTANT]
-> Instance spotů jsou aktuálně ve verzi Public Preview.
-> Tato verze preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="use-a-template"></a>Použití šablony
 

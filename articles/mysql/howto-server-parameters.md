@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: fc2b1bbe0a3249014e663d43ee4db87cab5eedcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 715f1028597d76915d833b0ade66bc03d939030d
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063264"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546450"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Jak nakonfigurovat parametry serveru v Azure Database for MySQL pomocí portálu Azure
 
@@ -39,8 +39,8 @@ Velikost fondu vyrovnávací paměti InnoDB není konfigurovatelná a je vázán
 
 |**Cenová úroveň**|**virtuální jádra (hlavní)**|**Velikost fondu vyrovnávací paměti <br>InnoDB v MB (servery podporující až 4 TB úložiště)**| **Velikost fondu vyrovnávací paměti <br>InnoDB v MB (servery podporující úložiště s kapacitou až 16 TB)**|
 |:---|---:|---:|---:|
-|Basic| 1| 832| |
-|Basic| 2| 2560| |
+|Základní| 1| 832| |
+|Základní| 2| 2560| |
 |Pro obecné účely| 2| 3584| 7168|
 |Pro obecné účely| 4| 7680| 15360|
 |Pro obecné účely| 8| 15360| 30720|
@@ -68,10 +68,10 @@ Ostatní parametry serveru, které zde nejsou uvedeny, jsou nastaveny na výchoz
 
 ### <a name="populating-the-time-zone-tables"></a>Vyplnění tabulek časových pásem
 
-Tabulky časových pásem na serveru mohou `az_load_timezone` být naplněny voláním uložené procedury z nástroje, jako je příkazový řádek MySQL nebo MySQL Workbench.
+Tabulky časových pásem na serveru mohou `mysql.az_load_timezone` být naplněny voláním uložené procedury z nástroje, jako je příkazový řádek MySQL nebo MySQL Workbench.
 
 > [!NOTE]
-> Pokud používáte `az_load_timezone` příkaz z MySQL Workbench, možná budete muset nejprve vypnout režim nouzové aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`aplikace .
+> Pokud používáte `mysql.az_load_timezone` příkaz z MySQL Workbench, možná budete muset nejprve vypnout režim nouzové aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`aplikace .
 
 ```sql
 CALL mysql.az_load_timezone();

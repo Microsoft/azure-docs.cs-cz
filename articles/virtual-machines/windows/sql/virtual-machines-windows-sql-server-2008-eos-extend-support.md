@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c27fa8f80140e6db92ea0f998852507260cc278
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: faaff9e9ad5982efac6409f2284158a3d0711331
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159536"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548405"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšíření podpory pro SQL Server 2008 a SQL Server 2008 R2 s Azure
 
@@ -66,7 +66,7 @@ SQL Server vyžaduje snímky Azure Site Recovery konzistentní s aplikacemi, aby
 
 Řešení zotavení po havárii pro EOS SQL Server na virtuálním počítači Azure jsou následující:
 
-- **Zálohy SQL Serveru:** Pomocí azure backupu můžete chránit eOS SQL Server 2008 a 2008 R2 před ransomwarem, náhodným odstraněním a poškozením pomocí 15minutového rpo a obnovení bodu v čase. Další podrobnosti naleznete v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support).
+- **Zálohy SQL Serveru:** Pomocí azure backupu můžete chránit eOS SQL Server 2008 a 2008 R2 před ransomwarem, náhodným odstraněním a poškozením pomocí 15minutového rpo a obnovení bodu v čase. Další podrobnosti naleznete v [tomto článku](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support).
 - **Přesouvání protokolu**: Můžete vytvořit repliku přesouvání protokolu v jiné zóně nebo oblasti Azure s nepřetržitým obnovením, abyste snížili rto. Je třeba ručně nakonfigurovat přesouvání protokolu.
 - **Azure Site Recovery**: Virtuální počítač můžete replikovat mezi zónami a oblastmi prostřednictvím replikace obnovení webu Azure. SQL Server vyžaduje snímky konzistentní s aplikací zaručit obnovení v případě havárie. Azure Site Recovery nabízí minimálně 1 hodinu RPO a 2 hodiny (plus SQL Server doba obnovení) RTO pro eOS SQL Server zotavení po havárii.
 

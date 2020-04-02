@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409894"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548390"
 ---
 # <a name="what-is-virtual-network-nat"></a>Co je překlad virtuální sítě k překladu?
 
@@ -40,11 +40,11 @@ Virtuální síť NAT (překlad síťových adres) zjednodušuje pouze odchozí 
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statické ADRESY IP pro pouze odchozí
 
-Odchozí připojení lze definovat pro každou podsíť s NAT.  Více podsítí v rámci stejné virtuální sítě může mít různé NAT. Podsíť je konfigurována zadáním [prostředku brány NAT,](./nat-gateway-resource.md) který má být používán. Všechny odchozí toky UDP a TCP z libovolné instance virtuálního počítače budou používat NAT. 
+Odchozí připojení lze definovat pro každou podsíť s NAT.  Více podsítí v rámci stejné virtuální sítě může mít různé NAT. Podsíť je konfigurována zadáním prostředku brány NAT, který má být používán. Všechny odchozí toky UDP a TCP z libovolné instance virtuálního počítače budou používat NAT. 
 
-Nat je kompatibilní se standardními [prostředky veřejné IP adresy](./virtual-network-ip-addresses-overview-arm.md#standard) sku nebo [veřejnými prostředky předpony IP](./public-ip-address-prefix.md) nebo kombinací obou.  Veřejnou předponu IP můžete použít přímo nebo distribuovat veřejné IP adresy předpony mezi více prostředků brány NAT. NAT bude groom veškerý provoz na rozsah IP adres předpony.  Jakýkoli seznam ip povolených vašich nasazení je nyní snadný.
+Nat je kompatibilní se standardními prostředky veřejné IP adresy sku nebo veřejnými prostředky předpony IP nebo kombinací obou.  Veřejnou předponu IP můžete použít přímo nebo distribuovat veřejné IP adresy předpony mezi více prostředků brány NAT. NAT bude groom veškerý provoz na rozsah IP adres předpony.  Jakýkoli seznam ip povolených vašich nasazení je nyní snadný.
 
-Veškerý odchozí provoz pro podsíť je zpracován nat automaticky bez konfigurace zákazníka.  Uživatelem definované trasy nejsou nutné. Nat má přednost před [ostatními odchozími scénáři](../load-balancer/load-balancer-outbound-connections.md) a nahrazuje výchozí cíl Sítě pro Internet.
+Veškerý odchozí provoz pro podsíť je zpracován nat automaticky bez konfigurace zákazníka.  Uživatelem definované trasy nejsou nutné. Nat má přednost před ostatními odchozími scénáři a nahrazuje výchozí cíl Sítě pro Internet.
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>SNAT na vyžádání s více IP adresami pro škálování
 
@@ -60,9 +60,9 @@ Na rozdíl od nástroje pro vyrovnávání zatížení odchozí SNAT, NAT nemá 
 
 Nat je kompatibilní s následujícími standardními prostředky skladové položky:
 
-- [Vyrovnávání zatížení](../load-balancer/load-balancer-overview.md)
-- [Veřejná IP adresa](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Předpona veřejné IP adresy](../virtual-network/public-ip-address-prefix.md)
+- Nástroj pro vyrovnávání zatížení
+- Veřejná IP adresa
+- Předpona veřejné IP adresy
 
 Při použití společně s nat, tyto prostředky poskytují příchozí připojení k Internetu do podsítě. Nat poskytuje veškeré odchozí připojení k Internetu z podsítí.
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f02046d1e2ee558ca4ea4472a03fddb5d0a6a16f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474528"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549324"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytvoření datových sad Azure Machine Learning
 
@@ -82,7 +82,7 @@ Vytvoření datových sad z [úložiště dat Azure](how-to-access-data.md) pomo
 
 #### <a name="create-a-tabulardataset"></a>Vytvoření tabulkové datové sady
 
-Pomocí [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) metody na `TabularDatasetFactory` třídě můžete číst soubory ve formátu .csv nebo TSV a vytvořit neregistrovanou sadu TabularDataset. Pokud čtete z více souborů, výsledky se agregují do jedné tabulkové reprezentace. 
+Pomocí [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) metody na `TabularDatasetFactory` třídě můžete číst soubory ve formátu .csv nebo TSV a vytvořit neregistrovanou sadu TabularDataset. Pokud čtete z více souborů, výsledky se agregují do jedné tabulkové reprezentace. 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 V TabularDatasets můžete zadat časové razítko ze sloupce v datech nebo odkudkoli, kde jsou uložena data vzoru cesty, abyste povolili vlastnost časové řady. Tato specifikace umožňuje snadné a efektivní filtrování podle času.
 
-Pomocí [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) metody na`TabularDataset` třídě můžete zadat sloupec časového razítka a povolit filtrování podle času. Další informace naleznete v [tématu Tabular time series-related API demo s daty o počasí NOAA](https://aka.ms/azureml-tsd-notebook).
+Pomocí [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) metody na`TabularDataset` třídě můžete zadat sloupec časového razítka a povolit filtrování podle času. Další informace naleznete v [tématu Tabular time series-related API demo s daty o počasí NOAA](https://aka.ms/azureml-tsd-notebook).
 
 ```Python
 # create a TabularDataset with time series trait

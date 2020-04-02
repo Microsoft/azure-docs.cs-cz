@@ -11,25 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 647bdcf5c8c49b5c942419c78155ed4f61c848bb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 05ba54c10cc693f81115f364d7a400e2275a3875
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240559"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528238"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Rychlé starty: Připojení a dotaz azure SQL database
 
 Následující dokument obsahuje odkazy na příklady Azure, které ukazují připojení k databázi Azure SQL a její dotazování. Obsahuje také několik doporučení týkající se protokolu TLS (Transport Level Security).
 
-## <a name="quickstarts"></a>Rychlé starty
+## <a name="quickstarts"></a>Rychlý start
 
 | |  |
 |---|---|
 |[SQL Server Management Studio](sql-database-connect-query-ssms.md)|Tento rychlý start ukazuje použití SSMS k připojení k databázi Azure SQL a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|Tento rychlý start ukazuje použití sady Azure Data Studio pro připojení k databázi Azure SQL a následné použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření databáze TutorialDB používané v kurzech pro Azure Data Studio.|
-|[Portál Azure](sql-database-connect-query-portal.md)|Tento rychlý start ukazuje použití editoru dotazů pro připojení k databázi SQL a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
-|[Kód visual studia](sql-database-connect-query-vscode.md)|Tento rychlý start ukazuje použití Visual Studio Code pro připojení k databázi Azure SQL a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
+|[portál Azure](sql-database-connect-query-portal.md)|Tento rychlý start ukazuje použití editoru dotazů pro připojení k databázi SQL a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
+|[Visual Studio Code](sql-database-connect-query-vscode.md)|Tento rychlý start ukazuje použití Visual Studio Code pro připojení k databázi Azure SQL a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[.NET se sadou Visual Studio](sql-database-connect-query-dotnet-visual-studio.md)|Tento rychlý start ukazuje použití rozhraní .NET Framework a sady Visual Studio k vytvoření programu v jazyce C# pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |[Jádro rozhraní .NET](sql-database-connect-query-dotnet-core.md)|Tento rychlý start ukazuje použití .NET Core v systému Windows, Linux nebo macOS k vytvoření programu v jazyce C# pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |[Přejít](sql-database-connect-query-go.md)|Tento rychlý start ukazuje použití jazyka Go pro připojení k databázi Azure SQL. Ukazuje se také použití příkazů jazyka Transact-SQL k dotazování a úpravě dat.|
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedeny příklady rozhraní ORM (object-relationa
 | C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows, Linux, macOS |[Režim orm hibernace](https://hibernate.org/orm)|
 | PHP | Windows, Linux, macOS | [Laravel (Švýc.)](https://laravel.com/docs/eloquent)<br>[Doktrína](https://www.doctrine-project.org/projects/orm.html) |
-| Node.js | Windows, Linux, macOS | [Pokračování ORM](https://docs.sequelizejs.com) |
+| Node.js | Windows, Linux, macOS | [Pokračování ORM](https://sequelize.org/) |
 | Python | Windows, Linux, macOS |[Django](https://www.djangoproject.com/) |
 | Ruby | Windows, Linux, macOS | [Ruby na kolejích](https://rubyonrails.org/) |
 ||||

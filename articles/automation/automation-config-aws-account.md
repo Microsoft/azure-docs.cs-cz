@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366936"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520818"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Ověření runbooků pomocí Amazon Web Services
 
@@ -26,7 +26,7 @@ Abyste mohli ověřovat pomocí AWS, musíte zadat sadu přihlašovacích údaj�
 
 Pokud má Azure Automation komunikovat s AWS, musíte nejdřív načíst přihlašovací údaje AWS a uložit je jako assety ve službě Azure Automation. Proveďte následující kroky, které jsou popsány v dokumentu AWS [Správa přístupových klíčů k vašemu účtu AWS](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html), vytvořte přístupový klíč a zkopírujte **Access Key ID** (ID přístupového klíče) a **Secret Access Key** (Tajný přístupový klíč) (případně si můžete soubor s klíčem stáhnout a uložit na bezpečné místo).
 
-Po vytvoření a zkopírování bezpečnostních klíčů AWS vytvořte pomocí účtu Azure Automation asset přihlašovacích údajů, bezpečně klíče uložte a odkazujte na ně ve svých runboocích. Postupujte podle kroků v části: **Chcete-li vytvořit nové přihlašovací údaje** v článku Přihlašovací údaje v azure [automatizace](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) a zadejte následující informace:
+Po vytvoření a zkopírování bezpečnostních klíčů AWS vytvořte pomocí účtu Azure Automation asset přihlašovacích údajů, bezpečně klíče uložte a odkazujte na ně ve svých runboocích. Postupujte podle kroků v části: **Chcete-li vytvořit nové přihlašovací údaje** v článku Přihlašovací údaje v azure [automatizace](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal) a zadejte následující informace:
 
 1. Do pole **Název** zadejte **AWScred** nebo odpovídající hodnotu v souladu se svými standardy pro vytváření názvů.
 2. Do pole **Uživatelské jméno** zadejte **své Přístupové ID** a **tajný přístupový klíč do** pole **Heslo** a **Potvrdit heslo.**

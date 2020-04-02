@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368515"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549076"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ Služba AKS generuje a používá následující certifikáty, certifikační au
 * Každý kubelet také vytvoří žádost o podpis certifikátu (CSR), který je podepsán certifikační autoritou clusteru, pro komunikaci z kubelet na server API.
 * Úložiště hodnot klíčů etcd má certifikát podepsaný certifikační autoritou clusteru pro komunikaci z etcd na server rozhraní API.
 * Úložiště hodnot klíčů etcd vytvoří certifikační autoritu, která podepisuje certifikáty k ověřování a autorizaci replikace dat mezi replikami etcd v clusteru AKS.
-* Agregátor rozhraní API používá certifikační autoritu clusteru k vydávání certifikátů pro komunikaci s jinými rozhraními API, jako je například Open Service Broker pro Azure. Agregátor rozhraní API může mít také vlastní certifikační autoritu pro vydávání těchto certifikátů, ale v současné době používá certifikační autoritu clusteru.
+* Agregátor rozhraní API používá certifikační autoritu clusteru k vydávání certifikátů pro komunikaci s jinými rozhraními API. Agregátor rozhraní API může mít také vlastní certifikační autoritu pro vydávání těchto certifikátů, ale v současné době používá certifikační autoritu clusteru.
 * Každý uzel používá token účtu služby (SA), který je podepsán certifikační autoritou clusteru.
 * Klient `kubectl` má certifikát pro komunikaci s clusterem AKS.
 

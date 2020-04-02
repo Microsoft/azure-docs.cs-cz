@@ -10,16 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: c6593a2746e628c89e20f6ef92a1430bd294e4fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fb70600ad245968377cdebd23a7b531e552bb546
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438304"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529320"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního propojení Azure pro pracovní prostor Azure Machine Learning
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního propojení Azure pro pracovní prostor Azure Machine Learning (preview)
 
-V tomto dokumentu se dozvíte, jak používat Azure Private Link s pracovním prostorem Azure Machine Learning. Azure Private Link umožňuje připojení k pracovnímu prostoru pomocí privátního koncového bodu. Privátní koncový bod je sada privátních IP adres v rámci virtuální sítě. Přístup k pracovnímu prostoru pak můžete omezit tak, aby se vyskytovaný pouze přes privátní IP adresy. Private Link pomáhá snížit riziko exfiltrace dat. Další informace o privátní koncové body, najdete v článku [Azure Private Link.](/azure/private-link/private-link-overview)
+V tomto dokumentu se dozvíte, jak používat Azure Private Link s pracovním prostorem Azure Machine Learning. Tato funkce je v současné době ve verzi preview a je k dispozici v oblastech USA – východ, USA – západ 2, USA – jižní střed. 
+
+Azure Private Link umožňuje připojení k pracovnímu prostoru pomocí privátního koncového bodu. Privátní koncový bod je sada privátních IP adres v rámci virtuální sítě. Přístup k pracovnímu prostoru pak můžete omezit tak, aby se vyskytovaný pouze přes privátní IP adresy. Private Link pomáhá snížit riziko exfiltrace dat. Další informace o privátní koncové body, najdete v článku [Azure Private Link.](/azure/private-link/private-link-overview)
 
 > [!IMPORTANT]
 > Azure Private Link nemá vliv na rovinu řízení Azure (operace správy), jako je například odstranění pracovního prostoru nebo správa výpočetních prostředků. Například vytvoření, aktualizace nebo odstranění výpočetního cíle. Tyto operace jsou prováděny prostřednictvím veřejného Internetu jako obvykle.

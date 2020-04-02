@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74157680"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548136"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
 
@@ -131,10 +131,17 @@ rozhraní API | `1.0-preview` | `1.0`
 [Všesměrové vysílání pro všechny](#broadcast) | **&#x2713;** | **&#x2713;**
 [Všesměrové vysílání do skupiny](#broadcast-group) | **&#x2713;** | **&#x2713;**
 Všesměrové vysílání do některých skupin | **&#x2713;** (zastaralé) | `N / A`
-[Odesílání konkrétním uživatelům](#send-user) | **&#x2713;** | **&#x2713;**
+[Odeslat uživateli](#send-user) | **&#x2713;** | **&#x2713;**
 Odesílání některým uživatelům | **&#x2713;** (zastaralé) | `N / A`
 [Přidání uživatele do skupiny](#add-user-to-group) | `N / A` | **&#x2713;**
 [Odebrání uživatele ze skupiny](#remove-user-from-group) | `N / A` | **&#x2713;**
+[Zkontrolovat existenci uživatele](#check-user-existence) | `N / A` | **&#x2713;**
+[Odebrání uživatele ze všech skupin](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[Odeslat na připojení](#send-connection) | `N / A` | **&#x2713;**
+[Přidání připojení ke skupině](#add-connection-to-group) | `N / A` | **&#x2713;**
+[Odebrání připojení ze skupiny](#remove-connection-from-group) | `N / A` | **&#x2713;**
+[Ukončení připojení klienta](#close-connection) | `N / A` | **&#x2713;**
+[Service Health](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Všesměrové vysílání pro všechny
@@ -153,7 +160,7 @@ Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Stejný jako výše uvedený
 
 <a name="send-user"> </a>
-### <a name="sending-to-specific-users"></a>Odesílání konkrétním uživatelům
+### <a name="sending-to-a-user"></a>Odeslání uživateli
 
 Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 --- | --- | --- | ---
@@ -165,14 +172,77 @@ Version | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 
 Version | Metoda HTTP v rozhraní API | Adresa URL požadavku
 --- | --- | ---
-`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Odebrání uživatele ze skupiny
 
 Version | Metoda HTTP v rozhraní API | Adresa URL požadavku
 --- | --- | ---
-`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
+
+<a name="check-user-existence"> </a>
+### <a name="check-user-existence-in-a-group"></a>Kontrola existence uživatele ve skupině
+
+Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
+---|---|---
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
+
+Stavový kód odpovědi | Popis
+---|---
+`200` | Uživatel existuje
+`404` | Uživatel neexistuje.
+
+<a name="remove-user-from-all-groups"> </a>
+### <a name="remove-a-user-from-all-groups"></a>Odebrání uživatele ze všech skupin
+
+Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
+
+<a name="send-connection"> </a>
+### <a name="send-message-to-a-connection"></a>Odeslání zprávy k připojení
+
+Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text žádosti
+---|---|---|---
+`1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
+
+<a name="add-connection-to-group"> </a>
+### <a name="add-a-connection-to-a-group"></a>Přidání připojení ke skupině
+
+Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
+---|---|---
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="remove-connection-from-group"> </a>
+### <a name="remove-a-connection-from-a-group"></a>Odebrání připojení ze skupiny
+
+Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="close-connection"> </a>
+### <a name="close-a-client-connection"></a>Ukončení připojení klienta
+
+Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>?reason=<close-reason>`
+
+<a name="service-health"> </a>
+### <a name="service-health"></a>Service Health
+
+Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
+---|---|---                             
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
+
+Stavový kód odpovědi | Popis
+---|---
+`200` | Služba dobrá
+`503` | Služba není k dispozici.
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

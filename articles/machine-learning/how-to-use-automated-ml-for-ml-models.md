@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 9999d74bf6bef3e8351460add7efc8bdbfcd1045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270027"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547556"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasazujte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -178,17 +178,27 @@ Automatizované strojové učení nabízí automatické předběžné zpracován
 
 ### <a name="data-guardrails"></a>Datová svodidla
 
-Svodidla dat se používají automaticky, aby vám pomohla identifikovat potenciální problémy s vašimi daty (např. chybějící hodnoty, nerovnováha tříd) a pomohla přijmout nápravná opatření pro zlepšení výsledků. Existuje mnoho osvědčených postupů, které jsou k dispozici a lze použít k dosažení spolehlivých výsledků. 
-
-Následující tabulka popisuje aktuálně podporovaná svodidla dat a přidružené stavy, se kterými se uživatelé mohou sejít při odesílání experimentu.
+Svodidla dat se používají, když je povolena automatická featurization nebo ověření je nastavena na auto. Svodidla dat vám pomohou identifikovat potenciální problémy s vašimi daty (např. chybějící hodnoty, nerovnováha ve třídě) a pomáhají přijmout nápravná opatření pro zlepšení výsledků. Existuje mnoho osvědčených postupů, které jsou k dispozici a lze použít k dosažení spolehlivých výsledků. Uživatelé mohou zkontrolovat svodidla dat ve studiu v záložce Datové ```show_output=True``` **svodidla** automatického spuštění ml nebo nastavením při odeslání experimentu pomocí sady Python SDK. Následující tabulka popisuje aktuálně podporovaná svodidla dat a přidružené stavy, se kterými se uživatelé mohou sejít při odesílání experimentu.
 
 Svodidla|Status|Podmínka&nbsp;&nbsp;pro aktivační událost
 ---|---|---
-Chybějící&nbsp;&nbsp;imputace hodnot |**Předán** <br> <br> **Dlouhodobého**|    Žádná chybějící hodnota v&nbsp;žádném ze vstupních sloupců <br> <br> V některých sloupcích chybí hodnoty
-Křížové ověření|**hotovo**|Pokud není k dispozici žádná explicitní sada ověření.
-Detekce prvků&nbsp;&nbsp;s vysokou&nbsp;mohutností|    **Předán** <br> <br>**hotovo**|    Nebyly zjištěny žádné funkce vysoké mohutnosti. <br><br> Byly zjištěny vstupní sloupce s vysokou mohutností.
-Detekce vyvážení tříd    |**Předán** <br><br><br>**Upozorněni** |Třídy jsou vyvážené v tréninkových datech; Soubor údajů se považuje za vyvážený, pokud má každá třída v datové sadě dobré zastoupení, měřeno počtem a poměrem vzorků <br> <br> Třídy v trénovacích datech jsou nevyvážené
-Konzistence dat časových řad|**Předán** <br><br><br><br> **Dlouhodobého** |<br> Vybraná hodnota {horizont, zpoždění, rolovací okno} byla analyzována a nebyly zjištěny žádné potenciální problémy s nepaměti. <br> <br>Vybrané hodnoty {horizont, zpoždění, postupné okno} byly analyzovány a potenciálně způsobí, že experiment bude mít nedostatek paměti. Zpoždění nebo rolovací okno bylo vypnuto.
+Chybějící přinikace hodnot prvků |**Předán** <br><br><br> **hotovo**| V trénovacích datech nebyly zjištěny žádné chybějící hodnoty prvků. Další informace o [chybějící imputaci hodnoty.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> V trénovacích datech byly zjištěny chybějící hodnoty funkcí a byly imputovány.
+Zpracování prvků s vysokou mohutností |**Předán** <br><br><br> **hotovo**| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. Další informace o [detekci funkcí vysoké mohutnosti.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Funkce vysoké mohutnosti byly zjištěny ve vašich vstupech a byly zpracovány.
+Zpracování rozdělení ověření |**hotovo**| *Konfigurace ověření byla nastavena na "auto" a trénovací data obsahovala **méně** než 20 000 řádků.* <br> Každá iterace trénovaného modelu byla ověřena pomocí křížového ověření. Přečtěte si další informace o [ověřovacích datech.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Konfigurace ověření byla nastavena na "auto" a trénovací data obsahovala **více** než 20 000 řádků.* <br> Vstupní data byla rozdělena do trénovací datové sady a ověřovací datové sady pro ověření modelu.
+Detekce vyvažování tříd |**Předán** <br><br><br><br> **Upozorněni** | Vaše vstupy byly analyzovány a všechny třídy jsou vyvážené v trénovacích datech. Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrou reprezentaci, měřeno počtem a poměrem vzorků. <br><br><br> Ve vstupech byly zjištěny nevyvážené třídy. Chcete-li opravit zkreslení modelu opravit problém vyvažování. Přečtěte si další informace o [nevyvážených datech.](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
+Zjišťování problémů s pamětí |**Předán** <br><br><br><br> **hotovo** |<br> Vybraná hodnota {horizont, zpoždění, rolovací okno} byla analyzována a nebyly zjištěny žádné potenciální problémy s nepaměti. Přečtěte si další informace o [konfiguracích prognóz časových řad.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>Vybrané hodnoty {horizont, zpoždění, postupné okno} byly analyzovány a potenciálně způsobí, že experiment bude mít nedostatek paměti. Konfigurace lagnebo rolling window byly vypnuty.
+Detekce frekvence |**Předán** <br><br><br><br> **hotovo** |<br> Časové řady byly analyzovány a všechny datové body jsou zarovnány s detekotorní frekvencí. <br> <br> Byly analyzovány časové řady a byly zjištěny datové body, které nejsou v souladu s detekotorní frekvencí. Tyto datové body byly odebrány z datové sady. Přečtěte si další informace o [přípravě dat pro prognózování časových řad.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+
+#### <a name="data-guardrail-states"></a>Stavy svodidla dat
+Svodidla dat zobrazí jeden ze tří stavů: "Prošel", "Hotovo" nebo "Upozorněni".
+
+Stav| Popis
+----|----
+Předán| Nebyly zjištěny žádné problémy s daty a není vyžadována žádná akce uživatele. 
+Hotovo| Změny byly použity u vašich dat. Doporučujeme uživatelům, aby přezkoumali nápravná opatření, která automatizovaná hodnota ML provedla, aby bylo zajištěno, že změny budou v souladu s očekávanými výsledky. 
+Upozorněni| Byl zjištěn problém s daty, který nebylo možné odstranit. Doporučujeme uživatelům, aby problém revidovali a opravili. 
+
+Předchozí verze automatizovaného ml zobrazí čtvrtý stav: 'Opraveno'. Novější experimenty tento stav nezobrazí a všechna svodidla, která zobrazila stav Opraveno, se nyní zobrazí "Hotovo".   
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 

@@ -1,15 +1,15 @@
 ---
 title: Přehled služby Azure Blockchain Service
 description: Přehled služby Azure Blockchain
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205070"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529145"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Azure Blockchain Service je plně spravovaná služba hlavní knihy, která uži
 * Integrovaná správa konsorcia
 * Vyvíjejte inteligentní smlouvy se známými vývojovými nástroji
 
-Služba Azure Blockchain service je navržena tak, aby podporovala více protokolů hlavní knihy. V současné době poskytuje podporu pro ethereum [Kvorum](https://www.goquorum.com/) pomocí mechanismu konsensu [IBFT.](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)
+Služba Azure Blockchain service je navržena tak, aby podporovala více protokolů hlavní knihy. V současné době poskytuje podporu pro ethereum [Kvorum](https://www.goquorum.com/) pomocí [Istanbul byzantské odolnosti proti chybám (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensu mechanismus.
 
 Tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Můžete se zaměřit na vývoj aplikací a obchodní logiku, spíše než přidělování času a prostředků pro správu virtuálních počítačů a infrastruktury. Kromě toho můžete pokračovat ve vývoji aplikace pomocí nástrojů a platformy s otevřeným zdrojovým kódem, které si vyberete, abyste mohli poskytovat svá řešení, aniž byste se museli učit nové dovednosti.
 
@@ -33,13 +33,13 @@ Služba Azure Blockchain service nabízí dvě úrovně služeb: *Basic* a *Stan
 
 ![Cenové úrovně](./media/overview/pricing-tiers.png)
 
-Kromě toho, že nabízí dva validátoru uzly, *Standard* úroveň poskytuje 2 *virtuální jádra* pro každou transakci a uzel validátoru vzhledem k tomu, základní úroveň nabízí 1 virtuální jádro konfigurace.  Tím, že nabízí 2 virtuální jádra pro transakční a validátoru uzly, 1 virtuální jádro může být vyhrazeno pro ledger kvora, zatímco zbývající 1 virtuální jádro lze použít pro další služby související s infrastrukturou, což zajišťuje optimální výkon pro produkční blockchainové úlohy. Další informace o podrobnostech o cenách najdete v [tématu Ceny služby Azure Blockchain Service](https://azure.microsoft.com/pricing/details/blockchain-service).
+Kromě toho, že nabízí dva validátoru uzly, *Standard* úroveň poskytuje dvě *virtuální jádra* pro každou transakci a validátor uzel vzhledem k tomu, *základní* úroveň nabízí 1 virtuální jádro konfigurace.  Tím, že nabízí 2 virtuální jádra pro transakční a validátoru uzly, 1 virtuální jádro může být vyhrazeno pro ledger kvora, zatímco zbývající 1 virtuální jádro lze použít pro další služby související s infrastrukturou, což zajišťuje optimální výkon pro produkční blockchainové úlohy. Další informace o podrobnostech o cenách najdete v [tématu Ceny služby Azure Blockchain Service](https://azure.microsoft.com/pricing/details/blockchain-service).
 
 ### <a name="security-and-maintenance"></a>Bezpečnost a údržba
 
 Po zřízení prvního člena blockchainu máte možnost přidat do svého člena další transakční uzly.  Ve výchozím nastavení jsou uzly transakcí zabezpečeny prostřednictvím pravidel brány firewall a vyžadují konfiguraci pro přístup.  Kromě toho všechny uzly transakce šifrovat data v pohybu přes TLS.  Existuje několik možností pro zabezpečení přístupu k transakčním uzlům, včetně pravidel brány firewall, základního ověřování, přístupových klíčů a integrace služby Azure Active Directory. Další informace naleznete v [tématu Konfigurace uzlů transakcí](configure-transaction-nodes.md) a [konfigurace přístupu služby Azure Active Directory](configure-aad.md).
 
-Služba Azure Blockchain Service jako spravovaná služba zajišťuje, že uzly členů blockchainu jsou opraveny nejnovějšími aktualizacemi softwaru hostitelského operačního systému a hlavní knihy, které jsou nakonfigurované pro vysokou dostupnost (pouze úroveň Standard), což eliminuje velkou část devops pro tradiční blockchainové uzly IaaS.  Další informace o opravách a aktualizacích najdete v [tématu podporované verze hlavní knihy služby Azure Blockchain .](ledger-versions.md)
+Služba Azure Blockchain Service jako spravovaná služba zajišťuje, že uzly člena blockchainu jsou opraveny nejnovějšími aktualizacemi softwaru hostitelského operačního systému a hlavní knihy, které jsou nakonfigurované pro vysokou dostupnost (pouze úroveň Standard), což eliminuje velkou část devopů požadovaných pro tradiční blockchainové uzly IaaS.  Další informace o opravách a aktualizacích najdete v [tématu podporované verze hlavní knihy služby Azure Blockchain .](ledger-versions.md)
 
 ### <a name="monitoring-and-logging"></a>Monitorování a protokolování
 

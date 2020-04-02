@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8cb767e7d0616d806f8ced33a07e6de4db9d85ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 70f55891874b474de4120d8b41594fb9bee74e8d
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80280724"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521666"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Připojení aplikace Apache Spark k Azure Event Hubs
 Tento kurz vás provede připojením aplikace Spark k event hubům pro streamování v reálném čase. Tato integrace umožňuje streamování bez nutnosti měnit klienty protokolů nebo provozovat vlastní clustery Kafka nebo Zookeeper. Tento kurz vyžaduje Apache Spark verze 2.4 nebo novější a Apache Kafka verze 2.0 nebo novější.
@@ -44,7 +44,7 @@ Než začnete s tímto kurzem, ujistěte se, že máte následující:
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
-K odesílání do jakékoli služby Event Hubs a příjmu z ní se vyžaduje obor názvů služby Event Hubs. Pokyny k získání koncového bodu Event Hubs Kafka najdete v tématu [Vytvoření centra událostí s podporou Kafka](event-hubs-create.md). Získejte plně kvalifikovaný název domény a připojovací řetězec služby Event Hubs pro pozdější použití. Pokyny najdete v tématu [Získání připojovacího řetězce služby Event Hubs](event-hubs-get-connection-string.md). 
+K odesílání do jakékoli služby Event Hubs a příjmu z ní se vyžaduje obor názvů služby Event Hubs. Pokyny k vytvoření oboru názvů a centra událostí najdete v [tématu Vytvoření centra událostí.](event-hubs-create.md) Získejte plně kvalifikovaný název domény a připojovací řetězec služby Event Hubs pro pozdější použití. Pokyny najdete v tématu [Získání připojovacího řetězce služby Event Hubs](event-hubs-get-connection-string.md). 
 
 ## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 Naklonujte úložiště Azure Event Hubs a přejděte do podsložky `tutorials/spark`:
@@ -114,7 +114,7 @@ Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdet
 
 - [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Vytvoření služby Event Hubs s podporou Kafka](event-hubs-create.md)
+- [Vytvoření centra událostí](event-hubs-create.md)
 - [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Připojení Apache Flinku k centru událostí](event-hubs-kafka-flink-tutorial.md)

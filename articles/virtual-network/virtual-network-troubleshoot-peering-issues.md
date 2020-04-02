@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796242"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521888"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
 
@@ -234,6 +234,15 @@ Chcete-li tento problém vyřešit, odstraňte partnerský vztah z obou virtuál
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Nepodařilo se peer Databricks virtuální sítě
 
 Chcete-li tento problém vyřešit, nakonfigurujte partnerský vztah virtuální sítě v části **Azure Databricks**a zadejte cílovou virtuální síť pomocí **ID prostředků**. Další informace naleznete [v tématu Peer a Databricks virtuální sítě do vzdálené virtuální sítě](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+
+### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Vzdálená virtuální síť postrádá bránu
+
+K tomuto problému dochází, když peer virtuální sítě `Use Remote Gateways`z různých klientů a později chcete konfigurovat . Omezení portálu Azure je, že nemůže ověřit přítomnost brány virtuální sítě ve virtuální síti jiného klienta.
+
+Problém lze vyřešit dvěma způsoby:
+
+ * Odstraňte partnerské partnery `Use Remote Gateways` a aktivujte tuto možnost při vytváření nového partnerského vztahu.
+ * Místo portálu Azure použijte powershell nebo cli, abyste povolili `Use Remote Gateways`.
 
 ## <a name="next-steps"></a>Další kroky
 

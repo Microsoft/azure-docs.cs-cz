@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55bfb5030d0a168e7556240212fcd5f3be30a289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335365"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548539"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
@@ -267,6 +267,29 @@ Tady je příklad Azure Maps s jazykem nastaveným na "fr-FR" a místní zobraze
 </center>
 
 Kompletní seznam podporovaných jazyků a regionálních zobrazení je zdokumentován [zde](supported-languages.md).
+
+## <a name="navigating-the-map"></a>Navigace v mapě
+
+Mapu lze přiblížit, posouvat, otáčet a rozesílat několika různými způsoby. Následující podrobnosti všechny různé způsoby navigace v mapě.
+
+**Zvětšení mapy**
+
+- Dotkněte se mapy dvěma prsty a sešlápnete ji, abyste je oddálili nebo roztáhli, abyste je přiblížili.
+- Dvojitým klepnutím na mapu zvětšete jednu úroveň.
+- Dvojitým klepnutím dvěma prsty mapu oddálíte o jednu úroveň.
+- Klepněte dvakrát; podruhém klepnutí podržte prst na mapě a tažením nahoru zobrazení přiblížíte nebo ztišíte zobrazení.
+
+**Posouvání mapy**
+
+- Dotkněte se mapy a táhněte v libovolném směru.
+
+**Otočení mapy**
+
+- Dotkněte se mapy dvěma prsty a otáčejte.
+
+**Rozteč mapy**
+
+- Dotkněte se mapy dvěma prsty a přetáhněte je nahoru nebo dolů dohromady.
 
 ## <a name="next-steps"></a>Další kroky
 

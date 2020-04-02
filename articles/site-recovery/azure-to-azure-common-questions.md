@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3d71301534d56ef8eca68951c8c9f9a1570b3a6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282252"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547894"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Časté otázky: Zotavení po havárii Azure-Azure
 
@@ -93,7 +93,7 @@ Pomocí site recovery můžete replikovat a obnovit virtuální chod mezi libovo
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Vyžaduje site recovery připojení k internetu?
 
-Ne, Site Recovery nevyžaduje připojení k internetu. Ale to vyžaduje přístup k adresám URL obnovení webu a rozsahy IP adres, jak je uvedeno v [sítích v azure vyobnovení po havárii virtuálního počítače](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
+Ne, Site Recovery nevyžaduje připojení k internetu. Ale to vyžaduje přístup k adresám URL obnovení webu a rozsahy IP adres, jak je uvedeno v [sítích v azure vyobnovení po havárii virtuálního počítače](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls).
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Můžu replikovat aplikaci, která má samostatnou skupinu prostředků pro samostatné vrstvy?
 

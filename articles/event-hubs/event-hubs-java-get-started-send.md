@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c9baa4c0e048419ece09b954cee1af21b1f0cc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5a34ac2d1b7401d31ae518334aedc15c626b66a3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77158005"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529487"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití Jazyka Java k odesílání událostí nebo přijímání událostí z Azure Event Hubs (azure-eventhubs)
 
@@ -110,7 +110,7 @@ Vytvořte jedinečnou událost transformací řetězce do kódování Bajt UTF-8
         // handling different flavors of ingestion to Event Hubs here.
         final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
 
-        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
 
@@ -144,7 +144,7 @@ Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Dodatek: Způsob směrování zpráv do oddílů EventHub
 
-Před načtení mši příjemci musí být publikovány do oddílů nejprve vydavatelé. Když jsou zprávy publikovány do centra událostí synchronně pomocí metody sendSync() v objektu com.microsoft.azure.eventhubs.EventHubClient, může být zpráva odeslána do určitého oddílu nebo distribuována do všech dostupných oddílů způsobem kruhového dotazování v závislosti na tom, zda je zadán klíč oddílu nebo ne.
+Před načtení mši příjemci musí být publikovány do oddílů nejprve vydavatelé. Když jsou zprávy publikovány do centra událostí synchronně pomocí metody sendSync() na objektu com.microsoft.azure.eventhubs.EventHubClient, může být zpráva odeslána do určitého oddílu nebo distribuována do všech dostupných oddílů způsobem kruhového dotazování v závislosti na tom, zda je klíč oddílu zadán nebo ne.
 
 Pokud je zadán řetězec představující klíč oddílu, bude kód zajistěn, aby bylo možné určit, do kterého oddílu se má událost odeslat.
 
@@ -384,7 +384,7 @@ Tento kurz používá jednu instanci třídy EventProcessorHost. Chcete-li zvý�
 
 ### <a name="publishing-messages-to-eventhub"></a>Publikování zpráv na EventHub
 
-Před načtení mši příjemci musí být publikovány do oddílů nejprve vydavatelé. Stojí za zmínku, že při publikování zpráv do centra událostí synchronně pomocí metody sendSync() na objektu com.microsoft.azure.eventhubs.EventHubClient může být zpráva odeslána do určitého oddílu nebo distribuována do všech dostupných oddílů způsobem kruhového dotazování v závislosti na tom, zda je zadán klíč oddílu nebo ne.
+Před načtení mši příjemci musí být publikovány do oddílů nejprve vydavatelé. Stojí za zmínku, že při zprávy jsou publikovány do centra událostí synchronně pomocí sendSync() metoda na com.microsoft.azure.eventhubs.EventHubClient objektu, zpráva může být odeslána do určitého oddílu nebo distribuovány do všech dostupných oddílů způsobem kruhovédotazování v závislosti na tom, zda je zadán klíč oddílu nebo ne.
 
 Pokud je zadán řetězec představující klíč oddílu, je zakódován klíč, který určuje, do kterého oddílu má být událost odeslána.
 

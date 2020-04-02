@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
-ms.author: barclayn
-ms.openlocfilehash: 3a2addce83862ef109089f1474330f3821daaed7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726718"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549257"
 ---
 # <a name="penetration-testing"></a>Penetrační testování
 Jednou z výhod používání Azure pro testování a nasazování aplikací je, že můžete rychle získat vytvořená prostředí. Nemusíte se starat o žádanky, získávání a "regály a stohování" vlastní místní hardware.
