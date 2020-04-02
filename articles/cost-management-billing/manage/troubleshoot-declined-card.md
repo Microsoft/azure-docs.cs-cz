@@ -4,15 +4,15 @@ description: Vyřešte odmítnutou platební kartu při registraci do Azure na w
 author: v-miegge
 ms.reviewer: judupont
 ms.service: cost-management-billing
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 3e82bf024580f12c45b6e4a2dd5074aed4f0a1c1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204711"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409389"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Řešení potíží s odmítnutou kartou při registraci do Azure
 

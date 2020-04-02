@@ -1,24 +1,26 @@
 ---
-title: Nejčastější dotazy na Cloudyn v Azure | Microsoft Docs
+title: Nejčastější dotazy ke službě Cloudyn v Azure
 description: Tento článek obsahuje odpovědi na některé běžné dotazy týkající se služby Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
-ms.topic: troubleshooting
+ms.date: 03/12/2020
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770083"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411236"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy ke službě Cloudyn
 
 Tento článek popisuje některé běžné otázky týkající se služby Cloudyn. Pokud máte dotazy týkající se služby Cloudyn, můžete využít [Nejčastější dotazy ke službě Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak vyřešit běžné nepřímé potíže s podnikovým nastavením?
 
@@ -58,13 +60,13 @@ Pokud nemůžete zobrazit žádná data služby Optimizer s doporučeními, prav
 
 Aktivace účtu:
 
-1.  Na portálu Cloudyn klikněte v pravém horním rohu na **Settings** (Nastavení) a vyberte **Cloud Accounts** (Účty v cloudu).
-2.  Na kartě Microsoft Azure Accounts (Účty Microsoft Azure) vyhledejte účty, které mají **neaktivované** předplatné.
-3.  Napravo od neaktivovaného účtu klikněte na symbol pro **úpravy**, který se podobá tužce.
-4.  ID vašeho tenanta a ID sazby se zjistí automaticky. Klikněte na **Další**.
-5.  Budete přesměrováni na Azure Portal. Přihlaste se k portálu a autorizujte kolektor Cloudyn pro přístup k datům Azure.
-6.  Následně budete přesměrováni na stránku pro správu účtů služby Cloudyn a vaše předplatné se aktualizuje se stavem účtu **active** (aktivní). Zobrazí symbol zelené značky zaškrtnutí.
-7.  Pokud u některých předplatných zelené zatržítko nevidíte, znamená to, že nemáte oprávnění vytvářet pro ně aplikaci pro čtení (CloudynCollector). Je potřeba, aby krok 3 a 4 zopakoval uživatel, který má k těmto předplatným vyšší oprávnění.  
+1.    Na portálu Cloudyn klikněte v pravém horním rohu na **Settings** (Nastavení) a vyberte **Cloud Accounts** (Účty v cloudu).
+2.    Na kartě Microsoft Azure Accounts (Účty Microsoft Azure) vyhledejte účty, které mají **neaktivované** předplatné.
+3.    Napravo od neaktivovaného účtu klikněte na symbol pro **úpravy**, který se podobá tužce.
+4.    ID vašeho tenanta a ID sazby se zjistí automaticky. Klikněte na **Další**.
+5.    Budete přesměrováni na Azure Portal. Přihlaste se k portálu a autorizujte kolektor Cloudyn pro přístup k datům Azure.
+6.    Následně budete přesměrováni na stránku pro správu účtů služby Cloudyn a vaše předplatné se aktualizuje se stavem účtu **active** (aktivní). Zobrazí symbol zelené značky zaškrtnutí.
+7.    Pokud u některých předplatných zelenou značku zaškrtnutí nevidíte, znamená to, že nemáte oprávnění vytvářet pro ně aplikaci pro čtení (CloudynCollector). Je potřeba, aby krok 3 a 4 zopakoval uživatel, který má k těmto předplatným vyšší oprávnění.  
 
 Po dokončení předchozích kroků uvidíte doporučení služby Optimizer do jednoho až dvou dnů. Může však trvat až pět dní, než budou k dispozici úplná data optimalizace.
 
@@ -75,7 +77,7 @@ Nejprve se podíváme na nejběžnější scénář, který způsobuje, že uži
 
 > Admin1 může být poskytovatel řešení Microsoft Cloud nebo uživatel se smlouvou Enterprise. Jeho organizace je připravená začít používat Cloudyn.  Zaregistruje se přes Azure Portal a přihlásí se k portálu Cloudyn. Uživatel, který si zaregistruje službu Cloudyn a přihlásí se k portálu Cloudyn, se stává *primárním správcem* Admin1. Admin1 nevytváří žádné uživatelské účty. Pomocí portálu Cloudyn však vytvoří účty Azure a nastaví hierarchii entit. Admin1 informuje správce tenanta Admin2, že se musí zaregistrovat do služby Cloudyn a přihlásit se k portálu Cloudyn.
 >
-> Admin2 se zaregistruje prostřednictvím webu Azure Portal. Když se ale pokusí přihlásit k portálu Cloudyn, zobrazí se mu chyba s oznámením, že účet je **pozastaven**. Primární správce, Admin1, je upozorněn na pozastavení účtu. Admin1 musí aktivovat účet uživatele Admin2 a udělit přístup *admin entity access* (přístup k entitám správce) pro příslušné entity a umožnit přístup ke správě uživatelů a aktivaci uživatelských účtů.
+> Admin2 se zaregistruje prostřednictvím webu Azure Portal. Když se ale pokusí přihlásit k portálu Cloudyn, zobrazí se mu chyba s oznámením, že účet je **pozastaven**. Primární správce, Admin1, je upozorněn na pozastavení účtu. Admin1 musí aktivovat účet uživatele Admin2 a udělit *přístup k entitám správce* pro příslušné entity a umožnit přístup ke správě uživatelů a aktivaci uživatelských účtů.
 
 
 Pokud obdržíte upozornění s žádostí o povolení přístupu pro uživatele, musíte aktivovat uživatelský účet.
@@ -95,7 +97,7 @@ Doporučujeme vytvořit alespoň dva účty správců Cloudyn pro případ, že 
 
 Pokud se nemůžete přihlásit k portálu Cloudyn, ujistěte se, že používáte správnou adresu URL pro přihlášení ke službě Cloudyn. Použijte [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Vyhněte se použití přímé adresy URL Cloudyn https://app.cloudyn.com.
+Vyhněte se použití přímé adresy URL Cloudyn `https://app.cloudyn.com`.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak aktivovat neaktivované účty pomocí přihlašovacích údajů Azure?
 
