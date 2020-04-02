@@ -9,16 +9,18 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 680e68d17637d71c1a1e5e8cfa539ee90028ac4e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: c8b63a2676690004d23094b490fea0ef150ab9cb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478758"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546415"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Prostředky přihlašovacích údajů ve službě Azure Automation
 
-Prostředek pověření automatizace obsahuje objekt, který obsahuje pověření zabezpečení, jako je uživatelské jméno a heslo. Sady Runbook a DSC konfigurace používají rutiny, které přijímají objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) pro ověřování. Alternativně mohou extrahovat uživatelské jméno `PSCredential` a heslo objektu poskytnout některé aplikace nebo služby, které vyžadují ověření. Azure Automation bezpečně ukládá vlastnosti pověření a přístup k vlastnostem v konfiguraci runbook nebo DSC s [get-AutomationPScredential](#activities-used-to-access-credentials) aktivity.
+Prostředek pověření automatizace obsahuje objekt, který obsahuje pověření zabezpečení, jako je například uživatelské jméno a heslo. Sady Runbook a DSC konfigurace používají rutiny, které přijímají objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) pro ověřování. Alternativně mohou extrahovat uživatelské jméno `PSCredential` a heslo objektu poskytnout některé aplikace nebo služby, které vyžadují ověření. 
+
+Azure Automation bezpečně ukládá vlastnosti pověření. Přístup k vlastnostem prostřednictvím runbooku nebo konfigurace DSC používá [get-AutomationPScredential](#activities-used-to-access-credentials) aktivity.
 
 > [!NOTE]
 > Zabezpečené datové zdroje v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou šifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet automatizace. Tento klíč je uložen v trezoru klíčů. Před uložením zabezpečeného datového zdroje je klíč načten z trezoru klíčů a poté použit k šifrování datového zdroje.
@@ -27,11 +29,11 @@ Prostředek pověření automatizace obsahuje objekt, který obsahuje pověřen�
 
 ## <a name="azure-powershell-az-cmdlets-used-for-credential-assets"></a>Rutiny Azure PowerShell Az používané pro datové zdroje přihlašovacích údajů
 
-Pro modul Azure PowerShell Az se rutiny v následující tabulce používají k vytváření a správě prostředků pověření automatizace pomocí prostředí Windows PowerShell. Dodávají se jako součást [modulu Az.Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0), který je k dispozici pro použití v runbookech automation a konfiguracích DSC. Viz [Podpora modulů Az v Azure Automation](https://docs.microsoft.com/azure/automation/az-modules).
+Jako součást modulu Azure PowerShell Az se rutiny v následující tabulce používají k vytváření a správě prostředků pověření automatizace pomocí prostředí Windows PowerShell. Jsou dodávány v [modulu Az.Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0), který je k dispozici pro použití v runbookech automatizace a konfiguracích DSC. Viz [Podpora modulů Az v Azure Automation](https://docs.microsoft.com/azure/automation/az-modules).
 
 | Rutina | Popis |
 |:--- |:--- |
-| [Pověření Get-AzAutomation](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Načte informace o datovém zdroji pověření. Tato rutina nevrátí objekt PSCredential.  |
+| [Pověření Get-AzAutomation](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Načte informace o datovém zdroji pověření. Tato rutina nevrátí `PSCredential` objekt.  |
 | [Nové pověření AzAutomation](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Vytvoří nové pověření automatizace. |
 | [Odebrat pověření AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Odebere pověření automatizace. |
 | [Nastavení azautomationpověření](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Nastaví vlastnosti existujícího pověření automatizace. |
@@ -48,7 +50,7 @@ Aktivity v následující tabulce se používají pro přístup k pověření mj
 
 Pro místní vývoj pomocí Azure Automation Authoring `Get-AutomationPSCredential` Toolkit je rutina součástí sestavení [AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9). Pro Azure práci s kontextem automatizace `Orchestrator.AssetManagement.Cmdlets`rutina je v . Viz [Správa modulů v Azure Automation](modules.md).
 
-Chcete-li načíst `PSCredential` objekty ve vašem kódu, můžete nainstalovat [doplněk Microsoft Azure Automation ISE pro Prostředí PowerShell ISE](https://github.com/azureautomation/azure-automation-ise-addon).
+Chcete-li načíst `PSCredential` objekty v kódu, můžete nainstalovat [doplněk Microsoft Azure Automation ISE pro prostředí PowerShell ISE](https://github.com/azureautomation/azure-automation-ise-addon).
 
 ```azurepowershell
 Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser -Force
@@ -85,6 +87,9 @@ Nový datový zdroj přihlašovacích údajů můžete vytvořit pomocí portál
 2. V podokně Nové pověření zadejte příslušný název pověření podle standardů pro pojmenování. 
 3. Do pole **Uživatelské jméno** zadejte ID přístupu. 
 4. Pro obě pole hesla zadejte tajný přístupový klíč.
+
+    ![Vytvořit nové pověření](../media/credentials/credential-create.png)
+
 5. Pokud je políčko vícefaktorového ověřování zaškrtnuté, odškrtnete ho. 
 6. Kliknutím na **Vytvořit** uložte nový datový zdroj přihlašovacích údajů.
 
@@ -93,8 +98,7 @@ Nový datový zdroj přihlašovacích údajů můžete vytvořit pomocí portál
 
 ### <a name="create-a-new-credential-asset-with-windows-powershell"></a>Vytvoření nového datového zdroje přihlašovacích údajů pomocí prostředí Windows PowerShell
 
-Následující příklad ukazuje, jak vytvořit nový prostředek pověření automatizace. Objekt `PSCredential` je nejprve vytvořen s názvem a heslem a poté použit k vytvoření datového zdroje pověření. Případně můžete pomocí `Get-Credential` rutiny vyzvat uživatele k zadání jména a hesla.
-
+Následující příklad ukazuje, jak vytvořit nový prostředek pověření automatizace. Objekt `PSCredential` je nejprve vytvořen s názvem a heslem a poté použit k vytvoření datového zdroje pověření. Místo toho můžete `Get-Credential` pomocí rutiny vyzvat uživatele k zadání jména a hesla.
 
 ```powershell
 $user = "MyDomain\MyUser"
@@ -142,7 +146,7 @@ Aktivitu `Get-AutomationPSCredential` můžete přidat do grafického runbooku k
 
 ![Přidání přihlašovacích údajů k plátnu](../media/credentials/credential-add-canvas.png)
 
-Následující obrázek ukazuje příklad použití pověření v grafickém runbooku. V takovém případě se přihlašovací údaje používají k zajištění ověřování pro runbook prostředkům Azure, jak je popsáno v [části Použití Azure AD v Azure Automation k ověření do Azure](../automation-use-azure-ad.md). První aktivita načte přihlašovací údaje, které má přístup k předplatnému Azure. Aktivita připojení účtu pak používá toto pověření k zajištění ověřování pro všechny aktivity, které přijdou po něm. Odkaz [kanálu](../automation-graphical-authoring-intro.md#links-and-workflow) se zde `Get-AutomationPSCredential` používá, protože očekává jeden objekt.  
+Následující obrázek ukazuje příklad použití pověření v grafickém runbooku. V takovém případě pověření poskytuje ověřování pro runbook na prostředky Azure, jak je popsáno v [použití Azure AD v Azure Automation k ověření azure](../automation-use-azure-ad.md). První aktivita načte přihlašovací údaje, které má přístup k předplatnému Azure. Aktivita připojení účtu pak používá toto pověření k zajištění ověřování pro všechny aktivity, které přijdou po něm. Odkaz [kanálu](../automation-graphical-authoring-intro.md#links-and-workflow) se zde `Get-AutomationPSCredential` používá, protože očekává jeden objekt.  
 
 ![Přidání přihlašovacích údajů k plátnu](../media/credentials/get-credential.png)
 

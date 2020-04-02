@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366236"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521016"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce & nástrojů pro Azure Cloud Shell
 
@@ -44,7 +44,7 @@ Soubory mimo `$HOME` a stav počítače nejsou trvalé napříč relacemi. Při 
 
 ### <a name="azure-drive-azure"></a>Disk Azure (Azure:)
 
-PowerShell v Cloud Shellu vás`Azure:`spustí na disku Azure ( ).
+PowerShell v Cloud Shellu`Azure:`poskytuje disk Azure ( ). Můžete přepnout na disk `cd Azure:` Azure s a `cd  ~`zpět do svého domovského adresáře s .
 Jednotka Azure umožňuje snadné zjišťování a navigaci prostředků Azure, jako jsou výpočetní prostředky, síť, úložiště atd., podobně jako navigace v souborovém systému.
 You can continue to use the familiar [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure) to manage these resources regardless of the drive you are in.
 Všechny změny provedené v prostředcích Azure, provedené přímo na webu Azure Portal nebo prostřednictvím rutin Azure PowerShell, se projeví na disku Azure.  Můžete spustit `dir -Force` aktualizovat prostředky.
@@ -67,7 +67,7 @@ Prostředí PowerShell v prostředí Cloud obsahuje privátní sestavení modulu
 
 Cloud Shell obsahuje předkonfigurované ověřování pro nástroje s otevřeným zdrojovým kódem, jako je Terraform, Ansible a Chef InSpec. Vyzkoušejte si to z příkladů návodů.
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 |Kategorie   |Name (Název)   |
 |---|---|

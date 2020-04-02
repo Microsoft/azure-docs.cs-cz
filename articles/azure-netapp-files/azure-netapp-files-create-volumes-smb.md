@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 03/31/2020
 ms.author: b-juche
-ms.openlocfilehash: b2000c3fd3d64793f797e997d8f3c10eaed5d7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ad9e13667791c38a8bf8be01919bcdbd0032102
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409577"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519580"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -74,6 +74,14 @@ Podsíť musí být delegována na soubory Azure NetApp.
 
     Viz [Návrh topologie webu](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) o webech a službách AD. 
     
+* Azure NetApp Files podporuje typy šifrování DES, Kerberos AES 128 a Kerberos AES 256 (od nejméně zabezpečených po nejbezpečnější). Pověření uživatele používaná pro připojení ke službě Active Directory musí mít povolenou nejvyšší odpovídající možnost účtu, která odpovídá možnostem povoleným pro službu Active Directory.   
+
+    Pokud má například služba Active Directory pouze funkci AES-128, musíte pro pověření uživatele povolit možnost účtu AES-128. Pokud má vaše služba Active Directory funkci AES-256, musíte povolit možnost účtu AES-256 (která také podporuje AES-128). Pokud vaše služba Active Directory nemá žádné možnosti šifrování protokolu Kerberos, soubory Azure NetApp ve výchozím nastavení používají des.  
+
+    Možnosti účtu můžete povolit ve vlastnostech konzoly MMC uživatelů a počítačů služby Active Directory:   
+
+    ![Konzola MMC uživatelů a počítačů služby Active Directory](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
 Přečtěte si, že se informace o dalších informacích služby AD vyjádřite k souborům [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) azure netapp. 
 
 ## <a name="decide-which-domain-services-to-use"></a>Rozhodněte se, které služby domény použít 

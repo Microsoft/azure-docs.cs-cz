@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 758e6123fd09df1e3f8b2e883a729b9fec4328d1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80367288"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528592"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného stroje
 
@@ -61,6 +61,9 @@ Průvodce instalací zjistí, zda existuje předchozí verze, a poté automatick
 ### <a name="linux-agent"></a>Linuxagent
 
 Chcete-li aktualizovat agenta na počítači s Linuxem na nejnovější verzi, zahrnuje dva příkazy. Jeden příkaz k aktualizaci indexu místního balíčku se seznamem nejnovějších dostupných balíčků z úložišť a jeden příkaz pro upgrade místního balíčku. 
+
+> [!NOTE]
+> Chcete-li inovovat agenta, musíte mít *oprávnění root* access nebo s účtem, který má zvýšená práva pomocí Sudo.
 
 #### <a name="upgrade-ubuntu"></a>Upgrade Ubuntu
 
@@ -112,13 +115,11 @@ Do souboru protokolu jsou zaznamenány akce příkazu `/var/log/zypper.log` [zyp
 
 ## <a name="remove-the-agent"></a>Odebrání agenta
 
-Pomocí jednoho z následujících postupů odinstalujte agenta systému Windows nebo Linux pomocí příkazového řádku nebo průvodce instalací popsaným v této části. Před odinstalací agenta nejprve odpojte počítač od Azure Arc pro servery (preview) provedením těchto kroků: 
-
-1. Otevřete Azure Arc pro servery (preview) na [webu Azure Portal](https://aka.ms/hybridmachineportal).
-
-2. Vyberte zařízení v seznamu, vyberte tři tečky (**...**) a pak vyberte **Odstranit**.
+Chcete-li odinstalovat agenta počítače S Windows nebo Linux Connected Machine, proveďte jednu z následujících metod. Odebráníagenta nezruší registraci počítače pomocí arc pro servery (náhled), jedná se o samostatný proces, který provádíte, když už nemusíte spravovat počítač v Azure.
 
 ### <a name="windows-agent"></a>Agent Windows
+
+Obě následující metody agenta odeberou, ale neodeberou složku *C:\Program Files\AzureConnectedMachineAgent* v počítači.
 
 #### <a name="uninstall-from-control-panel"></a>Odinstalace z Ovládacích panelů
 
@@ -158,6 +159,9 @@ Chcete-li odinstalovat agenta ručně z příkazového řádku nebo použít aut
 
 ### <a name="linux-agent"></a>Linuxagent
 
+> [!NOTE]
+> Chcete-li odinstalovat agenta, musíte mít *oprávnění root* access nebo s účtem, který má zvýšená práva pomocí Sudo.
+
 Chcete-li odinstalovat agenta Linuxu, příkaz, který chcete použít, závisí na operačním systému Linux.
 
 - Pro Ubuntu spusťte následující příkaz:
@@ -177,3 +181,11 @@ Chcete-li odinstalovat agenta Linuxu, příkaz, který chcete použít, závisí
     ```bash
     sudo zypper remove azcmagent
     ```
+
+## <a name="unregister-machine"></a>Zrušit registraci počítače
+
+Pokud plánujete zastavit správu počítače s podpůrnými službami v Azure, proveďte následující kroky k odregistru počítače s Arc pro servery (náhled). Tento krok můžete provést před odebráním agenta připojeného počítače ze zařízení nebo po jeho odebrání.
+
+1. Otevřete Azure Arc pro servery (preview) na [webu Azure Portal](https://aka.ms/hybridmachineportal).
+
+2. Vyberte zařízení v seznamu, vyberte tři tečky (**...**) a pak vyberte **Odstranit**.

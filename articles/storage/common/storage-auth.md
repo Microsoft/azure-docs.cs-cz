@@ -10,12 +10,12 @@ ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53eca8a0b9e7cc9abb8f89cd56fca5df28f2de0f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616293"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521932"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autorizace přístupu k datům ve Službě Azure Storage
 
@@ -33,7 +33,7 @@ Následující tabulka popisuje možnosti, které Azure Storage nabízí pro aut
 
 Každá možnost autorizace je stručně popsána níže:
 
-- **Integrace Azure Active Directory (Azure AD)** pro objekty BLOB a fronty. Azure AD poskytuje řízení přístupu na základě rolí (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům v účtu úložiště. Další informace týkající se integrace Azure AD pro objekty BLOB a fronty najdete [v tématu Autorizace přístupu k objektům BLOB azure a frontpomocí Azure Active Directory](storage-auth-aad.md).
+- **Integrace Azure Active Directory (Azure AD)** pro objekty BLOB a fronty. Azure AD poskytuje řízení přístupu na základě rolí (RBAC) pro řízení nad přístupem klienta k prostředkům v účtu úložiště. Další informace týkající se integrace Azure AD pro objekty BLOB a fronty najdete [v tématu Autorizace přístupu k objektům BLOB azure a frontpomocí Azure Active Directory](storage-auth-aad.md).
 
 - **Ověřování Azure Active Directory Domain Services (Azure AD DS)** pro soubory Azure. Soubory Azure podporuje autorizaci založenou na identitách přes blok zpráv serveru (SMB) prostřednictvím služby Azure AD DS. RBAC můžete použít pro jemně odstupňovanou kontrolu nad klienta přístup k prostředkům Azure Files v účtu úložiště. Další informace o ověřování souborů Azure pomocí doménových služeb najdete v našem [přehledu](../files/storage-files-active-directory-overview.md).
 

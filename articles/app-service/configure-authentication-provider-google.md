@@ -4,13 +4,15 @@ description: Přečtěte si, jak nakonfigurovat ověřování Google jako poskyt
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
 ms.date: 09/02/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: bb6b8eebef3247cf2c39ed4b111296e1e0521a74
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437980"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519945"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používala přihlašovací údaje Google
 

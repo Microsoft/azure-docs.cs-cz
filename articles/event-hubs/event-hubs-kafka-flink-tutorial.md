@@ -1,6 +1,6 @@
 ---
 title: Použití Apache Flink pro Apache Kafka – Azure Event Hubs | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje informace o tom, jak připojit Apache Flink k centru událostí Azure s povoleným Apache Kafka
+description: Tento článek obsahuje informace o tom, jak připojit Apache Flink k centru událostí Azure
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: db877279bcfa7e132841e342cfc25b66bb3ec384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ab542e1328bb986f53d31e2eca75007cf1e0c75
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283595"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521787"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink se službou Azure Event Hubs pro Apache Kafka
 Tento kurz ukazuje, jak připojit Apache Flink k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs podporuje [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html).
@@ -48,7 +48,7 @@ Chcete-li dokončit tento kurz, ujistěte se, že máte následující předpokl
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Obor názvů Event Hubs je vyžadován k odesílání nebo přijímání z libovolné služby Event Hubs. Informace o získání koncového bodu Kafka Centers centra událostí najdete v tématu [Vytvoření centra událostí S Povoleno kafka.](event-hubs-create.md) Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
+Obor názvů Event Hubs je vyžadován k odesílání nebo přijímání z libovolné služby Event Hubs. Pokyny k vytvoření oboru názvů a centra událostí najdete v [tématu Vytvoření centra událostí.](event-hubs-create.md) Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
 
 ## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 
@@ -88,11 +88,11 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-Výrobce nyní začne odesílat události do centra událostí s `test` povolenou Kafka v tématu a tisk událostí na stdout.
+Producent nyní začne odesílat události do `test` centra událostí v tématu a tisk událostí na stdout.
 
 ## <a name="run-flink-consumer"></a>Spustit příjemce Flink
 
-Pomocí uvedeného příkladu příjemce přijímat zprávy z Kafka povoleno centra událostí.
+Pomocí uvedeného spotřebitele příklad přijímat zprávy z centra událostí. 
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Poskytnutí koncového bodu Kafka centra událostí
 
@@ -136,7 +136,7 @@ Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdet
 
 - [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Vytvoření služby Event Hubs s podporou Kafka](event-hubs-create.md)
+- [Vytvoření centra událostí](event-hubs-create.md)
 - [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)

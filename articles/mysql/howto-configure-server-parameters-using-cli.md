@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5f3027909d1c4684e2ef5d1b6e967cb11f570fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: ca5f80e57f90e4dd26ac2e4a175998ff3de2c102
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062434"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546423"
 ---
 # <a name="customize-server-parameters-by-using-azure-cli"></a>Přizpůsobení parametrů serveru pomocí rozhraní příkazového řádku Azure
 Můžete seznam, zobrazit a aktualizovat parametry konfigurace pro Azure Database pro server MySQL pomocí Azure CLI, nástroj příkazového řádku Azure. Podmnožina konfigurací motoru je vystavena na úrovni serveru a může být změněna. 
@@ -55,10 +55,10 @@ Tento kód obnoví **\_pomalou\_** konfiguraci protokolu dotazu na výchozí hod
 
 ### <a name="populating-the-time-zone-tables"></a>Vyplnění tabulek časových pásem
 
-Tabulky časových pásem na serveru mohou `az_load_timezone` být naplněny voláním uložené procedury z nástroje, jako je příkazový řádek MySQL nebo MySQL Workbench.
+Tabulky časových pásem na serveru mohou `mysql.az_load_timezone` být naplněny voláním uložené procedury z nástroje, jako je příkazový řádek MySQL nebo MySQL Workbench.
 
 > [!NOTE]
-> Pokud používáte `az_load_timezone` příkaz z MySQL Workbench, možná budete muset nejprve vypnout režim nouzové aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`aplikace .
+> Pokud používáte `mysql.az_load_timezone` příkaz z MySQL Workbench, možná budete muset nejprve vypnout režim nouzové aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`aplikace .
 
 ```sql
 CALL mysql.az_load_timezone();

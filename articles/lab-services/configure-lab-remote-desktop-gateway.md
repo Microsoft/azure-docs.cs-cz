@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170287"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529425"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs tak, aby používala bránu vzdálené plochy
 V Azure DevTest Labs můžete nakonfigurovat bránu vzdálené plochy pro vaše testovací prostředí, abyste zajistili zabezpečený přístup k virtuálním počítačům testovacího prostředí( VM), aniž byste museli vystavit port RDP. Testovací prostředí poskytuje centrální místo pro uživatele testovacího prostředí pro zobrazení a připojení ke všem virtuálním počítačům, ke kterým mají přístup. Tlačítko **Připojit** na stránce **Virtuální počítač** vytvoří soubor RDP specifický pro počítač, který můžete otevřít pro připojení k počítači. Připojení testovacího prostředí k bráně vzdálené plochy můžete dále přizpůsobit a zabezpečit. 
@@ -43,7 +43,7 @@ Tento přístup je bezpečnější, protože uživatel testovacího prostředí 
 Pro práci s funkcí ověřování tokenů DevTest Labs existuje několik konfiguračních požadavků pro počítače brány, služby dns (domain name services) a funkce.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Požadavky na počítače brány vzdálené plochy
-- Chcete-li zpracovat provoz HTTPS, musí být v počítači brány nainstalován certifikát SSL. Certifikát musí odpovídat plně kvalifikovanému názvu domény (Plně kvalifikovaný název) pro vyrovnávání zatížení pro farmu brány nebo plně kvalifikovaný název domény samotného počítače, pokud existuje pouze jeden počítač. Certifikáty SSL s divokou kartou nefungují.  
+- Certifikát TLS/SSL musí být nainstalován v počítači brány, aby bylo možné zpracovávat přenosy HTTPS. Certifikát musí odpovídat plně kvalifikovanému názvu domény (Plně kvalifikovaný název) pro vyrovnávání zatížení pro farmu brány nebo plně kvalifikovaný název domény samotného počítače, pokud existuje pouze jeden počítač. Certifikáty TLS/SSL s divokou kartou nefungují.  
 - Podpisový certifikát nainstalovaný v počítačích brány. Vytvořte podpisový certifikát pomocí [skriptu Create-SigningCertificate.ps1.](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)
 - Nainstalujte modul [Pluggable Authentication,](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) který podporuje ověřování tokenů pro bránu vzdálené plochy. Jedním z příkladů takového `RDGatewayFedAuth.msi` modulu je, že je dodáván s [Image System Center Virtual Machine Manager (VMM).](/system-center/vmm/install-console?view=sc-vmm-1807) Další informace o centru systému naleznete v [dokumentaci k centru systému](https://docs.microsoft.com/system-center/) a [podrobnosti o cenách](https://www.microsoft.com/cloud-platform/system-center-pricing).  
 - Server brány může zpracovávat `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`požadavky na soubor .
@@ -58,7 +58,7 @@ Azure funkce zpracovává požadavek `https://{function-app-uri}/app/host/{lab-m
 
 ## <a name="requirements-for-network"></a>Požadavky na síť
 
-- Služba DNS pro hlavní název domény přidružené k certifikátu SSL nainstalovanému na počítačích brány musí směrovat provoz do počítače brány nebo do nástrojpro vyrovnávání zatížení farmy počítače brány.
+- Služba DNS pro hlavní název domény přidružené k certifikátu TLS/SSL nainstalovanému na počítačích brány musí směrovat provoz do počítače brány nebo do nástrojpro vyrovnávání zatížení farmy počítače brány.
 - Pokud testovací počítač používá privátní IP adresy, musí existovat síťová cesta z počítače brány do počítače testovacího prostředí, a to buď prostřednictvím sdílení stejné virtuální sítě, nebo pomocí partnerských virtuálních sítí.
 
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurace testovacího prostředí tak, aby používalo ověřování tokenů 
@@ -79,7 +79,7 @@ Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenů
 1. Ze seznamu testovacích prostředí vyberte **testovací prostředí**.
 1. Na stránce testovacího prostředí vyberte **Konfigurace a zásady**.
 1. V levé nabídce vyberte v části **Nastavení** **nastavení laboratoře**.
-1. V části **Vzdálená plocha** zadejte plně kvalifikovaný název domény (Plně kvalifikovaný název domény) nebo IP adresu počítače brány nebo farmy služby Vzdálená plocha pro pole **Název hostitele brány.** Tato hodnota se musí shodovat s vícenežicí certifikátu SSL používaného v počítačích brány.
+1. V části **Vzdálená plocha** zadejte plně kvalifikovaný název domény (Plně kvalifikovaný název domény) nebo IP adresu počítače brány nebo farmy služby Vzdálená plocha pro pole **Název hostitele brány.** Tato hodnota se musí shodovat s vícenežvitnými názevmi sítě certifikátu TLS/SSL používaného v počítačích brány.
 
     ![Možnosti vzdálené plochy v nastavení testovacího prostředí](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
 1. V části **Vzdálená plocha** pro tajný klíč **tokenu brány** zadejte název tajného klíče vytvořeného dříve. Tato hodnota není samotný klíč funkce, ale název tajného klíče v trezoru klíčů testovacího prostředí, který obsahuje funkční klíč.
@@ -110,7 +110,7 @@ Zde je příklad nsg, který umožňuje pouze provoz, který nejprve prochází 
 Podle těchto kroků nastavte ukázkové řešení pro farmu brány vzdálené plochy.
 
 1. Vytvořte podpisový certifikát.  [Spusťte soubor Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Uložte kryptografický otisk, heslo a kódování vytvořeného certifikátu Base64.
-2. Získejte certifikát SSL. Vícenežonislý název přidružený k certifikátu SSL musí být určen pro doménu, kterou ovládáte. Uložte kryptografický otisk, heslo a kódování Base64 pro tento certifikát. Chcete-li získat kryptografický otisk pomocí Prostředí PowerShell, použijte následující příkazy.
+2. Získejte certifikát TLS/SSL. Vícenežonislý název domény přidružený k certifikátu TLS/SSL musí být určen pro doménu, kterou ovládáte. Uložte kryptografický otisk, heslo a kódování Base64 pro tento certifikát. Chcete-li získat kryptografický otisk pomocí Prostředí PowerShell, použijte následující příkazy.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -132,9 +132,9 @@ Podle těchto kroků nastavte ukázkové řešení pro farmu brány vzdálené p
     - instanceCount – počet počítačů brány, které chcete vytvořit.  
     - alwaysOn – označuje, zda chcete zachovat vytvořené aplikace Azure Functions v teplém stavu nebo ne. Udržování aplikace Azure Functions zabrání zpoždění při uživatelé se poprvé pokusí připojit k jejich virtuálnípočítač testovacího prostředí, ale má náklady důsledky.  
     - tokenLifetime – doba, po kterou bude vytvořený token platný. Formát je HH:MM:SS.
-    - sslCertificate – Base64 kódování certifikátu SSL pro stroj brány.
-    - sslCertificatePassword – heslo certifikátu SSL pro stroj brány.
-    - sslCertificateThumbprint - Kryptografický otisk certifikátu pro identifikaci v místním úložišti certifikátů certifikátu SSL.
+    - sslCertificate – Base64 kódování certifikátu TLS/SSL pro stroj brány.
+    - sslCertificatePassword – heslo certifikátu TLS/SSL pro stroj brány.
+    - sslCertificateThumbprint - Kryptografický otisk certifikátu pro identifikaci v místním úložišti certifikátů certifikátu TLS/SSL.
     - signCertificate – Kódování Base64 pro podpisový certifikát pro počítač brány.
     - signCertificatePassword – heslo pro podpisový certifikát pro počítač brány.
     - signCertificateThumbprint - Kryptografický otisk certifikátu pro identifikaci v místním úložišti certifikátů podpisového certifikátu.
@@ -157,7 +157,7 @@ Podle těchto kroků nastavte ukázkové řešení pro farmu brány vzdálené p
         - {utc-expiration-date} je datum v utc, kdy vyprší platnost tokenu SAS a token SAS již nelze použít pro přístup k účtu úložiště.
 
     Zaznamenejte hodnoty pro gatewayFQDN a gatewayIP z výstupu nasazení šablony. Budete také muset uložit hodnotu funkční klávesy pro nově vytvořenou funkci, kterou najdete na kartě [Nastavení aplikace Funkce.](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
-5. Nakonfigurujte službu DNS tak, aby reqdn certifikátu SSL přesměroval na IP adresu gatewayIP z předchozího kroku.
+5. Nakonfigurujte službu DNS tak, aby reqdn certifikátu TLS/SSL přesměroval na IP adresu gatewayIP z předchozího kroku.
 
     Po vytvoření farmy brány vzdálené plochy a vytvoření příslušných aktualizací DNS je připravena k použití testovacím prostředím v devtest labs. Nastavení **tajného klíče názvu hostitele brány** a **tokenu brány** musí být nakonfigurováno tak, aby používalo počítače brány, které jste nasadili. 
 

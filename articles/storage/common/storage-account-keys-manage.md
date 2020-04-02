@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/18/2019
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75975790"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521277"
 ---
 # <a name="manage-storage-account-access-keys"></a>Správa přístupových klíčů účtu úložiště
 
@@ -52,6 +52,8 @@ Chcete-li otočit klíče účtu úložiště, postupujte podle tohoto postupu:
 
 > [!NOTE]
 > Společnost Microsoft doporučuje používat pouze jeden z klíčů ve všech aplikacích současně. Pokud používáte klíč 1 v některých místech a klíč 2 v jiných, nebudete moci otáčet klíče bez ztráty přístupu některé aplikace.
+
+Chcete-li otočit přístupové klíče účtu, musí být uživatel správcem služeb nebo musí být přiřazena role RBAC, která zahrnuje **microsoft.storage/storageaccounts/regeneratekey/action**. Some built-in RBAC roles that include this action are the **Owner**, **Contributor**, and **Storage Account Key Operator Service Role** roles. Další informace o roli správce služby najdete [v tématu Klasické role správce předplatného, role Azure RBAC a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích RBAC pro Azure Storage najdete v části **Úložiště** [ve integrovaných rolích Azure pro Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="next-steps"></a>Další kroky
 

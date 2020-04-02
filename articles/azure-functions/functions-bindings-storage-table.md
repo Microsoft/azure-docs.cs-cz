@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277177"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520673"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště Azure Table pro funkce Azure
 
@@ -36,7 +36,7 @@ Vazby úložiště tabulky jsou k dispozici v balíčku [Microsoft.Azure.WebJobs
 
 Ke čtení tabulky v účtu Azure Storage použijte vstupní vazbu úložiště Tabulky Azure.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="one-entity"></a>Jedna entita
 
@@ -310,7 +310,7 @@ Další informace o tom, jak používat CloudTable, najdete [v tématu Začíná
 Pokud se pokusíte `CloudTable` vytvořit vazbu a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady Storage SDK](#azure-storage-sdk-version-in-functions-1x).
 
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje vstupní vazbu tabulky v souboru *function.json* a [kód Jazyka JavaScript,](functions-reference-node.md) který vazbu používá. Funkce používá aktivační událost fronty ke čtení jednoho řádku tabulky. 
 
@@ -474,7 +474,7 @@ public Person[] get(
 
 ## <a name="input---attributes-and-annotations"></a>Vstup - atributy a poznámky
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
  V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte ke konfiguraci vstupní vazby tabulky následující atributy:
 
@@ -536,7 +536,7 @@ public Person[] get(
 
 Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány javascriptem.
 
@@ -564,13 +564,13 @@ Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nas
 |**řádekKlíč** |**RowKey** | Nepovinný parametr. Klíč řádku entity tabulky ke čtení. Pokyny k použití této vlastnosti najdete v části [použití.](#input---usage)| 
 |**vzít** |**Take** | Nepovinný parametr. Maximální počet entit ke čtení v jazyce JavaScript. Pokyny k použití této vlastnosti najdete v části [použití.](#input---usage)| 
 |**Filtr** |**Filtr** | Nepovinný parametr. Výraz filtru OData pro vstup tabulky v Jazyce JavaScript. Pokyny k použití této vlastnosti najdete v části [použití.](#input---usage)| 
-|**Připojení** |**Připojení** | Název nastavení aplikace, která obsahuje připojovací řetězec úložiště pro tuto vazbu. Pokud název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytek názvu zde. Například pokud nastavíte `connection` na "MyStorage", funkce runtime hledá nastavení aplikace s názvem "MyStorage". Pokud necháte `connection` prázdné, spustí se s funkcí, která použije výchozí `AzureWebJobsStorage`připojovací řetězec úložiště v nastavení aplikace s názvem .|
+|**Připojení** |**Připojení** | Název nastavení aplikace, která obsahuje připojovací řetězec úložiště pro tuto vazbu. Nastavení může být název nastavení předponou aplikace "AzureWebJobs" nebo název připojovacího řetězce. Například pokud je název nastavení "AzureWebJobsMyStorage", můžete zadat "MyStorage" zde. Functions runtime bude automaticky hledat nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, spustí se s funkcí, která použije výchozí `AzureWebJobsStorage`připojovací řetězec úložiště v nastavení aplikace s názvem .|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="input---usage"></a>Vstup - využití
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 * **Čtení jednoho řádku**
 
@@ -596,7 +596,7 @@ Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nas
   > [!NOTE]
   > `IQueryable`není podporována v [modulu runtime Funkce v2](functions-versions.md). Alternativou je [použití parametru metody CloudTable paramName](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) ke čtení tabulky pomocí sady Azure Storage SDK. Pokud se pokusíte `CloudTable` vytvořit vazbu a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady Storage SDK](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Nastavte `filter` vlastnosti a. `take` `partitionKey` Nenastavuj `rowKey`nebo . Přístup k entitě vstupní tabulky `context.bindings.<BINDING_NAME>`(nebo entitami) pomocí . Deserializované objekty `RowKey` `PartitionKey` mají a vlastnosti.
 
@@ -617,7 +617,7 @@ K zápisu entit do tabulky v účtu Azure Storage použijte výstupní vazbu úl
 > [!NOTE]
 > Tato výstupní vazba nepodporuje aktualizaci existujících entit. Pomocí `TableOperation.Replace` operace [ze sady Azure Storage SDK](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) aktualizujte existující entitu.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [funkci Jazyka C#,](functions-dotnet-class-library.md) která používá aktivační událost HTTP k zápisu jednoho řádku tabulky. 
 
@@ -696,7 +696,7 @@ public class Person
 
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje výstupní vazbu tabulky v souboru *function.json* a [funkci JavaScriptu,](functions-reference-node.md) která vazbu používá. Funkce zapisuje více entit tabulky.
 
@@ -883,7 +883,7 @@ public class AddPersons {
 
 ## <a name="output---attributes-and-annotations"></a>Výstup - atributy a poznámky
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte [atribut TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
 
@@ -921,7 +921,7 @@ public static MyPoco TableOutput(
 
 Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány javascriptem.
 
@@ -955,7 +955,7 @@ Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nas
 
 ## <a name="output---usage"></a>Výstup - využití
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Přístup k entitě výstupní `ICollector<T> paramName` tabulky `IAsyncCollector<T> paramName` `T` pomocí `PartitionKey` parametru metody nebo kde obsahuje vlastnosti a. `RowKey` Tyto vlastnosti jsou často `ITableEntity` doprovázeny `TableEntity`implementací nebo děděním .
 
@@ -967,7 +967,7 @@ Přístup k entitě výstupní `ICollector<T> paramName` tabulky `IAsyncCollecto
 
 Případně můžete použít `CloudTable` parametr metody pro zápis do tabulky pomocí sady Azure Storage SDK. Pokud se pokusíte `CloudTable` vytvořit vazbu a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady Storage SDK](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Přístup k výstupní `context.bindings.<name>` události `<name>` pomocí kde je `name` hodnota zadaná ve vlastnosti *function.json*.
 

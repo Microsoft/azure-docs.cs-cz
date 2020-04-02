@@ -1,22 +1,14 @@
 ---
 title: 'Kurz: Publikovat nastavení - LUIS'
-titleSuffix: Azure Cognitive Services
 description: V tomto kurzu změňte nastavení publikování získat zlepšení předpovědi.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/13/2019
-ms.author: diberry
-ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 19913d16ecb1457ad4edb93ea34e4b96a590aca0
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75890393"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545779"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Kurz: Přidání analýzy mínění jako nastavení publikování
 
@@ -67,11 +59,11 @@ Vzhledem k tomu, že se jedná o nastavení publikování, nevidíte jej na str�
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Přejděte na konec adresy URL v adrese a zadejte následující promluvu:
+1. Přejděte na konec adresy URL v adresním řádku a nahraďte _YOUR_QUERY_HERE:_
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    Poslední parametr querystring `query`je , **utterance dotazu**. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `OrderPizza` s extrahovanou analýzou mínění.
+    Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `OrderPizza` s extrahovanou analýzou mínění.
 
     ```json
     {
@@ -122,9 +114,7 @@ Vzhledem k tomu, že se jedná o nastavení publikování, nevidíte jej na str�
 
     Analýza mínění je pozitivní se skóre 86%.
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Související informace
 

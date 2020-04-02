@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368349"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521296"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autorizace přístupu ke službě Azure Event Hubs
 Pokaždé, když publikujete nebo spotřebováváte události/data z centra událostí, váš klient se pokouší získat přístup k prostředkům Centra událostí. Každý požadavek na zabezpečený prostředek musí být autorizován, aby služba mohla zajistit, že klient má požadovaná oprávnění k publikování nebo využití dat. 
@@ -39,7 +39,7 @@ Sdílené přístupové podpisy (SAS) pro prostředky Centra událostí poskytuj
 
 Autorizace uživatelů nebo aplikací pomocí tokenu OAuth 2.0 vráceného službou Azure AD poskytuje vynikající zabezpečení a snadné použití oproti sdíleným přístupovým podpisům (SAS). S Azure AD, není nutné ukládat přístupové tokeny s kódem a riskovat potenciální ohrožení zabezpečení. Zatímco můžete i nadále používat sdílené přístupové podpisy (SAS) k udělení jemně odstupňovaného přístupu k prostředkům Centra událostí, Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo se obávat zrušení ohroženého SAS. 
 
-Ve výchozím nastavení jsou všechny prostředky centra událostí zabezpečené a jsou k dispozici pouze pro vlastníka účtu. I když můžete použít některou z výše uvedených strategií autorizace k udělení přístupu klientům k prostředkům Centra událostí. Autorizaci Azure AD podporují jenom prostředky event hubů vytvořené pomocí modelu nasazení Azure Resource Manageru. Společnost Microsoft doporučuje používat Azure AD, pokud je to možné pro maximální zabezpečení a snadné použití.
+Ve výchozím nastavení jsou všechny prostředky centra událostí zabezpečené a jsou k dispozici pouze pro vlastníka účtu. I když můžete použít některou z výše uvedených strategií autorizace k udělení přístupu klientům k prostředkům Centra událostí. Společnost Microsoft doporučuje používat Azure AD, pokud je to možné pro maximální zabezpečení a snadné použití.
 
 Další informace o autorizaci pomocí sas, naleznete [v tématu Autorizace přístupu k prostředkům centra událostí pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md).
 

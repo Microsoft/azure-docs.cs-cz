@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: dcf9a278bfc0ede844f8eb59e3a256e40a47c57d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282422"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519488"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba Azure Import/Export: nejčastější dotazy
 
@@ -99,15 +99,17 @@ Disky můžete do datového centra Azure odesílat pomocí libovolného známéh
 > [!NOTE]
 > Datová centra v Indii vyžadují prohlášení dopis na hlavičkový papír (doručení challan) vrátit jednotky. Chcete-li zajistit požadovaný vstupní průkaz, musíte si také rezervovat vyzvednutí u vybraného operátora a sdílet podrobnosti s datovým centrem.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Existují nějaká omezení s odesláním můj disk mezinárodně?
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>Existují nějaká omezení s dopravou a vrácením mého pohonu v mezinárodním měřítku?
 
 Vezměte prosím na vědomí, že fyzická média, která odesíláte, mohou vyžadovat překročení mezinárodních hranic. Nesete odpovědnost za to, že vaše fyzická média a data budou importována a/nebo exportována v souladu s platnými zákony. Před odesláním fyzického média se obraťte na své poradce a ověřte, zda mohou být vaše média a data legálně odeslána do identifikovaného datového centra. To pomůže zajistit, že se dostane microsoft včas.
+
+Po dokončení nahrávání může proces vrácení jednotek na mezinárodní adresu trvat déle než typické 2-3 dny potřebné pro místní přepravu. Během fáze uvedené na portálu Azure jako balení tým data boxů zajišťuje, že je k dispozici správná dokumentace, aby bylo zajištěno, že zásilka splňuje různé mezinárodní požadavky na import a export.
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Existují nějaké zvláštní požadavky na doručení disků do datového centra?
 
 Požadavky závisí na konkrétní omezení datového centra Azure.
 
-- Existuje několik webů, které vyžadují, aby bylo na parcelu z bezpečnostních důvodů zapsáno číslo Příchozí id datového centra společnosti Microsoft. Před odesláním jednotek nebo disků do datového centraadbops@microsoft.comkontaktujte Azure DataBox Operations ( ) a získejte toto číslo. Bez tohoto čísla bude balíček odmítnut.
+- Existuje několik webů, jako je Austrálie, Německo a jih Velké Británie, které vyžadují, aby se na parcelu z bezpečnostních důvodů zapisovalo číslo Příchozí id datového centra společnosti Microsoft. Před odesláním jednotek nebo disků do datového centraadbops@microsoft.comkontaktujte Azure DataBox Operations ( ) a získejte toto číslo. Bez tohoto čísla bude balíček odmítnut.
 - Datová centra v Indii vyžadují osobní údaje řidiče, například vládní průkaz nebo číslo dokladu. (například PAN, AADHAR, DL), jméno, kontakt a číslo poznávací značky vozidla, abyste získali vstupní propustku brány. Chcete-li se vyhnout zpoždění dodávek, informujte o těchto požadavcích svého operátora.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Při vytváření úlohy je dodací adresa místem, které se liší od umístění účtu úložiště. Co bych měl/a dělat?

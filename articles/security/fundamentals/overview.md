@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045867"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545976"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -60,7 +60,7 @@ V závislosti na modelu cloudové služby je variabilní odpovědnost za to, kdo
 
 Integrované funkce jsou uspořádány do šesti funkčních oblastí: Operace, Aplikace, Úložiště, Sítě, Výpočetní prostředky a Identita. Další podrobnosti o funkcích a možnostech dostupných v platformě Azure v těchto šesti oblastech jsou k dispozici prostřednictvím souhrnných informací.
 
-## <a name="operations"></a>Provoz
+## <a name="operations"></a>Operace
 Tato část obsahuje další informace týkající se klíčových funkcí operací zabezpečení a souhrnné informace o těchto funkcích.
 
 ### <a name="security-and-audit-dashboard"></a>Řídicí panel zabezpečení a auditu
@@ -138,7 +138,7 @@ V konzoli Application Diagnostics lze zobrazit události seskupené následují
 -   Chyby aplikace (Zobrazí se události související s výjimkami.)
 -   Výkon (Zobrazí se události související s výkonem.)
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 Část obsahuje další informace týkající se klíčových funkcí v zabezpečení úložiště Azure a souhrnné informace o těchto funkcích.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
@@ -179,7 +179,7 @@ Pro mnoho organizací je šifrování dat v klidovém stavu povinným krokem k o
 
 Služby úložiště Azure nyní podporují CORS tak, že jakmile nastavíte pravidla CORS pro službu, vyhodnotí se správně ověřený požadavek na službu z jiné domény, aby se zjistilo, zda je povoleno podle pravidel, která jste zadali.
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 Část obsahuje další informace týkající se klíčových funkcí v zabezpečení sítě Azure a souhrnné informace o těchto funkcích.
 
 ### <a name="network-layer-controls"></a>Ovládací prvky síťové vrstvy
@@ -233,11 +233,11 @@ Microsoft [Azure Application Gateway](../../application-gateway/overview.md) pos
 
 ![Application Gateway](./media/overview/azure-security-fig2.png)
 
-Umožňuje optimalizovat produktivitu webové farmy tím, že přeloží ukončení SSL náročné na procesor na aplikační bránu (známé také jako "SSL offload" nebo "SSL bridging"). Poskytuje také další možnosti směrování vrstvy 7, včetně distribuce příchozího provozu s každým robin, spřažení relací založených na souborech cookie, směrování na základě cesty URL a možnost i hostování více webů za jednou aplikační bránou. Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7.
+Umožňuje optimalizovat produktivitu webové farmy převedením ukončení TLS s intenzivním procesorem na aplikační bránu (také známou jako "tls offload" nebo "TLS bridging"). Poskytuje také další možnosti směrování vrstvy 7, včetně distribuce příchozího provozu s každým robin, spřažení relací založených na souborech cookie, směrování na základě cesty URL a možnost i hostování více webů za jednou aplikační bránou. Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7.
 
 Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu.
 
-Aplikace poskytuje mnoho funkcí řadiče pro doručování aplikací (ADC), včetně vyrovnávání zatížení HTTP, spřažení relací na základě souborů cookie, [offloadu ssl (Secure Sockets Layer),](../../application-gateway/tutorial-restrict-web-traffic-powershell.md) sond y vlastního stavu, podpory pro více webů a mnoha dalších.
+Aplikace poskytuje mnoho funkcí řadiče pro doručování aplikací (ADC), včetně vyrovnávání zatížení HTTP, spřažení relací založených na souborech cookie, [zátěže TLS](../../application-gateway/tutorial-restrict-web-traffic-powershell.md), vlastních sond stavu, podpory pro více webů a mnoha dalších.
 
 ### <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
 Brána firewall webových aplikací je funkce [Brány aplikací Azure,](../../application-gateway/overview.md) která poskytuje ochranu webovým aplikacím, které používají aplikační bránu pro standardní funkce Řízení doručování aplikací (ADC). Firewall webových aplikací chrání webové aplikace před většinou z 10 nejčastějších webových hrozeb podle OWASP.
@@ -323,7 +323,7 @@ Aktualizace oprav jsou základem pro hledání a řešení potenciálních probl
 [Security Center](../../security-center/security-center-intro.md) vám pomůže předcházet, zjišťovat a reagovat na hrozby a poskytuje lepší přehled o zabezpečení vašich prostředků Azure a kontrolu nad tím. Poskytuje integrované monitorování zabezpečení a správu zásad v rámci vašich předplatných Azure, pomáhá odhalovat hrozby, které by jinak mohly zůstat bez povšimnutí, a spolupracuje s širokým ekosystémem řešení zabezpečení.
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
-Zabezpečení systémů, aplikací a dat začíná ovládacími prvky přístupu založenými na identitě. Funkce správy identit a přístupu, které jsou integrovány do obchodních produktů a služeb společnosti Microsoft, pomáhají chránit vaše organizační a osobní údaje před neoprávněným přístupem a zároveň je zpřístupní oprávněným uživatelům kdykoli a kdekoli, kde se nacházejí potřebovat.
+Zabezpečení systémů, aplikací a dat začíná ovládacími prvky přístupu založenými na identitě. Funkce správy identit a přístupu, které jsou integrovány do obchodních produktů a služeb společnosti Microsoft, pomáhají chránit vaše organizační a osobní informace před neoprávněným přístupem a zároveň je zpřístupní oprávněným uživatelům kdykoli a kdekoli je potřebují.
 
 ### <a name="secure-identity"></a>Zabezpečená identita
 Společnost Microsoft používá ke správě identity a přístupu několik postupů a technologií zabezpečení ve svých produktech a službách.

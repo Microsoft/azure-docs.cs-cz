@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 75cef47c1ed2b6da054442a4a1215141e67ad1b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498571"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545663"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
 
@@ -219,7 +219,7 @@ Rozhraní API Azure Cosmos DB pro MongoDB je vrstva kompatibility drátových pr
 
 Nejrychlejší způsob, jak se připojit k databázi Cosmos pomocí rozhraní API Azure Cosmos DB pro MongoDB, je přejít na [portál Azure](https://portal.azure.com). Přejděte na svůj účet a v levé navigační nabídce klikněte na **Rychlý start**. Rychlý start je nejlepší způsob, jak získat fragmenty kódu pro připojení k databázi.
 
-Azure Cosmos DB vynucuje přísné požadavky na zabezpečení a standardy. Účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci přes SSL, takže nezapomeňte použít TLSv1.2.
+Azure Cosmos DB vynucuje přísné požadavky na zabezpečení a standardy. Účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci prostřednictvím tls, takže nezapomeňte použít TLSv1.2.
 
 Další informace najdete [v tématu Připojení k databázi Cosmos pomocí rozhraní API Azure Cosmos DB pro MongoDB](connect-mongodb-account.md).
 

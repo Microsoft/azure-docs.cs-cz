@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668753"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520745"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -76,7 +76,7 @@ Pokud žádný z těchto kroků nefunguje, jsou k dispozici také následující
 | --- | --- |
 | 2 | Pro skript omsadmin je k dispozici neplatná možnost. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` pro použití. |
 | 3 | Neplatná konfigurace poskytnutá skriptu omsadmin. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` pro použití. |
-| 4 | Pro skript omsadmin je k dispozici neplatný proxy server. Ověřte proxy server a podívejte se na naši [dokumentaci pro použití http proxy](log-analytics-agent.md#network-firewall-requirements). |
+| 4 | Pro skript omsadmin je k dispozici neplatný proxy server. Ověřte proxy server a podívejte se na naši [dokumentaci pro použití http proxy](log-analytics-agent.md#firewall-requirements). |
 | 5 | 403 CHYBA HTTP přijatá z Azure Monitoru. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
 | 6 | Z Azure Monitoru byla přijata chyba HTTP, která nebyla 200. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
 | 7 | Nelze se připojit k Azure Monitoru. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
@@ -157,15 +157,8 @@ Pod výstupní plugin, odkomentujte následující `#` část odstraněním v p�
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. V části [Aktualizace nastavení proxy serveru](agent-manage.md#update-proxy-settings) ověřte, zda jste agenta správně nakonfigurovali ke komunikaci prostřednictvím proxy serveru.    
-* Zkontrolujte, zda jsou na seznamu povolených následujících koncových bodů Azure Monitoru:
 
-    |Prostředek agenta| Porty | Směr |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | Přístav 443| Příchozí a odchozí |  
-    |*.oms.opinsights.azure.com | Přístav 443| Příchozí a odchozí |  
-    |*.blob.core.windows.net | Přístav 443| Příchozí a odchozí |  
-
-    Pokud plánujete použít pracovník hybridní sady Runbook Azure Automation pro připojení a registraci ke službě Automation a k použití runbooků nebo řešení pro správu ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v [části Konfigurace sítě pro pracovníka hybridní sady Runbook](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
+3. Zkontrolujte, zda jsou koncové body popsané v seznamu [požadavků síťové brány firewall](log-analytics-agent.md#firewall-requirements) Azure Monitor správně přidány do seznamu povolených položek. Pokud používáte Azure Automation, jsou propojeny také nezbytné kroky konfigurace sítě výše.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problém: Při pokusu o napalubě se zobrazí chyba 403
 

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb96cb32c05d2ba3fbd38e72c16540d947436117
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612518"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519071"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Kurz: Vytvoření odchozího vztahu důvěryhodnosti doménové struktury pro místní doménu ve službě Azure Active Directory Domain Services (preview)
 
@@ -59,7 +59,7 @@ Než nakonfigurujete vztah důvěryhodnosti doménové struktury ve službě Azu
 
 * Používejte soukromé IP adresy. Nespoléhejte na službu DHCP s přiřazením dynamické adresy IP.
 * Vyhněte se překrývání adresních prostorů IP, které umožní partnerský vztah a směrování virtuální chod virtuální sítě pro úspěšnou komunikaci mezi Azure a místním prostředím.
-* Virtuální síť Azure potřebuje podsíť brány ke konfiguraci připojení VPN site-to-site (S2S) nebo ExpressRoute
+* Virtuální síť Azure potřebuje podsíť brány ke konfiguraci připojení VPN Azure [site-to-site (S2S)][vpn-gateway] nebo [ExpressRoute][expressroute]
 * Vytvořte podsítě s dostatkem ADRES IP pro podporu vašeho scénáře.
 * Ujistěte se, že Azure AD DS má vlastní podsíť, nesdílejte tuto podsíť virtuální sítě s virtuálními počítači a službami aplikací.
 * Partnerské virtuální sítě nejsou přenosné.
@@ -74,7 +74,7 @@ Chcete-li správně vyřešit spravovanou doménu Azure AD DS z místního prost
 1. Vybrat **možnost Start | Nástroje pro správu | Služba DNS**
 1. Vyberte dns server vpravo, například *myAD01*, vyberte **Vlastnosti**
 1. Zvolte **Předávání ,** pak **Upravit** a přidejte další předávání.
-1. Přidejte IP adresy spravované domény Azure AD DS, například *10.0.1.4* a *10.0.1.5*.
+1. Přidejte IP adresy spravované domény Azure AD DS, například *10.0.2.4* a *10.0.2.5*.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Vytvoření vztahu důvěryhodnosti příchozí doménové struktury v místní doméně
 
@@ -85,10 +85,6 @@ Chcete-li nakonfigurovat příchozí vztah důvěryhodnosti v místní doméně 
 1. Vybrat **možnost Start | Nástroje pro správu | Domény a vztahy důvěryhodnosti služby Active Directory**
 1. Doména vpravo, například *onprem.contoso.com*, vyberte **Vlastnosti**
 1. Zvolte **Karta Vztahy důvěryhodnosti** a potom **Nový vztah důvěryhodnosti.**
-
-   > [!NOTE]
-   > Pokud možnost **Nabídka Vztahy důvěryhodnosti** nevidíte, zaškrtněte v části **Vlastnosti** *typu Doménová struktura*. Pouze *doménové* struktury prostředků mohou vytvářet vztahy důvěryhodnosti. Pokud je typ doménové struktury *Uživatel*, nelze vytvořit vztahy důvěryhodnosti. V současné době neexistuje žádný způsob, jak změnit typ doménové struktury spravované domény Azure AD DS. Je třeba odstranit a znovu vytvořit spravovanou doménu jako doménovou strukturu prostředků.
-
 1. Zadejte název v názvu domény Azure AD DS, například *aaddscontoso.com*, a pak vyberte **Další.**
 1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury**a poté vytvořte **jednosměrný: příchozí** vztah důvěryhodnosti.
 1. Zvolte, zda chcete vytvořit vztah důvěryhodnosti pouze pro **tuto doménu**. V dalším kroku vytvoříte vztah důvěryhodnosti na webu Azure Portal pro spravovanou doménu Azure AD DS.
@@ -104,12 +100,16 @@ Pokud chcete vytvořit odchozí vztah důvěryhodnosti pro spravovanou doménu A
 
 1. Na webu Azure Portal vyhledejte a vyberte **služby Azure AD Domain Services**a vyberte spravovanou doménu, například *aaddscontoso.com*
 1. V nabídce na levé straně spravované domény Azure AD DS vyberte **Vztahy důvěryhodnosti**a pak zvolte **+ Přidat** vztah důvěryhodnosti.
+
+   > [!NOTE]
+   > Pokud možnost **Nabídka Vztahy důvěryhodnosti** nevidíte, zaškrtněte v části **Vlastnosti** *typu Doménová struktura*. Pouze *doménové* struktury prostředků mohou vytvářet vztahy důvěryhodnosti. Pokud je typ doménové struktury *Uživatel*, nelze vytvořit vztahy důvěryhodnosti. V současné době neexistuje žádný způsob, jak změnit typ doménové struktury spravované domény Azure AD DS. Je třeba odstranit a znovu vytvořit spravovanou doménu jako doménovou strukturu prostředků.
+
 1. Zadejte zobrazovaný název, který identifikuje váš vztah důvěryhodnosti, a potom místní důvěryhodný název DNS doménové struktury, například *onprem.contoso.com*
 1. Zadejte stejné heslo důvěryhodnosti, které bylo použito při konfiguraci vztahu důvěryhodnosti příchozí doménové struktury pro místní doménu služby AD DS v předchozí části.
-1. Poskytněte alespoň dva servery DNS pro místní doménu služby AD DS, například *10.0.2.4* a *10.0.2.5*
+1. Poskytněte alespoň dva servery DNS pro místní doménu služby AD DS, například *10.1.1.4* a *10.1.1.5*
 1. Až budete připraveni, **uložte** vztah důvěryhodnosti odchozí doménové struktury
 
-    [Vytvoření odchozího vztahu důvěryhodnosti doménové struktury na webu Azure Portal](./media/create-forest-trust/portal-create-outbound-trust.png)
+    ![Vytvoření odchozího vztahu důvěryhodnosti doménové struktury na webu Azure Portal](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
 ## <a name="validate-resource-authentication"></a>Ověřit ověřování prostředků
 
@@ -126,11 +126,7 @@ Následující běžné scénáře umožňují ověřit, že vztah důvěryhodno
 
 K doméně prostředků Azure AD DS byste měli mít připojenou virtuální počítač Windows Serveru. Tento virtuální počítač slouží k testování místního uživatele, který se může na virtuálním počítači ověřit.
 
-1. Připojte se k virtuálnímu počítači Windows Server, který je připojen k doménové struktuře prostředků Azure AD DS pomocí vzdálené plochy a přihlašovacích údajů správce služby Azure AD DS. Pokud se zobrazí chyba NLA (Network Level Authentication), zkontrolujte, zda použitý uživatelský účet není uživatelským účtem domény.
-
-    > [!NOTE]
-    > Pokud se chcete bezpečně připojit k virtuálním počítačům, které jsou připojeny ke službám Azure AD Domain Services, můžete použít [hostitelskou službu Azure Bastion v](https://docs.microsoft.com/azure/bastion/bastion-overview) podporovaných oblastech Azure.
-
+1. Připojte se k virtuálnímu počítači Windows Server, který je připojen k doménové struktuře prostředků Azure AD DS pomocí [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) a přihlašovacích údajů správce Služby Azure AD DS.
 1. Otevřete příkazový řádek `whoami` a pomocí příkazu zobrazte rozlišující název aktuálně ověřeného uživatele:
 
     ```console
@@ -152,10 +148,7 @@ Pomocí virtuálního počítače Windows Server se připojil k doménové struk
 
 #### <a name="enable-file-and-printer-sharing"></a>Povolení sdílení souborů a tiskáren
 
-1. Připojte se k virtuálnímu počítači Windows Server, který je připojen k doménové struktuře prostředků Azure AD DS pomocí vzdálené plochy a přihlašovacích údajů správce služby Azure AD DS. Pokud se zobrazí chyba NLA (Network Level Authentication), zkontrolujte, zda použitý uživatelský účet není uživatelským účtem domény.
-
-    > [!NOTE]
-    > Pokud se chcete bezpečně připojit k virtuálním počítačům, které jsou připojeny ke službám Azure AD Domain Services, můžete použít [hostitelskou službu Azure Bastion v](https://docs.microsoft.com/azure/bastion/bastion-overview) podporovaných oblastech Azure.
+1. Připojte se k virtuálnímu počítači Windows Server, který je připojen k doménové struktuře prostředků Azure AD DS pomocí [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) a přihlašovacích údajů správce Služby Azure AD DS.
 
 1. Spusťte **Nastavení systému Windows**a vyhledejte a vyberte **Centrum síťových připojení a sdílení**.
 1. Zvolte možnost **Změnit upřesňující** nastavení sdílení.
@@ -221,3 +214,5 @@ Další rámcové informace o typech doménových struktur ve službě Azure [Ho
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
 [howto-change-sku]: change-sku.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[expressroute]: ../expressroute/expressroute-introduction.md

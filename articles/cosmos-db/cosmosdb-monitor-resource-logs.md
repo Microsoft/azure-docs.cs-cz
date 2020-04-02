@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
-ms.openlocfilehash: 184fc65dae57292243be9abdca71a129512b3d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5a0b0f71a72ea76940450f73354fda230e09c5c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252057"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521051"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování dat Azure Cosmos DB pomocí diagnostických nastavení v Azure
 
@@ -34,25 +34,31 @@ Metriky platformy a protokoly aktivit jsou shromažďovány automaticky, zatímc
 
  * **DataPlaneRequests**: Tuto možnost vyberte, chcete-li protokolovat back-endové požadavky ke všem rozhraním API, která zahrnují účty SQL, Graph, MongoDB, Cassandra a Table API v Azure Cosmos DB. Klíčové vlastnosti, `Requestcharge`které `statusCode` `clientIPaddress`je `partitionID`třeba poznamenat, jsou: , , a .
 
-    ```
+    ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
     ```
 
-* **MongoRequests**: Tuto možnost vyberte, chcete-li protokolovat požadavky iniciované uživatelem z front-endu, aby se zolíky zobrazoval požadavky na rozhraní API služby Azure Cosmos DB pro MongoDB, tento typ protokolu není k dispozici pro jiné účty rozhraní API. Požadavky MongoDB se zobrazí v MongoRequests, stejně jako DataPlaneRequests. Klíčové vlastnosti, `Requestcharge`které `opCode`je třeba poznamenat, jsou: , .
+* **MongoRequests**: Tuto možnost vyberte, chcete-li protokolovat požadavky iniciované uživatelem z front-endu, aby se zolíky zobrazovaly požadavky na rozhraní API služby Azure Cosmos DB pro MongoDB. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, `Requestcharge`které `opCode`je třeba poznamenat, jsou: , . Když povolíte MongoRequests v protokolech diagnostiky, nezapomeňte vypnout DataPlaneRequests. U každého požadavku na rozhraní API by se udál jeden protokol.
 
-    ```
+    ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
+* **CassandraRequests**: Tuto možnost vyberte, chcete-li protokolovat požadavky iniciované uživatelem z front-endu, aby se zobrazovaly požadavky na rozhraní API služby Azure Cosmos DB pro Cassandra. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, `operationName`které `requestCharge` `piiCommandText`je třeba poznamenat, jsou , , . Když povolíte CassandraRequests v protokolech diagnostiky, ujistěte se, že vypnout DataPlaneRequests. U každého požadavku na rozhraní API by se udál jeden protokol.
+
+   ```json
+   { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
+   ```
+
 * **QueryRuntimeStatistics**: Tuto možnost vyberte, chcete-li protokolovat text dotazu, který byl spuštěn. Tento typ protokolu je k dispozici pouze pro účty rozhraní SQL API.
 
-    ```
+    ```json
     { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
     ```
 
 * **PartitionKeyStatistics**: Tuto možnost vyberte, chcete-li protokolovat statistiky klíčů oddílů. To je aktuálně reprezentován o velikosti úložiště (KB) klíče oddílu. Podívejte se na [řešení problémů pomocí](#diagnostic-queries) diagnostické dotazy Azure části tohoto článku. Například dotazy, které používají "PartitionKeyStatistics". Protokol je vydáván proti první tři klíče oddílu, které zabírají většinu úložiště dat. Tento protokol obsahuje data, jako je například ID předplatného, název oblasti, název databáze, název kolekce, klíč oddílu a velikost úložiště v KB.
 
-    ```
+    ```json
     { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
     ```
 

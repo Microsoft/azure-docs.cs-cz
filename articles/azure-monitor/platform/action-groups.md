@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bc191bb27ebb0bac631ef5cfa8ddc34bbd8214e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249513"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520891"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definované vlastníkem předplatného Azure. Výstrahy Azure Monitor a Stav služby používají skupiny akcí k upozornění uživatelů, že se aktivovala výstraha. Různé výstrahy mohou používat stejnou skupinu akcí nebo různé skupiny akcí v závislosti na požadavcích uživatele. V předplatném můžete nakonfigurovat až 2 000 skupin akcí.
@@ -52,7 +52,7 @@ Informace o tom, jak pomocí šablon Azure Resource Manageru nakonfigurovat skup
 
     1. **Název**: Zadejte jedinečný identifikátor této akce.
 
-    1. **Typ akce:** Vyberte e-mail/SMS/Push/Voice, aplikace logiky, webhook, ITSM nebo automatizační sada Runbook.
+    1. **Typ akce:** Vyberte automatizační runbook, funkci Azure, roli správce prostředků Azure e-mailu, e-mail/SMS/Push/Hlas, ITSM, logickou aplikaci, secure webhook, webhook.
 
     1. **Podrobnosti:** Na základě typu akce zadejte telefonní číslo, e-mailovou adresu, identifikátor URI webhooku, aplikaci Azure, připojení ITSM nebo runbook Automation. Pro akci ITSM dále zadejte **pracovní položku** a další pole, která nástroj ITSM vyžaduje.
     

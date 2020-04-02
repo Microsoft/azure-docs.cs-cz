@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed64ee3d0e024c32be08ed4e010a6933033c3f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476514"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529338"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -251,6 +251,8 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Dočasné disky operačního systému.
 - Šifrování sdílených/distribuovaných souborových systémů, jako je (ale nejen) DFS, GFS, DRDB a CephFS.
 - Přesunutí šifrovaných virtuálních aplikací do jiného předplatného.
+- Virtuální počítače Gen2 (viz: [Podpora pro virtuální počítače generace 2 v Azure)](generation-2.md#generation-1-vs-generation-2-capabilities)
+- Virtuální zařízení řady Lsv2 (viz: [Řada Lsv2](../lsv2-series.md))
 
 ## <a name="next-steps"></a>Další kroky
 

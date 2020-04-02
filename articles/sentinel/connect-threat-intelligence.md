@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588038"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529101"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Připojení dat od poskytovatelů analýzy hrozeb
 
@@ -42,6 +42,10 @@ Indikátory hrozeb můžete streamovat do Azure Sentinelu pomocí jednoho z prod
 - [MISP Open Source Threat Intelligence Platform](https://www.misp-project.org/)
     
     Ukázkový skript, který poskytuje klientům instance MISP pro migraci indikátorů hrozeb do rozhraní Microsoft Graph Security API, naleznete [v tématu MISP na Microsoft Graph Security Script](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP).
+
+- [Anomali ThreatStream](https://www.anomali.com/products/threatstream)
+
+    Informace o stažení integrátoru a rozšíření ThreatStream a pokynů pro připojení inteligentních informací ThreatStream k rozhraní Microsoft Graph Security API najdete na stránce [stažené soubory ThreatStream.](https://ui.threatstream.com/downloads)
 
 - [Palo Alto sítě MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
     

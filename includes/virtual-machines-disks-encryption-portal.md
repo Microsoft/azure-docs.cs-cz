@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3ba5d74aa245fbcd9d43f2b4398387d7f59e202c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299488"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520770"
 ---
 ### <a name="portal"></a>Portál
 
@@ -42,7 +42,7 @@ Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat v
 
     ![Snímek obrazovky podokna Nastavení prostředků trezoru klíčů Zobrazí nastavení generovat/importovat.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
-1. Ponechte **typ klíče** nastavený na **RSA** a **velikost klíče RSA** nastavenou na **2080**.
+1. Ponechte **typ klíče** nastavený na **RSA** a **velikost klíče RSA** nastavenou na **2048**.
 1. Vyplňte zbývající výběry podle potřeby a pak vyberte **Vytvořit**.
 
     ![Snímek obrazovky s vytvořením klíče, které se zobrazí po výběru tlačítka generovat nebo importovat](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
