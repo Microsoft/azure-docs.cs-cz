@@ -1,6 +1,6 @@
 ---
 title: Použití štítků k přístrojovým dotazům
-description: Tipy pro použití popisků k instrumentaci dotazů v Azure SQL Data Warehouse pro vývoj řešení.
+description: Tipy pro použití popisků k instrumentaci dotazů v fondu Synapse SQL pro vývoj řešení.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,19 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 828e4a406cd0fb12877af44263ab1f338c20850c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c1a4ffcab3d10f1dc91ce036e995ae0026a0d718
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351680"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619015"
 ---
-# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Použití popisků k instrumentaci dotazů v Azure SQL Data Warehouse
-Tipy pro použití popisků k instrumentaci dotazů v Azure SQL Data Warehouse pro vývoj řešení.
+# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Použití štítků k instrumentaci dotazů ve fondu Synapse SQL
+Součástí tohoto článku jsou tipy pro vývoj řešení pomocí popisků instrumentovat dotazy ve fondu SQL.
 
 
 ## <a name="what-are-labels"></a>Co jsou štítky?
-SQL Data Warehouse podporuje koncept nazývaný popisky dotazů. Než se vydáte do jakékoli hloubky, podívejme se na příklad:
+Fond SQL podporuje koncept nazývaný popisky dotazů. Než se vydáte do jakékoli hloubky, podívejme se na příklad:
 
 ```sql
 SELECT *
@@ -32,11 +32,13 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Poslední řádek označí řetězec Popisek mého dotazu na dotaz. Tato značka je zvláště užitečné, protože popisek je dotazovat prostřednictvím DMVs. Dotazování na popisky poskytuje mechanismus pro vyhledání problémových dotazů a pomáhá identifikovat průběh prostřednictvím spuštění ELT.
+Poslední řádek označí řetězec Popisek mého dotazu na dotaz. Tato značka je užitečná, protože popisek je možné dotazovat prostřednictvím dmvs. 
 
-Dobrá konvence pojmenování opravdu pomáhá. Například spuštění popisku s PROJECT, PROCEDURE, STATEMENT nebo COMMENT pomáhá jednoznačně identifikovat dotaz mezi veškerým kódem ve zdrojovém kódu.
+Dotazování na popisky poskytuje mechanismus pro vyhledání problémových dotazů a pomáhá identifikovat průběh prostřednictvím spuštění ELT.
 
-Následující dotaz používá dynamické zobrazení správy k vyhledávání podle popisku.
+Dobrá konvence pojmenování opravdu pomáhá. Například spuštění popisku s PROJECT, PROCEDURE, STATEMENT nebo COMMENT jednoznačně identifikuje dotaz mezi veškerý kód ve zdrojovém kódu.
+
+Následující dotaz používá dynamické zobrazení správy k vyhledávání podle popisku:
 
 ```sql
 SELECT  *

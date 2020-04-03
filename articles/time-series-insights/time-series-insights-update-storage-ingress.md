@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246188"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618321"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Úložiště dat a příchozí přenos dat ve verzi Azure Time Series Insights Preview
 
@@ -40,7 +40,7 @@ Konfigurace klíče, formátování a doporučené postupy jsou shrnuty níže.
 Azure Time Series Insights Preview podporuje následující zdroje událostí:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
-- [Centra událostí Azure](../event-hubs/event-hubs-about.md)
+- [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
 Azure Time Series Insights Preview podporuje maximálně dva zdroje událostí na instanci.
 
@@ -91,7 +91,7 @@ Obecně platí, že míry příchozího přenosu dat jsou považovány za faktor
 
 *  **Počet zařízení** × **četnost emisí událostí** × velikost každé **události**.
 
-Ve výchozím nastavení může náhled Time Series Insights ingestovat příchozí data rychlostí **až 1 mb/s za sekundu (Mb/s) na prostředí Time Series Insights**.
+Ve výchozím nastavení může náhled Time Series Insights ingestovat příchozí data rychlostí **až 1 mb/s za sekundu (Mb/s) na prostředí Time Series Insights**. Existují další omezení [na oddíl rozbočovače](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits).
 
 > [!TIP] 
 > * Na požádání lze poskytnout podporu prostředí pro ingestování rychlostí až 16 Mb/s.
@@ -99,7 +99,7 @@ Ve výchozím nastavení může náhled Time Series Insights ingestovat přícho
  
 * **Příklad 1:**
 
-    Společnost Contoso Shipping má 100 000 zařízení, která vyzařují událost třikrát za minutu. Velikost události je 200 bajtů. Jako zdroj událostí Time Series Insights používají Centrum událostí se čtyřmi oddíly.
+    Společnost Contoso Shipping má 100 000 zařízení, která vyzařují událost třikrát za minutu. Velikost události je 200 bajtů. Používají službu Iot Hub se čtyřmi oddíly jako zdroj událostí Time Series Insights.
 
     * Míra ingestování pro jejich prostředí Time Series Insights by byla: **100 000 zařízení * 200 bajtů/událost * (3/60 událostí/s) = 1 Mb/s**.
     * Rychlost ingestování na oddíl by byla 0,25 Mb/s.
@@ -107,11 +107,11 @@ Ve výchozím nastavení může náhled Time Series Insights ingestovat přícho
 
 * **Příklad 2:**
 
-    Contoso Fleet Analytics má 60 000 zařízení, která vyzařují událost každou sekundu. Jako zdroj událostí Time Series Insights používají počet oddílů služby IoT Hub 24 4. Velikost události je 200 bajtů.
+    Contoso Fleet Analytics má 60 000 zařízení, která vyzařují událost každou sekundu. Používají centrum událostí s počtem oddílů 4 jako zdroj událostí Time Series Insights. Velikost události je 200 bajtů.
 
-    * Rychlost požití prostředí by byla: **20 000 zařízení * 200 bajtů/událost * 1 událost/s = 4 Mb/s**.
-    * Sazba za oddíl by byla 1 Mb/s.
-    * Contoso Fleet Analytics může odeslat žádost time series insights prostřednictvím portálu Azure, aby zvýšila míru přihlašování pro své prostředí.
+    * Rychlost požití prostředí by byla: **60 000 zařízení * 200 bajtů/událost * 1 událost/s = 12 Mb/s**.
+    * Rychlost na oddíl by byla 3 MB/s.
+    * Míra přihlašování společnosti Contoso Fleet Analytics je nad limity prostředí a oddílů. Můžou odeslat žádost na Time Series Insights prostřednictvím portálu Azure, aby zvýšili rychlost ingestování pro své prostředí a vytvořili Centrum událostí s dalšími oddíly, které bude v rámci limitů náhledu.
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>Oddíly rozbočovače a omezení na oddíl
 

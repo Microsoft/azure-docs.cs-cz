@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c8ef6a87e839e6d8dfb296e7b24f3d0d95843d1c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675463"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586593"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Úvodní příručka: Povolení SSH a RDP přes datový proud zařízení služby IoT Hub pomocí proxy aplikace Jazyka C# (preview)
 
@@ -30,7 +30,7 @@ Tento článek nejprve popisuje nastavení pro SSH (pomocí portu 22) a potom po
 
 Následující obrázek znázorňuje, jak místní a místní proxy aplikace zařízení v této ukázce umožňují koncové připojení mezi klientem SSH a procesy demonu SSH. Zde předpokládáme, že daemon běží na stejném zařízení jako místní proxy aplikace zařízení.
 
-![Nastavení místní proxy aplikace](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![Nastavení místní proxy aplikace](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
 
 1. Aplikace proxy místní služby se připojí k centru IoT a zahájí datový proud zařízení do cílového zařízení.
 

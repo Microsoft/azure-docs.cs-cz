@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d0b32fb2b52d2dbb126053247cff83f05781ba5e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 44dbc03a41cfde94c344ae331b21d7536778050c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350871"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619101"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>Doporučené postupy pro SQL Analytics v Azure Synapse Analytics (dříve SQL DW)
 
-Tento článek je kolekce osvědčených postupů, které vám pomohou dosáhnout optimálního výkonu z nasazení [SQL Analytics.](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)  Účelem tohoto článku je poskytnout vám některé základní pokyny a upozornit na důležité oblasti zaměření.  Každá část vás seznámí s konceptem a pak vás naukazuje na podrobnější články, které pokrývají koncept do větší hloubky. Pořadí témat je v pořadí podle důležitosti. 
+Tento článek je kolekce osvědčených postupů, které vám pomohou dosáhnout optimálního výkonu z nasazení [SQL Analytics.](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)  Účelem tohoto článku je poskytnout vám některé základní pokyny a upozornit na důležité oblasti zaměření.  Každá část vás seznámí s konceptem a pak vás naukazuje na podrobnější články, které pokrývají koncept do větší hloubky. Pořadí témat je v pořadí podle důležitosti. 
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Snižte náklady pomocí pozastavení a škálování
 
@@ -115,7 +115,7 @@ Když se řádky zapisují do tabulek columnstore při zatížení paměti, mů�
 
 Vzhledem k tomu, že vysoce kvalitní segmenty columnstore jsou důležité, je vhodné použít ID uživatelů, které jsou ve střední nebo velké třídy prostředků pro načítání dat. Použití [nižšíjednotky datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) znamená, že chcete přiřadit větší třídu prostředků pro načítacího uživatele.
 
-Vzhledem k tomu, columnstore tabulky obecně nebude tlačit data do segmentu komprimované columnstore, dokud existuje více než 1 milion řádků na tabulku a každá tabulka SQL Analytics je rozdělena do 60 tabulek, jako pravidlo, columnstore tabulky nebudou mít prospěch dotazu, pokud tabulka má více než 60 milionů řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  
+Vzhledem k tomu, columnstore tabulky obecně nebude nabízená data do segmentu komprimované columnstore, dokud existuje více než 1 milion řádků na tabulku a každá tabulka SQL Analytics je rozdělena do 60 tabulek, jako pravidlo, columnstore tabulky nebude mít prospěch dotazu, pokud tabulka obsahuje více než 60 milionů řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  
 
 Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud má tabulka 100 oddílů, bude muset mít alespoň 6 miliard řádků, abyste využili výhod clusterovaného úložiště sloupců (60 distribucí × 100 oddílů × 1 milion řádků).  
 

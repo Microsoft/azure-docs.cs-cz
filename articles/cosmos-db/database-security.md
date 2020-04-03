@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537325"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619130"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – Přehled
 
@@ -48,7 +48,7 @@ Doporučujeme následující kontrolní seznam požadavků, na kterých chcete p
 A i když se to může zdát zřejmé, nedávné [rozsáhlé narušení databáze](https://thehackernews.com/2017/01/mongodb-database-security.html) nám připomínají jednoduchý, ale kritický význam následujících požadavků:
 
 - Opravené servery, které jsou průběžně aktuální
-- HTTPS ve výchozím nastavení/Šifrování SSL
+- HTTPS ve výchozím nastavení/Šifrování TLS
 - Účty pro správu se silnými hesly
 
 ## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Jak Azure Cosmos DB zabezpečuje mou databázi
@@ -76,7 +76,7 @@ Pojďme se podívat do každého z nich podrobně.
 |Šifrování HTTPS/SSL/TLS|Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB také podporuje TLS 1.2.<br>Je možné vynutit minimální verzi TLS na straně serveru. Chcete-li tak [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)učinit, obraťte se na společnost .|
 |Šifrování v klidovém stavu|Všechna data uložená do Azure Cosmos DB se šifrují v klidovém stavu. Další informace o [šifrování Azure Cosmos DB v klidovém stavu](./database-encryption-at-rest.md)|
 |Opravené servery|Jako spravovaná databáze Azure Cosmos DB eliminuje potřebu spravovat a opravovat servery, což se dělá za vás, automaticky.|
-|Účty pro správu se silnými hesly|Je těžké uvěřit, že je třeba dokonce zmínit tento požadavek, ale na rozdíl od některých našich konkurentů, je nemožné mít účet pro správu bez hesla v Azure Cosmos DB.<br><br> Zabezpečení prostřednictvím ověřování na základě tajných kódů SSL a HMAC je ve výchozím nastavení.|
+|Účty pro správu se silnými hesly|Je těžké uvěřit, že je třeba dokonce zmínit tento požadavek, ale na rozdíl od některých našich konkurentů, je nemožné mít účet pro správu bez hesla v Azure Cosmos DB.<br><br> Zabezpečení prostřednictvím ověřování na základě tajných kódů TLS a HMAC je ve výchozím nastavení.|
 |Certifikace zabezpečení a ochrany dat| Nejaktuálnější seznam certifikací najdete na celkovém [webu dodržování předpisů Azure](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a také na nejnovějším dokumentu o dodržování předpisů [Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) se všemi certifikacemi (vyhledejte Cosmos). Pro více zaměřené přečtěte si podívejte se na 25 dubna 2018 post [Azure #CosmosDB: Secure, private, kompatibilní, který zahrnuje SOCS 1/2 Typ 2, HITRUST, PCI DSS Úroveň 1, ISO 27001, HIPAA, FedRAMP High a mnoho dalších.
 
 Následující snímek obrazovky ukazuje, jak můžete ke sledování svého ![účtu pomocí protokolů protokolů auditu a protokolů aktivit: Protokoly aktivit pro Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)

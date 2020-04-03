@@ -5,18 +5,18 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368447"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617428"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry ze služby Azure Kubernetes Service
 
-Když používáte Azure Container Registry (ACR) se službou Azure Kubernetes Service (AKS), je třeba vytvořit mechanismus ověřování. Tento článek obsahuje příklady konfigurace ověřování mezi těmito dvěma službami Azure.
+Když používáte Azure Container Registry (ACR) se službou Azure Kubernetes Service (AKS), je třeba vytvořit mechanismus ověřování. Tento článek obsahuje příklady konfigurace ověřování mezi těmito dvěma službami Azure. 
 
-Integraci AKS do ACR můžete nastavit v několika jednoduchých příkazech pomocí azure CLI.
+Integraci AKS do ACR můžete nastavit v několika jednoduchých příkazech pomocí azure CLI. Tato integrace přiřadí roli AcrPull instančnímu objektu přidruženému k clusteru AKS.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -33,7 +33,7 @@ Integrací AKS a ACR můžete nastavit při počátečním vytvoření clusteru 
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-MYACR=myContainerRegistry
+$MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic

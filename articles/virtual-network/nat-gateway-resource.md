@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 405d9bc09462f2940567080ec86775baf066d70d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473292"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584564"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -67,19 +67,18 @@ Následující příklad je úryvek ze šablony Azure Resource Manager.  Tato š
 - **natgatewayname** - Název brány NAT.
 - **umístění** – oblast Azure, kde se nachází prostředek.
 - **publicipname** - Název odchozí veřejné IP adresy přidružené k bráně NAT.
-- **publicipprefixname** - Název odchozí veřejné IP předpony přidružené k bráně NAT.
 - **vnetname** - Název virtuální sítě.
 - **podprogram -** Název podsítě přidružené k bráně NAT.
 
 Celkový počet adres IP poskytnutých všemi prostředky IP adresy a předpony nesmí překročit celkem 16 IP adres. Libovolný počet IP adres mezi 1 a 16 je povolen.
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="256-281":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="81-96":::
 
 Po vytvoření prostředku brány NAT jej lze použít v jedné nebo více podsítích virtuální sítě. Určete, které podsítě používají tento prostředek brány NAT. Brána NAT není schopna překlíkem více než jednu virtuální síť. Není nutné přiřadit stejnou bránu NAT všem podsítím virtuální sítě. Jednotlivé podsítě lze konfigurovat s různými prostředky brány NAT.
 
 Scénáře, které nepoužívají zóny dostupnosti, budou místní (není zadána žádná zóna). Pokud používáte zóny dostupnosti, můžete určit zónu pro izolujeTE NAT na určitou zónu. Redundance zóny není podporována. Projděte si [zóny dostupnosti NAT](#availability-zones).
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="225-255" highlight="239-251":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
 
 Brány NAT jsou definovány s vlastností v podsíti v rámci virtuální sítě. Toky vytvořené virtuálními počítači v **podsíťovém názvu** virtuální **sítě** virtuální sítě budou používat bránu NAT. Všechna odchozí připojení budou používat IP adresy přidružené k **natgatewayname** jako zdrojovou IP adresu.
 

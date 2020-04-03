@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Načtení dat taxíku v New Yorku'
-description: Kurz používá portál Azure a SQL Server Management Studio k načtení dat taxislužby New York z globálního objektu blob Azure pro SQL Analytics.
+description: Kurz používá portál Azure a SQL Server Management Studio k načtení dat newyorského taxikáře z globálního objektu blob Azure pro Synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f1614538f6ab735720d090f66fee0e017e96cf72
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e17b5be0f4f3d568bd5ec836659c4444b384b2fa
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346725"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583746"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Kurz: Načtení datové sady Taxicab v New Yorku
 
@@ -148,7 +148,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Typ serveru    | Databázový stroj                            | Tato hodnota se vyžaduje.                                       |
     | Název serveru    | Plně kvalifikovaný název serveru            | Název by měl být něco takového: **mynewserver-20180430.database.windows.net**. |
-    | Ověřování | Ověřování SQL Serveru                  | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
+    | Authentication | Ověřování SQL Serveru                  | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
     | Přihlásit          | Účet správce serveru                   | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo       | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 

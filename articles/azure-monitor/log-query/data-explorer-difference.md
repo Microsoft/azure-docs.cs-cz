@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: b4601968a318388086a60ef98e4359ae01f652ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662098"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585696"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Rozdíly v dotazu na protokol Azure Monitor
 
@@ -41,7 +41,6 @@ Následující části popisují prvky dotazovacího jazyka Kusto, které Azure 
 ### <a name="operators-not-supported-in-azure-monitor"></a>Operátoři, kteří nejsou ve službě Azure Monitor podporovaní
 
 * [Spojení mezi clustery](/azure/kusto/query/joincrosscluster)
-* [operátor externích dat](/azure/kusto/query/externaldata-operator)
 
 ### <a name="plugins-not-supported-in-azure-monitor"></a>Pluginy, které nejsou ve službě Azure Monitor podporované
 

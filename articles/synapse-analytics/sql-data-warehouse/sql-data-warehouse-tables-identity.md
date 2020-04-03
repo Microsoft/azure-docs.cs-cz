@@ -1,6 +1,6 @@
 ---
 title: Vytvoření náhradních klíčů pomocí identity
-description: Doporučení a příklady pro použití vlastnosti IDENTITY k vytvoření náhradních klíčů v tabulkách v sql analytics.
+description: Doporučení a příklady pro použití identity vlastnost vytvořit náhradní klíče na tabulky v synapse fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab8f4a64f7273f0fa15c20f324e132003d5afe32
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351296"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586338"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>Vytvoření náhradních klíčů v sql analytics pomocí identity
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití identity k vytvoření náhradních klíčů ve fondu SYNAPse SQL
 
-Doporučení a příklady pro použití vlastnosti IDENTITY k vytvoření náhradních klíčů v tabulkách v sql analytics.
+Doporučení a příklady pro použití identity vlastnost vytvořit náhradní klíče na tabulky v synapse fondu SQL.
 
 ## <a name="what-is-a-surrogate-key"></a>Co je náhradní klíč
 
-Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč není generován z dat tabulky. Modelátoři dat rádi vytvářejí náhradní klíče ve svých tabulkách při navrhování modelů SQL Analytics. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně bez ovlivnění výkonu zatížení.  
+Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč není generován z dat tabulky. Modelátoři dat rádi vytvářejí náhradní klíče ve svých tabulkách při navrhování modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně bez ovlivnění výkonu zatížení.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Vytvoření tabulky se sloupcem IDENTITY
 
-Vlastnost IDENTITY je navržena tak, aby škálovat napříč všemi distribucemi v databázi SQL Analytics bez ovlivnění výkonu zatížení. Proto je implementace IDENTITY zaměřena na dosažení těchto cílů.
+Vlastnost IDENTITY je navržena tak, aby škálování ve všech distribucích ve fondu SYNApse SQL bez ovlivnění výkonu zatížení. Proto je implementace IDENTITY zaměřena na dosažení těchto cílů.
 
 Tabulku můžete definovat jako tabulku s vlastností IDENTITY při prvním vytvoření tabulky pomocí syntaxe, která je podobná následujícímu příkazu:
 
@@ -50,7 +50,7 @@ Tato zbývající část této části zdůrazňuje nuance implementace, která 
 
 ### <a name="allocation-of-values"></a>Rozdělení hodnot
 
-Identity Vlastnost nezaručuje pořadí, ve kterém jsou přiděleny náhradní hodnoty, což odráží chování SQL Server a Azure SQL Database. Však v SQL Analytics absence záruky je výraznější.
+Identity Vlastnost nezaručuje pořadí, ve kterém jsou přiděleny náhradní hodnoty, což odráží chování SQL Server a Azure SQL Database. Však v synapse fondu SQL absence záruky je výraznější.
 
 Následující příklad je znázorněn na obrázku:
 
@@ -100,7 +100,7 @@ VYTVOŘIT TABULKU JAKO SELECT (CTAS) následuje stejné chování serveru SQL Se
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explicitní vkládání hodnot do sloupce IDENTITY
 
-SQL Analytics `SET IDENTITY_INSERT <your table> ON|OFF` podporuje syntaxi. Tuto syntaxi můžete použít k explicitnímu vložení hodnot do sloupce IDENTITY.
+Synapse SQL `SET IDENTITY_INSERT <your table> ON|OFF` fond podporuje syntaxi. Tuto syntaxi můžete použít k explicitnímu vložení hodnot do sloupce IDENTITY.
 
 Mnoho datových modelátorů rádo používá předdefinované záporné hodnoty pro určité řádky v jejich dimenzích. Příkladem je řádek -1 nebo "neznámý člen".
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Není možné použít `CREATE TABLE AS SELECT` aktuálně při načítání dat do tabulky se sloupcem IDENTITY.
 >
 
-Další informace o načítání dat naleznete v [tématu Návrh extrahování, načítání a transformace (ELT) pro sql analytics](design-elt-data-loading.md) a [načítání osvědčených postupů](guidance-for-loading-data.md).
+Další informace o načítání dat naleznete v [tématu Návrh extrahování, načtení a transformace (ELT) pro zdroj ového fondu SQL](design-elt-data-loading.md) a [načtení osvědčených postupů](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systémová zobrazení
 
@@ -195,7 +195,7 @@ Vlastnost IDENTITY nelze použít:
 - Pokud je sloupec také distribučním klíčem
 - Pokud je tabulka externí tabulkou
 
-Následující související funkce nejsou v sql analytics podporovány:
+Následující související funkce nejsou podporovány ve fondu SYNAPSE SQL:
 
 - [IDENTITA()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

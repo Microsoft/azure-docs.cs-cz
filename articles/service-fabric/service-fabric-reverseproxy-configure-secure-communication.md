@@ -5,12 +5,12 @@ author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282247"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617116"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení k zabezpečené službě pomocí reverzního proxy serveru
 
@@ -77,7 +77,7 @@ V části [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings
 
    Chcete-li zadat seznam běžnýnázev služby a vystavitel thumbprints, přidejte [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) části pod **fabricSettings**, jak je znázorněno níže. Do pole **parametrů** lze přidat více společných názvů certifikátů a dvojic kryptografickýotisk vystavithonu. 
 
-   Pokud koncový bod reverzní proxy se připojuje k představuje certifikát, jehož běžný název a vystavitel kryptografický otisk odpovídá některé z hodnot uvedených zde, ssl kanál je vytvořen. 
+   Pokud koncový bod reverzní proxy se připojuje k představuje certifikát, jehož běžný název a vystavitel kryptografický otisk odpovídá některé z hodnot uvedených zde, je vytvořen kanál TLS.
    Po selhání odpovídající podrobnosti certifikátu reverzní proxy nezdaří požadavek klienta s 502 (Bad Gateway) stavový kód. Stavový řádek HTTP bude také obsahovat frázi "Neplatný certifikát SSL". 
 
    ```json
@@ -143,7 +143,7 @@ V části [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-   Pokud je kryptografický otisk certifikátu serveru uveden v této položce konfigurace, reverzní proxy server uspěje s připojením SSL. V opačném případě ukončí připojení a nezdaří požadavek klienta s 502 (Bad Gateway). Stavový řádek HTTP bude také obsahovat frázi "Neplatný certifikát SSL".
+   Pokud je kryptografický otisk certifikátu serveru uveden v této položce konfigurace, reverzní proxy server uspěje s připojením TLS. V opačném případě ukončí připojení a nezdaří požadavek klienta s 502 (Bad Gateway). Stavový řádek HTTP bude také obsahovat frázi "Neplatný certifikát SSL".
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Logika výběru koncového bodu, když služby zveřejňují zabezpečené i nezabezpečené koncové body
 Infrastruktura služeb podporuje konfiguraci více koncových bodů pro službu. Další informace naleznete [v tématu Určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md).
@@ -173,12 +173,12 @@ Reverzní proxy server vybere jeden z koncových bodů pro předání požadavku
 > Pokud klient při práci v **režimu SecureOnlyMode**zadal **název listenername** odpovídající koncovému bodu HTTP(nezabezpečené), reverzní proxy server neprojde požadavkem se stavovým kódem HTTP 404 (Nebyl nalezen).
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Nastavení ověřování klientského certifikátu prostřednictvím reverzního proxy serveru
-Ukončení SSL probíhá na reverzním proxy serveru a dojde ke ztrátě všech dat klientského certifikátu. Chcete-li, aby služby prováděly ověřování klientského **certifikátu,** zadejte nastavení ForwardClientCertificate v části [**ApplicationGateway/Http.**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)
+Ukončení Protokolu TLS proběhne na reverzním proxy serveru a dojde ke ztrátě všech dat klientského certifikátu. Chcete-li, aby služby prováděly ověřování klientského **certifikátu,** zadejte nastavení ForwardClientCertificate v části [**ApplicationGateway/Http.**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)
 
-1. Pokud je **forwardclientcertificate** nastaven na **hodnotu false**, reverzní proxy server nebude během handshake s klientem požadovat klientský certifikát.
+1. Pokud je **forwardclientcertificate** nastaven na **hodnotu false**, reverzní proxy server nebude během handshake protokolu TLS s klientem požadovat klientský certifikát.
 Toto je výchozí chování.
 
-2. Pokud je **forwardclientcertificate** nastavenna **na hodnotu true**, reverzní proxy požaduje certifikát klienta během jeho ssl handshake s klientem.
+2. Pokud je **forwardclientcertificate** nastavenna **na hodnotu true**, reverzní proxy požaduje certifikát klienta během jeho tls handshake s klientem.
 Poté předá data klientského certifikátu ve vlastní hlavičce HTTP s názvem **X-Client-Certificate**. Hodnota záhlaví je řetězec formátu PEM kódu je base64 certifikátu klienta. Služba může úspěšně/nepodaří požadavek s příslušným stavovým kódem po kontrole dat certifikátu.
 Pokud klient nepředloží certifikát, obrátí proxy předává prázdnou hlavičku a nechá službu zpracovávat případ.
 

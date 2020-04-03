@@ -2,17 +2,17 @@
 title: Vytvoření hostitele bašty pomocí azure CLI | Azure Bašta
 description: V tomto článku se dozvíte, jak vytvořit a odstranit hostitele bašty
 services: bastion
-author: cherylmc
+author: mialdrid
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.author: cherylmc
-ms.openlocfilehash: 9e216bf2bb8e2e605723256f0511b9bdb63083b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mialdrid
+ms.openlocfilehash: f98c965ad3b776f3688a716ba28b5367a00c9119
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337568"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619223"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Vytvoření hostitele Azure Bastion pomocí azure cli
 
@@ -26,7 +26,7 @@ Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure
 
 [!INCLUDE [cloudshell cli](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
-## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bašty
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele typu bašta
 
 Tato část vám pomůže vytvořit nový prostředek Azure Bastion pomocí Azure CLI.
 

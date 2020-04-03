@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef3176c99cd57ae229b602feb3c825081fcfe3e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 906c7728365cc902549bd46c57972e1c90af979c
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548372"
+ms.locfileid: "80607480"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Řešení Start/Stop VMs during off-hours v Azure Automation
 
@@ -112,11 +112,11 @@ Všechny nadřazené sady Runbook obsahují parametr _WhatIf._ Když je nastaven
 |AutoStop_CreateAlert_Child | Objekt VM <br> Akce výstrahy <br> WebHookURI | Volána z nadřazeného runbooku. Tento soubor Runbook vytváří výstrahy pro základě prostředků pro scénář AutoStop.|
 |AutoStop_CreateAlert_Parent | Seznam VMList<br> WhatIf: Pravda nebo nepravda  | Vytvoří nebo aktualizuje pravidla výstrah Azure na virtuálních počítačích v cílovépředplatné nebo skupiny prostředků. <br> VMList: Seznam virtuálních vyvěšených podle čárek. Například _vm1, vm2, vm3_.<br> *WhatIf* ověří logiku runbooku bez spuštění.|
 |AutoStop_Disable | Žádná | Zakáže výstrahy automatického zastavení a výchozí plán.|
-|AutoStop_VM_Child | WebHookData | Volána z nadřazeného runbooku. Pravidla výstrah volání tohoto runbooku zastavit klasický virtuální hod.|
+|AutoStop_VM_Child | WebHookData | Volána z nadřazeného runbooku. Pravidla výstrah volání tohoto runbooku zastavit klasický virtuální ho.|
 |AutoStop_VM_Child_ARM | WebHookData |Volána z nadřazeného runbooku. Pravidla výstrah volání tohoto runbooku zastavit virtuální ho.  |
-|ScheduledStartStop_Base_Classic | CloudServiceName<br> Akce: Spuštění nebo zastavení<br> Seznam VMList  | Tento runbook slouží k provádění spuštění nebo zastavení akce v klasické skupině virtuálních virtuálních stránek pomocí cloudových služeb.<br> VMList: Seznam virtuálních vyvěšených podle čárek. Například _vm1, vm2, vm3_. |
+|ScheduledStartStop_Base_Classic | CloudServiceName<br> Akce: Spuštění nebo zastavení<br> Seznam VMList  | Tento runbook slouží k provádění spuštění nebo zastavení akce ve skupině klasického virtuálního virtuálního připojení pomocí cloudových služeb.<br> VMList: Seznam virtuálních vyvěšených podle čárek. Například _vm1, vm2, vm3_. |
 |ScheduledStartStop_Child | VMName <br> Akce: Spuštění nebo zastavení <br> ResourceGroupName | Volána z nadřazeného runbooku. Provede akci zahájení nebo zastavení pro naplánovanou zastávku.|
-|ScheduledStartStop_Child_Classic | VMName<br> Akce: Spuštění nebo zastavení<br> ResourceGroupName | Volána z nadřazeného runbooku. Provede akci spuštění nebo zastavení pro naplánovanou zastávku pro klasické virtuální hody. |
+|ScheduledStartStop_Child_Classic | VMName<br> Akce: Spuštění nebo zastavení<br> ResourceGroupName | Volána z nadřazeného runbooku. Provede akci spuštění nebo zastavení pro naplánovanou zastávku pro klasické virtuální ho d). |
 |ScheduledStartStop_Parent | Akce: Spuštění nebo zastavení <br>Seznam VMList <br> WhatIf: Pravda nebo nepravda | Toto nastavení ovlivní všechny virtuální ho disponia v předplatném. Upravte **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** spouštět pouze v těchto cílových skupinách prostředků. Konkrétní virtuální hody můžete také vyloučit aktualizací **proměnné External_ExcludeVMNames.**<br> VMList: Seznam virtuálních vyvěšených podle čárek. Například _vm1, vm2, vm3_.<br> _WhatIf_ ověří logiku runbooku bez spuštění.|
 |SequencedStartStop_Parent | Akce: Spuštění nebo zastavení <br> WhatIf: Pravda nebo nepravda<br>Seznam VMList| Vytvořte značky s názvem **sequencestart** a **sequencestop** na každém virtuálním počítači, pro který chcete sekvencovat aktivitu start/stop. Tyto názvy značek rozlišují malá a velká písmena. Hodnota značky by měla být kladné celé číslo (1, 2, 3), které odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br> VMList: Seznam virtuálních vyvěšených podle čárek. Například _vm1, vm2, vm3_. <br> _WhatIf_ ověří logiku runbooku bez spuštění. <br> **Poznámka:** Virtuální počítače musí být v rámci skupin prostředků definovaných jako External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames a External_ExcludeVMNames v proměnných Azure Automation. Musí mít příslušné značky, aby se akce projevily.|
 
@@ -140,8 +140,8 @@ V následující tabulce jsou uvedeny proměnné vytvořené v účtu automatiza
 |External_Stop_ResourceGroupNames | Určuje jednu nebo více skupin prostředků, které oddělují hodnoty pomocí čárky, určené pro akce stop.|
 |External_WaitTimeForVMRetrySeconds |Čekací doba v sekundách pro akce, které mají být provedeny na virtuálních počítačích pro sekvenční start/stop runbook.<br> Výchozí hodnota je 2100 sekund a podporuje konfiguraci na maximální hodnotu 10800 nebo tři hodiny.|
 |Internal_AutomationAccountName | Určuje název účtu automatizace.|
-|Internal_AutoSnooze_ARM_WebhookURI | Určuje identifikátor URI webhooku volaná pro scénář AutoStop pro klasické virtuální počítače.|
-|Internal_AutoSnooze_WebhookUri | Určuje identifikátor URI webhooku volaná pro scénář AutoStop.|
+|Internal_AutoSnooze_ARM_WebhookURI | Určuje identifikátor URI webhooku volaná pro scénář Automatické ho zastavení pro virtuální počítače.|
+|Internal_AutoSnooze_WebhookUri | Určuje identifikátor URI webhooku volaná pro scénář AutoStop pro klasické virtuální počítače.|
 |Internal_AzureSubscriptionId | Určuje ID předplatného Azure.|
 |Internal_ResourceGroupName | Určuje název skupiny prostředků účtu automatizace.|
 

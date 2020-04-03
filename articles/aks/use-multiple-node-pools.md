@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit a spravovat fondy více uzlů pro cluster 
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 87f066ed17e5274439082956803d269bdd5853f5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422319"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616494"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa fondů více uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -41,7 +41,7 @@ Následující omezení platí při vytváření a správě clusterů AKS, kter�
 Chcete-li začít, vytvořte cluster AKS s fondem jednoho uzlu. Následující příklad používá příkaz [az group create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus.* Cluster AKS s názvem *myAKSCluster* je pak vytvořen pomocí příkazu [az aks create.][az-aks-create] A *--kubernetes-version* *1.15.7* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
 
 > [!NOTE]
-> *Základní* skladová položka pro vyrovnávání zatížení **není podporována** při použití více fondů uzlů. Ve výchozím nastavení se clustery AKS vytvářejí pomocí *sku standardního* správce zatížení z Azure CLI a portálu Azure.
+> *Základní* skladová položka pro vyrovnávání zatížení **není podporována** při použití více fondů uzlů. Ve výchozím nastavení se clustery AKS vytvářejí pomocí *sku standardního* správce zatížení z portálu Azure CLI a Azure Portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -420,7 +420,7 @@ Plánovač Kubernetes můžete použít potu a tolerace omezit úlohy lze spusti
 
 Další informace o používání pokročilých naplánovaných funkcí Kubernetes najdete [v tématu Doporučené postupy pro pokročilé funkce plánovače v AKS][taints-tolerations]
 
-V tomto příkladu použijte počin na uzlu založeném na GPU pomocí příkazu --node-taints. Z výstupu předchozího `kubectl get nodes` příkazu zadejte název uzlu založeného na GPU. Počitadla se použije jako *key:value* a pak možnost plánování. Následující příklad používá *sku= gpu* pár a definuje pody jinak mají *NoSchedule* schopnost:
+V tomto příkladu použijte počin na uzlu založeném na GPU pomocí příkazu --node-taints. Z výstupu předchozího `kubectl get nodes` příkazu zadejte název uzlu založeného na GPU. Počitadla se použije jako pár *key=value* a pak jako možnost plánování. Následující příklad používá *sku= gpu* pár a definuje pody jinak mají *NoSchedule* schopnost:
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -480,7 +480,7 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Pouze pody, které mají tento potu použít lze naplánovat na uzly v *gpunodepool*. Všechny ostatní pod by být naplánováno ve fondu uzlu *1* uzlu. Pokud vytvoříte další fondy uzlů, můžete použít další počina a tolerance k omezení, jaké pody lze naplánovat na tyto prostředky uzlu.
+Pouze pody, které mají tuto toleraci použít lze naplánovat na uzly v *gpunodepool*. Všechny ostatní pod by být naplánováno ve fondu uzlu *1* uzlu. Pokud vytvoříte další fondy uzlů, můžete použít další počina a tolerance k omezení, jaké pody lze naplánovat na tyto prostředky uzlu.
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Určení počin, popisek nebo značka pro fond uzlů
 

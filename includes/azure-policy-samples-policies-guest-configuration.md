@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 0b52dc886205176585fe2f6630c638575bdc6470
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0bc01943fbe5a5435d16fa6427b8aa745ebfafcf
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79382083"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624079"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHub |
+|Name (Název) |Popis |Efekty |Version |GitHubu |
 |---|---|---|---|---|
 |[Konfigurace časového pásma na počítačích se systémem Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Tato zásada vytvoří přiřazení konfigurace hosta pro nastavení zadaného časového pásma na virtuálních počítačích se systémem Windows. |deployIfNotExists |1.0.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json)
 |[Nasazení předpokladů pro auditování virtuálních počítačů s Linuxem, které umožňují vzdálená připojení z účtů bez hesel](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec49586f-4939-402d-a29e-6ff502b20592) |Tato zásada vytvoří přiřazení konfigurace hosta pro auditování virtuálních počítačů Linux, které umožňují vzdálená připojení z účtů bez hesel. Vytvoří také systémem přiřazenou spravovanou identitu a nasadí rozšíření virtuálního počítače pro konfiguraci hosta. Tato politika by měla být používána pouze společně s odpovídající politikou auditu v rámci iniciativy. Další informace o zásadách konfigurace hosta naleznete nahttps://aka.ms/gcpol |deployIfNotExists |1.1.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_Deploy.json)

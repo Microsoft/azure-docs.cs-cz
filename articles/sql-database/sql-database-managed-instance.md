@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 01/21/2020
-ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268779"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585356"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je spravovaná instance Azure SQL Database?
 
@@ -46,7 +46,7 @@ Spravovaná instance kombinuje nejlepší funkce, které jsou k dispozici v Azur
 | --- | --- |
 |Bez nákupu a správy hardwaru <br>Žádné režijní náklady na správu pro správu základní infrastruktury <br>Rychlé zřizování a škálování služeb <br>Automatické opravy a upgrade verze <br>Integrace s dalšími datovými službami PaaS |99,99% doba sla  <br>Vytvořeno s [vysokou dostupností](sql-database-high-availability.md) <br>Data chráněná [automatickým zálohováním](sql-database-automated-backups.md) <br>Zákaznická konfigurovatelná doba uchování záloh <br>Zálohy iniciované [uživatelem](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Možnost obnovení databáze bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Zabezpečení a dodržování předpisů** | **správy**|
-|Izolované prostředí[(integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), služba jednoho klienta, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty serveru Azure AD (přihlášení)</a>  <br>Dodržuje standardy dodržování předpisů stejné jako databáze Azure SQL <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manager pro automatizaci zřizování a škálování služeb <br>Funkce portálu Azure pro ruční zřizování a škálování služeb <br>Database Migration Service
+|Izolované prostředí[(integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), služba jednoho klienta, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty serveru Azure AD (přihlášení)</a>  <br>Dodržuje standardy dodržování předpisů stejné jako databáze Azure SQL <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Rozšířená ochrana před internetovými útoky](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manager pro automatizaci zřizování a škálování služeb <br>Funkce portálu Azure pro ruční zřizování a škálování služeb <br>Database Migration Service
 
 > [!IMPORTANT]
 > Azure SQL Database (všechny možnosti nasazení) byla certifikována podle řady standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure,](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) kde najdete nejnovější seznam certifikací dodržování předpisů databáze SQL Database.
@@ -67,7 +67,7 @@ Klíčové funkce spravovaných instancí jsou uvedeny v následující tabulce:
 | Podpora portálu | Ano|
 | Vestavěná integrační služba (SSIS) | Ne – SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba analýzy (SSAS) | Ne - SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Integrovaná služba zasílání zpráv (SSRS) | Ne – použijte Power BI nebo SSRS IaaS |
+| Integrovaná služba zasílání zpráv (SSRS) | Ne – místo toho použijte [stránkované sestavy Power BI](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo hostujte ssrs na virtuálním počítači Azure. Zatímco spravovaná instance nemůže spustit SSRS jako službu, může hostovat databáze katalogu SSRS 2019 pro externí server pro vytváření sestav pomocí ověřování serveru SQL Server. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
@@ -247,7 +247,7 @@ Migrace šifrované databáze na spravovanou instanci je podporována prostředn
 
 ## <a name="azure-active-directory-integration"></a>Integrace služby Azure Active Directory
 
-Možnost nasazení spravované instance podporuje tradiční přihlášení databázového modulu SQL serveru a přihlášení integrovaná s Azure Active Directory (AAD). Principy serveru Azure AD (přihlášení)**(public preview)** jsou cloudová verze azure místní chození databáze, které používáte v místním prostředí. Objekty serveru Azure AD (přihlášení) umožňují určit uživatele a skupiny z vašeho tenanta Služby Azure Active Directory jako skutečné objekty s rozsahem instance, které jsou schopné provádět jakoukoli operaci na úrovni instance, včetně dotazů mezi databázemi v rámci stejné spravované Instance.
+Možnost nasazení spravované instance podporuje tradiční přihlášení databázového modulu SQL serveru a přihlášení integrovaná s Azure Active Directory (AAD). Principy serveru Azure AD (přihlášení)**(public preview)** jsou cloudová verze azure místní chození databáze, které používáte v místním prostředí. Objekty serveru Azure AD (přihlášení) umožňují určit uživatele a skupiny z vašeho klienta Azure Active Directory jako skutečné objekty s rozsahem instance, které jsou schopné provádět jakoukoli operaci na úrovni instance, včetně dotazů mezi databázemi v rámci stejné spravované instance.
 
 Nová syntaxe se zavádí k vytvoření objektů zabezpečení serveru Azure AD (přihlášení), **z externího zprostředkovatele**. Další informace o syntaxi najdete v <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">tématu CREATE LOGIN</a>a projděte [si článek o spravované instanci v článku Zřízení služby Azure Active Directory.](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)
 
@@ -255,7 +255,7 @@ Nová syntaxe se zavádí k vytvoření objektů zabezpečení serveru Azure AD 
 
 Možnost nasazení spravované instance umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [integrace Azure Active Directory](sql-database-aad-authentication.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory podporuje [vícefaktorové ověřování (MFA)](sql-database-ssms-mfa-authentication-configure.md) pro zvýšení zabezpečení dat a aplikací při současné podpoře jednotného přihlašování.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Ověřování spravované instance odkazuje na způsob, jakým uživatelé prokazují svou identitu při připojování k databázi. SQL Database podporuje dva typy ověřování:  
 

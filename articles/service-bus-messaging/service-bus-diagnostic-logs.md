@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760994"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618734"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Povolení protokolů diagnostiky pro službu Service Bus
 
@@ -76,10 +76,10 @@ V provozních protokolech jsou zachyceny následující operace správy:
 
 | Rozsah | Operace|
 |-------| -------- |
-| Obor názvů | <ul> <li> Vytvořit obor názvů</li> <li> Aktualizovat obor názvů </li> <li> Odstranit obor názvů </li>  </ul> | 
-| Fronta | <ul> <li> Vytvořit frontu</li> <li> Aktualizovat frontu</li> <li> Odstranit frontu </li> </ul> | 
-| Téma | <ul> <li> Vytvořit téma </li> <li> Téma aktualizace </li> <li> Odstranit téma </li> </ul> |
-| Předplatné | <ul> <li> Vytvoření předplatného </li> <li> Aktualizovat předplatné </li> <li> Odstranit předplatné </li> </ul> |
+| Obor názvů | <ul> <li> Vytvořit obor názvů</li> <li> Aktualizovat obor názvů </li> <li> Odstranit obor názvů </li> <li> Aktualizovat zásady sdíleného přístupu oboru názvů </li> </ul> | 
+| Fronta | <ul> <li> Vytvořit frontu</li> <li> Aktualizovat frontu</li> <li> Odstranit frontu </li> <li> Automaticky odstranit frontu odstranění </li> </ul> | 
+| Téma | <ul> <li> Vytvořit téma </li> <li> Téma aktualizace </li> <li> Odstranit téma </li> <li> Automaticky odstranit téma odstranění </li> </ul> |
+| Předplatné | <ul> <li> Vytvoření předplatného </li> <li> Aktualizovat předplatné </li> <li> Odstranit předplatné </li> <li> Automatické odstranění předplatného </li> </ul> |
 
 > [!NOTE]
 > V současné době *operace čtení* nejsou sledovány v provozních protokolech.

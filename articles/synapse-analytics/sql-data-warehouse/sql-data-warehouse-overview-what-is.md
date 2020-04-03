@@ -10,19 +10,19 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a118d028cc85eb858dd0dc1fa6d5d2268f7db43b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 3363c4f5828f412bd11ca57e3c5f9013910a8055
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350404"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586451"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure Synapse Analytics (dříve SQL DW)?
 
 Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure Synapse přináší tyto dva světy spolu s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro okamžité potřeby BI a strojového učení
 
 Azure Synapse má čtyři součásti:
-- SQL Analytics: Kompletní analýza založená na T-SQL – obecně dostupná
+- Synapse SQL: Kompletní analýza založená na T-SQL – obecně dostupná
     - Fond SQL (platba za dwu zřízené) 
     - SQL na vyžádání (platba za zpracované TB) – (náhled)
 - Jiskra: Hluboce integrovaná Apache Spark (náhled) 
@@ -32,13 +32,13 @@ Azure Synapse má čtyři součásti:
 > [!NOTE]
 > Chcete-li získat přístup k funkcím náhledu služby Azure Synapse, požádejte o přístup [zde](https://aka.ms/synapsepreview). Společnost Microsoft bude třídění všech požadavků a reagovat co nejdříve.
 
-## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>SQL Analytics a fond SQL ve službě Azure Synapse
+## <a name="synapse-sql-pool-in-azure-synapse"></a>Fond synapse SQL v Azure Synapse
 
-SQL Analytics odkazuje na funkce podnikového datového skladu, které jsou obecně dostupné v Azure Synapse. 
+Fond SQL Synapse odkazuje na funkce podnikového datového skladu, které jsou obecně dostupné v Azure Synapse. 
 
-Fond SQL představuje kolekci analytických prostředků, které jsou zřizovány při použití SQL Analytics. Velikost fondu SQL je určena datovými skladovými jednotkami (DWU).
+Fond SQL představuje kolekci analytických prostředků, které jsou zřizovány při použití Synapse SQL. Velikost fondu SQL je určena datovými skladovými jednotkami (DWU).
 
-Importujte velká data pomocí jednoduchých dotazů [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL a pak použijte sílu MPP ke spuštění vysoce výkonné analýzy. Při integraci a analýze se SQL Analytics stane jedinou verzí pravdy, na kterou se vaše firma může spolehnout, pro rychlejší a robustnější přehledy.  
+Importujte velká data pomocí jednoduchých dotazů [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL a pak použijte sílu MPP ke spuštění vysoce výkonné analýzy. Při integraci a analýze se fond Synapse SQL stane jedinou verzí pravdy, na kterou se vaše firma může spolehnout pro rychlejší a robustnější přehledy.  
 
 ## <a name="key-component-of-a-big-data-solution"></a>Klíčová součást řešení pro velké objemy dat
 
@@ -46,9 +46,9 @@ Datové sklady jsou klíčovou součástí cloudového komplexního řešení pr
 
 ![Řešení datového skladu](./media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png) 
 
-V cloudovém datovém řešení se data ingestují do úložišť velkých objemů dat z celé řady zdrojů. Jakmile jsou data v úložišti velkých objemů dat, Hadoop, Spark a algoritmy machine learningu data připraví a natrénují. Když jsou data připravená pro komplexní analýzu, služba SQL Analytics využije PolyBase k dotazování na velkoobjemová úložiště dat. PolyBase pomocí standardních dotazů T-SQL načte data do tabulek služby SQL Analytics.
+V cloudovém datovém řešení se data ingestují do úložišť velkých objemů dat z celé řady zdrojů. Jakmile jsou data v úložišti velkých objemů dat, Hadoop, Spark a algoritmy machine learningu data připraví a natrénují. Když jsou data připravena pro komplexní analýzu, fond Synapse SQL používá PolyBase k dotazování na úložiště velkých objemů dat. PolyBase používá standardní T-SQL dotazy přenést data do tabulky fondu Synapse SQL.
  
-Služba SQL Analytics ukládá data v relačních tabulkách se sloupcovým úložištěm. Tento formát výrazně snižuje náklady na úložiště dat a zvyšuje výkon dotazů. Po uložení dat můžete provádět analýzy v masivním měřítku. V porovnání s tradičními databázovými systémy se dotazy analýz dokončí během několika sekund namísto minut nebo hodin namísto dnů. 
+Fond synapse SQL ukládá data v relačních tabulkách se sloupcovým úložištěm. Tento formát výrazně snižuje náklady na úložiště dat a zvyšuje výkon dotazů. Po uložení dat můžete provádět analýzy v masivním měřítku. V porovnání s tradičními databázovými systémy se dotazy analýz dokončí během několika sekund namísto minut nebo hodin namísto dnů. 
 
 Výsledky analýz můžou jít do aplikací nebo databází pro generování sestav po celém světě. Obchodní analytici pak můžou získávat přehledy, které jim umožní provádět informovaná obchodní rozhodnutí.
 

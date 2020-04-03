@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 7e3e9e6c76d67db03ea812a4832e98f4449c9aba
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: de4a9324cd1cfaccec6dcca6a8dfc057d37275c0
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77061654"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619243"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Úvodní příručka: Migrace existující webové aplikace MongoDB Node.js do Azure Cosmos DB 
 
@@ -230,7 +230,7 @@ V objektu `db` nahraďte hodnotu `uri` tak, jak je uvedeno v následujícím p
 ```
 
 > [!NOTE] 
-> Tato `ssl=true` možnost je důležitá, protože [Cosmos DB vyžaduje SSL](connect-mongodb-account.md#connection-string-requirements). 
+> Možnost `ssl=true` je důležité z důvodu požadavků Cosmos DB. Další informace naleznete v tématu [Požadavky na připojovací řetězec](connect-mongodb-account.md#connection-string-requirements).
 >
 >
 

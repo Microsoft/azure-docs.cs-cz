@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: f64f09d89bc76d625ec09763ccac6df171f5954e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b40f4740d4d7aedc6a4997662a4738293721817
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79382080"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624380"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHub |
+|Name (Název) |Popis |Efekty |Version |GitHubu |
 |---|---|---|---|---|
 |[Vlastní zásady IPsec/IKE musí být použity pro všechna připojení brány virtuální sítě Azure](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Tato zásada zajišťuje, že všechna připojení virtuálních síťových bran Azure používají vlastní zásady ipsec (IPSEC) /Internet Key Exchange (IKE). Podporované algoritmy a klíčové silné stránky -https://aka.ms/AA62kb0 |Audit, zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
 |[Služba App Service by měla používat koncový bod služby virtuální sítě.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Tato zásada audituje všechny služby App Service, které nejsou nakonfigurovány pro použití koncového bodu služby virtuální sítě. |AuditIfNotExists, zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json)

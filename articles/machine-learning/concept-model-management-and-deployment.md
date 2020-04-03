@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 40e335ee0377c560b15a588269cbdb39cdebca82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477353"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616834"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak pomocí Azure Machine Learning spravovat živo
 
 ## <a name="what-is-mlops"></a>Co je MLOps?
 
-Operace strojového učení (MLOps) jsou založeny na principech a postupech [DevOps,](https://azure.microsoft.com/overview/what-is-devops/) které zvyšují efektivitu pracovních postupů. Například průběžná integrace, doručování a nasazení. MLOps použije tyto objekty pro proces strojového učení s cílem:
+Operace strojového učení (MLOps) jsou založeny na principech a postupech [DevOps,](https://azure.microsoft.com/overview/what-is-devops/) které zvyšují efektivitu pracovních postupů. Například průběžná integrace, doručování a nasazení. MLOps aplikuje tyto zásady na proces strojového učení s cílem:
 
 * Rychlejší experimentování a vývoj modelů
 * Rychlejší nasazení modelů do produkčního prostředí

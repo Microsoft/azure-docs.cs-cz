@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94be0ec16aedc317f1be41998356bc52b66f7e86
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75441949"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619212"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Úvodní příručka: Vytvoření konzolové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a Golang SDK
 
@@ -93,7 +93,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru main.go.
 
 ### <a name="connecting-the-go-app-to-cosmos-db"></a>Připojení aplikace Go k Cosmos DB
 
-Rozhraní API Azure Cosmos DB pro MongoDB podporuje připojení s povolenou protokolem SSL. Chcete-li se připojit, musíte definovat funkci **DialServer** v [mgo. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo), a využít [tls.* Vytáčení* ](https://golang.org/pkg/crypto/tls#Dial) funkce k provedení připojení.
+Rozhraní API Azure Cosmos DB pro MongoDB podporuje připojení s podporou TLS. Chcete-li se připojit, musíte definovat funkci **DialServer** v [mgo. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo), a využít [tls.* Vytáčení* ](https://golang.org/pkg/crypto/tls#Dial) funkce k provedení připojení.
 
 Následující fragment kódu Golang propojuje aplikaci Go s rozhraním API Azure Cosmos DB pro MongoDB. Třída *DialInfo* obsahuje možnosti pro vytvoření relace.
 
@@ -129,7 +129,7 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-Metoda **mgo.Dial()** se používá v případě, že není k dispozici připojení SSL. Pro připojení SSL se vyžaduje metoda **mgo.DialWithInfo()**.
+**Mgo. Dial()** metoda se používá, pokud neexistuje žádné připojení TLS. Pro připojení TLS, **mgo. DialWithInfo()** je vyžadována metoda.
 
 Instance objektu **DialWIthInfo{}** slouží k vytvoření objektu relace. Po vytvoření relace můžete je kolekci přistupovat pomocí následujícího fragmentu kódu:
 

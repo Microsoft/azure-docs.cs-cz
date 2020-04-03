@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/26/2020
+ms.date: 4/2/2020
 ms.author: raiye
-ms.openlocfilehash: f265faef4e6520f5c74fce9a13b3d81118707025
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95c27cd906717d52a232b5ed85eba2b93bc6569d
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371126"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618282"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze azure hostovaného operačního systému a matice kompatibility sady SDK
 Poskytuje aktuální informace o nejnovějších verzích hostovaného operačního systému Azure pro cloudové služby. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud nakonfigurujete své role tak, aby používaly *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace hostovaného operačního systému Azure][Azure Guest OS Update Settings], není důležité, abyste si tuto stránku přečetli.
@@ -41,6 +41,9 @@ Poskytuje aktuální informace o nejnovějších verzích hostovaného operačn�
 Nejste si jisti, jak aktualizovat hostovaný operační systém? Podívej se na [tohle.][cloud updates]
 
 ## <a name="news-updates"></a>Aktuality
+
+###### <a name="april-2-2020"></a>**2. dubna 2020**
+Března Guest OS vydala. 
 
 ###### <a name="march-5-2020"></a>**5. března 2020**
 Únor Host OS vydala. 
@@ -122,8 +125,9 @@ Nainstalována rozhraní .NET Framework: 3.5, 4.7.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-6.17_202003-01  |  2. dubna 2020  |  Příspěvek 6.19  |  
 |  WA-HOST-OS-6.16_202002-01  |  5. března 2020  |  Příspěvek 6.18  |  
-|  WA-HOST-OS-6.15_202001-01  |  24. ledna 2020  |  Příspěvek 6.17  |  
+|~~WA-HOST-OS-6.15_202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-6.14_201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-HOST-OS-6.13_201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
 |~~WA-HOST-OS-6.12_201910-01~~| 1. listopadu 2019 | 8. ledna 2020 |  
@@ -151,8 +155,9 @@ Nainstalovaný rozhraní .NET Framework: 3.5, 4.6
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-5.41_202003-01  |  2. dubna 2020  |  Příspěvek 5.43  |  
 |  WA-HOST-OS-5.40_202002-01  |  5. března 2020  |  Příspěvek 5.42  |  
-|  WA-HOST-OS-5.39_202001-01  |  24. ledna 2020  |  Příspěvek 5.41  |  
+|~~WA-HOST-OS-5.39_202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-5.38_201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-GUEST-OS-5.37_201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
 |~~WA-GUEST-OS-5.36_201910-01~~| 1. listopadu 2019 | 8. ledna 2020 |  
@@ -177,8 +182,9 @@ Nainstalována rozhraní .NET Framework: 3.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-4.76_202003-01  |  2. dubna 2020  |  Příspěvek 4.78  |  
 |  WA-HOST-OS-4.75_202002-01  |  5. března 2020  |  Příspěvek 4,77  |  
-|  WA-HOST-OS-4.74_202001-01  |  24. ledna 2020  |  Příspěvek 4,76  |  
+|~~WA-HOST-OS-4.74_202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-4.73_201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-HOST-OS-4.72_201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
 |~~WA-HOST-OS-4.71_201910-01~~| 1. listopadu 2019 | 8. ledna 2020 |  
@@ -203,8 +209,9 @@ Nainstalovaný rozhraní .NET Framework: 3.5, 4.5
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-3.83_202003-01  |  2. dubna 2020  |  Příspěvek 3,85  |  
 |  WA-HOST-OS-3.82_202002-01  |  5. března 2020  |  Příspěvek 3.84  |  
-|  WA-HOST-OS-3.81_202001-01  |  24. ledna 2020  |  Příspěvek 3.83  |  
+|~~WA-HOST-OS-3.81_202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-3.80_201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-GUEST-OS-3.79_201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
 |~~WA-GUEST-OS-3.78_201910-01~~| 1. listopadu 2019 | 8. ledna 2020 |  
@@ -229,8 +236,9 @@ Nainstalovaný rozhraní .NET Framework: 3.5 (včetně 2.0 a 3.0), 4.5
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-2.96_202003-01  |  2. dubna 2020  |  Příspěvek 2.98  |  
 |  WA-HOST-OS-2.95_202002-01  |  5. března 2020  |  Příspěvek 2,97  |  
-|  WA-HOST-OS-2.94_202001-01 WA-GUEST-OS-2.94_202001-01 WA-GUEST-OS-2.94_202001-01 WA-  |  24. ledna 2020  |  Příspěvek 2.96  |  
+|~~WA-HOST-OS-2.94_202001-01 WA-GUEST-OS-2.94_202001-01 WA-GUEST-OS-2.94_202001-01 WA-~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-2.93_201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-HOST-OS-2.92_201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
 |~~WA-HOST-OS-2.91_201910-01~~| 1. listopadu 2019 | 8. ledna 2020 |  

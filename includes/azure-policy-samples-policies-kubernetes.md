@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1a2401f9f974b1dc664552e8743e43cbe590b159
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 390424e170249baf1fda26b7e277fc84723d64ff
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79381728"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624002"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHub |
+|Name (Název) |Popis |Efekty |Version |GitHubu |
 |---|---|---|---|---|
 |[\[Náhled\] \[: Modul\] AKS Nepovolit privilegované kontejnery v clusteru Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Tato zásada neumožňuje vytváření privilegovaných kontejnerů v clusteru Kubernetes. Pokyny k používání těchto zásad https://aka.ms/kubepolicydocnaleznete na . |enforceOPAConstraint, zakázáno |2.0.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege_EnforceOPAConstraint.json)
 |[\[Náhled\] \[: AKS Engine\] Enforce HTTPS ingress v clusteru Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Tato zásada vynucuje příchozí přenos dat HTTPS v clusteru Kubernetes. Pokyny k používání těchto zásad https://aka.ms/kubepolicydocnaleznete na . |enforceOPAConstraint, zakázáno |2.0.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly_EnforceOPAConstraint.json)

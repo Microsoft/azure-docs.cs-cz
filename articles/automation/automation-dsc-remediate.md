@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: a6c7639cb4988eb13dfaa1c151085cda6e53b5d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4ca76f4be9d00e185f8774fc33296d1af1aeece
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68614495"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585500"
 ---
 # <a name="remediate-non-compliant-dsc-servers"></a>Oprava serverů DSC, které nevyhovují předpisům
 
@@ -40,7 +40,7 @@ Update-DscConfiguration -Wait -Verbose
 Podobná funkce není v současné době k dispozici pro servery Linux.
 Jedinou možností je zopakovat proces registrace.
 U uzlů Azure lze opravu driftu provést z portálu nebo pomocí rutin Az Automation.
-Podrobnosti o tomto procesu jsou popsány na stránce [Onboarding machines pro správu pomocí konfigurace stavu automatizace Azure](/azure/automation/automation-dsc-onboarding#azure-portal).
+Podrobnosti o tomto procesu jsou popsány na stránce [Onboarding machines pro správu pomocí konfigurace stavu automatizace Azure](/azure/automation/automation-dsc-onboarding#onboard-a-vm-using-azure-portal).
 U hybridních uzlů lze korekci driftu provést pomocí zahrnutých skriptů Pythonu.
 Podívejte se na dokumentaci v [prostředí PowerShell DSC pro linuxové repo](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 

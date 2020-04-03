@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 2876acd62e573b746b8c0abf671aa6472cec3104
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 85ed14fc2ce842f46f393b4661afaf4678a1a5dd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79382187"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624429"
 ---
 |Name (Název) |Popis |Zásady |Version |
 |---|---|---|---|

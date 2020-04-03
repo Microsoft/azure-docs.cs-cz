@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e3ab6282a3c61e12dce5dd17bc0859c0d73a7724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051721"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617039"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB ke službě Azure Cosmos DB
 
@@ -51,11 +51,11 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 ## <a name="connection-string-requirements"></a>Požadavky na připojovací řetězec
 
 > [!Important]
-> Azure Cosmos DB má přísné požadavky na zabezpečení a standardy. Účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci přes *Protokol SSL*. 
+> Azure Cosmos DB má přísné požadavky na zabezpečení a standardy. Účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci prostřednictvím *protokolu TLS*. 
 >
 >
 
-Azure Cosmos DB podporuje standardní formát URI připojovacího řetězce MongoDB s několika specifickými požadavky: účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci prostřednictvím protokolu SSL. Formát připojovacího řetězce je tedy následující:
+Azure Cosmos DB podporuje standardní formát URI připojovacího řetězce MongoDB s několika specifickými požadavky: účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci prostřednictvím TLS. Formát připojovacího řetězce je tedy následující:
 
     mongodb://username:password@host:port/[database]?ssl=true
 

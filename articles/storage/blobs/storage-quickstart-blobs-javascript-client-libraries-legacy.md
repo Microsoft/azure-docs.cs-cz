@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: da5db7d956b1ba8aa1ac245b77fe0d4cb31909c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061467"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619116"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -90,7 +90,7 @@ Několik hodnot uvedených za jednotlivými parametry je možná trochu nesrozum
 Nyní, když je generována SAS, zkopírujte vrácenou hodnotu a uložte ji někde pro použití v nadcházejícím kroku. Pokud jste vygenerovali SAS pomocí jiné metody než vazby `?` příkazového příkazu Azure, budete muset odebrat počáteční, pokud je k dispozici. Tento znak je oddělovač adres URL, který je již k dispozici v šabloně adresy URL dále v tomto tématu, kde se používá SAS.
 
 > [!IMPORTANT]
-> V produkčním prostředí vždy předávejte tokeny SAS pomocí SSL. Kromě toho by se tokeny SAS měly generovat na serveru a odesílat na stránku HTML, která je předá zpět do služby Azure Blob Storage. Jedním z přístupů, které můžete zvážit, je generování tokenů SAS pomocí funkce bez serveru. Azure Portal obsahuje šablony funkcí, které zahrnují možnost generovat SAS pomocí funkce JavaScriptu.
+> V produkčním prostředí vždy předejte tokeny SAS pomocí TLS. Kromě toho by se tokeny SAS měly generovat na serveru a odesílat na stránku HTML, která je předá zpět do služby Azure Blob Storage. Jedním z přístupů, které můžete zvážit, je generování tokenů SAS pomocí funkce bez serveru. Azure Portal obsahuje šablony funkcí, které zahrnují možnost generovat SAS pomocí funkce JavaScriptu.
 
 ## <a name="implement-the-html-page"></a>Implementace stránky HTML
 

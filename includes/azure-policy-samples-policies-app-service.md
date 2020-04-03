@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 6391a70a8a7283d6218c6ec54609f7879b605ae5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dcc118e46b73d9d009684eb46cb610485176399d
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79381782"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624230"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHub |
+|Name (Název) |Popis |Efekty |Version |GitHubu |
 |---|---|---|---|---|
 |[Aplikace API by měla být přístupná pouze přes protokol HTTPS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb7ddfbdc-1260-477d-91fd-98bd9be789a6) |Použití protokolu HTTPS zajišťuje ověřování serveru/služby a chrání data při přenosu před útoky odposlouchávání síťových vrstev. |Audit, zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceApiApp_AuditHTTP_Audit.json)
 |[Ověřování by mělo být povoleno v aplikaci API.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4ebc54a-46e1-481a-bee2-d4411e95d828) |Azure App Service Authentication je funkce, která může zabránit anonymním požadavkům HTTP v přístupu k aplikaci API nebo ověřit ty, které mají tokeny, než se dostanou do aplikace API |AuditIfNotExists, zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Authentication_ApiApp_Audit.json)
