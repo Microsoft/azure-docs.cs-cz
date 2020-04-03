@@ -1,6 +1,6 @@
 ---
 title: Optimalizace transakcí
-description: Zjistěte, jak optimalizovat výkon transakčního kódu v SQL Analytics a zároveň minimalizovat riziko pro dlouhá vrácení zpět.
+description: Naučte se optimalizovat výkon transakčníkód v Synapse SQL při minimalizaci rizika pro dlouhé vrácení zpět.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,29 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 700f4717db652d678255aaa9fce6ff8b8ff3b52f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350593"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582126"
 ---
-# <a name="optimizing-transactions-in-sql-analytics"></a>Optimalizace transakcí v SQL Analytics
-Zjistěte, jak optimalizovat výkon transakčního kódu v SQL Analytics a zároveň minimalizovat riziko pro dlouhá vrácení zpět.
+# <a name="optimizing-transactions-in-synapse-sql"></a>Optimalizace transakcí v synapse SQL
+
+Naučte se optimalizovat výkon transakčníkód v Synapse SQL při minimalizaci rizika pro dlouhé vrácení zpět.
 
 ## <a name="transactions-and-logging"></a>Transakce a protokolování
-Transakce jsou důležitou součástí relační databázový stroj. SQL Analytics používá transakce během modifikace dat. Tyto transakce mohou být explicitní nebo implicitní. Single INSERT, UPDATE a DELETE příkazy jsou všechny příklady implicitní transakce. Explicitní transakce používají BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, když více příkazů změny je třeba svázat v jedné atomické jednotky. 
 
-SQL Analytics potvrdí změny v databázi pomocí protokolů transakcí. Každá distribuce má svůj vlastní transakční protokol. Zápisy transakčního protokolu jsou automatické. Není vyžadována žádná konfigurace. Však zatímco tento proces zaručuje zápis zavést režii v systému. Tento dopad můžete minimalizovat zápisem transakčního kódu. Transakční efektivní kód obecně spadá do dvou kategorií.
+Transakce jsou důležitou součástí relační databázový stroj. Transakce se používají při úpravě dat. Tyto transakce mohou být explicitní nebo implicitní. Single INSERT, UPDATE a DELETE příkazy jsou všechny příklady implicitní transakce. Explicitní transakce používají BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, když více příkazů změny je třeba svázat v jedné atomické jednotky. 
+
+Změny v databázi jsou sledovány pomocí protokolů transakcí. Každá distribuce má svůj vlastní transakční protokol. Zápisy transakčního protokolu jsou automatické. Není vyžadována žádná konfigurace. Však zatímco tento proces zaručuje zápis zavést režii v systému. Tento dopad můžete minimalizovat zápisem transakčního kódu. Transakční efektivní kód obecně spadá do dvou kategorií.
 
 * Kdykoli je to možné, používejte minimální konstrukce protokolování
 * Zpracování dat pomocí dávky s vymezenou srozsahem, aby se zabránilo jednotného spoje dlouho běžící transakce
 * Přijmout vzor přepínání oddílů pro velké změny daného oddílu
 
 ## <a name="minimal-vs-full-logging"></a>Minimální vs. úplné protokolování
+
 Na rozdíl od plně protokolovaných operací, které používají transakční protokol ke sledování každé změny řádku, minimálně protokolované operace sledovat přidělení rozsahu a pouze změny metadat dat. Minimální protokolování tedy zahrnuje protokolování pouze informace, které je nutné vrátit zpět transakce po selhání nebo pro explicitní požadavek (ROLLBACK TRAN). Jako mnohem méně informací je sledována v transakčníprotokol, minimálně protokolované operace provádí lépe než podobně velké plně protokolované operace. Navíc protože méně zápisů přejít transakční protokol, je generováno mnohem menší množství dat protokolu a tak je efektivnější více vstupně-v.I/O.
 
 Bezpečnostní limity transakcí se vztahují pouze na plně protokolované operace.
@@ -41,6 +44,7 @@ Bezpečnostní limity transakcí se vztahují pouze na plně protokolované oper
 > 
 
 ## <a name="minimally-logged-operations"></a>Minimálně zaznamenané operace
+
 Následující operace mohou být minimálně zaznamenány:
 
 * VYTVOŘIT TABULKU JAKO VÝBĚR[(CTAS)](sql-data-warehouse-develop-ctas.md)
@@ -78,14 +82,13 @@ CTAS a VLOŽIT... SELECT jsou obě operace hromadného zatížení. Obě jsou v�
 Stojí za zmínku, že všechny zápisy aktualizovat sekundární nebo neseskupené indexy budou vždy plně protokolované operace.
 
 > [!IMPORTANT]
-> Databáze SQL Analytics má 60 distribucí. Proto za předpokladu, že všechny řádky jsou rovnoměrně distribuovány a přistání v jednom oddílu, vaše dávka bude muset obsahovat 6,144,000 řádky nebo větší, aby byly minimálně zaznamenány při zápisu do indexu clusterované columnstore. Pokud je tabulka rozdělena na oddíly a řádky, které jsou vloženy hranice oddílu s rozpětím, budete potřebovat 6,144,000 řádků na hranici oddílu za předpokladu, že i rozdělení dat. Každý oddíl v každé distribuci musí nezávisle překročit prahovou hodnotu řádku 102 400, aby byla vložení minimálně přihlášena do distribuce.
-> 
+> Synapse SQL pool databáze má 60 distribucí. Proto za předpokladu, že všechny řádky jsou rovnoměrně distribuovány a přistání v jednom oddílu, vaše dávka bude muset obsahovat 6,144,000 řádky nebo větší, aby byly minimálně zaznamenány při zápisu do indexu clusterované columnstore. Pokud je tabulka rozdělena na oddíly a řádky, které jsou vloženy hranice oddílu s rozpětím, budete potřebovat 6,144,000 řádků na hranici oddílu za předpokladu, že i rozdělení dat. Každý oddíl v každé distribuci musí nezávisle překročit prahovou hodnotu řádku 102 400, aby byla vložení minimálně přihlášena do distribuce.
 > 
 
 Načítání dat do neprázdné tabulky s clusterovaným indexem může často obsahovat směs plně protokolovaných a minimálně protokolovaných řádků. Seskupený index je vyvážený strom (b-strom) stránek. Pokud stránka zapisovaná do již obsahuje řádky z jiné transakce, budou tyto zápisy plně zaznamenány. Pokud je však stránka prázdná, bude zápis na tuto stránku zaznamenán minimálně.
 
 ## <a name="optimizing-deletes"></a>Optimalizace odstranění
-DELETE je plně protokolovaná operace.  Pokud potřebujete odstranit velké množství dat v tabulce nebo oddílu, často `SELECT` dává větší smysl pro data, která chcete zachovat, která lze spustit jako minimálně protokolovnou operaci.  Chcete-li vybrat data, vytvořte novou tabulku s [CTAS](sql-data-warehouse-develop-ctas.md).  Po vytvoření použijte [přejmenování](/sql/t-sql/statements/rename-transact-sql) k prohození staré tabulky s nově vytvořenou tabulkou.
+DELETE je plně protokolovaná operace.  Pokud potřebujete odstranit velké množství dat v tabulce nebo oddílu, často `SELECT` dává větší smysl pro data, která chcete zachovat, která lze spustit jako minimálně protokolovnou operaci.  Chcete-li vybrat data, vytvořte novou tabulku s [CTAS](sql-data-warehouse-develop-ctas.md).  Po vytvoření použijte [přejmenování](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k prohození staré tabulky s nově vytvořenou tabulkou.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -116,7 +119,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optimalizace aktualizací
-UPDATE je plně protokolovaná operace.  Pokud potřebujete aktualizovat velký počet řádků v tabulce nebo oddílu, může být často mnohem efektivnější použít minimálně protokolované operace, jako je [ctas](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) k tomu.
+UPDATE je plně protokolovaná operace.  Pokud potřebujete aktualizovat velký počet řádků v tabulce nebo oddílu, může být často mnohem efektivnější použít minimálně protokolované operace, jako je [ctas](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k tomu.
 
 V příkladu níže byla úplná aktualizace tabulky převedena na CTAS, takže je možné minimální protokolování.
 
@@ -177,7 +180,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Opětovné vytváření velkých tabulek může využívat funkce správy úloh SQL Analytics. Další informace naleznete v [tématu Třídy prostředků pro správu pracovního vytížení](resource-classes-for-workload-management.md).
+> Opětovné vytváření velkých tabulek může využívat funkce správy úloh fondu SQL Synapse. Další informace naleznete v [tématu Třídy prostředků pro správu pracovního vytížení](resource-classes-for-workload-management.md).
 > 
 > 
 
@@ -405,7 +408,8 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Pokyny pro pozastavení a změnu měřítka
-SQL Analytics umožňuje [pozastavit, obnovit a škálovat](sql-data-warehouse-manage-compute-overview.md) fond SQL na vyžádání. Při pozastavení nebo škálování fondu SQL, je důležité si uvědomit, že všechny transakce za letu jsou ukončeny okamžitě; způsobit vrácení všech otevřených transakcí zpět. Pokud vaše úloha vydala dlouho běžící a neúplné změny dat před pozastavení nebo operace škálování, pak tato práce bude nutné vrátit zpět. Toto zrušení může mít vliv na čas potřebný k pozastavení nebo škálování fondu SQL. 
+
+Synapse SQL umožňuje [pozastavit, obnovit a škálovat](sql-data-warehouse-manage-compute-overview.md) fond SQL na vyžádání. Při pozastavení nebo škálování fondu SQL, je důležité si uvědomit, že všechny transakce za letu jsou ukončeny okamžitě; způsobit vrácení všech otevřených transakcí zpět. Pokud vaše úloha vydala dlouho běžící a neúplné změny dat před pozastavení nebo operace škálování, pak tato práce bude nutné vrátit zpět. Toto zrušení může mít vliv na čas potřebný k pozastavení nebo škálování fondu SQL. 
 
 > [!IMPORTANT]
 > Oba `UPDATE` `DELETE` a jsou plně protokolované operace, a tak tyto operace vrátit a znovu může trvat podstatně déle než ekvivalentní minimálně protokolované operace. 
@@ -414,9 +418,10 @@ SQL Analytics umožňuje [pozastavit, obnovit a škálovat](sql-data-warehouse-m
 
 Nejlepším scénářem je nechat v transakcích změny dat letu dokončit před pozastavení nebo škálování fondu SQL. Tento scénář však nemusí být vždy praktické. Chcete-li zmírnit riziko dlouhého vrácení zpět, zvažte jednu z následujících možností:
 
-* Přepsat dlouhotrvající operace pomocí [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+* Přepsat dlouhotrvající operace pomocí [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * Rozdělit operaci na bloky; pracovat na podmnožině řádků
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o úrovních izolace a transakčních limitech najdete v článku [Transakce v SQL Analytics.](sql-data-warehouse-develop-transactions.md)  Přehled dalších doporučených postupů naleznete v tématu [SQL Data Warehouse Best Practices](sql-data-warehouse-best-practices.md).
+
+Další informace o úrovních izolace a transakčních limitech najdete v článku [Transakce v synapse SQL.](sql-data-warehouse-develop-transactions.md)  Přehled dalších doporučených postupů naleznete v tématu [SQL Data Warehouse Best Practices](sql-data-warehouse-best-practices.md).
 

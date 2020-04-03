@@ -4,12 +4,12 @@ description: Zjistěte, jak se připravit na vyhodnocení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: aecc82ff4403c044fae95eb9b7c8c7561fcb82b6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336673"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619433"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware na vyhodnocení a migraci do Azure
 
@@ -36,7 +36,7 @@ Než budete moct vyhodnotit nebo migrovat virtuální počítače VMware, potře
 
 **Úkol** | **Podrobnosti** 
 --- | --- 
-**Vytvoření projektu migrace Azure** | Váš účet Azure potřebuje ontributer nebo vlastník oprávnění k vytvoření projektu. 
+**Vytvoření projektu migrace Azure** | Váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka k vytvoření projektu. 
 **Registrace poskytovatelů prostředků** | Azure Migrate používá zjednodušené zařízení Azure Migrate ke zjišťování a vyhodnocování virtuálních počítačích VMware a k jejich migraci do Azure pomocí Azure Migrate:Server Assessment.<br/><br/> Během registrace zařízení jsou poskytovatelé prostředků registrováni s předplatným zvoleným v zařízení. [Další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Chcete-li zaregistrovat zprostředkovatele prostředků, potřebujete roli přispěvatele nebo vlastníka v předplatném.
 **Vytváření aplikací Azure AD** | Při registraci zařízení Azure Migrate vytvoří aplikace Azure Active Directory (Azure AD). <br/><br/> - První aplikace se používá pro komunikaci mezi agenty spuštěné na zařízení a jejich příslušné služby spuštěné v Azure.<br/><br/> - Druhá aplikace se používá výhradně pro přístup keyvault vytvořený v předplatném uživatele pro migraci vrámci virtuálního vavu bez agenta. [Další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Potřebujete oprávnění k vytváření aplikací Azure AD (k dispozici v roli Application Developer).
 **Vytvoření trezoru klíčů** | Chcete-li migrovat virtuální počítače VMware pomocí migrace bez agenta, Azure Migrate vytvoří trezor klíčů pro správu přístupových klíčů k účtu úložiště replikace ve vašem předplatném.<br/><br/> Chcete-li vytvořit úschovnu, potřebujete oprávnění přiřazení role ve skupině prostředků, ve které se nachází projekt Migrace Azure.

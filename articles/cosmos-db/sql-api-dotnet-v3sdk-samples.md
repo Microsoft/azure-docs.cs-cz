@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
-ms.openlocfilehash: 2a33a59ae0184e6c41fe7121560bc5df3a69cffd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 65d34d1e82a46cc5b3d7b0ad3239836acaee6f97
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73888948"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585344"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>Příklady Azure Cosmos DB.NET V3 SDK (Microsoft.Azure.Cosmos) pro rozhraní SQL API
 
@@ -55,7 +55,7 @@ Předplatné Azure nebo bezplatný zkušební účet Cosmos DB
 
 [Metoda RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) ukázkového projektu *DatabaseManagement* ukazuje, jak provést následující úkoly. Informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v tématu [Práce s databázemi, kontejnery a položkami](databases-containers-items.md).
 
-| Úkol | referenční dokumentace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření databáze](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L68) |[CosmosClient.CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet) |
 | [Čtení databáze podle ID](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L80) |[Database.ReadAsync](/dotnet/api/microsoft.azure.cosmos.database.readasync?view=azure-dotnet) |
@@ -66,7 +66,7 @@ Předplatné Azure nebo bezplatný zkušební účet Cosmos DB
 
 [Metoda RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) ukázkového projektu *ContainerManagement* ukazuje, jak provést následující úkoly. Informace o kontejnerech Azure Cosmos před spuštěním následujících ukázek najdete v tématu [Práce s databázemi, kontejnery a položkami](databases-containers-items.md).
 
-| Úkol | referenční dokumentace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření kontejneru](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L97-L107) |[Database.CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet) |
 | [Vytvoření kontejneru s vlastními zásadami indexu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L111-L127) |[Database.CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet) |
@@ -79,9 +79,9 @@ Předplatné Azure nebo bezplatný zkušební účet Cosmos DB
 
 [Metoda RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) ukázkového projektu *ItemManagement* ukazuje, jak provést následující úkoly. Informace o položkách Azure Cosmos před spuštěním následujících ukázek najdete v tématu [Práce s databázemi, kontejnery a položkami](databases-containers-items.md).
 
-| Úkol | referenční dokumentace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
-| [Vytvoření položky](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L161-L200) |[Kontejner.CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet) |
+| [Vytvoření položky](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L161-L200) |[Kontejner.CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) |
 | [Čtení položky podle ID](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L203-L241) |[Kontejner. ReadItemAsync](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet) |
 | [Dotaz na položky](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L244-L320) |[Kontejner. GetItemQueryIterátor](/dotnet/api/microsoft.azure.cosmos.container.getitemqueryiterator?view=azure-dotnet) |
 | [Nahrazení položky](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L323-L363) |[Kontejner. NahraditItemAsync](/dotnet/api/microsoft.azure.cosmos.container.replaceitemasync?view=azure-dotnet) |
@@ -93,7 +93,7 @@ Předplatné Azure nebo bezplatný zkušební účet Cosmos DB
 
 [Metoda RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) ukázkového projektu *IndexManagement* ukazuje, jak provést následující úkoly. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek, najdete v [tématu index zásady](index-policy.md), [typy indexů](index-types.md)a [cesty indexu](index-paths.md). 
 
-| Úkol | referenční dokumentace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vyloučit položku z indexu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L130-L186) |[IndexingDirective.Exclude](/dotnet/api/microsoft.azure.cosmos.indexingdirective?view=azure-dotnet) |
 | [Použití opožděné indexování](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L198-L220) |[IndexingPolicy.IndexingMode](/dotnet/api/microsoft.azure.cosmos.indexingpolicy.indexingmode?view=azure-dotnet) |
@@ -103,7 +103,7 @@ Předplatné Azure nebo bezplatný zkušební účet Cosmos DB
 
 [Metoda RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L76-L96) ukázkového projektu *Dotazy* ukazuje, jak provést následující úkoly pomocí gramatiky dotazu SQL, zprostředkovatele LINQ s dotazem a Lambda. Informace o odkazu na dotaz SQL v Azure Cosmos DB před spuštěním následujících ukázek najdete v [tématu příklady dotazů SQL pro Azure Cosmos DB](how-to-sql-query.md).
 
-| Úkol | referenční dokumentace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Dotaz na položky z jednoho oddílu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L154-L186) |[Kontejner. GetItemQueryIterátor](/dotnet/api/microsoft.azure.cosmos.container.getitemqueryiterator?view=azure-dotnet) |
 | [Dotaz na položky z více oddílů](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L215-L275) |[Kontejner. GetItemQueryIterátor](/dotnet/api/microsoft.azure.cosmos.container.getitemqueryiterator?view=azure-dotnet) |
@@ -113,7 +113,7 @@ Předplatné Azure nebo bezplatný zkušební účet Cosmos DB
 
 [Metoda RunBasicChangeFeed](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs#L91-L119) ukázkového projektu *ChangeFeed* ukazuje, jak provést následující úkoly. Další informace o kanálu změn v Azure Cosmos DB před spuštěním následujících ukázek najdete v [tématu Čtení zdroje změn Azure Cosmos DB](read-change-feed.md) a [změnit podavač procesoru](change-feed-processor.md).
 
-| Úkol | referenční dokumentace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Základní funkce zdroje změn](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs#L91-L119) |[Container.GetChangeFeedProcessorBuilderBuilder](/dotnet/api/microsoft.azure.cosmos.container.getchangefeedprocessorbuilder?view=azure-dotnet) |
 | [Čtení kanálu změn z určitého času](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs#L127-L162) |[Container.GetChangeFeedProcessorBuilderBuilder](/dotnet/api/microsoft.azure.cosmos.container.getchangefeedprocessorbuilder?view=azure-dotnet) |
@@ -124,7 +124,7 @@ Předplatné Azure nebo bezplatný zkušební účet Cosmos DB
 
 Metoda [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ServerSideScripts/Program.cs#L72-L102) ukázkového projektu *ServerSideScripts* ukazuje, jak provést následující úkoly. Informace o programování na straně serveru v Azure Cosmos DB před spuštěním následujících ukázek najdete [v tématu Uložené procedury, aktivační události a uživatelem definované funkce](stored-procedures-triggers-udfs.md).
 
-| Úkol | referenční dokumentace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření uložené procedury](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ServerSideScripts/Program.cs#L116) |[Scripts.CreateStoredProcedureAsync](/dotnet/api/microsoft.azure.cosmos.scripts.scripts.createstoredprocedureasync?view=azure-dotnet) |
 | [Spuštění uložené procedury](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ServerSideScripts/Program.cs#L135) |[Scripts.ExecuteStoredProcedureAsync](/dotnet/api/microsoft.azure.cosmos.scripts.scripts.executestoredprocedureasync?view=azure-dotnet) |

@@ -9,18 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 11/17/2019
 ms.author: yelevin
-ms.openlocfilehash: 7d42ff28ddd2d883feb25139096d781efe64d50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b82ddfef57efaaca0ae43750cd306a63a772b911
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588565"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616830"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Připojení dat ze služby Azure AD Identity Protection
 
 
 
-Protokoly z [Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) do Azure Sentinelu můžete streamovat a streamovat výstrahy do Azure Sentinelu za účelem zobrazení řídicích panelů, vytvoření vlastních výstrah a zlepšení vyšetřování. Azure Active Directory Identity Protection poskytuje konsolidované zobrazení u rizikových uživatelů, detekce rizik a zranitelnosti, se schopností okamžitě napravit riziko a nastavit zásady pro automatické nazamování budoucích událostí. Služba je postavena na zkušenostech společnosti Microsoft s ochranou identit spotřebitelů a získává obrovskou přesnost ze signálu z více než 13 miliard přihlášení denně. 
+Protokoly z [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) do Azure Sentinelu můžete streamovat a streamovat výstrahy do Azure Sentinelu za účelem zobrazení řídicích panelů, vytvoření vlastních výstrah a zlepšení vyšetřování. Azure Active Directory Identity Protection poskytuje konsolidované zobrazení u rizikových uživatelů, detekce rizik a zranitelnosti, se schopností okamžitě napravit riziko a nastavit zásady pro automatické nazamování budoucích událostí. Služba je postavena na zkušenostech společnosti Microsoft s ochranou identit spotřebitelů a získává obrovskou přesnost ze signálu z více než 13 miliard přihlášení denně. 
 
 
 ## <a name="prerequisites"></a>Požadavky

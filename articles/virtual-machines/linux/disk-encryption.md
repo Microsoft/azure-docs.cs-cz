@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 912677a10d7098b891a4f6972b61761cd72cf292
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520779"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585948"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování spravovaných disků Azure na straně serveru
 
@@ -34,7 +34,11 @@ Ve výchozím nastavení používají spravované disky šifrovací klíče spra
 
 ## <a name="customer-managed-keys"></a>Klíče spravované zákazníkem
 
-Šifrování můžete spravovat na úrovni každého spravovaného disku pomocí vlastních klíčů. Šifrování na straně serveru pro spravované disky s klíči spravovanými zákazníky nabízí integrované prostředí s azure key vaultem. Můžete buď importovat [klíče RSA](../../key-vault/key-vault-hsm-protected-keys.md) do trezoru klíčů nebo generovat nové klíče RSA v úložišti klíčů Azure. Disky spravované Azure zpracovávají šifrování a dešifrování zcela transparentním způsobem pomocí [šifrování obálek](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique). Šifruje data pomocí šifrovacího klíče (DEK) založeného na [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256, který je zase chráněn pomocí vašich klíčů. Chcete-li používat klíče k šifrování a dešifrování sady DEK, musíte udělit přístup ke spravovaným diskům v trezoru klíčů. To vám umožní plnou kontrolu nad daty a klíči. Klíče můžete kdykoli zakázat nebo odvolat přístup ke spravovaným diskům. Využití šifrovacího klíče můžete také auditovat pomocí monitorování azure trezoru klíčů, abyste zajistili, že k vašim klíčům přistupují jenom spravované disky nebo jiné důvěryhodné služby Azure.
+Šifrování můžete spravovat na úrovni každého spravovaného disku pomocí vlastních klíčů. Šifrování na straně serveru pro spravované disky s klíči spravovanými zákazníky nabízí integrované prostředí s azure key vaultem. Můžete buď importovat [klíče RSA](../../key-vault/key-vault-hsm-protected-keys.md) do trezoru klíčů nebo generovat nové klíče RSA v úložišti klíčů Azure. 
+
+Disky spravované Azure zpracovávají šifrování a dešifrování zcela transparentním způsobem pomocí [šifrování obálek](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique). Šifruje data pomocí šifrovacího klíče (DEK) založeného na [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256, který je zase chráněn pomocí vašich klíčů. Služba Storage generuje šifrovací klíče dat a šifruje je pomocí klíčů spravovaných zákazníkem pomocí šifrování RSA. Šifrování obálek umožňuje pravidelně otáčet (měnit) klíče podle zásad dodržování předpisů, aniž by to mělo vliv na vaše virtuální počítače. Při otočení klíčů služba Storage znovu šifruje šifrovací klíče dat pomocí nových klíčů spravovaných zákazníkem. 
+
+Chcete-li používat klíče k šifrování a dešifrování sady DEK, musíte udělit přístup ke spravovaným diskům v trezoru klíčů. To vám umožní plnou kontrolu nad daty a klíči. Klíče můžete kdykoli zakázat nebo odvolat přístup ke spravovaným diskům. Využití šifrovacího klíče můžete také auditovat pomocí monitorování azure trezoru klíčů, abyste zajistili, že k vašim klíčům přistupují jenom spravované disky nebo jiné důvěryhodné služby Azure.
 
 U prémiových disků SSD, standardních disků SSD a standardních pevných disků: Když klíč zakážete nebo odstraníte, všechny virtuální počítače s disky používajícími tento klíč se automaticky vypnou. Poté virtuální chody nebude použitelné, pokud klíč je povolen znovu nebo přiřadit nový klíč.
 
@@ -187,6 +191,32 @@ az disk create -n $diskName -g $rgName -l $location --encryption-type Encryption
 diskId=$(az disk show -n $diskName -g $rgName --query [id] -o tsv)
 
 az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId 
+
+```
+
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>Změna klíče sady DiskEncryptionSet otočení matou klíče pro všechny prostředky odkazující na sadu DiskEncryptionSet
+
+```azurecli
+
+rgName=yourResourceGroupName
+keyVaultName=yourKeyVaultName
+keyName=yourKeyName
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+
+keyVaultId=$(az keyvault show --name $keyVaultName--query [id] -o tsv)
+
+keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+
+az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url $keyVaultKeyUrl --source-vault $keyVaultId
+
+```
+
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>Nalezení stavu šifrování disku na straně serveru
+
+```azurecli
+
+az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] -o tsv
 
 ```
 

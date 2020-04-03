@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a0bc6aef1becd53217be0eeb8c865b5c78a5d69f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239465"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585887"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Jak nainstalovat řadič příchozího přenosu dat aplikační brány (AGIC) pomocí nové aplikační brány
 
@@ -263,7 +263,7 @@ Instalace identity podu AAD do clusteru:
 
 
    > [!NOTE]
-   > A `identityResourceID` `identityClientID` jsou hodnoty, které byly vytvořeny během kroků [Vytvořit identitu](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity) a mohly být znovu získány pomocí následujícího příkazu:
+   > A `identityResourceID` `identityClientID` jsou hodnoty, které byly vytvořeny během kroků Nasazení součástí a mohly být znovu [získány](ingress-controller-install-new.md#deploy-components) pomocí následujícího příkazu:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

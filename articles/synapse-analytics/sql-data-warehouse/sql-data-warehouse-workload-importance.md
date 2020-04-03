@@ -1,6 +1,6 @@
 ---
 title: Důležitost úloh
-description: Pokyny pro nastavení důležitosti pro dotazy SQL Analytics v Azure Synapse Analytics.
+description: Pokyny pro nastavení důležitosti pro dotazy fondu SYNApse SQL v Azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3dde2ad4af17313bcfce28964f8be1e831317a5a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349962"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583157"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Důležitost pracovního vytížení Azure Synapse Analytics
 
-Tento článek vysvětluje, jak důležitost úlohy může ovlivnit pořadí provádění požadavků SQL Analytics v Azure Synapse.
+Tento článek vysvětluje, jak důležitost úlohy může ovlivnit pořadí provádění požadavků fondu SYNApse SQL v Azure Synapse.
 
 ## <a name="importance"></a>Důležitost
 
@@ -38,7 +38,7 @@ Kromě scénáře základní důležitosti popsaného výše s daty o prodeji a 
 
 ### <a name="locking"></a>Uzamčení
 
-Přístup ke zámkům pro čtení a zápis aktivity je jednou z oblastí přirozené tvrzení. Aktivity, jako je [přepínání oddílů](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) vyžadují zvýšené zámky.  Sql Analytics v Azure Synapse optimalizuje propustnost bez důležitosti úlohy. Optimalizace pro propustnost znamená, že při spuštění a fronty požadavky mají stejné potřeby uzamčení a prostředky jsou k dispozici, požadavky ve frontě můžete obejít požadavky s vyšší potřeby uzamčení, které byly doručeny do fronty požadavků dříve. Jakmile je důležitost pracovního vytížení použita na požadavky s vyššími potřebami uzamčení. Požadavek s vyšší důležitostí bude spuštěn před požadavkem s nižší důležitostí.
+Přístup ke zámkům pro čtení a zápis aktivity je jednou z oblastí přirozené tvrzení. Aktivity, jako je [přepínání oddílů](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) vyžadují zvýšené zámky.  Bez důležitosti úlohy optimalizuje fond Synapse SQL v Azure Synapse propropustnost. Optimalizace pro propustnost znamená, že při spuštění a fronty požadavky mají stejné potřeby uzamčení a prostředky jsou k dispozici, požadavky ve frontě můžete obejít požadavky s vyšší potřeby uzamčení, které byly doručeny do fronty požadavků dříve. Jakmile je důležitost pracovního vytížení použita na požadavky s vyššími potřebami uzamčení. Požadavek s vyšší důležitostí bude spuštěn před požadavkem s nižší důležitostí.
 
 Uvažujte následující příklad:
 
@@ -50,7 +50,7 @@ Pokud Q2 a Q3 mají stejný význam a Q1 je stále spuštěna, Q3 začne provád
 
 ### <a name="non-uniform-requests"></a>Nejednotné žádosti
 
-Dalším scénářem, kde důležitost může pomoci splnit požadavky na dotazování, je při odeslání požadavků s různými třídami prostředků.  Jak již bylo zmíněno, podle stejného významu sql analytics v Azure Synapse optimalizuje pro propustnost. Při smíšené velikosti požadavky (například smallrc nebo mediumrc) jsou ve frontě, SQL Analytics vybere nejbližší příchozí požadavek, který se vejde do dostupných prostředků. Pokud je použita důležitost pracovního vytížení, je naplánovánpožadavek nejvyšší důležitosti.
+Dalším scénářem, kde důležitost může pomoci splnit požadavky na dotazování, je při odeslání požadavků s různými třídami prostředků.  Jak již bylo zmíněno, podle stejného významu, Synapse SQL fond v Azure Synapse optimalizuje pro propustnost. Při smíšené velikosti požadavky (například smallrc nebo mediumrc) jsou ve frontě, Synapse SQL fond vybere nejbližší příchozí požadavek, který se vejde do dostupných prostředků. Pokud je použita důležitost pracovního vytížení, je naplánovánpožadavek nejvyšší důležitosti.
   
 Zvažte následující příklad na DW500c:
 

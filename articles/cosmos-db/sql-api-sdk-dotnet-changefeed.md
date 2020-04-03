@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444862"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619447"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK kanálu .NET Change Feed: Stažení a poznámky k verzi
 
@@ -26,7 +26,7 @@ ms.locfileid: "75444862"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Odpočinku](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Hromadný vykonavatel - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -45,6 +45,10 @@ ms.locfileid: "75444862"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>v2 staví
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* Přidána nová `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` metoda a `ICheckpointPartitionProcessorFactory`odpovídající veřejné rozhraní . To umožňuje implementaci `IPartitionProcessor` rozhraní používat integrovaný mechanismus vytváření kontrolních bodů. Nová továrna je podobná `IPartitionProcessorFactory`existujícímu `Create` , s `ILeaseCheckpointer` tím rozdílem, že její metoda také přebírá parametr.
+* Pro stejnou `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` `ChangeFeedProcessorBuilder` instanci lze `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`použít pouze jednu ze dvou metod, nebo .
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Zlepšení stability a diagnostiky:
@@ -88,7 +92,7 @@ ms.locfileid: "75444862"
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
 * Přidána podpora pro kolekce rozdělených zapůjčení. Klíč oddílu musí být definován jako /id.
-* Menší změna rozdělení: metody rozhraní IChangeFeedDocumentClient a třídy ChangeFeedDocumentClient byly změněny tak, aby zahrnovaly parametry RequestOptions a CancellationToken. IChangeFeedDocumentClient je pokročilý bod rozšiřitelnosti, který umožňuje poskytnout vlastní implementaci klienta dokumentu pro použití s change feed processor, např. Atd. S touto aktualizací kód, který implementuje IChangeFeedDocumentClient bude muset být změněn tak, aby zahrnovala nové parametry v implementaci.
+* Menší změna rozdělení: metody rozhraní IChangeFeedDocumentClient a třídy ChangeFeedDocumentClient byly změněny tak, aby zahrnovaly parametry RequestOptions a CancellationToken. IChangeFeedDocumentClient je pokročilý bod rozšiřitelnosti, který umožňuje poskytnout vlastní implementaci klienta dokumentu pro použití s change feed processor, například zdobit DocumentClient a zachytit všechna volání k němu provést další trasování, zpracování chyb, atd. S touto aktualizací kód, který implementuje IChangeFeedDocumentClient bude muset být změněn tak, aby zahrnovala nové parametry v implementaci.
 * Drobná vylepšení diagnostiky.
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
@@ -182,6 +186,7 @@ Jakýkoli požadavek na Cosmos DB pomocí vyřazené sady SDK bude službou odm�
 
 | Version | Datum vydání | Datum odchodu do důchodu |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2. dubna 2020 |--- |
 | [2.2.8](#2.2.8) |28. října 2019October 28, 2019 |--- |
 | [2.2.7](#2.2.7) |14. května 2019 |--- |
 | [2.2.6](#2.2.6) |29. ledna 2019 January 29, 2019 |--- |

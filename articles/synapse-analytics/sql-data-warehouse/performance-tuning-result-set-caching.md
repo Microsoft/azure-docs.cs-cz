@@ -1,6 +1,6 @@
 ---
 title: Ladění výkonu s využitím ukládání sad výsledků do mezipaměti
-description: Přehled funkcí ukládání výsledků do mezipaměti pro SQL Analytics v Azure Synapse Analytics
+description: Přehled funkcí ukládání výsledků do mezipaměti pro fond Synapse SQL v Azure Synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,26 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ef5be63b2068297aedf4cf12d914da09b1efed41
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474479"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583821"
 ---
-# <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím ukládání sad výsledků do mezipaměti  
-Je-li povoleno ukládání do mezipaměti sady výsledků, sql analytics automaticky ukládá výsledky dotazu do mezipaměti v databázi uživatelů pro opakované použití.  To umožňuje následné spuštění dotazu získat výsledky přímo z trvalé mezipaměti, takže recomputation není potřeba.   Ukládání do mezipaměti sady výsledků zlepšuje výkon dotazu a snižuje využití výpočetních prostředků.  Kromě toho dotazy pomocí sady výsledků uložených v mezipaměti nepoužívají žádné sloty souběžnosti a proto se nezapočítávají do existujících limitů souběžnosti. Z bezpečnostních důvodů mají uživatelé přístup k výsledkům uložený v mezipaměti pouze v případě, že mají stejná oprávnění k přístupu k datům jako uživatelé, kteří vytvářejí výsledky uložené v mezipaměti.  
+# <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím ukládání sad výsledků do mezipaměti
+
+Je-li povoleno ukládání do mezipaměti sady výsledků, fond souborů SQL synapse automaticky uloží výsledky dotazu do mezipaměti v databázi uživatelů pro opakované použití.  To umožňuje následné spuštění dotazu získat výsledky přímo z trvalé mezipaměti, takže recomputation není potřeba.   Ukládání do mezipaměti sady výsledků zlepšuje výkon dotazu a snižuje využití výpočetních prostředků.  Kromě toho dotazy pomocí sady výsledků uložených v mezipaměti nepoužívají žádné sloty souběžnosti a proto se nezapočítávají do existujících limitů souběžnosti. Z bezpečnostních důvodů mají uživatelé přístup k výsledkům uložený v mezipaměti pouze v případě, že mají stejná oprávnění k přístupu k datům jako uživatelé, kteří vytvářejí výsledky uložené v mezipaměti.  
 
 ## <a name="key-commands"></a>Klíčové příkazy
-[Zapnutí/vypnutí ukládání výsledků do mezipaměti pro databázi uživatelů](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
 
-[Zapnutí/vypnutí nastavení stavu nastavení ukládání výsledků do mezipaměti relace](https://docs.microsoft.com/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)
+[Zapnutí/vypnutí ukládání výsledků do mezipaměti pro databázi uživatelů](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[Kontrola velikosti sady výsledků uložené v mezipaměti](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest)  
+[Zapnutí/vypnutí nastavení stavu nastavení ukládání výsledků do mezipaměti relace](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[Vyčištění mezipaměti](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)
+[Kontrola velikosti sady výsledků uložené v mezipaměti](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+
+[Vyčištění mezipaměti](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="whats-not-cached"></a>Co není uloženo do mezipaměti  
 
@@ -39,7 +41,7 @@ Po zapnutí ukládání do mezipaměti sady výsledků pro databázi jsou výsle
 - Dotazy vracející data s velikostí řádku větší než 64 kB
 
 > [!IMPORTANT]
-> Operace k vytvoření mezipaměti sady výsledků a načtení dat z mezipaměti probíhají na řídicím uzlu instance SQL Analytics.
+> Operace k vytvoření mezipaměti sady výsledků a načtení dat z mezipaměti probíhají na řídicím uzlu instance fondu SQL Synapse.
 > Pokud je ukládání do mezipaměti sady výsledků zapnuto, může spuštění dotazů, které vrací sadu velkých výsledků (například >1 milion řádků), způsobit vysoké využití procesoru v řídicím uzlu a zpomalit celkovou odpověď na dotaz instance.  Tyto dotazy se běžně používají během zkoumání dat nebo etl operace. Aby se zabránilo zpětí řídicíuzel a způsobit problém s výkonem, uživatelé by měli vypnout sadu výsledků ukládání do mezipaměti v databázi před spuštěním těchto typů dotazů.  
 
 Spusťte tento dotaz po dobu, kterou pro dotaz zaberou operace ukládání do mezipaměti sady výsledků:
@@ -76,7 +78,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 Maximální velikost mezipaměti sady výsledků je 1 TB na databázi.  Výsledky uložené v mezipaměti jsou automaticky zneplatněny při změně podkladových dat dotazu.  
 
-Vyřazovací služba mezipaměti je spravována službou SQL Analytics automaticky podle tohoto plánu: 
+Vyřazovací paměť je spravována automaticky podle tohoto plánu: 
 - Každých 48 hodin, pokud sada výsledků nebyla použita nebo byla zrušena. 
 - Když se mezipaměť sady výsledků blíží maximální velikosti.
 
@@ -87,4 +89,5 @@ Uživatelé mohou ručně vyprázdnit celou mezipaměť sady výsledků pomocí 
 Pozastavenídatabáze nevyprázdní sadu výsledků v mezipaměti.  
 
 ## <a name="next-steps"></a>Další kroky
+
 Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md). 

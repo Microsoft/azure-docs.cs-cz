@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f2019f8538b6997d8fe802a1e90069e88274eb0c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8e0515727c2155b91f18398bd9def700f4a15b34
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349127"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619413"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Tahák pro Azure Synapse Analytics (dříve SQL DW)
 
@@ -115,7 +115,7 @@ Skupiny prostředků se používají jako způsob přidělení paměti dotazům.
 
 Pokud si všimnete, že dotazy trvají příliš dlouho, zkontrolujte, jestli vaši uživatelé nepoužívají velké třídy prostředků. Velké třídy prostředků využívají velké množství slotů souběžnosti. Můžou způsobit hromadění dalších dotazů ve frontě.
 
-Nakonec pomocí Gen2 [fondu SQL](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse), každá třída prostředků získá 2,5 krát více paměti než Gen1.
+Nakonec pomocí Gen2 [fondu SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse), každá třída prostředků získá 2,5 krát více paměti než Gen1.
 
 Další informace o práci s [třídami prostředků a souběžností](resource-classes-for-workload-management.md).
 

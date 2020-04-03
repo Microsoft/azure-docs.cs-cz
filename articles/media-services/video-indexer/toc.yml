@@ -4,7 +4,7 @@
   items:
     - name: Co je Video Indexer?
       href: video-indexer-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Začínáme
@@ -15,7 +15,7 @@
   items:
     - name: Použití rozhraní API Video Indexeru
       href: video-indexer-use-apis.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky Video Indexeru
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
@@ -111,3 +111,5 @@
       href: release-notes.md
     - name: User Voice
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
+    - name: Blogy
+      href: 'https://azure.microsoft.com/blog/tag/video-indexer/'

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c10ec94f6c089b5e5466f5dce73d32d6ce917b3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422827"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618751"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -99,7 +99,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > [!NOTE]
 > Pokud jste začali emulátor s /Key možnost, použijte generovaný `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`klíč namísto . Další informace o možnosti /Key naleznete v [tématu Reference nástroje příkazového řádku.](#command-line)
 
-Stejně jako u Azure Cosmos DB podporuje emulátor Azure Cosmos jenom zabezpečenou komunikaci přes SSL.
+Stejně jako u Azure Cosmos DB podporuje emulátor Azure Cosmos jenom zabezpečenou komunikaci prostřednictvím TLS.
 
 ## <a name="running-on-a-local-network"></a>Spuštění v místní síti
 
@@ -215,17 +215,17 @@ Spusťte emulátor z příkazového řádku správce s příkazovým příkazem 
   :> g.V()
   ```
 
-## <a name="export-the-ssl-certificate"></a>Export certifikátu SSL
+## <a name="export-the-tlsssl-certificate"></a>Export certifikátu TLS/SSL
 
 Jazyky a moduly runtime rozhraní .NET používají k bezpečnému připojení k místnímu emulátoru služby Azure Cosmos DB úložiště certifikátů systému Windows. Další jazyky mají vlastní metody správy a použití certifikátů. Java používá vlastní [úložiště certifikátů](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html), zatímco Python používá [obálky soketu](https://docs.python.org/2/library/ssl.html).
 
 Pokud chcete získat certifikát pro použití s jazyky a moduly runtime, které se neintegrují s úložištěm certifikátů systému Windows, budete ho muset exportovat pomocí Správce certifikátů systému Windows. Můžete ji spustit spuštěním certlm.msc nebo postupujte podle pokynů krok za krokem v [exportu certifikátů emulátoru Azure Cosmos](./local-emulator-export-ssl-certificates.md). Jakmile je správce certifikátů spuštěn, otevřete osobní certifikáty, jak je zobrazeno níže, a exportujte certifikát s popisným názvem „DocumentDBEmulatorCertificate“ jako soubor X.509 (.cer) s kódováním BASE-64.
 
-![Certifikát SSL místního emulátoru služby Azure Cosmos DB](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+![Certifikát TLS/SSL místního emulátoru Azure Cosmos DB](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
 Certifikát X.509 lze importovat do úložiště certifikátů Javy podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store). Po importu certifikátu do úložiště certifikátů se klienti rozhraní API SQL a Azure Cosmos DB pro MongoDB budou moct připojit k emulátoru Azure Cosmos.
 
-Při připojování k emulátoru ze sad SDK Pythonu a Node.js je zakázáno ověřování SSL.
+Při připojování k emulátoru z pythonu a node.js SDK je ověření TLS zakázáno.
 
 ## <a name="command-line-tool-reference"></a><a id="command-line"></a>Reference nástroje příkazového řádku
 Z umístění instalace můžete pomocí příkazového řádku spustit a zastavit emulátor, nakonfigurovat možnosti a provádět další operace.
@@ -260,8 +260,8 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Micro
 | StopTraces     | Zastavit shromažďování protokoly trasování ladění pomocí LOGMAN. | Microsoft.Azure.cosmos.Emulator.exe /StopTraces  | |
 | StartWprTraces  |  Začněte shromažďovat protokoly trasování ladění pomocí nástroje Windows Performance Recording Tool. | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | Ukončení shromažďování protokolů trasování ladění pomocí nástroje Windows Performance Recording Tool. | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
-|FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátor regeneruje svůj certifikát SSL podepsaný svým držitelem, pokud zabezpečení certifikátu neobsahuje název domény hostitele emulátoru, místní adresu IPv4, "localhost" a "127.0.0.1". S touto volbou emulátor se nezdaří při spuštění místo. Potom byste měli použít /GenCert možnost vytvořit a nainstalovat nový certifikát SSL s vlastním podpisem. | Microsoft.Azure.cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. volitelně včetně seznamu dalších názvů DNS oddělených čárkami pro přístup k emulátoru v síti. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: Volitelný seznam dalších názvů DNS oddělených čárkami  |
+|FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátor regeneruje svůj certifikát TLS/SSL podepsaný svým držitelem, pokud zabezpečení certifikátu neobsahuje název domény hostitele emulátoru, místní adresu IPv4, "localhost" a "127.0.0.1". S touto volbou emulátor se nezdaří při spuštění místo. Potom byste měli použít /GenCert možnost vytvořit a nainstalovat nový certifikát TLS/SSL s vlastním podpisem. | Microsoft.Azure.cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert | Vygenerujte a nainstalujte nový certifikát TLS/SSL podepsaný svým držitelem. volitelně včetně seznamu dalších názvů DNS oddělených čárkami pro přístup k emulátoru v síti. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: Volitelný seznam dalších názvů DNS oddělených čárkami  |
 | DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | Microsoft.Azure.cosmos.Emulator.exe /DirectPorts:\<directports\> | \<přímé porty\>: seznam 4 portů oddělených čárkami |
 | Klíč |Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64. | Microsoft.Azure.Cosmos.Emulator.exe /Klíč:\<klíč\> | \<klíč\>: klíč musí být 64bajtový vektor s kódováním base-64.|
 | EnableRateLimiting | Určuje, že je povoleno chování omezující četnost požadavků. |Microsoft.Azure.cosmos.Emulator.exe /EnableRateLimiting | |
@@ -398,7 +398,7 @@ powershell .\importcert.ps1
 Starting interactive shell
 ```
 
-Nyní použijte koncový bod a hlavní klíč z odpovědi ve svém klientovi a importujte certifikát SSL do svého hostitele. Pokud chcete importovat certifikát SSL, spusťte následující příkazy z příkazového řádku správce:
+Nyní použijte koncový bod a hlavní klíč z odpovědi ve vašem klientovi a importujte certifikát TLS/SSL do hostitele. Chcete-li importovat certifikát TLS/SSL, postupujte z příkazového řádku správce následujícím:
 
 Z příkazového řádku:
 
@@ -527,7 +527,7 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak používat místní emulátor pro bezplatný místní vývoj. Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak exportovat certifikáty SSL emulátoru.
+V tomto kurzu jste zjistili, jak používat místní emulátor pro bezplatný místní vývoj. Nyní můžete přejít k dalšímu kurzu a naučit se exportovat certifikáty TLS/SSL emulátoru.
 
 > [!div class="nextstepaction"]
 > [Export certifikátů emulátoru Azure Cosmos](local-emulator-export-ssl-certificates.md)

@@ -1,7 +1,6 @@
 ---
 title: Zabezpečení databáze
-description: Tipy pro zabezpečení databáze a vývoj řešení ve zdroji fondu SQL sql analytics.
-services: synapse-analytics
+description: Tipy pro zabezpečení databáze a vývoj řešení v synapse sql fondu prostředku.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -12,25 +11,27 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6ae9580803563971764eec4bd18fcc2430cee06d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 46d32fdca615833bd602480ac182585da898ab98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350203"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586428"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Zabezpečení databáze v Azure Synapse
+
 > [!div class="op_single_selector"]
 > * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
-> * [Ověřování](sql-data-warehouse-authentication.md)
+> * [Authentication](sql-data-warehouse-authentication.md)
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
-Tento článek vás provede základy zabezpečení fondu SQL v rámci SQL Analytics. Zejména tento článek vás nastartuje s prostředky pro omezení přístupu, ochranu dat a monitorování aktivit v databázi zřízené pomocí fondu SQL.
+Tento článek vás provede základy zabezpečení vašeho fondu SYNApse SQL. Zejména tento článek vás nastartuje s prostředky pro omezení přístupu, ochranu dat a monitorování aktivit v databázi zřízené pomocí fondu SQL.
 
 ## <a name="connection-security"></a>Zabezpečení připojení
+
 Zabezpečení připojení spočívá v použití pravidel brány firewall a šifrovaného připojení k omezení a zabezpečení připojení k databázi.
 
 Pravidla brány firewall používají server i databáze k odmítnutí pokusů o připojení z adres IP, které nebyly explicitně uvedeny na seznamu povolených adres. Chcete-li povolit připojení z veřejné IP adresy vaší aplikace nebo klientského počítače, musíte nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí portálu Azure, rozhraní REST API nebo prostředí PowerShell. 
@@ -41,7 +42,8 @@ Azure Synapse Analytics používá pravidla brány firewall IP na úrovni server
 
 Připojení k fondu SQL jsou ve výchozím nastavení šifrována.  Změna nastavení připojení za účelem zakázání šifrování je ignorována.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
+
 Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. Fond SQL aktuálně podporuje ověřování serveru SQL Server s uživatelským jménem a heslem a pomocí služby Azure Active Directory. 
 
 Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Pomocí těchto pověření můžete ověřit do libovolné databáze na tomto serveru jako vlastník databáze nebo "dbo" prostřednictvím ověřování serveru SQL Server.

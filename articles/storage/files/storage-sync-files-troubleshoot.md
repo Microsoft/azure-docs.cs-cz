@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ebe5ddf72e13b1a66ded7a90976e0b6209a26dfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060971"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607497"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync slouží k centralizaci sdílených složek vaší organizace v souborech Azure a současně zachovávejte flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. K místnímu přístupu k datům můžete použít libovolný protokol, který je k dispozici v systému Windows Server, včetně protokolů SMB, NFS a FTPS. Můžete mít tolik cache, kolik potřebujete po celém světě.
@@ -187,7 +187,7 @@ Set-AzStorageSyncServerEndpoint `
 
 K tomuto problému může dojít, pokud proces sledování synchronizace úložiště (AzureStorageSyncMonitor.exe) není spuštěn nebo server není schopen získat přístup ke službě Synchronizace souborů Azure.
 
-Na serveru, který se na portálu zobrazuje jako "Zobrazuje se offline", se podívejte na ID události 9301 v protokolu událostí telemetrie (umístěném v části Aplikace a služby\Microsoft\FileSync\Agent v Prohlížeči událostí) a zjistěte, proč server nemůže získat přístup k synchronizaci souborů Azure Služby. 
+Na serveru, který se na portálu zobrazuje jako "Zobrazuje se offline", se podívejte na ID události 9301 v protokolu událostí telemetrie (umístěném v části Aplikace a služby\Microsoft\FileSync\Agent v Prohlížeči událostí), abyste zjistili, proč server nemůže získat přístup ke službě Synchronizace souborů Azure. 
 
 - Pokud **getnextjob dokončena se stavem: 0** je zaznamenána, server může komunikovat se službou Azure File Sync. 
     - Otevřete na serveru Správce úloh a ověřte, že je spuštěný proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe). Pokud tento proces není spuštěný, zkuste nejprve server restartovat. Pokud restartování serveru problém nevyřeší, upgradujte na nejnovější [verzi agenta](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) Synchronizace souborů Azure. 
@@ -588,7 +588,7 @@ Pokud tato chyba přetrvává déle než několik hodin, vytvořte žádost o po
 | **Text chyby** | CERT_E_UNTRUSTEDROOT |
 | **Nutná náprava** | Ano |
 
-K této chybě může dojít v případě, že vaše organizace používá koncovou proxy SSL nebo že škodlivá entita zachytává provoz mezi vaším serverem a službou Synchronizace souborů Azure. Pokud jste si jistí, že se toto chování očekává (protože vaše organizace používá koncovou proxy SSL), přepište registr a přeskočte ověření certifikátu.
+K této chybě může dojít, pokud vaše organizace používá ukončující proxy server TLS nebo pokud škodlivá entita zachycuje provoz mezi vaším serverem a službou Azure File Sync. Pokud jste si jisti, že se to očekává (protože vaše organizace používá ukončující proxy server TLS), přeskočíte ověření certifikátu s přepsáním registru.
 
 1. Vytvořte hodnotu registru SkipVerifyingPinnedRootCertificate.
 
@@ -602,7 +602,7 @@ K této chybě může dojít v případě, že vaše organizace používá konco
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Když nastavíte tuto hodnotu registru, agent Synchronizace souborů Azure přijme při přenosu dat mezi serverem a cloudovou službou jakýkoli místně důvěryhodný certifikát SSL.
+Nastavením této hodnoty registru přijme agent Azure File Sync při přenosu dat mezi serverem a cloudovou službou jakýkoli místně důvěryhodný certifikát TLS/SSL.
 
 <a id="-2147012894"></a>**Nelze navázat spojení se službou.**  
 
@@ -1260,7 +1260,7 @@ Pokud problém není vyřešen, spusťte nástroj AFSDiag:
 6. Soubor ZIP obsahující protokoly a trasovací soubory je uložen do zadaného výstupního adresáře.
 
 ## <a name="see-also"></a>Viz také
-- [Monitorování Synchronizace souborů Azure](storage-sync-files-monitoring.md)
+- [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
 - [Nejčastější dotazy k souborům Azure](storage-files-faq.md)
 - [Řešení potíží se službou Azure Files ve Windows](storage-troubleshoot-windows-file-connection-problems.md)
 - [Poradce při potížích se soubory Azure v Linuxu](storage-troubleshoot-linux-file-connection-problems.md)

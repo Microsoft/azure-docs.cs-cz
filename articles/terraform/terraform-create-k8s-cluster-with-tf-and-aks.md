@@ -4,12 +4,12 @@ description: V tomto kurzu vytvoříte cluster Kubernetes se službou Azure Kube
 keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7a84d7562e99e53ff7be75b7d40795cd3f9e203
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78945296"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618925"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Kurz: Vytvoření clusteru Kubernetes se službou Azure Kubernetes pomocí Terraform
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak provést následující úkoly:
 
 - **Nakonfigurovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](terraform-install-configure.md).
 
-- **Instanční objekt Azure:** Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty appId, displayName, password a tenant.
+- **Instanční objekt Azure**: Postupujte podle pokynů v části **Vytvořit instanční objekt** v článku Vytvoření [instančního objektu Azure pomocí azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty appId, displayName, password a tenant.
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
@@ -303,7 +303,7 @@ V této části se zobrazí následující úkoly:
 
 ## <a name="create-the-kubernetes-cluster"></a>Vytvoření clusteru Kubernetes
 
-V této části zjistíte, jak použít příkaz `terraform init` k vytvoření prostředků definovaných konfiguračními soubory, které jste vytvořili v předchozích částech.
+V této části se zobrazí `terraform init` způsob, jak pomocí příkazu vytvořit prostředky definované v konfiguračních souborech, které jste vytvořili v předchozích částech.
 
 1. V prostředí Cloud Shell inicializujte Terraform. Nahraďte zástupné symboly odpovídajícími hodnotami pro vaše prostředí.
 

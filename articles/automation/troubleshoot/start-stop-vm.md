@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73a9680cc570179c47b527a4844488da69193cb3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851380"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586103"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Poradce při potížích s řešením spuštění a zastavení virtuálních disponecí mimo pracovní dobu
 
@@ -137,7 +137,7 @@ Tato chyba může být způsobena jedním z následujících důvodů:
 
 V následujícím seznamu naleznete možná řešení problému nebo míst, která chcete hledat:
 
-* Při použití [sekvenční scénář](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) řešení Start/Stop virtuálního počítače během mimo pracovní dobu, musíte se ujistit, že každý virtuální počítače, který chcete spustit nebo zastavit má správnou značku. Ujistěte se, že virtuální chod, `sequencestart` které chcete spustit, mají značku `sequencestop` a virtuální chod, které chcete zastavit, mají značku. Obě značky vyžadují kladnou hodnotu celéčíslo. Pomocí dotazu podobného následujícímu příkladu můžete vyhledat všechny virtuální aplikace se značkami a jejich hodnotami.
+* Při použití [sekvenční scénář](../automation-solution-vm-management.md) řešení Start/Stop virtuálního počítače během mimo pracovní dobu, musíte se ujistit, že každý virtuální počítače, který chcete spustit nebo zastavit má správnou značku. Ujistěte se, že virtuální chod, `sequencestart` které chcete spustit, mají značku `sequencestop` a virtuální chod, které chcete zastavit, mají značku. Obě značky vyžadují kladnou hodnotu celéčíslo. Pomocí dotazu podobného následujícímu příkladu můžete vyhledat všechny virtuální aplikace se značkami a jejich hodnotami.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
@@ -187,7 +187,7 @@ Postupujte podle následujících kroků, abyste zajistili, že je řešení spr
 2. Ujistěte se, že skupiny prostředků pro virtuální počítače, které mají být spuštěny nebo zastaveny, jsou v proměnných `External_Start_ResourceGroupNames` nebo `External_Stop_ResourceGroupNames` v závislosti na vaší situaci.
 3. Otestujte změny spuštěním `SequencedStartStop_Parent` sady Runbook s parametrem WHATIF nastaveným na hodnotu True, abyste zobrazili náhled změn.
 
-Podrobnější a další pokyny, jak používat řešení ke spuštění a zastavení virtuálních počítačů v pořadí, najdete [v tématu Spuštění a zastavení virtuálních počítačů v pořadí](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
+Podrobnější a další pokyny, jak používat řešení ke spuštění a zastavení virtuálních počítačů v pořadí, najdete [v tématu Spuštění a zastavení virtuálních počítačů v pořadí](../automation-solution-vm-management.md).
 
 ## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Scénář: Spuštění a zastavení úlohy virtuálního počítače se nezdaří s 403 zakázanýstav
 

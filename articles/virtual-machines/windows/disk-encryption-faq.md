@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc6a3d8d736209f762959bca6f8ad379c14203f
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74384271"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582713"
 ---
 # <a name="azure-disk-encryption-for-windows-vms-faq"></a>Nejčastější dotazy k šifrování disku Azure pro virtuální počítače s Windows
 
@@ -36,7 +36,7 @@ Chcete-li začít, přečtěte si [přehled šifrování disku Azure](disk-encry
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Jaké velikosti virtuálních počítačů a operační systémy podporují Azure Disk Encryption?
 
-V článku [přehled azure diskové šifrování](disk-encryption-overview.md) uvádí [velikosti virtuálních počítačů](disk-encryption-overview.md#supported-vm-sizes) a operační systémy [virtuálních počítačů,](disk-encryption-overview.md#supported-operating-systems) které podporují azure disk encryption.
+V článku [přehled azure diskové šifrování](disk-encryption-overview.md) uvádí [velikosti virtuálních počítačů](disk-encryption-overview.md#supported-vms) a operační systémy [virtuálních počítačů,](disk-encryption-overview.md#supported-operating-systems) které podporují azure disk encryption.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Můžu šifrovat spouštěcí i datové svazky pomocí Azure Disk Encryption?
 

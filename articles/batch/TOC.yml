@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Batch?
       href: batch-technical-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Spuštění dávkové úlohy – CLI
@@ -31,7 +31,7 @@
       href: tutorial-batch-functions.md
     - name: Skripty Pythonu s Data Factory
       href: tutorial-run-python-batch-azure-data-factory.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       items:
@@ -69,6 +69,8 @@
   items:
     - name: Správa účtů služby Batch
       items:
+        - name: Správa vašeho účtu
+          href: batch-manage-account-basics.md
         - name: Správa účtů služby Batch pomocí portálu
           href: batch-account-create-portal.md
         - name: Správa účtů služby Batch pomocí rozhraní Batch Management .NET
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
           href: credential-access-key-vault.md
+    - name: Použití balíčků aplikací
+      href: batch-application-packages.md
     - name: Kopírování souborů a aplikací do uzlů fondu
       items:
+        - name: Kopírování aplikací a dat do uzlů fondu
+          href: batch-applications-to-pool-nodes.md
         - name: Použití balíčků aplikací
           href: batch-application-packages.md
         - name: Vytváření souborů prostředků
@@ -192,7 +198,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/batch
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.batch
     - name: .NET
       href: /dotnet/api/overview/azure/batch

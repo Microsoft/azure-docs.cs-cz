@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: d01d749300c6ad07e498c75c9487b554810e68cd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 868c7e3956f20837b3774c0958842a7835579a04
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454070"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607503"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změna velikosti nahraných obrázků pomocí mřížky událostí
 
@@ -213,7 +213,7 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Zdrojů** | Váš účet služby Blob Storage | Vyberte účet služby Blob Storage, který jste vytvořili. |
     | **Typy událostí** | Vytvoření objektu blob | Zrušte zaškrtnutí všech typů komě **Vytvoření objektu blob**. Do funkce se předají jenom události typu `Microsoft.Storage.BlobCreated`. |
     | **Typ koncového bodu** | automaticky generovaný | Předdefinováno jako **funkce Azure**. |
-    | **Koncový bod** | automaticky generovaný | Použijte adresu URL koncového bodu, která se vygeneruje. |
+    | **Koncový bod** | automaticky generovaný | Název funkce. V tomto případě je **miniatura**. |
 
 4. Přepněte na kartu **Filtry** a proveďte následující akce:
     1. Vyberte **Možnost Povolit filtrování předmětů.**

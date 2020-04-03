@@ -4,12 +4,12 @@ description: Zjistěte, jak nainstalovat a nakonfigurovat řadič příchozího 
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 10422595b85c71020225df694778e6b8ae7e0185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e79bbe76a751097acd5c9d3c42dbd4020b6866b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191346"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617276"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření řadiče příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,12 @@ Dále vytvořte veřejnou IP adresu s *metodou statického* přidělení pomocí
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
-Nyní nasaďte graf *nginx-ingress* s helmem. Přidejte `--set controller.service.loadBalancerIP` parametr a zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku. Pro přidání redundance se nasadí dvě repliky kontrolerů příchozího přenosu dat NGINX s parametrem `--set controller.replicaCount`. Chcete-li plně využít spuštění replik řadiče příchozího přenosu dat, ujistěte se, že je více než jeden uzel v clusteru AKS.
+Nyní nasaďte graf *nginx-ingress* s helmem. Pro přidání redundance se nasadí dvě repliky kontrolerů příchozího přenosu dat NGINX s parametrem `--set controller.replicaCount`. Chcete-li plně využít spuštění replik řadiče příchozího přenosu dat, ujistěte se, že je více než jeden uzel v clusteru AKS.
+
+Musíte předat dva další parametry vydání helmu, aby byl řadič příchozího přenosu dat informován o statické IP adrese systému vyrovnávání zatížení, která má být přidělena službě řadiče příchozího přenosu dat, a popisku názvu DNS, který je použit pro prostředek veřejné IP adresy. Aby certifikáty HTTPS fungovaly správně, popisek názvu DNS se používá ke konfiguraci hlavního názvu domény pro ip adresu řadiče příchozího přenosu dat.
+
+1. Přidejte `--set controller.service.loadBalancerIP` parametr. Zadejte vlastní veřejnou IP adresu, která byla vytvořena v předchozím kroku.
+1. Přidejte `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` parametr. Zadejte popisek názvu DNS, který se použije na veřejnou ADRESU IP, která byla vytvořena v předchozím kroku.
 
 Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu. Uzly systému Windows Server (aktuálně ve verzi preview v AKS) by neměly spouštět řadič příchozího přenosu dat. Selektor uzlů se specifikuje pomocí parametru `--set nodeSelector`, aby plánovači Kubernetes oznámil, že má spustit kontroler příchozího přenosu dat NGINX v uzlu Linuxu.
 
@@ -57,6 +62,8 @@ Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu
 
 > [!TIP]
 > Pokud chcete povolit [uchování IP zdrojů klienta][client-source-ip] pro požadavky `--set controller.service.externalTrafficPolicy=Local` na kontejnery v clusteru, přidejte do příkazu Helm install. Zdrojová ADRESA klienta je uložena v hlavičce požadavku v části *X-Forwarded-For*. Při použití řadiče příchozího přenosu dat s povoleným uchováním IP zdroje klienta nebude předávací přenos SSL fungovat.
+
+Aktualizujte následující skript s **IP adresou** řadiče příchozího přenosu dat a **jedinečným názvem,** který chcete použít pro předponu FQDN:
 
 ```console
 # Create a namespace for your ingress resources
@@ -69,6 +76,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="40.121.63.72"
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
 ```
 
 Při vytvoření služby Vyrovnávání zatížení Kubernetes pro řadič příchozího přenosu dat NGINX je přiřazena vaše statická IP adresa, jak je znázorněno na následujícím příkladu výstupu:
@@ -83,27 +91,14 @@ nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none> 
 
 Zatím nebyla vytvořena žádná pravidla příchozího přenosu dat, takže při procházení veřejné IP adresy se zobrazí výchozí stránka řadiče příchozího přenosu dat NGINX 404. Pravidla příchozího přenosu dat jsou konfigurována v následujících krocích.
 
-## <a name="configure-a-dns-name"></a>Konfigurace názvu DNS
-
-Aby certifikáty HTTPS fungovaly správně, nakonfigurujte hlavní obrazový výstup pro ip adresu řadiče příchozího přenosu dat. Aktualizujte následující skript s IP adresou řadiče příchozího přenosu dat a jedinečným názvem, který chcete použít pro hlavní název domény:
+Můžete ověřit, zda byl použit popisek názvu DNS, takto dotazem na hlavní název domény na veřejné ADRESE IP následujícím způsobem:
 
 ```azurecli-interactive
 #!/bin/bash
-
-# Public IP address of your ingress controller
-IP="40.121.63.72"
-
-# Name to associate with public IP address
-DNSNAME="demo-aks-ingress"
-
-# Get the resource-id of the public ip
-PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
-
-# Update public ip address with DNS name
-az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query $("[?name=='myAKSPublicIP'].[dnsSettings.fqdn]") -o tsv
 ```
 
-Řadič příchozího přenosu dat je nyní přístupný prostřednictvím hlavního přístupu k mohou-li být přístupná.
+The ingress controller is now accessible through the IP address or the FQDN.
 
 ## <a name="install-cert-manager"></a>Instalace nástroje cert-manager
 

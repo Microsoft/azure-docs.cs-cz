@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7f27215c7ba053933d9d12658253ea92aefa526
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351116"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586309"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednotky datového skladu (DWUs)
 
@@ -24,7 +24,7 @@ Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU) pro 
 
 ## <a name="what-are-data-warehouse-units"></a>Co jsou jednotky datového skladu
 
-[Fond SQL](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) představuje kolekci analytických prostředků, které jsou zřizovány při použití [sql analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vi. Tyto tři prostředky jsou sdružené do jednotek výpočetního měřítka nazývaných jednotky datového skladu (DW). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služeb změní počet dlus, které jsou k dispozici v systému, což zase upravuje výkon a náklady na váš systém.
+Fond [SQL Synapse](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) představuje kolekci analytických prostředků, které jsou zřizovány. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vi. Tyto tři prostředky jsou sdružené do jednotek výpočetního měřítka nazývaných jednotky datového skladu (DW). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služeb změní počet dlus, které jsou k dispozici v systému, což zase upravuje výkon a náklady na váš systém.
 
 Pro vyšší výkon můžete zvýšit počet jednotek datového skladu. Pro nižší výkon snižte jednotky datového skladu. Náklady na úložiště a výpočetní prostředky se účtují zvlášť, takže změna jednotek datového skladu nemá vliv na náklady na úložiště.
 

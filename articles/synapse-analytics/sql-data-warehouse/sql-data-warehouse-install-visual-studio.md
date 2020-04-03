@@ -1,6 +1,6 @@
 ---
 title: Instalace Visual Studia 2019
-description: Instalace nástrojů pro vývoj sady Visual Studio a serveru SQL Server (SSDT) pro sql analytics
+description: Instalace visual studio a sql server vývojové nástroje (SSDT) pro Synapse SQL
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
@@ -12,12 +12,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d0a1772706fa838f51322d5f5d5bd1b46eb9144a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: aa2f903611f52f8f7a8ede0040b592a7dddd0e89
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351622"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584465"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Začínáme s Visual Studio 2019
 Visual Studio **2019** SQL Server Data Tools (SSDT) je jediný nástroj, který vám umožní provést následující:
@@ -34,7 +34,7 @@ Viz [Stažení Visual Studia 2019][] ke stažení a instalaci Visual Studia **16
 
 ## <a name="unsupported-features-in-ssdt"></a>Nepodporované funkce v SSDT
 
-Jsou chvíle, kdy verze funkcí pro SQL Analytics nemusí zahrnovat podporu pro SSDT. Následující funkce nejsou v současné době podporovány:
+Jsou chvíle, kdy verze funkcí pro Synapse SQL nemusí zahrnovat podporu pro SSDT. Následující funkce nejsou v současné době podporovány:
 
 - [Zhmotněné pohledy](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (probíhá)
 - [Objednané clusterované indexy columnstore](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (probíhá)

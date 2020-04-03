@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 7f4d955583b82b224e3c963431c234ef4690198a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff4455571aa5cfa5c9214bdf18af1853b0cef352
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063736"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585415"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojení aplikace Node.js Mongoose k Azure Cosmos DB
 
@@ -36,6 +36,16 @@ Pojďme vytvořit účet Cosmos. Pokud již máte účet, který chcete použít
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
+### <a name="create-a-database"></a>Vytvoření databáze 
+V této aplikaci se budeme zabývat dvěma způsoby vytváření kolekcí v Azure Cosmos DB: 
+- **Ukládání každého objektového modelu do samostatné kolekce**: Doporučujeme vytvořit [databázi s vyhrazenou propustností](set-throughput.md#set-throughput-on-a-database). Použití tohoto kapacitního modelu vám poskytne lepší efektivitu nákladů.
+
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Kurz Node.js – snímek obrazovky portálu Azure, který ukazuje, jak vytvořit databázi v Průzkumníku dat pro účet Azure Cosmos DB pro použití s modulem Mongoose Node":::
+
+- **Ukládání všech objektových modelů v jedné kolekci Cosmos DB**: Pokud dáváte přednost uložení všech modelů v jedné kolekci, stačí vytvořit novou databázi bez výběru možnosti Provision Propustnost. Pomocí tohoto modelu kapacity vytvoříte každou kolekci s vlastní kapacitou propustnosti pro každý objektový model.
+
+Po vytvoření databáze použijete název v následující `COSMOSDB_DBNAME` proměnné prostředí.
+
 ## <a name="set-up-your-nodejs-application"></a>Nastavení aplikace Node.js
 
 >[!Note]
@@ -47,8 +57,8 @@ Pojďme vytvořit účet Cosmos. Pokud již máte účet, který chcete použít
 
     Stačí odpovědět na otázky a váš projekt bude připravený k použití.
 
-1. Přidejte do složky nový soubor a pojmenujte ho ```index.js```.
-1. Pomocí některé z možností příkazu ```npm install``` nainstalujte potřebné balíčky:
+2. Přidejte do složky nový soubor a pojmenujte ho ```index.js```.
+3. Pomocí některé z možností příkazu ```npm install``` nainstalujte potřebné balíčky:
    * Mongoose: ```npm install mongoose@5 --save```
 
      > [!Note]
@@ -59,26 +69,26 @@ Pojďme vytvořit účet Cosmos. Pokud již máte účet, který chcete použít
      >[!Note]
      > Příznak ```--save``` přidá závislost do souboru package.json.
 
-1. Importujte závislosti v souboru index.js.
+4. Importujte závislosti v souboru index.js.
 
     ```JavaScript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-1. Do souboru ```.env``` přidejte váš připojovací řetězec služby Cosmos DB a název služby Cosmos DB. Nahraďte zástupné symboly {cosmos-account-name} a {dbname} vlastním názvem účtu Cosmos a názvem databáze bez symbolů složených závorek.
+5. Do souboru ```.env``` přidejte váš připojovací řetězec služby Cosmos DB a název služby Cosmos DB. Nahraďte zástupné symboly {cosmos-account-name} a {dbname} vlastním názvem účtu Cosmos a názvem databáze bez symbolů složených závorek.
 
     ```JavaScript
    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
-   COSMODDB_USER = "<Azure Cosmos account's user name>"
-   COSMOSDB_PASSWORD = "<Azure Cosmos account passowrd>"
+   COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+   COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
    COSMOSDB_PORT=10255
     ```
 
-1. Připojte se k Cosmos DB pomocí rozhraní Mongoose přidáním následujícího kódu na konec index.js.
+6. Připojte se k Cosmos DB pomocí rozhraní Mongoose přidáním následujícího kódu na konec index.js.
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -94,19 +104,15 @@ Pojďme vytvořit účet Cosmos. Pokud již máte účet, který chcete použít
 
     Po připojení ke službě Azure Cosmos DB můžete v Mongoose začít nastavovat objektové modely.
 
-## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>Upozornění na použití Mongoose s Cosmos DB
+## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>Osvědčené postupy pro používání mongoose s Cosmos DB
 
-Pro každý model, který vytvoříte, mongoose vytvoří novou kolekci. Však vzhledem k modelu fakturace na kolekci Cosmos DB, nemusí být nákladově nejefektivnější způsob, jak jít, pokud máte více objektových modelů, které jsou řídce osídlené.
+Pro každý model, který vytvoříte, mongoose vytvoří novou kolekci. To je nejlépe řešit pomocí [možnosti propustnost úrovně databáze](set-throughput.md#set-throughput-on-a-database), která byla dříve diskutována. Chcete-li použít jednu kolekci, musíte použít Mongoose [Discriminators](https://mongoosejs.com/docs/discriminators.html). Diskriminátory představují mechanismus dědičnosti schématu. Umožňují existenci více modelů s překrývajícími se schématy nad stejnou základní kolekcí MongoDB.
 
-Tento návod popisuje oba modely. Nejprve se zaměříme na návod na ukládání jednoho typu dat na kolekci. Takto se Mongoose chová standardně.
-
-V Mongoose existuje také koncept označovaný jako [Diskriminátory](https://mongoosejs.com/docs/discriminators.html). Diskriminátory představují mechanismus dědičnosti schématu. Umožňují existenci více modelů s překrývajícími se schématy nad stejnou základní kolekcí MongoDB.
-
-Ve stejné kolekci můžete ukládat různé datové modely a následně v době zpracování dotazu můžete pomocí klauzule filtru stáhnout pouze data, která potřebujete.
+Ve stejné kolekci můžete ukládat různé datové modely a následně v době zpracování dotazu můžete pomocí klauzule filtru stáhnout pouze data, která potřebujete. Projdeme si každou z modelek.
 
 ### <a name="one-collection-per-object-model"></a>Model jedné kolekce na objekt
 
-Výchozím chováním Mongoose je vytvořit kolekci MongoDB při každém vytvoření objektového modelu. Tato část popisuje, jak toho dosáhnout pomocí rozhraní API Azure Cosmos DB pro MongoDB. Tato metoda se doporučuje, pokud máte objektové modely s velkým množstvím dat. Toto je výchozí provozní model Mongoose, takže ho pravděpodobně znáte, pokud už znáte Mongoose.
+Tato část popisuje, jak toho dosáhnout pomocí rozhraní API Azure Cosmos DB pro MongoDB. Tato metoda je naším doporučeným přístupem, protože umožňuje řídit náklady a kapacitu. V důsledku toho množství jednotky požadavku v databázi nezávisí na počtu objektových modelů. Toto je výchozí provozní model pro Mongoose, takže byste mohli být obeznámeni s tímto.
 
 1. Znovu otevřete soubor ```index.js```.
 
@@ -319,3 +325,4 @@ Jak vidíte, pracovat s diskriminátory Mongoose je snadné. Takže pokud máte 
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

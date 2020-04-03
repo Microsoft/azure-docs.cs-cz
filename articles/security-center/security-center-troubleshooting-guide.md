@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435534"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585328"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 
@@ -148,7 +148,6 @@ V tomto dokumentu jste zjistili, jak ve službě Azure Security Center konfiguro
 * [Ověřování výstrah ve službě Azure Security Center](security-center-alert-validation.md)
 * [E-mailová oznámení ve službě Azure Security Center](security-center-provide-security-contact-details.md)
 * [Řešení bezpečnostních incidentů v Azure Security Center](security-center-incident.md)
-* [Vyšetřování incidentů a výstrah ve službě Azure Security Center](security-center-investigation.md)
 * [Funkce detekce Azure Security Center](security-center-detection-capabilities.md)
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](faq-general.md) – Přečtěte si nejčastější dotazy o použití této služby

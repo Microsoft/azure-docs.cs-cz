@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 692f70e4666416f34a6e3f32fd5804d4aeb63a5b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477824"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618583"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Možnosti podpory a zpětné vazby azure cognitive services
 
-Teprve začínáte zkoumat funkce služby Azure Cognitive Services? Možná implementujete novou funkci ve vaší aplikaci. Nebo po použití služby, máte návrhy, jak ji zlepšit? Tady jsou možnosti, kde můžete získat podporu, zůstat aktuální a poskytnout zpětnou vazbu pro služby Cognitive Services.
+Teprve začínáte zkoumat funkce služby Azure Cognitive Services? Možná implementujete novou funkci ve vaší aplikaci. Nebo po použití služby, máte návrhy, jak ji zlepšit? Tady jsou možnosti, kde můžete získat podporu, zůstat aktuální, poskytnout zpětnou vazbu a nahlásit chyby pro služby Cognitive Services.
 
 ## <a name="get-support"></a>Získat podporu
 
@@ -33,7 +33,7 @@ Prozkoumejte celou řadu [možností podpory Azure a vyberte si plán,](https://
 * [portál Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Portál Azure pro vládu Spojených států](https://portal.azure.us)
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Search
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
@@ -83,7 +83,7 @@ Poznámky k verzi služby Cognitive Services jsou aktualizovány jako nové verz
 
  - [Custom Vision](custom-vision-service/release-notes.md)
  - [Tvář](face/releasenotes.md)
- - [Language Understanding (LUIS)](luis/whats-new.md)
+ - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Hlasové služby](speech-service/releasenotes.md)
  - [Speech Services SDK](speech-service/devices-sdk-release-notes.md)
  - [Analýza textu](text-analytics/whats-new.md)

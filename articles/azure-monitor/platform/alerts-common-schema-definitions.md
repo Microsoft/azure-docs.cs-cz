@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cda3beb23581941dc5a475a86dde446f7c64ed3c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275019"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616323"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
@@ -171,7 +171,7 @@ Každá instance výstrahy popisuje prostředek, který byl ovlivněn a příči
     "SearchIntervalInMinutes": "15",
     "Threshold": 10000,
     "Operator": "Less Than",
-    "SearchResult": {
+    "SearchResults": {
       "tables": [
         {
           "name": "PrimaryResult",
@@ -234,7 +234,7 @@ Každá instance výstrahy popisuje prostředek, který byl ovlivněn a příči
     "Threshold": 10000,
     "Operator": "Less Than",
     "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6",
-    "SearchResult": {
+    "SearchResults": {
       "tables": [
         {
           "name": "PrimaryResult",

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 555d437fb0ee898473b37febb1774924b55bfa1d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c4920b2a5b4ff0b1a94fa8fa0e83f72761802b97
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350847"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583798"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Rychlý start: Konfigurace izolace pracovního vytížení pomocí T-SQL
 
@@ -25,13 +25,13 @@ V tomto rychlém startu rychle vytvoříte skupinu úloh a třídění pro rezer
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 > [!NOTE]
-> Vytvoření instance SQL Analytics v Azure Synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v [tématu Azure Synapse Analytics ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Vytvoření fondu Synapse SQL v Azure Synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v [tématu Azure Synapse Analytics ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
 ## <a name="prerequisites"></a>Požadavky
  
-Tento rychlý start předpokládá, že už máte instanci SQL Analytics v Azure Synapse a že máte oprávnění databáze CONTROL. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
+Tento rychlý start předpokládá, že již máte fond Synapse SQL v Azure Synapse a že máte oprávnění databáze control. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -39,7 +39,7 @@ Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 ## <a name="create-login-for-dataloads"></a>Vytvořit přihlášení pro DataLoads
 
-Vytvořte přihlášení ověřování sql `master` serveru v databázi pomocí [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) pro 'ELTLogin'.
+Vytvořte přihlášení ověřování sql `master` serveru v databázi pomocí [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro 'ELTLogin'.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Vytvořit uživatele
 
-[Vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "ELTLogin", v mySampleDataWarehouse
+[Vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), "ELTLogin", v mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -62,7 +62,7 @@ END
 ```
 
 ## <a name="create-a-workload-group"></a>Vytvoření skupiny pracovních vytížení
-Vytvořte [skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) pro DataLoads s 20 % izolace.
+Vytvořte [skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro DataLoads s 20 % izolace.
 ```sql
 CREATE WORKLOAD GROUP DataLoads
 WITH ( MIN_PERCENTAGE_RESOURCE = 20   
@@ -73,7 +73,7 @@ WITH ( MIN_PERCENTAGE_RESOURCE = 20
 
 ## <a name="create-a-workload-classifier"></a>Vytvoření třídění pracovního vytížení
 
-Vytvořte [třídění úlohy](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) pro mapování ELTLogin na skupinu zatížení DataLoads.
+Vytvořte [třídění úlohy](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro mapování ELTLogin na skupinu zatížení DataLoads.
 
 ```sql
 CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
@@ -128,5 +128,5 @@ Chcete-li vyčistit prostředky, postupujte takto.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nyní jste vytvořili skupinu úloh. Spusťte několik dotazů jako ELTLogin a zjistěte, jak si vedou. Viz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) pro zobrazení dotazů a přiřazené skupiny úloh.
-- Další informace o správě úloh SQL Analytics najdete v [tématu Správa pracovních vytížení](sql-data-warehouse-workload-management.md) a [Izolace pracovních vytížek](sql-data-warehouse-workload-isolation.md).
+- Nyní jste vytvořili skupinu úloh. Spusťte několik dotazů jako ELTLogin a zjistěte, jak si vedou. Viz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro zobrazení dotazů a přiřazené skupiny úloh.
+- Další informace o správě úloh synapse SQL naleznete v [tématu Správa pracovních vytížení](sql-data-warehouse-workload-management.md) a [Izolace pracovního vytížení](sql-data-warehouse-workload-isolation.md).

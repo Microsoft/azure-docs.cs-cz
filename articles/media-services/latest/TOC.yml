@@ -7,7 +7,7 @@
     - name: Co je nového v Media Services
       displayName: release notes
       href: release-notes.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Živá událost s portálem a Wirecastem
@@ -40,7 +40,7 @@
     - name: Dynamické šifrování s využitím DRM
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky Media Services v3
       displayName: '.NET, Java'

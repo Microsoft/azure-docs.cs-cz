@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4c3c34994bd257720b5805c038b6de6597379468
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 35af39d76eaff1f24bc2e4f17911062746f25546
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79382094"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80623988"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHub |
+|Name (Název) |Popis |Efekty |Version |GitHubu |
 |---|---|---|---|---|
 |[\[Omezený\]náhled \[:\] AKS Nepovolují privilegované kontejnery v AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ce7ac02-a5c6-45d6-8d1b-844feb1c1531) |Tato zásada neumožňuje vytváření privilegovaných kontejnerů v clusteru služby Azure Kubernetes. Omezené zásady náhledu fungují pouze pro registrovaná předplatná. Chcete-li se https://aka.ms/akspolicyonboardingzaregistrovat, přejděte na . Pokyny k používání těchto zásad https://aka.ms/akspolicydocnaleznete na . |EnforceRegoPolicy, zakázáno |1.0.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/ContainerNoPrivilege_EnforceRegoPolicy.json)
 |[\[Omezený\]náhled: \[AKS vynucovat\] příchozí přenos dat HTTPS v AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fbff515-eecc-4b7e-9b63-fcc7138b7dc3) |Tato zásada vynucuje příchozí přenos dat https v clusteru služby Azure Kubernetes. Omezené zásady náhledu fungují pouze pro registrovaná předplatná. Chcete-li se https://aka.ms/akspolicyonboardingzaregistrovat, přejděte na . Pokyny k používání těchto zásad https://aka.ms/akspolicydocnaleznete na . |EnforceRegoPolicy, zakázáno |1.0.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/IngressHttpsOnly_EnforceRegoPolicy.json)

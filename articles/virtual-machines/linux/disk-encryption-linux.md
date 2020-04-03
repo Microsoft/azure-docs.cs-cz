@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7df3c07518a9211bd1abf785e3f4954c41ebffc
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529454"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586049"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
 
@@ -407,6 +407,8 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Šifrování sdílených/distribuovaných souborových systémů, jako je (ale nejen): DFS, GFS, DRDB a CephFS.
 - Přesunutí šifrovaného virtuálního min. do jiného předplatného.
 - Výpis stavu jádra (kdump).
+- Oracle ACFS (systém souborů ASM Cluster)
+- Virtuální počítače Gen2 (viz: [Podpora pro virtuální počítače generace 2 v Azure)](generation-2.md#generation-1-vs-generation-2-capabilities)
 - Virtuální zařízení řady Lsv2 (viz: [Řada Lsv2](../lsv2-series.md))
 
 ## <a name="next-steps"></a>Další kroky

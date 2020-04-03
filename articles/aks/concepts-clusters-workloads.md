@@ -4,12 +4,12 @@ description: Naučte se základní součásti clusteru a pracovního vytížení
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259640"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617443"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro službu Azure Kubernetes Service (AKS)
 
@@ -65,9 +65,9 @@ Chcete-li spouštět aplikace a podpůrné služby, potřebujete *uzel*Kubernete
 
 ![Virtuální počítač Azure a podpůrné prostředky pro uzel Kubernetes](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-Velikost virtuálního počítače Azure pro vaše uzly definuje, kolik procesorů, kolik paměti a velikost a typ úložiště k dispozici (například vysoce výkonný SSD nebo běžné HDD). Pokud očekáváte potřebu aplikací, které vyžadují velké množství procesoru a paměti nebo vysoce výkonné úložiště, naplánujte odpovídajícím způsobem velikost uzlu. Můžete také vertikálně navýšit kapacitu počtu uzlů v clusteru AKS tak, aby splňovaly požadavky.
+Velikost virtuálního počítače Azure pro vaše uzly definuje, kolik procesorů, kolik paměti a velikost a typ úložiště k dispozici (například vysoce výkonný SSD nebo běžné HDD). Pokud očekáváte potřebu aplikací, které vyžadují velké množství procesoru a paměti nebo vysoce výkonné úložiště, naplánujte odpovídajícím způsobem velikost uzlu. Můžete také horizontální navýšení kapacity počet uzlů v clusteru AKS k uspokojení poptávky.
 
-V AKS je image virtuálního počítače pro uzly ve vašem clusteru aktuálně založená na Ubuntu Linux nebo Windows Server 2019. Když vytvoříte cluster AKS nebo navodíte kapacitu počtu uzlů, platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace pro vás provést. Uzly agentů se účtují jako standardní virtuální počítače, takže se automaticky použijí všechny slevy, které máte na velikost virtuálního počítače, kterou používáte (včetně [rezervací Azure).][reservation-discounts]
+V AKS je image virtuálního počítače pro uzly ve vašem clusteru aktuálně založená na Ubuntu Linux nebo Windows Server 2019. Když vytvoříte cluster AKS nebo navštováte počet uzlů, platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace pro vás provést. Uzly agentů se účtují jako standardní virtuální počítače, takže se automaticky použijí všechny slevy, které máte na velikost virtuálního počítače, kterou používáte (včetně [rezervací Azure).][reservation-discounts]
 
 Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Upstream `aks-engine` vydává funkce a poskytuje možnosti konfigurace dříve, než jsou oficiálně podporovány v clusterech AKS. Například pokud chcete použít za běhu kontejneru než Moby, můžete použít `aks-engine` ke konfiguraci a nasazení clusteru Kubernetes, který splňuje vaše aktuální potřeby.
 
@@ -96,7 +96,7 @@ Chcete-li zachovat výkon uzlu a funkčnost, prostředky jsou vyhrazeny na každ
 
 1. Kubelet daemon je nainstalován na všech uzlech agentka Kubernetes pro správu vytváření a ukončení kontejneru. Ve výchozím nastavení na AKS, tento daemon má následující pravidlo vystěhování: *memory.available<750Mi*, což znamená, že uzel musí mít vždy alespoň 750 Mi alokovatelné za všech okolností.  Pokud je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jeden z běžících podů, aby uvolnil paměť v hostitelském počítači a chránil ji. Jedná se o reaktivní akci, jakmile dostupná paměť klesne nad prahovou hodnotu 750Mi.
 
-2. Druhá hodnota je progresivní rychlost rezervace paměti pro kubelet daemon správně fungovat (kube-reserved).
+2. Druhá hodnota je regresivní rychlost rezervace paměti pro kubelet daemon správně fungovat (kube-reserved).
     - 25 % z prvních 4 GB paměti
     - 20 % z následujících 4 GB paměti (až 8 GB)
     - 10 % z dalších 8 GB paměti (až 16 GB)

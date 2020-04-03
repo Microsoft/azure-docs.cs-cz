@@ -4,7 +4,7 @@
   items:
     - name: Co je Service Fabric?
       href: service-fabric-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření aplikace .NET
@@ -105,11 +105,11 @@
       href: service-fabric-best-practices-applications.md
     - name: Kontrolní seznam připravenosti k produkci
       href: service-fabric-production-readiness-checklist.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://docs.microsoft.com/samples/browse/'
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
       href: samples-cli.md
@@ -316,7 +316,7 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Vyvážení clusteru
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: Omezování
+            - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Přesun služeb
               href: service-fabric-cluster-resource-manager-movement-cost.md
@@ -404,8 +404,6 @@
           items:
             - name: Nasazení hostujícího spustitelného souboru
               href: service-fabric-deploy-existing-app.md
-            - name: Nasazení několika hostujících spustitelných souborů
-              href: service-fabric-deploy-multiple-apps.md
         - name: Sestavení služby kontejneru
           items:
             - name: Docker Compose (Preview)
@@ -575,7 +573,7 @@
           items:
             - name: Azure Resource Manager
               href: service-fabric-application-arm-resource.md
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: service-fabric-deploy-remove-applications.md
             - name: Service Fabric CLI
               href: service-fabric-application-lifecycle-sfctl.md
@@ -623,7 +621,7 @@
       items:
         - name: Clustery v Azure
           items:
-            - name: Vytvoření
+            - name: Vytvořit
               items:
                 - name: Plán pro nasazení clusteru
                   href: service-fabric-cluster-azure-deployment-preparation.md
@@ -679,7 +677,7 @@
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
         - name: Samostatné clustery
           items:
-            - name: Vytvoření
+            - name: Vytvořit
               items:
                 - name: Místní vytvoření
                   href: service-fabric-cluster-creation-for-windows-server.md
@@ -775,7 +773,7 @@
           href: how-to-grant-access-other-resources.md
 - name: Referenční informace
   items:
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
     - name: PowerShell
       href: /powershell/module/servicefabric/?view=azureservicefabricps

@@ -4,12 +4,12 @@ description: Zjistěte, jak nainstalovat a nakonfigurovat řadič příchozího 
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 6f497ee3edd5ee831c091a5a50629df81673acea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d0edcac86bebb77495907ec43debf077448b8ac
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191312"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617230"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče příchozího přenosu dat HTTPS ve službě Azure Kubernetes Service (AKS)
 
@@ -84,7 +84,7 @@ Přidejte záznam *A* do zóny DNS s externí IP adresou služby NGINX pomocí [
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
-    --record-set-name * \
+    --record-set-name '*' \
     --ipv4-address MY_EXTERNAL_IP
 ```
 

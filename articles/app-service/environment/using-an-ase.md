@@ -4,23 +4,23 @@ description: Zjistěte, jak vytvářet, publikovat a škálovat aplikace v prost
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 01/01/2020
+ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477631"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586121"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
 Prostředí služby App Service (ASE) je nasazení služby Azure App Service do podsítě v instanci virtuální sítě Azure zákazníka. ASE se skládá z:
 
-- **Front-endy**: Kde http nebo https končí v prostředí služby App Service.
-- **Pracovníci**: Prostředky, které hostují vaše aplikace.
-- **Databáze**: Obsahuje informace, které definují prostředí.
+- **Front-endy**: Kde http nebo HTTPS končí v prostředí služby App Service
+- **Pracovníci:** Prostředky, které hostují vaše aplikace
+- **Databáze**: Obsahuje informace, které definují prostředí
 - **Úložiště**: Používá se k hostování aplikací publikovaných zákazníkem.
 
 Službu ASE můžete nasadit s externí nebo interní virtuální IP (VIP) pro přístup k aplikacím. Nasazení s externí min. VIP se běžně nazývá *externí služba ASE*. Nasazení s interní min. VIRTUÁLNÍ IP se nazývá *služba ASE ILB,* protože používá interní systém vyrovnávání zatížení (ILB). Další informace o službě ILB ASE najdete v [tématu Vytvoření a použití služby ASE iLB][MakeILBASE].
@@ -120,6 +120,22 @@ Informace o vytvoření služby ASE ilb naleznete v [tématu Vytvoření a použ
 
 Adresa URL SCM se používá pro přístup ke konzoli Kudu nebo k publikování aplikace pomocí nasazení webu. Informace o konzoli Kudu najdete v [tématu Konzola Kudu pro službu Azure App Service][Kudu]. Konzole Kudu vám poskytuje webové uživatelské uživatelské tlačítko pro ladění, nahrávání souborů, úpravy souborů a mnoho dalšího.
 
+### <a name="dns-configuration"></a>Konfigurace DNS 
+
+Při použití externí služby ASE, aplikace provedené ve vaší službě ASE jsou registrovány s Azure DNS. Se službou ASE ILB je nutné spravovat vlastní službu DNS. 
+
+Postup konfigurace služby DNS se službou ILB ASE:
+
+    create a zone for <ASE name>.appserviceenvironment.net
+    create an A record in that zone that points * to the ILB IP address
+    create an A record in that zone that points @ to the ILB IP address
+    create a zone in <ASE name>.appserviceenvironment.net named scm
+    create an A record in the scm zone that points * to the ILB IP address
+
+Nastavení DNS pro výchozí příponu domény služby ASE neomezuje vaše aplikace pouze na přístup ných názvů. Vlastní název domény můžete nastavit bez ověření v aplikacích ve službě ASE ILB. Pokud pak chcete vytvořit zónu s názvem *contoso.net*, můžete tak učinit a nasměrovat ji na ip adresu ILB. Vlastní název domény funguje pro žádosti o aplikace, ale ne pro web scm. Web scm je k dispozici pouze na * &lt;appname&gt;.scm.&lt; asename&gt;.appserviceenvironment.net*. 
+
+Zóna s názvem *.&lt; asename&gt;.appserviceenvironment.net* je globálně jedinečný. Před květnem 2019 mohli zákazníci zadat příponu domény služby ASE ILB. Pokud jste chtěli použít *.contoso.com* pro příponu domény, byli jste schopni tak učinit, a to by zahrnovalo scm stránky. Tam byly problémy s tímto modelem, včetně; správa výchozího certifikátu SSL, nedostatek jednotného přihlášení k webu scm a požadavek na použití certifikátu se zástupnými symboly. Proces upgradu výchozího certifikátu služby ASE služby ILB byl také rušivý a způsobil restartování aplikace. Chcete-li tyto problémy vyřešit, chování služby ASE ILB bylo změněno tak, aby používalo příponu domény na základě názvu služby ASE a přípony vlastněné společností Microsoft. Změna chování služby ASE ILB ovlivňuje pouze služby ILB ASEs provedené po květnu 2019. Již existující služby ILB ASE musí stále spravovat výchozí certifikát služby ASE a jejich konfiguraci DNS.
+
 ## <a name="publishing"></a>Publikování
 
 Ve službě ASE, stejně jako u víceklientské služby App Service, můžete publikovat pomocí těchto metod:
@@ -132,7 +148,7 @@ Ve službě ASE, stejně jako u víceklientské služby App Service, můžete pu
 
 S externí ase, tyto možnosti publikování všechny fungují stejným způsobem. Další informace najdete [v tématu Nasazení ve službě Azure App Service][AppDeploy].
 
-Publikování se výrazně liší u služby ASE ILB, pro kterou jsou všechny koncové body publikování k dispozici pouze prostřednictvím služby ILB. ILB je na privátní IP v podsíti ASE ve virtuální síti. Pokud nemáte přístup k síti ILB, nemůžete publikovat žádné aplikace na této službě ASE. Jak je uvedeno v [části Vytvoření a použití služby ASE ILB][MakeILBASE], je nutné nakonfigurovat službu DNS pro aplikace v systému. Tento požadavek zahrnuje koncový bod SCM. Pokud koncové body nejsou definovány správně, nelze publikovat. Vaše IDC musí mít také přístup k síti ILB publikovat přímo do něj.
+Se službou ASE ILB jsou koncové body publikování k dispozici pouze prostřednictvím služby ILB. ILB je na privátní IP v podsíti ASE ve virtuální síti. Pokud nemáte přístup k síti ILB, nemůžete publikovat žádné aplikace na této službě ASE. Jak je uvedeno v [části Vytvoření a použití služby ASE ILB][MakeILBASE], je nutné nakonfigurovat službu DNS pro aplikace v systému. Tento požadavek zahrnuje koncový bod SCM. Pokud koncové body nejsou definovány správně, nelze publikovat. Vaše IDC musí mít také přístup k síti ILB publikovat přímo do něj.
 
 Bez dalších změn nefungují internetové systémy CI, jako je GitHub a Azure DevOps, se službou ASE ILB, protože koncový bod publikování není přístupný z internetu. Publikování do služby ASE ILB ze služby Azure DevOps můžete povolit instalací agenta verze s vlastním hostitelem ve virtuální síti, která obsahuje službu ASE ILB. Případně můžete také použít systém CI, který používá model vyžádat, například Dropbox.
 
@@ -169,7 +185,18 @@ Povolení přihlášení ke službě ASE:
 
 ![Nastavení diagnostického protokolu služby ASE][4]
 
-Pokud integrujete s Log Analytics, můžete zobrazit protokoly výběrem **protokoly** z portálu Služby ase a vytvoření dotazu proti **AppServiceEnvironmentPlatformLogs**.
+Pokud integrujete s Log Analytics, můžete zobrazit protokoly výběrem **protokoly** z portálu Služby ase a vytvoření dotazu proti **AppServiceEnvironmentPlatformLogs**. Protokoly jsou vydávány pouze v případě, že vaše ase má událost, která ji spustí. Pokud vaše ase nemá takovou událost, nebude žádné protokoly. Chcete-li rychle zobrazit příklad protokolů v pracovním prostoru Log Analytics, proveďte operaci škálování s jedním z plánů služby App Service ve službě ASE. Potom můžete spustit dotaz proti **AppServiceEnvironmentPlatformLogs** zobrazit tyto protokoly. 
+
+**Vytvoření výstrahy**
+
+Chcete-li vytvořit výstrahu proti protokolům, postupujte podle pokynů v části [Vytvoření, zobrazení a správa výstrah protokolu pomocí služby Azure Monitor][logalerts]. Stručně řečeno:
+
+* Otevření stránky Upozornění na portálu ase
+* Vybrat **nové pravidlo výstrahy**
+* Vyberte zdroj jako pracovní prostor Log Analytics.
+* Nastavte stav pomocí vlastního hledání protokolu tak, aby se používal dotaz jako AppServiceEnvironmentPlatformLogs | kde ResultDescription obsahuje "začala škálování" nebo co chcete. Podle potřeby nastavte prahovou hodnotu. 
+* Podle potřeby přidejte nebo vytvořte skupinu akcí. Skupina akcí je místo, kde definujete odpověď na výstrahu, jako je odeslání e-mailu nebo SMS zprávy
+* Pojmenujte výstrahu a uložte ji.
 
 ## <a name="upgrade-preference"></a>Předvolba upgradu
 
@@ -245,3 +272,4 @@ Odstranění ses:
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[logalerts]: ../../azure-monitor/platform/alerts-log.md

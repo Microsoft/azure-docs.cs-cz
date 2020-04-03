@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a77a366ee8e06b2d8c47eb3b47eeaf9ae809598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028299"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585560"
 ---
 # <a name="configuration-data-at-scale"></a>Konfigurace dat ve velkém měřítku
 
@@ -45,7 +45,7 @@ Tyto informace jsou uspořádány ve formátu souboru, který dáváte přednost
 Poté jsou k dispozici rutiny pro generování konfiguračních datových souborů [konsolidací informací](https://github.com/gaelcolas/Datum#datum-tree) z každého souboru do jednoho zobrazení role serveru nebo serveru.
 
 Po vygenerování datových souborů je můžete použít se [skripty Konfigurace DSC](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) ke generování souborů MOF a [nahrání souborů MOF do azure automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Pak zaregistrujte své servery z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) pro vyžádat konfigurace.
+Pak zaregistrujte své servery z [místního](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) pro vyžádat konfigurace.
 
 Chcete-li vyzkoušet datum, navštivte [Galerii prostředí PowerShell](https://www.powershellgallery.com/packages/datum/) a stáhněte si řešení nebo klikněte na "Web projektu" a prohlédněte si [dokumentaci](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
 

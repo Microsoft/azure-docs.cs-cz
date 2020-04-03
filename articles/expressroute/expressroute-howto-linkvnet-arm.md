@@ -2,22 +2,22 @@
 title: 'ExpressRoute: Propojení virtuální sítě s okruhem: Azure PowerShell'
 description: Tento dokument poskytuje přehled o tom, jak propojit virtuální sítě (Virtuální sítě) s okruhy ExpressRoute pomocí modelu nasazení Resource Manager a Prostředí PowerShell.
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 05/20/2018
-ms.author: ganesr
+ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 242f52d643e817730772a7d678a219c2b6149d2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 755b1898ee4cbc32de3a65a6bbc368ecf3eb3acf
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235472"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616383"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Připojení virtuální sítě k okruhu ExpressRoute
 > [!div class="op_single_selector"]
-> * [Portál Azure](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [portál Azure](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video – portál Azure](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)

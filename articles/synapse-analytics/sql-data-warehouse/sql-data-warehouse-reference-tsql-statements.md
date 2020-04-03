@@ -1,6 +1,6 @@
 ---
 title: Příkazy jazyka T-SQL
-description: Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
+description: Odkazy na dokumentaci pro příkazy T-SQL podporované v fondu Synapse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 53609049f69f0a3d50430ef512a5bf4a8ffd6d82
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 011a850a44948bf5eee28a40d59dcf7672d866e8
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351351"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586367"
 ---
-# <a name="t-sql-statements-supported-in-sql-analytics"></a>Příkazy T-SQL podporované v SQL Analytics
-Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
+# <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>Příkazy T-SQL podporované v fondu SYNAPSE SQL
+
+Odkazy na dokumentaci pro příkazy T-SQL podporované v fondu Synapse SQL.
 
 ## <a name="data-definition-language-ddl-statements"></a>Příkazy jazyka definice dat (DDL)
+
 * [ZMĚNIT DATABÁZI](https://msdn.microsoft.com/library/mt204042.aspx)
 * [ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
 * [ZMĚNA ZHMOTNĚNÝ POHLED](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) (náhled) 
@@ -60,11 +62,13 @@ Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
 ## <a name="data-manipulation-language-dml-statements"></a>Příkazy jazyka pro manipulaci s daty (DML)
+
 * [Odstranit](https://msdn.microsoft.com/library/ms189835.aspx)
 * [Vložit](https://msdn.microsoft.com/library/ms174335.aspx)
 * [Aktualizace](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Příkazy konzoly databáze
+
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 * [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) (náhled)
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
@@ -77,6 +81,7 @@ Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Příkazy dotazu
+
 * [Vyberte](https://msdn.microsoft.com/library/ms189499.aspx)
 * [S common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [Kromě a INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
@@ -95,6 +100,7 @@ Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 * [Poddotazů](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Příkazy zabezpečení
+
 * Oprávnění: [GRANT](https://msdn.microsoft.com/library/ms187965.aspx), [DENY](https://msdn.microsoft.com/library/ms188338.aspx), [REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
 * [ZMĚNIT POVOLENÍ](https://msdn.microsoft.com/library/ms187359.aspx)
 * [ZMĚNIT CERTIFIKÁT](https://msdn.microsoft.com/library/ms189511.aspx)
@@ -120,4 +126,5 @@ Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 * [OTEVŘÍT HLAVNÍ KLÍČ](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Další kroky
-Další referenční informace naleznete [v elementech jazyka T-SQL v nástroji SQL Analytics](sql-data-warehouse-reference-tsql-language-elements.md)a [zobrazení systému v nástroji SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).
+
+Další referenční informace naleznete [v tématu Prvky jazyka T-SQL ve fondu Synapse SQL a](sql-data-warehouse-reference-tsql-language-elements.md)Zobrazení [systému ve fondu SYNAPSE SQL](sql-data-warehouse-reference-tsql-system-views.md).

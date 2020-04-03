@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 3fe1d36b859884ab19a645e5693c7e7931fe5c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 119265efa7b6504f3faf2e89cb68b9e9bd70bf9f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368464"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617246"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použití sítí kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ Tento článek ukazuje, jak pomocí *kubenet* sítě vytvořit a použít podsí
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
 * Nevytvářejte více než jeden cluster AKS ve stejné podsíti.
 * Clustery AKS nesmí `169.254.0.0/16` `172.30.0.0/16`používat `172.31.0.0/16`, `192.0.2.0/24` , , nebo pro rozsah adres služby Kubernetes.
-* Instanční objekt používaný clusterem AKS musí mít alespoň oprávnění [síťového přispěvatele](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti ve vaší virtuální síti. Pokud chcete definovat [vlastní roli](../role-based-access-control/custom-roles.md) namísto použití předdefinované role přispěvatele sítě, jsou vyžadována následující oprávnění:
+* Instanční objekt používaný clusterem AKS musí mít alespoň roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti ve vaší virtuální síti. Pokud chcete definovat [vlastní roli](../role-based-access-control/custom-roles.md) namísto použití předdefinované role přispěvatele sítě, jsou vyžadována následující oprávnění:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -195,7 +195,7 @@ az aks create \
     --client-secret <password>
 ```
 
-Při vytváření clusteru AKS se vytvoří skupina zabezpečení sítě a směrovací tabulka. Tyto síťové prostředky jsou spravovány řídicí rovinou AKS. Skupina zabezpečení sítě je automaticky přidružena k virtuálním síťovým terminálem na vašich uzlech. Směrovací tabulka je automaticky přidružena k podsíti virtuální sítě. Pravidla skupiny zabezpečení sítě a směrovací tabulky a jsou automaticky aktualizovány při vytváření a zpřístupňujení služby.
+Při vytváření clusteru AKS se vytvoří skupina zabezpečení sítě a směrovací tabulka. Tyto síťové prostředky jsou spravovány řídicí rovinou AKS. Skupina zabezpečení sítě je automaticky přidružena k virtuálním síťovým terminálem na vašich uzlech. Směrovací tabulka je automaticky přidružena k podsíti virtuální sítě. Pravidla skupiny zabezpečení sítě a směrovací tabulky jsou automaticky aktualizovány při vytváření a zpřístupňujení služby.
 
 ## <a name="next-steps"></a>Další kroky
 

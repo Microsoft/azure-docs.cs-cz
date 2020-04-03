@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 22a24d01f606cd3f76a0de950351feb3d964da54
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2db7a25f3f463e9210544354395c9d33a75f633c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478913"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619373"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží s Azure Machine Learning
 
@@ -48,16 +48,6 @@ Přečtěte si o [kvótách prostředků,](how-to-manage-quotas.md) se kterými 
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
-* **Chybová zpráva: Pro azureml-dataprep-native nebyla nalezena žádná odpovídající distribuce.**
-
-    Distribuce Pythonu 3.7.4 aplikace Anaconda má chybu, která přeruší instalaci azureml-sdk. Tento problém je popsán v tomto [problému GitHub](https://github.com/ContinuumIO/anaconda-issues/issues/11195)
-    
-    To lze opracovat vytvořením nového prostředí Conda pomocí tohoto příkazu:
-    ```bash
-    conda create -n <env-name> python=3.7.3
-    ```
-    Který vytvoří prostředí Conda pomocí Pythonu 3.7.3, který nemá problém s instalací v 3.7.4.
-
 * **Databricks selhání při instalaci balíčků**
 
     Instalace sady Azure Machine Learning SDK se nezdaří na Azure Databricks při instalaci dalšíbalíčky. Některé balíčky, `psutil`například , mohou způsobit konflikty. Chcete-li se vyhnout chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém souvisí s Databricks a ne s Azure Machine Learning SDK. K tomuto problému může dojít i v jiných knihovnách. Příklad:
@@ -89,10 +79,9 @@ Přečtěte si o [kvótách prostředků,](how-to-manage-quotas.md) se kterými 
 
 * **Databricks FailToSendFeather**: Pokud `FailToSendFeather` se při čtení dat v clusteru Azure Databricks zobrazí chyba, podívejte se na následující řešení:
     
-        * Upgrade `azureml-sdk[automl]` package to the latest version.
-        * Add `azureml-dataprep` version 1.1.8 or above.
-        * Add `pyarrow` version 0.11 or above.
-        `
+    * Upgrade `azureml-sdk[automl]` balíčku na nejnovější verzi.
+    * Přidejte `azureml-dataprep` verzi 1.1.8 nebo vyšší.
+    * Přidejte `pyarrow` verzi 0.11 nebo vyšší.
 
 ## <a name="create-and-manage-workspaces"></a>Vytváření a správa pracovních prostorů
 
@@ -113,9 +102,7 @@ Pokud se zobrazí `Unable to upload project files to working directory in AzureF
 
 Pokud používáte sdílenou složku pro jiné úlohy, jako je například přenos dat, doporučujeme použít objekty BLOB, aby byla sdílená složka souboru volně použita pro odesílání spuštění. Můžete také rozdělit zatížení mezi dva různé pracovní prostory.
 
-### <a name="datasets-and-data-preparation"></a>Datové sady a příprava dat
-
-Jedná se o známé problémy pro datové sady Azure Machine Learning.
+### <a name="passing-data-as-input"></a>Předávání dat jako vstupu
 
 *  **TypeError: FileNotFound: Žádný takový soubor nebo adresář**: K této chybě dochází, pokud cesta k souboru, kterou zadáte, není tam, kde je soubor umístěn. Musíte se ujistit, že způsob, jakým odkazujete na soubor, je konzistentní s tím, kde jste namontovali datovou sadu na váš výpočetní cíl. Chcete-li zajistit deterministický stav, doporučujeme použít abstraktní cestu při připojovat datovou sadu k výpočetnímu cíli. Například v následujícím kódu připojíme datovou sadu pod kořenem souborového `/tmp`systému výpočetního cíle . 
     
@@ -128,8 +115,7 @@ Jedná se o známé problémy pro datové sady Azure Machine Learning.
 
     Pokud nezahrnete úvodní lomítko,/, budete muset předponu pracovního `/mnt/batch/.../tmp/dataset` adresáře, například na výpočetním cíli, abyste označili, kam chcete datovou sadu připojit.
 
-### <a name="data-labeling-projects-issues"></a>Problémy s projekty s označováním dat
-
+### <a name="data-labeling-projects"></a>Projekty označování dat
 
 |Problém  |Řešení  |
 |---------|---------|
@@ -138,9 +124,9 @@ Jedná se o známé problémy pro datové sady Azure Machine Learning.
 |Při kontrole obrázků se nově označené obrázky nezobrazují     |   Chcete-li načíst všechny označené obrázky, zvolte **tlačítko První.** První **First** tlačítko vás přenese zpět na přední stranu seznamu, ale načte všechna označená data.      |
 |Stisknutím klávesy Esc při popisování pro detekci objektů se vytvoří popisek nulové velikosti v levém horním rohu. Odeslání popisků v tomto stavu se nezdaří.     |   Odstraňte štítek kliknutím na křížovou značku vedle něj.  |
 
-## <a name="azure-machine-learning-designer-issues"></a>Problémy s návrhářem Azure Machine Learning
+## <a name="azure-machine-learning-designer"></a>Návrhář Azure Machine Learning
 
-Známé problémy s návrhářem.
+Známé problémy:
 
 * **Dlouhá doba přípravy výpočetních prostředků**: Může být několik minut nebo i déle, když se poprvé připojíte nebo vytvoříte výpočetní cíl. 
 

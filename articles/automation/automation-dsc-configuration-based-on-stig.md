@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 275b3bd25f931b73e8a378433899ef9ade4d47c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028275"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585535"
 ---
 # <a name="configuration-based-on-stig"></a>Konfigurace na základě STIG
 
@@ -37,7 +37,7 @@ Mnoho organizací musí [dokumentovat výjimky](https://github.com/microsoft/pow
 Program PowerSTIG řeší problém poskytnutím [složených prostředků](https://github.com/microsoft/powerstig#powerstigdsc) k řešení jednotlivých oblastí konfigurace, nikoli pokusem o řešení celého rozsahu nastavení v jednom velkém souboru.
 
 Po vygenerování konfigurací můžete pomocí [skriptů Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations) generovat soubory MOF a [nahrát soubory MOF do azure automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Pak zaregistrujte své servery z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) pro vyžádat konfigurace.
+Pak zaregistrujte své servery z [místního](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) pro vyžádat konfigurace.
 
 Chcete-li vyzkoušet powerstig, navštivte [Galerii prostředí PowerShell](https://www.powershellgallery.com) a stáhněte si řešení nebo klikněte na "Projektový web" a prohlédněte si [dokumentaci](https://github.com/microsoft/powerstig).
 

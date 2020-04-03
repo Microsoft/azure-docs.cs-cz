@@ -246,6 +246,8 @@
       items:
         - name: portál Azure
           href: howto-data-encryption-portal.md
+        - name: Azure CLI
+          href: howto-data-encryption-cli.md
     - name: Integrace Azure AD
       items:
         - name: Konfigurace integrace Azure AD

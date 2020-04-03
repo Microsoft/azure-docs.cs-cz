@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 3/13/2020
+ms.date: 4/2/2020
 ms.author: swmachan
-ms.openlocfilehash: 4180dc6127fb2d31465400b1b25fb7e2d68f4754
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369161"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619146"
 ---
 # <a name="translator-text-api-v30"></a>Překladač Text API v3.0
 
@@ -48,7 +48,7 @@ Chcete-li vynutit zpracování požadavku konkrétní geografickou oblastí Azur
 |Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Přihlaste se k odběru rozhraní Translator Text API nebo [multi-service cognitive services](https://azure.microsoft.com/pricing/details/cognitive-services/) ve službách Azure Cognitive Services a použijte klíč předplatného (dostupný na webu Azure Portal) k ověření. 
 
@@ -75,7 +75,7 @@ Zde je příklad požadavku na volání rozhraní API překladače pomocí prost
 
 ```curl
 // Pass secret key using headers
-curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=es" \
      -H "Ocp-Apim-Subscription-Key:<your-key>" \
      -H "Content-Type: application/json" \
      -d "[{'Text':'Hello, what is your name?'}]"
@@ -95,7 +95,7 @@ Zde je příklad požadavku na volání rozhraní API překladače pomocí zdroj
 
 ```curl
 // Pass secret key and region using headers
-curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=es" \
      -H "Ocp-Apim-Subscription-Key:<your-key>" \
      -H "Ocp-Apim-Subscription-Region:<your-region>" \
      -H "Content-Type: application/json" \

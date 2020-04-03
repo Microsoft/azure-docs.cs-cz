@@ -1,20 +1,23 @@
 ---
 title: Azure Monitor podporuje metriky podle typu prostředku
 description: Seznam metrik, které jsou k dispozici pro každý typ prostředku pomocí Azure Monitoru.
-author: anirudhcavale
+author: rboucher
 services: azure-monitor
 ms.topic: reference
 ms.date: 03/17/2020
-ms.author: ancav
+ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 674321878cfce2d05189700a8b5118e233d9044d
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520712"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586022"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky pomocí Azure Monitoru
+
+> [!NOTE]
+> Tento seznam je z velké části automaticky generované z rozhraní REST rozhraní API metriky monitorování Azure. Jakékoli změny provedené v tomto seznamu přes Github mohou být zapsány bez varování. Chcete-li získat podrobnosti o tom, jak provádět trvalé aktualizace, obraťte se na autora tohoto článku.
 
 Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich vytváření grafů na portálu, přístupu k nim prostřednictvím rozhraní REST API nebo dotazování pomocí prostředí PowerShell nebo CLI. Níže je úplný seznam všech metrik, které jsou aktuálně dostupné v kanálu metrik Azure Monitoru. Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API. Tento seznam níže zahrnuje pouze metriky, které jsou k dispozici pomocí konsolidovaného kanálu metrikazure monitoru. Metriky jsou uspořádány podle oboru názvů. Seznam služeb a obory názvů, které jim patří, najdete v [tématu zprostředkovatelé prostředků pro služby Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Chcete-li tyto metriky dotazovat a přistupovat k nim programově, použijte [verzi api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
@@ -24,10 +27,6 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 > *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
 > Seznam metrik platformy exportovatelné pomocí nastavení diagnostiky naleznete v [tomto článku](metrics-supported-export-diagnostic-settings.md).
-
-
-
-
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servery
@@ -565,7 +564,7 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |Bajty zápisu na disk/s|Bajty zápisu datového disku/s [(zastaralé)](portal-disk-metrics-deprecation.md)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování|SlotId|
 |Operace čtení na disk/s|Operace čtení datového disku/s [(zastaralé)](portal-disk-metrics-deprecation.md)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování|SlotId|
 |Operace zápisu na disk/s|Operace zápisu datového disku/s [(zastaralé)](portal-disk-metrics-deprecation.md)|CountPerSecond|Průměr|Zápis viop z jednoho disku během období sledování|SlotId|
-|Na disk QD|[Datový disk QD [(zastaralé)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
+|Na disk QD|Datový disk QD [(zastaralé)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
 |Bajty pro čtení na disk/s|Čtení bajtů/s disku operačního systému [(zastaralé)](portal-disk-metrics-deprecation.md)|CountPerSecond|Průměr|Bajty/s čtení z jednoho disku během období sledování disku operačního systému|Žádný|
 |Bajty zápisu na disk na disk/s|Bajty zapisované na disku operačního systému/s [(zastaralé)](portal-disk-metrics-deprecation.md)|CountPerSecond|Průměr|Bajty/s zapsané na jeden disk během období sledování disku operačního systému|Žádný|
 |Operace čtení na disk na disk/s|Operace čtení disku operačního systému/s [(zastaralé)](portal-disk-metrics-deprecation.md)|CountPerSecond|Průměr|Čtení vipozd z jednoho disku během období sledování disku operačního systému|Žádný|
@@ -1974,8 +1973,6 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 
 
-
-
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servery/databáze
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
@@ -2002,8 +1999,8 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |dwu_used|Použitý DWU|Počet|Maximum|DWU používá. Platí pouze pro datové sklady.|Žádný|
 |cache_hit_percent|Procento přístupů do mezipaměti|Procento|Maximum|Procento zásahu do mezipaměti. Platí pouze pro datové sklady.|Žádný|
 |cache_used_percent|Procento použité mezipaměti|Procento|Maximum|Procento použité mezipaměti. Platí pouze pro datové sklady.|Žádný|
-|sqlserver_process_core_percent|Procento jádra procesu SQL Serveru|Procento|Maximum|Využití procesoru jako procento procesu SQL DB. Nevztahuje se na datové sklady.|Žádný|
-|sqlserver_process_memory_percent|Procento paměti procesu serveru SQL Server|Procento|Maximum|Využití paměti jako procento procesu SQL DB. Nevztahuje se na datové sklady.|Žádný|
+|sqlserver_process_core_percent|Procento jádra procesu SQL Serveru|Procento|Maximum|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem.|Žádný|
+|sqlserver_process_memory_percent|Procento paměti procesu serveru SQL Server|Procento|Maximum|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem.|Žádný|
 |tempdb_data_size|Velikost datového souboru Tempdb kilobajty|Počet|Maximum|Velikost datového souboru Tempdb kilobajty. Nevztahuje se na datové sklady.|Žádný|
 |tempdb_log_size|Velikost souboru protokolu databáze Tempdb kilobajty|Počet|Maximum|Velikost souboru protokolu databáze Tempdb kilobajtů. Nevztahuje se na datové sklady.|Žádný|
 |tempdb_log_used_percent|Použitý protokol procenta databáze dat|Procento|Maximum|Použitý protokol procenta databáze. Nevztahuje se na datové sklady.|Žádný|
@@ -2060,8 +2057,8 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |database_cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru|Id databázového zdroje|
 |cpu_used|Použitý procesor|Počet|Průměr|Použitý procesor. Platí pro elastické fondy založené na virtuálních jádrech.|Žádný|
 |database_cpu_used|Použitý procesor|Počet|Průměr|Použitý procesor|Id databázového zdroje|
-|sqlserver_process_core_percent|Procento jádra procesu SQL Serveru|Procento|Maximum|Využití procesoru jako procento procesu SQL DB. Platí pro elastické bazény.|Žádný|
-|sqlserver_process_memory_percent|Procento paměti procesu serveru SQL Server|Procento|Maximum|Využití paměti jako procento procesu SQL DB. Platí pro elastické bazény.|Žádný|
+|sqlserver_process_core_percent|Procento jádra procesu SQL Serveru|Procento|Maximum|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem. Platí pro elastické bazény.|Žádný|
+|sqlserver_process_memory_percent|Procento paměti procesu serveru SQL Server|Procento|Maximum|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem. Platí pro elastické bazény.|Žádný|
 |tempdb_data_size|Velikost datového souboru Tempdb kilobajty|Počet|Maximum|Velikost datového souboru Tempdb kilobajty|Žádný|
 |tempdb_log_size|Velikost souboru protokolu databáze Tempdb kilobajty|Počet|Maximum|Velikost souboru protokolu databáze Tempdb kilobajty|Žádný|
 |tempdb_log_used_percent|Použitý protokol procenta databáze dat|Procento|Maximum|Použitý protokol procenta databáze dat|Žádný|
@@ -2351,15 +2348,6 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |Procento CPU|Procento CPU|Procento|Průměr|Využití procesoru. Tato hodnota je hlášena se 100 % představující všechna procesorová jádra v systému. Například dvoucestný virtuální virtuální ms používající 50 % čtyřjádrového systému zcela používá dvě jádra.|Žádný|
 |ProcentoCpuReady|Procento připravenosti procesoru|Milisekund|Celkem|Doba připravenosti je čas čekání na procesory, které mají být k dispozici v minulém intervalu aktualizace.|Žádný|
 
-
-
-
-
-
-
-
-
-
 ## <a name="microsoftwebserverfarms"></a>Farmy Microsoft.Web/server
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
@@ -2380,7 +2368,7 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |TcpLastAck|Poslední potvrzení protokolu TCP|Počet|Průměr|Poslední potvrzení protokolu TCP|Instance|
 |TcpTimeWait|Čas čekání protokolu TCP|Počet|Průměr|Čas čekání protokolu TCP|Instance|
 
-## <a name="microsoftwebsites"></a>Web/weby společnosti Microsoft
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/weby (kromě funkcí) 
 
 > [!NOTE]
 > **Využití systému souborů** je nová metrika, která se zavádí globálně, žádná data se neočekávají, pokud jste nebyli zařazeni na seznam povolených pro privátní náhled.
@@ -2410,6 +2398,37 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |Připojení aplikací|Připojení|Počet|Průměr|Připojení|Instance|
 |Handles|Počet popisovačů|Počet|Průměr|Počet popisovačů|Instance|
 |Vlákna|Počet vláken|Počet|Průměr|Počet vláken|Instance|
+|Soukromé bajty|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
+|IoReadBytesPerSecond|Čtení bajtů v iza sekundě|BajtyPerSekunda|Celkem|Čtení bajtů v iza sekundě|Instance|
+|IoWriteBytesPerSecond|IO zápis bajtů za sekundu|BajtyPerSekunda|Celkem|IO zápis bajtů za sekundu|Instance|
+|IoOtherBytesPerSecond|IO ostatní bajty za sekundu|BajtyPerSekunda|Celkem|IO ostatní bajty za sekundu|Instance|
+|IoReadOperationsPerSekunda|Operace čtení vi za sekundu|BajtyPerSekunda|Celkem|Operace čtení vi za sekundu|Instance|
+|IoWriteOperationsPerSecond|Operace zápisu vi za sekundu|BajtyPerSekunda|Celkem|Operace zápisu vi za sekundu|Instance|
+|IoOtherOperationsPerSecond|Vi další operace za sekundu|BajtyPerSekunda|Celkem|Vi další operace za sekundu|Instance|
+|RequestsInApplicationQueue|Požadavky ve frontě aplikací|Počet|Průměr|Požadavky ve frontě aplikací|Instance|
+|CurrentAssemblies|Aktuální sestavení|Počet|Průměr|Aktuální sestavení|Instance|
+|TotalAppDomains|Celkový počet domén aplikací|Počet|Průměr|Celkový počet domén aplikací|Instance|
+|TotalAppDomainsUnloaded|Celkový počet uvolněných domén aplikací|Počet|Průměr|Celkový počet uvolněných domén aplikací|Instance|
+|Gen0Kolekce|Gen 0 Uvolňování paměti|Počet|Celkem|Gen 0 Uvolňování paměti|Instance|
+|Gen1Kolekce|Gen 1 Uvolňování paměti|Počet|Celkem|Gen 1 Uvolňování paměti|Instance|
+|Gen2Kolekce|Gen 2 Uvolňování paměti|Počet|Celkem|Gen 2 Uvolňování paměti|Instance|
+|Stav kontroly stavu|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
+|Využití systému souborů|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádný|
+
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/weby (funkce)
+
+> [!NOTE]
+> **Využití systému souborů** je nová metrika, která se zavádí globálně, žádná data se neočekávají, pokud jste nebyli zařazeni na seznam povolených pro privátní náhled.
+
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|---|---|---|---|---|---|
+|Přijaté bajty|Data v|Bajty|Celkem|Data v|Instance|
+|BajtůOdeslání|Data Out|Bajty|Celkem|Data Out|Instance|
+|Http5xx|Chyby serveru HTTP|Počet|Celkem|Chyby serveru HTTP|Instance|
+|Paměťworkingová sada|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
+|AverageMemoryWorkingSet|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
+|FunkceExecutionUnits|Jednotky provádění funkcí|MB / Milisekundy|Celkem|[Jednotky provádění funkcí](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Instance|
+|FunctionExecutionCount|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
 |Soukromé bajty|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
 |IoReadBytesPerSecond|Čtení bajtů v iza sekundě|BajtyPerSekunda|Celkem|Čtení bajtů v iza sekundě|Instance|
 |IoWriteBytesPerSecond|IO zápis bajtů za sekundu|BajtyPerSekunda|Celkem|IO zápis bajtů za sekundu|Instance|
@@ -2510,3 +2529,4 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 * [Přečtěte si o metrikách ve Službě Azure Monitor](data-platform.md)
 * [Vytváření upozornění na metriky](alerts-overview.md)
 * [Export metrik do úložiště, Centra událostí nebo analýzy protokolů](platform-logs-overview.md)
+

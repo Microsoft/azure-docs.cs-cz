@@ -1,22 +1,14 @@
 ---
 title: Limity – LUIS
-titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje známá omezení azure kognitivní služby jazykové porozumění (LUIS). Služba LUIS má několik hraničních oblastí. Hranice modelu řídí záměry, entity a funkce v LUIS. Omezení kvót y na základě typu klíče. Kombinace klávesnice řídí web LUIS.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/07/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 6c021e68f8b76d8b0d3e6e9ff21c242580f53313
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/02/2020
+ms.openlocfilehash: 4aa69cb0fd36fe5bf4ea2928022aea602b8830d6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520940"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618869"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro váš model luis a klíče
 Služba LUIS má několik hraničních oblastí. První je [hranice modelu](#model-boundaries), která řídí záměry, entity a funkce v LUIS. Druhou oblastí jsou [limity kvót](#key-limits) y založené na typu klíče. Třetí oblastí hranic je [kombinace kláves pro](#keyboard-controls) ovládání webu LUIS. Čtvrtá oblast je [mapování oblasti světa](luis-reference-regions.md) mezi webem pro vytváření LUIS a [koncovým bodem](luis-glossary.md#endpoint) LUIS.
@@ -40,7 +32,7 @@ Pokud vaše aplikace překračuje limity a hranice modelu LUIS, zvažte použit�
 | [Náhled – entity dynamického seznamu](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 seznamy ~1k na požadavek koncového bodu predikce dotazu|
 | [Vzory](luis-concept-patterns.md)|500 vzorů na aplikaci.<br>Maximální délka vzorku je 400 znaků.<br>3 Pattern.any entity na vzorek<br>Maximálně 2 vnořené volitelné texty ve vzorku|
 | [Pattern.any](./luis-concept-entity-types.md)|100 na aplikaci, 3 pattern.any entity na vzor |
-| [Seznam frází][phrase-list]|500 seznamů frází. 10 globálních frázových seznamů vzhledem k modelu jako limitu funkce. Nezaměnitelný seznam frází má max 5 000 frází. Zaměnitelný Phraselist má max 50.000 frází. Maximální počet frází na aplikaci 500 000 frází.|
+| [Seznam frází][phrase-list]|500 seznamů frází. 10 globálních frázových seznamů vzhledem k modelu jako limitu funkce. Seznam nezaměnitelných frází má max 5 000 frází. Seznam zaměnitelných frází má max 50 000 frází. Maximální počet frází na aplikaci 500 000 frází.|
 | [Předem připravené entity](./luis-prebuilt-entities.md) | bez omezení|
 | [Entity regulárního výrazu](./luis-concept-entity-types.md)|20 subjektů<br>500 znaků max. podle vzoru entity regulárního výrazu|
 | [Role](luis-concept-roles.md)|300 rolí na aplikaci. 10 rolí na entitu|
@@ -77,26 +69,41 @@ V následujících názvech nepoužívejte následující znaky.
 |Názvy záměrů, entit a rolí|`:`<br>`$` <br> `&`|
 |Název verze|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
-## <a name="key-usage"></a>Použití klíče
+## <a name="resource-usage-and-limits"></a>Využití prostředků a limity
 
-Language Understand má samostatné klíče, jeden typ pro vytváření a jeden typ pro dotazování koncový bod předpovědi. Další informace o rozdílech mezi typy klíčů naleznete v [tématu Vytváření a koncový bod pro předpověď dotazu klíče v LUIS](luis-concept-keys.md).
+Language Understand má samostatné prostředky, jeden typ pro vytváření a jeden typ pro dotazování koncový bod předpovědi. Další informace o rozdílech mezi typy klíčů naleznete v [tématu Vytváření a koncový bod pro předpověď dotazu klíče v LUIS](luis-concept-keys.md).
 
 <a name="key-limits"></a>
 
-## <a name="resource-key-limits"></a>Omezení klíče prostředků
+### <a name="authoring-resource-limits"></a>Vytváření limitů prostředků
 
-Klíče prostředků mají různá omezení pro vytváření a koncový bod. Klíč koncového bodu dotazu předpověď LUIS je platný pouze pro dotazy koncového bodu.
+Při _kind_filtrování `LUIS.Authoring`prostředků na webu Azure Portal použijte typ , při filtrování prostředků. Služba LUIS omezuje 500 aplikací na zdrojový zdroj Azure.
 
-* 500 aplikací na vývojový prostředek Azure
+|Vytváření prostředků|Vytváření TPS|
+|--|--|
+|Starter|1 milion/měsíc, 5/s|
+|F0 - Úroveň zdarma |1 milion/měsíc, 5/s|
 
-|Klíč|Vytváření obsahu|Koncový bod|Účel|
-|--|--|--|--|
-|Starter|1 milion/měsíc, 5/s|1 tisíc/měsíc, 5/s|Vytváření aplikace LUIS|
-|F0 - Úroveň zdarma |1 milion/měsíc, 5/s|10 tisíc/měsíc, 5/s|Dotazování koncového bodu služby LUIS|
-|S0 - Základní úroveň|-|50/s|Dotazování koncového bodu služby LUIS|
-|S0 - Standardní úroveň|-|50/s|Dotazování koncového bodu služby LUIS|
-|[Integrace analýzy mínění](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Přidání informací o mínění včetně extrakce klíčových frázových dat je k dispozici bez nutnosti dalšího prostředku Azure. |
-|[Integrace řeči](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1 tisíc požadavků koncového bodu na jednotkovou cenu|Převést mluvené projevy na text utterance a vrátit výsledky LUIS|
+* TPS = Transakce za sekundu
+
+[Přečtěte si další informace o cenách.][pricing]
+
+### <a name="query-prediction-resource-limits"></a>Limity prostředků předpovědi dotazu
+
+Při _kind_filtrování `LUIS`prostředků na webu Azure Portal použijte typ , při filtrování prostředků. Prostředek koncového bodu prognózy dotazu LUIS, který se používá v běhu, je platný pouze pro dotazy koncového bodu.
+
+|Prostředek předpovědi dotazu|Dotaz TPS|
+|--|--|
+|F0 - Úroveň zdarma |10 tisíc/měsíc, 5/s|
+|S0 - Standardní úroveň|50/s|
+
+### <a name="sentiment-analysis"></a>Analýza mínění
+
+[Integrace analýzy mínění](luis-how-to-publish-app.md#enable-sentiment-analysis), která poskytuje informace o mínění, je k dispozici bez nutnosti dalšího prostředku Azure.
+
+### <a name="speech-integration"></a>Integrace řeči
+
+[Integrace řeči](../speech-service/how-to-recognize-intents-from-speech-csharp.md) poskytuje 1 tisíc požadavků koncového bodu na jednotkovou cenu.
 
 [Přečtěte si další informace o cenách.][pricing]
 

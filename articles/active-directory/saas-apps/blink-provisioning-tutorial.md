@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 455036652836c6cfd2055e9a747f30b6dfe41295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b19052b8a71b582b47308c41d170f50352d643e2
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77059036"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618358"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Kurz: Konfigurace blinku pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Blink a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-zřizování uživatelů nebo skupin blink.
+Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Blink a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-zřizování uživatelů Blink.
 
 > [!NOTE]
 > Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
@@ -41,9 +41,9 @@ Scénář popsaný v tomto kurzu předpokládá, že již máte následující p
 
 ## <a name="assigning-users-to-blink"></a>Přiřazení uživatelů k blinku
 
-Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů jsou synchronizováni pouze uživatelé nebo členové skupiny, kteří byli přiřazeni k aplikaci ve službě Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Blink. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny Blink podle pokynů zde:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo členové skupiny ve službě Azure AD potřebují přístup k Blink. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny Blink podle pokynů zde:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="important-tips-for-assigning-users-to-blink"></a>Důležité tipy pro přiřazení uživatelů k Blink
@@ -54,7 +54,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 ## <a name="setup-blink-for-provisioning"></a>Nastavení Blink pro zřizování
 
-1. Protokolovat [případ podpory](https://help.joinblink.com/hc/requests/new) nebo e-mailem Blink **podporu** na support@joinblink.com žádost token SCIM. .
+1. Protokolovat [případ podpory](https://support.joinblink.com) nebo e-mailem Blink **podporu** na support@joinblink.com žádost token SCIM. .
 
 2.  Zkopírujte **ověřovací token SCIM**. Tato hodnota se zadá do pole Tajný token na kartě Zřizování aplikace Blink na webu Azure Portal.
 
@@ -82,7 +82,7 @@ Před konfigurací Blink pro automatické zřizování uživatelů pomocí Azure
 
 ## <a name="configuring-automatic-user-provisioning-to-blink"></a>Konfigurace automatického zřizování uživatelů na Blink 
 
-Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v Blinku na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů v Blinku na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
 > Můžete také povolit jednotné přihlašování na saml pro Blink podle pokynů uvedených v [kurzu Blink Single sign-on](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial). Jednotné přihlašování lze konfigurovat nezávisle na automatickézřivací službě uživatelů, i když tyto dvě funkce se vzájemně doplňují
@@ -137,7 +137,7 @@ Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvo
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Blinku.
+Tato operace spustí počáteční synchronizaci všech uživatelů definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Blinku.
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 

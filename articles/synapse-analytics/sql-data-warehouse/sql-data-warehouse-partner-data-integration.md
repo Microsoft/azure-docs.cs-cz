@@ -11,17 +11,19 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08df8266cc3ef8ba1b20efcf135e502a9df69e80
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 587b2aa23aa822f44d7763cbfec21eb36055b091
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351494"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583715"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partneři pro integraci dat Azure Synapse Analytics
-Chcete-li vytvořit řešení datového skladu pomocí funkce SQL Analytics v Azure Synapse, můžete si vybrat z široké škály špičkových nástrojů. Tento článek upozorňuje na partnerské společnosti Microsoft s oficiálními řešeními pro integraci dat, která podporují Azure Synapse.
+
+Chcete-li vytvořit řešení datového skladu pomocí funkce Fondu synapse SQL v Azure Synapse, můžete si vybrat z široké škály špičkových nástrojů. Tento článek upozorňuje na partnerské společnosti Microsoft s oficiálními řešeními pro integraci dat, která podporují Azure Synapse.
 
 ## <a name="data-integration-partners"></a>Partneři pro integraci dat
+
 | Partner | Popis | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma je řešení extrakce, transformace a zatížení (ETL), které umožňuje datovým týmům integrovat, obohacovat a streamovat data z různých datových sil do datového skladu Azure Synapse v reálném čase. |[Stránka produktu](https://www.alooma.com/) |

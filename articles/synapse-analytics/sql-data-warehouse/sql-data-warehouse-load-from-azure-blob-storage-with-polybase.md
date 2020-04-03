@@ -1,6 +1,6 @@
 ---
-title: Načtení maloobchodních dat společnosti Contoso do datového skladu SQL Analytics
-description: Příkazy PolyBase a T-SQL slouží k načtení dvou tabulek z maloobchodních dat Contoso do Azure SQL Analytics.
+title: Načtení maloobchodních dat společnosti Contoso do datového skladu Synapse SQL
+description: Příkazy PolyBase a T-SQL slouží k načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62105b783577d70ae975cf514304d2c564357641
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351469"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584010"
 ---
-# <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>Načtení maloobchodních dat společnosti Contoso do datového skladu SQL Analytics
+# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Načtení maloobchodních dat společnosti Contoso do datového skladu Synapse SQL
 
-V tomto kurzu se naučíte používat příkazy PolyBase a T-SQL k načtení dvou tabulek z maloobchodních dat Contoso do datového skladu SQL Analytics. 
+V tomto kurzu se naučíte používat příkazy PolyBase a T-SQL k načtení dvou tabulek z maloobchodních dat Contoso do datového skladu Synapse SQL.
 
 V tomto tutoriálu budete:
 
@@ -30,11 +30,11 @@ V tomto tutoriálu budete:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ke spuštění tohoto kurzu potřebujete účet Azure, který už má datový sklad SQL Analytics. Pokud nemáte zřízený datový sklad, přečtěte si článek [Vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
+Ke spuštění tohoto kurzu potřebujete účet Azure, který už má datový sklad Synapse SQL. Pokud nemáte zřízený datový sklad, přečtěte si článek [Vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Konfigurace zdroje dat
 
-PolyBase používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů jsou uloženy v datovém skladu SQL Analytics. Data jsou uložena externě.
+PolyBase používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů jsou uloženy v datovém skladu Synapse SQL. Data jsou uložena externě.
 
 ## <a name="create-a-credential"></a>Vytvoření pověření
 
@@ -121,7 +121,7 @@ GO
 
 ## <a name="create-the-external-tables"></a>Vytvoření externích tabulek
 
-Spusťte následující skript a vytvořte externí tabulky DimProduct a FactOnlineSales. Jediné, co tady děláte, je definování názvů sloupců a datových typů a jejich vazba na umístění a formát souborů úložiště objektů blob Azure. Definice se uchovává v datovém skladu SQL Analytics a data jsou pořád v objektu blob úložiště Azure.
+Spusťte následující skript a vytvořte externí tabulky DimProduct a FactOnlineSales. Jediné, co tady děláte, je definování názvů sloupců a datových typů a jejich vazba na umístění a formát souborů úložiště objektů blob Azure. Definice se uložených v datovém skladu a data je stále v objektu blob úložiště Azure.
 
 Parametr **LOCATION** je složka pod kořenovou složkou v objektu blob úložiště Azure. Každá tabulka je v jiné složce.
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Optimalizace komprese columnstore
 
-Ve výchozím nastavení ukládá datový sklad SQL Analytics tabulku jako clusterovaný index columnstore. Po dokončení zatížení některé řádky dat nemusí být komprimovány do columnstore.  Existují různé důvody, proč k tomu může dojít. Další informace naleznete v [tématu správa indexů columnstore](sql-data-warehouse-tables-index.md).
+Ve výchozím nastavení ukládá datový sklad Synapse SQL tabulku jako clusterovaný index columnstore. Po dokončení zatížení některé řádky dat nemusí být komprimovány do columnstore.  Existují různé důvody, proč k tomu může dojít. Další informace naleznete v [tématu správa indexů columnstore](sql-data-warehouse-tables-index.md).
 
 Chcete-li optimalizovat výkon dotazu a kompresi columnstore po zatížení, znovu sestavit tabulku vynutit columnstore index komprimovat všechny řádky. 
 

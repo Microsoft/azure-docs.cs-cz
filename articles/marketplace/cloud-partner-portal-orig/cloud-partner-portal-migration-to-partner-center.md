@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 8ef117425f945d14db535ea3ecedc50d18819868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1245ed89376de4ce777137d8427e03487d0432ab
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280163"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586117"
 ---
 # <a name="cloud-partner-portal-migration-to-partner-center"></a>Migrace portálu partnerů cloudu do Partnerského centra
 
@@ -20,14 +20,13 @@ Aby microsoft zjednodušil možnosti správy vašeho účtu a nabídky, migruje 
 
 | **Typ nabídky** | **Správa nabídek migrovala z portálu partnerů cloudu do partnerského centra** | **Možnost aktualizace kolaterálu v Partnerském centru** |
 |    -----------------------    |    -----------------------------  |  -----------------------------  |
-| Software jako služba (SaaS) |     Nově dostupné       |   Obecná dostupnost kolem února 2020      |
+| Software jako služba (SaaS) |     Nově dostupné       |   Všeobecná dostupnost duben 2020      |
 | Dynamics 365 pro zapojení zákazníků & PowerApps      |     Nově dostupné        |   Nově dostupné      |
 | Dynamics 365 for Operations     |     Nově dostupné       |   Nově dostupné     |
-| Dynamics 365 Business Central      |     Nově dostupné        |   Obecná dostupnost kolem února 2020     |
-| Azure Application     |     Všeobecné dostupnost Prosinec 2019       |   Obecná dostupnost kolem února 2020     |
-| Virtuální počítač Azure      |     Bude oznámeno       |   Bude oznámeno    |
-| Kontejner Azure     |     Bude oznámeno       |   Bude oznámeno     |
-| Konzultační služba      |     Bude oznámeno       |   Bude oznámeno     |
-| Modul IoT Edge      |     Bude oznámeno       |   Bude oznámeno     |
-| Aplikace Služby Power BI     |     Bude oznámeno       |   Bude oznámeno     |
-|  |  |
+| Dynamics 365 Business Central      |     Nově dostupné        |   Všeobecná dostupnost duben 2020     |
+| Azure Application     |     Nově dostupné       |   Všeobecná dostupnost duben 2020     |
+| Virtuální počítač Azure      |     Všeobecná dostupnost duben–květen 2020       |   Bude oznámeno    |
+| Kontejner Azure     |     Všeobecná dostupnost duben–květen 2020       |   Bude oznámeno     |
+| Konzultační služba      |     Všeobecná dostupnost duben–květen 2020       |   Bude oznámeno     |
+| Modul IoT Edge      |     Všeobecná dostupnost duben–květen 2020       |   Bude oznámeno     |
+| Aplikace Služby Power BI     |     Všeobecná dostupnost duben–květen 2020       |   Bude oznámeno     |

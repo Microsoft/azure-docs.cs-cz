@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0541b12d73cc5b5f7fdf713c759069e2ecbd8c18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13985b07b4903504fde6b58031a532337d3b1971
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299627"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584599"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování spravovaných disků Azure na straně serveru
 
@@ -34,7 +34,11 @@ Ve výchozím nastavení používají spravované disky šifrovací klíče spra
 
 ## <a name="customer-managed-keys"></a>Klíče spravované zákazníkem
 
-Šifrování můžete spravovat na úrovni každého spravovaného disku pomocí vlastních klíčů. Šifrování na straně serveru pro spravované disky s klíči spravovanými zákazníky nabízí integrované prostředí s azure key vaultem. Můžete buď importovat [klíče RSA](../../key-vault/key-vault-hsm-protected-keys.md) do trezoru klíčů nebo generovat nové klíče RSA v úložišti klíčů Azure. Disky spravované Azure zpracovávají šifrování a dešifrování zcela transparentním způsobem pomocí [šifrování obálek](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique). Šifruje data pomocí šifrovacího klíče (DEK) založeného na [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256, který je zase chráněn pomocí vašich klíčů. Chcete-li používat klíče k šifrování a dešifrování sady DEK, musíte udělit přístup ke spravovaným diskům v trezoru klíčů. To vám umožní plnou kontrolu nad daty a klíči. Klíče můžete kdykoli zakázat nebo odvolat přístup ke spravovaným diskům. Využití šifrovacího klíče můžete také auditovat pomocí monitorování azure trezoru klíčů, abyste zajistili, že k vašim klíčům přistupují jenom spravované disky nebo jiné důvěryhodné služby Azure.
+Šifrování můžete spravovat na úrovni každého spravovaného disku pomocí vlastních klíčů. Šifrování na straně serveru pro spravované disky s klíči spravovanými zákazníky nabízí integrované prostředí s azure key vaultem. Můžete buď importovat [klíče RSA](../../key-vault/key-vault-hsm-protected-keys.md) do trezoru klíčů nebo generovat nové klíče RSA v úložišti klíčů Azure. 
+
+Disky spravované Azure zpracovávají šifrování a dešifrování zcela transparentním způsobem pomocí [šifrování obálek](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique). Šifruje data pomocí šifrovacího klíče (DEK) založeného na [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256, který je zase chráněn pomocí vašich klíčů. Služba Storage generuje šifrovací klíče dat a šifruje je pomocí klíčů spravovaných zákazníkem pomocí šifrování RSA. Šifrování obálek umožňuje pravidelně otáčet (měnit) klíče podle zásad dodržování předpisů, aniž by to mělo vliv na vaše virtuální počítače. Při otočení klíčů služba Storage znovu šifruje šifrovací klíče dat pomocí nových klíčů spravovaných zákazníkem. 
+
+Chcete-li používat klíče k šifrování a dešifrování sady DEK, musíte udělit přístup ke spravovaným diskům v trezoru klíčů. To vám umožní plnou kontrolu nad daty a klíči. Klíče můžete kdykoli zakázat nebo odvolat přístup ke spravovaným diskům. Využití šifrovacího klíče můžete také auditovat pomocí monitorování azure trezoru klíčů, abyste zajistili, že k vašim klíčům přistupují jenom spravované disky nebo jiné důvěryhodné služby Azure.
 
 U prémiových disků SSD, standardních disků SSD a standardních pevných disků: Když klíč zakážete nebo odstraníte, všechny virtuální počítače s disky používajícími tento klíč se automaticky vypnou. Poté virtuální chody nebude použitelné, pokud klíč je povolen znovu nebo přiřadit nový klíč.
 
@@ -238,6 +242,32 @@ $VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lu
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
 New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
+```
+
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>Změna klíče sady DiskEncryptionSet otočení matou klíče pro všechny prostředky odkazující na sadu DiskEncryptionSet
+
+```PowerShell
+$ResourceGroupName="yourResourceGroupName"
+$keyVaultName="yourKeyVaultName"
+$keyName="yourKeyName"
+$diskEncryptionSetName="yourDiskEncryptionSetName"
+
+$keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName
+
+$keyVaultKey = Get-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName
+
+Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -SourceVaultId $keyVault.ResourceId -KeyUrl $keyVaultKey.Id
+```
+
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>Nalezení stavu šifrování disku na straně serveru
+
+```PowerShell
+$ResourceGroupName="yourResourceGroupName"
+$DiskName="yourDiskName"
+
+$disk=Get-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName
+$disk.Encryption.Type
+
 ```
 
 > [!IMPORTANT]

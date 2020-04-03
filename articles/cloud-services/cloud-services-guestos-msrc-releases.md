@@ -10,34 +10,31 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 03/14/2020
+ms.date: 04/2/2020
 ms.author: raiye
-ms.openlocfilehash: 51c46414b5fe39da13b6ffff53c9509b482fa0d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b929481af3df8bc3bc6a9a6955e8277e3de3298
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408297"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618679"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační dům Azure
 V následujících tabulkách jsou uvedeny aktualizace Centra microsoft security response center (MSRC) použité v hostovaném osu Azure. Vyhledejte v tomto článku, chcete-li zjistit, zda se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace se vždy přenášejí pro konkrétní [rodinu,][family-explain] ve které byly zavedeny.
 
 ## <a name="march-2020-guest-os"></a>Březen 2020 Host OS
 
->[!NOTE]
->Březnový hostovaný operační systém se aktuálně zavádí do virtuálních počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze dostupná pro ruční aktualizace prostřednictvím portálu Azure portal a konfiguračních souborů. Následující opravy jsou zahrnuty v březnu Host OS. Tento seznam se může změnit.
-
 | Product Category (Kategorie produktu) | Nadřazený článek kb | Popis chyby zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel 20-03  |  [4541500]  |  Zabezpečení Windows  | 2.96 | 10. března 2020 |
-|  Rel 20-03  |  [4540671]  |  Internet Explorer  | 2.96, 3.83, 4.76 | 10. března 2020 |
-|  Rel 20-03  |  [4540694]  |  Zabezpečení Windows  | 3.83 | 10. března 2020 |
-|  Rel 20-03  |  [4541505]  |  Zabezpečení Windows  | 4.76 | 10. března 2020 |
-|  Rel 20-03  |  [4540670]  |  Nejnovější kumulativní aktualizace (LCU)  | 5.41 | 10. března 2020 |
-|  Rel 20-03  |  [4538461]  |  Nejnovější kumulativní aktualizace (LCU)  | 6.17 | 10. března 2020 |
-|  Rel 20-03  |  [4537820]  |  Měsíční souhrn  | 2.96 | 11. února 2020 |
-|  Rel 20-03  |  [4537814]  |  Měsíční souhrn  | 3.83 | 11. února 2020 |
-|  Rel 20-03  |  [4537821]  |  Měsíční souhrn  | 4.76 | 11. února 2020 |
+|  Rel 20-03  |  [4541500]  |  Zabezpečení Windows  | [2.96] | 10. března 2020 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | 10. března 2020 |
+|  Rel 20-03  |  [4540694]  |  Zabezpečení Windows  | [3.83] | 10. března 2020 |
+|  Rel 20-03  |  [4541505]  |  Zabezpečení Windows  | [4.76] | 10. března 2020 |
+|  Rel 20-03  |  [4540670]  |  Nejnovější kumulativní aktualizace (LCU)  | [5.41] | 10. března 2020 |
+|  Rel 20-03  |  [4538461]  |  Nejnovější kumulativní aktualizace (LCU)  | [6.17] | 10. března 2020 |
+|  Rel 20-03  |  [4537820]  |  Měsíční souhrn  | [2.96] | 11. února 2020 |
+|  Rel 20-03  |  [4537814]  |  Měsíční souhrn  | [3.83] | 11. února 2020 |
+|  Rel 20-03  |  [4537821]  |  Měsíční souhrn  | [4.76] | 11. února 2020 |
 
 [4541500]: https://support.microsoft.com/kb/4541500 
 [4540671]: https://support.microsoft.com/kb/4540671 

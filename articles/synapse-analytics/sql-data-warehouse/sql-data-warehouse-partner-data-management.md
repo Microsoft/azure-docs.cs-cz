@@ -11,15 +11,16 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 05d5e4f7334c6a9ef7a4f9e8ce7acbdf007a6a44
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f3d5076b8ca4e1c79451bfe3bcd1dbe554b17a88
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351435"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586464"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partneři azure synapse analytics pro správu dat
-Chcete-li vytvořit řešení datového skladu pomocí funkce SQL Analytics v Azure Synapse, máte na výběr z široké škály špičkových nástrojů. Tento článek upozorňuje na partnerské společnosti Microsoft s nástroji pro správu dat a řešeními podporujícími Azure Synapse.
+
+Chcete-li vytvořit řešení datového skladu pomocí funkce Fondu synapse SQL v Azure Synapse, máte na výběr z široké škály špičkových nástrojů. Tento článek upozorňuje na partnerské společnosti Microsoft s nástroji pro správu dat a řešeními podporujícími Azure Synapse.
 
 ## <a name="data-management-partners"></a>Partneři pro správu dat
 | Partner | Popis | Odkaz na web/produkt |

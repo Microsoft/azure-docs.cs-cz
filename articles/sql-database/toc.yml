@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: Koncepty
   items:
-    - name: Dokumentace k běžným funkcím
-      href: sql-database-paas-index.yml
     - name: Porovnání funkcí
       href: sql-database-features.md
     - name: Praktičtí průvodci
@@ -280,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: Škálovatelnost
       items:
-        - name: Dokumentace ke škálovatelnosti
-          href: sql-database-scalability-index.yml
         - name: Vertikální navýšení/snížení kapacity
           href: sql-database-scale-resources.md
         - name: Škálování čtení na více instancí
@@ -310,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Databázové funkce
       items:
-        - name: Dokumentace k databázovým funkcím
-          href: sql-database-features-index.yml
         - name: Možnosti s více modely
           href: sql-database-multi-model-features.md
         - name: V paměti
@@ -685,7 +679,6 @@
         - name: Ukázky kódů
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Spravovaná instance SQL
-  href: sql-database-managed-instance-index.yml
   items:
     - name: Přehled
       items:

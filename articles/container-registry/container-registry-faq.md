@@ -3,14 +3,14 @@ title: Nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Registry
 author: sajayantony
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403224"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618799"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se registru kontejnerů Azure
 
@@ -104,7 +104,8 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [Jak povolit TLS 1.2?](#how-to-enable-tls-12)
 - [Podporuje Azure Container Registry důvěryhodnost obsahu?](#does-azure-container-registry-support-content-trust)
 - [Jak udělím přístup k vyžádat nebo nabízená bitová kopie bez oprávnění ke správě prostředku registru?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
-- [Jak povolím automatickou karanténu bitových obrázků pro registr](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Jak povolím automatickou karanténu obrázků pro registr?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Jak povolím anonymní přístup k vyžádat?](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Jak se dostanu k rozhraní HTTP API registru Dockeru V2?
 
@@ -251,13 +252,18 @@ Při použití pouze `AcrPull` role `AcrPush` nebo nemá postupník oprávnění
 
 Karanténa obrázků je v současné době funkcí náhledu ACR. Karanténní režim registru můžete povolit tak, aby běžné uživatele byly viditelné pouze obrázky, které úspěšně prošly bezpečnostním skenováním. Podrobnosti naleznete v [úložišti ACR GitHub](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>Jak povolím anonymní přístup k vyžádat?
+
+Nastavení registru kontejnerů Azure pro anonymní (veřejný) přístup k vyžádat je aktuálně funkce náhledu. Chcete-li povolit přístup veřejnosti, https://aka.ms/acr/support/create-ticketotevřete lístek podpory na adrese . Podrobnosti najdete v [tématu Fórum pro zpětnou vazbu Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+
+
 ## <a name="diagnostics-and-health-checks"></a>Diagnostika a zdravotní kontroly
 
 - [Zkontrolujte stav pomocí`az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull selže s chybou: net/http: požadavek zrušen při čekání na připojení (Client.Timeout byl překročen při čekání na hlavičky)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker push úspěšné, ale docker pull selže s chybou: neoprávněné: ověřování povinné](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login`úspěšné, ale příkazy dockeru se nezdaří s chybou: neoprávněné: je vyžadováno ověření](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [Povolení a získání protokolů ladění demonu dockeru](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [Povolení a získání protokolů ladění demonu dockeru](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Nová uživatelská oprávnění nemusí být účinná ihned po aktualizaci](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Ověřovací informace nejsou uvedeny ve správném formátu při přímých voláních rozhraní REST API.](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Proč na webu Azure Portal nejsou uvedeny všechny moje úložiště nebo značky?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -323,13 +329,13 @@ Podrobnosti `--signature-verification` lze nalézt `man dockerd`spuštěním .
 
 Ujistěte se, že používáte adresu URL `docker push myregistry.azurecr.io/myimage:latest`serveru s velkými písmeny, například , `myRegistry`a to i v případě, že název prostředku registru je velká nebo smíšená písmena, například .
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Povolení a získání protokolů ladění daemonu Dockeru  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Povolení a získání protokolů ladění daemonu Dockeru    
 
 Začněte `dockerd` `debug` s možností. Nejprve vytvořte konfigurační soubor`/etc/docker/daemon.json`daemonu Dockeru ( `debug` ) pokud neexistuje, a přidejte možnost:
 
 ```json
-{   
-    "debug": true   
+{    
+    "debug": true    
 }
 ```
 
@@ -339,12 +345,12 @@ Potom restartujte daemon. Například s Ubuntu 14.04:
 sudo service docker restart
 ```
 
-Podrobnosti naleznete v [dokumentaci dockeru](https://docs.docker.com/engine/admin/#enable-debugging). 
+Podrobnosti naleznete v [dokumentaci dockeru](https://docs.docker.com/engine/admin/#enable-debugging).    
 
- * Protokoly mohou být generovány na různých místech, v závislosti na vašem systému. Například pro Ubuntu 14.04 je `/var/log/upstart/docker.log`to .   
+ * Protokoly mohou být generovány na různých místech, v závislosti na vašem systému. Například pro Ubuntu 14.04 je `/var/log/upstart/docker.log`to .    
 Podrobnosti najdete v [dokumentaci k Dockeru.](https://docs.docker.com/engine/admin/#read-the-logs)    
 
- * Pro Docker pro Windows protokoly jsou generovány pod %LOCALAPPDATA%/docker/. Však nemusí obsahovat všechny informace o ladění dosud.   
+ * Pro Docker pro Windows protokoly jsou generovány pod %LOCALAPPDATA%/docker/. Však nemusí obsahovat všechny informace o ladění dosud.    
 
    Chcete-li získat přístup k úplnému protokolu daemonu, budete pravděpodobně potřebovat některé další kroky:
 
@@ -455,7 +461,7 @@ Najděte ip virtuálního přepínače virtuálního virtuálního počítače D
 
 Konfigurace proxy dockeru pro výstup předchozího příkazu a portu 8888 (například 10.0.75.1:8888)
 
-## <a name="tasks"></a>Úlohy
+## <a name="tasks"></a>Úkoly
 
 - [Jak dávkové spuštění storno?](#how-do-i-batch-cancel-runs)
 - [Jak mohu zahrnout složku .git do příkazu az acr build?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
@@ -487,7 +493,7 @@ V současné době nepodporujeme GitLab pro zdrojové spouštěče.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatická aktivace sestavení pomocí potvrzení |
 |---|---|---|---|
-| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ano |
+| GitHubu | https://github.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ano |
 | Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Ano | Ano |
 | GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ne |
 | BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Ano | Ne |

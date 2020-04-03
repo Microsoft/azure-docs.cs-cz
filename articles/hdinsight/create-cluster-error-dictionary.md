@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 803783eddfbffd5c3dbab7353ee00dd7f11a09e5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302725"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618898"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Chyby při vytváření clusteru
 
@@ -157,7 +157,7 @@ Pokud chcete k řízení síťového provozu použít skupiny zabezpečení sít
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>Kód chyby: StoragePermissionsBlockedForMsi  
+## <a name="error-code-storagepermissionsblockedformsi"></a>Kód chyby: StoragePermissionsBlockedForMsi
 
 ### <a name="error"></a>Chyba
 
@@ -178,11 +178,11 @@ Další informace naleznete v tématu [Nastavení oprávnění pro spravovanou i
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Kód chyby: InvalidNetworkSecurityGroupSecurityRules  
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Kód chyby: InvalidNetworkSecurityGroupSecurityRules
 
 ### <a name="error"></a>Chyba
 
-"Pravidla zabezpečení ve skupině zabezpečení sítě\</odběry/ SubscriptionID\>/resourceGroups/<název\> skupiny prostředků výchozí/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\<\> \<\> configured with subnet /subscriptions/\<SubscriptionID\>/resourceGroups/ Resource Group name RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/ VirtualNetworks/ Virtual Název\>sítě /podsítě/\<Název\> podsítě neumožňuje požadované příchozí nebo odchozí připojení. Další informace najdete na webu [Plánování virtuální sítě pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)nebo se obraťte na podporu."
+"Pravidla zabezpečení ve skupině zabezpečení sítě\</předplatná/ SubscriptionID\>/resourceGroups/<\> název skupiny prostředků výchozí/zprostředkovatelé/Microsoft.Network/networkSecurityGroups/\<\>\<\> \<\>\<\> \<Název\> skupiny síťových zabezpečení nakonfigurovaná s podsítí /předplatná/ SubscriptionID /resourceGroups/ Název skupiny prostředků RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/ Virtual Network Name /podnets/ Podnet Name neumožňuje požadované příchozí a/nebo odchozí připojení. Další informace najdete na webu [Plánování virtuální sítě pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)nebo se obraťte na podporu."
 
 ### <a name="cause"></a>Příčina
 
@@ -195,12 +195,12 @@ Pokud chcete k řízení síťového provozu použít skupiny zabezpečení sít
 - Identifikujte oblast Azure, kterou chcete použít pro HDInsight, a vytvořte bezpečný seznam IP adres pro vaši oblast. Další informace naleznete v [tématu Zdraví a služby správy: Konkrétní regiony](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
 - Identifikujte IP adresy, které vyžaduje HDInsight. Další informace naleznete v tématu [HDInsight management IP addresses](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
 - Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které chcete nainstalovat HDInsight. U skupin zabezpečení sítě povolte příchozí přenosy na portu 443 z adres IP. Tato konfigurace zajišťuje, že služby správy HDInsight mohou dosáhnout clusteru mimo virtuální síť.
-  
+
 ---
 
 ## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Kód chyby: Instalaci součástí se nepodařilo nainstalovat do jednoho nebo více hostitelů.
 
-###  <a name="error"></a>Chyba
+### <a name="error"></a>Chyba
 
 "Instalaci clusteru se nepodařilo nainstalovat součásti do jednoho nebo více hostitelů. Opakujte žádost."
 
@@ -211,6 +211,42 @@ Tato chyba se obvykle generuje, když je přechodný problém nebo výpadek Azur
 ### <a name="resolution"></a>Řešení
 
 Zkontrolujte [stavovou](https://status.azure.com) stránku Azure pro všechny výpadky Azure, které by mohly ovlivnit nasazení clusteru. Pokud nejsou žádné výpadky, opakujte nasazení clusteru.
+
+---
+
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Kód chyby: FailedToConnectWithClusterErrorCode
+
+### <a name="error"></a>Chyba
+
+Nelze se připojit ke koncovému bodu správy clusteru. Opakujte akci později.
+
+### <a name="cause"></a>Příčina
+
+Služba HDInsight se nemůže připojit ke clusteru při pokusu o vytvoření clusteru
+
+### <a name="resolution"></a>Řešení
+
+Pokud používáte vlastní skupinu zabezpečení sítě virtuální sítě (NSG) a uživatelem definované trasy (UDR), ujistěte se, že váš cluster může komunikovat se službami správy HDInsight. Další informace naleznete v [tématu IP adresy hdinsight pro správu](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+
+---
+
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Kód chyby: Nasazení se nezdařila z<Resource URI>důvodu porušení zásad: "Prostředek " byl zakázán zásadami. Identifikátory zásad: '[{"policyAssignment":{"name":""id":"/providers/Microsoft.Management/managementGroups/<Policy Name> providers/Microsoft.Authorization/policyAssignments/ "},"policyDefinition":'Id":"/providers/Microsoft.ManagementGroups/providers/Microsoft.Authorization/policyAssignments/ "},"policyDefinition":'.id":"/providers/Microsoft.ManagementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition":'.,<Policy Definition>
+
+### <a name="cause"></a>Příčina
+
+Zásady Azure založené na předplatném můžete odmítnout vytváření veřejných IP adres. K vytvoření clusteru HDInsight jsou potřeba dvě veřejné IP adresy.
+
+Vytvoření clusteru obecně ovlivňují následující zásady:
+
+* Zásady, které brání vytváření IP adres nebo vyrovnávání zatížení v rámci předplatného.
+* Zásady, které brání vytváření účtů úložiště.
+* Zásady, které brání odstranění síťových prostředků, jako jsou ip adresy nebo nástroje pro vyrovnávání zatížení.
+
+### <a name="resolution"></a>Řešení
+
+Při vytváření clusteru HDInsight odstraňte nebo zakažte zásady Azure založené na předplatném.
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

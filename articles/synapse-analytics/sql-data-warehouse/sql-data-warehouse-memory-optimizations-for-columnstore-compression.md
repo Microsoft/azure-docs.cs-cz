@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a640f2f260c94cd7502aa79badb32bd26abebb11
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350308"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586537"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace kvality skupiny řádků pro columnstore
 
@@ -89,7 +89,7 @@ kde krátké řetězce používají datové typy řetězců <= 32 bajtů a sloup
 
 Dlouhé řetězce jsou komprimovány metodou komprese určenou pro kompresi textu. Tato metoda komprese používá *slovník* k ukládání textových vzorů. Maximální velikost slovníku je 16 MB. Pro každý sloupec dlouhého řetězce ve skupině řádků existuje pouze jeden slovník.
 
-Podrobné informace o požadavcích na paměť columnstore najdete v tématu škálování videa [SQL Analytics: konfigurace a pokyny](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+Podrobné informace o požadavcích na paměť columnstore najdete ve videu [Synapse SQL scaling: konfigurace a pokyny](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Způsoby, jak snížit požadavky na paměť
 
@@ -141,4 +141,4 @@ Velikost DWU a třída prostředků uživatele společně určují, kolik pamět
 
 ## <a name="next-steps"></a>Další kroky
 
-Další způsoby, jak zlepšit výkon služby SQL Analytics, najdete v [přehledu výkonu](cheat-sheet.md).
+Další způsoby, jak zlepšit výkon synapse SQL, naleznete v [přehledu výkonu](cheat-sheet.md).

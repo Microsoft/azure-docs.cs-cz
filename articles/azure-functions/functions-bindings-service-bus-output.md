@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277437"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582253"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Výstupní vazba Azure Service Bus pro funkce Azure
 
@@ -21,7 +21,7 @@ Informace o nastavení a konfiguraci naleznete v [přehledu](functions-bindings-
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [funkci C#,](functions-dotnet-class-library.md) která odesílá zprávu fronty služby Service Bus:
 
@@ -86,7 +86,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje výstupní vazbu service bus v souboru *function.json* a [funkci JavaScript,](functions-reference-node.md) která vazbu používá. Funkce používá aktivační událost časovače k odeslání zprávy fronty každých 15 sekund.
 
@@ -227,7 +227,7 @@ Funkce jazyka Java mohou také zapisovat do tématu service bus. Následující 
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte [atribut ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -261,7 +261,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány javascriptem.
 
@@ -295,7 +295,7 @@ Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nas
 
 V Azure Functions 1.x, runtime vytvoří frontu, pokud neexistuje `accessRights` `manage`a jste nastavili . Ve funkcích verze 2.x a vyšší musí fronta nebo téma již existovat. Pokud zadáte frontu nebo téma, které neexistuje, funkce se nezdaří. 
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Pro výstupní vazbu použijte následující typy parametrů:
 
@@ -329,7 +329,7 @@ Při práci s funkcemi jazyka C#:
 
 * Chcete-li získat přístup k [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) ID relace, spojte se s typem a použijte `sessionId` vlastnost.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Přístup k frontě `context.bindings.<name from function.json>`nebo tématu pomocí aplikace . Můžete přiřadit řetězec, bajtové pole nebo javascriptový objekt (rekonstruovaný do `context.binding.<name>`JSON) .
 
@@ -345,7 +345,7 @@ Použijte [sdk azure service bus](https://docs.microsoft.com/azure/service-bus-m
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Odkaz |
+| Vazba | Referenční informace |
 |---|---|
 | Service Bus | [Kódy chyb sběrnice service bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
 | Service Bus | [Limity sběrnice](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
@@ -383,6 +383,7 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
+|prefetchCount|0|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat.|
 |maxAutoRenewDuration|00:05:00|Maximální doba, po kterou bude zámek zprávy automaticky obnoven.|
 |Automatické dokončování|true|Určuje, zda má aktivační událost okamžitě označit zprávu jako dokončenou (automatické dokončování) nebo čekat na úspěšné ukončení funkce, aby se volání dokončilo.|
 |maxConcurrentCalls maxConcurrentCalls maxConcurrentCalls maxCon|16|Maximální počet souběžných volání zpětného volání, které by mělo čerpadlo zprávy zahájit. Ve výchozím nastavení pracuje za běhu functions více zpráv současně. Chcete-li nasměrovat za běhu na zpracování pouze jedné `maxConcurrentCalls` fronty nebo tematické zprávy současně, nastavte na 1. |

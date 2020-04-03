@@ -1,6 +1,6 @@
 ---
 title: Pokyny k návrhu pro replikované tabulky
-description: Doporučení pro navrhování replikovaných tabulek v SQL Analytics
+description: Doporučení pro navrhování replikovaných tabulek v synapse SQL
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,31 +11,34 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bbf36f8f3aed9d8208c6182daa7237dc57ade67b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0b240c45afcb2374f41eb26e86e46b106e314e76
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349141"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582239"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Pokyny k návrhu pro použití replikovaných tabulek v sql analytics
-Tento článek obsahuje doporučení pro navrhování replikovaných tabulek ve schématu SQL Analytics. Tato doporučení slouží ke zlepšení výkonu dotazu snížením pohybu dat a složitosti dotazu.
+# <a name="design-guidance-for-using-replicated-tables-in-synapse-sql"></a>Pokyny k návrhu pro použití replikovaných tabulek v synapse SQL
+
+Tento článek obsahuje doporučení pro navrhování replikovaných tabulek ve schématu Synapse SQL. Tato doporučení slouží ke zlepšení výkonu dotazu snížením pohybu dat a složitosti dotazu.
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste obeznámeni s koncepty distribuce dat a přesunu dat v SQL Analytics.Další informace naleznete v článku [architektury.](massively-parallel-processing-mpp-architecture.md) 
+
+Tento článek předpokládá, že jste obeznámeni s rozdělení dat a přesun dat koncepty v Synapse SQL.Další informace naleznete v článku [architektury.](massively-parallel-processing-mpp-architecture.md) 
 
 V rámci návrhu tabulky pochopte co nejvíce informací o datech a způsobu dotazování na data.Zvažte například tyto otázky:
 
 - Jak velký je stůl?   
 - Jak často se tabulka aktualizuje?   
-- Mám tabulky faktů a dimenzí v databázi SQL Analytics?   
+- Mám tabulky faktů a dimenzí v synapse SQL databázi?   
 
 ## <a name="what-is-a-replicated-table"></a>Co je replikovaná tabulka?
+
 Replikovaná tabulka má úplnou kopii tabulky přístupné na každém výpočetním uzlu. Replikace tabulky eliminuje nutnost převádět data mezi výpočetními uzly před spojením nebo agregací. Vzhledem k tomu, že tabulka obsahuje více kopií, replikované tabulky fungují nejlépe, pokud je velikost tabulky menší než 2 GB komprimované.  2 GB není pevný limit.  Pokud jsou data statická a nezmění se, můžete replikovat větší tabulky.
 
-Následující diagram znázorňuje replikovanou tabulku, která je přístupná na každém výpočetním uzlu. V SQL Analytics je replikovaná tabulka plně zkopírována do distribuční databáze na každém výpočetním uzlu. 
+Následující diagram znázorňuje replikovanou tabulku, která je přístupná na každém výpočetním uzlu. V synapse SQL je replikovaná tabulka plně zkopírována do distribuční databáze v každém výpočetním uzlu. 
 
 ![Replikovaná tabulka](./media/design-guidance-for-replicated-tables/replicated-table.png "Replikovaná tabulka")  
 
@@ -43,16 +46,17 @@ Replikované tabulky fungují dobře pro tabulky dimenzí ve schématu hvězd. T
 
 Použití replikované tabulky zvažte v následujících možnostech:
 
-- Velikost tabulky na disku je menší než 2 GB, bez ohledu na počet řádků. Chcete-li najít velikost tabulky, můžete použít příkaz `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` [DBCC PDW_SHOWSPACEUSED:](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) . 
-- Tabulka se používá ve spojeních, která by jinak vyžadovala přesun dat. Při spojování tabulek, které nejsou distribuovány ve stejném sloupci, jako je například tabulka distribuovaná hodnotou hash, s tabulkou kruhového dotazování, je k dokončení dotazu nutné přesun dat.  Pokud je jedna z tabulek malá, zvažte replikovanou tabulku. Ve většině případů doporučujeme místo kulatých stolků používat replikované tabulky. Chcete-li zobrazit operace přesunu dat v plánech dotazů, použijte [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).  BroadcastMoveOperation je typická operace přesunu dat, která může být eliminována pomocí replikované tabulky.  
+- Velikost tabulky na disku je menší než 2 GB, bez ohledu na počet řádků. Chcete-li najít velikost tabulky, můžete použít příkaz `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` [DBCC PDW_SHOWSPACEUSED:](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . 
+- Tabulka se používá ve spojeních, která by jinak vyžadovala přesun dat. Při spojování tabulek, které nejsou distribuovány ve stejném sloupci, jako je například tabulka distribuovaná hodnotou hash, s tabulkou kruhového dotazování, je k dokončení dotazu nutné přesun dat.  Pokud je jedna z tabulek malá, zvažte replikovanou tabulku. Ve většině případů doporučujeme místo kulatých stolků používat replikované tabulky. Chcete-li zobrazit operace přesunu dat v plánech dotazů, použijte [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  BroadcastMoveOperation je typická operace přesunu dat, která může být eliminována pomocí replikované tabulky.  
  
 Replikované tabulky nemusí přinést nejlepší výkon dotazu, pokud:
 
 - Tabulka obsahuje časté operace vkládání, aktualizace a odstraňování.Operace jazyka pro manipulaci s daty (DML) vyžadují opětovné sestavení replikované tabulky.Časté opětovné sestavení může způsobit pomalejší výkon.
-- Databáze SQL Analytics je často škálována. Škálování databáze SQL Analytics změní počet výpočetních uzlů, které vzniknou opětovné sestavení replikované tabulky.
-- Tabulka má velký počet sloupců, ale datové operace obvykle přístup pouze malý počet sloupců. V tomto scénáři namísto replikace celé tabulky může být efektivnější distribuovat tabulku a potom vytvořit index na často používaných sloupcích. Pokud dotaz vyžaduje přesun dat, SQL Analytics přesune pouze data pro požadované sloupce. 
+- Synapse SQL databáze je měřítko často. Škálování databáze změní počet výpočetních uzlů, které vzniknou opětovné sestavení replikované tabulky.
+- Tabulka má velký počet sloupců, ale datové operace obvykle přístup pouze malý počet sloupců. V tomto scénáři namísto replikace celé tabulky může být efektivnější distribuovat tabulku a potom vytvořit index na často používaných sloupcích. Pokud dotaz vyžaduje přesun dat, budou přesunuta pouze data pro požadované sloupce.
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Použití replikovaných tabulek s jednoduchými predikáty dotazů
+
 Než se rozhodnete distribuovat nebo replikovat tabulku, přemýšlejte o typech dotazů, které chcete spustit s tabulkou. Kdykoli je to možné,
 
 - Replikované tabulky používejte pro dotazy s jednoduchými predikáty dotazů, jako je rovnost nebo nerovnost.
@@ -73,7 +77,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Převést existující tabulky kruhového dotazování na replikované tabulky
 Pokud již máte tabulky kruhového dotazování, doporučujeme je převést na replikované tabulky, pokud splňují kritéria uvedená v tomto článku. Replikované tabulky zlepšují výkon u tabulek kruhového dotazování, protože eliminují potřebu přesunu dat.  Tabulka kruhového dotazování vždy vyžaduje přesun dat pro spojení. 
 
-Tento příklad používá [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ke změně tabulky DimSalesTerritory na replikovanou tabulku. Tento příklad funguje bez ohledu na to, zda DimSalesTerritory je hash distribuované nebo kruhové dotazování.
+Tento příklad používá [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ke změně tabulky DimSalesTerritory na replikovanou tabulku. Tento příklad funguje bez ohledu na to, zda DimSalesTerritory je hash distribuované nebo kruhové dotazování.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
@@ -94,7 +98,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
     
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Příklad výkonu dotazu pro dotazování a replikaci 
     
-Replikovaná tabulka nevyžaduje žádný přesun dat pro spojení, protože celá tabulka je již k dispozici na každém výpočetním uzlu. Pokud jsou tabulky dimenzí distribuovány za každým svatou, spojení zkopíruje tabulku dimenzí v plném rozsahu do každého výpočetního uzlu. Chcete-li přesunout data, plán dotazu obsahuje operaci s názvem BroadcastMoveOperation. Tento typ operace přesunu dat zpomaluje výkon dotazu a je eliminován pomocí replikovaných tabulek. Chcete-li zobrazit kroky plánu dotazů, použijte zobrazení katalogu [systému sys.dm_pdw_request_steps.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)  
+Replikovaná tabulka nevyžaduje žádný přesun dat pro spojení, protože celá tabulka je již k dispozici na každém výpočetním uzlu. Pokud jsou tabulky dimenzí distribuovány za každým svatou, spojení zkopíruje tabulku dimenzí v plném rozsahu do každého výpočetního uzlu. Chcete-li přesunout data, plán dotazu obsahuje operaci s názvem BroadcastMoveOperation. Tento typ operace přesunu dat zpomaluje výkon dotazu a je eliminován pomocí replikovaných tabulek. Chcete-li zobrazit kroky plánu dotazů, použijte zobrazení katalogu [systému sys.dm_pdw_request_steps.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
 
 Například v následující dotaz proti AdventureWorks schéma, `FactInternetSales` tabulka je hash distribuované. Tabulky `DimDate` `DimSalesTerritory` a jsou tabulky menších dimenzí. Tento dotaz vrátí celkový prodej v Severní Americe za fiskální rok 2004:
 
@@ -118,11 +122,12 @@ Znovu jsme `DimDate` vytvořili a `DimSalesTerritory` jako replikované tabulky 
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Důležité informace o výkonu při úpravách replikovaných tabulek
-SQL Analytics implementuje replikovanou tabulku udržováním hlavní verze tabulky. Zkopíruje hlavní verzi do jedné distribuční databáze na každém výpočetním uzlu. Pokud dojde ke změně, SQL Analytics nejprve aktualizuje hlavní tabulku. Potom znovu vytvoří tabulky na každém uzlu Compute. Opětovné sestavení replikované tabulky zahrnuje zkopírování tabulky do každého výpočetního uzlu a následné sestavení indexů.  Například replikovaná tabulka na DW400 obsahuje 5 kopií dat.  Hlavní kopie a úplná kopie na každém výpočetním uzlu.  Všechna data jsou uložena v distribučních databázích. SQL Analytics používá tento model k podpoře rychlejších příkazů pro úpravy dat a flexibilních operací škálování. 
+
+Replikovaná tabulka je implementována udržováním hlavní verze tabulky. Zkopíruje hlavní verzi do jedné distribuční databáze na každém výpočetním uzlu. Dojde-li ke změně, hlavní tabulka je aktualizována jako první. Pak tabulka na každém výpočetním uzlu je znovu sestaven. Opětovné sestavení replikované tabulky zahrnuje zkopírování tabulky do každého výpočetního uzlu a následné sestavení indexů.  Například replikovaná tabulka na DW400 obsahuje 5 kopií dat.  Hlavní kopie a úplná kopie na každém výpočetním uzlu.  Všechna data jsou uložena v distribučních databázích pro podporu rychlejších příkazů pro úpravy dat a flexibilních operací škálování. 
 
 Znovusestavení jsou vyžadována po:
 - Data jsou načtena nebo změněna.
-- Instance SQL Analytics se škáluje na jinou úroveň.
+- Instance Synapse SQL je škálována na jinou úroveň.
 - Definice tabulky je aktualizována.
 
 Opětovné sestavení nejsou vyžadovány po:
@@ -132,7 +137,8 @@ Opětovné sestavení nejsou vyžadovány po:
 Opětovné sestavení nedojde ihned po změně dat. Místo toho je opětovné sestavení spuštěno při prvním výběru dotazu z tabulky.  Dotaz, který spustil opětovné sestavení, se přečte okamžitě z hlavní verze tabulky, zatímco data jsou asynchronně zkopírována do každého výpočetního uzlu. Dokud nebude kopie dat dokončena, následné dotazy budou nadále používat hlavní verzi tabulky.  Pokud dojde k jakékoli aktivitě proti replikované tabulce, která vynutí další opětovné sestavení, bude kopie dat zrušena a další příkaz select spustí opětovné zkopírování dat. 
 
 ### <a name="use-indexes-conservatively"></a>Používejte indexy konzervativně
-Standardní postupy indexování platí pro replikované tabulky. SQL Analytics znovu vytvoří každý replikovaný index tabulky jako součást opětovného sestavení. Indexy používejte pouze v případě, že zvýšení výkonu převáží náklady na opětovné sestavení indexů.  
+
+Standardní postupy indexování platí pro replikované tabulky. Každý index replikované tabulky je znovu sestaven jako součást opětovného sestavení indexu. Indexy používejte pouze v případě, že zvýšení výkonu převáží náklady na opětovné sestavení indexů.  
  
 ### <a name="batch-data-loads"></a>Dávkové načtení dat
 Při načítání dat do replikovaných tabulek se pokuste minimalizovat opětovné sestavení dávkou zatížení dohromady. Před spuštěním příkazů select proveďte všechna dávková zatížení.
@@ -156,11 +162,11 @@ Například tento vzorek zatížení načte data ze čtyř zdrojů, ale vyvolá 
 - Zatížení ze zdroje 4.
 - Select příkaz aktivuje opětovné sestavení.
 
-
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Opětovné sestavení replikované tabulky po dávkovém zatížení
+
 Chcete-li zajistit konzistentní časy provádění dotazů, zvažte vynucení sestavení replikovaných tabulek po dávkovém načtení. V opačném případě bude první dotaz stále používat přesun dat k dokončení dotazu. 
 
-Tento dotaz používá [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV seznam replikovaných tabulek, které byly změněny, ale nebyly znovu sestaveny.
+Tento dotaz používá [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV seznam replikovaných tabulek, které byly změněny, ale nebyly znovu sestaveny.
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -177,12 +183,13 @@ Chcete-li spustit opětovné sestavení, spusťte následující příkaz v kaž
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]
-``` 
- 
-## <a name="next-steps"></a>Další kroky 
+```
+
+## <a name="next-steps"></a>Další kroky
+
 Chcete-li vytvořit replikovanou tabulku, použijte jeden z těchto příkazů:
 
-- [VYTVOŘIT TABULKU (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [VYTVOŘIT TABULKU JAKO VÝBĚR (SQL Analytics)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [VYTVOŘIT TABULKU JAKO VÝBĚR](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 Přehled distribuovaných tabulek naleznete v [tématu distribuované tabulky](sql-data-warehouse-tables-distribute.md).

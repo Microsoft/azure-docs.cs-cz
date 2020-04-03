@@ -1,6 +1,6 @@
 ---
 title: Systémová zobrazení
-description: Odkazy na dokumentaci pro zobrazení systému podporované v SQL Analytics.
+description: Odkazy na dokumentaci pro zobrazení systému podporované v fondu SYNApse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b3089cfbd0abb4bafe160b07fd75df877d61741b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 1cc6627599a533238aae742b0358c13e1a7eab8a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350272"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586343"
 ---
-# <a name="system-views-supported-in-sql-analytics"></a>Systémová zobrazení podporovaná v nástroji SQL Analytics
-Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
+# <a name="system-views-supported-in-synapse-sql-pool"></a>Systémová zobrazení podporovaná ve fondu SYNAPse SQL
 
-## <a name="sql-analytics-catalog-views"></a>Zobrazení katalogu SQL Analytics
+Odkazy na dokumentaci pro příkazy T-SQL podporované v fondu Synapse SQL.
+
+## <a name="synapse-sql-pool-catalog-views"></a>Zobrazení katalogu fondu SQL Synapse
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -45,6 +46,7 @@ Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)
 
 ## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>Zobrazení dynamické správy datového skladu SQL (DMV)
+
 * [sys.dm_pdw_dms_cores](https://msdn.microsoft.com/library/mt203911.aspx)
 * [sys.dm_pdw_dms_external_work](https://msdn.microsoft.com/library/mt204024.aspx)
 * [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)
@@ -65,14 +67,16 @@ Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys.dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql) (náhled)
 
-## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>Sql Server DMVs použitelné pro SQL Analytics
-Následující dmvs jsou použitelné pro SQL Analytics, ale musí být provedeny připojením k **hlavní** databázi.
+## <a name="sql-server-dmvs-applicable-to-synapse-sql-pool"></a>SQL Server DMVs použitelné pro fond SYNAPse SQL
+
+Následující dmvs jsou použitelné pro fond SYNApse SQL, ale musí být provedeny připojením k **hlavní** databázi.
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
 * [sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
 
 ## <a name="sql-server-catalog-views"></a>Zobrazení katalogu serveru SQL Server
+
 * [sys.all_columns](https://msdn.microsoft.com/library/ms177522.aspx)
 * [sys.all_objects](https://msdn.microsoft.com/library/ms178618.aspx)
 * [sys.all_parameters](https://msdn.microsoft.com/library/ms190340.aspx)
@@ -145,17 +149,18 @@ Následující dmvs jsou použitelné pro SQL Analytics, ale musí být proveden
 * [sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-analytics"></a>V nástroji SQL Server Jsou k dispozici v nástroji SQL Analytics
-SQL Analytics zveřejňuje mnoho zobrazení dynamické správy serveru SQL Server (DMVs). Tato zobrazení při dotazování v SQL Analytics hlásí stav databází SQL spuštěných na distribucích.
+## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>Sql Server DMVs k dispozici v fondu SYNAPse SQL
 
-SQL Analytics a paralelní datový sklad (PDW) používají stejná systémová zobrazení. Každý DMV má sloupec s názvem pdw_node_id, což je identifikátor pro výpočetní uzel. 
+Synapse SQL fond zveřejňuje mnoho zobrazení dynamické správy SQL Server (DMVs). Tato zobrazení při dotazování ve fondu Synapse SQL, hlásí stav databáze SQL spuštěné na distribucích.
+
+Synapse SQL fond a paralelní datový sklad (PDW) používají stejné zobrazení systému. Každý DMV má sloupec s názvem pdw_node_id, což je identifikátor pro výpočetní uzel. 
 
 > [!NOTE]
 > Chcete-li použít tato zobrazení, vložte do názvu "pdw_nodes_", jak je znázorněno v následující tabulce:
 > 
 > 
 
-| Název DMV v SQL Analytics | Článek transakt-SQL serveru SQL|
+| Název DMV ve fondu SYNAPSE SQL | Článek transakt-SQL serveru SQL|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -217,8 +222,9 @@ SQL Analytics a paralelní datový sklad (PDW) používají stejná systémová 
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>PolyBase polybase SQL Serveru 2016 jsou k dispozici v SQL Analytics
-Následující dmvs jsou použitelné pro SQL Analytics, ale musí být provedeny připojením k **hlavní** databázi.
+## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>SQL Server 2016 PolyBase DMVs k dispozici ve fondu SYNAPse SQL
+
+Následující dmvs jsou použitelné pro fond SYNApse SQL, ale musí být provedeny připojením k **hlavní** databázi.
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -232,6 +238,7 @@ Následující dmvs jsou použitelné pro SQL Analytics, ale musí být proveden
 * [sys.dm_exec_external_work](https://msdn.microsoft.com/library/mt146375.aspx)
 
 ## <a name="sql-server-information_schema-views"></a>zobrazení INFORMATION_SCHEMA serveru SQL Server
+
 * [CHECK_CONSTRAINTS](https://msdn.microsoft.com/library/ms189772.aspx)
 * [Sloupce](https://msdn.microsoft.com/library/ms188348.aspx)
 * [Parametry](https://msdn.microsoft.com/library/ms173796.aspx)
@@ -243,4 +250,5 @@ Následující dmvs jsou použitelné pro SQL Analytics, ale musí být proveden
 * [Zobrazení](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>Další kroky
-Další referenční informace naleznete [v příkazech T-SQL v SQL Analytics](sql-data-warehouse-reference-tsql-statements.md)a [v elementech jazyka T-SQL v sql analytics](sql-data-warehouse-reference-tsql-language-elements.md).
+
+Další referenční informace naleznete [v příkazech T-SQL ve fondu Synapse SQL](sql-data-warehouse-reference-tsql-statements.md)a [v elementech jazyka T-SQL ve fondu SYNAPse SQL](sql-data-warehouse-reference-tsql-language-elements.md).

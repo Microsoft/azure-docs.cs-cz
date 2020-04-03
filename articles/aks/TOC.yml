@@ -314,10 +314,6 @@
                   maintainContext: true
         - name: Spouštění aplikací pomocí Helm
           href: kubernetes-helm.md
-        - name: Použití technologie Open Service Broker for Azure
-          href: integrate-azure.md
-        - name: Použití rozhraní API Cosmos DB pro MongoDB s využitím OSBA
-          href: use-cosmosdb-osba-mongo-app.md
         - name: Použití OpenFaaS
           href: openfaas.md
         - name: Spouštění sparkových úloh

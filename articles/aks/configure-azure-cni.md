@@ -4,12 +4,12 @@ description: Zjistěte, jak nakonfigurovat azure cni (pokročilé) sítě ve slu
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 400d5a46ad62f8ac391c573eb64a7eb22dc4062c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f194cb97850fcb24e4789ac0ba39b6f03d99e6e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047987"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617387"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítí Azure CNI ve službě Azure Kubernetes Service (AKS)
 
@@ -27,6 +27,7 @@ Tento článek ukazuje, jak pomocí sítě *Azure CNI* vytvořit a použít pods
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * Namísto instančního objektu můžete pro oprávnění použít systém přiřazenou spravovanou identitu. Další informace naleznete v tématu [Použití spravovaných identit](use-managed-identity.md).
+* Podsíť přiřazená k fondu uzlů AKS nemůže být [delegovanou podsítí](../virtual-network/subnet-delegation-overview.md).
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Plánování adresování IP adres pro váš cluster
 
@@ -70,7 +71,7 @@ Maximální počet podů na uzel můžete nakonfigurovat *pouze v době nasazen�
 
 Minimální hodnota pro maximální pody na uzel je vynuceno zaručit místo pro pody systému důležité pro stav clusteru. Minimální hodnota, která může být nastavena pro maximální pody na uzel je 10 pouze v případě, že konfigurace každého fondu uzlů má místo pro minimálně 30 pods. Například nastavení maximální pody na uzel na minimum 10 vyžaduje, aby každý fond jednotlivých uzlů mít minimálně 3 uzly. Tento požadavek platí pro každý nový fond uzlů vytvořené také, takže pokud 10 je definovánjako maximální pods na uzel každý následující uzel fond přidán musí mít alespoň 3 uzly.
 
-| Síťové služby | Minimální | Maximum |
+| Sítě | Minimální | Maximum |
 | -- | :--: | :--: |
 | Azure CNI | 10 | 250 |
 | Kubenet (Kubenet) | 10 | 110 |

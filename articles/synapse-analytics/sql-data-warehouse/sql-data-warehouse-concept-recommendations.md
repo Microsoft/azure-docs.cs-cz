@@ -1,6 +1,6 @@
 ---
-title: Doporučení sql analytics
-description: Informace o doporučeních SQL Analytics a o jejich generování
+title: Doporučení synapse SQL
+description: Informace o doporučeních Synapse SQL a o jejich generování
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -11,18 +11,18 @@ ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6d57fdb035e076c75363d23fbf36d39eeb72bb3f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c4bbd98cc28b242be5310fab76521a80de8fcb7c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350693"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584130"
 ---
-# <a name="sql-analytics-recommendations"></a>Doporučení sql analytics
+# <a name="synapse-sql-recommendations"></a>Doporučení synapse SQL
 
-Tento článek popisuje doporučení SQL Analytics obsluhované prostřednictvím Azure Advisor.  
+Tento článek popisuje doporučení Synapse SQL obsluhovaná prostřednictvím Azure Advisor.  
 
-SQL Analytics poskytuje doporučení, která zajistí, že vaše úloha datového skladu je konzistentně optimalizovaná pro výkon. Doporučení jsou úzce integrovaná s [Azure Advisorem,](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) aby vám poskytla osvědčené postupy přímo na [webu Azure Portal](https://aka.ms/Azureadvisor). SQL Analytics shromažďuje telemetrická data a zobrazuje doporučení pro vaše aktivní úlohy v denní kadenci. Podporované scénáře doporučení jsou uvedeny níže spolu s tím, jak použít doporučené akce.
+Synapse SQL poskytuje doporučení, která zajišťují, že vaše úloha datového skladu je konzistentně optimalizovaná pro výkon. Doporučení jsou úzce integrovaná s [Azure Advisorem,](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) aby vám poskytla osvědčené postupy přímo na [webu Azure Portal](https://aka.ms/Azureadvisor). Synapse SQL shromažďuje telemetrická data a zobrazuje doporučení pro vaše aktivní úlohy na denní kadenci. Podporované scénáře doporučení jsou uvedeny níže spolu s tím, jak použít doporučené akce.
 
 Svá [doporučení si](https://aka.ms/Azureadvisor) můžete ověřit ještě dnes! V současné době je tato funkce použitelná pouze pro datové sklady Gen2. 
 

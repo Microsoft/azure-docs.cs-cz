@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a382ef2d93f10e69569ecbbed1399f256a7afbb3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351225"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586077"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analýza úloh v Azure Synapse Analytics
 
-Techniky pro analýzu úlohsql analytics v Azure Synapse Analytics.
+Techniky pro analýzu úlohy Synapse SQL v Azure Synapse Analytics.
 
 ## <a name="resource-classes"></a>Třídy prostředků
 
-SQL Analytics poskytuje třídy prostředků pro přiřazení systémových prostředků k dotazům.  Další informace o třídách prostředků naleznete v [tématu Třídy prostředků & správa pracovního vytížení](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
+Synapse SQL poskytuje třídy prostředků pro přiřazení systémových prostředků k dotazům.  Další informace o třídách prostředků naleznete v [tématu Třídy prostředků & správa pracovního vytížení](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Zjišťování dotazů ve frontě a další dmv
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Analytics má následující typy čekání:
+Synapse SQL má následující typy čekání:
 
 * **LocalQueriesConcurrencyResourceType**: Dotazy, které jsou mimo rámec souběžnosti slot. DMV dotazy a systémové `SELECT @@VERSION` funkce, jako jsou příklady místních dotazů.
 * **UserConcurrencyResourceType**: Dotazy, které jsou v rámci rozhraní slotu souběžnosti. Dotazy proti tabulkám koncových uživatelů představují příklady, které by tento typ prostředku používaly.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů databáze a zabezpečení naleznete [v tématu Zabezpečení databáze v nástroji SQL Analytics](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu clusterované columnstore, naleznete v [tématu Opětovné sestavení indexů ke zlepšení kvality segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Další informace o správě uživatelů databáze a zabezpečení naleznete [v tématu Zabezpečení databáze v synapse SQL](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu clusterované columnstore, naleznete v [tématu Opětovné sestavení indexů ke zlepšení kvality segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

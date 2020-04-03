@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970512"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585964"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Ukázkové skripty pro službu Azure Disk Encryption 
 
@@ -80,7 +80,7 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Požadavky pro šifrování disku operačního systému
 
-* Virtuální počítač musí používat distribuci kompatibilní s šifrováním disku operačního systému, jak je uvedeno v [podporovaných operačních systémech Azure Disk Encryption](disk-encryption-overview.md#supported-vm-sizes) 
+* Virtuální počítač musí používat distribuci kompatibilní s šifrováním disku operačního systému, jak je uvedeno v [podporovaných operačních systémech Azure Disk Encryption](disk-encryption-overview.md#supported-vms) 
 * Virtuální počítač musí být vytvořený z image Marketplace ve Správci prostředků Azure.
 * Virtuální počítač Azure s alespoň 4 GB paměti RAM (doporučená velikost je 7 GB).
 * (Pro RHEL a CentOS) Zakažte SELinux. Chcete-li zakázat SELinux, viz "4.4.2. Zakázání SELinuxu" v [uživatelské příručce a administrátorské příručce SELinuxu](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) o virtuálním počítači.

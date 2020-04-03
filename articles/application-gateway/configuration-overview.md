@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f31c24c96732ec3311ea904fc9c63344e2d14109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371240"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585909"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace aplikační brány
 
@@ -168,8 +168,6 @@ Zvolte HTTP nebo HTTPS:
 
 - Pokud zvolíte HTTP, provoz mezi klientem a aplikační bránou je nešifrovaný.
 
-- Pokud chcete, aby [protokol TLS ukončil](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) nebo ukončil protokol [TLS](https://docs.microsoft.com/azure/application-gateway/ssl-overview), zvolte protokol HTTPS . Provoz mezi klientem a aplikační bránou je šifrován. A připojení TLS končí na aplikační bráně. Pokud chcete šifrování TLS od konce, musíte zvolit protokol HTTPS a nakonfigurovat nastavení **http back-end.** Tím je zajištěno, že provoz je znovu zašifrována při cestě z brány aplikace do back-endu.
-
 - Pokud chcete, aby [protokol TLS ukončil](features.md#secure-sockets-layer-ssltls-termination) nebo ukončil protokol [TLS](https://docs.microsoft.com/azure/application-gateway/ssl-overview), zvolte protokol HTTPS . Provoz mezi klientem a aplikační bránou je šifrován. A připojení TLS končí na aplikační bráně. Pokud chcete šifrování TLS od konce, musíte zvolit protokol HTTPS a nakonfigurovat nastavení **http back-end.** Tím je zajištěno, že provoz je znovu zašifrována při cestě z brány aplikace do back-endu.
 
 
@@ -197,7 +195,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 Podpora websocketu je ve výchozím nastavení povolena. Neexistuje žádné uživatelsky konfigurovatelné nastavení, které by ho povolilo nebo zakázalo. WebSockets můžete použít s http a https naslouchací procesy.
 
-### <a name="custom-error-pages"></a>Stránky vlastních chyb
+### <a name="custom-error-pages"></a>Vlastní chybové stránky
 
 Vlastní chybu můžete definovat na globální úrovni nebo na úrovni posluchače. Ale vytváření vlastních chybových stránek na globální úrovni z portálu Azure není momentálně podporované. Můžete nakonfigurovat vlastní chybovou stránku pro chybu brány firewall webové aplikace 403 nebo stránku údržby 502 na úrovni posluchače. Je také nutné zadat veřejně přístupnou adresu URL objektu blob pro daný kód stavu chyby. Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
@@ -296,7 +294,7 @@ Aplikační brána směruje provoz na servery back-end pomocí konfigurace, kter
 
 ### <a name="cookie-based-affinity"></a>Spřažení na základě souborů cookie.
 
-Azure Application Gateway používá soubory cookie spravované bránou pro údržbu uživatelských relací. Když uživatel odešle první požadavek do application gateway, nastaví soubor cookie spřažení v odpovědi s hodnotou hash, která obsahuje podrobnosti relace, takže následné požadavky nesoucí soubor cookie spřažení budou směrovány na stejný back-endový server pro zachování lepivost. 
+Azure Application Gateway používá soubory cookie spravované bránou pro údržbu uživatelských relací. Když uživatel odešle první požadavek na application gateway, nastaví soubor cookie spřažení v odpovědi s hodnotou hash, která obsahuje podrobnosti relace, takže následné požadavky nesoucí soubor cookie spřažení budou směrovány na stejný back-endový server pro zachování lepivost. 
 
 Tato funkce je užitečná, pokud chcete zachovat relaci uživatele na stejném serveru a pokud je stav relace uložen místně na serveru pro relaci uživatele. Pokud aplikace nemůže zpracovat spřažení založenou na souborech cookie, nelze tuto funkci použít. Chcete-li jej použít, ujistěte se, že klienti podporují soubory cookie.
 

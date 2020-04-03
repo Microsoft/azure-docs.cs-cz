@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1acbcdf1aeed383591626c083f3335d9d7cf61c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0fb6bd68026684599d94270906f1792e084ec5f6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79382241"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624325"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHub |
+|Name (Název) |Popis |Efekty |Version |GitHubu |
 |---|---|---|---|---|
 |[Povolené souuživatele virtuálních strojů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |Tyto zásady umožňují zadat sadu skladových položek virtuálních počítačů, které může vaše organizace nasazovat. |Odepřít |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json)
 |[Auditování virtuálních počítačů bez nakonfigurovaného zotavení po havárii](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Auditujte virtuální počítače, které nemají nakonfigurované zotavení po havárii. Další informace o zotavení https://aka.ms/asr-docpo havárii naleznete na adrese . |auditIfNotExists |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)
@@ -23,4 +23,4 @@ ms.locfileid: "79382241"
 |[Měla by být nainstalována pouze schválená rozšíření virtuálních zařízení.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc0e996f8-39cf-4af9-9f45-83fbde810432) |Tato zásada řídí rozšíření virtuálních strojů, které nejsou schváleny. |Audit, Odepřít, Zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_ApprovedExtensions_Audit.json)
 |[Vyžadovat automatické opravy bitových obrázků operačního systému v škálovacích sadách virtuálních strojů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f0161-0087-490a-9ad9-ad6217f4f43a) |Tato zásada vynucuje povolení automatické opravy bitových obrázků operačního systému na škálovacísady virtuálních počítačů vždy udržovat virtuální počítače zabezpečené bezpečným použitím nejnovějších oprav zabezpečení každý měsíc. |Odepřít |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSSOSUpgradeHealthCheck_Deny.json)
 |[Nepřipojené disky by měly být šifrovány](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Tato zásada audituje všechny nepřipojené disky bez povoleného šifrování. |Audit, zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json)
-|[Virtuální počítače by se měly migrovat do nových prostředků Azure Resource Manageru.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Pomocí nového Správce prostředků Azure pro vaše virtuální počítače můžete poskytovat vylepšení zabezpečení, jako jsou: silnější řízení přístupu (RBAC), lepší auditování, nasazení a zásady správného řízení na základě Azure Resource Manageru, přístup ke spravovaným identitám, přístup k trezoru klíčů tajné klíče, ověřování založené na Azure AD a podpora značek a skupin prostředků pro snadnější správu zabezpečení |Audit, Odepřít, Zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)
+|[Virtuální počítače by se měly migrovat do nových prostředků Azure Resource Manageru.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Pomocí nového Správce prostředků Azure pro vaše virtuální počítače můžete poskytovat vylepšení zabezpečení, jako jsou: silnější řízení přístupu (RBAC), lepší auditování, nasazení a zásady správného řízení na základě Azure Resource Manageru, přístup ke spravovaným identitám, přístup k trezoru klíčů pro tajné klíče, ověřování na základě Azure AD a podpora značek a skupin prostředků pro snadnější správu zabezpečení |Audit, Odepřít, Zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)

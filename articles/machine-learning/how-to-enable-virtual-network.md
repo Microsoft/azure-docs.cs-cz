@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437358"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607616"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečené úlohy experimentování a odvození Azure ML v rámci virtuální sítě Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Tento článek také obsahuje podrobné informace o *pokročilých nastavení za
 > Pokud není konkrétně volána, pomocí prostředků, jako jsou účty úložiště nebo výpočetní cíle uvnitř virtuální sítě bude fungovat s kanály strojového učení a non-kanálpracovních postupů, jako je například spuštění skriptu.
 
 > [!WARNING]
-> Microsoft nepodporuje použití návrháře Azure Machine Learning nebo automatizované strojové učení (ze studia) s prostředky uvnitř virtuální sítě.
+> Microsoft nepodporuje použití funkcí Azure Machine Learning Studio, jako je automatické ML, datové sady, popisy dat, návrháře a poznámkové bloky, pokud má základní úložiště povolenou virtuální síť.
 
 ## <a name="prerequisites"></a>Požadavky
 

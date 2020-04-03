@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: fcdb8af770fa0068e8413d4609a56223a9a20ce2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345901"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582203"
 ---
 # <a name="manage-assets"></a>Správa prostředků
 
@@ -60,7 +60,7 @@ Po nahrání digitálních souborů do úložiště a přidružených k datovém
 
     **AssetContainerSas.listContainerSas** přebírá parametr [ListContainerSasInput,](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) `expiryTime`na kterém jste nastavili . Čas by měl být nastaven na < 24 hodin.
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) vrátí více adres URL SAS, protože pro každý účet úložiště existují dva klíče účtu úložiště. Účet úložiště má dva klíče, protože umožňuje bezproblémové střídání klíčů účtu úložiště (například změnit jeden při použití druhého a pak začít používat nový klíč a otáčet druhý klíč). 1. Adresa URL SAS představuje klíč úložiště1 a druhý klíč úložiště2.
+    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) vrátí více adres URL SAS, protože pro každý účet úložiště existují dva klíče účtu úložiště. Účet úložiště má dva klíče, protože pomáhá s převzetím služeb při selhání a bezproblémovou střídání klíčů účtu úložiště. První adresa URL SAS představuje první klíč účtu úložiště a druhá adresa URL SAS představuje druhý klíč.
 3. Pomocí rozhraní API úložiště Azure nebo sad SDK (například [rozhraní REST API úložiště](../../storage/common/storage-rest-api-auth.md) nebo [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) nahrát soubory do kontejneru prostředků.
 4. Pomocí rozhraní API služby Media Services verze 3 můžete vytvořit transformaci a úlohu ke zpracování vstupního aktiva. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md).
 5. Streamujte obsah z "výstupního" datového zdroje.

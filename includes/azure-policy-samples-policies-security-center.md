@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 0bace15356fa73eb32e8dbe35784a8ef47ed78ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 114d4da434a08c8957072aed390dcbd65ee04adc
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79382240"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624334"
 ---
-|Name (Název) |Popis |Efekty |Version |GitHub |
+|Name (Název) |Popis |Efekty |Version |GitHubu |
 |---|---|---|---|---|
 |[\[Předběžné\] posouzení ohrožení zabezpečení by mělo být povoleno ve virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Monitoruje chyby zabezpečení zjištěné v centru zabezpečení Azure Assessment na virtuálních počítačích |AuditIfNotExists, zakázáno |1.0.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json)
 |[\[Náhled\]: Autorizované rozsahy IP adres by měly být definovány ve službách Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Omezte přístup k rozhraní API pro správu služeb Kubernetes tím, že udělíte přístup rozhraní API pouze adresám IP v určitých rozsahech. Doporučujeme omezit přístup k autorizovaným rozsahům IP adres, aby bylo zajištěno, že ke clusteru budou mít přístup pouze aplikace z povolených sítí. |Audit, zakázáno |1.0.0-náhled |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json)

@@ -2,17 +2,17 @@
 title: 'Úvodní příručka: Připojení k virtuálnímu počítači pomocí privátní IP adresy: Azure Bastion'
 description: V tomto článku se dozvíte, jak vytvořit hostitele Azure Bastion z virtuálního počítače a bezpečně se připojit pomocí privátní IP adresy.
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: cherylmc
-ms.openlocfilehash: 0b4f0a1fa4f9cce05aa544bb24e045209a6d24ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137454"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619252"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Úvodní příručka: Připojení k virtuálnímu počítači pomocí privátní IP adresy a Azure Bastion
 
@@ -37,7 +37,7 @@ Tento článek rychlého startu ukazuje, jak se připojit k virtuálnímu počí
 | Skladová položka veřejné IP adresy |  Standard  |
 | Přiřazení  | Statická |
 
-## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Vytvoření hostitele bašty
+## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Vytvoření hostitele typu bašta
 
 Když na portálu vytvoříte hostitele bastionu pomocí existujícího virtuálního počítače, různá nastavení budou automaticky nastavena jako výchozí, aby odpovídala vašemu virtuálnímu počítači nebo virtuální síti.
 

@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: f8f5ab99086ee38e2f56247ce31f8ac0e7affc81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6191e67f097b5ab471c5b31eff11a0e570d1c990
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128994"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617030"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -32,7 +32,7 @@ Tento článek popisuje mnoho konceptů ověřování, které budete muset pocho
 
 Namísto vytváření aplikací, které si každý udržuje své vlastní informace o uživatelském jménu a hesle, což způsobuje vysokou administrativní zátěž, když potřebujete přidat nebo odebrat uživatele ve více aplikacích, mohou aplikace delegovat tuto odpovědnost na centralizovaného poskytovatele identity.
 
-Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v cloudu. Delegování ověřování a autorizace na něj umožňuje scénáře, jako jsou zásady podmíněného přístupu, které vyžadují, aby se uživatel nachází v určitém umístění, použití vícefaktorového ověřování a také povolení k přihlášení uživatele jednou a potom se automaticky přihlásit a pak být automaticky přihlášeni ke všem webovým aplikacím, které sdílejí stejný centralizovaný adresář. Tato funkce se označuje jako jednotné přihlášení (SSO).
+Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v cloudu. Delegování ověřování a autorizace na něj umožňuje scénáře, jako jsou zásady podmíněného přístupu, které vyžadují, aby se uživatel nachází v určitém umístění, použití vícefaktorového ověřování a také umožňuje uživateli přihlásit se jednou a pak se automaticky přihlásit ke všem webovým aplikacím, které sdílejí stejný centralizovaný adresář. Tato funkce se označuje jako jednotné přihlášení (SSO).
 
 Centralizovaný poskytovatel identit je ještě důležitější pro aplikace, které mají uživatele umístěné po celém světě, kteří se nemusí nutně přihlašovat ze sítě podniku. Azure AD ověřuje uživatele a poskytuje přístupové tokeny. [Přístupový token](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) je token zabezpečení vydaný autorizačním serverem. Obsahuje informace o uživateli a aplikaci, pro kterou je token určen; které lze použít pro přístup k webovým apim a dalším chráněným prostředkům.
 
@@ -170,7 +170,7 @@ Tento atribut způsobí, že ASP.NET zkontrolovat přítomnost souboru cookie re
 Ověření uživatele probíhá prostřednictvím prohlížeče. Protokol OpenID používá standardní zprávy protokolu HTTP.
 * Webová aplikace odešle HTTP 302 (přesměrování) do prohlížeče k použití Azure AD.
 * Když je uživatel ověřen, Azure AD odešle token do webové aplikace pomocí přesměrování prostřednictvím prohlížeče.
-* Přesměrování poskytuje webová aplikace ve formě identifikátoru URI přesměrování. Tento identifikátor URI přesměrování je registrován s objektem aplikace Azure AD. Může existovat několik identifikátorů URI přesměrování, protože aplikace může být nasazena na několika adresách URL. Takže webová aplikace bude také muset zadat přesměrování URi k použití.
+* Přesměrování poskytuje webová aplikace ve formě identifikátoru URI přesměrování. Tento identifikátor URI přesměrování je registrován s objektem aplikace Azure AD. Může existovat několik identifikátorů URI přesměrování, protože aplikace může být nasazena na několika adresách URL. Takže webová aplikace bude také muset zadat přesměrování URI použít.
 * Azure AD ověří, že identifikátor URI přesměrování odeslaný webovou aplikací je jedním z registrovaných identifikátorů URI přesměrování pro aplikaci.
 
 ## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Tok přihlášení k desktopovým a mobilním aplikacím pomocí Azure AD

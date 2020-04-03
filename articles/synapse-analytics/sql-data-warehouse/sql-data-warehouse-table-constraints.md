@@ -1,6 +1,6 @@
 ---
 title: Primární, cizí a jedinečné klíče
-description: Podpora omezení tabulkových nabídek v NÁSTROJI SQL Analytics v Azure Synapse Analytics
+description: Podpora omezení tabulky ve fondu Synapse SQL ve službě Azure Synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,30 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b9336a5e230e90e1abd7f2d40d431b988385c009
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 881e4f0110e3c0f35301e2ae6be40f2510f42539
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350019"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583495"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>Primární klíč, cizí klíč a jedinečný klíč v SQL Analytics
+# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Primární klíč, cizí klíč a jedinečný klíč ve fondu SYNAPse SQL
 
-Informace o omezeních tabulky v sql analytics, včetně primárního klíče, cizího klíče a jedinečného klíče.
+Informace o omezení chodnících tabulky ve fondu Synapse SQL, včetně primárního klíče, cizího klíče a jedinečného klíče.
 
-## <a name="table-constraints"></a>Omezení tabulky 
-SQL Analytics podporuje tato omezení tabulky: 
+## <a name="table-constraints"></a>Omezení tabulky
+
+Fond SYNAPSE SQL podporuje tato omezení tabulky: 
 - Primární klíč je podporován pouze v případě, že jsou použity neseskupené a nevynucené.    
-- Jedinečné omezení je podporováno pouze s není vynuceno se používá.   
+- Jedinečné omezení je podporováno pouze s není vynuceno se používá.
 
-Omezení cizího klíče není v nástroji SQL Analytics podporováno.  
+Omezení cizího klíče není ve fondu SQL synapse podporováno.  
 
 ## <a name="remarks"></a>Poznámky
-S primární klíč nebo jedinečný klíč umožňuje SQL Analytics modul generovat optimální plán spuštění pro dotaz.  Všechny hodnoty ve sloupci primárního klíče nebo ve sloupci jedinečného omezení by měly být jedinečné. 
 
-Po vytvoření tabulky s primárním klíčem nebo jedinečným omezením v sql analytics musí uživatelé zajistit, aby všechny hodnoty v těchto sloupcích byly jedinečné.  Porušení, které může způsobit dotaz vrátit nepřesný výsledek.  Tento příklad ukazuje, jak může dotaz vrátit nepřesný výsledek, pokud sloupec primárního klíče nebo jedinečného omezení obsahuje duplicitní hodnoty.  
+S primární klíč nebo jedinečný klíč umožňuje synapse SQL fond motoru generovat optimální plán spuštění pro dotaz.  Všechny hodnoty ve sloupci primárního klíče nebo ve sloupci jedinečného omezení by měly být jedinečné.
+
+Po vytvoření tabulky s primárním klíčem nebo jedinečným omezením ve fondu SYNApse SQL musí uživatelé zajistit, aby všechny hodnoty v těchto sloupcích byly jedinečné.  Porušení, které může způsobit dotaz vrátit nepřesný výsledek.  Tento příklad ukazuje, jak může dotaz vrátit nepřesný výsledek, pokud sloupec primárního klíče nebo jedinečného omezení obsahuje duplicitní hodnoty.  
 
 ```sql
  -- Create table t1
@@ -158,12 +160,13 @@ a1          total
 ```
 
 ## <a name="examples"></a>Příklady
-Vytvořte tabulku SQL Analytics s primárním klíčem: 
+
+Vytvořte tabulku fondu Synapse SQL s primárním klíčem: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Vytvořte tabulku SQL Analytics s jedinečným omezením:
+Vytvořte tabulku fondu Synapse SQL s jedinečným omezením:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +174,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření tabulek pro databázi SQL Analytics je dalším krokem načtení dat do tabulky. Kurz načítání najdete v [tématu Načítání dat do databází SQL Analytics](load-data-wideworldimportersdw.md).
+Po vytvoření tabulek pro váš fond Synapse SQL je dalším krokem načtení dat do tabulky. Kurz načítání najdete v [tématu Načítání dat do fondu SQL Synapse](load-data-wideworldimportersdw.md).

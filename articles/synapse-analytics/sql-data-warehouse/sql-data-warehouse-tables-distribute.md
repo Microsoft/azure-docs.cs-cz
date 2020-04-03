@@ -1,6 +1,6 @@
 ---
 title: Pokyny pro návrh distribuovaných tabulek
-description: Doporučení pro navrhování distribuovaných tabulek distribuovaných hash a round-robin v SQL Analytics.
+description: Doporučení pro navrhování hash distribuovaných a round-robin distribuovaných tabulek ve fondu SYNApse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 35106e73a3a4a143bf22c72c4fe8ac6798ac5219
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8a93f3ada8e56853b78321bdc7d99a667cee6158
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351340"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583508"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Pokyny pro navrhování distribuovaných tabulek v SQL Analytics
-Doporučení pro navrhování distribuovaných tabulek distribuovaných hash a round-robin v SQL Analytics.
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Pokyny pro navrhování distribuovaných tabulek ve fondu Synapse SQL
 
-Tento článek předpokládá, že jste obeznámeni s koncepty distribuce dat a přesunu dat v SQL Analytics.Další informace naleznete v tématu [SQL Analytics masivně paralelní zpracování (MPP) architektura](massively-parallel-processing-mpp-architecture.md). 
+Doporučení pro navrhování hash distribuovaných a round-robin distribuovaných tabulek v fondech Synapse SQL.
+
+Tento článek předpokládá, že jste obeznámeni s rozdělení dat a přesun dat koncepty v synapse fondu SQL.Další informace naleznete v [tématu Azure Synapse Analytics masivně paralelní zpracování (MPP) architektura](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Co je distribuovaná tabulka?
+
 Distribuovaná tabulka se zobrazí jako jedna tabulka, ale řádky jsou ve skutečnosti uloženy v 60 distribucích. Řádky jsou distribuovány pomocí algoritmu hash nebo kruhového dotazování.  
 
 **Tabulky distribuované hash** zlepšit výkon dotazu na velké tabulky faktů a jsou fokus tohoto článku. **Kulaté robin tabulky** jsou užitečné pro zlepšení rychlosti načítání. Tyto možnosti návrhu mají významný vliv na zlepšení výkonu dotazů a načítání.
@@ -34,15 +36,16 @@ V rámci návrhu tabulky pochopte co nejvíce informací o datech a způsobu dot
 
 - Jak velký je stůl?   
 - Jak často se tabulka aktualizuje?   
-- Mám tabulky faktů a dimenzí v databázi SQL Analytics?   
+- Mám tabulky faktů a dimenzí ve fondu Synapse SQL?   
 
 
 ### <a name="hash-distributed"></a>Hash distribuovány
+
 Tabulka distribuovaná hash distribuuje řádky tabulky mezi výpočetními uzly pomocí deterministické funkce hash pro přiřazení každého řádku k jednomu [rozdělení](massively-parallel-processing-mpp-architecture.md#distributions). 
 
 ![Distribuovaná tabulka](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Distribuovaná tabulka")  
 
-Vzhledem k tomu, že identické hodnoty vždy hash na stejnou distribuci, SQL Analytics má integrované znalosti umístění řádků. SQL Analytics používá tyto znalosti k minimalizaci pohybu dat během dotazů, což zlepšuje výkon dotazů. 
+Vzhledem k tomu, že identické hodnoty vždy hash na stejné rozdělení, datový sklad má vestavěné znalosti umístění řádků. Ve fondu Synapse SQL se tyto znalosti používají k minimalizaci pohybu dat během dotazů, což zlepšuje výkon dotazů. 
 
 Tabulky distribuované hash fungují dobře pro tabulky velkých faktů ve schématu hvězd. Mohou mít velmi velký počet řádků a stále dosáhnout vysokého výkonu. Existují samozřejmě některé aspekty návrhu, které vám pomohou získat výkon distribuovaný systém je navržen tak, aby poskytovat. Výběr sloupce dobré distribuce je jedním z takových úvah, které je popsáno v tomto článku. 
 
@@ -52,6 +55,7 @@ Použití tabulky distribuované hash zvažte v následujících případěch:
 - Tabulka obsahuje časté operace vkládání, aktualizace a odstraňování. 
 
 ### <a name="round-robin-distributed"></a>Kruhové dotazování distribuováno
+
 Distribuovaná tabulka kruhového dotazování distribuuje řádky tabulky rovnoměrně ve všech distribucích. Přiřazení řádků k rozdělení je náhodné. Na rozdíl od tabulek distribuovaných hash není zaručeno, že řádky se stejnými hodnotami budou přiřazeny ke stejnému rozdělení. 
 
 V důsledku toho systém někdy potřebuje vyvolat operaci přesunu dat, aby lépe uspořádal data, než bude moci vyřešit dotaz.  Tento další krok může zpomalit dotazy. Například připojení tabulky kruhového dotazování obvykle vyžaduje přemíchání řádků, což je přístupů k výkonu.
@@ -65,7 +69,7 @@ Zvažte použití distribuce kruhového dotazování pro tabulku v následujíc�
 - Pokud je spojení méně významné než ostatní spojení v dotazu
 - Pokud je tabulka dočasná pracovní tabulka
 
-Kurz [Načtení dat taxislužby v New Yorku](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytuje příklad načítání dat do pracovní tabulky kruhového dotazování v SQL Analytics.
+Kurz [Načíst data taxislužby v New Yorku](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytuje příklad načítání dat do pracovní tabulky kruhového dotazování.
 
 
 ## <a name="choosing-a-distribution-column"></a>Výběr distribučního sloupce
@@ -109,7 +113,7 @@ Chcete-li vyvážit paralelní zpracování, vyberte distribuční sloupec, kter
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Výběr distribučního sloupce, který minimalizuje pohyb dat
 
-Chcete-li získat správný dotaz výsledek dotazy může přesunout data z jednoho výpočetního uzlu do jiného. Přesun dat se obvykle stává, když dotazy mají spojení a agregace v distribuovaných tabulkách. Výběr distribučního sloupce, který pomáhá minimalizovat pohyb dat, je jednou z nejdůležitějších strategií pro optimalizaci výkonu databáze SQL Analytics.
+Chcete-li získat správný dotaz výsledek dotazy může přesunout data z jednoho výpočetního uzlu do jiného. Přesun dat se obvykle stává, když dotazy mají spojení a agregace v distribuovaných tabulkách. Výběr distribučního sloupce, který pomáhá minimalizovat pohyb dat, je jednou z nejdůležitějších strategií pro optimalizaci výkonu fondu SYNAPse SQL.
 
 Chcete-li minimalizovat přesun dat, vyberte distribuční sloupec, který:
 
@@ -217,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Chcete-li vytvořit distribuovanou tabulku, použijte jeden z těchto příkazů:
 
-- [VYTVOŘIT TABULKU (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [VYTVOŘIT TABULKU JAKO VÝBĚR (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [VYTVOŘIT TABULKU (Synapse SQL fond)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [VYTVOŘIT TABULKU JAKO SELECT (Fond Synapse SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

@@ -3,7 +3,7 @@
   items:
     - name: Přehled
       items:
-        - name: Informace o Azure Dev Spaces
+        - name: Co je služba Azure Dev Spaces?
           href: about.md
     - name: Rychlé starty
       items:

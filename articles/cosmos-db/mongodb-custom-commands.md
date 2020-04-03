@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f99c4d096bcbe1fbdc42cac80a491d6017266cb2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445210"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583582"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API služby Azure Cosmos DB pro MongoDB 
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete komunikovat s rozhraním API Azure Cosmos DB pro MongoDB pomocí libovolného z open source [ovladačů klienta MongoDB](https://docs.mongodb.org/ecosystem/drivers). Rozhraní API Azure Cosmos DB pro MongoDB umožňuje použití existujících klientských ovladačů dodržováním [drátového protokolu MongoDB](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Pomocí rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhody Cosmos DB, jako je globální distribuce, automatické rozdělení, vysoká dostupnost, záruky latence, automatické šifrování v klidovém stavu, zálohování a mnoho dalších, při zachování vašich investic. v aplikaci MongoDB.
+Pomocí rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhody Cosmos DB, jako je globální distribuce, automatické rozdělení náloží, vysoká dostupnost, záruky latence, automatické šifrování v klidovém stavu, zálohování a mnoho dalších, při zachování vašich investic do aplikace MongoDB.
 
 ## <a name="mongodb-protocol-support"></a>Podpora protokolu MongoDB
 
-Ve výchozím nastavení je rozhraní API Azure Cosmos DB pro MongoDB kompatibilní se serverem MongoDB verze 3.2, další podrobnosti naleznete v [tématu podporované funkce a syntaxe](mongodb-feature-support.md). Funkce nebo operátory dotazů přidané v MongoDB verze 3.4 jsou aktuálně k dispozici jako náhled v rozhraní API Azure Cosmos DB pro MongoDB. Následující příkazy rozšíření podporují specifické funkce Azure Cosmos DB při provádění operací CRUD na datech uložených v rozhraní API Služby Azure Cosmos DB pro MongoDB:
+Ve výchozím nastavení je rozhraní API Azure Cosmos DB pro MongoDB kompatibilní se serverem MongoDB verze 3.2, další podrobnosti naleznete v [tématu podporované funkce a syntaxe](mongodb-feature-support.md). Funkce nebo operátory dotazů přidané v MongoDB verze 3.4 jsou aktuálně k dispozici jako náhled v rozhraní API Azure Cosmos DB pro MongoDB. Následující příkazy rozšíření podporují konkrétní funkce Azure Cosmos DB při provádění operací CRUD na datech uložených v rozhraní API Služby Azure Cosmos DB pro MongoDB:
 
 * [Vytvořit databázi](#create-database)
 * [Aktualizovat databázi](#update-database)
@@ -160,12 +160,12 @@ Příkaz create collection extension vytvoří novou kolekci MongoDB. Název dat
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-|**Pole**|**Typ** |**Popis** |
-|---------|---------|---------|
-| Customaction    | řetězec | Název vlastního příkazu. Musí být "CreateCollection"     |
-|  – kolekce      | řetězec | Název sbírky                                   |
-| offerThroughput | int    | Zřízená propustnost nastavit v databázi. Jedná se o volitelný parametr |
-| shardKey        | řetězec | Cesta klíče štěřidla k vytvoření oddílové kolekce. Jedná se o volitelný parametr |
+| **Pole** | **Typ** | **Požadováno** | **Popis** |
+|---------|---------|---------|---------|
+| Customaction | řetězec | Požaduje se | Název vlastního příkazu. Musí být "CreateCollection".|
+|  – kolekce | řetězec | Požaduje se | Název kolekce. Nejsou povoleny žádné speciální znaky.|
+| offerThroughput | int | Volitelné* | Zřízená propustnost, kterou chcete nastavit v databázi. Pokud tento parametr není k dispozici, bude výchozí na minimum, 400 RU/s. * Chcete-li zadat propustnost nad 10 `shardKey` 000 RU/s, je parametr vyžadován.|
+| shardKey | řetězec | Volitelné* | Cesta ke klíči šikříku pro oddílové kolekce. Tento parametr je vyžadován, pokud nastavíte více než `offerThroughput`10 000 RU/s v .  Pokud je zadán, všechny vložené dokumenty budou vyžadovat tuto hodnotu. |
 
 ### <a name="output"></a>Výstup
 
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **Vytvoření oddílové kolekce**
 
-Chcete-li vytvořit oborovou kolekci s názvem "testCollection" a zřízenou propustností 1000 ru, použijte následující příkaz:
+Chcete-li vytvořit oborovou kolekci s názvem "testCollection" a zřízenou propustností 1000 RU a vlastností shardkey "a.b", použijte následující příkaz:
 
 ```shell
 use test

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521422"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583224"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Funkce Centra zabezpečení (Červenec 2019)
 
@@ -97,7 +97,7 @@ Všechny funkce řídicího panelu **Přístup u identity &** v Log Analytics lz
 
 ## <a name="security-events-map"></a>Mapa událostí zabezpečení<a name="menu_securityeventsmap"></a>
 
-Centrum zabezpečení poskytuje [mapu výstrah zabezpečení,](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) která pomáhá identifikovat bezpečnostní hrozby. Tlačítko **Přejít na mapy událostí zabezpečení** na této mapě otevře řídicí panel, který umožňuje zobrazit nezpracované události zabezpečení ve vybraném pracovním prostoru.
+Centrum zabezpečení poskytuje mapu výstrah zabezpečení, která pomáhá identifikovat bezpečnostní hrozby. Tlačítko **Přejít na mapy událostí zabezpečení** na této mapě otevře řídicí panel, který umožňuje zobrazit nezpracované události zabezpečení ve vybraném pracovním prostoru.
 
 Odebrali jsme tlačítko **Přejít na mapy událostí zabezpečení** a řídicí panel pro každý pracovní prostor.
 
@@ -136,7 +136,7 @@ Další informace o vlastních výstrahách vyřazení, najdete [v tématu vlast
 
 ## <a name="security-alerts-investigation"></a>Šetření výstrah zabezpečení<a name="menu_investigate"></a>
 
-[Funkce Vyšetřování](https://docs.microsoft.com/azure/security-center/security-center-investigation) v Centru zabezpečení vám pomůže zprostředkovat potenciální bezpečnostní incident. Tato funkce umožňuje pochopit rozsah incidentu a sledovat jeho hlavní příčinu. Tuto funkci jsme odebrali z Centra zabezpečení, protože byla nahrazena vylepšeným prostředím v [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/).
+Funkce Vyšetřování v Centru zabezpečení vám pomůže zprostředkovat potenciální bezpečnostní incident. Tato funkce umožňuje pochopit rozsah incidentu a sledovat jeho hlavní příčinu. Tuto funkci jsme odebrali z Centra zabezpečení, protože byla nahrazena vylepšeným prostředím v [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/).
 
 ![Incident zabezpečení][14]
 

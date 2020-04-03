@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979244"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582990"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Správa uživatelských dat nalezených v šetření Azure Security Center
 Tento článek obsahuje informace o tom, jak spravovat uživatelská data nalezená v azure security center vyšetřovací funkce. Vyšetřovací data jsou uložená v [protokolech Azure Monitor](../log-analytics/log-analytics-overview.md) a vystavena v Centru zabezpečení. Správa uživatelských dat zahrnuje možnost odstranit nebo exportovat data.
@@ -26,7 +26,7 @@ Tento článek obsahuje informace o tom, jak spravovat uživatelská data naleze
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Vyhledávání a identifikace osobních údajů
-Na webu Azure Portal můžete k vyhledávání osobních údajů použít [funkci šetření](../security-center/security-center-investigation.md) Centra zabezpečení. Funkce šetření je k dispozici v části **Výstrahy zabezpečení**.
+Na webu Azure Portal můžete k vyhledávání osobních údajů použít funkci šetření Centra zabezpečení. Funkce šetření je k dispozici v části **Výstrahy zabezpečení**.
 
 Funkce šetření zobrazuje všechny entity, informace o uživateli a data na kartě **Entity.**
 

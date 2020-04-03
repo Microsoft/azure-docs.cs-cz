@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: 78081329b70edff5ed2c728cb2f7c3e562a44e56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346297"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618918"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Vzdálená práce pomocí síťových služeb Azure
 
@@ -29,8 +29,6 @@ Ne všechny sítě (například privátní sítě WAN a podnikové základní s�
 
 Plánovači sítě mohou pomoci zmírnit úzká místa a zmírnit přetížení sítě tím, že mají na paměti, že různé typy přenosů vyžadují různé priority zpracování sítě a některé inteligentní přesměrování/distribuce zatížení. Například, real-time tele-medecine provoz lékaře-pacienta interakce je velmi důležité a zpoždění / nervozita citlivé. Vzhledem k tomu, replikace stejného provozu mezi úložišti není citlivé zpoždění. Dřívější provoz musí být směrován po nejoptimálnější síťové cestě s vyšší kvalitou služeb; že je přijatelné směrovat pozdější provoz po suboptimální trase.
 
->[!NOTE] 
->Na konci tohoto článku jsou uvedeny odkazy na články využívající různé síťové funkce Azure a ekosystémy pro podporu uživatelů pracujících na dálku.
 
 
 ## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>Sdílení našich osvědčených postupů – síť Azure je navržena pro pružnost a vysokou dostupnost
@@ -45,17 +43,18 @@ Síť Microsoftu je navržena tak, aby splňovala požadavky a poskytovala optim
 
 ## <a name="enable-employees-to-work-remotely"></a>Umožnit zaměstnancům pracovat na dálku
 
-Brána Azure VPN podporuje připojení VPN z bodu na místo (P2S) i sítě k webu (S2S). Pomocí brány Azure VPN můžete škálovat připojení zaměstnanců, abyste měli zabezpečený přístup k nasazeným prostředkům Azure i místním prostředkům. Další informace naleznete v tématu [Jak povolit uživatelům vzdáleně pracovat](https://go.microsoft.com/fwlink/?linkid=2123770). 
+Brána Azure VPN podporuje připojení VPN z bodu na místo (P2S) i sítě k webu (S2S). Pomocí brány Azure VPN můžete škálovat připojení zaměstnanců, abyste měli zabezpečený přístup k nasazeným prostředkům Azure i místním prostředkům. Další informace naleznete v tématu [Jak povolit uživatelům vzdáleně pracovat](../vpn-gateway/work-remotely-support.md). 
 
-Pokud používáte protokol SSTP (SSTP) se zabezpečeným soketem, počet souběžných připojení je omezen na 128. Chcete-li získat vyšší počet připojení, doporučujeme přechod na OpenVPN nebo IKEv2. Další informace naleznete v [tématu Přechod na protokol OpenVPN nebo IKEv2 z SSTP](https://go.microsoft.com/fwlink/?linkid=2124112).
+Pokud používáte protokol SSTP (SSTP) se zabezpečeným soketem, počet souběžných připojení je omezen na 128. Chcete-li získat vyšší počet připojení, doporučujeme přechod na OpenVPN nebo IKEv2. Další informace naleznete v [tématu Přechod na protokol OpenVPN nebo IKEv2 z SSTP](../vpn-gateway/ikev2-openvpn-from-sstp.md
+).
 
-Pro přístup k prostředkům nasazeným v Azure mohou vzdálení vývojáři místo připojení VPN používat řešení Azure Bastion k získání zabezpečeného přístupu prostředí (RDP nebo SSH), aniž by bylo nutné přistupovat k veřejným IP adresy na virtuálních počítačích. Další informace najdete [v tématu Práce na dálku pomocí Azure Bastion](https://go.microsoft.com/fwlink/?linkid=2123939).
+Pro přístup k prostředkům nasazeným v Azure mohou vzdálení vývojáři místo připojení VPN používat řešení Azure Bastion k získání zabezpečeného přístupu prostředí (RDP nebo SSH), aniž by bylo nutné přistupovat k veřejným IP adresy na virtuálních počítačích. Další informace najdete [v tématu Práce na dálku pomocí Azure Bastion](../bastion/work-remotely-support.md).
 
-Pro agregaci rozsáhlého připojení VPN, pro podporu připojení libovolného k libovolnému připojení mezi prostředky v různých místních globálních lokalitách, v různých místních rozbočovačích a virtuálních sítích pro paprsky a pro optimalizaci využití více domácích širokopásmových sítí můžete použít Azure Virtual WAN. Další informace naleznete [v tématu Boj o řešení práce z domova potřebuje? Tady může azure virtuální wan pomoct](https://go.microsoft.com/fwlink/?linkid=2123769).
+Pro agregaci rozsáhlého připojení VPN, pro podporu připojení libovolného k libovolnému připojení mezi prostředky v různých místních globálních umístěních, v různých místních virtuálních sítích rozbočovače a paprsky a pro optimalizaci využití více domácích širokopásmových sítí můžete použít Azure Virtual WAN. Další informace naleznete [v tématu Boj o řešení práce z domova potřebuje? Tady může azure virtuální wan pomoct](../virtual-wan/work-remotely-support.md).
 
 Dalším způsobem, jak podporovat vzdálenou pracovní sílu, je nasazení infrastruktury virtuálních ploch (VDI) hostované ve vaší virtuální síti Azure, zabezpečené pomocí brány Azure Firewall. Například Windows Virtual Desktop (WVD) je služba virtualizace plochy a aplikací, která běží v Azure. S Windows Virtual Desktop můžete nastavit škálovatelné a flexibilní prostředí ve vašem předplatném Azure bez nutnosti spouštět další servery brány. Jste zodpovědní pouze za virtuální počítače WVD ve vaší virtuální síti. Další informace naleznete v tématu [Podpora vzdálené práce azure firewallu](../firewall/remote-work-support.md). 
 
-Azure má také bohatou sadu partnerů ekologického systému. Naši partneři Síťová virtuální zařízení v Azure můžou taky pomoct škálovat připojení VPN. Další informace naleznete v [tématu network virtual appliance (NVA) aspekty pro práci na dálku](https://go.microsoft.com/fwlink/?linkid=2123771).
+Azure má také bohatou sadu partnerů ekologického systému. Naši partneři Síťová virtuální zařízení v Azure můžou taky pomoct škálovat připojení VPN. Další informace naleznete v [tématu network virtual appliance (NVA) aspekty pro práci na dálku](../vpn-gateway/nva-work-remotely-support.md).
 
 ## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>Rozšíření připojení zaměstnanců pro přístup k globálně distribuovaným prostředkům
 
@@ -71,7 +70,7 @@ Následující služby Azure můžou zaměstnancům umožnit přístup k globál
 
 ## <a name="scale-customer-connectivity-to-frontend-resources"></a>Škálování připojení zákazníků na front-endové prostředky
 
-V době, kdy více lidí jít on-line, mnoho firemních webových stránek zkušenosti zvýšený provoz zákazníků. Azure Application Gateway může pomoci spravovat toto zvýšené front-endové zatížení. Další informace naleznete v [tématu Podpora vysokého provozu aplikace gateway .](https://go.microsoft.com/fwlink/?linkid=2123940)
+V době, kdy více lidí jít on-line, mnoho firemních webových stránek zkušenosti zvýšený provoz zákazníků. Azure Application Gateway může pomoci spravovat toto zvýšené front-endové zatížení. Další informace naleznete v [tématu Podpora vysokého provozu aplikace gateway .](../application-gateway/high-traffic-support.md)
 
 ## <a name="microsoft-support-for-multi-cloud-traffic"></a>Podpora microsoftu pro provoz ve více cloudech
 
@@ -83,13 +82,13 @@ Následující články popisují, jak lze různé síťové funkce Azure použ�
 
 | **Článku** | **Poslední aktualizace** |
 | --- | --- |
-| [Jak povolit uživatelům pracovat na dálku](https://go.microsoft.com/fwlink/?linkid=2123770) | 23. března 2020 |
-| [Snaží se obstarávat práci z domova potřeb? Zde je místo, kde azure virtuální WAN může pomoci](https://go.microsoft.com/fwlink/?linkid=2123769) | 23. března 2020 |
-| [Podpora vysokého provozu aplikační brány](https://go.microsoft.com/fwlink/?linkid=2123940) | 23. března 2020 |
-| [Aspekty síťového virtuálního zařízení (NVA) pro práci na dálku](https://go.microsoft.com/fwlink/?linkid=2123771)| 23. března 2020 |
+| [Jak povolit uživatelům pracovat na dálku](../vpn-gateway/work-remotely-support.md) | 23. března 2020 |
+| [Snaží se obstarávat práci z domova potřeb? Zde je místo, kde azure virtuální WAN může pomoci](../virtual-wan/work-remotely-support.md) | 23. března 2020 |
+| [Podpora vysokého provozu služby Application Gateway](../application-gateway/high-traffic-support.md) | 23. března 2020 |
+| [Aspekty síťového virtuálního zařízení (NVA) pro práci na dálku](../vpn-gateway/nva-work-remotely-support.md)| 23. března 2020 |
 | [Přechod na protokol OpenVPN nebo IKEv2 z SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | 23. března 2020 |
-| [Vzdálená práce s Azure Bastion](https://go.microsoft.com/fwlink/?linkid=2123939) | 23. března 2020 |
-| [Použití Služby Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů](https://go.microsoft.com/fwlink/?linkid=2123768) | 23. března 2020 |
+| [Vzdálená práce s Azure Bastion](../bastion/work-remotely-support.md) | 23. března 2020 |
+| [Použití Služby Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů](../expressroute/work-remotely-support.md) | 23. března 2020 |
 | [Podpora vzdálené práce azure firewallu](../firewall/remote-work-support.md)|25. března 2020|
 
 <!--Link References-->

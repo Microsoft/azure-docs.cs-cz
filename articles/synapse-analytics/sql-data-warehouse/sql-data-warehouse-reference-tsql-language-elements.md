@@ -1,6 +1,6 @@
 ---
 title: Elementy jazyka T-SQL
-description: Odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
+description: Odkazy na dokumentaci pro příkazy T-SQL podporované v fondu Synapse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 040a6d519896d71227777168ea9de9612f97ca6e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f27a0a351e4a446dc950ac13f850bd14b2b3c65a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351415"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586398"
 ---
-# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>Elementy jazyka T-SQL podporované v SQL Analytics
-Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
+# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>Elementy jazyka T-SQL podporované v fondu Synapse SQL
+
+Odkazy na dokumentaci pro prvky jazyka T-SQL podporované v fondu Synapse SQL.
 
 ## <a name="core-elements"></a>Základní prvky
+
 * [syntaktické konvence](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [pravidla pojmenování objektů](https://msdn.microsoft.com/library/ms175874.aspx)
 * [vyhrazená klíčová slova](https://msdn.microsoft.com/library/ms189822.aspx)
@@ -37,6 +39,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
 * [Použít](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>Dávky, řízení toku a proměnné
+
 * [Začít... Konec](https://msdn.microsoft.com/library/ms190487.aspx)
 * [Přestávce](https://msdn.microsoft.com/library/ms181271.aspx)
 * [Deklarovat@local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
@@ -48,6 +51,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
 * [Zatímco](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>Operátory
+
 * [+ (Přičíst)](https://msdn.microsoft.com/library/ms178565.aspx)
 * [+ (Zřetězení řetězců)](https://msdn.microsoft.com/library/ms177561.aspx)
 * [- (Záporné)](https://msdn.microsoft.com/library/ms189480.aspx)
@@ -57,6 +61,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
 * [Modulo](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>Zástupný znak(y) tak, aby odpovídaly
+
 * [= (Je rovno)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [> (větší než)](https://msdn.microsoft.com/library/ms178590.aspx)
 * [< (méně než)](https://msdn.microsoft.com/library/ms179873.aspx)
@@ -74,6 +79,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
 * [Nebo](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bitové operátory
+
 * [& (Bitové AND)](https://msdn.microsoft.com/library/ms174965.aspx)
 * [| (Bitové NEBO)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [^ (Bitové výhradní OR)](https://msdn.microsoft.com/library/ms190277.aspx)
@@ -82,7 +88,8 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
 * [|= (Bitové nebo rovno).](https://msdn.microsoft.com/library/cc627409.aspx)
 * [&= (bitové a rovné)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
+
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -227,12 +234,15 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
 * [Xact_state](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>Transakce
+
 * [Transakce](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>Diagnostické relace
+
 * [VYTVOŘIT RELACI DIAGNOSTIKY](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>Procedury
+
 * [Sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [Sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
@@ -256,6 +266,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
 ## <a name="set-statements"></a>Příkazy SET
+
 * [SET ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
 * [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [SET ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
@@ -278,5 +289,6 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované v SQL Analytics.
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Další kroky
-Další referenční informace naleznete [v příkazech T-SQL v nástroji SQL Analytics](sql-data-warehouse-reference-tsql-statements.md)a [zobrazení systému v nástroji SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).
+
+Další referenční informace naleznete [v příkazech T-SQL ve fondu Synapse SQL a](sql-data-warehouse-reference-tsql-statements.md)zobrazení [systému ve fondu synapse SQL](sql-data-warehouse-reference-tsql-system-views.md).
 

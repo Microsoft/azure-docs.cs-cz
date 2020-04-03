@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 2df83e3b62994381895315b2ef100299e40b745e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366500"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607536"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi databáze SQL
 
@@ -78,6 +78,7 @@ V modelu nasazení spravované instance v H1 2019 jsou povoleny následující f
 
 |Problém  |Datum zjištění  |Status  |Datum vyřešení  |
 |---------|---------|---------|---------|
+|[Oprávnění pro skupinu prostředků, která nejsou použita pro spravovanou instanci](#permissions-on-resource-group-not-applied-to-managed-instance)|Únor 2020|Má řešení||
 |[Omezení ručního převzetí služeb při selhání prostřednictvím portálu pro skupiny převzetí služeb při selhání](#limitation-of-manual-failover-via-portal-for-failover-groups)|Leden 2020|Má řešení||
 |[Role agenta SQL vyžadují explicitní oprávnění spustit pro přihlášení bez sysadmin](#in-memory-oltp-memory-limits-are-not-applied)|Prosinec 2019|Má řešení||
 |[Úlohy agenta SQL mohou být přerušeny restartováním procesu agenta.](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Prosinec 2019|Žádné řešení|Březen 2020|
@@ -101,6 +102,12 @@ V modelu nasazení spravované instance v H1 2019 jsou povoleny následující f
 |Obnovení databáze v době v čase z úrovně Business Critical na úroveň Obecné účely nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.||Vyřešeno|Říjen 2019|
 |Funkce Database Mail s externími poštovními servery (mimo Azure) pomocí zabezpečeného připojení||Vyřešeno|Říjen 2019|
 |Obsažené databáze nejsou ve spravované instanci podporovány.||Vyřešeno|Srpen 2019|
+
+### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>Oprávnění pro skupinu prostředků, která nejsou použita pro spravovanou instanci
+
+Role RBAC přispěvatele spravované instance při použití na skupinu prostředků (RG) není použita pro spravovanou instanci a nemá žádný vliv.
+
+**Řešení:** Nastavení role přispěvatele spravované instance pro uživatele na úrovni předplatného.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Omezení ručního převzetí služeb při selhání prostřednictvím portálu pro skupiny převzetí služeb při selhání
 

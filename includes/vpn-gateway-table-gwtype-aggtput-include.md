@@ -17,7 +17,7 @@ ms.locfileid: "74828807"
 ---
 |**Generování<br><br>brány VPN** |**Sku**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **P2S<br> IKEv2/OpenVPN Připojení** | **Srovnávací test<br>agregované propustnosti** | **BGP** | **Zóna-redundantní** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
-|**Generace1**|**Basic**   | Max. 10    | Max. 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se| Ne |
+|**Generace1**|**Základní**   | Max. 10    | Max. 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se| Ne |
 |**Generace1**|**VpnGw1**  | Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporuje se | Ne |
 |**Generace1**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporuje se | Ne |
 |**Generace1**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporuje se | Ne |

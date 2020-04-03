@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d061a132699e733e78a7d717ee32222b158d73b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927520"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618272"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Aktivita odstranění v Azure Data Factory
 
 Odstranit aktivitu v Azure Data Factory můžete použít k odstranění souborů nebo složek z místních úložišť úložiště nebo úložišť cloudových úložišť. Tuto aktivitu použijte k vyčištění nebo archivaci souborů, pokud již nejsou potřeba.
 
 > [!WARNING]
-> Odstraněné soubory a složky není možné obnovit. Při odstraňování souborů nebo složek pomocí aktivity odstranění postupujte opatrně.
+> Odstraněné soubory nebo složky nelze obnovit (pokud není povoleno obnovitelné odstranění úložiště). Při odstraňování souborů nebo složek pomocí aktivity odstranění postupujte opatrně.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -40,7 +40,7 @@ Tady jsou některá doporučení pro použití aktivity Delete:
 
 ## <a name="supported-data-stores"></a>Podporované zdroje dat
 
--   [Úložiště objektů blob Azure](connector-azure-blob-storage.md)
+-   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
@@ -327,7 +327,7 @@ Můžete vytvořit kanál pro vyčištění starých souborů nebo souborů s uk
 Soubor můžete přesunout pomocí aktivity kopírování ke kopírování souboru a potom odstranit aktivitu k odstranění souboru v kanálu.  Pokud chcete přesunout více souborů, můžete použít aktivitu GetMetadata + Aktivita filtru + Aktivita Foreach + Aktivita kopírování + Odstranit aktivitu jako v následující ukázce:
 
 > [!NOTE]
-> Chcete-li přesunout celou složku definováním datové sady obsahující pouze cestu ke složce a potom pomocí aktivity kopírování a aktivity Delete k odkazu na stejnou datovou sadu představující složku, musíte být velmi opatrní. Je to proto, že se musíte ujistit, že nebudou nové soubory přicházející do složky mezi operací kopírování a odstraněním.  Pokud do složky přicházejí nové soubory v okamžiku, kdy vaše kopírovací aktivita právě dokončila úlohu kopírování, ale aktivita Odstranit nebyla zahlédnuta, je možné, že aktivita Delete odstraní tento nový příchozí soubor, který nebyl zkopírován do cíle odstraněním celé složky. 
+> Chcete-li přesunout celou složku definováním datové sady obsahující pouze cestu ke složce a potom pomocí aktivity kopírování a aktivity Delete k odkazu na stejnou datovou sadu představující složku, musíte být velmi opatrní. Je to proto, že se musíte ujistit, že nebudou nové soubory přicházející do složky mezi operací kopírování a odstraněním.  Pokud do složky přicházejí nové soubory v okamžiku, kdy vaše kopírovací činnost právě dokončila úlohu kopírování, ale aktivita Odstranit nebyla zahlédnuta, je možné, že aktivita Delete odstraní tento nový příchozí soubor, který ještě nebyl zkopírován do cíle odstraněním celé složky. 
 
 #### <a name="sample-pipeline"></a>Ukázkový kanál
 

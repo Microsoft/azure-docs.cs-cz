@@ -1,5 +1,5 @@
 ---
-title: Průvodce plánováním a provozem služby Security Center | Dokumentace Microsoftu
+title: Průvodce plánováním a provozem centra zabezpečení
 description: Tento dokument vám pomůže s plánováním před přijetím řešení Azure Security Center a s vyřešením aspektů každodenního provozu.
 services: security-center
 author: memildin
@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435621"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586005"
 ---
-# <a name="azure-security-center-planning-and-operations-guide"></a>Průvodce plánováním a provozem služby Azure Security Center
+# <a name="planning-and-operations-guide"></a>Průvodce plánováním a provozem
 Tato příručka je určen pro odborníky v oblasti informačních technologií (IT), architekty IT, analytiky zabezpečení informací a správce cloudu, kteří plánují používat Azure Security Center.
 
 
@@ -135,7 +135,7 @@ Azure Security Center používá agenta Analýzy protokolů – to je stejný ag
 
 ### <a name="agent"></a>Agent
 
-Když je v zásadách zabezpečení povoleno automatické zřizování, agent Log Analytics (pro [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) nebo [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)se nainstaluje na všech podporovaných virtuálních počítačích Azure a na všech nových, které se vytvoří. Pokud virtuální počítač nebo počítač už má nainstalovaného agenta Analýzy protokolů, Azure Security Center bude využívat aktuálního nainstalovaného agenta. Proces agenta je navržen tak, aby nenarušoval běžný chod a měl zcela minimální dopad na výkon virtuálního počítače.
+Když je v zásadách zabezpečení povoleno automatické zřizování, agent Log Analytics (pro [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) nebo [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)se nainstaluje na všech podporovaných virtuálních počítačích Azure a na všech nových, které se vytvoří. Pokud virtuální počítač nebo počítač už má nainstalovaného agenta Analýzy protokolů, Azure Security Center bude využívat aktuálního nainstalovaného agenta. Proces agenta je navržen tak, aby byl neinvazivní a měl velmi minimální dopad na výkon virtuálního počítače.
 
 Agent Log Analytics pro Systém Windows vyžaduje použití portu TCP 443. Další podrobnosti najdete v [článku Řešení problémů](security-center-troubleshooting-guide.md).
 
@@ -181,7 +181,7 @@ Až vyřešíte všechna doporučení, v části **Prevention** (Prevence) by m�
 
 Část **Detection** (Detekce) vyžaduje víc reakcí, obsahuje totiž výstrahy týkající se problémů, které jsou aktuální nebo nastaly v minulosti, kdy je zjistily ovládací prvky služby Security Center a systémy jiných výrobců. Dlaždice Výstrahy zabezpečení zobrazí pruhové grafy, které představují počet výstrah, které byly nalezeny v každý den, a jejich rozdělení mezi různé kategorie závažnosti (nízká, střední, vysoká). Další informace o výstrahách zabezpečení najdete v tématu [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md).
 
-Jako součást každodenních operací zabezpečení si naplánujte navštívení možnosti [Analýza hrozeb](https://docs.microsoft.com/azure/security-center/security-center-threat-intel). Tam můžete identifikovat bezpečnostní hrozby pro prostředí, například můžete určit, zda je konkrétní počítač součástí botnetu.
+Jako součást každodenních operací zabezpečení si naplánujte navštívení možnosti Analýza hrozeb. Tam můžete identifikovat bezpečnostní hrozby pro prostředí, například můžete určit, zda je konkrétní počítač součástí botnetu.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Sledování nových nebo změněných prostředků
 Většina prostředí Azure je dynamická, přičemž prostředky se pravidelně vytvářejí, otáčejí nahoru nebo dolů, překonfigurují a mění. Security Center pomáhá zajistit přehled o stavu zabezpečení těchto nových prostředků.
@@ -213,7 +213,7 @@ V rámci operací zabezpečení byste měli zavést také preventivní opatřen�
 ## <a name="incident-response"></a>Reakce na incidenty
 Security Center vyhledává nové hrozby a upozorňuje vás na ně. Organizace by měly výstrahy zabezpečení aktivně sledovat a provádět potřebné kroky, aby útok podrobněji prošetřily nebo napravily. Další informace o tom, jak funguje ochrana před hrozbami Centra zabezpečení, našetvete, [jak Azure Security Center rozpozná hrozby a reaguje na ně](security-center-alerts-overview.md#detect-threats).
 
-Cílem tohoto článku není pomoct vám s vytvořením vlastního plánu reakcí na incidenty, postup uvedený v dokumentu Microsoft Azure Security Response in the Cloud (Reakce zabezpečení Microsoft Azure v cloudu) ale použijeme jako základ pro fáze reakcí na incidenty. Jednotlivé fáze jsou uvedeny v následujícím diagramu:
+I když tento článek nemá v úmyslu vám pomoci s vytvářením vlastního plánu reakce na incidenty, použijeme Microsoft Azure Security Response v životním cyklu cloudu jako základ pro fáze reakce na incidenty. Jednotlivé fáze jsou uvedeny v následujícím diagramu:
 
 ![Podezřelá aktivita](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
@@ -235,7 +235,7 @@ Následující příklad ukazuje probíhající podezřelé aktivity protokolu R
 
 Tato stránka obsahuje podrobné informace o čase útoku, zdrojovém názvu hostitele a cílovém virtuálním počítači a nabízí také doporučené kroky. V některých případech mohou být informace o zdroji útoku prázdné. Další informace o tomto typu chování najdete v článku [Chybějící informace o zdroji ve výstrahách služby Azure Security Center](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/).
 
-Na této stránce také můžete zahájit [šetření](https://docs.microsoft.com/azure/security-center/security-center-investigation) pro lepší pochopení časové osy a způsobu provedení útoku, identifikaci potenciálně ohrožených systémů a použitých přihlašovacích údajů a zobrazení grafické reprezentace řetězení útoku.
+Na této stránce také můžete zahájit šetření pro lepší pochopení časové osy a způsobu provedení útoku, identifikaci potenciálně ohrožených systémů a použitých přihlašovacích údajů a zobrazení grafické reprezentace řetězení útoku.
 
 Jakmile identifikujete ohrožený systém, můžete spustit [automatizaci pracovního postupu,](workflow-automation.md) která byla dříve vytvořena. Jedná se o kolekci procedur, které lze provést z Centra zabezpečení, jakmile se aktivuje výstraha.
 

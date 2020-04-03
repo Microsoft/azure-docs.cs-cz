@@ -1,6 +1,6 @@
 ---
 title: Indexování tabulek
-description: Doporučení a příklady pro indexování tabulek v SQL Analytics.
+description: Doporučení a příklady pro indexování tabulek v fondu SYNApse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ced965f94808bdc672f694bede5c239178891f97
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351291"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583274"
 ---
-# <a name="indexing-tables-in-sql-analytics"></a>Indexování tabulek v SQL Analytics
+# <a name="indexing-tables-in-synapse-sql-pool"></a>Indexování tabulek ve fondu Synapse SQL
 
-Doporučení a příklady pro indexování tabulek v SQL Analytics.
+Doporučení a příklady pro indexování tabulek v fondu SYNApse SQL.
 
 ## <a name="index-types"></a>Typy indexů
 
-SQL Analytics nabízí několik možností indexování, včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [seskupených indexů a neseskupených indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)a neindexové možnosti známé také jako [haldy](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
+Fond SQL synapse nabízí několik možností indexování, včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [seskupených indexů a neseskupených indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)a možnosti neindexování označované také jako [haldy](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
 
-Chcete-li vytvořit tabulku s indexem, podívejte se na dokumentaci [vytvořit tabulku (SQL Analytics).](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+Chcete-li vytvořit tabulku s indexem, naleznete v dokumentaci [vytvořit tabulku (Synapse SQL pool).](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
 
 ## <a name="clustered-columnstore-indexes"></a>Clusterované indexy columnstore
 
-Ve výchozím nastavení sql analytics vytvoří index clusterovaného columnstore, pokud v tabulce nejsou zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat a také nejlepší celkový výkon dotazu.  Clustered columnstore tabulky obecně předčí seskupený index nebo haldy tabulky a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů clusterované columnstore je nejlepší místo pro spuštění, když si nejste jisti, jak indexovat tabulku.  
+Ve výchozím nastavení synpse fond SQL vytvoří clusterovaný columnstore index, pokud nejsou v tabulce zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat a také nejlepší celkový výkon dotazu.  Clustered columnstore tabulky obecně předčí seskupený index nebo haldy tabulky a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů clusterované columnstore je nejlepší místo pro spuštění, když si nejste jisti, jak indexovat tabulku.  
 
 Chcete-li vytvořit clustered columnstore tabulka, jednoduše zadejte CLUSTERED COLUMNSTORE INDEX v with klauzule nebo ponechat with klauzule off:
 
@@ -52,7 +52,7 @@ Existuje několik scénářů, kde clusterované columnstore nemusí být dobrou
 
 ## <a name="heap-tables"></a>Tabulky hald
 
-Když dočasně přistáváte data v SQL Analytics, můžete zjistit, že použití tabulky haldy urychlí celkový proces. Důvodem je, že zatížení do hromady jsou rychlejší než index tabulky a v některých případech následné čtení lze provést z mezipaměti.  Pokud načítáte data pouze k fázi před spuštěním více transformací, načítání tabulky haldy tabulka je mnohem rychlejší než načítání dat do clusterované columnstore tabulky. Kromě toho načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načte rychleji než načítání tabulky do trvalého úložiště.  
+Při dočasném přistání dat v fondu SYNAPse SQL, můžete zjistit, že pomocí haldy tabulky je celkový proces rychlejší. Důvodem je, že zatížení do hromady jsou rychlejší než index tabulky a v některých případech následné čtení lze provést z mezipaměti.  Pokud načítáte data pouze k fázi před spuštěním více transformací, načítání tabulky haldy tabulka je mnohem rychlejší než načítání dat do clusterované columnstore tabulky. Kromě toho načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načte rychleji než načítání tabulky do trvalého úložiště.  
 
 Pro malé vyhledávací tabulky, méně než 60 milionů řádků, často haldy tabulky smysl.  Cluster columnstore tabulky začnou dosáhnout optimální komprese, jakmile je více než 60 milionů řádků.
 
@@ -190,7 +190,7 @@ Tyto faktory mohou způsobit columnstore index mít výrazně menší než optim
 
 ### <a name="memory-pressure-when-index-was-built"></a>Tlak paměti při indexbyl vytvořen
 
-Počet řádků na komprimovoluji řádek skupiny přímo souvisí s šířkou řádku a množství paměti k dispozici pro zpracování skupiny řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Proto je osvědčeným postupem poskytnout relaci, která je zápis do tabulky index columnstore přístup k co nejvíce paměti, jak je to možné.  Vzhledem k tomu, že existuje kompromis mezi pamětí a souběžnou měnou, pokyny pro správné přidělení paměti závisí na datech v každém řádku tabulky, jednotkách SQL Analytics přidělených vašemu systému a počtu slotů souběžnosti, které můžete dát relaci, která je zápisdat do tabulky.
+Počet řádků na komprimovoluji řádek skupiny přímo souvisí s šířkou řádku a množství paměti k dispozici pro zpracování skupiny řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Proto je osvědčeným postupem poskytnout relaci, která je zápis do tabulky index columnstore přístup k co nejvíce paměti, jak je to možné.  Vzhledem k tomu, že je kompromis mezi pamětí a souběžnosti, pokyny pro správné přidělení paměti závisí na data v každém řádku tabulky, jednotky datového skladu přidělené systému a počet slotů souběžnosti můžete dát relace, která je zápis dat do tabulky.
 
 ### <a name="high-volume-of-dml-operations"></a>Velký objem operací DML
 
@@ -204,13 +204,13 @@ Dávková aktualizace a vložení operace, které překračují prahovou hodnotu
 
 ### <a name="small-or-trickle-load-operations"></a>Malé operace nebo operace zatížení pramínkem
 
-Malé zatížení, které proudí do databází SQL Analytics jsou také někdy označovány jako pramínek zatížení. Obvykle představují téměř konstantní datový proud dat, která jsou systémem ingestována. Však jako tento datový proud je téměř souvislý objem řádků není příliš velký. Více často než ne data je výrazně pod prahovou hodnotou požadovanou pro přímé zatížení do formátu columnstore.
+Malé zatížení, které proudí do fondu Synapse SQL jsou také někdy známé jako pramínek zatížení. Obvykle představují téměř konstantní datový proud dat, která jsou systémem ingestována. Však jako tento datový proud je téměř souvislý objem řádků není příliš velký. Více často než ne data je výrazně pod prahovou hodnotou požadovanou pro přímé zatížení do formátu columnstore.
 
 V těchto situacích je často lepší přistát data nejprve v úložišti objektů blob Azure a nechat je hromadit před načtením. Tato technika je často známá jako *mikrodávkování*.
 
 ### <a name="too-many-partitions"></a>Příliš mnoho oddílů
 
-Další věc, kterou je třeba zvážit, je dopad dělení na clusterované tabulky columnstore.  Před rozdělením sql analytics již rozděluje data do 60 databází.  Dělení dále rozděluje data.  Pokud oddíl data, pak zvažte, že **každý** oddíl potřebuje alespoň 1 milion řádků využívat index clusterované columnstore.  Pokud tabulku rozdělíte na 100 oddílů, bude tabulka potřebovat alespoň 6 miliard řádků, aby bylo nutné využívat clusterovaný index columnstore (60 distribucí *100 oddílů* 1 milion řádků). Pokud tabulka 100 oddílů nemá 6 miliard řádků, snižte počet oddílů nebo zvažte použití tabulky haldy.
+Další věc, kterou je třeba zvážit, je dopad dělení na clusterované tabulky columnstore.  Před rozdělením, Synapse SQL fond již rozděluje data do 60 databází.  Dělení dále rozděluje data.  Pokud oddíl data, pak zvažte, že **každý** oddíl potřebuje alespoň 1 milion řádků využívat index clusterované columnstore.  Pokud tabulku rozdělíte na 100 oddílů, bude tabulka potřebovat alespoň 6 miliard řádků, aby bylo nutné využívat clusterovaný index columnstore (60 distribucí *100 oddílů* 1 milion řádků). Pokud tabulka 100 oddílů nemá 6 miliard řádků, snižte počet oddílů nebo zvažte použití tabulky haldy.
 
 Jakmile jsou tabulky načteny s některými daty, postupujte podle následujících kroků k identifikaci a znovuvytvoření tabulky s suboptimální clustered columnstore indexy.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Opětovné sestavení indexu v sql analytics je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX REBUILD v části [Defragmentace indexů columnstore indexů](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)a [INDEX ALTER](/sql/t-sql/statements/alter-index-transact-sql).
+Opětovné sestavení indexu ve fondu Synapse SQL je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX REBUILD v části [Defragmentace indexů columnstore indexů](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)a [INDEX ALTER](/sql/t-sql/statements/alter-index-transact-sql).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Ověření zlepšení kvality segmentu segmentu clusterovaného columnstore
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Další podrobnosti o opětovném vytváření oddílů pomocí CTAS naleznete [v tématu Použití oddílů v sql analytics](sql-data-warehouse-tables-partition.md).
+Další podrobnosti o opětovném vytváření oddílů pomocí CTAS naleznete [v tématu Použití oddílů ve fondu SYNAPse SQL](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Další kroky
 

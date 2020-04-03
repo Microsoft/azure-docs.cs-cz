@@ -2,17 +2,17 @@
 title: Nejčastější dotazy k baště Azure | Dokumenty společnosti Microsoft
 description: Nejčastější dotazy k Azure Baště
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: cherylmc
-ms.openlocfilehash: 3229612130440a24aab51385e66f2385c8a9fb20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: a008b7875a7e88ef31f2c5069ac55abb17e68a1a
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973029"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619332"
 ---
 # <a name="azure-bastion-faq"></a>Nejčastější dotazy ke službě Azure Bastion
 

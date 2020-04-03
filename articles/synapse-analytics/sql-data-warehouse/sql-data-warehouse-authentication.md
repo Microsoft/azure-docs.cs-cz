@@ -1,6 +1,6 @@
 ---
-title: Ověřování
-description: Zjistěte, jak se ověřovat na Azure Synapse Analytics pomocí Azure Active Directory (AAD) nebo SQL Server ověřování.
+title: Authentication
+description: Zjistěte, jak se ověřovat na Azure Synapse Analytics pomocí Azure Active Directory (Azure AD) nebo SQL Server ověřování.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,21 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: c998e3789a29d3cfeaf18a583913871f7edc5af1
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ccc5db828a03c37d3fc4f49b13883ac3eeda2368
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350729"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584229"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Ověření azure synapse analytics
-Zjistěte, jak ověřit sql analytics v Azure Synapse pomocí Azure Active Directory (AAD) nebo SQL Server ověřování.
+
+Zjistěte, jak ověřit synapse SQL poool v Azure Synapse pomocí Azure Active Directory (Azure AD) nebo SQL Server ověřování.
 
 Chcete-li se připojit k fondu SQL, musíte předat pověření zabezpečení pro účely ověřování. Po navázání připojení jsou určitá nastavení připojení nakonfigurována jako součást vytvoření relace dotazu.  
 
 Další informace o zabezpečení a povolení připojení k datovému skladu naleznete [v tématu zabezpečení dokumentace k databázi](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>Ověřování pomocí SQL
+
 Chcete-li se připojit k fondu SQL, musíte zadat následující informace:
 
 * Plně kvalifikovaný název serveru
@@ -45,16 +47,18 @@ Ve výchozím nastavení se připojení připojuje k *hlavní* databázi a nikol
 > 
 > 
 
-## <a name="azure-active-directory-aad-authentication"></a>Ověřování služby Azure Active Directory (AAD)
+## <a name="azure-active-directory-azure-ad-authentication"></a>Ověřování azure active directory (Azure AD) ověřování
+
 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) ověřování je mechanismus připojení k fondu SQL pomocí identit ve službě Azure Active Directory (Azure AD). Pomocí ověřování Azure Active Directory můžete centrálně spravovat identity uživatelů databází a dalších služeb Microsoftu v jednom centrálním umístění. Centrální správa ID poskytuje jedno místo pro správu uživatelů Azure Synapse a zjednodušuje správu oprávnění. 
 
 ### <a name="benefits"></a>Výhody
+
 Mezi výhody služby Azure Active Directory patří:
 
 * Poskytuje alternativu k ověřování serveru SQL Server.
 * Pomáhá zastavit šíření identit uživatelů napříč databázovými servery.
 * Umožňuje rotaci hesel na jednom místě.
-* Správa oprávnění k databázi pomocí externích skupin (AAD).
+* Spravujte oprávnění databáze pomocí externích skupin (Azure AD).
 * Eliminuje ukládání hesel povolením integrovaného ověřování systému Windows a dalších forem ověřování podporovaných službou Azure Active Directory.
 * Používá obsažené uživatele databáze k ověřování identit na úrovni databáze.
 * Podporuje ověřování na základě tokenů pro aplikace, které se připojují k fondu SQL.
@@ -66,6 +70,7 @@ Mezi výhody služby Azure Active Directory patří:
 > 
 
 ### <a name="configuration-steps"></a>Postup konfigurace
+
 Chcete-li nakonfigurovat ověřování služby Azure Active Directory, postupujte takto.
 
 1. Vytvoření a naplnění služby Azure Active Directory
@@ -78,8 +83,10 @@ Chcete-li nakonfigurovat ověřování služby Azure Active Directory, postupujt
 V současné době se uživatelé služby Azure Active Directory nezobrazují v Průzkumníku objektů SSDT. Jako zástupné řešení zobrazíte uživatele v [souboru sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 
 ### <a name="find-the-details"></a>Najít podrobnosti
-* Kroky konfigurace a použití ověřování Azure Active Directory jsou téměř identické pro Azure SQL Database a SQL Analytics v Azure Synapse. Postupujte podle podrobných kroků v tématu [Připojení k databázi SQL nebo fondu SQL pomocí ověřování Azure Active Directory](../../sql-database/sql-database-aad-authentication.md).
+
+* Kroky konfigurace a použití ověřování Azure Active Directory jsou téměř identické pro Azure SQL Database a Synapse SQL fond v Azure Synapse. Postupujte podle podrobných kroků v tématu [Připojení k databázi SQL nebo fondu SQL pomocí ověřování Azure Active Directory](../../sql-database/sql-database-aad-authentication.md).
 * Vytvořte vlastní databázové role a přidejte uživatele do rolí. Potom udělte role podrobné oprávnění. Další informace naleznete v [tématu Začínáme s oprávněními databázového stroje](https://msdn.microsoft.com/library/mt667986.aspx).
 
 ## <a name="next-steps"></a>Další kroky
+
 Pokud chcete začít s dotazováním pomocí Sady Visual Studio a dalších aplikací, přečtěte [si informace o dotazu pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md).

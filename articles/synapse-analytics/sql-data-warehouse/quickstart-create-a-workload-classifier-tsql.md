@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d41aa3447caebfeeffc05c36b5073f57c3e16cd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350810"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583770"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Úvodní příručka: Vytvoření třídění pracovního vytížení pomocí T-SQL
 
@@ -25,7 +25,7 @@ V tomto rychlém startu rychle vytvoříte klasifikátor pracovního vytížení
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 > [!NOTE]
-> Vytvoření instance SQL Analytics v Azure Synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v [tématu Azure Synapse Analytics ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Vytvoření synapse SQL fond instance v Azure Synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v [tématu Azure Synapse Analytics ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
@@ -109,5 +109,5 @@ Chcete-li vyčistit prostředky, postupujte takto.
 ## <a name="next-steps"></a>Další kroky
 
 - Nyní jste vytvořili třídění úlohy. Spusťte několik dotazů jako THECEO a zjistěte, jak fungují. Viz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) pro zobrazení dotazů a přiřazený význam.
-- Další informace o správě úloh SQL Analytics najdete v [tématu Důležitost pracovního vytížení](sql-data-warehouse-workload-importance.md) a [Klasifikace pracovního vytížení](sql-data-warehouse-workload-classification.md).
+- Další informace o správě úloh synapse SQL naleznete v [tématu Úloha důležitost](sql-data-warehouse-workload-importance.md) a [klasifikace pracovního vytížení](sql-data-warehouse-workload-classification.md).
 - Podívejte se na články s postupy [pro konfiguraci důležitosti pracovního vytížení](sql-data-warehouse-how-to-configure-workload-importance.md) a [jak spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

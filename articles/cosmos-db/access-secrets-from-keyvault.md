@@ -9,14 +9,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755211"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618755"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečení klíčů Azure Cosmos s využitím služby Azure Key Vault 
+
+>[!IMPORTANT]
+> Doporučené řešení pro přístup ke klíčům Azure Cosmos DB je použití [spravované identity přiřazené k systému](managed-identity-based-authentication.md). Pokud vaše služba nemůže využívat spravované identity, použijte [řešení založené na certifikátu](certificate-based-authentication.md). Pokud řešení spravované identity i řešení založené na certifikátu nesplňují vaše potřeby, použijte níže uvedené řešení trezoru klíčů.
 
 Při použití Azure Cosmos DB pro vaše aplikace, můžete přistupovat k databázi, kolekce, dokumenty pomocí koncového bodu a klíč v rámci konfiguračního souboru aplikace.  Není však bezpečné umístit klíče a adresu URL přímo do kódu aplikace, protože jsou k dispozici ve formátu prostého textu všem uživatelům. Měli byste zajistit, aby koncový bod a klíče byly dostupné bezpečným způsobem. Se zabezpečeným ukládáním a správou tajných klíčů aplikací vám může pomoct služba Azure Key Vault.
 
@@ -30,7 +33,7 @@ Následující kroky jsou nutné k uložení a čtení přístupových klíčů 
 
 ## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).  
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).  
 2. Vyberte **možnost Vytvořit prostředek > trezoru klíčů zabezpečení >**.  
 3. V části **Vytvořit trezor klíčů** zadejte následující informace:  
    * **Název:** Zadejte jedinečný název trezoru klíčů.  

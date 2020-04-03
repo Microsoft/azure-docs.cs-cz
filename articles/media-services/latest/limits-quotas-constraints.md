@@ -1,6 +1,6 @@
 ---
-title: Kvóty a omezení ve službě Azure Media Services
-description: Toto téma popisuje kvóty a omezení ve službě Microsoft Azure Media Services.
+title: Kvóty a limity ve službě Azure Media Services
+description: Toto téma popisuje kvóty a limity ve službě Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 6fb2f8f9172533a2c7f4aa03e99bd08e16a1f1dc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2d4f5f83335f6f115362bcf66cf69d7f9de7eaa5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545912"
+ms.locfileid: "80582326"
 ---
 # <a name="azure-media-services-quotas-and-limits"></a>Kvóty a limity mediálních služeb Azure
 
@@ -79,7 +79,7 @@ Všechny záznamy úloh y ve vašem účtu starší než 90 dní budou automatic
 | Živé výstupy na živou událost |3 <sup>(5)</sup> |
 | Maximální doba trvání živého výstupu | 25 hodin |
 
-<sup>4</sup> Podrobné informace o omezeních živých událostí naleznete v tématu [Porovnání a omezení typů živých událostí](live-event-types-comparison.md).
+<sup>4</sup> Podrobné informace o limitech živých událostí najdete v tématu [Porovnání a omezení typů živých událostí](live-event-types-comparison.md).
 
 <sup>5</sup> Živé výstupy se spustí při vytváření a zastaví se při odstranění.
 
@@ -87,7 +87,7 @@ Všechny záznamy úloh y ve vašem účtu starší než 90 dní budou automatic
 
 | Prostředek | Výchozí omezení | 
 | --- | --- | 
-| [Streamování koncových bodů](streaming-endpoint-concept.md) (zastaveno nebo spuštěno) na účet Mediální služby|2 (pevná)|
+| [Streamování koncových bodů](streaming-endpoint-concept.md) (zastaveno nebo spuštěno) na účet Mediální služby|2 |
 | [Filtry dynamických manifestů](filters-dynamic-manifest-overview.md)|100|
 | [Zásady streamování](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Jedinečné [lokátory streamování](streaming-locators-concept.md) přidružené k datovému zdroji najednou | 100<sup>(7)</sup> (pevná) |

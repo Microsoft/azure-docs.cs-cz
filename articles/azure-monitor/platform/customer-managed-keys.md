@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 03/26/2020
-ms.openlocfilehash: c8743385f8c3c801b2f06e4a30a8672d1d80acc4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 18c926d16319eb8a8736a51d5f10e434b94d0ebe
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422519"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582505"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfigurace klíče spravované ho zákazníkem Azure Monitor 
 
@@ -50,11 +50,11 @@ Ingestovaná data za posledních 14 dní jsou také uložena v hot-cache (SSD-ba
 
 Azure Monitor využívá spravované identity přiřazené systémem k udělení přístupu k úložišti klíčů Azure.Spravovaná identita přiřazená systémem může být přidružena jenom k jednomu prostředku Azure. Identita úložiště dat Azure Monitor (cluster ADX) je podporována na úrovni clusteru a to vyžaduje, aby funkce CMK byla doručena ve vyhrazeném clusteru ADX. Pro podporu CMK na více pracovních prostorech, nový prostředek Log Analytics *(Cluster)* provádí jako zprostředkující připojení identity mezi trezoru klíčů a pracovníprostory Log Analytics. Tento koncept je v souladu s omezením identity přiřazené systémem a identita je udržována mezi clusterem ADX a prostředkem *clusteru* Log Analytics, zatímco data všech přidružených pracovních prostorů jsou chráněna klíčem trezoru klíčů klíčů. Úložiště clusteru ADX podložení používá\'spravovanou identitu, která je přidružena k prostředku *clusteru* k ověření a přístupu k úložišti klíčů Azure prostřednictvím služby Azure Active Directory.
 
-![CMK - přehled](media/customer-managed-keys/cmk-overview.png)
-1.  Trezor klíčů zákazníka.
-2.  Prostředek *clusteru* Log Analytics zákazníka, který má spravovanou identitu s oprávněními k trezoru klíčů – identita je podporována na úrovni úložiště dat (cluster ADX).
-3.  Vyhrazený cluster ADX azure monitoru.
-4.  Pracovní prostory zákazníka přidružené k prostředku *clusteru* pro šifrování CMK.
+![CMK - přehled](media/customer-managed-keys/cmk-overview-8bit.png)
+1.    Trezor klíčů zákazníka.
+2.    Prostředek *clusteru* Log Analytics zákazníka, který má spravovanou identitu s oprávněními k trezoru klíčů – identita je podporována na úrovni úložiště dat (cluster ADX).
+3.    Vyhrazený cluster ADX azure monitoru.
+4.    Pracovní prostory zákazníka přidružené k prostředku *clusteru* pro šifrování CMK.
 
 ## <a name="encryption-keys-management"></a>Správa šifrovacích klíčů
 
@@ -210,7 +210,7 @@ Aktualizujte trezor klíčů pomocí nové zásady přístupu, která uděluje o
 - Klíčová oprávnění: vyberte oprávnění "Získat", Zalamovat klíč a Rozbalit klíč.
 - Vyberte hlavní: zadejte hodnotu id hlavního povinného, která byla vrácena v odpovědi v předchozím kroku.
 
-![udělení oprávnění trezoru klíčů](media/customer-managed-keys/grant-key-vault-permissions.png)
+![udělení oprávnění trezoru klíčů](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 *Získat* oprávnění je nutné ověřit, že trezor klíčů je nakonfigurovaný jako obnovitelný k ochraně vašeho klíče a přístupu k datům Azure Monitor.
 

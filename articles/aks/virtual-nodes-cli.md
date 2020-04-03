@@ -4,12 +4,12 @@ description: Zjistěte, jak pomocí azure cli vytvořit cluster služeb Azure Ku
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 31e8b5aceb356ca1415419650a9df3070462bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475523"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616460"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru Služeb Azure Kubernetes (AKS) pro použití virtuálních uzlů pomocí rozhraní příkazového příkazu Azure
 
@@ -19,7 +19,7 @@ Tento článek ukazuje, jak vytvořit a nakonfigurovat prostředky virtuální s
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Virtuální uzly umožňují síťovou komunikaci mezi pody, které běží v ACI a clusteru AKS. Pro poskytnutí této komunikace je vytvořena podsíť virtuální sítě a jsou přiřazena delegovaná oprávnění. Virtuální uzly fungují pouze s clustery AKS vytvořenými pomocí *pokročilých* sítí. Ve výchozím nastavení jsou clustery AKS vytvářeny se *základní* sítí. Tento článek ukazuje, jak vytvořit virtuální síť a podsítě a potom nasadit cluster AKS, který používá rozšířené sítě.
+Virtuální uzly umožňují síťovou komunikaci mezi pody, které běží v Azure Container Instances (ACI) a clusteru AKS. Pro poskytnutí této komunikace je vytvořena podsíť virtuální sítě a jsou přiřazena delegovaná oprávnění. Virtuální uzly fungují pouze s clustery AKS vytvořenými pomocí *pokročilých* sítí. Ve výchozím nastavení jsou clustery AKS vytvářeny se *základní* sítí. Tento článek ukazuje, jak vytvořit virtuální síť a podsítě a potom nasadit cluster AKS, který používá rozšířené sítě.
 
 Pokud jste dříve aci nepoužívali, zaregistrujte poskytovatele služeb pomocí předplatného. Stav registrace zprostředkovatele ACI můžete zkontrolovat pomocí příkazu [seznamu zprostředkovatele az,][az-provider-list] jak je znázorněno v následujícím příkladu:
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 Zprostředkovatel *Microsoft.ContainerInstance* by měl hlásit jako *Registrovaný*, jak je znázorněno na následujícím příkladu výstupu:
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 Pokud se poskytovatel zobrazí jako *NotRegistered*, zaregistrujte zprostředkovatele pomocí [registru zprostředkovatele az,][az-provider-register] jak je znázorněno v následujícím příkladu:
@@ -155,7 +155,7 @@ Cluster AKS nasadíte do podsítě AKS vytvořené v předchozím kroku. Získá
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Nahraďte `<subnetId>` id získaným v předchozím `<appId>` `<password>` kroku a poté a 
+Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Nahraďte `<subnetId>` id získaným v předchozím `<appId>` `<password>` kroku a poté a s hodnotami shromážděnými v předchozí části.
 
 ```azurecli-interactive
 az aks create \
@@ -302,7 +302,7 @@ Pokud již nechcete používat virtuální uzly, můžete je zakázat pomocí p�
 
 V případě potřeby [https://shell.azure.com](https://shell.azure.com) přejděte k otevření Služby Azure Cloud Shell ve vašem prohlížeči.
 
-Nejprve odstraňte pod Helloworld běžící na virtuálním uzlu:
+Nejprve odstraňte `aci-helloworld` pod spuštěný na virtuálním uzlu:
 
 ```console
 kubectl delete -f virtual-node.yaml

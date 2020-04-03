@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ff9e62ed145b7892d2997193dae8e171ae49c98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672408"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585387"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Vytvoření diagnostického nastavení pro shromažďování protokolů platformy a metrik v Azure
 [Protokoly platformy](platform-logs-overview.md) v Azure, včetně protokolu aktivit Azure a protokolů prostředků, poskytují podrobné diagnostické a auditující informace pro prostředky Azure a platformu Azure, na které závisí. Tento článek obsahuje podrobnosti o vytváření a konfiguraci diagnostických nastavení pro odesílání protokolů platformy do různých cílů.
@@ -37,7 +37,7 @@ Protokoly platformy lze odeslat do cílů v následující tabulce. Konfigurace 
 | Cíl | Popis |
 |:---|:---|
 | [Pracovní prostor Log Analytics](resource-logs-collect-workspace.md) | Shromažďování protokolů do pracovního prostoru Log Analytics umožňuje analyzovat je s dalšími daty monitorování shromážděnými službou Azure Monitor pomocí výkonných dotazů protokolu a také využít další funkce Azure Monitoru, jako jsou výstrahy a vizualizace. |
-| [Centrum událostí](resource-logs-stream-event-hubs.md) | Odesílání protokolů do centra událostí umožňuje streamovat data do externích systémů, jako jsou siem třetích stran a další řešení analýzy protokolů. |
+| [Centra událostí](resource-logs-stream-event-hubs.md) | Odesílání protokolů do centra událostí umožňuje streamovat data do externích systémů, jako jsou siem třetích stran a další řešení analýzy protokolů. |
 | [Účet služby Azure Storage](resource-logs-collect-storage.md) | Archivace protokolů do účtu úložiště Azure je užitečná pro auditování, statickou analýzu nebo zálohování. |
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Vytvoření diagnostických nastavení na webu Azure Portal
@@ -53,7 +53,7 @@ Nastavení diagnostiky na webu Azure Portal můžete nakonfigurovat buď z nabí
     
         ![Nastavení diagnostiky](media/diagnostic-settings/menu-monitor.png)
 
-    - V protokolu aktivit klikněte na **protokol aktivit** v nabídce **Azure Monitor** a potom na **Nastavení diagnostiky**. Ujistěte se, že zakázat všechny starší konfigurace pro protokol aktivit. Podrobnosti [najdete v tématu Zakázání existujících nastavení.](diagnostic-settings-legacy.md#disable-existing-settings)
+    - V protokolu aktivit klikněte na **protokol aktivit** v nabídce **Azure Monitor** a potom na **Nastavení diagnostiky**. Ujistěte se, že zakázat všechny starší konfigurace pro protokol aktivit. Podrobnosti [najdete v tématu Zakázání existujících nastavení.](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log)
 
         ![Nastavení diagnostiky](media/diagnostic-settings/menu-activity-log.png)
 

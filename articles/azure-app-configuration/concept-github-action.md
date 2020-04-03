@@ -1,19 +1,19 @@
 ---
-title: Použití akcí GitHubu se synchronizací konfigurace aplikací Azure
-description: Použití akcí GitHubu k aktivaci aktualizace instance Konfigurace aplikace při aktualizaci úložiště GitHub
+title: Synchronizace úložiště GitHub u konfigurace aplikace
+description: Akce GitHubu se používají k automatické aktualizaci instance konfigurace aplikace při aktualizaci úložiště GitHub.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 46d4aa4d4d37e9cac928e8d1a9e5e77ca0f30f18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384054"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585486"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronizace instance App Configuration s využitím GitHub Actions
+# <a name="sync-your-github-repository-to-app-configuration"></a>Synchronizace úložiště GitHub u konfigurace aplikace
 
 Týmy, které chtějí nadále používat své stávající postupy správy zdrojového kódu, můžou pomocí akcí GitHubu automaticky synchronizovat své úložiště GitHub s úložištěm Konfigurace aplikací. To vám umožní provádět změny v konfiguračních souborech obvyklým způsobem, zatímco získáte výhody konfigurace aplikací, jako jsou: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Centralizovaná konfigurace mimo váš kód <br>

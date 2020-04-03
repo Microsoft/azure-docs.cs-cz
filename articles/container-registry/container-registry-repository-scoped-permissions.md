@@ -3,12 +3,12 @@ title: Oprávnění k úložištím v registru kontejnerů Azure
 description: Vytvoření tokenu s oprávněními vymezenými pro konkrétní úložiště v registru pro vytahování nebo nabízení obrázků nebo provádění jiných akcí
 ms.topic: article
 ms.date: 02/13/2020
-ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9004c45401833d3070266055dd7eb99a2bb43bde
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444275"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618829"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Vytvoření tokenu s oprávněními s rozsahem úložiště
 
@@ -27,6 +27,7 @@ Scénáře pro vytvoření tokenu zahrnují:
 
 * Tato funkce je k dispozici pouze v registru kontejneru **Premium.** Informace o vrstvách a limitech služby registru naleznete v tématu [Azure Container Registry SKU](container-registry-skus.md).
 * V současné době nelze přiřadit oprávnění s rozsahem úložiště k identitě služby Azure Active Directory, jako je například instanční objekt nebo spravovaná identita.
+* V registru povoleném pro anonymní přístup [k vyžádat nelze](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)vytvořit mapu oboru .
 
 ## <a name="concepts"></a>Koncepty
 

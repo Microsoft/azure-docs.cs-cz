@@ -1,6 +1,6 @@
 ---
 title: Poradce při potížích s připojením
-description: Řešení potíží s připojením v SQL Analytics.
+description: Řešení potíží s připojením ve fondu Synapse SQL.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 689a2e549c2627c607b6549f164e55a73318f63e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350040"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583325"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 
-V tomto článku jsou uvedeny běžné techniky řešení potíží týkající se připojení k databázi SQL Analytics.
+Tento článek uvádí běžné techniky řešení potíží kolem připojení k fondu SYNAPse SQL.
 - [Zkontrolujte dostupnost služby](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Zkontrolujte pozastavené operace nebo operace škálování](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Zkontrolujte nastavení brány firewall](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ V tomto článku jsou uvedeny běžné techniky řešení potíží týkající 
 
 ## <a name="check-service-availability"></a>Zkontrolujte dostupnost služby
 
-Zkontrolujte, zda je služba k dispozici. Na webu Azure Portal přejděte do databáze SQL Analytics, kterou se pokoušíte připojit. V levém panelu TOC klikněte na **Diagnostika a řešení problémů**.
+Zkontrolujte, zda je služba k dispozici. Na webu Azure portal přejděte do fondu Synapse SQL, který se pokoušíte připojit. V levém panelu TOC klikněte na **Diagnostika a řešení problémů**.
 
 ![Vybrat stav zdroje](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Zde se zobrazí stav služby SQL Analytics. Pokud se služba nezobrazuje jako **Dostupná**, zkontrolujte další kroky.
+Zde se zobrazí stav vašeho fondu Synapse SQL. Pokud se služba nezobrazuje jako **Dostupná**, zkontrolujte další kroky.
 
 ![Služba k dispozici](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Pokud váš stav prostředků ukazuje, že vaše instance SQL Analytics je pozastavena nebo škálování, postupujte podle pokynů k obnovení instance.
+Pokud váš stav prostředku ukazuje, že vaše synapse SQL fond instance je pozastavena nebo škálování, postupujte podle pokynů k obnovení instance.
 
 ![Pozastavená](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) služba Další informace o stavu prostředků naleznete zde.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Zkontrolujte pozastavené operace nebo operace škálování
 
-Zkontrolujte portál a zjistěte, jestli je vaše instance SQL Analytics pozastavená nebo škálování.
+Zkontrolujte portál a zjistěte, zda je vaše instance fondu SQL Synapse pozastavena nebo škálování.
 
 ![Služba pozastavena](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Pokud zjistíte, že vaše služba je pozastavena nebo škálování, zkontrolujte, zda není během plánu údržby. Na portálu pro *přehled*sql analytics uvidíte zvolený plán údržby.
+Pokud zjistíte, že vaše služba je pozastavena nebo škálování, zkontrolujte, zda není během plánu údržby. Na portálu pro váš přehled *Overview*fondu SYNApse SQL se zobrazí zvolený plán údržby.
 
 ![Přehled plánu údržby](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-V opačném případě se obraťte na správce IT a ověřte, zda tato údržba není naplánovanou událostí. Chcete-li obnovit instanci SQL Analytics, postupujte podle [pokynů uvedených zde](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
+V opačném případě se obraťte na správce IT a ověřte, zda tato údržba není naplánovanou událostí. Chcete-li obnovit instanci fondu SQL synapse, postupujte podle [pokynů uvedených zde](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
 
 ## <a name="check-your-firewall-settings"></a>Zkontrolujte nastavení brány firewall
 
-Databáze SQL Analytics komunikuje přes port 1433.Pokud se pokoušíte připojit z podnikové sítě, vaše brána firewall možná nepovoluje odchozí přenosy přes port 1433. V takovém případě se nebudete moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall naleznete [zde](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
+Synapse SQL fond komunikuje přes port 1433.Pokud se pokoušíte připojit z podnikové sítě, vaše brána firewall možná nepovoluje odchozí přenosy přes port 1433. V takovém případě se nebudete moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall naleznete [zde](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Zkontrolujte nastavení virtuální sítě / koncového bodu služby
 
@@ -68,7 +68,7 @@ Pokud se zobrazují chyby 40914 a 40615, přečtěte [si popis chyby a řešení
 
 ### <a name="software"></a>Software
 
-Zkontrolujte, jestli používáte nejnovější nástroje pro připojení k databázi SQL Analytics:
+Zkontrolujte, zda používáte nejnovější nástroje pro připojení k fondu Synapse SQL:
 
 * SSMS
 * Azure Data Studio
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Problémy s přerušovaným připojením
 
-Zkontrolujte, jestli je server hodně zatížený a existuje na něm vysoký počet požadavků ve frontě. Možná budete muset vertikálně navýšit kapacitu instanci SQL Analytics pro další prostředky.
+Zkontrolujte, jestli je server hodně zatížený a existuje na něm vysoký počet požadavků ve frontě. Možná budete muset vertikálně navýšit kapacitu fondu SYNAPSE SQL pro další prostředky.
 
 ## <a name="common-error-messages"></a>Běžné chybové zprávy
 

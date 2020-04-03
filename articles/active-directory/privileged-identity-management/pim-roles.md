@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fac7074cf85a585c93ece60be9eea8ffb9a6345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72895205"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607527"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Role, které nelze spravovat ve správě privilegovaných identit
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) umožňuje spravovat všechny [role Azure AD](../users-groups-roles/directory-assign-admin-roles.md) a všechny [role prostředků Azure](../../role-based-access-control/built-in-roles.md). Tyto role také zahrnují vlastní role připojené k vašim skupinám pro správu, předplatným, skupinám prostředků a prostředkům. Existuje však několik rolí, které nelze spravovat. Tento článek popisuje role, které nelze spravovat ve správě privilegovaných identit.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) umožňuje spravovat všechny [role Azure AD](../users-groups-roles/directory-assign-admin-roles.md) a všechny [role Azure](../../role-based-access-control/built-in-roles.md). Role Azure můžou taky zahrnovat vaše vlastní role připojené k vašim skupinám pro správu, předplatným, skupinám prostředků a prostředkům. Existuje však několik rolí, které nelze spravovat. Tento článek popisuje role, které nelze spravovat ve správě privilegovaných identit.
 
 ## <a name="classic-subscription-administrator-roles"></a>Role klasického správce předplatného
 
@@ -37,10 +37,10 @@ Další informace o klasických rolích správce předplatného najdete v [téma
 
 ## <a name="what-about-office-365-admin-roles"></a>A co role správců Office 365?
 
-Role v rámci Exchange Online nebo SharePointu Online, s výjimkou správce Exchange a správce SharePointu, nejsou ve službě Azure AD reprezentované, a proto je nelze spravovat ve správě privilegovaných identit. Další informace o těchto službách Office 365 najdete v [tématu Role správců Office 365](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Podporujeme všechny role Office365 v prostředí portálu Role Azure a Správců a správců, jako je správce Exchange a správce SharePointu, ale nepodporujeme konkrétní role v rámci Exchange RBAC nebo SharePoint RBAC. Další informace o těchto službách Office 365 najdete v [tématu Role správců Office 365](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
-> Správce SharePointu má přístup pro správce k SharePointu Online přes Centrum pro správu SharePointu Online a v SharePointu Online může provádět téměř jakýkoli úkol. Oprávnění uživatelé mohou po aktivaci v aplikaci Privileged Identity Management zaznamenat zpoždění při používání této role v rámci služby SharePoint.
+> Oprávnění uživatelé pro roli správce služby SharePoint a všechny role, které se pokoušejí získat přístup k Centru zabezpečení a dodržování předpisů společnosti Microsoft, mohou zaznamenat zpoždění až několik hodin po aktivaci své role. Spolupracujeme s těmito týmy na vyřešení problémů.
 
 ## <a name="next-steps"></a>Další kroky
 

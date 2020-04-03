@@ -1,6 +1,6 @@
 ---
 title: Omezení kapacity – Azure Synapse Analytics (dříve SQL DW)
-description: Maximální povolené hodnoty pro různé součásti SQL Analytics v Azure Synapse.
+description: Maximální povolené hodnoty pro různé součásti fondu Synapse SQL v Azure Synapse.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a0343dd55149fa3c2c17af1f246595a56e4c6ec2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350083"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583528"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Omezení kapacity Azure Synapse Analytics (dříve SQL DW)
 
@@ -38,7 +38,7 @@ Maximální povolené hodnoty pro různé součásti Azure Synapse.
 
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| Databáze |Maximální velikost | Gen1: 240 TB komprimované na disku. Tento prostor je nezávislý na tempdb nebo protokolu prostoru, a proto je tento prostor vyhrazen pro trvalé tabulky.  Kompresi clusterovaného columnstore se odhaduje na 5X.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky seskupené columnstore (výchozí typ tabulky). <br/><br/> Gen2: Neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je stále omezena na 240 TB komprimované na disku. |
+| databáze |Maximální velikost | Gen1: 240 TB komprimované na disku. Tento prostor je nezávislý na tempdb nebo protokolu prostoru, a proto je tento prostor vyhrazen pro trvalé tabulky.  Kompresi clusterovaného columnstore se odhaduje na 5X.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky seskupené columnstore (výchozí typ tabulky). <br/><br/> Gen2: Neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je stále omezena na 240 TB komprimované na disku. |
 | Table |Maximální velikost |Neomezená velikost pro tabulky columnstore. <br>60 TB pro tabulky rowstore komprimované na disku. |
 | Table |Tabulky na databázi | 100 000 |
 | Table |Sloupce v tabulce |1024 sloupců |
@@ -54,7 +54,7 @@ Maximální povolené hodnoty pro různé součásti Azure Synapse.
 | Statistika |Sloupce na objekt statistiky. |32 |
 | Statistika |Statistiky vytvořené ve sloupcích podle tabulky. |30,000 |
 | Uložené procedury |Maximální úrovně vnoření. |8 |
-| Zobrazení |Sloupce v zobrazení |1,024 |
+| Zobrazit |Sloupce v zobrazení |1,024 |
 ||||
 
 ## <a name="loads"></a>Načte

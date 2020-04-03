@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 05f0a81a738688df15ea9060071d9e266b54b7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a39b038d31d1b4a614ff0acf7df2586706bb0404
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136651"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585514"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Převod konfigurací na složené prostředky
 
@@ -50,7 +50,7 @@ Rutina načte obsah vaší konfigurace, získá seznam parametrů a vygeneruje n
 Jakmile vygenerujete modul, můžete zvýšit verzi a přidat poznámky k verzi pokaždé, když provedete změny a publikujete je do vlastního [úložiště PowerShellGet](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo).
 
 Jakmile vytvoříte modul složených prostředků obsahující konfiguraci (nebo více konfigurací), můžete je použít v [prostředí composable Authoring Experience](/azure/automation/compose-configurationwithcompositeresources) v Azure nebo je přidat do [skriptů Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations) pro generování souborů MOF a [nahrání souborů MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Pak zaregistrujte své servery z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) pro vyžádat konfigurace.
+Pak zaregistrujte své servery z [místního](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) pro vyžádat konfigurace.
 Nejnovější aktualizace projektu také [publikovala runbooky](https://www.powershellgallery.com/packages?q=DscGallerySamples) pro Azure Automation pro automatizaci procesu importu konfigurací z Galerie Prostředí PowerShell.
 
 Chcete-li vyzkoušet automatizaci vytváření složených zdrojů pro DSC, navštivte [Galerii prostředí PowerShell](https://www.powershellgallery.com/packages/compositeresource/) a stáhněte si řešení nebo klikněte na "Web projektu" a prohlédněte si [dokumentaci](https://github.com/microsoft/compositeresource).

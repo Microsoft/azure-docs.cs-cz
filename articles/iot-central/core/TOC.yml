@@ -6,7 +6,7 @@
       href: overview-iot-central.md
     - name: Prohlídka uživatelského rozhraní
       href: overview-iot-central-tour.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: 1. Vytvoření nové aplikace
@@ -81,14 +81,10 @@
           href: howto-create-personal-dashboards.md
         - name: Spuštění úlohy
           href: howto-run-a-job.md
-        - name: Vytváření verzí šablon zařízení
-          href: howto-version-device-template.md
     - name: Transformace
       items:
         - name: Export dat do cílových umístění v Azure
           href: howto-export-data.md
-        - name: Procházení rozhraní API služby IoT Central
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: Vytváření webhooků pro pravidla
           href: howto-create-webhooks.md
         - name: Připojení skupin akcí Azure Monitoru k pravidlům

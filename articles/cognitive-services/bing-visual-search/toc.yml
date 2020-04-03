@@ -24,17 +24,11 @@
           href: quickstarts/ruby.md
         - name: Pomocí Go
           href: quickstarts/go.md
-    - name: Sada SDK
+    - name: Klientská knihovna
       expanded: true
       items:
-        - name: 'Pomocí C#'
-          href: visual-search-sdk-c-sharp.md
-        - name: Pomocí Node.js
-          href: visual-search-sdk-node.md
-        - name: Pomocí Pythonu
-          href: visual-search-sdk-python.md
-        - name: Pomocí Javy
-          href: visual-search-sdk-java.md
+        - name: Klientské knihovny Vizuálního vyhledávání Bingu
+          href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Nahrání obrázku

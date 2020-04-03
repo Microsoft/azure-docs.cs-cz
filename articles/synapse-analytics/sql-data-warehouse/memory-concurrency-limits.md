@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350993"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586057"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Limity paměti a souběžnosti pro Azure Synapse Analytics
 Zobrazení omezení paměti a souběžnosti přidělené různým úrovním výkonu a třídám prostředků v Azure Synapse Analytics.  
@@ -73,7 +73,7 @@ Se zavedením [skupin úlohy](sql-data-warehouse-workload-isolation.md), koncept
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Maximální souběžnost pro třídy prostředků
-Chcete-li zajistit, aby každý dotaz má dostatek prostředků pro efektivní spuštění, SQL Analytics v Azure Synapse sleduje využití prostředků přiřazením souběžnosti sloty pro každý dotaz. Systém umístí dotazy do fronty na základě důležitosti a souběžnosti sloty. Dotazy čekat ve frontě, dokud dostatek sloty souběžnosti jsou k dispozici. [Důležitost](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) a souběžnost sloty určit prioritu procesoru. Další informace najdete [v tématu Analýza pracovního vytížení](analyze-your-workload.md)
+Chcete-li zajistit, aby každý dotaz měl dostatek prostředků pro efektivní spuštění, využití prostředků je sledováno přiřazením slotů souběžnosti ke každému dotazu. Systém umístí dotazy do fronty na základě důležitosti a souběžnosti sloty. Dotazy čekat ve frontě, dokud dostatek sloty souběžnosti jsou k dispozici. [Důležitost](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) a souběžnost sloty určit prioritu procesoru. Další informace najdete [v tématu Analýza pracovního vytížení](analyze-your-workload.md)
 
 **Statické třídy prostředků**
 

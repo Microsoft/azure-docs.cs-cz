@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4cf940e38a84ea2eeb1896c8f7c628c8d5734374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247125"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618543"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ Možné příklady:
       automl_regressor = AutoMLConfig(
       task='regression',
       experiment_timeout_minutes=60,
-      whitelist_models=['kNN regressor'],
+      whitelist_models=['KNN'],
       primary_metric='r2_score',
       training_data=train_data,
       label_column_name=label,
@@ -245,7 +245,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 ### <a name="ensemble-configuration"></a><a name="ensemble"></a>Konfigurace souboru
 
-Modely souborů jsou ve výchozím nastavení povoleny a zobrazují se jako iterace konečného spuštění v automatizovaném spuštění strojového učení. V současné době podporované ensemble metody jsou hlasování a stohování. Hlasování je implementováno jako měkké hlasování pomocí vážených průměrů a implementace stohování používá dvouvrstvou implementaci, kde první vrstva má stejné modely jako hlasovací soubor a model druhé vrstvy se používá k nalezení optimální kombinace modely z první vrstvy. Pokud používáte modely ONNX **nebo** máte povolenou vysvětlitelnost modelu, stohování bude zakázáno a bude využito pouze hlasování.
+Modely souborů jsou ve výchozím nastavení povoleny a zobrazují se jako iterace konečného spuštění v automatizovaném spuštění strojového učení. V současné době podporované ensemble metody jsou hlasování a stohování. Hlasování je implementováno jako měkké hlasování pomocí vážených průměrů a implementace stohování používá implementaci dvou vrstev, kde první vrstva má stejné modely jako hlasovací soubor a model druhé vrstvy se používá k nalezení optimální kombinace modelů z první vrstvy. Pokud používáte modely ONNX **nebo** máte povolenou vysvětlitelnost modelu, stohování bude zakázáno a bude využito pouze hlasování.
 
 Existuje více výchozí argumenty, které `kwargs` mohou `AutoMLConfig` být poskytnuty jako v objektu změnit výchozí chování zásobníku souboru.
 

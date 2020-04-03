@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546166"
+ms.locfileid: "80582543"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -43,7 +43,7 @@ Tyto problémy jsou umocněny pro uživatele, kteří potřebují přístup z ji
 - Nikdo nemusí znát všechny konkrétní osoby v adresářích jiné organizace, aby je mohl pozvat
 - I kdyby byli schopni tyto uživatele pozvat, nikdo v této organizaci si možná nepamatuje, že by měl spravovat veškerý přístup uživatele konzistentně.
 
-Správa nároků Azure AD může pomoci řešit tyto problémy.  Další informace o tom, jak zákazníci používají správu oprávnění Azure AD, si můžete přečíst [případovou studii Avanade](https://aka.ms/AvanadeELMCase) a [případovou studii Centrica](https://aka.ms/CentricaELMCase).  Toto video poskytuje přehled správy nároků a jeho hodnoty:
+Správa nároků Azure AD může pomoci řešit tyto problémy.  Další informace o tom, jak zákazníci používají správu oprávnění Azure AD, si můžete přečíst [případovou studii Avanade](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) a [případovou studii Centrica](https://customers.microsoft.com/story/757467-centrica-energy-azure).  Toto video poskytuje přehled správy nároků a jeho hodnoty:
 
 >[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 

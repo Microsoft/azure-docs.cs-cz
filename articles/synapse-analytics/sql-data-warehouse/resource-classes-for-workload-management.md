@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47fd30fbb6e6836d6edf18ac68164d515f3aeb93
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350737"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584251"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Správa úloh s třídami prostředků v Azure Synapse Analytics
 
-Pokyny pro použití tříd prostředků ke správě paměti a souběžnosti pro dotazy SQL Analytics v Azure Synapse.  
+Pokyny pro použití tříd prostředků ke správě paměti a souběžnosti pro dotazy fondu SYNAPse SQL v Azure Synapse.  
 
 ## <a name="what-are-resource-classes"></a>Co jsou třídy prostředků
 
-Kapacita výkonu dotazu je určena třídou prostředků uživatele.  Třídy prostředků jsou předem určené limity prostředků v SQL Analytics, které řídí výpočetní prostředky a souběžnost pro spuštění dotazu. Třídy prostředků vám mohou pomoci nakonfigurovat prostředky pro vaše dotazy nastavením omezení počtu dotazů, které běží souběžně, a výpočetních prostředků přiřazených ke každému dotazu.  Existuje kompromis mezi pamětí a souběžnost.
+Kapacita výkonu dotazu je určena třídou prostředků uživatele.  Třídy prostředků jsou předem určené limity prostředků ve fondu SYNAPSE SQL, které řídí výpočetní prostředky a souběžnost pro spuštění dotazu. Třídy prostředků vám mohou pomoci nakonfigurovat prostředky pro vaše dotazy nastavením omezení počtu dotazů, které běží souběžně, a výpočetních prostředků přiřazených ke každému dotazu.  Existuje kompromis mezi pamětí a souběžnost.
 
 - Menší třídy prostředků snížit maximální paměti na dotaz, ale zvýšit souběžnost.
 - Větší třídy prostředků zvýšit maximální paměť na dotaz, ale snížit souběžnost.
@@ -82,7 +82,7 @@ Přidělení paměti pro každou třídu prostředků je následující.
 
 Ve výchozím nastavení je každý uživatel členem třídy dynamického prostředku **smallrc**.
 
-Třída prostředků správce služby je stanovena na smallrc a nelze ji změnit.  Správce služby je uživatel vytvořený během procesu zřizování.  Správce služby v tomto kontextu je přihlášení určené pro "Přihlášení správce serveru" při vytváření nové instance SQL Analytics s novým serverem.
+Třída prostředků správce služby je stanovena na smallrc a nelze ji změnit.  Správce služby je uživatel vytvořený během procesu zřizování.  Správce služby v tomto kontextu je přihlášení určené pro "Přihlášení správce serveru" při vytváření nového fondu Synapse SQL s novým serverem.
 
 > [!NOTE]
 > Uživatelé nebo skupiny definované jako správce služby Active Directory jsou také správci služeb.
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů databáze a zabezpečení naleznete [v tématu Zabezpečení databáze v nástroji SQL Analytics](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu clusterované columnstore, naleznete v [tématu Optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Další informace o správě uživatelů databáze a zabezpečení naleznete [v tématu Zabezpečení databáze v synapse SQL](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu clusterované columnstore, naleznete v [tématu Optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

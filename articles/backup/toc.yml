@@ -15,12 +15,12 @@
       href: quick-backup-vm-powershell.md
     - name: Zálohování virtuálního počítače – rozhraní příkazového řádku
       href: quick-backup-vm-cli.md
-    - name: Zálohování virtuálního počítače – použití šablony Resource Manageru
-      displayName: ARM
+    - name: Zálohování virtuálního počítače – šablona Resource Manageru
+      displayName: Resource Manager
       href: quick-backup-vm-template.md
 - name: Kurzy
   items:
-    - name: Škálované zálohování virtuálních počítačů Azure
+    - name: Zálohování několika virtuálních počítačů Azure
       href: tutorial-backup-vm-at-scale.md
     - name: Zálohování virtuálních počítačů Azure s využitím PowerShellu
       href: tutorial-backup-azure-vm.md
@@ -58,6 +58,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: Matice podpory pro agenty MARS
           href: backup-support-matrix-mars-agent.md
+        - name: Matice podpory pro zálohování SQL Serveru
+          href: sql-support-matrix.md
         - name: Matice podpory pro zálohování SAP HANA
           href: sap-hana-backup-support-matrix.md
         - name: Podporované SKU virtuálních počítačů pro Azure Policy
@@ -164,10 +166,10 @@
           href: backup-azure-manage-mars.md
     - name: Zálohování sdílených složek Azure
       items:
+        - name: Přehled
+          href: azure-file-share-backup-overview.md
         - name: Pomocí webu Azure Portal
           items:
-            - name: Přehled
-              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: Obnovení
@@ -336,6 +338,8 @@
           href: backup-rm-template-samples.md
     - name: Zabezpečení
       items:
+        - name: Přehled
+          href: security-overview.md
         - name: Řízení přístupu na základě rolí
           href: backup-rbac-rs-vault.md
         - name: Zabezpečení pro cloudové úlohy
@@ -382,6 +386,8 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Zdroje a prostředky
   items:
+    - name: Dodržování předpisů
+      href: compliance-offerings.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fórum MSDN

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1809902fb153c5c9c83a9d00b6f817fde975d0fe
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 06fc9edd55aa51c985cbb981fc5a6892d0ca75e5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349913"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583123"
 ---
 # <a name="what-is-workload-management"></a>Co je správa pracovního vytížení?
 
@@ -36,11 +36,12 @@ Výkonová kapacita datového skladu je určena [jednotkami datového skladu](wh
 
 
 ## <a name="workload-management-concepts"></a>Koncepty správy úloh
-V minulosti jste pro SQL Analytics v Azure Synapse spravovali výkon dotazů prostřednictvím [tříd prostředků](resource-classes-for-workload-management.md).  Třídy prostředků povolené pro přiřazení paměti k dotazu na základě členství v roli.  Primární výzvou s třídami prostředků je, že po konfiguraci neexistovalo žádné zásady správného řízení nebo schopnost řídit úlohu.  
+
+V minulosti jste pro fond Synapse SQL v Azure Synapse spravovali výkon dotazů prostřednictvím [tříd prostředků](resource-classes-for-workload-management.md).  Třídy prostředků povolené pro přiřazení paměti k dotazu na základě členství v roli.  Primární výzvou s třídami prostředků je, že po konfiguraci neexistovalo žádné zásady správného řízení nebo schopnost řídit úlohu.  
 
 Například udělení členství v roli uživatele ad hoc smallrc povoleno, že uživatel spotřebuje 100 % paměti v systému.  S třídami prostředků neexistuje žádný způsob, jak rezervovat a zajistit, aby prostředky byly k dispozici pro kritické úlohy.
 
-Správa úloh SQL Analytics v Azure Synapse se skládá ze tří konceptů na vysoké úrovni: [Klasifikace pracovního vytížení](sql-data-warehouse-workload-classification.md), [Důležitost pracovního vytížení](sql-data-warehouse-workload-importance.md) a [Izolace pracovního vytížení](sql-data-warehouse-workload-isolation.md).  Tyto funkce vám poskytují větší kontrolu nad tím, jak vaše úloha využívá systémové prostředky.
+Správa úloh fondu SQL synapse v Azure Synapse se skládá ze tří konceptů vysoké úrovně: [Klasifikace pracovního vytížení](sql-data-warehouse-workload-classification.md), [Důležitost pracovního vytížení](sql-data-warehouse-workload-importance.md) a [Izolace pracovního vytížení](sql-data-warehouse-workload-isolation.md).  Tyto funkce vám poskytují větší kontrolu nad tím, jak vaše úloha využívá systémové prostředky.
 
 Klasifikace pracovního vytížení je koncept přiřazení požadavku skupině pracovního vytížení a nastavení úrovní důležitosti.  Historicky toto přiřazení bylo provedeno prostřednictvím členství v rolích pomocí [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  To lze nyní provést prostřednictvím [VYTVOŘIT PRACOVNÍ ZÁTĚŽ CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Funkce klasifikace poskytuje bohatší sadu možností, jako je popisek, relace a čas pro klasifikaci požadavků.
 

@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478085"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582733"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streamování koncových bodů (Origin) ve službě Azure Media Services
 
 Ve službě Microsoft Azure Media Services představuje [koncový bod streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) dynamickou službu balení (just-in-time) a službu původu, která může doručovat váš živý obsah a obsah na vyžádání přímo do aplikace klientského přehrávače pomocí jednoho ze společných protokolů datových proudů médií (HLS nebo DASH). Koncový bod **streamování** navíc poskytuje dynamické šifrování (just-in-time) pro špičkové driody DRM. 
 
-Při vytváření účtu Služby Media Services je pro vás v zastaveném stavu vytvořen **výchozí** koncový bod streamování. **Výchozí** koncový bod streamování nelze odstranit. Další koncové body streamování lze vytvořit v rámci účtu (viz [Kvóty a omezení](limits-quotas-constraints.md)).
+Při vytváření účtu Služby Media Services je pro vás v zastaveném stavu vytvořen **výchozí** koncový bod streamování. **Výchozí** koncový bod streamování nelze odstranit. Další koncové body streamování lze vytvořit v rámci účtu (viz [Kvóty a limity).](limits-quotas-constraints.md)
 
 > [!NOTE]
 > Chcete-li spustit streamování videí, musíte spustit **koncový bod streamování,** ze kterého chcete streamovat video.

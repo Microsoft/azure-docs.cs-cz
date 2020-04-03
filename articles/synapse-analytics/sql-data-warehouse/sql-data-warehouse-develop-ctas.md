@@ -1,6 +1,6 @@
 ---
 title: VYTVOŘIT TABULKU JAKO VÝBĚR (CTAS)
-description: Vysvětlení a příklady příkazu CREATE TABLE AS SELECT (CTAS) v SQL Analytics pro vývoj řešení.
+description: Vysvětlení a příklady příkazu CREATE TABLE AS SELECT (CTAS) v synapse SQL pro vývoj řešení.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: bb9ff52bd7d2e4cfd1a1df4d780a4c369380284f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e5dc8835a6d5f235cf269edd4e9f069c904e1b7e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350606"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582150"
 ---
-# <a name="create-table-as-select-ctas-in-sql-analytics"></a>VYTVOŘIT TABULKU JAKO SELECT (CTAS) v SQL Analytics
+# <a name="create-table-as-select-ctas"></a>VYTVOŘIT TABULKU JAKO VÝBĚR (CTAS)
 
-Tento článek vysvětluje příkaz T-SQL CREATE TABLE AS SELECT (CTAS) v SQL Analytics pro vývoj řešení. Článek také obsahuje příklady kódu.
+Tento článek vysvětluje příkaz T-SQL CREATE TABLE AS SELECT (CTAS) v synapse SQL pro vývoj řešení. Článek také obsahuje příklady kódu.
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-Příkaz [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) je jednou z nejdůležitějších dostupných funkcí T-SQL. CTAS je paralelní operace, která vytvoří novou tabulku na základě výstupu příkazu SELECT. CTAS je nejjednodušší a nejrychlejší způsob, jak vytvořit a vložit data do tabulky pomocí jediného příkazu.
+Příkaz [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) je jednou z nejdůležitějších dostupných funkcí T-SQL. CTAS je paralelní operace, která vytvoří novou tabulku na základě výstupu příkazu SELECT. CTAS je nejjednodušší a nejrychlejší způsob, jak vytvořit a vložit data do tabulky pomocí jediného příkazu.
 
 ## <a name="selectinto-vs-ctas"></a>Vyberte... INTO vs. CTAS
 
-CTAS je více přizpůsobitelné verze [SELECT ... DO](/sql/t-sql/queries/select-into-clause-transact-sql) prohlášení.
+CTAS je více přizpůsobitelné verze [SELECT ... DO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) prohlášení.
 
 Následuje příklad jednoduchého SELECT... Do:
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>Použití ctas k obejít nepodporované funkce
 
-Ctas můžete také použít k řešení řady nepodporovaných funkcí uvedených níže. Tato metoda může často být užitečné, protože nejen že bude váš kód kompatibilní, ale často poběží rychleji na SQL Analytics. Tento výkon je výsledkem jeho plně paralelizované konstrukce. Scénáře zahrnují:
+Ctas můžete také použít k řešení řady nepodporovaných funkcí uvedených níže. Tato metoda může často být užitečné, protože nejen že bude váš kód kompatibilní, ale často poběží rychleji na Synapse SQL. Tento výkon je výsledkem jeho plně paralelizované konstrukce. Scénáře zahrnují:
 
 * ANSI SPOJENÍ na UPDATEs
 * ANSI JOINs na DELETEs
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Analytics nepodporuje připojení ANSI `FROM` v klauzuli příkazu, `UPDATE` takže nelze použít předchozí příklad bez jeho úpravy.
+Synapse SQL nepodporuje ansi spojení `FROM` v klauzuli příkazu, `UPDATE` takže nelze použít předchozí příklad bez jeho úpravy.
 
 Můžete použít kombinaci CTAS a implicitní spojení nahradit předchozí příklad:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Ansi spojení nahrazení delete příkazy
 
-Někdy je nejlepším přístupem k odstranění dat použití CTAS, zejména pro `DELETE` příkazy, které používají syntaxi spojení ANSI. Důvodem je, že SQL Analytics nepodporuje `FROM` ansi `DELETE` spojení v klauzuli příkazu. Místo odstranění dat vyberte data, která chcete zachovat.
+Někdy je nejlepším přístupem k odstranění dat použití CTAS, zejména pro `DELETE` příkazy, které používají syntaxi spojení ANSI. Důvodem je, že Synapse SQL nepodporuje `FROM` ANSI `DELETE` připojí klauzule prohlášení. Místo odstranění dat vyberte data, která chcete zachovat.
 
 Následuje příklad převedeného `DELETE` příkazu:
 
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Můžete vidět, že konzistence typu a udržování vlastnosti nullability na CTAS je osvědčený postup inženýrství. Pomáhá udržovat integritu ve výpočtech a také zajišťuje, že přepínání oddílů je možné.
 
-CTAS je jedním z nejdůležitějších příkazů v SQL Analytics. Ujistěte se, že jste důkladně pochopit. Viz [dokumentace CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+CTAS je jedním z nejdůležitějších prohlášení v Synapse SQL. Ujistěte se, že jste důkladně pochopit. Viz [dokumentace CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="next-steps"></a>Další kroky
 

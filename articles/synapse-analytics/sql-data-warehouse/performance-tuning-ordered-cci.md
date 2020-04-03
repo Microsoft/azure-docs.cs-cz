@@ -11,21 +11,22 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a5bb048a2368f60a83e70dcd6d1ce663ce70a885
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350924"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583876"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore  
 
-Když se uživatelé dotazují na tabulku columnstore v SQL Analytics, optimalizátor zkontroluje minimální a maximální hodnoty uložené v každém segmentu.  Segmenty, které jsou mimo hranice predikátu dotazu, se nečtou z disku do paměti.  Dotaz může získat vyšší výkon, pokud počet segmentů ke čtení a jejich celková velikost jsou malé.   
+Když se uživatelé dotazsloupectabulka v synapse fondu SQL, optimalizátor zkontroluje minimální a maximální hodnoty uložené v každém segmentu.  Segmenty, které jsou mimo hranice predikátu dotazu, se nečtou z disku do paměti.  Dotaz může získat vyšší výkon, pokud počet segmentů ke čtení a jejich celková velikost jsou malé.   
 
-## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Objednáno vs. neobjednaný index columnstore columnstore 
-Ve výchozím nastavení pro každou tabulku SQL Analytics vytvořenou bez možnosti indexu vytvoří interní komponenta (tvůrce indexu) neuspořádaný index úložiště sloupců (CCI).  Data v každém sloupci jsou komprimována do samostatného segmentu skupiny řádků CCI.  V rozsahu hodnot každého segmentu jsou metadata, takže segmenty, které jsou mimo hranice predikátu dotazu, se během provádění dotazu nečtou z disku.  CCI nabízí nejvyšší úroveň komprese dat a zmenšuje velikost segmentů ke čtení, takže dotazy mohou běžet rychleji. Protože však tvůrce indexu neseřadí data před jejich kompresí do segmentů, může dojít k segmentům s překrývajícími se rozsahy hodnot, což způsobí, že dotazy budou číst další segmenty z disku a jejich dokončení trvá déle.  
+## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Objednáno vs. neobjednaný index columnstore columnstore
 
-Při vytváření objednané CCI, SQL Analytics stroj seřadí existující data v paměti podle klíče pořadí před tvůrce indexu komprimuje do segmentů indexu.  U seřazených dat je omezení překrývání segmentů, což umožňuje dotazům efektivnější eliminaci segmentů a tím i vyšší výkon, protože počet segmentů pro čtení z disku je menší.  Pokud lze všechna data seřadit v paměti najednou, lze se vyhnout překrývání segmentů.  Vzhledem k velké velikosti dat v tabulkách SQL Analytics se tento scénář nestává často.  
+Ve výchozím nastavení pro každou tabulku vytvořenou bez možnosti indexu vytvoří interní komponenta (tvůrce indexu) neuspořádaný index úložiště sloupců (CCI).  Data v každém sloupci jsou komprimována do samostatného segmentu skupiny řádků CCI.  V rozsahu hodnot každého segmentu jsou metadata, takže segmenty, které jsou mimo hranice predikátu dotazu, se během provádění dotazu nečtou z disku.  CCI nabízí nejvyšší úroveň komprese dat a zmenšuje velikost segmentů ke čtení, takže dotazy mohou běžet rychleji. Protože však tvůrce indexu neseřadí data před jejich kompresí do segmentů, může dojít k segmentům s překrývajícími se rozsahy hodnot, což způsobí, že dotazy budou číst další segmenty z disku a jejich dokončení trvá déle.  
+
+Při vytváření objednané CCI, Synapse SQL engine seřadí existující data v paměti podle klíče pořadí před tvůrce indexu komprimuje do segmentů indexu.  U seřazených dat je omezení překrývání segmentů, což umožňuje dotazům efektivnější eliminaci segmentů a tím i vyšší výkon, protože počet segmentů pro čtení z disku je menší.  Pokud lze všechna data seřadit v paměti najednou, lze se vyhnout překrývání segmentů.  Vzhledem k velké tabulky v datových skladech, tento scénář se nestává často.  
 
 Chcete-li zkontrolovat rozsahy segmentů pro sloupec, spusťte tento příkaz s názvem tabulky a názvem sloupce:
 
@@ -49,7 +50,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> V tabulce objednané CCI jsou nová data vyplývající ze stejné dávky DML nebo operací načítání dat seřazena v rámci této dávky, neexistuje žádné globální řazení mezi všemi daty v tabulce.  Uživatelé mohou znovu sestavit objednané CCI seřadit všechna data v tabulce.  V SQL Analytics columnstore index REBUILD je operace offline.  Pro dělené tabulky REBUILD se provádí jeden oddíl najednou.  Data v oddílu, který je znovu sestaven je "offline" a není k dispozici, dokud rebuild je dokončena pro tento oddíl. 
+> V tabulce objednané CCI jsou nová data vyplývající ze stejné dávky DML nebo operací načítání dat seřazena v rámci této dávky, neexistuje žádné globální řazení mezi všemi daty v tabulce.  Uživatelé mohou znovu sestavit objednané CCI seřadit všechna data v tabulce.  V Synapse SQL, columnstore index REBUILD je operace offline.  Pro dělené tabulky REBUILD se provádí jeden oddíl najednou.  Data v oddílu, který je znovu sestaven je "offline" a není k dispozici, dokud rebuild je dokončena pro tento oddíl. 
 
 ## <a name="query-performance"></a>Výkon dotazů
 
@@ -115,14 +116,15 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- Před seřazením dat podle klíčů řazení před jejich načtením do tabulek SQL Analytics.
 
+- Před seřazením dat podle klíčů řazení před jejich načtením do tabulek.
 
 Zde je příklad objednané distribuce tabulky CCI, která má nulový segment překrývající se podle výše uvedených doporučení. Objednaná tabulka CCI je vytvořena v databázi DWU1000c prostřednictvím CTAS z tabulky haldy 20 GB pomocí MAXDOP 1 a xlargerc.  CCI je seřazena ve sloupci BIGINT bez duplikátů.  
 
 ![Segment_No_Overlapping](./media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>Vytvoření uspořádaného CCI u velkých tabulek
+
 Vytvoření objednané CCI je operace offline.  U tabulek bez oddílů nebudou data přístupná uživatelům, dokud nebude proces vytváření uspořádané kopie cci dokončen.   Pro rozdělené tabulky, protože modul vytvoří objednaný oddíl CCI podle oddílu, uživatelé mohou stále přistupovat k datům v oddílech, kde se nezpracovává uspořádané vytvoření CCI.   Pomocí této možnosti můžete minimalizovat prostoje během seřazeného vytváření CCI u velkých tabulek: 
 
 1.    Vytvořte oddíly v cílové velké tabulce (nazývané Table_A).
@@ -135,6 +137,7 @@ Vytvoření objednané CCI je operace offline.  U tabulek bez oddílů nebudou d
 ## <a name="examples"></a>Příklady
 
 **A. Chcete-li zkontrolovat objednané sloupce a pořadí řadové:**
+
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
@@ -143,6 +146,7 @@ WHERE column_store_order_ordinal <>0
 ```
 
 **B. Chcete-li změnit pořadové číslo sloupce, přidejte nebo odeberte sloupce ze seznamu objednávek nebo změnit z CCI na objednané CCI:**
+
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
 ORDER (ProductKey, SalesAmount)
@@ -150,4 +154,5 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).

@@ -1,6 +1,6 @@
 ---
 title: Monitorování úloh – portál Azure
-description: Monitorování služby SQL Analytics pomocí portálu Azure
+description: Monitorování Synapse SQL pomocí portálu Azure
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 344e2cd03408b5bd1e966abc8abb72bce6078acc
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 64e61b00ecebec82b465cb13c6df0e323f6c7777
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350334"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586557"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorování úloh – portál Azure
 
-Tento článek popisuje, jak pomocí portálu Azure ke sledování úlohy. To zahrnuje nastavení protokolů monitorování Azure pro zkoumání trendů provádění dotazů a úloh pomocí analýzy protokolů pro [SQL Analytics](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
+Tento článek popisuje, jak pomocí portálu Azure ke sledování úlohy. To zahrnuje nastavení protokolů monitorování Azure pro zkoumání trendů provádění dotazů a úloh pomocí analýzy protokolů pro [Synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
 
 ## <a name="prerequisites"></a>Požadavky
 

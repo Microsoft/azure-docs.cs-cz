@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136530"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582479"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování bez hesla ve službě Azure Active Directory
 
@@ -59,7 +59,7 @@ Metody ověřování bez hesla společnosti Microsoft umožňují různé scén�
 | **Přihlášení webové aplikace**: <br> z mobilního zařízení nebo zařízení, které není v systému Windows | **Ano** | **Ne** | **Ne** |
 | **Přihlášení počítače**: <br> Počítač, který není se systémem Windows | **Ne** | **Ne** | **Ne** |
 
-Informace o výběru nejlepší metody pro vaši organizaci naleznete v [tématu Rozhodnutí o metodě bez hesla](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method).
+Informace o výběru nejlepší metody pro vaši organizaci naleznete v [tématu Rozhodnutí o metodě bez hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -97,7 +97,7 @@ Následující tabulka popisuje případy použití, které mají být implement
 | --- | --- |
 | **Přístup** | Přihlášení bez hesla je k dispozici na podnikovém nebo osobním zařízení v rámci podnikové sítě nebo mimo ni. |
 | **Auditování** | Údaje o využití jsou správcům k dispozici k auditu téměř v reálném čase. <br> Data o využití se stahují do podnikových systémů nejméně každých 29 dní, nebo se používá nástroj SIEM. |
-| **Správy** | Životní cyklus přiřazení uživatelů k příslušné metodě ověřování a přidruženým skupinám je definován a sledován. |
+| **Zásady správného řízení** | Životní cyklus přiřazení uživatelů k příslušné metodě ověřování a přidruženým skupinám je definován a sledován. |
 | **Zabezpečení** | Přístup k příslušné metodě ověřování je řízen pomocí přiřazení uživatelů a skupin. <br> Přihlášení bez hesla mohou používat pouze oprávnění uživatelé. |
 | **Výkon** | Časové osy šíření přiřazení přístupu jsou dokumentovány a monitorovány. <br> Časy přihlášení se měří pro snadné použití. |
 | **Zkušenosti uživatele** | Uživatelé jsou si vědomi mobilní kompatibility. <br> Uživatelé mohou nakonfigurovat aplikaci Authenticator bez hesla přihlášení. |
@@ -132,7 +132,7 @@ Podívejte se na [doporučené postupy pro pilota](https://aka.ms/deploymentplan
 
 Aplikace Microsoft Authenticator je bezplatná možnost ke stažení z Google Play nebo Apple App Store. [Přečtěte si další informace o stahování aplikace Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Vyzvěte uživatele, aby si stáhli aplikaci Microsoft Authenticator. a postupujte podle pokynů, abyste povolili přihlášení telefonu. 
 
-Změní jakýkoli telefon iOS nebo Android na silné pověření bez hesla. Uživatelé se přihlašují k libovolné platformě nebo prohlížeči tak, že dostanou oznámení do svého telefonu, přiřazují číslo zobrazené na obrazovce číslu v telefonu a poté k potvrzení pomocí biometrických údajů nebo KÓDU PIN. [Podívejte se na podrobnosti o tom, jak aplikace Microsoft Authenticator funguje](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in). 
+Změní jakýkoli telefon iOS nebo Android na silné pověření bez hesla. Uživatelé se přihlašují k libovolné platformě nebo prohlížeči tak, že dostanou oznámení do svého telefonu, přiřazují číslo zobrazené na obrazovce číslu v telefonu a poté k potvrzení pomocí biometrických údajů nebo KÓDU PIN. [Podívejte se na podrobnosti o tom, jak aplikace Microsoft Authenticator funguje](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app).
 
 ![přihlášení pomocí aplikace Authenticator](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 

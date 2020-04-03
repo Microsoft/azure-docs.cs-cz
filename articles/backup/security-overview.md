@@ -3,12 +3,12 @@ title: Přehled funkcí zabezpečení
 description: Seznamte se s funkcemi zabezpečení v azure backupu, které vám pomohou chránit vaše záložní data a splnit bezpečnostní potřeby vaší firmy.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 91a0f29862b0c9c35e562c143e28ebbc6c39cf94
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423181"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585821"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Přehled funkcí zabezpečení v Azure Backup
 
@@ -66,6 +66,8 @@ Služba Azure Backup používá agenta Služby microsoft azure recovery services
 * Další vrstva ověřování je přidána vždy, když je provedena kritická operace, jako je změna přístupového hesla. Toto ověření je zajistit, že tyto operace lze provádět pouze uživatelé, kteří mají platné přihlašovací údaje Azure. [Přečtěte si další informace o funkcích, které brání útokům](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks).
 
 * Odstraněná data zálohování jsou uchovávána dalších 14 dní od data odstranění. Tím je zajištěna obnovitelnost dat v daném časovém období, takže nedojde ke ztrátě dat, i když dojde k útoku. Také větší počet minimální body obnovení jsou udržovány na ochranu proti poškozeným datům. [Další informace o obnovení odstraněných záložních dat](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data).
+
+* U dat zálohovaných pomocí agenta Microsoft Azure Recovery Services (MARS) se přístupové heslo používá k zajištění šifrování dat před odesláním do služby Azure Backup a dešifrování matného hesla pouze po stažení z Azure Backup. Podrobnosti o přístupové frázi jsou k dispozici pouze uživateli, který vytvořil přístupové heslo, a agentovi, který je s ním nakonfigurován. Se službou není nic přenášeno ani sdíleno. Tím je zajištěno úplné zabezpečení dat, protože všechna data, která jsou neúmyslně vystavena (například útok prostředníkem v síti), jsou nepoužitelná bez přístupového hesla a přístupové heslo není odesláno v síti.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>Dodržování standardizovaných bezpečnostních požadavků
 

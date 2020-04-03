@@ -7,18 +7,21 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: e3f8445f68ec959ce1bb0d1ba4029807bd25907a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257423"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617207"
 ---
-# <a name="application-gateway-high-traffic-support"></a>Podpora vysokého provozu aplikační brány 
+# <a name="application-gateway-high-traffic-support"></a>Podpora vysokého provozu služby Application Gateway
 
-Tento článek popisuje několik doporučených pokynů, které vám pomohou nastavit aplikační bránu pro zpracování dalšího provozu kvůli scénářům s vysokým objemem provozu, jako je například situace COVID-19. Pomocí brány aplikace s bránou webových aplikací (WEB Application Firewall) můžete škálovatelný a bezpečný způsob správy provozu webových aplikací. 
+>[!NOTE]
+> Tento článek popisuje několik doporučených pokynů, které vám pomohou nastavit aplikační bránu pro zpracování dalšího provozu kvůli vysokému objemu provozu, ke kterému může dojít v důsledku krize COVID-19.
 
-Následující návrhy vám pomohou nastavit aplikační bránu s WAF pro zpracování dalšího provozu. 
+Pomocí brány aplikace s bránou webových aplikací (WEB Application Firewall) můžete škálovatelný a bezpečný způsob správy provozu webových aplikací.
+
+Následující návrhy vám pomohou nastavit aplikační bránu s WAF pro zpracování dalšího provozu.
 
 ## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Použití sku v2 přes v1 pro jeho možnosti automatického škálování a výhody výkonu
 Skladová položka v2 nabízí automatické škálování, aby bylo zajištěno, že vaše aplikační brána může vertikálně navýšit kapacitu s nárůstem provozu. Nabízí také další významné výhody výkonu, jako je například 5x lepší výkon tls snížení zátěže, rychlejší nasazení a aktualizace časy, redundance zóny a další ve srovnání s v1. Další informace naleznete v naší [dokumentaci v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). 

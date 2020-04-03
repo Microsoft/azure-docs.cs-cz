@@ -2,26 +2,26 @@
 title: 'Úvodní příručka: Vytvoření vyhledávacího indexu v Pythonu pomocí rest API'
 titleSuffix: Azure Cognitive Search
 description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, Jupyter poznámkových bloků a rozhraní REST API Azure Cognitive Search.
-author: tchristiani
+author: HeidiSteen
 manager: nitinme
-ms.author: terrychr
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/01/2020
+ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78227094"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585927"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Úvodní příručka: Vytvoření indexu Azure Cognitive Search v Pythonu pomocí poznámkových bloků Jupyter
 
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [Prostředí PowerShell (REST)](search-create-index-rest-api.md)
-> * [C #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Pošťák (REST)](search-get-started-postman.md)
 > * [Portál](search-create-index-portal.md)
 > 
@@ -197,7 +197,7 @@ Chcete-li vyžádat dokumenty, použijte požadavek HTTP POST do koncového bodu
         "@search.action": "upload",
         "HotelId": "3",
         "HotelName": "Triple Landscape Hotel",
-        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
         "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
         "Category": "Resort and Spa",
         "Tags": [ "air conditioning", "bar", "continental breakfast" ],
@@ -256,45 +256,59 @@ Tento krok ukazuje, jak zadat dotaz na index pomocí [rozhraní REST API pro hle
 
    ```python
    searchstring = '&search=*&$count=true'
-   ```
 
-1. V nové buňce uveďte následující příklad pro vyhledávání termínů "hotely" a "wifi". Přidejte $select a určete, která pole mají být zahrnuta do výsledků hledání.
-
-   ```python
-   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
-   ```
-
-1. V jiné buňce zformulovat požadavek. Tento požadavek GET cílí na kolekci docs indexu rychlého startu hotels a připojí dotaz, který jste zadali v předchozím kroku.
-
-   ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-1. Spusťte každý krok. Výsledky by měly vypadat podobně jako následující výstup. 
+1. V nové buňce uveďte následující příklad pro vyhledávání termínů "hotely" a "wifi". Přidejte $select a určete, která pole mají být zahrnuta do výsledků hledání.
+
+   ```python
+   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)   
+   ```
+
+   Výsledky by měly vypadat podobně jako následující výstup. 
 
     ![Prohledání indexu](media/search-get-started-python/search-index.png "Prohledání indexu")
 
-1. Zkuste několik dalších příkladů dotazu získat cit pro syntaxi. Můžete nahradit `searchstring` následující příklady a potom znovu spustit požadavek na hledání. 
-
-   Použití filtru: 
+1. Dále použijte $filter výraz, který vybere pouze ty hotely s hodnocením vyšším než 4. 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)     
    ```
 
-   Vezměte si dva nejlepší výsledky:
+1. Ve výchozím nastavení vyhledávač vrátí 50 nejlepších dokumentů, ale můžete použít horní a přeskočit přidat stránkování a zvolit, kolik dokumentů v každém výsledku. Tento dotaz vrátí dva dokumenty v každé sadě výsledků.
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
-    Pořadí podle konkrétního pole:
+1. V tomto posledním příkladu použijte $orderby k seřazení výsledků podle města. Tento příklad obsahuje pole z kolekce Adresa.
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
 ## <a name="clean-up"></a>Vyčištění

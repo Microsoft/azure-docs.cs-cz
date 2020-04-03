@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75691005"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607600"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s databází s jedním, sdruženým a instancí v Azure SQL Database
 
@@ -95,7 +95,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 - Při připojování mezi účastníky replikace se používá ověřování SQL. 
 - Sdílená sada účtu úložiště Azure pro pracovní adresář používaný replikací. 
 - Port 445 (TCP odchozí) musí být otevřena v pravidlech zabezpečení podsítě spravované instance pro přístup ke sdílené složce Azure. 
-- Port 1433 (TCP odchozí) je třeba otevřít, pokud Vydavatel/Distributor jsou na spravovanou instanci a odběratel je místní.
+- Port 1433 (TCP odchozí) je třeba otevřít, pokud Vydavatel/Distributor jsou na spravovanou instanci a odběratel není. Může být také nutné změnit pravidlo odchozího zabezpečení `allow_linkedserver_outbound` spravované instance NSG pro značku `virtualnetwork` `internet` **cílové služby** portu 1433 z na . 
 - Všechny typy účastníků replikace (Vydavatel, Distributor, Vyžádat odběratel a Push odběratel) lze umístit na spravované instance, ale vydavatel a distributor musí být buď v cloudu nebo oba místní.
 - Pokud vydavatel, distributor a/nebo odběratel existují v různých virtuálních sítích, pak musí být mezi jednotlivými entitami vytvořen partnerský vztah VPN, takže mezi vydavatelem a distributorem existuje propojení VPN a/nebo je partnerský vztah VPN mezi distributorem a odběratelem. 
 
@@ -124,7 +124,7 @@ Vydavatel a distributor jsou konfigurováni v rámci jedné spravované instance
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Vydavatel se vzdáleným distributorem ve spravované instanci
 
-V této konfiguraci jedna spravovaná instance publikuje změny distributora umístěného na jiné spravované instanci, které mohou obsluhovat mnoho zdrojových spravovaných instancí a distribuovat změny jednoho nebo více cílů na spravované instanci, jedné databázi, sdružené databázi nebo SQL Server.
+V této konfiguraci jedna spravovaná instance publikuje změny distributora umístěného na jiné spravované instanci, které mohou obsluhovat mnoho zdrojových spravovaných instancí a distribuovat změny jednoho nebo více cílů na spravované instanci, jedné databázi, sdružené databázi nebo SERVERU SQL Server.
 
 ![Samostatné instance pro vydavatele a distributora](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 

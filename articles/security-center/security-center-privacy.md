@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978605"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585972"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Správa uživatelských dat ve službě Azure Security Center
 Tento článek obsahuje informace o tom, jak můžete spravovat uživatelská data v Azure Security Center. Správa uživatelských dat zahrnuje možnost přístupu k datům, jejich odstranění nebo exportu.
@@ -98,6 +98,3 @@ Uživatel centra zabezpečení se může rozhodnout, že se odhlásí, a to odst
 
 ## <a name="auditing-and-reporting"></a>Audit a podávání zpráv
 Protokoly auditu kontaktu zabezpečení, aktualizace just-in-time a výstrahy jsou udržovány v [protokolech aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
-
-## <a name="next-steps"></a>Další kroky
-Další informace o správě uživatelských dat najdete [v tématu Správa uživatelských dat nalezených ve vyšetřovacím šetření Centra zabezpečení Azure](security-center-investigation-user-data.md).

@@ -1,26 +1,26 @@
 ---
-title: Kódy států spoluprodej | Azure Marketplace
-description: Tyto kódy státu/provincie použijte při poskytování kontaktních údajů na stránce spoluprodeje vaší nabídky.
+title: Kódy států a provincií spoluprodej | Azure Marketplace
+description: Tyto kódy států a provincií použijte při poskytování kontaktních údajů na stránce spoluprodeje nabídky.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277035"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619357"
 ---
-# <a name="co-sell-state-codes"></a>Kódy států spoluprodej
+# <a name="co-sell-state-and-province-codes"></a>Kódy států a provincií spoluprodej
 
 Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo provincii při [poskytování kontaktních údajů na stránce spoluprodeje vaší nabídky](commercial-marketplace-co-sell.md#contacts).
 
-## <a name="stateprovince-table"></a>Tabulka Stát/Provincie
+## <a name="us-states-and-territories"></a>Státy a území USA
 
-|   Název státu/provincie               |   kód    |
+|   Název státu a území          |   kód    |
 |-------------------------------------|-----------|
 | Alabama                             | USA-AL     |
 | Alaska                              | US-AK     |
@@ -78,7 +78,40 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 | Severní Mariany            | US-MP     |
 | Portoriko                         | US-PR     |
 | Spojené státy menší odlehlé ostrovy | US-UM    |
-|Americké Panenské ostrovy                 | US-VI     |
+| Americké Panenské ostrovy                 | US-VI    |
+
+## <a name="canadian-provinces-and-territories"></a>Kanadské provincie a území
+
+|   Název provincie a území       |   kód    |
+|-------------------------------------|-----------|
+| Alberta                             |  CA-AB    |
+| British Columbia                    |  CA-BC    |
+| Manitoba                            |  CA-MB    |
+| New Brunswick                       |  CA-NB    |
+| Newfoundland and Labrador           |  CA-NL    |
+| Nova Scotia                         |  CA-NS    |
+| Ontario                             |  CA-ON    |
+| Prince Edward Island                |  CA-PE    |
+| Quebec                              |  CA-QC    |
+| Saskatchewan                        |  CA-SK    |
+| Northwest Territories               |  CA-NT    |
+| Nunavut                             |  CA-NU    |
+| Yukon                               |  CA-YT    |
+
+
+## <a name="australian-states-and-territories"></a>Australské státy a území
+
+|   Název státu a území          |   kód    |
+|-------------------------------------|-----------|
+| New South Wales                     |  AU-NSW   |
+| Queensland                          |  AU-QLD   |
+| South Australia                     |  AU-SA    |
+| Tasmania                            |  AU-TAS   |
+| Victoria                            |  AU-VIC   |
+| Western Australia                   |  AU-WA    |
+| Australian Capital Territory        |  AU-ACT   |
+| Northern Territory                  |  AU-NT    |
+
 
 ## <a name="next-steps"></a>Další kroky
 
