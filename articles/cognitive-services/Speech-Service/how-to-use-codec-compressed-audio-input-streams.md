@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: 6aabd27ae38cac0bb9effad2adcadc4935a28c6e
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: bd6b500a823bde654da4442704b75451806d6a46
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409625"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637274"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK
 
 Rozhraní API **komprimovaného vstupního vstupního datového proudu** zvuku sady Speech service `PullStream` `PushStream`poskytuje způsob streamování komprimovaného zvuku do služby Řeč pomocí služby a nebo .
 
-> [!IMPORTANT]
-> Streamování komprimovaného vstupního zvuku je v současné době podporováno pro C#, C++, Java na Linuxu (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8). Je také podporován pro Java v Androidu a Objective-C v platformě iOS.
-> Je vyžadována sada Speech SDK verze 1.7.0 nebo vyšší (verze 1.10.0 nebo vyšší pro RHEL 8, CentOS 8).
+Streamování komprimovaného vstupního zvuku je v současné době podporováno pro C#, C++, Java v systému Windows (aplikace UPW nejsou podporovány) a Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8). Je také podporován pro Java v Androidu a Objective-C v platformě iOS.
+* Řeč SDK verze 1.10.0 nebo novější je vyžadována pro RHEL 8 a CentOS 8
+* Pro systém Windows je vyžadována sada Speech SDK verze 1.11.0 nebo novější.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 

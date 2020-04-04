@@ -8,12 +8,12 @@ ms.date: 12/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ddda38d887cdfe30b449847e2f625ba17f33898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9415ca20b859468528b56d27355430c4fc5a0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510800"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652073"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojení podřízeného zařízení k bráně služby Azure IoT Edge
 
@@ -182,7 +182,7 @@ Tato část představuje ukázkovou aplikaci pro připojení klienta zařízení
 
 Tato část zavádí ukázkovou aplikaci pro připojení klienta zařízení Azure IoT Python k bráně IoT Edge.
 
-1. Získejte ukázku pro **send_message** ze [sady Azure IoT device SDK pro ukázky Pythonu](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios).
+1. Získejte ukázku pro **send_message** ze [sady Azure IoT device SDK pro ukázky Pythonu](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios).
 2. Ujistěte se, že jste spuštěni v kontejneru IoT Edge `EdgeHubConnectionString` `EdgeModuleCACertificateFile` nebo ve scénáři ladění, mají proměnné a prostředí nastaveny.
 3. Pokyny ke spuštění ukázky v zařízení naleznete v dokumentaci k sdk.
 

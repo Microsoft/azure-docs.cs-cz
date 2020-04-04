@@ -4,14 +4,14 @@ description: Předpoklady pro používání mezipaměti Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271847"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655660"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Požadavky pro azure hpc mezipaměť
 
@@ -113,7 +113,7 @@ Další informace jsou zahrnuty v [tématu Poradce při potížích s konfigurac
 
   Ujistěte se, že všechny ``rpcinfo`` porty vrácené dotazem umožňují neomezený provoz z podsítě mezipaměti Azure HPC.
 
-  * Kromě portů vrácených `rpcinfo` příkazem se ujistěte, že tyto běžně používané porty umožňují příchozí a odchozí přenosy:
+  * Pokud `rpcinfo` příkaz nemůžete použít, ujistěte se, že tyto běžně používané porty umožňují příchozí a odchozí přenosy:
 
     | Protocol (Protokol) | Port  | Služba  |
     |----------|-------|----------|
@@ -122,6 +122,8 @@ Další informace jsou zahrnuty v [tématu Poradce při potížích s konfigurac
     | Protokol TCP/UDP  | 4045  | nlockmgr řekl: |
     | Protokol TCP/UDP  | 4046  | připnout   |
     | Protokol TCP/UDP  | 4047  | status   |
+
+    Některé systémy používají pro tyto služby různá čísla portů – pro jistotu se obraťte na dokumentaci systému úložiště.
 
   * Zkontrolujte nastavení brány firewall, abyste se ujistili, že umožňují provoz na všech těchto požadovaných portech. Zkontrolujte brány firewall používané v Azure i místní brány firewall ve vašem datovém centru.
 
@@ -132,7 +134,7 @@ Další informace jsou zahrnuty v [tématu Poradce při potížích s konfigurac
 
   Další informace o přístupu k seznamu adresářů naleznete v [článku o řešení potíží s úložištěm systému](troubleshoot-nas.md#enable-export-listing)souborů NFS .
 
-* **Kořenový přístup:** Mezipaměť se připojuje k back-end systému jako ID uživatele 0. Zkontrolujte tato nastavení v úložném systému:
+* **Root přístup** (čtení a zápis): Mezipaměť se připojí k back-end systému jako ID uživatele 0. Zkontrolujte tato nastavení v úložném systému:
   
   * Povolit `no_root_squash`. Tato možnost zajišťuje, že vzdálený kořenový uživatel může přistupovat k souborům vlastněným root.
 

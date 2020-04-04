@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 3/11/2020
-ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 4/3/2020
+ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549161"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657067"
 ---
 # <a name="azure-sql-database-serverless"></a>Bez serveru Azure SQL Database
 
@@ -151,13 +151,13 @@ Latence automatického obnovení a automatického pozastavení databáze bez ser
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Transparentní šifrování dat spravované zákazníkem (BYOK)
 
-Pokud je při odstranění nebo odvolání klíče automaticky pozastaveno šifrování [transparentních dat](transparent-data-encryption-byok-azure-sql.md) spravované zákazníkem (BYOK) a databáze bez serveru je automaticky pozastavena, zůstane databáze ve stavu automatického pozastaveného.  V tomto případě po další obnovení databáze databáze stane nepřístupné během přibližně 10 minut.  Jakmile databáze stane nepřístupné, proces obnovení je stejný jako pro zřízené výpočetní databáze.  Pokud je databáze bez serveru online, když dojde k odstranění nebo odvolání klíče, pak databáze také stane nepřístupné po přibližně 10 minut nebo méně stejným způsobem jako u zřízených výpočetních databází.
+Pokud je při odstranění nebo odvolání klíče automaticky pozastaveno šifrování [transparentních dat](transparent-data-encryption-byok-azure-sql.md) spravované zákazníkem (BYOK) a databáze bez serveru je automaticky pozastavena, zůstane databáze ve stavu automatického pozastaveného.  V tomto případě po další obnovení databáze databáze stane nepřístupné během přibližně 10 minut.  Jakmile databáze stane nepřístupné, proces obnovení je stejný jako pro zřízené výpočetní databáze.  Pokud je databáze bez serveru online, když dojde k odstranění nebo odvolání klíče, pak databáze také stane nepřístupné během přibližně 10 minut stejným způsobem jako u zřízených výpočetních databází.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Registrace do výpočetní úrovně bez serveru
 
 Vytvoření nové databáze nebo přesunutí existující databáze do výpočetní vrstvy bez serveru se řídí stejným vzorem jako vytvoření nové databáze v zřízené výpočetní vrstvě a zahrnuje následující dva kroky.
 
-1. Zadejte název cíle služby. Cíl služby předepisuje úroveň služby, generování hardwaru a maximální virtuální jádra. V následující tabulce jsou uvedeny možnosti cíle služby:
+1. Zadejte účel služby. Cíl služby předepisuje úroveň služby, generování hardwaru a maximální virtuální jádra. V následující tabulce jsou uvedeny možnosti cíle služby:
 
    |Název cíle služby|Úroveň služeb|Generování hardwaru|Maximální virtuální jádra|
    |---|---|---|---|
@@ -176,12 +176,12 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
    |Parametr|Volby hodnoty|Výchozí hodnota|
    |---|---|---|---|
    |Min virtuální jádra|Závisí na maximálních nakonfigurovaných virtuálních jádrech – viz [omezení prostředků](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 virtuálních jader|
-   |Zpoždění automatického pozastavení|Minimální: 60 minut (1 hodina)<br>Maximálně: 10080 minut (7 dní)<br>Přírůstky: 60 minut<br>Zakázat automatické pozastavení: -1|60 minut|
+   |Zpoždění automatického pozastavení|Minimální: 60 minut (1 hodina)<br>Maximálně: 10080 minut (7 dní)<br>Přírůstky: 10 minut<br>Zakázat automatické pozastavení: -1|60 minut|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Vytvoření nové databáze v výpočetní vrstvě bez serveru 
 
-Následující příklady vytvořit novou databázi v výpočetní vrstvě bez serveru. Příklady explicitně určují min vCores, max vCores a zpoždění automatického pozastavení.
+Následující příklady vytvořit novou databázi v výpočetní vrstvě bez serveru.
 
 #### <a name="use-azure-portal"></a>Použití webu Azure Portal
 
@@ -205,7 +205,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Použití Transact-SQL (T-SQL)
 
-Následující příklad vytvoří novou databázi v výpočetní vrstvě bez serveru.
+Při použití T-SQL jsou použity výchozí hodnoty pro min vcorea a zpoždění automatické hod.
 
 ```sql
 CREATE DATABASE testdb
@@ -216,7 +216,7 @@ Podrobnosti naleznete v tématu [CREATE DATABASE](/sql/t-sql/statements/create-d
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Přesunutí databáze z zřízené výpočetní vrstvy na výpočetní úroveň bez serveru
 
-Následující příklady přesunout databázi z zřízeného výpočetní vrstvy do výpočetní vrstvy bez serveru. Příklady explicitně určují min vCores, max vCores a zpoždění automatického pozastavení.
+Následující příklady přesunout databázi z zřízeného výpočetní vrstvy do výpočetní vrstvy bez serveru.
 
 #### <a name="use-powershell"></a>Použití prostředí PowerShell
 
@@ -237,7 +237,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Použití Transact-SQL (T-SQL)
 
-Následující příklad přesune databázi z zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru.
+Při použití T-SQL jsou použity výchozí hodnoty pro min vcorea a zpoždění automatické hod.
 
 ```sql
 ALTER DATABASE testdb 

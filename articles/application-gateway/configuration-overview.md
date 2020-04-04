@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585909"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632178"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace aplikační brány
 
@@ -118,7 +118,7 @@ V tomto scénáři použijte skupiny nsg v podsíti Aplikační brána. V tomto 
 
   **Scénář 1**: UDR pro virtuální zařízení
 
-  Jakýkoli scénář, kde 0.0.0.0/0 musí být přesměrovány prostřednictvím libovolného virtuálního zařízení, centrální/paprskové virtuální sítě nebo místní (vynucené tunelové propojení) není podporován pro verzi v2 public Preview. 
+  Jakýkoli scénář, kde 0.0.0.0/0 musí být přesměrovány prostřednictvím libovolného virtuálního zařízení, centrální/paprskové virtuální sítě nebo místní (vynucené tunelové propojení) není podporovánpro V2.
 
 ## <a name="front-end-ip"></a>Ip adresa front-endu
 

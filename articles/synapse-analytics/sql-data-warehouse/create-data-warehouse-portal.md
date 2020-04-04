@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5d5b2509b212172758fa867d9f27b829f43aeeaa
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349102"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631353"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Úvodní příručka: Vytvoření a dotazování fondu Synapse SQL pomocí portálu Azure
 
@@ -29,7 +29,7 @@ Rychle vytvořte a dotazujte fondu Synapse SQL (datový sklad) v Azure Synapse A
    > [!NOTE]
    > Vytvoření fondu SQL v Azure Synapse může mít za následek novou fakturovatelnou službu. Další informace najdete v [tématu Azure Synapse Analytics ceny](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-2. Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
+2. Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -37,7 +37,7 @@ Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
-Datové sklady se vytvářejí pomocí fondu SQL v Azure Synapse Analytics. Fond SQL se vytvoří s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md) a na [logickém serveru SQL Azure](../../sql-database/sql-database-servers.md).
+Datové sklady se vytvářejí pomocí fondu SQL v Azure Synapse Analytics. Fond SQL se vytvoří s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a na [logickém serveru SQL Azure](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 Následujícím postupem vytvořte fond SQL, který obsahuje ukázková data **AdventureWorksDW.**
 
@@ -54,9 +54,9 @@ Následujícím postupem vytvořte fond SQL, který obsahuje ukázková data **A
    | Nastavení | Navrhovaná hodnota | Popis |
    | :------ | :-------------- | :---------- |
    | **Předplatné** | Vaše předplatné | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-   | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   | **Název fondu SQL** | Libovolný globálně jedinečný název (příkladem je *mySampleDataWarehouse)* | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). Všimněte si, že fond SQL je jeden typ databáze. |
-   | **Server** | Libovolný globálně jedinečný název | Vyberte existující server nebo vytvořte nový název serveru, vyberte **Vytvořit nový**. Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
+   | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
+   | **Název fondu SQL** | Libovolný globálně jedinečný název (příkladem je *mySampleDataWarehouse)* | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Všimněte si, že fond SQL je jeden typ databáze. |
+   | **Server** | Libovolný globálně jedinečný název | Vyberte existující server nebo vytvořte nový název serveru, vyberte **Vytvořit nový**. Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
    ![vytvoření základních podrobností datového skladu](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
@@ -78,7 +78,7 @@ Následujícím postupem vytvořte fond SQL, který obsahuje ukázková data **A
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
-Služba Azure Synapse vytvoří bránu firewall na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru nebo k databázím na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres. Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../../sql-database/sql-database-firewall-configure.md) pro IP adresu vašeho klienta.
+Služba Azure Synapse vytvoří bránu firewall na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru nebo k databázím na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres. Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pro IP adresu vašeho klienta.
 
 > [!NOTE]
 > Azure Synapse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
@@ -124,7 +124,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
 
-V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
+V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) naváže připojení k serveru SQL Azure.
 
 1. Otevřete SQL Server Management Studio.
 
@@ -134,18 +134,18 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | :------ | :-------------- | :---------- |
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Zde je příklad: **sqlpoolservername.database.windows.net**. |
-   | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+   | Authentication | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
    | Přihlásit | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
    ||||
 
    ![Připojení k serveru](./media/create-data-warehouse-portal/connect-to-server-ssms.png)
 
-3. vyberte **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů. 
+3. vyberte **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů.
 
 4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
 
-   ![databázové objekty](./media/create-data-warehouse-portal/connected-ssms.png) 
+   ![databázové objekty](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>Spuštění nějakých dotazů
 
@@ -163,7 +163,7 @@ SQL Data Warehouse jako dotazovací jazyk používá T-SQL. Pokud chcete otevř�
 
    ![Dotazování databází](./media/create-data-warehouse-portal/query-databases.png)
 
-4. Pokud se chcete podívat na nějaká data, pomocí následujícího příkazu zobrazte počet zákazníků s příjmením Adams, kteří mají tři děti. Seznam výsledků obsahuje šest zákazníků. 
+4. Pokud se chcete podívat na nějaká data, pomocí následujícího příkazu zobrazte počet zákazníků s příjmením Adams, kteří mají tři děti. Seznam výsledků obsahuje šest zákazníků.
 
     ```sql
     SELECT LastName, FirstName FROM dbo.dimCustomer
@@ -196,4 +196,4 @@ Chcete-li vyčistit prostředky, které již nepotřebujete, postupujte takto.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o načítání dat do fondu SQL, pokračujte [načíst data do](load-data-from-azure-blob-storage-using-polybase.md) článku fondu SQL. 
+Další informace o načítání dat do fondu SQL, pokračujte [načíst data do](load-data-from-azure-blob-storage-using-polybase.md) článku fondu SQL.

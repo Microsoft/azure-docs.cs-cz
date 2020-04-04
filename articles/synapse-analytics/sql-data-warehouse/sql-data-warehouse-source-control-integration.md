@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350087"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633017"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integrace správy zdrojového kódu pro fond SQL
 
-Tento kurz popisuje, jak integrovat databázový projekt databázových nástrojů SQL Server (SSDT) se správou zdrojového kódu.  Integrace správy zdrojového kódu je prvním krokem při vytváření kanálu průběžné integrace a nasazení s prostředkem fondu SQL v Azure Synapse Analytics. 
+Tento kurz popisuje, jak integrovat databázový projekt databázových nástrojů SQL Server (SSDT) se správou zdrojového kódu.  Integrace správy zdrojového kódu je prvním krokem při vytváření kanálu průběžné integrace a nasazení s prostředkem fondu SQL v Azure Synapse Analytics.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 - Registrace k [organizaci Azure DevOps](https://azure.microsoft.com/services/devops/)
-- Procházení kurzu [Vytvořit a připojit](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)
--  [Instalace Visual Studia 2019](https://visualstudio.microsoft.com/vs/older-downloads/) 
+- Procházení kurzu [Vytvořit a připojit](create-data-warehouse-portal.md)
+- [Instalace Visual Studia 2019](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Nastavení a připojení k Azure DevOps
 
@@ -53,7 +53,7 @@ Tento kurz popisuje, jak integrovat databázový projekt databázových nástroj
 
    ![Importovat projekt](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Importovat projekt")  
 
-3. V Průzkumníkovi týmu ve Visual Studiu potvrdíte všechny změny v místním úložišti Git. 
+3. V Průzkumníkovi týmu ve Visual Studiu potvrdíte všechny změny v místním úložišti Git.
 
    ![Potvrzení](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Potvrzení")  
 

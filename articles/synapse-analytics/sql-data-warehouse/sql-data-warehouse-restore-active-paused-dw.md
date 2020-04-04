@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 635b65d16ae9a59816506023d323243f043ce7da
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350378"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632251"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Obnovení existujícího fondu SQL
 
@@ -51,7 +51,7 @@ Chcete-li obnovit existující fond SQL z bodu obnovení, použijte rutinu [Rest
 
 7. Ověřte, zda je obnovený fond SQL online.
 
-8. Po dokončení obnovení můžete nakonfigurovat obnovený fond SQL tak, že [nakonfigurujete databázi po obnovení](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
+8. Po dokončení obnovení můžete nakonfigurovat obnovený fond SQL tak, že [nakonfigurujete databázi po obnovení](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 
@@ -100,7 +100,6 @@ $RestoredDatabase.status
     ![Automatické body obnovení](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Další kroky
+
 - [Obnovení odstraněného fondu SQL](sql-data-warehouse-restore-deleted-dw.md)
 - [Obnovení z fondu SQL geografické zálohování](sql-data-warehouse-restore-from-geo-backup.md)
-
- 

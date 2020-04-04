@@ -4,12 +4,12 @@ description: Zjistěte, jak nainstalovat a nakonfigurovat řadič příchozího 
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 4d0edcac86bebb77495907ec43debf077448b8ac
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: ece117d60ae3d7fd70c0972bb463340c5d38c9e1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617230"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637263"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče příchozího přenosu dat HTTPS ve službě Azure Kubernetes Service (AKS)
 
@@ -163,7 +163,7 @@ spec:
 Chcete-li vytvořit vystavitel, použijte `kubectl apply` příkaz.
 
 ```console
-kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml
 ```
 
 ## <a name="run-demo-applications"></a>Spuštění ukázkových aplikací

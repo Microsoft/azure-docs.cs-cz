@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 00c6b09662d19fb50d3b0bffc1148fb225da7def
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1d77acf9f076bbb9a4f4da5c592a0443b8585299
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973845"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656109"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Rychlý start: Analýza vzdáleného obrázku pomocí rozhraní REST API a JavaScriptu v počítačovém zpracování obrazu
 
@@ -26,18 +26,18 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
+Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Uložte klíč předplatného a adresu URL koncového bodu do dočasného umístění.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Zkopírujte do textového editoru následující kód.
+1. Vytvořte soubor s názvem _analyze-image.html_, otevřete jej v textovém editoru a zkopírujte do něj následující kód.
 1. Volitelně můžete hodnotu atributu `value` pro ovládací prvek `inputImage` nahradit adresou URL jiného obrázku, který chcete analyzovat.
-1. Uložte kód jako soubor s příponou `.html`. Například, `analyze-image.html`.
 1. Otevřete okno prohlížeče.
 1. Přetáhněte daný soubor do okna prohlížeče.
-1. Když se v prohlížeči zobrazí webová stránka, zvolte tlačítko **Analyze Image** (Analyzovat obrázek).
+1. Když se webová stránka zobrazí v prohlížeči, vložte klíč předplatného a adresu URL koncového bodu do příslušných vstupních polí.
+1. Vyberte tlačítko **Analyzovat obraz.**
 
 ```html
 <!DOCTYPE html>
@@ -54,9 +54,8 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/analyze";
 
@@ -106,6 +105,13 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 <h1>Analyze image:</h1>
 Enter the URL to an image, then click the <strong>Analyze image</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image to analyze:
 <input type="text" name="inputImage" id="inputImage"

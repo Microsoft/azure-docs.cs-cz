@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 654af2c9e57bca9368eb0a5cdf32e692852ba522
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80573233"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656210"
 ---
 > [!NOTE]
 > U prostředků, které nejsou opraveny, otevřete lístek podpory a požádejte o zvýšení kvót. Nevytvářejte další účty Azure Media Services ve snaze získat vyšší limity.
@@ -26,7 +26,7 @@ ms.locfileid: "80573233"
 | --- | --- | 
 | Datové zdroje na účet mediálních služeb | 1 000 000|
 
-### <a name="storage-limits"></a>Limity úložiště
+### <a name="storage-media-limits"></a>Limity pro ukládání (média)
 
 | Prostředek | Výchozí omezení | 
 | --- | --- | 

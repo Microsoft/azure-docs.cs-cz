@@ -4,19 +4,19 @@ description: Jaké informace se používají k ověření uživatelů pomocí az
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848285"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653637"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování uživatelských dat azure s vícefaktorovým ověřováním
 
@@ -141,7 +141,7 @@ Pro server MFA verze 8.0 nebo vyšší umožňuje následující proces správc�
 - Hledání `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` a všechny zálohy pro "uživatelské\<jméno>" (zahrnout nabídky do hledání) najít všechny instance záznamu uživatele, které jsou přidány nebo změněny.
    - Tyto záznamy mohou být omezeny (ale neodstraněny) zrušením zaškrtnutí **políčka "Log user changes"** v části MFA Server UX, Protokolování, na kartě Soubory protokolu.
    - Pokud je nakonfigurován syslog a **"Protokolovat změny uživatele"** je zaškrtnuto v MFA Server UX, Protokolování části, Syslog kartu, pak položky protokolu lze shromáždit z syslog místo.
-- Další výskyty uživatelského jména v souborech MultiFactorAuthSvc.log a dalších souborech protokolu serveru MFA, které se připojují k pokusům o ověření, jsou považovány za funkční a duplicitní k informacím poskytnutým pomocí exportu MultiFactorAuthGdpr.exe nebo Web Service SDK GetUserGdpr.
+- Další výskyty uživatelského jména v MultiFactorAuthSvc.log a dalších souborech protokolu serveru MFA, které se týkající se pokusů o ověření, jsou považovány za funkční a duplicitní k informacím poskytnutým pomocí exportu MultiFactorAuthGdpr.exe nebo Web Service SDK GetUserGdpr.
 
 ## <a name="delete-data-from-mfa-server"></a>Odstranění dat ze serveru MFA
 

@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: bd384f2b4dd879c30fafd2b765dd9ba0efb12447
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/03/2020
+ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348396"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652184"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služeb Azure Cosmos DB
 
@@ -152,6 +152,9 @@ Cosmos DB podporuje dotazování položek pomocí [SQL](how-to-sql-query.md). N�
 | Maximální hodnota JOIN na dotaz| 5<sup>*</sup>|
 | Maximální ufl na dotaz| 10<sup>*</sup>|
 | Maximální počet bodů na polygon| 4 096 |
+| Maximální zahrnuté cesty na kontejner| 500 |
+| Maximální počet vyloučených cest na kontejner| 500 |
+| Maximální vlastnosti ve složeném indexu| 8 |
 
 <sup>*</sup>Tato omezení dotazů SQL můžete zvýšit tak, že se obrátíte na podporu Azure.
 
@@ -163,7 +166,7 @@ V následující tabulce jsou uvedeny limity specifické pro podporu funkcí Mon
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální velikost paměti dotazu MongoDB | 40 MB |
+| Maximální velikost paměti dotazu MongoDB (Toto omezení je pouze pro verzi serveru 3.2) | 40 MB |
 | Maximální doba provádění operací MongoDB| 30s |
 | Časový limit nečinnosti připojení pro uzavření připojení na straně serveru* | 30 minut |
 

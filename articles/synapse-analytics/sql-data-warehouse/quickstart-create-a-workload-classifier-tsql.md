@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583770"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633755"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Úvodní příručka: Vytvoření třídění pracovního vytížení pomocí T-SQL
 
@@ -39,7 +39,7 @@ Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Vytvořit přihlášení pro THECEO
 
-Vytvořte přihlášení ověřování sql `master` serveru v databázi pomocí [create login](/sql/t-sql/statements/create-login-transact-sql) pro 'THECEO'.
+Vytvořte přihlášení ověřování sql `master` serveru v databázi pomocí [create login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro 'THECEO'.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Vytvořit uživatele
 
-[Vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO", v mySampleDataWarehouse
+[Vytvořit uživatele](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), "TheCEO", v mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -63,7 +63,7 @@ END
 
 ## <a name="create-a-workload-classifier"></a>Vytvoření třídění pracovního vytížení
 
-Vytvořte [třídění pracovního vytížení](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) pro "TheCEO" s vysokou důležitostí.
+Vytvořte [třídění pracovního vytížení](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro "TheCEO" s vysokou důležitostí.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -108,6 +108,6 @@ Chcete-li vyčistit prostředky, postupujte takto.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nyní jste vytvořili třídění úlohy. Spusťte několik dotazů jako THECEO a zjistěte, jak fungují. Viz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) pro zobrazení dotazů a přiřazený význam.
+- Nyní jste vytvořili třídění úlohy. Spusťte několik dotazů jako THECEO a zjistěte, jak fungují. Viz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro zobrazení dotazů a přiřazený význam.
 - Další informace o správě úloh synapse SQL naleznete v [tématu Úloha důležitost](sql-data-warehouse-workload-importance.md) a [klasifikace pracovního vytížení](sql-data-warehouse-workload-classification.md).
 - Podívejte se na články s postupy [pro konfiguraci důležitosti pracovního vytížení](sql-data-warehouse-how-to-configure-workload-importance.md) a [jak spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

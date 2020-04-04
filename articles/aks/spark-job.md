@@ -1,17 +1,17 @@
 ---
 title: Spuštění úlohy Apache Spark se službou Azure Kubernetes Service (AKS)
-description: Použití služby Azure Kubernetes Service (AKS) ke spuštění úlohy Apache Spark
+description: Pomocí služby Azure Kubernetes Service (AKS) můžete vytvořit a spustit úlohu Apache Spark pro rozsáhlé zpracování dat.
 author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ebd8990a2fdd43b243f5dd6feb632d782fdeb0b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473621"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632690"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spuštění pracovních míst Apache Spark na AKS
 

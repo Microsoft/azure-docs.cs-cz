@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92ac0417e9d8adca168dd68e1721a1c9c890de1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276605"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656930"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -109,7 +109,7 @@ I s povolenou funkcí Always On je časový `functionTimeout` plán spuštění 
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Určení plánu hostování existující aplikace
 
-Pokud chcete určit plán hostování, který používá vaše aplikace pro funkce, přečtěte si informace o **plánu služby App Service / cenové úrovni** na kartě **Přehled** aplikace funkce na [portálu Azure](https://portal.azure.com). U plánů služby App Service je také uvedena cenová úroveň.
+Pokud chcete určit plán hostování, který používá vaše aplikace pro funkce, přečtěte si informace o **plánu služby App Service** na kartě **Přehled** aplikace funkce na webu [Azure Portal](https://portal.azure.com). Pokud chcete zobrazit cenovou úroveň, vyberte název **plánu servisu App A**v levém podokně vyberte **Vlastnosti.**
 
 ![Zobrazit plán škálování na portálu](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ Pokud je `dynamic`výstup z tohoto příkazu , aplikace funkce je v plánu spot�
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-V každém plánu vyžaduje aplikace funkce obecný účet Azure Storage, který podporuje azure blob, fronta, soubory a úložiště tabulek. Důvodem je, že funkce závisí na Azure Storage pro operace, jako je správa aktivačních událostí a protokolování spuštění funkce, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, které zahrnují účty úložiště pouze pro objekty blob (včetně úložiště premium) a účty úložiště pro obecné účely s replikací zónově redundantního úložiště, jsou odfiltrovány z existujících výběrů **účtů úložiště** při vytváření aplikace funkcí.
+V každém plánu vyžaduje aplikace funkce obecný účet Azure Storage, který podporuje azure blob, fronta, soubory a úložiště tabulek. Důvodem je, že Azure Functions spoléhá na Azure Storage pro operace, jako je správa aktivačních událostí a spuštění funkcí protokolování, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, které zahrnují účty úložiště pouze pro objekty blob (včetně úložiště premium) a účty úložiště pro obecné účely s replikací zónově redundantního úložiště, jsou odfiltrovány z existujících výběrů **účtů úložiště** při vytváření aplikace funkcí.
 
 Stejný účet úložiště, který používá vaše aplikace funkce, můžou taky používat aktivační události a vazby k ukládání dat aplikace. Pro operace náročné na úložiště byste však měli použít samostatný účet úložiště.  
 
@@ -134,7 +134,7 @@ Je jistě možné, aby více funkčních aplikací sdílelo stejný účet úlo�
 
 Další informace o typech účtů úložiště najdete [v tématu Představení služeb Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Jak fungují plány spotřeby a prémií
+## <a name="how-the-consumption-and-premium-plans-work"></a>Jak fungují plány Spotřeba a Premium
 
 V plánech Spotřeba a Premium infrastruktura Azure Functions škáluje prostředky procesoru a paměti přidáním dalších instancí hostitele Functions na základě počtu událostí, na kterých se aktivují jeho funkce. Každá instance hostitele Functions v plánu Spotřeba je omezena na 1,5 GB paměti a jeden procesor.  Instance hostitele je celá aplikace funkce, což znamená, že všechny funkce v rámci prostředku sdílení aplikace funkce v rámci instance a škálování ve stejnou dobu. Aplikace funkcí, které sdílejí stejný plán spotřeby, se škálují nezávisle.  V plánu Premium velikost plánu určí dostupnou paměť a procesor pro všechny aplikace v tomto plánu v této instanci.  
 

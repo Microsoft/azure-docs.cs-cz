@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/03/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d5a4ddf863115747c27efbca1808d51444aac8c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152665"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656171"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Jednoduchá syntaxe dotazu v Azure Cognitive Search
 
@@ -68,9 +68,15 @@ Operátor NOT je znaménko mínus. Bude například vyhledávat `wifi –luxury`
 > [!NOTE]  
 >  Možnost `searchMode` určuje, zda termín s operátorem NOT je ANDed nebo ORed s `+` ostatními termíny v dotazu v nepřítomnosti operátoru nebo. `|` Odvolání, `searchMode` které lze `any` nastavit buď `all`(výchozí) nebo . Pokud použijete `any`, zvýší odvolání dotazů zahrnutím dalších `-` výsledků a ve výchozím nastavení bude interpretovánjako "NEBO NE". Bude například `wifi -luxury` odpovídat dokumentům, `wifi` které obsahují termín, `luxury`nebo dokumentům, které tento výraz neobsahují . Pokud použijete `all`, zvýší přesnost dotazů zahrnutím méně výsledků a ve výchozím nastavení - bude interpretován jako "A ne". Například `wifi -luxury` bude odpovídat dokumenty, `wifi` které obsahují termín a neobsahují termín "luxus". To je pravděpodobně intuitivnější chování pro operátora. `-` Proto byste měli `searchMode=all` zvážit `searchMode=any` použití namísto, pokud chcete optimalizovat vyhledávání pro přesnost místo `-` *odvolání, a* vaši uživatelé často používají operátor při vyhledávání.
 
-## <a name="suffix-operator"></a>Operátor přípony
+<a name="prefix-search"></a>
 
-Operátor přípony je hvězdička `*`. Bude například hledat dokumenty, `lux*` které mají `lux`termín začínající na , ignorování případu.  
+## <a name="suffix--operator-for-prefix-search"></a>Operátor přípony `*` pro vyhledávání předpon
+
+Operátor přípony je hvězdička `*`. Bude například hledat dokumenty, `cap*` které mají `cap`termín začínající na , ignorování případu. 
+
+Podobně jako u filtrů hledá dotaz předpony přesnou shodu. Jako takové neexistuje žádné skóre relevance (všechny výsledky obdrží skóre vyhledávání 1,0). Předpona dotazy mohou být pomalé, zejména v případě, že index je velký a předpona se skládá z malého počtu znaků. 
+
+Pokud chcete spustit dotaz přípony, odpovídající na poslední část řetězce, použijte [zástupné hledání](query-lucene-syntax.md#bkmk_wildcard) a úplnou syntaxi Lucene.
 
 ## <a name="phrase-search-operator"></a>Operátor vyhledávání frází
 

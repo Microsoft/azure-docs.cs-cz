@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 36b2d50722a1840e461d6907f440d859c7c82117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac660b20d519e49e832e979603f763fa672757a5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408823"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637404"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -36,7 +36,7 @@ Následující tabulka popisuje omezení prostředků pro soubory Azure NetApp:
 |  Počet svazků na kapacitní fond     |    500   |    Ano     |
 |  Počet snímků na svazek       |    255     |    Ne        |
 |  Počet podsítí delegovaných na soubory Azure NetApp (Microsoft.NetApp/svazky) na virtuální síť Azure    |   1   |    Ne    |
-|  Počet použitých IP adresy ve virtuální síti (včetně okamžitě partnerských virtuálních sítí) se soubory Azure NetApp   |    1000   |    Ano   |
+|  Počet použitých IP adresy ve virtuální síti (včetně okamžitě partnerských virtuálních sítí) se soubory Azure NetApp   |    1000   |    Ne   |
 |  Minimální velikost jednoho kapacitního fondu   |  4 TiB     |    Ne  |
 |  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   Ne   |
 |  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |

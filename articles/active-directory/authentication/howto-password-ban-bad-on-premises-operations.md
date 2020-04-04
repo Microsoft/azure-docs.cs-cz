@@ -4,19 +4,19 @@ description: Zjistěte, jak povolit azure ad heslábovou ochranu pro místní pr
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d00a8b84477226b68913f95c5121bbbdfc2eb09d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263813"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652622"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Povolení místní ochrany heslem služby Azure Active Directory
 

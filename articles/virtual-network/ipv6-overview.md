@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420570"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631433"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Co je IPv6 pro virtuální síť Azure?
 
@@ -57,7 +57,8 @@ IPv6 pro virtuální síť Azure obsahuje následující funkce:
     - Volitelná odchozí pravidla, která poskytují úplnou deklarativní kontrolu nad odchozím připojením, aby tuto schopnost škálovala a vylaďovala podle vašich konkrétních potřeb.
     - Volitelné více front-end konfigurace, které umožňují jeden nástroj pro vyrovnávání zatížení používat více IPv6 veřejné IP adresy- stejný front-end protokol a port lze znovu použít přes front-end adresy.
     - Volitelné porty IPv6 lze znovu použít v back-endových instancích pomocí funkce *Plovoucí IP* pravidla vyrovnávání zatížení 
-- Standardní interní podpora [IPv6 pro vytváření](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) odolných vícevrstvých aplikací v rámci virtuálních aplikací Azure.  
+    - Poznámka: Vyrovnávání zatížení neprovádí žádný překlad protokolu (bez NAT64). 
+- Standardní interní podpora [IPv6 pro vytváření](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) odolných vícevrstvých aplikací v rámci virtuálních aplikací Azure.   
 - Základní veřejná podpora ipv6 pro kompatibilitu se staršími nasazeními
 - [Rezervované veřejné IP adresy IPv6 a rozsahy adres](ipv6-public-ip-address-prefix.md) poskytují stabilní a předvídatelné adresy IPv6, které usnadňují seznam povolených aplikací hostovaných v Azure pro vaši společnost a vaše zákazníky.
 - Veřejná IP adresa na úrovni instance poskytuje připojení k Internetu IPv6 přímo jednotlivým virtuálním počítačům.
@@ -72,8 +73,9 @@ IPv6 pro virtuální síť Azure je základní sada funkcí, která zákazníků
 
 ## <a name="limitations"></a>Omezení
 Aktuální verze Virtuální sítě IPv6 pro Azure má následující omezení:
-- IPv6 pro virtuální síť Azure je dostupná ve všech globálních oblastech Azure, ale jenom v globálním Azure, zatím není ve vládních cloudech.
-- Brány ExpressRoute a VPN nelze použít ve virtuální síti s povolenou technologií IPv6, přímo nebo s partnerem s rozhraním "UseRemoteGateway". 
+- IPv6 pro virtuální síť Azure je k dispozici ve všech globálních oblastech Azure Commercial pomocí všech metod nasazení.  Nasazení v cloudu vlády USA je dočasně omezeno na šablonu ARM (JSON), rozhraní příkazového řádku (CLI) a powershell.  Podpora IPv6 v cloudovém portálu vlády USA bude brzy dostupná.  
+- Brány ExpressRoute lze použít pro přenosy pouze s Protokolem IPv4 ve virtuální síti s povoleným protokolem IPv6.  Podpora provozu IPv6 je na našem plánu.   
+- Brány VPN nelze použít ve virtuální síti s povolenou technologií IPv6, přímo nebo v partnerě "UseRemoteGateway".
 - Platforma Azure (AKS atd.) nepodporuje komunikaci IPv6 pro kontejnery.  
 
 ## <a name="pricing"></a>Ceny

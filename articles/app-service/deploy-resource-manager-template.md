@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77211699"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637933"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Pokyny k nasazení webových aplikací pomocí šablon Azure Resource Manager
 
@@ -109,7 +109,7 @@ Název webové aplikace musí být globálně jedinečný. Můžete použít kon
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud vaše šablona obsahuje prostředek [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) pro vazbu SSL a certifikát je uložen v trezoru klíčů, musíte se ujistit, že identita služby App Service má přístup k certifikátu.
+Pokud vaše šablona obsahuje prostředek [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) pro vazbu TLS/SSL a certifikát je uložen v trezoru klíčů, musíte se ujistit, že identita služby App Service má přístup k certifikátu.
 
 V globálním Azure má instanční objekt služby App Service ID **abfa0a7c-a6b6-4736-8310-5855508787cd**. Chcete-li udělit přístup k trezoru klíčů pro instanční objekt služby Služby App Service, použijte:
 

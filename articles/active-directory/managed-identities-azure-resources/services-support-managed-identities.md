@@ -4,18 +4,18 @@ description: Seznam služeb, které podporují spravované identity pro prostře
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 03/13/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e01f1f5abfc0f76926ce503fae058c196c6e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282099"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656046"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
@@ -37,11 +37,11 @@ Následující služby Azure podporují spravované identity pro prostředky Azu
 
 V následujícím seznamu najdete konfiguraci spravované identity pro virtuální počítače Azure (v oblastech, kde je k dispozici):
 
-- [Portál Azure](qs-configure-portal-windows-vm.md)
+- [portál Azure](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
-- [Odpočinku](qs-configure-rest-vm.md)
+- [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets
 
@@ -52,11 +52,11 @@ V následujícím seznamu najdete konfiguraci spravované identity pro virtuáln
 
 Ke konfiguraci spravované identity pro škálovací sady virtuálních strojů Azure (v oblastech, kde je k dispozici), najdete v následujícím seznamu:
 
-- [Portál Azure](qs-configure-portal-windows-vm.md)
+- [portál Azure](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
-- [Odpočinku](qs-configure-rest-vm.md)
+- [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 
@@ -67,10 +67,10 @@ Ke konfiguraci spravované identity pro škálovací sady virtuálních strojů 
 
 Nawebu na následující seznam nakonfigurujte spravovanou identitu pro azure app službu (v oblastech, kde je k dispozici):
 
-- [Portál Azure](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [portál Azure](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Šablona Azure Resource Manager](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
@@ -93,10 +93,10 @@ Typ spravované identity |Všechny obecně dostupné<br>Globální oblasti Azure
 
 Ke konfiguraci spravované identity pro funkce Azure (v oblastech, kde je k dispozici), najdete v následujícím seznamu:
 
-- [Portál Azure](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [portál Azure](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Šablona Azure Resource Manager](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
 
@@ -108,8 +108,8 @@ Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azur
 
 Ke konfiguraci spravované identity pro Azure Logic Apps (v oblastech, kde je k dispozici), najdete v následujícím seznamu:
 
-- [Portál Azure](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity)
+- [portál Azure](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
+- [Šablona Azure Resource Manager](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -120,21 +120,21 @@ Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azur
 
 Nawebu spravovanou identitu pro Azure Data Factory V2 (v oblastech, kde je k dispozici), najdete v následujícím seznamu:
 
-- [Portál Azure](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [portál Azure](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
-- [Odpočinku](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
-- [Sdk](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
+- [Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-api-management"></a>Azure API Management
 
 Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Systém přiřazen | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici. | Není k dispozici. |
-| Přiřazený uživatel | Není k dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
+| Systém přiřazen | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici. | ![K dispozici][check] |
+| Přiřazený uživatel | Preview | Preview | Není k dispozici. | Preview |
 
 Ke konfiguraci spravované identity pro Azure API Management (v oblastech, kde je k dispozici), najdete v následujícím seznamu:
 
-- [Šablona Azure Resource Manageru](/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Šablona Azure Resource Manager](/azure/api-management/api-management-howto-use-managed-service-identity)
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -146,7 +146,7 @@ Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azur
 Odkazovat na následující seznam pro konfiguraci spravované identity pro instance kontejnerů Azure (v oblastech, kde je k dispozici):
 
 - [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
-- [Šablona Azure Resource Manageru](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [Šablona Azure Resource Manager](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 ### <a name="azure-container-registry-tasks"></a>Úlohy Azure Container Registry
@@ -169,7 +169,7 @@ Typ spravované identity | Všechny obecně dostupné<br>Globální oblasti Azur
 | Přiřazený uživatel | ![K dispozici][check] | Není k dispozici | Není k dispozici |Není k dispozici |
 
 Na webu nakonfigurujete spravovanou identitu pro aplikace Azure Service Fabric ve všech oblastech:
-- [Šablona Azure Resource Manageru](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
+- [Šablona Azure Resource Manager](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Služby Azure, které podporují ověřování Azure AD
 

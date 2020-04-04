@@ -4,19 +4,19 @@ description: Zjistěte, jak naplánovat a nasadit azure ad ochranu heslem v mís
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a977eac19128886dd3c379e200f7cb78066a06af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ac9b76dd8d3c950b14f6d7b331f15647427ac89
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671739"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652724"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní ochrany heslem služby Azure Active Directory
 

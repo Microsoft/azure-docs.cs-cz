@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083468"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656743"
 ---
 # <a name="configure-expressroute-global-reach"></a>Konfigurace služby ExpressRoute Global Reach
 
@@ -38,7 +38,7 @@ Před zahájením konfigurace potvrďte následující:
 1. Pokud chcete spustit konfiguraci, přihlaste se ke svému účtu Azure a vyberte předplatné, které chcete použít.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Identifikujte okruhy ExpressRoute, které chcete použít. Globální dosah ExpressRoute můžete povolit mezi libovolnými dvěma okruhy ExpressRoute, pokud jsou umístěny v podporovaných zemích nebo oblastech a byly vytvořeny v různých partnerských umístěních. 
+2. Identifikujte okruhy ExpressRoute, které chcete použít. Globální dosah ExpressRoute můžete povolit mezi privátním partnerským partnerem libovolných dvou okruhů ExpressRoute, pokud jsou umístěny v podporovaných zemích nebo oblastech a byly vytvořeny v různých partnerských umístěních. 
 
    * Pokud vaše předplatné vlastní oba okruhy, můžete zvolit jeden okruh pro spuštění konfigurace v následujících částech.
    * Pokud jsou dva okruhy v různých předplatných Azure, budete potřebovat autorizaci z jednoho předplatného Azure. Pak předáte v autorizačním klíči při spuštění příkazu konfigurace v jiném předplatném Azure.

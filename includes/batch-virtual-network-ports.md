@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/04/2020
+ms.date: 04/03/2020
 ms.author: labrenne
 ms.custom: include file
-ms.openlocfilehash: e9460108499ca76d1b149b61cebe3d3081bf6544
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086279"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657479"
 ---
 ### <a name="general-requirements"></a>Obecné požadavky
 
@@ -65,7 +65,7 @@ Podsíť musí umožňovat příchozí komunikaci ze služby Batch, aby bylo mo�
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Skupiny zabezpečení sítě: Určení pravidel na úrovni podsítě
 
-Není nutné specifikovat skupiny zabezpečení sítě na úrovni podsítě virtuální sítě, protože batch konfiguruje vlastní skupiny zabezpečení sítě (viz výše). Pokud máte skupinu zabezpečení sítě přidruženou k podsíti, kde jsou nasazeny dávkové výpočetní uzly, nebo chcete použít vlastní pravidla skupiny zabezpečení sítě k přepsání použitých výchozích hodnot, je nutné nakonfigurovat tento soubor zabezpečení sítě s alespoň příchozími a odchozími pravidly zabezpečení, jak je znázorněno v následujícím textu Tabulky.
+Není nutné specifikovat skupiny zabezpečení sítě na úrovni podsítě virtuální sítě, protože batch konfiguruje vlastní skupiny zabezpečení sítě (viz výše). Pokud máte skupinu zabezpečení sítě přidruženou k podsíti, kde jsou nasazeny dávkové výpočetní uzly nebo chcete použít vlastní pravidla skupiny zabezpečení sítě k přepsání použitých výchozích hodnot, je nutné nakonfigurovat tento soubor zabezpečení sítě s alespoň příchozími a odchozími pravidly zabezpečení, jak je znázorněno v následujících tabulkách.
 
 Nakonfigurujte příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) pouze v případě, že potřebujete povolit vzdálený přístup k výpočetním uzlům z vnějších zdrojů. Možná budete muset povolit port 22 pravidla na Linuxu, pokud potřebujete podporu pro úlohy více instancí s určitými runtimes MPI. Povolení provozu na těchto portech není nezbytně nutné pro výpočetní uzly fondu, které mají být použitelné.
 
@@ -75,6 +75,9 @@ Nakonfigurujte příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) pouze 
 | --- | --- | --- | --- | --- | --- | --- |
 | Není dostupné. | `BatchNodeManagement`[Výrobní číslo](../articles/virtual-network/security-overview.md#service-tags) (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | * | Všechny | 29876–29877 | TCP | Povolit |
 | Ip adresy uživatelského zdroje pro vzdálený přístup k výpočetním uzlům nebo podsíti výpočetních uzlů pro úlohy linuxových více instancí, pokud je to nutné. | Není dostupné. | * | Všechny | 3389 (Windows), 22 (Linux) | TCP | Povolit |
+
+> [!WARNING]
+> Ip adresy dávkové služby se mohou v průběhu času měnit. Proto se důrazně doporučuje využít `BatchNodeManagement` servisní značku (nebo regionální variantu) pro pravidla skupiny nsg. Pravidla skupiny nsg se nedoporučuje naplnit přímo adresami IP služby Batch.
 
 **Odchozí pravidla zabezpečení**
 

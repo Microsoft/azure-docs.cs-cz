@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 06fc9edd55aa51c985cbb981fc5a6892d0ca75e5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: a6d46c2adf1d886f804a3a542a208558d7f935b9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583123"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632390"
 ---
 # <a name="what-is-workload-management"></a>Co je správa pracovního vytížení?
 
@@ -24,31 +24,31 @@ Spuštění smíšených úloh může představovat problémy s prostředky v za
 
 Fyzická izolace serveru může vést k části infrastruktury, které jsou nevyužité, overbooked nebo ve stavu, kdy mezipaměti jsou neustále základním nátěrem s hardware min.  Úspěšné schéma správy pracovního vytížení efektivně spravuje zdroje, zajišťuje vysoce efektivní využití zdrojů a maximalizuje návratnost investic (ROI).
 
-Úloha datového skladu odkazuje na všechny operace, které se promítají ve vztahu k datovému skladu. Hloubka a šířka těchto součástí závisí na úrovni vyspělosti datového skladu.  Úloha datového skladu zahrnuje: 
-- Celý proces načítání dat do skladu 
+Úloha datového skladu odkazuje na všechny operace, které se promítají ve vztahu k datovému skladu. Hloubka a šířka těchto součástí závisí na úrovni vyspělosti datového skladu.  Úloha datového skladu zahrnuje:
+
+- Celý proces načítání dat do skladu
 - Provádění analýzy datového skladu a vytváření sestav
-- Správa dat v datovém skladu 
+- Správa dat v datovém skladu
 - Export dat z datového skladu
 
 Výkonová kapacita datového skladu je určena [jednotkami datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md).
+
 - Informace o přidělení prostředků pro všechny profily výkonu naleznete v [tématu Limity paměti a souběžnosti](memory-concurrency-limits.md).
 - Chcete-li nastavit kapacitu, můžete [vertikálně navýšit nebo snížit kapacitu](quickstart-scale-compute-portal.md).
 
-
 ## <a name="workload-management-concepts"></a>Koncepty správy úloh
 
-V minulosti jste pro fond Synapse SQL v Azure Synapse spravovali výkon dotazů prostřednictvím [tříd prostředků](resource-classes-for-workload-management.md).  Třídy prostředků povolené pro přiřazení paměti k dotazu na základě členství v roli.  Primární výzvou s třídami prostředků je, že po konfiguraci neexistovalo žádné zásady správného řízení nebo schopnost řídit úlohu.  
+V minulosti jste pro SQL Analytics v Azure Synapse spravovali výkon dotazů prostřednictvím [tříd prostředků](resource-classes-for-workload-management.md).  Třídy prostředků povolené pro přiřazení paměti k dotazu na základě členství v roli.  Primární výzvou s třídami prostředků je, že po konfiguraci neexistovalo žádné zásady správného řízení nebo schopnost řídit úlohu.  
 
 Například udělení členství v roli uživatele ad hoc smallrc povoleno, že uživatel spotřebuje 100 % paměti v systému.  S třídami prostředků neexistuje žádný způsob, jak rezervovat a zajistit, aby prostředky byly k dispozici pro kritické úlohy.
 
 Správa úloh fondu SQL synapse v Azure Synapse se skládá ze tří konceptů vysoké úrovně: [Klasifikace pracovního vytížení](sql-data-warehouse-workload-classification.md), [Důležitost pracovního vytížení](sql-data-warehouse-workload-importance.md) a [Izolace pracovního vytížení](sql-data-warehouse-workload-isolation.md).  Tyto funkce vám poskytují větší kontrolu nad tím, jak vaše úloha využívá systémové prostředky.
 
-Klasifikace pracovního vytížení je koncept přiřazení požadavku skupině pracovního vytížení a nastavení úrovní důležitosti.  Historicky toto přiřazení bylo provedeno prostřednictvím členství v rolích pomocí [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  To lze nyní provést prostřednictvím [VYTVOŘIT PRACOVNÍ ZÁTĚŽ CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Funkce klasifikace poskytuje bohatší sadu možností, jako je popisek, relace a čas pro klasifikaci požadavků.
+Klasifikace pracovního vytížení je koncept přiřazení požadavku skupině pracovního vytížení a nastavení úrovní důležitosti.  Historicky toto přiřazení bylo provedeno prostřednictvím členství v rolích pomocí [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  To lze nyní provést prostřednictvím [VYTVOŘIT PRACOVNÍ ZÁTĚŽ CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Funkce klasifikace poskytuje bohatší sadu možností, jako je popisek, relace a čas pro klasifikaci požadavků.
 
-Důležitost pracovního vytížení ovlivňuje pořadí, ve kterém požadavek získá přístup k prostředkům.  V zaneprázdněném systému má požadavek s vyšší důležitostí první přístup k prostředkům.  Důležitost může také zajistit objednaný přístup ke zámkům. 
+Důležitost pracovního vytížení ovlivňuje pořadí, ve kterém požadavek získá přístup k prostředkům.  V zaneprázdněném systému má požadavek s vyšší důležitostí první přístup k prostředkům.  Důležitost může také zajistit objednaný přístup ke zámkům.
 
 Izolace pracovního vytížení rezervuje prostředky pro skupinu úloh.  Prostředky rezervované ve skupině úloh jsou drženy výhradně pro tuto skupinu úloh k zajištění spuštění.  Skupiny úloh také umožňují definovat množství prostředků, které jsou přiřazeny na požadavek, podobně jako třídy prostředků.  Skupiny úloh vám možnost rezervovat nebo zastropovat množství prostředků, které může sada požadavků spotřebovat.  Nakonec skupiny úloh jsou mechanismus pro použití pravidel, jako je například časový limit dotazu, na požadavky.  
-
 
 ## <a name="next-steps"></a>Další kroky
 

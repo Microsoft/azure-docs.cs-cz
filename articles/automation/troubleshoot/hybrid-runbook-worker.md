@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží – hybridní pracovníci runbooku Azure Automation
-description: Tento článek obsahuje informace o řešení potíží s hybridními pracovníky sady Runbook Azure Automation
+description: Tento článek obsahuje informace pro řešení potíží s hybridními pracovníky sady Runbook Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33e3e162892f1e2a148258273160ca26fa9c2efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153518"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637858"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Poradce při potížích s hybridními pracovníky runbooku
 
@@ -131,7 +131,9 @@ Počáteční fáze registrace pracovníka se nezdaří a zobrazí se následuj�
 #### <a name="cause"></a>Příčina
 
 Možné příčiny jsou následující:
+
 * V nastavení agenta je chybně zadané ID pracovního prostoru nebo klíč pracovního prostoru (primární). 
+
 * Hybridní pracovník runbooku nemůže stáhnout konfiguraci, což způsobuje chybu propojení účtu. Když Azure umožňuje řešení, podporuje pouze určité oblasti pro propojení pracovního prostoru Log Analytics a účtu Automation. Je také možné, že je v počítači nastaveno nesprávné datum nebo čas. Pokud je čas +/-15 minut od aktuálního času, onboarding se nezdaří.
 
 #### <a name="resolution"></a>Řešení
@@ -220,6 +222,35 @@ Tento problém může být způsoben tím, že proxy nebo síťová brána firew
 Protokoly jsou uloženy místně u každého hybridního pracovníka v **c:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes**. V **protokolech událostí aplikace a služeb\Microsoft-SMA\Operations** and Application and **Services Logs\Operations and Services Logs\Operations Manager logs\Operations Manager** lze ověřit, zda existují nějaké události s upozorněním nebo chybami. Tyto protokoly označují připojení nebo jiný typ problému, který ovlivňuje připojení role azure automatizace nebo problém došlo za běžných operací. Další nápovědu k řešení problémů s agentem Log Analytics najdete v [tématu Řešení problémů s agentem windows analýzy protokolů](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
 Hybridní pracovníci odesílají [výstup runbooku a zprávy](../automation-runbook-output-and-messages.md) do Azure Automation stejným způsobem, jakým úlohy runbooku spuštěné v cloudu odesílají výstup a zprávy. Můžete povolit datové proudy Verbose a Progress stejně jako pro runbooky.
+
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Scénář: Orchestrator.Sandbox.exe se nemůže připojit k Office 365 přes proxy server
+
+#### <a name="issue"></a>Problém
+
+Skript spuštěný v pracovníkovi hybridního runbooku Windows se nemůže připojit podle očekávání k Office 365 na izolovaném prostoru Orchestrator. Skript používá [connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) pro připojení. 
+
+Pokud upravíte **Orchestrator.Sandbox.exe.config** nastavit proxy a seznam bypass, izolovaného prostoru stále nepřipojí správně. Zdá se, že soubor **Powershell_ise.exe.config** se stejným nastavením seznamu proxy a seznamu bypass funguje podle očekávání. Protokoly automatizace správy služeb (SMA) a protokoly prostředí PowerShell neposkytují žádné informace týkající se serveru proxy.
+
+#### <a name="cause"></a>Příčina
+
+Připojení ke službě ADFS služby ADFS služby ADFNemůže obejít proxy server. Nezapomeňte, že izolovaného prostoru prostředí PowerShell běží jako přihlášený uživatel. Izolovaného prostoru Orchestrator je však silně přizpůsobena a může ignorovat nastavení souboru **Orchestrator.Sandbox.exe.config.** Má speciální kód pro zpracování nastavení počítače nebo MMA proxy, ale ne pro zpracování dalších vlastních nastavení proxy serveru. 
+
+#### <a name="resolution"></a>Řešení
+
+Problém izolovaného prostoru Orchestrator můžete vyřešit migrací skriptu tak, aby místo modulu MSOnline pro rutiny prostředí PowerShell používal moduly Azure AD. Viz [Migrace z Orchestrator do Azure Automation (Beta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+
+Pokud chcete pokračovat v používání rutin modulu MSOnline, změňte skript tak, aby používal [příkaz Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7). Zadejte hodnoty `ComputerName` `Credential` parametrů a. 
+
+```powershell
+$Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
+Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential 
+{ Connect-MsolService … }
+```
+
+Tato změna kódu spustí zcela novou relaci prostředí PowerShell v kontextu zadaných pověření. Měl by umožnit přenos toku přes proxy server, který ověřuje aktivního uživatele.
+
+>[!NOTE]
+>Toto řešení znemožňuje manipulaci s konfiguračním souborem izolovaného prostoru. I v případě, že se vám podaří vytvořit konfigurační soubor pracovat se skriptem, soubor dostane vymazány pokaždé, když hybridní runbook worker agent je aktualizován.
 
 ### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>Scénář: Hybridní pracovník runbooku se nehlásí
 

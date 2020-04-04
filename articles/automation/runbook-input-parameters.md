@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 17be351d4af3d277242af70ea96e8735a5f68bc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3741adbab6bcbc68f266c331e3056013afc0105e
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78329081"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656034"
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -33,7 +33,7 @@ Runbooky pracovního postupu Prostředí PowerShell a Prostředí v Azure Automa
 |:--- |:--- |
 | Typ |Povinná hodnota. Pro hodnotu parametru byl očekáván datový typ. Libovolný typ .NET je platný. |
 | Name (Název) |Povinná hodnota. Název parametru Tento název musí být jedinečný v rámci runbooku, musí začínat písmenem a může obsahovat pouze písmena, čísla nebo podtržítka. |
-| Povinné |Nepovinný parametr. Logická hodnota určující, zda parametr vyžaduje hodnotu. Pokud tuto hodnotu nastavíte na **hodnotu true**, musí být při spuštění sady Runbook poskytnuta hodnota. Pokud tuto hodnotu nastavíte na **hodnotu false**, je hodnota nepovinná. Pokud nezadáte hodnotu pro **Mandatory** vlastnost, PowerShell považuje vstupní parametr volitelné ve výchozím nastavení. |
+| Povinné |Nepovinný parametr. Logická hodnota určující, zda parametr vyžaduje hodnotu. Pokud tuto hodnotu nastavíte na hodnotu True, musí být při spuštění sady Runbook poskytnuta hodnota. Pokud nastavíte hodnotu False, hodnota je volitelná. Pokud nezadáte hodnotu vlastnosti, `Mandatory` prostředí PowerShell považuje vstupní parametr ve výchozím nastavení za volitelný. |
 | Výchozí hodnota |Nepovinný parametr. Hodnota, která se používá pro parametr, pokud žádná vstupní hodnota je předána při spuštění runbooku. Sada Runbook může nastavit výchozí hodnotu pro libovolný parametr. |
 
 Prostředí Windows PowerShell podporuje více atributů vstupních parametrů, než jsou uvedeny výše, jako je například ověření, aliasy a sady parametrů. Azure Automation však aktuálně podporuje pouze vlastnosti vstupního parametru uvedené.
@@ -51,13 +51,13 @@ Param
 )
 ```
 
-Teď nakonfigurujeme vstupní parametry pro runbook pracovního postupu prostředí PowerShell, který vypočtou podrobnosti o virtuálních počítačích, buď jeden virtuální počítač, nebo všechny virtuální počítače v rámci skupiny prostředků. Tato kniha runbook má dva parametry, jak je znázorněno na následujícím snímku obrazovky: název virtuálního počítače (*VMName*) a název skupiny prostředků (*resourceGroupName*).
+Teď nakonfigurujeme vstupní parametry pro runbook pracovního postupu prostředí PowerShell, který vypočtou podrobnosti o virtuálních počítačích, buď jeden virtuální počítač, nebo všechny virtuální počítače v rámci skupiny prostředků. Tato runbook má dva parametry, jak je znázorněno na`VMName`následujícím snímku obrazovky: název`resourceGroupName`virtuálního počítače ( ) a název skupiny prostředků ( ).
 
 ![Pracovní postup prostředí PowerShell automatizace](media/automation-runbook-input-parameters/automation-01-powershellworkflow.png)
 
 V této definici parametru jsou vstupní parametry jednoduchými parametry typu string.
 
-Všimněte si, že runbooky pracovního postupu prostředí PowerShell a Prostředí PowerShell podporují všechny jednoduché typy a složité typy, jako je **objekt** nebo **PSCredential** pro vstupní parametry. Pokud má vaše runbook vstupní parametr objektu, musíte použít hodnotitelnou hodnotu prostředí PowerShell s dvojicemi název-hodnota předat hodnotu. Například máte následující parametr v runbooku.
+Všimněte si, že runbooky pracovního postupu prostředí PowerShell a Prostředí PowerShell podporují všechny jednoduché typy a složité typy, jako `Object` jsou vstupní parametry nebo `PSCredential` pro ně. Pokud má vaše runbook vstupní parametr objektu, musíte použít hodnotitelnou hodnotu prostředí PowerShell s dvojicemi název-hodnota předat hodnotu. Například máte následující parametr v runbooku.
 
 ```powershell
 [Parameter (Mandatory = $true)]
@@ -71,7 +71,7 @@ V takovém případě můžete parametru předat následující hodnotu.
 ```
 
 > [!NOTE]
-> Pokud nepředáte hodnotu volitelnému parametru String s nulovou výchozí hodnotou, je hodnota parametru prázdný řetězec namísto **null**.
+> Pokud nepředáte hodnotu volitelnému parametru String s nulovou výchozí hodnotou, hodnota parametru je prázdný řetězec namísto Null.
 
 ### <a name="configure-input-parameters-in-graphical-runbooks"></a>Konfigurace vstupních parametrů v grafických sadách runbooků
 
@@ -83,19 +83,19 @@ Grafický runbook používá tyto hlavní aktivity runbooku:
 * Definice rutiny [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) pro získání vlastností virtuálního počítače.
 * Použití aktivity [zápisu a výstupu](/powershell/module/microsoft.powershell.utility/write-output) k výstupu názvů virtuálních počítačů. 
 
-Aktivita **Get-AzVM** definuje dva vstupy, název virtuálního virtuálního mísy a název skupiny prostředků. Vzhledem k tomu, že tyto názvy se mohou lišit při každém spuštění runbooku, musíte do runbooku přidat vstupní parametry, abyste tyto vstupy přijali. Informace o [vytváření grafických funkcí v azure automation](automation-graphical-authoring-intro.md).
+Aktivita `Get-AzVM` definuje dva vstupy, název virtuálního virtuálního serveru a název skupiny prostředků. Vzhledem k tomu, že tyto názvy se mohou lišit při každém spuštění runbooku, musíte do runbooku přidat vstupní parametry, abyste tyto vstupy přijali. Informace o [vytváření grafických funkcí v azure automation](automation-graphical-authoring-intro.md).
 
 Chcete-li nakonfigurovat vstupní parametry, postupujte takto.
 
-1. Na stránce Runbook vyberte grafickou runbook u **klikněte** na **Upravit**.
+1. Na stránce Runbook vyberte grafickou runbook u klikněte na **Upravit**.
 2. V grafickém editoru klikněte na tlačítko **Vstup a výstup** a potom **přidejte vstup** a otevřete podokno Vstupní parametr knihy Runbook.
 
    ![Automatizace grafického runbooku](media/automation-runbook-input-parameters/automation-02-graphical-runbok-editor.png)
 
-3. Ovládací prvek Vstup a Výstup zobrazí seznam vstupních parametrů, které jsou definovány pro runbook. Zde můžete buď přidat nový vstupní parametr, nebo upravit konfiguraci existujícího vstupního parametru. Chcete-li přidat nový parametr pro runbook, klikněte na **Přidat vstup** a otevřete okno **vstupního parametru runbooku,** kde můžete konfigurovat parametry pomocí vlastností definovaných v [grafickém vytváření v Azure Automation](automation-graphical-authoring-intro.md).
+3. Ovládací prvek Vstup a Výstup zobrazí seznam vstupních parametrů, které jsou definovány pro runbook. Zde můžete buď přidat nový vstupní parametr, nebo upravit konfiguraci existujícího vstupního parametru. Chcete-li přidat nový parametr pro runbook, klikněte na **Přidat vstup** otevřete okno **vstupního parametru runbooku,** kde můžete konfigurovat parametry pomocí vlastností definovaných v [grafickém vytváření v Azure Automation](automation-graphical-authoring-intro.md).
 
     ![Přidat nový vstup](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
-4. Vytvořte dva parametry s následujícími vlastnostmi, které budou použity aktivitou **Get-AzVM,** a klepněte na tlačítko **OK**.
+4. Vytvořte dva parametry s následujícími `Get-AzVM` vlastnostmi, které bude aktivita používat, a klepněte na tlačítko **OK**.
 
    * Parametr 1:
         * **Název** -- **VMName**
@@ -115,7 +115,7 @@ Chcete-li nakonfigurovat vstupní parametry, postupujte takto.
 
 ### <a name="configure-input-parameters-in-python-runbooks"></a>Konfigurace vstupních parametrů v runbookech Pythonu
 
-Na rozdíl od Prostředí PowerShell, pracovního postupu prostředí PowerShell a grafických sad runbooků neberou sady Runbook v Pythonu pojmenované parametry. Editor runbooku analyzuje všechny vstupní parametry jako pole hodnot argumentů. K poli můžete přistupovat importem modulu **sys** do skriptu Pythonu a potom pomocí pole **sys.argv.** Je důležité si uvědomit, že první `sys.argv[0]`prvek pole, , je název skriptu. Proto je prvním skutečným vstupním *parametrem sys.argv[1]*.
+Na rozdíl od Prostředí PowerShell, pracovního postupu prostředí PowerShell a grafických sad runbooků neberou sady Runbook v Pythonu pojmenované parametry. Editor runbooku analyzuje všechny vstupní parametry jako pole hodnot argumentů. K poli můžete přistupovat `sys` importem modulu do skriptu `sys.argv` Pythonu a potom pomocí pole. Je důležité si uvědomit, že první `sys.argv[0]`prvek pole, , je název skriptu. Proto je `sys.argv[1]`prvním skutečným vstupním parametrem .
 
 Příklad použití vstupních parametrů v runbooku Pythonu najdete v tématu [Moje první runbook v Pythonu v Azure Automation](automation-first-runbook-textual-python2.md).
 
@@ -141,7 +141,7 @@ Při [spuštění sady Runbook](start-runbooks.md#start-a-runbook-with-the-azure
 V popisku pod vstupním polem se zobrazí vlastnosti, které byly nastaveny tak, aby definovaly atributy parametrů, například povinná nebo volitelná, typová, výchozí hodnota. Bublina nápovědy vedle názvu parametru také definuje klíčové informace potřebné k rozhodování o vstupních hodnotách parametrů. 
 
 > [!NOTE]
-> Parametry řetězce podporují prázdné hodnoty typu String. Zadání **[EmptyString]** do pole vstupního parametru předá parametru prázdný řetězec. Parametry řetězce také nepodporují hodnotu Null. Pokud nepředáte parametru řetězce žádnou hodnotu, prostředí PowerShell ji interpretuje jako null.
+> Parametry řetězce podporují prázdné hodnoty typu String. Zadání `[EmptyString]` do pole vstupního parametru předá parametru prázdný řetězec. Parametry řetězce také nepodporují hodnotu Null. Pokud nepředáte parametru řetězce žádnou hodnotu, prostředí PowerShell ji interpretuje jako null.
 
 #### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>Spuštění publikované knihy Runbook pomocí rutin prostředí PowerShell a přiřazení parametrů
 
@@ -163,11 +163,11 @@ V popisku pod vstupním polem se zobrazí vlastnosti, které byly nastaveny tak,
    ```
 
 > [!NOTE]
-> Při spuštění sady Runbook pomocí rutin prostředí PowerShell je vytvořen výchozí parametr *MicrosoftApplicationManagementStartedBy*s hodnotou **PowerShell**. Tento parametr můžete zobrazit v podokně podrobností o projektu.  
+> Při spuštění runbooku pomocí rutin prostředí PowerShell je `MicrosoftApplicationManagementStartedBy`s hodnotou `PowerShell`vytvořen výchozí parametr , . Tento parametr můžete zobrazit v podokně podrobností o projektu.  
 
 #### <a name="start-a-runbook-using-an-sdk-and-assign-parameters"></a>Spuštění sady Runbook pomocí sady SDK a přiřazení parametrů
 
-* **Metoda Azure Resource Manager:** Runbook můžete spustit pomocí sady SDK programovacího jazyka. Níže je fragment kódu Jazyka C# pro spuštění runbooku ve vašem účtu Automation. Veškerý kód si můžete prohlédnout v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
+* **Metoda Azure Resource Manager:** Runbook můžete spustit pomocí sady SDK programovacího jazyka. Níže je fragment kódu Jazyka C# pro spuštění runbooku ve vašem účtu Automation. Veškerý kód si můžete prohlédnout v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/automation/Microsoft.Azure.Management.Automation/tests/TestSupport/AutomationTestBase.cs).
 
    ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -187,7 +187,7 @@ V popisku pod vstupním polem se zobrazí vlastnosti, které byly nastaveny tak,
       }
    ```
 
-* **Metoda modelu klasického nasazení Azure:** Runbook můžete spustit pomocí sady SDK programovacího jazyka. Níže je fragment kódu Jazyka C# pro spuštění runbooku ve vašem účtu Automation. Veškerý kód si můžete prohlédnout v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
+* **Metoda modelu klasického nasazení Azure:** Runbook můžete spustit pomocí sady SDK programovacího jazyka. Níže je fragment kódu Jazyka C# pro spuštění runbooku ve vašem účtu Automation. Veškerý kód si můžete prohlédnout v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/automation/Microsoft.Azure.Management.Automation/tests/TestSupport/AutomationTestBase.cs).
 
    ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -207,7 +207,7 @@ V popisku pod vstupním polem se zobrazí vlastnosti, které byly nastaveny tak,
     }
    ```
 
-   Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů *runbooku VMName* a *resourceGroupName* a jejich hodnot. Pak spusťte runbook. Níže je fragment kódu C# pro volání metody, která je definována výše.
+   Chcete-li spustit tuto metodu, vytvořte slovník `VMName` `resourceGroupName` pro uložení parametrů runbooku a jejich hodnot. Pak spusťte runbook. Níže je fragment kódu C# pro volání metody, která je definována výše.
 
    ```csharp
    IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -222,21 +222,21 @@ V popisku pod vstupním polem se zobrazí vlastnosti, které byly nastaveny tak,
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Spuštění runbooku pomocí rozhraní REST API a přiřazení parametrů
 
-Můžete vytvořit a spustit úlohu runbooku s rozhraním Azure Automation REST API pomocí metody **PUT** s následujícím identifikátorem URI požadavku:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
+Můžete vytvořit a spustit úlohu runbooku s rozhraním AZURE Automation REST API pomocí `PUT` metody s následujícím identifikátorem URI požadavku:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
 
 V identifikátoru URI požadavku nahraďte následující parametry:
 
-* *subscriptionID*: ID předplatného Azure.  
-* *název*skupiny prostředků pro účet automatizace.
-* *automationAccountName*: Název účtu Automation, který je hostován v rámci zadané cloudové služby.  
-* *jobName*: Identifikátor GUID pro úlohu. Identifikátory GUID v prostředí PowerShell lze vytvořit pomocí `[GUID]::NewGuid().ToString()*`.
+* `subscriptionId`: ID předplatného Azure.  
+* `resourceGroupName`: Název skupiny prostředků pro účet automatizace.
+* `automationAccountName`: Název účtu Automation, který je hostovaný v rámci zadané cloudové služby.  
+* `jobName`: Identifikátor GUID pro úlohu. Identifikátory GUID v prostředí PowerShell lze vytvořit pomocí `[GUID]::NewGuid().ToString()*`.
 
 Chcete-li předat parametry úloze runbooku, použijte tělo požadavku. Bere následující informace, poskytované ve formátu JSON:
 
 * Název runbooku: Povinné. Název runbooku pro spuštění úlohy.  
 * Parametry runbooku: Volitelné. Slovník seznamu parametrů ve formátu (název, hodnota), kde název je typu String a hodnota může být libovolná platná hodnota JSON.
 
-Pokud chcete spustit **get-AzureVMTextal** runbook vytvořený dříve s *VMName* a *resourceGroupName* jako parametry, použijte následující formát JSON pro tělo požadavku.
+Pokud chcete spustit **get-AzureVMTextal** runbook vytvořený `VMName` `resourceGroupName` dříve s a jako parametry, použijte následující formát JSON pro tělo požadavku.
 
 ```json
     {
@@ -254,7 +254,7 @@ Stavový kód HTTP 201 je vrácen, pokud je úloha úspěšně vytvořena. Dalš
 
 ### <a name="test-a-runbook-and-assign-parameters"></a>Testování runbooku a přiřazení parametrů
 
-Při [testování konceptverze sady Runbook](automation-testing-runbook.md) pomocí možnosti test se otevře stránka **Test.** Na této stránce můžete nakonfigurovat hodnoty pro parametry, které jste vytvořili.
+Při [testování konceptverze sady Runbook](automation-testing-runbook.md) pomocí možnosti test se otevře stránka Test. Na této stránce můžete nakonfigurovat hodnoty pro parametry, které jste vytvořili.
 
 ![Testování a přiřazení parametrů](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
 
@@ -270,7 +270,7 @@ Můžete vytvořit [webhookpro](automation-webhooks.md) váš runbook a nakonfig
 
 ![Vytvoření webového háku a přiřazení parametrů](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-Při spuštění runbookpomocí webhooku je odeslán předdefinovaný vstupní parametr *[WebhookData](automation-webhooks.md)* spolu se vstupními parametry, které definujete. 
+Při spuštění runbooku pomocí webhooku je odeslán `[WebhookData](automation-webhooks.md)` předdefinovaný vstupní parametr spolu se vstupními parametry, které definujete. 
 
 ![Parametr WebhookData](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 
@@ -282,7 +282,7 @@ Tato část používá příklad, ve kterém skript prostředí PowerShell volá
 
 ### <a name="create-the-json-file"></a>Vytvoření souboru JSON
 
-Do textového souboru zadejte následující `test.json` kód a uložte jej jako někde v místním počítači.
+Zadejte následující kód do textového souboru a uložte jej jako **test.json** někde v místním počítači.
 
 ```json
 {
@@ -328,9 +328,9 @@ Teď můžete volat runbook z místního počítače pomocí Azure PowerShellu.
    ```
 
     >[!NOTE]
-    >Pro sady Runbooks prostředí PowerShell jsou **add-azaccount** a **add-AzureRMAccount** aliasy pro **Connect-AzAccount**. Všimněte si, že tyto aliasy nejsou k dispozici pro grafické sady Runbook. Grafická kniha runbook může používat pouze **Connect-AzAccount** sám.
+    >Pro sady Runbook `Add-AzAccount` `Add-AzureRMAccount` prostředí PowerShell `Connect-AzAccount`a jsou aliasy pro . Všimněte si, že tyto aliasy nejsou k dispozici pro grafické sady Runbook. Grafická kniha runbook `Connect-AzAccount` může používat pouze samostatně.
 
-1. Získejte obsah uloženého souboru JSON a převeďte jej na řetězec. `JsonPath`je cesta, kam jste uložili soubor JSON.
+1. Získejte obsah uloženého souboru JSON a převeďte jej na řetězec. `JsonPath`označuje cestu, kam jste uložili soubor JSON.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -342,7 +342,7 @@ Teď můžete volat runbook z místního počítače pomocí Azure PowerShellu.
    $JsonParams = @{"json"=$json}
    ```
 
-1. Vytvořte hodnotitelnou hodnotu hashpro parametry pro **Start-AzAutomationRunbook**. 
+1. Vytvořte hodnotitelnou hodnotu `Start-AzAutomationRunbook`hash pro parametry pro rozhraní . 
 
    ```powershell
    $RBParams = @{
@@ -353,7 +353,7 @@ Teď můžete volat runbook z místního počítače pomocí Azure PowerShellu.
    }
    ```
 
-   Všimněte si, že nastavujete hodnotu *Parameters* na objekt prostředí PowerShell, který obsahuje hodnoty ze souboru JSON.
+   Všimněte si, že nastavujete hodnotu objektu `Parameters` PowerShell, který obsahuje hodnoty ze souboru JSON.
 1. Spusťte runbook.
 
    ```powershell

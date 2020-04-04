@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 21fa1c4faa4a080b9b495e1481fdadcd7e8bea10
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a8d6d25a2ba7f0040b13982f14f3d6081ac32f15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619477"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637998"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Podpora modulů Az ve službě Azure Automation
 
@@ -18,20 +18,27 @@ Azure Automation podporuje použití [modulu Azure PowerShell Az](/powershell/az
 
 ## <a name="considerations"></a>Požadavky
 
-Existuje mnoho věcí, které je třeba vzít v úvahu při použití kumulativní modul Uz v Azure Automation. Sady Runbook a moduly lze používat řešení vyšší úrovně ve vašem účtu Automation. Úpravy runbooků nebo upgradovacích modulů mohou potenciálně způsobit problémy s vašimi runbooky. Před importem nových modulů Az byste měli pečlivě otestovat všechny sady Runbook a řešení v samostatném účtu Automation. Jakékoli změny modulů mohou negativně ovlivnit řešení [Start/Stop.](automation-solution-vm-management.md) Nedoporučujeme měnit moduly a runbooky v účtech Automatizace, které obsahují žádná řešení. Toto chování není specifické pro moduly Az. Je třeba vzít v úvahu při zavádění jakékoli změny v účtu automatizace.
+Při používání modulů Az v Azure Automation je třeba vzít v úvahu několik věcí:
 
-Import modulu Az v účtu Automation automaticky neimportuje modul v relaci prostředí PowerShell, který používají sady Runbook. Moduly se importují do relace prostředí PowerShell v následujících situacích:
+* Řešení vyšší úrovně ve vašem účtu Automation mohou používat sady Runbook a moduly. Proto úpravy runbooků nebo upgradovacích modulů mohou potenciálně způsobit problémy s vašimi řešeními. Před importem nových modulů Az byste měli pečlivě otestovat všechny sady Runbook a řešení v samostatném účtu Automation. 
 
-* Když runbook vyvolá rutinu z modulu
-* Když runbook importuje modul `Import-Module` explicitně s rutinou
-* Když runbook importuje jiný modul v závislosti na modulu
+* Jakékoli změny modulů mohou negativně ovlivnit řešení [Start/Stop.](automation-solution-vm-management.md) 
+
+* Import modulu Az v účtu Automation automaticky neimportuje modul v relaci prostředí PowerShell, který sady Runbook používají. Moduly se importují do relace prostředí PowerShell v následujících situacích:
+
+    * Když runbook vyvolá rutinu z modulu
+    * Když runbook importuje modul `Import-Module` explicitně s rutinou
+    * Když runbook importuje jiný modul v závislosti na modulu
+
+> [!NOTE]
+> Nedoporučujeme měnit moduly a runbooky v účtech Automatizace, které obsahují žádná řešení. Toto ustanovení není specifické pro moduly Az. Je třeba vzít v úvahu při zavádění jakékoli změny v účtu automatizace.
 
 > [!IMPORTANT]
 > Ujistěte se, že runbooky v účtu Automation importují buď moduly Az nebo moduly [AzureRM,](https://www.powershellgallery.com/packages/AzureRM/6.13.1) ale ne obojí, do relace Prostředí PowerShell. Pokud sada Runbook importuje moduly Az před moduly AzureRM, sada runbook se dokončí. Chyba odkazující na [rutinu Get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) se však zobrazí v datových proudech úloh a rutinách úloh nemusí být správně spuštěna. Pokud sada Runbook importuje moduly AzureRM před moduly Az, sada Runbook se také dokončí. V tomto případě se však zobrazí chyba v datových proudech úloh oznamující, že az a AzureRM nelze importovat ve stejné relaci nebo použít ve stejném runbooku.
 
 ## <a name="migrating-to-az-modules"></a>Migrace na moduly Az
 
-Doporučujeme otestovat migraci na moduly Az v testovacím účtu Automatizace. Po vytvoření tohoto účtu můžete pomocí pokynů v této části pracovat s moduly.
+Doporučujeme otestovat migraci na moduly Az v testovacím účtu Automatizace. Po vytvoření účtu můžete pomocí pokynů v této části pracovat s moduly.
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Zastavení a zrušení plánování všech runbooků, které používají moduly AzureRM
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dbcf953ad5f70c6ddf2a73eef2ea712f1e1278c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821930"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632082"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
@@ -69,7 +69,7 @@ Dalším krokem je vytvoření runbooku v Azure Automation, ve kterém se nachá
 Chcete-li vytvořit novou runbook Azure Automation, postupujte takto:
 
 - Přístup k účtu Azure Automation, který jste vytvořili v předchozím kroku
-- V podokně účtů automatizace klikněte na položku nabídky**Runbook**na levé straně a vytvořte novou runbook Azure Automation se skriptem Prostředí PowerShell. Další informace o vytváření runbooků pro automatizaci najdete [v tématu Vytvoření novésady Runbook](../automation/manage-runbooks.md#create-a-runbook).
+- V podokně účtů automatizace klikněte na položku nabídky**Runbook**na levé straně a vytvořte novou runbook Azure Automation se skriptem Prostředí PowerShell. Další informace o vytváření runbooků pro automatizaci najdete [v tématu Vytvoření novésady Runbook](../automation/manage-runbooks.md#creating-a-runbook).
 - Chcete-li přidat nový soubor Runbook, klikněte na možnost nabídky "**+Přidat runbook**" a potom klikněte na "**Rychlé vytvoření – Vytvoření novésady Runbook**".
 - V podokně Runbook zadejte název sady Runbook (pro účely tohoto příkladu se používá **"AutomaticTuningEmailAutomation**"), vyberte typ sady Runbook jako **prostředí PowerShell** a napište popis tohoto sady Runbook, který popisuje jeho účel.
 - Kliknutím na tlačítko **Vytvořit** dokončete vytvoření nového runbooku.
@@ -88,7 +88,7 @@ V případě několika odběrů je můžete přidat jako čárku k vlastnosti "$
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
 #
-# Provided “as-is” with no implied warranties or support.
+# Provided "as-is" with no implied warranties or support.
 # The script is released to the public domain.
 #
 # Replace <SUBSCRIPTION_ID_WITH_DATABASES> in the header with your Azure subscription ID.
@@ -225,7 +225,7 @@ Dalším krokem je přidání tří úloh (vytvoření, získání výstupu a od
    - Dokončení vytvoření této akce kliknutím na tlačítko **"Uložit tok**"
 
 > [!TIP]
-> Chcete-li odesílat automatické e-maily různým příjemcům, vytvořte samostatné toky. V těchto dodatečných tocích změňte e-mailovou adresu příjemce v poli Do a řádek předmětu e-mailu v poli Předmět. Vytváření nových runbooků v Azure Automation s přizpůsobenými skripty PowerShellu (například se změnou ID předplatného Azure) umožňuje další přizpůsobení automatizovaných scénářů, například posílání e-mailů samostatným příjemcům na automatické ladění doporučení pro samostatná předplatná.
+> Chcete-li odesílat automatické e-maily různým příjemcům, vytvořte samostatné toky. V těchto dodatečných tocích změňte e-mailovou adresu příjemce v poli Do a řádek předmětu e-mailu v poli Předmět. Vytváření nových runbooků v Azure Automation s přizpůsobenými skripty PowerShellu (například se změnou ID předplatného Azure) umožňuje další přizpůsobení automatizovaných scénářů, například posílání e-mailů samostatným příjemcům na doporučení pro automatické ladění pro samostatná předplatná.
 >
 
 Výše uvedené uzavírá kroky potřebné ke konfiguraci pracovního postupu úlohy doručování e-mailů. Celý tok skládající se ze tří vytvořených akcí je zobrazen na následujícím obrázku.

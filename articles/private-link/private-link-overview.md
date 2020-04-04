@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5b4347cb5032b7f3651d0d3fcb20dc5d416f9bee
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1bef4e5f4129ddc8300d61d609392ce0b07b74b8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546573"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656255"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Azure Private Link umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám Azure hostovaným zákazníkům nebo partnerským službám prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -62,6 +62,7 @@ Azure Private Link poskytuje následující výhody:
 |  |Azure Relay | Všechny veřejné regiony      |   Preview   |
 |  |Azure Event Grid| VÝCHODNÍ USA, ZÁPADNÍ USA 2, JIŽNÍ STŘED USA      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/event-grid/network-security)   |
 |  |Azure Web Apps | VÝCHODNÍ USA, ZÁPADNÍ USA 2, JIŽNÍ STŘED USA      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Machine Learning | VÝCHODNÍ USA, ZÁPADNÍ USA 2, JIŽNÍ STŘED USA      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 
 Nejaktuálnější oznámení najdete na stránce [aktualizace virtuální sítě Azure](https://azure.microsoft.com/updates/?product=virtual-network).
 

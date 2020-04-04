@@ -11,18 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c1a4ffcab3d10f1dc91ce036e995ae0026a0d718
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5e2cd03ae878e80139a7f7a8ba67cef15b24d571
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619015"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633494"
 ---
 # <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Použití štítků k instrumentaci dotazů ve fondu Synapse SQL
+
 Součástí tohoto článku jsou tipy pro vývoj řešení pomocí popisků instrumentovat dotazy ve fondu SQL.
 
+Tipy pro použití popisků k instrumentaci dotazů v Azure SQL Data Warehouse pro vývoj řešení.
 
 ## <a name="what-are-labels"></a>Co jsou štítky?
+
 Fond SQL podporuje koncept nazývaný popisky dotazů. Než se vydáte do jakékoli hloubky, podívejme se na příklad:
 
 ```sql
@@ -32,7 +35,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Poslední řádek označí řetězec Popisek mého dotazu na dotaz. Tato značka je užitečná, protože popisek je možné dotazovat prostřednictvím dmvs. 
+Poslední řádek označí řetězec Popisek mého dotazu na dotaz. Tato značka je užitečná, protože popisek je možné dotazovat prostřednictvím dmvs.
 
 Dotazování na popisky poskytuje mechanismus pro vyhledání problémových dotazů a pomáhá identifikovat průběh prostřednictvím spuštění ELT.
 
@@ -48,11 +51,8 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Při dotazování je nezbytné umístit čtvercové závorky nebo dvojité uvozovky kolem popisku slova. Popisek je vyhrazené slovo a způsobí chybu, pokud není oddělen. 
-> 
-> 
+> Při dotazování je nezbytné umístit čtvercové závorky nebo dvojité uvozovky kolem popisku slova. Popisek je vyhrazené slovo a způsobí chybu, pokud není oddělen.
 
 ## <a name="next-steps"></a>Další kroky
+
 Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).
-
-

@@ -11,18 +11,19 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47ee6f7627602732800949bcb9701045fcbff1a8
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b24706943cdf59fba89a8007c4914b628b9e34d5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583166"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632967"
 ---
-# <a name="troubleshooting-synapse-sql-pool-in-azure-synapse-analytics"></a>Poradce při potížích s fondem Synapse SQL ve službě Azure Synapse Analytics
+# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Poradce při potížích se službou SQL Analytics v Azure Synapse
 
 V tomto článku jsou uvedeny běžné otázky týkající se řešení potíží.
 
 ## <a name="connecting"></a>Připojení
+
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Přihlášení uživatele NT AUTHORITY\ANONYMOUS LOGON selhalo. (Microsoft SQL Server, Chyba: 18456) | K této chybě dochází, když se uživatel služby Azure AD pokusí připojit k hlavní databázi, ale nemá uživatele v hlavním serveru.  Chcete-li tento problém opravit, zadejte fond SQL, ke kterému se chcete připojit v době připojení, nebo přidejte uživatele do hlavní databáze.  Další informace najdete v článku [Přehled zabezpečení.](sql-data-warehouse-overview-manage-security.md) |
@@ -31,7 +32,8 @@ V tomto článku jsou uvedeny běžné otázky týkající se řešení potíž�
 | Blokováno bránou firewall                                          | Fondy SQL jsou chráněny bránami firewall, aby bylo zajištěno, že k databázi mají přístup pouze známé adresy IP. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením je nutné explicitně povolit adresu IP nebo rozsah adres.  Chcete-li nakonfigurovat bránu firewall pro přístup, postupujte podle pokynů v části [Konfigurace přístupu brány firewall serveru pro ip adresu klienta](create-data-warehouse-portal.md) v [pokynech pro zřizování](create-data-warehouse-portal.md). |
 | Nelze se připojit pomocí nástroje nebo ovladače.                           | Fond SYNAPSE SQL doporučuje používat [ssms](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [SSDT pro Visual Studio](sql-data-warehouse-install-visual-studio.md)nebo [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) k dotazování na data. Další informace o ovladačích a připojení k Azure Synapse najdete [v tématu ovladače pro Azure Synapse](sql-data-warehouse-connection-strings.md) a [připojení k Azure Synapse](sql-data-warehouse-connect-overview.md) články. |
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
+
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Průzkumník objektů visual studia chybí uživatelům Azure AD           | Jedná se o známý problém.  Jako zástupné řešení zobrazíte uživatele v [souboru sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15).  Další informace o používání Služby Azure Active Directory s fondem Synapse SQL najdete v článku [Ověřování do Azure Synapse.](sql-data-warehouse-authentication.md) |
@@ -39,6 +41,7 @@ V tomto článku jsou uvedeny běžné otázky týkající se řešení potíž�
 | Generování skriptů se nezdaří v SSMS                               | Generování skriptu pro fond synapse SQL se nezdaří, pokud je možnost Generovat skript pro závislé objekty nastavena na hodnotu True. Jako řešení musí uživatelé ručně přejít na **Tools -> Options ->SQL Server Object Explorer -> Generovat skript pro závislé možnosti a nastavit na hodnotu false.** |
 
 ## <a name="performance"></a>Výkon
+
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Poradce při potížích s výkonem dotazu                            | Pokud se pokoušíte vyřešit konkrétní dotaz, začněte s [informacemi o tom, jak sledovat dotazy](sql-data-warehouse-manage-monitor.md#monitor-query-execution). |
@@ -50,15 +53,16 @@ V tomto článku jsou uvedeny běžné otázky týkající se řešení potíž�
 | Nízký výkon dotazu v důsledku špatné kvality indexu     | Někdy dotazy mohou zpomalit z důvodu [kvality indexu špatné columnstore](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality).  Další informace a obnovení indexů za [účelem zlepšení kvality segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)naleznete v tomto článku . |
 
 ## <a name="system-management"></a>Správa systému
+
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: Nelze provést operaci, protože server by překročil povolenou kvótu jednotky transakcí databáze 45000. | Zmenšete [dwu](what-is-a-data-warehouse-unit-dwu-cdwu.md) databáze, kterou se pokoušíte vytvořit, nebo [požádejte o zvýšení kvóty](sql-data-warehouse-get-started-create-support-ticket.md). |
-| Zkoumání využití prostoru                              | Informace o využití místa v systému naleznete v tématu [Velikosti tabulek.]( ../../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries) |
+| Zkoumání využití prostoru                              | Informace o využití místa v systému naleznete v tématu [Velikosti tabulek.](sql-data-warehouse-tables-overview.md#table-size-queries) |
 | Pomoc se správou tabulek                                    | Nápovědu ke správě tabulek najdete v článku [Přehled tabulky.](sql-data-warehouse-tables-overview.md)  Tento článek také obsahuje odkazy na podrobnější témata, jako [jsou datové typy tabulky](sql-data-warehouse-tables-data-types.md), Distribuce [tabulky](sql-data-warehouse-tables-distribute.md), [Indexování tabulky](sql-data-warehouse-tables-index.md), Rozdělení tabulky do [oddílů](sql-data-warehouse-tables-partition.md), [Udržování statistik tabulky](sql-data-warehouse-tables-statistics.md) a [Dočasné tabulky](sql-data-warehouse-tables-temporary.md). |
 | Panel průběhu transparentního šifrování dat (TDE) se na webu Azure Portal neaktualizuje | Stav TDE můžete zobrazit pomocí [prostředí powershell .](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |
 
-
 ## <a name="differences-from-sql-database"></a>Rozdíly od databáze SQL
+
 | Problém                                 | Řešení                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | Nepodporované funkce databáze SQL     | Viz [Nepodporované funkce tabulky](sql-data-warehouse-tables-overview.md#unsupported-table-features). |
@@ -69,6 +73,7 @@ V tomto článku jsou uvedeny běžné otázky týkající se řešení potíž�
 | UDF nepodporují příkazy SELECT | Toto je aktuální omezení našich UDFs.  Syntaxi, kterou podporujeme, naleznete v tématu [CREATE FUNCTION.](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=aps-pdw-2016-au7) |
 
 ## <a name="next-steps"></a>Další kroky
+
 Další pomoc při hledání řešení vašeho problému, zde jsou některé další zdroje, které můžete vyzkoušet.
 
 * [Blogy](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)

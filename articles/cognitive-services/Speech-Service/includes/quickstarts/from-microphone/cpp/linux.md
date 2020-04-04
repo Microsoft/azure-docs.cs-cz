@@ -1,42 +1,36 @@
 ---
-title: 'Úvodní příručka: Rozpoznávání řeči z mikrofonu, C++ (Linux) - Služba řeči'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 1ba1f2a61a293880e81dde0ce1f93460a555fa62
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: dapine
+ms.openlocfilehash: 07148941578749a632a6a7735d1e406ef9f81b9b
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925011"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659334"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku řeči Azure<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
 
-## <a name="add-sample-code"></a>Přidání ukázkového kódu
+## <a name="source-code"></a>Zdrojový kód
 
-1. Vytvořte zdrojový soubor jazyka C++ s názvem `helloworld.cpp` a vložte do něj následující kód.
+Vytvořte zdrojový soubor Jazyka C++ s názvem *helloworld.cpp*a vložte do něj následující kód.
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/from-microphone/helloworld.cpp#code)]
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/from-microphone/helloworld.cpp#code)]
 
-1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech.
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. Nahraďte `YourServiceRegion` řetězec **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené `westus` k vašemu předplatnému (například pro bezplatné zkušební předplatné).
+## <a name="code-explanation"></a>Vysvětlení kódu
 
-> [!NOTE]
-> Sada Speech SDK bude ve výchozím nastavení rozpoznána použití jazyka en-us, viz [Určení zdrojového jazyka pro řeč na text,](../../../../how-to-specify-source-language.md) kde naleznete informace o výběru zdrojového jazyka.
+[!INCLUDE [code explanation](../code-explanation.md)]
 
 ## <a name="build-the-app"></a>Sestavení aplikace
 
@@ -98,4 +92,4 @@ Než začnete:
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

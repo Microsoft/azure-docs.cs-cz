@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294495"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632174"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které můžete dělat na virtuálním počítači s datovými vědami windows
 
@@ -803,16 +803,6 @@ pd.read_sql(queryString, connection)
 ```
 
 ![Horní řady dat z tabulky](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
-
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Čtení dat z HDI pomocí Azure Machine Learning Studio (klasické): modul čtečky
-
-Modul čtečky můžete také použít v Azure Machine Learning Studio (klasické) pro přístup k databázi v clusteru Hadoop. Připojte přihlašovací údaje clusterů HDI a účtu úložiště Azure, abyste mohli vytvářet modely strojového učení pomocí databáze v clusterech HDI.
-
-![Vlastnosti modulu čtečky](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
-
-Potom můžete zobrazit datovou sadu s kinem:
-
-![Zobrazit datovou sadu s konzetí skóre](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse a databáze
 Azure SQL Data Warehouse je elastický datový sklad jako služba se zkušenostmi sql serveru podnikové třídy.

@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72808196"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656428"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Vytvoření jednoduchého dotazu v Azure Cognitive Search
 
-V Azure Cognitive Search [syntaxe jednoduchého dotazu](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vyvolá výchozí analyzátor dotazů pro spuštění fulltextové vyhledávací dotazy proti indexu. Tento analyzátor je rychlý a zpracovává běžné scénáře, včetně fulltextového vyhledávání, filtrovaného a fazetovaného vyhledávání a geografického vyhledávání. 
+V Azure Cognitive Search [syntaxe jednoduchého dotazu](query-simple-syntax.md) vyvolá výchozí analyzátor dotazů pro spuštění fulltextové vyhledávací dotazy proti indexu. Tento analyzátor je rychlý a zpracovává běžné scénáře, včetně fulltextového vyhledávání, filtrovaného a fazetovaného vyhledávání a geografického vyhledávání. 
 
 V tomto článku používáme příklady pro ilustraci jednoduché syntaxe.
 
-Alternativní syntaxe dotazu je [Úplná Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), podporující složitější struktury dotazů, jako je například vyhledávání přibližných a zástupných symbolů, což může trvat déle. Další informace a příklady demonstrující úplnou syntaxi naleznete [v tématu Použití úplné syntaxe Lucene](search-query-lucene-examples.md).
+Alternativní syntaxe dotazu je [Úplná Lucene](query-lucene-syntax.md), podporující složitější struktury dotazů, jako je například vyhledávání přibližných a zástupných symbolů, což může trvat déle. Další informace a příklady demonstrující úplnou syntaxi naleznete [v tématu Použití úplné syntaxe Lucene](search-query-lucene-examples.md).
 
 ## <a name="formulate-requests-in-postman"></a>Formulovat požadavky v Pošťákovi
 

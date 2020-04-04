@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/02/2020
+ms.openlocfilehash: 1d044ddaea0a2c7a1d489523cc9aa4515df0728a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73903740"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632660"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Nainstalujte si do počítače notebook Jupyter a připojte se k Apache Spark na HDInsightu
 
-V tomto článku se dozvíte, jak nainstalovat jupyternotebook, s vlastní Miliami PySpark (pro Python) a Apache Spark (pro Scala) jádra s spark magie, a připojit notebook k clusteru HDInsight. Tam může být několik důvodů k instalaci Jupyter na místním počítači, a tam může být několik problémů stejně. Pro více informací o tomto, naleznete v části [Proč bych měl nainstalovat Jupyter na mém počítači](#why-should-i-install-jupyter-on-my-computer) na konci tohoto článku.
+V tomto článku se dozvíte, jak nainstalovat jupyterový notebook s vlastními jádry PySpark (pro Python) a Apache Spark (pro Scala) s magií Spark. Potom připojíte poznámkový blok ke clusteru HDInsight.
 
 Existují čtyři klíčové kroky spojené s instalací Jupyteru a připojením k Apache Spark na HDInsight.
 
@@ -26,17 +26,17 @@ Existují čtyři klíčové kroky spojené s instalací Jupyteru a připojením
 * Nainstalujte jádra PySpark a Spark s magií Spark.
 * Nakonfigurujte kouzlo Spark pro přístup ke clusteru Spark na HDInsightu.
 
-Další informace o vlastních jádrech a magii Spark, která jsou k dispozici pro notebooky Jupyter s clusterem HDInsight, najdete [v tématu Jádra dostupná pro notebooky Jupyter s clustery Apache Spark Linux na HDInsightu](apache-spark-jupyter-notebook-kernels.md).
+Další informace o vlastních jádrech a magii Spark najdete [v tématu Jádra dostupná pro notebooky Jupyter s clustery Apache Spark Linux na HDInsightu](apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md). To je předpokladem pro připojení poznámkového bloku Jupyter ke clusteru HDInsight po instalaci poznámkového bloku.
+* Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md). Místní poznámkový blok se připojuje ke clusteru HDInsight.
 
 * Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight.
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Instalace notebooku Jupyter do počítače
 
-Před instalací poznámkových bloků Jupyter je nutné nainstalovat Python. Distribuce [Anaconda](https://www.anaconda.com/download/) nainstaluje oba, Python a Jupyter Notebook.
+Nainstalujte Python před instalací jupyterových notebooků. Distribuce [Anaconda](https://www.anaconda.com/download/) nainstaluje oba, Python a Jupyter Notebook.
 
 Stáhněte si [instalační program Anaconda](https://www.anaconda.com/download/) pro vaši platformu a spusťte nastavení. Při spuštění průvodce instalací nezapomeňte vybrat možnost přidání anakondy do proměnné PATH.  Viz také [Instalace Jupyter pomocí Anaconda](https://jupyter.readthedocs.io/en/latest/install.html).
 
@@ -63,9 +63,9 @@ Stáhněte si [instalační program Anaconda](https://www.anaconda.com/download/
     pip show sparkmagic
     ```
 
-    Poté změňte svůj pracovní adresář na umístění označené výše uvedeným příkazem.
+    Poté změňte svůj pracovní adresář na **umístění** označené výše uvedeným příkazem.
 
-1. Z nového pracovního adresáře zadejte jeden nebo více níže uvedených příkazů a nainstalujte požadované jádro(y):
+1. Z nového pracovního adresáře zadejte jeden nebo více níže uvedených příkazů a nainstalujte tak hledané jádro(
 
     |Kernel | Příkaz |
     |---|---|
@@ -90,7 +90,7 @@ V této části nakonfigurujete magii Spark, kterou jste nainstalovali dříve p
     python
     ```
 
-2. Informace o konfiguraci Jupyter je obvykle uloženv domovském adresáři uživatelů. Chcete-li identifikovat domovský adresář, zadejte následující příkaz a vytvořte složku nazvanou **.sparkmagic**.  Úplná cesta bude výstupem.
+2. Informace o konfiguraci Jupyter je obvykle uloženv domovském adresáři uživatelů. Chcete-li identifikovat domovský adresář, zadejte následující příkaz a vytvořte složku nazvanou ** \.sparkmagic**.  Úplná cesta bude výstupem.
 
     ```python
     import os
@@ -168,9 +168,9 @@ V této části nakonfigurujete magii Spark, kterou jste nainstalovali dříve p
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Proč bych měl nainstalovat Jupyter na mém počítači?
 
-Může existovat řada důvodů, proč můžete chtít nainstalovat Jupyter do počítače a pak jej připojit k clusteru Apache Spark na HDInsight.
+Důvody pro instalaci Jupyteru do počítače a jeho připojení k clusteru Apache Spark na HDInsightu:
 
-* I když jsou poznámkové bloky Jupyteru už v clusteru Spark v Azure HDInsight ufkdispozici, instalace Jupyteru do počítače vám poskytne možnost vytvořit poznámkové bloky místně, otestovat aplikaci proti spuštěnému clusteru a pak nahrát poznámkových bloků do clusteru. Chcete-li poznámkové bloky nahrát do clusteru, můžete je buď nahrát pomocí spuštěného poznámkového bloku Jupyter nebo clusteru, nebo je uložit do složky /HdiNotebooks v účtu úložiště přidruženém ke clusteru. Další informace o tom, jak jsou poznámkové bloky uloženy v clusteru, najdete v tématu [Kde jsou uloženy poznámkové bloky Jupyter?](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
+* Poskytuje možnost vytvořit poznámkové bloky místně, otestovat aplikaci proti spuštěnému clusteru a potom je nahrát do clusteru. Chcete-li poznámkové bloky nahrát do clusteru, můžete je buď nahrát pomocí spuštěného poznámkového bloku Jupyter nebo clusteru, nebo je uložit do `/HdiNotebooks` složky v účtu úložiště přidruženém ke clusteru. Další informace o tom, jak jsou poznámkové bloky uloženy v clusteru, najdete v tématu [Kde jsou uloženy poznámkové bloky Jupyter?](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
 * Díky místním poznámkovým blokům se můžete připojit k různým clusterům Spark na základě požadavků aplikace.
 * GitHub můžete použít k implementaci systému správy zdrojového kódu a mít správu verzí pro poznámkové bloky. Můžete mít také prostředí pro spolupráci, ve kterém může se stejným poznámkovým blokem pracovat více uživatelů.
 * S poznámkovými bloky můžete pracovat místně, aniž byste měli cluster. K testování poznámkových bloků potřebujete pouze cluster, nikoli ruční správu poznámkových bloků nebo vývojového prostředí.
@@ -182,5 +182,5 @@ Může existovat řada důvodů, proč můžete chtít nainstalovat Jupyter do p
 ## <a name="next-steps"></a>Další kroky
 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Spark v HDInsightu pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s BI: Analyzujte data Apache Spark pomocí Power BI v HDInsightu](apache-spark-use-bi-tools.md)
 * [Apache Spark se strojovým učením: Použijte Spark v HDInsightu pro analýzu teploty budovy pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)

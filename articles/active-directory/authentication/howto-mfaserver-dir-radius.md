@@ -4,19 +4,19 @@ description: Nasazení ověření služby RADIUS a serveru Azure Multi-Factor Au
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425201"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652953"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrace ověření služby RADIUS se serverem Azure Multi-Factor Authentication
 
@@ -77,9 +77,9 @@ Opakováním těchto kroků přidejte další servery RADIUS. Pomocí tlačítek
 
 Chcete-li nakonfigurovat klienta RADIUS, postupujte podle pokynů:
 
-* Nakonfigurujte zařízení/server pro ověřování přístupu prostřednictvím protokolu RADIUS k IP adrese Azure Multi-Factor Authentication Serveru, která funguje jako server RADIUS.
+* Nakonfigurujte zařízení/server tak, aby se ověřovalo prostřednictvím radiusu na IP adresu serveru Azure Multi-Factor Authentication Server, která funguje jako server RADIUS.
 * Použijte stejný sdílený tajný klíč, který byl nakonfigurován dříve.
-* Časový limit platnosti protokolu RADIUS nakonfigurujte na 30–60 sekund, aby byl dostatek času na ověření přihlašovacích údajů uživatele, provedení dvoustupňového ověřování, obdržení odpovědi a následnou odpověď na žádost o přístup protokolu RADIUS.
+* Nakonfigurujte časový rozsah RADIUS na 30 až 60 sekund tak, aby byl čas na ověření pověření uživatele, provedení dvoustupňového ověření, přijetí odpovědi a odpověď na požadavek na přístup RADIUS.
 
 ## <a name="next-steps"></a>Další kroky
 

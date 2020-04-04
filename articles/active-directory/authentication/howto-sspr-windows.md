@@ -4,19 +4,19 @@ description: Jak povolit samoobslužné resetování hesla pomocí zapomenutého
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370069"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652263"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postup: Povolení resetování hesla z přihlašovací obrazovky systému Windows
 
@@ -141,8 +141,8 @@ Pokud je vyžadováno další protokolování, klíč registru v počítači lze
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Chcete-li povolit podrobné `REG_DWORD: “EnableLogging”`protokolování, vytvořte a a nastavte jej na 1.
-- Chcete-li zakázat podrobné `REG_DWORD: “EnableLogging”` protokolování, změňte na 0.
+- Chcete-li povolit podrobné `REG_DWORD: "EnableLogging"`protokolování, vytvořte a a nastavte jej na 1.
+- Chcete-li zakázat podrobné `REG_DWORD: "EnableLogging"` protokolování, změňte na 0.
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé
 

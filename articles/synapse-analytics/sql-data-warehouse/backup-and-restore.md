@@ -11,12 +11,12 @@ ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ae53380572e753a8bcfa20fcd165fa015766263e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349265"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631215"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Zálohování a obnovení ve fondu SQL Azure Synapse
 
@@ -26,7 +26,7 @@ Přečtěte si, jak používat zálohování a obnovení ve fondu SQL Azure Syna
 
 *Snímek datového skladu* vytvoří bod obnovení, který můžete využít k obnovení nebo zkopírování datového skladu do předchozího stavu.  Vzhledem k tomu, že fond SQL je distribuovaný systém, snímek datového skladu se skládá z mnoha souborů, které jsou umístěné v úložišti Azure. Snímky zachycují přírůstkové změny z dat uložených v datovém skladu.
 
-*Obnovení datového skladu* je nový datový sklad, který se vytvoří z bodu obnovení existujícího nebo odstraněného datového skladu. Obnovení datového skladu je nezbytnou součástí každé strategie kontinuity podnikání a zotavení po havárii, protože po náhodném poškození nebo odstranění znovu vytvoří vaše data. Datový sklad je také výkonný mechanismus pro vytváření kopií datového skladu pro účely testování nebo vývoje.  Sazby obnovení fondu SQL se mohou lišit v závislosti na velikosti databáze a umístění zdrojového a cílového datového skladu. 
+*Obnovení datového skladu* je nový datový sklad, který se vytvoří z bodu obnovení existujícího nebo odstraněného datového skladu. Obnovení datového skladu je nezbytnou součástí každé strategie kontinuity podnikání a zotavení po havárii, protože po náhodném poškození nebo odstranění znovu vytvoří vaše data. Datový sklad je také výkonný mechanismus pro vytváření kopií datového skladu pro účely testování nebo vývoje.  Sazby obnovení fondu SQL se mohou lišit v závislosti na velikosti databáze a umístění zdrojového a cílového datového skladu.
 
 ## <a name="automatic-restore-points"></a>Automatické body obnovení
 
@@ -45,7 +45,7 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
 
-Tato funkce umožňuje ručně aktivovat snímky pro vytvoření bodů obnovení datového skladu před a po velkých úpravách. Tato funkce zajišťuje, že body obnovení jsou logicky konzistentní, což poskytuje další ochranu dat v případě přerušení pracovního vytížení nebo chyb y uživatelů pro rychlou dobu obnovení. Uživatelem definované body obnovení jsou k dispozici po dobu sedmi dnů a jsou automaticky odstraněny vaším jménem. Dobu uchování uživatelem definovaných bodů obnovení nelze změnit. **42 uživatelem definovaných bodů obnovení** je zaručeno v libovolném okamžiku, takže musí být před vytvořením jiného bodu obnovení [odstraněny.](https://go.microsoft.com/fwlink/?linkid=875299) Můžete aktivovat snímky k vytvoření uživatelem definované body obnovení prostřednictvím [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) nebo portálAzure.
+Tato funkce umožňuje ručně aktivovat snímky pro vytvoření bodů obnovení datového skladu před a po velkých úpravách. Tato funkce zajišťuje, že body obnovení jsou logicky konzistentní, což poskytuje další ochranu dat v případě přerušení pracovního vytížení nebo chyb y uživatelů pro rychlou dobu obnovení. Uživatelem definované body obnovení jsou k dispozici po dobu sedmi dnů a jsou automaticky odstraněny vaším jménem. Dobu uchování uživatelem definovaných bodů obnovení nelze změnit. **42 uživatelem definovaných bodů obnovení** je zaručeno v libovolném okamžiku, takže musí být před vytvořením jiného bodu obnovení [odstraněny.](https://go.microsoft.com/fwlink/?linkid=875299) Můžete aktivovat snímky k vytvoření uživatelem definované body obnovení prostřednictvím [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) nebo portálAzure.
 
 > [!NOTE]
 > Pokud požadujete body obnovení delší než 7 dní, hlasujte pro tuto funkci [zde](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Můžete také vytvořit uživatelem definovaný bod obnovení a obnovit z nově vytvořeného bodu obnovení do nového datového skladu. Po obnovení máte fond SQL online a můžete jej pozastavit na neurčito ušetřit výpočetní náklady. Pozastavená databáze účtuje poplatky za úložiště při sazbě úložiště Azure Premium. Pokud potřebujete aktivní kopii obnoveného datového skladu, můžete pokračovat, což by mělo trvat jen několik minut.
@@ -69,14 +69,14 @@ Při přetažení fondu SQL je vytvořen konečný snímek a uložen po dobu sed
 
 ## <a name="geo-backups-and-disaster-recovery"></a>Geografické zálohy a zotavení po havárii
 
-Geografická záloha se vytváří jednou denně do [spárovaného datového centra](../../best-practices-availability-paired-regions.md). RPO pro geografické obnovení je 24 hodin. Geografickou zálohu můžete obnovit na server v jakékoli jiné oblasti, kde je podporován fond SQL. Geografická záloha zajišťuje obnovení datového skladu v případě, že nemáte přístup k bodům obnovení v primární oblasti.
+Geografická záloha se vytváří jednou denně do [spárovaného datového centra](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). RPO pro geografické obnovení je 24 hodin. Geografickou zálohu můžete obnovit na server v jakékoli jiné oblasti, kde je podporován fond SQL. Geografická záloha zajišťuje obnovení datového skladu v případě, že nemáte přístup k bodům obnovení v primární oblasti.
 
 > [!NOTE]
 > Pokud požadujete kratší rpo pro geografické zálohování, hlasujte pro tuto funkci [zde](https://feedback.azure.com/forums/307516-sql-data-warehouse). Můžete také vytvořit uživatelem definovaný bod obnovení a obnovit z nově vytvořeného bodu obnovení do nového datového skladu v jiné oblasti. Po obnovení máte datový sklad online a můžete ho pozastavit na neurčito, abyste ušetřili výpočetní náklady. Pozastavená databáze účtuje poplatky za úložiště při sazbě úložiště Azure Premium. Pokud potřebujete aktivní kopii datového skladu, můžete pokračovat, což by mělo trvat jen několik minut.
 
 ## <a name="backup-and-restore-costs"></a>Náklady na zálohování a obnovení
 
-Všimněte si, že účet Azure má řádkovou položku pro úložiště a řádkovou položku pro úložiště zotavení po havárii. Poplatek za úložiště je celkové náklady na ukládání dat v primární oblasti spolu s přírůstkové změny zachycené snímky. Podrobnější vysvětlení, jak jsou účtovány snímky, naleznete [v části Principy, jak snímky časově rozlišují poplatky](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Geograficky redundantní poplatek pokrývá náklady na ukládání geografických záloh.  
+Všimněte si, že účet Azure má řádkovou položku pro úložiště a řádkovou položku pro úložiště zotavení po havárii. Poplatek za úložiště je celkové náklady na ukládání dat v primární oblasti spolu s přírůstkové změny zachycené snímky. Podrobnější vysvětlení, jak jsou účtovány snímky, naleznete [v části Principy, jak snímky časově rozlišují poplatky](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Geograficky redundantní poplatek pokrývá náklady na ukládání geografických záloh.  
 
 Celkové náklady na primární datový sklad a sedm dní změn snímků se zaokrouhlí na nejbližší TB. Pokud má například váš datový sklad 1,5 TB a snímky zachytí 100 GB, budou se vám účtovat 2 TB dat sazby za úložiště Azure Premium.
 
@@ -88,7 +88,7 @@ Další informace o cenách Azure Synapse najdete v [tématu Azure Synapse prici
 
 Každý snímek vytvoří bod obnovení, který představuje čas spuštění snímku. Chcete-li obnovit datový sklad, zvolte bod obnovení a vydat příkaz obnovení.  
 
-Můžete buď zachovat obnovený datový sklad a aktuální, nebo jeden z nich odstranit. Pokud chcete nahradit aktuální datový sklad obnoveným datovým skladem, můžete jej přejmenovat pomocí [ALTER DATABASE (FOND SQL)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) na možnost ZMĚNIT NÁZEV.
+Můžete buď zachovat obnovený datový sklad a aktuální, nebo jeden z nich odstranit. Pokud chcete nahradit aktuální datový sklad obnoveným datovým skladem, můžete jej přejmenovat pomocí [ALTER DATABASE (FOND SQL)](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) na možnost ZMĚNIT NÁZEV.
 
 Pokud chcete obnovit datový sklad, [přečtěte si](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal)informace o obnovení fondu SQL .
 
@@ -96,7 +96,7 @@ Chcete-li obnovit odstraněný nebo pozastavený datový sklad, můžete [vytvo�
 
 ## <a name="cross-subscription-restore"></a>Obnovení křížového předplatného
 
-Pokud potřebujete přímo obnovit přes předplatné, hlasujte pro tuto funkci [zde](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore). Obnovení na jiný logický server a ['Přesunout'](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) server přes odběry provést obnovení křížového předplatného. 
+Pokud potřebujete přímo obnovit přes předplatné, hlasujte pro tuto funkci [zde](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore). Obnovení na jiný logický server a ['Přesunout'](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) server přes odběry provést obnovení křížového předplatného.
 
 ## <a name="geo-redundant-restore"></a>Geograficky redundantní obnovení
 
@@ -107,4 +107,4 @@ Fond [SQL](sql-data-warehouse-restore-from-geo-backup.md#restore-from-an-azure-g
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o plánování katastrof naleznete v tématu [Přehled kontinuity provozu](../../sql-database/sql-database-business-continuity.md)
+Další informace o plánování katastrof naleznete v tématu [Přehled kontinuity provozu](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)

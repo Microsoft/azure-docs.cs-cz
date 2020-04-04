@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 04/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ac6f35cafbe63e8c6cdb77450089d00c0e3099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 221ed3169fff78a2721e91023036593570fbd723
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264346"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637790"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ Element **SingleSignOn** obsahuje následující atribut:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Rozsah | Ano | Rozsah chování jednotného přihlášení. Možné `Suppressed`hodnoty: `Tenant` `Application`, `Policy`, , nebo . Hodnota `Suppressed` označuje, že chování je potlačeno. Například v případě relace jednotného přihlášení není pro uživatele zachována žádná relace a uživatel je vždy vyzván k výběru zprostředkovatele identity. Hodnota `TrustFramework` označuje, že chování je použito pro všechny zásady v rámci důvěryhodnosti. Například uživatel procházení přes dvě cesty zásad pro rámec důvěryhodnosti není vyzván k výběru zprostředkovatele identity. Hodnota `Tenant` označuje, že chování se použije pro všechny zásady v tenantovi. Například uživatel procházení přes dvě cesty zásad pro klienta není vyzván k výběru zprostředkovatele identity. Hodnota `Application` označuje, že chování se použije na všechny zásady pro aplikaci, která podává požadavek. Například uživatel procházení přes dvě cesty zásad pro aplikaci není vyzván k výběru zprostředkovatele identity. Hodnota `Policy` označuje, že chování platí pouze pro zásady. Například uživatel procházení přes dvě cesty zásad pro rámec důvěryhodnosti je vyzván k výběru zprostředkovatele identity při přepínání mezi zásadami. |
+| Rozsah | Ano | Rozsah chování jednotného přihlášení. Možné `Suppressed`hodnoty: `Tenant` `Application`, `Policy`, , nebo . Hodnota `Suppressed` označuje, že chování je potlačeno a uživatel je vždy vyzván k výběru zprostředkovatele identity.  Hodnota `Tenant` označuje, že chování se použije pro všechny zásady v tenantovi. Například uživatel procházení přes dvě cesty zásad pro klienta není vyzván k výběru zprostředkovatele identity. Hodnota `Application` označuje, že chování se použije na všechny zásady pro aplikaci, která podává požadavek. Například uživatel procházení přes dvě cesty zásad pro aplikaci není vyzván k výběru zprostředkovatele identity. Hodnota `Policy` označuje, že chování platí pouze pro zásady. Například uživatel procházení přes dvě cesty zásad pro rámec důvěryhodnosti je vyzván k výběru zprostředkovatele identity při přepínání mezi zásadami. |
 | KeepAliveInDays | Ano | Určuje, jak dlouho zůstane uživatel přihlášen. Nastavení hodnoty na hodnotu 0 vypne funkci KMSI. Další informace naleznete v tématu [Keep me signed in](custom-policy-keep-me-signed-in.md). |
 |EnforceIdTokenHintOnLogout| Ne|  Vynutit předání dříve vydaného tokenu ID do koncového bodu odhlášení jako nápověda o aktuální ověřené relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí) nebo `true`. Další informace naleznete [v tématu Webové přihlašování pomocí OpenID Connect](openid-connect.md).  |
 
@@ -190,7 +190,7 @@ Element **Protocol** obsahuje následující atribut:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Name (Název) | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné `OpenIdConnect` hodnoty: `SAML2`nebo . Hodnota `OpenIdConnect` představuje standard protokolu OpenID Connect 1.0 podle specifikace nadace OpenID. Představuje `SAML2` standard protokolu SAML 2.0 podle specifikace OASIS. Nepoužívejte token SAML v produkčním prostředí. |
+| Name (Název) | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné `OpenIdConnect` hodnoty: `SAML2`nebo . Hodnota `OpenIdConnect` představuje standard protokolu OpenID Connect 1.0 podle specifikace nadace OpenID. Představuje `SAML2` standard protokolu SAML 2.0 podle specifikace OASIS. |
 
 ## <a name="outputclaims"></a>OutputClaims
 

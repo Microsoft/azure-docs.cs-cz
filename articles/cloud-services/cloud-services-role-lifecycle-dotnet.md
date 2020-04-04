@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385809"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652080"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu role webu nebo pracovního procesu v rozhraní .NET
 Při vytváření role pracovního procesu rozšíříte třídu [RoleEntryPoint,](/previous-versions/azure/reference/ee758619(v=azure.100)) která poskytuje metody k přepsání, které umožňují reagovat na události životního cyklu. Pro webové role je tato třída volitelná, takže ji musíte použít k reakci na události životního cyklu.
@@ -23,7 +23,7 @@ Třída [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100
 
 Při rozšiřování **RoleEntryPoint**, měli byste být vědomi následující chování metod:
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) a [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) metody vrátí logickou hodnotu, takže je možné vrátit **false** z těchto metod.
+* Metoda [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) vrátí logickou hodnotu, takže je možné vrátit **false** z této metody.
   
    Pokud váš kód vrátí **false**, proces role je náhle ukončena, bez spuštění jakékoli sekvence vypnutí, které můžete mít na místě. Obecně byste se měli vyhnout vrácení **false** z **OnStart** metody.
 * Všechny nezachycené výjimky v rámci přetížení **Metodu RoleEntryPoint** je považován za neošetřené výjimky.

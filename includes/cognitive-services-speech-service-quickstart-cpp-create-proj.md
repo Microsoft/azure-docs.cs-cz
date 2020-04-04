@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 1287eb5de1391f40c4409d5d10522d8979ae4207
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 72e9334b4df58b1b90288cb7363a7d94bb531661
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383980"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658689"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj plochy jazyka C++, je třeba nastavit možnosti vývoje sady Visual Studio, vytvořit projekt, vybrat cílovou architekturu a nainstalovat sadu Speech SDK.
 
@@ -77,4 +77,4 @@ Nakonec nainstalujte [balíček Speech SDK NuGet](https://aka.ms/csspeech/nuget)
 
 1. V dialogovém **okně Náhled změn** vyberte **OK**.
 
-1. V dialogovém okně **Přijetí licence** zobrazte licenci a vyberte **Možnost Přijmout**. Instalace balíčku začíná a po dokončení instalace se v podokně **Výstup** zobrazí `Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`zpráva podobná následujícímu textu: .
+1. V dialogovém okně **Přijetí licence** zobrazte licenci a vyberte **Možnost Přijmout**. Instalace balíčku začíná a po dokončení instalace se v podokně **Výstup** zobrazí `Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`zpráva podobná následujícímu textu: .

@@ -1,6 +1,6 @@
 ---
 title: Vytváření, aktualizace statistik
-description: Doporučení a příklady pro vytváření a aktualizaci statistik optimalizace dotazů v tabulkách v Azure SQL Data Warehouse.
+description: Doporučení a příklady pro vytváření a aktualizaci statistikoptimalizace dotazů na tabulkách ve fondu SYNAPse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,33 +11,42 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a6bdf9bcf2dfbb28244162bc7d88ced9194d0ac6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ecd0909176560e6b51bcb8449cb681558d96f90
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351189"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80628638"
 ---
-# <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statistiky tabulek v datovém skladu Azure SQL
+# <a name="table-statistics-in-synapse-sql-pool"></a>Statistiky tabulek v fondu SYNAPse SQL
 
-Doporučení a příklady pro vytváření a aktualizaci statistik optimalizace dotazů v tabulkách v Azure SQL Data Warehouse.
+V tomto článku najdete doporučení a příklady pro vytváření a aktualizaci statistikoptimalizace dotazů v tabulkách ve fondu SQL.
 
 ## <a name="why-use-statistics"></a>Proč používat statistiky
 
-Čím více Azure SQL Data Warehouse ví o vašich datech, tím rychleji může provádět dotazy proti němu. Po načtení dat do datového skladu SQL je shromažďování statistik o vašich datech jednou z nejdůležitějších věcí, které můžete udělat pro optimalizaci dotazů. Optimalizátor dotazů SQL Data Warehouse je založený na nákladech. Porovná náklady na různé plány dotazů a pak vybere plán s nejnižšími náklady. Ve většině případů zvolí plán, který provede nejrychlejší. Pokud například optimalizátor odhadne, že datum filtrování dotazu vrátí jeden řádek, vybere jeden plán. Pokud odhadne, že vybrané datum vrátí 1 milion řádků, vrátí jiný plán.
+Čím více fondu SQL ví o vašich datech, tím rychleji může provádět dotazy proti němu. Po načtení dat do fondu SQL je shromažďování statistik o vašich datech jednou z nejdůležitějších věcí, které můžete udělat pro optimalizaci dotazů.
+
+Optimalizátor dotazů fondu SQL je optimalizátor založený na nákladech. Porovná náklady na různé plány dotazů a pak vybere plán s nejnižšími náklady. Ve většině případů zvolí plán, který provede nejrychlejší.
+
+Pokud například optimalizátor odhadne, že datum filtrování dotazu vrátí jeden řádek, vybere jeden plán. Pokud odhadne, že vybrané datum vrátí 1 milion řádků, vrátí jiný plán.
 
 ## <a name="automatic-creation-of-statistic"></a>Automatické vytváření statistiky
 
-Když je možnost AUTO_CREATE_STATISTICS databáze zapnutá, SQL Data Warehouse analyzuje příchozí uživatelské dotazy na chybějící statistiky. Pokud chybí statistiky, optimalizátor dotazů vytvoří statistiky na jednotlivé sloupce v predikátu dotazu nebo spojit podmínku ke zlepšení mohutnost odhady pro plán dotazu. Automatické vytváření statistik je aktuálně zapnuto ve výchozím nastavení.
+Když je možnost AUTO_CREATE_STATISTICS databáze zapnutá, fond SQL analyzuje příchozí uživatelské dotazy na chybějící statistiky.
 
-Můžete zkontrolovat, zda váš datový sklad AUTO_CREATE_STATISTICS nakonfigurován spuštěním následujícího příkazu:
+Pokud chybí statistiky, optimalizátor dotazů vytvoří statistiky na jednotlivé sloupce v predikátu dotazu nebo spojit podmínku ke zlepšení mohutnost odhady pro plán dotazu.
+
+> [!NOTE]
+> Automatické vytváření statistik je aktuálně zapnuto ve výchozím nastavení.
+
+Pomocí následujícího příkazu můžete zkontrolovat, zda je váš fond SQL AUTO_CREATE_STATISTICS nakonfigurován:
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-Pokud váš datový sklad nemá AUTO_CREATE_STATISTICS nakonfigurován, doporučujeme tuto vlastnost povolit spuštěním následujícího příkazu:
+Pokud váš fond SQL nemá AUTO_CREATE_STATISTICS nakonfigurován, doporučujeme tuto vlastnost povolit spuštěním následujícího příkazu:
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -56,7 +65,9 @@ Tyto příkazy spustí automatické vytváření statistik:
 > [!NOTE]
 > Automatické vytváření statistik není vytvořeno v dočasných nebo externích tabulkách.
 
-Automatické vytváření statistik se provádí synchronně, takže může dojít k mírně snížený výkon dotazu, pokud sloupce chybí statistiky. Čas vytvoření statistiky pro jeden sloupec závisí na velikosti tabulky. Chcete-li se vyhnout měřitelnému snížení výkonu, zejména při benchmarkingu výkonu, měli byste zajistit, aby statistiky byly vytvořeny nejprve spuštěním zatížení srovnávacího testu před profilováním systému.
+Automatické vytváření statistik se provádí synchronně, takže může dojít k mírně snížený výkon dotazu, pokud sloupce chybí statistiky. Čas vytvoření statistiky pro jeden sloupec závisí na velikosti tabulky.
+
+Chcete-li se vyhnout měřitelné snížení výkonu, měli byste zajistit, že statistiky byly vytvořeny nejprve spuštěním zatížení srovnávacího testu před profilováním systému.
 
 > [!NOTE]
 > Vytváření statistik bude zaznamenáno v [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) v jiném uživatelském kontextu.
@@ -67,11 +78,15 @@ Při vytváření automatických statistik budou mít podobu: _WA_Sys_<8místné
 DBCC SHOW_STATISTICS (<table_name>, <target>)
 ```
 
-Table_name je název tabulky, která obsahuje statistiky, které chcete zobrazit. Nemůže se jedná o externí tabulku. Cílem je název cílového indexu, statistiky nebo sloupce, pro který chcete zobrazit statistické informace.
+Table_name je název tabulky, která obsahuje statistiky, které chcete zobrazit. Tato tabulka nemůže být externí tabulka. Cílem je název cílového indexu, statistiky nebo sloupce, pro který chcete zobrazit statistické informace.
 
-## <a name="updating-statistics"></a>Aktualizace statistik
+## <a name="update-statistics"></a>Aktualizovat statistiky
 
-Jedním z osvědčených postupů je aktualizovat statistiky na datum sloupce každý den jako nová data jsou přidány. Při každém načtení nových řádků do datového skladu se přidají nová data načítání nebo data transakcí. Ty změní distribuci dat a statistiky zastaralé. Naopak statistiky sloupce země nebo oblasti v tabulce zákazníků nemusí být nikdy nutné aktualizovat, protože rozdělení hodnot se obecně nemění. Za předpokladu, že distribuce je konstantní mezi zákazníky, přidání nových řádků do tabulky varianty nezmění rozdělení dat. Pokud však datový sklad obsahuje pouze jednu zemi nebo oblast a přinášíte data z nové země nebo oblasti, což vede k ukládání dat z více zemí nebo oblastí, je třeba aktualizovat statistiky ve sloupci Země nebo oblast.
+Jedním z osvědčených postupů je aktualizovat statistiky na datum sloupce každý den jako nová data jsou přidány. Při každém načtení nových řádků do fondu SQL jsou přidány nové data zatížení nebo data transakcí. Tyto dodatky změnit distribuci dat a statistiky zastaralé.
+
+Statistiky sloupce země nebo oblasti v tabulce zákazníků nemusí být nikdy aktualizovány, protože rozdělení hodnot se obecně nemění. Za předpokladu, že distribuce je konstantní mezi zákazníky, přidání nových řádků do tabulky varianty nezmění rozdělení dat.
+
+Pokud však fond SQL obsahuje pouze jednu zemi nebo oblast a přinášíte data z nové země nebo oblasti, což vede k ukládání dat z více zemí nebo oblastí, je třeba aktualizovat statistiky ve sloupci země nebo oblasti.
 
 Níže jsou uvedeny doporučení aktualizace statistiky:
 
@@ -82,9 +97,14 @@ Níže jsou uvedeny doporučení aktualizace statistiky:
 
 Jedna z prvních otázek, které je třeba položit při řešení potíží s dotazem, je **"Jsou statistiky aktuální?"**
 
-Tato otázka není otázka, která může být zodpovězena stářím údajů. Aktuální objekt statistiky může být starý, pokud nedošlo k žádné podstatné změně podkladových dat. Pokud se podstatně změnil počet řádků nebo dojde k podstatné změně v rozdělení hodnot pro *sloupec,* je čas aktualizovat statistiky.
+Tato otázka není ten, který může být zodpovězena stáří dat. Aktuální objekt statistiky může být starý, pokud nedošlo k žádné podstatné změně podkladových dat.
 
-Neexistuje žádné dynamické zobrazení správy k určení, zda se data v tabulce změnila od poslední aktualizace statistik. Znalost stáří vašich statistik vám může poskytnout část obrázku. Následující dotaz můžete použít k určení posledního aktualizace statistik v každé tabulce.
+> [!TIP]
+> Pokud se podstatně změnil počet řádků nebo dojde k podstatné změně v rozdělení hodnot pro *sloupec,* je čas aktualizovat statistiky.
+
+Neexistuje žádné dynamické zobrazení správy k určení, zda se data v tabulce změnila od poslední aktualizace statistik. Znalost stáří vašich statistik vám může poskytnout část obrázku.
+
+Následující dotaz můžete použít k určení posledního aktualizace statistik v každé tabulce.
 
 > [!NOTE]
 > Pokud dojde k podstatné změně v rozdělení hodnot pro sloupec, měli byste aktualizovat statistiky bez ohledu na poslední aktualizaci.
@@ -116,21 +136,27 @@ WHERE
     st.[user_created] = 1;
 ```
 
-**Sloupce kalendářních dat** v datovém skladu například obvykle vyžadují časté aktualizace statistik. Při každém načtení nových řádků do datového skladu se přidají nová data načítání nebo data transakcí. Ty změní distribuci dat a statistiky zastaralé. Naopak statistiky sloupce pohlaví v tabulce zákazníků nemusí být nikdy nutné aktualizovat. Za předpokladu, že distribuce je konstantní mezi zákazníky, přidání nových řádků do tabulky varianty nezmění rozdělení dat. Pokud však datový sklad obsahuje pouze jedno pohlaví a nový požadavek má za následek více pohlaví, je třeba aktualizovat statistiky sloupce pohlaví.
+**Datum sloupce** ve fondu SQL, například obvykle potřebují časté aktualizace statistiky. Při každém načtení nových řádků do fondu SQL jsou přidány nové data zatížení nebo data transakcí. Tyto dodatky změnit distribuci dat a statistiky zastaralé.
+
+Naopak statistiky sloupce pohlaví v tabulce zákazníků nemusí být nikdy nutné aktualizovat. Za předpokladu, že distribuce je konstantní mezi zákazníky, přidání nových řádků do tabulky varianty nezmění rozdělení dat.
+
+Pokud váš fond SQL obsahuje pouze jedno pohlaví a nový požadavek má za následek více pohlaví, je třeba aktualizovat statistiky na sloupce pohlaví.
 
 Další informace naleznete v obecných pokynech pro [statistiku](/sql/relational-databases/statistics/statistics).
 
 ## <a name="implementing-statistics-management"></a>Implementace správy statistik
 
-Často je vhodné rozšířit proces načítání dat, abyste zajistili, že statistiky budou aktualizovány na konci zatížení. Načítání dat je, když tabulky nejčastěji mění svou velikost nebo jejich rozložení hodnot. Proto je tologické místo pro implementaci některých procesů správy.
+Často je vhodné rozšířit proces načítání dat, abyste zajistili, že statistiky budou aktualizovány na konci zatížení.
+
+Načítání dat je, když tabulky nejčastěji mění svou velikost nebo jejich rozložení hodnot. Načítání dat je logické místo pro implementaci některých procesů správy.
 
 Následující hlavní zásady jsou uvedeny pro aktualizaci statistik během procesu načítání:
 
-* Ujistěte se, že každá načtená tabulka má aktualizovaný alespoň jeden objekt statistiky. Tím se aktualizují informace o velikosti tabulky (počet řádků a počet stránek) jako součást aktualizace statistiky.
-* Zaměřte se na sloupce, které se účastní klauzulí JOIN, GROUP BY, ORDER BY a DISTINCT.
-* Zvažte aktualizaci sloupců "vzestupný klíč", jako jsou data transakcí častěji, protože tyto hodnoty nebudou zahrnuty do histogramu statistiky.
-* Zvažte aktualizaci sloupců statické distribuce méně často.
-* Nezapomeňte, že každý statistický objekt je aktualizován postupně. Jednoduchá implementace `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro široké tabulky se spoustou objektů statistiky.
+- Ujistěte se, že každá načtená tabulka má aktualizovaný alespoň jeden objekt statistiky. Tím se aktualizují informace o velikosti tabulky (počet řádků a počet stránek) jako součást aktualizace statistiky.
+- Zaměřte se na sloupce, které se účastní klauzulí JOIN, GROUP BY, ORDER BY a DISTINCT.
+- Zvažte aktualizaci sloupců "vzestupný klíč", jako jsou data transakcí častěji, protože tyto hodnoty nebudou zahrnuty do histogramu statistiky.
+- Zvažte aktualizaci sloupců statické distribuce méně často.
+- Nezapomeňte, že každý statistický objekt je aktualizován postupně. Jednoduchá implementace `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro široké tabulky se spoustou objektů statistiky.
 
 Další informace naleznete [v tématu Odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
@@ -140,9 +166,9 @@ Tyto příklady ukazují, jak používat různé možnosti pro vytváření stat
 
 ### <a name="create-single-column-statistics-with-default-options"></a>Vytvoření statistiky s jedním sloupcem s výchozími možnostmi
 
-Chcete-li vytvořit statistiku ve sloupci, jednoduše zadejte název objektu statistiky a název sloupce.
+Chcete-li vytvořit statistiku ve sloupci, zadejte název objektu statistiky a název sloupce.
 
-Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení sql datový sklad vzorku **20 procent** tabulky při vytváření statistiky.
+Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení fond SQL vzorky **20 procent** tabulky při vytváření statistiky.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -205,7 +231,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 ### <a name="create-multi-column-statistics"></a>Vytvořit vícesloupcové statistiky
 
-Chcete-li vytvořit objekt statistiky s více sloupci, jednoduše použijte předchozí příklady, ale určete více sloupců.
+Chcete-li vytvořit objekt statistiky s více sloupci, použijte předchozí příklady, ale zadejte více sloupců.
 
 > [!NOTE]
 > Histogram, který se používá k odhadu počtu řádků ve výsledku dotazu, je k dispozici pouze pro první sloupec uvedený v definici objektu statistiky.
@@ -242,9 +268,9 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Použití uložené procedury k vytvoření statistiky ve všech sloupcích v databázi
 
-SQL Data Warehouse nemá systém uloženou proceduru ekvivalentní sp_create_stats na serveru SQL Server. Tato uložená procedura vytvoří objekt statistiky jednoho sloupce v každém sloupci databáze, který ještě nemá statistiky.
+Fond SQL nemá systém uloženou proceduru ekvivalentní sp_create_stats na serveru SQL Server. Tato uložená procedura vytvoří objekt statistiky jednoho sloupce v každém sloupci databáze, který ještě nemá statistiky.
 
-Následující příklad vám pomůže začít s návrhem databáze. Neváhejte a přizpůsobte ji vašim potřebám:
+Následující příklad vám pomůže začít s návrhem databáze. Neváhejte a přizpůsobte ji vašim potřebám.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -338,7 +364,7 @@ Chcete-li vytvořit statistiku všech sloupců v tabulce pomocí výchozích hod
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 ```
 
-Chcete-li vytvořit statistiku všech sloupců v tabulce pomocí úplného prohledávání, zavolejte tento postup:
+Chcete-li vytvořit statistiku všech sloupců v tabulce pomocí úplného prohledávání, zavolejte tento postup.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
@@ -349,8 +375,6 @@ Chcete-li vytvořit ukázkové statistiky pro všechny sloupce v tabulce, zadejt
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 ```
-
-Vytvoření ukázkové statistiky ve všech sloupcích
 
 ## <a name="examples-update-statistics"></a>Příklady: Aktualizovat statistiky
 
@@ -373,7 +397,7 @@ Například:
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
-Aktualizací konkrétních objektů statistiky můžete minimalizovat čas a prostředky potřebné ke správě statistik. To vyžaduje některé myslel vybrat nejlepší statistiky objekty aktualizovat.
+Aktualizací konkrétních objektů statistiky můžete minimalizovat čas a prostředky potřebné ke správě statistik. To vyžaduje některé myšlenky vybrat nejlepší statistiky objekty aktualizovat.
 
 ### <a name="update-all-statistics-on-a-table"></a>Aktualizace všech statistik v tabulce
 
@@ -392,7 +416,7 @@ UPDATE STATISTICS dbo.table1;
 Příkaz UPDATE STATISTICS se snadno používá. Jen nezapomeňte, že aktualizuje *všechny* statistiky na stole, a proto může provádět více práce, než je nutné. Pokud výkon není problém, je to nejjednodušší a nejúplnější způsob, jak zaručit, že statistiky jsou aktuální.
 
 > [!NOTE]
-> Při aktualizaci všech statistik v tabulce sql datový sklad provádí prohledávání vzorkovat tabulku pro každý objekt statistiky. Pokud je tabulka velká a obsahuje mnoho sloupců a mnoho statistik, může být efektivnější aktualizovat jednotlivé statistiky na základě potřeby.
+> Při aktualizaci všech statistik v tabulce, fond SQL provádí prohledávání vzorkovat tabulku pro každý objekt statistiky. Pokud je tabulka velká a obsahuje mnoho sloupců a mnoho statistik, může být efektivnější aktualizovat jednotlivé statistiky na základě potřeby.
 
 Implementace postupu naleznete `UPDATE STATISTICS` v tématu [Dočasné tabulky](sql-data-warehouse-tables-temporary.md). Metoda implementace se mírně liší od `CREATE STATISTICS` předchozího postupu, ale výsledek je stejný.
 
@@ -473,7 +497,10 @@ DBCC SHOW_STATISTICS() zobrazuje data uchovávaná v rámci statistického objek
 - Vektor hustoty
 - Histogram
 
-Metadata záhlaví o statistikách. Histogram zobrazuje rozdělení hodnot v prvním sloupci klíče objektu statistiky. Vektor hustoty měří korelaci mezi sloupci. SQL Data Warehouse vypočítá početní odhady s libovolnými daty v objektu statistiky.
+Metadata záhlaví o statistikách. Histogram zobrazuje rozdělení hodnot v prvním sloupci klíče objektu statistiky. Vektor hustoty měří korelaci mezi sloupci.
+
+> [!NOTE]
+> Fond SQL vypočítá počet odhadů mohutnosti s libovolnými daty v objektu statistiky.
 
 ### <a name="show-header-density-and-histogram"></a>Zobrazit záhlaví, hustotu a histogram
 
@@ -505,7 +532,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DbCC SHOW_STATISTICS() rozdíly
 
-DBCC SHOW_STATISTICS() je více přísně implementována v datovém skladu SQL ve srovnání se serverem SQL:
+DBCC SHOW_STATISTICS() je více přísně implementována ve fondu SQL ve srovnání s SQL Server:
 
 - Nezdokumentované funkce nejsou podporovány.
 - Nelze použít Stats_stream.

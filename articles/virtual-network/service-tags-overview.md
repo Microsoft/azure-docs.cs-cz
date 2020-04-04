@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 568fc880711d42941fd9aef2ea19b8ac3123793a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 7da20a0bf87b33f05ea7f1d457157c5b7ee2ec7b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384241"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631512"
 ---
 # <a name="virtual-network-service-tags"></a>Značky virtuálních síťových služeb
 <a name="network-service-tags"></a>
@@ -76,15 +76,15 @@ Ve výchozím nastavení značky služeb odrážejí rozsahy pro celý cloud. N�
 | **AzurePlatformLKM** | Služba licencování nebo správy klíčů systému Windows.<br/><br/>Pomocí této značky můžete zakázat výchozí hodnoty pro licencování. Při použití této značky buďte opatrní. Doporučujeme, abyste si [přečetli aspekty platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations).  Doporučujeme také provést testování před použitím této značky. | Odchozí | Ne | Ne |
 | **AzureResourceManager** | Správce prostředků Azure. | Odchozí | Ne | Ne |
 | **AzureSignalR** | Azure SignalR. | Odchozí | Ne | Ne |
-| **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **AzureActiveDirectory**, **AzureKeyVault**, **EventHub**,**GuestAndHybridManagement** a **Storage.** | Odchozí | Ne | Ne |
+| **AzureSiteRecovery** | Obnovení webu Azure.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **AzureActiveDirectory**, **AzureKeyVault**, **EventHub**,**GuestAndHybridManagement** a **Storage.** | Odchozí | Ne | Ne |
 | **AzureTrafficManager** | Azure Traffic Manager sonda IP adresy.<br/><br/>Další informace o IP adresách sondy Traffic Manageru najdete v [nejčastějších dotazech k Azure Traffic Manageru](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Příchozí | Ne | Ano |  
 | **Správa batchnode** | Provoz správy pro nasazení vyhrazená pro Azure Batch. | Obojí | Ne | Ano |
-| **CognitiveServicesManagement** | Rozsahy adres pro provoz pro Azure Cognitive Services. | Odchozí | Ne | Ne |
+| **CognitiveServicesManagement** | Rozsahy adres pro provoz pro Azure Cognitive Services. | Obojí | Ne | Ne |
 | **DataFactory**  | Azure Data Factory | Obojí | Ne | Ne |
 | **Řízení datových společností** | Provoz správy pro Azure Data Factory. | Odchozí | Ne | Ne |
 | **Dynamics365ForMarketingEmail** | Rozsahy adres marketingové e-mailové služby Dynamics 365. | Odchozí | Ano | Ne |
 | **ElasticAFD** | Elastické azurové přední dveře. | Obojí | Ne | Ne |
-| **Centrum událostí** | Azure Event Hubs. | Odchozí | Ano | Ano |
+| **Centrum událostí** | Centra událostí Azure. | Odchozí | Ano | Ano |
 | **GatewayManager** | Provoz správy pro nasazení vyhrazená pro Azure VPN Gateway a Aplikační brána. | Příchozí | Ne | Ne |
 | **GuestAndHybridManagement** | Azure Automation a konfigurace hosta. | Odchozí | Ne | Ano |
 | **HDInsight** | Azure HDInsight. | Příchozí | Ano | Ne |
@@ -124,7 +124,7 @@ Můžete získat aktuální výrobní číslo a informace o rozsahu, které chce
 ### <a name="use-the-service-tag-discovery-api-public-preview"></a>Použití rozhraní API pro zjišťování výrobních značek (veřejná verze Preview)
 Můžete programově načíst aktuální seznam značek služeb spolu s podrobnostmi o rozsahu IP adres:
 
-- [Odpočinku](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+- [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
@@ -138,7 +138,7 @@ Můžete si stáhnout soubory JSON, které obsahují aktuální seznam značek s
 - [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
 - [Azure americká vláda](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure (Čína)](https://www.microsoft.com/download/details.aspx?id=57062) 
-- [Azure (Německo)](https://www.microsoft.com/download/details.aspx?id=57064)   
+- [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
 
 > [!NOTE]
 >Podmnožina těchto informací byla publikována v souborech XML pro [Azure Public](https://www.microsoft.com/download/details.aspx?id=41653), [Azure China](https://www.microsoft.com/download/details.aspx?id=42064)a Azure [Germany](https://www.microsoft.com/download/details.aspx?id=54770). Června 2020 budou již zastaralé a po tomto datu již nebudou k dispozici. Měli byste migrovat na použití rozhraní Discovery API nebo stahování souborů JSON, jak je popsáno v předchozích částech.

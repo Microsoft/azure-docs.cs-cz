@@ -5,25 +5,25 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477f3cf270377bc1341e65ab500093e05277afa8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056558"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657558"
 ---
 Šablona projektu Azure Functions v Sadě Visual Studio vytvoří projekt, který můžete publikovat do aplikace funkce v Azure. Pomocí aplikace funkce můžete seskupit funkce jako logickou jednotku pro snadnější správu, nasazení, škálování a sdílení prostředků.
 
-1. V sadě Visual Studio vyberte v nabídce **Soubor** **položku Nový** > **projekt**.
+1. V nabídce Visual Studio vyberte **Soubor** > **nového** > **projektu**.
 
-1. V **části Vytvoření nového projektu**zadejte *funkce* do vyhledávacího pole a pak zvolte šablonu **Azure Functions.**
+1. V **části Vytvoření nového projektu**zadejte do vyhledávacího pole *funkce,* zvolte šablonu **Azure Functions** a pak vyberte **Další**.
 
 1. V **okně Konfigurace nového projektu**zadejte název **projektu** a vyberte **vytvořit**. Název aplikace funkcí musí být platný jako obor názvů C#, takže nepoužívejte podtržítka, pomlčky nebo jiné nealfanumerické znaky.
 
-1. Pro **nový projekt &lt;-&gt; ** nastavení názvu projektu použijte hodnoty v následující tabulce:
+1. Pro **vytvoření nového** nastavení aplikace funkce Azure použijte hodnoty v následující tabulce:
 
     | Nastavení      | Hodnota  | Popis                      |
     | ------------ |  ------- |----------------------------------------- |
@@ -38,4 +38,4 @@ ms.locfileid: "80056558"
 
     Ujistěte se, že jste nastavili **přístupová práva** na **anonymní**. Pokud zvolíte výchozí úroveň **funkce**, budete muset prezentovat [funkční klíč](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) v požadavcích na přístup ke koncovému bodu funkce.
 
-1. Výběrem **možnosti OK** vytvořte projekt funkce a funkci spouštěnou protokolem HTTP.
+1. Vyberte **Vytvořit,** chcete-li vytvořit projekt funkce a aktivační funkci HTTP.

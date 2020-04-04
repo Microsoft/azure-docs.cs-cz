@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3f8ddb566801e758d3cbec9412c685f376af1165
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 63680178c42854d9cb3b4b42d004da471f839c97
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974559"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656085"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Úvodní příručka: Extrahování tištěného textu (OCR) pomocí rozhraní API PRO ODPOČINEK v počítači a javascriptu
 
@@ -29,18 +29,18 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
+Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Uložte klíč předplatného a adresu URL koncového bodu do dočasného umístění.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Zkopírujte do textového editoru následující kód.
+1. Vytvořte soubor s názvem _get-printed-text.html_, otevřete jej v textovém editoru a zkopírujte do něj následující kód.
 1. Volitelně můžete hodnotu atributu `value` pro ovládací prvek `inputImage` nahradit adresou URL jiného obrázku, který chcete analyzovat.
-1. Uložte kód jako soubor s příponou `.html`. Například, `get-printed-text.html`.
 1. Otevřete okno prohlížeče.
 1. Přetáhněte daný soubor do okna prohlížeče.
-1. Když se v prohlížeči zobrazí webová stránka, zvolte tlačítko **Read image** (Načíst obrázek).
+1. Když se webová stránka zobrazí v prohlížeči, vložte klíč předplatného a adresu URL koncového bodu do příslušných vstupních polí.
+1. Vyberte tlačítko **Číst obraz.**
 
 ```html
 <!DOCTYPE html>
@@ -57,9 +57,8 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/ocr";
 
@@ -110,6 +109,13 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 <h1>Optical Character Recognition (OCR):</h1>
 Enter the URL to an image of printed text, then
 click the <strong>Read image</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image to read:
 <input type="text" name="inputImage" id="inputImage" 

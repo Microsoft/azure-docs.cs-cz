@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99220fdf5dfb47f235637f83ba9be4ec015758bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294441"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631478"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Řešení problémů s konfigurací požadovaného stavu azure automation (DSC)
 
@@ -48,7 +48,7 @@ Informace o použití xDscDiagnostics naleznete [v tématu Použití xDscDiagnos
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Ujistěte se, že uzly a pracovní prostor automatizace mají požadované moduly
 
-DSC závisí na modulech nainstalovaných v uzlu. Při použití konfigurace stavu automatizace Azure importujte všechny požadované moduly do svého účtu Automation pomocí kroků uvedených v [části Import Modules](../shared-resources/modules.md#import-modules). Konfigurace mohou mít také závislost na konkrétních verzích modulů. Další informace naleznete [v tématu Poradce při potížích s moduly](shared-resources.md#modules).
+DSC závisí na modulech nainstalovaných v uzlu. Při použití konfigurace stavu automatizace Azure importujte všechny požadované moduly do svého účtu Automation pomocí kroků uvedených v [části Import Modules](../shared-resources/modules.md#importing-modules). Konfigurace mohou mít také závislost na konkrétních verzích modulů. Další informace naleznete [v tématu Poradce při potížích s moduly](shared-resources.md#modules).
 
 ## <a name="common-errors-when-working-with-dsc"></a>Běžné chyby při práci s DSC
 

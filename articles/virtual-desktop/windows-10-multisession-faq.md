@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4301aaed0152e07eb2a941b56637239b66c33878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127357"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637097"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -39,7 +39,7 @@ Windows 10 Enterprise multi-session nelze spustit v místním produkčním prost
 
 Virtuální počítač (VM) můžete spustit v Azure s Windows 10 Windows 10 Enterprise multi-session a přizpůsobit ho instalací obchodních aplikací, sysprepem/generalize a pak vytvořit bitovou kopii pomocí portálu Azure.  
  
-Pokud chcete začít, vytvořte virtuální počítač v Azure s Windows 10 Windows 10 Enterprise multisession. Místo spuštění virtuálního počítače v Azure, můžete stáhnout virtuální pevný disk přímo. Poté budete moct stažený virtuální disk Použít k vytvoření nového virtuálního počítače generace 1 na počítači s Windows 10 s povoleným technologiem Hyper-V.
+Pokud chcete začít, vytvořte virtuální počítač v Azure s Windows 10 Enterprise s vícerelací. Místo spuštění virtuálního počítače v Azure, můžete stáhnout virtuální pevný disk přímo. Poté budete moct stažený virtuální disk Použít k vytvoření nového virtuálního počítače generace 1 na počítači s Windows 10 s povoleným technologiem Hyper-V.
 
 Přizpůsobte bitovou kopii potřebám instalací obchodních aplikací a programu sysprep. Po dokončení přizpůsobení nahrajte image do Azure s virtuálním pevným diskem uvnitř. Poté získejte virtuální plochu Windows z Azure Marketplace a použijte ji k nasazení nového fondu hostitelů s přizpůsobenou bitovou kopií.
  

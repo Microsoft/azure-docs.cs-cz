@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 94ca609d9dc070e6e2b4dc878ecd8dfaf9331ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648168"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656332"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytváření, monitorování a správa souborů FTP pomocí aplikací Azure Logic Apps
 
@@ -27,7 +27,7 @@ Můžete použít aktivační události, které získají odpovědi ze serveru F
 
 ## <a name="limitations"></a>Omezení
 
-* Ftp konektor podporuje pouze explicitní FTP přes SSL (FTPS) a není kompatibilní s implicitní FTPS.
+* Ftp konektor podporuje pouze explicitní FTP přes TLS/SSL (FTPS) a není kompatibilní s implicitní FTPS.
 
 * Ve výchozím nastavení mohou akce FTP číst nebo zapisovat soubory o *50 MB nebo menší*. Chcete-li zpracovat soubory větší než 50 MB, akce FTP podporují [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). Akce **Získat obsah souboru** implicitně používá bloků.
 
