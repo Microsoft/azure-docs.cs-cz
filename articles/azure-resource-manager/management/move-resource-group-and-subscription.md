@@ -3,12 +3,12 @@ title: Přesunutí prostředků do nového předplatného nebo skupiny prostřed
 description: Pomocí Správce prostředků Azure přesuňte prostředky do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248850"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631509"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesun prostředků do nové skupiny prostředků nebo předplatného
 
@@ -107,7 +107,7 @@ Pro ilustrační účely máme pouze jeden závislý prostředek.
 
 * Krok 1: Pokud jsou závislé prostředky distribuovány mezi různé skupiny prostředků, nejprve je přesuňte do jedné skupiny prostředků.
 * Krok 2: Přesuňte prostředky a závislé prostředky společně ze zdrojového předplatného do cílového předplatného.
-* Krok 3: Volitelně redistribuovat závislé prostředky do různých skupin prostředků v rámci cílového předplatného. 
+* Krok 3: Volitelně redistribuovat závislé prostředky do různých skupin prostředků v rámci cílového předplatného.
 
 ## <a name="validate-move"></a>Ověřit přesun
 
@@ -260,8 +260,9 @@ Při přesouvání prostředku musí jeho závislé prostředky existovat buď v
 Například přesunutí virtuálního počítače může vyžadovat přesunutí sedmi typů prostředků se třemi různými poskytovateli prostředků. Tito poskytovatelé a typy prostředků jsou:
 
 * Microsoft.Compute
-   * virtualMachines
-   * Disky
+
+  * virtualMachines
+  * Disky
 * Microsoft.Network
   * síťová rozhraní
   * publicIPAdresy

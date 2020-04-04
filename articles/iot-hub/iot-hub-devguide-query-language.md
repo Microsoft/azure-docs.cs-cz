@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: ad8b4b39e582d10c2a3b6003bfa07138f4697b71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499185"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632935"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modulů, úlohy a směrování zpráv
 
@@ -453,7 +453,7 @@ Podporovány jsou následující operátory:
 | Logické |A, NEBO, NEBO NE |
 | Srovnání |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 
 Při dotazování dvojčat a úlohje jedinou podporovanou funkcí:
 
@@ -481,7 +481,7 @@ V podmínkách tras jsou podporovány následující funkce kontroly a přetypov
 | AS_NUMBER | Převede vstupní řetězec na číslo. `noop`je-li vstup číslem; `Undefined` pokud řetězec nepředstavuje číslo.|
 | IS_ARRAY | Vrátí logickou hodnotu označující, zda je typem zadaného výrazu pole. |
 | IS_BOOL | Vrátí logickou hodnotu označující, zda je typ zadaného výrazu logický. |
-| IS_DEFINED | Vrátí logickou hodnotu označující, pokud byla vlastnosti přiřazena hodnota. |
+| IS_DEFINED | Vrátí logickou hodnotu označující, pokud byla vlastnosti přiřazena hodnota. To je podporováno pouze v případě, že hodnota je primitivní typ. Primitivní typy zahrnují řetězec, logickou `null`hodnotu, číselnou nebo . DateTime, typy objektů a pole nejsou podporovány. |
 | IS_NULL | Vrátí logickou hodnotu označující, zda je typ zadaného výrazu null. |
 | IS_NUMBER | Vrátí logickou hodnotu označující, zda je typem zadaného výrazu číslo. |
 | IS_OBJECT | Vrátí logickou hodnotu označující, zda je typem zadaného výrazu objekt JSON. |

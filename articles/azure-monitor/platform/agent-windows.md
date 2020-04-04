@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 65a6f51d0eef28ea33adcc755d3d51f1e06a5341
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528335"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637473"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows ke službě Azure Monitor
 
@@ -32,7 +32,7 @@ Agent může být nainstalován pomocí jedné z následujících metod. Větši
 
 Pokud potřebujete nakonfigurovat agenta tak, aby se hlásil do více než jednoho pracovního prostoru, nelze to provést během počátečníinstalace, pouze poté aktualizací nastavení z Ovládacích panelů nebo prostředí PowerShell, jak je popsáno v [části Přidání nebo odebrání pracovního prostoru](agent-manage.md#adding-or-removing-a-workspace).  
 
-Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-agent.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent.md#firewall-requirements).
+Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-agent.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent.md#network-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
 Před instalací agenta Analýzy protokolů pro Systém Windows potřebujete ID pracovního prostoru a klíč pro pracovní prostor Log Analytics.  Tyto informace jsou vyžadovány během instalace z každé metody instalace správně nakonfigurovat agenta a zajistit, že může úspěšně komunikovat s Azure Monitor v Azure komerční a us government cloud. 
@@ -136,44 +136,44 @@ Následující příklad nainstaluje 64bitového agenta `URI` identifikovaného 
 Chcete-li načíst kód produktu z instalačního balíčku agenta přímo, můžete použít orca.exe z [windows sdk komponenty pro vývojáře Instalační služby systému Windows,](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) který je součástí sady Windows Software Development Kit nebo pomocí prostředí PowerShell po [příklad skriptnapsaný](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) Microsoft Valuable Professional (MVP).  Pro oba přístupy je třeba nejprve extrahovat soubor **MOMagent.msi** z instalačního balíčku MMASetup.  To je uvedeno dříve v prvním kroku v části [Instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
 
 1. Importujte modul DSC xPSDesiredStateConfiguration z [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) aplikace Azure Automation.  
-1. Vytvořte datové zdroje proměnných Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* na ID pracovního prostoru Analýzy protokolů a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč pracovního prostoru.
-1. Zkopírujte skript a uložte jej jako MMAgent.ps1.
+2.    Vytvořte datové zdroje proměnných Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* na ID pracovního prostoru Analýzy protokolů a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč pracovního prostoru.
+3.    Zkopírujte skript a uložte jej jako MMAgent.ps1.
 
-   ```powershell
-   Configuration MMAgent
-   {
-       $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
-       $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
-       $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
+```powershell
+Configuration MMAgent
+{
+    $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
+    $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
+    $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
-       Import-DscResource -ModuleName xPSDesiredStateConfiguration
-       Import-DscResource -ModuleName PSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-       Node OMSnode {
-           Service OIService
-           {
-               Name = "HealthService"
-               State = "Running"
-               DependsOn = "[Package]OI"
-           }
+    Node OMSnode {
+        Service OIService
+        {
+            Name = "HealthService"
+            State = "Running"
+            DependsOn = "[Package]OI"
+        }
 
-           xRemoteFile OIPackage {
-               Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
-               DestinationPath = $OIPackageLocalPath
-           }
+        xRemoteFile OIPackage {
+            Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
+            DestinationPath = $OIPackageLocalPath
+        }
 
-           Package OI {
-               Ensure = "Present"
-               Path  = $OIPackageLocalPath
-               Name = "Microsoft Monitoring Agent"
-               ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-               Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + '      OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
-               DependsOn = "[xRemoteFile]OIPackage"
-           }
-       }
-   }
+        Package OI {
+            Ensure = "Present"
+            Path  = $OIPackageLocalPath
+            Name = "Microsoft Monitoring Agent"
+            ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
+            Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+            DependsOn = "[xRemoteFile]OIPackage"
+        }
+    }
+}
 
-   ```
+```
 
 4. Aktualizujte `ProductId` hodnotu ve skriptu s kódem produktu extrahovaným z nejnovější verze instalačního balíčku agenta pomocí dříve doporučených metod. 
 5. [Importujte konfigurační skript MMAgent.ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do svého účtu Automation. 

@@ -1,6 +1,6 @@
 ---
 title: Přiřazení proměnných
-description: Tipy pro přiřazení proměnných T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
+description: V tomto článku najdete základní tipy pro přiřazení proměnných T-SQL ve fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0adcd9bdf92b7ec649b7d91ca0e655fc006b3549
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351665"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633410"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Přiřazení proměnných v datovém skladu Azure SQL
+# <a name="assign-variables-in-synapse-sql-pool"></a>Přiřazení proměnných ve fondu Synapse SQL
 
-Tipy pro přiřazení proměnných T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
+V tomto článku najdete základní tipy pro přiřazení proměnných T-SQL ve fondu SQL.
 
-## <a name="setting-variables-with-declare"></a>Nastavení proměnných pomocí příkazu DECLARE
+## <a name="set-variables-with-declare"></a>Nastavení proměnných pomocí příkazu DECLARE
 
-Proměnné v datovém skladu SQL `DECLARE` jsou `SET` nastaveny pomocí příkazu nebo příkazu. Inicializace proměnných pomocí funkce DECLARE je jedním z nejflexibilnějších způsobů nastavení hodnoty proměnné v datovém skladu SQL.
+Proměnné ve fondu SQL jsou `DECLARE` nastaveny `SET` pomocí příkazu nebo příkazu. Inicializace proměnných pomocí funkce DECLARE je jedním z nejflexibilnějších způsobů nastavení hodnoty proměnné ve fondu SQL.
 
 ```sql
 DECLARE @v  int = 0
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nelze inicializovat a použít proměnnou ve stejném příkazu DECLARE. Pro ilustraci bodu **následující** příklad @p1 není povolen, protože je inicializován a použit ve stejném příkazu DECLARE. Následující příklad uvádí chybu.
+Nelze inicializovat a použít proměnnou ve stejném příkazu DECLARE. Pro ilustraci bodu **následující** příklad @p1 není povolen, protože je inicializován a použit ve stejném příkazu DECLARE. V následujícím příkladu je uvedena chyba:
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,7 +47,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>Nastavení hodnot pomocí sady
+## <a name="set-values-with-set"></a>Nastavení hodnot pomocí sady
 
 SET je běžná metoda pro nastavení jedné proměnné.
 

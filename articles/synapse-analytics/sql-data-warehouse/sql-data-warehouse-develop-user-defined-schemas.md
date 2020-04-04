@@ -1,6 +1,6 @@
 ---
 title: Použití uživatelem definovaných schémat
-description: Tipy pro použití uživatelských schémat T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
+description: Tipy pro použití t-SQL uživatelem definované schémata pro vývoj řešení v synapse fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,49 +11,51 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9ed4f01aae6ace1af6c1652fe3c5ecfe14dc6bf
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7144fa75d156ca7aed9d8215592f89c167cfb221
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351542"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633457"
 ---
-# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Použití uživatelem definovaných schémat v datovém skladu SQL
-Tipy pro použití uživatelských schémat T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
+# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Uživatelem definovaná schémata ve fondu SYNAPse SQL
+Tento článek se zaměřuje na poskytování několika tipů pro použití t-SQL uživatelem definované schémata pro vývoj řešení ve fondu SQL Synapse.
 
 ## <a name="schemas-for-application-boundaries"></a>Schémata pro hranice aplikace
 
-Tradiční datové sklady často používají samostatné databáze k vytvoření hranic aplikace na základě zatížení, domény nebo zabezpečení. Tradiční datový sklad serveru SQL Server může například zahrnovat pracovní databázi, databázi datového skladu a některé databáze datového tržiště. V této topologii každá databáze funguje jako hranice úlohy a zabezpečení v architektuře.
+Tradiční datové sklady často používají samostatné databáze k vytvoření hranic aplikace na základě zatížení, domény nebo zabezpečení. 
 
-Naproti tomu SQL Data Warehouse spouští celé úlohy datového skladu v rámci jedné databáze. Spojení křížové databáze nejsou povolena. Proto SQL Data Warehouse očekává, že všechny tabulky používané ve skladu, které mají být uloženy v jedné databázi.
+Například tradiční datový sklad serveru SQL Server může zahrnovat pracovní databázi, databázi datového skladu a některé databáze datového tržiště. V této topologii každá databáze funguje jako pracovní vytížení a hranice zabezpečení v architektuře.
+
+Naproti tomu fond SQL spouští celé úlohy datového skladu v rámci jedné databáze. Křížová připojení databáze nejsou povolena. Fond SQL očekává, že všechny tabulky používané ve skladu, které mají být uloženy v rámci jedné databáze.
 
 > [!NOTE]
-> SQL Data Warehouse nepodporuje dotazy mezi databázemi jakéhokoli druhu. V důsledku toho implementace datového skladu, které využívají tento vzor bude muset být revidován.
+> Fond SQL nepodporuje dotazy mezi databázemi jakéhokoli druhu. V důsledku toho implementace datového skladu, které využívají tento vzor bude muset být revidován.
 > 
 > 
 
 ## <a name="recommendations"></a>Doporučení
-Jedná se o doporučení pro konsolidaci úloh, zabezpečení, domény a funkčních hranic pomocí uživatelských schémat.
+Následuje doporučení pro konsolidaci úloh, zabezpečení, domény a funkčních hranic pomocí schémat definovaných uživatelem:
 
-1. Spuštění celého pracovního vytížení datového skladu pomocí jedné databáze datového skladu SQL
-2. Konsolidace stávajícího prostředí datového skladu za účelem použití jedné databáze datového skladu SQL
-3. Využijte **uživatelem definovaná schémata** k zajištění hranice dříve implementované pomocí databází.
+- Pomocí jedné databáze fondu SQL spusťte celou úlohu datového skladu.
+- Konsolidujte stávající prostředí datového skladu a použijte jednu databázi fondu SQL.
+- Využijte **uživatelem definovaná schémata** k zajištění hranice dříve implementované pomocí databází.
 
-Pokud uživatelem definované schémata nebyly použity dříve pak máte čistý štít. Jednoduše použijte starý název databáze jako základ pro vaše uživatelem definované schémata v databázi datového skladu SQL.
+Pokud uživatelem definované schémata nebyly použity dříve, pak máte čistý štít. Použijte starý název databáze jako základ pro vaše uživatelem definované schémata v databázi fondu SQL.
 
 Pokud již byla schémata použita, máte několik možností:
 
-1. Odebrání starších názvů schémat a zahájení nového období
-2. Zachovat starší názvy schémat předem čekající na název staršího schématu na název tabulky
-3. Zachovat starší názvy schématu implementací zobrazení nad tabulka v další schéma znovu vytvořit strukturu staré schéma.
+- Odeberte starší názvy schémat a začněte znovu.
+- Zachovat starší názvy schématu předem čekající název staršího schématu na název tabulky.
+- Zachovat starší názvy schématu implementací zobrazení nad tabulka v další schéma znovu vytvořit strukturu staré schéma.
 
 > [!NOTE]
-> Při první kontrole se možnost 3 může zdát jako nejpřitažlivější možnost. Nicméně, ďábel je v detailu. Zobrazení jsou jen pro čtení v datovém skladu SQL. Všechna data nebo změny tabulky by bylo nutné provést proti základní tabulce. Možnost 3 také zavádí vrstvu pohledů do vašeho systému. Možná budete chtít dát tuto další myšlenku, pokud používáte zobrazení v architektuře již.
+> Při první kontrole se možnost 3 může zdát jako nejpřitažlivější možnost. Nicméně, ďábel je v detailu. Zobrazení jsou jen pro čtení ve fondu SQL. Všechna data nebo změny tabulky by bylo nutné provést proti základní tabulce. Možnost 3 také zavádí vrstvu pohledů do vašeho systému. Možná budete chtít dát tuto další myšlenku, pokud používáte zobrazení v architektuře již.
 > 
 > 
 
 ### <a name="examples"></a>Příklady:
-Implementace uživatelem definovaných schémat založených na názvech databází
+Implementujte uživatelem definovaná schémata založená na názvech databází:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -71,7 +73,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Zachovat starší názvy schémat předem čekající na název tabulky. Použijte schémata pro hranice pracovního vytížení.
+Zachovat starší názvy schémat u předem čekající na jejich název tabulky. Použijte schémata pro hranice pracovního vytížení:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -89,7 +91,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Zachování starších názvů schémat pomocí zobrazení
+Zachovat starší názvy schémat pomocí zobrazení:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary

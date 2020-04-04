@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/01/2020
+ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01956c2fee1c15bc86e8d80aa05c70db647bf593
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616884"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655981"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky se vztahují na všechny cílové skupiny.
@@ -57,7 +57,7 @@ Ne všechny verze Azure AD Connect budou k dispozici pro automatický upgrade. S
 ### <a name="functional-changes-adsyncautoupgrade"></a>Funkční změny ADSyncAutoUpgrade 
 
 - Byla přidána podpora funkce mS-DS-ConsistencyGuid pro objekty skupiny. To umožňuje přesunout skupiny mezi doménovými strukturami nebo znovu připojit skupiny ve službě AD azure ad, kde se změnilo id objektu skupiny AD, například při opětovném vytvoření serveru Služby AD po kalamitě. Další informace naleznete v [tématu Přesunutí skupin mezi doménovými strukturami](how-to-connect-migrate-groups.md).
-- Atribut mS-DS-ConsistencyGuid je automaticky nastaven na synchronizované skupiny al a není třeba provádět nic pro povolení této funkce. 
+- Atribut mS-DS-ConsistencyGuid je automaticky nastaven ve všech synchronizovaných skupinách a není třeba provádět nic pro povolení této funkce. 
 - Odebrán get-ADSyncRunProfile, protože se již nepoužívá. 
 - Bylo změněno upozornění, které se zobrazí při pokusu o použití účtu enterprise admin nebo správce domény pro účet konektoru služby AD DS, aby bylo zajištěno více kontextu. 
 - Přidána nová rutina pro odebrání objektů z prostoru konektoru, starý nástroj CSDelete.exe je odebrán a nahrazen novou rutinou Remove-ADSyncCSObject. Rutina Remove-ADSyncCSObject přebírá jako vstup objekt CsObject. Tento objekt lze načíst pomocí rutiny Get-ADSyncCSObject.

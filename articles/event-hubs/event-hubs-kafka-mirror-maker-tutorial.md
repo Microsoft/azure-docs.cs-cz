@@ -6,16 +6,15 @@ documentationcenter: .net
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
-ms.topic: conceptual
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: 3e0339cf4431d3ed36f50b43134803079e30b101
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: fb041ec0d3cd474cca12d5ad55b733337566b9cc
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521740"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632788"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Použití Kafka MirrorMaker s Event Hubs pro Apache Kafka
 
@@ -127,23 +126,11 @@ Podívejte se na následující ukázky na GitHubu:
 - [Azure Event Hubs Kafka MirrorMaker spuštěný na instanci kontejneru Azure](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>Další kroky
+Další informace o centru událostí pro Kafku najdete v následujících článcích:  
 
-V tomto kurzu se naučíte:
-> [!div class="checklist"]
-> * Vytvoření oboru názvů služby Event Hubs
-> * Naklonování ukázkového projektu
-> * Nastavení clusteru Kafka
-> * Konfigurace aplikace Kafka MirrorMaker
-> * Spustit Kafka MirrorMaker
-
-Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdete v následujícím tématu:  
-
-- [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak vytvořit centrum událostí](event-hubs-create.md)
-- [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)
 - [Připojení Apache Flinku k centru událostí](event-hubs-kafka-flink-tutorial.md)
 - [Integrace aplikace Kafka Connect s centrem událostí](event-hubs-kafka-connect-tutorial.md)
-- [Připojení Streamů Akka k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
 - [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Připojení Streamů Akka k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
+- [Průvodce vývojáři Apache Kafka pro Azure Event Hubs](apache-kafka-developer-guide.md)

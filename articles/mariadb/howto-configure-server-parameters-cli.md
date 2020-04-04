@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527669"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632304"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí rozhraní příkazového řádku Azure
 Můžete seznam, zobrazit a aktualizovat parametry konfigurace pro azure databáze pro mariadb server pomocí Azure CLI, nástroj příkazového řádku Azure. Podmnožina konfigurací motoru je vystavena na úrovni serveru a může být změněna.
@@ -59,10 +59,10 @@ Tento kód obnoví **\_pomalou\_** konfiguraci protokolu dotazu na výchozí hod
 
 ### <a name="populating-the-time-zone-tables"></a>Vyplnění tabulek časových pásem
 
-Tabulky časových pásem na serveru mohou `az_load_timezone` být naplněny voláním uložené procedury z nástroje, jako je příkazový řádek MariaDB nebo Pracovní plocha MariaDB.
+Tabulky časových pásem na serveru mohou `mysql.az_load_timezone` být naplněny voláním uložené procedury z nástroje, jako je příkazový řádek MariaDB nebo Pracovní plocha MariaDB.
 
 > [!NOTE]
-> Pokud používáte `az_load_timezone` příkaz z MariaDB Workbench, možná budete muset nejprve vypnout režim nouzové aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`aplikace .
+> Pokud používáte `mysql.az_load_timezone` příkaz z MariaDB Workbench, možná budete muset nejprve vypnout režim nouzové aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`aplikace .
 
 ```sql
 CALL mysql.az_load_timezone();

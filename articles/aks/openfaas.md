@@ -1,17 +1,17 @@
 ---
 title: Použití OpenFaaS se službou Azure Kubernetes Service (AKS)
-description: Nasazení a používání OpenFaaS pomocí služby Azure Kubernetes Service (AKS)
+description: Zjistěte, jak nasadit a používat OpenFaaS v clusteru Azure Kubernetes Service (AKS) k vytváření bezserverových funkcí s kontejnery.
 author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 2605489f73063cb16a588d4714955704482327ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473638"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631477"
 ---
 # <a name="using-openfaas-on-aks"></a>Použití OpenFaaS na AKS
 

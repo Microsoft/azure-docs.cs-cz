@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: f74e3ea3d20ad2666b434e009cf62add6f88d200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219662"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656132"
 ---
-# <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
+# <a name="try-the-speech-service-for-free"></a>Vyzkoušejte službu Speech zdarma
 
 V tomto článku zvolíte možnost snadno otestovat službu Řeči zdarma, abyste mohli zjistit, co služba může dělat, a rozhodnout, zda je to správné pro vaše potřeby. Vyberte jednu ze dvou následujících možností v závislosti na vaší situaci a případu použití:
 
@@ -97,4 +97,4 @@ Dokončete jeden z našich 10minutových rychlých startů nebo se podívejte na
 
 > [!div class="nextstepaction"]
 > [Úvodní příručka: Rozpoznávání řeči v](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [ukázkách sady C# Speech SDK](speech-sdk.md#get-the-samples)
+> [ukázkách sady C# Speech SDK](speech-sdk.md#sample-source-code)

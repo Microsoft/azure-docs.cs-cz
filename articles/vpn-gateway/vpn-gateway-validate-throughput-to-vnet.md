@@ -4,17 +4,18 @@ description: Účelem tohoto dokumentu je pomoci uživateli ověřit propustnost
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75860482"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631767"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
 
@@ -242,7 +243,7 @@ Zmínil podsítě místnírozsahy, které chcete, aby Azure přístup prostředn
 
 * **Brána založená na zásadách:** Sítě virtuálních sítí založené na zásadách šifrují a směrují pakety prostřednictvím tunelových propojení IPsec na základě kombinací předpon adres mezi místní sítí a virtuální sítí Azure. Zásada (nebo selektor provozu) se většinou v konfiguraci sítě VPN definuje jako přístupový seznam.
 
-* **Připojení UsePolicyBasedTrafficSelector:** ("UsePolicyBasedTrafficSelectors" ke $True připojení nakonfiguruje bránu Azure VPN pro připojení k bráně vpn založené na zásadách v místním prostředí. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, aby vaše zařízení VPN bylo vybaveno odpovídajícími voliči provozu definovanými se všemi kombinacemi předpon místní sítě (místní síťová brána) do a z předpon virtuální sítě Azure, namísto any-to-any.
+* **Připojení UsePolicyBasedTrafficSelector:** ("UsePolicyBasedTrafficSelectors" ke $True připojení nakonfiguruje bránu Azure VPN pro připojení k bráně vpn založené na zásadách v místním prostředí. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, že vaše zařízení VPN má odpovídající voliči provozu definované se všemi kombinacemi předpon místní sítě (místní síťová brána) do a z předpon virtuální sítě Azure, namísto libovolného.
 
 Nevhodná konfigurace může vést k častému odpojování v rámci tunelu, poklesu paketů, chybné propustnosti a latenci.
 

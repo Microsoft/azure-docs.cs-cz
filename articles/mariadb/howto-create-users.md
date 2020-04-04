@@ -5,22 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 23e3c9db6302d2db597283358ff71c3693ecf435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/2/2020
+ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530168"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632288"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Vytváření uživatelů ve službě Azure Database for MariaDB 
 Tento článek popisuje, jak můžete vytvořit uživatele v Azure Database pro MariaDB.
 
 Při prvním vytvoření databáze Azure pro MariaDB jste zadali přihlašovací jméno a heslo správce serveru. Další informace získáte v programu [Rychlý start](quickstart-create-mariadb-server-database-using-azure-portal.md). Přihlašovací uživatelské jméno správce serveru můžete najít na webu Azure Portal.
 
-Uživatel správce serveru získá určitá oprávnění pro váš server, jak je uvedeno: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION KLIENT, VYTVOŘIT ZOBRAZENÍ, ZOBRAZIT ZOBRAZENÍ, VYTVOŘIT RUTINU, ZMĚNIT RUTINU, VYTVOŘIT UŽIVATELE, UDÁLOST, AKTIVAČNÍ UDÁLOST
+Uživatel správce serveru získá určitá oprávnění pro váš server, jak je uvedeno: Select, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
 
 Po vytvoření databáze Azure pro MariaDB server je možné použít první účet správce serveru k vytvoření dalších uživatelů a udělit přístup správce k nim. Účet správce serveru lze také použít k vytvoření méně privilegovaných uživatelů, kteří mají přístup k jednotlivým databázovým schématům.
+
+> [!NOTE]
+> Super oprávnění a dba role nejsou podporovány. Zkontrolujte [oprávnění](concepts-limits.md#privilege-support) v článku omezení pochopit, co není podporováno ve službě.
 
 ## <a name="create-additional-admin-users"></a>Vytvoření dalších uživatelů správce
 1. Získejte informace o připojení a uživatelské jméno správce.

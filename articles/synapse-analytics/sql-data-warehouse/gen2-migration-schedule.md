@@ -11,12 +11,12 @@ ms.service: synapse-analytics
 ms.topic: article
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4714d5908fffb6f5c1440c3ec512fb8173da4b57
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6f2af826473bfd13f8100796a540d41cbedbb037
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346769"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631569"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>Upgrade fondu SQL na Gen2
 
@@ -60,8 +60,8 @@ Existují dvě možnosti při provádění vlastního upgradu.  Můžete buď up
 - [Upgrade na místě](upgrade-to-latest-generation.md) – tato možnost upgraduje stávající fond Gen1 SQL na Gen2. Proces upgradu bude zahrnovat krátký pokles připojení (přibližně 5 min) při restartování fondu SQL.  Po restartování fondu SQL bude plně k dispozici pro použití. Pokud se během upgradu vyskytnou problémy, otevřete [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a jako možnou příčinu uveďte odkaz na upgrade Gen2.
 - [Upgrade z bodu obnovení](sql-data-warehouse-restore-points.md) – vytvořte uživatelem definovaný bod obnovení v aktuálním fondu GEN1 SQL a pak obnovte přímo do instance Gen2. Stávající Gen1 SQL fond zůstane na místě. Po dokončení obnovení bude váš fond Gen2 SQL plně k dispozici pro použití.  Po spuštění všech procesů testování a ověřování na obnovené instanci Gen2 lze původní instanci Gen1 odstranit.
 
-   - Krok 1: Z portálu Azure [vytvořte uživatelem definovaný bod obnovení](sql-data-warehouse-restore-active-paused-dw.md).
-   - Krok 2: Při obnovení z uživatelem definovaného bodu obnovení nastavte "úroveň výkonu" na upřednostňovanou úroveň Gen2.
+  - Krok 1: Z portálu Azure [vytvořte uživatelem definovaný bod obnovení](sql-data-warehouse-restore-active-paused-dw.md).
+  - Krok 2: Při obnovení z uživatelem definovaného bodu obnovení nastavte "úroveň výkonu" na upřednostňovanou úroveň Gen2.
 
 Během toho, co proces upgradu upgraduje datové soubory na pozadí, může na určitou dobu dojít ke snížení výkonu. Celková doba snížení výkonu se bude lišit v závislosti na velikosti datových souborů.
 
@@ -82,13 +82,14 @@ Další informace naleznete v [tématu Upgrade na Gen2](upgrade-to-latest-genera
 
 **Otázka: Jak budou upgrady mít vliv na mé automatizační skripty?**
 
-- A: Všechny automatizační skript, který odkazuje na cíl na úrovni služby by mělbýt změněn tak, aby odpovídaly gen2 ekvivalent.  Podrobnosti naleznete [zde](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
+- A: Všechny automatizační skript, který odkazuje na cíl na úrovni služby by mělbýt změněn tak, aby odpovídaly gen2 ekvivalent.  Podrobnosti naleznete [zde](upgrade-to-latest-generation.md#upgrade-in-a-supported-region-using-the-azure-portal).
 
 **Otázka: Jak dlouho trvá vlastní upgrade obvykle trvá?**
 
-- A: Můžete upgradovat na místě nebo upgrade z bodu obnovení.  
-   - Upgrade na místě způsobí, že váš fond SQL na okamžik pozastavit a pokračovat.  Proces na pozadí bude pokračovat, zatímco fond SQL je online.  
-   - Pokud provádíte upgrade prostřednictvím bodu obnovení, trvá déle, protože upgrade projde procesem úplného obnovení.
+- A: Můžete upgradovat na místě nebo upgrade z bodu obnovení.
+
+  - Upgrade na místě způsobí, že váš fond SQL na okamžik pozastavit a pokračovat.  Proces na pozadí bude pokračovat, zatímco fond SQL je online.  
+  - Pokud provádíte upgrade prostřednictvím bodu obnovení, trvá déle, protože upgrade projde procesem úplného obnovení.
 
 **Otázka: Jak dlouho bude automatický upgrade trvat?**
 
@@ -100,12 +101,14 @@ Další informace naleznete v [tématu Upgrade na Gen2](upgrade-to-latest-genera
 
 **Otázka: Co mám dělat, když se zdá, že se proces upgradu na pozadí zasekl?**
 
- - A: Kick off reindex tabulky Columnstore. Všimněte si, že přeindexování tabulky bude během této operace offline.
+- A: Kick off reindex tabulky Columnstore. Všimněte si, že přeindexování tabulky bude během této operace offline.
 
 **Otázka: Co když Gen2 nemá cíl úrovně služeb, který mám na Gen1?**
+
 - A: Pokud používáte DW600 nebo DW1200 na Gen1, doporučuje se použít DW500c nebo DW1000c, protože Gen2 poskytuje více paměti, prostředky a vyšší výkon než Gen1.
 
 **Otázka: Mohu zakázat geografické zálohování?**
+
 - Odpověď: Ne. Geografické zálohování je podniková funkce pro zachování dostupnosti fondu SQL v případě, že oblast nebude k dispozici. Pokud máte další obavy, otevřete [žádost o podporu.](sql-data-warehouse-get-started-create-support-ticket.md)
 
 **Otázka: Existuje rozdíl v syntaxi T-SQL mezi Gen1 a Gen2?**
@@ -124,7 +127,7 @@ Další informace naleznete v [tématu Upgrade na Gen2](upgrade-to-latest-genera
 
 - [Kroky upgradu](upgrade-to-latest-generation.md)
 - [Časové intervaly pro správu a údržbu](maintenance-scheduling.md)
-- [Monitorování stavu prostředků](https://docs.microsoft.com/azure/service-health/resource-health-overview)
+- [Monitorování stavu prostředků](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 - [Revize Před zahájením migrace](upgrade-to-latest-generation.md#before-you-begin)
 - [Upgrade na místě a upgrade z bodu obnovení](upgrade-to-latest-generation.md)
 - [Vytvoření uživatelem definovaného bodu obnovení](sql-data-warehouse-restore-points.md)

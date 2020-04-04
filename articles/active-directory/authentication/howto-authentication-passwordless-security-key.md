@@ -4,19 +4,19 @@ description: Povolení přihlašování pomocí klíčů zabezpečení FIDO2 bez
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e088d239a91edeff34ecd1a7dc5be7a9f8628da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129148"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653940"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolení přihlášení pomocí bezpečnostního klíče bez hesla (náhled)
 
@@ -70,7 +70,7 @@ Registrační funkce pro metody ověřování bez hesla spoléhají na kombinova
 1. Zvolte **zařízení USB** nebo **zařízení NFC**.
 1. Připravte si klíč a zvolte **Další**.
 1. Zobrazí se pole a požádá ho, aby vytvořil/zadá PIN kód bezpečnostního klíče a poté provede požadované gesto pro klíč, a to buď biometrické, nebo dotykové.
-1. Uživatel bude vrácen do kombinované registrace prostředí a požádán, aby zadejte smysluplné jméno pro klíč, takže uživatel může určit, který z nich, pokud mají více. Klikněte na **Další**.
+1. Uživatel bude vrácen do kombinované registrace prostředí a požádán, aby zadejte smysluplné jméno pro klíč, takže uživatel může určit, který z nich, pokud mají více. Klikněte na **Další**.
 1. Chcete-li proces dokončit, klepněte na **tlačítko Hotovo.**
 
 ## <a name="sign-in-with-passwordless-credential"></a>Přihlášení pomocí přihlašovacích údajů bez hesla
@@ -95,7 +95,7 @@ Pokud chcete při náhledu této funkce sdílet zpětnou vazbu nebo se s nimi se
 
 Zřizování a zrušení zřizování klíčů zabezpečení správcem není ve verzi Public Preview k dispozici.
 
-### <a name="upn-changes"></a>Změny UPN
+### <a name="upn-changes"></a>Změny hlavního názvu uživatele (UPN)
 
 Pracujeme na podpoře funkce, která umožňuje změnu UPN na hybridních zařízeních Azure AD spojených a zařízeních Azure AD. Pokud se změní hlavní uživatel, již nelze upravit klíče zabezpečení FIDO2 tak, aby byly změny zohledňovány. Rozlišení je resetovat zařízení a uživatel musí znovu zaregistrovat.
 

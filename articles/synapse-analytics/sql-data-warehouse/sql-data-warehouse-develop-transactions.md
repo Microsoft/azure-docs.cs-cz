@@ -1,6 +1,6 @@
 ---
-title: Použití transakcí
-description: Tipy pro implementaci transakcí v Azure SQL Data Warehouse pro vývoj řešení.
+title: Použití transakcí ve fondu Synapse SQL
+description: Tento článek obsahuje tipy pro implementaci transakcí a vývoj řešení ve fondu Synapse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,30 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a14201131eac5ce1efc4020c9ce0f40a80cac8a3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351572"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633430"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>Použití transakcí v datovém skladu SQL
-Tipy pro implementaci transakcí v Azure SQL Data Warehouse pro vývoj řešení.
+# <a name="use-transactions-in-synapse-sql-pool"></a>Použití transakcí ve fondu Synapse SQL
+Tento článek obsahuje tipy pro implementaci transakcí a vývoj řešení ve fondu SQL.
 
 ## <a name="what-to-expect"></a>Co očekávat
-Jak byste očekávali, SQL Data Warehouse podporuje transakce jako součást úlohy datového skladu. Chcete-li však zajistit výkon sql data warehouse je udržována ve velkém měřítku některé funkce jsou omezené ve srovnání s SQL Server. Tento článek zdůrazňuje rozdíly a uvádí ostatní. 
+Jak byste očekávali, fond SQL podporuje transakce jako součást úlohy datového skladu. Však zajistit fond SQL je udržována ve velkém měřítku, některé funkce jsou omezené ve srovnání s SQL Server. Tento článek zdůrazňuje rozdíly. 
 
 ## <a name="transaction-isolation-levels"></a>Úrovně izolace transakcí
-SQL Data Warehouse implementuje transakce ACID. Úroveň izolace transakční podpory je výchozí pro čtení UNCOMMITTED.  Můžete změnit na číst potvrzený snímek izolace zapnutím možnosti READ_COMMITTED_SNAPSHOT databáze pro databázi uživatele při připojení k hlavní databázi.  Po povolení jsou všechny transakce v této databázi provedeny v rámci čtení potvrzený snímek izolace a nastavení READ UNCOMMITTED na úrovni relace nebude dodržena. Zkontrolujte [možnosti ALTER DATABASE SET (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) podrobnosti.
+Fond SQL implementuje transakce ACID. Úroveň izolace transakční podpory je výchozí pro čtení UNCOMMITTED.  Můžete změnit na číst potvrzený snímek izolace zapnutím možnosti READ_COMMITTED_SNAPSHOT databáze pro databázi uživatele při připojení k hlavní databázi.  
+
+Po povolení jsou všechny transakce v této databázi provedeny v rámci čtení potvrzený snímek izolace a nastavení READ UNCOMMITTED na úrovni relace nebude dodržena. Zkontrolujte [možnosti ALTER DATABASE SET (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) podrobnosti.
 
 ## <a name="transaction-size"></a>Velikost transakce
-Jedna transakce změny dat je omezena na velikost. Limit se použije na distribuci. Proto lze vypočítat celkové přidělení vynásobením limitu počtem rozdělení. Chcete-li aproximovat maximální počet řádků v transakci, vydělte distribuční limit celkovou velikostí každého řádku. U sloupců s proměnnou délkou zvažte použití průměrné délky sloupce namísto použití maximální velikosti.
+Jedna transakce změny dat je omezena na velikost. Limit se použije na distribuci. Proto lze vypočítat celkové přidělení vynásobením limitu počtem rozdělení. 
 
-V následující tabulce byly učiněny tyto předpoklady:
+Chcete-li aproximovat maximální počet řádků v transakci, vydělte distribuční limit celkovou velikostí každého řádku. U sloupců s proměnnou délkou zvažte použití průměrné délky sloupce namísto použití maximální velikosti.
+
+V následující tabulce byly provedeny dva předpoklady:
 
 * Došlo k rovnoměrnému rozdělení dat 
 * Průměrná délka řádku je 250 bajtů
@@ -84,14 +88,17 @@ Chcete-li optimalizovat a minimalizovat množství dat zapsaných do protokolu, 
 > 
 
 ## <a name="transaction-state"></a>Stav transakce
-SQL Data Warehouse používá funkci XACT_STATE() k vykazování neúspěšné transakce pomocí hodnoty -2. Tato hodnota znamená, že transakce selhala a je označena pouze pro vrácení zpět.
+Fond SQL používá funkci XACT_STATE() k vykazování neúspěšné transakce pomocí hodnoty -2. Tato hodnota znamená, že transakce selhala a je označena pouze pro vrácení zpět.
 
 > [!NOTE]
-> Použití funkce -2 XACT_STATE k označení neúspěšné transakce představuje odlišné chování serveru SQL Server. SQL Server používá hodnotu -1 představují uncommittable transakce. SQL Server může tolerovat některé chyby uvnitř transakce, aniž by musel být označen jako uncommittable. Například `SELECT 1/0` by způsobit chybu, ale ne vynutit transakci do stavu uncommittable. SQL Server také umožňuje čtení v uncommittable transakce. Sql Data Warehouse však neumožňuje provést. Pokud dojde k chybě uvnitř transakce SQL Data Warehouse, automaticky vstoupí do stavu -2 a nebudete moci provádět žádné další příkazy select, dokud nebude příkaz vrácen zpět. Je proto důležité zkontrolovat, zda kód aplikace, chcete-li zjistit, zda používá XACT_STATE(), jak budete muset provést změny kódu.
-> 
-> 
+> Použití funkce -2 XACT_STATE k označení neúspěšné transakce představuje odlišné chování serveru SQL Server. SQL Server používá hodnotu -1 představují uncommittable transakce. SQL Server může tolerovat některé chyby uvnitř transakce, aniž by musel být označen jako uncommittable. Například `SELECT 1/0` by způsobit chybu, ale ne vynutit transakci do stavu uncommittable. 
 
-Například v SQL Server může zobrazit transakce, která vypadá takto:
+SQL Server také umožňuje čtení v uncommittable transakce. Fond SQL však neumožňuje provést. Pokud dojde k chybě uvnitř transakce fondu SQL, automaticky vstoupí do stavu -2 a nebude možné provádět žádné další příkazy select, dokud nebude příkaz vrácen zpět. 
+
+Jako takové je důležité zkontrolovat, zda kód aplikace, chcete-li zjistit, zda používá XACT_STATE(), jak budete muset provést změny kódu.
+
+
+Například v SQL Server, může se zobrazit transakce, která vypadá takto:
 
 ```sql
 SET NOCOUNT ON;
@@ -131,11 +138,11 @@ SELECT @xact_state AS TransactionState;
 
 Předchozí kód obsahuje následující chybovou zprávu:
 
-Msg 111233, úroveň 16, stát 1, řádek 1 111233; Aktuální transakce byla přerušena a všechny čekající změny byly vráceny zpět. Příčina: Transakce ve stavu pouze pro vrácení zpět nebyla explicitně vrácena zpět před příkazem DDL, DML nebo SELECT.
+Msg 111233, úroveň 16, stát 1, řádek 1 111233; Aktuální transakce byla přerušena a všechny čekající změny byly vráceny zpět. Příčinou tohoto problému je, že transakce ve stavu pouze vrácení zpět není explicitně vrácena zpět před ddl, DML nebo SELECT prohlášení.
 
 Nezískáte výstup funkcí ERROR_*.
 
-V datovém skladu SQL je třeba kód mírně změnit:
+Ve fondu SQL kód musí být mírně změněn:
 
 ```sql
 SET NOCOUNT ON;
@@ -177,17 +184,19 @@ Očekávané chování je nyní pozorováno. Chyba v transakci je spravována a 
 Vše, co se změnilo, je, že vrácení zpět transakce muselo dojít před čtení informace o chybě v catch bloku.
 
 ## <a name="error_line-function"></a>Error_Line()
-Je také třeba poznamenat, že SQL Data Warehouse neimplementuje nebo nepodporuje funkci ERROR_LINE(). Pokud máte to to v kódu, je nutné odebrat, aby byly kompatibilní s SQL Data Warehouse. Místo toho použijte popisky dotazů v kódu k implementaci ekvivalentních funkcí. Další podrobnosti naleznete v článku [LABEL.](sql-data-warehouse-develop-label.md)
+Je také třeba poznamenat, že fond SQL neimplementuje nebo nepodporuje funkci ERROR_LINE(). Pokud máte to to v kódu, je nutné odebrat, aby byly kompatibilní s fondem SQL. 
+
+Místo toho použijte popisky dotazů v kódu k implementaci ekvivalentních funkcí. Další podrobnosti naleznete v článku [LABEL.](sql-data-warehouse-develop-label.md)
 
 ## <a name="using-throw-and-raiserror"></a>Použití THROW a RAISERROR
-THROW je modernější implementace pro vyvolání výjimek v sql datovém skladu, ale RAISERROR je také podporována. Existuje několik rozdílů, které stojí za to věnovat pozornost však.
+THROW je modernější implementace pro vyvolání výjimek ve fondu SQL, ale raiserror je také podporován. Existuje několik rozdílů, které stojí za to věnovat pozornost však.
 
 * Uživatelem definovaná čísla chybových zpráv nemohou být v rozsahu 100 000 – 150 000 pro THROW.
 * Chybové zprávy RAISERROR jsou stanoveny na 50 000
 * Použití sys.messages není podporováno
 
 ## <a name="limitations"></a>Omezení
-SQL Data Warehouse má několik dalších omezení, které se vztahují k transakcím.
+Fond SQL má několik dalších omezení, která se vztahují k transakcím.
 
 Jsou to tyto:
 
@@ -199,5 +208,5 @@ Jsou to tyto:
 * Žádná podpora pro DDL, například vytvořit tabulku uvnitř uživatelem definované transakce
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o optimalizaci transakcí najdete v tématu [Doporučené postupy pro transakce](sql-data-warehouse-develop-best-practices-transactions.md). Další informace o dalších doporučených postupech pro SQL Data Warehouse najdete v [tématu Sql Data Warehouse.](sql-data-warehouse-best-practices.md)
+Další informace o optimalizaci transakcí najdete v tématu [Doporučené postupy pro transakce](sql-data-warehouse-develop-best-practices-transactions.md). Další informace o dalších doporučených postupech fondu SQL naleznete v tématu [doporučené postupy fondu SQL](sql-data-warehouse-best-practices.md).
 

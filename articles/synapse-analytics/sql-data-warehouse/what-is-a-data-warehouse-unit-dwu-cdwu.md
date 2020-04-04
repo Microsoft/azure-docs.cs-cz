@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586309"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632239"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednotky datového skladu (DWUs)
 
@@ -24,14 +24,18 @@ Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU) pro 
 
 ## <a name="what-are-data-warehouse-units"></a>Co jsou jednotky datového skladu
 
-Fond [SQL Synapse](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) představuje kolekci analytických prostředků, které jsou zřizovány. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vi. Tyto tři prostředky jsou sdružené do jednotek výpočetního měřítka nazývaných jednotky datového skladu (DW). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. Změna úrovně služeb změní počet dlus, které jsou k dispozici v systému, což zase upravuje výkon a náklady na váš systém.
+Fond [SQL Synapse](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) představuje kolekci analytických prostředků, které jsou zřizovány. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vod. 
+
+Tyto tři prostředky jsou sdružené do jednotek výpočetního měřítka nazývaných jednotky datového skladu (DW). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. 
+
+Změna úrovně služeb změní počet dlus, které jsou k dispozici v systému, což zase upravuje výkon a náklady na váš systém.
 
 Pro vyšší výkon můžete zvýšit počet jednotek datového skladu. Pro nižší výkon snižte jednotky datového skladu. Náklady na úložiště a výpočetní prostředky se účtují zvlášť, takže změna jednotek datového skladu nemá vliv na náklady na úložiště.
 
 Výkon jednotek datového skladu je založen na těchto metrikách pracovního vytížení:
 
-- Jak rychle může standardní dotaz na ukládání dat prohledávat velký počet řádků a potom provést komplexní agregaci. Tato operace je náročná na vstupně-up a procesor.
-- Jak rychle může datový sklad ingestovat data z objektů Blobs azure storage nebo Azure Data Lake. Tato operace je náročná na síť a procesor.
+- Jak rychle standardní dotaz fondu SQL může prohledávat velký počet řádků a potom provést komplexní agregaci. Tato operace je náročná na vstupně-up a procesor.
+- Jak rychle může fond SQL ingestovat data z objektů Blobs azure storage nebo Azure Data Lake. Tato operace je náročná na síť a procesor.
 - Jak rychle [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) může příkaz T-SQL zkopírovat tabulku. Tato operace zahrnuje čtení dat z úložiště, jejich distribuci mezi uzly zařízení a zápis do úložiště znovu. Tato operace je náročná na procesor, vi a síť.
 
 Zvýšení DWUs:
@@ -42,7 +46,7 @@ Zvýšení DWUs:
 
 ## <a name="service-level-objective"></a>Service Level Objective (cíl úrovně služby)
 
-Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje úroveň nákladů a výkonu datového skladu. Úrovně služeb pro Fond Gen2 SQL se měří v jednotkách datového skladu (DWU), například DW2000c.
+Cíl úrovně služby (SLO) je nastavení škálovatelnosti, které určuje úroveň nákladů a výkonu fondu SQL. Úrovně služeb pro Fond Gen2 SQL se měří v jednotkách datového skladu (DWU), například DW2000c.
 
 V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby pro váš fond SQL.
 
@@ -56,7 +60,7 @@ CREATE DATABASE mySQLDW
 
 ## <a name="capacity-limits"></a>Omezení kapacity
 
-Každý server SQL (například myserver.database.windows.net) má kvótu [databázové transakční jednotky (DTU),](../../sql-database/sql-database-service-tiers-dtu.md) která umožňuje určitý počet jednotek datového skladu. Další informace naleznete v tématu [omezení kapacity správy úloh](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Každý server SQL (například myserver.database.windows.net) má kvótu [databázové transakční jednotky (DTU),](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) která umožňuje určitý počet jednotek datového skladu. Další informace naleznete v tématu [omezení kapacity správy úloh](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Kolik jednotek datového skladu potřebuji
 
@@ -68,7 +72,9 @@ Kroky pro nalezení nejlepšího dwu pro vaši pracovní zátěž:
 2. Sledujte výkon aplikace při testování načítání dat do systému a sledujte počet vybraných dus ve srovnání s výkonem, který sledujete.
 3. Určete jakékoli další požadavky na periodická období špičkové aktivity. Úlohy, které vykazují významné špičky a koryta v aktivitě může být nutné škálovat často.
 
-SQL Analytics je systém škálování na více systémů, který může zřídit obrovské množství výpočetních a dotazů značné množství dat. Chcete-li zobrazit jeho skutečné možnosti pro škálování, zejména na větší chudinském procesoru, doporučujeme škálování sady dat při škálování, abyste zajistili, že máte dostatek dat pro přenos procesorů. Pro škálování testování, doporučujeme použít alespoň 1 TB.
+SQL fond je horizontální navýšení kapacity systému, který může zřídit obrovské množství výpočetních a dotazů značné množství dat. 
+
+Chcete-li zobrazit jeho skutečné možnosti pro škálování, zejména na větší chudinském procesoru, doporučujeme škálování sady dat při škálování, abyste zajistili, že máte dostatek dat pro přenos procesorů. Pro škálování testování, doporučujeme použít alespoň 1 TB.
 
 > [!NOTE]
 >
@@ -172,7 +178,7 @@ Kontrola stavu změn DWU:
     FROM      sys.databases
     ;
     ```
-    
+
 1. Odešlete následující dotaz ke kontrole stavu operace
 
     ```sql
@@ -182,7 +188,7 @@ Kontrola stavu změn DWU:
     AND       major_resource_id = 'MySQLDW'
     ;
     ```
-    
+
 Tento DMV vrátí informace o různých operacích správy ve fondu SQL, jako je operace a stav operace, která je buď IN_PROGRESS nebo DOKONČENA.
 
 ## <a name="the-scaling-workflow"></a>Pracovní postup škálování

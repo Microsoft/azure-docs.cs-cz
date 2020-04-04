@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 8543894f3f518df6b9b0054973ca1683b82e38f1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548995"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656016"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Cognitive Search
 
@@ -39,7 +39,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 > [!NOTE]
 > Pokud chcete zahrnout obrazové soubory ve výsledku, jako je například fotografie produktu nebo logo, uložte je mimo Azure Cognitive Search, ale zahrnout pole v indexu odkazovat na adresu URL obrázku ve vyhledávacím dokumentu. Ukázkové indexy, které podporují obrázky ve výsledcích patří **realestate-sample-us** demo, vystupoval v tomto [rychlém startu](search-create-app-portal.md)a [New York City Jobs demo aplikace](https://aka.ms/azjobsdemo).
 
-## <a name="results-returned"></a>Vrácené výsledky
+## <a name="paging-results"></a>Výsledky stránkování
 
 Ve výchozím nastavení vyhledávač vrátí až prvních 50 shod, jak je určeno skóre vyhledávání, pokud je dotaz fulltextové vyhledávání nebo v libovolném pořadí pro přesné shody dotazy.
 
@@ -74,19 +74,19 @@ Všimněte si, že dokument 2 je načten dvakrát. Je to proto, že nový dokume
 
 ## <a name="ordering-results"></a>Řazení výsledků
 
-U fulltextových vyhledávacích dotazů jsou výsledky automaticky seřazeny podle skóre vyhledávání, které se počítá na základě četnosti termínů a blízkosti v dokumentu, přičemž vyšší skóre bude v dokumentech, které mají více nebo silnější shody s vyhledávacím dotazem. Skóre hledání zprostředkovávají obecný pocit relevance vzhledem k ostatním dokumentům ve stejné sadě výsledků a není zaručeno, že budou konzistentní z jednoho dotazu na další.
+U fulltextových vyhledávacích dotazů jsou výsledky automaticky seřazeny podle skóre vyhledávání, které se počítá na základě četnosti termínů a blízkosti v dokumentu, přičemž vyšší skóre bude v dokumentech, které mají více nebo silnější shody s vyhledávacím dotazem. 
 
-Při práci s dotazy můžete zaznamenat malé nesrovnalosti v objednaných výsledcích. Existuje několik vysvětlení, proč k tomu může dojít.
+Skóre vyhledávání vyjadřuje obecný pocit relevance, který odráží sílu shody ve srovnání s jinými dokumenty ve stejné sadě výsledků. Skóre nejsou vždy konzistentní z jednoho dotazu na další, takže při práci s dotazy, můžete si všimnout malé nesrovnalosti v pořadí vyhledávacích dokumentů. Existuje několik vysvětlení, proč k tomu může dojít.
 
-| Podmínka | Popis |
+| Příčina | Popis |
 |-----------|-------------|
-| Volatilita dat | Obsah indexu se liší při přidávání, úpravách nebo odstraňování dokumentů. Frekvence termínů se budou měnit při zpracování aktualizací indexu v průběhu času, což ovlivní skóre vyhledávání odpovídajících dokumentů. |
-| Umístění spuštění dotazu | Pro služby, které používají více replik, dotazy jsou vydávány proti každé replice paralelně. Statistiky indexu použité k výpočtu skóre vyhledávání se počítají na základě repliky, přičemž výsledky jsou sloučeny a seřazeny v odpovědi na dotaz. Repliky jsou většinou zrcadla navzájem, ale statistiky se mohou lišit v důsledku malých rozdílů ve stavu. Jedna replika může mít například odstraněné dokumenty přispívající k jejich statistikám, které byly sloučeny z jiných replik. Obecně platí rozdíly v statistiky na repliku jsou výraznější v menších indexů. |
-| Prolomení remízy mezi identickými výsledky hledání | Nesrovnalosti v seřazených výsledcích mohou také nastat, pokud mají vyhledávací dokumenty stejné skóre. V tomto případě při opětovném spuštění stejného dotazu neexistuje žádná záruka, který dokument se zobrazí jako první. |
+| Volatilita dat | Obsah indexu se při přidávání, úpravách nebo odstraňování dokumentů liší. Frekvence termínů se budou měnit při zpracování aktualizací indexu v průběhu času, což ovlivní skóre vyhledávání odpovídajících dokumentů. |
+| Více replik | Pro služby, které používají více replik, dotazy jsou vydávány proti každé replice paralelně. Statistiky indexu použité k výpočtu skóre vyhledávání se počítají na základě repliky, přičemž výsledky jsou sloučeny a seřazeny v odpovědi na dotaz. Repliky jsou většinou zrcadla navzájem, ale statistiky se mohou lišit v důsledku malých rozdílů ve stavu. Jedna replika může mít například odstraněné dokumenty přispívající k jejich statistikám, které byly sloučeny z jiných replik. Obvykle rozdíly ve statistikách na repliku jsou výraznější v menších indexů. |
+| Identické skóre | Pokud má více dokumentů stejné skóre, může se zobrazit jako první.  |
 
 ### <a name="consistent-ordering"></a>Konzistentní řazení
 
-Vzhledem k pružnosti ve vyhledávacím hodnocení můžete chtít prozkoumat další možnosti, pokud konzistence ve výsledkových objednávkách je požadavek aplikace. Nejjednodušším přístupem je řazení podle hodnoty pole, například hodnocení nebo data. Pro scénáře, ve kterých chcete řadit podle určitého pole, například podle hodnocení nebo data, můžete explicitně definovat [ `$orderby` výraz](query-odata-filter-orderby-syntax.md), který lze použít pro libovolné pole, které je indexováno jako **seřaditelné**.
+Vzhledem k ohybu ve výsledcích řazení, můžete chtít prozkoumat další možnosti, pokud konzistence je požadavek aplikace. Nejjednodušším přístupem je řazení podle hodnoty pole, například hodnocení nebo data. Pro scénáře, ve kterých chcete řadit podle určitého pole, například podle hodnocení nebo data, můžete explicitně definovat [ `$orderby` výraz](query-odata-filter-orderby-syntax.md), který lze použít pro libovolné pole, které je indexováno jako **seřaditelné**.
 
 Další možností je použití [vlastního profilu hodnocení](index-add-scoring-profiles.md). Profily hodnocení poskytují větší kontrolu nad pořadím položek ve výsledcích vyhledávání, přičemž je schopna propagovat shody nalezené v konkrétních polích. Další logika hodnocení může pomoci přepsat drobné rozdíly mezi replikami, protože skóre hledání pro každý dokument jsou dále od sebe. Doporučujeme [algoritmus řazení](index-ranking-similarity.md) pro tento přístup.
 

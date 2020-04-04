@@ -4,19 +4,19 @@ description: Začínáme s Azure MFA a portálem User Portal.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e68c2a75254d1b387c45e31c5830849c6127756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051184"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653211"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -162,9 +162,9 @@ Pokud si vybere metodu ověření hlasovým hovorem nebo je tato možnost přede
 
 ![Registrace primárního a záložního telefonního čísla](./media/howto-mfaserver-deploy-userportal/backupphone.png)
 
-Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce výzva k vytvoření kódu PIN. Po zadání telefonního čísla nebo telefonních čísel a PIN kódu (pokud je potřeba) uživatel klikne na tlačítko **Zavolat mi nyní a ověřit mě**. Azure Multi-Factor Authentication provede ověření zavoláním na primární telefonní číslo uživatele. Uživatel musí hovor přijmout, zadat PIN (pokud je tato funkce aktivní) a stisknout #, tím přejde k dalšímu kroku vlastního zápisu.
+Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce výzva k vytvoření kódu PIN. Po zadání telefonního čísla nebo telefonních čísel a PIN kódu (pokud je potřeba) uživatel klikne na tlačítko **Zavolat mi nyní a ověřit mě**. Azure Multi-Factor Authentication provádí ověření telefonního hovoru na primární telefonní číslo uživatele. Uživatel musí hovor přijmout, zadat PIN (pokud je tato funkce aktivní) a stisknout #, tím přejde k dalšímu kroku vlastního zápisu.
 
-Pokud si uživatel vybere metodu ověření zprávou SMS nebo je tato možnost předem nastavená, na stránce se zobrazí výzva k zadání čísla mobilního telefonu. Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce také výzva k zadání kódu PIN.  Po zadání telefonního čísla a PIN kódu (pokud je potřeba) uživatel klikne na tlačítko **Poslat mi nyní zprávu SMS a ověřit mě**. Azure Multi-Factor Authentication provede ověření tím, že na mobilní telefon uživatele pošle zprávu SMS. Uživatel obdrží zprávu SMS s jednorázovým heslem a odpoví na zprávu s použitím jednorázového hesla spolu s PIN kódem (pokud je potřeba).
+Pokud si uživatel vybere metodu ověření zprávou SMS nebo je tato možnost předem nastavená, na stránce se zobrazí výzva k zadání čísla mobilního telefonu. Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce také výzva k zadání kódu PIN.  Po zadání telefonního čísla a PIN kódu (pokud je potřeba) uživatel klikne na tlačítko **Poslat mi nyní zprávu SMS a ověřit mě**. Azure Multi-Factor Authentication provádí ověření SMS na mobilním telefonu uživatele. Uživatel obdrží zprávu SMS s jednorázovým heslem a odpoví na zprávu s použitím jednorázového hesla spolu s PIN kódem (pokud je potřeba).
 
 ![Ověření uživatelského portálu pomocí SMS](./media/howto-mfaserver-deploy-userportal/text.png)
 
@@ -175,7 +175,7 @@ Pokud si uživatel vybere metodu ověření pomocí mobilní aplikace, na strán
 
 Na stránce se pak zobrazí aktivační kód, adresa URL a čárový kód. Pokud musí uživatel při ověřování zadat kód PIN, zobrazí se na stránce také výzva k zadání kódu PIN. Uživatel zadá aktivační kód a adresu URL do aplikace Microsoft Authenticator nebo pomocí čtečky čárových kódů naskenuje čárový kód a pak klikne na tlačítko Aktivovat.
 
-Po dokončení aktivace uživatel klikne na tlačítko **Ověřit mě nyní**. Azure Multi-Factor Authentication provede ověření přes mobilní aplikaci uživatele. Uživatel musí zadat PIN (pokud je tato funkce aktivní) a stisknout tlačítko Ověřit, tím přejde k dalšímu kroku vlastního zápisu.
+Po dokončení aktivace uživatel klikne na tlačítko **Ověřit mě nyní**. Azure Multi-Factor Authentication provádí ověření mobilní aplikace uživatele. Uživatel musí zadat PIN (pokud je tato funkce aktivní) a stisknout tlačítko Ověřit, tím přejde k dalšímu kroku vlastního zápisu.
 
 Pokud správci nastavili Azure Multi-Factor Authentication Server tak, aby shromažďoval bezpečnostní otázky a odpovědi, přesměruje uživatele na stránku s bezpečnostními otázkami. Uživatel musí vybrat čtyři bezpečnostní otázky a zadat odpovědi na tyto otázky.
 

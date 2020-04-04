@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 25e6770fb38d13591186754bc5e6a7641083a899
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619045"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633516"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>Seskupit podle možností v fondu Synapse SQL
 
@@ -24,7 +24,7 @@ V tomto článku najdete tipy pro implementaci skupiny podle možností ve fondu
 
 ## <a name="what-does-group-by-do"></a>Co dělá GROUP BY?
 
-Klauzule [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL agreguje data do souhrnné sady řádků. GROUP BY má některé možnosti, které fond SQL nepodporuje. Tyto možnosti mají řešení, která jsou následující:
+Klauzule [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL agreguje data do souhrnné sady řádků. GROUP BY má některé možnosti, které fond SQL nepodporuje. Tyto možnosti mají řešení, která jsou následující:
 
 * SKUPINA BY S ROLLUP
 * SKUPINY SAD
@@ -35,6 +35,7 @@ Klauzule [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL agreg
 Nejjednodušší možností je použít UNION ALL k provedení souhrnu spíše než se spoléhat na explicitní syntaxi. Výsledek je naprosto stejný.
 
 Následující příklad pomocí příkazu GROUP BY s možností ROLLUP:
+
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -84,9 +85,10 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 Chcete-li nahradit sady seskupení, použije se princip vzorku. Stačí vytvořit UNION VŠECHNY oddíly pro úrovně agregace, které chcete zobrazit.
 
 ## <a name="cube-options"></a>Volby datové krychle
+
 Je možné vytvořit group by with cube pomocí union all přístupu. Problém je, že kód může rychle stát těžkopádné a těžkopádné. Chcete-li tento problém zmírnit, můžete použít tento pokročilejší přístup.
 
-Pomocí předchozího příkladu je prvním krokem definování "krychli", která definuje všechny úrovně agregace, které chceme vytvořit. 
+Pomocí předchozího příkladu je prvním krokem definování "krychli", která definuje všechny úrovně agregace, které chceme vytvořit.
 
 Vezměte na vědomí CROSS JOIN dvou odvozených tabulek, protože to generuje všechny úrovně pro nás. Zbytek kódu je k dispozici pro formátování:
 
@@ -182,5 +184,5 @@ ORDER BY 1,2,3
 Rozdělením kódu do oddílů a generováním cyklinky konstrukce, kód se stává více zvládnutelné a udržovatelné.
 
 ## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).
 
+Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).

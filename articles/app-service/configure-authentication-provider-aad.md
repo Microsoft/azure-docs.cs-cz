@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438039"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632575"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace aplikace App Service nebo aplikace Azure Functions tak, aby používaly přihlášení Azure AD
 
@@ -78,7 +78,7 @@ Proveďte následující kroky:
 1. Po vytvoření registrace aplikace zkopírujte **ID aplikace (klienta)** a **ID adresáře (klienta)** na později.
 1. Vyberte **Ověřování**. V **části Implicitní udělení**povolte **tokeny ID,** aby bylo možné povolit přihlášení uživatelů OpenID Connect ze služby App Service.
 1. (Nepovinné) Vyberte **branding**. V **adrese URL domovské stránky**zadejte adresu URL aplikace App Service a vyberte **Uložit**.
-1. Vyberte vystavit**sadu** **rozhraní API** > . Vložte do adresy URL aplikace App Service a vyberte **Uložit**.
+1. Vyberte vystavit**sadu** **rozhraní API** > . U aplikace s jedním klientem vložte do adresy URL aplikace App Service a vyberte **Uložit** a pro aplikaci pro více klientů vložte do adresy URL, která je založená na jedné z domén ověřených klientem, a pak vyberte **Uložit**.
 
    > [!NOTE]
    > Tato hodnota je **identifikátor URI ID aplikace** registrace aplikace. Pokud vaše webová aplikace vyžaduje přístup k rozhraní API v cloudu, budete při konfiguraci cloudové služby App Service potřebovat **identifikátor URI ID aplikace** webové aplikace. Můžete použít například pokud chcete, aby cloudová služba explicitně udělit přístup k webové aplikaci.

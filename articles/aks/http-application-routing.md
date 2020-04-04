@@ -1,17 +1,17 @@
 ---
 title: Doplněk směrování aplikací HTTP ve službě Azure Kubernetes Service (AKS)
-description: Použijte doplněk směrování aplikací HTTP ve službě Azure Kubernetes Service (AKS).
+description: Pomocí doplňku směrování aplikací HTTP pro přístup k aplikacím nasazeným ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 5794e46f10abec1ceef4c79a881f7f353e729634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595684"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632407"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 

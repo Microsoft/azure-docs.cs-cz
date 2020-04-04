@@ -11,22 +11,22 @@ ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7d599ce121b4c53662b91e5aab94130b0f3f4458
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 8ca51e0ed33d2a5dfb484520335e32ac547deb72
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583939"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633261"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Načítání dat z Úložiště datových jezer Azure pro Synapse SQL
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Načítání dat z Azure Data Lake Storage pro SQL Analytics
 
-Tato příručka popisuje, jak používat externí tabulky PolyBase k načtení dat z Azure Data Lake Storage. I když můžete spouštět adhoc dotazy na data uložená v úložišti datového jezera, doporučujeme importovat data pro nejlepší výkon. 
+Tato příručka popisuje, jak používat externí tabulky PolyBase k načtení dat z Azure Data Lake Storage. I když můžete spouštět adhoc dotazy na data uložená v úložišti datového jezera, doporučujeme importovat data pro nejlepší výkon.
 
 > [!NOTE]  
-> Alternativou k načtení je [příkaz COPY,](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) který je aktuálně ve verzi Public Preview.  Příkaz COPY poskytuje největší flexibilitu. Chcete-li poskytnout zpětnou vazbu k příkazu sqldwcopypreview@service.microsoft.comCOPY, odešlete e-mail do následujícího distribučního seznamu: .
+> Alternativou k načtení je [příkaz COPY,](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) který je aktuálně ve verzi Public Preview.  Příkaz COPY poskytuje největší flexibilitu. Chcete-li poskytnout zpětnou vazbu k příkazu sqldwcopypreview@service.microsoft.comCOPY, odešlete e-mail do následujícího distribučního seznamu: .
 >
 > [!div class="checklist"]
-
+>
 > * Vytvořte databázové objekty potřebné k načtení z úložiště datového jezera.
 > * Připojte se k adresáři Úložiště datového jezera.
 > * Načtení dat do datového skladu.
@@ -34,19 +34,21 @@ Tato příručka popisuje, jak používat externí tabulky PolyBase k načtení 
 Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
-Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
+
+Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
 Chcete-li spustit tento kurz, potřebujete:
 
 * Fond SQL. Viz [Vytvoření fondu SQL a dat dotazů](create-data-warehouse-portal.md).
-* Účet úložiště datového jezera. Viz [Začínáme s Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md). Pro tento účet úložiště budete muset nakonfigurovat nebo zadat jedno z následujících přihlašovacích údajů k načtení: klíč účtu úložiště, uživatel aplikace Adresář Azure nebo uživatel AAD, který má odpovídající roli RBAC pro účet úložiště. 
+* Účet úložiště datového jezera. Viz [Začínáme s Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Pro tento účet úložiště budete muset nakonfigurovat nebo zadat jedno z následujících přihlašovacích údajů k načtení: klíč účtu úložiště, uživatel aplikace Adresář Azure nebo uživatel AAD, který má odpovídající roli RBAC pro účet úložiště.
 
-##  <a name="create-a-credential"></a>Vytvoření pověření
-Tuto část můžete přeskočit a při ověřování pomocí předávací ho souboru AAD přejít k části "Vytvořit externí zdroj dat". Pověření s rozsahem databáze není nutné vytvořit nebo zadat při použití předávací ho dorážky AAD, ale ujistěte se, že váš uživatel AAD má příslušnou roli RBAC (čtečka dat objektů blob úložiště, přispěvatel nebo role vlastníka) pro účet úložiště. Více informací je uvedeno [zde](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260). 
+## <a name="create-a-credential"></a>Vytvoření pověření
+
+Tuto část můžete přeskočit a při ověřování pomocí předávací ho souboru AAD přejít k části "Vytvořit externí zdroj dat". Pověření s rozsahem databáze není nutné vytvořit nebo zadat při použití předávací ho dorážky AAD, ale ujistěte se, že váš uživatel AAD má příslušnou roli RBAC (čtečka dat objektů blob úložiště, přispěvatel nebo role vlastníka) pro účet úložiště. Více informací je uvedeno [zde](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260).
 
 Chcete-li získat přístup k účtu úložiště datového jezera, budete muset vytvořit hlavní klíč databáze k šifrování tajného klíče pověření. Potom vytvořit pověření s rozsahem databáze pro uložení tajného klíče. Při ověřování pomocí instančních objektů (uživatel aplikace adresáře Azure) ukládá pověření oboru databáze pověření instančního objektu nastavené v aad. Pověření oboru databáze můžete také použít k uložení klíče účtu úložiště pro Gen2.
 
-Chcete-li se připojit k úložišti Data Lake Storage pomocí instančních objektů, musíte **nejprve** vytvořit aplikaci Azure Active Directory, vytvořit přístupový klíč a udělit aplikaci přístup k účtu úložiště datového jezera. Pokyny najdete [v tématu Ověření úložiště datových jezer Azure pomocí služby Active Directory](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md).
+Chcete-li se připojit k úložišti Data Lake Storage pomocí instančních objektů, musíte **nejprve** vytvořit aplikaci Azure Active Directory, vytvořit přístupový klíč a udělit aplikaci přístup k účtu úložiště datového jezera. Pokyny najdete [v tématu Ověření úložiště datových jezer Azure pomocí služby Active Directory](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 Přihlaste se do fondu SQL s uživatelem s oprávněními na úrovni CONTROL a spusťte následující příkazy SQL proti databázi:
 
@@ -54,7 +56,7 @@ Přihlaste se do fondu SQL s uživatelem s oprávněními na úrovni CONTROL a s
 -- A: Create a Database Master Key.
 -- Only necessary if one does not already exist.
 -- Required to encrypt the credential secret in the next step.
--- For more information on Master Key: https://msdn.microsoft.com/library/ms174382.aspx?f=255&MSPPError=-2147217396
+-- For more information on Master Key: https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
 
 CREATE MASTER KEY;
 
@@ -62,7 +64,7 @@ CREATE MASTER KEY;
 -- B (for service principal authentication): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
--- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
+-- For more information on Create Database Scoped Credential: https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
 
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
@@ -90,7 +92,8 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat
-Pomocí tohoto příkazu [VYTVOŘIT EXTERNÍ ZDROJ DAT](/sql/t-sql/statements/create-external-data-source-transact-sql) uložte umístění dat. Pokud ověřujete s předávací masou, parametr CREDENTIAL není vyžadován. 
+
+Pomocí tohoto příkazu [VYTVOŘIT EXTERNÍ ZDROJ DAT](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uložte umístění dat. Pokud ověřujete s předávací masou, parametr CREDENTIAL není vyžadován.
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -119,8 +122,9 @@ WITH (
 ```
 
 ## <a name="configure-data-format"></a>Konfigurace formátu dat
+
 Chcete-li importovat data z úložiště datových jezer, musíte zadat externí formát souboru. Tento objekt definuje, jak jsou soubory zapsány v úložišti datového jezera.
-Kompletní seznam nazpřete v naší t-SQL dokumentaci [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
+Kompletní seznam nazpřete v naší t-SQL dokumentaci [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- D: Create an external file format
@@ -141,6 +145,7 @@ WITH
 ```
 
 ## <a name="create-the-external-tables"></a>Vytvoření externích tabulek
+
 Nyní, když jste zadali zdroj dat a formát souboru, jste připraveni vytvořit externí tabulky. Externí tabulky jsou způsob interakce s externími daty. Parametr umístění může určit soubor nebo adresář. Pokud určuje adresář, budou načteny všechny soubory v adresáři.
 
 ```sql
@@ -170,6 +175,7 @@ WITH
 ```
 
 ## <a name="external-table-considerations"></a>Důležité informace o externí tabulce
+
 Vytvoření externí tabulky je snadné, ale existují některé nuance, které je třeba diskutovat.
 
 Externí tabulky jsou silně zadávány. To znamená, že každý řádek pojídaných dat musí splňovat definici schématu tabulky.
@@ -177,10 +183,11 @@ Pokud řádek neodpovídá definici schématu, řádek je odmítnut ze zatížen
 
 Možnosti REJECT_TYPE a REJECT_VALUE umožňují definovat, kolik řádků nebo jaké procento dat musí být přítomno v konečné tabulce. Během načítání, pokud je dosaženo hodnoty odmítnutí, zatížení se nezdaří. Nejčastější příčinou odmítnutých řádků je neshoda definice schématu. Například pokud sloupec je nesprávně uvedeny schéma int při data v souboru je řetězec, každý řádek se nezdaří načíst.
 
-Data Lake Storage Gen1 používá řízení přístupu na základě rolí (RBAC) k řízení přístupu k datům. To znamená, že instanční objekt musí mít oprávnění ke čtení adresářů definovaných v parametru umístění a pro podřízené objekty konečného adresáře a souborů. To umožňuje PolyBase k ověření a načtení těchto dat. 
+Data Lake Storage Gen1 používá řízení přístupu na základě rolí (RBAC) k řízení přístupu k datům. To znamená, že instanční objekt musí mít oprávnění ke čtení adresářů definovaných v parametru umístění a pro podřízené objekty konečného adresáře a souborů. To umožňuje PolyBase k ověření a načtení těchto dat.
 
 ## <a name="load-the-data"></a>Načtení dat
-Chcete-li načíst data z úložiště datových jezer, použijte příkaz [CREATE TABLE AS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 
+
+Chcete-li načíst data z úložiště datových jezer, použijte příkaz [CREATE TABLE AS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 CTAS vytvoří novou tabulku a naplní ji výsledky příkazu select. CTAS definuje novou tabulku mít stejné sloupce a datové typy jako výsledky příkazu select. Pokud vyberete všechny sloupce z externí tabulky, nová tabulka bude replikou sloupců a datových typů v externí tabulce.
 
@@ -195,8 +202,8 @@ SELECT * FROM [dbo].[DimProduct_external]
 OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 ```
 
-
 ## <a name="optimize-columnstore-compression"></a>Optimalizace komprese columnstore
+
 Ve výchozím nastavení jsou tabulky definovány jako clusterovaný index columnstore. Po dokončení zatížení některé řádky dat nemusí být komprimovány do columnstore.  Existuje celá řada důvodů, proč se to může stát. Další informace naleznete v [tématu správa indexů columnstore](sql-data-warehouse-tables-index.md).
 
 Chcete-li optimalizovat výkon dotazu a kompresi columnstore po zatížení, znovu sestavit tabulku vynutit columnstore index komprimovat všechny řádky.
@@ -208,6 +215,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ```
 
 ## <a name="optimize-statistics"></a>Optimalizace statistik
+
 Nejlepší je vytvořit statistiku s jedním sloupcem ihned po zatížení. Existuje několik možností pro statistiky. Pokud například vytvoříte statistiku jednoho sloupce pro každý sloupec, může trvat dlouho, než se všechny statistiky znovu vytvoří. Pokud víte, že některé sloupce nebudou v predikátech dotazů, můžete přeskočit vytváření statistik v těchto sloupcích.
 
 Pokud se rozhodnete vytvořit statistiku jednoho sloupce na každém sloupci každé `prc_sqldw_create_stats` tabulky, můžete použít ukázku kódu uložené procedury v článku [statistiky.](sql-data-warehouse-tables-statistics.md)
@@ -215,10 +223,12 @@ Pokud se rozhodnete vytvořit statistiku jednoho sloupce na každém sloupci ka�
 Následující příklad je dobrým výchozím bodem pro vytváření statistik. Vytvoří jednosloupcové statistiky pro každý sloupec v tabulce dimenzí a na každém spojovacím sloupci v tabulkách faktů. Statistiky s jedním nebo více sloupci můžete vždy přidat do jiných sloupců tabulky faktů později.
 
 ## <a name="achievement-unlocked"></a>Úspěch odemčený!
+
 Úspěšně jste načetli data do datového skladu. Skvělá práce!
 
-## <a name="next-steps"></a>Další kroky 
-V tomto kurzu jste vytvořili externí tabulky k definování struktury pro data uložená v Datové masce úložiště dat Gen1 a potom jste použili příkaz PolyBase CREATE TABLE AS SELECT k načtení dat do datového skladu. 
+## <a name="next-steps"></a>Další kroky
+
+V tomto kurzu jste vytvořili externí tabulky k definování struktury pro data uložená v Datové masce úložiště dat Gen1 a potom jste použili příkaz PolyBase CREATE TABLE AS SELECT k načtení dat do datového skladu.
 
 Provedli jste tyto akce:
 > [!div class="checklist"]

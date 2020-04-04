@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8f2e2081ee31e2ce7b21677bd261ed7eda705334
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79486044"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80628430"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -26,9 +26,8 @@ ms.locfileid: "79486044"
 
 ## <a name="portal"></a>Portál
 
-Chcete-li vytvořit a nakonfigurovat přírůstkové snímky na globálním [https://aka.ms/incrementalsnapshots](https://aka.ms/incrementalsnapshots)portálu Azure, musíte použít následující odkaz: . Přírůstkové vytváření snímků ještě není k dispozici na globálním portálu Azure.
 
-1. Přihlaste se k [portálu Azure](https://aka.ms/incrementalsnapshots) pomocí poskytnutého odkazu a přejděte na disk, který chcete snímek.
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/) a přejděte na disk, který chcete snímek.
 1. Na disku vyberte **Vytvořit snímek.**
 
     :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text="Screenshot. Okno disku se zvýrazněným **+Create snapshot**, protože to je to, co musíte vybrat.":::

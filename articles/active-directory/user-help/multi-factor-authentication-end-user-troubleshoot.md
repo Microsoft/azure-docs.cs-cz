@@ -9,15 +9,15 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897731"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632898"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy s dvoufaktorovým ověřením a pracovním nebo školním účtem
 
@@ -99,6 +99,8 @@ Hesla aplikací nahrazují normální heslo pro starší desktopové aplikace, k
 ## <a name="i-cant-turn-two-factor-verification-off"></a>Nelze vypnout dvoufaktorové ověření
 
 Pokud používáte dvoufaktorové ověření s pracovním nebo školním alain@contoso.comúčtem (například ), s největší pravděpodobností to znamená, že se vaše organizace rozhodla, že musíte použít tuto přidanou funkci zabezpečení. Vzhledem k tomu, že se vaše organizace rozhodla, že musíte tuto funkci používat, neexistuje žádný způsob, jak ji jednotlivě vypnout. Pokud však používáte dvoufaktorové ověření s osobním alain@outlook.comúčtem, například , můžete funkci zapnout a vypnout. Pokyny, jak řídit dvoufaktorové ověřování osobních účtů, najdete v [tématu Zapnutí nebo vypnutí dvoufaktorového ověření pro váš účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+Pokud nemůžete vypnout dvoufaktorové ověřování, může to být také z důvodu výchozího zabezpečení, které byly použity na úrovni organizace. Další informace o výchozích hodnotách zabezpečení naleznete v tématu [Co jsou defulta zabezpečení?](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nenašel jsem odpověď na můj problém
 

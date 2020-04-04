@@ -4,19 +4,19 @@ description: Povolení kombinovaného vícefaktorového ověřování Azure AD a
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f454b0296a3463d7346c2945b21162e5a38c0eb7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425160"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652513"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Povolit kombinovanou registraci bezpečnostních informací (preview)
 
@@ -48,7 +48,7 @@ Chcete-li povolit kombinovanou registraci, proveďte tyto kroky:
 > Od března 2019 nebudou možnosti telefonního hovoru dostupné uživatelům vícefaktorového ověřování a samoobslužné samoobslužné volání do provozu ve volných a zkušebních klientech Azure AD. Sms zprávy nejsou touto změnou ovlivněny. Možnosti telefonního hovoru budou stále dostupné uživatelům v placených klientech Azure AD.
 
 > [!NOTE]
-> Po povolení kombinované registrace mohou uživatelé, kteří zaregistrují nebo potvrdí své telefonní číslo nebo mobilní aplikaci prostřednictvím nového prostředí, používat pro vícefaktorové ověřování a samoobslužné ověřování, pokud jsou tyto metody povoleny v multifaktorovém ověřování a samoobslužném prodejném pr. Politiky. Pokud pak zakázat toto prostředí, uživatelé, kteří `https://aka.ms/ssprsetup` přejdou na předchozí stránku registrace samoobslužného práva k obsluze bude muset provést vícefaktorové ověřování před tím, než budou mít přístup ke stránce.
+> Po povolení kombinované registrace mohou uživatelé, kteří zaregistrují nebo potvrdí své telefonní číslo nebo mobilní aplikaci prostřednictvím nového prostředí, použít pro vícefaktorové ověřování a samoobslužné ověřování, pokud jsou tyto metody povoleny v zásadách vícefaktorového ověřování a samoobslužného tisku. Pokud pak zakázat toto prostředí, uživatelé, kteří `https://aka.ms/ssprsetup` přejdou na předchozí stránku registrace samoobslužného práva k obsluze bude muset provést vícefaktorové ověřování před tím, než budou mít přístup ke stránce.
 
 Pokud jste v aplikaci Internet Explorer nakonfigurovali seznam přiřazení webu na zónu, musí být ve stejné zóně následující weby:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62125793"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633866"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Použití služby Správce zařízení StorSimple ke správě svazků ve službě StorSimple Virtual Array
 
@@ -44,7 +44,7 @@ Maximální zřízená kapacita pro každý typ svazku naleznete v následujíc�
 | Minimální velikost vrstveného svazku                            | 500 GB        |
 | Maximální velikost vrstveného svazku                            | 5 TB          |
 | Minimální velikost místně vázanýho svazku                    | 50 GB         |
-| Maximální velikost místně vázanýho svazku                    | 500 GB        |
+| Maximální velikost místně vázanýho svazku                    | 200 GB        |
 
 ## <a name="the-volumes-blade"></a>Čepel Objemy
 V nabídce Svazky v okně souhrnu **služby** StorSimple se zobrazí seznam svazků úložiště v daném poli StorSimple a umožňuje jejich správu.

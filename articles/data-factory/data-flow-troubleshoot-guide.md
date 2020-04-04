@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472124"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632591"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Poradce při potížích s toky dat v Azure Data Factory
 
@@ -55,6 +55,18 @@ Tento článek zkoumá běžné metody řešení potíží pro toky dat v Azure 
 - **Zpráva**: Název sloupce musí být zadán v dotazu, nastavit alias, pokud používáte funkci SQL
 - **Příčiny:** Nebyl zadán žádný název sloupce.
 - **Doporučení:** Nastavte alias, pokud používáte funkci SQL, jako je min()/max(), atd.
+
+### <a name="error-code-getcommand-outputasync-failed"></a>Kód chyby: Příkaz GetCommand OutputAsync se nezdařil.
+
+- **Zpráva**: Během ladění toku dat a náhledu dat: GetCommand OutputAsync se nezdařilo s ...
+- **Příčiny**: Jedná se o chybu služby back-end. Můžete opakovat operaci a také restartovat relaci ladění.
+- **Doporučení:** Pokud opakování a restartování problém nevyřeší, obraťte se na zákaznickou podporu.
+
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Kód chyby: Přístup neočekávaná výjimka a spuštění se nezdařilo.
+
+- **Zpráva**: Během provádění aktivity toku dat: Přístup k neočekávané výjimce a spuštění se nezdařilo.
+- **Příčiny**: Jedná se o chybu služby back-end. Můžete opakovat operaci a také restartovat relaci ladění.
+- **Doporučení:** Pokud opakování a restartování problém nevyřeší, obraťte se na zákaznickou podporu.
 
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny pro řešení potíží
 

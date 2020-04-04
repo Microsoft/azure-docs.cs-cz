@@ -1,6 +1,6 @@
 ---
-title: Prostředky pro vývoj datového skladu v Azure Synapse Analytics
-description: Vývojové koncepty, rozhodnutí o návrhu, doporučení a techniky kódování pro SQL Data Warehouse.
+title: Prostředky pro vývoj fondu Synapse SQL v Azure Synapse Analytics
+description: Koncepty vývoje, rozhodnutí o návrhu, doporučení a techniky kódování pro SQL Data Warehouse.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: ''
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: aa0f5fd631dfa3e4deca4853c27a667fcf312fec
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 933a175213afd81c81eb237a2b2dd4c3e24e3315
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350284"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633156"
 ---
-# <a name="design-decisions-and-coding-techniques-for-a-data-warehouse-in-azure-synapse-analytics"></a>Návrh rozhodnutí a techniky kódování pro datový sklad v Azure Synapse Analytics 
- V tomto článku najdete další prostředky, které vám pomohou lépe porozumět klíčovým rozhodnutím návrhu, doporučením a technikám kódování pro datový sklad v Azure Synapse.
+# <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Návrh rozhodnutí a techniky kódování pro fond Synapse SQL v Azure Synapse Analytics 
+ V tomto článku najdete další prostředky, které vám pomohou lépe porozumět klíčovým rozhodnutím návrhu, doporučením a technikám kódování pro fond SQL v Azure Synapse.
 
 ## <a name="key-design-decisions"></a>Klíčová rozhodnutí o návrhu
-Následující články zvýrazňují koncepty a rozhodnutí o návrhu pro vývoj distribuovaného datového skladu pomocí funkce SQL Analytics v Azure Synapse:
+Následující články zdůrazňují koncepty a rozhodnutí o návrhu pro vývoj distribuovaného datového skladu pomocí funkce fondu SQL v Azure Synapse:
 
 * [Připojení](sql-data-warehouse-connect-overview.md)
 * [Souběžnost](resource-classes-for-workload-management.md)
@@ -31,10 +31,10 @@ Následující články zvýrazňují koncepty a rozhodnutí o návrhu pro vývo
 * [indexy tabulek](sql-data-warehouse-tables-index.md)
 * [oddíly tabulky](sql-data-warehouse-tables-partition.md)
 * [CTAS](sql-data-warehouse-develop-ctas.md)
-* [statistiky](sql-data-warehouse-tables-statistics.md)
+* [Statistiky](sql-data-warehouse-tables-statistics.md)
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Doporučení pro vývoj a kódovací techniky
-Následující články obsahují specifické techniky kódování, tipy a doporučení pro vývoj datového skladu pomocí služby SQL Analytics:
+Následující články obsahují specifické techniky kódování, tipy a doporučení pro vývoj fondu SQL:
 
 * [uložené procedury](sql-data-warehouse-develop-stored-procedures.md)
 * [Popisky](sql-data-warehouse-develop-label.md)

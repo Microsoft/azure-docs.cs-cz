@@ -45,7 +45,7 @@
       href: concepts-architecture.md
     - name: Co jsou šablony aplikací?
       href: concepts-app-templates.md
-    - name: Připojování
+    - name: Připojení zařízení
       href: concepts-get-connected.md
     - name: Připojení zařízení IoT
       href: concepts-iot-edge.md

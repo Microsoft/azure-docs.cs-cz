@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256910"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638033"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak používat spravovanou instanci v Azure SQL Database
 
@@ -43,6 +43,7 @@ V tomto článku najdete různé příručky, skripty a vysvětlení, které vá
 
 - [Transakční replikace](replication-with-sql-database-managed-instance.md) umožňuje replikovat data mezi spravovanými instancemi nebo z místního serveru SQL Server na spravovanou instanci a naopak. Další informace o použití a konfiguraci replikace transakcí naleznete v této příručce.
 - [Konfigurace detekce hrozeb](sql-database-managed-instance-threat-detection.md) – [detekce hrozeb](sql-database-threat-detection-overview.md) je integrovaná funkce Azure SQL Database, která detekuje různé potenciální útoky, jako je injektáž SQL injection nebo přístup z podezřelých umístění. V této příručce se dozvíte, jak povolit a nakonfigurovat [detekci hrozeb](sql-database-threat-detection-overview.md) pro spravovanou instanci.
+- [Vytváření výstrah](sql-database-managed-instance-alerts.md) umožňuje nastavit výstrahy na monitorované metriky, jako je využití procesoru, využití úložného prostoru, IOPS a další pro spravovanou instanci. V této příručce se dozvíte, jak povolit a nakonfigurovat výstrahy pro spravovanou instanci.
 
 ## <a name="next-steps"></a>Další kroky
 

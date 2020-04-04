@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/2/2020
+ms.date: 04/3/2020
 ms.author: raiye
-ms.openlocfilehash: 2b929481af3df8bc3bc6a9a6955e8277e3de3298
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618679"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656348"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační dům Azure
 V následujících tabulkách jsou uvedeny aktualizace Centra microsoft security response center (MSRC) použité v hostovaném osu Azure. Vyhledejte v tomto článku, chcete-li zjistit, zda se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace se vždy přenášejí pro konkrétní [rodinu,][family-explain] ve které byly zavedeny.
@@ -26,26 +26,25 @@ V následujících tabulkách jsou uvedeny aktualizace Centra microsoft security
 
 | Product Category (Kategorie produktu) | Nadřazený článek kb | Popis chyby zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel 20-03  |  [4541500]  |  Zabezpečení Windows  | [2.96] | 10. března 2020 |
-|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | 10. března 2020 |
-|  Rel 20-03  |  [4540694]  |  Zabezpečení Windows  | [3.83] | 10. března 2020 |
-|  Rel 20-03  |  [4541505]  |  Zabezpečení Windows  | [4.76] | 10. března 2020 |
-|  Rel 20-03  |  [4540670]  |  Nejnovější kumulativní aktualizace (LCU)  | [5.41] | 10. března 2020 |
-|  Rel 20-03  |  [4538461]  |  Nejnovější kumulativní aktualizace (LCU)  | [6.17] | 10. března 2020 |
-|  Rel 20-03  |  [4537820]  |  Měsíční souhrn  | [2.96] | 11. února 2020 |
-|  Rel 20-03  |  [4537814]  |  Měsíční souhrn  | [3.83] | 11. února 2020 |
-|  Rel 20-03  |  [4537821]  |  Měsíční souhrn  | [4.76] | 11. února 2020 |
+|  Rel 20-03  |  [4541500]  |  Zabezpečení Windows  | [2.96] | 10. března 2020 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | 10. března 2020 |
+|  Rel 20-03  |  [4540694]  |  Zabezpečení Windows  | [3.83] | 10. března 2020 |
+|  Rel 20-03  |  [4541505]  |  Zabezpečení Windows  | [4.76] | 10. března 2020 |
+|  Rel 20-03  |  [4540670]  |  Nejnovější kumulativní aktualizace (LCU)  | [5.41] | 10. března 2020 |
+|  Rel 20-03  |  [4538461]  |  Nejnovější kumulativní aktualizace (LCU)  | [6.17] | 10. března 2020 |
+|  Rel 20-03  |  [4537820]  |  Měsíční souhrn  | [2.96] | 11. února 2020 |
+|  Rel 20-03  |  [4537814]  |  Měsíční souhrn  | [3.83] | 11. února 2020 |
+|  Rel 20-03  |  [4537821]  |  Měsíční souhrn  | [4.76] | 11. února 2020 |
 
-[4541500]: https://support.microsoft.com/kb/4541500 
-[4540671]: https://support.microsoft.com/kb/4540671 
-[4540694]: https://support.microsoft.com/kb/4540694 
-[4541505]: https://support.microsoft.com/kb/4541505 
-[4540670]: https://support.microsoft.com/kb/4540670 
-[4538461]: https://support.microsoft.com/kb/4538461 
-[4537820]: https://support.microsoft.com/kb/4537820  
-[4537814]: https://support.microsoft.com/kb/4537814 
-[4537821]: https://support.microsoft.com/kb/4537821 
-
+[4541500]: https://support.microsoft.com/kb/4541500 
+[4540671]: https://support.microsoft.com/kb/4540671 
+[4540694]: https://support.microsoft.com/kb/4540694 
+[4541505]: https://support.microsoft.com/kb/4541505 
+[4540670]: https://support.microsoft.com/kb/4540670 
+[4538461]: https://support.microsoft.com/kb/4538461 
+[4537820]: https://support.microsoft.com/kb/4537820  
+[4537814]: https://support.microsoft.com/kb/4537814 
+[4537821]: https://support.microsoft.com/kb/4537821 
 
 [6.17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 [5.41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases

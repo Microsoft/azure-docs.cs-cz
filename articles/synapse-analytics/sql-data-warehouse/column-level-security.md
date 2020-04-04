@@ -1,6 +1,6 @@
 ---
 title: Co je zabezpečení na úrovni sloupců pro Azure Synapse?
-description: Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup ke sloupcům databázové tabulky na základě kontextu spuštění uživatele nebo členství ve skupině, zjednodušit návrh a kódování zabezpečení ve vaší aplikaci a umožnit implementovat omezení pro sloupec Přístup.
+description: Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup ke sloupcům databázové tabulky na základě kontextu spuštění uživatele nebo členství ve skupině, zjednodušit návrh a kódování zabezpečení ve vaší aplikaci a umožnit implementovat omezení přístupu ke sloupcům.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 24ead458232b096a5c69ffe8b45c6298a9da9f75
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61a3e2eadaf79cdb30a931b31cff709298d0a22c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349099"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631302"
 ---
 # <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
 
 Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup ke sloupcům tabulky na základě kontextu spuštění uživatele nebo členství ve skupině.
 
-
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Vzhledem k tomu, že toto video bylo zveřejněno [na úrovni řádku zabezpečení](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) bylo k dispozici pro Azure Synapse. 
+Vzhledem k tomu, že toto video bylo zveřejněno [na úrovni řádku zabezpečení](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bylo k dispozici pro Azure Synapse.
 
 Zabezpečení na úrovni sloupců zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci a umožňuje omezit přístup ke sloupcům a chránit citlivá data. Například zajištění, že konkrétní uživatelé mají přístup pouze k určitým sloupcům tabulky, které se připodobují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli mimo data v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z libovolné vrstvy. Toto omezení činí zabezpečení spolehlivější a robustnější tím, že zužuje plochu celkového bezpečnostního systému. Zabezpečení na úrovni sloupců navíc také eliminuje potřebu zavádět zobrazení pro odfiltrování sloupců pro uložení omezení přístupu pro uživatele.
 
-Zabezpečení na úrovni sloupce můžete implementovat pomocí příkazu [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL. Pomocí tohoto mechanismu jsou podporovány ověřování SQL a Azure Active Directory (AAD).
+Zabezpečení na úrovni sloupce můžete implementovat pomocí příkazu [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Pomocí tohoto mechanismu jsou podporovány ověřování SQL a Azure Active Directory (AAD).
 
 ![Cls](./media/column-level-security/cls.png)
 
@@ -52,6 +51,7 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Příklad
+
 Následující příklad ukazuje, `TestUser` jak omezit `SSN` přístup ke `Membership` sloupci tabulky:
 
 Vytvořit `Membership` tabulku se sloupcem SSN, který slouží k ukládání čísel sociálního pojištění:

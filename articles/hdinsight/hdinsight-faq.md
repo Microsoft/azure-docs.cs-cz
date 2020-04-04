@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a37e1b9bc4a0b953dc727dbab2813dd938ed576
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720346"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652217"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Nejčastější dotazy
 
@@ -135,7 +135,7 @@ Ano, metaúložiště Hive můžete migrovat z esp do clusteru bez ESP.
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Jak lze odhadnout velikost databáze metastore Hive?
 
-Metastore Hive se používá k ukládání metadat pro zdroje dat, které jsou používány serverem Hive. Požadavky na velikost závisí částečně na počtu a složitosti zdrojů dat Hive a nelze je odhadnout předem. Jak je uvedeno v [hive metastore osvědčených postupů](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices), můžete začít s Úrovní S2, která poskytuje 50 DTU a 250 GB úložiště, a pokud vidíte problémové místo, můžete vertikálně navýšit kapacitu databáze.
+Metastore Hive se používá k ukládání metadat pro zdroje dat, které jsou používány serverem Hive. Požadavky na velikost závisí částečně na počtu a složitosti zdrojů dat Hive a nelze je odhadnout předem. Jak je uvedeno v [pokynech pro metastore Hive](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines), můžete začít s vrstvou S2, která poskytuje 50 DTU a 250 GB úložiště, a pokud se zobrazí kritické místo, můžete databázi vertikálně navýšit kapacitu.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Podporujete jinou databázi než Azure SQL Database jako externí metastore?
 

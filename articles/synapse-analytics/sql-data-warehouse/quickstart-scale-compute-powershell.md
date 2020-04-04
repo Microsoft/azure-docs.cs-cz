@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c7ec8db212a24f1f23f393e4cb0e7f4150605a56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e3038617c6270acf9af295c910e9fd5c7dae2043
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350791"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633776"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Úvodní příručka: Škálování výpočetních prostředků pro fond Synapse SQL pomocí Azure PowerShellu
 
-Výpočetní prostředky pro fond Synapse SQL (datový sklad) můžete škálovat pomocí Azure PowerShellu. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů. 
+Výpočetní prostředky pro fond Synapse SQL (datový sklad) můžete škálovat pomocí Azure PowerShellu. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
@@ -32,19 +32,19 @@ Tento rychlý start předpokládá, že již máte fond SQL, který můžete šk
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
-Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Chcete-li zjistit, které předplatné používáte, spusťte [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
+Chcete-li zjistit, které předplatné používáte, spusťte [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```powershell
 Get-AzSubscription
 ```
 
-Pokud potřebujete použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
+Pokud potřebujete použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -69,7 +69,7 @@ Informace o umístění vašeho datového skladu vyhledáte pomocí následujíc
 
 Ve fondu SQL můžete zvýšit nebo snížit výpočetní prostředky úpravou jednotek datového skladu. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
-Chcete-li změnit jednotky datového skladu, použijte rutinu [Prostředí PowerShell Set-AzSqlDatabase.](/powershell/module/az.sql/set-azsqldatabase) Následující příklad nastaví jednotky datového skladu na DW300c pro databázi **mySampleDataWarehouse**, která je hostována v **názvu skupiny prostředků resourcegroupname** na serveru **sqlpoolservername**.
+Chcete-li změnit jednotky datového skladu, použijte rutinu [Prostředí PowerShell Set-AzSqlDatabase.](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Následující příklad nastaví jednotky datového skladu na DW300c pro databázi **mySampleDataWarehouse**, která je hostována v **názvu skupiny prostředků resourcegroupname** na serveru **sqlpoolservername**.
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -77,7 +77,7 @@ Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySample
 
 ## <a name="check-data-warehouse-state"></a>Kontrola stavu datového skladu
 
-Chcete-li zobrazit aktuální stav datového skladu, použijte rutinu [Prostředí Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell. Tato rutina zobrazuje stav databáze **mySampleDataWarehouse** v **názvu skupiny resourcegroup** group a **sqlpoolservername.database.windows.net**serveru .
+Chcete-li zobrazit aktuální stav datového skladu, použijte rutinu [Prostředí Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell. Tato rutina zobrazuje stav databáze **mySampleDataWarehouse** v **názvu skupiny resourcegroup** group a **sqlpoolservername.database.windows.net**serveru .
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
@@ -120,6 +120,7 @@ $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 Nyní jste se naučili škálovat výpočetní prostředky pro fond SQL. Další informace o fondu SQL, pokračujte v kurzu pro načítání dat.
 
 > [!div class="nextstepaction"]

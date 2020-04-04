@@ -1,53 +1,48 @@
 ---
-author: erhopf
+author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: 95e8a30eaa59762ad7cf5b388326c9d3c9723d8e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/02/2020
+ms.author: dapine
+ms.openlocfilehash: dd5dfa6db6b6855e377600a71a923c5be3557b60
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78924735"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659034"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 > [!div class="checklist"]
-> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku řeči Azure<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
 
-## <a name="add-sample-code"></a>Přidání ukázkového kódu
+## <a name="source-code"></a>Zdrojový kód
 
-1. Chcete-li do projektu Java přidat novou prázdnou**třídu,** vyberte **možnost Soubor** > **nové** > třídy .
+Chcete-li do projektu Java přidat novou prázdnou**třídu,** vyberte **možnost Soubor** > **nové** > třídy . V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
 
-1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
+![Snímek obrazovky s oknem New Java Class (Nová třída Javy)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
 
-   ![Snímek obrazovky s oknem New Java Class (Nová třída Javy)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
+Nahraďte obsah souboru *Main.java* následujícím fragmentem:
 
-1. Veškerý kód v `Main.java` nahraďte následujícím fragmentem kódu:
+[!code-java[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/src/speechsdk/quickstart/Main.java#code)]
 
-   [!code-java[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/src/speechsdk/quickstart/Main.java#code)]
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. Řetězec `YourSubscriptionKey` nahraďte klíčem předplatného.
+## <a name="code-explanation"></a>Vysvětlení kódu
 
-1. Nahraďte `YourServiceRegion` řetězec **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené `westus` k vašemu předplatnému (například pro bezplatné zkušební předplatné).
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-1. Uložte změny do projektu.
+## <a name="build-and-run-app"></a>Vytváření a spouštění aplikací
 
-> [!NOTE]
-> Sada Speech SDK bude ve výchozím nastavení rozpoznána použití jazyka en-us, viz [Určení zdrojového jazyka pro řeč na text,](../../../../how-to-specify-source-language.md) kde naleznete informace o výběru zdrojového jazyka.
-
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
-
-Stiskněte klávesu F11 nebo vyberte **spustit** > **ladění**.
+Stiskněte <kbd>klávesu F11</kbd>nebo vyberte **možnost Spustit** > **ladění**.
 Následujících 15 sekund hlasového vstupu z mikrofonu se rozpozná a zaprotokoluje v okně konzoly.
 
 ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-07-console-output.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

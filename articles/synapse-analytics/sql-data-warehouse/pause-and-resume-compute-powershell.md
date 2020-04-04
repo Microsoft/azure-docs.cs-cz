@@ -11,16 +11,17 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 336b5a65c7a23a060e422b69f8ad3216bee6ad19
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f257f3751e7a411015ca188d704b676950845a74
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350982"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633833"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Úvodní příručka: Pozastavení a obnovení výpočetních prostředků ve fondu Synapse SQL pomocí Azure PowerShellu
 
-Azure PowerShell můžete pozastavit a obnovit výpočetní prostředky fondu Synapse SQL (datového skladu). Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
+Azure PowerShell můžete pozastavit a obnovit výpočetní prostředky fondu Synapse SQL (datového skladu).
+Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -30,19 +31,19 @@ Tento rychlý start předpokládá, že již máte fond SQL, který můžete poz
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
-Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Chcete-li zjistit, které předplatné používáte, spusťte [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
+Chcete-li zjistit, které předplatné používáte, spusťte [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```powershell
 Get-AzSubscription
 ```
 
-Pokud potřebujete použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
+Pokud potřebujete použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -65,20 +66,19 @@ Chcete-li najít informace o poloze fondu SQL, postupujte takto:
 
 ## <a name="pause-compute"></a>Pozastavení výpočtu
 
-Chcete-li ušetřit náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Například pokud nepoužíváte databázi v noci a o víkendech, můžete pozastavit během těchto časů a pokračovat v něm během dne. 
+Chcete-li ušetřit náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Například pokud nepoužíváte databázi v noci a o víkendech, můžete pozastavit během těchto časů a pokračovat v něm během dne.
 
 >[!NOTE]
 >Neexistuje žádný poplatek za výpočetní prostředky, zatímco databáze je pozastavena. Za úložiště vám se však bude nadále účtovat.
 
-Chcete-li pozastavit databázi, použijte rutinu [Suspend-AzSqlDatabase.](/powershell/module/az.sql/suspend-azsqldatabase) Následující příklad pozastaví fond SQL s názvem **mySampleDataWarehouse** hostovaný na serveru s názvem **sqlpoolservername**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
-
+Chcete-li pozastavit databázi, použijte rutinu [Suspend-AzSqlDatabase.](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Následující příklad pozastaví fond SQL s názvem **mySampleDataWarehouse** hostovaný na serveru s názvem **sqlpoolservername**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-Následující příklad načte databázi do objektu $database. Potom kanály [objektu Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). Výsledky jsou uloženy v objektu resultDatabase. Konečný příkaz zobrazí výsledky.
+Následující příklad načte databázi do objektu $database. Potom kanály [objektu Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Výsledky jsou uloženy v objektu resultDatabase. Konečný příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -89,7 +89,7 @@ $resultDatabase
 
 ## <a name="resume-compute"></a>Pokračovat v výpočtu
 
-Chcete-li spustit databázi, použijte rutinu [Resume-AzSqlDatabase.](/powershell/module/az.sql/resume-azsqldatabase) Následující příklad spustí databázi s názvem **mySampleDataWarehouse** hostovanou na serveru s názvem **sqlpoolservername**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
+Chcete-li spustit databázi, použijte rutinu [Resume-AzSqlDatabase.](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Následující příklad spustí databázi s názvem **mySampleDataWarehouse** hostovanou na serveru s názvem **sqlpoolservername**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>Kontrola stavu operace fondu SQL
 
-Chcete-li zkontrolovat stav fondu SQL, použijte rutinu [Get-AzSqlDatabaseActivity.](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description)
+Chcete-li zkontrolovat stav fondu SQL, použijte rutinu [Get-AzSqlDatabaseActivity.](/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -134,7 +134,6 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
-
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o fondu SQL, pokračujte [načíst data do](load-data-from-azure-blob-storage-using-polybase.md) článku fondu SQL. Další informace o správě výpočetních funkcí najdete v článku [Správa přehledu výpočetních prostředků.](sql-data-warehouse-manage-compute-overview.md) 
+Další informace o fondu SQL, pokračujte [načíst data do](load-data-from-azure-blob-storage-using-polybase.md) článku fondu SQL. Další informace o správě výpočetních funkcí najdete v článku [Správa přehledu výpočetních prostředků.](sql-data-warehouse-manage-compute-overview.md)

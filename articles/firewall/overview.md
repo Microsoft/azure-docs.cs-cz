@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 04/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ed27097d29f3a10e708044ad7e2e30736e2c60e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a8930af1366fef3d8c4491fca5e9403905648de1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471842"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638019"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -61,7 +61,7 @@ Můžete centrálně vytvořit pravidla pro *povolení* nebo *blokování* podle
 
 ## <a name="fqdn-tags"></a>Značky plně kvalifikovaných názvů domén
 
-Značky plně kvalifikovaných názvů domén usnadňují povolení přenosů z dobře známé služby Azure prostřednictvím brány firewall. Řekněme například, že chcete povolit síťové přenosy z webu Windows Update přes bránu firewall. Můžete vytvořit pravidlo aplikace a zahrnout značku webu Windows Update. Teď je možný síťový přenos z webu Windows Update přes vaši bránu firewall.
+Značky FQDN usnadňují povolení známého síťového provozu služeb Azure prostřednictvím brány firewall. Řekněme například, že chcete povolit síťové přenosy z webu Windows Update přes bránu firewall. Můžete vytvořit pravidlo aplikace a zahrnout značku webu Windows Update. Teď je možný síťový přenos z webu Windows Update přes vaši bránu firewall.
 
 ## <a name="service-tags"></a>Značky služeb
 
@@ -118,7 +118,8 @@ Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP)
 |Podpora filtrování SQL FQDN pouze v režimu proxy (port 1433)|Pro Azure SQL Database, Azure SQL Data Warehouse a Azure SQL Managed Instance:<br><br>Během náhledu sql fqdn filtrování je podporována pouze v režimu proxy (port 1433).<br><br>Pro Azure SQL IaaS:<br><br>Pokud používáte nestandardní porty, můžete tyto porty zadat v pravidlech aplikace.|Pro SQL v režimu přesměrování, což je výchozí, pokud se připojujete z Azure, můžete místo toho filtrovat přístup pomocí značky služby SQL jako součást pravidel sítě Azure Firewall.
 |Odchozí provoz na portu TCP 25 není povolen.| Odchozí připojení SMTP, která používají port TCP 25, jsou blokována. Port 25 se používá především pro neověřené doručování e-mailů. Toto je výchozí chování platformy pro virtuální počítače. Další informace najdete [v tématu Řešení potíží s odchozím připojením SMTP v Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Na rozdíl od virtuálních počítačů však není v současné době možné povolit tuto funkci v bráně Azure Firewall.|Podle doporučené metody odeslat e-mail, jak je popsáno v článku řešení potíží SMTP. Nebo vylučte virtuální počítač, který potřebuje odchozí přístup SMTP z výchozí trasy do brány firewall, a místo toho nakonfigurujte odchozí přístup přímo do Internetu.
 |Aktivní ftp není podporován.|Aktivní ftp je zakázáno na Azure Firewall k ochraně proti útokům FTP bounce pomocí příkazu FTP PORT.|Místo toho můžete použít pasivní FTP. Stále je nutné explicitně otevřít porty TCP 20 a 21 v bráně firewall.
-|Metrika využití portu SNAT zobrazuje 0 %|Metrika využití portu Azure Firewall SNAT může zobrazovat 0 % využití i při použití portů SNAT. V tomto případě pomocí metriky jako součást metriky stavu brány firewall poskytuje nesprávný výsledek.|Tento problém byl vyřešen a zavedení do výroby je určeno na květen 2020. V některých případech přeřazení brány firewall problém vyřeší, ale není konzistentní. Jako zprostředkující řešení použijte stav brány firewall pouze k vyhledání *stavu=degradováno*, nikoli *stavu=není v pořádku*. Vyčerpání portů se projeví jako *zhoršené*. *Není v pořádku* je vyhrazena pro budoucí použití, když jsou další metriky ovlivnit stav brány firewall. 
+|Metrika využití portu SNAT zobrazuje 0 %|Metrika využití portu Azure Firewall SNAT může zobrazovat 0 % využití i při použití portů SNAT. V tomto případě pomocí metriky jako součást metriky stavu brány firewall poskytuje nesprávný výsledek.|Tento problém byl vyřešen a zavedení do výroby je určeno na květen 2020. V některých případech přeřazení brány firewall problém vyřeší, ale není konzistentní. Jako zprostředkující řešení použijte stav brány firewall pouze k vyhledání *stavu=degradováno*, nikoli *stavu=není v pořádku*. Vyčerpání portů se projeví jako *zhoršené*. *Není v pořádku* je vyhrazena pro budoucí použití, když jsou další metriky ovlivnit stav brány firewall.
+|Funkce DNAT není podporována s povoleným vynuceným tunelovým propojením.|Brány firewall nasazené s povoleným vynuceným tunelovým propojením nemohou z důvodu asymetrického směrování podporovat příchozí přístup z Internetu.|Toto je záměrné z důvodu asymetrického směrování. Zpáteční cesta pro příchozí připojení vede přes místní bránu firewall, ve které se připojení nenapojovalo.
 
 ## <a name="next-steps"></a>Další kroky
 

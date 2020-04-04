@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3bd166572cea23fbb710cd053c28f51e76ba534a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476667"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637331"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa uživatelských účtů Azure AD B2C pomocí Microsoft Graphu
 
@@ -151,7 +151,7 @@ Aplikace zobrazí seznam příkazů, které můžete spustit. Můžete napříkl
 
 ### <a name="code-discussion"></a>Diskuse o kódu
 
-Ukázkový kód používá [sadu Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview), která je určena ke zjednodušení vytváření vysoce kvalitních, efektivních a odolných aplikací, které přistupují k aplikaci Microsoft Graph. Takže nemusíte vytvořit přímé všechny Microsoft Graph API.
+Ukázkový kód používá [sadu Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview), která je určena ke zjednodušení vytváření vysoce kvalitních, efektivních a odolných aplikací, které přistupují k aplikaci Microsoft Graph.
 
 Jakýkoli požadavek na rozhraní Microsoft Graph API vyžaduje přístupový token pro ověřování. Řešení využívá balíček [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet, který poskytuje obálku knihovny Microsoft Authentication Library (MSAL) založenou na scénáři ověřování pro použití s sadou Microsoft Graph SDK.
 

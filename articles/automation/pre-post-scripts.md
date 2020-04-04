@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbf7f2945ad6a94c51cfd0c7db1e8c85d739c6ed
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417800"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631624"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Správa předa skriptů a po skriptech
 
@@ -18,7 +18,7 @@ Předskripty a postskripty umožňují spouštět runbooky PowerShellu ve vašem
 
 ## <a name="runbook-requirements"></a>Požadavky sady Runbook
 
-Aby se runbook použil jako před nebo po skriptu, musí být runbook importován do vašeho účtu Automation a publikován. Další informace o tomto procesu najdete [v tématu Publikování runbooku](manage-runbooks.md#publish-a-runbook).
+Aby se runbook použil jako před nebo po skriptu, musí být runbook importován do vašeho účtu Automation a publikován. Další informace o tomto procesu najdete [v tématu Publikování runbooku](manage-runbooks.md#publishing-a-runbook).
 
 ## <a name="using-a-pre-script-or-post-script"></a>Použití předskriptu nebo postskriptu
 

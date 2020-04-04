@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti o struktuře definice politiky
 description: Popisuje, jak se definice zásad používají k vytváření konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7cb1ab7d045a0595f6949052ecedba6cd1bf694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239989"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638077"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -265,7 +265,7 @@ Při použití **shody** a **notMatch** podmínky, zadejte `#` tak, aby odpovíd
 
 V ** \[ \* \] ** hodnotě pole aliasu je každý prvek v poli vyhodnocován jednotlivě s logickými **a** mezi prvky. Další informace naleznete [v \[ \* tématu Vyhodnocení aliasu \] ](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-### <a name="fields"></a>Pole
+### <a name="fields"></a>Fields (Pole)
 
 Podmínky jsou tvořeny pomocí polí. Pole odpovídá vlastnostem v datové části požadavku na zdroj a popisuje stav zdroje.
 
@@ -361,7 +361,7 @@ Tento příklad pravidla zásad používá **hodnotu** ke kontrole, zda se výsl
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -578,6 +578,9 @@ Všechny [funkce šablony Správce prostředků](../../../azure-resource-manager
 - resourceId()
 - proměnné()
 
+> [!NOTE]
+> Tyto funkce jsou stále `details.deployment.properties.template` k dispozici v rámci části nasazení šablony v definici zásad **deployIfNotExists.**
+
 Následující funkce je k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager:
 
 - `utcNow()`- Na rozdíl od šablony Správce prostředků, to lze použít mimo defaultValue.
@@ -593,10 +596,9 @@ Následující funkce jsou k dispozici pouze v pravidlech zásad:
   - Vrátí hodnotu tohoto pole ze zdroje, který je vyhodnocován podmínkou If.
   - `field`Používá se především s **AuditIfNotExists** a **DeployIfNotExists** pro referenční pole na prostředek, které jsou vyhodnocovány. Příklad tohoto použití lze vidět v [příkladu DeployIfNotExists](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
-  - Vrátí verzi rozhraní API požadavku, který spustil `2019-09-01`vyhodnocení zásad (příklad: ). Bude to verze rozhraní API, která byla použita v požadavku PUT/PATCH pro vyhodnocení při vytváření nebo aktualizaci prostředků. Nejnovější verze rozhraní API se vždy používá při hodnocení dodržování předpisů na stávající prostředky.
+  - Vrátí verzi rozhraní API požadavku, který spustil `2019-09-01`vyhodnocení zásad (příklad: ).
+    Bude to verze rozhraní API, která byla použita v požadavku PUT/PATCH pro vyhodnocení při vytváření nebo aktualizaci prostředků. Nejnovější verze rozhraní API se vždy používá při hodnocení dodržování předpisů na stávající prostředky.
   
-
-
 #### <a name="policy-function-example"></a>Příklad funkce zásad
 
 Tento příklad pravidla `resourceGroup` zásad používá funkci prostředku k získání `concat` vlastnosti **name** v kombinaci s funkcí array a object k vytvoření `like` podmínky, která vynucuje název prostředku, aby začal s názvem skupiny prostředků.
@@ -707,8 +709,6 @@ Toto vzorové pravidlo kontroluje všechny shody **\[\*\]ipRules .value** na **1
     }
 }
 ```
-
-
 
 Další informace naleznete [v tématu vyhodnocení aliasu [\*].](../how-to/author-policies-for-arrays.md#evaluating-the--alias)
 

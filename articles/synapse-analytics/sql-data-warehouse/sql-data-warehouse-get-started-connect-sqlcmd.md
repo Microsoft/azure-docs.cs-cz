@@ -1,6 +1,6 @@
 ---
 title: Spojit se s sqlcmd
-description: Pomocí nástroje příkazového řádku sqlcmd se můžete připojit a dotazovat službu Azure SQL Data Warehouse.
+description: Pomocí nástroje příkazového řádku sqlcmd se můžete připojit k fondu Synapse SQL a zadat dotaz na fond SYNAPse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 118997c39b56254eb47bc24350a0558e0b7620f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: cfb1b7558f8d7675009a0ebc729cc1a560f03d12
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350511"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633377"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Připojení k SQL Data Warehouse pomocí sqlcmd
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Připojení k fondu Synapse SQL s sqlcmd
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -28,14 +28,14 @@ ms.locfileid: "80350511"
 > 
 > 
 
-Pomocí nástroje příkazového řádku [sqlcmd][sqlcmd] se můžete připojit a dotazovat službu Azure SQL Data Warehouse.  
+Pomocí nástroje příkazového řádku [sqlcmd][sqlcmd] se můžete připojit k fondu SQL a dotazovat se na něj.  
 
 ## <a name="1-connect"></a>1. Připojte
-Chcete-li začít s nástrojem [sqlcmd][sqlcmd], otevřete příkazový řádek a zadejte příkaz **sqlcmd** následovaný připojovacím řetězcem pro vaši databázi SQL Data Warehouse. Připojovací řetězec bude muset mít následující parametry:
+Chcete-li začít s [sqlcmd][sqlcmd], otevřete příkazový řádek a zadejte **sqlcmd** následovaný připojovacím řetězcem pro databázi fondu SQL. Připojovací řetězec bude muset mít následující parametry:
 
 * **Server (-S):** Server v následující podobě: `<`název serveru`>`.database.windows.net
 * **Database (-d):** Název databáze
-* **Enable Quoted Identifiers (-I):** Aby bylo možné se připojit k instanci služby SQL Data Warehouse, musí být povolené identifikátory v uvozovkách.
+* **Povolit uvozovky (-I):** Identifikátory v uvozovkách musí být povoleny pro připojení k instanci fondu SQL.
 
 Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 
@@ -84,14 +84,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Viz část [Dokumentace sqlcmd][sqlcmd], kde najdete další informace o možnostech dostupných v sqlcmd.
-
-<!--Image references-->
-
-<!--Article references-->
-
-<!--MSDN references--> 
-[sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
-[Azure portal]: https://portal.azure.com
-
-<!--Other Web references-->
+Další informace o možnostech dostupných v sqlcmd naleznete v [dokumentaci sqlcmd](https://msdn.microsoft.com/library/ms162773.aspx) .

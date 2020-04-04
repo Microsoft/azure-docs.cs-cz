@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582126"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633567"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Optimalizace transakcí v synapse SQL
 
@@ -24,7 +24,7 @@ Naučte se optimalizovat výkon transakčníkód v Synapse SQL při minimalizaci
 
 ## <a name="transactions-and-logging"></a>Transakce a protokolování
 
-Transakce jsou důležitou součástí relační databázový stroj. Transakce se používají při úpravě dat. Tyto transakce mohou být explicitní nebo implicitní. Single INSERT, UPDATE a DELETE příkazy jsou všechny příklady implicitní transakce. Explicitní transakce používají BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, když více příkazů změny je třeba svázat v jedné atomické jednotky. 
+Transakce jsou důležitou součástí relační databázový stroj. Transakce se používají při úpravě dat. Tyto transakce mohou být explicitní nebo implicitní. Single INSERT, UPDATE a DELETE příkazy jsou všechny příklady implicitní transakce. Explicitní transakce používají BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, když více příkazů změny je třeba svázat v jedné atomické jednotky.
 
 Změny v databázi jsou sledovány pomocí protokolů transakcí. Každá distribuce má svůj vlastní transakční protokol. Zápisy transakčního protokolu jsou automatické. Není vyžadována žádná konfigurace. Však zatímco tento proces zaručuje zápis zavést režii v systému. Tento dopad můžete minimalizovat zápisem transakčního kódu. Transakční efektivní kód obecně spadá do dvou kategorií.
 
@@ -39,9 +39,7 @@ Na rozdíl od plně protokolovaných operací, které používají transakční 
 Bezpečnostní limity transakcí se vztahují pouze na plně protokolované operace.
 
 > [!NOTE]
-> Minimálně protokolované operace se mohou účastnit explicitních transakcí. Jako všechny změny v struktury přidělení jsou sledovány, je možné vrátit zpět minimálně protokolované operace. 
-> 
-> 
+> Minimálně protokolované operace se mohou účastnit explicitních transakcí. Jako všechny změny v struktury přidělení jsou sledovány, je možné vrátit zpět minimálně protokolované operace.
 
 ## <a name="minimally-logged-operations"></a>Minimálně zaznamenané operace
 
@@ -64,10 +62,9 @@ Následující operace mohou být minimálně zaznamenány:
 
 > [!NOTE]
 > Operace interního přesunu dat (například BROADCAST a SHUFFLE) nejsou ovlivněny limitem bezpečnosti transakce.
-> 
-> 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimální protokolování s hromadným načtením
+
 CTAS a VLOŽIT... SELECT jsou obě operace hromadného zatížení. Obě jsou však ovlivněny definicí cílové tabulky a závisí na scénáři zatížení. Následující tabulka vysvětluje, kdy jsou hromadné operace plně nebo minimálně zaznamenány:  
 
 | Primární index | Scénář načítání | Režim protokolování |
@@ -83,11 +80,11 @@ Stojí za zmínku, že všechny zápisy aktualizovat sekundární nebo neseskupe
 
 > [!IMPORTANT]
 > Synapse SQL pool databáze má 60 distribucí. Proto za předpokladu, že všechny řádky jsou rovnoměrně distribuovány a přistání v jednom oddílu, vaše dávka bude muset obsahovat 6,144,000 řádky nebo větší, aby byly minimálně zaznamenány při zápisu do indexu clusterované columnstore. Pokud je tabulka rozdělena na oddíly a řádky, které jsou vloženy hranice oddílu s rozpětím, budete potřebovat 6,144,000 řádků na hranici oddílu za předpokladu, že i rozdělení dat. Každý oddíl v každé distribuci musí nezávisle překročit prahovou hodnotu řádku 102 400, aby byla vložení minimálně přihlášena do distribuce.
-> 
 
 Načítání dat do neprázdné tabulky s clusterovaným indexem může často obsahovat směs plně protokolovaných a minimálně protokolovaných řádků. Seskupený index je vyvážený strom (b-strom) stránek. Pokud stránka zapisovaná do již obsahuje řádky z jiné transakce, budou tyto zápisy plně zaznamenány. Pokud je však stránka prázdná, bude zápis na tuto stránku zaznamenán minimálně.
 
 ## <a name="optimizing-deletes"></a>Optimalizace odstranění
+
 DELETE je plně protokolovaná operace.  Pokud potřebujete odstranit velké množství dat v tabulce nebo oddílu, často `SELECT` dává větší smysl pro data, která chcete zachovat, která lze spustit jako minimálně protokolovnou operaci.  Chcete-li vybrat data, vytvořte novou tabulku s [CTAS](sql-data-warehouse-develop-ctas.md).  Po vytvoření použijte [přejmenování](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k prohození staré tabulky s nově vytvořenou tabulkou.
 
 ```sql
@@ -98,7 +95,7 @@ CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -113,12 +110,13 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
+--Step 02. Rename the Tables to replace the
 RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optimalizace aktualizací
+
 UPDATE je plně protokolovaná operace.  Pokud potřebujete aktualizovat velký počet řádků v tabulce nebo oddílu, může být často mnohem efektivnější použít minimálně protokolované operace, jako je [ctas](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k tomu.
 
 V příkladu níže byla úplná aktualizace tabulky převedena na CTAS, takže je možné minimální protokolování.
@@ -126,12 +124,12 @@ V příkladu níže byla úplná aktualizace tabulky převedena na CTAS, takže 
 V tomto případě zpětně přidáváme částku slevy k prodeji v tabulce:
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing the "Update".
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -140,15 +138,15 @@ WITH
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -165,7 +163,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
@@ -181,10 +179,9 @@ DROP TABLE [dbo].[FactInternetSales_old]
 
 > [!NOTE]
 > Opětovné vytváření velkých tabulek může využívat funkce správy úloh fondu SQL Synapse. Další informace naleznete v [tématu Třídy prostředků pro správu pracovního vytížení](resource-classes-for-workload-management.md).
-> 
-> 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimalizace pomocí přepínání oddílů
+
 Pokud čelí rozsáhlé úpravy uvnitř [oddílu tabulky](sql-data-warehouse-tables-partition.md), pak oddíl přepínání vzor dává smysl. Pokud je změna dat významná a zahrnuje více oddílů, pak iterace přes oddíly dosáhne stejného výsledku.
 
 Postup provedení přepínače oddílů je následující:
@@ -223,11 +220,11 @@ SELECT     s.name                            AS [schema_name]
 FROM        sys.schemas                    AS s
 JOIN        sys.tables                    AS t    ON  s.[schema_id]        = t.[schema_id]
 JOIN        sys.indexes                    AS i    ON     t.[object_id]        = i.[object_id]
-JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id] 
-                                                AND i.[index_id]        = p.[index_id] 
+JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id]
+                                                AND i.[index_id]        = p.[index_id]
 JOIN        sys.partition_schemes        AS h    ON     i.[data_space_id]    = h.[data_space_id]
 JOIN        sys.partition_functions        AS f    ON     h.[function_id]        = f.[function_id]
-LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id] 
+LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id]
                                                 AND r.[boundary_id]        = p.[partition_number]
 WHERE i.[index_id] <= 1
 )
@@ -246,7 +243,7 @@ Tento postup maximalizuje opětovné použití kódu a udržuje příklad přep�
 Následující kód ukazuje kroky uvedené výše k dosažení úplné rutiny přepínání oddílů.
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table to switch out the data
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -256,7 +253,7 @@ CREATE TABLE [dbo].[FactInternetSales_out]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
@@ -278,20 +275,20 @@ CREATE TABLE [dbo].[FactInternetSales_in]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -308,7 +305,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
@@ -347,9 +344,10 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>Minimalizace protokolování s malými dávkami
+
 Pro operace s velkými změnami dat může mít smysl rozdělit operaci na bloky nebo dávky pro rozsah jednotky práce.
 
-Následující kód je funkční příklad. Velikost dávky byla nastavena na triviální číslo pro zvýraznění techniky. Ve skutečnosti by velikost dávky byla výrazně větší. 
+Následující kód je funkční příklad. Velikost dávky byla nastavena na triviální číslo pro zvýraznění techniky. Ve skutečnosti by velikost dávky byla výrazně větší.
 
 ```sql
 SET NO_COUNT ON;
@@ -409,12 +407,10 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Pokyny pro pozastavení a změnu měřítka
 
-Synapse SQL umožňuje [pozastavit, obnovit a škálovat](sql-data-warehouse-manage-compute-overview.md) fond SQL na vyžádání. Při pozastavení nebo škálování fondu SQL, je důležité si uvědomit, že všechny transakce za letu jsou ukončeny okamžitě; způsobit vrácení všech otevřených transakcí zpět. Pokud vaše úloha vydala dlouho běžící a neúplné změny dat před pozastavení nebo operace škálování, pak tato práce bude nutné vrátit zpět. Toto zrušení může mít vliv na čas potřebný k pozastavení nebo škálování fondu SQL. 
+Synapse SQL umožňuje [pozastavit, obnovit a škálovat](sql-data-warehouse-manage-compute-overview.md) fond SQL na vyžádání. Při pozastavení nebo škálování fondu SQL, je důležité si uvědomit, že všechny transakce za letu jsou ukončeny okamžitě; způsobit vrácení všech otevřených transakcí zpět. Pokud vaše úloha vydala dlouho běžící a neúplné změny dat před pozastavení nebo operace škálování, pak tato práce bude nutné vrátit zpět. Toto zrušení může mít vliv na čas potřebný k pozastavení nebo škálování fondu SQL.
 
 > [!IMPORTANT]
-> Oba `UPDATE` `DELETE` a jsou plně protokolované operace, a tak tyto operace vrátit a znovu může trvat podstatně déle než ekvivalentní minimálně protokolované operace. 
-> 
-> 
+> Oba `UPDATE` `DELETE` a jsou plně protokolované operace, a tak tyto operace vrátit a znovu může trvat podstatně déle než ekvivalentní minimálně protokolované operace.
 
 Nejlepším scénářem je nechat v transakcích změny dat letu dokončit před pozastavení nebo škálování fondu SQL. Tento scénář však nemusí být vždy praktické. Chcete-li zmírnit riziko dlouhého vrácení zpět, zvažte jednu z následujících možností:
 
@@ -424,4 +420,3 @@ Nejlepším scénářem je nechat v transakcích změny dat letu dokončit před
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o úrovních izolace a transakčních limitech najdete v článku [Transakce v synapse SQL.](sql-data-warehouse-develop-transactions.md)  Přehled dalších doporučených postupů naleznete v tématu [SQL Data Warehouse Best Practices](sql-data-warehouse-best-practices.md).
-

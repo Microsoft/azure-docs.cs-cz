@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 04/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbf4f352bc7d6874cab9c12adf5f1717d4b8f9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9ea88da0a575647eecacbfd8a476202f814b821
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295725"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631810"
 ---
 # <a name="conditional-access-block-access"></a>Podmíněný přístup: Blokovat přístup
 
@@ -33,7 +33,7 @@ Zásady podmíněného přístupu jsou výkonné nástroje, doporučujeme z vaš
 
 * **Nouzové přístup** nebo **break-glass** účty, aby se zabránilo uzamčení účtu pro celý klient. V nepravděpodobném scénáři jsou všichni správci uzamčeni z vašeho tenanta, váš účet pro správu nouzového přístupu lze použít k přihlášení do klienta podniknout kroky k obnovení přístupu.
    * Další informace najdete v článku [Správa účtů pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Účty služeb** a **instanční objekty**, jako je například účet synchronizace připojení Azure AD Connect. Účty služeb jsou neinteraktivní účty, které nejsou vázány na žádného konkrétního uživatele. Obvykle jsou používány back-endovými službami a umožňují programový přístup k aplikacím. Účty služeb by měly být vyloučeny, protože vícefaktorové řízení nelze dokončit programově.
+* **Účty služeb** a **instanční objekty**, jako je například účet synchronizace připojení Azure AD Connect. Účty služeb jsou neinteraktivní účty, které nejsou vázány na žádného konkrétního uživatele. Obvykle se používají back-endové služby, které umožňují programový přístup k aplikacím, ale také se používají k přihlášení k systémům pro administrativní účely. Účty služeb, jako jsou tyto by měly být vyloučeny, protože vícefaktorové nelze dokončit programově.
    * Pokud má vaše organizace tyto účty v provozu ve skriptech nebo kódu, zvažte jejich nahrazení [spravovanými identitami](../managed-identities-azure-resources/overview.md). Jako dočasné řešení můžete tyto konkrétní účty vyloučit ze zásady směrného plánu.
 
 ## <a name="create-a-conditional-access-policy"></a>Vytvoření zásad podmíněného přístupu

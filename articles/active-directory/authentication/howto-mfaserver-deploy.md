@@ -4,19 +4,19 @@ description: Podrobný návod, jak začít s místním Azure MFA Serverem
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263696"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653122"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -161,7 +161,7 @@ Teď, když je server nainstalovaný, budete chtít přidat uživatele. Můžete
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Jak Azure Multi-Factor Authentication Server nakládá s uživatelskými daty
 
-Když Multi-Factor Authentication (MFA) Server používáte lokálně, uživatelská data se ukládají na lokálních serverech. V cloudu se neukládají žádná trvalá data. Když uživatel provádí dvoustupňové ověření, MFA Server odešle data do cloudové služby Azure MFA, a tam se provede ověření. Když se tyto požadavky na ověření pošlou do cloudové služby, odešlou se v žádosti a následující pole a protokoly, aby byly dostupné pro sestavy o používání/ověřování zákazníka. Některá tato pole jsou volitelná a můžou se v Multi-Factor Authentication Serveru zapnout nebo vypnout. Komunikace z MFA Serveru do cloudové služby MFA probíhá přes SSL/TLS na odchozím portu 443. Tato pole jsou:
+Při místním použití serveru vícefaktorového ověřování (MFA) jsou data uživatele uložena na místních serverech. V cloudu se neukládají žádná trvalá data. Když uživatel provádí dvoustupňové ověření, MFA Server odešle data do cloudové služby Azure MFA, a tam se provede ověření. Když se tyto požadavky na ověření pošlou do cloudové služby, odešlou se v žádosti a následující pole a protokoly, aby byly dostupné pro sestavy o používání/ověřování zákazníka. Některá tato pole jsou volitelná a můžou se v Multi-Factor Authentication Serveru zapnout nebo vypnout. Komunikace z MFA Serveru do cloudové služby MFA probíhá přes SSL/TLS na odchozím portu 443. Tato pole jsou:
 
 * Jedinečné ID - uživatelské jméno nebo interní ID serveru MFA
 * Jméno a příjmení (volitelné)

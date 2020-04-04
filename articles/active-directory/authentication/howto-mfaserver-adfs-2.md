@@ -4,19 +4,19 @@ description: Toto je stránka vícefaktorového ověřování Azure, která popi
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71c1d28a90af72890b2399d5da24d08885f3cce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051213"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653517"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS 2.0
 
@@ -59,7 +59,7 @@ Pro zabezpečení AD FS 2.0 pomocí proxy serveru nainstalujte Azure Multi-Facto
 13. Po dokončení se kliknutím na **OK** vraťte do dialogového okna Přidat webovou stránku s formuláři.
 14. Kliknutím na **OK** zavřete dialogové okno.
 15. Po zjištění nebo zadání adresy URL a proměnných hodnot stránek se data webové stránky zobrazí v panelu založeném na formulářích.
-16. Klikněte na kartu **Nativní modul** a vyberte server, web, na kterém je spuštěný proxy server služby AD FS (jako Výchozí web) nebo aplikaci proxy serveru služby AD FS (jako „ls“ v části „adfs“) pro povolení modulu plug-in IIS na požadované úrovni.
+16. Klikněte na kartu **Nativní modul** a vyberte server, web, pod kterým je spuštěn proxy server služby AD FS (například "Výchozí web") nebo proxy aplikaci služby AD FS (například "ls" v části "adfs") a povolte modul plug-in služby IIS na požadované úrovni.
 17. Zaškrtněte políčko **Povolit ověřování IIS** v horní části obrazovky.
 
 Teď je povolené IIS ověřování
@@ -85,8 +85,8 @@ Povolili jste ověřování IIS, ale abyste mohli provádět předběžné ově�
 
 1. Dále klepněte na ikonu **Nastavení společnosti** a vyberte kartu **Rozlišení uživatelského jména.**
 2. Vyberte **atribut Použít jedinečný identifikátor LDAP pro odpovídající přepínací tlačítko uživatelských jmen.**
-3. Pokud uživatelé zadají své uživatelské jméno ve formátu „doména\uživatelské jméno“, Server musí být schopný při vytváření dotazu LDAP oddělit doménu od uživatelského jména. To můžete udělat nastavením registrů.
-4. Na 64bitovém serveru otevřete editor registrů a přejděte na HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. Pokud jste na 32bitovém serveru, odeberte „Wow6432Node“ z cesty. Vytvořte klíč registru typu DWORD s názvem „UsernameCxz_stripPrefixDomain“ a nastavte hodnotu na 1. Azure Multi-Factor Authentication teď zabezpečuje proxy server služby AD FS.
+3. Pokud uživatelé zadají své uživatelské jméno ve formátu "doména\uživatelské jméno", server musí být schopen odstranit doménu z uživatelského jména při vytváření dotazu LDAP. To můžete udělat nastavením registrů.
+4. Na 64bitovém serveru otevřete editor registrů a přejděte na HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. Pokud na 32bitovém serveru, vyveďte "Wow6432Node" z cesty. Vytvořte klíč registru DWORD s názvem "UsernameCxz_stripPrefixDomain" a nastavte hodnotu na hodnotu 1. Azure Multi-Factor Authentication teď zabezpečuje proxy server služby AD FS.
 
 Ověřte, že se uživatelé naimportovali z Active Directory do Serveru. Pokud [Trusted IPs section](#trusted-ips) chcete povolit interní IP adresy, takže při přihlašování k webu z těchto míst není nutné dvoustupňové ověření.
 
@@ -107,7 +107,7 @@ AD FS můžete zabezpečit, i když se server proxy AD FS nepoužívá. Nainstal
    ![AD FS 2.0 Direct bez serveru proxy](./media/howto-mfaserver-adfs-2/noproxy.png)
 
 8. Klikněte na tlačítko **OK**.
-9. Klikněte na kartu **Nativní modul** a vyberte server, web (jako Výchozí web) nebo aplikaci služby AD FS (jako „ls“ v části „adfs“) pro povolení modulu plug-in IIS na požadované úrovni.
+9. Klikněte na kartu **Nativní modul** a vyberte server, web (například "Výchozí web") nebo aplikaci služby AD FS (například "ls" v části "adfs") a povolte modul plug-in služby IIS na požadované úrovni.
 10. Zaškrtněte políčko **Povolit ověřování IIS** v horní části obrazovky.
 
 Azure Multi-Factor Authentication teď zabezpečuje službu AD FS.

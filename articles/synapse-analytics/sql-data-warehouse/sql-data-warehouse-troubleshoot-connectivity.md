@@ -11,16 +11,17 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583325"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633008"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 
-Tento článek uvádí běžné techniky řešení potíží kolem připojení k fondu SYNAPse SQL.
+V tomto článku jsou uvedeny běžné techniky řešení potíží týkající se připojení k databázi SQL Analytics.
+
 - [Zkontrolujte dostupnost služby](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Zkontrolujte pozastavené operace nebo operace škálování](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Zkontrolujte nastavení brány firewall](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -54,15 +55,15 @@ Pokud zjistíte, že vaše služba je pozastavena nebo škálování, zkontroluj
 
 ![Přehled plánu údržby](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-V opačném případě se obraťte na správce IT a ověřte, zda tato údržba není naplánovanou událostí. Chcete-li obnovit instanci fondu SQL synapse, postupujte podle [pokynů uvedených zde](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
+V opačném případě se obraťte na správce IT a ověřte, zda tato údržba není naplánovanou událostí. Chcete-li obnovit instanci SQL Analytics, postupujte [takto](pause-and-resume-compute-portal.md).
 
 ## <a name="check-your-firewall-settings"></a>Zkontrolujte nastavení brány firewall
 
-Synapse SQL fond komunikuje přes port 1433.Pokud se pokoušíte připojit z podnikové sítě, vaše brána firewall možná nepovoluje odchozí přenosy přes port 1433. V takovém případě se nebudete moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall naleznete [zde](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
+Databáze SQL Analytics komunikuje přes port 1433.Pokud se pokoušíte připojit z podnikové sítě, vaše brána firewall možná nepovoluje odchozí přenosy přes port 1433. V takovém případě se nebudete moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall naleznete [zde](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Zkontrolujte nastavení virtuální sítě / koncového bodu služby
 
-Pokud se zobrazují chyby 40914 a 40615, přečtěte [si popis chyby a řešení zde](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+Pokud se zobrazují chyby 40914 a 40615, přečtěte [si popis chyby a řešení zde](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615).
 
 ## <a name="check-for-the-latest-drivers"></a>Vyhledejte nejnovější ovladače
 
@@ -70,22 +71,22 @@ Pokud se zobrazují chyby 40914 a 40615, přečtěte [si popis chyby a řešení
 
 Zkontrolujte, zda používáte nejnovější nástroje pro připojení k fondu Synapse SQL:
 
-* SSMS
-* Azure Data Studio
-* Datové nástroje serveru SQL Server (Visual Studio)
+- SSMS
+- Azure Data Studio
+- Datové nástroje serveru SQL Server (Visual Studio)
 
 ### <a name="drivers"></a>Ovladače
 
 Zkontrolujte, zda používáte nejnovější verze ovladačů.Použití starší verze ovladačů může mít za následek neočekávané chování, protože starší ovladače nemusí podporovat nové funkce.
 
-* [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
-* [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-* [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
-* [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server)
 
 ## <a name="check-your-connection-string"></a>Zkontrolujte připojovací řetězec
 
-Zkontrolujte, jestli jsou správně nastavené připojovací řetězce.  Níže jsou uvedeny některé vzorky.  Další informace o [připojovacích řetězcích najdete tady](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Zkontrolujte, jestli jsou správně nastavené připojovací řetězce.  Níže jsou uvedeny některé vzorky.  Další informace o [připojovacích řetězcích najdete tady](/sql-data-warehouse/sql-data-warehouse-connection-strings.md).
 
 Připojovací řetězec pro ADO.NET
 
@@ -117,7 +118,8 @@ Zkontrolujte, jestli je server hodně zatížený a existuje na něm vysoký po�
 
 ## <a name="common-error-messages"></a>Běžné chybové zprávy
 
-Chyby 40914 a 40615 naleznete v [popisu chyby a řešení zde](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+Chyby 40914 a 40615 naleznete v [popisu chyby a řešení zde](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615).
 
 ## <a name="still-having-connectivity-issues"></a>Stále máte problémy s připojením?
-Vytvořte [lístek podpory,](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) aby vás technický tým mohl podpořit.
+
+Vytvořte [lístek podpory,](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) aby vás technický tým mohl podpořit.

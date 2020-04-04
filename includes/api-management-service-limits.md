@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608683578a796ae0fffff7544a749043e8698fd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76158888"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656180"
 ---
 | Prostředek | Omezení |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "76158888"
 <sup>2.</sup> Velikost mezipaměti jednotky závisí na cenové úrovni. Informace o cenových úrovních a jejich omezeních škálování najdete v tématu [Ceny správy rozhraní API](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>3.</sup> Připojení jsou sdružené a znovu použít, pokud explicitně uzavřenback-end.<br/>
 <sup>4.</sup> Tento limit je na jednotku úrovní Basic, Standard a Premium. Úroveň Developer je omezena na 1 024. Toto omezení se nevztahuje na úroveň Spotřeba.<br/>
-<sup>5.</sup> Toto omezení platí pro úrovně Basic, Standard a Premium. Ve vrstvě Spotřebu je velikost dokumentu zásad omezena na 4 KiB.<br/>
+<sup>5.</sup> Toto omezení platí pro úrovně Basic, Standard a Premium. Ve vrstvě Spotřebu je velikost dokumentu zásad omezena na 16 KiB.<br/>
 <sup>6.</sup> Tento prostředek je k dispozici pouze na úrovni Premium.<br/>
 <sup>7.</sup> Tento prostředek se vztahuje pouze na úroveň Spotřeba.<br/>
 <sup>8.</sup> Platí pouze pro úroveň Spotřeba. Obsahuje řetězec dotazu s dlouhým 2048 bajty.<br/>

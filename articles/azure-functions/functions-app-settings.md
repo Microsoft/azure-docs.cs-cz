@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace pro nastavení aplikace Azure Functions nebo proměnné prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277827"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656786"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -20,11 +20,19 @@ V souboru [host.json](functions-host-json.md) a v souboru [local.settings.json](
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Klíč instrumentace Application Insights, pokud používáte Application Insights. Viz [Monitorování funkcí Azure](functions-monitoring.md).
+Klíč instrumentace pro Application Insights. Používejte pouze `APPINSIGHTS_INSTRUMENTATIONKEY` jeden `APPLICATIONINSIGHTS_CONNECTIONSTRING`z nebo . Další informace naleznete v [tématu Sledování funkcí Azure](functions-monitoring.md). 
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+|APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
+
+## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+
+Připojovací řetězec pro Application Insights. Místo `APPLICATIONINSIGHTS_CONNECTIONSTRING` `APPINSIGHTS_INSTRUMENTATIONKEY` toho, když vaše aplikace funkce vyžaduje přidané vlastní nastavení podporované pomocí připojovacího řetězce. Další informace naleznete v tématu [Connection strings](../azure-monitor/app/sdk-connection-string.md). 
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey=[klíč];IngestionEndpoint=[url]; LiveEndpoint=[url]; ProfilerEndpoint=[url]; SnapshotEndpoint=[url];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 

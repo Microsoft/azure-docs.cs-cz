@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76767970"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638071"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Přehled Azure FarmBeats (Preview)
 
@@ -42,6 +42,24 @@ Datahub je navržen jako rozšiřitelná platforma rozhraní API. Spolupracujeme
 ## <a name="accelerator"></a>Accelerator
 
 Azure FarmBeats Accelerator je ukázková webová aplikace, která je postavená na Datahubu. Akcelerátor nastartuje vývoj uživatelského rozhraní a modelu. Akcelerátor Azure FarmBeats používá api Azure FarmBeats. Vizualizuje pořizovaná data senzorů jako grafy a výstupy modelů jako mapy. Pomocí akcelerátoru můžete například rychle vytvořit farmu a snadno získat mapu indexu vegetace nebo mapu umístění senzorů pro tuto farmu.
+
+## <a name="role-based-access-control-rbac"></a>Řízení přístupu podle role (RBAC)
+
+Správce můžete definovat pravidla přístupu pro Azure FarmBeats pomocí jedné z předdefinovaných rolí. Role určují, ke kterým oblastem aplikace má uživatel přístup a jaké akce může provádět. Existují dva druhy rolí v Azure FarmBeats – pro uživatele a pro partnery.
+
+### <a name="user-roles"></a>User Roles
+
+[Správce může přidávat a spravovat uživatele](manage-users-in-azure-farmbeats.md) a definovat jejich úrovně přístupu na základě dvou uživatelských rolí: Správce a Jen pro čtení.
+
+### <a name="partner-roles"></a>Role partnerů
+
+Správce může do Azure FarmBeats přidat více partnerů jako zprostředkovatele dat. Následující shrnuje dostupné role partnerů v FarmBeats a jejich oprávnění:
+
+| Typ partnera    |   Akce  | Rozsah |
+| ---- | -------- | -------- |
+| Partner senzoru  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat | DeviceModel, Zařízení, SensorModel, Senzor <br/> <br/> Rozšířený typ |
+| Partner pro snímky  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Čtení | Scéna, SceneFile <br/> <br/> Rozšířený typ <br/> <br/> Farmě |
+| Partner pro snímky  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Čtení | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> Rozšířený typ <br/> <br/> Farmě |
 
 ## <a name="resources"></a>Prostředky
 

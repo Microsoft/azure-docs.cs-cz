@@ -3,12 +3,12 @@ title: Ovládací prvky ukázkového plánu srovnávacího plánu cis Microsoft 
 description: Doporučení mapování CIS Microsoft Azure Foundations srovnávací plán ukázka zásad Azure.
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707426"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656967"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapování doporučení ukázky plánu srovnávacího plánu nadace CIS Microsoft Azure Foundations
 
@@ -245,7 +245,7 @@ Tento podrobný plán přiřazuje definice [zásad Azure,](../../../policy/overv
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 Ujistěte se, že je pro databázový server MySQL nastaveno na hodnotu "Vynutit připojení SSL"
 
-Tento podrobný plán přiřadí [definici zásad Azure,](../../../policy/overview.md) která vám pomůže zajistit, aby databázové servery MySQL vynucovali připojení SSL.
+Tento podrobný plán přiřazuje [definici zásad Azure,](../../../policy/overview.md) která vám pomůže zajistit, aby databázové servery MySQL vynucovali připojení TLS/SSL.
 
 - Vynutit připojení SSL by mělo být povoleno pro databázové servery MySQL
 
@@ -257,7 +257,7 @@ Tento podrobný plán přiřadí [definici zásad Azure,](../../../policy/overvi
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 Ujistěte se, že je pro databázový server PostgreSQL nastaveno na "Vynutit připojení SSL"
 
-Tento podrobný plán přiřadí [definici zásad Azure,](../../../policy/overview.md) která vám pomůže zajistit, aby databázové servery PostgreSQL vynucovali připojení SSL.
+Tento podrobný plán přiřazuje [definici zásad Azure,](../../../policy/overview.md) která vám pomůže zajistit, aby databázové servery PostgreSQL vynucovali připojení TLS/SSL.
 
 - Vynutit připojení SSL by mělo být povoleno pro databázové servery PostgreSQL.
 

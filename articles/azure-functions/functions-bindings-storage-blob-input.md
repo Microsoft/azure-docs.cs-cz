@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: e074d7d74c0c5f020cb8086124634b25012927db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77202148"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633884"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Vstupní vazba úložiště Azure blob pro funkce Azure
 
@@ -20,7 +20,7 @@ Informace o nastavení a konfiguraci naleznete v [přehledu](./functions-binding
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad je [c# funkce,](functions-dotnet-class-library.md) která používá fronta aktivační událost a vstupní vazby objektu blob. Zpráva fronty obsahuje název objektu blob a funkce protokoluje velikost objektu blob.
 
@@ -84,7 +84,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -154,6 +154,7 @@ V souboru *function.json* se vlastnost `queueTrigger` metadat používá k urče
     {
       "name": "inputblob",
       "type": "blob",
+      "dataType": "binary",
       "path": "samples-workitems/{queueTrigger}",
       "connection": "MyStorageConnectionAppSetting",
       "direction": "in"
@@ -245,7 +246,7 @@ V [knihovně runtime funkcí](/java/api/overview/azure/functions/runtime) `@Blob
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte [atribut BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs).
 
@@ -282,7 +283,7 @@ public static void Run(
 
 Atributy nejsou podporovány skriptem jazyka C#.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány javascriptem.
 
@@ -313,7 +314,7 @@ Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nas
 
 ## <a name="usage"></a>Využití
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
@@ -321,7 +322,7 @@ Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nas
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Přístup k datům objektu blob pomocí `context.bindings.<NAME>` where where `<NAME>` odpovídá hodnotě definované v *souboru function.json*.
 

@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586057"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632671"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Limity paměti a souběžnosti pro Azure Synapse Analytics
+
 Zobrazení omezení paměti a souběžnosti přidělené různým úrovním výkonu a třídám prostředků v Azure Synapse Analytics.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Nastavení kapacity datového skladu
+
 V následujících tabulkách je uveden maximální kapacita datového skladu na různých úrovních výkonu. Pokud chcete změnit úroveň výkonu, přečtěte si část [Škálování výpočetních prostředků – portál](quickstart-scale-compute-portal.md).
 
 ### <a name="service-levels"></a>Úrovně služeb
@@ -50,7 +52,8 @@ V následujících tabulkách je uveden maximální kapacita datového skladu na
 Maximální úroveň služeb je DW30000c, který má 60 výpočetních uzlů a jednu distribuci na výpočetní uzel. Například datový sklad o velikosti 600 TB v dw30000c zpracovává přibližně 10 TB na výpočetní uzel.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>Maximální souběžnost pro skupiny úloh
-Se zavedením [skupin úlohy](sql-data-warehouse-workload-isolation.md), koncept souběžnosti sloty již neplatí.  Zdroje na požadavek jsou přiděleny na základě procenta a zadaná v definici skupiny pracovního vytížení.  Však i při odebrání sloty souběžnosti, jsou minimální množství prostředků potřebných pro dotazy na základě úrovně služby.  Níže uvedená tabulka definovala minimální množství prostředků potřebných pro dotaz napříč úrovněmi služeb a přidruženou souběžnou, které lze dosáhnout. 
+
+Se zavedením [skupin úlohy](sql-data-warehouse-workload-isolation.md), koncept souběžnosti sloty již neplatí.  Zdroje na požadavek jsou přiděleny na základě procenta a zadaná v definici skupiny pracovního vytížení.  Však i při odebrání sloty souběžnosti, jsou minimální množství prostředků potřebných pro dotazy na základě úrovně služby.  Níže uvedená tabulka definovala minimální množství prostředků potřebných pro dotaz napříč úrovněmi služeb a přidruženou souběžnou, které lze dosáhnout.
 
 |Úroveň služeb|Maximální počet souběžných dotazů|Min % podporováno pro REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
@@ -73,7 +76,8 @@ Se zavedením [skupin úlohy](sql-data-warehouse-workload-isolation.md), koncept
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Maximální souběžnost pro třídy prostředků
-Chcete-li zajistit, aby každý dotaz měl dostatek prostředků pro efektivní spuštění, využití prostředků je sledováno přiřazením slotů souběžnosti ke každému dotazu. Systém umístí dotazy do fronty na základě důležitosti a souběžnosti sloty. Dotazy čekat ve frontě, dokud dostatek sloty souběžnosti jsou k dispozici. [Důležitost](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) a souběžnost sloty určit prioritu procesoru. Další informace najdete [v tématu Analýza pracovního vytížení](analyze-your-workload.md)
+
+Chcete-li zajistit, aby každý dotaz má dostatek prostředků pro efektivní spuštění, SQL Analytics v Azure Synapse sleduje využití prostředků přiřazením souběžnosti sloty pro každý dotaz. Systém umístí dotazy do fronty na základě důležitosti a souběžnosti sloty. Dotazy čekat ve frontě, dokud dostatek sloty souběžnosti jsou k dispozici. [Důležitost](sql-data-warehouse-workload-importance.md) a souběžnost sloty určit prioritu procesoru. Další informace najdete [v tématu Analýza pracovního vytížení](analyze-your-workload.md)
 
 **Statické třídy prostředků**
 
@@ -121,11 +125,11 @@ V následující tabulce jsou uvedeny maximální souběžné dotazy a sloty sou
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-Pokud není dostatek slotů souběžnosti, které mohou spustit spuštění dotazu, dotazy jsou zařazeny do fronty a spouštěny na základě důležitosti.  Pokud je ekvivalentní význam, dotazy jsou prováděny na základě first-in, first-out.  Jako dotazy dokončí a počet dotazů a slotů spadají pod limity, SQL Data Warehouse uvolní dotazy ve frontě. 
+Pokud není dostatek slotů souběžnosti, které mohou spustit spuštění dotazu, dotazy jsou zařazeny do fronty a spouštěny na základě důležitosti.  Pokud je ekvivalentní význam, dotazy jsou prováděny na základě first-in, first-out.  Jako dotazy dokončí a počet dotazů a slotů spadají pod limity, SQL Data Warehouse uvolní dotazy ve frontě.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak využít třídy prostředků k optimalizaci úlohy, naleznete v následujících článcích:
+
 * [Třídy prostředků pro správu pracovního vytížení](resource-classes-for-workload-management.md)
 * [Analýza pracovního vytížení](analyze-your-workload.md)

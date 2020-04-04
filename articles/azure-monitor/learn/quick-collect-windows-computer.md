@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: b3949159d939a043fd4ccc820bc1cdad14da7751
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 6435535ee14450c590a79ea68c8855c29df8bd9a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528375"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637871"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitoru
 
 [Azure Monitor](../overview.md) může shromažďovat data přímo z vašich fyzických nebo virtuálních počítačů se systémem Windows ve vašem prostředí do pracovního prostoru Log Analytics pro podrobnou analýzu a korelaci. Instalace [agenta Log Analytics](../platform/log-analytics-agent.md) umožňuje Azure Monitoru shromažďovat data z datového centra nebo jiného cloudového prostředí. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data. Informace o virtuálních počítačích Azure pro Windows najdete v [tématu Shromažďování dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-Informace o podporované konfiguraci naleznete v [tématu Podporované operační systémy Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) a konfigurace síťové brány [firewall](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements).
+Informace o podporované konfiguraci naleznete v [tématu Podporované operační systémy Windows](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) a konfigurace síťové brány [firewall](../../azure-monitor/platform/log-analytics-agent.md#network-requirements).
  
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
 

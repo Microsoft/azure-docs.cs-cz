@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 62826b209b37e5abe5d33455809ba1b894ddb85f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476460"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655511"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samospravovaných služeb Active Directory Domain Services, Služby Azure Active Directory a spravované služby Azure Active Directory Domain Services
 
@@ -25,12 +25,16 @@ Přestože tři řešení identit založených na službě Active Directory sdí
 
 * **Server LDAP (Active Directory Domain Services)** – server LDAP (Enterprise-ready lightweight directory access protocol), který poskytuje klíčové funkce, jako je identita a ověřování, správa objektů počítače, zásady skupiny a vztahy důvěryhodnosti.
     * Služba AD DS je centrální součástí mnoha organizací s místním prostředím IT a poskytuje základní funkce ověřování uživatelských účtů a správy počítače.
+    * Další informace naleznete [v tématu Přehled služby Active Directory Domain Services v dokumentaci k systému Windows Server][overview-adds].
 * **Azure Active Directory (Azure AD)** – cloudová správa identit a mobilních zařízení, která poskytuje uživatelské účet a ověřovací služby pro prostředky, jako je Office 365, portál Azure nebo aplikace SaaS.
     * Azure AD lze synchronizovat s místním prostředím služby AD DS a poskytnout tak uživatelům, kteří nativně fungují v cloudu, je dinou identitu.
+    * Další informace o Azure AD najdete v [tématu Co je Azure Active Directory?][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** – poskytuje služby spravované domény s podmnožinou plně kompatibilních tradičních funkcí služby AD DS, jako je připojení k doméně, zásady skupiny, protokol LDAP a ověřování protokolu Kerberos / NTLM.
     * Azure AD DS integruje s Azure AD, který sám můžete synchronizovat s místním prostředím Služby AD DS. Tato možnost rozšiřuje případy použití centrální identity na tradiční webové aplikace, které běží v Azure jako součást strategie výtahu a posunu.
 
 Tento přehled článek porovnává a kontrastuje, jak tato řešení identity může spolupracovat nebo by být použity nezávisle, v závislosti na potřebách vaší organizace.
+
+Chcete-li začít, [vytvořte spravovanou doménu Azure AD DS pomocí webu Azure Portal][tutorial-create].
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS a samoobslužná služba AD DS
 
@@ -118,3 +122,5 @@ Pokud chcete začít používat Azure AD DS, [vytvořte spravovanou doménu Azur
 [manage-gpos]: manage-group-policy.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-create]: tutorial-create-instance.md
+[whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
+[overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586077"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631239"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analýza úloh v Azure Synapse Analytics
 
@@ -68,7 +68,7 @@ Synapse SQL má následující typy čekání:
 * **LocalQueriesConcurrencyResourceType**: Dotazy, které jsou mimo rámec souběžnosti slot. DMV dotazy a systémové `SELECT @@VERSION` funkce, jako jsou příklady místních dotazů.
 * **UserConcurrencyResourceType**: Dotazy, které jsou v rámci rozhraní slotu souběžnosti. Dotazy proti tabulkám koncových uživatelů představují příklady, které by tento typ prostředku používaly.
 * **DmsConcurrencyResourceType**: Čeká vyplývající z operací přesunu dat.
-* **BackupConcurrencyResourceType**: Toto čekání označuje, že je zálohována databáze. Maximální hodnota pro tento typ prostředku je 1. Pokud bylo požadováno více záloh současně, ostatní fronty. Obecně doporučujeme minimální čas mezi po sobě jdoucísnímky 10 minut. 
+* **BackupConcurrencyResourceType**: Toto čekání označuje, že je zálohována databáze. Maximální hodnota pro tento typ prostředku je 1. Pokud bylo požadováno více záloh současně, ostatní fronty. Obecně doporučujeme minimální čas mezi po sobě jdoucísnímky 10 minut.
 
 `sys.dm_pdw_waits` DMV lze zobrazit prostředky, na které požadavek čeká.
 

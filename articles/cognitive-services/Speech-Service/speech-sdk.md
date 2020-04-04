@@ -1,126 +1,139 @@
 ---
 title: O řeči SDK - řeč služby
 titleSuffix: Azure Cognitive Services
-description: Sada SDK (Speech Software Development Kit) poskytuje vašim aplikacím nativní přístup k funkcím služby Speech, což usnadňuje vývoj softwaru. Tento článek obsahuje další podrobnosti o sdk pro Windows, Linux a Android.
+description: Sada SDK (Speech software Development Kit) poskytuje mnoho funkcí služby Speech, což usnadňuje vývoj aplikací s podporou řeči.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331089"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656525"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
-Sada SDK (Speech Software Development Kit) poskytuje vašim aplikacím přístup k funkcím služby Speech, což usnadňuje vývoj softwaru s podporou řeči. V současné době sady SDK poskytují přístup k **převodu řeči na text**, **převodu textu na řeč**, **překladu řeči**, rozpoznávání **záměru**a **kanálu přímé řeči rozhraní Bot Framework**.
-
-Pomocí sady Speech SDK můžete snadno zachytit zvuk z mikrofonu, číst z datového proudu nebo přistupovat ke zvukovým souborům z úložiště. Sada Speech SDK podporuje 16bitový, 16kHz/8 kHz wav/PCM pro rozpoznávání řeči. Další zvukové formáty jsou podporovány pomocí [koncového bodu REST pro převod řeči na text](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) nebo [služby dávkového přepisu](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
-
-Obecný přehled o možnostech a podporovaných platformách naleznete na [stránce zadání](https://aka.ms/csspeech)dokumentace .
+Sada SDK (Speech software Development Kit) poskytuje mnoho funkcí služby Speech, které vám umožňují vyvíjet aplikace s podporou řeči. Sada Speech SDK je k dispozici v mnoha programovacích jazycích a na všech platformách.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+## <a name="scenario-capabilities"></a>Možnosti scénáře
 
-## <a name="get-the-sdk"></a>Získání sady SDK
+Sada Speech SDK zveřejňuje mnoho funkcí ze služby řeči, ale ne všechny z nich. Možnosti sady Speech SDK jsou často spojeny se scénáři. Sada Speech SDK je ideální pro scénáře v reálném čase i bez vreálném-time, pomocí místních zařízení, souborů, úložiště objektů blob Azure a dokonce i vstupních a výstupních datových proudů. Pokud scénář není dosažitelné s sadou Speech SDK, vyhledejte alternativu rozhraní REST API.
+
+### <a name="speech-to-text"></a>Převod řeči na text
+
+[Převod řeči na text](speech-to-text.md) (označovaný také jako *rozpoznávání řeči)* přepisuje zvukové proudy na text, který mohou aplikace, nástroje nebo zařízení využívat nebo zobrazovat. Pomocí funkce převod řeči na text s [jazykovou úpravou (LUIS)](../luis/index.yml) můžete odvodit záměry uživatelů z přepisované řeči a jednat s hlasovými příkazy. Pomocí [překladu řeči](speech-translation.md) přeložte vstup řeči do jiného jazyka pomocí jediného volání. Další informace naleznete v [tématu Základy převodu řeči na text](speech-to-text-basics.md).
+
+### <a name="text-to-speech"></a>Převod textu na řeč
+
+[Převod textu na řeč](text-to-speech.md) (označovaný také jako *syntéza řeči*) převede text na syntetizovanou řeč podobné člověku. Vstupní text je buď řetězcové literály nebo pomocí [jazyka značek syntézy řeči (SSML).](speech-synthesis-markup.md) Další informace o standardních nebo neurálních hlasech naleznete v [tématu Jazyk převodu textu na řeč a hlasová podpora](language-support.md#text-to-speech).
+
+### <a name="voice-assistants"></a>Hlasoví asistenti
+
+Hlasoví asistenti používající sadu Speech SDK umožňují vývojářům vytvářet přirozené konverzační rozhraní podobné člověku pro své aplikace a prostředí. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a asistentem. Implementace používá kanál přímé řeči rozhraní Bot Framework nebo integrovanou službu vlastních příkazů (Preview) pro dokončení úlohy. Kromě toho hlasové asistenty lze vytvořit pomocí [vlastního hlasového portálu](https://aka.ms/customvoice) k vytvoření jedinečného hlasového prostředí.
+
+#### <a name="keyword-spotting"></a>Pozorování klíčových slov
+
+Koncept [zmetenní klíčových slov](speech-devices-sdk-create-kws.md) je podporován v sadě Speech SDK. Pozorování klíčových slov je akt identifikace klíčového slova v řeči, následovaný akcí při poslechu klíčového slova. Například "Hey Cortana" by aktivovat asistenta Cortana.
+
+### <a name="meeting-scenarios"></a>Scénáře schůzky
+
+Sada Speech SDK je ideální pro přepis scénářů schůzek, ať už z jednoho zařízení nebo konverzace s více zařízeními.
+
+#### <a name="conversation-transcription"></a>Přepis konverzace
+
+[Přepis konverzace](conversation-transcription.md) umožňuje rozpoznávání řeči v reálném čase (a aasynchronní), identifikaci mluvčího a přiřazení věty každému řečníkovi (označované také jako *diarizace).* Je ideální pro přepis osobních schůzek se schopností rozlišovat řečníky.
+
+#### <a name="multi-device-conversation"></a>Konverzace na více zařízeních
+
+Díky [konverzaci na více zařízeních](multi-device-conversation.md)připojte do konverzace více zařízení nebo klientů a odesílejte hlasové nebo textové zprávy se snadnou podporou přepisu a překladu.
+
+### <a name="custom--agent-scenarios"></a>Vlastní scénáře / scénáře agenta
+
+Sadu Speech SDK lze použít pro přepis scénářů centra volání, kde jsou generována telefonní data.
+
+#### <a name="call-center-transcription"></a>Přepis nahrávek z call centra
+
+[Přepis call centra](call-center-transcription.md) je běžný scénář pro převod řeči na text pro přepis velkých objemů telefonních dat, které mohou pocházet z různých systémů, jako je interaktivní hlasová odezva (IVR). Nejnovější modely rozpoznávání řeči ze služby Rozpoznávání řeči vynikají v přepisu těchto telefonních dat, a to i v případech, kdy je pro člověka obtížné porozumět.
+
+### <a name="codec-compressed-audio-input"></a>Kodek komprimovaný zvukový vstup
+
+Několik programovacích jazyků sady Speech SDK podporuje kodekkomizované vstupní datové proudy zvuku. Další informace naleznete v <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tématu použití <span class="docon docon-navigate-external x-hidden-focus"> </span>formátů komprimovaných zvukových vstupů </a>.
+
+## <a name="rest-api"></a>REST API
+
+Zatímco sada Speech SDK pokrývá mnoho funkcí služby Řeči, pro některé scénáře můžete chtít použít rozhraní REST API. Jako příklad je správa koncového bodu vystavena pouze prostřednictvím rozhraní REST API.
+
+> [!TIP]
+> Při spoléhání se na rozhraní REST API, použijte Swagger Editor automaticky generovat klientské knihovny. Chcete-li například generovat knihovnu klienta batch transkripce.
+> 1. Zkopírujte následující ukázkovou adresu URL:
+>     ```http
+>     https://westus.cris.ai/docs/v2.0/swagger
+>     ```
+> 1. Přejděte do <a href="https://editor.swagger.io/" target="_blank">editoru <span class="docon docon-navigate-external x-hidden-focus"></span> Swagger</a>
+> 1. Vyberte**URL importu** **souboru** > a vložte ji.
+> 1. Vyberte **Generovat klienta** a zvolte požadovaný programovací jazyk
+
+### <a name="batch-transcription"></a>Dávkový přepis
+
+[Dávkový přepis](batch-transcription.md) umožňuje asynchronní přepis řeči na text velkých objemů dat. Dávkový přepis je možný pouze z rozhraní REST API.
+
+## <a name="customization"></a>Přizpůsobení
+
+Služba speech service poskytuje skvělé funkce s výchozími modely napříč převodem řeči na text, převod textu na řeč a překladem řeči. Někdy můžete chtít zvýšit výkon směrného plánu pracovat ještě lépe s jedinečným případem použití. Služba Speech Service má řadu nástrojů pro přizpůsobení bez kódu, které usnadňují a umožňují vytvořit konkurenční výhodu s vlastními modely založenými na vlastních datech. Tyto modely budou k dispozici pouze vám a vaší organizaci.
+
+### <a name="custom-speech-to-text"></a>Vlastní převod řeči na text
+
+Při použití funkce převodu řeči na text pro rozpoznávání a přepis v jedinečném prostředí můžete vytvářet a trénovat vlastní modely akustické, jazykové a výslovnosti, které řeší okolní hluk nebo slovní zásobu specifickou pro dané odvětví. Vytvoření a správa modelů vlastní řeči bez kódu je k dispozici prostřednictvím [portálu vlastní řeči](https://aka.ms/customspeech). Po publikování modelu vlastní řeči, může být spotřebována řeči SDK.
+
+### <a name="custom-text-to-speech"></a>Vlastní převod textu na řeč
+
+Vlastní převod textu na řeč, známý také jako Vlastní hlas, je sada online nástrojů, které vám umožní vytvořit rozpoznatelný, jedinečný hlas pro vaši značku. Vytvoření a správa modelů vlastních hlasových programů bez kódu je k dispozici prostřednictvím [vlastního hlasového portálu](https://aka.ms/customvoice). Po publikování modelu vlastní hlas, může být spotřebována řeči SDK.
+
+## <a name="get-the-speech-sdk"></a>Získání sady SDK pro rozpoznávání řeči
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-> [!WARNING]
-> Sada Speech SDK podporuje verze systému Windows 10 nebo novější. Starší verze systému Windows **nejsou podporovány**.
-
-Pro Windows podporujeme následující jazyky:
-
-* C# (UPW a .NET), C++: Můžete odkazovat a používat nejnovější verzi našeho balíčku Speech SDK NuGet. Balíček obsahuje 32bitové a 64bitové klientské knihovny a spravované knihovny (.NET). Sadu SDK lze nainstalovat v sadě Visual Studio pomocí nuget, [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech).
-
-* Java: Můžete odkazovat a používat nejnovější verzi našeho balíčku Speech SDK Maven, který podporuje pouze Windows x64. V projektu Maven `https://csspeechstorage.blob.core.windows.net/maven/` přidejte jako další `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` úložiště a odkaz jako závislost.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-windows.md)]
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-> [!NOTE]
-> V současné době podporujeme pouze Ubuntu 16.04, Ubuntu 18.04, Debian 9, Red Hat Enterprise Linux (RHEL) 8 a CentOS 8 na následujících cílových architekturách:
-> - x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) a ARM64 (Debian/Ubuntu) pro vývoj C++
-> - x64, ARM32 (Debian/Ubuntu) a ARM64 (Debian/Ubuntu) pro Javu
-> - x64 pro jádro rozhraní .NET a Python
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-linux.md)]
 
-Ujistěte se, že máte nainstalované požadované knihovny spuštěním následujících příkazů prostředí:
+# <a name="ios"></a>[iOS](#tab/ios)
 
-Na Ubuntu:
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-ios.md)]
 
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2
-```
+# <a name="macos"></a>[Macos](#tab/macos)
 
-Na Debianu 9:
-
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.2 libasound2
-```
-
-Na rhel/centos 8:
-
-```sh
-sudo yum update
-sudo yum install alsa-lib openssl
-```
-
-> [!NOTE]
-> Na RHEL/CentOS 8 postupujte podle [pokynů, jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
-
-* C#: Můžete odkazovat a používat nejnovější verzi našeho balíčku Speech SDK NuGet. Chcete-li odkazovat na sadu SDK, přidejte do projektu následující odkaz na balíček:
-
-  ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
-  ```
-
-* Java: Můžete odkazovat a používat nejnovější verzi našeho balíčku Speech SDK Maven. V projektu Maven `https://csspeechstorage.blob.core.windows.net/maven/` přidejte jako další `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` úložiště a odkaz jako závislost.
-
-* C++: Stáhněte sadu SDK jako [balíček .tar](https://aka.ms/csspeech/linuxbinary) a rozbalte soubory v adresáři podle vašeho výběru. V následující tabulce je uvedena struktura složek sady SDK:
-
-  |Cesta|Popis|
-  |-|-|
-  |`license.md`|Licence|
-  |`ThirdPartyNotices.md`|Oznámení třetích stran|
-  |`include`|Soubory hlaviček pro C a C++|
-  |`lib/x64`|Nativní knihovna x64 pro propojení s vaší aplikací|
-  |`lib/x86`|Nativní knihovna x86 pro propojení s vaší aplikací|
-
-  Chcete-li vytvořit aplikaci, zkopírujte nebo přesuňte požadované binární soubory (a knihovny) do vývojového prostředí. Zahrňte je podle potřeby v procesu sestavení.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-macos.md)]
 
 # <a name="android"></a>[Android](#tab/android)
 
-Java SDK pro Android je zabalen jako [AAR (Android Library)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny a požadovaná oprávnění Android. Je hostován v úložišti Maven `https://csspeechstorage.blob.core.windows.net/maven/` `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`jako balíček .
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-android.md)]
 
-Chcete-li balíček využívat z projektu Android Studio, proveďte následující změny:
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* V souboru build.gradle na úrovni projektu `repository` přidejte do oddílu následující:
+[!INCLUDE [Get the Node.js Speech SDK](includes/get-speech-sdk-nodejs.md)]
 
-  ```gradle
-  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-  ```
+# <a name="browser"></a>[Prohlížeč](#tab/browser)
 
-* V souboru build.gradle na úrovni modulu `dependencies` přidejte do oddílu následující:
-
-  ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
-  ```
-
-Sada Java SDK je také součástí [sady SDK pro řečová zařízení](speech-devices-sdk.md).
+[!INCLUDE [Get the Browser Speech SDK](includes/get-speech-sdk-browser.md)]
 
 ---
 
-[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+
+[!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Podívejte se, jak rozpoznat řeč v C #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Podívejte se, jak rozpoznat řeč v C #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

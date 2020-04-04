@@ -11,21 +11,20 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 0b7accec9fdce1ad81a08aee17b37d655409948b
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 61c823aee5d8a6755a3bd7971cd7cca952cbb911
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607556"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633622"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure Synapse Analytics
 
-Azure Synapse Analytics poskytuje bohaté možnosti monitorování v rámci portálu Azure, abyste získali přehledy o zatížení datového skladu. Portál Azure je doporučený nástroj při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako je Azure Monitor (protokoly) s analýzou protokolů, abyste poskytli komplexní monitorování nejen pro váš datový sklad, ale i pro celou analytickou platformu Azure pro integrované monitorování. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu analytické platformy. 
+Azure Synapse Analytics poskytuje bohaté možnosti monitorování v rámci portálu Azure, abyste získali přehledy o zatížení datového skladu. Portál Azure je doporučený nástroj při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako je Azure Monitor (protokoly) s analýzou protokolů, abyste poskytli komplexní monitorování nejen pro váš datový sklad, ale i pro celou analytickou platformu Azure pro integrované monitorování. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu analytické platformy pomocí služby SQL Analytics.
 
 ## <a name="resource-utilization"></a>Využití prostředků
 
-Následující metriky jsou k dispozici na portálu Azure pro Synapse SQL. Tyto metriky se objevují prostřednictvím [Azure Monitor](../../azure-monitor/platform/data-collection.md#metrics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-
+Následující metriky jsou k dispozici na webu Azure Portal for SQL Analytics. Tyto metriky se objevují prostřednictvím [Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
 | Název metriky             | Popis                                                  | Typ agregace |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -55,16 +54,16 @@ Co je třeba vzít v úvahu při zobrazování metrik a nastavení upozornění:
 
 ## <a name="query-activity"></a>Aktivita dotazu
 
-Pro programové prostředí při sledování Synapse SQL přes T-SQL, služba poskytuje sadu zobrazení dynamické správy (DMVs). Tato zobrazení jsou užitečné při aktivním řešení problémů a identifikaci kritických bodů výkonu s vaší úlohou.
+Pro programové prostředí při sledování SQL Analytics přes T-SQL poskytuje služba sadu zobrazení dynamické správy (DMVs). Tato zobrazení jsou užitečné při aktivním řešení problémů a identifikaci kritických bodů výkonu s vaší úlohou.
 
-Chcete-li zobrazit seznam dmvs, které se vztahují k Synapse SQL, naleznete v této [dokumentaci](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs). 
+Chcete-li zobrazit seznam dmvs, které poskytuje SQL Analytics, naleznete v této [dokumentaci](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs).
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metriky a diagnostické protokolování
 
-Metriky i protokoly lze exportovat do Azure Monitor, konkrétně součást [protokoly Azure Monitor](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a lze programově přistupovat prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Latence protokolu pro Synapse SQL je asi 10-15 minut. Další podrobnosti o faktorech ovlivňujících latenci naleznete v následující dokumentaci.
+Metriky i protokoly lze exportovat do Azure Monitor, konkrétně součást [protokoly Azure Monitor](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a lze programově přistupovat prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Latence protokolu pro SQL Analytics je asi 10-15 minut. Další podrobnosti o faktorech ovlivňujících latenci naleznete v následující dokumentaci.
 
 ## <a name="next-steps"></a>Další kroky
 
 Následující návody popisují běžné scénáře a případy použití při monitorování a správě datového skladu:
 
-- [Sledování úlohy datového skladu pomocí zařízení DMV](/sql-data-warehouse/sql-data-warehouse-manage-monitor?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+- [Sledování úlohy datového skladu pomocí zařízení DMV](sql-data-warehouse-manage-monitor.md)

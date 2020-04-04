@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 6dcbf0ad0f6678d892c5c02446cac09b4325384c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3525bc7a25550a79ceeb008e3c69c77a56aa0a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283646"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632870"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Používání Center událostí Azure z aplikací Apache Kafka
 Event Hubs poskytuje koncový bod Kafka, který může být použit pro vaše stávající aplikace založené na Kafka jako alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje [protokol Apache Kafka 1.0 a novější](https://kafka.apache.org/documentation/)a pracuje s vašimi stávajícími aplikacemi Kafka, včetně MirrorMakeru.  
@@ -94,16 +94,6 @@ Zde je seznam funkcí Kafka, které ještě nejsou podporovány:
 *   Kafka potoky
 
 ## <a name="next-steps"></a>Další kroky
-
-Tento článek poskytl úvod do event hubů pro Kafka. Další informace najdete v následujících odkazech:
-
-- [Jak vytvořit centrum událostí](event-hubs-create.md)
-- [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)
-- [Připojení Apache Flinku k centru událostí](event-hubs-kafka-flink-tutorial.md)
-- [Integrace aplikace Kafka Connect s centrem událostí](event-hubs-kafka-connect-tutorial.md)
-- [Připojení Streamů Akka k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
-- [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
+Tento článek poskytl úvod do event hubů pro Kafka. Další informace najdete v [tématu Apache Kafka developer guide for Azure Event Hubs](apache-kafka-developer-guide.md).
 
 

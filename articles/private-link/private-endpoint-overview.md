@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: fd389c1e909e6875ead8410b5ca692b82c79e0de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063076"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656261"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je Azure Private Endpoint?
 
@@ -73,6 +73,8 @@ Prostředek privátního propojení je cílový cíl daného soukromého koncov�
 |**Azure Event Grid** | Microsoft.EventGrid/témata  | téma |
 |**Azure Event Grid** | Microsoft.EventGrid/domény | doména |
 |**Azure WebApps** | Web/weby společnosti Microsoft    | Stránky |
+|**Azure Machine Learning** | Microsoft.MachineLearningServices/pracovní prostory  | Pracovní prostor |
+  
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpečení sítě privátních koncových bodů 
 Při použití privátní koncové body pro služby Azure, provoz je zabezpečený na konkrétní prostředek privátní propojení. Platforma provádí řízení přístupu k ověření síťových připojení, která se dostanou pouze k určenému prostředku privátního propojení. Pro přístup k dalším prostředkům v rámci stejné služby Azure jsou vyžadovány další soukromé koncové body. 
@@ -143,6 +145,7 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 |Azure Event Grid (Microsoft.EventGrid/témata)   | téma | Téma. {region}.privatelink.eventgrid.azure.net|
 |Azure Event Grid (Microsoft.EventGrid/domény) | doména | Domény. {region}.privatelink.eventgrid.azure.net |
 |Azure WebApps(Microsoft.Web/weby) | Stránky | privatelink.azurewebsites.net |
+|Azure Machine Learning (Microsoft.MachineLearningServices/pracovní prostory)   | Pracovní prostor | privatelink.api.azureml.ms |
  
 Azure vytvoří kanonický název DNS záznam (CNAME) na veřejné DNS přesměrovat rozlišení na navrhované názvy domén. Budete moct přepsat rozlišení s privátní IP adresu vašich soukromých koncových bodů. 
  

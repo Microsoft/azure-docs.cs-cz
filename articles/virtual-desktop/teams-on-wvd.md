@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea9bfd21e7f3b92c99600a2492a809a0fc051ed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b9b33076a2c2cea27fea181b760a721488682c9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159615"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657010"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuální ploše Windows
 
@@ -33,15 +33,25 @@ Než budete moci používat Microsoft Teams na Virtuální ploše Windows, budet
 
 Pomocí neoptimalizovaných microsoftových teams v prostředívirtuální chodnících Windows Virtual Desktop můžete využít funkce úplného chatu a spolupráce Microsoft Teams i zvukové hovory. Kvalita zvuku při hovorech se bude lišit v závislosti na konfiguraci hostitele, protože neoptimalizovaná volání využívají více hostitelského procesoru.
 
+### <a name="prepare-your-image-for-teams"></a>Příprava image pro týmy
+
+Chcete-li povolit teams per-machine instalace, nastavte následující klíč registru na hostiteli:
+
+```shell
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
+  Type: REG_DWORD
+  Value: 0x1
+```
+
 ### <a name="install-microsoft-teams"></a>Instalace Microsoft Teams
 
-Instalace Microsoft Teams do prostředí Windows Virtual Desktop:
+Desktopovou aplikaci Teams můžete nasadit pomocí instalace pro celé počítače. Instalace Microsoft Teams do prostředí Windows Virtual Desktop:
 
 1. Stáhněte si [balíček Teams MSI,](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) který odpovídá vašemu prostředí. Doporučujeme používat 64bitový instalační program v 64bitovém operačním systému.
 2. Spusťte tento příkaz a nainstalujte MSI do hostitelského virtuálního soudu.
 
       ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
+      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSERS=1
       ```
 
       Tím nainstalujete Teams do programových souborů nebo programových souborů (x86). Při příštím přihlášení a spuštění teams vás aplikace požádá o vaše přihlašovací údaje.
@@ -56,4 +66,4 @@ Instalace Microsoft Teams do prostředí Windows Virtual Desktop:
       ```
 
       > [!NOTE]
-      > Pokud nainstalujete Teams s nastavením MSI ALLUSER=1, automatické aktualizace budou zakázány. Doporučujeme, abyste týmy aktualizovali alespoň jednou měsíčně.
+      > Pokud nainstalujete Teams s nastavením MSI ALLUSERS=1, automatické aktualizace budou zakázány. Doporučujeme, abyste týmy aktualizovali alespoň jednou měsíčně.

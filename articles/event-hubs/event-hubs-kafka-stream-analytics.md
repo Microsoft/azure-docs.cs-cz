@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521761"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632806"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: Zpracování událostí Apache Kafka pro event huby pomocí analýzy Stream 
 Tento článek ukazuje, jak streamovat data do centra událostí a zpracovat je pomocí Azure Stream Analytics. Provede vás následujícími kroky: 
@@ -181,15 +181,4 @@ Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího dato
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se dozvěděli, jak streamovat do centra událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdete v následujícím tématu:  
-
-- [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Vytvoření centra událostí](event-hubs-create.md)
-- [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)
-- [Připojení Apache Flinku k centru událostí](event-hubs-kafka-flink-tutorial.md)
-- [Integrace aplikace Kafka Connect s centrem událostí](event-hubs-kafka-connect-tutorial.md)
-- [Připojení Streamů Akka k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
-- [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka) 
+V tomto článku jste se dozvěděli, jak streamovat do centra událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Další informace o službách Event Hubs pro Apache Kafka najdete v [tématu Průvodce vývojáři Apache Kafka pro Azure Event Hubs](apache-kafka-developer-guide.md). 

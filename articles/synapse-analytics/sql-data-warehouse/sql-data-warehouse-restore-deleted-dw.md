@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5f0432cafee07dbed071d24aa8c24ee9b2176967
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350175"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633046"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Obnovení odstraněného fondu SQL pomocí Azure Synapse Analytics
 
@@ -39,16 +39,16 @@ Chcete-li obnovit odstraněný fond SQL, použijte rutinu [Restore-AzSqlDatabase
 5. Získejte konkrétní odstraněný datový sklad.
 6. Obnovení odstraněného datového skladu
     1. Chcete-li obnovit odstraněný datový sklad SQL na jiný logický server, zadejte jiný název logického serveru.  Tento logický server může být také v jiné skupině prostředků a oblasti.
-    1. Chcete-li obnovit jiné předplatné, přesuňte logický server na jiné předplatné pomocí tlačítka [Přesunout.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal)
-1. Ověřte, zda je obnovený datový sklad online.
-1. Po dokončení obnovení můžete nakonfigurovat obnovený datový sklad tak, že [nakonfigurujete databázi po obnovení](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
+    1. Chcete-li obnovit jiné předplatné, přesuňte logický server na jiné předplatné pomocí tlačítka [Přesunout.](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal)
+7. Ověřte, zda je obnovený datový sklad online.
+8. Po dokončení obnovení můžete nakonfigurovat obnovený datový sklad tak, že [nakonfigurujete databázi po obnovení](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
 #$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
-#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>" 
+#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
@@ -86,5 +86,6 @@ $RestoredDatabase.status
     ![Zadat název databáze](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Další kroky
+
 - [Obnovení existujícího fondu SQL](sql-data-warehouse-restore-active-paused-dw.md)
 - [Obnovení z fondu SQL geografické zálohování](sql-data-warehouse-restore-from-geo-backup.md)

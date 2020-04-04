@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 2ee6b12923bfd0e06343e8f185226cb72280d806
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4dbaaad4b75e6d706d77522f45a2d596c49bea79
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383998"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658695"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady SDK pro zařízení pro rozpoznávání řeči pro Android vytvořit produkt s podporou řeči nebo jej použít jako zařízení [pro přepis konverzace.](../conversation-transcription-service.md)
 
@@ -96,7 +96,7 @@ Chcete-li ověřit nastavení vývojové sady, vytvořte a nainstalujte ukázkov
     Aktualizujte **build.gradle(Module:app)** přidáním tohoto řádku do oddílu závislostí. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.10.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
     ```
     
 1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete zkusit záměr uznání, přidejte také klíč předplatného [služby Language Understanding a](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) ID aplikace.

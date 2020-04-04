@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191412"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656236"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Zvýšení zabezpečení pro volání vlastních api z Azure Logic Apps
 
@@ -250,7 +250,7 @@ V části **Autorizace** uveďte tyto vlastnosti:
 
 | Vlastnost | Požaduje se | Popis |
 | -------- | -------- | ----------- |
-| `type` | Ano | Typ ověřování. U klientských certifikátů SSL `ClientCertificate`musí být hodnota . |
+| `type` | Ano | Typ ověřování. U klientských certifikátů TLS/SSL `ClientCertificate`musí být hodnota . |
 | `password` | Ne | Heslo pro přístup k klientském certifikátu (soubor PFX) |
 | `pfx` | Ano | Obsah klientského certifikátu kódovaný na základně64 (soubor PFX) |
 ||||

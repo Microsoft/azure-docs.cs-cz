@@ -11,23 +11,22 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 20afa3f37bb85fd268962aea03107f0eaeb9bea2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584200"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633597"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Průběžná integrace a zavádění datových skladů
 
-Tento jednoduchý kurz popisuje, jak integrovat databázový projekt databázových nástrojů SQL Server (SSDT) s Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při vytváření průběžné integrace a nasazení kanálu pro ukládání dat. 
+Tento jednoduchý kurz popisuje, jak integrovat databázový projekt databázových nástrojů SQL Server (SSDT) s Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při vytváření průběžné integrace a nasazení kanálu pro ukládání dat.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-- Procházení [kurzu integrace správy zdrojového kódu](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
+- Procházení [kurzu integrace správy zdrojového kódu](sql-data-warehouse-source-control-integration.md)
 
 - Nastavení a připojení k Azure DevOps
-
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Průběžná integrace s sestavením sady Visual Studio
 
@@ -37,7 +36,7 @@ Tento jednoduchý kurz popisuje, jak integrovat databázový projekt databázov�
 
 2. Vyberte úložiště zdrojového kódu (Azure Repos Git) a vyberte šablonu aplikace .NET Desktop.
 
-      ![Instalace kanálu](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Instalace kanálu") 
+      ![Instalace kanálu](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Instalace kanálu")
 
 3. Upravte soubor YAML tak, aby používal správný fond vašeho agenta. Soubor YAML by měl vypadat nějak takto:
 
@@ -45,10 +44,9 @@ Tento jednoduchý kurz popisuje, jak integrovat databázový projekt databázov�
 
 V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změnami do hlavní větve úložiště správy zdrojového kódu by mělo automaticky aktivovat úspěšné sestavení aplikace Visual Studio databázového projektu. Ověřte, že automatizace pracuje od konce do konce provedením změny v místním databázovém projektu a vrácením této změny se změnami do hlavní větve.
 
-
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Průběžné nasazení s úlohou nasazení Datového skladu Azure SQL (nebo databáze)
 
-1. Přidejte nový úkol pomocí [úlohy nasazení databáze Azure SQL](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) database a vyplňte požadovaná pole pro připojení k cílovému datovému skladu. Při spuštění této úlohy dacpac generované z předchozího procesu sestavení se nasadí do cílového datového skladu. Můžete také použít [úlohu nasazení Datového skladu Azure SQL](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment). 
+1. Přidejte nový úkol pomocí [úlohy nasazení databáze Azure SQL](/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) database a vyplňte požadovaná pole pro připojení k cílovému datovému skladu. Při spuštění této úlohy dacpac generované z předchozího procesu sestavení se nasadí do cílového datového skladu. Můžete také použít [úlohu nasazení Datového skladu Azure SQL](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment).
 
       ![Úloha nasazení](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Úloha nasazení")
 

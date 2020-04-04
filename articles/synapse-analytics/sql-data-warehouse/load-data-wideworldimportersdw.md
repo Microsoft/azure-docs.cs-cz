@@ -11,18 +11,19 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 5bc9490733f5e29b6668a9655ac5b8b5dbe9bda8
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: b6d2d5c9ac7eabf703887d559a2d2b86b89dd5c8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346687"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632021"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Kurz: Načítání dat do fondu SQL Azure Synapse Analytics
 
-Tento kurz používá PolyBase k načtení datového skladu WideWorldImportersDW z úložiště objektů blob Azure do datového skladu ve fondu SQL Azure Synapse Analytics. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k:
+Tento kurz používá PolyBase k načtení datového skladu WideWorldImportersDW z úložiště objektů blob Azure do datového skladu ve fondu SQL Azure Synapse Analytics. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) k:
 
 > [!div class="checklist"]
+>
 > * Vytvoření datového skladu pomocí fondu SQL na webu Azure Portal
 > * Vytvořit pravidlo brány firewall na úrovni serveru na webu Azure Portal
 > * Připojení k fondu SQL pomocí SSMS
@@ -37,7 +38,7 @@ Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azur
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
+Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -45,9 +46,9 @@ Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Vytvoření prázdného datového skladu ve fondu SQL
 
-Fond SQL se vytvoří s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Fond SQL se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md) a na [logickém serveru Azure SQL](../../sql-database/sql-database-features.md). 
+Fond SQL se vytvoří s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Fond SQL se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a na [logickém serveru Azure SQL](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-Podle těchto kroků vytvořte prázdný fond SQL. 
+Podle těchto kroků vytvořte prázdný fond SQL.
 
 1. Vyberte **Vytvořit prostředek** na webu Azure Portal.
 
@@ -55,58 +56,57 @@ Podle těchto kroků vytvořte prázdný fond SQL.
 
     ![vytvoření fondu SQL](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-1. Vyplňte část **Podrobnosti projektu** o následujících informacích:   
+1. Vyplňte část **Podrobnosti projektu** o následujících informacích:
 
-   | Nastavení | Příklad | Popis | 
+   | Nastavení | Příklad | Popis |
    | ------- | --------------- | ----------- |
    | **Předplatné** | Vaše předplatné  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-   | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
+   | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
-1. V části **Podrobnosti fondu SQL**zadejte název fondu SQL. Dále buď vyberte existující server z rozevíracího přehledu, nebo vyberte **vytvořit nový** v nastavení **serveru** a vytvořte nový server. Do formuláře zadejte následující informace: 
+1. V části **Podrobnosti fondu SQL**zadejte název fondu SQL. Dále buď vyberte existující server z rozevíracího přehledu, nebo vyberte **vytvořit nový** v nastavení **serveru** a vytvořte nový server. Do formuláře zadejte následující informace:
 
-    | Nastavení | Navrhovaná hodnota | Popis | 
+    | Nastavení | Navrhovaná hodnota | Popis |
     | ------- | --------------- | ----------- |
-    |**Název fondu SQL**|SampleDW| Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). | 
-    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). | 
+    |**Název fondu SQL**|SampleDW| Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
+    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
     | **Přihlášení správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
     | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
     | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
 
     ![vytvoření databázového serveru](./media/load-data-wideworldimportersdw/create-database-server.png)
 
-1. **Vyberte úroveň výkonu**. Posuvník je ve výchozím nastavení nastaven na **DW1000c**. Posunutím jezdce nahoru a dolů zvolte požadovanou výkonnostní stupnici. 
+1. **Vyberte úroveň výkonu**. Posuvník je ve výchozím nastavení nastaven na **DW1000c**. Posunutím jezdce nahoru a dolů zvolte požadovanou výkonnostní stupnici.
 
     ![vytvoření databázového serveru](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-1. Na stránce **Další nastavení** nastavte možnost Použít **existující data** na žádná a ponechte **řazení** na výchozí *hodnotu SQL_Latin1_General_CP1_CI_AS*. 
+1. Na stránce **Další nastavení** nastavte možnost Použít **existující data** na žádná a ponechte **řazení** na výchozí *hodnotu SQL_Latin1_General_CP1_CI_AS*.
 
-1. Vyberte **Zkontrolovat + vytvořit,** chcete-li zkontrolovat nastavení, a pak vyberte **Vytvořit** a vytvořte datový sklad. Průběh můžete sledovat otevřením stránky **probíhá nasazení** z nabídky **Oznámení.** 
+1. Vyberte **Zkontrolovat + vytvořit,** chcete-li zkontrolovat nastavení, a pak vyberte **Vytvořit** a vytvořte datový sklad. Průběh můžete sledovat otevřením stránky **probíhá nasazení** z nabídky **Oznámení.**
 
      ![oznámení](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
-Služba Azure Synapse Analytics vytvoří bránu firewall na úrovni serveru, která brání externím aplikacím a nástrojům v připojení k serveru nebo k databázím na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres.  Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../../sql-database/sql-database-firewall-configure.md) pro IP adresu vašeho klienta. 
+Služba Azure Synapse Analytics vytvoří bránu firewall na úrovni serveru, která brání externím aplikacím a nástrojům v připojení k serveru nebo k databázím na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres.  Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pro IP adresu vašeho klienta.
 
 > [!NOTE]
 > Fond SQL Azure Synapse Analytics komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
 >
 
+1. Po dokončení nasazení vyhledejte název fondu ve vyhledávacím poli v navigační nabídce a vyberte prostředek fondu SQL. Vyberte název serveru.
 
-1. Po dokončení nasazení vyhledejte název fondu ve vyhledávacím poli v navigační nabídce a vyberte prostředek fondu SQL. Vyberte název serveru. 
+    ![přejít na svůj zdroj](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
 
-    ![přejít na svůj zdroj](./media/load-data-wideworldimportersdw/search-for-sql-pool.png) 
+1. Vyberte název serveru.
+    ![název serveru](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. Vyberte název serveru. 
-    ![název serveru](././media/load-data-wideworldimportersdw/find-server-name.png) 
+1. Vyberte **možnost Zobrazit nastavení brány firewall**. Otevře se stránka **Nastavení brány firewall** pro server fondu SQL.
 
-1. Vyberte **možnost Zobrazit nastavení brány firewall**. Otevře se stránka **Nastavení brány firewall** pro server fondu SQL. 
-
-    ![nastavení serveru](./media/load-data-wideworldimportersdw/server-settings.png) 
+    ![nastavení serveru](./media/load-data-wideworldimportersdw/server-settings.png)
 
 1. Na stránce **Brány firewall a virtuální sítě** vyberte Přidat IP adresu **klienta** a přidejte aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-    ![pravidlo brány firewall serveru](./media/load-data-wideworldimportersdw/server-firewall-rule.png) 
+    ![pravidlo brány firewall serveru](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
 1. Vyberte **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
 
@@ -119,45 +119,45 @@ Nyní se můžete připojit k serveru SQL pomocí ip adresy klienta. Připojení
 
 Plně kvalifikovaný název serveru je to, co se používá pro připojení k serveru. Přejděte na prostředek fondu SQL na webu Azure portal a zobrazte plně kvalifikovaný název v části **Název serveru**.
 
-![název serveru](././media/load-data-wideworldimportersdw/find-server-name.png) 
+![název serveru](././media/load-data-wideworldimportersdw/find-server-name.png)
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
 
-V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
+V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) naváže připojení k serveru SQL Azure.
 
 1. Otevřete SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
-    | Nastavení      | Navrhovaná hodnota | Popis | 
-    | ------------ | --------------- | ----------- | 
+    | Nastavení      | Navrhovaná hodnota | Popis |
+    | ------------ | --------------- | ----------- |
     | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
     | Název serveru | Plně kvalifikovaný název serveru | **Například sqlpoolservername.database.windows.net** je plně kvalifikovaný název serveru. |
-    | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+    | Authentication | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
     | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 
     ![Připojení k serveru](./media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů. 
+3. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů.
 
-5. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **SampleDW** pro zobrazení objektů v nové databázi.
+4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **SampleDW** pro zobrazení objektů v nové databázi.
 
-    ![databázové objekty](./media/load-data-wideworldimportersdw/connected.png) 
+    ![databázové objekty](./media/load-data-wideworldimportersdw/connected.png)
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 
-Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální kapacita paměti je definována podle generování fondu SQL, který používáte, [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md)a [třídy prostředků](resource-classes-for-workload-management.md). 
+Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální kapacita paměti je definována podle generování fondu SQL, který používáte, [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md)a [třídy prostředků](resource-classes-for-workload-management.md).
 
 Doporučujeme vytvořit účet a uživatele vyhrazeného pro načítání dat. Pak přidejte uživatele načítání do [třídy prostředků](resource-classes-for-workload-management.md), která umožňuje odpovídající maximální přidělení paměti.
 
-Vzhledem k tomu, že jste aktuálně připojeni jako správce serveru, můžete vytvářet účty a uživatele. Pomocí následujících kroků vytvořte účet a uživatele **LoaderRC60**. Pak uživatele přiřaďte k třídě prostředků **staticrc60**. 
+Vzhledem k tomu, že jste aktuálně připojeni jako správce serveru, můžete vytvářet účty a uživatele. Pomocí následujících kroků vytvořte účet a uživatele **LoaderRC60**. Pak uživatele přiřaďte k třídě prostředků **staticrc60**.
 
-1.  V SSMS kliknutím pravým tlačítkem na uzel **master** zobrazte rozevírací nabídku a zvolte **Nový dotaz**. Otevře se nové okno dotazu.
+1. V SSMS kliknutím pravým tlačítkem na uzel **master** zobrazte rozevírací nabídku a zvolte **Nový dotaz**. Otevře se nové okno dotazu.
 
     ![Nový dotaz v uzlu master](./media/load-data-wideworldimportersdw/create-loader-login.png)
 
-2. V okně dotazu zadejte následující příkazy T-SQL, které vytvoří účet a uživatele LoaderRC60, a heslo a123STRONGpassword! nahraďte vlastním heslem. 
+2. V okně dotazu zadejte následující příkazy T-SQL, které vytvoří účet a uživatele LoaderRC60, a heslo a123STRONGpassword! nahraďte vlastním heslem.
 
     ```sql
     CREATE LOGIN LoaderRC60 WITH PASSWORD = 'a123STRONGpassword!';
@@ -169,8 +169,8 @@ Vzhledem k tomu, že jste aktuálně připojeni jako správce serveru, můžete 
 4. Klikněte pravým tlačítkem na **SampleDW** a zvolte **Nový dotaz**. Otevře se nové okno dotazu.  
 
     ![Nový dotaz na ukázkový datový sklad](./media/load-data-wideworldimportersdw/create-loading-user.png)
- 
-5. Zadejte následující příkazy T-SQL, které pro účet LoaderRC60 vytvoří uživatele databáze LoaderRC60. Na druhém řádku se novému uživateli přidělí oprávnění CONTROL k novému datovému skladu.  Tato oprávnění jsou podobná, jako kdybyste z uživatele udělali vlastníka databáze. Na třetím řádku se nový uživatel přidá jako člen [třídy prostředků](resource-classes-for-workload-management.md) staticrc60.
+
+5. Zadejte následující příkazy T-SQL, které pro účet LoaderRC60 vytvoří uživatele databáze LoaderRC60. Na druhém řádku se novému uživateli přidělí oprávnění CONTROL k novému datovému skladu.  Tato oprávnění jsou podobná, jako kdybyste z uživatele udělali vlastníka databáze. Třetí řádek přidá nového uživatele jako `staticrc60` člena [třídy prostředků](resource-classes-for-workload-management.md).
 
     ```sql
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
@@ -202,19 +202,19 @@ Teď jste připraveni zahájit proces načítání dat do svého nového datové
 
 Spuštěním následujících skriptů SQL zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data. Data se nacházejí v globálním objektu blob Azure.
 
-1. V předchozí části jste se do svého datového skladu přihlásili jako LoaderRC60. V aplikaci SSMS klikněte pravým tlačítkem na **SampleDW** v rámci připojení LoaderRC60 a vyberte **Nový dotaz**.  Zobrazí se nové okno dotazu. 
+1. V předchozí části jste se do svého datového skladu přihlásili jako LoaderRC60. V aplikaci SSMS klikněte pravým tlačítkem na **SampleDW** v rámci připojení LoaderRC60 a vyberte **Nový dotaz**.  Zobrazí se nové okno dotazu.
 
     ![Nové okno dotazu načítání](./media/load-data-wideworldimportersdw/new-loading-query.png)
 
 2. Porovnejte své okno dotazu s předchozím obrázkem.  Ověřte, že je vaše okno dotazu spuštěné pod účtem LoaderRC60 a provádí dotazy na vaši databázi SampleDW. Toto okno dotazu použijte k provedení všech kroků načítání.
 
-3. Vytvořte hlavní klíč pro databázi SampleDW. Pro každou databázi je nutné vytvořit hlavní klíč pouze jednou. 
+3. Vytvořte hlavní klíč pro databázi SampleDW. Pro každou databázi je nutné vytvořit hlavní klíč pouze jednou.
 
     ```sql
     CREATE MASTER KEY;
     ```
 
-4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) definujte umístění objektu blob v Azure. Toto je umístění externích údajů dovozců z celého světa.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
+4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) definujte umístění objektu blob v Azure. Toto je umístění externích údajů dovozců z celého světa.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -225,22 +225,22 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     );
     ```
 
-5. Spuštěním následujícího příkazu T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) určete charakteristiky a možnosti formátování pro externí datový soubor. Tento příkaz určuje, že jsou externí data uložená jako text a hodnoty jsou oddělené znakem roury („|“).  
+5. Spuštěním následujícího příkazu T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) určete charakteristiky a možnosti formátování pro externí datový soubor. Tento příkaz určuje, že jsou externí data uložená jako text a hodnoty jsou oddělené znakem roury („|“).  
 
     ```sql
-    CREATE EXTERNAL FILE FORMAT TextFileFormat 
-    WITH 
-    (   
+    CREATE EXTERNAL FILE FORMAT TextFileFormat
+    WITH
+    (
         FORMAT_TYPE = DELIMITEDTEXT,
         FORMAT_OPTIONS
-        (   
+        (
             FIELD_TERMINATOR = '|',
-            USE_TYPE_DEFAULT = FALSE 
+            USE_TYPE_DEFAULT = FALSE
         )
     );
     ```
 
-6.  Spuštěním následujících příkazů [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql) vytvořte schéma pro formát vašeho externího souboru. Schéma ext představuje způsob uspořádání externích tabulek, které se chystáte vytvořit. Schéma wwi uspořádá standardní tabulky, které budou obsahovat data. 
+6. Spuštěním následujících příkazů [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vytvořte schéma pro formát vašeho externího souboru. Schéma ext představuje způsob uspořádání externích tabulek, které se chystáte vytvořit. Schéma wwi uspořádá standardní tabulky, které budou obsahovat data.
 
     ```sql
     CREATE SCHEMA ext;
@@ -267,7 +267,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH (LOCATION='/v1/dimension_City/',   
+    WITH (LOCATION='/v1/dimension_City/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -286,7 +286,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH (LOCATION='/v1/dimension_Customer/',   
+    WITH (LOCATION='/v1/dimension_Customer/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -303,7 +303,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION='/v1/dimension_Employee/',   
+    WITH ( LOCATION='/v1/dimension_Employee/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -317,7 +317,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/dimension_PaymentMethod/',   
+    WITH ( LOCATION ='/v1/dimension_PaymentMethod/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -345,7 +345,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/dimension_StockItem/',   
+    WITH ( LOCATION ='/v1/dimension_StockItem/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -364,7 +364,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/dimension_Supplier/',   
+    WITH ( LOCATION ='/v1/dimension_Supplier/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -377,8 +377,8 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Valid From] [datetime2](7) NOT NULL,
         [Valid To] [datetime2](7) NOT NULL,
         [Lineage Key] [int] NOT NULL
-    )    
-    WITH ( LOCATION ='/v1/dimension_TransactionType/',   
+    )
+    WITH ( LOCATION ='/v1/dimension_TransactionType/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -397,7 +397,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Quantity] [int] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Movement/',   
+    WITH ( LOCATION ='/v1/fact_Movement/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -424,8 +424,8 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Total Including Tax] [decimal](18, 2) NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Order/',   
-        DATA_SOURCE = WWIStorage,  
+    WITH ( LOCATION ='/v1/fact_Order/',
+        DATA_SOURCE = WWIStorage,
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
         REJECT_VALUE = 0
@@ -443,7 +443,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Is Order Finalized] [bit] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Purchase/',   
+    WITH ( LOCATION ='/v1/fact_Purchase/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -472,7 +472,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Total Chiller Items] [int] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Sale/',   
+    WITH ( LOCATION ='/v1/fact_Sale/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -489,7 +489,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Target Stock Level] [int] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_StockHolding/',   
+    WITH ( LOCATION ='/v1/fact_StockHolding/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -515,7 +515,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
         [Is Finalized] [bit] NOT NULL,
         [Lineage Key] [int] NOT NULL
     )
-    WITH ( LOCATION ='/v1/fact_Transaction/',   
+    WITH ( LOCATION ='/v1/fact_Transaction/',
         DATA_SOURCE = WWIStorage,  
         FILE_FORMAT = TextFileFormat,
         REJECT_TYPE = VALUE,
@@ -533,9 +533,8 @@ Tato část používá externí tabulky, které jste definovali k načtení uká
 
 > [!NOTE]
 > V tomto kurzu se data načítají přímo do konečné tabulky. V produkčním prostředí budete obvykle používat příkaz CREATE TABLE AS SELECT k načtení dat do pracovní tabulky. Zatímco jsou data v pracovní tabulce, můžete provést všechny potřebné transformace. K připojení dat v pracovní tabulce do provozní tabulky můžete použít příkaz INSERT...SELECT. Další informace najdete v tématu popisujícím [vkládání dat do provozní tabulky](guidance-for-loading-data.md#inserting-data-into-a-production-table).
-> 
 
-Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz select vybere z externí tabulky, data se importují do relační tabulky v datovém skladu. 
+Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz select vybere z externí tabulky, data se importují do relační tabulky v datovém skladu.
 
 Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
 
@@ -544,7 +543,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
     ```sql
     CREATE TABLE [wwi].[dimension_City]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -555,7 +554,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[dimension_Customer]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -566,7 +565,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[dimension_Employee]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -577,7 +576,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[dimension_PaymentMethod]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -588,7 +587,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[dimension_StockItem]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -599,7 +598,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[dimension_Supplier]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -610,7 +609,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[dimension_TransactionType]
     WITH
-    ( 
+    (
         DISTRIBUTION = REPLICATE,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -621,7 +620,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[fact_Movement]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Movement Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -632,7 +631,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[fact_Order]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Order Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -643,7 +642,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[fact_Purchase]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Purchase Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -654,7 +653,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[seed_Sale]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([WWI Invoice ID]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -665,7 +664,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[fact_StockHolding]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Stock Holding Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -676,7 +675,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
 
     CREATE TABLE [wwi].[fact_Transaction]
     WITH
-    ( 
+    (
         DISTRIBUTION = HASH([Transaction Key]),
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -695,7 +694,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
         r.status,
         count(distinct input_name) as nbr_files,
         sum(s.bytes_processed)/1024/1024/1024 as gb_processed
-    FROM 
+    FROM
         sys.dm_pdw_exec_requests r
         INNER JOIN sys.dm_pdw_dms_external_work s
         ON r.request_id = s.request_id
@@ -717,7 +716,7 @@ Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyt
         s.request_id,
         r.status
     ORDER BY
-        nbr_files desc, 
+        nbr_files desc,
         gb_processed desc;
     ```
 
@@ -755,7 +754,7 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
         [Fiscal Year Label] [nvarchar](10) NOT NULL,
         [ISO Week Number] [int] NOT NULL
     )
-    WITH 
+    WITH
     (
         DISTRIBUTION = REPLICATE,
         CLUSTERED INDEX ([Date])
@@ -791,7 +790,7 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
     )
     ```
 
-2. Vytvořte proceduru [wwi].[InitialSalesDataPopulation], která osminásobně navýší počet řádků v tabulce [wwi].[seed_Sale]. 
+2. Vytvořte proceduru [wwi].[InitialSalesDataPopulation], která osminásobně navýší počet řádků v tabulce [wwi].[seed_Sale].
 
     ```sql
     CREATE PROCEDURE [wwi].[InitialSalesDataPopulation] AS
@@ -824,7 +823,7 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
     ```sql
     CREATE PROCEDURE [wwi].[PopulateDateDimensionForYear] @Year [int] AS
     BEGIN
-        IF OBJECT_ID('tempdb..#month', 'U') IS NOT NULL 
+        IF OBJECT_ID('tempdb..#month', 'U') IS NOT NULL
             DROP TABLE #month
         CREATE TABLE #month (
             monthnum int,
@@ -834,7 +833,7 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
         INSERT INTO #month
             SELECT 1, 31 UNION SELECT 2, CASE WHEN (@YEAR % 4 = 0 AND @YEAR % 100 <> 0) OR @YEAR % 400 = 0 THEN 29 ELSE 28 END UNION SELECT 3,31 UNION SELECT 4,30 UNION SELECT 5,31 UNION SELECT 6,30 UNION SELECT 7,31 UNION SELECT 8,31 UNION SELECT 9,30 UNION SELECT 10,31 UNION SELECT 11,30 UNION SELECT 12,31
 
-        IF OBJECT_ID('tempdb..#days', 'U') IS NOT NULL 
+        IF OBJECT_ID('tempdb..#days', 'U') IS NOT NULL
             DROP TABLE #days
         CREATE TABLE #days (days int)
         WITH (DISTRIBUTION = ROUND_ROBIN, HEAP)
@@ -843,7 +842,7 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
             SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 UNION SELECT 20    UNION SELECT 21 UNION SELECT 22 UNION SELECT 23 UNION SELECT 24 UNION SELECT 25 UNION SELECT 26 UNION SELECT 27 UNION SELECT 28 UNION SELECT 29 UNION SELECT 30 UNION SELECT 31
 
         INSERT [wwi].[dimension_Date] (
-            [Date], [Day Number], [Day], [Month], [Short Month], [Calendar Month Number], [Calendar Month Label], [Calendar Year], [Calendar Year Label], [Fiscal Month Number], [Fiscal Month Label], [Fiscal Year], [Fiscal Year Label], [ISO Week Number] 
+            [Date], [Day Number], [Day], [Month], [Short Month], [Calendar Month Number], [Calendar Month Label], [Calendar Year], [Calendar Year Label], [Fiscal Month Number], [Fiscal Month Label], [Fiscal Year], [Fiscal Year Label], [ISO Week Number]
         )
         SELECT
             CAST(CAST(monthnum AS VARCHAR(2)) + '/' + CAST([days] AS VARCHAR(3)) + '/' + CAST(@year AS CHAR(4)) AS DATE) AS [Date]
@@ -876,6 +875,7 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
     DROP table #days;
     END;
     ```
+
 4. Vytvořte tento postup, který naplní tabulky wwi.dimension_Date a wwi.fact_Sale. Tato procedura volá uloženou proceduru [wwi].[PopulateDateDimensionForYear], která naplní tabulku wwi.dimension_Date.
 
     ```sql
@@ -888,7 +888,7 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
 
         DECLARE @OrderCounter bigint = 0;
         DECLARE @NumberOfSalesPerDay bigint = @EstimatedRowsPerDay;
-        DECLARE @DateCounter date; 
+        DECLARE @DateCounter date;
         DECLARE @StartingSaleKey bigint;
         DECLARE @MaximumSaleKey bigint = (SELECT MAX([Sale Key]) FROM wwi.seed_Sale);
         DECLARE @MaxDate date;
@@ -920,7 +920,7 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
             SELECT TOP(@VariantNumberOfSalesPerDay)
                 [City Key], [Customer Key], [Bill To Customer Key], [Stock Item Key], @DateCounter, DATEADD(day, 1, @DateCounter), [Salesperson Key], [WWI Invoice ID], [Description], Package, Quantity, [Unit Price], [Tax Rate], [Total Excluding Tax], [Tax Amount], Profit, [Total Including Tax], [Total Dry Items], [Total Chiller Items], [Lineage Key]
             FROM [wwi].[seed_Sale]
-            WHERE 
+            WHERE
                  --[Sale Key] > @StartingSaleKey and /* IDENTITY DOES NOT WORK THE SAME IN SQLDW AND CAN'T USE THIS METHOD FOR VARIANT */
                 [Invoice Date Key] >=cast(@YEAR AS CHAR(4)) + '-01-01'
             ORDER BY [Sale Key];
@@ -932,12 +932,12 @@ Tato část vytváří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří tak
     ```
 
 ## <a name="generate-millions-of-rows"></a>Generování milionů řádků
-Uložené procedury, které jste vytvořili, použijte ke generování milionů řádků v tabulce wwi.fact_Sale a odpovídajících dat v tabulce wwi.dimension_Date. 
 
+Uložené procedury, které jste vytvořili, použijte ke generování milionů řádků v tabulce wwi.fact_Sale a odpovídajících dat v tabulce wwi.dimension_Date.
 
 1. Spuštěním této procedury přidejte do [wwi].[seed_Sale] další řádky.
 
-    ```sql    
+    ```sql
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
@@ -946,6 +946,7 @@ Uložené procedury, které jste vytvořili, použijte ke generování milionů 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
     ```
+
 3. Vygenerování dat za celý rok v předchozím kroku může nějakou dobu trvat.  Pokud chcete zjistit, jaký den se aktuálně zpracovává, otevřete nové okno dotazu a spusťte tento příkaz SQL:
 
     ```sql
@@ -962,22 +963,22 @@ Uložené procedury, které jste vytvořili, použijte ke generování milionů 
 
 Fond SQL replikuje tabulku ukládáním dat do mezipaměti do každého výpočetního uzlu. Mezipaměť se naplní při spuštění dotazu na tabulku. Proto může první dotaz na replikovanou tabulku vyžadovat čas navíc k naplnění mezipaměti. Po naplnění mezipaměti budou dotazy na replikované tabulky rychlejší.
 
-Spuštěním těchto dotazů SQL naplňte mezipaměť replikované tabulky na výpočetních uzlech. 
+Spuštěním těchto dotazů SQL naplňte mezipaměť replikované tabulky na výpočetních uzlech.
 
-    ```sql
-    SELECT TOP 1 * FROM [wwi].[dimension_City];
-    SELECT TOP 1 * FROM [wwi].[dimension_Customer];
-    SELECT TOP 1 * FROM [wwi].[dimension_Date];
-    SELECT TOP 1 * FROM [wwi].[dimension_Employee];
-    SELECT TOP 1 * FROM [wwi].[dimension_PaymentMethod];
-    SELECT TOP 1 * FROM [wwi].[dimension_StockItem];
-    SELECT TOP 1 * FROM [wwi].[dimension_Supplier];
-    SELECT TOP 1 * FROM [wwi].[dimension_TransactionType];
-    ```
+```sql
+SELECT TOP 1 * FROM [wwi].[dimension_City];
+SELECT TOP 1 * FROM [wwi].[dimension_Customer];
+SELECT TOP 1 * FROM [wwi].[dimension_Date];
+SELECT TOP 1 * FROM [wwi].[dimension_Employee];
+SELECT TOP 1 * FROM [wwi].[dimension_PaymentMethod];
+SELECT TOP 1 * FROM [wwi].[dimension_StockItem];
+SELECT TOP 1 * FROM [wwi].[dimension_Supplier];
+SELECT TOP 1 * FROM [wwi].[dimension_TransactionType];
+```
 
 ## <a name="create-statistics-on-newly-loaded-data"></a>Vytvoření statistik pro nově načtená data
 
-Pro dosažení vysokého výkonu dotazů je důležité po prvním načtení vytvořit statistiku pro každý sloupec každé tabulky. Důležité je také aktualizovat statistiku po důležitých změnách v datech. 
+Pro dosažení vysokého výkonu dotazů je důležité po prvním načtení vytvořit statistiku pro každý sloupec každé tabulky. Důležité je také aktualizovat statistiku po důležitých změnách v datech.
 
 1. Vytvořte tuto uloženou proceduru, která aktualizuje statistiku pro všechny sloupce všech tabulek.
 
@@ -1007,7 +1008,7 @@ Pro dosažení vysokého výkonu dotazů je důležité po prvním načtení vyt
     BEGIN;
         DROP TABLE #stats_ddl;
     END;
-    
+
     CREATE TABLE #stats_ddl
     WITH    (   DISTRIBUTION    = HASH([seq_nmbr])
             ,   LOCATION        = USER_DB
@@ -1090,11 +1091,13 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **SampleRG** a pak klikněte na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky 
-V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Vytvořili jste externí tabulky pro definici struktury dat uložených v Azure Storage Blob a pak jste pomocí příkazu PolyBase CREATE TABLE AS SELECT načetli data do svého datového skladu. 
+## <a name="next-steps"></a>Další kroky
+
+V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Vytvořili jste externí tabulky pro definici struktury dat uložených v Azure Storage Blob a pak jste pomocí příkazu PolyBase CREATE TABLE AS SELECT načetli data do svého datového skladu.
 
 Provedli jste tyto akce:
 > [!div class="checklist"]
+>
 > * Vytvoření datového skladu pomocí fondu SQL na webu Azure Portal
 > * Vytvořit pravidlo brány firewall na úrovni serveru na webu Azure Portal
 > * Připojeno k fondu SQL pomocí SSMS

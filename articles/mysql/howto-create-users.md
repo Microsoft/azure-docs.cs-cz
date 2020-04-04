@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c4e95164badaf0b255f5ee76d0fec7686c2abf8b
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 4/2/2020
+ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382864"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632553"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Vytvoření uživatelů v Azure Database pro mySQL server
 
@@ -19,9 +19,12 @@ Tento článek popisuje, jak můžete vytvořit uživatele v azure databázi pro
 
 Při prvním vytvoření databáze Azure pro MySQL jste zadali přihlašovací jméno a heslo správce serveru. Další informace získáte v programu [Rychlý start](quickstart-create-mysql-server-database-using-azure-portal.md). Přihlašovací uživatelské jméno správce serveru můžete najít na webu Azure Portal.
 
-Uživatel správce serveru získá určitá oprávnění pro váš server, jak je uvedeno: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION KLIENT, VYTVOŘIT ZOBRAZENÍ, ZOBRAZIT ZOBRAZENÍ, VYTVOŘIT RUTINU, ZMĚNIT RUTINU, VYTVOŘIT UŽIVATELE, UDÁLOST, AKTIVAČNÍ UDÁLOST
+Uživatel správce serveru získá určitá oprávnění pro váš server, jak je uvedeno: Select, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
 
 Po vytvoření azure databáze pro mysql server, můžete použít první účet správce serveru k vytvoření dalších uživatelů a udělit přístup správce k nim. Účet správce serveru lze také použít k vytvoření méně privilegovaných uživatelů, kteří mají přístup k jednotlivým databázovým schématům.
+
+> [!NOTE]
+> Super oprávnění a dba role nejsou podporovány. Zkontrolujte [oprávnění](concepts-limits.md#privilege-support) v článku omezení pochopit, co není podporováno ve službě.
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Jak vytvořit další uživatele správce v Azure Database for MySQL
 

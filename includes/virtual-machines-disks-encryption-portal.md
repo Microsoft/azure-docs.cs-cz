@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520770"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632056"
 ---
 ### <a name="portal"></a>Portál
 
@@ -21,7 +21,7 @@ Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat v
 
 #### <a name="setting-up-your-azure-key-vault"></a>Nastavení trezoru klíčů Azure
 
-1. Přihlášení k [portálu Azure](https://portal.azure.com/) a hledání trezoru klíčů
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 1. Vyhledejte a vyberte **trezory klíčů**.
 
     [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
@@ -30,7 +30,7 @@ Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat v
     > Trezor klíčů Azure, sada šifrování disku, virtuální počítač, disky a snímky musí být ve stejné oblasti a předplatné, aby nasazení bylo úspěšné.
 
 1. Výběrem **možnosti +Přidat** vytvoříte nový trezor klíčů.
-1. Vytvořte novou skupinu prostředků
+1. Vytvořte novou skupinu prostředků.
 1. Zadejte název trezoru klíčů, vyberte oblast a vyberte cenovou úroveň.
 1. Vyberte **Zkontrolovat + Vytvořit**, ověřte své volby a pak vyberte **Vytvořit**.
 
@@ -38,7 +38,7 @@ Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat v
 
 1. Jakmile trezor klíčů dokončí nasazení, vyberte ho.
 1. V části **Nastavení** vyberte **Klávesy**.
-1. Vybrat **Generovat/importovat**
+1. Vyberte **Generovat/importovat**.
 
     ![Snímek obrazovky podokna Nastavení prostředků trezoru klíčů Zobrazí nastavení generovat/importovat.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
@@ -49,15 +49,8 @@ Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat v
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Nastavení sady šifrování disku
 
-Chcete-li vytvořit a konfigurovat sady šifrování disku, je nutné použít následující odkaz: https://aka.ms/diskencryptionsets. Pokud se nacházejí v oblastech Microsoft Azure Government, [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)musíte místo toho použít tento odkaz: . Vytvoření sady šifrování disku ještě není na globálním portálu Azure k dispozici.
-
-1. Otevřete propojení sady šifrování disku vhodné pro vaši oblast:
-
-    Veřejné regiony:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Oblasti Azure Government:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-    
-1. Vyberte **možnost +Přidat**.
+1. Vyhledejte **sady šifrování disku** a vyberte je.
+1. V okně **Sady šifrování disku** vyberte možnost **+Přidat**.
 
     ![Snímek obrazovky hlavní obrazovky portálu pro šifrování disku Zvýraznění tlačítka Přidat](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
@@ -82,12 +75,6 @@ Dvě oznámení by se měla objevit a uspět. To vám umožní použít sadu ši
 Teď, když jste vytvořili a nastavili trezor klíčů a sadu šifrování disku, můžete nasadit virtuální počítač pomocí šifrování.
 Proces nasazení virtuálního počítače je podobný standardnímu procesu nasazení, jedinými rozdíly je, že potřebujete nasadit virtuální počítač ve stejné oblasti jako ostatní prostředky a rozhodnete se použít klíč spravovaný zákazníkem.
 
-1. Otevřete propojení sady šifrování disku vhodné pro vaši oblast:
-
-    Veřejné regiony:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Oblasti Azure Government:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-
 1. Vyhledejte **virtuální počítače** a vyberte + **Přidat** k vytvoření virtuálního počítače.
 1. Na kartě **Basic** vyberte stejnou oblast jako sada šifrování disku a Azure Key Vault.
 1. Vyplňte ostatní hodnoty na kartě **Základní,** jak chcete.
@@ -102,16 +89,8 @@ Proces nasazení virtuálního počítače je podobný standardnímu procesu nas
 
 #### <a name="enable-on-an-existing-disk"></a>Povolení na existujícím disku
 
-Chcete-li spravovat a konfigurovat šifrování disku na existujících https://aka.ms/diskencryptionsetsdiscích, je nutné použít následující odkaz: . Povolení klíčů spravovaných zákazníky na existujících discích ještě není dostupné na globálním portálu Azure.
-
 > [!CAUTION]
 > Povolení šifrování disku na všech discích připojených k virtuálnímu počítači bude vyžadovat zastavení virtuálního počítače.
-
-1. Otevřete propojení sady šifrování disku vhodné pro vaši oblast:
-
-    Veřejné regiony:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Oblasti Azure Government:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
     
 1. Přejděte na virtuální počítač, který je ve stejné oblasti jako jedna ze sad šifrování disku.
 1. Otevřete virtuální hod a vyberte **Zastavit**.

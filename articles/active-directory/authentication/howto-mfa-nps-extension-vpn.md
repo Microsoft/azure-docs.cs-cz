@@ -4,19 +4,19 @@ description: Integrujte infrastrukturu VPN s Azure MFA pomocí rozšíření Net
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec8d5b66c71c558e56f3d1f48cec96d7cc487552
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425411"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654131"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrace infrastruktury VPN s Azure MFA pomocí rozšíření Network Policy Server pro Azure
 
@@ -108,8 +108,8 @@ Rozšíření NPS vyžaduje aktualizaci Windows Server 2008 R2 SP1 nebo novějš
 
 S rozšířením NPS se automaticky instalují následující knihovny:
 
--   [Redistribuovatelné balíčky Visual C++ pro Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
--   [Modul Microsoft Azure Active Directory pro Prostředí Windows PowerShell verze 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
+-    [Redistribuovatelné balíčky Visual C++ pro Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+-    [Modul Microsoft Azure Active Directory pro Prostředí Windows PowerShell verze 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
 Pokud modul Prostředí Microsoft Azure Active Directory PowerShell ještě není k dispozici, nainstaluje se pomocí konfiguračního skriptu, který spustíte v rámci procesu instalace. Není třeba modul instalovat předem, pokud již není nainstalován.
 

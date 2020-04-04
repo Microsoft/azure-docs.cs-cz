@@ -780,6 +780,8 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Připojení aplikací
           href: sql-database-managed-instance-connect-app.md
+        - name: Vytváření upozornění
+          href: sql-database-managed-instance-alerts.md
     - name: ukázky
       items:
         - name: Azure CLI

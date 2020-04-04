@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 86cc081ef47eb2ac2e8e0a49bc79e8973f34baf1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584251"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633696"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Správa úloh s třídami prostředků v Azure Synapse Analytics
 
@@ -65,7 +65,7 @@ Třídy dynamických prostředků jsou implementovány s těmito předdefinovan�
 - largerc
 - xlargerc
 
-Přidělení paměti pro každou třídu prostředků je následující. 
+Přidělení paměti pro každou třídu prostředků je následující.
 
 | Úroveň služeb  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
@@ -75,8 +75,6 @@ Přidělení paměti pro každou třídu prostředků je následující.
 | DW400c         | 6.25%             | 10 %                    | 22%                    | 70 %                    |
 | DW500c.         | 5 %                | 10 %                    | 22%                    | 70 %                    |
 | DW1000c až<br> DW30000c | 3 %       | 10 %                    | 22%                    | 70 %                    |
-
-
 
 ### <a name="default-resource-class"></a>Výchozí třída prostředků
 
@@ -285,8 +283,8 @@ IF @DWU IS NULL
 BEGIN
 -- Selecting proper DWU for the current DB if not specified.
 
-SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500 
-  ELSE Mem*100 
+SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500
+  ELSE Mem*100
   END AS VARCHAR(10)) +'c'
     FROM (
       SELECT Nodes=count(distinct n.pdw_node_id), Mem=max(i.committed_target_kb/1000/1000/60)
@@ -594,5 +592,4 @@ GO
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů databáze a zabezpečení naleznete [v tématu Zabezpečení databáze v synapse SQL](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu clusterované columnstore, naleznete v [tématu Optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
-
+Další informace o správě uživatelů databáze a zabezpečení naleznete [v tématu Zabezpečení databáze v nástroji SQL Analytics](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu clusterované columnstore, naleznete v [tématu Optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).

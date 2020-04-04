@@ -1,17 +1,17 @@
 ---
 title: Akce GitHubu & službu Azure Kubernetes (preview)
 services: azure-dev-spaces
-ms.date: 02/04/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 description: Kontrola a testování změn z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHub a Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery, Akce GitHub, Helm, síť služeb, směrování sítě služeb, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252383"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637949"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službu Azure Kubernetes (preview)
 
@@ -101,6 +101,11 @@ Přejděte do rozteč úložiště a klepněte na *nastavení*. Klikněte na *Ta
 > Všechny tyto tajné klíče jsou používány akcí GitHub a jsou konfigurovány v [.github/workflows/bikes.yml][github-action-yaml].
 
 Volitelně pokud chcete aktualizovat hlavní prostor po sloučení pr, přidejte *tajný* GATEWAY_HOST, který má formulář *<MASTER_SPACE>.gateway.<HOST_SUFFIX>*, který je v tomto příkladu *dev.gateway.fedcab0987.eus.azds.io*. Po sloučení změn do hlavní větve v rozvětvení se spustí další akce, která obnoví a spustí celou aplikaci v hlavním prostoru pro vývoj. V tomto příkladu je hlavní prostor *dev*. Tato akce je konfigurována v [souboru .github/workflows/bikesharing.yml][github-action-bikesharing-yaml].
+
+Navíc pokud chcete, aby změny v PR spustit v nouzi prostoru, aktualizujte *MASTER_SPACE* a *HOST* tajných kódů. Například pokud vaše aplikace běží ve *vývoji* s podřízeným prostoru *dev/azureuser1*, aby pr spustit v podřízeném prostoru *dev/azureuser1*:
+
+* Aktualizace *MASTER_SPACE* podřízeného prostoru, který chcete jako nadřazený prostor, v tomto *příkladu azureuser1*.
+* V tomto příklad <> <> GRANDPARENT_SPACE *<u* *dev.bikesharingweb.fedcab0987.eus.azds.io dev.bikesharingweb.fedcab0987.eus.azds.io*APP_NAME *APP_NAME APP_NAME APP_NAME HOST_SUFFIX APP_NAME>*.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Vytvoření nové větve pro změny kódu
 

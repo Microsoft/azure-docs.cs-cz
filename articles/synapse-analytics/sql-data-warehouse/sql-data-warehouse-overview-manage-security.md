@@ -11,22 +11,21 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 46d32fdca615833bd602480ac182585da898ab98
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 44d7b4196e53bfcc89105236e446c74d50e7812a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586428"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633118"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Zabezpečení databáze v Azure Synapse
 
 > [!div class="op_single_selector"]
+>
 > * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
 > * [Authentication](sql-data-warehouse-authentication.md)
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-> 
-> 
 
 Tento článek vás provede základy zabezpečení vašeho fondu SYNApse SQL. Zejména tento článek vás nastartuje s prostředky pro omezení přístupu, ochranu dat a monitorování aktivit v databázi zřízené pomocí fondu SQL.
 
@@ -34,21 +33,21 @@ Tento článek vás provede základy zabezpečení vašeho fondu SYNApse SQL. Ze
 
 Zabezpečení připojení spočívá v použití pravidel brány firewall a šifrovaného připojení k omezení a zabezpečení připojení k databázi.
 
-Pravidla brány firewall používají server i databáze k odmítnutí pokusů o připojení z adres IP, které nebyly explicitně uvedeny na seznamu povolených adres. Chcete-li povolit připojení z veřejné IP adresy vaší aplikace nebo klientského počítače, musíte nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí portálu Azure, rozhraní REST API nebo prostředí PowerShell. 
+Pravidla brány firewall používají server i databáze k odmítnutí pokusů o připojení z adres IP, které nebyly explicitně uvedeny na seznamu povolených adres. Chcete-li povolit připojení z veřejné IP adresy vaší aplikace nebo klientského počítače, musíte nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí portálu Azure, rozhraní REST API nebo prostředí PowerShell.
 
 Doporučujeme co nejvíce omezit rozsah IP adres povolených v serverové bráně firewall.  Chcete-li získat přístup k fondu SQL z místního počítače, zajistěte, aby brána firewall v síti a místní počítač umožňoval odchozí komunikaci na portu TCP 1433.  
 
-Azure Synapse Analytics používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall IP na úrovni databáze. Další informace najdete v tématu [Pravidla brány firewall Azure SQL Database](../../sql-database/sql-database-firewall-configure.md)
+Azure Synapse Analytics používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall IP na úrovni databáze. Další informace najdete v tématu [Pravidla brány firewall Azure SQL Database](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 Připojení k fondu SQL jsou ve výchozím nastavení šifrována.  Změna nastavení připojení za účelem zakázání šifrování je ignorována.
 
 ## <a name="authentication"></a>Authentication
 
-Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. Fond SQL aktuálně podporuje ověřování serveru SQL Server s uživatelským jménem a heslem a pomocí služby Azure Active Directory. 
+Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. Fond SQL aktuálně podporuje ověřování serveru SQL Server s uživatelským jménem a heslem a pomocí služby Azure Active Directory.
 
 Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Pomocí těchto pověření můžete ověřit do libovolné databáze na tomto serveru jako vlastník databáze nebo "dbo" prostřednictvím ověřování serveru SQL Server.
 
-Jako osvědčený postup by však uživatelé vaší organizace měli k ověření použít jiný účet. Tímto způsobem můžete omezit oprávnění udělená aplikaci a snížit riziko škodlivé aktivity v případě, že kód aplikace je zranitelný vůči útoku injektáží SQL. 
+Jako osvědčený postup by však uživatelé vaší organizace měli k ověření použít jiný účet. Tímto způsobem můžete omezit oprávnění udělená aplikaci a snížit riziko škodlivé aktivity v případě, že kód aplikace je zranitelný vůči útoku injektáží SQL.
 
 Chcete-li vytvořit uživatele SQL Server Authenticated, připojte se k **hlavní** databázi na serveru pomocí přihlášení správce serveru a vytvořte nové přihlášení k serveru.  Je vhodné také vytvořit uživatele v hlavní databázi. Vytvoření uživatele v hlavním serveru umožňuje uživateli přihlásit pomocí nástrojů, jako je SSMS bez zadání názvu databáze.  Umožňuje jim také použít průzkumník objektů k zobrazení všech databází na serveru SQL.
 
@@ -65,11 +64,12 @@ Potom se připojte k **databázi fondu SQL** pomocí přihlášení správce ser
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Chcete-li uživateli udělit oprávnění k provádění dalších operací, jako je `Loginmanager` `dbmanager` vytváření přihlášení nebo vytváření nových databází, přiřaďte uživatele k rolím a v hlavní databázi. 
+Chcete-li uživateli udělit oprávnění k provádění dalších operací, jako je `Loginmanager` `dbmanager` vytváření přihlášení nebo vytváření nových databází, přiřaďte uživatele k rolím a v hlavní databázi.
 
-Další informace o těchto dalších rolích a ověřování databáze SQL najdete [v tématu Správa databází a přihlášení v Azure SQL Database](../../sql-database/sql-database-manage-logins.md).  Další informace o připojení pomocí služby Azure Active Directory najdete [v tématu Připojení pomocí azure active directory authentication](sql-data-warehouse-authentication.md).
+Další informace o těchto dalších rolích a ověřování databáze SQL najdete [v tématu Správa databází a přihlášení v Azure SQL Database](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  Další informace o připojení pomocí služby Azure Active Directory najdete [v tématu Připojení pomocí azure active directory authentication](sql-data-warehouse-authentication.md).
 
 ## <a name="authorization"></a>Autorizace
+
 Autorizace označuje, co můžete v databázi provést po ověření a připojení. Oprávnění k autorizaci jsou určena členstvím rolí a oprávněními. Doporučený postup je udělit uživatelům co nejmenší možná oprávnění. Chcete-li spravovat role, můžete použít následující uložené procedury:
 
 ```sql
@@ -81,11 +81,12 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 Existují způsoby, jak dále omezit, co může uživatel v databázi dělat:
 
-* Podrobná [oprávnění](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15) umožňují řídit, které operace lze provést s jednotlivými sloupci, tabulkami, zobrazeními, schématy, procedurami a dalšími objekty v databázi. Použijte podrobná oprávnění, abyste měli co největší kontrolu a udělili minimální potřebná oprávnění. 
+* Podrobná [oprávnění](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15) umožňují řídit, které operace lze provést s jednotlivými sloupci, tabulkami, zobrazeními, schématy, procedurami a dalšími objekty v databázi. Použijte podrobná oprávnění, abyste měli co největší kontrolu a udělili minimální potřebná oprávnění.
 * [Databázové role](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15) jiné než db_datareader a db_datawriter lze použít k vytvoření výkonnějších uživatelských účtů aplikací nebo méně výkonných účtů správy. Předdefinované role pevné databáze poskytují snadný způsob udělení oprávnění, ale může mít za následek udělení více oprávnění, než je nutné.
 * K omezení akcí, které je možné s databází provádět, můžete použít [uložené procedury](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine?redirectedfrom=MSDN&view=sql-server-ver15).
 
 Následující příklad uděluje přístup pro čtení do uživatelského schématu.
+
 ```sql
 --CREATE SCHEMA Test
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
@@ -94,11 +95,13 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 Správa databází a logických serverů z webu Azure Portal nebo pomocí rozhraní API Azure Resource Manager uvládne přiřazení rolí vašeho uživatelského účtu portálu. Další informace najdete [v tématu Řízení přístupu na základě rolí na webu Azure Portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure).
 
 ## <a name="encryption"></a>Šifrování
-Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivé aktivity šifrováním a dešifrováním dat v klidovém stavu. Při šifrování databáze jsou přidružené zálohy a soubory protokolu transakcí zašifrovány bez nutnosti jakýchkoli změn v aplikacích. Transparentní šifrování dat šifruje úložiště celé databáze pomocí symetrického klíče nazývaného šifrovací klíč databáze. 
+
+Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivé aktivity šifrováním a dešifrováním dat v klidovém stavu. Při šifrování databáze jsou přidružené zálohy a soubory protokolu transakcí zašifrovány bez nutnosti jakýchkoli změn v aplikacích. Transparentní šifrování dat šifruje úložiště celé databáze pomocí symetrického klíče nazývaného šifrovací klíč databáze.
 
 V databázi SQL je šifrovací klíč databáze chráněn integrovaným certifikátem serveru. Vestavěný certifikát serveru je jedinečný pro každý server databáze SQL. Společnost Microsoft automaticky otočí tyto certifikáty alespoň každých 90 dní. Použitý šifrovací algoritmus je AES-256. Obecný popis tde naleznete v tématu [Transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15).
 
 Databázi můžete šifrovat pomocí [portálu Azure nebo](sql-data-warehouse-encryption-tde.md) [T-SQL](sql-data-warehouse-encryption-tde-tsql.md).
 
 ## <a name="next-steps"></a>Další kroky
+
 Podrobnosti a příklady připojení ke skladu pomocí různých protokolů naleznete v tématu [Připojení k fondu SQL](sql-data-warehouse-connect-overview.md).

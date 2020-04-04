@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462645"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631700"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Kurz: Přidání instance spravované databází SQL do skupiny s podporou převzetí služeb při selhání
 
@@ -756,7 +756,7 @@ Vytvořte bránu pro virtuální síť primární spravované instance pomocí p
     | --- | --- |
     | **Předplatné** |  Předplatné, kde je vaše primární spravovaná instance. |
     | **Název** | Název brány virtuální sítě, například `primary-mi-gateway`. | 
-    | **Oblasti** | Oblast, kde je sekundární spravovaná instance. |
+    | **Oblasti** | Oblast, kde je primární spravovaná instance. |
     | **Typ brány** | Vyberte **možnost VPN**. |
     | **Typ vpn** | Vybrat **na základě trasy** |
     | **Sku**| Ponechat `VpnGw1`výchozí hodnotu . |

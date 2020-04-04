@@ -4,18 +4,18 @@ description: Jak definovat cíle úložiště tak, aby vaše azure hpc cache mů
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271886"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657405"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
-*Cíle úložiště* jsou back-endové úložiště pro soubory, ke kterým se přistupuje prostřednictvím instance mezipaměti Azure HPC. Úložiště systému souborů NFS (například místní hardwarový systém) můžete přidat nebo ukládat data v objektu Blob Azure.
+*Cíle úložiště* jsou back-endové úložiště pro soubory, ke kterým se přistupuje prostřednictvím mezipaměti Azure HPC. Úložiště systému souborů NFS (například místní hardwarový systém) můžete přidat nebo ukládat data v objektu Blob Azure.
 
 Pro jednu mezipaměť můžete definovat až deset různých cílů úložiště. Mezipaměť představuje všechny cíle úložiště v jednom agregovaném oboru názvů.
 
@@ -35,9 +35,9 @@ Nový cíl úložiště objektů Blob potřebuje prázdný kontejner objektů Bl
 
 Z této stránky můžete vytvořit nový kontejner těsně před jeho přidáním.
 
-Chcete-li definovat kontejner objektů blob Azure, zadejte tyto informace.
-
 ![snímek obrazovky s cílovou stránkou úložiště pro přidání, naplněnou informacemi o novém cíli úložiště objektů blob Azure](media/hpc-cache-add-blob.png)
+
+Chcete-li definovat kontejner objektů blob Azure, zadejte tyto informace.
 
 * **Název cíle úložiště** – nastavte název, který identifikuje tento cíl úložiště v mezipaměti Azure HPC.
 * **Typ cíle** – zvolte **objekt blob**.
@@ -79,7 +79,7 @@ Postup přidání rolí RBAC:
 1. V poli **Vybrat** vyhledejte "hpc".  Tento řetězec by měl odpovídat jednomu instančnímu objektu s názvem "Zprostředkovatel prostředků mezipaměti HPC". Klikněte na tento objekt zabezpečení a vyberte jej.
 
    > [!NOTE]
-   > Pokud hledání "hpc" nefunguje, zkuste místo toho použít řetězec "storagecache". Uživatelé, kteří se připojili k náhledům (před GA), možná budou muset použít starší název instančního objektu.
+   > Pokud hledání "hpc" nefunguje, zkuste místo toho použít řetězec "storagecache". Uživatelé, kteří se účastnili náhledů (před GA), možná budou muset použít starší název instančního objektu.
 
 1. Klikněte dole na tlačítko **Uložit.**
 
@@ -91,7 +91,10 @@ Postup přidání rolí RBAC:
 
 Cíl úložiště systému nfs má více polí než cíl úložiště objektů blob. Tato pole určují, jak dosáhnout exportu úložiště a jak efektivně ukládat data do mezipaměti. Cíl úložiště systému souborů NFS také umožňuje vytvořit více cest oboru názvů, pokud má hostitel systému souborů NFS k dispozici více než jeden export.
 
-![Snímek obrazovky s cílovou stránkou přidání úložiště s definovaným cílem systému sdílení nfs](media/hpc-cache-add-nfs-target.png)
+![Snímek obrazovky s cílovou stránkou přidání úložiště s definovaným cílem systému sdílení nfs](media/add-nfs-target.png)
+
+> [!NOTE]
+> Před vytvořením cíle úložiště systému souborů NFS se ujistěte, že váš úložný systém je přístupný z mezipaměti Azure HPC a splňuje požadavky na oprávnění. Vytvoření cíle úložiště se nezdaří, pokud mezipaměť nemá přístup k systému úložiště. Podrobnosti najdete [v požadavcích na úložiště systému NFS](hpc-cache-prereqs.md#nfs-storage-requirements) [a při potížích s řešením konfigurace na serveru NAS a s cílem úložiště systému NFS.](troubleshoot-nas.md)
 
 Zadejte tyto informace pro cíl úložiště podporovaného systémem systému sdílení nfs:
 
@@ -126,7 +129,7 @@ Po dokončení přidejte cíl úložiště kliknutím na **OK.**
 ### <a name="choose-a-usage-model"></a>Výběr modelu použití
 <!-- referenced from GUI - update aka.ms link if you change this heading -->
 
-Když vytvoříte cíl úložiště, který odkazuje na systém úložiště systému souborů NFS, musíte zvolit *model využití* pro tento cíl. Tento model určuje, jak jsou data ukládána do mezipaměti.
+Když vytvoříte cíl úložiště, který odkazuje na systém úložiště systému souborů NFS, musíte zvolit model využití pro tento cíl. Tento model určuje, jak jsou data ukládána do mezipaměti.
 
 Existují tři možnosti:
 
@@ -138,7 +141,7 @@ Existují tři možnosti:
 
 * **Větší než 15% zápisy** - Tato možnost urychluje výkon čtení i zápisu. Při použití této možnosti musí všichni klienti přistupovat k souborům prostřednictvím mezipaměti Azure HPC namísto přímého připojení back-endového úložiště. Soubory uložené v mezipaměti budou mít nedávné změny, které nejsou uloženy v back-endu.
 
-  V tomto modelu použití soubory v mezipaměti nejsou kontrolovány proti soubory na back-end úložiště. Předpokládá se, že verze souboru uložená v mezipaměti je aktuálnější. Změněný soubor v mezipaměti je zapsán do systému úložiště back-end pouze poté, co byl v mezipaměti po dobu jedné hodiny bez dalších změn.
+  V tomto modelu použití soubory v mezipaměti nejsou kontrolovány proti soubory na back-end úložiště. Předpokládá se, že verze souboru uložená v mezipaměti je aktuálnější. Změněný soubor v mezipaměti je zapsán do systému úložiště back-end poté, co byl v mezipaměti po dobu jedné hodiny bez dalších změn.
 
 * **Klienti zapisují do cíle systému souborů NFS, obchází mezipaměť** – tuto možnost zvolte, pokud všichni klienti ve vašem pracovním postupu zapisují data přímo do úložného systému, aniž by nejprve zapisují do mezipaměti. Soubory, které klienti požadují, jsou uloženy do mezipaměti, ale všechny změny těchto souborů z klienta jsou okamžitě předány zpět do systému úložiště back-end.
 

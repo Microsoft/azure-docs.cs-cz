@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 830668a78929a5e6a7e131ade5c62b81e6d725c3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525817"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631369"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Reference: Ubuntu (Linux) Data Science Virtuální stroj
 
@@ -239,9 +239,9 @@ Na portál [Azure](https://portal.azure.com) se dostanete z předinstalovaného 
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning je plně spravovaná cloudová služba, která umožňuje vytvářet, nasazovat a sdílet prediktivní analytická řešení. Experimenty a modely můžete vytvářet ze služby Azure Machine Learning Studio (klasika). Přístup k němu můžete z webového prohlížeče na virtuálním počítači pro datové vědy na webu [Microsoft Azure Machine Learning](https://studio.azureml.net).
+Azure Machine Learning je plně spravovaná cloudová služba, která umožňuje vytvářet, nasazovat a sdílet prediktivní analytická řešení. Experimenty a modely můžete vytvářet ve studiu Azure Machine Learning (preview). Přístup k němu můžete z webového prohlížeče na virtuálním počítači pro datové vědy na webu [Microsoft Azure Machine Learning](https://ml.azure.com).
 
-Po přihlášení k Azure Machine Learning Studio (klasické), můžete použít plátno experimentování k vytvoření logického toku pro algoritmy strojového učení. Máte také přístup k poznámkovému bloku Jupyter, který je hostovaný v Azure Machine Learning a můžete bez problémů pracovat s experimenty v Azure Machine Learning Studio (klasické). 
+Po přihlášení do studia Azure Machine Learning studio, můžete použít plátno experimentování k vytvoření logickétotototok pro algoritmy strojového učení. Máte také přístup k poznámkovému bloku Jupyter, který je hostovaný v Azure Machine Learning a můžete bez problémů pracovat s experimenty ve studiu Azure Machine Learning. 
 
 Zprovoznit modely strojového učení, které jste vytvořili, jejich zabalením do rozhraní webové služby. Zprovoznění modelů strojového učení umožňuje klientům napsaným v libovolném jazyce vyvolat předpovědi z těchto modelů. Další informace naleznete v [dokumentaci k machine learningu](https://azure.microsoft.com/documentation/services/machine-learning/).
 

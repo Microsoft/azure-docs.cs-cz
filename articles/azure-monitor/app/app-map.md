@@ -4,12 +4,12 @@ description: Sledování složitých topologií aplikací pomocí mapy aplikace
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666271"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657395"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikací: Třídění distribuovaných aplikací
 
@@ -85,7 +85,7 @@ Chcete-li zobrazit aktivní výstrahy a základní pravidla, která způsobí ak
 
 Mapa aplikací používá vlastnost **název role cloudu** k identifikaci součástí na mapě. Sada Application Insights SDK automaticky přidá vlastnost název role cloudu do telemetrie vyzařované součástmi. Sada SDK například přidá název webu nebo název role služby do vlastnosti názvu role cloudu. Existují však případy, kdy můžete chtít přepsat výchozí hodnotu. Chcete-li přepsat název role cloudu a změnit, co se zobrazí na mapě aplikace:
 
-### <a name="netnet-core"></a>Jádro .NET/.NET
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **Napište vlastní TelemetryInitializer, jak je uvedeno níže.**
 
@@ -153,7 +153,26 @@ Pro [ASP.NET základní](asp-net-core.md#adding-telemetryinitializers) aplikace,
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+Počínaje aplikací Insights Java SDK 2.5.0, můžete zadat `<RoleName>` název `ApplicationInsights.xml` role cloudu přidáním do souboru, například.
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Pokud používáte jarní spuštění se startérem Jarní spouštěcí vlastnosti Application Insights, jedinou požadovanou změnou je nastavení vlastního názvu aplikace v souboru application.properties.
+
+`spring.application.name=<name-of-app>`
+
+Startér jarního spuštění automaticky přiřadí název role cloudu hodnotě, kterou zadáte pro vlastnost spring.application.name.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,26 +193,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Počínaje aplikací Insights Java SDK 2.5.0, můžete zadat `<RoleName>` název `ApplicationInsights.xml` role cloudu přidáním do souboru, například.
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-Pokud používáte jarní spuštění se startérem Jarní spouštěcí vlastnosti Application Insights, jedinou požadovanou změnou je nastavení vlastního názvu aplikace v souboru application.properties.
-
-`spring.application.name=<name-of-app>`
-
-Startér jarního spuštění automaticky přiřadí název role cloudu hodnotě, kterou zadáte pro vlastnost spring.application.name.
-
-### <a name="clientbrowser-side-javascript"></a>JavaScript na straně klienta/prohlížeče
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +203,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Principy názvu role cloudu v kontextu mapy aplikací
 
@@ -254,7 +255,7 @@ Pokud máte potíže s tím, aby Mapa aplikací fungovala podle očekávání, v
 
 Mapa aplikací vytvoří uzel aplikace pro každý jedinečný název cloudové role, který se vyskytuje v telemetrii požadavku, a uzel závislostí pro každou jedinečnou kombinaci typu, cíle a názvu role cloudu v telemetrii závislostí. Pokud je více než 10 000 uzlů ve vaší telemetrii, mapa aplikace nebude moct načíst všechny uzly a odkazy, takže vaše mapa bude neúplná. Pokud k tomu dojde, zobrazí se při zobrazení mapy varovná zpráva.
 
-Kromě toho mapa aplikací podporuje pouze až 1000 samostatných neseskupených uzlů vykreslených najednou. Mapa aplikací snižuje vizuální složitost seskupením závislostí, které mají stejný typ a volající, ale pokud vaše telemetrie obsahuje příliš mnoho jedinečných názvů cloudových rolí nebo příliš mnoho typů závislostí, bude toto seskupení nedostatečné a mapa nebude moci Vykreslení.
+Kromě toho mapa aplikací podporuje pouze až 1000 samostatných neseskupených uzlů vykreslených najednou. Mapování aplikací snižuje vizuální složitost seskupením závislostí, které mají stejný typ a volající, ale pokud vaše telemetrie obsahuje příliš mnoho jedinečných názvů cloudových rolí nebo příliš mnoho typů závislostí, bude toto seskupení nedostatečné a mapa nebude moci vykreslit.
 
 Chcete-li tento problém vyřešit, budete muset změnit instrumentaci správně nastavit název role cloudu, typ závislosti a cílové pole závislostí.
 

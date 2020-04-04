@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: aa2356901403c7a63aa4aa96dcb38f9c0c971e58
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528350"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637525"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Připojení počítačů S Linuxem k Azure Monitoru
 
@@ -22,7 +22,7 @@ Agent a log Analytics pro Linux lze nainstalovat pomocí jedné z následující
 * [Ručně stáhněte a nainstalujte](#install-the-agent-manually) agenta. To je vyžadováno, když počítač s Linuxem nemá přístup k Internetu a bude komunikovat s Azure Monitor nebo Azure Automation prostřednictvím [brány Log Analytics](gateway.md). 
 * [Nainstalujte agenta pro Linux pomocí obálkového skriptu hostovaného](#install-the-agent-using-wrapper-script) na GitHubu. Toto je doporučená metoda instalace a inovace agenta, pokud je počítač připojen k Internetu, přímo nebo prostřednictvím proxy serveru.
 
-Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Linux](log-analytics-agent.md#supported-linux-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent.md#firewall-requirements).
+Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Linux](log-analytics-agent.md#supported-linux-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent.md#network-requirements).
 
 >[!NOTE]
 >Agenta Log Analytics pro Linux není možné nakonfigurovat tak, aby se hlásil více než jednomu pracovnímu prostoru služby Log Analytics. Lze jej nakonfigurovat pouze tak, aby se zhodnocovalo skupině pro správu nástroje System Center Operations Manager a pracovního prostoru Log Analytics současně nebo samostatně.

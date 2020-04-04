@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b5d326d02587d6b5bd8fd73dcccfefdb13c47d57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26c5c5b31d5f3f9e1a642c0bafb947190e479055
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500919"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632633"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -33,7 +33,7 @@ Pokud máte chyby při spouštění runbooků v Azure Automation, můžete použ
 
 3. **Ujistěte se, že vaše uzly a pracovní prostor automatizace mají požadované moduly.** 
 
-    Pokud vaše aplikace Runbook importuje všechny moduly, ověřte, zda jsou k dispozici pro váš účet Automation pomocí kroků uvedených v [části Import moduly](../shared-resources/modules.md#import-modules). Aktualizujte své moduly na nejnovější verzi podle pokynů na [update azure moduly v Azure Automation](..//automation-update-azure-modules.md). Další informace o řešení potíží naleznete [v tématu Poradce při potížích s moduly](shared-resources.md#modules).
+    Pokud vaše aplikace Runbook importuje všechny moduly, ověřte, zda jsou k dispozici pro váš účet Automation pomocí kroků uvedených v [části Import moduly](../shared-resources/modules.md#importing-modules). Aktualizujte své moduly na nejnovější verzi podle pokynů na [update azure moduly v Azure Automation](..//automation-update-azure-modules.md). Další informace o řešení potíží naleznete [v tématu Poradce při potížích s moduly](shared-resources.md#modules).
 
 4. **Pokud je runbook pozastavený nebo neočekávaně selže.**
 
@@ -284,7 +284,7 @@ K této chybě dochází z důvodu jednoho z následujících problémů:
 
 ### <a name="resolution"></a>Řešení
 
-* Limit paměti, síťové zásuvky. Navrhované způsoby práce v rámci limitů paměti jsou rozdělit zatížení mezi více runbooků, zpracovat méně dat v paměti, vyhnout se zápisu zbytečného výstupu z vašich runbooků a zvážit, kolik kontrolních bodů je zapsáno do pracovního postupu prostředí PowerShell runbooky. Pomocí metody clear, `$myVar.clear`například , vymažte proměnné a použijte `[GC]::Collect` ke spuštění uvolňování paměti okamžitě. Tyto akce snižují nároky na paměť vašeho runbooku za běhu.
+* Limit paměti, síťové zásuvky. Navrhované způsoby práce v rámci limitů paměti jsou rozdělit zatížení mezi více runbooků, zpracovat méně dat v paměti, vyhnout se zápisu zbytečného výstupu z runbooků a zvážit, kolik kontrolních bodů se zapíše do runbooků pracovního postupu prostředí PowerShell. Pomocí metody clear, `$myVar.clear`například , vymažte proměnné a použijte `[GC]::Collect` ke spuštění uvolňování paměti okamžitě. Tyto akce snižují nároky na paměť vašeho runbooku za běhu.
 
 * Modul nekompatibilní. Aktualizujte moduly Azure podle kroků v části [Jak aktualizovat moduly Azure PowerShellu v Azure Automation](../automation-update-azure-modules.md).
 

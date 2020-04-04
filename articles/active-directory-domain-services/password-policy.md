@@ -8,15 +8,15 @@ ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475951"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654865"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady uzamčení hesel a účtů ve spravovaných doménách
 
@@ -45,6 +45,11 @@ Chcete-li tento článek dokončit, potřebujete následující zdroje a oprávn
 ## <a name="default-password-policy-settings"></a>Výchozí nastavení zásad hesla
 
 Jemně odstupňované zásady hesel (FGPP) umožňují použít konkrétní omezení pro zásady uzamčení hesla a účtu pro různé uživatele v doméně. Chcete-li například zabezpečit privilegované účty, můžete použít přísnější nastavení uzamčení účtu než běžné účty bez oprávnění. Můžete vytvořit více FGPP v rámci spravované domény Azure AD DS a určit pořadí priority pro jejich použití pro uživatele.
+
+Další informace o zásadách hesel a použití Centra pro správu služby Active Directory naleznete v následujících článcích:
+
+* [Informace o jemně odstupňovaných zásadách hesel](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [Konfigurace zásad jemných hesel pomocí Centra pro správu služby AD](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 Zásady jsou distribuovány prostřednictvím přidružení skupiny ve spravované doméně Azure AD DS a všechny změny, které provedete, se použijí při příštím přihlášení uživatele. Změnou zásadse neodemkne uživatelský účet, který je již uzamčen.
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283131"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656920"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxe dotazu Lucene v Azure Cognitive Search
 
@@ -161,16 +161,17 @@ Následující příklad pomáhá ilustrovat rozdíly. Předpokládejme, že je 
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>Hledání regulárních výrazů  
  Hledání regulárních výrazů vyhledá shodu na základě obsahu mezi lomítkem "/", jak je popsáno ve [třídě RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).  
 
- Chcete-li například vyhledat dokumenty obsahující "motel" `/[mh]otel/`nebo "hotel", zadejte .  Hledání regulárních výrazů je porovnáno s jednotlivými slovy.   
+ Chcete-li například vyhledat dokumenty obsahující "motel" `/[mh]otel/`nebo "hotel", zadejte . Hledání regulárních výrazů je porovnáno s jednotlivými slovy.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Hledání zástupnými znaky  
- Obecně rozpoznanou syntaxi můžete použít pro více (*) nebo jednoznakové zástupné vyhledávání. Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jediným termínem a nikoli frází.  
+ Obecně rozpoznanou syntaxi můžete použít pro více (*) nebo jednoznakové zástupné vyhledávání. Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jediným termínem a nikoli frází.
 
- Chcete-li například vyhledat dokumenty obsahující slova s předponou "poznámka", například "poznámkový blok" nebo "poznámkový blok", zadejte "note*".  
+Hledání předpony také používá znak`*`hvězdička ( ). Například výraz dotazu `search=note*` vrátí "notebook" nebo "poznámkový blok". Úplná syntaxe Lucene není vyžadována pro vyhledávání předpon. Jednoduchá syntaxe podporuje tento scénář.
+
+Vyhledávání přípon, `*` `?` kde nebo předchází řetězec, vyžaduje úplnou syntaxi Lucene a regulární výraz (nelze použít * nebo ? jako první znak vyhledávání). Vzhledem k termínu "alfanumerický"`search=/.*numeric.*/`výraz dotazu ( ) najde shodu.
 
 > [!NOTE]  
->  Nelze použít * nebo ? jako první znak vyhledávání.  
->  U vyhledávacích dotazů se zástupnými symboly se neprovádí žádná analýza textu. V době dotazu jsou termíny dotazu se zástupnými symboly porovnány s analyzovanými termíny v indexu vyhledávání a rozbaleny.
+> Během analýzy dotazů jsou dotazy, které jsou formulovány jako předpona, přípona, zástupný znak nebo regulární výrazy, předány stromu dotazů tak, aby se obešly [lexikální analýzou](search-lucene-query-architecture.md#stage-2-lexical-analysis). Shody budou nalezeny pouze v případě, že index obsahuje řetězce ve formátu, který určuje dotaz. Ve většině případů budete potřebovat alternativní analyzátor během indexování, který zachová integritu řetězce tak, aby částečné termín a porovnávání vzorů úspěšné. Další informace najdete [v tématu Částečné hledání termínů v dotazech Azure Cognitive Search](search-query-partial-matching.md).
 
 ## <a name="see-also"></a>Viz také  
 

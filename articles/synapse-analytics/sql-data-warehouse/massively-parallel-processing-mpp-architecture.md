@@ -10,21 +10,23 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a42ec523bb1f77c48f7382283a52565c9c9273b6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584503"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631947"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure Synapse Analytics (dříve SQL DW) 
+# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure Synapse Analytics (dříve SQL DW)
 
 Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure Synapse spojuje tyto dva světy s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro okamžité potřeby BI a strojového učení.
 
  Azure Synapse má čtyři součásti:
-- Synapse SQL: Kompletní analýza založená na T-SQL 
-    - Fond SQL (platba za dwu zřízené) – obecně dostupné
-    - SQL na vyžádání (platba za zpracované TB) – (náhled)
+
+- SQL Analytics: Kompletní analýza založená na T-SQL
+
+  - Fond SQL (platba za dwu zřízené) – obecně dostupné
+  - SQL na vyžádání (platba za zpracované TB) – (náhled)
 - Jiskra: Hluboce integrovaná Apache Spark (náhled)
 - Integrace dat: Hybridní integrace dat (náhled)
 - Studio: jednotné uživatelské prostředí.  (Preview)
@@ -37,24 +39,24 @@ Azure Synapse je neomezená analytická služba, která spojuje podnikové sklad
 
 ![Architektura Synapse SQL](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Synapse SQL používá architekturu založenou na uzlu. Aplikace se připojují a vydávají příkazy T-SQL k řídicímu uzlu, což je jediný vstupní bod fondu Synapse SQL. Uzel Control spustí modul MPP, který optimalizuje dotazy pro paralelní zpracování a pak předá operace výpočetním uzlům, aby mohly pracovat paralelně. 
+SQL Analytics používá architekturu založenou na uzlu. Aplikace se připojují a vydávají příkazy T-SQL k řídicímu uzlu, což je jediný vstupní bod pro SQL Analytics. Uzel Control spustí modul MPP, který optimalizuje dotazy pro paralelní zpracování a pak předá operace výpočetním uzlům, aby mohly pracovat paralelně.
 
-Výpočetní uzly ukládají veškerá data uživatelů ve službě Azure Storage a spouští paralelní dotazy. DMS (Data Movement Service) je interní služba na úrovni systému, která podle potřeby přesunuje data mezi uzly, aby bylo možné spouštět dotazy paralelně a získat přesné výsledky. 
+Výpočetní uzly ukládají veškerá data uživatelů ve službě Azure Storage a spouští paralelní dotazy. DMS (Data Movement Service) je interní služba na úrovni systému, která podle potřeby přesunuje data mezi uzly, aby bylo možné spouštět dotazy paralelně a získat přesné výsledky.
 
 S odděleným úložištěm a výpočetními prostředky lze při použití fondu Synapse SQL:
 
-* Nezávisle velikost výpočetního výkonu bez ohledu na potřeby úložiště.
-* Růst nebo zmenšit výpočetní výkon v rámci fondu SQL (datový sklad), bez přesunutí dat.
-* pozastavit výpočetní kapacitu a zachovat neporušená data, zatímco platíte pouze za úložiště,
-* Obnovit výpočetní kapacitu za provozu
+- Nezávisle velikost výpočetního výkonu bez ohledu na potřeby úložiště.
+- Růst nebo zmenšit výpočetní výkon v rámci fondu SQL (datový sklad), bez přesunutí dat.
+- pozastavit výpočetní kapacitu a zachovat neporušená data, zatímco platíte pouze za úložiště,
+- Obnovit výpočetní kapacitu za provozu
 
 ### <a name="azure-storage"></a>Azure Storage
 
 Synapse SQL využívá Azure Storage k zajištění bezpečnosti vašich uživatelských dat.  Vzhledem k tomu, že vaše data jsou uložená a spravovaná službou Azure Storage, je za spotřebu úložiště účtován samostatný poplatek. Data jsou rozdělena do **distribucí** pro optimalizaci výkonu systému. Můžete zvolit, který vzor rozdělení se má použít k distribuci dat při definování tabulky. Tyto vzory střepů jsou podporovány:
 
-* Hodnota hash
-* Kruhové dotazování.
-* Replikace
+- Hodnota hash
+- Kruhové dotazování.
+- Replikace
 
 ### <a name="control-node"></a>Řídicí uzel
 
@@ -68,27 +70,29 @@ Každý výpočetní uzel má ID uzlu, který je viditelný v systémových zobr
 
 ### <a name="data-movement-service"></a>Data Movement Service
 
-Služba přesunu dat (DMS) je technologie přenosu dat, která koordinuje pohyb dat mezi výpočetními uzly. Některé dotazy vyžadují přesun dat, aby bylo zajištěno, že paralelní dotazy vrátí přesné výsledky. Pokud je vyžadován přesun dat, DMS zajišťuje, že správná data se dostanou do správného umístění. 
+Služba přesunu dat (DMS) je technologie přenosu dat, která koordinuje pohyb dat mezi výpočetními uzly. Některé dotazy vyžadují přesun dat, aby bylo zajištěno, že paralelní dotazy vrátí přesné výsledky. Pokud je vyžadován přesun dat, DMS zajišťuje, že správná data se dostanou do správného umístění.
 
 ## <a name="distributions"></a>Distribuce
 
-Distribuce představuje základní jednotku úložiště a zpracování paralelních dotazů, které se spouští u distribuovaných dat. Při spuštění dotazu je práce rozdělena na 60 menších dotazů, které běží paralelně. 
+Distribuce představuje základní jednotku úložiště a zpracování paralelních dotazů, které se spouští u distribuovaných dat. Při sql analytics spustí dotaz, práce je rozdělena do 60 menších dotazů, které běží paralelně.
 
 Každý z 60 menších dotazů běží na jednom z distribuce dat. Každý výpočetní uzel spravuje jednu nebo více z 60 distribucí. Fond SQL s maximálnívýpočetní prostředky má jednu distribuci na výpočetní uzel. Fond SQL s minimálnívýpočetní prostředky má všechny distribuce na jednom výpočetním uzlu.  
 
 ## <a name="hash-distributed-tables"></a>Distribuované zatřiďovací tabulky (distribuce hodnot hash)
 
-Distribuovaná zatřiďovací tabulka (distribuce hodnot hash) může přinést nejvyšší výkon dotazů pro spojení a agregaci u velkých tabulek. 
+Distribuovaná zatřiďovací tabulka (distribuce hodnot hash) může přinést nejvyšší výkon dotazů pro spojení a agregaci u velkých tabulek.
+
+Distribuovaná zatřiďovací tabulka (distribuce hodnot hash) může přinést nejvyšší výkon dotazů pro spojení a agregaci u velkých tabulek.
 
 Chcete-li rozdělit data do tabulky distribuované hash, hash funkce se používá k deterministicky přiřadit každý řádek k jedné distribuci. V definici tabulky je jeden ze sloupců určený jako sloupec distribuce. Funkce hash používá hodnoty ve sloupci distribuce k přiřazení jednotlivých řádků k distribuci.
 
-Následující diagram znázorňuje, jak se úplná (nedistribuovaná tabulka) uloží jako tabulka distribuovaná hash. 
+Následující diagram znázorňuje, jak se úplná (nedistribuovaná tabulka) uloží jako tabulka distribuovaná hash.
 
 ![Distribuovaná tabulka](./media/massively-parallel-processing-mpp-architecture/hash-distributed-table.png "Distribuovaná tabulka")  
 
-* Každý řádek patří k jedné distribuci.  
-* Deterministický algoritmus hash přiřadí každý řádek k jedné distribuci.  
-* Počet řádků tabulky na distribuci se liší podle různých velikostí tabulek.
+- Každý řádek patří k jedné distribuci.  
+- Deterministický algoritmus hash přiřadí každý řádek k jedné distribuci.  
+- Počet řádků tabulky na distribuci se liší podle různých velikostí tabulek.
 
 Existují důležité informace o výkonu pro výběr sloupce distribuce, jako je například odlišnost, zkosení dat a typy dotazů, které běží v systému.
 
@@ -106,8 +110,17 @@ Tabulka, která je replikována ukládá do mezipaměti úplnou kopii tabulky na
 
 Následující diagram ukazuje replikovanou tabulku, která je uložena v mezipaměti na první distribuci v každém výpočetním uzlu.  
 
-![Replikovaná tabulka](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "Replikovaná tabulka") 
+![Replikovaná tabulka](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "Replikovaná tabulka")
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když víte něco o Azure Synapse, zjistěte, jak rychle [vytvořit fond SQL](create-data-warehouse-portal.md) a [načíst ukázková data](load-data-from-azure-blob-storage-using-polybase.md). Pokud s Azure začínáte, můžete využít [Glosář Azure](../../azure-glossary-cloud-terminology.md), kde najdete potřebnou terminologii. Nebo se podívejte na některé z těchto dalších prostředků Azure Synapse.  
+Teď, když víte něco o Azure Synapse, zjistěte, jak rychle [vytvořit fond SQL](create-data-warehouse-portal.md) a [načíst ukázková data](load-data-from-azure-blob-storage-using-polybase.md). Pokud s Azure začínáte, můžete využít [Glosář Azure](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), kde najdete potřebnou terminologii. Nebo se podívejte na některé z těchto dalších prostředků Azure Synapse.  
+
+- [Úspěšné zákaznické implementace](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+- [Blogy](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+- [Žádosti o funkce](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+- [Videa](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+- [Vytvoření lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md)
+- [Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [Fórum Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Twitter](https://twitter.com/hashtag/SQLDW)
