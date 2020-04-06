@@ -456,8 +456,6 @@
           href: speech-sdk.md
         - name: Dostupnost scénáře
           href: scenario-availability.md
-        - name: Dodání aplikace
-          href: ship-application.md
     - name: Rychlý start
       items:
         - name: Nastavení sady Speech SDK
@@ -472,6 +470,9 @@
         - name: Konfigurace OpenSSL pro Linux
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
           href: how-to-configure-openssl-linux.md
+        - name: Konfigurace RHEL/CentOS 7
+          href: how-to-configure-rhel-centos-7.md
+          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
     - name: ukázky
       items:
         - name: Ukázky sady Speech SDK (GitHub)

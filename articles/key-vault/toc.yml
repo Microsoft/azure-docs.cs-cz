@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+        - name: Integrované zabezpečení
+          href: key-vault-security-controls.md
         - name: Světy zabezpečení
           href: key-vault-ovw-security-worlds.md
         - name: Zabezpečení trezoru klíčů

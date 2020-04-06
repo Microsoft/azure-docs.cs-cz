@@ -18,6 +18,14 @@
       items:
         - name: Firewall webových aplikací v Azure CDN
           href: ./cdn/cdn-overview.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Application Gateway
+      items:
+        - name: Nasazení WAF v2 – šablona Resource Manageru
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
 - name: Kurzy
   items:
     - name: Application Gateway

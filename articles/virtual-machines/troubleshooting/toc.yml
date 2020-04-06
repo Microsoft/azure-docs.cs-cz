@@ -77,6 +77,8 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: Selhání klíčových služeb
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Virtuální počítač nereaguje při použití zásad místních uživatelů a skupin
+          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: Nejde o spustitelný disk
           href: troubleshoot-guide-not-bootable-disk.md
         - name: Smyčka restartování
@@ -87,6 +89,8 @@
           href: troubleshoot-vm-boot-configure-update.md
         - name: Virtuální počítač nejde spustit kvůli Správci spouštění systému Windows
           href: troubleshoot-guide-windows-boot-manager-menu.md
+        - name: Virtuální počítač nereaguje kvůli aktualizaci
+          href: unresponsive-vm-apply-windows-update.md
 - name: Nejde se připojit k virtuálnímu počítači
   items:
     - name: Protokol RDP

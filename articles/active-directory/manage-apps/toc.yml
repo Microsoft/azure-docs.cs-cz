@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: Co je proxy aplikací pro místní aplikace?
       href: what-is-application-proxy.md
+    - name: Běžné scénáře správy aplikací
+      href: common-scenarios.md
     - name: Co je zřizování aplikací?
       href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Rychlé starty
