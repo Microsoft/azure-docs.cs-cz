@@ -2,7 +2,7 @@
 title: Dokumentace k Azure Cosmos DB
 summary: Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely pro provozní a analytické úlohy. Nabízí funkci multi-master pomocí automatického škálování propustnosti, výpočtů a úložiště.
 metadata:
-  title: Databáze Azure Cosmos
+  title: Azure Cosmos DB
   description: Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu s více modely pro provozní a analytické úlohy. Nabízí funkci multi-master pomocí automatického škálování propustnosti, výpočtů a úložiště.
   services: service
   ms.service: cosmos-db
@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: ebe88aea9b84e640ccc4cecb495d2beedae2893e
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 0d54189212a3597902c58f2889959891f6c8c07c
+  ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75934110"
+  ms.lasthandoff: 04/02/2020
+  ms.locfileid: "80584301"
 landingContent:
 - title: Informace o databázi Azure Cosmos
   linkLists:
@@ -164,6 +164,8 @@ landingContent:
       url: sql-api-dotnet-application.md
     - text: Aplikace v Javě s asynchronní sadou SDK
       url: sql-api-async-java-get-started.md
+    - text: Ukázka aplikace v Javě s kanálem změn
+      url: create-sql-api-java-changefeed.md
     - text: Dotazování na data pomocí dotazů SQL
       url: tutorial-query-sql-api.md
   - linkListType: how-to-guide

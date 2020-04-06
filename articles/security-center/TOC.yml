@@ -29,6 +29,8 @@
       href: quick-onboard-azure-stack.md
 - name: Kurzy
   items:
+    - name: Průvodce plánováním a provozem
+      href: security-center-planning-and-operations-guide.md
     - name: Ochrana vašich prostředků
       href: tutorial-protect-resources.md
     - name: Reakce na incidenty
@@ -71,8 +73,8 @@
           href: security-center-incident.md
         - name: Korelace inteligentních výstrah v cloudu (incidenty)
           href: security-center-alerts-cloud-smart.md
-        - name: Analýza hrozeb a mapa výstrah zabezpečení
-          href: security-center-threat-intel.md
+        - name: Sestavy hrozeb
+          href: security-center-threat-report.md
         - name: Ověřování výstrah (testovací soubor EICAR)
           href: security-center-alert-validation.md
 - name: Návody
@@ -149,6 +151,8 @@
           href: security-center-sql-service-recommendations.md
         - name: Ochrana identit a přístupu
           href: security-center-identity-access.md
+        - name: Správa uživatelských dat šetření
+          href: security-center-investigation-user-data.md
     - name: Použití cloudové ochrany
       items:
         - name: Správa přístupu za běhu
@@ -159,24 +163,6 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptivní posilování zabezpečení sítě
           href: security-center-adaptive-network-hardening.md
-    - name: Archiv
-      items:
-        - name: Použít šifrování disku
-          href: security-center-apply-disk-encryption.md
-        - name: Nainstalovat aktualizace systému
-          href: security-center-apply-system-updates.md
-        - name: Nainstalovat Endpoint Protection
-          href: security-center-install-endpoint-protection.md
-        - name: Sestavy hrozeb
-          href: security-center-threat-report.md
-        - name: Skóre spolehlivosti výstrah
-          href: security-center-confidence-score.md
-        - name: Šetření
-          href: security-center-investigation.md
-        - name: Správa uživatelských dat šetření
-          href: security-center-investigation-user-data.md
-        - name: Plánování a provoz
-          href: security-center-planning-and-operations-guide.md
 - name: Referenční informace
   items:
     - name: Rozhraní REST API

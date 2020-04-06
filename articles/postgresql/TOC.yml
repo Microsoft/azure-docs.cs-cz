@@ -149,6 +149,8 @@
           items:
             - name: Čtení replik
               href: concepts-read-replicas.md
+            - name: Logické dekódování
+              href: concepts-logical.md
     - name: Hyperscale (Citus)
       items:
         - name: Uzly
@@ -269,6 +271,8 @@
           items:
             - name: portál Azure
               href: howto-data-encryption-portal.md
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
         - name: Restartování serveru
           items:
             - name: portál Azure

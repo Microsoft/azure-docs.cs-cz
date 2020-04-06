@@ -4,7 +4,7 @@
   items:
     - name: Co jsou škálovací sady virtuálních počítačů?
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření na webu Azure Portal
@@ -13,11 +13,13 @@
       href: quick-create-cli.md
     - name: Vytvoření pomocí Azure PowerShellu
       href: quick-create-powershell.md
-    - name: Vytvoření pomocí šablony
+    - name: Vytvoření pomocí šablony ARM
       items:
         - name: Škálovací sada pro Linux
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Škálovací sada pro Windows
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
 - name: Kurzy
   items:
@@ -25,25 +27,25 @@
       items:
         - name: Azure CLI
           href: tutorial-create-and-manage-cli.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: tutorial-create-and-manage-powershell.md
     - name: 2. Použití datových disků
       items:
         - name: Azure CLI
           href: tutorial-use-disks-cli.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: tutorial-use-disks-powershell.md
     - name: 3. Použití vlastní image virtuálního počítače
       items:
         - name: Azure CLI
           href: tutorial-use-custom-image-cli.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: tutorial-use-custom-image-powershell.md
     - name: 4. Nasazení aplikací do škálovací sady
       items:
         - name: Azure CLI
           href: tutorial-install-apps-cli.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: tutorial-install-apps-powershell.md
         - name: Šablona
           href: tutorial-install-apps-template.md
@@ -51,11 +53,11 @@
       items:
         - name: Azure CLI
           href: tutorial-autoscale-cli.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: tutorial-autoscale-powershell.md
         - name: Šablona
           href: tutorial-autoscale-template.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       href: cli-samples.md
@@ -293,7 +295,7 @@
           maintainContext: true
 - name: Referenční informace
   items:
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/azure/overview
     - name: Azure CLI
       href: ../virtual-machines/azure-cli-arm-commands.md

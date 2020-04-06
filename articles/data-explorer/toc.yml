@@ -67,7 +67,13 @@
     - name: Ingestace dat
       items:
         - name: Ingestování jedním kliknutím
-          href: ingest-data-one-click.md
+          items:
+            - name: Přehled příjmu dat jedním kliknutím
+              href: ingest-data-one-click.md
+            - name: Příjem dat jedním kliknutím do nové tabulky
+              href: one-click-ingestion-new-table.md
+            - name: Příjem dat jedním kliknutím do existující tabulky
+              href: one-click-ingestion-existing-table.md
         - name: Ingestování streamování
           href: ingest-data-streaming.md
         - name: S využitím LightIngestu
@@ -188,6 +194,8 @@
               href: customer-managed-keys-csharp.md
             - name: Šablona Azure Resource Manageru
               href: customer-managed-keys-resource-manager.md
+        - name: Vytvoření aplikace Azure AD
+          href: provision-azure-ad-app.md
     - name: Spravovat
       items:
         - name: Cluster
@@ -208,6 +216,8 @@
                   href: cluster-principal-python.md
                 - name: Šablona Azure Resource Manageru
                   href: cluster-principal-resource-manager.md
+            - name: Správa jazykových rozšíření clusterů
+              href: language-extensions.md
         - name: databáze
           items:
             - name: Následnické databáze
@@ -240,6 +250,8 @@
           href: using-diagnostic-logs.md
         - name: Použití metrik k monitorování stavu clusterů
           href: using-metrics.md
+        - name: Monitorování stavu clusteru pomocí stavu prostředků
+          href: monitor-with-resource-health.md
     - name: Integrace s ostatními nástroji
       items:
         - name: Azure Data Factory
@@ -264,6 +276,8 @@
           href: connect-from-databricks.md
         - name: Analýza dat v aplikacích Jupyter Notebook a Kqlmagic
           href: kqlmagic.md
+        - name: Analýza dat v Azure Notebooks
+          href: azure-notebooks.md
         - name: Azure Pipelines
           href: devops.md
     - name: Řešení potíží

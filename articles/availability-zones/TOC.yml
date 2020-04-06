@@ -12,7 +12,7 @@
       items:
         - name: Co jsou zóny dostupnosti?
           href: az-overview.md
-        - name: Virtual Machines
+        - name: Virtuální počítače
           items:
             - name: Vytvoření virtuálního počítače s Linuxem v zóně dostupnosti s využitím rozhraní příkazového řádku
               href: ../virtual-machines/linux/create-cli-availability-zone.md
@@ -57,11 +57,11 @@
                   href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
         - name: Veřejná IP adresa
           href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
-        - name: SQL Database
+        - name: Databáze SQL
           items:
             - name: Zóny dostupnosti pro SQL Database
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
-        - name: Úložiště
+        - name: Storage
           items:
             - name: Zónově redundantní úložiště
               href: ../storage/common/storage-redundancy-zrs.md
@@ -85,6 +85,10 @@
           items:
             - name: Vytvoření instance Azure Active Directory Domain Services
               href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: Dokumentace k Zónám Edge
+      items:
+        - name: Co jsou Zóny Edge?
+          href: ../networking/edge-zones-overview.md
 - name: Zotavení po havárii
   items:
     - name: Použití Azure Site Recovery

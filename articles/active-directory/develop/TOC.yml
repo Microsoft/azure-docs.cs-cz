@@ -6,7 +6,7 @@
       href: v2-overview.md
     - name: Rozvoj platformy Microsoft Identity Platform
       href: about-microsoft-identity-platform.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Nastavení tenanta
@@ -26,6 +26,8 @@
     - name: Jednostránkové aplikace
       displayName: SPA
       items:
+        - name: Úhlová
+          href: quickstart-v2-angular.md
         - name: JavaScript
           href: quickstart-v2-javascript.md
     - name: Webové aplikace
@@ -69,6 +71,8 @@
     - name: Jednostránkové aplikace
       displayName: SPA
       items:
+        - name: Úhlová
+          href: tutorial-v2-angular.md
         - name: JavaScript
           href: tutorial-v2-javascript-spa.md
     - name: Webové aplikace
@@ -92,7 +96,7 @@
       items:
         - name: Webová aplikace démona ASP.NET
           href: tutorial-v2-aspnet-daemon-web-app.md
-- name: Ukázky
+- name: ukázky
   href: sample-v2-code.md
 - name: Koncepty
   expanded: true
@@ -219,8 +223,12 @@
               href: scenario-mobile-app-configuration.md
             - name: Konfigurace specifická pro mobilní platformy
               items:
+                - name: Modul plug-in Microsoft Enterprise SSO pro zařízení Apple
+                  href: apple-sso-plugin.md
                 - name: Režim sdíleného zařízení pro zařízení s Androidem
-                  href: shared-device-mode.md
+                  href: msal-android-shared-devices.md
+                - name: Režim sdíleného zařízení pro zařízení s iOS
+                  href: msal-ios-shared-devices.md
                 - name: Xamarin Android
                   href: msal-net-xamarin-android-considerations.md
                 - name: Systémový prohlížeč v Androidu
@@ -308,6 +316,17 @@
           href: msal-handling-exceptions.md
         - name: Protokolování
           href: msal-logging.md
+        - name: Sdílená zařízení
+          items:
+            - name: Přehled – sdílená zařízení
+              href: msal-shared-devices.md
+              displayName: 'shared device mode, firstline worker, frontline worker'
+            - name: Režim sdíleného zařízení pro zařízení s iOS
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
+            - name: Režim sdíleného zařízení pro zařízení s Androidem
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
         - name: Jednotné přihlašování
           displayName: SSO
           items:
@@ -433,7 +452,7 @@
       items:
         - name: Přehled
           href: authentication-national-cloud.md
-        - name: Ověřování
+        - name: Authentication
           href: msal-national-cloud.md
     - name: Automatické zřizování uživatelů (SCIM)
       items:
@@ -443,7 +462,7 @@
           href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
 - name: Návody
   items:
-    - name: Ověřování
+    - name: Authentication
       items:
         - name: Konfigurace deklarace identity role
           href: active-directory-enterprise-app-role-management.md

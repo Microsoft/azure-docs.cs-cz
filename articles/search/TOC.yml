@@ -23,6 +23,9 @@
           href: knowledge-store-create-portal.md
         - name: Dotaz s využitím Průzkumníka služby Hledání
           href: search-explorer.md
+    - name: Šablona ARM
+      displayName: Resource Manager
+      href: search-get-started-arm.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -77,14 +80,6 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: Ukázky REST
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
-- name: Školení
-  items:
-    - name: Úvod (Microsoft Learn)
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
-    - name: Přidání vyhledávání do aplikací (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: Kurz pro vývojáře (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: Koncepty
   items:
     - name: Fulltextové vyhledávání
@@ -233,7 +228,7 @@
           href: search-query-simple-examples.md
         - name: Použití úplné syntaxe Lucene
           href: search-query-lucene-examples.md
-        - name: Speciální znaky a částečné výrazy
+        - name: Částečné výrazy a speciální znaky
           href: search-query-partial-matching.md
         - name: Dotaz z Power Apps
           href: search-howto-powerapps.md
@@ -261,7 +256,7 @@
           href: search-example-adventureworks-multilevel-faceting.md
     - name: Výsledky
       items:
-        - name: Funkce související se stránkou
+        - name: Práce s výsledky
           href: search-pagination-page-layout.md
         - name: Vyladění relevance (profily vyhodnocování)
           href: index-add-scoring-profiles.md
@@ -460,6 +455,14 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: Případy použití hledání
           href: 'https://searchsamples.azurewebsites.net/'
+    - name: Školení
+      items:
+        - name: Úvod (Microsoft Learn)
+          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+        - name: Přidání vyhledávání do aplikací (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
+        - name: Kurz pro vývojáře (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
     - name: Nejčastější dotazy
       href: search-faq-frequently-asked-questions.md
     - name: Ceny

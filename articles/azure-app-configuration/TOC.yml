@@ -120,7 +120,7 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST
+        - name: REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: Správa funkcí
       items:
@@ -128,6 +128,10 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
         - name: Knihovna filtrů .NET Core
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+    - name: Správa úložiště konfigurace
+      items:
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
 - name: Zdroje a prostředky
   items:
     - name: Ceny

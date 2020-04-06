@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: Osvědčení symetrického klíče
           href: how-to-auto-provision-symmetric-keys.md
-    - name: Vývoj a ladění vlastních modulů
+    - name: Vývoj vlastních modulů
       items:
-        - name: Visual Studio 2019
+        - name: Vývoj s využitím sady Visual Studio 2019
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: Vývoj s využitím editoru Visual Studio Code
           href: how-to-vs-code-develop-module.md
+        - name: Konfigurace createOptions pro moduly
+          items:
+            - name: Principy a použití createOptions
+              href: how-to-use-create-options.md
+            - name: Udělení přístupu k místnímu úložišti zařízení pro moduly
+              href: how-to-access-host-storage-from-module.md
     - name: Nasazení modulů
       items:
         - name: Nasazení na jednotlivá zařízení
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: Konfigurace podpory proxy
       href: how-to-configure-proxy-support.md
-    - name: Ukládání dat na hraničních zařízeních
+    - name: Azure Blob Storage ve službě IoT Edge
       items:
-        - name: Udělení přístupu k místnímu úložišti zařízení pro moduly
-          href: how-to-access-host-storage-from-module.md
-        - name: Azure Blob Storage ve službě IoT Edge
+        - name: Principy úložiště objektů blob na hraničních zařízeních
           href: how-to-store-data-blob.md
         - name: Nasazení modulů úložiště objektů blob
           href: how-to-deploy-blob.md

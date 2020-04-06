@@ -32,6 +32,8 @@
           href: migrate-cost-management-api.md
     - name: Návody
       items:
+        - name: Prevence a analýza neočekávaných poplatků
+          href: ../manage/getting-started.md
         - name: Přiřazení přístupu k datům
           href: assign-access-acm-data.md
         - name: Použití analýzy nákladů pro běžné úlohy

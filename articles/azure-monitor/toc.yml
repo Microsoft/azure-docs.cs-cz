@@ -15,7 +15,7 @@
     - name: Monitorování virtuálních počítačů
       items:
         - name: Virtuální počítače Azure
-          href: learn/quick-collect-azurevm.md
+          href: learn/quick-monitor-azure-vm.md
         - name: Počítač s Linuxem
           href: learn/quick-collect-linux-computer.md
         - name: Počítač s Windows
@@ -303,10 +303,6 @@
             - name: Korelace telemetrie
               href: app/correlation.md
               displayname: 'correlation headers, w3c, distributed tracing, tracing'
-            - name: Místní předávání
-              href: app/opencensus-local-forwarder.md
-            - name: Přejít
-              href: app/opencensus-go.md
         - name: Živý stream metriky
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
@@ -488,9 +484,17 @@
             - name: Přehled
               displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/platform-logs-overview.md
-            - name: Zobrazení protokolu aktivit
-              displayName: Platform logs
-              href: platform/activity-log-view.md
+            - name: Protokol aktivit
+              items:
+                - name: Zobrazení na webu Azure Portal
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-view.md
+                - name: Shromažďování a analýza
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-collect.md
+                - name: Export (starší verze)
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
             - name: Odeslání do cílových umístění
               items:
                 - name: Pracovní prostor služby Log Analytics
@@ -502,20 +506,6 @@
                 - name: Event Hubs
                   displayname: 'Resource logs, Activity log, Platform logs'
                   href: platform/resource-logs-stream-event-hubs.md
-            - name: Shromažďování protokolů aktivit starší verze
-              items:
-                - name: Přehled
-                  displayName: Resource logs
-                  href: platform/diagnostic-settings-legacy.md
-                - name: Shromažďování a analýza
-                  displayname: Activity log
-                  href: platform/activity-log-collect.md
-                - name: Shromažďování napříč tenanty
-                  displayname: Activity log
-                  href: platform/activity-log-collect-tenants.md
-                - name: Export
-                  displayname: Activity log
-                  href: platform/activity-log-export.md
         - name: Nastavení diagnostiky
           items:
             - name: Vytvoření nastavení diagnostiky
@@ -531,6 +521,8 @@
           href: platform/stream-monitoring-data-event-hubs.md
     - name: Monitorování virtuálních počítačů a hostovaný operační systém
       items:
+        - name: Monitorování virtuálních počítačů Azure
+          href: insights/monitor-vm-azure.md
         - name: Agenti
           items:
             - name: Přehled agentů
@@ -636,12 +628,10 @@
           items:
             - name: Přehled
               href: insights/vminsights-overview.md
-            - name: Známé problémy
-              href: insights/vminsights-known-issues.md
             - name: Nejčastější dotazy k všeobecné dostupnosti
               href: insights/vminsights-ga-release-faq.md
             - name: Nejčastější dotazy
-              href: 'faq.md#azure-monitor-for-vms-preview'
+              href: 'faq.md#azure-monitor-for-vms'
             - name: Povolení monitorování
               items:
                 - name: Povolení přehledu monitorování
@@ -654,18 +644,16 @@
                   href: insights/vminsights-enable-at-scale-powershell.md
                 - name: Povolení pro hybridní prostředí
                   href: insights/vminsights-enable-hybrid-cloud.md
-                - name: Integrace s Operations Managerem
-                  href: insights/service-map-scom.md
-            - name: Monitorování stavu
-              href: insights/vminsights-health.md
             - name: Závislosti map
               href: insights/vminsights-maps.md
             - name: Monitorování výkonu
               href: insights/vminsights-performance.md
-            - name: Použití sešitů
-              href: insights/vminsights-workbooks.md
             - name: Analýza dat s využitím dotazů na protokoly
               href: insights/vminsights-log-search.md
+            - name: Vizualizace dat s využitím sešitů
+              href: insights/vminsights-workbooks.md
+            - name: Vytváření pravidel upozornění
+              href: insights/vminsights-alerts.md
             - name: Upgrade agenta závislostí
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: Zákaz monitorování
@@ -680,6 +668,8 @@
               href: insights/wire-data.md
             - name: Řešení Service Map
               href: insights/service-map.md
+            - name: Service Map a Operations Manager
+              href: insights/service-map-scom.md
         - name: Skupiny počítačů
           href: platform/computer-groups.md
     - name: Monitorování kontejnerů
@@ -708,6 +698,8 @@
               href: insights/container-insights-analyze.md
             - name: Monitorování stavu
               href: insights/container-insights-health.md
+            - name: Monitorování výkonu GPU
+              href: insights/container-insights-gpu-monitoring.md
             - name: Zobrazení živých dat
               items:
                 - name: Přehled živých dat (Preview)
@@ -896,13 +888,11 @@
                   href: log-query/query-optimization.md
                 - name: Analýza textových dat
                   href: log-query/parse-text.md
-        - name: Flow / Logic Apps
+        - name: Logic Apps
           items:
-            - name: Konektor Flow s protokoly
-              href: platform/flow-tutorial.md
-            - name: Konektor Flow s aplikacemi
-              href: app/automate-with-flow.md
-            - name: Logic Apps s aplikacemi
+            - name: Konektor protokolů služby Azure Monitor
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights Connector
               href: app/automate-with-logic-apps.md
         - name: REST API
           displayname: 'metrics, analyze'
@@ -975,6 +965,8 @@
           href: platform/grafana-plugin.md
     - name: Zobrazení výstrah
       items:
+        - name: Řešení výstrah
+          href: platform/alerts-troubleshoot.md
         - name: Pravidla upozornění aplikace
           items:
             - name: Dostupnost
@@ -999,7 +991,7 @@
               href: platform/alerts-log-query.md
             - name: Akce webhooků
               href: platform/alerts-log-webhook.md
-            - name: Řešení potíží
+            - name: Řešení potíží s upozorněními protokolu
               href: platform/alert-log-troubleshoot.md
         - name: Pravidla upozornění protokolu aktivit
           items:
@@ -1263,8 +1255,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: Poznámky k verzi sady SDK
           href: app/release-notes.md
-    - name: Analýzy ve Windows
-      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
     - name: Videa

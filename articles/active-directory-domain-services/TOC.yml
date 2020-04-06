@@ -93,6 +93,8 @@
           href: security-audit-events.md
         - name: Analýza událostí auditu s využitím sešitů Azure Monitoru
           href: use-azure-monitor-workbooks.md
+        - name: Zabezpečený vzdálený přístup k virtuálním počítačům
+          href: secure-remote-vm-access.md
     - name: Virtuální počítače připojené k doméně
       items:
         - name: Virtuální počítač s Windows Serverem ze šablony
@@ -143,13 +145,9 @@
       href: faqs.md
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-    - name: Kompatibilní software jiných výrobců
-      href: compatible-software.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
     - name: Fórum Azure AD pro názory
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: Kontaktujte nás
-      href: contact-us.md
     - name: Použití Azure AD Domain Services v předplatných Azure CSP
       href: csp.md

@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Logic Apps?
       href: logic-apps-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytváření aplikací logiky – Azure Portal
@@ -21,7 +21,7 @@
       href: tutorial-process-mailing-list-subscriptions-workflow.md
     - name: Vytvoření pracovního postupu Azure Storage a Azure Functions
       href: tutorial-process-email-attachments-workflow.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódu Azure
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
@@ -37,8 +37,10 @@
       href: logic-apps-serverless-overview.md
     - name: Integrace B2B a zpracování EDI
       href: logic-apps-enterprise-integration-overview.md
-    - name: Přístup ke službám Azure Virtual Network
+    - name: Přístup k virtuálním sítím Azure
       href: connect-virtual-network-vnet-isolated-environment-overview.md
+    - name: Provozní kontinuita a zotavení po havárii
+      href: business-continuity-disaster-recovery-guidance.md
 - name: Návody
   items:
     - name: Vývoj
@@ -221,7 +223,7 @@
           href: logic-apps-enterprise-integration-flatfile.md
         - name: FTP
           href: ../connectors/connectors-create-api-ftp.md
-        - name: GitHub
+        - name: GitHubu
           href: ../connectors/connectors-create-api-github.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
@@ -364,7 +366,7 @@
       href: logic-apps-limits-and-config.md
     - name: Cenový model a měření využití
       href: logic-apps-pricing.md
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.logicapp
     - name: REST API
       href: /rest/api/logic/

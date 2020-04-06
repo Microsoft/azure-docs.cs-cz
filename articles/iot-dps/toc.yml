@@ -103,6 +103,8 @@
       href: concepts-tpm-attestation.md
     - name: Osvědčení symetrického klíče
       href: concepts-symmetric-key-attestation.md
+    - name: Postupy zabezpečení pro výrobce zařízení
+      href: concepts-device-oem-security-practices.md
 - name: Návody
   items:
     - name: Připojení sady MXChip IoT DevKit ke službě IoT Hub

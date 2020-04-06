@@ -13,7 +13,7 @@
           href: storage-blobs-introduction.md
     - name: Rychlé starty
       items:
-        - name: Správa objektů blob bez kódu
+        - name: Práce s objekty blob
           items:
             - name: portál Azure
               href: storage-quickstart-blobs-portal.md
@@ -23,8 +23,6 @@
               href: storage-quickstart-blobs-powershell.md
             - name: Rozhraní příkazového řádku
               href: storage-quickstart-blobs-cli.md
-        - name: Vývoj s využitím objektů blob
-          items:
             - name: .NET
               items:
                 - name: .NET (v12 SDK)
