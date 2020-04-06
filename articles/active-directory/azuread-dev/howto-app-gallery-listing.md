@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 969193b2c0843c4eb217d2bdb9f9ad9a40ccf9af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154963"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666930"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -49,9 +49,9 @@ Můžete získat bezplatný testovací účet se všemi prémiovými funkcemi Az
 
 ## <a name="submit-the-request-in-the-portal"></a>Odeslat žádost na portálu
 
-Po otestování, že integrace aplikací funguje s Azure AD, odešlete žádost o přístup na [portálu Aplikační síť](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Pokud máte účet Office 365, použijte ho k přihlášení k tomuto portálu. Pokud ne, přihlaste se pomocí účtu Microsoft, například Outlooku nebo Hotmailu.
+Po otestování, že integrace aplikací funguje s Azure AD, odešlete žádost o aplikaci na [portálu Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps).
 
-Pokud se po přihlášení zobrazí následující stránka, obraťte se na [tým integrace služby Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zadejte e-mailový účet, který chcete použít pro odeslání žádosti. Tým Azure AD přidá účet na portálu Microsoft Application Network.
+Pokud se po přihlášení zobrazí následující stránka, obraťte se na [tým integrace služby Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zadejte e-mailový účet, který chcete použít pro odeslání žádosti. Firemní e-mailová [name@yourbusiness.com](mailto:name@yourbusiness.com) adresa, například upřednostňovaná. Tým Azure AD přidá účet na portálu Microsoft Application Network.
 
 ![Zpráva o žádosti o přístup na sharepointovém portálu](./media/howto-app-gallery-listing/errorimage.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242480"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667865"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -39,10 +39,11 @@ Níže uvedené funkce nejsou aktuálně nepodporované pro soubory Azure NetApp
 * Uživatelem definované trasy (UDR) s předponou adresy jako podsíť souborů Azure NetApp
 * Zásady Azure (například vlastní zásady pojmenování) v rozhraní Azure NetApp Files
 * Nástroji pro vyrovnávání zatížení pro provoz souborů Azure NetApp
+* Soubory Azure NetApp nejsou podporované pomocí azure virtuální sítě WAN
 
 Následující síťová omezení platí pro soubory Azure NetApp:
 
-* Počet IP adresy v ypoužívají ve virtuální síti se soubory Azure NetApp (včetně partnerských virtuálních sítí) nesmí překročit 1000. Pracujeme na zvýšení tohoto limitu, abychom vyhověli požadavkům na zákaznickou stupnici. V mezidobí, pokud požadujete více IP adresy, obraťte se na náš tým podpory s případem použití a požadovaným limitem.
+* Počet IP adresy v ypoužívají ve virtuální síti se soubory Azure NetApp (včetně partnerských virtuálních sítí) nesmí překročit 1000. Pracujeme na zvýšení tohoto limitu, abychom vyhověli požadavkům na zákaznickou stupnici. 
 * V každé virtuální síti Azure (VNet) lze delegovat jenom jednu podsíť na soubory Azure NetApp.
 
 
@@ -123,8 +124,8 @@ V topologii ilustrované výše je místní síť připojena k virtuální síti
 * Místní prostředky VM 1 a VM 2 se můžou připojit ke svazku 2 nebo svazku 3 přes síť VPN typu site-to-site a regionální partnerský vztah virtuální sítě.
 * Virtuální virtuální připojení 3 ve virtuální síti rozbočovače se může připojit ke svazku 2 ve virtuální síti 1 s paprskem a ve svazku 3 ve virtuální síti 2 s paprskem.
 * Virtuální va 4 z virtuální sítě 1 a Virtuálního Měna 5 z virtuální sítě s paprskem se můžou připojit ke svazku 1 ve virtuální síti rozbočovače.
-
-Virtuální měna 4 ve virtuální síti 1 s paprskem se nemůže připojit ke svazku 3 ve virtuální síti 2 s paprskem. Také VM 5 ve virtuální síti s paprskem se nemůže připojit ke svazku 2 ve virtuální síti 1 s paprskem. To je případ, protože virtuální sítě paprsku nejsou partnerský vztah a _směrování tranzitu není podporováno přes partnerský vztah virtuální sítě_.
+* Virtuální měna 4 ve virtuální síti 1 s paprskem se nemůže připojit ke svazku 3 ve virtuální síti 2 s paprskem. Také VM 5 ve virtuální síti s paprskem se nemůže připojit ke svazku 2 ve virtuální síti 1 s paprskem. To je případ, protože virtuální sítě paprsku nejsou partnerský vztah a _směrování tranzitu není podporováno přes partnerský vztah virtuální sítě_.
+* Ve výše uvedené architektuře, pokud je brána ve virtuální síti s paprskem také připojení k svazku ANF z on-prem připojení přes bránu v centru budou ztraceny. Podle návrhu by byla přednost brána ve virtuální síti s paprskem, a proto se k svazku ANF mohou připojit pouze počítače, které se přes tuto bránu připojují.
 
 ## <a name="next-steps"></a>Další kroky
 

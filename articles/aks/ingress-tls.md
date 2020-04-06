@@ -1,15 +1,16 @@
 ---
-title: Vytvoření příchozího přenosu dat https pomocí clusteru Služby Azure Kubernetes (AKS)
+title: Vytvoření příchozího přenosu dat pomocí automatického tls
+titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak nainstalovat a nakonfigurovat řadič příchozího přenosu dat NGINX, který používá Let's Encrypt pro automatické generování certifikátů TLS v clusteru Služby Azure Kubernetes (AKS).
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: ece117d60ae3d7fd70c0972bb463340c5d38c9e1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: c98310bc5dc6b8f17403505cbcdd7e51355ca2b7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637263"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668431"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče příchozího přenosu dat HTTPS ve službě Azure Kubernetes Service (AKS)
 

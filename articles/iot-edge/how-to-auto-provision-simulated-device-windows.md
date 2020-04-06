@@ -4,16 +4,16 @@ description: Použití simulovaného zařízení na počítači s Windows k test
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/09/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee4f01c3ec57b0cf9e3ecf47254b57be95ea051a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc051e2a0ebbdae7c62ff8a249747d118d3c2ce4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510936"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668678"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Vytvoření a zřízení simulovaného zařízení IoT Edge s virtuálním čipem TPM v systému Windows
 
@@ -60,11 +60,14 @@ Zvolte jazyk sady SDK, který chcete použít k vytvoření simulované zaříze
 
 Při vytváření individuální registrace vyberte **True,** chcete-li deklarovat, že simulované zařízení TPM ve vývojovém počítači se systémem Windows je **zařízení IoT Edge**.
 
+> [!TIP]
+> V rozhraní příkazového příkazu k systému Azure můžete vytvořit [registraci](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu zápisů](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí **příznaku s podporou okrajů** určit, že zařízení nebo skupina zařízení je zařízení IoT Edge.
+
 Simulované zařízení a individuální průvodce zápisem:
 
 * [C](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
-* [C #](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
+* [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 

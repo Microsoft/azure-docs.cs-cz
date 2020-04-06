@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942936"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668117"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy ke konfiguraci a správě webových aplikací v Azure
 
@@ -35,14 +35,14 @@ Odpovědi na časté otázky týkající se používání vlastního názvu dom�
 Informace o tom, jak zakoupit a nastavit vlastní doménu pro webovou aplikaci Služby Aplikace, najdete [v tématu Nákup a konfigurace vlastního názvu domény ve službě App Service](manage-custom-dns-buy-domain.md).
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Jak nahraji a nakonfiguruji existující certifikát SSL pro webovou aplikaci?
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Jak nahraji a nakonfiguruji existující certifikát TLS/SSL pro svou webovou aplikaci?
 
-Informace o tom, jak nahrát a nastavit existující vlastní certifikát SSL, najdete v článku [Přidání certifikátu SSL do aplikace App Service](configure-ssl-certificate.md).
+Informace o tom, jak nahrát a nastavit existující vlastní certifikát TLS/SSL, najdete v článku [Přidání certifikátu TLS/SSL do aplikace App Service](configure-ssl-certificate.md).
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Jak si v Azure pro webovou aplikaci koupím a nakonfiguruji nový certifikát SSL?
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>Jak si v Azure pro webovou aplikaci koupím a nakonfiguruji nový certifikát TLS/SSL?
 
-Informace o tom, jak zakoupit a nastavit certifikát SSL pro webovou aplikaci Služby Aplikace, najdete [v tématu Přidání certifikátu SSL do aplikace App Service](configure-ssl-certificate.md).
+Informace o tom, jak zakoupit a nastavit certifikát TLS/SSL pro webovou aplikaci Služby aplikace, najdete [v tématu Přidání certifikátu TLS/SSL do aplikace App Service](configure-ssl-certificate.md).
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Jak se přesunout prostředky Application Insights?
@@ -84,7 +84,7 @@ Informace o tom, jak získat odchozí IP adresu, pokud je váš web hostovaný v
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Jak získám vyhrazenou nebo vyhrazenou příchozí IP adresu pro svou webovou aplikaci?
 
-Pokud chcete nastavit vyhrazenou nebo vyhrazenou IP adresu pro příchozí volání na web aplikace Azure, nainstalujte a nakonfigurujte certifikát SSL založený na IP adrese.
+Pokud chcete nastavit vyhrazenou nebo vyhrazenou IP adresu pro příchozí volání na web aplikace Azure, nainstalujte a nakonfigurujte certifikát TLS/SSL založený na IP adresách.
 
 Všimněte si, že chcete-li použít vyhrazenou nebo vyhrazenou IP adresu pro příchozí volání, váš plán služby App Service musí být v plánu základní nebo vyšší služby.
 

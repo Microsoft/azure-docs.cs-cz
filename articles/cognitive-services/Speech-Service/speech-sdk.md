@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 440944033e4b6a8fb29cf9ace6ad784b91316526
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656525"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668771"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
@@ -69,21 +69,11 @@ Několik programovacích jazyků sady Speech SDK podporuje kodekkomizované vstu
 
 ## <a name="rest-api"></a>REST API
 
-Zatímco sada Speech SDK pokrývá mnoho funkcí služby Řeči, pro některé scénáře můžete chtít použít rozhraní REST API. Jako příklad je správa koncového bodu vystavena pouze prostřednictvím rozhraní REST API.
-
-> [!TIP]
-> Při spoléhání se na rozhraní REST API, použijte Swagger Editor automaticky generovat klientské knihovny. Chcete-li například generovat knihovnu klienta batch transkripce.
-> 1. Zkopírujte následující ukázkovou adresu URL:
->     ```http
->     https://westus.cris.ai/docs/v2.0/swagger
->     ```
-> 1. Přejděte do <a href="https://editor.swagger.io/" target="_blank">editoru <span class="docon docon-navigate-external x-hidden-focus"></span> Swagger</a>
-> 1. Vyberte**URL importu** **souboru** > a vložte ji.
-> 1. Vyberte **Generovat klienta** a zvolte požadovaný programovací jazyk
+Zatímco sada Speech SDK pokrývá mnoho funkcí služby Řeči, pro některé scénáře můžete chtít použít rozhraní REST API.
 
 ### <a name="batch-transcription"></a>Dávkový přepis
 
-[Dávkový přepis](batch-transcription.md) umožňuje asynchronní přepis řeči na text velkých objemů dat. Dávkový přepis je možný pouze z rozhraní REST API.
+[Dávkový přepis](batch-transcription.md) umožňuje asynchronní přepis řeči na text velkých objemů dat. Dávkový přepis je možný pouze z rozhraní REST API. Kromě převodu zvuku řeči na text umožňuje dávková řeč na text také diarizaci a analýzu mínění.
 
 ## <a name="customization"></a>Přizpůsobení
 

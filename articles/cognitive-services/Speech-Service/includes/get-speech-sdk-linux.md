@@ -4,20 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: a298e78c32464680dab9feccb3cfc84f686ff81b
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 14f9d0936a4d1949cf8d7fc69bbb782ee447bdba
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656630"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668757"
 ---
 :::row:::
     :::column span="3":::
-        Sada Speech SDK podporuje pouze **Ubuntu 16.04/18.04**, **Debian 9**, Red Hat Enterprise **Linux (RHEL) 8**a **CentOS 7/8** na následujících cílových architekturách při použití s Linuxem:
-        - x86
+        Sada Speech SDK podporuje pouze **Ubuntu 16.04/18.04**, **Debian 9**, Red Hat Enterprise **Linux (RHEL) 7/8**a **CentOS 7/8** na následujících cílových architekturách při použití s Linuxem:
         - x64
-        - ARM32
-        - ARM64
     :::column-end:::
     :::column:::
         <br>
@@ -55,7 +52,7 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.2 libasound2
 ```
 
-# <a name="rhel-8-and-centos-78"></a>[RHEL 8 a CentOS 7/8](#tab/rhel-centos)
+# <a name="rhel-78-and-centos-78"></a>[RHEL 7/8 a CentOS 7/8](#tab/rhel-centos)
 
 ```Bash
 sudo yum update

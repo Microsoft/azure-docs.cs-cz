@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 10/04/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535914"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668677"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Vytvoření a zřízení zařízení IoT Edge pomocí symetrického atestace klíče
 
@@ -71,6 +71,9 @@ Při vytváření registrace v DPS máte možnost deklarovat **počáteční sta
    1. Pokud chcete, zadejte **ID zařízení centra IoT** Hub pro své zařízení. ID zařízení můžete použít k cílení na jednotlivé zařízení pro nasazení modulu. Pokud ID zařízení nezadáte, použije se ID registrace.
 
    1. Vyberte **True,** chcete-li deklarovat, že registrace je pro zařízení IoT Edge. Pro registraci skupiny musí být všechna zařízení zařízení IoT Edge nebo žádná z nich nemůže být.
+
+   > [!TIP]
+   > V rozhraní příkazového příkazu k systému Azure můžete vytvořit [registraci](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu zápisů](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí **příznaku s podporou okrajů** určit, že zařízení nebo skupina zařízení je zařízení IoT Edge.
 
    1. Přijměte výchozí hodnotu ze zásad přidělení služby Device Provisioning Service pro **způsob přiřazení zařízení k rozbočovačům** nebo zvolte jinou hodnotu, která je specifická pro tento zápis.
 

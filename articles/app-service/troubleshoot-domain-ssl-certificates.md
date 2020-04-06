@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s certifikáty domény a SSL
-description: Najděte řešení běžných problémů, se kterými se můžete setkat při konfiguraci domény nebo certifikátu SSL ve službě Azure App Service.
+title: Poradce při potížích s doménou a certifikáty TLS/SSL
+description: Najděte řešení běžných problémů, se kterými se můžete setkat při konfiguraci domény nebo certifikátu TLS/SSL ve službě Azure App Service.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966980"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668020"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Poradce při potížích s doménou a certifikátem SSL ve službě Azure App Service
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Poradce při potížích s doménou a problémy s certifikátem TLS/SSL ve službě Azure App Service
 
-Tento článek uvádí běžné problémy, se kterými se můžete setkat při konfiguraci domény nebo certifikátu SSL pro vaše webové aplikace ve službě Azure App Service. Popisuje také možné příčiny a řešení těchto problémů.
+Tento článek uvádí běžné problémy, se kterými se můžete setkat při konfiguraci domény nebo certifikátu TLS/SSL pro vaše webové aplikace ve službě Azure App Service. Popisuje také možné příčiny a řešení těchto problémů.
 
 Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete kontaktovat odborníky Azure na [Fóra MSDN a přetečení zásobníku](https://azure.microsoft.com/support/forums/). Případně můžete soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.
 
@@ -26,17 +26,17 @@ Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete 
 
 ## <a name="certificate-problems"></a>Problémy s certifikátem
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>Do aplikace nelze přidat vazbu certifikátu SSL. 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>Do aplikace nelze přidat vazbu certifikátu TLS/SSL. 
 
 #### <a name="symptom"></a>Příznak
 
-Při přidání vazby SSL se zobrazí následující chybová zpráva:
+Při přidání vazby TLS se zobrazí následující chybová zpráva:
 
 "Přidání vazby SSL se nezdařilo. Certifikát nelze nastavit pro existující program VIP, protože tento certifikát již používá jiný program VIP."
 
 #### <a name="cause"></a>Příčina
 
-K tomuto problému může dojít, pokud máte více vazeb SSL založené na protokolu IP pro stejnou adresu IP ve více aplikacích. Například aplikace A má protokol SSL založený na protokolu IP se starým certifikátem. Aplikace B má protokol SSL založený na protokolu IP s novým certifikátem pro stejnou IP adresu. Když aktualizujete vazbu SSL aplikace s novým certifikátem, s touto chybou se nezdaří, protože se používá stejná IP adresa pro jinou aplikaci. 
+K tomuto problému může dojít, pokud máte více vazeb SSL založené na protokolu IP pro stejnou adresu IP ve více aplikacích. Například aplikace A má protokol SSL založený na protokolu IP se starým certifikátem. Aplikace B má protokol SSL založený na protokolu IP s novým certifikátem pro stejnou IP adresu. Když aktualizujete vazbu TLS aplikace s novým certifikátem, s touto chybou se nezdaří, protože stejná IP adresa se používá pro jinou aplikaci. 
 
 #### <a name="solution"></a>Řešení 
 
@@ -51,7 +51,7 @@ Chcete-li tento problém vyřešit, použijte jednu z následujících metod:
 
 Při pokusu o odstranění certifikátu se zobrazí následující chybová zpráva:
 
-"Certifikát nelze odstranit, protože je aktuálně používán ve vazbě SSL. Vazba SSL musí být před odstraněním certifikátu odebrána."
+"Certifikát nelze odstranit, protože je aktuálně používán ve vazbě TLS/SSL. Vazba TLS musí být před odstraněním certifikátu odebrána."
 
 #### <a name="cause"></a>Příčina
 
@@ -59,7 +59,7 @@ K tomuto problému může dojít, pokud jiný nástroj používá certifikát.
 
 #### <a name="solution"></a>Řešení
 
-Odeberte vazbu SSL pro tento certifikát z aplikací. Potom zkuste odstranit certifikát. Pokud se vám certifikát pořád nepodaří odstranit, vymažte mezipaměť internetového prohlížeče a znovu otevřete portál Azure v novém okně prohlížeče. Potom zkuste odstranit certifikát.
+Odeberte vazbu TLS pro tento certifikát z aplikací. Potom zkuste odstranit certifikát. Pokud se vám certifikát pořád nepodaří odstranit, vymažte mezipaměť internetového prohlížeče a znovu otevřete portál Azure v novém okně prohlížeče. Potom zkuste odstranit certifikát.
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>Certifikát služby App Service nelze zakoupit 
 
@@ -69,7 +69,7 @@ Odeberte vazbu SSL pro tento certifikát z aplikací. Potom zkuste odstranit cer
 #### <a name="cause-and-solution"></a>Příčina a řešení
 K tomuto problému může dojít z některého z následujících důvodů:
 
-- Plán služby App Service je zdarma nebo sdílený. Tyto cenové úrovně nepodporují SSL. 
+- Plán služby App Service je zdarma nebo sdílený. Tyto cenové úrovně nepodporují TLS. 
 
     **Řešení:** Upgradujte plán služby App Service pro aplikaci na standardní.
 
@@ -165,7 +165,7 @@ Pokud byla vaše doména odstraněna před méně než sedmi dny, doména ješt�
 
 ## <a name="domain-problems"></a>Problémy s doménou
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Zakoupili jste certifikát SSL pro nesprávnou doménu
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>Zakoupili jste certifikát TLS/SSL pro nesprávnou doménu
 
 #### <a name="symptom"></a>Příznak
 
@@ -306,7 +306,7 @@ Při nákupu domény vám nebude účtováno po dobu pěti dnů, během které s
 
 **Můžu v předplatném použít doménu v jiné aplikaci Azure App Service?**
 
-Ano. Při přístupu k vlastní domény a SSL okno na webu Azure portal, uvidíte domény, které jste si koupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
+Ano. Při přístupu k vlastní domény a tls okno na webu Azure portal, uvidíte domény, které jste si koupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
 
 **Můžu převést doménu z jednoho předplatného na jiné předplatné?**
 

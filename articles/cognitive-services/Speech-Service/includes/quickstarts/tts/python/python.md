@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 19/14/2020
+ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 58f2b3693b924197dda1e396ae71192776ca276e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 239bb1e43b6a89ed1e8a18d544cf646b5f2de9b9
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78924906"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671220"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -23,7 +23,7 @@ Než začnete, ujistěte se, že:
 
 > [!div class="checklist"]
 > * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
-> * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md)
+> * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
 ## <a name="support-and-updates"></a>Podpora a aktualizace
 

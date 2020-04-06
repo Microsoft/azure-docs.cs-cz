@@ -8,29 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655998"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666786"
 ---
-# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Částečné vyhledávání termínů v dotazech Azure Cognitive Search (zástupný znak, regulární výraz, přibližné hledání, vzory)
+# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Částečné vyhledávání termínů a vzory se speciálními znaky – Azure Cognitive Search (zástupný znak, regulární výraz, vzory)
 
-*Částečné hledání termínu* odkazuje na dotazy skládající se z fragmentů termínu, jako je například první, poslední nebo vnitřní části řetězce nebo vzorek skládající se z kombinace fragmentů, často oddělených speciálními znaky, jako jsou pomlčky nebo lomítka. Běžné případy použití zahrnují dotazování na části telefonního čísla, adresy URL, kódy osob nebo kódů produktů nebo složená slova.
+*Částečné hledání termínu* odkazuje na dotazy skládající se z fragmentů termínu, jako je například první, poslední nebo vnitřní části řetězce. *Vzorek* může být kombinací fragmentů, někdy se speciálními znaky, jako jsou pomlčky nebo lomítka, které jsou součástí dotazu. Běžné případy použití zahrnují dotazování na části telefonního čísla, adresy URL, kódy osob nebo kódů produktů nebo složená slova.
 
-Částečné hledání může být problematické, protože samotný index obvykle neukládá termíny způsobem, který přispívá k částečnému porovnávání řetězců a vzorů. Během fáze analýzy textu indexování jsou speciální znaky zahozeny, složené a složené řetězce jsou rozděleny, což způsobuje selhání dotazů na vzorky, pokud není nalezena žádná shoda. Například telefonní číslo `+1 (425) 703-6214`jako (tokenizované `"425"` `"703"`jako `"6214"` `"1"`, , ) se `"3-62"` v dotazu nezobrazí, protože tento obsah ve skutečnosti v indexu neexistuje. 
+Částečné hledání může být problematické, pokud index nemá termíny ve formátu požadovaném pro porovnávání vzorů. Během fáze analýzy textu indexování pomocí výchozího standardního analyzátoru jsou speciální znaky zahozeny, složené a složené řetězce jsou rozděleny, což způsobuje selhání dotazů na vzorky, když není nalezena žádná shoda. Například telefonní číslo `+1 (425) 703-6214`jako (tokenizované `"425"` `"703"`jako `"6214"` `"1"`, , ) se `"3-62"` v dotazu nezobrazí, protože tento obsah ve skutečnosti v indexu neexistuje. 
 
-Řešením je uložit neporušené verze těchto řetězců v indexu, takže můžete podporovat scénáře částečné hledání. Vytvoření dalšího pole pro neporušený řetězec a pomocí analyzátoru pro zachování obsahu je základem řešení.
+Řešením je vyvolat analyzátor, který zachová úplný řetězec, včetně mezer a speciálních znaků v případě potřeby, takže můžete podporovat částečné termíny a vzorky. Vytvoření dalšího pole pro neporušený řetězec a pomocí analyzátoru pro zachování obsahu je základem řešení.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co je částečné vyhledávání v Azure Cognitive Search
 
-V Azure Cognitive Search částečné vyhledávání je k dispozici v těchto formulářích:
+V Azure Cognitive Search částečné vyhledávání a vzor je k dispozici v těchto formulářích:
 
 + [Prefix vyhledávání](query-simple-syntax.md#prefix-search), `search=cap*`například , odpovídající na "Cap'n Jack waterfront Inn" nebo "Gacc Capital". Pro vyhledávání předpon můžete použít syntaxi jednoduchého dotazu.
-+ [Hledání se zástupnými znaky](query-lucene-syntax.md#bkmk_wildcard) nebo [regulární výrazy,](query-lucene-syntax.md#bkmk_regex) které vyhledávají vzorek nebo části vloženého řetězce, včetně přípony. Například vzhledem k termínu "alfanumerické" byste`search=/.*numeric.*/`použili zástupné hledání ( ) pro shodu dotazu přípony na tento termín. Zástupný znak a regulární výrazy vyžadují úplnou syntaxi Lucene.
 
-Pokud některý z výše uvedených typů dotazů jsou potřebné v klientské aplikaci, postupujte podle kroků v tomto článku a ujistěte se, že v indexu existuje potřebný obsah.
++ [Hledání se zástupnými znaky](query-lucene-syntax.md#bkmk_wildcard) nebo [regulární výrazy,](query-lucene-syntax.md#bkmk_regex) které vyhledávají vzorek nebo části vloženého řetězce, včetně přípony. Zástupný znak a regulární výrazy vyžadují úplnou syntaxi Lucene. 
+
+  Některé příklady částečného hledání termínů zahrnují následující. Pro dotaz přípony, vzhledem k termínu "alfanumerické",`search=/.*numeric.*/`byste použít zástupné hledání ( ) najít shodu. Pro částečný termín, který obsahuje znaky, jako je například fragment adresy URL, může být nutné přidat řídicí znaky. V JSON lomítko lomítko `/` `\`je uvozena s zpětné lomítko . Jako takový `search=/.*microsoft.com\/azure\/.*/` je syntaxe fragmentu adresy URL "microsoft.com/azure/".
+
+Jak již bylo uvedeno, všechny výše uvedené vyžadují, aby index obsahuje řetězce ve formátu příznivém pro porovnávání vzorů, které standardní analyzátor neposkytuje. Podle kroků v tomto článku můžete zajistit, že existuje potřebný obsah pro podporu těchto scénářů.
 
 ## <a name="solving-partial-search-problems"></a>Řešení problémů s částečným vyhledáváním
 

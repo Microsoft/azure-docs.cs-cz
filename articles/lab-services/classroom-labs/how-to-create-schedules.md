@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72330536"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667769"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Vytváření a správa plánů pro laboratoře pro učebny ve službě Azure Lab Services 
 Plány umožňují nakonfigurovat testovací prostředí učebny tak, aby se virtuální počítače v testovacím prostředí automaticky spouštěly a vypínaly v určený čas. Můžete definovat jednorázový nebo opakovaný plán. Následující postupy poskytují kroky k vytvoření a správě plánů pro testovací prostředí ve třídě: 
@@ -28,6 +28,12 @@ Plány umožňují nakonfigurovat testovací prostředí učebny tak, aby se vir
 
 ## <a name="set-a-schedule-for-the-lab"></a>Nastavení plánu pro testovací prostředí
 Vytvořte naplánovanou událost pro testovací prostředí tak, aby virtuální chody v testovacím prostředí byly automaticky spuštěny nebo zastaveny v určitých časech. Kvóta uživatele, kterou jste zadali dříve, je dodatečný čas přiřazený každému uživateli mimo tento naplánovaný čas. 
+
+> [!NOTE]
+> Než začneme, tady je postup, jak plány ovlivní testovací virtuální počítače: 
+>- Šablona virtuální počítač není součástí plánů. 
+>- Schylují se pouze přiřazené virtuální počítače. To znamená, že pokud není stroj nárokován koncovým uživatelem (studentem), stroj se nespustí v naplánovaných hodinách. 
+>- Všechny virtuální počítače (ať už nárokované uživatelem nebo ne) jsou zastaveny na základě plánu testovacího prostředí. 
 
 1. Přepněte na stránku **Plány** a na panelu nástrojů vyberte **Přidat naplánovanou událost.** 
 

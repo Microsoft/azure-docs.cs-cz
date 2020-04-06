@@ -4,16 +4,16 @@ description: Použití zařízení Azure IoT Edge jako transparentní brány, kt
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/30/2019
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529165"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666668"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána
 
@@ -42,7 +42,7 @@ Můžete vytvořit libovolnou infrastrukturu certifikátů, která umožní dův
 >[!NOTE]
 >Termín "kořenová certifikační autorita" používaný v tomto článku odkazuje na nejvyšší veřejný certifikát autority řetězce certifikátů PKI a ne nutně kořenový certifikát syndikované certifikační autority. V mnoha případech se ve skutečnosti jedná o zprostředkující veřejný certifikát certifikační autority.
 
-Brána představuje certifikát certifikační autority zařízení IoT Edge do zařízení pro příjem dat během zahájení připojení. Následné zařízení zkontroluje, zda je certifikát certifikační autority zařízení IoT Edge podepsán kořenovým certifikátem certifikační autority. Tento proces umožňuje zařízení pro příjem dat k potvrzení, že brána pochází z důvěryhodného zdroje.
+Démon zabezpečení IoT Edge používá certifikát certifikační autority zařízení IoT Edge k podepsání certifikátu certifikační autority pracovního vytížení, který zase podepisuje certifikát serveru pro centrum IoT Edge. Brána představuje certifikát serveru do zařízení pro příjem dat během zahájení připojení. Zařízení pro příjem dat zkontroluje, zda je certifikát serveru součástí řetězu certifikátů, který se shrnuje do kořenového certifikátu certifikační autority. Tento proces umožňuje zařízení pro příjem dat k potvrzení, že brána pochází z důvěryhodného zdroje. Další informace najdete [v tématu Zjistěte, jak Azure IoT Edge používá certifikáty](iot-edge-certs.md).
 
 Následující kroky vás provedou procesem vytváření certifikátů a jejich instalace na správných místech brány. Ke generování certifikátů můžete použít libovolný počítač a potom je zkopírovat do zařízení IoT Edge.
 

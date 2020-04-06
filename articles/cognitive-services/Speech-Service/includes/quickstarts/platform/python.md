@@ -1,21 +1,15 @@
 ---
-title: 'Úvodní příručka: Sada Speech SDK pro nastavení platformy Pythonu – služba rozpoznávání řeči'
-titleSuffix: Azure Cognitive Services
-description: Tato příručka slouží k nastavení platformy pro používání Pythonu pomocí sady SDK služby Řeč.
-services: cognitive-services
-author: markamos
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/04/2020
+ms.author: dapine
+ms.openlocfilehash: 327000173b4c5c378f60c76eb1a24bd155901671
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925942"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666920"
 ---
 Tato příručka ukazuje, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro Python. Pokud chcete, aby název balíčku začal sám, `pip install azure-cognitiveservices-speech`spusťte aplikaci .
 
@@ -26,7 +20,7 @@ Tato příručka ukazuje, jak nainstalovat [sadu Speech SDK](~/articles/cognitiv
 - Balíček Python Speech SDK je k dispozici pro tyto operační systémy:
   - Windows: x64 a x86
   - Mac: macOS X verze 10.12 nebo novější
-  - Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 na x64
+  - Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 na x64
 
 ## <a name="prerequisites"></a>Požadavky
 

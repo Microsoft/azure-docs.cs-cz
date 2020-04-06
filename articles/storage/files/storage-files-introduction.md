@@ -7,20 +7,24 @@ ms.topic: overview
 ms.date: 03/10/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a7bb7939921bfcc3a870193cb9025a8f3dff72c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78969129"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666791"
 ---
 # <a name="what-is-azure-files"></a>Co je služba Soubory Azure?
 Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. Sdílené složky Azure je navíc možné ukládat do mezipaměti ve Windows Serveru pomocí Synchronizace souborů Azure, aby byly rychle přístupné poblíž místa, kde se data používají.
 
 ## <a name="videos"></a>Videa
-| Představujeme Synchronizaci souborů Azure (2 min) | Soubory Azure se synchronizací (Ignite 2017) (85 min)  |
+| Představujeme Azure File Sync | Soubory Azure se synchronizací (Ignite 2019)  |
 |-|-|
-| [![Semafor videa Introducing Azure File Sync – kliknutím přehrajete!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Semafor prezentace Azure Files with Sync – kliknutím přehrajete!](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/watch?v=GMzh2M66E9o) |
+| [![Semafor videa Introducing Azure File Sync – kliknutím přehrajete!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Semafor prezentace Azure Files with Sync – kliknutím přehrajete!](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
+
+Tady jsou některá videa o běžných případech použití souborů Azure:
+* [Nahrazení souborového serveru serverem Azure File Share bez serveru](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
+* [Začínáme s kontejnery profilů FSLogix v souborech Azure ve Windows Virtual Desktop s využitím ověřování pravosti služby AD](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
 ## <a name="why-azure-files-is-useful"></a>Proč je služba Soubory Azure užitečná
 Sdílené složky Azure lze použít k těmto činnostem:

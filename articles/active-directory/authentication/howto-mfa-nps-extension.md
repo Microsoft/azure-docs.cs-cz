@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c251569cfe6a2f27f86421ffe6a446ace52b435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f884f4c0ea3a610f28a8fdbb34b081f0b0a64d08
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051158"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666949"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication
 
@@ -78,6 +78,7 @@ Server NPS musí být schopen komunikovat s následujícími adresami URL přes 
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
+- https:\//credentials.azure.com
 
 K dokončení [instalace adaptéru pomocí zadaný skript powershellu](#run-the-powershell-script) je navíc nutné připojení k následujícím adresám URL.
 
@@ -125,7 +126,7 @@ Existují dva faktory, které ovlivňují, které metody ověřování jsou k di
       > [!NOTE]
       > Při nasazení rozšíření NPS použijte tyto faktory k vyhodnocení, které metody jsou k dispozici pro uživatele. Pokud klient RADIUS podporuje protokol PAP, ale uživatelské pole klienta nemá vstupní pole pro ověřovací kód, pak jsou dvě podporované možnosti telefonního hovoru a oznámení mobilní aplikace.
       >
-      > Kromě toho, pokud uživatelské rozhraní klienta VPN podporuje vstupní pole a nakonfigurovali jste zásady přístupu k síti - ověřování může být úspěšné, ale žádný z atributů RADIUS nakonfigurovaných v zásadách sítě nebude použit ani na zařízení pro přístup k síti, jako server RRAS, ani klient VPN. V důsledku toho může mít klient VPN větší přístup, než je žádoucí, nebo méně k žádnému přístupu.
+      > Kromě toho, pokud uživatelské rozhraní klienta VPN podporuje vstupní pole a nakonfigurovali jste zásady přístupu k síti - ověřování může být úspěšné, ale žádný z atributů RADIUS nakonfigurovaných v zásadách sítě nebude použit ani na zařízení pro přístup k síti, jako je server RRAS, ani na klienta VPN. V důsledku toho může mít klient VPN větší přístup, než je žádoucí, nebo méně k žádnému přístupu.
       >
 
 2. Vstupní metody, které klientská aplikace (VPN, Netscaler server nebo jiné) může zpracovat. Má například klient VPN nějaké prostředky, které uživateli umožňují zadat ověřovací kód z textové nebo mobilní aplikace?

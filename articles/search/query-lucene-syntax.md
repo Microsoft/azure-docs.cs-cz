@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ed7686bbef7dc1342528475226d11b8b8b8fb640
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656920"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668595"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxe dotazu Lucene v Azure Cognitive Search
 
@@ -104,7 +104,7 @@ Seskupení polí je podobné, ale obory seskupení do jednoho pole. Například 
 
 ### <a name="or-operator-or-or-"></a>Operátor `OR` or nebo`||`
 
-Operátor OR je svislý znak pruhu nebo potrubí. Například: `wifi || luxury` bude hledat dokumenty obsahující buď "wifi" nebo "luxusní" nebo obojí. Vzhledem k tomu, že operátor OR je výchozí `wifi luxury` operátor konjunkce, můžete jej také vynechat, což odpovídá `wifi || luxuery`.
+Operátor OR je svislý znak pruhu nebo potrubí. Například: `wifi || luxury` bude hledat dokumenty obsahující buď "wifi" nebo "luxusní" nebo obojí. Vzhledem k tomu, že operátor OR je výchozí `wifi luxury` operátor konjunkce, můžete jej také vynechat, což odpovídá `wifi || luxury`.
 
 ### <a name="and-operator-and--or-"></a>operátor `AND`A `&&` nebo`+`
 
@@ -162,6 +162,8 @@ Následující příklad pomáhá ilustrovat rozdíly. Předpokládejme, že je 
  Hledání regulárních výrazů vyhledá shodu na základě obsahu mezi lomítkem "/", jak je popsáno ve [třídě RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).  
 
  Chcete-li například vyhledat dokumenty obsahující "motel" `/[mh]otel/`nebo "hotel", zadejte . Hledání regulárních výrazů je porovnáno s jednotlivými slovy.
+
+Některé nástroje a jazyky ukládají další požadavky na řídicí znak. Pro JSON řetězce, které obsahují lomítko lomítko jsou `search=/.*microsoft.com\/azure\/.*/` uvozeny s zpětné lomítko: "microsoft.com/azure/" se stane, kde `search=/.* <string-placeholder>.*/` nastaví regulární výraz a `microsoft.com\/azure\/` je řetězec s uvozeným lomítkem lomítka.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Hledání zástupnými znaky  
  Obecně rozpoznanou syntaxi můžete použít pro více (*) nebo jednoznakové zástupné vyhledávání. Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jediným termínem a nikoli frází.

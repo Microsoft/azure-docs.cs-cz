@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421262"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668854"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 do Gen2 pomocí Azure Data Factory
 
@@ -137,7 +137,7 @@ Tento článek ukazuje, jak pomocí nástroje kopírování dat data data data z
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Pokud chcete vyhodnotit upgrady z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2 obecně, najdete v [tématu Upgrade řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md). Následující části představují osvědčené postupy pro použití data factory pro upgrade dat z Data Lake Storage Gen1 na Data Lake Storage Gen2.
+Pokud chcete vyhodnotit upgrady z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2 obecně, najdete v [tématu Upgrade řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md). Následující části představují osvědčené postupy pro použití data factory pro upgrade dat z Data Lake Storage Gen1 na Data Lake Storage Gen2.
 
 ### <a name="data-partition-for-historical-data-copy"></a>Datový oddíl pro kopírování historických dat
 

@@ -1,6 +1,6 @@
 ---
-title: Samoobslužné nasazení pro resetování hesla – Azure Active Directory
-description: Strategie úspěšné implementace samoobslužného resetování hesla Azure AD
+title: Důležité informace o nasazení samoobslužného hesla služby Azure Active Directory
+description: Informace o aspektech nasazení a strategii pro úspěšnou implementaci samoobslužného resetování hesla Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,27 +11,34 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652389"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667319"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Plánování samoobslužného hesla služby Azure Active Directory
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování samoobslužného resetování hesla služby Azure Active Directory
 
-> [!NOTE]
-> Tento plán nasazení nabízí pokyny k plánování a osvědčené postupy pro nasazení samoobslužného resetování hesla služby Azure AD (SSPR). <br>**Pokud hledáte nástroj SSPR, abyste se dostali zpět [https://aka.ms/sspr](https://aka.ms/sspr)ke svému účtu, přejděte na . **
+> [!IMPORTANT]
+> Tento plán nasazení nabízí pokyny a osvědčené postupy pro nasazení samoobslužné resetování hesla Azure AD (SSPR).
+>
+> **Pokud jste a koncový uživatel a potřebujete se vrátit [https://aka.ms/sspr](https://aka.ms/sspr)ke svému účtu, přejděte na . **
 
-[Samoobslužné resetování hesla (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) je funkce služby Azure Active Directory (AD), která uživatelům umožňuje resetovat hesla bez kontaktování pracovníků IT o pomoc. Uživatelé se mohou rychle odblokovat a pokračovat v práci bez ohledu na to, kde jsou nebo denní dobu. Tím, že zaměstnanci odblokují sami sebe, může vaše organizace snížit neproduktivní čas a vysoké náklady na podporu pro většinu běžných problémů souvisejících s heslem. 
+[Samoobslužné resetování hesla (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) je funkce služby Azure Active Directory (AD), která uživatelům umožňuje resetovat hesla bez kontaktování pracovníků IT o pomoc. Uživatelé se mohou rychle odblokovat a pokračovat v práci bez ohledu na to, kde jsou nebo denní dobu. Tím, že zaměstnanci odblokují sami sebe, může vaše organizace snížit neproduktivní čas a vysoké náklady na podporu pro většinu běžných problémů souvisejících s heslem.
 
 Program SSPR má následující klíčové funkce:
 
 * Samoobslužná služba umožňuje koncovým uživatelům resetovat hesla, jejichž platnost vypršela nebo jejichž platnost nevypršela, aniž by museli kontaktovat správce nebo helpdesk s žádostí o podporu.
-
 * [Password Writeback](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) umožňuje správu místních hesel a řešení uzamčení účtu prostředem cloudu.
-
 * Sestavy aktivit správy hesel poskytují správcům přehled o aktivitě resetování hesla a registrace, ke kterým dochází v jejich organizaci.
+
+Tato příručka pro nasazení ukazuje, jak naplánovat a otestovat zavedení samovlastního pr.
+
+Chcete-li rychle zobrazit sspr v akci a pak se vrátit k pochopení další chod nasazení:
+
+> [!div class="nextstepaction"]
+> [Povolit samoobslužné resetování hesla (SSPR)](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>Další informace o sspr
 
@@ -134,7 +141,7 @@ Komunikace je rozhodující pro úspěch každé nové služby. Měli byste proa
 
 ### <a name="plan-a-pilot"></a>Naplánujte si pilotní projekt
 
-Doporučujeme, aby počáteční konfigurace sspr být v testovacím prostředí. Začněte s pilotní skupinou povolením programu SSPR pro podmnožinu uživatelů ve vaší organizaci. Viz [Doporučené postupy pro pilota](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans).
+Doporučujeme, aby počáteční konfigurace sspr je v testovacím prostředí. Začněte s pilotní skupinou povolením programu SSPR pro podmnožinu uživatelů ve vaší organizaci. Viz [Doporučené postupy pro pilota](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans).
 
 Pokud chcete vytvořit skupinu, přečtěte si, jak [vytvořit skupinu a přidat členy ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal). 
 
@@ -213,7 +220,7 @@ Doporučujeme nesynchronizovat účty správce služby Active Directory s Azure 
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Prostředí s více systémy správy identit
 
-Některá prostředí mají více systémů správy identit. Správci identit na premesis, jako jsou Oracle AM a SiteMinder, vyžadují synchronizaci s AD pro hesla. Můžete to provést pomocí nástroje, jako je služba oznámení o změně hesla (PCNS) se Správcem identit (MIM) společnosti Microsoft. Informace o tomto složitějším scénáři naleznete v článku [Nasazení služby oznámení o změně hesla MIM na řadiči domény](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
+Některá prostředí mají více systémů správy identit. Místní správci identit, jako jsou Oracle AM a SiteMinder, vyžadují synchronizaci hesel se službou AD. Můžete to provést pomocí nástroje, jako je služba oznámení o změně hesla (PCNS) se Správcem identit (MIM) společnosti Microsoft. Informace o tomto složitějším scénáři naleznete v článku [Nasazení služby oznámení o změně hesla MIM na řadiči domény](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
 
 ## <a name="plan-testing-and-support"></a>Plánování testování a podpora
 
@@ -255,7 +262,7 @@ Chcete-li povolit úspěch týmu podpory, můžete vytvořit nejčastější dot
 | Uživatel nemůže nastavit nové heslo| Uživatel dokončí ověření během toku resetování hesla, ale nemůže nastavit nové heslo. |
 | Uživatel i) na zařízení s Windows 10 neuvidí odkaz na resetovací heslo| Uživatel se pokouší obnovit heslo ze zamykací obrazovky Windows 10, ale zařízení se buď nepřipojí k Azure AD, nebo zásady zařízení Intune nejsou povolené. |
 
-### <a name="plan-roll-back"></a>Vrátit plán
+### <a name="plan-rollback"></a>Vrácení plánu zpět
 
 Vrácení nasazení zpět:
 
@@ -336,7 +343,7 @@ Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete začít nasazovat samoobslužné [resetování hesla Azure AD, přečtěte si článek Dokončení pilotního nasazení samoobslužného resetování hesla služby Azure AD.](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)
+* Pokud chcete začít nasazovat [samoobslužné resetování hesla Azure AD, přečtěte si článek Povolení samoobslužného hesla Azure AD.](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md)
 
 * [Zvažte implementaci ochrany heslem Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

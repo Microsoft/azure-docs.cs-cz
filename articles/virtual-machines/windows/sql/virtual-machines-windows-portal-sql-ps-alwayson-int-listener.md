@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647879"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668890"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurace jednoho nebo více naslouchacích procesů skupiny dostupnosti always on – Správce prostředků
 Toto téma ukazuje, jak:
@@ -58,9 +58,13 @@ Pokud omezujete přístup pomocí skupiny zabezpečení sítě Azure, ujistěte 
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Určení požadované skladové položky pro vyrovnávání zatížení
 
-[Azure vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md) je k dispozici ve 2 SKU: Základní & Standard. Doporučuje se standardní nástroje pro vyrovnávání zatížení. Pokud jsou virtuální počítače v sadě dostupnosti, je povolen základní nástroj pro vyrovnávání zatížení. Standardní vyrovnávání zatížení vyžaduje, aby všechny IP adresy virtuálního počítačů používaly standardní IP adresy.
+[Azure vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md) je k dispozici ve 2 SKU: Základní & Standard. Doporučuje se standardní nástroje pro vyrovnávání zatížení. Pokud jsou virtuální počítače v sadě dostupnosti, je povolen základní nástroj pro vyrovnávání zatížení. Pokud jsou virtuální počítače v zóně dostupnosti, je vyžadován standardní nástroj pro vyrovnávání zatížení. Standardní vyrovnávání zatížení vyžaduje, aby všechny IP adresy virtuálního počítačů používaly standardní IP adresy.
 
 Aktuální [šablona společnosti Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) pro skupinu dostupnosti používá základní vyrovnávání zatížení se základními adresami IP.
+
+   > [!NOTE]
+   > Koncový [bod služby](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) budete muset nakonfigurovat, pokud používáte standardní vyrovnávání zatížení a Azure Storage pro cloud svědka. 
+
 
 Příklady v tomto článku určují standardní vyrovnávání zatížení. V příkladech skript obsahuje `-sku Standard`.
 
@@ -226,6 +230,8 @@ Všimněte si následujících pokynů pro naslouchací proces skupiny dostupnos
 * S interní nástroj pro vyrovnávání zatížení, přístup k naslouchací proces pouze ze stejné virtuální sítě.
 
 * Pokud omezujete přístup pomocí skupiny zabezpečení sítě Azure, ujistěte se, že pravidla povolení zahrnují ip adresy IP v back-endu SQL Server a plovoucí IP adresy nástroje pro vyrovnávání zatížení pro naslouchací proces AG a případně základní IP adresu clusteru.
+
+* Vytvořte koncový bod služby při použití standardního vykladače zatížení s Azure Storage pro cloud svědka. Další informace naleznete v [tématu Udělení přístupu z virtuální sítě](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Další informace
 Další informace najdete [v tématu Konfigurace skupiny dostupnosti vždy v aplikaci Azure v aplikaci Azure ručně](virtual-machines-windows-portal-sql-availability-group-tutorial.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656921"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668583"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou cloudových služeb Azure: Nejčastější dotazy (nejčastější dotazy)
 
@@ -30,11 +30,11 @@ Tento článek obsahuje nejčastější dotazy týkající se problémů s konfi
 
 **Certifikáty**
 
-- [Proč je řetězec certifikátů mého certifikátu Cloud Service SSL neúplný?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [Proč je řetězec certifikátů mého certifikátu TLS/SSL služby Cloud Service neúplný?](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [Jaký je účel "Šifrovací certifikát nástrojů Windows Azure pro rozšíření"?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [Jak lze vygenerovat žádost o podpis certifikátu (CSR) bez "RDP-ing" v instanci?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [Platnost certifikátu správy cloudových služeb vyprší. Jak ji obnovit?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [Jak automatizovat instalaci hlavního SSL certifikátu(.pfx) a zprostředkujícího certifikátu(.p7b)?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Jak automatizovat instalaci hlavního certifikátu TLS/SSL(.pfx) a zprostředkujícího certifikátu(.p7b)?](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [Jaký je účel certifikátu Microsoft Azure Service Management for MachineKey?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **Monitorování a protokolování**
@@ -55,7 +55,7 @@ Tento článek obsahuje nejčastější dotazy týkající se problémů s konfi
 - [Může microsoft interní technici vzdálenou plochu cloudové služby instance bez povolení?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
 - [Pomocí souboru RDP nelze vzdálenou plochu virtuálnímu počítači cloudové služby. Zoňou následující chyba: Došlo k chybě ověřování (Kód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
-**Měřítka**
+**Škálování**
 
 - [Nelze škálovat nad rámec x instancí](#i-cannot-scale-beyond-x-instances)
 - [Jak lze nakonfigurovat automatické škálování na základě metrik paměti?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
@@ -75,7 +75,7 @@ Tento článek obsahuje nejčastější dotazy týkající se problémů s konfi
 
 ## <a name="certificates"></a>Certifikáty
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Proč je řetězec certifikátů mého certifikátu Cloud Service SSL neúplný?
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Proč je řetězec certifikátů mého certifikátu TLS/SSL služby Cloud Service neúplný?
     
 Zákazníkům doporučujeme nainstalovat úplný řetěz certifikátů (listový certifikát, zprostředkující certifikáty a kořenový certifikát) namísto pouze listu. Při instalaci pouze listový certifikát, spoléháte se na systém Windows k vytvoření řetězu certifikátů procházkou ctl. Pokud při pokusu systému Windows o ověření certifikátu dochází k občasným problémům se sítí nebo službou DNS v Azure nebo Windows Update, může být certifikát považován za neplatný. Instalací úplného řetězu certifikátů se tomuto problému lze vyhnout. Blog na [Jak nainstalovat zřetězený SSL certifikát](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) ukazuje, jak to udělat.
 
@@ -103,7 +103,7 @@ K obnovení certifikátů správy můžete použít následující příkazy pro
 
 **Get-AzurePublishSettingsFile** vytvoří nový certifikát správy v**certifikátech správy** **předplatného** > na webu Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-credentials".
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak automatizovat instalaci hlavního SSL certifikátu(.pfx) a zprostředkujícího certifikátu(.p7b)?
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak automatizovat instalaci hlavního certifikátu TLS/SSL(.pfx) a zprostředkujícího certifikátu(.p7b)?
 
 Tuto úlohu můžete automatizovat pomocí spouštěcího skriptu (batch/cmd/PowerShell) a zaregistrovat tento spouštěcí skript v souboru definice služby. Přidejte spouštěcí skript i soubor certifikátu (.p7b) do složky projektu ve stejném adresáři spouštěcího skriptu.
 
@@ -183,7 +183,7 @@ Chcete-li nastavit statickou adresu IP, musíte vytvořit vyhrazenou adresu IP. 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Jaké jsou funkce a možnosti, které poskytuje Základní IPS/IDS a DDOS Azure?
 Azure má IPS/IDS na fyzických serverech datového centra, které chrání před hrozbami. Kromě toho mohou zákazníci nasadit řešení zabezpečení třetích stran, jako jsou brány firewall webových aplikací, síťové brány firewall, antimalwar, detekce vniknutí, systémy prevence (IDS/IPS) a další. Další informace naleznete v [tématu Ochrana dat a datových zdrojů a dodržování globálních standardů zabezpečení](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).
 
-Společnost Microsoft průběžně monitoruje servery, sítě a aplikace, aby zjišťovala hrozby. Přístup Azure pro správu multiprnged hrozeb využívá detekci vniknutí, distribuovanou prevenci útoků denial-of-service (DDoS), penetrační testování, analýzu chování, detekci anomálií a strojové učení k neustálému posilování obrany a snížit rizika. Microsoft Antimalware pro Azure chrání Cloudové služby Azure a virtuální počítače. Máte možnost nasadit řešení zabezpečení třetích stran, jako jsou požární stěny webových aplikací, síťové brány firewall, antimalwarové systémy, systémy detekce a prevence vniknutí (IDS/IPS) a další.
+Společnost Microsoft průběžně monitoruje servery, sítě a aplikace, aby zjišťovala hrozby. Přístup Azure pro správu multiprnged hrozeb využívá detekci vniknutí, distribuovanou prevenci útoků denial-of-service (DDoS), penetrační testování, analýzy chování, detekci anomálií a strojové učení k neustálému posilování obrany a snižování rizik. Microsoft Antimalware pro Azure chrání Cloudové služby Azure a virtuální počítače. Máte možnost nasadit řešení zabezpečení třetích stran, jako jsou požární stěny webových aplikací, síťové brány firewall, antimalwarové systémy, systémy detekce a prevence vniknutí (IDS/IPS) a další.
 
 ### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Jak povolit HTTP/2 na virtuálním počítači cloudových služeb?
 

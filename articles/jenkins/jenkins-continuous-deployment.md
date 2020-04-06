@@ -1,17 +1,18 @@
 ---
-title: Kurz – nasazení z GitHubu do služby Azure Kubernetes Service (AKS) s Jenkinsem
+title: Nasazení z GitHubu do AKS s Jenkinsem
+titleSuffix: Azure Kubernetes Service
 description: Nastavení Jenkinse pro průběžnou integraci (CI) z GitHubu a průběžného nasazení (CD) do služby Azure Kubernetes Service (AKS)
 services: container-service
 author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: eb48a8558aab6c7a832efe45650686d9df0d7426
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a93cfc77178ff7638217663c2ceda500aae4cfd7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624745"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668638"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z GitHubu do služby Azure Kubernetes Service (AKS) s nepřetržitou integrací a nasazením Jenkinse
 

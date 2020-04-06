@@ -1,15 +1,16 @@
 ---
-title: Osvědčené postupy pro operátory – pokročilé funkce plánovače ve službách Azure Kubernetes Services (AKS)
+title: Doporučené postupy pro funkce plánovače
+titleSuffix: Azure Kubernetes Service
 description: Seznamte se s doporučenými postupy operátora clusteru pro používání pokročilých funkcí plánovače, jako jsou například počina a tolerance, voliče uzlů a spřažení, nebo spřažení a protispřaženosti v Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 546c1d6ae25a33c6df93469ccf8c230b4b1c474b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47b2d78f7dc831c4314c4215f5e0a9e17f75f0dc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252893"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668366"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Doporučené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
 

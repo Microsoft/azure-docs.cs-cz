@@ -1,6 +1,6 @@
 ---
-title: Nasazení azure vícefaktorového ověřování – Azure Active Directory
-description: Plánování nasazení vícefaktorového ověřování Microsoft Azure
+title: Důležité informace o nasazení pro azure vícefaktorové ověřování
+description: Informace o aspektech nasazení a strategii pro úspěšnou implementaci azure multifaktorového ověřování
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae58482ced524958ffcdd6094ae57856d088eaf
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653959"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667348"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování cloudového nasazení Azure Multi-Factor Authentication
+# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení azure multi-factor authentication
 
 Lidé se připojují k organizačním zdrojům ve stále složitějších scénářích. Lidé se připojují z organizací vlastněných, osobních a veřejných zařízení v podnikové síti i mimo ni pomocí chytrých telefonů, tabletů, počítačů a přenosných počítačů, často na více platformách. V tomto neustále připojeném světě s více zařízeními a více platformami je zabezpečení uživatelských účtů důležitější než kdy předtím. Hesla, bez ohledu na jejich složitost, používaná na různých zařízeních, sítích a platformách již nejsou dostatečná k zajištění zabezpečení uživatelského účtu, zejména pokud uživatelé mají tendenci opakovaně používat hesla mezi účty. Sofistikované útoky phishingu a další sociální inženýrství mohou vést k tomu, že uživatelská jména a hesla budou zveřejněna a prodávána na tmavém webu.
 
 [Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) pomáhá zabezpečit přístup k datům a aplikacím. Poskytuje další vrstvu zabezpečení pomocí druhé formy ověřování. Organizace mohou použít [podmíněný přístup,](../conditional-access/overview.md) aby řešení vyhovovalo jejich specifickým potřebám.
+
+Tento průvodce nasazením ukazuje, jak plánovat a pak otestovat zavedení Azure Multi-Factor Authentication.
+
+Pokud chcete rychle zobrazit azure multifaktorové ověřování v akci a pak se vrátit k pochopení dalších aspektů nasazení:
+
+> [!div class="nextstepaction"]
+> [Povolení služby Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -173,7 +180,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 
 Pokud vaši uživatelé byli povoleni pomocí vícefaktorového ověřování Azure pro jednotlivé uživatele, může vám následující Prostředí PowerShell pomoci při převodu na azure multifaktorové ověřování založené na podmíněném přístupu.
 
-Spusťte toto prostředí PowerShell v okně ise nebo jej uložte jako . PS1 pro spuštění místně.
+Spusťte toto prostředí PowerShell v `.PS1` okně ISE nebo uložte jako soubor pro místní spuštění.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -317,7 +324,7 @@ Na každém serveru služby AD FS v místním počítači My Store bude certifik
 
 Pokud se doba platnosti certifikátů blíží k vypršení platnosti, [vygenerujte a ověřte nový certifikát MFA na každém serveru služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-Následující pokyny podrobně popisuje, jak spravovat certifikáty Azure MFA na serverech služby AD FS. Při konfiguraci služby AD FS s Azure MFA jsou certifikáty generované prostřednictvím rutiny `New-AdfsAzureMfaTenantCertificate` prostředí PowerShell platné po dobu 2 let. Obnovte a nainstalujte obnovené certifikáty před vypršením platnosti na vyprázdnění přerušení služby MFA.
+Následující pokyny podrobně popisuje, jak spravovat certifikáty Azure MFA na serverech služby AD FS. Při konfiguraci služby AD FS s Azure MFA, certifikáty generované prostřednictvím rutiny `New-AdfsAzureMfaTenantCertificate` prostředí PowerShell jsou platné po dobu dvou let. Obnovte a nainstalujte obnovené certifikáty před vypršením platnosti na vyprázdnění přerušení služby MFA.
 
 ## <a name="implement-your-plan"></a>Implementace plánu
 
@@ -357,6 +364,7 @@ Najděte řešení běžných problémů s Azure MFA v [článku Řešení potí
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co jsou metody ověřování?](concept-authentication-methods.md)
-* [Povolení konvergované registrace pro azure vícefaktorové ověřování a samoobslužné resetování hesla Azure AD](concept-registration-mfa-sspr-converged.md)
-* Proč byl uživatel vyzván nebo nebyl vyzván k provedení vícefaktorového ověřování? Podívejte se na část [sestavy přihlášení Azure AD v dokumentu Sestavy v Azure vícefaktorové ověřování](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+Chcete-li zobrazit Azure Multi-Factor Authentication v akci, postupujte podle následujícího kurzu:
+
+> [!div class="nextstepaction"]
+> [Povolení služby Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)

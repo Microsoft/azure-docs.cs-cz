@@ -1,15 +1,16 @@
 ---
-title: Osvědčené postupy operátora – identita ve službách Azure Kubernetes Services (AKS)
+title: Doporučené postupy pro správu identity
+titleSuffix: Azure Kubernetes Service
 description: Seznamte se s doporučenými postupy operátora clusteru, jak spravovat ověřování a autorizaci clusterů ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 5ff5bdaced46a20dec3e7c5d7fb029f9428a12f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594766"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668318"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Doporučené postupy pro ověřování a autorizaci ve službě Azure Kubernetes Service (AKS)
 

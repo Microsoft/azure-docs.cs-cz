@@ -1,17 +1,18 @@
 ---
-title: Použití standardního vyvyčovávače zatížení skladových položk ve službě Azure Kubernetes Service (AKS)
+title: Použití standardního účetního čítitele skladového úskladu skladového úpisu
+titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak pomocí vyrovnávání zatížení se standardní skladovou položkou vystavit své služby pomocí služby Azure Kubernetes Service (AKS).
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17e474de9c221126d67cc2982ba11c6ff75e7aa3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252906"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668497"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití standardního vyvyčovávače zatížení skladových položk ve službě Azure Kubernetes Service (AKS)
 

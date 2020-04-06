@@ -1,15 +1,16 @@
 ---
-title: Použití vlastních certifikátů TLS pro příchozí přenos dat pomocí clusteru Služby Azure Kubernetes Service (AKS)
+title: Použití certifikátů TLS pro příchozí přenos dat
+titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak nainstalovat a nakonfigurovat řadič příchozího přenosu dat NGINX, který používá vaše vlastní certifikáty v clusteru služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: e567f5384cdd1e40ea67284713a29a92ee87af7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec6a398b52424c142b3d7ee82625c10c733456ab
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595497"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668462"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat protokolu HTTPS a použití vlastních certifikátů TLS ve službě Azure Kubernetes Service (AKS)
 

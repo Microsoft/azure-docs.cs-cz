@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638071"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667304"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Přehled Azure FarmBeats (Preview)
 
@@ -59,7 +59,7 @@ Správce může do Azure FarmBeats přidat více partnerů jako zprostředkovate
 | ---- | -------- | -------- |
 | Partner senzoru  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat | DeviceModel, Zařízení, SensorModel, Senzor <br/> <br/> Rozšířený typ |
 | Partner pro snímky  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Čtení | Scéna, SceneFile <br/> <br/> Rozšířený typ <br/> <br/> Farmě |
-| Partner pro snímky  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Čtení | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> Rozšířený typ <br/> <br/> Farmě |
+| Partner pro počasí* <br/> <br/>  (* Již brzy) |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Čtení | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> Rozšířený typ <br/> <br/> Farmě |
 
 ## <a name="resources"></a>Prostředky
 

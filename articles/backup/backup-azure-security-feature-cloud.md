@@ -3,12 +3,12 @@ title: Funkce zabezpečení pomáhají chránit cloudové úlohy
 description: Naučte se používat funkce zabezpečení v Azure Backup, aby se zálohování bezpečnější.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156068"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668743"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení pomáhají chránit cloudové úlohy, které používají Azure Backup
 
@@ -34,7 +34,7 @@ Obnovitelné odstranění pro virtuální počítače chrání zálohy virtuáln
 
 ### <a name="supported-regions"></a>Podporované oblasti
 
-Obnovitelné odstranění je v současné době podporováno v západní části USA – střední, východní Asie, středové, kanadské – východ, Francie – střed, Francie Jižní, Korea – Korea – jih, Velká Británie – jih, Velká Británie – západ, Austrálie – východ, Austrálie – jihovýchod, Severní Evropa, Západní USA, Západní USA2, Střed USA, Jih Východní Asie, střed usa – sever, střed usa– jih, Japonsko – východ, Japonsko – západ, Indie – jih, Indie – střed, Indie – západ, Východní USA 2, Švýcarsko – sever, Švýcarsko – západ a všechny národní oblasti.
+Obnovitelné odstranění je v současné době podporováno v západních středních USA, východní Asii, Kanadě – střed, Kanadě – východ, Francie – střed, Francie – střed, Koreji – Jih, Velká Británie – jih, Velká Británie – západ, Austrálie – východ, Austrálie – jihovýchod, Severní Evropa, Západní USA, Západní USA2, Střed USA, Jihovýchodní Asie, Severní Střed USA, Jižní Střed USA, Japonsko – západ, Indie – jih, Indie – západ, Východní USA 2 , Švýcarsko Sever, Švýcarsko Západ, Norsko Západ, Norsko východ a všechny národní regiony.
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Obnovitelné odstranění pro virtuální počítače pomocí portálu Azure
 
@@ -264,7 +264,7 @@ Při zálohování virtuálních počítačů Azure teď můžete šifrovat data
 
 ### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Zálohování spravovaných diskových virtuálních počítačů zašifrovaných pomocí klíčů spravovaných zákazníkem
 
-Azure Backup také umožňuje zálohovat virtuální počítače Azure, které používají váš klíč pro šifrování na straně serveru. Klíč používaný k šifrování disků je uložen v trezoru klíčů Azure a spravujete je vy. Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se liší od azure diskového šifrování, protože ADE využívá nástroj BitLocker (pro Windows) a DM-Crypt (pro Linux) k provádění šifrování pro hosta, SSE šifruje data ve službě úložiště, což vám umožní používat libovolný operační systém nebo obrázky pro vaše virtuální počítače. Další podrobnosti naleznete v části [Šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem.](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)
+Azure Backup také umožňuje zálohovat virtuální počítače Azure, které používají váš klíč pro šifrování na straně serveru. Klíč používaný k šifrování disků je uložen v trezoru klíčů Azure a spravujete je vy. Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se liší od Azure Disk Encryption, protože ADE využívá Nástroj BitLocker (pro Windows) a DM-Crypt (pro Linux) k provádění šifrování pro hosta, SSE šifruje data ve službě úložiště, což vám umožní používat libovolný operační systém nebo image pro vaše virtuální počítače. Další podrobnosti naleznete v části [Šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem.](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)
 
 ### <a name="backup-of-vms-encrypted-using-ade"></a>Zálohování virtuálních počítače šifrovaných pomocí ADE
 

@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5972b602d92b2e08fd70850dd1af5c1236e2b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234457"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668648"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám úložiště Azure
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Budete potřebovat:
 
 ## <a name="supported-data-storage-service-types"></a>Podporované typy služeb ukládání dat
 
-Úložiště dat aktuálně podporují ukládání informací o připojení ke službám úložiště uvedeným v následující matici. V tuto chvíli není podporován oazový sklad Azure Data. 
+Úložiště dat aktuálně podporují ukládání informací o připojení ke službám úložiště uvedeným v následující matici.
 
 | Typ&nbsp;úložiště | Typ&nbsp;ověřování | [Azure&nbsp;&nbsp;Machine Learning studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Rozhraní&nbsp;&nbsp;API&nbsp; pro odpočinek v machine learningu Azure](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---

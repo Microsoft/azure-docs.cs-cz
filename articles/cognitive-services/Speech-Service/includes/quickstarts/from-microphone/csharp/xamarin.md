@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 98181bac7cf9aca85766d78fcd753ad8bdabc3ee
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 699bbea9d50c24558f6c9d4671cb6035e4718a43
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658804"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671285"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -23,7 +23,7 @@ Než začnete:
 
 > [!div class="checklist"]
 > * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
-> * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=xamarin)
+> * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=xamarin&pivots=programming-language-csharp)
 > * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
 
 Pokud jste to už udělali, skvělé. Pojďme dál.

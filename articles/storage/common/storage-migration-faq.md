@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116666"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668556"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy ohledně migrace služby Azure Storage
 
@@ -269,7 +269,7 @@ Jak ostatním lidem poskytnout přístup k prostředkům úložiště:
 
 **Jak se používá vlastní doména HTTPS s účtem úložiště? Například, jak mohu udělat\/"https: /mystorageaccountname.blob.core.windows.net/images/image.gif"\/se zobrazí jako "https: /www.contoso.com/images/image.gif"?**
 
-SSL není aktuálně podporována na účtech úložiště s vlastnídomény.
+TLS/SSL není aktuálně podporována na účtech úložiště s vlastnídomény.
 Můžete však použít vlastní domény bez protokolu HTTPS. Další informace naleznete [v tématu Konfigurace vlastního názvu domény pro koncový bod úložiště objektů Blob](../blobs/storage-custom-domain-name.md).
 
 ## <a name="access-to-storage"></a>Přístup k úložišti

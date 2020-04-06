@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 839e13dffc7d15b8cd258dd4b7dda6776223d052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051740"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666874"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní ve službě Azure Active Directory B2C
 
@@ -91,7 +91,10 @@ Před použitím vlastních souborů HTML a CSS k přizpůsobení hlavního nast
 
 Při použití vlastních souborů HTML a CSS k přizpůsobení ui můžete hostovat obsah ui na libovolném veřejně dostupném koncovém bodu HTTPS, který podporuje CORS. Například [azure blob úložiště](../storage/blobs/storage-blobs-introduction.md), webové servery, CDNs, AWS S3 nebo systémy pro sdílení souborů.
 
-Důležité je, že hostujete obsah na veřejně dostupném koncovém bodu HTTPS s povoleným CORS. Při zadávání v obsahu je nutné použít absolutní adresu URL.
+Důležité je, že hostujete obsah na veřejně dostupném koncovém bodu HTTPS s [povoleným CORS](https://enable-cors.org/server.html). Při zadávání v obsahu je nutné použít absolutní adresu URL.
+
+> [!NOTE]
+> Podrobnosti o vytváření obsahu HTML, nahrávání obsahu do úložiště objektů Blob Azure a konfiguraci corsu najdete v [části Návod k obsahu vlastní stránky](custom-policy-ui-customization.md#custom-page-content-walkthrough) v článku přizpůsobení uživatelského rozhraní.
 
 ## <a name="get-started-with-custom-html-and-css"></a>Začínáme s vlastním html a CSS
 

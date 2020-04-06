@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 07148941578749a632a6a7735d1e406ef9f81b9b
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 8d3f3bfcf1f175d5dbb05e661efbcf28e9c4a974
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80659334"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671489"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -17,7 +17,7 @@ Než začnete:
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku řeči Azure<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
 > * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
 
 ## <a name="source-code"></a>Zdrojový kód

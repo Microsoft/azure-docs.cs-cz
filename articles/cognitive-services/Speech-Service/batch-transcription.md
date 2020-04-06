@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: ee7fbddade055c11f5870aa5a588a2fd02f10a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131605"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668837"
 ---
 # <a name="what-is-batch-transcription"></a>Co je přepis dávky?
 
@@ -304,9 +304,6 @@ Transkripční služba zvládne velký počet odeslaných přepisů. Můžete do
 ## <a name="sample-code"></a>Ukázka kódu
 
 Kompletní ukázky jsou k dispozici v `samples/batch` [ukázkovém úložišti GitHub](https://aka.ms/csspeech/samples) uvnitř podadresáře.
-
-> [!NOTE]
-> Funkce dávkového přepisu je vystavena prostřednictvím rozhraní REST API popsaného výše. Tak Batch přepis lze použít z téměř jakéhokoli programovacího jazyka nebo prostředí, které podporuje REST. Níže uvedené příklady a ukázky v GitHubu jsou pouze reprezentativní a **nevyžadují** omezení, kde lze rozhraní API použít.
 
 Je třeba přizpůsobit ukázkový kód s informacemi o předplatném, oblast služby, Identifikátor URI SAS směřující na zvukový soubor k přepsání a ID modelu v případě, že chcete použít vlastní akustický nebo jazykový model.
 

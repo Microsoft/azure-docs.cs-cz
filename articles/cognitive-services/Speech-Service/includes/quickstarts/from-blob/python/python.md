@@ -2,21 +2,21 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 646cce25efcbebab6229389f63912346e3712cdd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: fcf2d3513936d50a0a5be8653e9bee5b30821e7d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925815"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671029"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
 > [!div class="checklist"]
-> * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md)
+> * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 > * [Vytvoření prostředku řeči Azure](../../../../get-started.md)
 > * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 

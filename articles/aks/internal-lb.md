@@ -1,15 +1,16 @@
 ---
-title: Vytvoření interního systému vyrovnávání zatížení ve službě Azure Kubernetes Service (AKS)
+title: Vytvořte interní nástroj pro vyrovnávání zatížení.
+titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak vytvořit a použít interní systém vyrovnávání zatížení k vystavení vašich služeb pomocí služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: ff102ebe50dd4d2169090718ced9e550701b1b09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4decd66a558b031f1aaaf9c64556dae545ed05d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259406"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668415"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního zařízení pro vyrovnávání zatížení se službou Azure Kubernetes Service (AKS)
 
