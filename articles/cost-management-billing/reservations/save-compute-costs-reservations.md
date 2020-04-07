@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 6277a7e7dc5891a3bc67c298a31344284c92e31d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235633"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396703"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -20,7 +20,7 @@ Rezervace Azure umožňují šetřit peníze tím, že potvrzují závazek využ
 
 Za rezervaci můžete zaplatit předem nebo prostřednictvím měsíčních plateb. Celkové náklady na rezervaci placenou předem a rezervaci s měsíčními platbami jsou stejné. Pokud tedy zvolíte měsíční platby, neplatíte žádné další poplatky. Měsíční platba je k dispozici pro rezervace Azure, ne pro produkty třetích stran.
 
-Rezervaci můžete zakoupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+Rezervaci můžete zakoupit na webu Azure Portal na adrese [https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 ## <a name="why-buy-a-reservation"></a>Proč zakoupit rezervaci?
 
@@ -34,6 +34,48 @@ Další informace o uplatnění slevy najdete v tématu věnovaném [využití s
 
 Další informace o tom, jak funguje rozsah rezervacíe, najdete v tématu [Vymezení rozsahů rezervací](prepare-buy-reservation.md#scope-reservations).
 
+## <a name="determine-what-to-purchase"></a>Určení, co koupit 
+
+Všechny rezervace s výjimkou Azure Databricks se využívají na hodinovém základu. Při nákupu rezervací vezměte v úvahu vaše konzistentní základní využití. S určením, jakou rezervaci byste měli koupit, vám může pomoct analýza vašich dat o využití nebo doporučení pro rezervace. Doporučení jsou dostupná na těchto místech:
+
+- Azure Advisor (pouze pro virtuální počítače)
+- Prostředí pro nákup rezervací na webu Azure Portal
+- Aplikace Power BI Cost Management
+- Rozhraní API 
+
+Další informace najdete v tématu  [Určení rezervace k zakoupení](determine-reservation-purchase.md). 
+
+## <a name="buying-a-reservation"></a>Nákup rezervace 
+
+Rezervace si můžete koupit prostřednictvím webu Azure Portal, rozhraní API, PowerShellu nebo rozhraní příkazového řádku. 
+
+Pokud chcete provést nákup, přejděte na web Azure Portal (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs). 
+
+Další informace najdete v tématu  [Nákup rezervace](prepare-buy-reservation.md). 
+
+## <a name="how-is-a-reservation-billed"></a>Jak se rezervace fakturuje? 
+
+Rezervace se fakturuje za použití způsobu platby spojeného s předplatným. Náklady na rezervaci se odečtou ze zůstatku peněžního závazku, pokud je k dispozici. Pokud zůstatek peněžního závazku nepokryje náklady na rezervaci, bude se vám účtovat nadlimitní využití. Pokud máte předplatné z individuálního plánu s průběžnými platbami, z platební karty přidružené k vašemu účtu se ihned strhne částka za nákup placený předem. Měsíční platby se objeví na vaší faktuře a částka se bude každý měsíc strhávat z vaší platební karty. Při fakturaci na základě faktury uvidíte poplatky na vaší další faktuře. 
+
+## <a name="permissions-to-view-and-manage-reservations"></a>Oprávnění k zobrazení a správě rezervací 
+
+Uživatel, který rezervaci zakoupí, a správce účtu předplatného sloužícího k fakturaci rezervace získají roli vlastníka objednávky rezervace a samotné rezervace.
+
+Správu rezervace můžete delegovat přidáním lidí do rolí rezervace nebo objednávky rezervace. Role se přiřazují na webu Azure Portal nebo pomocí rozhraní API a PowerShellu. 
+
+Další informace najdete v tématu  [Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation). 
+
+## <a name="get-reservation-details-and-utilization-after-purchase"></a>Získání podrobností o rezervaci a informací o využití po nákupu
+
+Pokud máte oprávnění k zobrazení rezervace, můžete ji a její využití zobrazit na webu Azure Portal. Tato data můžete získat také pomocí rozhraní API. 
+
+Další informace o zobrazení rezervací na webu Azure Portal najdete v tématu  [Zobrazení rezervací na webu Azure Portal](view-reservations.md). 
+
+## <a name="manage-reservations-after-purchase"></a>Správa rezervací po nákupu 
+
+Po nákupu rezervace Azure můžete aktualizovat její rozsah, abyste ji mohli použít pro jiné předplatné, změnit osobu, která ji může spravovat, rozdělit ji na menší části nebo změnit její flexibilní velikost. 
+
+Další informace najdete v tématu  [Správa rezervací prostředků Azure](manage-reserved-vm-instance.md). 
 
 ## <a name="flexibility-with-azure-reservations"></a>Flexibilita s využitím rezervací Azure
 

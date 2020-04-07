@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e27f34572eef7d50c7b140c65cb78c6d0678fa8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203011"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477608"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -94,9 +94,9 @@ V následujících tabulkách se zobrazují data, která jsou nebo nejsou zahrnu
 
 _<sup>**5**</sup> Využití služby Azure je založeno na rezervacích a sjednaných cenách._
 
-_<sup>**6**</sup> Nákupy na Marketplace nejsou momentálně dostupné pro nabídky průběžných plateb, MSDN a Visual Studio._
+_<sup>**6**</sup> Nákupy na Marketplace nejsou v současné době dostupné pro nabídky MSDN a sady Visual Studio._
 
-_<sup>**7**</sup> Nákupy rezervací jsou momentálně dostupné pouze pro účty smlouvy Enterprise (EA)._
+_<sup>**7**</sup> Nákupy rezervací jsou v současné době dostupné pouze pro účty se smlouvou Enterprise (EA) a účty se smlouvou se zákazníkem Microsoftu._
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Způsob použití značek v datech o nákladech a využití
 

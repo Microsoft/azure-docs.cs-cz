@@ -3,16 +3,16 @@ title: Běžné způsoby analýzy nákladů ve službě Azure Cost Management
 description: Tento článek vysvětluje, jak získat potřebné výsledky prostřednictvím běžných způsobů analýzy nákladů ve službě Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 901f271ac401cb985e59c434b9e6d7f8db03889f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203096"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520880"
 ---
 # <a name="common-cost-analysis-uses"></a>Běžné způsoby analýzy nákladů
 
@@ -26,7 +26,7 @@ Tím, že si zobrazíte náklady podle služeb Azure, budete schopni lépe poroz
 1. Vyberte **Náklady podle služeb** a pak je seskupte volbou **Úroveň služby**.
 1. Zobrazení změňte na možnost **Tabulka**.
 
-![Rozpis nákladů podle služeb Azure](./media/cost-analysis-common-uses/breakdown-by-service.png)
+[![Rozpis nákladů podle služeb Azure](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Zobrazení rozpisu nákladů podle prostředků Azure
 
@@ -36,7 +36,7 @@ Vámi používané služby se skládají z prostředků Azure. Zobrazení nákla
 1. Vyberte **Náklady podle prostředků**.
 1. Zobrazení změňte na možnost **Tabulka**.
 
-![Zobrazení rozpisu nákladů podle prostředků Azure](./media/cost-analysis-common-uses/cost-by-resource.png)
+[![Zobrazení rozpisu nákladů podle prostředků Azure](./media/cost-analysis-common-uses/cost-by-resource.png)](./media/cost-analysis-common-uses/cost-by-resource.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-selected-dimensions"></a>Zobrazení rozpisu nákladů podle vybraných dimenzí
 
@@ -44,10 +44,10 @@ Díky dimenzím můžete náklady uspořádat na základě hodnot různých meta
 
 1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
 1. Vyberte filtr **Seskupit podle**.  
-    ![Výběr položky Seskupit podle](./media/cost-analysis-common-uses/group-by.png)
+    [![Výběr položky Seskupit podle](./media/cost-analysis-common-uses/group-by.png)](./media/cost-analysis-common-uses/group-by.png#lightbox)
 1. Zobrazení si také můžete uložit pro pozdější použití.
 1. Kliknutím na výsečový graf pod hlavním grafem si zobrazíte podrobnější data.  
-    ![Zobrazení rozpisu nákladů podle vybraných dimenzí](./media/cost-analysis-common-uses/drill-down.png)
+    [![Zobrazení rozpisu nákladů podle vybraných dimenzí](./media/cost-analysis-common-uses/drill-down.png)](./media/cost-analysis-common-uses/drill-down.png#lightbox)
 
 ## <a name="view-costs-per-day-or-by-month"></a>Zobrazení nákladů po dnech nebo měsících
 
@@ -56,7 +56,58 @@ Díky zobrazení denních nebo měsíčních nákladů můžete snáze odhalit o
 1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
 1. **Úroveň podrobností** nastavte na **Měsíční** nebo **Denní**.
 
-![Zobrazení nákladů po dnech](./media/cost-analysis-common-uses/daily-granularity.png)
+[![Zobrazení nákladů po dnech](./media/cost-analysis-common-uses/daily-granularity.png)](./media/cost-analysis-common-uses/daily-granularity.png#lightbox)
+
+
+## <a name="view-your-spot-vm-charges"></a>Zobrazení poplatků za spotové virtuální počítače
+
+Spotové virtuální počítače můžou zajistit značné úspory nákladů na úlohy, kterým nevadí přerušování. Úlohy se spouštějí s využitím nevyužité kapacity Azure. Vzhledem k tomu, že se spotové virtuální počítače můžou kdykoli vyřadit, platí pro ně výrazná sleva. Pokud chcete zobrazit poplatky za spotové virtuální počítače, postupujte následovně.
+
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Například **Cost Management a fakturace** > **Správa náklad**  > **Analýza nákladů**.
+2. Přidejte filtr pro **Cenový model: Spotový**.
+
+![Příklad ukazující filtr spotových virtuálních počítačů](./media/cost-analysis-common-uses/spot-vm-filter.png)
+
+Dimenze Cenový model slouží také k zobrazení poplatků za vyžádání a rezervace.
+
+## <a name="view-your-reservation-charges"></a>Zobrazení poplatků za rezervace
+
+Rezervované instance představují způsob, jak ušetřit v Azure. S rezervacemi platíte předem za daný počet prostředků v průběhu času. Analýza nákladů zobrazuje poplatky tak, jak se zobrazují na faktuře. Poplatky se zobrazují jako skutečné náklady nebo amortizované náklady v průběhu období rezervace.
+
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Například **Cost Management a fakturace** > **Správa náklad**  > **Analýza nákladů**.
+1. Přidejte filtr pro **Cenový model: Rezervace**.
+1. V části **Rozsah** vedle zobrazených nákladů klikněte na symbol šipky dolů a vyberte metriku **Skutečné náklady** nebo **Amortizované náklady**.
+
+![Výběr metriky nákladů](./media/cost-analysis-common-uses/metric-cost.png)
+
+Každá metrika má vliv na zobrazení dat pro poplatky za rezervace.
+
+**Skutečné náklady** –⁠ Ukazuje nákup tak, jak se zobrazuje na faktuře. Pokud jste například v lednu koupili roční rezervaci za 1 200 USD, v analýze nákladů se v měsíci lednu zobrazí náklady na rezervaci ve výši 1 200 USD. Za další měsíce v daném roce se náklady na rezervaci nezobrazí. Pokud seskupíte skutečné náklady podle virtuálního počítače, u virtuálního počítače, který pro určitý měsíc obdržel výhodu rezervace se za daný měsíc zobrazí nulové náklady.
+
+**Amortizované náklady** –⁠ Ukazuje nákup rezervace rozdělený na amortizované náklady v průběhu období rezervace. Při použití stejného příkladu jako výše se v analýze nákladů zobrazí náklady ve výši 100 USD za každý měsíc v roce, pokud jste v lednu zakoupili roční rezervaci za 1 200 USD. Pokud v tomto příkladu seskupíte náklady podle virtuálního počítače, zobrazí se náklady přiřazené k jednotlivým virtuálním počítačům, které obdržely výhodu rezervace.
+
+## <a name="view-your-reservation-utilization"></a>Zobrazení využití rezervace
+
+Po zakoupení rezervace je důležité sledovat její využití, abyste dostávali to, za co jste zaplatili. Pokud jste například na rok zakoupili 10 virtuálních počítačů a využíváte jich pouze pět, polovina nákupu v podstatě přijde nazmar. Využití můžete vyhodnotit dvěma různými způsoby:
+
+### <a name="view-unused-ri-costs-in-cost-analysis"></a>Zobrazení nákladů na nevyužité rezervované instance v analýze nákladů
+
+Pokud chcete zjistit, jak velká část nákladů na nákup vaší rezervace se aktuálně každý měsíc plýtvá, postupujte následovně.
+
+1. Na webu Azure Portal přejděte na analýzu nákladů pro rozsah vaší rezervace. Například **Cost Management a fakturace** > **Správa náklad**  > **Analýza nákladů**.
+1. Přidejte filtr pro **Cenový model: Rezervace**.
+1. Vyberte zobrazení **Amortizované náklady**.
+1. Nastavte úroveň podrobností na **Měsíční**.
+1. Nastavte časové období na aktuální rok nebo období vaší rezervace.
+1. Nastavte typ grafu na **Sloupcový (skládaný)** .
+1. Seskupte poplatky podle **Typu poplatku**.
+1. Ve výsledcích zkontrolujte hodnoty `unusedreservation`.
+
+[![Příklad ukazující využití rezervace](./media/cost-analysis-common-uses/view-reservation-cost.png)](./media/cost-analysis-common-uses/view-reservation-cost.png#lightbox)
+
+### <a name="view-utilization-in-reservations"></a>Zobrazení využití v rámci rezervací
+
+Podrobné pokyny najdete v tématu [Optimalizace využití rezervace](../reservations/manage-reserved-vm-instance.md#optimize-reservation-use).
 
 ## <a name="view-costs-for-a-specific-tag"></a>Zobrazení nákladů pro konkrétní značku
 
@@ -67,7 +118,7 @@ Mnoho uživatelů Azure používá u svých prostředků, což můžou být tře
 1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
 1. Vyberte **Seskupit podle** a konkrétní značku.
 
-![Zobrazení nákladů pro konkrétní značku](./media/cost-analysis-common-uses/tag.png)
+[![Zobrazení nákladů pro konkrétní značku](./media/cost-analysis-common-uses/tag.png)](./media/cost-analysis-common-uses/tag.png#lightbox)
 
 ## <a name="download-your-usage-details"></a>Stažení podrobností o využití
 
@@ -75,7 +126,7 @@ Soubor ve formátu CSV s podrobnou sestavou využití obsahuje rozpis všech pop
 
 1. Na webu Azure Portal přejděte na kartu **Využití a poplatky** pro konkrétní fakturační účet nebo předplatné. Příklad: **Správa nákladů a fakturace** > **Fakturace** > **Využití a poplatky**.
 1. Vyberte řádek, pro který si chcete stáhnout data, a pak klikněte na symbol pro stažení.  
-    ![Stažení dat o využití a poplatcích](./media/cost-analysis-common-uses/download1.png)
+    [![Stažení dat o využití a poplatcích](./media/cost-analysis-common-uses/download1.png)](./media/cost-analysis-common-uses/download1.png#lightbox)
 1.  Vyberte soubor s údaji o využití, který se má stáhnout.  
     ![Volba souboru o využití ke stažení](./media/cost-analysis-common-uses/download2.png)
 
@@ -88,13 +139,13 @@ Náklady se zobrazují jenom pro aktivní registraci. Pokud jste převedli regis
 
 1. Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Přehled**.
 1. Klikněte na **Rozpis** pro aktuální měsíc a podívejte se na čerpání peněžního závazku.  
-    ![Přehled nákladů na EA – souhrn rozpisu](./media/cost-analysis-common-uses/breakdown1.png)
+    [![Přehled nákladů na EA – souhrn rozpisu](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  Klikněte na kartu **Využití a náklady** a podívejte se na rozpis předchozího měsíce ve zvoleném časovém rozsahu.  
-    ![Karta Využití a náklady](./media/cost-analysis-common-uses/breakdown2.png)
+    [![Karta Využití a náklady](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)
 
 ## <a name="view-enrollment-monthly-cost-by-term"></a>Zobrazení měsíčních nákladů na registraci podle období
 
-Díky grafickému zobrazení měsíčních nákladů u vaší registrace můžete pochopit trendy nákladů a fakturované částky pro konkrétní období.
+Díky grafickému zobrazení měsíčních nákladů na vaši registraci můžete pochopit trendy nákladů a fakturované částky pro konkrétní období.
 
 1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
 1. Vyberte registraci a nastavte období registrace.
@@ -102,7 +153,7 @@ Díky grafickému zobrazení měsíčních nákladů u vaší registrace můžet
 
 Data můžete dál seskupovat a filtrovat, abyste získali ještě podrobnější analýzu.
 
-![Měsíční náklady u registrace podle období](./media/cost-analysis-common-uses/enrollment-term1.png)
+[![Měsíční náklady na registraci podle období](./media/cost-analysis-common-uses/enrollment-term1.png)](./media/cost-analysis-common-uses/enrollment-term1.png#lightbox)
 
 ## <a name="view-ea-enrollment-accumulated-costs"></a>Zobrazení kumulovaných nákladů u registrace EA
 
@@ -111,7 +162,7 @@ Pokud budete sledovat čisté kumulované poplatky v průběhu času, snáze poc
 1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
 1. Vyberte svou registraci a podívejte se na aktuální kumulované náklady.
 
-![Kumulované náklady u registrace](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+[![Kumulované náklady na registraci](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)](./media/cost-analysis-common-uses/cost-analysis-enrollment.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 - Pokud jste si ještě neprošli úvodní příručku pro Cost Management, najdete ji v tématu [Začínáme s analýzou nákladů](quick-acm-cost-analysis.md).

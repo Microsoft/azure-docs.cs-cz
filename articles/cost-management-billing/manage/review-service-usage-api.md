@@ -3,15 +3,15 @@ title: Kontrola využití prostředků služeb Azure s využitím rozhraní REST
 description: Zjistěte, jak pomocí rozhraní Azure REST API zkontrolovat využití prostředků služeb Azure.
 author: lleonard-msft
 ms.service: cost-management-billing
-ms.topic: article
-ms.date: 02/12/2020
+ms.topic: reference
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 337523c489089eeae5d669252b61cc61478ae1b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60a9e17b16f0b539693beb987b4d0610d11a3050
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202841"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521205"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Kontrola využití prostředků Azure pomocí rozhraní REST API
 
@@ -32,7 +32,9 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-Parametr `{subscriptionGuid}` je povinný a měl by obsahovat ID předplatného, ze kterého je možné číst s použitím přihlašovacích údajů uvedených v tokenu rozhraní API. Parametr `{reportName}` nahraďte názvem sestavy.
+Parametr `{subscriptionGuid}` je povinný a měl by obsahovat ID předplatného, ze kterého je možné číst s použitím přihlašovacích údajů uvedených v tokenu rozhraní API. 
+
+Parametr `{reportName}` určuje název sestavy. K získání seznamu názvů sestav můžete použít operaci Reports_List: `/subscriptions/{subscriptionId}/providers/Microsoft.CostManagement/reports`. Příklad výstupu najdete na [GitHubu](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/cost-management/resource-manager/Microsoft.CostManagement/preview/2018-08-01-preview/examples/ReportList.json).
 
 Jsou vyžadovány následující hlavičky:
 

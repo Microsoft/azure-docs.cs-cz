@@ -1,19 +1,19 @@
 ---
-title: Jak zabránit neočekávaným nákladům a spravovat fakturaci v Azure
-description: Zjistěte, jak se vyhnout neočekávaným poplatkům ve faktuře za Azure. U účtu Azure můžete využít funkce pro sledování a řízení nákladů.
+title: Prevence a analýza neočekávaných poplatků s využitím služby Azure Cost Management a fakturace
+description: Zjistěte, jak se vyhnout neočekávaným poplatkům na faktuře za Azure a jak u účtu Azure využívat funkce pro sledování a správu nákladů.
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/11/2020
+ms.date: 3/30/2020
 ms.author: banders
-ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238138"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475257"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Jak zabránit neočekávaným poplatkům pomocí fakturace a řízení nákladů v Azure
 
@@ -112,11 +112,6 @@ Na levé straně vyberte **Náklady**. Na kartě **Náklady** se zobrazí užite
 
 Absolvujte výukový kurz [Optimalizace nákladů na základě doporučení](../costs/tutorial-acm-opt-recommendations.md), který se věnuje doporučením Advisoru (Poradce) ohledně úspor nákladů.
 
-## <a name="review-charges-against-your-latest-invoice"></a>Kontrola poplatků na nejnovější faktuře
-
-Vaše faktura je k dispozici na konci fakturačního období. Pokud chcete zkontrolovat správnost vyúčtování, můžete si [stáhnout faktury a soubory s podrobnými informacemi o využití](download-azure-invoice-daily-usage-date.md) a porovnat je. Další informace o porovnání denního využití s fakturou najdete v článku [Informace o vyúčtování služeb Microsoft Azure](../understand/review-individual-bill.md).
-
-Pokud používáte Azure prostřednictvím smlouvy se zákazníkem Microsoftu (MCA) a chcete porozumět poplatkům na vaší faktuře, můžete [fakturu porovnat také s transakcemi](../understand/review-customer-agreement-bill.md#review-invoiced-transactions-in-the-azure-portal).
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrace s využitím rozhraní API pro fakturaci a spotřebu
 
@@ -178,9 +173,65 @@ U některých služeb musí být splněny určité předpoklady, aby šla smlouv
 
 Další informace najdete v dokumentaci ke [smlouvám o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) a [souhrnu smluv SLA pro služby Azure](https://azure.microsoft.com/support/legal/sla/summary/).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="analyze-unexpected-charges"></a>Analýza neočekávaných poplatků
 
-Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Infrastruktura cloudových prostředků, kterou jste pro vaši organizaci vytvořili, je pravděpodobně velmi složitá. Řada typů prostředků Azure může mít různé typy poplatků. Prostředky Azure můžou vlastnit různé týmy ve vaší organizaci a ty můžou mít pro různé prostředky různé typy modelu fakturace. Pokud chcete lépe porozumět poplatkům, zahajte analýzu s využitím jedné nebo několika strategií v následujících částech.
+
+### <a name="review-your-invoice-and-identify-the-resource-that-is-responsible-for-the-charge"></a>Kontrola faktury a identifikace prostředků zodpovědných za poplatky
+
+Způsob, jakým nakupujete služby Azure, vám pomůže určit, jakou metodologii a jaké nástroje máte k dispozici pro identifikaci prostředků přidružených k poplatkům. Pokud chcete zjistit, která metodologie se vás týká, nejprve [určete typ vaší nabídky Azure](../costs/understand-cost-mgt-data.md#determine-your-offer-type). Pak identifikujte kategorii zákazníka v seznamu [podporovaných nabídek Azure](../costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers).
+
+Následující články obsahují podrobný postup s vysvětlením, jak zkontrolovat fakturu na základě typu zákazníka. Jednotlivé články obsahují pokyny ke stažení souboru CSV s podrobnostmi o využití a nákladech za dané fakturační období.
+
+- [Proces kontroly faktury za průběžné platby](../understand/review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Proces kontroly faktury za smlouvu Enterprise](../understand/review-enterprise-agreement-bill.md)
+- [Proces kontroly faktury za smlouvu se zákazníkem Microsoftu](../understand/review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
+- [Proces kontroly faktury za smlouvu s partnerem Microsoftu](../understand/review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
+
+Faktura za Azure obsahuje agregované poplatky za měsíc podle jednotlivých _měřičů_. Měřiče slouží ke sledování využití prostředků v průběhu času a používají se k výpočtu faktury. Když vytvoříte určitý prostředek Azure, například virtuální počítač, vytvoří se pro něj jedna nebo více instancí měřiče.
+
+Soubor CSV s informacemi o využití můžete filtrovat podle _názvu měřiče_, který se zobrazuje na faktuře, kterou chcete analyzovat, a zobrazit tak všechny řádkové položky vztahující se k danému měřiči. _ID instance_ u řádkové položky odpovídá skutečnému prostředku Azure, který je za poplatek zodpovědný.
+
+Jakmile daný prostředek identifikujete, můžete pomocí analýzy nákladů ve službě Azure Cost Management pokračovat v analýze nákladů souvisejících s tímto prostředkem. Další informace o používání analýzy nákladů najdete v tématu [Začínáme s analýzou nákladů](../costs/quick-acm-cost-analysis.md).
+
+### <a name="identify-spikes-in-cost-over-time"></a>Identifikace špiček v nákladech v průběhu času
+
+V některých případech se může stát, že nevíte, jaké nedávné náklady způsobily změny účtovaných poplatků. Pokud chcete pochopit, co se změnilo, můžete pomocí analýzy nákladů [zobrazit denní nebo měsíční rozpis nákladů v průběhu času](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month). Po vytvoření příslušného zobrazení můžete poplatky seskupit podle **služby** nebo **prostředku** a identifikovat změny. Pokud chcete získat lepší vizualizaci dat, můžete také změnit zobrazení na **spojnicový** graf.
+
+![Příklad ukazující náklady v průběhu času v analýze nákladů](./media/getting-started/costs-over-time.png)
+
+### <a name="determine-resource-pricing-and-understand-its-billing-model"></a>Určení cen prostředků a vysvětlení modelu jejich fakturace
+
+Za jeden prostředek se můžou účtovat poplatky napříč několika produkty a službami Azure. Další informace o cenách jednotlivých služeb Azure najdete na stránce s [cenami Azure podle konkrétního produktu](https://azure.microsoft.com/pricing/#product-pricing). Například u jednoho virtuálního počítače vytvořeného v Azure se můžou vytvořit následující měřiče sledující jeho využití. Pro každý z nich můžou platit jiné ceny.
+
+- Výpočetní hodiny
+- Hodiny IP adresy
+- Přenos příchozích dat
+- Přenos odchozích dat
+- Spravovaný disk úrovně Standard
+- Operace spravovaných disků úrovně Standard
+- Standardní V/V – disk
+- Standardní V/V – čtení objektů blob bloku
+- Standardní V/V – zápis objektů blob bloku
+- Standardní V/V – odstranění objektů blob bloku
+
+Po vytvoření virtuálního počítače začne každý měřič generovat záznamy o využití. Využití a cena z měřiče se sledují v měřicím systému Azure. Na měřiče, které byly použity k výpočtu faktury, se můžete podívat v souboru CSV s využitím.
+
+### <a name="find-the-people-responsible-for-the-resource-and-engage-them"></a>Vyhledání lidí zodpovědných za konkrétní prostředky a jejich zapojení
+
+Týmy zodpovědné za konkrétní prostředky často ví o změnách, které se s prostředky prováděly. Jejich zapojení vám může pomoct zjistit, proč se určité poplatky účtovaly. Vlastnící tým například mohl nedávno vytvořit prostředek, aktualizovat jeho skladovou položku (a tím změnit sazbu za prostředek) nebo zvýšit zatížení prostředku kvůli změnám kódu. Pokračujte a přečtěte si následující části, ve kterých najdete informace o dalších technikách umožňujících určit, kdo je vlastníkem prostředku.
+
+#### <a name="analyze-the-audit-logs-for-the-resource"></a>Analýza protokolů auditu pro prostředek
+
+Pokud máte oprávnění k zobrazení prostředku, měli byste mít přístup k jeho protokolům auditu. Projděte si protokoly a zjistěte, který uživatel byl zodpovědný za poslední změny prostředku. Další informace najdete v tématu [Zobrazení a načtení událostí protokolu aktivit Azure](../../azure-monitor/platform/activity-log-view.md).
+
+#### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>Analýza uživatelských oprávnění k nadřazenému oboru prostředku
+
+Lidé, kteří mají k předplatnému nebo skupině prostředků přístup pro zápis, obvykle mají informace o vytvořených prostředcích. Měli by být schopni vysvětlit účel daného prostředku nebo vás odkázat na osobu, která ho zná. Pokud chcete zjistit, kteří lidé mají oprávnění k určitému oboru předplatného, přečtěte si téma [Zobrazení přiřazení rolí](../../role-based-access-control/check-access.md#view-role-assignments). Podobný postup můžete použít i u skupin prostředků.
+
+### <a name="get-help-to-identify-charges"></a>Získání nápovědy k identifikaci poplatků
+
+Pokud jste použili výše uvedené strategie, ale stále nechápete, proč se vám účtovaly některé poplatky, nebo pokud potřebujete pomoc s jinými problémy s fakturací, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další kroky
 - Seznamte se s [limity útraty](spending-limit.md), abyste neutráceli víc, než musíte.

@@ -1,20 +1,20 @@
 ---
-title: Příprava k nákupu rezervace Azure
-description: Seznamte se s důležitými body ještě před nákupem rezervace Azure.
+title: Nákup rezervace Azure
+description: Seznamte se s důležitými body, které vám pomůžou s nákupem rezervace Azure.
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 1f5ca2d43356eab98cffe8414c00d97e5744739a
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235656"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436974"
 ---
-# <a name="prepare-to-buy-a-reservation"></a>Příprava k nákupu rezervace
+# <a name="buy-a-reservation"></a>Nákup rezervace
 
 Rezervace Azure umožňují šetřit peníze tím, že potvrzují závazek využívání řady prostředků Azure v rámci plánů na jeden nebo tři roky. Než se rozhodnete pro koupi rezervace, nezapomeňte si projít následující oddíly a připravit se na tento nákup.
 
@@ -50,6 +50,17 @@ Po zakoupení rezervace máte možnost rozsah aktualizovat. Provedete to tak, ž
 
 ![Příklad znázorňující změnu rozsahu rezervace](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
+## <a name="discounted-subscription-and-offer-types"></a>Typy zlevněných předplatných a nabídek
+
+Slevy za rezervace platí pro následující oprávněné typy předplatných a nabídek.
+
+- Smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P)
+- Předplatná se smlouvou se zákazníkem Microsoftu
+- Individuální plány s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P)
+- Předplatná CSP
+
+Prostředky, které se spouští v rámci předplatného s jinými typy nabídek, neobdrží slevu za rezervace.
+
 ## <a name="purchase-reservations"></a>Nákup rezervací
 
 Rezervace si můžete koupit prostřednictvím webu Azure Portal, rozhraní API, PowerShellu nebo CLI. Přečtěte si následující články, ve kterých se dozvíte, kdy jste připravení koupit rezervace:
@@ -66,6 +77,54 @@ Rezervace si můžete koupit prostřednictvím webu Azure Portal, rozhraní API,
 - [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
 - [SQL Data Warehouse](prepay-sql-data-warehouse-charges.md)
 - [Virtual Machines](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+
+## <a name="buy-reservations-with-monthly-payments"></a>Nákup rezervací s měsíčními platbami
+
+Za rezervace můžete platit měsíčními platbami. Na rozdíl od nákupu předem, kdy zaplatíte celou částku najednou, se při měsíčních platbách rozdělí celkové náklady na rezervaci rovnoměrně na jednotlivé měsíce určeného období. Celkové náklady na rezervaci placenou předem a rezervaci s měsíčními platbami jsou stejné. Pokud tedy zvolíte měsíční platby, neplatíte žádné další poplatky.
+
+Pokud se rezervace nakupuje prostřednictvím smlouvy se zákazníkem Microsoftu (MCA), částka měsíční platby se může měnit v závislosti na směnném kurzu vaší místní měny v aktuálním měsíci.
+
+Měsíční platby nejsou k dispozici pro: Databricks, rezervace pro SUSE Linux, plány Red Hatu a Azure Red Hat OpenShift ve verzi Compute.
+
+### <a name="view-payments-made"></a>Zobrazení provedených plateb
+
+Provedené platby můžete zobrazit pomocí rozhraní API, prostřednictvím dat o využití a v analýze nákladů. U měsíčně placených rezervací se hodnota četnosti zobrazuje v datech o využití a v rozhraní API poplatků za rezervaci jako **opakovaná**. U rezervací placených předem je tato hodnota zobrazená jako **jednorázová**.
+
+Analýza nákladů zobrazuje měsíční nákupy ve výchozím zobrazení. Pokud chcete zobrazit všechny nákupy, nastavte filtr **Typ poplatku** na **nákup** a **Četnost** na **opakovaná**. Pokud chcete zobrazit jenom rezervace, nastavte filtr na **Rezervace**.
+
+![Příklad ukazující náklady na nákup rezervací v analýze nákladů](./media/prepare-buy-reservation/cost-analysis.png)
+
+### <a name="exchange-and-refunds"></a>Výměna a refundace
+
+Podobně jako jiné rezervace můžete i rezervace zakoupené s měsíční fakturací vracet nebo vyměňovat. 
+
+Když vyměňujete měsíčně placenou rezervaci, celkové náklady na nový nákup by měly být větší než zbývající platby, které se pro vracenou rezervaci zruší. Pro výměny neexistují žádná další omezení ani poplatky. Předem placenou rezervaci si můžete vyměnit za nákup nové rezervace fakturované měsíčně. Celková hodnota nové rezervace by ale měla být větší než poměrná hodnota vracené rezervace.
+
+Pokud zrušíte rezervaci, která se platí měsíčně, zrušené budoucí platby se načítají do limitu refundace 50 000 USD.
+
+Další informace o výměně a refundacích najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](exchange-and-refund-azure-reservations.md).
+
+## <a name="reservation-notifications"></a>Oznámení o rezervacích
+
+V závislosti na tom, jak za předplatné Azure platíte, odesíláme e-mailová oznámení o rezervacích následujícím uživatelům ve vaší organizaci. Oznámení se odesílají při různých událostech, včetně těchto: 
+
+- Koupit
+- Nadcházející vypršení platnosti rezervace
+- Vypršení platnosti
+- Prodloužení
+- Zrušení
+- Změna rozsahu rezervace
+
+U zákazníků s předplatnými EA:
+
+- Oznámení se odesílají jenom kontaktům pro oznámení EA.
+- Uživatelé přidaní k rezervaci pomocí oprávnění RBAC (IAM) nedostávají žádná e-mailová oznámení.
+
+U zákazníků s individuálními předplatnými:
+
+- Nákupčí obdrží oznámení o zakoupení.
+- V okamžiku nákupu obdrží vlastník fakturačního účtu pro dané předplatné oznámení o nákupu.
+- Vlastník účtu obdrží všechna další oznámení.
 
 ## <a name="next-steps"></a>Další kroky
 

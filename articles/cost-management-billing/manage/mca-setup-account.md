@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200638"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258052"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení fakturačního účtu pro smlouvu se zákazníkem Microsoftu
 
@@ -81,7 +81,7 @@ Nový fakturační účet zjednodušuje fakturaci vaší organizace a přitom po
 1. Ke správě fakturace u smlouvy se zákazníkem Microsoftu používáte fakturační účet. Podnikoví správci se stanou vlastníky fakturačního účtu. Další informace o fakturačním účtu najdete ve [vysvětlení fakturačního účtu](../understand/mca-overview.md#your-billing-account).
 2. Ke správě fakturace ve vaší organizaci používáte fakturační profil, podobně jako u registrace smlouvy Enterprise. Podnikoví správci se stanou vlastníky fakturačního profilu. Další informace o fakturačních profilech najdete ve [vysvětlení fakturačních profilů](../understand/mca-overview.md#billing-profiles).
 3. K uspořádání nákladů podle svých potřeb používáte oddíl faktury, podobně jako oddělení v registraci smlouvy Enterprise. Z oddělení se stanou oddíly faktury a správci oddělení se stanou vlastníky odpovídajících oddílů faktury. Další informace o oddílech faktury najdete ve [vysvětlení oddílů faktury](../understand/mca-overview.md#invoice-sections).
-4. Účty, které byly vytvořeny u smlouvy Enterprise, se v novém fakturačním účtu nepodporují. Předplatná účtu patří do odpovídajícího oddílu faktury vytvořeného pro jejich oddělení. Vlastníci účtu můžou vytvářet a spravovat předplatná pro svoje oddíly faktury.
+4. Účty, které byly vytvořené u smlouvy Enterprise, se v novém fakturačním účtu nepodporují. Předplatná účtu patří do odpovídajícího oddílu faktury vytvořeného pro jejich oddělení. Vlastníci účtu můžou vytvářet a spravovat předplatná pro svoje oddíly faktury.
 
 ## <a name="changes-to-billing-administrator-access"></a>Změny v přístupu správců fakturace
 
@@ -115,7 +115,7 @@ Kontaktům pro oznámení se odesílá e-mailová komunikace týkající se smlo
 
 ### <a name="spending-quotas"></a>Kvóty útrat
 
-Kvóty útraty, které byly nastaveny pro oddělení v registraci smlouvy Enterprise, jsou v novém fakturačním účtu nahrazeny rozpočty. Pro každou kvótu útraty nastavenou u oddělení v rámci registrace se vytvoří rozpočet. Další informace o rozpočtech najdete v článku o [vytváření a správě rozpočtů Azure](../cloudyn/manage-budgets.md).
+Kvóty útraty, které byly nastaveny pro oddělení v registraci smlouvy Enterprise, jsou v novém fakturačním účtu nahrazeny rozpočty. Pro každou kvótu útraty nastavenou u oddělení v rámci registrace se vytvoří rozpočet. Další informace o rozpočtech najdete v tématu [Kurz: Vytváření a správa rozpočtů Azure](../costs/tutorial-acm-create-budgets.md).
 
 ### <a name="cost-centers"></a>Nákladová střediska
 
