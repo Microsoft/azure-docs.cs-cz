@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje, jak zálohovat a obnovovat virtuální počítače Azure pomocí Azure Backup s PowerShellem.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d1074eea3d530b17904e2f49fba7c0d24e84e59
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247979"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743287"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -199,7 +199,7 @@ Zásady ochrany zálohování jsou přidruženy alespoň k jedné zásadě uchov
 Ve výchozím nastavení je čas zahájení definován v objektu zásad plánu. Pomocí následujícího příkladu můžete změnit čas zahájení na požadovaný čas zahájení. Požadovaný čas zahájení by měl být také v UTC. Níže uvedený příklad předpokládá, že požadovaný čas zahájení je 01:00 AM UTC pro denní zálohování.
 
 ```powershell
-$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
 $UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
 $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
@@ -211,7 +211,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 Následující příklad ukládá zásady plánu a zásady uchovávání informací v proměnných. Příklad používá tyto proměnné k definování parametrů při vytváření zásad ochrany *NewPolicy*.
 
 ```powershell
-$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $targetVault.ID
 ```
 
@@ -324,6 +324,20 @@ Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVau
 ````
 
 Výchozí hodnota bude 2, uživatel může nastavit hodnotu s min 1 a max 5. Pro zásady týdenní zálohování období je nastavena na 5 a nelze změnit.
+
+#### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Vytváření skupiny prostředků Azure Backup během uchovávání snímků
+
+> [!NOTE]
+> Od Azure PS verze 3.7.0 dále, jeden můžete vytvořit a upravit skupinu prostředků vytvořené pro ukládání okamžité snímky.
+
+Další informace o pravidlech vytváření skupin prostředků a další choujejší podrobnosti najdete ve skupině prostředků Zálohování Azure pro dokumentaci [k virtuálním počítačům.](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)
+
+```powershell
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -name "DefaultPolicyForVMs"
+$bkpPol.AzureBackupRGName="Contosto_"
+$bkpPol.AzureBackupRGNameSuffix="ForVMs"
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
 
 ### <a name="trigger-a-backup"></a>Spuštění zálohy
 

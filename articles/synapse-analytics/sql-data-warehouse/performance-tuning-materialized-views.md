@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28dbe66d27ac75bee2ceecd160ead3dea6538034
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633821"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743175"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu s využitím materializovaných zobrazení
 
@@ -32,7 +32,7 @@ Standardní zobrazení vypočítá svá data pokaždé, když je použito zobraz
 
 Materializované zobrazení předem vypočítá, uloží a udržuje svá data ve fondu SQL stejně jako tabulka.  Při použití zhmotněné zobrazení není potřeba žádná recomputace.  To je důvod, proč dotazy, které používají všechna nebo podmnožinu dat v materializovaných zobrazeních, mohou získat vyšší výkon.  Ještě lepší je, že dotazy mohou používat materializované zobrazení bez přímého odkazu, takže není nutné měnit kód aplikace.  
 
-Většina požadavků na standardní pohled se stále vztahuje na zhmotněný pohled. Podrobnosti o syntaxi materializovaného pohledu a dalších požadavcích naleznete v části [VYTVOŘENÍ MATERIALIZOVANÉHO ZOBRAZENÍ JAKO SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
+Většina požadavků na standardní pohled se stále vztahuje na zhmotněný pohled. Podrobnosti o syntaxi materializovaného zobrazení a dalších požadavcích naleznete v části [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 | Srovnání                     | Zobrazit                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -58,8 +58,8 @@ Materializovaná zobrazení implementovaná ve fondu SQL také poskytují násle
 Ve srovnání s jinými poskytovateli datového skladu poskytují materializovaná zobrazení implementovaná v Azure SQL Data Warehouse také následující další výhody:
 
 - Automatická a synchronní aktualizace dat se změnami dat v základních tabulkách. Není vyžadována žádná akce uživatele.
-- Široká agregovaná podpora funkcí. Viz [VYTVOŘENÍ MATERIALIZED VIEW AS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
-- Podpora pro doporučení materializovaného zobrazení specifické pro dotaz.  Viz [EXPLAIN (Transact-SQL).](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest)
+- Široká agregovaná podpora funkcí. Viz [VYTVOŘENÍ MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Podpora pro doporučení materializovaného zobrazení specifické pro dotaz.  Viz [EXPLAIN (Transact-SQL).](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře  
 

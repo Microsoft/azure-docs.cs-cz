@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4e19c20036d74752b75a668d6a37c46ef1b008e6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583194"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742691"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Dělení tabulek ve fondu Synapse SQL
 
@@ -46,9 +46,9 @@ Při vytváření oddílů v **clusterovaných columnstore** tabulky, je důlež
 
 ## <a name="syntax-differences-from-sql-server"></a>Rozdíly syntaxe od serveru SQL Server
 
-Synapse SQL fond zavádí způsob, jak definovat oddíly, které je jednodušší než SQL Server. Dělení funkce a schémata nejsou používány v fondu SQL Synapse, jak jsou v SQL Server. Místo toho vše, co musíte udělat, je identifikovat dělený sloupec a hraniční body. Zatímco syntaxe dělení může být mírně odlišné od SQL Server, základní pojmy jsou stejné. SQL Server a Fond SQL Podporuje jeden sloupec oddílu na tabulku, která může být oddíl rozsahu. Další informace o dělení naleznete v tématu [Dělení tabulek a indexů](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
+Synapse SQL fond zavádí způsob, jak definovat oddíly, které je jednodušší než SQL Server. Dělení funkce a schémata nejsou používány v fondu SQL Synapse, jak jsou v SQL Server. Místo toho vše, co musíte udělat, je identifikovat dělený sloupec a hraniční body. Zatímco syntaxe dělení může být mírně odlišné od SQL Server, základní pojmy jsou stejné. SQL Server a Fond SQL Podporuje jeden sloupec oddílu na tabulku, která může být oddíl rozsahu. Další informace o dělení naleznete v tématu [Dělení tabulek a indexů](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-Následující příklad používá příkaz [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) k rozdělení tabulky FactInternetSales ve sloupci OrderDateKey:
+Následující příklad používá příkaz [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k rozdělení tabulky FactInternetSales ve sloupci OrderDateKey:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -78,8 +78,8 @@ WITH
 
 Migrace definic oddílů serveru SQL Server do fondu SYNAPSE SQL jednoduše:
 
-- Eliminujte [schéma oddílů](/sql/t-sql/statements/create-partition-scheme-transact-sql)serveru SQL Server .
-- Přidejte definici [funkce oddílu](/sql/t-sql/statements/create-partition-function-transact-sql) do tabulky CREATE TABLE.
+- Eliminujte [schéma oddílů](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)serveru SQL Server .
+- Přidejte definici [funkce oddílu](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) do tabulky CREATE TABLE.
 
 Pokud migrujete rozdělenou tabulku z instance serveru SQL Server, následující SQL vám může pomoci zjistit počet řádků, které v každém oddílu. Mějte na paměti, že pokud stejné dělení rozlišovací schopnost se používá v fondu SQL Synapse, počet řádků na oddíl snižuje o faktor 60.  
 
@@ -119,7 +119,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Přepínání oddílů
 
-Fond SQL synapse podporuje rozdělení oddílů, slučování a přepínání. Každá z těchto funkcí je spuštěna pomocí příkazu [ALTER TABLE.](/sql/t-sql/statements/alter-table-transact-sql)
+Fond SQL synapse podporuje rozdělení oddílů, slučování a přepínání. Každá z těchto funkcí je spuštěna pomocí příkazu [ALTER TABLE.](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 Chcete-li přepínat oddíly mezi dvěma tabulkami, musíte zajistit, aby oddíly zarovnány na jejich příslušné hranice a že definice tabulky odpovídají. Vzhledem k tomu, že kontrolní omezení nejsou k dispozici k vynucení rozsahu hodnot v tabulce, musí zdrojová tabulka obsahovat stejné hranice oddílu jako cílová tabulka. Pokud hranice oddílu nejsou stejné, přepínač oddílu se nezdaří, protože metadata oddílu nebudou synchronizována.
 
@@ -344,4 +344,3 @@ S tímto přístupem kód v řízení zdrojového kódu zůstává statický a h
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o vývoji tabulek naleznete v článcích [přehled u tabulky](sql-data-warehouse-tables-overview.md).
-

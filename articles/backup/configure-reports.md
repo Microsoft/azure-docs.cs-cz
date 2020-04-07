@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a Azure Workbooků
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497d70c1bcc577faa467720b959eb828e785a26a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161197"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672661"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -21,7 +21,7 @@ Služba Azure Backup dnes poskytuje řešení pro vytváření sestav, které vy
 * Sestavy zálohování jsou podporované pro virtuální počítače Azure, SQL ve virtuálních počítačích Azure, SAP HANA/ASE ve virtuálních počítačích Azure, Agent zálohování Azure (MARS), Azure Backup Server (MABS) a System Center DPM.
 * Pro úlohy aplikace DPM jsou podporovány sestavy zálohování pro dpm verze 5.1.363.0 a vyšší a agent verze 2.0.9127.0 a vyšší.
 * Pro úlohy MABS jsou podporovány sestavy zálohování pro MABS verze 13.0.415.0 a vyšší a agent verze 2.0.9170.0 a vyšší.
-* Sestavy zálohování lze zobrazit ve všech položkách zálohování, trezorech, předplatných a oblastech, pokud jsou jejich data odesílána do pracovního prostoru Analýzy protokolů (LA), ke kterému má uživatel přístup. 
+* Sestavy zálohování lze zobrazit ve všech položkách zálohování, trezorech, předplatných a oblastech, pokud jsou jejich data odesílána do pracovního prostoru Analýzy protokolů (LA), ke kterému má uživatel přístup. Všimněte si, že k zobrazení sestav pro sadu trezorů, stačí mít **přístup čtečky k pracovníploše LA,** do které trezory odesílají svá data. **Nemusíte** mít přístup k jednotlivým trezorům.
 * Pokud jste uživatel [Služby Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) s delegovaným přístupem k předplatným vašich zákazníků, můžete tyto sestavy pomocí služby Azure Lighthouse použít k zobrazení sestav napříč všemi klienty.
 * Data pro úlohy zálohování protokolu nejsou aktuálně zobrazena v sestavách.
 

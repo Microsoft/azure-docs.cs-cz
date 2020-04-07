@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314687"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754224"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty používané službami Apache Hadoop na HDInsight
 
@@ -21,9 +21,9 @@ Tento dokument obsahuje seznam portů používaných službami Apache Hadoop spu
 
 ## <a name="public-ports-vs-non-public-ports"></a>Veřejné přístavy vs. neveřejné přístavy
 
-Linuxové clustery HDInsight zveřejňují pouze tři porty na internetu; 22, 23 a 443. Tyto porty se používají k bezpečnému přístupu ke clusteru pomocí SSH a služeb vystavených přes zabezpečený protokol HTTPS.
+Clustery HDInsight založené na Linuxu zveřejňují na internetu pouze tři porty: 22, 23 a 443. Tyto porty zabezpečují přístup clusteru pomocí SSH a služeb vystavených přes zabezpečený protokol HTTPS.
 
-HdInsight je interně implementován několika virtuálními počítači Azure (uzly v rámci clusteru) spuštěnými ve virtuální síti Azure. Z virtuální sítě můžete přistupovat k portům, které nejsou vystaveny přes internet. Pokud se například připojíte k jednomu z hlavního uzlu pomocí SSH, můžete z hlavního uzlu přímo přistupovat ke službám spuštěným v uzlech clusteru.
+HDInsight je implementovaný několika virtuálními počítači Azure (uzly clusteru) spuštěnými ve virtuální síti Azure. Z virtuální sítě můžete přistupovat k portům, které nejsou vystaveny přes internet. Pokud se připojujete přes SSH k hlavnímu uzlu, můžete přímo přistupovat ke službám spuštěným na uzlech clusteru.
 
 > [!IMPORTANT]  
 > Pokud virtuální síť Azure nezadáte jako možnost konfigurace pro HDInsight, vytvoří se automaticky. Do této virtuální sítě se však nemůžete připojit k jiným počítačům (například k jiným virtuálním počítačům Azure nebo vašemu vývojovému počítači klienta).
@@ -32,7 +32,7 @@ Chcete-li připojit další počítače k virtuální síti, musíte nejprve vyt
 
 ## <a name="public-ports"></a>Veřejné přístavy
 
-Všechny uzly v clusteru HDInsight jsou umístěné ve virtuální síti Azure a nelze k nim přímo přistupovat z internetu. Veřejná brána poskytuje přístup k internetu k následujícím portům, které jsou běžné ve všech typech clusterů HDInsight.
+Všechny uzly v clusteru HDInsight jsou umístěné ve virtuální síti Azure. Uzly nelze přímo přistupovat z internetu. Veřejná brána poskytuje přístup k internetu k následujícím portům, které jsou běžné ve všech typech clusterů HDInsight.
 
 | Služba | Port | Protocol (Protokol) | Popis |
 | --- | --- | --- | --- |
@@ -49,13 +49,13 @@ Pro konkrétní typy clusterů jsou k dispozici následující:
 
 | Služba | Port | Protocol (Protokol) | Typ clusteru | Popis |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API. Viz [Začínáme používat Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |HBase |HBase REST API. Viz [Začínáme používat Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Rozhraní API SPARK REST. Viz [Odeslat úlohy Apache Spark na dálku pomocí Apache Livy](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift server |443 |HTTPS |Spark |Spark Thrift server slouží k odesílání dotazů Hive. Viz [Použití beeline s Apache Hive na HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Uživatelské i uživatelské ho uživatelského uživatelského misce Storm web Viz [Nasazení a správa topologie Apache Storm na HDInsightu](storm/apache-storm-deploy-monitor-topology-linux.md) |
 | Kafka Zbytek proxy |443 |HTTPS |Kafka |API Kafka REST. Viz [Interakce s clustery Apache Kafka v Azure HDInsight pomocí proxy rest](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Všechny služby veřejně exponované na internetu musí být ověřeny:
 
@@ -89,7 +89,7 @@ Příklady:
 | --- | --- | --- | --- | --- |
 | NameNode web UI |Hlavní uzly |30070 |HTTPS |Webové uživatelské uživatelské pásmo pro zobrazení stavu |
 | Služba metadat NameNode |hlavní uzly |8020 |Ipc |Metadata systému souborů |
-| Datový uzel |Všechny pracovní uzly |30075 |HTTPS |Webové uživatelské uživatelské pásmo pro zobrazení stavu, protokolů atd. |
+| Datový uzel |Všechny pracovní uzly |30075 |HTTPS |Webové uživatelské uživatelské informace pro zobrazení stavu, protokolů a tak dále. |
 | Datový uzel |Všechny pracovní uzly |30010 |&nbsp; |Přenos dat |
 | Datový uzel |Všechny pracovní uzly |30020 |Ipc |Operace metadat |
 | Sekundární názevnode |Hlavní uzly |50090 |HTTP |Kontrolní bod pro metadata NameNode |
@@ -100,7 +100,7 @@ Příklady:
 | --- | --- | --- | --- | --- |
 | Webové uživatelské nastavení Správce prostředků |Hlavní uzly |8088 |HTTP |Webové uživatelské nastavení pro Správce prostředků |
 | Webové uživatelské nastavení Správce prostředků |Hlavní uzly |8090 |HTTPS |Webové uživatelské nastavení pro Správce prostředků |
-| Rozhraní správce Správce prostředků |hlavní uzly |8141 |Ipc |Pro podání žádosti (Hive, Hive server, Pig, atd.) |
+| Rozhraní správce Správce prostředků |hlavní uzly |8141 |Ipc |Pro podání žádosti (Hive, Hive server, Pig a tak dále.) |
 | Plánovač Správce zdrojů |hlavní uzly |8030 |HTTP |Administrativní rozhraní |
 | Rozhraní aplikace Správce prostředků |hlavní uzly |8050 |HTTP |Adresa rozhraní správce aplikací |
 | NodeManager |Všechny pracovní uzly |30050 |&nbsp; |Adresa správce kontejnerů |

@@ -3,12 +3,12 @@ title: Změna nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3eb558c7d0745ada43696fd4189a7ac663867849
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477891"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753978"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro cluster Service Fabric, které můžete přizpůsobit. U clusterů hostovaných v Azure můžete nastavení přizpůsobit na [webu Azure Portal](https://portal.azure.com) nebo pomocí šablony Azure Resource Manager. Další informace najdete [v tématu Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete přizpůsobit nastavení aktualizací souboru *ClusterConfig.json* a provedením upgradu konfigurace v clusteru. Další informace naleznete [v tématu Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -29,7 +29,7 @@ Následuje seznam nastavení prostředků fabric, které můžete přizpůsobit,
 |BodyChunkSize |Uint, výchozí hodnota je 16384 |Dynamická| Udává velikost pro blok v bajtů slouží ke čtení těla. |
 |Příznak CrlChecking|uint, výchozí hodnota je 0x40000000 |Dynamická| Příznaky pro ověření řetězu certifikátů aplikace/služby; Například kontrola CRL 0x1000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x8000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY Nastavení na 0 zakáže kontrolu CRL Úplný seznam podporovaných hodnot je dokumentován dwFlags certGetCertificateChain:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |Výchozí httprequesttimeout |Čas v sekundách. výchozí hodnota je 120 |Dynamická|Určete časový rozsah v sekundách.  Poskytuje výchozí časový limit požadavku pro požadavky http zpracovávané v bráně aplikace http. |
-|ForwardClientCertificate|bool, výchozí hodnota je NEPRAVDA|Dynamická|Pokud je nastavena na false, reverzní proxy server nebude požadovat o klientský certifikát. Pokud je nastavena na hodnotu true, reverzní proxy server bude požadovat klientský certifikát během handshake SSL a předat base64 kódovaný formát pem řetězec do služby v záhlaví s názvem X-Client-Certificate.The služba může selhat požadavek s příslušným stavovým kódem po kontrole dat certifikátu. Pokud je to pravda a klient nepředstavuje certifikát, reverzní proxy server předá prázdnou hlavičku a nechá službu zpracovávat případ. Reverzní proxy server bude fungovat jako průhledná vrstva. Další informace naleznete v [tématu Nastavení ověřování klientských certifikátů](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
+|ForwardClientCertificate|bool, výchozí hodnota je NEPRAVDA|Dynamická|Pokud je nastavena na false, reverzní proxy server nebude požadovat o klientský certifikát. Pokud je nastavena na hodnotu true, reverzní proxy server bude požadovat klientský certifikát během tls handshake a předat base64 kódovaný formát pem řetězec do služby v záhlaví s názvem X-Client-Certificate.The služba může selhat požadavek s příslušným stavovým kódem po kontrole dat certifikátu. Pokud je to pravda a klient nepředstavuje certifikát, reverzní proxy server předá prázdnou hlavičku a nechá službu zpracovávat případ. Reverzní proxy server bude fungovat jako průhledná vrstva. Další informace naleznete v [tématu Nastavení ověřování klientských certifikátů](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |řetězec, výchozí hodnota je "Žádný" |Statická| Označuje typ pověření zabezpečení, které mají být použity v koncovém bodě brány aplikace http Platné hodnoty jsou None/X509. |
 |GatewayX509CertificateFindType |řetězec, výchozí je "FindByThumbprint" |Dynamická| Označuje, jak hledat certifikát v úložišti určeném podporovanou hodnotou GatewayX509CertificateStoreName: FindByThumbprint; FindBySubjectName. |
 |GatewayX509CertificateFindValue | řetězec, výchozí hodnota je "" |Dynamická| Hodnota vyhledávacího filtru použitá k vyhledání certifikátu http brány aplikace. Tento certifikát je nakonfigurovaný v koncovém bodě https a v případě potřeby služby ho také můžou použít k ověření identity aplikace. FindValue je vyhledán jako první; a pokud to neexistuje; FindValueSecondary je vyhledán. |
@@ -710,7 +710,7 @@ Následuje seznam nastavení prostředků fabric, které můžete přizpůsobit,
 |Vytvořitsvazek|řetězec, výchozí je "Admin"|Dynamická|Vytvoří svazek |
 |Deaktivovatuzel |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro deaktivaci uzlu. |
 |DeaktivovatnodesBatch |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro deaktivaci více uzlů. |
-|Odstranění |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro operaci odstranění klienta úložiště bitových kopie. |
+|Odstranit |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro operaci odstranění klienta úložiště bitových kopie. |
 |Odstranit aplikaci |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro odstranění aplikace. |
 |OdstranitcomposeDeployment|řetězec, výchozí je "Admin"| Dynamická|Odstraní nasazení komponování. |
 |Odstranit prostředek brány|řetězec, výchozí je "Admin"| Dynamická|Odstraní prostředek brány. |

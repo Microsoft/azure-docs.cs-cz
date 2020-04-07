@@ -2,15 +2,15 @@
 title: Vytvoření funkce, která běží podle plánu v Azure
 description: Zjistěte, jak v Azure vytvořit funkci, která se spouští na základě vámi definovaného plánu.
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e100a2d3a3718b302a44cbdecf462a99d9c823e0
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75769281"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756498"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Vytvoření funkce v Azure aktivované časovačem
 

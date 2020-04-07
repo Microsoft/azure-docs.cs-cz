@@ -3,29 +3,29 @@ title: Reakce na události úložiště objektů Blob Azure | Dokumenty společn
 description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
 author: normesta
 ms.author: normesta
-ms.date: 01/30/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5281dab8fd42326d88964614fd20a81621b5e9dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268493"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754998"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob Storage
 
-Události Azure Storage umožňují aplikacím reagovat na události, jako je například vytváření a odstraňování objektů BLOB. Činí tak bez nutnosti složitého kódu nebo nákladné a neefektivní volební služby.
+Události Azure Storage umožňují aplikacím reagovat na události, jako je například vytváření a odstraňování objektů BLOB. Činí tak bez nutnosti složitého kódu nebo nákladné a neefektivní volební služby. Nejlepší na tom je, že platíte jen za to, co používáte.
 
-Události se zasouvají pomocí [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) předplatitelům, jako jsou Azure Functions, Azure Logic Apps nebo dokonce na vlastní http naslouchací proces. Nejlepší na tom je, že platíte jen za to, co používáte.
+Události úložiště objektů blob se předkládají pomocí [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) předplatitelům, jako jsou azure functions, Azure Logic Apps nebo dokonce na vlastní http listener. Event Grid poskytuje spolehlivé doručování událostí do vašich aplikací prostřednictvím bohatých zásad opakování a nedoručených nápisů.
 
-Úložiště objektů blob odesílá události do event gridu, který poskytuje spolehlivé doručování událostí do vašich aplikací prostřednictvím bohatých zásad opakování a nedoručených adres.
+Úplný seznam událostí, které podporuje úložiště objektů blob, najdete v článku schéma [událostí úložiště objektů blob.](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 Mezi běžné scénáře událostí úložiště objektů blob patří zpracování obrázků nebo videa, indexování hledání nebo jakýkoli pracovní postup orientovaný na soubor. Asynchronní nahrávání souborů se skvěle hodí pro události. Pokud změny nejsou časté, ale váš scénář vyžaduje okamžitou odezvu, architektura založená na událostech může být obzvláště efektivní.
 
-Pokud si to chcete vyzkoušet nyní, podívejte se na některý z těchto článků rychlého startu:
+Pokud chcete vyzkoušet události úložiště objektů blob, podívejte se na některé z těchto článků rychlého startu:
 
 |Pokud chcete použít tento nástroj:    |Viz tento článek: |
 |--|-|
@@ -39,7 +39,7 @@ Podrobné příklady reakce na události úložiště objektů Blob pomocí funk
 - [Kurz: Automatizace změna velikosti nahraných obrázků pomocí mřížky událostí](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> Pouze účty úložiště druhu **StorageV2 (pro obecné účely v2)** a Integrace událostí podpory **BlobStorage.** **Úložiště (genral účel v1)** *nepodporuje* integraci s Event Grid.
+> Pouze účty úložiště druhu **StorageV2 (pro obecné účely v2)**, **BlockBlobStorage**a Integrace událostí podpory **BlobStorage.** **Úložiště (genral účel v1)** *nepodporuje* integraci s Event Grid.
 
 ## <a name="the-event-model"></a>Model události
 
@@ -98,6 +98,7 @@ Aplikace, které zpracovávají události úložiště objektů Blob, by měly d
 > * Podobně zkontrolujte, zda eventType je ten, který jste připraveni ke zpracování a nepředpokládejte, že všechny události, které obdržíte, budou typy, které očekáváte.
 > * Vzhledem k tomu, že zprávy mohou být doručeny po určité prodlevě, použijte pole etag, abyste zjistili, zda jsou informace o objektech stále aktuální. Informace o tom, jak používat pole etag, najdete v [tématu Správa souběžnosti v úložišti objektů Blob](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage). 
 > * Jako zprávy mohou být doručeny mimo pořadí, použijte pole sekvenceru pochopit pořadí událostí na konkrétní objekt. Pole sekvenceru je řetězcová hodnota, která představuje logickou posloupnost událostí pro libovolný konkrétní název objektu blob. Standardní porovnání řetězců můžete použít k pochopení relativní posloupnosti dvou událostí na stejném názvu objektu blob.
+> Události úložiště zaručuje alespoň jednou doručení předplatitelům, což zajišťuje, že jsou výstupy všech zpráv. Však z důvodu opakování nebo dostupnost odběrů, může příležitostně dojít k duplicitní zprávy.
 > * Pomocí pole blobType zjistěte, jaký typ operací je povolen v objektu blob a které typy klientských knih, které byste měli použít pro přístup k objektu blob. Platné hodnoty `BlockBlob` jsou `PageBlob`buď nebo . 
 > * Použijte pole url `CloudBlockBlob` s `CloudAppendBlob` konstruktory a pro přístup k objektu blob.
 > * Ignorujte pole, kterým nerozumíte. Tento postup vám pomůže udržet odolnost vůči novým funkcím, které by mohly být přidány v budoucnu.
@@ -109,4 +110,5 @@ Aplikace, které zpracovávají události úložiště objektů Blob, by měly d
 Přečtěte si další informace o Event Grid a vyzkoušejte události úložiště objektů Blob:
 
 - [Informace o službě Event Grid](../../event-grid/overview.md)
+- [Schéma událostí úložiště objektů blob](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Směrování událostí úložiště objektů blob do vlastního koncového bodu webu](storage-blob-event-quickstart.md)

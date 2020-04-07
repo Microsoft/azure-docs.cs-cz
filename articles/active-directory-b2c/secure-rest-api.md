@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37d1c181c18f69c040040da2be138eaad3a61693
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 5a80c6e3bd8cf647590ed757c042ef3301e27b4a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396861"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743515"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečte své služby RESTful 
 
@@ -272,7 +272,7 @@ Chcete-li podporovat ověřování nože tokenu ve vlastní zásady, upravte roz
 1. Ujistěte se, že přidáte výše použitou deklaraci jako vstupní deklaraci:
 
     ```xml
-    <InputClaim ClaimTyeReferenceId="bearerToken"/>
+    <InputClaim ClaimTypeReferenceId="bearerToken"/>
     ```    
 
 Po přidání výše uvedených výstřižků by měl váš technický profil vypadat jako následující kód XML:
@@ -292,7 +292,7 @@ Po přidání výše uvedených výstřižků by měl váš technický profil vy
         <Item Key="AllowInsecureAuthInProduction">false</Item>
       </Metadata>
       <InputClaims>
-        <InputClaim ClaimTyeReferenceId="bearerToken"/>
+        <InputClaim ClaimTypeReferenceId="bearerToken"/>
       </InputClaims>
       ...
     </TechnicalProfile>

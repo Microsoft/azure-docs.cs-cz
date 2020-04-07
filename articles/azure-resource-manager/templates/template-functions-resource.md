@@ -3,12 +3,12 @@ title: Funkce šablony - zdroje
 description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478270"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744987"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -444,12 +444,12 @@ Vrátí objekt představující stav běhu prostředku.
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo jedinečný identifikátor prostředku. Při odkazování na prostředek v aktuální šabloně zadejte jako parametr pouze název prostředku. Při odkazování na dříve nasazený prostředek nebo při nejednoznačném názvu prostředku zadejte ID prostředku. |
-| apiVersion |Ne |řetězec |Verze rozhraní API zadaného prostředku. Tento parametr zahrňte, když prostředek není zřízen v rámci stejné šablony. Obvykle ve formátu **yyyy-mm-dd**. Platné verze rozhraní API pro váš prostředek naleznete v [tématu odkaz na šablonu](/azure/templates/). |
+| apiVersion |Ne |řetězec |Verze rozhraní API zadaného prostředku. **Tento parametr je povinný, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-mm-dd**. Platné verze rozhraní API pro váš prostředek naleznete v [tématu odkaz na šablonu](/azure/templates/). |
 | "Plná" |Ne |řetězec |Hodnota, která určuje, zda má být vrácen celý objekt prostředku. Pokud nezadáte `'Full'`, je vrácen pouze objekt vlastností prostředku. Úplný objekt obsahuje hodnoty, jako je například ID prostředku a umístění. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Každý typ prostředku vrátí různé vlastnosti pro referenční funkci. Funkce nevrátí jeden předdefinovaný formát. Vrácená hodnota se také liší v závislosti na tom, zda jste zadali úplný objekt. Chcete-li zobrazit vlastnosti typu prostředku, vraťte objekt v části výstupy, jak je znázorněno v příkladu.
+Každý typ prostředku vrátí různé vlastnosti pro referenční funkci. Funkce nevrátí jeden předdefinovaný formát. Vrácená hodnota se také liší v `'Full'` závislosti na hodnotě argumentu. Chcete-li zobrazit vlastnosti typu prostředku, vraťte objekt v části výstupy, jak je znázorněno v příkladu.
 
 ### <a name="remarks"></a>Poznámky
 
@@ -514,7 +514,7 @@ Při odkazování na prostředek, který je nasazen ve stejné šabloně, zadejt
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Při odkazování na prostředek, který není nasazen ve stejné šabloně, zadejte ID prostředku.
+Při odkazování na prostředek, který není nasazen ve stejné šabloně, zadejte ID prostředku a `apiVersion`.
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"

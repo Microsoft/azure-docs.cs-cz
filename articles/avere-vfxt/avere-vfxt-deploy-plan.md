@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76547536"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754396"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
@@ -142,7 +142,7 @@ Avere vFXT pro Cluster Azure se nachází v privátní podsíti a cluster nemá 
 
 Možnosti přístupu zahrnují:
 
-* Přejít na hostitele – přiřaďte k samostatnému virtuálnímu virtuálnímu počítačům v rámci privátní sítě veřejnou IP adresu a použijte ji k vytvoření tunelového propojení SSL do uzlů clusteru.
+* Přejít na hostitele – přiřaďte k samostatnému virtuálnímu virtuálnímu počítačům v rámci privátní sítě veřejnou IP adresu a použijte ji k vytvoření tunelového propojení TLS do uzlů clusteru.
 
   > [!TIP]
   > Pokud nastavíte veřejnou IP adresu na řadiči clusteru, můžete ji použít jako hostitele skoku. Další informace naleznete [v řadiči clusteru jako hostiteli skoku.](#cluster-controller-as-jump-host)

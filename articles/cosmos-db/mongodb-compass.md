@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: 5a3ec79b27231f781b5e4104922993de38c7fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c683ec0c4b3a536b0627a7c1c8abf28ee4f83663
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063645"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757025"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Připojení k rozhraní API Azure Cosmos DB pro MongoDB pomocí aplikace MongoDB Compass
 
@@ -22,10 +22,13 @@ Cosmos DB je globálně distribuovaná databázová služba společnosti Microso
 
 ## <a name="pre-requisites"></a>Požadavky
 
-Chcete-li se připojit ke svému účtu Cosmos DB pomocí Robo 3T, musíte:
+Chcete-li se připojit ke svému účtu Cosmos DB pomocí aplikace MongoDB Compass, musíte:
 
 * Stažení a instalace [compass](https://www.mongodb.com/download-center/compass?jmp=hero)
 * Vyřiďte si informace o [připojovacím řetězci](connect-mongodb-account.md) Cosmos DB
+
+> [!NOTE]
+> Rozhraní API Azure Cosmos DB pro server MongoDB verze 3.2 je v současné době podporované pomocí mongoDB compass.
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Připojení k rozhraní API Cosmos DB pro MongoDB
 

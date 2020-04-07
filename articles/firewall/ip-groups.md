@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 74e5a427d62d5249ffe6b0426b62a3577e43462f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444482"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757158"
 ---
 # <a name="ip-groups-preview-in-azure-firewall"></a>Skupiny IP (preview) v Azure Firewall
 
@@ -54,7 +54,7 @@ Můžete zobrazit všechny IP adresy ve skupině IP a pravidla nebo prostředky,
 
 1. Chcete-li zobrazit nebo upravit adresy IP, vyberte v části **Nastavení** v levém podokně **možnost Adresy IP.**
 2. Chcete-li přidat jednu nebo více adres IP, vyberte **přidat adresy IP**. Otevře se stránka **Přetažení nebo Procházet** pro nahrání nebo můžete adresu zadat ručně.
-3.  Výběrem elipsy (**...**) vpravo upravit nebo odstranit IP adresy. Pokud chcete upravit nebo odstranit více IP adres, vyberte pole a nahoře vyberte **Upravit** nebo **Odstranit.**
+3.    Výběrem elipsy (**...**) vpravo upravit nebo odstranit IP adresy. Pokud chcete upravit nebo odstranit více IP adres, vyberte pole a nahoře vyberte **Upravit** nebo **Odstranit.**
 4. Nakonec můžete exportovat soubor ve formátu csv souboru.
 
 > [!NOTE]
@@ -72,24 +72,47 @@ Skupinu **IP** teď můžete vybrat jako **typ zdroje** nebo **typ cíle** pro I
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Skupiny IP jsou v současné době k dispozici v následujících oblastech:
+Skupiny IP jsou k dispozici ve všech oblastech veřejného cloudu.
 
-- USA – západ
-- USA – západ 2
-- USA – východ
-- USA – východ 2
-- USA – střed
-- USA – středosever
-- USA – středozápad
-- USA – středojih
-- Střední Kanada
-- Severní Evropa
-- Západní Evropa
-- Francie – střed
-- Spojené království – jih
-- Austrálie – východ
-- Austrálie – střed
-- Austrálie – jihovýchod
+## <a name="ip-address-limits"></a>Limity IP adres
+
+U 50 skupin IP nebo méně můžete mít maximálně 5000 jednotlivých IP adres na každou instanci brány firewall. U 51 až 100 skupin IP můžete mít 500 jednotlivých IP adres pro každou instanci brány firewall.
+
+### <a name="examples"></a>Příklady
+
+#### <a name="example-1-supported"></a>Příklad 1: podporováno
+
+|Skupiny IP adres  |# IP adresy  |Notace  |Pravidlo  |
+|---------|---------|---------|---------|
+|Skupina IPGroup1 |4 096     |10.0.0.0/20  |Pravidlo 1|
+|Skupina IPGroup2     |3|196.0.0.0 - 196.0.0.2|Pravidlo 1|
+|Skupina IP3     |1|1.2.3.4|Pravidlo 1|
+|     |**Celkem 4100**|         |         |
+|     |         |         |         |
+
+#### <a name="example-2-supported"></a>Příklad 2: podporováno
+
+|Skupiny IP adres  |# IP adresy  |Notace  |Pravidlo  |
+|---------|---------|---------|---------|
+|Skupina IPGroup1 |4 096     |10.0.0.0/20  |Pravidlo 1|
+|Skupina IPGroup2     |4 096|11.0.0.0/20|Pravidlo 1|
+|     |**Celkem 8192**|         |         |
+
+#### <a name="example-3-not-supported"></a>Příklad 3: není podporováno
+
+|Skupiny IP adres  |# IP adresy  |Notace  |Pravidlo  |
+|---------|---------|---------|---------|
+|Skupina IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Pravidlo 1|
+|     |**Celkem 8192**|||
+
+#### <a name="example-4-supported"></a>Příklad 4: podporováno
+
+|Skupiny IP adres  |# IP adresy  |Notace  |Pravidlo  |
+|---------|---------|---------|---------|
+|Skupina IPGroup1 |4 096     |10.0.0.0/20  |Pravidlo 1|
+|Skupina IPGroup2     |4 096|11.0.0.0/20|Pravidlo 2|
+|     |**Celkem 8192**|         |         |
+
 
 ## <a name="related-azure-powershell-cmdlets"></a>Související rutiny prostředí Azure PowerShell
 

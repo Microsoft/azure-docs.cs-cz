@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c2717b1f29af39c6fdc4602b11acba131d959f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534384"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756273"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Použití privátních koncových bodů pro Azure Web App (preview)
 
@@ -25,7 +25,7 @@ Privátní koncový bod pro Azure Web App můžete použít k tomu, abyste klien
 
 Použití privátního koncového bodu pro webovou aplikaci umožňuje:
 
-- Zabezpečte webovou aplikaci konfigurací koncového bodu služby a eliminací veřejné expozice.
+- Zabezpečte webovou aplikaci konfigurací soukromého koncového bodu, čímž eliminujete public it.
 - Bezpečně se připojte k Webové aplikaci z místních sítí, které se připojují k virtuální síti pomocí privátního partnerského vztahu VPN nebo ExpressRoute.
 
 Pokud potřebujete zabezpečené připojení mezi virtuální sítí a webovou aplikací, koncový bod služby je nejjednodušší řešení. Pokud taky potřebujete oslovit webovou aplikaci z místního prostředí prostřednictvím brány Azure, globálně partnerské virtuální sítě nebo globálně partnerské virtuální sítě, privátní koncový bod je řešení.  
