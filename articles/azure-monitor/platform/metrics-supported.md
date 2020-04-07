@@ -4,15 +4,15 @@ description: Seznam metrik, které jsou k dispozici pro každý typ prostředku 
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 03/17/2020
+ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586022"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754661"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky pomocí Azure Monitoru
 
@@ -1999,11 +1999,11 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |dwu_used|Použitý DWU|Počet|Maximum|DWU používá. Platí pouze pro datové sklady.|Žádný|
 |cache_hit_percent|Procento přístupů do mezipaměti|Procento|Maximum|Procento zásahu do mezipaměti. Platí pouze pro datové sklady.|Žádný|
 |cache_used_percent|Procento použité mezipaměti|Procento|Maximum|Procento použité mezipaměti. Platí pouze pro datové sklady.|Žádný|
-|sqlserver_process_core_percent|Procento jádra procesu SQL Serveru|Procento|Maximum|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem.|Žádný|
-|sqlserver_process_memory_percent|Procento paměti procesu serveru SQL Server|Procento|Maximum|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem.|Žádný|
-|tempdb_data_size|Velikost datového souboru Tempdb kilobajty|Počet|Maximum|Velikost datového souboru Tempdb kilobajty. Nevztahuje se na datové sklady.|Žádný|
-|tempdb_log_size|Velikost souboru protokolu databáze Tempdb kilobajty|Počet|Maximum|Velikost souboru protokolu databáze Tempdb kilobajtů. Nevztahuje se na datové sklady.|Žádný|
-|tempdb_log_used_percent|Použitý protokol procenta databáze dat|Procento|Maximum|Použitý protokol procenta databáze. Nevztahuje se na datové sklady.|Žádný|
+|sqlserver_process_core_percent<sup>1</sup> |Procento jádra procesu SQL Serveru|Procento|Maximum|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem.|Žádný|
+|sqlserver_process_memory_percent<sup>1.</sup> |Procento paměti procesu serveru SQL Server|Procento|Maximum|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem.|Žádný|
+|<sup>2</sup> tempdb_data_size. |Velikost datového souboru Tempdb kilobajty|Počet|Maximum|Velikost datového souboru Tempdb kilobajty.|Žádný|
+|<sup>2</sup> tempdb_log_size. |Velikost souboru protokolu databáze Tempdb kilobajty|Počet|Maximum|Velikost souboru protokolu databáze Tempdb kilobajtů.|Žádný|
+|<sup>2.</sup> tempdb_log_used_percent |Použitý protokol procenta databáze dat|Procento|Maximum|Použitý protokol procenta databáze.|Žádný|
 |local_tempdb_usage_percent|Procento místní databáze tempdb|Procento|Průměr|Procento místní databáze tempdb. Platí pouze pro datové sklady.|Žádný|
 |app_cpu_billed|Fakturováno s procesorem aplikace|Počet|Celkem|Fakturováno s procesorem aplikace. Platí pro databáze bez serveru.|Žádný|
 |app_cpu_percent|Procento procesoru aplikace|Procento|Průměr|Procento procesoru aplikace. Platí pro databáze bez serveru.|Žádný|
@@ -2028,6 +2028,9 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |snapshot_backup_size_bytes|Velikost úložiště záloh snímků|Bajty|Maximum|Kumulativní velikost úložiště zálohy snímků. Platí pro hyperškálovací databáze.|Žádný|
 |base_blob_size_bytes|Velikost základního úložiště objektů blob|Bajty|Maximum|Základní velikost úložiště objektů blob. Platí pro hyperškálovací databáze.|Žádný|
 
+<sup>1</sup> Tato metrika je k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. 
+
+<sup>2</sup> Tato metrika je k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro hyperškálovatné databáze nebo datové sklady.
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servery/elastické bazény
 
@@ -2057,14 +2060,19 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |database_cpu_limit|Limit procesoru|Počet|Průměr|Limit procesoru|Id databázového zdroje|
 |cpu_used|Použitý procesor|Počet|Průměr|Použitý procesor. Platí pro elastické fondy založené na virtuálních jádrech.|Žádný|
 |database_cpu_used|Použitý procesor|Počet|Průměr|Použitý procesor|Id databázového zdroje|
-|sqlserver_process_core_percent|Procento jádra procesu SQL Serveru|Procento|Maximum|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem. Platí pro elastické bazény.|Žádný|
-|sqlserver_process_memory_percent|Procento paměti procesu serveru SQL Server|Procento|Maximum|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem. Platí pro elastické bazény.|Žádný|
-|tempdb_data_size|Velikost datového souboru Tempdb kilobajty|Počet|Maximum|Velikost datového souboru Tempdb kilobajty|Žádný|
-|tempdb_log_size|Velikost souboru protokolu databáze Tempdb kilobajty|Počet|Maximum|Velikost souboru protokolu databáze Tempdb kilobajty|Žádný|
-|tempdb_log_used_percent|Použitý protokol procenta databáze dat|Procento|Maximum|Použitý protokol procenta databáze dat|Žádný|
+|sqlserver_process_core_percent<sup>1</sup>|Procento jádra procesu SQL Serveru|Procento|Maximum|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem. Platí pro elastické bazény. |Žádný|
+|sqlserver_process_memory_percent<sup>1.</sup>|Procento paměti procesu serveru SQL Server|Procento|Maximum|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem. Platí pro elastické bazény. |Žádný|
+|<sup>2</sup> tempdb_data_size.|Velikost datového souboru Tempdb kilobajty|Počet|Maximum|Velikost datového souboru Tempdb kilobajty.|Žádný|
+|<sup>2</sup> tempdb_log_size.|Velikost souboru protokolu databáze Tempdb kilobajty|Počet|Maximum|Velikost souboru protokolu databáze Tempdb kilobajtů. |Žádný|
+|<sup>2.</sup> tempdb_log_used_percent|Použitý protokol procenta databáze dat|Procento|Maximum|Použitý protokol procenta databáze.|Žádný|
 |allocated_data_storage|Přidělený datový prostor|Bajty|Průměr|Přidělený datový prostor|Žádný|
 |database_allocated_data_storage|Přidělený datový prostor|Bajty|Průměr|Přidělený datový prostor|Id databázového zdroje|
 |allocated_data_storage_percent|Procento přidělené datového prostoru|Procento|Maximum|Procento přidělené datového prostoru|Žádný|
+
+<sup>1</sup> Tato metrika je k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. 
+
+<sup>2</sup> Tato metrika je k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro hyperškálovací databáze.
+
 
 ## <a name="microsoftsqlservers"></a>Microsoft.SQL/servery
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ba38a5d7e8e8a89ba122efb1734c1f13a94d48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 402eaecbf03fd52fbb5e871fdd196da2bc9a3e1f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332187"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743538"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování bez hesla pro Službu Azure Active Directory
 
@@ -97,7 +97,7 @@ Následující proces se používá, když se uživatel přihlásí pomocí bezp
 8. Azure AD ověří podepsané nonce pomocí veřejného klíče FIDO2.
 9. Azure AD vrátí PRT povolit přístup k místním prostředkům.
 
-I když existuje mnoho klíčů, které jsou FIDO2 certifikované FIDO Alliance, Microsoft vyžaduje některé volitelné rozšíření fido2 Client-to-Authenticator Protocol (CTAP) specifikace, které mají být implementovány dodavatelem k zajištění maximální bezpečnosti a nejlepší Zkušenosti.
+I když existuje mnoho klíčů, které jsou FIDO2 certifikované FIDO Alliance, Microsoft vyžaduje některé volitelné rozšíření fido2 client-to-authenticator Protocol (CTAP) specifikace, které mají být implementovány dodavatelem k zajištění maximální zabezpečení a nejlepší zkušenosti.
 
 Bezpečnostní klíč **MUSÍ** implementovat následující funkce a rozšíření z protokolu FIDO2 CTAP, aby byl kompatibilní se společností Microsoft:
 
@@ -162,7 +162,7 @@ V následující tabulce můžete zvolit, která metoda bude podporovat vaše po
 
 ## <a name="next-steps"></a>Další kroky
 
-[Povolte možnosti bezhesla pomocí bezpečnostního klíče FIDO2 ve vaší organizaci](howto-authentication-passwordless-security-key.md)
+[Povolte možnosti bez hesla pomocí bezpečnostního klíče FIDO2 ve vaší organizaci](howto-authentication-passwordless-security-key.md)
 
 [Povolení možností bez hesla založených na telefonu ve vaší organizaci](howto-authentication-passwordless-phone.md)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: d8e6f4b58cf17a7502e2c0d67e4fa67af7cdb3f5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632957"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757211"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování spravovaných disků Azure na straně serveru
 
@@ -91,6 +91,9 @@ Prozatím mají klíče spravované zákazníkem následující omezení:
 
     Při vytváření instance trezoru klíčů je nutné povolit ochranu proti odstranění a vymazání pomocí funkce Obnovitelné odstranění a vymazání. Obnovitelné odstranění zajistí, že trezor klíčů obsahuje odstraněný klíč po danou dobu uchovávání (výchozí nastavení 90 dnů). Ochrana proti vymazání zajišťuje, že odstraněný klíč nelze trvale odstranit, dokud nevyprší doba uchování. Tato nastavení vás chrání před ztrátou dat v důsledku náhodného odstranění. Tato nastavení jsou povinná při použití trezoru klíčů pro šifrování spravovaných disků.
 
+    > [!IMPORTANT]
+    > Nepoužívejte camel případě oblasti, pokud tak učiníte může dojít k problémům při přiřazování další disky k prostředku na webu Azure Portal.
+    
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
     $LocationName="westcentralus"

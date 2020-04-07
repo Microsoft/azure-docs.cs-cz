@@ -10,12 +10,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: afbd9950c31bc1c40b01ec0aaf3d2bfffb8a6b94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78398239"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756592"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Nasazení modelu do výpočetních instancí Azure Machine Learning
 
@@ -96,7 +96,7 @@ print("prediction:", resp.text)
 
 * [Jak nasadit model pomocí vlastní image Dockeru](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Zabezpečené webové služby Azure Machine Learning s ssl](how-to-secure-web-service.md)
+* [Použití TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
 * [Využití modelu ML nasazeného jako webová služba](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning pomocí přehledů aplikací](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely ve výrobě](how-to-enable-data-collection.md)

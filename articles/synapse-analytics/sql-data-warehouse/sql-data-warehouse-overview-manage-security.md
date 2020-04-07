@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 44d7b4196e53bfcc89105236e446c74d50e7812a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0c30294f2ca139a602074a980810e7c6737c4e2d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633118"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742989"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Zabezpečení databáze v Azure Synapse
 
@@ -81,9 +81,9 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 Existují způsoby, jak dále omezit, co může uživatel v databázi dělat:
 
-* Podrobná [oprávnění](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15) umožňují řídit, které operace lze provést s jednotlivými sloupci, tabulkami, zobrazeními, schématy, procedurami a dalšími objekty v databázi. Použijte podrobná oprávnění, abyste měli co největší kontrolu a udělili minimální potřebná oprávnění.
-* [Databázové role](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15) jiné než db_datareader a db_datawriter lze použít k vytvoření výkonnějších uživatelských účtů aplikací nebo méně výkonných účtů správy. Předdefinované role pevné databáze poskytují snadný způsob udělení oprávnění, ale může mít za následek udělení více oprávnění, než je nutné.
-* K omezení akcí, které je možné s databází provádět, můžete použít [uložené procedury](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine?redirectedfrom=MSDN&view=sql-server-ver15).
+* Podrobná [oprávnění](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) umožňují řídit, které operace lze provést s jednotlivými sloupci, tabulkami, zobrazeními, schématy, procedurami a dalšími objekty v databázi. Použijte podrobná oprávnění, abyste měli co největší kontrolu a udělili minimální potřebná oprávnění.
+* [Databázové role](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jiné než db_datareader a db_datawriter lze použít k vytvoření výkonnějších uživatelských účtů aplikací nebo méně výkonných účtů správy. Předdefinované role pevné databáze poskytují snadný způsob udělení oprávnění, ale může mít za následek udělení více oprávnění, než je nutné.
+* K omezení akcí, které je možné s databází provádět, můžete použít [uložené procedury](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Následující příklad uděluje přístup pro čtení do uživatelského schématu.
 
@@ -92,13 +92,13 @@ Následující příklad uděluje přístup pro čtení do uživatelského sché
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Správa databází a logických serverů z webu Azure Portal nebo pomocí rozhraní API Azure Resource Manager uvládne přiřazení rolí vašeho uživatelského účtu portálu. Další informace najdete [v tématu Řízení přístupu na základě rolí na webu Azure Portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure).
+Správa databází a logických serverů z webu Azure Portal nebo pomocí rozhraní API Azure Resource Manager uvládne přiřazení rolí vašeho uživatelského účtu portálu. Další informace najdete [v tématu Řízení přístupu na základě rolí na webu Azure Portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="encryption"></a>Šifrování
 
 Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivé aktivity šifrováním a dešifrováním dat v klidovém stavu. Při šifrování databáze jsou přidružené zálohy a soubory protokolu transakcí zašifrovány bez nutnosti jakýchkoli změn v aplikacích. Transparentní šifrování dat šifruje úložiště celé databáze pomocí symetrického klíče nazývaného šifrovací klíč databáze.
 
-V databázi SQL je šifrovací klíč databáze chráněn integrovaným certifikátem serveru. Vestavěný certifikát serveru je jedinečný pro každý server databáze SQL. Společnost Microsoft automaticky otočí tyto certifikáty alespoň každých 90 dní. Použitý šifrovací algoritmus je AES-256. Obecný popis tde naleznete v tématu [Transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15).
+V databázi SQL je šifrovací klíč databáze chráněn integrovaným certifikátem serveru. Vestavěný certifikát serveru je jedinečný pro každý server databáze SQL. Společnost Microsoft automaticky otočí tyto certifikáty alespoň každých 90 dní. Použitý šifrovací algoritmus je AES-256. Obecný popis tde naleznete v tématu [Transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Databázi můžete šifrovat pomocí [portálu Azure nebo](sql-data-warehouse-encryption-tde.md) [T-SQL](sql-data-warehouse-encryption-tde-tsql.md).
 

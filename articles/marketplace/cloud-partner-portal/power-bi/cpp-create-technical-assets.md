@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: df0708ff964595181d00d8402f1162e0832c70eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0079c5a9409aafd4d6341ec9febb5115dc4023a1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286366"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745398"
 ---
 # <a name="create-power-bi-app-offer-technical-assets"></a>Vytvoření technických datových zdrojů nabídky aplikace Power BI
+
+>[!Important]
+>března 2020 začneme přesouvat správu nabídek aplikací Power BI do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
 
 Primárním technickým zdrojem, který pro tento typ nabídky potřebujete, je aplikace Power BI. Aplikace Power BI je kolekce primárních datových sad, sestav nebo řídicích panelů a volitelných připojených služeb a vložených datových sad. Vyvinula se z typu datového zdroje, dříve známého jako [balíček obsahu](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Další informace o vývoji tohoto typu aplikace najdete v tématu [Co jsou aplikace pro šablony Power BI?](https://go.microsoft.com/fwlink/?linkid=2028636).
 

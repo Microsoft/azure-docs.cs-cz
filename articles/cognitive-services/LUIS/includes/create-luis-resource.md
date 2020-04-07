@@ -6,30 +6,38 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 04/06/2020
 ms.author: dapine
-ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88289686e5b091ef3ec309ee9b54ee0f895c8c22
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73465921"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754362"
 ---
-## <a name="create-a-luis-resource"></a>Vytvoření prostředku luis
+<a name="create-luis-resources"></a>
 
-1. Přihlášení k [portálu Azure](https://portal.azure.com)
-1. Klikněte na [Vytvořit **jazykové znalosti.** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+## <a name="create-luis-resources-in-azure-portal"></a>Vytvoření prostředků LUIS na webu Azure Portal
+
+1. Pomocí [tohoto odkazu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) můžete začít vytvářet prostředky LUIS na webu Azure Portal.
+
 1. Zadejte všechna požadovaná nastavení:
 
-    |Nastavení|Hodnota|
+    |Name (Název)|Účel|
     |--|--|
-    |Name (Název)|Požadovaný název (2-64 znaků)|
-    |Předplatné|Vybrat příslušné předplatné|
-    |Umístění|Vyberte libovolné blízké a dostupné místo|
-    |Cenová úroveň|`F0`- minimální cenová úroveň|
-    |Skupina prostředků|Výběr dostupné skupiny prostředků|
+    |Název předplatného| předplatné, které se bude účtovat za prostředek.|
+    |Skupina prostředků| Vlastní název skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu.|
+    |Name (Název)| Vlastní název, který zvolíte, který se používá jako vlastní subdoména pro dotazy na koncový bod vytváření a předpovědi.|
+    |Vytváření umístění|Oblast přidružená k modelu.|
+    |Vytváření cenové úrovně|Cenová úroveň určuje maximální transakci za sekundu a měsíc.|
+    |Umístění runtime|Oblast přidružená k publikované predikční koncové době runtime.|
+    |Cenová úroveň runtime|Cenová úroveň určuje maximální transakci za sekundu a měsíc.|
 
-1. Klikněte na **Vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
-1. Shromažďovat `endpoint` nakonfigurované a klíč rozhraní API, viz [shromažďování požadovaných parametrů](#gathering-required-parameters).
+    > [!div class="mx-imgBorder"]
+    > [![Vytvoření prostředku pro porozumění jazykům](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png#lightbox)
 
-[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+1. Klikněte na **Revize + vytvořit** a počkejte na vytvoření zdroje.
+1. Po vytvoření obou prostředků, stále na webu Azure portal, vyberte nový prostředek vytváření, pak **Quickstarts** získat vytváření **koncového bodu URL** a **klíč** pro vytváření programově.
+
+> [!TIP]
+> Chcete-li použít prostředky, na portálu LUIS [přiřaďte prostředky](../luis-how-to-azure-subscription.md#assign-an-authoring-resource-in-the-luis-portal-for-all-apps).

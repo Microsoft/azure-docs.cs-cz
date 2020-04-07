@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632736"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755142"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datová věda s virtuálním počítačem pro datové vědy o Linuxu v Azure
 
@@ -39,7 +39,7 @@ Než budete moci používat Linux DSVM, musíte mít následující předpoklady
 Datová sada [spamové základny](https://archive.ics.uci.edu/ml/datasets/spambase) je relativně malá sada dat, která obsahuje příklady 4 601. Datová sada je vhodná velikost pro demonstrování některé klíčové funkce DSVM, protože udržuje požadavky na prostředky skromné.
 
 > [!NOTE]
-> Tento návod byl vytvořen pomocí D2 v2 velikosti Linuxu DSVM (CentOS Edition). DSVM této velikosti můžete použít k dokončení postupů, které jsou demonstrovány v tomto návodu.
+> Tento návod byl vytvořen pomocí D2 v2 velikosti LinuxU DSVM (Ubuntu 18.04 Edition). DSVM této velikosti můžete použít k dokončení postupů, které jsou demonstrovány v tomto návodu.
 
 Pokud potřebujete více úložného prostoru, můžete vytvořit další disky a připojit je k vašemu dsvm. Disky používají trvalé úložiště Azure, takže jejich data se zachovají i v případě, že je server znovu zřízen z důvodu změna velikosti nebo je vypnut. Chcete-li přidat disk a připojit jej k modulu DSVM, proveďte kroky v části [Přidání disku do virtuálního počítače s Linuxem](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Postup přidání disku použít Azure CLI, který je již nainstalován na DSVM. Kroky můžete provést zcela ze samotného DSVM. Další možností, jak zvýšit úložiště, je použití [souborů Azure](../../storage/files/storage-how-to-use-files-linux.md).
 

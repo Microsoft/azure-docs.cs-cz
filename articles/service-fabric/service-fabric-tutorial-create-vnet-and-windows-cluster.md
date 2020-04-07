@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak nasadit cluster Windows Service Fabr
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551705"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756038"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
 
@@ -156,7 +156,7 @@ Soubor s parametry [azuredeploy.parameters.json][parameters] deklaruje mnoho hod
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Nastavení ověřování klienta Služby Azure Active Directory
 Pro clustery Service Fabric nasazené ve veřejné síti hostované v Azure je doporučení pro vzájemné ověřování mezi klientem a uzlem:
 * Pro identitu klienta použijte službu Azure Active Directory.
-* Použijte certifikát pro identitu serveru a šifrování SSL komunikace HTTP.
+* Použijte certifikát pro identitu serveru a šifrování TLS komunikace HTTP.
 
 Nastavení služby Azure Active Directory (Azure AD) k ověření klientů pro cluster Service Fabric musí být provedeno před [vytvořením clusteru](#createvaultandcert). Azure AD umožňuje organizacím (označované jako tenanty) spravovat přístup uživatelů k aplikacím. 
 

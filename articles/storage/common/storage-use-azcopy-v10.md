@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 90adb3b973b6952d10ef89e4b40d0fc68489e224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061095"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756026"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -21,7 +21,7 @@ AzCopy je nástroj příkazového řádku, který můžete použít ke kopírov�
 > [!NOTE]
 > AzCopy **V10** je aktuálně podporovaná verze AzCopy.
 >
-> Pokud potřebujete použít AzCopy **v8.1**, podívejte se na [použití předchozí verze azCopy](#previous-version) části tohoto článku.
+> Pokud potřebujete použít předchozí verzi AzCopy, podívejte se na [část Použití předchozí verze AzCopy](#previous-version) v tomto článku.
 
 <a id="download-and-install-azcopy" />
 
@@ -67,7 +67,7 @@ Tuto tabulku použijte jako vodítko:
 |--|--|
 |**Blob Storage** | Azure AD & SAS |
 |**Úložiště objektů blob (hierarchický obor názvů)** | Azure AD & SAS |
-|**File Storage** | Pouze SAS |
+|**Úložiště souborů** | Pouze SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Možnost 1: Použití služby Azure Active Directory
 
@@ -308,11 +308,11 @@ Průzkumník úložiště používá klíč vašeho účtu k provádění operac
 
 ## <a name="use-the-previous-version-of-azcopy"></a>Použití předchozí verze AzCopy
 
-Pokud potřebujete použít předchozí verzi AzCopy (AzCopy v8.1), podívejte se na jeden z následujících odkazů:
+Pokud potřebujete použít předchozí verzi AzCopy, podívejte se na jeden z následujících odkazů:
 
 - [AzCopy ve Windows (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [AzCopy v Linuxu (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [AzCopy na Linuxu (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s azcopy
 

@@ -2,16 +2,16 @@
 title: Vytvoření aplikace pro funkce Azure s Javou a Eclipse
 description: Návod k vytvoření a publikování jednoduché aplikace bez serveru aktivované http pomocí Java a Eclipse do Azure Functions.
 author: jeffhollan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136829"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756486"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Vytvořte si první funkci s Javou a Eclipse 
 

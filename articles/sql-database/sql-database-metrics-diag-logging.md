@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 880072c9865e38e181869506e35968767fa95e8a
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.date: 04/06/2020
+ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387899"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756414"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Konfigurace exportu datového proudu diagnostické telemetrie databáze Azure SQL
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte o metriky výkonu a protokoly prostředků pro Azur
 Dozvíte se také o cílech, do kterých můžete streamovat tuto diagnostickou telemetrii a jak si vybrat mezi těmito možnostmi. Mezi možnosti cíle patří:
 
 - [Log Analytics a SQL Analytics](#stream-into-sql-analytics)
-- [Centra událostí](#stream-into-event-hubs)
+- [Event Hubs](#stream-into-event-hubs)
 - [Azure Storage](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>Diagnostická telemetrie pro export pro Azure SQL Database
@@ -95,7 +95,7 @@ Pomocí nabídky **Nastavení diagnostiky** na webu Azure Portal můžete povoli
 
 Vyberte jednu z následujících karet pro podrobné pokyny pro konfiguraci streamování exportu diagnostické telemetrie na webu Azure portal a pro skripty pro provedení stejné s PowerShell a Azure CLI.
 
-# <a name="azure-portal"></a>[Portál Azure](#tab/azure-portal)
+# <a name="azure-portal"></a>[portál Azure](#tab/azure-portal)
 
 ### <a name="elastic-pools"></a>Elastické fondy
 
@@ -454,9 +454,15 @@ Podrobnosti o rozšířených metrikách naleznete v následující tabulce.
 
 |**Metrika**|**Zobrazovaný název metriky**|**Popis**|
 |---|---|---|
-|tempdb_data_size| Velikost datového souboru Tempdb kilobajty |Velikost datového souboru Tempdb kilobajty. Nevztahuje se na datové sklady. Tato metrika bude k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro hyperškálovací databáze.|
-|tempdb_log_size| Velikost souboru protokolu databáze Tempdb kilobajty |Velikost souboru protokolu databáze Tempdb kilobajtů. Nevztahuje se na datové sklady. Tato metrika bude k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro hyperškálovací databáze.|
-|tempdb_log_used_percent| Použitý protokol procenta databáze dat |Použitý protokol procenta databáze. Nevztahuje se na datové sklady. Tato metrika bude k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro hyperškálovací databáze.|
+|sqlserver_process_core_percent<sup>1</sup>|Procento jádra procesu SQL Serveru|Procento využití procesoru pro proces serveru SQL Server měřené operačním systémem.|
+|sqlserver_process_memory_percent<sup>1.</sup> |Procento paměti procesu serveru SQL Server|Procento využití paměti pro proces serveru SQL Server měřeno operačním systémem.|
+|<sup>2</sup> tempdb_data_size.| Velikost datového souboru Tempdb kilobajty |Velikost datového souboru Tempdb kilobajty.|
+|<sup>2</sup> tempdb_log_size.| Velikost souboru protokolu databáze Tempdb kilobajty |Velikost souboru protokolu databáze Tempdb kilobajtů.|
+|<sup>2.</sup> tempdb_log_used_percent| Použitý protokol procenta databáze dat |Použitý protokol procenta databáze.|
+
+<sup>1</sup> Tato metrika je k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. 
+
+<sup>2</sup> Tato metrika je k dispozici pro databáze pomocí nákupního modelu virtuálních jader se 2 virtuálními jádry a vyššími nebo 200 DTU a vyššími pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro hyperškálovatné databáze nebo datové sklady.
 
 ### <a name="basic-logs"></a>Základní protokoly
 

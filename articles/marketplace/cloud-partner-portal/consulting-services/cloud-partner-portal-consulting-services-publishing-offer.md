@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ceef030d2c0176313cbce8f6817a89c06f134d3d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278531"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745672"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Nabídka konzultačních služeb Azure a Dynamics 365
+
+>[!Important]
+>března 2020 začneme přesouvat správu vašich poradenských služeb do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu pro vytvoření služby](https://aka.ms/AzureCreateConsultingService) postupujte podle pokynů pro správu migrovaných nabídek.
 
 Tento článek vysvětluje, jak publikovat nabídku poradenské služby na webu Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> nebo <a href="https://appsource.microsoft.com">AppSource</a>. Řešení založená na Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>a Power <a href="https://powerapps.microsoft.com">Apps</a> můžou být uvedená na AppSource. Další nabídky založené na jiných <a href="https://azure.microsoft.com/services">službách</a> Microsoft Azure můžou být uvedené na Azure Marketplace.
 

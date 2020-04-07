@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e5ad5f6f2f5be239af23ee4802cf09c388c93ae9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632909"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745512"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Doporučené postupy pro načítání dat pomocí fondu Synapse SQL
 
@@ -104,7 +104,7 @@ V případě nedostatku paměti nemusí index columnstore dosahovat maximální 
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zvětšení velikosti dávky při použití rozhraní SqLBulkCopy API nebo bcp
 
-Načítání s PolyBase bude poskytovat nejvyšší propustnost s fondem SQL. Pokud nemůžete použít PolyBase k načtení a musí používat [SqLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx) nebo [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15), měli byste zvážit zvýšení velikosti dávky pro lepší propustnost.
+Načítání s PolyBase bude poskytovat nejvyšší propustnost s fondem SQL. Pokud nemůžete použít PolyBase k načtení a musí používat [SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), měli byste zvážit zvýšení velikosti dávky pro lepší propustnost.
 
 > [!TIP]
 > Velikost dávky mezi řádky 100 K až 1M je doporučeným základem pro určení optimální kapacity velikosti dávky.
@@ -120,7 +120,7 @@ Datový záznam se považuje za nečistý, pokud splňuje některou z následuj�
 
 Pokud chcete nezapsané záznamy opravit, ujistěte se, že jsou definice formátů externí tabulky a externího souboru správné a že externí data těmto definicím odpovídají.
 
-Pokud je podmnožina externích datových záznamů znečištěná, můžete tyto záznamy pro dotazy odmítnout pomocí možností odmítnutí v části [CREATE EXTERNAL TABLE (Transact-SQL).](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15)
+Pokud je podmnožina externích datových záznamů znečištěná, můžete tyto záznamy pro dotazy odmítnout pomocí možností odmítnutí v části [CREATE EXTERNAL TABLE (Transact-SQL).](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="inserting-data-into-a-production-table"></a>Vložení dat do provozní tabulky
 

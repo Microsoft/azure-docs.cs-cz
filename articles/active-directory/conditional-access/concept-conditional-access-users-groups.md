@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ae866959dd2112bacbb6b56e5683e7b3b851a0
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631927"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755251"
 ---
 # <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: Uživatelé a skupiny
 
@@ -35,9 +35,9 @@ Následující možnosti jsou k dispozici zahrnout při vytváření zásad podm
 - Všichni uživatelé
    - Všichni uživatelé, kteří existují v adresáři, včetně hostů B2B.
 - Výběr uživatelů a skupin
-   - Všichni hostující a externí uživatelé (náhled)
+   - Všichni hostující a externí uživatelé
       - Tento výběr zahrnuje všechny hosty B2B a `user type` externí uživatele, včetně všech uživatelů s atributem nastaveným na `guest`. Tento výběr platí také pro všechny externí uživatele přihlášené z jiné organizace, jako je poskytovatel cloudových řešení (CSP). 
-   - Role adresáře (náhled)
+   - Role adresáře
       - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace mohou například vytvořit přísnější zásady pro uživatele, kterým byla přiřazena role globálního správce.
    - Uživatelé a skupiny
       - Umožňuje cílení na konkrétní sady uživatelů. Organizace mohou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybrána aplikace HR. Skupinou může být libovolný typ skupiny ve službě Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce.
@@ -51,9 +51,9 @@ Pokud organizace zahrnují a vylučují uživatele nebo skupinu, je uživatel ne
 
 Následující možnosti jsou k dispozici vyloučit při vytváření zásad podmíněného přístupu.
 
-- Všichni hostující a externí uživatelé (náhled)
+- Všichni hostující a externí uživatelé
    - Tento výběr zahrnuje všechny hosty B2B a `user type` externí uživatele, včetně všech uživatelů s atributem nastaveným na `guest`. Tento výběr platí také pro všechny externí uživatele přihlášené z jiné organizace, jako je poskytovatel cloudových řešení (CSP). 
-- Role adresáře (náhled)
+- Role adresáře
    - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace mohou například vytvořit přísnější zásady pro uživatele, kterým byla přiřazena role globálního správce.
 - Uživatelé a skupiny
    - Umožňuje cílení na konkrétní sady uživatelů. Organizace mohou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybrána aplikace HR. Skupinou může být libovolný typ skupiny ve službě Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce.

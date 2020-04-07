@@ -4,12 +4,12 @@ description: Zjistěte, jak připojit funkce Azure k frontě úložiště Azure 
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241329"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673455"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Připojení funkcí Azure k úložišti Azure pomocí kódu Visual Studia
 
@@ -52,9 +52,13 @@ V [předchozím článku rychlého startu](functions-create-first-function-vs-co
 
 Vzhledem k tomu, že používáte výstupové vazby úložiště fronty, musíte mít před spuštěním projektu nainstalováno rozšíření vazeb úložiště. 
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+Projekt byl nakonfigurován tak, aby používal [balíčky rozšíření](functions-bindings-register.md#extension-bundles), které automaticky nainstalují předdefinovanou sadu balíčků rozšíření. 
+
+Rozšíření svazky je povolena v souboru host.json v kořenovém adresáři projektu, který vypadá takto:
+
+:::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
 ::: zone-end
 
@@ -74,7 +78,7 @@ Nyní můžete přidat vazby výstupu úložiště do projektu.
 
 Ve funkcích vyžaduje každý `direction`typ `type`vazby `name` a , a jedinečný, který má být definován v souboru function.json. Způsob definování těchto atributů závisí na jazyku aplikace funkce.
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -83,6 +87,12 @@ Ve funkcích vyžaduje každý `direction`typ `type`vazby `name` a , a jedinečn
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [functions-add-output-binding-java](../../includes/functions-add-output-binding-java.md)]
 
 ::: zone-end
 
@@ -111,8 +121,20 @@ Po definování vazby můžete použít `name` vazbu pro přístup k ní jako at
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"  
+
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
 ::: zone-end  
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end  
+
+<!--- Local testing section --->
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -127,6 +149,12 @@ Po definování vazby můžete použít `name` vazbu pro přístup k ní jako at
 ::: zone-end
 
 Nová fronta s názvem **outqueue** je vytvořena ve vašem účtu úložiště při funkci runtime funkce při prvním použití výstupní vazby. Pomocí Průzkumníka úložiště ověříte, že fronta byla vytvořena spolu s novou zprávou.
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Propojení Průzkumníka služby Storage s vaším účtem
 

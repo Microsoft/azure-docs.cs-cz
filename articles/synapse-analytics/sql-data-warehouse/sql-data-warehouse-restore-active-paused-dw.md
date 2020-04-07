@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632251"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745212"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Obnovení existujícího fondu SQL
 
@@ -28,12 +28,12 @@ V tomto článku se dozvíte, jak obnovit existující fond SQL v Azure Synapse 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-1. Nezapomeňte [nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+1. Nezapomeňte [nainstalovat Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Mít existující bod obnovení, ze kterého chcete obnovit. Pokud chcete vytvořit nové obnovení, podívejte [se do kurzu k vytvoření nového uživatelem definovaného bodu obnovení](sql-data-warehouse-restore-points.md).
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>Obnovení existujícího fondu SQL prostřednictvím prostředí PowerShell
 
-Chcete-li obnovit existující fond SQL z bodu obnovení, použijte rutinu [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell.
+Chcete-li obnovit existující fond SQL z bodu obnovení, použijte rutinu [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell.
 
 1. Otevřete PowerShell.
 
@@ -45,7 +45,7 @@ Chcete-li obnovit existující fond SQL z bodu obnovení, použijte rutinu [Rest
 
 5. Vyberte požadovaný bod obnovení pomocí RestorePointCreationDate.
 
-6. Obnovte fond SQL do požadovaného bodu obnovení pomocí rutiny [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell.
+6. Obnovte fond SQL do požadovaného bodu obnovení pomocí rutiny [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell.
         1. Chcete-li obnovit fond SQL na jiný logický server, nezapomeňte zadat jiný název logického serveru.  Tento logický server může být také v jiné skupině prostředků a oblasti.
         2. Chcete-li obnovit jiné předplatné, použijte tlačítko Přesunout k přesunutí logického serveru na jiné předplatné.
 

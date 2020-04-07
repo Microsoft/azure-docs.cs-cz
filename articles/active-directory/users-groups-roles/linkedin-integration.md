@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025399"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755116"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace připojení účtů LinkedIn ve službě Azure Active Directory
 
@@ -26,8 +26,9 @@ Uživatelům ve vaší organizaci můžete povolit přístup k jejich připojen�
 
 > [!IMPORTANT]
 > Nastavení připojení účtu LinkedIn se aktuálně zavádí do organizací Azure AD. Když je zavedena do vaší organizace, je povolena ve výchozím nastavení.
-> 
+>
 > Výjimky:
+>
 > * Toto nastavení není dostupné pro zákazníky, kteří používají Microsoft Cloud pro vládu USA, Microsoft Cloud Germany nebo Azure a Office 365 provozované společností 21Vianet v Číně.
 > * Nastavení je ve výchozím nastavení vypnuto pro klienty zřízené v Německu. Všimněte si, že toto nastavení není k dispozici pro zákazníky, kteří používají Microsoft Cloud Německo.
 > * Nastavení je ve výchozím nastavení vypnuto pro klienty zřízené ve Francii.
@@ -40,7 +41,7 @@ Připojení účtů LinkedIn můžete povolit pouze pro uživatele, ke kterým c
 
 1. Přihlaste se k [Centru pro správu Azure AD](https://aad.portal.azure.com/) pomocí účtu, který je globálním správcem organizace Azure AD.
 1. Vyberte **Uživatelé**.
-1. V okně **Uživatelé** vyberte **Uživatelská nastavení**.
+1. Na stránce **Uživatelé** vyberte **Uživatelská nastavení**.
 1. V části **Připojení účtů LinkedIn**umožněte uživatelům připojit své účty pro přístup k připojením LinkedIn v některých aplikacích Microsoftu. Žádná data nejsou sdílena, dokud uživatelé neodsouhlasí připojení svých účtů.
 
     * Výběrem **možnosti Ano** povolíte službu pro všechny uživatele ve vaší organizaci.
@@ -55,6 +56,7 @@ Připojení účtů LinkedIn můžete povolit pouze pro uživatele, ke kterým c
 > Integrace LinkedIn není pro vaše uživatele plně povolena, dokud neuspějí s připojením svých účtů. Pokud uživatelům povolíte připojení k účtu, nebudou sdílena žádná data.
 
 ### <a name="assign-selected-users-with-a-group"></a>Přiřazení vybraných uživatelů ke skupině
+
 Nahradili jsme možnost "Vybrané", která určuje seznam uživatelů s možností vybrat skupinu uživatelů, abyste mohli povolit možnost připojit účty LinkedIn a Microsoft pro jednu skupinu namísto mnoha jednotlivých uživatelů. Pokud nemáte pro vybrané jednotlivé uživatele povolena připojení k účtu LinkedIn, nemusíte nic dělat. Pokud jste dříve povolili připojení účtů LinkedIn pro vybrané jednotlivé uživatele, měli byste:
 
 1. Získání aktuálního seznamu jednotlivých uživatelů
@@ -64,15 +66,11 @@ Nahradili jsme možnost "Vybrané", která určuje seznam uživatelů s možnost
 > [!NOTE]
 > I když aktuálně vybrané jednotlivé uživatele do skupiny nepřesunete, můžou v aplikacích Microsoftu stále vidět informace na LinkedInu.
 
-### <a name="get-the-current-list-of-selected-users"></a>Získání aktuálního seznamu vybraných uživatelů
+### <a name="move-currently-selected-users-to-a-group"></a>Přesunutí aktuálně vybraných uživatelů do skupiny
 
+1. Vytvořte soubor CSV uživatelů, kteří jsou vybráni pro připojení účtů LinkedIn.
 1. Přihlaste se k Microsoft u 365 pomocí účtu správce.
-1. Přejděte do části https://linkedinselectedusermigration.azurewebsites.net/ (Soubor > Nový > Jiné). Zobrazí se seznam uživatelů, kteří jsou vybráni pro připojení účtů LinkedIn.
-1. Exportujte seznam do souboru CSV.
-
-### <a name="move-the-currently-selected-individual-users-to-a-group"></a>Přesunutí aktuálně vybraných jednotlivých uživatelů do skupiny
-
-1. Spuštění PowerShellu
+1. Spusťte PowerShell.
 1. Instalace modulu Azure AD spuštěním`Install-Module AzureAD`
 1. Spusťte tento skript:
 

@@ -3,12 +3,12 @@ title: Znalostní báze Design – QnA Maker
 description: Znalostní báze QnA Maker se skládá ze sady otázek a odpovědí (QnA) a volitelných metadat přidružených ke každé dvojici QnA.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76844310"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756785"
 ---
 # <a name="question-and-answer-set-concepts"></a>Koncepty sad otázek a odpovědí
 
@@ -33,7 +33,7 @@ Každá sada je reprezentována **ID**.
 
 ## <a name="editorially-add-to-knowledge-base"></a>Redakční přidání do znalostní báze
 
-Pokud nemáte již existující obsah k naplnění znalostní báze, můžete přidat sady QnA redakčním způsobem na portálu QnA Maker. Zde se dozvíte, jak aktualizovat znalostní [bázi](../How-To/edit-knowledge-base.md).
+Pokud nemáte již existující obsah k naplnění znalostní báze, můžete přidat dvojice QnA redakčním způsobem na portálu QnA Maker. Zde se dozvíte, jak aktualizovat znalostní [bázi](../How-To/edit-knowledge-base.md).
 
 ## <a name="editing-your-knowledge-base-locally"></a>Úprava znalostní báze místně
 

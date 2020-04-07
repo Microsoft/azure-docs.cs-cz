@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265035"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756006"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Schéma událostí Azure Event Grid pro úložiště objektů Blob
 
@@ -21,7 +21,7 @@ Tento článek obsahuje vlastnosti a schéma pro události úložiště objektů
 Seznam ukázkových skriptů a kurzů naleznete v [tématu Storage event source](event-sources.md#storage).
 
 >[!NOTE]
-> Pouze účty úložiště druhu **StorageV2 (pro obecné účely v2)** a Integrace událostí podpory **BlobStorage.** **Úložiště (genral účel v1)** *nepodporuje* integraci s Event Grid.
+> Pouze účty úložiště druhu **StorageV2 (pro obecné účely v2)**, **BlockBlobStorage**a Integrace událostí podpory **BlobStorage.** **Úložiště (genral účel v1)** *nepodporuje* integraci s Event Grid.
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Seznam událostí pro api objektů BLOB REST
 
@@ -37,7 +37,7 @@ Tyto události se aktivují, když klient vytvoří, nahradí nebo odstraní obj
 
 ## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Seznam událostí pro azure data lake storage gen 2 rest api
 
-Tyto události se aktivují, pokud povolíte hierarchický obor názvů v účtu úložiště a klienti volají Azure Data Lake Storage Gen2 REST API.
+Tyto události se aktivují, pokud povolíte hierarchický obor názvů v účtu úložiště a klienti volají Azure Data Lake Storage Gen2 REST API. Další informace o azure data lake storage gen2, najdete [v tématu Úvod do Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
 |Název události|Popis|
 |----------|-----------|

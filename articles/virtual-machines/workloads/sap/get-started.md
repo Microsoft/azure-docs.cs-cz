@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/31/2020
+ms.date: 04/06/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64469641173cfe31c3e4fbac5e2f21c75a94c716
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: df7461443fc9e89209545e8a2dfb9ad0addf3f3e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521869"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757153"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů úloh SAP
 
@@ -110,6 +110,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v tématu:
 
 
 ## <a name="change-log"></a>Protokol změn
+- 04/06/2020: Změny v [sap HANA horizontální navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Soubory na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) a v [SAP HANA horizontální navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp soubory na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) odebrat odkazy na NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) (nahrazenTR-4746 ) [TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)
 - 03/31/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) a [vysoká dostupnost SAP HANA na virtuálních počítačích Azure na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) přidat pokyny, jak určit velikost proklápěcí při vytváření prokládaných svazků
 - 03/27/2020: Změna [vysoké dostupnosti pro SAP NW na virtuálních počítačích Azure na SLES s ANF pro aplikace SAP zarovnat](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) možnosti připojení systému souborů na NetApp TR-4746 (odebrat možnost připojení synchronizace)
 - 03/26/2020: Změna [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure na SLES multi-SID průvodce](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) přidat odkaz na NetApp TR-4746

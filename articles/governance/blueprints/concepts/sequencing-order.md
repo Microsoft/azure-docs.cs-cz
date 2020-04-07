@@ -3,12 +3,12 @@ title: Principy pořadí pořadí nasazení
 description: Přečtěte si o výchozí pořadí, které jsou nasazeny artefakty podrobného plánu v průběhu přiřazení podrobného plánu a jak přizpůsobit pořadí nasazení.
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74128814"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677565"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Principy pořadí nasazení v Azure Blueprints
 
@@ -42,7 +42,7 @@ V rámci každého artefaktu **skupiny prostředků** se pro artefakty, které m
 
 ## <a name="customizing-the-sequencing-order"></a>Přizpůsobení pořadí řazení
 
-Při vytváření velkých definic podrobného plánu může být nezbytné pro prostředky, které mají být vytvořeny v určitém pořadí. Nejběžnější vzor použití tohoto scénáře je, když definice podrobného plánu obsahuje několik šablon Azure Resource Manager. Podrobné plány zpracovává tento vzor tím, že pořadí pořadí, které mají být definovány.
+Při vytváření velkých definic podrobného plánu může být nezbytné pro prostředky, které mají být vytvořeny v určitém pořadí. Nejběžnější vzor použití tohoto scénáře je, když definice podrobného plánu obsahuje několik šablon Azure Resource Manager. Azure Blueprints zpracovává tento vzor tím, že umožňuje pořadí řazení, které mají být definovány.
 
 Řazení se provádí definováním `dependsOn` vlastnosti v JSON. Definice podrobného plánu pro skupiny prostředků a objekty artefaktů podporují tuto vlastnost. `dependsOn`je řetězec pole názvů artefaktů, které je třeba vytvořit konkrétní artefakt před jeho vytvořením.
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 1c519533625835677ddae0a274c9ce9f10edc6dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: db7c7ae9889d26479f51a7714e7e9fb04b444628
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73098000"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757104"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive v Azure HDInsight
 
@@ -58,6 +58,9 @@ Naučte se zpracovávat a analyzovat soubory JavaScript Object Notation (JSON) p
 Soubor lze nalézt `wasb://processjson@hditutorialdata.blob.core.windows.net/`na adrese . Další informace o tom, jak používat úložiště objektů blob Azure s HDInsight, najdete [v tématu použití úložiště objektů blob Azure kompatibilního s HDFS s Apache Hadoop ve službě HDInsight](../hdinsight-hadoop-use-blob-storage.md). Soubor můžete zkopírovat do výchozího kontejneru clusteru.
 
 V tomto článku použijete konzolu Apache Hive. Pokyny k otevření konzole Hive najdete v [tématu Použití apache ambari hive view s Apache Hadoop v HDInsight](apache-hadoop-use-hive-ambari-view.md).
+
+> [!NOTE]  
+> Zobrazení hive již není v hdinsightu 4.0 k dispozici.
 
 ## <a name="flatten-json-documents"></a>Sloučení dokumentů JSON
 
@@ -105,7 +108,7 @@ Hive poskytuje tři různé mechanismy pro spouštění dotazů na dokumenty JSO
 
 ### <a name="use-the-get_json_object-udf"></a>Použití get_json_object UDF
 
-Hive poskytuje předdefinovaný UDF s názvem [get_json_object,](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) který může provádět dotazy JSON za běhu. Tato metoda trvá dva argumenty -- název tabulky a název metody, která má složený dokument JSON a pole JSON, které je třeba analyzovat. Podívejme se na příklad, jak tento UDF funguje.
+Hive poskytuje předdefinovaný UDF s názvem [get_json_object,](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) který se dotazuje JSON za běhu. Tato metoda trvá dva argumenty: název tabulky a název metody. Název metody má složený dokument JSON a pole JSON, které je třeba analyzovat. Podívejme se na příklad, jak tento UDF funguje.
 
 Následující dotaz vrátí jméno a příjmení každého studenta:
 
@@ -118,18 +121,18 @@ FROM StudentsOneLine;
 
 Zde je výstup při spuštění tohoto dotazu v okně konzoly:
 
-![Apache Hive získat json objekt UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive dostane json objekt UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 Existují omezení get_json_object UDF:
 
 * Vzhledem k tomu, že každé pole v dotazu vyžaduje úpravu dotazu, ovlivňuje výkon.
 * **GET\_JSON_OBJECT()** vrátí řetězcovou reprezentaci pole. Chcete-li převést toto pole na pole Hive, musíte použít regulární výrazy k nahrazení hranatých závorek "[" a "]" a potom také musíte volat split, abyste získali pole.
 
-Proto wiki Hive doporučuje používat **json_tuple**.  
+Tento převod je důvod, proč Wiki Hive doporučuje používat **json_tuple**.  
 
 ### <a name="use-the-json_tuple-udf"></a>Použití json_tuple UDF
 
-Jiný UDF poskytovaný Hive se nazývá [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), který funguje lépe než [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Tato metoda trvá sadu klíčů a řetězec JSON a vrátí řazené kolekce členů s hodnotami pomocí jedné funkce. Následující dotaz vrátí ID studenta a hodnocení z dokumentu JSON:
+Další UDF poskytované Hive se nazývá [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), který dělá lépe než [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Tato metoda trvá sadu klíčů a řetězec JSON. Potom vrátí řazené kolekce členů s hodnotami. Následující dotaz vrátí ID studenta a hodnocení z dokumentu JSON:
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -142,7 +145,7 @@ Výstup tohoto skriptu v konzole Hive:
 
 ![Výsledky dotazu Apache Hive json](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-Json_tuple UDF používá syntaxi [bočního zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) v Hive, která umožňuje řazené kolekce členů json\_vytvořit virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSONs se příliš těžkopádné, protože opakované použití **laterální pohled**. Kromě toho **JSON_TUPLE** nemůže zpracovat vnořené JSONs.
+UDF `json_tuple` používá syntaxi [bočního zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) v Hive,\_která umožňuje řazené kolekce členů json vytvořit virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSONs se příliš těžkopádné, protože opakované použití **laterální pohled**. Kromě toho **JSON_TUPLE** nemůže zpracovat vnořené JSONs.
 
 ### <a name="use-a-custom-serde"></a>Použití vlastního SerDe
 
@@ -150,7 +153,7 @@ SerDe je nejlepší volbou pro analýzu vnořených dokumentů JSON. Umožňuje 
 
 ## <a name="summary"></a>Souhrn
 
-Na závěr typ operátoru JSON v Hive, který zvolíte, závisí na vašem scénáři. Pokud máte jednoduchý dokument JSON a máte k dispozici pouze jedno pole, můžete použít **get_json_object**Hive UDF . Pokud máte více než jeden klíč, na který se můžete podívat, můžete použít **json_tuple**. Pokud máte vnořený dokument, měli byste použít **JSON SerDe**.
+Typ operátoru JSON v Hive, který zvolíte, závisí na vašem scénáři. Pomocí jednoduchého dokumentu JSON a jednoho pole, které chcete vyhledat, zvolte **get_json_object**Hive UDF . Pokud máte více než jeden klíč, na který se můžete podívat, můžete použít **json_tuple**. Pro vnořené dokumenty použijte **JSON SerDe**.
 
 ## <a name="next-steps"></a>Další kroky
 

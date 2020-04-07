@@ -7,16 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: dsindona
-ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281489"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755374"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurace správy zájemců pro službu Salesforce
 
-Tento článek popisuje, jak nastavit systém Salesforce pro zpracování prodejních zájemců z nabídky marketplace.
+Tento článek popisuje, jak nastavit systém Salesforce pro zpracování prodejních zájemců z nabídky komerčního tržiště.
+
+> [!Note]
+> Marketplace nepodporuje předem vyplněné seznamy, například seznam hodnot pro pole **Země.** Než budete pokračovat, ujistěte se, že nejsou nastaveny žádné seznamy. Případně můžete nakonfigurovat [koncový bod HTTPS](./commercial-marketplace-lead-management-instructions-https.md) nebo [tabulku Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) pro příjem zájemců.
 
 ## <a name="set-up-your-salesforce-system"></a>Nastavení systému Salesforce
 
@@ -26,14 +29,16 @@ Tento článek popisuje, jak nastavit systém Salesforce pro zpracování prodej
     ![Nastavení salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. Na stránce Instalace přejděte levým navigačním programem na **platformu Nástroje >Nastavení funkcí >Marketing->Web-to-Lead**.
-    ![Web společnosti Salesforce vedoucí](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+
+        ![Web společnosti Salesforce vedoucí](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
 3. Pokud používáte prostředí Salesforce Classic:
     1. Vyberte **Nastavení** z domovské stránky Služby Salesforce.
     ![Klasické nastavení Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
     1. Na stránce Nastavení přejděte přes navigaci vlevo na **build ->Customize->zájemci >web-to-lead**.
-    ![Salesforce klasický web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+
+        ![Salesforce klasický web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
 Zbývající pokyny jsou stejné bez ohledu na to, jaké zkušenosti se službou Salesforce používáte.
 

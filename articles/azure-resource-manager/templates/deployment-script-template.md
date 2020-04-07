@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437884"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743313"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Náhled)
 
@@ -33,6 +33,8 @@ Výhody skriptu nasazení:
 - Povolit určení identit, které se používají ke spuštění skriptů. V současné době je podporována jenom [spravovaná identita přiřazená uživateli Azure.](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 - Povolit předávání argumentů příkazového řádku do skriptu.
 - Můžete určit výstupy skriptu a předat je zpět do nasazení.
+
+Prostředek skriptu nasazení je k dispozici jenom v oblastech, kde je k dispozici instance kontejneru Azure.  Viz [Dostupnost prostředků pro instance kontejnerů Azure v oblastech Azure](../../container-instances/container-instances-region-availability.md).
 
 > [!IMPORTANT]
 > Dva prostředky skriptu nasazení, účet úložiště a instance kontejneru, jsou vytvořeny ve stejné skupině prostředků pro spuštění skriptu a řešení potíží. Tyto prostředky jsou obvykle odstraněny službou skriptu při spuštění skriptu nasazení dostane do terminálového stavu. Prostředky se vám budou účtovat, dokud nebudou prostředky odstraněny. Další informace naleznete v [tématu Clean-up nasazení skriptu prostředky](#clean-up-deployment-script-resources).
@@ -189,6 +191,8 @@ Kromě vložkových skriptů můžete také použít externí soubory skriptů. 
 Chcete-li zobrazit příklad, vyberte [zde](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
 Externí soubory skriptů musí být přístupné.  Pokud chcete zabezpečit soubory skriptů uložené v účtech úložiště Azure, [přečtěte si informace o kurzu: Zabezpečené artefakty v nasazeních šablon Azure Resource Manageru](./template-tutorial-secure-artifacts.md).
+
+Jste zodpovědní za zajištění integrity skriptů, na které odkazuje skript nasazení, buď **PrimaryScriptUri** nebo **SupportingScriptUris**.  Odkazujte pouze na skripty, kterým důvěřujete.
 
 ## <a name="use-supporting-scripts"></a>Použití podpůrných skriptů
 

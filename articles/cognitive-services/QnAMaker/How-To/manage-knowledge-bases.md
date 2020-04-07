@@ -3,12 +3,12 @@ title: Správa znalostních bází - QnA Maker
 description: QnA Maker umožňuje spravovat znalostní báze tím, že poskytuje přístup k nastavení znalostní báze a obsahu.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071141"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756803"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Vytvoření znalostní báze a správa nastavení
 
@@ -107,5 +107,5 @@ Pokud sdílíte znalostní bázi se spolupracovníky,](spolupráce-znalosti base
 
 Přečtěte si o [správě jazyka](language-knowledge-base.md) všech znalostních bází v prostředku.
 
-* Upravit sady QnA
+* Úpravy párů QnA
 * Správa prostředků Azure používaných qnA makerem

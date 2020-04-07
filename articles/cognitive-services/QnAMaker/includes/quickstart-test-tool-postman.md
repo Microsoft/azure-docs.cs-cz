@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112314"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758804"
 ---
 Tento pošťák-založené rychlý start vás provede získáním odpovědi z vaší znalostní báze.
 
@@ -49,7 +49,7 @@ Tento postup slouží ke konfiguraci Postman, pak si přečtěte každý násled
 
 ## <a name="use-metadata-to-filter-answer"></a>Použití metadat k filtrování odpovědi
 
-V předchozím rychlém startu metadata byla přidána do dvou sad QnA rozlišovat mezi dvěma různými otázkami. Přidejte metadata do dotazu, abyste omezili filtr pouze na příslušnou sadu QnA.
+V předchozím rychlém startu metadata byla přidána do dvou párů QnA rozlišovat mezi dvěma různými otázkami. Přidejte metadata do dotazu, abyste omezili filtr pouze na příslušný pár QnA.
 
 1. V Pošťáku změňte pouze dotaz `strictFilters` JSON přidáním vlastnosti s dvojicí název/hodnota . `service:qna_maker` Tělo JSON by mělo být:
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108989"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756712"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Úvodní příručka: Testování znalostní báze s dávkovými otázkami a očekávanými odpověďmi
 
@@ -149,7 +149,7 @@ Pomocí následujícího grafu zjistíte, jak najít hodnoty polí pro voliteln�
     |Nabíjení zařízení Surface Pro 4|
     |Zkontrolujte stav baterie|
 
-    Dvě sady QnA mají nastavená metadata.
+    Dva dvojice QnA mají nastavena metadata.
 
     > [!TIP]
     > Chcete-li zobrazit metadata a ID QnA každé sady, exportujte znalostní bázi. Vyberte stránku **Nastavení** a `.xls` pak vyberte **Exportovat** jako soubor. Najděte tento stažený soubor a otevřete v excelové recenzování metadat a ID.
@@ -169,7 +169,7 @@ Existují dva hlavní scénáře pro dávkové testování:
 
 Následující postup předpokládá, že scénář je zpracování protokolů chatu s
 
-1. Vytvořte nový dávkový testovací soubor, který bude obsahovat volitelná data . `batch-test-data-2.tsv` Přidejte 6 řádků z původního vstupního souboru dávkového testu a pro každý řádek přidejte ID sady metadat, horní a QnA.
+1. Vytvořte nový dávkový testovací soubor, který bude obsahovat volitelná data . `batch-test-data-2.tsv` Přidejte 6 řádků z původního vstupního souboru dávkového testu a pro každý řádek přidejte id páru metadat, horní a QnA.
 
     Chcete-li simulovat automatizovaný proces kontroly nového textu z protokolů chatu ve znalostní `topic:power`bázi, nastavte metadata pro každý sloupec na stejnou hodnotu: .
 

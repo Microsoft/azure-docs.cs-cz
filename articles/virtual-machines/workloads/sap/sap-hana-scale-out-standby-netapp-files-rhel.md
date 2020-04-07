@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.author: radeltch
-ms.openlocfilehash: ace30b044682cb4e62a0f81da90f21a77be1edd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f60cbd20e7801f4af26372884275d7d6782777
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372972"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754155"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Nasazení horizontálního navýšení kapacity systému SAP HANA s pohotovostním uzlem na virtuálních počítačích Azure pomocí souborů Azure NetApp na Red Hat Enterprise Linux 
 
@@ -337,7 +337,7 @@ Nakonfigurujte a připravte operační tým následujícím postupem:
     yum install nfs-utils
     </code></pre>
 
-3. **[A]** Připravte operační systém pro spuštění SAP HANA v Azure NetApp s nfs, jak je popsáno v [SAP HANA na NetApp AFF Systems s průvodcem konfigurací systému NFS](https://www.netapp.com/us/media/tr-4435.pdf). Vytvořte konfigurační soubor */etc/sysctl.d/netapp-hana.conf* pro nastavení konfigurace NetApp.  
+3. **[A]** Připravte operační systém pro spuštění SAP HANA na Azure NetApp s nfs, jak je popsáno v [NetApp SAP aplikace v Microsoft Azure pomocí Souborů Azure NetApp][anf-sap-applications-azure]. Vytvořte konfigurační soubor */etc/sysctl.d/netapp-hana.conf* pro nastavení konfigurace NetApp.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -369,7 +369,7 @@ Nakonfigurujte a připravte operační tým následujícím postupem:
     vm.swappiness=10
     </code></pre>
 
-5. **[A]** Upravte nastavení sunrpc, jak je doporučeno v [SAP HANA na NetApp AFF Systems s nfs konfigurační průvodce](https://www.netapp.com/us/media/tr-4435.pdf).  
+5. **[A]** Upravte nastavení sunrpc, jak je doporučeno v [aplikacích NetApp SAP][anf-sap-applications-azure]v Microsoft Azure pomocí souborů Azure NetApp .  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -707,7 +707,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci horizontálního navýš
    - `async_write_submit_active` **on**
    - `async_write_submit_blocks`**všechny**
 
-   Další informace naleznete [v tématu SAP HANA on NetApp AFF Systems with NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf). 
+   Další informace najdete [v tématu NetApp SAP Applications on Microsoft Azure using Azure NetApp Files][anf-sap-applications-azure]. 
 
    Počínaje systémy SAP HANA 2.0 můžete nastavit `global.ini`parametry v . Další informace naleznete v poznámce SAP [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
    
@@ -923,5 +923,4 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci horizontálního navýš
 * [Plánování a implementace virtuálních počítačů Azure pro SAP][planning-guide]
 * [Nasazení virtuálních počítačů Azure pro SAP][deployment-guide]
 * [Nasazení DBMS virtuálních počítačů Azure pro SAP][dbms-guide]
-* Informace o tom, jak vytvořit vysokou dostupnost a plán pro zotavení po havárii SAP HANA v Azure (velké instance), najdete v [tématu SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
 * Informace o tom, jak vytvořit vysokou dostupnost a plán pro zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete [v tématu vysoká dostupnost SAP HANA na virtuálních počítačích Azure ....][sap-hana-ha]

@@ -3,18 +3,18 @@ title: 'Kurz: Ukázka podrobného plánu do nového prostředí'
 description: V tomto kurzu použijete ukázku podrobného plánu k vytvoření definice podrobného plánu, která nastaví dvě skupiny prostředků a nakonfiguruje přiřazení role pro každou z nich.
 ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80282014"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677096"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Kurz: Vytvoření prostředí z ukázky podrobného plánu
 
 Ukázkové podrobné plány poskytují příklady toho, co se dá dělat pomocí Azure Blueprints. Každý je ukázka s konkrétním záměrem nebo účelem, ale nevytváří úplné prostředí sami. Každý z nich je určen jako výchozí místo pro zkoumání pomocí Azure Blueprints s různými kombinacemi zahrnuté artefakty, návrhy a parametry.
 
-Následující kurz používá **skupiny prostředků s** ukázkou podrobného plánu RBAC k prezentaci různých aspektů služby Podrobné plány. Jsou uvedeny následující kroky:
+Následující kurz používá **skupiny prostředků s** ukázkou podrobného plánu RBAC k prezentaci různých aspektů služby Azure Blueprints. Jsou uvedeny následující kroky:
 
 > [!div class="checklist"]
 > - Vytvoření nové definice podrobného plánu z ukázky

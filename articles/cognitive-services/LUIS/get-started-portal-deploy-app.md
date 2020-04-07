@@ -1,21 +1,14 @@
 ---
 title: 'Úvodní příručka: Nasazení aplikace pomocí portálu LUIS'
-titleSuffix: Azure Cognitive Services
 description: Tento rychlý start ukazuje, jak nasadit aplikaci vytvořením prostředku koncového bodu předpověď, přiřazení prostředků, školení a publikování aplikace.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: diberry
-ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/06/2020
+ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79241777"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756303"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Úvodní příručka: Nasazení aplikace na portálu LUIS
 
@@ -29,35 +22,13 @@ V tomto rychlém startu se naučíte nasadit aplikaci. Můžete vytvořit prost�
 * Dokončete [předchozí portál ový rychlý start](get-started-portal-build-app.md) nebo si [aplikaci stáhněte a importujte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
 * Pokud máte aplikace, které předdatem ověřování prostředků Azure, [migrujte do prostředku Azure](luis-migration-authoring.md). Některé stránky portálu vypadají jinak, když je v platnosti ověřování e-mailem.
 
-## <a name="create-the-endpoint-resource"></a>Vytvoření prostředku koncového bodu
+<a name="create-the-endpoint-resource"></a>
 
-Můžete vytvořit prostředek koncového bodu předpověď na webu Azure portal. Tento prostředek by měl být použit pouze pro dotazy předpověď koncového bodu. Nepoužívejte tento prostředek pro vytváření změn v aplikaci.
-
-1. Přihlaste se a vytvořte prostředek na [webu Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
-
-1. Nakonfigurujte předplatné s následujícím nastavením:
-
-   |Nastavení|Hodnota|Účel|
-   |--|--|--|
-   |Name (Název)|`my-luis-resource`|Název prostředku Azure. Tento název potřebujete při přiřazení prostředku k aplikaci na portálu LUIS.|
-   |Předplatné|Vaše předplatné|Vyberte jedno z předplatných přidružených k vašemu účtu.|
-   |Skupina prostředků|`my-resource-group`|Vytvořte novou skupinu prostředků pro všechny prostředky kognitivních služeb. Až budete hotovi s prostředky, můžete odstranit skupinu prostředků k vyčištění předplatného. |
-   |Vytváření umístění|**USA – západ**|Oblast Azure pro vytváření.|
-   |Vytváření cenové úrovně|**F0**|Výchozí cenová úroveň pro vytváření.|
-   |Umístění runtime|**USA – západ**|Oblast Azure pro dotazy koncového bodu předpověď.|
-   |Cenová úroveň runtime|**S0**|Tato cenová úroveň poskytuje weby s vysokým provozem.|
-   | | | |
-
-
-   ![Volba rozhraní AZURE API](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
-
-1. Vyberte **Vytvořit,** chcete-li vytvořit prostředek Azure.
-
-   V další části se dozvíte, jak připojit tento nový prostředek k aplikaci LUIS na portálu LUIS.
+[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
 ## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Přiřazení klíče prostředku k aplikaci LUIS na portálu LUIS
 
-Pokaždé, když vytvoříte nový prostředek pro LUIS, budete muset přiřadit prostředek k aplikaci LUIS. Po jeho přiřazení nebude nutné tento krok provést znovu, pokud nevytvoříte nový zdroj. Můžete vytvořit nový prostředek pro rozšíření oblastí aplikace nebo pro podporu vyššího počtu dotazů předpověď.
+Pokaždé, když vytvoříte nový prostředek vytváření nebo předpovědi dotazu pro LUIS, je třeba přiřadit prostředek k aplikaci LUIS. Po jeho přiřazení nebude nutné tento krok provést znovu, pokud nevytvoříte nový zdroj. Můžete vytvořit nový prostředek pro rozšíření oblastí aplikace nebo pro podporu vyššího počtu dotazů předpověď.
 
 1. Přihlaste se k [portálu LUIS preview](https://preview.luis.ai) a zvolte aplikaci **myEnglishApp** ze seznamu aplikací.
 

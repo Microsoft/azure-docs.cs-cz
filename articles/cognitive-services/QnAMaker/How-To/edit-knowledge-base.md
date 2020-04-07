@@ -2,70 +2,70 @@
 title: Úprava znalostní báze – QnA Maker
 description: QnA Maker umožňuje spravovat obsah vaší znalostní báze tím, že poskytuje snadno použitelné editační prostředí.
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 223ad3a607adc20bbe608598da9742d56788b2c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 3cf5dcedd4d2cfa82fda002b71abca1e5bea4b18
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131658"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756713"
 ---
-# <a name="edit-qna-sets-in-your-knowledge-base"></a>Úprava sad QnA ve znalostní bázi
+# <a name="edit-qna-pairs-in-your-knowledge-base"></a>Úprava dvojic QnA ve znalostní bázi
 
 QnA Maker umožňuje spravovat obsah vaší znalostní báze tím, že poskytuje snadno použitelné editační prostředí.
 
-QnA sady jsou přidány ze zdroje dat, jako je například soubor nebo adresa URL, nebo přidány jako redakční zdroj. Redakční zdroj označuje, že sada QnA byla přidána na portál QnA ručně. Všechny sady QnA jsou k dispozici pro úpravy.
+Dvojice QnA jsou přidány ze zdroje dat, například ze souboru nebo adresy URL, nebo přidány jako redakční zdroj. Redakční zdroj označuje, že dvojice QnA byla přidána na portál QnA ručně. Všechny dvojice QnA jsou k dispozici pro úpravy.
 
-## <a name="add-an-editorial-qna-set"></a>Přidání redakční sady QnA
-1. Přihlaste se k [portálu QnA](https://www.qnamaker.ai/)a vyberte znalostní bázi, do které chcete přidat nastavenou hodnotu QnA.
-1. Na stránce **EDIT** znalostní báze vyberte **Přidat sadu QnA a** přidejte novou sadu QnA.
+## <a name="add-an-editorial-qna-pair"></a>Přidání redakčnídvojice QnA
+1. Přihlaste se k [portálu QnA](https://www.qnamaker.ai/)a vyberte znalostní bázi, do které chcete přidat dvojici QnA.
+1. Na stránce **EDIT** znalostní báze vyberte **Přidat dvojici QnA a** přidejte nový pár QnA.
 
-1. Do nového řádku sady QnA přidejte požadovaná pole **Otázky** a **Odpověď.** Ostatní pole jsou nepovinná. Všechna pole lze kdykoli změnit.
+1. Do nového řádku dvojice QnA přidejte požadovaná pole **Otázky** a **Odpověď.** Ostatní pole jsou nepovinná. Všechna pole lze kdykoli změnit.
 
 1. Volitelně můžete přidat **alternativní formulace**. Alternativní formulace je jakákoli forma otázky, která se výrazně liší od původní otázky, ale měla by poskytnout stejnou odpověď.
 
-    Když je vaše znalostní báze publikována a máte zapnuté aktivní učení, QnA Maker shromažďuje alternativní možnosti formulací, které můžete přijmout. Tyto volby jsou vybrány za účelem zvýšení přesnosti předpovědi.
+    Když je vaše znalostní báze publikována a máte zapnuté [aktivní učení,](use-active-learning.md) QnA Maker shromažďuje alternativní možnosti formulací, které můžete přijmout. Tyto volby jsou vybrány za účelem zvýšení přesnosti předpovědi.
 
 1. Volitelně můžete přidat **metadata**. Chcete-li zobrazit metadata, vyberte **Zobrazit možnosti** v místní nabídce. Metadata poskytuje filtry na odpovědi, které poskytuje klientská aplikace, jako je například chatovací robot.
 
 1. Volitelně můžete přidat **výzvy k zpracování**. Výzvy ke zpracování poskytují další cesty konverzace do klientské aplikace prezentovat uživateli.
 
-1. Chcete-li zobrazit předpovědi včetně nové sady QnA, vyberte možnost **Uložit a trénovat.**
+1. Chcete-li zobrazit předpovědi včetně nové dvojice QnA, vyberte **možnost Uložit a trénovat.**
 
-## <a name="edit-a-qna-set"></a>Úprava sady QnA
+## <a name="edit-a-qna-pair"></a>Úprava dvojice QnA
 
-Libovolné pole v libovolné sadě QnA lze upravit bez ohledu na původní zdroj dat. Některá pole nemusí být viditelná z důvodu aktuálního nastavení **možností zobrazení,** které se nachází v panelu nástrojů kontextu.
+Libovolné pole v libovolné dvojici QnA lze upravit bez ohledu na původní zdroj dat. Některá pole nemusí být viditelná z důvodu aktuálního nastavení **možností zobrazení,** které se nachází v panelu nástrojů kontextu.
 
-## <a name="delete-a-qna-set"></a>Odstranění sady QnA
+## <a name="delete-a-qna-pair"></a>Odstranění dvojice QnA
 
 Chcete-li odstranit QnA, klikněte na ikonu **odstranění** zcela vpravo od řádku QnA. Jedná se o trvalou operaci. Nedá se to vrátit. Před odstraněním sad zvažte export kb ze stránky **Publikovat.**
 
-![Odstranit sadu QnA](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+![Odstranit dvojici QnA](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-## <a name="find-the-qna-set-id"></a>Vyhledání ID sady QnA
+## <a name="find-the-qna-pair-id"></a>Vyhledání ID dvojice QnA
 
-Pokud potřebujete najít ID sady QnA, najdete ho na dvou místech:
+Pokud potřebujete najít ID dvojice QnA, najdete ho na dvou místech:
 
-* Najeďte na ikonu odstranění na řádku sady QnA, který vás zajímá. Text při hvrhu obsahuje ID sady QnA.
-* Exportujte znalostní bázi. Každá sada QnA ve znalostní bázi obsahuje ID sady QnA.
+* Najeďte na ikonu odstranění na řádku dvojice QnA, která vás zajímá. Text přihrádání obsahuje ID dvojice QnA.
+* Exportujte znalostní bázi. Každý pár QnA ve znalostní bázi obsahuje ID dvojice QnA.
 
 ## <a name="add-alternate-questions"></a>Přidání alternativních otázek
 
-Přidejte alternativní otázky do existující sady QnA, abyste zvýšili pravděpodobnost shody s uživatelským dotazem.
+Přidejte alternativní otázky k existující dvojici QnA, abyste zvýšili pravděpodobnost shody s uživatelským dotazem.
 
 ![Přidat alternativní otázky](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
-## <a name="linking-qna-sets"></a>Propojení sad QnA
+## <a name="linking-qna-pairs"></a>Propojení párů QnA
 
-Propojení sad QnA je opatřeno [výzvami pro zpracování](multiturn-conversation.md). Jedná se o logické spojení mezi sadami QnA, které jsou spravovány na úrovni znalostní báze. Na portálu QnA Maker můžete upravit výzvy pro zpracování.
+Propojení párů QnA je opatřeno [následnými výzvami](multiturn-conversation.md). Toto je logické spojení mezi dvojicemi QnA, které jsou spravovány na úrovni znalostní báze. Na portálu QnA Maker můžete upravit výzvy pro zpracování.
 
-V metadatech odpovědi nelze propojit sady QnA.
+V metadatech odpovědi nelze propojit dvojice QnA.
 
 ## <a name="add-metadata"></a>Přidání metadat
 
 Přidejte sady metadat tak, že nejprve vyberete **možnosti zobrazení**a potom vyberete **Zobrazit metadata**. Zobrazí se sloupec metadat. Dále vyberte **+** znaménko pro přidání sady metadat. Tato sada se skládá z jednoho klíče a jedné hodnoty.
 
-## <a name="save-changes-to-the-qna-sets"></a>Uložení změn do sad QnA
+## <a name="save-changes-to-the-qna-pairs"></a>Uložit změny do dvojic QnA
 
 Pravidelně vyberte **uložit a trénovat** po provedení úprav, aby nedošlo ke ztrátě změn.
 

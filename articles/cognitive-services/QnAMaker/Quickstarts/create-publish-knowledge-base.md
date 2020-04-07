@@ -3,12 +3,12 @@ title: 'Rychlý start: Vytváření, trénování a publikování znalostní bá
 description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Tento článek obsahuje příklad vytvoření znalostní báze QnA Maker z jednoduché webové stránky faq, chcete-li odpovědět na otázky QnA Maker.
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220575"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756825"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý start: Vytvoření, trénování a publikování znalostní báze QnA Maker
 
@@ -135,7 +135,7 @@ Když provedete změny znalostní báze a znovu publikujete, nemusíte s robotem
 
 ## <a name="what-did-you-accomplish"></a>Čeho jsi dosáhl?
 
-Vytvořili jste novou znalostní bázi, přidali veřejnou adresu URL do znalostní báze, přidali vlastní sadu QnA, vyškolili, otestovali a publikovali znalostní bázi.
+Vytvořili jste novou znalostní bázi, přidali veřejnou adresu URL do znalostní báze, přidali vlastní dvojici QnA, vyškolili, otestovali a publikovali znalostní bázi.
 
 Po publikování znalostní báze jste vytvořili robota a otestovali jste robota.
 

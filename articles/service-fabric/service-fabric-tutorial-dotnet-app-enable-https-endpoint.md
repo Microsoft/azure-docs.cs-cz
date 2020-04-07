@@ -4,12 +4,12 @@ description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET C
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238927"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756100"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
 
@@ -20,7 +20,7 @@ Ve třetí části této série se naučíte:
 > [!div class="checklist"]
 > * Definovat ve službě koncový bod HTTPS
 > * Nakonfigurovat Kestrel k používání HTTPS
-> * Nainstalovat certifikát SSL na uzly vzdáleného clusteru
+> * Instalace certifikátu TLS/SSL do uzlů vzdáleného clusteru
 > * Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 > * Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
 > * Nasadit aplikaci do vzdáleného clusteru
@@ -396,7 +396,7 @@ V této části kurzu jste se naučili:
 > [!div class="checklist"]
 > * Definovat ve službě koncový bod HTTPS
 > * Nakonfigurovat Kestrel k používání HTTPS
-> * Nainstalovat certifikát SSL na uzly vzdáleného clusteru
+> * Instalace certifikátu TLS/SSL do uzlů vzdáleného clusteru
 > * Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 > * Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
 > * Nasadit aplikaci do vzdáleného clusteru

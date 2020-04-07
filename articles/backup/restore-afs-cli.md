@@ -3,12 +3,12 @@ title: Obnovení sdílených složek Azure pomocí příkazového příkazového
 description: Zjistěte, jak pomocí příkazového příkazového příkazu Azure obnovit zálohované sdílené složky Azure v trezoru služby Recovery Services
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 63b2be2fe24c1274ed1581b7b849de578c978842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76931035"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757091"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Obnovení sdílených složek Azure pomocí příkazového příkazového příkazu Azure
 
@@ -19,6 +19,9 @@ Na konci tohoto článku se dozvíte, jak provádět následující operace s Az
 * Zobrazte body obnovení pro zálohovanou sdílenou složku Azure.
 * Obnovte úplnou sdílenou složku Azure.
 * Obnovte jednotlivé soubory nebo složky.
+
+>[!NOTE]
+> Azure Backup teď podporuje obnovení více souborů nebo složek do původního nebo alternativního umístění pomocí rozhraní příkazového řádku Azure. Další informace naleznete v části [Obnovit více souborů nebo složek do původního nebo alternativního umístění](#restore-multiple-files-or-folders-to-original-or-alternate-location) tohoto dokumentu.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +45,7 @@ Pomocí rutiny [seznamu az zálohování recoverypoint](https://docs.microsoft.c
 Následující příklad načte seznam bodů obnovení pro sdílenou složku *azurefiles* v účtu úložiště *afsaccount.*
 
 ```azurecli-interactive
-az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --backup-management-type azurestorage --item-name “AzureFileShare;azurefiles” --workload-type azurefileshare --out table
+az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --backup-management-type azurestorage --item-name "AzureFileShare;azurefiles" --workload-type azurefileshare --out table
 ```
 
 Předchozí rutinu můžete také spustit pomocí popisný název kontejneru a položky poskytnutím následujících dvou dalších parametrů:
@@ -82,7 +85,7 @@ Při obnovení do původního umístění není nutné zadávat parametry souvis
 Následující příklad používá rutinu [obnovení zálohování az azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) s režimem obnovení nastavenou na *původní umístění* k obnovení sdílené složky *azurefiles* v původním umístění. Bod obnovení 932883129628959823, který jste získali v [bodech obnovení fetch pro sdílenou složku Azure](#fetch-recovery-points-for-the-azure-file-share):
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -105,7 +108,7 @@ Tuto možnost můžete použít k obnovení sdílené složky do alternativního
 Následující příklad používá [az obnovení obnovení azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) s režimem obnovení jako *alternativní umístění* k obnovení sdílené složky *azurefiles* v účtu *úložiště afsaccount* do sdílené složky *azurefiles1"* v účtu úložiště *afaccount1.*
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -138,7 +141,7 @@ Použijte rutinu obnovení [obnovení az azurefiles](https://docs.microsoft.com/
 Následující příklad obnoví soubor *RestoreTest.txt* v původním umístění: sdílené složky *azurefiles.*
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
 ```
 
 ```output
@@ -160,7 +163,7 @@ Chcete-li obnovit určité soubory nebo složky do alternativního umístění, 
 Následující příklad obnoví soubor *RestoreTest.txt,* který byl původně přítomen ve sdílené složce *azurefiles,* do alternativního umístění: složka *restoredata* ve sdílené složce *azurefiles1* hostovaná v účtu úložiště *afaccount1.*
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
 ```
 
 ```output
@@ -170,6 +173,28 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
 Name **Name** Atribut ve výstupu odpovídá názvu úlohy, která je vytvořena službou zálohování pro operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [az zálohování úlohy.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Obnovení více souborů nebo složek do původního nebo alternativního umístění
+
+Chcete-li provést obnovení pro více položek, předavte hodnotu parametru **cesty zdrojového souboru** jako **cesty oddělené místem** všech souborů nebo složek, které chcete obnovit.
+
+Následující příklad obnoví soubory *Restore.txt* a *AFS testování Report.docx* v jejich původním umístění.
+
+```azurecli-interactive
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table
+```
+
+Výstup se bude podobat tomuto:
+
+```output
+Name                                          ResourceGroup
+------------------------------------          ---------------
+649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
+```
+
+Name **Name** Atribut ve výstupu odpovídá názvu úlohy, která je vytvořena službou zálohování pro operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [az zálohování úlohy.](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show)
+
+Chcete-li obnovit více položek do alternativního umístění, použijte výše uvedený příkaz zadáním parametrů souvisejících s cílem, jak je vysvětleno v části [Obnovit jednotlivé soubory nebo složky do oddílu alternativníumístění.](#restore-individual-files-or-folders-to-an-alternate-location)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,14 +3,14 @@ title: Kompilace konfigurací v konfiguraci stavu automatizace Azure
 description: This article describes how to compile Desired State Configuration (DSC) configurations for Azure Automation.
 services: automation
 ms.subservice: dsc
-ms.date: 09/10/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48593920bdfcf743fceaeaeec891c0d5c4f2e108
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b366777cce4dd4212a2e3ec0cdcd180e0d7164f4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057638"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757188"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu automatizace Azure
 
@@ -27,7 +27,7 @@ You can compile Desired State Configuration (DSC) configurations in Azure Automa
   - Práce s daty uzlů a dat bez uzlů ve velkém měřítku
   - Výrazné zlepšení výkonu
 
-Podrobnosti kompilace najdete v [tématu rozšíření Konfigurace požadovaného stavu se šablonami Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details).
+K nabízení konfigurací virtuálním počítačům Azure můžete taky použít šablony Azure Resource Manager u rozšíření Azure Desired State Configuration (DSC). Rozšíření Azure DSC používá rozhraní agenta virtuálních počítačů Azure k doručování, uzákonění a sestavování konfigurací DSC spuštěných na virtuálních počítačích Azure. Podrobnosti kompilace pomocí šablon Azure Resource Manager najdete v [tématu rozšíření Konfigurace požadovaného stavu se šablonami Azure Resource Manageru](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details). 
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Kompilace konfigurace DSC v konfiguraci stavu Azure
 

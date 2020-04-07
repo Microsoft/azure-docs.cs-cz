@@ -2,13 +2,13 @@
 title: Pokyny pro import formátu dokumentu – QnA Maker
 description: Zjistěte, jak se typy adres URL používají k importu a vytváření sad QnA.
 ms.topic: reference
-ms.date: 01/02/2020
-ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 1e006520ce5c61f2da3f425af2332b0d41cc3881
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651836"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754900"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Pokyny pro formátování importovaných dokumentů a adres URL
 
@@ -20,6 +20,8 @@ Po importu souboru nebo adresy URL nástroj QnA Maker převede a uloží váš o
 
 Pokud přidáte nebo upravíte obsah přímo ve znalostní bázi, použijte **formátování markdownu** k vytvoření obsahu s formátem RTNebo ke změně obsahu ve formátu markdown, který je již v odpovědi. QnA Maker podporuje většinu formátu markdown, aby do vašeho obsahu přinesl funkce s formátovaným textem. Klientská aplikace, například chatovací robot, však nemusí podporovat stejnou sadu formátů markdownu. Je důležité otestovat zobrazení odpovědí klientské aplikace.
 
+Podívejte se na úplný seznam [typů obsahu a příkladů](./Concepts/content-types.md#file-and-url-data-types).
+
 ## <a name="basic-document-formatting"></a>Základní formátování dokumentu
 
 QnA Maker identifikuje oddíly a podsekce a vztahy v souboru na základě vizuálních vodítek, jako jsou:
@@ -28,12 +30,6 @@ QnA Maker identifikuje oddíly a podsekce a vztahy v souboru na základě vizuá
 * styl písma
 * Číslování
 * Barvy
-
-|Příklady pro dokumenty|
-|--|
-||
-
-
 
 ## <a name="product-manuals"></a>Příručky k produktům
 
@@ -116,7 +112,8 @@ Import znalostní báze nahrazuje obsah stávající znalostní báze. Import vy
 * První znak nadpisu musí být velkými písmeny.
 * Nezakončuj nadpis `?`otazníkem .
 
+**Ukázkové dokumenty**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Výhody společnosti Contoso (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Výhody společnosti Contoso (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
-|Příklady pro dokumenty|
-|--|
-||
+## <a name="next-steps"></a>Další kroky
+
+Zobrazení úplného seznamu [typů obsahu a příkladů](./Concepts/content-types.md#file-and-url-data-types)

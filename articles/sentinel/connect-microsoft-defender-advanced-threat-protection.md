@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 831baabcc26130d9b2c730afd85f2ed4b3842690
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588208"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756352"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Připojení výstrah od programu Microsoft Defender Advanced Threat Protection 
 
 
 > [!IMPORTANT]
-> Ingestování protokolů Microsoft Defender Advanced Threat Protection je aktuálně ve verzi Public Preview.
+> Ingestování výstrah Microsoft Defender Advanced Threat Protection je aktuálně ve verzi Public Preview.
 > Tato funkce je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 
-Pomocí jediného kliknutí můžete streamovat výstrahy z [microsoft defenderské pokročilé ochrany před hrozbami](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) do Azure Sentinelu. Toto připojení umožňuje streamovat výstrahy z Microsoft Defender Advanced Threat Protection do Azure Sentinelu. 
+Konektor [Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) umožňuje streamovat výstrahy z microsoft defenderu Advanced Threat Protection do Azure Sentinelu. To vám umožní komplexněji analyzovat události zabezpečení v celé organizaci a vytvářet playbooky pro efektivní a okamžitou reakci.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Platná licence pro pokročilou ochranu před internetovými hrozbami v programu Microsoft Defender, která je povolena, jak je popsáno v [části Ověření zřizování licencí, a dokončete nastavení pro program Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
+- Musíte mít platnou licenci pro pokročilou ochranu před internetovými hrozbami v programu Microsoft Defender, jak je popsáno v [nawebu Nastavení nasazení ochrany ATP v programu Microsoft Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
 - Musíte být správce nebo správce zabezpečení v tenantovi Azure Sentinelu.
 
 

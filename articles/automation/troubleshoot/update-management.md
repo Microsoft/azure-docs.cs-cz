@@ -8,28 +8,28 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 91bcdc65a7ff3bcaf09f12d69ba4c7aaeb84ffa7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900853b1ca68c1c540223db670b1173f5bb2fa2b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132859"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754447"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží se správou aktualizací
 
-Tento článek popisuje řešení problémů, se kterými se můžete setkat při použití správy aktualizací.
+Tento článek popisuje řešení problémů, které se mohou sejít při používání správy aktualizací.
 
 Existuje poradce při potížích s agentem pro agenta hybridního pracovníka k určení základního problému. Další informace o poradci při potížích najdete [v tématu Poradce při potížích s agentem aktualizace](update-agent-issues.md). Pro všechny ostatní problémy použijte následující pokyny pro řešení potíží.
 
-Pokud narazíte na problémy při pokusu o připojení řešení na virtuálním počítači (VM), zkontrolujte protokol **Operations Manager** v **protokolech aplikace a služby** v místním počítači pro události s ID události 4502 a podrobnosti o události, které obsahují `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`.
+Pokud narazíte na problémy při připojování řešení na virtuálním počítači (VM), zkontrolujte protokol **Operations Manager** v části **Protokoly aplikací a služeb** v místním počítači. Vyhledejte události s ID události 4502 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`a podrobnosti o události, které obsahují .
 
-V následující části jsou zvýrazněny konkrétní chybové zprávy a možná řešení pro každou z nich. Další problémy s přizaškolením najdete [v tématu Poradce při potížích s řešením .](onboarding.md)
+V následující části jsou zvýrazněny konkrétní chybové zprávy a možná řešení pro každou z nich. Další problémy s přizapisováním najdete [v tématu Poradce při potížích s řešením .](onboarding.md)
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Scénář: Zobrazí se chyba "Nepodařilo se povolit řešení aktualizace"
 
 ### <a name="issue"></a>Problém
 
-Při pokusu o povolení řešení správy aktualizací v účtu automatizace dojde k následující chybě:
+Při pokusu o povolení řešení správy aktualizací v účtu automatizace se zobrazí následující chyba:
 
 ```error
 Error details: Failed to enable the Update solution
@@ -39,11 +39,11 @@ Error details: Failed to enable the Update solution
 
 K této chybě může dojít z následujících důvodů:
 
-* Požadavky na síťovou bránu firewall pro agenta Analýzy protokolů nemusí být správně nakonfigurovány, což způsobí selhání agenta při řešení adres URL DNS.
+* Požadavky na síťovou bránu firewall pro agenta Analýzy protokolů nemusí být správně nakonfigurovány. To může způsobit selhání agenta při řešení adres URL DNS.
 
 * Cílení na řešení je nesprávně nakonfigurováno a počítač nepřijímá aktualizace podle očekávání.
 
-* Můžete si také všimnout, že `Non-compliant` zařízení zobrazuje stav v části **Dodržování předpisů**. Současně **agent aktualizace připravenosti** hlásí agenta `Disconnected`jako .
+* Můžete si také všimnout, že `Non-compliant` zařízení zobrazuje stav v části **Dodržování předpisů**. Agent **Desktop Analytics** současně agent Desktop `Disconnected`Analytics informuje o agentovi jako .
 
 ### <a name="resolution"></a>Řešení
 
@@ -53,7 +53,7 @@ K této chybě může dojít z následujících důvodů:
 
 * Přejděte na [plánování sítě,](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) kde se dozvíte, které adresy a porty musí být povoleny, aby agent Analýzy protokolů fungoval.
 
-* Zkontrolujte problémy s konfigurací oboru. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače jsou pro řešení konfigurovány. Pokud se váš počítač zobrazuje ve vašem pracovním prostoru, ale ne na portálu **pro správu aktualizací,** budete muset nastavit konfiguraci oboru tak, aby cílila na počítače. Další informace o konfiguraci oboru naleznete [v tématu Palubní počítače v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+* Zkontrolujte problémy s konfigurací oboru. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače jsou pro řešení konfigurovány. Pokud se váš počítač zobrazuje ve vašem pracovním prostoru, ale ne na portálu pro správu aktualizací**, budete muset nastavit konfiguraci oboru tak, aby cílila na počítače. Další informace o konfiguraci oboru naleznete [v tématu Palubní počítače v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
 
 * Odeberte konfiguraci pracovního procesu podle kroků v [části Odstranění hybridního pracovníka runbooku](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker). 
 
@@ -61,7 +61,7 @@ K této chybě může dojít z následujících důvodů:
 
 ### <a name="issue"></a>Problém
 
-Staré aktualizace se v účtu Automation zobrazují jako chybějící, i když byly nahrazeny. Nahrazená aktualizace je aktualizace, která nemusí být nainstalována, protože je k dispozici pozdější aktualizace, která opravuje stejnou chybu zabezpečení. Správa aktualizací ignoruje nahrazenou aktualizaci a činí ji použitelnou ve prospěch nahrazující aktualizace. Informace o souvisejícím problému naleznete v tématu [Aktualizace je nahrazena](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+Staré aktualizace se v účtu Automation zobrazují jako chybějící, i když byly nahrazeny. Nahrazená aktualizace je aktualizace, kterou nemusíte instalovat, protože je k dispozici pozdější aktualizace, která opravuje stejnou chybu zabezpečení. Správa aktualizací ignoruje nahrazenou aktualizaci a činí ji použitelnou ve prospěch nahrazující aktualizace. Informace o souvisejícím problému naleznete v tématu [Aktualizace je nahrazena](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
 
 ### <a name="cause"></a>Příčina
 
@@ -69,7 +69,7 @@ Nahrazené aktualizace nejsou správně označeny jako odmítnuté, takže je ne
 
 ### <a name="resolution"></a>Řešení
 
-Pokud se nahrazená aktualizace stane 100 % nepoužitelnou, měli byste `Declined`změnit stav schválení této aktualizace na . Chcete-li to provést pro všechny aktualizace:
+Pokud se nahrazená aktualizace stane 100 % nepoužitelnou, měli byste `Declined`změnit stav schválení této aktualizace na . Změna stavu schválení pro všechny aktualizace:
 
 1. V účtu Automatizace vyberte **Aktualizovat správu,** chcete-li zobrazit stav počítače. Viz [Zobrazit hodnocení aktualizací](../manage-update-multi.md#view-an-update-assessment).
 
@@ -83,7 +83,7 @@ Pokud se nahrazená aktualizace stane 100 % nepoužitelnou, měli byste `Decline
 
 6. Spusťte průvodce vyčištěním a odstraňte soubory z odmítnutých aktualizací. 
 
-7. V případě služby WSUS ručně vyčistěte všechny nahrazené aktualizace a aktualizujte infrastrukturu.
+7. V systému Windows Server Update Services (WSUS) ručně vyčistěte všechny nahrazené aktualizace a aktualizujte infrastrukturu.
 
 8. Opakujte tento postup pravidelně opravit problém se zobrazením a minimalizovat množství místa na disku používané pro správu aktualizací.
 
@@ -109,22 +109,22 @@ Je možné, že jste v pracovním prostoru definovali kvótu, která byla dosaž
 
 ### <a name="resolution"></a>Řešení
 
-* V závislosti na operačním systému spusťte poradce při potížích s [Windows](update-agent-issues.md#troubleshoot-offline) nebo [Linuxem.](update-agent-issues-linux.md#troubleshoot-offline)
+1. V závislosti na operačním systému spusťte poradce při potížích s [Windows](update-agent-issues.md#troubleshoot-offline) nebo [Linuxem.](update-agent-issues-linux.md#troubleshoot-offline)
 
-* Ujistěte se, že váš počítač je hlášení do správného pracovního prostoru. Pokyny k ověření tohoto aspektu naleznete v [tématu Ověření připojení agenta k log analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Také se ujistěte, že tento pracovní prostor je propojený s vaším účtem Azure Automation. Chcete-li to potvrdit, přejděte na účet Automation a v části **Související zdroje**vyberte Propojený **pracovní prostor** .
+2. Ujistěte se, že váš počítač je hlášení do správného pracovního prostoru. Pokyny k ověření tohoto aspektu naleznete v [tématu Ověření připojení agenta k log analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Také se ujistěte, že tento pracovní prostor je propojený s vaším účtem Azure Automation. Chcete-li to potvrdit, přejděte na účet Automation a v části **Související zdroje**vyberte Propojený **pracovní prostor** .
 
-* Ujistěte se, že se počítače zobrazí v pracovním prostoru Log Analytics. V pracovním prostoru Log Analytics, který je propojený s vaším účtem Automation, spusťte následující dotaz:
+3. Ujistěte se, že se počítače zobrazí v pracovním prostoru Log Analytics. V pracovním prostoru Log Analytics, který je propojený s vaším účtem Automation, spusťte následující dotaz:
 
   ```loganalytics
   Heartbeat
   | summarize by Computer, Solutions
   ```
- 
-  Pokud počítač ve výsledcích dotazu nevidíte, není nedávno odhlášen, což znamená, že pravděpodobně došlo k problému s místní konfigurací a měli byste [přeinstalovat agenta](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). Pokud se váš počítač zobrazí ve výsledcích dotazu, je třeba ověřit konfiguraci oboru zadanou v další položce s odrážkami v tomto seznamu.
 
-* Zkontrolujte problémy s konfigurací oboru. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače jsou pro řešení konfigurovány. Pokud se váš počítač zobrazuje ve vašem pracovním prostoru, ale ne na portálu **pro správu aktualizací,** budete muset nakonfigurovat konfiguraci oboru tak, aby cílila na počítače. Informace o tom, jak to provést, naleznete [v tématu Palubní počítače v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+4. Pokud počítač ve výsledcích dotazu nevidíte, není v poslední době vrácení se změnami. Pravděpodobně došlo k problému s místní konfigurací a měli byste [přeinstalovat agenta](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
 
-* V pracovním prostoru spusťte následující dotaz:
+5. Pokud se váš počítač zobrazí ve výsledcích dotazu, zkontrolujte problémy s konfigurací oboru. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače jsou konfigurovány pro řešení. Pokud se váš počítač zobrazuje ve vašem pracovním prostoru, ale ne na portálu pro správu aktualizací **, je nutné nakonfigurovat konfiguraci oboru tak, aby cílila na počítače. Informace o tom, jak to provést, naleznete [v tématu Palubní počítače v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+
+6. V pracovním prostoru spusťte následující dotaz:
 
   ```loganalytics
   Operation
@@ -132,18 +132,18 @@ Je možné, že jste v pracovním prostoru definovali kvótu, která byla dosaž
   | sort by TimeGenerated desc
   ```
 
-  Pokud získáte `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` výsledek, je v pracovním prostoru definována kvóta, která byla dosažena a která zabránila ukládání dat. V pracovním prostoru přejděte na **Informace o využití a odhadované náklady** > **na správu objemu dat** a zkontrolujte kvótu nebo ji odeberte.
+7. Pokud získáte `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` výsledek, je v pracovním prostoru definována kvóta, která byla dosažena a která zabránila ukládání dat. V pracovním prostoru přejděte na **správu objemu dat** v části **Využití a odhadované náklady** a zkontrolujte kvótu nebo ji odeberte.
 
-* Pokud tyto kroky problém nevyřeší, postupujte podle pokynů v [části Nasazení pracovníka hybridní sady Runbook systému Windows](../automation-windows-hrw-install.md) a přeinstalujte hybridní pracovník pro Windows. U Linuxu postupujte podle pokynů v [části Nasazení hybridního pracovníka runbooku pro Linux](../automation-linux-hrw-install.md).
+8. Pokud váš problém stále není vyřešen, postupujte podle pokynů v [tématu Nasazení pracovníka hybridního runbooku windows](../automation-windows-hrw-install.md) a přeinstalujte hybridní ho pracovníka pro Windows. U Linuxu postupujte podle pokynů v [části Nasazení hybridního pracovníka runbooku pro Linux](../automation-linux-hrw-install.md).
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scénář: Nelze zaregistrovat zprostředkovatele prostředků automatizace pro předplatná
 
 ### <a name="issue"></a>Problém
 
-Při práci s řešeními v účtu automation narazíte na následující chybu:
+Při práci s řešeními v účtu Automation dojde k následující chybě:
 
 ```error
-Error details: Unable to register Automation Resource Provider for subscriptions:
+Error details: Unable to register Automation Resource Provider for subscriptions
 ```
 
 ### <a name="cause"></a>Příčina
@@ -152,13 +152,51 @@ Zprostředkovatel prostředků automatizace není registrován v předplatném.
 
 ### <a name="resolution"></a>Řešení
 
-Pokud chcete zaregistrovat zprostředkovatele prostředků automatizace, postupujte takto na webu Azure Portal:
+Pokud chcete zaregistrovat poskytovatele prostředků automatizace, postupujte takto na webu Azure Portal:
 
 1. V seznamu služeb Azure v dolní části portálu vyberte **Všechny služby**a pak vyberte Předplatná ve skupině Obecné **služby.**
 2. Vyberte své předplatné.
 3. V části **Nastavení**vyberte **zprostředkovatele prostředků**.
 4. Ze seznamu poskytovatelů prostředků ověřte, zda je poskytovatel `Microsoft.Automation` prostředků registrován.
 5. Pokud není uvedena, zaregistrujte `Microsoft.Automation` zprostředkovatele podle pokynů na [řešení chyb pro registraci zprostředkovatele prostředků](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+
+## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="update-missed-machines"></a>Scénář: Plánovaná aktualizace s dynamickým plánem zmeškané některé počítače
+
+### <a name="issue"></a>Problém
+
+Zobrazené počítače s náhledem zahrnuté v aktualizaci se nezobrazují v seznamu počítačů opravených během plánovaného spuštění.
+
+### <a name="cause"></a>Příčina
+
+Tento problém může mít jednu z následujících příčin:
+
+* Odběry definované v oboru v dynamickém dotazu nejsou nakonfigurovány pro registrovaného zprostředkovatele prostředků automatizace. 
+* Počítače nebyly k dispozici nebo neměly příslušné značky při spuštění plánu.
+
+### <a name="resolution"></a>Řešení
+
+#### <a name="subscriptions-not-configured-for-registered-automation-resource-provider"></a>Odběry nejsou nakonfigurovány pro registrovaného zprostředkovatele prostředků automatizace
+
+Pokud vaše předplatné není nakonfigurované pro poskytovatele prostředků automatizace, nelze dotazovat nebo načítat informace o počítačích v tomto předplatném. Pomocí následujících kroků zajistěte registraci předplatného.
+
+1. Na [webu Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)získejte přístup k seznamu služeb Azure.
+2. Vyberte **Všechny služby**a pak vyberte Předplatná ve skupině Obecné **služby.** 
+3. Najděte předplatné definované v oboru pro vaše nasazení.
+4. V části **Nastavení**zvolte **Zprostředkovatelé prostředků**.
+5. Ověřte, zda je poskytovatel `Microsoft.Automation` prostředků registrován.
+6. Pokud není uvedena, zaregistrujte `Microsoft.Automation` zprostředkovatele podle pokynů na [řešení chyb pro registraci zprostředkovatele prostředků](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+
+#### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Počítače nejsou k dispozici nebo nejsou správně označeny při provádění plánu
+
+Pokud je vaše předplatné nakonfigurováno pro zprostředkovatele prostředků automatizace, ale spuštění plánu aktualizací se zadanými [dynamickými skupinami](../automation-update-management-groups.md) vynechalo některé počítače, použijte následující postup.
+
+1. Na webu Azure Portal otevřete účet Automation a vyberte **Správa aktualizací**.
+2. Zkontrolujte [historii správy aktualizací](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment) a určete přesný čas spuštění nasazení aktualizace. 
+3. U počítačů, u kterých máte podezření, že je správa aktualizací zmeškala, použijte Azure Resource Graph k [vyhledání změn počítače](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details). 
+4. Vyhledejte změny po značnou dobu, například jeden den před spuštěním nasazení aktualizace.
+5. Zkontrolujte výsledky hledání pro všechny systémové změny, jako je například odstranit nebo aktualizovat změny počítačů v tomto období. Tyto změny mohou změnit stav počítače nebo značky tak, aby počítače nebyly vybrány v seznamu počítačů při nasazení aktualizací.
+6. Podle potřeby upravte počítače a nastavení prostředků, abyste opravili stav počítače nebo problémy se značkami.
+7. Znovu spusťte plán aktualizace, abyste zajistili, že nasazení se zadanými dynamickými skupinami zahrnuje všechny počítače.
 
 ## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Scénář: Komponenty pro řešení správy aktualizací povoleny, zatímco virtuální počítače se nadále zobrazují jako nakonfigurované
 
@@ -291,7 +329,7 @@ Pokud je to možné, použijte [dynamické skupiny](../automation-update-managem
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
 
-* Po nalezení ohrožených počítačů upravte nasazení aktualizací, která se na tyto počítače `SourceComputerId` zaměřují, a pak je odeberte a znovu přidejte tak, aby odrážely správnou hodnotu.
+* Po nalezení ohrožených počítačů upravte nasazení aktualizací, která se na tyto `SourceComputerId` počítače zaměřují, a pak je odeberte a odečtěte tak, aby odrážely správnou hodnotu.
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Scénář: Aktualizace jsou nainstalovány bez nasazení
 
@@ -403,12 +441,14 @@ Agent aktualizace (Agent windows update v systému Windows; správce balíčků 
 
 ### <a name="resolution"></a>Řešení
 
-Pokuste se provádět aktualizace místně v počítači. Pokud se to nezdaří, obvykle to znamená, že došlo k chybě konfigurace s agentem aktualizace.
+Pokuste se provádět aktualizace místně v počítači. Pokud se tato operace nezdaří, obvykle to znamená, že došlo k chybě konfigurace agenta aktualizace.
 
-Tento problém je často způsoben konfigurací sítě a problémy s bránou firewall. Vyzkoušejte následující kroky:
+Tento problém je často způsoben konfigurací sítě a problémy s bránou firewall. K opravě problému použijte následující kontroly.
 
 * Pro Linux, zkontrolujte příslušnou dokumentaci a ujistěte se, že můžete dosáhnout koncového bodu sítě úložiště balíčků.
+
 * V systému Windows zkontrolujte konfiguraci agenta, jak je uvedeno v [části Aktualizace se nestahují z koncového bodu intranet (WSUS/SCCM).](/windows/deployment/update/windows-update-troubleshooting#updates-arent-downloading-from-the-intranet-endpoint-wsussccm)
+
   * Pokud jsou počítače nakonfigurovány pro službu Windows Update, ujistěte se, že se dostanete ke koncovým bodům popsaným v [části Problémy související s protokolem HTTP/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy).
   * Pokud jsou počítače konfigurovány pro službu Windows Server Update Services (WSUS), ujistěte se, že se můžete dostat na server WSUS nakonfigurovaný [klíčem registru WUServer](/windows/deployment/update/waas-wu-settings).
 
@@ -453,9 +493,9 @@ Možné příčiny:
 
 Pokud dojde k selhání během spuštění aktualizace po úspěšném spuštění, [zkontrolujte výstup úlohy](../manage-update-multi.md#view-results-of-an-update-deployment) z postiženého počítače v běhu. Můžete najít konkrétní chybové zprávy z vašich počítačů, které můžete zkoumat a přijmout opatření. Správa aktualizací vyžaduje, aby správce balíčků byl v pořádku pro úspěšná nasazení aktualizací.
 
-Pokud jsou viditelné konkrétní opravy, balíčky nebo aktualizace bezprostředně před selháním úlohy, můžete zkusit [vyloučit](../automation-tutorial-update-management.md#schedule-an-update-deployment) ty z nasazení další aktualizace. Informace o protokolu ze služby Windows Update naleznete v tématu [Soubory protokolu služby Windows Update](/windows/deployment/update/windows-update-logs).
+Pokud jsou bezprostředně před selháním úlohy zpozorovány konkrétní opravy, balíčky nebo aktualizace, můžete zkusit tyto položky [vyloučit](../automation-tutorial-update-management.md#schedule-an-update-deployment) z dalšího nasazení aktualizace. Informace o protokolu ze služby Windows Update naleznete v tématu [Soubory protokolu služby Windows Update](/windows/deployment/update/windows-update-logs).
 
-Pokud problém s opravami nelze vyřešit, vytvořte kopii následujícího souboru protokolu a uchovávejte jej pro účely řešení potíží před zahájením dalšího nasazení aktualizace:
+Pokud se vám nepodaří vyřešit problém s opravami, vytvořte kopii následujícího souboru protokolu a uchovávejte jej pro účely řešení potíží před zahájením dalšího nasazení aktualizace.
 
 ```bash
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log

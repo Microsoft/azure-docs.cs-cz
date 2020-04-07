@@ -2,15 +2,15 @@
 title: Vytvoření první funkce na webu Azure Portal
 description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí webu Azure Portal bez serveru.
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 417ad96dc3dea25e322dbdb4d81c034a9b9c1e80
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656894"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754844"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
@@ -34,29 +34,27 @@ Dále vytvořte funkci v nové aplikaci funkce.
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Vytvoření funkce aktivované protokolem HTTP
 
-1. V levé nabídce okna **Funkce** vyberte **Funkce**a pak v horní nabídce vyberte **Přidat.** 
- 
-1. V okně **Nová funkce** vyberte http **aktivační událost**.
+1. Rozbalte novou aplikaci **+** funkcí, vyberte tlačítko vedle **položky Funkce**, zvolte **In-portal**a pak vyberte **Pokračovat**.
 
-    ![Volba aktivační funkce HTTP](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
+    ![Funkce rychlý start pro výběr platformy.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
-1. V okně **Nová funkce** přijměte výchozí název funkce **nebo**zadejte nový název. 
+1. Zvolte **WebHook + API**a pak vyberte **Vytvořit**.
 
-1. Z rozevíracího seznamu **Úroveň autorizace** zvolte **Anonymní** a pak vyberte **Vytvořit funkci**.
+    ![Stručný úvod do služby Functions na webu Azure Portal.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-    Azure vytvoří funkci aktivační události HTTP. Novou funkci můžete spustit odesláním požadavku HTTP.
+   Na základě šablony funkce aktivované protokolem HTTP pro určitý jazyk se vytvoří funkce.
+
+Novou funkci můžete spustit odesláním požadavku HTTP.
 
 ## <a name="test-the-function"></a>Testování funkce
 
-1. V nové funkci aktivační události HTTP vyberte v levé nabídce **kód + test** a v horní nabídce vyberte Získat adresu URL **funkce.**
+1. V nové funkci vyberte v pravém horním rohu **adresu URL funkce</> Získat.** 
 
-    ![Vybrat adresu URL funkce Get](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
-
-1. V dialogovém okně **Získat adresu URL funkce** vyberte **výchozí** z rozevíracího seznamu a pak vyberte ikonu Kopírovat **do schránky.** 
+1. V dialogovém okně **Získat adresu URL funkce** vyberte v rozevíracím seznamu výchozí **(funkční klávesu)** a pak vyberte **Kopírovat**. 
 
     ![Kopírování adresy URL funkce z webu Azure Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Vložte adresu URL funkce do panelu Adresa vašeho prohlížeče. Přidejte hodnotu `?name=<your_name>` řetězce dotazu na konec této adresy URL a stisknutím klávesy Enter spusťte požadavek. 
+1. Vložte adresu URL funkce do panelu Adresa vašeho prohlížeče. Přidejte hodnotu `&name=<your_name>` řetězce dotazu na konec této adresy URL a stisknutím klávesy Enter spusťte požadavek. 
 
     Následující příklad ukazuje odpověď v prohlížeči:
 
@@ -64,7 +62,7 @@ Dále vytvořte funkci v nové aplikaci funkce.
 
     Adresa URL požadavku obsahuje klíč, který je ve výchozím nastavení nezbytný pro přístup k funkci přes protokol HTTP.
 
-1. Při spuštění funkce se do protokolů zaznamenávají informace o trasování. Chcete-li zobrazit výstup trasování, vraťte se na stránku **Kód + Test** na portálu a rozbalte šipku **protokoly** v dolní části stránky.
+1. Při spuštění funkce se do protokolů zaznamenávají informace o trasování. Chcete-li zobrazit výstup trasování z předchozího spuštění, vraťte se do funkce na portálu a vyberte šipku v dolní části obrazovky rozbalte **protokoly**.
 
    ![Prohlížeč protokolu funkcí na webu Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
 

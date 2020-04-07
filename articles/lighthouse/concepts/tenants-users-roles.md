@@ -3,12 +3,12 @@ title: Klienti, role a uživatelé ve scénářích Azure Lighthouse
 description: Seznamte se s koncepty klientů, uživatelů a rolí služby Azure Active Directory a také s tím, jak je lze použít ve scénářích Azure Lighthouse.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4734f12c8b4b25bf75ecabc39d9e99d8ebe0951c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 32d9214e4d0d204db39b6e6decab4665e9b55069
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668873"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754080"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Klienti, role a uživatelé ve scénářích Azure Lighthouse
 
@@ -41,7 +41,6 @@ Při vytváření autorizací doporučujeme následující doporučené postupy:
 - Ujistěte se, že dodržovat zásadu nejnižší oprávnění tak, aby uživatelé měli pouze oprávnění potřebná k dokončení své úlohy, což pomáhá snížit pravděpodobnost neúmyslných chyb. Další informace naleznete v [tématu Doporučené postupy zabezpečení](../concepts/recommended-security-practices.md).
 - Zahrňte uživatele s [rolí odstranění přiřazení registrace spravovaných služeb,](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) abyste v případě potřeby mohli [později odebrat přístup k delegování.](../how-to/onboard-customer.md#remove-access-to-a-delegation) Pokud tato role není přiřazena, delegované prostředky mohou být odebrány pouze uživatelem v tenantovi zákazníka.
 - Ujistěte se, že každý uživatel, který potřebuje [zobrazit stránku Moji zákazníci na webu Azure Portal,](../how-to/view-manage-customers.md) má roli [čtečky](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtečce).
-- Uživatelé ve správcovském tenantovi nebudou mít přístup k zobrazení fakturačních údajů pro předplatné delegovaného zákazníka, a to ani v případě, že mají předdefinovanou roli, která by obvykle umožňovala přístup. Důvodem je, že přístup k fakturační masce vyžaduje další kroky, které jsou aktuálně podporovány pouze pro uživatele v rámci stejného klienta.
 
 > [!IMPORTANT]
 > Chcete-li přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** **zabezpečení** a ne **Office 365**. Tato možnost je vybrána při vytvoření skupiny. Další informace najdete [v tématu Vytvoření základní skupiny a přidání členů pomocí služby Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).

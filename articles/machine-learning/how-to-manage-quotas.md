@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
-ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399160"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756604"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a vyžádání kvót pro prostředky Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Tady je rozpis limitů kvót podle různých typů prostředků v rámci předpl
 > [!IMPORTANT]
 > Limity se mohou změnit. Nejnovější lze vždy nalézt na úrovni služby [kvóty dokumentu](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) pro všechny Azure.
 
-### <a name="virtual-machines"></a>Virtual Machines
+### <a name="virtual-machines"></a>Virtuální počítače
 Pro každé předplatné Azure existuje limit na počet virtuálních počítačů, které můžete mít napříč službami nebo samostatnými. Tento limit je na úrovni regionu jak na celkovém jádru, tak i na základě počtu rodin.
 
 Jádra virtuálních strojů mají regionální celkový limit a regionální limit na velikost (Dv2, F atd.), které jsou vynuceny samostatně. Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. V tomto předplatném by bylo možné nasadit 30 virtuálních počítačů řady A1, 30 virtuálních počítačů řady D1 nebo jejich kombinaci, která nepřekročí celkový počet 30 jader (například 10 virtuálních počítačů řady A1 a 20 virtuálních počítačů řady D1).
@@ -60,7 +60,7 @@ Dostupné zdroje:
 
 + Clustery na oblast mají výchozí limit 200. Ty jsou sdíleny mezi trénovací cluster a výpočetní instance (která je považována za jeden uzel clusteru pro účely kvóty). Pokud chcete požádat o zvýšení nad rámec tohoto limitu, obraťte se na podporu Azure.
 
-+ Existují ** další přísné limity, které nelze překročit po zásahu.
++ Existují další přísná omezení, která nelze po zásahu překročit.
 
 | **Zdrojů** | **Maximální limit** |
 | --- | --- |
@@ -91,7 +91,7 @@ Existuje také omezení počtu instancí kontejneru, které můžete střídat v
 
 Podrobnější a aktuální seznam limitů kvót najdete v článku kvóty pro celý Azure [zde](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Počet účtů úložiště na oblast je omezen také v daném předplatném. Výchozí limit je 250 a zahrnuje účty standardu i úložiště Premium. Pokud v dané oblasti požadujete více než 250 účtů úložiště, požádejte o to prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage zkontroluje váš obchodní případ a může schválit až 250 účtů úložiště pro danou oblast.
 
 

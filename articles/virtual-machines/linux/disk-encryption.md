@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 20aa55f9fc4ea65da1973628aeec313a5367816a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f7eb63d0bbdce86f4a7195430dc15d6873e9f6e6
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632070"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754314"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování spravovaných disků Azure na straně serveru
 
@@ -90,10 +90,13 @@ Prozatím mají klíče spravované zákazníkem následující omezení:
 
     Při vytváření instance trezoru klíčů je nutné povolit ochranu proti odstranění a vymazání pomocí funkce Obnovitelné odstranění a vymazání. Obnovitelné odstranění zajistí, že trezor klíčů obsahuje odstraněný klíč po danou dobu uchovávání (výchozí nastavení 90 dnů). Ochrana proti vymazání zajišťuje, že odstraněný klíč nelze trvale odstranit, dokud nevyprší doba uchování. Tato nastavení vás chrání před ztrátou dat v důsledku náhodného odstranění. Tato nastavení jsou povinná při použití trezoru klíčů pro šifrování spravovaných disků.
 
+    > [!IMPORTANT]
+    > Nepoužívejte camel případě oblasti, pokud tak učiníte může dojít k problémům při přiřazování další disky k prostředku na webu Azure Portal.
+
     ```azurecli
     subscriptionId=yourSubscriptionID
     rgName=yourResourceGroupName
-    location=WestCentralUS
+    location=westcentralus
     keyVaultName=yourKeyVaultName
     keyName=yourKeyName
     diskEncryptionSetName=yourDiskEncryptionSetName
@@ -134,7 +137,7 @@ Prozatím mají klíče spravované zákazníkem následující omezení:
 ```azurecli
 rgName=yourResourceGroupName
 vmName=yourVMName
-location=WestCentralUS
+location=westcentralus
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
 diskEncryptionSetName=yourDiskencryptionSetName
@@ -162,7 +165,7 @@ az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCus
 ```azurecli
 rgName=yourResourceGroupName
 vmssName=yourVMSSName
-location=WestCentralUS
+location=westcentralus
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
 diskEncryptionSetName=yourDiskencryptionSetName
@@ -179,7 +182,7 @@ rgName=yourResourceGroupName
 diskName=yourDiskName
 diskSkuName=Premium_LRS
 diskSizeinGiB=30
-location=WestCentralUS
+location=westcentralus
 diskLUN=2
 diskEncryptionSetName=yourDiskEncryptionSetName
 

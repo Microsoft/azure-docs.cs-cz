@@ -7,14 +7,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973139"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757235"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Předplacení softwarových plánů Azure
 
@@ -38,6 +38,7 @@ Za platbu předplatným se účtují předem náklady na rezervaci. Typ předpla
 4. Vyberte rozsah. Obor může zahrnovat jedno předplatné nebo více předplatných (sdílený obor).
     - Jednotné předplatné – sleva plánu se použije na odpovídající využití v předplatném.
     - Sdílené – sleva plánu se použije na odpovídající instance v libovolném předplatném v kontextu fakturace. Pro podnikové zákazníky je fakturační kontext registrace a zahrnuje všechna předplatná v registraci. U individuálního plánu s průběžnými platbami jsou v kontextu fakturace všechny individuální plány s předplatnými s průběžnými platbami vytvořenými správcem účtu.
+    - Skupina jednoho prostředku – Použije slevu rezervace pouze na odpovídající zdroje ve vybrané skupině prostředků.
 5. Vyberte produkt, který chcete zvolit velikost virtuálního počítače a typ obrázku. Sleva se vztahuje pouze na vybranou velikost virtuálního počítače.
 6. Vyberte jednoleté nebo tříleté období.
 7. Zvolte množství, což je počet předplacených instancí virtuálních účtů, které můžou získat fakturační slevu.

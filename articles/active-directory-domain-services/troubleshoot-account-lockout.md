@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 2e274aa353f6c3e485ae10a6a67ee2940eb88b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246312"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743448"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Poradce při potížích se uzamčením účtu se spravovanou doménou služby Azure AD Domain Services
 
@@ -33,11 +33,11 @@ Výchozí prahové hodnoty uzamčení účtu jsou konfigurovány pomocí zásad 
 
 ### <a name="fine-grained-password-policy"></a>Zásady jemně odstupňovaných hesel
 
-Jemně odstupňované zásady hesel (FGPP) umožňují použít konkrétní omezení pro zásady uzamčení hesla a účtu pro různé uživatele v doméně. FGPP ovlivňuje jenom uživatele vytvořené v Azure AD DS. Zásady hesel nemají vliv na uživatele cloudu a uživatele domény synchronizované do spravované domény Azure AD DS ze služby Azure AD.
+Jemně odstupňované zásady hesel (FGPP) umožňují použít konkrétní omezení pro zásady uzamčení hesla a účtu pro různé uživatele v doméně. FGPP ovlivňuje jenom uživatele v rámci spravované domény Azure AD DS. Uživatele cloudu a uživatele domény synchronizované do spravované domény Azure AD DS ze služby Azure AD mají vliv jenom zásady hesel v rámci služby Azure AD DS. Jejich účty ve službě Azure AD nebo místní adresář nejsou ovlivněny.
 
 Zásady jsou distribuovány prostřednictvím přidružení skupiny ve spravované doméně Azure AD DS a všechny změny, které provedete, se použijí při příštím přihlášení uživatele. Změnou zásadse neodemkne uživatelský účet, který je již uzamčen.
 
-Další informace o jemně odstupňovaných zásadách hesel naleznete v [tématu Konfigurace zásad uzamčení hesel a účtů][configure-fgpp].
+Další informace o jemně odstupňovaných zásadách hesel a rozdílech mezi uživateli vytvořenými přímo ve službě Azure AD DS a synchronizovanými v aplikaci azure ad najdete v [tématu Konfigurace zásad uzamčení hesel a účtů][configure-fgpp].
 
 ## <a name="common-account-lockout-reasons"></a>Běžné důvody uzamčení účtu
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7e5f70d0323aa5c502491ab99db303fde31ade83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528621"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755041"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -146,7 +146,10 @@ Celková velikost dat je menší překážkou – je to počet položek, které 
 > Ujistěte se, že virtuální počítač je nasazený ve stejné oblasti Azure jako virtuální zařízení StorSimple 8020. Pokud v rámci této migrace, budete také muset změnit oblast dat cloudu z oblasti, ve které je uložena v dnes, můžete to udělat později, když zřídíte sdílené složky Azure.
 
 > [!IMPORTANT]
-> Chcete-li optimalizovat výkon, nasaďte **velmi rychlý disk operačního systému** pro váš cloudový virtuální počítač. Synchronizační databázi uložíte na disk operačního systému pro všechny datové svazky. Dále se ujistěte, že vytvoříte **velký disk operačního systému**. V závislosti na počtu položek (souborů a složek) na svazcích StorSimple může disk operačního systému potřebovat **několik set gib** místa pro synchronizaci databáze.
+> Místní Systém Windows Server se často používá k předkonfrontujte místní zařízení StorSimple. V takové konfiguraci je možné povolit funkci "[Odstranění duplicitdat](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable)" na tomto systému Windows Server. **Pokud jste s daty StorSimple použili odstranění duplicit dat, ujistěte se, že na tomto virtuálním počítači Azure povolíte také odstranění duplicit dat.** Nepleťte si tuto odstranění na úrovni souboru s integrovanou odstraněním odstranění duplicit na úrovni bloku StorSimples, pro kterou není nutná žádná akce.
+
+> [!IMPORTANT]
+> Chcete-li optimalizovat výkon, nasaďte **rychlý disk operačního systému** pro váš cloudový virtuální počítač. Synchronizační databázi uložíte na disk operačního systému pro všechny datové svazky. Dále se ujistěte, že vytvoříte **velký disk operačního systému**. V závislosti na počtu položek (souborů a složek) na svazcích StorSimple může disk operačního systému potřebovat **několik set gib** místa pro synchronizaci databáze.
 
 ### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>Vystavit svazky StorSimple 8020 virtuálnímu počítači Azure
 
@@ -424,7 +427,7 @@ Podívejte se do souborů protokolu robocopy a zjistěte, zda byly soubory zanec
 
 Je pravděpodobně potřeba vytvořit sdílené složky SMB na serveru Windows Server, které jste měli na datech StorSimple dříve. Můžete front-load tento krok a to dříve, aby zde neztrácel čas, ale musíte zajistit, že před tímto bodem, žádné změny souborů dojít na serveru Windows.
 
-Pokud máte nasazení DFS-N, můžete nasměrovat DFN-Namespaces na nová umístění složek serveru. Pokud nemáte nasazení DFS-N a zařízení 8100 8600 jste místně zadali pomocí systému Windows Server, můžete tento server z domény smést a připojit se k novému systému Windows Server s afs emitovanému do domény, dát mu stejný název serveru jako starý server. a stejné názvy sdílení, pak přestřihnutí na nový server zůstane pro uživatele, zásady skupiny nebo skripty transparentní.
+Pokud máte nasazení DFS-N, můžete nasměrovat DFN-Namespaces na nová umístění složek serveru. Pokud nemáte nasazení DFS-N a zařízení 8100 8600 jste místně předali systémem Windows Server, můžete tento server z domény sundat a doméně připojit nový systém Windows Server s afs k doméně, dát mu stejný název serveru jako starý server a stejné názvy sdílení, pak přeškrtnutí na nový server zůstane pro uživatele transparentní. , zásady skupiny nebo skripty.
 
 ## <a name="phase-7-deprovision"></a>Fáze 7: Zrušení poskytování
 

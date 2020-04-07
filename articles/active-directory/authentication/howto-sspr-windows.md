@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652263"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743340"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postup: Povolení resetování hesla z přihlašovací obrazovky systému Windows
 
@@ -43,7 +43,7 @@ U počítačů se systémem Windows 7, 8, 8.1 a 10 můžete uživatelům povolit
 - Kombinace následujících specifických tří nastavení může způsobit, že tato funkce nebude fungovat.
     - Interaktivní přihlášení: Nevyžadují kombinaci kláves CTRL+ALT+DEL = Zakázáno
     - Zakázat LockScreenAppNotifications = 1 nebo Povoleno
-    - IsContentDeliveryPolicyEnforced = 1 nebo True
+    - SKU systému Windows není verze Pro domácnosti nebo Professional
 
 ## <a name="windows-10-password-reset"></a>Resetování hesla windows 10
 

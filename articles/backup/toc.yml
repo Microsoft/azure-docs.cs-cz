@@ -32,8 +32,6 @@
       href: tutorial-sql-backup.md
     - name: Zálohování databází SAP HANA na virtuálních počítačích Azure
       href: tutorial-backup-sap-hana-db.md
-    - name: Zálohování sdílených složek Azure Files
-      href: tutorial-backup-azure-files.md
     - name: Zálohování Windows Serveru
       href: tutorial-backup-windows-server-to-azure.md
     - name: Obnovení souborů do Windows Serveru

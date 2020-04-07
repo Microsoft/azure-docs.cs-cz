@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939212"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757200"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Použití služeb pro vyrovnávání zatížení v Azure
 
@@ -38,7 +38,7 @@ Na koncepční úrovni každá z těchto služeb hraje odlišnou roli v hierarch
   * Směrování s více hodnotami, které umožňují odesílat adresy IP více než jednoho koncového bodu aplikace v jedné odpovědi DNS.
 
   Klient se připojí přímo ke koncovému bodu vrácenému Traffic Manager. Azure Traffic Manager zjistí, když koncový bod není v pořádku a pak přesměruje klienty na jinou instanci v pořádku. Další informace o službě najdete v [dokumentaci](traffic-manager-overview.md) k Azure Traffic Manageru.
-* **Aplikační brána** poskytuje řadič pro doručování aplikací (ADC) jako službu, která nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaši aplikaci. Umožňuje zákazníkům optimalizovat produktivitu webové farmy převedením ukončení SSL náročné na procesor na aplikační bránu. Mezi další možnosti směrování vrstvy 7 patří distribuce příchozích přenosů s každým dotazováním, spřažení relací na základě souborů cookie, směrování založené na cestě url a možnost hostovat více webů za jednou aplikační bránou. Aplikační bránu lze nakonfigurovat jako internetovou bránu, bránu pouze pro interní nebo kombinaci obou. Aplikační brána je plně spravovaná, škálovatelná a vysoce dostupná. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu.
+* **Aplikační brána** poskytuje řadič pro doručování aplikací (ADC) jako službu, která nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaši aplikaci. Umožňuje zákazníkům optimalizovat produktivitu webové farmy převedením ukončení TLS náročné na procesor na aplikační bránu. Mezi další možnosti směrování vrstvy 7 patří distribuce příchozích přenosů s každým dotazováním, spřažení relací na základě souborů cookie, směrování založené na cestě url a možnost hostovat více webů za jednou aplikační bránou. Aplikační bránu lze nakonfigurovat jako internetovou bránu, bránu pouze pro interní nebo kombinaci obou. Aplikační brána je plně spravovaná, škálovatelná a vysoce dostupná. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu.
 * **Nástroj pro vyrovnávání zatížení** je nedílnou součástí zásobníku Azure SDN a poskytuje vysoce výkonné služby vyrovnávání zatížení vrstvy 4 s nízkou latencí pro všechny protokoly UDP a TCP. Spravuje příchozí a odchozí připojení. Pokud chcete spravovat dostupnost služby, můžete nakonfigurovat veřejné a interní koncové body s vyrovnáváním zatížení a definovat pravidla pro mapování příchozích připojení na cíle v backendovém fondu s využitím možností monitorování stavu protokolů TCP a HTTP.
 
 ## <a name="scenario"></a>Scénář
@@ -59,7 +59,7 @@ Následující diagram znázorňuje architekturu tohoto scénáře:
 ![Diagram architektury vyrovnávání zatížení](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> Tento příklad je pouze jedním z mnoha možných konfigurací služby vyrovnávání zatížení, které Azure nabízí. Traffic Manager, Aplikační brána a Nástroje pro vyrovnávání zatížení lze smíchat a přizpůsobit tak, aby co nejlépe vyhovovaly vašim potřebám vyrovnávání zatížení. Například pokud ssl přepětí nebo vrstva 7 zpracování není nutné, vyrovnávání zatížení lze použít místo aplikační brány.
+> Tento příklad je pouze jedním z mnoha možných konfigurací služby vyrovnávání zatížení, které Azure nabízí. Traffic Manager, Aplikační brána a Nástroje pro vyrovnávání zatížení lze smíchat a přizpůsobit tak, aby co nejlépe vyhovovaly vašim potřebám vyrovnávání zatížení. Například pokud tls přepětí nebo vrstva 7 zpracování není nutné, vyrovnávání zatížení lze použít místo aplikační brány.
 
 ## <a name="setting-up-the-load-balancing-stack"></a>Nastavení zásobníku vyrovnávání zatížení
 

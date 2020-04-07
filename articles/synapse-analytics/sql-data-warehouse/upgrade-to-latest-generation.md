@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3299aa8ed85cff5c29d043d30aac08db45ffe5d4
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 13b1f33ffe653627bcf45f6c995e82e741de32ea
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632271"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742754"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Optimalizace výkonu upgradem fondu SQL Azure Synapse Analytics
 
@@ -210,7 +210,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Chcete-li obnovit databázi, použijte rutinu [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase)
+Chcete-li obnovit databázi, použijte rutinu [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 > [!NOTE]
 > Můžete provést geo-obnovení Gen2! Chcete-li tak učinit, zadejte Gen2 ServiceObjectiveName (např. DW1000**c**) jako volitelný parametr.
