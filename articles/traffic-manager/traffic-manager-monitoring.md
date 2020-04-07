@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
-ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938559"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757257"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
@@ -25,7 +25,7 @@ Azure Traffic Manager zahrnuje integrované monitorování koncového bodu a aut
 
 Chcete-li konfigurovat monitorování koncového bodu, musíte v profilu Traffic Manageru zadat následující nastavení:
 
-* **protokolu**. Zvolte HTTP, HTTPS nebo TCP jako protokol, který Traffic Manager používá při zjišťování koncového bodu ke kontrole jeho stavu. Monitorování protokolu HTTPS neověřuje, zda je certifikát SSL platný – pouze kontroluje, zda je certifikát k dispozici.
+* **protokolu**. Zvolte HTTP, HTTPS nebo TCP jako protokol, který Traffic Manager používá při zjišťování koncového bodu ke kontrole jeho stavu. Monitorování protokolu HTTPS neověřuje, zda je certifikát TLS/SSL platný – pouze kontroluje, zda je certifikát k dispozici.
 * **Přístav**. Zvolte port použitý pro požadavek.
 * **Cesta**. Toto nastavení konfigurace je platné pouze pro protokoly HTTP a HTTPS, pro které je vyžadováno určení nastavení cesty. Poskytnutí tohoto nastavení protokolu monitorování Protokolu TCP má za následek chybu. Pro protokol HTTP a HTTPS uveďte relativní cestu a název webové stránky nebo souboru, ke kterému přistupuje monitorování. Lomítko (/) je platná položka pro relativní cestu. Tato hodnota znamená, že soubor je v kořenovém adresáři (výchozí).
 * **Vlastní nastavení záhlaví** Toto nastavení konfigurace vám pomůže přidat konkrétní hlavičky HTTP do kontrol stavu, které Traffic Manager odesílá koncovým bodům v rámci profilu. Vlastní záhlaví lze zadat na úrovni profilu, které mají být použitelné pro všechny koncové body v tomto profilu a / nebo na úrovni koncového bodu použitelné pouze pro tento koncový bod. Vlastní záhlaví pro kontrolu stavu koncových bodů v prostředí s více klienty správně směrovány do cíle zadáním hlavičky hostitele. Toto nastavení můžete také použít přidáním jedinečných záhlaví, která lze použít k identifikaci aplikace Traffic Manager, které pocházejí z požadavků HTTP(S), a jejich odlišně je zpracujete. Můžete zadat až osm párů záhlaví:hodnota seprated čárkou. Například "header1:value1,header2:value2". 
@@ -108,7 +108,7 @@ Koncový bod není v pořádku, pokud dojde k některé z následujících udál
 
 Další informace o neúspěšných kontrolách při potížích najdete [v tématu Poradce při potížích se sníženým stavem ve Správci provozu Azure](traffic-manager-troubleshooting-degraded.md). 
 
-Časová osa na následujícím obrázku je podrobný popis procesu monitorování koncového bodu Traffic Manageru, který má následující nastavení: monitorovací protokol je HTTP, interval sondování je 30 sekund, počet tolerovaných poruch je 3, hodnota časového intervalu je 10 a DNS TTL je 30 sekund.
+Časová osa na následujícím obrázku je podrobný popis procesu monitorování koncového bodu Traffic Manager, který má následující nastavení: monitorovací protokol je HTTP, interval zjišťování je 30 sekund, počet tolerovaných selhání je 3, hodnota časového intervalu je 10 sekund a TTL DNS je 30 sekund.
 
 ![Sekvence převzetí služeb při selhání a posloupnost navrácení služeb po selhání správce provozu](./media/traffic-manager-monitoring/timeline.png)
 

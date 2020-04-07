@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c2700339a7ac8342da0250227cff898c20e60118
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1298a6d277f072491d05945b272925a2aba52e02
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278548"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745658"
 ---
 # <a name="create-a-consulting-offer"></a>Vytvoření konzultační nabídky
+
+>[!Important]
+>března 2020 začneme přesouvat správu vašich poradenských služeb do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu pro vytvoření služby](https://aka.ms/AzureCreateConsultingService) postupujte podle pokynů pro správu migrovaných nabídek.
 
 Tento článek popisuje, jak vytvořit a publikovat nabídku konzultační služby.
 
@@ -34,5 +37,5 @@ Chcete-li vytvořit novou nabídku, postupujte takto.
 
 Stránka **Nová nabídka** pro typ nabídky konzultační služby obsahuje sadu karet a polí formulářů, které používáte k vytvoření nové nabídky. Následující články vysvětlují, jak pomocí karty definovat nastavení nabídky a podrobnosti o výloze pro novou nabídku:
 
--   [Definovat nastavení nabídky](./cpp-consulting-service-define-offer-settings.md)
--   [Zadejte podrobnosti o výloze a jestli se má publikovat na Azure Marketplace nebo na AppSource.](./cpp-consulting-service-storefront-details.md)
+-    [Definovat nastavení nabídky](./cpp-consulting-service-define-offer-settings.md)
+-    [Zadejte podrobnosti o výloze a jestli se má publikovat na Azure Marketplace nebo na AppSource.](./cpp-consulting-service-storefront-details.md)

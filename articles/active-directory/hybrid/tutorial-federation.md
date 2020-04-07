@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80330994"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673700"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: Federate jeden AD doménové struktury prostředí do cloudu
 
@@ -145,7 +145,7 @@ $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
-$Password = "Pass1w0rd"
+$Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -246,7 +246,7 @@ Teď je čas stáhnout a nainstalovat Azure AD Connect.  Po instalaci budeme pro
 
 1. Na obrazovce Připojit k Azure AD zadejte uživatelské jméno a heslo globálního správce, které jsme vytvořili výše, a klikněte na **další**.
 2. Na obrazovce Připojit adresáře klepněte na tlačítko **Přidat adresář**.  Potom vyberte **Vytvořit nový účet služby AD** a zadejte uživatelské jméno a heslo contoso\Administrator a klepněte na tlačítko **OK**.
-3. Klikněte na **Další**.
+3. Klikněte na **Další**.
 4. Na obrazovce konfigurace přihlášení Služby Azure AD vyberte **Pokračovat bez porovnání všech přípon UPN s ověřenými doménami** a klikněte na **Další.**
 5. Na obrazovce filtrování domény a ou položky klepněte na tlačítko **Další**.
 6. Na obrazovce Jednoznačně identifikující uživatele klikněte na **další**.
@@ -256,10 +256,10 @@ Teď je čas stáhnout a nainstalovat Azure AD Connect.  Po instalaci budeme pro
 10. Na obrazovce farmy služby AD FS zkontrolujte, zda je vybraná možnost **Konfigurovat novou farmu služby AD FS.**
 11. Vyberte **Použít certifikát nainstalovaný na federačních serverech** a klepněte na tlačítko **Procházet**.
 12. Do vyhledávacího pole zadejte DC1 a vyberte jej, až bude nalezen.  Klikněte na **OK**.
-13. V rozevíracím dokumentu **Soubor certifikátu** vyberte **adfs.contoso.com** certifikát, který jsme vytvořili výše.  Klikněte na **Další**.
+13. V rozevíracím dokumentu **Soubor certifikátu** vyberte **adfs.contoso.com** certifikát, který jsme vytvořili výše.  Klikněte na **Další**.
 ![Federace](media/tutorial-federation/fed2.png)
 
-1. Na obrazovce serveru služby AD FS klikněte na **Procházet** a do vyhledávacího pole zadejte řadič DOMÉNY 1 a vyberte jej, když je nalezen.  Klikněte na **OK**.  Klikněte na **Další**.
+1. Na obrazovce serveru služby AD FS klikněte na **Procházet** a do vyhledávacího pole zadejte řadič DOMÉNY 1 a vyberte jej, když je nalezen.  Klikněte na **OK**.  Klikněte na **Další**.
 ![Federace](media/tutorial-federation/fed3.png)
 
 1. Na obrazovce Servery proxy webové aplikace klepněte na tlačítko **Další**.

@@ -3,12 +3,12 @@ title: Povolení zálohování při vytvoření virtuálního počítače Azure
 description: Popisuje, jak povolit zálohování při vytváření virtuálního počítače Azure s Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247849"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672813"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
 
@@ -64,6 +64,8 @@ Body k poznámce:
 5. Název RG můžete upravit úpravou zásady, pokud a v případě potřeby. Pokud se změní název vzor, nové rps budou vytvořeny v novém RG. Staré rps však bude stále umístěn ve staré RG a nebude přesunuta, jako RP kolekce nepodporuje přesun prostředků. Nakonec rps dostane odpadky shromážděné jako body vyprší.
 ![Změna názvu při úpravě zásad](./media/backup-during-vm-creation/modify-policy.png)
 6. Doporučuje se neuzamknout skupinu prostředků vytvořenou pro použití službou Backup.
+
+Pokud chcete nakonfigurovat skupinu prostředků Azure Backup pro virtuální počítače pomocí PowerShellu, přečtěte si [informace o vytvoření skupiny prostředků Azure Backup během uchovávání snímků](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Spuštění zálohy po vytvoření virtuálního počítače
 

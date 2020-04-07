@@ -6,12 +6,12 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d9815fd27a57acc8b418962e610d2ae1c106edde
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78272809"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673309"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Připojení funkce Java k Azure Storage
 
@@ -37,77 +37,13 @@ Nyní můžete přidat úložiště výstupní vazby do projektu.
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-V projektu Java jsou vazby definovány jako vazby poznámky na metodu funkce. Soubor *function.json* je pak automaticky generován na základě těchto anotací.
-
-Přejděte do umístění kódu funkce pod _src/main/java_, otevřete soubor projektu *Function.java* a přidejte do definice `run` metody následující parametr:
-
-```java
-@QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
-```
-
-Parametr `msg` je [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) typ, který představuje kolekci řetězců, které jsou zapsány jako zprávy do výstupní vazby po dokončení funkce. V tomto případě je výstupem `outqueue`fronta úložiště s názvem . Připojovací řetězec pro účet `connection` úložiště je nastaven metodou. Spíše než samotný připojovací řetězec, předáte nastavení aplikace, která obsahuje připojovací řetězec účtu úložiště.
-
-Definice `run` metody by nyní měla vypadat jako následující příklad:  
-
-```java
-@FunctionName("HttpTrigger-Java")
-public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION)  
-        HttpRequestMessage<Optional<String>> request, 
-        @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-        OutputBinding<String> msg, final ExecutionContext context) {
-    ...
-}
-```
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
-Nyní můžete použít nový `msg` parametr k zápisu do výstupní vazby z kódu funkce. Přidejte následující řádek kódu před odpověď úspěch `name` přidat `msg` hodnotu výstupní vazby.
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-```java
-msg.setValue(name);
-```
-
-Při použití výstupní vazby, není potřeba použít kód Azure Storage SDK pro ověřování, získání odkazu na frontu nebo zápis dat. Funkce runtime a fronty výstupní vazba provést tyto úkoly za vás.
-
-Vaše `run` metoda by nyní měla vypadat jako následující příklad:
-
-```java
-@FunctionName("HttpTrigger-Java")
-public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request, 
-        @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-        OutputBinding<String> msg, final ExecutionContext context) {
-    context.getLogger().info("Java HTTP trigger processed a request.");
-
-    // Parse query parameter
-    String query = request.getQueryParameters().get("name");
-    String name = request.getBody().orElse(query);
-
-    if (name == null) {
-        return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
-    } else {
-        // Write the name to the message queue. 
-        msg.setValue(name);
-
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-    }
-}
-```
-
-## <a name="update-the-tests"></a>Aktualizace testů
-
-Vzhledem k tomu, že archetyp také vytvoří sadu testů, `msg` je `run` třeba aktualizovat tyto testy zpracovat nový parametr v podpisu metody.  
-
-Přejděte do umístění testovacího kódu pod _src/test/java_, otevřete soubor projektu *Function.java* a nahraďte řádek kódu pod `//Invoke` následujícím kódem.
-
-```java
-@SuppressWarnings("unchecked")
-final OutputBinding<String> msg = (OutputBinding<String>)mock(OutputBinding.class);
-
-// Invoke
-final HttpResponseMessage ret = new Function().run(req, msg, context);
-``` 
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 
 Nyní jste připraveni vyzkoušet novou vazbu výstupu místně.
 
@@ -115,19 +51,17 @@ Nyní jste připraveni vyzkoušet novou vazbu výstupu místně.
 
 Stejně jako dříve použijte následující příkaz k sestavení projektu a spuštění prostředí Functions místně:
 
-::: zone pivot="java-build-tools-maven"  
+# <a name="maven"></a>[Maven](#tab/maven)
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
-::: zone-end
-
-::: zone pivot="java-build-tools-gradle"  
+# <a name="gradle"></a>[Gradle](#tab/gradle) 
 ```bash
 gradle jar --info
 gradle azureFunctionsRun
 ```
-::: zone-end
+---
 
 > [!NOTE]  
 > Vzhledem k tomu, že jste povolili balíčky rozšíření v host.json, [rozšíření vazby úložiště](functions-bindings-storage-blob.md#add-to-your-functions-app) byla stažena a nainstalována pro vás při spuštění, spolu s dalšími rozšířeními vazby Společnosti Microsoft.
@@ -150,17 +84,15 @@ Dále použijete rozhraní příkazového příkazu K zobrazení nové fronty a 
 
 Chcete-li publikovanou aplikaci aktualizovat, spusťte znovu následující příkaz:  
 
-::: zone pivot="java-build-tools-maven"  
+# <a name="maven"></a>[Maven](#tab/maven)  
 ```bash
 mvn azure-functions:deploy
 ```
-::: zone-end
-
-::: zone pivot="java-build-tools-gradle"  
+# <a name="gradle"></a>[Gradle](#tab/gradle)  
 ```bash
 gradle azureFunctionsDeploy
 ```
-::: zone-end
+---
 
 Znovu můžete použít cURL k testování nasazené funkce. Stejně jako dříve `AzureFunctions` předavěte hodnotu v textu požadavku POST na adresu URL, jako v tomto příkladu:
 

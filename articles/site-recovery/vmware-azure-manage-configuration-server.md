@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478466"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672737"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware nebo fyzického serveru
 
@@ -45,7 +45,7 @@ Konfigurační server můžete přistupovat následujícím způsobem:
 
 Pověření můžete také upravit prostřednictvím souboru CSPSConfigtool.exe.
 
-1. Přihlášení ke konfiguračnímu serveru a spuštění souboru CSPSConfigtool.exe
+1. Přihlaste se ke konfiguračnímu serveru a spusťte soubor CSPSConfigtool.exe
 2. Vyberte účet, který chcete upravit, a klepněte na tlačítko **Upravit**.
 3. Zadejte upravená pověření a klepněte na **tlačítko Ok.**
 
@@ -93,6 +93,32 @@ Upravte nastavení proxy serveru používané počítačem konfiguračního serv
 - Do [virtuálního počítače](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)můžete přidat další adaptér , ale musíte ho přidat před registrací konfiguračního serveru v úložišti.
 - Chcete-li přidat adaptér po registraci konfiguračního serveru v úložišti, přidejte adaptér ve vlastnostech virtuálního počítače. Poté je třeba [znovu zaregistrovat](#reregister-a-configuration-server-in-the-same-vault) server v úschovně.
 
+## <a name="how-to-renew-ssl-certificates"></a>Jak obnovit certifikáty SSL
+
+Konfigurační server má vestavěný webový server, který organizuje aktivity agentů mobility na všech chráněných počítačích, vestavěných a horizontálních navýšení kapacity procesních serverů a hlavních cílových serverů, které jsou k němu připojeny. Webový server používá k ověřování klientů certifikát SSL. Platnost certifikátu vyprší po třech letech a může být kdykoli obnovena.
+
+### <a name="check-expiry"></a>Zkontrolovat vypršení platnosti
+
+Datum vypršení platnosti se zobrazí v části **Stav konfiguračního serveru**. U nasazení konfiguračního serveru před květnem 2016 byla expirace certifikátu nastavena na jeden rok. Pokud máte certifikát, jehož platnost vyprší, dojde k následujícímu:
+
+- Pokud je datum vypršení platnosti dva měsíce nebo méně, služba začne odesílat oznámení na portálu a e-mailem (pokud jste se přihlásili k odběru oznámení site recovery).
+- Na stránce prostředků úschovny se zobrazí nápis s oznámením. Další informace získáte výběrem nápisu.
+- Pokud se zobrazí tlačítko **Upgradovat,** znamená to, že některé součásti ve vašem prostředí nebyly upgradovány na verze 9.4.xxxx.x nebo vyšší. Před obnovením certifikátu inovujte součásti. Ve starších verzích nelze obnovit.
+
+### <a name="if-certificates-are-yet-to-expire"></a>Pokud certifikáty ještě nevyprší
+
+1. Chcete-li obnovit, otevřete v úschovně**stránku Site** **Recovery Infrastructure** > Configuration Server . Vyberte požadovaný konfigurační server.
+2. Ujistěte se, že všechny komponenty horizontální navýšení kapacity procesních serverů, hlavní cílové servery a agenti mobility na všech chráněných počítačích jsou na nejnovějších verzích a jsou ve stavu připojení.
+3. Nyní vyberte **možnost Obnovit certifikáty**.
+4. Pečlivě postupujte podle pokynů na této stránce a klepnutím na tlačítko OK obnovte certifikáty na vybraném konfiguračním serveru a přidružených součástech.
+
+### <a name="if-certificates-have-already-expired"></a>Pokud certifikáty již vypršela
+
+1. Po vypršení platnosti **certifikáty nelze obnovit z webu Azure Portal**. Než budete pokračovat, ujistěte se, že všechny komponenty horizontální navýšení kapacity procesních serverů, hlavní cílové servery a agenti mobility na všech chráněných počítačích jsou na nejnovějších verzích a jsou ve stavu připojení.
+2. **Tento postup postupujte pouze v případě, že platnost certifikátů již vypršela.** Přihlaste se ke konfiguračnímu serveru, přejděte na jednotku C > program Data > Site Recovery > domů > svsystems > bin a spusťte nástroj vykonavatel "RenewCerts" jako správce.
+3. Zobrazí se okno spuštění prostředí PowerShell a spustí obnovení certifikátů. Tento proces může trvat až 15 minut. Nezavírejte okno až do dokončení obnovení.
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="Obnovit certifikáty":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Opětovná registrace konfiguračního serveru ve stejném úložišti
 
@@ -112,7 +138,7 @@ Konfigurační server můžete znovu zaregistrovat ve stejném úložišti, poku
    ```
 
     >[!NOTE]
-    >Chcete-li **získat nejnovější certifikáty** z konfiguračního serveru na horizontální navýšení kapacity procesního serveru, spusťte příkaz *Instalační\<jednotka\Obnovení webu Microsoft Azure\agent\cdpcli.exe>" --registermt*
+    >Chcete-li **získat nejnovější certifikáty** z konfiguračního serveru na horizontální navýšení kapacity procesního serveru, spusťte příkaz *Instalační\<jednotka\Obnovení webu Microsoft Azure\agent\cdpcli.exe>"--registermt*
 
 8. Nakonec restartujte modul spuštěním následujícího příkazu.
    ```
@@ -269,24 +295,6 @@ Konfigurační server můžete volitelně odstranit pomocí prostředí PowerShe
 2. Chcete-li změnit adresář ve složce přihrádky, spusťte příkaz **CD %ProgramData%\ASR\home\svsystems\bin**
 3. Chcete-li vygenerovat soubor heslem, spusťte **soubor genpassphrase.exe -v > přístupové heslo MobSvc..**
 4. Heslo bude uloženo v souboru umístěném na adrese **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
-
-## <a name="renew-tlsssl-certificates"></a>Obnovení certifikátů TLS/SSL
-
-Konfigurační server má vestavěný webový server, který organizuje aktivity služby mobility, procesních serverů a hlavních cílových serverů, které jsou k němu připojeny. Webový server používá k ověřování klientů certifikát TLS/SSL. Platnost certifikátu vyprší po třech letech a může být kdykoli obnovena.
-
-### <a name="check-expiry"></a>Zkontrolovat vypršení platnosti
-
-U nasazení konfiguračního serveru před květnem 2016 byla expirace certifikátu nastavena na jeden rok. Pokud máte certifikát, jehož platnost vyprší, dojde k následujícímu:
-
-- Pokud je datum vypršení platnosti dva měsíce nebo méně, služba začne odesílat oznámení na portálu a e-mailem (pokud jste se přihlásili k odběru oznámení site recovery).
-- Na stránce prostředků úschovny se zobrazí nápis s oznámením. Další informace získáte výběrem nápisu.
-- Pokud se zobrazí tlačítko **Upgradovat,** znamená to, že některé součásti ve vašem prostředí nebyly upgradovány na verze 9.4.xxxx.x nebo vyšší. Před obnovením certifikátu inovujte součásti. Ve starších verzích nelze obnovit.
-
-### <a name="renew-the-certificate"></a>Obnovení certifikátu
-
-1. V úschovně otevřete server **Site Recovery Infrastructure** > **Configuration Server**. Vyberte požadovaný konfigurační server.
-2. Datum vypršení platnosti se zobrazí v části **Stav konfiguračního serveru**.
-3. Vyberte **možnost Obnovit certifikáty**.
 
 ## <a name="refresh-configuration-server"></a>Aktualizovat konfigurační server
 

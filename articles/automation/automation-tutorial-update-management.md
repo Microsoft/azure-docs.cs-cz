@@ -4,14 +4,14 @@ description: Tento článek obsahuje přehled o tom, jak pomocí Azure Automatio
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: b5b03efafbed3439e5f8fdf98e2cd5b2d63a3d45
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411043"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677038"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -118,12 +118,12 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
    |Operační systém  |Typ  |
    |---------|---------|
-   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>nástroje</br>Aktualizace<br>Ovladač        |
+   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>Nástroje</br>Aktualizace<br>Ovladač        |
    |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |
 
    Popis typů klasifikace naleznete v tématu [Aktualizace klasifikací](automation-view-update-assessments.md#update-classifications).
 
-* **Aktualizace zahrnout/vyloučit** - Otevře stránku Zahrnout nebo vyloučit. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách.
+* **Aktualizace zahrnout/vyloučit** - Otevře stránku Zahrnout nebo vyloučit. Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na samostatných kartách zadáním čísel ID článku KB. Při zadávání jednoho nebo více čísel ID je třeba odebrat nebo zrušit kontrolu všech klasifikací s nasazením aktualizace. Tím zajistíte, že žádné další aktualizace jsou zahrnuty v balíčku aktualizace při zadávání ID aktualizace.
 
 > [!NOTE]
 > Je důležité vědět, že vyloučení přepsat inkluze. Pokud například definujete pravidlo `*`vyloučení aplikace , správa aktualizací nenainstaluje žádné opravy ani balíčky, protože jsou všechny vyloučeny. Vyloučené záplaty se stále zobrazují jako chybějící ze stroje. Pro počítače s Linuxem, pokud zahrnete balíček, který má závislý balíček, který byl vyloučen, správa aktualizací nenainstaluje hlavní balíček.

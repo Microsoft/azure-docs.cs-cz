@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398097"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677012"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Šablona pro upozornění na metriku statické prahové hodnoty, která sleduje více kritérií
 
-Novější upozornění na metriky podporují upozorňování na vícerozměrné metriky a podporu více kritérií. Pomocí následující šablony můžete vytvořit pokročilejší pravidlo upozornění metriky na dimenzionální metriky a zadat více kritérií.
+Novější upozornění na metriky podporují upozorňování na vícerozměrné metriky a podporu definování více kritérií (až 5 kritérií na pravidlo výstrahy). Pomocí následující šablony můžete vytvořit pokročilejší pravidlo upozornění metriky na dimenzionální metriky a zadat více kritérií.
 
 Při použití dimenzí v pravidle výstrahy, které obsahuje více kritérií, si všimněte následujících omezení:
 - V rámci každého kritéria můžete vybrat pouze jednu hodnotu pro každou dimenzi.

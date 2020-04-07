@@ -3,12 +3,12 @@ title: 'Úvodní příručka: Vytvoření podrobného plánu pomocí PowerShellu
 description: V tomto rychlém startu použijete Azure Blueprints k vytváření, definování a nasazování artefaktů pomocí Prostředí PowerShell.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53fcf53bdcc3b5fcd1c6ec07a7d8ab45b39955b6
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436642"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676593"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Úvodní příručka: Definování a přiřazení azure blueprintu pomocí PowerShellu
 
@@ -377,7 +377,7 @@ Jakmile se podrobný plán publikuje pomocí PowerShellu, je přiřaditelný k p
      **Uživatelem přiřazená spravovaná identita** může být v libovolném předplatném a skupině prostředků, ke které má uživatel, který přiřazuje podrobný plán, oprávnění.
 
      > [!IMPORTANT]
-     > Podrobné plány nespravuje spravovanou identitu přiřazenou uživatelem. Uživatelé jsou zodpovědní za přiřazení dostatečných rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
+     > Azure Blueprints nespravuje uživatelem přiřazenou spravovanou identitu. Uživatelé jsou zodpovědní za přiřazení dostatečných rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

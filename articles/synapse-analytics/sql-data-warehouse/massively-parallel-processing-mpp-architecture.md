@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631947"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744210"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure Synapse Analytics (dříve SQL DW)
 
@@ -66,7 +66,7 @@ Synapse SQL využívá Azure Storage k zajištění bezpečnosti vašich uživat
 
 Výpočetní uzly poskytují výpočetní výkon. Distribuce mapovat výpočetní uzly pro zpracování. Při platbě za další výpočetní prostředky se distribuce přemísťují na dostupné výpočetní uzly. Počet výpočetních uzlů se pohybuje od 1 do 60 a je určen úrovní služby pro Synapse SQL.
 
-Každý výpočetní uzel má ID uzlu, který je viditelný v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že v systémových zobrazeních, jejichž názvy začínají sys.pdw_nodes, se zobrazí sloupec node_id. Seznam těchto systémových zobrazení naleznete v tématu [Zobrazení systému MPP](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Každý výpočetní uzel má ID uzlu, který je viditelný v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že v systémových zobrazeních, jejichž názvy začínají sys.pdw_nodes, se zobrazí sloupec node_id. Seznam těchto systémových zobrazení naleznete v tématu [Zobrazení systému MPP](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="data-movement-service"></a>Data Movement Service
 

@@ -4,12 +4,12 @@ description: Přečtěte si, jak nasadit propojenou šablonu.
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a09315b0947f41e7602e630460cb3e674a7bf8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80082241"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672924"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Kurz: Nasazení propojené šablony
 
@@ -90,6 +90,9 @@ Write-Host "Press [ENTER] to continue ..."
 Chcete-li nasadit soukromou šablonu v účtu úložiště, vygenerujte token SAS a zahrňte jej do identifikátoru URI pro šablonu. Nastavte dobu vypršení platnosti, aby byl dostatek času na dokončení nasazení. Objekt blob obsahující šablonu je přístupný pouze vlastníkovi účtu. Však při vytvoření tokenu SAS pro objekt blob, objekt blob je přístupný všem uživatelům s tímto URI. Pokud jiný uživatel zachytí identifikátor URI, bude mít k šabloně přístup. Token SAS je dobrý způsob, jak omezit přístup k šablonám, ale neměli byste zahrnout citlivá data, jako jsou hesla přímo do šablony.
 
 Pokud jste skupinu prostředků nevytvořili, přečtěte si informace [o vytvoření skupiny prostředků](./deployment-tutorial-local-template.md#create-resource-group).
+
+> [!NOTE]
+> V níže uvedeném kódu rozhraní příkazového řádku Azure by parametr date -d byl neplatným argumentem v systému macOS. Takže uživatelé macOS, chcete-li přidat 2 hodiny k aktuálnímu času v terminálu na macOS, měli byste použít -v + 2H.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

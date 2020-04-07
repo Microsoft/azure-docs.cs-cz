@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků Azure umožňuje prostředí pro správu mezi tenanty.
-ms.date: 03/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218390"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754133"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -21,7 +21,7 @@ Jako poskytovatel služeb můžete pomocí [azure delegované správy prostředk
 
 Tenant Azure Active Directory (Azure AD) je reprezentace organizace. Je to vyhrazená instance Azure AD, kterou organizace obdrží při vytváření vztahu s Microsoftem registrací do Azure, Microsoft 365 nebo jiných služeb. Každý klient Azure AD je odlišný a oddělený od ostatních klientů Azure AD a má své vlastní ID klienta (identifikátor GUID). Další informace najdete v tématu [Co je Služba Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
-Obvykle, aby bylo možné spravovat prostředky Azure pro zákazníka, poskytovatelé služeb by se museli přihlásit k portálu Azure pomocí účtu přidruženého k tenantovi zákazníka, což vyžaduje, aby správce v tenantovi zákazníka vytvořil a spravoval uživatelské účty. pro poskytovatele služeb.
+Obvykle za účelem správy prostředků Azure pro zákazníka by se poskytovatelé služeb museli přihlásit k portálu Azure pomocí účtu přidruženého k tenantovi zákazníka, který vyžaduje, aby správce v tenantovi zákazníka vytvořil a spravoval uživatelské účty pro poskytovatele služeb.
 
 Díky správě delegovaných prostředků Azure určuje proces registrace uživatele v rámci tenanta poskytovatele služeb, kteří budou mít přístup k předplatným, skupinám prostředků a prostředkům v tenantovi zákazníka a spravovat je. Tito uživatelé se pak můžou přihlásit k portálu Azure pomocí vlastních přihlašovacích údajů. V rámci portálu Azure můžou spravovat prostředky patřící všem zákazníkům, ke kterým mají přístup. To lze provést na stránce [Moji zákazníci](../how-to/view-manage-customers.md) na webu Azure Portal nebo přímo v rámci předplatného tohoto zákazníka, a to buď na portálu Azure, nebo prostřednictvím api.
 
@@ -141,6 +141,7 @@ U všech scénářů mějte na paměti následující aktuální omezení:
 - Přiřazení rolí musí používat [integrované role](../../role-based-access-control/built-in-roles.md)řízení přístupu na základě rolí (RBAC). Všechny předdefinované role jsou aktuálně podporované se správou delegovaných prostředků Azure s výjimkou vlastníka nebo všech předdefinovaných rolí s [oprávněním DataActions.](../../role-based-access-control/role-definitions.md#dataactions) Role Správce přístupu uživatelů je podporována pouze pro omezené použití při [přiřazování rolí spravovaným identitám](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Vlastní role a [klasické role správce předplatného](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
 - Zatímco můžete napalubě předplatná, které používají Azure Databricks, uživatelé ve správě tenanta nelze spustit Azure Databricks pracovní prostory na delegované předplatné v tuto chvíli.
 - Zatímco můžete na palubě předplatných a skupin prostředků pro azure delegované správy prostředků, které mají uzamčení prostředků, tyto zámky nezabrání akce provádí uživatelé ve správě tenanta. [Odepřít přiřazení,](../../role-based-access-control/deny-assignments.md) které chrání prostředky spravované systémem, jako jsou ty vytvořené spravovanými aplikacemi Azure nebo Azure Blueprints (systémem přiřazená přiřazení zamítnutí), zabránit uživatelům ve správě klienta z působení na tyto prostředky; v tuto chvíli však uživatelé v tenantovi zákazníka nemohou vytvořit vlastní přiřazení odepřít (uživatelem přiřazené odepřít přiřazení).
+- Uživatelé ve správcovském tenantovi nebudou mít přístup k zobrazení fakturačních údajů pro předplatné delegovaného zákazníka, a to ani v případě, že mají předdefinovanou roli, která by obvykle umožňovala přístup. Důvodem je, že přístup k fakturační masce vyžaduje další kroky, které jsou aktuálně podporovány pouze pro uživatele v rámci stejného klienta.
 
 ## <a name="next-steps"></a>Další kroky
 

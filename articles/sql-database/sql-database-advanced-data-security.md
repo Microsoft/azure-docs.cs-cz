@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed0bcb79dedf057c5943cea9f4b4399b2f630cb
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269130"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677464"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Pokročilé zabezpečení dat pro Azure SQL Database
 
@@ -26,8 +26,8 @@ Pokročilé zabezpečení dat je jednotný balíček pro pokročilé možnosti z
 
 Rozšířené zabezpečení dat (ADS) poskytuje sadu pokročilých funkcí zabezpečení SQL, včetně zjišťování dat & klasifikace, posouzení zranitelnosti a rozšířené ochrany před hrozbami.
 
-- [zjišťování dat & klasifikace](sql-database-data-discovery-and-classification.md) poskytuje funkce integrované do Azure SQL Database pro zjišťování, klasifikaci, označování & ochranu citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
-- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovatelná služba, která dokáže zjistit, sledovat a pomoci vám napravit potenciální chyby zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
+- [Zjišťování dat & klasifikace](sql-database-data-discovery-and-classification.md) poskytuje funkce integrované do Azure SQL Database pro zjišťování, klasifikaci, označování & vykazování citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
+- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovatelná služba, která může zjišťovat, sledovat a pomáhat opravovat potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
 - [Advanced Threat Protection](sql-database-threat-detection-overview.md) zjišťuje nezvyklé aktivity, které mohou ukazovat na neobvyklé a potenciálně škodlivé pokusy o přístup k vaší databázi nebo jejímu zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Upozornění služby Advanced Threat Protection obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
 
 Povolte SQL ADS jednou, abyste povolili všechny tyto zahrnuté funkce. Jedním kliknutím můžete povolit ADS pro všechny databáze na serveru SQL Database nebo spravované instanci. Povolení nebo správa nastavení ADS vyžaduje, aby se role [správce zabezpečení SQL,](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) role správce databáze SQL nebo role správce serveru SQL. 
@@ -62,7 +62,7 @@ Chcete-li zobrazit a spravovat nastavení SLUŽBY ADS, přejděte do části **R
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Správa nastavení ADS pro databázi SQL
 
-Chcete-li přepsat nastavení ADS pro určitou databázi, zaškrtněte políčko **Povolit rozšířené zabezpečení dat na úrovni databáze.** Tuto možnost použijte pouze v případě, že máte zvláštní požadavek na příjem samostatných výstrah rozšířené ochrany před hrozbami nebo výsledků hodnocení zranitelnosti pro jednotlivé databáze, namísto výstrah a výsledků obdržených pro všechny databáze na databázového serveru nebo spravované instance.
+Chcete-li přepsat nastavení ADS pro určitou databázi, zaškrtněte políčko **Povolit rozšířené zabezpečení dat na úrovni databáze.** Tuto možnost použijte pouze v případě, že máte zvláštní požadavek na příjem samostatných výstrah rozšířené ochrany před hrozbami nebo výsledků hodnocení ohrožení zabezpečení pro jednotlivé databáze, namísto výstrah a výsledků přijatých pro všechny databáze na databázovém serveru nebo spravované instanci.
 
 Po zaškrtnutí políčka můžete nakonfigurovat příslušná nastavení pro tuto databázi.
  
@@ -75,6 +75,6 @@ Z podokna databáze ADS lze také dosáhnout upřesňujícím nastavení zabezpe
 ## <a name="next-steps"></a>Další kroky 
 
 - Další informace o [klasifikaci & zjišťování dat](sql-database-data-discovery-and-classification.md) 
-- Další informace o [posouzení zranitelnosti](sql-vulnerability-assessment.md) 
+- Další informace o [hodnocení zranitelnosti](sql-vulnerability-assessment.md) 
 - Další informace o [rozšířené ochraně před hrozbami](sql-database-threat-detection.md)
-- Další informace o [Centru zabezpečení Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

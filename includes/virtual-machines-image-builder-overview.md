@@ -6,10 +6,10 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
 ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80419077"
 ---
 Image standardizovaných virtuálních strojů umožňují organizacím migrovat do cloudu a zajistit konzistenci v nasazeních. Obrázky obvykle obsahují předdefinované nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření bitových kopií vyžaduje čas, infrastrukturu a nastavení, ale s Azure VM Image Builder, stačí poskytnout jednoduchou konfiguraci popisující vaši bitovou kopii, odeslat do služby a image je sestavena a distribuována.

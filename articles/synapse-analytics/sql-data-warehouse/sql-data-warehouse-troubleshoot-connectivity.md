@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633008"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742576"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 
@@ -79,14 +79,14 @@ Zkontrolujte, zda používáte nejnovější nástroje pro připojení k fondu S
 
 Zkontrolujte, zda používáte nejnovější verze ovladačů.Použití starší verze ovladačů může mít za následek neočekávané chování, protože starší ovladače nemusí podporovat nové funkce.
 
-- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
-- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
-- [PHP](/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="check-your-connection-string"></a>Zkontrolujte připojovací řetězec
 
-Zkontrolujte, jestli jsou správně nastavené připojovací řetězce.  Níže jsou uvedeny některé vzorky.  Další informace o [připojovacích řetězcích najdete tady](/sql-data-warehouse/sql-data-warehouse-connection-strings.md).
+Zkontrolujte, jestli jsou správně nastavené připojovací řetězce.  Níže jsou uvedeny některé vzorky.  Další informace o [připojovacích řetězcích najdete tady](sql-data-warehouse-connection-strings.md).
 
 Připojovací řetězec pro ADO.NET
 
@@ -122,4 +122,4 @@ Chyby 40914 a 40615 naleznete v [popisu chyby a řešení zde](../../sql-databas
 
 ## <a name="still-having-connectivity-issues"></a>Stále máte problémy s připojením?
 
-Vytvořte [lístek podpory,](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) aby vás technický tým mohl podpořit.
+Vytvořte [lístek podpory,](sql-data-warehouse-get-started-create-support-ticket.md) aby vás technický tým mohl podpořit.

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit trezory služby Recover
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 38f23ee458845b92c04af47307a2411b26c8ac81
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 439f102e8f13bff63ab388be8f10df07ab2dc7d2
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529387"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672851"
 ---
 # <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -88,31 +88,7 @@ Pro tento proces existují cenové důsledky, jak je na úrovni úložiště.
 >Než začnete:
 >
 >- Zkontrolujte [matici podpory](backup-support-matrix.md#cross-region-restore) pro seznam podporovaných spravovaných typů a oblastí.
->- Funkce Obnovení mezi oblastmi (CRR) je v současné době k dispozici pouze v následujících oblastech: 
->    - USA – středozápad
->    - USA – západ
->    - USA – západ 2
->    - USA – středojih
->    - USA – východ
->    - USA – východ 2
->    - USA – středosever
->    - Střední Kanada
->    - Kanada – východ
->    - Austrálie – východ
->    - Austrálie – jihovýchod
->    - Indie – střed
->    - Indie – jih
->    - Indie – západ
->    - Japonsko – východ
->    - Japonsko – západ
->    - Jihovýchodní Asie
->    - Spojené království – jih
->    - Spojené království – západ
->    - Západní Evropa
->    - Severní Evropa
->    - Francie – střed
->    - Jižní Korea – střed
->    - Jižní Korea – jih
+>- Funkce Obnovení mezi oblastmi (CRR) je teď zobrazená náhledve všech veřejných oblastech Azure.
 >- CRR je funkce opt-in na úrovni úschovny pro všechny trezory GRS (ve výchozím nastavení vypnutá).
 >- K přihlášení k předplatnému pro tuto funkci použijte následující příkaz:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

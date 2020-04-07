@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097103"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745089"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoopem v HDInsight
 
@@ -23,14 +23,13 @@ Přečtěte si, jak spouštět dotazy Hive pomocí zobrazení Apache Ambari Hive
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster Hadoop na HDInsight. Viz [Začínáme s HDInsight na Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
-* Webový prohlížeč
+Cluster Hadoop na HDInsight. Viz [Začínáme s HDInsight na Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
-1. Na [portálu Azure](https://portal.azure.com/)vyberte svůj cluster.  Pokyny naleznete [v tématu Seznam a zobrazení clusterů.](../hdinsight-administer-use-portal-linux.md#showClusters) Cluster je otevřen v novém portálu blade.
+1. Na [portálu Azure](https://portal.azure.com/)vyberte svůj cluster.  Pokyny naleznete [v tématu Seznam a zobrazení clusterů.](../hdinsight-administer-use-portal-linux.md#showClusters) Cluster je otevřen v novém zobrazení portálu.
 
-1. V **řídicích panelech clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte `admin`název účtu a heslo pro přihlášení clusteru (výchozí), které jste zadali při vytváření clusteru. Případně přejděte `https://CLUSTERNAME.azurehdinsight.net/#/main/views` v prohlížeči, kde `CLUSTERNAME` je název clusteru.
+1. V **řídicích panelech clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte `admin`název účtu a heslo pro přihlášení clusteru (výchozí), které jste zadali při vytváření clusteru. Můžete také přejít na `https://CLUSTERNAME.azurehdinsight.net/#/main/views` `CLUSTERNAME` v prohlížeči, kde je název clusteru.
 
 1. V seznamu zobrazení vyberte __zobrazit zobrazení Hive__.
 
@@ -59,18 +58,15 @@ Přečtěte si, jak spouštět dotazy Hive pomocí zobrazení Apache Ambari Hive
         GROUP BY t4;
     ```
 
-    Tyto příkazy provádět následující akce:
+    Tyto příkazy provést následující akce:
 
-   * `DROP TABLE`: Odstraní tabulku a datový soubor v případě, že tabulka již existuje.
-
-   * `CREATE EXTERNAL TABLE`: Vytvoří novou "externí" tabulku v podregistru.
-     Externí tabulky ukládají pouze definici tabulky v Hive. Data zůstanou v původním umístění.
-
-   * `ROW FORMAT`: Zobrazuje formátdat. V tomto případě jsou pole v každém protokolu oddělena mezerou.
-
-   * `STORED AS TEXTFILE LOCATION`: Zobrazuje, kde jsou data uložena a která jsou uložena jako text.
-
-   * `SELECT`: Vybere počet všech řádků, kde sloupec t4 obsahuje hodnotu [ERROR].
+    |Příkaz | Popis |
+    |---|---|
+    |DROP TABULKA|Odstraní tabulku a datový soubor v případě, že tabulka již existuje.|
+    |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří novou "externí" tabulku v Podregistru. Externí tabulky ukládají pouze definici tabulky v Hive. Data zůstanou v původním umístění.|
+    |FORMÁT ŘÁDKU|Ukazuje, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělena mezerou.|
+    |ULOŽENÉ JAKO UMÍSTĚNÍ TEXTOVÉHO SOUBORU|Zobrazuje, kde jsou data uložena a že jsou uložena jako text.|
+    |SELECT|Vybere počet všech řádků, kde sloupec t4 obsahuje hodnotu [ERROR].|
 
    > [!IMPORTANT]  
    > Ponechejte výběr __databáze__ __ve výchozím nastavení__. Příklady v tomto dokumentu používají výchozí databázi, která je součástí hdinsightu.
@@ -116,7 +112,7 @@ Kartu __Tabulky__ můžete použít k práci s tabulkami v databázi Hive.
 
 Na kartě **Dotaz** můžete volitelně ukládat dotazy. Po uložení dotazu jej můžete znovu použít na kartě __Uložené dotazy.__
 
-![Karta Uložené dotazy zobrazení Apache Hive](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Karta Uložené dotazy apache hive](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy najdete pod cestou `/user/<username>/hive/scripts`. Ty jsou uloženy `.hql` jako soubory ve formátu prostého textu.
@@ -131,7 +127,7 @@ Deklarujte a uložte sadu udf pomocí karty **UDF** v horní části zobrazení 
 
 ![Zobrazení karty UDF s zobrazením Apache Hive](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Po přidání udf do zobrazení Hive se v dolní části **Editoru dotazů**zobrazí tlačítko **Vložit udfs** . Výběrem této položky se zobrazí rozevírací seznam ufdefinovaných v zobrazení Podhled. Výběrem příkazu UDF přidáte do dotazu příkazy HiveQL, aby bylo možné jej povolit.
+V dolní části **Editoru dotazů**se zobrazí tlačítko **Vložit udfs** . Tato položka zobrazuje rozevírací seznam uofs definovaných v zobrazení Podhled. Výběrem příkazu UDF přidáte do dotazu příkazy HiveQL, aby bylo možné jej povolit.
 
 Pokud jste například definovali zdroj UDF s následujícími vlastnostmi:
 
@@ -155,13 +151,13 @@ Potom můžete použít UDF v dotazu. Například, `SELECT myawesomeudf(name) FR
 Další informace o používání udimfů s hive na HDInsight, naleznete v následujících článcích:
 
 * [Používání Pythonu s Apache Hive a Apache Pig v HDInsightu](python-udf-hdinsight.md)
-* [Jak přidat vlastní Apache Hive UDF do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Použití Java UDF s Apache Hive v HDInsight](./apache-hadoop-hive-java-udf.md)
 
 ## <a name="hive-settings"></a>Nastavení úlu
 
 Můžete změnit různá nastavení Hive, například změnu modulu provádění pro Hive z Tez (výchozí) na MapReduce.
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Další kroky
+## <a name="next-steps"></a>Další kroky
 
 Obecné informace o Hive na HDInsight:
 

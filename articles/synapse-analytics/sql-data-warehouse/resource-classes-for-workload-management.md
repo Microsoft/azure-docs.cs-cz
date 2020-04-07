@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 86cc081ef47eb2ac2e8e0a49bc79e8973f34baf1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633696"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743267"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Správa úloh s třídami prostředků v Azure Synapse Analytics
 
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Třídy prostředků jsou implementovány přiřazením uživatelů k databázovým rolím. Když uživatel spustí dotaz, dotaz se spustí s třídou prostředků uživatele. Například pokud je uživatel členem role databáze staticrc10, jejich dotazy spustit s malým množstvím paměti. Pokud je uživatel databáze členem databázových rolí xlargerc nebo staticrc80, jejich dotazy jsou spuštěny s velkým množstvím paměti.
 
-Chcete-li zvýšit třídu prostředků uživatele, použijte [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) k přidání uživatele do databázové role velké třídy prostředků.  Níže uvedený kód přidá uživatele do role větší databáze.  Každý požadavek získá 22 % systémové paměti.
+Chcete-li zvýšit třídu prostředků uživatele, použijte [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k přidání uživatele do databázové role velké třídy prostředků.  Níže uvedený kód přidá uživatele do role větší databáze.  Každý požadavek získá 22 % systémové paměti.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Chcete-li snížit třídu prostředků, použijte [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  Pokud 'loaduser' není členem nebo jiné třídy prostředků, přejdou do výchozí třídy prostředků smallrc s 3 % paměti grant.  
+Chcete-li snížit třídu prostředků, použijte [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Pokud 'loaduser' není členem nebo jiné třídy prostředků, přejdou do výchozí třídy prostředků smallrc s 3 % paměti grant.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

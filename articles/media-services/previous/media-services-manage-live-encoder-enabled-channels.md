@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162527"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677025"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -167,7 +167,7 @@ Kanál poskytuje vstupní koncový bod (ingestovat URL), který zadáte v živé
 
 Po vytvoření kanálu můžete získat ingestující adresy URL. Chcete-li získat tyto adresy URL, kanál nemusí být ve **stavu Spuštěno.** Když jste připraveni začít odesílání dat do kanálu, musí být ve **stavu Spuštěno.** Jakmile kanál začne příjem dat, můžete zobrazit náhled datového proudu prostřednictvím náhledu URL.
 
-Máte možnost ingestovat fragmentovaný přenos MP4 (Plynulé streamování) přes připojení SSL. Chcete-li ingestovat přes SSL, nezapomeňte aktualizovat ingestující adresu URL na HTTPS. V současné době AMS nepodporuje SSL s vlastními doménami.  
+Máte možnost ingestování fragmentovaného mp4 (plynulé streamování) živého datového proudu přes připojení TLS. Chcete-li ingestovat přes TLS, nezapomeňte aktualizovat ingestující adresu URL na HTTPS. V současné době AMS nepodporuje TLS s vlastními doménami.  
 
 ### <a name="allowed-ip-addresses"></a>Povolené IP adresy
 Můžete definovat IP adresy, které mohou publikovat video na tomto kanálu. Povolené ADRESY IP lze zadat buď jako jednu IP adresu (například "10.0.0.1"), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (například "10.0.0.1/22"), nebo jako rozsah IP adres pomocí IP adresy a tečkované masky podsítě (například "10.0.0.1(255.255.252.0)').
@@ -205,7 +205,7 @@ Můžete určit zdroj signálů značek reklam. Výchozí hodnota je **Api**, co
 Volitelný příznak, který říká živému kodéru, aby ignoroval všechna data titulků CEA 708 vložená do příchozího videa. Pokud je příznak nastaven na false (výchozí), kodér detekuje a znovu vloží data CEA 708 do výstupních datových proudů videa.
 
 #### <a name="index"></a>Index
-Doporučuje se odeslat v jednom programu přenosu datového proudu (SPTS). Pokud vstupní datový proud obsahuje více programů, živý kodér v kanálu analyzuje tabulku map programů (PMT) ve vstupu, identifikuje vstupy, které mají název typu datového proudu MPEG-2 AAC ADTS nebo AC-3 System-A nebo AC-3 System-B nebo MPEG-2 Private PES nebo MPEG-1 Audio nebo MPEG-2 Audio a uspořádá je v pořadí uvedeném v PMT. Index založený na nule se pak používá k vyzvednutí n-té položky v tomto uspořádání.
+Doporučuje se odeslat v jednom programu přenosu datového proudu (SPTS). Pokud vstupní datový proud obsahuje více programů, živý kodér v kanálu analyzuje tabulku map programů (PMT) ve vstupu, identifikuje vstupy, které mají název typu datového proudu MPEG-2 AAC ADTS nebo AC-3 System-A nebo AC-3 System-B nebo MPEG-2 Private PES nebo MPEG-1 Audio nebo MPEG-2 Audio, a uspořádá je v pořadí určeném v PMT. Index založený na nule se pak používá k vyzvednutí n-té položky v tomto uspořádání.
 
 #### <a name="language"></a>Jazyk
 Identifikátor jazyka audio stream, v souladu s ISO 639-2, například ENG. Pokud není k dispozici, výchozí hodnota je UND (undefined).

@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586338"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742632"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití identity k vytvoření náhradních klíčů ve fondu SYNAPse SQL
 
@@ -165,7 +165,7 @@ Další informace o načítání dat naleznete v [tématu Návrh extrahování, 
 
 ## <a name="system-views"></a>Systémová zobrazení
 
-Zobrazení katalogu [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) můžete použít k identifikaci sloupce, který má vlastnost IDENTITY.
+Zobrazení katalogu [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) můžete použít k identifikaci sloupce, který má vlastnost IDENTITY.
 
 Chcete-li lépe porozumět schématu databáze, tento příklad ukazuje, jak integrovat sys.identity_column' s jinými zobrazeníkatalogu systému:
 
@@ -197,12 +197,12 @@ Vlastnost IDENTITY nelze použít:
 
 Následující související funkce nejsou podporovány ve fondu SYNAPSE SQL:
 
-- [IDENTITA()](/sql/t-sql/functions/identity-function-transact-sql)
-- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
-- [Scope_identity](/sql/t-sql/functions/scope-identity-transact-sql)
-- [Ident_current](/sql/t-sql/functions/ident-current-transact-sql)
-- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
-- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
+- [IDENTITA()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Scope_identity](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Ident_current](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="common-tasks"></a>Běžné úkoly
 
@@ -241,6 +241,6 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled tabulky](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
-- [VYTVOŘIT TABULKU (Transact-SQL) IDENTITY (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
-- [KONTROLNÍ OSAVKA DBCC](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
+- [Přehled tabulky](sql-data-warehouse-tables-overview.md)
+- [VYTVOŘIT TABULKU (Transact-SQL) IDENTITY (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [KONTROLNÍ OSAVKA DBCC](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

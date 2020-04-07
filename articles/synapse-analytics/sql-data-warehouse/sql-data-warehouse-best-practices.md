@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0a2a49546a31f6d767b5e89348dc6b703278d877
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633630"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745352"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Doporučené postupy pro fond Synapse SQL v Azure Synapse Analytics (dříve SQL DW)
 
@@ -36,7 +36,7 @@ Pokud zjistíte, že aktualizace všech statistik trvá příliš dlouho, může
 > [!TIP]
 > Největší užitek získáte tím, že budete mít aktualizované statistiky o sloupcích zapojených do spojení, sloupcích použitých v klauzuli WHERE a sloupcích nalezených v souborech GROUP BY.
 
-Viz také [Správa statistik tabulky](sql-data-warehouse-tables-statistics.md), VYTVOŘENÍ [STATISTIKY](https://msdn.microsoft.com/library/ms188038.aspx)a [AKTUALIZACE STATISTIKY](https://msdn.microsoft.com/library/ms187348.aspx).
+Viz také [Správa statistik tabulky](sql-data-warehouse-tables-statistics.md), VYTVOŘENÍ [STATISTIKY](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [AKTUALIZACE STATISTIKY](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Použijte zobrazení dynamických zpráv k monitorování a optimalizaci dotazů
 
@@ -44,7 +44,7 @@ Fond SQL má několik dmvs, které lze použít ke sledování provádění dota
 
 S rychlým vyhledáváním dotazů v těchto zobrazeních dynamických zpráv může pomoci použití možnosti LABEL v dotazech.
 
-Viz také [Sledování úlohy pomocí dmvs](sql-data-warehouse-manage-monitor.md), [LABEL](sql-data-warehouse-develop-label.md), [OPTION](https://msdn.microsoft.com/library/ms190322.aspx), [sys.dm_exec_sessions]( https://msdn.microsoft.com/library/ms176013.aspx), [sys.dm_pdw_exec_requests](https://msdn.microsoft.com/library/mt203887.aspx), [sys.dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx), [sys.dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx), [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx), [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)a [sys.dm_pdw_waits](https://msdn.microsoft.com/library/mt203893.aspx).
+Viz také [Sledování úlohy pomocí dmvs](sql-data-warehouse-manage-monitor.md), [LABEL](sql-data-warehouse-develop-label.md), [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="tune-query-performance-with-new-product-enhancements"></a>Vyladění výkonu dotazů pomocí nových vylepšení produktů
 
@@ -58,7 +58,7 @@ Jednorázové zatížení malé tabulky s příkazem INSERT nebo dokonce periodi
 
 Pokud však v průběhu dne potřebujete načíst tisíce nebo miliony řádků, můžete zjistit, že vám příkazy INSERT s jedním prvkem jednoduše nestačí.  Místo toho vyvíjejte své procesy tak, aby zapisovaly do souboru, který bude pravidelně kontrolovat a načítat další proces.
 
-Viz také [INSERT](https://msdn.microsoft.com/library/ms174335.aspx).
+Viz také [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Použijte PolyBase k rychlému načítání a exportu dat
 
@@ -74,7 +74,7 @@ Azure Data Factory také podporuje zatížení PolyBase a může dosáhnout podo
 > [!NOTE]
 > Chcete-li maximalizovat propustnost při použití textových souborů gzip, rozdělte soubory do 60 nebo více souborů, abyste maximalizovali paralelismus zatížení.  Pro rychlejší celkovou propustnost zvažte souběžné načítání dat.
 
-Viz také [Načtení dat](design-elt-data-loading.md), [Průvodce pro použití PolyBase](guidance-for-loading-data.md), [SQL pool načítání vzory a strategie](https://blogs.msdn.microsoft.com/sqlcat/20../../), [Načíst data s Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [Přesunout data s Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), (https://msdn.microsoft.com/library/dn935026.aspx), a vytvořit tabulku jako výběr [(CTAS)](sql-data-warehouse-develop-ctas.md).
+Viz také [Načtení dat](design-elt-data-loading.md), [Průvodce pro použití PolyBase](guidance-for-loading-data.md), sql pool načítání vzory a [strategie](https://blogs.msdn.microsoft.com/sqlcat/20../../), [Načíst data s Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [Přesunout data s Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), vytvořit externí formát [souboru](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [vytvořit tabulku jako výběr (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Načtěte a následně dotazujte externí tabulky
 
@@ -97,7 +97,7 @@ Například pokud máte tabulku objednávek, která se distribuuje podle sloupce
 
 Další podrobnosti o tom, jak může výběr distribučního sloupce zlepšit výkon a jak definovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLE, naleznete v následujících odkazech.
 
-Viz také [Přehled tabulky](sql-data-warehouse-tables-overview.md), [Distribuce tabulek](sql-data-warehouse-tables-distribute.md), [Výběr distribuce tabulek](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [VYTVOŘIT TABULKU](https://msdn.microsoft.com/library/mt203953.aspx), VYTVOŘIT TABULKU [JAKO VÝBĚR](https://msdn.microsoft.com/library/mt204041.aspx).
+Viz také [Přehled tabulky](sql-data-warehouse-tables-overview.md), [Distribuce tabulek](sql-data-warehouse-tables-distribute.md), [Výběr distribuce tabulek](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), VYTVOŘIT TABULKU [JAKO VÝBĚR](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="do-not-over-partition"></a>Nevytvářejte zbytečně moc oddílů
 
@@ -115,11 +115,11 @@ Příkazy INSERT, UPDATE a DELETE se spouštějí v rámci transakce, a když se
 
 Například pokud máte INSERT, který očekáváte, že trvat 1 hodinu, pokud je to možné, rozdělit INSERT do čtyř částí, které budou každá spuštěna za 15 minut.  Využijte speciální případy minimální protokolování, jako je CTAS, TRUNCATE, DROP TABLE nebo INSERT do prázdných tabulek, abyste snížili riziko vrácení zpět.  
 
-Dalším způsobem, jak eliminovat odvolávání transakcí, je použít ke správě dat operace pouze nad metadaty, jako třeba přepínání oddílů.  Například místo spuštění příkazu DELETE k odstranění všech řádků v tabulce, kde byla order_date v říjnu 2001, můžete rozdělit data měsíčně a potom přepnutí oddílu s daty pro prázdný oddíl z jiné tabulky (viz příklady [ALTER TABLE).](https://msdn.microsoft.com/library/ms190273.aspx)  
+Dalším způsobem, jak eliminovat odvolávání transakcí, je použít ke správě dat operace pouze nad metadaty, jako třeba přepínání oddílů.  Například místo spuštění příkazu DELETE k odstranění všech řádků v tabulce, kde byla order_date v říjnu 2001, můžete rozdělit data měsíčně a potom přepnutí oddílu s daty pro prázdný oddíl z jiné tabulky (viz příklady [ALTER TABLE).](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
 
 Pro tabulky bez oddílů zvažte použití CTAS k zápisu dat, která chcete zachovat v tabulce, nikoli pomocí příkazu DELETE.  Pokud CTAS trvá stejné množství času, je mnohem bezpečnější operace spustit, protože má minimální protokolování transakcí a může být zrušena rychle v případě potřeby.
 
-Viz také [principy transakcí](sql-data-warehouse-develop-transactions.md), [optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md), [dělení tabulek](sql-data-warehouse-tables-partition.md), [zkrácená tabulka](https://msdn.microsoft.com/library/ms177570.aspx), ZMĚNA [TABULKY](https://msdn.microsoft.com/library/ms190273.aspx)a Vytvoření tabulky [jako výběru (CTAS).](sql-data-warehouse-develop-ctas.md)
+Viz také [principy transakcí](sql-data-warehouse-develop-transactions.md), [optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md), [dělení tabulek](sql-data-warehouse-tables-partition.md), [zkrácená tabulka](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), ZMĚNA [TABULKY](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a Vytvoření tabulky [jako výběru (CTAS).](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="reduce-query-result-sizes"></a>Zmenšení velikosti výsledků dotazu
 
@@ -131,7 +131,7 @@ Při definování DDL, pomocí nejmenší datový typ, který bude podporovat va
 
 Pokud má nejdelší hodnota v sloupci 25 znaků, nadefinujte typ sloupce jako VARCHAR(25).  Vyhněte se definování všech sloupců se znaky na výchozí délku.  Kromě toho sloupce definujte jako VARCHAR, pokud tento typ splňuje všechny požadavky, místo používání NVARCHAR.
 
-Viz také [Přehled tabulky](sql-data-warehouse-tables-overview.md), Datové [typy tabulek](sql-data-warehouse-tables-data-types.md), [VYTVOŘIT TABULKU](https://msdn.microsoft.com/library/mt203953.aspx).
+Viz také [Přehled tabulky](sql-data-warehouse-tables-overview.md), Datové [typy tabulek](sql-data-warehouse-tables-data-types.md), [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-temporary-heap-tables-for-transient-data"></a>Použijte dočasné tabulky hald pro přechodná data
 
@@ -141,7 +141,7 @@ Nahrání dat do dočasné tabulky bude dokonce mnohem rychlejší, než nahrán
 
 Tabulky hald se definují v klauzuli WITH příkazu CREATE TABLE.  Pokud používáte dočasnou tabulku, nezapomeňte nad ní také vytvořit statistiky.
 
-Viz také [Dočasné tabulky](sql-data-warehouse-tables-temporary.md), [VYTVOŘIT TABULKU](https://msdn.microsoft.com/library/mt203953.aspx), VYTVOŘIT TABULKU [JAKO SELECT](https://msdn.microsoft.com/library/mt204041.aspx).
+Viz také [Dočasné tabulky](sql-data-warehouse-tables-temporary.md), [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), VYTVOŘIT TABULKU [JAKO SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Optimalizujte clusterované tabulky columnstore
 
@@ -160,7 +160,7 @@ Pokud vaše tabulka v tomto příkladu neobsahuje 6 miliard řádků, buď sniž
 > [!TIP]
 > Při dotazování tabulky columnstore budou příkazy pracovat rychleji, pokud vyberete pouze sloupce, které potřebujete.  
 
-Viz také [Indexy tabulky](sql-data-warehouse-tables-index.md), [Průvodce indexy columnstore](https://msdn.microsoft.com/library/gg492088.aspx), [Obnovení indexů columnstore](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Viz také [Indexy tabulky](sql-data-warehouse-tables-index.md), [Průvodce indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [Obnovení indexů columnstore](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Použijte větší třídu prostředků k vylepšení výkonu dotazu
 
@@ -174,7 +174,7 @@ Viz také [třídy prostředků pro správu pracovního vytížení](resource-cl
 
 Pokud zjistíte, že dotazy uživatelů se zdají mít dlouhé zpoždění, může být, že vaši uživatelé jsou spuštěny ve větších tříd ách prostředků a spotřebovávají mnoho slotů souběžnosti způsobuje další dotazy do fronty.  Pokud chcete zjistit, jestli jsou požadavky uživatelů ve frontě, spusťte příkaz `SELECT * FROM sys.dm_pdw_waits` a zkontrolujte, jestli se vrátí nějaké řádky.
 
-Viz také [třídy prostředků pro správu pracovního vytížení](resource-classes-for-workload-management.md), [sys.dm_pdw_waits](https://msdn.microsoft.com/library/mt203893.aspx).
+Viz také [třídy prostředků pro správu pracovního vytížení](resource-classes-for-workload-management.md), [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="other-resources"></a>Další prostředky
 

@@ -3,14 +3,14 @@ title: Dotaz na protokoly správy aktualizací Azure
 description: Tento článek popisuje, jak se dotazovat protokoly pro správu aktualizací v pracovním prostoru Analýzy protokolů.
 services: automation
 ms.subservice: update-management
-ms.date: 03/31/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437846"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743869"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Záznamy aktualizací dotazů pro správu aktualizací v protokolech monitorování Azure
 
@@ -39,7 +39,7 @@ Je vytvořen záznam `RequiredUpdate` s typem, který představuje aktualizace v
 | TenantId | Jedinečný identifikátor představující instanci služby Azure Active Directory vaší organizacemi | 
 | TimeGenerated | Datum a čas vytvoření záznamu. | 
 | Typ | *Aktualizace* | 
-| AktualizovatKlasifikace | Označuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *nástroje*<br> *Aktualizace*. Pro Linux:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Další* |
+| AktualizovatKlasifikace | Označuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Další* |
 | Závažnost aktualizace | Hodnocení závažnosti chyby zabezpečení. Hodnoty jsou:<br> *Kritická*<br> *Důležité*<br> *Střední*<br> *Nízká* |
 | Název aktualizace | Název aktualizace.|
 
@@ -112,7 +112,7 @@ Je vytvořen záznam `UpdateRunProgress` s typem, který poskytuje stav nasazen�
 | CorrelationId | Jedinečný identifikátor úlohy sady Runbook spuštěné pro aktualizaci |
 | EndTime | Čas ukončení procesu synchronizace. | 
 | ChybaVýsledek | Kód chyby služby Windows Update vygenerovaný v případě, že se aktualizace nenainstaluje. | 
-| Stav instalace | Možné stavy instalace aktualizace v klientském počítači, *Probíhá*, Úspěšné , *Částečně se* *nezdařilo*. |
+| Stav instalace | Možné stavy instalace aktualizace v klientském počítači,<br> *NotStarted* - úloha ještě nebyla spuštěna.<br> *FailedToStart* - nelze spustit úlohu v počítači.<br> *Nezdařilo* se - úloha byla spuštěna, ale s výjimkou se nezdařila.<br> *Probíhající* úloha.<br> *MaintenanceWindowExceeded* - pokud provádění bylo zbývající, ale interval okna údržby dosaženo.<br> *Úspěšné* - úloha byla úspěšná.<br> *Instalace Se nezdařilo* - aktualizace se nepodařilo nainstalovat úspěšně.<br> *Notincluded*<br> *Vyloučeny* |
 | KBID | ID článku znalostní báze Knowledge Base pro aktualizaci systému Windows. | 
 | ManagementGroupName | Název skupiny pro správu nástroje Operations Manager nebo pracovního prostoru Log Analytics. |
 | OSType | Určuje typ operačního systému, *Windows* nebo *Linux*. | 

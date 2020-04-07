@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8ecd0909176560e6b51bcb8449cb681558d96f90
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80628638"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742662"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Statistiky tabulek v fondu SYNAPse SQL
 
@@ -70,9 +70,9 @@ Automatické vytváření statistik se provádí synchronně, takže může doj�
 Chcete-li se vyhnout měřitelné snížení výkonu, měli byste zajistit, že statistiky byly vytvořeny nejprve spuštěním zatížení srovnávacího testu před profilováním systému.
 
 > [!NOTE]
-> Vytváření statistik bude zaznamenáno v [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) v jiném uživatelském kontextu.
+> Vytváření statistik bude zaznamenáno v [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) v jiném uživatelském kontextu.
 
-Při vytváření automatických statistik budou mít podobu: _WA_Sys_<8místné id sloupce v Hex>_<8místné id tabulky v Hex>. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním příkazu [DBCC SHOW_STATISTICS:](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest)
+Při vytváření automatických statistik budou mít podobu: _WA_Sys_<8místné id sloupce v Hex>_<8místné id tabulky v Hex>. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním příkazu [DBCC SHOW_STATISTICS:](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -142,7 +142,7 @@ Naopak statistiky sloupce pohlaví v tabulce zákazníků nemusí být nikdy nut
 
 Pokud váš fond SQL obsahuje pouze jedno pohlaví a nový požadavek má za následek více pohlaví, je třeba aktualizovat statistiky na sloupce pohlaví.
 
-Další informace naleznete v obecných pokynech pro [statistiku](/sql/relational-databases/statistics/statistics).
+Další informace naleznete v obecných pokynech pro [statistiku](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="implementing-statistics-management"></a>Implementace správy statistik
 
@@ -158,7 +158,7 @@ Následující hlavní zásady jsou uvedeny pro aktualizaci statistik během pro
 - Zvažte aktualizaci sloupců statické distribuce méně často.
 - Nezapomeňte, že každý statistický objekt je aktualizován postupně. Jednoduchá implementace `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro široké tabulky se spoustou objektů statistiky.
 
-Další informace naleznete [v tématu Odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server).
+Další informace naleznete [v tématu Odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="examples-create-statistics"></a>Příklady: Vytvoření statistiky
 
@@ -227,7 +227,7 @@ Můžete také kombinovat možnosti dohromady. Následující příklad vytvoř�
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Úplný odkaz naleznete v tématu [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql).
+Úplný odkaz naleznete v tématu [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="create-multi-column-statistics"></a>Vytvořit vícesloupcové statistiky
 
@@ -420,7 +420,7 @@ Příkaz UPDATE STATISTICS se snadno používá. Jen nezapomeňte, že aktualizu
 
 Implementace postupu naleznete `UPDATE STATISTICS` v tématu [Dočasné tabulky](sql-data-warehouse-tables-temporary.md). Metoda implementace se mírně liší od `CREATE STATISTICS` předchozího postupu, ale výsledek je stejný.
 
-Úplnou syntaxi naleznete v tématu [Aktualizace statistiky](/sql/t-sql/statements/update-statistics-transact-sql).
+Úplnou syntaxi naleznete v tématu [Aktualizace statistiky](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="statistics-metadata"></a>Metadata statistiky
 
@@ -432,13 +432,13 @@ Tato zobrazení systému poskytují informace o statistikách:
 
 | Zobrazení katalogu | Popis |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden řádek pro každý sloupec. |
-| [Sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každý objekt v databázi. |
-| [sys.schémata](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každé schéma v databázi. |
-| [sys.statistiky](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden řádek pro každý objekt statistiky. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden řádek pro každý sloupec v objektu statistiky. Odkazy zpět na sys.columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden řádek pro každou tabulku (obsahuje externí tabulky). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden řádek pro každý datový typ. |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý sloupec. |
+| [Sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý objekt v databázi. |
+| [sys.schémata](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každé schéma v databázi. |
+| [sys.statistiky](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý objekt statistiky. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý sloupec v objektu statistiky. Odkazy zpět na sys.columns. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každou tabulku (obsahuje externí tabulky). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Jeden řádek pro každý datový typ. |
 
 ### <a name="system-functions-for-statistics"></a>Systémové funkce pro statistiku
 
@@ -446,8 +446,8 @@ Tyto systémové funkce jsou užitečné pro práci se statistikami:
 
 | Systémová funkce | Popis |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Datum poslední aktualizace objektu statistiky. |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Souhrnná úroveň a podrobné informace o rozdělení hodnot podle statistického objektu. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Datum poslední aktualizace objektu statistiky. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Souhrnná úroveň a podrobné informace o rozdělení hodnot podle statistického objektu. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Sloučení sloupců a funkcí statistiky do jednoho zobrazení
 

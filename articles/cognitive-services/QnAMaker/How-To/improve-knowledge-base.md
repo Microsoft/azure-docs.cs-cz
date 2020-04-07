@@ -2,13 +2,13 @@
 title: Zlepšete znalostní bázi - QnA Maker
 description: Zlepšete kvalitu své znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo zamítněte, přidejte bez odebrání nebo změny stávajících otázek.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/06/2020
+ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474886"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756750"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí aktivních otázek navržených učením ve znalostní bázi
 
@@ -17,7 +17,7 @@ ms.locfileid: "80474886"
 
 Funkce Active Learning po schválení návrhu změní znalostní bázi nebo vyhledávací službu a uloží a táčí. Pokud návrh schválíte, bude přidán jako alternativní otázka.
 
-## <a name="turn-on-active-learning"></a>Zapnutí aktivního učení
+## <a name="turn-on-active-learning"></a>Aktivace aktivního učení
 
 Chcete-li zobrazit navrhované otázky, musíte [zapnout aktivní učení](use-active-learning.md) pro zdroj QnA Maker.
 
@@ -33,7 +33,7 @@ Chcete-li zobrazit navrhované otázky, musíte [zapnout aktivní učení](use-a
 
 1. Každá dvojice QnA navrhuje nové alternativy otázek `✔` se zaškrtnutím , `x` přijmout otázku nebo odmítnout návrhy. Zaškrtnutím políčka přidejte otázku.
 
-    [![Vyberte nebo odmítněte alternativy doporučených otázek aktivního učení zaškrtnutím zelené značky zaškrtnutí nebo červené značky odstranění.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Vyberte nebo odmítněte alternativy doporučených otázek aktivního učení zaškrtnutím zelené značky zaškrtnutí nebo červené značky odstranění.](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     _Všechny návrhy_ můžete přidat nebo odstranit tak, že v kontextovém panelu nástrojů vyberete **Přidat vše** nebo **Odmítnout vše.**
 

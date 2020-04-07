@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 2c8617cffaa81da6423011a494b8dbc82c42d218
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 43ee14784b6049e9b5c1a78e733e72bbc45f915d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632457"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744035"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Důležitost pracovního vytížení Azure Synapse Analytics
 
@@ -38,7 +38,7 @@ Kromě scénáře základní důležitosti popsaného výše s daty o prodeji a 
 
 ### <a name="locking"></a>Uzamčení
 
-Přístup ke zámkům pro čtení a zápis aktivity je jednou z oblastí přirozené tvrzení. Aktivity, jako je [přepínání oddílů](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) vyžadují zvýšené zámky.  Bez důležitosti úlohy optimalizuje fond Synapse SQL v Azure Synapse propropustnost. Optimalizace pro propustnost znamená, že při spuštění a fronty požadavky mají stejné potřeby uzamčení a prostředky jsou k dispozici, požadavky ve frontě můžete obejít požadavky s vyšší potřeby uzamčení, které byly doručeny do fronty požadavků dříve. Jakmile je důležitost pracovního vytížení použita na požadavky s vyššími potřebami uzamčení. Požadavek s vyšší důležitostí bude spuštěn před požadavkem s nižší důležitostí.
+Přístup ke zámkům pro čtení a zápis aktivity je jednou z oblastí přirozené tvrzení. Aktivity, jako je [přepínání oddílů](sql-data-warehouse-tables-partition.md) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vyžadují zvýšené zámky.  Bez důležitosti úlohy optimalizuje fond Synapse SQL v Azure Synapse propropustnost. Optimalizace pro propustnost znamená, že při spuštění a fronty požadavky mají stejné potřeby uzamčení a prostředky jsou k dispozici, požadavky ve frontě můžete obejít požadavky s vyšší potřeby uzamčení, které byly doručeny do fronty požadavků dříve. Jakmile je důležitost pracovního vytížení použita na požadavky s vyššími potřebami uzamčení. Požadavek s vyšší důležitostí bude spuštěn před požadavkem s nižší důležitostí.
 
 Uvažujte následující příklad:
 
@@ -62,8 +62,8 @@ Vzhledem k tomu, že Q5 je mediumrc, vyžaduje dva sloty souběžnosti. Q5 musí
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytvoření třídění naleznete [v tématu CREATE WORKLOAD CLASSIFIER (Transact-SQL).](/sql/t-sql/statements/create-workload-classifier-transact-sql)  
+- Další informace o vytvoření třídění naleznete [v tématu CREATE WORKLOAD CLASSIFIER (Transact-SQL).](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
 - Další informace o klasifikaci pracovního vytížení naleznete v [tématu Klasifikace pracovního vytížení](sql-data-warehouse-workload-classification.md).  
 - Postup vytvoření třídění pracovního vytížení najdete v tématu Třídění úloh vytvoření rychlého [startu.](quickstart-create-a-workload-classifier-tsql.md)
 - Podívejte se na články s postupy [pro konfiguraci důležitosti pracovního vytížení](sql-data-warehouse-how-to-configure-workload-importance.md) a [jak spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Viz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) pro zobrazení dotazů a přiřazený význam.
+- Viz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro zobrazení dotazů a přiřazený význam.

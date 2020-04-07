@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dcefe6a6144c9a8f9c6ab7daf5b34b2d81a73c3f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586527"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742998"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (dříve SQL DW) Nejčastější dotazy
 
@@ -35,7 +35,7 @@ A. Synapse SQL fond odkazuje na podnikové datové sklady funkce, které jsou ob
 
 Otázka: Jak začít s Azure Synapse?
 
-A. Můžete začít s [bezplatným účtem Azure](https://azure.microsoft.com/free/sql-data-warehouse/) nebo [se obrátit na prodej, kde najdete další informace](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html). 
+A. Můžete začít s [bezplatným účtem Azure](https://azure.microsoft.com/free/sql-data-warehouse/) nebo [se obrátit na prodej, kde najdete další informace](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html).
 
 Otázka: Co Azure Synapse nabízí pro zabezpečení dat?
 
@@ -43,7 +43,8 @@ A. Azure Synapse nabízí několik řešení pro ochranu dat, jako je TDE a audi
 
 Otázka: Kde zjistím, jaké právní nebo obchodní standardy Azure Synapse splňuje?
 
-A. Navštivte stránku [Microsoft Compliance,](https://www.microsoft.com/trustcenter/compliance/complianceofferings) kde najdete různé nabídky dodržování předpisů podle produktů, jako jsou SOC a ISO. Nejprve zvolte podle názvu dodržování předpisů. Pak rozbalte Azure v části cloudových služeb Microsoft in-scope na pravé straně stránky a zjistěte, jaké služby jsou kompatibilní s Azure Synapse.
+A. Navštivte stránku [Microsoft Compliance,](https://www.microsoft.com/trustcenter/compliance/complianceofferings) kde najdete různé nabídky dodržování předpisů podle produktů, jako jsou SOC a ISO.
+Nejprve zvolte podle názvu dodržování předpisů. Pak rozbalte Azure v části cloudových služeb Microsoft in-scope na pravé straně stránky a zjistěte, jaké služby jsou kompatibilní s Azure Synapse.
 
 Otázka: Můžu připojit Power BI?
 
@@ -51,7 +52,7 @@ A. Ano! I když Power BI podporuje přímý dotaz s Azure Synapse, není určen 
 
 Otázka: Co jsou limity kapacity fondu SQL Synapse?
 
-A. Podívejte se na naši aktuální [stránku omezení kapacity.](sql-data-warehouse-service-capacity-limits.md) 
+A. Podívejte se na naši aktuální [stránku omezení kapacity.](sql-data-warehouse-service-capacity-limits.md)
 
 Otázka: Proč moje scale/pause/resume trvá tak dlouho?
 
@@ -65,13 +66,13 @@ A. Pokud máte žádost o funkci, odešlete ji na naši stránku [UserVoice](htt
 
 Otázka: Jak mohu udělat x?
 
-A. Pokud potřebujete pomoc s vývojem s Azure Synapse, můžete klást otázky na naší stránce [Přetečení zásobníku.](https://stackoverflow.com/questions/tagged/azure-sqldw) 
+A. Pokud potřebujete pomoc s vývojem s Azure Synapse, můžete klást otázky na naší stránce [Přetečení zásobníku.](https://stackoverflow.com/questions/tagged/azure-sqldw)
 
 Otázka: Jak odešlu lístek podpory?
 
 A. [Lístky podpory](sql-data-warehouse-get-started-create-support-ticket.md) lze podat prostřednictvím portálu Azure.
 
-## <a name="sql-languagefeature-support"></a>Podpora jazyka/funkcí SQL 
+## <a name="sql-languagefeature-support"></a>Podpora jazyka/funkcí SQL
 
 Otázka: Jaké datové typy jsou podporovány?
 
@@ -85,7 +86,7 @@ A. Mnoho funkcí je podporováno. Funkce, které nejsou podporovány, lze naléz
 
 Otázka: Podporuje fond SQL Synapse REST API?
 
-A. Ano. Většina funkcí REST, které lze použít s databází SQL, je také k dispozici s fondem SYNApse SQL. Informace o rozhraní API najdete na stránkách dokumentace REST nebo [v msdn](https://msdn.microsoft.com/library/azure/mt163685.aspx).
+A. Ano. Většina funkcí REST, které lze použít s databází SQL, je také k dispozici s fondem SYNApse SQL. Informace o rozhraní API najdete na stránkách dokumentace REST nebo [v databázích](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="loading"></a>Načítání
 
@@ -97,17 +98,17 @@ Otázka: Jaké formáty souborů jsou podporovány PolyBase?
 
 A: Skorta, RC, parkety a plochý oddělený text
 
-Otázka: K jakým zdrojům dat se mohu připojit pomocí technologie PolyBase? 
+Otázka: K jakým zdrojům dat se mohu připojit pomocí technologie PolyBase?
 
 A: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) a Azure Storage [objekty BLOB](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-Otázka: Je možné nabízení výpočtů při připojování k objektům BLOB úložiště Azure nebo ADLS? 
+Otázka: Je možné nabízení výpočtů při připojování k objektům BLOB úložiště Azure nebo ADLS?
 
-A: Ne, PolyBase pouze spolupracuje s komponenty úložiště. 
+A: Ne, PolyBase pouze spolupracuje s komponenty úložiště.
 
 Otázka: Mohu se připojit k HDI?
 
-A: HDI můžete použít buď ADLS nebo WASB jako vrstvu HDFS. Pokud máte buď jako vrstva HDFS, můžete načíst data do fondu SYNApse SQL. Nelze však generovat výpočty pushdown do instance HDI. 
+A: HDI můžete použít buď ADLS nebo WASB jako vrstvu HDFS. Pokud máte buď jako vrstva HDFS, můžete načíst data do fondu SYNApse SQL. Nelze však generovat výpočty pushdown do instance HDI.
 
 ## <a name="next-steps"></a>Další kroky
 

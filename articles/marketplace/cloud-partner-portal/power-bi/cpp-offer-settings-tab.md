@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: f3a8d740d391edc09a290d3dba4307af7eec00b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 637217d718e6e91a3fa29bd38d8215d0a1324825
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286349"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745432"
 ---
 # <a name="power-bi-apps-offer-settings-tab"></a>Karta Nastavení nabídky aplikací Power BI
+
+>[!Important]
+>března 2020 začneme přesouvat správu nabídek aplikací Power BI do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
 
 Když otevřete stránku **Nová nabídka** pro servisní aplikace, zobrazí se nejprve karta **Nastavení nabídky.** Na této kartě zadáte primární identifikátory a název nabídky. Hvězdička (*) označuje povinné pole.
 

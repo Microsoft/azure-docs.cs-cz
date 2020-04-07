@@ -3,12 +3,12 @@ title: Referenční příručka pro vývojáře v Jazyce Pro Funkce Azure
 description: Pochopit, jak rozvíjet funkce s Javou.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276748"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673005"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Průvodce vývojářem Azure Functions Java
 
@@ -16,7 +16,7 @@ Runtime Azure Functions podporuje [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x6
 
 Jak se to stane s jinými jazyky, aplikace funkce může mít jednu nebo více funkcí. Funkce Java je `public` metoda, zdobená poznámkou `@FunctionName`. Tato metoda definuje položku pro funkci Java a musí být jedinečný v určitém balíčku. Jedna aplikace funkce napsaná v jazyce Java může `@FunctionName`mít více tříd s více veřejnými metodami anotovanými aplikacemi .
 
-Tento článek předpokládá, že jste si již přečetli [odkaz na vývojáře Azure Functions](functions-reference.md). Měli byste také dokončit funkce rychlý start vytvořit první funkci pomocí [Visual Studio Kód](functions-create-first-function-vs-code.md) nebo [Maven](functions-create-first-java-maven.md).
+Tento článek předpokládá, že jste si již přečetli [odkaz na vývojáře Azure Functions](functions-reference.md). Měli byste také dokončit funkce rychlý start vytvořit první funkci pomocí [Visual Studio Kód](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) nebo [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).
 
 ## <a name="programming-model"></a>Programovací model 
 
@@ -30,7 +30,7 @@ Chcete-li usnadnit vytváření funkcí Jazyka Java, existují nástroje založe
 
 Následující vývojářská prostředí mají nástroje Azure Functions, které umožňují vytvářet projekty funkcí Java: 
 
-+ [Kód visual studia](https://code.visualstudio.com/docs/java/java-azurefunctions)
++ [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
 + [Zatmění](functions-create-maven-eclipse.md)
 + [IntelliJ](functions-create-maven-intellij.md)
 
@@ -38,28 +38,31 @@ Výše uvedený článek odkazy ukazují, jak vytvořit své první funkce pomoc
 
 ### <a name="project-scaffolding"></a>Projekt Lešení
 
-Pokud dáváte přednost vývoji příkazového řádku z terminálu, nejjednodušší způsob, jak `Apache Maven` lešení Java-založené funkce projektů je použití archetypů. V současné době existují dva funkce archetypy pro Maven:
+Pokud dáváte přednost vývoji příkazového řádku z terminálu, nejjednodušší způsob, jak `Apache Maven` lešení Java-založené funkce projektů je použití archetypů. Archetyp Java Maven pro funkce Azure se publikuje pod následujícím _id skupiny_:_artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
-+ **Java Archetype**: publikováno pod následující groupId a artifactId [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/):
+Následující příkaz generuje nový projekt funkce Java pomocí tohoto archetypu:
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-archetype 
-    ```
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
 
-    Chcete-li začít používat tento archetyp, podívejte se na [rychlý start javy](functions-create-first-java-maven.md). 
+Chcete-li začít používat tento archetyp, podívejte se na [rychlý start javy](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
 
-+ **Kotlin Archetype (Preview)** publikovaný pod následujícím id groupId a artifactId [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/):
+## <a name="create-kotlin-functions-preview"></a>Vytvoření kotlinských funkcí (náhled)
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-kotlin-archetype
-    ```
+K dispozici je také archetyp Maven pro generování Kotlinových funkcí. Tento archetyp, aktuálně ve verzi Preview, je publikován pod následujícím _id skupiny_:_artifactId_: [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
 
-Zdrojový kód těchto archetypů najdete v [úložišti GitHub Azure Maven Archetypes](https://github.com/microsoft/azure-maven-archetypes).
+Následující příkaz generuje nový projekt funkce Java pomocí tohoto archetypu:
 
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Chcete-li začít používat tento archetyp, viz [kotlinský rychlý start](functions-create-first-kotlin-maven.md).
 
 ## <a name="folder-structure"></a>Struktura složek
 

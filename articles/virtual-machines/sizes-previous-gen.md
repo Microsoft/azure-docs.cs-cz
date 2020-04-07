@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: e5fe58891aa901509dc44d3b2465c794bd92b22d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476565"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673914"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních strojů
 
@@ -66,6 +66,7 @@ Ukládání do mezipaměti úložiště Premium: Podporováno
 MB/s = 10^6 bajtů za sekundu a GiB = 1024^3 bajtů.
 
 <sup>1</sup> Maximální propustnost disku (IOPS nebo MBps) možná s virtuálním počítačem řady Fs může být omezena počtem, velikostí a prokládáním připojených disků.  Podrobnosti naleznete v tématu návrh vysokého výkonu pro [Windows](windows/premium-storage-performance.md) nebo [Linux](linux/premium-storage-performance.md).  
+
 
 ## <a name="nvv2-series"></a>Řada NVv2
 
@@ -339,6 +340,30 @@ Ukládání do mezipaměti úložiště Premium: Není podporováno
 | Standard_G5&nbsp;<sup>1</sup> | 32 | 448 | 6144 | 96000/1500/750| 64/64x500 | 8/20000 |
 
 <sup>1</sup> Instance je izolována na hardware vyhrazený pro jednoho zákazníka.
+<br>
+
+# <a name="nv-series"></a>Řada NV
+**Novější velikost doporučení:** [NVv3-série](nvv3-series.md) a [NVv4-série](nvv4-series.md)
+
+Virtuální stroje řady NV jsou poháněny grafickými procesory [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) a technologií NVIDIA GRID pro aplikace s akcelerací stolních počítačů a virtuální plochy, kde jsou zákazníci schopni vizualizovat svá data nebo simulace. Uživatelé jsou schopni vizualizovat své pracovní postupy náročné na grafiku na instancích NV získat vynikající grafické schopnosti a navíc spustit jednu přesnost úlohy, jako je kódování a vykreslování. Virtuální počítače řady NV jsou také napájeny procesory Intel Xeon E5-2690 v3 (Haswell).
+
+Každý GPU v instancích NV je dodáván s licencí GRID. Tato licence poskytuje flexibilitu používat instanci NV jako virtuální pracovní stanici pro jednoho uživatele nebo 25 souběžných uživatelů se může připojit k virtuálnímu počítači pro scénář virtuální aplikace.
+
+Úložiště Premium: Není podporováno
+
+Ukládání do mezipaměti úložiště Premium: Není podporováno
+
+Migrace za provozu: Není podporována
+
+Aktualizace pro zachování paměti: Není podporováno
+
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet | Virtuální pracovní stanice | Virtuální aplikace |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6  | 6  | 56  | 340  | 1 | 8  | 24 | 1 | 1 | 25  |
+| Standard_NV12 | 12 | 112 | 680  | 2 | 16 | 48 | 2 | 2 | 50  |
+| Standard_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
+
+1 GPU = polovina karty M60.
 <br>
 
 ## <a name="other-sizes"></a>Jiné velikosti

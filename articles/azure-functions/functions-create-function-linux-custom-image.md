@@ -1,16 +1,16 @@
 ---
 title: Vytváření funkcí Azure na Linuxu pomocí vlastní image
 description: Naučte se vytvářet funkce služby Azure Functions běžící na vlastní imagi Linuxu.
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 44ca8f721967b90be283f867f8656344ec3f1906
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239627"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673416"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu pomocí vlastního kontejneru
 
@@ -31,236 +31,158 @@ V tomto kurzu se naučíte:
 > * Povolte připojení SSH ke kontejneru.
 > * Přidejte výstupní vazbu úložiště fronty. 
 
-Tento návod můžete sledovat na libovolném počítači se systémem Windows, Mac OS nebo Linux. Dokončení kurzu bude mít za následek náklady na několik amerických dolarů ve vašem účtu Azure.
+Tento návod můžete sledovat na libovolném počítači se systémem Windows, macOS nebo Linuxem. Dokončení kurzu bude mít za následek náklady na několik amerických dolarů ve vašem účtu Azure.
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Základní nástroje Azure functions](./functions-run-local.md#v2) verze 2.7.1846 nebo novější
-- Azure [CLI](/cli/azure/install-azure-cli) verze 2.0.77 nebo novější
-- [Za běhu Azure Functions 2.x](functions-versions.md)
-- Následující součásti běhu jazyka:
-    ::: zone pivot="programming-language-csharp"
-    - [.NET Core 2.2.x nebo novější](https://dotnet.microsoft.com/download)
-    ::: zone-end
-    ::: zone pivot="programming-language-javascript"
-    - [Node.js](https://nodejs.org/en/download/)
-    ::: zone-end
-    ::: zone pivot="programming-language-powershell"
-    - [PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
-    ::: zone-end
-    ::: zone pivot="programming-language-python"
-    - [Python 3.6 - 64 bit](https://www.python.org/downloads/release/python-3610/) nebo [Python 3.7 - 64 bit](https://www.python.org/downloads/release/python-376/)
-    ::: zone-end
-    ::: zone pivot="programming-language-typescript"
-    - [Node.js](https://nodejs.org/en/download/)
-    - [TypeScript](http://www.typescriptlang.org/#download-links)
-    ::: zone-end
-- [Docker](https://docs.docker.com/install/)
-- [ID dockeru](https://hub.docker.com/signup)
+<!---Requirements specific to Docker --->
++ [Docker](https://docs.docker.com/install/)  
 
-### <a name="prerequisite-check"></a>Kontrola předpokladů
++ [ID dockeru](https://hub.docker.com/signup)
 
-1. V terminálu nebo příkazovém okně spusťte `func --version` a zkontrolujte, zda jsou základní nástroje Azure Functions core tools verze 2.7.1846 nebo novější.
-1. Spuštěním `az --version` zkontrolujte, zda je verze příkazového příkazového příkazu Azure 2.0.76 nebo novější.
-1. Spusťte `az login` přihlášení k Azure a ověřte aktivní předplatné.
-1. Spusťte `docker login` přihlášení do Dockeru. Tento příkaz se nezdaří, pokud Docker není spuštěn, v takovém případě spustit docker a opakujte příkaz.
+[!INCLUDE [functions-cli-verify-prereqs](../../includes/functions-cli-verify-prereqs.md)]
+
++ Spusťte `docker login` přihlášení do Dockeru. Tento příkaz se nezdaří, pokud Docker není spuštěn, v takovém případě spustit docker a opakujte příkaz.
+
+[!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
 ## <a name="create-and-test-the-local-functions-project"></a>Vytvoření a testování projektu místních funkcí
 
-1. V terminálu nebo příkazovém řádku vytvořte složku pro tento kurz na příslušném místě a přejděte do této složky.
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+V terminálu nebo příkazovém řádku spusťte následující příkaz pro zvolený `LocalFunctionsProject`jazyk a vytvořte projekt aplikace pro funkce ve složce s názvem .  
+::: zone-end  
+::: zone pivot="programming-language-csharp"  
+```
+func init LocalFunctionsProject --worker-runtime dotnet --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
+```
+func init LocalFunctionsProject --worker-runtime powershell --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-python"  
+```
+func init LocalFunctionsProject --worker-runtime python --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+```
+::: zone-end
+::: zone pivot="programming-language-java"  
+Spuštěním následujícího příkazu v prázdné složce vygenerujte projekt Functions z [archetypu Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
-1. Postupujte podle pokynů na [vytvoření a aktivaci virtuálního prostředí](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) k vytvoření virtuálního prostředí pro použití v tomto kurzu.
+# <a name="bash"></a>[Bash](#tab/bash)
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+```powershell
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+---
 
-1. Spusťte následující příkaz pro zvolený jazyk a vytvořte `LocalFunctionsProject`projekt aplikace funkcí ve složce s názvem . Možnost `--docker` generuje `Dockerfile` pro projekt, který definuje vhodný vlastní kontejner pro použití s Funkcemi Azure a vybraného běhu.
+Maven vás požádá o hodnoty potřebné k dokončení generování projektu při nasazení.   
+Po zobrazení výzvy uveďte následující hodnoty:
 
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func init LocalFunctionsProject --worker-runtime dotnet --docker
-    ```
-    ::: zone-end
+| Výzva | Hodnota | Popis |
+| ------ | ----- | ----------- |
+| **groupId** | `com.fabrikam` | Hodnota, která jednoznačně identifikuje váš projekt ve všech projektech podle [pravidel pro pojmenování balíčků](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) pro Jazyk Java. |
+| **artefaktId** | `fabrikam-functions` | Hodnota, která je názvem nádoby bez čísla verze. |
+| **Verze** | `1.0-SNAPSHOT` | Zvolte výchozí hodnotu. |
+| **Balíček** | `com.fabrikam.functions` | Hodnota, která je balíček Java pro kód generované funkce. Použijte výchozí hodnotu. |
 
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language javascript --docker
-    ```
-    ::: zone-end
+Potvrďte to toto `Y` příkazem nebo stisknutím klávesy Enter.
 
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func init LocalFunctionsProject --worker-runtime powershell --docker
-    ```
-    ::: zone-end
+Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, což v tomto příkladu je `fabrikam-functions`. 
+::: zone-end
+Možnost `--docker` generuje `Dockerfile` pro projekt, který definuje vhodný vlastní kontejner pro použití s Funkcemi Azure a vybraného běhu.
 
-    ::: zone pivot="programming-language-python"
-    ```
-    func init LocalFunctionsProject --worker-runtime python --docker
-    ```
-    ::: zone-end
+Přejděte do složky projektu:
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+```
+cd LocalFunctionsProject
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+cd fabrikam-functions
+```
+::: zone-end  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
+Přidejte funkci do projektu pomocí následujícího `--name` příkazu, kde argument je `--template` jedinečný název funkce a argument určuje aktivační událost funkce. `func new`Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu odpovídající zvolenému jazyku projektu a konfigurační soubor s názvem *function.json*.
 
-    ::: zone pivot="programming-language-typescript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language typescript --docker
-    ```
-    ::: zone-end
-    
-1. Přejděte do složky projektu:
+```
+func new --name HttpExample --template "HTTP trigger"
+```
+::: zone-end  
+Chcete-li otestovat funkci místně, spusťte místního hostitele runtime Azure Functions v kořenovém adresáři složky projektu: 
+::: zone pivot="programming-language-csharp"  
+```
+func start --build  
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
+```
+func start  
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+npm install
+npm start
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+mvn clean package  
+mvn azure-functions:run
+```
+::: zone-end
+Jakmile se `HttpExample` koncový bod zobrazí ve výstupu, přejděte na [`http://localhost:7071/api/HttpExample?name=Functions`](http://localhost:7071/api/HttpExample?name=Functions). Prohlížeč by měl zobrazit zprávu "hello", která se ozývá zpět `Functions`, hodnota zadaná parametru dotazu. `name`
 
-    ```
-    cd LocalFunctionsProject
-    ```
-    
-1. Přidejte funkci do projektu pomocí následujícího `--name` příkazu, kde argument je `--template` jedinečný název funkce a argument určuje aktivační událost funkce. `func new`Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu odpovídající zvolenému jazyku projektu a konfigurační soubor s názvem *function.json*.
-
-    ```
-    func new --name HttpExample --template "HTTP trigger"
-    ```
-
-1. Chcete-li otestovat funkci místně, spusťte místního hostitele runtime Azure Functions ve složce *LocalFunctionsProject:*
-   
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func start --build
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-python"
-    ```
-    func start
-    ```
-    ::: zone-end    
-
-    ::: zone pivot="programming-language-typescript"
-    ```
-    npm install
-    ```
-
-    ```
-    npm start
-    ```
-    ::: zone-end
-
-1. Jakmile se `HttpExample` koncový bod zobrazí ve výstupu, přejděte na `http://localhost:7071/api/HttpExample?name=Functions`. Prohlížeč by měl zobrazit zprávu jako "Hello, Functions" (mírně se liší v závislosti na zvoleném programovacím jazyce).
-
-1. K zastavení hostitele použijte **kombinaci kláves**-**C.**
+K zastavení hostitele použijte **kombinaci kláves**-**C.**
 
 ## <a name="build-the-container-image-and-test-locally"></a>Sestavení image kontejneru a testování místně
 
-1. (Nepovinné) Zkontrolujte *Dockerfile" ve složce *LocalFunctionsProj.* Dockerfile popisuje požadované prostředí pro spuštění aplikace funkce na Linuxu: 
+(Nepovinné) Zkontrolujte *Dockerfile" v kořenovém adresáři složky projektu. Dockerfile popisuje požadované prostředí pro spuštění aplikace funkce na Linuxu.  Úplný seznam podporovaných základních bitových kopií pro funkce Azure najdete na [stránce základní bitové kopie Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
+    
+V kořenové složce projektu spusťte příkaz [docker build](https://docs.docker.com/engine/reference/commandline/build/) a zadejte název `azurefunctionsimage`a značku . `v1.0.0` Položku `<DOCKER_ID>` nahraďte ID vašeho účtu Docker Hubu. Tento příkaz sestaví image Dockeru pro kontejner.
 
-    ::: zone pivot="programming-language-csharp"
-    ```Dockerfile
-    FROM microsoft/dotnet:2.2-sdk AS installer-env
+```
+docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
+```
 
-    COPY . /src/dotnet-function-app
-    RUN cd /src/dotnet-function-app && \
-        mkdir -p /home/site/wwwroot && \
-        dotnet publish *.csproj --output /home/site/wwwroot
+Po dokončení příkazu můžete spustit nový kontejner místně.
     
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/dotnet:2.0-appservice 
-    FROM mcr.microsoft.com/azure-functions/dotnet:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
-    ```
-    ::: zone-end
+Chcete-li otestovat sestavení, spusťte bitovou kopii v `<DOCKER_ID` místním kontejneru pomocí příkazu `-p 8080:80` [docker run,](https://docs.docker.com/engine/reference/commandline/run/) znovu nahraďte ID Dockeru a přidejte argument portů:
 
-    ::: zone pivot="programming-language-javascript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+```
+docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
+```
 
-    ::: zone pivot="programming-language-powershell"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/powershell:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+Jakmile je obrázek spuštěn v místním kontejneru, otevřete prohlížeč , který `http://localhost:8080`by měl zobrazit zástupný obrázek zobrazený níže. Bitová kopie se zobrazí v tomto okamžiku, protože vaše funkce běží v místním kontejneru, stejně jako v Azure, což `"authLevel": "function"` znamená, že je chráněn přístupový klíč, jak je definováno v *function.json* s vlastností. Kontejner ještě nebyl publikován do aplikace funkce v Azure, takže klíč ještě není k dispozici. Pokud chcete testovat proti místnímu kontejneru, zastavit docker, změnit vlastnost autorizace na `"authLevel": "anonymous"`, znovu sestavit image a restartovat docker. Poté `"authLevel": "function"` resetujte v *souboru function.json*. Další informace naleznete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    ::: zone pivot="programming-language-python"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
-    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY requirements.txt /
-    RUN pip install -r /requirements.txt
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+![Zástupný obrázek označující, že kontejner běží místně](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-    ::: zone pivot="programming-language-typescript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+::: zone-end
+::: zone pivot="programming-language-java"  
+Jakmile je bitová kopie spuštěna [`http://localhost:8080/api/HttpExample?name=Functions`](http://localhost:8080/api/HttpExample?name=Functions)v místním kontejneru, přejděte na , který by měl zobrazit stejnou zprávu "hello" jako dříve. Vzhledem k tomu, že archetyp Maven generuje funkci aktivovanou protokolem HTTP, která používá anonymní autorizaci, můžete stále volat funkci, i když je spuštěna v kontejneru. 
+::: zone-end  
 
-    > [!NOTE]
-    > Úplný seznam podporovaných základních bitových kopií pro funkce Azure najdete na [stránce základní bitové kopie Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
-    
-1. Ve složce *LocalFunctionsProject* spusťte příkaz [sestavení dockeru](https://docs.docker.com/engine/reference/commandline/build/) a zadejte název `azurefunctionsimage`a značku . `v1.0.0` Položku `<docker_id>` nahraďte ID vašeho účtu Docker Hubu. Tento příkaz sestaví image Dockeru pro kontejner.
-
-    ```
-    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
-    ```
-    
-    Po dokončení příkazu můžete spustit nový kontejner místně.
-    
-1. Chcete-li otestovat sestavení, spusťte bitovou kopii v `<docker_id>` místním kontejneru pomocí příkazu `-p 8080:80` [docker run,](https://docs.docker.com/engine/reference/commandline/run/) znovu nahraďte ID Dockeru a přidejte argument portů:
-
-    ```
-    docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
-    ```
-    
-1. Jakmile je obrázek spuštěn v místním kontejneru, otevřete prohlížeč , který `http://localhost:8080`by měl zobrazit zástupný obrázek zobrazený níže. Bitová kopie se zobrazí v tomto okamžiku, protože vaše funkce běží v místním kontejneru, stejně jako v Azure, což `"authLevel": "function"` znamená, že je chráněn přístupový klíč, jak je definováno v *function.json* s vlastností. Kontejner ještě nebyl publikován do aplikace funkce v Azure, takže klíč ještě není k dispozici. Pokud chcete testovat místně, zastavit docker, změnit `"authLevel": "anonymous"`vlastnost autorizace na , znovu sestavit image a restartovat docker. Poté `"authLevel": "function"` resetujte v *souboru function.json*. Další informace naleznete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
-
-    ![Zástupný obrázek označující, že kontejner běží místně](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
-
-1. Po ověření aplikace funkce v kontejneru zastavte docker pomocí **klávesCtrl**+**C**.
+Po ověření aplikace funkce v kontejneru zastavte docker pomocí **klávesCtrl**+**C**.
 
 ## <a name="push-the-image-to-docker-hub"></a>Posunutí image do Centra Dockeru
 
@@ -349,18 +271,18 @@ Aplikace funkcí v Azure spravuje provádění vašich funkcí ve vašem hosting
 
 1. Funkce nyní můžete použít tento připojovací řetězec pro přístup k účtu úložiště.
 
-> [!TIP]
-> V bash, můžete použít proměnnou prostředí zachytit připojovací řetězec namísto použití schránky. Nejprve pomocí následujícího příkazu vytvořte proměnnou s připojovacím řetězcem:
-> 
-> ```bash
-> storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
-> ```
-> 
-> Potom naleznete proměnnou v druhém příkazu:
-> 
-> ```azurecli
-> az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
-> ```
+    > [!TIP]
+    > V bash, můžete použít proměnnou prostředí zachytit připojovací řetězec namísto použití schránky. Nejprve pomocí následujícího příkazu vytvořte proměnnou s připojovacím řetězcem:
+    > 
+    > ```bash
+    > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
+    > ```
+    > 
+    > Potom naleznete proměnnou v druhém příkazu:
+    > 
+    > ```azurecli
+    > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
+    > ```
 
 > [!NOTE]    
 > Pokud publikujete vlastní bitovou kopii do účtu soukromého kontejneru, měli byste místo toho použít proměnné prostředí v souboru Dockerfile pro připojovací řetězec. Další informace naleznete v [pokynech env](https://docs.docker.com/engine/reference/builder/#env). Měli byste také nastavit `DOCKER_REGISTRY_SERVER_USERNAME` `DOCKER_REGISTRY_SERVER_PASSWORD`proměnné a . Chcete-li použít hodnoty, potom je nutné znovu sestavit bitovou kopii, push image do registru a potom restartovat aplikaci funkce v Azure.
@@ -499,7 +421,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. S povolenou
 
 1. V prohlížeči `https://<app_name>.scm.azurewebsites.net/`otevřete `<app_name>` a nahraďte jedinečným jménem. Tato adresa URL je koncový bod Rozšířené nástroje (Kudu) pro kontejner aplikace funkce.
 
-1. Přihlaste se ke svému účtu Azure a pak vyberte **SSH** pro navázání připojení s kontejnerem. Připojení může trvat několik okamžiků, pokud Azure je stále v procesu aktualizace image kontejneru.
+1. Přihlaste se ke svému účtu Azure a pak vyberte **SSH** pro navázání připojení s kontejnerem. Připojení může trvat několik okamžiků, pokud Azure stále aktualizuje image kontejneru.
 
 1. Po navázání připojení s kontejnerem `top` spusťte příkaz a zobrazte aktuálně spuštěné procesy. 
 
@@ -511,347 +433,47 @@ Funkce Azure vám umožní připojit vaše funkce k dalším službám Azure a p
 
 V této části se zobrazí, jak integrovat funkci s frontou azure storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>Načtení připojovacího řetězce úložiště Azure
+[!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
-Dříve jste vytvořili účet Úložiště Azure pro použití aplikací funkce. Připojovací řetězec pro tento účet se bezpečně uchovává v nastavení aplikace v Azure. Stažením nastavení do souboru *local.settings.json* můžete toto připojení použít do fronty úložiště ve stejném účtu při místním spuštění funkce. 
+[!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
-1. V kořenovém adresáři projektu spusťte `<app_name>` následující příkaz, který nahradí název aplikace funkce z předchozího rychlého startu. Tento příkaz přepíše všechny existující hodnoty v souboru.
+[!INCLUDE [functions-add-output-binding-cli](../../includes/functions-add-output-binding-cli.md)]
 
-    ```
-    func azure functionapp fetch-app-settings <app_name>
-    ```
-    
-1. Otevřete *soubor local.settings.json* `AzureWebJobsStorage`a vyhledejte hodnotu s názvem , což je připojovací řetězec účtu úložiště. Název `AzureWebJobsStorage` a připojovací řetězec v jiných částech tohoto článku.
-
-> [!IMPORTANT]
-> Vzhledem k tomu, *že local.settings.json* obsahuje tajné klíče stažené z Azure, vždy vyloučit tento soubor ze správy zdrojového kódu. Soubor *.gitignore* vytvořený s projektem místních funkcí ve výchozím nastavení vyloučí soubor.
-
-### <a name="add-an-output-binding-to-functionjson"></a>Přidání výstupní vazby do souboru function.json
-
-V Azure Functions každý typ `direction`vazby `type`vyžaduje `name` , a jedinečný, které mají být definovány v souboru *function.json.* Vaše *function.json* již obsahuje vstupní vazbu pro typ "httpTrigger" a výstupní vazbu pro odpověď HTTP. Chcete-li přidat vazbu do fronty úložiště, upravte soubor následujícím způsobem, který přidá výstupní vazbu pro typ "queue", kde se fronta zobrazí v kódu jako vstupní argument s názvem `msg`. Vazba fronty také vyžaduje název fronty, který `outqueue`má být v tomto případě používán , a `AzureWebJobStorage`název nastavení, které obsahuje připojovací řetězec, v tomto případě .
-
-::: zone pivot="programming-language-csharp"
-
-V projektu knihovny tříd jazyka C# jsou vazby definovány jako atributy vazby na metodě funkce. Soubor *function.json* je pak automaticky generován na základě těchto atributů.
-
-1. Pro vazbu fronty spusťte následující příkaz [dotnet add package](/dotnet/core/tools/dotnet-add-package) a přidejte balíček rozšíření úložiště do projektu.
-
-    ```
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
-    ```
-
-1. Otevřete *soubor HttpTrigger.cs* a `using` přidejte následující příkaz:
-
-    ```cs
-    using Microsoft.Azure.WebJobs.Extensions.Storage;
-    ```
-    
-1. Do definice `Run` metody přidejte následující parametr:
-    
-    ```csharp
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
-    ```
-    
-    Definice `Run` metody by nyní měla odpovídat následujícímu kódu:
-    
-    ```csharp
-    [FunctionName("HttpTrigger")]
-    public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-        [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-    ```
-
-Parametr `msg` je `ICollector<T>` typ, který představuje kolekci zpráv, které jsou zapsány do výstupní vazby po dokončení funkce. V tomto případě je výstupem `outqueue`fronta úložiště s názvem . Připojovací řetězec pro účet `StorageAccountAttribute`úložiště je nastaven . Tento atribut označuje nastavení, které obsahuje připojovací řetězec účtu úložiště a lze jej použít na úrovni třídy, metody nebo parametru. V takovém případě můžete vynechat, `StorageAccountAttribute` protože už používáte výchozí účet úložiště.
-
-::: zone-end
-
-::: zone pivot="programming-language-javascript"
-
-Aktualizujte *soubor function.json* tak, aby odpovídal následujícímu, přidáním vazby fronty za vazbu HTTP:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-
-Aktualizujte *soubor function.json* tak, aby odpovídal následujícímu, přidáním vazby fronty za vazbu HTTP:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-Aktualizujte *soubor function.json* tak, aby odpovídal následujícímu, přidáním vazby fronty za vazbu HTTP:
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-Aktualizujte *soubor function.json* tak, aby odpovídal následujícímu, přidáním vazby fronty za vazbu HTTP:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]  
+::: zone-end  
+::: zone pivot="programming-language-java" 
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
+::: zone-end  
 
 ## <a name="add-code-to-use-the-output-binding"></a>Přidání kódu pro použití výstupní vazby
 
-Po definování vazby se název vazby v `msg`tomto případě zobrazí v kódu funkce `context` jako argument (nebo v objektu v jazyce JavaScript a TypeScript). Tuto proměnnou pak můžete použít k zápisu zpráv do fronty. Je třeba napsat libovolný kód pro ověřování, získání odkazu na frontu nebo zápis dat. Všechny tyto úlohy integrace jsou pohodlně zpracovány v Azure Functions runtime a fronty výstupní vazby.
+S definovanou vazbou fronty můžete nyní aktualizovat `msg` funkci tak, aby přijímali výstupní parametr a zapisovat zprávy do fronty.
 
-::: zone pivot="programming-language-csharp"
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
+::: zone pivot="programming-language-python"     
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+::: zone-end  
 
-    string name = req.Query["name"];
+::: zone pivot="programming-language-javascript"  
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-    dynamic data = JsonConvert.DeserializeObject(requestBody);
-    name = name ?? data?.name;
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
-    if (!string.IsNullOrEmpty(name))
-    {
-        // Add a message to the output collection.
-        msg.Add(string.Format("Name passed to the function: {0}", name));
-    }
-    
-    return name != null
-        ? (ActionResult)new OkObjectResult($"Hello, {name}")
-        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
-}
-```
+::: zone pivot="programming-language-powershell"  
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]  
 ::: zone-end
 
-::: zone pivot="programming-language-javascript"
-```js
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+::: zone-end 
 
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
+::: zone pivot="programming-language-java"
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-```typescript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
-        
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
 ### <a name="update-the-image-in-the-registry"></a>Aktualizace bitové kopie v registru
@@ -874,71 +496,7 @@ export default httpTrigger;
 
 V prohlížeči použijte stejnou adresu URL jako dříve k vyvolání funkce. Prohlížeč by měl zobrazit stejnou odpověď jako dříve, protože jste tuto část kódu funkce neupravili. Přidaný kód však napsal zprávu `name` pomocí parametru URL do fronty `outqueue` úložiště.
 
-Frontu můžete zobrazit na [webu Azure Portal](../storage/queues/storage-quickstart-queues-portal.md) nebo v [Průzkumníkovi úložiště Microsoft Azure](https://storageexplorer.com/). Frontu můžete také zobrazit v příkazovém příkazu k dispozici pro Azure, jak je popsáno v následujících krocích:
-
-1. Otevřete soubor *local.setting.json* projektu funkce a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo příkazovém okně spusťte `AZURE_STORAGE_CONNECTION_STRING`následující příkaz a vytvořte proměnnou prostředí s názvem a místo ní vložte konkrétní připojovací řetězec `<connection_string>`. (Tato proměnná prostředí znamená, že není nutné zadávat připojovací řetězec ke každému následnému příkazu pomocí argumentu.) `--connection-string`
-
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-    
-    ```powershell
-    $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```cmd
-    set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    ---
-    
-1. (Nepovinné) Pomocí [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) příkazu můžete zobrazit fronty úložiště ve vašem účtu. Výstup z tohoto příkazu by `outqueue`měl obsahovat frontu s názvem , která byla vytvořena, když funkce napsala svou první zprávu do této fronty.
-    
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    ---
-
-1. Pomocí [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) příkazu můžete zobrazit zprávy v této frontě, což by mělo být první jméno, které jste použili při testování funkce dříve. Příkaz načte první zprávu ve frontě v [kódování base64](functions-bindings-storage-queue-trigger.md#encoding), takže je nutné také dekódovat zprávu, která má být zobrazována jako text.
-
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```bash
-    echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-    ```
-    
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-    
-    ```powershell
-    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    Protože potřebujete odkazovat na kolekci zpráv a dekódovat z base64, spusťte PowerShell a použijte příkaz PowerShell.
-
-    ---
+[!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

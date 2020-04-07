@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583274"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742706"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Indexování tabulek ve fondu Synapse SQL
 
@@ -24,9 +24,9 @@ Doporučení a příklady pro indexování tabulek v fondu SYNApse SQL.
 
 ## <a name="index-types"></a>Typy indexů
 
-Fond SQL synapse nabízí několik možností indexování, včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [seskupených indexů a neseskupených indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)a možnosti neindexování označované také jako [haldy](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
+Fond SQL synapse nabízí několik možností indexování, včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [seskupených indexů a neseskupených indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a možnosti neindexování označované také jako [haldy](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  
 
-Chcete-li vytvořit tabulku s indexem, naleznete v dokumentaci [vytvořit tabulku (Synapse SQL pool).](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+Chcete-li vytvořit tabulku s indexem, naleznete v dokumentaci [vytvořit tabulku (Synapse SQL pool).](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="clustered-columnstore-indexes"></a>Clusterované indexy columnstore
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 Přihlaste se jako uživatel z kroku 1 (např. loaduser), který nyní používá vyšší třídu prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER k tabulkám, kde je index znovu sestaven. Tyto příklady ukazují, jak znovu sestavit celý index columnstore nebo jak znovu sestavit jeden oddíl. Na velkých tabulkách je praktičtější znovu sestavit indexy jeden oddíl najednou.
 
-Případně místo opětovného sestavení indexu můžete zkopírovat tabulku do nové tabulky [pomocí CTAS](sql-data-warehouse-develop-ctas.md). Který způsob je nejlepší? U velkých objemů dat je CTAS obvykle rychlejší než [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). U menších objemů dat se ALTER INDEX snadněji používá a nevyžaduje výměnu tabulky.
+Případně místo opětovného sestavení indexu můžete zkopírovat tabulku do nové tabulky [pomocí CTAS](sql-data-warehouse-develop-ctas.md). Který způsob je nejlepší? U velkých objemů dat je CTAS obvykle rychlejší než [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). U menších objemů dat se ALTER INDEX snadněji používá a nevyžaduje výměnu tabulky.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Opětovné sestavení indexu ve fondu Synapse SQL je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX REBUILD v části [Defragmentace indexů columnstore indexů](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)a [INDEX ALTER](/sql/t-sql/statements/alter-index-transact-sql).
+Opětovné sestavení indexu ve fondu Synapse SQL je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX REBUILD v části [Defragmentace indexů columnstore indexů](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [INDEX ALTER](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Ověření zlepšení kvality segmentu segmentu clusterovaného columnstore
 
@@ -260,7 +260,7 @@ Znovu spusťte dotaz, který identifikoval tabulku se špatnou kvalitou segmentu
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Opětovné sestavení indexů pomocí CTAS a přepínání oddílů
 
-Tento příklad používá [příkaz CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) a přepnutí oddílu k opětovnému sestavení oddílu tabulky.
+Tento příklad používá [příkaz CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a přepnutí oddílu k opětovnému sestavení oddílu tabulky.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS

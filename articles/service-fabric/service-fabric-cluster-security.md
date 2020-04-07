@@ -4,12 +4,12 @@ description: Přečtěte si o scénářích zabezpečení pro cluster Azure Serv
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258678"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753797"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 
@@ -74,7 +74,7 @@ Pro clustery spuštěné v Azure můžete také zabezpečit přístup ke koncov�
 Pro clustery Service Fabric nasazené ve veřejné síti hostované v Azure je doporučení pro vzájemné ověřování mezi klientem a uzlem:
 
 * Použití služby Azure Active Directory pro identitu klienta
-* Certifikát pro identitu serveru a šifrování SSL http komunikace
+* Certifikát pro identitu serveru a šifrování TLS http komunikace
 
 Pro clustery Service Fabric nasazené ve veřejné síti hostované v Azure je doporučenípro zabezpečení mezi uzly použít certifikát clusteru k ověření uzlů.
 
@@ -103,13 +103,13 @@ Některé důležité věci, aby zvážila:
 
 Tyto certifikáty (jeden primární a volitelně sekundární) jsou nutné k zabezpečení clusteru a zabránění neoprávněnému přístupu k němu. Tyto certifikáty poskytují ověřování clusteru a serveru.
 
-Ověřování clusteru ověřuje komunikaci mezi mezi mezi mezidoménami clusteru pro federaci clusteru. Ke clusteru se mohou připojit pouze uzly, které mohou prokázat svou identitu pomocí tohoto certifikátu. Ověřování serveru ověřuje koncové body správy clusteru klientovi pro správu, takže klient pro správu ví, že mluví se skutečným clusterem a není "man in the middle". Tento certifikát také poskytuje protokol SSL pro rozhraní API pro správu protokolu HTTPS a pro průzkumníka prostředků infrastruktury služeb přes protokol HTTPS. Pokud klient nebo uzel ověří uzel, jedním z počátečních kontrol je hodnota běžného názvu v poli **Předmět.** Tento běžný název nebo jeden z alternativních názvů certifikátů (SAN) musí být uveden v seznamu povolených běžných názvů.
+Ověřování clusteru ověřuje komunikaci mezi mezi mezi mezidoménami clusteru pro federaci clusteru. Ke clusteru se mohou připojit pouze uzly, které mohou prokázat svou identitu pomocí tohoto certifikátu. Ověřování serveru ověřuje koncové body správy clusteru klientovi pro správu, takže klient pro správu ví, že mluví se skutečným clusterem a není "man in the middle". Tento certifikát také poskytuje TLS pro rozhraní API pro správu PROTOKOLU HTTPS a pro průzkumníka prostředků infrastruktury služeb přes protokol HTTPS. Pokud klient nebo uzel ověří uzel, jedním z počátečních kontrol je hodnota běžného názvu v poli **Předmět.** Tento běžný název nebo jeden z alternativních názvů certifikátů (SAN) musí být uveden v seznamu povolených běžných názvů.
 
 Osvědčení musí splňovat tyto požadavky:
 
 * Certifikát musí obsahovat soukromý klíč. Tyto certifikáty mají obvykle rozšíření .pfx nebo .pem  
 * Certifikát musí být vytvořen pro výměnu klíčů, který lze exportovat do souboru Výměny osobních informací (.pfx).
-* **Název předmětu certifikátu se musí shodovat s doménou, kterou používáte pro přístup k clusteru Service Fabric**. Tato shoda je vyžadována k poskytnutí protokolu SSL pro koncový bod správy HTTPS clusteru a průzkumník prostředků service fabric. Certifikát SSL nelze získat od certifikační autority (CA) pro doménu *.cloudapp.azure.com. Pro svůj cluster musíte získat název vlastní domény. Pokud požádáte o certifikát od certifikační autority, musí název subjektu certifikátu odpovídat názvu vlastní domény, který používáte pro svůj cluster.
+* **Název předmětu certifikátu se musí shodovat s doménou, kterou používáte pro přístup k clusteru Service Fabric**. Tato shoda je vyžadována k poskytnutí protokolu TLS pro koncový bod správy HTTPS clusteru a průzkumník prostředků service fabric. Certifikát TLS/SSL nelze získat od certifikační autority pro doménu *.cloudapp.azure.com. Pro svůj cluster musíte získat název vlastní domény. Pokud požádáte o certifikát od certifikační autority, musí název subjektu certifikátu odpovídat názvu vlastní domény, který používáte pro svůj cluster.
 
 Některé další věci, aby zvážila:
 

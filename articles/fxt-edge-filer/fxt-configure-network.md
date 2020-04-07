@@ -6,12 +6,12 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239795"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754692"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Kurz: Konfigurace nastavení sítě clusteru
 
@@ -76,7 +76,7 @@ Cluster FXT Edge Filer používá certifikáty X.509 pro tyto funkce:
 
 Pokud potřebujete odeslat certifikáty do clusteru, použijte stránku Nastavení**certifikátů** **clusteru.** >  Podrobnosti jsou na stránce [Certifikáty clusteru >](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) průvodce konfigurací clusteru.
 
-Chcete-li šifrovat komunikaci se správou clusteru, vyberte pomocí stránky**Nastavení obecného nastavení** **clusteru,** > který certifikát se má použít pro ssl pro správu.
+Chcete-li šifrovat komunikaci se správou clusteru, vyberte pomocí stránky**Nastavení obecného nastavení** **clusteru,** > který certifikát se má použít pro správce protokolu TLS.
 
 > [!Note] 
 > Přístupové klíče cloudové služby jsou uloženy pomocí konfigurační stránky **Cloud Credentials.** Výše uvedená část [Přidat základní filer](fxt-add-storage.md#add-a-core-filer) ukazuje příklad; Podrobnosti naleznete v části [Cloud pověření cloudového průvodce](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) konfigurací clusteru. 

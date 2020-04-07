@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437492"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756567"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -134,7 +134,15 @@ Můžete také povolit Azure Private Link pro váš pracovní prostor. Private L
 ### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
 
 > [!IMPORTANT]
-> Pokud pracovní prostor obsahuje citlivá data, doporučujeme nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) při vytváření pracovního prostoru. To řídí množství dat, která společnost Microsoft shromažďuje pro diagnostické účely, a umožňuje další šifrování v prostředích spravovaných společností Microsoft.
+> Pokud pracovní prostor obsahuje citlivá data, doporučujeme nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) při vytváření pracovního prostoru. 
+
+Příznak `hbi_workspace` řídí množství dat, která společnost Microsoft shromažďuje pro diagnostické účely, a umožňuje další šifrování ve spravovaných prostředích společnosti Microsoft. Kromě toho umožňuje následující:
+
+* Spustí šifrování místního odkládací hodisku v clusteru Amlcompute za předpokladu, že jste v tomto předplatném nevytvořili žádné předchozí clustery. Jinak je třeba zvýšit lístek podpory povolit šifrování odkládací disk výpočetních clusterů 
+* Vyčistí místní odkládací disk mezi spuštěními
+* Bezpečně předává pověření pro váš účet úložiště, registr kontejnerů a účet SSH z vrstvy spuštění do výpočetních clusterů pomocí trezoru klíčů
+* Umožňuje filtrování IP adres, aby bylo zajištěno, že základní dávkové fondy nemohou být volány žádnými externími službami jinými než AzureMachineLearningService.
+
 
 Další informace o tom, jak šifrování v klidovém stavu funguje, najdete v [tématu šifrování dat Azure v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 

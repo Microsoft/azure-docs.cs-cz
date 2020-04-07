@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281676"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745585"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Karta Podrobnosti o aplikaci Power BI
+
+>[!Important]
+>března 2020 začneme přesouvat správu nabídek aplikací Power BI do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
 
 Na stránce **Nová nabídka** můžete potenciálním zákazníkům poskytnout marketingové, prodejní a právní informace na kartě **Podrobnosti ve výloze.** Na této kartě můžete také nastavit správu zájemců, které Azure Marketplace generuje. Tato dlouhá forma je rozdělena do šesti částí: **Podrobnosti nabídky**, **Podrobnosti výpisu**, **Marketingové artefakty**, **Právní**, **Zákaznická podpora**a **Správa zájemců**.  Hvězdička (*) na konci popisku pole znamená, že pole je povinné.
 
@@ -74,7 +77,7 @@ Chcete-li vyplnit pole v této části, použijte následující tabulku. Povinn
 | **Soubor**                             | Nahrajte soubor PDF.                             |
 | *Snímky obrazovek\**                      | Přidejte až pět snímků obrazovky.                        |
 | **Název**                             | Zadejte název nebo název snímku obrazovky.                                       |
-| **Obrázek**                            | Nahrajte snímek obrazovky PNG. Jeho rozlišení musí být 1280 x 720 px.  | 
+| **Image**                            | Nahrajte snímek obrazovky PNG. Jeho rozlišení musí být 1280 x 720 px.  | 
 |   |   |
 
 Loga, která nahrajete na [portál partnerů cloudu,](https://cloudpartner.azure.com) *by neměla:*

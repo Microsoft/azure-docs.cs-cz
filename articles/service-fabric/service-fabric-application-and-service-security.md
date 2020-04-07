@@ -3,12 +3,12 @@ title: Informace o zabezpečení aplikací Azure Service Fabric
 description: Přehled, jak bezpečně spouštět aplikace mikroslužeb na Service Fabric. Zjistěte, jak spouštět služby a spouštěcí skripty pod různými účty zabezpečení, ověřovat a autorizovat uživatele, spravovat tajné kódy aplikací, zabezpečit komunikaci se službami, používat bránu rozhraní API a zabezpečit data aplikací v klidovém stavu.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452258"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756237"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Zabezpečení aplikací a služeb Service Fabric
 Architektura mikroslužeb může přinést [mnoho výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb je však výzvou a liší se od správy zabezpečení tradičních monolitických aplikací. 
@@ -20,7 +20,7 @@ Tento článek není průvodce zabezpečení mikroslužeb, existuje mnoho takov�
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 Často je nutné, aby prostředky a řešení API vystavené službou byly omezeny na určité důvěryhodné uživatele nebo klienty. Ověřování je proces spolehlivého zjišťování identity uživatele.  Autorizace je proces, který zpřístupňuje rozhraní API nebo služby některým ověřeným uživatelům, nikoli však jiným uživatelům.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 Prvním krokem k rozhodování o důvěryhodnosti na úrovni rozhraní API je ověřování. Ověřování je proces spolehlivého zjišťování identity uživatele.  Ve scénářích mikroslužeb ověřování se obvykle zpracovává centrálně. Pokud používáte bránu rozhraní API, můžete [převést ověřování](/azure/architecture/patterns/gateway-offloading) na bránu. Pokud použijete tento přístup, ujistěte se, že jednotlivé služby nelze dosáhnout přímo (bez brány rozhraní API), pokud je zavedeno další zabezpečení k ověření zpráv, zda pocházejí z brány nebo ne.
 
 Pokud ke službám lze přistupovat přímo, lze k ověření uživatelů použít ověřovací službu, jako je Azure Active Directory nebo vyhrazená mikroslužba pro ověřování, která funguje jako služba tokenů zabezpečení (STS). Rozhodnutí o důvěryhodnosti jsou sdílena mezi službami pomocí tokenů zabezpečení nebo souborů cookie. 
@@ -33,7 +33,7 @@ Po ověření musí služby autorizovat přístup uživatele nebo určit, co je 
 [ASP.NET základní autorizace](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) lze provést na základě rolí uživatelů nebo na základě vlastních zásad, které mohou zahrnovat kontrolu deklarací nebo jiné heuristiky.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Omezení a zabezpečení přístupu pomocí brány rozhraní API
-Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. [Brána rozhraní API](/azure/architecture/microservices/gateway) je vzdálená mezi klienty a službami a je vstupním bodem pro všechny služby, které vaše aplikace poskytuje. Funguje jako reverzní proxy server, směrování požadavků od klientů ke službám. Může také provádět různé průřezové úlohy, jako je ověřování a autorizace, ukončení Protokolu SSL a omezení rychlosti. Pokud bránu nenasazujete, klienti musí odesílat požadavky přímo do front-endových služeb.
+Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. [Brána rozhraní API](/azure/architecture/microservices/gateway) je vzdálená mezi klienty a službami a je vstupním bodem pro všechny služby, které vaše aplikace poskytuje. Funguje jako reverzní proxy server, směrování požadavků od klientů ke službám. Může také provádět různé průřezové úlohy, jako je ověřování a autorizace, ukončení TLS a omezení rychlosti. Pokud bránu nenasazujete, klienti musí odesílat požadavky přímo do front-endových služeb.
 
 V Service Fabric, brána může být bezstavové služby, jako je [například aplikace ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)nebo jiné služby určené pro příchozí přenos dat, jako je [traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)nebo Azure API [Management](https://docs.microsoft.com/azure/api-management).
 

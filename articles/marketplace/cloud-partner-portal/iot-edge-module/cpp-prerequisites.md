@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b6e021fc452b45edd7b1be9fd5afd77b792b4853
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93e0418004ea65f93ad436eec1ce523424a194ba
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286536"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744985"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>Požadavky na publikování modulu IoT Edge
+
+>[!Important]
+>března 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
 
 Tento článek popisuje požadavky pro publikování nabídky modulu IoT Edge.  Pokud jste tak ještě neučinili, přečtěte si [průvodce publikováním modulů IoT Edge](../..//iot-edge-module.md).
 

@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 5c95c50f5597eee51c66cc68273478b1b9f0e2df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e8f63d63739f15d6d140b1eff510e6e006955b8
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286332"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744257"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Požadavky na nabídky aplikací Power BI
+
+>[!Important]
+>března 2020 začneme přesouvat správu nabídek aplikací Power BI do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzurePBIAppCreationOverview) spravujte migrované nabídky.
 
 Tento článek obsahuje technické a obchodní požadavky, které musíte splnit, než budete moct publikovat nabídku aplikace Power BI na tržiště AppSource.  Pokud jste tak ještě neučinili, přečtěte si [Průvodce publikováním nabídek Office 365, Dynamics 365, PowerApps a Power BI](../../appsource-offer-publishing-guide.md).
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220850"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744149"
 ---
 # <a name="language-and-region-support-for-luis"></a>Jazyková a regionální podpora služby LUIS
 
@@ -35,18 +35,25 @@ Služba LUIS rozumí projevy v následujících jazycích:
 | Americká angličtina |`en-US` | ✔ | ✔  |✔|✔|
 | Arabština (náhled - moderní standardní arabština) |`ar-AR`|-|-|-|-|
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Nizozemština |`nl-NL` |✔|  -   |-|✔|
+| Nizozemština |`nl-NL` |✔|-|-|✔|
 | francouzština (Francie) |`fr-FR` |✔| ✔ |✔ |✔|
-| Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|
+| Francouzština (Kanada) |`fr-CA` |-|-|-|✔|
 | Němčina |`de-DE` |✔| ✔ |✔ |✔|
-| Hindština | `hi-IN`|-|-|-|-|
+| Gudžarátština | `gu-IN`|-|-|-|-|
+| Hindština | `hi-IN`|-|✔|-|-|
 | Italština |`it-IT` |✔| ✔ |✔|✔|
 | *[Japonština](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Pouze klíčová fráze|
-| Korejština |`ko-KR` |✔|   -   |-|Pouze klíčová fráze|
+| Korejština |`ko-KR` |✔|-|-|Pouze klíčová fráze|
+| Maráthština | `mr-IN`|-|-|-|-|
 | Portugalština (Brazílie) |`pt-BR` |✔| ✔ |✔ |ne všechny subkultury|
 | Španělština (Španělsko) |`es-ES` |✔| ✔ |✔|✔|
-| Španělština (Mexiko)|`es-MX` |-|  -   |✔|✔|
-| Turečtina | `tr-TR` |✔|-|-|Pouze sentiment|
+| Španělština (Mexiko)|`es-MX` |-|-|✔|✔|
+| Tamilština | `ta-IN`|-|-|-|-|
+| Telugština | `te-IN`|-|-|-|-|
+| Turečtina | `tr-TR` |✔|✔|-|Pouze sentiment|
+
+
+
 
 Jazyková podpora se liší u [předem vytvořených entit](luis-reference-prebuilt-entities.md) a [předem vytvořených domén](luis-reference-prebuilt-domains.md).
 
@@ -77,22 +84,28 @@ Hybridní jazyky kombinují slova ze dvou kultur, jako je angličtina a čínšt
 ## <a name="tokenization"></a>Tokenizace
 Chcete-li provést strojové učení, LUIS rozdělí utterance na [tokeny](luis-glossary.md#token) založené na jazykové verzi.
 
-|Jazyk|  každý prostor nebo speciální znak | úroveň znaků|složená slova|[tokenizovaná entita vrácena](luis-concept-data-extraction.md#tokenized-entity-returned)
-|--|:--:|:--:|:--:|:--:|
-|Arabština|||||
-|Chinese||✔||✔|
-|Nizozemština|||✔|✔|
-|Angličtina (en-us)|✔ ||||
-|Francouzština (fr-FR)|✔||||
-|Francouzština (fr-CA)|✔||||
-|Němčina|||✔|✔|
-| Hindština |✔|-|-|-|-|
-|Italština|✔||||
-|Japonština||||✔|
-|Korejština||✔||✔|
-|Portugalština (Brazílie)|✔||||
-|Španělština (es-ES)|✔||||
-|Španělština (es-MX)|✔||||
+|Jazyk|  každý prostor nebo speciální znak | úroveň znaků|složená slova
+|--|:--:|:--:|:--:|
+|Arabština|✔|||
+|Chinese||✔||
+|Nizozemština|✔||✔|
+|Angličtina (en-us)|✔ |||
+|Francouzština (fr-FR)|✔|||
+|Francouzština (fr-CA)|✔|||
+|Němčina|✔||✔|
+|Gudžarátština|✔|||
+|Hindština|✔|||
+|Italština|✔|||
+|Japonština|||✔
+|Korejština||✔||
+|Maráthština|✔|||
+|Portugalština (Brazílie)|✔|||
+|Španělština (es-ES)|✔|||
+|Španělština (es-MX)|✔|||
+|Tamilština|✔|||
+|Telugština|✔|||
+|Turečtina|✔|||
+
 
 ### <a name="custom-tokenizer-versions"></a>Vlastní verze tokenizeru
 
@@ -102,6 +115,9 @@ Následující jazykové verze mají vlastní verze tokenizer:
 |--|--|--|
 |Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí tokenizer založené na strojovém učení, který se pokusí rozdělit složená slova do jejich jednotlivých součástí.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, je `Ich fahre einen kranken wagen`otočena . Umožňuje označovat `kranken` a `wagen` nezávisle jako různé subjekty.|
 |Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením je na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstane jeden token. Proto `krankenwagen` je označen jako jedna entita. |
+|Nizozemština<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí tokenizer založené na strojovém učení, který se pokusí rozdělit složená slova do jejich jednotlivých součástí.<br>Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, je `Ik ga naar de kleuter school`otočena . Umožňuje označovat `kleuter` a `school` nezávisle jako různé subjekty.|
+|Nizozemština<br>`de-de`|1.0.1|Tokenizes slova rozdělením je na mezery.<br> Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, zůstane jeden token. Proto `kleuterschool` je označen jako jedna entita. |
+
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrace mezi verzemi tokenizeru
 <!--

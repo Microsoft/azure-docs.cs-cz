@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3ff65a637c1d3722e773ab27f051b3b5bc109a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281727"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745110"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Karta Marketplace modulu IoT Edge
+
+>[!Important]
+>března 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
 
 Karta **Marketplace** na stránce **Nová nabídka** umožňuje poskytovat potenciálním zákazníkům marketingové, prodejní a právní informace a smlouvy a spravovat potenciální zákazníky generované z tržiště. Tato dlouhá forma je rozdělena do čtyř částí: **Přehled**, **Marketingové artefakty**, **Správa zájemců**a **Právní**.
 
@@ -86,13 +89,13 @@ Tato část obsahuje následující podsekce: **Loga**, **Snímek obrazovky**a *
 |  ---------                |     ---------------                                                          |
 | *Loga*  | Podívejte se na předchozí snímky obrazovky, abyste zjistili, jak a kde budou vaše loga použita.  |
 | **Krátkodobé používání\***                 | Formát PNG 40 x 40 pixelů                                                     |
-| **Střednědobé používání\***                | Formát PNG o rozměrech 90 x 90 pixelů                                                     |
+| **Medium\***                | Formát PNG o rozměrech 90 x 90 pixelů                                                     |
 | **Dlouhodobé používání\***                 | Formát PNG 115x115 pixelů                                                  |
 | **Široký\***                  | Formát PNG 255x115 pixelů                                                   |
 | **Hrdina**                  | Formát PNG o rozměrech 815 x 290 pixelů.  Volitelné, ale po nahrání nelze ikonu hrdiny odstranit. |
 | *Snímky obrazovek*  | Snímky obrazovky se zobrazují na stránce s podrobnostmi o produktu. Jsou to dobrý způsob, jak vizuálně komunikovat o tom, co váš modul IoT Edge dělá a jak funguje. Můžete například zobrazit diagramy architektury nebo ilustrace případu. Volitelné, ale maximálně pět snímků obrazovky na skladovou položku. |
 | **Název**                  | Jméno nebo název. Maximální délka 100 znaků.                             |
-| **Obrázek**                 | Snímek obrazovky, formát PNG 533x324 pixelů                               |
+| **Image**                 | Snímek obrazovky, formát PNG 533x324 pixelů                               |
 | *Videa*  | Videa se zobrazují na stránce s podrobnostmi o produktu. Jsou to dobrý způsob, jak vizuálně komunikovat o tom, co váš modul IoT Edge dělá a jak funguje. |
 | **Název**                  | Jméno nebo název. Maximální délka 100 znaků.                             |
 | **Odkaz**                  | Adresa URL videa hostovaná na YouTube nebo Vimeo                                        |

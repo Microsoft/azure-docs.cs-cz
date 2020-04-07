@@ -3,12 +3,12 @@ title: 'Úvodní příručka: Vytvoření podrobného plánu pomocí rozhraní R
 description: V tomto rychlém startu pomocí Azure Blueprints můžete vytvářet, definovat a nasazovat artefakty pomocí rozhraní REST API.
 ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241539"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676569"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Úvodní příručka: Definování a přiřazení podrobného plánu Azure pomocí rozhraní REST API
 
@@ -25,7 +25,7 @@ Seznamte se s principy vytváření a přiřazování podrobných plánů, abyst
 
 Pokud rozhraní REST API neznáte, nejprve si přečtěte [referenční informace k rozhraní Azure REST API](/rest/api/azure/), kde najdete obecný přehled rozhraní REST API, zejména identifikátoru URI požadavku a textu požadavku. V tomto článku se tyto pojmy používají v pokynech při práci s podrobnými plány Azure, a proto se předpokládá, že jste se s nimi prakticky seznámili. Začátečníkům se doporučuje používat k automatické autorizaci nástroje, jako je [ARMClient](https://github.com/projectkudu/ARMClient) a další.
 
-Specifikace služby Blueprints najdete v tématu věnovaném [rozhraní REST API služby Azure Blueprints](/rest/api/blueprints/).
+Specifikace azure blueprints najdete v [tématu Azure Blueprints REST API](/rest/api/blueprints/).
 
 ### <a name="rest-api-and-powershell"></a>REST API a PowerShell
 
@@ -406,7 +406,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      **Uživatelem přiřazená spravovaná identita** může být v libovolném předplatném a skupině prostředků, ke které má uživatel, který přiřazuje podrobný plán, oprávnění.
 
      > [!IMPORTANT]
-     > Podrobné plány nespravuje spravovanou identitu přiřazenou uživatelem. Uživatelé jsou zodpovědní za přiřazení dostatečných rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
+     > Azure Blueprints nespravuje uživatelem přiřazenou spravovanou identitu. Uživatelé jsou zodpovědní za přiřazení dostatečných rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

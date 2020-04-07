@@ -4,14 +4,14 @@ description: Zjistěte, jak migrovat aplikaci z použití knihovny hromadného p
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/06/2020
 ms.author: maquaran
-ms.openlocfilehash: e1a2a5d849d3c94d62b8645c41f288ba130aa6a4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 820a5398d84122659b1676b7d5722bce08b1837d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479328"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755977"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny hromadného prováděcího modulu do hromadné podpory v azure cosmos DB .NET V3 SDK
 
@@ -73,6 +73,15 @@ Obsahuje: `BulkOperationResponse`
 1. Počet úspěšných operací.
 1. Součet spotřebovaných jednotek požadavku.
 1. Pokud jsou chyby, zobrazí seznam řazených kolekcí členů, které obsahují výjimku a související položku pro účely protokolování a identifikace.
+
+## <a name="retry-configuration"></a>Opakovat konfiguraci
+
+Hromadná knihovna vykonavatele `MaxRetryAttemptsOnThrottledRequests` měla [pokyny,](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) které jsou uvedeny pro nastavení `MaxRetryWaitTimeInSeconds` a [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) delegovat `0` řízení do knihovny.
+
+Pro hromadnou podporu v sdk .NET neexistuje žádné skryté chování. Možnosti opakování můžete nakonfigurovat přímo prostřednictvím [cosmosClientOptions.MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) a [CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests).
+
+> [!NOTE]
+> V případech, kdy je zřízená jednotka požadavku mnohem nižší, než se očekávalo na základě množství dat, můžete zvážit nastavení těchto na vysoké hodnoty. Hromadná operace bude trvat déle, ale má vyšší šanci na úplné úspěchu z důvodu vyšší opakování.
 
 ## <a name="performance-improvements"></a>Zlepšení výkonu
 

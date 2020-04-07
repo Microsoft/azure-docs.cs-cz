@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387644"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673613"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook pro řešení běžných požadavků na zabezpečení pomocí Azure SQL Database
 
@@ -63,7 +63,7 @@ Pokud není uvedeno jinak, doporučujeme dodržovat všechny osvědčené postup
 
 Plánujeme pokračovat v aktualizaci doporučení a osvědčených postupů uvedených zde. Zadejte vstup nebo jakékoli opravy pro tento dokument pomocí odkazu **Zpětná vazba** v dolní části tohoto článku.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Ověřování je proces dokazování, že uživatel je tím, za koho se považuje. Azure SQL Database podporuje dva typy ověřování:
 
@@ -265,7 +265,7 @@ Následující osvědčené postupy jsou volitelné, ale budou mít za následek
 
 - Nezapomeňte, že oprávnění v databázovém stroji serveru SQL Server lze použít na následující obory. Čím menší je rozsah, tím menší je dopad udělených oprávnění: 
   - Server Azure SQL Database (speciální role v hlavní databázi) 
-  - Databáze 
+  - databáze 
   - Schéma
       - Je vhodné použít schémata udělit oprávnění uvnitř databáze. (viz také: [Schema-design pro SQL Server: doporučení pro návrh schématu s ohledem na zabezpečení](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Objekt (tabulka, zobrazení, postup atd.) 
@@ -466,7 +466,7 @@ Při použití CLE:
 
 Mějte na paměti, že vždy šifrované je primárně určen k ochraně citlivá data v použití od uživatelů s vysokými oprávněními Azure SQL Database (cloud operátoři, DBA) - viz [Ochrana citlivých dat v používání před vysoce privilegovanými, neoprávněnými uživateli](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Buďte si vědomi následujících problémů při použití vždy šifrované k ochraně dat před uživateli aplikací:
 
-- Ve výchozím nastavení udržují všechny klientské ovladače společnosti Microsoft podporující vždy šifrované globální (jednu na aplikaci) mezipaměť šifrovacích klíčů sloupců. Jakmile ovladač klienta získá šifrovací klíč sloupce ve formátu prostého textu kontaktováním úložiště klíčů obsahujícího hlavní klíč sloupce, je šifrovací klíč sloupce ve formátu prostého textu uložen do mezipaměti. Díky izolaci dat od uživatelů víceuživatelské aplikace náročné. Pokud vaše aplikace zosobňuje koncové uživatele při interakci s úložištěklíčů (například Azure Key Vault), poté, co dotaz uživatele naplní mezipaměť šifrovacím klíčem sloupce, následný dotaz, který vyžaduje stejný klíč, ale je spuštěn jiným uživatelem, použije uložených v mezipaměti. Ovladač nezavolá do úložiště klíčů a nezkontroluje, zda má druhý uživatel oprávnění k přístupu k šifrovacímu klíči sloupců. V důsledku toho uživatel uvidí šifrovaná data i v případě, že uživatel nemá přístup ke klíčům. Chcete-li dosáhnout izolace uživatelů v rámci víceuživatelské aplikace, můžete zakázat ukládání šifrovacího klíče sloupce do mezipaměti. Zakázání ukládání do mezipaměti způsobí další režie výkonu, protože ovladač bude muset kontaktovat úložiště klíčů pro každou operaci šifrování nebo dešifrování dat.
+- Ve výchozím nastavení udržují všechny klientské ovladače společnosti Microsoft podporující vždy šifrované globální (jednu na aplikaci) mezipaměť šifrovacích klíčů sloupců. Jakmile ovladač klienta získá šifrovací klíč sloupce ve formátu prostého textu kontaktováním úložiště klíčů obsahujícího hlavní klíč sloupce, je šifrovací klíč sloupce ve formátu prostého textu uložen do mezipaměti. Díky izolaci dat od uživatelů víceuživatelské aplikace náročné. Pokud vaše aplikace zosobňuje koncové uživatele při interakci s úložiště klíčů (například Azure Key Vault), poté, co dotaz uživatele naplní mezipaměť pomocí šifrovacího klíče sloupce, následný dotaz, který vyžaduje stejný klíč, ale je spuštěn jiným uživatelem použije klíč uložený v mezipaměti. Ovladač nezavolá do úložiště klíčů a nezkontroluje, zda má druhý uživatel oprávnění k přístupu k šifrovacímu klíči sloupců. V důsledku toho uživatel uvidí šifrovaná data i v případě, že uživatel nemá přístup ke klíčům. Chcete-li dosáhnout izolace uživatelů v rámci víceuživatelské aplikace, můžete zakázat ukládání šifrovacího klíče sloupce do mezipaměti. Zakázání ukládání do mezipaměti způsobí další režie výkonu, protože ovladač bude muset kontaktovat úložiště klíčů pro každou operaci šifrování nebo dešifrování dat.
 
 ### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>Ochrana dat před neoprávněným zobrazením uživateli aplikací při zachování datového formátu
 Další technikou, která brání neoprávněným uživatelům v zobrazení dat, je zamlžovat nebo maskovat data při zachování datových typů a formátů, aby bylo zajištěno, že uživatelské aplikace mohou pokračovat v zpracování a zobrazení dat.
@@ -735,7 +735,7 @@ Sledujte, kdo přistupuje k citlivým datům, a zachyťte dotazy na citlivá dat
 **Jak implementovat**:
 
 - Pomocí sql auditu a klasifikace dat v kombinaci. 
-  - V protokolu [auditování databáze SQL](sql-database-auditing.md) můžete sledovat přístup konkrétně k citlivým datům. Můžete také zobrazit informace, jako jsou data, ke kterým byl přístup přístup, a také jeho popisek citlivosti. Další informace naleznete v [tématu Auditing access to sensitive data](sql-database-data-discovery-and-classification.md#subheading-3). 
+  - V protokolu [auditování databáze SQL](sql-database-auditing.md) můžete sledovat přístup konkrétně k citlivým datům. Můžete také zobrazit informace, jako jsou data, ke kterým byl přístup přístup, a také jeho popisek citlivosti. Další informace naleznete v [tématu Zjišťování dat & klasifikace](sql-database-data-discovery-and-classification.md) a [auditování přístupu k citlivým datům](sql-database-data-discovery-and-classification.md#audit-sensitive-data). 
 
 **Osvědčené postupy**:
 
@@ -785,7 +785,7 @@ Většina bezpečnostních standardů se zabývá dostupností dat z hlediska pr
 
 - Úroveň Business Critical zahrnuje skupiny s podporou převzetí služeb při selhání, zóny s více dostupností, úplné a rozdílové zálohy protokolů a zálohy obnovení v čase, které jsou ve výchozím nastavení povoleny:  
   - [Vysoká dostupnost a Azure SQL Database – redundantní konfigurace zóny](sql-database-high-availability.md#zone-redundant-configuration)
-  - [Automatické zálohování](sql-database-automated-backups.md)
+  - [Automatizované zálohy](sql-database-automated-backups.md)
   - [Obnovení databáze Azure SQL pomocí automatického zálohování databáze – obnovení bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 - Další funkce kontinuity podnikání, jako jsou skupiny automatického převzetí služeb při selhání v různých geografických geografických službách Azure, lze nakonfigurovat, jak je popsáno zde: [Přehled kontinuity podnikání s databází Azure SQL Database](sql-database-business-continuity.md)

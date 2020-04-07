@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239282"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754326"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Kurz: Import souborů SQL BACPAC se šablonami ARM
 
-Zjistěte, jak pomocí rozšíření Azure SQL Database importovat soubor BACPAC pomocí šablon Azure Resource Manager (ARM). Artefakty nasazení jsou všechny soubory, kromě hlavní soubory šablony, které jsou potřebné k dokončení nasazení. Soubor BACPAC je artefakt. 
+Zjistěte, jak pomocí rozšíření Azure SQL Database importovat soubor BACPAC pomocí šablon Azure Resource Manager (ARM). Artefakty nasazení jsou všechny soubory, kromě hlavní soubory šablony, které jsou potřebné k dokončení nasazení. Soubor BACPAC je artefakt.
 
 V tomto kurzu vytvoříte šablonu pro nasazení serveru Azure SQL a databáze SQL a importovat soubor BACPAC. Informace o tom, jak nasadit rozšíření virtuálních strojů Azure pomocí šablon ARM, najdete [v tématu Kurz: Nasazení rozšíření virtuálních strojů se šablonami ARM](./template-tutorial-deploy-vm-extensions.md).
 
@@ -255,7 +255,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili sql server a databázi SQL a importovali soubor BACPAC. Soubor BACPAC je uložený v účtu Azure Storage. Kdokoli s adresou URL má přístup k souboru. Informace o zabezpečení souboru BACPAC (artefaktu) najdete v následujících tématech:
+V tomto kurzu jste nasadili sql server a databázi SQL a importovali soubor BACPAC. Informace o řešení potíží s nasazením šablony najdete v tématu:
 
 > [!div class="nextstepaction"]
-> [Zabezpečte artefakty](./template-tutorial-secure-artifacts.md)
+> [Poradce při potížích s nasazením předlohy ARM](./template-tutorial-troubleshoot.md)

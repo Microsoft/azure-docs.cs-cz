@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 6f1c211a8110d95adb5e6802313c5b7deafe3864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1e5c0a714a8b66d83c19acc53f6a680a9196a90
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276457"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673431"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Úvodní příručka: Vytvoření projektu Azure Functions pomocí kódu Visual Studia
 
@@ -26,7 +26,7 @@ Než začnete, ujistěte se, že máte následující požadavky:
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
 + [Node.js](https://nodejs.org/), vyžadované systémem Windows pro npm. Pouze [verze LTS active LTS a Údržba LTS ](https://nodejs.org/about/releases/). Pomocí `npm --version` příkazu zkontrolujte svou verzi.
-    Není vyžadováno pro místní vývoj na MacOS a Linux.   
+    Není vyžadováno pro místní vývoj na macOS a Linux.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
 + [Node.js](https://nodejs.org/), Verze LTS active LTS a Údržba (doporučeno 10.14.1). Pomocí `npm --version` příkazu zkontrolujte svou verzi.
@@ -39,6 +39,11 @@ Než začnete, ujistěte se, že máte následující požadavky:
 
 + Sada [SDK 2.2 core .NET](https://www.microsoft.com/net/download)  
 ::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java Developer Kit](https://aka.ms/azure-jdks), verze 8.
+
++ [Apache Maven](https://maven.apache.org), verze 3.0 nebo vyšší.
+::: zone-end  
 + [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
 ::: zone pivot="programming-language-csharp"  
 + [Rozšíření C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) pro kód sady Visual Studio.  
@@ -47,7 +52,10 @@ Než začnete, ujistěte se, že máte následující požadavky:
 + [Rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro kód Visual Studia.  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"
-+ [Rozšíření prostředí PowerShell pro kód sady Visual Studio](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
++ [Rozšíření prostředí PowerShell pro kód sady Visual Studio](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell). 
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Rozšiřující balíček Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 ::: zone-end  
 
 + [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro kód Visual Studia. 
@@ -85,21 +93,35 @@ V této části použijete visual studio kód k vytvoření projektu místní fu
     + **Vyberte alias Pythonu pro vytvoření virtuálního prostředí**: Zvolte umístění interpreta Pythonu. Pokud se umístění nezobrazuje, zadejte úplnou cestu k binárnímu souboru Pythonu.  
     ::: zone-end
 
+    ::: zone pivot="programming-language-java"  
+    + **Vyberte jazyk pro projekt** `Java`funkcí : Zvolte .
+
+    + **Zadejte ID skupiny**: Zvolte `com.function`.
+
+    + **Zadejte ID artefaktu**: Zvolte `myFunction`.
+
+    + **Zadejte verzi** `1.0-SNAPSHOT`: Zvolte .
+
+    + **Zadejte název**balíčku `com.function`: Zvolte .
+
+    + **Zadejte název**aplikace `myFunction-12345`: Zvolte .
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Vyberte šablonu pro první funkci** `HTTP trigger`projektu : Zvolte .
     
     + **Zadejte název**funkce `HttpExample`: Zadejte .
-    
+    ::: zone-end  
     ::: zone pivot="programming-language-csharp"
     + **Zadejte obor**názvů `My.Functions`: Zadejte . 
-    ::: zone-end
-
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Úroveň autorizace**: Zvolte `Anonymous`, který umožňuje komukoli volat koncový bod vaší funkce. Další informace o úrovni autorizace naleznete v [tématu Autorizace klíčů](functions-bindings-http-webhook-trigger.md#authorization-keys).
-
+    ::: zone-end  
     + **Vyberte, jak chcete projekt**otevřít `Add to workspace`: Zvolte .
 
 1. Pomocí těchto informací Visual Studio Code generuje projekt Azure Functions s aktivační událostí HTTP. Můžete zobrazit místní soubory projektu v Průzkumníkovi. Další informace o vytvořených souborech naleznete v [tématu Generované soubory projektu](functions-develop-vs-code.md#generated-project-files). 
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python,programming-language-java"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
@@ -119,7 +141,7 @@ Po ověření, že funkce běží správně v místním počítači, je čas pou
 
 ## <a name="run-the-function-in-azure"></a>Spuštění funkce v Azure
 
-1. Zpět v **Oblasti Azure: Funkce** v postranním panelu rozbalte novou aplikaci funkcí v rámci předplatného. Rozbalte **funkce**, klepněte pravým tlačítkem myši (Windows) nebo Ctrl + klepněte na tlačítko (MacOS) na **httpexample**a pak zvolte **Kopírovat adresu URL funkce**.
+1. Zpět v **Oblasti Azure: Funkce** v postranním panelu rozbalte novou aplikaci funkcí v rámci předplatného. Rozbalte **funkce**, klepněte pravým tlačítkem myši (Windows) nebo Ctrl + klepněte na tlačítko (macOS) na **httpexample**a pak zvolte **Kopírovat adresu URL funkce**.
 
     ![Kopírování adresy URL funkce pro novou aktivační událost HTTP](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 

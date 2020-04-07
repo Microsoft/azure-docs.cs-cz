@@ -10,15 +10,13 @@
       href: geo-ai-dsvm-overview.md
     - name: 'Nástroje, které jsou součástí prostředí Data Science Virtual Machine'
       href: tools-included.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření prostředí Data Science Virtual Machine s Windows
       href: provision-vm.md
     - name: Vytvoření prostředí Data Science Virtual Machine s Ubuntu
       href: dsvm-ubuntu-intro.md
-    - name: Vytvoření prostředí Data Science Virtual Machine s CentOS
-      href: linux-dsvm-intro.md
     - name: Vytvoření prostředí Data Science Virtual Machine s Geo AI
       href: provision-geo-ai-dsvm.md
 - name: Koncepty
@@ -39,7 +37,7 @@
       href: dsvm-tools-productivity.md
     - name: Podnikové zabezpečení a pokyny
       href: dsvm-enterprise-overview.md
-- name: Ukázky
+- name: ukázky
   href: dsvm-samples-and-walkthroughs.md
 - name: Návody
   items:
@@ -67,8 +65,6 @@
   items:
     - name: Data Science Virtual Machine s Ubuntu
       href: reference-ubuntu-vm.md
-    - name: Data Science Virtual Machine s CentOS
-      href: reference-centos-vm.md
     - name: "Poznámky k\_verzi"
       href: release-notes.md
     - name: Známé problémy

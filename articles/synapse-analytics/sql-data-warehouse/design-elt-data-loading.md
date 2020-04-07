@@ -11,12 +11,12 @@ ms.date: 02/19/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 87b33e91076f8f7f31740795f0ec05cea49a1e83
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631193"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744961"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategie načítání dat pro fond Synapse SQL
 
@@ -24,7 +24,7 @@ Tradiční fondy SMP SQL používají proces extrakce, transformace a zatížen�
 
 Pomocí procesu extrakce, zatížení a transformace (ELT) využívá MPP a eliminuje prostředky potřebné pro transformaci dat před načtením.
 
-Zatímco fond SQL podporuje mnoho metod načítání, včetně oblíbených možností serveru SQL Server, jako je [například bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [sqlbulkcopy api](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), nejrychlejší a nejškálovatelnější způsob, jak načíst data je prostřednictvím polybase externí tabulky a [příkaz COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (preview).
+Zatímco fond SQL podporuje mnoho metod načítání, včetně oblíbených možností serveru SQL Server, jako je [například bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [sqlbulkcopy api](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), nejrychlejší a nejškálovatelnější způsob, jak načíst data je prostřednictvím polybase externí tabulky a [příkaz COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (preview).
 
 S PolyBase a příkazem COPY můžete přistupovat k externím datům uloženým v úložišti objektů Blob Azure nebo v Úložišti Datových jezer Azure prostřednictvím jazyka T-SQL. Pro co největší flexibilitu při načítání doporučujeme použít příkaz COPY.
 
@@ -58,7 +58,7 @@ Získání dat ze zdrojového systému závisí na umístění úložiště.  C�
 
 S PolyBase a COPY prohlášení, můžete načíst data z UTF-8 a UTF-16 kódovaný oddělený text nebo CSV soubory. Kromě oddělených textnebo CSV souborů se načte z formátů souborů Hadoop, jako jsou ORC a Parkety. PolyBase a příkaz COPY mohou také načíst data z komprimovaných souborů Gzip a Snappy.
 
-Rozšířené ASCII, formát s pevnou šířkou a vnořené formáty, jako je WinZip nebo XML, nejsou podporovány. Pokud exportujete ze serveru SQL Server, můžete data exportovat do oddělených textových souborů pomocí [nástroje příkazového řádku bcp.](/sql/tools/bcp-utility?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Rozšířené ASCII, formát s pevnou šířkou a vnořené formáty, jako je WinZip nebo XML, nejsou podporovány. Pokud exportujete ze serveru SQL Server, můžete data exportovat do oddělených textových souborů pomocí [nástroje příkazového řádku bcp.](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Přiložte data do úložiště objektů blob Azure nebo azure data lake store
 
@@ -141,10 +141,10 @@ Chcete-li načíst data pomocí funkce PolyBase, můžete použít některou z t
 
 ### <a name="other-loading-options"></a>Další možnosti načítání
 
-Kromě PolyBase a příkazu COPY můžete použít [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15) nebo [SqlBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). bcp načte přímo do databáze bez procházení úložiště objektů Blob Azure a je určen pouze pro malé zatížení.
+Kromě PolyBase a příkazu COPY můžete použít [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) nebo [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). bcp načte přímo do databáze bez procházení úložiště objektů Blob Azure a je určen pouze pro malé zatížení.
 
 > [!NOTE]
-> Všimněte si, že výkon zatížení těchto možností je pomalejší než PolyBase a příkaz COPY.
+> Výkon zatížení těchto možností je pomalejší než PolyBase a příkaz COPY.
 
 ## <a name="5-transform-the-data"></a>5. Transformace dat
 

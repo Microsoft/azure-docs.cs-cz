@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c5964bc944cd50e05d548eb731450a4944e854d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631266"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742622"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Návrhové tabulky v fondu Synapse SQL
 
@@ -111,7 +111,7 @@ Kategorie tabulky často určuje, kterou možnost zvolit pro distribuci tabulky.
 
 ## <a name="table-partitions"></a>Oddíly tabulky
 
-Dělená tabulka ukládá a provádí operace na řádcích tabulky podle oblastí dat. Tabulka může být například rozdělena podle dne, měsíce nebo roku. Můžete zlepšit výkon dotazu prostřednictvím eliminace oddílu, který omezuje prohledávací dotaz na data v rámci oddílu. Data můžete také udržovat prostřednictvím přepínání oddílů. Vzhledem k tomu, že data v databázi SQL Data Warehouse je již distribuován, příliš mnoho oddílů může zpomalit výkon dotazu. Další informace naleznete v [tématu Partitioning guidance](sql-data-warehouse-tables-partition.md).  Při přepínání oddílů do oddílů tabulky, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET v příkazu [ALTER TABLE,](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pokud mají být stávající data zkrácena. Níže uvedený kód přepne v transformovaných denních datech do SalesFact přepsání všech existujících dat.
+Dělená tabulka ukládá a provádí operace na řádcích tabulky podle oblastí dat. Tabulka může být například rozdělena podle dne, měsíce nebo roku. Můžete zlepšit výkon dotazu prostřednictvím eliminace oddílu, který omezuje prohledávací dotaz na data v rámci oddílu. Data můžete také udržovat prostřednictvím přepínání oddílů. Vzhledem k tomu, že data v databázi SQL Data Warehouse je již distribuován, příliš mnoho oddílů může zpomalit výkon dotazu. Další informace naleznete v [tématu Partitioning guidance](sql-data-warehouse-tables-partition.md).  Při přepínání oddílů do oddílů tabulky, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET v příkazu [ALTER TABLE,](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pokud mají být stávající data zkrácena. Níže uvedený kód přepne v transformovaných denních datech do SalesFact přepsání všech existujících dat.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -126,7 +126,7 @@ Clustered columnstore index je obvykle nejlepší volbou, ale v některých př�
 > [!TIP]
 > Tabulka haldy může být zvláště užitečná pro načítání přechodných dat, jako je například pracovní tabulka, která je transformována do konečné tabulky.
 
-Seznam funkcí columnstore najdete v tématu [Co je nového pro indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Chcete-li zlepšit výkon indexu columnstore, naleznete [v tématu Maximalizace kvality skupiny řádků pro indexy columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Seznam funkcí columnstore najdete v tématu [Co je nového pro indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Chcete-li zlepšit výkon indexu columnstore, naleznete [v tématu Maximalizace kvality skupiny řádků pro indexy columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistika
 
@@ -146,10 +146,10 @@ Tabulku můžete vytvořit jako novou prázdnou tabulku. Můžete také vytvoři
 
 | Příkaz T-SQL | Popis |
 |:----------------|:------------|
-| [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
-| [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql) | Vytvoří externí tabulku. Definice tabulky je uložena ve fondu SQL. Data tabulky se ukládají v úložišti objektů blob Azure nebo v Azure Data Lake Store. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Naplní novou tabulku výsledky příkazu select. Sloupce tabulky a datové typy jsou založeny na výsledcích příkazu select. Chcete-li importovat data, tento příkaz můžete vybrat z externí tabulky. |
-| [VYTVOŘIT EXTERNÍ TABULKU JAKO VÝBĚR](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Vytvoří novou externí tabulku exportem výsledků příkazu select do externího umístění.  Umístění je úložiště objektů blob Azure nebo Azure Data Lake Store. |
+| [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
+| [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří externí tabulku. Definice tabulky je uložena ve fondu SQL. Data tabulky se ukládají v úložišti objektů blob Azure nebo v Azure Data Lake Store. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Naplní novou tabulku výsledky příkazu select. Sloupce tabulky a datové typy jsou založeny na výsledcích příkazu select. Chcete-li importovat data, tento příkaz můžete vybrat z externí tabulky. |
+| [VYTVOŘIT EXTERNÍ TABULKU JAKO VÝBĚR](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří novou externí tabulku exportem výsledků příkazu select do externího umístění.  Umístění je úložiště objektů blob Azure nebo Azure Data Lake Store. |
 
 ## <a name="aligning-source-data-with-the-sql-pool"></a>Zarovnání zdrojových dat s fondem SQL
 
@@ -174,7 +174,7 @@ Fond SQL podporuje mnoho, ale ne všechny funkce tabulky nabízené jinými data
 
 ## <a name="table-size-queries"></a>Dotazy na velikost tabulky
 
-Jeden jednoduchý způsob, jak identifikovat prostor a řádky spotřebované tabulka v každém z 60 rozdělení, je použití [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql).
+Jeden jednoduchý způsob, jak identifikovat prostor a řádky spotřebované tabulka v každém z 60 rozdělení, je použití [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');

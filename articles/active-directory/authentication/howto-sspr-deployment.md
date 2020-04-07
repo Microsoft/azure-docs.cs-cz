@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667319"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676726"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování samoobslužného resetování hesla služby Azure Active Directory
 
@@ -73,7 +73,7 @@ Další informace o cenách najdete v [tématu Ceny služby Azure Active Directo
 
 ### <a name="training-resources"></a>Zdroje pro školení
 
-| Prostředky| Odkaz a popis |
+| Zdroje a prostředky| Odkaz a popis |
 | - | - |
 | Videa| [Ušetřte svým uživatelům lepší škálovatelnost IT](https://youtu.be/g9RpRnylxS8) 
 | |[Co je samoobslužné resetování hesla?](https://youtu.be/hc97Yx5PJiM)|
@@ -343,7 +343,7 @@ Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete začít nasazovat [samoobslužné resetování hesla Azure AD, přečtěte si článek Povolení samoobslužného hesla Azure AD.](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md)
+* Pokud chcete začít nasazovat [samoobslužné resetování hesla Azure AD, přečtěte si článek Povolení samoobslužného hesla Azure AD.](tutorial-enable-sspr.md)
 
 * [Zvažte implementaci ochrany heslem Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

@@ -3,17 +3,17 @@ title: Vytvoření clusteru služby Service Fabric na webu Azure Portal
 description: Zjistěte, jak nastavit zabezpečený cluster Service Fabric v Azure pomocí portálu Azure a trezoru klíčů Azure.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258795"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754105"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí portálu Azure
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Portál Azure](service-fabric-cluster-creation-via-portal.md)
+> * [portál Azure](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -36,13 +36,13 @@ Pokud je to poprvé, co vytváříte cluster prostředků infrastruktury služeb
 Tento certifikát je nutný k zabezpečení clusteru a zabránění neoprávněnému přístupu k němu. Poskytuje zabezpečení clusteru několika způsoby:
 
 * **Ověřování clusteru:** Ověřuje komunikaci mezi mezi uzlami pro federaci clusteru. Ke clusteru se mohou připojit pouze uzly, které mohou prokázat svou identitu pomocí tohoto certifikátu.
-* **Ověřování serveru:** Ověří koncové body správy clusteru klientovi pro správu, takže klient pro správu ví, že mluví se skutečným clusterem. Tento certifikát také poskytuje protokol SSL pro rozhraní API pro správu protokolu HTTPS a pro průzkumníka prostředků infrastruktury služeb přes protokol HTTPS.
+* **Ověřování serveru:** Ověří koncové body správy clusteru klientovi pro správu, takže klient pro správu ví, že mluví se skutečným clusterem. Tento certifikát také poskytuje TLS pro rozhraní API pro správu PROTOKOLU HTTPS a pro průzkumníka prostředků infrastruktury služeb přes protokol HTTPS.
 
 Aby bylo osvědčení pro tyto účely účely, musí splňovat následující požadavky:
 
 * Certifikát musí obsahovat soukromý klíč.
 * Certifikát musí být vytvořen pro výměnu klíčů, exportovatelný do souboru Výměny osobních informací (.pfx).
-* **Název předmětu certifikátu se musí shodovat s doménou používanou** pro přístup k clusteru Service Fabric. To je nutné poskytnout SSL pro koncové body správy HTTPS clusteru a Service Fabric Explorer. Certifikát SSL nelze získat od certifikační autority (CA) pro doménu. `.cloudapp.azure.com` Získejte vlastní název domény pro svůj cluster. Pokud požadujete certifikát od certifikační autority, musí se název subjektu certifikátu shodovat s vlastním názvem domény používaným pro váš cluster.
+* **Název předmětu certifikátu se musí shodovat s doménou používanou** pro přístup k clusteru Service Fabric. To je nutné poskytnout TLS pro koncové body správy HTTPS clusteru a Service Fabric Explorer. Certifikát TLS/SSL nelze získat od certifikační autority (CA) pro doménu. `.cloudapp.azure.com` Získejte vlastní název domény pro svůj cluster. Pokud požadujete certifikát od certifikační autority, musí se název subjektu certifikátu shodovat s vlastním názvem domény používaným pro váš cluster.
 
 #### <a name="client-authentication-certificates"></a>Certifikáty ověřování klienta
 Další klientské certifikáty ověřují správce pro úlohy správy clusteru. Service Fabric má dvě úrovně přístupu: **admin** a **jen pro čtení uživatele**. Měl by být použit alespoň jednotný certifikát pro přístup pro správu. Pro další přístup na úrovni uživatele musí být poskytnut samostatný certifikát. Další informace o rolích přístupu naleznete [v tématu řízení přístupu na základě rolí pro klienty Service Fabric][service-fabric-cluster-security-roles].

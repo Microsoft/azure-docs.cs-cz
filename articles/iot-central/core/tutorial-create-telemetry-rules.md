@@ -3,23 +3,23 @@ title: Kurz – vytváření a správa pravidel v aplikaci Azure IoT Central
 description: Tento kurz ukazuje, jak pravidla Azure IoT Central umožňují sledovat vaše zařízení téměř v reálném čase a automaticky vyvolat akce, jako je například odeslání e-mailu, když se pravidlo aktivuje.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77167433"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673776"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Kurz: Vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
-Azure IoT Central můžete použít ke vzdálenému monitorování připojených zařízení. Pravidla Azure IoT Central umožňují monitorovat vaše zařízení téměř v reálném čase a automaticky vyvolat akce, jako je například odeslání e-mailu. Pouhými několika kliknutími můžete definovat podmínku pro sledování telemetrie ze zařízení a konfiguraci odpovídající akce. Tento článek vysvětluje, jak vytvořit pravidla pro sledování telemetrie odeslané zařízením.
+Azure IoT Central můžete použít ke vzdálenému monitorování připojených zařízení. Pravidla Azure IoT Central umožňují monitorovat vaše zařízení téměř v reálném čase a automaticky vyvolat akce, jako je například odeslání e-mailu. Tento článek vysvětluje, jak vytvořit pravidla pro sledování telemetrie, která vaše zařízení odesílají.
 
 Zařízení používají telemetrii k odesílání číselných dat ze zařízení. Pravidlo se aktivuje, když vybraná telemetrická metrie zařízení překročí zadanou prahovou hodnotu.
 
@@ -34,11 +34,11 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, měli byste dokončit [vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md) a přidat simulované zařízení do rychlého spuštění aplikace [IoT Central](./quick-create-pnp-device.md) k vytvoření šablony zařízení **MXChip IoT DevKit** pro práci.
+Než začnete, [dokončete vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md) a [přidejte simulované zařízení do](./quick-create-pnp-device.md) rychlých startů aplikace IoT Central a vytvořte šablonu zařízení **MXChip IoT DevKit,** se kterou budete pracovat.
 
 ## <a name="create-a-rule"></a>Vytvoření pravidla
 
-Chcete-li vytvořit pravidlo telemetrie, musí být definováno alespoň jedno měření telemetrie. Tento kurz používá zařízení senzoru prostředí, které odesílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v rychlém startu [přidat simulované zařízení do aplikace IoT Central.](./quick-create-pnp-device.md) Pravidlo monitoruje teplotu hlášenou zařízením a odešle e-mail, když jde nad 70 stupňů.
+Chcete-li vytvořit pravidlo telemetrie, musí šablona zařízení obsahovat alespoň jednu hodnotu telemetrie. Tento kurz používá simulované zařízení **MXChip IoT DevKit,** které odesílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v rychlém startu [přidat simulované zařízení do aplikace IoT Central.](./quick-create-pnp-device.md) Pravidlo monitoruje teplotu hlášenou zařízením a odešle e-mail, když jde nad 70 stupňů.
 
 1. V levém podokně vyberte **Pravidla**.
 
@@ -66,8 +66,8 @@ Podmínky definují kritéria, která pravidlo monitoruje. V tomto kurzu nakonfi
 
 1. Volitelně můžete nastavit **agregaci času**. Když vyberete časovou agregaci, musíte také vybrat typ agregace, například průměr nebo součet z rozevíracího přehledu agregace.
 
-    * Bez agregace pravidlo aktivuje pro každý datový bod telemetrie, který splňuje podmínku. Pokud je například pravidlo nakonfigurováno tak, aby se aktivovalo, když je teplota vyšší než 70, pravidlo se aktivuje téměř okamžitě, když zařízení hlásí teplotu > 70.
-    * S agregací pravidlo aktivuje, pokud agregační hodnota datových bodů telemetrie v časovém okně splňuje podmínku. Pokud je například pravidlo nakonfigurováno tak, aby se aktivovalo, když je teplota vyšší než 70, je agregace času nastavena na 10 minut a typ agregace je průměrný, pak se pravidlo aktivuje, když zařízení hlásí průměrnou teplotu > 70, vypočtenou v intervalu 10 minut.
+    * Bez agregace pravidlo aktivuje pro každý datový bod telemetrie, který splňuje podmínku. Pokud například nakonfigurujete pravidlo tak, aby se aktivovalo, když je teplota vyšší než 70, pravidlo se aktivuje téměř okamžitě, když teplota zařízení překročí tuto hodnotu.
+    * S agregací pravidlo aktivuje, pokud agregační hodnota datových bodů telemetrie v časovém okně splňuje podmínku. Pokud například nakonfigurujete pravidlo tak, aby se aktivovalo, když je teplota vyšší než 70 a s průměrnou agregací času 10 minut, pravidlo se aktivuje, když zařízení hlásí průměrnou teplotu vyšší než 70, vypočítanou v intervalu 10 minut.
 
      ![Agregovaná podmínka](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
@@ -100,11 +100,11 @@ Pokud již pravidlo nepotřebujete, odstraňte ho tak, že pravidlo otevřete a 
 
 ## <a name="enable-or-disable-a-rule"></a>Povolení nebo zakázání pravidla
 
-Zvolte pravidlo, které chcete povolit nebo zakázat. Chcete-li pravidlo povolit nebo zakázat, přepněte tlačítko **Povolit** nebo **Zakázat** v pravidle a povolte nebo zakažte pravidlo pro všechna zařízení, která jsou v pravidle vymezena.
+Zvolte pravidlo, které chcete povolit nebo zakázat. Chcete-li pravidlo povolit nebo zakázat pro všechna zařízení, která mají v pravidle obor, přepněte v pravidle tlačítko **Povoleno/Zakázáno.**
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Povolení nebo zakázání pravidla pro zařízení
+## <a name="enable-or-disable-a-rule-for-specific-devices"></a>Povolení nebo zakázání pravidla pro určitá zařízení
 
-Zvolte pravidlo, které chcete povolit nebo zakázat. Přidejte filtr v části **Obory,** který zahrne nebo vyloučí určité zařízení do šablony zařízení.
+Zvolte pravidlo, které chcete přizpůsobit. Pomocí jednoho nebo více filtrů v části **Cílová zařízení** zúžíte rozsah pravidla na zařízení, která chcete monitorovat.
 
 ## <a name="next-steps"></a>Další kroky
 

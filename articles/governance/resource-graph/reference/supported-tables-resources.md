@@ -1,14 +1,14 @@
 ---
 title: Podporované typy prostředků Správce prostředků
 description: Zadejte seznam typů prostředků Správce prostředků podporovaných Azure Resource Graph a historie změn.
-ms.date: 03/23/2020
+ms.date: 04/06/2020
 ms.topic: reference
-ms.openlocfilehash: 64fd860090cc15cc6914ee926772146b98477edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130617"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677050"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Referenční tabulka a typ prostředku Azure
 
@@ -188,6 +188,7 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 - Microsoft.eventhub/clustery
 - obory microsoft.eventhub/namespaces
 - Pracovní prostory microsoft.experimentation/experiment
+- obory microsoft.falcon/namespaces
 - microsoft.gaming/titles
 - microsoft.genomics/accounts
 - Microsoft.guestconfiguration/automanagedaccounts
@@ -290,6 +291,7 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 - Profily microsoft.network/networkexperimentprofiles
 - Zásady záměrů microsoft.network/network
 - Microsoft.network/networkinterfaces
+- Microsoft.network/networkmanagers
 - Profily microsoft.network/network
 - Microsoft.network/networksecuritygroups
 - Microsoft.network/networkVirtualAppliances
@@ -446,6 +448,7 @@ Azure Resource Graph podporuje následující **typy prostředků** Azure [Resou
 - wandisco.fusion/fusiongroups
 - wandisco.fusion/fusiongroups/azurezones
 - wandisco.fusion/fusiongroups/azurezones/plugins
+- wandisco.fusion/fusiongroups/hivereplicationrules
 - wandisco.fusion/fusiongroups/managedonpremzones
 - wandisco.fusion/fusiongroups/onpremzones
 - wandisco.fusion/fusiongroups/replicationrules

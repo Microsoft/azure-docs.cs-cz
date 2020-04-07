@@ -3,12 +3,12 @@ title: Přehled Azure Blueprints
 description: Zjistěte, jak vám služba Azure Blueprints umožňuje vytvářet, definovat a nasazovat artefakty ve vašem prostředí Azure.
 ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74321766"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677415"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -22,17 +22,17 @@ Podrobné plány představují deklarativní způsob, jak orchestrovat nasazení
 - Skupiny prostředků
 
 Služba Azure Blueprints využívá globálně distribuovanou službu [Azure Cosmos DB](../../cosmos-db/introduction.md).
-Objekty podrobného plánu se replikují do několika oblastí Azure. Tato replikace zajišťuje nízkou latenci, vysokou dostupnost a konzistentní přístup k objektům podrobného plánu bez ohledu na to, do které oblasti služba Blueprints nasazuje prostředky.
+Objekty podrobného plánu se replikují do několika oblastí Azure. Tato replikace poskytuje nízkou latenci, vysokou dostupnost a konzistentní přístup k objektům podrobného plánu, bez ohledu na to, do které oblasti Azure Blueprints nasazuje vaše prostředky.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>V čem se liší od šablon Resource Manageru
 
 Účelem této služby je pomáhat s _nastavením prostředí_. Toto nastavení často sestává ze sady skupin prostředků, zásad, přiřazení rolí a nasazení šablon Resource Manageru. Podrobný plán (anglicky „blueprint“) je balíček, který všechny tyto typy _artefaktů_ spojuje a umožní vám balíček sestavit a vytvořit jeho verzi – včetně prostřednictvím kanálu CI/CD. Nakonec se každý přiřadí k předplatnému v rámci jedné operace, kterou je možné auditovat a sledovat.
 
-Téměř vše, co chcete zahrnout pro nasazení v Blueprints, se dá provést pomocí šablony Resource Manageru. Šablona Resource Manageru je ale dokument, který v Azure nativně neexistuje – každá je uložená místně nebo ve správě zdrojového kódu. Šablona se používá pro nasazení jednoho nebo více prostředků Azure, ale po nasazení těchto prostředků neexistuje s šablonou žádné aktivní propojení ani relace.
+Téměř vše, co chcete zahrnout pro nasazení v Azure Blueprints lze provést pomocí šablony Správce prostředků. Šablona Resource Manageru je ale dokument, který v Azure nativně neexistuje – každá je uložená místně nebo ve správě zdrojového kódu. Šablona se používá pro nasazení jednoho nebo více prostředků Azure, ale po nasazení těchto prostředků neexistuje s šablonou žádné aktivní propojení ani relace.
 
-V případě Blueprints se relace mezi definicí podrobného plánu (_co se má_ nasadit) a přiřazením podrobného plánu (_co bylo_ nasazeno) zachová. Toto připojení podporuje vylepšené sledování a auditování nasazení. Blueprints dokáže také upgradovat najednou několik předplatných, která se řídí stejným podrobným plánem.
+S Azure Blueprints je zachován vztah mezi definicí podrobného plánu (co _by se mělo_ nasadit) a přiřazením podrobného plánu (co _bylo_ nasazeno). Toto připojení podporuje vylepšené sledování a auditování nasazení. Azure Blueprints můžete také upgradovat několik předplatných najednou, které se řídí stejným podrobným plánem.
 
-Není nutné volit mezi šablonou Resource Manageru a podrobným plánem. Každý podrobný plán se může skládat z nula nebo více _artefaktů_ šablon Resource Manageru. Tato podpora znamená, že v Blueprints je možné znovu využít předchozí snahy o vývoj a údržbu knihovny šablon Resource Manageru.
+Není nutné volit mezi šablonou Resource Manageru a podrobným plánem. Každý podrobný plán se může skládat z nula nebo více _artefaktů_ šablon Resource Manageru. Tato podpora znamená, že předchozí úsilí o vývoj a údržbu knihovny šablon Správce prostředků jsou opakovaně použitelné v Azure Blueprints.
 
 ## <a name="how-its-different-from-azure-policy"></a>V čem se liší od Azure Policy
 
@@ -46,7 +46,7 @@ Zásady mohou být zahrnuty jako jeden z mnoha _artefaktů_ v definici podrobné
 
 ## <a name="blueprint-definition"></a>Definice podrobného plánu
 
-Podrobný plán se skládá z _artefaktů_. Podrobné plány aktuálně jako artefakty podporují tyto prostředky:
+Podrobný plán se skládá z _artefaktů_. Azure Blueprints aktuálně podporuje následující prostředky jako artefakty:
 
 |Prostředek  | Možnosti hierarchie| Popis  |
 |---------|---------|---------|

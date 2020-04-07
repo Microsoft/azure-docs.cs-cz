@@ -3,12 +3,12 @@ title: Použití parametrů k vytváření dynamických podrobných plánů
 description: Přečtěte si o statických a dynamických parametrech a o tom, jak je používat k vytváření zabezpečených a dynamických podrobných plánů.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264710"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677587"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických podrobných plánů prostřednictvím parametrů
 
@@ -20,7 +20,7 @@ Jednoduchým příkladem je artefakt skupiny prostředků. Při vytvoření skup
 > Není problém pro dva různé podrobné plány zahrnout skupinu prostředků se stejným názvem.
 > Pokud skupina prostředků zahrnutá v podrobném plánu již existuje, podrobný plán pokračuje ve vytváření souvisejících artefaktů v této skupině prostředků. To může způsobit konflikt jako dva prostředky se stejným názvem a typu prostředku nemůže existovat v rámci předplatného.
 
-Řešením tohoto problému jsou parametry. Podrobné plány umožňuje definovat hodnotu pro každou vlastnost artefaktu během přiřazení k předplatnému. Parametr umožňuje znovu použít podrobný plán, který vytvoří skupinu prostředků a další prostředky v rámci jednoho předplatného bez konfliktu.
+Řešením tohoto problému jsou parametry. Azure Blueprints umožňuje definovat hodnotu pro každou vlastnost artefaktu během přiřazení k předplatnému. Parametr umožňuje znovu použít podrobný plán, který vytvoří skupinu prostředků a další prostředky v rámci jednoho předplatného bez konfliktu.
 
 ## <a name="blueprint-parameters"></a>Parametry podrobného plánu
 

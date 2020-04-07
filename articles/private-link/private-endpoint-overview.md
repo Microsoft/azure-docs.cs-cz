@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656261"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742907"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je Azure Private Endpoint?
 
@@ -144,7 +144,7 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 |Azure Relay (Microsoft.Relay/obory názvů) | namespace |privatelink.servicebus.windows.net|
 |Azure Event Grid (Microsoft.EventGrid/témata)   | téma | Téma. {region}.privatelink.eventgrid.azure.net|
 |Azure Event Grid (Microsoft.EventGrid/domény) | doména | Domény. {region}.privatelink.eventgrid.azure.net |
-|Azure WebApps(Microsoft.Web/weby) | Stránky | privatelink.azurewebsites.net |
+|Azure WebApps (Microsoft.Web/weby)    | Stránky | privatelink.azurewebsites.net |
 |Azure Machine Learning (Microsoft.MachineLearningServices/pracovní prostory)   | Pracovní prostor | privatelink.api.azureml.ms |
  
 Azure vytvoří kanonický název DNS záznam (CNAME) na veřejné DNS přesměrovat rozlišení na navrhované názvy domén. Budete moct přepsat rozlišení s privátní IP adresu vašich soukromých koncových bodů. 

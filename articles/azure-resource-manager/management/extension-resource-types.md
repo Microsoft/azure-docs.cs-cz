@@ -2,13 +2,13 @@
 title: Typy prostředků rozšíření
 description: Seznamy typů prostředků Azure se používají k rozšíření možností jiných typů prostředků.
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: c14cf6fec2da11534a7358599c79961a3258470b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76515364"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754867"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Typy prostředků, které rozšiřují možnosti jiných prostředků
 
@@ -81,7 +81,6 @@ Prostředek rozšíření je prostředek, který přidává do možností jinéh
 - Microsoft.GuestKonfigurace/software
 - Microsoft.GuestKonfigurace/softwareUpdateProfile
 - Microsoft.GuestKonfigurace/softwareAktualizace
-- microsoft.insights/automatedExportSettings
 - microsoft.insights/baseline
 - Microsoft.Insights/calculatebaseline
 - Microsoft.insights/dataCollectionRuleAssociations
@@ -114,7 +113,7 @@ Prostředek rozšíření je prostředek, který přidává do možností jinéh
 - Microsoft.PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/náprava
 - Microsoft.RecoveryServices/backupProtectedItems
-- Microsoft.RecoveryServices/replicationEligibilityResults  
+- Microsoft.RecoveryServices/replicationEligibilityResults    
 - Microsoft.ResourceHealth/availabilityStaves
 - Microsoft.ResourceHealth/childAvailabilityStatuses
 - Microsoft.ResourceHealth/childResources
@@ -131,7 +130,6 @@ Prostředek rozšíření je prostředek, který přidává do možností jinéh
 - Microsoft.Security/assessments
 - Microsoft.Security/complianceResults
 - Microsoft.Security/dataCollectionAgents
-- Microsoft.Security/dataCollectionResults
 - Microsoft.Security/deviceSecurityGroups
 - Microsoft.Security/networkData
 - Microsoft.Security/serverVulnerabilityAssessments
@@ -141,13 +139,14 @@ Prostředek rozšíření je prostředek, který přidává do možností jinéh
 - Microsoft.SecurityInsights/záložky
 - Microsoft.SecurityInsights/případy
 - Microsoft.SecurityInsights/dataConnectors
+- Microsoft.SecurityInsights/dataConnectorsCheckRequirements
 - Microsoft.SecurityInsights/entity
 - Microsoft.SecurityInsights/entityDotazy
+- Microsoft.SecurityInsights/incidenty
 - Microsoft.SecurityInsights/officeConsents
 - Microsoft.SecurityInsights/nastavení
 - Microsoft.SoftwarePlan/hybridUseBenefits
 - Microsoft.Subscription/CreateSubscription
-- microsoft.support/createsupportticket
 - Microsoft.support/supporttickets
 - Microsoft.WorkloadMonitor/komponenty
 - Instance Microsoft.WorkloadMonitor/monitorInstances

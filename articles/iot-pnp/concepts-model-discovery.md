@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94e5e6fb826528aab1a358d44cb51bfcd6219032
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531356"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673563"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementace zjišťování modelu Náhled technologie IoT Plug and Play v řešení IoT
 
@@ -46,7 +46,7 @@ Další informace o telemetrické zprávě informace o modelu najdete v tématu 
 
 Budete mít model schopností a rozhraní pro zařízení, která se budou předem připojovat k vašemu řešení. Řešení připravíte pomocí následujících kroků:
 
-1. Uložte soubory JSON rozhraní v Azure v umístění, kde je vaše řešení může číst.
+1. Uložte soubory JSON rozhraní do [úložiště modelu,](./howto-manage-models.md) kde je vaše řešení může číst.
 1. Logiku napište do svého řešení IoT na základě očekávaných modelů a rozhraní schopností IoT Plug and Play.
 1. Přihlaste se k odběru oznámení z centra IoT, které vaše řešení používá.
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 644ad931879c1953560abf13ac0eda58f3d814d8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f3d6d0c1f71e2262e943998cdc08717291903365
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633067"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743816"
 ---
 # <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>PowerShell & REST API pro fond SQL Azure Synapse Analytics
 
@@ -43,7 +43,7 @@ Pozastavit databázi s názvem "Database02" hostovací na serveru s názvem Serv
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
-Varianta, v tomto příkladu kanály načtený objekt [Suspend-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase).  V důsledku toho je databáze pozastavena. Konečný příkaz zobrazí výsledky.
+Varianta, v tomto příkladu kanály načtený objekt [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  V důsledku toho je databáze pozastavena. Konečný příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -59,7 +59,7 @@ Obnovit provoz databáze s názvem "Database02" hostované na serveru s názvem 
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Varianta, tento příklad načte databázi s názvem "Database02" ze serveru s názvem "Server01", který je obsažen ve skupině prostředků s názvem ResourceGroup1. To kanály načtený objekt [Resume-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/resume-azsqldatabase).
+Varianta, tento příklad načte databázi s názvem "Database02" ze serveru s názvem "Server01", který je obsažen ve skupině prostředků s názvem ResourceGroup1. To kanály načtený objekt [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"

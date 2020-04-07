@@ -3,12 +3,12 @@ title: Principy zamykání prostředků
 description: Další informace o možnostech uzamčení v Azure Blueprints k ochraně prostředků při přiřazování podrobného plánu.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437738"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676752"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Principy zamykání prostředků v azure blueprints
 
@@ -20,20 +20,20 @@ Vytvoření konzistentní prostředí ve velkém měřítku je skutečně cenné
 ## <a name="locking-modes-and-states"></a>Režimy a stavy zamykání
 
 Režim uzamčení se vztahuje na přiřazení podrobného plánu a má tři možnosti: **Nezamykat**, **Jen pro čtení**nebo **Neodstraňovat**. Režim uzamčení je konfigurován během nasazení artefaktu během přiřazení podrobného plánu. Jiný režim uzamčení lze nastavit aktualizací přiřazení podrobného plánu.
-Režimy uzamčení však nelze změnit mimo podrobné plány.
+Režimy uzamčení však nelze změnit mimo Azure Blueprints.
 
 Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyři stavy: **Není uzamčeno**, **jen pro čtení**, nelze upravovat / **odstraňovat**nebo **nelze odstranit**. Každý typ artefaktu může být ve stavu **Není uzamčen.** Následující tabulku lze použít k určení stavu prostředku:
 
 |Mode|Typ prostředku artefaktu|Stav|Popis|
 |-|-|-|-|
-|Nezamykat|*|Není uzamčeno|Prostředky nejsou chráněny plány. Tento stav se také používá pro prostředky přidané do **artefaktu skupiny jen pro čtení** nebo **Neodstraňovat** artefakt skupiny prostředků z mimo přiřazení podrobného plánu.|
+|Nezamykat|*|Není uzamčeno|Prostředky nejsou chráněné azure plány. Tento stav se také používá pro prostředky přidané do **artefaktu skupiny jen pro čtení** nebo **Neodstraňovat** artefakt skupiny prostředků z mimo přiřazení podrobného plánu.|
 |Jen pro čtení|Skupina prostředků|Nelze upravit / odstranit|Skupina prostředků je jen pro čtení a značky ve skupině prostředků nelze změnit. **Neuzamčené** prostředky lze přidat, přesunout, změnit nebo odstranit z této skupiny prostředků.|
 |Jen pro čtení|Skupina bez prostředků|Jen pro čtení|Prostředek nelze žádným způsobem změnit – žádné změny a nelze jej odstranit.|
 |Neodstraňovat|*|Nelze odstranit.|Prostředky lze změnit, ale nelze je odstranit. **Neuzamčené** prostředky lze přidat, přesunout, změnit nebo odstranit z této skupiny prostředků.|
 
 ## <a name="overriding-locking-states"></a>Přepsání stavů uzamčení
 
-Obvykle je možné, že někdo s příslušným [řízením přístupu na základě rolí](../../../role-based-access-control/overview.md) (RBAC) v předplatném, jako je například role Vlastník, může změnit nebo odstranit libovolný prostředek. Tento přístup není případ, kdy podrobné plány platí uzamčení jako součást nasazené přiřazení. Pokud bylo přiřazení nastaveno pomocí **možnosti Jen pro čtení** nebo **Neodstraňovat,** ani vlastník předplatného nemůže provést blokovanou akci s chráněným prostředkem.
+Obvykle je možné, že někdo s příslušným [řízením přístupu na základě rolí](../../../role-based-access-control/overview.md) (RBAC) v předplatném, jako je například role Vlastník, může změnit nebo odstranit libovolný prostředek. Tento přístup není případ, kdy Azure Blueprints platí uzamčení jako součást nasazené přiřazení. Pokud bylo přiřazení nastaveno pomocí **možnosti Jen pro čtení** nebo **Neodstraňovat,** ani vlastník předplatného nemůže provést blokovanou akci s chráněným prostředkem.
 
 Toto bezpečnostní opatření chrání konzistenci definovaného podrobného plánu a prostředí, které bylo navrženo k vytvoření z náhodného nebo programového odstranění nebo změny.
 
@@ -97,11 +97,11 @@ Pokud bude nutné upravit nebo odstranit prostředek chráněný přiřazením, 
 - Aktualizace přiřazení podrobného plánu na zamykací režim **Nezamykatelné**
 - Odstranění přiřazení podrobného plánu
 
-Při odebrání přiřazení jsou odebrány zámky vytvořené podrobné plány. Zdroj je však po sobě zanechal a bude nutné odstranit běžnými prostředky.
+Když je přiřazení odebráno, zámky vytvořené Azure Blueprints jsou odebrány. Zdroj je však po sobě zanechal a bude nutné odstranit běžnými prostředky.
 
 ## <a name="how-blueprint-locks-work"></a>Jak fungují zámky podrobných plánů
 
-RBAC [odepřít přiřazení](../../../role-based-access-control/deny-assignments.md) odepřít akce se použije na artefakt prostředky během přiřazení podrobného plánu, pokud přiřazení vybrané **jen pro čtení** nebo **neodstraňovat** možnost. Akce odepřít je přidán a spravované identity přiřazení podrobného plánu a lze odebrat z prostředků artefaktu pouze stejné spravované identity. Toto bezpečnostní opatření vynucuje mechanismus uzamčení a zabraňuje odebrání zámek podrobného plánu mimo podrobné plány.
+RBAC [odepřít přiřazení](../../../role-based-access-control/deny-assignments.md) odepřít akce se použije na artefakt prostředky během přiřazení podrobného plánu, pokud přiřazení vybrané **jen pro čtení** nebo **neodstraňovat** možnost. Akce odepřít je přidán a spravované identity přiřazení podrobného plánu a lze odebrat z prostředků artefaktu pouze stejné spravované identity. Toto bezpečnostní opatření vynucuje mechanismus uzamčení a zabraňuje odebrání zámku podrobného plánu mimo Azure Blueprints.
 
 ![Podrobné zamítne přiřazení ve skupině prostředků](../media/resource-locking/blueprint-deny-assignment.png)
 

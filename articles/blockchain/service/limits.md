@@ -1,15 +1,15 @@
 ---
 title: Limity služby Azure Blockchain
 description: Přehled limitů služeb a funkcí ve službě Azure Blockchain Service
-ms.date: 03/30/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529578"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676513"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Limity ve službě Azure Blockchain
 
@@ -35,7 +35,6 @@ Změna cenové úrovně mezi základní a standardní po vytvoření člena nen�
 Maximální velikost úložiště, které lze použít na uzel pro data hlavní knihy a protokoly je 1,8 terabajtů.
 
 Snížení velikosti úložiště hlavní knihy a protokolu není podporováno.
-
 ## <a name="consortium-limits"></a>Limity konsorcia
 
 * **Názvy konsorcií a členů musí být jedinečné** z jiných názvů konsorcií a členů ve službě Azure Blockchain.
@@ -59,6 +58,12 @@ Snížení velikosti úložiště hlavní knihy a protokolu není podporováno.
 * **Všichni členové v konsorciu musí používat stejnou verzi hlavní knihy.**
 
     Další informace o opravách, aktualizacích a verzích hlavní knihy dostupných ve službě Azure Blockchain service najdete v [tématu Opravy, aktualizace a verze](ledger-versions.md).
+
+## <a name="performance"></a>Výkon
+
+Nepoužívejte *funkci plynu eth.estimate* pro každé podání transakce. Funkce *eth.estimate* je náročná na paměť. Volání funkce vícekrát snižuje transakce za sekundu drasticky.
+
+Pokud je to možné, použijte konzervativní hodnotu plynu pro předkládání transakcí a minimalizujte použití *eth.estimate*.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,17 +3,16 @@ title: Pochopení životního cyklu podrobného plánu
 description: Přečtěte si o životním cyklu, kterým prochází definice podrobného plánu, a podrobnosti o jednotlivých fázích, včetně aktualizace a odebrání přiřazení podrobného plánu.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74404581"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677370"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Pochopení životního cyklu Azure Blueprintu
 
-Stejně jako mnoho prostředků v rámci Azure, podrobný plán v Azure Blueprints má typický a přirozený životní cyklus. Jsou vytvořeny, nasazeny a nakonec odstraněny, když již nejsou potřebné nebo relevantní.
-Podrobné plány podporují standardní operace životního cyklu. Pak na nich staví na tom, aby poskytovaldalší úrovně stavu, které podporují společnou průběžnou integraci a kanály průběžného nasazení pro organizace, které spravují svou infrastrukturu jako kód – což je klíčový prvek v devops.
+Stejně jako mnoho prostředků v rámci Azure, podrobný plán v Azure Blueprints má typický a přirozený životní cyklus. Jsou vytvořeny, nasazeny a nakonec odstraněny, když již nejsou potřebné nebo relevantní. Azure Blueprints podporuje standardní operace životního cyklu. Pak na nich staví na tom, aby poskytovaldalší úrovně stavu, které podporují společnou průběžnou integraci a kanály průběžného nasazení pro organizace, které spravují svou infrastrukturu jako kód – což je klíčový prvek v devops.
 
 Abychom plně porozuměli plánu a fázím, pokryjeme standardní životní cyklus:
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
-ms.openlocfilehash: d53c41752d57a27ebea9bd60f7e723dab1e7308a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190835"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673186"
 ---
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
@@ -25,6 +25,13 @@ func start
 ```
 npm install
 npm start
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
+```
+mvn clean package 
+mvn azure-functions:run
 ```
 ::: zone-end
 
@@ -44,12 +51,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> Pokud httpexample nezobrazí, jak je uvedeno níže, pravděpodobně jste spustili hostitele z ve složce *HttpExample.* V takovém případě použijte **kombinaci kláves**+**C** k zastavení hostitele, přejděte do nadřazené složky *LocalFunctionProj* a znovu spusťte předchozí příkaz.
+> Pokud httpexample nezobrazí, jak je uvedeno níže, pravděpodobně jste spustili hostitele mimo kořenovou složku projektu. V takovém případě pomocí **klávesy Ctrl**+**C** zastavte hostitele, přejděte do kořenové složky projektu a znovu spusťte předchozí příkaz.
 
 Zkopírujte adresu `HttpExample` URL funkce z tohoto výstupu do prohlížeče `?name=<your-name>`a přidejte `http://localhost:7071/api/HttpExample?name=Functions`řetězec dotazu a změte úplnou adresu URL jako . Prohlížeč by měl zobrazit `Hello Functions`zprávu jako :
 
 ![Výsledek funkce spuštěné místně v prohlížeči](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
-Terminál, ve kterém `func start` jste spustili také zobrazuje výstup protokolu, jak si dělat požadavky.
+Terminál, ve kterém jste projekt spustili, také zobrazuje výstup protokolu při vyřizování požadavků.
 
 Až budete připraveni, použijte **kombinaci kláves Ctrl**+**C** a zvolte `y` zastavení hostitele funkcí.

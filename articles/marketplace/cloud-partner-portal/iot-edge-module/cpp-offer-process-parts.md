@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6b44d9fd0bdd6e4b41013373472b5882a7ca1434
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b1d93cc7f6325a5319b632aa7f827d9ee6303c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286587"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745042"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>Přehled publikování nabídky modulu IoT Edge
+
+>[!Important]
+>března 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
 
 <table> <tr> <td>Tato část vysvětluje, jak publikovat novou nabídku modulu Azure IoT Edge na webu Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>. Modul IoT Edge je kontejner kompatibilní s Dockerem, který se používá ke spuštění na zařízení IoT Edge. Moduly Azure IoT Edge jsou nejmenší výpočetní jednotkou spravovanou ioT Edge a můžou obsahovat služby Azure nebo vlastní kód řešení. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 

@@ -1,0 +1,6 @@
+- name: nástroje
+  href: tools/toc.yml
+- name: Řešení potíží
+  href: troubleshoot.md
+- name: Poskytnutí zpětné vazby k produktu
+  href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'

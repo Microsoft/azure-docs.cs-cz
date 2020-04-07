@@ -7,19 +7,19 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 559ce4d1500dc5f1b67a3b3dbdbeb5d8dda7e487
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79485850"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754298"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Brána firewall webových aplikací Azure v síti pro doručování obsahu Azure
 
-Brána firewall webových aplikací Azure (WAF) v síti Azure Content Delivery Network (CDN) poskytuje centralizovanou ochranu webového obsahu. WAF chrání vaše webové služby před běžnými zneužitími a chybami zabezpečení. Udržuje vaši službu vysoce dostupnou pro vaše uživatele a pomáhá vám splnit požadavky na dodržování předpisů.
+Azure Web Application Firewall (WAF) v Síti pro doručování obsahu Azure (CDN) od Microsoftu poskytuje centralizovanou ochranu webového obsahu. WAF chrání vaše webové služby před běžnými zneužitími a chybami zabezpečení. Udržuje vaši službu vysoce dostupnou pro vaše uživatele a pomáhá vám splnit požadavky na dodržování předpisů.
 
 > [!IMPORTANT]
-> WAF na Azure CDN je aktuálně ve verzi Public Preview a je k dispozici ve verzi preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.  Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> WAF na Azure CDN od Microsoftu je aktuálně ve verzi Public Preview a je k dispozici předběžná smlouva o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.  Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 WAF na Azure CDN je globální a centralizované řešení. Nasadí se na okrajových místech Azure po celém světě. WAF zastaví škodlivé útoky v blízkosti zdrojů útoku, než se dostanou do vašeho původu. Získáte globální ochranu ve velkém měřítku, aniž byste obětovali výkon. 
 

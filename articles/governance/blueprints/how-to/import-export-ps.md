@@ -3,16 +3,16 @@ title: Import a export podrobných plánů pomocí PowerShellu
 description: Naučte se pracovat s definicemi podrobných plánů jako s kódem. Sdílejte, spravujte zdroj a spravujte je pomocí příkazů pro export a import.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873195"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677140"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import a export definic podrobných plánů pomocí PowerShellu
 
-Azure Blueprints můžete plně spravovat prostřednictvím portálu Azure. Jak organizace postupují v používání podrobných plánů, měly by začít přemýšlet o definicích podrobných plánů jako spravovaného kódu. Tento koncept se často označuje jako infrastruktura jako kód (IaC). Zacházení s definicemi podrobného plánu jako kódu nabízí další výhody nad rámec toho, co nabízí portál Azure. Mezi tyto výhody patří:
+Azure Blueprints můžete plně spravovat prostřednictvím portálu Azure. Jak organizace postupují ve využívání Azure Blueprints, měly by začít přemýšlet o definicích podrobných plánů jako spravovaného kódu. Tento koncept se často označuje jako infrastruktura jako kód (IaC). Zacházení s definicemi podrobného plánu jako kódu nabízí další výhody nad rámec toho, co nabízí portál Azure. Mezi tyto výhody patří:
 
 - Sdílení definic podrobných plánů
 - Zálohování definic podrobných plánů

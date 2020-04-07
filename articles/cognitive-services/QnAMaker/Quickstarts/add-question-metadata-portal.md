@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77109927"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756682"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Úvodní příručka: Přidávání otázek a odpovědí pomocí portálu QnA Maker
 
@@ -27,7 +27,7 @@ Po vytvoření znalostní báze přidejte sady otázek a odpovědí (QnA) s meta
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
-Jakmile jsou metadata přidána do sady QnA, klientská aplikace může:
+Jakmile jsou metadata přidána do dvojice QnA, klientská aplikace může:
 
 * Vyžádejte si odpovědi, které odpovídají pouze určitým metadatům.
 * Přijímat všechny odpovědi, ale po zpracování odpovědi v závislosti na metadata pro každou odpověď.
@@ -45,7 +45,7 @@ Jakmile jsou metadata přidána do sady QnA, klientská aplikace může:
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Přidání dalších alternativních otázek
 
-Aktuální znalostní báze obsahuje sady QnA Maker pro řešení potíží s qnA. Tyto sady byly vytvořeny při přidání adresy URL do znalostní báze během procesu vytváření.
+Aktuální znalostní báze má QnA Maker řešení qnA párů. Tyto sady byly vytvořeny při přidání adresy URL do znalostní báze během procesu vytváření.
 
 Při importu této adresy URL byla vytvořena pouze jedna otázka s jednou odpovědí. V tomto postupu přidejte další otázky.
 
@@ -82,7 +82,7 @@ Přidání metadat do sady otázek a odpovědí umožňuje klientské aplikaci p
 
 1. Vyberte **Zobrazit volby**, pak vyberte **Zobrazit metadata**.
 
-1. Pro sadu QnA, kterou jste právě přidali, vyberte `service` **Přidat značky metadat**a pak přidejte název a hodnotu . `search` Vypadá to takto: `service:search`.
+1. U dvojice QnA, kterou jste právě přidali, vyberte `service` **Přidat značky metadat**a pak přidejte název a hodnotu . `search` Vypadá to takto: `service:search`.
 
 1. Přidejte další značku metadat `link_in_answer` s `false`názvem a hodnotou . Vypadá to takto: `link_in_answer:false`.
 

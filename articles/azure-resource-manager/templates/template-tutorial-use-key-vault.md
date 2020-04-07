@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: e49fafc2889b98d013d77471f8177fd85a307cc8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239180"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754893"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Kurz: Integrace azure key vaultu v nasazení šablony ARM
 
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste získali tajný klíč z trezoru klíčů Azure. Potom jste použili tajný klíč v nasazení šablony. Informace o vytváření propojených šablon najdete tady:
+V tomto kurzu jste získali tajný klíč z trezoru klíčů Azure. Potom jste použili tajný klíč v nasazení šablony. Informace o tom, jak používat rozšíření virtuálních strojů k provádění úloh po nasazení, najdete v tématu:
 
 > [!div class="nextstepaction"]
-> [Vytvoření propojených šablon](./template-tutorial-create-linked-templates.md)
+> [Nasazování rozšíření virtuálních počítačů](./template-tutorial-deploy-vm-extensions.md)

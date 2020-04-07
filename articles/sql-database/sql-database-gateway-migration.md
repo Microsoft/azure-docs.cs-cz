@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: fe35dc4c22f3852934cde0d6f33084b56266d514
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e3c33bb7493f07d9fbf19710f21d0114e7abec8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73807694"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757062"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migrace provozu databáze Azure SQL na novější brány
 
@@ -54,7 +54,7 @@ Nebudete mít vliv, pokud máte:
 
 Doporučujeme povolit odchozí provoz na IP adresy pro všechny [IP adresy brány Azure SQL Database](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) v oblasti na portu TCP 1433 a rozsah portů 11000-11999. Toto doporučení se vztahuje na klienty, kteří se připojují z místního prostředí, a také pro klienty, kteří se připojují prostřednictvím koncových bodů služby. Další informace o rozsahu portů naleznete v tématu [Zásady připojení](sql-database-connectivity-architecture.md#connection-policy).
 
-Připojení z aplikací používajících ovladač Microsoft JDBC pod verzí 4.0 mohou nemít ověřování certifikátů. Nižší verze jdbc společnosti Microsoft spoléhají na běžný název (CN) v poli Předmět certifikátu. Zmírnění je zajistit, že hostNameInCertificate vlastnost je nastavena na *.database.windows.net. Další informace o nastavení vlastnosti hostNameInCertificate naleznete v [tématu Připojení pomocí šifrování SSL](/sql/connect/jdbc/connecting-with-ssl-encryption).
+Připojení z aplikací používajících ovladač Microsoft JDBC pod verzí 4.0 mohou nemít ověřování certifikátů. Nižší verze jdbc společnosti Microsoft spoléhají na běžný název (CN) v poli Předmět certifikátu. Zmírnění je zajistit, že hostNameInCertificate vlastnost je nastavena na *.database.windows.net. Další informace o nastavení vlastnosti hostNameInCertificate naleznete v [tématu Připojení pomocí šifrování](/sql/connect/jdbc/connecting-with-ssl-encryption).
 
 Pokud výše uvedené zmírnění nefunguje, soubor žádost o podporu pro databázi SQL pomocí následující adresy URL:https://aka.ms/getazuresupport
 

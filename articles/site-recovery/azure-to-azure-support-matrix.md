@@ -4,12 +4,12 @@ description: Shrnuje podporu pro zotavení po havárii virtuálních počítač�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 0b4a654093e0842e66e1f8b0924edfa6c9c215e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276644"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673806"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálního počítače Azure mezi oblastmi Azure
 
@@ -20,10 +20,10 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 
 **Nasazení** |  **Podpora**
 --- | ---
-**Portál Azure** | Podporuje se.
+**portál Azure** | Podporuje se.
 **PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
-**ROZHRANÍ API PRO ODPOČINEK** | Podporuje se.
-**Cli** | Aktuálně se nepodporuje.
+**REST API** | Podporuje se.
+**Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
 
 
 ## <a name="resource-support"></a>Podpora prostředků
@@ -36,21 +36,21 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 **Migrace virtuálních aplikací napříč oblastmi v rámci podporovaných geografických clusterů (v rámci předplatných i napříč nimi)** | Podporované v rámci stejného klienta Služby Azure Active Directory.
 **Migrace virtuálních mích ve stejné oblasti** | Není podporováno.
 
-## <a name="region-support"></a>Podpora regionu
+## <a name="region-support"></a>Podpora oblastí
 
 Virtuální montovny můžete replikovat a obnovovat mezi libovolnými dvěma oblastmi v rámci stejného geografického clusteru. Geografické clustery jsou definovány zachování latence dat a suverenity v mysli.
 
 
-**Geografický klastr** | **Oblast Azure**
+**Geografický klastr** | **Oblasti Azure**
 -- | --
 Americké | Kanada – východ, Kanada – střed, střed USA – jih, střed USA, západ – střed USA, východní USA 2, Západní USA, Západní USA 2, Střední USA, Střed USA, Střed USA
-Evropa | Uk Západ, Velká Británie Jih, Severní Evropa, Západní Evropa, Francie – střed, Francie Jih, Jižní Afrika – západ, Jižní Afrika – sever, Norsko – západ, Norsko – západ
-Asie | Jižní Indie, Střední Indie, Západní Indie, Jihovýchodní Asie, Východní Asie, Japonsko východ, Japonsko Západ, Korea – střed, Korea Jih, SAE Central, SAE North
+Evropa | Velká Británie – západ, Velká Británie – jih, severní Evropa, západní Evropa, Jižní Afrika – západ, Jižní Afrika – sever, Norsko – západ, Norsko – západ
+Asie | Jižní Indie, Střední Indie, Západní Indie, Jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih
 Austrálie    | Austrálie – východ, Austrálie – jihovýchod, Austrálie – střed, Austrálie – střed 2
 Azure Government    | US GOV Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD East, US DOD Central
 Německo    | Německo – střed, Německo Severovýchod
 Čína | Čína východ, Čína sever, Čína sever2, Čína východ2
-Omezené oblasti vyhrazené pro obnovu po havárii v zemi |Německo – sever vyhrazeno pro Německo – západ – střed, Švýcarsko – západ vyhrazeno pro Švýcarsko Sever, Francie – jih vyhrazeno pro zákazníky francie – střed
+Omezené oblasti vyhrazené pro obnovu po havárii v zemi |Německo – sever vyhrazeno pro Německo – západ– střed, Švýcarsko – západ vyhrazeno pro Švýcarsko Sever, Francie – jih vyhrazeno pro Francii – střed, SAE Central vyhrazeno pro zákazníky ze SAE – sever
 
 >[!NOTE]
 >

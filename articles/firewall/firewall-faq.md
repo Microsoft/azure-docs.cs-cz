@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437729"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677452"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -212,4 +212,8 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Proč se příkaz ping tcp a podobné nástroje mohou úspěšně připojit k cílovému virtuálnímu síti, i když žádné pravidlo na Azure Firewall tento provoz neumožňuje?
 
-Příkaz ping protokolu TCP se ve skutečnosti nepřipojuje k cílovému fqdn. K tomu dochází, protože transparentní proxy server Azure Firewall naslouchá na portu 80/443 pro odchozí provoz. Příkaz ping protokolu TCP naváže připojení k bráně firewall, která poté paket zahodí a zaznamená připojení. Toto chování nemá žádný dopad na zabezpečení. Abychom se však vyhnuli nejasnostem, zkoumáme potenciální změny tohoto chování. 
+Příkaz ping protokolu TCP se ve skutečnosti nepřipojuje k cílovému fqdn. K tomu dochází, protože transparentní proxy server Azure Firewall naslouchá na portu 80/443 pro odchozí provoz. Příkaz ping protokolu TCP naváže připojení k bráně firewall, která poté paket zahodí a zaznamená připojení. Toto chování nemá žádný dopad na zabezpečení. Abychom se však vyhnuli nejasnostem, zkoumáme potenciální změny tohoto chování.
+
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Existují omezení pro počet IP adres podporovaných skupinami IP?
+
+Ano. Další informace najdete v tématu [Omezení předplatného a služeb Azure, kvóty a omezení.](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)

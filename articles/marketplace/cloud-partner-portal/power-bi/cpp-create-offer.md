@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ee3501e7feec77c842f3784f6c2820af05637e6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43bb34a80d8d62cfa2bde445b94fb97da25ccda3
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286383"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745473"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikace Power BI
+
+>[!Important]
+>března 2020 začneme přesouvat správu nabídek aplikací Power BI do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
 
 V tomto článku se uvádí postup, jak vytvořit novou nabídku aplikace Power BI pro [AppSource](https://appsource.microsoft.com). Každá nabídka se zobrazí jako jeho vlastní entita v AppSource. Když vytvoříte novou nabídku na [portálu partnerů](https://cloudpartner.azure.com/)cloudu , budete muset zadat čtyři skupiny prostředků pro vaši nabídku.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283989"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673816"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -22,7 +22,7 @@ Než se budete moci [připojit k místním zdrojům dat z Azure Logic Apps](../l
 * [Místní datová brána Microsoft Power Apps](/powerapps/maker/canvas-apps/gateway-reference)
 * [Místní datová brána Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
-Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu dat, abyste měli přístup k místním zdrojům dat z Azure Logic Apps. Další informace o fungování [brány dat](#gateway-cloud-service) najdete také dále v tomto tématu. Další informace o bráně najdete v tématu [Co je místní brána](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
+Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu dat, abyste měli přístup k místním zdrojům dat z Azure Logic Apps. Další informace o fungování [brány dat](#gateway-cloud-service) najdete také dále v tomto tématu. Další informace o bráně najdete v tématu [Co je místní brána](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? Chcete-li automatizovat úlohy instalace a správy brány, navštivte galerii Prostředí PowerShell pro [rutiny Prostředí PowerShell.](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)
 
 <a name="requirements"></a>
 

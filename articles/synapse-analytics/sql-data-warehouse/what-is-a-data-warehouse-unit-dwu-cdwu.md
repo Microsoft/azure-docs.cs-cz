@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632239"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742551"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednotky datového skladu (DWUs)
 
@@ -24,9 +24,9 @@ Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU) pro 
 
 ## <a name="what-are-data-warehouse-units"></a>Co jsou jednotky datového skladu
 
-Fond [SQL Synapse](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) představuje kolekci analytických prostředků, které jsou zřizovány. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vod. 
+Fond [SQL Synapse](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) představuje kolekci analytických prostředků, které jsou zřizovány. Analytické prostředky jsou definovány jako kombinace procesoru, paměti a vod.
 
-Tyto tři prostředky jsou sdružené do jednotek výpočetního měřítka nazývaných jednotky datového skladu (DW). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu. 
+Tyto tři prostředky jsou sdružené do jednotek výpočetního měřítka nazývaných jednotky datového skladu (DW). DWU představuje abstraktní normalizovanou míru výpočetních prostředků a výkonu.
 
 Změna úrovně služeb změní počet dlus, které jsou k dispozici v systému, což zase upravuje výkon a náklady na váš systém.
 
@@ -72,7 +72,7 @@ Kroky pro nalezení nejlepšího dwu pro vaši pracovní zátěž:
 2. Sledujte výkon aplikace při testování načítání dat do systému a sledujte počet vybraných dus ve srovnání s výkonem, který sledujete.
 3. Určete jakékoli další požadavky na periodická období špičkové aktivity. Úlohy, které vykazují významné špičky a koryta v aktivitě může být nutné škálovat často.
 
-SQL fond je horizontální navýšení kapacity systému, který může zřídit obrovské množství výpočetních a dotazů značné množství dat. 
+SQL fond je horizontální navýšení kapacity systému, který může zřídit obrovské množství výpočetních a dotazů značné množství dat.
 
 Chcete-li zobrazit jeho skutečné možnosti pro škálování, zejména na větší chudinském procesoru, doporučujeme škálování sady dat při škálování, abyste zajistili, že máte dostatek dat pro přenos procesorů. Pro škálování testování, doporučujeme použít alespoň 1 TB.
 
@@ -82,7 +82,7 @@ Chcete-li zobrazit jeho skutečné možnosti pro škálování, zejména na vět
 
 ## <a name="permissions"></a>Oprávnění
 
-Změna jednotek datového skladu vyžaduje oprávnění popsaná v [databázi ALTER](/sql/t-sql/statements/alter-database-transact-sql).
+Změna jednotek datového skladu vyžaduje oprávnění popsaná v [databázi ALTER](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Předdefinované role pro prostředky Azure, jako je sql db přispěvatel a přispěvatel SQL Serveru, můžou změnit nastavení DWU.
 
@@ -134,7 +134,7 @@ S T-SQL můžete zobrazit aktuální nastavení DWU, změnit nastavení a zkontr
 Změna du-s:
 
 1. Připojte se k hlavní databázi přidružené k logickému serveru SQL Database.
-2. Použijte příkaz [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL. Následující příklad nastaví cíl na úrovni služby dw1000c pro databázi MySQLDW.
+2. Použijte příkaz [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL. Následující příklad nastaví cíl na úrovni služby dw1000c pro databázi MySQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW

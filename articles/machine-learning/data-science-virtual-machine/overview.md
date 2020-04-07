@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 074b547917b65a411d2b1d1b2f094156828eef78
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 03bfee258fe96d90c32b6a305b99856a11d9a087
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631381"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754979"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co je virtuální počítač Azure Data Science pro Linux a Windows?
 
@@ -26,7 +26,7 @@ DSVM je k dispozici na adrese:
 + **Windows Server 2019**
 + **Ubuntu 18.04 LTS**
 + Windows Server 2016
-+ Ubuntu 16.04 LTS a CentOS 7.4
++ Ubuntu 16.04 LTS
 
 > [!NOTE]
 > Všechny nástroje virtuálních zařízení pro hloubkové učení byly přeloženy do virtuálního počítače pro datové vědy. 
@@ -68,9 +68,9 @@ Pomocí dsvm můžete vyhodnotit nebo se naučit nové nástroje pro datové [v�
 
 V DSVM vaše trénovací modely můžete použít algoritmy hlubokého učení na hardware, který je založen na grafických procesorů (GPU). Díky využití možností škálování virtuálních počítačů platformy Azure vám DSVM pomůže používat hardware založený na GPU v cloudu podle vašich potřeb. Virtuální počítače založené na GPU můžete přepnout na virtuální počítače založené na GPU, když trénujete velké modely nebo když potřebujete vysokorychlostní výpočty při zachování stejného disku operačního systému. Můžete zvolit libovolný virtuální počítač s podporou n gpu s dsvm. Upozorňujeme, že bezplatné účty Azure nepodporují virtuální počítače s povoleným gpu.
 
-Edice Systému DSVM pro Windows Server 2016 je předinstalována s ovladači GPU, architekturami a verzemi GPU architektur hlubokého učení. Na edici Linux je povoleno hluboké učení na GPU jak na Zařízeních CentOS, tak na Ubuntu DSVM. 
+Edice systému Windows dsvm je dodáván předinstalovaný s ovladači GPU, architektury a GPU verze rozhraní pro hluboké učení. Na edici Linux je na Ubuntu DSVM povoleno hluboké učení na GPU. 
 
-Můžete také nasadit Ubuntu, CentOS nebo Windows 2016 edici DSVM do virtuálního počítače Azure, který není založený na GPU. V tomto případě všechny hluboké učení rozhraní se vrátí do režimu procesoru.
+Můžete také nasadit ubuntu nebo Windows edice DSVM do virtuálního počítače Azure, který není založený na GPU. V tomto případě všechny hluboké učení rozhraní se vrátí do režimu procesoru.
 
 [Přečtěte si další informace o dostupných architekturách hloubkového učení a umělou ai.](dsvm-tools-deep-learning-frameworks.md)
 
@@ -89,5 +89,4 @@ Další informace naleznete v těchto článcích:
 
 + Linux:
   + [Nastavení Linuxu DSVM (Ubuntu)](dsvm-ubuntu-intro.md)
-  + [Nastavení Linuxu DSVM (CentOS)](linux-dsvm-intro.md)
   + [Datová věda na Linuxu DSVM](linux-dsvm-walkthrough.md)

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561282"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673666"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Nasazení kontejnerové platformy OpenShift 3.11 v Azure
 
@@ -303,7 +303,7 @@ Různé verze mohou mít různé parametry, takže ověřte potřebné parametry
 | `masterClusterType` | Určete, zda cluster používá privátní nebo veřejné hlavní uzly. Pokud je vybrána možnost Private, hlavní uzly nebudou vystaveny Internetu prostřednictvím veřejné IP adresy. Místo toho použije soukromou IP adresu uvedenou`masterPrivateClusterIp` | public <br> private | public |
 | `masterPrivateClusterIp` | Pokud jsou vybrány soukromé hlavní uzly, musí být zadána privátní ADRESA IP pro použití interním vyvykladačem zatížení pro hlavní uzly. Tato statická adresa IP musí být v bloku CIDR pro hlavní podsíť a již není používána. Pokud jsou vybrány veřejné hlavní uzly, tato hodnota nebude použita, ale musí být stále zadána. |  | 10.1.0.200 |
 | `routerClusterType` | Určete, zda cluster používá privátní nebo veřejné infraly. Pokud je vybrána možnost Soukromé, infranové uzly nebudou vystaveny internetu prostřednictvím veřejné IP adresy. Místo toho použije soukromou IP adresu uvedenou`routerPrivateClusterIp` | public <br> private | public |
-| `routerPrivateClusterIp` | Pokud jsou vybrány soukromé infranové uzly, musí být zadána privátní IP adresa pro použití interním vynakladačem zatížení pro infranozuly. Tato statická adresa IP musí být v bloku CIDR pro hlavní podsíť a již není používána. Pokud jsou vybrány veřejné infrauly, tato hodnota nebude použita, ale musí být stále zadána. |  | 10.2.0.200 |
+| `routerPrivateClusterIp` | Pokud jsou vybrány soukromé infranové uzly, musí být zadána privátní IP adresa pro použití interním vynakladačem zatížení pro infranozuly. Tato statická IP adresa musí být v bloku CIDR pro podsíť infra a již není používána. Pokud jsou vybrány veřejné infrauly, tato hodnota nebude použita, ale musí být stále zadána. |  | 10.2.0.200 |
 | `routingCertType` | Použití vlastního certifikátu pro směrovací doménu nebo výchozího certifikátu podepsaného svým držitelem – postupujte podle pokynů v části **Vlastní certifikáty** | vlastní podpis <br> custom | vlastní podpis |
 | `masterCertType` | Použití vlastního certifikátu pro hlavní doménu nebo výchozího certifikátu podepsaného svým držitelem – postupujte podle pokynů v části **Vlastní certifikáty** | vlastní podpis <br> custom | vlastní podpis |
 

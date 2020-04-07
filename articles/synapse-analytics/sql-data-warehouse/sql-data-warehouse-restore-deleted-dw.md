@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633046"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745125"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Obnovení odstraněného fondu SQL pomocí Azure Synapse Analytics
 
@@ -30,9 +30,9 @@ V tomto článku se naučíte obnovit SQL pomocí portálu Azure nebo PowerShell
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Obnovení odstraněného datového skladu prostřednictvím PowerShellu
 
-Chcete-li obnovit odstraněný fond SQL, použijte rutinu [Restore-AzSqlDatabase.](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) Pokud byl odstraněn také odpovídající logický server, nelze tento datový sklad obnovit.
+Chcete-li obnovit odstraněný fond SQL, použijte rutinu [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Pokud byl odstraněn také odpovídající logický server, nelze tento datový sklad obnovit.
 
-1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Otevřete PowerShell.
 3. Připojte se ke svému účtu Azure a uveďte všechna předplatná přidružená k vašemu účtu.
 4. Vyberte předplatné, které obsahuje odstraněný datový sklad, který má být obnoven.
