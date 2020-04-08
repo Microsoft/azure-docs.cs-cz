@@ -597,6 +597,8 @@
           items:
             - name: Elastické škálování
               href: manage-scale-cassandra.md
+            - name: Sekundární indexy
+              href: cassandra-secondary-index.md
         - name: Návody
           items:
             - name: Změna kanálu
@@ -1012,12 +1014,12 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 'Konfigurace sdílení prostředků mezi zdroji (CORS, Cross-Origin Resource Sharing)'
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: Klíče zabezpečení s využitím spravované identity
+        - name: Použití spravovaných identit pro přístup k datům
           href: managed-identity-based-authentication.md
           displayName: 'msi, managed service identity, aad, azure active directory, identity'
-        - name: Ověřování pomocí certifikátů s využitím Azure AD
+        - name: Použití certifikátů pro přístup k datům
           href: certificate-based-authentication.md
-        - name: Klíče zabezpečení s využitím Key Vaultu
+        - name: Použití Azure Key Vaultu pro přístup k datům
           href: access-secrets-from-keyvault.md
         - name: Omezení přístupu uživatelů jenom na datové operace
           href: how-to-restrict-user-data.md

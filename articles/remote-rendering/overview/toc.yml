@@ -1,0 +1,6 @@
+- name: Informace o službě Azure Remote Rendering
+  href: about.md
+- name: Systémové požadavky
+  href: system-requirements.md
+- name: Funkce
+  href: features/toc.yml

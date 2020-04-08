@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Remote Rendering
+summary: Azure Remote Rendering (ARR) je služba, která umožňuje vzdálené vykreslování vysoce složitých 3D modelů v reálném čase na zařízení jako HoloLens 2. ARR je v tuto chvíli ve verzi Public Preview.
+metadata:
+  title: Dokumentace ke službě Azure Remote Rendering
+  description: Naučte se využívat službu Azure Remote Rendering (ARR) ke vzdálenému vykreslování vysoce složitých 3D modelů v reálném čase a zobrazování výsledků na zařízeních jako HoloLens 2.
+  ms.service: azure-remote-rendering
+  ms.topic: landing-page
+  author: florianborn71
+  ms.author: flborn
+  ms.date: 03/26/2020
+  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
+  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80678310"
+landingContent:
+- title: Informace o službě Azure Remote Rendering
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Remote Rendering?
+      url: overview/about.md
+    - text: Systémové požadavky
+      url: overview/system-requirements.md
+    - text: Vytvoření účtu Azure Remote Renderingu
+      url: how-tos/create-an-account.md
+- title: Klíčové koncepty pro zahájení práce s Azure Remote Renderingem
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfigurace ověřování
+      url: how-tos/authentication.md
+    - text: Relace Remote Renderingu
+      url: concepts/sessions.md
+    - text: Entity
+      url: concepts/entities.md
+    - text: Komponenty
+      url: concepts/components.md
+    - text: Modely
+      url: concepts/models.md
+    - text: Převod modelů
+      url: how-tos/conversion/model-conversion.md
+- title: Převod a vykreslení prvního modelu
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vykreslení modelu s využitím Unity
+      url: quickstarts/render-model.md
+    - text: Nasazení ukázky Unity do HoloLens
+      url: quickstarts/deploy-to-hololens.md
+    - text: Nasazení ukázky Unity do Desktopu
+      url: quickstarts/deploy-to-desktop.md
+    - text: Převod modelu pro vykreslování
+      url: quickstarts/convert-model.md
+- title: Další informace o vytvoření vlastní aplikace v Unity
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nastavení projektu Unity od začátku
+      url: tutorials/unity/project-setup.md
+    - text: Práce se vzdálenými entitami v Unity
+      url: tutorials/unity/working-with-remote-entities.md
+    - text: Změna prostředí a materiálů
+      url: tutorials/unity/changing-environment-and-materials.md

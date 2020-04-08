@@ -1,0 +1,12 @@
+- name: Mapování materiálu pro formáty modelů
+  href: material-mapping.md
+- name: Oblasti
+  href: regions.md
+- name: Síťové požadavky
+  href: network-requirements.md
+- name: Omezení
+  href: limits.md
+- name: Úložiště arrClient (GitHub)
+  href: 'https://dev.azure.com/arrClient/arrClient/_git/arrClient'
+- name: Rozhraní REST API správy prostředků služby Azure Mixed Reality
+  href: 'https://docs.microsoft.com/rest/api/mixedreality/'

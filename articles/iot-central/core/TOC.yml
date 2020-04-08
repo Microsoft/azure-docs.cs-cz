@@ -21,8 +21,10 @@
   items:
     - name: Připojování
       items:
-        - name: Připojení zařízení
-          href: tutorial-connect-device.md
+        - name: Připojení zařízení (Node.js)
+          href: tutorial-connect-device-nodejs.md
+        - name: Připojení zařízení (Python)
+          href: tutorial-connect-device-python.md
         - name: Připojení zařízení Plug and Play (Preview)
           href: tutorial-connect-pnp-device.md
         - name: Vytvoření šablony zařízení brány

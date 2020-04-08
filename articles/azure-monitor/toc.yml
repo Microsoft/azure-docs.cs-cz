@@ -220,6 +220,8 @@
               href: app/api-custom-events-metrics.md
             - name: Řešení potíží s ASP.NET
               href: app/asp-net-troubleshoot-no-data.md
+            - name: Odebrání Application Insights
+              href: app/remove-application-insights.md
         - name: Monitorování bez kódu
           items:
             - name: Škálovací sada a virtuální počítač Azure

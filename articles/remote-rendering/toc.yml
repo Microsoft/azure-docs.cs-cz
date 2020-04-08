@@ -1,0 +1,20 @@
+- name: Dokumentace ke službě Azure Remote Rendering
+  href: index.yml
+- name: Přehled
+  expanded: true
+  href: overview/toc.yml
+- name: Rychlé starty
+  expanded: true
+  href: quickstarts/toc.yml
+- name: Kurzy
+  href: tutorials/toc.yml
+- name: ukázky
+  href: samples/toc.yml
+- name: Koncepty
+  href: concepts/toc.yml
+- name: Návody
+  href: how-tos/toc.yml
+- name: Referenční informace
+  href: reference/toc.yml
+- name: Zdroje a prostředky
+  href: resources/toc.yml

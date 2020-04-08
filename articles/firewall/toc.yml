@@ -5,7 +5,6 @@
     - name: Co je brána Azure Firewall?
       href: overview.md
 - name: Kurzy
-  expanded: true
   items:
     - name: Nasazení a konfigurace
       href: tutorial-firewall-deploy-portal.md
@@ -15,6 +14,12 @@
       href: tutorial-firewall-dnat.md
     - name: Monitorování diagnostických protokolů
       href: tutorial-diagnostics.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Nasazení s využitím skupin IP adres
+      displayName: Resource Manager
+      href: quick-create-ipgroup-template.md
 - name: ukázky
   items:
     - name: Azure PowerShell

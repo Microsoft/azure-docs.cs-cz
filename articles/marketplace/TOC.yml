@@ -130,7 +130,7 @@
               href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md
         - name: Seller Insights
           items:
-            - name: Začínáme
+            - name: začínáme
               href: ./cloud-partner-portal-orig/si-getting-started.md
             - name: Co je nového
               href: ./cloud-partner-portal-orig/si-changes.md
@@ -173,7 +173,7 @@
         - name: Nabídka aplikace Azure
           href: ./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md
           items:
-            - name: Předpoklady
+            - name: Požadavky
               href: ./cloud-partner-portal/azure-applications/cpp-prerequisites.md
             - name: Vytvoření nabídky aplikací Azure
               href: ./cloud-partner-portal/azure-applications/cpp-create-offer.md
@@ -199,7 +199,7 @@
         - name: Konzultační služby
           href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
           items:
-            - name: Předpoklady
+            - name: Požadavky
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
             - name: Vytvoření nabídky konzultačních služeb
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
@@ -213,7 +213,7 @@
         - name: Nabídka kontejnerů
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:
-            - name: Předpoklady
+            - name: Požadavky
               href: ./cloud-partner-portal/containers/cpp-prerequisites.md
             - name: Vytvoření nabídky kontejnerů
               href: ./cloud-partner-portal/containers/cpp-create-offer.md
@@ -250,7 +250,7 @@
         - name: Nabídka Dynamics 365 for Customer Engagement
           href: ./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md
           items:
-            - name: Předpoklady
+            - name: Požadavky
               href: ./cloud-partner-portal/dyn365ce/cpp-prerequisites.md
             - name: Vytvoření nabídky Customer Engagement
               href: ./cloud-partner-portal/dyn365ce/cpp-create-offer.md
@@ -272,7 +272,7 @@
         - name: Nabídka Dynamics 365 for Operations
           href: ./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md
           items:
-            - name: Předpoklady
+            - name: Požadavky
               href: ./cloud-partner-portal-orig/pre-requisites.md
             - name: Jak publikovat
               href: ./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md
@@ -289,7 +289,7 @@
         - name: Nabídka modulu IoT Edge
           href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
           items:
-            - name: Předpoklady
+            - name: Požadavky
               href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
             - name: Vytvoření nabídky modulu IoT Edge
               href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
@@ -311,7 +311,7 @@
         - name: Nabídka aplikací Power BI
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
           items:
-            - name: Předpoklady
+            - name: Požadavky
               href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
             - name: Vytvoření nabídky aplikací Power BI
               href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
@@ -335,7 +335,7 @@
         - name: Nabídka virtuálních počítačů
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:
-            - name: Předpoklady
+            - name: Požadavky
               href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
             - name: Vytvoření nabídky virtuálních počítačů
               href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
@@ -399,7 +399,7 @@
       items:
         - name: Přehled
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: Předpoklady
+        - name: Požadavky
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
         - name: Požadavky
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
@@ -453,6 +453,12 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Rozhraní API pro onboarding
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Konzultační služby
+          items:
+            - name: Požadavky
+              href: ./partner-center-portal/consulting-service-prerequisites.md
+            - name: Vytvoření nabídky konzultačních služeb
+              href: ./partner-center-portal/create-consulting-service-offer.md
         - name: Nabídky Dynamics 365
           items:
             - name: Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
@@ -461,6 +467,22 @@
               href: ./partner-center-portal/create-new-operations-offer.md
             - name: Vytvoření nabídky Dynamics 365 Business Central
               href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: Nabídky modulů IoT Edge
+          items:
+            - name: Příprava technických prostředků modulu IoT Edge
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
+            - name: Vytvoření nabídky modulu IoT Edge
+              href: ./partner-center-portal/azure-iot-edge-module-creation.md
+        - name: Nabídky spravované služby
+          items:
+            - name: Vytvoření nabídky spravované služby
+              href: ./partner-center-portal/create-new-managed-service-offer.md
+        - name: Nabídky aplikací Power BI
+          items:
+            - name: Přehled publikování
+              href: ./partner-center-portal/create-power-bi-app-overview.md
+            - name: Vytvoření nabídky aplikací Power BI
+              href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: Nabídky SaaS
           items:
             - name: Kontrolní seznam k vytváření nabídek SaaS

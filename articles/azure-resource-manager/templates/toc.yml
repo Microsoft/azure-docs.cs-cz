@@ -83,7 +83,7 @@
         - name: 3. Vytvoření kanálu
           displayName: Devop
           href: deployment-tutorial-pipeline.md
-    - name: Upřesňující
+    - name: Rozšířené šablony
       items:
         - name: Využití referenčních informací k šablonám
           href: template-tutorial-use-template-reference.md
@@ -101,23 +101,21 @@
         - name: Integrace trezoru klíčů
           displayName: secrets
           href: template-tutorial-use-key-vault.md
-        - name: Vytvoření propojených šablon
-          href: template-tutorial-create-linked-templates.md
         - name: Nasazení rozšíření virtuálních počítačů
           displayName: virtual machine extensions
           href: template-tutorial-deploy-vm-extensions.md
         - name: Nasazení rozšíření SQL
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: Zabezpečené artefakty
-          href: template-tutorial-secure-artifacts.md
+        - name: Řešení potíže s nasazováním šablon
+          href: template-tutorial-troubleshoot.md
+    - name: Správce nasazení
+      items:
         - name: Použití postupů bezpečného nasazení
           displayName: adm
           href: deployment-manager-tutorial.md
         - name: Použití kontroly stavu v Deployment Manageru
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-        - name: Řešení potíže s nasazováním šablon
-          href: template-tutorial-troubleshoot.md
 - name: ukázky
   items:
     - name: Šablony rychlého zprovoznění pro Azure
