@@ -87,9 +87,9 @@
           displayName: 'metadata, pair'
         - name: Test
           href: How-To/test-knowledge-base.md
-    - name: Správa sad QnA
+    - name: Správa dvojic QnA
       items:
-        - name: Úprava sady QnA
+        - name: Úprava dvojice QnA
           href: How-To/edit-knowledge-base.md
         - name: Přidání následných dotazů
           href: How-To/multiturn-conversation.md
