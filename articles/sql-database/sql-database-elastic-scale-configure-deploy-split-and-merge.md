@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421027"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810200"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby rozdělení sloučení pro přesun dat mezi rozdělenými databázemi
 
@@ -150,7 +150,7 @@ Vezměte prosím na vědomí, že pro produkční nasazení by měly být pro ce
 
 ## <a name="troubleshoot-the-deployment"></a>Poradce při potížích s nasazením
 
-Pokud se vaše webová role nepodaří přepnout do režimu online, je pravděpodobně problém s konfigurací zabezpečení. Zkontrolujte, zda je ssl nakonfigurován, jak je popsáno výše.
+Pokud se vaše webová role nepodaří přepnout do režimu online, je pravděpodobně problém s konfigurací zabezpečení. Zkontrolujte, zda je tls/ssl nakonfigurováno, jak je popsáno výše.
 
 Pokud se role pracovního procesu nepodaří připojit do režimu online, ale vaše webová role je úspěšná, je to s největší pravděpodobností problém s připojením k databázi stavu, kterou jste vytvořili dříve.
 
@@ -254,7 +254,7 @@ Zahrnuté soubory skriptů jsou:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Spusťte skript *ExecuteSampleSplitMerge.ps1* k provedení operace rozdělení (přesunutí poloviny dat na první úlomek do druhého střepu) a potom operace sloučení (přesunutí dat zpět na první úlomek). Pokud jste nakonfigurovali protokol SSL a ponechali koncový bod http zakázaný, ujistěte se, že místo toho použijete koncový bod https://.
+5. Spusťte skript *ExecuteSampleSplitMerge.ps1* k provedení operace rozdělení (přesunutí poloviny dat na první úlomek do druhého střepu) a potom operace sloučení (přesunutí dat zpět na první úlomek). Pokud jste nakonfigurovali TLS a ponechali koncový bod http zakázaný, ujistěte se, že místo toho použijete koncový bod https://.
 
    Ukázkový příkazový řádek:
 
@@ -333,7 +333,7 @@ Při spuštění ukázkových skriptů powershellu se může zobrazit následuj�
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-Tato chyba znamená, že certifikát SSL není správně nakonfigurován. Postupujte podle pokynů v části "Připojení k webovému prohlížeči".
+Tato chyba znamená, že certifikát TLS/SSL není správně nakonfigurován. Postupujte podle pokynů v části "Připojení k webovému prohlížeči".
 
 Pokud nemůžete odeslat žádosti, můžete vidět toto:
 

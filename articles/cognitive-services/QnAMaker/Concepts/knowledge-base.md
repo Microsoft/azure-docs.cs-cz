@@ -3,12 +3,12 @@ title: Import ze zdrojů dat - QnA Maker
 description: Znalostní báze QnA Maker se skládá ze sady otázek a odpovědí (QnA) a volitelných metadat přidružených ke každé dvojici QnA.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457817"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804278"
 ---
 # <a name="importing-from-data-sources"></a>Import ze zdrojů dat
 
@@ -56,7 +56,7 @@ Sloupec pro víceotočení `.tsv`, specifické pro víceotočení, je **Výzvy**
 
 ## <a name="export-as-example"></a>Exportovat jako příklad
 
-Pokud si nejste jisti, jak reprezentovat sadu `.tsv` QnA v souboru:
+Pokud si nejste jisti, jak reprezentovat dvojici QnA v souboru: `.tsv`
 * Použijte tento [příklad ke stažení z GitHubu](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
 * Nebo vytvořte sadu na portálu QnA Maker, uložte a pak exportujte znalostní bázi pro příklad, jak sadu reprezentovat.
 
@@ -72,9 +72,9 @@ Použijte odkaz QnA Maker [Markdown,](../reference-markdown-format.md) který v�
 [Přehled služby QnA Maker](../Overview/overview.md)
 
 Vytvořte a upravte znalostní bázi pomocí:
-* [ROZHRANÍ API PRO ODPOČINEK](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
-* [Sada SDK rozhraní .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
 Vygenerujte odpověď pomocí:
-* [ROZHRANÍ API PRO ODPOČINEK](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
-* [Sada SDK rozhraní .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)
+* [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

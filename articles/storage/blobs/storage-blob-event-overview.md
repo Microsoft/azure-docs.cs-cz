@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754998"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811539"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob Storage
 
@@ -98,7 +98,7 @@ Aplikace, které zpracovávají události úložiště objektů Blob, by měly d
 > * Podobně zkontrolujte, zda eventType je ten, který jste připraveni ke zpracování a nepředpokládejte, že všechny události, které obdržíte, budou typy, které očekáváte.
 > * Vzhledem k tomu, že zprávy mohou být doručeny po určité prodlevě, použijte pole etag, abyste zjistili, zda jsou informace o objektech stále aktuální. Informace o tom, jak používat pole etag, najdete v [tématu Správa souběžnosti v úložišti objektů Blob](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage). 
 > * Jako zprávy mohou být doručeny mimo pořadí, použijte pole sekvenceru pochopit pořadí událostí na konkrétní objekt. Pole sekvenceru je řetězcová hodnota, která představuje logickou posloupnost událostí pro libovolný konkrétní název objektu blob. Standardní porovnání řetězců můžete použít k pochopení relativní posloupnosti dvou událostí na stejném názvu objektu blob.
-> Události úložiště zaručuje alespoň jednou doručení předplatitelům, což zajišťuje, že jsou výstupy všech zpráv. Však z důvodu opakování nebo dostupnost odběrů, může příležitostně dojít k duplicitní zprávy.
+> * Události úložiště zaručuje alespoň jednou doručení předplatitelům, což zajišťuje, že jsou výstupy všech zpráv. Však z důvodu opakování nebo dostupnost odběrů, může příležitostně dojít k duplicitní zprávy. Další informace o doručování zpráv a opakování naleznete v [tématu Message Grid události doručení a opakování](../../event-grid/delivery-and-retry.md).
 > * Pomocí pole blobType zjistěte, jaký typ operací je povolen v objektu blob a které typy klientských knih, které byste měli použít pro přístup k objektu blob. Platné hodnoty `BlockBlob` jsou `PageBlob`buď nebo . 
 > * Použijte pole url `CloudBlockBlob` s `CloudAppendBlob` konstruktory a pro přístup k objektu blob.
 > * Ignorujte pole, kterým nerozumíte. Tento postup vám pomůže udržet odolnost vůči novým funkcím, které by mohly být přidány v budoucnu.

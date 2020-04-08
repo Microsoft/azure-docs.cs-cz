@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 1a0ec9465be3b714e90bfca6a15b60423d6065a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f05780610a2a6033b069721b143aca5e5efa6c35
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295576"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804516"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Vytvoření ILB ASE pomocí šablon Azure Resource Manageru
 
@@ -28,8 +28,8 @@ Prostředí služby App Service lze vytvořit s interní adresou virtuální sí
 Existují tři kroky při automatizaci vytváření služby ASE ILB:
 
 1. Nejprve základní služby ASE je vytvořen ve virtuální síti pomocí interní adresu nástroje pro vyrovnávání zatížení namísto veřejné VIP.  V rámci tohoto kroku je kořenový název domény přiřazen ke správě Služby ASE ILB.
-2. Po vytvoření služby ASE ILB je odeslán certifikát SSL.  
-3. Nahraný certifikát SSL je explicitně přiřazen k ase Služby ILB jako jeho "výchozí" certifikát SSL.  Tento certifikát SSL se použije pro přenos SSL s aplikacemi ve službě ILB ASE, když jsou aplikace `https://someapp.mycustomrootcomain.com`adresovány pomocí společné kořenové domény přiřazené službě ASE (např. )
+2. Po vytvoření služby ASE ILB je odeslán certifikát TLS/SSL.  
+3. Nahraný certifikát TLS/SSL je explicitně přiřazen ase Služby ILB jako jeho "výchozí" certifikát TLS/SSL.  Tento certifikát TLS/SSL se použije pro přenos TLS do aplikací ve službě ILB ASE, když jsou aplikace adresovány pomocí společné kořenové domény přiřazené službě ASE (např. `https://someapp.mycustomrootcomain.com`)
 
 ## <a name="creating-the-base-ilb-ase"></a>Vytvoření základní služby ALB ASE
 Příklad šablony Azure Resource Manager a jeho přidružené parametry souboru, jsou k dispozici na GitHub [zde][quickstartilbasecreate].
@@ -49,17 +49,17 @@ Po vyplnění souboru *azuredeploy.parameters.json* pro službu ASE ILB lze slu�
 
 Po odeslání šablony Azure Resource Manager bude trvat několik hodin pro Vytvoření služby ASE ILB.  Po dokončení vytváření se služba ASE ILB zobrazí na portálu UX v seznamu prostředí služby App Service pro předplatné, které spustilo nasazení.
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Nahrání a konfigurace výchozího certifikátu SSL
-Po vytvoření služby ASE ILB by měl být certifikát SSL přidružen ke službě ASE jako "výchozí" použití certifikátu SSL pro navazování připojení SSL k aplikacím.  Pokračování v hypotetickém příkladu contoso corporation, pokud je výchozí *internal-contoso.com*přípona DNS *https://some-random-app.internal-contoso.com* služby ASE internal-contoso.com , pak připojení k vyžaduje certifikát SSL, který je platný pro **.internal-contoso.com*. 
+## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>Nahrávání a konfigurace výchozího certifikátu TLS/SSL
+Po vytvoření služby ASE ILB by měl být certifikát TLS/SSL přidružen ke službě ASE jako "výchozí" použití certifikátu TLS/SSL pro navazování připojení TLS/SSL k aplikacím.  Pokračování v hypotetickém příkladu contoso corporation, pokud je výchozí *internal-contoso.com*přípona DNS *https://some-random-app.internal-contoso.com* služby ASE internal-contoso.com , pak připojení vyžaduje certifikát TLS/SSL, který je platný pro **.internal-contoso.com*. 
 
-Existuje celá řada způsobů, jak získat platný certifikát SSL, včetně interních certifikačních autorit, zakoupení certifikátu od externího vystavittele a použití certifikátu podepsaného svým držitelem.  Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
+Existuje celá řada způsobů, jak získat platný certifikát TLS/SSL, včetně interních certifikačních autorit, zakoupení certifikátu od externího vystavittele a použití certifikátu podepsaného svým držitelem.  Bez ohledu na zdroj certifikátu TLS/SSL je třeba správně nakonfigurovat následující atributy certifikátu:
 
 * *Předmět*: Tento atribut musí být nastaven na **.your-root-domain-here.com*
-* *Alternativní název předmětu*: Tento atribut musí obsahovat **.your-root-domain-here.com*a **.scm.your-root-domain-here.com*.  Důvodem pro druhou položku je, že SSL připojení k webu SCM/Kudu přidružené ke každé aplikaci budou provedeny pomocí adresy formuláře *your-app-name.scm.your-root-domain-here.com*.
+* *Alternativní název předmětu*: Tento atribut musí obsahovat **.your-root-domain-here.com*a **.scm.your-root-domain-here.com*.  Důvodem pro druhou položku je, že Připojení TLS k webu SCM/Kudu přidruženému ke každé aplikaci budou provedena pomocí adresy formuláře *your-app-name.scm.your-root-domain-here.com*.
 
-S platným certifikátem SSL v ruce jsou zapotřebí dva další přípravné kroky.  Certifikát SSL je třeba převést/uložit jako soubor .pfx.  Nezapomeňte, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty a také musí být zabezpečen heslem.
+S platným certifikátem TLS/SSL v ruce jsou zapotřebí další dva přípravné kroky.  Certifikát TLS/SSL je třeba převést/uložit jako soubor .pfx.  Nezapomeňte, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty a také musí být zabezpečen heslem.
 
-Výsledný soubor .pfx pak musí být převeden na řetězec base64, protože certifikát SSL se nahraje pomocí šablony Azure Resource Manager.  Vzhledem k tomu, že šablony Azure Resource Manager jsou textové soubory, soubor .pfx je třeba převést na řetězec base64, aby mohl být zahrnut jako parametr šablony.
+Výsledný soubor .pfx pak musí být převeden na řetězec base64, protože certifikát TLS/SSL se nahraje pomocí šablony Azure Resource Manager.  Vzhledem k tomu, že šablony Azure Resource Manager jsou textové soubory, soubor .pfx je třeba převést na řetězec base64, aby mohl být zahrnut jako parametr šablony.
 
 Fragment kódu prostředí Powershell udává příklad generování certifikátu podepsaného svým držitelem, exportu certifikátu jako souboru Pfx, převodu souboru Pfx na kódovaný řetězec base64 a uložení kódu base64 do samostatného souboru.  Kód Powershellu pro kódování base64 byl upraven z [blogu Powershell Scripts .][examplebase64encoding]
 
@@ -75,7 +75,7 @@ Fragment kódu prostředí Powershell udává příklad generování certifikát
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-Jakmile je certifikát SSL úspěšně vygenerován a převeden na kódovaný řetězec base64, lze použít ukázkovou šablonu Azure Resource Manager na GitHubu pro [konfiguraci výchozího certifikátu SSL.][configuringDefaultSSLCertificate]
+Jakmile je certifikát TLS/SSL úspěšně vygenerován a převeden na kódovaný řetězec base64, lze použít ukázkovou šablonu Azure Resource Manager na GitHubu pro [konfiguraci výchozího certifikátu TLS/SSL.][configuringDefaultSSLCertificate]
 
 Parametry v souboru *azuredeploy.parameters.json* jsou uvedeny níže:
 
@@ -84,7 +84,7 @@ Parametry v souboru *azuredeploy.parameters.json* jsou uvedeny níže:
 * *pfxBlobString*: Reprezentace řetězce .pfx 64.  Pomocí fragmentu kódu, který byl zobrazen dříve, byste zkopírovali řetězec obsažený v souboru "exportedcert.pfx.b64" a vložili jej jako hodnotu atributu *pfxBlobString.*
 * *heslo*: Heslo používané k zabezpečení souboru .pfx.
 * *certificateThumbprint*: Kryptografický otisk certifikátu.  Pokud tuto hodnotu načtete z aplikace Powershell (např. *$certificate. Kryptografický otisk* z předchozího fragmentu kódu) můžete použít hodnotu tak, jak je.  Pokud však zkopírujete hodnotu z dialogového okna Certifikát systému Windows, nezapomeňte odstranit cizí mezery.  *CertifikátOtisk palce* by měl vypadat nějak jako: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *název certifikátu*: Popisný identifikátor řetězce, který si vlastní zvolíte k identifikaci certifikátu.  Název se používá jako součást jedinečného identifikátoru Správce prostředků Azure pro entitu *Microsoft.Web/certificates* představující certifikát SSL.  Název **musí** končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE.  Tato přípona se používá portál jako indikátor, že certifikát se používá pro zabezpečení služby ASE s povolenou ILB.
+* *název certifikátu*: Popisný identifikátor řetězce, který si vlastní zvolíte k identifikaci certifikátu.  Název se používá jako součást jedinečného identifikátoru Správce prostředků Azure pro entitu *Microsoft.Web/certificates* představující certifikát TLS/SSL.  Název **musí** končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE.  Tato přípona se používá portál jako indikátor, že certifikát se používá pro zabezpečení služby ASE s povolenou ILB.
 
 Zkrácený příklad *azuredeploy.parameters.json* je uveden níže:
 
@@ -113,7 +113,7 @@ Zkrácený příklad *azuredeploy.parameters.json* je uveden níže:
          }
     }
 
-Po vyplnění souboru *azuredeploy.parameters.json* lze výchozí certifikát SSL nakonfigurovat pomocí následujícího fragmentu kódu Powershellu.  Změňte soubor PATHs tak, aby odpovídaly, kde jsou umístěny soubory šablon Azure Resource Manager ve vašem počítači.  Nezapomeňte také zadat vlastní hodnoty pro název nasazení Azure Resource Manager a název skupiny prostředků.
+Po vyplnění souboru *azuredeploy.parameters.json* lze výchozí certifikát TLS/SSL nakonfigurovat pomocí následujícího fragmentu kódu Powershellu.  Změňte soubor PATHs tak, aby odpovídaly, kde jsou umístěny soubory šablon Azure Resource Manager ve vašem počítači.  Nezapomeňte také zadat vlastní hodnoty pro název nasazení Azure Resource Manager a název skupiny prostředků.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
@@ -122,9 +122,9 @@ Po vyplnění souboru *azuredeploy.parameters.json* lze výchozí certifikát SS
 
 Po odeslání šablony Azure Resource Manager bude trvat zhruba čtyřicet minut na front-end služby ASE použít změnu.  Například s výchozí velikosti služby ASE pomocí dvou front-endů, šablona bude trvat přibližně jednu hodinu a dvacet minut na dokončení.  Při spuštění šablony ase nebude moci škálovat.  
 
-Po dokončení šablony aplikace na ILB ASE lze přistupovat přes HTTPS a připojení budou zabezpečeny pomocí výchozího certifikátu SSL.  Výchozí certifikát SSL se použije, když jsou aplikace ve službě ASE ILB adresovány pomocí kombinace názvu aplikace a výchozího názvu hostitele.  Například *https://mycustomapp.internal-contoso.com* použít výchozí certifikát SSL pro **.internal-contoso.com*.
+Po dokončení šablony lze k aplikacím služby ILB ase přistupovat přes protokol HTTPS a připojení budou zabezpečena pomocí výchozího certifikátu TLS/SSL.  Výchozí certifikát TLS/SSL se použije, když jsou aplikace ve službě ILB ASE adresovány pomocí kombinace názvu aplikace a výchozího názvu hostitele.  Například *https://mycustomapp.internal-contoso.com* použít výchozí certifikát TLS/SSL pro **.internal-contoso.com*.
 
-Stejně jako aplikace spuštěné ve veřejné službě s více tenanty však mohou vývojáři také konfigurovat vlastní názvy hostitelů pro jednotlivé aplikace a pak nakonfigurovat jedinečné vazby certifikátů SNI SSL pro jednotlivé aplikace.  
+Stejně jako aplikace spuštěné ve veřejné službě s více tenanty však mohou vývojáři také konfigurovat vlastní názvy hostitelů pro jednotlivé aplikace a pak nakonfigurovat jedinečné vazby certifikátů SNI TLS/SSL pro jednotlivé aplikace.  
 
 ## <a name="getting-started"></a>Začínáme
 Pokud chcete začít s prostředím služby App Service, [přečtěte si informace o úvodu do prostředí služby App Service](app-service-app-service-environment-intro.md)

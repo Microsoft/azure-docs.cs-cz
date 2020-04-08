@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335211"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804635"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Jak používat modul Prostorové IO Azure Maps
 
@@ -26,6 +26,13 @@ Webová sada Azure Maps Web SDK poskytuje **modul Prostorové IO**, který integ
 - [Využijte vysokorychlostní třídy XML a oddělovače souborů a zapisovače](spatial-io-core-operations.md).
 
 V této příručce se dozvíme, jak integrovat a používat modul Prostorové vive ve webové aplikaci.
+
+Toto video poskytuje přehled prostorového io modulu v Azure Maps Web SDK.
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Snadno integrujte prostorová data do Azure Maps – Microsoft Channel 9 Video"></iframe>
+
 
 > [!WARNING]
 > Používejte pouze data a služby, které pocházejí ze zdroje, kterému důvěřujete, zejména pokud na ně odkazujete z jiné domény. Prostorový vstupně-tomodul podnikne kroky k minimalizaci rizika, ale nejbezpečnější přístup je příliš neumožňuje žádné danagerous data do aplikace začít. 

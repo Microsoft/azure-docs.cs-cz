@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 3f15033095b02dd35c2d8d7bda60ca184df64c9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475015"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804720"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (Web SDK)
 
@@ -837,7 +837,7 @@ Výraz `zoom` se používá k načtení aktuální úrovně přiblížení mapy 
 
 **Příklad**
 
-Ve výchozím nastavení mají poloměry datových bodů vykreslené ve vrstvě tepelné mapy pevný poloměr obrazových bodů pro všechny úrovně zvětšení. Při přiblížení mapy se data agregují a vrstva tepelné mapy vypadá jinak. Výraz `zoom` lze použít ke zmenšení poloměru pro každou úroveň přiblížení tak, aby každý datový bod pokrýval stejnou fyzickou oblast mapy. To bude vrstva tepelné mapy vypadat více statické a konzistentní. Každá úroveň přiblížení mapy má dvakrát tolik obrazových bodů svisle a vodorovně než předchozí úroveň přiblížení. Změna poloměru tak, aby se zdvojnásobila s každou úrovní přiblížení, vytvoří tepelnou mapu, která bude vypadat konzistentní na všech úrovních přiblížení. To lze provést pomocí `zoom` výrazu `base 2 exponential interpolation` s výrazem, jak je znázorněno níže. 
+Ve výchozím nastavení mají poloměry datových bodů vykreslené ve vrstvě tepelné mapy pevný poloměr obrazových bodů pro všechny úrovně zvětšení. Při přiblížení mapy se data agregují a vrstva tepelné mapy vypadá jinak. Výraz `zoom` lze použít ke zmenšení poloměru pro každou úroveň přiblížení tak, aby každý datový bod pokrýval stejnou fyzickou oblast mapy. To bude vrstva tepelné mapy vypadat více statické a konzistentní. Každá úroveň přiblížení mapy má dvakrát tolik obrazových bodů svisle a vodorovně než předchozí úroveň přiblížení. Změna poloměru tak, aby se zdvojnásobila s každou úrovní přiblížení, vytvoří tepelnou mapu, která bude vypadat konzistentní na všech úrovních přiblížení. To lze provést pomocí `zoom` výrazu `base 2 exponential interpolation` s výrazem, s poloměrem obrazových bodů nastavena na minimální `2 * Math.pow(2, minZoom - maxZoom)` úroveň zvětšení a zmenšenpoloměr pro maximální úroveň zvětšení vypočtené, jak je znázorněno níže.
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -849,8 +849,8 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         //For zoom level 1 set the radius to 2 pixels.
         10, 2,
 
-        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 10,000 pixels.
-        19, 10000
+        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
+        19, 2 * Math.pow(2, 19 - 1)
     ]
 };
 ```

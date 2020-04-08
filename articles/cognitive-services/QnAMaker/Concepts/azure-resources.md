@@ -3,12 +3,12 @@ title: Prostředky Azure – QnA Maker
 description: QnA Maker používá několik zdrojů Azure, každý s jiným účelem. Pochopení toho, jak se používají jednotlivě, vám umožní naplánovat a vybrat správnou cenovou úroveň nebo vědět, kdy změnit cenovou úroveň. Pochopení toho, jak se používají v kombinaci umožňuje najít a opravit problémy, když k nim dojde.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284241"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804295"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -47,14 +47,14 @@ V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 |                        | QnA Maker Management | App Service | Azure Cognitive Search | Omezení                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | Experimentování        | Volná skladová položka             | Úroveň zdarma   | Úroveň zdarma    | Publikovat až 2 kbs, velikost 50 MB  |
-| Vývoj/testování prostředí   | Standardní SKU         | Sdílená      | Basic        | Publikovat až 14 kb, velikost 2 GB    |
-| Výrobní prostředí | Standardní SKU         | Basic       | Standard     | Publikovat až 49 kb, velikost 25 GB |
+| Vývoj/testování prostředí   | Standardní SKU         | Sdílená      | Základní        | Publikovat až 14 kb, velikost 2 GB    |
+| Výrobní prostředí | Standardní SKU         | Základní       | Standard     | Publikovat až 49 kb, velikost 25 GB |
 
 ## <a name="when-to-change-a-pricing-tier"></a>Kdy změnit cenovou úroveň
 
 |Upgrade|Důvod|
 |--|--|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) Skladová položka správy qnA makeru|Chcete mít více sad QnA nebo zdrojů dokumentů ve znalostní bázi.|
+|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) Skladová položka správy qnA makeru|Chcete mít více párů QnA nebo zdrojů dokumentů ve znalostní bázi.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) SKU služby App Service a kontrola úrovně kognitivního vyhledávání a [vytváření replik kognitivního vyhledávání](../../../search/search-capacity-planning.md)|Vaše znalostní báze musí obsluhovat více požadavků z klientské aplikace, například chatovacího robota.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Služba azure kognitivního vyhledávání|Máte v plánu mít mnoho znalostí.|
 
@@ -95,8 +95,8 @@ Každý prostředek Azure vytvořený pomocí QnA Makermá konkrétní účel:
 
 Prostředek [kognitivního vyhledávání](../../../search/index.yml) se používá k:
 
-* Uložení sad QnA
-* Uveďte počáteční pořadí (ranker #1) sad QnA za běhu
+* Uložení párů QnA
+* Poskytněte počáteční pořadí (ranker #1) párů QnA za běhu
 
 #### <a name="index-usage"></a>Využití indexu
 
@@ -110,7 +110,7 @@ První znalostní báze vytvořená v prostředku QnA Maker se používá k urč
 
 ### <a name="qna-maker-resource"></a>Zdroj QnA Maker
 
-Prostředek QnA Maker poskytuje přístup k vytváření a publikování rozhraní API, jakož i zpracování přirozeného jazyka (NLP) založené druhé pořadí vrstvy (ranker #2) sady QnA za běhu.
+Prostředek QnA Maker poskytuje přístup k vytváření a publikování rozhraní API, stejně jako zpracování přirozeného jazyka (NLP) založené druhé pořadí vrstvy (ranker #2) párů QnA za běhu.
 
 Druhé pořadí používá inteligentní filtry, které mohou obsahovat metadata a následné výzvy.
 
@@ -164,7 +164,7 @@ Tyto klíče použijte při vytváření požadavků na službu prostřednictví
 
 |Name (Název)|Umístění|Účel|
 |--|--|--|
-|Klíč pro vytváření|[Portál Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Tyto klíče se používají pro přístup k [řešení API služby správy služby QnA Maker](https://go.microsoft.com/fwlink/?linkid=2092179). Tato api umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče jsou vytvořeny při vytváření nové služby QnA Maker.<br><br>Tyto klíče najdete v prostředku **služeb Cognitive Services** na stránce **Klíče.**|
+|Klíč pro vytváření|[portál Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Tyto klíče se používají pro přístup k [řešení API služby správy služby QnA Maker](https://go.microsoft.com/fwlink/?linkid=2092179). Tato api umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče jsou vytvořeny při vytváření nové služby QnA Maker.<br><br>Tyto klíče najdete v prostředku **služeb Cognitive Services** na stránce **Klíče.**|
 |Klíč koncového bodu dotazu|[Portál QnA Makeru](https://www.qnamaker.ai)|Tyto klíče se používají k dotazování publikovaný koncový bod znalostní báze získat odpověď na otázku uživatele. Tento koncový bod dotazu se obvykle používá v chatovacím robotu nebo v kódu klientské aplikace, který se připojuje ke službě QnA Maker. Tyto klíče jsou vytvořeny při publikování znalostní báze QnA Maker.<br><br>Tyto klíče najdete na stránce **Nastavení služby.** Tuto stránku naleznete v nabídce uživatele v pravém horním části stránky v rozevírací nabídce.|
 
 ### <a name="subscription-keys"></a>Klíče předplatného

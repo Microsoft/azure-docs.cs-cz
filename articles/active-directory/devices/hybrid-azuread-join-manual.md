@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878960738830dbe2f94b977e98215a681c4a79d2
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239081"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802548"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -66,7 +66,7 @@ Pokud vaše organizace plánuje používat bezproblémové jednotné přihlašov
 
 Kromě toho by v zóně intranetu uživatele mělo být povolené následující nastavení: Povolit aktualizace stavového řádku přes skript.
 
-Pokud vaše organizace používá spravované (nefederované) nastavení s místní službou Active Directory a nepoužívá službu AD FS (Active) služby Active (Active) služby Active. Adresář, který se má synchronizovat se službou Azure AD. Ujistěte se, že všechny hlavní uživatele, které obsahují objekty počítače, které musí být hybridní Azure AD připojeny jsou povoleny pro synchronizaci v konfiguraci synchronizace Azure AD Connect.
+Pokud vaše organizace používá spravované (nefederované) nastavení s místní službou Active Directory a nepoužívá službu AD FS (AD FS) k federaci pomocí služby Azure AD, pak hybridní připojení Azure AD ve Windows 10 závisí na objektech počítače ve službě Active Directory, které se synchronizují se službou Azure AD. Ujistěte se, že všechny hlavní uživatele, které obsahují objekty počítače, které musí být hybridní Azure AD připojeny jsou povoleny pro synchronizaci v konfiguraci synchronizace Azure AD Connect.
 
 Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, je nutné implementovat automatické zjišťování webového proxy serveru (WPAD), aby se počítače s Windows 10 mohly zaregistrovat do Azure AD, pokud vaše organizace vyžaduje přístup k internetu prostřednictvím odchozího proxy serveru, musíte implementovat automatické zjišťování webového proxy serveru (WPAD), aby se počítače s Windows 10 mohly zaregistrovat do Azure AD.
 
@@ -85,7 +85,7 @@ V následující tabulce najdete přehled požadovaných kroků pro váš scén�
 | Konfigurace spojovacího bodu služby | ![Zaškrtnout][1] | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
 | Nastavit vystavení pohledávek |     | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
 | Povolení zařízení bez Windows 10 |       |        | ![Zaškrtnout][1] |
-| Ověření připojených zařízení | ![Zaškrtnout][1] | ![Zaškrtnout][1] | [Zkontrolujte][1] |
+| Ověření připojených zařízení | ![Zaškrtnout][1] | ![Zaškrtnout][1] | ![Zaškrtnout][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurace spojovacího bodu služby
 

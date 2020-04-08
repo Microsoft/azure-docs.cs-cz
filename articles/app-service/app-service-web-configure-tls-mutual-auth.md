@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300995"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811726"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro službu Azure App Service
 
@@ -41,7 +41,7 @@ Cesty vyloučení lze nakonfigurovat výběrem**obecného nastavení** **konfigu
 
 ## <a name="access-client-certificate"></a>Přístup k klientským certifikátům
 
-Ve službě App Service ssl ukončení požadavku se stane na front-endu vyrovnávání zatížení. Při předávání požadavku na kód aplikace s [povolenými klientskými certifikáty](#enable-client-certificates)aplikace App Service vloží hlavičku `X-ARR-ClientCert` požadavku s klientským certifikátem. Služba App Service s tímto klientským certifikátem nedělá nic jiného než ho přeposílá do vaší aplikace. Kód aplikace je zodpovědný za ověření klientského certifikátu.
+Ve službě App Service dojde k ukončení požadavku TLS v front-endu v yvytárna zatížení. Při předávání požadavku na kód aplikace s [povolenými klientskými certifikáty](#enable-client-certificates)aplikace App Service vloží hlavičku `X-ARR-ClientCert` požadavku s klientským certifikátem. Služba App Service s tímto klientským certifikátem nedělá nic jiného než ho přeposílá do vaší aplikace. Kód aplikace je zodpovědný za ověření klientského certifikátu.
 
 Pro ASP.NET je klientský certifikát k dispozici prostřednictvím vlastnosti **HttpRequest.ClientCertificate.**
 

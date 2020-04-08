@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386795"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811643"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurace vlastního názvu domény pro cloudovou službu Azure
 Když vytvoříte cloudovou službu, Azure ji přiřadí k subdoméně **cloudapp.net**. Pokud má například cloudová služba název "contoso", budou mít uživatelé `http://contoso.cloudapp.net`přístup k vaší aplikaci na adrese URL, jako je . Azure také přiřadí virtuální IP adresu.
@@ -30,7 +30,7 @@ Už chápete, co jsou cname a a záznamy? [Přejít přes vysvětlení](#add-a-c
 <p/>
 
 > [!TIP]
-> Rychlejší práce – použijte [nový návod s průvodcem azure!](https://support.microsoft.com/kb/2990804)  To dělá spojení vlastní název domény a zabezpečení komunikace (SSL) s Azure Cloud Services nebo Azure Weby přichycení.
+> Rychlejší práce – použijte [nový návod s průvodcem azure!](https://support.microsoft.com/kb/2990804)  To dělá spojení vlastní název domény a zabezpečení komunikace (TLS) s Azure Cloud Services nebo Azure Weby přichycení.
 > 
 > 
 
@@ -128,14 +128,14 @@ Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chc
 * [Postup mapování obsahu CDN do vlastní domény](../cdn/cdn-map-content-to-custom-domain.md)
 * [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md).
 * Přečtěte si, jak [nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
-* Konfigurace [certifikátů ssl](cloud-services-configure-ssl-certificate-portal.md).
+* Konfigurace [certifikátů TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Portál Azure]: https://portal.azure.com
+[portál Azure]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
 

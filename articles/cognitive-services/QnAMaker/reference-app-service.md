@@ -3,14 +3,14 @@ title: Konfigurace služby - QnA Maker
 description: Zjistěte, jak a kde konfigurovat prostředky.
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651858"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804256"
 ---
-# <a name="service-configuration"></a>Konfigurace služby
+# <a name="service-configuration"></a>Konfigurace služeb
 
 QnA Maker používá několik prostředků Azure (služeb), včetně kognitivního vyhledávání, služby App Service, plánu služby App Service a přehledů aplikací.
 
@@ -27,8 +27,8 @@ Jednotlivá nastavení můžete nastavit buď prostřednictvím seznamu Nastaven
 
 |Prostředek|Nastavení|
 |--|--|
-|Klíč AzureSearchAdmin|Kognitivní vyhledávání - používá se pro úložiště sady QnA a ranker #1|
-|AzureSearchName|Kognitivní vyhledávání - používá se pro úložiště sady QnA a ranker #1|
+|Klíč AzureSearchAdmin|Kognitivní vyhledávání - používá se pro ukládání dvojice QnA a Ranker #1|
+|AzureSearchName|Kognitivní vyhledávání - používá se pro ukládání dvojice QnA a Ranker #1|
 |Výchozí odpověď|Text odpovědi, pokud není nalezena žádná shoda|
 |UživatelAppInsightsId|Protokol chatu a telemetrie|
 |Klíč UserAppInsights|Protokol chatu a telemetrie|

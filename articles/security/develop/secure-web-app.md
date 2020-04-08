@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385210"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811239"
 ---
 # <a name="develop-a-secure-web-app"></a>Vývoj zabezpečené webové aplikace
 
@@ -104,11 +104,11 @@ Tato aplikace používá:
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pro nasazení.
 - [Docker Hub](https://hub.docker.com/) jako registr kontejnerů.
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
-### <a name="network"></a>Network (Síť)
+### <a name="network"></a>Síť
 
-Ukázková aplikace používá end-to-end SSL šifrování pro příchozí data proudící do a ze sítě. Brána je konfigurována s certifikátem podepsaným svým držitelem.
+Ukázková aplikace používá end-to-end TLS/SSL šifrování pro příchozí data proudící do a ze sítě. Brána je konfigurována s certifikátem podepsaným svým držitelem.
 > [!IMPORTANT]
 > V této demonstraci se používá certifikát podepsaný svým držitelem. V provozním prostředí byste měli získat certifikáty od ověřené certifikační autority (CA).
 
@@ -123,7 +123,7 @@ Ukázková aplikace používá spravované identity získat oprávnění ke čte
 Spravované identity pro prostředky Azure a MFA ztěžují protivníkům získat oprávnění a eskalovat jejich oprávnění v systému. Tato hrozba byla zdůrazněna v modelu hrozby.
 Aplikace používá OAuth, který umožňuje uživatelům registrovaným v aplikaci OAuth přihlásit se k aplikaci.
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Data v databázi PostgreSQL se automaticky šifrují v klidovém stavu službou Azure Database for PostgreSQL. Databáze autorizuje IP adresy služby App Service, takže k prostředkům databáze má přístup ke správným ověřovacím přihlašovacím údajům je pouze nasazená webová aplikace App Service.
 
@@ -363,7 +363,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Další informace o nastavení ověřování SSL a Certifikační autority (CA) pro PostgreSQL najdete [v tématu Konfigurace připojení SSL v Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
+Další informace o nastavení ověření TLS a Certifikační autority (CA) pro PostgreSQL najdete [v tématu Konfigurace připojení TLS v Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
 
 Kořenový certifikát je součástí kontejneru. K získání certifikátu jsou podniknuty tyto kroky:
 
@@ -375,7 +375,7 @@ Kořenový certifikát je součástí kontejneru. K získání certifikátu jsou
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Přečtěte si více o tom, jak nakonfigurovat zabezpečení SSL pro PostgreSQL zde [Konfigurace zabezpečení připojení SSL](/azure/postgresql/concepts-ssl-connection-security).
+Přečtěte si více o tom, jak nakonfigurovat zabezpečení TLS pro PostgreSQL zde [Konfigurace zabezpečení připojení TLS](/azure/postgresql/concepts-ssl-connection-security).
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Nasazení Webových aplikací Azure na Linuxu
 
@@ -991,5 +991,5 @@ Bezpečnost je podobná aplikace, která kontroluje závislosti. Najdete ji na [
 Následující články vám mohou pomoci navrhovat, vyvíjet a nasazovat zabezpečené aplikace.
 
 - [Návrh](secure-design.md)
-- [Rozvíjet](secure-develop.md)
+- [Vývoj](secure-develop.md)
 - [Nasadit](secure-deploy.md)

@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280752"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811711"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu služby App Service v Azure
 
@@ -61,7 +61,7 @@ Aplikaci můžete přesunout do jiného plánu služby App Service, pokud zdrojo
 4. Pokud vytvoříte plán, můžete vybrat cenovou úroveň nového plánu. V **cenové úrovni**vyberte existující úroveň, kterou chcete změnit. 
    
    > [!IMPORTANT]
-   > Pokud přesouváte aplikaci z plánu s vyšší vrstvou na plán s nižšívrstvou, například z **D1** na **F1**, může aplikace ztratit určité možnosti v cílovém plánu. Pokud například vaše aplikace používá certifikáty SSL, může se zobrazit tato chybová zpráva:
+   > Pokud přesouváte aplikaci z plánu s vyšší vrstvou na plán s nižšívrstvou, například z **D1** na **F1**, může aplikace ztratit určité možnosti v cílovém plánu. Pokud například vaše aplikace používá certifikáty TLS/SSL, může se zobrazit tato chybová zpráva:
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5b247e8f4a611ace227f5adcef7e0e27de341c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 578d00d4bd65b3ffbfb6cdac439762344604e6b8
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454631"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804873"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Synchronizace souborů Azure
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -35,12 +35,10 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 | Kumulativní aktualizace z června 2019 - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. června 2019 | Podporováno – platnost verze agenta vyprší 21. |
 | Kumulativní aktualizace z května 2019 - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7. května 2019 | Podporováno – platnost verze agenta vyprší 21. |
 | Verze V6 - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. dubna 2019April 21, 2019 | Podporováno – platnost verze agenta vyprší 21. |
-| Kumulativní aktualizace z dubna 2019 - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4. dubna 2019 | Podporováno – platnost verze agenta vyprší 18. |
-| Kumulativní aktualizace z března 2019 - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. března 2019 | Podporováno – platnost verze agenta vyprší 18. |
-| Verze V5 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Podporováno – platnost verze agenta vyprší 18. |
-| Verze V4 | 4.0.1.0 - 4.3.0.0 | Není dostupné. | Není podporováno – platnost verzí agenta vypršela 6. |
-| Verze V3 | 3.1.0.0 - 3.4.0.0 | Není dostupné. | Není podporováno – platnost verzí agenta vypršela 19. |
-| Pre-GA agenti | 1.1.0.0 - 3.0.13.0 | Není dostupné. | Není podporováno – platnost verzí agenta vypršela 1. |
+| Verze V5 | 5.0.2.0 - 5.2.0.0 | – | Není podporováno – platnost verzí agenta vypršela 18. |
+| Verze V4 | 4.0.1.0 - 4.3.0.0 | – | Není podporováno – platnost verzí agenta vypršela 6. |
+| Verze V3 | 3.1.0.0 - 3.4.0.0 | – | Není podporováno – platnost verzí agenta vypršela 19. |
+| Pre-GA agenti | 1.1.0.0 - 3.0.13.0 | – | Není podporováno – platnost verzí agenta vypršela 1. |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/17/2020
+ms.date: 04/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 9d3d0ddbd1282827f17cd82228fcf0f3fba3a60f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471978"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811575"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení kardiostimulátoru na SUSE Linux Enterprise Server v Azure
 
@@ -365,6 +365,9 @@ Následující položky jsou předponou **buď [A]** - použitelné pro všechny
    </code></pre>
 
 1. **[A]** Konfigurace cloud-netconfig-azure pro cluster HA
+
+   >[!NOTE]
+   > Zkontrolujte nainstalovanou verzi balíčku **cloud-netconfig-azure** spuštěním **zypper info cloud-netconfig-azure**. Pokud je verze ve vašem prostředí 1.3 nebo vyšší, již není nutné potlačit správu síťových rozhraní pomocí modulu plug-in cloudové sítě. Pokud je verze nižší než 1.3, doporučujeme aktualizovat balíček **cloud-netconfig-azure** na nejnovější dostupnou verzi.  
 
    Změňte konfigurační soubor pro síťové rozhraní, jak je znázorněno níže, abyste zabránili modulu plug-in cloudové sítě v odebrání virtuální IP adresy (Pacemaker musí řídit přiřazení VIP). Další informace naleznete [v tématu SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 

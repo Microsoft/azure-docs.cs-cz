@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599c4a31840b47294b43c4c4d1f0200b17f04540
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937984"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810549"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Vývoj zabezpečené aplikace pro aplikaci Azure AD
 ## <a name="overview"></a>Přehled
@@ -228,7 +228,7 @@ $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:
 
 $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 
-#Upload the certificate to be used on the SSL-enabled back-end pool resources
+#Upload the certificate to be used on the TLS/SSL-enabled back-end pool resources
 
 #$authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
 
@@ -246,7 +246,7 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basi
 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-#Configure the SSL policy to be used on the application gateway
+#Configure the TLS/SSL policy to be used on the application gateway
 
 $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
 
@@ -276,7 +276,7 @@ Azure App Service umožňuje vytvářet a hostovat webové aplikace pomocí jazy
 
 ## <a name="guidance-and-recommendations"></a>Pokyny a doporučení
 
-### <a name="network"></a>Network (Síť)
+### <a name="network"></a>Síť
 Po dokončení nasazení máte aplikační bránu s povolenou bránou firewall webové aplikace.
 
 Instance brány zpřístupňuje port 443 pro protokol HTTPS. Tato konfigurace zajišťuje, že naše aplikace je přístupná pouze na portu 443 prostřednictvím protokolu HTTPS.
@@ -361,7 +361,7 @@ Následující technologie poskytují funkce pro správu přístupu k datům dr�
 - Azure Active Directory je cloudová služba a služba správy identit společnosti Microsoft s více klienty. Všichni uživatelé pro toto řešení se vytvářejí ve službě Azure Active Directory, včetně uživatelů, kteří přistupují k Azure WebApp.
 - Řízení přístupu na základě rolí Azure umožňuje správcům definovat jemně odstupňovaná přístupová oprávnění udělit pouze množství přístupu, které uživatelé potřebují k provádění svých úloh. Místo toho, aby každý uživatel neomezená oprávnění pro prostředky Azure, správci můžete povolit pouze určité akce pro přístup k datům držitele karty. Přístup k předplatnému je omezen na správce předplatného.
 - Správa privilegovaných identit služby Azure Active Directory umožňuje zákazníkům minimalizovat počet uživatelů, kteří mají přístup k určitým informacím, jako jsou data držitele karty. Správci můžou pomocí správy privilegovaných identit služby Azure Active Directory zjišťovat, omezovat a monitorovat privilegované identity a jejich přístup k prostředkům. Tuto funkci lze také použít k vynucení přístupu pro správu na vyžádání, který je v případě potřeby v čase.
-- Azure Active Directory Identity Protection detekuje potenciální chyby zabezpečení ovlivňující identity organizace, konfiguruje automatické odpovědi na zjištěné podezřelé akce související s identitami organizace a vyšetřuje podezřelé k přijetí vhodných opatření k jejich řešení.
+- Azure Active Directory Identity Protection detekuje potenciální chyby zabezpečení ovlivňující identity organizace, konfiguruje automatické odpovědi na zjištěné podezřelé akce související s identitami organizace a vyšetřuje podezřelé incidenty, aby podnikl a přijal vhodná opatření k jejich vyřešení.
 ### <a name="secrets-management"></a>Správa tajných kódů
 Řešení používá Azure Key Vault pro správu klíčů a tajných klíčů. Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Následující funkce služby Azure Key Vault pomáhají zákazníkům chránit tato data a získat k nim přístup
    - Rozšířené zásady přístupu jsou konfigurovány na základě potřeby.
@@ -380,7 +380,7 @@ Pomocí Azure Security Center můžou zákazníci centrálně používat a sprav
    - Azure Security Center poskytuje prioritní výstrahy zabezpečení a incidenty, takže je pro zákazníky jednodušší zjistit a řešit potenciální problémy se zabezpečením. Pro každou zjištěnou hrozbu je generována zpráva o zpravodajské službě hrozeb, která pomáhá týmům pro reakci na incidenty při vyšetřování a nápravě hrozeb.
 ### <a name="azure-application-gateway"></a>Azure Application Gateway 
    Architektura snižuje riziko ohrožení zabezpečení pomocí brány aplikace Azure s nakonfigurovanou bránou firewall webové aplikace a povolenou sadou pravidel OWASP. Mezi další možnosti patří
-   - End-to-end-SSL.
+   - Komplexní TLS.
    - Zakažte TLS v1.0 a v1.1.
    - Povolte TLSv1.2.
    - Brána firewall webové aplikace (režim prevence).
@@ -560,5 +560,5 @@ Vytvoření tohoto pracovního prostoru
    Následující články vám mohou pomoci navrhovat, vyvíjet a nasazovat zabezpečené aplikace.
 
 - [Návrh](secure-design.md)
-- [Rozvíjet](secure-develop.md)
+- [Vývoj](secure-develop.md)
 - [Nasadit](secure-deploy.md)

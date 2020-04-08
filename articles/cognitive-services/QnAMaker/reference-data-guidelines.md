@@ -1,14 +1,14 @@
 ---
 title: Odkaz na import a export dat - QnA Maker
-description: Zjistěte, jak se typy adres URL používají k importu a vytváření sad QnA.
+description: Zjistěte, jak se typy adres URL používají k importu a vytváření párů QnA.
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: 6560a43a6fbcf9fbd2ce021d782f00f916442bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651847"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804239"
 ---
 # <a name="import-and-export-data-reference"></a>Odkaz na import a export dat
 

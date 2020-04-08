@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: dapine
-ms.openlocfilehash: b9398a3fc01cd7f08009f15ba5983235fbad3198
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 25472e5aab824a7e8444c43e674057eb3f9a1684
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419185"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80813718"
 ---
 ## <a name="additional-language-and-platform-support"></a>Další jazyková podpora a podpora platformy
 
@@ -20,7 +20,7 @@ Pokud jste klikli na tuto kartu, pravděpodobně jste v oblíbeném programovac�
 | C# | [Do zvukového souboru][1-file] | [Rozhraní .NET Framework][dotnet], [.NET Core][netcore], [UPW][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++ | [Do zvukového souboru][2-file] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
 | Java | [Do zvukového souboru][3-file] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | | [Windows, Linux, macOS][js-code] |
+| JavaScript | [Soubor Node.js ke zvukovému souboru][js-node] | [Windows, Linux, macOS][js-code] |
 | Objective-C | [iOS na reproduktor][obj-iOS-qck], [macOS na reproduktor][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
 | Python | [Do zvukového souboru][4-file] | [Windows, Linux, macOS][python] |
 | Swift | [iOS na reproduktor][swift-iOS-qck], [macOS na reproduktor][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
@@ -44,6 +44,7 @@ Pokud jste klikli na tuto kartu, pravděpodobně jste v oblíbeném programovac�
 [java-android]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android
 [java-jre]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre
 
+[js-node]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech
 [js-code]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript
 
 [obj-iOS-qck]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios/text-to-speech

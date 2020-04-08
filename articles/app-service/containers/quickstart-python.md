@@ -2,16 +2,16 @@
 title: 'Úvodní příručka: Vytvoření aplikace Python u Linuxu'
 description: Začínáme s linuxovými aplikacemi ve službě Azure App Service nasazením první aplikace Pythonu do kontejneru Linuxu ve službě App Service.
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 63daecca710e0e4d7b3326cea59c0c025c24f619
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045674"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811153"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Úvodní příručka: Vytvoření aplikace Pythonu ve službě Azure App Service na Linuxu
 
@@ -24,7 +24,7 @@ Pokud dáváte přednost nasazení aplikací prostřednictvím ide, najdete [v t
 - Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Podporuje se také Python 3.6)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 nebo vyšší. Spuštěním příkazu `az --version` zkontrolujte svou verzi.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -98,39 +98,44 @@ az login
 
 Příkaz [`az webapp up`](/cli/azure/webapp#az-webapp-up) vytvoří webovou aplikaci ve službě App Service a nasadí váš kód.
 
-Ve složce *python-docs-hello-world,* která obsahuje ukázkový kód, spusťte následující `az webapp up` příkaz. Nahraďte `<app-name>` globálně jedinečnýnázev aplikace *(platné znaky jsou `a-z`, `0-9`a `-` *). `<location-name>` Nahraďte také oblast Azure, jako je **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**a tak dále. (Seznam povolených oblastí pro váš účet Azure můžete [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) načíst spuštěním příkazu.)
+Ve složce *python-docs-hello-world,* která obsahuje ukázkový kód, spusťte následující `az webapp up` příkaz. Nahraďte `<app-name>` globálně jedinečnýnázev aplikace *(platné znaky jsou `a-z`, `0-9`a `-` *).
 
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up --sku F1 -n <app-name>
 ```
 
-Úplné spuštění tohoto příkazu může trvat několik minut. Při spuštění příkaz zobrazí podobné informace jako v následujícím příkladu:
+Argument `--sku F1` vytvoří webovou aplikaci na cenové úrovni Free. Tento argument můžete vynechat a použít úroveň premium, která účtuje hodinové náklady.
 
-```output
-The behavior of this command has been altered by the following extension: webapp
+Volitelně můžete zahrnout `-l <location-name>` argument, kde `<location_name>` je oblast Azure, jako je **například centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**a tak dále. Seznam povolených oblastí pro váš účet Azure můžete [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) načíst spuštěním příkazu.
+
+Úplné `az webapp up` spuštění příkazu může trvat několik minut. Při spuštění se zobrazí informace podobné následujícímu příkladu, kde `<app_name>` bude název, který jste zadali dříve:
+
+<pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
 Creating app '<app-name>' ....
-Webapp creation complete
-Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
-Preparing to deploy contents to app.
-All done.
+Configuring default logging for the app, if not already enabled
+Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://<app-name>.azurewebsites.net
 {
-  "app_url": "https:/<app-name>.azurewebsites.net",
-  "location": "Central US",
+  "URL": "http://<app-name>.net",
+  "appserviceplan": "appsvc_asp_Linux_centralus",
+  "location": "eastus",
   "name": "<app-name>",
   "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus ",
-  "serverfarm": "appsvc_asp_Linux_centralus",
-  "sku": "BASIC",
-  "src_path": "/home/username/quickstart/python-docs-hello-world ",
-  "version_detected": "-",
-  "version_to_create": "python|3.7"
+  "resourcegroup": "appsvc_rg_Linux_centralus",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "D:\\Examples\\python-docs-hello-world"
 }
-```
+</pre>
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -146,20 +151,23 @@ Ukázkový kód Pythonu používá linuxový kontejner ve službě App Service p
 
 ## <a name="redeploy-updates"></a>Znovu nasadit aktualizace
 
-V oblíbeném editoru kódu otevřete *application.py* a změňte `return` výpis na posledním řádku tak, aby odpovídal následujícímu kódu. Příkaz `print` je zde zahrnuta ke generování výstupu protokolování, se kterým pracujete v další části. 
+Ve svém oblíbeném *application.py* editoru kódu `hello` otevřete application.py a aktualizujte funkci následujícím způsobem. Tato změna `print` přidá příkaz ke generování výstupu protokolování, se kterým pracujete v další části. 
 
 ```python
-print("Handling request to home page.")
-return "Hello Azure!"
+def hello():
+    print("Handling request to home page.")
+    return "Hello Azure!"
 ```
 
 Uložte změny a ukončete editor. 
 
-Znovu nasadit aplikaci `az webapp up` pomocí následujícího příkazu, pomocí stejného příkazu, `<app-name>` `<location-name>` který jste použili k nasazení aplikace poprvé, nahrazení a se stejnými názvy, které jste použili dříve. 
+Znovu nasadit aplikaci pomocí příkazu `az webapp up` znovu:
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up
 ```
+
+Tento příkaz používá hodnoty, které jsou uloženy v mezipaměti v souboru *.azure/config,* včetně názvu aplikace, skupiny prostředků a plánu služby App Service.
 
 Po dokončení nasazení přepněte zpět do `http://<app-name>.azurewebsites.net` okna prohlížeče a aktualizujte stránku, která by měla zobrazit upravenou zprávu:
 
@@ -172,24 +180,18 @@ Po dokončení nasazení přepněte zpět do `http://<app-name>.azurewebsites.ne
 
 Můžete přistupovat k protokolům konzoly generovaným z aplikace a kontejneru, ve kterém je spuštěna. Protokoly zahrnují všechny výstup `print` generované pomocí příkazů.
 
-Nejprve zapněte protokolování kontejnerů spuštěním následujícího `<app-name>` příkazu v terminálu a nahrazením názvem aplikace a `<resource-group-name>` `az webapp up` názvem skupiny prostředků zobrazeným ve výstupu použitého příkazu (například "appsvc_rg_Linux_centralus"):
+Chcete-li streamovat protokoly, spusťte následující příkaz:
 
 ```azurecli
-az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
-```
-
-Po zapnutí protokolování kontejnerů spusťte následující příkaz pro zobrazení datového proudu protokolu:
-
-```azurecli
-az webapp log tail --name <app-name> --resource-group <resource-group-name>
+az webapp log tail
 ```
 
 Aktualizujte aplikaci v prohlížeči, abyste vygenerovali protokoly konzoly, které by měly obsahovat řádky podobné následujícímu textu. Pokud výstup nevidíte okamžitě, zkuste to znovu za 30 sekund.
 
-```output
-2019-10-23T12:40:03.815574424Z Handling request to home page.
-2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
-```
+<pre>
+2020-04-03T22:54:04.236405938Z Handling request to home page.
+2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
+</pre>
 
 Můžete také zkontrolovat soubory protokolu z `https://<app-name>.scm.azurewebsites.net/api/logs/docker`prohlížeče na adrese .
 
@@ -213,7 +215,7 @@ Nabídka Služba App Service obsahuje různé stránky pro konfiguraci aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Skupina prostředků má název jako "appsvc_rg_Linux_CentralUS" v závislosti na vaší poloze. Pokud používáte skladovou položku služby služby Aplikace než bezplatnou úroveň F1, budou tyto prostředky stát za následek průběžné náklady.
+V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Skupina prostředků má název jako "appsvc_rg_Linux_CentralUS" v závislosti na vaší poloze. Pokud používáte sku služby App Service než bezplatnou úroveň F1, tyto prostředky vznikají průběžné náklady (viz [Ceny služby App Service](https://azure.microsoft.com/pricing/details/app-service/linux/)).
 
 Pokud neočekáváte, že budete potřebovat tyto prostředky v budoucnu, odstraňte skupinu prostředků spuštěním následujícího příkazu, který nahradí `<resource-group-name>` skupinu prostředků zobrazenou ve výstupu příkazu, `az webapp up` například "appsvc_rg_Linux_centralus". Dokončení příkazu může trvat minutu.
 

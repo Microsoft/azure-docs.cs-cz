@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749947"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811103"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -160,7 +160,7 @@ Můžete chtít povolit jednotlivým vývojářům nebo provozním pracovníkům
 
 Připojení VPN bodu k webu umožňuje nastavit soukromé a zabezpečené připojení mezi uživatelem a virtuální sítí. Když je navázáno připojení VPN, uživatel může RDP nebo SSH přes propojení VPN do libovolného virtuálního počítače ve virtuální síti. (To předpokládá, že uživatel může ověřit a je autorizován.) Point-to-site VPN podporuje:
 
-* Protokol SSTP (Secure Socket Tunneling Protocol) – proprietární protokol VPN založený na protokolu SSL. Řešení SSL VPN může proniknout firewally, protože většina firewallů otevírá tcp port 443, který používá SSL. SSTP je podporována pouze na zařízeních se systémem Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
+* Protokol SSTP (Secure Socket Tunneling Protocol) – proprietární protokol VPN založený na protokolu SSL. Řešení SSL VPN může proniknout firewally, protože většina firewallů otevírá TCP port 443, který používá TLS/SSL. SSTP je podporována pouze na zařízeních se systémem Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
 
 * IKEv2 VPN, řešení IPsec VPN založené na standardech. IKEv2 VPN je možné použít k připojení ze zařízení se systémem Mac (OSX verze 10.11 a vyšší).
 
@@ -232,7 +232,7 @@ Organizace, které spouštějí webové služby, si často přejí mít před t�
 Azure Application Gateway poskytuje vyrovnávání zatížení založené na protokolu HTTP pro vaše webové služby. Aplikační brána podporuje:
 
 * Spřažení relací založené na souborech cookie. Tato funkce zajišťuje, že připojení vytvořená k jednomu ze serverů za tímto systémem vyrovnávání zatížení zůstane mezi klientem a serverem neporušená. Tím je zajištěna stabilita transakcí.
-* SSL vyložení. Když se klient připojí k vykladači zatížení, je tato relace zašifrována pomocí protokolu HTTPS (SSL). Chcete-li však zvýšit výkon, můžete pomocí protokolu HTTP (nešifrovaný) připojit mezi nástroj pro vyrovnávání zatížení a webový mši za nástroj pro vyrovnávání zatížení. To se označuje jako "SSL offload", protože webové servery za nástroj pro vyrovnávání zatížení nezažívají režie procesoru spojené s šifrováním. Webové servery proto mohou požadavky na služby požadovat rychleji.
+* TLS se vyloží. Když se klient připojí k vykladači zatížení, je tato relace zašifrována pomocí protokolu HTTPS (TLS). Chcete-li však zvýšit výkon, můžete pomocí protokolu HTTP (nešifrovaný) připojit mezi nástroj pro vyrovnávání zatížení a webový mši za nástroj pro vyrovnávání zatížení. To se označuje jako "tls offload", protože webové servery za nástroj pro vyrovnávání zatížení nezažívají režie procesoru spojené s šifrováním. Webové servery proto mohou požadavky na služby požadovat rychleji.
 * Směrování obsahu založeného na adrese URL. Tato funkce umožňuje pro vyrovnávání zatížení, aby rozhodnutí o tom, kam předat připojení na základě cílové adresy URL. To poskytuje mnohem větší flexibilitu než řešení, která dělají rozhodnutí o vyrovnávání zatížení na základě ADRES IP.
 
 Další informace:
@@ -336,7 +336,7 @@ Další informace:
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Služba Azure Front Door Service umožňuje definovat, spravovat a monitorovat globální směrování webového provozu. Optimalizuje směrování provozu pro nejlepší výkon a vysokou dostupnost. Azure Front Door umožňuje vytvořit vlastní pravidla firewallu webových aplikací pro řízení přístupu za účelem ochrany úloh HTTP/HTTPS před zneužitím na základě klientských IP adres, kódů zemí a parametrů HTTP. Kromě toho, Front Door také umožňuje vytvářet pravidla omezení rychlosti k boji se škodlivým provozem robota, zahrnuje ssl snižování zátěže a požadavek na HTTP / HTTPS, zpracování aplikační vrstvy.
+Služba Azure Front Door Service umožňuje definovat, spravovat a monitorovat globální směrování webového provozu. Optimalizuje směrování provozu pro nejlepší výkon a vysokou dostupnost. Azure Front Door umožňuje vytvořit vlastní pravidla firewallu webových aplikací pro řízení přístupu za účelem ochrany úloh HTTP/HTTPS před zneužitím na základě klientských IP adres, kódů zemí a parametrů HTTP. Kromě toho, Front Door také umožňuje vytvářet pravidla omezení rychlosti k boji se škodlivým provozem robota, zahrnuje snižování zátěže TLS a požadavek na HTTP / HTTPS, zpracování aplikační vrstvy.
 
 Samotná platforma Front Door je chráněná službou Azure DDoS Protection Basic. Z důvodu další ochrany je možné ve virtuálních sítích povolit službu Azure DDoS Protection Standard a pomocí automatického ladění a zmírnění chránit prostředky před útoky na vrstvě sítě (TCP/UDP). Přední dveře je vrstva 7 reverzní proxy, to umožňuje pouze webový provoz projít do back-end servery a blokovat jiné typy provozu ve výchozím nastavení.
 
@@ -391,7 +391,7 @@ Další informace:
 
 * [Naslouchací zařízení virtuální sítě](../../virtual-network/virtual-network-tap-overview.md)
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 
 Protokolování na úrovni sítě je klíčovou funkcí pro jakýkoli scénář zabezpečení sítě. V Azure můžete protokolovat informace získané pro sítě zabezpečení sítě získat informace o protokolování na úrovni sítě. Při protokolování nsg získáte informace z:
 

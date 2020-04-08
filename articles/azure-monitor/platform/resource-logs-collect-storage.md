@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787640ef08ee91220f42065af155c372247f0136
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274213"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804601"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivace protokolů prostředků Azure do účtu úložiště
 [Protokoly platformy](platform-logs-overview.md) v Azure, včetně protokolu aktivit Azure a protokolů prostředků, poskytují podrobné diagnostické a auditující informace pro prostředky Azure a platformu Azure, na které závisí.  Tento článek popisuje shromažďování protokolů platformy do účtu úložiště Azure pro uchování dat pro archivaci.
@@ -20,6 +20,8 @@ ms.locfileid: "79274213"
 ## <a name="prerequisites"></a>Požadavky
 Účet úložiště Azure musíte [vytvořit,](../../storage/common/storage-account-create.md) pokud ho ještě nemáte. Účet úložiště nemusí být ve stejném předplatném jako protokoly odesílání prostředků, pokud uživatel, který konfiguruje nastavení má odpovídající přístup RBAC k oběma předplatným.
 
+> [!IMPORTANT]
+> Chcete-li odeslat data do neměnného úložiště, nastavte neměnné zásady pro účet úložiště, jak je popsáno v [sadou a spravovat zásady neměnnosti pro úložiště objektů Blob](../../storage/blobs/storage-blob-immutability-policies-manage.md). Je nutné postupovat všechny kroky v tomto článku, včetně povolení chráněných objektů BLOB zápisy.
 
 > [!IMPORTANT]
 > Účty Azure Data Lake Storage Gen2 nejsou aktuálně podporované jako cíl pro nastavení diagnostiky, i když mohou být uvedeny jako platná možnost na webu Azure Portal.

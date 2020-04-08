@@ -2,13 +2,13 @@
 title: Funkce šablony - zdroje
 description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744987"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804754"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -496,7 +496,9 @@ Použijte, `'Full'` když potřebujete hodnoty prostředků, které nejsou souč
 
 ### <a name="valid-uses"></a>Platná použití
 
-Referenční funkci lze použít pouze ve vlastnostech definice prostředku a v části výstupy šablony nebo nasazení. Při použití s [iterací vlastností](copy-properties.md) `input` můžete použít referenční funkci, protože výraz je přiřazen vlastnosti prostředku. Nelze jej použít s, `count` protože počet musí být určen před referenční funkce je vyřešen.
+Referenční funkci lze použít pouze ve vlastnostech definice prostředku a v části výstupy šablony nebo nasazení. Při použití s [iterací vlastností](copy-properties.md) `input` můžete použít referenční funkci, protože výraz je přiřazen vlastnosti prostředku.
+
+Referenční funkci nelze použít k nastavení hodnoty `count` vlastnosti ve smyčce kopírování. Můžete nastavit další vlastnosti ve smyčce. Odkaz je blokován pro count vlastnost, protože tato vlastnost musí být určena před referenční funkce je vyřešen.
 
 Referenční funkci ve výstupech [vnořené šablony](linked-templates.md#nested-template) nelze použít k vrácení prostředku, který jste nasadili v vnořené šabloně. Místo toho použijte [propojenou šablonu](linked-templates.md#linked-template).
 
@@ -530,7 +532,7 @@ Při vytváření plně kvalifikovaný odkaz na prostředek, pořadí kombinovat
 
 **{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
 
-Například:
+Příklad:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`je `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` správné, není správné
 

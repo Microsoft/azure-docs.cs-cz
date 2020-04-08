@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279985"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810233"
 ---
 # <a name="azure-application-gateway-features"></a>Funkce aplikační brány Azure
 
@@ -26,7 +26,7 @@ Aplikační brána obsahuje následující funkce:
 - [Automatické škálování](#autoscaling)
 - [Redundance zóny](#zone-redundancy)
 - [Statické VIP](#static-vip)
-- [Brána firewall webové aplikace](#web-application-firewall)
+- [Web Application Firewall (Brána firewall webových aplikací)](#web-application-firewall)
 - [Kontroler Ingress pro AKS](#ingress-controller-for-aks)
 - [Směrování založené na adrese URL](#url-based-routing)
 - [Hostování několika webů](#multiple-site-hosting)
@@ -34,7 +34,7 @@ Aplikační brána obsahuje následující funkce:
 - [Spřažení relací](#session-affinity)
 - [Provoz přes protokoly Websocket a HTTP/2](#websocket-and-http2-traffic)
 - [Vyprázdnění připojení](#connection-draining)
-- [Stránky vlastních chyb](#custom-error-pages)
+- [Vlastní chybové stránky](#custom-error-pages)
 - [Přepsání hlaviček HTTP](#rewrite-http-headers)
 - [Velikosti](#sizing)
 
@@ -125,7 +125,7 @@ Vyprázdnění připojení vám pomůže provést řádné odebrání členů ba
 
 Další informace naleznete v tématu [Přehled konfigurace aplikační brány](configuration-overview.md#connection-draining).
 
-## <a name="custom-error-pages"></a>Stránky vlastních chyb
+## <a name="custom-error-pages"></a>Vlastní chybové stránky
 
 Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
 
@@ -160,6 +160,10 @@ V následující tabulce je uvedena průměrná propustnost výkonu pro každou 
 
 > [!NOTE]
 > Tyto hodnoty jsou přibližné hodnoty propustnosti služby Application Gateway. Skutečná propustnost závisí na různých podrobnostech o prostředí, jako jsou například průměrná velikost stránky, umístění back-endových instancí a doba zpracování potřebná k doručení stránky. Přesné údaje o výkonu získáte, když spustíte vlastní testy. Tyto hodnoty slouží jenom jako vodítko při plánování kapacity.
+
+## <a name="version-feature-comparison"></a>Porovnání funkcí verze
+
+Porovnání funkcí aplikační brány v1-v2 najdete v tématu [Automatické škálování a zónově redundantní aplikační brána v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
 
 ## <a name="next-steps"></a>Další kroky
 

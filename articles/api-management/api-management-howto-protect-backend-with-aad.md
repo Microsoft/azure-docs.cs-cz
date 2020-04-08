@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190369"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804363"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API pomocí OAuth 2.0 s využitím služeb Azure Active Directory a API Management
 
@@ -137,7 +137,7 @@ V tomto příkladu je vývojářská konzola klientská aplikace. Následující
 
 1. Pokud používáte koncové body **v1,** přidejte parametr tělesa s názvem **resource**. Pro hodnotu tohoto parametru použijte **ID aplikace** back-endové aplikace. 
 
-1. Pokud používáte koncové body **v2,** použijte obor, který jste vytvořili pro back-endovou aplikaci v poli **Výchozí obor.**
+1. Pokud používáte koncové body **v2,** použijte obor, který jste vytvořili pro back-endovou aplikaci v poli **Výchozí obor.** Také nezapomeňte nastavit hodnotu vlastnosti [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) `2` v [manifestu aplikace](/azure/active-directory/develop/reference-app-manifest).
 
 1. Dále zadejte pověření klienta. Jedná se o pověření pro klientskou aplikaci.
 

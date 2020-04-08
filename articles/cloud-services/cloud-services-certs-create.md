@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248135"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811458"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
 Certifikáty se používají v Azure pro cloudové služby[(certifikáty služeb)](#what-are-service-certificates)a pro ověřování pomocí rozhraní API pro správu[(certifikáty pro správu).](#what-are-management-certificates) Toto téma poskytuje obecný přehled o obou typech certifikátů, jak je [vytvořit](#create) a nasadit do Azure.
@@ -55,7 +55,7 @@ K vytvoření certifikátu podepsaného svým držitelem můžete použít libov
 * Vytvořeno pro výměnu klíčů (soubor.pfx).
 * Název subjektu se musí shodovat s doménou používanou pro přístup ke cloudové službě.
 
-    > Nelze získat certifikát SSL pro cloudapp.net (nebo pro všechny azure související) domény; Název předmětu certifikátu se musí shodovat s vlastním názvem domény používaným pro přístup k aplikaci. Například **contoso.net**, nikoli **contoso.cloudapp.net**.
+    > Nemůžete získat certifikát TLS/SSL pro doménu cloudapp.net (nebo pro jakoukoli doménu související s Azure). Název předmětu certifikátu se musí shodovat s vlastním názvem domény používaným pro přístup k aplikaci. Například **contoso.net**, nikoli **contoso.cloudapp.net**.
 
 * Minimálně 2048bitové šifrování.
 * **Pouze certifikát služby**: Certifikát na straně klienta musí být umístěn v úložišti *osobních* certifikátů.

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057451"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804465"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
@@ -71,7 +71,7 @@ Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pr
 ![Správa – Přidání služeb][ManagementAddServices]
 
 > [!NOTE]
-> V závislosti na tom, jak jsou vaše aplikace konfigurovány a jaké funkce se používají v prostředí služby App Service, je třeba předávat přenosy pro porty TCP jiné než 80 a 443, například pokud máte nastavení IP SSL pro aplikaci App Service. Seznam síťových portů používaných ve službě App Service Environment najdete v části Síťové porty v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md).
+> V závislosti na tom, jak jsou vaše aplikace konfigurovány a jaké funkce se používají v prostředí služby App Service, je třeba předávat přenosy pro porty TCP jiné než 80 a 443, například pokud máte nastavení IP TLS pro aplikaci App Service. Seznam síťových portů používaných ve službě App Service Environment najdete v části Síťové porty v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md).
 > 
 > 
 

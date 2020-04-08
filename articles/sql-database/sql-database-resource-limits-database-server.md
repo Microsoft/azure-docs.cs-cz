@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067253"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804822"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>Omezení prostředků databáze SQL a zásady správného řízení prostředků
 
@@ -60,7 +60,7 @@ Při setkání s vysokým využitím výpočetních prostředků zahrnují možn
 - Zvýšení výpočetní velikost databáze nebo elastického fondu poskytnout databázi více výpočetních prostředků. Viz [Škálování prostředků jedné databáze](sql-database-single-database-scale.md) a [škálování prostředků elastického fondu](sql-database-elastic-pool-scale.md).
 - Optimalizace dotazů za účelem snížení využití prostředků každého dotazu. Další informace naleznete v [tématu Optimalizace dotazu/nápovědy](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Pokud využité místo v databázi dosáhne maximálního limitu velikosti, vloží se a aktualizuje databázi, které zvětšují velikost dat, se nezdaří a klienti obdrží [chybovou zprávu](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Příkazy SELECT a DELETE jsou nadále úspěšné.
 
@@ -103,7 +103,7 @@ K vynucení omezení prostředků azure SQL database používá implementaci zá
 
 Kromě použití správce prostředků k řízení prostředků v rámci procesu SQL Server používá Azure SQL Database také [objekty úloh systému](https://docs.microsoft.com/windows/win32/procthread/job-objects) Windows pro zásady správného řízení prostředků na úrovni procesu a Správce prostředků souborového serveru Windows [(FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) pro správu kvót úložiště.
 
-Azure SQL Database zabezpečení prostředků je hierarchické povahy. Shora dolů jsou limity vynuceny na úrovni operačního systému a na úrovni svazku úložiště pomocí mechanismů zásad správného řízení prostředků operačního systému a guvernéra prostředků, pak na úrovni fondu prostředků pomocí programu Resource Governor a potom na úrovni skupiny úloh pomocí Správce zdrojů. Omezení zásad správného řízení prostředků platné pro aktuální databázi nebo elastický fond jsou kčlánku v zobrazení [sys.dm_user_db_resource_governance.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 
+Azure SQL Database zabezpečení prostředků je hierarchické povahy. Shora dolů jsou limity vynuceny na úrovni operačního systému a na úrovni svazku úložiště pomocí mechanismů zásad správného řízení prostředků operačního systému a guvernéra prostředků, pak na úrovni fondu prostředků pomocí programu Resource Governor a potom na úrovni skupiny úloh pomocí programu Resource Governor. Omezení zásad správného řízení prostředků platné pro aktuální databázi nebo elastický fond jsou kčlánku v zobrazení [sys.dm_user_db_resource_governance.](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 
 
 ### <a name="data-io-governance"></a>Správa vi. pro data
 
@@ -134,7 +134,7 @@ Jako záznamy protokolu jsou generovány, každá operace je vyhodnocena a vyhod
 
 Skutečné rychlosti generování protokolu uložené za běhu mohou být také ovlivněny mechanismy zpětné vazby, které dočasně snižují přípustné rychlosti protokolů, aby se systém mohl stabilizovat. Správa prostoru protokolu, vyhnout se spuštění mimo podmínky místa protokolu a dostupnost skupiny replikační mechanismy mohou dočasně snížit celkové limity systému.
 
-Rychlost log regulátoru tvarování provozu se objeví pomocí následujících typů čekání (vystavené v [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
+Rychlost provozu regulátora protokolu se zobrazí pomocí následujících typů čekání (vystavených v [zobrazeních sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [sys.dm_os_wait_stats):](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)
 
 | Typ čekání | Poznámky |
 | :--- | :--- |
@@ -143,6 +143,7 @@ Rychlost log regulátoru tvarování provozu se objeví pomocí následujících
 | INSTANCE_LOG_RATE_GOVERNOR | Omezení úrovně instance |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Řízení zpětné vazby, fyzická replikace skupiny dostupnosti v premium/business critical nedrží krok |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Řízení zpětné vazby, omezení sazeb, aby se zabránilo mimo protokol prostor stavu |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | Řízení zpětné vazby geografické replikace, omezení rychlosti protokolů, aby se zabránilo vysoké latenci dat a nedostupnosti geosekundárních|
 |||
 
 Při výskytu omezení rychlosti protokolu, který brání požadované škálovatelnosti, zvažte následující možnosti:

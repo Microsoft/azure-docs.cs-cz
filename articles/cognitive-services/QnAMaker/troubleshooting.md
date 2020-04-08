@@ -4,12 +4,12 @@ description: Sestavený seznam nejčastěji kladených otázek týkajících se 
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474959"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804346"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -142,7 +142,7 @@ Všechny odstranění jsou trvalé, včetně párů otázek a odpovědí, soubor
 * Soubory - není podporováno
 
 #### <a name="answer-text-in-markdown"></a>Odpovědět na text v markdownu
-Jakmile jsou sady QnA ve znalostní bázi, můžete upravit text markdownu odpovědi tak, aby obsahoval odkazy na média dostupná z veřejných adres URL.
+Jakmile jsou dvojice QnA ve znalostní bázi, můžete upravit text markdownu odpovědi tak, aby obsahoval odkazy na média dostupná z veřejných adres URL.
 
 
 </details>

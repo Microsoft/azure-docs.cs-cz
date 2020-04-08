@@ -1,15 +1,16 @@
 ---
-title: Vytvoření statického svazku pro více podů ve službě Azure Kubernetes Service (AKS)
+title: Ruční vytvoření sdílené složky Azure Files
+titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak ručně vytvořit svazek pomocí souborů Azure pro použití s více souběžnými pody ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596398"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803445"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se službou Azure Files ve službě Azure Kubernetes Service (AKS)
 
@@ -132,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Možnosti připojení
 
-Výchozí hodnota pro *fileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kuberetes verze 1.8.5 nebo vyšší a staticky vytváří trvalý objekt svazku, je třeba zadat možnosti připojení na *objektpersistentVolume.* Následující příklad nastaví *0777*:
+Výchozí hodnota pro *fileMode* a *dirMode* je *0755* pro Kubernetes verze 1.9.1 a vyšší. Pokud používáte cluster s Kubernetes verze 1.8.5 nebo vyšší a staticky vytváří teprve trvalý objekt svazku, je třeba zadat možnosti připojení na *objektu PersistentVolume.* Následující příklad nastaví *0777*:
 
 ```yaml
 apiVersion: v1
@@ -160,7 +161,7 @@ spec:
 
 Pokud používáte cluster verze 1.8.0 - 1.8.4, lze zadat kontext zabezpečení s hodnotou *runAsUser* nastavenou na *hodnotu 0*. Další informace o kontextu zabezpečení podu naleznete [v tématu Konfigurace kontextu zabezpečení][kubernetes-security-context].
 
-Chcete-li aktualizovat možnosti připojení, vytvořte soubor *azurefile-mount-options-pv.yaml* s *persistentvolume*. Například:
+Chcete-li aktualizovat možnosti připojení, vytvořte soubor *azurefile-mount-options-pv.yaml* s *persistentvolume*. Příklad:
 
 ```yaml
 apiVersion: v1
@@ -186,7 +187,7 @@ spec:
   - nobrl
 ```
 
-Vytvořte soubor *azurefile-mount-options-pvc.yaml* s *persistentVolumeclaim,* který používá *PersistentVolume*. Například:
+Vytvořte soubor *azurefile-mount-options-pvc.yaml* s *persistentVolumeclaim,* který používá *PersistentVolume*. Příklad:
 
 ```yaml
 apiVersion: v1
@@ -218,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Aktualizujte specifikace kontejneru tak, aby odkazoval na *váš PersistentVolumeClaim* a aktualizoval pod. Například:
+Aktualizujte specifikace kontejneru tak, aby odkazoval na *váš PersistentVolumeClaim* a aktualizoval pod. Příklad:
 
 ```yaml
 ...

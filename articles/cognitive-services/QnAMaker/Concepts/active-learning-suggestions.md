@@ -3,12 +3,12 @@ title: Návrhy aktivnívýuky - QnA Maker
 description: Návrhy aktivnívýuky vám umožní zlepšit kvalitu vaší znalostní báze tím, že navrhnete alternativní otázky založené na uživatelských podáních na dvojici otázek a odpovědí.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053144"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804207"
 ---
 # <a name="active-learning-suggestions"></a>Návrhy aktivních učení
 
@@ -27,13 +27,13 @@ Obě metody poskytují ranker s podobnými dotazy, které jsou seskupeny.
 
 ## <a name="how-active-learning-works"></a>Jak aktivní učení funguje
 
-Aktivní učení se aktivuje na základě skóre několika nejlepších odpovědí vrácených QnA Makerem. Pokud rozdíly skóre mezi QnA sady, které odpovídají dotazu leží v malém rozsahu, dotaz je považován za možný návrh (jako alternativní otázka) pro každý z možných párů QnA. Jakmile přijmete navrhovanou otázku pro konkrétní dvojici QnA, je odmítnuta pro ostatní páry. Musíte mít na paměti, uložit a trénovat, po přijetí návrhy.
+Aktivní učení se aktivuje na základě skóre několika nejlepších odpovědí vrácených QnA Makerem. Pokud rozdíly skóre mezi dvojicemi QnA, které odpovídají dotazu, leží v malém rozsahu, pak je dotaz považován za možný návrh (jako alternativní otázka) pro každý z možných párů QnA. Jakmile přijmete navrhovanou otázku pro konkrétní dvojici QnA, je odmítnuta pro ostatní páry. Musíte mít na paměti, uložit a trénovat, po přijetí návrhy.
 
 Aktivní učení poskytuje nejlepší možné návrhy v případech, kdy koncové body získávají přiměřené množství a různé dotazy na použití. Při clusteru 5 nebo více podobných dotazů, každých 30 minut, QnA Maker navrhuje uživatelské otázky na znalostní bázi návrháře přijmout nebo odmítnout. Všechny návrhy jsou seskupeny podle podobnosti a nejlepší návrhy pro alternativní otázky jsou zobrazeny na základě četnosti konkrétních dotazů koncovými uživateli.
 
 Jakmile jsou na portálu QnA Maker navrhovány otázky, musíte tyto návrhy zkontrolovat a přijmout nebo odmítnout. Neexistuje rozhraní API pro správu návrhů.
 
-## <a name="turn-on-active-learning"></a>Zapnutí aktivního učení
+## <a name="turn-on-active-learning"></a>Aktivace aktivního učení
 
 Ve výchozím nastavení je aktivní učení **vypnuto**.
 Použití aktivního učení:

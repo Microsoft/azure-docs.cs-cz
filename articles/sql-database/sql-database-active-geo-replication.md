@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 02/17/2020
-ms.openlocfilehash: b80b58d64ea27df95c2704243d8a89fa6ca12e2a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/06/2020
+ms.openlocfilehash: 1f339d987d67047f5857679b440e93e6c3730059
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548514"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810446"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -113,14 +113,19 @@ Chcete-li zajistit, aby vaše aplikace mohla okamžitě přistupovat k nové pri
 
 ## <a name="configuring-secondary-database"></a>Konfigurace sekundární databáze
 
-Primární i sekundární databáze musí mít stejnou úroveň služby. Důrazně se také doporučuje, aby sekundární databáze byla vytvořena se stejnou výpočetní velikostí (DTU nebo virtuálními jádry) jako primární. Pokud primární databáze dochází k velké zatížení zápisu, sekundární s nižší výpočetní velikost nemusí být schopen držet krok s ním. To způsobí zpoždění opakování na sekundární a potenciální nedostupnost. Sekundární databáze, která zaostává za primární také rizika velké ztráty dat v případě, že vynucené převzetí služeb při selhání je požadováno. Chcete-li tato rizika zmírnit, efektivní aktivní geografická replikace omezí primární rychlost protokolu, aby jeho sekundární databáze dohnala. Dalším důsledkem nevyvážené sekundární konfigurace je, že po převzetí služeb při selhání bude výkon aplikace trpět z důvodu nedostatečné výpočetní kapacity nové primární. Bude nutné upgradovat na vyšší výpočetní prostředky na potřebnou úroveň, což nebude možné, dokud nebude zmírněn výpadek. 
+Primární i sekundární databáze musí mít stejnou úroveň služby. Důrazně se také doporučuje, aby sekundární databáze byla vytvořena se stejnou výpočetní velikostí (DTU nebo virtuálními jádry) jako primární. Pokud primární databáze dochází k velké zatížení zápisu, sekundární s nižší výpočetní velikost nemusí být schopen držet krok s ním. To způsobí zpoždění opakování na sekundární a potenciální nedostupnost sekundární. Sekundární databáze, která zaostává za primární také rizika velké ztráty dat, pokud je požadováno vynucené převzetí služeb při selhání. Chcete-li tato rizika zmírnit, aktivní geografická replikace v případě potřeby omezí primární rychlost protokolu, aby jeho sekundární databáze dohnala. 
 
+Dalším důsledkem nevyvážené sekundární konfigurace je, že po převzetí služeb při selhání může dojít k selhání výkonu aplikace z důvodu nedostatečné výpočetní kapacity nové primární. V takovém případě bude nutné vertikálně navýšit cíl databázové služby na nezbytnou úroveň, což může trvat značné množství času a výpočetní prostředky a bude vyžadovat převzetí služeb při selhání [s vysokou dostupností](sql-database-high-availability.md) na konci procesu škálování nahoru.
 
 > [!IMPORTANT]
-> Publikovaný RPO = 5 sekund nelze zaručit, pokud sekundární databáze je nakonfigurován se stejnou velikostí výpočetních prostředků jako primární. 
+> Publikovanou 5sekundovou zprostředkovatelskou službu SLA nelze zaručit, pokud sekundární databáze není nakonfigurována se stejnou nebo vyšší velikostí výpočetních prostředků jako primární. 
 
+Pokud se rozhodnete vytvořit sekundární s nižší výpočetní velikost, graf procentuálního indexu VO na webu Azure Portal poskytuje dobrý způsob, jak odhadnout minimální výpočetní velikost sekundární, která je vyžadována k udržení zatížení replikace. Například pokud primární databáze je P6 (1000 DTU) a jeho procento zápisu protokolu je 50 %, sekundární musí být alespoň P4 (500 DTU). Chcete-li načíst historická data viprotokolu protokolu, použijte zobrazení [sys.resource_stats.](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Chcete-li načíst nedávná data zápisu protokolu s vyšší rozlišovací schopnost, která lépe odráží krátkodobé špičky v rychlosti protokolu, použijte [zobrazení sys.dm_db_resource_stats.](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 
 
-Pokud se rozhodnete vytvořit sekundární s nižší výpočetní velikost, graf procentuálního indexu VO na webu Azure Portal poskytuje dobrý způsob, jak odhadnout minimální výpočetní velikost sekundární, která je vyžadována k udržení zatížení replikace. Například pokud primární databáze je P6 (1000 DTU) a jeho vi procent protokolu je 50 % sekundární musí být alespoň P4 (500 DTU). Můžete také načíst data vi protokolu pomocí zobrazení [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze.  Omezení je hlášeno jako HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO stavu čekání v zobrazeních databáze [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [sys.dm_os_wait_stats.](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 
+Omezení rychlosti transakční protokol na primární z důvodu nižší výpočetní velikost na sekundární je hlášena pomocí typu HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO čekání, viditelné v [zobrazení databáze sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [sys.dm_os_wait_stats.](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 
+
+> [!NOTE]
+> Transakční protokol sazba na primární může být omezena z důvodů, které nesouvisí s nižší výpočetní velikost na sekundární. Tento druh omezení může dojít i v případě, že sekundární má stejnou nebo vyšší výpočetní velikost než primární. Podrobnosti, včetně typů čekání pro různé druhy omezení rychlosti protokolu, naleznete v [tématu zásadsprávné řízení rychlosti protokolu transakcí](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).
 
 Další informace o výpočetnívelikosti databáze SQL naleznete v tématu [Co jsou vrstvy databázové služby SQL](sql-database-purchase-models.md).
 

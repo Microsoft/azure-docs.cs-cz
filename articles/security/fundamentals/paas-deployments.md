@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77138019"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811473"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -100,8 +100,8 @@ V následující tabulce jsou uvedeny hrozby STRIDE a některé příklady skute
 
 | Hrozba | Vlastnost zabezpečení | Potenciální skutečnosti snižující závažnost rizika platformy Azure |
 | --- | --- | --- |
-| Falšování identity | Ověřování | Vyžadovat připojení HTTPS. |
-| Falšování | Integrita | Ověřte certifikáty SSL. |
+| Falšování identity | Authentication | Vyžadovat připojení HTTPS. |
+| Falšování | Integrita | Ověřte certifikáty TLS/SSL. |
 | Odmítnutí | Neodvolatelnost | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure . |
 | Zveřejňování informací | Důvěrnost | Šifrování citlivých dat v klidovém stavu pomocí [servisních certifikátů](/rest/api/appservice/certificates). |
 | Odmítnutí služby | Dostupnost | Sledujte metriky výkonu pro potenciální podmínky odmítnutí služby. Implementujte filtry připojení. |

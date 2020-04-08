@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435439"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810310"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Pokročilá ochrana před hrozbami s Azure Security Center
 
@@ -36,7 +36,7 @@ Při použití programu Microsoft Defender ATP získáte následující:
 
 V Azure Security Center jsou teď dostupné následující možnosti:
 
-- **Automatické registrace**: Snímač OCHRANY ATP programu Microsoft Defender je automaticky povolen pro servery se systémem Windows, které jsou na palubě centra zabezpečení Azure.
+- **Automatické registrace**: Senzor OCHRANY ATP v programu Microsoft Defender je automaticky povolen pro servery s Windows, které jsou na palubě centra zabezpečení Azure (s výjimkou těch, které používají Windows Server 2019).
 
 - **Jediné skleněné podokno**: Konzola Azure Security Center zobrazuje výstrahy ochrany ATP v programu Microsoft Defender.
 
@@ -107,11 +107,11 @@ Chcete-li vygenerovat neškodnou výstrahu testu ochrany ATP programu Microsoft 
 
    ![Okno příkazového řádku s výše uvedeným příkazem](media/security-center-wdatp/image4.jpeg)
 
-3. Pokud je příkaz úspěšný, zobrazí se nová výstraha na řídicím panelu Azure Security Center a na portálu ochrany ATP v programu Microsoft Defender. Zobrazení tohoto upozornění může trvat několik minut.
+1. Pokud je příkaz úspěšný, zobrazí se nová výstraha na řídicím panelu Azure Security Center a na portálu ochrany ATP v programu Microsoft Defender. Zobrazení tohoto upozornění může trvat několik minut.
 
-4. Chcete-li zkontrolovat výstrahu v Centru zabezpečení, přejděte na **příkaz Zabezpečení Podezřelé** > **příkazové řádky prostředí PowerShell**.
+1. Chcete-li zkontrolovat výstrahu v Centru zabezpečení, přejděte na **příkaz Zabezpečení Podezřelé** > **příkazové řádky prostředí PowerShell**.
 
-5. V okně šetření vyberte odkaz pro přejděte na portál ochrany ATP programu Microsoft Defender.
+1. V okně šetření vyberte odkaz pro přejděte na portál ochrany ATP programu Microsoft Defender.
 
 ## <a name="next-steps"></a>Další kroky
 

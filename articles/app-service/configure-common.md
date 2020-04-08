@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280167"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811113"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace Služby app service na webu Azure Portal
 
@@ -96,10 +96,11 @@ Pro ostatní jazykové zásobníky je lepší použít [nastavení aplikace,](#c
 
 Za běhu jsou připojovací řetězce k dispozici jako proměnné prostředí s předponou s následujícími typy připojení:
 
-* SQL Server:`SQLCONNSTR_`
-* Mysql:`MYSQLCONNSTR_`
-* Databáze SQL:`SQLAZURECONNSTR_`
+* Sqlserver:`SQLCONNSTR_`  
+* Mysql:`MYSQLCONNSTR_` 
+* SQLAzure:`SQLAZURECONNSTR_` 
 * Vlastní:`CUSTOMCONNSTR_`
+* Postgresql:`POSTGRESQLCONNSTR_`  
 
 Například připojovací řetězec MySql s názvem *Connectionstring1* lze přistupovat jako proměnná `MYSQLCONNSTR_connectionString1`prostředí . Konkrétní kroky pro stoh jazyka najdete v následujících tématech:
 
@@ -173,7 +174,7 @@ Zde můžete nakonfigurovat některá běžná nastavení aplikace. Některá na
     - **Verze spravovaného kanálu**: [Režim kanálu iis]. Pokud máte starší verzi aplikace, která vyžaduje starší verzi iis, nastavte ji na **klasickou.**
     - **Http verze**: Chcete-li povolit podporu protokolu [HTTPS/2,](https://wikipedia.org/wiki/HTTP/2) nastavte na **2.0.**
     > [!NOTE]
-    > Většina moderních prohlížečů podporuje protokol HTTP/2 pouze přes TLS, zatímco nešifrovaný provoz nadále používá HTTP/1.1. Chcete-li zajistit, aby se klientské prohlížeče připojovaly k vaší aplikaci pomocí protokolu HTTP/2, [zabezpečte vlastní název DNS vazbou SSL ve službě Azure App Service](configure-ssl-bindings.md).
+    > Většina moderních prohlížečů podporuje protokol HTTP/2 pouze přes TLS, zatímco nešifrovaný provoz nadále používá HTTP/1.1. Chcete-li zajistit, aby se klientské prohlížeče připojoly k vaší aplikaci pomocí protokolu HTTP/2, zabezpečte vlastní název DNS. Další informace najdete [v tématu Zabezpečení vlastního názvu DNS s vazbou TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md).
     - **ARR spřažení**: V nasazení s více instancemi, ujistěte se, že klient je směrován do stejné instance po dobu životnosti relace. Tuto možnost můžete nastavit na **vypnuto** pro bezstavové aplikace.
 - **Ladění**: Povolit vzdálené ladění pro [aplikace ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), ASP.NET [Core](/visualstudio/debugger/remote-debugging-azure)nebo [Node.js.](containers/configure-language-nodejs.md#debug-remotely) Tato možnost se automaticky vypne po 48 hodinách.
 - **Příchozí klientské certifikáty**: vyžadují klientské certifikáty při [vzájemném ověřování](app-service-web-configure-tls-mutual-auth.md).
@@ -248,7 +249,7 @@ Viz [Konfigurace vlastního kontejneru Linuxu pro Azure App Service](containers/
 
 - [Konfigurace vlastního názvu domény ve službě Azure App Service]
 - [Nastavení přípravných prostředí ve službě Azure App Service]
-- [Zabezpečení vlastního názvu DNS s využitím vazby SSL ve službě Azure App Service](configure-ssl-bindings.md)
+- [Zabezpečení vlastního názvu DNS pomocí vazby TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md)
 - [Povolení diagnostických protokolů](troubleshoot-diagnostic-logs.md)
 - [Škálování aplikace ve službě Azure App Service]
 - [Monitorování základních škol ve službě Azure App Service]
@@ -257,7 +258,7 @@ Viz [Konfigurace vlastního kontejneru Linuxu pro Azure App Service](containers/
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Azure Portal]: https://portal.azure.com/
+[Portál Azure]: https://portal.azure.com/
 [Konfigurace vlastního názvu domény ve službě Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Nastavení přípravných prostředí ve službě Azure App Service]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906

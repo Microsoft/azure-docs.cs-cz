@@ -11,94 +11,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 04/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 052d99a819aee415d5e7ad6dc00b8c786af0f636
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60456913"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811094"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hybridní identita: Porovnání nástrojů pro integraci adresáře
-V průběhu let se nástroje pro integraci adresáře rozšířily a vyvinuly.  Tento dokument vám poskytne ucelený přehled těchto nástrojů a porovnání funkcí, které jsou v nich dostupné.
+V průběhu let se nástroje pro integraci adresáře rozšířily a vyvinuly.  
 
-<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [!NOTE]
-> Azure AD Connect zahrnuje součásti a funkce dříve vydané jako Dirsync a AAD Sync. Tyto nástroje se již neuvolňují jednotlivě a všechna budoucí vylepšení budou zahrnuta do aktualizací služby Azure AD Connect, takže vždy víte, kde získat nejnovější funkce.
-> 
-> DirSync a Azure AD Sync jsou nyní zastaralé. Další informace najdete [tady](reference-connect-dirsync-deprecated.md).
-> 
-> 
+- [FIM](https://docs.microsoft.com/previous-versions/windows/desktop/forefront-2010/ff182370%28v%3dvs.100%29) a [MIM](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) jsou stále podporovány a primárně umožňují synchronizaci mezi místními systémy.   [Konektor FIM Windows Azure AD je](https://docs.microsoft.com/previous-versions/mim/dn511001(v=ws.10)?redirectedfrom=MSDN) podporovaný ve FIM i MIM, ale nedoporučuje se pro nová nasazení – zákazníci s místními zdroji, jako jsou Poznámky nebo SAP HCM, by měli používat MIM k naplnění služby Active Directory Domain Services (AD DS) a pak také použít synchronizaci Azure AD Connect nebo azure ad connect cloud zřizování k synchronizaci ze služby AD DS do Služby Azure AD.
+- [Azure AD Connect Synchronizace](how-to-connect-sync-whatis.md) zahrnuje součásti a funkce dříve vydané v DirSync a Azure AD Sync, pro synchronizaci mezi doménovými strukturami služby AD DS a Azure AD.  
+- [Azure AD Connect cloud zřizování](../cloud-provisioning/what-is-cloud-provisioning.md) je nový agent Microsoft pro synchronizaci ze služby AD DS do Azure AD, užitečné pro scénáře, jako je fúze a akvizice, kde jsou doménové struktury ad získané společnosti izolované od doménové struktury ad mateřské společnosti.
 
-U jednotlivých tabulek použijte následující klíč.
-
-● = Nyní dostupné  
-FR = budoucí verze  
-PP = Public Preview  
-
-## <a name="on-premises-to-cloud-synchronization"></a>Synchronizace z místního prostředí do cloudu
-| Funkce | Azure Active Directory Connect | Synchronizační služba služby Azure Active Directory (AAD Sync) – NADÁLE SE NEPODPORUJE | Nástroj pro synchronizaci adresáře služeb Azure Active Directory (DirSync) – NADÁLE SE NEPODPORUJE | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Připojení k jedné místní doménové struktuře AD |● |● |● |● |● |
-| Připojení k několika místním doménovým strukturám AD |● |● | |● |● |
-| Připojení k několika místním Exchange Orgs |● | | | | |
-| Připojení k jednomu místnímu adresáři LDAP |●* | | |● |● | 
-| Připojení k několika místním adresářům LDAP |●*  | | |● |● | 
-| Připojení k místním adresářům AD a LDAP |●* | | |● |● | 
-| Připojení k vlastním systémům (tj. SQL, Oracle, MySQL atd.) |FR | | |● |● |
-| Synchronizace atributů definovaných zákazníkem (rozšíření adresáře) |● | | | | |
-| Připojení k místním HR (tj, SAP, Oracle eBusiness, PeopleSoft) |FR | | |● |● |
-| Podporuje pravidla synchronizace FIM a konektory pro zřizování do místních systémů. | | | |● |● |
-
- 
-&#42; Aktuálně jsou dostupné dvě podporované možnosti.  Jsou to tyto: 
-
-   1. Můžete použít obecný konektor LDAP a povolit ho mimo Azure AD Connect.  Tato operace je složitá a vyžaduje partnera pro onboarding a smlouvu Premier Support.  Tato možnost umožňuje pracovat s jednotlivými adresáři LDAP i s několika adresáři současně. 
-
-   2. Můžete vyvíjet vlastní řešení pro přesun objektů ze LDAP do služby Active Directory.  Potom tyto objekty synchronizujete s využitím Azure AD Connect.  Jako možné řešení pro přesun objektů se dá využít MIM nebo FIM. 
-
-## <a name="cloud-to-on-premises-synchronization"></a>Synchronizace z cloudu do místního prostředí
-| Funkce | Azure Active Directory Connect | Synchronizační služba služby Azure Active Directory – NADÁLE SE NEPODPORUJE  | Nástroj pro synchronizaci adresáře služeb Azure Active Directory (DirSync) – NADÁLE SE NEPODPORUJE  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Zpětný zápis zařízení |● | |● | | |
-| Zpětný zápis atributů (pro hybridního nasazení Exchange) |● |● |● |● |● |
-| Zpětný zápis skupin objektů |● | | | | |
-| Zpětný zápis hesel (ze samoobslužného resetování hesla (SSPR) a změny hesla) |● |● | | | |
-
-## <a name="authentication-feature-support"></a>Podpora funkce ověřování
-| Funkce | Azure Active Directory Connect | Synchronizační služba služby Azure Active Directory – NADÁLE SE NEPODPORUJE  | Nástroj pro synchronizaci adresáře služeb Azure Active Directory (DirSync) – NADÁLE SE NEPODPORUJE  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Synchronizace hodnot hash hesel pro jednu místní doménovou strukturu AD |●|●|● | | |
-| Synchronizace hodnot hash hesel pro několik místních doménových struktur AD |●|● | | | |
-| Předávací ověřování pro jednu místní doménovou strukturu AD |●| | | | |
-| Jednotné přihlašování s federací |● |● |● |● |● |
-| Bezproblémové jednotné přihlašování|● |||||
-| Zpětný zápis hesel (ze SSPR a změny hesla) |● |● | | | |
-
-## <a name="set-up-and-installation"></a>Nastavení a instalace
-| Funkce | Azure Active Directory Connect | Synchronizační služba služby Azure Active Directory – NADÁLE SE NEPODPORUJE  | Nástroj pro synchronizaci adresáře služeb Azure Active Directory (DirSync) – NADÁLE SE NEPODPORUJE  | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|
-| Podporuje instalaci na řadič domény |● |● |● | |
-| Podporuje instalaci pomocí SQL Express |● |● |● | |
-| Snadný upgrade z nástroje DirSync |● | | | |
-| Lokalizace správce UX pro jazyky Windows Serveru |● |● |● | |
-| Lokalizace koncového uživatele UX pro jazyky Windows Serveru | | | |● |
-| Podpora pro Windows Server 2008 a Windows Server 2008 R2 |● pro synchronizaci, ne pro federaci |● |● |● |
-| Podpora pro Windows Server 2012 a Windows Server 2012 R2 |● |● |● |● |
-
-## <a name="filtering-and-configuration"></a>Filtrování a konfigurace
-| Funkce | Azure Active Directory Connect | Synchronizační služba služby Azure Active Directory – NADÁLE SE NEPODPORUJE  | Nástroj pro synchronizaci adresáře služeb Azure Active Directory (DirSync) – NADÁLE SE NEPODPORUJE  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Filtrování v rámci domén a organizačních jednotek |● |● |● |● |● |
-| Filtrování v rámci hodnot atributů objektů |● |● |● |● |● |
-| Povolení minimální sady atributů, které mají být synchronizovány (MinSync) |● |● | | | |
-| Povolení použití jiných šablon služeb pro toky atributů |● |● | | | |
-| Povolení odebrání atributů z toku ze služby AD do služby Azure AD |● |● | | | |
-| Povolení upřesňujících úprav pro toky atributů |● |● | |● |● |
+Další informace o rozdílech mezi synchronizací Azure AD Connect a zřizováním cloudu Azure AD Connect najdete v článku [Co je zřizování cloudu Azure AD Connect?](../cloud-provisioning/what-is-cloud-provisioning.md)
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

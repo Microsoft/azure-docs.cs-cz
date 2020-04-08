@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 693f132bed590af65cf79ebf4739ea5dcadbfc52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 65e97453ba2ee85fb2ed7b512db87a269d2d7f77
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80045537"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811502"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace PHP a MySQL ve službě Azure App Service na Linuxu
 
@@ -254,9 +254,9 @@ Uložte změny.
 > Za účelem zabezpečení informací o vašem připojení k MySQL je tento soubor již vyloučený z úložiště Git (viz soubor _.gitignore_ v kořenovém adresáři úložiště). Později se dozvíte, jak ve službě App Service nakonfigurovat proměnné prostředí pro připojení k vaší databázi v Azure Database for MySQL. S použitím proměnných prostředí nepotřebujete soubor *.env* ve službě App Service.
 >
 
-### <a name="configure-ssl-certificate"></a>Konfigurace certifikátu SSL
+### <a name="configure-tlsssl-certificate"></a>Konfigurace certifikátu TLS/SSL
 
-Ve výchozím nastavení vynucuje Azure Database for MySQL od klientů připojení SSL. Pokud se chcete připojit ke své databázi MySQL v Azure, musíte použít certifikát [_.pem_, který poskytuje Azure Database for MySQL](../../mysql/howto-configure-ssl.md).
+Ve výchozím nastavení Azure Database for MySQL vynucuje připojení TLS od klientů. Pokud se chcete připojit ke své databázi MySQL v Azure, musíte použít certifikát [_.pem_, který poskytuje Azure Database for MySQL](../../mysql/howto-configure-ssl.md).
 
 Otevřete soubor _config/database.php_ a do `connections.mysql` přidejte parametry _sslmode_ a _options_, jak je znázorněno v následujícím kódu.
 

@@ -3,12 +3,12 @@ title: Integrace s dalšími aplikacemi - QnA Maker
 description: QnA Maker integruje do klientských aplikací, jako jsou chatovací roboty, stejně jako s jinými službami zpracování přirozeného jazyka, jako je například language understanding (LUIS).
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300515"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804183"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Návrh znalostní báze pro klientské aplikace
 
@@ -24,7 +24,7 @@ Po publikování znalostní báze vytvořte robota ze stránky **Publikovat** v�
 
 ## <a name="providing-multi-turn-conversations"></a>Poskytování vícenásobných konverzací
 
-Klient robota poskytuje nejlepší vybranou odpověď z vaší znalostní báze a může poskytnout následné výzvy, pokud je odpověď součástí vícesměrové sady QnA. Přečtěte [si, jak do](../how-to/multiturn-conversation.md) znalostní báze přidat vícesměrné konverzační otázky a sady odpovědí.
+Klient robota poskytuje nejlepší vybranou odpověď z vaší znalostní báze a může poskytnout následné výzvy, pokud je odpověď součástí vícestranného páru QnA. Přečtěte [si, jak do](../how-to/multiturn-conversation.md) znalostní báze přidat vícesměrné konverzační otázky a sady odpovědí.
 
 ## <a name="natural-language-processing"></a>Zpracování přirozeného jazyka
 

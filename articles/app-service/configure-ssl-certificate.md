@@ -1,19 +1,19 @@
 ---
-title: Přidání a správa certifikátů SSL
+title: Přidání a správa certifikátů TLS/SSL
 description: Vytvořte bezplatný certifikát, importujte certifikát služby App Service, importujte certifikát trezoru klíčů nebo si kupte certifikát služby App Service ve službě Azure App Service.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239760"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810587"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>Přidání certifikátu SSL ve službě Azure App Service
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS/SSL ve službě Azure App Service
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto článku se ukazuje, jak vytvořit, nahrát nebo importovat soukromý certifikát nebo veřejný certifikát do služby App Service. 
 
@@ -47,7 +47,7 @@ Postupujte podle tohoto návodu:
 * Obsahuje privátní klíč dlouhý alespoň 2 048 bitů
 * Obsahuje v řetězu certifikátů všechny zprostředkující certifikáty
 
-Chcete-li zabezpečit vlastní doménu ve vazbě SSL, má certifikát další požadavky:
+Chcete-li zabezpečit vlastní doménu ve vazbě TLS, má certifikát další požadavky:
 
 * Obsahuje [rozšířené použití klíče](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) pro ověřování serveru (OID = 1.3.6.1.5.5.7.3.1)
 * Podepsaný důvěryhodnou certifikační autoritou
@@ -59,7 +59,7 @@ Chcete-li zabezpečit vlastní doménu ve vazbě SSL, má certifikát další po
 
 ## <a name="create-a-free-certificate-preview"></a>Vytvoření bezplatného certifikátu (Náhled)
 
-Bezplatný certifikát spravovaný službou App Service je řešení na klíč pro zabezpečení vlastního názvu DNS ve službě App Service. Jedná se o plně funkční certifikát SSL, který spravuje služba App Service a obnovuje se automaticky. Bezplatný certifikát je dodáván s následujícími omezeními:
+Bezplatný certifikát spravovaný službou App Service je řešení na klíč pro zabezpečení vlastního názvu DNS ve službě App Service. Jedná se o plně funkční certifikát TLS/SSL, který spravuje služba App Service a obnovuje se automaticky. Bezplatný certifikát je dodáván s následujícími omezeními:
 
 - Nepodporuje certifikáty se zástupnými symboly.
 - Nepodporuje nahé domény.
@@ -237,7 +237,7 @@ Vytvořte soubor _mergedcertificate.crt_ pro sloučený certifikát. V textovém
 
 ### <a name="export-certificate-to-pfx"></a>Export certifikátu do formátu PFX
 
-Exportujte sloučený certifikát SSL s privátním klíčem, se kterým se vygenerovala vaše žádost o certifikát.
+Exportujte sloučený certifikát TLS/SSL se soukromým klíčem, se kterým byla vygenerována vaše žádost o certifikát.
 
 Pokud jste žádost o certifikát vygenerovali pomocí OpenSSL, vytvořili jste i soubor privátního klíče. Exportujte certifikát do formátu PFX spuštěním následujícího příkazu. Nahraďte zástupné symboly _ &lt;>souboru soukromého klíče_ a _ &lt;>souboru sloučených certifikátů_ cestami k soukromému klíči a sloučeným souborem certifikátu.
 
@@ -245,7 +245,7 @@ Pokud jste žádost o certifikát vygenerovali pomocí OpenSSL, vytvořili jste 
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-Po zobrazení výzvy definujte heslo pro export. Toto heslo použijete později při nahrávání certifikátu SSL do služby App Service.
+Po zobrazení výzvy definujte heslo pro export. Toto heslo použijete později při nahrávání certifikátu TLS/SSL do služby App Service.
 
 Pokud jste k vygenerování žádosti o certifikát použili službu IIS nebo nástroj _Certreq.exe_, nainstalujte certifikát na místním počítači a pak [exportujte certifikát do formátu PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
@@ -363,16 +363,16 @@ Nyní můžete odstranit certifikát služby App Service. V levém navigačním 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-* [Zabezpečení vlastního názvu DNS pomocí vazby SSL](configure-ssl-bindings.md)
+* [Zabezpečení vlastního názvu DNS pomocí vazby TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md)
 * [Vynucení HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Vynucení protokolu TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [Použití certifikátu SSL v kódu aplikace](configure-ssl-certificate-in-code.md)
+* [Použití certifikátu TLS/SSL ve vašem kódu ve službě Azure App Service](configure-ssl-certificate-in-code.md)
 * [Časté otázky: Certifikáty služby App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

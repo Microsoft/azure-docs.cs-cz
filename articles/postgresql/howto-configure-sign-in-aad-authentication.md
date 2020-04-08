@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384394"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804703"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití služby Azure Active Directory k ověřování pomocí PostgreSQL
 
@@ -24,7 +24,9 @@ Tento článek vás provede kroky, jak nakonfigurovat přístup služby Azure Ac
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Nastavení uživatele správce Azure AD
 
-Jenom uživatel Azure AD Admin můžete vytvořit nebo povolit uživatele pro ověřování na základě Azure AD. Chcete-li vytvořit uživatele azure a ad admin, postupujte podle následujících kroků
+Pouze uživatelé správce Azure AD můžete vytvořit nebo povolit uživatele pro ověřování na základě Azure AD. Doporučujeme nepoužívat správce Azure AD pro běžné databázové operace, protože má zvýšená uživatelská oprávnění (např.
+
+Chcete-li nastavit správce Azure AD (můžete použít uživatele nebo skupinu), postupujte podle následujících kroků
 
 1. Na webu Azure Portal vyberte instanci Azure Database for PostgreSQL, kterou chcete povolit pro Azure AD.
 2. V části Nastavení vyberte Správce služby Active Directory:
@@ -37,36 +39,6 @@ Jenom uživatel Azure AD Admin můžete vytvořit nebo povolit uživatele pro ov
 > Při nastavování správce se do databáze Azure pro postgresql server přidá nový uživatel s úplnými oprávněními správce. Roli `azure_ad_admin`bude mít uživatel Azure AD Admin v Azure Database for PostgreSQL .
 
 Na server PostgreSQL lze vytvořit jenom jednoho správce Azure AD a výběr jiného přepíše stávajícího správce Azure AD nakonfigurovaného pro server. Můžete zadat skupinu Azure AD namísto jednotlivého uživatele, který má více správců. Všimněte si, že se pak přihlásíte pomocí názvu skupiny pro účely správy.
-
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Vytváření uživatelů Azure AD v Azure Database for PostgreSQL
-
-Pokud chcete přidat uživatele Azure AD do databáze Azure Database for PostgreSQL, proveďte po připojení následující kroky (další část o připojení):
-
-1. Nejprve se ujistěte, `<user>@yourtenant.onmicrosoft.com` že uživatel Azure AD je platný uživatel v tenantovi Azure AD.
-2. Přihlaste se k instanci Azure Database for PostgreSQL jako uživatel Azure AD Admin.
-3. Vytvořte `<user>@yourtenant.onmicrosoft.com` roli v Azure Database pro PostgreSQL.
-4. Uvažte `<user>@yourtenant.onmicrosoft.com` azure_ad_user rolí. To musí být poskytnuta pouze uživatelům Azure AD.
-
-**Příklad:**
-
-```sql
-CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-> [!NOTE]
-> Ověřování uživatele prostřednictvím služby Azure AD neposkytuje uživateli žádná oprávnění k přístupu k objektům v databázi Azure pro PostgreSQL. Musíte uživateli udělit požadovaná oprávnění ručně.
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Vytváření skupin Azure AD v Azure Database for PostgreSQL
-
-Chcete-li povolit skupinu Azure AD pro přístup k databázi, použijte stejný mechanismus jako pro uživatele, ale místo toho zadejte název skupiny:
-
-**Příklad:**
-
-```sql
-CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-Při přihlašování budou členové skupiny používat své osobní přístupové tokeny, ale podepíší se názvem skupiny zadaným jako uživatelské jméno.
 
 ## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Připojení k Azure Database for PostgreSQL pomocí Azure AD
 
@@ -167,6 +139,36 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 ```
 
 Nyní jste ověřeni na serveru PostgreSQL pomocí ověřování Azure AD.
+
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Vytváření uživatelů Azure AD v Azure Database for PostgreSQL
+
+Pokud chcete přidat uživatele Azure AD do databáze Azure Database for PostgreSQL, proveďte po připojení následující kroky (další část o připojení):
+
+1. Nejprve se ujistěte, `<user>@yourtenant.onmicrosoft.com` že uživatel Azure AD je platný uživatel v tenantovi Azure AD.
+2. Přihlaste se k instanci Azure Database for PostgreSQL jako uživatel Azure AD Admin.
+3. Vytvořte `<user>@yourtenant.onmicrosoft.com` roli v Azure Database pro PostgreSQL.
+4. Uvažte `<user>@yourtenant.onmicrosoft.com` azure_ad_user rolí. To musí být poskytnuta pouze uživatelům Azure AD.
+
+**Příklad:**
+
+```sql
+CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+> [!NOTE]
+> Ověřování uživatele prostřednictvím služby Azure AD neposkytuje uživateli žádná oprávnění k přístupu k objektům v databázi Azure pro PostgreSQL. Musíte uživateli udělit požadovaná oprávnění ručně.
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Vytváření skupin Azure AD v Azure Database for PostgreSQL
+
+Chcete-li povolit skupinu Azure AD pro přístup k databázi, použijte stejný mechanismus jako pro uživatele, ale místo toho zadejte název skupiny:
+
+**Příklad:**
+
+```sql
+CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+Při přihlašování budou členové skupiny používat své osobní přístupové tokeny, ale podepíší se názvem skupiny zadaným jako uživatelské jméno.
 
 ## <a name="token-validation"></a>Ověření tokenu
 

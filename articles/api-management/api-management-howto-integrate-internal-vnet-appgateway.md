@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298049"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811171"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace správy rozhraní API v interní virtuální síti s aplikační bránou
 
@@ -64,7 +64,7 @@ V prvním příkladu nastavení jsou všechna vaše api spravována pouze z virt
 * **Fond serverů back-end:** Toto je interní virtuální IP adresa služby API Management.
 * **Nastavení fondu serverů back-end:** Každý fond má nastavení, jako je port, protokol a spřažení založené na souborech cookie. Tato nastavení jsou použita pro všechny servery ve fondu.
 * **Přední port:** Toto je veřejný port, který se otevře v bráně aplikace. Provoz bít to dostane přesměrován na jeden z back-end serverů.
-* **Posluchač:** Naslouchací proces má front-end port, protokol (Http nebo Https, tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL (pokud konfigurace ssl offload).
+* **Posluchač:** Naslouchací proces má front-end port, protokol (Http nebo Https, tyto hodnoty jsou malá a velká písmena) a název certifikátu TLS/SSL (pokud konfigurace tls offload).
 * **Pravidlo:** Pravidlo váže naslouchací proces do fondu serveru back-end.
 * **Vlastní sonda stavu:** Aplikační brána ve výchozím nastavení používá sondy založené na IP adresách k zjištění, které servery v backendaddresspoolu jsou aktivní. Služba api management reaguje pouze na požadavky se správnou hlavičkou hostitele, proto se nezdaří výchozí sondy. Vlastní sonda stavu musí být definována pomoci aplikační brány určit, že služba je aktivní a měla by předávat požadavky.
 * **Vlastní certifikáty domény:** Chcete-li získat přístup ke správě rozhraní API z Internetu, musíte vytvořit mapování CNAME jeho názvu hostitele na název DNS front-endu aplikační brány. Tím je zajištěno, že hlavička názvu hostitele a certifikát odeslaný do aplikační brány, která je předána správě rozhraní API, je jeden rozhraní APIM, které lze rozpoznat jako platné. V tomto příkladu použijeme dva certifikáty – pro back-end a pro portál pro vývojáře.  
@@ -271,7 +271,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>Krok 5
 
-Vytvořte http posluchače pro aplikační bránu. Přiřaďte jim certifikáty front-end IP, port a ssl.
+Vytvořte http posluchače pro aplikační bránu. Přiřaďte jim front-endovou konfiguraci IP adres, port a certifikáty TLS/SSL.
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -280,7 +280,7 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Krok 6
 
-Vytvořte vlastní sondy `ContosoApi` do koncového bodu proxy domény služby API Management. Cesta `/status-0123456789abcdef` je výchozí koncový bod stavu hostovaný ve všech službách správy rozhraní API. Nastavte `api.contoso.net` jako vlastní název hostitele sondy, abyste jej zabezpečili pomocí certifikátu SSL.
+Vytvořte vlastní sondy `ContosoApi` do koncového bodu proxy domény služby API Management. Cesta `/status-0123456789abcdef` je výchozí koncový bod stavu hostovaný ve všech službách správy rozhraní API. Nastavte `api.contoso.net` jako vlastní název hostitele sondy, abyste jej zabezpečili pomocí certifikátu TLS/SSL.
 
 > [!NOTE]
 > Název `contosoapi.azure-api.net` hostitele je výchozí název hostitele proxy `contosoapi` nakonfigurovaný při vytvoření služby s názvem ve veřejném Azure.
@@ -293,7 +293,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>Krok 7
 
-Nahrajte certifikát, který se má použít na prostředky back-endového fondu s podporou ssl. Jedná se o stejný certifikát, který jste zadali v kroku 4 výše.
+Nahrajte certifikát, který se má použít na prostředky back-endového fondu s podporou TLS. Jedná se o stejný certifikát, který jste zadali v kroku 4 výše.
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath

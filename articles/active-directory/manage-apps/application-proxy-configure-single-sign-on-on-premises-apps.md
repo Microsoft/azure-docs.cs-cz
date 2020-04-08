@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf34b52e06e369fe4dd459ff9dfa2880596fb35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481343"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803293"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Jednotné přihlášení SAML pro místní aplikace s proxy aplikací
 
@@ -74,14 +74,14 @@ Před poskytnutím služby SSO pro místní aplikace je třeba povolit proxy apl
 
 2. Na stránce **Nastavit jednotné přihlašování pomocí saml** přejděte na nadpis **Základní konfigurace SAML** a vyberte jeho ikonu **Upravit** (tužku). Zkontrolujte, zda je **externí adresa URL** nakonfigurovaná v polích Proxy aplikace vyplněna v polích **Identifikátor**, Adresa URL **pro odpověď**a Adresa **URL odhlášení.** Tyto adresy URL jsou vyžadovány pro server Proxy aplikace, aby fungoval správně. 
 
-3. Upravte dříve nakonfigurovanou **adresu URL odpovědi** tak, aby její doména byla dostupná pomocí proxy aplikace. Pokud `https://contosotravel-f128.msappproxy.net` je například **externí adresa URL** a původní adresa URL **odpovědi** byla `https://contosotravel.com/acs`, bude nutné aktualizovat původní adresu URL pro **odpověď** na adresu `https://contosotravel-f128.msappproxy.net/acs`. 
+3. Upravte dříve nakonfigurovanou **adresu URL odpovědi** tak, aby její doména byla dostupná na internetu prostřednictvím proxy aplikace. Pokud `https://contosotravel-f128.msappproxy.net` je například **externí adresa URL** a původní adresa URL **odpovědi** byla `https://contosotravel.com/acs`, bude nutné aktualizovat původní adresu URL pro **odpověď** na adresu `https://contosotravel-f128.msappproxy.net/acs`.
 
     ![Zadání základních konfiguračních dat SAML](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
 4. Zaškrtnutím políčka vedle aktualizované **adresy URL odpovědi** označíte jako výchozí.
 
-   * Pokud je požadovaná **adresa URL odpovědi** již uvedena, označte tuto adresu URL pro **odpověď** jako výchozí a odstraňte dříve nakonfigurovanou adresu URL **pro odpověď**.
+   * Po označení požadované **adresy URL pro odpověď** jako výchozí můžete také odstranit dříve nakonfigurovanou adresu URL pro **odpověď,** která používala interní adresu URL.
 
    * Pro tok iniciovaný sp, ujistěte se, že back-end aplikace určuje správnou **adresu URL pro odpověď** nebo adresu URL služby Assertion Consumer Service pro příjem ověřovacího tokenu.
 

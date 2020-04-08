@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: d8582dfc796fe3e87b8bdc5be763dddfb5d0176b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3579d12981e2b0add916a280bac7b4f9392d8ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245408"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803139"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Úvodní příručka: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -126,13 +126,13 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
     K tomuto tajnému klíči můžete přistupovat pomocí rozhraní API pro konfiguraci aplikací. Dvojtečka (:) funguje v názvu konfigurace s rozhraním API pro konfiguraci aplikací na všech podporovaných platformách. Viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
 
-1. Aktualizujte `CreateWebHostBuilder` metodu pro použití `config.AddAzureAppConfiguration()` konfigurace aplikace voláním metody.
-    
+1. V *Program.cs*aktualizujte metodu `CreateWebHostBuilder` pro použití `config.AddAzureAppConfiguration()` konfigurace aplikace voláním metody.
+
     > [!IMPORTANT]
     > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v rozhraní .NET Core 3.0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
     #### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
-    
+
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -148,7 +148,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     ```
 
     #### <a name="net-core-3x"></a>[.NET Jádro 3.x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -188,12 +188,12 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
         services.AddControllersWithViews();
         services.AddFeatureManagement();
     }
-    ```
+
     ---
 
-1. Aktualizujte `Configure` metodu a přidejte middleware, aby se hodnoty příznaku funkce aktualizovaly v opakovaném intervalu, zatímco ASP.NET webová aplikace Core nadále přijímá požadavky.
-    
-    #### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
+1. Update the `Configure` method to add a middleware to allow the feature flag values to be refreshed at a recurring interval while the ASP.NET Core web app continues to receive requests.
+
+    #### [.NET Core 2.x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
@@ -351,7 +351,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     Váš prohlížeč by měl zobrazit stránku podobnou obrázku níže.
     ![Spuštění aplikace QuickStart místní](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **Všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Správce funkcí**a změňte stav klíče **Beta** **na Zapnuto**.
 

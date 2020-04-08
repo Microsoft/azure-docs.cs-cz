@@ -3,12 +3,12 @@ title: Řešení potíží s chybějícími daty v nástroji Application Insight
 description: Nezobrazuje te data v Azure Application Insights? Zkuste to tady.
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665897"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802582"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Poradce při potížích s žádnými daty – Přehledy aplikací pro jádro .NET/.NET Core
 
@@ -241,12 +241,16 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 Tyto parametry můžete podle potřeby upravit:
 - **MaxCollectSec**. Nastavte tento parametr, chcete-li zabránit spuštění perfView neomezeně dlouho a ovlivňuje výkon serveru.
 - **OnlyProviders**. Tento parametr nastavte tak, aby shromažďoval pouze protokoly ze sady SDK. Tento seznam můžete přizpůsobit na základě konkrétních šetření. 
-- **NoGui**. Nastavte tento parametr pro shromažďování protokolů bez gui.
+- **NoGui**. Nastavte tento parametr pro shromažďování protokolů bez grafického uživatelského rozhraní.
 
 
 Další informace
 - [Zaznamenávání sledování výkonu pomocí perfview](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Zdroje událostí Přehledy aplikací](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="how-to-remove-application-insights"></a>Jak odebrat přehledy aplikací
+
+Zjistěte, jak odebrat Application Insights v sadě Visual Studio podle pokynů uvedených v [článku](../../azure-monitor/app/remove-application-insights.md)odebrání .
 
 ## <a name="still-not-working"></a>Pořád nefunguje...
 * [Fórum Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

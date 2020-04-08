@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0de94cdce1d7f0e9da9d2844b300956ad6f6970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330843"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803156"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolit, aby mě přihlášení (KMSI) ve službě Azure Active Directory B2C
 
@@ -54,7 +54,7 @@ Chcete-li povolit `DataUri` KMSI, nastavte prvek definice obsahu na identifikát
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Přidání metadat do samoobslužného technického profilu
 
-Chcete-li přidat zaškrtávací políčko KMSI na `setting.enableRememberMe` přihlašovací a přihlašovací stránku, nastavte metadata na hodnotu false. Přepsat SelfAsserted-LocalAccountSignin-Email technické profily v souboru rozšíření.
+Chcete-li přidat zaškrtávací políčko KMSI na `setting.enableRememberMe` přihlašovací a přihlašovací stránku, nastavte metadata na hodnotu true. Přepsat SelfAsserted-LocalAccountSignin-Email technické profily v souboru rozšíření.
 
 1. Najít ClaimsProviders element. Pokud prvek neexistuje, přidejte jej.
 1. Do prvku ClaimsProviders přidejte následujícího zprostředkovatele deklarací identity:

@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80047217"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811783"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: Mapování existujícího vlastního názvu DNS na službu Azure App Service
 
@@ -151,7 +151,7 @@ Může chvíli trvat, než se nová vlastní doména projeví na stránce **Vlas
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Popisek **Není zabezpečený** pro vaši vlastní doménu znamená, že ještě není vázán na certifikát SSL a jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény se v závislosti na prohlížeči zobrazí a zobrazí se chyba nebo upozornění. Pokud chcete přidat vazbu SSL, přečtěte si témat [u tématu Zabezpečení vlastního názvu DNS s vazbou SSL ve službě Azure App Service](configure-ssl-bindings.md).
+> Popisek **Není zabezpečený** pro vaši vlastní doménu znamená, že ještě není vázán na certifikát TLS/SSL a jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény se v závislosti na prohlížeči zobrazí a zobrazí se chyba nebo upozornění. Pokud chcete přidat vazbu TLS, [přečtěte si témat u tématu Zabezpečení vlastního názvu DNS s vazbou TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md).
 
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
@@ -235,7 +235,7 @@ Může chvíli trvat, než se nová vlastní doména projeví na stránce **Vlas
 ![Přidaný záznam A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Popisek **Není zabezpečený** pro vaši vlastní doménu znamená, že ještě není vázán na certifikát SSL a jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény se v závislosti na prohlížeči zobrazí a zobrazí se chyba nebo upozornění. Pokud chcete přidat vazbu SSL, přečtěte si témat [u tématu Zabezpečení vlastního názvu DNS s vazbou SSL ve službě Azure App Service](configure-ssl-bindings.md).
+> Popisek **Není zabezpečený** pro vaši vlastní doménu znamená, že ještě není vázán na certifikát TLS/SSL a jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény se v závislosti na prohlížeči zobrazí a zobrazí se chyba nebo upozornění. Pokud chcete přidat vazbu TLS, [přečtěte si témat u tématu Zabezpečení vlastního názvu DNS s vazbou TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md).
 
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
@@ -290,7 +290,7 @@ Znovu **+** vyberte ikonu a přidejte další vlastní doménu, která odpovíd�
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Popisek **Zabezpečení pro** vaši vlastní doménu znamená, že ještě není vázán na certifikát SSL a jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény se v závislosti na prohlížeči zobrazí a zobrazí se chyba nebo upozornění. Pokud chcete přidat vazbu SSL, přečtěte si témat [u tématu Zabezpečení vlastního názvu DNS s vazbou SSL ve službě Azure App Service](configure-ssl-bindings.md).
+> Popisek **Zabezpečení pro** vaši vlastní doménu znamená, že ještě není vázán na certifikát TLS/SSL a v závislosti na prohlížeči se zobrazí jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény a zobrazí se chyba nebo upozornění. Pokud chcete přidat vazbu TLS, [přečtěte si témat u tématu Zabezpečení vlastního názvu DNS s vazbou TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md).
 
 ## <a name="test-in-browser"></a>Test v prohlížeči
 
@@ -366,7 +366,7 @@ V tomto kurzu jste se naučili:
 > * Přesměrovat výchozí adresu URL do vlastního adresáře
 > * Automatizovat mapování domén pomocí skriptů
 
-V dalším kurzu se dozvíte, jak vytvořit vazbu vlastního certifikátu SSL k webové aplikaci.
+Přejdete k dalšímu kurzu, kde se dozvíte, jak svázat vlastní certifikát TLS/SSL s webovou aplikací.
 
 > [!div class="nextstepaction"]
-> [Zabezpečení vlastního názvu DNS s využitím vazby SSL ve službě Azure App Service](configure-ssl-bindings.md)
+> [Zabezpečení vlastního názvu DNS pomocí vazby TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md)

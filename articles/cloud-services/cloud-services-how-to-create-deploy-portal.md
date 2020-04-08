@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386166"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811334"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
 Portál Azure poskytuje dva způsoby, jak vytvořit a nasadit cloudovou službu: *Rychlé vytvoření* a *Vlastní vytvoření*.
@@ -42,7 +42,7 @@ Před nasazením cloudové služby je nutné vytvořit balíček cloudové služ
 
 Tři funkce cloudové služby vyžadují před exportem balíčku služeb speciální konfigurace:
 
-* Pokud chcete nasadit cloudovou službu, která používá ssl (Secure Sockets Layer) pro šifrování dat, [nakonfigurujte aplikaci](cloud-services-configure-ssl-certificate-portal.md#modify) pro SSL.
+* Pokud chcete nasadit cloudovou službu, která používá zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer), pro šifrování dat, [nakonfigurujte aplikaci](cloud-services-configure-ssl-certificate-portal.md#modify) pro TLS.
 * Chcete-li konfigurovat připojení ke vzdálené ploše na instance rolí, [nakonfigurujte role](cloud-services-role-enable-remote-desktop-new-portal.md) pro vzdálenou plochu.
 * Pokud chcete nakonfigurovat podrobné monitorování pro vaši cloudovou službu, povolte Diagnostika Azure pro cloudovou službu. *Minimální monitorování* (výchozí úroveň monitorování) používá čítače výkonu shromážděné z hostitelských operačních systémů pro instance rolí (virtuální počítače). *Podrobné monitorování* shromažďuje další metriky založené na datech o výkonu v rámci instancí role, aby bylo možné důkladněji analýzu problémů, ke kterým dochází během zpracování aplikace. Informace o tom, jak povolit diagnostiku Azure, najdete [v tématu Povolení diagnostiky v Azure](cloud-services-dotnet-diagnostics.md).
 
@@ -70,7 +70,7 @@ Chcete-li vytvořit cloudovou službu s nasazeními webových rolí nebo rolí p
 ## <a name="upload-a-certificate"></a>Nahrání certifikátu
 Pokud byl balíček nasazení [nakonfigurován pro použití certifikátů](cloud-services-configure-ssl-certificate-portal.md#modify), můžete certifikát odeslat nyní.
 
-1. Vyberte **certifikáty**a v podokně **Přidat certifikáty** vyberte soubor SSL .pfx certifikátu A zadejte **heslo** pro certifikát.
+1. Vyberte **certifikáty**a v podokně **Přidat certifikáty** vyberte soubor .pfx certifikátu TLS/SSL a zadejte **heslo** pro certifikát.
 2. Klikněte na **Připojit certifikát**a potom v podokně **Přidat certifikáty** klikněte na **OK.**
 3. V podokně **Cloudová služba** klikněte na **Vytvořit.** Po dokončení nasazení stavu **Připraveno** můžete přejít k dalším krokům.
 
@@ -90,7 +90,7 @@ Pokud byl balíček nasazení [nakonfigurován pro použití certifikátů](clou
 * [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md).
 * Konfigurace [vlastního názvu domény](cloud-services-custom-domain-name-portal.md).
 * [Spravujte cloudovou službu](cloud-services-how-to-manage-portal.md).
-* Konfigurace [certifikátů ssl](cloud-services-configure-ssl-certificate-portal.md).
+* Konfigurace [certifikátů TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
 
 
 

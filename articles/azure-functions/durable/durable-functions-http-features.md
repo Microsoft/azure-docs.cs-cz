@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132502"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802379"
 ---
 # <a name="http-features"></a>Funkce protokolu HTTP
 
@@ -41,11 +41,11 @@ Jsou podporována následující vestavěná http api.
 
 Vazba [klienta orchestrace](durable-functions-bindings.md#orchestration-client) zveřejňuje api, která mohou generovat pohodlné datové části odpovědi HTTP. Může například vytvořit odpověď obsahující odkazy na správu API pro konkrétní instanci orchestrace. Následující příklady ukazují funkci aktivační události HTTP, která ukazuje, jak používat toto rozhraní API pro novou instanci orchestrace:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -114,7 +114,7 @@ Počínaje trvanlivé funkce 2.0 orchestrations můžete nativně využívat htt
 
 Následující ukázkový kód ukazuje funkci orchestrator, která provádí odchozí požadavek HTTP:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -172,7 +172,7 @@ Trvalé funkce nativně podporuje volání rozhraní API, které přijímají to
 
 Následující kód je příkladem funkce orchestrátoru .NET. Funkce umožňuje ověřená volání restartování virtuálního počítače pomocí [virtuálních počítačů](https://docs.microsoft.com/rest/api/compute/virtualmachines)Azure Resource Manager REST API .
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -232,7 +232,7 @@ Za běhu nakonfigurovaný zdroj tokenu automaticky vrátí přístupový token O
 * Tokeny jsou nikdy uloženy ve stavu trvalé orchestrace.
 * Nemusíte psát žádný kód pro správu získávání tokenu.
 
-Úplnější příklad najdete v [předkompilované ukázce restartvmů jazyka C#](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs).
+Úplnější příklad najdete v [předkompilované ukázce restartvmů jazyka C#](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs).
 
 Spravované identity nejsou omezeny na správu prostředků Azure. Spravované identity můžete použít k přístupu k libovolnému rozhraní API, které přijímá tokeny nosiče Azure AD, včetně služeb Azure od Microsoftu a webových aplikací od partnerů. Webová aplikace partnera může být dokonce další funkční aplikací. Seznam služeb Azure od Microsoftu, které podporují ověřování pomocí Azure AD, najdete v [tématu služby Azure AD, které podporují ověřování Azure AD](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 

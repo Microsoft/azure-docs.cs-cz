@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726680"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811422"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrana zákaznických dat Azure   
 Přístup k zákaznickým datům ze strany pracovníků společnosti Microsoft a pracovníků odborné pomoci je ve výchozím nastavení odepřen. Při udělení přístupu k zákaznickým datům je vyžadováno schválení vedení a poté je přístup pečlivě spravován a protokolován. Požadavky na řízení přístupu jsou stanoveny následujícími zásadami zabezpečení Azure:
@@ -45,7 +45,7 @@ Azure poskytuje zákazníkům silné zabezpečení dat, a to jak ve výchozím n
 - Zákazník a cloud.
 - Interně mezi systémy Azure a datovými centry.
 
-**Šifrování**: Šifrování dat v úložišti a při přenosu mohou zákazníci nasadit jako osvědčený postup pro zajištění důvěrnosti a integrity dat. Pro zákazníky je jednoduché nakonfigurovat cloudové služby Azure tak, aby používaly protokol SSL k ochraně komunikace před internetem a dokonce i mezi virtuálními počítači hostovanými v Azure.
+**Šifrování**: Šifrování dat v úložišti a při přenosu mohou zákazníci nasadit jako osvědčený postup pro zajištění důvěrnosti a integrity dat. Pro zákazníky je jednoduché nakonfigurovat cloudové služby Azure tak, aby používaly TLS k ochraně komunikace před internetem a dokonce i mezi virtuálními počítači hostovanými v Azure.
 
 **Redundance dat**: Společnost Microsoft pomáhá zajistit, aby byla data chráněna v případě kybernetického útoku nebo fyzického poškození datového centra. Zákazníci se mohou rozhodnout pro:
 

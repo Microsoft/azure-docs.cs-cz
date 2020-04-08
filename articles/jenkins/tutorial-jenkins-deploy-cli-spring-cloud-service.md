@@ -3,12 +3,12 @@ title: Nasazení aplikací do Azure Spring Cloudu s využitím Jenkinse a Azure 
 description: Zjistěte, jak používat Azure CLI v průběžné integraci a kanálu nasazení k nasazení mikroslužeb do služby Azure Spring Cloud
 ms.topic: tutorial
 ms.date: 01/07/2020
-ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bc48eecc9e73b95fd9112d645135409c24369e10
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75734975"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810222"
 ---
 # <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Kurz: Nasazení aplikací do Azure Spring Cloud pomocí Jenkinse a Azure CLI
 
@@ -28,7 +28,7 @@ Tento kurz předpokládá průběžné znalosti základních služeb Azure, Azur
 >[!Note]
 > Azure Spring Cloud se momentálně nabízí jako veřejná verze Preview. Nabídky ve verzi Public Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiálním vydáním.  Funkce a služby veřejné verze Preview nejsou určeny pro produkční použití.  Další informace o podpoře během náhledů najdete v [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo najdete [žádost o podporu,](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kde se dozvíte další informace.
 
-[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
 * Účet GitHub. Pokud nemáte účet GitHub, vytvořte si [bezplatný účet,](https://github.com/) než začnete.
 

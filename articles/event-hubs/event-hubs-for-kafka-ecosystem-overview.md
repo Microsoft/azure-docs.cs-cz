@@ -10,15 +10,17 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 7d3525bc7a25550a79ceeb008e3c69c77a56aa0a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 91e2d70bab8c1be4b3e5b400ce21122eccb1e9eb
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632870"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811378"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Používání Center událostí Azure z aplikací Apache Kafka
 Event Hubs poskytuje koncový bod Kafka, který může být použit pro vaše stávající aplikace založené na Kafka jako alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje [protokol Apache Kafka 1.0 a novější](https://kafka.apache.org/documentation/)a pracuje s vašimi stávajícími aplikacemi Kafka, včetně MirrorMakeru.  
+
+> [!VIDEO https://www.youtube.com/embed/UE1WgB96_fc]
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>Co centra událostí pro Kafku poskytují?
 

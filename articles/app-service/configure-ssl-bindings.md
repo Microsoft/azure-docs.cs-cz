@@ -1,28 +1,28 @@
 ---
-title: Zabezpečení vlastního DNS pomocí vazby SSL
+title: Zabezpečení vlastního DNS pomocí vazby TLS/SSL
 description: Zabezpečte přístup HTTPS k vlastní doméně vytvořením vazby TLS/SSL s certifikátem. Zlepšete zabezpečení svého webu vynucením protokolu HTTPS nebo TLS 1.2.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239704"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811748"
 ---
-# <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s využitím vazby SSL ve službě Azure App Service
+# <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS pomocí vazby TLS/SSL ve službě Azure App Service
 
 Tento článek ukazuje, jak zabezpečit [vlastní doménu](app-service-web-tutorial-custom-domain.md) v [aplikaci app service](https://docs.microsoft.com/azure/app-service/) nebo funkce [vytvořením](https://docs.microsoft.com/azure/azure-functions/) vazby certifikátu. Po dokončení můžete přistupovat k aplikaci App `https://` Service v koncovém bodě pro `https://www.contoso.com`vlastní název DNS (například). 
 
-![Webová aplikace s vlastním certifikátem SSL](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+![Webová aplikace s vlastním certifikátem TLS/SSL](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
 Zabezpečení [vlastní domény](app-service-web-tutorial-custom-domain.md) certifikátem zahrnuje dva kroky:
 
-- [Přidejte soukromý certifikát do služby App Service,](configure-ssl-certificate.md) který splňuje všechny [požadavky na vazby SSL](configure-ssl-certificate.md#private-certificate-requirements).
--  Vytvořte vazbu SSL pro odpovídající vlastní doménu. Tento druhý krok se vztahuje tento článek.
+- [Přidejte soukromý certifikát do služby App Service,](configure-ssl-certificate.md) který splňuje všechny [požadavky na soukromý certifikát](configure-ssl-certificate.md#private-certificate-requirements).
+-  Vytvořte vazbu TLS pro odpovídající vlastní doménu. Tento druhý krok se vztahuje tento článek.
 
 V tomto kurzu se naučíte:
 
@@ -77,17 +77,17 @@ Pokud vaše aplikace nemá žádný certifikát pro vybranou vlastní doménu, m
 
 ### <a name="create-binding"></a>Vytvořit vazbu
 
-V následující tabulce můžete nakonfigurovat vazbu SSL v dialogovém okně **Vazba TLS/SSL** a klepněte na tlačítko **Přidat vazbu**.
+V následující tabulce můžete nakonfigurovat vazbu TLS v dialogovém okně **Vazba TLS/SSL** a klepněte na tlačítko **Přidat vazbu**.
 
 | Nastavení | Popis |
 |-|-|
-| Vlastní doména | Název domény pro přidání vazby SSL. |
+| Vlastní doména | Název domény pro přidání vazby TLS/SSL. |
 | Kryptografický otisk soukromého certifikátu | Certifikát svázat. |
-| Typ TLS/SSL | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - může být přidáno více ssl vazeb SNI. Tato možnost umožňuje zabezpečení několika domén na stejné IP adrese pomocí několika certifikátů SSL. Většina moderních prohlížečů (včetně Aplikací Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (další informace naleznete v [tématu Označení názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** - může být přidána pouze jedna vazba IP SSL. Tato možnost umožňuje zabezpečení vyhrazené veřejné IP adresy pouze jedním certifikátem SSL. Po konfiguraci vazby postupujte podle pokynů v části [Přemapování záznamu a protokolu IP SSL](#remap-a-record-for-ip-ssl).<br/>Protokol IP SSL je podporován pouze v produkčních nebo izolovaných úrovních. </li></ul> |
+| Typ TLS/SSL | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - může být přidáno více ssl vazeb SNI. Tato možnost umožňuje více certifikátům TLS/SSL zabezpečit více domén na stejné adrese IP. Většina moderních prohlížečů (včetně Aplikací Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (další informace naleznete v [tématu Označení názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** - může být přidána pouze jedna vazba IP SSL. Tato možnost umožňuje zabezpečení vyhrazené veřejné IP adresy pouze jednomu certifikátu TLS/SSL. Po konfiguraci vazby postupujte podle pokynů v části [Přemapování záznamu a protokolu IP SSL](#remap-a-record-for-ip-ssl).<br/>Protokol IP SSL je podporován pouze v produkčních nebo izolovaných úrovních. </li></ul> |
 
-Po dokončení operace se stav SSL vlastní domény změní na **Secure**.
+Po dokončení operace se stav TLS/SSL vlastní domény změní na **Zabezpečený**.
 
-![Vazba SSL byla úspěšná.](./media/configure-ssl-bindings/secure-domain-finished.png)
+![Vazba TLS/SSL byla úspěšná.](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
 > **Bezpečný** stav ve **vlastních doménách** znamená, že je zabezpečený certifikátem, ale služba App Service nekontroluje, zda je certifikát například podepsaný svým držitelem nebo vypršela jeho platnost, což může také způsobit, že prohlížeče zobrazí chybu nebo upozornění.
@@ -131,7 +131,7 @@ Na stránce aplikace vlevém na levé ho dispoziti vyberte **nastavení SSL**. P
 
 ![Vynucení HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
-Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Například:
+Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Příklad:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -147,9 +147,9 @@ Na stránce aplikace vlevém na levé ho dispoziti vyberte **nastavení SSL**. P
 
 Po dokončení operace bude vaše aplikace odmítat všechna připojení využívající nižší verze protokolu TLS.
 
-## <a name="handle-ssl-termination"></a>Ukončení ssl popisovače
+## <a name="handle-tls-termination"></a>Ukončení zpracování TLS
 
-Ve službě App Service dojde k [ukončení SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v síťových nástrojích pro vyrovnávání zatížení, takže všechny požadavky HTTPS se dostanou do vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zkontrolovat, jestli jsou požadavky `X-Forwarded-Proto` uživatelů zašifrované nebo ne, zkontrolujte záhlaví.
+Ve službě App Service dojde k [ukončení TLS](https://wikipedia.org/wiki/TLS_termination_proxy) v síťových nástrojích pro vyrovnávání zatížení, takže všechny požadavky HTTPS se dostanou do vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zkontrolovat, jestli jsou požadavky `X-Forwarded-Proto` uživatelů zašifrované nebo ne, zkontrolujte záhlaví.
 
 Jazykově specifické konfigurační příručky, jako je například [průvodce konfigurací Linux Node.js,](containers/configure-language-nodejs.md#detect-https-session) vám ukáže, jak zjistit relaci HTTPS v kódu aplikace.
 
@@ -157,13 +157,13 @@ Jazykově specifické konfigurační příručky, jako je například [průvodce
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-* [Použití certifikátu SSL v kódu aplikace](configure-ssl-certificate-in-code.md)
+* [Použití certifikátu TLS/SSL ve vašem kódu ve službě Azure App Service](configure-ssl-certificate-in-code.md)
 * [Časté otázky: Certifikáty služby App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

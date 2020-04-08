@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679882"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804839"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Pro každou aktivitu v Azure Data Factory
 Aktivita ForEach definuje opakující se tok řízení v kanálu. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
@@ -73,7 +73,7 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 jméno | Název aktivity for-each. | Řetězec | Ano
 type | Musí být nastavena na **ForEach** | Řetězec | Ano
 isSequential | Určuje, zda má být smyčka spuštěna postupně nebo paralelně.  Maximálně 20 opakování smyčky lze provést současně paralelně). Například pokud máte ForEach aktivity iterace přes aktivitu kopírování s 10 různých zdrojových a jímací datové sady s **isSequential nastavena** na False, všechny kopie jsou provedeny najednou. Výchozí hodnota je False. <br/><br/> Pokud "isSequential" je nastavena na False, ujistěte se, že je správná konfigurace pro spuštění více spustitelných souborů. V opačném případě by tato vlastnost měla být používána s opatrností, aby nedošlo ke konfliktům zápisu. Další informace naleznete v části [Paralelní spuštění.](#parallel-execution) | Logická hodnota | Ne. Výchozí hodnota je False.
-batchCount | Počet dávek, který má být použit pro řízení počtu paralelního spuštění (když isSequential je nastavena na false). | Celé číslo (maximálně 50) | Ne. Výchozí hodnota je 20.
+batchCount | Počet dávek, který má být použit pro řízení počtu paralelního spuštění (když isSequential je nastavena na false). Toto je horní limit souběžnosti, ale pro každou aktivitu nebude vždy provedena na tomto čísle | Celé číslo (maximálně 50) | Ne. Výchozí hodnota je 20.
 Items | Výraz, který vrací Pole JSON, které má být iterováno. | Výraz (který vrací pole JSON) | Ano
 Aktivity | Aktivity, které mají být provedeny. | Seznam aktivit | Ano
 

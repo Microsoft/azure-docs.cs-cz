@@ -1,24 +1,24 @@
 ---
-title: Použití certifikátu SSL v kódu
+title: Použití certifikátu TLS/SSL v kódu
 description: Přečtěte si, jak používat klientské certifikáty ve vašem kódu. Ověřte pomocí vzdálených prostředků pomocí klientského certifikátu nebo s nimi spouštějte kryptografické úlohy.
 ms.topic: article
 ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d783b61c372c7d0f8cca13106bf297ab9b55c424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671892"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811692"
 ---
-# <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Použití certifikátu SSL ve vašem kódu ve službě Azure App Service
+# <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Použití certifikátu TLS/SSL ve vašem kódu ve službě Azure App Service
 
 V kódu aplikace můžete přistupovat k [veřejným nebo soukromým certifikátům, které přidáte do služby App Service](configure-ssl-certificate.md). Kód aplikace může fungovat jako klient a přístup k externí službě, která vyžaduje ověření certifikátu, nebo může být nutné provádět kryptografické úlohy. Tento návod ukazuje, jak používat veřejné nebo soukromé certifikáty v kódu aplikace.
 
-Tento přístup k používání certifikátů ve vašem kódu využívá funkce SSL ve službě App Service, která vyžaduje, aby vaše aplikace byla na úrovni **Basic** nebo vyšší. Pokud je vaše aplikace na **bezplatné** nebo **sdílené** úrovni, můžete [soubor certifikátu zahrnout do úložiště aplikací](#load-certificate-from-file).
+Tento přístup k používání certifikátů ve vašem kódu využívá funkce TLS ve službě App Service, která vyžaduje, aby vaše aplikace byla na úrovni **Basic** nebo vyšší. Pokud je vaše aplikace na **bezplatné** nebo **sdílené** úrovni, můžete [soubor certifikátu zahrnout do úložiště aplikací](#load-certificate-from-file).
 
-Když službě App Service umožníte spravovat certifikáty SSL, můžete certifikáty a kód aplikace udržovat samostatně a chránit citlivá data.
+Když službě App Service umožníte spravovat certifikáty TLS/SSL, můžete certifikáty a kód aplikace udržovat samostatně a chránit citlivá data.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,25 +58,32 @@ V kódu jazyka C# získáte přístup k certifikátu pomocí kryptografického o
 
 ```csharp
 using System;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
-...
-X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-certStore.Open(OpenFlags.ReadOnly);
-X509Certificate2Collection certCollection = certStore.Certificates.Find(
-                            X509FindType.FindByThumbprint,
-                            // Replace below with your certificate's thumbprint
-                            "E661583E8FABEF4C0BEF694CBC41C28FB81CD870",
-                            false);
-// Get the first cert with the thumbprint
-if (certCollection.Count > 0)
+string certThumbprint = "E661583E8FABEF4C0BEF694CBC41C28FB81CD870";
+bool validOnly = false;
+
+using (X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser))
 {
-    X509Certificate2 cert = certCollection[0];
-    // Use certificate
-    Console.WriteLine(cert.FriendlyName);
+  certStore.Open(OpenFlags.ReadOnly);
+
+  X509Certificate2Collection certCollection = certStore.Certificates.Find(
+                              X509FindType.FindByThumbprint,
+                              // Replace below with your certificate's thumbprint
+                              certThumbprint,
+                              validOnly);
+  // Get the first cert with the thumbprint
+  X509Certificate2 cert = certCollection.OfType<X509Certificate>().FirstOrDefault();
+
+  if (cert is null)
+      throw new Exception($"Certificate with thumbprint {certThumbprint} was not found");
+
+  // Use certificate
+  Console.WriteLine(cert.FriendlyName);
+  
+  // Consider to call Dispose() on the certificate after it's being used, avaliable in .NET 4.6 and later
 }
-certStore.Close();
-...
 ```
 
 V kódu Javy přistupujete k certifikátu z úložiště Windows-MY pomocí pole Předmět běžného názvu (viz [Certifikát veřejného klíče).](https://en.wikipedia.org/wiki/Public_key_certificate) Následující kód ukazuje, jak načíst certifikát soukromého klíče:
@@ -111,16 +118,17 @@ Názvy souborů certifikátu jsou kryptografické otisky certifikátu. Následuj
 
 ```csharp
 using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-var bytes = System.IO.File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate
 ```
 
-Postup načtení certifikátu SSL ze souboru v souboru Node.js, PHP, Pythonu, Javě nebo Ruby naleznete v dokumentaci k příslušnému jazyku nebo webové platformě.
+Postup načtení certifikátu TLS/SSL ze souboru v souboru Node.js, PHP, Pythonu, Javě nebo Ruby, naleznete v dokumentaci k příslušnému jazyku nebo webové platformě.
 
 ## <a name="load-certificate-from-file"></a>Načíst certifikát ze souboru
 
@@ -133,26 +141,27 @@ Pokud potřebujete načíst soubor certifikátu, který nahrajete ručně, je le
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
 >
-> Tento přístup k používání certifikátů ve vašem kódu využívá funkce SSL ve službě App Service, která vyžaduje, aby vaše aplikace byla na úrovni **Basic** nebo vyšší.
+> Tento přístup k používání certifikátů ve vašem kódu využívá funkce TLS ve službě App Service, která vyžaduje, aby vaše aplikace byla na úrovni **Basic** nebo vyšší.
 
 Následující příklad Jazyka C# načte veřejný certifikát z relativní cesty ve vaší aplikaci:
 
 ```csharp
 using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-var bytes = System.IO.File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate
 ```
 
-Postup načtení certifikátu SSL ze souboru v souboru Node.js, PHP, Pythonu, Javě nebo Ruby naleznete v dokumentaci k příslušnému jazyku nebo webové platformě.
+Postup načtení certifikátu TLS/SSL ze souboru v souboru Node.js, PHP, Pythonu, Javě nebo Ruby, naleznete v dokumentaci k příslušnému jazyku nebo webové platformě.
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-* [Zabezpečení vlastního názvu DNS pomocí vazby SSL](configure-ssl-bindings.md)
+* [Zabezpečení vlastního názvu DNS pomocí vazby TLS/SSL ve službě Azure App Service](configure-ssl-bindings.md)
 * [Vynucení HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Vynucení protokolu TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [Časté otázky: Certifikáty služby App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

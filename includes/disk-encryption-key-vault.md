@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77618499"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80813829"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Vytvořte trezor klíčů pomocí příkazu [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI, příkazu [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell, [portálu Azure](https://portal.azure.com)nebo [šablony Správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
-> Chcete-li zajistit, že tajné kódy šifrování nepřekračují místní hranice, Azure Disk Encryption vyžaduje trezor klíčů a virtuálnípočítače, které mají být umístěny společně ve stejné oblasti. Vytvořte a použijte trezor klíčů, který je ve stejné oblasti jako virtuální chod, který má být šifrován. 
+> Chcete-li zajistit, že tajné kódy šifrování nepřekračují místní hranice, Azure Disk Encryption vyžaduje trezor klíčů a virtuálnípočítače, které mají být umístěny ve stejné oblasti a stejné předplatné. Vytvořte a použijte trezor klíčů, který je ve stejné oblasti jako virtuální chod, který má být šifrován. 
 
 Každý trezor klíčů musí mít jedinečný název. V následujících příkladech nahraďte <> názvu trezoru s jedinečným klíčem.
 

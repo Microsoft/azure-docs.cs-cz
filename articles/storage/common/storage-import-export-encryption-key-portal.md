@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ca1327a547e8550e47ff37e4ba100fcbd2b7a79f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282456"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811436"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Použití klíčů spravovaných zákazníkem ve službě Azure Key Vault for Import/Export
 
@@ -103,7 +103,7 @@ Pokud se zobrazí chyby související s klíčem spravovaným zákazníkem, pou�
 | CmkErrorAccessOdvolán | Použitý klíč spravovaný zákazníkem, ale přístup ke klíči je nyní odvolán. Další informace naleznete v [tématu Povolení přístupu ke klíči](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Ano, zkontrolujte, zda: <ol><li>Trezor klíčů má stále MSI v zásadách přístupu.</li><li>Zásady přístupu poskytuje oprávnění k získání, obtékání, rozbalení.</li><li>Pokud je trezor klíčů ve virtuální síti za bránou firewall, zkontrolujte, jestli je **povolená možnost Povolit důvěryhodnou službu Microsoft.**</li></ol>                                                                                            |
 | CmkErrorZakázáno      | Použitý klíč spravovaný zákazníkem, ale klíč je zakázán. Další informace naleznete v [tématu Povolení klíče](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate).                                                                             | Ano, povolením klíčové verze     |
 | CmkErrorNotFound      | Použil klíč spravovaný zákazníkem, ale nemůže ho najít. <br>Pokud je klíč odstraněn a vymazán po období uchování, nelze klíč obnovit. Pokud jste klíč zálohovali, můžete klíč obnovit a tento problém vyřešit. | Ne, klíč byl odstraněn a také byl vymazán po období uchovávání. <br>Ano, pouze v případě, že zákazník má zálohovaný klíč a obnoví jej.  |
-| CmkErrorVaultnebyl nalezen | Použil klíč spravovaný zákazníkem, ale nemůže najít trezor klíčů přidružený ke klíči.<br>Pokud jste trezor klíčů odstranili, nemůžete klíč spravovaný zákazníkem obnovit.  Pokud jste migrovali trezor klíčů do jiného tenanta, přečtěte si informace [o změně ID klienta trezoru klíčů po přesunutí předplatného](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix). |   Ne, pokud zákazník odstranil trezor klíčů.<br> Ano, pokud trezor klíčů prošel migrací klienta, proveďte jednu z těchto částí: <ol><li>přesunout zpět trezor klíčů ke starému tenantovi.</li><li>set Identity = None a potom zpět na Identity = SystemAssigned, tato dehtí a znovu vytvoří identitu</li></ol><br>Poznámka: Případ migrace klienta je založen na omezeném porozumění, je třeba otestovat a potvrdit skutečné chování, může být upraven později. |
+| CmkErrorVaultnebyl nalezen | Použil klíč spravovaný zákazníkem, ale nemůže najít trezor klíčů přidružený ke klíči.<br>Pokud jste trezor klíčů odstranili, nemůžete klíč spravovaný zákazníkem obnovit.  Pokud jste migrovali trezor klíčů do jiného tenanta, přečtěte si informace [o změně ID klienta trezoru klíčů po přesunutí předplatného](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix). |   Ne, pokud zákazník odstranil trezor klíčů.<br> Ano, pokud trezor klíčů prošel migrací klienta, proveďte jednu z těchto částí: <ol><li>přesunout zpět trezor klíčů ke starému tenantovi.</li><li>set Identity = None a potom zpět na Identity = SystemAssigned, tato dehtí a znovu vytvoří identitu</li></ol>|
 
 ## <a name="next-steps"></a>Další kroky
 

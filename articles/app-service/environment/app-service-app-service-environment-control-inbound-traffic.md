@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687398"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804397"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Jak řídit příchozí provoz do prostředí služby App Service
 ## <a name="overview"></a>Přehled
 Prostředí služby App Service lze vytvořit **ve** virtuální síti Azure Resource Manager **nebo** ve [virtuální síti][virtualnetwork]modelu klasického nasazení .  Novou virtuální síť a novou podsíť lze definovat v době, kdy je vytvořeno prostředí služby App Service.  Případně prostředí služby App Service lze vytvořit v již existující virtuální síti a již existující podsíti.  Se změnou provedenou v červnu 2016 lze ases také nasadit do virtuálních sítí, které používají rozsahy veřejných adres nebo adresní prostory RFC1918 (tj. soukromé adresy).  Další podrobnosti o vytvoření prostředí služby App Service najdete v [tématu Jak vytvořit prostředí služby App Service][HowToCreateAnAppServiceEnvironment].
 
-Prostředí služby App Service musí být vždy vytvořeno v rámci podsítě, protože podsíť poskytuje hranici sítě, kterou lze použít k uzamčení příchozího provozu za upstreamovými zařízeními a službami, takže přenosy HTTP a HTTPS jsou přijímány pouze z konkrétních upstream IP adresy.
+Prostředí služby App Service musí být vždy vytvořeno v rámci podsítě, protože podsíť poskytuje hranici sítě, kterou lze použít k uzamčení příchozího provozu za upstream ovými zařízeními a službami, takže přenosy HTTP a HTTPS jsou přijímány pouze z konkrétních upstream IP adres.
 
 Příchozí a odchozí síťový provoz v podsíti je řízen pomocí [skupiny zabezpečení sítě][NetworkSecurityGroups]. Řízení příchozího provozu vyžaduje vytvoření pravidel zabezpečení sítě ve skupině zabezpečení sítě a následné přiřazení skupiny zabezpečení sítě k podsíti obsahující prostředí služby App Service.
 
@@ -31,10 +31,10 @@ Před uzamčením příchozího síťového provozu se skupinou zabezpečení s�
 
 Následuje seznam portů používaných prostředím služby App Service. Všechny porty jsou **TCP**, pokud není jasně uvedeno jinak:
 
-* 454: **Požadovaný port** používaný infrastrukturou Azure pro správu a údržbu prostředí služby App Service prostřednictvím ssl.  Neblokujte provoz na tomto portu.  Tento port je vždy vázán na veřejné VIP ase.
-* 455: **Požadovaný port** používaný infrastrukturou Azure pro správu a údržbu prostředí služby App Service prostřednictvím ssl.  Neblokujte provoz na tomto portu.  Tento port je vždy vázán na veřejné VIP ase.
+* 454: **Požadovaný port** používaný infrastrukturou Azure pro správu a údržbu prostředí služby App Service prostřednictvím tls.  Neblokujte provoz na tomto portu.  Tento port je vždy vázán na veřejné VIP ase.
+* 455: **Požadovaný port** používaný infrastrukturou Azure pro správu a údržbu prostředí služby App Service prostřednictvím tls.  Neblokujte provoz na tomto portu.  Tento port je vždy vázán na veřejné VIP ase.
 * 80: Výchozí port pro příchozí provoz HTTP do aplikací spuštěné v plánech služby App Service v prostředí služby App Service.  V ase s povolenou službou ILB je tento port vázán na adresu ILB služby ASE.
-* 443: Výchozí port pro příchozí ssl provoz na aplikace spuštěné v plánech služby App Service v prostředí služby App Service.  V ase s povolenou službou ILB je tento port vázán na adresu ILB služby ASE.
+* 443: Výchozí port pro příchozí přenos tls do aplikací spuštěných v plánech služby App Service v prostředí služby App Service.  V ase s povolenou službou ILB je tento port vázán na adresu ILB služby ASE.
 * 21: Řídící kanál pro FTP.  Tento port lze bezpečně zablokovat, pokud není používán ftp.  Ve službě ASE s povolenou službou ILB může být tento port vázán na adresu ILB pro službu ASE.
 * 990: Řídící kanál pro FTPS.  Tento port lze bezpečně zablokovat, pokud není používán FTPS.  Ve službě ASE s povolenou službou ILB může být tento port vázán na adresu ILB pro službu ASE.
 * 10001-10020: Datové kanály pro FTP.  Stejně jako u řídicího kanálu mohou být tyto porty bezpečně blokovány, pokud není používán FTP.  V ase s povolenou službou ILB může být tento port vázán na adresu ILB služby ASE.
@@ -62,7 +62,7 @@ Vytvoření skupiny zabezpečení sítě ukazuje následující:
 
 Po vytvoření skupiny zabezpečení sítě je do ní přidáno jedno nebo více pravidel zabezpečení sítě.  Vzhledem k tomu, že sada pravidel se může v průběhu času měnit, doporučujeme umístit schéma číslování používané pro priority pravidel, aby bylo snadné vkládat další pravidla v průběhu času.
 
-Následující příklad ukazuje pravidlo, které explicitně uděluje přístup k portům pro správu, které infrastruktura Azure potřebuje ke správě a údržbě prostředí služby App Service.  Všimněte si, že všechny toky provozu správy přes SSL a je zabezpečen klientských certifikátů, takže i když jsou porty otevřené, jsou nepřístupné žádné jiné entity než infrastruktury správy Azure.
+Následující příklad ukazuje pravidlo, které explicitně uděluje přístup k portům pro správu, které infrastruktura Azure potřebuje ke správě a údržbě prostředí služby App Service.  Všimněte si, že všechny toky provozu správy přes TLS a je zabezpečen klientských certifikátů, takže i když jsou porty otevřené, jsou nepřístupné žádné jiné entity než infrastruktury správy Azure.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 
@@ -103,7 +103,7 @@ Pro úplnost následující příklad ukazuje, jak odebrat a tedy zrušit přidr
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## <a name="special-considerations-for-explicit-ip-ssl"></a>Zvláštní aspekty explicitního protokolu IP-SSL
-Pokud je aplikace nakonfigurovaná s explicitní adresou IP-SSL (použitelnou *pouze* pro služby, které mají veřejnou virtuální ip adresu), namísto použití výchozí IP adresy prostředí služby App Service, přeteče přenosy HTTP i HTTPS do podsítě přes jinou sadu portů než porty 80 a 443.
+Pokud je aplikace nakonfigurovaná s explicitní adresou IP-SSL (použitelnou *pouze* pro služby ASS, které mají veřejnou virtuální ip adresu), namísto použití výchozí IP adresy prostředí služby App Service, přeteče přenosy HTTP i HTTPS do podsítě přes jinou sadu portů než porty 80 a 443.
 
 Jednotlivé dvojice portů používaných každou adresou IP-SSL najdete v uživatelském rozhraní portálu z okna ux podrobností prostředí služby App Service.  Vyberte možnost "Všechna nastavení" --> "IP adresy".  Okno "IP adresy" zobrazuje tabulku všech explicitně nakonfigurovaných adres IP-SSL pro prostředí služby App Service spolu se speciálním párem portů, který se používá ke směrování přenosů HTTP a HTTPS spojených s každou adresou IP-SSL.  Je to tento pár portů, který je třeba použít pro parametry DestinationPortRange při konfiguraci pravidel ve skupině zabezpečení sítě.
 

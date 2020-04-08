@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475383"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811765"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,7 +135,7 @@ Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, pak clu
 
 Další informace o vytvoření clusteru AKS pomocí azure cli nebo portálu najdete v následujících článcích:
 
-* [Vytvoření clusteru AKS (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Vytvoření clusteru AKS (rozhraní příkazového řádku)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Vytvoření clusteru AKS (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 Následující příklady ukazují, jak připojit existující cluster AKS k pracovnímu prostoru:
@@ -233,10 +233,28 @@ Informace o použití VS Code najdete [v tématu nasazení do AKS prostřednictv
 > Nasazení prostřednictvím kódu VS vyžaduje, aby byl cluster AKS předem vytvořen nebo připojen k vašemu pracovnímu prostoru.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Nasazení modelů do AKS pomocí řízeného zavádění (náhled)
-Analyzujte a povyšujte verze modelu řízeným způsobem pomocí koncových bodů. Nasaďte až 6 verzí za jeden koncový bod a nakonfigurujte % vyhodnocování provozu pro každou nasazenou verzi. Přehledy aplikací můžete povolit k zobrazení provozních metrik koncových bodů a nasazených verzí.
+
+Analyzujte a povyšujte verze modelu řízeným způsobem pomocí koncových bodů. Můžete nasadit až šest verzí za jeden koncový bod. Koncové body poskytují následující funkce:
+
+* Nakonfigurujte __procento vyhodnocování přenosů odeslaných do každého koncového bodu__. Například trasa 20 % provozu na koncový bod "test" a 80 % na "výrobu".
+
+    > [!NOTE]
+    > Pokud neúčtujete 100 % provozu, všechny zbývající procento jsou směrovány na __výchozí__ verzi koncového bodu. Pokud například nakonfigurujete verzi koncového bodu "test" tak, aby získala 10 % provozu, a "prod" pro 30 %, zbývajících 60 % je odesláno do výchozí verze koncového bodu.
+    >
+    > První vytvořená verze koncového bodu je automaticky nakonfigurována jako výchozí. To můžete změnit `is_default=True` nastavením při vytváření nebo aktualizaci verze koncového bodu.
+     
+* Označte verzi koncového bodu jako __ovládací prvek__ nebo __ošetření__. Například aktuální verze koncového bodu výroby může být ovládací prvek, zatímco potenciální nové modely jsou nasazeny jako verze zpracování. Po vyhodnocení výkonu verze léčby, pokud jeden překonává aktuální ovládací prvek, může být povýšen na novou výrobu/ovládací prvek.
+
+    > [!NOTE]
+    > Můžete mít pouze __jeden__ ovládací prvek. Můžete mít více ošetření.
+
+Přehledy aplikací můžete povolit k zobrazení provozních metrik koncových bodů a nasazených verzí.
 
 ### <a name="create-an-endpoint"></a>Vytvoření koncového bodu
-Jakmile budete připraveni k nasazení modelů, vytvořte koncový bod vyhodnocování a nasaďte svou první verzi. Následující krok ukazuje, jak nasadit a vytvořit koncový bod pomocí sady SDK. První nasazení bude definováno jako výchozí verze, což znamená, že nespecifikovaný percentil provozu ve všech verzích přejde na výchozí verzi.  
+Jakmile budete připraveni k nasazení modelů, vytvořte koncový bod vyhodnocování a nasaďte svou první verzi. Následující příklad ukazuje, jak nasadit a vytvořit koncový bod pomocí sady SDK. První nasazení bude definováno jako výchozí verze, což znamená, že nespecifikovaný percentil provozu ve všech verzích přejde na výchozí verzi.  
+
+> [!TIP]
+> V následujícím příkladu konfigurace nastaví verzi počátečního koncového bodu pro zpracování 20 % provozu. Vzhledem k tomu, že se jedná o první koncový bod, je to také výchozí verze. A protože nemáme žádné jiné verze pro ostatní 80% provozu, je směrován a výchozí stejně. Dokud nebudou nasazeny jiné verze, které berou procento provozu, tato verze efektivně obdrží 100 % provozu.
 
 ```python
 import azureml.core,
@@ -247,8 +265,8 @@ from azureml.core.compute import ComputeTarget
 compute = ComputeTarget(ws, 'myaks')
 namespace_name= endpointnamespace
 # define the endpoint and version name
-endpoint_name = "mynewendpoint",
-version_name= "versiona",
+endpoint_name = "mynewendpoint"
+version_name= "versiona"
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = True,
@@ -258,11 +276,16 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ # Wait for he process to complete
+ endpoint.wait_for_deployment(True)
  ```
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>Aktualizace a přidání verzí do koncového bodu
 
-Přidejte do koncového bodu další verzi a nakonfigurujte percentil vyhodnocování provozu, který bude na verzi. Existují dva typy verzí, kontrolní a léčebná verze. Může existovat více verze léčby, která vám pomůže porovnat s jednou verzí ovládacího prvku.
+Přidejte do koncového bodu další verzi a nakonfigurujte percentil vyhodnocování provozu, který bude na verzi. Existují dva typy verzí, kontrolní a léčebná verze. Může existovat více verzí léčby, které vám pomohou porovnat s jednou verzí ovládacího prvku.
+
+> [!TIP]
+> Druhá verze, vytvořená následujícím fragmentem kódu, přijímá 10 % provozu. První verze je nakonfigurována pro 20 %, takže pouze 30 % provozu je konfigurováno pro konkrétní verze. Zbývajících 70 % je odesláno do první verze koncového bodu, protože je také výchozí verze.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -275,9 +298,13 @@ endpoint.create_version(version_name = version_name_add,
                         tags = {'modelVersion':'b'},
                         description = "my second version",
                         traffic_percentile = 10)
+endpoint.wait_for_deployment(True)
 ```
 
-Aktualizujte existující verze nebo je odstraňte v koncovém bodě. Můžete změnit výchozí typ verze, typ ovládacího prvku a percentil provozu.
+Aktualizujte existující verze nebo je odstraňte v koncovém bodě. Můžete změnit výchozí typ verze, typ ovládacího prvku a percentil provozu. V následujícím příkladu druhá verze zvyšuje jeho provoz na 40 % a je nyní výchozí.
+
+> [!TIP]
+> Po následujícím fragmentu kódu je nyní výchozí druhá verze. Nyní je nakonfigurován pro 40 %, zatímco původní verze je stále nakonfigurována pro 20 %. To znamená, že 40 % provozu není započítáno podle konfigurace verzí. Zbývající provoz bude směrován na druhou verzi, protože je nyní výchozí. Účinně přijímá 80% provozu.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -288,7 +315,8 @@ endpoint.update_version(version_name=endpoint.versions["versionb"].name,
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
-
+# Wait for the process to complete before deleting
+endpoint.wait_for_deployment(true)
 # delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 

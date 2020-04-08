@@ -2,13 +2,13 @@
 title: Zdroje bez limitu počtu 800
 description: Uvádí typy prostředků Azure, které mohou mít více než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937939"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804771"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -26,7 +26,6 @@ U některých typů prostředků je třeba kontaktovat podporu, aby byl odebrán
 * Registrace
 * registrace/odběry zákazníků
 * registrace/produkty
-* ověřovací klávesy
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,6 +34,9 @@ U některých typů prostředků je třeba kontaktovat podporu, aby byl odebrán
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * Disky
+* Galerie
+* galerie/obrázky
+* galerie/obrázky/verze
 * images
 * snímky
 * virtualMachines
@@ -67,6 +69,11 @@ U některých typů prostředků je třeba kontaktovat podporu, aby byl odebrán
 * serverové skupiny
 * Servery
 * serveryv2
+* singleServers
+
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+
+* plány - Ve výchozím nastavení, omezena na 800 instancí. Tento limit lze zvýšit kontaktováním podpory.
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -90,7 +97,7 @@ U některých typů prostředků je třeba kontaktovat podporu, aby byl odebrán
 * softwareUpdateProfile
 * softwareAktualizace
 
-## <a name="microsoftinsights"></a>Microsoft.Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 * upozornění na metriky
 

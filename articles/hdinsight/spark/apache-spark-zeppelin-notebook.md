@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/18/2020
-ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: 3c1369e813ba6518f6cd4b27082020ae36a24c82
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598268"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811200"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark ve službě Azure HDInsight
 
-Clustery HDInsight Spark zahrnují notebooky [Apache Zeppelin,](https://zeppelin.apache.org/) které můžete použít ke spuštění úloh [Apache Spark.](https://spark.apache.org/) V tomto článku se dozvíte, jak používat poznámkový blok Zeppelin v clusteru HDInsight.
+HdInsight Spark clustery patří [Apache Zeppelin](https://zeppelin.apache.org/) notebooky. Pomocí poznámkových bloků můžete spouštět úlohy [Apache Spark.](https://spark.apache.org/) V tomto článku se dozvíte, jak používat poznámkový blok Zeppelin v clusteru HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schéma URI pro primární úložiště clusterů. To by `wasb://` bylo pro Azure `abfs://` Blob Storage, pro `adl://` Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je pro úložiště objektů BLOB povolen `wasbs://`zabezpečený přenos, identifikátor URI bude .  Další informace najdete [v tématu Require secure transfer in Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schéma URI pro primární úložiště clusterů. Schéma by `wasb://` bylo pro Azure `abfs://` Blob Storage, pro `adl://` Azure Data Lake Storage Gen2 nebo pro Azure Data Lake Storage Gen1. Pokud je pro úložiště objektů BLOB povolen `wasbs://`zabezpečený přenos, identifikátor URI bude .  Další informace najdete [v tématu Require secure transfer in Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Spuštění notebooku Apache Zeppelin
 
@@ -71,7 +71,7 @@ Clustery HDInsight Spark zahrnují notebooky [Apache Zeppelin,](https://zeppelin
     hvac.registerTempTable("hvac")
     ```
 
-    Stisknutím **kláves SHIFT + ENTER** nebo vyberte tlačítko **Přehrát** pro odstavec, abyste spouštěli výstřižek. Stav v pravém rohu odstavce by měl postupovat od READY, PENDING, Running to FINISHED. Výstup se zobrazí v dolní části stejného odstavce. Snímek obrazovky vypadá takto:
+    Stisknutím **kláves SHIFT + ENTER** nebo vyberte tlačítko **Přehrát** pro odstavec, abyste spouštěli výstřižek. Stav v pravém rohu odstavce by měl postupovat od READY, PENDING, Running to FINISHED. Výstup se zobrazí v dolní části stejného odstavce. Snímek obrazovky vypadá jako na následujícím obrázku:
 
     ![Vytvoření dočasné tabulky z nezpracovaných dat](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Vytvoření dočasné tabulky z nezpracovaných dat")
 
@@ -80,7 +80,7 @@ Clustery HDInsight Spark zahrnují notebooky [Apache Zeppelin,](https://zeppelin
     > [!NOTE]  
     > %spark2 interpret není podporován v poznámkových blocích Zeppelin ve všech verzích HDInsight a %sh interpret nebude podporován od HDInsight 4.0 a dále.
 
-5. Nyní můžete spustit Příkazy `hvac` Spark SQL v tabulce. Vložte následující dotaz do nového odstavce. Dotaz načte ID budovy a rozdíl mezi cílovou a skutečnou teplotou pro každou budovu k danému datu. Stiskněte **klávesu SHIFT + ENTER**.
+5. Nyní můžete spustit Příkazy `hvac` Spark SQL v tabulce. Vložte následující dotaz do nového odstavce. Dotaz načte ID budovy. Také rozdíl mezi cílem a skutečnými teplotami pro každou budovu k danému datu. Stiskněte **klávesu SHIFT + ENTER**.
 
     ```sql
     %sql
@@ -89,7 +89,7 @@ Clustery HDInsight Spark zahrnují notebooky [Apache Zeppelin,](https://zeppelin
 
     Příkaz **%sql** na začátku informuje poznámkový blok, aby používal interpret Livy Scala.
 
-6. Chcete-li zobrazení změnit, vyberte ikonu **Pruhový graf.**  **nastavení**, které se zobrazí po výběru **pruhového grafu**, umožňuje zvolit **klávesy**a **hodnoty**.  Následující snímek obrazovky ukazuje výstup.
+6. Chcete-li zobrazení změnit, vyberte ikonu **Pruhový graf.**  **po**výběru **pruhového grafu**, umožňuje zvolit **klávesy**a **hodnoty**.  Následující snímek obrazovky ukazuje výstup.
 
     ![Spuštění příkazu Spark SQL pomocí poznámkového bloku1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spuštění příkazu Spark SQL pomocí poznámkového bloku1")
 
@@ -113,7 +113,7 @@ Clustery HDInsight Spark zahrnují notebooky [Apache Zeppelin,](https://zeppelin
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Jak se používají externí balíčky s poznámkovým blokem?
 
-Notebook Zeppelin můžete nakonfigurovat v clusteru Apache Spark na HDInsightu tak, aby používal externí balíčky, které jsou součástí clusteru. V [úložišti Maven](https://search.maven.org/) můžete vyhledat úplný seznam dostupných balíčků. Můžete také získat seznam dostupných balíčků z jiných zdrojů. Úplný seznam balíčků, do kterých přispěla komunita, je například k dispozici na [sparku Packages](https://spark-packages.org/).
+Notebook Zeppelin v clusteru Apache Spark na HDInsightu může používat externí balíčky, které jsou součástí clusteru. Vyhledejte v [úložišti Maven](https://search.maven.org/) úplný seznam balíčků, které jsou k dispozici. Můžete také získat seznam dostupných balíčků z jiných zdrojů. Úplný seznam balíčků, do kterých přispěla komunita, je například k dispozici na [sparku Packages](https://spark-packages.org/).
 
 V tomto článku uvidíte, jak používat [balíček spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) s poznámkovým blokem Jupyter.
 
@@ -149,12 +149,13 @@ Notebooky Zeppelin jsou uloženy do hlavových uzlů clusteru. Pokud tedy cluste
 
 ![Stáhnout poznámkový blok](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Stažení poznámkového bloku")
 
-Tím uložíte poznámkový blok jako soubor JSON do umístění pro stahování.
+Tato akce uloží poznámkový blok jako soubor JSON v umístění pro stahování.
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Použití Shiro ke konfiguraci přístupu k protokolům Zeppelin Interprets v clusterech balíčků zabezpečení rozlehlé sítě (ESP)
-Jak je uvedeno `%sh` výše, interpret není podporován od HDInsight 4.0 a dále. Navíc vzhledem `%sh` k tomu, že interpret zavádí potenciální problémy se zabezpečením, jako je například přístupové karty pomocí příkazů prostředí, byl také odebrán z clusterů HDInsight 3.6 ESP. To `%sh` znamená, že interpret není k dispozici po kliknutí na **vytvořit novou poznámku** nebo v interpretu ui ve výchozím nastavení. 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Slouží `Shiro` ke konfiguraci přístupu k protokolům Zeppelin Interpretů v clusterech balíčků zabezpečení rozlehlé sítě (ESP)
 
-Uživatelé privilegované domény `Shiro.ini` mohou soubor využít k řízení přístupu k uživatelskému uživatelskému uživatelskému nastavení interpretu. Proto pouze tito uživatelé `%sh` mohou vytvářet nové `%sh` interprety a nastavit oprávnění pro každý nový interpret. Chcete-li řídit `shiro.ini` přístup pomocí souboru, použijte následující kroky:
+Jak bylo uvedeno `%sh` výše, interpret není podporován od HDInsight 4.0 a dále. Navíc vzhledem `%sh` k tomu, že interpret zavádí potenciální problémy se zabezpečením, jako je například přístupové karty pomocí příkazů prostředí, byl také odebrán z clusterů HDInsight 3.6 ESP. To `%sh` znamená, že interpret není k dispozici po kliknutí na **vytvořit novou poznámku** nebo v interpretu uvisu ve výchozím nastavení.
+
+Uživatelé privilegované domény `Shiro.ini` mohou soubor použít k řízení přístupu k uživatelskému uživatelskému uživatelskému nastavení interpretu. Pouze tito uživatelé `%sh` mohou vytvářet nové `%sh` interprety a nastavit oprávnění pro každého nového interpreta. Chcete-li řídit `shiro.ini` přístup pomocí souboru, použijte následující kroky:
 
 1. Definujte novou roli pomocí existujícího názvu skupiny domény. V následujícím příkladu `adminGroupName` je skupina privilegovaných uživatelů v AAD. V názvu skupiny nepoužívejte speciální znaky ani mezery. Znaky po `=` udělení oprávnění pro tuto roli. `*`znamená, že skupina má úplná oprávnění.
 
@@ -163,7 +164,7 @@ Uživatelé privilegované domény `Shiro.ini` mohou soubor využít k řízení
     adminGroupName = *
     ```
 
-2. Přidejte novou roli pro přístup k tlumočníkům Zeppelin. V následujícím příkladu mají `adminGroupName` všichni uživatelé přístup k tlumočníkům Zeppelin a jsou schopni vytvářet nové tlumočníky. Mezi závorky v oblasti `roles[]`můžete umístit více rolí oddělených čárkami. Poté mohou uživatelé, kteří mají potřebná oprávnění, přistupovat k tlumočníkům Zeppelin.
+2. Přidejte novou roli pro přístup k tlumočníkům Zeppelin. V následujícím příkladu mají `adminGroupName` všichni uživatelé přístup k tlumočníkům Zeppelin a mohou vytvářet nové tlumočníky. Mezi závorky v oblasti `roles[]`můžete umístit více rolí oddělených čárkami. Poté mohou uživatelé, kteří mají potřebná oprávnění, přistupovat k tlumočníkům Zeppelin.
 
     ```
     [urls]
@@ -172,9 +173,9 @@ Uživatelé privilegované domény `Shiro.ini` mohou soubor využít k řízení
 
 ## <a name="livy-session-management"></a>Livy session management
 
-Když spustíte první odstavec kódu v poznámkovém bloku Zeppelin, vytvoří se v clusteru HDInsight Spark nová relace Livy. Tato relace je sdílena mezi všemi poznámkovými bloky Zeppelin, které následně vytvoříte. Pokud z nějakého důvodu livy relace je zabit (restartování clusteru, a tak dále), nebudete moci spustit úlohy z notebooku Zeppelin.
+První odstavec kódu v poznámkovém bloku Zeppelin vytvoří novou relaci Livy ve vašem clusteru. Tato relace je sdílena mezi všemi poznámkovými bloky Zeppelin, které později vytvoříte. Pokud je relace Livy z nějakého důvodu zabita, úlohy nebudou spuštěny z notebooku Zeppelin.
 
-V takovém případě je nutné provést následující kroky, než můžete spustit úlohy z poznámkového bloku Zeppelin.  
+V takovém případě musíte provést následující kroky, než můžete začít spouštět úlohy z poznámkového bloku Zeppelin.  
 
 1. Restartujte interpreta Livy z notebooku Zeppelin. Chcete-li tak učinit, otevřete nastavení interpretu výběrem přihlášeného uživatelského jména v pravém horním rohu a vyberte **interpretovat**.
 
@@ -184,7 +185,7 @@ V takovém případě je nutné provést následující kroky, než můžete spu
 
     ![Restartujte interpreta Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Restartujte tlumočníka Zeppelin")
 
-3. Spusťte buňku kódu z existujícího notebooku Zeppelin. Tím se vytvoří nová relace Livy v clusteru HDInsight.
+3. Spusťte buňku kódu z existujícího notebooku Zeppelin. Tento kód vytvoří novou relaci Livy v clusteru HDInsight.
 
 ## <a name="general-information"></a>Obecné informace
 
@@ -206,7 +207,7 @@ Chcete-li ověřit službu z příkazového řádku, SSH do hlavního uzlu. Pře
 |---|---|
 |zeppelin-server|/usr/hdp/current/zeppelin-server/|
 |Protokoly serveru|/var/log/zeppelin|
-|Konfigurační interpret, Shiro, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf nebo /etc/zeppelin/conf|
+|Překladač `Shiro`konfigurace, , site.xml, log4j|/usr/hdp/current/zeppelin-server/conf nebo /etc/zeppelin/conf|
 |Adresář PID|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>Povolit protokolování ladění
@@ -227,7 +228,7 @@ Chcete-li ověřit službu z příkazového řádku, SSH do hlavního uzlu. Pře
 
 ### <a name="scenarios"></a>Scénáře
 
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Spark v HDInsightu pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s BI: Interaktivní analýza dat pomocí Spark v HDInsightu s nástroji BI](apache-spark-use-bi-tools.md)
 * [Apache Spark se strojovým učením: Použijte Spark v HDInsightu pro analýzu teploty budovy pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark s machine learningem: Využijte Spark v HDInsightu k předvídání výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webových stránek pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
