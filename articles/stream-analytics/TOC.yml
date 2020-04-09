@@ -39,6 +39,8 @@
       href: streaming-technologies.md
     - name: Volba nástroje pro vývoj úloh
       href: feature-comparison.md
+    - name: Vývoj v místním prostředí
+      href: develop-locally.md
     - name: Vstupní typy pro úlohu
       items:
         - name: Přehled vstupů

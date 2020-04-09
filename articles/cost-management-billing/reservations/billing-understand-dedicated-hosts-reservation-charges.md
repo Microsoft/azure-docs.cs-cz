@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 0f7c48c47e400c2db53b024267fbf9d9690ea404
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a39cd7aa2c15fedeaf69408d8c8ae8c6b0848fed
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204677"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677391"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Jak se na službu Azure Dedicated Host uplatňuje sleva za rezervaci Azure
 
@@ -21,7 +21,7 @@ Když si zakoupíte rezervovanou instanci služby Azure Dedicated Host, sleva za
 
 *Nevyužité slevy se nenahrazují*. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.
 
-Když vyhrazeného hostitele odstraníte, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny  *přijdete*.
+Když vyhrazeného hostitele odstraníte, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny *přijdete*.
 
 ## <a name="reservation-discount-for-dedicated-hosts"></a>Sleva za rezervaci pro službu Dedicated Host
 

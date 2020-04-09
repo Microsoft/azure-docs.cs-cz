@@ -62,6 +62,8 @@
           href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
     - name: Zdroje a prostředky
       items:
+        - name: Videa ke správě nákladů
+          href: 'https://www.youtube.com/c/AzureCostManagement'
         - name: Získávání dovedností pomocí Microsoft Learn
           href: /learn/browse/?products=azure-cost-management
         - name: Fórum pro názory na Cost Management

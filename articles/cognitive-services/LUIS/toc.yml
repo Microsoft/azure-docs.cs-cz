@@ -233,6 +233,24 @@
         - name: Omezení kontejnerů
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: Související služby
+      items:
+        - name: Azure Bot Service
+          href: 'https://dev.botframework.com/'
+        - name: 'Bot Builder 4.x SDK C#'
+          href: 'https://github.com/Microsoft/botbuilder-dotnet'
+        - name: QnA Maker
+          href: 'https://qnamaker.ai/'
+        - name: Rozhraní API pro zpracování řeči Bingu
+          href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+        - name: Rozhraní API pro kontrolu pravopisu Bingu
+          href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+        - name: Analýza textu
+          href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+        - name: Recognizers-Text
+          href: 'https://github.com/Microsoft/Recognizers-Text'
+        - name: Inteligentní veřejný terminál
+          href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: Referenční informace
   items:
     - name: Referenční informace pro vývojáře
@@ -370,24 +388,6 @@
       href: reference-pattern-syntax.md
     - name: Mínění
       href: luis-reference-prebuilt-sentiment.md
-- name: Související
-  items:
-    - name: Azure Bot Service
-      href: 'https://dev.botframework.com/'
-    - name: 'Bot Builder 4.x SDK C#'
-      href: 'https://github.com/Microsoft/botbuilder-dotnet'
-    - name: QnA Maker
-      href: 'https://qnamaker.ai/'
-    - name: Rozhraní API pro zpracování řeči Bingu
-      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
-    - name: Rozhraní API pro kontrolu pravopisu Bingu
-      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
-    - name: Analýza textu
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: Recognizers-Text
-      href: 'https://github.com/Microsoft/Recognizers-Text'
-    - name: Inteligentní veřejný terminál
-      href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: Zdroje a prostředky
   items:
     - name: Ukázky kódů
