@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436974"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886513"
 ---
 # <a name="buy-a-reservation"></a>Nákup rezervace
 
@@ -43,8 +43,6 @@ Při uplatňování slev za používání Azure zpracovává rezervace v tomto p
 1. Rezervace s rozsahem na jednu skupinu prostředků
 2. Rezervace s rozsahem na jedno předplatné
 3. Rezervace se sdíleným rozsahem
-
-Jedna skupina prostředků může získat slevy za rezervaci z více rezervací v závislosti na tom, jak vymezíte rozsahy vašich rezervací.
 
 Po zakoupení rezervace máte možnost rozsah aktualizovat. Provedete to tak, že přejdete k rezervaci, kliknete na **Konfigurace** a změníte rozsah této rezervace. Změna rozsahu rezervace není komerční transakcí. Období vaší rezervace se nezmění. Další informace o aktualizaci rozsahu najdete v tématu [Aktualizace rozsahu po zakoupení rezervace](manage-reserved-vm-instance.md#change-the-reservation-scope).
 
