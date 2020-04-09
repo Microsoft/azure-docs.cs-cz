@@ -3,24 +3,21 @@ title: Chráněné webové rozhraní API - přehled
 titleSuffix: Microsoft identity platform
 description: Zjistěte, jak vytvořit chráněné webové rozhraní API (přehled).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: abe4ecf77e7a65251830ff822b15f79291471202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9017fbde1a44bcdf39fa8730bed25141da19fd56
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773342"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882399"
 ---
 # <a name="scenario-protected-web-api"></a>Scénář: Chráněné webové rozhraní API
 
@@ -42,4 +39,4 @@ Zde jsou konkrétní informace, které potřebujete vědět k ochraně webových
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace aplikace](scenario-protected-web-api-app-registration.md)
+> [Registrace aplikací](scenario-protected-web-api-app-registration.md)

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065945"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985894"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v mediálních službách
 
@@ -112,8 +112,11 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 * Adresa URL marnosti
 
     Režim vanity upřednostňují velcí provozovatelé vysílání médií, kteří používají hardwarové kodéry vysílání a nechtějí při spuštění živé události překonfigurovat své kodéry. Chtějí prediktivní ingestiční adresu URL, která se v průběhu času nemění.
+    
+    > [!NOTE]
+    > Na webu Azure Portal se adresa URL marnosti nazývá *"Trvalá vstupní adresa URL".*
 
-    Chcete-li tento režim `vanityUrl` `true` určit, nastavte na `false`v době vytvoření (výchozí je ). Musíte také předat vlastní přístupový`LiveEventInput.accessToken`token ( ) v době vytvoření. Zadáte hodnotu tokenu, abyste se vyhnuli náhodnému tokenu v adrese URL. Přístupový token musí být platný řetězec GUID (s spojovníky nebo bez něj). Jakmile je režim nastaven, nelze jej aktualizovat.
+    Chcete-li zadat tento režim `vanityUrl` `true` v rozhraní API, `false`nastavte na v době vytvoření (výchozí je ). Musíte také předat vlastní přístupový`LiveEventInput.accessToken`token ( ) v době vytvoření. Zadáte hodnotu tokenu, abyste se vyhnuli náhodnému tokenu v adrese URL. Přístupový token musí být platný řetězec GUID (s spojovníky nebo bez něj). Jakmile je režim nastaven, nelze jej aktualizovat.
 
     Přístupový token musí být ve vašem datovém centru jedinečný. Pokud vaše aplikace potřebuje použít adresu URL marnosti, doporučujeme vždy vytvořit novou instanci IDENTIFIKÁTOR GUID pro přístupový token (namísto opakovaného použití existujícího identifikátoru GUID).
 

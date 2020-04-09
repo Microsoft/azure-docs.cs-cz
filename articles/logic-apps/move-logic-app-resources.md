@@ -5,25 +5,27 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605609"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878727"
 ---
-# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Přesunutí prostředků aplikace logiky do jiných předplatných Azure, skupin prostředků nebo oblastí
+# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Přesunutí prostředků aplikace logiky do jiných skupin prostředků, oblastí nebo předplatných Azure
 
-Chcete-li migrovat aplikaci logiky nebo související prostředky do jiného předplatného Azure, skupiny prostředků nebo oblasti, máte různé způsoby, jak tyto úkoly dokončit, jako je například portál Azure, Azure PowerShell, Azure CLI a REST API. Před přesunutím prostředků zkontrolujte tyto důležité informace: 
+Chcete-li migrovat aplikaci logiky nebo související prostředky do jiné skupiny prostředků Azure, oblasti nebo předplatného, máte různé způsoby, jak dokončit tyto úkoly, jako je například portál Azure, Azure PowerShell, Azure CLI a REST API. Před přesunutím prostředků zkontrolujte tyto důležité informace: 
 
 * Mezi skupinami prostředků Azure nebo předplatnými můžete přesunout jenom [konkrétní typy prostředků aplikace logiky.](../azure-resource-manager/management/move-support-resources.md#microsoftlogic)
 
 * Zkontrolujte [omezení](../logic-apps/logic-apps-limits-and-config.md) počtu prostředků aplikace logiky, které můžete mít ve vašem předplatném Azure a v každé oblasti Azure. Tato omezení ovlivňují, zda můžete přesunout konkrétní typy prostředků, když oblast zůstane stejná mezi předplatnými nebo skupinami prostředků. Například můžete mít jenom jeden účet integrace úrovně Free pro každou oblast Azure v každém předplatném Azure.
 
+* Když přesunete prostředky, Azure vytvoří nová ID prostředků. Takže se ujistěte, že místo toho použijete nová ID a aktualizujete všechny skripty nebo nástroje, které jsou přidruženy k přesunutým prostředkům.
+
 * Po migraci aplikací logiky mezi předplatnými, skupinami prostředků nebo oblastmi je nutné znovu vytvořit nebo znovu autorizovat všechna připojení, která vyžadují otevřené ověřování (OAuth).
 
-* Při každém přesunutí prostředků Azure vytvoří nová ID prostředků. Takže se ujistěte, že místo toho použijete nová ID a aktualizujete všechny skripty nebo nástroje, které jsou přidruženy k přesunutým prostředkům.
+* Prostředí [integrační služby (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) můžete přesunout pouze do jiné skupiny prostředků, která existuje ve stejné oblasti Azure nebo předplatné Azure. Službu ISE nelze přesunout do skupiny prostředků, která existuje v jiné oblasti Azure nebo předplatné azure. Po takovém přesunutí je také nutné aktualizovat všechny odkazy na službu ISE v pracovních postupech aplikace logiky, účtech integrace, připojení a tak dále.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +55,7 @@ Pokud chcete přesunout prostředek, jako je například aplikace logiky nebo ú
 
 ## <a name="move-resources-between-resource-groups"></a>Přesunutí zdrojů mezi skupinami zdrojů
 
-Pokud chcete přesunout prostředek, jako je například aplikace logiky nebo účet integrace, do jiné skupiny prostředků Azure, můžete použít portál Azure, Azure PowerShell, Azure CLI nebo REST API. Tyto kroky zahrnují portál Azure, který můžete použít, když oblast prostředků zůstane stejná. Další kroky a obecná příprava najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+Pokud chcete přesunout prostředek, jako je aplikace logiky, účet integrace nebo [prostředí integrační služby (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md), do jiné skupiny prostředků Azure, můžete použít portál Azure, Azure PowerShell, Azure CLI nebo REST API. Tyto kroky zahrnují portál Azure, který můžete použít, když oblast prostředků zůstane stejná. Další kroky a obecná příprava najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Před skutečně přesunutí prostředků mezi skupinami, můžete otestovat, zda můžete úspěšně přesunout prostředek do jiné skupiny. Další informace naleznete v [tématu Ověření přesunu](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move).
 

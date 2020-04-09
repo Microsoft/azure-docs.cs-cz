@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744210"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884828"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure Synapse Analytics (dříve SQL DW)
 
@@ -79,8 +79,6 @@ Distribuce představuje základní jednotku úložiště a zpracování paraleln
 Každý z 60 menších dotazů běží na jednom z distribuce dat. Každý výpočetní uzel spravuje jednu nebo více z 60 distribucí. Fond SQL s maximálnívýpočetní prostředky má jednu distribuci na výpočetní uzel. Fond SQL s minimálnívýpočetní prostředky má všechny distribuce na jednom výpočetním uzlu.  
 
 ## <a name="hash-distributed-tables"></a>Distribuované zatřiďovací tabulky (distribuce hodnot hash)
-
-Distribuovaná zatřiďovací tabulka (distribuce hodnot hash) může přinést nejvyšší výkon dotazů pro spojení a agregaci u velkých tabulek.
 
 Distribuovaná zatřiďovací tabulka (distribuce hodnot hash) může přinést nejvyšší výkon dotazů pro spojení a agregaci u velkých tabulek.
 

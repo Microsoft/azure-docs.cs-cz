@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
-ms.openlocfilehash: 0ab9297e772a3b75a077da1c2ae74e5058b2731f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657215"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879169"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Provádění pokročilých transformací JSON pomocí tekutých šablon v aplikacích Azure Logic Apps
 
@@ -33,7 +33,7 @@ Před provedením transformace Liquid v aplikaci logiky, musíte nejprve definov
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vytvoření tekuté šablony nebo mapy pro váš integrační účet
 
-1. V tomto příkladu vytvořte ukázkovou šablonu Liquid popsanou v tomto kroku. V šabloně Liquid můžete použít [tekuté filtry](https://shopify.github.io/liquid/basics/introduction/#filters), které používají konvence pojmenování [DotLiquid](https://dotliquidmarkup.org/) a C#.
+1. V tomto příkladu vytvořte ukázkovou šablonu Liquid popsanou v tomto kroku. V šabloně Liquid můžete použít [tekuté filtry](https://shopify.github.io/liquid/basics/introduction/#filters), které používají konvence pojmenování [DotLiquid](https://github.com/dotliquid/dotliquid) a C#.
 
    > [!NOTE]
    > Ujistěte se, že názvy filtrů používají v šabloně *velká a malá písmena.* V opačném případě nebudou filtry fungovat. Mapy mají také [omezení velikosti souboru](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits).

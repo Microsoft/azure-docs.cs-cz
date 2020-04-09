@@ -11,18 +11,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 101cfc9edce8f4df1ad2388c08a5bd9702dffe68
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806605"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878217"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
-Tento článek představuje funkce pro spouštění řešení Oracle pomocí infrastruktury Azure. Podívejte se také na podrobné úvody dostupných [ibi obrazů virtuálních virtuálních zařízení Oracle](oracle-vm-solutions.md) na Azure Marketplace a možnost i možnost i ve verzi Preview [pro propojení Azure s infrastrukturou Oracle Cloud Infrastructure (OCI).](oracle-oci-overview.md)
+Tento článek představuje funkce pro spouštění řešení Oracle pomocí infrastruktury Azure. Podívejte se také na podrobné úvody dostupných [ibi obrazů virtuálních počítačích Oracle](oracle-vm-solutions.md) na Azure Marketplace a možnost [propojit Azure s infrastrukturou Oracle Cloud Infrastructure (OCI).](oracle-oci-overview.md)
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Databáze Oracle o infrastruktuře Azure
 
@@ -58,7 +58,7 @@ Spouštět podnikové aplikace v Azure na podporovaných operačních systémech
 
 * Zálohujte databázi Oracle pomocí oracle rman a volitelně použijte [Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) k připojení [vysoce redudant Azure Blob Storage účet](https://docs.microsoft.com/azure/storage/common/storage-redundancy) a zapište své zálohy RMAN k němu pro větší odolnost.
 
-## <a name="integration-of-azure-with-oci-preview"></a>Integrace Azure s OCI (preview)
+## <a name="integration-of-azure-with-oci"></a>Integrace Azure s OCI
 
 Spouštět aplikace Oracle v infrastruktuře Azure, připojené k back-endovým databázím v infrastruktuře Oracle Cloud Infrastructure (OCI). Toto řešení využívá následující funkce: 
 
@@ -67,7 +67,10 @@ Spouštět aplikace Oracle v infrastruktuře Azure, připojené k back-endovým 
 
 ### <a name="deploy-oracle-applications-on-azure"></a>Nasazení aplikací Oracle v Azure
 
-Pomocí šablon Terraform můžete nastavit infrastrukturu Azure a nainstalovat oracle aplikace ověřené a podporované pro spuštění v konfiguraci napříč cloudy:
+Pomocí šablon Terraform můžete nastavit infrastrukturu Azure a nainstalovat aplikace Oracle. 
+
+> [!IMPORTANT]
+> Společnost Oracle bude tyto aplikace certifikovat tak, aby se v Azure spouštěla do května 2020 při používání řešení Propojení Azure / Oracle Cloud.
 
 * E-Business Suite
 * JD Edwards EnterpriseOne

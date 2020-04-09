@@ -2,24 +2,21 @@
 title: Získání tokenu ve webové aplikaci, která volá webová rozhraní API – platforma identit Microsoftu | Azure
 description: Zjistěte, jak získat token pro webovou aplikaci, která volá webová api
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: abf7d800eda376c21dfdd672032ddb65e27355be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 196d941c5c3b18b737f7a11c25ebbb9eab91be1e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76759070"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885034"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová api: Získání tokenu pro aplikaci
 

@@ -1,10 +1,9 @@
 ---
-title: Výběr oprávnění pro dané rozhraní API | Dokumenty společnosti Microsoft
+title: Výběr oprávnění pro dané rozhraní API
 description: Informace o tom, jak požadavky na oprávnění fungují pro klientské aplikace a aplikace prostředků pro aplikace, které vyvíjíte
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
@@ -12,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: cf28677e143b66a16b69c4363602537073f0be5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2735403ff02914213d68db27e2635e7329261f5e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76704234"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883886"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Jak vybrat oprávnění pro dané rozhraní API 
 

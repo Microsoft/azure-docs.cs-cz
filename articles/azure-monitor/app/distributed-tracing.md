@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294964"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892253"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
 
@@ -27,17 +27,17 @@ Azure Monitor také nabízí zobrazení [mapy aplikace,](https://docs.microsoft.
 
 ## <a name="how-to-enable-distributed-tracing"></a>Jak povolit distribuované trasování
 
-Povolení distribuovaného trasování napříč službami v aplikaci je stejně jednoduché jako přidání správné sady SDK nebo knihovny do každé služby na základě jazyka, ve které byla služba implementována.
+Povolení distribuovaného trasování napříč službami v aplikaci je stejně jednoduché jako přidání správného agenta, sady SDK nebo knihovny do každé služby na základě jazyka, ve které byla služba implementována.
 
-## <a name="enabling-via-application-insights-sdks"></a>Povolení pomocí sad SDK SDK s přehledy aplikací
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Povolení prostřednictvím application insights prostřednictvím automatické instrumentace nebo sad SDK
 
-Sady SDK Application Insights pro sady .NET, .NET Core, Java, Node.js a JavaScript podporují nativně distribuované trasování. Pokyny pro instalaci a konfiguraci jednotlivých sad Application Insights SDK jsou k dispozici níže:
+Agenti Application Insights a/nebo Sady SDK pro .NET, .NET Core, Java, Node.js a JavaScript podporují nativně distribuované trasování. Pokyny pro instalaci a konfiguraci jednotlivých sad Application Insights SDK jsou k dispozici níže:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [Javascript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
 Při instalaci a konfiguraci správné sady Application Insights SDK jsou informace o trasování automaticky shromažďovány pro oblíbené architektury, knihovny a technologie pomocí automatických kolektorů závislostí sady SDK. Úplný seznam podporovaných technologií je k dispozici v [dokumentaci k automatickému shromažďování závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).

@@ -4,12 +4,12 @@ description: Koncepty přístupu k datům a zabezpečení služby Azure Blockcha
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982230"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879594"
 ---
 # <a name="azure-blockchain-service-security"></a>Zabezpečení služby Azure Blockchain Service
 
@@ -25,9 +25,9 @@ Prostředky služby Azure Blockchain Service jsou izolované v privátní virtu�
 
 Uživatelská data se ukládají v úložišti Azure. Uživatelská data jsou šifrována v pohybu a v klidovém stavu z důvodu bezpečnosti a důvěrnosti. Další informace najdete v tématu: [Průvodce zabezpečením azure storage](../../storage/blobs/security-recommendations.md).
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-Transakce lze odesílat do uzlů blockchain prostřednictvím koncového bodu RPC. Klienti komunikují s transakčním uzlem pomocí reverzního proxy serveru, který zpracovává ověřování uživatelů a šifruje data přes protokol SSL.
+Transakce lze odesílat do uzlů blockchain prostřednictvím koncového bodu RPC. Klienti komunikují s transakčním uzlem pomocí reverzního proxy serveru, který zpracovává ověřování uživatelů a šifruje data přes TLS.
 
 ![Ověřovací diagram](./media/data-security/authentication.png)
 

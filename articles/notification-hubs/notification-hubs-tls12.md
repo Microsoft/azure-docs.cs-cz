@@ -5,27 +5,25 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 87309e20efd9d6f8bd1a659451e5a603e6b95bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908524"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885748"
 ---
 # <a name="transport-layer-security-tls"></a>Protokol TLS (Transport Layer Security)
 
-Chcete-li zajistit vyšší úroveň zabezpečení, centra oznámení zakáže podporu pro TLS verze 1.0 a 1.1 v dubnu 30, 2020. Tyto starší protokoly poskytují slabou kryptografii a jsou náchylné k útokům BEAST a POODLE. Aplikace nasazené do zařízení se systémem Android verze 5 nebo vyšší nebo iOS verze 5 nebo vyšší nejsou touto změnou ovlivněny, protože tyto operační systémy podporují TLS 1.2 a klient a server vyjedná nejvyšší vzájemně podporovanou verzi protokolu při připojení.
+Chcete-li zajistit vyšší úroveň zabezpečení, notification hubs zakáže podporu pro TLS verze 1.0 a 1.1 na 31 května 2020 (prodloužena od dubna 30, 2020). Tyto starší protokoly poskytují slabou kryptografii a jsou náchylné k útokům BEAST a POODLE. Aplikace nasazené do zařízení se systémem Android verze 5 nebo vyšší nebo iOS verze 5 nebo vyšší nejsou touto změnou ovlivněny, protože tyto operační systémy podporují Protokol TLS 1.2 a klient a server budou při připojení vyjednat nejvyšší vzájemně podporovanou verzi protokolu.
 
 Doporučujeme zkontrolovat všechny vaše aplikace, které používají Azure Notification Hubs, abyste zajistili, že používají nejpoužitelnější knihovny a balíčky TLS, které podporují TLS 1.2.
 

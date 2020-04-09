@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe3a63e119fed6825982b9de13bc78cb7da5415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481394"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877384"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce s existujícími místními proxy servery
 
@@ -27,6 +27,7 @@ Začneme tím, že se podíváme na tyto hlavní scénáře nasazení:
 
 * Nakonfigurujte konektory tak, aby obcovaly místní odchozí proxy servery.
 * Nakonfigurujte konektory tak, aby pro přístup k proxy aplikací Azure AD používaly odchozí proxy server.
+* Konfigurace pomocí proxy mezi konektorem a back-endovou aplikací.
 
 Další informace o tom, jak konektory fungují, [najdete v tématu Principy konektorů proxy aplikací Azure AD](application-proxy-connectors.md).
 
@@ -137,6 +138,23 @@ Konektor provádí odchozí připojení založená na TLS pomocí metody CONNECT
 #### <a name="tls-inspection"></a>Kontrola TLS
 
 Nepoužívejte kontrolu TLS pro provoz konektoru, protože způsobuje problémy pro provoz konektoru. Konektor používá certifikát k ověření služby Proxy aplikace a tento certifikát může být během kontroly TLS ztracen.
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Konfigurace pomocí proxy serveru mezi konektorem a aplikací back-end
+Použití předsunutí proxy pro komunikaci směrem k back-endové aplikaci může být zvláštní požadavek v některých prostředích.
+Chcete-li to toto povolit, postupujte podle následujících kroků:
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Krok 1: Přidání požadované hodnoty registru na server
+1. Chcete-li povolit použití výchozího proxy serveru, přidejte následující hodnotu registru (DWORD) `UseDefaultProxyForBackendRequests = 1` do klíče konfiguračního registru konektoru konektoru umístěného v poli "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector".
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Krok 2: Ruční konfigurace proxy serveru pomocí příkazu netsh
+1.  Povolte zásady skupiny Nastavení proxy serveru pro počítač. Tato možnost byla nalezena v: Konfigurace počítače\Zásady\Šablony pro správu\Součásti systému Windows\Internet Explorer. To je třeba nastavit, spíše než mít tuto zásadu nastavena na uživatele.
+2.  Spuštění `gpupdate /force` na serveru nebo restartování serveru, abyste zajistili, že použije aktualizované nastavení zásad skupiny.
+3.  Spusťte příkazový řádek se `control inetcpl.cpl`zvýšenými oprávněními a zadejte .
+4.  Nakonfigurujte požadované nastavení serveru proxy. 
+
+Tato nastavení, aby konektor použít stejný předsunutý proxy server pro komunikaci do Azure a back-endové aplikace. Pokud konektor ke komunikaci Azure nevyžaduje žádný server proxy pro předávání nebo jiný server proxy pro předávání, můžete to toto nastavení nastavit úpravou souboru ApplicationProxyConnectorService.exe.config, jak je popsáno v částech Obejít odchozí proxy servery nebo použít odchozí proxy server.
+
+Služba aktualizace konektoru bude také používat proxy počítače. Toto chování lze změnit úpravou souboru ApplicationProxyConnectorUpdaterService.exe.config.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Poradce při potížích s proxy konektory a problémy s připojením služby
 

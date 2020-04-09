@@ -3,12 +3,12 @@ title: Sledování delegovaných prostředků ve velkém měřítku
 description: Zjistěte, jak efektivně využívat protokoly azure monitoru škálovatelným způsobem napříč klienty zákazníků, které spravujete.
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 217df3c55ab54b6569bae8cacb338764ecb7125d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a600cec524c9f715ada9da09dea35f3baa98151
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77122893"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985197"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Sledování delegovaných prostředků ve velkém měřítku
 
@@ -28,7 +28,7 @@ Pracovní prostor Analýzy protokolů můžete vytvořit pomocí [portálu Azure
 
 Po vytvoření pracovních prostorů Analýzy protokolů můžete nasadit [zásady Azure](../../governance/policy/index.yml) napříč hierarchiemi zákazníků, aby se diagnostická data odesílala do příslušného pracovního prostoru v každém tenantovi. Přesné zásady, které nasadíte, se mohou lišit v závislosti na typech prostředků, které chcete sledovat.
 
-Další informace o vytváření zásad najdete [v tématu Výuka: Vytvoření a správa zásad pro vynucení dodržování předpisů](../../governance/policy/tutorials/create-and-manage.md). Tento [komunitní nástroj](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/azure-diagnostics-policy-generator) poskytuje skript, který vám pomůže vytvořit zásady pro sledování konkrétních typů prostředků, které zvolíte.
+Další informace o vytváření zásad najdete [v tématu Výuka: Vytvoření a správa zásad pro vynucení dodržování předpisů](../../governance/policy/tutorials/create-and-manage.md). Tento [komunitní nástroj](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/azure-diagnostics-policy-generator) poskytuje skript, který vám pomůže vytvořit zásady pro sledování konkrétních typů prostředků, které zvolíte.
 
 Až určíte, které zásady se mají nasadit, můžete [je nasadit do delegovaných předplatných ve velkém měřítku](policy-at-scale.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Charakteristiky interakce více klientů – Azure AD | Dokumenty společnosti Microsoft
-description: Spravujte klienty klienta Azure Active tak, že své klienty porozumíte jako plně nezávislým prostředkům.
+description: Principy klientů Služby Azure Active Directory jako plně nezávislých organizací
 services: active-tenant
 documentationcenter: ''
 author: curtand
@@ -9,45 +9,50 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 04/07/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562254"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878115"
 ---
-# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Zjistěte, jak spolupracuje více klientů Služby Azure AD
+# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Zjistěte, jak spolupracuje více organizací Služby Azure Active Directory
 
-Ve službě Azure Active Directory (Azure AD) je každý klient plně nezávislý prostředek: partner, který je logicky nezávislý na ostatních klientech, které spravujete. Neexistuje žádný vztah nadřazený podřízený mezi tenanty. Tato nezávislost mezi klienty zahrnuje nezávislost prostředků, nezávislost správy a nezávislost synchronizace.
+Ve službě Azure Active Directory (Azure AD) je každý klient plně nezávislá organizace: partner, který je logicky nezávislý na ostatních organizacích Azure AD, které spravujete. Tato nezávislost mezi organizacemi zahrnuje nezávislost zdrojů, administrativní nezávislost a nezávislost synchronizace. Neexistuje žádný vztah nadřazený podřízený mezi organizacemi.
 
 ## <a name="resource-independence"></a>Nezávislost zdrojů
-* Pokud vytvoříte nebo odstraníte prostředek v jednom klientovi, nemá žádný vliv na jakýkoli prostředek v jiném klientovi, s částečnou výjimkou externích uživatelů. 
-* Pokud používáte jeden z názvů domén s jedním klientem, nelze jej použít s žádným jiným klientem.
+
+* Pokud vytvoříte nebo odstraníte prostředek Azure AD v jedné organizaci, nemá žádný vliv na jakýkoli prostředek v jiné organizaci, s částečnou výjimkou externích uživatelů.
+* Pokud zaregistrujete jeden z názvů domén u jedné organizace, nemůže být použit jinou organizací.
 
 ## <a name="administrative-independence"></a>Správní nezávislost
-Pokud uživatel klienta contoso bez oprávnění správce vytvoří testovacího klienta Test, pak:
 
-* Ve výchozím nastavení je uživatel, který vytvoří klienta, přidán jako externí uživatel v tomto novém tenantovi a přiřazenroli globálního správce v tomto tenantovi.
-* Správci klienta Contoso nemají žádná přímá oprávnění správce k tenantovi Test, pokud jim správce testu tato oprávnění výslovně neudělí. Správci společnosti Contoso však mohou řídit přístup k klientovi Test, pokud řídí uživatelský účet, který vytvořil test.
-* Pokud přidáte nebo odeberete roli správce pro uživatele v jednom klientovi, změna nemá vliv na role správce, které má uživatel v jiném tenantovi.
+Pokud neadministrativní uživatel organizace Contoso vytvoří testovací organizaci Test, pak:
+
+* Ve výchozím nastavení je uživatel, který vytvoří organizaci, přidán jako externí uživatel v této nové organizaci a přiřazena role globálního správce v této organizaci.
+* Správci organizace Contoso nemají žádná přímá oprávnění správce k organizaci Test, pokud jim správce testu výslovně neudělí tato oprávnění. Správci společnosti Contoso však mohou řídit přístup k organizaci Test, pokud řídí uživatelský účet, který vytvořil test.
+* Pokud přidáte nebo odeberete roli Azure AD pro uživatele v jedné organizaci, změna nemá vliv na role, které je uživatel přiřazen v jiné organizaci Azure AD.
 
 ## <a name="synchronization-independence"></a>Nezávislost synchronizace
-Každý klient Azure AD můžete nakonfigurovat nezávisle tak, aby se data synchronizovala z jedné instance buď:
+
+Každou organizaci Azure AD můžete nakonfigurovat nezávisle tak, aby se data synchronizovala z jedné instance:
 
 * Nástroj Azure AD Connect pro synchronizaci dat s jednou doménovou strukturu služby AD.
-* Konektor klienta Azure Active pro Forefront Identity Manager pro synchronizaci dat s jedním nebo více místními doménovými strukturami a/nebo mimo zdroje dat Azure AD.
+* Konektor Azure Active Directory pro Forefront Identity Manager, k synchronizaci dat s jedním nebo více místních doménových struktur a nebo mimo Zdroje dat Azure AD.
 
-## <a name="add-an-azure-ad-tenant"></a>Přidání klienta Azure AD
-Pokud chcete přidat klienta Azure AD na webu Azure Portal, přihlaste se na [portál Azure pomocí](https://portal.azure.com) účtu, který je globálním správcem Azure AD, a na levé straně vyberte **Nový**.
+## <a name="add-an-azure-ad-organization"></a>Přidání organizace Azure AD
+
+Pokud chcete přidat organizaci Azure AD na webu Azure Portal, přihlaste se na [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem Azure AD, a vyberte **Nový**.
 
 > [!NOTE]
-> Na rozdíl od jiných prostředků Azure nejsou vaši klienti podřízenými prostředky předplatného Azure. Pokud vaše předplatné Azure zruší nebo vypršela platnost, můžete stále přistupovat k datům klienta pomocí Azure PowerShellu, rozhraní Microsoft Graph API nebo Centra pro správu Microsoft u 365. Můžete také [přidružit jiné předplatné s tenantem](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> Na rozdíl od jiných prostředků Azure, vaše organizace Azure AD nejsou podřízené prostředky předplatného Azure. Pokud vaše předplatné Azure zruší nebo vypršela platnost, můžete stále přistupovat k datům organizace Azure AD pomocí Azure PowerShellu, rozhraní Microsoft Graph API nebo Centra pro správu Microsoft u 365. K organizaci můžete také [přidružit jiné předplatné](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Další kroky
-Obecný přehled problémů s licencováním Azure AD a doporučených postupů najdete v tématu [Co je licencování klienta Azure Active?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).
+
+Důležité informace o licencování Azure AD a doporučené postupy najdete v tématu [Co je licencování Služby Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).

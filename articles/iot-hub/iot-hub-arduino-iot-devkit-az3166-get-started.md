@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235678"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878557"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub
 
@@ -82,7 +82,13 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     ```
 
    > [!NOTE]
-   > Pokud se zobrazí `device-identity`chyba spuštěna , nainstalujte [rozšíření Azure IOT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) pro další podrobnosti.
+   > Pokud se zobrazí `device-identity`chyba spuštěna , nainstalujte [rozšíření Azure IoT extension pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md).
+   > Spusťte následující příkaz a přidejte rozšíření Microsoft Azure IoT extension pro Azure CLI do instance Cloud Shellu. The IoT Extension adds commands that are specific to IoT Hub, IoT Edge, and IoT Device Provisioning Service (DPS) to Azure CLI.
+   > 
+   > ```azurecli-interactive
+   > az extension add --name azure-iot
+   >  ```
+   >
   
 1. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 

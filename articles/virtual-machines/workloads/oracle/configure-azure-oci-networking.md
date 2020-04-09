@@ -11,21 +11,26 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd0b8a50d25cd8d1a66a8eb98e54ec231aa2c62f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302045"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878710"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého propojení mezi Azure a infrastrukturou Oracle Cloud Infrastructure  
 
-Microsoft a Oracle nabízejí přímé propojení mezi Azure a Oracle Cloud Infrastructure (OCI) prostřednictvím [aplikací ExpressRoute](../../../expressroute/expressroute-introduction.md) a [FastConnect,](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)aby [vytvořily integrované prostředí s více cloudy](oracle-oci-overview.md) (preview) a nabízí přímé propojení mezi Azure a infrastrukturou Oracle Cloud Infrastructure (OCI). Prostřednictvím propojení ExpressRoute a FastConnect mohou zákazníci zaznamenat nízké latence, vysokou propustnost, soukromé přímé připojení mezi těmito dvěma cloudy.
+Pro vytvoření [integrovaného prostředí pro více cloudů](oracle-oci-overview.md)nabízejí společnosti Microsoft a Oracle přímé propojení mezi Azure a Oracle Cloud Infrastructure (OCI) prostřednictvím [aplikací ExpressRoute](../../../expressroute/expressroute-introduction.md) a [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm). Prostřednictvím propojení ExpressRoute a FastConnect mohou zákazníci zaznamenat nízké latence, vysokou propustnost, soukromé přímé připojení mezi těmito dvěma cloudy.
 
 > [!IMPORTANT]
-> Spojení mezi Microsoft Azure a OCI je ve fázi náhledu. Chcete-li vytvořit připojení s nízkou latencí mezi Azure a OCI, vaše předplatné Azure musí být nejprve povolena pro tuto funkci. Do náhledu se musíte zaregistrovat vyplněním tohoto krátkého [dotazníkového formuláře](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Tuto funkci nemůžete používat, dokud neobdržíte potvrzovací e-mail. Můžete se také obrátit na zástupce společnosti Microsoft, který bude povolen pro tuto předběžnou verzi. Přístup k možnosti náhledu závisí na dostupnosti a je omezen společností Microsoft podle vlastního uvážení. Dokončení průzkumu nezaručuje přístup. Tato předběžná verze je k dispozici bez smlouvy o úrovni služeb a neměla by být použita pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [doplňkových podmínkách použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pro Microsoft Azure Preview. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Společnost Oracle bude tyto aplikace certifikovat tak, aby se v Azure spouštěla do května 2020 při používání řešení Propojení Azure / Oracle Cloud.
+> * E-Business Suite
+> * JD Edwards EnterpriseOne
+> * Peoplesoft
+> * Maloobchodní aplikace Oracle
+> * Oracle Hyperion Financial Management
 
 Následující obrázek znázorňuje přehled na vysoké úrovni o propojení:
 
@@ -36,8 +41,6 @@ Následující obrázek znázorňuje přehled na vysoké úrovni o propojení:
 * Chcete-li vytvořit připojení mezi Azure a OCI, musíte mít aktivní předplatné Azure a aktivní nájem OCI.
 
 * Připojení je možné jenom v případě, že umístění partnerského vztahu Azure ExpressRoute je v blízkosti nebo ve stejném umístění partnerského vztahu jako OCI FastConnect. Viz [Dostupnost oblasti](oracle-oci-overview.md#region-availability).
-
-* Vaše předplatné Azure musí být povolené pro tuto funkci náhledu.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Konfigurace přímého připojení mezi technologiemi ExpressRoute a FastConnect
 
@@ -79,7 +82,7 @@ Následující obrázek znázorňuje přehled na vysoké úrovni o propojení:
 
 Po dokončení konfigurace sítě můžete ověřit platnost konfigurace kliknutím na **získat záznamy ARP** a **získat trasovací tabulku** pod okno soukromého partnerského vztahu ExpressRoute na webu Azure Portal.
 
-## <a name="automation"></a>Automatizace
+## <a name="automation"></a>Automation
 
 Společnost Microsoft vytvořila skripty Terraform, které umožňují automatické nasazení síťového propojení. Skripty Terraform je třeba ověřit pomocí Azure před spuštěním, protože vyžadují odpovídající oprávnění k předplatnému Azure. Ověřování lze provést pomocí [objektu zabezpečení služby Azure Active Directory](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) nebo pomocí rozhraní příkazového příkazu Azure. Další informace naleznete v [dokumentaci terraform](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html).
 

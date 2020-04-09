@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898576"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878387"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure Scheduler podporuje několik typů úloh: 
 
-* Úlohy HTTP včetně úloh HTTPS s podporou SSL pro případ, že máte koncový bod pro existující službu nebo úlohu
+* Úlohy HTTP, včetně úloh HTTPS, které podporují TLS, pokud máte koncový bod pro existující službu nebo pracovní vytížení
 * Úlohy fronty úložiště pro úlohy využívající fronty úložiště, jako je odesílání zpráv do front úložiště
 * Úlohy fronty služby Service Bus pro úlohy využívající fronty služby Service Bus
 * Úlohy tématu služby Service Bus pro úlohy využívající témata služby Service Bus
@@ -90,7 +90,7 @@ Azure Scheduler podporuje několik typů úloh:
 | [**Opakování**](#recurrence) | Ne | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
 | [**retryPolicy**](#retry-policy) | Ne | Podrobnosti o tom, jak často se má akce opakovat | 
 | [**Státu**](#state) | Ano | Podrobnosti o aktuálním stavu úlohy |
-| [**status**](#status) | Ano | Podrobnosti o aktuálním statusu úlohy, který řídí služba |
+| [**Stav**](#status) | Ano | Podrobnosti o aktuálním statusu úlohy, který řídí služba |
 ||||
 
 Tady je příklad, který ukazuje komplexní definici úlohy pro akci HTTP (podrobnější popis elementů najdete v dalších částech): 
@@ -308,7 +308,7 @@ Po spuštění úlohy vrací Scheduler informace o stavu úlohy prostřednictví
 * Počet selhání, pokud k nějakým došlo
 * Počet chyb, pokud k nějakým došlo
 
-Například:
+Příklad:
 
 ```json
 "status": {

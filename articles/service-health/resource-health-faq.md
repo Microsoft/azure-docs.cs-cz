@@ -3,12 +3,12 @@ title: Nejčastější dotazy týkající se stavu prostředků Azure
 description: Přehled stavu prostředků Azure
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912772"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985027"
 ---
 # <a name="azure-resource-health-faq"></a>Nejčastější dotazy týkající se stavu prostředků Azure
 Seznamte se s odpověďmi na běžné otázky týkající se stavu prostředků Azure.
@@ -37,7 +37,7 @@ Stav je nastaven na neznámý, když stav prostředku přestane přijímat infor
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Jak lze získat nápovědu pro prostředek, který není k dispozici?
 Můžete odeslat žádost o podporu z okna Stav prostředků. K otevření požadavku, když prostředek není k dispozici, protože události platformy nejsou k dispozici, nepotřebujete se společností Microsoft smlouvu o podpoře se společností Microsoft.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Rozlišuje stav prostředků mezi nedostupností podle problémů s platformou a něčím, co jsem udělal?
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Rozlišuje stav prostředků mezi nedostupností způsobenou problémy s platformou a něčím, co jsem udělal?
 Ano, pokud prostředek není k dispozici, stav prostředků identifikuje hlavní příčinu v jedné z těchto kategorií: 
 -   Akce iniciovaná uživatelem
 -   Plánovaná událost 

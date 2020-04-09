@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631433"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984006"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Co je IPv6 pro virtuální síť Azure?
 
@@ -73,7 +73,7 @@ IPv6 pro virtuální síť Azure je základní sada funkcí, která zákazníků
 
 ## <a name="limitations"></a>Omezení
 Aktuální verze Virtuální sítě IPv6 pro Azure má následující omezení:
-- IPv6 pro virtuální síť Azure je k dispozici ve všech globálních oblastech Azure Commercial pomocí všech metod nasazení.  Nasazení v cloudu vlády USA je dočasně omezeno na šablonu ARM (JSON), rozhraní příkazového řádku (CLI) a powershell.  Podpora IPv6 v cloudovém portálu vlády USA bude brzy dostupná.  
+- IPv6 pro virtuální síť Azure je k dispozici ve všech globálních oblastech Azure Commercial pomocí všech metod nasazení.  Nasazení v cloudu vlády USA je dočasně omezeno na šablonu ARM (JSON), rozhraní příkazového řádku (CLI) a powershell.  Podpora IPv6 na cloudovém portálu vlády USA bude brzy k dispozici.  
 - Brány ExpressRoute lze použít pro přenosy pouze s Protokolem IPv4 ve virtuální síti s povoleným protokolem IPv6.  Podpora provozu IPv6 je na našem plánu.   
 - Brány VPN nelze použít ve virtuální síti s povolenou technologií IPv6, přímo nebo v partnerě "UseRemoteGateway".
 - Platforma Azure (AKS atd.) nepodporuje komunikaci IPv6 pro kontejnery.  

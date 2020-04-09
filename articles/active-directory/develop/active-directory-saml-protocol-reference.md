@@ -1,10 +1,9 @@
 ---
-title: Jak Azure AD používá protokol SAML | Dokumenty společnosti Microsoft
+title: Jak Azure AD využívá protokol SAML
 description: Tento článek obsahuje přehled profilů SAML jednotného přihlášení a jednotného přihlášení ve službě Azure Active Directory.
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 88125cfc-45c1-448b-9903-a629d8f31b01
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -13,12 +12,12 @@ ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: dc7771f29fb5d00aedfe5162a98f5f0c14544a7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161167"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885646"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak Azure AD využívá protokol SAML
 

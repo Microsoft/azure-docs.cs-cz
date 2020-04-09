@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442160"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985588"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny Bulk Executor pro službu Azure Cosmos DB
  
@@ -51,4 +51,4 @@ Knihovna hromadného vykonavatele zajišťuje maximální využití propustnosti
 * Další informace naleznete v vyzkoušení ukázkových aplikací, které spotřebovávají knihovnu hromadných prováděcích modulů v [rozhraní .NET](bulk-executor-dot-net.md) a [Vja](bulk-executor-java.md).  
 * Podívejte se na informace hromadného vykonavatele sady SDK a poznámky k verzi v [rozhraní .NET](sql-api-sdk-bulk-executor-dot-net.md) a [Vja](sql-api-sdk-bulk-executor-java.md).
 * Knihovna hromadného prováděcího modulu je integrovaná do konektoru Cosmos DB Spark, abyste se dozvěděli další informace, přečtěte si článek [konektoru Azure Cosmos DB Spark.](spark-connector.md)  
-* Knihovna hromadného prováděcího modulu je také integrovaná do nové verze [konektoru Azure Cosmos DB](https://aka.ms/bulkexecutor-adf-v2) pro Azure Data Factory ke kopírování dat.
+* Knihovna hromadného prováděcího modulu je také integrovaná do nové verze [konektoru Azure Cosmos DB](../data-factory/connector-azure-cosmos-db.md) pro Azure Data Factory ke kopírování dat.

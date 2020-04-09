@@ -3,16 +3,16 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 580b7efd26d5729baf236b59452f63483c003e44
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366226"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981524"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
-Tento článek shrnuje pravidla pojmenování a omezení pro prostředky Azure. Doporučení týkající se pojmenování prostředků naleznete v [tématu Připraveno: Doporučené konvence pojmenování a označování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Tento článek shrnuje pravidla pojmenování a omezení pro prostředky Azure. Doporučení týkající se pojmenování prostředků naleznete v [tématu Doporučené konvence pojmenování a označování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 Názvy prostředků nerozlišují malá a velká písmena, pokud nejsou výslovně uvedeny ve sloupci platné znaky.
 

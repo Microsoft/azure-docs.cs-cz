@@ -5,7 +5,6 @@ description: Informace o vztahu mezi objekty hlavního nastavení aplikace a slu
 author: rwike77
 manager: CelesteDG
 services: active-directory
-ms.assetid: adfc0569-dc91-48fe-92c3-b5b4833703de
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -14,12 +13,12 @@ ms.date: 04/13/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 19085346fb5797245c9f71911f8178df0a1b742a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a636ff15da09bcf1891618d65270376f26fd3239
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263007"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885595"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
 

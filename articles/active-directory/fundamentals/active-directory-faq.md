@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063624"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875788"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy týkající se služby Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -27,16 +27,17 @@ Další informace najdete v tématu [Co je Azure Active Directory?](active-direc
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Přístup ke službě Azure a Azure Active Directory
-**Otázka: Proč se při pokusu o přístup ke službě Azure AD na webu Azure Portal zobrazí zpráva „Žádné předplatné nenalezeno“?**
+**Otázka: Proč se mi při pokusu o přístup k Azure AD na webu Azure Portal zobrazuje "Nebyla nalezena žádná předplatná"?**
 
-**Odpověď:** Pro přístup k webu Azure Portal potřebuje každý uživatel oprávnění s předplatným Azure. Pokud máte placené předplatné Office 365 nebo Azure [https://aka.ms/accessAAD](https://aka.ms/accessAAD) AD, přejděte na jednorázový krok aktivace. Jinak si budete muset vytvořit bezplatný [účet Azure](https://azure.microsoft.com/pricing/free-trial/) nebo placené předplatné.
+**Odpověď:** Pro přístup k webu Azure Portal potřebuje každý uživatel oprávnění s předplatným Azure. Pokud nemáte placené předplatné Office 365 nebo Azure AD, budete muset aktivovat bezplatný [účet Azure](https://azure.microsoft.com/free/
+) nebo placené předplatné.
 
 Další informace naleznete v tématu:
 
 * [Jak je předplatné Azure propojeno se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**Otázka: Jaký je vztah mezi službami Azure AD, Office 365 a Azure?**
+**Otázka: Jaký je vztah mezi Azure AD, Office 365 a Azure?**
 
 **Odpověď:** Azure AD poskytuje běžné funkce identity a přístupu ke všem webovým službám. Ať používáte službu Office 365, Microsoft Azure, Intune nebo další, již používáte službu Azure AD, kterou se aktivuje správa přihlašování a přístupu pro všechny tyto služby.
 
@@ -129,7 +130,7 @@ Pro uživatele Office 365 může váš správce resetovat heslo pomocí postupu 
 Pro účty Azure AD můžou správci resetovat hesla pomocí jedné z následujících metod:
 
 - [Resetování účtů na webu Azure Portal](active-directory-users-reset-password-azure-portal.md)
-- [Pomocí PowerShellu](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [Pomocí prostředí PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
 ---
@@ -138,9 +139,9 @@ Pro účty Azure AD můžou správci resetovat hesla pomocí jedné z následuj�
 
 Používáme složitější strategii pro uzamčení účtů.  Je založená na adrese IP požadavku a zadaných heslech. Doba trvání uzamčení se taky zvyšuje podle pravděpodobnosti, že se jedná o útoku.  
 
-**Otázka: Určitá (běžná) hesla se odmítají se zprávou, že toto heslo se použilo už příliš mnohokrát. Týká se to hesel použitých v aktuální službě Active Directory?**
+**Otázka: Některá (běžná) hesla jsou odmítnuta se zprávami "toto heslo bylo mnohokrát použito", týká se to hesel používaných v aktuálním aktivním adresáři?**
 
-To se vztahuje na hesla, která jsou častá globálně, například všechny varianty řetězců „Password“ a „123456“.
+To se týká hesel, které jsou globálně běžné, například všechny varianty "Heslo" a "123456".
 
 **Otázka: Budou všechny žádosti o přihlášení z podezřelých zdrojů (botnety, koncový bod tor) blokované v případě tenanta B2C, nebo to vyžaduje tenanta edice Basic nebo Premium?**
 
@@ -157,7 +158,7 @@ Máme bránu, která filtruje požadavky a nabízí určitou ochranu před botne
 ---
 **Otázka: Co mám dělat, když se aplikace, kterou potřebuji, nenachází na webu Azure AD Marketplace?**
 
-**Odpověď:** Se službou Azure AD Premium můžete přidávat a konfigurovat libovolné aplikace. V závislosti na funkcích aplikace a předvolbách můžete nakonfigurovat jednotné přihlašování a automatické zřizování.  
+**Odpověď:** Se službou Azure AD Premium můžete přidávat a konfigurovat libovolné aplikace. V závislosti na možnostech vaší aplikace a vašich předvolbách můžete nakonfigurovat sociální zabezpečení a automatizované zřizování.  
 
 Další informace naleznete v tématu:
 
@@ -188,7 +189,7 @@ Další informace naleznete v tématu:
 * [Jednotné přihlašování pro aplikace ve službě Azure AD](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**Otázka: Je možné přidat místní aplikace?**
+**Otázka: Můžu přidat aplikace, které spouštěji místně?**
 
 **Odpověď:** Proxy soubory aplikace služby Azure AD poskytují snadný a bezpečný přístup k místním webovým aplikacím podle vašeho výběru. Aplikace můžete používat stejným způsobem jako aplikace SaaS ve službě Azure AD. Není nutná síť VPN ani změna infrastruktury sítě.  
 
@@ -199,7 +200,7 @@ Další informace najdete v tématu [Jak poskytnout zabezpečený vzdálený př
 
 **A:** S Podmíněný přístup Azure AD můžete přiřadit jedinečné zásady přístupu pro každou aplikaci. V zásadách můžete požadovat vícefaktorové ověřování pokaždé, nebo když uživatelé nejsou připojeni k místní síti.  
 
-Další informace najdete v tématu [Zabezpečení přístupu k Office 365 a jiným aplikacím připojeným ke službě Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+Další informace najdete v tématu [Zabezpečení přístupu k Office 365 a jiným aplikacím připojeným ke službě Azure Active Directory](../conditional-access/overview.md).
 
 ---
 **Otázka: Co je automatické zřizování uživatelů pro aplikace SaaS?**
@@ -211,4 +212,4 @@ Další informace najdete v tématu [Automatizace zřizování uživatelů a jeh
 ---
 **Otázka: Je možné vytvořit zabezpečené připojení LDAP se službou Azure Active Directory?**
 
-**A:**  Ne. Azure AD nepodporuje protokol LDAP (LDAP) protokolu LDAP (LDAP) nebo secure LDAP přímo. Je však možné povolit instanci služby Azure AD Domain Services (Azure AD DS) v tenantovi Azure AD se správně nakonfigurovanými skupinami zabezpečení sítě prostřednictvím azure networkingu, aby bylo dosaženo připojení LDAP. Další informace naleznete v tématu https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**A:**  Ne. Azure AD nepodporuje protokol LDAP (LDAP) protokolu LDAP (LDAP) nebo secure LDAP přímo. Je však možné povolit instanci služby Azure AD Domain Services (Azure AD DS) v tenantovi Azure AD se správně nakonfigurovanými skupinami zabezpečení sítě prostřednictvím azure networkingu, aby bylo dosaženo připojení LDAP. Další informace naleznete v [tématu Konfigurace zabezpečeného protokolu LDAP pro spravovanou doménu služby Azure Active Directory Domain Services.](../../active-directory-domain-services/tutorial-configure-ldaps.md)

@@ -3,26 +3,22 @@ title: Aplikace s jedním a více klienty ve službě Azure AD
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o funkcích a rozdílech mezi aplikacemi s jedním klientem a více klienty ve službě Azure AD.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 38cb1222a64b1759528749caa15dfb1bb906cef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec59383f9ca2b71ec9f4b6df3ab2e24c6b52473b
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159909"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881361"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Nájem ve službě Azure Active Directory
 

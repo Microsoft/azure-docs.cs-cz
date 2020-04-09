@@ -2,25 +2,21 @@
 title: Registrační pole portálu Azure pro vlastní vyvinuté aplikace
 description: Pokyny pro registraci vlastní vyvinuté aplikace s Azure AD
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 36d74b9926639bb4ec49821a3d73b5d615016394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c44575ca43063388d5c65855542cf15700d2cb5a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702670"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883164"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registrační pole portálu Azure pro vlastní vyvinuté aplikace
 
@@ -60,7 +56,7 @@ Po vyplnění výše uvedených polí se aplikace zaregistruje na webu Azure Por
 | Nahrání nového loga | Můžete použít k nahrání loga pro vaši aplikaci. Logo musí být ve formátu .bmp, .jpg nebo PNG a velikost souboru by měla být menší než 100 kB. Rozměry obrazu by měly být 215 x 215 pixelů, s centrálními rozměry obrazu 94 x 94 pixelů.|
 | Adresa URL domovské stránky   | Toto je přihlašovací adresa URL zadaná během registrace aplikace.|
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 | Pole           | Popis        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

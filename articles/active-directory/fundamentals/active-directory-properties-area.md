@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897580"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876180"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí Služby Azure Active Directory
 Tento článek vysvětluje, jak může správce tenanta přidat informace o ochraně osobních údajů do tenanta Azure Directory (Azure AD) organizace prostřednictvím portálu Azure.
@@ -32,15 +32,15 @@ Informace o ochraně osobních údajů vaší organizace přidáte do oblasti **
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Přístup k oblasti Vlastnosti a přidání informací o ochraně osobních údajů
 
-1.  Přihlaste se k portálu Azure jako správce klienta.
+1.    Přihlaste se k portálu Azure jako správce klienta.
 
-2.  Na levém panelu vyberte **Azure Active Directory**a pak vyberte **Vlastnosti**.
+2.    Na levém panelu vyberte **Azure Active Directory**a pak vyberte **Vlastnosti**.
 
     Zobrazí se oblast **Vlastnosti.**
 
     ![Oblast Azure AD Properties zvýrazňující oblast informací o ochraně osobních údajů](media/active-directory-properties-area/properties-area.png)
 
-3.  Přidejte své informace o ochraně osobních údajů pro své zaměstnance:
+3.    Přidejte své informace o ochraně osobních údajů pro své zaměstnance:
 
     - **Technický kontakt.** Zadejte e-mailovou adresu osoby, kterou má osoba kontaktovat s žádostí o technickou podporu ve vaší organizaci.
     
@@ -53,8 +53,8 @@ Informace o ochraně osobních údajů vaší organizace přidáte do oblasti **
 
         ![B2B Spolupráce Oprávnění revize se zprávou](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  Vyberte **Uložit**.
+4.    Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
-- [Využití pozvánky ke spolupráci služby Azure Active Directory B2B](https://aka.ms/b2bredemption)
+- [Využití pozvánky ke spolupráci služby Azure Active Directory B2B](../b2b/redemption-experience.md)
 - [Přidání nebo změna informací o profilu uživatele ve službě Azure Active Directory](active-directory-users-profile-azure-portal.md)

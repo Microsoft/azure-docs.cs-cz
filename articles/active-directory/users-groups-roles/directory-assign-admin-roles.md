@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63e561ff1b976b3de993414607b694e621b1d536
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346950"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877911"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
 Pomocí služby Azure Active Directory (Azure AD) můžete určit omezené správce pro správu úloh identit v méně privilegovaných rolích. Správci mohou být přiřazeni k takovým účelům, jako je přidávání nebo změna uživatelů, přiřazování rolí pro správu, resetování uživatelských hesel, správa uživatelských licencí a správa názvů domén. Výchozí uživatelská oprávnění lze změnit jenom v uživatelských nastaveních ve službě Azure AD.
 
-## <a name="limit-the-use-of-global-administrator"></a>Omezení použití globálního správce
+## <a name="limit-use-of-global-administrator"></a>Omezit použití globálního správce
 
 Uživatelé, kteří jsou přiřazeni k roli globálního správce, můžou číst a upravovat všechna nastavení správy ve vaší organizaci Azure AD. Ve výchozím nastavení je osobě, která se zaregistruje k předplatnému Azure, přiřazena role globálního správce pro organizaci Azure AD. Role správce mohou delegovat pouze globální správci a správci privilegovaných rolí. Chcete-li snížit riziko pro vaši firmu, doporučujeme přiřadit tuto roli co nejméně lidí ve vaší organizaci.
 
@@ -70,7 +70,8 @@ Uživatelé v této roli mohou vytvářet registrace aplikací, pokud je nastave
 
 ### <a name="authentication-administrator"></a>[Správce ověřování](#authentication-administrator-permissions)
 
-Uživatelé v této roli mohou nastavit nebo obnovit pověření bez hesla, aktualizovat hesla, vyžadovat opětovnou registraci proti existujícím pověřením pro neheslo (například MFA nebo FIDO) a odvolat **zapamatovat si vícefaktorové ověřování na zařízení** (které vyzve k vícefaktorové ověřování při příštím přihlášení) uživatelů, kteří nejsou správci nebo mají přiřazeny pouze následující role:
+Role správce ověřování je aktuálně ve verzi Public Preview. Uživatelé s touto rolí mohou nastavit nebo obnovit pověření bez hesla a mohou aktualizovat hesla pro všechny uživatele. Správci ověřování mohou požadovat, aby se uživatelé znovu zaregistrovali podle existujících pověření bez hesla (například Vícefaktorové ověřování nebo FIDO) a odvolat **zapamatovat si vícefaktorové ověřování v zařízení**, což vyzve k vícefaktorové ověřování při příštím přihlášení uživatelů, kteří nejsou správci nebo mají přiřazeny pouze následující role:
+
 * Správce ověřování
 * Čtečky adresářů
 * Pozvaní hosté
@@ -78,7 +79,7 @@ Uživatelé v této roli mohou nastavit nebo obnovit pověření bez hesla, aktu
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžete změnit přihlašovací údaje pro uživatele, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i vně služby Azure Active Directory. Změna pověření uživatele může znamenat možnost převzít identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžete změnit přihlašovací údaje pro uživatele, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i vně služby Azure Active Directory. Změna pověření uživatele může znamenat možnost převzít identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Vlastníci aplikací a podnikových aplikací, kteří mohou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace mohou mít privilegovaná oprávnění ve službě Azure AD a jinde, která nejsou udělena správcům ověřování. Prostřednictvím této cesty může být správce ověřování schopen převzít identitu vlastníka aplikace a dále převzít identitu privilegované aplikace aktualizací pověření pro aplikaci.
 >- Vlastníci předplatného Azure, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -113,7 +114,7 @@ Uživatel může vytvářet a spravovat klíče zásad a tajné klíče pro šif
 
 ### <a name="b2c-ief-policy-administrator"></a>[Správce zásad B2C IEF](#b2c-ief-policy-administrator-permissions)
 
-Uživatelé v této roli mají možnost vytvářet, číst, aktualizovat a odstraňovat všechny vlastní zásady v Azure AD B2C a proto mají plnou kontrolu nad rozhraním identity experience framework v příslušném tenantovi Azure AD B2C. Úpravou zásad může tento uživatel vytvořit přímou federaci s externími poskytovateli identit, změnit schéma adresáře, změnit veškerý obsah orientovaný na uživatele (HTML, CSS, JavaScript), změnit požadavky na dokončení ověřování, vytvořit nové uživatele, odeslat uživatelská data do externích systémů včetně úplných migrací a upravovat všechny informace o uživateli včetně citlivých polí, jako jsou hesla a telefonní čísla. Naopak tato role nemůže změnit šifrovací klíče nebo upravit tajné klíče používané pro federaci v tenantovi.
+Uživatelé v této roli mají možnost vytvářet, číst, aktualizovat a odstraňovat všechny vlastní zásady v Azure AD B2C a proto mají plnou kontrolu nad rozhraním identity experience framework v příslušném tenantovi Azure AD B2C. Úpravami zásad může tento uživatel vytvořit přímou federaci s externími poskytovateli identit, změnit schéma adresáře, změnit veškerý obsah orientovaný na uživatele (HTML, CSS, JavaScript), změnit požadavky na dokončení ověřování, vytvořit nové uživatele, odeslat uživatelská data do externích systémů včetně úplných migrací a upravit všechny informace o uživateli včetně citlivých polí, jako jsou hesla a telefonní čísla. Naopak tato role nemůže změnit šifrovací klíče nebo upravit tajné klíče používané pro federaci v tenantovi.
 
 > [!IMPORTANT]
 > Správce zásad B2 IEF je vysoce citlivá role, která by měla být přidělena na velmi omezeném základě pro nájemníky ve výrobě.Aktivity těchto uživatelů by měly být pečlivě auditovány, zejména pro klienty ve výrobě.
@@ -139,7 +140,7 @@ Uživatelé v této roli můžete povolit, zakázat a odstranit zařízení ve s
 
 ### <a name="compliance-administrator"></a>[Správce dodržování předpisů](#compliance-administrator-permissions)
 
-Uživatelé s touto rolí mají oprávnění ke správě funkcí souvisejících s dodržováním předpisů v Centru dodržování předpisů Microsoftu 365, centru pro správu Microsoftu 365, Azure a Centru zabezpečení office 365 & compliance. Postupníci můžou taky vytvářet lístky podpory pro Azure a Microsoft 365. Další informace jsou k dispozici na [stránce Role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+Uživatelé s touto rolí mají oprávnění ke správě funkcí souvisejících s dodržováním předpisů v Centru dodržování předpisů Microsoftu 365, centru pro správu Microsoftu 365, Azure a Centru zabezpečení office 365 & compliance. Postupníci můžou taky spravovat všechny funkce v centru pro správu Exchange a Teams & centra pro správu Skypu pro firmy a vytvářet lístky podpory pro Azure a Microsoft 365. Další informace jsou k dispozici na [stránce Role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 V | Může dělat
 ----- | ----------
@@ -214,11 +215,11 @@ Uživatelé s touto rolí mají globální oprávnění v rámci služby Microso
 Tento správce spravuje federaci mezi klienty služby Azure Active Directory a externími poskytovateli identit.Pomocí této role mohou uživatelé přidávat nové zprostředkovatele identit a konfigurovat všechna dostupná nastavení (např. cesta ověřování, ID služby, přiřazené kontejnery klíčů).Tento uživatel může povolit klientovi důvěřovat ověřování od externích poskytovatelů identity.Výsledný dopad na prostředí koncových uživatelů závisí na typu klienta:
 
 * Tenanti Azure Active Directory pro zaměstnance a partnery: Přidání federace (například s Gmailem) bude mít okamžitě vliv na všechny pozvánky pro hosty, které ještě nebyly uplatněny. Viz [Přidání Google jako poskytovatele identity pro uživatele typu Host B2B](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
-* Tenantové Služby Azure Active Directory B2C: Přidání federace (například s Facebookem nebo s jinou organizací Azure AD) nemá okamžitý dopad na toky koncových uživatelů, dokud se poskytovatel identity nepřidá jako možnost v toku uživatele (označovaný také jako předdefinovaný politiky). Příklad [najdete v tématu Konfigurace účtu Microsoft jako poskytovatele identity.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)Chcete-li změnit toky uživatelů, je vyžadována omezená role "Správce toku uživatelů B2C".
+* Tenantové Služby Azure Active Directory B2C: Přidání federace (například s Facebookem nebo s jinou organizací Azure AD) nemá okamžitý dopad na toky koncových uživatelů, dokud se poskytovatel identity nepřidá jako možnost v toku uživatele (označované také jako předdefinované zásady). Příklad [najdete v tématu Konfigurace účtu Microsoft jako poskytovatele identity.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)Chcete-li změnit toky uživatelů, je vyžadována omezená role "Správce toku uživatelů B2C".
 
 ### <a name="global-administrator--company-administrator"></a>[Globální správce / správce společnosti](#company-administrator-permissions)
 
-Uživatelé s touto rolí mají přístup ke všem funkcím správy ve službě Azure Active Directory a ke službám, které používají identity Služby Azure Active Directory, jako je Centrum zabezpečení Microsoft 365, Centrum dodržování předpisů Microsoft 365, Exchange Online, SharePoint Online a Online Skype pro firmy. Osoba, která se zaregistruje do klienta Služby Azure Active Directory, se stane globálním správcem. Ve vaší společnosti může být více než jeden globální správce. Globální správci můžou resetovat heslo kteréhokoliv uživatele a všech ostatních správců.
+Uživatelé s touto rolí mají přístup ke všem funkcím správy ve službě Azure Active Directory a ke službám, které používají identity Služby Azure Active Directory, jako je Centrum zabezpečení Microsoft 365, Centrum dodržování předpisů Microsoft 365, Exchange Online, SharePoint Online a Skype pro firmy online. Osoba, která se zaregistruje do klienta Služby Azure Active Directory, se stane globálním správcem. Ve vaší společnosti může být více než jeden globální správce. Globální správci můžou resetovat heslo kteréhokoliv uživatele a všech ostatních správců.
 
 > [!NOTE]
 > V rozhraní Microsoft Graph API a Prostředí Azure AD PowerShell je tato role označena jako "Správce společnosti". Je to "globální správce" na [webu Azure Portal](https://portal.azure.com).
@@ -264,7 +265,7 @@ Uživatelé s touto rolí mohou měnit hesla, zneplatnit obnovovací tokeny, spr
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžete změnit hesla pro uživatele, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfigurace uvnitř i vně služby Azure Active Directory. Změna hesla uživatele může znamenat možnost převzít identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžete změnit hesla pro uživatele, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfigurace uvnitř i vně služby Azure Active Directory. Změna hesla uživatele může znamenat možnost převzít identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Vlastníci aplikací a podnikových aplikací, kteří mohou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace mohou mít privilegovaná oprávnění ve službě Azure AD a jinde, která nejsou udělena správcům helpdesku. Prostřednictvím této cesty může být správce technické podpory schopen převzít identitu vlastníka aplikace a dále převzít identitu privilegované aplikace aktualizací pověření pro aplikaci.
 >- Vlastníci předplatného Azure, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -451,7 +452,7 @@ Uživatelé s touto rolí mohou vytvářet uživatele a spravovat všechny aspek
 |Pouze u uživatelů, kteří nejsou správci nebo v některé z následujících omezených rolí správce:<ul><li>Čtečky adresářů<li>Pozvaní hosté<li>Správce technické podpory<li>Čtečka Centra zpráv<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranit a obnovit</p><p>Zakázat a povolit</p><p>Zneplatnit obnovovací tokeny</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního uživatelského jména</p><p>Resetování hesla</p><p>Aktualizovat (FIDO) klíče zařízení</p>|
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžete změnit hesla pro uživatele, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfigurace uvnitř i vně služby Azure Active Directory. Změna hesla uživatele může znamenat možnost převzít identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžete změnit hesla pro uživatele, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfigurace uvnitř i vně služby Azure Active Directory. Změna hesla uživatele může znamenat možnost převzít identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Vlastníci aplikací a podnikových aplikací, kteří mohou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace mohou mít privilegovaná oprávnění ve službě Azure AD a jinde, která nejsou udělena správcům uživatelů. Prostřednictvím této cesty může správce uživatele převzít identitu vlastníka aplikace a dále převzít identitu privilegované aplikace aktualizací pověření pro aplikaci.
 >- Vlastníci předplatného Azure, kteří mohou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -764,7 +765,10 @@ Můžete číst a spravovat konfigurace dodržování předpisů a sestavy ve sl
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti všech prostředků na portálu microsoft.office365.webPortal. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Správa všech aspektů Správce dodržování předpisů Office 365 |
+| microsoft.office365.exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Vytvořte a odstraňte všechny prostředky a přečtěte si a aktualizujte standardní vlastnosti v aplikaci Microsoft.office365.sharepoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Spravujte všechny aspekty Online Skypu pro firmy. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Oprávnění správce dat dodržování předpisů
@@ -784,7 +788,10 @@ Vytváří a spravuje obsah dodržování předpisů.
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti všech prostředků na portálu microsoft.office365.webPortal. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Správa všech aspektů Správce dodržování předpisů Office 365 |
+| microsoft.office365.exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte stav služby Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Vytvořte a odstraňte všechny prostředky a přečtěte si a aktualizujte standardní vlastnosti v aplikaci Microsoft.office365.sharepoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Spravujte všechny aspekty Online Skypu pro firmy. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Office 365. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Oprávnění správce podmíněného přístupu
@@ -1755,8 +1762,31 @@ Následující role by neměly být použity. Byly zastaralé a budou odebrány 
 * Správce poštovní schránky
 * Připojení k zařízení na pracovišti
 
+## <a name="roles-not-shown-in-the-portal"></a>Role, které nejsou zobrazeny na portálu
+
+Ne každá role vrácená powershellem nebo rozhraním MS Graph API je viditelná na webu Azure Portal. Následující tabulka uspořádá tyto rozdíly.
+
+Název rozhraní API | Název portálu Azure | Poznámky
+-------- | ------------------- | -------------
+Správce společnosti | Globální správce | [Název změněn pro lepší přehlednost](directory-assign-admin-roles.md#role-template-ids)
+Správce služby CRM | Správce dynamics 365 | [Odráží aktuální značku produktu](directory-assign-admin-roles.md#role-template-ids)
+Připojení k zařízení | Zastaralé | [Dokumentace zastaralá role](directory-assign-admin-roles.md#deprecated-roles)
+Správci zařízení | Zastaralé | [Dokumentace zastaralá role](directory-assign-admin-roles.md#deprecated-roles)
+Uživatelé zařízení | Zastaralé | [Dokumentace zastaralá role](directory-assign-admin-roles.md#deprecated-roles)
+Účty synchronizace adresářů | Nezobrazuje se, protože by neměl být používán | [Dokumentace k účtům synchronizace adresářů](directory-assign-admin-roles.md#directory-synchronization-accounts)
+Adresář spisovatelů | Nezobrazuje se, protože by neměl být používán | [Dokumentace k autorům adresářů](directory-assign-admin-roles.md#directory-writers)
+Uživatel typu host | Není zobrazeno, protože jej nelze použít  | Není k dispozici
+Správce služby Lync | Správce Skypu pro firmy | [Odráží aktuální značku produktu](directory-assign-admin-roles.md#role-template-ids)
+Podpora partnerské úrovně 1 | Nezobrazuje se, protože by neměl být používán | [Dokumentace podpory Tier1 partnera](directory-assign-admin-roles.md#partner-tier1-support)
+Podpora partnerské úrovně 2 | Nezobrazuje se, protože by neměl být používán | [Dokumentace podpory Tier2 partnera](directory-assign-admin-roles.md#partner-tier2-support)
+Správce tiskárny | Probíhající práce | Probíhající práce
+Technik tiskárny | Probíhající práce | Probíhající práce
+Omezený uživatel typu Host | Není zobrazeno, protože jej nelze použít | Není k dispozici
+Uživatel | Není zobrazeno, protože jej nelze použít | Není k dispozici
+Připojení k zařízení na pracovišti | Zastaralé | [Dokumentace zastaralá role](directory-assign-admin-roles.md#deprecated-roles)
+
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v tématu [Správa přístupu pomocí RBAC a portálu Azure.](../../role-based-access-control/role-assignments-portal.md)
-* Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v tématu [Správa přístupu pomocí rolí Azure (Azure RBAC).](../../role-based-access-control/role-assignments-portal.md)
+* Další informace o tom, jak se v Microsoft Azure řídí přístup k prostředkům, najdete [v tématu Principy různých rolí.](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Další informace o vztahu Azure Active Directory k předplatnému Azure najdete v tématu [Jak je předplatné Azure propojeno se službou Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md).

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4f4bd6eaa07907dd672abe068b515b5127adac9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80068012"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886819"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 nejčastější dotazy
 
@@ -166,6 +166,112 @@ Další informace naleznete v [tématu Migrace do služby Media Services v3](med
 ### <a name="where-did-client-side-storage-encryption-go"></a>Kam se událo šifrování úložiště na straně klienta?
 
 Nyní se doporučuje použít šifrování úložiště na straně serveru (které je ve výchozím nastavení zapnuto). Další informace najdete v tématu [Šifrování služby Úložiště Azure pro data v klidovém stavu](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+
+## <a name="offline-streaming"></a>Offline streamování
+
+### <a name="fairplay-streaming-for-ios"></a>Streamování fairplay pro iOS
+
+Následující nejčastější dotazy poskytují pomoc při odstraňování problémů s offline streamováním FairPlay pro iOS:
+
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Proč se v režimu offline přehrává pouze zvuk, ale ne video?
+
+Toto chování se zdá být záměrné ukázkové aplikace. Pokud je v režimu offline k dispozici alternativní zvuková stopa (což je případ HLS), iOS 10 i iOS 11 jsou ve výchozím nastavení na alternativní zvukovou stopu. Chcete-li kompenzovat toto chování pro režim offline FPS, odeberte alternativní zvukovou stopu z datového proudu. Chcete-li to provést ve službě Media Services, přidejte filtr dynamického manifestu "audio-only=false". Jinými slovy, adresa URL HLS končí .ism/manifest(format=m3u8-aapl,audio-only=false). 
+
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Proč se po přidání zvuku=false stále přehrává zvuk pouze bez videa v režimu offline?
+
+V závislosti na návrhu klíče mezipaměti sítě pro doručování obsahu (CDN) může být obsah uložen do mezipaměti. Vyčistěte mezipaměť.
+
+#### <a name="is-fps-offline-mode-also-supported-on-ios-11-in-addition-to-ios-10"></a>Je režim offline FPS podporován také v systému iOS 11 kromě iOS 10?
+
+Ano. Režim offline FPS je podporován pro iOS 10 a iOS 11.
+
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Proč nemohu najít dokument "Offline přehrávání s FairPlay Streaming a HTTP Live Streaming" v FPS Server SDK?
+
+Od doby, kdy byla sada FPS Server SDK verze 4, byl tento dokument sloučen do průvodce programováním streamování hry FairPlay.
+
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Co je stahovaná/offline struktura souborů na zařízeních se systémem iOS?
+
+Struktura stažených souborů na iOS zařízení vypadá jako na následujícím snímku obrazovky. Složka `_keys` ukládá stažené licence FPS s jedním souborem úložiště pro každého hostitele licenční služby. Složka `.movpkg` ukládá zvukový obsah a videoobsah. První složka s názvem, který končí pomlčkou následovanou číselnou, obsahuje video obsah. Číselná hodnota je PeakBandwidth interpretací videa. Druhá složka s názvem, který končí pomlčkou následovanou 0, obsahuje zvukový obsah. Třetí složka s názvem "Data" obsahuje hlavní seznam skladeb obsahu FPS. Nakonec soubor boot.xml poskytuje úplný `.movpkg` popis obsahu složky. 
+
+![Offline ukázková struktura souborů aplikace FairPlay iOS](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+
+Ukázkový soubor boot.xml:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+  <Version>1.0</Version>
+  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
+  <Streams>
+    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+  </Streams>
+  <MasterPlaylist>
+    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
+  </MasterPlaylist>
+  <DataItems Directory="Data">
+    <DataItem>
+      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
+      <Category>Playlist</Category>
+      <Name>master.m3u8</Name>
+      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
+      <Role>Master</Role>
+    </DataItem>
+  </DataItems>
+</HLSMoviePackage>
+```
+
+### <a name="widevine-streaming-for-android"></a>Widevine streaming pro Android
+
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-key"></a>Jak mohu dodat trvalé licence (offline povoleno) pro některé klienty / uživatele a netrvalé licence (offline zakázáno) pro ostatní? Musím duplikovat obsah a používat samostatný klíč obsahu?
+
+Vzhledem k tomu, Media Services v3 umožňuje Asset mít více StreamingLocators. Můžete mít
+
+* One ContentKeyPolicy with license_type = "persistent", ContentKeyPolicyRestriction with claim on "persistent" a its StreamingLocator;
+* Další ContentKeyPolicy s license_type ="nonpersistent", ContentKeyPolicyRestriction s deklarací "nonpersistent" a jeho StreamingLocator.
+* Dva StreamingLocators mají různé ContentKey.
+
+V závislosti na obchodní logiku vlastní STS, různé deklarace identity jsou vydány v tokenu JWT. S tokenem lze získat pouze odpovídající licenci a hrát pouze odpovídající ADRESU URL.
+
+#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Jaké je mapování mezi úrovněmi zabezpečení DRM Widevine a Media Services?
+
+Google "Widevine DRM Architektura Přehled" definuje tři různé úrovně zabezpečení. V [dokumentaci k Mediální službě Azure v šabloně licence Widevine](widevine-license-template-overview.md)je však uvedeno pět různých úrovní zabezpečení. Tato část vysvětluje, jak se mapují úrovně zabezpečení.
+
+Google "Widevine DRM Architektura Recenze" doc definuje následující tři úrovně zabezpečení:
+
+* Úroveň zabezpečení 1: Veškeré zpracování obsahu, kryptografie a řízení se provádějí v prostředí trusted execution environment (TEE). V některých modelech implementace může být zpracování zabezpečení prováděno v různých čipech.
+* Úroveň zabezpečení 2: Provádí kryptografii (ale ne zpracování videa) v rámci TEE: dešifrované vyrovnávací paměti jsou vráceny do domény aplikace a zpracovány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 jsou však kryptografické informace stále zpracovávány pouze v rámci TEE.
+* Úroveň zabezpečení 3 nemá v zařízení TEE. Mohou být přijata vhodná opatření k ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému. Implementace úrovně 3 může také obsahovat hardwarový kryptografický modul, ale to pouze zvyšuje výkon, nikoli zabezpečení.
+
+Současně v [dokumentaci k Mediální službě Azure na šabloně licence Widevine](widevine-license-template-overview.md)může mít vlastnost security_level content_key_specs následujících pět různých hodnot (požadavky na odolnost klientů pro přehrávání):
+
+* Je vyžadováno softwarové kryptografické bílky.
+* Je vyžadováno softwarové krypto a zamlžený dekodér.
+* Klíčové materiálové a kryptografické operace musí být prováděny v rámci tee podporovaného hardwarem.
+* Šifrování a dekódování obsahu musí být provedeno v rámci hardwarového tee.
+* Šifrování, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) musí být zpracována v rámci hardwarově podporované tee.
+
+Obě úrovně zabezpečení jsou definovány společností Google Widevine. Rozdíl je v jeho úrovni využití: úroveň architektury nebo úroveň rozhraní API. Pět úrovní zabezpečení se používá v rozhraní WIDEVINE API. Objekt content_key_specs, který obsahuje security_level je deserializován a předán službě widevine globální doručovací služby služby Azure Media Services Widevine licence. V následující tabulce je zobrazeno mapování mezi dvěma sadami úrovní zabezpečení.
+
+| **Úrovně zabezpečení definované v rozsáhlé architektuře** |**Úrovně zabezpečení používané v rozhraní Widevine API**|
+|---|---| 
+| **Úroveň zabezpečení 1**: Veškeré zpracování obsahu, kryptografie a řízení se provádějí v prostředí trusted execution environment (TEE). V některých modelech implementace může být zpracování zabezpečení prováděno v různých čipech.|**security_level=5**: S kryptografickým, dekódovacím a veškerým zpracováním médií (komprimovaných a nekomprimovaných) musí být nakládáno v rámci tee podporovaného hardwarem.<br/><br/>**security_level=4**: Šifrování a dekódování obsahu musí být provedeno v rámci tee podporovaného hardwarem.|
+**Úroveň zabezpečení 2**: Provádí kryptografii (ale ne zpracování videa) v rámci TEE: dešifrované vyrovnávací paměti jsou vráceny do domény aplikace a zpracovány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 jsou však kryptografické informace stále zpracovávány pouze v rámci TEE.| **security_level=3**: Klíčové materiálové a kryptografické operace musí být prováděny v rámci TEE podporovaného hardwarem. |
+| **Úroveň zabezpečení 3**: Nemá v zařízení TEE. Mohou být přijata vhodná opatření k ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému. Implementace úrovně 3 může také obsahovat hardwarový kryptografický modul, ale to pouze zvyšuje výkon, nikoli zabezpečení. | **security_level=2**: Je vyžadováno softwarové krypto a zamlžený dekodér.<br/><br/>**security_level=1**: Je vyžadováno softwarové šifrování bílé krabice.|
+
+#### <a name="why-does-content-download-take-so-long"></a>Proč stahování obsahu trvá tak dlouho?
+
+Rychlost stahování lze zlepšit dvěma způsoby:
+
+* Povolte CDN, aby koncoví uživatelé s větší pravděpodobností stiskli cdn místo koncového bodu původu/streamování pro stahování obsahu. Pokud uživatel narazí na koncový bod streamování, každý segment HLS nebo dash fragment je dynamicky zabalen a šifrován. I když je tato latence v milisekundovém měřítku pro každý segment nebo fragment, pokud máte hodinové video, akumulovaná latence může být velká, což způsobuje delší stahování.
+* Poskytněte koncovým uživatelům možnost selektivně stahovat vrstvy kvality videa a zvukové stopy namísto veškerého obsahu. Pro režim offline nemá smysl stahovat všechny vrstvy kvality. Existují dva způsoby, jak toho dosáhnout:
+
+   * Klientřízeno: buď přehrávač aplikace automaticky vybere nebo uživatel vybere vrstvu kvality videa a zvukové stopy ke stažení;
+   * Řízeno službou: pomocí funkce dynamického manifestu ve službě Azure Media Services můžete vytvořit (globální) filtr, který omezuje seznam stop HLS nebo DASH MPD na jednu vrstvu kvality videa a vybrané zvukové stopy. Pak bude tento filtr obsahovat adresa URL pro stažení prezentovaná koncovým uživatelům.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969621"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878302"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce preview Azure Stream Analytics
 
@@ -47,9 +47,9 @@ Před odesláním úlohy do Azure můžete otestovat dotazy na živá data v mí
 Úlohy Azure Stream Analytics můžou být vytvořené v kódu Visual Studia. Podívejte se na náš [VS Kód začínáme tutorial](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
 
 
-### <a name="integration-with-azure-machine-learning"></a>Integrace s Azure Machine Learning
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Vysoké hodnocení v reálném čase s vlastními modely ML spravovanými azure machine learningem
 
-Úlohy Stream Analytics můžete škálovat pomocí funkcí Machine Learning (ML). Další informace o tom, jak můžete používat funkce ML v úloze Stream Analytics, najdete na stránce [Škálování úlohy Stream Analytics pomocí funkcí Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Podívejte se na reálný scénář s [analýzou mínění provádění pomocí Azure Stream Analytics a Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
+Azure Stream Analytics podporuje vysoce výkonné vyhodnocování v reálném čase využitím vlastních předem trénovaných modelů machine learningu spravovaných Azure Machine Learning a hostovaných ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI) pomocí pracovního postupu, který nevyžaduje psaní kódu. [Zaregistrujte se k](https://aka.ms/asapreview1) náhledu
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Testování živých dat v sadě Visual Studio
@@ -64,10 +64,6 @@ Pomocí standardních uživatelem definovaných funkcí rozhraní .NET můžete 
 ## <a name="other-previews"></a>Další náhledy
 
 Následující funkce jsou také k dispozici ve verzi preview na vyžádání.
-
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Vysoké hodnocení v reálném čase s vlastními modely ML spravovanými azure machine learningem
-
-Azure Stream Analytics podporuje vysoce výkonné vyhodnocování v reálném čase využitím vlastních předem trénovaných modelů Machine Learningu spravovaných Azure Machine Learning a hostovaných ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI) pomocí pracovního postupu to nevyžaduje, abyste napsali kód. [Zaregistrujte se k](https://aka.ms/asapreview1) náhledu
 
 ### <a name="support-for-azure-stack"></a>Podpora pro Azure Stack
 Tato funkce povolená v runtime Azure IoT Edge využívá vlastní funkce Azure Stacku, jako je nativní podpora místních vstupů a výstupů spuštěných ve službě Azure Stack (například Event Hubs, IoT Hub, Blob Storage). Tato nová integrace umožňuje vytvářet hybridní architektury, které mohou analyzovat vaše data v blízkosti místa, kde jsou generována, snižuje latenci a maximalizuje přehledy.

@@ -1,19 +1,19 @@
 ---
 title: Nastavení Azure Key Vault pro virtuální počítače s Linuxem
 description: Jak nastavit trezor klíčů pro použití s virtuálním počítačem Azure Resource Manager s Azure CLI.
-author: singhkays
-manager: gwallace
+author: mimckitt
+manager: vashan
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/24/2017
-ms.author: kasing
-ms.openlocfilehash: c9659c38e349bd62f22ed0d0839d97651b1b3b66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 59b11d22f054a98fe176e4393843606bd01cc872
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944824"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879475"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Jak nastavit trezor klíčů pro virtuální počítače pomocí azure CLI
 

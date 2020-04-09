@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 112c2ba831ab27faaca755079e9d20e2aebfcf9f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ab40a0e90bee8f034d811aac2781192359cbc109
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744395"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981745"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Vytvoření nové nabídky modulů IoT Edge pomocí portálu partnerů cloudu
 
 >[!Important]
->března 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
+>dubna 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
 
 Tento článek popisuje, jak vytvořit a publikovat položku nabídky modulu IoT Edge pro Azure Marketplace. Každá nabídka se na Azure Marketplace zobrazuje jako vlastní entita a je přidružená k jedné nebo více skum.  Nabídka modulu IoT Edge se skládá z následujících skupin prostředků a podpůrných služeb:
 
@@ -38,7 +38,7 @@ Přihlaste se k [portálu partnerů cloudu](https://cloudpartner.azure.com/)a na
 
 Stránka **Nová nabídka** pro typ nabídky modulu IoT Edge obsahuje sadu karet a polí formulářů, které použijete k vytvoření nové nabídky. Každý z následujících článků vysvětluje, jak pomocí karty definovat skupiny prostředků a podpůrné služby pro novou nabídku modulu IoT Edge.
 
-- [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
+- [Karta nastavení nabídky](./cpp-offer-settings-tab.md)
 - [Karta Skladové položky](./cpp-skus-tab.md)
 - [Karta Marketplace](./cpp-marketplace-tab.md)
 - [Karta Podpora](./cpp-support-tab.md)

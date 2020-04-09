@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673914"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985724"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních strojů
 
@@ -342,7 +342,7 @@ Ukládání do mezipaměti úložiště Premium: Není podporováno
 <sup>1</sup> Instance je izolována na hardware vyhrazený pro jednoho zákazníka.
 <br>
 
-# <a name="nv-series"></a>Řada NV
+## <a name="nv-series"></a>Řada NV
 **Novější velikost doporučení:** [NVv3-série](nvv3-series.md) a [NVv4-série](nvv4-series.md)
 
 Virtuální stroje řady NV jsou poháněny grafickými procesory [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) a technologií NVIDIA GRID pro aplikace s akcelerací stolních počítačů a virtuální plochy, kde jsou zákazníci schopni vizualizovat svá data nebo simulace. Uživatelé jsou schopni vizualizovat své pracovní postupy náročné na grafiku na instancích NV získat vynikající grafické schopnosti a navíc spustit jednu přesnost úlohy, jako je kódování a vykreslování. Virtuální počítače řady NV jsou také napájeny procesory Intel Xeon E5-2690 v3 (Haswell).

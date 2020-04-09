@@ -2,24 +2,21 @@
 title: Získání tokenu pro volání webového rozhraní API (jednostránkové aplikace) – platforma identit Microsoftu | Azure
 description: Zjistěte, jak vytvořit jednostránkovou aplikaci (získat token pro volání rozhraní API)
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 393c3a06a2366a7d6947faf8bbfe038d6c5982fc
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419666"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882314"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Jednostránková aplikace: Získání tokenu pro volání rozhraní API
 
@@ -69,7 +66,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-# <a name="angular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Úhlová](#tab/angular)
 
 Obálka MSAL Angular poskytuje zachycovač HTTP, který automaticky získá přístupové tokeny tiše a připojí je k požadavkům HTTP k souborům API.
 
@@ -193,7 +190,7 @@ myMSALObj.acquireTokenPopup(request);
 
 Další informace naleznete v [tématu Volitelné deklarace identity](active-directory-optional-claims.md).
 
-# <a name="angular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Úhlová](#tab/angular)
 
 Tento kód je stejný, jak je popsáno výše.
 

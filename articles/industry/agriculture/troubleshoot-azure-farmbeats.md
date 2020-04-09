@@ -5,16 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585296"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886479"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
 Tento článek obsahuje řešení běžných problémů Azure FarmBeats. Pro další pomoc kontaktujte naše [fórum podpory](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) nebo nám napište na adresu farmbeatssupport@microsoft.com.
+
+> [!NOTE]
+  > Pokud jste nainstalovali FarmBeats během dubna a vaše úlohy selhávají s prázdnou chybovou zprávou, vaše instalace nemusí být přidělena žádná dávková kvóta kvůli všem zdrojům, které jsou zaměřeny na nouzové, zdravotní péči a další kritické potřeby. Budete muset požádat virtuální chod, které mají být přiděleny k účtu Batch.
 
 ## <a name="install-issues"></a>Problémy s instalací
 
@@ -280,7 +283,7 @@ K tomuto problému může dojít, pokud jsou na serveru Sentinel prováděny vš
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory nebo protokolů služby App Service v Datahubu
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V poli **Hledat** vyhledejte skupinu prostředků FarmBeats Datahub.
 3. Na řídicím panelu **Skupiny prostředků** vyhledejte účet úložiště *\* datahublogs.* Například *datahublogsmvxmq*.  
 4. Ve sloupci **Název** vyberte účet úložiště, který chcete zobrazit řídicí panel **Účtu úložiště.**
@@ -292,7 +295,7 @@ K tomuto problému může dojít, pokud jsou na serveru Sentinel prováděny vš
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Shromažďování protokolů úloh Azure Data Factory nebo protokolů služby App Service pro akcelerátor
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V poli **Hledat** vyhledejte skupinu zdrojů Akcelerátoru FarmBeats.
 3. Na řídicím panelu **Skupiny prostředků** *vyhledejte\* * účet úložiště. Například *storagedop4k\**.
 4. Vyberte účet úložiště ve sloupci **Název** a zobrazte řídicí panel **Účtu úložiště.**

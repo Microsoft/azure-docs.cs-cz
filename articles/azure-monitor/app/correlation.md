@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c68b83726371d346019d18d0b066173f93196e6d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276124"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982051"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v application insights
 
@@ -63,7 +63,7 @@ Application Insights přechází na [w3c trasovací kontext](https://w3c.github.
 
 Nejnovější verze sady Application Insights SDK podporuje protokol Trace-Context, ale možná budete muset přihlásit. (Zpětná kompatibilita s předchozím korelačním protokolem podporovaným sadou Application Insights SDK bude zachována.)
 
-[Korelace protokolu HTTP, také volal Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), je zastaralá. Tento protokol definuje dvě záhlaví:
+[Korelace protokolu HTTP, také volal Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), je zastaralá. Tento protokol definuje dvě záhlaví:
 
 - `Request-Id`: Nese globálně jedinečné ID volání.
 - `Correlation-Context`: Nese kolekci dvojic název-hodnota distribuované trasování.
@@ -202,13 +202,13 @@ Tato funkce `Microsoft.ApplicationInsights.JavaScript`je v . Ve výchozím nasta
 
 [Specifikace datového modelu OpenTracing](https://opentracing.io/) a datové modely Application Insights mapují následujícím způsobem:
 
-| Application Insights                  | OpenTracing                                       |
-|------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span`S`span.kind = server`                  |
-| `Dependency`                          | `Span`S`span.kind = client`                  |
-| `Id`a `Request``Dependency`    | `SpanId`                                          |
-| `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `Reference`typu `ChildOf` (nadřazené rozpětí)   |
+| Application Insights                   | OpenTracing                                        |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `Span`S`span.kind = server`                    |
+| `Dependency`                           | `Span`S`span.kind = client`                    |
+| `Id`a `Request``Dependency`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `Reference`typu `ChildOf` (nadřazené rozpětí)     |
 
 Další informace naleznete v [tématu Application Insights telemetrie datový model](../../azure-monitor/app/data-model.md).
 
@@ -320,19 +320,12 @@ Je nový modul HTTP, [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.o
 Sada Application Insights SDK, počínaje verzí 2.4.0-beta1, používá `DiagnosticSource` a `Activity` shromažďuje telemetrii a přidružuje ji k aktuální aktivitě.
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Korelace telemetrie v java sdk
+## <a name="telemetry-correlation-in-the-java"></a>Korelace telemetrie v Javě
 
-[Sada Application Insights SDK pro jazyk Java](../../azure-monitor/app/java-get-started.md) verze 2.0.0 nebo novější podporuje automatickou korelaci telemetrie. Automaticky naplní `operation_id` všechny telemetrie (jako trasování, výjimky a vlastní události) vydané v rámci požadavku. Také šíří záhlaví korelace (popsané výše) pro volání služby služby prostřednictvím protokolu HTTP, pokud je nakonfigurován [agent Java SDK.](../../azure-monitor/app/java-agent.md)
+[Application Insights Java agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) a [java sdk](../../azure-monitor/app/java-get-started.md) verze 2.0.0 nebo novější podporuje automatickou korelaci telemetrie. Automaticky naplní `operation_id` všechny telemetrie (jako trasování, výjimky a vlastní události) vydané v rámci požadavku. Také šíří záhlaví korelace (popsané výše) pro volání služby služby prostřednictvím protokolu HTTP, pokud je nakonfigurován [agent Java SDK.](../../azure-monitor/app/java-agent.md)
 
 > [!NOTE]
-> Pouze volání prostřednictvím Apache HttpClient jsou podporovány pro funkci korelace. Spring RestTemplate a Feign lze použít s Apache HttpClient pod kapotou.
-
-V současné době není podporováno automatické šíření kontextu napříč technologiemi zasílání zpráv (jako je Kafka, RabbitMQ a Azure Service Bus). Je možné kód ovat tyto scénáře `trackDependency` ručně `trackRequest` pomocí a metody. V těchto metodách představuje telemetrická data závislostí zprávu, která je zařazena do fronty výrobcem. Požadavek představuje zprávu zpracovávanou spotřebitelem. V tomto případě `operation_id` `operation_parentId` oba a by měly být rozšířeny ve vlastnostech zprávy.
-
-### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>Korelace telemetrie v asynchronních java aplikacích
-
-Informace o korelaci telemetrie v asynchronní aplikaci spring boot naleznete [v tématu Distribuované trasování v asynchronních aplikacích Java](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications). Tento článek obsahuje pokyny pro instrumentaci vlákna vlákna [VláknaTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) a [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html).
-
+> Application Insights Java agent automaticky shromažďuje požadavky a závislosti pro JMS, Kafka, Netty/Webflux a další. Pro Java SDK jsou podporovány pouze volání prostřednictvím Apache HttpClient jsou podporovány pro funkci korelace. Automatické šíření kontextu napříč technologiemi zasílání zpráv (jako jsou Kafka, RabbitMQ a Azure Service Bus) není v sdk podporováno. 
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>Název role

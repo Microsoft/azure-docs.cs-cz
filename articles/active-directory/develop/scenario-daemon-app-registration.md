@@ -2,25 +2,21 @@
 title: Registrace aplikací pro daemon, které volají webová rozhraní API – platforma identit Microsoftu | Azure
 description: Naučte se, jak vytvořit aplikaci pro daemon, která volá webová API – registrace aplikace
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 922a484d111746e5073c08a64d7c92e2b6b4a7c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773367"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885476"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Aplikace Daemon, která volá webová API – registrace aplikace
 

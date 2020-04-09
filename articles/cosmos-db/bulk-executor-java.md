@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445708"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985639"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Bulk Executor Java k provádění hromadných operací s daty služby Azure Cosmos DB
 
@@ -28,7 +28,7 @@ V současné době je knihovna hromadného prováděcího modulu podporovaná je
 
 * Azure [Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, a to zdarma a závazků. Nebo můžete použít [Emulátor Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/local-emulator) DB `https://localhost:8081` s koncovým bodem. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
 
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
+* [Java Development Kit (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable)  
   - Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.  
 
   - Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
@@ -130,7 +130,7 @@ Klonované úložiště obsahuje dva ukázky "bulkimport" a "bulkupdate" vzhlede
 6. Po vygenerování cílových závislostí můžete vyvolat aplikaci hromadného importu pomocí následujícího příkazu:  
 
    ```java
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    Velkoobjemový importér vytvoří novou databázi a kolekci s názvem databáze, názvem kolekce a hodnotami propustnosti zadanými v souboru App.config. 
@@ -150,7 +150,7 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
    updateOperations.add(descriptionUpdate);
 
    List<UpdateItem> updateItems = new ArrayList<>(cfg.getNumberOfDocumentsForEachCheckpoint());
-   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                      
+   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                        
     return new UpdateItem(Long.toString(prefix + j), Long.toString(prefix + j), updateOperations);
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
@@ -182,7 +182,7 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
    |int getNumberOfDocumentsUpdated()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány z dokumentů dodaných do volání rozhraní API hromadné aktualizace.      |
    |double getTotalRequestUnitsConsumed() |  Celkový počet jednotek požadavku (RU) spotřebovaných voláním rozhraní API hromadné aktualizace.       |
    |Doba trvání getTotalTimeTaken()  |   Celková doba, kterou volání rozhraní API hromadné aktualizace dokončení provádění.      |
-   |Výjimka seznamu\<> getErrors()   |    Získá seznam chyb, pokud některé dokumenty z dávky dodané do volání rozhraní API hromadné aktualizace se nepodařilo vložit.      |
+   |Výjimka seznamu\<> getErrors()   |       Získá seznam chyb, pokud některé dokumenty z dávky dodané do volání rozhraní API hromadné aktualizace se nepodařilo vložit.      |
 
 3. Po vytvoření aplikace pro hromadnou aktualizaci vytvořte nástroj příkazového řádku ze zdroje pomocí příkazu "mvn clean package". Tento příkaz generuje soubor jar v cílové složce:  
 
@@ -193,7 +193,7 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
 4. Po vygenerování cílových závislostí můžete vyvolat aplikaci hromadné aktualizace pomocí následujícího příkazu:
 
    ```
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>Tipy pro zvýšení výkonu 

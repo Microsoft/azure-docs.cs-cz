@@ -11,30 +11,30 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300549"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878285"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Aplikační řešení Oracle integrující Microsoft Azure a Oracle Cloud Infrastructure (preview)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Aplikační řešení Oracle integrující Microsoft Azure a Oracle Cloud Infrastructure
 
 Společnosti Microsoft a Oracle spolupracují na poskytování připojení s nízkou latencí a vysokou propustností napříč cloudem, což vám umožní využívat to nejlepší z obou cloudů. 
 
 Pomocí tohoto připojení napříč cloudy můžete rozdělit vícevrstvou aplikaci pro spuštění databázové vrstvy na oracle cloudové infrastruktuře (OCI) a aplikací a dalších úrovní v Microsoft Azure. Prostředí je podobné spuštění celého zásobníku řešení v jednom cloudu. 
-
-> [!IMPORTANT]
-> Tato funkce mezi cloudy je aktuálně ve verzi preview a [platí omezení](#region-availability). Chcete-li vytvořit připojení s nízkou latencí mezi Azure a OCI, vaše předplatné Azure musí být nejprve povolena pro tuto funkci. Do náhledu se musíte zaregistrovat vyplněním tohoto krátkého [dotazníkového formuláře](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Tuto funkci nemůžete používat, dokud neobdržíte potvrzovací e-mail. Můžete se také obrátit na zástupce společnosti Microsoft, který bude povolen pro tuto předběžnou verzi. Přístup k možnosti náhledu závisí na dostupnosti a je omezen společností Microsoft podle vlastního uvážení. Dokončení průzkumu nezaručuje přístup. Tato předběžná verze je k dispozici bez smlouvy o úrovni služeb a neměla by být použita pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [doplňkových podmínkách použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pro Microsoft Azure Preview. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 Pokud máte zájem o úplné nasazení řešení Oracle v infrastruktuře Azure, přečtěte si informace [o ibi virtuálních počítačích Oracle a jejich nasazení v Microsoft Azure](oracle-vm-solutions.md).
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
 Připojení mezi cloudy poskytuje řešení pro spuštění špičkových aplikací společnosti Oracle a vlastních aplikací na virtuálních počítačích Azure a zároveň využívávýhod hostovaných databázových služeb v OCI. 
+
+> [!IMPORTANT]
+> Společnost Oracle bude tyto aplikace certifikovat tak, aby se v Azure spouštěla do května 2020 při používání řešení Propojení Azure / Oracle Cloud.
 
 Mezi aplikace, které můžete spouštět v konfiguraci mezi cloudy, patří:
 
@@ -56,7 +56,7 @@ Připojení mezi cloudy je omezeno na následující oblasti:
 * Azure Canada Central (canadacentral) & OCI Toronto (Kanada jihovýchod)
 * Azure West Europe (západní Evropa) & OCI Amsterdam (Nizozemsko severozápad)
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 Podnikoví zákazníci se často rozhodnou diverzifikovat a nasadit úlohy ve více cloudech z různých obchodních a provozních důvodů. Zákazníci propojují cloudové sítě pomocí internetu, sítě IPSec VPN nebo pomocí řešení přímého připojení poskytovatele cloudu prostřednictvím místní sítě. Propojení cloudových sítí může vyžadovat značné investice do času, peněz, návrhu, nákupu, instalace, testování a provozu. 
 

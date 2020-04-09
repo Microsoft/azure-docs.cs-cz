@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 1cfee9749bf2eb30799efb05ac875843bcde6651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fe5d245d629c731a47ca5441afd2a3388a22de4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372617"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878013"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy týkající se dveří Azure Front Door
 
@@ -34,7 +34,7 @@ Azure Front Door je síť pro doručování aplikací (ADN) jako služba, která
 
 ### <a name="what-features-does-azure-front-door-support"></a>Jaké funkce azure front door podporuje?
 
-Azure Front Door podporuje dynamickou akceleraci webu (DSA), snižování zátěže SSL a od konce ssl, webovou aplikační bránu firewall, spřažení relací založenou na souborech cookie, směrování na základě cesty url, bezplatné certifikáty a správu více domén a další. Úplný seznam podporovaných funkcí najdete v [tématu Přehled předních dveří Azure](front-door-overview.md).
+Azure Front Door podporuje dynamickou akceleraci webu (DSA), snižování zátěže TLS/SSL a od konce tls, bránou firewall webové aplikace, spřažení relací na základě souborů cookie, směrování na základě cesty url, bezplatné certifikáty a správu více domén a další. Úplný seznam podporovaných funkcí najdete v [tématu Přehled předních dveří Azure](front-door-overview.md).
 
 ### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Jaký je rozdíl mezi Azure Front Door a Azure Application Gateway?
 
@@ -46,7 +46,7 @@ Klíčové scénáře, proč by měl používat aplikační bránu za předními
 
 - Front Door můžete provádět vyrovnávání zatížení založené na cestě pouze na globální úrovni, ale pokud jeden chce, aby zatížení provozu ještě dále v rámci své virtuální sítě (VNET), pak by měli používat aplikační bránu.
 - Vzhledem k tomu, že přední dveře nefunguje na úrovni virtuálního připojení/kontejneru, takže nemůže provést vyprázdnění připojení. Aplikační brána však umožňuje provést vyprázdnění připojení. 
-- S aplikační bránou za AFD lze dosáhnout 100% ssl zátěže a směrovat pouze požadavky HTTP v rámci své virtuální sítě (VNET).
+- S aplikační bránou za AFD lze dosáhnout 100% snížení zátěže TLS/SSL a směrovat pouze požadavky HTTP v rámci své virtuální sítě (VNET).
 - Front Door a Application Gateway podporují spřažení relací. Zatímco front door může směrovat následný provoz z relace uživatele do stejného clusteru nebo back-endu v dané oblasti, aplikační brána může směrovat spřažení přenosů na stejný server v rámci clusteru.  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Můžeme nasadit Azure Load Balancer za přední dveře?
@@ -118,7 +118,7 @@ Další informace o [hlavičkách HTTP podporovaných předními dveřmi](front-
 
 Vytvoření nového předního dveří nebo jakékoli aktualizace existujících předních dveří trvá přibližně 3 až 5 minut pro globální nasazení. To znamená, že přibližně za 3 až 5 minut bude konfigurace předních dveří nasazena na všechny naše POP po celém světě.
 
-Poznámka – Aktualizace vlastního certifikátu SSL se nasadí globálně přibližně 30 minut.
+Poznámka – Aktualizace vlastních certifikátů TLS/SSL se nasazují globálně přibližně 30 minut.
 
 Všechny aktualizace tras nebo back-endových fondů atd. Aktualizace certifikátu jsou také atomické a nezpůsobí žádný výpadek, pokud přechod z "AFD Spravované" na "Použít vlastní certifikát" nebo naopak.
 
@@ -139,7 +139,7 @@ Seznamte se se všemi zdokumentovanámi [časovými limity a limity pro Azure Fr
 
 Azure Front Door je globálně distribuovaná platforma pro více klientů s obrovskýmobjemem kapacity, která uspokojí škálovatelnost vaší aplikace. Front Door, který je dodáván z okraje globální sítě Microsoftu, poskytuje globální možnost vyrovnávání zatížení, které vám umožní převzetí služeb při selhání celé aplikace nebo dokonce jednotlivé mikroslužby napříč oblastmi nebo různými cloudy.
 
-## <a name="ssl-configuration"></a>Konfigurace SSL
+## <a name="tls-configuration"></a>Konfigurace TLS
 
 ### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Jaké verze TLS jsou podporovány Azure Front Door?
 
@@ -150,12 +150,12 @@ Přední dveře podporují TLS verze 1.0, 1.1 a 1.2. TLS 1.3 ještě není podpo
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Jaké certifikáty jsou podporované na Azure Front Door?
 
 Chcete-li povolit protokol HTTPS pro bezpečné doručování obsahu na vlastní doméně Front Door, můžete použít certifikát, který je spravovaný Azure Front Door nebo použít vlastní certifikát.
-Možnost spravovaná předními dveřmi zřizována je standardní ssl certifikát přes Digicert a uložená v trezoru klíčů předních dveří. Pokud se rozhodnete použít vlastní certifikát, můžete certifikát zavést od podporované certifikační autority a může se na nich povést standardní certifikát SSL, certifikát rozšířeného ověření nebo dokonce certifikát se zástupnými kódy. Certifikáty podepsané svým držitelem nejsou podporovány. Přečtěte [si, jak povolit protokol HTTPS pro vlastní doménu](https://aka.ms/FrontDoorCustomDomainHTTPS).
+Možnost spravovaná předními dveřmi zřizována je standardní certifikát TLS/SSL prostřednictvím digicertu a uložená v trezoru klíčů předních dveří. Pokud se rozhodnete použít vlastní certifikát, můžete certifikát zavést od podporované certifikační autority a může se z nich povést standardní certifikát TLS, certifikát rozšířeného ověření nebo dokonce certifikát se zástupnými kódy. Certifikáty podepsané svým držitelem nejsou podporovány. Přečtěte [si, jak povolit protokol HTTPS pro vlastní doménu](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Podporuje přední dveře automatické střídání certifikátů?
 
 Pro možnost spravovaného certifikátu Přední dveře jsou certifikáty automaticky otočeny předními dveřmi. Pokud používáte certifikát se spravovaným předními dveřmi a zjistíte, že datum vypršení platnosti certifikátu je kratší než 60 dní, nasuzte lístek podpory.
-</br>Pro vlastní certifikát SSL není automatické otáčení podporováno. Podobně jako to, jak byla nastavena poprvé pro danou vlastní doménu, budete muset v trezoru klíčů nasměrovat přední dveře na správnou verzi certifikátu a zajistit, aby byl instanční objekt pro frontdoor stále přístup k trezoru klíčů. Tato aktualizovaná operace zavádění certifikátu předními dveřmi je atomická a nezpůsobuje žádný dopad výroby za předpokladu, že se nezmění název subjektu nebo san pro certifikát.
+</br>Pro vlastní certifikát TLS/SSL není automatické otáčení podporováno. Podobně jako to, jak byla nastavena poprvé pro danou vlastní doménu, budete muset v trezoru klíčů nasměrovat přední dveře na správnou verzi certifikátu a zajistit, aby byl instanční objekt pro frontdoor stále přístup k trezoru klíčů. Tato aktualizovaná operace zavádění certifikátu předními dveřmi je atomická a nezpůsobuje žádný dopad výroby za předpokladu, že se nezmění název subjektu nebo san pro certifikát.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Jaké jsou aktuální šifrovací sady podporované Azure Front Door?
 
@@ -182,13 +182,13 @@ Níže jsou uvedeny aktuální šifry sady podporované Azure Front Door:
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Lze nakonfigurovat zásady Protokolu SSL tak, aby řídily verze protokolu SSL?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Mohu nakonfigurovat zásady TLS pro řízení verzí protokolu TLS?
 
 Minimální verzi TLS můžete nakonfigurovat ve službě Azure Front Door ve vlastním nastavení HTTPS domény prostřednictvím portálu Azure nebo [rozhraní AZURE REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion). V současné době si můžete vybrat mezi 1.0 a 1.2.
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Mohu nakonfigurovat přední dveře tak, aby podporovaly pouze určité šifrovací sady?
 
-Ne, konfigurace předních dveří pro konkrétní šifrovací sady není podporována. Můžete však získat vlastní certifikát SSL od certifikační autority (řekněme Verisign, Entrust nebo Digicert) a mít na certifikátu vyznačené specifické šifrovací sady, když jej vygenerujete. 
+Ne, konfigurace předních dveří pro konkrétní šifrovací sady není podporována. Můžete však získat vlastní certifikát TLS/SSL od certifikační autority (řekněme Verisign, Entrust nebo Digicert) a mít na certifikátu vyznačené specifické šifrovací sady, když jste jej vygenerovali. 
 
 ### <a name="does-front-door-support-ocsp-stapling"></a>Podporuje přední dveře sešívání OCSP?
 
@@ -196,20 +196,20 @@ Ano, sešívání OCSP je ve výchozím nastavení podporováno předními dveř
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Podporuje azure front door také opětovné šifrování provozu do back-endu?
 
-Ano, Azure Front Door podporuje snižování zátěže SSL a od konce ssl, který znovu šifruje provoz do back-endu. Ve skutečnosti, protože připojení k back-endu dojít přes jeho veřejné IP, je doporučeno nakonfigurovat přední dveře pro použití protokolu HTTPS jako protokol předávání.
+Ano, Azure Front Door podporuje snižování zátěže TLS/SSL a koncové mezikoncovými protokoly TLS, což znovu zašifruje provoz do back-endu. Ve skutečnosti, protože připojení k back-endu dojít přes jeho veřejné IP, je doporučeno nakonfigurovat přední dveře pro použití protokolu HTTPS jako protokol předávání.
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Podporuje front door certifikáty podepsané svým držitelem v back-endu pro připojení HTTPS?
 
 Ne, certifikáty podepsané svým držitelem nejsou u předních dveří podporovány a omezení se vztahuje na obojí:
 
 1. **Back-endy**: Certifikáty podepsané svým držitelem nelze použít při předávání přenosů jako sond stavu HTTPS nebo HTTPS nebo vyplňování mezipaměti od počátku pro pravidla směrování s povoleným ukládáním do mezipaměti.
-2. **Front-end**: Při použití vlastního certifikátu SSL pro povolení protokolu HTTPS ve vlastní doméně nelze použít certifikáty podepsané svým držitelem.
+2. **Front-end**: Při použití vlastního certifikátu TLS/SSL pro povolení protokolu HTTPS ve vlastní doméně nelze použít certifikáty podepsané svým držitelem.
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>Proč se lhající přenos protokolu HTTPS do mého back-endu nedaří?
 
 Pro úspěšné připojení HTTPS k back-endu, ať už pro sondy stavu nebo pro předávání požadavků, může být dva důvody, proč může dojít k selhání přenosu HTTPS:
 
-1. **Neshoda názvů předmětů certifikátu**: U připojení HTTPS front door očekává, že back-end zobrazí certifikát z platné certifikační autority s názvem subjektu odpovídajícím názvu hostitele back-endu. Jako příklad pokud je název hostitele back-end nastaven `myapp-centralus.contosonews.net` a certifikát, který back-end představuje `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` během handshake SSL, nemá ani v názvu předmětu, front door odmítne připojení a výsledkem je chyba. 
+1. **Neshoda názvů předmětů certifikátu**: U připojení HTTPS front door očekává, že back-end zobrazí certifikát z platné certifikační autority s názvem subjektu odpovídajícím názvu hostitele back-endu. Jako příklad pokud je název hostitele back-end nastaven `myapp-centralus.contosonews.net` a certifikát, který back-end představuje `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` během tls handshake, nemá ani v názvu předmětu, front door odmítne připojení a výsledkem je chyba. 
     1. **Řešení:** I když se to z hlediska dodržování předpisů nedoporučuje, můžete tuto chybu vyřešit zakázáním kontroly názvu předmětu certifikátu pro přední dveře. To se nachází v části Nastavení na webu Azure portal a v části BackendPoolsSettings v rozhraní API.
 2. **Back-endový hostingový certifikát od neplatné certifikační autority**: V back-endu s frontdoorem lze použít pouze certifikáty od [platných certifikačních autorit.](/azure/frontdoor/front-door-troubleshoot-allowed-ca) Certifikáty interních certifikačních autorit nebo certifikátů podepsaných svým držitelem nejsou povoleny.
 

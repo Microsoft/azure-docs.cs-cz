@@ -1,28 +1,23 @@
 ---
-title: Knihovny ověřování identit platformy Microsoft | Dokumenty společnosti Microsoft
+title: Knihovny ověřování platformy identit Microsoftu
 description: Kompatibilní klientské knihovny a knihovny middlewaru serveru spolu se souvisejícími odkazy na knihovnu, zdroj a ukázkové odkazy pro koncový bod platformy identit microsoftu.
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
-ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c8f0d5d948ff54522e951b7b5d18c7018ae6d34a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 22e2ee0e3596bc996482a090af7509db4c415e61
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419808"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883487"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Knihovny ověřování platformy identit Microsoftu
 
@@ -53,14 +48,14 @@ Seznam knihoven, které pracují s koncovým bodem platformy identit microsoftu,
 
 Pomocí klientských ověřovacích knihoven získáte token pro volání chráněného webového rozhraní API.
 
-| Platforma | Knihovna | Stáhnout | Zdrojový kód | Ukázka | Odkaz | Koncepční dokument | Plán |
+| Platforma | Knihovna | Stáhnout | Zdrojový kód | Ukázka | Referenční informace | Koncepční dokument | Plán |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Jednostránková aplikace](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Odkaz](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Koncepční dokumenty](msal-overview.md)| [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-![Úhlová](media/sample-v2-code/logo_angular.png) | MSAL Úhlové | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Úhlové SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Odkaz](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Koncepční dokumenty](msal-overview.md) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Jednostránková aplikace](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Referenční informace](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Koncepční dokumenty](msal-overview.md)| [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+![Úhlová](media/sample-v2-code/logo_angular.png) | MSAL Úhlové | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Úhlové SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Referenční informace](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Koncepční dokumenty](msal-overview.md) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 | ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Desktopová aplikace](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Koncepční dokumenty](msal-overview.md) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [ukázky](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
-| ![Java](media/sample-v2-code/logo_java.png) | MSAL v Javě | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [ukázky](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [Odkaz](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
-| iOS & macOS | MSAL iOS a macOS | [GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [aplikace pro iOS](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [aplikace pro macOS](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Odkaz](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Koncepční dokumenty](msal-overview.md) | |
+| ![Java](media/sample-v2-code/logo_java.png) | MSAL v Javě | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [ukázky](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [Referenční informace](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
+| iOS & macOS | MSAL iOS a macOS | [GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [aplikace pro iOS](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [aplikace pro macOS](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Referenční informace](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Koncepční dokumenty](msal-overview.md) | |
 |![Android / Java](media/sample-v2-code/logo_Android.png) | MSAL Android | [Centrální úložiště](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Aplikace pro Android](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | [Koncepční dokumenty](msal-overview.md) |[Plán](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Roadmap)
 
 ## <a name="microsoft-supported-server-middleware-libraries"></a>Knihovny middlewaru podporovaných společností Microsoft
@@ -70,7 +65,7 @@ Pomocí middlewarových knihoven můžete chránit webové aplikace a webová ap
 | Platforma | Knihovna | Stáhnout | Zdrojový kód | Ukázka | Referenční informace
 | --- | --- | --- | --- | --- | --- |
 | ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET zabezpečení |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHubu](https://github.com/aspnet/AspNetCore) |[Aplikace MVC](quickstart-v2-aspnet-webapp.md) |[Referenční dokumentace k rozhraní API technologie ASP.NET](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
-| ![.NET](media/sample-v2-code/logo_NET.png)| Rozšíření IdentityModel pro rozhraní .NET| |[GitHubu](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [Aplikace MVC](quickstart-v2-aspnet-webapp.md) |[Odkaz](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
+| ![.NET](media/sample-v2-code/logo_NET.png)| Rozšíření IdentityModel pro rozhraní .NET| |[GitHubu](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [Aplikace MVC](quickstart-v2-aspnet-webapp.md) |[Referenční informace](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
 | ![Node.js](media/sample-v2-code/logo_nodejs.png) | Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHubu](https://github.com/AzureAD/passport-azure-ad) | [Webová aplikace](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
 
 ## <a name="microsoft-supported-libraries-by-os--language"></a>Knihovny podporované společností Microsoft podle operačního systému / jazyka

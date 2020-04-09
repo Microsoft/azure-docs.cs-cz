@@ -2,24 +2,21 @@
 title: Volání webových rozhraní API z desktopové aplikace – platforma identit Microsoftu | Azure
 description: Přečtěte si, jak vytvořit desktopovou aplikaci, která volá webová api
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702160"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882960"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Desktopová aplikace, která volá webová rozhraní API: Volání webového rozhraní API
 

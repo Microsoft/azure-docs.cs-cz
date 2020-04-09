@@ -1,15 +1,15 @@
 ---
-title: Náhled – vytvoření kontejneru Windows Serveru v clusteru služby Azure Kubernetes Service (AKS)
+title: Spuštění kontejneru Windows Serveru v clusteru služby Azure Kubernetes
 description: Zjistěte, jak rychle vytvořit cluster Kubernetes, nasadit aplikaci v kontejneru Windows Serveru ve službě Azure Kubernetes Service (AKS) pomocí azure cli.
 services: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.openlocfilehash: 259728da5ea7f71110ce183ae25bb47a0f873614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d2a91f63815e7ba4bcbe4084b80a06fa7779099
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475506"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886717"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Preview – vytvoření kontejneru Windows Serveru v clusteru služby Azure Kubernetes Service (AKS) pomocí příkazového příkazového příkazu Azure
 

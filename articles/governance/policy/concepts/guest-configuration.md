@@ -3,12 +3,12 @@ title: Naučte se auditovat obsah virtuálních počítačů
 description: Zjistěte, jak zásady Azure používají agenta konfigurace hosta k auditování nastavení uvnitř virtuálních počítačů.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc2ba11f75da5f993b99c90e5d0cc1030003203e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257252"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985316"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Principy konfigurace hosta zásad Azure
 
@@ -18,7 +18,7 @@ Kromě auditování a [nápravy](../how-to/remediate-resources.md) prostředků 
 - Konfigurace nebo přítomnost aplikací
 - Nastavení prostředí
 
-Konfigurace hosta Azure Policy momentálně jenom audituje nastavení uvnitř počítače. Neaplikuje konfigurace.
+V tuto chvíli většina zásad Azure Zásady konfigurace konfigurace pouze nastavení auditování uvnitř počítače. Nepoužívají konfigurace. Výjimkou je jedna předdefinovaná [zásada uvedená níže](#applying-configurations-using-guest-configuration).
 
 ## <a name="extension-and-client"></a>Rozšíření a klient
 
@@ -62,11 +62,12 @@ V následující tabulce je uveden seznam místních nástrojů používaných v
 |Operační systém|Nástroj pro ověření pravosti|Poznámky|
 |-|-|-|
 |Windows|[Konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Šéfkuchař InSpec](https://www.chef.io/inspec/)| Ruby a Python jsou nainstalovány pomocí rozšíření Konfigurace hosta. |
+|Linux|[Šéfkuchař InSpec](https://www.chef.io/inspec/)| Pokud Ruby a Python nejsou v počítači, jsou nainstalovány rozšířením Konfigurace hosta. |
 
 ### <a name="validation-frequency"></a>Frekvence ověřování
 
-Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí přiřazení hosta jsou nastavení kontrolována v intervalu 15 minut. Výsledky jsou odeslány poskytovateli prostředků konfigurace hosta, jakmile je audit dokončen. Dojde-li k [aktivační události vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers) zásad, stav počítače je zapsán a zprostředkovatele prostředků konfigurace hosta. Tato aktualizace způsobí, že zásady Azure vyhodnotit vlastnosti Azure Resource Manager. Vyhodnocení zásad Azure na vyžádání načte nejnovější hodnotu od poskytovatele prostředků konfigurace hosta. Však neaktivuje nový audit konfigurace v rámci počítače.
+Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí přiřazení hosta jsou nastavení pro tuto konfiguraci znovu zkontrolována v intervalu 15 minut.
+Výsledky jsou odesílány poskytovateli prostředků konfigurace hosta po dokončení auditu. Dojde-li k [aktivační události vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers) zásad, stav počítače je zapsán a zprostředkovatele prostředků konfigurace hosta. Tato aktualizace způsobí, že zásady Azure vyhodnotit vlastnosti Azure Resource Manager. Vyhodnocení zásad Azure na vyžádání načte nejnovější hodnotu od poskytovatele prostředků konfigurace hosta. Však neaktivuje nový audit konfigurace v rámci počítače.
 
 ## <a name="supported-client-types"></a>Podporované typy klientů
 
@@ -78,12 +79,9 @@ V následující tabulce je uveden seznam podporovaných operačních systémů 
 |Kredativ|Debian|8, 9|
 |Microsoft|Windows Server|Datacentrum 2012, Datacentrum 2012 R2, Datacentrum 2016, Datacentrum 2019|
 |Microsoft|Klient Windows|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6|
+|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
 |Suse|SLES|12 AKTUALIZACE SP3|
-
-> [!IMPORTANT]
-> Konfigurace hosta může auditovat uzly s podporovaným osem. Pokud chcete auditovat virtuální počítače, které používají vlastní bitovou kopii, je třeba duplikovat **definici DeployIfNotExists** a upravit část **If** tak, aby zahrnovala vlastnosti vaší image.
 
 ### <a name="unsupported-client-types"></a>Nepodporované typy klientů
 
@@ -139,10 +137,6 @@ Zásady auditu dostupné pro konfiguraci hosta zahrnují typ prostředku **Micro
 ### <a name="multiple-assignments"></a>Více přiřazení
 
 Zásady konfigurace hosta v současné době podporují přiřazení stejného přiřazení hosta pouze jednou za počítač, a to i v případě, že přiřazení zásad používá jiné parametry.
-
-## <a name="built-in-resource-modules"></a>Vestavěné moduly prostředků
-
-Při instalaci rozšíření Konfigurace hosta je modul PowerShell "GuestConfiguration" součástí nejnovější verze modulů prostředků DSC. Tento modul lze stáhnout z Galerie Prostředí PowerShell pomocí odkazu "Ruční stažení" ze stránky modulu [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). Formát souboru '.nupkg' lze přejmenovat na '.zip' pro dekompresi a kontrolu.
 
 ## <a name="client-log-files"></a>Soubory protokolu klienta
 

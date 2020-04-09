@@ -1,17 +1,17 @@
 ---
-title: Analýza uchovávání informací uživatelů pro webové aplikace pomocí Azure Application Insights | Dokumenty Microsoftu
+title: Analýza uchovávání informací uživatelů webových aplikací pomocí Azure Application Insights
 description: Kolik uživatelů se vrátí do vaší aplikace?
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670963"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892406"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analýza uchovávání informací uživatelů pro webové aplikace s application insights
 
@@ -25,7 +25,7 @@ Pokud data v nástroji pro uchovávání informací na portálu Application Insi
 
 ![Nástroj Udržení](./media/usage-retention/retention.png)
 
-1. Panel nástrojů umožňuje uživatelům vytvářet nové zprávy o uchovávání informací, otevírat stávající zprávy o uchovávání informací, ukládat aktuální zprávy o uchovávání informací nebo je ukládat jako, vracet změny provedené v uložených sestavách, aktualizovat data v sestavě, sdílet sestavu prostřednictvím e-mailu nebo přímého odkazu a získat přístup k dokumentaci. Stránka. 
+1. Panel nástrojů umožňuje uživatelům vytvářet nové zprávy o uchovávání informací, otevírat stávající zprávy o uchovávání informací, ukládat aktuální zprávy o uchovávání informací nebo je ukládat jako, vracet změny provedené v uložených sestavách, aktualizovat data v sestavě, sdílet sestavu prostřednictvím e-mailu nebo přímého odkazu a získat přístup na stránku dokumentace. 
 2. Ve výchozím nastavení uchovávání zobrazuje všechny uživatele, kteří něco udělali, a pak se vrátili a udělali něco jiného za určité období. Můžete vybrat různé kombinace událostí zúžit zaměření na konkrétní aktivity uživatele.
 3. Přidejte jeden nebo více filtrů na vlastnosti. Můžete se například zaměřit na uživatele v určité zemi nebo oblasti. Po nastavení filtrů klepněte na **tlačítko Aktualizovat.** 
 4. Celkový retenční graf zobrazuje souhrn uchovávání uživatelů ve vybraném časovém období. 

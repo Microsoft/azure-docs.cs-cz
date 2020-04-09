@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411275"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982884"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: Poznámky k vydání a prostředky
 > [!div class="op_single_selector"]
@@ -295,14 +295,14 @@ Ne vždy nejviditelnější změny, ale pomáhají našemu týmu doručovat lep�
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
 * Přidá podporu konzistence relace.
-* Tato verze sady SDK vyžaduje nejnovější verzi emulátoru Azure https://aka.ms/cosmosdb-emulatorCosmos DB, která je k dispozici ke stažení z aplikace .
+* Tato verze sady SDK vyžaduje nejnovější verzi [emulátoru Azure Cosmos DB](https://aka.ms/cosmosdb-emulator).
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
 * Rozdělit proofed křížové oddíly dotazy.
 * Přidá podporu pro propojení prostředků s úvodními a koncovými lomítky (a odpovídajícími testy).
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*   npm dokumentace opravena.
+*    npm dokumentace opravena.
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * Opravena chyba v executeStoredProcedure, kde dokumenty měly speciální znaky Unicode (LS, PS).

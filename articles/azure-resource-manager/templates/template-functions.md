@@ -2,13 +2,13 @@
 title: Funkce šablon
 description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager k načtení hodnot, práci s řetězci a číselnými kódy a načtení informací o nasazení.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156255"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982374"
 ---
 # <a name="arm-template-functions"></a>Funkce šablony ARM
 
@@ -78,12 +78,19 @@ Resource Manager poskytuje několik funkcí pro porovnávání v šablonách.
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
+## <a name="date-functions"></a>Datové funkce
+
+Správce prostředků poskytuje následující funkce pro práci s daty.
+
+* [dateTimeAdd](template-functions-date.md#datetimeadd)
+* [utcNow](template-functions-date.md#utcnow)
+
 ## <a name="deployment-value-functions"></a>Funkce hodnoty nasazení
 
 Správce prostředků poskytuje následující funkce pro získávání hodnot z částí šablony a hodnot souvisejících s nasazením:
 
 * [Nasazení](template-functions-deployment.md#deployment)
-* [environment](template-functions-deployment.md#environment)
+* [Prostředí](template-functions-deployment.md#environment)
 * [Parametry](template-functions-deployment.md#parameters)
 * [Proměnné](template-functions-deployment.md#variables)
 
@@ -224,7 +231,6 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 * [Uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,7 +3,6 @@ title: Změny provedené v projektech WebAPI při připojování k Azure AD
 description: Popisuje, co se stane s projektem WebAPI, když se připojíte k Azure AD pomocí Sady Visual Studio.
 author: ghogen
 manager: jillfra
-ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.workload: azure-vs
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
@@ -11,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 595a89ca58e970a9c886d0b6c2dd05aecd1411ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46fb0ad37b872a1d7ca72114f2f263df776aabf1
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159382"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886054"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem WebAPI (připojená služba Visual Studio Azure Active Directory)
 
@@ -32,7 +31,7 @@ Informace o práci s připojenou službou naleznete v [tématu Začínáme](vs-a
 
 Ovlivňuje odkazy na soubor projektu *.NET) a `packages.config` (odkazy NuGet).
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -45,7 +44,7 @@ Ovlivňuje odkazy na soubor projektu *.NET) a `packages.config` (odkazy NuGet).
 
 Další odkazy, pokud jste vybrali možnost **Číst data adresáře:**
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (pouze Visual Studio 2015) |
@@ -59,7 +58,7 @@ Další odkazy, pokud jste vybrali možnost **Číst data adresáře:**
 
 Následující odkazy jsou odebrány (ASP.NET pouze 4 projekty, jako v Sadě Visual Studio 2015):
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

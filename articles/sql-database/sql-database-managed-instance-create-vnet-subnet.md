@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823363"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878846"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Vytvoření virtuální sítě pro spravovanou instanci Azure SQL Database
 
@@ -29,13 +29,13 @@ Azure SQL Database Managed Instance musí být nasazená v rámci [virtuální s
 - Připojení spravované instance k propojenému serveru nebo jinému místnímu úložišti dat
 - Připojení spravované instance k prostředkům Azure  
 
-> [!Note]
+> [!NOTE]
 > Před nasazením první instance byste měli [určit velikost podsítě pro spravovanou instanci.](sql-database-managed-instance-determine-size-vnet-subnet.md) Po umístití prostředků do sítě nelze změnit velikost podsítě.
 >
 > Pokud plánujete použít existující virtuální síť, je třeba upravit tuto konfiguraci sítě tak, aby vyhovovala spravované instanci. Další informace naleznete [v tématu Úprava existující virtuální sítě pro spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md).
 >
-> Po vytvoření spravované instance není přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného podporováno.
-
+> Po vytvoření spravované instance není přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného podporováno.  Přesunutí spravované instance do jiné podsítě také není podporováno.
+>
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 

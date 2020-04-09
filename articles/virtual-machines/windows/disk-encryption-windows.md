@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529338"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985792"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
-Azure Disk Encryption používá nástroj BitLocker externí ochrany klíčů k zajištění šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure (VM) a je integrovaný s Azure Key Vault, který vám pomůže řídit a spravovat šifrovací klíče a tajné klíče disku. Přehled služby najdete v tématu [Azure Disk Encryption for Windows VMs](disk-encryption-overview.md).
+Azure Disk Encryption pro virtuální počítače s Windows (VM) používá bitlocker funkce systému Windows poskytnout úplné šifrování disku WindOS a datového disku. Navíc poskytuje šifrování dočasný prostředek disku při VolumeType parametr je vše.
 
-Existuje mnoho scénářů šifrování disku a kroky se mohou lišit v závislosti na scénáři. Následující části popisují scénáře podrobněji pro virtuální chod windows.
+Azure Disk Encryption je [integrovaný s Azure Key Vault,](disk-encryption-key-vault.md) který vám pomůže řídit a spravovat šifrovací klíče a tajné klíče disku. Přehled služby najdete v tématu [Azure Disk Encryption for Windows VMs](disk-encryption-overview.md).
 
 Šifrování disku lze použít jenom na virtuální počítače [podporovaných velikostí virtuálních počítačů a operačních systémů](disk-encryption-overview.md#supported-vms-and-operating-systems). Musíte také splnit následující předpoklady:
 
@@ -39,9 +39,6 @@ Existuje mnoho scénářů šifrování disku a kroky se mohou lišit v závislo
 
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>Povolení šifrování na existujícím nebo spuštěném virtuálním počítači se systémem Windows
 V tomto scénáři můžete povolit šifrování pomocí šablony Správce prostředků, rutin prostředí PowerShell nebo příkazů příkazu CLI. Pokud potřebujete informace o schématu pro rozšíření virtuálního počítače, přečtěte si článek rozšíření [Azure Disk Encryption for Windows.](../extensions/azure-disk-enc-windows.md)
-
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a>Povolení šifrování na existujících nebo spuštěných virtuálních počítačích IaaS windows
-Šifrování můžete povolit pomocí šablony, rutin prostředí PowerShell nebo příkazů příkazu CLI. Pokud potřebujete informace o schématu pro rozšíření virtuálního počítače, přečtěte si článek rozšíření [Azure Disk Encryption for Windows.](../extensions/azure-disk-enc-windows.md)
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Povolení šifrování na stávajících nebo spuštěných virtuálních počítačích pomocí Azure PowerShellu 
 Pomocí rutiny [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) povolte šifrování na běžícím virtuálním počítači IaaS v Azure. 

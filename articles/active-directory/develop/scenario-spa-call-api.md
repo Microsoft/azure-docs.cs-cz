@@ -2,24 +2,21 @@
 title: Vytvoření jednostránkové aplikace volající webové rozhraní API – platforma identit Microsoftu | Azure
 description: Zjistěte, jak vytvořit jednostránkovou aplikaci, která volá webové rozhraní API
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: ccece6c840033913ec6d96b446dcb98c4befb32f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159994"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882127"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Jednostránková aplikace: Volání webového rozhraní API
 
@@ -27,9 +24,9 @@ Doporučujeme volat metodu `acquireTokenSilent` získat nebo obnovit přístupov
 
 ## <a name="call-a-web-api"></a>Volání webového rozhraní API
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Pomocí získaného přístupového tokenu jako nositele v požadavku HTTP volat jakékoli webové rozhraní API, jako je například rozhraní Microsoft Graph API. Například:
+Pomocí získaného přístupového tokenu jako nositele v požadavku HTTP volat jakékoli webové rozhraní API, jako je například rozhraní Microsoft Graph API. Příklad:
 
 ```javascript
     var headers = new Headers();
@@ -47,7 +44,7 @@ Pomocí získaného přístupového tokenu jako nositele v požadavku HTTP volat
         }
 ```
 
-# <a name="angular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Úhlová](#tab/angular)
 
 Obálka MSAL Angular využívá zachycovač http automaticky získat přístupové tokeny tiše a připojit je k požadavkům HTTP k souborům API. Další informace naleznete [v tématu Získání tokenu pro volání rozhraní API](scenario-spa-acquire-token.md).
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471587"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878591"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Způsob, jakým přední dveře odpovídají požadavkům s pravidlem směrování
 
-Po navázání připojení a provedení ssl handshake, když požadavek přistane na front door prostředí jedna z prvních věcí, které přední dveře dělá, je určení ze všech konfigurací, které konkrétní směrování pravidlo, aby odpovídaly požadavku a pak s definované akce. Následující dokument vysvětluje, jak front door určuje, kterou konfiguraci trasy použít při zpracování požadavku HTTP.
+Po navázání připojení a provedení tls handshake, když požadavek přistane na front door prostředí jednu z prvních věcí, které dělá Front Door je určení ze všech konfigurací, které konkrétní směrovací pravidlo tak, aby odpovídaly požadavku a pak s definovanou akci. Následující dokument vysvětluje, jak front door určuje, kterou konfiguraci trasy použít při zpracování požadavku HTTP.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Struktura konfigurace trasy předních dveří
 Konfigurace pravidel směrování předních dveří se skládá ze dvou hlavních částí: "levá strana" a "pravá strana". Příchozí požadavek přiřazujeme k levé straně trasy, zatímco pravá strana definuje způsob zpracování požadavku.

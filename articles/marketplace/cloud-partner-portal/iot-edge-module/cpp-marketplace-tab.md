@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: df51a408cc47908a240ceb66bf510fe3df3ce87f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745110"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983394"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Karta Marketplace modulu IoT Edge
 
 >[!Important]
->března 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
+>dubna 2020 začneme přesouvat správu nabídek modulu IoT Edge do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Postupujte podle pokynů v [části Vytvoření nabídky modulu IoT Edge](https://aka.ms/AzureCreateIoT) pro správu migrovaných nabídek.
 
 Karta **Marketplace** na stránce **Nová nabídka** umožňuje poskytovat potenciálním zákazníkům marketingové, prodejní a právní informace a smlouvy a spravovat potenciální zákazníky generované z tržiště. Tato dlouhá forma je rozdělena do čtyř částí: **Přehled**, **Marketingové artefakty**, **Správa zájemců**a **Právní**.
 
@@ -36,7 +36,7 @@ Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou
 | **Souhrn\***               | Krátké shrnutí nabídky. Maximální délka 100 znaků. <!--ADD PICTURE IN ACTION-->|
 | **Dlouhý souhrn\***          | Delší shrnutí nabídky (i když by to mohlo být stejné jako **shrnutí**).  Maximální délka 256 znaků. <!--ADD PICTURE IN ACTION-->|
 | **Popis\***           | Popis nabídky.  Maximální délka 3000 znaků, podporuje jednoduché formátování HTML.<br/> Musí obsahovat *minimální požadavky na hardware* odstavec v dolní části. například: <br/> <p><u>Minimální požadavky na hardware:</u> Linux x64 a arm32 OS, 1 GB paměti RAM, 500 Mb úložiště</p>
-| **Identifikátor marketingu\***  | Jedinečná adresa URL, kterou je třeba přidružit k této nabídce, obvykle zahrnuje název organizace a řešení, maximální délka 50 znaků.  Například: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Identifikátor marketingu\***  | Jedinečná adresa URL, kterou je třeba přidružit k této nabídce, obvykle zahrnuje název organizace a řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Náhled ID předplatného** | Přidejte jeden až 100 identifikátorů předplatného pro předběžné recenzenty. Tato předplatná uvedená na seznamu povolených budou mít přístup k nabídce, jakmile bude zveřejněna, než začne být uvedena v provozu. |
 | **Užitečné odkazy**          | S více výběry obchodních a technických kategorií, které nabízejí, lze nejlépe spojovat.  Maximálně 10 povolena. Nezapomeňte do dokumentace přidat alespoň jeden odkaz a jeden odkaz na kompatibilní zařízení IoT Edge z [katalogu zařízení Azure IoT](https://catalog.azureiotsolutions.com/). |
 | **Navrhované kategorie\*** | Vyberte si až pět kategorií. Zobrazí se na stránce s podrobnostmi o produktu. Na stránkách procházení jsou všechny moduly IoT Edge zobrazeny v kategorii *modulu Internet věcí \> IoT Edge.*|

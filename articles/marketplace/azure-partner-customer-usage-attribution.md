@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 9/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 348633ffc91bc25a226b05743a18d2c87533a01d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280639"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874938"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Přisuzování využití ze strany zákazníků partnerům Azure
 
@@ -232,7 +232,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Sestava
 
-Přehled pro přiřazení využití zákazníků najdete na řídicím panelu Analýza partnerského centra. ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Chcete-li sestavu zobrazit, musíte k přihlášení použít přihlašovací údaje centra partnerů. Pokud narazíte na nějaké problémy se sestavou nebo přihlášením, vytvořte žádost o podporu podle pokynů v části Získat podporu.
+Přehled pro přiřazení využití zákazníků najdete na řídicím[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)panelu Partnerského centra ( ). Chcete-li sestavu zobrazit, musíte k přihlášení použít přihlašovací údaje centra partnerů. Pokud narazíte na nějaké problémy se sestavou nebo přihlášením, vytvořte žádost o podporu podle pokynů v části Získat podporu.
 
 Chcete-li sestavu zobrazit, zvolte v rozevíracím seznamu typ přidružení partnera možnost Sestopá šablona.
 
@@ -267,7 +267,7 @@ Pokud potřebujete pomoc při registraci marketplace a/nebo přiřazení využit
 1. Vyberte **kategorii** pro váš problém:
 
    - Chcete-li problémy s přidružením použití, vyberte **možnost Jiné**.
-   - Pokud chcete vyřešit problémy s CPP azure marketplace, vyberte **problém s přístupem**.
+   - Pokud chcete vyřešit problémy s Azure Marketplace, vyberte **Problém s přístupem**.
 
      ![Výběr kategorie problému](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -315,7 +315,7 @@ Ano, zákazník nebo partner implementace může šablonu přizpůsobit a může
 
 **Můžu sledovat šablony nasazené z úložiště, které není microsoftem, jako je GitHub?**
 
-Ano, pokud je identifikátor GUID k dispozici při nasazení šablony, je sledováno použití. Partneři musí mít profil v CPP k registraci identifikátorů GUID používaných pro nasazení mimo Azure Marketplace.
+Ano, pokud je identifikátor GUID k dispozici při nasazení šablony, je sledováno použití. Partneři musí mít profil v registraci komerčního tržiště v Centru partnerů, aby mohli zaregistrovat identifikátory GUID používané pro nasazení mimo Azure Marketplace.
 
 **Dostává zákazník také hlášení?**
 

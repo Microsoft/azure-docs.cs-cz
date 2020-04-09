@@ -1,24 +1,24 @@
 ---
 title: Kód Azure HDInsight pro Visual Studio
-description: Přečtěte si, jak používat nástroje Spark & Hive (Azure HDInsight) pro kód Visual Studia k vytváření a odesílání dotazů a skriptů.
+description: Přečtěte si, jak používat nástroje Spark & Hive (Azure HDInsight) pro kód Visual Studia. Pomocí nástrojů můžete vytvářet a odesílat dotazy a skripty.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435688"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878625"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů Spark & Hive pro kód sady Visual Studio
 
-Naučte se používat Spark & Hive Tools for Visual Studio Code k vytváření a odesílání dávkových úloh Apache Hive, interaktivních dotazů Hive a skriptů PySpark pro Apache Spark. Nejprve popíšeme, jak nainstalovat Spark & Hive Tools v kódu Visual Studia, a pak si projdeme, jak odeslat úlohy do Spark & Hive Tools.  
+Přečtěte si, jak používat Apache Spark & Hive Tools pro visual studio kód. Pomocí nástrojů můžete vytvářet a odesílat dávkové úlohy Apache Hive, interaktivní dotazy Hive a skripty PySpark pro Apache Spark. Nejprve popíšeme, jak nainstalovat Spark & Hive Tools v kódu Visual Studia. Pak si projdeme, jak předložit pracovní místa společnosti Spark & Hive Tools.  
 
-Spark & Hive Tools lze nainstalovat na platformách, které jsou podporovány Visual Studio Code, které zahrnují Windows, Linux a macOS. Všimněte si následujících předpokladů pro různé platformy.
+Spark & Hive Nástroje lze nainstalovat na platformách, které jsou podporovány Visual Studio Code. Všimněte si následujících předpokladů pro různé platformy.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ Po splnění požadavků můžete nainstalovat Spark & Hive Tools pro visual stu
 
 Chcete-li otevřít pracovní složku a vytvořit soubor v kódu sady Visual Studio, postupujte takto:
 
-1. Na řádku nabídek přejděte na Složku pro otevření **souborů...** > **Open Folder...**  >  **C:\HD\HDexample**a pak vyberte tlačítko **Vybrat složku.** Složka se zobrazí v zobrazení **Průzkumníka** vlevo.
+1. Na řádku nabídek přejděte do**složky Otevřít** **soubor...** >   >  **C:\HD\HDexample**a pak vyberte tlačítko **Vybrat složku.** Složka se zobrazí v zobrazení **Průzkumníka** vlevo.
 
 2. V **zobrazení Průzkumníka** vyberte složku **HDexample** a pak vedle pracovní složky vyberte ikonu **Nový soubor:**
 
@@ -70,7 +70,7 @@ Pro uživatele národního cloudu nejprve nastavte prostředí Azure a pak pomoc
 
 ## <a name="connect-to-an-azure-account"></a>Připojení k účtu Azure
 
-Než budete moct odesílat skripty do clusterů z visual studia Code, musíte se buď připojit ke svému účtu Azure, nebo propojit cluster (pomocí přihlašovacích údajů k uživatelskému jménu a heslu Apache Ambari nebo účtu k připojení k doméně). Chcete-li se připojit k Azure, postupujte takto:
+Než budete moci odesílat skripty do clusterů z visual studia Code, musíte se buď připojit ke svému účtu Azure, nebo propojit cluster. Použijte přihlašovací údaje pro uživatelské jméno a heslo Apache Ambari nebo účet spojený s doménou. Chcete-li se připojit k Azure, postupujte takto:
 
 1. Na řádku nabídek přejděte na **Zobrazit** > **paletu příkazů...** a zadejte **Azure: Přihlásit se**:
 
@@ -260,7 +260,7 @@ Po odeslání úlohy Pythonu se v okně **VÝSTUP** v kódu sady Visual Studio z
 
 ## <a name="apache-livy-configuration"></a>Konfigurace Apache Livy
 
-[Konfigurace Apache Livy](https://livy.incubator.apache.org/) je podporována. Můžete jej nakonfigurovat v rozhraní **. Soubor VSCode\settings.json** ve složce pracovního prostoru. V současné době konfigurace Livy podporuje pouze skript Pythonu. Další podrobnosti viz [Livy README](https://github.com/cloudera/livy/blob/master/README.rst ).
+[Konfigurace Apache Livy](https://livy.incubator.apache.org/) je podporována. Můžete jej nakonfigurovat v rozhraní **. Soubor VSCode\settings.json** ve složce pracovního prostoru. V současné době konfigurace Livy podporuje pouze skript Pythonu. Další informace naleznete [v tématu Livy README](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**Jak spustit konfiguraci Livy**
 
@@ -269,7 +269,7 @@ Metoda 1
 2. Do pole **Nastavení vyhledávání** zadejte **hdinsight job submission: Livy Conf**.  
 3. Vyberte **Upravit v souboru settings.json** pro příslušný výsledek hledání.
 
-Metoda 2 Odešlete soubor a všimněte si, že složka VSCODE je automaticky přidána do pracovní složky. Konfiguraci Livy můžete zobrazit výběrem souboru **.vscode\settings.json**.
+Metoda 2 Odešlete soubor `.vscode` a všimněte si, že složka je automaticky přidána do pracovní složky. Konfiguraci Livy můžete zobrazit výběrem souboru **.vscode\settings.json**.
 
 + Nastavení projektu:
 
@@ -283,7 +283,7 @@ Metoda 2 Odešlete soubor a všimněte si, že složka VSCODE je automaticky př
     **POST /dávky** Tělo požadavku
 
     | jméno | description | type |
-    | :- | :- | :- |
+    | --- | --- | --- |
     |  – soubor | Soubor obsahující aplikaci ke spuštění | Cesta (povinné) |
     | proxyUživatel | Uživatel zosobnit při spuštění úlohy | Řetězec |
     | Classname | Aplikace Java/Spark hlavní třída | Řetězec |
@@ -304,8 +304,8 @@ Metoda 2 Odešlete soubor a všimněte si, že složka VSCODE je automaticky př
     Tělo odezvy Vytvořený objekt Batch.
 
     | jméno | description | type |
-    | :- | :- | :- |
-    | id | ID relace | Int |
+    | --- | ---| --- |
+    | ID | ID relace | Int |
     | appId | ID aplikace této relace | Řetězec |
     | appInfo | Podrobné informace o aplikaci | Mapa klíče=val |
     | Protokolu | Řádky protokolu | Seznam řetězců |
@@ -340,8 +340,8 @@ Zobrazit náhled tabulky Hive ve vašich clusterech můžete zobrazit přímo pr
 
 - Panel ZPRÁVY
    1. Pokud je počet řádků v tabulce větší než 100, zobrazí se následující zpráva: "Prvních 100 řádků jsou zobrazeny pro tabulku Hive."
-   2. Pokud je počet řádků v tabulce menší nebo roven 100, zobrazí se zpráva jako následující: "Pro tabulku Hive se zobrazí 60 řádků."
-   3. Pokud v tabulce není žádný obsah, zobrazí se následující zpráva: "Pro tabulku Hive se zobrazí 0 řádků."
+   2. Pokud je počet řádků v tabulce menší nebo roven 100, zobrazí se následující zpráva: "Pro tabulku Hive je zobrazeno 60 řádků."
+   3. Pokud v tabulce není žádný obsah, zobrazí se`0 rows are displayed for Hive table.`následující zpráva: "
 
         >[!NOTE]
         >
@@ -364,7 +364,7 @@ Spark & Hive pro Visual Studio Code také podporuje následující funkce:
 
 ## <a name="reader-only-role"></a>Role pouze pro čtenáře
 
-Uživatelé, kterým je přiřazena role pouze pro čtení pro cluster, již nemohou odesílat úlohy do clusteru HDInsight, ani nemohou zobrazit databázi Hive. Obraťte se na správce clusteru a upgradujte svou roli na [**operátora clusteru HDInsight**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) na [webu Azure Portal](https://ms.portal.azure.com/). Pokud máte platná pověření Ambari, můžete ručně propojit cluster pomocí následujících pokynů.
+Uživatelé, kterým je přiřazena role pouze pro čtení pro cluster, nemohou odesílat úlohy do clusteru HDInsight ani zobrazit databázi Hive. Obraťte se na správce clusteru a upgradujte svou roli na [**operátora clusteru HDInsight**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) na [webu Azure Portal](https://ms.portal.azure.com/). Pokud máte platná pověření Ambari, můžete ručně propojit cluster pomocí následujících pokynů.
 
 ### <a name="browse-the-hdinsight-cluster"></a>Procházení clusteru HDInsight  
 
@@ -393,11 +393,11 @@ Při odesílání úlohy do clusteru HDInsight budete vyzváni k propojení clus
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Procházení účtu Data Lake Storage Gen2
 
-Když vyberete průzkumníka Azure HDInsight pro rozšíření účtu Data Lake Storage Gen2, budete vyzváni k zadání přístupového klíče úložiště, pokud váš účet Azure nemá přístup k úložišti Gen2. Po ověření přístupového klíče se účet Gen2 úložiště datového jezera automaticky rozbalí.
+Vyberte průzkumníka Azure HDInsight a rozbalte účet Data Lake Storage Gen2. Pokud váš účet Azure nemá přístup k úložišti Gen2, budete vyzváni k zadání přístupového klíče úložiště. Po ověření přístupového klíče se účet Gen2 úložiště datového jezera automaticky rozbalí.
 
 ### <a name="submit-jobs-to-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>Odeslání úloh do clusteru HDInsight s datem Jezera Gen2
 
-Když odešlete úlohu do clusteru HDInsight pomocí Data Lake Storage Gen2, budete vyzváni k zadání přístupového klíče úložiště, pokud váš účet Azure nemá přístup pro zápis do úložiště Gen2. Po ověření přístupového klíče bude úloha úspěšně odeslána.
+Odešlete úlohu do clusteru HDInsight pomocí data lake storage gen2. Pokud váš účet Azure nemá přístup pro zápis do úložiště Gen2, budete vyzváni k zadání přístupového klíče úložiště. Po ověření přístupového klíče bude úloha úspěšně odeslána.
 
 ![Nástroje spark & Hive pro přístupový klíč kódu sady Visual Studio](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
 

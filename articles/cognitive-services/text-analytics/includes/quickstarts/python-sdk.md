@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 617ab4114fd200c0b4306e3c27825bafe06b1764
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 988de8da839a677b47d679e7bd44059c7477a517
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80240109"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986694"
 ---
 <a name="HOLTop"></a>
 
@@ -40,7 +40,7 @@ Po instalaci Pythonu můžete nainstalovat klientskou knihovnu pomocí:
 #### <a name="version-30-preview"></a>[Verze 3.0-preview](#tab/version-3)
 
 ```console
-pip install azure-ai-textanalytics
+pip install azure-ai-textanalytics==1.0.0b3
 ```
 
 > [!TIP]
@@ -309,7 +309,7 @@ Personally Identifiable Information Entities:
 ```
 
 
-## <a name="entity-linking"></a>Propojení entit
+## <a name="entity-linking"></a>Entity Linking
 
 Vytvořte novou `entity_linking_example()` funkci s názvem, která přebírá `recognize_linked_entities()` klienta jako argument, pak volá funkci a itetuje prostřednictvím výsledků. Vrácený objekt odpovědi bude obsahovat seznam `entities` zjištěných entit v případě úspěchu `error` a pokud ne. Vzhledem k tomu, že propojené entity jsou jednoznačně identifikovány, výskyty stejné entity jsou seskupeny pod objektem `entity` jako seznam `match` objektů.
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239791"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878897"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Nastavení výstrah na události diagnostického protokolu z brány VPN Gateway
 
@@ -26,7 +26,7 @@ V Azure jsou k dispozici následující protokoly:
 |TunnelDiagnosticLog | Obsahuje události změny stavu tunelového propojení. Události připojení/odpojení tunelového propojení mají souhrnný důvod změny stavu, pokud je to možné |
 |RouteDiagnosticLog | Protokoluje změny statických tras a událostí protokolu BGP, ke kterým dochází v bráně. |
 |Protokol IKEDiagnosticLog | Protokoly IKE řídí zprávy a události na bráně |
-|P2SDiagnosticLog | Protokoluje zprávy a události ovládacího prvku point-to-site v bráně. |
+|P2SDiagnosticLog | Protokoluje zprávy a události ovládacího prvku point-to-site v bráně. Informace o zdroji připojení jsou k dispozici pouze pro připojení IKEv2 |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Nastavení výstrah na webu Azure Portal
 

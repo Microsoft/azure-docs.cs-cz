@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546239"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876288"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka pro operace správy ověřování Azure a služby Active Directory
 
@@ -64,7 +64,7 @@ V následující tabulce naleznete doporučené řešení pro zmírnění probl�
 | Žádný mechanismus pro ochranu před slabými hesly | Povolení [samoobslužného resetování hesla Azure AD (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) a [ochrany heslem](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) |
 | Žádný mechanismus pro detekci uniklých hesel | Povolení [synchronizace hash hesel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) pro získání přehledů |
 | Použití služby AD FS a možnost přejít na spravované ověřování | Povolení [inteligentního uzamčení a/nebo](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) [inteligentního uzamčení služby AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) FS Extranet |
-| Zásady hesel používají pravidla založená na složitosti, jako je délka, více znakových sad nebo vypršení platnosti | Přehodnotit ve prospěch [Microsoft Doporučené postupy](https://aka.ms/passwordguidance) a přepnout svůj přístup ke správě hesel a nasadit [ochranu heslem Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad). |
+| Zásady hesel používají pravidla založená na složitosti, jako je délka, více znakových sad nebo vypršení platnosti | Přehodnotit ve prospěch [Microsoft Doporučené postupy](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) a přepnout svůj přístup ke správě hesel a nasadit [ochranu heslem Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad). |
 | Uživatelé nejsou registrováni k použití vícefaktorového ověřování (MFA) | [Zaregistrujte všechny informace o zabezpečení uživatele,](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy) aby je bylo možné použít jako mechanismus k ověření identity uživatele spolu s jeho heslem |
 | Nedochází k odvolání hesel na základě rizika uživatele | Nasazení zásad [rizika uživatele azure](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy) ad identity protection vynutit změny hesla na nevracení přihlašovacích údajů pomocí sspr |
 | Neexistuje žádný inteligentní mechanismus uzamčení, který by chránil škodlivé ověřování před špatnými aktéry pocházejícími z identifikovaných adres IP | Nasazení cloudové houževnatého ověřování pomocí synchronizace nastavení hash hesla nebo [předávacího ověřování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) |
@@ -101,11 +101,11 @@ Pokud vaše místní organizace chybí strategie odolnosti proti výpadku nebo m
 
 ![tok synchronizace hash hesel](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Informace o možnostech ověřování najdete v [tématu Výběr správné metody ověřování pro řešení hybridní identity služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn).
+Informace o možnostech ověřování najdete v [tématu Výběr správné metody ověřování pro řešení hybridní identity služby Azure Active Directory](../hybrid/choose-ad-authn.md).
 
 ### <a name="programmatic-usage-of-credentials"></a>Programové použití pověření
 
-Skripty Azure AD používající PowerShell nebo aplikace používající rozhraní Microsoft Graph API vyžadují zabezpečené ověřování. Špatná správa pověření provádějící tyto skripty a nástroje zvyšuje riziko krádeže pověření. Pokud používáte skripty nebo aplikace, které jsou závislé na pevně zakódovaných heslech nebo příkazových řádcích, měli byste nejprve zkontrolovat hesla v konfiguračních souborech nebo zdrojovém kódu, pak tyto závislosti nahradit a kdykoli je to možné použít spravované identity Azure, integrované ověřování systému Windows nebo [certifikáty.](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) Pro aplikace, kde předchozí řešení nejsou možné, zvažte použití [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+Skripty Azure AD používající PowerShell nebo aplikace používající rozhraní Microsoft Graph API vyžadují zabezpečené ověřování. Špatná správa pověření provádějící tyto skripty a nástroje zvyšuje riziko krádeže pověření. Pokud používáte skripty nebo aplikace, které jsou závislé na pevně zakódovaných heslech nebo příkazových řádcích, měli byste nejprve zkontrolovat hesla v konfiguračních souborech nebo zdrojovém kódu, pak tyto závislosti nahradit a kdykoli je to možné použít spravované identity Azure, integrované ověřování systému Windows nebo [certifikáty.](../reports-monitoring/tutorial-access-api-with-certificates.md) Pro aplikace, kde předchozí řešení nejsou možné, zvažte použití [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 Pokud zjistíte, že existují instanční objekty s pověřeníhesla a nejste si jisti, jak jsou tyto přihlašovací údaje hesla zabezpečeny skripty nebo aplikacemi, obraťte se na vlastníka aplikace, abyste lépe porozuměli vzorcům použití.
 
@@ -115,7 +115,7 @@ Společnost Microsoft také doporučuje kontaktovat vlastníky aplikací, abyste
 
 ### <a name="on-premises-authentication"></a>Místní ověřování
 
-Federované ověřování s integrovaným ověřováním systému Windows (IWA) nebo bezproblémovým ověřováním jednotného přihlašování (SSO) se spravovaným ověřováním pomocí synchronizace hash nebo předávacího ověřování hesla je nejlepší uživatelské prostředí v podnikové síti s místními řadiči domény. Minimalizuje únavu z výzvy k zadání pověření a snižuje riziko, že se uživatelé stanou kořistí phishingových útoků. Pokud již používáte cloudové ověřování s PHS nebo PTA, ale uživatelé stále potřebují zadat své heslo při ověřování v místním prostředí, měli byste okamžitě [nasadit bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso). Na druhou stranu pokud jste aktuálně federovány s plány nakonec migrovat na ověřování spravované cloudem, pak byste měli implementovat bezproblémové jednotné přihlašování jako součást projektu migrace.
+Federované ověřování s integrovaným ověřováním systému Windows (IWA) nebo bezproblémovým ověřováním jednotného přihlašování (SSO) se spravovaným ověřováním pomocí synchronizace hash nebo předávacího ověřování hesla je nejlepší uživatelské prostředí v podnikové síti s místními řadiči domény. Minimalizuje únavu z výzvy k zadání pověření a snižuje riziko, že se uživatelé stanou kořistí phishingových útoků. Pokud již používáte cloudové ověřování s PHS nebo PTA, ale uživatelé stále potřebují zadat své heslo při ověřování v místním prostředí, měli byste okamžitě [nasadit bezproblémové jednotné přihlašování](../hybrid/how-to-connect-sso.md). Na druhou stranu pokud jste aktuálně federovány s plány nakonec migrovat na ověřování spravované cloudem, pak byste měli implementovat bezproblémové jednotné přihlašování jako součást projektu migrace.
 
 ### <a name="device-trust-access-policies"></a>Zásady přístupu k důvěryhodnosti zařízení
 
@@ -123,66 +123,66 @@ Stejně jako uživatel ve vaší organizaci je zařízení základní identitou,
 
 - Vyhnout se tření, například s Vícefaktorové zabezpečení, když je zařízení důvěryhodné
 - Blokování přístupu z nedůvěryhodných zařízení
-- Pro zařízení s Windows 10 poskytněte [jednotné přihlašování k místním prostředkům bez problémů](https://docs.microsoft.com/azure/active-directory/devices/azuread-join-sso).
+- Pro zařízení s Windows 10 poskytněte [jednotné přihlašování k místním prostředkům bez problémů](../devices/azuread-join-sso.md).
 
 Tento cíl můžete provést tím, že identity zařízení a jejich správu ve službě Azure AD pomocí jedné z následujících metod:
 
 - Organizace můžou pomocí [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) spravovat zařízení a vynucovat zásady dodržování předpisů, doručovat stav zařízení a nastavovat zásady podmíněného přístupu na základě toho, jestli je zařízení kompatibilní. Microsoft Intune může spravovat iOS zařízení, stolní počítače Mac (integrace Přes JAMF), stolní počítače s Windows (nativně pomocí správy mobilních zařízení pro Windows 10 a spolusprávu s Microsoft Endpoint Configuration Manager) a mobilní zařízení s Androidem.
-- [Hybridní připojení k Azure AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) poskytuje správu pomocí zásad skupiny nebo nástroje Microsoft Endpoint Configuration Manager v prostředí s počítači spojenými s doménou služby Active Directory. Organizace můžete nasadit spravované prostředí buď prostřednictvím PHS nebo PTA s bezproblémové jednotné přihlašování. Uvedení vašich zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím přistupujícího objektu zabezpečení prostřednictvím cloudových a místních prostředků a zároveň vám umožní zabezpečit přístup k cloudovým a místním prostředkům pomocí [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) současně.
+- [Hybridní připojení k Azure AD](../devices/hybrid-azuread-join-managed-domains.md) poskytuje správu pomocí zásad skupiny nebo nástroje Microsoft Endpoint Configuration Manager v prostředí s počítači spojenými s doménou služby Active Directory. Organizace můžete nasadit spravované prostředí buď prostřednictvím PHS nebo PTA s bezproblémové jednotné přihlašování. Uvedení vašich zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím přistupujícího objektu zabezpečení prostřednictvím cloudových a místních prostředků a zároveň vám umožní zabezpečit přístup k cloudovým a místním prostředkům pomocí [podmíněného přístupu](../conditional-access/overview.md) současně.
 
-Pokud máte zařízení s Windows připojená k doméně, která nejsou registrovaná v cloudu, nebo zařízení s Windows připojená k doméně, která jsou registrovaná v cloudu, ale bez zásad podmíněného přístupu, měli byste zaregistrovat neregistrovaná zařízení a v obou případech [použít hybridní připojení Azure AD jako ovládací prvek](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) v zásadách podmíněného přístupu.
+Pokud máte zařízení s Windows připojená k doméně, která nejsou registrovaná v cloudu, nebo zařízení s Windows připojená k doméně, která jsou registrovaná v cloudu, ale bez zásad podmíněného přístupu, měli byste zaregistrovat neregistrovaná zařízení a v obou případech [použít hybridní připojení Azure AD jako ovládací prvek](../conditional-access/require-managed-devices.md) v zásadách podmíněného přístupu.
 
 ![Snímek obrazovky s udělením v zásadách podmíněného přístupu vyžadujících hybridní zařízení](./media/active-directory-ops-guide/active-directory-ops-img6.png)
 
-Pokud spravujete zařízení s MDM nebo Microsoft Intune, ale nepoužíváte ovládací prvky zařízení v zásadách podmíněného přístupu, doporučujeme použít [vyžadovat, aby zařízení bylo v](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant) těchto zásadách označeno jako vyhovující jako ovládací prvek.
+Pokud spravujete zařízení s MDM nebo Microsoft Intune, ale nepoužíváte ovládací prvky zařízení v zásadách podmíněného přístupu, doporučujeme použít [vyžadovat, aby zařízení bylo v](../conditional-access/require-managed-devices.md#require-device-to-be-marked-as-compliant) těchto zásadách označeno jako vyhovující jako ovládací prvek.
 
 ![Snímek obrazovky s udělením v zásadách podmíněného přístupu, které vyžadují dodržování předpisů zařízení](./media/active-directory-ops-guide/active-directory-ops-img7.png)
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>Zásady přístupu k důvěryhodnosti zařízení doporučené pro čtení
 
-- [Postup: Plánování hybridní implementace připojení k hybridníslužbě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [Postup: Plánování hybridní implementace připojení k hybridníslužbě Azure Active Directory](../devices/hybrid-azuread-join-plan.md)
 - [Konfigurace identit a přístupu k zařízením](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello pro firmy
 
 Ve Windows 10 [windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) nahrazuje hesla silným dvoufaktorovým ověřováním na počítačích. Windows Hello pro firmy umožňuje efektivnější prostředí MFA pro uživatele a snižuje vaši závislost na heslech. Pokud jste zařízení s Windows 10 ještě nezačali zavádět nebo jste je nasadili jen částečně, doporučujeme upgradovat na Windows 10 a [povolit Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) na všech zařízeních.
 
-Pokud se chcete dozvědět více o ověřování bez hesla, přečtěte [si informace o světě bez hesel pomocí služby Azure Active Directory](https://aka.ms/passwordlessdoc).
+Pokud se chcete dozvědět více o ověřování bez hesla, přečtěte [si informace o světě bez hesel pomocí služby Azure Active Directory](../authentication/concept-authentication-passwordless.md).
 
 ## <a name="application-authentication-and-assignment"></a>Ověřování a přiřazováno aplikací
 
 ### <a name="single-sign-on-for-apps"></a>Jednotné přihlašování pro aplikace
 
-Poskytování standardizovaného jednotného přihlašovacího mechanismu pro celý podnik je zásadní pro nejlepší uživatelské prostředí, snížení rizika, schopnost podávat zprávy a zásadsprávné řízení. Pokud používáte aplikace, které podporují přihlašování pomocí služby Azure AD, ale jsou aktuálně nakonfigurované pro použití místních účtů, měli byste tyto aplikace překonfigurovat tak, aby používaly služby SSO s Azure AD. Podobně pokud používáte všechny aplikace, které podporují přihlašování pomocí služby Azure AD, ale používají jiného zprostředkovatele identity, měli byste tyto aplikace překonfigurovat tak, aby používaly také služby SSO s Azure AD. Pro aplikace, které nepodporují federační protokoly, ale podporují ověřování založené na formulářích, doporučujeme nakonfigurovat aplikaci tak, aby [používala trezor hesel](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting) s proxy aplikacemi Azure AD.
+Poskytování standardizovaného jednotného přihlašovacího mechanismu pro celý podnik je zásadní pro nejlepší uživatelské prostředí, snížení rizika, schopnost podávat zprávy a zásadsprávné řízení. Pokud používáte aplikace, které podporují přihlašování pomocí služby Azure AD, ale jsou aktuálně nakonfigurované pro použití místních účtů, měli byste tyto aplikace překonfigurovat tak, aby používaly služby SSO s Azure AD. Podobně pokud používáte všechny aplikace, které podporují přihlašování pomocí služby Azure AD, ale používají jiného zprostředkovatele identity, měli byste tyto aplikace překonfigurovat tak, aby používaly také služby SSO s Azure AD. Pro aplikace, které nepodporují federační protokoly, ale podporují ověřování založené na formulářích, doporučujeme nakonfigurovat aplikaci tak, aby [používala trezor hesel](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) s proxy aplikacemi Azure AD.
 
 ![Přihlášení založené na hesle pomocí protokolu AppProxy](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
 > Pokud nemáte mechanismus pro zjišťování nespravovaných aplikací ve vaší organizaci, doporučujeme implementovat proces zjišťování pomocí řešení cloudového zabezpečení přístupu (CASB), jako je [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security).
 
-Nakonec pokud máte galerii aplikací Azure AD a používáte aplikace, které podporují přihlašování pomocí azure ad, doporučujeme [uvést aplikaci v galerii aplikací](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing).
+Nakonec pokud máte galerii aplikací Azure AD a používáte aplikace, které podporují přihlašování pomocí azure ad, doporučujeme [uvést aplikaci v galerii aplikací](../azuread-dev/howto-app-gallery-listing.md).
 
 #### <a name="single-sign-on-recommended-reading"></a>Doporučená čtení pro jednotné přihlášení
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Služby Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
 ### <a name="migration-of-ad-fs-applications-to-azure-ad"></a>Migrace aplikací služby AD FS do služby Azure AD
 
-[Migrace aplikací ze služby AD FS do služby Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure) umožňuje další funkce zabezpečení, konzistentnější možnosti správy a lepší možnosti spolupráce. Pokud máte aplikace nakonfigurované ve službě AD FS, které podporují služby SSO s Azure AD, měli byste tyto aplikace překonfigurovat tak, aby používaly služby SSO s Azure AD. Pokud máte aplikace nakonfigurované ve službě AD FS s neobvyklými konfiguracemi, které Azure AD nepodporuje, měli byste kontaktovat vlastníky aplikací, abyste zjistili, zda je speciální konfigurace absolutním požadavkem aplikace. Pokud není vyžadováno, pak byste měli překonfigurovat aplikaci tak, aby používala přihlašované pomocí služby AD.
+[Migrace aplikací ze služby AD FS do služby Azure AD](../manage-apps/migrate-adfs-apps-to-azure.md) umožňuje další funkce zabezpečení, konzistentnější možnosti správy a lepší možnosti spolupráce. Pokud máte aplikace nakonfigurované ve službě AD FS, které podporují služby SSO s Azure AD, měli byste tyto aplikace překonfigurovat tak, aby používaly služby SSO s Azure AD. Pokud máte aplikace nakonfigurované ve službě AD FS s neobvyklými konfiguracemi, které Azure AD nepodporuje, měli byste kontaktovat vlastníky aplikací, abyste zjistili, zda je speciální konfigurace absolutním požadavkem aplikace. Pokud není vyžadováno, pak byste měli překonfigurovat aplikaci tak, aby používala přihlašované pomocí služby AD.
 
 ![Azure AD jako primární zprostředkovatel identity](./media/active-directory-ops-guide/active-directory-ops-img9.png)
 
 > [!NOTE]
-> [Azure AD Connect Health for ADFS](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs) se dá použít ke shromažďování podrobností o konfiguraci o každé aplikaci, kterou lze potenciálně migrovat do Služby Azure AD.
+> [Azure AD Connect Health for ADFS](../hybrid/how-to-connect-health-adfs.md) se dá použít ke shromažďování podrobností o konfiguraci o každé aplikaci, kterou lze potenciálně migrovat do Služby Azure AD.
 
 ### <a name="assign-users-to-applications"></a>Přiřazení uživatelů k aplikacím
 
-[Přiřazení uživatelů k aplikacím](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) je nejlépe mapováno pomocí skupin, protože umožňují větší flexibilitu a schopnost spravovat ve velkém měřítku. Mezi výhody použití skupin patří [dynamické členství ve skupinách založené na atributech](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership) a [delegování na vlastníky aplikací](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners). Pokud tedy již skupiny používáte a spravujete, doporučujeme provést následující akce ke zlepšení správy ve velkém měřítku:
+[Přiřazení uživatelů k aplikacím](../manage-apps/assign-user-or-group-access-portal.md) je nejlépe mapováno pomocí skupin, protože umožňují větší flexibilitu a schopnost spravovat ve velkém měřítku. Mezi výhody použití skupin patří [dynamické členství ve skupinách založené na atributech](../users-groups-roles/groups-dynamic-membership.md) a [delegování na vlastníky aplikací](../fundamentals/active-directory-accessmanagement-managing-group-owners.md). Pokud tedy již skupiny používáte a spravujete, doporučujeme provést následující akce ke zlepšení správy ve velkém měřítku:
 
 - Delegujte správu a zásadsprávné řízení skupiny na vlastníky aplikací.
 - Povolit samoobslužný přístup k aplikaci.
 - Definujte dynamické skupiny, pokud atributy uživatele mohou konzistentně určovat přístup k aplikacím.
-- Implementujte atestaci do skupin používaných pro přístup k aplikacím pomocí [kontrol přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview).
+- Implementujte atestaci do skupin používaných pro přístup k aplikacím pomocí [kontrol přístupu Azure AD](../governance/access-reviews-overview.md).
 
 Na druhou stranu pokud zjistíte, že aplikace, které mají přiřazení k jednotlivým uživatelům, nezapomeňte implementovat [zásady správného řízení](https://docs.microsoft.com/azure/active-directory/governance/index) kolem těchto aplikací.
 
@@ -223,12 +223,12 @@ Pokud už vlastníte licence Azure AD Premium P2, které podporují použití ri
 
 #### <a name="risk-based-access-policies-recommended-reading"></a>Zásady přístupu založené na rizicích doporučené čtení
 
-- [Postup: Konfigurace zásad rizik přihlášení](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
-- [Postup: Konfigurace zásad rizik pro uživatele](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
+- [Postup: Konfigurace zásad rizik přihlášení](../identity-protection/howto-identity-protection-configure-risk-policies.md)
+- [Postup: Konfigurace zásad rizik pro uživatele](../identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 ### <a name="client-application-access-policies"></a>Zásady přístupu klientských aplikací
 
-Microsoft Intune Application Management (MAM) poskytuje možnost nabízení ovládacích prvků ochrany dat, jako je šifrování úložiště, PIN, vyčištění vzdáleného úložiště atd., do kompatibilních klientských mobilních aplikací, jako je Outlook Mobile. Kromě toho lze vytvořit zásady podmíněného přístupu, které [omezí přístup ke](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) cloudovým službám, jako je Exchange Online, ze schválených nebo kompatibilních aplikací.
+Microsoft Intune Application Management (MAM) poskytuje možnost nabízení ovládacích prvků ochrany dat, jako je šifrování úložiště, PIN, vyčištění vzdáleného úložiště atd., do kompatibilních klientských mobilních aplikací, jako je Outlook Mobile. Kromě toho lze vytvořit zásady podmíněného přístupu, které [omezí přístup ke](../conditional-access/app-based-conditional-access.md) cloudovým službám, jako je Exchange Online, ze schválených nebo kompatibilních aplikací.
 
 Pokud vaši zaměstnanci instalují aplikace podporující MAM, jako jsou mobilní aplikace Office, pro přístup k podnikovým prostředkům, jako je Exchange Online nebo SharePoint Online, a vy také podporujete BYOD (přineste si vlastní zařízení), doporučujeme nasadit zásady aplikace MAM pro správu konfigurace aplikace v osobně vlastněných zařízeních bez registrace MDM a pak aktualizovat zásady podmíněného přístupu tak, aby umožňovaly přístup pouze od klientů podporujících MAM.
 
@@ -245,10 +245,10 @@ Podmíněný přístup je základním nástrojem pro zlepšení stavu zabezpeče
 - Nepoužívejte jako filtr **všechny uživatele** a nechtěně přidávejte **hosty.**
 - **Migrace všech zásad "staršíverze" na portál Azure**
 - Zachycení všech kritérií pro uživatele, zařízení a aplikace
-- Použití zásad podmíněného přístupu k [implementaci vícefaktorového ověřování](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access), nikoli pomocí **vícefaktorového ověřování pro jednotlivé uživatele.**
+- Použití zásad podmíněného přístupu k [implementaci vícefaktorového ověřování](../conditional-access/plan-conditional-access.md), nikoli pomocí **vícefaktorového ověřování pro jednotlivé uživatele.**
 - Mít malou sadu základních zásad, které lze použít pro více aplikací
 - Definování prázdných skupin výjimek a jejich přidání do zásad, které mají strategii výjimek
-- Plánování účtů [rozbití skla](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency) bez kontrol vícefaktorové kontroly
+- Plánování účtů [rozbití skla](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) bez kontrol vícefaktorové kontroly
 - Zajistěte konzistentní prostředí napříč klientskými aplikacemi Office 365, například Teams, OneDrive pro firmy, Outlook atd.) implementací stejné sady ovládacích prvků pro služby, jako je Exchange Online a Sharepoint Online
 - Přidělování politik by mělo být prováděno prostřednictvím skupin, nikoli jednotlivců
 - Proveďte pravidelné kontroly skupin výjimek používaných v zásadách k omezení doby, po kterou jsou uživatelé mimo stav zabezpečení. Pokud vlastníte Azure AD P2, můžete použít kontroly přístupu k automatizaci procesu
@@ -309,7 +309,7 @@ Níže je uveden seznam aplikací s oprávněními, které byste mohli chtít pr
 | | Mail.Read.Shared |
 | | Mail.ReadWrite |
 
-- Aplikace udělily úplné zosobnění uživatele přihlášeného uživatele. Například:
+- Aplikace udělily úplné zosobnění uživatele přihlášeného uživatele. Příklad:
 
 |Prostředek | Oprávnění |
 | :- | :- |

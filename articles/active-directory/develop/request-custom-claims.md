@@ -3,26 +3,21 @@ title: Vyžádání vlastních deklarací (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak požádat o vlastní deklarace identity.
 services: active-directory
-documentationcenter: ''
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: marsma
-ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4974fe3b387683f662d7a7b4f3ccb4935153f07e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085603"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883092"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Postup: Vyžádání vlastních deklarací pomocí msal pro iOS a macOS
 
@@ -30,7 +25,7 @@ OpenID Connect umožňuje volitelně požadovat vrácení jednotlivých deklarac
 
 Knihovna ověřování Microsoft (MSAL) pro iOS a macOS umožňuje vyžádání konkrétních deklarací identity ve scénářích interaktivních i tichých tokenů. Činí tak prostřednictvím parametru. `claimsRequest`
 
-Existuje více scénářů, kde je to potřeba. Například:
+Existuje více scénářů, kde je to potřeba. Příklad:
 
 - Vyžádání deklarací mimo standardní sadu pro vaši aplikaci.
 - Vyžádání konkrétní kombinace standardní deklarace, které nelze zadat pomocí oborů pro vaši aplikaci. Například pokud přístupový token získá odmítnutz důvodu chybějící deklarace identity, aplikace může požádat o chybějící deklarace pomocí MSAL.

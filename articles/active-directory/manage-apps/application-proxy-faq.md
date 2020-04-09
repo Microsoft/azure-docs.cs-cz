@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410721"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877299"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy serveru Proxy aplikace služby Active Directory (Azure AD)
 
@@ -48,10 +48,6 @@ Ne, tento scénář není podporován. Výchozí nastavení jsou:
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Moje back-endová aplikace je hostována na více webových serverech a vyžaduje trvalost uživatelské relace (lepivost). Jak lze dosáhnout trvalosti relace? 
 
 Doporučení naleznete v tématu [Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikace](application-proxy-high-availability-load-balancing.md).
-
-### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Mohu umístit předávací proxy zařízení mezi konektorové servery a back-endaplikační server?
-
-Ne, tento scénář není podporován. Jenom služby konektoru a aktualizace lze nakonfigurovat tak, aby používaly předávaný proxy server pro odchozí provoz do Azure. Viz [Práce s existujícími místními proxy servery](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)
 
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Je podporováno ukončení TLS (kontrola nebo zrychlení TLS/HTTPS) na provozech ze serverů konektorů do Azure?
 

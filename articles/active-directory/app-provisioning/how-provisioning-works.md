@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 555fb39836054be05102f4c28167d72016805639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481496"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884881"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -67,7 +67,7 @@ Při konfiguraci zřizování do aplikace SaaS je jedním z typů mapování atr
 
 Pro odchozí zřizování z Azure AD do aplikace SaaS, spoléhání se na [přiřazení uživatele nebo skupiny](../manage-apps/assign-user-or-group-access-portal.md) je nejběžnější způsob, jak určit, kteří uživatelé jsou v oboru pro zřizování. Vzhledem k tomu, že přiřazení uživatelů se také používají pro povolení jednotného přihlašování, stejnou metodu lze použít pro správu přístupu i zřizování. Obory založené na přiřazení se nevztahuje na příchozí zřizování scénáře, jako je Workday a Successfactors.
 
-* **Skupiny.** S licenčním plánem Azure AD Premium můžete pomocí skupin přiřadit přístup k aplikaci SaaS. Potom, když je nastaven rozsah zřizování na **synchronizaci pouze přiřazené uživatele a skupiny**, služba zřizování Azure AD zřídí nebo deprovisioning uživatelů na základě toho, zda jsou členy skupiny, která je přiřazena k aplikaci. Samotný objekt skupiny není zřízen, pokud aplikace nepodporuje objekty skupiny.
+* **Skupiny.** S licenčním plánem Azure AD Premium můžete pomocí skupin přiřadit přístup k aplikaci SaaS. Potom, když je nastaven rozsah zřizování na **synchronizaci pouze přiřazené uživatele a skupiny**, služba zřizování Azure AD zřídí nebo deprovisioning uživatelů na základě toho, zda jsou členy skupiny, která je přiřazena k aplikaci. Samotný objekt skupiny není zřízen, pokud aplikace nepodporuje objekty skupiny. Ujistěte se, že skupiny přiřazené k vaší aplikaci mají vlastnost SecurityEnabled nastavenou na hodnotu False.
 
 * **Dynamické skupiny.** Služba zřizování uživatelů Azure AD může číst a zřazovat uživatele v [dynamických skupinách](../users-groups-roles/groups-create-rule.md). Mějte na paměti tyto upozornění a doporučení:
 

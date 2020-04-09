@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184618"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878880"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Na palubě kořenové nebo vrcholové domény na předních dveřích
 Azure Front Door používá záznamy CNAME k ověření vlastnictví domény pro připojení vlastních domén. Front Door také nezveřejňuje ip adresu front-endu přidruženou k profilu front door a takže nemůžete mapovat doménu vrcholu na IP adresu, pokud je záměrem připojit ji k Azure Front Door.
@@ -26,7 +26,7 @@ Mapování vrcholu nebo kořenové domény na profil předních dveří v podsta
 > [!NOTE]
 > Existují i další poskytovatelé DNS, kteří podporují sloučení CNAME nebo honění DNS, ale Azure Front Door doporučuje používat Azure DNS pro své zákazníky pro hostování svých domén.
 
-Portál Azure můžete použít k připojení domény vrcholu na předních dveřích a povolit na něm protokol HTTPS tím, že ho přisuzujete k certifikátu pro ukončení SSL. Domény Apex jsou také označovány jako kořenové nebo nahé domény.
+Portál Azure můžete použít k připojení domény vrcholu na předních dveřích a povolit na něm protokol HTTPS tím, že ho přisuzujete k certifikátu pro ukončení TLS. Domény Apex jsou také označovány jako kořenové nebo nahé domény.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -65,7 +65,7 @@ V tomto článku získáte informace o těchto tématech:
 2. Vyberte **typ správy certifikátu** _pro použít vlastní certifikát_.
 
 > [!WARNING]
-> Typ správy spravovaného certifikátu Front Door není aktuálně podporován pro vrcholové nebo kořenové domény. Jedinou možností, která je k dispozici pro povolení protokolu HTTPS na vrcholu nebo kořenové doméně pro přední dveře, je použití vlastního certifikátu SSL hostovaného v trezoru klíčů Azure.
+> Typ správy spravovaného certifikátu Front Door není aktuálně podporován pro vrcholové nebo kořenové domény. Jedinou možností, která je k dispozici pro povolení protokolu HTTPS na vrcholu nebo kořenové doméně pro přední dveře, je použití vlastního certifikátu TLS/SSL hostovaného v úložišti klíčů Azure.
 
 3. Než přejdete k dalšímu kroku, ujistěte se, že máte nastavena správná oprávnění pro přední dveře pro přístup k trezoru klíčů, jak je uvedeno v ui.
 4. Zvolte **účet Trezoru klíčů** z aktuálního předplatného a pak vyberte příslušnou **tajnou** a **tajnou verzi,** kterou chcete namapovat na správný certifikát.

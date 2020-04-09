@@ -3,8 +3,8 @@ title: Vynucení zabezpečení pomocí zásad na virtuálních počítačích s 
 description: Jak použít zásadu na virtuální počítač Azure Resource Manager Linux
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: kasing
-ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: b585b4d0aef06b01cba07ab8ef016b59f9b4f61b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74035320"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878914"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Použití zásad pro virtuální počítače s Linuxem pomocí Azure Resource Manager
 Pomocí zásad může organizace vynucovat různé konvence a pravidla v celém podniku. Vynucení požadovaného chování může pomoci zmírnit riziko a zároveň přispět k úspěchu organizace. V tomto článku popisujeme, jak můžete pomocí zásad Azure Resource Manager definovat požadované chování pro virtuální počítače vaší organizace.

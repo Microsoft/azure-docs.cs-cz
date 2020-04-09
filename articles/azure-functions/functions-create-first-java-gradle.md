@@ -4,19 +4,20 @@ description: Vytvořte a publikujte funkci spouštěnou http do Azure pomocí Ja
 author: KarlErickson
 ms.author: karler
 ms.topic: how-to
-ms.date: 08/10/2018
-ms.openlocfilehash: 1a24569a89755a33a80b7f884b803bd36f38ca3f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 04/08/2020
+ms.openlocfilehash: 5e18e035bd237fd489b715986e58d7ede726348d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757125"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886598"
 ---
-# <a name="quickstart-use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Úvodní příručka: Vytvoření a publikování funkce v Azure pomocí Javy a Gradle
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce do Azure pomocí Javy a Gradle
 
 Tento článek ukazuje, jak vytvořit a publikovat projekt funkce Java do funkce Azure pomocí nástroje příkazového řádku Gradle. Až budete hotovi, kód vaší funkce se spustí v Azure v [plánu hostování bez serveru](functions-scale.md#consumption-plan) a aktivuje se požadavek HTTP. 
 
-Projekt funkce Javy můžete také vytvořit a publikovat z příkazového řádku pomocí [archetypů Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).
+> [!NOTE]
+> Pokud Gradle není váš preferovaný vývojový nástroj, podívejte se na naše podobné výukové programy pro devlopery Java pomocí [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) a [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -172,4 +173,4 @@ Vytvořili jste projekt funkcí jazyka Java s funkcí spouštěnou protokolem HT
 
 
 [Azure CLI]: /cli/azure
-[portál Azure]: https://portal.azure.com
+[Portál Azure]: https://portal.azure.com

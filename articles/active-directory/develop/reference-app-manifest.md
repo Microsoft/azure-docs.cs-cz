@@ -1,5 +1,5 @@
 ---
-title: Principy manifestu aplikace Azure Active Directory | Dokumenty společnosti Microsoft
+title: Principy manifestu aplikace Azure Active Directory
 description: Podrobné pokrytí manifestu aplikace Azure Active Directory, který představuje konfiguraci identity aplikace v tenantovi Azure AD a používá se k usnadnění autorizace OAuth, prostředí souhlasu a další.
 services: active-directory
 author: rwike77
@@ -12,12 +12,12 @@ ms.date: 03/23/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6d9a4af5ee814282589959fcf840c1061358ca18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 487559aaf632a30b7efcda490f92a90d4f59b8f5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383935"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883470"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 

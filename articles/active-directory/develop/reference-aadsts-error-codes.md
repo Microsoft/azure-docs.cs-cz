@@ -2,26 +2,22 @@
 title: Azure AD ověřování & chybové kódy autorizace
 description: Další informace o chybové kódy AADSTS, které jsou vráceny ze služby tokenu zabezpečení Azure AD (STS).
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473167"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875924"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Chybové kódy ověřování azure a autorizace
 
@@ -133,6 +129,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Například pokud jste ob
 | AADSTS50180 | WindowsIntegratedAuthMissing - integrované ověřování systému Windows je potřeba. Povolte tenantovi bezproblémové jednotné přihlašování. |
 | AADSTS50187 | DeviceInformationNotProvided - službě se nepodařilo provést ověřování zařízení. |
 | AADSTS50196 | LoopDetected - Byla zjištěna smyčka klienta. Zkontrolujte logiku aplikace a ujistěte se, že ukládání tokenů do mezipaměti je implementováno a že chybové stavy jsou zpracovány správně.  Aplikace učinila příliš mnoho stejného požadavku v příliš krátkém období, což znamená, že je v vadném stavu nebo je zneužívající požadavek na tokeny. |
+| AADSTS50197 | ConflictingIdentities - Uživatel nebyl nalezen. Zkuste se přihlásit znovu. |
 | AADSTS50199 | CmsiInterrupt - Z bezpečnostních důvodů je pro tento požadavek vyžadováno potvrzení uživatele.  Vzhledem k tomu, že se jedná o chybu "interaction_required", klient by měl provést interaktivní ověřování.  K tomu dochází, protože systémwebové zobrazení byla použita k vyžádání tokenu pro nativní aplikace – uživatel musí být vyzváni k dotazu, zda to byla skutečně aplikace, které chtěl přihlásit.|
 | AADSTS51000 | RequiredFeatureNotEnabled - Funkce je zakázána. |
 | AADSTS51001 | DomainHintMustbePresent - Nápověda domény musí být k dispozici s identifikátorem místního zabezpečení nebo místní hlavní název sítě. |

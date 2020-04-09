@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 11/06/2019
-ms.openlocfilehash: da45c0db027dffc89bd058b70331a4bd6d093b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336965"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878574"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
@@ -64,7 +64,7 @@ S Azure Machine Learning můžete pro každý krok ve vašem kanálu používat 
 
 [Metriky experimentů s kanály](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) můžete sledovat přímo na webu Azure Portal nebo [na vstupní stránce pracovního prostoru (preview).](https://ml.azure.com) Po publikování kanálu můžete nakonfigurovat koncový bod REST, který umožňuje znovu spustit kanál z libovolné platformy nebo zásobníku.
 
-Stručně řečeno, všechny složité úkoly životního cyklu strojového učení lze pomoci s kanály. Jiné technologie kanálu Azure mají své vlastní silné stránky, jako jsou [kanály Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) pro práci s daty a Azure [Pipelines](https://azure.microsoft.com/services/devops/pipelines/) pro průběžnou integraci a nasazení. Ale pokud se zaměřujete na strojové učení, kanály Azure Machine Learning budou pravděpodobně nejlepší volbou pro vaše potřeby pracovního postupu. 
+Stručně řečeno, všechny složité úkoly životního cyklu strojového učení lze pomoci s kanály. Jiné technologie kanálu Azure mají své vlastní silné stránky. [Kanály Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) excelují ve spolupráci s daty a [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) je ten správný nástroj pro průběžnou integraci a nasazování. Ale pokud se zaměřujete na strojové učení, kanály Azure Machine Learning budou pravděpodobně nejlepší volbou pro vaše potřeby pracovního postupu. 
 
 ## <a name="what-are-azure-ml-pipelines"></a>Co jsou kanály Azure ML?
 
@@ -126,7 +126,7 @@ Při vizuálnínávrh potrubí, vstupy a výstupy kroku jsou zobrazeny viditeln�
 
 Kroky v rámci kanálu může mít závislosti na jiné kroky. Služba kanálu Azure ML provádí analýzu a orchestraci těchto závislostí. Uzly ve výsledném "spuštění grafu" jsou kroky zpracování. Každý krok může zahrnovat vytvoření nebo opětovné použití určité kombinace hardwaru a softwaru, opakované použití výsledků uložených v mezipaměti a tak dále. Orchestrace a optimalizace tohoto grafu spuštění služby může výrazně urychlit fázi ML a snížit náklady. 
 
-Vzhledem k tomu, že kroky běží nezávisle, musí být objekty pro uložení vstupních a výstupních dat, která toky mezi kroky, definovány externě. Toto je role [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)a přidružené třídy. Tyto datové objekty jsou přidruženy k objektu [Datastore,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) který zapouzdřuje jejich konfiguraci úložiště. Základní `PipelineStep` třída je vždy `name` vytvořena pomocí řetězce, seznamu `inputs`a `outputs`seznamu . Obvykle má také seznam `arguments` a často bude mít `resource_inputs`seznam . Podtřídy budou mít obecně také další `PythonScriptStep` argumenty (například vyžaduje spuštění názvu souboru a cesty skriptu). 
+Vzhledem k tomu, že kroky běží nezávisle, musí být objekty pro uložení vstupních a výstupních dat, která toky mezi kroky, definovány externě. Toto je role [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), objekty. Tyto datové objekty jsou přidruženy k objektu [Datastore,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) který zapouzdřuje jejich konfiguraci úložiště. Základní `PipelineStep` třída je vždy `name` vytvořena pomocí řetězce, seznamu `inputs`a `outputs`seznamu . Obvykle má také seznam `arguments` a často bude mít `resource_inputs`seznam . Podtřídy budou mít obecně také další `PythonScriptStep` argumenty (například vyžaduje spuštění názvu souboru a cesty skriptu). 
 
 Graf spuštění je acyklický, ale kanály lze spustit podle opakovaného plánu a lze spustit skripty Pythonu, které mohou zapisovat informace o stavu do systému souborů, což umožňuje vytvářet složité profily. Pokud navrhnete kanál tak, aby určité kroky mohou běžet paralelně nebo asynchronně, Azure Machine Learning transparentně zpracovává analýzu závislostí a koordinaci fan-out a fan-in. Obecně se nemusíte zabývat podrobnostmi grafu spuštění, ale je k dispozici prostřednictvím atributu [Pipeline.graph.](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) 
 
@@ -141,19 +141,16 @@ blob_store = Datastore(ws, "workspaceblobstore")
 compute_target = ws.compute_targets["STANDARD_NC6"]
 experiment = Experiment(ws, 'MyExperiment') 
 
-input_data = DataReference(
-    datastore=Datastore(ws, blob_store),
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+input_data = Dataset.File.from_files(
+    DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData(
-    "output_data",
-    datastore=blob_store,
-    output_name="output_data1")
+output_data = PipelineData("output_data", datastore=blob_store)
+
+input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", input_data, "--output", output_data],
+    arguments=["--input", input_named.as_download(), "--output", output_data],
     inputs=[input_data],
     outputs=[output_data],
     compute_target=compute_target,
@@ -168,7 +165,7 @@ pipeline_run.wait_for_completion()
 
 Úryvek začíná běžnými objekty Azure `Workspace`Machine `Datastore`Learning, a , `Experiment`a , [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)a . Potom kód vytvoří objekty, `input_data` `output_data`které mají být uchovány a . Pole `steps` obsahuje jeden prvek, `PythonScriptStep` a který bude používat datové `compute_target`objekty a spustit na . Potom kód konkretizovat `Pipeline` samotný objekt, předávání v pracovním prostoru a kroky pole. Volání zahájí `experiment.submit(pipeline)` spuštění kanálu Azure ML. Volání `wait_for_completion()` bloky, dokud není dokončena potrubí. 
 
-Další informace o připojení kanálu k datům najdete v článcích [Jak získat přístup k datům](how-to-access-data.md) a Jak [zaregistrovat datové sady](how-to-create-register-datasets.md). 
+Další informace o připojení kanálu k datům najdete v článcích [Přístup k datům v Azure Machine Learning](concept-data.md) a Přesunutí dat do a mezi kroky kanálu ML [(Python)](how-to-move-data-in-out-of-pipelines.md). 
 
 ## <a name="best-practices-when-using-pipelines"></a>Doporučené postupy při používání kanálů
 
@@ -207,9 +204,9 @@ Hlavní výhody použití kanálů pro vaše pracovní postupy strojového učen
 
 ### <a name="choosing-the-proper-pipelinestep-subclass"></a>Výběr správné podtřídy PipelineStep
 
-Je `PythonScriptStep` nejflexibilnější podtřída `PipelineStep`abstraktní . Jiné podtřídy, `EstimatorStep` například `DataTransferStep` podtřídy a mohou provádět určité úkoly s menším kódem. Například `EstimatorStep` lze vytvořit jednoduše předáním názvu `Estimator`kroku, a výpočetní cíl. Nebo můžete přepsat vstupy a výstupy, parametry kanálu a argumenty. Další informace najdete v tématu [Trénování modelů s Azure Machine Learning pomocí odhadu](how-to-train-ml-models.md). 
+Je `PythonScriptStep` nejflexibilnější podtřída `PipelineStep`abstraktní . Jiné podtřídy, `EstimatorStep` například `DataTransferStep` podtřídy a mohou provádět určité úkoly s menším kódem. Například `EstimatorStep` lze vytvořit pouze předáním názvu `Estimator`kroku, a výpočetní cíl. Nebo můžete přepsat vstupy a výstupy, parametry kanálu a argumenty. Další informace najdete v tématu [Trénování modelů s Azure Machine Learning pomocí odhadu](how-to-train-ml-models.md). 
 
-Usnadňuje `DataTransferStep` přesun dat mezi zdroji dat a jímky. Kód k tomu ručně je jednoduché, ale opakující se. Místo toho můžete vytvořit `DataTransferStep` pouze s názvem, odkazy na zdroj dat a jímky dat a výpočetní cíl. Kanál strojového učení Azure v poznámkovém bloku [s datemTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) ukazuje tuto flexibilitu.
+Usnadňuje `DataTransferStep` přesun dat mezi zdroji dat a jímky. Kód k tomuto přenosu ručně je jednoduché, ale opakující se. Místo toho můžete vytvořit `DataTransferStep` pouze s názvem, odkazy na zdroj dat a jímky dat a výpočetní cíl. Kanál strojového učení Azure v poznámkovém bloku [s datemTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) ukazuje tuto flexibilitu.
 
 ## <a name="modules"></a>Moduly
 

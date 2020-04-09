@@ -2,20 +2,22 @@
 title: Shromažďování & analýzu protokolů zdrojů
 description: Zjistěte, jak odesílat protokoly o prostředcích a data událostí ze skupin kontejnerů v instanci kontejnerů Azure do protokolů Azure Monitoru
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 04/07/2020
 ms.author: danlep
-ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770539"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892389"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokolování skupin y kontejnerů a instancí pomocí protokolů Azure Monitoru
 
 Pracovní prostory Log Analytics poskytují centralizované umístění pro ukládání a dotazování dat protokolu nejen z prostředků Azure, ale také místních prostředků a prostředků v jiných cloudech. Instance kontejnerů Azure zahrnuje integrovanou podporu pro odesílání protokolů a dat událostí do protokolů Azure Monitoru.
 
-Chcete-li odeslat data protokolu skupiny kontejnerů a událostí do protokolů Azure Monitor, zadejte existující ID pracovního prostoru analýzy protokolů a klíč pracovního prostoru při vytváření skupiny kontejnerů. Následující části popisují, jak vytvořit skupinu kontejnerů s povolenou protokolováním a jak dotazovat protokoly.
+Chcete-li odeslat data protokolu skupiny kontejnerů a událostí do protokolů Azure Monitor, zadejte existující ID pracovního prostoru analýzy protokolů a klíč pracovního prostoru při konfiguraci skupiny kontejnerů. 
+
+Následující části popisují, jak vytvořit skupinu kontejnerů s povolenou protokolováním a jak dotazovat protokoly. Můžete také [aktualizovat skupinu kontejnerů](container-instances-update.md) pomocí ID pracovního prostoru a klíče pracovního prostoru, abyste povolili protokolování.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -26,7 +28,7 @@ Chcete-li odeslat data protokolu skupiny kontejnerů a událostí do protokolů 
 
 Abyste mohli povolit protokolování ve vašich instancích kontejnerů, potřebujete následující:
 
-* [Pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md)
+* [Pracovní prostor služby Log Analytics](../azure-monitor/learn/quick-create-workspace.md)
 * [Rozhraní Azure CLI](/cli/azure/install-azure-cli) (nebo službu [Cloud Shell](/azure/cloud-shell/overview))
 
 ## <a name="get-log-analytics-credentials"></a>Získání přihlašovacích údajů služby Log Analytics

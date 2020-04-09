@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136359"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877690"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalace a použití Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -97,7 +97,10 @@ Instalační přístup [helmu][helm] pro Istio bude v budoucnu zastaral. Nový p
 > Istio musí být aktuálně naplánováno na spuštění na linuxových uzlech. Pokud máte v clusteru uzly Windows Server, musíte zajistit, aby pody Istio byly naplánované pouze na linuxových uzlech. Budeme používat [voliče uzlů,][kubernetes-node-selectors] abychom se ujistili, že pody jsou naplánovány na správné uzly.
 
 > [!CAUTION]
-> [SDS (tajná discovery service)][istio-feature-sds] a [Istio CNI][istio-feature-cni] Istio funkce jsou v současné době v [Alfa][istio-feature-stages], tak si myslel, že by měla být uvedena před povolením těchto. Kromě toho funkce Kubernetes [tokenu tokenu účtu služby][kubernetes-feature-sa-projected-volume] (požadavek na SDS) není povolena v aktuálních verzích AKS.
+> [SDS (tajná discovery service)][istio-feature-sds] a [Istio CNI][istio-feature-cni] Istio funkce jsou v současné době v [Alfa][istio-feature-stages], tak si myslel, že by měla být uvedena před povolením těchto. 
+>
+> Všimněte si, že funkce Kubernetes [tokenu tokenu účtu služby][kubernetes-feature-sa-projected-volume] (požadavek na SDS) je nyní **povolena** pro všechny verze Kubernetes 1.13 a vyšší v AKS.
+
 Vytvořte soubor `istio.aks.yaml` s následujícím obsahem. Tento soubor bude obsahovat [istio ovládací roviny spec][istio-control-plane] podrobnosti pro konfiguraci Istio.
 
 ```yaml

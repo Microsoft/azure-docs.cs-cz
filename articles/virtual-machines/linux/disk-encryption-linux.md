@@ -8,18 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d860b557c5c2d6b73fad53cdf84ee8b32182d1ee
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586049"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985452"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
 
-Azure Disk Encryption používá funkci DM-Crypt linuxu k zajištění šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure a je integrovaný s Azure Key Vault, který vám pomůže řídit a spravovat šifrovací klíče a tajné klíče disku. Přehled služby najdete v tématu [Azure Disk Encryption for Linux VMs](disk-encryption-overview.md).
 
-Existuje mnoho scénářů šifrování disku a kroky se mohou lišit v závislosti na scénáři. Následující části popisují scénáře podrobněji pro virtuální počítače s Linuxem.
+Azure Disk Encryption pro virtuální počítače s Linuxem (VM) používá funkci DM-Crypt linuxu k zajištění úplného šifrování disku operačního systému a datových disků. Navíc poskytuje šifrování dočasný chod disku při použití encryptformatall funkce.
+
+Azure Disk Encryption je [integrovaný s Azure Key Vault,](disk-encryption-key-vault.md) který vám pomůže řídit a spravovat šifrovací klíče a tajné klíče disku. Přehled služby najdete v tématu [Azure Disk Encryption for Windows VMs](disk-encryption-overview.md).
 
 Šifrování disku lze použít jenom na virtuální počítače [podporovaných velikostí virtuálních počítačů a operačních systémů](disk-encryption-overview.md#supported-vms-and-operating-systems). Musíte také splnit následující předpoklady:
 

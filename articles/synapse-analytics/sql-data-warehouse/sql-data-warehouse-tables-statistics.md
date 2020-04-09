@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742662"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985860"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Statistiky tabulek v fondu SYNAPse SQL
 
@@ -146,11 +146,11 @@ Další informace naleznete v obecných pokynech pro [statistiku](/sql/relationa
 
 ## <a name="implementing-statistics-management"></a>Implementace správy statistik
 
-Často je vhodné rozšířit proces načítání dat, abyste zajistili, že statistiky budou aktualizovány na konci zatížení.
+Často je vhodné rozšířit proces načítání dat, abyste zajistili, že statistiky jsou aktualizovány na konci zatížení, aby se zabránilo nebo minimalizovalo blokování nebo konflikty prostředků mezi souběžnými dotazy.  
 
 Načítání dat je, když tabulky nejčastěji mění svou velikost nebo jejich rozložení hodnot. Načítání dat je logické místo pro implementaci některých procesů správy.
 
-Následující hlavní zásady jsou uvedeny pro aktualizaci statistik během procesu načítání:
+Pro aktualizaci statistik jsou uvedeny následující hlavní zásady:
 
 - Ujistěte se, že každá načtená tabulka má aktualizovaný alespoň jeden objekt statistiky. Tím se aktualizují informace o velikosti tabulky (počet řádků a počet stránek) jako součást aktualizace statistiky.
 - Zaměřte se na sloupce, které se účastní klauzulí JOIN, GROUP BY, ORDER BY a DISTINCT.
@@ -174,7 +174,7 @@ Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení f
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
-Například:
+Příklad:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
@@ -190,7 +190,7 @@ Chcete-li ochutnat celou tabulku, použijte tuto syntaxi:
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
-Například:
+Příklad:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
@@ -391,7 +391,7 @@ K aktualizaci určitého objektu statistiky použijte následující syntaxi:
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Například:
+Příklad:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -407,7 +407,7 @@ Jednoduchá metoda pro aktualizaci všech objektů statistiky v tabulce je:
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Například:
+Příklad:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -510,7 +510,7 @@ Tento jednoduchý příklad ukazuje všechny tři části objektu statistiky:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Například:
+Příklad:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -524,7 +524,7 @@ Pokud vás zajímají pouze některé části, `WITH` použijte klauzuli a urče
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
-Například:
+Příklad:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector

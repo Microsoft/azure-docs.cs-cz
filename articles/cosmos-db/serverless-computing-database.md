@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462441"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985248"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní výpočetní služby bez serveru pomocí Azure Cosmos DB a Azure Functions
 
@@ -110,7 +110,7 @@ Ve všech těchto případech použití, protože funkce oddělila samotnou apli
 
 Nativní integrace mezi Azure Cosmos DB a Azure Functions je dostupná na webu Azure Portal a ve Visual Studiu 2019.
 
-* Na portálu Azure Functions můžete vytvořit aktivační událost. Pokyny pro rychlý start najdete [v tématu Vytvoření aktivační události Azure Functions pro Cosmos DB na webu Azure Portal](https://aka.ms/cosmosdbtriggerportalfunc).
+* Na portálu Azure Functions můžete vytvořit aktivační událost. Pokyny pro rychlý start najdete [v tématu Vytvoření aktivační události Azure Functions pro Cosmos DB na webu Azure Portal](../azure-functions/functions-create-cosmos-db-triggered-function.md).
 * Na portálu Azure Cosmos DB můžete přidat aktivační událost Azure Functions pro Cosmos DB do existující aplikace Azure Function ve stejné skupině prostředků.
 * Ve Visual Studiu 2019 můžete aktivační událost vytvořit pomocí [nástrojů Azure Functions Tools](../azure-functions/functions-develop-vs.md):
 
@@ -146,6 +146,6 @@ Pokud si nejste jistí, jestli je tok, logické aplikace, funkce Azure nebo webo
 
 Teď pojďme propojit Azure Cosmos DB a Azure Functions pro skutečné: 
 
-* [Vytvoření aktivační události Azure Functions pro Cosmos DB na webu Azure Portal](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Vytvoření triggeru HTTP ve službě Azure Functions s využitím vstupní vazby Azure Cosmos DB](https://aka.ms/cosmosdbinputbind)
+* [Vytvoření aktivační události Azure Functions pro Cosmos DB na webu Azure Portal](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Vytvoření triggeru HTTP ve službě Azure Functions s využitím vstupní vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
 * [Vazby a aktivační události Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 8ebd8990a2fdd43b243f5dd6feb632d782fdeb0b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632690"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877623"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spuštění pracovních míst Apache Spark na AKS
 
@@ -293,7 +293,7 @@ Pi is roughly 3.152155760778804
 
 Ve výše uvedeném příkladu byl soubor sídž jar nahrán do úložiště Azure. Další možností je zabalit soubor jar do vlastních iobrazů Dockeru.
 
-Chcete-li tak `dockerfile` učinit, najděte `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` obrázek Spark umístěný v adresáři. Přidat `ADD` am prohlášení pro `jar` úlohu Spark někde mezi `WORKDIR` a `ENTRYPOINT` deklarace.
+Chcete-li tak `dockerfile` učinit, najděte `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` obrázek Spark umístěný v adresáři. Přidejte `ADD` příkaz pro `jar` úlohu `WORKDIR` `ENTRYPOINT` Spark někde mezi a deklarace.
 
 Aktualizujte cestu jar na `SparkPi-assembly-0.1.0-SNAPSHOT.jar` umístění souboru ve vývojovém systému. Můžete také použít vlastní jar soubor.
 

@@ -2,26 +2,21 @@
 title: Přihlášení k jednostránkové aplikaci & odhlášení – platforma microsoft identity | Azure
 description: Přečtěte si, jak vytvořit jednostránkovou aplikaci (přihlášení)
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8dd4d1aa2423ddb48f61380a982ca256609734d6
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7e809def048c95b6688a13ac99783615eb045d11
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419640"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885185"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Jednostránková aplikace: Přihlášení a odhlášení
 
@@ -63,7 +58,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-# <a name="angular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Úhlová](#tab/angular)
 
 Obálka MSAL Angular umožňuje zabezpečit konkrétní trasy v `MsalGuard` aplikaci přidáním do definice trasy. Tento stráž vyvolá metodu pro přihlášení při přístupu k této trase.
 
@@ -135,7 +130,7 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-# <a name="angular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Úhlová](#tab/angular)
 
 Kód je zde stejný, jak je popsáno výše v části o přihlášení s automaticky otevíraným oknem. Výchozí tok je přesměrování.
 
@@ -166,7 +161,7 @@ userAgentApplication.logout();
 
 ```
 
-# <a name="angular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Úhlová](#tab/angular)
 
 ```javascript
 //In app.module.ts

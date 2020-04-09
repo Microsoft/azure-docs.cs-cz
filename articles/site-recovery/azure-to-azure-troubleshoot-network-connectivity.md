@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 49d2d3d3e8829198a57aaf2feb40e89f105667bd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804856"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884864"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Poradce při potížích s připojením k síti virtuálních zařízení Azure-to-Azure
 
@@ -18,8 +18,8 @@ Tento článek popisuje běžné problémy související s připojením k síti 
 
 Aby replikace obnovení lokality fungovala, je z virtuálního počítačů vyžadováno odchozí připojení k určitým adresám URL nebo rozsahům IP adres. Pokud váš virtuální počítač je za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozí připojení, může čelit jeden z těchto problémů.
 
-| **Adresa URL** | **Podrobnosti** |
-| --- | --- |
+| zprostředkovatele identity | Podrobnosti |
+|---|---|
 | `*.blob.core.windows.net` | Povinné, aby data mohla být zapsána do účtu úložiště mezipaměti ve zdrojové oblasti z virtuálního účtu. Pokud znáte všechny účty úložiště mezipaměti pro vaše virtuální počítače, můžete použít seznam povolených adres pro konkrétní adresy URL účtu úložiště. Například `cache1.blob.core.windows.net` a `cache2.blob.core.windows.net` místo `*.blob.core.windows.net`. |
 | `login.microsoftonline.com` | Vyžadováno pro autorizaci a autentizaci adres URL služby Site Recovery. |
 | `*.hypervrecoverymanager.windowsazure.com` | Povinné tak, aby služba obnovení webu komunikace může dojít z virtuálního provozu. Pokud proxy firewall podporuje IP adresy, můžete použít odpovídající ip adresu _site recovery._ |
@@ -82,7 +82,7 @@ Tento příklad ukazuje, jak nakonfigurovat pravidla sítě zabezpečení sítě
 
 1. Vytvořte odchozí pravidla portu HTTPS 443 pro IP adresy obnovení webu, které odpovídají cílovému umístění:
 
-   | **Umístění** | **IP adresa pro obnovení webu** |  **IP adresa monitorování obnovení lokality** |
+   | Umístění | IP adresa pro obnovení webu | IP adresa monitorování obnovení lokality |
    | --- | --- | --- |
    | USA – střed | 40.69.144.231 | 52.165.34.144 |
 
@@ -102,7 +102,7 @@ V tomto příkladu jsou tato pravidla skupiny sítě pro sítě požadována, ab
 
 1. Vytvořte odchozí pravidla portu HTTPS 443 pro IP adresy obnovení webu, které odpovídají zdrojovému umístění:
 
-   |**Umístění** | **IP adresa pro obnovení webu** |  **IP adresa monitorování obnovení lokality** |
+   | Umístění | IP adresa pro obnovení webu | IP adresa monitorování obnovení lokality |
    | --- | --- | --- |
    | USA – východ | 13.82.88.226 | 104.45.147.24 |
 
@@ -138,7 +138,8 @@ Vlastní nastavení proxy serveru je neplatné a agent služby Mobility azure si
    Port=567
    ```
 
-1. Agent služby Azure Site Recovery Mobility podporuje pouze **neověřené proxy servery**.
+> [!NOTE]
+> Agent služby Azure Site Recovery Mobility podporuje pouze **neověřené proxy servery**.
 
 ### <a name="fix-the-problem"></a>Oprava problému
 
@@ -146,4 +147,4 @@ Chcete-li povolit [požadované adresy URL](azure-to-azure-about-networking.md#o
 
 ## <a name="next-steps"></a>Další kroky
 
-[Replikace virtuálních počítačů Azure](site-recovery-replicate-azure-to-azure.md)
+[Replikace virtuálních počítačů Azure do jiné oblasti Azure](azure-to-azure-how-to-enable-replication.md)

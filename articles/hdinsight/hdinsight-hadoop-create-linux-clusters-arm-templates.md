@@ -5,32 +5,28 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 9498f2cf56f0bfe20d0806e5dc9872403dabb180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/07/2020
+ms.openlocfilehash: 67d5481b82b7469c5ae55704768ce494dbc9dca5
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979097"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879135"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytváření clusterů Apache Hadoop v HDInsightpomocí šablon Správce prostředků
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-V tomto článku se dozvíte několik způsobů, jak vytvořit clustery Azure HDInsight pomocí šablon Azure Resource Manager. Další informace najdete [v tématu Nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md). Další informace o dalších nástrojích a funkcích pro vytváření clusteru zobrazíte klepnutím na volič karet v horní části této stránky nebo v [tématu Metody vytváření clusteru](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
+V tomto článku se dozvíte několik způsobů, jak vytvořit clustery Azure HDInsight pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md). Chcete-li se dozvědět o dalších nástrojích a funkcích pro vytváření clusteru, klikněte na nástroj pro výběr karet v horní části této stránky. Viz také [metody vytváření clusteru](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>Požadavky
-
-* Předplatné [Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Azure PowerShell a/nebo Azure CLI.
-
-### <a name="resource-manager-templates"></a>Šablony Resource Manageru
+## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
 Šablona Správce prostředků usnadňuje vytvoření následujících prostředků pro vaši aplikaci v jedné koordinované operaci:
+
 * HDInsight clustery a jejich závislé prostředky (například výchozí účet úložiště).
 * Další prostředky (například Azure SQL Database pro použití [Apache Sqoop).](https://sqoop.apache.org/)
 

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898511"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878965"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Odchozí ověřování pro Plánovač Azure
 
@@ -47,8 +47,8 @@ Při přidávání `ClientCertificate` ověřování pomocí modelu zadejte tyto
 
 | Element | Požaduje se | Popis |
 |---------|----------|-------------|
-| **ověřování** (nadřazený prvek) | Ověřovací objekt pro použití klientského certifikátu SSL |
-| **Typ** | Ano | Typ ověřování. Pro klientské certifikáty SSL `ClientCertificate`je hodnota . |
+| **ověřování** (nadřazený prvek) | Ověřovací objekt pro použití klientského certifikátu SSL/TLS |
+| **Typ** | Ano | Typ ověřování. Pro klientské certifikáty SSL/TLS `ClientCertificate`je hodnota . |
 | **Pfx** | Ano | Obsah souboru PFX kódovaný na základně 64 |
 | **heslo** | Ano | Heslo pro přístup k souboru PFX |
 ||| 
@@ -59,8 +59,8 @@ Při odeslání požadavku s ověřovacími informacemi odpověď obsahuje tyto 
 
 | Element | Popis | 
 |---------|-------------| 
-| **ověřování** (nadřazený prvek) | Ověřovací objekt pro použití klientského certifikátu SSL |
-| **Typ** | Typ ověřování. Pro klientské certifikáty SSL `ClientCertificate`je hodnota . |
+| **ověřování** (nadřazený prvek) | Ověřovací objekt pro použití klientského certifikátu SSL/TLS |
+| **Typ** | Typ ověřování. Pro klientské certifikáty SSL/TLS `ClientCertificate`je hodnota . |
 | **certificateThumbprint** |Kryptografický otisk certifikátu |
 | **název předmětu certifikátu** |Rozlišující název subjektu certifikátu |
 | **vypršení platnosti certifikátu** | Datum vypršení platnosti certifikátu |
@@ -159,7 +159,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>Basic
+## <a name="basic"></a>Základní
 
 ### <a name="request-body---basic"></a>Tělo požadavku - základní
 

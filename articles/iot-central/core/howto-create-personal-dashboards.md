@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158125"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985486"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Vytvoření a správa více řídicích panelů
 
-**Řídicí panel** je stránka, která se načte při prvním přechodu do aplikace. **Tvůrce** ve vaší aplikaci definuje výchozí řídicí panel aplikace pro všechny uživatele. Tento výchozí řídicí panel můžete nahradit vlastním přizpůsobeným řídicím panelem aplikace. Můžete mít několik řídicích panelů, které zobrazují různá data a přepínají mezi nimi. 
+**Řídicí panel** je stránka, která se načte při prvním přechodu do aplikace. **Tvůrce** ve vaší aplikaci definuje výchozí řídicí panel aplikace pro všechny uživatele. Můžete také vytvořit vlastní, personalizovaný řídicí panel aplikace. Můžete mít několik řídicích panelů, které zobrazují různá data a přepínají mezi nimi.
 
 Pokud jste **správcem** aplikace, můžete také vytvořit až 10 řídicích panelů na úrovni aplikace, které můžete sdílet s ostatními uživateli aplikace. Pouze **správci** mají možnost vytvářet, upravovat a odstraňovat řídicí panely na úrovni aplikace. 
 

@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061514"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985418"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
 Tento článek popisuje omezení a známé problémy Azure Data Lake Storage Gen2.
 
-## <a name="supported-blob-storage-features"></a>Podporované funkce úložiště objektů Blob
+## <a name="supported-blob-storage-features"></a>Podporované funkce Blob Storage
 
 Rostoucí počet funkcí úložiště objektů Blob teď pracuje s účty, které mají hierarchický obor názvů. Úplný seznam najdete v tématu [funkce úložiště objektů blob dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md).
 
 ## <a name="supported-azure-service-integrations"></a>Podporované integrace služeb Azure
 
-Storage data lake 2 podporuje několik služeb Azure, které můžete použít k ingestování dat, provádění analýz a vytváření vizuálních reprezentací. Seznam podporovaných služeb Azure najdete v [tématu služby Azure, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md).
+Azure Data Lake Storage Gen2 podporuje několik služeb Azure, které můžete použít k ingestování dat, provádění analýz a vytváření vizuálních reprezentací. Seznam podporovaných služeb Azure najdete v [tématu služby Azure, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md).
 
 Podívejte se na [služby Azure, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md).
 
-## <a name="supported-open-source-platforms"></a>Podporované open source platformy
+## <a name="supported-open-source-platforms"></a>Podporované opensourcové platformy
 
 Několik open source platforem podporuje Data Lake Storage Gen2. Úplný seznam najdete [v tématu Open source platformy, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md).
 
@@ -41,7 +41,7 @@ Data API objektů blob a data lake storage gen2 api můžete pracovat na stejná
 
 Tato část popisuje problémy a omezení s použitím objektů BLOB API a data Lake Storage Gen2 API pro provoz na stejná data.
 
-* K zápisu do stejné instance souboru nelze použít api pro objekty BLOB i api úložiště datového a datového jezera. Pokud zapisujete do souboru pomocí rozhraní API Data Lake Storage Gen2, bloky tohoto souboru nebudou viditelné pro volání rozhraní BLOB [Get Block List.](https://docs.microsoft.com/rest/api/storageservices/get-block-list) Soubor můžete přepsat pomocí api úložiště datového jezera Gen2 nebo objektů API objektů blob. To neovlivní vlastnosti souboru.
+* K zápisu do stejné instance souboru nelze použít api pro objekty BLOB i úložiště datových jezer. Pokud zapisujete do souboru pomocí rozhraní API Data Lake Storage Gen2, bloky tohoto souboru nebudou viditelné pro volání rozhraní BLOB [Get Block List.](https://docs.microsoft.com/rest/api/storageservices/get-block-list) Soubor můžete přepsat pomocí api úložiště datového jezera Gen2 nebo objektů API objektů blob. To neovlivní vlastnosti souboru.
 
 * Při použití [operace seznam objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/list-blobs) bez zadání oddělovače, výsledky budou zahrnovat adresáře a objekty BLOB. Pokud se rozhodnete použít oddělovač, použijte pouze`/`lomítko ( ). Toto je jediný podporovaný oddělovač.
 
@@ -112,11 +112,8 @@ Aplikace třetích stran, které používají REST API pro práci bude i nadále
 
 Pokud [anonymní přístup pro čtení](storage-manage-access-to-resources.md) byla udělena kontejneru, pak seznamy ACNemají žádný vliv na tento kontejner nebo soubory v tomto kontejneru.
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Ovladač objektu blob úložiště Windows Azure (WASB)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Ovladač objektu blob úložiště Windows Azure (WASB) (bez podpory s ADLS Gen2)
 
-V současné době existuje několik problémů spojených s použitím ovladače WASB spolu s účty, které mají hierarchický obor názvů. Doporučujeme používat ovladač [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) ve svých úlohách. 
+V současné době ovladač WASB - který byl navržen pro práci pouze s rozhraním BLOB API - narazí na problémy v několika běžných scénářích, to znamená, když je klientem účtu úložiště s povolenou oborem názvů. Všimněte si, že multi-Protocol Access (MPA) nebude zmírnit tyto problémy, a to buď. 
 
-
-
-
-
+V současné době (a s největší pravděpodobností v dohledné budoucnosti) nebudeme podporovat zákazníky, kteří používají ovladač WASB jako klienta k účtu úložiště s povolenou oborem názvů. Místo toho doporučujeme, abyste se rozhodli použít ovladač [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) v prostředí Hadoop. Pokud se pokoušíte migrovat z místního prostředí Hadoop s verzí starší než Pobočka Hadoop-3, otevřete lístek podpory Azure, abychom se s vámi mohli spojit na správné cestě vpřed pro vás a vaši organizaci.

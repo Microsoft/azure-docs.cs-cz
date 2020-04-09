@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
-ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649904"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878200"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHub
 
@@ -22,9 +22,9 @@ Pracovní postup je definován souborem YAML (.yml) v `/.github/workflows/` cest
 
 Pro pracovní postup Azure Functions má soubor tři části: 
 
-| Sekce | Úlohy |
+| Sekce | Úkoly |
 | ------- | ----- |
-| **Ověřování** | <ol><li>Definujte instanční objekt.</li><li>Stáhněte si profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
+| **Authentication** | <ol><li>Definujte instanční objekt.</li><li>Stáhněte si profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
 | **Sestavení** | <ol><li>Nastavte prostředí.</li><li>Vytvořte aplikaci funkcí.</li></ol> |
 | **Nasadit** | <ol><li>Nasaďte aplikaci funkce.</li></ol>|
 
@@ -69,13 +69,13 @@ GitHub teď můžou ověřit vaši funkční aplikaci v Azure.
 
 Nastavení prostředí se provádí pomocí akce nastavení publikování specifické pro jazyk.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje část pracovního postupu, která používá `actions/setup-node` akci k nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Node 10.x
@@ -90,7 +90,7 @@ Následující příklad ukazuje část pracovního postupu, která používá `
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Python 3.6
@@ -105,7 +105,7 @@ Následující příklad ukazuje část pracovního postupu, která používá `
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Dotnet 2.2.300
@@ -120,7 +120,7 @@ Následující příklad ukazuje část pracovního postupu, která používá `
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Java 1.8.x
@@ -138,7 +138,7 @@ To závisí na jazyku a pro jazyky podporované funkce Azure, tato část by mě
 
 Následující příklad ukazuje část pracovního postupu, která vytváří aplikaci funkce, která je specifická pro jazyk:
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'

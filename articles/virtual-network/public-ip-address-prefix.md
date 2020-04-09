@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 04/08/2020
 ms.author: anavin
-ms.openlocfilehash: 12fb7e03062600745cd8511d37b439ce44f2ef78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9604d5567e74ef470c3e798b6a3df9e48d6fde5d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75640716"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985299"
 ---
 # <a name="public-ip-address-prefix"></a>Předpony veřejných IP adres
 
@@ -56,7 +56,7 @@ Ke statické veřejné IP adrese můžete z předpony přidružit následující
 ## <a name="constraints"></a>Omezení
 
 - Pro předponu nelze zadat adresy IP. Azure přiděluje IP adresy pro předponu na základě zadané velikosti.
-- Můžete vytvořit předponu až 16 IP adres nebo /28. Další informace najdete v tématu [Limity Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+- Ve výchozím nastavení můžete vytvořit předponu až 16 ADRES IP nebo /28. Zkontrolujte [omezení sítě zvýšit požadavky](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) a Azure [limity](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) pro další informace.
 - Po vytvoření předpony nelze rozsah změnit.
 - Z rozsahu předpony lze přiřadit pouze statické veřejné IP adresy vytvořené pomocí standardní skladové položky. Další informace o veřejných sadech SKU ip adres naleznete v [tématu Veřejná IP adresa](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 - Adresy z oblasti lze přiřadit jenom k prostředkům Azure Resource Manageru. Adresy nelze přiřadit k prostředkům v klasickém modelu nasazení.

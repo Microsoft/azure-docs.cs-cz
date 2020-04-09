@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585356"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879067"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je spravovaná instance Azure SQL Database?
 
@@ -46,7 +46,7 @@ Spravovaná instance kombinuje nejlepší funkce, které jsou k dispozici v Azur
 | --- | --- |
 |Bez nákupu a správy hardwaru <br>Žádné režijní náklady na správu pro správu základní infrastruktury <br>Rychlé zřizování a škálování služeb <br>Automatické opravy a upgrade verze <br>Integrace s dalšími datovými službami PaaS |99,99% doba sla  <br>Vytvořeno s [vysokou dostupností](sql-database-high-availability.md) <br>Data chráněná [automatickým zálohováním](sql-database-automated-backups.md) <br>Zákaznická konfigurovatelná doba uchování záloh <br>Zálohy iniciované [uživatelem](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Možnost obnovení databáze bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Zabezpečení a dodržování předpisů** | **správy**|
-|Izolované prostředí[(integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), služba jednoho klienta, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty serveru Azure AD (přihlášení)</a>  <br>Dodržuje standardy dodržování předpisů stejné jako databáze Azure SQL <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Rozšířená ochrana před internetovými útoky](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manager pro automatizaci zřizování a škálování služeb <br>Funkce portálu Azure pro ruční zřizování a škálování služeb <br>Database Migration Service
+|Izolované prostředí[(integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), služba jednoho klienta, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty serveru Azure AD (přihlášení)</a>  <br>Dodržuje standardy dodržování předpisů stejné jako databáze Azure SQL <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Pokročilá ochrana před hrozbami](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manager pro automatizaci zřizování a škálování služeb <br>Funkce portálu Azure pro ruční zřizování a škálování služeb <br>Database Migration Service
 
 > [!IMPORTANT]
 > Azure SQL Database (všechny možnosti nasazení) byla certifikována podle řady standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure,](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) kde najdete nejnovější seznam certifikací dodržování předpisů databáze SQL Database.
@@ -121,7 +121,7 @@ Další informace o rozdílu mezi úrovněmi služeb v [limitech prostředků sp
 
 Azure SQL Database nabízí operace správy, které můžete využít k automatickému nasazování nových spravovaných instancí, aktualizaci vlastností instancí a odstraňování instancí v případě, že už je nepotřebujete. Tato část obsahuje informace o operacích správy a jejich typické doby trvání.
 
-Pro podporu [nasazení v rámci virtuálních sítí (Virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) a poskytování izolace a zabezpečení pro zákazníky, spravované instance spoléhá na [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture), které představují vyhrazenou sadu izolovaných virtuálních počítačů nasazených uvnitř podsítě virtuální sítě zákazníka. V podstatě každé nasazení spravované instance v prázdné podsíti má za následek nové sestavení virtuálního clusteru.
+Pro podporu [nasazení v rámci virtuálních sítí (Virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md) a poskytování izolace a zabezpečení pro zákazníky, spravované instance spoléhá na [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture), které představují vyhrazenou sadu izolovaných virtuálních počítačů nasazených uvnitř podsítě virtuální sítě zákazníka. V podstatě každé nasazení spravované instance v prázdné podsíti má za následek nové sestavení virtuálního clusteru.
 
 Následné operace na nasazených spravovaných instancích mohou mít také vliv na jeho základní virtuální cluster. To má vliv na dobu trvání operací správy, protože nasazení dalších virtuálních počítačů přichází s režií, kterou je třeba vzít v úvahu při plánování nových nasazení nebo aktualizací existujících spravovaných instancí.
 
@@ -150,7 +150,7 @@ Následující tabulka shrnuje operace a typické celkové doby trvání:
 |Nasazení |První instance jiné generace hardwaru v neprázdné podsíti (například první instance Gen 5 v podsíti s instancemi Gen 4)|Vytvoření virtuálního clusteru*|90% operací končí za 4 hodiny|
 |Nasazení |Vytvoření 4 virtuálních jader v prázdné nebo neprázdné podsíti|Vytvoření virtuálního clusteru**|90% operací končí za 4 hodiny|
 |Nasazení |Následné vytvoření instance v neprázdné podsíti (instance 2., 3., atd.)|Změna velikosti virtuálního clusteru|90% operací končí za 2,5 hodiny|
-|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení AAD, příznak Hybridní výhoda Azure)|Není dostupné.|Až 1 minuta|
+|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení AAD, příznak Hybridní výhoda Azure)|–|Až 1 minuta|
 |Aktualizace |Škálování úložiště instancí nahoru/dolů (úroveň služby pro obecné účely)|Připojení databázových souborů|90% operací končí za 5 minut|
 |Aktualizace |Škálování úložiště instancí nahoru/dolů (úroveň služeb Důležité pro podnikání)|- Změna velikosti virtuálního clusteru<br>- Vždy na dostupnost skupiny výsev|90% operací končí za 2,5 hodiny + čas na osivo všech databází (220 GB / hod)|
 |Aktualizace |Výpočetní výpočetní kapacity instance (virtuální jádra) se zvětšují nahoru a dolů (obecné účely)|- Změna velikosti virtuálního clusteru<br>- Připojení databázových souborů|90% operací končí za 2,5 hodiny|
@@ -193,8 +193,8 @@ Kategorie  |Operace  |Cancelable  |Předpokládaná doba trvání zrušení  |
 |Aktualizace |Výpočetní výpočetní kapacity instance (virtuální jádra) se zvětšují nahoru a dolů (obecné účely) |Ano |90% operací končí za 5 minut |
 |Aktualizace |Výpočetní kapacity instancí (virtuální jádra) se zvětšují nahoru a dolů (Důležité pro podnikání) |Ano |90% operací končí za 5 minut |
 |Aktualizace |Změna úrovně služby instance (obecné účely pro kritické pro obchodní a naopak) |Ano |90% operací končí za 5 minut |
-|Odstranění |Odstranění instance |Ne |  |
-|Odstranění |Odstranění virtuálního clusteru (jako operace iniciovaná uživatelem) |Ne |  |
+|Odstranit |Odstranění instance |Ne |  |
+|Odstranit |Odstranění virtuálního clusteru (jako operace iniciovaná uživatelem) |Ne |  |
 
 Chcete-li operaci správy zrušit, přejděte do okna přehledu a klikněte na oznamovací schránku probíhajícího provozu. Z pravé strany se zobrazí obrazovka s probíhajícím provozem a bude k dispozici tlačítko pro zrušení operace. Po prvním kliknutí budete vyzváni k dalšímu klepnutí a potvrzení, že chcete operaci zrušit.
 
@@ -239,7 +239,7 @@ Azure SQL Database poskytuje sadu pokročilých funkcí zabezpečení, které lz
 - [Auditování spravovaných instancí](sql-database-managed-instance-auditing.md) sleduje události databáze a zapisuje je do souboru protokolu auditu umístěného ve vašem účtu úložiště Azure. Auditování může pomoci udržovat dodržování předpisů, pochopit databázovou aktivitu a získat přehled o nesrovnalostech a anomáliích, které by mohly naznačovat obchodní problémy nebo podezření na porušení zabezpečení.
 - Šifrování dat v pohybu – spravovaná instance zabezpečuje vaše data tím, že poskytuje šifrování dat v pohybu pomocí zabezpečení transportní vrstvy. Kromě zabezpečení transportní vrstvy nabízí možnost nasazení spravované instance ochranu citlivých dat v letu, v klidovém stavu a během zpracování dotazů pomocí [vždy šifrované](/sql/relational-databases/security/encryption/always-encrypted-database-engine). Funkce Always Encrypted je špičkou v odvětví, která nabízí bezkonkurenční zabezpečení dat před porušením zabezpečení, včetně krádeže důležitých dat. Například s vždy šifrované, čísla platebních karet jsou uloženy šifrované v databázi vždy, a to i během zpracování dotazů, což umožňuje dešifrování v místě použití autorizovaným personálem nebo aplikace, které potřebují ke zpracování těchto dat.
 - [Pokročilá ochrana před hrozbami](sql-database-managed-instance-threat-detection.md) doplňuje [auditování](sql-database-managed-instance-auditing.md) tím, že poskytuje další vrstvu inteligentního zabezpečení integrovanou do služby, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Budete upozorněni na podezřelé aktivity, potenciální chyby zabezpečení a útoky injektáže SQL, stejně jako neobvyklé vzory přístupu k databázi. Pokročilé výstrahy ochrany před hrozbami si můžete prohlédnout z [Azure Security Center](https://azure.microsoft.com/services/security-center/) a poskytnout podrobnosti o podezřelé aktivity a doporučit akce, jak prozkoumat a zmírnit hrozbu.  
-- [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking) omezuje vystavení citlivých dat maskováním neprivilegovaným uživatelům. Dynamické maskování dat pomáhá zabránit neoprávněnému přístupu k citlivým datům tím, že umožňuje určit, kolik citlivých dat se má odhalit s minimálním dopadem na aplikační vrstvu. Je to funkce zabezpečení založená na zásadách, která skrývá citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění.
+- [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking) omezuje vystavení citlivých dat maskováním neprivilegovaným uživatelům. Dynamické maskování dat pomáhá zabránit neoprávněnému přístupu k citlivým datům tím, že umožňuje určit, kolik citlivých dat se má odhalit s minimálním dopadem na aplikační vrstvu. Jedná se o funkci zabezpečení založenou na zásadách, která skryje citlivá data v sadě výsledků dotazu přes určená databázová pole, zatímco data v databázi se nezmění.
 - [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security) umožňuje řídit přístup k řádkům v databázové tabulce na základě charakteristik uživatele provádějícího dotaz (například podle členství ve skupině nebo kontextu spuštění). Zabezpečení na úrovni řádku (RLS) zjednodušuje návrh a psaní kódu zabezpečení v aplikaci. RLS umožňuje implementovat omezení přístupu k datovým řádkům. Například zajištění, že pracovníci mají přístup pouze k datovým řádkům, které jsou relevantní pro jejich oddělení, nebo omezení přístupu k datům pouze na příslušná data.
 - [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) šifruje datové soubory spravovaných instancí, známé jako šifrování dat v klidovém stavu. TDE provádí vstupně-nevstupně-to šifrování a dešifrování dat a souborů protokolu. Šifrování používá šifrovací klíč databáze (DEK), který je uložen v záznamu spuštění databáze pro dostupnost během obnovení. Všechny databáze můžete chránit ve spravované instanci pomocí transparentního šifrování dat. TDE je osvědčená technologie šifrování v klidovém stavu serveru SQL Server, která je vyžadována mnoha standardy dodržování předpisů k ochraně před krádeží paměťových médií.
 

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
-ms.openlocfilehash: 74195e83e17140b67ac060e1791c580e90e720f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b34708d6e91da627ff44018778318337ddb6b06
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534435"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879492"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 
@@ -462,7 +462,7 @@ Existují dva hlavní způsoby, jak změnit heslo pro virtuální počítače ve
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Je možné přiřadit skupinu zabezpečení sítě (NSG) k škálovací sadě tak, aby se vztahovala na všechny síťové karty virtuálních počítačů v sadě?
 
@@ -565,7 +565,7 @@ Chcete-li vytvořit škálovací sadu virtuálních počítačů, která každé
 
 Ano. ID prostředků pro více back-endových adres aplikační brány můžete přidat do seznamu _applicationGatewayBackendAddressPools_ v části _ipConfigurations_ v profilu sítě škálovací sady.
 
-## <a name="scale"></a>Škálování
+## <a name="scale"></a>Měřítko
 
 ### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>V jakém případě bych vytvořil škálovací sadu virtuálních strojů s méně než dvěma virtuálními počítači?
 
@@ -721,7 +721,7 @@ New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $
 Vytvořte spravovaný disk ze snímku.
 
 ```azurepowershell-interactive
-$snapshotName = "myShapshot"
+$snapshotName = "mySnapshot"
 $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
 $diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
 $osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk')

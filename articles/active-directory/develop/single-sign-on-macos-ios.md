@@ -3,26 +3,22 @@ title: Konfigurace automatického připojatá v macOS a iOS
 titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování (SSO) v macOS a iOS.
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/03/2020
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262448"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881244"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Postup: Konfigurace přizpůsobovat služby Přikonfiguraci v macOS a iOS
 
@@ -69,7 +65,7 @@ Chcete-li povolit přihlašování k vlastnímu přihlašování ve vašich apli
 
 Aby platforma identit microsoftu věděla, které aplikace mohou sdílet tokeny, musí tyto aplikace sdílet stejné ID klienta nebo ID aplikace. Jedná se o jedinečný identifikátor, který vám byl poskytnut při registraci první aplikace na portálu.
 
-Způsob, jakým platforma identit společnosti Microsoft říká aplikacím, které používají stejné ID aplikace, je podle jejich **identifikátorů URI přesměrování**. Každá aplikace může mít více redirect URI registrované v onboarding portálu. Každá aplikace ve vaší sadě bude mít jiný identifikátor URI přesměrování. Například:
+Způsob, jakým platforma identit společnosti Microsoft říká aplikacím, které používají stejné ID aplikace, je podle jejich **identifikátorů URI přesměrování**. Každá aplikace může mít více redirect URI registrované v onboarding portálu. Každá aplikace ve vaší sadě bude mít jiný identifikátor URI přesměrování. Příklad:
 
 Identifikátor URI přesměrování aplikace App1:`msauth.com.contoso.mytestapp1://auth`  
 Identifikátor URI přesměrování aplikace 2:`msauth.com.contoso.mytestapp2://auth`  
@@ -149,7 +145,7 @@ Služba MSAL poskytuje podporu pro zprostředkované ověřování pomocí aplik
 
 Následující kroky jsou, jak povolíte přisyťující služby Přistaň pomocí zprostředkovatele ověřování pro vaši aplikaci:
 
-1. Zaregistrujte formát IDENTIFIKÁTOR URI kompatibilní s brokerem pro aplikaci v seznamu Info.plist vaší aplikace. Formát identifikátoru URI kompatibilní `msauth.<app.bundle.id>://auth`s zprostředkovatelem je . Nahraďte<app.bundle.id>'' id sady. Například:
+1. Zaregistrujte formát IDENTIFIKÁTOR URI kompatibilní s brokerem pro aplikaci v seznamu Info.plist vaší aplikace. Formát identifikátoru URI kompatibilní `msauth.<app.bundle.id>://auth`s zprostředkovatelem je . Nahraďte<app.bundle.id>'' id sady. Příklad:
 
     ```xml
     <key>CFBundleURLSchemes</key>

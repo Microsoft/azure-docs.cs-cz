@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9c1cff53d5d0f0385d3d61938c7fb6309efb7b1
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243182"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985384"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače SQL Serveru v Azure u poskytovatele prostředků virtuálního počítače SQL
 
@@ -178,9 +178,9 @@ Chcete-li zaregistrovat virtuální počítač SQL Server přímo v plném reži
 
 Sql Server 2008 a 2008 R2 nainstalovaný v systému Windows Server 2008 _(nikoli R2)_ lze zaregistrovat u poskytovatele prostředků virtuálního zařízení SQL v [režimu NoAgent](#management-modes). Tato možnost zajišťuje dodržování předpisů a umožňuje monitorování virtuálního počítače SQL Server na webu Azure Portal s omezenou funkčností.
 
-Zadejte `AHUB` `PAYG`buď `DR` , nebo jako **sqlLicenseType**a buď `SQL2008-WS2008` nebo `SQL2008R2-WS2008` jako **sqlImageOffer**. 
+Zadejte `AHUB` `PAYG`buď `DR` , , nebo jako `SQL2008-WS2008` `SQL2008R2-WS2008` **sqlLicenseType**a nebo jako **sqlImageOffer**. 
 
-Chcete-li zaregistrovat instanci serveru SQL Server 2008 nebo 2008 R2 v instanci systému Windows Server 2008, použijte následující fragment kódu Az CLI nebo PowerShell: 
+Chcete-li zaregistrovat sql server 2008 nebo 2008 R2 v instanci systému Windows Server 2008, použijte následující fragment kódu Az CLI nebo PowerShell: 
 
 
 # <a name="az-cli"></a>[AZ CLI](#tab/bash)
@@ -190,7 +190,7 @@ Zaregistrujte virtuální počítač SQL Server 2008 v režimu NoAgent pomocí p
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
-   --image-sku Enterprise --image-offer SQL2008-WS2008R2
+   --image-sku Enterprise --image-offer SQL2008-WS2008
  ```
  
  
@@ -199,7 +199,7 @@ Zaregistrujte virtuální počítač SQL Server 2008 R2 v režimu NoAgent pomoc�
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
-   --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
+   --image-sku Enterprise --image-offer SQL2008R2-WS2008
  ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -245,7 +245,7 @@ Upgrade režimu agenta na plný:
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na prostředek [virtuálních počítačů SQL.](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) 
 1. Vyberte virtuální počítač SQL Server a vyberte **Přehled**. 
 1. Pro virtuální servery SQL Server s režimem NoAgent nebo lightweight IaaS vyberte **pouze typ licence a edition aktualizace jsou k dispozici se zprávou rozšíření SQL IaaS.**
@@ -286,7 +286,7 @@ Můžete ověřit, jestli váš virtuální počítač SQL Server již byla zare
 
 ### <a name="azure-portal"></a>portál Azure 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Přejděte na [virtuální počítače SQL Serveru](virtual-machines-windows-sql-manage-portal.md).
 1. Vyberte virtuální počítač SQL Server ze seznamu. Pokud váš virtuální počítač SQL Server není uveden zde, pravděpodobně nebyl aregistrován u poskytovatele prostředků virtuálního počítače SQL. 
 1. Zobrazení hodnoty v části **Stav**. Pokud je **stav** **úspěšný**, byl virtuální modul SQL Server úspěšně zaregistrován u poskytovatele prostředků virtuálního virtuálního připojení SQL. 

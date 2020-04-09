@@ -5,12 +5,12 @@ description: Seznamte se s doporučenými postupy operátora clusteru pro úlož
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668105"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877894"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Doporučené postupy pro ukládání a zálohování ve službě Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ V následující tabulce jsou uvedeny dostupné typy úložišť a jejich možno
 
 Dva primární typy úložiště poskytované pro svazky v AKS jsou zálohovány Azure Disky nebo Soubory Azure. Chcete-li zlepšit zabezpečení, oba typy úložiště používají Azure Storage Service Encryption (SSE) ve výchozím nastavení, který šifruje data v klidovém stavu. Disky nelze aktuálně šifrovat pomocí šifrování disku Azure na úrovni uzlu AKS.
 
-Soubory Azure jsou aktuálně dostupné ve standardní úrovni výkonu. Disky Azure jsou dostupné ve standardních a prémiových úrovních výkonu:
+Soubory Azure i disky Azure jsou dostupné v úrovních výkonu Standard a Premium:
 
 - *Disky Premium* jsou zálohovány vysoce výkonnými disky SSD (SSD). Disky Premium se doporučují pro všechny produkční úlohy.
 - *Standardní* disky jsou zálohovány běžnými rotujícími disky (HDD) a jsou vhodné pro archivní nebo zřídka přistupovaná data.

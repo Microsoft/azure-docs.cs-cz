@@ -1,28 +1,23 @@
 ---
-title: Protokol SAML jednotného odhlášení Azure | Dokumenty společnosti Microsoft
+title: Protokol SAML pro jednotné odhlášení Azure
 description: Tento článek popisuje protokol SAML jednotného odhlášení ve službě Azure Active Directory.
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 95d3deff73ce357f012b15a7fc1cfa3decdb4bda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701361"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881261"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Protokol SAML pro jednotné odhlášení
 

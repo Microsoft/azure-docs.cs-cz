@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: e05aa6e8f656001eb9eb2a3717dde6c16f030e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337149"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985622"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Propojení s Čínou pomocí Virtuální sítě Azure a Secure Hub
 
@@ -54,7 +54,7 @@ V závislosti na poskytovateli můžete získat různé nabídky služeb. Níže
 | --- | --- |
 | Síť MPLS/IPVPN |PCCW, China Telecom Globální |
 |SDWAN| PCCW, China Telecom Globální|
-| Vyhrazený přístup k internetu | PCCW, Hong Kong Telecom, Čína Mobil, PCCW |
+| Vyhrazený přístup k internetu | PCCW, Hong Kong Telecom, Čína Mobil|
 
 Se svým poskytovatelem se můžete dohodnout na tom, které z následujících dvou řešení použít k dosažení globální páteřní sítě společnosti Microsoft:
 

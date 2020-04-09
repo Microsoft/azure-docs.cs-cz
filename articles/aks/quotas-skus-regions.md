@@ -1,15 +1,16 @@
 ---
-title: Kvóty, sku a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)
+title: Limity pro zdroje, skum, oblasti
+titleSuffix: Azure Kubernetes Service
 description: Další informace o výchozí kvóty, omezené velikosti virtuálních zařízení uzlu a dostupnost oblasti služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.openlocfilehash: 03e7396932f0813ef4bd00d644dcdaddfe229e6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 054d6ff4fc105d84192ac81feda97515f6cfae49
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252828"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886768"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóty, omezení velikosti virtuálního počítače a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)
 

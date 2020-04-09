@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: d52270e623a713d7188ac5ff907ebb82ada13283
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: a5eb5b652f7a419c6c2d1b3e6880c3c3003fb679
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745598"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985520"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Publikování nabídky aplikace Power BI
 
 >[!Important]
->března 2020 začneme přesouvat správu nabídek aplikací Power BI do Partnerského centra. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
+>dubna 2020 začneme přesouvat správu nabídek aplikací Power BI do Centra partnerů. Po migraci vytvoříte a spravujete nabídky v Centru partnerů. Podle pokynů v [přehledu vytváření aplikací Power BI](https://aka.ms/AzureCreatePBIServiceApp) spravujte migrované nabídky.
 
 Posledním krokem po definování nabídky na portálu partnerů cloudu a vytvoření souvisejících technických prostředků je odeslání nabídky k publikování. Chcete-li tento proces spustit, vyberte v levém podokně okna **Nová nabídka** **možnost Publikovat**. Další informace najdete [v tématu publikování nabídek Azure Marketplace a AppSource](../manage-offers/cpp-publish-offer.md).
 

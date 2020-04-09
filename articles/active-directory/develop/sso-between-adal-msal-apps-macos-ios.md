@@ -2,26 +2,22 @@
 title: Připojovací služby mezi ADAL & aplikace Misal (iOS/macOS) – platforma identit microsoftu | Azure
 description: ''
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 2fbb6e837ae898daf4bc78d5cccc75660463e8a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085414"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880746"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Postup: Přizpůsobovat služby při přijmutí mezi aplikacemi ADAL a MSAL v systému macOS a iOS
 
@@ -52,8 +48,8 @@ Následující tabulka shrnuje rozdíly v identifikátoru účtu mezi ADAL a MSA
 | Identifikátor účtu                | MSAL                                                         | ADAL 2.7.x      | Starší ADAL (před ADAL 2.7.x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | zobrazitelný identifikátor            | `username`                                                   | `userId`        | `userId`                       |
-| jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | Není dostupné.                            |
-| Není známo žádné id účtu.               | Dotaz na `allAccounts:` všechny účty prostřednictvím rozhraní API`MSALPublicClientApplication` | Není dostupné.             | Není dostupné.                            |
+| jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | –                            |
+| Není známo žádné id účtu.               | Dotaz na `allAccounts:` všechny účty prostřednictvím rozhraní API`MSALPublicClientApplication` | –             | –                            |
 
 Toto `MSALAccount` je rozhraní poskytující tyto identifikátory:
 
@@ -207,7 +203,7 @@ Protože `homeAccountId` není k dispozici ve starších verzích ADAL, budete `
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Například:
+Příklad:
 
 Cíl-C:
 

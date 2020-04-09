@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 861961bb66adc7ed9509eab973516a964cb67492
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521067"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887108"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -69,8 +69,6 @@ Chcete-li zobrazit metriky pro zdroje standardního vyrovnávání zatížení:
 
 Pokyny k rozhraní API pro načítání vícerozměrných definic a hodnot metrik najdete [v tématu Azure Monitoring REST API návod .](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api) Tyto metriky lze zapsat do účtu úložiště pouze prostřednictvím možnosti Všechny metriky. 
 
-### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
-
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurace výstrah pro vícerozměrné metriky ###
 
 Azure Standard Load Balancer podporuje snadno konfigurovatelné výstrahy pro vícerozměrné metriky. Nakonfigurujte vlastní prahové hodnoty pro konkrétní metriky tak, aby se aktivovaly výstrahy s různou úrovní závažnosti, aby se posílilo bezdotykové monitorování prostředků.
@@ -82,10 +80,11 @@ Konfigurace upozornění:
     1.  (Nepovinné) Přidání skupiny akcí pro automatickou opravu
     1.  Přiřazení závažnosti výstrahy, názvu a popisu, který umožňuje intuitivní reakci
 
-
   >[!NOTE]
   >Okno konfigurace stavu výstrahy zobrazí časové řady pro historii signálu. K dispozici je možnost filtrovat tuto časovou řadu podle dimenzí, jako je back-endová IP adresa. Tím se vyfiltruje graf časových řad, ale **nikoli** samotné upozornění. Výstrahy pro konkrétní adresy IP back-endu nelze konfigurovat.
-  
+
+### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
+
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Je cesta k datům nahoru a dostupná pro můj program VYROVNÁVÁNÍ zatížení VIP?
 
 Metrika dostupnosti VIP popisuje stav datové cesty v rámci oblasti k výpočetnímu hostiteli, kde jsou umístěny vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Pomocí metriky můžete:

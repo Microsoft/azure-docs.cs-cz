@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 921e22e637782ffd744af1a28e6bd43e7dd53c67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066152"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986687"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Klienti systému Windows
 
@@ -130,7 +130,7 @@ ms.locfileid: "80066152"
 5. Extrahujte soukromý klíč a kryptografický otisk base64 z .pfx. To lze provést několika způsoby. Použití OpenSSL v počítači je jedním ze způsobů.
 
     ```
-    openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
    Soubor *profileinfo.txt* bude obsahovat soukromý klíč a kryptografický otisk certifikační autority a klientský certifikát. Ujistěte se, že používáte kryptografický otisk klientského certifikátu.
 
@@ -161,7 +161,7 @@ ms.locfileid: "80066152"
 11. Chcete-li se připojit pomocí příkazového řádku, zadejte následující příkaz:
   
     ```
-    sudo openvpn –-config <name and path of your VPN profile file>&
+    sudo openvpn --config <name and path of your VPN profile file>&
     ```
 12. Chcete-li se připojit pomocí grafického uživatelského rozhraní, přejděte na nastavení systému.
 13. Klepnutím **+** přidáte nové připojení VPN.

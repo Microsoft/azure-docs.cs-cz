@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: 8c261a010a1e8f4d1be9b3883510eb38c37a15ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296889"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985911"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení tréninkových běhů v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -264,16 +264,41 @@ Chcete-li vytvořit mnoho podřízených spustí efektivně, použijte metodu. [
 
 ### <a name="submit-child-runs"></a>Odeslat podřízené běhy
 
-Podřízené spuštění lze také odeslat z nadřazeného spuštění. To umožňuje vytvářet hierarchie nadřazených a podřízených spuštění, z nichž každý běží na různých výpočetních cílech, připojených společným nadřazeným ID spuštění.
+Podřízené spuštění lze také odeslat z nadřazeného spuštění. To umožňuje vytvářet hierarchie nadřazených a podřízených spuštění. 
 
-Použijte [metodu "submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) k odeslání podřízeného spuštění z nadřazeného spuštění. Chcete-li to provést v nadřazeném spuštění skriptu, získejte kontext spuštění a odešlete podřízené spuštění pomocí ``submit_child`` metody instance kontextu.
+Můžete chtít, aby vaše dítě běží použít jinou konfiguraci spuštění než nadřazené spuštění. Můžete například použít méně výkonnou konfiguraci založenou na procesoru pro nadřazenou konfiguraci, zatímco používáte konfigurace založené na GPU pro vaše děti. Další společnou touhou je předat každému dítěti různé argumenty a data. Chcete-li přizpůsobit podřízené `RunConfiguration` spuštění, předavěji objekt konstruktoru dítěte. `ScriptRunConfig` Tento příklad kódu, který by `ScriptRunConfig` byl součástí skriptu nadřazeného objektu:
+
+- Vytvoří `RunConfiguration` načtení pojmenovaného výpočetního prostředku.`"gpu-compute"`
+- Iterates přes různé hodnoty argumentů, `ScriptRunConfig` které mají být předány podřízené objekty
+- Vytvoří a odešle nový podřízený běh pomocí vlastního výpočetního prostředku a argumentu.
+- Blokuje, dokud se nedokončí všechny podřízené
 
 ```python
-## In parent run script
-parent_run = Run.get_context()
-child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
-parent_run.submit_child(child_run_config)
+# parent.py
+# This script controls the launching of child scripts
+from azureml.core import Run, ScriptRunConfig, RunConfiguration
+
+run_config_for_aml_compute = RunConfiguration()
+run_config_for_aml_compute.target = "gpu-compute"
+run_config_for_aml_compute.environment.docker.enabled = True 
+
+run = Run.get_context()
+
+child_args = ['Apple', 'Banana', 'Orange']
+for arg in child_args: 
+    run.log('Status', f'Launching {arg}')
+    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], run_config = run_config_for_aml_compute)
+    # Starts the run asynchronously
+    run.submit_child(child_config)
+
+# Experiment will "complete" successfully at this point. 
+# Instead of returning immediately, block until child runs complete
+
+for child in run.get_children():
+    child.wait_for_completion()
 ```
+
+Chcete-li efektivně vytvořit mnoho podřízených spuštění s identickými konfiguracemi, argumenty a vstupy, použijte metodu. [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) Vzhledem k tomu, že každé vytvoření vede k síťovému volání, je vytvoření dávky spuštění efektivnější než jejich vytvoření jeden po druhém.
 
 V rámci podřízeného spuštění můžete zobrazit id nadřazeného spuštění:
 

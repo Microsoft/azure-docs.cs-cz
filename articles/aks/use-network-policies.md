@@ -1,15 +1,16 @@
 ---
-title: Zabezpečené pody se síťovými zásadami ve službě Azure Kubernetes Service (AKS)
+title: Zabezpečený provoz podu pomocí zásad sítě
+titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak zabezpečit provoz, který proudí do a z podů pomocí zásad sítě Kubernetes ve službě Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473604"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886700"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečený provoz mezi pody pomocí síťových zásad ve službě Azure Kubernetes Service (AKS)
 
@@ -24,7 +25,7 @@ Potřebujete nainstalované a nakonfigurované azure CLI verze 2.0.61 nebo nově
 > [!TIP]
 > Pokud jste během náhledu použili funkci zásad sítě, doporučujeme [vytvořit nový cluster](#create-an-aks-cluster-and-enable-network-policy).
 > 
-> Pokud chcete pokračovat v používání existujících testovacích clusterů, které používaly zásady sítě během náhledu, upgradujte cluster na nové verze Kubernetes pro nejnovější verzi ga a pak nasaďte následující manifest YAML, abyste opravili server s metrikami a Kubernetes Řídicího panelu. Tato oprava je vyžadována pouze pro clustery, které používají modul zásad sítě Calico.
+> Pokud chcete pokračovat v používání existujících testovacích clusterů, které používaly zásady sítě během náhledu, upgradujte cluster na nové verze Kubernetes pro nejnovější verzi GA a pak nasaďte následující manifest YAML, abyste opravili server s chybami metrik y serveru a řídicí panel Kubernetes. Tato oprava je vyžadována pouze pro clustery, které používají modul zásad sítě Calico.
 >
 > Jako osvědčený postup zabezpečení [zkontrolujte obsah tohoto manifestu YAML,][calico-aks-cleanup] abyste pochopili, co se nasadí do clusteru AKS.
 >
@@ -56,7 +57,7 @@ Obě implementace používají Linux *IPTables* k vynucení zadaných zásad. Z�
 | Soulad se specifikací Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
 | Další funkce                      | Žádný                       | Rozšířený model zásad skládající se z globálních zásad sítě, globální síťové sady a koncového bodu hostitele. Další informace o `calicoctl` použití rozhraní se k dispozici pro správu těchto rozšířených funkcí naleznete v [tématu calicoctl user reference][calicoctl]. |
 | Podpora                                  | S podporou týmu podpory Azure a inženýrství | Podpora komunity Calico. Další informace o další placené podpoře naleznete v [tématu Project Calico support options][calico-support]. |
-| protokolování                                  | Přidaná / odstraněná pravidla v IPTables jsou přihlášena ke každému hostiteli pod */var/log/azure-npm.log* | Další informace naleznete [v protokolech komponent Calico][calico-logs] |
+| Protokolování                                  | Přidaná / odstraněná pravidla v IPTables jsou přihlášena ke každému hostiteli pod */var/log/azure-npm.log* | Další informace naleznete [v protokolech komponent Calico][calico-logs] |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolení síťových zásad
 

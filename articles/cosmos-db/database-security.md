@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619130"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985282"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – Přehled
 
@@ -23,7 +23,7 @@ Tento článek popisuje osvědčené postupy zabezpečení databází a klíčov
 
 ## <a name="how-do-i-secure-my-database"></a>Jak zabezpečit svou databázi
 
-Zabezpečení dat je sdílená odpovědnost mezi vámi, zákazníkem a poskytovatelem databáze. V závislosti na zvoleném poskytovateli databáze se může množství odpovědnosti lišit. Pokud zvolíte místní řešení, musíte poskytnout vše od ochrany koncových bodů až po fyzické zabezpečení hardwaru , což není snadný úkol. Pokud zvolíte poskytovatele cloudové databáze PaaS, jako je Azure Cosmos DB, vaše oblast zájmu se značně zmenší. Následující obrázek vypůjčený z dokumentu white [paper o sdílených odpovědnostech microsoftu pro cloud computing](https://aka.ms/sharedresponsibility) ukazuje, jak se vaše odpovědnost snižuje s poskytovatelem PaaS, jako je Azure Cosmos DB.
+Zabezpečení dat je sdílená odpovědnost mezi vámi, zákazníkem a poskytovatelem databáze. V závislosti na zvoleném poskytovateli databáze se může množství odpovědnosti lišit. Pokud zvolíte místní řešení, musíte poskytnout vše od ochrany koncových bodů až po fyzické zabezpečení hardwaru , což není snadný úkol. Pokud zvolíte poskytovatele cloudové databáze PaaS, jako je Azure Cosmos DB, vaše oblast zájmu se značně zmenší. Následující obrázek vypůjčený z dokumentu white [paper o sdílených odpovědnostech microsoftu pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) ukazuje, jak se vaše odpovědnost snižuje s poskytovatelem PaaS, jako je Azure Cosmos DB.
 
 ![Odpovědnosti zákazníků a poskytovatelů databází](./media/database-security/nosql-database-security-responsibilities.png)
 
@@ -70,7 +70,7 @@ Pojďme se podívat do každého z nich podrobně.
 |Obnovení odstraněných dat|Automatické zálohování online lze použít k obnovení dat, která jste omylem odstranili až do ~30 dnů po události. <br><br>Další informace v [oblasti Automatické zálohování a obnovení online pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
 |Ochrana a izolování citlivých dat|Všechna data v oblastech uvedených v části Co je nového? je nyní zašifrován v klidu.<br><br>Osobní údaje a další důvěrné údaje mohou být izolovány pro konkrétní kontejner a pro čtení a zápis nebo přístup jen pro čtení může být omezen na konkrétní uživatele.|
 |Sledování útoků|Pomocí [protokolování auditování a protokolů aktivit](logging.md)můžete sledovat, že váš účet má normální a neobvyklou aktivitu. Můžete zobrazit, jaké operace byly provedeny na vašich prostředcích, kdo operaci inicioval, kdy došlo k operaci, stav operace a mnohem více, jak je znázorněno na snímku obrazovky za touto tabulkou.|
-|Reakce na útoky|Jakmile kontaktujete podporu Azure a nahlásíte potenciální útok, zakopne se proces reakce na incidenty v 5 krocích. Cílem procesu v 5 krocích je co nejrychleji obnovit normální zabezpečení a provoz služby po zjištění problému a zahájení šetření.<br><br>Další informace najdete v [části Microsoft Azure Security Response v cloudu](https://aka.ms/securityresponsepaper).|
+|Reakce na útoky|Jakmile kontaktujete podporu Azure a nahlásíte potenciální útok, zakopne se proces reakce na incidenty v 5 krocích. Cílem procesu v 5 krocích je co nejrychleji obnovit normální zabezpečení a provoz služby po zjištění problému a zahájení šetření.<br><br>Další informace najdete v [části Microsoft Azure Security Response v cloudu](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Geografické oplocení|Azure Cosmos DB zajišťuje zásady správného řízení dat pro suverénní oblasti (například Německo, Čína, USA Gov).|
 |Chráněná zařízení|Data v Azure Cosmos DB se ukládají na ssd discích v chráněných datových centrech Azure.<br><br>Další informace v [globálních datových centrech Microsoftu](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |Šifrování HTTPS/SSL/TLS|Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB také podporuje TLS 1.2.<br>Je možné vynutit minimální verzi TLS na straně serveru. Chcete-li tak [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)učinit, obraťte se na společnost .|

@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Obsahuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273264"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878948"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -135,7 +135,7 @@ Zálohování podporuje kompresi záložního provozu, jak je shrnuto v následu
 
 ## <a name="retention-limits"></a>Limity uchovávání informací
 
-**Nastavení** | **Limity**
+**Nastavení** | **Omezení**
 --- | ---
 **Maximální počet bodů obnovení na chráněnou instanci (počítač nebo zatížení)** | 9,999
 **Maximální doba vypršení platnosti bodu obnovení** | Bez omezení
@@ -151,10 +151,10 @@ Azure Backup přidal funkci Obnovení napříč oblastmi, která posiluje dostup
 
 | Typ správy zálohování | Podporuje se                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Ano. Veřejná omezená verze Preview podporovaná pro šifrované virtuální počítače a virtuální počítače s disky s menším než 4 TB | USA – středozápad   |
-| MARS Agent/V areálu | Ne                                                           | Není dostupné.               |
-| SQL /SAP HANA          | Ne                                                           | Není dostupné.               |
-| Afs                    | Ne                                                           | Není dostupné.               |
+| Virtuální počítač Azure               | Ano.   Podporované pro šifrované virtuální počítače a virtuální počítače s disky s menší než 4 TB | Všechny veřejné oblasti Azure.  |
+| MARS Agent/V areálu | Ne                                                           | –               |
+| SQL /SAP HANA          | Ne                                                           | –               |
+| Afs                    | Ne                                                           | –               |
 
 ## <a name="next-steps"></a>Další kroky
 

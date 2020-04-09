@@ -3,25 +3,22 @@ title: Vytvoření mobilní aplikace, která volá webová api | Azure
 titleSuffix: Microsoft identity platform | Azure
 description: Přečtěte si, jak vytvořit mobilní aplikaci, která volá webová API (přehled)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.reviwer: brandwe
+ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: acd44298e401aabaef03f5ddd84f37f32a3d8bcd
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546092"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882569"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: Mobilní aplikace, která volá webová api
 
@@ -66,4 +63,4 @@ Při vytváření mobilní aplikace na platformě identit Microsoftu mějte na p
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace aplikace](scenario-mobile-app-registration.md)
+> [Registrace aplikací](scenario-mobile-app-registration.md)

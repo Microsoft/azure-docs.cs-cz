@@ -1,10 +1,9 @@
 ---
-title: Možnosti podpory a nápovědy pro vývojáře aplikací Azure AD | Dokumenty společnosti Microsoft
+title: Možnosti podpory a nápovědy pro vývojáře aplikací Azure AD
 description: Zjistěte, jak získat nápovědu a podporu pro otázky a problémy související s vývojem při vytváření aplikací, které se integrují s identitami Microsoftu (Azure Active Directory a účet Microsoft).
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,16 +12,16 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160963"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885527"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
-Pokud teprve začínáte integrovat s Azure Active Directory (Azure AD), microsoftovými identitami nebo rozhraním Microsoft Graph API nebo když implementujete novou funkci do vaší aplikace, jsou chvíle, kdy potřebujete získat pomoc od komunity nebo pochopit možnosti podpory, které máte jako vývojář. Tento článek vám pomůže pochopit tyto možnosti, včetně:
+Pokud teprve začínáte integrovat s Azure Active Directory (Azure AD), Microsoft identity nebo Microsoft Graph API, nebo když implementujete novou funkci do vaší aplikace, jsou chvíle, kdy potřebujete získat pomoc od komunity nebo pochopit možnosti podpory, které máte jako vývojář. Tento článek vám pomůže pochopit tyto možnosti, včetně:
 
 > [!div class="checklist"]
 > * Jak vyhledat, zda vaše otázka nebyla zodpovězena komunitou, nebo pokud již existuje existující dokumentace pro funkci, kterou se pokoušíte implementovat

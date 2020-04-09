@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256208"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878149"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co jsou fondy instancí databáze SQL (náhled)?
 
@@ -59,7 +59,7 @@ Následující seznam obsahuje hlavní případy použití, kdy by měly být po
 
 ## <a name="architecture-of-instance-pools"></a>Architektura fondů instancí
 
-Fondy instancí mají podobnou architekturu jako běžné spravované instance *(jednotlivé instance*). Pro podporu [nasazení v rámci virtuálních sítí (Virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) a poskytování izolace a zabezpečení pro zákazníky, fondy instancí také spoléhají na [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuální clustery představují vyhrazenou sadu izolovaných virtuálních počítačů nasazených uvnitř podsítě virtuální sítě zákazníka.
+Fondy instancí mají podobnou architekturu jako běžné spravované instance *(jednotlivé instance*). Pro podporu [nasazení v rámci virtuálních sítí (Virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md) a poskytování izolace a zabezpečení pro zákazníky, fondy instancí také spoléhají na [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuální clustery představují vyhrazenou sadu izolovaných virtuálních počítačů nasazených uvnitř podsítě virtuální sítě zákazníka.
 
 Hlavní rozdíl mezi dvěma modely nasazení spočívá v tom, že fondy instancí umožňují nasazení procesů více serverů SQL Server na stejném uzlu virtuálního počítače, což jsou prostředky řízené pomocí [objektů úloh systému Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy samy na uzlu virtuálního počítače.
 
@@ -112,7 +112,7 @@ Volitelné funkce nebo funkce, které vyžadují výběr konkrétních hodnot (n
 
 Přestože spravované instance v rámci fondů mají vyhrazené virtuální jádro a paměť RAM, sdílejí místní disk (pro využití tempdb) a síťové prostředky. Není to pravděpodobné, ale je možné zažít *efekt hlučný soused,* pokud více instancí ve fondu má vysokou spotřebu prostředků současně. Pokud budete dodržovat toto chování, zvažte nasazení těchto instancí do většího fondu nebo jako jednotlivé instance.
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Vzhledem k tomu, že instance nasazené ve fondu sdílejí stejný virtuální počítač, můžete zvážit zakázání funkcí, které zavádějí vyšší bezpečnostní rizika, nebo pevně řídit přístupová oprávnění k těmto funkcím. Například integrace CLR, nativní zálohování a obnovení, e-mail databáze atd.
 

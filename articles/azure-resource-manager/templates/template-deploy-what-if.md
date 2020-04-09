@@ -3,29 +3,68 @@ title: Nasazení šablony what-if (Náhled)
 description: Zjistěte, jaké změny se stane s vašimi prostředky před nasazením šablony Azure Resource Manager.
 author: mumian
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156442"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886836"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace pro nasazení šablony ARM (preview)
 
 Před nasazením šablony Správce prostředků Azure (ARM) můžete chtít zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operace co by se vám umožní zobrazit, jak se změní prostředky, pokud nasadíte šablonu. Operace "Pokud" neprovede žádné změny existujících prostředků. Místo toho předpovídá změny, pokud je nasazena zadaná šablona.
 
 > [!NOTE]
-> Citlivostní operace je aktuálně ve verzi preview. Chcete-li jej použít, musíte [se zaregistrovat do náhledu](https://aka.ms/armtemplatepreviews). Jako verze preview mohou výsledky někdy ukázat, že se prostředek změní, když se ve skutečnosti nedojde k žádné změně. Pracujeme na snížení těchto problémů, ale potřebujeme vaši pomoc. Tyto problémy [https://aka.ms/whatifissues](https://aka.ms/whatifissues)nahlaste na adrese .
+> Citlivostní operace je aktuálně ve verzi preview. Jako verze preview mohou výsledky někdy ukázat, že se prostředek změní, když se ve skutečnosti nedojde k žádné změně. Pracujeme na snížení těchto problémů, ale potřebujeme vaši pomoc. Tyto problémy [https://aka.ms/whatifissues](https://aka.ms/whatifissues)nahlaste na adrese .
 
 Funkci "Co se ještě chcete" použít s příkazy Prostředí PowerShell nebo s operacemi rozhraní REST API.
+
+## <a name="install-powershell-module"></a>Instalace modulu PowerShell
+
+Pokud chcete v PowerShellu použít what-if, nainstalujte verzi preview modulu Az.Resources z galerie PowerShellu.
+
+### <a name="uninstall-alpha-version"></a>Odinstalovat alfa verzi
+
+Pokud jste dříve nainstalovali alfa verzi modulu what-if, odinstalujte tento modul. Alfa verze byla dostupná pouze uživatelům, kteří se zaregistrovali k předběžné verzi. Pokud jste tento náhled nenainstalovali, můžete tuto část přeskočit.
+
+1. Spusťte PowerShell jako správce.
+1. Zkontrolujte nainstalované verze modulu Az.Resources.
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. Pokud máte nainstalovanou verzi s číslem verze ve formátu **2.x.x-alpha**, odinstalujte tuto verzi.
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. Zrušení registrace citlivostního úložiště, které jste použili k instalaci náhledu.
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+### <a name="install-preview-version"></a>Instalace verze náhledu
+
+Chcete-li nainstalovat modul náhledu, použijte:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+Jste připraveni použít what-if.
+
+## <a name="see-results"></a>Zobrazit výsledky
 
 V Prostředí PowerShell obsahuje výstup barevně odlišené výsledky, které vám pomohou zobrazit různé typy změn.
 
 ![Správce prostředků šablony nasazení co-if operace fullresourcepayload a typy změn](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-Text ouptput je:
+Textový výstup je:
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -72,11 +111,8 @@ Nebo můžete použít `-Confirm` parametr switch k zobrazení náhledu změn a 
 
 Předchozí příkazy vrátí souhrn textu, který můžete ručně zkontrolovat. Chcete-li získat objekt, který můžete programově zkontrolovat změny, použijte:
 
-* `$results = Get-AzResourceGroupDeploymentWhatIf`pro nasazení skupin y prostředků
-* `$results = Get-AzSubscriptionDeploymentWhatIf`nebo `$results = Get-AzDeploymentWhatIf` pro nasazení na úrovni předplatného
-
-> [!NOTE]
-> Před vydáním verze 2.0.1-alpha5 jste `New-AzDeploymentWhatIf` použili příkaz. Tento příkaz byl nahrazen `Get-AzDeploymentWhatIf`příkazy `Get-AzResourceGroupDeploymentWhatIf` `Get-AzSubscriptionDeploymentWhatIf` , a příkazy. Pokud jste použili starší verzi, je třeba tuto syntaxi aktualizovat. Parametr `-ScopeType` byl odebrán.
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult`pro nasazení skupin y prostředků
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult`nebo `$results = Get-AzDeploymentWhatIfResult` pro nasazení na úrovni předplatného
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -223,7 +259,7 @@ Některé vlastnosti, které jsou uvedeny jako odstraněné, se ve skutečnosti 
 Nyní programově vyhodnotíme výsledky "pokud" nastavením příkazu na proměnnou.
 
 ```azurepowershell
-$results = Get-AzResourceGroupDeploymentWhatIf `
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```

@@ -11,18 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 415a89cbccd6b43d64ba1a553d44ac003df5806a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3ae8065553b34a72528cb0f2681e327dc90097
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471621"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985180"
 ---
 # <a name="http2-support-in-azure-front-door"></a>Podpora HTTP/2 v Azure Front Door
 
-V současné době je podpora HTTP/2 aktivní pro všechny konfigurace předních dveří. Od zákazníků není vyžadována žádná další akce.
+V současné době je podpora HTTP/2 aktivní pro všechny konfigurace Azure Front Door. Od zákazníků není vyžadována žádná další akce.
 
 HTTP/2 je hlavní revize HTTP/1.1. Poskytuje rychlejší výkon webu, kratší dobu odezvy a lepší uživatelské prostředí při zachování známých metod HTTP, stavových kódů a sémantiky. Přestože http/2 je určen pro práci s HTTP a HTTPS, mnoho klientských webových prohlížečů podporuje pouze HTTP/2 přes zabezpečení transportní vrstvy (TLS).
+
+> [!NOTE]
+> Podpora protokolu HTTP/2 je k dispozici pouze pro požadavky klientů na front door. Komunikace z front door do zadní chod v back-end fondu probíhá přes HTTP/1.1. 
 
 ### <a name="http2-benefits"></a>Výhody HTTP/2
 

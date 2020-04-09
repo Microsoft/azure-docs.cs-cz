@@ -3,26 +3,22 @@ title: Přihlášení pomocí udělení pověření vlastníka prostředku | Azu
 titleSuffix: Microsoft identity platform
 description: Podpora toky ověřování bez prohlížeče pomocí přidělení hesla vlastníka prostředku (ROPC).
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b935ad2491ca486a3bc6878f0332e5390600b1bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f632a6baed0179b7b4facd2962f9c9764af47
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700681"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886326"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Platforma identit y Microsoft a pověření vlastníka prostředků OAuth 2.0
 

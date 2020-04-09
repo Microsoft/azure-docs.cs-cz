@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a77041c0e53c2f0f8b6d0891a0f755e8ca474923
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03aa3919e1da982bb8a8c235bb598f5b94df1ebf
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75946345"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986649"
 ---
 
 Pomocí klientské knihovny QnA Maker pro Python:
@@ -68,7 +68,7 @@ Vytvořte proměnné pro koncový bod a klíč Azure vašeho prostředku. Pokud 
 
 |Proměnná prostředí|proměnná|Příklad|
 |--|--|--|
-|`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|Klíč je řetězec 32 znaků a je k dispozici na portálu Azure, na prostředek QnA Maker, na stránce Rychlý start. To není stejné jako klíč koncového bodu předpověď.|
+|`QNAMAKER_KEY`|`subscription_key`|Klíč je řetězec 32 znaků a je k dispozici na portálu Azure, na prostředek QnA Maker, na stránce Rychlý start. To není stejné jako klíč koncového bodu předpověď.|
 |`QNAMAKER_HOST`|`host`| Koncový bod pro vytváření ve `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`formátu aplikace obsahuje **název prostředku**. Toto není stejná adresa URL, která se používá k dotazování koncového bodu předpověď.|
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]

@@ -7,22 +7,22 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246853"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877996"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření předních dveří s přesměrováním HTTP na HTTPS pomocí portálu Azure
 
-Portál Azure můžete použít k vytvoření [přednídveře](front-door-overview.md) s certifikátem pro ukončení SSL. Pravidlo směrování se používá k přesměrování přenosu HTTP na protokol HTTPS.
+Portál Azure můžete použít k vytvoření [přednídveře](front-door-overview.md) s certifikátem pro ukončení TLS. Pravidlo směrování se používá k přesměrování přenosu HTTP na protokol HTTPS.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření předních dveří s existujícím prostředkem webové aplikace
-> * Přidání vlastní domény s certifikátem SSL 
+> * Přidání vlastní domény s certifikátem TLS/SSL 
 > * Instalační přesměrování HTTPS na vlastní doménu
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
@@ -87,7 +87,7 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 ### <a name="enable-https-on-your-custom-domain"></a>Povolení protokolu HTTPS ve vlastní doméně
 
 1. Klikněte na vlastní doménu, která byla přidána, a v části **Vlastní doména HTTPS**, změňte stav na **Povoleno**.
-2. Typ správy **certifikátu** můžete ponechat nastavený na _front door spravovaný_ pro bezplatný certifikát udržovaný, spravovaný a automaticky otočený předními dveřmi. Můžete také použít vlastní certifikát SSL uložený v trezoru klíčů Azure. Tento kurz předpokládá, že použití certifikátu spravovaného předních dveří.
+2. Typ správy **certifikátu** můžete ponechat nastavený na _front door spravovaný_ pro bezplatný certifikát udržovaný, spravovaný a automaticky otočený předními dveřmi. Můžete také použít vlastní certifikát TLS/SSL uložený v trezoru klíčů Azure. Tento kurz předpokládá, že použití certifikátu spravovaného předních dveří.
 ![Povolení protokolu HTTPS pro vlastní doménu](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. Kliknutím na **Aktualizovat** uložte výběr a klepněte na tlačítko **Uložit**.

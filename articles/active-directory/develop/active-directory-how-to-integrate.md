@@ -1,10 +1,9 @@
 ---
-title: Jak integrovat službu Azure Active Directory | Dokumenty společnosti Microsoft
+title: Jak integrovat službu Azure Active Directory
 description: Seznamte se s výhodami integrace aplikace s Azure Active Directory a získejte prostředky pro funkce, jako je zjednodušené přihlášení, správa identit, vícefaktorové ověřování a řízení přístupu.
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eaca7350ac006a2fcf2eed8d3eb0cb8ef274841
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300108"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885697"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 

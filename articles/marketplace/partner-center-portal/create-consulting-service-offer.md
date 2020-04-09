@@ -6,20 +6,22 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ce8df36d3417417a5f70a5385aa94d9c8c7ff0cc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/06/2020
+ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674277"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873816"
 ---
-# <a name="consulting-service-creation-overview"></a>Přehled vytvoření konzultačních služeb
+# <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultační ch služeb
 
 > [!IMPORTANT]
 > Přesouváme správu vašich nabídek konzultačních služeb z portálu partnerů cloudu do Partnerského centra. Dokud se vaše nabídky nebudou migrovat, postupujte podle pokynů v [nabídce konzultačních služeb Azure a Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) pro portál cloudových partnerů a spravujte své nabídky.
 
-Tento článek popisuje, jak publikovat nabídku poradenské služby pro [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/). Seznam nabídky konzultačních služeb na základě Microsoft [Dynamics 365](https://dynamics.microsoft.com/) a Power Platform na AppSource. Seznam nabídky poradenských služeb na základě Microsoft Azure na Azure Marketplace.
+Tento článek popisuje, jak publikovat nabídku služby Poradenství pro [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/). Seznam Konzultační služby nabízí na základě Microsoft [Dynamics 365](https://dynamics.microsoft.com/) a Power Platform na AppSource. Nabídky služeb Seznam Consulting na základě Microsoft Azure na Azure Marketplace.
+
+Chcete-li vytvořit nabídku služeb Poradenství v azure marketplace nebo appsource consulting služby, musíte [mít nejprve účet vydavatele v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)a váš účet musí být zaregistrovaný v programu commercial marketplace. Před vytvořením nabídky si přečtěte požadavky v [oblasti požadavků na služby Consulting](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites).
 
 ## <a name="publishing-benefits"></a>Publikování výhod
 
@@ -30,60 +32,9 @@ Výhody publikování na komerčním trhu:
 - Získejte vysoce kvalitní potenciální zákazníky z těchto tržišť.
 - Vaše služby budou propagované týmy microsoftu a telesales
 
-## <a name="requirements"></a>Požadavky
+## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
-### <a name="business-requirements"></a>Obchodní požadavky
-
-U nabídek, kde je Azure vybrán jako primární produkt, musí vaše nabídka obsahovat alespoň jednu z následujících plně získaných kompetencí:
-
-- Vývoj aplikací
-- Integrace aplikací
-- Správa životního cyklu aplikací
-- Cloudová platforma
-- Analýza dat
-- Data Center
-- Datová platforma
-- DevOps
-
-U nabídek s jednou z následujících možností vybraných jako primární produkt musíte splňovat příslušné uvedené požadavky na způsobilost nebo mít nabídku společného prodeje primárního produktu, se kterým se nabídka služby vztahuje.
-
-**Aplikace pro zapojení zákazníků**
-
-- **Platí pro:** Dynamics 365 Sales, Dynamics 365 Marketing, Dynamics 365 Customer Service, Dynamics 365 Field Service, Dynamics 365 Human Resources
-
-- **Kritéria**: Musí být zlaté nebo stříbrné certifikované v [kompetenci cloudových obchodních aplikací](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro zapojení zákazníků.
-
-**Finanční a provozní aplikace**
-
-- **Platí pro:** Dynamics 365 Finance, Dynamics 365 Operations, Dynamics 365 Commerce, Dynamics 365 Human Resources, Dynamics 365 Project Service Automation
-
-- **Kritéria**: Musí být zlaté nebo stříbrné certifikované v [kompetenci cloudových obchodních aplikací](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost Sjednocené operace.
-
-**Dynamics 365 Customer Insights**
-
-- **Kritéria**: Musí mít alespoň jednu úspěšnou in-produkční implementaci [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) s alespoň pěti mírami a pěti segmenty.
-
-**Dynamics 365 Business Central**
-
-- **Kritéria**: Musí být gold nebo silver certifikován v [kompetenci plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) a obsluhovat alespoň tři zákazníky nebo publikovali aplikaci Business Central v Microsoft AppSource.
-
-**Power BI**
-
-- **Kritéria**: Musí být uvedenna [v itaríně partnera Power BI](https://powerbi.microsoft.com/partner-showcase/).
-
-**Power Apps**
-
-- **Kritéria**: Musí mít nárok na pokročilé výhody v programu [Power Apps Partnership.](https://aka.ms/PowerAppsPartner)
-
-Podrobnosti o splnění těchto požadavků naleznete v [požadavcích konzultační služby](consulting-service-prerequisites.md).
-
-### <a name="logistical-requirements"></a>Logistické požadavky
-
-Chcete-li vytvořit nabídku poradenské služby pro poradenské služby Azure Marketplace nebo AppSource, musíte [mít nejprve účet vydavatele v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)a váš účet musí být zaregistrovaný v programu commercial marketplace.
-
-## <a name="create-a-new-consulting-service-offer-in-partner-center"></a>Vytvoření nové nabídky konzultačních služeb v Partnerském centru
-
-Po splnění výše popsaných požadavků vytvořte nabídku konzultační ch služeb následujícím postupem.
+Po splnění výše popsaných požadavků vytvořte nabídku služeb Consulting následujícím postupem.
 
 1. Přihlaste se do [Centra partnerů](https://partner.microsoft.com)a v horní nabídce vyberte **řídicí panel.**
 2. Na levém panelu vyberte **Commercial Marketplace**a pak vyberte **Přehled**.
@@ -139,13 +90,13 @@ Před pokračováním k dalšímu oddílu Vlastnosti vyberte **Uložit pracovní
 
 ### <a name="properties"></a>Vlastnosti
 
-Tato stránka umožňuje nastavit primární produkt, který vaše konzultační služba nabízí nejlepší kryty, nastavit typ poradenské služby a zvolit příslušné produkty.
+Tato stránka umožňuje nastavit primární produkt, který vaše služba Consulting nabízí nejlepší kryty, nastavit typ služby Consulting a zvolit příslušné produkty.
 
 1. V rozevíracím seznamu vyberte **primární produkt.**
 2. V rozevíracím seznamu vyberte **typ služby Consulting:**
 
     - **Posouzení** : Vyhodnocení prostředí&#39;zákazníka s cílem určit použitelnost řešení a poskytnout odhad nákladů a načasování.
-    - **Instruktáž** : Úvod do řešení nebo poradenské služby, která přitáhne zájem zákazníků pomocí architektur, ukázek a příkladů zákazníků.
+    - **Instruktáž** : Úvod do řešení nebo konzultační služby k načerpání zájmu zákazníků pomocí architektur, ukázky a příklady zákazníků.
     - **Implementace** : Kompletní instalace, která má za následek plně funkční řešení. Limit na řešení, která mohou být implementována za dva týdny nebo méně.
     - **Doklad koncepce** : Implementace s omezeným rozsahem k určení, zda řešení splňuje požadavky zákazníka.
     - **Workshop** : Interaktivní angažmá prováděné na&#39;pro zákazníka. Může zahrnovat školení, instruktáže, hodnocení nebo ukázky postavené na datech nebo prostředí zákazníků&#39;.
@@ -153,7 +104,7 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
 1. Pokud jste vybrali primární produkt **Azure**, vyberte až tři **oblasti řešení**. Zákazníkům na Azure Marketplace je jejich hledání snazší. Pokud jste&#39;nevybrali Azure, tento krok přeskočte.
 2. Pokud jste vybrali _jiný_ primární produkt než Azure, vyberte až tři **příslušné produkty**. Ty usnadňují zákazníkům v AppSource najít vaši nabídku. Podrobnosti naleznete v [tématu Microsoft AppSource Consulting Service Listing Guidelines](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
 3. Vyberte až šest **odvětví,** na která se vaše nabídka vztahuje. Zákazníkům tak bude snazší najít vaši nabídku.
-4. Přidejte až tři **kompetence,** které vaše společnost získala k zobrazení na výpisu nabídky poradenské služby. Je vyžadována alespoň jedna kompetence s výjimkou Azure Expert MSP&#39;s a Azure Networking MSP&#39;s.
+4. Přidejte až tři **kompetence,** které vaše společnost získala k zobrazení na výpisu nabídky konzultační služby. Je vyžadována alespoň jedna kompetence s výjimkou Azure Expert MSP&#39;s a Azure Networking MSP&#39;s.
 
 Před pokračováním do další části Nabídka vyberte **Uložit pracovní verzi.**
 
@@ -205,7 +156,7 @@ Chcete-li, aby byl popis poutavější, naformátujte popis pomocí editoru s fo
 
 ### <a name="keywords"></a>Klíčová slova
 
-Zadejte až tři klíčová slova pro vyhledávání, která jsou relevantní pro váš primární produkt a poradenskou službu. Díky tomu bude snazší najít vaši nabídku.
+Zadejte až tři klíčová slova pro vyhledávání, která jsou relevantní pro váš primární produkt a konzultační službu. Díky tomu bude snazší najít vaši nabídku.
 
 ### <a name="duration"></a>Doba trvání
 
@@ -252,7 +203,7 @@ Zde definujete prvky, jako jsou ceny, trh a soukromý klíč.
 3. **Ceny**: Určete, zda je vaše nabídka **bezplatná** nebo **placená** nabídka.
 
     > [!NOTE]
-    > Nabídky poradenských služeb jsou určeny pouze pro výpis. Veškeré transakce se budou uskutečnit přímo, mimo komerční trh.
+    > Konzultační nabídky služeb jsou pouze pro výpis. Veškeré transakce se budou uskutečnit přímo, mimo komerční trh.
 
 4. U placené nabídky zadejte **cenu a měnu** a zda je cena **pevná** nebo **odhadovaná**. Pokud je odhad, musíte v popisu zadat, jaké faktory ovlivní cenu.
 5. Vyberte **Uložit pracovní verzi**.
@@ -261,7 +212,7 @@ Zde definujete prvky, jako jsou ceny, trh a soukromý klíč.
 
 Po dokončení všech požadovaných částí nabídky můžete nabídku odeslat ke kontrole a publikování.
 
-1. Až budete připraveni publikovat nabídku poradenské služby, klikněte na **Zkontrolovat a publikovat**.
+1. Až budete připraveni publikovat nabídku služeb Poradenství, klikněte na **Zkontrolovat a publikovat**.
 2. Projděte si podrobnosti na stránce konečného odeslání.
 3. Pokud je to nutné, napište poznámku certifikačnímu týmu, pokud se domníváte, že některé z podrobností vaší nabídky vyžadují vysvětlení.
 4. Až budete připraveni, vyberte **Odeslat**.
@@ -269,6 +220,6 @@ Po dokončení všech požadovaných částí nabídky můžete nabídku odeslat
 
 Další informace o tom, jak dlouho můžete očekávat, že vaše nabídka bude v každé fázi publikování, naleznete [v tématu Kontrola stavu publikování nabídky Commercial Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status).
 
-## <a name="update-your-existing-consulting-service-offers"></a>Aktualizace stávajících nabídek poradenských služeb
+## <a name="update-your-existing-consulting-service-offers"></a>Aktualizace stávajících nabídek konzultačních služeb
 
 - [Aktualizace stávající nabídky na komerčním trhu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

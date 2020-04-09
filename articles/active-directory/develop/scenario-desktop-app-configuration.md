@@ -2,24 +2,21 @@
 title: Konfigurace aplikací klasické pracovní plochy, které volají webová rozhraní API – platforma identit Microsoftu | Azure
 description: Přečtěte si, jak nakonfigurovat kód desktopové aplikace, která volá webová rozhraní API.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2ba69e6447c686230412c33e74196c4bb594e0de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6cd9e17045fc400d32e9822cef870f1763179ab
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77611827"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885258"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Desktopová aplikace, která volá webová api: konfigurace kódu
 

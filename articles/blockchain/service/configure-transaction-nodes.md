@@ -4,12 +4,12 @@ description: Jak nakonfigurovat uzly transakcí služby Azure Blockchain Service
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
-ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252256"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876925"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace transakčních uzlů služby Azure Blockchain Service
 
@@ -17,7 +17,7 @@ Transakční uzly se používají k odesílání transakcí blockchain u služby
 
 Zobrazení podrobností o výchozím uzlu transakce:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na člena služby Azure Blockchain Service. Vyberte **uzly transakce**.
 
     ![Vybrat výchozí uzel transakce](./media/configure-transaction-nodes/nodes.png)
@@ -54,7 +54,7 @@ Zobrazení podrobností koncového bodu uzlu transakce:
 
     ![Koncové body](./media/configure-transaction-nodes/endpoints.png)
 
-Koncové body uzlu transakce jsou zabezpečené a vyžadují ověření. Ke koncovému bodu transakce se můžete připojit pomocí ověřování Azure AD, základního ověřování HTTPS a použití přístupového klíče přes protokol HTTPS nebo websocket přes protokol SSL.
+Koncové body uzlu transakce jsou zabezpečené a vyžadují ověření. Ke koncovému bodu transakce se můžete připojit pomocí ověřování Azure AD, základního ověřování HTTPS a použití přístupového klíče přes protokol HTTPS nebo websocket přes TLS.
 
 ### <a name="azure-active-directory-access-control"></a>Řízení přístupu služby Azure Active Directory
 

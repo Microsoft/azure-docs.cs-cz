@@ -2,25 +2,21 @@
 title: Přesunutí aplikace pro daemon, která volá webová rozhraní API do produkčního prostředí – platforma identit Microsoftu | Azure
 description: Přečtěte si, jak přesunout aplikaci pro daemon, která volá webová API do produkčního prostředí.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: db5f52c95daf4e93c140b4c93f39dad19971319d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5d25169aa3daee33a9f02e605cbff91776dc7f1
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262617"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885425"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon aplikace, která volá webOVÁ API - přejít na produkční
 

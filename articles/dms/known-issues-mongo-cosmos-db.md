@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78256034"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878047"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Známé problémy/omezení migrace s migrací z MongoDB do rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -45,7 +45,7 @@ Známé problémy a omezení spojené s migrací z MongoDB do rozhraní API Cosm
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
-| Pokusíte se migrovat do Azure Cosmos DB z nepodporované verze MongoDB. | Jako nové verze MongoDB jsou vydány, jsou testovány k zajištění kompatibility se službou Migrace databáze Azure a služba je pravidelně aktualizována, aby přijímala nejnovější verze. Pokud je okamžitá potřeba migrovat, jako řešení můžete exportovat databáze/kolekce do Služby Azure Storage a bod zdroj do výsledného výpisu. Vytvořte SAS v kontejneru objektů blob v Průzkumníku úložiště a pak použijte adresu URL s informacemi o Kontejneru SAS jako připojovací řetězec podrobností zdroje.<br><br> |
+| Pokusíte se migrovat do Azure Cosmos DB z nepodporované verze MongoDB. | Jako nové verze MongoDB jsou vydány, jsou testovány k zajištění kompatibility se službou Migrace databáze Azure a služba je pravidelně aktualizována, aby přijímala nejnovější verze. Pokud je okamžitá potřeba migrovat, jako řešení můžete exportovat databáze/kolekce do Služby Azure Storage a pak nasměrovat zdroj na výsledný výpis. Vytvořte SAS v kontejneru objektů blob v Průzkumníku úložiště a pak použijte adresu URL s informacemi o Kontejneru SAS jako připojovací řetězec podrobností zdroje.<br><br> |
 
 ## <a name="next-steps"></a>Další kroky
 
